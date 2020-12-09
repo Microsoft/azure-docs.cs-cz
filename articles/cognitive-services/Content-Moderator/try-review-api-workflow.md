@@ -10,41 +10,41 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754187"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905140"
 ---
-# <a name="define-and-use-moderation-workflows-rest"></a>Definování a použití pracovních postupů moderování (REST)
+# <a name="define-and-use-moderation-workflows-api-console"></a>Definování a použití pracovních postupů moderování (konzola rozhraní API)
 
 Pracovní postupy jsou cloudově přizpůsobené filtry, které můžete použít ke efektivnějšímu zpracování obsahu. Pracovní postupy se můžou připojit k nejrůznějším službám a filtrovat obsah různými způsoby a pak provést příslušné akce. V této příručce se dozvíte, jak používat rozhraní REST API pracovního postupu prostřednictvím konzoly API k vytváření a používání pracovních postupů. Jakmile pochopíte strukturu rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s REST.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
-## <a name="create-a-workflow"></a>Vytvořit pracovní postup
+## <a name="create-a-workflow"></a>Vytvoření pracovního postupu
 
-Pokud chcete vytvořit nebo aktualizovat pracovní postup, klikněte na stránku **[pracovní postup – vytvořit nebo aktualizovat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** odkaz na rozhraní API a vyberte tlačítko pro vaši oblast klíče (Toto můžete najít na stránce s **přihlašovacími údaji** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/)na adrese URL koncového bodu). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
+Pokud chcete vytvořit nebo aktualizovat pracovní postup, klikněte na stránku **[pracovní postup – vytvořit nebo aktualizovat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** odkaz na rozhraní API a vyberte tlačítko pro klíčové oblasti. Vaši oblast najdete na adrese URL koncového bodu na stránce s **přihlašovacími údaji** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
 
 ![Pracovní postup – výběr nebo aktualizace výběru oblasti stránky](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>Zadejte parametry volání REST
 
-Zadejte hodnoty pro **Team**, **Workflow**a **OCP-APIM-Subscription-Key**:
+Zadejte hodnoty pro **Team**, **Workflow** a **OCP-APIM-Subscription-Key**:
 
 - **tým**: ID týmu, které jste vytvořili při nastavování účtu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) (najdete ho v poli **ID** na obrazovce s přihlašovacími údaji nástroje pro kontrolu).
 - **Workflow**: název nového pracovního postupu, který se má přidat (nebo existující název, pokud chcete aktualizovat existující pracovní postup).
-- **OCP-APIM-Subscription-Key**: váš Content moderator klíč. Najdete ho na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).
+- **OCP-APIM-Subscription-Key**: váš Content moderator klíč. Tento klíč najdete na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).
 
 ![Pracovní postup – parametry a hlavičky dotazů konzoly pro vytváření a aktualizaci](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>Zadejte definici pracovního postupu.
 
 1. Upravte pole **Text žádosti** a zadejte žádost JSON s podrobnostmi o **popisu** a **typu** ( `Image` nebo `Text` ).
-2. Ve **výrazu pro výraz**zkopírujte výchozí výraz JSON pracovního postupu. Výsledný řetězec JSON by měl vypadat takto:
+2. Ve **výrazu pro výraz** zkopírujte výchozí výraz JSON pracovního postupu. Výsledný řetězec JSON by měl vypadat takto:
 
 ```json
 {
@@ -80,7 +80,7 @@ Zadejte hodnoty pro **Team**, **Workflow**a **OCP-APIM-Subscription-Key**:
 
 ### <a name="submit-your-request"></a>Odeslání žádosti
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a zobrazí se okno **obsah odpovědi** `true` .
+Vyberte **Odeslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a zobrazí se okno **obsah odpovědi** `true` .
 
 ### <a name="examine-the-new-workflow"></a>Kontrola nového pracovního postupu
 
@@ -102,7 +102,7 @@ Zadejte parametry volání REST jako v předchozí části. Ujistěte se, že te
 
 ![Získat parametry a záhlaví dotazů](images/workflow-get-default.PNG)
 
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je a v `200 OK` poli **obsah odpovědi** se zobrazí pracovní postup ve formátu JSON, například takto:
+Vyberte **Odeslat**. Pokud je operace úspěšná, **stav odpovědi** je a v `200 OK` poli **obsah odpovědi** se zobrazí pracovní postup ve formátu JSON, jako v následujícím příkladu:
 
 ```json
 {

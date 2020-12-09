@@ -3,24 +3,24 @@ title: Poskytnutí zpětné vazby k datům Azure Maps | Mapy Microsoft Azure
 description: Poskytnutí zpětné vazby k datům pomocí nástroje Microsoft Azure Maps feedback tool.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895507"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905328"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Poskytnutí zpětné vazby k datům Azure Maps
 
 Azure Maps k dispozici od května 2018. Azure Maps poskytovala nová data map, snadno použitelná rozhraní REST API a výkonné sady SDK pro podporu našich podnikových zákazníků s různými druhy obchodních případů použití. Reálný svět se mění každou sekundu a je zásadní pro nás, abychom zákazníkům poskytli skutkovou digitální reprezentaci. Naši zákazníci, kteří plánují otevřít nebo zavřít zařízení, potřebují naše mapy, aby se aktualizovaly okamžitě. Proto můžou efektivně plánovat poskytování služeb při doručování, údržbě nebo službách pro zákazníky na správných zařízeních. Vytvořili jsme web Azure Maps data feedback, abychom našim zákazníkům poskytli přímý názor na data. Zpětná vazba na data zákazníků směřuje přímo k našim poskytovatelům dat a jejich editorům map. Můžou rychle vyhodnotit a začlenit zpětnou vazbu do našich mapovacích produktů.  
 
-[Azure Maps Web pro zasílání názorů dat](https://feedback.azuremaps.com) poskytuje zákazníkům snadný způsob, jak poskytovat zpětnou vazbu k datům map, zejména na obchodních místech zájmu a adres na pracovišti. Tento článek vás provede postupem poskytování různých druhů zpětné vazby pomocí webu Azure Maps Feedback.
+Web pro zasílání [názorů na Azure maps dat (Preview)](https://feedback.azuremaps.com) poskytuje zákazníkům snadný způsob poskytování zpětné vazby k datům v mapě, zejména na obchodních místech zájmu a adres na pracovišti. Tento článek vás provede postupem poskytování různých druhů zpětné vazby pomocí webu Azure Maps Feedback.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Přidat obchodní místo nebo domácí adresu 
 

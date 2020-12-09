@@ -6,15 +6,15 @@ services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327953"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905532"
 ---
 # <a name="about-virtual-wan-pricing"></a>Informace o cenách virtuální sítě WAN
 
@@ -38,7 +38,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Co je jednotka připojení?
 
-**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. V případě sítě VPN typu Site-to-Site to znamená, že se jedná o větve. Pro uživatele VPN (Point-to-site) to implikuje vzdálené uživatele. Pro ExpressRoute to znamená připojení okruhu ExpressRoute.<br>Například:
+**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. Pro síť VPN typu Site-to-site implikuje tato hodnota větve. Pro uživatele VPN (Point-to-site) Tato hodnota implikuje vzdálené uživatele. Pro ExpressRoute tato hodnota implikuje připojení okruhu ExpressRoute.<br>Například:
 
 * Jedno připojení k síti VPN se připojuje k Azure VPN v nákladech virtuálního rozbočovače. $0,05/hod. Proto připojení větví 100, která se připojují k virtuálnímu rozbočovači Azure, by znamenala náklady na $0,05 * 100/hod.
 
@@ -50,32 +50,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 * Jakékoli přenosy přicházející do Azure se neúčtují. Provoz, který opouští Azure (přes VPN, ExpressRoute nebo připojení VPN typu Point-to-site), podléhá standardním [poplatkům za Azure Data Transfer](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-* Pro poplatky za přenos dat mezi virtuálním rozbočovačem WAN a vzdáleným virtuálním rozbočovačem WAN nebo virtuální sítí v jiné oblasti, než je zdrojové centrum, platí poplatky za přenos dat pro provoz opouštějící rozbočovač. Příklad: provoz opouštící centrum Východní USA se bude účtovat za $0,02/GB a přejde na Západní USA centrum. Za provoz vstupu do centra Západní USA se nic neúčtuje. V následujících tabulkách jsou uvedeny poplatky.
-
-Níže uvedené tabulky používají následující zkratky: {pole: Severní Amerika}, {EU: Evropa}, {MEA: střední Východová Afrika}, {OC: Oceánie a (Austrálie – střed a Austrálie – střed 2)}, {LATAM: Latinská Amerika} 
-
-**Ceny v rámci kontinentu (*)**
-
-| Intra-Continent| Cena ($/GB)|
-|---|---|
-| Do ' Nam '|0,02 USD |
-| EU až EU |0,02 USD |
-| Asie – Asie (kromě Číny)|$0,10 |
-| MEA do MEA|$0,16 |
-| LATAM-LATAM |$0,16 |
-| OC-OC|$0,12 |
-
-**Ceny za přenos mezi kontinentálními písmeny (*)**
-
-| Inter-Continental| Cena ($/GB)|
-|---|---|
-| OD ze země do EU nebo EU do |$0,07 |
-| OD LATAM k libovolnému místu |$0,17 |
-| Z MEA do odkudkoli |$0,17 |
-| OD Oceánie A k libovolnému místu |$0,12 |
-| Z Asie (s výjimkou Číny) na libovolné místo |$0,12 |
-
-(*) Některé poplatky můžou platit od 1. srpna 2020.
+* Pro poplatky za přenos dat mezi virtuálním rozbočovačem WAN a vzdáleným virtuálním rozbočovačem WAN nebo virtuální sítí v jiné oblasti, než je zdrojové centrum, platí poplatky za přenos dat pro provoz opouštějící rozbočovač. Příklad: provoz opouštící centrum Východní USA se bude účtovat za $0,02/GB a přejde na Západní USA centrum. Za provoz vstupu do centra Západní USA se nic neúčtuje. Všechna centra pro provoz na rozbočovači se vztahují na Inter-Region (uvnitř/mezi kontinentální) poplatky za [přenos dat Azure](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 ### <a name="what-is-the-difference-between-a-standard-hub-fee-and-a-standard-hub-processing-fee"></a><a name="fee"></a>Jaký je rozdíl mezi standardním poplatkem centra a standardním poplatkem za zpracování?
 

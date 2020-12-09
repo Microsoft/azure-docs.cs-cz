@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377730"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861931"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
 
@@ -32,7 +32,7 @@ Tady jsou některé běžné dotazy a tipy pro řešení potíží při přiřaz
 
 **A:** Ve výchozím nastavení pouze správce privilegovaných rolí a globální správce spravují členství skupiny, která je přiřazena rolím, ale můžete delegovat správu skupin s možností přiřazení role přidáním vlastníků skupin.
 
-**Otázka** : jsem správcem helpdesku v mé organizaci, ale nemohu aktualizovat heslo uživatele, který je čtečkou adresářů. Proč k tomu dochází?
+**Otázka**: jsem správcem helpdesku v mé organizaci, ale nemohu aktualizovat heslo uživatele, který je čtečkou adresářů. Proč k tomu dochází?
 
 Odpověď **: uživatel** může narazit na čtečku adresářů pomocí skupiny přiřazení role. Všechny členy a vlastníci skupin, které lze přiřadit k rolím, jsou chráněni. Přihlašovací údaje pro chráněného uživatele můžou resetovat jenom uživatelé v rolích správce privilegovaného ověřování nebo globální správce.
 
@@ -40,8 +40,8 @@ Odpověď **: uživatel** může narazit na čtečku adresářů pomocí skupiny
 
 **A:** Uživatel může být vlastníkem skupiny přiřazení role. Chráníme vlastníky rolí a přiřazení skupin, abyste se vyhnuli zvýšení oprávnění. Příkladem může být, pokud je skupina Contoso_Security_Admins přiřazena k roli správce zabezpečení, kde Jan je vlastníkem skupiny a Alice je správcem hesel v organizaci. Pokud tato ochrana nebyla přítomna, mohl by Alice resetovat přihlašovací údaje Bobovi a převzít její identitu. Potom Alice může přidat do skupiny skupinu Contoso_Security_Admins, aby se stala správcem zabezpečení v organizaci. Pokud chcete zjistit, jestli je uživatel vlastníkem skupiny, získejte seznam vlastněných objektů daného uživatele a podívejte se, jestli má některá z těchto skupin isAssignableToRole nastavenou na hodnotu true. Pokud ano, pak je tento uživatel chráněný a chování je záměrné. Informace o tom, jak vlastní objekty získat, najdete v těchto dokumentech:
 
-- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [Seznam ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  
+- [Seznam ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)
 
 **Otázka:** Můžu vytvořit kontrolu přístupu pro skupiny, které se dají přiřadit k rolím Azure AD (konkrétně skupiny s vlastností isAssignableToRole nastavenou na hodnotu true)?  
 

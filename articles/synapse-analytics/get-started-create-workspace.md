@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445415"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862373"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
@@ -45,7 +45,7 @@ K dokončení kroků tohoto kurzu potřebujete mít přístup ke skupině prost�
 
 Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevřít synapse Studio:
 
-* Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **Spustit synapse Studio**.
+* Otevřete pracovní prostor synapse ve [Azure Portal](https://portal.azure.com). V horní části **přehledu** vyberte **otevřít synapse Studio**.
 * Přejít na adresu `https://web.azuresynapse.net` a přihlaste se do svého pracovního prostoru.
 
 ## <a name="create-a-dedicated-sql-pool"></a>Vytvoření vyhrazeného fondu SQL

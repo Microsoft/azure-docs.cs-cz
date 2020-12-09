@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275772"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861744"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
 
@@ -49,7 +49,7 @@ Dokud nebude chyba LargeObject vyřešena, nelze do služby Azure AD exportovat 
  * Snižte počet hodnot certifikátů na objektu místní služby AD (15 nebo méně) tím, že odeberete hodnoty, které už vaše organizace nepoužívá. To je vhodné, pokud je atribut dispozici determinističtější způsoben vypršením nebo nepoužitými certifikáty. Pomocí [skriptu prostředí PowerShell, který je zde k dispozici](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) , můžete najít, zálohovat a odstranit certifikáty s vypršenou platností v místní službě AD. Před odstraněním certifikátů se doporučujeme ověřit u správců infrastruktury veřejných klíčů ve vaší organizaci.
 
  * Nakonfigurujte Azure AD Connect, aby se vyloučil Export atributu userCertificate do služby Azure AD. Obecně platí, že tuto možnost nedoporučujeme, protože atribut můžou použít služby Microsoft Online Services k povolení konkrétních scénářů. Zejména jde o toto:
-    * Atribut userCertificate objektu User používá klient Exchange Online a Outlook pro podepisování a šifrování zpráv. Další informace o této funkci najdete v článku [S/MIME pro podepisování a šifrování zpráv](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption?view=o365-worldwide).
+    * Atribut userCertificate objektu User používá klient Exchange Online a Outlook pro podepisování a šifrování zpráv. Další informace o této funkci najdete v článku [S/MIME pro podepisování a šifrování zpráv](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption).
 
     * V Azure AD se používá atribut userCertificate na objektu počítače, aby se zařízení s Windows 10 připojená k doméně mohla připojit k Azure AD. Pokud se o této funkci chcete dozvědět víc, přečtěte si článek [připojení zařízení připojených k doméně k Azure AD pro prostředí Windows 10](../devices/hybrid-azuread-join-plan.md).
 
@@ -93,7 +93,7 @@ Mělo by existovat existující synchronizační pravidlo, které je povolené a
     | Atribut | Hodnota |
     | --- | --- |
     | Směr |**Odchozí** |
-    | Typ objektu MV |**Osoba** |
+    | Typ objektu MV |**Person (Osoba)** |
     | Konektor |*název vašeho konektoru služby Azure AD* |
     | Typ objektu konektoru |**uživatelský** |
     | MV – atribut |**userCertificate** |
@@ -108,17 +108,17 @@ Mělo by existovat existující synchronizační pravidlo, které je povolené a
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Ano |
+    | cloudMastered | NOTEQUAL | Pravda |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Vytvořit požadované pravidlo pro odchozí synchronizaci
 Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší prioritu** než stávající pravidlo synchronizace. Tím se zajistí, že se nové pravidlo synchronizace bude vztahovat na stejnou sadu objektů jako stávající pravidlo synchronizace a přepíše stávající pravidlo synchronizace pro atribut userCertificate. Postup vytvoření pravidla synchronizace:
 1. V editoru pravidel synchronizace klikněte na tlačítko **Přidat nové pravidlo** .
-2. Na **kartě Popis**zadejte následující konfiguraci:
+2. Na **kartě Popis** zadejte následující konfiguraci:
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Name | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
-    | Description | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
+    | Název | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
+    | Popis | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
     | Připojený systém | *Vyberte konektor Azure AD.* |
     | Typ připojeného systémového objektu | **uživatelský** | |
     | Typ objektu úložiště metaverse | **uživateli** | |

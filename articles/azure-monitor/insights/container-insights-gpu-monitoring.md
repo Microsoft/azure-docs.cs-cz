@@ -3,16 +3,16 @@ title: Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery | Mic
 description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s použitím uzlů NVIDIA a GPU s povoleným grafickým procesorem AMD pomocí Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569692"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905583"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery
 
-Počínaje agentem verze *ciprod03022019*služba Azure monitor for Containers Integrated Agents teď podporuje monitorování využití GPU (grafické procesory) na uzlech clusteru Kubernetes s grafickým procesorem a monitorování lusků/kontejnerů požadujících a používání prostředků GPU.
+Počínaje agentem verze *ciprod03022019* služba Azure monitor for Containers Integrated Agents teď podporuje monitorování využití GPU (grafické procesory) na uzlech clusteru Kubernetes s grafickým procesorem a monitorování lusků/kontejnerů požadujících a používání prostředků GPU.
 
 ## <a name="supported-gpu-vendors"></a>Podporovaní dodavatelé GPU
 
@@ -39,7 +39,7 @@ Azure Monitor for Containers automaticky spouští monitorování využití GPU 
 
 ## <a name="gpu-performance-charts"></a>Grafy výkonu GPU 
 
-Azure Monitor for containers obsahuje předem nakonfigurované grafy pro metriky uvedené dříve v tabulce jako sešit GPU pro každý cluster. **Grafické procesory uzlu** GPU můžete najít přímo z clusteru AKS tak, že v levém podokně vyberete **sešity** a v rozevíracím seznamu **Zobrazit sešity** v přehledu.
+Azure Monitor for containers obsahuje předem nakonfigurované grafy pro metriky uvedené dříve v tabulce jako sešit GPU pro každý cluster. Popis sešitů dostupných pro Azure Monitor kontejnerů najdete [v tématu sešity v Azure monitor for Containers](container-insights-reports.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

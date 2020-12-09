@@ -4,16 +4,16 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperfq2
-ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410262"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901768"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -95,19 +95,20 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Další informace o tokenech SAS a o tom, jak je získat, najdete v tématu [použití sdílených přístupových podpisů (SAS)](./storage-sas-overview.md).
 
+<a id="transfer-data"></a>
+
 ## <a name="transfer-data"></a>Přenos dat
 
 Po ověření identity nebo získání tokenu SAS můžete začít přenášet data.
 
 Ukázkové příkazy najdete v některém z těchto článků.
 
-- [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-
-- [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
-
-- [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
-
-- [Přenos dat pomocí úložiště AzCopy a Azure Stack](/azure-stack/user/azure-stack-storage-transfer#azcopy)
+| Služba | Článek |
+|--------|-----------|
+|Azure Blob Storage |[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Stažení objektů BLOB ze služby Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-download.md)<br><br>[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-download.md)|
+|Soubory Azure |[Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)|
+|Amazon S3|[Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)|
+|Azure Stack úložiště|[Přenos dat pomocí úložiště AzCopy a Azure Stack](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Použití ve skriptu
 

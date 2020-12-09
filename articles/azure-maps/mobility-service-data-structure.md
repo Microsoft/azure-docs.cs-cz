@@ -1,27 +1,33 @@
 ---
-title: Datové struktury služby mobility v Azure Maps | Mapy Microsoft Azure
-description: Seznamte se s tím, jak se data uspořádají do oblastí Metro v Azure Maps služby mobility. Podívejte se, která pole obsahují informace o zastavení a řádcích veřejného přenosu.
+title: Datové struktury služby mobility (Preview) ve službě Microsoft Azure Maps
+description: Seznamte se s tím, jak se data uspořádávají do oblastí Metro ve službě Azure Maps mobility Services (Preview). Podívejte se, která pole obsahují informace o zastavení a řádcích veřejného přenosu.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/05/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896306"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904716"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Azure Maps mobility
+# <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Datové struktury ve službě Azure Maps mobility Services (Preview) 
 
-Tento článek představuje koncept oblasti metro ve [službě Azure Maps mobility](/rest/api/maps/mobility). Probereme některá společná pole, která se vrátí, když se tato služba dotáže na zastavení a řádky veřejného přenosu. Před vývojem s rozhraními API služby mobility doporučujeme tento článek přečíst.
+> [!IMPORTANT]
+> Služby Azure Maps mobility jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+
+Tento článek představuje koncept oblasti Metro v [Azure Maps služby mobility](/rest/api/maps/mobility). Probereme některá společná pole, která se vrátí, když se tato služba dotáže na zastavení a řádky veřejného přenosu. Před vývojem s využitím rozhraní API služeb mobility doporučujeme tento článek přečíst.
 
 ## <a name="metro-area"></a>Oblast Metro
 
-Data služby mobility se seskupují podle podporovaných oblastí Metro. Oblasti metro nenásledují na hranicích měst. Oblast Metro může obsahovat více měst, hustě vyplněné města a okolní města. Ve skutečnosti může být země nebo oblast jedna oblast Metro. 
+Data služby mobility (Preview) se seskupují podle podporovaných oblastí Metro. Oblasti metro nenásledují na hranicích měst. Oblast Metro může obsahovat více měst, hustě vyplněné města a okolní města. Ve skutečnosti může být země nebo oblast jedna oblast Metro. 
 
 `metroID`Je ID oblasti metro, které se dá použít k volání [rozhraní API pro informace o oblasti Get Metro](/rest/api/maps/mobility/getmetroareainfopreview). Pomocí Azure Maps získat rozhraní API služby Metro pro vyžádání typů přenosů, přenosných úřadů, aktivních výstrah a dalších podrobností pro zvolenou službu Metro. Můžete si také vyžádat podporované oblasti metro a metroIDs. ID oblasti metro se mohou změnit.
 
@@ -37,7 +43,7 @@ Začněte tím, že požádáte o okolní přenos, který se zastaví pomocí [r
 
 ## <a name="line-groups-and-lines"></a>Řádky a skupiny řádků
 
-Služba mobility používá pro spojnice a spojnicové skupiny paralelní datový model. Tento model se používá k lepšímu obchodování se změnami děděnými z [GTFSch](http://gtfs.org/) tras a dat cest.
+Služba mobility (Preview) používá paralelní datový model pro řádky a skupiny řádků. Tento model se používá k lepšímu obchodování se změnami děděnými z [GTFSch](http://gtfs.org/) tras a dat cest.
 
 
 ### <a name="line-groups"></a>Skupiny řádků
@@ -54,17 +60,17 @@ Chcete-li začít, můžete požádat o skupiny řádků pomocí [rozhraní API 
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak požadovat přenosová data pomocí služby mobility:
+Přečtěte si, jak vyžádat přenosová data pomocí služeb mobility (Preview):
 
 > [!div class="nextstepaction"]
 > [Požadavky na přenosová data](how-to-request-transit-data.md)
 
-Informace o tom, jak vyžádat data v reálném čase pomocí služby mobility:
+Informace o tom, jak vyžádat data v reálném čase pomocí služeb mobility (Preview):
 
 > [!div class="nextstepaction"]
 > [Jak vyžádat data v reálném čase](how-to-request-real-time-data.md)
 
-Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility
+Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility (Preview)
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní API služby mobility](/rest/api/maps/mobility)
+> [Dokumentace k rozhraní API služby mobility Services](/rest/api/maps/mobility)

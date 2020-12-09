@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd9148f1084727141f725d76f7ae756f44e210e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379515"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861948"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Přiřazení vlastních rolí k oboru prostředků pomocí PowerShellu v Azure Active Directory
 
-Tento článek popisuje, jak vytvořit přiřazení role v oboru Azure Active Directory (Azure AD v rámci organizace). Přiřazení role v oboru pro celou organizaci uděluje přístup napříč organizací Azure AD. Pokud chcete vytvořit přiřazení role s oborem jednoho prostředku služby Azure AD, přečtěte si téma [Vytvoření vlastní role a její přiřazení v oboru prostředků](custom-create.md). Tento článek používá modul [Azure Active Directory PowerShell verze 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
+Tento článek popisuje, jak vytvořit přiřazení role v oboru Azure Active Directory (Azure AD v rámci organizace). Přiřazení role v oboru pro celou organizaci uděluje přístup napříč organizací Azure AD. Pokud chcete vytvořit přiřazení role s oborem jednoho prostředku služby Azure AD, přečtěte si téma [Vytvoření vlastní role a její přiřazení v oboru prostředků](custom-create.md). Tento článek používá modul [Azure Active Directory PowerShell verze 2](/powershell/module/azuread/#directory_roles) .
 
 Další informace o rolích správce Azure AD najdete v tématu [přiřazení rolí správce v Azure Active Directory](permissions-reference.md).
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-K přiřazení role k instančnímu objektu místo uživatele použijte [rutinu Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0).
+K přiřazení role k instančnímu objektu místo uživatele použijte [rutinu Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal).
 
 ## <a name="operations-on-roledefinition"></a>Operace na rutiny roledefinition
 

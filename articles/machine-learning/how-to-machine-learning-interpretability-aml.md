@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311591"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862339"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -47,7 +47,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
     pip install azureml-interpret
     ```
 
-2. Výuku ukázkového modelu v místním poznámkovém bloku Jupyter
+2. Výuka ukázkového modelu v místní Jupyter Notebook.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -242,7 +242,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
     ```bash
     pip install azureml-interpret
     ```
-1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. Například, `train_explain.py`.
+1. Vytvořte školicí skript v místním Jupyter Notebook. Například, `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -275,7 +275,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 
 1. Nastavte Azure Machine Learning COMPUTE jako cíl výpočtů a odešlete školicí běh. Pokyny najdete v tématu [Vytvoření a Správa výpočetních clusterů Azure Machine Learning](how-to-create-attach-compute-cluster.md) . Můžete také najít užitečné [ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) .
 
-1. Stáhněte si vysvětlení do svého místního poznámkového bloku Jupyter.
+1. Stáhněte si vysvětlení v místní Jupyter Notebook.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,7 +296,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 
 ## <a name="visualizations"></a>Vizualizace
 
-Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model pochopit a interpretovat pomocí řídicího panelu vizualizace.
+Po stažení vysvětlení v místní Jupyter Notebook můžete k pochopení a interpretaci modelu použít řídicí panel vizualizace.
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>Pochopení chování celého modelu (globální vysvětlení) 
 

@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497941"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862441"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
 
@@ -48,7 +48,7 @@ Následující tabulka uvádí popis vlastností vrácených rutinou pro prostř
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Název | Název prostředí Azure Integration runtime. |  
-| State | Stav prostředí Azure Integration runtime. | 
+| Stav | Stav prostředí Azure Integration runtime. | 
 | Umístění | Umístění prostředí Azure Integration runtime. Podrobnosti o umístění prostředí Azure Integration runtime najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, ke kterému patří Azure Integration runtime | 
 | ResourceGroupName | Název skupiny prostředků, do které patří objekt pro vytváření dat.  |
@@ -104,7 +104,7 @@ Následující tabulka uvádí možné stavy uzlu Integration runtime v místní
 | Online | Uzel je připojen ke službě Data Factory. |
 | Offline | Uzel je offline. |
 | Inovován | Uzel se automaticky aktualizuje. |
-| Omezeně | Kvůli problému s připojením. Může to být kvůli problému s portem HTTP 8050, potížím s připojením k Service Bus nebo problémům s synchronizací přihlašovacích údajů. |
+| Omezeně | Kvůli problému s připojením. Může to být kvůli problému s portem HTTP 8060, potížím s připojením k Service Bus nebo problémům s synchronizací přihlašovacích údajů. |
 | Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů. |
 
 Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
@@ -181,7 +181,7 @@ Následující tabulka uvádí popisy vlastností vrácených výše uvedenou ru
 | Uzly                        | Přidělené nebo dostupné uzly vašeho Azure-SSIS IR se stavem specifickým pro uzel (spuštění/k dispozici/recyklace/nedostupné) a chybami, které lze provést. |
 | OtherErrors                  | Chyby, které nejsou specifické pro uzel v Azure-SSIS IR. |
 | LastOperation                | Výsledek poslední operace spuštění/zastavení ve vašem Azure-SSIS IR s chybami, pokud se nezdařila. |
-| State                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
+| Stav                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
 | Umístění                     | Umístění vašeho Azure-SSIS IR. |
 | NodeSize                     | Velikost každého uzlu v Azure-SSIS IR. |
 | NodeCount                    | Počet uzlů v Azure-SSIS IR. |
@@ -196,7 +196,7 @@ Následující tabulka uvádí popisy vlastností vrácených výše uvedenou ru
 | Typ                         | Typ IR (spravovaný nebo v místním prostředí) vašeho Azure-SSIS IR. |
 | ResourceGroupName            | Název skupiny prostředků Azure, ve které byly vytvořeny ADF a Azure-SSIS IR. |
 | DataFactoryName              | Název vašeho ADF. |
-| Name                         | Název vašeho Azure-SSIS IR. |
+| Název                         | Název vašeho Azure-SSIS IR. |
 | Popis                  | Popis Azure-SSIS IR. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Stav (na uzel Azure-SSIS IR)

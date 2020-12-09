@@ -3,22 +3,22 @@ title: Začínáme s Azure Maps Power BI vizuál | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak používat vizuál Microsoft Azure Maps pro Power BI.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 06/26/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896238"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904699"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Začínáme s Azure Maps Power BI vizuál
 
-<Token>**platí pro:** ![ Zelená značka zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro * *_spotřebitelé_* _ ![ zelenou značku zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro návrháře & vývojářům ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X značí ne. ](media/power-bi-visual/no.png) Vyžaduje licenci pro nebo Premium.</Token>
+<Token>**platí pro:** ![ Zelená značka zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro **_spotřebitelé_* _ ![ zelenou značku zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro návrháře & vývojářům ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X značí ne. ](media/power-bi-visual/no.png) Vyžaduje licenci pro nebo Premium.</Token>
 
 Tento článek ukazuje, jak použít vizuál Microsoft Azure Maps pro Power BI.
 
@@ -45,15 +45,15 @@ Vy nebo váš správce budete možná muset aktualizovat bránu firewall tak, ab
 
 Další informace o ochraně osobních údajů a podmínek použití týkající se Azure Mapsho vizuálu najdete [Microsoft Azure právní informace](https://azure.microsoft.com/support/legal/).
 
-## <a name="preview-behavior-and-requirements"></a>Chování a požadavky ve verzi Preview
+## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure Maps chování a požadavky Visual (Preview)
 
-Pro tuto verzi Preview _ * je k dispozici několik důležitých informací a požadavků _ * Azure Maps * *:
+K dispozici je několik důležitých informací a požadavků pro _ *Azure Maps** Visual. :
 
--   **Azure Maps** vizuál je ve verzi Preview a musí být povolený v Power BI Desktop. Pokud chcete povolit **Azure Maps** , vyberte možnosti **souboru** &gt; **a** &gt; **Možnosti** nastavení &gt; ve **verzi Preview** a pak zaškrtněte políčko **Azure Maps vizuální** . Pokud Azure Maps vizuál není po tomto postupu k dispozici, je možné, že je nutné povolit přepínač správce tenanta na portálu pro správu.
+-   V Power BI Desktop musí být povolený **Azure Maps** vizuál (Preview). Pokud chcete povolit **Azure Maps** vizuál, zvolte možnosti **souboru** &gt; **a** &gt; **Možnosti** nastavení &gt; ve **verzi Preview** a pak zaškrtněte políčko **Azure Maps vizuálu** . Pokud Azure Maps vizuál není po tomto postupu k dispozici, je možné, že je nutné povolit přepínač správce tenanta na portálu pro správu.
 -   Datová sada musí obsahovat pole, která obsahují informace o **zeměpisné šířce** a **délce** . Geografické kódování polí umístění bude přidáno v budoucí aktualizaci.
 -   Předdefinovaný ovládací prvek legendy pro Power BI se v této verzi Preview aktuálně nezobrazuje. Bude přidáno v budoucí aktualizaci.
 
-## <a name="use-the-azure-maps-visual"></a>Použití Azure Mapsho vizuálu
+## <a name="use-the-azure-maps-visual-preview"></a>Použití Azure Mapsového vizuálu (Preview)
 
 Jakmile je **Azure Maps** vizuál povolený, vyberte v podokně **vizualizace** ikonu **Azure Maps** .
 
@@ -92,7 +92,7 @@ Pro načtení Azure Maps vizuálu proveďte následující kroky:
 
 V podokně **pole** Azure Mapsového vizuálu jsou k dispozici následující datové bloky.
 
-| Pole     | Popis  |
+| Pole     | Description  |
 |-----------|--------------|
 | Zeměpisná šířka  | Pole, které slouží k zadání hodnoty zeměpisné šířky datových bodů. Hodnoty zeměpisné šířky by měly být v rozmezí od-90 do 90 ve formátu desetinného stupně.  |
 | Zeměpisná délka | Pole, které slouží k zadání zeměpisné hodnoty datových bodů. Hodnoty Zeměpisná délka by měly být v rozmezí od-180 do 180 ve formátu desetinného stupně.  |

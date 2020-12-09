@@ -1,7 +1,7 @@
 ---
 title: 'Kurz pro klasifikaci imagí: modely vlaků'
 titleSuffix: Azure Machine Learning
-description: Pomocí Azure Machine Learning můžete v poznámkovém bloku Python Jupyter vytvořit výuku k modelu klasifikace obrázků s scikit. Tento kurz je první částí ze dvou.
+description: Využijte Azure Machine Learning k vytvoření výukového modelu Image pomocí scikit-učení v Jupyter Notebook Pythonu. Tento kurz je první částí ze dvou.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321290"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862424"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
 
 
-V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Pracovní postup školení a nasazení budete používat pro Azure Machine Learning v Jupyter poznámkovém bloku Pythonu.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
+V tomto kurzu se naučíte model strojového učení ve vzdálených výpočetních prostředcích. Pracovní postup školení a nasazení budete používat pro Azure Machine Learning v Jupyter Notebook Pythonu.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
 V tomto kurzu se učí jednoduchá Logistická regrese s využitím datové sady [mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) a [scikit-učení](https://scikit-learn.org) s Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o 28 × 28 pixelech, která představuje číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek.
 
@@ -34,7 +34,7 @@ Přečtěte si, jak provést následující akce:
 
 Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-deploy-models-with-aml.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 1.13.0 verze.
@@ -54,7 +54,7 @@ Kurz a doprovodný soubor **utils.py** je také k dispozici na [GitHubu](https:/
 > [!Important]
 > Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
 >
-> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
+> Pokud chcete při spuštění kódu číst společně, přepněte na Jupyter Notebook nyní. 
 > Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>Nastavení vývojového prostředí
@@ -368,15 +368,15 @@ V celkovém případě trvá první spuštění **přibližně 10 minut**. U ná
 
 Co se stane, když počkáte:
 
-- **Vytvoření bitové kopie** : vytvoří se image Docker, která odpovídá prostředí Pythonu určenému prostředím Azure ml. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
+- **Vytvoření bitové kopie**: vytvoří se image Docker, která odpovídá prostředí Pythonu určenému prostředím Azure ml. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
 
   Tato fáze se u každého prostředí Pythonu provede jednou, protože kontejner je uložený v mezipaměti pro další spuštění. Při vytváření image se streamují protokoly do historie spuštění. Pomocí těchto protokolů můžete monitorovat průběh vytváření imagí.
 
-- **Škálování** : Pokud vzdálený cluster vyžaduje více uzlů, než kolik je aktuálně k dispozici, přidají se další uzly automaticky. Škálování obvykle trvá **přibližně pět minut.**
+- **Škálování**: Pokud vzdálený cluster vyžaduje více uzlů, než kolik je aktuálně k dispozici, přidají se další uzly automaticky. Škálování obvykle trvá **přibližně pět minut.**
 
-- **Spuštěno** : v této fázi jsou nezbytné skripty a soubory odeslány do cíle výpočtů. Pak jsou úložiště dat připojená nebo zkopírovaná. A pak se spustí **entry_script** . Když je úloha spuštěná, **stdout** a adresář **./logs** se streamují do historie spuštění. Průběh běhu můžete monitorovat pomocí těchto protokolů.
+- **Spuštěno**: v této fázi jsou nezbytné skripty a soubory odeslány do cíle výpočtů. Pak jsou úložiště dat připojená nebo zkopírovaná. A pak se spustí **entry_script** . Když je úloha spuštěná, **stdout** a adresář **./logs** se streamují do historie spuštění. Průběh běhu můžete monitorovat pomocí těchto protokolů.
 
-- **Následné zpracování** : adresář **./Outputs** tohoto spuštění se kopíruje do historie spuštění ve vašem pracovním prostoru, takže můžete získat přístup k těmto výsledkům.
+- **Následné zpracování**: adresář **./Outputs** tohoto spuštění se kopíruje do historie spuštění ve vašem pracovním prostoru, takže můžete získat přístup k těmto výsledkům.
 
 Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu se používá widget Jupyter a `wait_for_completion` metoda.
 

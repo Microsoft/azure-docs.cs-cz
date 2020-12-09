@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743156"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902506"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -128,7 +128,7 @@ Při nasazování některých aktualizací služby, které vyžadují databázi 
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Doporučené|Aktivační událost autoresume|
+|Příznak|Aktivační událost autoresume|
 |---|---|
 |Ověřování a autorizace|Přihlášení|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
@@ -138,6 +138,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 |Transparentní šifrování dat|Zobrazení stavu nebo stavu transparentního šifrování dat|
 |Posouzení ohrožení zabezpečení|Kontroly ad hoc a pravidelné kontroly, pokud je povoleno|
 |Dotaz (výkon) úložiště dat|Úprava nebo zobrazení nastavení úložiště dotazů|
+|Doporučení k výkonu|Zobrazení nebo použití doporučení pro výkon|
 |Automatického ladění|Aplikace a ověření doporučení automatického ladění, jako je automatické indexování|
 |Kopírování databáze|Vytvoří databázi jako kopii.<br>Exportujte do souboru BACPAC.|
 |Synchronizace dat SQL|Synchronizace mezi centrem a členskými databázemi, které se spouští podle konfigurovatelného plánu, nebo se provádí ručně|
@@ -148,7 +149,7 @@ Monitorování, Správa nebo jiná řešení provádějící jakoukoli z výše 
 
 Automatické obnovení se také aktivuje při nasazení některých aktualizací služby, které vyžadují, aby byla databáze online.
 
-### <a name="connectivity"></a>Možnosti připojení
+### <a name="connectivity"></a>Připojení
 
 Pokud je databáze bez serveru pozastavená, pak se při prvním přihlášení obnoví databáze a vrátí se chyba s oznámením, že databáze není k dispozici, kód chyby 40613. Po obnovení databáze se přihlašovací jméno musí znovu pokusit o navázání připojení. Klienti databáze s logikou opakování připojení by nemuseli upravovat.
 
@@ -314,17 +315,17 @@ Omezení prostředků najdete v tématu [výpočetní vrstva bez serveru](resour
 
 Cena za výpočetní náklady je maximální využití procesoru a využité paměti každou sekundu. Pokud je množství využitého procesoru a využité paměti menší než minimální velikost zřízená za každou, účtuje se zřízené množství. Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.
 
-- **Prostředek se účtuje** : procesor a paměť.
-- **Účtovaná částka** : Vcore Unit Price * Max (min virtuální jádra, virtuální jádra použito, min. gb × 1/3, využité paměti gb × 1/3) 
-- **Četnost fakturace** : za sekundu
+- **Prostředek se účtuje**: procesor a paměť.
+- **Účtovaná částka**: Vcore Unit Price * Max (min virtuální jádra, virtuální jádra použito, min. gb × 1/3, využité paměti gb × 1/3) 
+- **Četnost fakturace**: za sekundu
 
 Jednotková cena vCore je cena za vCore za sekundu. Konkrétní jednotkové ceny v dané oblasti najdete na [stránce s cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
 K dispozici je množství COMPUTE, které se účtuje pomocí následující metriky:
 
-- **Metrika** : App_cpu_billed (Vcore sekund)
-- **Definice** : max (minimum virtuální jádra, virtuální jádra použito, minimální paměť GB × 1/3, využité paměťové GB × 1/3)
-- **Frekvence generování sestav** : za minutu
+- **Metrika**: App_cpu_billed (Vcore sekund)
+- **Definice**: max (minimum virtuální jádra, virtuální jádra použito, minimální paměť GB × 1/3, využité paměťové GB × 1/3)
+- **Frekvence generování sestav**: za minutu
 
 Toto množství se počítá každou sekundu a agreguje se za 1 minutu.
 

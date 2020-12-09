@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325328"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905192"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze, pracovní postupy a úlohy pro moderování obsahu
 
@@ -42,7 +42,7 @@ Pomocí panelu nástrojů **hledání** seřadíte recenze podle nejrůznější
 > [!div class="mx-imgBorder"]
 > ![Zobrazí se panel nástrojů hledání. Obsahuje různá pole se seznamem pro zadávání vyhledávacích kritérií, jako je například stav revize a značky.](./Review-Tool-user-Guide/images/review-search.png)
 
-Další informace o tom, jak to provést prostřednictvím kódu programu, najdete v [Průvodci pro kontrolu](./review-tool-user-guide/review-moderated-images.md) a Naučte se vytvářet recenze nebo si přečtěte [Průvodce REST API](./try-review-api-review.md) .
+Další informace o tom, jak to provést prostřednictvím [kódu programu,](./try-review-api-review.md) najdete v [Průvodci Nástroj pro kontrolu](./review-tool-user-guide/review-moderated-images.md) a začněte vytvářet recenze.
 
 ## <a name="workflows"></a>Pracovní postupy
 
@@ -80,13 +80,13 @@ Pracovní postupy jsou definovány jako řetězce JSON, díky kterým jsou pří
 }
 ```
 
-V [Průvodci pro kontrolu](./review-tool-user-guide/workflows.md) můžete začít vytvářet a používat pracovní postupy, případně si přečtěte [Průvodce REST API](./try-review-api-workflow.md) , kde se dozvíte, jak to provést programově.
+Informace o tom, jak to provést prostřednictvím kódu programu, najdete v [příručce k nástroji pro kontrolu](./review-tool-user-guide/workflows.md) a Začínáme s vytvářením a používáním pracovních postupů. Podívejte se na [Průvodce konzolou rozhraní API](./try-review-api-workflow.md)
 
 ## <a name="jobs"></a>Úlohy
 
 Úloha moderování slouží jako typ obálky pro funkčnost Moderování obsahu, pracovních postupů a revizí. Úloha prohledá obsah pomocí rozhraní API pro moderování imagí Content Moderator nebo rozhraní API pro moderování textu a pak ho zkontroluje oproti určenému pracovnímu postupu. Na základě výsledků pracovního postupu může nebo nemusí v [nástroji pro revize](./review-tool-user-guide/human-in-the-loop.md)vytvořit recenzi obsahu. I když lze vytvořit a nakonfigurovat jak recenze, tak pracovní postupy s odpovídajícími rozhraními API, vám rozhraní API úlohy umožní získat podrobnou sestavu celého procesu (který lze odeslat do zadaného koncového bodu zpětného volání).
 
-Pokud chcete začít používat úlohy, přečtěte si [příručku pro REST API](./try-review-api-job.md) .
+V [Průvodci konzolou rozhraní API](./try-review-api-job.md) můžete začít používat úlohy.
 
 ## <a name="next-steps"></a>Další kroky
 

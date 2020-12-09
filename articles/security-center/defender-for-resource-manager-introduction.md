@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 62a71f484baab2a8a717535cec77f2629cc2fb08
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5594e8225b615bf6e1af5077bd68422edbbeec19
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754906"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905447"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Seznámení s Azure Defenderem pro Správce prostředků
 
@@ -28,7 +28,7 @@ Azure Defender pro Správce prostředků automaticky monitoruje operace správy 
 |----|:----|
 |Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|**Azure Defender pro správce prostředků** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Jaké jsou výhody Azure Defenderu pro Správce prostředků?
@@ -46,7 +46,7 @@ Azure Defender pro Správce prostředků chrání proti problémům, včetně:
 
  ## <a name="how-to-investigate-alerts-from-azure-defender-for-resource-manager"></a>Jak prozkoumat výstrahy z Azure Defenderu pro Správce prostředků
 
-Výstrahy zabezpečení z Azure Defenderu pro Správce prostředků jsou založené na hrozbách zjištěných monitorováním Azure Resource Managerch operací. Azure Defender používá a interní zdroje protokolů Azure Resource Manager a také protokol aktivit Azure, protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného.
+Výstrahy zabezpečení z Azure Defenderu pro Správce prostředků jsou založené na hrozbách zjištěných monitorováním Azure Resource Managerch operací. Azure Defender používá interní zdroje protokolů Azure Resource Manager a také protokol aktivit Azure, protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného.
 
 Přečtěte si další informace o [protokolu aktivit Azure](../azure-monitor/platform/activity-log.md).
 

@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836372"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861812"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -115,7 +115,7 @@ Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh feder
 Další informace najdete v těchto článcích:
 
 * [AD FS Prompt = podpora parametrů přihlášení](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Po převedení této domény z federovaného na spravované ověřování už nebude tato instalace fungovat pro scénáře ověřování Azure AD. Po zakázání federace narušíte vztah k vaší místní federaci a k tomu patří místní adaptéry MFA. 
@@ -442,7 +442,7 @@ Po ověření úspěšného ověření všech uživatelů a klientů prostředni
 
 Pokud nepoužíváte AD FS pro jiné účely (tj. pro jiné vztahy důvěryhodnosti předávající strany), je v tuto chvíli bezpečné vyřazení z provozu AD FS.
 
-### <a name="rollback"></a>Návrat
+### <a name="rollback"></a>Vrácení zpět
 
 Pokud zjistíte hlavní problém a nemůžete ho rychle vyřešit, můžete se rozhodnout vrátit řešení do federace.
 

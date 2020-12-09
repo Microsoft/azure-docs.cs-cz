@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 4efd9fd814165755d27de1d269b6319890f7190d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: eb178e38001e54ac39a269c8b8cdef12c77d74cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541602"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901945"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MySQL
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -69,6 +69,8 @@ Pokud se přístup ke službě Microsoft Azure Database for MySQL server nechov�
 * **Nejde se připojit z prostředku Azure s povolenou IP adresou:** Ověřte, jestli je povolený koncový bod služby **Microsoft. SQL** pro podsíť, ze které se připojujete. Pokud je **Microsoft. SQL** povolený, znamená to, že chcete v této podsíti použít jenom [pravidla koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md) sítě.
 
    Například se může zobrazit následující chyba, pokud se připojujete z virtuálního počítače Azure v podsíti s povoleným **Microsoft. SQL** , ale nemá žádné odpovídající pravidlo virtuální sítě:  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
+* **Pro formát IPv6 není k dispozici pravidlo brány firewall:** Pravidla brány firewall musí být ve formátu IPv4. Pokud zadáte pravidla brány firewall ve formátu protokolu IPv6, zobrazí se chyba ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 

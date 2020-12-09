@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485252"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901928"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Přehled sítí – Azure Database for PostgreSQL – flexibilní Server
 
@@ -107,6 +107,7 @@ Vezměte v úvahu následující body, pokud se přístup k Microsoft Azure data
    * Zeptejte se poskytovatele internetových služeb (ISP) na rozsah IP adres přiřazený ke klientským počítačům, které přistupují k serveru Azure Database for PostgreSQL, a pak přidejte rozsah IP adres jako pravidlo brány firewall.
    * Místo toho Získejte statické IP adresy pro klientské počítače a pak přidejte statickou IP adresu jako pravidlo brány firewall.
 
+* **Pro formát IPv6 není k dispozici pravidlo brány firewall:** Pravidla brány firewall musí být ve formátu IPv4. Pokud zadáte pravidla brány firewall ve formátu protokolu IPv6, zobrazí se chyba ověřování.
 
 ## <a name="hostname"></a>Název hostitele
 Bez ohledu na to, jakou možnost sítě zvolíte, doporučujeme při připojování k flexibilnímu serveru vždycky použít plně kvalifikovaný název domény (FQDN) jako název hostitele. IP adresa serveru nezaručuje, že zůstane statická. Použití plně kvalifikovaného názvu domény vám pomůže vyhnout se provádění změn v připojovacím řetězci. 

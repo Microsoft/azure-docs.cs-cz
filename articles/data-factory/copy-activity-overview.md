@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592052"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902152"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -75,7 +75,7 @@ Obecně platí, že pokud chcete použít aktivitu kopírování v Azure Data Fa
 2. **Vytvořte datové sady pro zdroj a jímku.** Informace o konfiguraci a podporovaných vlastnostech najdete v článcích "vlastnosti datové sady" v článcích konektor zdroje a jímky.
 3. **Vytvořte kanál s aktivitou kopírování.** V další části najdete příklad.
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxe
 
 Následující šablona aktivity kopírování obsahuje úplný seznam podporovaných vlastností. Zadejte ty, které vyhovují vašemu scénáři.
 
@@ -129,12 +129,12 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 
 | Vlastnost | Popis | Povinné? |
 |:--- |:--- |:--- |
-| typ | U aktivity kopírování nastavte na `Copy` | Yes |
-| vztahují | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Yes |
-| činnosti | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Yes |
-| typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Yes |
-| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Yes |
-| jímkou | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Yes |
+| typ | U aktivity kopírování nastavte na `Copy` | Ano |
+| vztahují | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
+| činnosti | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Ano |
+| typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Ano |
+| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
+| jímkou | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
 | Překladač | Zadejte explicitní mapování sloupců ze zdroje do jímky. Tato vlastnost se používá v případě, že výchozí chování kopírování nevyhovuje vašim potřebám.<br/>Další informace najdete v tématu [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md). | No |
 | dataIntegrationUnits | Zadejte míru, která představuje množství energie, kterou [prostředí Azure Integration runtime](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky se dřív jmenovaly jako jednotky pro pohyb dat v cloudu (DMU). <br/>Další informace najdete v tématu [jednotky pro integraci dat](copy-activity-performance-features.md#data-integration-units). | No |
 | parallelCopies | Zadejte paralelismus, které má aktivita kopírování použít při čtení dat ze zdroje a zápisu dat do jímky.<br/>Další informace najdete v tématu [paralelní kopírování](copy-activity-performance-features.md#parallel-copy). | No |
@@ -254,7 +254,7 @@ Tato funkce se podporuje při kopírování dat z libovolného zdroje do násled
 
 - [Azure SQL Database](connector-azure-sql-database.md)
 - [Spravovaná instance Azure SQL Database](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics (dříve SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![Vytvoření tabulek jímky](media/copy-activity-overview/create-sink-table.png)

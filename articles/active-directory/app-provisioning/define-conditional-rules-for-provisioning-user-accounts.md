@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993988"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861387"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -94,7 +94,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    
    j. **Greater_Than_OR_EQUALS.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší nebo roven hodnotě. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
    
-   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](/dotnet/api/system.string.contains?view=netframework-4.8). 
+   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](/dotnet/api/system.string.contains). 
 
 
 >[!IMPORTANT] 

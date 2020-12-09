@@ -1,24 +1,29 @@
 ---
-title: Požadavek na přenosová data pomocí služby mobility Microsoft Azure Maps
-description: Naučte se používat službu Azure Maps mobility k vyžádání dat veřejného přenosu, jako jsou ID oblasti metro, zastavení přenosu, trasy a cesty trasy.
+title: Požadavek na přenos dat pomocí služby mobility Microsoft Azure Maps (Preview)
+description: Naučte se používat služby Azure Maps mobility (Preview) k vyžádání dat veřejného přenosu, jako jsou ID oblasti metro, zastavení přenosu, trasy a cesty trasy.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/22/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3f6f50d0ffeb48b5f359221992cc9a51d2ebb056
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895660"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906025"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Vyžádání údajů o veřejném přenosu pomocí služby Azure Maps mobility
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Vyžádání údajů o veřejném přenosu pomocí služby Azure Maps mobility (Preview) 
 
-V tomto článku se dozvíte, jak používat [službu Azure Maps mobility](/rest/api/maps/mobility) k vyžádání dat veřejného přenosu. Přenosová data zahrnují zastavení přenosu, informace o trasách a odhady doby cesty.
+> [!IMPORTANT]
+> Služby Azure Maps mobility jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+V tomto článku se dozvíte, jak používat [služby Azure Maps mobility](/rest/api/maps/mobility) k vyžádání dat veřejného přenosu. Přenosová data zahrnují zastavení přenosu, informace o trasách a odhady doby cesty.
 
 V tomto článku se dozvíte, jak:
 
@@ -36,13 +41,13 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 ## <a name="get-a-metro-area-id"></a>Získat ID oblasti metro
 
-Aby bylo možné požádat o podrobné informace o přenosových úřadech a podporovaných typech přenosu pro konkrétní metropolitní oblast, budete potřebovat příslušnou `metroId` oblast. [Rozhraní API oblasti získat Metro](/rest/api/maps/mobility/getmetroareapreview) umožňuje vyžádat oblasti metro, ve kterých je dostupná služba Azure Maps mobility. Odpověď obsahuje podrobnosti, jako je `metroId` , `metroName` , a reprezentace geometrie oblasti metro ve formátu geometrických JSON.
+Aby bylo možné požádat o podrobné informace o přenosových úřadech a podporovaných typech přenosu pro konkrétní metropolitní oblast, budete potřebovat příslušnou `metroId` oblast. [Rozhraní API oblasti získat Metro](/rest/api/maps/mobility/getmetroareapreview) umožňuje vyžádat oblasti metro, ve kterých jsou dostupné služby Azure Maps mobility. Odpověď obsahuje podrobnosti, jako je `metroId` , `metroName` , a reprezentace geometrie oblasti metro ve formátu geometrických JSON.
 
 Pojďme si vyžádat zadání oblasti metro pro ID oblasti Seattle-Tacoma Metro. Chcete-li požádat o ID oblasti metro, proveďte následující kroky:
 
-1. Otevřete aplikaci pro odesílání a pojďme vytvořit kolekci pro uložení požadavků. V horní části okna po aplikaci vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** .  Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
+1. Otevřete aplikaci pro odesílání a pojďme vytvořit kolekci pro uložení požadavků. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost Uložit. Pak vyberte **Uložit** .
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost Uložit. Pak vyberte **Uložit**.
   
     ![Vytvoření žádosti v post](./media/how-to-request-transit-data/postman-new.png)
 
@@ -115,9 +120,9 @@ Služba Azure Maps [získat nejbližší přenosové](/rest/api/maps/mobility/ge
 
 Chcete-li vytvořit požadavek na [dosažení nejbližšího přenosu](/rest/api/maps/mobility/getnearbytransitpreview), postupujte podle následujících kroků:
 
-1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho v **nejbližším zastavení** .
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho v **nejbližším zastavení**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL pro koncový bod rozhraní API a klikněte na **Odeslat** .
+2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL pro koncový bod rozhraní API a klikněte na **Odeslat**.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126&radius=300&objectType=stop
@@ -224,15 +229,15 @@ K získání souřadnic umístění věže pro práci v prostoru použijeme slu�
 
 Chcete-li vytvořit požadavek na službu pro vyhledávání přibližných shod, postupujte podle následujících kroků:
 
-1. V příspěvku klikněte na **Nový žádost o**  |  **získání žádosti** a pojmenujte ji **získat souřadnice umístění** .
+1. V příspěvku klikněte na **Nový žádost o**  |  **získání žádosti** a pojmenujte ji **získat souřadnice umístění**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL požadavku a klikněte na **Odeslat** .
+2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL požadavku a klikněte na **Odeslat**.
 
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. Pokud se podíváte na odpověď pečlivě, obsahuje několik míst ve výsledcích hledání ručičky pro místo. Každý výsledek obsahuje souřadnice umístění v rámci **pozice** . Zkopírujte `lat` a `lon` pod **pozici** prvního výsledku.
+3. Pokud se podíváte na odpověď pečlivě, obsahuje několik míst ve výsledcích hledání ručičky pro místo. Každý výsledek obsahuje souřadnice umístění v rámci **pozice**. Zkopírujte `lat` a `lon` pod **pozici** prvního výsledku.
 
    ```JSON
    {
@@ -331,11 +336,11 @@ Chcete-li vytvořit požadavek na službu pro vyhledávání přibližných shod
 
 Chcete-li vytvořit požadavek na směrování, proveďte následující kroky:
 
-1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **získat informace o trasách** .
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **získat informace o trasách**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL pro koncový bod rozhraní API a klikněte na **Odeslat** .
+2. Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL pro koncový bod rozhraní API a klikněte na **Odeslat**.
 
-    Zadáním parametrů a vyžádáme veřejné trasy pro přenos pro sběrnici `modeType` `transitType` . Adresa URL požadavku obsahuje umístění získaná v předchozích částech. Pro `originType` teď máme **stopid** . A pro je `destionationType` to **pozice** .
+    Zadáním parametrů a vyžádáme veřejné trasy pro přenos pro sběrnici `modeType` `transitType` . Adresa URL požadavku obsahuje umístění získaná v předchozích částech. Pro `originType` teď máme **stopid**. A pro je `destionationType` to **pozice**.
 
     Podívejte se na [seznam parametrů identifikátoru URI](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters) , které můžete ve své žádosti použít pro [rozhraní API získat přenos tras](/rest/api/maps/mobility/gettransitroutepreview).
   
@@ -520,15 +525,15 @@ Chcete-li vytvořit požadavek na směrování, proveďte následující kroky:
     }
     ```
 
-4. Pokud pečlivě prodržíte pozor, v odpovědi se nachází více tras **Sběrnice** . Každá trasa má jedinečné **ID itineráře** , souhrn, který popisuje každou nožku trasy, a `itineraryFare` poskytuje jak vydanou, tak i celkovou cenu za lístky Bus. Nožka trasy je částí trasy mezi dvěma stopami Waypoints. Dále si vyžádáme podrobnosti o nejrychlejší trase s využitím `itineraryId` v odpovědi.
+4. Pokud pečlivě prodržíte pozor, v odpovědi se nachází více tras **Sběrnice** . Každá trasa má jedinečné **ID itineráře**, souhrn, který popisuje každou nožku trasy, a `itineraryFare` poskytuje jak vydanou, tak i celkovou cenu za lístky Bus. Nožka trasy je částí trasy mezi dvěma stopami Waypoints. Dále si vyžádáme podrobnosti o nejrychlejší trase s využitím `itineraryId` v odpovědi.
 
 ## <a name="request-fastest-route-itinerary"></a>Požadavek na nejrychlejší trasu trasy
 
 Služba Azure Maps [získat přenosovou trasu](/rest/api/maps/mobility/gettransititinerarypreview) umožňuje vyžádat si data pro konkrétní trasu pomocí **ID itinerář** trasy, které vrací služba [API pro získání přenosných tras](/rest/api/maps/mobility/gettransitroutepreview) . Pokud chcete vytvořit žádost, proveďte následující kroky:
 
-1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **získat informace o přenosu** .
+1. V příspěvku klikněte na **nový požadavek**  |  **získat žádost** a pojmenujte ho **získat informace o přenosu**.
 
-2. Na kartě tvůrce vyberte metodu **Get** http. Pro koncový bod rozhraní API zadejte následující adresu URL požadavku a klikněte na **Odeslat** .
+2. Na kartě tvůrce vyberte metodu **Get** http. Pro koncový bod rozhraní API zadejte následující adresu URL požadavku a klikněte na **Odeslat**.
 
     Nastavíme `detailType` parametr na **geometrii** , aby odpověď obsahovala informace o stopu pro veřejný průjezd a přepnula navigaci pro procházení a nohy kol v trase.
 
@@ -796,12 +801,12 @@ Služba Azure Maps [získat přenosovou trasu](/rest/api/maps/mobility/gettransi
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak vyžádat data v reálném čase pomocí služby mobility:
+Informace o tom, jak vyžádat data v reálném čase pomocí služeb mobility (Preview):
 
 > [!div class="nextstepaction"]
 > [Jak vyžádat data v reálném čase](how-to-request-real-time-data.md)
 
-Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility
+Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility (Preview)
 
 > [!div class="nextstepaction"]
 > [Dokumentace ke službě mobility](/rest/api/maps/mobility)

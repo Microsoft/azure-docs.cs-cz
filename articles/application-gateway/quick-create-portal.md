@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/24/2020
+ms.date: 12/08/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 904456de527e8d0acb1319059c18f9a3c6b0a1a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95992956"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906399"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -26,7 +26,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 Aplikační bránu vytvoříte pomocí karet na stránce **vytvořit Aplikační bránu** .
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 
 2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
@@ -146,15 +146,16 @@ Uděláte to takto:
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
 3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 
     - **Skupina prostředků**: pro název skupiny prostředků vyberte **myResourceGroupAG** .
     - **Název virtuálního počítače**: jako název virtuálního počítače zadejte *myVM* .
     - **Oblast**: Vyberte stejnou oblast, ve které jste vytvořili aplikační bránu.
-    - **Uživatelské jméno**: jako uživatelské jméno správce zadejte *azureuser* .
+    - **Uživatelské jméno**: zadejte název uživatelského jména správce.
     - **Heslo**: zadejte heslo.
+    - **Veřejné příchozí porty**: žádné.
 4. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: disky**.  
 5. Přijměte výchozí hodnoty na kartě **disky** a potom vyberte **Další: sítě**.
 6. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: Správa**.<br>Application Gateway může komunikovat s instancemi mimo virtuální síť, ve které je, ale je potřeba zajistit připojení k IP adrese.

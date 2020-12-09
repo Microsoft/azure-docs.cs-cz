@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187030"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904886"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Kurz – migrace webové služby z Google Maps
 
@@ -40,19 +40,19 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Pokyny              | [Cestě](/rest/api/maps/route)                                     |
-| Matice vzdáleností         | [Matice směrování](/rest/api/maps/route/postroutematrixpreview)       |
-| Geokódování               | [Hledání](/rest/api/maps/search)                                   |
-| Hledání míst           | [Hledání](/rest/api/maps/search)                                   |
-| Umístit automatické dokončování      | [Hledání](/rest/api/maps/search)                                   |
-| Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .            |
-| Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .                  |
-| Statická mapa              | [Vykreslování](/rest/api/maps/render/getmapimage)                       |
-| Časové pásmo               | [Časové pásmo](/rest/api/maps/timezone)                              |
+| Pokyny              | [Cestě](/rest/api/maps/route)                                     |                         
+| Matice vzdáleností         | [Matice směrování](/rest/api/maps/route/postroutematrixpreview)       |                         
+| Geokódování               | [Hledání](/rest/api/maps/search)                                   |                         
+| Hledání míst           | [Hledání](/rest/api/maps/search)                                   |                         
+| Umístit automatické dokončování      | [Hledání](/rest/api/maps/search)                                   |                         
+| Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .            
+| Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .                  
+| Statická mapa              | [Vykreslování](/rest/api/maps/render/getmapimage)                       |                         
+| Časové pásmo               | [Časové pásmo](/rest/api/maps/timezone)                              |                         
+| Zvýšení oprávnění               | [Zvýšení úrovně oprávnění (Preview)](/rest/api/maps/elevation)                   |                         |
 
 Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure Maps:
 
-- Zvýšení oprávnění
 - Geografická poloha
 - Podrobnosti o místech a fotky – k dispozici jsou informace o telefonních číslech a adrese URL webu v rozhraní API pro hledání Azure Maps.
 - Mapování adres URL
@@ -67,7 +67,7 @@ Azure Maps má několik dalších webových služeb REST, které mohou být zaj�
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -116,7 +116,7 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *–*     |
+| `location_type`             | *NENÍ K DISPOZICI*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -160,9 +160,9 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srov
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *–*                               |
+| `fields`                  | *NENÍ K DISPOZICI*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *–*                               |
+| `inputtype`               | *NENÍ K DISPOZICI*                               |
 | `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
@@ -179,13 +179,13 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 | `keyword`                   | `categorySet` a `brandSet`        |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *–*                               |
-| `minprice`                  | *–*                               |
+| `maxprice`                  | *NENÍ K DISPOZICI*                               |
+| `minprice`                  | *NENÍ K DISPOZICI*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *–*                               |
+| `opennow`                   | *NENÍ K DISPOZICI*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *–*                               |
+| `rankby`                    | *NENÍ K DISPOZICI*                               |
 | `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
@@ -203,7 +203,7 @@ Služba směrování Azure Maps poskytuje následující rozhraní API pro výpo
 
 - [**Vypočítat trasu**](/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST se doporučují při zadání velkého počtu Waypoints nebo při použití spousty možností směrování, abyste zajistili, že se požadavek na adresu URL nestane příliš dlouhý a způsobuje problémy. Směr následné trasy v Azure Maps má možnost přebírat tisíce [pomocných bodů](/rest/api/maps/route/postroutedirections#supportingpoints) a bude je používat k opětovnému vytvoření cesty logické trasy mezi nimi (přichycení k cestě). 
 - [**Dávková trasa**](/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
-- [**Služby mobility**](/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
+- [* * Služby mobility (Preview) * *](/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
 
 Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými parametry rozhraní API v Azure Maps.
 
@@ -221,8 +221,8 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `origin`                       | `query`                            |
 | `region`                       | Není *k dispozici* – Tato funkce se týká geografického kódování. Při použití Azure Maps rozhraní API pro geografické kódování použijte parametr *countrySet* .  |
 | `traffic_model`               | Není *k dispozici* – dá se zadat jenom v případě, že se mají použít data přenosů s parametrem *provozu* . |
-| `transit_mode`                | Viz [dokumentace ke službě mobility](/rest/api/maps/mobility) |
-| `transit_routing_preference` | Viz [dokumentace ke službě mobility](/rest/api/maps/mobility) |
+| `transit_mode`                | Viz [dokumentace ke službě mobility (Preview)](/rest/api/maps/mobility) |
+| `transit_routing_preference` | Viz [dokumentace ke službě mobility (Preview)](/rest/api/maps/mobility) |
 | `units`                        | Není *k dispozici* – Azure Maps používá pouze systém metrik.  |
 | `waypoints`                    | `query`                            |
 
@@ -265,10 +265,10 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *–*                              |
+| `scale`                     | *NENÍ K DISPOZICI*                              |
 | `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *–*                              |
-| `visible`                   | *–*                              |
+| `style`                     | *NENÍ K DISPOZICI*                              |
+| `visible`                   | *NENÍ K DISPOZICI*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

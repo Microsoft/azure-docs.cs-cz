@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86225095"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903747"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Při vytváření imagí zadejte Azure Marketplace informace o plánu nákupu.
 
@@ -24,15 +24,13 @@ Další informace o hledání a používání imagí na webu Marketplace najdete
 
 
 ## <a name="get-the-source-vm-information"></a>Získat informace o zdrojovém virtuálním počítači
-Pokud máte i nadále původní virtuální počítač, můžete z něj získat informace o plánu, vydavateli a SKU pomocí Get-AzVM. Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+Pokud máte i nadále původní virtuální počítač, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí Get-AzVM. Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu pro virtuální počítač.
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>Vytvoření definice image

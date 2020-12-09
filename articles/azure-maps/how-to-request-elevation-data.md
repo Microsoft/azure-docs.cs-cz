@@ -1,24 +1,28 @@
 ---
-title: Požádat o data zvýšení oprávnění pomocí služby zvýšení oprávnění Azure Maps
-description: Přečtěte si, jak vyžádat data zvýšení úrovně pomocí služby zvýšení Azure Maps.
+title: Vyžádat data zvýšení oprávnění pomocí služby zvýšení úrovně Azure Maps (Preview)
+description: Naučte se požadovat data zvýšení úrovně pomocí služby zvýšení úrovně Azure Maps (Preview).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/02/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9937d72b44eb33df8027eddb9a9f500a372c9037
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552840"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906059"
 ---
-# <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Požádat o data zvýšení oprávnění pomocí služby zvýšení oprávnění Azure Maps
+# <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Vyžádat data zvýšení oprávnění pomocí služby zvýšení úrovně Azure Maps (Preview)
 
-[Služba zvýšení oprávnění](https://docs.microsoft.com/rest/api/maps/elevation) Azure Maps poskytuje rozhraní API pro dotazování na data zvýšení úrovně pro umístění na zemi. Můžete požadovat ukázková data zvýšení úrovně podél cest, v rámci definovaného ohraničujícího pole nebo v určitých souřadnicích. K načtení dat zvýšení úrovně ve formátu dlaždic můžete také použít [rozhraní vykreslování dlaždice pro vykreslení v2 – získat dlaždici mapy](https://docs.microsoft.com/rest/api/maps/renderv2) . Dlaždice se doručují ve formátu Informat Raster. V tomto článku se dozvíte, jak používat službu zvýšení úrovně Azure Maps a rozhraní API pro dlaždici získat mapu pro vyžádání dat zvýšení úrovně. Data zvýšení oprávnění lze požadovat ve formátech informated JSON i intiff.
+> [!IMPORTANT]
+> Služba zvýšení oprávnění Azure Maps je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+[Služba zvýšení oprávnění](https://docs.microsoft.com/rest/api/maps/elevation) Azure Maps poskytuje rozhraní API pro data zvýšení úrovně dotazu kdekoli na povrchu země. Můžete požadovat ukázková data zvýšení úrovně podél cest, v rámci definovaného ohraničujícího pole nebo v určitých souřadnicích. K načtení dat zvýšení úrovně ve formátu dlaždic můžete také použít [rozhraní vykreslování dlaždice pro vykreslení v2 – získat dlaždici mapy](https://docs.microsoft.com/rest/api/maps/renderv2) . Dlaždice se doručují ve formátu Informat Raster. V tomto článku se dozvíte, jak používat službu zvýšení úrovně Azure Maps a rozhraní API pro dlaždici získat mapu pro vyžádání dat zvýšení úrovně. Data zvýšení oprávnění lze požadovat ve formátech informated JSON i intiff.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -50,7 +54,7 @@ Chcete-li vyžádat data zvýšení úrovně ve formátu rastrových dlaždic, p
 
 ## <a name="request-elevation-data-in-geojson-format"></a>Vyžádat data zvýšení úrovně ve formátu injson
 
-Pomocí rozhraní API služby zvýšení oprávnění si vyžádejte data zvýšení úrovně ve formátu injson. V této části se zobrazí všechna ze tří rozhraní API:
+Použijte rozhraní API služby zvýšení oprávnění (Preview) k vyžádání dat zvýšení úrovně ve formátu. V této části se zobrazí všechna ze tří rozhraní API:
 
 * [Získat data pro body](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 * [Odeslání dat pro body](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
@@ -443,7 +447,7 @@ V tomto příkladu zadáme řádky = 3 a sloupce = 6. v odpovědi se vrátí 18 
     }
     ```
 
-## <a name="samples-use-elevation-service-apis-in-azure-maps-control"></a>Ukázky: použití rozhraní API služby zvýšení oprávnění v ovládacím prvku Azure Maps
+## <a name="samples-use-elevation-service-preview-apis-in-azure-maps-control"></a>Ukázky: použití rozhraní API služby zvýšení oprávnění (Preview) v ovládacím prvku Azure Maps
 
 ### <a name="get-elevation-data-by-coordinate-position"></a>Získat data zvýšení úrovně podle pozice souřadnic
 
@@ -478,16 +482,16 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraních API pro zvýšení úrovně Azure Maps najdete v tématech:
+Další informace o rozhraních API pro zvýšení úrovně oprávnění Azure Maps (Preview) najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Zvýšení oprávnění – získat data pro dlouhé souřadnice v tabulce LAT](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Zvýšení oprávnění (Preview) – získat data pro dlouhé souřadnice v tabulce LAT](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 
 > [!div class="nextstepaction"]
-> [Zvýšení oprávnění – získat data pro ohraničovací rámeček](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Zvýšení oprávnění (Preview) – získá data pro ohraničovací rámeček.](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Zvýšení oprávnění – získat data pro lomenou čáru](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Zvýšení oprávnění (Preview) – získat data pro lomenou čáru](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
 > [Vykreslování v2 – získat dlaždici mapy](https://docs.microsoft.com/rest/api/maps/renderv2)

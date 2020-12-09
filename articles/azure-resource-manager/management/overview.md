@@ -4,18 +4,18 @@ description: Popisuje, jak Azure Resource Manager využívat k nasazení, správ
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 317d7cae9c0febcc99831b20525b9d9d2cc96651
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91372268"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903186"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
 Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
 
-Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](../templates/overview.md).
+Další informace o šablonách Azure Resource Manager (šablonách ARM) najdete v tématu [Přehled nasazení šablon](../templates/overview.md).
 
 ## <a name="consistent-management-layer"></a>Konzistentní vrstva správy
 
@@ -39,7 +39,7 @@ Pokud s Azure Resource Managerem začínáte, existuje několik termínů, kter�
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Výhody použití Resource Manageru
 
-Pomocí Správce prostředků můžete:
+Pomocí Resource Manageru můžete:
 
 * Spravovat infrastrukturu prostřednictvím deklarativních šablon místo skriptů.
 
@@ -95,7 +95,7 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
 * Některé prostředky můžou existovat mimo skupinu prostředků. Tyto prostředky se nasazují do [předplatného](../templates/deploy-to-subscription.md), [skupiny pro správu](../templates/deploy-to-management-group.md)nebo [tenanta](../templates/deploy-to-tenant.md). V těchto oborech jsou podporovány pouze konkrétní typy prostředků.
 
-* Pokud chcete vytvořit skupinu prostředků, můžete použít šablonu [portál](manage-resource-groups-portal.md#create-resource-groups), [POWERSHELL](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)nebo [Azure Resource Manager (ARM)](../templates/deploy-to-subscription.md#resource-groups).
+* Pokud chcete vytvořit skupinu prostředků, můžete použít [portál](manage-resource-groups-portal.md#create-resource-groups), [PowerShell](manage-resource-groups-powershell.md#create-resource-groups), rozhraní příkazového [řádku Azure](manage-resource-groups-cli.md#create-resource-groups)nebo [šablonu ARM](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manager
 

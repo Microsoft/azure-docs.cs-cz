@@ -1,7 +1,7 @@
 ---
 title: Migrace z v2 na V3 REST API – Speech Service
 titleSuffix: Azure Cognitive Services
-description: V porovnání s verzí v2 nové rozhraní API verze 3 obsahuje sadu menších změn. Tento dokument vám v tuto chvíli pomůže migrovat na novou hlavní verzi.
+description: Tento dokument pomáhá vývojářům migrovat kód z verze V2 na V3 ve službě Speech Services Speech-to-text REST API.
 services: cognitive-services
 author: bexxx
 manager: nitinme
@@ -11,40 +11,36 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1dae963781cc0caacc25938e700a4c70a1f51a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737972"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862203"
 ---
-# <a name="migration-from-v20-to-v30-of-speech-to-text-rest-api"></a>Migrace z verze 2.0 na v 3.0 na text REST API
+# <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migrace kódu z verze 2.0 do verze 3.0 REST API
 
-Verze v3 REST API řeči vylepšuje předchozí verzi rozhraní API z hlediska spolehlivosti a snadného použití. Rozložení rozhraní API se podrobněji zarovnává s ostatními Azure nebo rozhraní API služeb Cognitive Services. To vám pomůže při použití našeho rozhraní API pro rozpoznávání řeči při používání vašich stávajících dovedností.
-
-Přehled rozhraní API je k dispozici jako [dokument Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). To je ideální, když vám poskytneme Přehled rozhraní API a otestujete nové rozhraní API.
-
-Poskytujeme ukázky pro C# a Python. V případě dávkových přepisů najdete ukázky v [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v `samples/batch` podadresáři.
+V porovnání s verzí v2 je verze V3 služby Speech Services REST API pro převod řeči na text spolehlivější, jednodušší a spolehlivější s použitím rozhraní API pro podobné služby. Většina týmů může migrovat z verze V2 na V3 za jeden nebo dva dny.
 
 ## <a name="forward-compatibility"></a>Dopředná kompatibilita
 
-Aby bylo zajištěno hladké migrace na verzi 3, mohou být v rozhraní V3 API v rámci stejné identity také nalezeny všechny entity z verze v2. Pokud dojde ke změně schématu výsledků (například přepisy), budou odpovědi pro rozhraní API pro GET ve verzi V3 ve schématu v3. Pokud provedete rozhraní API získat ve verzi v2, schéma výsledku bude ve formátu v2. Nově vytvořené entity na V3 **nejsou** ve verzi v2 k dispozici.
+Všechny entity z v2 lze také najít v rozhraní V3 API se stejnou identitou. Kde se změnilo schéma výsledku (například přepisy), výsledek GET v rozhraní API verze V3 používá schéma v3. Výsledek GET ve verzi v2 rozhraní API používá stejné schéma v2. Nově vytvořené entity ve verzi 3 **nejsou k dispozici ve** výsledcích z rozhraní API v2.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
-Seznam nejnovějších změn byl seřazen podle velikosti změn požadovaných k přizpůsobení. Existuje pouze několik změn, které vyžadují netriviální změnu v kódu volajícího. Většina změn vyžaduje jednoduchá přejmenování. Čas potřebný pro týmy, které se mají migrovat z verze V2 na v3, se v několika hodinách lišily na několik dní. Nicméně výhody zvýšené stability, jednoduššího kódu, rychlejší odezvy rychle posunou investice. 
+Seznam nejnovějších změn byl seřazen podle velikosti změn požadovaných k přizpůsobení. Pouze některé změny vyžadují netriviální změny v kódu volajícího. Většina změn vyžaduje pouze změnu názvů položek.
 
 ### <a name="host-name-changes"></a>Změny názvu hostitele
 
-Názvy hostitelů se změnily z {region}. položku CRI. AI na {region}. API. vnímání. Microsoft. com. V této změně cesty již neobsahují "API/", protože je součástí názvu hostitele. Úplný popis oblastí a cest najdete v [dokumentu Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) .
+Názvy hostitelů koncového bodu se změnily z `{region}.cris.ai` na `{region}.api.cognitive.microsoft.com` . Cesty k novým koncovým bodům už neobsahují `api/` , protože jsou součástí názvu hostitele. [Dokument Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) obsahuje seznam platných oblastí a cest.
 
 ### <a name="identity-of-an-entity"></a>Identita entity
 
-Vlastnost `id` byla nahrazena vlastností `self` . V v2 měl uživatel rozhraní API zjistit, jak se vytvářejí naše cesty k rozhraní API. To bylo nerozšiřitelné a vyžadovala to nepotřebnou práci od uživatele. Vlastnost `id` (UUID) je nahrazena `self` řetězcem (String), což je umístění entity (adresa URL). Hodnota je stále jedinečná mezi všemi vašimi entitami. Pokud `id` je uložen jako řetězec v kódu, je pro podporu nového schématu dostatek jednoduchého přejmenování. Tento obsah teď můžete použít `self` jako adresu URL pro všechna vaše volání REST pro vaši entitu (získat, opravit, odstranit).
+Vlastnost `id` je nyní `self` . V v2 měl uživatel rozhraní API zjistit, jak se vytvářejí naše cesty k rozhraní API. To bylo nerozšiřitelné a vyžadovala to nepotřebnou práci od uživatele. Vlastnost `id` (UUID) je nahrazena `self` řetězcem (String), což je umístění entity (adresa URL). Hodnota je stále jedinečná mezi všemi vašimi entitami. Pokud `id` je uložen jako řetězec ve vašem kódu, je pro podporu nového schématu dostatečně přejmenování. Tento obsah teď můžete použít `self` jako adresu URL pro `GET` `PATCH` volání, a `DELETE` REST pro vaši entitu.
 
-Pokud má entita další funkce, které jsou k dispozici v rámci jiných cest, jsou uvedeny v části `links` . Dobrým příkladem je přepis, který má samostatnou metodu pro `GET` obsah přepisu.
+Pokud má entita další funkce, které jsou k dispozici prostřednictvím jiných cest, jsou uvedeny v části `links` . Následující příklad pro přepis ukazuje samostatnou metodu `GET` obsahu přepisu:
 
-V2 – přepis:
+**V2 – přepis:**
 
 ```json
 {
@@ -57,7 +53,7 @@ V2 – přepis:
 }
 ```
 
-přepis V3:
+**přepis V3:**
 
 ```json
 {
@@ -73,11 +69,11 @@ přepis V3:
 }
 ```
 
-V závislosti na implementaci klienta nemusí být vlastnost k přejmenování k dispozici. Doporučujeme využít využití vrácených hodnot `self` a `links` jako cílové adresy URL vašich volání REST, a ne generovat cesty ve vašem klientovi. Pomocí vrácených adres URL si můžete být jisti, že budoucí změny v cestách nebudou přerušovat váš klientský kód.
+V závislosti na implementaci vašeho kódu nemusí být vlastnost k přejmenování k dispozici. `self` `links` Místo generování cest ve vašem klientovi doporučujeme použít vrácenou a hodnotu jako cílové adresy URL volání REST. Pomocí vrácených adres URL si můžete být jisti, že budoucí změny v cestách nebudou přerušovat váš klientský kód.
 
 ### <a name="working-with-collections-of-entities"></a>Práce s kolekcemi entit
 
-Dřív rozhraní v2 API vrátilo všechny dostupné entity v odpovědi. Aby bylo možné podrobnější kontrolu nad očekávanou velikostí odpovědi, ve V3 jsou stránkování všech odpovědí na kolekce. Máte kontrolu nad počtem vrácených entit a posunem stránky. Díky tomuto chování je snadné předpovědět modul runtime procesoru odezvy a je konzistentní s jinými rozhraními API Azure.
+Dřív rozhraní API v2 vrátilo ve výsledku všechny dostupné entity. Aby bylo možné přesnější kontrolu nad očekávanou velikostí odpovědi v v3, jsou všechny výsledky kolekce na stránkování. Máte kontrolu nad počtem vrácených entit a počátečním posunem stránky. Toto chování usnadňuje předpověď modulu runtime procesoru odezvy.
 
 Základní tvar odpovědi je stejný pro všechny kolekce:
 
@@ -91,20 +87,20 @@ Základní tvar odpovědi je stejný pro všechny kolekce:
 }
 ```
 
-Vlastnost `values` obsahuje podmnožinu dostupných entit kolekce. Počet a posun lze ovládat pomocí parametrů dotazu `skip` a `top` . Pokud není `@nextLink` null, je k dispozici více dat a další dávku dat lze načíst pomocí Get `$.@nextLink` .
+`values`Vlastnost obsahuje podmnožinu dostupných entit kolekce. Počet a posun lze ovládat pomocí `skip` `top` parametrů dotazu a. `@nextLink`V opačném případě jsou `null` k dispozici další data a další dávku dat lze načíst pomocí získání `$.@nextLink` .
 
 Tato změna vyžaduje volání metody `GET` pro kolekci ve smyčce, dokud nebudou vráceny všechny prvky.
 
 ### <a name="creating-transcriptions"></a>Vytváření přepisů
 
-Podrobný popis postupu vytvoření přepisu najdete v tématu [postup v dávkovém přepisu](./batch-transcription.md).
+Podrobný popis postupu vytvoření dávek přepisů najdete v tématu [postup v dávkovém přepisu](./batch-transcription.md).
 
-Vytváření přepisů bylo ve verzi V3 změněno, aby bylo možné explicitně nastavit konkrétní možnosti přepisu. Ve vlastnosti se teď dají nastavit všechny (volitelné) vlastnosti konfigurace `properties` .
-Verze v3 teď podporuje několik vstupních souborů, proto vyžaduje seznam adres URL a ne jednu adresu URL, jakou vyžaduje v2. Název vlastnosti byl přejmenován z `recordingsUrl` na `contentUrls` . Funkce analýzy mínění v přepisech byla v systému V3 odstraněna. Místo toho doporučujeme použít [analýzu textu](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) služby Microsoft devnímání.
+Rozhraní API pro přepis V3 umožňuje explicitně nastavit konkrétní možnosti přepisu. Ve vlastnosti se teď dají nastavit všechny (volitelné) vlastnosti konfigurace `properties` .
+Verze v3 také podporuje více vstupních souborů, takže vyžaduje seznam adres URL, nikoli jenom jednu adresu URL jako v2. Název vlastnosti v2 `recordingsUrl` je nyní `contentUrls` ve verzi v3. Funkce analýzy mínění v přepisech se odebrala ve verzi v3. Možnosti analýzy mínění najdete v tématu [Analýza textu](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) služby společnosti Microsoft.
 
-Nová vlastnost `timeToLive` v části `properties` může pomáhat při vyřazování stávajících dokončených entit. `timeToLive`Určuje dobu trvání, po jejímž uplynutí bude dokončená entita automaticky odstraněna. Nastavte ji na vysokou hodnotu (například `PT12H` ), pokud jsou entity nepřetržitě sledovány, spotřebovány a odstraněny, a jsou proto obvykle zpracovány dlouho před uplynutím 12 hodin.
+Nová vlastnost `timeToLive` v rámci `properties` může přispět k vyřazení stávajících dokončených entit. `timeToLive`Určuje dobu trvání, po jejímž uplynutí bude dokončená entita automaticky odstraněna. Nastavte ji na vysokou hodnotu (například `PT12H` ), pokud jsou entity nepřetržitě sledovány, spotřebovány a odstraněny, a jsou proto obvykle zpracovány dlouho před uplynutím 12 hodin.
 
-V2 přepis textu žádosti POST:
+**V2 přepis textu žádosti POST:**
 
 ```json
 {
@@ -120,7 +116,7 @@ V2 přepis textu žádosti POST:
 }
 ```
 
-text požadavku verze V3 přepis:
+**text požadavku verze V3 přepis:**
 
 ```json
 {
@@ -141,9 +137,9 @@ text požadavku verze V3 přepis:
 
 ### <a name="format-of-v3-transcription-results"></a>Formát V3 přepisu výsledků
 
-Schéma výsledků přepisu bylo mírně změněno tak, aby bylo v souladu s přepisy vytvořenými koncovými body v reálném čase. Podrobný popis nového formátu najdete v tématu [postup v dávkovém přepisu](./batch-transcription.md). Schéma výsledku je Publikováno v našem [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v části `samples/batch/transcriptionresult_v3.schema.json` .
+Schéma výsledků přepisu se mírně změnilo, aby se daly zarovnat s přepisy vytvořenými koncovými body v reálném čase. Podrobný popis nového formátu v [dávkovém přepisu](./batch-transcription.md)naleznete v tématu. Schéma výsledku je Publikováno v našem [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v části `samples/batch/transcriptionresult_v3.schema.json` .
 
-Názvy vlastností jsou nyní ve stylu CamelCase-použita a hodnoty pro kanál a mluvčí používají celočíselné typy. Pro zarovnání formátu trvání s ostatními rozhraními API Azure je teď ve formátu, jak je popsáno v ISO 8601.
+Názvy vlastností jsou nyní ve stylu CamelCase-použita a hodnoty pro `channel` a `speaker` nyní používají celočíselné typy. Formát pro dobu trvání teď používá strukturu popsanou v normě ISO 8601, která odpovídá formátování doby trvání používané v jiných rozhraních API Azure.
 
 Ukázka výsledků přepisu v3. Rozdíly jsou popsány v komentářích.
 
@@ -208,11 +204,11 @@ Ukázka výsledků přepisu v3. Rozdíly jsou popsány v komentářích.
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Získání obsahu entit a výsledků
 
-V v2 jsou odkazy na vstupní nebo výsledné soubory vložené s ostatními metadaty entit. V rámci vylepšení verze V3 existuje jasné oddělení metadat entit, které je vráceno funkcí GET on `$.self` a podrobností a přihlašovacích údajů pro přístup k souborům výsledků. Toto oddělení pomáhá chránit zákaznická data a umožňuje přesné řízení doby platnosti přihlašovacích údajů.
+V v2 jsou odkazy na vstupní nebo výsledné soubory vložené s ostatními metadaty entit. V rámci vylepšení verze v3 je jasné oddělení metadat entit (které je vráceno funkcí GET on `$.self` ) a podrobností a přihlašovacích údajů pro přístup k souborům výsledků. Toto oddělení pomáhá chránit zákaznická data a umožňuje přesné řízení doby platnosti přihlašovacích údajů.
 
-V v3 existuje vlastnost s názvem v `files` části odkazy pro případ, že entita zpřístupňuje data (datové sady, přepisy, koncové body, vyhodnocení). K získání `$.links.files` přístupu k obsahu jednotlivých souborů vrátí seznam souborů a adresu URL SAS. Chcete-li řídit dobu platnosti adres URL SAS, je `sasValidityInSeconds` možné použít parametr dotazu k určení doby života.
+V části v3 `links` Zahrňte dílčí vlastnost volanou `files` pro případ, že entita zpřístupňuje data (datové sady, přepisy, koncové body nebo hodnocení). K získání `$.links.files` přístupu k obsahu jednotlivých souborů vrátí se seznam souborů a adresa URL SAS. Chcete-li řídit dobu platnosti adres URL SAS, je `sasValidityInSeconds` možné použít parametr dotazu k určení doby života.
 
-V2 – přepis:
+**V2 – přepis:**
 
 ```json
 {
@@ -226,7 +222,7 @@ V2 – přepis:
 }
 ```
 
-přepis V3:
+**přepis V3:**
 
 ```json
 {
@@ -237,7 +233,7 @@ přepis V3:
 }
 ```
 
-Výsledkem může být `$.links.files` :
+**Výsledkem může být `$.links.files` :**
 
 ```json
 {
@@ -271,27 +267,27 @@ Výsledkem může být `$.links.files` :
 }
 ```
 
-`kind`Určuje formát obsahu souboru. V případě přepisů jsou soubory typu `TranscriptionReport` souhrnem úlohy a soubory typu `Transcription` jsou výsledkem samotné úlohy.
+`kind`Vlastnost určuje formát obsahu souboru. V případě přepisů jsou soubory typu `TranscriptionReport` souhrnem úlohy a soubory typu `Transcription` jsou výsledkem samotné úlohy.
 
 ### <a name="customizing-models"></a>Přizpůsobení modelů
 
-Před v3m bylo při školení modelu rozdíl mezi "akustickým modelem" a "jazykovým modelem". Výsledkem tohoto rozdílu je nutnost zadat více modelů při vytváření koncových bodů nebo přepisů. Pro zjednodušení tohoto procesu pro volající jsme odebrali rozdíly a provedli vše závislé na obsahu datových sad, které se používají pro školení modelů. Při této změně vytváření modelů teď podporuje smíšenou datovou sadu (data v jazyce a akustická data). Koncové body a Přepisy teď vyžadují jenom jeden model.
+Před v3m bylo při školení modelu rozdíl mezi _akustickým modelem_ a _jazykovým modelem_ . Výsledkem tohoto rozdílu je nutnost zadat více modelů při vytváření koncových bodů nebo přepisů. Pro zjednodušení tohoto procesu pro volající jsme odebrali rozdíly a provedli vše na základě obsahu datových sad, které se používají pro školení modelů. Při této změně vytváření modelů teď podporuje smíšenou datovou sadu (data v jazyce a akustická data). Koncové body a Přepisy teď vyžadují jenom jeden model.
 
-V důsledku této změny je potřeba, aby byl `kind` v příspěvku odebraný a `datasets[]` mohl by nyní obsahovat více datových sad stejného nebo smíšeného druhu.
+V důsledku této změny je potřeba `kind` v `POST` operaci odebrat a `datasets[]` pole může nyní obsahovat více datových sad stejného nebo smíšeného druhu.
 
-Pro zlepšení výsledků poučeného modelu se akustická data automaticky používají interně pro jazykové školení. Obecně platí, že modely vytvořené prostřednictvím rozhraní V3 API poskytují přesnější výsledky než modely vytvořené pomocí rozhraní v2 API.
+Pro zlepšení výsledků trained model se akustická data automaticky používají interně během školení jazyka. Obecně platí, že modely vytvořené prostřednictvím rozhraní V3 API poskytují přesnější výsledky než modely vytvořené pomocí rozhraní v2 API.
 
 ### <a name="retrieving-base-and-custom-models"></a>Načítají se základní a vlastní modely.
 
-Aby bylo možné zjednodušit získání dostupných modelů, verze V3 oddělí kolekce "základních modelů" od zákazníka, který vlastní "přizpůsobené modely". Tyto dvě trasy jsou nyní `GET /speechtotext/v3.0/models/base` a `GET /speechtotext/v3.0/models/` .
+Aby bylo možné zjednodušit získání dostupných modelů, hodnota V3 oddělí kolekce "základních modelů" od zákazníka, který vlastní "přizpůsobené modely". Tyto dvě trasy jsou nyní `GET /speechtotext/v3.0/models/base` a `GET /speechtotext/v3.0/models/` .
 
-Dříve byly vráceny všechny modely společně v rámci jedné odpovědi.
+V v2 všechny modely byly vráceny v rámci jedné odpovědi.
 
 ### <a name="name-of-an-entity"></a>Název entity
 
-Název vlastnosti `name` je přejmenován na `displayName` . Tato volba je zarovnána na jiná rozhraní API Azure, aby neoznačovala vlastnosti identity. Hodnota této vlastnosti nesmí být jedinečná a může být změněna po vytvoření entity pomocí `PATCH` .
+`name`Vlastnost je nyní `displayName` . To je konzistentní s jinými rozhraními API Azure, aby neoznačovaly vlastnosti identity. Hodnota této vlastnosti nesmí být jedinečná a po vytvoření entity s operací je možné ji změnit `PATCH` .
 
-V2 – přepis:
+**V2 – přepis:**
 
 ```json
 {
@@ -299,7 +295,7 @@ V2 – přepis:
 }
 ```
 
-přepis V3:
+**přepis V3:**
 
 ```json
 {
@@ -309,9 +305,9 @@ přepis V3:
 
 ### <a name="accessing-referenced-entities"></a>Přístup k odkazovaným entitám
 
-V odkazovaných entitách v2 byly vždycky vloženy například používané modely koncového bodu. Vnořování entit vedlo k velkým odpovědím a spotřebitelé zřídka využili vnořený obsah. Pokud chcete zmenšit velikost odpovědi a zvýšit výkon pro všechny uživatele rozhraní API, odkazované entity už nejsou v odpovědi vložené. Místo toho se používá odkaz na jinou entitu, kterou lze použít přímo. Tento odkaz lze použít pro následné `GET` (Jedná se také o adresu URL), a to za stejným vzorem jako `self` odkaz.
+V v2 byly odkazované entity vždycky vložené, například používané modely koncového bodu. Vnořování entit vedlo k velkým odpovědím a spotřebitelé zřídka využili vnořený obsah. Pokud chcete zmenšit velikost odpovědi a zvýšit výkon, odkazované entity už nejsou v odpovědi vložené. Místo toho se zobrazí odkaz na jinou entitu a lze ji použít přímo pro následné `GET` (Jedná se také o adresu URL), a to za stejným vzorem jako `self` odkaz.
 
-V2 – přepis:
+**V2 – přepis:**
 
 ```json
 {
@@ -335,7 +331,6 @@ V2 – přepis:
           "createdDateTime": "2019-01-07T11:34:12Z",
           "locale": "en-US",
           "name": "Language dataset",
-          
         }
       ]
     },
@@ -343,7 +338,7 @@ V2 – přepis:
 }
 ```
 
-přepis V3:
+**přepis V3:**
 
 ```json
 {
@@ -354,13 +349,13 @@ přepis V3:
 }
 ```
 
-V případě, že potřebujete spotřebovat podrobnosti odkazovaného modelu, jak je znázorněno v předchozím příkladu, Zjednodušte si vystavení GET `$.model.self` .
+Pokud potřebujete spotřebovat podrobnosti odkazovaného modelu, jak je znázorněno v předchozím příkladu, stačí, když vydáte příkaz získat na `$.model.self` .
 
 ### <a name="retrieving-endpoint-logs"></a>Načítání protokolů koncových bodů
 
-Verze V2 služby podporovala protokolování odpovědí koncových bodů. Aby bylo možné načíst výsledky koncového bodu s v2, jedna z nich musela vytvořit "Export dat", který představoval snímek výsledků definovaných časovým rozsahem. Proces exportu dávek dat se stane neflexibilní. Rozhraní V3 API poskytuje přístup ke každému jednotlivému souboru a umožňuje iteraci prostřednictvím nich.
+Verze V2 služby podporovala výsledky koncového bodu protokolování. Chcete-li načíst výsledky koncového bodu s v2, vytvořte "Export dat", který představoval snímek výsledků definovaných časovým rozsahem. Proces exportu dávek dat byl neflexibilní. Rozhraní V3 API poskytuje přístup ke každému jednotlivému souboru a umožňuje iteraci prostřednictvím nich.
 
-Úspěšně se spustil koncový bod V3:
+**Úspěšně se spustil koncový bod V3:**
 
 ```json
 {
@@ -371,7 +366,7 @@ Verze V2 služby podporovala protokolování odpovědí koncových bodů. Aby by
 }
 ```
 
-Odpověď pro GET `$.links.logs` :
+**Odpověď pro GET `$.links.logs` :**
 
 ```json
 {
@@ -393,15 +388,15 @@ Odpověď pro GET `$.links.logs` :
 }
 ```
 
-Stránkování protokolů koncového bodu funguje podobně jako u všech ostatních kolekcí, s výjimkou toho, že není možné zadat žádný posun. Kvůli velkému množství dat, která jsou k dispozici, je nutné implementovat stránkování řízené serverem.
+Stránkování protokolů koncového bodu funguje podobně jako u všech ostatních kolekcí, s výjimkou toho, že není možné zadat žádný posun. Vzhledem k velkému množství dat, která jsou k dispozici, je stránkování určováno serverem.
 
-V systému V3 lze každý protokol koncového bodu odstranit jednotlivě vydáním odstranění na `self` souboru nebo pomocí příkazu Odstranit `$.links.logs` . Chcete-li zadat koncová data, `endDate` lze do žádosti přidat parametr dotazu.
+V systému V3 lze každý protokol koncového bodu odstranit jednotlivě vyvoláním `DELETE` operace na `self` soubor nebo pomocí příkazu `DELETE` zapnuto `$.links.logs` . K určení koncového data `endDate` lze do žádosti přidat parametr dotazu.
 
 ### <a name="using-custom-properties"></a>Použití vlastních vlastností
 
 Chcete-li oddělit vlastní vlastnosti z volitelných vlastností konfigurace, jsou nyní všechny explicitně pojmenované vlastnosti umístěny ve `properties` vlastnosti a všechny vlastnosti definované volajícími jsou nyní umístěny ve `customProperties` Vlastnosti.
 
-V2 – přepis entity
+**V2 – entita přepisu:**
 
 ```json
 {
@@ -413,7 +408,7 @@ V2 – přepis entity
 }
 ```
 
-V3 – přepis entity
+**V3 přepisující entitu:**
 
 ```json
 {
@@ -427,14 +422,22 @@ V3 – přepis entity
 }
 ```
 
-Tato změna také povolila použití správných typů u všech explicitně pojmenovaných vlastností v `properties` (například bool namísto řetězce).
+Tato změna také umožňuje používat správné typy pro všechny explicitně pojmenované vlastnosti v části `properties` (například Boolean namísto řetězce).
 
 ### <a name="response-headers"></a>Hlavičky odpovědi
 
-hodnota V3 již nevrací hlavičku `Operation-Location` kromě záhlaví `Location` požadavků post. Hodnota obou hlaviček použitá pro stejné použití. Nyní `Location` se vrací pouze.
+hodnota V3 již nevrací `Operation-Location` hlavičku kromě `Location` záhlaví `POST` požadavků. Hodnota obou hlaviček v v2 byla stejná. Nyní `Location` je vrácen pouze.
 
 Vzhledem k tomu, že nová verze rozhraní API je teď spravovaná pomocí Azure API Management (APIM), hlavičky související s omezováním `X-RateLimit-Limit` `X-RateLimit-Remaining` a `X-RateLimit-Reset` nejsou obsažené v hlavičkách odpovědi.
 
 ### <a name="accuracy-tests"></a>Testy přesnosti
 
-Testy přesnosti byly přejmenovány na hodnocení, protože nový název popisuje lepší význam, co představují. Cesty k příspěvkům jsou například "https://{region}. API. vnímání. Microsoft. com/speechtotext/v 3.0/vyhodnocení".
+Testy přesnosti byly přejmenovány na hodnocení, protože nový název popisuje lepší význam, co představují. Nové cesty jsou: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+## <a name="next-steps"></a>Další kroky
+
+Projděte si všechny funkce těchto běžně používaných rozhraní REST API poskytovaných službami Speech:
+
+* [Rozhraní REST API pro převod řeči na text](rest-speech-to-text.md)
+* [Dokument Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) pro v3 REST API
+* Vzorový kód pro provedení přepisu služby Batch najdete v [úložišti ukázkového úložiště GitHub](https://aka.ms/csspeech/samples) v `samples/batch` podadresáři.

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: ff8af09e88c9c0d2af63070396824471af3ceeca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: c252a1dc86c50327e32816abd99bc206f3b74608
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902880"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -23,7 +23,7 @@ ms.locfileid: "94980812"
 
 Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 
@@ -62,8 +62,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 
 Aktuální verze jsou:
 
-* 4.2.434 SDK a nástroje pro Service Fabric
-* Service Fabric modulu runtime 7.2.434
+* 4.2.445 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.2.445
 
 Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 

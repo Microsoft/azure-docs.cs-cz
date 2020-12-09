@@ -3,18 +3,18 @@ title: Azure Maps open source projektů z komunity | Mapy Microsoft Azure
 description: Open source projekty koordinované pro platformu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896255"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904546"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
@@ -24,7 +24,7 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 **Roboti**
 
-| Název projektu | Popis |
+| Název projektu | Description |
 |-|-|
 | [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje POI související možnosti pro virtuální asistenta pomocí Azure Maps s Azure Bot Service a robotovou architekturou. |
 | [Umístění BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Řídicí panel pro výběr zdrojového umístění pro Microsoft bot Framework, který využívá služby Bing Maps. |
@@ -35,7 +35,7 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps webové sady SDK.
 
-| Název projektu | Popis |
+| Název projektu | Description |
 |-|-|
 | [Modul animace Azure Maps](https://github.com/Azure-Samples/azure-maps-animations) | Bohatá knihovna animací pro použití s Azure Maps Web SDK |
 | [Azure Maps řídicí modul geografického umístění](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvek, který používá rozhraní API geografického umístění v prohlížeči k vyhledání uživatele na mapě. |
@@ -48,7 +48,7 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 
 **ukázky**
 
-| Název projektu | Popis |
+| Název projektu | Description |
 |-|-|
 | [Ukázky kódu Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps v aplikacích založených na webu. |
 | [Ukázky cloudového kódu Azure Maps gov](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps prostřednictvím Azure Government cloudu. |
@@ -59,10 +59,10 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 
 **Nástroje a prostředky**
 
-| Název projektu | Popis |
+| Název projektu | Description |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Zdroj pro veškerou dokumentaci Azure Location Based Services. |
-| [Nástroje Azure Maps Creator](https://github.com/Azure-Samples/AzureMapsCreator) | Nástroje Pythonu pro nástroje Azure Maps Creator. |
+| [Nástroje Azure Maps Creator (Preview)](https://github.com/Azure-Samples/AzureMapsCreator) | Nástroje Pythonu pro nástroje Azure Maps Creator (Preview). |
 
 Delší seznam open source projektů pro Azure Maps, které obsahují projekty vytvořené komunitou, je k dispozici [zde](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) .
 

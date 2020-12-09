@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 875297821a423d9f16fb8af86445590b5012bd4d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a3583f19eada83b45b2289a938ac5e15b1efb4a4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654197"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861609"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů
 
@@ -38,14 +38,14 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modu
 
 | Příkaz | Poznámky |
 |---|---|
-|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Získá instanční objekt. |
-|[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Načte aplikaci Azure AD. |
+|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Získá instanční objekt. |
+|[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Načte aplikaci Azure AD. |
 |[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) | Načte zásady ve službě Azure AD. |
 |[Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview) | Získá zásadu instančního objektu ve službě Azure AD. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](/powershell/azure/active-directory/overview).
 
 Další příklady PowerShellu pro proxy aplikací najdete v tématu [Azure AD PowerShell – příklady pro azure proxy aplikací služby AD](../application-proxy-powershell-samples.md).

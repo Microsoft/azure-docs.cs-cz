@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004921"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862220"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,13 +41,15 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](tutorial-dotnetcore-sqldb-app.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
 Pokud chcete aplikaci ladit pomocí SQL Database jako back-end, ujistěte se, že jste povolili připojení klienta z počítače. V takovém případě přidejte IP adresu klienta podle kroků v části [Správa pravidel brány firewall na úrovni serveru pomocí Azure Portal](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Udělení přístupu k databázi uživateli Azure AD
 
@@ -87,7 +89,7 @@ Visual Studio pro Mac není integrovaný s ověřováním Azure AD. Knihovna [Mi
 
 Po instalaci rozhraní příkazového řádku Azure na místní počítač se přihlaste ke službě Azure CLI pomocí následujícího příkazu pomocí uživatele Azure AD:
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
@@ -206,11 +208,11 @@ Tady je příklad výstupu:
 
 Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu SQLCMD. Nahraďte _\<server-name>_ názvem vašeho serveru a _\<db-name>_ názvem databáze, který vaše aplikace používá, a _\<aad-user-name>_ _\<aad-password>_ s přihlašovacími údaji uživatele Azure AD.
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Třeba 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Příklad: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -249,7 +251,7 @@ Na stránce publikování klikněte na **Publikovat**.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Pokud se na nové webové stránce zobrazí seznam úkolů, připojuje se vaše aplikace k databázi pomocí spravované identity.

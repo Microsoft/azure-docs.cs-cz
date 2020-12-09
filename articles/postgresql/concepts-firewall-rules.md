@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c0d05ac10d9e61497d36793740c8e827fbeca1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707961"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903679"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Pravidla brány firewall v Azure Database for PostgreSQL – jeden server
 Brána firewall serveru Azure Database for PostgreSQL zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -40,7 +40,7 @@ Pokud pro vaši službu Azure není k dispozici pevná odchozí IP adresa, můž
 > Možnost **Povolení přístupu ke službám Azure** nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Příklad toku fungování brány firewall":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Konfigurace povolení přístupu ke službám Azure na portálu":::
 
 ### <a name="connecting-from-a-vnet"></a>Připojení z virtuální sítě
 Pokud chcete bezpečně připojit k serveru Azure Database for PostgreSQL z virtuální sítě, zvažte použití [koncových bodů služby virtuální](./concepts-data-access-and-security-vnet.md)sítě. 
@@ -70,6 +70,9 @@ Vezměte v úvahu následující body, pokud se přístup k Microsoft Azure data
 * **Nejde se připojit z prostředku Azure s povolenou IP adresou:** Ověřte, jestli je povolený koncový bod služby **Microsoft. SQL** pro podsíť, ze které se připojujete. Pokud je **Microsoft. SQL** povolený, znamená to, že chcete v této podsíti použít jenom [pravidla koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md) sítě.
 
    Například se může zobrazit následující chyba, pokud se připojujete z virtuálního počítače Azure v podsíti s povoleným **Microsoft. SQL** , ale nemá žádné odpovídající pravidlo virtuální sítě:  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
+* **Pro formát IPv6 není k dispozici pravidlo brány firewall:** Pravidla brány firewall musí být ve formátu IPv4. Pokud zadáte pravidla brány firewall ve formátu protokolu IPv6, zobrazí se chyba ověřování.
+
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytváření a Správa Azure Database for PostgreSQL pravidel brány firewall pomocí Azure Portal](howto-manage-firewall-using-portal.md)

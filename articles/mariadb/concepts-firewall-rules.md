@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: f8233e9974964e5d760d6b0b388278ff4eee7b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 452ef4787812dbdf88eb541cf5a164f2888dddcc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534479"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905430"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MariaDB
 Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -72,6 +72,7 @@ V případě, že se přístup k Microsoft Azure databázi pro službu serveru M
 
    Například se může zobrazit následující chyba, pokud se připojujete z virtuálního počítače Azure v podsíti s povoleným **Microsoft. SQL** , ale nemá žádné odpovídající pravidlo virtuální sítě:  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
+* **Pro formát IPv6 není k dispozici pravidlo brány firewall:** Pravidla brány firewall musí být ve formátu IPv4. Pokud zadáte pravidla brány firewall ve formátu protokolu IPv6, zobrazí se chyba ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal](./howto-manage-firewall-portal.md)

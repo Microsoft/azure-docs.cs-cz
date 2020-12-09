@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498723"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862118"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Posílání zpráv a příjem zpráv z Azure Service Bus front (.NET)
 V tomto kurzu vytvoříte konzolovou aplikaci .NET Core pro posílání zpráv a příjem zpráv z fronty Service Bus pomocí balíčku **Azure. Messaging. ServiceBus** . 
@@ -55,26 +55,9 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
         static string queueName = "<QUEUE NAME>";
     ```
 
-    Jako proměnnou zadejte připojovací řetězec pro obor názvů `ServiceBusConnectionString` . Zadejte název fronty.
+    Jako proměnnou zadejte připojovací řetězec pro obor názvů `connectionString` . Zadejte název fronty.
 
-1. Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou. Volá `SendMessagesAsync()` metodu, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-    }
-    ```
-1. Přímo za `Main()` metodu přidejte následující `SendMessagesAsync()` metodu, která provede práci odesláním počtu zpráv určených parametrem `numberOfMessagesToSend` (aktuálně nastaveným na hodnotu 10):
+1. Přímo za `Main()` metodu přidejte následující `SendMessagesAsync()` metodu, která provede práci odesláním zprávy:
 
     ```csharp
         static async Task SendMessageAsync()
@@ -101,9 +84,9 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
         {
             // create a queue containing the messages and return it to the caller
             Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
+            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
             return messages;
         }
     ```

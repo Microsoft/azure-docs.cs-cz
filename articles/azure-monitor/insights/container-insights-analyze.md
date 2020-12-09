@@ -3,12 +3,12 @@ title: Kubernetes monitorování pomocí Azure Monitor pro kontejnery | Microsof
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011077"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905702"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
@@ -24,7 +24,7 @@ Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro k
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusterů z Azure Monitor
 
@@ -75,7 +75,7 @@ Následující tabulka uvádí rozpis výpočtu, který řídí stav pro monitor
 | |Neznámý |Pokud není uvedeno za posledních 30 minut |
 |**Systém pod**| | |
 | |V pořádku |100 % |
-| |Upozornění |Není k dispozici |
+| |Upozornění |– |
 | |Kritické |<100% |
 | |Neznámý |Pokud není uvedeno za posledních 30 minut |
 |**Node** | | |
@@ -117,7 +117,7 @@ Azure Monitor for Containers také podporuje [Průzkumníka metrik](../platform/
 
 V Průzkumníku metrik můžete zobrazit agregované metriky využití uzlů a pod Azure Monitor pro kontejnery. Následující tabulka shrnuje podrobnosti, které vám pomůžou pochopit, jak používat grafy metrik k vizualizaci metrik kontejnerů.
 
-|Obor názvů | Metric | Popis |
+|Obor názvů | Metrika | Popis |
 |----------|--------|-------------|
 | Insights. Container/Nodes | |
 | | cpuUsageMillicores | Agregované měření využití procesoru napříč clusterem. Jedná se o jádro procesoru rozdělené na 1000 jednotek (lisovny = 1000). Slouží k určení použití jader v kontejneru, kde mnoho aplikací může používat jeden Core.|
@@ -228,7 +228,7 @@ Hierarchie řádků začíná na řadiči. Když rozbalíte kontroler, zobrazít
 
 Vyberte hodnotu ve sloupci **uzel** pro konkrétní kontroler.
 
-![Příklad přechodu k podrobnostem z uzlu na kontroler v zobrazení výkonu](./media/container-insights-analyze/drill-down-controller-node.png)
+![Příklad přechodu k podrobnostem z kontroleru na uzel v zobrazení výkonu](./media/container-insights-analyze/drill-down-controller-node.png)
 
 Informace, které se zobrazí při zobrazení řadičů, jsou popsány v následující tabulce.
 
@@ -295,33 +295,10 @@ Ikony v poli Stav označují stav online lusků, jak je popsáno v následujíc�
 Správce zásad sítě Azure zahrnuje informativní metriky Prometheus, které vám umožní monitorovat a lépe pochopit síťové konfigurace. Poskytuje integrované vizualizace v Azure Portal nebo Grafana Labs. Podrobnosti najdete v tématu [monitorování a vizualizace konfigurace sítě pomocí Azure npm](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm).
 
 
-## <a name="workbooks"></a>Sešity
+## <a name="workbooks"></a>Workbooks
 
-Sešity kombinují text, [dotazy protokolů](/azure/data-explorer/kusto/query/), [metriky](../platform/data-platform-metrics.md)a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
+Sešity kombinují text, dotazy protokolů, metriky a parametry do propracovaných interaktivních sestav, které umožňují analyzovat výkon clusteru. Popis sešitů dostupných pro Azure Monitor kontejnerů najdete [v tématu sešity v Azure monitor for Containers](container-insights-reports.md) .
 
-Azure Monitor pro kontejnery obsahují čtyři sešity, které vám pomohou začít:
-
-- **Kapacita disku**: prezentuje grafy využití interaktivního disku pro každý disk prezentovaný uzlu v rámci kontejneru pomocí následujících perspektiv:
-
-    - Využití disku v procentech pro všechny disky.
-    - Volné místo na disku pro všechny disky.
-    - Mřížka zobrazující disk jednotlivých uzlů, její procento využitého místa, trend procenta využitého místa, volné místo na disku (GiB) a trend volného místa na disku (GiB). Po výběru řádku v tabulce se pod řádkem zobrazí procentuální hodnota využitého místa a volné místo na disku (GiB).
-
-- **Vstup/výstup disku**: prezentuje grafy využití interaktivního disku pro každý disk prezentovaný uzlu v rámci kontejneru pomocí následujících perspektiv:
-
-    - Počet vstupně-výstupních operací na disku shrnutých na všech discích, a to čtením bajtů za sekundu, zápisem bajtů/s a čtením a zápisem v bajtech/s.
-    - Osm grafů výkonu ukazuje klíčové ukazatele výkonu, které umožňují měřit a identifikovat kritické body v/v disku.
-
-- **Kubelet**: obsahuje dvě mřížky, které znázorňují klíčové statistiky uzlu:
-
-    - Přehled podle mřížky uzlů shrnuje celkovou operaci, celkový počet chyb a úspěšné operace podle procenta a trendu pro každý uzel.
-    - Přehled podle souhrnu typu operací pro každou operaci: celková operace, celkový počet chyb a úspěšné operace podle procenta a trendu.
-
-- **Síť**: prezentuje interaktivní grafy využití sítě pro každý síťový adaptér uzlu a Mřížka představuje klíčové ukazatele výkonu, které vám pomůžou změřit výkon síťových adaptérů.
-
-Přístup k těmto sešitům získáte tak, že v rozevíracím seznamu **Zobrazit sešity** vyberete jednu z nich.
-
-![Zobrazit rozevírací seznam sešitů](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>Další kroky
 

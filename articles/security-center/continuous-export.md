@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 12/08/2020
 ms.author: memildin
-ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122325"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862458"
 ---
 # <a name="continuously-export-security-center-data"></a>Průběžný export Security Center dat
 
@@ -72,6 +72,7 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
     - Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení (Preview)
     - Ohrožení zabezpečení v Azure Container Registry imagí by se mělo opravit (používá se Qualys).
     - Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.
+    - Na počítače by se měly nainstalovat aktualizace systému
 
     Chcete-li zahrnout zjištění s těmito doporučeními, povolte možnost **Zahrnout zjištění zabezpečení** .
 
@@ -119,7 +120,7 @@ K nasazení konfigurací průběžného exportu v celé organizaci použijte uve
 
 1. V následující tabulce vyberte zásadu, kterou chcete použít:
 
-    |Cíl  |Zásady  |ID zásady  |
+    |Cíl  |Zásada  |ID zásady  |
     |---------|---------|---------|
     |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
     |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do pracovního prostoru služby Log Analytics pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -211,7 +212,7 @@ Přečtěte si další informace o [cenách služby Azure Event hub](https://azu
 
 ### <a name="does-the-export-include-data-about-the-current-state-of-all-resources"></a>Zahrnuje export data o aktuálním stavu všech prostředků?
 
-Ne. Průběžný export je sestaven pro streamování **událostí**:
+No. Průběžný export je sestaven pro streamování **událostí**:
 
 - **Výstrahy** přijaté před povolením exportu nebudou exportovány.
 - **Doporučení** se odesílají pokaždé, když se změní stav dodržování předpisů prostředku. Například pokud se prostředek změní na stav není v pořádku. Vzhledem k tomu, že se jedná o upozornění, nebudou exportována doporučení pro prostředky, které nezměnily stav od povolení exportu.

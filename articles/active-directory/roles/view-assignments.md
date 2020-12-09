@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579024"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862084"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí pomocí Azure Active Directory
 
@@ -32,14 +32,14 @@ Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v A
 Tento postup popisuje zobrazení přiřazení role s rozsahem v rámci organizace.
 
 1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory** , vyberte **role a správci** a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
+1. Vyberte **Azure Active Directory**, vyberte **role a správci** a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
 1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli.
 
     ![Zobrazení přiřazení rolí a oprávnění při otevření role ze seznamu](./media/view-assignments/role-assignments.png)
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Zobrazení přiřazení rolí pomocí Azure AD PowerShellu
 
-Tato část popisuje zobrazení přiřazení role s rozsahem v rámci organizace. Tento článek používá modul [Azure Active Directory PowerShell verze 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) . Pokud chcete zobrazit přiřazení rozsahu jedné aplikace pomocí PowerShellu, můžete použít rutiny v části [přiřazení vlastních rolí k prostředí PowerShell](custom-assign-powershell.md).
+Tato část popisuje zobrazení přiřazení role s rozsahem v rámci organizace. Tento článek používá modul [Azure Active Directory PowerShell verze 2](/powershell/module/azuread/#directory_roles) . Pokud chcete zobrazit přiřazení rozsahu jedné aplikace pomocí PowerShellu, můžete použít rutiny v části [přiřazení vlastních rolí k prostředí PowerShell](custom-assign-powershell.md).
 
 ### <a name="prepare-powershell"></a>Příprava PowerShellu
 

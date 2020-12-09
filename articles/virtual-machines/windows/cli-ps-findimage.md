@@ -1,48 +1,86 @@
 ---
-title: Hledání a používání Azure Marketplacech imagí
-description: K určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace použijte Azure PowerShell.
+title: Hledání a používání Azure Marketplacech imagí a plánů
+description: Pomocí Azure PowerShell můžete najít a použít informace o vydavateli, nabídce, SKU, verzi a plánu pro image virtuálních počítačů Marketplace.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288352"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906263"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání a použití imagí virtuálních počítačů v Azure Marketplace s využitím Azure PowerShell
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Vyhledání a použití imagí Azure Marketplace VM pomocí Azure PowerShell     
 
-Tento článek popisuje, jak použít Azure PowerShell k nalezení imagí virtuálních počítačů v Azure Marketplace. Při vytváření virtuálního počítače pak můžete zadat image Marketplace.
+Tento článek popisuje, jak použít Azure PowerShell k nalezení imagí virtuálních počítačů v Azure Marketplace. Po vytvoření virtuálního počítače pak můžete zadat image na webu Marketplace a informace o plánu.
 
 K dispozici je také možnost procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo rozhraní příkazového [řádku Azure](../linux/cli-ps-findimage.md). 
 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>Tabulka běžně používaných imagí Windows
 
-Tato tabulka zobrazuje podmnožinu dostupných SKU pro označené vydavatele a nabídky.
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>Vytvoření virtuálního počítače z virtuálního pevného disku s informacemi o plánu
 
-| Publisher | Nabídka | Skladová jednotka (SKU) |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter – jádro |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – Server – jádro |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter-with-Containers |
-| MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019 – WS2016 |Enterprise |
-| MicrosoftRServer |RServer – WS2016 |Enterprise |
+Pokud máte existující virtuální pevný disk, který byl vytvořen pomocí Azure Marketplace image, může být nutné při vytváření nového virtuálního počítače z tohoto virtuálního pevného disku dodat informace o plánu nákupu.
 
-## <a name="navigate-the-images"></a>Navigace v obrázcích
+Pokud máte i nadále původní virtuální počítač nebo jiný virtuální počítač vytvořený ze stejné image, můžete z něj získat název plánu, vydavatele a informace o produktu pomocí Get-AzVM. Tento příklad načte virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* a pak zobrazí informace o plánu nákupu.
+
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+Pokud jste neobdrželi informace o plánu před odstraněním původního virtuálního počítače, můžete [požádat o podporu](https://ms.portal.azure.com/#create/Microsoft.Support). Budou potřebovat název virtuálního počítače, ID předplatného a časové razítko operace odstranění.
+
+Pokud chcete vytvořit virtuální počítač pomocí virtuálního pevného disku, přečtěte si článek [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku](create-vm-specialized.md) a přidejte ho do konfigurace virtuálního počítače pomocí [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) , který bude vypadat nějak takto:
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>Vytvoření nového virtuálního počítače z image Marketplace
+
+Pokud již máte informace o tom, jakou Image chcete použít, můžete tyto informace předat do rutiny [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) , aby se do konfigurace virtuálního počítače přidaly informace o bitové kopii. V dalších částech najdete informace o hledání a výpisu imagí dostupných na webu Marketplace.
+
+Některé placené obrázky také vyžadují, abyste zadali informace o plánu nákupu pomocí [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan). 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+Pak do rutiny předáte konfiguraci virtuálního počítače spolu s ostatními objekty konfigurace `New-AzVM` . Podrobný příklad použití konfigurace virtuálního počítače s prostředím PowerShell najdete v tomto [skriptu](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1).
+
+Pokud se vám zobrazí zpráva, jak přijmout podmínky obrázku, přečtěte si část [přijměte podmínky](#accept-the-terms) dále v tomto článku.
+
+## <a name="list-images"></a>Zobrazit obrázky
 
 Jedním ze způsobů, jak najít obrázek v umístění, je spustit rutiny [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer)a [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) v uvedeném pořadí:
 
@@ -276,41 +314,7 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů plánu nákupu
 
-Po přijetí podmínek pro obrázek můžete nasadit virtuální počítač v tomto předplatném. Jak je znázorněno v následujícím fragmentu kódu, použijte rutinu [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) pro nastavení informací o plánu Marketplace pro objekt virtuálního počítače. Úplný skript pro vytvoření nastavení sítě pro virtuální počítač a dokončení nasazení najdete v tématu [Příklady skriptu PowerShellu](powershell-samples.md).
-
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-Pak předáte konfiguraci virtuálních počítačů spolu s objekty konfigurace sítě do `New-AzVM` rutiny.
 
 ## <a name="next-steps"></a>Další kroky
 

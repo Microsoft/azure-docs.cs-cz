@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896845"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905770"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -76,18 +76,18 @@ Můžete [Stáhnout excelový sešit](https://github.com/Azure-Samples/AzureMaps
 
 Podívejte se na snímek obrazovky s daty, můžeme udělat následující poznámky:
 
-* Informace o umístění se ukládají pomocí sloupců **AddressLine** , **City** , **obec** (okres), **AdminDivision** (stát/provincie), **PostCode** (PSČ) a **Country (země** ).  
+* Informace o umístění se ukládají pomocí sloupců **AddressLine**, **City**, **obec** (okres), **AdminDivision** (stát/provincie), **PostCode** (PSČ) a **Country (země** ).  
 * Sloupce **Zeměpisná šířka** a **Délka** obsahují souřadnice pro každé místo v kavárně pro kavárnu v rámci společnosti Contoso. Pokud nemáte informace o souřadnicích, můžete použít vyhledávací služby v Azure Maps k určení souřadnic umístění.
 * Některé další sloupce obsahují metadata týkající se kavárny: telefonní číslo, logické sloupce a časy počátečního a koncového skladu ve 24hodinovém formátu. Logické sloupce jsou pro přístup Wi-Fi a invalidního vozíku. Můžete vytvořit vlastní sloupce, které obsahují metadata, která jsou pro data o poloze relevantnější.
 
 > [!NOTE]
-> Azure Maps vykreslí data v kulové Mercator projekci "EPSG: 3857", ale přečte data v "EPSG: 4325", která používají WGS84 datum.
+> Azure Maps vykreslí data v kulové Mercator projekci "EPSG: 3857", ale přečte data v "EPSG: 4326", která používají WGS84 datum.
 
 Existuje mnoho způsobů, jak datovou sadu zpřístupnit aplikaci. Jedním z možností je načíst data do databáze a vystavit webovou službu, která dotazuje data. Pak můžete výsledky odeslat do prohlížeče uživatele. Tato možnost je ideální pro velké datové sady nebo pro datové sady, které se často aktualizují. Tato možnost ale vyžaduje více vývojových prací a má vyšší náklady.
 
 Dalším přístupem je převést tuto datovou sadu na nestrukturovaný textový soubor, který může prohlížeč snadno analyzovat. Samotný soubor může být hostován se zbytkem aplikace. Tato možnost udržuje něco jednoduchého, ale je dobrá možnost jenom pro menší datové sady, protože uživatel stáhne všechna data. Pro tuto datovou sadu používáme nestrukturovaný textový soubor, protože velikost datového souboru je menší než 1 MB.  
 
-Chcete-li převést sešit na nestrukturovaný textový soubor, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen znakem tabulátoru, což umožňuje, aby se sloupce v našem kódu snadno analyzovaly. Můžete použít formát hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje více logiky analýzy. Každé pole, které má čárku kolem, by bylo zabaleno do uvozovek. Pokud chcete tato data exportovat jako soubor s hodnotami oddělenými tabulátory v Excelu, vyberte **Uložit jako** . V rozevíracím seznamu **Uložit jako typ** vyberte **text (oddělený tabulátory) (*. txt)** . Pojmenujte soubor *ContosoCoffee.txt* .
+Chcete-li převést sešit na nestrukturovaný textový soubor, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen znakem tabulátoru, což umožňuje, aby se sloupce v našem kódu snadno analyzovaly. Můžete použít formát hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje více logiky analýzy. Každé pole, které má čárku kolem, by bylo zabaleno do uvozovek. Pokud chcete tato data exportovat jako soubor s hodnotami oddělenými tabulátory v Excelu, vyberte **Uložit jako**. V rozevíracím seznamu **Uložit jako typ** vyberte **text (oddělený tabulátory) (*. txt)**. Pojmenujte soubor *ContosoCoffee.txt*.
 
 ![Snímek obrazovky dialogového okna Uložit jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,15 +97,15 @@ Pokud otevřete textový soubor v poznámkovém bloku, vypadá to podobně jako 
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
-Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index.html* , *index. CSS* a *index.js* . Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* do složky. Vytvořte další složku s názvem *Image* . V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
+Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index.html*, *index. CSS* a *index.js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* do složky. Vytvořte další složku s názvem *Image*. V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
 
 ![Snímek obrazovky složky projektu lokátoru jednoduchého úložiště](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>Vytvoření uživatelského rozhraní
 
-Chcete-li vytvořit uživatelské rozhraní, přidejte kód do *index.html* :
+Chcete-li vytvořit uživatelské rozhraní, přidejte kód do *index.html*:
 
-1. Přidejte následující `meta` značky do `head` *index.html* . `charset`Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
+1. Přidejte následující `meta` značky do `head` *index.html*. `charset`Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
 
     ```HTML
     <meta charset="utf-8">
@@ -126,7 +126,7 @@ Chcete-li vytvořit uživatelské rozhraní, přidejte kód do *index.html* :
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Přidejte odkazy na *index.js* a *index. CSS* :
+1. Přidejte odkazy na *index.js* a *index. CSS*:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -385,7 +385,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Přidejte kód pro *index.js* . Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](/javascript/api/azure-maps-control/atlas.map#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
+1. Přidejte kód pro *index.js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](/javascript/api/azure-maps-control/atlas.map#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
 
    Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Předejte pole hodnot ISO 2 země nebo oblasti do `countrySet` Možnosti pro omezení výsledků hledání na tyto země nebo oblasti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
   
@@ -432,7 +432,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

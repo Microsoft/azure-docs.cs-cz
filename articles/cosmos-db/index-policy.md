@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335802"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903016"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,8 +28,8 @@ V některých situacích možná budete chtít toto automatické chování přep
 
 Azure Cosmos DB podporuje dva režimy indexování:
 
-- **Konzistentní** : index se aktualizuje synchronně při vytváření, aktualizaci nebo odstraňování položek. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
-- **Žádné** : indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
+- **Konzistentní**: index se aktualizuje synchronně při vytváření, aktualizaci nebo odstraňování položek. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
+- **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
 > Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority v době, kdy modul neprovádí žádnou jinou práci. To může vést k **nekonzistentním nebo neúplným** výsledkům dotazů. Pokud plánujete dotazy na kontejner Cosmos, neměli byste vybírat opožděné indexování. Nové kontejnery nemůžou vybírat opožděné indexování. Můžete požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
@@ -79,7 +79,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 - Vlastnost System `_etag` je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
-- Pokud je režim indexování nastavený na **konzistentní** , vlastnosti systému `id` a `_ts` jsou automaticky indexovány.
+- Pokud je režim indexování nastavený na **konzistentní**, vlastnosti systému `id` a `_ts` jsou automaticky indexovány.
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
@@ -105,9 +105,9 @@ Pokud jsou zahrnuté cesty a vyloučené cesty v konfliktu, má přednost přesn
 
 Tady je příklad:
 
-**Zahrnutá cesta** : `/food/ingredients/nutrition/*`
+**Zahrnutá cesta**: `/food/ingredients/nutrition/*`
 
-**Vyloučená cesta** : `/food/ingredients/*`
+**Vyloučená cesta**: `/food/ingredients/*`
 
 V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest `food/ingredients` by se z indexu vyloučila jakákoli data v cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*` , která by byla indexována.
 
@@ -201,6 +201,7 @@ Při vytváření složených indexů pro dotazy s filtry na více vlastností s
 - Při vytváření složeného indexu pro optimalizaci dotazů s více filtry `ORDER` nebude mít složený index žádný vliv na výsledky. Tato vlastnost je nepovinná.
 - Pokud nedefinujete složený index pro dotaz s filtry na více vlastností, dotaz bude stále úspěšný. Náklady na dotaz na RU se ale můžou snížit pomocí složeného indexu.
 - Dotazy s agregačními typy (například COUNT nebo SUM) a filtry také využívají složené indexy.
+- Výrazy filtru můžou používat víc složených indexů.
 
 Vezměte v úvahu následující příklady, kde je pro název, stáří a časové razítko definováno složený index:
 
@@ -213,6 +214,7 @@ Vezměte v úvahu následující příklady, kde je pro název, stáří a časo
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Dotazy s filtrem i klauzulí ORDER BY
 

@@ -1,20 +1,20 @@
 ---
 title: Nasazení šablony – IntelliJ nápad
-description: Naučte se, jak vytvořit první šablonu Azure Resource Manager s využitím NÁPADu IntelliJ a jak ho nasadit.
+description: Naučte se, jak vytvořit první šablonu Azure Resource Manager (šablonu ARM) pomocí NÁPADu pro IntelliJ a jak ji nasadit.
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973332"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905957"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Vytváření a nasazování šablon ARM pomocí IntelliJ NÁPADu
 
-Naučte se nasadit šablonu Azure Resource Manager (ARM) do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [Přehled nasazení šablon](overview.md).
+Naučte se nasadit šablonu Azure Resource Manager (šablonu ARM) do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony ARM jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Pokud chcete pochopit koncepty spojené s nasazením a správou řešení Azure, přečtěte si téma [Přehled nasazení šablon](overview.md).
 
 ![Diagram portálu Správce prostředků Template](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -22,7 +22,7 @@ Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné p
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -40,7 +40,7 @@ K dokončení tohoto článku potřebujete:
 
     ![Správce prostředků šablonu kliknutím pravým tlačítkem myši vytvoříte nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG` . Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** při `azuredeploy.parameters.json` stažení.
+1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků** a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG` . Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** při `azuredeploy.parameters.json` stažení.
 
     ![Správce prostředků šablonou vyberte soubory pro vytvoření nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

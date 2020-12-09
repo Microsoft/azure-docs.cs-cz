@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327198"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862152"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: vytvoření funkce v Java pomocí triggeru centra událostí a výstupní vazby Azure Cosmos DB
 
@@ -26,21 +26,18 @@ V tomto kurzu:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu musíte mít nainstalované následující:
 
-* [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
-* [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
-* [Azure CLI](/cli/azure/install-azure-cli) Pokud nechcete používat Cloud Shell
-* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) verze 2.6.666 nebo vyšší
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
+- [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
+- [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) verze 2.6.666 nebo vyšší [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 > [!IMPORTANT]
 > `JAVA_HOME`Aby se tento kurz dokončil, musí být proměnná prostředí nastavená na umístění instalace JDK.
 
 Pokud dáváte přednost použití kódu pro tento kurz přímo, přečtěte si ukázkové úložiště [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
@@ -53,17 +50,13 @@ V tomto kurzu budete potřebovat tyto prostředky:
 
 V následujících částech se dozvíte, jak tyto prostředky vytvořit pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-
-Pokud nepoužíváte Cloud Shell, budete k přístupu k vašemu účtu muset použít Azure CLI místně. Pomocí `az login` příkazu z příkazového řádku bash spusťte prostředí pro přihlášení na základě prohlížeče. Pokud máte přístup k více než jednomu předplatnému Azure, nastavte výchozí nastavení `az account set --subscription` za následováním ID předplatného.
-
 ### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
 Dále vytvořte některé proměnné prostředí pro názvy a umístění prostředků, které vytvoříte. Použijte následující příkazy a nahraďte `<value>` zástupné symboly hodnotami, které zvolíte. Hodnoty by měly odpovídat [pravidlům pojmenovávání a omezením pro prostředky Azure](/azure/architecture/best-practices/resource-naming). Pro `LOCATION` proměnnou použijte jednu z hodnot, které jsou vytvořeny `az functionapp list-consumption-locations` příkazem.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -350,7 +343,7 @@ Pokud jste k vytváření prostředků použili Cloud Shell, nebudete místně p
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
@@ -370,7 +363,7 @@ K vytvoření projektu functions a přidání požadovaných závislostí použi
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn archetype:generate --batch-mode \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype \
@@ -406,7 +399,7 @@ Aby nedocházelo k chybám při kompilaci, budete muset odstranit testovací sou
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 cd telemetry-functions
 rm -r src/test
 ```
@@ -426,7 +419,7 @@ Pro místní testování bude váš projekt funkcí potřebovat připojovací ř
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
@@ -584,7 +577,7 @@ Pro sestavování a spouštění funkcí použijte následující příkazy Mave
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn clean package
 mvn azure-functions:run
 ```
@@ -623,7 +616,7 @@ Nasaďte projekt do Azure pomocí následujícího příkazu:
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn azure-functions:deploy
 ```
 

@@ -3,18 +3,18 @@ title: Vykreslovat vlastní data na rastrové mapě | Mapy Microsoft Azure
 description: Přečtěte si, jak přidat špendlíky, popisky a geometrické obrazce do rastrové mapy. V této části najdete informace o použití služby statické bitové kopie v Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906076"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -41,9 +41,9 @@ Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit ú�
 
 Chcete-li vykreslit špendlíky s popisky a vlastní image, proveďte tyto kroky:
 
-1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** . Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
+1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění pro uložení žádosti. Pak vyberte **Uložit** .
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění pro uložení žádosti. Pak vyberte **Uložit**.
     
     ![Vytvoření žádosti v post](./media/how-to-render-custom-data/postman-new.png)
 
@@ -223,4 +223,4 @@ Podobně můžete změnit, přidat a odebrat ostatní modifikátory stylu.
 
 
 * Prozkoumejte dokumentaci k [rozhraní API pro Image mapy Azure Maps získat](/rest/api/maps/render/getmapimage) .
-* Další informace o službě Azure Maps data Service najdete v [dokumentaci ke službě](/rest/api/maps/data).
+* Další informace o službě Azure Maps data Service (Preview) najdete v [dokumentaci ke službě](/rest/api/maps/data).

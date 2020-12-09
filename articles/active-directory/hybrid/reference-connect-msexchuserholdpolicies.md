@@ -14,18 +14,18 @@ ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24820949eb6762caf808c4420ede6f0f59184281
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412591"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861761"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies a cloudMsExchUserHoldPolicies
 Následující referenční dokument popisuje tyto atributy používané systémem Exchange a správný způsob, jak upravit výchozí pravidla synchronizace.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Co jsou msExchUserHoldPolicies a cloudMsExchUserHoldPolicies?
-Pro Exchange [Server jsou k dispozici dva](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) typy blokovaných akcí: přijetí a In-Place blokování. Pokud je povoleno blokování sporů, jsou všechny položky poštovních schránek blokovány.  In-Place blokování se používá k zachování pouze těch položek, které splňují kritéria vyhledávacího dotazu, který jste definovali pomocí nástroje In-Place eDiscovery.
+Pro Exchange [Server jsou k dispozici dva](/Exchange/policy-and-compliance/holds/holds) typy blokovaných akcí: přijetí a In-Place blokování. Pokud je povoleno blokování sporů, jsou všechny položky poštovních schránek blokovány.  In-Place blokování se používá k zachování pouze těch položek, které splňují kritéria vyhledávacího dotazu, který jste definovali pomocí nástroje In-Place eDiscovery.
 
 Atributy MsExchUserHoldPolcies a cloudMsExchUserHoldPolicies umožňují místní službě AD a službě Azure AD určit, kteří uživatelé se budou držet v závislosti na tom, jestli používají místní Exchange nebo Exchange on-line.
 

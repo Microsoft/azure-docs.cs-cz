@@ -1,25 +1,30 @@
 ---
-title: Požadavky na balíček pro vykreslování v Azure Maps Creator
+title: Požadavky na balíček pro vykreslování v Tvůrci mapy Microsoft Azure (Preview)
 description: Informace o požadavcích na balíček pro vykreslování k převedení souborů návrhu zařízení na mapování dat
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013118"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903458"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
+
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je formát nativního souboru pro software Autodesk pro® pro AutoCAD.
 
@@ -31,12 +36,12 @@ Můžete vybrat libovolný software CAD a vykreslit kresby v balíčku pro kresl
 
 Tady jsou některé pojmy a definice, které jsou důležité při čtení tohoto článku.
 
-| Pojem  | Definice |
+| Období  | Definice |
 |:-------|:------------|
 | Vrstva | Vrstva DWG AutoCADu.|
-| Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
+| Level | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg), připojený k primárnímu výkresu jako externí odkaz.  |
-| Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
+| Příznak | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například *jednotka* je třída funkce a *kancelář* je funkce. |
 
 ## <a name="drawing-package-structure"></a>Vykreslování struktury balíčku
@@ -407,10 +412,10 @@ Následuje ukázkový soubor manifestu ukázkového balíčku pro kreslení. Pok
 Když váš balíček vykreslování splňuje požadavky, můžete použít [službu Azure Maps Conversion](/rest/api/maps/conversion) k převedení balíčku na datovou mapu. Pak můžete použít datovou sadu k vygenerování vnitřních map pomocí modulu mapy vnitřníchy.
 
 > [!div class="nextstepaction"]
->[Autor pro mapy vnitřníchy](creator-indoor-maps.md)
+>[Autor (Preview) pro mapy vnitřních verzí](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření mapy interiéru autora](tutorial-creator-indoor-maps.md)
+> [Kurz: vytvoření mapy vnitřních verzí pro tvůrce (Preview)](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Dynamické stylování map v interiéru](indoor-map-dynamic-styling.md)

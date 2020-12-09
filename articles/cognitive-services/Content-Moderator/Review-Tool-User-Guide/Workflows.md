@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754257"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904138"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definování a použití pracovních postupů moderování
 
@@ -83,4 +83,4 @@ V části **Revize** klikněte na kartu **Image** a ověřte, že se právě vyt
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste zjistili, jak pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)Content moderator nastavit a používat pracovní postupy moderování. Další informace o tom, jak programově vytvářet pracovní postupy, najdete v [průvodci REST API](../try-review-api-workflow.md) .
+V této příručce jste zjistili, jak pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)Content moderator nastavit a používat pracovní postupy moderování. Další informace o tom, jak programově vytvářet pracovní postupy, najdete v [Průvodci konzolou rozhraní API](../try-review-api-workflow.md) .

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460809"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904257"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -22,7 +22,7 @@ Key Vault umožňuje zabezpečený přístup k citlivým informacím v rámci sv
 - Klíče, tajné klíče a certifikáty jsou chráněné bez nutnosti psát kód sami a vy je snadno budete moct použít z vašich aplikací.
 - Zákazníkům umožníte vlastnit a spravovat vlastní klíče, tajné klíče a certifikáty, abyste se mohli soustředit na poskytování základních softwarových funkcí. Tímto způsobem vaše aplikace nebudou vlastnit odpovědnost ani potenciální odpovědnost za klíče tenanta vašich zákazníků, tajné klíče a certifikáty.
 - Vaše aplikace může používat klíče pro podepisování a šifrování. zatím udržuje správu klíčů externí z vaší aplikace. Další informace o klíčích najdete v tématu [o klíčích](../keys/about-keys.md) .
-- Můžete spravovat přihlašovací údaje, jako jsou hesla, přístupové klíče, tokeny SAS, které je ukládají Key Vault jako tajné klíče, viz [o tajných](../secrets/about-secrets.md) klíčích.
+- Přihlašovací údaje, jako jsou hesla, přístupové klíče a tokeny SAS, můžete spravovat tak, že je uložíte v Key Vault jako [tajné kódy.](../secrets/about-secrets.md)
 - Správa certifikátů. Další informace najdete v tématu [o certifikátech](../certificates/about-certificates.md) .
 
 Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](overview.md).
@@ -86,14 +86,14 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
+|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
 
 **Rozhraní API a sady SDK pro certifikáty**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
+|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
 
 **Rozhraní API a sady SDK tajných klíčů**
 

@@ -1,21 +1,25 @@
 ---
-title: Implementovat dynamické styly pro Azure Maps Creator – mapy vnitřníchy
-description: Naučte se implementovat dynamické styly pro mapy vnitřních interiérů.
+title: Implementovat dynamické styly pro mapy vnitřních verzí Azure Maps Creator (Preview)
+description: Naučte se implementovat dynamické styly pro mapy vnitřních verzí Creator (Preview).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895371"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903441"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementace dynamického stylu pro tvůrci vnitřních komap
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Implementovat dynamické styly pro mapy vnitřních verzí Creator (Preview)
+
+> [!IMPORTANT]
+> Služby Azure Maps Creator jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Služba stavu funkcí](/rest/api/maps/featurestate) Azure Maps Creator umožňuje aplikovat styly založené na dynamických vlastnostech funkcí dat mapy vnitřního prvku.  Například můžete vykreslit místnosti pro schůzky zařízení s určitou barvou, která odráží stav obsazení. V tomto článku vám ukážeme, jak dynamicky vykreslovat funkce pro vnitřní mapu pomocí [služby stavu funkcí](/rest/api/maps/featurestate) a [vnitřního webového modulu](how-to-use-indoor-module.md).
 
@@ -23,7 +27,7 @@ ms.locfileid: "92895371"
 
 1. [Vytvoření účtu Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
-3. [Vytvoření prostředku autora](how-to-manage-creator.md)
+3. [Vytvoření prostředku Creator (Preview)](how-to-manage-creator.md)
 4. Stáhněte si [vzorový balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 5. [Vytvořením vnitřních map](tutorial-creator-indoor-maps.md) získáte `tilesetId` a `statesetId` .
 6. Sestavte webovou aplikaci podle kroků v tématu [Jak používat modul vnitřní mapy](how-to-use-indoor-module.md).
@@ -66,7 +70,7 @@ V další části nastavíme *stav* obsazení Office `UNIT26` na `true` . i kdy�
 
  Teď aktualizujeme stav obou poboček `UNIT26` a `UNIT27` :
 
-1. V aplikaci post vyberte možnost **Nový** . V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit** .
+1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
 
 2. K aktualizaci stavu použijte [rozhraní API pro stavy aktualizací funkcí](/rest/api/maps/featurestate/updatestatespreview) . Předejte ID stateset a `UNIT26` jednu z obou jednotek. Přidejte svůj klíč předplatného Azure Maps. Tady je adresa URL požadavku **post** , který aktualizuje stav:
 
@@ -113,7 +117,7 @@ Webová aplikace, kterou jste dříve otevřeli v prohlížeči, by nyní měla 
 Další informace najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Tvůrce pro mapování vnitřníchy](creator-indoor-maps.md)
+> [Creator (Preview) pro mapování vnitřních verzí](creator-indoor-maps.md)
 
 Viz odkazy na rozhraní API uvedená v tomto článku:
 
@@ -124,7 +128,7 @@ Viz odkazy na rozhraní API uvedená v tomto článku:
 > [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Integrován](creator-indoor-maps.md#datasets)
+> [Datová sada](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

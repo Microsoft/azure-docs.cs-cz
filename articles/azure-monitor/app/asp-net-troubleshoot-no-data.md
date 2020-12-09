@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748928"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904461"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -39,6 +39,10 @@ ms.locfileid: "96748928"
 
 * Další informace najdete v tématu [řešení potíží s monitorování stavu](./monitor-performance-live-website-now.md#troubleshoot).
 
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
+
+
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: nepovedlo se načíst soubor nebo sestavení Microsoft. AspNet TelemetryCorrelation.
 
 Další informace o této chybě najdete v článku [problém GitHubu 1610] ( https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) .
@@ -64,7 +68,7 @@ Při upgradu ze sad SDK starších než (2,4) je nutné zajistit, aby byly v a p
     </TelemetryModules>
     ```
 
-*Nepovedlo **se upgradovat správně, může to vést k neočekávaným výjimkám nebo telemetrie neshromažďujících.** _
+*Nepovedlo *_se upgradovat správně, může to vést k neočekávaným výjimkám nebo telemetrie neshromažďujících._* _
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>V aplikaci Visual Studio není možnost Přidat Application Insights.

@@ -1,27 +1,32 @@
 ---
-title: Mobilita (tranzitní) pokrytí
-description: Zjistěte, jakou úroveň pokrytí služba Azure Maps mobility poskytuje oblasti pro funkce veřejného přenosu, jako jsou například výstrahy směrování a služby.
+title: Mobilita (tranzitní) pokrytí v Microsoft Azure Maps služby mobility (Preview)
+description: Zjistěte, jakou úroveň pokrytí služby Azure Maps mobility Services (Preview) poskytuje oblasti pro funkce veřejného přenosu, jako jsou například výstrahy směrování a služby.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/23/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10a0f9b1b21b060d7c33aeb52fb72f950cedf0e6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779146"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904750"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Pokrytí služby Azure Maps mobility (Preview)
 
-Služba Azure Maps [mobility](/rest/api/maps/mobility) vylepšuje dobu vývoje pro aplikace s funkcemi veřejného přenosu, jako je například směrování přenosu a hledání v blízkosti veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služba mobility taky umožňuje uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení veřejných dat v reálném čase a upozornění služby. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty. 
+> [!IMPORTANT]
+> Služby Azure Maps mobility jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+Služba Azure Maps [mobility](/rest/api/maps/mobility) vylepšuje dobu vývoje aplikací s funkcemi veřejného přenosu, jako je například směrování Transitu a hledání okolního veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služby mobility taky umožňují uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení a upozornění služby v reálném čase. Služby mobility navíc poskytují možnosti směrování s možnostmi plánování Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty.
 
 Azure Maps neposkytuje stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volat veřejné tranzitní údaje závisí na oblasti metro. Kromě toho data mapy nemusí zahrnovat všechny možnosti veřejných přenosů a organizace, které obsluhují oblast Metro.
 
-Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobility.
+Následující tabulka poskytuje informace o pokrytí pro Azure Maps služby mobility.
 
 | Symbol | Význam |
 |--------|---------|
@@ -149,17 +154,17 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak požadovat přenosová data pomocí služby mobility:
+Přečtěte si, jak vyžádat přenosová data pomocí služeb mobility (Preview):
 
 > [!div class="nextstepaction"]
 > [Požadavky na přenosová data](how-to-request-transit-data.md)
 
-Informace o tom, jak vyžádat data v reálném čase pomocí služby mobility:
+Informace o tom, jak vyžádat data v reálném čase pomocí služeb mobility (Preview):
 
 > [!div class="nextstepaction"]
 > [Jak vyžádat data v reálném čase](how-to-request-real-time-data.md)
 
-Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility
+Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility (Preview)
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní API služby mobility](/rest/api/maps/mobility)
+> [Dokumentace k rozhraní API služby mobility Services](/rest/api/maps/mobility)

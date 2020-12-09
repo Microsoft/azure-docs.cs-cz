@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782497"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861540"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Ruší se operace správy spravované instance Azure SQL.
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,13 +39,13 @@ Následující tabulka shrnuje operace správy bez ohledu na to, jestli je můž
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
 |Nasazení |Vytvoření instance |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut. |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
 |Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut. |
-|Odstranit |Odstranění instance |Ne |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
+|Odstranit |Odstranění instance |No |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
 
 ## <a name="cancel-management-operation"></a>Zrušit operaci správy
 
@@ -61,7 +61,7 @@ Chcete-li zrušit operace správy pomocí Azure Portal, postupujte podle násled
 
 1. Vyberte **zrušit operaci** v dolní části stránky. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Zaškrtnutím políčka nepřetržitá operace otevřete stránku probíhající operace.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Vyberte zrušit a operaci se zruší.":::
 
 1. Potvrďte, že chcete operaci zrušit. 
 
@@ -116,13 +116,12 @@ Podrobné vysvětlení příkazů najdete v tématu [AZ SQL mi op](/cli/azure/sq
 
 ## <a name="canceled-deployment-request"></a>Žádost o zrušený nasazení
 
-S rozhraním API verze 2020-02-02, jakmile je požadavek na vytvoření instance přijatý, instance začne existovat jako prostředek bez ohledu na průběh procesu nasazení (stav spravované instance je **zřizování** ). Pokud zrušíte požadavek na nasazení instance (vytvoření nové instance), bude spravovaná instance přecházet ze stavu **zřizování** na **FailedToCreate** .
+S rozhraním API verze 2020-02-02, jakmile je požadavek na vytvoření instance přijatý, instance začne existovat jako prostředek bez ohledu na průběh procesu nasazení (stav spravované instance je **zřizování**). Pokud zrušíte požadavek na nasazení instance (vytvoření nové instance), bude spravovaná instance přecházet ze stavu **zřizování** na **FailedToCreate**.
 
 Instance, které se nepodařilo vytvořit, jsou stále přítomné jako prostředek a: 
 
 - Nejsou účtovány
 - Nepočítat s omezeními prostředků (kvóta podsítě nebo vCore)
-- Zachovat název instance rezervovaný – Chcete-li nasadit instanci se stejným názvem, odstraňte název neúspěšné instance, aby se uvolnil název.
 
 
 > [!NOTE]

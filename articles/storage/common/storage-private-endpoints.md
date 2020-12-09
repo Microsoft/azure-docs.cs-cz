@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980197"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905549"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -125,10 +125,6 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 ## <a name="known-issues"></a>Známé problémy
 
 Pamatujte na následující známé problémy týkající se privátních koncových bodů pro Azure Storage.
-
-### <a name="copy-blob-support"></a>Podpora kopírování objektů BLOB
-
-Pokud je účet úložiště chráněný bránou firewall a k účtu se přihlíží prostřednictvím soukromých koncových bodů, pak tento účet nemůže sloužit jako zdroj operace [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) .
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Omezení přístupu k úložišti pro klienty v virtuální sítě s privátními koncovými body
 

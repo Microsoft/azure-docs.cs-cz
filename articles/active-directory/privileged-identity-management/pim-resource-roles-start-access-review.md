@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b67761b3c765e202505d442647b3ba034ef15a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372493"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905821"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
@@ -40,7 +40,7 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro p
 
 1. V nabídce vlevo vyberte **prostředky Azure**.
 
-1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, například předplatné.
 
 1. V části Spravovat vyberte **recenze přístupů**.
 
@@ -66,7 +66,7 @@ Pokud se jedná o jednorázovou revizi, potom po uplynutí doby kontroly příst
 
 Pokud chcete spravovat řadu kontrol přístupu, přejděte na kontrolu přístupu a v části naplánované recenze Najděte nadcházející výskyty a upravte koncové datum nebo přidejte nebo odeberte kontrolory odpovídajícím způsobem.
 
-Na základě vašich výběrů v **nastavení po dokončení**se spustí automatické použití po koncovém datu revize nebo při ručním zastavení kontroly. Stav kontroly se změní ze **dokončených** do mezistavů, jako je **použití** a nakonec na stav **použito**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z rolí.
+Na základě vašich výběrů v **nastavení po dokončení** se spustí automatické použití po koncovém datu revize nebo při ručním zastavení kontroly. Stav kontroly se změní ze **dokončených** do mezistavů, jako je **použití** a nakonec na stav **použito**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z rolí.
 
 ## <a name="next-steps"></a>Další kroky
 

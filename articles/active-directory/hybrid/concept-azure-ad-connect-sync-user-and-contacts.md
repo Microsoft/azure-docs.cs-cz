@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279308"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861778"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů
 Existuje několik různých důvodů, proč byste měli mít několik doménových struktur služby Active Directory a existuje několik různých topologií nasazení. Mezi běžné modely patří nasazení prostředků účtů a doménové struktury sync'ed po fúzi & získání. Ale i v případě, že existují čistě modely, jsou běžné i hybridní modely. Výchozí konfigurace v Azure AD Connect synchronizace nepředpokládá žádný konkrétní model, ale v závislosti na tom, jak byla vybrána shoda uživatele v instalační příručce, je možné pozorovat různá chování.
@@ -41,7 +41,7 @@ Důležité body, které je potřeba znát při synchronizaci skupin ze služby 
 
 * Azure AD Connect nepodporuje synchronizaci [členství primární skupiny](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) do služby Azure AD.
 
-* Azure AD Connect nepodporuje synchronizaci [členství dynamických distribučních skupin](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019) do Azure AD.
+* Azure AD Connect nepodporuje synchronizaci [členství dynamických distribučních skupin](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups) do Azure AD.
 
 * Postup synchronizace skupiny služby Active Directory se službou Azure AD jako skupina s povolenými e-maily:
 

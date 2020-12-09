@@ -3,18 +3,18 @@ title: 'Kurz: Migrace webových služeb z map Bingu | Mapy Microsoft Azure'
 description: Kurz, jak migrovat webové služby z map Bingu na Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897020"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904954"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>Kurz – migrace webové služby z map Bing
 
@@ -37,21 +37,21 @@ Následující tabulka poskytuje rozhraní API služby Azure Maps, která poskyt
 | Prostorové Data Services (SDS)           | [Hledání](/rest/api/maps/search)  +  [Směrování](/rest/api/maps/route) a další služby Azure |
 | Časové pásmo                             | [Časové pásmo](/rest/api/maps/timezone)  |
 | Incidenty provozu                     | [Podrobnosti o incidentu provozu](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Zvýšení oprávnění                             | [Zvýšení úrovně oprávnění (Preview)](/rest/api/maps/elevation)
 
 Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure Maps:
 
--   Zvýšení oprávnění – plánováno
 -   Optimalizované trasy trasy – plánováno. Rozhraní API pro Azure Maps tras podporuje salesmen optimalizaci pro jedno vozidlo.
 -   Metadata z snímků – primárně se používají pro získání adres URL dlaždic v mapách Bing. Azure Maps má samostatnou službu pro přímý přístup k dlaždicím mapy.
 
 Azure Maps má několik dalších webových služeb REST, které mohou být zajímavé;
 
--   [Azure Maps Creator](./creator-indoor-maps.md) – vytvořte si vlastní privátní digitální vlákna pro budovy a prostory.
+-   [Azure Maps Creator (Preview) ](./creator-indoor-maps.md) – vytvoří vlastní privátní digitální vlákna pro budovy a prostory.
 -   [Prostorové operace](/rest/api/maps/spatial) – přesměrovat složité prostorové výpočty a operace, jako je monitorování geografických zón, do služby.
 -   [Dlaždice mapy](/rest/api/maps/render/getmaptile) – přístup k dlaždicím cest a snímků z Azure Maps jako rastrové a vektorové dlaždice.
 -   [Směrování Batch](/rest/api/maps/route/postroutedirectionsbatchpreview) – umožňuje v jedné dávce provést až 1 000 požadavků na směrování za určitou dobu. Trasy jsou při rychlejším zpracování vypočítány paralelně na serveru.
 -   [Přenos dat](/rest/api/maps/traffic) Flow – přístup k datům toku provozu v reálném čase jako rastrové i vektorové dlaždice.
--   [Rozhraní API pro geografickou polohu](/rest/api/maps/geolocation/getiptolocationpreview) – Získá umístění IP adresy.
+-   [Rozhraní API pro geografickou polohu (Preview)](/rest/api/maps/geolocation/getiptolocationpreview) – Získá umístění IP adresy.
 -   [Počasí Services](/rest/api/maps/weather) – získáte přístup k datům počasí v reálném čase a předpovědi.
 
 Nezapomeňte si také projít následující Příručky k osvědčeným postupům:
@@ -150,16 +150,16 @@ Rozhraní API pro invertování Azure Maps obsahuje některé další funkce, kt
 
 Následující tabulka odkazuje na hodnoty typu entity mapy Bing na ekvivalentní názvy vlastností v Azure Maps.
 
-| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Popis                                |
+| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Description                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adresa*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Včetně*                             |
-| `PopulatedPlace`      | `Municipality` nebo `MunicipalitySubdivision`     | *Město* , města *nebo sub* , nebo *super City*     |
+| `PopulatedPlace`      | `Municipality` nebo `MunicipalitySubdivision`     | *Město*, města *nebo sub*, nebo *super City*     |
 | `Postcode1`           | `PostalCodeArea`                                | *Poštovní* *směrovací číslo nebo PSČ*                |
 | `AdminDivision1`      | `CountrySubdivision`                            | *Stát* nebo *provincie*                      |
 | `AdminDivision2`      | `CountrySecondarySubdivison`                    | *Okresy* nebo *oblasti*                    |
 | `CountryRegion`       | `Country`                                       | *Název země*                             |
-|                       | `CountryTertiarySubdivision`                    | *Boroughs* , *kantony* , *obce*          |
+|                       | `CountryTertiarySubdivision`                    | *Boroughs*, *kantony*, *obce*          |
 
 ## <a name="get-location-suggestions-autosuggest"></a>Získat návrhy umístění (automatické návrhy)
 
@@ -186,7 +186,7 @@ Směrovací služba Azure Maps poskytuje následující rozhraní API pro výpo�
 
 -   [Vypočítat trasu](/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST se doporučují při zadání velkého počtu Waypoints nebo při použití spousty možností směrování, abyste zajistili, že se požadavek na adresu URL nestane příliš dlouhý a způsobuje problémy.
 -   [Dávková trasa](/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
--   [Služby mobility](/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
+-   [Služby mobility (Preview) ](/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
 
 Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pomocí srovnatelných parametrů rozhraní API v Azure Maps.
 
@@ -194,7 +194,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 |------------------------------------------------------------|---------------------------------------------------|
 | `avoid`                                                    | `avoid`                                           |
 | `dateTime` (`dt`)                                          | `departAt` nebo `arriveAt`                          |
-| `distanceBeforeFirstTurn` (`dbft`)                         | Není k dispozici                                               |
+| `distanceBeforeFirstTurn` (`dbft`)                         | –                                               |
 | `distanceUnit` (`du`)                                      | Není k dispozici – Azure Maps používá pouze systém metrik.     |
 | `heading` (`hd`)                                           | `vehicleHeading`                                  |
 | `maxSolutions` (`maxSolns`)                                | `maxAlternatives`, `alternativeType` , `minDeviationDistance` a `minDeviationTime`  |
@@ -203,7 +203,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `routeAttributes` (`ra`)                                   | `instructionsType`                                |
 | `routePathOutput` (`rpo`)                                  | `routeRepresentation`                             |
 | `timeType` (`tt`)                                          | `departAt` nebo `arriveAt`                          |
-| `tolerances` (`tl`)                                        | Není k dispozici                                               |
+| `tolerances` (`tl`)                                        | –                                               |
 | `travelMode`                                               | `travelMode`                                      |
 | `waypoint.n` ( `wp.n` ) nebo `viaWaypoint.n` (`vwp.n`)         | `query` – souřadnice ve formátu `lat0,lon0:lat1,lon1….`   |
 | `key`                                                      | `subscription-key` – Viz také [ověřování pomocí Azure Maps](./azure-maps-authentication.md) dokumentaci. |
@@ -221,12 +221,12 @@ Rozhraní API pro směrování Azure Maps podporuje také směrování nákladn�
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **Není k dispozici**                                    |
+| `vehicleTrailers` (`vt`)                 | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **Není k dispozici**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **Není k dispozici**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **Není k dispozici**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **Není k dispozici**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -287,12 +287,12 @@ Rozhraní API směrování Azure Maps také podporuje parametr směrování nák
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **Není k dispozici**                                    |
+| `vehicleTrailers` (`vt`)                | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **Není k dispozici**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **Není k dispozici**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **Není k dispozici**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **Není k dispozici**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -327,7 +327,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `heading`                | Není k dispozici – Streetside se nepodporuje.                |
 | `imagerySet`             | `layer` a `style` – Viz dokumentace k [podporovaným stylům mapy](./supported-map-styles.md) .   |
 | `mapArea` (`ma`)         | `bbox`                                         |
-| `mapLayer` (`ml`)        | Není k dispozici                                            |
+| `mapLayer` (`ml`)        | –                                            |
 | `mapSize` (`ms`)         | `width` a `height` – může mít velikost až 8192x8192. |
 | `declutterPins` (`dcl`)  | N/A                                            |
 | `dpi`                    | N/A                                            |
@@ -339,7 +339,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `query`                  | Je třeba použít na střed nebo ohraničovací rámeček.     |
 | `highlightEntity` (`he`) | N/A                                            |
 | `style`                  | N/A                                            |
-| parametry směrování         | Není k dispozici                                            |
+| parametry směrování         | –                                            |
 | `key`                    | `subscription-key` – Viz také [ověřování pomocí Azure Maps](./azure-maps-authentication.md) dokumentaci. |
 | `culture` (`c`)          | `language` – Viz dokumentace k [podporovaným jazykům](./supported-languages.md) .   |
 | `userRegion` (`ur`)      | `view` – Viz dokumentace k [podporovaným zobrazením](./supported-languages.md#azure-maps-supported-views) . |
@@ -484,7 +484,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `endTime`               | `arriveAt`                                                  |
 | `startTime`             | `departAt`                                                  |
 | `travelMode`            | `travelMode`                                                |
-| `resolution`            | Není k dispozici                                                         |
+| `resolution`            | –                                                         |
 | `distanceUnit`          | Není k dispozici – všechny vzdálenosti v metrech.                              |
 | `timeUnit`              | Není k dispozici – všechny časy v sekundách.                                 |
 | `key`                   | `subscription-key` – Viz také [ověřování pomocí Azure Maps](./azure-maps-authentication.md) dokumentaci. |
@@ -528,7 +528,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 Data z bodu zájmu je možné prohledávat pomocí následujících rozhraní API služby Bing Maps:
 
 -   **Místní hledání:** Vyhledá zajímavé body, které jsou v blízkosti (kruhové hledání), podle názvu nebo podle typu entity (kategorie). Rozhraní API pro vyhledávání Azure Maps [POI](/rest/api/maps/search/getsearchpoi) a [POI v kategorii hledání](/rest/api/maps/search/getsearchpoicategory) se nejvíce podobá tomuto rozhraní API.
--   **Rozpoznávání umístění** : vyhledá body zájmů, které spadají do určité vzdálenosti. Rozhraní API pro [hledání v blízkosti](/rest/api/maps/search/getsearchnearby) Azure Maps je nejvíce podobné tomuto rozhraní API.
+-   **Rozpoznávání umístění**: vyhledá body zájmů, které spadají do určité vzdálenosti. Rozhraní API pro [hledání v blízkosti](/rest/api/maps/search/getsearchnearby) Azure Maps je nejvíce podobné tomuto rozhraní API.
 -   **Místní přehledy:** Vyhledá body zájmů, které jsou v rámci určeného maximální doby jízdy nebo vzdálenosti od konkrétní souřadnice. To je dosažitelné pomocí Azure Maps, a to tak, že nejprve vypočítá isochrone a pak je předáte do [vyhledávání v rámci](/rest/api/maps/search/postsearchinsidegeometry) rozhraní API geometrie.
 
 Azure Maps poskytuje několik rozhraní API pro hledání bodů zájmu:
@@ -565,7 +565,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby mapy Bing s p
 | Parametr rozhraní API pro mapy Bing  | Srovnatelný parametr Azure Maps rozhraní API   |
 |--------------------------|---------------------------------------|
 | `mapArea`                | `boundingBox` a `boundingZoom`      |
-| `includeLocationCodes`   | Není k dispozici                                   |
+| `includeLocationCodes`   | –                                   |
 | `severity` (`s`)         | Není k dispozici – všechna vrácená data               |
 | `type` (`t`)             | Není k dispozici – všechna vrácená data               |
 | `key`                    | `subscription-key` – Viz také [ověřování pomocí Azure Maps](./azure-maps-authentication.md) dokumentaci. |
@@ -614,7 +614,7 @@ Mapy Bing umožňují předávat až 200 000 adres do jediné žádosti o kód v
 
 Azure Maps má službu pro geografické kódování, ale umožňuje předávat až 10 000 adres v rámci jediné žádosti a v závislosti na velikosti datové sady a zatížení služby se zpracovává během několika sekund. Každá adresa v žádosti vygenerovala transakci. V Azure Maps je služba geografické kódování v dávce dostupná jenom pro úroveň S1.
 
-Další možností pro geografické kódování velkých adres s Azure Maps je udělat paralelní požadavky na standardní rozhraní API pro vyhledávání. Tyto služby přijímají jenom jednu adresu na žádost, ale dají se použít s úrovní S0, která také poskytuje bezplatné limity využití. Úroveň S0 umožňuje až 50 požadavků za sekundu na Azure Maps platformu z jednoho účtu. Takže pokud omezíte THES tak, aby se v rámci tohoto limitu udržely, je možné, že se vám bude po hodinách nacházet až 180 000 adres. Úroveň S1 nemá dokumentovaný limit počtu dotazů za sekundu, které je možné vytvořit z účtu, takže při použití této cenové úrovně se dá rychleji zpracovat spousta dat, což vám ale pomůže snížit celkový objem přenášených dat a významně snížit zatížení sítě.
+Další možností pro geografické kódování velkých adres s Azure Maps je udělat paralelní požadavky na standardní rozhraní API pro vyhledávání. Tyto služby přijímají jenom jednu adresu na žádost, ale dají se použít s úrovní S0, která také poskytuje bezplatné limity využití. Úroveň S0 umožňuje až 50 požadavků za sekundu na Azure Maps platformu z jednoho účtu. Takže pokud je omezíte tak, aby zůstaly v rámci tohoto limitu, je možné rozsměrovat hodnoty 180 000 adres na hodinu. Úroveň S1 nemá dokumentovaný limit počtu dotazů za sekundu, které je možné vytvořit z účtu, takže při použití této cenové úrovně se dá rychleji zpracovat spousta dat, což vám ale pomůže snížit celkový objem přenášených dat a významně snížit zatížení sítě.
 
 -   [Geografické kódování adresy volného formátu](/rest/api/maps/search/getsearchaddress): zadejte jeden adresní řetězec (například `"1 Microsoft way, Redmond, WA"` ) a okamžitě zpracovat požadavek. Tato služba se doporučuje v případě, že potřebujete jednotlivé adresy snadno kódovat.
 -   [Geografické označování strukturovaných adres](/rest/api/maps/search/getsearchaddressstructured): Určete části jedné adresy, jako je název ulice, město, země a poštovní směrovací číslo a okamžitě zpracujte požadavek. Tato služba je doporučena v případě, že je nutné rychle kódovat jednotlivé adresy a data jsou již analyzována do jednotlivých částí adres.

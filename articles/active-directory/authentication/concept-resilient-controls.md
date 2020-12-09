@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994277"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861285"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
 
@@ -266,7 +266,7 @@ Po obnovení služby, která způsobila přerušení, vraťte změny, které jst
 3. Vraťte všechny další změny, které jste provedli a popsali během přerušení.
 4. Pokud jste použili účet pro nouzový přístup, nezapomeňte znovu vygenerovat přihlašovací údaje a fyzicky zabezpečit nové přihlašovací údaje v rámci postupů vašeho účtu pro nouzový přístup.
 5. Pokračujte v [třídění všech zjištění rizik hlášených](../reports-monitoring/concept-sign-ins.md) po přerušení podezřelé aktivity.
-6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) pro cílení na skupinu uživatelů. Odvolání všech aktualizačních tokenů je důležité pro privilegované účty používané při přerušení a v důsledku toho vynutí opětovné ověření a splnění kontroly nad obnovenými zásadami.
+6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) pro cílení na skupinu uživatelů. Odvolání všech aktualizačních tokenů je důležité pro privilegované účty používané při přerušení a v důsledku toho vynutí opětovné ověření a splnění kontroly nad obnovenými zásadami.
 
 ## <a name="emergency-options"></a>Nouzové možnosti
 
@@ -287,7 +287,7 @@ Pokud vaše organizace používá starší zásady vícefaktorového ověřován
 * [Dokumentace k ověřování Azure AD](./howto-mfaserver-iis.md)
 * [Správa účtů pro správu pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 * [Konfigurace pojmenovaných umístění v Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [Jak nakonfigurovat zařízení připojená k hybridnímu Azure Active Directory](../devices/hybrid-azuread-join-plan.md)
 * [Průvodce nasazením Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Pokyny k heslu – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

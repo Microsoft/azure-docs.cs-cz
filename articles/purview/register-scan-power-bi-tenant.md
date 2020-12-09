@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: af394b68a943f4c89358a719c155606c264b9dc4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552944"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904988"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -49,16 +49,12 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
 
 ## <a name="associate-the-security-group-with-the-tenant"></a>Přidružte skupinu zabezpečení ke klientovi.
 
-1. Přihlaste se na [portál pro správu Power BI](https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1). Připojit tento příznak funkce k identifikátoru URI:  `allowServicePrincipalsUseReadAdminAPIsUI=1` . Tento příznak umožňuje funkci, která umožňuje přidružení skupiny zabezpečení. Příklad:
-
-    ```http
-    https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1
-    ```
+1. Přihlaste se na [portál pro správu Power BI](https://app.powerbi.com/admin-portal/tenantSettings).
 
     > [!Important]
     > Aby bylo možné zobrazit stránku nastavení klienta, musíte být správcem Power BI.
 
-1. Vyberte **Nastavení vývojářů**  >  **, aby instanční objekty mohly používat rozhraní API Power BI jen pro čtení (Preview)**.
+1. Vyberte **Nastavení vývojářů**  >  **, aby instanční objekty mohly používat rozhraní API pro správu Power BI jen pro čtení (Preview)**.
 1. Vyberte **konkrétní skupiny zabezpečení**.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Obrázek ukazující, jak povolíte instančním objektům oprávnění k přístupu Power BI oprávnění API pro správu":::

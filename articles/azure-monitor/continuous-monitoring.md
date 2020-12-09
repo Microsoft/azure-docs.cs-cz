@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996393"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905600"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -28,7 +28,7 @@ Aby bylo možné získat pozor v celém prostředí, je nutné povolit monitorov
 - [Azure DevOps Projects](../devops-project/overview.md) poskytují zjednodušené prostředí s existujícím kódem a úložištěm Git nebo si můžete vybrat některou z ukázkových aplikací a vytvořit tak kanál průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 - [Nepřetržité monitorování kanálu vydání DevOps](./app/continuous-monitoring.md) vám umožní bránu nebo vrátit zpět nasazení na základě dat monitorování.
 - [Monitorování stavu](./app/monitor-performance-live-website-now.md)  umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
-- Máte-li přístup k kódu pro vaši aplikaci, povolte úplné monitorování pomocí [Application Insights](./app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](./learn/quick-monitor-portal.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)nebo [jakékoli jiné programovací jazyky](./app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
+- Pokud máte přístup k kódu pro vaši aplikaci, pak povolte úplné monitorování pomocí [Application Insights](./app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](./app/asp-net.md), [.net Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)nebo [jakékoli jiné programovací jazyky](./app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
 
 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896741"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905345"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -24,7 +24,7 @@ V tomto kurzu provedete tyto kroky:
 
 > [!div class="checklist"]
 > * Vytvořte účet úložiště Azure pro protokolování dat sledování auta.
-> * Pomocí rozhraní API pro nahrání dat nahrajte geografickou ochranu do služby Azure Maps data Service.
+> * Nahrajte geografickou ochranu do služby Azure Maps data Service (Preview) pomocí rozhraní API pro nahrání dat.
 > * Vytvořte centrum v Azure IoT Hub a zaregistrujte zařízení.
 > * Vytvořte funkci v Azure Functions, implementujte obchodní logiku na základě Azure Maps prostorových analýz.
 > * Přihlaste se k odběru událostí telemetrie zařízení IoT pomocí služby Azure Functions prostřednictvím Azure Event Grid.
@@ -32,13 +32,13 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
-4. [Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu pojmenujte naši skupinu prostředků *ContosoRental* , ale můžete si vybrat libovolný název.
+4. [Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu pojmenujte naši skupinu prostředků *ContosoRental*, ale můžete si vybrat libovolný název.
 
 5. Stáhněte [projekt RentalCarSimulation C#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
 
@@ -91,27 +91,27 @@ Následující diagram znázorňuje přehled systému na nejvyšší úrovni.
 
 Následující obrázek zvýrazňuje oblast geografického rozkladu modře. Trasa k půjčovně aut je označena zelenou čárou.
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Diagram přehledu systému":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Obrázek ukazující trasu geografického uspořádání.":::
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-Pokud chcete uložit data sledování narušení auta, vytvořte ve skupině prostředků [účet úložiště pro obecné účely v2](../storage/common/storage-account-overview.md#general-purpose-v2-accounts) . Pokud jste ještě nevytvořili skupinu prostředků, postupujte podle pokynů v části [Vytvoření skupiny prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu Pojmenujte skupinu prostředků *ContosoRental* .
+Pokud chcete uložit data sledování narušení auta, vytvořte ve skupině prostředků [účet úložiště pro obecné účely v2](../storage/common/storage-account-overview.md#general-purpose-v2-accounts) . Pokud jste ještě nevytvořili skupinu prostředků, postupujte podle pokynů v části [Vytvoření skupiny prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). V tomto kurzu Pojmenujte skupinu prostředků *ContosoRental*.
 
-Pokud chcete vytvořit účet úložiště, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-portal). V tomto kurzu pojmenujte účet úložiště *contosorentalstorage* , ale obecně ho můžete pojmenovat sami.
+Pokud chcete vytvořit účet úložiště, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-portal). V tomto kurzu pojmenujte účet úložiště *contosorentalstorage*, ale obecně ho můžete pojmenovat sami.
 
 Po úspěšném vytvoření účtu úložiště je nutné vytvořit kontejner pro uložení dat protokolování.
 
 1. Přejít na nově vytvořený účet úložiště. V části **základy** vyberte odkaz **kontejnery** .
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Snímek obrazovky s kontejnery pro úložiště objektů BLOB":::
 
-2. V levém horním rohu vyberte **+ kontejner** . Panel se zobrazí na pravé straně prohlížeče. Pojmenujte kontejner *Contoso-pronájem-logs* a vyberte **vytvořit** .
+2. V levém horním rohu vyberte **+ kontejner**. Panel se zobrazí na pravé straně prohlížeče. Pojmenujte kontejner *Contoso-pronájem-logs* a vyberte **vytvořit**.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Diagram přehledu systému":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Snímek obrazovky s vytvořením kontejneru objektů BLOB":::
 
 3. Přejděte do podokna **přístupové klíče** v účtu úložiště a zkopírujte **název účtu úložiště** a hodnotu **klíče** do oddílu **klíč1** . Obě tyto hodnoty budete potřebovat v části Vytvoření funkce Azure a přidání předplatného Event Grid.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Snímek obrazovky s názvem a klíčem pro kopírování účtu úložiště":::
 
 ## <a name="upload-a-geofence"></a>Nahrát geografickou ochranu
 
@@ -119,9 +119,9 @@ V dalším kroku [odešlete geografickou ochranou](./geofence-geojson.md) do Azu
 
 Pomocí následujícího postupu nahrajte geografickou ochranou Azure Maps rozhraní API pro nahrání dat: 
 
-1. Otevřete aplikaci pro vyúčtování a vyberte **Nová** . V okně **vytvořit nové** vyberte **kolekce** . Pojmenujte kolekci a vyberte **vytvořit** .
+1. Otevřete aplikaci pro vyúčtování a vyberte **Nová**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte **vytvořit**.
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** a zadejte název žádosti. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit** .
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** a zadejte název žádosti. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit**.
 
 3. Na kartě tvůrce vyberte metodu **post** http a zadejte následující adresu URL pro nahrání geografického ohraničení do rozhraní API pro nahrání dat. Nezapomeňte nahradit `{subscription-key}` primární klíč předplatného.
 
@@ -131,7 +131,7 @@ Pomocí následujícího postupu nahrajte geografickou ochranou Azure Maps rozhr
 
     V cestě URL `geojson` hodnota s `dataFormat` parametrem představuje formát dat odesílaných.
 
-4. Jako formát vstupu vyberte **tělo**  >  **raw** a v rozevíracím seznamu zvolte **JSON** . [Otevřete datový soubor JSON](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)a zkopírujte kód JSON do části text. Vyberte **Poslat** .
+4. Jako formát vstupu vyberte **tělo**  >  **raw** a v rozevíracím seznamu zvolte **JSON** . [Otevřete datový soubor JSON](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)a zkopírujte kód JSON do části text. Vyberte **Odeslat**.
 
 5. Vyberte **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi. Zkopírujte hodnotu klíče **umístění** , což je `status URL` .
 
@@ -164,7 +164,7 @@ Pokud chcete ve skupině prostředků *ContosoRental* vytvořit centrum IoT, pos
 
 ## <a name="register-a-device-in-your-iot-hub"></a>Registrace zařízení ve službě IoT Hub
 
-Zařízení se nemůžou připojit ke službě IoT Hub, pokud se nezaregistrují v registru identit centra IoT. Tady vytvoříte jedno zařízení s názvem, *InVehicleDevice* . Pokud chcete zařízení vytvořit a zaregistrovat v rámci služby IoT Hub, postupujte podle kroků v části [Registrace nového zařízení ve službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Nezapomeňte zkopírovat primární připojovací řetězec vašeho zařízení. Budete ho potřebovat později.
+Zařízení se nemůžou připojit ke službě IoT Hub, pokud se nezaregistrují v registru identit centra IoT. Tady vytvoříte jedno zařízení s názvem, *InVehicleDevice*. Pokud chcete zařízení vytvořit a zaregistrovat v rámci služby IoT Hub, postupujte podle kroků v části [Registrace nového zařízení ve službě IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Nezapomeňte zkopírovat primární připojovací řetězec vašeho zařízení. Budete ho potřebovat později.
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Vytvoření funkce a přidání předplatného Event Grid
 
@@ -176,59 +176,59 @@ Zde je [kód skriptu jazyka C#, který bude obsahovat vaše funkce](https://gith
 
 Teď nastavte funkci Azure Functions.
 
-1. Na řídicím panelu Azure Portal vyberte **vytvořit prostředek** . Do textového pole hledání zadejte **Function App** . Vyberte **Function App**  >  **vytvořit** .
+1. Na řídicím panelu Azure Portal vyberte **vytvořit prostředek**. Do textového pole hledání zadejte **Function App** . Vyberte **Function App**  >  **vytvořit**.
 
-1. Na stránce vytváření **Function App** název své aplikace Function App. V části **Skupina prostředků** v rozevíracím seznamu vyberte **ContosoRental** . Jako **zásobník modulu runtime** vyberte **.NET Core** . V dolní části stránky vyberte **Další: hostování >** .
+1. Na stránce vytváření **Function App** název své aplikace Function App. V části **Skupina prostředků** v rozevíracím seznamu vyberte **ContosoRental** . Jako **zásobník modulu runtime** vyberte **.NET Core** . V dolní části stránky vyberte **Další: hostování >**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Snímek obrazovky s vytvořením aplikace Function App":::
 
-1. V poli **účet úložiště** vyberte účet úložiště, který jste vytvořili v části [Vytvoření účtu služby Azure Storage](#create-an-azure-storage-account). Vyberte **Zkontrolovat a vytvořit** .
+1. V poli **účet úložiště** vyberte účet úložiště, který jste vytvořili v části [Vytvoření účtu služby Azure Storage](#create-an-azure-storage-account). Vyberte **Zkontrolovat a vytvořit**.
 
-1. Zkontrolujte podrobnosti aplikace Function App a vyberte **vytvořit** .
+1. Zkontrolujte podrobnosti aplikace Function App a vyberte **vytvořit**.
 
-1. Po vytvoření aplikace se do ní přidá funkce. Přejít do aplikace Function App. Vyberte podokno **funkce** . V horní části stránky vyberte **+ Přidat** . Zobrazí se panel šablony funkce. Posuňte se dolů na panel a vyberte **Azure Event Grid Trigger** .
+1. Po vytvoření aplikace se do ní přidá funkce. Přejít do aplikace Function App. Vyberte podokno **funkce** . V horní části stránky vyberte **+ Přidat**. Zobrazí se panel šablony funkce. Posuňte se dolů na panel a vyberte **Azure Event Grid Trigger**.
 
      >[!IMPORTANT]
     > **Aktivační událost centra událostí Azure** a šablony **triggeru Azure Event Grid** mají podobné názvy. Ujistěte se, že jste vybrali šablonu **triggeru Azure Event Grid** .
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Snímek obrazovky s vytvořením funkce":::
 
-1. Zadejte název funkce. V tomto kurzu použijete název *GetGeoFunction* , ale obecně můžete použít libovolný název, který chcete. Vyberte **vytvořit funkci** .
+1. Zadejte název funkce. V tomto kurzu použijete název *GetGeoFunction*, ale obecně můžete použít libovolný název, který chcete. Vyberte **vytvořit funkci**.
 
 1. V nabídce vlevo vyberte podokno **Code + test** . Zkopírujte a vložte [skript jazyka C#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do okna Code (kód).
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Diagram přehledu systému":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Kopírovat/snímek obrazovky vložení kódu do okna funkce":::
 
 1. V kódu jazyka C# nahraďte následující parametry:
     * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného pro Azure Maps účtu.
     * Nahraďte **UDIDi** `udid` geografickou ochranou, kterou jste nahráli v rámci [nahrávání geografického](#upload-a-geofence)plotu.
-    * `CreateBlobAsync`Funkce ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat nahraďte **ACCESS_KEY** , **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** . Tyto hodnoty se vygenerovaly při vytvoření účtu úložiště v [Vytvoření účtu úložiště Azure](#create-an-azure-storage-account).
+    * `CreateBlobAsync`Funkce ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat nahraďte **ACCESS_KEY**, **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** . Tyto hodnoty se vygenerovaly při vytvoření účtu úložiště v [Vytvoření účtu úložiště Azure](#create-an-azure-storage-account).
 
-1. V nabídce vlevo vyberte podokno **integrace** . V diagramu vyberte **aktivační událost Event Grid** . Zadejte název triggeru *eventGridEvent* a vyberte **vytvořit Event Grid předplatné** .
+1. V nabídce vlevo vyberte podokno **integrace** . V diagramu vyberte **aktivační událost Event Grid** . Zadejte název triggeru *eventGridEvent* a vyberte **vytvořit Event Grid předplatné**.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Diagram přehledu systému":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Snímek obrazovky s přidáním odběru událostí":::
 
-1. Vyplňte podrobnosti předplatného. Pojmenujte odběr události. V případě **schématu událostí** vyberte **Event Grid schéma** . V **části typy témat** vyberte **účty Azure IoT Hub** . V části **Skupina prostředků** vyberte skupinu prostředků, kterou jste vytvořili na začátku tohoto kurzu. V části **prostředek** vyberte Centrum IoT, které jste vytvořili v tématu vytvoření centra IoT Azure. Pro možnost **Filtr na typy událostí** vyberte **telemetrie zařízení** .
+1. Vyplňte podrobnosti předplatného. Pojmenujte odběr události. V případě **schématu událostí** vyberte **Event Grid schéma**. V **části typy témat** vyberte **účty Azure IoT Hub**. V části **Skupina prostředků** vyberte skupinu prostředků, kterou jste vytvořili na začátku tohoto kurzu. V části **prostředek** vyberte Centrum IoT, které jste vytvořili v tématu vytvoření centra IoT Azure. Pro možnost **Filtr na typy událostí** vyberte **telemetrie zařízení**.
 
-   Po zvolení těchto možností uvidíte změnu **typu tématu** **IoT Hub** . V **části název systémového tématu** můžete použít stejný název jako prostředek. Nakonec v části **Podrobnosti o koncovém bodu** vyberte **možnost vybrat koncový bod** . Přijměte všechna nastavení a vyberte **potvrdit výběr** .
+   Po zvolení těchto možností uvidíte změnu **typu tématu** **IoT Hub**. V **části název systémového tématu** můžete použít stejný název jako prostředek. Nakonec v části **Podrobnosti o koncovém bodu** vyberte **možnost vybrat koncový bod**. Přijměte všechna nastavení a vyberte **potvrdit výběr**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Snímek obrazovky pro vytvoření odběru události":::
 
-1. Zkontrolujte nastavení. Ujistěte se, že koncový bod Určuje funkci, kterou jste vytvořili na začátku této části. Vyberte **Vytvořit** .
+1. Zkontrolujte nastavení. Ujistěte se, že koncový bod Určuje funkci, kterou jste vytvořili na začátku této části. Vyberte **Vytvořit**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Diagram přehledu systému":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Snímek obrazovky s potvrzením vytvoření odběru události":::
 
-1. Teď jste zpátky na panel **Upravit aktivační událost** . Vyberte **Uložit** .
+1. Teď jste zpátky na panel **Upravit aktivační událost** . Vyberte **Uložit**.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>Filtrování událostí pomocí IoT Hubho směrování zpráv
 
 Když do funkce Azure Function přidáte předplatné Event Grid, v zadaném centru IoT Hub se automaticky vytvoří trasa pro zasílání zpráv. Směrování zpráv umožňuje směrovat různé datové typy do různých koncových bodů. Můžete například směrovat zprávy telemetrie zařízení, události životního cyklu zařízení a události změny zařízení s dvojitou změnou. Další informace najdete v tématu [použití IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Diagram přehledu systému":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Snímek obrazovky s směrováním zpráv ve IoT Hub.":::
 
-V ukázkovém scénáři budete chtít dostávat jenom zprávy, když se pronájem auta přesune. Vytvořte dotaz směrování pro filtrování událostí, ve kterých se `Engine` vlastnost rovná **"on"** . Pokud chcete vytvořit dotaz směrování, vyberte trasu **RouteToEventGrid** a nahraďte **dotaz směrování** pomocí **"Engine =" na** ". Pak vyberte **Uložit** . Centrum IoT teď publikuje jenom telemetrii zařízení, ve které je modul zapnutý.
+V ukázkovém scénáři budete chtít dostávat jenom zprávy, když se pronájem auta přesune. Vytvořte dotaz směrování pro filtrování událostí, ve kterých se `Engine` vlastnost rovná **"on"**. Pokud chcete vytvořit dotaz směrování, vyberte trasu **RouteToEventGrid** a nahraďte **dotaz směrování** pomocí **"Engine =" na**". Pak vyberte **Uložit**. Centrum IoT teď publikuje jenom telemetrii zařízení, ve které je modul zapnutý.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Diagram přehledu systému":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Snímek obrazovky se zprávami o směrování filtru.":::
 
 >[!TIP]
 >Existují různé způsoby, jak zadávat dotazy na zprávy ze zařízení do cloudu IoT. Další informace o syntaxi směrování zpráv najdete v tématu [IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
@@ -256,15 +256,15 @@ Když je vaše funkce Azure spuštěná, můžete teď do služby IoT Hub odesí
 
   Místní terminál by měl vypadat jako na následujícím obrázku.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Diagram přehledu systému":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Snímek obrazovky s výstupem terminálu":::
 
 Pokud teď kontejner úložiště objektů BLOB otevřete, uvidíte čtyři objekty blob pro umístění, kde bylo vozidlo mimo geografickou oblast.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Diagram přehledu systému":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Snímek obrazovky zobrazení objektů BLOB v kontejneru":::
 
 Následující mapa znázorňuje čtyři body umístění vozidel mimo geografickou oblast. Každé umístění bylo zaznamenáno v pravidelných časových intervalech.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Diagram přehledu systému":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Snímek obrazovky s mapou porušení":::
 
 ## <a name="explore-azure-maps-and-iot"></a>Prozkoumejte Azure Maps a IoT
 

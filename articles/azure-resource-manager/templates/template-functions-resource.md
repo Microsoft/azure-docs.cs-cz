@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b7bb726250c6d1ef8a597481b5f7e95f024a56d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3b5a2642ebbabac61e46f4d9b0a2dfec9610a673
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183987"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902659"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -37,7 +37,7 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
@@ -179,7 +179,7 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
 | apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
@@ -205,7 +205,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. ApiManagement/Service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
 | Microsoft. ApiManagement/Service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft. AppConfiguration/configurationStores | [Klíče listkey](/rest/api/appconfiguration/configurationstores/listkeys) |
-| Microsoft. AppPlatform/pružina | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
+| Microsoft. AppPlatform/pružina | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft. Automation/automationAccounts | [Klíče listkey](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/pracovní prostory/experimenty/úlohy | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
@@ -438,7 +438,7 @@ Určuje, zda typ prostředku podporuje zóny pro oblast.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ano | řetězec | Obor názvů poskytovatele prostředků pro typ prostředku, který má kontrolovat podporu zóny. |
 | resourceType | Ano | řetězec | Typ prostředku pro kontrolu podpory zón. |
@@ -547,7 +547,7 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
 | resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
@@ -635,7 +635,7 @@ Vrátí objekt představující běhový stav prostředku.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
 | apiVersion |No |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
@@ -798,7 +798,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Příklad:
+Například:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 
@@ -1107,7 +1107,7 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
 | resourceGroupName |No |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
@@ -1410,7 +1410,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
@@ -1542,7 +1542,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |

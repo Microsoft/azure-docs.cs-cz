@@ -1,5 +1,5 @@
 ---
-title: Správa přiřazování uživatelů pro aplikaci v Azure Active Directory
+title: Správa přiřazení uživatelů pro aplikaci v Azure Active Directory
 description: Naučte se, jak přiřadit a zrušit přiřazení uživatelů a skupin pro aplikaci, která používá Azure Active Directory pro správu identit.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651273"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861673"
 ---
-# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Správa přiřazování uživatelů pro aplikaci v Azure Active Directory
+# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Správa přiřazení uživatelů pro aplikaci v Azure Active Directory
 
 V tomto článku se dozvíte, jak přiřadit uživatele a skupiny k podnikovým aplikacím v Azure Active Directory (Azure AD), a to buď z Azure Portal, nebo pomocí PowerShellu. Když přiřadíte uživatele k aplikaci, zobrazí se aplikace v [mých aplikacích](https://myapps.microsoft.com/) uživatele, aby bylo možné získat snadný přístup. Pokud aplikace zveřejňuje role, můžete uživateli přiřadit také konkrétní roli.
 
@@ -81,11 +81,11 @@ K přiřazení nebo zrušení přiřazení uživatelů a skupin pro aplikaci mů
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci k [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
+Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci k [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment).
 
 Chcete-li přiřadit skupinu k podnikové aplikaci, je nutné nahradit `Get-AzureADUser` `Get-AzureADGroup` a nahradit `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
 
-Další informace o tom, jak přiřadit skupinu k roli aplikace, najdete v dokumentaci k [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
+Další informace o tom, jak přiřadit skupinu k roli aplikace, najdete v dokumentaci k [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment).
 
 ### <a name="example"></a>Příklad
 

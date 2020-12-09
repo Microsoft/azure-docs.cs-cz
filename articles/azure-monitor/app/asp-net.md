@@ -4,18 +4,18 @@ description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chová
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838938"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904172"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurace Application Insights pro web ASP.NET
 
 Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](./app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované ve vlastních serverech IIS místně nebo v cloudu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte si nejnovější verzi sady [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
@@ -25,6 +25,10 @@ Pro přidání Application Insights na web ASP.NET potřebujete:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 - Vytvoření [prostředku založeného na pracovním prostoru Application Insights](create-workspace-resource.md).
+
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
+
 
 ## <a name="create-a-basic-aspnet-web-app"></a>Vytvoření základní webové aplikace v ASP.NET
 

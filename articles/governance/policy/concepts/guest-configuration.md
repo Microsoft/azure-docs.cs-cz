@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075480"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906246"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -60,9 +60,9 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 a novější|
+|Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 a novější|
 |Partnerský vztah Microsoftu|Windows Server|2012 a novější|
 |Partnerský vztah Microsoftu|Klient Windows|Windows 10|
@@ -120,7 +120,7 @@ Azure Policy používá vlastnost **complianceStatus** zprostředkovatele prost�
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
 
-Jedna z iniciativ v Azure Policy poskytuje možnost auditu nastavení operačního systému podle směrného plánu. Definice, _ \[ verze Preview \] : Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásady skupiny Active Directory.
+Jedna z iniciativ v Azure Policy poskytuje možnost auditu nastavení operačního systému podle směrného plánu. Definice, _\[ verze Preview \] : Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásady skupiny Active Directory.
 
 Většina nastavení je k dispozici jako parametry. Parametry umožňují přizpůsobit, co je auditováno.
 Zarovnejte zásady s vašimi požadavky nebo namapujte zásady na informace třetích stran, jako jsou například oborový zákon o standardech.

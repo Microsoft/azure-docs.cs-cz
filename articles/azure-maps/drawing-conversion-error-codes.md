@@ -3,17 +3,17 @@ title: Azure Maps chyb a upozornění převodu vykreslování
 description: Přečtěte si o chybách a upozorněních při převodu, které se mohou vyhovět při používání služby Azure Maps Conversion. Přečtěte si doporučení, jak vyřešit chyby a upozornění, s příklady.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895932"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906212"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Upozornění a chyby převodu kreslení
 
@@ -159,7 +159,7 @@ K **redundantAttribution** upozornění dojde, pokud manifest obsahuje redundant
 
 #### <a name="how-to-fix-redundantattribution"></a>*Jak opravit redundantAttribution*
 
-Chcete-li opravit * *redundantAttribution* upozornění, odeberte nadbytečné nebo konfliktní vlastnosti objektu.
+Chcete-li opravit **redundantAttribution* upozornění, odeberte nadbytečné nebo konfliktní vlastnosti objektu.
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -175,7 +175,7 @@ K **manifestWarning** dojde v případě, že manifest obsahuje objekty UnitProp
 
 #### <a name="how-to-fix-manifestwarning"></a>*Jak opravit manifestWarning*
 
-Chcete-li opravit **manifestWarning** , odeberte nepoužitý `unitProperties` `zoneProperties` objekt nebo z manifestu nebo přidejte popisek jednotky nebo zóny k vykreslování tak, aby objekt Properties byl použit během převodu.
+Chcete-li opravit **manifestWarning**, odeberte nepoužitý `unitProperties` `zoneProperties` objekt nebo z manifestu nebo přidejte popisek jednotky nebo zóny k vykreslování tak, aby objekt Properties byl použit během převodu.
 
 ## <a name="wall-warnings"></a>Upozornění na zeď
 
@@ -267,7 +267,7 @@ Následující obrázek ukazuje zónu, která neobsahuje popisek.
 
 #### <a name="how-to-fix-zonewarning"></a>*Jak opravit zoneWarning*
 
-Chcete-li opravit **zoneWarning** , ověřte, zda má každá zóna jeden popisek.
+Chcete-li opravit **zoneWarning**, ověřte, zda má každá zóna jeden popisek.
 
 ## <a name="label-warnings"></a>Upozornění popisku
 
@@ -291,7 +291,7 @@ Následující obrázek ukazuje popisek, který se nachází uvnitř dvou zón.
 
 #### <a name="how-to-fix-labelwarning"></a>*Jak opravit labelWarning*
 
-Pokud chcete opravit **labelWarning** , ujistěte se, že:
+Pokud chcete opravit **labelWarning**, ujistěte se, že:
 
 * Všechny popisky jednotek jsou uvnitř jednotek.
 * Všechny popisky zóny jsou uvnitř zón.
@@ -311,7 +311,7 @@ K chybě **invalidArchiveFormat** dojde také v případě, že je archiv zip pr
 
 Pokud chcete opravit chybu **invalidArchiveFormat** , ověřte, že:
 
-* Název souboru archivu končí na _. zip_ .
+* Název souboru archivu končí na _. zip_.
 * Váš archiv ZIP obsahuje data.
 * Můžete otevřít archiv ZIP.
 
@@ -330,7 +330,7 @@ Pokusili jste se nahrát balíček pro kreslení s nesprávným `udid` parametre
 Pokud chcete opravit chybu **invalidUserData** , ověřte, že:
 
 * Zadali jste správný `udid` pro nahraný balíček.
-* Pro účet Azure Maps, který jste použili k nahrání balíčku pro kreslení, je povolený Azure Maps tvůrce.
+* Pro účet Azure Maps, který jste použili k nahrání balíčku pro kreslení, je povolený Azure Maps Creator (Preview).
 * Požadavek rozhraní API na službu převodu obsahuje klíč předplatného pro Azure Maps účet, který jste použili k nahrání balíčku pro kreslení.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -347,7 +347,7 @@ K **dwgError** dojde v případě, že balíček pro kreslení obsahuje soubor D
 
 #### <a name="how-to-fix-dwgerror"></a>*Jak opravit dwgError*
 
-Pokud chcete opravit **dwgError** , zkontrolujte _manifest.jsv_ souboru a ověřte, že:
+Pokud chcete opravit **dwgError**, zkontrolujte _manifest.jsv_ souboru a ověřte, že:
 
 * Všechny soubory DWG v archivu ZIP jsou platné kresby formátu DWG AutoCADu, v AutoCADu je otevřete. Odeberte nebo opravte všechny neplatné výkresy.
 * Seznam souborů DWG v _manifest.js_  se shoduje se soubory DWG v archivu zip.
@@ -506,4 +506,4 @@ Pokud chcete opravit chybu **verticalPenetrationError** , přečtěte si informa
 > [Jak používat Azure Maps pro vykreslování – Vizualizér chyb](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [Tvůrce pro mapování vnitřníchy](creator-indoor-maps.md)
+> [Creator (Preview) pro mapování vnitřních verzí](creator-indoor-maps.md)

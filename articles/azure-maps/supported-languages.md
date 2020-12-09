@@ -1,19 +1,19 @@
 ---
-title: Podpora lokalizace | Mapy Microsoft Azure
+title: Podpora lokalizace pomocí map Microsoft Azure
 description: Podívejte se, které oblasti Azure Maps podporuje se službami, jako jsou mapy, hledání, směrování, počasí a incidenty provozu. Přečtěte si, jak nastavit parametr zobrazení.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037690"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904512"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -22,10 +22,10 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
 
-Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
+Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Name                   |  Maps | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Název                   |  Mapy | Search | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Nás
 | EN-AU      | Angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN-NZ      | Angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| cs-CZ      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| en-US      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
 | náhl-PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -129,10 +129,10 @@ Ovlivněné služby Azure Maps REST:
  * Získat reverzní adresu pro hledání
  * Získat opačnou ulici v adrese hledání
  * Po vyhledání v geometrii
- * Adresa pro vystavení dávky ve verzi Preview
- * Adresa pro zpětný náhled dávky
+ * Vystavit dávku adres hledání
+ * Adresa pro vrácení zpět dávky po hledání
  * Vyhledávejte po trase
- * Vyúčtování přibližné dávky ve verzi Preview
+ * Vyfiltrovat nepřibližnou dávku po hledání
 
  
 ### <a name="sdks"></a>Sady SDK
@@ -147,7 +147,7 @@ Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i
 
 Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazit         | Description                            |  Maps | Hledat | Ovládací prvek Mapa JS |
+| Zobrazit         | Description                            |  Mapy | Search | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
 | AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |
