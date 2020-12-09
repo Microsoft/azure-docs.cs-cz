@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780049"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922256"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -71,7 +71,7 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
   Cena za výpočetní jednotku ve vašem měřítku je na jednu repliku. [Zvýhodněné hybridní využití Azureová](https://azure.microsoft.com/pricing/hybrid-benefit/) cena se použije pro automatické čtení replik škálování. Ve výchozím nastavení vytvoříme primární repliku a jednu repliku jen pro čtení na databázi s více instancemi.  Uživatelé můžou upravit celkový počet replik, včetně primární z 1-5.
 
-- **Úložiště** :
+- **Úložiště**:
 
   Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. V úrovni škálování se vám bude účtovat úložiště databáze na základě skutečného přidělení. Úložiště se automaticky přiděluje mezi 40 GB a 100 TB, a to v přírůstcích po 10 GB. V případě potřeby můžete v případě potřeby více datových souborů zvětšit. Databáze s škálovatelným škálováním je vytvořená s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
 
@@ -87,7 +87,7 @@ Následující diagram znázorňuje různé typy uzlů v databázi s škálovate
 
 Databáze v rámci škálování obsahuje následující různé typy komponent:
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Výpočetní prostředky
 
 Výpočetní uzel je v místě, kde je relační modul životního prostředí. Toto je místo, kde dochází k jazyku, dotazu a zpracování transakcí. Všechny interakce uživatelů s databází škálování na úrovni služeb probíhají prostřednictvím těchto výpočetních uzlů. Výpočetní uzly mají mezipaměti založené na SSD (s RBPEXm rozšířením fondu vyrovnávací paměti v předchozím diagramu) k minimalizaci počtu síťových přenosů, které jsou nutné k načtení stránky dat. Je k dispozici jeden primární výpočetní uzel, ve kterém jsou zpracovávány všechny úlohy a zápisy čtení a transakcí. K dispozici je jeden nebo více sekundárních výpočetních uzlů, které fungují jako aktivní pohotovostní uzly pro účely převzetí služeb při selhání, a také fungovat jako výpočetní uzly jen pro čtení pro přesměrování zpracování úloh čtení (Pokud je tato funkce požadovaná).
 
@@ -231,7 +231,6 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Migrace databází s In-Memory objekty OLTP | Měřítko podporuje podmnožinu objektů In-Memory OLTP, včetně paměťově optimalizovaných typů tabulek, proměnných tabulky a nativně kompilovaných modulů. Pokud se ale v databázi, kterou migrujete, vyskytuje libovolný druh In-Memory objektů OLTP, migrace z úrovně Premium a Pro důležité obchodní informace na škálování služby se nepodporuje. Chcete-li migrovat takovou databázi do škálování, je nutné vyřadit všechny In-Memory objekty OLTP a jejich závislosti. Po migraci databáze je možné tyto objekty znovu vytvořit. Odolné a netrvanlivé paměťově optimalizované tabulky se v současné době nepodporují a musí se znovu vytvořit jako diskové tabulky.|
 | Geografická replikace  | Pro Azure SQL Database škálování na úrovni služby ještě nemůžete konfigurovat geografickou replikaci. |
 | Kopie databáze | Kopie databáze na škále je teď ve verzi Public Preview. |
-| Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako vlastní klíč nebo BYOK) je aktuálně ve verzi Public Preview. |
 | Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
 | Query Performance Insights | Dotazy na výkon dotazů se v současné době nepodporují pro databáze s škálovatelnými škálováními. |
 | Zmenšit databázi | Příkaz DBCC SHRINKDATABASE nebo DBCC SHRINKFILE není aktuálně podporován pro databáze s měřítkem. |

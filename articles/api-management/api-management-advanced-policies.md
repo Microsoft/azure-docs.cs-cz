@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638899"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919446"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady služby API Management
 
@@ -78,7 +78,7 @@ Druhá zásada toku řízení je v odchozím oddílu a podmíněně aplikuje zá
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -854,7 +854,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí. Tato sada zásad proměnné vytvoří `isMobile` logickou [kontextovou](api-management-policy-expressions.md#ContextVariables) proměnnou, která je nastavena na hodnotu true, pokud `User-Agent` Hlavička požadavku obsahuje text `iPad` nebo `iPhone` .
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>Elementy
@@ -868,7 +868,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 | Atribut | Popis                                                              | Povinné |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Název proměnné.                                                | Ano      |
-| value     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Ano      |
+| hodnota     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Ano      |
 
 ### <a name="usage"></a>Využití
 
@@ -956,7 +956,7 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 | source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Ano      | –     |
 | severity  | Určuje úroveň závažnosti trasování. Povolené hodnoty jsou `verbose` , `information` , `error` (od nejnižší po nejvyšší). | Ne       | Verbose |
 | name      | Název vlastnosti.                                                                                                     | Ano      | –     |
-| value     | Hodnota vlastnosti                                                                                                    | Ano      | –     |
+| hodnota     | Hodnota vlastnosti                                                                                                    | Ano      | –     |
 
 ### <a name="usage"></a>Využití
 

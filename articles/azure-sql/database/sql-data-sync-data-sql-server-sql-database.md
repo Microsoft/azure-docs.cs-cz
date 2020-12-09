@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531135"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922306"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -81,6 +81,14 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 | **Výhody** | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci <br/>– Podpora spravované instance Azure SQL |
 | **Nevýhody** | -Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database <br/>– Náklady vysoké údržby |
 
+## <a name="private-link-for-data-sync-preview"></a>Privátní odkaz pro synchronizaci dat (Preview)
+Nová funkce privátního odkazu (ve verzi Preview) umožňuje vybrat privátní koncový bod spravovaný službou pro navázání zabezpečeného připojení mezi službou synchronizace a databázemi členů nebo centra během procesu synchronizace dat. Privátní koncový bod spravované služby je privátní IP adresa v konkrétní virtuální síti a podsíti. V rámci synchronizace dat je privátní koncový bod spravovaný službou vytvořen společností Microsoft a používá ji výhradně služba synchronizace dat pro danou operaci synchronizace. Před nastavením privátního odkazu si přečtěte [Obecné požadavky](sql-data-sync-data-sql-server-sql-database.md#general-requirements) této funkce. 
+
+![Privátní odkaz pro synchronizaci dat](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> Je nutné ručně schválit privátní koncový bod spravované služby na stránce **připojení privátního koncového bodu** v Azure Portal během nasazování skupiny synchronizace nebo pomocí prostředí PowerShell.
+
 ## <a name="get-started"></a>Začínáme 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Nastavení synchronizace dat v Azure Portal
@@ -126,6 +134,8 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 - Pro členy synchronizace i pro centrum musí být povolena izolace snímku. Další informace najdete v tématu [Izolace snímku na SQL Serveru](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
+- Aby bylo možné používat privátní propojení se synchronizací dat, musí být databáze členů i centra hostovány v Azure (stejné nebo jiné oblasti), ve stejném typu cloudu (např. ve veřejném cloudu nebo v cloudovém cloudu). Pro použití privátního propojení se navíc musí registrovat poskytovatelé prostředků Microsoft. Network pro odběry, které hostují rozbočovač a členské servery. Nakonec musíte ručně schválit privátní odkaz pro synchronizaci dat během konfigurace synchronizace v části připojení privátního koncového bodu v Azure Portal nebo prostřednictvím PowerShellu. Další informace o tom, jak schválit privátní propojení, najdete v tématu [nastavení synchronizace dat SQL](./sql-data-sync-sql-server-configure.md). Po schválení privátního koncového bodu služby spravovaného službou se veškerá komunikace mezi synchronizační službou a databázemi členských nebo hub provede přes privátní odkaz. Pokud chcete tuto funkci povolit, můžete aktualizovat existující skupiny synchronizace.
+
 ### <a name="general-limitations"></a>Obecná omezení
 
 - Tabulka nemůže mít sloupec identity, který není primárním klíčem.
@@ -169,6 +179,9 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 > V jedné skupině synchronizace může být až 30 koncových bodů, pokud je k dispozici jenom jedna skupina synchronizace. Pokud existuje více než jedna skupina synchronizace, celkový počet koncových bodů napříč všemi skupinami synchronizace nesmí překročit 30. Pokud databáze patří do více skupin synchronizace, počítá se jako několik koncových bodů, nikoli jedna.
 
 ### <a name="network-requirements"></a>Požadavky sítě
+
+> [!NOTE]
+> Použijete-li privátní odkaz, tyto požadavky na síť se nevztahují. 
 
 Po navázání skupiny synchronizace se musí služba synchronizace dat připojit k databázi centra. V době, kdy vytváříte skupinu synchronizace, musí mít server SQL Azure ve svém nastavení následující konfiguraci `Firewalls and virtual networks` :
 

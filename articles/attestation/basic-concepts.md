@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748684"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921610"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -30,7 +30,7 @@ Níže jsou uvedené základní koncepty týkající se Microsoft Azure ověřen
 
 Zprostředkovatel ověření identity patří do poskytovatele prostředků Azure s názvem Microsoft. Attestation. Poskytovatel prostředků je koncový bod služby, který poskytuje kontrakt Azure pro ověření identity REST a je nasazený pomocí [Azure Resource Manager](../azure-resource-manager/management/overview.md). Každý poskytovatel ověření identity respektuje konkrétní, zjistitelnou zásadu. 
 
-Poskytovatelé ověřování identity se vytvoří s výchozími zásadami pro každý typ TEE (Všimněte si, že VBS enklávy nemá žádné výchozí zásady). Další podrobnosti o výchozích zásadách pro SGX najdete v tématu [Příklady zásad ověřování](policy-examples.md) .
+Poskytovatelé ověřování identity se vytvoří s výchozími zásadami pro každý typ ověření identity (Všimněte si, že VBS enklávy nemá žádné výchozí zásady). Další podrobnosti o výchozích zásadách pro SGX najdete v tématu [Příklady zásad ověřování](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Regionální výchozí zprostředkovatel
 
@@ -50,13 +50,13 @@ Požadavek na ověření identity je serializovaný objekt JSON odeslaný klient
 - "Quot" – hodnota vlastnosti "Quota" je řetězec obsahující Base64URL zakódované reprezentace citace ověřování.
 - "EnclaveHeldData" – hodnota vlastnosti "EnclaveHeldData" je řetězec obsahující Base64URL kódované reprezentace enklávy uchovávaných dat.
 
-Azure Attestation ověří zadanou uvozovku z TEE a pak zajistí, že se hodnota hash SHA256 poskytnutého enklávy dat vyjadřuje v prvních 32 bajtech pole reportData v uvozovkách. 
+Azure Attestation ověří zadanou uvozovku a pak zajistí, aby se hodnota hash SHA256 zadaného enklávy dat zadala v prvních 32 bajtech pole reportData v uvozovkách. 
 
 ## <a name="attestation-policy"></a>Zásady ověřování identity
 
 Zásady ověření identity se používají ke zpracování legitimace ověřování a dají se konfigurovat pro zákazníky. V jádru služby Azure Attestation je modul zásad, který zpracovává deklarace identity tvořící legitimaci. Zásady se používají k určení, jestli ověření identity Azure vystavuje token ověření na základě legitimace (nebo ne). tím se schválí i ověření identity (nebo ne). Proto by selhání při předání všech zásad způsobilo vydání tokenu JWT.
 
-Pokud výchozí zásada TEE ve zprostředkovateli ověření identity nesplňuje požadavky, zákazníci budou moct vytvářet vlastní zásady v jakékoli oblasti, kterou podporuje Azure Attestation. Správa zásad je klíčová funkce poskytovaná zákazníkům pomocí ověření identity Azure. Zásady budou specifické pro TEE a dají se použít k identifikaci enclaves nebo k přidání deklarací do výstupního tokenu nebo k úpravě deklarací v výstupním tokenu. 
+Pokud výchozí zásady ve zprostředkovateli ověření identity nesplňují požadavky, zákazníci budou moct vytvářet vlastní zásady v jakékoli oblasti podporované službou Azure Attestation. Správa zásad je klíčová funkce poskytovaná zákazníkům pomocí ověření identity Azure. Zásady budou specifické pro typ ověření identity a dají se použít k identifikaci enclaves nebo přidání deklarací identity do výstupního tokenu nebo k úpravě deklarací v výstupním tokenu. 
 
 Podívejte [se na příklady zásad ověření identity](policy-examples.md) pro výchozí obsah a ukázky zásad.
 

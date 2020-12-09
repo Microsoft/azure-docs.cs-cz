@@ -4,12 +4,12 @@ description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186275"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920586"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -34,12 +34,15 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Nastavení prostředku Application Insights
 
-1. Přihlaste se k webu [Azure Portal][portal].
+1. Přihlaste se na web [Azure Portal][portal].
 2. [Vytvoření prostředku Application Insights](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a>Nastavení sady Node.js SDK
 
 Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
+
+> [!IMPORTANT]
+> Nové oblasti Azure **vyžadují** použití připojovacích řetězců místo klíčů instrumentace. [Připojovací řetězec](./sdk-connection-string.md?tabs=nodejs) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
 
 1. Zkopírujte klíč instrumentace prostředku (označovaný také jako *ikey*) z nově vytvořeného prostředku. Application Insights pomocí instrumentačního klíče mapuje data na váš prostředek Azure. Než bude sada SDK moci váš instrumentační klíč použít, musíte jej zadat v proměnné prostředí nebo ve svém kódu.  
 

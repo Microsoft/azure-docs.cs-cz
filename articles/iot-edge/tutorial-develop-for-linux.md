@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b32fb0aa94e0fcc23edd6aae802cfd4162fa39f1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572214"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920845"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
 
@@ -32,9 +32,6 @@ V tomto kurzu se naučíte:
 > * Pomocí nástrojů IoT Edge pro Visual Studio Code vytvořte nový projekt.
 > * Sestavte projekt jako kontejner a uložte ho do služby Azure Container Registry.
 > * Nasaďte kód do zařízení IoT Edge.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -55,6 +52,8 @@ Azure IoT Edge zařízení v systému Linux:
 Cloudové prostředky:
 
 * [Centrum IoT](../iot-hub/iot-hub-create-through-portal.md) na bezplatné nebo standardní úrovni v Azure.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
@@ -266,7 +265,7 @@ Visual Studio Code má teď přístup k vašemu registru kontejneru, takže je �
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Pokud narazíte na chyby při sestavování a vkládání image modulu, často je třeba provést konfiguraci Docker na vašem vývojovém počítači. Ke kontrole konfigurace použijte následující kontroly:
 

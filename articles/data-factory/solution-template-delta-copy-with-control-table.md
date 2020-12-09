@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461216"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921797"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílová kopie z databáze s řídicí tabulkou
 
@@ -45,7 +45,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 - *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, který se používá k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce je obvykle *DateTime*, *int* nebo podobný.
 - *Data_Destination_Container* je kořenová cesta k místu, kam se data zkopírují do cílového úložiště.
 - *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři místa, kam se zkopírují data do cílového úložiště.
-- *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost Azure synapse Analytics (dříve SQL DW)).
+- *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost Azure synapse Analytics).
 - *Data_Destination_Folder_Path* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost "systém souborů" nebo "Azure Data Lake Storage Gen1").
 - *Control_Table_Table_Name* je tabulka externích ovládacích prvků, která ukládá hodnotu horní meze.
 - *Control_Table_Column_Name* je sloupec v tabulce externího ovládacího prvku, který ukládá hodnotu s horním limitem.

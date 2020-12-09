@@ -1,19 +1,19 @@
 ---
 title: Umístění prostředku šablony
-description: Popisuje, jak nastavit umístění prostředků v šabloně Azure Resource Manager.
+description: Popisuje, jak nastavit umístění prostředku v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
-ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613692"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922408"
 ---
 # <a name="set-resource-location-in-arm-template"></a>Nastavení umístění prostředku v šabloně ARM
 
-Při nasazování šablony Azure Resource Manager (ARM) je nutné zadat umístění každého prostředku. Toto umístění nemusí být stejné jako umístění skupiny prostředků.
+Při nasazování šablony Azure Resource Manager (šablona ARM) je nutné zadat umístění každého prostředku. Toto umístění nemusí být stejné jako umístění skupiny prostředků.
 
 ## <a name="get-available-locations"></a>Získat dostupná umístění
 
@@ -96,5 +96,5 @@ Následující příklad ukazuje účet úložiště, který je nasazený do um�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](template-functions.md).
+* Úplný seznam funkcí šablon najdete v tématu [funkce šablon ARM](template-functions.md).
 * Další informace o souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

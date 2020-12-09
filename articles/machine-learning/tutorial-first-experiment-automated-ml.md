@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359795"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921886"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -134,7 +134,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
         Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Rozšířená nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
+        Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
             **Dokončení této akce trvá několik minut.** 
@@ -152,7 +152,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
-        Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolení
+        Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
         Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádné
         Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 1 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
         Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 2
@@ -241,7 +241,7 @@ V tomto kurzu automatizovaného strojového učení jste pomocí automatizované
 > [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
-+ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .
 + Přečtěte si další informace o [featurization](how-to-configure-auto-features.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-connect-data-ui.md#profile).
 

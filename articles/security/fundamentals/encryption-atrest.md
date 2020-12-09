@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492280"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920777"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure v klidovém umístění
 
@@ -33,7 +33,7 @@ Microsoft Azure obsahuje nástroje pro ochranu dat v souladu s požadavky vaší
 
 ## <a name="what-is-encryption-at-rest"></a>Co je šifrování v klidovém umístění?
 
-Šifrování v klidovém umístění je kódování (šifrování) dat, když je trvalá. Šifrování v návrzích REST v Azure používá symetrické šifrování k rychlému šifrování a dešifrování velkých objemů dat podle jednoduchého koncepčního modelu:
+Šifrování je bezpečné kódování dat sloužící k ochraně důvěrných dat. Šifrování v návrzích REST v Azure používá symetrické šifrování k rychlému šifrování a dešifrování velkých objemů dat podle jednoduchého koncepčního modelu:
 
 - Symetrický šifrovací klíč se používá k šifrování dat při zápisu do úložiště.
 - Stejný šifrovací klíč se používá k dešifrování těchto dat, protože jsou připravená k použití v paměti.

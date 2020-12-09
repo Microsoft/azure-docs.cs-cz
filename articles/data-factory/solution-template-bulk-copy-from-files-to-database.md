@@ -7,13 +7,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461266"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920427"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Hromadné kopírování ze souborů do databáze
 
@@ -55,7 +55,7 @@ V současné době tato šablona podporuje pouze kopírování dat ve formátu *
     ![Kontrola kanálu](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Pokud jste ve výše uvedeném **kroku 2** zvolili **Azure synapse Analytics (dřív SQL DW)** jako cíl dat, musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje základ služby Azure synapse Analytics. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje cestu k *úložišti* pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
+    > Pokud jste jako cíl dat v **kroku 2** zvolili **Azure synapse Analytics** , musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje základ služby Azure synapse Analytics. Jak ukazuje následující snímek obrazovky, šablona automaticky vygeneruje cestu k *úložišti* pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
         
     ![Základní nastavení](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

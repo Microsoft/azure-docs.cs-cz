@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: ae96a81485064637db9e23b7164021bfbc952162
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 12/09/2020
+ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555940"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920864"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento kurz ukazuje **kopírování několika tabulek z Azure SQL Database do Azure synapse Analytics (dřív SQL DW)**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například kopírujete tabulky z SQL Server/Oracle do Azure SQL Database/Azure synapse Analytics (dříve SQL DW)/Azure objekt BLOB a kopírujete různé cesty z objektu blob do tabulek Azure SQL Database.
+Tento kurz ukazuje **kopírování několika tabulek z Azure SQL Database do Azure synapse Analytics**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například kopírujete tabulky z SQL Server/Oracle do služby Azure SQL Database/Azure synapse Analytics/Azure Blob a kopírujete různé cesty z objektu blob do tabulek Azure SQL Database.
 
 > [!NOTE]
 > - Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
@@ -31,8 +31,8 @@ Tento kurz zahrnuje následující základní kroky:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
-> * Vytvoření Azure SQL Database, Azure synapse Analytics (dříve SQL DW) a Azure Storage propojených služeb.
-> * Vytváření Azure SQL Database a datových sad Azure synapse Analytics (dříve SQL DW)
+> * Vytvářejte Azure SQL Database, Azure synapse Analytics a Azure Storage propojené služby.
+> * Vytváření Azure SQL Database a datových sad Azure synapse Analytics
 > * Vytvořte kanál pro vyhledání tabulek ke zkopírování a dalšího kanálu k provedení skutečné operace kopírování. 
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
@@ -40,42 +40,42 @@ Tento kurz zahrnuje následující základní kroky:
 Tento kurz používá Azure Portal. Další informace o vytvoření datové továrny pomocí jiných nástrojů nebo sad SDK najdete v tématu [Šablony Rychlý start](quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
-V tomto scénáři máte v Azure SQL Database několik tabulek, které chcete zkopírovat do Azure synapse Analytics (dřív SQL DW). Tady je logická posloupnost kroků tohoto pracovního postupu, které se provádějí v kanálech:
+V tomto scénáři máte v Azure SQL Database několik tabulek, které chcete zkopírovat do služby Azure synapse Analytics. Tady je logická posloupnost kroků tohoto pracovního postupu, které se provádějí v kanálech:
 
 ![Pracovní postup](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * První kanál vyhledá seznam tabulek, které je potřeba zkopírovat do úložišť dat jímky.  Další možností je udržovat tabulku metadat se seznamem všech tabulek, které je potřeba zkopírovat do úložišť dat jímky. Kanál potom aktivuje jiný kanál, který postupně prochází všechny tabulky v databázi a provádí operaci kopírování dat.
-* Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopírujte příslušnou tabulku v Azure SQL Database do odpovídající tabulky ve službě Azure synapse Analytics (dřív SQL DW) pomocí [připravené kopie prostřednictvím služby Blob Storage a základu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) pro nejlepší výkon. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
+* Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopírujte konkrétní tabulku v Azure SQL Database do odpovídající tabulky ve službě Azure synapse Analytics pomocí [připravené kopie prostřednictvím služby Blob Storage a základu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) pro nejlepší výkon. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 * **Účet Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
 * **Azure SQL Database**. Tato databáze obsahuje zdrojová data. 
-* **Azure synapse Analytics (dřív SQL DW)**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
+* **Azure synapse Analytics**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
 
-### <a name="prepare-sql-database-and-azure-synapse-analytics-formerly-sql-dw"></a>Příprava SQL Database a Azure synapse Analytics (dřív SQL DW)
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Příprava SQL Database a Azure synapse Analytics 
 
-**Příprava zdrojové databáze Azure SQL Database** :
+**Příprava zdrojové databáze Azure SQL Database**:
 
-Vytvořte v SQL Database databázi s ukázkovými daty Adventure Works LT, [a to podle článku Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) . V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics (dřív SQL DW).
+Vytvořte v SQL Database databázi s ukázkovými daty Adventure Works LT, [a to podle článku Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) . V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics.
 
-**Příprava služby synapse Analytics pro službu Azure Data Sink (dříve SQL DW)** :
+**Příprava jímky Azure synapse Analytics**:
 
-1. Pokud nemáte pracovní prostor Azure synapse Analytics (dřív SQL DW), přečtěte si článek Začínáme [se službou Azure synapse Analytics](..\synapse-analytics\get-started.md) , kde najdete kroky pro jeho vytvoření.
+1. Pokud nemáte pracovní prostor analýzy Azure synapse, přečtěte si článek Začínáme [se službou Azure synapse Analytics](..\synapse-analytics\get-started.md) , kde najdete kroky pro jeho vytvoření.
 
-1. Vytváření odpovídajících schémat tabulek v Azure synapse Analytics (dřív SQL DW) K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+1. Vytváření odpovídajících schémat tabulek v Azure synapse Analytics K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
-Pro SQL Database a Azure synapse Analytics (dříve SQL DW) Umožněte službám Azure přístup k SQL serveru. Zajistěte, aby **byla pro váš** Server zapnutá možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** . Toto nastavení umožňuje službě Data Factory číst data z vašeho Azure SQL Database a zapisovat data do Azure synapse Analytics (dřív SQL DW). 
+Pro SQL Database i pro Azure synapse Analytics umožněte službám Azure přístup k SQL serveru. Zajistěte, aby **byla pro váš** Server zapnutá možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** . Toto nastavení umožňuje službě Data Factory číst data z vašeho Azure SQL Database a zapisovat data do Azure synapse Analytics. 
 
 Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpečení > brány firewall a virtuální sítě > nastavte **Povolit službám a prostředkům Azure přístup k tomuto serveru** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na web [Azure Portal](https://portal.azure.com). 
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
 1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory pro**  >  **integraci** prostředků  >  **Data Factory**. 
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -106,7 +106,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 Vytvoříte propojené služby, které propojí vaše úložiště dat a výpočetní prostředí s datovou továrnou. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti dat za běhu. 
 
-V tomto kurzu propojíte Azure SQL Database, Azure synapse Analytics (dříve SQL DW) a Azure Blob Storage úložiště dat do vaší datové továrny. Azure SQL Database je zdrojové úložiště dat. Azure synapse Analytics (dřív SQL DW) je úložiště dat jímky a cíle. Azure Blob Storage slouží k přípravě dat před načtením dat do služby Azure synapse Analytics (dříve SQL DW) pomocí základu. 
+V tomto kurzu propojíte Azure SQL Database, Azure synapse Analytics a Azure Blob Storage úložiště dat do vaší datové továrny. Azure SQL Database je zdrojové úložiště dat. Azure synapse Analytics je úložiště dat jímky a cíle. Azure Blob Storage slouží k přípravě dat, než se data načtou do Azure synapse Analytics pomocí základu. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database pro zdroj
 V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi v Azure SQL Database s datovou továrnou. 
@@ -134,11 +134,11 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi v 
     například Kliknutím na **vytvořit** uložte propojenou službu.
 
 
-### <a name="create-the-sink-azure-synapse-analytics-formerly-sql-dw-linked-service"></a>Vytvoření propojené služby Azure synapse Analytics (dříve SQL DW) jímky
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>Vytvoření propojené služby Azure synapse Analytics jímky
 
 1. Na kartě **Připojení** znovu klikněte na **+ Nové** na panelu nástrojů. 
-1. V okně **Nová propojená služba** vyberte **Azure synapse Analytics (dřív SQL DW)** a klikněte na **pokračovat**. 
-1. V okně **Nová propojená služba (dříve SQL DW))** proveďte následující kroky: 
+1. V okně **Nová propojená služba** vyberte **Azure synapse Analytics** a klikněte na **pokračovat**. 
+1. V okně **Nová propojená služba (Azure synapse Analytics)** proveďte následující kroky: 
    
     a. Jako **Název** zadejte **AzureSqlDWLinkedService**.
      
@@ -171,7 +171,7 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
 
 Vstupní datová sada **AzureSqlDatabaseDataset** odkazuje na službu **AzureSqlDatabaseLinkedService**. Propojená služba určuje připojovací řetězec pro připojení k databázi. Datová sada určuje název databáze a tabulky obsahující zdrojová data. 
 
-Výstupní datová sada **AzureSqlDWDataset** odkazuje na službu **AzureSqlDWLinkedService**. Propojená služba Určuje připojovací řetězec pro připojení ke službě Azure synapse Analytics (dříve SQL DW). Datová sada určuje databázi a tabulku, do kterých se data zkopírují. 
+Výstupní datová sada **AzureSqlDWDataset** odkazuje na službu **AzureSqlDWLinkedService**. Propojená služba Určuje připojovací řetězec pro připojení ke službě Azure synapse Analytics. Datová sada určuje databázi a tabulku, do kterých se data zkopírují. 
 
 V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v definicích datových sad. Místo toho aktivita ForEach předává název tabulky do aktivity kopírování za běhu. 
 
@@ -187,12 +187,12 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 1. Přepněte na kartu **připojení** , vyberte libovolnou tabulku pro **tabulku**. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Dotaz slouží k extrakci dat z databáze. Případně můžete kliknout na tlačítko **Upravit** a jako název tabulky zadat **dbo.** název. 
  
 
-### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>Vytvoření datové sady pro jímku Azure synapse Analytics (dřív SQL DW)
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>Vytvoření datové sady pro službu Azure synapse Analytics pro jímku 
 
 1. Klikněte na symbol **+ (plus)** v levém podokně a pak klikněte na **Datová sada**. 
-1. V okně **Nová datová sada** vyberte **Azure synapse Analytics (dřív SQL DW)** a pak klikněte na **pokračovat**.
+1. V okně **Nová datová sada** vyberte **Azure synapse Analytics** a potom klikněte na **pokračovat**.
 1. V okně **nastavit vlastnosti** v části **název** zadejte **AzureSqlDWDataset**. V části **propojená služba** vyberte **AzureSqlDWLinkedService**. Pak klikněte na **OK**.
-1. Přepněte na kartu **Parametry** , klikněte na **+Nové** a jako název parametru zadejte **DWTableName**. Znovu klikněte na **+ Nový** a jako název parametru zadejte **DWSchema** . Pokud zkopírujete nebo vložíte tento název ze stránky, zajistěte, aby na konci *DWTableName* a *DWSchema* nebyl žádný **znak mezery** na konci. 
+1. Přepněte na kartu **Parametry**, klikněte na **+Nové** a jako název parametru zadejte **DWTableName**. Znovu klikněte na **+ Nový** a jako název parametru zadejte **DWSchema** . Pokud zkopírujete nebo vložíte tento název ze stránky, zajistěte, aby na konci *DWTableName* a *DWSchema* nebyl žádný **znak mezery** na konci. 
 1. Přepněte na kartu **Připojení**. 
 
     1. V části **tabulka** ověřte možnost **Upravit** . Vyberte do prvního vstupního pole a klikněte na odkaz **Přidat dynamický obsah** níže. Na stránce **Přidat dynamický obsah** klikněte v části **parametry** na **DWSchema** , který automaticky vyplní textové pole výrazu Top `@dataset().DWSchema` a pak klikněte na **Dokončit**.  
@@ -210,9 +210,9 @@ V tomto kurzy vytvoříte dva kanály: **IterateAndCopySQLTables** a **GetTableL
 Kanál **GetTableListAndTriggerCopyData** provádí dvě akce:
 
 * Vyhledá systémové tabulky Azure SQL Database a získá seznam tabulek, které se mají zkopírovat.
-* Aktivuje kanál **IterateAndCopySQLTables** , který provede vlastní kopírování dat.
+* Aktivuje kanál **IterateAndCopySQLTables**, který provede vlastní kopírování dat.
 
-Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopíruje data z tabulky v Azure SQL Database do služby Azure synapse Analytics (dříve SQL DW) pomocí připravené kopie a základu.
+Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro každou tabulku v seznamu kopíruje data z tabulky v Azure SQL Database do služby Azure synapse Analytics pomocí připravené kopie a základu.
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>Vytvoření kanálu IterateAndCopySQLTables
 
@@ -265,7 +265,7 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
     1. Klikněte na vstupní pole pro hodnotu parametru DWSchema-> vyberte níže **Přidat dynamický obsah** a `@item().TABLE_SCHEMA` jako skript zadejte výraz-> vyberte **Dokončit**.
     1. V případě metody Copy vyberte **základnu**. 
     1. Zrušte zaškrtnutí možnosti **použít výchozí typ** . 
-    1. Klikněte na vstupní pole **Skript před kopírováním** , vyberte dole **Přidat dynamický obsah** , zadejte následující výraz jako skript a vyberte **Dokončit**. 
+    1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
@@ -326,7 +326,7 @@ Tento kanál provádí dvě akce:
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
 
-1. Přejděte na kanály **GetTableListAndTriggerCopyData** , klikněte na **Přidat aktivační událost** na horním panelu nástrojů kanálu a potom klikněte na **aktivovat hned**. 
+1. Přejděte na kanály **GetTableListAndTriggerCopyData**, klikněte na **Přidat aktivační událost** na horním panelu nástrojů kanálu a potom klikněte na **aktivovat hned**. 
 
 1. Potvrďte spuštění na stránce **spuštění kanálu** a pak vyberte **Dokončit**.
 
@@ -393,15 +393,15 @@ Tento kanál provádí dvě akce:
     ```    
 1. Chcete-li přepnout zpět na zobrazení **spuštění kanálu** , klikněte na odkaz **všechny spuštěné kanály** v horní části nabídky s popisem cesty. Kliknutím na odkaz **IterateAndCopySQLTables** (pod sloupcem **název kanálu** ) zobrazte spuštění aktivit kanálu. Všimněte si, že pro každou tabulku ve výstupu **vyhledávací** aktivity je spuštěná jedna aktivita **kopírování** . 
 
-1. Potvrďte, že se data zkopírovala do cílové služby Azure synapse Analytics (dříve SQL DW), kterou jste použili v tomto kurzu. 
+1. Potvrďte, že se data zkopírovala do cílové služby Azure synapse Analytics, kterou jste použili v tomto kurzu. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
-> * Vytvoření Azure SQL Database, Azure synapse Analytics (dříve SQL DW) a Azure Storage propojených služeb.
-> * Vytváření Azure SQL Database a datových sad Azure synapse Analytics (dříve SQL DW)
+> * Vytvářejte Azure SQL Database, Azure synapse Analytics a Azure Storage propojené služby.
+> * Vytváření Azure SQL Database a datových sad Azure synapse Analytics
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu

@@ -4,15 +4,15 @@ description: Seznam metrik dostupných pro každý typ prostředku s Azure Monit
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 07/16/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1741331c57427c57507376afdb878edc18259b72
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306831"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921499"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -50,13 +50,12 @@ Použití nastavení diagnostiky je nejjednodušší způsob, jak směrovat metr
 > [!TIP]
 > Osvědčeným postupem je použít a nakonfigurovat [rozšíření Azure Diagnostics](diagnostics-extension-overview.md) k odeslání metrik výkonu HOSTOVANÉHO operačního systému do stejné Azure monitor databáze metriky, kde jsou uložené metriky platforem. Rozšíření směruje metriky hostovaného operačního systému prostřednictvím [vlastních](metrics-custom-overview.md) rozhraní API metrik. Pak můžete graf, upozornění a jinak používat metriky operačního systému hosta, jako jsou metriky platforem. Případně můžete také použít agenta Log Analytics k odeslání metriky hostovaného operačního systému do Azure Monitor protokolů/Log Analytics. Na tyto metriky se můžete dotazovat v kombinaci s nemetrickými daty. 
 
-Důležité Další informace najdete v tématu [Přehled agentů monitorování](agents-overview.md).    
+Důležité Další informace najdete v tématu [Přehled agentů monitorování](agents-overview.md).
 
 ## <a name="table-formatting"></a>Formátování tabulky
 
 > [!IMPORTANT] 
 > Tato nejnovější aktualizace přidá nový sloupec a změní pořadí metrik na abecední. Informace o přidaných objektech znamená, že následující tabulky mohou mít horizontální posuvník v dolní části, v závislosti na šířce okna prohlížeče. Pokud se domníváte, že jste neztratili nějaké informace, použijte posuvník a zobrazte celou tabulku.
-
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
@@ -77,7 +76,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |mashup_engine_private_bytes_metric|Ano|Počet privátních bajtů modulu M|Bajty|Průměr|Používání privátních bajtů procesy v hybridních hybridních modulech.|ServerResourceType|
 |mashup_engine_qpu_metric|Ano|QPU modulu M|Počet|Průměr|QPU využití hybridních procesů v hybridních modulech|ServerResourceType|
 |mashup_engine_virtual_bytes_metric|Ano|Virtuální bajty motoru M|Bajty|Průměr|Využití virtuálních bajtů procesy modulu hybridní webové aplikace|ServerResourceType|
-|memory_metric|Ano|Paměť|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
+|memory_metric|Ano|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
 |memory_thrashing_metric|Ano|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|ServerResourceType|
 |MemoryLimitHard|Ano|Paměť: limit paměti – pevný|Bajty|Průměr|Limit pevné paměti, z konfiguračního souboru.|ServerResourceType|
 |Hodnota memorylimithigh|Ano|Paměť: limit paměti – vysoká|Bajty|Průměr|Horní limit paměti, z konfiguračního souboru.|ServerResourceType|
@@ -157,7 +156,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |JVM. Memory. potvrzený|Ano|JVM. Memory. potvrzený|Bajty|Průměr|Paměť přiřazená k JVM v bajtech|Nasazení, AppName, pod|
 |JVM. Memory. max|Ano|JVM. Memory. max|Bajty|Maximum|Maximální množství paměti v bajtech, které lze použít pro správu paměti|Nasazení, AppName, pod|
 |JVM. Memory .Ed – použito|Ano|JVM. Memory .Ed – použito|Bajty|Průměr|Využitá paměť aplikace v bajtech|Nasazení, AppName, pod|
-|Process. CPU. Usage|Ano|Process. CPU. Usage|Procento|Průměr|Procento využití CPU App JVM|Nasazení, AppName, pod|
+|Process. CPU. Usage|Ano|Process. CPU. Usage|Procento|Průměr|Poslední využití CPU pro proces JVM|Nasazení, AppName, pod|
 |System. CPU. Usage|Ano|System. CPU. Usage|Procento|Průměr|Poslední využití CPU pro celý systém|Nasazení, AppName, pod|
 |Tomcat. Global. Error|Ano|Tomcat. Global. Error|Počet|Celkem|Globální chyba Tomcat|Nasazení, AppName, pod|
 |Tomcat. Global. Received|Ano|Tomcat. Global. Received|Bajty|Celkem|Celkový počet přijatých bajtů Tomcat|Nasazení, AppName, pod|
@@ -247,19 +246,19 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|BroadcastProcessedCount|Ano|Počet zpracovaných všesměrového vysílání|Počet|Průměr|Počet zpracovaných transakcí|Uzel, kanál, typ, stav|
+|BroadcastProcessedCount|Ano|BroadcastProcessedCountDisplayName|Počet|Průměr|Počet zpracovaných transakcí.|Uzel, kanál, typ, stav|
 |ConnectionAccepted|Ano|Přijatá připojení|Počet|Celkem|Přijatá připojení|Node|
 |ConnectionActive|Ano|Aktivní připojení|Počet|Průměr|Aktivní připojení|Node|
 |ConnectionHandled|Ano|Zpracovaná připojení|Počet|Celkem|Zpracovaná připojení|Node|
-|ConsensusEtcdraftCommittedBlockNumber|Ano|Konsensu Etcdraft potvrzené číslo bloku|Počet|Průměr|Blokové číslo posledního zapsaného bloku|Uzel, kanál|
+|ConsensusEtcdraftCommittedBlockNumber|Ano|ConsensusEtcdraftCommittedBlockNumberDisplayName|Počet|Průměr|Blokové číslo posledního bloku potvrzeno.|Uzel, kanál|
 |CpuUsagePercentageInDouble|Ano|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Node|
-|EndorserEndorsementFailures|Ano|Selhání potvrzení přítvrzování|Počet|Průměr|Počet neúspěšných potvrzení|Uzel, kanál, chaincode, chaincodeerror|
-|GossipLeaderElectionLeader|Ano|Vedoucí Gossip vedoucího procesu|Počet|Celkem|Partnerský uzel je vedoucí (1) nebo následný (0)|Uzel, kanál|
-|GossipMembershipTotalPeersKnown|Ano|Gossip členství celkem – počet známých partnerských vztahů|Počet|Průměr|Celkový počet známých partnerských uzlů|Uzel, kanál|
-|GossipStateHeight|Ano|Výška stavu Gossip|Počet|Průměr|Aktuální výška hlavní knihy|Uzel, kanál|
+|EndorserEndorsementFailures|Ano|EndorserEndorsementFailuresDisplayName|Počet|Průměr|Počet neúspěšných potvrzení|Uzel, kanál, chaincode, chaincodeerror|
+|GossipLeaderElectionLeader|Ano|GossipLeaderElectionLeaderDisplayName|Počet|Průměr|Partner je vedoucím (1) nebo následným (0).|Uzel, kanál|
+|GossipMembershipTotalPeersKnown|Ano|GossipMembershipTotalPeersKnownDisplayName|Počet|Průměr|Celkový počet známých partnerských uzlů.|Uzel, kanál|
+|GossipStateHeight|Ano|GossipStateHeightDisplayName|Počet|Průměr|Aktuální výška hlavní knihy.|Uzel, kanál|
 |IOReadBytes|Ano|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Node|
 |IOWriteBytes|Ano|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Node|
-|LedgerTransactionCount|Ano|Počet transakcí hlavní knihy|Počet|Průměr|Počet zpracovaných transakcí|Uzel, kanál, transaction_type, chaincode, validation_code|
+|LedgerTransactionCount|Ano|LedgerTransactionCountDisplayName|Počet|Průměr|Počet zpracovaných transakcí.|Uzel, kanál, transaction_type, chaincode, validation_code|
 |MemoryLimit|Ano|Omezení paměti|Bajty|Průměr|Omezení paměti|Node|
 |MemoryUsage|Ano|Využití paměti|Bajty|Průměr|Využití paměti|Node|
 |MemoryUsagePercentageInDouble|Ano|Procento využití paměti|Procento|Průměr|Procento využití paměti|Node|
@@ -275,6 +274,22 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
+|allcachehits|Ano|Přístupy do mezipaměti (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|allcachemisses|Ano|Neúspěšné přístupy do mezipaměti (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|allcacheRead|Ano|Čtení z mezipaměti (založené na instancích)|BytesPerSecond|Maximum||ShardId, port, primární|
+|allcacheWrite|Ano|Zápis do mezipaměti (na základě instance)|BytesPerSecond|Maximum||ShardId, port, primární|
+|allconnectedclients|Ano|Připojení klienti (založené na instancích)|Počet|Maximum||ShardId, port, primární|
+|allevictedkeys|Ano|Vyřazené klíče (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|allexpiredkeys|Ano|Klíče vypršení platnosti (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|allgetcommands|Ano|Get (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|alloperationsPerSecond|Ano|Operace za sekundu (založené na instancích)|Počet|Maximum||ShardId, port, primární|
+|allserverLoad|Ano|Zatížení serveru (založené na instancích)|Procento|Maximum||ShardId, port, primární|
+|allsetcommands|Ano|Sady (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|alltotalcommandsprocessed|Ano|Operace celkem (založené na instancích)|Počet|Celkem||ShardId, port, primární|
+|alltotalkeys|Ano|Celkem klíčů (založen na instancích)|Počet|Maximum||ShardId, port, primární|
+|allusedmemory|Ano|Využitá paměť (založená na instancích)|Bajty|Maximum||ShardId, port, primární|
+|allusedmemorypercentage|Ano|Procento využité paměti (založené na instancích)|Procento|Maximum||ShardId, port, primární|
+|allusedmemoryRss|Ano|RSS využité paměti (na základě instance)|Bajty|Maximum||ShardId, port, primární|
 |cachehits|Ano|Přístupy do mezipaměti|Počet|Celkem||ShardId|
 |cachehits0|Ano|Přístupy do mezipaměti (horizontálních oddílů 0)|Počet|Celkem||Žádné dimenze|
 |cachehits1|Ano|Přístupy do mezipaměti (horizontálních oddílů 1)|Počet|Celkem||Žádné dimenze|
@@ -578,7 +593,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |DataIn|Ano|Data v|Bajty|Celkem|Velikost příchozích dat v bajtech|ApiName, OperationName, oblast|
 |Data|Ano|Výstupní data|Bajty|Celkem|Velikost odchozích dat v bajtech|ApiName, OperationName, oblast|
 |Latence|Ano|Latence|Milisekund|Průměr|Latence v milisekundách|ApiName, OperationName, oblast|
-|ProcessedImages|Ano|Zpracované bitové kopie|Počet|Celkem| Počet transakcí pro zpracování bitové kopie.|ApiName, vlastnost vlastnosti, UsageChannel, oblast|
+|ProcessedImages|Ano|Zpracované bitové kopie|Počet|Celkem|Počet transakcí pro zpracování bitové kopie.|ApiName, vlastnost vlastnosti, UsageChannel, oblast|
 |ServerErrors|Ano|Chyby serveru|Počet|Celkem|Počet volání s interní chybou služby (kód odpovědi HTTP 5xx).|ApiName, OperationName, oblast|
 |SpeechSessionDuration|Ano|Doba trvání relace řeči|Sekundy|Celkem|Celková doba trvání relace řeči v sekundách.|ApiName, OperationName, oblast|
 |SuccessfulCalls|Ano|Úspěšná volání|Počet|Celkem|Počet úspěšných volání.|ApiName, OperationName, oblast|
@@ -588,12 +603,25 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |TotalTransactions|Ano|Celkový počet transakcí|Počet|Celkem|Celkový počet transakcí|Žádné dimenze|
 
 
+## <a name="microsoftcomputecloudservices"></a>Microsoft. COMPUTE/cloudServices
+
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|---|
+|Bajty čtení z disku|Ano|Bajty čtení z disku|Bajty|Celkem|Bajty přečtené z disku během období monitorování|RoleInstanceId|
+|Operace čtení z disku/s|Ano|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|RoleInstanceId|
+|Bajty zápisu na disk|Ano|Bajty zápisu na disk|Bajty|Celkem|Bajty zapsané na disk během období monitorování|RoleInstanceId|
+|Operace zápisu na disk/s|Ano|Operace zápisu na disk/s|CountPerSecond|Průměr|Zápis na disk – IOPS|RoleInstanceId|
+|Procento CPU|Ano|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači|RoleInstanceId|
+
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
 |Spotřebované kredity procesoru|Ano|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
 |Zbývající kredity procesoru|Ano|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Procento spotřebované šířky pásma datového disku|Ano|Procento spotřebované šířky pásma datového disku|Procento|Průměr|Procento využité šířky pásma datového disku za minutu|(|
+|Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Ano|Procento spotřebovaného počtu vstupně-výstupních operací datového disku|Procento|Průměr|Procento využitých vstupně-výstupních datových disků za minutu|(|
 |Hloubka fronty datového disku|Ano|Hloubka fronty datových disků (Preview)|Počet|Průměr|Hloubka fronty datových disků (nebo délka fronty)|(|
 |Bajty přečtené z datového disku za sekundu|Ano|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|(|
 |Operace čtení z datového disku za sekundu|Ano|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování|(|
@@ -609,6 +637,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Celková síť|Ano|Celková síť|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
 |Síťové výstupy|Ano|Fakturovatelná odchozí síť (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz) (zastaralé)|Žádné dimenze|
 |Celkový počet síťových výstupů|Ano|Celkový počet síťových výstupů|Bajty|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Procento spotřebované šířky pásma disku operačního systému|Ano|Procento spotřebované šířky pásma disku operačního systému|Procento|Průměr|Procento spotřebované šířky pásma disku s operačním systémem za minutu|(|
+|Procento využitého počtu IOPS disku operačního systému|Ano|Procento využitého počtu IOPS disku operačního systému|Procento|Průměr|Procento počtu vstupně-výstupních disků operačního systému za minutu|(|
 |Hloubka fronty disku s operačním systémem|Ano|Hloubka fronty disku operačního systému (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 |Bajty přečtené z disku s operačním systémem/s|Ano|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace čtení z disku s operačním systémem za sekundu|Ano|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
@@ -631,6 +661,10 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Neúspěšné čtení mezipaměti datových disků Premium|Ano|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti datových disků Premium|(|
 |Počet přístupů do mezipaměti disku s operačním systémem Premium|Ano|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Počet přístupů do mezipaměti disku s operačním systémem Premium|Žádné dimenze|
 |Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Ano|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Procento|Průměr|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Žádné dimenze|
+|Procento spotřebované šířky pásma v mezipaměti virtuálního počítače|Ano|Procento spotřebované šířky pásma v mezipaměti virtuálního počítače|Procento|Průměr|Procento šířky pásma disku v mezipaměti spotřebované virtuálním počítačem|Žádné dimenze|
+|Procento využitého procenta IOPS v mezipaměti virtuálních počítačů|Ano|Procento využitého procenta IOPS v mezipaměti virtuálních počítačů|Procento|Průměr|Procento IOPS disku uložených v mezipaměti, spotřebované virtuálním počítačem|Žádné dimenze|
+|Procento spotřebované šířky pásma neuložené v mezipaměti virtuálního počítače|Ano|Procento spotřebované šířky pásma neuložené v mezipaměti virtuálního počítače|Procento|Průměr|Procento šířky pásma neuloženého disku v mezipaměti spotřebované virtuálním počítačem|Žádné dimenze|
+|Procento využitých vstupně-výstupních operací IOPS pro virtuální počítače|Ano|Procento využitých vstupně-výstupních operací IOPS pro virtuální počítače|Procento|Průměr|Procento neuloženého počtu vstupně-výstupních operací disku využívané virtuálním počítačem|Žádné dimenze|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
@@ -753,7 +787,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |kube_node_status_allocatable_memory_bytes|Ne|Celková velikost dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celková velikost dostupné paměti ve spravovaném clusteru|Žádné dimenze|
 |kube_node_status_condition|Ne|Stavy pro různé podmínky uzlu|Počet|Průměr|Stavy pro různé podmínky uzlu|podmínka, stav, status2, uzel|
 |kube_pod_status_phase|Ne|Počet lusků podle fáze|Počet|Průměr|Počet lusků podle fáze|fáze, obor názvů pod|
-|kube_pod_status_ready|Ne|Počet lusků ve stavu připraveno|Počet|Průměr|Počet lusků ve stavu připraveno|obor názvů, pod|
+|kube_pod_status_ready|Ne|Počet lusků ve stavu připraveno|Počet|Průměr|Počet lusků ve stavu připraveno|obor názvů, pod, podmínka|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
@@ -867,6 +901,33 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |storage_used|Ano|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné dimenze|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
+
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|---|---|---|---|---|---|---|
+|active_connections|Ano|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
+|backup_storage_used|Ano|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné dimenze|
+|connections_failed|Ano|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
+|connections_succeeded|Ano|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
+|cpu_credits_consumed|Ano|Spotřebované kredity procesoru|Počet|Průměr|Celkový počet kreditů spotřebovaných databázovým serverem|Žádné dimenze|
+|cpu_credits_remaining|Ano|Zbývající kredity procesoru|Počet|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|cpu_percent|Ano|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné dimenze|
+|disk_queue_depth|Ano|Hloubka fronty disku|Počet|Průměr|Počet nezpracovaných vstupně-výstupních operací na datový disk|Žádné dimenze|
+|IOPS|Ano|IOPS|Počet|Průměr|Vstupně-výstupní operace za sekundu|Žádné dimenze|
+|maximum_used_transactionIDs|Ano|Maximální počet použitých ID transakcí|Počet|Průměr|Maximální počet použitých ID transakcí|Žádné dimenze|
+|memory_percent|Ano|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné dimenze|
+|network_bytes_egress|Ano|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné dimenze|
+|network_bytes_ingress|Ano|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné dimenze|
+|read_iops|Ano|Čtení IOPS|Počet|Průměr|Počet vstupně-výstupních operací čtení datových disků za sekundu|Žádné dimenze|
+|read_throughput|Ano|Bajty propustnosti čtení/s|Počet|Průměr|Počet přečtených bajtů za sekundu z datového disku během období monitorování|Žádné dimenze|
+|storage_free|Ano|Volné úložiště|Bajty|Průměr|Volné úložiště|Žádné dimenze|
+|storage_percent|Ano|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné dimenze|
+|storage_used|Ano|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné dimenze|
+|txlogs_storage_used|Ano|Využité úložiště protokolu transakcí|Bajty|Průměr|Využité úložiště protokolu transakcí|Žádné dimenze|
+|write_iops|Ano|Zápis IOPS|Počet|Průměr|Počet vstupně-výstupních operací zápisu datových disků za sekundu|Žádné dimenze|
+|write_throughput|Ano|Bajty propustnosti zápisu/s|Počet|Průměr|Počet bajtů zapsaných za sekundu na datový disk během období monitorování|Žádné dimenze|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
@@ -903,23 +964,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |storage_used|Ano|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné dimenze|
 
 
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
-
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
-|---|---|---|---|---|---|---|
-|active_connections|Ano|Aktivní připojení|Počet|Průměr|Aktivní připojení|Žádné dimenze|
-|connections_failed|Ano|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
-|connections_succeeded|Ano|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
-|cpu_percent|Ano|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné dimenze|
-|IOPS|Ano|IOPS|Počet|Průměr|Vstupně-výstupní operace za sekundu|Žádné dimenze|
-|maximum_used_transactionIDs|Ano|Maximální počet použitých ID transakcí|Počet|Průměr|Maximální počet použitých ID transakcí|Žádné dimenze|
-|memory_percent|Ano|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádné dimenze|
-|network_bytes_egress|Ano|Síťové výstupy|Bajty|Celkem|Vyprší síť napříč aktivními připojeními|Žádné dimenze|
-|network_bytes_ingress|Ano|Síťové vstupy|Bajty|Celkem|Síť v rámci aktivních připojení|Žádné dimenze|
-|storage_percent|Ano|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné dimenze|
-|storage_used|Ano|Využité úložiště|Bajty|Průměr|Využité úložiště|Žádné dimenze|
-
-
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
@@ -937,9 +981,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |C2D. nevlákenná. aktualizace. selhání|Ano|Neúspěšné zdvojené aktualizace z back-endu|Počet|Celkem|Počet všech neúspěšných provolaných aktualizací, které selhaly po back-endu.|Žádné dimenze|
 |C2D. nevlákenná. Update. Size|Ano|Velikost dvojitě aktualizovaných aktualizací z back-endu|Bajty|Průměr|Průměrná, minimální a maximální velikost všech úspěšných kompletních aktualizací spuštěných na konci.|Žádné dimenze|
 |C2D. nevlákenná. Update. Success|Ano|Úspěšné zdvojené aktualizace z back-endu|Počet|Celkem|Počet všech úspěšných dokončených aktualizací, které jsou úspěšně spouštěny po konci.|Žádné dimenze|
-|C2DMessagesExpired|Ano|C2D zprávy prošly (Preview)|Počet|Celkem|Počet zpráv typu cloud-zařízení, jejichž platnost vypršela|Žádné dimenze|
+|C2DMessagesExpired|Ano|C2D zpráv vypršela platnost.|Počet|Celkem|Počet zpráv typu cloud-zařízení, jejichž platnost vypršela|Žádné dimenze|
 |konfiguračních|Ano|Metriky konfigurace|Počet|Celkem|Metriky pro operace konfigurace|Žádné dimenze|
-|connectedDeviceCount|Ne|Připojená zařízení (Preview)|Počet|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
+|connectedDeviceCount|Ne|Připojená zařízení|Počet|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
 |D2C. Endpoints. invýstups. builtIns. events|Ano|Směrování: zprávy doručené zprávám/událostem|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do integrovaného koncového bodu (zprávy/události).|Žádné dimenze|
 |D2C. Endpoints. odchozí. eventHubs|Ano|Směrování: zprávy doručené do centra událostí|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů centra událostí.|Žádné dimenze|
 |D2C. Endpoints. odchozí. serviceBusQueues|Ano|Směrování: zprávy doručené do fronty Service Bus|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů fronty Service Bus|Žádné dimenze|
@@ -971,8 +1015,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |deviceDataUsageV2|Ano|Celkové využití dat zařízení (Preview)|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné dimenze|
 |Devices. connectedDevices. allProtocol|Ano|Připojená zařízení (zastaralé) |Počet|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné dimenze|
 |Devices. totalDevices|Ano|Celkem zařízení (zastaralé)|Počet|Celkem|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
-|EventGridDeliveries|Ano|Event Grid doručení (Preview)|Počet|Celkem|Počet událostí IoT Hub publikovaných do Event Grid Použijte výslednou dimenzi pro počet úspěšných a neúspěšných žádostí. Dimenze EventType zobrazuje typ události ( https://aka.ms/ioteventgrid) .|Výsledek, EventType|
-|EventGridLatency|Ano|Latence Event Grid (Preview)|Milisekund|Průměr|Průměrná latence (v milisekundách) od okamžiku, kdy byla událost centra IoT vygenerována při publikování události do Event Grid. Toto číslo je průměrem mezi všemi typy událostí. Použijte dimenzi EventType k zobrazení latence konkrétního typu události.|Typ události|
+|EventGridDeliveries|Ano|Event Grid dodávky|Počet|Celkem|Počet událostí IoT Hub publikovaných do Event Grid Použijte výslednou dimenzi pro počet úspěšných a neúspěšných žádostí. Dimenze EventType zobrazuje typ události ( https://aka.ms/ioteventgrid) .|Výsledek, EventType|
+|EventGridLatency|Ano|Event Grid latence|Milisekund|Průměr|Průměrná latence (v milisekundách) od okamžiku, kdy byla událost centra IoT vygenerována při publikování události do Event Grid. Toto číslo je průměrem mezi všemi typy událostí. Použijte dimenzi EventType k zobrazení latence konkrétního typu události.|Typ události|
 |Jobs. cancelJob. selhání|Ano|Neúspěšná zrušení úloh|Počet|Celkem|Počet všech neúspěšných volání pro zrušení úlohy.|Žádné dimenze|
 |Jobs. cancelJob. Success|Ano|Úspěšná zrušení úlohy|Počet|Celkem|Počet všech úspěšných volání pro zrušení úlohy.|Žádné dimenze|
 |dokončené úlohy|Ano|Dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné dimenze|
@@ -988,7 +1032,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |RoutingDataSizeInBytesDelivered|Ano|Velikost zprávy o doručení směrování v bajtech (Preview)|Bajty|Celkem|Celková velikost zpráv v bajtech doručených službou IoT Hub do koncového bodu. K zobrazení velikosti zpráv v bajtech dodaných do různých koncových bodů můžete použít dimenze koncový bod a EndpointType. Hodnota metriky se zvětšuje u všech doručených zpráv, včetně toho, jestli je zpráva Doručená do více koncových bodů, nebo jestli se zpráva doručuje do stejného koncového bodu víckrát.|EndpointType, koncového bodu, RoutingSource|
 |RoutingDeliveries|Ano|Směrování doručení (Preview)|Počet|Celkem|Počet pokusů IoT Hub o doručení zpráv do všech koncových bodů pomocí směrování. Chcete-li zobrazit počet úspěšných nebo neúspěšných pokusů, použijte výslednou dimenzi. Chcete-li zobrazit důvod selhání, jako je například neplatný, zrušený nebo osamocený, použijte dimenzi FailureReasonCategory. Můžete také použít dimenze koncový bod a EndpointType, abyste pochopili, kolik zpráv bylo doručeno do různých koncových bodů. Hodnota metriky se u každého pokusu o doručení zvyšuje o jednu, včetně toho, jestli je zpráva Doručená do více koncových bodů, nebo jestli se zpráva doručí do stejného koncového bodu víckrát.|EndpointType, koncového bodu, FailureReasonCategory, výsledek, RoutingSource|
 |RoutingDeliveryLatency|Ano|Latence doručení směrování (Preview)|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozím a příchozím zprávou pro IoT Hub a zprávy telemetrie do koncového bodu. Pomocí dimenzí koncového bodu a EndpointType můžete pochopit latenci různých koncových bodů.|EndpointType, koncového bodu, RoutingSource|
-|totalDeviceCount|Ne|Celkem zařízení (Preview)|Počet|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
+|totalDeviceCount|Ne|Celkem zařízení|Počet|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné dimenze|
 |twinQueries. selhání|Ano|Neúspěšné zdvojené dotazy|Počet|Celkem|Počet všech neúspěšných dotazů, které selhaly.|Žádné dimenze|
 |twinQueries.resultSize|Ano|Velikost výsledku nevlákenných dotazů|Bajty|Průměr|Průměrnou, minimální a maximální velikost výsledku všech úspěšných vlákenných dotazů.|Žádné dimenze|
 |twinQueries. Success|Ano|Úspěšné zdvojené dotazy|Počet|Celkem|Počet všech úspěšných vlákenných dotazů.|Žádné dimenze|
@@ -1009,7 +1053,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |AddRegion|Ano|Přidání oblasti|Počet|Počet|Přidání oblasti|Oblast|
 |AutoscaleMaxThroughput|Ne|Maximální propustnost automatického škálování|Počet|Maximum|Maximální propustnost automatického škálování|DatabaseName, CollectionName|
-|AvailableStorage|Ne|zastaralé Dostupné úložiště|Bajty|Celkem|Možnost dostupné úložiště se odebere z Azure Monitor na konci září 2020. Velikost úložiště kolekce Cosmos DB je teď neomezená. Jediným omezením je, že velikost úložiště pro každý klíč logického oddílu je 20 GB. PartitionKeyStatistics v diagnostickém protokolu můžete povolit, abyste věděli, jakou spotřebu úložiště mají klíče oddílů pro nejvyšší oddíly. Další informace o Cosmos DB kvótě úložiště najdete v tomto dokumentu https://docs.microsoft.com/azure/cosmos-db/concepts-limits . Po vyřazení budou zbývající pravidla upozornění stále definovaná pro vystaralou metriku automaticky zakázána publikováním data vyřazení.|CollectionName, DatabaseName, region|
+|AvailableStorage|Ne|zastaralé Dostupné úložiště|Bajty|Celkem|Možnost dostupné úložiště se odebere z Azure Monitor na konci září 2023. Velikost úložiště kolekce Cosmos DB je teď neomezená. Jediným omezením je, že velikost úložiště pro každý klíč logického oddílu je 20 GB. PartitionKeyStatistics v diagnostickém protokolu můžete povolit, abyste věděli, jakou spotřebu úložiště mají klíče oddílů pro nejvyšší oddíly. Další informace o Cosmos DB kvótě úložiště najdete v tomto dokumentu https://docs.microsoft.com/azure/cosmos-db/concepts-limits . Po vyřazení budou zbývající pravidla upozornění stále definovaná pro vystaralou metriku automaticky zakázána publikováním data vyřazení.|CollectionName, DatabaseName, region|
 |CassandraConnectionClosures|Ne|Ukončení připojení Cassandra|Počet|Celkem|Počet uzavřených připojení Cassandra, která se hlásí s členitou úrovní 1 minuty|Oblast, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|Ne|Průměrná ReplicationLatency Cassandra konektoru|Milisekund|Průměr|Průměrná ReplicationLatency Cassandra konektoru|Žádné dimenze|
 |CassandraConnectorReplicationHealthStatus|Ne|Stav replikace konektoru Cassandra|Počet|Počet|Stav replikace konektoru Cassandra|NotStarted, ReplicationInProgress, chyba|
@@ -1046,13 +1090,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |MongoDatabaseThroughputUpdate|Ne|Propustnost databáze Mongo se aktualizovala|Počet|Počet|Propustnost databáze Mongo se aktualizovala|ResourceName |
 |MongoDBDatabaseCreate|Ne|Databáze Mongo se vytvořila.|Počet|Počet|Databáze Mongo se vytvořila.|ResourceName |
 |MongoDBDatabaseUpdate|Ne|Databáze Mongo se aktualizovala.|Počet|Počet|Databáze Mongo se aktualizovala.|ResourceName |
-|MongoRequestCharge|Ano|Poplatek za požadavek Mongo|Počet|Celkem|Spotřebované jednotky žádosti Mongo|DatabaseName, CollectionName, region, příkazového řádku, ErrorCode, status|
 |MongoRequests|Ano|Žádosti Mongo|Počet|Počet|Počet provedených požadavků Mongo|DatabaseName, CollectionName, region, příkazového řádku, ErrorCode, status|
-|MongoRequestsCount|Ne|Počet požadavků Mongo|CountPerSecond|Průměr|Počet požadavků Mongo za sekundu|DatabaseName, CollectionName, region, ErrorCode|
-|MongoRequestsDelete|Ne|Frekvence žádosti o odstranění Mongo|CountPerSecond|Průměr|Mongo žádosti o odstranění za sekundu|DatabaseName, CollectionName, region, ErrorCode|
-|MongoRequestsInsert|Ne|Frekvence požadavků na vložení Mongo|CountPerSecond|Průměr|Mongo vložení počtu za sekundu|DatabaseName, CollectionName, region, ErrorCode|
-|MongoRequestsQuery|Ne|Frekvence požadavků na dotaz Mongo|CountPerSecond|Průměr|Požadavek na dotaz Mongo za sekundu|DatabaseName, CollectionName, region, ErrorCode|
-|MongoRequestsUpdate|Ne|Frekvence požadavků na aktualizace Mongo|CountPerSecond|Průměr|Žádost o aktualizaci Mongo za sekundu|DatabaseName, CollectionName, region, ErrorCode|
 |NormalizedRUConsumption|Ne|Normalizovaná spotřeba RU|Procento|Maximum|Maximální procento spotřeby v procentech za minutu|CollectionName, DatabaseName, region, PartitionKeyRangeId|
 |ProvisionedThroughput|Ne|Zřízená propustnost|Počet|Maximum|Zřízená propustnost|DatabaseName, CollectionName|
 |RegionFailover|Ano|Převzetí služeb při selhání oblasti|Počet|Počet|Převzetí služeb při selhání oblasti|Žádné dimenze|
@@ -1268,6 +1306,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |žádosti/rychlost|Ne|Počet požadavků serveru|CountPerSecond|Průměr|Frekvence požadavků serveru za sekundu|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
 |trasování/počet|Ano|Trasování|Počet|Počet|Počet dokumentů trasování|Trace/severityLevel, provozní/syntetické, Cloud/roleName, Cloud/roleInstance|
 
+
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
@@ -1300,23 +1339,35 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |BatchBlobCount|Ano|Počet objektů BLOB dávky|Počet|Průměr|Počet zdrojů dat v agregované dávce pro přijímání.|databáze|
 |BatchDuration|Ano|Doba trvání dávky|Sekundy|Průměr|Doba trvání agregační fáze v toku přijímání.|databáze|
-|BatchesProcessed|Ano|Zpracované dávky|Počet|Průměr|Počet dávek agregovaných pro ingestování. Důvod dokončení dávky: bez ohledu na to, zda dávka dosáhla doby dávkového zpracování, velikosti dat nebo počtu souborů, které jsou nastaveny pomocí dávkování zásad|Databáze, SealReason|
+|BatchesProcessed|Ano|Zpracované dávky|Počet|Průměr|Počet dávek agregovaných pro ingestování. Dávkování typu: zda dávka dosáhla doby dávkového zpracování, velikosti dat nebo počtu souborů, které jsou nastaveny pomocí dávkování zásad|Databáze, SealReason|
 |BatchSize|Ano|Velikost dávky|Bajty|Průměr|Nekomprimovaná očekávaná velikost dat v agregované dávce pro přijímání.|databáze|
+|BlobsProcessed|Ano|Zpracované objekty blob|Počet|Průměr|Počet objektů BLOB zpracovaných součástí|Databáze, element componentType, Component|
+|BlobsReceived|Ano|Počet přijatých objektů BLOB|Počet|Průměr|Počet objektů BLOB přijatých komponentou ze vstupního datového proudu.|Databáze, element componentType, Component|
+|BlobsRejected|Ano|Zamítnuté objekty blob|Počet|Průměr|Počet objektů BLOB trvale odmítnutých součástí|Databáze, element componentType, Component|
 |CacheUtilization|Ano|Využití mezipaměti|Procento|Průměr|Úroveň využití v oboru clusteru|Žádné dimenze|
 |ContinuousExportMaxLatenessMinutes|Ano|Maximální zpoždění průběžného exportu|Počet|Maximum|Zpoždění (v minutách) hlášené úlohami průběžného exportu v clusteru|Žádné dimenze|
 |ContinuousExportNumOfRecordsExported|Ano|Průběžný export – počet exportovaných záznamů|Počet|Celkem|Počet exportovaných záznamů, které se vyvolaly pro každý artefakt úložiště zapsaný během operace exportu|ContinuousExportName, databáze|
 |ContinuousExportPendingCount|Ano|Počet nevyřízených položek průběžného exportu|Počet|Maximum|Počet probíhajících úloh průběžného exportu připravených k provedení|Žádné dimenze|
 |ContinuousExportResult|Ano|Výsledek průběžného exportu|Počet|Počet|Indikuje, jestli se průběžný export zdařil nebo selhal.|ContinuousExportName, výsledek, databáze|
 |Procesor|Ano|Procesor|Procento|Průměr|Úroveň využití procesoru|Žádné dimenze|
+|CumulativeLatency|Ano|Kumulativní latence|Sekundy|Průměr|Kumulativní doba od spuštění zprávy, dokud není přijata komponentou pro vytváření sestav pro zpracování (doba vyhledávání je nastavena při zařazení zprávy do fronty pro zpracování příjmu nebo při zjištění pomocí datového připojení).|Databáze, element componentType|
+|DiscoveryLatency|Ano|Latence zjišťování|Sekundy|Průměr|Nahlášená datovými připojeními (pokud existují) Čas v sekundách od okamžiku, kdy se zpráva zařazování do fronty, nebo je vytvořena událost, dokud není zjištěna pomocí datového připojení. Tento čas není zahrnutý v celkovém trvání ingestování Azure Průzkumník dat.|Element componentType, Component|
 |EventsProcessedForEventHubs|Ano|Zpracované události (pro Event/centra IoT)|Počet|Celkem|Počet událostí zpracovaných clusterem při příjmu z události nebo IoT Hub|EventStatus|
 |ExportUtilization|Ano|Využití exportu|Procento|Maximum|Využití exportu|Žádné dimenze|
-|IngestionLatencyInSeconds|Ano|Latence příjmu (v sekundách)|Sekundy|Průměr|Doba ingestování ze zdroje (např. zpráva je v centru EventHub) do clusteru v řádu sekund|Žádné dimenze|
+|IngestionLatencyInSeconds|Ano|Latence přijímání|Sekundy|Průměr|Doba ingestování ze zdroje (např. zpráva je v centru EventHub) do clusteru v řádu sekund|Žádné dimenze|
 |IngestionResult|Ano|Výsledek ingestování|Počet|Počet|Počet operací ingestování|IngestionResultDetails|
 |IngestionUtilization|Ano|Využití příjmu dat|Procento|Průměr|Poměr využitých slotů pro přijímání na clusteru|Žádné dimenze|
-|IngestionVolumeInMB|Ano|Objem příjmu (v MB)|Počet|Celkem|Celkový objem zpracovaných dat do clusteru (v MB)|Žádné dimenze|
+|IngestionVolumeInMB|Ano|Objem příjmu (v MB)|Bajty|Celkem|Celkový objem zpracovaných dat do clusteru (v MB)|Žádné dimenze|
 |InstanceCount|Ano|Počet instancí|Počet|Průměr|Celkový počet instancí|Žádné dimenze|
 |Udržení|Ano|Zachovat naživu|Počet|Průměr|Správnosti check indikuje, že cluster reaguje na dotazy|Žádné dimenze|
+|MaterializedViewAgeMinutes|Ano|Stáří vyhodnoceného zobrazení|Počet|Průměr|Stáří vyhodnoceného zobrazení v řádu minut|Databáze, MaterializedViewName|
+|MaterializedViewDataLoss|Ano|Ztráta dat z vyhodnoceného zobrazení|Počet|Maximum|Indikuje možnou ztrátu dat v materializované zobrazení.|Databáze, MaterializedViewName, druh|
+|MaterializedViewExtentsRebuild|Ano|Vyhodnocené rozsahy zobrazení – opětovné sestavení|Počet|Průměr|Počet rozsahů opětovného sestavení|Databáze, MaterializedViewName|
+|MaterializedViewHealth|Ano|Stav materializované zobrazení|Počet|Průměr|Stav materializované zobrazení (1 pro v pořádku, 0 pro nefunkční)|Databáze, MaterializedViewName|
+|MaterializedViewRecordsInDelta|Ano|Vyhodnocené záznamy zobrazení v rozdílu|Počet|Průměr|Počet záznamů v nematerializované části zobrazení|Databáze, MaterializedViewName|
+|MaterializedViewResult|Ano|Výsledek materializované zobrazení|Počet|Průměr|Výsledek procesu materializace|Databáze, MaterializedViewName, výsledek|
 |QueryDuration|Ano|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazů v sekundách|QueryStatus|
+|QueryResult|Ne|Výsledek dotazu|Počet|Počet|Celkový počet dotazů|Status|
 |SteamingIngestRequestRate|Ano|Četnost požadavků příjmu streamování|Počet|RateRequestsPerSecond|Míra požadavků ingestování datových proudů (počet požadavků za sekundu)|Žádné dimenze|
 |StreamingIngestDataRate|Ano|Datová rychlost příjmu streamování|Počet|Průměr|Přenosová rychlost ingestování datových proudů (MB za sekundu)|Žádné dimenze|
 |StreamingIngestDuration|Ano|Doba trvání příjmu streamování|Milisekund|Průměr|Doba ingestování streamování v milisekundách|Žádné dimenze|
@@ -1411,14 +1462,14 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |Aktivní jádra|Ano|Aktivní jádra|Počet|Průměr|Počet aktivních jader|Scénář, název_clusteru|
 |Aktivní uzly|Ano|Aktivní uzly|Počet|Průměr|Počet uzlů Active Jedná se o uzly, které aktivně spouštějí úlohu.|Scénář, název_clusteru|
-|Zrušit požadovaná spuštění|Ano|Zrušit požadovaná spuštění|Počet|Celkem|Počet spuštění, kde se pro tento pracovní prostor požádalo o zrušení Počet se aktualizuje po přijetí žádosti o zrušení pro spuštění.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Zrušená spuštění|Ano|Zrušená spuštění|Počet|Celkem|Počet zrušených spuštění pro tento pracovní prostor Počet se aktualizuje po úspěšném zrušení běhu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Dokončená spuštění|Ano|Dokončená spuštění|Počet|Celkem|Počet spuštěných běhů pro tento pracovní prostor byl úspěšně dokončen. Počet se aktualizuje po dokončení běhu a shromažďování výstupu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|CpuUtilization|Ano|CpuUtilization|Počet|Průměr|Procento využití paměti na uzlu procesoru. Využití je hlášeno v jednom minutovém intervalu.|Scénář, runId, NodeId, název_clusteru|
+|Zrušit požadovaná spuštění|Ano|Zrušit požadovaná spuštění|Počet|Celkem|Počet spuštění, kde se pro tento pracovní prostor požádalo o zrušení Počet se aktualizuje po přijetí žádosti o zrušení pro spuštění.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Zrušená spuštění|Ano|Zrušená spuštění|Počet|Celkem|Počet zrušených spuštění pro tento pracovní prostor Počet se aktualizuje po úspěšném zrušení běhu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Dokončená spuštění|Ano|Dokončená spuštění|Počet|Celkem|Počet spuštěných běhů pro tento pracovní prostor byl úspěšně dokončen. Počet se aktualizuje po dokončení běhu a shromažďování výstupu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|CpuUtilization|Ano|CpuUtilization|Počet|Průměr|Procento využití na uzlu procesoru Využití je hlášeno v jednom minutovém intervalu.|Scénář, runId, NodeId, název_clusteru|
 |Chyby|Ano|Chyby|Počet|Celkem|Počet chyb spuštění v tomto pracovním prostoru. Počet se aktualizuje pokaždé, když při spuštění dojde k chybě.|Scénář|
-|Neúspěšná spuštění|Ano|Neúspěšná spuštění|Počet|Celkem|Počet spuštění pro tento pracovní prostor se nezdařil. Počet se aktualizuje, když se spuštění nezdařilo.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Dokončují se běhy.|Ano|Dokončují se běhy.|Počet|Celkem|Počet spuštění, které vstoupily do stavu dokončení pro tento pracovní prostor. Počet se aktualizuje po dokončení běhu, ale shromažďování výstupu ještě probíhá.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|GpuUtilization|Ano|GpuUtilization|Počet|Průměr|Procento využití paměti v uzlu GPU Využití je hlášeno v jednom minutovém intervalu.|Scénář, runId, NodeId, DeviceId, název_clusteru|
+|Neúspěšná spuštění|Ano|Neúspěšná spuštění|Počet|Celkem|Počet spuštění pro tento pracovní prostor se nezdařil. Počet se aktualizuje, když se spuštění nezdařilo.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Dokončují se běhy.|Ano|Dokončují se běhy.|Počet|Celkem|Počet spuštění, které vstoupily do stavu dokončení pro tento pracovní prostor. Počet se aktualizuje po dokončení běhu, ale shromažďování výstupu ještě probíhá.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|GpuUtilization|Ano|GpuUtilization|Počet|Průměr|Procento využití v uzlu GPU Využití je hlášeno v jednom minutovém intervalu.|Scénář, runId, NodeId, DeviceId, název_clusteru|
 |Jádra nečinných|Ano|Jádra nečinných|Počet|Průměr|Počet nečinných jader|Scénář, název_clusteru|
 |Nečinné uzly|Ano|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů. Nečinné uzly jsou uzly, které nespouštějí žádné úlohy, ale mohou přijmout novou úlohu, je-li k dispozici.|Scénář, název_clusteru|
 |Vynechávání jader|Ano|Vynechávání jader|Počet|Průměr|Počet opouštících jader|Scénář, název_clusteru|
@@ -1428,18 +1479,18 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Nasazení modelu bylo úspěšné.|Ano|Nasazení modelu bylo úspěšné.|Počet|Celkem|Počet nasazení modelů, která byla v tomto pracovním prostoru úspěšná|Scénář|
 |Nepovedlo se zaregistrovat model|Ano|Nepovedlo se zaregistrovat model|Počet|Celkem|Počet registrací modelů, které se v tomto pracovním prostoru nezdařily|Scénář, StatusCode|
 |Registr modelu byl úspěšný.|Ano|Registr modelu byl úspěšný.|Počet|Celkem|Počet registrací modelů, které byly v tomto pracovním prostoru úspěšně dokončeny|Scénář|
-|Neodpovídá spuštění|Ano|Neodpovídá spuštění|Počet|Celkem|Počet běhů nereagujících na tento pracovní prostor. Počet se aktualizuje, když běh vstoupí do stavu neodpovídá.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Nespuštěná spuštění|Ano|Nespuštěná spuštění|Počet|Celkem|Počet spuštění v neaktivním stavu pro tento pracovní prostor Počet se aktualizuje, když se přijme požadavek na vytvoření běhu, ale informace o spuštění ještě nejsou naplněné. |Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
+|Neodpovídá spuštění|Ano|Neodpovídá spuštění|Počet|Celkem|Počet běhů nereagujících na tento pracovní prostor. Počet se aktualizuje, když běh vstoupí do stavu neodpovídá.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Nespuštěná spuštění|Ano|Nespuštěná spuštění|Počet|Celkem|Počet spuštění v neaktivním stavu pro tento pracovní prostor Počet se aktualizuje, když se přijme požadavek na vytvoření běhu, ale informace o spuštění ještě nejsou naplněné. |Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
 |Zrušené jádra|Ano|Zrušené jádra|Počet|Průměr|Počet zrušených jader|Scénář, název_clusteru|
 |Přepnuté uzly|Ano|Přepnuté uzly|Počet|Průměr|Počet zrušených uzlů. Tyto uzly jsou uzly s nízkou prioritou, které jsou mimo dostupný fond uzlů.|Scénář, název_clusteru|
-|Připravují se běhy.|Ano|Připravují se běhy.|Počet|Celkem|Počet běhů, které se připravují pro tento pracovní prostor. Počet se aktualizuje, když spuštění vstoupí do stavu Příprava během přípravy prostředí pro spuštění.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Spuštění zřizování|Ano|Spuštění zřizování|Počet|Celkem|Počet spuštění, která jsou zajišťována pro tento pracovní prostor. Počet se aktualizuje, když běh čeká na vytvoření nebo zřizování cíle výpočetní funkce.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Spuštění ve frontě|Ano|Spuštění ve frontě|Počet|Celkem|Počet spuštění, které jsou zařazeny do fronty pro tento pracovní prostor. Počet se aktualizuje při zařazení běhu do fronty v cíli výpočtu. Může nastat při čekání na přípravu požadovaných výpočetních uzlů.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
+|Připravují se běhy.|Ano|Připravují se běhy.|Počet|Celkem|Počet běhů, které se připravují pro tento pracovní prostor. Počet se aktualizuje, když spuštění vstoupí do stavu Příprava během přípravy prostředí pro spuštění.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Spuštění zřizování|Ano|Spuštění zřizování|Počet|Celkem|Počet spuštění, která jsou zajišťována pro tento pracovní prostor. Počet se aktualizuje, když běh čeká na vytvoření nebo zřizování cíle výpočetní funkce.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Spuštění ve frontě|Ano|Spuštění ve frontě|Počet|Celkem|Počet spuštění, které jsou zařazeny do fronty pro tento pracovní prostor. Počet se aktualizuje při zařazení běhu do fronty v cíli výpočtu. Může nastat při čekání na přípravu požadovaných výpočetních uzlů.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
 |Procento využití kvóty|Ano|Procento využití kvóty|Počet|Průměr|Procento využité kvóty|Scénář, název_clusteru, VmFamilyName, VmPriority|
-|Spuštěná spuštění|Ano|Spuštěná spuštění|Počet|Celkem|Počet spuštěných běhů pro tento pracovní prostor. Počet se aktualizuje, když se spuštění spustí na požadovaných prostředcích.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Spouštění spuštění|Ano|Spouštění spuštění|Počet|Celkem|Počet spuštění spuštěných pro tento pracovní prostor. Počet se aktualizuje po žádosti o vytvoření informací o spuštění a spuštění, jako je například ID běhu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
+|Spuštěná spuštění|Ano|Spuštěná spuštění|Počet|Celkem|Počet spuštěných běhů pro tento pracovní prostor. Počet se aktualizuje, když se spuštění spustí na požadovaných prostředcích.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
+|Spouštění spuštění|Ano|Spouštění spuštění|Počet|Celkem|Počet spuštění spuštěných pro tento pracovní prostor. Počet se aktualizuje po žádosti o vytvoření informací o spuštění a spuštění, jako je například ID běhu.|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType, experiment|
 |Celkový počet jader|Ano|Celkový počet jader|Počet|Průměr|Počet jader celkem|Scénář, název_clusteru|
-|Celkem uzlů|Ano|Celkem uzlů|Počet|Průměr|Počet uzlů celkem Tento součet zahrnuje některé z aktivních uzlů, nečinných uzlů, nepoužitelných uzlů, přerušených uzlů a opouští uzly.|Scénář, název_clusteru|
+|Celkem uzlů|Ano|Celkem uzlů|Počet|Průměr|Počet uzlů celkem Tento součet zahrnuje některé aktivní uzly, nečinné uzly, nepoužité uzly, uzly Premepted a opouští uzly.|Scénář, název_clusteru|
 |Nepoužitelné jádra|Ano|Nepoužitelné jádra|Počet|Průměr|Počet nepoužitelných jader|Scénář, název_clusteru|
 |Nepoužité uzly|Ano|Nepoužité uzly|Počet|Průměr|Počet nepoužitelných uzlů. Nepoužité uzly nejsou funkční kvůli nějakému problému s nepřeložitelné. Azure bude tyto uzly recyklovat.|Scénář, název_clusteru|
 |Upozornění|Ano|Upozornění|Počet|Celkem|Počet upozornění spuštění v tomto pracovním prostoru. Počet se aktualizuje pokaždé, když při spuštění dojde k upozornění.|Scénář|
@@ -1560,8 +1611,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond|Ano|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
-|BitsOutPerSecond|Ano|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
+|BitsInPerSecond|Ano|BitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
+|BitsOutPerSecond|Ano|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
@@ -1579,28 +1630,28 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |ArpAvailability|Ano|Dostupnost protokolu ARP|Procento|Průměr|Dostupnost protokolu ARP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
 |BgpAvailability|Ano|Dostupnost protokolu BGP|Procento|Průměr|Dostupnost protokolu BGP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
-|BitsInPerSecond|Ne|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|PeeringType|
-|BitsOutPerSecond|Ne|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|PeeringType|
-|GlobalReachBitsInPerSecond|Ne|GlobalReachBitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|Ne|GlobalReachBitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|PeeredCircuitSKey|
-|QosDropBitsInPerSecond|Ne|DroppedInBitsPerSecond|CountPerSecond|Průměr|Počet vyřazených bitů dat za sekundu|Žádné dimenze|
-|QosDropBitsOutPerSecond|Ne|DroppedOutBitsPerSecond|CountPerSecond|Průměr|Výstupní bity zahozených dat za sekundu|Žádné dimenze|
+|BitsInPerSecond|Ne|BitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|PeeringType, DeviceRole|
+|BitsOutPerSecond|Ne|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|PeeringType, DeviceRole|
+|GlobalReachBitsInPerSecond|Ne|GlobalReachBitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|PeeredCircuitSKey|
+|GlobalReachBitsOutPerSecond|Ne|GlobalReachBitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|PeeredCircuitSKey|
+|QosDropBitsInPerSecond|Ano|DroppedInBitsPerSecond|BitsPerSecond|Průměr|Počet vyřazených bitů dat za sekundu|Žádné dimenze|
+|QosDropBitsOutPerSecond|Ano|DroppedOutBitsPerSecond|BitsPerSecond|Průměr|Výstupní bity zahozených dat za sekundu|Žádné dimenze|
 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/peering
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|BitsInPerSecond|Ano|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
-|BitsOutPerSecond|Ano|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
+|BitsInPerSecond|Ano|BitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
+|BitsOutPerSecond|Ano|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
 
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|Ne|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|Ne|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|ConnectionName|
+|ErGatewayConnectionBitsInPerSecond|Ne|BitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|ConnectionName|
+|ErGatewayConnectionBitsOutPerSecond|Ne|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|ConnectionName|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
@@ -1609,8 +1660,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |AdminState|Ano|AdminState|Počet|Průměr|Stav Správce portu|Odkaz|
 |LineProtocol|Ano|LineProtocol|Počet|Průměr|Stav protokolu linky portu|Odkaz|
-|PortBitsInPerSecond|Ano|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Odkaz|
-|PortBitsOutPerSecond|Ano|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Odkaz|
+|PortBitsInPerSecond|Ano|BitsInPerSecond|BitsPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Odkaz|
+|PortBitsOutPerSecond|Ano|BitsOutPerSecond|BitsPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Odkaz|
 |RxLightLevel|Ano|RxLightLevel|Počet|Průměr|Úroveň světla příjmu v dBm|Odkaz, Lane|
 |TxLightLevel|Ano|TxLightLevel|Počet|Průměr|Úroveň Light tx v dBm|Odkaz, Lane|
 
@@ -1635,7 +1686,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|Ne|Přidělené porty SNAT|Počet|Průměr|Celkový počet portů SNAT přidělených v rámci časového období|FrontendIPAddress, BackendIPAddress, Typprotokolu, |
-|ByteCount|Ano|Počet bajtů|Počet|Celkem|Celkový počet odeslaných bajtů v časovém období|FrontendIPAddress, FrontendPort, směr|
+|ByteCount|Ano|Počet bajtů|Bajty|Celkem|Celkový počet odeslaných bajtů v časovém období|FrontendIPAddress, FrontendPort, směr|
 |DipAvailability|Ano|Stav sondy stavu|Počet|Průměr|Průměrný stav testu stavu Load Balancer za dobu trvání|Typprotokolu, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
 |PacketCount|Ano|Počet paketů|Počet|Celkem|Celkový počet odeslaných paketů v časovém období|FrontendIPAddress, FrontendPort, směr|
 |SnatConnectionCount|Ano|Počet připojení SNAT|Počet|Celkem|Celkový počet nových připojení SNAT vytvořených během časového období|FrontendIPAddress, BackendIPAddress, vlastnost ConnectionState|
@@ -1659,16 +1710,16 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|Ano|Průměrná doba odezvy (MS)|Milisekund|Průměr|Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem|Žádné dimenze|
-|ChecksFailedPercent|Ano|Počet neúspěšných kontrol v procentech (Preview)|Procento|Průměr|% kontrol monitorování připojení selhalo.|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
+|ChecksFailedPercent|Ano|Počet neúspěšných kontrol v procentech (Preview)|Procento|Průměr|% kontrol monitorování připojení selhalo.|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName, SourceIP, DestinationIP, SourceSubnet, DestinationSubnet|
 |ProbesFailedPercent|Ano|% PROBE selhalo|Procento|Průměr|% sond monitorování připojení selhalo.|Žádné dimenze|
-|RoundTripTimeMs|Ano|Round-Trip čas (MS) (Preview)|Milisekund|Průměr|Doba odezvy v milisekundách pro kontroly monitorování připojení|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
+|RoundTripTimeMs|Ano|Round-Trip čas (MS) (Preview)|Milisekund|Průměr|Doba odezvy v milisekundách pro kontroly monitorování připojení|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName, SourceIP, DestinationIP, SourceSubnet, DestinationSubnet|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|ByteCount|Ano|Počet bajtů|Počet|Celkem|Celkový počet odeslaných bajtů v časovém období|Port, směr|
+|ByteCount|Ano|Počet bajtů|Bajty|Celkem|Celkový počet odeslaných bajtů v časovém období|Port, směr|
 |BytesDroppedDDoS|Ano|Příchozí bajty vynechané DDoS|BytesPerSecond|Maximum|Příchozí bajty vynechané DDoS|Žádné dimenze|
 |BytesForwardedDDoS|Ano|Příchozí bajty předané DDoS|BytesPerSecond|Maximum|Příchozí bajty předané DDoS|Žádné dimenze|
 |BytesInDDoS|Ano|Příchozí bajty DDoS|BytesPerSecond|Maximum|Příchozí bajty DDoS|Žádné dimenze|
@@ -1869,10 +1920,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|EgressTrafficRate|Ano|Rychlost přenosů na výstup|BitsPerSecond|Průměr|Rychlost přenosů dat v bitech za sekundu|ConnectionId|
-|IngressTrafficRate|Ano|Rychlost příchozího přenosu dat|BitsPerSecond|Průměr|Míra přenosů příchozích dat v bitech za sekundu|ConnectionId|
-|SessionAvailabilityV4|Ano|Dostupnost relace v4|Procento|Průměr|Dostupnost relace v4|ConnectionId|
-|SessionAvailabilityV6|Ano|Dostupnost relace V6|Procento|Průměr|Dostupnost relace V6|ConnectionId|
+|EgressTrafficRate|Ano|Rychlost přenosů na výstup|BitsPerSecond|Průměr|Rychlost přenosů dat v bitech za sekundu|ConnectionId, SessionIp, TrafficClass|
+|IngressTrafficRate|Ano|Rychlost příchozího přenosu dat|BitsPerSecond|Průměr|Míra přenosů příchozích dat v bitech za sekundu|ConnectionId, SessionIp, TrafficClass|
 
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
@@ -1886,7 +1935,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|memory_metric|Ano|Paměť|Bajty|Průměr|Memory: Rozsah 0-3 GB pro a1, 0-5 GB pro a2, 0-10 GB pro a3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
+|memory_metric|Ano|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-3 GB pro a1, 0-5 GB pro a2, 0-10 GB pro a3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
 |memory_thrashing_metric|Ano|Thrashing paměti (datové sady)|Procento|Průměr|Průměrná velikost thrashing paměti|Žádné dimenze|
 |qpu_high_utilization_metric|Ano|Vysoké využití procesoru|Počet|Celkem|QPU vysoké využití za poslední minutu, 1 pro vysoké využití QPU, jinak 0|Žádné dimenze|
 |QueryDuration|Ano|Doba trvání dotazu (datové sady)|Milisekund|Průměr|Doba trvání dotazu DAX v posledním intervalu|Žádné dimenze|
@@ -1899,7 +1948,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |---|---|---|---|---|---|---|
 |ActiveConnections|Ne|ActiveConnections|Počet|Celkem|Total ActiveConnections for Microsoft. Relay|EntityName|
 |ActiveListeners|Ne|ActiveListeners|Počet|Celkem|Total ActiveListeners for Microsoft. Relay|EntityName|
-|BytesTransferred|Ano|BytesTransferred|Počet|Celkem|Total BytesTransferred for Microsoft. Relay|EntityName|
+|BytesTransferred|Ano|BytesTransferred|Bajty|Celkem|Total BytesTransferred for Microsoft. Relay|EntityName|
 |ListenerConnections-ClientError|Ne|ListenerConnections-ClientError|Počet|Celkem|ClientError v ListenerConnections pro Microsoft. Relay|EntityName |
 |ListenerConnections-ServerError|Ne|ListenerConnections-ServerError|Počet|Celkem|ServerError v ListenerConnections pro Microsoft. Relay|EntityName |
 |ListenerConnections-Success|Ne|ListenerConnections-Success|Počet|Celkem|Úspěšně se ListenerConnections pro Microsoft. Relay.|EntityName |
@@ -1929,7 +1978,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |ActiveMessages|Ne|Počet aktivních zpráv ve frontě nebo tématu.|Počet|Průměr|Počet aktivních zpráv ve frontě nebo tématu.|EntityName|
 |ConnectionsClosed|Ne|Zavřená připojení.|Počet|Průměr|Uzavřená připojení pro Microsoft. ServiceBus|EntityName|
 |ConnectionsOpened|Ne|Otevřená připojení.|Počet|Průměr|Otevřená připojení pro Microsoft. ServiceBus|EntityName|
-|CPUXNS|Ne|PROCESOR (zastaralé)|Procento|Maximum|Metrika využití procesoru oboru názvů služby Service Bus Premium. Tato metrika je zastaralá. Místo toho prosím použijte metriku CPU (NamespaceCpuUsage).|Žádné dimenze|
+|CPUXNS|Ne|PROCESOR (zastaralé)|Procento|Maximum|Metrika využití procesoru oboru názvů služby Service Bus Premium. Tato metrika je depricated. Místo toho prosím použijte metriku CPU (NamespaceCpuUsage).|Žádné dimenze|
 |DeadletteredMessages|Ne|Počet nedoručených zpráv ve frontě nebo tématu|Počet|Průměr|Počet nedoručených zpráv ve frontě nebo tématu|EntityName|
 |IncomingMessages|Ano|Příchozí zprávy|Počet|Celkem|Příchozí zprávy pro Microsoft. ServiceBus|EntityName|
 |IncomingRequests|Ano|Příchozí žádosti|Počet|Celkem|Příchozí požadavky pro Microsoft. ServiceBus|EntityName|
@@ -1998,7 +2047,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |app_cpu_percent|Ano|Procento využití procesoru aplikací|Procento|Průměr|Procento využití procesoru aplikací Platí pro databáze bez serveru.|Žádné dimenze|
 |app_memory_percent|Ano|Procento paměti aplikace|Procento|Průměr|Procento paměti aplikace. Platí pro databáze bez serveru.|Žádné dimenze|
 |base_blob_size_bytes|Ano|Základní velikost úložiště objektů BLOB|Bajty|Maximum|Základní velikost úložiště objektů BLOB Platí pro databáze s škálovatelným škálováním.|Žádné dimenze|
-|blocked_by_firewall|Ano|Blokováno bránou firewall|Počet|Celkem|Blokováno bránou firewall|Žádné dimenze|
+|blocked_by_firewall|Ano|– Blokováno bránou firewall|Počet|Celkem|– Blokováno bránou firewall|Žádné dimenze|
 |cache_hit_percent|Ano|Procento přístupů do mezipaměti|Procento|Maximum|Procento přístupů do mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
 |cache_used_percent|Ano|Procento využité mezipaměti|Procento|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
 |connection_failed|Ano|Neúspěšná připojení|Počet|Celkem|Neúspěšná připojení|Žádné dimenze|
@@ -2011,9 +2060,6 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |dtu_consumption_percent|Ano|Procento DTU|Procento|Průměr|Procento DTU Platí pro databáze založené na DTU.|Žádné dimenze|
 |dtu_limit|Ano|Limit DTU|Počet|Průměr|Limit DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
 |dtu_used|Ano|Využité DTU|Počet|Průměr|Používá se DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
-|dw_backup_size_gb|Ano|Velikost úložiště dat (GB)|Počet|Celkem|Velikost úložiště dat se skládá z velikosti dat a protokolu transakcí. Metrika se počítá směrem k části úložiště vašeho vyúčtování. Platí jenom pro datové sklady.|Žádné dimenze|
-|dw_geosnapshot_size_gb|Ano|Velikost úložiště pro zotavení po havárii (GB)|Počet|Celkem|Velikost úložiště pro zotavení po havárii se ve vašem vyúčtování projeví jako úložiště zotavení po havárii. Platí jenom pro datové sklady.|Žádné dimenze|
-|dw_snapshot_size_gb|Ano|Velikost úložiště snímků (GB)|Počet|Celkem|Velikost úložiště snímků je velikost přírůstkových změn zachycených snímky k vytvoření uživatelem definovaných a automatických bodů obnovení. Metrika se počítá směrem k části úložiště vašeho vyúčtování. Platí jenom pro datové sklady.|Žádné dimenze|
 |dwu_consumption_percent|Ano|Procento DWU|Procento|Maximum|Procento DWU Platí jenom pro datové sklady.|Žádné dimenze|
 |dwu_limit|Ano|DWU limit|Počet|Maximum|DWU limit. Platí jenom pro datové sklady.|Žádné dimenze|
 |dwu_used|Ano|DWU použito|Počet|Maximum|DWU použito. Platí jenom pro datové sklady.|Žádné dimenze|
@@ -2030,9 +2076,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |sqlserver_process_memory_percent|Ano|% SQL Server paměti procesu|Procento|Maximum|Využití paměti jako procento procesu SQL DB. Neplatí pro datové sklady.|Žádné dimenze|
 |úložiště|Ano|Využité místo pro data|Bajty|Maximum|Využité místo pro data Neplatí pro datové sklady.|Žádné dimenze|
 |storage_percent|Ano|Procento využitého datového prostoru|Procento|Maximum|Procento využitého datového prostoru Neplatí pro datové sklady nebo databáze na úrovni dat.|Žádné dimenze|
-|tempdb_data_size|Ano|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady.|Žádné dimenze|
-|tempdb_log_size|Ano|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady.|Žádné dimenze|
-|tempdb_log_used_percent|Ano|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent. Neplatí pro datové sklady.|Žádné dimenze|
+|tempdb_data_size|Ano|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Místo využité v datových souborech tempdb v kilobajtech Neplatí pro datové sklady.|Žádné dimenze|
+|tempdb_log_size|Ano|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Místo, které se používá v souboru protokolu transakcí tempdb v kilobajtech Neplatí pro datové sklady.|Žádné dimenze|
+|tempdb_log_used_percent|Ano|Použit protokol tempdb v procentech|Procento|Maximum|Procento využitého místa v souboru protokolu transakcí tempdb Neplatí pro datové sklady.|Žádné dimenze|
 |wlg_active_queries|Ano|Aktivní dotazy skupiny úloh|Počet|Celkem|Aktivní dotazy v rámci skupiny úloh. Platí jenom pro datové sklady.|WorkloadGroupName, IsUserDefined|
 |wlg_active_queries_timeouts|Ano|Vypršení časového limitu dotazu skupiny úloh|Počet|Celkem|Dotazy, jejichž časový limit pro skupinu úloh vypršel. Platí jenom pro datové sklady.|WorkloadGroupName, IsUserDefined|
 |wlg_allocation_relative_to_system_percent|Ano|Přidělení skupiny úloh podle systémových procent|Procento|Maximum|Přidělené procento prostředků relativních k celému systému na skupinu úloh. Platí jenom pro datové sklady.|WorkloadGroupName, IsUserDefined|
@@ -2075,9 +2121,9 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |storage_limit|Ano|Maximální velikost dat|Bajty|Průměr|Maximální velikost dat|Žádné dimenze|
 |storage_percent|Ano|Procento využitého datového prostoru|Procento|Průměr|Procento využitého datového prostoru|Žádné dimenze|
 |storage_used|Ano|Využité místo pro data|Bajty|Průměr|Využité místo pro data|Žádné dimenze|
-|tempdb_data_size|Ano|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádné dimenze|
-|tempdb_log_size|Ano|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech|Žádné dimenze|
-|tempdb_log_used_percent|Ano|Použit protokol tempdb v procentech|Procento|Maximum|Použit protokol tempdb v procentech|Žádné dimenze|
+|tempdb_data_size|Ano|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Místo využité v datových souborech tempdb v kilobajtech|Žádné dimenze|
+|tempdb_log_size|Ano|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Místo, které se používá v souboru protokolu transakcí tempdb v kilobajtech|Žádné dimenze|
+|tempdb_log_used_percent|Ano|Použit protokol tempdb v procentech|Procento|Maximum|Procento využitého místa v souboru protokolu transakcí tempdb|Žádné dimenze|
 |workers_percent|Ano|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné dimenze|
 |xtp_storage_percent|Ano|In-Memory OLTP úložiště v procentech|Procento|Průměr|In-Memory OLTP úložiště v procentech|Žádné dimenze|
 
@@ -2171,7 +2217,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |StorageSyncRecalledTotalNetworkBytes|Ano|Velikost odvolání při vyvolání vrstvy cloudu|Bajty|Celkem|Velikost vrácených dat|SyncGroupName, servername|
 |StorageSyncRecallIOTotalSizeBytes|Ano|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerName|
 |StorageSyncRecallThroughputBytesPerSecond|Ano|Propustnost volání při navracení cloudových vrstev|BytesPerSecond|Průměr|Velikost propustnosti odvolání dat|SyncGroupName, servername|
-|StorageSyncServerHeartbeat|Ano|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když registrovaný server úspěšně zaznamená prezenční signál s koncovým bodem cloudu|ServerName|
+|StorageSyncServerHeartbeat|Ano|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerName|
 |StorageSyncSyncSessionAppliedFilesCount|Ano|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncSyncSessionPerItemErrorsCount|Ano|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|SyncGroupName, ServerEndpointName, SyncDirection|
 
@@ -2180,7 +2226,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|ServerHeartbeat|Ano|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když registrovaný server úspěšně zaznamená prezenční signál s koncovým bodem cloudu|ServerResourceId, servername|
+|ServerHeartbeat|Ano|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerResourceId, servername|
 |ServerRecallIOTotalSizeBytes|Ano|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerResourceId, servername|
 
 
@@ -2228,42 +2274,46 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|OrchestrationActivityRunsEnded|Ne|Běh aktivity skončil.|Počet|Celkem|Počet zrušených aktivit orchestrace, selhání nebo zrušení|Výsledek, FailureType, aktivita, ActivityType, kanál|
-|OrchestrationPipelineRunsEnded|Ne|Běh kanálu skončil.|Počet|Celkem|Počet úspěšných spuštění kanálu orchestrace, selhání nebo zrušení|Výsledek, FailureType, kanál|
-|OrchestrationTriggersEnded|Ne|Aktivační události ukončeny|Počet|Celkem|Počet zrušených aktivačních událostí orchestrace, selhání nebo zrušení|Výsledek, FailureType, Trigger|
-|SQLOnDemandLoginAttempts|Ne|Pokusy o přihlášení|Počet|Celkem|Počet pokusů o přihlášení, které byly úspěšné nebo neúspěšné|Výsledek|
-|SQLOnDemandQueriesEnded|Ne|Ukončené dotazy|Počet|Celkem|Počet dotazů, které úspěšně uspěly, selhaly nebo byly zrušeny|Výsledek|
-|SQLOnDemandQueryProcessedBytes|Ne|Zpracovaná data|Bajty|Celkem|Množství dat zpracovaných dotazy|Žádné dimenze|
+|BuiltinSqlPoolDataProcessedBytes|Ne|Zpracovaná data (bajty)|Bajty|Celkem|Množství dat zpracovaných dotazy|Žádné dimenze|
+|BuiltinSqlPoolLoginAttempts|Ne|Pokusy o přihlášení|Počet|Celkem|Počet pokusů o přihlášení, které nasadilo nebo selhaly|Výsledek|
+|BuiltinSqlPoolRequestsEnded|Ne|Žádosti byly ukončeny.|Počet|Celkem|Počet požadavků, které úspěšně uspěly, selhaly nebo byly zrušeny|Výsledek|
+|IntegrationActivityRunsEnded|Ne|Běh aktivity skončil.|Počet|Celkem|Počet zrušených integračních aktivit, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, aktivita, ActivityType, kanál|
+|IntegrationPipelineRunsEnded|Ne|Běh kanálu skončil.|Počet|Celkem|Počet zrušených běhů kanálu integrace, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, kanál|
+|IntegrationTriggerRunsEnded|Ne|Spuštění aktivační události skončilo.|Počet|Celkem|Počet zrušených aktivačních událostí integrace, které byly úspěšné, selhaly nebo byly zrušeny|Výsledek, FailureType, Trigger|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|CoresCapacity|Ne|Kapacita jader|Počet|Maximum|Kapacita jader|Žádné dimenze|
-|MemoryCapacityGB|Ne|Kapacita paměti (GB)|Počet|Maximum|Kapacita paměti (GB)|Žádné dimenze|
-|SparkJobsEnded|Ano|Ukončené aplikace|Počet|Celkem|Počet ukončených aplikací|JobType, výsledek úlohy|
+|BigDataPoolAllocatedCores|Ne|přidělené virtuální jádra|Počet|Maximum|Přidělená virtuální jádra pro fond Apache Spark|SubmitterId|
+|BigDataPoolAllocatedMemory|Ne|Přidělená paměť (GB)|Počet|Maximum|Přidělená paměť pro fond Apach Spark (GB)|SubmitterId|
+|BigDataPoolApplicationsActive|Ne|Aktivní aplikace Apache Spark|Počet|Počet|Celkem aktivních Apache Sparkch fondů aplikací|JobState|
+|BigDataPoolApplicationsEnded|Ne|Ukončené aplikace Apache Spark|Počet|Počet|Počet ukončených aplikací fondu Apache Spark|JobType, výsledek úlohy|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
+|ActiveQueries|Ne|Aktivní dotazy|Počet|Celkem|Aktivní dotazy. Použití této metriky Nefiltrováno a nerozdělené zobrazí všechny aktivní dotazy běžící v systému.|IsUserDefined|
 |AdaptiveCacheHitPercent|Ne|Procento přístupů do adaptivní mezipaměti|Procento|Maximum|Měří, jak fungují i úlohy s adaptivní mezipamětí. Pomocí této metriky s metrikou procentuální hodnoty přístupů do mezipaměti určete, jestli se má škálovat pro další kapacitu, nebo znovu spustit úlohy, aby se hydratea mezipaměť.|Žádné dimenze|
 |AdaptiveCacheUsedPercent|Ne|Procento využití adaptivní mezipaměti|Procento|Maximum|Měří, jak fungují i úlohy s adaptivní mezipamětí. Pomocí této metriky s metrikou procenta využití mezipaměti určete, jestli se má škálovat pro další kapacitu nebo znovu spustit úlohy, aby se hydratea mezipaměť.|Žádné dimenze|
-|Připojení|Ano|Připojení|Počet|Celkem|Celkový počet přihlášení k vyhrazenému fondu SQL|Výsledek|
-|ConnectionsBlockedByFirewall|Ne|Připojení blokovaná bránou firewall|Počet|Celkem|Počet připojení blokovaných pravidly brány firewall Přečtěte si zásady řízení přístupu pro vyhrazený fond SQL a sledujte tato připojení, pokud je počet vysoký.|Žádné dimenze|
-|DWULimit|Ne|DWU limit|Počet|Maximum|Cíl na úrovni služby vyhrazeného fondu SQL|Žádné dimenze|
-|DWUUsed|Ne|DWU použito|Počet|Maximum|Představuje reprezentaci vysoké úrovně využití v rámci vyhrazeného fondu SQL. Měřeno podle limitu DWU * procento DWU|Žádné dimenze|
-|DWUUsedPercent|Ne|Procento využitého DWU|Procento|Maximum|Představuje reprezentaci vysoké úrovně využití v rámci vyhrazeného fondu SQL. Měří se tak, že se převezme maximum mezi procenty CPU a v/v.|Žádné dimenze|
+|Připojení|Ano|Připojení|Počet|Celkem|Celkový počet přihlášení ke fondu SQL|Výsledek|
+|ConnectionsBlockedByFirewall|Ne|Připojení blokovaná bránou firewall|Počet|Celkem|Počet připojení blokovaných pravidly brány firewall Přečtěte si zásady řízení přístupu pro váš fond SQL a sledujte tato připojení, pokud je počet vysoký.|Žádné dimenze|
+|CPUPercent|Ne|Procento využití procesoru|Procento|Maximum|Využití CPU ve všech uzlech ve fondu SQL|Žádné dimenze|
+|DWULimit|Ne|DWU limit|Počet|Maximum|Cíl na úrovni služby pro fond SQL|Žádné dimenze|
+|DWUUsed|Ne|DWU použito|Počet|Maximum|Představuje reprezentaci vysoké úrovně využití napříč fondem SQL. Měřeno podle limitu DWU * procento DWU|Žádné dimenze|
+|DWUUsedPercent|Ne|Procento využitého DWU|Procento|Maximum|Představuje reprezentaci vysoké úrovně využití napříč fondem SQL. Měří se tak, že se převezme maximum mezi procenty CPU a v/v.|Žádné dimenze|
 |LocalTempDBUsedPercent|Ne|Procento využité místní databáze tempdb|Procento|Maximum|Místní využití databáze tempdb napříč všemi výpočetními uzly – hodnoty se vysílají každých pět minut.|Žádné dimenze|
-|MemoryUsedPercent|Ne|Procento využité paměti|Procento|Maximum|Využití paměti ve všech uzlech ve vyhrazeném fondu SQL|Žádné dimenze|
+|MemoryUsedPercent|Ne|Procento využité paměti|Procento|Maximum|Využití paměti ve všech uzlech ve fondu SQL|Žádné dimenze|
+|QueuedQueries|Ne|Dotazy ve frontě|Počet|Celkem|Kumulativní počet požadavků zařazených do fronty po dosažení maximálního počtu souběžnosti|IsUserDefined|
 |wlg_effective_min_resource_percent|Ano|Efektivní minimální procento prostředků|Procento|Minimum|Nastavení platné minimální procento prostředků s povoleným zvážením úrovně služby a nastavení skupiny úloh. Efektivní min_percentage_resource lze zvýšit na nižší úrovni služeb.|IsUserDefined, pracovní vytížení|
 |WLGActiveQueries|Ne|Aktivní dotazy skupiny úloh|Počet|Celkem|Aktivní dotazy v rámci skupiny úloh. Použití této metriky Nefiltrováno a nerozdělené zobrazí všechny aktivní dotazy běžící v systému.|IsUserDefined, pracovní vytížení|
 |WLGActiveQueriesTimeouts|Ne|Vypršení časového limitu dotazu skupiny úloh|Počet|Celkem|Dotazy na skupinu úloh, jejichž časový limit vypršel. Vypršení časových limitů dotazů, které tato metrika oznamuje, je jenom jednou, když je dotaz spuštěný (nezahrnuje čekací dobu z důvodu uzamčení nebo čekání na prostředky).|IsUserDefined, pracovní vytížení|
 |WLGAllocationByMaxResourcePercent|Ne|Přidělení skupiny úloh podle maximálního procenta prostředků|Procento|Maximum|Zobrazuje procento přidělení prostředků vzhledem k procentuální hodnotě prostředku efektivního Cap na skupinu úloh. Tato metrika poskytuje efektivní využití skupiny úloh.|IsUserDefined, pracovní vytížení|
 |WLGAllocationBySystemPercent|Ne|Přidělení skupiny úloh podle systémových procent|Procento|Maximum|Procento přidělení prostředků vzhledem k celému systému|IsUserDefined, pracovní vytížení|
-|WLGEffectiveCapResourcePercent|Ano|Procento efektivního Cap prostředku|Procento|Maximum|Procentuální hodnota prostředku efektivního Cap pro skupinu úloh. Pokud jsou k dispozici jiné skupiny úloh s min_percentage_resource > 0, effective_cap_percentage_resource se v poměru dolů.|IsUserDefined, pracovní vytížení|
+|WLGEffectiveCapResourcePercent|Ne|Procento efektivního Cap prostředku|Procento|Maximum|Procentuální hodnota prostředku efektivního Cap pro skupinu úloh. Pokud jsou k dispozici jiné skupiny úloh s min_percentage_resource > 0, effective_cap_percentage_resource se v poměru dolů.|IsUserDefined, pracovní vytížení|
 |WLGQueuedQueries|Ne|Dotazování skupin úloh ve frontě|Počet|Celkem|Kumulativní počet požadavků zařazených do fronty po dosažení maximálního počtu souběžnosti|IsUserDefined, pracovní vytížení|
 
 
@@ -2326,26 +2376,26 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|ActiveRequests|Ano|Aktivní požadavky|Počet|Celkem|Aktivní požadavky|Instance|
-|AverageResponseTime|Ano|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
-|BytesReceived|Ano|Data v|Bajty|Celkem|Data v|Instance|
-|BytesSent|Ano|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|DiskQueueLength|Ano|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
-|Http101|Ano|Http 101|Počet|Celkem|Http 101|Instance|
-|Http2xx|Ano|2xx http|Počet|Celkem|2xx http|Instance|
-|Http3xx|Ano|3xx http|Počet|Celkem|3xx http|Instance|
-|Http401|Ano|HTTP 401|Počet|Celkem|HTTP 401|Instance|
-|Http403|Ano|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|Ano|HTTP 404|Počet|Celkem|HTTP 404|Instance|
-|Http406|Ano|Http 406|Počet|Celkem|Http 406|Instance|
-|Http4xx|Ano|4xx http|Počet|Celkem|4xx http|Instance|
-|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|HttpQueueLength|Ano|Délka fronty http|Počet|Průměr|Délka fronty http|Instance|
+|ActiveRequests|Ano|Aktivní požadavky (zastaralé)|Počet|Celkem|Aktivní požadavky|Instance|
+|AverageResponseTime|Ano|Průměrná doba odezvy (nepoužívané)|Sekundy|Průměr|Průměrná doba trvání front-endu pro poskytování požadavků v sekundách.|Instance|
+|BytesReceived|Ano|Data v|Bajty|Celkem|Průměrná příchozí šířka pásma využitá napříč všemi front-endy v souboru MiB.|Instance|
+|BytesSent|Ano|Výstupní data|Bajty|Celkem|Průměrná příchozí šířka pásma využitá v rámci všech front-endu v souboru MiB.|Instance|
+|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Průměrně využitý procesor napříč všemi instancemi front-endu.|Instance|
+|DiskQueueLength|Ano|Délka fronty disku|Počet|Průměr|Průměrný počet požadavků na čtení i zápis, které byly zařazeny do fronty úložiště. Maximální délka fronty disku je označením aplikace, která může být zpomalena z důvodu nadměrného vstupně-výstupních operací disku.|Instance|
+|Http101|Ano|Http 101|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 101.|Instance|
+|Http2xx|Ano|2xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 200, ale < 300.|Instance|
+|Http3xx|Ano|3xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 300, ale < 400.|Instance|
+|Http401|Ano|HTTP 401|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 401|Instance|
+|Http403|Ano|HTTP 403|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 403|Instance|
+|Http404|Ano|HTTP 404|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 404|Instance|
+|Http406|Ano|Http 406|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 406|Instance|
+|Http4xx|Ano|4xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 400, ale < 500.|Instance|
+|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 500, ale < 600.|Instance|
+|HttpQueueLength|Ano|Délka fronty http|Počet|Průměr|Průměrný počet požadavků HTTP, které měly být zařazeny do fronty před jejich splněním. Vysoká nebo rostoucí délka fronty HTTP je příznakem plánu v oblasti vysokého zatížení.|Instance|
 |LargeAppServicePlanInstances|Ano|Zaměstnanci s velkými App Servicey plánu|Počet|Průměr|Zaměstnanci s velkými App Servicey plánu|Žádné dimenze|
 |MediumAppServicePlanInstances|Ano|Střední App Service plánování pracovních procesů|Počet|Průměr|Střední App Service plánování pracovních procesů|Žádné dimenze|
-|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Procento paměti|Instance|
-|Žádosti|Ano|Žádosti|Počet|Celkem|Žádosti|Instance|
+|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Průměrná velikost paměti využitá ve všech instancích front-endu.|Instance|
+|Žádosti|Ano|Žádosti|Počet|Celkem|Celkový počet požadavků bez ohledu na výsledný kód stavu HTTP.|Instance|
 |SmallAppServicePlanInstances|Ano|Plánování pracovníků malých App Service|Počet|Průměr|Plánování pracovníků malých App Service|Žádné dimenze|
 |TotalFrontEnds|Ano|Celkový počet front-endy|Počet|Průměr|Celkový počet front-endy|Žádné dimenze|
 
@@ -2354,8 +2404,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Procento paměti|Instance|
+|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Průměrná doba využití procesoru napříč všemi instancemi fondu pracovních procesů.|Instance|
+|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Průměrná paměť využitá ve všech instancích fondu pracovních procesů.|Instance|
 |WorkersAvailable|Ano|Zaměstnanci, kteří jsou k dispozici|Počet|Průměr|Zaměstnanci, kteří jsou k dispozici|Žádné dimenze|
 |WorkersTotal|Ano|Celkový počet pracovníků|Počet|Průměr|Celkový počet pracovníků|Žádné dimenze|
 |WorkersUsed|Ano|Využívané pracovní procesy|Počet|Průměr|Využívané pracovní procesy|Žádné dimenze|
@@ -2365,12 +2415,12 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|BytesReceived|Ano|Data v|Bajty|Celkem|Data v|Instance|
-|BytesSent|Ano|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
-|DiskQueueLength|Ano|Délka fronty disku|Počet|Průměr|Délka fronty disku|Instance|
-|HttpQueueLength|Ano|Délka fronty http|Počet|Průměr|Délka fronty http|Instance|
-|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Procento paměti|Instance|
+|BytesReceived|Ano|Data v|Bajty|Celkem|Průměrná příchozí šířka pásma využitá ve všech instancích plánu.|Instance|
+|BytesSent|Ano|Výstupní data|Bajty|Celkem|Průměrná odchozí šířka pásma využitá ve všech instancích plánu.|Instance|
+|CpuPercentage|Ano|Procento procesoru|Procento|Průměr|Průměrně využitý procesor napříč všemi instancemi plánu.|Instance|
+|DiskQueueLength|Ano|Délka fronty disku|Počet|Průměr|Průměrný počet požadavků na čtení i zápis, které byly zařazeny do fronty úložiště. Maximální délka fronty disku je označením aplikace, která může být zpomalena z důvodu nadměrného vstupně-výstupních operací disku.|Instance|
+|HttpQueueLength|Ano|Délka fronty http|Počet|Průměr|Průměrný počet požadavků HTTP, které měly být zařazeny do fronty před jejich splněním. Vysoká nebo rostoucí délka fronty HTTP je příznakem plánu v oblasti vysokého zatížení.|Instance|
+|MemoryPercentage|Ano|Procento paměti|Procento|Průměr|Průměrná paměť využitá ve všech instancích plánu.|Instance|
 |SocketInboundAll|Ano|SocketInboundAll|Počet|Průměr|SocketInboundAll|Instance|
 |SocketLoopback|Ano|SocketLoopback|Počet|Průměr|SocketLoopback|Instance|
 |SocketOutboundAll|Ano|SocketOutboundAll|Počet|Průměr|SocketOutboundAll|Instance|
@@ -2386,129 +2436,97 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |TcpSynSent|Ano|Odesláno TCP syn|Počet|Průměr|Odesláno TCP syn|Instance|
 |TcpTimeWait|Ano|Doba čekání protokolu TCP|Počet|Průměr|Doba čekání protokolu TCP|Instance|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft. Web/weby (kromě funkcí) 
 
-> [!NOTE]
-> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
-
-> [!IMPORTANT]
-> **Průměrná doba odezvy** bude zastaralá, aby nedocházelo k záměně s agregacemi metrik. Použijte **dobu odezvy** jako náhradu.
+## <a name="microsoftwebsites"></a>Microsoft. Web/weby
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|AppConnections|Ano|Připojení|Počet|Průměr|Připojení|Instance|
-|AverageMemoryWorkingSet|Ano|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|AverageResponseTime|Ano|Průměrná doba odezvy **(nepoužívané)**|Sekundy|Průměr|Průměrná doba odezvy|Instance|
-|BytesReceived|Ano|Data v|Bajty|Celkem|Data v|Instance|
-|BytesSent|Ano|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|CpuTime|Ano|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
-|CurrentAssemblies|Ano|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|FileSystemUsage|Ano|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné dimenze|
-|Gen0Collections|Ano|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Ano|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Ano|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
-|Handles|Ano|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
-|HealthCheckStatus|Ano|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|Http101|Ano|Http 101|Počet|Celkem|Http 101|Instance|
-|Http2xx|Ano|2xx http|Počet|Celkem|2xx http|Instance|
-|Http3xx|3xx http|Počet|Celkem|3xx http|Instance|
-|Http401|Ano|HTTP 401|Počet|Celkem|HTTP 401|Instance|
-|Http403|Ano|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|Ano|HTTP 404|Počet|Celkem|HTTP 404|Instance|
-|Http406|Ano|Http 406|Počet|Celkem|Http 406|Instance|
-|Http4xx|Ano|4xx http|Počet|Celkem|4xx http|Instance|
-|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|HttpResponseTime|Ano|Doba odezvy|Sekundy|Průměr|Doba odezvy|Instance|
-|IoOtherBytesPerSecond|Ano|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoOtherOperationsPerSecond|Ano|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|IoReadBytesPerSecond|Ano|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoReadOperationsPerSecond|Ano|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteBytesPerSecond|Ano|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoWriteOperationsPerSecond|Ano|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|MemoryWorkingSet|Ano|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
-|PrivateBytes|Ano|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|Žádosti|Ano|Žádosti|Počet|Celkem|Žádosti|Instance|
-|RequestsInApplicationQueue|Ano|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
-|Vlákna|Ano|Počet vláken|Počet|Průměr|Počet vláken|Instance|
-|TotalAppDomains|Ano|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Ano|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft. Web/lokality (funkce)
-
-> [!NOTE]
-> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
-
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
-|---|---|---|---|---|---|---|
-|AverageMemoryWorkingSet|Ano|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|BytesReceived|Ano|Data v|Bajty|Celkem|Data v|Instance|
-|BytesSent|Ano|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|CurrentAssemblies|Ano|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|FileSystemUsage|Ano|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné dimenze|
+|AppConnections|Ano|Připojení|Počet|Průměr|Počet vázaných soketů existujících v izolovaném prostoru (w3wp.exe a jeho podřízených procesech). Vázaný soket se vytvoří voláním rozhraní API BIND ()/Connect () a zůstane až do chvíle, kdy je tento soket uzavřený pomocí CloseHandle ()/closesocket ().|Instance|
+|AverageMemoryWorkingSet|Ano|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná velikost paměti, kterou aplikace používá, v megabajtech (MiB).|Instance|
+|AverageResponseTime|Ano|Průměrná doba odezvy (nepoužívané)|Sekundy|Průměr|Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách)|Instance|
+|BytesReceived|Ano|Data v|Bajty|Celkem|Množství příchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
+|BytesSent|Ano|Výstupní data|Bajty|Celkem|Velikost odchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
+|CpuTime|Ano|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Viz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru).|Instance|
+|CurrentAssemblies|Ano|Aktuální sestavení|Počet|Průměr|Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci.|Instance|
+|FileSystemUsage|Ano|Využití systému souborů|Bajty|Průměr|Procento kvóty systému souborů spotřebované aplikací|Žádné dimenze|
 |FunctionExecutionCount|Ano|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
-|FunctionExecutionUnits|Ano|Jednotky spuštění funkce|Počet|Celkem|[Jednotky spuštění funkce](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instance|
-|Gen0Collections|Ano|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Ano|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Ano|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
+|FunctionExecutionUnits|Ano|Jednotky spuštění funkce|Počet|Celkem|Jednotky spuštění funkce|Instance|
+|Gen0Collections|Ano|Generace paměti gen 0|Počet|Celkem|Počet, kolikrát jsou objekty generace 0 od spuštění procesu aplikace shromažďovány z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|Instance|
+|Gen1Collections|Ano|Generace paměti 1. generace|Počet|Celkem|Kolikrát jsou objekty generace 1 od spuštění procesu aplikace uvolněny z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|Instance|
+|Gen2Collections|Ano|Uvolňování paměti 2. generace|Počet|Celkem|Kolikrát jsou objekty generace 2 od spuštění procesu aplikace uvolněny z paměti.|Instance|
+|Handles|Ano|Počet popisovačů|Počet|Průměr|Celkový počet popisovačů aktuálně otevřených procesem aplikace.|Instance|
 |HealthCheckStatus|Ano|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|IoOtherBytesPerSecond|Ano|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoOtherOperationsPerSecond|Ano|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|IoReadBytesPerSecond|Ano|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoReadOperationsPerSecond|Ano|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteBytesPerSecond|Ano|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoWriteOperationsPerSecond|Ano|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|MemoryWorkingSet|Ano|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
-|PrivateBytes|Ano|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|RequestsInApplicationQueue|Ano|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
-|TotalAppDomains|Ano|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Ano|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
+|Http101|Ano|Http 101|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 101.|Instance|
+|Http2xx|Ano|2xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 200, ale < 300.|Instance|
+|Http3xx|Ano|3xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 300, ale < 400.|Instance|
+|Http401|Ano|HTTP 401|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 401|Instance|
+|Http403|Ano|HTTP 403|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 403|Instance|
+|Http404|Ano|HTTP 404|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 404|Instance|
+|Http406|Ano|Http 406|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 406|Instance|
+|Http4xx|Ano|4xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 400, ale < 500.|Instance|
+|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 500, ale < 600.|Instance|
+|HttpResponseTime|Ano|Doba odezvy|Sekundy|Průměr|Doba, kterou aplikace bude obsluhovat požadavky (v sekundách).|Instance|
+|IoOtherBytesPerSecond|Ano|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace vydává bajty, do vstupně-výstupních operací, které neobsahují data, jako jsou například operace řízení.|Instance|
+|IoOtherOperationsPerSecond|Ano|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|Frekvence, s jakou proces aplikace vystavuje vstupně-výstupní operace, které nejsou operacemi čtení nebo zápisu.|Instance|
+|IoReadBytesPerSecond|Ano|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace čte bajty z vstupně-výstupních operací.|Instance|
+|IoReadOperationsPerSecond|Ano|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace vydává vstupně-výstupní operace čtení|Instance|
+|IoWriteBytesPerSecond|Ano|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Rychlost, kterou proces aplikace zapisuje bajty na vstupně-výstupní operace.|Instance|
+|IoWriteOperationsPerSecond|Ano|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Frekvence, s jakou proces aplikace vydává vstupně-výstupní operace zápisu.|Instance|
+|MemoryWorkingSet|Ano|Pracovní sada paměti|Bajty|Průměr|Aktuální velikost paměti, kterou aplikace používá, v souboru MiB.|Instance|
+|PrivateBytes|Ano|Soukromé bajty|Bajty|Průměr|Soukromé bajty jsou aktuální velikost (v bajtech) paměti, kterou proces aplikace přidělen, který nelze sdílet s jinými procesy.|Instance|
+|Žádosti|Ano|Žádosti|Počet|Celkem|Celkový počet požadavků bez ohledu na výsledný kód stavu HTTP.|Instance|
+|RequestsInApplicationQueue|Ano|Žádosti ve frontě aplikací|Počet|Průměr|Počet požadavků ve frontě žádostí aplikace.|Instance|
+|Vlákna|Ano|Počet vláken|Počet|Průměr|Počet vláken, která jsou aktuálně aktivní v procesu aplikace.|Instance|
+|TotalAppDomains|Ano|Celkový počet domén aplikace|Počet|Průměr|Aktuální počet objektů třídy AppDomains zavedených v této aplikaci.|Instance|
+|TotalAppDomainsUnloaded|Ano|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet objektů třídy AppDomains uvolněných od spuštění aplikace.|Instance|
+
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
 |Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|---|
-|AppConnections|Ano|Připojení|Počet|Průměr|Připojení|Instance|
-|AverageMemoryWorkingSet|Ano|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
-|AverageResponseTime|Ano|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
-|BytesReceived|Ano|Data v|Bajty|Celkem|Data v|Instance|
-|BytesSent|Ano|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
-|CpuTime|Ano|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
-|CurrentAssemblies|Ano|Aktuální sestavení|Počet|Průměr|Aktuální sestavení|Instance|
-|FileSystemUsage|Ano|Využití systému souborů|Bajty|Průměr|Využití systému souborů|Žádné dimenze|
+|AppConnections|Ano|Připojení|Počet|Průměr|Počet vázaných soketů existujících v izolovaném prostoru (w3wp.exe a jeho podřízených procesech). Vázaný soket se vytvoří voláním rozhraní API BIND ()/Connect () a zůstane až do chvíle, kdy je tento soket uzavřený pomocí CloseHandle ()/closesocket ().|Instance|
+|AverageMemoryWorkingSet|Ano|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná velikost paměti, kterou aplikace používá, v megabajtech (MiB).|Instance|
+|AverageResponseTime|Ano|Průměrná doba odezvy (nepoužívané)|Sekundy|Průměr|Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách)|Instance|
+|BytesReceived|Ano|Data v|Bajty|Celkem|Množství příchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
+|BytesSent|Ano|Výstupní data|Bajty|Celkem|Velikost odchozí šířky pásma spotřebované aplikací v souboru MiB.|Instance|
+|CpuTime|Ano|Čas procesoru|Sekundy|Celkem|Množství procesoru spotřebovaného aplikací v řádu sekund Pro další informace o této metrikě. Viz https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (čas procesoru vs. procento procesoru).|Instance|
+|CurrentAssemblies|Ano|Aktuální sestavení|Počet|Průměr|Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci.|Instance|
+|FileSystemUsage|Ano|Využití systému souborů|Bajty|Průměr|Procento kvóty systému souborů spotřebované aplikací|Žádné dimenze|
 |FunctionExecutionCount|Ano|Počet spuštění funkce|Počet|Celkem|Počet spuštění funkce|Instance|
 |FunctionExecutionUnits|Ano|Jednotky spuštění funkce|Počet|Celkem|Jednotky spuštění funkce|Instance|
-|Gen0Collections|Ano|Generace paměti gen 0|Počet|Celkem|Generace paměti gen 0|Instance|
-|Gen1Collections|Ano|Generace paměti 1. generace|Počet|Celkem|Generace paměti 1. generace|Instance|
-|Gen2Collections|Ano|Uvolňování paměti 2. generace|Počet|Celkem|Uvolňování paměti 2. generace|Instance|
-|Handles|Ano|Počet popisovačů|Počet|Průměr|Počet popisovačů|Instance|
+|Gen0Collections|Ano|Generace paměti gen 0|Počet|Celkem|Počet, kolikrát jsou objekty generace 0 od spuštění procesu aplikace shromažďovány z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|Instance|
+|Gen1Collections|Ano|Generace paměti 1. generace|Počet|Celkem|Kolikrát jsou objekty generace 1 od spuštění procesu aplikace uvolněny z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|Instance|
+|Gen2Collections|Ano|Uvolňování paměti 2. generace|Počet|Celkem|Kolikrát jsou objekty generace 2 od spuštění procesu aplikace uvolněny z paměti.|Instance|
+|Handles|Ano|Počet popisovačů|Počet|Průměr|Celkový počet popisovačů aktuálně otevřených procesem aplikace.|Instance|
 |HealthCheckStatus|Ano|Stav kontroly stavu|Počet|Průměr|Stav kontroly stavu|Instance|
-|Http101|Ano|Http 101|Počet|Celkem|Http 101|Instance|
-|Http2xx|Ano|2xx http|Počet|Celkem|2xx http|Instance|
-|Http3xx|Ano|3xx http|Počet|Celkem|3xx http|Instance|
-|Http401|Ano|HTTP 401|Počet|Celkem|HTTP 401|Instance|
-|Http403|Ano|HTTP 403|Počet|Celkem|HTTP 403|Instance|
-|Http404|Ano|HTTP 404|Počet|Celkem|HTTP 404|Instance|
-|Http406|Ano|Http 406|Počet|Celkem|Http 406|Instance|
-|Http4xx|Ano|4xx http|Počet|Celkem|4xx http|Instance|
-|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Chyby serveru http|Instance|
-|HttpResponseTime|Ano|Doba odezvy|Sekundy|Průměr|Doba odezvy|Instance|
-|IoOtherBytesPerSecond|Ano|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|IO – ostatní bajty za sekundu|Instance|
-|IoOtherOperationsPerSecond|Ano|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|V/v – ostatní operace za sekundu|Instance|
-|IoReadBytesPerSecond|Ano|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Bajty čtení v/v za sekundu|Instance|
-|IoReadOperationsPerSecond|Ano|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace čtení za sekundu|Instance|
-|IoWriteBytesPerSecond|Ano|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní bajty zápisu za sekundu|Instance|
-|IoWriteOperationsPerSecond|Ano|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Vstupně-výstupní operace zápisu za sekundu|Instance|
-|MemoryWorkingSet|Ano|Pracovní sada paměti|Bajty|Průměr|Pracovní sada paměti|Instance|
-|PrivateBytes|Ano|Soukromé bajty|Bajty|Průměr|Soukromé bajty|Instance|
-|Žádosti|Ano|Žádosti|Počet|Celkem|Žádosti|Instance|
-|RequestsInApplicationQueue|Ano|Žádosti ve frontě aplikací|Počet|Průměr|Žádosti ve frontě aplikací|Instance|
-|Vlákna|Ano|Počet vláken|Počet|Průměr|Počet vláken|Instance|
-|TotalAppDomains|Ano|Celkový počet domén aplikace|Počet|Průměr|Celkový počet domén aplikace|Instance|
-|TotalAppDomainsUnloaded|Ano|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet uvolněných domén aplikace|Instance|
+|Http101|Ano|Http 101|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 101.|Instance|
+|Http2xx|Ano|2xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 200, ale < 300.|Instance|
+|Http3xx|Ano|3xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 300, ale < 400.|Instance|
+|Http401|Ano|HTTP 401|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 401|Instance|
+|Http403|Ano|HTTP 403|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 403|Instance|
+|Http404|Ano|HTTP 404|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 404|Instance|
+|Http406|Ano|Http 406|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP 406|Instance|
+|Http4xx|Ano|4xx http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 400, ale < 500.|Instance|
+|Http5xx|Ano|Chyby serveru http|Počet|Celkem|Počet požadavků, které mají za následek stavový kód HTTP = 500, ale < 600.|Instance|
+|HttpResponseTime|Ano|Doba odezvy|Sekundy|Průměr|Doba, kterou aplikace bude obsluhovat požadavky (v sekundách).|Instance|
+|IoOtherBytesPerSecond|Ano|IO – ostatní bajty za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace vydává bajty, do vstupně-výstupních operací, které neobsahují data, jako jsou například operace řízení.|Instance|
+|IoOtherOperationsPerSecond|Ano|V/v – ostatní operace za sekundu|BytesPerSecond|Celkem|Frekvence, s jakou proces aplikace vystavuje vstupně-výstupní operace, které nejsou operacemi čtení nebo zápisu.|Instance|
+|IoReadBytesPerSecond|Ano|Bajty čtení v/v za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace čte bajty z vstupně-výstupních operací.|Instance|
+|IoReadOperationsPerSecond|Ano|Vstupně-výstupní operace čtení za sekundu|BytesPerSecond|Celkem|Rychlost, s jakou proces aplikace vydává vstupně-výstupní operace čtení|Instance|
+|IoWriteBytesPerSecond|Ano|Vstupně-výstupní bajty zápisu za sekundu|BytesPerSecond|Celkem|Rychlost, kterou proces aplikace zapisuje bajty na vstupně-výstupní operace.|Instance|
+|IoWriteOperationsPerSecond|Ano|Vstupně-výstupní operace zápisu za sekundu|BytesPerSecond|Celkem|Frekvence, s jakou proces aplikace vydává vstupně-výstupní operace zápisu.|Instance|
+|MemoryWorkingSet|Ano|Pracovní sada paměti|Bajty|Průměr|Aktuální velikost paměti, kterou aplikace používá, v souboru MiB.|Instance|
+|PrivateBytes|Ano|Soukromé bajty|Bajty|Průměr|Soukromé bajty jsou aktuální velikost (v bajtech) paměti, kterou proces aplikace přidělen, který nelze sdílet s jinými procesy.|Instance|
+|Žádosti|Ano|Žádosti|Počet|Celkem|Celkový počet požadavků bez ohledu na výsledný kód stavu HTTP.|Instance|
+|RequestsInApplicationQueue|Ano|Žádosti ve frontě aplikací|Počet|Průměr|Počet požadavků ve frontě žádostí aplikace.|Instance|
+|Vlákna|Ano|Počet vláken|Počet|Průměr|Počet vláken, která jsou aktuálně aktivní v procesu aplikace.|Instance|
+|TotalAppDomains|Ano|Celkový počet domén aplikace|Počet|Průměr|Aktuální počet objektů třídy AppDomains zavedených v této aplikaci.|Instance|
+|TotalAppDomainsUnloaded|Ano|Celkový počet uvolněných domén aplikace|Počet|Průměr|Celkový počet objektů třídy AppDomains uvolněných od spuštění aplikace.|Instance|
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si o metrikách v Azure Monitor](data-platform.md)
-* [Vytváření upozornění na metriky](alerts-overview.md)
-* [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](platform-logs-overview.md)
+
+- [Přečtěte si o metrikách v Azure Monitor](data-platform.md)
+- [Vytváření upozornění na metriky](alerts-overview.md)
+- [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](platform-logs-overview.md)

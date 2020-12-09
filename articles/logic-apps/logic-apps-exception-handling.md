@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014733"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920743"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -27,7 +27,7 @@ U většiny základních výjimek a zpracování chyb můžete použít *zásady
 
 Tady jsou typy zásad opakování:
 
-| Typ | Description |
+| Typ | Popis |
 |------|-------------|
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
@@ -35,7 +35,7 @@ Tady jsou typy zásad opakování:
 | **Žádný**  | Neodešlete požadavek znovu. |
 |||
 
-Informace o omezeních zásad opakování najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#request-limits).
+Informace o omezeních zásad opakování najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#http-limits).
 
 ### <a name="change-retry-policy"></a>Změnit zásady opakování
 
@@ -69,7 +69,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Povinné*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo `exponential` |
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
@@ -78,7 +78,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Volitelné*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*minimální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*maximální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |

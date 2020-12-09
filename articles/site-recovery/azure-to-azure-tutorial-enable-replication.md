@@ -4,12 +4,12 @@ description: V tomto kurzu nastavíte zotavení po havárii pro virtuální poč
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394050"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922481"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Kurz: nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -47,16 +47,16 @@ Váš účet Azure potřebuje oprávnění k vytvoření trezoru Recovery Servic
 
 - Pokud jste právě vytvořili bezplatné předplatné Azure, jste správcem účtu a nemusíte dělat nic dalšího.
 - Pokud nejste správcem, ve spolupráci se správcem aplikace Získejte potřebná oprávnění.
-    - **Vytvoření trezoru** : oprávnění správce nebo vlastníka v předplatném. 
-    - **Správa operací Site Recovery v trezoru** : předdefinovaná role Azure pro *Site Recovery přispěvatele* .
-    - **Vytvoření virtuálních počítačů Azure v cílové oblasti** : buď předdefinovaná role *Přispěvatel virtuálních počítačů* , nebo specifická oprávnění pro:
+    - **Vytvoření trezoru**: oprávnění správce nebo vlastníka v předplatném. 
+    - **Správa operací Site Recovery v trezoru**: předdefinovaná role Azure pro *Site Recovery přispěvatele* .
+    - **Vytvoření virtuálních počítačů Azure v cílové oblasti**: buď předdefinovaná role *Přispěvatel virtuálních počítačů* , nebo specifická oprávnění pro:
         - Vytvoření virtuálního počítače ve vybrané virtuální síti
         - Zápis do účtu služby Azure Storage.
         - Zápis na disk spravovaný službou Azure.
 
 ### <a name="verify-target-settings"></a>Ověřit nastavení cíle
 
-Když při převzetí služeb při selhání ze zdrojové oblasti dojde k obnovení, vytvoří se virtuální počítače v cílové oblasti. 
+Když při převzetí služeb při selhání ze zdrojové oblasti dojde k zotavení po havárii, vytvoří se virtuální počítače v cílové oblasti. 
 
 Ověřte, jestli má vaše předplatné dostatek prostředků v cílové oblasti. Musíte být schopni vytvořit virtuální počítače s velikostmi, které odpovídají virtuálním počítačům ve zdrojové oblasti. Při nastavování zotavení po havárii Site Recovery pro cílový virtuální počítač vybírá stejnou velikost (nebo nejbližší možnou velikost).
 
@@ -102,20 +102,20 @@ Značka GuestAndHybridManagement | Tuto možnost použijte, pokud chcete automat
 
 Ověřte, že virtuální počítače mají nejnovější kořenové certifikáty. V opačném případě se virtuální počítač nedá zaregistrovat s Site Recovery z důvodu omezení zabezpečení.
 
-- **Virtuální počítače s Windows** : na virtuálním počítači nainstalujte všechny nejnovější aktualizace Windows, aby se na tomto počítači používaly všechny důvěryhodné kořenové certifikáty. V odpojeném prostředí použijte své standardní procesy pro web Windows Update a aktualizace certifikátů.
-- **Virtuální počítače se systémem Linux** : postupujte podle pokynů, které poskytuje distributor pro Linux, abyste získali nejnovější důvěryhodné kořenové certifikáty a seznam odvolaných certifikátů (CRL).
+- **Virtuální počítače s Windows**: na virtuálním počítači nainstalujte všechny nejnovější aktualizace Windows, aby se na tomto počítači používaly všechny důvěryhodné kořenové certifikáty. V odpojeném prostředí použijte své standardní procesy pro web Windows Update a aktualizace certifikátů.
+- **Virtuální počítače se systémem Linux**: postupujte podle pokynů, které poskytuje distributor pro Linux, abyste získali nejnovější důvěryhodné kořenové certifikáty a seznam odvolaných certifikátů (CRL).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 Vytvořte Trezor Recovery Services v jakékoli oblasti kromě zdrojové oblasti, ze které chcete replikovat virtuální počítače.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Do vyhledávacího pole zadejte *Recovery*. V části **služby** vyberte **úložiště Recovery Services**.
 
     ![Hledat trezory Recovery Services](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
 3. V **Recovery Services trezory** vyberte **Přidat**.
-4. V části **vytvořit Recovery Services úložiště** –  >  **základy** vyberte předplatné, ve kterém chcete trezor vytvořit.
+4. V části **vytvořit Recovery Services úložiště**–  >  **základy** vyberte předplatné, ve kterém chcete trezor vytvořit.
 5. V části **Skupina prostředků** vyberte existující skupinu prostředků pro trezor nebo vytvořte novou.
 6. Do pole **název trezoru** zadejte popisný název pro identifikaci trezoru.
 7. V části **oblast** vyberte oblast Azure, do které se má Trezor umístit. [Ověřte podporované oblasti](https://azure.microsoft.com/pricing/details/site-recovery/).

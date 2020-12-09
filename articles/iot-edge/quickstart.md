@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 791358fe6a9524e3275ed75ce34bdc86123f0ee0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 547bf111e73813c939caa917c0117dac6c8989e9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572350"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922475"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -32,8 +32,6 @@ V tomto rychlém startu se naučíte:
 Tento rychlý Start vás provede vytvořením virtuálního počítače s Windows a jeho nakonfigurováním tak, aby bylo zařízení IoT Edge. Pak modul nasadíte z Azure Portal do svého zařízení. Modul použitý v tomto rychlém startu je simulovaný senzor, který generuje data o teplotě, vlhkosti a tlaku. Ostatní kurzy Azure IoT Edge sestavují na práci, kterou tady provedete, nasazením dalších modulů, které analyzují Simulovaná data pro Business Insights.
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -68,7 +66,7 @@ Zařízení IoT Edge:
   Po spuštění virtuálního počítače si můžete stáhnout soubor RDP pro použití při připojování k virtuálnímu počítači:
 
   1. V Azure Portal přejděte na nový virtuální počítač s Windows.
-  1. Vyberte **Připojit**.
+  1. Vyberte **Connect** (Připojit).
   1. Na kartě **RDP** vyberte **Stáhnout soubor RDP**.
 
   Otevřete tento soubor s Připojení ke vzdálené ploše pro připojení k virtuálnímu počítači s Windows pomocí jména správce a hesla, které jste zadali pomocí `az vm create` příkazu.

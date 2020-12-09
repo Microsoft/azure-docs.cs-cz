@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548235"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920567"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované prostředky pro výstrahy metriky v Azure Monitor
 
@@ -60,7 +60,7 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. DBforPostgreSQL/flexibleServers | Ano | Ne | |
 |Microsoft. DBforPostgreSQL/servery | Ne | Ne | [DB pro PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Ne | Ne | [DB pro PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/singleservers | Ne | Ne | [DB pro PostgreSQL (jednotlivé servery)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft. DBforPostgreSQL/flexibilní | Ne | Ne | [DB pro PostgreSQL (servery flexiable)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Ano | Ne |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Ano | Ne | [Služby Device Provisioning](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/digitalTwinsInstances | Ano | Ne | |
@@ -115,7 +115,7 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. Web/hostingEnvironments/multiRolePools | Ano | Ne | [App Service Environment fondů s více rolemi](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Ano | Ne | [App Service Environment fondy pracovních procesů](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft. Web/serverových farem | Ano | Ne | [Plány App Service](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/weby | Ano | Ne | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) a [funkce](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft. Web/weby | Ano | Ne | [App Services a funkce](./metrics-supported.md#microsoftwebsites)|
 |Microsoft. Web/weby/sloty | Ano | Ne | [Sloty App Service](./metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> není podporováno pro metriky sítě virtuálních počítačů (celkem v síti, celkový počet příchozích toků, příchozí toky, odchozí toky, maximální rychlost vytváření toků, maximální rychlost vytváření odchozích toků, maximální rychlost vytvoření u odchozích toků) a vlastní metriky.

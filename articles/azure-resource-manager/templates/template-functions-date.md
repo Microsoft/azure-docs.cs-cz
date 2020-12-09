@@ -1,18 +1,18 @@
 ---
 title: Šablony – funkce – datum
-description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s daty.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) pro práci s daty.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 83e601adb649098f7a4e19cb71170b96a3287d9b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004581"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920499"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
-Správce prostředků poskytuje následující funkce pro práci s daty v šablonách Azure Resource Manager (ARM):
+Správce prostředků poskytuje následující funkce pro práci s daty v šabloně Azure Resource Manager (šablona ARM):
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -27,11 +27,11 @@ Přidá do základní hodnoty časový interval. Očekává se formát ISO 8601.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base | Yes | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| doba trvání | Yes | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formát | No | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Ano | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| doba trvání | Ano | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formát | Ne | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -182,13 +182,13 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 `utcNow(format)`
 
-Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadán žádný formát, bude použit formát ISO 8601 (yyyyMMddTHHmmssZ). **Tato funkce se dá použít jenom ve výchozí hodnotě pro parametr.**
+Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadán žádný formát, použije se formát ISO 8601 ( `yyyyMMddTHHmmssZ` ). **Tato funkce se dá použít jenom ve výchozí hodnotě pro parametr.**
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formát |No |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -326,4 +326,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Popis sekcí v šabloně ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

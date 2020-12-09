@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489017"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921039"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -34,7 +34,7 @@ Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby
 
 * **Azure Data Lake Storage Gen2 účet úložiště**: Pokud nemáte účet úložiště adls Gen2, přečtěte si, jak [vytvořit účet úložiště adls Gen2](../storage/common/storage-account-create.md).
 
-* **Azure synapse Analytics (dřív SQL DW)**: Pokud nemáte Azure synapse Analytics (dřív SQL DW), zjistěte, jak [vytvořit instanci Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure synapse Analytics**: Pokud nemáte Azure synapse Analytics, přečtěte si, jak [vytvořit instanci Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 * **Azure Data Factory**: Pokud jste ještě nevytvořili datovou továrnu, přečtěte si téma Jak [vytvořit datovou továrnu](./quickstart-create-data-factory-portal.md).
 
@@ -79,7 +79,7 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Vytvoření propojené služby Azure synapse Analytics
 
-1. Pokud chcete přidat propojenou službu Azure synapse Analytics, opakujte stejný postup. Na kartě připojení klikněte na **Nový**. Vyberte dlaždici **Azure synapse Analytics (dříve SQL DW)** a klikněte na pokračovat.
+1. Pokud chcete přidat propojenou službu Azure synapse Analytics, opakujte stejný postup. Na kartě připojení klikněte na **Nový**. Vyberte dlaždici **Azure synapse Analytics** a klikněte na pokračovat.
 
     ![Portál – konfigurace 6](media/lab-data-flow-data-share/configure6.png)
 1. V podokně Konfigurace propojené služby zadejte jako název propojené služby ' SQLDW '. Zadejte přihlašovací údaje, aby se data Factory mohla připojit k vaší databázi. Pokud používáte ověřování SQL, zadejte název serveru, databázi, uživatelské jméno a heslo. Kliknutím na **Testovat připojení** můžete ověřit, jestli jsou informace o připojení správné. Po dokončení klikněte na **vytvořit** .
@@ -155,7 +155,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 1. Pokud chcete ověřit, jestli vaše aktivita kopírování funguje správně, klikněte na **ladit** v horní části plátna kanálu a spusťte ladění. Pomocí ladicího programu můžete svůj kanál před publikováním do služby Data Factory otestovat buď na konci, nebo do zarážky.
 
     ![Kopie portálu 11](media/lab-data-flow-data-share/copy11.png)
-1. Pokud chcete monitorovat svůj ladicí běh, na plátně kanálu klikněte na kartu **výstup** . Obrazovka monitorování se znovu aktualizuje každých 20 sekund nebo ručně kliknutím na tlačítko Aktualizovat. Aktivita kopírování má speciální zobrazení monitorování, ke kterému se dá získat přístup kliknutím na ikonu oka – ikona ve sloupci **Actions (akce** ).
+1. Pokud chcete monitorovat svůj ladicí běh, na plátně kanálu klikněte na kartu **výstup** . Obrazovka monitorování se znovu aktualizuje každých 20 sekund nebo ručně kliknutím na tlačítko Aktualizovat. Aktivita kopírování má speciální zobrazení monitorování, které může mít přístup kliknutím na ikonu oka-brýle ve sloupci **Akce** .
 
     ![Kopie portálu 12](media/lab-data-flow-data-share/copy12.png)
 1. Zobrazení pro monitorování kopírování poskytuje podrobnosti o spuštění aktivity a výkonnostní charakteristiky. Můžete zobrazit informace, jako je čtení a zápis, řádky pro čtení/zápis, čtení a zapisování souborů a propustnost. Pokud jste všechno nakonfigurovali správně, měli byste vidět 49 999 řádků zapsaných do jednoho souboru v ADLS jímky.
@@ -261,7 +261,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     K získání celkové vzdálenosti cest použijte `sum()` agregační funkci pro agregaci `trip_distance` přetypování sloupce na celé číslo pomocí `toInteger()` . V jazyce výrazu toku dat je tato definice definována jako `sum(toInteger(trip_distance))` . Až budete hotovi, klikněte na **Uložit a dokončit** .
 
     ![Portál AGG 6](media/lab-data-flow-data-share/agg6.png)
-1. Otestujte logiku transformace na kartě **Náhled dat** . Jak vidíte, existuje mnohem méně řádků a sloupců než dříve. Pouze tři sloupce Group by a agregace definované v této transformaci budou pokračovat v podřízeném. Jak je v ukázce jenom pět skupin typů plateb, vycházejí jenom pět řádků.
+1. Otestujte logiku transformace na kartě **Náhled dat** . Jak vidíte, existuje mnohem méně řádků a sloupců než dříve. Pouze tři skupiny podle a agregované sloupce definované v této transformaci budou pokračovat pro příjem dat. Jak je v ukázce jenom pět skupin typů plateb, vycházejí jenom pět řádků.
 
     ![Portál AGG 7](media/lab-data-flow-data-share/agg7.png)
 
@@ -274,7 +274,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 
     ![Jímka portálu 2](media/lab-data-flow-data-share/sink2.png)
 
-1. Vyberte dlaždici **Azure synapse Analytics (dříve SQL DW)** a klikněte na pokračovat.
+1. Vyberte dlaždici **Azure synapse Analytics** a klikněte na pokračovat.
 
     ![Jímka portálu 3](media/lab-data-flow-data-share/sink3.png)
 1. Zavolejte svou datovou sadu ' AggregatedTaxiData '. Jako propojená služba vyberte SQLDW. Vyberte **vytvořit novou tabulku** a pojmenujte novou tabulku dbo. AggregateTaxiData. Po dokončení klikněte na OK.
@@ -306,7 +306,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 
 Právě jste dokončili část Data Factory tohoto testovacího prostředí. Pokud je chcete zprovoznění s triggery, publikujte prostředky. Úspěšně jste spustili kanál, který ingestoval data z Azure SQL Database, aby Azure Data Lake Storage pomocí aktivity kopírování a pak agreguje tato data do analýzy Azure synapse. Data byla úspěšně zapsána tak, že si prohlížíte SQL Server sebe sama.
 
-## <a name="share-data-using-azure-data-share"></a>Sdílení dat pomocí Azure Data Share
+## <a name="share-data-using-azure-data-share"></a>Sdílení dat s využitím Azure Data Share
 
 V této části se dozvíte, jak nastavit novou sdílenou složku pomocí Azure Portal. Tato akce zahrnuje vytvoření nové sdílené složky, která bude obsahovat datové sady z Azure Data Lake Store Gen2 a Azure synapse Analytics. Potom nakonfigurujete plán snímků, který poskytne spotřebitelům dat možnost automaticky aktualizovat data, která jsou s nimi sdílená. Potom budete pozvat příjemce do sdílené složky dat. 
 

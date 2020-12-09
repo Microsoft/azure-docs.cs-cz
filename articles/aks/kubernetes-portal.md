@@ -1,23 +1,21 @@
 ---
-title: Přístup k prostředkům Kubernetes z Azure Portal (Preview)
+title: Přístup k prostředkům Kubernetes z Azure Portal
 description: Naučte se pracovat s prostředky Kubernetes a spravovat cluster Azure Kubernetes Service (AKS) z Azure Portal.
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571619"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921581"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Přístup k prostředkům Kubernetes z Azure Portal (Preview)
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Přístup k prostředkům Kubernetes z Azure Portal
 
-Azure Portal obsahuje prohlížeč prostředků Kubernetes (Preview) pro snadný přístup k prostředkům Kubernetes v clusteru Azure Kubernetes Service (AKS). Zobrazení prostředků Kubernetes z Azure Portal omezuje přepínání kontextu mezi Azure Portal a `kubectl` nástrojem příkazového řádku, což zjednodušuje možnosti zobrazení a úprav prostředků Kubernetes. Prohlížeč prostředků aktuálně obsahuje několik typů prostředků, jako jsou nasazení, lusky a sady replik.
+Azure Portal obsahuje zobrazení prostředků Kubernetes pro snadný přístup k prostředkům Kubernetes v clusteru Azure Kubernetes Service (AKS). Zobrazení prostředků Kubernetes z Azure Portal omezuje přepínání kontextu mezi Azure Portal a `kubectl` nástrojem příkazového řádku, což zjednodušuje možnosti zobrazení a úprav prostředků Kubernetes. Prohlížeč prostředků aktuálně obsahuje několik typů prostředků, jako jsou nasazení, lusky a sady replik.
 
 Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicího panelu AKS][kubernetes-dashboard], který je zastaralý.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -62,7 +60,7 @@ Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit*
 >[!WARNING]
 > Provádění přímých změn v produkčním prostředí prostřednictvím uživatelského rozhraní nebo CLI se nedoporučuje, měli byste využít [osvědčené postupy průběžné integrace (CI) a průběžného nasazování (CD)](kubernetes-action.md). Možnosti správy Kubernetes a YAML v portálu Azure jsou vytvořené pro učení a získávání nových nasazení v nastavení pro vývoj a testování.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tato část řeší běžné problémy a postup řešení potíží.
 

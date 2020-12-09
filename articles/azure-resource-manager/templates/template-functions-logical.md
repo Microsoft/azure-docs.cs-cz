@@ -1,25 +1,25 @@
 ---
 title: Funkce šablon – logická
-description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k určení logických hodnot.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004547"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920465"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
 
-Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
+Správce prostředků poskytuje několik funkcí pro porovnávání v šabloně Azure Resource Manager (šablona ARM):
 
 * [and](#and)
 * [bool](#bool)
 * [chybné](#false)
 * [if](#if)
 * [mění](#not)
-* [nebo](#or)
+* [ani](#or)
 * [podmínka](#true)
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
@@ -32,11 +32,11 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé. `and`Funkce není v 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -96,9 +96,9 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -215,11 +215,11 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false. `if`F
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| pomocné |Yes |boolean |Hodnota, která ověří, zda je true nebo false. |
-| trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
+| pomocné |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -227,7 +227,7 @@ Vrací druhý parametr, pokud je první parametr **true**; v opačném případ�
 
 ### <a name="remarks"></a>Poznámky
 
-Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud je podmínka **nepravdivá**, vyhodnotí se jenom hodnota false. Pomocí funkce **if** můžete zahrnout výrazy, které jsou pouze podmíněně platné. Můžete například vytvořit odkaz na prostředek, který existuje v rámci jedné podmínky, ale ne pod druhou podmínkou. Příklad podmíněného vyhodnocování výrazů je uveden v následující části.
+Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud je podmínka **nepravdivá**, vyhodnotí se jenom hodnota false. Pomocí `if` funkce můžete zahrnout výrazy, které jsou pouze podmíněně platné. Můžete například vytvořit odkaz na prostředek, který existuje v rámci jedné podmínky, ale ne pod druhou podmínkou. Příklad podmíněného vyhodnocování výrazů je uveden v následující části.
 
 ### <a name="examples"></a>Příklady
 
@@ -341,9 +341,9 @@ Převede logickou hodnotu na její opačnou hodnotu. `not`Funkce není v bicep p
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Hodnota, kterou chcete převést. |
+| arg1 |Ano |boolean |Hodnota, kterou chcete převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -436,11 +436,11 @@ Kontroluje, zda je hodnota parametru pravdivá. `or`Funkce není v bicep podporo
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -542,4 +542,4 @@ Výstup z předchozího příkladu:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Popis sekcí v šabloně ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

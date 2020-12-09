@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 2ee26bdc713cb2b5b2a158797e3ae7ace31c97b8
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904061"
+ms.locfileid: "96921824"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -172,19 +172,26 @@ V textovém editoru vytvořte soubor ve složce projektu s názvem *Handler. R*.
 library(httpuv)
 
 PORTEnv <- Sys.getenv("FUNCTIONS_CUSTOMHANDLER_PORT")
-PORT = strtoi(PORTEnv , base = 0L)
+PORT <- strtoi(PORTEnv , base = 0L)
 
 http_not_found <- list(
   status=404,
   body='404 Not Found'
 )
+
 http_method_not_allowed <- list(
   status=405,
   body='405 Method Not Allowed'
 )
 
 hello_handler <- list(
-  GET = function (request) list(body="Hello world")
+  GET = function (request) {
+    list(body=paste(
+      "Hello,",
+      if(substr(request$QUERY_STRING,1,6)=="?name=") 
+        substr(request$QUERY_STRING,7,40) else "World",
+      sep=" "))
+  }
 )
 
 routes <- list(
@@ -270,12 +277,9 @@ R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
 func start
 ```
 ::: zone-end 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
+
 Jakmile se `HttpExample` ve výstupu zobrazí koncový bod, přejděte na `http://localhost:7071/api/HttpExample?name=Functions` . V prohlížeči by se měla zobrazit zpráva Hello, která vrací zpět `Functions` , hodnotu zadanou pro `name` parametr dotazu.
-::: zone-end
-::: zone pivot="programming-language-other"
-Jakmile se `HttpExample` ve výstupu zobrazí koncový bod, přejděte na `http://localhost:7071/api/HttpExample` . V prohlížeči by se měla zobrazit zpráva "Hello World".
-::: zone-end
+
 K zastavení hostitele použijte **kombinaci kláves CTRL +** - **C** .
 
 ## <a name="build-the-container-image-and-test-locally"></a>Sestavení image kontejneru a místní test

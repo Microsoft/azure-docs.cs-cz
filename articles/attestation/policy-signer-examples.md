@@ -7,17 +7,17 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 33998d9f2d117b02e7f792a7a6e47e6a66a5ff0d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0b32158ad58a663f7d85b9814bb4f2c1c55e4178
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748650"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922445"
 ---
 # <a name="examples-of-an-attestation-policy-signer-certificate"></a>Příklady certifikátu podepsaného zásad ověření identity
 
 Certifikáty podepisujících zásad přidružené k poskytovateli ověřování bude používat Microsoft Azure ověření identity pro ověřování podepsaných zásad.
-Další informace o [výhodách podepisování zásad](/azure/attestation/basic-concepts/#Benefits-of-policy-signing)
+Další informace o [výhodách podepisování zásad](/azure/attestation/basic-concepts/#benefits-of-policy-signing)
 
 **Formát souboru certifikátu podepsaného zásadou, který se má použít v toku vytváření poskytovatele**
 

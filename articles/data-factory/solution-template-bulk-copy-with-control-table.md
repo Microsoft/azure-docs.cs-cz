@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461230"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920893"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
@@ -44,7 +44,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 - *Data_Destination_Container* je cesta ke kořenové složce, do které se zkopírují data do cílového úložiště. 
 - *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do cílového úložiště. 
 
-Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics (dřív SQL DW), tyto parametry se nevyžadují. Názvy tabulek a schéma ve službě Azure synapse Analytics ale musí být stejné jako ty ve zdrojové databázi.
+Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics, tyto parametry se nevyžadují. Názvy tabulek a schéma ve službě Azure synapse Analytics ale musí být stejné jako ty ve zdrojové databázi.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -94,7 +94,7 @@ Poslední tři parametry, které definují cestu v cílovém úložišti, jsou v
 
     ![Kontrola výsledku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics (dřív SQL DW), musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje základ služby Azure synapse Analytics. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
+9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics, musíte pro přípravu zadat připojení ke službě Azure Blob Storage, jak to vyžaduje základ databáze Azure synapse Analytics. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
     
     ![Základní nastavení](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

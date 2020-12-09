@@ -4,12 +4,12 @@ description: Referenční informace o Azure Monitorch pochopit podporované slu�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593004"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920844"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -20,6 +20,11 @@ ms.locfileid: "94593004"
 
 Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category` jednoznačné určení schématu. Pro všechny protokoly prostředků s poli se specifickými službami se pak přidalo společné schéma pro různé kategorie protokolů. Další informace najdete v tématu [společné schéma a schéma specifické pro službu pro protokoly prostředků Azure]() .
 
+
+## <a name="costs"></a>Náklady
+
+ Existují náklady spojené s odesíláním a ukládáním dat do do Log Analytics a/nebo centra událostí. Protokoly prostředků jsou jedním z typů dat, která můžete odesílat do těchto umístění. [Pro export některých kategorií protokolů prostředků](https://azure.microsoft.com/pricing/details/monitor/)se účtují další náklady. Jiné jsou zdarma vývozní náklady. Konkrétní části jsou uvedeny v následující tabulce.
+
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů na typ prostředku
 
 Následuje seznam typů protokolů, které jsou k dispozici pro každý typ prostředku. 
@@ -27,17 +32,11 @@ Následuje seznam typů protokolů, které jsou k dispozici pro každý typ pros
 Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Pokud se domníváte, že se vám nedaří prostředek, Prohlédněte si dokumentaci ke konkrétním prostředkům. Například kategorie Microsoft. SQL/servery/databáze nejsou k dispozici pro všechny typy databází. Další informace najdete v tématu [informace o protokolování diagnostiky SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci tohoto článku.
-
-## <a name="microsoftaadiamtenants"></a>Microsoft. aadiam/tenantů
-
-|Kategorie|Zobrazovaný název kategorie|
-|---|---|
-|Přihlášení|Přihlášení|
-
-
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Modul|Modul|
 |Služba|Služba|
@@ -45,14 +44,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |GatewayLogs|Protokoly související s bránou ApiManagement|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ApplicationConsole|Konzola aplikace|
 |SystemLogs|Systémové protokoly|
@@ -60,23 +63,29 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
+|DscNodeStatus|Stav uzlu DSC|
 |JobLogs|Protokoly úloh|
 |JobStreams|Datové proudy úloh|
-|DscNodeStatus|Stav uzlu DSC|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ServiceLog|Protokoly služby|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |BaiClusterEvent|BaiClusterEvent|
 |BaiClusterNodeEvent|BaiClusterNodeEvent|
@@ -85,58 +94,77 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |BlockchainApplication|Aplikace blockchain|
+|FabricOrderer|Řazení prostředků infrastruktury|
+|FabricPeer|Partnerský uzel Fabric|
 |Proxy server|Proxy server|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. blockchain/cordaMembers
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |BlockchainApplication|Aplikace blockchain|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
-|WebApplicationFirewallLogs|Protokoly brány firewall webových aplikací|
+|WebApplicationFirewallLogs|Protokoly brány firewall pro web spustí aplikace|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profily
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AzureCdnAccessLog|Protokol přístupu k síti Azure CDN|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/Profiles/koncových bodů
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí přenos atd.|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Cognitiveservices Account/účty
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Auditování|Protokoly auditu|
 |Operace RequestResponse|Protokoly žádostí a odpovědí|
+|Trasování|Protokoly trasování|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/Registry
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ContainerRegistryLoginEvents|Události přihlášení|
 |ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent|
@@ -144,7 +172,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |cluster – automatické škálování|Automatické škálování clusteru Kubernetes|
 |kube-apiserver|Server Kubernetes API|
@@ -155,14 +185,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AuditLogs|Protokoly auditu pro volání MiniRP|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. datacihly/pracovní prostory
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |accounts|Účty datacihlů|
 |existující|Clustery datacihlů|
@@ -176,16 +210,11 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |pracovní prostor|Pracovní prostor datacihly|
 
 
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. datacatalog/datacatalogs
-
-|Kategorie|Zobrazovaný název kategorie|
-|---|---|
-|ScanStatusLogEvent|ScanStatus|
-
-
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ActivityRuns|Spuštění protokolu aktivity kanálu|
 |PipelineRuns|Protokol spuštění kanálu|
@@ -194,31 +223,70 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/účty
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Auditování|Protokoly auditu|
 |Žádosti|Protokoly žádostí|
 
 
+## <a name="microsoftdatashareaccounts"></a>Microsoft. datashare/Accounts
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|ReceivedShareSnapshots|Přijaté snímky sdílené složky|
+|SentShareSnapshots|Odeslané sdílené snímky|
+|Sdílené složky|Sdílené složky|
+|ShareSubscriptions|Sdílet předplatná|
+
+
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servery
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |MySqlAuditLogs|Protokoly auditu MariaDB|
 |MySqlSlowLogs|Protokoly serveru MariaDB|
 
 
+## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|MySqlAuditLogs|Protokoly auditu MySQL|
+|MySqlSlowLogs|Pomalé protokoly MySQL|
+
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servery
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |MySqlAuditLogs|Protokoly auditu MySQL|
 |MySqlSlowLogs|Protokoly serveru MySQL|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |PostgreSQLLogs|Protokoly serveru PostgreSQL|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů PostgreSQL|
@@ -227,21 +295,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Kategorie|Zobrazovaný název kategorie|
-|---|---|
-|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+Náklady: zdarma 
 
-
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
-
-|Kategorie|Zobrazovaný název kategorie|
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |PostgreSQLLogs|Protokoly serveru PostgreSQL|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CheckPoint|CheckPoint|
 |Chyba|Chyba|
@@ -250,7 +315,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CheckPoint|CheckPoint|
 |Připojení|Připojení|
@@ -261,7 +328,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/pracovní prostory
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CheckPoint|CheckPoint|
 |Chyba|Chyba|
@@ -271,7 +340,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |C2DCommands|Příkazy C2D|
 |C2DTwinOperations|C2D – zdvojené operace|
@@ -291,7 +362,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DeviceOperations|Operace zařízení|
 |ServiceOperations|Operace služby|
@@ -299,28 +372,25 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |CassandraRequests|CassandraRequests|
 |ControlPlaneRequests|ControlPlaneRequests|
 |DataPlaneRequests|DataPlaneRequests|
+|GremlinRequests|GremlinRequests|
 |MongoRequests|MongoRequests|
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|
 |PartitionKeyStatistics|PartitionKeyStatistics|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/Services
-
-|Kategorie|Zobrazovaný název kategorie|
-|---|---|
-|AuditEvent|Protokol AuditEvent|
-|Dataproblém|Protokol dataissues|
-|Žádosti|Konfigurační protokol|
-
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DeliveryFailures|Protokoly chyb doručení|
 |PublishFailures|Protokoly chyb publikování|
@@ -328,14 +398,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DeliveryFailures|Protokoly chyb doručení|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DeliveryFailures|Protokoly chyb doručení|
 |PublishFailures|Protokoly chyb publikování|
@@ -343,11 +417,13 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/obory názvů
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ArchiveLogs|Protokoly archivu|
 |AutoScaleLogs|Protokoly automatického škálování|
-|CustomerManagedKeyUserLogs|Protokoly Customer-Managed klíčů|
+|CustomerManagedKeyUserLogs|Protokoly zákaznických klíčů spravovaných zákazníky|
 |EventHubVNetConnectionEvent|Protokoly připojení k virtuální síti nebo filtrování IP adres|
 |KafkaCoordinatorLogs|Protokoly koordinátora Kafka|
 |KafkaUserErrorLogs|Protokoly chyb uživatele Kafka|
@@ -356,14 +432,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/Services
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AuditLogs|Protokoly auditu|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AutoscaleEvaluations|Vyhodnocení automatického škálování|
 |AutoscaleScaleActions|Akce škálování automatického škálování|
@@ -371,7 +451,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AppAvailabilityResults|Výsledky dostupnosti|
 |AppBrowserTimings|Časování prohlížeče|
@@ -386,50 +468,53 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |AppTraces|Trasování|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Kategorie|Zobrazovaný název kategorie|
-|---|---|
-|Auditování|Auditování|
-|Výchozí přenos dat|Výchozí přenos dat|
-|Příchozí přenos dat|Příchozí přenos dat|
-|Provoz|Provoz|
-|Trasování|Trasování|
-|UserDefinedFunction|UserDefinedFunction|
-
-
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AuditEvent|Protokoly auditu|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
+|Příkaz|Příkaz|
 |FailedIngestion|Neúspěšné operace ingestování|
+|IngestionBatching|Dávkování příjmu dat|
+|Dotaz|Dotaz|
 |SucceededIngestion|Úspěšné operace ingestování|
+|TableDetails|Podrobnosti tabulky|
+|TableUsageStatistics|Statistiky využití tabulek|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |IntegrationAccountTrackingEvents|Účet pro integraci sleduje události|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/Workflows
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Modul|Diagnostické události modulu runtime pracovního postupu|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/pracovní prostory
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AmlComputeClusterEvent|AmlComputeClusterEvent|
 |AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
@@ -440,14 +525,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |KeyDeliveryRequests|Požadavky na doručení klíčů|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ApplicationGatewayAccessLog|Protokol Application Gateway Access|
 |ApplicationGatewayFirewallLog|Protokol brány Application Gateway firewall|
@@ -456,7 +545,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AzureFirewallApplicationRule|Azure Firewall pravidlo aplikace|
 |AzureFirewallNetworkRule|Azure Firewall síťové pravidlo|
@@ -464,21 +555,27 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |BastionAuditLogs|Protokoly auditu bastionu|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |PeeringRouteLog|Protokoly tabulky směrování partnerských vztahů|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |FrontdoorAccessLog|Protokol přístupu Frontdoor|
 |FrontdoorWebApplicationFirewallLog|Protokol Frontdoor firewallu webových aplikací|
@@ -486,7 +583,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |LoadBalancerAlertEvent|Load Balancer události výstrahy|
 |LoadBalancerProbeHealthStatus|Stav testu Load Balancer|
@@ -494,15 +593,20 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|
+|NetworkSecurityGroupFlowEvent|Událost toku pravidla skupiny zabezpečení sítě|
 |NetworkSecurityGroupRuleCounter|Čítač pravidla skupiny zabezpečení sítě|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DDoSMitigationFlowLogs|Protokoly DDoSch rozhodnutí o zmírnění rizik|
 |DDoSMitigationReports|Sestavy zmírnění hrozeb DDoS|
@@ -511,14 +615,18 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |ProbeHealthStatusEvents|Událost výsledků testu stavu Traffic Manager|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |GatewayDiagnosticLog|Diagnostické protokoly brány|
 |IKEDiagnosticLog|Diagnostické protokoly IKE|
@@ -529,21 +637,27 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |VMProtectionAlerts|Výstrahy ochrany virtuálních počítačů|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Modul|Modul|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/trezory
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AddonAzureBackupAlerts|Doplněk Azure Backup data výstrah|
 |AddonAzureBackupJobs|Doplněk Azure Backup data úlohy|
@@ -563,35 +677,45 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |HybridConnectionsEvent|Události HybridConnections|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |OperationLogs|Protokoly operací|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/obory názvů
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |OperationalLogs|Provozní protokoly|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AllLogs|Protokoly služby signalizace Azure|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |DevOpsOperationsAudit|Protokoly auditu operací DevOps|
 |ResourceUsageStats|Statistika využití prostředků|
@@ -600,7 +724,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/databáze
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Chyby|Chyby|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
@@ -610,7 +736,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AutomaticTuning|Automatické ladění|
 |Bloky|Bloky|
@@ -632,7 +760,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -641,7 +771,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -650,7 +782,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+ 
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -659,7 +793,9 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: placeno jako v části protokoly platforem na [stránce s cenami Azure monitor.](https://azure.microsoft.com/pricing/details/monitor/) 
+ 
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -668,22 +804,64 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |Vytváření obsahu|Vytváření obsahu|
 |Spuštění|Spuštění|
 
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|BuiltinSqlReqsEnded|Byly ukončeny předdefinované požadavky na fond SQL.|
+|GatewayApiRequests|Žádosti rozhraní API brány synapse|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|SynapseRbacOperations|Synapse operace RBAC|
+
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|BigDataPoolAppsEnded|Aplikace s velkým objemem dat se ukončily|
+
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
+
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
+|---|---|
+|DmsWorkers|Pracovní procesy DMS|
+|ExecRequests|Požadavky exec|
+|RequestSteps|Kroky žádosti|
+|SqlRequests|Požadavky SQL|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|Čeká|Čeká|
+
+
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AppServiceEnvironmentPlatformLogs|App Service Environment protokoly platformy|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/weby
 
-|Kategorie|Zobrazovaný název kategorie|
+Náklady: zdarma 
+
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AppServiceAppLogs|App Service protokoly aplikací|
 |AppServiceAuditLogs|Přístup k protokolům auditu|
@@ -691,13 +869,14 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |AppServiceFileAuditLogs|Protokoly změny obsahu webu|
 |AppServiceHTTPLogs|Protokoly HTTP|
 |FunctionAppLogs|Protokoly aplikací funkcí|
-|ScanLogs|Protokoly kontroly antivirového programu|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
+Náklady: zdarma 
 
-|Kategorie|Zobrazovaný název kategorie|
+
+|Kategorie |Zobrazovaný název kategorie|
 |---|---|
 |AppServiceAppLogs|App Service protokoly aplikací|
 |AppServiceAuditLogs|Přístup k protokolům auditu|
@@ -705,7 +884,6 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |AppServiceFileAuditLogs|Protokoly změny obsahu webu|
 |AppServiceHTTPLogs|Protokoly HTTP|
 |FunctionAppLogs|Protokoly aplikací funkcí|
-|ScanLogs|Protokoly kontroly antivirového programu|
 
 
 ## <a name="next-steps"></a>Další kroky

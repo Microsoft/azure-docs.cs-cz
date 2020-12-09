@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844672"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921726"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurace koncových bodů sítě pro Synchronizaci souborů Azure
 Soubory Azure a Azure File Sync poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -34,7 +34,7 @@ V tomto článku se předpokládá, že:
 
 Dále:
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-the-private-endpoints"></a>Vytvoření privátních koncových bodů
 Při vytváření privátního koncového bodu pro prostředek Azure jsou nasazené tyto prostředky:
@@ -588,7 +588,7 @@ Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete
 Azure File Sync umožňuje omezit přístup ke konkrétním virtuálním sítím jenom prostřednictvím privátních koncových bodů. Azure File Sync nepodporuje koncové body služby pro omezení přístupu k veřejnému koncovému bodu pro konkrétní virtuální sítě. To znamená, že jsou povolené a zakázané dva stavy pro veřejný koncový bod služby synchronizace úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-To není možné prostřednictvím Azure Portal. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím Azure PowerShell nebo Azure CLI TAB. 
+To není možné prostřednictvím Azure Portal. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím kartu Azure PowerShell. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Pokud chcete zakázat přístup ke veřejnému koncovému bodu služby synchronizace úložiště, nastavili jsme `incomingTrafficPolicy` vlastnost ve službě synchronizace úložiště na `AllowVirtualNetworksOnly` . Pokud chcete povolit přístup k veřejnému koncovému bodu služby synchronizace úložiště, nastavte `incomingTrafficPolicy` na `AllowAllTraffic` místo. Nezapomeňte nahradit `<storage-sync-service-resource-group>` a `<storage-sync-service>` .
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Pokud chcete zakázat přístup ke veřejnému koncovému bodu služby synchronizace úložiště, nastavili jsme `incomingTrafficPolicy` vlastnost ve službě synchronizace úložiště na `AllowVirtualNetworksOnly` . Pokud chcete povolit přístup k veřejnému koncovému bodu služby synchronizace úložiště, nastavte `incomingTrafficPolicy` na `AllowAllTraffic` místo. Nezapomeňte nahradit `<storage-sync-service-resource-group>` a `<storage-sync-service>` .
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Rozhraní příkazového řádku Azure nepodporuje nastavení `incomingTrafficPolicy` vlastnosti ve službě synchronizace úložiště. Pokud chcete získat pokyny, jak zakázat veřejný koncový bod služby synchronizace úložiště, vyberte prosím kartu Azure PowerShell.
 ---
 
 ## <a name="see-also"></a>Viz také

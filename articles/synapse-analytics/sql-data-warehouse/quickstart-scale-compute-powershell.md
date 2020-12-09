@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: škálování COMPUTE pro synapse fond SQL (Azure PowerShell)'
-description: Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure PowerShell.
+title: 'Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) (Azure PowerShell)'
+description: Můžete škálovat výpočetní prostředky pro vyhrazený fond SQL (dřív SQL DW) pomocí Azure PowerShell.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91566138"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921915"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: škálování COMPUTE pro synapse fond SQL s Azure PowerShell
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) s Azure PowerShell
 
-Výpočetní prostředky pro synapse fond SQL (datový sklad) můžete škálovat pomocí Azure PowerShell. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+Můžete škálovat výpočetní prostředky pro vyhrazený fond SQL (dřív SQL DW) pomocí Azure PowerShell. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto rychlém startu se předpokládá, že už máte fond SQL, který můžete škálovat. Pokud potřebujete vytvořit fond SQL s názvem **mySampleDataWarehouse**, vytvořte ho pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+V tomto rychlém startu se předpokládá, že už máte vyhrazený fond SQL (dřív SQL DW), který můžete škálovat. Pokud ho potřebujete vytvořit, použijte [Vytvoření a připojení – portál](create-data-warehouse-portal.md) k vytvoření vyhrazeného fondu SQL (dřív SQL DW) s názvem **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -67,7 +67,7 @@ Informace o umístění vašeho datového skladu vyhledáte pomocí následujíc
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-Ve fondu SQL můžete zvýšit nebo snížit výpočetní prostředky úpravou jednotek datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
+Ve vyhrazeném fondu SQL (dříve SQL DW) můžete zvýšit nebo snížit výpočetní prostředky tím, že upravíte jednotky datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
 Pokud chcete změnit jednotky datového skladu, použijte rutinu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell. Následující příklad nastaví jednotky datového skladu tak, aby se DW300c pro databázi **mySampleDataWarehouse**, která je hostovaná ve skupině prostředků **ResourceGroupName** na serveru **sqlpoolservername**.
 
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste zjistili, jak škálovat výpočetní prostředky pro fond SQL. Pokud chcete získat další informace o fondu SQL, pokračujte v kurzu načítání dat.
+Nyní jste zjistili, jak škálovat výpočetní prostředky pro vyhrazený fond SQL (dřív SQL DW). Pokud se chcete dozvědět víc o vyhrazeném fondu SQL (dřív SQL DW), pokračujte v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
->[Načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-copy.md)

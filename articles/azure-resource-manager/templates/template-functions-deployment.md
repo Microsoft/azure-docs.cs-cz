@@ -1,18 +1,18 @@
 ---
 title: Funkce šablon – nasazení
-description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) pro načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004564"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920505"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
 
-Správce prostředků poskytuje následující funkce pro získání hodnot vztahujících se k aktuálnímu nasazení šablony Azure Resource Manager (ARM):
+Správce prostředků poskytuje následující funkce pro získání hodnot vztahujících se k aktuálnímu nasazení šablony Azure Resource Manager (šablona ARM):
 
 * [prostředí](#deployment)
 * [environment (prostředí)](#environment)
@@ -295,9 +295,9 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -434,7 +434,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | Řetězec | možnost 1 |
 
-Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
+Další informace o použití parametrů najdete v tématu [parametry v šablonách ARM](template-parameters.md).
 
 ## <a name="variables"></a>proměnné
 
@@ -444,7 +444,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
@@ -571,8 +571,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | exampleOutput3 | Řetězec | MojePromenna |
 | exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
-Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
+Další informace o použití proměnných naleznete v tématu [proměnné v ŠABLONĚ ARM](template-variables.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Popis sekcí v šabloně ARM najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

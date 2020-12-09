@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980996"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920827"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak použít akci triggeru a odpovědi žádosti, 
 
 Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -42,9 +42,9 @@ Další informace o zabezpečení autorizace a šifrování příchozích volán
 
 Tato integrovaná aktivační událost vytvoří ručně koncový bod, který může zpracovávat *pouze* příchozí požadavky přes protokol HTTPS. Když volající pošle požadavek do tohoto koncového bodu, aktivuje se [Trigger žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a spustí se aplikace logiky. Další informace o tom, jak zavolat tuto aktivační událost, najdete v tématu [pracovní postupy volání, triggeru nebo vnořování s koncovými body HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že vaše aplikace logiky zahrnuje [akci odpovědi](#add-response), pokud vaše aplikace logiky po uplynutí této doby neodešle odpověď zpět volajícímu, vrátí vaše aplikace logiky `504 GATEWAY TIMEOUT` stav volajícímu. Pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` stav volajícímu.
+Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#http-limits). Za předpokladu, že vaše aplikace logiky zahrnuje [akci odpovědi](#add-response), pokud vaše aplikace logiky po uplynutí této doby neodešle odpověď zpět volajícímu, vrátí vaše aplikace logiky `504 GATEWAY TIMEOUT` stav volajícímu. Pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` stav volajícímu.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte, **když se přijme požadavek HTTP** .
 
@@ -56,7 +56,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **ADRESA URL PRO POST HTTP** | nTato | Yes | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
+   | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
    | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
@@ -179,7 +179,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřený pouze po dobu [
 
    Například můžete na žádost reagovat [přidáním akce odpovědi](#add-response), kterou můžete použít k vrácení vlastní odpovědi a je popsáno dále v tomto tématu.
 
-   Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky vrátí `504 GATEWAY TIMEOUT` volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` odpověď volajícímu.
+   Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#http-limits). Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky vrátí `504 GATEWAY TIMEOUT` volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` odpověď volajícímu.
 
 1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -255,7 +255,7 @@ Když použijete Trigger žádosti pro zpracování příchozích požadavků, m
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Stavový kód** | `statusCode` | Yes | Stavový kód, který se má vrátit v odpovědi |
+   | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
    | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
    | **Text** | `body` | Ne | Tělo odpovědi |
    |||||

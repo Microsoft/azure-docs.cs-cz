@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 96030f0e74c29848f675ae2e0867eefa2e79a8a7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905872"
+ms.locfileid: "96920416"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,8 +52,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý server, nikoli jenom na
 
 V rámci správy koncových bodů služby Virtual Network je oddělení rolí zabezpečení. Pro každou z následujících rolí se vyžaduje akce:
 
-- **Správce sítě:** &nbsp; Zapněte koncový bod.
-- **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě k serveru.
+- **Správce sítě (role [Přispěvatel sítě](../../role-based-access-control/built-in-roles.md#network-contributor) ):** &nbsp; Zapněte koncový bod.
+- **Správce databáze ([SQL Server role přispěvatele](../../role-based-access-control/built-in-roles.md#sql-server-contributor) ):** &nbsp; Aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě k serveru.
 
 *Alternativa k Azure RBAC:*
 
@@ -247,7 +247,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na web [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 

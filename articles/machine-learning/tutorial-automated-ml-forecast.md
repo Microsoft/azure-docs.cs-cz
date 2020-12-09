@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356497"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921863"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
@@ -60,7 +60,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
 1. Ve formuláři **Vybrat datovou sadu** vyberte z rozevíracího seznamu **+ vytvořit sadu** možnost **z místních souborů** . 
 
-    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Typ datové sady by měl být výchozí pro **tabelární** , protože automatizované ML v Azure Machine Learning Studiu aktuálně podporuje jenom tabelární datové sady.
+    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Typ datové sady by měl být výchozí pro **tabelární**, protože automatizované ML v Azure Machine Learning Studiu aktuálně podporuje jenom tabelární datové sady.
     
     1. V levém dolním rohu vyberte **Další** .
 
@@ -118,7 +118,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
         Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Rozšířená nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
+        Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
@@ -143,9 +143,9 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
     Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
     ------|---------|---
     Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
-    Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolení
+    Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
     Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Extrémní náhodné stromy
-    Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_ : Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. | <br><br>&nbsp;Prodlevy cíle prognózy &nbsp; : žádné <br> Cílová &nbsp; Velikost návratového &nbsp; okna &nbsp; : žádné
+    Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_: Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. | <br><br>&nbsp;Prodlevy cíle prognózy &nbsp; : žádné <br> Cílová &nbsp; Velikost návratového &nbsp; okna &nbsp; : žádné
     Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 3 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
     Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 5
     Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 6
@@ -235,7 +235,7 @@ Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby n
 > [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
-+ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .
 + Přečtěte si další informace o [featurization](how-to-configure-auto-features.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-connect-data-ui.md#profile).
 

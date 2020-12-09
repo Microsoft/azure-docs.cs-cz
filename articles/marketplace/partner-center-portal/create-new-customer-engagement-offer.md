@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 96bdfc513023cafb2d94a68c06f1065cf20c3ba8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f20405add698c64ecedfd7375063ba934a98e158
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130166"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922436"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro zákaznickou zapojení & PowerApps** .
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro zákaznickou zapojení & PowerApps**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
@@ -33,14 +33,14 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - ID nabídky v kombinaci s ID vydavatele musí být kratší než 40 znaků.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například ID vydavatele testpublisherid a zadáte **test-nabídka-1** , bude webová adresa nabídky `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit** .
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například ID vydavatele testpublisherid a zadáte **test-nabídka-1**, bude webová adresa nabídky `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
+- ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 - Po výběru **vytvořit** se tato možnost nedá změnit.
@@ -95,7 +95,7 @@ Tato stránka umožňuje definovat kategorie a odvětví používané k seskupen
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -138,10 +138,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 4. Adresa podpory (odkaz)
 5. Adresa Podmínky použití (odkaz)
 6. Název nabídky
-7. Description
+7. Popis
 8. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Name (Název)
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -149,7 +149,7 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -179,7 +179,7 @@ Zadejte adresu do zásad ochrany osobních údajů vaší organizace. Zodpovíd�
 
 ### <a name="contacts"></a>Kontakty
 
-Zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
+Zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
 
 V části **kontakt podpory** je také nutné zadat **adresu URL podpory** , kde mohou partneři CSP najít podporu pro vaši nabídku.
 
@@ -229,7 +229,7 @@ Tato stránka umožňuje definovat, kde a jak má být nabídka dostupná.
 
 ### <a name="markets"></a>Trhy
 
-Zadejte trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy** , ve kterém se zobrazí místní okno pro **Výběr trhu** .
+Zadejte trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy**, ve kterém se zobrazí místní okno pro **Výběr trhu** .
 
 Ve výchozím nastavení nejsou vybrané žádné trhy, ale pro publikování vaší nabídky musíte vybrat aspoň jeden trh. Zvolte  **možnost Vybrat vše** , pokud chcete nabídku zpřístupnit na všech možných trzích, nebo vyberte konkrétní trhy, které chcete přidat.
 
@@ -240,7 +240,7 @@ Vaše výběry se tady vztahují jenom na nové akvizice; Pokud už má vaše ap
 
 ### <a name="preview-audience"></a>Cílová skupina Preview
 
-Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview** . Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
+Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview**. Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
 
 Až budete připraveni zpřístupnit nabídku a odebrat omezení verze Preview, je nutné odebrat **Skrýt klíč** a znovu publikovat.
 
@@ -260,7 +260,7 @@ Toto políčko zaškrtněte, pokud chcete povolit konfiguraci odchozího příst
 
 ### <a name="application-configuration-url"></a>Adresa URL konfigurace aplikace
 
-Zadejte adresu URL webové stránky konfigurace, která umožňuje zákazníkovi nakonfigurovat vaši aplikaci.
+Ujistěte se, že toto pole zůstane prázdné. Bude se používat pro budoucí použití. 
 
 ### <a name="crm-package"></a>Balíček CRM
 
