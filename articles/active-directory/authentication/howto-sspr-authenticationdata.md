@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741571"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861149"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Doplňte kontaktní údaje pro ověření uživatele pro Azure Active Directory Samoobslužné resetování hesla (SSPR).
 
@@ -125,7 +125,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Použití prostředí PowerShell verze 2
 
-Začněte tím, [že si stáhnete a nainstalujete modul Azure AD verze 2 PowerShell](/powershell/module/azuread/?view=azureadps-2.0).
+Začněte tím, [že si stáhnete a nainstalujete modul Azure AD verze 2 PowerShell](/powershell/module/azuread/).
 
 Pokud chcete rychle nainstalovat z nedávných verzí PowerShellu, které podporují `Install-Module` , spusťte následující příkazy. První řádek zkontroluje, zda je modul již nainstalován:
 

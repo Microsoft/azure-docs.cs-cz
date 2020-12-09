@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268413"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861047"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -40,9 +40,9 @@ V tomto kurzu se naučíte:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolení zařízení s Windows nižší úrovně
 > * Ověření připojených zařízení
-> * Řešení potíží
+> * Odstranit potíže
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo novější)
 - Přihlašovací údaje globálního správce pro vašeho tenanta Azure AD
@@ -92,23 +92,23 @@ Konfigurace hybridního připojení ke službě Azure AD pomocí Azure AD Connec
 
    ![Vítáme vás](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
 
-1. V **další úlohy**vyberte **Konfigurovat možnosti zařízení**a pak vyberte **Další**.
+1. V **další úlohy** vyberte **Konfigurovat možnosti zařízení** a pak vyberte **Další**.
 
    ![Další úlohy](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
-1. V **přehledu**vyberte **Další**.
+1. V **přehledu** vyberte **Další**.
 
    ![Přehled](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
 
-1. V části **připojit k Azure AD**zadejte přihlašovací údaje globálního správce pro vašeho TENANTA Azure AD.  
+1. V části **připojit k Azure AD** zadejte přihlašovací údaje globálního správce pro vašeho TENANTA Azure AD.  
 
    ![Připojení k Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
-1. V **Možnosti zařízení**vyberte **Konfigurovat hybridní připojení k Azure AD**a pak vyberte **Další**.
+1. V **Možnosti zařízení** vyberte **Konfigurovat hybridní připojení k Azure AD** a pak vyberte **Další**.
 
    ![Možnosti zařízení](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
 
-1. V části **Konfigurace spojovacího bodu**služby pro každou doménovou strukturu, ve které chcete Azure AD Connect nakonfigurovat SCP, proveďte následující kroky a pak vyberte **Další**.
+1. V části **Konfigurace spojovacího bodu** služby pro každou doménovou strukturu, ve které chcete Azure AD Connect nakonfigurovat SCP, proveďte následující kroky a pak vyberte **Další**.
 
    1. Vyberte **doménovou strukturu**.
    1. Vyberte **ověřovací službu**.
@@ -116,15 +116,15 @@ Konfigurace hybridního připojení ke službě Azure AD pomocí Azure AD Connec
 
    ![Spojovací bod služby](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. V části **operační systémy zařízení**vyberte operační systémy, které zařízení v prostředí služby Active Directory používají, a pak vyberte **Další**.
+1. V části **operační systémy zařízení** vyberte operační systémy, které zařízení v prostředí služby Active Directory používají, a pak vyberte **Další**.
 
    ![Operační systém zařízení](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
-1. V **Nastavení připraveno ke konfiguraci**vyberte **Konfigurovat**.
+1. V **Nastavení připraveno ke konfiguraci** vyberte **Konfigurovat**.
 
    ![Připraveno ke konfiguraci](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
 
-1. V **nastavení dokončeno**vyberte možnost **ukončit**.
+1. V **nastavení dokončeno** vyberte možnost **ukončit**.
 
    ![Dokončení konfigurace](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
@@ -180,7 +180,7 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 

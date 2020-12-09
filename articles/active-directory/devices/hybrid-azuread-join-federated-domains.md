@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2f7d3ce5f8329038fea4ecbb5242015fb3fd0d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268430"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860129"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -40,7 +40,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
 
 V tomto kurzu se naučíte konfigurovat hybridní připojení služby Azure AD pro počítače připojené k doméně služby Active Directory ve federovaném prostředí pomocí AD FS.
 
@@ -50,9 +50,9 @@ Získáte informace o těchto tématech:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolit zařízení se starší verzí Windows
 > * Ověření registrace
-> * Řešení potíží
+> * Odstranit potíže
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že máte zkušenosti s těmito články:
 
@@ -111,7 +111,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect budet
 
    ![Vítáme vás](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. Na stránce **další úlohy** vyberte **Konfigurovat možnosti zařízení**a pak vyberte **Další**.
+1. Na stránce **další úlohy** vyberte **Konfigurovat možnosti zařízení** a pak vyberte **Další**.
 
    ![Další úlohy](./media/hybrid-azuread-join-federated-domains/12.png)
 
@@ -123,7 +123,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect budet
 
    ![Připojení k Azure AD](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. Na stránce **Možnosti zařízení** vyberte **Konfigurovat hybridní připojení k Azure AD**a pak vyberte **Další**.
+1. Na stránce **Možnosti zařízení** vyberte **Konfigurovat hybridní připojení k Azure AD** a pak vyberte **Další**.
 
    ![Možnosti zařízení](./media/hybrid-azuread-join-federated-domains/15.png)
 
@@ -199,7 +199,7 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 

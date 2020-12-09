@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8fe904f71fdf6f01c926bf6fa3f050ba825309
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548133"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859874"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -28,7 +28,7 @@ Tento článek obsahuje pokyny k vytvoření a aktualizaci skupin pomocí rutin 
 > [!IMPORTANT]
 > Některá nastavení vyžadují licenci Azure Active Directory Premium P1. Další informace najdete v tabulce [Nastavení šablon](#template-settings) .
 
-Další informace o tom, jak zabránit uživatelům, kteří nejsou správci, aby vytvářeli skupiny zabezpečení, nastavte `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` podle popisu v [set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Další informace o tom, jak zabránit uživatelům, kteří nejsou správci, aby vytvářeli skupiny zabezpečení, nastavte `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` podle popisu v [set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings).
 
 Nastavení skupin Microsoft 365 se konfigurují pomocí objektu nastavení a objektu SettingsTemplate. Zpočátku se ve vašem adresáři nezobrazí žádné objekty nastavení, protože váš adresář je nakonfigurovaný s výchozím nastavením. Chcete-li změnit výchozí nastavení, je nutné vytvořit nový objekt nastavení pomocí šablony nastavení. Šablony nastavení jsou definovány společností Microsoft. Existuje několik různých šablon nastavení. Ke konfiguraci nastavení Microsoft 365 skupiny pro adresář použijte šablonu s názvem "Group. Unified". Pokud chcete nakonfigurovat Microsoft 365 nastavení skupiny pro jednu skupinu, použijte šablonu s názvem "Group. Unified. host". Tato šablona se používá ke správě přístupu hosta ke skupině Microsoft 365. 
 
@@ -319,7 +319,7 @@ Tento krok odebere nastavení na úrovni adresáře, která platí pro všechny 
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Reference k syntaxi rutin
-Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active Directory rutinách](/powershell/azure/active-directory/install-adv2).
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 

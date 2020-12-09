@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607df39833a5ae787e9acb8d3b4df3c52dd7709d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173681"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860209"
 ---
 # <a name="conditional-access-programmatic-access"></a>Podmíněný přístup: programový přístup
 
@@ -56,13 +56,13 @@ Tento příklad modeluje bezpečnější postupy nasazení s pracovními postupy
 
 - [Zvýšení úrovně zásad podmíněného přístupu z testovacích prostředí](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/02-test)
 
-## <a name="deploy"></a>Nasadit
+## <a name="deploy"></a>Nasazení
 
 V tomto příkladu je k dispozici mechanismus pro postupné provádění zásad podmíněného přístupu k naplnění uživatelů, což vám umožní včas spravovat dopad na podporu a odhalit problémy.
 
 - [Nasazení zásad podmíněného přístupu do produkčních prostředí s pracovními postupy schvalování](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Monitorování
 
 Tento příklad poskytuje mechanismus pro monitorování změn zásad podmíněného přístupu v průběhu času a může aktivovat upozornění při změně klíčových zásad.
 
@@ -96,6 +96,6 @@ Tyto ukázky jsou k dispozici v našem [úložišti GitHub](https://github.com/A
 
 - [Přehled Microsoft Graphu](/graph/overview)
 
-- [Rozhraní API pro podmíněný přístup](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [Rozhraní API pro podmíněný přístup](/graph/api/resources/conditionalaccesspolicy)
 
-- [Rozhraní API pojmenovaného umístění](/graph/api/resources/namedlocation?view=graph-rest-1.0)
+- [Rozhraní API pojmenovaného umístění](/graph/api/resources/namedlocation)

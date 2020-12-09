@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c5762e54faa7721973136408e14bd8d17d81
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1a46cc3f4a0f2fb25fc693103a64a319dcec0324
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547657"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860877"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Změňte členství v statických skupinách na dynamické v Azure Active Directory
 
@@ -57,7 +57,7 @@ Následující kroky jsou příkladem změny skupiny ze statického na dynamick�
 ## <a name="change-membership-type-for-a-group-powershell"></a>Změna typu členství pro skupinu (PowerShell)
 
 > [!NOTE]
-> Pokud chcete změnit vlastnosti dynamické skupiny, budete muset použít rutiny z **verze Preview** [služby Azure AD PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Verzi Preview můžete nainstalovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+> Pokud chcete změnit vlastnosti dynamické skupiny, budete muset použít rutiny z **verze Preview** [služby Azure AD PowerShell verze 2](/powershell/azure/active-directory/install-adv2). Verzi Preview můžete nainstalovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
 Tady je příklad funkcí, které přepínají správu členství v existující skupině. V tomto příkladu je potřeba zajistit správnou manipulaci s vlastností GroupTypes a zachovat všechny hodnoty, které nesouvisí s dynamickým členstvím.
 

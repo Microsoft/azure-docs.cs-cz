@@ -4,12 +4,12 @@ description: Popisuje, jak používat CloudEvents schéma pro události v Azure 
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d794996a699bdd1bb63e7a894346128aa108e95c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: baac7311a23bb4de032a8ab8b2e99a5ad9cae786
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504369"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858276"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 Kromě [výchozího schématu událostí](event-schema.md)Azure Event Grid nativně podporuje události v [implementaci JSON pro vazby protokolu CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) a [http](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) je [otevřená specifikace](https://github.com/cloudevents/spec/blob/v1.0/spec.md) popisující data události.
@@ -62,16 +62,20 @@ Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu 
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace Event Grid pro CloudEvents
 
-Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako jsou události Blob Storage a události IoT Hub a vlastní události. Tyto události může také transformovat na základě spojení a zpátky.
+Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. Následující tabulka popisuje možné transformace:
+
+ Prostředek Event Grid | Vstupní schéma       | Schéma doručení
+|---------------------|-------------------|---------------------
+| Systémová témata       | Event Grid schéma | Event Grid schématu nebo schématu CloudEvent
+| Témata a domény uživatele | Event Grid schéma | Event Grid schéma
+| Témata a domény uživatele | CloudEvent schéma | CloudEvent schéma
+| Témata a domény uživatele | Vlastní schéma     | Vlastní schéma nebo schéma Event Grid nebo schéma CloudEvent
+| PartnerTopics       | CloudEvent schéma | CloudEvent schéma
 
 
-| Vstupní schéma       | Výstupní schéma
-|--------------------|---------------------
-| Formát CloudEvents | Formát CloudEvents
-| Formát Event Grid  | Formát CloudEvents
-| Formát Event Grid  | Formát Event Grid
+Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do Event Gridho tématu a při vytváření odběru události.
 
-Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
+Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 

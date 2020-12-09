@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093255"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860010"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -144,7 +144,7 @@ Rutina `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Používá modul PowerShellu služby Active Directory a nástroje Azure Active Directory Domain Services (Azure služba AD DS). Tyto nástroje spoléhají na službu Active Directory Web Services běžící na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
 * Se podporuje pouze v modulu MSOnline PowerShell verze 1.1.166.0. Tento modul můžete stáhnout pomocí [tohoto odkazu](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
-* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >  **Remote Server Administration Tools**  >  **Nástroje pro správu rolí**nástroje pro vzdálenou správu serveru.
+* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >  **Remote Server Administration Tools**  >  **Nástroje pro správu rolí** nástroje pro vzdálenou správu serveru.
 
 Pro řadiče domény se systémem Windows Server 2008 nebo staršími verzemi použijte následující skript k vytvoření spojovacího bodu služby. V konfiguraci s více doménovými strukturami použijte následující skript k vytvoření spojovacího bodu služby v každé doménové struktuře, kde počítače existují.
 
@@ -169,7 +169,7 @@ V předchozím skriptu `$verifiedDomain = "contoso.com"` je zástupný symbol. N
 
 Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
 
-Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0).
+Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain).
 
 ![Seznam domén společnosti](./media/hybrid-azuread-join-manual/01.png)
 
@@ -188,7 +188,7 @@ Pokud používáte AD FS, musíte povolit následující WS-Trust koncové body.
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 >Pokud nemáte AD FS jako místní federační službu, postupujte podle pokynů od dodavatele a ujistěte se, že podporují koncové body WS-Trust 1,3 nebo 2005 a že jsou publikované prostřednictvím souboru výměny metadat (MEX).
@@ -328,7 +328,7 @@ V předchozí deklaraci identity `<verified-domain-name>` je zástupný symbol. 
 
 Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).  
 
-Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0).
+Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete použít rutinu [Get-MsolDomain](/powershell/module/msonline/get-msoldomain).
 
 ![Seznam domén společnosti](./media/hybrid-azuread-join-manual/01.png)
 
@@ -484,7 +484,7 @@ Následující skript vám pomůže s vytvořením pravidel transformace vystavo
 #### <a name="remarks"></a>Poznámky
 
 * Tento skript připojí pravidla k existujícím pravidlům. Nespouštějte skript dvakrát, protože sada pravidel by se přidala dvakrát. Před opětovným spuštěním skriptu se ujistěte, že pro tyto deklarace identity neexistují žádná odpovídající pravidla (za odpovídajících podmínek).
-* Pokud máte více ověřených názvů domén (jak je znázorněno na portálu Azure AD nebo prostřednictvím rutiny **Get-MsolDomain** ), nastavte ve skriptu **$true**hodnotu **$multipleVerifiedDomainNames** . Také se ujistěte, že jste odebrali všechny existující **issuerid** deklarace identity, kterou mohl vytvořit Azure AD Connect nebo prostřednictvím jiných prostředků. Tady je příklad pro toto pravidlo:
+* Pokud máte více ověřených názvů domén (jak je znázorněno na portálu Azure AD nebo prostřednictvím rutiny **Get-MsolDomain** ), nastavte ve skriptu **$true** hodnotu **$multipleVerifiedDomainNames** . Také se ujistěte, že jste odebrali všechny existující **issuerid** deklarace identity, kterou mohl vytvořit Azure AD Connect nebo prostřednictvím jiných prostředků. Tady je příklad pro toto pravidlo:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -526,7 +526,7 @@ V takovém případě musí místní služba FS (Federation Service) ověřit u�
 
 V AD FS musíte přidat pravidlo transformace vystavování, které projde metodou ověřování. Přidání tohoto pravidla:
 
-1. V konzole pro správu AD FS přejít na **AD FS**vztahy  >  **důvěryhodnosti**  >  **předávající strany**.
+1. V konzole pro správu AD FS přejít na **AD FS** vztahy  >  **důvěryhodnosti**  >  **předávající strany**.
 1. Klikněte pravým tlačítkem na objekt důvěryhodnosti přijímající strany služby Microsoft Office 365 Identity Platform a pak vyberte **Upravit pravidla deklarace identity**.
 1. Na kartě **Pravidla transformace vystavování** vyberte **Přidat pravidlo**.
 1. V seznamu šablon **Pravidlo deklarace identity** vyberte **Odesílat deklarace pomocí vlastního pravidla**.
@@ -568,9 +568,9 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo. Ve federovaném prostředí se to může stát jenom v případě, že se nepovedlo zaregistrovat a AAD Connect je nakonfigurované k synchronizaci zařízení.
 4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 

@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997643"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858395"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
 Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
@@ -55,7 +55,7 @@ Nejdřív Zjistěte, jestli je synchronizační služba pořád spuštěná, neb
 5. Pokud není spuštěný, zkuste službu spustit. Pokud se služba spustí úspěšně, přeskočte krok [databáze zmenšete](#shrink-the-database) a přejděte na krok [Odstranit data historie spuštění](#delete-run-history-data) . V opačném případě pokračujte v kroku [Zmenšení databáze](#shrink-the-database) .
 
 ### <a name="shrink-the-database"></a>Zmenšit databázi
-Pomocí operace zmenšení uvolněte dostatek místa v databázi pro spuštění synchronizační služby. Uvolní místo pro databáze odebráním prázdných znaků v databázi. Tento krok je nejlepší úsilí, protože není zaručeno, že můžete kdykoli obnovit místo. Pokud se chcete dozvědět víc o operaci zmenšení, přečtěte si článek [Zmenšení databáze](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15).
+Pomocí operace zmenšení uvolněte dostatek místa v databázi pro spuštění synchronizační služby. Uvolní místo pro databáze odebráním prázdných znaků v databázi. Tento krok je nejlepší úsilí, protože není zaručeno, že můžete kdykoli obnovit místo. Pokud se chcete dozvědět víc o operaci zmenšení, přečtěte si článek [Zmenšení databáze](/sql/relational-databases/databases/shrink-a-database).
 
 > [!IMPORTANT]
 > Tento krok přeskočte, pokud můžete získat synchronizační službu, která se má spustit. Nedoporučuje se zmenšit databázi SQL, protože to může vést k špatnému výkonu kvůli zvýšené fragmentaci.

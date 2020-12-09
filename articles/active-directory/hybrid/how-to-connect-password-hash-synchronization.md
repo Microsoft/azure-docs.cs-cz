@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7edafd8a4a85e00a02486c646c77ddff5ff3e6b
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737094"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858735"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -53,10 +53,10 @@ V následující části jsou popsány podrobné informace o tom, jak funguje sy
 
 1. Každé dvě minuty agent synchronizace hodnot hash hesel na serveru služby AD Connect požaduje uložené hodnoty hash hesel (atribut unicodePwd) z řadiče domény.  Tato žádost je přes standardní protokol replikace [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) , který se používá k synchronizaci dat mezi řadiči domény. Aby bylo možné získat hodnoty hash hesla, musí mít účet služby replikované změny adresáře a replikovat změny adresáře všechna oprávnění služby AD (ve výchozím nastavení udělená při instalaci).
 2. Před odesláním řadič domény zašifruje hodnotu hash hesla MD4 pomocí klíče, který je hash [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) klíče relace RPC a Salt. Pak pošle výsledek do agenta synchronizace hodnoty hash hesla přes RPC. Řadič domény také předá sůl agentovi synchronizace pomocí protokolu replikace řadiče domény, takže Agent bude moci dešifrovat obálku.
-3. Po tom, co agent synchronizace hodnot hash hesel obsahuje šifrovanou obálku, použije [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1) a sůl k vygenerování klíče k dešifrování přijatých dat zpět do původního formátu MD4. Agent synchronizace hodnoty hash hesla nikdy nemá přístup k heslu nešifrovaných textů. Použití MD5 agenta synchronizace hodnot hash hesla je výhradně pro kompatibilitu replikačního protokolu s řadičem domény a používá se pouze v místním prostředí mezi řadičem domény a agentem synchronizace hodnot hash hesel.
+3. Po tom, co agent synchronizace hodnot hash hesel obsahuje šifrovanou obálku, použije [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider) a sůl k vygenerování klíče k dešifrování přijatých dat zpět do původního formátu MD4. Agent synchronizace hodnoty hash hesla nikdy nemá přístup k heslu nešifrovaných textů. Použití MD5 agenta synchronizace hodnot hash hesla je výhradně pro kompatibilitu replikačního protokolu s řadičem domény a používá se pouze v místním prostředí mezi řadičem domény a agentem synchronizace hodnot hash hesel.
 4. Agent synchronizace hodnot hash hesel rozbalí 16bajtový binární hodnotu hash hesla na 64 bajtů, a to tak, že nejprve převede hodnotu hash na šestnáctkový řetězec 32-Byte a pak tento řetězec převede zpátky do binárního formátu UTF-16.
 5. Agent synchronizace hodnot hash hesla přidá na uživatele hodnotu Salt, která se skládá z 10 bajtů o velikosti soli 64 bajtů, aby bylo možné dále chránit původní hodnotu hash.
-6. Agent synchronizace hodnot hash hesel pak zkombinuje hodnotu hash MD4 Plus pro každou uživatelskou sůl a zaznamená vstup do funkce [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iterací algoritmu hash s klíčem [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) se používají. 
+6. Agent synchronizace hodnot hash hesel pak zkombinuje hodnotu hash MD4 Plus pro každou uživatelskou sůl a zaznamená vstup do funkce [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iterací algoritmu hash s klíčem [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256) se používají. 
 7. Agent synchronizace hodnot hash hesla převezme výsledný 32 bajtový algoritmus hash, zřetězí na uživatele hodnotu Salt a počet SHA256ch iterací (pro použití službou Azure AD) a pak přenáší řetězec z Azure AD Connect do služby Azure AD prostřednictvím protokolu TLS.</br> 
 8. Když se uživatel pokusí přihlásit ke službě Azure AD a zadá heslo, heslo se spustí pomocí stejného procesu MD4 + Salt + PBKDF2 + HMAC-SHA256. Pokud výsledný algoritmus hash odpovídá hodnotě hash uložené ve službě Azure AD, zadal uživatel správné heslo a bude ověřený.
 
@@ -142,7 +142,7 @@ Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uži
 
 #### <a name="account-expiration"></a>Vypršení platnosti účtu
 
-Pokud vaše organizace používá atribut accountExpires jako součást správy uživatelských účtů, tento atribut není synchronizovaný do Azure AD. V důsledku toho bude v Azure AD stále aktivní účet Active Directory s vypršenou platností v prostředí nakonfigurovaném pro synchronizaci hodnot hash hesel. Doporučujeme, aby v případě vypršení platnosti účtu měla akce pracovního postupu aktivovat skript PowerShellu, který zakáže účet Azure AD uživatele (použijte rutinu [set-AzureADUser](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Pokud je účet zapnutý, měla by se zapnout instance služby Azure AD.
+Pokud vaše organizace používá atribut accountExpires jako součást správy uživatelských účtů, tento atribut není synchronizovaný do Azure AD. V důsledku toho bude v Azure AD stále aktivní účet Active Directory s vypršenou platností v prostředí nakonfigurovaném pro synchronizaci hodnot hash hesel. Doporučujeme, aby v případě vypršení platnosti účtu měla akce pracovního postupu aktivovat skript PowerShellu, který zakáže účet Azure AD uživatele (použijte rutinu [set-AzureADUser](/powershell/module/azuread/set-azureaduser) ). Pokud je účet zapnutý, měla by se zapnout instance služby Azure AD.
 
 ### <a name="overwrite-synchronized-passwords"></a>Přepsat synchronizovaná hesla
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8198feca2956f81e397ddee447057c1a5af99a4a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973911"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859500"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../enterprise-users/index.yml).
@@ -77,7 +77,7 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně. Chcete
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Zapnout nebo vypnout e-mail pro uvítání skupiny
 
-Když se vytvoří jakákoli nová skupina Microsoft 365, ať už s dynamickým nebo statickým členstvím, pošle se oznámení uvítání všem uživatelům, kteří se do této skupiny přidají. Když se změní kterýkoli atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci, aby se projevily případné změny členství. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)vypnout. 
+Když se vytvoří jakákoli nová skupina Microsoft 365, ať už s dynamickým nebo statickým členstvím, pošle se oznámení uvítání všem uživatelům, kteří se do této skupiny přidají. Když se změní kterýkoli atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci, aby se projevily případné změny členství. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete v [prostředí Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup)vypnout. 
 
 ## <a name="next-steps"></a>Další kroky
 

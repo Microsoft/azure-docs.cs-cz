@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896068"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860605"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -32,25 +32,25 @@ Tento článek obsahuje příklad integrace se schvalovacím systémem. V tomto 
 Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure AD, aby se mohl ověřit pomocí Azure AD a mít oprávnění k vytváření uživatelů. Přečtěte si další informace o [ověřování a základech autorizace pro Microsoft Graph](/graph/auth/auth-concepts).
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
-2. V části **služby Azure** vyberte **Azure Active Directory** .
-3. V nabídce vlevo vyberte **Registrace aplikací** a pak vyberte **Nová registrace** .
-4. Zadejte **název** aplikace, například _schválení registrací_ .
+2. V části **služby Azure** vyberte **Azure Active Directory**.
+3. V nabídce vlevo vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
+4. Zadejte **název** aplikace, například _schválení registrací_.
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
-5. Vyberte **Zaregistrovat** . Můžete ponechat další pole ve výchozím nastavení.
+5. Vyberte **Zaregistrovat**. Můžete ponechat další pole ve výchozím nastavení.
 
    ![Snímek obrazovky, který zvýrazní tlačítko registrace.](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. V části **Spravovat** v nabídce vlevo vyberte **oprávnění rozhraní API** a pak vyberte **Přidat oprávnění** .
-7. Na stránce **žádost o oprávnění API** vyberte **Microsoft Graph** a pak vyberte **oprávnění aplikace** .
-8. V části **vybrat oprávnění** rozbalte položku **uživatel** a potom zaškrtněte políčko **uživatel. čtení. All** . Toto oprávnění umožňuje schvalovacímu systému vytvořit uživatele při schválení. Pak vyberte **Přidat oprávnění** .
+6. V části **Spravovat** v nabídce vlevo vyberte **oprávnění rozhraní API** a pak vyberte **Přidat oprávnění**.
+7. Na stránce **žádost o oprávnění API** vyberte **Microsoft Graph** a pak vyberte **oprávnění aplikace**.
+8. V části **vybrat oprávnění** rozbalte položku **uživatel** a potom zaškrtněte políčko **uživatel. čtení. All** . Toto oprávnění umožňuje schvalovacímu systému vytvořit uživatele při schválení. Pak vyberte **Přidat oprávnění**.
 
    ![Registrovat stránku aplikace](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. Na stránce **oprávnění rozhraní API** vyberte **udělit souhlas správce pro (název tenanta)** a pak vyberte **Ano** .
-10. V části **Spravovat** v nabídce vlevo vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta** .
-11. Zadejte **Popis** tajného kódu, například _schválení tajného kódu klienta_ , a vyberte dobu, po **jejímž uplynutí bude platnost** tajného klíče klienta ukončena. Pak vyberte **Přidat** .
+9. Na stránce **oprávnění rozhraní API** vyberte **udělit souhlas správce pro (název tenanta)** a pak vyberte **Ano**.
+10. V části **Spravovat** v nabídce vlevo vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta**.
+11. Zadejte **Popis** tajného kódu, například _schválení tajného kódu klienta_, a vyberte dobu, po **jejímž uplynutí bude platnost** tajného klíče klienta ukončena. Pak vyberte **Přidat**.
 12. Zkopírujte hodnotu tajného klíče klienta.
 
     ![Kopírovat tajný klíč klienta pro použití ve schvalovacím systému](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure
 
 V dalším kroku [vytvoříte konektory rozhraní API](self-service-sign-up-add-api-connector.md#create-an-api-connector) pro uživatelský tok samoobslužné registrace. Vaše systémové rozhraní API pro schvalování potřebuje dva konektory a odpovídající koncové body, podobně jako v níže uvedených příkladech. Tyto konektory API jsou následující:
 
-- **Zkontroluje stav schválení** . Jakmile se uživatel přihlásí pomocí poskytovatele identity, požádejte ho, aby zkontroloval, jestli má uživatel existující žádost o schválení nebo už byl zamítnutý. Pokud váš systém schvalování provede jenom rozhodnutí o automatickém schválení, nemusí být tento konektor API potřebný. Příklad "konektoru rozhraní API" kontroly stavu schválení.
+- **Zkontroluje stav schválení**. Jakmile se uživatel přihlásí pomocí poskytovatele identity, požádejte ho, aby zkontroloval, jestli má uživatel existující žádost o schválení nebo už byl zamítnutý. Pokud váš systém schvalování provede jenom rozhodnutí o automatickém schválení, nemusí být tento konektor API potřebný. Příklad "konektoru rozhraní API" kontroly stavu schválení.
 
   ![Zkontroluje konfiguraci konektoru rozhraní API stavu schválení.](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -76,17 +76,17 @@ Chcete-li vytvořit tyto konektory, postupujte podle kroků v části [Vytvořen
 Nyní přidáte konektory rozhraní API k samoobslužnému uživatelskému toku registrace pomocí těchto kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce.
-2. V části **služby Azure** vyberte **Azure Active Directory** .
-3. V nabídce vlevo vyberte **externí identity** .
+2. V části **služby Azure** vyberte **Azure Active Directory**.
+3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **toky uživatelů (Preview)** a pak vyberte tok uživatele, pro který chcete povolit konektor API.
 5. Vyberte možnost **konektory rozhraní API** a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
 
-   - **Po přihlášení pomocí zprostředkovatele identity** : vyberte svůj stav schválení váš konektor API, třeba _Ověřte stav schválení_ .
-   - **Před vytvořením uživatele** : vyberte svůj konektor API žádosti o schválení, například _žádost o schválení_ .
+   - **Po přihlášení pomocí zprostředkovatele identity**: vyberte svůj stav schválení váš konektor API, třeba _Ověřte stav schválení_.
+   - **Před vytvořením uživatele**: vyberte svůj konektor API žádosti o schválení, například _žádost o schválení_.
 
    ![Přidání rozhraní API do toku uživatele](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. Vyberte **Uložit** .
+6. Vyberte **Uložit**.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>Řízení toku registrace pomocí odpovědí rozhraní API
 
@@ -207,7 +207,7 @@ Přesné deklarace identity odeslané na rozhraní API závisí na tom, které i
 
 Koncový bod rozhraní API pro **schválení žádosti** by měl vrátit odpověď pokračování, pokud:
 
-- Uživatel může být **_automaticky schválen_** .
+- Uživatel může být **_automaticky schválen_**.
 
 Příklad odpovědi na pokračování:
 
@@ -270,7 +270,7 @@ Po získání ručního schválení vytvoří vlastní systém schvalování [u�
 > [!IMPORTANT]
 > Systém schvalování musí explicitně ověřit, jestli `identities` `identities[0]` `identities[0].issuer` jsou přítomná a která se `identities[0].issuer` rovná Facebooku nebo Google, aby používala tuto metodu.
 
-Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0).
+Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](/graph/api/user-post-users?tabs=http).
 
 1. Systém schvalování používá požadavek HTTP od toku uživatele.
 
@@ -325,12 +325,12 @@ Content-type: application/json
 | pošta                                                | Ano      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
 | userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
 | nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
+| \<otherBuiltInAttribute>                            | No       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Pro uživatele federovaného Azure Active Directory
 
-Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu, je nutné použít [rozhraní API pro pozvání](/graph/api/invitation-post?view=graph-rest-1.0) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](/graph/api/user-update?view=graph-rest-1.0) k přiřazení dalších atributů uživateli.
+Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu, je nutné použít [rozhraní API pro pozvání](/graph/api/invitation-post) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](/graph/api/user-update) k přiřazení dalších atributů uživateli.
 
 1. Schvalovací systém přijme požadavek HTTP od toku uživatele.
 

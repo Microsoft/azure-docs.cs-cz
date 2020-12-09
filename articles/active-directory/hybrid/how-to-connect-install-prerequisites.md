@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172341"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858769"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -52,7 +52,7 @@ Azure Active Directory Connect v rámci instalace spouští podepsané skripty P
 
 Doporučené zásady spouštění během instalace jsou "RemoteSigned".
 
-Další informace o nastavení zásad spouštění prostředí PowerShell najdete v tématu [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+Další informace o nastavení zásad spouštění prostředí PowerShell najdete v tématu [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
@@ -140,7 +140,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 Volitelné: k ověření synchronizace použijte účet testovacího uživatele.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

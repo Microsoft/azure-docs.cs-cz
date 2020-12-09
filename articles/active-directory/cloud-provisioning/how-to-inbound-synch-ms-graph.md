@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797bf5c7e69990a29f0d14c31586d0e85b42426
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737968"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860351"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>Příchozí synchronizace pro zřizování cloudu pomocí MS Graph API
 
@@ -30,7 +30,7 @@ Struktura toho, jak se to provede, se skládá z následujících kroků.  Jsou 
 - [Spustit úlohu synchronizace](#start-sync-job)
 - [Stav kontroly](#review-status)
 
-Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0) můžete povolit synchronizaci pro produkčního tenanta, což je nezbytný předpoklad pro volání webové služby správy pro tohoto tenanta.
+Pomocí těchto příkazů [modul Microsoft Azure Active Directory pro Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/) můžete povolit synchronizaci pro produkčního tenanta, což je nezbytný předpoklad pro volání webové služby správy pro tohoto tenanta.
 
 ## <a name="basic-setup"></a>Základní nastavení
 

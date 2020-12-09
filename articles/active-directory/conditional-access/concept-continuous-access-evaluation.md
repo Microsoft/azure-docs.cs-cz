@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602253"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860299"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -105,7 +105,7 @@ Pokud nepoužíváte klienty podporující CAE, vaše výchozí doba platnosti p
 
 1. Klient podporující CAE prezentuje přihlašovací údaje nebo obnovovací token pro Azure AD, který žádá o přístupový token pro určitý prostředek.
 1. Přístupový token je vrácen spolu s jinými artefakty klientovi.
-1. Správce explicitně [odvolá všechny aktualizační tokeny pro uživatele](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Do poskytovatele prostředků z Azure AD se pošle událost odvolání.
+1. Správce explicitně [odvolá všechny aktualizační tokeny pro uživatele](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). Do poskytovatele prostředků z Azure AD se pošle událost odvolání.
 1. Poskytovateli prostředků se zobrazí přístupový token. Poskytovatel prostředků vyhodnocuje platnost tokenu a zkontroluje, jestli pro uživatele existuje nějaká událost odvolání. Poskytovatel prostředků používá tyto informace k rozhodnutí o udělení přístupu k prostředku nebo ne.
 1. V takovém případě poskytovatel prostředků odepře přístup a pošle klientovi výzvu s deklarací 401 +.
 1. Klient podporující CAE rozumí výzvě 401 + Claim. Obchází mezipaměti a vrací se ke kroku 1, odesílá obnovovací token spolu s výzvou k deklaraci identity zpátky do služby Azure AD. Služba Azure AD potom znovu vyhodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
@@ -146,7 +146,7 @@ V případě CAE máme přehledy o pojmenovaných umístěních založených na 
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.

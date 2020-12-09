@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4750de0b9b0d44dbe30571e308227d2123b5e447
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4cd6aa8c1936d9f07421f6508755a5b6d4852813
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602083"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859177"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -424,7 +424,7 @@ Pro verzi Public Preview je k dispozici rozdílový dotaz pro oAuth2PermissionGr
 
 **Schopnost produktu:** Vývojářské prostředí
 
-Rozdílový dotaz pro kontakty organizace je všeobecně k dispozici! Nyní můžete sledovat změny v produkčních aplikacích bez nutnosti průběžného dotazování Microsoft Graph. Nahraďte veškerý stávající kód, který se průběžně dotazuje orgContact data na rozdílový dotaz, aby významně zvýšil výkon. [Další informace](/graph/api/orgcontact-delta?tabs=http&view=graph-rest-1.0)
+Rozdílový dotaz pro kontakty organizace je všeobecně k dispozici! Nyní můžete sledovat změny v produkčních aplikacích bez nutnosti průběžného dotazování Microsoft Graph. Nahraďte veškerý stávající kód, který se průběžně dotazuje orgContact data na rozdílový dotaz, aby významně zvýšil výkon. [Další informace](/graph/api/orgcontact-delta?tabs=http)
 
 ---
 
@@ -436,7 +436,7 @@ Rozdílový dotaz pro kontakty organizace je všeobecně k dispozici! Nyní mů�
 
 **Schopnost produktu:** Vývojářské prostředí
 
-Rozdílový dotaz pro aplikace je všeobecně k dispozici! Nyní můžete sledovat změny v produkčních aplikacích bez nutnosti průběžného dotazování Microsoft Graph. Nahraďte veškerý stávající kód, který nepřetržitě dotazuje data aplikací podle rozdílového dotazu a významně tak vylepšit výkon. [Další informace](/graph/api/application-delta?view=graph-rest-1.0)
+Rozdílový dotaz pro aplikace je všeobecně k dispozici! Nyní můžete sledovat změny v produkčních aplikacích bez nutnosti průběžného dotazování Microsoft Graph. Nahraďte veškerý stávající kód, který nepřetržitě dotazuje data aplikací podle rozdílového dotazu a významně tak vylepšit výkon. [Další informace](/graph/api/application-delta)
 
 ---
 
@@ -654,7 +654,7 @@ Přidání akcí vylepšení:
 - Zajistěte, aby všichni uživatelé mohli pro zabezpečený přístup dokončit službu Multi-Factor Authentication
 - Vyžadovat MFA pro administrativní role
 
-Tyto nové akce zlepšování vyžadují registraci uživatelů nebo správců pro službu Multi-Factor Authentication (MFA) v rámci vašeho adresáře a vytvoření správné sady zásad, které vyhovují potřebám vaší organizace. Hlavním cílem je mít flexibilitu při současném zajištění, že se všichni uživatelé a správci můžou ověřit s více faktory nebo s výzvou k ověření identity na základě rizika. To může mít formu, že má více zásad, které používají vymezená rozhodnutí nebo nastavovat výchozí hodnoty zabezpečení (od 16. března), které Microsoftu pomohou rozhodnout, kdy chtějí uživatele pro MFA požádat. [Přečtěte si další informace o tom, co je nového ve službě Microsoft Secure skore](/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new).
+Tyto nové akce zlepšování vyžadují registraci uživatelů nebo správců pro službu Multi-Factor Authentication (MFA) v rámci vašeho adresáře a vytvoření správné sady zásad, které vyhovují potřebám vaší organizace. Hlavním cílem je mít flexibilitu při současném zajištění, že se všichni uživatelé a správci můžou ověřit s více faktory nebo s výzvou k ověření identity na základě rizika. To může mít formu, že má více zásad, které používají vymezená rozhodnutí nebo nastavovat výchozí hodnoty zabezpečení (od 16. března), které Microsoftu pomohou rozhodnout, kdy chtějí uživatele pro MFA požádat. [Přečtěte si další informace o tom, co je nového ve službě Microsoft Secure skore](/microsoft-365/security/mtp/microsoft-secure-score#whats-new).
 
 ---
 
@@ -844,7 +844,7 @@ Budou přidány následující akce vylepšení:
 - Ujistěte se, že všichni uživatelé můžou pro zabezpečený přístup dokončit MFA.
 - Vyžadovat MFA pro administrativní role
 
-Tyto nové akce zlepšování budou vyžadovat registraci uživatelů nebo správců pro MFA napříč vaším adresářem a vytvoření správné sady zásad, které vyhovují potřebám vaší organizace. Hlavním cílem je mít flexibilitu při současném zajištění, že se všichni uživatelé a správci můžou ověřit s více faktory nebo s výzvou k ověření identity na základě rizika. To může mít formu nastavení výchozích hodnot zabezpečení, které Microsoftu umožní rozhodnout, kdy mají požádat uživatele o MFA, nebo jestli mají více zásad, které použijí rozhodnutí s vymezeným oborem. V rámci těchto aktualizací akcí vylepšení již nebudou zásady ochrany směrných plánů zahrnuty do výpočtů bodování. [Přečtěte si další informace o tom, co připravujeme v zabezpečeném skóre Microsoftu](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming?view=o365-worldwide).
+Tyto nové akce zlepšování budou vyžadovat registraci uživatelů nebo správců pro MFA napříč vaším adresářem a vytvoření správné sady zásad, které vyhovují potřebám vaší organizace. Hlavním cílem je mít flexibilitu při současném zajištění, že se všichni uživatelé a správci můžou ověřit s více faktory nebo s výzvou k ověření identity na základě rizika. To může mít formu nastavení výchozích hodnot zabezpečení, které Microsoftu umožní rozhodnout, kdy mají požádat uživatele o MFA, nebo jestli mají více zásad, které použijí rozhodnutí s vymezeným oborem. V rámci těchto aktualizací akcí vylepšení již nebudou zásady ochrany směrných plánů zahrnuty do výpočtů bodování. [Přečtěte si další informace o tom, co připravujeme v zabezpečeném skóre Microsoftu](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming).
 
 ---
 
@@ -2164,7 +2164,7 @@ Další informace najdete v tématu [vymáhání zásady pojmenování pro skupi
 
 S radostí oznamujeme obecnou dostupnost Microsoft Graph Podpora koncových bodů rozhraní API pro protokoly aktivit služby Azure AD. V této verzi teď můžete používat protokol auditu Azure AD verze 1,0 jak v protokolu, tak i v protokolech rozhraní API pro přihlášení.
 
-Další informace najdete v tématu [Přehled rozhraní API protokolu auditu služby Azure AD](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0).
+Další informace najdete v tématu [Přehled rozhraní API protokolu auditu služby Azure AD](/graph/api/resources/azure-ad-auditlog-overview).
 
 ---
 
@@ -2668,7 +2668,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Result|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Selhání</li></ul>|
 
@@ -3435,7 +3435,7 @@ Další informace o veřejné verzi Preview najdete v tématu [role správy dele
 
 ---
 
-## <a name="may-2018"></a>May 2018
+## <a name="may-2018"></a>Květen 2018
 
 ### <a name="expressroute-support-changes"></a>Změny podpory ExpressRoute
 
@@ -3783,7 +3783,7 @@ Další informace najdete tady:
 
 Podpora pro rutiny proxy aplikací je teď v modulu PowerShell GA. To vyžaduje, abyste si udrželi přehled o modulech PowerShellu – Pokud se stanete více než rokem, některé rutiny můžou přestat fungovat.
 
-Další informace najdete v tématu [AzureAD](/powershell/module/Azuread/?view=azureadps-2.0).
+Další informace najdete v tématu [AzureAD](/powershell/module/Azuread/).
 
 ---
 

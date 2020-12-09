@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285850"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859627"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -59,7 +59,7 @@ Pro uživatele typu Host ve stavu 2 je **zdrojem** **účet Microsoft**.
 
 ![Stav 2 uživatel typu Host po uplatnění nabídky](media/user-properties/after-redemption-state2.png)
 
-Pro uživatele typu Host ve stavu 3 a 4 je vlastnost **source** nastavena na **Azure Active Directory** nebo **Windows Server Active Directory** , jak je popsáno v následující části.
+Pro uživatele typu Host ve stavu 3 a 4 je vlastnost **source** nastavena na **Azure Active Directory** nebo **Windows Server Active Directory**, jak je popsáno v následující části.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Klíčové vlastnosti uživatele spolupráce Azure AD B2B
 ### <a name="usertype"></a>UserType
@@ -110,7 +110,7 @@ Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním sezn
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Můžu aktualizovat e-mailovou adresu uživatele typu Host?
 
-Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](/graph/api/resources/user?view=graph-rest-1.0). Vlastnost mail můžete aktualizovat prostřednictvím rozhraní Microsoft Graph API, centra pro správu Exchange nebo [prostředí PowerShell pro Exchange Online](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps). Tato změna se projeví v objektu uživatele hosta Azure AD.
+Pokud uživatel typu Host přijme vaši pozvánku a následně změní svou e-mailovou adresu, nový e-mail se automaticky nesynchronizuje s objektem uživatele hosta v adresáři. Vlastnost mail se vytvoří prostřednictvím [rozhraní Microsoft Graph API](/graph/api/resources/user). Vlastnost mail můžete aktualizovat prostřednictvím rozhraní Microsoft Graph API, centra pro správu Exchange nebo [prostředí PowerShell pro Exchange Online](/powershell/module/exchange/users-and-groups/set-mailuser). Tato změna se projeví v objektu uživatele hosta Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

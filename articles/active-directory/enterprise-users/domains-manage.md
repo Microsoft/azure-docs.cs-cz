@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd77b1d82fc427f53a251ef66230b450c1060fd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547572"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859976"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -73,7 +73,7 @@ Než budete moct odstranit vlastní název domény, musíte tento prostředek v 
 
 Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [rozhraní Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true). Tyto možnosti používají asynchronní operace a aktualizují všechny odkazy z vlastního názvu domény jako user@contoso.com na počáteční výchozí název domény, například user@contoso.onmicrosoft.com .
 
-Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). Patří sem skupiny zabezpečení Exchange Mail-Enabled a distribuované seznamy; Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
+Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). Patří sem skupiny zabezpečení Exchange Mail-Enabled a distribuované seznamy; Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
 
 * Zakoupili jste doménu prostřednictvím služby Microsoft 365 Domain Subscription Services
 * Jste partnerskou správou jménem jiné organizace pro zákazníky.
@@ -110,11 +110,11 @@ Pokud zjistíte, že některá z podmínek nebyla splněna, ručně vyčistěte 
 
 Většinu úloh správy pro názvy domén v Azure Active Directory lze také dokončit pomocí prostředí Microsoft PowerShell nebo programově pomocí Microsoft Graphho rozhraní API.
 
-* [Použití PowerShellu ke správě názvů domén ve službě Azure AD](/powershell/module/azuread/?view=azureadps-2.0#domains&preserve-view=true)
+* [Použití PowerShellu ke správě názvů domén ve službě Azure AD](/powershell/module/azuread/#domains&preserve-view=true)
 * [Typ prostředku domény](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Přidání vlastních názvů domén](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
-* [Odebrání skupin zabezpečení s povoleným e-mailem Exchange v centru pro správu Exchange na vlastním názvu domény v Azure AD](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)
+* [Odebrání skupin zabezpečení s povoleným e-mailem Exchange v centru pro správu Exchange na vlastním názvu domény v Azure AD](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true)
 * [ForceDelete vlastní název domény s rozhraním API Microsoft Graph](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)

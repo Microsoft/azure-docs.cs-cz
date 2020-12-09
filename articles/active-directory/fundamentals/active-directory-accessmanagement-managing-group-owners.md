@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371932"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860486"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidat nebo odebrat vlastníky skupiny v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) jsou vlastněné a spravované vlastníky skupin. Vlastníci skupiny můžou být uživatelé nebo instanční objekty a můžou spravovat skupinu včetně členství. Vlastníci skupiny můžou přiřadit jenom existující vlastníci skupiny nebo skupiny – Správa správců. Vlastníci skupiny nemusí být členy skupiny.
@@ -25,18 +25,18 @@ Skupiny Azure Active Directory (Azure AD) jsou vlastněné a spravované vlastn�
 Pokud skupina nemá žádného vlastníka, skupina – Správa správců stále dokáže spravovat skupinu. Doporučuje se, aby každá skupina měla aspoň jednoho vlastníka. Jakmile se vlastníci přiřadit do skupiny, nepůjde odebrat posledního vlastníka skupiny. Než odeberete posledního vlastníka ze skupiny, ujistěte se prosím, že jste vybrali jiného vlastníka.
 
 ## <a name="add-an-owner-to-a-group"></a>Přidat vlastníka do skupiny
-Níže jsou uvedeny pokyny pro přidání uživatele jako vlastníka do skupiny pomocí portálu Azure AD. Pokud chcete přidat instanční objekt jako vlastníka skupiny, postupujte podle pokynů v tématu použití [PowerShellu](/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0).
+Níže jsou uvedeny pokyny pro přidání uživatele jako vlastníka do skupiny pomocí portálu Azure AD. Pokud chcete přidat instanční objekt jako vlastníka skupiny, postupujte podle pokynů v tématu použití [PowerShellu](/powershell/module/Azuread/Add-AzureADGroupOwner).
 
 ### <a name="to-add-a-group-owner"></a>Přidání vlastníka skupiny
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**, vyberte **skupiny**a pak vyberte skupinu, pro kterou chcete přidat vlastníka (v tomto příkladu *zásady MDM – západ*).
+2. Vyberte **Azure Active Directory**, vyberte **skupiny** a pak vyberte skupinu, pro kterou chcete přidat vlastníka (v tomto příkladu *zásady MDM – západ*).
 
 3. Na stránce **Přehled zásad MDM – západ** vyberte **vlastníci**.
 
     ![Zásady MDM – Stránka s přehledem s vybranými vlastníky – západ](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
 
-4. Na stránce **zásady MDM – západ – vlastníci** vyberte **Přidat vlastníky**a pak vyhledejte a vyberte uživatele, který bude novým vlastníkem skupiny, a pak zvolte **Vybrat**.
+4. Na stránce **zásady MDM – západ – vlastníci** vyberte **Přidat vlastníky** a pak vyhledejte a vyberte uživatele, který bude novým vlastníkem skupiny, a pak zvolte **Vybrat**.
 
     ![Zásada MDM – stránka – západ – vlastníci s zvýrazněnou možností přidat vlastníky](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
 
@@ -48,7 +48,7 @@ Odebrání vlastníka ze skupiny pomocí Azure AD
 ### <a name="to-remove-an-owner"></a>Odebrání vlastníka
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**, vyberte **skupiny**a pak vyberte skupinu, pro kterou chcete odebrat vlastníka (v tomto příkladu *zásady MDM – západ*).
+2. Vyberte **Azure Active Directory**, vyberte **skupiny** a pak vyberte skupinu, pro kterou chcete odebrat vlastníka (v tomto příkladu *zásady MDM – západ*).
 
 3. Na stránce **Přehled zásad MDM – západ** vyberte **vlastníci**.
 

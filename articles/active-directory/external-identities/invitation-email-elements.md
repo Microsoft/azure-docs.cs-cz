@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bb134a2fb784e02f5e00c9e88ab0df1794489e0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441874"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860588"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory
 
@@ -85,8 +85,8 @@ Uživatel typu Host může podle těchto kroků zobrazit nebo exportovat organiz
 
 Jazyk prezentovaný uživateli hosta v e-mailu s pozvánkou se určuje pomocí následujících nastavení. Tato nastavení jsou uvedena v pořadí podle priority. Pokud není nastavení nakonfigurované, bude jazyk určovat další nastavení v seznamu.
 
-- Vlastnost **messageLanguage** objektu [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) , pokud se používá rozhraní API pro vytvoření pozvánky
--   Vlastnost **preferredLanguage** zadaná v [objektu uživatele](/graph/api/resources/user?view=graph-rest-1.0) hosta
+- Vlastnost **messageLanguage** objektu [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo) , pokud se používá rozhraní API pro vytvoření pozvánky
+-   Vlastnost **preferredLanguage** zadaná v [objektu uživatele](/graph/api/resources/user) hosta
 -   **Jazyk oznámení** nastavený ve vlastnostech domovského tenanta uživatele hosta (jenom pro klienty Azure AD)
 -   **Jazyk oznámení** nastavený ve vlastnostech tenanta prostředků
 

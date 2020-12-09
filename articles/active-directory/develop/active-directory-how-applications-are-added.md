@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484103"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861115"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -104,7 +104,7 @@ Aplikace, které přidáte sami (v diagramu jsou reprezentovány jako **aplikace
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
 * Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k rozhraní Microsoft Graph API:
-  * [Aplikace](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Aplikace](/graph/api/resources/application)
   * [Instanční objekt](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč se aplikace integrují s Azure AD?

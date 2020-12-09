@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 7fe48cf28ab3004087e2b022d7a9eca69a1e58e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169626"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861098"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -49,7 +49,7 @@ Aby bylo možné získat přístup k prostředkům, které jsou zabezpečeny kli
 
 Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat.
 
-Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
+Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
 
 Okno **podnikové aplikace** na portálu slouží k vypsání a správě objektů služby v tenantovi. Můžete se podívat na oprávnění instančního objektu, uživatelská oprávnění, která uživatelé provedli, kteří si ho udělali, informace o přihlášení a další.
 
@@ -91,8 +91,8 @@ V tomto ukázkovém scénáři:
 ## <a name="next-steps"></a>Další kroky
 
 - K dotazování aplikace i instančních objektů služby můžete použít [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) .
-- K aplikačnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API, editoru manifestu aplikace [Azure Portal][AZURE-Portal] nebo [rutin služby Azure AD PowerShell](/powershell/azure/?view=azureadps-2.0), jak je znázorněno v [entitě aplikace][MS-Graph-App-Entity]OData.
-- K instančnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API nebo [rutin Azure AD PowerShellu](/powershell/azure/?view=azureadps-2.0), které jsou reprezentované [entitou ServicePrincipal][MS-Graph-Sp-Entity]OData.
+- K aplikačnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API, editoru manifestu aplikace [Azure Portal][AZURE-Portal] nebo [rutin služby Azure AD PowerShell](/powershell/azure/), jak je znázorněno v [entitě aplikace][MS-Graph-App-Entity]OData.
+- K instančnímu objektu aplikace můžete přistupovat pomocí rozhraní Microsoft Graph API nebo [rutin Azure AD PowerShellu](/powershell/azure/), které jsou reprezentované [entitou ServicePrincipal][MS-Graph-Sp-Entity]OData.
 
 <!--Image references-->
 

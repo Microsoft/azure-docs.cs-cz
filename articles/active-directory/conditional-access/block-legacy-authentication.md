@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489518"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860316"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -119,7 +119,7 @@ Pro podmínky **ostatních klientů** můžete vybrat všechny dostupné ovláda
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>Uživatelé typu Host služby SharePoint Online a B2B
 
-Aby bylo možné zablokovat přístup uživatelů B2B prostřednictvím staršího ověřování na SharePoint Online, musí organizace zakázat starší ověřování na SharePointu pomocí `Set-SPOTenant` příkazu PowerShellu a nastavením `-LegacyAuthProtocolsEnabled` parametru na `$false` . Další informace o nastavení tohoto parametru najdete v referenčním dokumentu PowerShellu služby SharePoint týkajícím se rutiny [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) .
+Aby bylo možné zablokovat přístup uživatelů B2B prostřednictvím staršího ověřování na SharePoint Online, musí organizace zakázat starší ověřování na SharePointu pomocí `Set-SPOTenant` příkazu PowerShellu a nastavením `-LegacyAuthProtocolsEnabled` parametru na `$false` . Další informace o nastavení tohoto parametru najdete v referenčním dokumentu PowerShellu služby SharePoint týkajícím se rutiny [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173392"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860962"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -78,7 +78,7 @@ V předchozím fragmentu kódu:
 
 - `policy` je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow` vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Příklad:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -165,7 +165,7 @@ Pokud se něco změní, poskytneme vám aktualizaci tohoto [problému](https://g
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Známý problém s Azure AD B2C
 
-MSAL.NET podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity (IdP).
+MSAL.NET podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.tokencache). Klíč mezipaměti tokenu je založen na deklaracích vrácených zprostředkovatelem identity (IdP).
 
 V současné době MSAL.NET potřebuje ke sestavení klíče mezipaměti tokenu dvě deklarace identity:
 

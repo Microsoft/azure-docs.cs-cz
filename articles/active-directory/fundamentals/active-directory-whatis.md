@@ -1,5 +1,5 @@
 ---
-title: Představení služby Azure Active Directory -Azure Active Directory | Microsoft Docs
+title: Co je Azure Active Directory? -Azure Active Directory | Microsoft Docs
 description: Přehled a koncepční informace o Azure Active Directory, včetně terminologie, jaké licence jsou k dispozici, a seznam přidružených funkcí s odkazy pro další informace.
 services: active-directory
 author: ajburnle
@@ -11,14 +11,14 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 101a2071d4f7c78d1a8df392172dc83c4028af1e
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043073"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859211"
 ---
-# <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
+# <a name="what-is-azure-active-directory"></a>Co je Azure Active Directory?
 
 Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu, která pomáhá vašim zaměstnancům přihlašovat se a přistupovat k prostředkům v nástroji:
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) je cloudová služba pro správu identit a př
 
 - Interní prostředky, jako jsou aplikace ve vaší podnikové síti nebo intranetu, spolu s jakýmikoli cloudovou aplikací vyvinutou vaší organizací. Další informace o vytvoření tenanta pro vaši organizaci najdete v tématu [rychlý Start: vytvoření nového tenanta v Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Microsoft 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) .
+Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Microsoft 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](/microsoft-365/solutions/cloud-architecture-models) .
 
 ## <a name="who-uses-azure-ad"></a>Kdo používá Azure AD?
 

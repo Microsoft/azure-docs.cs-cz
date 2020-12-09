@@ -12,18 +12,18 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ef1abd1d72e4435aa59bbb9a99f3cc423f11268e
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659059"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858294"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Skrýt podnikové aplikace od koncových uživatelů v Azure Active Directory
 
 Pokyny, jak skrýt aplikace z panelu MyApp a Microsoft 365 spouštěče koncových uživatelů. Když je aplikace skrytá, uživatelé mají stále oprávnění k aplikaci. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro skrytí aplikace z panelu MyApp a Microsoft 365 spouštěče se vyžadují oprávnění správce aplikace.
 
@@ -47,7 +47,7 @@ Pomocí následujících kroků skryjte aplikaci z panelu MyApp a Microsoft 365 
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Použití Azure AD PowerShellu ke skrytí aplikace
 
-Chcete-li skrýt aplikaci z panelu MyApp, můžete ručně přidat značku HideApp do instančního objektu aplikace. Spusťte následující příkazy [prostředí PowerShell AzureAD](/powershell/module/azuread/?view=azureadps-2.0#service_principals) a nastavte vlastnost **Visible pro uživatele** na hodnotu **ne**. 
+Chcete-li skrýt aplikaci z panelu MyApp, můžete ručně přidat značku HideApp do instančního objektu aplikace. Spusťte následující příkazy [prostředí PowerShell AzureAD](/powershell/module/azuread/#service_principals) a nastavte vlastnost **Visible pro uživatele** na hodnotu **ne**. 
 
 ```PowerShell
 Connect-AzureAD

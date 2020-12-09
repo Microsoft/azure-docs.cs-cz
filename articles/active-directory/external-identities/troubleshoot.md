@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 681f5a6cecd43eb69adf24544c774cbd22da8a49
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168759"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860537"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -52,7 +52,7 @@ Mezi běžné chyby patří:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Správce pozvání nepovolil, aby se EmailVerified uživatelé ve svém tenantovi vytvořili.
 
-Při pozvání uživatelů, jejichž organizace používá Azure Active Directory, ale pokud účet konkrétního uživatele neexistuje (například uživatel v Azure AD contoso.com neexistuje). Správce contoso.com může mít zavedenou zásadu zabraňující vytváření uživatelů. Uživatel musí u svého správce zjistit, jestli je povolený externí uživatel. Správce externího uživatele může potřebovat povolit e-mailem ověřeným uživatelům ve své doméně (viz tento [článek](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) , který umožňuje ověřeným uživatelům poslat e-mail).
+Při pozvání uživatelů, jejichž organizace používá Azure Active Directory, ale pokud účet konkrétního uživatele neexistuje (například uživatel v Azure AD contoso.com neexistuje). Správce contoso.com může mít zavedenou zásadu zabraňující vytváření uživatelů. Uživatel musí u svého správce zjistit, jestli je povolený externí uživatel. Správce externího uživatele může potřebovat povolit e-mailem ověřeným uživatelům ve své doméně (viz tento [článek](/powershell/module/msonline/set-msolcompanysettings) , který umožňuje ověřeným uživatelům poslat e-mail).
 
 ![Chyba informující, že tenant nepovoluje uživatelům ověřené e-maily](media/troubleshoot/allow-email-verified-users.png)
 

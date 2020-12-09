@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d808b920ddc6ff6f1d44252c27d67edd9c0dc353
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575512"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860571"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Odvolání přístupu uživatele v Azure Active Directory
 
@@ -60,13 +60,13 @@ Pro hybridní prostředí s místní službou Active Directory synchronizovanou 
 
 Jako správce ve službě Active Directory se připojte k místní síti, otevřete PowerShell a proveďte následující akce:
 
-1. Zakáže uživatele ve službě Active Directory. Podívejte se na téma [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
+1. Zakáže uživatele ve službě Active Directory. Podívejte se na téma [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Resetujte heslo uživatele dvakrát ve službě Active Directory. Další informace najdete v tématu [set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
+1. Resetujte heslo uživatele dvakrát ve službě Active Directory. Další informace najdete v tématu [set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword).
 
     > [!NOTE]
     > Důvod změny hesla uživatele dvakrát znamená zmírnit riziko průchodu pass-the-hash, zejména v případě, že dojde k prodlevám při místní replikaci hesel. Pokud můžete tento účet bezpečně předpokládat, můžete heslo resetovat jenom jednou.
@@ -83,18 +83,18 @@ Jako správce ve službě Active Directory se připojte k místní síti, otevř
 
 Jako správce v Azure Active Directory otevřete PowerShell, spusťte ``Connect-AzureAD`` příkaz a proveďte následující akce:
 
-1. Zakáže uživatele v Azure AD. Další informace najdete v tématu [set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Zakáže uživatele v Azure AD. Další informace najdete v tématu [set-AzureADUser](/powershell/module/azuread/Set-AzureADUser).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Odvolá obnovovací tokeny Azure AD uživatele. Podívejte se na téma [REVOKE-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+1. Odvolá obnovovací tokeny Azure AD uživatele. Podívejte se na téma [REVOKE-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Zakažte zařízení uživatele. Další informace najdete v tématu [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+1. Zakažte zařízení uživatele. Další informace najdete v tématu [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648170"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858225"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Zobrazení aplikací pomocí tenanta Azure AD pro správu identit
 Základní informace [o řadě rychlý Start při správě aplikací](view-applications-portal.md) vás seznámí se základy. V takovém případě se dozvíte, jak zobrazit všechny aplikace pomocí tenanta Azure AD pro správu identit. Tento článek komentáře trochu hlubších typů aplikací, které najdete.
@@ -31,7 +31,7 @@ Při filtrování na **všechny aplikace** zobrazuje seznam **všechny aplikace*
 - Při přidání nové registrace aplikace vytvořením aplikace vytvořené v [registru pomocí aplikace](../develop/quickstart-register-app.md)
 - Při přidání nové registrace aplikace vytvořením aplikace vytvořené pomocí [portálu pro registraci aplikací v 2.0](../develop/quickstart-register-app.md)
 - Když přidáte aplikaci, vyvíjíte pomocí [metod ověřování ASP.NET](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojených služeb](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) sady Visual Studio.
-- Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)
 - Když [souhlasíte s aplikací](../develop/howto-convert-app-to-be-multi-tenant.md) jako správce pro používání dat ve vašem tenantovi
 - Když [Uživatel souhlasí s aplikací](../develop/howto-convert-app-to-be-multi-tenant.md) , aby používal data ve vašem tenantovi
 - Pokud povolíte určité služby, které budou ukládat data ve vašem tenantovi. Jedním z příkladů je resetování hesla, které se modeluje jako instanční objekt a bezpečně ukládá zásady pro resetování hesel.

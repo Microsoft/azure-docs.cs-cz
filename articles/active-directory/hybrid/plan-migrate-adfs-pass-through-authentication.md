@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a10c4c0e6e40636e4803e054155d6fdaa12a9366
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997762"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858548"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
@@ -103,7 +103,7 @@ Ověřte všechna nastavení, která mohla být přizpůsobená pro návrh feder
 Další informace najdete v těchto článcích:
 
 * [AD FS Prompt = podpora parametrů přihlášení](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Tato instalace už nefunguje pro scénáře ověřování Azure AD. 

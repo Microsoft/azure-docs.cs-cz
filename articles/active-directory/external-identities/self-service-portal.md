@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896102"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860503"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Samoobslužná registrace pro spolupráci služby Azure AD B2B
 
@@ -28,7 +28,7 @@ Jako pozvání k organizaci nesmíte znát čas, kdy jednotliví externí spolup
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Rozhraní API pro pozvání Azure Active Directory B2B
 
-Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce pozvání](/graph/api/resources/invitation?view=graph-rest-1.0) k sestavování vlastního prostředí pro uživatele typu Host B2B. Pokud chcete nabízet samoobslužné registrace uživatelů pro službu B2B, doporučujeme použít [správu nároků Azure AD](../governance/entitlement-management-overview.md). Pokud ale chcete vytvořit vlastní prostředí, můžete použít [rozhraní API pro vytvoření pozvánky](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) k automatickému odeslání přizpůsobeného e-mailu pozvánky přímo uživateli B2B, například. Nebo vaše aplikace může použít inviteRedeemUrl vrácenou v reakci na vytvoření k vytvoření vlastní pozvánky (prostřednictvím vašeho komunikačního mechanismu výběru) pozvánému uživateli.
+Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce pozvání](/graph/api/resources/invitation) k sestavování vlastního prostředí pro uživatele typu Host B2B. Pokud chcete nabízet samoobslužné registrace uživatelů pro službu B2B, doporučujeme použít [správu nároků Azure AD](../governance/entitlement-management-overview.md). Pokud ale chcete vytvořit vlastní prostředí, můžete použít [rozhraní API pro vytvoření pozvánky](/graph/api/invitation-post?tabs=http) k automatickému odeslání přizpůsobeného e-mailu pozvánky přímo uživateli B2B, například. Nebo vaše aplikace může použít inviteRedeemUrl vrácenou v reakci na vytvoření k vytvoření vlastní pozvánky (prostřednictvím vašeho komunikačního mechanismu výběru) pozvánému uživateli.
 
 ## <a name="next-steps"></a>Další kroky
 

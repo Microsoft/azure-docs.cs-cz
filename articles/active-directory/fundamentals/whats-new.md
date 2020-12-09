@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779698"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858956"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -279,7 +279,7 @@ Všechny kombinace klient-server a prohlížeč-Server by měly používat proto
 
 Ovlivněná prostředí jsou:
 - US Gov Azure
-- [Office 365 RSZ High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 RSZ High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
  
 ---
 
@@ -354,7 +354,7 @@ Prostředí Pomocník pro integraci (Preview) je teď k dispozici pro Azure AD B
 
 Teď si můžete zobrazit ID šablony každé role Azure AD v Azure Portal. V Azure AD vyberte  **Popis** vybrané role. 
 
-Doporučujeme, aby zákazníci používali ID šablon rolí ve svém skriptu PowerShellu a kódu místo zobrazovaného názvu. ID šablony role je podporované pro použití pro objekty [directoryRoles](/graph/api/resources/directoryrole?view=graph-rest-1.0) a [rutiny roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) . Další informace o ID šablon rolí najdete v tématu [ID šablon rolí](../roles/permissions-reference.md#role-template-ids).
+Doporučujeme, aby zákazníci používali ID šablon rolí ve svém skriptu PowerShellu a kódu místo zobrazovaného názvu. ID šablony role je podporované pro použití pro objekty [directoryRoles](/graph/api/resources/directoryrole) a [rutiny roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) . Další informace o ID šablon rolí najdete v tématu [ID šablon rolí](../roles/permissions-reference.md#role-template-ids).
 
 ---
 
@@ -678,7 +678,7 @@ Pokud máte odchozí pravidla brány firewall ve vaší organizaci, aktualizujte
 **Zadejte:** Plánování změn  
 **Kategorie služby:** **Schopnost produktu** Identity Protection: zabezpečení identity & Protection
 
-Aktualizujeme portál pro zabezpečený skóre identit, který bude zarovnaný se změnami zavedenými v [nové verzi](/microsoft-365/security/mtp/microsoft-secure-score-whats-new?view=o365-worldwide)Microsoft Secure skore. 
+Aktualizujeme portál pro zabezpečený skóre identit, který bude zarovnaný se změnami zavedenými v [nové verzi](/microsoft-365/security/mtp/microsoft-secure-score-whats-new)Microsoft Secure skore. 
 
 Verze Preview se změnami bude k dispozici na začátku září. Změny ve verzi Preview zahrnují:
 - "Bezpečné skóre identity" přejmenováno na "zabezpečené skóre pro identitu" pro přizpůsobení značky s Microsoft Secure skore
@@ -1057,7 +1057,7 @@ Klienti Azure Government pomocí funkcí spolupráce B2B teď můžou pozvat už
 **Schopnost produktu:** B2B/B2C
  
 
-Vlastnosti externalUserState a externalUserStateChangedDateTime lze použít k vyhledání pozvaných hostů B2B, kteří ještě nepřijali své pozvánky, a také automatizaci sestavení, jako je odstranění uživatelů, kteří nepřijali své pozvánky po určitém počtu dnů. Tyto vlastnosti jsou teď dostupné v MS Graph v1. Pokyny k používání těchto vlastností najdete v tématu [typ prostředku uživatele](/graph/api/resources/user?view=graph-rest-1.0).
+Vlastnosti externalUserState a externalUserStateChangedDateTime lze použít k vyhledání pozvaných hostů B2B, kteří ještě nepřijali své pozvánky, a také automatizaci sestavení, jako je odstranění uživatelů, kteří nepřijali své pozvánky po určitém počtu dnů. Tyto vlastnosti jsou teď dostupné v MS Graph v1. Pokyny k používání těchto vlastností najdete v tématu [typ prostředku uživatele](/graph/api/resources/user).
  
 ---
 
@@ -1131,7 +1131,7 @@ Nové delegované oprávnění EntitlementManagement. Read. All je teď k dispoz
 **Kategorie služby:** Ochrana identity  
 **Schopnost produktu:** Zabezpečení identity & ochrana
  
-Rozhraní API pro Microsoft Graph riskyUsers a riskDetections jsou teď všeobecně dostupná. Teď, když jsou k dispozici na koncovém bodu v 1.0, vás pozvaní, abyste je mohli používat v produkčním prostředí. Další informace najdete v [dokumentaci Microsoft Graph](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0).
+Rozhraní API pro Microsoft Graph riskyUsers a riskDetections jsou teď všeobecně dostupná. Teď, když jsou k dispozici na koncovém bodu v 1.0, vás pozvaní, abyste je mohli používat v produkčním prostředí. Další informace najdete v [dokumentaci Microsoft Graph](/graph/api/resources/identityprotectionroot).
  
 ---
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd9d1dd62d5f1a5910bfc7db58dfa8e60cb254c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547538"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860809"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -107,11 +107,11 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | pošta |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
 | mailNickName |Libovolná hodnota řetězce (e-mailový alias uživatele) |(User. mailNickName-EQ "value") |
 | mobil |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
-| Objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| objectId |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří byli synchronizováni z místního prostředí do cloudu. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádné DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Libovolná hodnota řetězce nebo hodnota *null* |(User. physicalDeliveryOfficeName-EQ "value") |
-| Ovládacím |Libovolná hodnota řetězce nebo hodnota *null* |(User. postalCode-EQ "hodnota") |
+| postalCode |Libovolná hodnota řetězce nebo hodnota *null* |(User. postalCode-EQ "hodnota") |
 | preferredLanguage |Kód ISO 639-1 |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. sipProxyAddress-EQ "value") |
 | state |Libovolná hodnota řetězce nebo hodnota *null* |(User. State-EQ "value") |
@@ -135,7 +135,7 @@ Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operátor | Syntax |
+| Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
 | Je rovno |– EQ |
@@ -341,7 +341,7 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Vlastnosti rozšíření a vlastnosti vlastního rozšíření
 
-Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. [Atributy rozšíření](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
+Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. [Atributy rozšíření](/graph/api/resources/onpremisesextensionattributes) se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
@@ -388,7 +388,7 @@ Je možné použít následující atributy zařízení.
  s kořenem | true false | (Device.-rooted-EQ true)
  managementType | MDM (pro mobilní zařízení)<br>POČÍTAČ (pro počítače spravované agentem Intune pro počítače) | (Device. managementType-EQ "MDM")
  deviceId | platné ID zařízení Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Objektu | platné ID objektu Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ objectId | platné ID objektu Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | libovolná hodnota řetězce používaná autopilotem, například všechna zařízení s autopilotem, ČísloObjednávky nebo PurchaseOrderID  | (Device. devicePhysicalIDs-any _-obsahuje "[ZTDId]") (Device. devicePhysicalIds-any _-EQ "[ČísloObjednávky]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | libovolný řetězec odpovídající vlastnosti zařízení Intune pro označování moderních zařízení na pracovišti | (device.systemLabels-obsahuje "M365Managed")
 

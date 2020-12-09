@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8a2aed6bf4a6b327ca7dd026f615a5d00af0bd8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546263"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860724"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Obnovení odstraněné skupiny Microsoft 365 v Azure Active Directory
 
@@ -50,7 +50,7 @@ Uživatel | Může obnovit všechny odstraněné Microsoft 365 skupiny, které v
 
 ## <a name="view-the-deleted-microsoft-365-groups-that-are-available-to-restore-using-powershell"></a>Zobrazit odstraněné Microsoft 365 skupiny, které jsou k dispozici pro obnovení pomocí prostředí PowerShell
 
-K zobrazení odstraněných skupin a ověření, že ty, které vás zajímají, ještě nejsou trvale vymazané, můžete použít následující rutiny. Tyto rutiny jsou součástí [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/). Další informace o tomto modulu najdete v článku [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+K zobrazení odstraněných skupin a ověření, že ty, které vás zajímají, ještě nejsou trvale vymazané, můžete použít následující rutiny. Tyto rutiny jsou součástí [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/). Další informace o tomto modulu najdete v článku [Azure Active Directory PowerShell verze 2](/powershell/azure/active-directory/install-adv2).
 
 1.  Spuštěním následující rutiny zobrazte všechny odstraněné Microsoft 365 skupiny ve vaší organizaci Azure AD, které jsou pořád dostupné k obnovení.
    

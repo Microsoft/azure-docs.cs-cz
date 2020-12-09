@@ -1,5 +1,5 @@
 ---
-title: Plánování a odstraňování potíží se změnami hlavního názvu uživatele Azure
+title: Plánování a odstraňování potíží se změnami hlavního názvu uživatele (UPN) Azure
 description: Porozumění známým problémům a rizikům pro změny hlavního názvu uživatele
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744594"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858531"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Plánování a odstraňování potíží se změnami hlavního názvu uživatele v Azure Active Directory
 
@@ -135,7 +135,7 @@ Uživatelé můžou při ověřování narazit na problémy s jednotným přihla
 Problémy uvedené v této části byly opraveny v systému Windows 10 Květen 2020 Update (2004).
 
 **Alternativní řešení** <br>
-Umožněte, aby se změna názvu UPN synchronizoval na Azure AD. Jakmile ověříte, že se nový hlavní název uživatele (UPN) projeví na portálu Azure AD, požádejte uživatele, aby při přihlášení pomocí nového hlavního názvu uživatele vybral dlaždici jiný uživatel. Můžete také ověřit pomocí [prostředí PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Po přihlášení pomocí nového hlavního názvu uživatele (UPN) se můžou odkazy na starý hlavní název uživatele zobrazovat i v nastavení systému Windows přístup do práce nebo do školy.
+Umožněte, aby se změna názvu UPN synchronizoval na Azure AD. Jakmile ověříte, že se nový hlavní název uživatele (UPN) projeví na portálu Azure AD, požádejte uživatele, aby při přihlášení pomocí nového hlavního názvu uživatele vybral dlaždici jiný uživatel. Můžete také ověřit pomocí [prostředí PowerShell](/powershell/module/azuread/get-azureaduser). Po přihlášení pomocí nového hlavního názvu uživatele (UPN) se můžou odkazy na starý hlavní název uživatele zobrazovat i v nastavení systému Windows přístup do práce nebo do školy.
 
 ![Snímek obrazovky ověřených domén](./media/howto-troubleshoot-upn-changes/other-user.png)
 
