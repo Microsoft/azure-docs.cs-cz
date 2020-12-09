@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (Azure Portal)'
-description: Vytvoření a dotazování vyhrazeného fondu SQL pomocí Azure Portal
+title: 'Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) (Azure Portal)'
+description: Vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) pomocí Azure Portal
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,51 +11,51 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456748"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922854"
 ---
-# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL ve službě Azure synapse Analytics pomocí Azure Portal
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure Portal
 
-Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics pomocí Azure Portal.
+K rychlému vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure Portal.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
    > [!NOTE]
-   > Vytvoření fondu SQL ve službě Azure synapse může vést k nové Fakturovatelné službě. Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+   > Vytvoření vyhrazeného fondu SQL (dříve SQL DW) ve službě Azure synapse může vést k nové Fakturovatelné službě. Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
 2. Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
-Datové sklady se vytvářejí pomocí fondu SQL ve službě Azure synapse Analytics. Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém SQL serveru](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Datové sklady se vytvářejí pomocí vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics. Vyhrazený fond SQL (dřív SQL DW) se vytvoří s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém SQL serveru](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **AdventureWorksDW** .
+Pomocí těchto kroků můžete vytvořit vyhrazený fond SQL (dřív SQL DW), který obsahuje ukázková data **AdventureWorksDW** .
 
-1. v levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
+1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
 
    ![Vytvoření prostředku v Azure Portal](./media/create-data-warehouse-portal/create-a-resource.png)
 
-2. Na stránce **Nový** vyberte **databáze** a v seznamu **Doporučené** vyberte **Azure synapse Analytics (dříve SQL DW)** .
+2. V panelu hledání typ "vyhrazený fond SQL" vyberte vyhrazený fond SQL (dřív SQL DW). Na stránce, která se otevře, vyberte **vytvořit** .
 
    ![vytvoření prázdného datového skladu](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. V oblasti **základy** zadejte své předplatné, skupinu prostředků, název fondu SQL a název serveru:
+3. V oblasti **základy** zadejte své předplatné, skupinu prostředků, vyhrazený fond SQL (dříve SQL DW) a název serveru:
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | :------ | :-------------- | :---------- |
    | **Předplatné** | Vaše předplatné | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-   | **Název fondu SQL** | Jakýkoli globálně jedinečný název (příklad je *mySampleDataWarehouse*) | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Všimněte si, že fond SQL je jedním z typů databáze. |
+   | **Název fondu SQL** | Jakýkoli globálně jedinečný název (příklad je *mySampleDataWarehouse*) | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  |
    | **Server** | Libovolný globálně jedinečný název | Vyberte existující server nebo vytvořte nový název serveru, vyberte **vytvořit novou**. Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
    ![vytvoření základních podrobností datového skladu](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -68,7 +68,7 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
 5. Vyberte **Další nastavení**, v části **použít existující data** zvolte možnost **Ukázka** , aby se AdventureWorksDW vytvořil jako ukázková databáze.
 
-    ![Vyberte možnost použít existující data.](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+    ![Vyberte možnost použít existující data.](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png)
 
 6. Teď, když jste dokončili kartu základy formuláře Azure synapse Analytics, vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte fond SQL. Zřizování trvá několik minut.
 
@@ -118,13 +118,13 @@ Nyní se můžete připojit k serveru a jeho fondům SQL pomocí této IP adresy
 
 Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj.
 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název sqlpoolservername.database.windows.net.
 
-    ![informace o připojení](./media/create-data-warehouse-portal/find-server-name-copy.png)
+    ![informace o připojení](./media/create-data-warehouse-portal/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
@@ -139,7 +139,7 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **sqlpoolservername.Database.Windows.NET**. |
    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Přihlášení | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
@@ -180,21 +180,21 @@ Azure synapse Analytics používá jako dotazovací jazyk T-SQL. Pokud chcete ot
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem fondu SQL. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
+Účtují se vám poplatky za jednotky datového skladu a data uložená ve vašem vyhrazeném fondu SQL (dřív SQL DW). Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete uchovávat data v úložišti, můžete pozastavit výpočetní prostředí, když nepoužíváte fond SQL. Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Můžete pokračovat v výpočtůch, kdykoli budete připraveni na práci s daty.
+- Pokud chcete uchovávat data v úložišti, můžete pozastavit výpočetní prostředky, když nepoužíváte vyhrazený fond SQL (dřív SQL DW). Když pozastavíte výpočetní prostředky, bude se vám účtovat jenom úložiště dat. Můžete pokračovat v výpočtůch, kdykoli budete připraveni na práci s daty.
 
-- Pokud chcete odebrat budoucí poplatky, můžete odstranit fond SQL.
+- Pokud chcete odebrat budoucí poplatky, můžete odstranit vyhrazený fond SQL (dřív SQL DW).
 
 Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)vyberte svůj fond SQL.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte vyhrazený fond SQL (dřív SQL DW).
 
    ![Vyčištění prostředků](./media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je fond SQL pozastaven, zobrazí se tlačítko pro **obnovení** . Chcete-li obnovit výpočetní výkon, vyberte možnost **pokračovat**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Pokud je vyhrazený fond SQL (dřív SQL DW) pozastavený, zobrazí se tlačítko pro **obnovení** . Chcete-li obnovit výpočetní výkon, vyberte možnost **pokračovat**.
 
-3. Pokud chcete odebrat fond SQL, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
+3. Pokud chcete odebrat vyhrazený fond SQL (dřív SQL DW), takže se vám neúčtují výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
 4. Pokud chcete odebrat server, který jste vytvořili, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
@@ -206,4 +206,4 @@ Chcete optimalizovat a uložit své útraty do cloudu?
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o načítání dat do fondu SQL, přejděte do článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .
+Pokud se chcete dozvědět víc o načítání dat do vyhrazeného fondu SQL (dřív SQL DW), přejděte k článku [načtení dat do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-copy.md) .
