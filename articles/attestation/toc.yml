@@ -37,7 +37,7 @@
       href: workflow.md
     - name: Zobrazení protokolů auditu
       href: audit-logs.md
-- name: Reference
+- name: Odkazy
   items:
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
@@ -47,6 +47,8 @@
       href: /rest/api/attestation/
     - name: Azure PowerShell
       href: /powershell/module/az.attestation/?view=azps-5.0.0#attestation
+    - name: Azure CLI
+      href: /cli/azure/ext/attestation/attestation?view=azure-cli-latest
     - name: Knihovna Azure DCAP pro Windows
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Knihovna Azure DCAP pro Linux

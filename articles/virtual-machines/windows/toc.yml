@@ -74,7 +74,7 @@
         - name: Dostupnost
           href: ../availability.md
         - name: Společné umístění
-          href: co-location.md
+          href: ../co-location.md
         - name: Výkon sítě
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Velikosti a typy virtuálních počítačů
