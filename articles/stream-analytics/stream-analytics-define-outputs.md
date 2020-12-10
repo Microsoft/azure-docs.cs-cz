@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/9/2020
+ms.openlocfilehash: 70a2d5fac643c9af6954f154e1c91813bbbfa5bc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348708"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008380"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Výstupy z Azure Stream Analytics
 
@@ -25,23 +25,23 @@ Některé typy výstupů podporují [dělení](#partitioning)a [velikosti výstu
 
 | Typ výstupu | Dělení | Zabezpečení | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory uživatel </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|Ano, volitelné.|Ověření uživatele SQL </br> MSI (Preview)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|Ověření uživatele SQL|
-|[Úložiště objektů BLOB a Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Přístupový klíč|
-|[Azure Event Hubs](event-hubs-output.md)|Ano, je potřeba nastavit sloupec klíče oddílu ve výstupní konfiguraci.|Přístupový klíč|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory uživatel </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Yes|Klíč účtu|
-|[Fronty Azure Service Bus](service-bus-queues-output.md)|Yes|Přístupový klíč|
-|[Azure Service Bus témata](service-bus-topics-output.md)|Yes|Přístupový klíč|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Přístupový klíč|
-|[Azure Functions](azure-functions-output.md)|Yes|Přístupový klíč|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ano|Azure Active Directory uživatel </br> , Spravovaná identita|
+|[Azure SQL Database](sql-database-output.md)|Ano, volitelné.|Ověření uživatele SQL, </br> Spravovaná identita (Preview)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ano|Ověření uživatele SQL, </br> Spravovaná identita (Preview)|
+|[Úložiště objektů BLOB a Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ano|Přístupový klíč, </br> Spravovaná identita (Preview)|
+|[Azure Event Hubs](event-hubs-output.md)|Ano, je potřeba nastavit sloupec klíče oddílu ve výstupní konfiguraci.|Přístupový klíč, </br> Spravovaná identita (Preview)|
+|[Power BI](power-bi-output.md)|Ne|Azure Active Directory uživatel, </br> Spravovaná identita|
+|[Azure Table storage](table-storage-output.md)|Ano|Klíč účtu|
+|[Fronty Azure Service Bus](service-bus-queues-output.md)|Ano|Přístupový klíč|
+|[Azure Service Bus témata](service-bus-topics-output.md)|Ano|Přístupový klíč|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Ano|Přístupový klíč|
+|[Azure Functions](azure-functions-output.md)|Ano|Přístupový klíč|
 
 ## <a name="partitioning"></a>Dělení
 
 Stream Analytics podporuje oddíly pro všechny výstupy s výjimkou Power BI. Další informace o klíčích oddílů a počtu modulů pro zápis výstupu najdete v článku konkrétního typu výstupu, který vás zajímá. Všechny články v produkci jsou propojeny v předchozí části.  
 
-Kromě toho pro pokročilejší optimalizaci oddílů je možné počet zapisovačů výstupu ovládat pomocí `INTO <partition count>` klauzule (viz v tématu) v dotazu [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count), což může být užitečné při dosahování požadované topologie úlohy. Pokud váš výstupní adaptér není rozdělený na oddíly, způsobí nedostatek dat v jednom vstupním oddílu zpoždění až do doby, kdy se doba doručení uvolní. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](./stream-analytics-time-handling.md).
+Kromě toho pro pokročilejší optimalizaci oddílů je možné počet zapisovačů výstupu ovládat pomocí `INTO <partition count>` klauzule (viz v tématu) v dotazu [](/stream-analytics-query/into-azure-stream-analytics#into-shard-count), což může být užitečné při dosahování požadované topologie úlohy. Pokud váš výstupní adaptér není rozdělený na oddíly, způsobí nedostatek dat v jednom vstupním oddílu zpoždění až do doby, kdy se doba doručení uvolní. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](./stream-analytics-time-handling.md).
 
 ## <a name="output-batch-size"></a>Velikost výstupní dávky
 

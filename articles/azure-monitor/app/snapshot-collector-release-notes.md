@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548167"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008567"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Poznámky k verzi pro Microsoft. ApplicationInsights. SnapshotCollector
 
@@ -21,6 +21,11 @@ Tento článek obsahuje poznámky k vydání balíčku NuGet Microsoft. Applicat
 V případě zpráv o chybách a zpětná vazba otevřete problém na GitHubu. https://github.com/microsoft/ApplicationInsights-dotnet
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+Bod vydání, který Backport opravu z 1.4.0-pre.
+### <a name="bug-fixes"></a>Opravy chyb
+- Opravte [ObjectDisposedException Při vypnutí](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097).
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 Bod vydaný k vyřešení problému zjištěného při testování Azure App Service scénář připojení typu nekódování.

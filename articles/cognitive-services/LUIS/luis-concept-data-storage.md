@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019207"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008448"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Ukládání a odebírání dat v Language Understanding (LUIS) Cognitive Services
-LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
+
+LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají [oblasti](luis-reference-regions.md) určené klíčem. 
+
+* Data používaná pro výuku modelu, jako jsou entity, záměry a projevy, se uloží v LUIS po dobu života aplikace. Pokud vlastník nebo přispěvatel odstraní aplikaci, tato data se odstraní. Pokud se aplikace nepoužila v 90 dnech, odstraní se. 
+
+* Autoři aplikací se můžou rozhodnout [Povolit protokolování](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) do projevy, které se odesílají do publikované aplikace. Pokud je povoleno, projevy bude uloženo po dobu 30 dnů a může si ho prohlédnout Autor aplikace. Pokud není protokolování povoleno, když je aplikace publikována, tato data nejsou uložena.
 
 ## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci
 Uživatelé mají plnou kontrolu nad [exportem](luis-how-to-start-new-app.md#export-app) a [odstraněním](luis-how-to-start-new-app.md#delete-app) aplikace. 

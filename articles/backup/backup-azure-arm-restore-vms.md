@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327181"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008499"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -27,7 +27,7 @@ Azure Backup poskytuje několik způsobů obnovení virtuálního počítače.
 **Mezi oblastmi (sekundární oblast)** | Obnovení mezi oblastmi se dá použít k obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárované v oblasti Azure](../best-practices-availability-paired-regions.md#what-are-paired-regions).<br><br> Pokud se zálohování provádí v sekundární oblasti, můžete obnovit všechny virtuální počítače Azure pro vybraný bod obnovení.<br><br> Tato funkce je k dispozici pro následující možnosti:<br> <li> [Vytvořit virtuální počítač](#create-a-vm) <br> <li> [Obnovit disky](#restore-disks) <br><br> Momentálně nepodporujeme možnost [nahradit existující disky](#replace-existing-disks) .<br><br> Oprávnění<br> Operaci obnovení v sekundární oblasti můžou provádět správci zálohování a správci aplikací.
 
 > [!NOTE]
-> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
+> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Přečtěte si další informace](backup-azure-restore-files-from-vm.md).
 
 ## <a name="storage-accounts"></a>Účty úložiště
 
@@ -79,7 +79,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuál
 1. V části **název virtuálního počítače** zadejte virtuální počítač, který v předplatném neexistuje.
 1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro nový virtuální počítač, nebo vytvořte novou s globálně jedinečným názvem. Pokud přiřadíte název, který už existuje, Azure přiřadí skupině stejný název jako virtuální počítač.
 1. Ve **virtuální síti** vyberte virtuální síť, do které se virtuální počítač umístí. Zobrazí se všechny virtuální sítě přidružené k předplatnému. Vyberte podsíť. Ve výchozím nastavení je vybraná první podsíť.
-1. Do pole **pracovní umístění** zadejte účet úložiště pro virtuální počítač. [Další informace](#storage-accounts).
+1. Do pole **pracovní umístění** zadejte účet úložiště pro virtuální počítač. [Přečtěte si další informace](#storage-accounts).
 
     ![Průvodce obnovením konfigurace – výběr možností obnovení](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -95,7 +95,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z b
 
 1. V **nastavení obnovit konfiguraci**  >  **vytvořit nový**  >  **typ obnovení** vyberte **obnovit disky**.
 1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro obnovené disky nebo vytvořte novou s globálně jedinečným názvem.
-1. Do pole **pracovní umístění** zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Další informace](#storage-accounts).
+1. Do pole **pracovní umístění** zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Přečtěte si další informace](#storage-accounts).
 
     ![Vybrat skupinu prostředků a pracovní umístění](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
@@ -130,7 +130,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete stávající disk 
 
 1. V **nastavení obnovit konfiguraci** vyberte **nahradit existující**.
 1. V **typu obnovení** vyberte **nahradit disk/s**. Toto je bod obnovení, který bude použit k nahrazení existujících disků virtuálního počítače.
-1. V části **pracovní umístění** určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Další informace](#storage-accounts).
+1. V části **pracovní umístění** určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Přečtěte si další informace](#storage-accounts).
 
    ![Průvodce obnovením konfigurace nahradit existující](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -179,7 +179,7 @@ Funkce obnovení koncového uživatele v sekundární oblasti bude podobná prim
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
 
-1. Na portálu přejdete na **Recovery Services vault**  >  **úlohy zálohování** služby Recovery Services trezor.
+1. Na portálu přejdete na   >  **úlohy zálohování** služby Recovery Services trezor.
 1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
 
     ![Filtrované úlohy zálohování](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
@@ -213,6 +213,8 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Obnovení virtuálních počítačů s několika řadiči domény v jedné doméně** | Pokud je možné přes síť dosáhnout jiných řadičů domény ve stejné doméně, může být řadič domény obnovený jako libovolný virtuální počítač. Pokud se jedná o poslední zbývající řadič domény v doméně, nebo se provede obnovení v izolované síti, použijte [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Obnovení virtuálního počítače s jedním řadičem domény v konfiguraci s více doménami** |  Obnovení disků a vytvoření virtuálního počítače [pomocí PowerShellu](backup-azure-vms-automation.md#restore-the-disks)  
 **Obnovení více domén v jedné doménové struktuře** | Doporučujeme [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
+
+Další informace najdete v tématu [zálohování a obnovení řadičů domény služby Active Directory](active-directory-backup-restore.md).
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
 

@@ -4,14 +4,14 @@ description: Nasazení virtuálních počítačů a škálování instancí sad 
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975277"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008414"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení na vyhrazené hostitele pomocí Azure CLI
  
@@ -65,14 +65,6 @@ az vm host group create \
 
 Přidejte `--automatic-placement true` parametr, který bude mít vaše virtuální počítače a instance sady škálování automaticky umístěné na hostitelích v rámci skupiny hostitelů. Další informace najdete v tématu [Ruční a automatické umístění ](../dedicated-hosts.md#manual-vs-automatic-placement).
 
-> [!IMPORTANT]
-> Automatické umístění je aktuálně ve verzi Public Preview.
->
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
->
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="other-examples"></a>Další příklady
 
@@ -133,16 +125,7 @@ Chcete-li umístit virtuální počítač na konkrétního hostitele, použijte 
 > [!WARNING]
 > Pokud vytvoříte virtuální počítač na hostiteli, který nemá dostatek prostředků, vytvoří se virtuální počítač ve stavu selhání. 
 
-## <a name="create-a-scale-set-preview"></a>Vytvoření sady škálování (Preview)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets na vyhrazených hostitelích je aktuálně ve verzi Public Preview.
->
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
->
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Vytvoření škálovací sady 
 
 Když nasadíte sadu škálování, zadáte skupinu hostitelů.
 

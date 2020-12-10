@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/9/2020
+ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107891"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008584"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -74,38 +74,18 @@ Tento příklad je ideální z následujících důvodů:
 - Špičky využití pro jednotlivé databáze nastávají v různých časových okamžicích.
 - Jednotky eDTU jsou sdílené mezi mnoha databázemi.
 
-Cena za fond závisí na jednotkách eDTU fondu. Přestože je cena ze jednotku eDTU pro fond 1,5krát vyšší než cena za jednotku DTU pro izolovanou databázi, **jednotky eDTU fondu může sdílet velký počet databází, a proto stačí menší celkový počet jednotek eDTU**. Tyto rozdíly v cenách a sdílení jednotek eDTU jsou základem potenciálních úspor, které fondy mohou nabídnout.
+V modelu nákupu DTU je cena fondu funkcí eDTU fondu. Přestože je cena ze jednotku eDTU pro fond 1,5krát vyšší než cena za jednotku DTU pro izolovanou databázi, **jednotky eDTU fondu může sdílet velký počet databází, a proto stačí menší celkový počet jednotek eDTU**. Tyto rozdíly v cenách a sdílení jednotek eDTU jsou základem potenciálních úspor, které fondy mohou nabídnout.
 
-Následující pravidla, která souvisí s počtem databází a s využitím databáze, zajistí, že fond nabízí snížené náklady v porovnání s používáním výpočetních velikostí pro izolované databáze.
-
-### <a name="minimum-number-of-databases"></a>Maximální počet databází
-
-Pokud je agregovaná velikost prostředků pro izolované databáze větší než 1,5 ×, který je pro fond potřebný, pak je elastický fond cenově výhodnější.
-
-***Příklad nákupního modelu založeného na DTU*** Minimálně dvě databáze S3 nebo nejméně 15 databází S0 je potřeba, aby fond 100 eDTU byl cenově výhodnější než použití výpočetních velikostí pro izolované databáze.
-
-### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
-
-Když sdílíte prostředky, ne všechny databáze ve fondu, můžou současně využívat prostředky až do limitu dostupného pro jednotlivé databáze. Čím méně databází má současně špičku, tím nižší je možné nastavení prostředků fondu a tím i cenově úsporného fondu. Obecně platí, že ne více než 2/3 (nebo 67%) databáze ve fondu by se měly současně vymezit omezením jejich prostředků.
-
-***Příklad nákupního modelu založeného na DTU*** Aby se snížily náklady na tři databáze S3 ve fondu eDTU 200, může většina dvou z těchto databází současně využít špičku jejich využití. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu změní na více než 200 eDTU, je potřeba do fondu přidat další databáze S3, aby náklady zůstaly méně než výpočetní velikosti pro izolované databáze.
-
-Poznámka: Tento příklad nebere v úvahu využití jiných databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
-
-### <a name="resource-utilization-per-database"></a>Využití prostředků na databázi
-
-Velký rozdíl mezi maximálním a průměrným využitím databáze ukazuje na delší doby nízkého využití a krátká období vysokého využití. Tento vzor využití je ideální pro sdílení prostředků mezi databázemi. Použití fondu pro databázi byste měli zvážit, pokud je její využití ve špičce přibližně 1,5krát větší než průměrné využití.
-
-***Příklad nákupního modelu založeného na DTU*** Databáze S3, která je ve špičce 100 DTU a v průměru používá 67 DTU nebo méně, je vhodným kandidátem na sdílení eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
+V modelu nákupu vCore je cena vCore jednotky pro elastické fondy stejná jako cena za jednotku vCore pro jednotlivé databáze.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Návody zvolit správnou velikost fondu.
 
 Nejlepší velikost pro fond závisí na agregovaných zdrojích potřebných pro všechny databáze ve fondu. To zahrnuje určení následujících možností:
 
-- Maximální počet prostředků využívaných všemi databázemi ve fondu (maximálně DTU nebo maximální virtuální jádra v závislosti na vašem výběru nákupního modelu).
+- Maximální počet výpočetních prostředků využitých všemi databázemi ve fondu.  Výpočetní prostředky se indexují buď pomocí eDTU, nebo virtuální jádra, podle toho, jak jste si zvolili nákupní model.
 - Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
-Dostupné úrovně služeb a omezení pro každý model prostředků najdete v tématu [nákupní model založený na DTU](service-tiers-dtu.md) nebo v [nákupním modelu založeném na Vcore](service-tiers-vcore.md).
+V případě úrovní služeb a omezení prostředků v jednotlivých nákupních modelech si přečtěte [nákupní model založený na DTU](service-tiers-dtu.md) nebo [nákupní model založený na Vcore](service-tiers-vcore.md).
 
 Následující kroky vám pomůžou odhadnout, jestli je fond cenově výhodnější než izolované databáze:
 
@@ -119,10 +99,10 @@ Pro nákupní model založený na vCore:
 
 MAX (<*Celkový počet databáze* x *průměrného využití vCore na db*>, <*počet souběžných* zvýšení *využití ve špičce databáze X na DB*>)
 
-2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
+2. Odhadem celkového prostoru úložiště potřebného pro fond přidejte velikost dat potřebnou pro všechny databáze ve fondu. Pro model nákupu DTU pak určete velikost fondu eDTU, která poskytuje toto množství úložiště.
 3. V případě nákupního modelu založeného na DTU Vezměte v úvahu větší z odhadů eDTU z kroku 1 a krok 2. U nákupního modelu založeného na vCore proveďte odhad vCore z kroku 1.
 4. Podívejte se na [stránku s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) a najděte nejmenší velikost fondu, která je větší než odhad z kroku 3.
-5. Porovnejte cenu fondu z kroku 5 s cenou za použití příslušných výpočetních velikostí pro izolované databáze.
+5. Porovnejte cenu fondu z kroku 4 s cenou za použití příslušných výpočetních velikostí pro izolované databáze.
 
 > [!IMPORTANT]
 > Pokud se počet databází ve fondu blíží maximální podporované hodnotě, nezapomeňte zvážit [správu prostředků v hustých elastických fondech](elastic-pool-resource-management.md).
@@ -176,34 +156,7 @@ Po dokončení konfigurace fondu můžete kliknout na použít, pojmenovat fond 
 
 V Azure Portal můžete monitorovat využití elastického fondu a databází v rámci tohoto fondu. Můžete také provést sadu změn elastického fondu a odeslat všechny změny ve stejnou dobu. Tyto změny zahrnují přidání nebo odebrání databází, změnu nastavení elastického fondu nebo změnu nastavení databáze.
 
-Pokud chcete začít monitorovat elastický fond, najděte a otevřete elastický fond na portálu. Zobrazí se první obrazovka, která vám poskytne přehled o stavu elastického fondu. Sem patří:
-
-- Monitorování grafů znázorňujících využití prostředků elastického fondu
-- Nedávné výstrahy a doporučení, pokud jsou k dispozici pro elastický fond
-
-Následující obrázek znázorňuje příklad elastického fondu:
-
-![Zobrazení fondu](./media/elastic-pool-overview/basic.png)
-
-Pokud chcete získat další informace o fondu, můžete kliknout na kteroukoli z dostupných informací v tomto přehledu. Kliknutím na graf **využití prostředků** přejdete do zobrazení monitorování Azure, kde můžete přizpůsobit metriky a časová období zobrazená v grafu. Kliknutím na libovolné dostupné oznámení přejdete do okna, ve kterém se zobrazí úplné podrobnosti o této výstraze nebo doporučení.
-
-Pokud chcete monitorovat databáze v rámci fondu, můžete kliknout na **využití databázových prostředků** v části **monitorování** v nabídce prostředků na levé straně.
-
-![Stránka využití databázových prostředků](./media/elastic-pool-overview/db-utilization.png)
-
-### <a name="to-customize-the-chart-display"></a>Přizpůsobení zobrazení grafu
-
-Graf a stránku metriky můžete upravit tak, aby zobrazovaly další metriky, jako je procento využití procesoru, procento v/v za použití dat a použité procento v/v v protokolu.
-
-Na formuláři **Upravit graf** můžete vybrat pevný časový rozsah nebo kliknutím na tlačítko **vlastní** vybrat libovolné 24hodinové okno za poslední dva týdny a pak vybrat prostředky, které chcete monitorovat.
-
-### <a name="to-select-databases-to-monitor"></a>Výběr databází ke sledování
-
-Ve výchozím nastavení bude graf v okně **využití databázových prostředků** zobrazovat hlavní 5 databází podle DTU nebo procesoru (v závislosti na vaší úrovni služby). Databáze v tomto grafu můžete přepínat tak, že vyberete a zrušíte výběr databází v seznamu níže v grafu pomocí zaškrtávacích políček vlevo.
-
-Můžete také vybrat další metriky pro zobrazení vedle sebe v této tabulce databáze a získat tak úplnější přehled o výkonu databází.
-
-Další informace najdete v tématu [vytvoření výstrah SQL Database v Azure Portal](alerts-insights-configure-portal.md).
+Můžete použít integrované nástroje pro [monitorování výkonu](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) a [upozorňování](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)v kombinaci s hodnocením výkonu.  Kromě toho SQL Database možné [vygenerovat metriky a protokoly prostředků](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal) pro snazší monitorování.
 
 ## <a name="customer-case-studies"></a>Zákaznické případové studie
 
