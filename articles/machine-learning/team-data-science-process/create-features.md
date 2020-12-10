@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322029"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031857"
 ---
 # <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
 
 V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenty. 
 
-* **Inženýrské funkce** : proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
-* **Výběr funkcí** : proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
+* **Inženýrské funkce**: proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
+* **Výběr funkcí**: proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
 
 Obvykle se pro generování dalších funkcí používá technologický **inženýr** , který vygeneruje další funkce a potom se provede **Výběr funkcí** , aby se vyloučily nepodstatné, redundantní nebo vysoce korelační funkce.
 

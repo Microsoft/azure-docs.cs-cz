@@ -7,13 +7,13 @@ ms.date: 11/10/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: contperfq2
-ms.openlocfilehash: 55607527ced2e5d93a61cfd85477758482f18daa
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: b0a86a32148086a3b644d0bf147d12be0d812536
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495419"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030311"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -28,7 +28,7 @@ Obecnější informace o používání tohoto nástroje najdete v [souboru Readm
 
 K použití nástroje Azure IoT Explorer potřebujete:
 
-- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Zařízení zaregistrované ve službě IoT Hub. K vytváření a správě registrací zařízení v IoT Hub můžete použít Průzkumníka IoT.
 
 ## <a name="install-azure-iot-explorer"></a>Nainstalovat Azure IoT Explorer

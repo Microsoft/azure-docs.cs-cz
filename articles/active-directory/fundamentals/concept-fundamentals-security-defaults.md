@@ -11,13 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996674"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029902"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -135,7 +135,7 @@ Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a pou�
 
 ### <a name="disabled-mfa-status"></a>Stav zakázaného MFA
 
-Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure AD, který je založený na uživatelích, nebudete budíkem, aby neviděli uživatele v *Enabled* případě, že se podíváte na **stránku stavu multi** -Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure AD založené na podmíněném přístupu.
+Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure AD, který je založený na uživatelích, nebudete budíkem, aby neviděli uživatele vpřípadě, že se podíváte na **stránku stavu multi** -Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure AD založené na podmíněném přístupu.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
@@ -145,9 +145,9 @@ Podmíněný přístup můžete použít ke konfiguraci zásad, které se podoba
 
 Tady jsou podrobné návody, jak pomocí podmíněného přístupu nakonfigurovat ekvivalentní zásady na tyto zásady povolené ve výchozím nastavení zabezpečení:
 
-- [Vyžadování MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Vyžadovat MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vyžadování MFA pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Blokování starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Blokovat starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Vyžadování MFA pro všechny uživatele](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Vyžadovat registraci Azure AD MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection část Azure AD Premium P2.
 
@@ -177,4 +177,4 @@ Zakázání výchozích hodnot zabezpečení v adresáři:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)
+[Společné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)

@@ -1,5 +1,5 @@
 ---
-title: Problémy s přihlašováním k aplikacím nakonfigurovaným pomocí jednotného přihlašování založené na SAML
+title: Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML
 description: Doprovodné materiály k určitým chybám při přihlašování do aplikace, kterou jste nakonfigurovali pro federované jednotné přihlašování založené na SAML pomocí Azure Active Directory
 services: active-directory
 author: kenwith
@@ -11,32 +11,32 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.custom: contperfq2
-ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651545"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028270"
 ---
-# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím nakonfigurovaným pomocí jednotného přihlašování založené na SAML
+# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
 
-- Pokud chcete zajistit lepší diagnostiku a řešení při použití zkušebního prostředí v Azure Portal, nainstalujte [rozšíření prohlížeče moje aplikace](./access-panel-deployment-plan.md) na pomoc Azure Active Directory (Azure AD).
-- Reprodukuje chybu pomocí prostředí testování na stránce konfigurace aplikace v Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](./debug-saml-sso-issues.md)
+- Nainstalujte [rozšíření prohlížeče Zabezpečené přihlašování pro Moje aplikace](./access-panel-deployment-plan.md), které umožní Azure Active Directory (Azure AD) zajistit lepší diagnostiku a řešení při používání prostředí pro testování na webu Azure Portal.
+- Reprodukujte chybu s využitím prostředí pro testování na stránce konfigurace aplikace na webu Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](./debug-saml-sso-issues.md)
 
 Pokud používáte prostředí pro [testování](./debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle následujících pokynů pro otevření konfigurační stránky jednotného přihlašování založené na SAML.
 
-Otevření konfigurační stránky jednotného přihlašování založené na SAML:
+Pokud chcete otevřít stránku konfigurace jednotného přihlašování založeného na SAML:
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 1.  Otevřete **rozšíření Azure Active Directory** tím, že vyberete **všechny služby** v horní části hlavní navigační nabídky vlevo.
 1.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Azure Active Directory** .
-1.  Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
-1.  Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
-    Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace**.
-1.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
+1.  V levé navigační nabídce Azure Active Directory vyberte **Podnikové aplikace**.
+1.  Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
+    Pokud se požadovaná aplikace nezobrazí, použijte ovládací prvek **filtru** v horní části **seznamu Všechny aplikace** a nastavte možnost **Zobrazit** na **Všechny aplikace**.
+1.  Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 1. Po načtení aplikace vyberte v levé navigační nabídce aplikace **jednotné přihlašování** .
-1. Vyberte jednotné přihlašování založené na SAML.
+1. Vyberte Jednotné přihlašování založené na SAML.
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři.
 `Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`

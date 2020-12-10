@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006468"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029137"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -95,7 +95,7 @@ Azure Stream Analytics zachycuje dvě kategorie protokolů prostředků:
 
 Všechny protokoly jsou uložené ve formátu JSON. Každá položka má následující obecná pole řetězců:
 
-Název | Description
+Název | Popis
 ------- | -------
 time | Časové razítko (v UTC) protokolu
 resourceId | ID prostředku, na kterém byla operace provedena, v horním případě. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/my-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -134,9 +134,9 @@ V závislosti na hodnotě **OperationName** mají chyby dat následující sché
 
 Obecné události se týkají všech ostatních.
 
-Název | Description
+Název | Popis
 -------- | --------
-Chyba | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
+Chybová | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu
 Typ | Typ zprávy Provede mapování na interní kategorizaci chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
 ID korelace | Identifikátor GUID, který jedinečně identifikuje provádění úlohy. Všechny položky protokolu spuštění od okamžiku spuštění úlohy, dokud úloha přestane mít stejnou hodnotu **ID korelace** .

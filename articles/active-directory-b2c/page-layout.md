@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852078"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028100"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
 Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly opravy a vylepšení jejich prvků stránky. Následující protokol změn určuje změny zavedené v každé verzi.
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>Stránka s vlastním kontrolním výrazem (selfasserted)
+
+**bodů**
+
+- Přidali jsme UXString, aby `heading` `intro` se zobrazila na stránce jako název. Ve výchozím nastavení je to skryté.
+- Přidání podpory pro ukládání hesel do iCloud řetězce klíčů
+- Přidání podpory pro použití zásad nebo parametru QueryString `pageFlavor` pro výběr rozložení (Classic, oceanBlue nebo slateGray).
+- Přidání zřeknutích se omezení na stránce s vlastním kontrolním jménem.
+- Fokus je nyní umístěn do prvního upravitelného pole při načtení stránky.
+- Fokus je nyní umístěn do prvního pole chyby, když má více polí chybu.
+- Po ověření ověřovacího kódu e-mailu se teď fokus umístí na tlačítko změnit.
 
 **2.1.0**
 
@@ -38,12 +46,16 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 - Pole uživatelské jméno, e-mail a heslo nyní pomocí `form` elementu HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
 - Pro vylepšené uživatelské prostředí bylo přidáno zpoždění ověřování uživatelem (konfigurovatelného) vstupu uživatele.
-- Opravy usnadnění
+- Opravili jsme problém s přístupností, takže se v programu Narrator čtou chybové zprávy. 
+- Po ověření e-mailu se teď fokus umístí do pole heslo.
+- Odebráno `autofocus` z ovládacího prvku CheckBox. 
+- Přidali jsme podporu pro pomůcku zobrazení pro ověřování pomocí telefonního čísla.
 - Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
 - Podpora překladu pro Chrome
+- Přidání podpory pro branding klienta na stránkách toku uživatele.
 
 **1.1.0**
 
@@ -58,6 +70,15 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Přihlašovací stránka jednotného přihlašování s odkazem na resetování hesla (unifiedssp)
 
+**bodů**
+- Přidali jsme UXString, aby `heading` `intro` se zobrazila na stránce jako název. Ve výchozím nastavení je to skryté.
+- Přidání podpory pro použití zásad nebo parametru QueryString `pageFlavor` pro výběr rozložení (Classic, oceanBlue nebo slateGray).
+- Přidání podpory pro ukládání hesel do iCloud řetězce klíčů
+- Fokus je nyní umístěn do prvního pole chyby, když má více polí chybu.
+- Fokus je nyní umístěn do prvního upravitelného pole při načtení stránky.
+- Bylo přidáno nové umístění pro odkaz výběru zprostředkovatele deklarací `bottomUnderFormClaimsProviderSelections` .
+- Odebrané UXStringsy, které se už nepoužívají.
+
 **2.1.0**
 
 - Přidala se podpora pro více odkazů na registraci.
@@ -66,12 +87,13 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 **1.2.0**
 
 - Pole uživatelské jméno, e-mail a heslo nyní pomocí `form` elementu HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
-- Opravy usnadnění
+- Opravy usnadnění.
 - Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
 - Podpora překladu pro Chrome
+- Přidání podpory pro branding klienta na stránkách toku uživatele.
 
 **1.1.0**
 
@@ -82,6 +104,12 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 - Původní vydaná verze
 
 ## <a name="mfa-page-multifactor"></a>Stránka MFA (více faktů)
+
+**1.2.2**
+- Opravili jsme problém s automatickým vyplněním ověřovacího kódu při použití iOS.
+- Opravili jsme problém s přesměrováním tokenu na předávající stranu z WebView pro Android. 
+- Přidali jsme UXString, aby `heading` `intro` se zobrazila na stránce jako název. Ve výchozím nastavení je to skryté.  
+- Přidání podpory pro použití zásad nebo parametru QueryString `pageFlavor` pro výběr rozložení (Classic, oceanBlue nebo slateGray).
 
 **1.2.1**
 
@@ -95,6 +123,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
 - Podpora překladu pro Chrome
+- Přidání podpory pro branding klienta na stránkách toku uživatele.
 
 **1.1.0**
 

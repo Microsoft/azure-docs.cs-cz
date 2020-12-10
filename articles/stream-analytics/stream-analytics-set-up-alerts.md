@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
-ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d591bb9c4b2ef8100946082f19115b99b30dde1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124437"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027488"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
 
@@ -30,15 +30,15 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 2. Na stránce **úloha** přejděte do části **monitorování** .  
 
-3. Vyberte **metriky** a pak **nové pravidlo výstrahy** .
+3. Vyberte **metriky** a pak **nové pravidlo výstrahy**.
 
    ![Nastavení výstrah Azure Portal Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek** . Klikněte na **Přidat podmínku** a v části **Konfigurovat logiku signálu** vyberte **všechny operace správy** .
+4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek**. Klikněte na **Přidat podmínku** a v části **Konfigurovat logiku signálu** vyberte **všechny operace správy** .
 
    ![Vyberte název signálu pro výstrahu Stream Analytics.](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. V části **Konfigurovat logiku signálu** změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch** . Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo** .
+5. V části **Konfigurovat logiku signálu** změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch**. Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo**.
 
    ![Konfigurace výstrahy signálu pro Stream Analytics výstrahu](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,11 +46,11 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
    ![Nastavení výstrahy pro úlohu Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Jednotlivé skupiny **prostředků** , **podmínek** a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
+7. Jednotlivé skupiny **prostředků**, **podmínek** a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
 
    ![Snímek obrazovky s dialogovým oknem vytvořit pravidlo se zobrazí jako prostředek, podmínka a skupina akcí.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy** , **Popis** a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
+   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy**, **Popis** a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
 
    ![Snímek obrazovky se zobrazí dialogové okno vytvořit pravidlo s PODROBNOSTmi výstrahy.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
@@ -58,7 +58,7 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analytics úlohy. Tyto metriky by se měly vyhodnocovat každou minutu za poslední období 5 minut.
 
-|Metrika|Stav|Časová agregace|Prahová hodnota|Nápravné akce|
+|Metrika|Podmínka|Časová agregace|Prahová hodnota|Nápravné akce|
 |-|-|-|-|-|
 |Využití SU%|Větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
 |Běhové chyby|Větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|

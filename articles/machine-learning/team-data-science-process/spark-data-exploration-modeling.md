@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314840"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028083"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 
@@ -24,7 +24,7 @@ Naučte se používat HDInsight Spark k výuce modelů strojového učení pro p
 
 Tato ukázka předvádí různé kroky v rámci [vědeckého zpracování týmových dat](./index.yml). K načtení, prozkoumávání a přípravě dat se používá podmnožina datové sady NYC taxislužby Trip a tarif 2013. Pak se pomocí Sparku MLlib zaměří binární klasifikace a regresní modely, aby se předpovídá, jestli se pro danou cestu má vyplatit tip, a odhadněte částku tipu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto Názorného postupu potřebujete účet Azure a cluster HDInsight 1,6 (nebo Spark 2,0). Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma také obsahuje popis zde používaných dat taxislužby NYC 2013 a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 
@@ -1119,4 +1119,4 @@ Teď, když jste vytvořili regresní a klasifikační modely pomocí Spark MlLi
 
 **Spotřeba modelu:** Informace o tom, jak hodnotit a hodnotit modely klasifikace a regrese vytvořené v tomto tématu, najdete v tématu [skóre a vyhodnocení modelů strojového učení s využitím Sparku](spark-model-consumption.md).
 
-**Křížové ověřování a mazání pomocí parametrů** : viz [Pokročilá kontrola a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s možnostími úklidu Hyper-Parameter.
+**Křížové ověřování a mazání pomocí parametrů**: viz [Pokročilá kontrola a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s možnostími úklidu Hyper-Parameter.

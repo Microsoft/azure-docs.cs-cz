@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314161"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029562"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak zabezpečit následující výpočetní prost�
 > - Virtuální počítač
 > - Cluster HDInsight
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -123,7 +123,7 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku
 [![Odchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Pokud plánujete používání výchozích imagí Docker poskytovaných Microsoftem a povolením spravovaných závislostí uživatelů, musíte použít taky následující __značky služby__ :
+> Pokud plánujete používání výchozích imagí Docker poskytovaných Microsoftem a povolením spravovaných závislostí uživatelů, musíte použít taky následující __značky služby__:
 >
 > * __MicrosoftContainerRegistry__
 > * __AzureFrontDoor.FirstParty__

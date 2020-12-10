@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993869"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030633"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -50,31 +50,25 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
->      - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
->      - Vyberte **Zaregistrovat**.
->      - Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - Přidejte konfiguraci **webové** platformy. Přidejte `http://localhost:5000/getAToken` jako **identifikátory URI přesměrování**.
->    - Vyberte **Uložit**.
-> 1. V nabídce vlevo vyberte **certifikáty & tajných** kódů a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
->
->      - Zadejte popis klíče (instance tajného kódu aplikace).
->      - Vyberte dobu trvání klíče **v intervalu 1 roku**.
->      - Po kliknutí na tlačítko **Přidat** se zobrazí hodnota klíče.
->      - Zkopírujte hodnotu klíče. Budete ho potřebovat později.
-> 1. Vyberte oddíl **oprávnění rozhraní API** .
->
->      - Klikněte na tlačítko **Přidat oprávnění** a pak na
->      - Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
->      - V části *běžně používaná rozhraní Microsoft API* klikněte na **Microsoft Graph**
->      - V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
->      - Vyberte tlačítko **Přidat oprávnění** .
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `python-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+> 1. Vyberte **Zaregistrovat**.
+> 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. Vyberte **Přidat**  >  **Web** platformy.
+> 1. Přidejte `http://localhost:5000/getAToken` jako **identifikátory URI přesměrování**.
+> 1. Vyberte **Konfigurovat**.
+> 1. V části **Spravovat** vyberte **certifikáty & tajných**  kódů a v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
+> 1. Zadejte popis klíče (například pro tajný klíč aplikace), ponechte výchozí hodnotu vypršení platnosti a vyberte **Přidat**.
+> 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
+>1.  Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
+> 1. V části *běžně používaná rozhraní Microsoft API* vyberte **Microsoft Graph**.
+> 1. V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
+> 1. Klikněte na tlačítko **Přidat oprávnění** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >

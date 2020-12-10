@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý Start: Vytvoření první statické webové aplikace pomocí statického Web Apps Azure pomocí Azure CLI'
-description: Naučte se vytvořit instanci statického Web Apps Azure pomocí Azure static Web Apps CLI.
+title: 'Rychlý Start: Vytvoření první statické lokality pomocí statického Web Apps Azure pomocí rozhraní příkazového řádku'
+description: Naučte se nasadit statickou lokalitu do Azure static Web Apps pomocí Azure CLI.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320333"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030344"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Rychlý Start: Vytvoření první statické webové aplikace pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rychlý Start: Vytvoření první statické lokality pomocí Azure CLI
 
 Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí Azure CLI.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - [Osobní přístupový token GitHubu](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
@@ -109,7 +109,7 @@ Teď, když je úložiště vytvořené, můžete vytvořit statickou webovou ap
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Nahraďte tuto hodnotu vaším uživatelským jménem GitHubu.
 
-    - `<LOCATION>`: Nahraďte tuto hodnotu nejbližším umístěním. Mezi možnosti patří: _CentralUS_, _EastAsia_, _EastUS2_, _WestEurope_a _WestUS2_.
+    - `<LOCATION>`: Nahraďte tuto hodnotu nejbližším umístěním. Mezi možnosti patří: _CentralUS_, _EastAsia_, _EastUS2_, _WestEurope_ a _WestUS2_.
 
     - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`: Tuto hodnotu nahraďte [tokenem osobního přístupu GitHubu](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) , který jste předtím vygenerovali.
 

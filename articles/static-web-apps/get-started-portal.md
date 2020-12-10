@@ -1,26 +1,26 @@
 ---
 title: 'Rychlý Start: Vytvoření první statické webové aplikace pomocí statického Web Apps Azure pomocí Azure Portal'
-description: Naučte se vytvořit instanci statického Web Apps Azure pomocí Azure Portal.
+description: Naučte se nasadit statickou lokalitu do Azure static Web Apps s Azure Portal.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280554"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030361"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rychlý Start: Vytvoření první statické webové aplikace v Azure Portal
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rychlý Start: vytvoření prvního statického webu v Azure Portal
 
 Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí Azure Portal.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -51,14 +51,14 @@ V části _základy_ začněte konfigurací nové aplikace a propojením s úlo�
 
 Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Oddíl základy":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Podrobnosti úložiště":::
 
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-First-web-static-App** .
 1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
 
 > [!NOTE]
-> Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure**a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
+> Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure** a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.
 
 1. V části _Podrobnosti sestavení_ přidejte podrobnosti o konfiguraci, které jsou specifické pro vaši preferovanou front-end architekturu.
 
@@ -94,18 +94,18 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Oddíl základy":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Tlačítko pro vytvoření Revize":::
 
     > [!NOTE]
     > Úpravou [souboru pracovního postupu](github-actions-workflow.md) můžete po vytvoření aplikace tyto hodnoty změnit.
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Oddíl základy":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Tlačítko Create (Vytvořit)":::
 
 1. Vyberte **Přejít k prostředku**.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Oddíl základy":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Tlačítko Go to resource (Přejít k prostředku)":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

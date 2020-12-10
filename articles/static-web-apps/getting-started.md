@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý Start: Vytvoření první statické webové aplikace pomocí statického Web Apps Azure'
-description: Naučte se vytvářet web Azure static Web Apps.
+title: 'Rychlý Start: Vytvoření první statické lokality pomocí statického Web Apps Azure'
+description: Naučte se nasadit statickou lokalitu do statického Web Apps Azure.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 226e8ca6848fc2e29b73a2586f37965c0a031b19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369558"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030463"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>Rychlý Start: Vytvoření první statické webové aplikace
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Rychlý Start: Vytvoření první statické lokality pomocí statického Web Apps Azure
 
 Služba Azure static Web Apps publikuje web do produkčního prostředí tím, že vytváří aplikace z úložiště GitHub. V tomto rychlém startu nasadíte webovou aplikaci do statických webových aplikací Azure pomocí rozšíření Visual Studio Code.
 

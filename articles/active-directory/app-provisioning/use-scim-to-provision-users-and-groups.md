@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperfq2
-ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530816"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027471"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -107,7 +107,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | mailNickname |externalId |
 | manager |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | mobil |phoneNumbers[type eq "mobile"].value |
-| Ovládacím |adresy [typ EQ "Work"]. postalCode |
+| postalCode |adresy [typ EQ "Work"]. postalCode |
 | proxy – adresy |e-maily [Type EQ "other"]. Osa |
 | fyzické doručování – Office |adresy [Type EQ "other"]. Formátu |
 | streetAddress |adresy [Type EQ "]. streetAddress |
@@ -124,7 +124,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | pošta |emails[type eq "work"].value |
 | mailNickname |displayName |
 | členy |členy |
-| Objektu |externalId |
+| objectId |externalId |
 | proxyAddresses |e-maily [Type EQ "other"]. Osa |
 
 V dokumentu RFC SCIM je definováno několik koncových bodů. Můžete začít s koncovým bodem/User a pak od něj rozbalit. Koncový bod/schemas je užitečný při použití vlastních atributů nebo v případě, že se schéma často mění. Umožňuje klientovi, aby získal nejaktuálnější schéma automaticky. Koncový bod/Bulk je zvláště užitečný při podpoře skupin. Následující tabulka popisuje různé koncové body definované ve standardu SCIM.

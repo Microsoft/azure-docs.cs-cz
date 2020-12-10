@@ -6,13 +6,13 @@ ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
-ms.custom: mvc, contperfq1
-ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: mvc, contperf-fy21q1
+ms.openlocfilehash: 701480300101b019830c57d9aa000534fa63bb6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537046"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028525"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -27,7 +27,7 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 > * Přidání grafu vlastní metriky v Application Insights na řídicí panel
 > * Přidání výsledků dotazu log (Analytics) na řídicí panel
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

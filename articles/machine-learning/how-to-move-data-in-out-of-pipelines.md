@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python, data4ml
-ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359761"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027573"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -40,7 +40,7 @@ Tento článek vám ukáže, jak:
 
 Budete potřebovat:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -158,7 +158,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Použít `PipelineData` pro mezilehlé data
 
-Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že životnost `PipelineData` objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření objektu je `PipelineData` nutné zadat název a úložiště dat, na kterém budou data umístěna. Předání `PipelineData` objektů do vaší `PythonScriptStep` pomocí _both_ `arguments` `outputs` argumentů a:
+Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že životnost `PipelineData` objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření objektu je `PipelineData` nutné zadat název a úložiště dat, na kterém budou data umístěna. Předání `PipelineData` objektů do vaší `PythonScriptStep` pomocí  `arguments` `outputs` argumentů a:
 
 ```python
 

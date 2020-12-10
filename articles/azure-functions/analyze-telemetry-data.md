@@ -3,13 +3,13 @@ title: Analýza telemetrie Azure Functions v Application Insights
 description: Naučte se zobrazovat a dotazovat se na data telemetrie Azure Functions shromažďovaná službou a uloženou ve službě Azure Application Insights.
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217299"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027726"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analýza telemetrie Azure Functions v Application Insights 
 
@@ -50,7 +50,7 @@ Otevření Application Insights z aplikace Function App v [Azure Portal](https:/
 
 1. V části **Nastavení** na levé straně vyberte **Application Insights** . 
 
-1. Pokud používáte Application Insights s vaším předplatným poprvé, budete vyzváni k jeho povolení. Pokud to chcete provést, vyberte **zapnout Application Insights**a pak na další stránce vyberte **použít** .
+1. Pokud používáte Application Insights s vaším předplatným poprvé, budete vyzváni k jeho povolení. Pokud to chcete provést, vyberte **zapnout Application Insights** a pak na další stránce vyberte **použít** .
 
 ![Otevření Application Insights na stránce s přehledem aplikace Function App](media/functions-monitoring/ai-link.png)
 
@@ -65,7 +65,7 @@ Následující oblasti Application Insights mohou být užitečné při vyhodnoc
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data o výkonu můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
 | **[Metriky](../azure-monitor/platform/metrics-charts.md)** | Vytváření grafů a výstrah založených na metrikách. Metriky zahrnují počet vyvolání funkcí, dobu provádění a míru úspěšnosti. |
-| **[Živé metriky    ](../azure-monitor/app/live-stream.md)** | Zobrazit data metriky, jak jsou vytvořena téměř v reálném čase. |
+| **[Živé metriky](../azure-monitor/app/live-stream.md)** | Zobrazit data metriky, jak jsou vytvořena téměř v reálném čase. |
 
 ## <a name="query-telemetry-data"></a>Dotazování dat telemetrie
 

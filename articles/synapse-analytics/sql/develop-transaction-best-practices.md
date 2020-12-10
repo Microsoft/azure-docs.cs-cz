@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 908f047a22491d50337f51c0a6dce7f2db8a2ebc
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319861"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026808"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics 
 
@@ -44,7 +44,7 @@ Limity bezpečnosti transakce platí pouze pro plně protokolované operace.
 
 Následující operace jsou schopné provádět minimální protokolování:
 
-* CREATE TABLE JAKO SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-CTAS.MD? TOC =/Azure/synapse-Analytics/toc.jsv&BC =/Azure/synapse-Analytics/breadcrumb/toc.jszapnuto)
+* CREATE TABLE jako SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
 * Vložit.. VYBRALI
 * CREATE INDEX
 * ZMĚNIT INDEX OPĚTOVNÉHO SESTAVENÍ

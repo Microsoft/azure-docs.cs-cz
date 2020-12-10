@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f63dbad398afcd0a9756cc1e9d4f70f1303d00b0
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bc7c6022f8ed95a69dcb877252fd8c5eff49ce28
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993852"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030480"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -45,16 +45,17 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. V Azure Portal přejdete do okna [Registrace aplikací](https://aka.ms/MobileAppReg) pro Azure Active Directory.
-> 1. Vyberte **Nová registrace**.
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
->      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
->      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
-> 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-> 1. V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní počítače)** použijte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Vyberte **Uložit**.
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Win-App-calling-MsGraph` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+> 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. Vyberte **Přidat platformu**  >  **mobilní a desktopové aplikace**.
+> 1. V části **identifikátory URI pro přesměrování** vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
@@ -134,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Kde: | Description |
+> |Kde: | Popis |
 > |---------|---------|
 > | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
@@ -156,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Kde:| Description |
+> |Kde:| Popis |
 > |---------|---------|
 > | `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 
@@ -171,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Kde: | Description |
+> |Kde: | Popis |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 > | `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |

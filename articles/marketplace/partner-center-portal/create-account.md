@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.custom: contperfq2
-ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d88e2b18d4e4f9df0606832356e383aaaf51cf73
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458122"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028440"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -67,7 +67,7 @@ Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště.
 
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu > programy **Nastavení účtu**  >  **Programs**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu > programy **Nastavení účtu**  >  .
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Pokračujte [v přidávání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -142,7 +142,7 @@ Informace o smlouvě o publikování a profilu společnosti se přesunou na nov�
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Přidání nových vydavatelů do programu komerčního tržiště
 
-Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem možnosti **Nastavení**  >  **účtu nastavení účet**  >  **identifikátory organizačního profilu**  >  **Identifiers**  >  **Přidat vydavatele**.
+Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem možnosti **Nastavení**  >  **účtu nastavení účet**  >  **identifikátory organizačního profilu**  >    >  **Přidat vydavatele**.
 
 >[!NOTE]
 >Před přidáním nového vydavatele zkontrolujte seznam stávajících vydavatelů tak, že se přihlásíte do partnerského centra a vyberete **Nastavení účtu**  >  **vydavatelé**.

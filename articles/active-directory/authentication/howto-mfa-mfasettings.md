@@ -11,13 +11,13 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743067"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026995"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -50,7 +50,7 @@ K dispozici jsou následující nastavení:
 Chcete-li nakonfigurovat nastavení uzamčení účtů, proveďte následující nastavení:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **účtu** MFA.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >    >  **účtu** MFA.
 1. Zadejte hodnoty vyžadovat pro vaše prostředí a pak vyberte **Uložit**.
 
     ![Snímek obrazovky s nastavením uzamčení účtu v Azure Portal](./media/howto-mfa-mfasettings/account-lockout-settings.png)
@@ -93,7 +93,7 @@ K dispozici jsou následující možnosti konfigurace upozornění na podvod:
 
 Pokud chcete povolit a nakonfigurovat výstrahy podvodů, proveďte následující kroky:
 
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Výstraha o podvodech** v zabezpečení MFA.
+1. Přejděte na **Azure Active Directory**  >    >    >  **Výstraha o podvodech** v zabezpečení MFA.
 1. Nastavte nastavení *povoleno uživatelům odeslat výstrahy na podvod* do **zapnuto**.
 1. Nakonfigurujte *Automatické blokování uživatelů, kteří nahlásí podvod* nebo *kód, aby nahlásili podvod při počátečním nastavení pozdravu* podle potřeby.
 1. Až budete připraveni, vyberte **Uložit**.
@@ -110,7 +110,7 @@ E-mailová oznámení se dají nakonfigurovat, když uživatelé nahlásí výst
 
 Chcete-li konfigurovat oznámení o výstrahách podvodů, proveďte následující nastavení:
 
-1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Multi-Factor Authentication** zabezpečení a  >  **oznámení**.
+1. Přejděte na **Azure Active Directory**  >    >  **Multi-Factor Authentication** zabezpečení a  >  **oznámení**.
 1. Do následujícího pole zadejte e-mailovou adresu, kterou chcete přidat.
 1. Pokud chcete odebrat stávající e-mailovou adresu, vyberte možnost **...** vedle požadované e-mailové adresy a pak vyberte **Odstranit**.
 1. Až budete připraveni, vyberte **Uložit**.

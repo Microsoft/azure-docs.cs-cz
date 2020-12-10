@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455336"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031466"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -63,7 +63,7 @@ Od této chvíle jsou podporovány následující verze Confluence:
 
 - Confluence: 5,0 až 5,10
 - Confluence: 6.0.1 na 6.15.9
-- Confluence: 7.0.1 na 7.7.2
+- Confluence: 7.0.1 na 7.9.3
 
 > [!NOTE]
 > Upozorňujeme, že náš modul plug-in Confluence funguje taky na Ubuntu verze 16,04.
@@ -127,7 +127,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -139,13 +139,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že Microsoftu udělíte přístup k Confluence SAML SSO.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Confluence SSO SSO od Microsoftu**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -199,7 +199,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     
     1. V **popisu tlačítka pro přihlášení** zadejte popis tlačítka, které vaše organizace chce, aby se uživatelé mohli podívat na přihlašovací obrazovce.
 
-    1. V části **umístění ID uživatele SAML**vyberte buď **ID uživatele, který je v elementu NameIdentifier příkazu Subject** , nebo **ID uživatele je v elementu atributu**.  Toto ID musí být ID uživatele Confluence. Pokud se ID uživatele neshoduje, systém uživatelům neumožní přihlásit se. 
+    1. V části **umístění ID uživatele SAML** vyberte buď **ID uživatele, který je v elementu NameIdentifier příkazu Subject** , nebo **ID uživatele je v elementu atributu**.  Toto ID musí být ID uživatele Confluence. Pokud se ID uživatele neshoduje, systém uživatelům neumožní přihlásit se. 
 
        > [!Note]
        > Výchozí umístění ID uživatele SAML je identifikátor Name. Můžete ji změnit na možnost atributu a zadat příslušný název atributu.
@@ -257,7 +257,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Confluence SSO SSO Microsoft, měli byste se automaticky přihlásit k Confluence SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

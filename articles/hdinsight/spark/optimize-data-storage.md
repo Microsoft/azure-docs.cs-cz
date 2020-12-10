@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757808"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028219"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalizace úložiště dat pro Apache Spark
 
@@ -57,11 +57,11 @@ Když vytváříte nový cluster Spark, můžete jako výchozí úložiště clu
 
 | Store Type | Systém souborů | Rychlost | Dočasný | Případy použití |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Přechodný cluster |
-| Azure Blob Storage (zabezpečení) | **wasbs:**//URL/ | **Standard** | Yes | Přechodný cluster |
-| Azure Data Lake Storage Gen2| **ABFS:**//URL/ | **Zrychlení** | Yes | Přechodný cluster |
-| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Zrychlení** | Yes | Přechodný cluster |
-| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | No | Interaktivní cluster 24/7 |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Ano | Přechodný cluster |
+| Azure Blob Storage (zabezpečení) | **wasbs:**//URL/ | **Standard** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen2| **ABFS:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | Ne | Interaktivní cluster 24/7 |
 
 Úplný popis možností úložiště najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](../hdinsight-hadoop-compare-storage-options.md).
 
