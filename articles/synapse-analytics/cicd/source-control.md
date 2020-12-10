@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350734"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008151"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
 
@@ -112,7 +112,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
@@ -137,6 +137,24 @@ Pokud se připojujete k GitHubu z synapse studia poprvé, postupujte podle těch
 1. Zobrazí se výzva k autorizaci synapse jako aplikace s názvem *Azure synapse*. Na této obrazovce se zobrazí možnost udělit oprávnění pro Synapse k přístupu k organizaci. Pokud nevidíte možnost udělit oprávnění, požádejte správce, aby oprávnění ručně udělil prostřednictvím GitHubu.
 
 Po provedení těchto kroků se váš pracovní prostor bude moci připojit k veřejným i privátním úložištím v rámci vaší organizace. Pokud se nemůžete připojit, zkuste vyprázdnit mezipaměť prohlížeče a zkusit to znovu.
+
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Už jste připojení k GitHubu pomocí osobního účtu.
+
+Pokud jste se už připojili k GitHubu a udělili jste mu oprávnění k přístupu k osobnímu účtu, pomocí následujících kroků udělíte oprávnění k organizaci.
+
+1. Přejít na GitHub a otevřít **Nastavení**.
+
+    ![Otevřít nastavení GitHubu](media/github-settings.png)
+
+1. Vyberte **aplikace**. Na kartě **autorizované aplikace OAuth** byste měli vidět *Azure synapse*.
+
+    ![Autorizovat aplikace OAuth](media/authorize-app.png)
+
+1. Vyberte *Azure synapse* a udělte přístup k vaší organizaci.
+
+    ![Udělit oprávnění organizace](media/grant-organization-permission.png)
+
+Po dokončení těchto kroků se váš pracovní prostor bude moci připojit k veřejným i privátním úložištím v rámci vaší organizace.
 
 ## <a name="version-control"></a>Správa verzí
 
@@ -163,6 +181,7 @@ Ve výchozím nastavení aplikace synapse Studio generuje šablony pracovního p
 ```
 
 Azure synapse Studio může mít najednou jenom jednu větev publikování. Když zadáte novou větev publikování, předchozí větev publikování by se neodstranila. Pokud chcete odebrat předchozí větev publikování, odstraňte ji ručně.
+
 
 ### <a name="publish-code-changes"></a>Publikování změn kódu
 

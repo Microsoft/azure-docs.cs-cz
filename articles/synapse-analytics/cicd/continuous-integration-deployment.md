@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317123"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008077"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -107,7 +107,13 @@ Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketpla
 
      ![Přidat rozšíření](media/add-extension-task.png)
 
-1.  V úloze zadejte související informace o úložišti Git **workspace_publish** a vyberte skupinu prostředků, oblast, název a cloudové prostředí pro cílový pracovní prostor. Zadejte parametry a hodnoty, pokud potřebujete.
+1.  V úloze vyberte.. **.** vedle pole **Šablona** vyberte soubor šablony.
+
+1. Vybrat **...** vedle pole **parametry šablony** pro výběr souboru parametrů.
+
+1. Vyberte připojení, skupinu prostředků a název cílového pracovního prostoru. 
+
+1. Vybrat **...** vedle pole **parametry šablony přepsání** a zadejte požadované hodnoty parametrů pro cílový pracovní prostor. 
 
     ![Nasazení pracovního prostoru synapse](media/create-release-artifacts-deployment.png)
 

@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621497"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007581"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
 
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!IMPORTANT]
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Jsou povoleny skupiny zabezpečení sítě (NSG) pro privátní koncové body?
-Ne, jsou zakázané u privátních koncových bodů. Pokud jsou však v podsíti jiné prostředky, bude na tyto prostředky platit vynucování NSG.
+Ne, jsou zakázané u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](../private-link/disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v jakékoli klientské podsíti bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR. 
+
+Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32, abyste mohli přepsat trasy privátních koncových bodů. Protokoly toku NSG a informace o monitorování pro odchozí připojení se pořád podporují a dají se použít.
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Můžu použít pravidla brány firewall se soukromými koncovými body?
+Ne, jedná se o aktuální omezení privátních koncových bodů. Pokud jsou pravidla brány firewall nakonfigurovaná v mezipaměti, privátní koncový bod nebude fungovat správně.
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>Jak se můžu připojit ke clusterované mezipaměti?
 `publicNetworkAccess` musí být nastavená na `Disabled` a může to být jenom jedno připojení privátního koncového bodu.

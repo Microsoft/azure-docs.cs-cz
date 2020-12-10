@@ -3,16 +3,16 @@ title: Azure Service Bus jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro Service Bus události s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c6990c4e6e87304c457a5b2ca6459c404c8d9a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121130"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008108"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus jako zdroj Event Grid
 
-Tento článek poskytuje vlastnosti a schéma pro události Service Bus.Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
+Tento článek poskytuje vlastnosti a schéma pro události Service Bus. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
 ## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
@@ -24,8 +24,12 @@ Service Bus emituje následující typy událostí:
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Je aktivována, když ve frontě nebo předplatném jsou aktivní zprávy a neposlouchá žádný přijímač. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Je aktivována, když jsou aktivní zprávy ve frontě nedoručených zpráv a žádné aktivní naslouchací procesy. |
+| Microsoft. ServiceBus. ActiveMessagesAvailablePeriodicNotifications | Je aktivována pravidelně, pokud jsou aktivní zprávy ve frontě nebo předplatném, a to i v případě, že existují aktivní naslouchací procesy v dané konkrétní frontě nebo předplatném |
+| Microsoft. ServiceBus. DeadletterMessagesAvailablePeriodicNotifications | Je pravidelně aktivována, pokud jsou v entitě nebo předplatném zprávy se zprávami o nedoručených zprávách, a to i v případě, že existují aktivní naslouchací procesy pro entitu nedoručených zpráv příslušné konkrétní fronty | 
 
 ### <a name="example-event"></a>Příklad události
+
+#### <a name="active-messages-available-with-no-listeners"></a>Aktivní zprávy dostupné bez naslouchacího procesu
 
 Následující příklad ukazuje schéma aktivních zpráv bez události posluchačů:
 
@@ -49,6 +53,8 @@ Následující příklad ukazuje schéma aktivních zpráv bez události posluch
 }]
 ```
 
+#### <a name="deadletter-messages-available-with-no-listener"></a>Nedoručené zprávy bez naslouchacího procesu
+
 Schéma pro událost fronty nedoručených zpráv je podobné:
 
 ```json
@@ -71,11 +77,55 @@ Schéma pro událost fronty nedoručených zpráv je podobné:
 }]
 ```
 
+#### <a name="active-messages-available-periodic-notifications"></a>Aktivní zprávy jsou k dispozici periodická oznámení
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Zprávy o nedoručených zprávách k dispozici pravidelné oznámení
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
 ### <a name="event-properties"></a>Vlastnosti události
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
@@ -88,7 +138,7 @@ Událost má následující data nejvyšší úrovně:
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | namespaceName | řetězec | Obor názvů Service Bus prostředek existuje v. |
 | requestUri | řetězec | Identifikátor URI pro konkrétní frontu nebo odběr, který vyvolal událost. |

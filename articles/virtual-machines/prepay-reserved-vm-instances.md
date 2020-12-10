@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e513bdaa7efa2f1d0f18ff3548d9abfdc5e085d7
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500355"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007394"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Úspora nákladů pomocí Azure Reserved VM Instances (Linux)
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Úspora nákladů pomocí Azure Reserved VM Instances
 
 
 
@@ -110,7 +110,7 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 |Oblast    |Oblast Azure, která je pokrytá rezervací.|    
 |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
 |Optimalizovat pro     |Ve výchozím nastavení je vybraná flexibilita velikosti instancí virtuálních počítačů. Klikněte na **Upřesnit nastavení** a změňte hodnotu flexibilita velikosti instance tak, aby se na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](reserved-vm-instance-size-flexibility.md)použili sleva rezervace. Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Nabízí další důvěru ve vaší schopnosti spouštět instance virtuálních počítačů, když je potřebujete. Priorita kapacity je dostupná jenom v případě, že obor rezervací je jedno předplatné. |
-|Pojem        |Jeden rok nebo tři roky. K dispozici je také 5 let, který je k dispozici pouze pro virtuální počítače s HBv2.|
+|Období        |Jeden rok nebo tři roky. K dispozici je také 5 let, který je k dispozici pouze pro virtuální počítače s HBv2.|
 |Množství    |Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných instancí virtuálních počítačů, které můžou získat fakturační slevu. Pokud například používáte 10 Standard_D2 virtuálních počítačů v Východní USA, pak zadáte množství jako 10 pro maximalizaci výhod všech spuštěných virtuálních počítačů. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
@@ -134,7 +134,7 @@ Rezervaci můžete také rozdělit do menších bloků dat a sloučení už rozd
 Po nákupu nemůžete provést následující typy změn přímo:
 
 - Existující oblast rezervace
-- SKU
+- Skladová položka
 - Množství
 - Doba trvání
 

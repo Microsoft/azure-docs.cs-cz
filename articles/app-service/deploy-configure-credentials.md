@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149026"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007989"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](./overview.md) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -23,7 +23,7 @@ Přihlašovací údaje na úrovni uživatele můžete nakonfigurovat na [stránc
 
 ### <a name="in-the-cloud-shell"></a>V Cloud Shell
 
-Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \<username> a \<password> pomocí uživatelského jména a hesla pro nasazení. 
+Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Nahraďte \<username> a \<password> pomocí uživatelského jména a hesla pro nasazení. 
 
 - Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @. 
 - Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly. 
@@ -38,11 +38,11 @@ Výstup JSON zobrazuje heslo jako `null` . Pokud se zobrazí chyba `'Conflict'. 
 
 V Azure Portal musíte mít alespoň jednu aplikaci, abyste mohli získat přístup k přihlašovací stránce nasazení. Konfigurace přihlašovacích údajů na úrovni uživatele:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  **\<any_app>**  >  **Deployment center**  >  **FTP**  >  **řídicí panel**FTP centra nasazení.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  **\<any_app>**  >    >    >  **řídicí panel** FTP centra nasazení.
 
     ![Ukazuje, jak můžete vybrat řídicí panel FTP z centra nasazení v Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Nebo, pokud jste již nakonfigurovali nasazení Git, vyberte **App Services**  >  ** &lt; any_app>**  >  **Deployment center**  >  **FTP/přihlašovacích údajů**centra nasazení.
+    Nebo, pokud jste již nakonfigurovali nasazení Git, vyberte **App Services**  >  **&lt; any_app>**  >    >  **FTP/přihlašovacích údajů** centra nasazení.
 
     ![Ukazuje, jak můžete vybrat řídicí panel FTP z centra nasazení v Azure App Services pro vaše nakonfigurované nasazení Git.](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -68,9 +68,9 @@ Vzhledem k tomu, že přihlašovací údaje na úrovni uživatele jsou propojen�
 ## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Získání a resetování přihlašovacích údajů na úrovni aplikace
 Získání přihlašovacích údajů na úrovni aplikace:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  ** &lt; any_app>**  >  **služby pro nasazení**  >  **FTP/přihlašovací údaje**.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  **&lt; any_app>**  >  **služby pro nasazení**  >  **FTP/přihlašovací údaje**.
 
-2. Vyberte možnost **přihlašovací údaje aplikace**a kliknutím na odkaz **Kopírovat** zkopírujte uživatelské jméno nebo heslo.
+2. Vyberte možnost **přihlašovací údaje aplikace** a kliknutím na odkaz **Kopírovat** zkopírujte uživatelské jméno nebo heslo.
 
 Pokud chcete resetovat přihlašovací údaje na úrovni aplikace, vyberte **resetovat přihlašovací údaje** ve stejném dialogu.
 
@@ -96,7 +96,7 @@ Chcete-li zakázat základní přístup k ověřování na portu WebDeploy a na 
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Pokud chcete potvrdit, že se přihlašovací údaje profilu publikování zablokují na webu WebDeploy, zkuste [publikovat webovou aplikaci pomocí sady Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Pokud chcete potvrdit, že se přihlašovací údaje profilu publikování zablokují na webu WebDeploy, zkuste [publikovat webovou aplikaci pomocí sady Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 ### <a name="disable-access-to-the-api"></a>Zakázání přístupu k rozhraní API
 

@@ -5,25 +5,19 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 09/04/2020
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: a6bef4944207e26f2de93daa89fa1418c5c44c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373105"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007938"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů a škálování sad na vyhrazené hostitele pomocí portálu 
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-
-> [!IMPORTANT]
-> Tento článek se týká také automatického umístění virtuálních počítačů a instancí sad škálování. Automatické umístění je aktuálně ve verzi Public Preview.
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Chcete-li využít funkci Preview v Azure Portal, je nutné použít tuto adresu URL: [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="limitations"></a>Omezení
 
@@ -42,17 +36,17 @@ Můžete se také rozhodnout použít jak zóny dostupnosti, tak i domény selh�
 V tomto příkladu vytvoříme skupinu hostitelů s použitím 1 zóny dostupnosti a 2 domén selhání. 
 
 
-1. Otevřete Azure [Portal](https://portal.azure.com). Pokud chcete vyzkoušet verzi Preview pro **automatické umístění**, použijte tuto adresu URL: [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
+1. Otevřete Azure [Portal](https://portal.azure.com). 
 1. V levém horním rohu vyberte **vytvořit prostředek** .
 1. Vyhledejte **skupinu hostitelů** a pak z výsledků vyberte **skupiny hostitelů** .
 1. Na stránce **skupiny hostitelů** vyberte **vytvořit**.
 1. Vyberte předplatné, které chcete použít, a pak vyberte **vytvořit novou** a vytvořte novou skupinu prostředků.
 1. Jako **název** zadejte *myDedicatedHostsRG* a pak vyberte **OK**.
-1. Jako **název skupiny hostitelů**zadejte *myHostGroup*.
-1. V **oblasti umístění**vyberte **východní USA**.
-1. V **oblasti dostupnost**vyberte **1**.
-1. V případě **počtu domén selhání**vyberte **2**.
-1. Pokud jste použili automatickou adresu URL **umístění** , vyberte tuto možnost, pokud chcete automaticky přiřadit virtuální počítače a škálovat instance sady k dostupnému hostiteli v této skupině.
+1. Jako **název skupiny hostitelů** zadejte *myHostGroup*.
+1. V **oblasti umístění** vyberte **východní USA**.
+1. V **oblasti dostupnost** vyberte **1**.
+1. V případě **počtu domén selhání** vyberte **2**.
+1. Pokud chcete automaticky přiřadit virtuální počítače a škálovat instance sad k dostupnému hostiteli v této skupině, vyberte **automatické umístění** .
 1. Vyberte **zkontrolovat + vytvořit** a potom počkejte na ověření.
 1. Jakmile se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit** a vytvořte skupinu hostitelů.
 
@@ -71,9 +65,9 @@ Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požád�
 1. Vyhledejte **vyhrazeného hostitele** a pak z výsledků vyberte **vyhrazené hostitele** .
 1. Na stránce **vyhrazení hostitelé** vyberte **vytvořit**.
 1. Vyberte předplatné, které chcete použít.
-1. Jako **skupinu prostředků**vyberte *myDedicatedHostsRG* .
-1. V části **Podrobnosti o instanci**zadejte *myHost* pro **název** a vyberte *východní USA* pro umístění.
-1. V **části hardwarový profil**vyberte *Standard Es3 Family – typ 1* pro **rodinu velikostí**vyberte *myHostGroup* pro **skupinu hostitelů** a pak pro **doménu selhání**vyberte *1* . Pro zbývající pole ponechte výchozí hodnoty.
+1. Jako **skupinu prostředků** vyberte *myDedicatedHostsRG* .
+1. V části **Podrobnosti o instanci** zadejte *myHost* pro **název** a vyberte *východní USA* pro umístění.
+1. V **části hardwarový profil** vyberte *Standard Es3 Family – typ 1* pro **rodinu velikostí** vyberte *myHostGroup* pro **skupinu hostitelů** a pak pro **doménu selhání** vyberte *1* . Pro zbývající pole ponechte výchozí hodnoty.
 1. Až budete hotovi, vyberte **zkontrolovat + vytvořit** a počkejte na ověření.
 1. Jakmile se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit** a vytvořte hostitele.
 
@@ -81,30 +75,19 @@ Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požád�
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 1. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte obrázek, který chcete použít, a pak zvolte **vytvořit**.
-1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné, a pak jako **skupinu prostředků**vyberte *myDedicatedHostsRG* . 
+1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné, a pak jako **skupinu prostředků** vyberte *myDedicatedHostsRG* . 
 1. V části **Podrobnosti o instancích** jako **Název virtuálního počítače** zadejte *myVM* a u možnosti **Umístění** zvolte *USA – východ*.
 1. V části **Možnosti dostupnosti** vyberte **zóna dostupnosti**, v rozevíracím seznamu vyberte *1* .
 1. V poli Velikost vyberte **změnit velikost**. V seznamu dostupných velikostí vyberte jednu z Esv3 řad, jako je **Standard E2s V3**. Možná budete muset filtr vymazat, aby se zobrazily všechny dostupné velikosti.
 1. Podle potřeby dokončete zbývající pole na kartě **základy** .
-1. V horní části stránky vyberte kartu **Upřesnit** a v části **hostitel** vyberte *MyHostGroup* pro **skupinu hostitelů** a *myHost* pro **hostitele**. 
+1. Pokud chcete určit hostitele, který se má použít pro váš virtuální počítač, vyberte v horní části stránky kartu **Upřesnit** a v části **hostitel** vyberte *MyHostGroup* pro **skupinu hostitelů** a *myHost* pro **hostitele**. V opačném případě se váš virtuální počítač automaticky umístí na hostitele s kapacitou.
     ![Vybrat skupinu hostitelů a hostitele](./media/dedicated-hosts-portal/advanced.png)
 1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 1. Když se zobrazí zpráva, že ověření proběhlo úspěšně, vyberte **vytvořit**.
 
 Nasazení virtuálního počítače bude několik minut trvat.
 
-## <a name="create-a-scale-set-preview"></a>Vytvoření sady škálování (Preview)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets na vyhrazených hostitelích je aktuálně ve verzi Public Preview.
->
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Chcete-li využít funkci Preview v Azure Portal, je nutné použít tuto adresu URL: [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
->
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
->
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Vytvoření škálovací sady 
 
 Když nasadíte sadu škálování, zadáte skupinu hostitelů.
 
@@ -112,7 +95,7 @@ Když nasadíte sadu škálování, zadáte skupinu hostitelů.
 1. Vyberte **Přidat** a vytvořte novou sadu škálování.
 1. Vyplňte pole na kartě **základy** , jako byste to obvykle měli, ale vyberte velikost virtuálního počítače, která je z řady, kterou jste zvolili pro vyhrazeného hostitele, jako je třeba **Standard E2s V3**.
 1. Na kartě **Upřesnit** pro **algoritmus rozprostření** vyberte **maximální rozprostření**.
-1. V části **Skupina hostitelů**vyberte v rozevíracím seznamu skupinu hostitelů. Pokud jste v poslední době vytvořili skupinu, může trvat několik minut, než se do seznamu přidá.
+1. V části **Skupina hostitelů** vyberte v rozevíracím seznamu skupinu hostitelů. Pokud jste v poslední době vytvořili skupinu, může trvat několik minut, než se do seznamu přidá.
 
 ## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
 

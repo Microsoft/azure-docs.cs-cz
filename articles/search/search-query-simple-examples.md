@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697250"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007870"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Vytvoření jednoduchého dotazu ve službě Azure Kognitivní hledání
 
@@ -22,6 +22,14 @@ V Azure Kognitivní hledání vyvolá [Jednoduchá syntaxe dotazů](query-simple
 V tomto článku používáme příklady k ilustraci jednoduché syntaxe a naplnění `search=` parametru operace [hledání dokumentů](/rest/api/searchservice/search-documents) .
 
 Alternativná syntaxe dotazu je [Úplná Lucene](query-lucene-syntax.md), která podporuje složitější struktury dotazů, jako je hledání přibližných a zástupných znaků. to může trvat déle. Další informace a příklady, které demonstrují úplnou syntaxi, najdete v tématu [použití úplné syntaxe Lucene](search-query-lucene-examples.md).
+
+Vyberte si z následujících nástrojů a rozhraní API pro odesílání dotazů.
+
+| Metodologie | Popis |
+|-------------|-------------|
+| [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. Doporučuje se pro zkoumání, testování a ověřování. <br/>[Další informace](search-get-started-portal.md#query-index) | 
+| [Post nebo Visual Studio Code](search-get-started-rest.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST v [dokumentech hledání](/rest/api/searchservice/search-documents) . REST API podporuje každou programovou operaci ve službě Azure Kognitivní hledání, takže můžete požadavky vystavovat interaktivně, aby se průzkum zaměřil na konkrétní úkol.  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>Formulování požadavků v post
 

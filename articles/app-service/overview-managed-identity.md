@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929306"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007207"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -109,7 +109,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Následující kroky vás provedou vytvořením aplikace a přiřazením identit
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
-2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/?view=azps-4.1.0#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](/powershell/module/az.functions/#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.

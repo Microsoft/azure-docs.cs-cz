@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686000"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008295"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -42,14 +42,14 @@ Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a odesílaj�
 
 V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
-| Název metriky | Description |
+| Název metriky | Popis |
 |-|-|
 | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka**: Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru |
-| Velikost odvolání při vyvolání vrstvy cloudu | Velikost vrácených dat.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru, název skupiny synchronizace |
-| Velikost odvolání při vrstvení cloudu podle aplikace | Velikost dat vrácených aplikací<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název aplikace, název serveru, název skupiny synchronizace |
-| Propustnost volání při navracení cloudových vrstev | Velikost propustnosti odvolání dat<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru, název skupiny synchronizace |
-| Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: počet<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
+| Velikost odvolání při vyvolání vrstvy cloudu | Velikost vrácených dat.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název serveru, název skupiny synchronizace |
+| Velikost odvolání při vrstvení cloudu podle aplikace | Velikost dat vrácených aplikací<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název aplikace, název serveru, název skupiny synchronizace |
+| Propustnost volání při navracení cloudových vrstev | Velikost propustnosti odvolání dat<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název serveru, název skupiny synchronizace |
+| Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: počet<br>Typy agregace: průměr, suma<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Synchronizované soubory | Počet přenesených souborů (Odeslat a stáhnout).<br><br>Jednotka: počet<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Online stav serveru | Počet prezenčních signálů přijatých ze serveru.<br><br>Jednotka: počet<br>Typ agregace: maximum<br>Platná dimenze: název serveru |
 | Výsledek relace synchronizace | Výsledek relace synchronizace (1 = úspěšná relace synchronizace; 0 = nezdařená relace synchronizace)<br><br>Jednotka: počet<br>Typy agregace: maximum<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
@@ -118,7 +118,7 @@ Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte d
 
 - Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
-  | Název metriky | Description | Název okna |
+  | Název metriky | Popis | Název okna |
   |-|-|-|
   | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
   | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
@@ -178,7 +178,7 @@ Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástr
 
 V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Azure File Sync:
 
-| Název Object\Counter výkonu | Description |
+| Název Object\Counter výkonu | Popis |
 |-|-|
 | Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
 | Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |

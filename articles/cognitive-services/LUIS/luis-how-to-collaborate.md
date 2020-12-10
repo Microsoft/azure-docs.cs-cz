@@ -8,23 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/08/2020
+ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018901"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007958"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 
-Vlastník aplikace může přidat přispěvatele do aplikací. Tito spolupracovníci můžou upravit model, výuku a publikování aplikace.
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+Vlastník aplikace může přidat přispěvatele do aplikací. Tito přispěvatelé můžou upravit model, výuku a publikování aplikace. Po dokončení [migrace](luis-migration-authoring.md) účtu se _přispěvatelé_ spravují v Azure Portal pro prostředek pro vytváření obsahu pomocí stránky **řízení přístupu (IAM)** . Přidejte uživatele pomocí e-mailové adresy spolupracovníka a role _přispěvatele_ .
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Přidat přispěvatele do prostředku pro vytváření obsahu Azure
-
-Následující postup platí pro všechny uživatele, kteří se **migrovali** na používání prostředku pro vytváření obsahu Azure.
 
 Migrovali jste, pokud je vaše prostředí pro vytváření LUIS vázané na prostředek vytváření na stránce **> Správa prostředků Azure** na portálu Luis.
 
@@ -41,26 +37,15 @@ Migrovali jste, pokud je vaše prostředí pro vytváření LUIS vázané na pro
 
     Pokud máte potíže s přiřazením této role, Projděte si téma [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) a [řešení potíží s řízením přístupu v Azure](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
-## <a name="add-collaborator-to-luis-app"></a>Přidání spolupracovníka do aplikace LUIS
+## <a name="view-the-app-as-a-contributor"></a>Zobrazení aplikace jako přispěvatele
 
-Následující postup platí pro všechny uživatele, kteří se **nemigrovali** , aby používali prostředek pro vytváření obsahu Azure.
+Až budete přidáni jako Přispěvatel, [Přihlaste se k portálu Luis](sign-in-luis-portal.md).
 
-Nemigrovali jste, pokud vaše prostředí pro vytváření LUIS není vázané na zdroj obsahu na stránce **Správa prostředků Azure >** na portálu Luis.
-
-Aplikace má jednoho autora, vlastníka, ale může mít mnoho spolupracujících spolupracovníků. Pokud chcete spolupracovníkům dovolit upravit aplikaci LUIS, musíte přidat e-maily, které používají pro přístup k portálu LUIS, do seznamu spolupracovníci. Po přidání se aplikace zobrazí na portálu LUIS.
-
-1. V pravé horní nabídce vyberte **Spravovat** a v levé nabídce vyberte **spolupracovníci** .
-
-1. Na panelu nástrojů vyberte **Přidat spolupracovníka** .
-
-1. Zadejte e-mailovou adresu, kterou spolupracovníka používá pro přihlášení k portálu LUIS.
-
-    ![Přidat e-mailovou adresu spolupracovníka](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>Uživatelé s více e-maily
 
-Pokud do aplikace LUIS přidáte přispěvatele nebo spolupracovníky, zadáváte přesnou e-mailovou adresu. I když Azure Active Directory (Azure AD) umožňuje, aby jeden uživatel měl zaměnitelné více e-mailových účtů, LUIS vyžaduje, aby se uživatel přihlásil pomocí e-mailové adresy zadané při přidávání Přispěvatel/spolupracovníka.
+Pokud přidáte přispěvatele do aplikace LUIS, zadáváte přesnou e-mailovou adresu. I když Azure Active Directory (Azure AD) umožňuje, aby jeden uživatel měl zaměnitelné více e-mailových účtů, LUIS vyžaduje, aby se uživatel přihlásil pomocí e-mailové adresy zadané při přidávání přispěvatele.
 
 <a name="owner-and-collaborators"></a>
 

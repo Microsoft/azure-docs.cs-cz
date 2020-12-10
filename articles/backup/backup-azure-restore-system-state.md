@@ -3,12 +3,12 @@ title: Obnovení stavu systému na Windows Server
 description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ef23d6ff16c263e310304cc240c2090751640b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377433"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008465"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -24,7 +24,7 @@ Tento článek vysvětluje, jak obnovit zálohy stavu systému Windows Server z 
 
 Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do předchozího stavu. Vracení konfigurace serveru zpátky na známý, stabilní stav může být extrémně cenné. Následující kroky obnoví stav systému serveru z trezoru Recovery Services.
 
-1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup**v počítači nebo na serveru.
+1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup** v počítači nebo na serveru.
 
     Aplikace klasické pracovní plochy by se měla zobrazit ve výsledcích hledání.
 
@@ -114,17 +114,17 @@ Terminologie použitá v těchto krocích zahrnuje:
 
 Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Services agent, použijte nástroj Zálohování Windows Serveru a nainstalujte obnovený stav systému na Windows Server. Nástroj Zálohování Windows Serveru je již na serveru k dispozici. Následující kroky vysvětlují, jak použít obnovený stav systému.
 
-1. Otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru**v počítači nebo na serveru.
+1. Otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru** v počítači nebo na serveru.
 
-    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání. Pokud se nezobrazí nebo dojde k chybám při otevření aplikace, je třeba nainstalovat **funkce zálohování Windows serveru**a závislé komponenty pod ní, které jsou k dispozici v **Průvodci přidáním funkcí** v **Správce serveru**.
+    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání. Pokud se nezobrazí nebo dojde k chybám při otevření aplikace, je třeba nainstalovat **funkce zálohování Windows serveru** a závislé komponenty pod ní, které jsou k dispozici v **Průvodci přidáním funkcí** v **Správce serveru**.
 
 1. V modulu snap-in vyberte **místní zálohování**.
 
     ![Vyberte místní zálohování, ze kterého se má obnovit.](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-1. V konzole místní zálohování klikněte v **podokně akce**na možnost **obnovit** a otevřete Průvodce obnovením.
+1. V konzole místní zálohování klikněte v **podokně akce** na možnost **obnovit** a otevřete Průvodce obnovením.
 
-1. Vyberte možnost **zálohování uložené v jiném umístění**a vyberte **Další**.
+1. Vyberte možnost **zálohování uložené v jiném umístění** a vyberte **Další**.
 
    ![Výběr obnovení na jiný server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
@@ -140,7 +140,7 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
 
 1. V podokně vybrat typ obnovení vyberte možnost **stav systému** a vyberte možnost **Další**.
 
-1. Pro umístění obnovení stavu systému vyberte možnost **původní umístění**a vyberte možnost **Další**.
+1. Pro umístění obnovení stavu systému vyberte možnost **původní umístění** a vyberte možnost **Další**.
 
     Pokud obnovujete řadič domény, zobrazí se následující další možnost:
 
@@ -201,6 +201,8 @@ Tento článek bude projednávat jenom první scénář, který volá nonauthora
 
 1. Po úspěšném dokončení obnovení byste měli restartovat server v normálním režimu. Otevřete příkazový řádek a zadejte následující příkaz: `bcdedit /deletevalue safeboot`
 1. Restartujte server.
+
+Další informace najdete v tématu [zálohování a obnovení řadičů domény služby Active Directory](active-directory-backup-restore.md).
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží s nezdařeným obnovením stavu systému
 

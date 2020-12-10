@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558670"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007513"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup je popsaný v tomto návodu:
 
@@ -45,7 +45,7 @@ Nejjednodušší způsob, jak povolit místní nasazení Git pro vaši aplikaci 
 
 ### <a name="get-the-deployment-url"></a>Získat adresu URL nasazení
 
-Pokud chcete získat adresu URL pro povolení místního nasazení Git pro existující aplikaci, spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) v Cloud Shell. Nahraďte \<app-name> a \<group-name> názvem vaší aplikace a její skupiny prostředků Azure.
+Pokud chcete získat adresu URL pro povolení místního nasazení Git pro existující aplikaci, spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) v Cloud Shell. Nahraďte \<app-name> a \<group-name> názvem vaší aplikace a její skupiny prostředků Azure.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Pokud používáte plán služby aplikace pro Linux, je nutné přidat tento parametr:--runtime Python | 3.7
 
 
-Nebo pokud chcete vytvořit novou aplikaci s povoleným Git, spusťte [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v Cloud shell s `--deployment-local-git` parametrem. Nahraďte \<app-name> , \<group-name> a \<plan-name> názvem nové aplikace pro Git, její skupinou prostředků Azure a jejím Azure App Servicem plánem.
+Nebo pokud chcete vytvořit novou aplikaci s povoleným Git, spusťte [`az webapp create`](/cli/azure/webapp#az-webapp-create) v Cloud shell s `--deployment-local-git` parametrem. Nahraďte \<app-name> , \<group-name> a \<plan-name> názvem nové aplikace pro Git, její skupinou prostředků Azure a jejím Azure App Servicem plánem.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git

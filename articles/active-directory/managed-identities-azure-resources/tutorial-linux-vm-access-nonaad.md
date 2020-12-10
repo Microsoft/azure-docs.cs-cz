@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360433"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007802"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu 
 
@@ -36,7 +36,7 @@ Získáte informace o těchto tématech:
  
 ## <a name="prerequisites"></a>Požadavky
 
-- Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
+- Základní porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 - Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Potřebujete také virtuální počítač se systémem Linux, který má povolené spravované identity přiřazené systémem.
@@ -121,7 +121,7 @@ K dokončení tohoto postupu potřebujete klienta SSH.  Pokud používáte Windo
     Tento přístupový token můžete použít k ověření přístupu do služby Azure Key Vault.  V další žádosti CURL je vidět, jak přečíst tajný kód z Key Vault pomocí CURL a rozhraní REST API služby Key Vault.  Budete potřebovat adresu URL své služby Key Vault, kterou najdete na stránce **Přehled** služby Key Vault v části **Základy**.  Budete také potřebovat přístupový token, který jste získali při předchozím volání. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     Odpověď bude vypadat takto: 
@@ -134,7 +134,7 @@ Jakmile ze služby Key Vault načtete tajný kód, můžete ho použít při př
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete prostředky vyčistit, přejděte na [Azure Portal](https://portal.azure.com), vyberte **skupiny prostředků** , najděte a vyberte skupinu prostředků, která se vytvořila v procesu tohoto kurzu (například `mi-test` ), a pak použijte příkaz **Odstranit skupinu prostředků** .
+Pokud chcete prostředky vyčistit, přejděte na [Azure Portal](https://portal.azure.com), vyberte **skupiny prostředků**, najděte a vyberte skupinu prostředků, která se vytvořila v procesu tohoto kurzu (například `mi-test` ), a pak použijte příkaz **Odstranit skupinu prostředků** .
 
 Případně můžete to provést také prostřednictvím [PowerShellu nebo rozhraní](../../azure-resource-manager/management/delete-resource-group.md) PŘÍKAZového řádku.
 

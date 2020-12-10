@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e879d8370821ea465147e344d0fe95836c843ff4
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928004"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008006"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování pomocí služby Web App for Containers
 
@@ -23,7 +23,7 @@ V tomto kurzu nakonfigurujete průběžné nasazování pro vlastní image konte
 
 ![Snímek Webhooku ACR](./media/deploy-ci-cd-custom-container/ci-cd-acr-02.png)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .
@@ -41,7 +41,7 @@ V Container Registry kliknutím na Webhooky zobrazíte aktuální Webhooky.
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Povolit průběžné nasazování pomocí Docker Hub (volitelné)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .
@@ -55,7 +55,7 @@ Zkopírujte adresu URL Webhooku. Pokud chcete přidat Webhook pro Docker Hub, Sl
 
 ## <a name="automate-with-cli"></a>Automatizace pomocí rozhraní příkazového řádku
 
-Pokud chcete konfigurovat CI/CD pomocí Azure CLI, spusťte příkaz [AZ WebApp Deployment Container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) , který vygeneruje adresu URL Webhooku. Adresu URL lze použít ke konfiguraci Dockerhubu nebo Azure Container Registry.
+Pokud chcete konfigurovat CI/CD pomocí Azure CLI, spusťte příkaz [AZ WebApp Deployment Container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) , který vygeneruje adresu URL Webhooku. Adresu URL lze použít ke konfiguraci Dockerhubu nebo Azure Container Registry.
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true

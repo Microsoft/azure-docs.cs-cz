@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567074"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007836"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -41,7 +41,7 @@ Hodnoty pro parametry v topologii jsou určeny při vytváření instancí grafu
 Životní cyklus topologií grafu a instancí grafu je zobrazený v následujícím diagramu stavu.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Graf médií":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Životní cyklus topologie grafu a životního cyklu instance grafu":::
 
 Začnete s [vytvářením topologie grafu](direct-methods.md#graphtopologyset). Potom pro každý živý informační kanál videa, který chcete s touto topologií zpracovávat, [vytvoříte instanci grafu](direct-methods.md#graphinstanceset). 
 
@@ -70,7 +70,7 @@ Live video Analytics na IoT Edge podporuje následující typy uzlů v rámci me
 
 #### <a name="rtsp-source"></a>Zdroj RTSP 
 
-Zdrojový uzel RTSP umožňuje ingestovat média z [RTSP](https://tools.ietf.org/html/rfc2326 server). Fotoaparáty a kamery založené na protokolu IP odesílají data do protokolu s názvem RTSP (Real-time-streaming Protocol), který se liší od jiných typů zařízení, jako jsou telefony a video kamery. Tento protokol se používá k navázání a řízení relací multimédií mezi serverem (fotoaparátem) a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Zdrojový uzel RTSP vyžaduje, abyste zadali adresu URL protokolu RTSP spolu s přihlašovacími údaji, aby bylo možné povolit ověřované připojení.
+Zdrojový uzel RTSP vám umožní ingestovat média ze serveru [RTSP](https://tools.ietf.org/html/rfc2326) . Fotoaparáty a kamery založené na protokolu IP odesílají data do protokolu s názvem RTSP (Real-time-streaming Protocol), který se liší od jiných typů zařízení, jako jsou telefony a video kamery. Tento protokol se používá k navázání a řízení relací multimédií mezi serverem (fotoaparátem) a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Zdrojový uzel RTSP vyžaduje, abyste zadali adresu URL protokolu RTSP spolu s přihlašovacími údaji, aby bylo možné povolit ověřované připojení.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub zdroj zprávy 
 

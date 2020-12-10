@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10834c921042f0bfedfc3196b855ce5dc7b0e8f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862220"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007683"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](tutorial-dotnetcore-sqldb-app.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
@@ -57,7 +57,7 @@ Nejdřív povolte ověřování Azure AD, které se SQL Database přiřazením u
 
 Pokud váš tenant služby Azure AD ještě nemá uživatele, vytvořte ho podle kroků v části [Přidání nebo odstranění uživatelů pomocí Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Vyhledejte ID objektu uživatele Azure AD pomocí [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) a nahraďte *\<user-principal-name>* . Výsledek je uložen do proměnné.
+Vyhledejte ID objektu uživatele Azure AD pomocí [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) a nahraďte *\<user-principal-name>* . Výsledek je uložen do proměnné.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Pokud chcete zobrazit seznam všech hlavních názvů uživatelů v Azure AD, spusťte `az ad user list --query [].userPrincipalName` .
 >
 
-Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte *\<server-name>* názvem serveru (bez `.database.windows.net` přípony).
+Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte *\<server-name>* názvem serveru (bez `.database.windows.net` přípony).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -77,9 +77,9 @@ Další informace o přidání správce služby Active Directory najdete v téma
 ## <a name="set-up-visual-studio"></a>Nastavit Visual Studio
 
 ### <a name="windows-client"></a>Klient Windows
-Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual **File** Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet**.
+Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet**.
 
-Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v **Tools**  >  nabídce vyberte **Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  **Account Selection**. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
+Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v   >  nabídce vyberte **Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  . Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
 
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
 
@@ -176,7 +176,7 @@ Dále nakonfigurujete aplikaci App Service pro připojení k SQL Database se spr
 
 ### <a name="enable-managed-identity-on-app"></a>Povolit spravovanou identitu v aplikaci
 
-K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app-name>* .
+K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>

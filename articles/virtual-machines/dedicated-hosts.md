@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339587"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007887"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
@@ -67,11 +67,6 @@ Obě možnosti můžete použít společně a dosáhnout tak i větší izolace 
 
 ## <a name="manual-vs-automatic-placement"></a>Ruční a automatické umístění 
 
-> [!IMPORTANT]
-> Automatické umístění je aktuálně ve verzi Public Preview.
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Při vytváření virtuálního počítače v Azure můžete vybrat vyhrazeného hostitele, který se má použít. Můžete také použít možnost k automatickému umístění virtuálních počítačů na existující hostitele v rámci skupiny hostitelů. 
 
 Při vytváření nové skupiny hostitelů se ujistěte, že je vybrané nastavení pro automatické umístění virtuálního počítače. Když vytváříte virtuální počítač, vyberte skupinu hostitelů a umožněte Azure vybrat nejlepšího hostitele pro váš virtuální počítač. 
@@ -91,11 +86,6 @@ Známé problémy a omezení při použití automatického umístění virtuáln
 
 Virtual Machine Scale Sets vám umožní považovat skupinu virtuálních počítačů za jeden prostředek a jako skupinu použít zásady dostupnosti, správy, škálování a orchestrace. Stávající vyhrazené hostitele je možné použít i pro služby Virtual Machine Scale Sets. 
 
-> [!IMPORTANT]
-> Virtual Machine Scale Sets na vyhrazených hostitelích je aktuálně ve verzi Public Preview.
-> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Při vytváření sady škálování virtuálních počítačů můžete zadat existující skupinu hostitelů, aby se všechny instance virtuálních počítačů vytvořily na vyhrazených hostitelích.
 
 Při vytváření sady škálování virtuálních počítačů ve vyhrazené skupině hostitelů platí následující požadavky:
@@ -109,7 +99,7 @@ Při vytváření sady škálování virtuálních počítačů ve vyhrazené sk
 - Podporované velikosti virtuálních počítačů pro vaše vyhrazené hostitele by se měly shodovat s velikostí použitou pro vaši sadu škálování.
 
 U vyhrazených hostitelů nejsou podporovaná nastavení Orchestrace a optimalizace sady škálování. U sady škálování použijte následující nastavení: 
-- Zakažte přezřizování.
+- Přezřizování se nedoporučuje a ve výchozím nastavení je zakázané. Můžete povolit převzetí služeb při selhání, ale přidělení sady škálování se nezdaří, pokud skupina hostitelů nebude mít kapacitu pro všechny virtuální počítače, včetně přetížených instancí. 
 - Použití režimu orchestrace ScaleSetVM 
 - Nepoužívejte pro společné umístění skupiny umístění pro Proximity.
 

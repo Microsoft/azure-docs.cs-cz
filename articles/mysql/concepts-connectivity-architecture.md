@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b23ff9762ef519d66ed55f75f27dcb80e2d18039
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242870"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007241"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -50,7 +50,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Indie – střed | 104.211.96.159     |
 | Indie – jih | 104.211.224.146  |
 | Indie – západ | 104.211.160.80    |
-| Japan East | 13.78.61.196, 191.237.240.43  |
+| Japan East | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | Japonsko – západ | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Jižní Korea – střed | 52.231.32.42   |
 | Jižní Korea – jih | 52.231.200.86    |
@@ -72,7 +72,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 
 ## <a name="connection-redirection"></a>Přesměrování připojení
 
-Azure Database for MySQL podporuje další zásady připojení, **přesměrování** , která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a servery MySQL. Po navázání počáteční relace protokolu TCP na Azure Database for MySQL server vrátí tato funkce server back-end uzel, který hostuje server MySQL, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
+Azure Database for MySQL podporuje další zásady připojení, **přesměrování**, která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a servery MySQL. Po navázání počáteční relace protokolu TCP na Azure Database for MySQL server vrátí tato funkce server back-end uzel, který hostuje server MySQL, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
 
 Tato funkce je podporovaná v Azure Database for MySQL serverech s verzemi modulu 5,6, 5,7 a 8,0.
 

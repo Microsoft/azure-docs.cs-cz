@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat vlastní kontejner v Azure App S
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557922"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007632"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro službu Azure App Service
 
@@ -204,7 +204,7 @@ Protokoly Docker se zobrazují na portálu na stránce **nastavení kontejneru**
 
 ### <a name="from-the-kudu-console"></a>Z konzoly Kudu
 
-Přejděte na `https://<app-name>.scm.azurewebsites.net/DebugConsole` složku soubory protokolů **LogFiles** a kliknutím na ni Zobrazte jednotlivé soubory protokolů. Chcete-li stáhnout celý adresář souborů **protokolů** , klikněte na ikonu **Stáhnout** nalevo od názvu adresáře. K této složce můžete přistupovat také pomocí klienta FTP.
+Přejděte na `https://<app-name>.scm.azurewebsites.net/DebugConsole` složku soubory protokolů  a kliknutím na ni Zobrazte jednotlivé soubory protokolů. Chcete-li stáhnout celý adresář souborů **protokolů** , klikněte na ikonu **Stáhnout** nalevo od názvu adresáře. K této složce můžete přistupovat také pomocí klienta FTP.
 
 V terminálu konzoly nemůžete `C:\home\LogFiles` ve výchozím nastavení přistupovat ke složce, protože trvalé sdílené úložiště není povolené. Pokud chcete toto chování povolit v terminálu konzoly, [Povolte trvalé sdílené úložiště](#use-persistent-shared-storage).
 
@@ -345,7 +345,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vl
 
 Aplikace s více kontejnery, jako je WordPress, potřebují pro správné fungování trvalé úložiště. Pokud ho chcete povolit, vaše konfigurace Docker Compose musí odkazovat na umístění úložiště *mimo* váš kontejner. Umístění úložiště ve vašem kontejneru neukládají změny po restartování aplikace.
 
-Nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v [Cloud Shell](https://shell.azure.com)povolte trvalé úložiště.
+Nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) v [Cloud Shell](https://shell.azure.com)povolte trvalé úložiště.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

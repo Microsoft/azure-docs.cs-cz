@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780089"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005303"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Kurz: zřízení více zařízení X. 509 pomocí skupin registrace
 
@@ -42,7 +42,7 @@ V tomto kurzu provedete následující cíle:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
 
@@ -195,7 +195,7 @@ Postup vytvoření řetězu certifikátů:
 3. Spuštěním následujícího příkazu vytvořte úplný soubor PEM řetězu certifikátů, který obsahuje nový certifikát zařízení.
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     Použijte textový editor a otevřete soubor řetězu certifikátů, *./certs/New-Device-full-Chain.CERT.pem*. Text řetězu certifikátů obsahuje úplný řetěz všech tří certifikátů. Tento text budete používat jako řetěz certifikátů s vlastním kódem HSM dále v tomto kurzu.
@@ -241,48 +241,85 @@ Postup aktualizace vlastního kódu stub pro vlastní kód HSM pro tento kurz:
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. Ve stejném souboru aktualizujte hodnotu řetězce `CERTIFICATE` konstantního řetězce pomocí textu řetězu certifikátů, který jste uložili v souboru *./certs/New-Device-full-Chain.CERT.pem* po vygenerování certifikátů.
+4. Ve stejném souboru musíte aktualizovat řetězcovou hodnotu `CERTIFICATE` konstantního řetězce pomocí textu řetězu certifikátů, který jste uložili v souboru *./certs/New-Device-full-Chain.CERT.pem* po vygenerování certifikátů.
 
-    > [!IMPORTANT]
-    > Při kopírování textu do sady Visual Studio si můžete všimnout, že text je analyzován a aktualizován pomocí mezery v kódu atd. Pokud ano, musíte odstranit toto řádkování a analyzovat je stisknutím **kombinace kláves CTRL + Z** .
-
-    Aktualizujte text certifikátu tak, aby se za následujícím vzorem nepoužívaly žádné nadbytečné mezery, nebo se neanalyzuje v rámci sady Visual Studio:
+    Syntaxe textu certifikátu musí následovat po vzorci, který neobsahuje nadbytečné mezery ani se neanalyzuje v rámci sady Visual Studio.
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. Ve stejném souboru aktualizujte řetězcovou hodnotu řetězce `PRIVATE_KEY` konstanty pomocí privátního klíče pro certifikát zařízení.
+    Správná aktualizace této řetězcové hodnoty v tomto kroku může být velmi zdlouhavá a může se jednat o chybu. Pokud chcete vygenerovat správnou syntaxi na příkazovém řádku Git bash, zkopírujte a vložte následující příkazy prostředí bash do příkazového řádku Git bash a stiskněte klávesu **ENTER**. Tyto příkazy vygenerují syntaxi `CERTIFICATE` hodnoty řetězcové konstanty.
 
-    > [!IMPORTANT]
-    > Při kopírování textu do sady Visual Studio si můžete všimnout, že text je analyzován a aktualizován pomocí mezery v kódu atd. Pokud ano, musíte odstranit toto řádkování a analyzovat je stisknutím **kombinace kláves CTRL + Z** .
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    Aktualizujte text privátního klíče tak, aby následuje za následujícím vzorem, a to bez mezer nebo analýzy prováděné sadou Visual Studio:
+    Zkopírujte a vložte text výstupního certifikátu pro novou konstantní hodnotu. 
+
+
+5. Ve stejném souboru musí být řetězcová hodnota `PRIVATE_KEY` konstanty také aktualizována pomocí privátního klíče pro certifikát zařízení.
+
+    Syntaxe textu privátního klíče musí následovat po vzorci, který neobsahuje nadbytečné mezery ani se neanalyzuje v rámci sady Visual Studio.
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    Správná aktualizace této řetězcové hodnoty v tomto kroku může být také velmi zdlouhavá a může se jednat o chybu. Pokud chcete vygenerovat správnou syntaxi na příkazovém řádku Git bash, zkopírujte a vložte následující příkazy prostředí bash a stiskněte klávesu **ENTER**. Tyto příkazy vygenerují syntaxi `PRIVATE_KEY` hodnoty řetězcové konstanty.
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Zkopírujte a vložte výstupní text privátního klíče pro novou konstantní hodnotu. 
 
 6. Uložte *custom_hsm_example. c*.
 

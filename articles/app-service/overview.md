@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961478"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007089"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
@@ -36,7 +36,7 @@ Tady jsou některé klíčové funkce App Service:
 * **Rozhraní API a mobilní funkce** – App Service poskytují podporu CORS pro scénáře rozhraní RESTful API a zjednodušují scénáře mobilních aplikací tím, že umožňují ověřování, offline synchronizaci dat, nabízená oznámení a další.
 * **Kód bez serveru** – Můžete spouštět fragment kódu nebo skript na vyžádání, aniž byste museli explicitně zřizovat nebo spravovat infrastrukturu, a platíte jenom za výpočetní čas, který váš kód skutečně využije (viz [Azure Functions](../azure-functions/index.yml)).
 
-Kromě App Service nabízí Azure další služby, které lze použít k hostování webů a webových aplikací. Pro většinu scénářů je App Service nejlepší volbou.  V případě architektury mikroslužeb zvažte [Azure jaře-Cloud Service](../spring-cloud/index.yml) nebo [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).  Pokud potřebujete větší kontrolu nad virtuálními počítači, na kterých je váš kód spuštěný, zvažte [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Příklady typických aplikačních scénářů, k nimž můžete použít službu Web Apps, naleznete v tématu [Srovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Kromě App Service nabízí Azure další služby, které lze použít k hostování webů a webových aplikací. Pro většinu scénářů je App Service nejlepší volbou.  V případě architektury mikroslužeb zvažte [službu Azure Spring-Cloud Service](../spring-cloud/index.yml) nebo [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).  Pokud potřebujete větší kontrolu nad virtuálními počítači, na kterých je váš kód spuštěný, zvažte [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Příklady typických aplikačních scénářů, k nimž můžete použít službu Web Apps, naleznete v tématu [Srovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>App Service v Linuxu
 
@@ -44,7 +44,7 @@ App Service může také hostovat webové aplikace nativně v systému Linux pro
 
 ### <a name="built-in-languages-and-frameworks"></a>Předdefinované jazyky a architektury
 
-App Service v systému Linux podporuje několik vestavěných imagí specifických pro jazyk. Stačí nasadit kód. Mezi podporované jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace potřebuje, není podporovaný ve vestavěných bitových kopiích, můžete ho nasadit pomocí vlastního kontejneru.
+App Service v systému Linux podporuje několik vestavěných imagí specifických pro jazyk. Stačí nasadit kód. Mezi podporované jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace potřebuje, není podporovaný ve vestavěných bitových kopiích, můžete ho nasadit pomocí vlastního kontejneru.
 
 ### <a name="limitations"></a>Omezení
 

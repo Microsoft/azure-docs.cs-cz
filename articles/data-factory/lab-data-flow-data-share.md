@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921039"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006139"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -26,7 +26,7 @@ V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure 
 
 Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -72,7 +72,7 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
     ![Portál – konfigurace 3](media/lab-data-flow-data-share/configure3.png)
 1. První propojená služba, kterou nakonfigurujete, je databáze SQL Azure. Seznam úložišť dat můžete filtrovat pomocí panelu hledání. Klikněte na dlaždici **Azure SQL Database** a potom klikněte na pokračovat.
 
-    ![Portál – konfigurace 4](media/lab-data-flow-data-share/configure4.png)
+    ![Portál – konfigurace 4](media/lab-data-flow-data-share/configure-4.png)
 1. V podokně Konfigurace databáze SQL zadejte jako název propojené služby položku ' SQLDB '. Zadejte přihlašovací údaje, aby se data Factory mohla připojit k vaší databázi. Pokud používáte ověřování SQL, zadejte název serveru, databázi, uživatelské jméno a heslo. Kliknutím na **Testovat připojení** můžete ověřit, jestli jsou informace o připojení správné. Po dokončení klikněte na **vytvořit** .
 
     ![Portál – konfigurace 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 1. Pokud chcete přidat propojenou službu Azure synapse Analytics, opakujte stejný postup. Na kartě připojení klikněte na **Nový**. Vyberte dlaždici **Azure synapse Analytics** a klikněte na pokračovat.
 
-    ![Portál – konfigurace 6](media/lab-data-flow-data-share/configure6.png)
+    ![Portál – konfigurace 6](media/lab-data-flow-data-share/configure-6.png)
 1. V podokně Konfigurace propojené služby zadejte jako název propojené služby ' SQLDW '. Zadejte přihlašovací údaje, aby se data Factory mohla připojit k vaší databázi. Pokud používáte ověřování SQL, zadejte název serveru, databázi, uživatelské jméno a heslo. Kliknutím na **Testovat připojení** můžete ověřit, jestli jsou informace o připojení správné. Po dokončení klikněte na **vytvořit** .
 
-    ![Portál – konfigurace 7](media/lab-data-flow-data-share/configure7.png)
+    ![Portál – konfigurace 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Vytvoření propojené služby Azure Data Lake Storage Gen2
 
@@ -128,7 +128,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
     ![Kopie portálu 4](media/lab-data-flow-data-share/copy4.png)
 1. Vyhledejte **Azure SQL Database** a klikněte na pokračovat.
 
-    ![Kopie portálu 5](media/lab-data-flow-data-share/copy5.png)
+    ![Kopie portálu 5](media/lab-data-flow-data-share/copy-5.png)
 1. Zavolejte svou datovou sadu ' TripData '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripData ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště**. Po dokončení klikněte na OK.
 
     ![Kopie portálu 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     ![Datový tok portálu 9](media/lab-data-flow-data-share/dataflow9.png)
 1. Vyberte dlaždici **Azure SQL Database** a klikněte na pokračovat. *Poznámka: Možná si všimnete, že mnoho konektorů ve službě Data Factory není v toku dat mapování podporováno. Pokud chcete transformovat data z jednoho z těchto zdrojů, ingestujte je do podporovaného zdroje pomocí aktivity kopírování*.
 
-    ![Tok dat portálu 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![Tok dat portálu 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. Zavolejte svou datovou sadu ' TripFares '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripFares ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště**. Po dokončení klikněte na OK.
 
     ![Datový tok portálu 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 
 1. Vyberte dlaždici **Azure synapse Analytics** a klikněte na pokračovat.
 
-    ![Jímka portálu 3](media/lab-data-flow-data-share/sink3.png)
+    ![Jímka portálu 3](media/lab-data-flow-data-share/sink-3.png)
 1. Zavolejte svou datovou sadu ' AggregatedTaxiData '. Jako propojená služba vyberte SQLDW. Vyberte **vytvořit novou tabulku** a pojmenujte novou tabulku dbo. AggregateTaxiData. Po dokončení klikněte na OK.
 
     ![Jímka portálu 4](media/lab-data-flow-data-share/sink4.png)
