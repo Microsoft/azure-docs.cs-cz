@@ -12,7 +12,7 @@
   items:
     - name: Vyzkoušejte si Content Moderator na webu
       href: quick-start.md
-    - name: S využitím klientské knihovny
+    - name: S využitím klientské knihovny nebo REST API
       href: client-libraries.md
 - name: Kurzy
   items:
@@ -20,8 +20,6 @@
       href: ecommerce-retail-catalog-moderation.md
     - name: Moderování obsahu pro Facebook
       href: facebook-post-moderation.md
-    - name: Moderování videí a přepisů
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Koncepty
   items:
     - name: Moderování obrázků
@@ -38,7 +36,7 @@
   items:
     - name: Moderování obsahu
       items:
-        - name: REST API
+        - name: Konzola API
           items:
             - name: Obrázky – konzola API
               href: try-image-api.md
@@ -60,7 +58,7 @@
       items:
         - name: Nástroj pro revize (prohlížeč)
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST API
+        - name: Konzola API
           href: try-review-api-review.md
         - name: Revize videa (.NET)
           href: video-reviews-quickstart-dotnet.md
@@ -70,11 +68,11 @@
       items:
         - name: Nástroj pro revize (prohlížeč)
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST API
+        - name: Konzola API
           href: try-review-api-workflow.md
     - name: Definice a používání úloh
       items:
-        - name: REST API
+        - name: Konzola API
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md
