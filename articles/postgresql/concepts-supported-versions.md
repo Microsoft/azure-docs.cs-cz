@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658515"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938864"
 ---
 # <a name="supported-postgresql-major-versions"></a>Podporované hlavní verze PostgreSQL
 
@@ -36,12 +36,12 @@ Aktuální dílčí verze je 9.5.20. Informace o vylepšeních a opravách v té
 > V souladu se [zásadami správy verzí](https://www.postgresql.org/support/versioning/)komunity Postgres se Azure Database for PostgreSQL vyřazení Postgres verze 9,5 dne 11. února 2021. Další podrobnosti a omezení najdete v tématu [zásady správy verzí Azure Database for PostgreSQL](concepts-version-policy.md) .
 
 ## <a name="managing-upgrades"></a>Správa upgradů
-Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opraví servery s podverzemi v rámci měsíčního nasazení služby. 
+Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opravuje podverze na serverech v rámci měsíčních nasazení služby. 
 
-Automatické místní upgrady pro hlavní verze se nepodporují. Pokud chcete upgradovat na další hlavní verzi, můžete 
-   * Viz různé metody, které provádějí [upgrady hlavní verze pomocí výpisu a obnovení](./how-to-upgrade-using-dump-and-restore.md) .
-   * Použití [pg_dump a pg_restore](./howto-migrate-using-dump-and-restore.md) k přesunu databáze na server vytvořený pomocí nové verze modulu
-   * Alternativně můžete upgradovat z PostgreSQL 10 na 11 pomocí [služby Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
+Automatické místní upgrady pro hlavní verze se nepodporují. Pokud chcete upgradovat na vyšší hlavní verzi, můžete 
+   * Použijte jednu z metod popsaných v části [inovace hlavních verzí pomocí výpisu a obnovení](./how-to-upgrade-using-dump-and-restore.md).
+   * K přesunu databáze na server vytvořený pomocí nové verze modulu použijte [pg_dump a pg_restore](./howto-migrate-using-dump-and-restore.md) .
+   * Použijte [službu Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) pro online upgrady.
 
 ### <a name="version-syntax"></a>Syntaxe verze
 Před verzí PostgreSQL verze 10 se [zásady správy verzí PostgreSQL](https://www.postgresql.org/support/versioning/) považují za upgradované na _hlavní verzi_ , aby se zvýšila první _nebo_ druhé číslo. Například 9,5 až 9,6 byl považován za upgrade _Hlavní_ verze. Od verze 10 se jako upgrade hlavní verze považuje jenom změna v prvním čísle. Například 10,0 až 10,1 je _dílčí_ upgrade pro vydání. Upgrade _Hlavní_ verze je od verze 10 do 11.

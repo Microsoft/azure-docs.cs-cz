@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763159"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938533"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii pro digitální vlákna Azure
 
@@ -38,6 +38,29 @@ Může dojít k několika vzácným situacím, když se v datovém centru rozš�
 
 >[!NOTE]
 > Některé služby Azure také poskytují další možnost s názvem **převzetí služeb při selhání iniciované zákazníkem**, které zákazníkům umožňuje iniciovat převzetí služeb při selhání jenom pro jejich instance, jako je třeba spuštění postupu zotavení po havárii. Tento mechanismus v současné době **nepodporují** digitální vlákna Azure. 
+
+## <a name="monitor-service-health"></a>Monitorování stavu služby
+
+Když instance digitálních vláken Azure převezmou služby při selhání a obnoví se, můžete tento proces monitorovat pomocí nástroje pro [Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) . Service Health sleduje stav služeb Azure napříč různými oblastmi a předplatnými a sdílí komunikaci s vlivem služby na výpadky a výpadky.
+
+Během události převzetí služeb při selhání může Service Health poskytnout indikaci, kdy je vaše služba vypnutá, a když se zálohuje.
+
+Zobrazení událostí Service Health...
+1. V Azure Portal přejděte na [Service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) (můžete použít tento odkaz nebo ho vyhledat pomocí panelu hledání na portálu).
+1. Pomocí levé nabídky přepněte na stránku *historie stavu* .
+1. Vyhledejte *název problému* začínajícího pomocí **digitálních vláken Azure** a vyberte ho.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Snímek obrazovky Azure Portal zobrazující stránku historie stavu Je zvýrazněný seznam několika problémů za posledních několik dní a problém nazvaný &quot;digitální vlákna Azure – Západní Evropa – omezeno&quot;." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. Obecné informace o výpadku si můžete zobrazit na kartě *Souhrn* .
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Na stránce historie stavu je zvýrazněna karta souhrn. Karta zobrazuje obecné informace, jako je prostředek, který byl ovlivněn, jeho oblast a předplatné." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. Další informace a aktualizace problémů v průběhu času najdete na kartě *aktualizace problému* .
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Na stránce historie stavu se zvýrazní karta aktualizace problému. Karta zobrazuje několik položek, které zobrazují aktuální stav před dnem." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+Všimněte si, že informace zobrazené v tomto nástroji nejsou specifické pro jednu službu Azure Digital instance. Po použití Service Health k pochopení, co se stane se službou Azure Digital propouštění v určité oblasti nebo předplatném, můžete pomocí [Nástroje pro stav prostředků](troubleshoot-resource-health.md) přejít k podrobnostem o konkrétních instancích a zjistit, jestli jsou ovlivněné.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

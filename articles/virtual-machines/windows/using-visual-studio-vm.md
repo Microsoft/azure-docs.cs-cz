@@ -7,15 +7,15 @@ ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836152"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938099"
 ---
 # <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Použití sady Visual Studio v předkonfigurovaném virtuálním počítači Azure je rychlý a snadný způsob, jak přejít z žádného nečinnosti do provozního vývojového prostředí. Systémové image s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -30,9 +30,9 @@ Obrázky pro nejaktuálnější hlavní verze, Visual Studio 2019, Visual Studio
 
 | Verze vydaných verzí                                                                                                                                                | Edice              | Verze produktu   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: nejnovější (verze 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | 16.5.4 verze    |
-| Visual Studio 2019: RTW                         | Enterprise | 16.0.13 verze    |
-| Visual Studio 2017: nejnovější (verze 15,9)           | Enterprise, Community | 15.9.22 verze   |
+| [Visual Studio 2019: nejnovější (verze 16,8)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | 16.8.0 verze    |
+| Visual Studio 2019: RTW                         | Enterprise | 16.0.20 verze    |
+| Visual Studio 2017: nejnovější (verze 15,9)           | Enterprise, Community | 15.9.29 verze   |
 | Visual Studio 2017: RTW                             | Enterprise, Community | 15.0.28 verze  |
 | Visual Studio 2015: nejnovější (aktualizace 3)               | Enterprise, Community | 14.0.25431.01 verze |
 

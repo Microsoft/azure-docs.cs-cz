@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498179"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936535"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -76,6 +76,9 @@ Sdílený přístupový podpis může mít jednu z následujících dvou forem:
 ## <a name="how-a-shared-access-signature-works"></a>Způsob fungování sdíleného přístupového podpisu
 
 Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště. Identifikátor URI obsahuje token, který obsahuje speciální sadu parametrů dotazu. Token indikuje, jak může klient přistupovat k prostředkům. Jeden z parametrů dotazu, signatura, je vytvořen z parametrů SAS a podepsaný klíčem, který byl použit k vytvoření SAS. Tento podpis používá Azure Storage k autorizaci přístupu k prostředku úložiště.
+
+> [!NOTE]
+> Není možné auditovat generování tokenů SAS. Každý uživatel, který má oprávnění k vygenerování tokenu SAS, buď pomocí klíče účtu, nebo prostřednictvím přiřazení role Azure RBAC, to může dělat bez vědomí vlastníka účtu úložiště. Buďte opatrní, abyste omezili oprávnění, která uživatelům umožňují generovat tokeny SAS. Pokud chcete uživatelům zabránit ve generování SAS podepsaného klíčem účtu pro úlohy objektů BLOB a Queue, můžete zamezit přístup ke sdíleným klíčům v účtu úložiště. Další informace najdete v tématu [zabránění autorizaci pomocí sdíleného klíče](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>Podpis a autorizace SAS
 

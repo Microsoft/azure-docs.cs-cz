@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020938"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937215"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Rychlý Start: nastavení ověření Azure pomocí Azure CLI
 
 Začínáme s ověřováním Azure pomocí Azure CLI k nastavení ověření identity.
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>Začínáme
+
+1. Nainstalovat toto rozšíření pomocí příkazu CLI
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. Ověřit verzi
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. K přihlášení do Azure použijte následující příkaz:
 
@@ -55,19 +65,16 @@ Začínáme s ověřováním Azure pomocí Azure CLI k nastavení ověření ide
 
 Tady jsou příkazy, které můžete použít k vytvoření a správě poskytovatele ověření identity:
 
-1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity:
+1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity:
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   Parametr **--certs-Input-Path** určuje sadu důvěryhodných podpisových klíčů. Pokud pro tento parametr zadáte název souboru, poskytovatel ověření identity musí být nakonfigurovaný jenom se zásadami v podepsaném formátu JWT. V opačném případě může být zásada nakonfigurovaná v textovém nebo nepodepsaném formátu JWT. Informace o tokenu JWT najdete v tématu [základní koncepty](basic-concepts.md). Ukázky certifikátů najdete v tématu [příklady certifikátu podepsaného zásad ověření identity](policy-signer-examples.md).
-
-1. Spuštěním příkazu [AZ atesting show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) načtěte vlastnosti poskytovatele ověření identity, jako je stav a AttestURI:
+   
+1. Spuštěním příkazu [AZ atesting show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) načtěte vlastnosti poskytovatele ověření identity, jako je stav a AttestURI:
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    Tento příkaz zobrazí hodnoty, jako je následující výstup:
@@ -84,34 +91,20 @@ Tady jsou příkazy, které můžete použít k vytvoření a správě poskytova
    TagsTable:
    ```
 
-Zprostředkovatele ověření identity můžete odstranit pomocí příkazu [AZ atesting Delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) :
+Zprostředkovatele ověření identity můžete odstranit pomocí příkazu [AZ atesting Delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) :
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>Správa zásad
 
-Pro správu zásad vyžaduje uživatel Azure AD následující oprávnění pro `Actions` :
+Pomocí příkazů popsaných tady můžete poskytovat správu zásad pro poskytovatele ověření identity – jeden typ ověření identity najednou.
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-Tato oprávnění je možné přiřadit uživateli Azure AD prostřednictvím role, jako je například `Owner` (oprávnění zástupných znaků), `Contributor` (oprávnění zástupných znaků), nebo `Attestation Contributor` (specifická oprávnění pouze pro Azure Attestation).  
-
-Pro čtení zásad vyžaduje uživatel Azure AD následující oprávnění pro `Actions` :
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-Toto oprávnění je možné přiřadit uživateli Azure AD prostřednictvím role, jako je například `Reader` (oprávnění zástupných znaků) nebo `Attestation Reader` (specifická oprávnění pouze pro Azure Attestation).
-
-Pomocí příkazů popsaných tady můžete poskytovat správu zásad pro poskytovatele ověření identity, jednu TEE v jednom okamžiku.
-
-Příkaz [AZ Attestation Policy show show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) vrátí aktuální zásadu pro zadaný Tee:
+Příkaz [AZ Attestation Policy show show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) vrátí aktuální zásadu pro zadaný Tee:
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 Podporovány jsou následující typy TEE:
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-Pomocí příkazu [AZ attestationing Policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) nastavte novou zásadu pro zadaný Tee.
+Pomocí příkazu [AZ attestationing Policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) nastavte novou zásadu pro zadaný typ ověření identity.
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-Zásady ověřování ve formátu JWT musí obsahovat deklaraci s názvem `AttestationPolicy` . Podepsané zásady musí být podepsané klíčem, který odpovídá jakémukoli existujícímu certifikátu podepsanému zásadami.
-
-Ukázky zásad najdete v tématu [Příklady zásad ověřování identity](policy-examples.md).
-
-Příkaz [AZ Attestation Policy Reset](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) nastaví novou zásadu pro zadaný Tee.
+Nastavení zásad v textovém formátu pro daný druh typu ověřování pomocí cesty k souboru:
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>Správa certifikátů podepsaných zásadou
-
-Pomocí následujících příkazů spravujte certifikáty podepsané zásady pro poskytovatele ověření identity:
+Nastavení zásad ve formátu JWT pro daný druh typu ověřování pomocí cesty k souboru:
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-Certifikát podepsané zásady je podepsaný token JWT s deklarací s názvem `maa-policyCertificate` . Hodnota deklarace identity je JWK, který obsahuje důvěryhodný podpisový klíč, který se má přidat. Token JWT musí být podepsán pomocí privátního klíče, který odpovídá libovolnému ze stávajících certifikátů podepsaných zásadou. Informace o tokenech JWT a JWK najdete v tématu [základní koncepty](basic-concepts.md).
-
-Veškerá sémantická manipulace s certifikátem podepsané zásady se musí provádět mimo rozhraní příkazového řádku Azure CLI. Pokud jde o rozhraní příkazového řádku Azure CLI, jedná se o jednoduchý řetězec.
-
-Ukázky certifikátů najdete v tématu [příklady certifikátu podepsaného zásad ověření identity](policy-signer-examples.md).
 
 ## <a name="next-steps"></a>Další kroky
 

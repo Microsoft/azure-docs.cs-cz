@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651614"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937164"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -61,6 +61,7 @@ Přístup k mým aplikacím může být blokovaný kvůli problému s uživatels
 -   [Zkontroluje stav vícefaktorového ověřování uživatele.](#check-a-users-multi-factor-authentication-status)
 -   [Ověřit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 -   [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
+-   [Zjistit, jestli má uživatel více než 999 přiřazení role aplikace](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [Ověření licencí přiřazených uživateli](#check-a-users-assigned-licenses)
 -   [Přiřazení licence uživateli](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ Pokud chcete ověřit členství uživatele ve skupině, postupujte podle těcht
 6.  **Vyhledejte** uživatele, kterého vás zajímá, a **Vyberte řádek** , který chcete vybrat.
 7.  Vyberte **skupiny** , chcete-li zobrazit skupiny, kterých je uživatel členem.
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Zjistit, jestli má uživatel více než 999 přiřazení role aplikace
+Pokud má uživatel přiřazeno více než 999 přiřazení rolí aplikace, pak nemusí zobrazit všechny své aplikace v mých aplikacích.
+
+Důvodem je to, že moje aplikace teď načtou až 999 přiřazení role aplikace a určí aplikace, ke kterým se uživatelé přiřazují. Pokud je uživatel přiřazený k více než 999 aplikacím, není možné řídit, které z těchto aplikací se budou zobrazovat na portálu moje aplikace.
+
+Pokud chcete zjistit počet přiřazení rolí aplikace udělených uživateli, postupujte podle těchto kroků:
+1. Nainstalujte modul [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell.
+2. Spusťte `Connect-MgGraph -Scopes "Directory.Read.All"` a ověřte jako **globální správce.**
+3. Spuštěním nástroje `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` určíte počet přiřazení rolí aplikace, které uživatel aktuálně udělil.
+
 ### <a name="check-a-users-assigned-licenses"></a>Ověření licencí přiřazených uživateli
 Pokud chcete ověřit přiřazené licence uživatele, postupujte podle těchto kroků:
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
@@ -172,14 +183,14 @@ Pokud chcete zjistit, jestli máte správný přímý odkaz, postupujte podle t�
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 2. Otevřete **rozšíření Azure Active Directory** tím, že vyberete **všechny služby** v horní části hlavní navigační nabídky vlevo.
 3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
-4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
-5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
+4. V levé navigační nabídce Azure Active Directory vyberte **Podnikové aplikace**.
+5. Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
    * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 6. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 7. Otevřete **rozšíření Azure Active Directory** tím, že vyberete **všechny služby** v horní části hlavní navigační nabídky vlevo.
 8. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
-9. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
-10. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
+9. V levé navigační nabídce Azure Active Directory vyberte **Podnikové aplikace**.
+10. Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
     * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 11. Vyberte aplikaci, pro kterou chcete vrátit přímý odkaz.
 12. Vyhledejte **adresu URL přístupu uživatele**. Váš přímý odkaz by měl odpovídat této adrese URL.

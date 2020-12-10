@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 081b9288d091e26d0e6d30aa849ced18a3c2ffb6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84466909"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938456"
 ---
 Vytvořte aplikaci Pizza.
 
@@ -48,18 +48,18 @@ Měla by se zobrazit stránka **záměry** se seznamem záměrů v aplikaci Pizz
 1. Vyberte **prostředek pro vytváření obsahu**.
 1. Vyberte **změnit prostředek pro vytváření obsahu**.
 
-Pokud máte prostředek pro vytváření obsahu, zadejte **název tenanta**, **název předplatného**a **název prostředku Luis** prostředku pro vytváření obsahu.
+Pokud máte prostředek pro vytváření obsahu, zadejte **název tenanta**, **název předplatného** a **název prostředku Luis** prostředku pro vytváření obsahu.
 
 Pokud nemáte prostředek pro vytváření obsahu:
 
 1. Vyberte **vytvořit nový prostředek**.
-1. Zadejte **název tenanta**, **název prostředku**, **název předplatného**a **název skupiny prostředků Azure**.
+1. Zadejte **název tenanta**, **název prostředku**, **název předplatného** a **název skupiny prostředků Azure**.
 
 Vaše aplikace Pizza je teď připravená k použití.
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>Poznamenejte si hodnoty pro přístup k aplikaci Pizza.
 
-Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, vytváření klíčů a koncový bod pro vytváření aplikací pro Pizza.
+Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, vytváření klíčů a koncový bod pro vytváření aplikací pro Pizza. K získání předpovědi budete potřebovat samostatný koncový bod předpovědi a klíč předpovědi.
 
 Vyhledání těchto hodnot:
 
@@ -67,5 +67,5 @@ Vyhledání těchto hodnot:
 1. Na stránce **nastavení aplikace** si poznamenejte **ID aplikace**.
 1. Vyberte **Azure Resources** (Prostředky Azure).
 1. Vyberte **prostředek pro vytváření obsahu**.
-1. Na kartě **prostředek pro vytváření** záznamů zaznamenejte **primární klíč**. Tato hodnota je váš kód pro vytváření.
+1. Na kartách prostředky pro **vytváření prostředků** a **předpovědí prostředků** zaznamenejte **primární klíč**. Tato hodnota je váš kód pro vytváření.
 1. Zaznamenejte **adresu URL koncového bodu**. Tato hodnota je vaším koncovým bodem pro vytváření obsahu.

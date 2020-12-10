@@ -5,14 +5,14 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 820659c513674dc04e914c8f1094afab4f5a89e2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c191da32444c3eb0315373780c8037f1b45be423
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356456"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96992967"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Funkční [komunikační služba volá aplikaci](../getting-started-with-calling.md).
 - [Nasazení týmů](/deployoffice/teams-install).
@@ -28,79 +28,89 @@ Abyste mohli tuto funkci používat, musíte být členem vlastnící organizace
 
 ## <a name="add-the-teams-ui-controls"></a>Přidat ovládací prvky uživatelského rozhraní týmů
 
-Přidejte nové textové pole a tlačítko v rámci HTML. Textové pole se použije k zadání kontextu schůzky týmů a tlačítko se použije k připojení k zadané schůzce:
+Nahraďte kód v index.html následujícím fragmentem kódu.
+Textové pole se použije k zadání kontextu schůzky týmů a tlačítko se použije k připojení k zadané schůzce:
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Communication Client - Calling Sample</title>
-  </head>
-  <body>
+</head>
+<body>
     <h4>Azure Communication Services</h4>
-    <h1>Calling Quickstart</h1>
-    <input 
-      id="callee-id-input"
-      type="text"
-      placeholder="Who would you like to call?"
-      style="margin-bottom:1em; width: 200px;"
-    />
-    <input 
-      id="teams-id-input"
-      type="text"
-      placeholder="Teams meeting context"
-      style="margin-bottom:1em; width: 300px;"
-    />
+    <h1>Teams meeting join quickstart</h1>
+    <input id="teams-link-input" type="text" placeholder="Teams meeting link"
+        style="margin-bottom:1em; width: 300px;" />
+        <p>Call state <span style="font-weight: bold" id="call-state">-</span></p>
     <div>
-      <button id="call-button" type="button" disabled="true">
-        Start Call
-      </button>
-      &nbsp;
-      <button id="hang-up-button" type="button" disabled="true">
-        Hang Up
-      </button>
-         <button id="meeting-button" type="button" disabled="false">
-        Join Teams Meeting
-      </button>
+        <button id="join-meeting-button" type="button" disabled="false">
+            Join Teams Meeting
+        </button>
+        <button id="hang-up-button" type="button" disabled="true">
+            Hang Up
+        </button>
     </div>
     <script src="./bundle.js"></script>
-  </body>
+</body>
+
 </html>
 ```
 
 ## <a name="enable-the-teams-ui-controls"></a>Povolit ovládací prvky uživatelského rozhraní týmů
 
-Nyní můžeme vytvořit vazby na tlačítko **schůze JOIN Teams** na kód, který se připojí k dodanému týmu:
+Nahraďte obsah souboru client.js následujícím fragmentem kódu.
 
 ```javascript
-meetingButton.addEventListener("click", () => {
+import { CallClient } from "@azure/communication-calling";
+import { AzureCommunicationUserCredential } from '@azure/communication-common';
+
+let call;
+let callAgent;
+const meetingLinkInput = document.getElementById('teams-link-input');
+const hangUpButton = document.getElementById('hang-up-button');
+const teamsMeetingJoinButton = document.getElementById('join-meeting-button');
+const callStateElement = document.getElementById('call-state');
+
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    teamsMeetingJoinButton.disabled = false;
+}
+init();
+
+hangUpButton.addEventListener("click", async () => {
+    // end the current call
+    await call.hangUp();
+  
+    // toggle button states
+    hangUpButton.disabled = true;
+    teamsMeetingJoinButton.disabled = false;
+    callStateElement.innerText = '-';
+  });
+
+teamsMeetingJoinButton.addEventListener("click", () => {
     
     // set display name in the meeting
-    callAgent.updateDisplayName('YOUR_NAME');
+    callAgent.updateDisplayName('ACS user');
     
     // join with meeting link
-    call = callAgent.join({meetingLink: 'MEETING_LINK'}, {});
-
-     // join with meeting coordinates
-     call = callAgent.join({
-        threadId: 'CHAT_THREAD_ID',
-        organizerId: 'ORGANIZER_ID',
-        tenantId: 'TENANT_ID',
-        messageId: 'MESSAGE_ID'
-    }, {})
+    call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
     
+    call.on('callStateChanged', () => {
+        callStateElement.innerText = call.state;
+    })
     // toggle button states
     hangUpButton.disabled = false;
-    callButton.disabled = true;
-    meetingButton.disabled = true;
+    teamsMeetingJoinButton.disabled = true;
 });
 ```
 
-## <a name="get-the-meeting-context"></a>Získat kontext schůzky
+## <a name="get-the-teams-meeting-link"></a>Získat odkaz na schůzku týmů
 
-Kontext týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-
-Požadované informace o schůzce můžete také získat z adresy URL **připojení schůzky** v samotném pozvání schůzky.
+Odkaz na schůzku týmů lze načíst pomocí rozhraní Graph API. Tato část je podrobně popsána v [dokumentaci ke grafům](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
+Komunikační služby, které volá sadu SDK, přijímají úplný tým odkaz na schůzku. Tento odkaz se vrátí jako součást `onlineMeeting` prostředku, který je přístupný v rámci [ `joinWebUrl` vlastnosti](/graph/api/resources/onlinemeeting?view=graph-rest-beta) . můžete také získat požadované informace o schůzce z adresy URL **připojení ke schůzce** v rámci pozvánky na schůzku.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -112,6 +122,6 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Otevřete prohlížeč a přejděte na http://localhost:8080/ . Měli byste vidět následující:
 
-:::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
+:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
 
 Do textového pole vložte kontext týmů a stiskněte *připojit týmy schůzky* , aby se připojili k týmům, které se nacházejí v rámci vaší aplikace komunikační služby.

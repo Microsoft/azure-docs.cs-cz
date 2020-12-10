@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346134"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937725"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -48,7 +48,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
     |--|--|
     |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Vícenásobné zapnutí výchozího textu**| Vybrat a možnost|
-    |**+ Přidat adresu URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ Přidat adresu URL**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Povídání**|Vybrat **Professional**|
 
 7. V **kroku 5** vyberte **vytvořit znalostní báze**.
@@ -83,7 +83,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
     |--|--|
     |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Vícenásobné zapnutí výchozího textu**| Vybrat a možnost|
-    |**+ Přidat adresu URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ Přidat adresu URL**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Povídání**|Vybrat **Professional**|
 
 8. V **kroku 5** vyberte **vytvořit znalostní báze**.
@@ -173,7 +173,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 1. Otevře se nová karta prohlížeče pro Azure Portal se stránkou pro vytvoření Azure Bot Service. Nakonfigurujte službu Azure bot Service. Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** pro robot se musí lišit od názvu aplikace pro službu QnA maker.
 
-    * **Postup**
+    * **Správný postup**
         * Změnit popisovač robota – Pokud není jedinečný
         * Vyberte jazyk sady SDK. Po vytvoření robota si můžete kód stáhnout do svého místního vývojového prostředí a pokračovat v procesu vývoje.
     * **Chybný postup**

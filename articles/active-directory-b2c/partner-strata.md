@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171411"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936688"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
 
@@ -83,7 +83,7 @@ Pokud chcete získat software, který budete používat k integraci své starš�
 
    c. Přidejte identifikátor URI pro přesměrování vaší aplikace. Tento identifikátor URI se bude shodovat s `oauthRedirectURL` parametrem konfigurace konektoru Azure AD B2C Orchestrator, například `https://example.com/oidc-endpoint` .
 
-2. **Vytvoření toku uživatele**: Vytvořte [uživatelský tok pro přihlašování a přihlašování](./tutorial-create-user-flows.md).
+2. **Vytvoření toku uživatele**: Vytvořte [uživatelský tok pro registraci a přihlašování](./tutorial-create-user-flows.md).
 
 3. **Přidat IDP**: vyberte, abyste se přihlásili ke svému uživateli pomocí místního účtu nebo společenského nebo podnikového [IdPu](./tutorial-add-identity-providers.md).
 

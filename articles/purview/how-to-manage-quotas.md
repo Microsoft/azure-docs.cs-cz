@@ -8,22 +8,22 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551967"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938830"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Správa a zvýšení kvót pro prostředky pomocí Azure dosah
  
 Azure dosah je cloudová služba, kterou můžou používat uživatelé dat. Azure dosah slouží k centrální správě zásad správného řízení dat napříč vašimi datovými podstatami, které jsou rozložená v cloudu i v Prem prostředích. Služba umožňuje obchodním analytikům vyhledat relevantní data pomocí smysluplných obchodních podmínek. Pokud chcete zvýšit limity až do maximálního počtu pro vaše předplatné, obraťte se na podporu.
  
-## <a name="azure-purview-limits"></a>Omezení Azure dosah
+## <a name="azure-purview-limits"></a>Omezení Azure Purview
  
 |**Prostředek**|  **Výchozí omezení**  |**Maximální limit**|
 |---|---|---|
-|Účty dosah na tenanta (všechna předplatná jsou kombinovaná)|3|Kontaktování podpory|
+|Účty dosah na oblast, na každého tenanta (všechna předplatná jsou kombinovaná)|3|Kontaktování podpory|
 |Virtuální jádra k dispozici ke skenování na účet *|160|160|
 |Souběžné kontroly na účet v daném okamžiku. Limit je založen na typu prohledávaných zdrojů dat *|5 | 10 |
 |Maximální doba, po kterou lze spustit kontrolu|7 dní|7 dní|

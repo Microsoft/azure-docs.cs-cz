@@ -5,18 +5,15 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591525"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938898"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
- 
-> [!NOTE]
-> Logické dekódování je ve verzi Public Preview na serveru Azure Database for PostgreSQL-Single.
 
 [Logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/logicaldecoding.html) umožňuje streamovat změny dat na externí příjemce. Logické dekódování se používá v oblíbených případech pro streamování událostí a Change Data Capture.
 
@@ -85,7 +82,7 @@ V následujícím příkladu používáme rozhraní SQL s modulem plug-in wal2js
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. Vydejte příkazy SQL. Například:
+2. Vydejte příkazy SQL. Příklad:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c193249ee8cef38650a8a188a59c26a0eab17506
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361059"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938392"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Povolit protokolování zkušebních běhů v ML
 
@@ -51,12 +51,12 @@ V tomto příkladu se provede uklizení parametrů přes hodnoty alfa a k zaznam
 
 1. Vytvořte trénovací skript, který obsahuje logiku protokolování: `train.py`.
 
-   [!code-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
 
 
 1. Odešlete skript ```train.py``` pro spuštění v prostředí spravovaném uživatelem. K trénování se odešle celá složka skriptu.
 
-   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     Parametr `show_output` zapne podrobné protokolování, které vám umožní zobrazit podrobnosti z procesu trénování a také informace o všech vzdálených prostředcích nebo cílových výpočetních objektech. Pomocí následujícího kódu zapněte podrobné protokolování při odeslání experimentu.
 
@@ -91,7 +91,7 @@ Následující poznámkové bloky ukazují koncepty popsané v tomto článku:
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+[!INCLUDE[aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

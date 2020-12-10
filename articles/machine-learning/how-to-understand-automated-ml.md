@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922080"
+ms.locfileid: "96937708"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -65,7 +65,7 @@ Automatizované ML vypočítá metriku výkonu pro každý model klasifikace vyg
 Mnoho metrik klasifikace je definováno pro binární klasifikaci dvou tříd a vyžaduje průměry nad třídy, aby se vytvořilo jedno skóre pro klasifikaci více tříd. Scikit – poskytuje několik výpočetních metod, tři z nich, které automatizované ML zveřejňuje: **makro**, **Micro** a **Vážená**.
 
 - **Makro** – vypočítá metriku pro každou třídu a vybere nevážený průměr.
-- **Micro** Vypočítejte metriku globálně vynásobením celkového počtu skutečných kladů, falešně negativních hodnot a falešně pozitivních hodnot (nezávisle na třídách).
+-  Vypočítejte metriku globálně vynásobením celkového počtu skutečných kladů, falešně negativních hodnot a falešně pozitivních hodnot (nezávisle na třídách).
 - **Vážená** – vypočítá metriku pro každou třídu a vezme vážený průměr na základě počtu vzorků na třídu.
 
 Zatímco každá metoda pro průměrování má své výhody, jeden běžný aspekt při výběru vhodné metody je nevyrovnanost třídy. Pokud třídy mají odlišný počet vzorků, může být více informativní použít průměr makra, kde jsou menšinové třídy předány stejné vážení na většinu tříd. Přečtěte si další informace o [binárních a vícevrstvých metrikách v automatizovaném ml](#binary-vs-multiclass-classification-metrics). 
@@ -81,7 +81,7 @@ balanced_accuracy|Vyvážená přesnost je aritmetickým průměrem odvolání j
 f1_score|Známkou F1 je harmonický průměr přesnosti a odvolání. Je dobře vyvážená míra falešně pozitivních i falešně negativních hodnot. Ale nebere v úvahu záporné negativní hodnoty. <br> <br>**Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří,<li>  `f1_score_macro`: aritmetický průměr skóre F1 pro každou třídu. <li> `f1_score_micro`: vypočítáno celkovými skutečnými kladnými, falešně negativními a falešně pozitivními. <li> `f1_score_weighted`: Vážený průměr podle četnosti třídy F1 skóre pro každou třídu.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|Jedná se o funkci ztráty použitou v rámci (MULTINOMIAL) logistické regrese a rozšíření, jako jsou například sítě neuronové, definované jako negativní protokol – pravděpodobnost hodnot true pro pravděpodobnostní třídění předpovědi. <br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF)|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| Normalizované odvolání makra je vyvolat makro – průměrně a normalizované, takže náhodný výkon má skóre 0 a dokonalý výkon má skóre 1. <br> <br>**Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>kde `R` je očekávaná hodnota `recall_score_macro` pro Random předpovědi.<br><br>`R = 0.5`&nbsp;pro &nbsp; binární &nbsp; klasifikaci. <br>`R = (1 / C)` pro problémy s klasifikací C-Class.|
-Korelační koeficient Matthews | Korelační koeficient Matthews je vyvážená míra přesnosti, která se dá použít i v případě, že jedna třída má mnoho dalších vzorků než jiné. Koeficient 1 označuje dokonalý předpověď, 0 náhodnou předpověď a-1 inverzní předpověď.<br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [-1, 1]|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | Korelační koeficient Matthews je vyvážená míra přesnosti, která se dá použít i v případě, že jedna třída má mnoho dalších vzorků než jiné. Koeficient 1 označuje dokonalý předpověď, 0 náhodnou předpověď a-1 inverzní předpověď.<br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [-1, 1]|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 Přesnost|Přesnost je schopnost modelu vyhnout se označování negativních vzorků jako pozitivních. <br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří, <li> `precision_score_macro`, aritmetický průměr přesnosti pro každou třídu. <li> `precision_score_micro`, vypočítáno globálně pomocí počítání celkových skutečných kladných hodnot a falešně pozitivních hodnot. <li> `precision_score_weighted`, aritmetický průměr přesnosti pro každou třídu, váže podle počtu skutečných instancí v každé třídě.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 Úplnost| Odvolání je schopnost modelu detekovat všechny pozitivní vzorky. <br><br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [0, 1]<br> <br>Mezi podporované názvy metrik patří, <li>`recall_score_macro`: aritmetický průměr odvolání pro každou třídu. <li> `recall_score_micro`: vypočítáno globálně pomocí počítání celkových skutečných hodnot, falešně negativních hodnot a falešně pozitivních hodnot.<li> `recall_score_weighted`: aritmetický průměr odvolání pro každou třídu, vážený podle počtu skutečných instancí v každé třídě.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|Vážená přesnost je přesnost, kdy je každý vzorek vážený celkovým počtem vzorků patřících ke stejné třídě. <br><br>**Cíl:** Blíže k 1 lepšímu <br>**Rozsah:** [0, 1]|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ Model s vysokou jistotou bude přepovídat pravděpodobnosti téměř nula a jed
 
 ## <a name="regressionforecasting-metrics"></a>Metriky regrese/prognózování
 
-Automatizované ML vypočítá stejné metriky výkonu pro každý generovaný model bez ohledu na to, zda se jedná o regresi nebo experimenty předpovědi. Tyto metriky se také procházejí normalizací a umožňují porovnání modelů vyškolených na základě dat s různými rozsahy. Další informace najdete v tématu [normalizace metriky](#metric-normalization) .  
+Automatizované ML vypočítá stejné metriky výkonu pro každý generovaný model bez ohledu na to, zda se jedná o regresi nebo experimenty předpovědi. Tyto metriky se také procházejí normalizací a umožňují porovnání modelů vyškolených na základě dat s různými rozsahy. Další informace najdete v tématu [normalizace metrik](#metric-normalization).  
 
 Následující tabulka shrnuje metriky výkonu modelu vygenerované pro regresi a experimenty. Podobně jako metriky klasifikace jsou tyto metriky také založeny na implementaci scikitch informací. Odpovídající dokumentace ke službě scikit se v této části propojí v poli **Výpočet** .
 

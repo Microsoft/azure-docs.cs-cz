@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317465"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938235"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Zvýšení odolnosti při ověřování a autorizaci v klientských aplikacích, které vyvíjíte
 
@@ -30,7 +30,9 @@ MSAL ukládá tokeny do mezipaměti a používá vzor získání tichého tokenu
 
 ![Obrázek zařízení s aplikací a s využitím MSAL k volání identity Microsoftu](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-Při použití MSAL získáte pomocí následujícího vzoru ukládání do mezipaměti, aktualizace a bezobslužné získání tokenu.
+Při použití MSAL se automaticky podporuje ukládání tokenů do mezipaměti, aktualizace a tiché získávání. Pomocí jednoduchých vzorů můžete získat tokeny nezbytné pro moderní ověřování. Podporujeme mnoho jazyků a na stránce [ukázek](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) si můžete najít ukázku, která odpovídá vašemu jazyku a scénáři.
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 MSAL může v některých případech aktivně aktualizovat tokeny. Když Microsoft Identity vystaví dlouhodobé tokeny, může klientovi odeslat informace na optimální dobu k aktualizaci tokenu ("aktualizovat \_ v"). MSAL bude proaktivně aktualizovat token na základě těchto informací. Aplikace bude i nadále běžet, i když je starý token platný, ale bude mít delší časový rámec, během kterého by bylo možné provést další úspěšné získání tokenu.
 
@@ -65,7 +89,9 @@ Vývojáři by měli mít proces aktualizace na nejnovější verzi MSAL. Ověř
 
 [Podívejte se na nejnovější verzi Microsoft. identity. Web a poznámky k verzi.](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>Pokud nepoužíváte MSAL, použijte tyto odolné vzory pro zpracování tokenů.
+## <a name="use-resilient-patterns-for-token-handling"></a>Použití odolných vzorů pro zpracování tokenů
+
+Pokud nepoužíváte MSAL, můžete použít tyto odolné vzory pro zpracování tokenů. Tyto osvědčené postupy jsou implementovány automaticky knihovnou MSAL. 
 
 Obecně platí, že aplikace, která používá moderní ověřování, zavolá koncový bod, který načte tokeny, které ověřují uživatele nebo autorizuje aplikaci, aby vyvolala chráněná rozhraní API. MSAL je určeno pro zpracování podrobností o ověřování a implementuje několik vzorů pro zlepšení odolnosti tohoto procesu. Pomocí pokynů v této části můžete implementovat osvědčené postupy, pokud se rozhodnete použít jinou knihovnu než MSAL. Pokud používáte MSAL, získáte všechny tyto osvědčené postupy zdarma, protože je MSAL automaticky implementuje.
 

@@ -3,12 +3,12 @@ title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí 
 description: Seznamte se s postupem ochrany virtuálních počítačů řešení Azure VMware pomocí nativních nástrojů zabezpečení Azure z jednoho řídicího panelu v Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370149"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937334"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
@@ -43,7 +43,7 @@ V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro d
     - Prozkoumejte hrozby s využitím umělých funkcí a zjišťováním pro podezřelé aktivity se škálováním.
     - Můžete rychle reagovat na incidenty díky integrované orchestraci a automatizaci běžných úloh.
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 
 Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Analytics pracovní prostor. Postup najdete v tématu [Vytvoření pracovního prostoru Log Analytics z Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
@@ -51,7 +51,7 @@ Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Ana
 
 Azure Security Center je předem nakonfigurovaný nástroj a nevyžaduje nasazení. V Azure Portal vyhledejte **Security Center** a vyberte ho.
 
-### <a name="enable-azure-defender"></a>Povolit Azure Defender
+### <a name="enable-azure-defender"></a>Povolení Azure Defenderu
 
 Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azure Security Center napříč vašimi hybridními úlohami v místním prostředí i v cloudu. Proto je nutné povolit Azure Defender a chránit tak virtuální počítače s řešením Azure VMware. 
 
@@ -100,7 +100,7 @@ Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azu
 
 3. Vyberte název prostředku. Otevře se stránka se zobrazenými podrobnostmi o stavu zabezpečení vašeho prostředku.
 
-4. V části **seznam doporučení** vyberte karty **doporučení** , **úspěšné posouzení** a **nedostupné hodnocení** , abyste zobrazili tyto podrobnosti.
+4. V části **seznam doporučení** vyberte karty **doporučení**, **úspěšné posouzení** a **nedostupné hodnocení** , abyste zobrazili tyto podrobnosti.
 
     :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Snímek obrazovky Azure Security Center zobrazující doporučení a posouzení zabezpečení":::
 
@@ -173,7 +173,7 @@ Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidl
         |where count_ > 3
         ```
         
-    - Mapovat entitu
+    - Mapování entit
     - Plánování dotazů
     - Prahová hodnota upozornění
     - Seskupování událostí

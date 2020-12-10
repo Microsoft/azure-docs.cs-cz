@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533739"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937283"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
@@ -287,6 +287,23 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště, který umožňuje veřejný přístup (výchozí nastavení pro nový účet), když zásada s efektem odepření vyžaduje, aby byl veřejný přístup zakázán.
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Oprávnění pro povolení nebo zákaz veřejného přístupu
+
+Aby uživatel mohl nastavit vlastnost **AllowBlobPublicAccess** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují akci **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/ \* storageAccounts/* _. Mezi předdefinované role s touto akcí patří:
+
+- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
+- Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
+- Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však _ * Microsoft. Storage/storageAccounts/klíče listkey/Action * *, který uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
+
+Přiřazení rolí musí být vymezené na úrovni účtu úložiště nebo vyšší, aby uživatel mohl povolit nebo zakázat veřejný přístup k účtu úložiště. Další informace o rozsahu role najdete v tématu [vysvětlení oboru pro službu Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Buďte opatrní, abyste omezili přiřazení těchto rolí jenom na ty, kteří potřebují možnost vytvořit účet úložiště nebo aktualizovat jeho vlastnosti. Použijte princip nejnižších oprávnění, abyste měli jistotu, že uživatelé mají nejnižší oprávnění, která potřebují k tomu, aby mohli plnit své úkoly. Další informace o správě přístupu pomocí služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, takže uživatel s jednou z těchto rolí pro správu může také vytvářet a spravovat účty úložiště. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="next-steps"></a>Další kroky
 

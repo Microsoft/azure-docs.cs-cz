@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921521"
+ms.locfileid: "96937623"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -305,15 +305,15 @@ Každé předplatné Azure má tento účet pro integraci:
 
 * 1 000 Celkový počet integračních účtů, včetně integračních účtů v jakémkoli [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) napříč [SKU pro vývojáře a úrovně Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
-* Každý ISE, ať už [vývojář nebo Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), je omezený na 20 celkových integračních účtů:
+* Každý ISE, ať už [vývojář nebo Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), je omezený na celkový počet účtů pro integraci, ale [Toto omezení můžete zvýšit na další náklady](logic-apps-pricing.md#fixed-pricing):
 
   | SKU ISE | Limity účtu integrace |
   |---------|----------------------------|
-  | **Premium** | 20 Total – jenom [standardní](../logic-apps/logic-apps-pricing.md#integration-accounts) účty, včetně jednoho standardního účtu zdarma. Nejsou povoleny žádné bezplatné nebo základní účty. |
-  | **Vývojář** | 20 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtů (s omezením na 1 účet) a v kombinaci se [standardem](../logic-apps/logic-apps-pricing.md#integration-accounts) nebo všemi standardními účty. Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
+  | **Premium** | 20 Total – jenom [standardní](../logic-apps/logic-apps-pricing.md#integration-accounts) účty, včetně jednoho standardního účtu zdarma. [Pro další náklady můžete mít více účtů pro integraci](logic-apps-pricing.md#fixed-pricing). Nejsou povoleny žádné bezplatné nebo základní účty. |
+  | **Vývojář** | 20 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtů (s omezením na 1 účet) a v kombinaci se [standardem](../logic-apps/logic-apps-pricing.md#integration-accounts) nebo všemi standardními účty. [Pro další náklady můžete mít více účtů pro integraci](logic-apps-pricing.md#fixed-pricing). Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
   |||
 
-Další náklady se vztahují na účty pro integraci, které přidáte nad rámec účtů pro integraci, které jsou součástí ISE. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
+Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 <a name="artifact-number-limits"></a>
 

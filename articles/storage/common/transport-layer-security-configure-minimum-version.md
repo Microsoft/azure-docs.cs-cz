@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498128"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937487"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -339,6 +339,23 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště s minimální verzí TLS nastavenou na TLS 1,0 (výchozí pro nový účet), když zásada s efektem odepření vyžaduje, aby se minimální verze protokolu TLS nastavila na TLS 1,2.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>Potřebná oprávnění pro vyžadování minimální verze protokolu TLS
+
+Aby uživatel mohl nastavit vlastnost **MinimumTlsVersion** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují akci **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/ \* storageAccounts/* _. Mezi předdefinované role s touto akcí patří:
+
+- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
+- Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
+- Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však _ * Microsoft. Storage/storageAccounts/klíče listkey/Action * *, který uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
+
+Přiřazení rolí musí být vymezené na úrovni účtu úložiště nebo vyšší, aby uživatel mohl vyžadovat minimální verzi TLS pro účet úložiště. Další informace o rozsahu role najdete v tématu [vysvětlení oboru pro službu Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Buďte opatrní, abyste omezili přiřazení těchto rolí jenom na ty, kteří potřebují možnost vytvořit účet úložiště nebo aktualizovat jeho vlastnosti. Použijte princip nejnižších oprávnění, abyste měli jistotu, že uživatelé mají nejnižší oprávnění, která potřebují k tomu, aby mohli plnit své úkoly. Další informace o správě přístupu pomocí služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, takže uživatel s jednou z těchto rolí pro správu může také vytvářet a spravovat účty úložiště. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="network-considerations"></a>Důležité informace z hlediska využívání sítě
 

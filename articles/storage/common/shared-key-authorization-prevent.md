@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484885"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936722"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -23,13 +23,11 @@ Každý zabezpečený požadavek na účet Azure Storage musí být autorizovan�
 Pokud zakážete autorizaci sdíleného klíče pro účet úložiště, Azure Storage zamítne všechny následné požadavky na tento účet, které jsou autorizované pomocí přístupových klíčů účtu. Úspěšné budou jenom zabezpečené žádosti, které jsou autorizované se službou Azure AD. Další informace o používání služby Azure AD najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](storage-auth-aad.md).
 
 > [!WARNING]
-> Azure Storage podporuje autorizaci Azure AD jenom pro požadavky na úložiště objektů BLOB a front. Pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, požadavky na soubory Azure nebo úložiště tabulek, které používají autorizaci pomocí sdíleného klíče, se nezdaří.
->
-> V rámci verze Preview budou žádosti o soubory Azure nebo úložiště tabulek, které používají tokeny sdíleného přístupového podpisu (SAS) vygenerované pomocí přístupových klíčů k účtu, úspěšné, pokud není povolená autorizace sdíleného klíče. Další informace najdete v tématu [o verzi Preview](#about-the-preview).
->
-> Nepovolený přístup ke sdíleným klíčům pro účet úložiště nemá vliv na připojení SMB ke službě soubory Azure.
+> Azure Storage podporuje autorizaci Azure AD jenom pro požadavky na úložiště objektů BLOB a front. Pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, požadavky na soubory Azure nebo úložiště tabulek, které používají autorizaci pomocí sdíleného klíče, se nezdaří. Vzhledem k tomu, že Azure Portal vždy používá autorizaci pomocí sdíleného klíče pro přístup k datům souborů a tabulek, pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, nebudete mít přístup k datům souborů nebo tabulek v Azure Portal.
 >
 > Společnost Microsoft doporučuje, abyste buď migrujete jakákoli data služby soubory Azure nebo úložiště tabulek do samostatného účtu úložiště, předtím, než zakážete přístup k účtu přes sdílený klíč, nebo že toto nastavení nepoužijete pro účty úložiště, které podporují úlohy Azure Files nebo Table Storage.
+>
+> Nepovolený přístup ke sdíleným klíčům pro účet úložiště nemá vliv na připojení SMB ke službě soubory Azure.
 
 Tento článek popisuje, jak zjišťovat požadavky odeslané pomocí autorizace pomocí sdíleného klíče a jak napravit autorizaci sdíleného klíče pro váš účet úložiště. Informace o tom, jak se zaregistrovat ve verzi Preview, najdete v tématu [o verzi Preview](#about-the-preview).
 
@@ -193,15 +191,32 @@ resources
 | project subscriptionId, resourceGroup, name, allowSharedKeyAccess
 ```
 
+## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>Oprávnění pro povolení nebo zákaz přístupu ke sdíleným klíčům
+
+Aby uživatel mohl nastavit vlastnost **AllowSharedKeyAccess** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují akci **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/ \* storageAccounts/* _. Mezi předdefinované role s touto akcí patří:
+
+- Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
+- Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
+- Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však _ * Microsoft. Storage/storageAccounts/klíče listkey/Action * *, který uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
+
+Přiřazení role musí být vymezené na úrovni účtu úložiště nebo vyšší, aby uživatel mohl povolit nebo zakázat přístup ke sdíleným klíčům pro účet úložiště. Další informace o rozsahu role najdete v tématu [vysvětlení oboru pro službu Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Buďte opatrní, abyste omezili přiřazení těchto rolí jenom na ty, kteří potřebují možnost vytvořit účet úložiště nebo aktualizovat jeho vlastnosti. Použijte princip nejnižších oprávnění, abyste měli jistotu, že uživatelé mají nejnižší oprávnění, která potřebují k tomu, aby mohli plnit své úkoly. Další informace o správě přístupu pomocí služby Azure RBAC najdete v tématu [osvědčené postupy pro službu Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, takže uživatel s jednou z těchto rolí pro správu může také vytvářet a spravovat účty úložiště. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>Informace o tom, jak zakázaný sdílený klíč ovlivňuje tokeny SAS
 
-Pokud je pro účet úložiště zakázaný sdílený klíč, Azure Storage zpracovává tokeny SAS na základě typu SAS a služby, na kterou cílí požadavek. Následující tabulka ukazuje, jak jednotlivé typy SAS mají autorizaci a jak Azure Storage tuto SAS pozastaví, pokud je vlastnost **AllowSharedKeyAccess** pro účet úložiště **nepravdivá**.
+Pokud pro účet úložiště není povolený přístup ke sdíleným klíčům, Azure Storage zpracovává tokeny SAS na základě typu SAS a služby, na kterou cílí požadavek. Následující tabulka ukazuje, jak jednotlivé typy SAS mají autorizaci a jak Azure Storage tuto SAS pozastaví, pokud je vlastnost **AllowSharedKeyAccess** pro účet úložiště **nepravdivá**.
 
 | Typ SAS | Typ autorizace | Chování, pokud je AllowSharedKeyAccess false |
 |-|-|-|
 | SAS delegování uživatelů (jenom BLOB Storage) | Azure AD | Požadavek je povolen. Pokud je to možné, společnost Microsoft doporučuje používat k zajištění nadřazeného zabezpečení přidružení zabezpečení při delegování uživatelů. |
-| SAS služby | Sdílený klíč | Požadavek se zamítl pro úložiště objektů BLOB. Požadavek je povolený pro úložiště front a tabulek a pro soubory Azure. Další informace najdete v části [požadavky s tokeny SAS pro fronty, tabulky a soubory, pokud AllowSharedKeyAccess je false](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) v sekci **o verzi Preview** . |
-| SAS účtu | Sdílený klíč | Požadavek se zamítl pro úložiště objektů BLOB. Požadavek je povolený pro úložiště front a tabulek a pro soubory Azure. Další informace najdete v části [požadavky s tokeny SAS pro fronty, tabulky a soubory, pokud AllowSharedKeyAccess je false](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) v sekci **o verzi Preview** . |
+| SAS služby | Sdílený klíč | Žádost byla zamítnuta pro všechny Azure Storage služby. |
+| SAS účtu | Sdílený klíč | Žádost byla zamítnuta pro všechny Azure Storage služby. |
 
 Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
@@ -215,11 +230,11 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 |-|-|
 | portál Azure | Podporuje se. Informace o autorizaci účtu Azure AD z Azure Portal najdete v tématu [Volba způsobu autorizace přístupu k datům objektů BLOB v Azure Portal](../blobs/authorize-data-operations-portal.md). |
 | AzCopy | Podporováno pro úložiště objektů BLOB. Informace o autorizaci operací AzCopy najdete v tématu [Volba způsobu poskytování přihlašovacích údajů pro autorizaci](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) v dokumentaci k AzCopy. |
-| Azure Storage Explorer | Podporováno pouze pro úložiště objektů BLOB a Azure Data Lake Storage Gen2. Přístup z Azure AD do úložiště Queue není podporovaný. Ujistěte se, že jste vybrali správného tenanta Azure AD. Další informace najdete v tématu [Začínáme s Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) . |
+| Průzkumník služby Azure Storage | Podporováno pouze pro úložiště objektů BLOB a Azure Data Lake Storage Gen2. Přístup z Azure AD do úložiště Queue není podporovaný. Ujistěte se, že jste vybrali správného tenanta Azure AD. Další informace najdete v tématu [Začínáme s Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) . |
 | Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pro operace objektů BLOB a front s Azure AD, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB](../blobs/authorize-data-operations-powershell.md) nebo [spuštěním příkazů PowerShellu s přihlašovacími údaji služby Azure AD pro přístup k datům](../queues/authorize-data-operations-powershell.md) |
 | Azure CLI | Podporuje se. Informace o tom, jak autorizovat příkazy rozhraní příkazového řádku Azure pomocí Azure AD pro přístup k datům BLOB a Queue, najdete v tématu [spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Podporuje se. Další informace najdete v tématu [podpora IoT Hub pro virtuální sítě](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste k těmto účtům udělili potřebná oprávnění prostřednictvím řízení přístupu na základě role Azure (RBAC). Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste jim pro tyto účty udělili potřebná oprávnění prostřednictvím Azure RBAC. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
@@ -240,10 +255,6 @@ Metriky Azure a přihlašování Azure Monitor nerozlišuje mezi různými typy 
 - Přidružení zabezpečení uživatele je autorizováno pomocí Azure AD a bude povoleno na vyžádání úložiště objektů blob, pokud je vlastnost **AllowSharedKeyAccess** nastavena na **hodnotu false**.
 
 Při vyhodnocování provozu do svého účtu úložiště Pamatujte na to, že metriky a protokoly, jak je popsáno v tématu [zjištění typu autorizace používané klientskými aplikacemi](#detect-the-type-of-authorization-used-by-client-applications) , můžou zahrnovat požadavky vytvořené pomocí SAS delegování uživatele. Další informace o tom, jak Azure Storage reaguje na SAS, pokud je vlastnost **AllowSharedKeyAccess** nastavená na **false**, najdete v tématu [Vysvětlení způsobu, jakým nepovoluje sdílený klíč vliv na tokeny SAS](#understand-how-disallowing-shared-key-affects-sas-tokens).
-
-### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>Žádosti s tokeny SAS jsou povolené pro fronty, tabulky a soubory, pokud je AllowSharedKeyAccess false.
-
-Pokud je pro účet úložiště během verze Preview povolený přístup ke sdíleným klíčům, budou se dál moct povolit signatury sdíleného přístupu, které cílí na prostředky ve frontě, tabulkách nebo souborech Azure. Toto omezení platí pro tokeny SAS služeb i pro tokeny SAS účtu. Oba typy SAS jsou autorizovány pomocí sdíleného klíče.
 
 ## <a name="next-steps"></a>Další kroky
 

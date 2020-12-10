@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173664"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936790"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -60,7 +60,6 @@ V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybra
 | **Trvalý** | Platforma Microsoft Identity Platform bude používat jako formát NameID jako trvalá. |
 | **EmailAddress** | Platforma Microsoft Identity Platform bude používat EmailAddress jako formát NameID. |
 | **Unspecified** | Platforma Microsoft Identity bude používat nespecifikovanou jako formát NameID. |
-| **Kvalifikovaný název domény systému Windows** | Platforma Microsoft Identity Platform bude používat WindowsDomainQualifiedName jako formát NameID. |
 
 Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy naleznete v tématu [Single Sign-On Protocol SAML](single-sign-on-saml-protocol.md).
 

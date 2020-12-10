@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932281"
+ms.locfileid: "96938813"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -309,8 +309,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 > [!NOTE]
 > 
-> Od 1. října 2020 inITSM inprov-s výstrahou Azure už nebude pro nové zákazníky povolená. Nová připojení ITSM se nepodporují. 
-> Existující připojení ITSM budou podporována.
+> Naši zákazníci s pořízením navrhují, aby používali [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro Cherwell a inprovcí koncový bod jako jiné řešení pro integraci.
 
 ### <a name="prerequisites"></a>Předpoklady
 
@@ -367,8 +366,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 > [!NOTE]
 > 
-> Od 1. října 2020 Cherwell ITSM Integration s Azure Alert nebude už pro nové zákazníky povolený. Nová připojení ITSM se nepodporují. 
-> Existující připojení ITSM budou podporována.
+> Naši zákazníci v Cherwell navrhují použít [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
 
 ### <a name="prerequisites"></a>Předpoklady
 

@@ -11,24 +11,24 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355409"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938745"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropboxu pro firmy pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v Dropboxu pro firmy a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a skupin do Dropboxu pro firmy.
 
 > [!IMPORTANT]
-> Microsoft a Dropbox budou svou starou integraci Dropboxu používat jako efektivní 04/01/2021. Abyste se vyhnuli přerušení služby, doporučujeme migrovat na novou integraci Dropboxu, která podporuje skupiny. K migraci na novou integraci Dropboxu přidejte a nakonfigurujte novou instanci Dropboxu pro zřizování ve vašem tenantovi Azure AD pomocí následujících kroků. Jakmile nakonfigurujete novou integraci Dropboxu, zakažte zřizování na staré integraci Dropboxu, abyste zabránili problémům zřizování.
+> Microsoft a Dropbox budou svou starou integraci Dropboxu používat jako efektivní 04/01/2021. Abyste se vyhnuli přerušení služby, doporučujeme migrovat na novou integraci Dropboxu, která podporuje skupiny. K migraci na novou integraci Dropboxu přidejte a nakonfigurujte novou instanci Dropboxu pro zřizování ve vašem tenantovi Azure AD pomocí následujících kroků. Jakmile nakonfigurujete novou integraci Dropboxu, zakažte zřizování na staré integraci Dropboxu, abyste zabránili problémům zřizování. Podrobnější kroky při migraci na novou integraci Dropboxu najdete v tématu [aktualizace na nejnovější Dropbox pro firmy pomocí Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -54,7 +54,7 @@ Před konfigurací Dropboxu pro firmy pro Automatické zřizování uživatelů 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Dropbox pro firmy** , na panelu výsledků vyberte **Dropbox pro firmy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Dropbox pro firmy**, na panelu výsledků vyberte **Dropbox pro firmy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Dropbox pro firmy v seznamu výsledků](common/search-new-app.png)
 
@@ -153,7 +153,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
  
 * Dropbox nepodporuje pozastavení pozvaných uživatelů. Pokud je pozastavený uživatel pozastaven, tento uživatel se odstraní.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

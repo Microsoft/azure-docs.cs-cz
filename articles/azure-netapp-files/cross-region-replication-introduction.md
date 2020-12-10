@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245870"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937470"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikace Azure NetApp Files svazků mezi oblastmi
 
@@ -38,14 +38,15 @@ Replikace svazku Azure NetApp Files je aktuálně dostupná v následujících d
 * USA (střed) – jih a USA – východ
 * USA (střed) – jih a USA – východ 2 
 * USA – východ 2 a USA – střed 
-* Severní Evropa a Západní Evropa
-* Velká Británie – jih a Velká Británie – západ
 * Austrálie – východ a Austrálie – jihovýchod
 * Kanada – střed a Kanada – východ
-* Japonsko – východ a Japonsko – západ
-* Velká Británie – jih a Německo – středozápad
-* Jihovýchodní Asie a Austrálie – východ
 * Střed Indie a Jižní Indie
+* Německo – středozápad a Německo – sever
+* Japonsko – východ a Japonsko – západ
+* Severní Evropa a Západní Evropa
+* Jihovýchodní Asie a Austrálie – východ
+* Velká Británie – jih a Německo – středozápad
+* Velká Británie – jih a Velká Británie – západ
 
 ## <a name="service-level-objectives"></a>Cíle na úrovni služby
 
@@ -111,11 +112,11 @@ Na cílový svazek se vztahuje normální Azure NetApp Files poplatek za kapacit
 
 ## <a name="next-steps"></a>Další kroky
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
-* [Vytvoření replikace svazků](cross-region-replication-create-peering.md)
+* [Vytvoření replikace svazku](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
-* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
+* [Odstranění svazků nebo replikací svazků](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 
 

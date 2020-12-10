@@ -8,17 +8,17 @@ author: KumudD
 manager: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936926"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -100,15 +100,15 @@ V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu smě
 
 Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
-|Typ dalšího segmentu směrování                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
+|Typ dalšího přesměrování                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
 |-------------                   |---------                                       |-----|
 |Brána virtuální sítě         |VirtualNetworkGateway                           |VPNGateway|
 |Virtuální síť                 |VNetLocal                                       |VNETLocal (není dostupné v Classic CLI v režimu asm)|
 |Internet                        |Internet                                        |Internet (není dostupné v Classic CLI v režimu asm)|
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
 |Žádné                            |Žádné                                            |Null (není dostupné v Classic CLI v režimu asm)|
-|Partnerský vztah virtuální sítě         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
-|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Neuvedeno|
+|Peering virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Není|
+|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Není|
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
 

@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358707"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938626"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jako plně spravovaná cloudová databázová služba Azure Cosmos DB zjednodušuje fakturaci tím, že se účtuje jenom za vaše databázové operace a využité úložiště. V porovnání s místními nebo IaaS alternativami nejsou žádné další licenční poplatky, náklady na nástroj ani náklady na zařízení. Když posuzujete možnosti více oblastí Azure Cosmos DB, databázová služba poskytuje výrazné snížení nákladů ve srovnání se stávajícími místními nebo IaaS řešeními.
 
-- **Databázové operace** : způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
+- **Databázové operace**: způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
 
-  - **Zajištěná propustnost** : za každou hodinu se účtuje po hodinách maximální zajištěné propustnosti v přírůstcích po 100 ru/s.
-  - Bez **serveru** : účtuje se každou hodinu za celkovou částku jednotek žádostí spotřebovaných operacemi vaší databáze.
+  - **Zajištěná propustnost**: za každou hodinu se účtuje po hodinách maximální zajištěné propustnosti v přírůstcích po 100 ru/s.
+  - Bez **serveru**: účtuje se každou hodinu za celkovou částku jednotek žádostí spotřebovaných operacemi vaší databáze.
 
-- **Úložiště** : za určitou hodinu se účtuje paušální sazba za celkovou velikost úložiště (v GB) spotřebované Vašimi daty a indexy.
+- **Úložiště**: za určitou hodinu se účtuje paušální sazba za celkovou velikost úložiště (v GB) spotřebované Vašimi daty a indexy.
 
 Nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
@@ -130,7 +130,7 @@ Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se
 |**Položka** |**Využití (měsíc)**|**Rychlost** |**Měsíční náklady** |
 |---------|---------|---------|-------|
 |Faktura za propustnost pro kontejner v Západní USA (všechny oblasti jsou zapisovatelné)       | 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu    |$1 152 |
-|Faktura za propustnost pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie (všechny oblasti jsou zapisovatelné)        | (3 + 1) × 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu   |$4 608 |
+|Faktura za propustnost pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie (všechny oblasti jsou zapisovatelné)        | 3 × 10 000 RU/s * 24 * 30    |$0,016 za 100 RU/s za hodinu   |$3 456 |
 |Faktura za úložiště pro kontejner v Západní USA      | 250 GB    |0,25/GB  |$62,50|
 |Faktura za úložiště pro 3 další oblasti – Východní USA, Severní Evropa a Východní Asie      | 3 × 250 GB    |0,25/GB  |$187,50|
 |**Celkem**     |     |  |**$6 010**|

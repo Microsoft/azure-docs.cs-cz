@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259420"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936654"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth1 v Azure Active Directory B2C vlastní zásady
 
@@ -70,13 +70,13 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identifikátor aplikace zprostředkovatele identity |
-| ProviderName | No | Název zprostředkovatele identity |
-| request_token_endpoint | Yes | Adresa URL koncového bodu tokenu žádosti na základě RFC 5849. |
-| authorization_endpoint | Yes | Adresa URL koncového bodu autorizace na základě RFC 5849. |
-| access_token_endpoint | Yes | Adresa URL koncového bodu tokenu na základě RFC 5849. |
-| ClaimsEndpoint | No | Adresa URL koncového bodu informací o uživateli |
-| ClaimsResponseFormat | No | Formát odpovědi na deklarace identity.|
+| client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
+| ProviderName | Ne | Název zprostředkovatele identity |
+| request_token_endpoint | Ano | Adresa URL koncového bodu tokenu žádosti na základě RFC 5849. |
+| authorization_endpoint | Ano | Adresa URL koncového bodu autorizace na základě RFC 5849. |
+| access_token_endpoint | Ano | Adresa URL koncového bodu tokenu na základě RFC 5849. |
+| ClaimsEndpoint | Ne | Adresa URL koncového bodu informací o uživateli |
+| ClaimsResponseFormat | Ne | Formát odpovědi na deklarace identity.|
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -84,7 +84,7 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Tajný kód klienta aplikace zprostředkovatele identity.   |
+| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   |
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
@@ -92,4 +92,4 @@ Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele iden
 
 Příklady:
 
-- [Přidání Twitteru jako poskytovatele identity OAuth1 pomocí vlastních zásad](identity-provider-twitter-custom.md)
+- [Přidání Twitteru jako poskytovatele identity OAuth1 pomocí vlastních zásad](identity-provider-twitter.md)

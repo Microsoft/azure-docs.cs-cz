@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952076"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936467"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s p�
 > [!NOTE]
 > Tato možnost vyžaduje, aby bylo možné spouštět Azure AD B2C toků uživatelů pro ověřování uživatelů pro tuto aplikaci. Naučte se [, jak zaregistrovat aplikaci pro použití s toky uživatelů.](tutorial-register-applications.md)
 
-Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Přečtěte si další informace](identity-provider-adfs2016-custom.md).
+Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Přečtěte si další informace](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Aplikace pro scénáře DevOps
 Další typy účtů můžete použít k vytvoření aplikace pro správu DevOpsch scénářů, jako je například použití Microsoft Graph k nahrání zásad architektury pro rozhraní identity nebo zřízení uživatelů. Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
@@ -116,5 +116,5 @@ Začněte s novým prostředím pro registraci aplikací:
 * Naučte [se registrovat webové rozhraní API](add-web-api-application.md).
 * Naučte [se registrovat nativní klientskou aplikaci](add-native-application.md).
 * Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
-* Naučte [se používat Azure AD B2C jako poskytovatele služby SAML.](identity-provider-adfs2016-custom.md)
+* Naučte [se používat Azure AD B2C jako poskytovatele služby SAML.](identity-provider-adfs.md)
 * Seznamte se s [typy aplikací](application-types.md).

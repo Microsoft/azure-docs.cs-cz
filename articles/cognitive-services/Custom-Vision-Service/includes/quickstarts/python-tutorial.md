@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 55360f2f11196d1f6794edec011c008b813288c1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 08f574fdfbfb2a74cd095e9672a76c7dfde6dd1c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625442"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96993010"
 ---
 Začněte s knihovnou klienta Custom Vision pro Python. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -111,7 +111,7 @@ Nejdřív Stáhněte ukázkové image pro tento projekt. Uložte obsah [složky 
 
 Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
 
-[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_upload)]
 
 > [!NOTE]
 > Budete muset změnit cestu k obrázkům na základě toho, kam jste stáhli úložiště ukázek sady SDK Cognitive Services Pythonu.
@@ -161,7 +161,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Pak můžete ověřit, zda je testovací obrázek (nalezen v **<base_image_location>/images/test/** ) správně označen. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+Pak můžete ověřit, zda je testovací obrázek (nalezen v **<base_image_location>/images/test/**) správně označen. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

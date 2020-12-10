@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029757"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938711"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer podporuje vyrovnávání zatížení mezi oblastmi,
 * [Sestavit v existujícím řešení vyrovnávání zatížení](#build-cross-region-solution-on-existing-azure-load-balancer) bez výukové křivky
 
 > [!IMPORTANT]
-> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a skrytý na portálu Preview. Přihlaste se, abyste **https://preview.portal.azure.com/?feature.globallb=true** mohli tuto funkci Zobrazit a nasadit. </br> </br>
+> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a skrytý na portálu Preview. Přihlaste se, abyste **https://preview.portal.azure.com** mohli tuto funkci Zobrazit a nasadit. </br> </br>
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vyrovnávání zatížení mezi oblastmi nabízí stejné výhody vysokého výkonu a nízké latence jako místní Nástroj pro vyrovnávání zatížení (Standard). 

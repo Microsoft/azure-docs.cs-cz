@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 965e4a8cd704670ec06ae6b927b97c3a8b93030c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100452"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938660"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ Většina komerčně dostupných distribuovaných databází NoSQL dostupných n
 
 - *Silná*
 - *Ohraničená neaktuálnost*
-- *Jednání*
+- *Relace*
 - *Konzistentní předpona*
 - *Konečné*
 
@@ -44,20 +44,25 @@ Konzistence čtení se vztahuje na jeden obor operace čtení v rámci logickéh
 
 Výchozí úroveň konzistence můžete v účtu Azure Cosmos nakonfigurovat kdykoli. Výchozí úroveň konzistence nakonfigurovaná na vašem účtu se vztahuje na všechny databáze a kontejnery Azure Cosmos pod tímto účtem. Všechny čtení a dotazy vydané pro kontejner nebo databázi používají ve výchozím nastavení zadanou úroveň konzistence. Další informace najdete v tématu Postup [Konfigurace výchozí úrovně konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level). U konkrétního požadavku můžete také přepsat výchozí úroveň konzistence. Další informace najdete v článku postup [přepsání výchozí úrovně konzistence](how-to-manage-consistency.md?#override-the-default-consistency-level) .
 
+> [!IMPORTANT]
+> Po změně výchozí úrovně konzistence se musí znovu vytvořit jakákoli instance sady SDK. To se dá udělat restartováním aplikace. Tím se zajistí, že sada SDK bude používat novou výchozí úroveň konzistence.
+
 ## <a name="guarantees-associated-with-consistency-levels"></a>Záruky spojené s úrovněmi konzistence
 
 Azure Cosmos DB zaručuje, že 100 procento žádostí o čtení odpovídá záruku konzistence pro zvolenou úroveň konzistence. Přesné definice pěti úrovní konzistence v Azure Cosmos DB používání jazyka TLA + Specification jsou k dispozici v úložišti GitHub [Azure-Cosmos-tla](https://github.com/Azure/azure-cosmos-tla) .
 
 Sémantika pěti úrovní konzistence je popsána zde:
 
-- **Strong** : silná konzistence nabízí záruku linearizability. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
+- **Strong**: silná konzistence nabízí záruku linearizability. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
 
   Následující obrázek znázorňuje silnou konzistenci se hudebními poznámkami. Po zapsání dat do oblasti "Západní USA 2" se při čtení dat z jiných oblastí zobrazí nejnovější hodnota:
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konzistence jako spektrum" dvěma způsoby:
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Ilustrace silné úrovně konzistence":::
 
-- Počet verzí položky ( *KB* )
-- Čtení s časovým intervalem ( *T* ) může odvést zpoždění za zápisy.
+- **Ohraničená neaktuálnost**: čtení jsou zaručena, aby se zaručila záruka konzistentní s předponou. Čtení můžou na konci zápisu zajímat maximálně *"K"* verzí (to znamená "aktualizace") položky nebo časového intervalu *"T"* , podle toho, co je dosaženo jako první. Jinými slovy, pokud vyberete možnost ohraničená neaktuálnost, lze nakonfigurovat "zastaralost" dvěma způsoby:
+
+- Počet verzí položky (*KB*)
+- Čtení s časovým intervalem (*T*) může odvést zpoždění za zápisy.
 
 Pro účet s jednou oblastí je minimální hodnota *K* a *T* 10 operací zápisu nebo 5 sekund. Pro účty ve více oblastech je minimální hodnota *K* a *T* 100 000 operací zápisu nebo 300 sekund.
 
@@ -72,7 +77,9 @@ V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující z�
 
   Ohraničená neaktuálnost se často volí globálně distribuovanými aplikacemi, které očekávají nízkou latenci zápisu, ale vyžadují celkovou záruku globální objednávky. Ohraničená neaktuálnost je ideální pro aplikace, které nabízí spolupráci skupin a sdílení, burzovní, doplňování a publikování a zařazování do fronty atd. Následující obrázek znázorňuje konzistenci s ohraničenou neaktuálností pomocí hudebních poznámek. Po zapsání dat do oblasti "Západní USA 2" přečtou oblasti "Východní USA 2" a "Austrálie – východ" písemnou hodnotu na základě nakonfigurovaného maximálního času prodlevy nebo maximálního počtu operací:
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Konzistence jako spektrum" nebo sdílení tokenu relace pro více modulů pro zápis.
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Ilustrace úrovně konzistence s ohraničenou kostarou":::
+
+- **Relace**: v rámci jediného čtení klientské relace jsou zaručené respektování konzistentní předpony, monotónní čtení, monotónní zápisu, čtení a zápisů a záruky za zápis. Předpokládá se jedna relace "zapisovače" nebo sdílení tokenu relace pro více modulů pro zápis.
 
 Klientům mimo relaci, která provádí zápis, se zobrazí následující záruky:
 
@@ -83,9 +90,9 @@ Klientům mimo relaci, která provádí zápis, se zobrazí následující záru
 
   Konzistence relací je nejčastěji používaná úroveň konzistence pro jednu oblast i pro globálně distribuované aplikace. Poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje záruky konzistence, které vyhovují potřebám aplikací zapsaných v kontextu uživatele. Následující obrázek znázorňuje konzistenci relace se hudebními poznámkami. "Západní USA 2 Writer" a "Západní USA 2 Reader" používají stejnou relaci (relaci A), aby obě současně četly stejná data. Vzhledem k tomu, že oblast Austrálie – východ používá "relaci B", získá data později, ale ve stejném pořadí jako zápisy.
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konzistence jako spektrum":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Ilustrace úrovně konzistence relace":::
 
-- **Konzistentní předpona** : vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
+- **Konzistentní předpona**: vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
 
 Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,B` nebo `A,B,C` , ale nikdy mimo pořadí, například `A,C` nebo `B,A,C` . Konzistentní předpona poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje pořadí záruk, které vyhovuje potřebám scénářů, ve kterých je pořadí důležité.
 
@@ -98,18 +105,18 @@ Níže jsou uvedené záruky konzistence pro konzistentní předpony:
 
 Následující obrázek znázorňuje konzistenci předpon konzistence se hudebními poznámkami. Ve všech oblastech čtení nikdy nevidí zápisy mimo pořadí:
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzistence jako spektrum":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Obrázek konzistentní předpony":::
 
 - Kdy **: neexistuje** záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzistence jako spektrum":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="viIllustration s konečnou konzistencí":::
 
 ## <a name="consistency-guarantees-in-practice"></a>Záruky konzistence v praxi
 
 V praxi můžete často získat silnější záruky konzistence. Záruky konzistence pro operaci čtení odpovídají aktuálnosti a objednání stavu databáze, který požadujete. Konzistence čtení je vázána na řazení a šíření operací zápisu a aktualizace.  
 
-Pokud v databázi neexistují žádné operace zápisu, může být operace čtení s úrovněmi konzistence s **případnými** , **relačními** nebo **konzistentními předponami** stejná jako operace čtení se silným stupněm konzistence.
+Pokud v databázi neexistují žádné operace zápisu, může být operace čtení s úrovněmi konzistence s **případnými**, **relačními** nebo **konzistentními předponami** stejná jako operace čtení se silným stupněm konzistence.
 
 Pokud je váš účet Azure Cosmos nakonfigurovaný s úrovní konzistence jinou než silná konzistence, můžete zjistit pravděpodobnost, že klienti mohou získat silné a konzistentní čtení pro vaše úlohy, a to tak, že se podíváte na metriku služby PBS ( *probabilistically Bounded* ). Tato metrika se zveřejňuje v Azure Portal. Další informace najdete v tématu [monitorování metriky služby PBS (probabilistically Bounded)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -140,7 +147,7 @@ Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Network
 |--|--|--|
 |**Silná**|Místní menšina|Globální většina|
 |**Ohraničená neaktuálnost**|Místní menšina|Místní většina|
-|**Jednání**|Jedna replika (pomocí tokenu relace)|Místní většina|
+|**Relace**|Jedna replika (pomocí tokenu relace)|Místní většina|
 |**Konzistentní předpona**|Jedna replika|Místní většina|
 |**Konečné**|Jedna replika|Místní většina|
 
@@ -149,7 +156,7 @@ Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Network
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Úrovně konzistence a trvanlivost dat
 
-V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** ( **RTO** ). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** ( **RPO** ).
+V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** (**RTO**). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** (**RPO**).
 
 Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v rámci sítě. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu [Cap věta](https://en.wikipedia.org/wiki/CAP_theorem).
 

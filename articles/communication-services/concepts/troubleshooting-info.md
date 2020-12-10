@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886783"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937538"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Řešení potíží v komunikačních službách Azure
 
@@ -165,6 +165,25 @@ V Android Studio přejděte do Průzkumníka souborů zařízení tak, že vyber
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>Volání klientských chybových kódů klientské knihovny
+
+Služba Azure Communication Services, která volá klientskou knihovnu, používá následující chybové kódy, které vám pomůžou vyřešit problémy s voláním. Tyto kódy chyb jsou zpřístupněny prostřednictvím `call.callEndReason` vlastnosti po ukončení volání.
+
+| Kód chyby | Popis | Akce, která se má provést |
+| -------- | ---------------| ---------------|
+| 403 | Zakázáno/ověřování se nezdařilo. | Ujistěte se, že token komunikačních služeb je platný a nevypršela jeho platnost. |
+| 404 | Volání nebylo nalezeno. | Ujistěte se, že počet volání (nebo volání, které se připojujete) existuje. |
+| 408 | Vypršel časový limit kontroleru volání. | Řadiči volání vypršel časový limit při čekání na zprávy protokolu z koncových bodů uživatele. Ujistěte se, že jsou klienti připojení a jsou k dispozici. |
+| 410 | Došlo k chybě místního zásobníku médií nebo mediální infrastruktury. | Ujistěte se, že používáte nejnovější klientskou knihovnu v podporovaném prostředí. |
+| 430 | Nelze doručit zprávu do klientské aplikace. | Ujistěte se, že je klientská aplikace spuštěná a dostupná. |
+| 480 | Koncový bod vzdáleného klienta není zaregistrován. | Ujistěte se, že je vzdálený koncový bod k dispozici. |
+| 481 | Nepovedlo se zpracovat příchozí volání. | Zasouborujte žádost o podporu prostřednictvím Azure Portal. |
+| 487 | Volání bylo zrušeno, místně odmítnuto, bylo ukončeno z důvodu problému s neshodou koncového bodu, nebo se nepodařilo vygenerovat nabídku médií. | Očekávané chování. |
+| 490, 491, 496, 487, 498 | Problémy se sítí místního koncového bodu. | Ověřte svou síť. |
+| 500, 503, 504 | Došlo k chybě infrastruktury komunikačních služeb. | Zasouborujte žádost o podporu prostřednictvím Azure Portal. |
+| 603 | Volání globálně odmítnuto účastníkem vzdálené komunikační služby | Očekávané chování. |
 
 
 ## <a name="related-information"></a>Související informace

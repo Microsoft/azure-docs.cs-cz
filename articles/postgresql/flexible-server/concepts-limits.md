@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366634"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937657"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Omezení Azure Database for PostgreSQL – flexibilní Server
 
@@ -116,6 +116,7 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 
 * Ověřování Azure AD ještě není podporované. Pokud požadujete ověřování Azure AD, doporučujeme použít možnost [jeden server](../overview-single-server.md) .
 * Repliky pro čtení se zatím nepodporují. Pokud požadujete repliky pro čtení, doporučujeme použít možnost [jeden server](../overview-single-server.md) .
+* Přesunutí prostředků do jiného předplatného se nepodporuje. 
 
 
 ## <a name="next-steps"></a>Další kroky

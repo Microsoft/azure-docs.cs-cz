@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309643"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936433"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -39,7 +39,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Scénář | Role Azure AD B2C | Postupy |
 | -------- | ----------------- | ------- |
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
-| Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
+| Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -90,7 +90,7 @@ Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát 
 
 1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatel**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com* .
 1. Vyberte certifikát > **akci**  >  **všechny úkoly**  >  **exportovat** .
-1. Vyberte **Ano**  >  **Next**  >  **, další Ano, exportovat privátní klíč**  >  **Další** .
+1. Vyberte **Ano**  >    >  **, další Ano, exportovat privátní klíč**  >  **Další** .
 1. Přijměte výchozí hodnoty pro **Formát souboru pro export** .
 1. Zadejte heslo pro certifikát.
 
@@ -270,7 +270,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
@@ -393,9 +393,9 @@ Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nast
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Povolit tok iniciované zprostředkovatelem identity (volitelné)
 
-V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuje zprostředkovatelem identity (Azure AD B2C), který pošle nevyžádaný odpověď SAML poskytovateli služby (vaší aplikace předávající strany). V současné době nepodporujeme scénáře, ve kterých je poskytovatel iniciující identity externím poskytovatelem identity, například [AD-FS](identity-provider-adfs2016-custom.md)nebo [Salesforce](identity-provider-salesforce-custom.md).
+V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuje zprostředkovatelem identity (Azure AD B2C), který pošle nevyžádaný odpověď SAML poskytovateli služby (vaší aplikace předávající strany). V současné době nepodporujeme scénáře, ve kterých je poskytovatel iniciující identity externím poskytovatelem identity, například [AD-FS](identity-provider-adfs.md)nebo [Salesforce](identity-provider-salesforce.md).
 
-Pokud chcete povolit tok spuštěného zprostředkovatele identity (Azure AD B2C), **IdpInitiatedProfileEnabled** nastavte `true` v [technickém profilu předávající strany](relyingparty.md#technicalprofile)položku metadat IdpInitiatedProfileEnabled.
+Pokud chcete povolit tok spuštěného zprostředkovatele identity (Azure AD B2C),  nastavte `true` v [technickém profilu předávající strany](relyingparty.md#technicalprofile)položku metadat IdpInitiatedProfileEnabled.
 
 ```xml
 <RelyingParty>

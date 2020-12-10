@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905362"
+ms.locfileid: "96938388"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -64,7 +64,7 @@ Pomocí Azure Portal, PowerShellu nebo CLIv2 můžete spravovat výchozí pravid
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+1. Klikněte na nabídku nastavení s názvem **sítě**.
 
 1. Chcete-li odepřít přístup ve výchozím nastavení, vyberte možnost povolit přístup z **vybraných sítí**. Pokud chcete povolit přenos ze všech sítí, zvolte povolení přístupu ze **všech sítí**.
 
@@ -148,7 +148,7 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+1. Klikněte na nabídku nastavení s názvem **sítě**.
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
@@ -272,11 +272,11 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+1. Klikněte na nabídku nastavení s názvem **sítě**.
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části **Firewall**  >  **Rozsah adres** firewallu IP adresu nebo rozsah adres (ve formátu CIDR).
+1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části   >  **Rozsah adres** firewallu IP adresu nebo rozsah adres (ve formátu CIDR).
 
 1. Chcete-li odebrat pravidlo sítě protokolu IP, klikněte na ikonu koše vedle rozsahu adres.
 
@@ -415,7 +415,7 @@ Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShel
 
 1. Přejděte do účtu úložiště, který chcete zabezpečit.
 
-1. Klikněte na nabídku nastavení s názvem **brány firewall a virtuální sítě**.
+1. Klikněte na nabídku nastavení s názvem **sítě**.
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 

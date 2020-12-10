@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965880"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936943"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
 Rozšíření jsou malé aplikace, které poskytují konfiguraci po nasazení a automatizaci na virtuálních počítačích Azure. Platforma Azure je hostitelem řady rozšíření, které pokrývá aplikace pro konfiguraci, monitorování, zabezpečení a pomůcku virtuálních počítačů. Vydavatelé přebírají aplikaci, zabalí ji do rozšíření a zjednoduší instalaci. Vše, co potřebujete udělat, je zadání povinných parametrů. 
