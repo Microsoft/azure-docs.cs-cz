@@ -346,6 +346,8 @@
           href: monitor-logic-apps.md
         - name: Monitorování aplikací logiky s využitím protokolů Azure Monitoru
           href: monitor-logic-apps-log-analytics.md
+        - name: Monitorování aplikací logiky ve službě Azure Security Center
+          href: healthy-unhealthy-resource.md
         - name: Monitorování zpráv B2B s využitím protokolů Azure Monitoru
           href: monitor-b2b-messages-log-analytics.md
         - name: Vytváření monitorovacích a sledovacích dotazů

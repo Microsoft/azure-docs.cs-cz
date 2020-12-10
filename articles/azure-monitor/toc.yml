@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: Monitorování aplikací
       items:
-        - name: Aplikace v .NET
-          href: learn/quick-monitor-portal.md
-        - name: Aplikace v .NET Core
-          href: learn/dotnetcore-quick-start.md
         - name: Aplikace v Node.js
           href: learn/nodejs-quick-start.md
         - name: Mobilní aplikace
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: Nastavení argumentů JVM
                       href: app/java-standalone-arguments.md
-                    - name: Upgrade z 2.x
+                    - name: Upgrade ze sady SDK 2.x
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: Řešení potíží
+                      href: app/java-standalone-troubleshoot.md
             - name: Místní servery
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Monitorování trvalých svazků
           href: insights/container-insights-persistent-volumes.md
+        - name: Karta Sestavy
+          href: insights/container-insights-reports.md
         - name: Zobrazení živých dat
           items:
             - name: Přehled živých dat (Preview)
