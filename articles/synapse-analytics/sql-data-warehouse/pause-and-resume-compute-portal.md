@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL (dřív SQL DW) prostřednictvím Azure Portal'
-description: Pomocí Azure Portal můžete pozastavit výpočetní výkon fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
+title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL prostřednictvím Azure Portal'
+description: Pomocí Azure Portal můžete pozastavit výpočetní výkon vyhrazeného fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457671"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109652"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL (dřív SQL DW) prostřednictvím Azure Portal
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL prostřednictvím Azure Portal
 
-Můžete použít Azure Portal k pozastavení a obnovení vyhrazeného fondu SQL (dříve SQL DW) výpočetních prostředků. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Můžete použít Azure Portal k pozastavení a obnovení vyhrazených výpočetních prostředků fondu SQL. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -39,10 +39,9 @@ Pokud chcete snížit náklady, můžete pozastavit a obnovit výpočetní prost
 
 Pomocí těchto kroků pozastavíte vyhrazený fond SQL:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-2. Na levé navigační stránce Azure Portal klikněte na **vyhrazený fond SQL (dřív SQL DW)** .
-2. Vyberte **mySampleDataWarehouse** z **vyhrazeného fondu SQL (dříve SQL DW)** a otevřete fond SQL. 
-3. Na stránce **mySampleDataWarehouse** je **stav** oznámení **online**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Přejděte na stránku **vyhrazeného fondu SQL** , kde otevřete fond SQL. 
+3. **Stav** oznámení je **online**.
 
     ![COMPUTE online](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ Pomocí těchto kroků pozastavíte vyhrazený fond SQL:
 
 Pomocí těchto kroků obnovíte vyhrazený fond SQL.
 
-1. Na levé straně Azure Portal klikněte na **vyhrazený fond SQL (dřív SQL DW)** .
-2. Na stránce **vyhrazený fond SQL (dřív SQL DW)** vyberte **mySampleDataWarehouse** a otevřete stránku fondu SQL. 
+1. Přejděte na stránku **vyhrazeného fondu SQL** , kde otevřete fond SQL.
 3. Na stránce **mySampleDataWarehouse** je **stav** upozornění **pozastaven**.
 
     ![COMPUTE offline](././media/pause-and-resume-compute-portal/compute-offline.png)

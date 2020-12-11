@@ -8,18 +8,18 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349048"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109840"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Načtěte si Ubuntu 18,04 Data Science Virtual Machine a spusťte ho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 
@@ -39,25 +39,25 @@ Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
    
 1. Zadáním následujících informací nakonfigurujte jednotlivé kroky průvodce:
 
-    1. **Základy** :
+    1. **Základy**:
     
-       * **Předplatné** : Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
-       * **Skupina prostředků** : Vytvořte novou skupinu nebo použijte existující.
-       * **Název virtuálního počítače** : zadejte název virtuálního počítače. Tento název se použije ve vašem Azure Portal.
-       * **Oblast** : vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Obrázek** : ponechte výchozí hodnotu.
-       * **Velikost** : Tato možnost by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/sizes.md).
-       * **Typ ověřování** : pro rychlejší nastavení vyberte možnost heslo. 
+       * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+       * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
+       * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tento název se použije ve vašem Azure Portal.
+       * **Oblast**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Obrázek**: ponechte výchozí hodnotu.
+       * **Velikost**: Tato možnost by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/sizes.md).
+       * **Typ ověřování**: pro rychlejší nastavení vyberte možnost heslo. 
          
          > [!NOTE]
          > Pokud máte v úmyslu používat JupyterHub, ujistěte se, že jste vybrali možnost "heslo", protože JupyterHub *není nakonfigurován k* používání veřejných klíčů ssh.
 
-       * **Uživatelské jméno** : zadejte uživatelské jméno správce. Toto uživatelské jméno použijete k přihlášení k virtuálnímu počítači. Toto uživatelské jméno se nemusí shodovat s vaším uživatelským jménem Azure. Nepoužívejte *Velká* písmena.
+       * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto uživatelské jméno použijete k přihlášení k virtuálnímu počítači. Toto uživatelské jméno se nemusí shodovat s vaším uživatelským jménem Azure. Nepoužívejte *Velká* písmena.
          
          > [!IMPORTANT]
          > Pokud v uživatelském jméně použijete velká písmena, JupyterHub nebude fungovat a dojde k chybě 500 interního serveru.
 
-       * **Heslo** : zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
+       * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
     
    1. Vyberte **Zkontrolovat a vytvořit**.
    1. **Zkontrolovat a vytvořit**
@@ -73,8 +73,6 @@ K Ubuntu DSVM máte přístup jedním ze tří způsobů:
   * SSH pro terminálové relace
   * X2Go pro grafické relace
   * JupyterHub a JupyterLab pro poznámkové bloky Jupyter
-
-K Azure Notebooks můžete také připojit Data Science Virtual Machine ke spuštění poznámkových bloků Jupyter na virtuálním počítači a obejít omezení úrovně bezplatné služby. Další informace najdete v tématu [Správa a konfigurace Azure Notebooksch projektů](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -95,13 +93,13 @@ Virtuální počítač se systémem Linux je již zřízený serverem X2Go a př
 1. Spusťte klienta X2Go. Pokud se okno Nová relace automaticky neotevře, přečtěte si relaci-> novou relaci.
 
 1. Ve výsledném okně konfigurace zadejte následující konfigurační parametry:
-   * **Karta Relace** :
-     * **Hostitel** : Zadejte IP adresu vašeho virtuálního počítače, kterou jste si poznamenali dříve.
-     * **Přihlášení** : Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
-     * **Port SSH** : Ponechte ho na výchozí hodnotě 22.
-     * **Typ relace** : Změňte hodnotu na **XFCE**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop XFCE.
-   * **Karta Media (Média)** : Pokud nepotřebujete používat zvukovou podporu a tisk klienta, můžete je vypnout.
-   * **Sdílené složky** : pomocí této karty Přidejte adresář klientských počítačů, který chcete připojit k virtuálnímu počítači. 
+   * **Karta Relace**:
+     * **Hostitel**: Zadejte IP adresu vašeho virtuálního počítače, kterou jste si poznamenali dříve.
+     * **Přihlášení**: Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH**: Ponechte ho na výchozí hodnotě 22.
+     * **Typ relace**: Změňte hodnotu na **XFCE**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop XFCE.
+   * **Karta Media (Média)**: Pokud nepotřebujete používat zvukovou podporu a tisk klienta, můžete je vypnout.
+   * **Sdílené složky**: pomocí této karty Přidejte adresář klientských počítačů, který chcete připojit k virtuálnímu počítači. 
 
    ![Konfigurace X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Vyberte **OK**.

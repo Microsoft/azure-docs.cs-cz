@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281323"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109619"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -89,8 +89,6 @@ Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabri
 
 > [!NOTE]
 > Uživatelské aplikace by neměly mít na disku s operačním systémem žádné závislosti, soubory nebo artefakty, protože by došlo ke ztrátě disku s operačním systémem v případě upgradu operačního systému.
-> Proto se nedoporučuje používat [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) s dočasnými disky.
->
 
 > [!NOTE]
 > Stávající nedočasný VMSS nelze upgradovat na místě, aby bylo možné používat dočasné disky.

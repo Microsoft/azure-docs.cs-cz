@@ -3,12 +3,12 @@ title: Azure Event Grid zabezpečení a ověřování
 description: Popisuje Azure Event Grid a jeho koncepty.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328721"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109585"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům Event Grid
 Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé **operace správy** , jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role v Azure (Azure RBAC).
@@ -17,17 +17,18 @@ Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživate
 > EventGrid nepodporuje službu Azure RBAC pro publikování událostí pro Event Grid témat nebo domén. Použijte klíč sdíleného přístupového podpisu (SAS) nebo token k ověřování klientů, kteří publikují události. Další informace najdete v tématu [ověřování klientů publikování](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Typy operací
+Pokud chcete zobrazit seznam operací podporovaných nástrojem Azure Event Grid, spusťte následující příkaz rozhraní příkazového řádku Azure: 
 
-Event Grid podporuje následující akce:
+```azurecli-interactive
+az provider operation show --namespace Microsoft.EventGrid
+```
 
-* Microsoft. EventGrid/*/Read
-* Microsoft. EventGrid/*/Write
-* Microsoft. EventGrid/*/DELETE
+Následující operace vracejí potenciálně tajné informace, které se vyfiltrují z běžných operací čtení. Doporučuje se omezit přístup k těmto operacím. 
+
 * Microsoft. EventGrid/eventSubscriptions/getFullUrl/Action
 * Microsoft. EventGrid/témata/klíče listkey/Action
 * Microsoft. EventGrid/témata/regenerateKey/Action
 
-Poslední tři operace vrátí potenciálně tajné informace, které se vyfiltrují z běžných operací čtení. Doporučuje se omezit přístup k těmto operacím. 
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
@@ -189,12 +190,12 @@ Musíte mít oprávnění **Microsoft. EventGrid/EventSubscriptions/Write** pro 
 ### <a name="system-topics-azure-service-publishers"></a>Systémová témata (vydavatelé služeb Azure)
 Pro systémová témata potřebujete oprávnění k zápisu nového odběru události v oboru prostředku, který publikuje událost. Formát prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Například pro přihlášení k odběru události v účtu úložiště s názvem **ucet**budete potřebovat oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Například pro přihlášení k odběru události v účtu úložiště s názvem **ucet** budete potřebovat oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Vlastní témata
 Pro vlastní témata potřebujete oprávnění zapsat nové předplatné události v oboru tématu Event Grid. Formát prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Například pro přihlášení k odběru vlastního tématu s názvem **mytopic**potřebujete oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Například pro přihlášení k odběru vlastního tématu s názvem **mytopic** potřebujete oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 
 

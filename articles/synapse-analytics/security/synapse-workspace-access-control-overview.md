@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523780"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109602"
 ---
 # <a name="synapse-access-control"></a>Řízení přístupu synapse 
 
@@ -34,14 +34,14 @@ Role synapse poskytují sady oprávnění, které je možné použít v různýc
 
 ## <a name="access-control-elements"></a>Prvky řízení přístupu
 
-### <a name="creating-and-managing-synapse-resources"></a>Vytváření a Správa prostředků synapse
+### <a name="creating-and-managing-synapse-compute-resources"></a>Vytváření a Správa výpočetních prostředků synapse
 
 Role Azure slouží k řízení správy: 
 - Vyhrazené fondy SQL, 
 - Fondy Apache Spark a 
 - Prostředí Integration runtime. 
 
-Pokud chcete vytvořit tyto prostředky, musíte být vlastníkem nebo přispěvatelem Azure ve skupině prostředků.  Pokud je chcete spravovat, musíte být vlastníkem nebo přispěvatelem Azure v buď skupině prostředků, nebo v jednotlivých prostředcích. 
+Pokud chcete *vytvořit* tyto prostředky, musíte být vlastníkem nebo přispěvatelem Azure ve skupině prostředků.  Pokud je chcete po vytvoření *Spravovat* , musíte být vlastníkem nebo přispěvatelem Azure v buď skupině prostředků, nebo v jednotlivých prostředcích. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>Vývoj a spouštění kódu v synapse 
 
@@ -82,7 +82,7 @@ Příklady skriptů SQL pro udělení oprávnění SQL ve fondech SQL najdete v 
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Přístup k datům spravovaným systémem v úložišti
 
-Neserverové fondy SQL a Apache Spark tabulky ukládají svá data do kontejneru ADLS Gen2 přidruženého k pracovnímu prostoru.  K tomuto ADLS Gen2 kontejneru úložiště musí mít uživatelé a MSI pracovního prostoru udělený přístup přispěvatele dat objektu BLOB úložiště.  
+Neserverové fondy SQL a tabulky Apache Spark ukládají svá data do kontejneru ADLS Gen2, který je přidružený k uživatelem nainstalovaným Apache Spark knihovnám pracovního prostoru, se taky spravují ve stejném účtu úložiště.  Aby bylo možné tyto případy použití povolit, musí být uživatelům a MSI pracovního **prostoru udělen přístup k tomuto** pracovnímu prostoru adls Gen2 kontejneru úložiště.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Použití skupin zabezpečení jako osvědčený postup
 

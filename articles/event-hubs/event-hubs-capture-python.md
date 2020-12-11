@@ -3,14 +3,14 @@ title: Číst data z Azure Event Hubs zachycená z aplikace v Pythonu (nejnověj
 description: V tomto článku se dozvíte, jak napsat kód v Pythonu pro zachycení dat, která se odesílají do centra událostí, a přečtěte si data zachycených událostí z účtu služby Azure Storage.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927863"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109908"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub verze 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub)
 
 Můžete nakonfigurovat centrum událostí tak, aby data odesílaná do centra událostí byla zachycena v účtu služby Azure Storage nebo Azure Data Lake Storage Gen 1 nebo Gen 2. V tomto článku se dozvíte, jak psát kód v Pythonu pro odesílání událostí do centra událostí a čtení zachycených dat z **Azure Blob Storage**. Další informace o této funkci najdete v tématu [Přehled funkcí Event Hubs Capture](event-hubs-capture-overview.md).
 
@@ -32,7 +32,7 @@ V tomto rychlém startu:
 - Aktivní Event Hubs obor názvů a centrum událostí.
 [Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. V tomto rychlém startu potřebujete jenom primární klíč. Nepotřebujete připojovací řetězec.  
 - Účet úložiště Azure, kontejner objektů BLOB v účtu úložiště a připojovací řetězec k účtu úložiště. Pokud tyto položky nemáte, udělejte toto:  
-    1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
+    1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
     1. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
     1. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
