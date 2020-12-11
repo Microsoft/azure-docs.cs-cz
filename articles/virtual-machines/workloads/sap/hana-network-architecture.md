@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006281"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093974"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -149,7 +149,7 @@ Ve výchozím nastavení nefunguje přenosná směrování v těchto scénáří
 Existují tři způsoby, jak povolit tranzitivní směrování v těchto scénářích:
 
 - Reverzní proxy server, který bude směrovat data do a z. Například F5 BIG-IP NGINX s Traffic Manager nasazenými ve službě Azure Virtual Network, která se připojuje k rozsáhlým instancím HANA a místní jako řešení směrování virtuální brány firewall/provozu.
-- Použití [pravidel softwaru iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) na virtuálním počítači Linux k povolení směrování mezi místními umístěními a velkými jednotkami instancí nebo mezi jednotkami velkých instancí Hana v různých oblastech. Virtuální počítač, na kterém běží softwaru iptables, musí být nasazený ve virtuální síti Azure, která se připojuje k velkým instancím HANA a místně. Virtuální počítač musí mít odpovídající velikost, takže je propustnost sítě virtuálního počítače dostačující pro očekávaný síťový provoz. Podrobnosti o šířce pásma sítě virtuálních počítačů najdete v článku [velikosti virtuálních počítačů se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Použití pravidel softwaru iptables na virtuálním počítači Linux k povolení směrování mezi místními umístěními a velkými jednotkami instancí nebo mezi jednotkami velkých instancí HANA v různých oblastech. Virtuální počítač, na kterém běží softwaru iptables, musí být nasazený ve virtuální síti Azure, která se připojuje k velkým instancím HANA a místně. Virtuální počítač musí mít odpovídající velikost, takže je propustnost sítě virtuálního počítače dostačující pro očekávaný síťový provoz. Podrobnosti o šířce pásma sítě virtuálních počítačů najdete v článku [velikosti virtuálních počítačů se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - [Azure firewall](https://azure.microsoft.com/services/azure-firewall/) by bylo jiné řešení umožňující přímý provoz mezi místními jednotkami a velkými instancemi instancí Hana. 
 
 Všechna přenos těchto řešení by se směrovala přes virtuální síť Azure a takové přenosy by taky mohly být omezené pomocí používaných softwarových zařízení nebo skupin zabezpečení sítě Azure, takže se některé IP adresy nebo rozsahy IP adres z místního prostředí můžou zablokovat nebo výslovně povolit přístup k velkým instancím HANA. 

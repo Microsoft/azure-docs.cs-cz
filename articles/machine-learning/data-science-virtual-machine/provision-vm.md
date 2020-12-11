@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322448"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094552"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
@@ -36,14 +36,14 @@ Vytvoření instance DSVM:
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
 
 1. Vyplňte kartu **základy** :
-      * **Předplatné** : Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
-      * **Skupina prostředků** : Vytvořte novou skupinu nebo použijte existující.
-      * **Název virtuálního počítače** : zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
-      * **Umístění** : vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Obrázek** : ponechte výchozí hodnotu.
-      * **Velikost** : Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/sizes.md).
-      * **Uživatelské jméno** : zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
-      * **Heslo** : zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
+      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+      * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
+      * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
+      * **Umístění**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Obrázek**: ponechte výchozí hodnotu.
+      * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/sizes.md).
+      * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
+      * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. **Zkontrolovat a vytvořit**
    * Ověřte správnost všech zadaných informací. 
@@ -60,7 +60,7 @@ Až se virtuální počítač vytvoří a zřídí, postupujte podle kroků uved
 
 Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnohé z těchto nástrojů jsou dostupné prostřednictvím dlaždic v nabídce **Start** a ikon na ploše.
 
-K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jupyter na virtuálním počítači a obejít omezení bezplatné úrovně služby. Další informace najdete v tématu [Správa a konfigurace projektů poznámkových bloků](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jupyter na virtuálním počítači a obejít omezení bezplatné úrovně služby. Další informace najdete v tématu [Správa a konfigurace projektů poznámkových bloků](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

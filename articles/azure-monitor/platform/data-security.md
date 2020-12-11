@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911630"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094331"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -127,7 +127,7 @@ Azure Log Analytics splňuje následující požadavky:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Standard zabezpečení dat (PCI DSS) v oboru platebních karet](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) Radou Security Standards (STANDARDem PCI).
 * [Ovládací prvky organizace služeb (SOC) 1 typ 1 a SOC 2 typu 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) vyhovující
-* [HIPAA a Hitech](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) pro společnosti, které mají smlouvu s organizací HIPAA pro obchodní přidružení
+* [HIPAA a Hitech](/compliance/regulatory/offering-hipaa-hitech) pro společnosti, které mají smlouvu s organizací HIPAA pro obchodní přidružení
 * Společná technická kritéria pro Windows
 * Důvěryhodný výpočetní výkon Microsoftu
 * Jako služba Azure Log Analytics komponenty, které používá, dodržují požadavky Azure na dodržování předpisů. Další informace najdete na [webu dodržování předpisů v centru zabezpečení Microsoftu](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).

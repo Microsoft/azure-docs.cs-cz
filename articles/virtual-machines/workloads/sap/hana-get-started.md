@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 6c1b19927207e1accb4ae6c47625eed41a6b0b92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967784"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093906"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Instalace SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -88,7 +88,7 @@ Jednou z konkrétních údajů Azure je instalace rozšíření virtuálního po
 -  [Nasazení Azure Virtual Machines pro SAP NetWeaver](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>Instalace SAP HANA
-S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Abyste se dostali do této dokumentace, začněte tím, že zahájíte tyto [prostředky](https://www.sap.com/products/hana/implementation/resources.html) SAP web Hana.
+S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Abyste se dostali do této dokumentace, začněte tím, že zahájíte tyto [prostředky](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd) SAP web Hana.
 
 Pro SAP HANA konfigurací se škálováním na více instancí pomocí přímo připojených disků Azure Premium Storage nebo Ultra disk si přečtěte konkrétní informace v dokumentu [SAP HANA konfigurace infrastruktury a operace v Azure](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out) .
 

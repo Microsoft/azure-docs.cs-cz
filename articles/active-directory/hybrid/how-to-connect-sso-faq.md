@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420477"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094569"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
@@ -54,7 +54,7 @@ Kromě toho uživatelé získají tiché přihlašování, pokud aplikace odesí
 | Název aplikace | Adresa URL aplikace, která se má použít |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
+| portál Azure | https: \/ /Portal.Azure.com/contoso.com |
 
 Ve výše uvedených tabulkách nahraďte "contoso.com" názvem domény, aby se získaly správné adresy URL aplikací pro vašeho tenanta.
 
@@ -66,7 +66,7 @@ Ano. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako u�
 
 **Otázka: Jaký je rozdíl mezi prostředím jednotného přihlašování, které poskytuje [Azure AD JOIN](../devices/overview.md) a bezproblémové jednotné přihlašování?**
 
-[Připojení k Azure AD](../devices/overview.md) poskytuje uživatelům jednotné přihlašování, pokud jsou jejich zařízení zaregistrovaná ve službě Azure AD. Tato zařízení nemusí být nutně připojená k doméně. Jednotné přihlašování se poskytuje s využitím *primárních tokenů aktualizace* nebo *PRTs* , nikoli pomocí protokolu Kerberos. Činnost koncového uživatele je optimální na zařízeních s Windows 10. Jednotné přihlašování proběhne automaticky v prohlížeči Microsoft Edge. Funguje taky na Chrome s použitím rozšíření prohlížeče.
+[Připojení k Azure AD](../devices/overview.md) poskytuje uživatelům jednotné přihlašování, pokud jsou jejich zařízení zaregistrovaná ve službě Azure AD. Tato zařízení nemusí být nutně připojená k doméně. Jednotné přihlašování se poskytuje s využitím *primárních tokenů aktualizace* nebo *PRTs*, nikoli pomocí protokolu Kerberos. Činnost koncového uživatele je optimální na zařízeních s Windows 10. Jednotné přihlašování proběhne automaticky v prohlížeči Microsoft Edge. Funguje taky na Chrome s použitím rozšíření prohlížeče.
 
 V tenantovi můžete použít jak připojení k Azure AD, tak bezproblémové jednotné přihlašování. Tyto dvě funkce jsou doplňující. Pokud jsou obě funkce zapnuté, má připojení SSO od služby Azure AD přednost před bezproblémové jednotné přihlašování.
 
@@ -82,6 +82,9 @@ Je důležité často přenášet dešifrovací klíč protokolu Kerberos `AZURE
 >Důrazně doporučujeme, abyste převzali šifrovací klíč protokolu Kerberos aspoň každých 30 dnů.
 
 Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těchto kroků:
+
+   > [!NOTE]
+   >Pro následující postup budete potřebovat přihlašovací údaje správce domény i globální správce.
 
    **Krok 1. Získá seznam doménových struktur služby Active Directory, kde je povolené bezproblémové jednotné přihlašování.**
 

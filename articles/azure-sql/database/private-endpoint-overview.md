@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447122"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094161"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -177,7 +177,7 @@ Pokud chcete navázat připojení z místního prostředí k databázi v SQL Dat
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Připojení ze služby Azure synapse Analytics k Azure Storage pomocí základu a příkazu COPY
 
-Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data z omezení, přistupuje jenom k sadě podsítí virtuální sítě přes soukromé koncové body, koncové body služby nebo brány firewall založené na protokolu IP, dojde k přerušení připojení z základu a příkazu Kopírovat k účtu. Pokud chcete povolit scénáře importu i exportu pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečené k virtuální síti, postupujte podle kroků uvedených [tady](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
+Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data z omezení, přistupuje jenom k sadě podsítí virtuální sítě přes soukromé koncové body, koncové body služby nebo brány firewall založené na protokolu IP, dojde k přerušení připojení z základu a příkazu Kopírovat k účtu. Pokud chcete povolit scénáře importu i exportu pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečené k virtuální síti, postupujte podle kroků uvedených [tady](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
 ## <a name="next-steps"></a>Další kroky
 

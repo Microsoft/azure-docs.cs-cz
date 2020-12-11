@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
-ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171955"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094144"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -113,13 +113,13 @@ Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejt
 * [Kurz: použití přizpůsobeného prostředí v robotu chatu pro .NET](tutorial-use-personalizer-chat-bot.md)
 * [Kurz: použití individuálního nastavení v poznámkovém bloku Azure](tutorial-use-azure-notebook-generate-loop-data.md)
 
-## <a name="reference"></a>Reference 
+## <a name="reference"></a>Referenční informace 
 
 * [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
-* [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
 * [Sada přizpůsobování JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
 * [Sada SDK pro přizpůsobování Pythonu](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
-* [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
+* [Rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>Další kroky
 

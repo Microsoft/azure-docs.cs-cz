@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000364"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094348"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Použití filtrů připojení IP pro Azure IoT DPS
 
@@ -135,7 +135,7 @@ Aktualizujte atributy pravidla filtru IP adres této šablony podle svých poža
 
 | Atribut                | Popis |
 | ------------------------ | ----------- |
-| **FilterName**           | Zadejte název pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky {-, :, /, \', ., +, %, _, #, *, ?, !, (, ), ,, =, @, ;, '}. |
+| **FilterName**           | Zadejte název pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena.  `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`Jsou přijímány pouze alfanumerické znaky ASCII a 7   . |
 | **Akce**               | Jako akci pro pravidlo filtru IP adres můžete zadat hodnotu **Přijmout** nebo  **Odmítnout** . |
 | **ipMask**               | Zadejte jednu IPv4 adresu nebo blok IP adres v zápisu CIDR. Například adresa 192.168.100.0/22 v zápisu CIDR odpovídá 1024 IPv4 adresám od 192.168.100.0 do 192.168.103.255. |
 

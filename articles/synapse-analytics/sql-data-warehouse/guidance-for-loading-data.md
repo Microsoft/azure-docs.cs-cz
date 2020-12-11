@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456305"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093957"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy načítání dat pomocí vyhrazených fondů SQL ve službě Azure synapse Analytics
 
@@ -71,6 +71,9 @@ Připojte se k vyhrazenému fondu SQL a vytvořte uživatele. Následující kó
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>Toto je extrémní příklad přidělení 100% prostředků fondu SQL do jediného zatížení. To vám poskytne maximální souběžnost 1. Uvědomte si, že by se to mělo používat jenom při počátečním zatížení, kdy budete muset vytvořit další skupiny úloh s vlastní konfigurací, abyste balanace prostředky napříč vašimi úlohami. 
 
 Pokud chcete spustit zatížení s prostředky pro načtení skupiny úloh, přihlaste se jako zavaděč a spusťte zátěž.
 

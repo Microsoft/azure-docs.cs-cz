@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906059"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094195"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Vyžádat data zvýšení oprávnění pomocí služby zvýšení úrovně Azure Maps (Preview)
 
@@ -24,7 +24,7 @@ ms.locfileid: "96906059"
 
 [Služba zvýšení oprávnění](https://docs.microsoft.com/rest/api/maps/elevation) Azure Maps poskytuje rozhraní API pro data zvýšení úrovně dotazu kdekoli na povrchu země. Můžete požadovat ukázková data zvýšení úrovně podél cest, v rámci definovaného ohraničujícího pole nebo v určitých souřadnicích. K načtení dat zvýšení úrovně ve formátu dlaždic můžete také použít [rozhraní vykreslování dlaždice pro vykreslení v2 – získat dlaždici mapy](https://docs.microsoft.com/rest/api/maps/renderv2) . Dlaždice se doručují ve formátu Informat Raster. V tomto článku se dozvíte, jak používat službu zvýšení úrovně Azure Maps a rozhraní API pro dlaždici získat mapu pro vyžádání dat zvýšení úrovně. Data zvýšení oprávnění lze požadovat ve formátech informated JSON i intiff.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvoření účtu Azure Maps v cenové úrovni S1](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -56,8 +56,8 @@ Chcete-li vyžádat data zvýšení úrovně ve formátu rastrových dlaždic, p
 
 Použijte rozhraní API služby zvýšení oprávnění (Preview) k vyžádání dat zvýšení úrovně ve formátu. V této části se zobrazí všechna ze tří rozhraní API:
 
-* [Získat data pro body](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Odeslání dat pro body](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Získat data pro body](/rest/api/maps/elevation/getdataforpoints)
+* [Odeslání dat pro body](/rest/api/maps/elevation/postdataforpoints)
 * [Získat data pro lomenou čáru](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Vystavení dat pro lomenou čáru](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [Získat data pro ohraničovací rámeček](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Použijte rozhraní API služby zvýšení oprávnění (Preview) k vyžádání
 
 ### <a name="request-elevation-data-for-points"></a>Požadovat data zvýšení úrovně pro body
 
-V tomto příkladu použijeme [rozhraní API získat data pro body](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) k vyžádání dat zvýšení úrovně na Mt. Everest a Chamlang Mountains. Pak použijeme [data post pro rozhraní API pro body](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) k vyžádání dat zvýšení úrovně pomocí stejných dvou bodů. Očekává se, že Latitudes a délky v adrese URL budou v desítkovém stupni WGS84 (World Geodetic System).
+V tomto příkladu použijeme [rozhraní API získat data pro body](/rest/api/maps/elevation/getdataforpoints) k vyžádání dat zvýšení úrovně na Mt. Everest a Chamlang Mountains. Pak použijeme [data post pro rozhraní API pro body](/rest/api/maps/elevation/postdataforpoints) k vyžádání dat zvýšení úrovně pomocí stejných dvou bodů. Očekává se, že Latitudes a délky v adrese URL budou v desítkovém stupni WGS84 (World Geodetic System).
 
  >[!IMPORTANT]
  >Z důvodu omezení délky znaků adresy URL 2048 není možné předat více než 100 souřadnic jako řetězec oddělený kanálem v žádosti adresy URL GET. Pokud máte v úmyslu předat více než 100 souřadnic jako řetězec oddělený pomocí kanálu, použijte POST data pro body.
@@ -103,7 +103,7 @@ V tomto příkladu použijeme [rozhraní API získat data pro body](https://docs
     }
     ```
 
-4. Nyní budeme volat [post data pro rozhraní API bodů](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) a získat tak data zvýšení úrovně pro stejné dva body. Na kartě tvůrce vyberte metodu **post** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
+4. Nyní budeme volat [post data pro rozhraní API bodů](/rest/api/maps/elevation/postdataforpoints) a získat tak data zvýšení úrovně pro stejné dva body. Na kartě tvůrce vyberte metodu **post** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -485,7 +485,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11
 Další informace o rozhraních API pro zvýšení úrovně oprávnění Azure Maps (Preview) najdete v tématu:
 
 > [!div class="nextstepaction"]
-> [Zvýšení oprávnění (Preview) – získat data pro dlouhé souřadnice v tabulce LAT](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Zvýšení oprávnění (Preview) – získat data pro dlouhé souřadnice v tabulce LAT](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Zvýšení oprávnění (Preview) – získá data pro ohraničovací rámeček.](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
