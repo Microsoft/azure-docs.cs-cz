@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318267"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031024"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Vytváření výpočetních cílů pro školení a nasazení modelů v Azure Machine Learning Studiu
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výpočetní cíle v Az
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -93,7 +93,7 @@ Pomocí [výše uvedených kroků](#portal-create) vytvořte výpočetní instan
 |Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Povolit/zakázat přístup přes SSH     |   Přístup SSH je ve výchozím nastavení zakázán.  Přístup SSH nemůže být. Po vytvoření se změnila. Pokud chcete interaktivně ladit pomocí [vs Code vzdálených](how-to-set-up-vs-code-remote.md) , Nezapomeňte povolit přístup.   |
-|Rozšířená nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků** , **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.  |
+|Pokročilá nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Výpočetní clustery
 
@@ -108,7 +108,7 @@ Vytvořte jeden nebo více uzlů Compute Cluster pro školení, dávkové Infere
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Minimální počet uzlů | Minimální počet uzlů, které chcete zřídit. Pokud chcete vyhrazený počet uzlů, nastavte tento počet. Ušetříte peníze nastavením minimální na 0, takže nebudete platit za žádné uzly, pokud je cluster nečinný. |
 |Maximální počet uzlů | Maximální počet uzlů, které chcete zřídit. Výpočet bude při odeslání úlohy automatické škálování na maximum tohoto počtu uzlů. |
-|Rozšířená nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků** , **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.   Připojte taky [spravované identity](#managed-identity) pro udělení přístupu k prostředkům.     |
+|Pokročilá nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.   Připojte taky [spravované identity](#managed-identity) pro udělení přístupu k prostředkům.     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Nastavení spravované identity
 

@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442127"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030956"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API
 
 V tomto rychlém startu zaregistrujete webové rozhraní API s platformou Microsoft identity a zpřístupníte ho klientským aplikacím přidáním ukázkového oboru. Díky registraci webového rozhraní API a jeho zpřístupnění prostřednictvím oborů můžete poskytnout přístup k prostředkům na základě oprávnění autorizovaným uživatelům a klientským aplikacím, které mají přístup k vašemu rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
@@ -45,9 +45,9 @@ Kód v klientské aplikaci požaduje oprávnění k provádění operací defino
 
 Nejprve pomocí těchto kroků vytvořte příklad oboru s názvem `Employees.Read.All` :
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
-1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**a pak vyberte registraci aplikace vašeho rozhraní API.
+1. Vyberte **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte registraci aplikace vašeho rozhraní API.
 1. Vyberte **zveřejnit rozhraní API**  >  **Přidat obor**.
 
     :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="V Azure Portal se vystavuje podokno API pro registraci aplikace":::
@@ -67,12 +67,12 @@ Nejprve pomocí těchto kroků vytvořte příklad oboru s názvem `Employees.Re
     | **Zobrazovaný název souhlasu uživatele** | Krátký popis účelu oboru Zobrazuje se uživatelům pouze v případě, že jste nastavili **, kdo může udělit souhlas** **správcům a uživatelům**. | `Read-only access to your Employee records` |
     | **Popis souhlasu uživatele** | Podrobnější popis oprávnění uděleného oborem. Zobrazuje se uživatelům pouze v případě, že jste nastavili **, kdo může udělit souhlas** **správcům a uživatelům**. | `Allow the application to have read-only access to your Employee data.` |
 
-1. Nastavte **stav** na **povoleno**a pak vyberte **Přidat obor**.
+1. Nastavte **stav** na **povoleno** a pak vyberte **Přidat obor**.
 
 1. Volitelné Chcete-li potlačit zobrazení výzvy ke souhlasu uživatelů vaší aplikace s definovanými obory, můžete *předběžně autorizovat* , aby klientská aplikace měla přístup k webovému rozhraní API. Předem autorizujte *pouze* ty klientské aplikace, kterým důvěřujete, protože uživatelé nebudou mít možnost odmítnout souhlas.
-    1. V části **autorizované klientské aplikace**vyberte **Přidat klientskou aplikaci** .
+    1. V části **autorizované klientské aplikace** vyberte **Přidat klientskou aplikaci** .
     1. Zadejte **aplikaci (ID klienta)** klientské aplikace, kterou chcete předběžně autorizovat. Například u webové aplikace, kterou jste předtím zaregistrovali.
-    1. V části **autorizované obory**vyberte obory, pro které chcete potlačit zobrazování výzev k vyjádření souhlasu, a pak vyberte **Přidat aplikaci**.
+    1. V části **autorizované obory** vyberte obory, pro které chcete potlačit zobrazování výzev k vyjádření souhlasu, a pak vyberte **Přidat aplikaci**.
 
     Pokud jste postupovali podle tohoto volitelného kroku, klientská aplikace je nyní předem autorizovanými klientskými aplikacemi (DPS) a uživatelé nebudou při přihlašování k tomuto souhlasu vyzváni k jejich souhlasu.
 
@@ -95,9 +95,9 @@ Pokud chcete přidat `Employees.Write.All` vzorový obor, postupujte podle krok�
 
 Pokud jste úspěšně přidali oba příklady oborů popsané v předchozích částech, zobrazí se v podokně **Zobrazit rozhraní API** registrace aplikace webového rozhraní API podobně jako na tomto obrázku:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="V Azure Portal se vystavuje podokno API pro registraci aplikace":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Snímek obrazovky s podoknem vystavení rozhraní API, ve kterém jsou dva vystavené obory":::
 
-Jak je znázorněno na obrázku, úplný řetězec oboru je zřetězení **identifikátoru URI ID aplikace** webového rozhraní API a **názvu**oboru oboru.
+Jak je znázorněno na obrázku, úplný řetězec oboru je zřetězení **identifikátoru URI ID aplikace** webového rozhraní API a **názvu** oboru oboru.
 
 Pokud je například identifikátor URI ID aplikace webového rozhraní API `https://contoso.com/api` a název oboru je `Employees.Read.All` , úplný rozsah je:
 

@@ -3,19 +3,19 @@ title: Konfigurace monitorování pro ASP.NET s využitím Azure Application Ins
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904172"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028984"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurace Application Insights pro web ASP.NET
 
 Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesílala telemetrická data do služby [Azure Application Insights](./app-insights-overview.md). Funguje pro aplikace ASP.NET, které jsou hostované ve vlastních serverech IIS místně nebo v cloudu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte si nejnovější verzi sady [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
@@ -49,7 +49,7 @@ Tato část vás provede automatickým přidáním Application Insights do webov
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
-4. Vyberte **projekt**  >  **spravovat aktualizace balíčků NuGet**  >  **Updates** > aktualizujte každý `Microsoft.ApplicationInsights` balíček NuGet na nejnovější stabilní verzi.   
+4. Vyberte **projekt**  >  **spravovat aktualizace balíčků NuGet**  >   > aktualizujte každý `Microsoft.ApplicationInsights` balíček NuGet na nejnovější stabilní verzi.   
 5. Spusťte aplikaci výběrem **IIS Express**. Spustí se základní aplikace ASP.NET. Při procházení stránek na telemetrie webu se pošle Application Insights.
 
 ## <a name="add-application-insights-manually"></a>Přidat Application Insights ručně

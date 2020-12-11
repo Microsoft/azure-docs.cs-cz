@@ -4,14 +4,14 @@ description: Naučte se spouštět webové aplikace v Azure App Service nasazen�
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7aeadaf7b52440504abf541fe6c29a537a92bc08
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937266"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032690"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první webovou apli
 
 Až budete hotovi, budete mít skupinu prostředků Azure, která se skládá z App Service plánu hostování a App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a webu** .

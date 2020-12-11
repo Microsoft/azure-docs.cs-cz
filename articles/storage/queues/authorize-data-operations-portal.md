@@ -10,13 +10,13 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
-ms.custom: contperfq1
-ms.openlocfilehash: 9b3ae58544504495c89fce0ca07bc96d5f2c6028
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 68ac9cd5e89617a820cba9a1d6c61890e50a56a7
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637381"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031738"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Vyberte, jak autorizovat přístup k datům ve frontě v Azure Portal
 
@@ -37,7 +37,7 @@ Pokud chcete získat přístup k datům front pomocí přístupového klíče ú
 Když se pokusíte o přístup k datům ve frontě v Azure Portal, portál nejprve zkontroluje, jestli vám byla přiřazena role s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, portál použije klíč účtu pro přístup k datům ve frontě. Pokud jste k této akci nepřiřadili roli, pokusí se portál získat přístup k datům pomocí účtu Azure AD.
 
 > [!NOTE]
-> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action** , takže uživatel s jednou z těchto rolí pro správu může také přistupovat k datům z fronty pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action**, takže uživatel s jednou z těchto rolí pro správu může také přistupovat k datům z fronty pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Použití účtu Azure AD
 

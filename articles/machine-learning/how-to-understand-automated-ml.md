@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937708"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032928"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -34,7 +34,7 @@ Například automatizované ML generuje v závislosti na typu experimentu násle
 | [Kalibrační křivka](#calibration-curve)                     |                     
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. (Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.)
 - Azure Machine Learning experiment byl vytvořen buď pomocí:
@@ -190,6 +190,7 @@ Následující tabulka shrnuje metriky výkonu modelu vygenerované pro regresi 
 --|--|--|
 explained_variance|Vysvětluje odchylku míry, na kterou je rozsah pro variaci v cílové proměnné. Jedná se o procento snížení odchylky původních dat s odchylkou chyb. Pokud je střední hodnota chyb 0, rovná se součiniteli určení (viz r2_score níže). <br> <br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** (-INF, 1]|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
 mean_absolute_error|Střední absolutní chyba je očekávaná hodnota absolutní hodnoty rozdíl mezi cílem a předpovědi.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF) <br><br> Druhy <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error dělený rozsahem dat. | [Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|Střední absolutní procentuální chyba (MAPE) je míra průměrného rozdílu mezi předpokládanou hodnotou a skutečnou hodnotou.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF) ||
 median_absolute_error|Střední absolutní chyba je medián všech absolutních rozdílů mezi cílem a předpovědi. Tato ztráta je robustní pro odlehlé hodnoty.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF)<br><br>Druhy <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error dělený rozsahem dat. |[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
 r2_score|R ^ 2 je koeficient stanovení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. <br> <br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** (-INF, 1]|[Kalkulační](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Hlavní střední hodnota chyby (RMSE) je druhá odmocnina očekávaného čtvercového rozdílu mezi cílem a předpovědi. Pro neposunuté Estimator se RMSE rovná směrodatné odchylce.<br> <br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF)<br><br>Druhy<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error dělený rozsahem dat. |[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|

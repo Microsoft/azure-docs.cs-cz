@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316692"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029528"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak povolit následující prostředky v pracovní
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -87,7 +87,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
     1. Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ . To nedává všem službám Azure přístup k vašemu účtu úložiště.
     
-        * Prostředky některých služeb, které jsou **zaregistrované ve vašem předplatném** , můžou mít přístup k účtu úložiště **ve stejném předplatném** pro vybrané operace. Například zápis protokolů nebo vytváření záloh.
+        * Prostředky některých služeb, které jsou **zaregistrované ve vašem předplatném**, můžou mít přístup k účtu úložiště **ve stejném předplatném** pro vybrané operace. Například zápis protokolů nebo vytváření záloh.
         * Prostředkům některých služeb lze udělit explicitní přístup k účtu úložiště tím, že __přiřadíte roli Azure__ ke spravované identitě přiřazené systémem.
 
         Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).

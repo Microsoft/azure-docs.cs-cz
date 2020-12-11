@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: 3fed5fa53af9bd69f828eaf40db5d2ac441ffa08
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
+ms.openlocfilehash: 658069f8c8007be2c1b424d8ccff687b986ac237
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762767"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030924"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 
@@ -25,7 +25,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)

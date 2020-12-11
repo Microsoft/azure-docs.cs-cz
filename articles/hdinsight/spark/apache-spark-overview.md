@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f581f7bc2f67093afc26dd2c2f15916841a106e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854337"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029436"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co je Apache Spark ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache Spark je paralelní procesor pro zpracování, který podporuje zpracová
 
 ## <a name="what-is-apache-spark"></a>Co je Apache Spark?
 
-Spark poskytuje primitivy pro clusterové výpočty v paměti. Úloha Sparku dokáže načíst data, uložit je do mezipaměti a opakovaně se na ně dotazovat. Výpočetní prostředí je mnohem rychlejší než aplikace založené na discích, jako je Hadoop, které sdílí data prostřednictvím systému Hadoop Distributed File System (HDFS). Spark se také integruje do programovacího jazyka Scala a díky tomu umožňuje pracovat s distribuovanými datovými sadami stejně jako s místními kolekcemi. Není nutné strukturovat všechno jako mapovací a redukční operace.
+Spark poskytuje primitivy pro clusterové výpočty v paměti. Úloha Sparku dokáže data načíst a uložit je do mezipaměti a opakovaně se na ně dotazovat. Výpočetní prostředí je mnohem rychlejší než aplikace založené na discích, jako je Hadoop, které sdílí data prostřednictvím systému Hadoop Distributed File System (HDFS). Spark se také integruje do programovacího jazyka Scala a díky tomu umožňuje pracovat s distribuovanými datovými sadami stejně jako s místními kolekcemi. Není nutné strukturovat všechno jako mapovací a redukční operace.
 
 ![Tradiční MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 

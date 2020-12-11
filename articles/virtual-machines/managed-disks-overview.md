@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: contperfq1
-ms.openlocfilehash: 3b0acd683309ceb105c49dc5b0bd493ce2e461b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 31fe62aabfff77342726158c3b72b61afb518682
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500423"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031517"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -111,7 +111,7 @@ Další informace o tom, jak vytvořit snímky pro služby Managed disks, najdet
 - [Vytvoření snímku spravovaného disku ve Windows](windows/snapshot-copy-managed-disk.md)
 - [Vytvoření snímku spravovaného disku v systému Linux](linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Image
+### <a name="images"></a>Obrázky
 
 Spravované disky také podporují vytváření spravované vlastní image. Můžete vytvořit image z vlastního virtuálního pevného disku v účtu úložiště nebo přímo z zobecněného (nástroje Sysprep) virtuálního počítače. Tento proces zachycuje jeden obrázek. Tato image obsahuje všechny spravované disky přidružené k virtuálnímu počítači, včetně operačního systému i datových disků. Tato spravovaná vlastní image umožňuje vytvářet stovky virtuálních počítačů s využitím vlastní image bez nutnosti kopírovat ani spravovat žádné účty úložiště.
 

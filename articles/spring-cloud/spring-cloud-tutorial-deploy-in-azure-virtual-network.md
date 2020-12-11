@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737239"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032104"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -26,7 +26,7 @@ Nasazení umožňuje:
 * Interakce jarního cloudu Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích
 * Podpora zákazníků pro řízení příchozí a odchozí síťové komunikace pro jarní cloud Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Musíte zaregistrovat poskytovatele prostředků cloudu Azure pro *Microsoft. AppPlatform* a *Microsoft. ContainerService* podle pokynů [v článku registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu AZ CLI:
 
 ```azurecli
@@ -42,7 +42,7 @@ Virtuální síť, do které nasazujete instanci služby jarní cloudová služb
     * Jeden pro modul runtime služby
     * Jednu pro aplikace mikroslužeb pro spouštění pomocí pružiny. 
     * Mezi těmito podsítěmi a instancí Azure jaře Cloud Service existuje vztah 1:1. Pro každou instanci služby, kterou nasazujete, musíte použít novou podsíť a Každá podsíť může zahrnovat jenom jednu instanci služby.
-* **Adresní prostor**: jeden blok CIDR až/28 pro podsíť modulu runtime služby a další blok CIDR až/24 pro podsíť aplikací mikroslužby pro jaře booting.
+* **Adresní prostor**: CIDR blokuje až **/28** pro podsíť modulu runtime služby a pro podsíť aplikací mikroslužeb pro spouštění pružiny.
 * **Směrovací tabulka**: podsítě nesmí mít přidruženou stávající směrovací tabulku.
 
 Následující postupy popisují nastavení virtuální sítě tak, aby obsahovalo instanci Azure jaře cloudu.
@@ -58,16 +58,16 @@ Pokud již máte virtuální síť pro hostování instance služby Azure jaře 
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Name             |Přechod do *Azure-jaře-Cloud-VNet*                   |
+    |Název             |Přechod do *Azure-jaře-Cloud-VNet*                   |
     |Umístění         |Vyberte **východní USA**                                |
 
 1. Klikněte na **Další: IP adresy >**. 
  
 1. V případě adresního prostoru IPv4 zadejte 10.1.0.0/16.
 
-1. Vyberte **Přidat podsíť** a pak zadejte *Service-runtime-Subnet* pro **název podsítě** a 10.1.0.0/24 pro **Rozsah adres podsítě**. Pak klikněte na **Přidat**.
+1. Vyberte **Přidat podsíť** a pak zadejte *Service-runtime-Subnet* pro **název podsítě** a 10.1.0.0/28 pro **Rozsah adres podsítě**. Pak klikněte na **Přidat**.
 
-1. Vyberte **Přidat podsíť** znovu a pak zadejte **název podsítě** a **Rozsah adres podsítě**, například *aplikace-podsíť* a a 10.1.1.0/24.  Klikněte na **Přidat**.
+1. Vyberte **Přidat podsíť** znovu a pak zadejte **název podsítě** a **Rozsah adres podsítě**, například *aplikace-podsíť* a a 10.1.1.0/28.  Klikněte na **Přidat**.
 
 1. Klikněte na **Zkontrolovat a vytvořit**. Nechejte zbývající výchozí hodnoty a klikněte na **vytvořit**.
 
@@ -84,7 +84,7 @@ Vyberte virtuální síť *Azure-jaře-Cloud-VNet* , kterou jste vytvořili dř�
     |Nastavení  |Hodnota                                             |
     |---------|--------------------------------------------------|
     |Role     |Vybrat **vlastníka**                                  |
-    |Vybrat   |Zadejte *poskytovatele prostředků pro jarní cloud Azure*      |
+    |Vyberte   |Zadejte *poskytovatele prostředků pro jarní cloud Azure*      |
 
     Pak vyberte *cloudový poskytovatel prostředků Azure* a klikněte na **Uložit**.
 
@@ -107,7 +107,7 @@ az role assignment create \
 
 ## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Nasazení instance služby Azure jaře Cloud Service ve virtuální síti
 
-1. Otevřete Azure Portal pomocí https://ms.portal.azure.com .
+1. Otevřete Azure Portal pomocí https://portal.azure.com .
 
 1. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud** a z výsledku vyberte **Azure jaře Cloud** .
 
@@ -134,6 +134,8 @@ az role assignment create \
 
 1. Ověřte vaše specifikace a klikněte na **vytvořit**.
 
+    ![Ověřit specifikace](./media/spring-cloud-v-net-injection/verify-specifications.png)
+
 Po nasazení se ve vašem předplatném vytvoří dvě další skupiny prostředků, které budou hostovat síťové prostředky pro instanci Azure jaře Cloud Service.  Přejděte na **domovskou stránku** a v horních položkách nabídky vyberte **skupiny prostředků** , abyste našli následující nové skupiny prostředků.
 
 Skupina prostředků s názvem *AP-svc-RT_ {název instance služby} _ {region instance služby}* obsahuje síťové prostředky pro modul runtime služby instance služby.
@@ -150,6 +152,18 @@ Tyto síťové prostředky jsou připojené k vaší virtuální síti vytvořen
 
    > [!Important]
    > Skupiny prostředků jsou plně spravovány službou Azure jaře Cloud Service. Neodstraňujte prosím ručně ani neměňte žádný prostředek uvnitř.
+
+## <a name="limitations"></a>Omezení
+
+Rozsah malých podsítí ukládá IP adresy, ale přináší omezení maximálního počtu instancí aplikace, které může cloudové úložiště Azure uchovávat. 
+
+| IPv4/IPv6 | Celkový počet IP adres | Dostupné IP adresy | Maximální počet instancí aplikace                                        |
+| ---- | --------- | ------------- | ------------------------------------------------------------ |
+| za 28  | 16        | 8             | <p> Aplikace s 1 jádrem: 96 <br/> Aplikace se 2 jádry: 48<br/>  Aplikace se 3 jádry: 32 <br/> Aplikace se 4 jádry: 24 </p> |
+| /27  | 32        | 24            | <p> Aplikace s 1 jádrem: 228<br/> Aplikace se 2 jádry: 144<br/>  Aplikace se 3 jádry: 96 <br/>  Aplikace se 4 jádry: 72</p> |
+| za 26  | 64        | 56            | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 336<br/>  Aplikace se 3 jádry: 224<br/>  Aplikace se 4 jádry: 168</p> |
+| za 25  | 128       | 120           | <p> Aplikace s 1 jádrem: 500<br> Aplikace se 2 jádry: 500<br>  Aplikace se 3 jádry: 480<br>  Aplikace se 4 jádry: 360</p> |
+| za 24  | 256       | 248           | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 500<br/>  Aplikace se 3 jádry: 500<br/>  Aplikace se 4 jádry: 500</p> |
 
 ## <a name="next-steps"></a>Další kroky
 

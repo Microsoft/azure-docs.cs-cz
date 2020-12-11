@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341735"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032010"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,13 +41,13 @@ Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispo
 
 Čtyři uvedené typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64 zpracování pro typ aplikace, postupujte následovně:
 
-- **Pro spustitelné aplikace** : v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**.
+- **Pro spustitelné aplikace**: v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**.
 
-- **Pro projekty testů založené na VSTest** : v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu** a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64**.
+- **Pro projekty testů založené na VSTest**: v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu** a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64**.
 
-- **Pro lokálně nasazené webové aplikace v ASP.NET** : vyberte **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** a potom vyberte **použít 64 verze IIS Express pro weby a projekty**.
+- **Pro lokálně nasazené webové aplikace v ASP.NET**: vyberte **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** a potom vyberte **použít 64 verze IIS Express pro weby a projekty**.
 
-- **Pro webové aplikace ASP.NET nasazené v Azure** : v **nastavení aplikace** vyberte v Azure Portal části nastavení aplikace **64** platformu.
+- **Pro webové aplikace ASP.NET nasazené v Azure**: v **nastavení aplikace** vyberte v Azure Portal části nastavení aplikace **64** platformu.
 
 > [!NOTE] 
 > Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor**. Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86**. Projekt, který je nastavený na **Libovolný procesor** , se může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
@@ -156,13 +156,13 @@ Sada SQL .NET SDK podporuje paralelní dotazy, které umožňují paralelní dot
 
 Paralelní dotazy poskytují dva parametry, které můžete ladit podle svých požadavků: 
 
-- **MaxConcurrency** : Určuje maximální počet oddílů, které lze dotazovat paralelně.
+- **MaxConcurrency**: Určuje maximální počet oddílů, které lze dotazovat paralelně.
 
    Paralelní dotaz funguje paralelně dotazování na více oddílů. Data z jednotlivého oddílu se ale v souvislosti s dotazem načítají sériově. Nastavení `MaxConcurrency` v [sadě SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) na počet oddílů má největší šanci na dosažení nejvíce výkonného dotazu, za předpokladu, že všechny ostatní systémové podmínky zůstávají stejné. Pokud neznáte počet oddílů, můžete nastavit úroveň paralelismu na vysoké číslo. V systému se jako stupeň paralelismu zvolí minimální počet oddílů, uživatelem zadaný vstup.
 
     Paralelní dotazy poskytují nejvíc výhod, pokud jsou data rovnoměrně rozložena napříč všemi oddíly s ohledem na dotaz. Pokud je dělená kolekce rozdělená tak, aby všechna nebo většinu dat vrácených dotazem byla soustředěna v několika oddílech (jeden z nich je v nejhorším případě), tyto oddíly budou mít kritický vliv na výkon dotazu.
    
-- **MaxBufferedItemCount** : řídí počet předběžně načtených výsledků.
+- **MaxBufferedItemCount**: řídí počet předběžně načtených výsledků.
 
    Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Toto předběžné načítání pomáhá zlepšit celkovou latenci dotazu. `MaxBufferedItemCount`Parametr omezuje počet předběžně načtených výsledků. Nastavte `MaxBufferedItemCount` na očekávaný počet vrácených výsledků (nebo vyšší číslo), aby dotaz mohl získat maximální přínos před načtením.
 

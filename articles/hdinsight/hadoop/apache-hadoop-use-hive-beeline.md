@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145952"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031891"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hivem
 
@@ -29,7 +29,7 @@ Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HD
 
 * Všimněte si schématu identifikátoru URI pro primární úložiště vašeho clusteru. Například  `wasb://` pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, je identifikátor URI `wasbs://` . Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru. Můžete také použít místního klienta Beeline, ale tyto kroky nejsou zahrnuty v tomto článku.
+* Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru. Můžete také použít místního klienta Beeline, ale tyto kroky nejsou zahrnuty v tomto článku.
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
@@ -56,7 +56,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
     show tables;
     ```
 
-    V novém clusteru je uvedena pouze jedna tabulka: **hivesampletable** .
+    V novém clusteru je uvedena pouze jedna tabulka: **hivesampletable**.
 
 4. K zobrazení schématu pro hivesampletable použijte následující příkaz:
 
@@ -113,7 +113,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
     |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
     |FORMÁT ŘÁDKU|Způsob formátování dat. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
     |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Kde jsou data uložena a v jakém formátu souboru.|
-    |SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.|
+    |SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.|
     |INPUT__FILE__NAME jako je%. log|Podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.|
 
    > [!NOTE]  
@@ -157,7 +157,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
 Tento příklad je pokračování z předchozího příkladu. Pomocí následujících kroků vytvořte soubor a pak ho spusťte pomocí Beeline.
 
-1. Pomocí následujícího příkazu vytvořte soubor s názvem **Query. HQL** :
+1. Pomocí následujícího příkazu vytvořte soubor s názvem **Query. HQL**:
 
     ```bash
     nano query.hql
@@ -176,12 +176,12 @@ Tento příklad je pokračování z předchozího příkladu. Pomocí následuj�
     |---|---|
     |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.|
     |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|
-    |VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , které obsahují **[Error]** , a pak data vloží **do tabulky chyb** .|
+    |VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , které obsahují **[Error]**, a pak data vloží **do tabulky chyb** .|
 
     > [!NOTE]  
     > Na rozdíl od externích tabulek odstraní interní tabulka také podkladová data.
 
-1. Pokud chcete soubor uložit, použijte **CTRL +** + **X** , zadejte **Y** a nakonec **ENTER** .
+1. Pokud chcete soubor uložit, použijte **CTRL +** + , zadejte **Y** a nakonec **ENTER**.
 
 1. K spuštění souboru pomocí Beeline použijte následující:
 

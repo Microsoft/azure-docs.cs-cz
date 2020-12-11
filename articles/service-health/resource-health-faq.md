@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536490"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032860"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
 Přečtěte si odpovědi na nejčastější dotazy týkající se Azure Resource Health.
@@ -52,7 +52,6 @@ Resource Health [podporuje](resource-health-alert-arm-template-guide.md) výstra
 Až se přihlásíte k Azure Portal, máte k dispozici několik způsobů, jak získat přístup k Resource Health:
 - Přejděte k prostředku. V levém navigačním panelu vyberte **Resource Health** .
 - Otevřete okno Azure Service Health.  V levém navigačním panelu vyberte **stav prostředků**.
-- Otevřete okno **Nápověda a podpora** tak, že vyberete otazník v pravém horním rohu portálu a pak vyberete **Nápověda a podpora**. Jakmile se otevře okno, vyberte **stav prostředku** .
 
 K získání informací o stavu vašich prostředků můžete použít také rozhraní Resource Health API.
 
@@ -70,13 +69,11 @@ Informace, které poskytuje Resource Health, jsou konkrétnější, než je posk
 
 Vzhledem k tomu, že [stav Azure](https://status.azure.com) a řídicí panel Service Health informují o problémech se službami, které mají vliv na širokou škálu zákazníků (například oblast Azure), Resource Health zveřejňuje podrobnější události, které jsou relevantní jenom pro konkrétní prostředek. Například pokud se hostitel neočekávaně restartuje, Resource Health upozorní pouze zákazníky, jejichž virtuální počítače byly na tomto hostiteli spuštěny.
 
-Je důležité si všimnout, že abyste mohli poskytnout kompletní přehled o událostech ovlivňujících vaše prostředky, Resource Health také události, které jsou publikovány na řídicím panelu Service Health.
-
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Potřebuji u každého prostředku aktivovat Resource Health?
 Ne, informace o stavu jsou k dispozici pro všechny typy prostředků, které jsou k dispozici prostřednictvím Resource Health. 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Musíme Resource Health pro moji organizaci povolit?
-Ne.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
+No.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Je Resource Health k dispozici zdarma?
 Ano.  Azure Resource Health je bezplatná.

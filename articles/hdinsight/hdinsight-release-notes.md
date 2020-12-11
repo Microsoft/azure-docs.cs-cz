@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549000"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032554"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -64,3 +64,18 @@ HDInsight nadále zdokonaluje spolehlivost a výkon clusteru.
 
 ## <a name="component-version-change"></a>Změna verze součásti
 Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
+
+## <a name="known-issues"></a>Známé problémy
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Pravidelně Zabraňte restartování virtuálních počítačů clusteru HDInsight
+
+Od poloviny listopadu 2020 jste si pravděpodobně všimli, že virtuální počítače clusteru HDInsight se pravidelně restartují. Příčinou může být:
+
+1.  V clusteru je povolený ClamAV. Nový balíček azsec-ClamAV spotřebovává velké množství paměti, které aktivuje restartování uzlu. 
+2.  Úloha CRON je naplánována denně, která sleduje změny v seznamu certifikačních autorit používaných službami Azure. Když je k dispozici nový certifikát certifikační autority, skript přidá certifikát do úložiště důvěry JDK a naplánuje restart.
+
+HDInsight nasazuje opravy a aplikuje opravu pro všechny spuštěné clustery pro oba problémy. Pokud chcete opravu použít hned a vyhnout se neočekávaným restartováním virtuálních počítačů, můžete spustit následující akce skriptu na všech uzlech clusteru jako akce trvalého skriptu. HDInsight bude po dokončení opravy a opravy publikovat další oznámení.
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

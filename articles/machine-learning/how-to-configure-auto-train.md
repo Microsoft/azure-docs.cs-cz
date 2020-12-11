@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b03eb8015d318471cf8bf11fc5a3cd94044d2cfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
+ms.openlocfilehash: 6aa54f65b504e61a5e74ed584c5dad51e49eb087
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455593"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031449"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -37,7 +37,7 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete, 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
@@ -74,7 +74,7 @@ Požadavky na trénovací data:
 Datové sady Azure Machine Learning zveřejňují funkce umožňující:
 
 * Data můžete snadno přenést ze statických souborů nebo zdrojů URL do svého pracovního prostoru.
-* Zpřístupnění dat pro trénovací skripty při využití cloudových výpočetních prostředků Příklad [How to train with datasets](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) použití `Dataset` třídy pro připojení dat ke vzdálenému cíli výpočtů najdete v tématu výuka s datovými sadami.
+* Zpřístupnění dat pro trénovací skripty při využití cloudových výpočetních prostředků Příklad [](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) použití `Dataset` třídy pro připojení dat ke vzdálenému cíli výpočtů najdete v tématu výuka s datovými sadami.
 
 Následující kód vytvoří TabularDataset z webové adresy URL. Příklady vytváření datových sad z jiných zdrojů, jako jsou místní soubory a úložiště dat, najdete v tématu věnovaném [Vytvoření TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) .
 
@@ -305,7 +305,7 @@ automl_classifier = AutoMLConfig(
 
 Existuje několik možností, které můžete v AutoMLConfig definovat pro ukončení experimentu.
 
-|Kritéria| description
+|Kritéria| Popis
 |----|----
 Žádná &nbsp; kritéria | Pokud nedefinujete žádné parametry ukončení, experiment pokračuje, dokud neproběhne další postup u primární metriky.
 Po &nbsp; &nbsp; delší &nbsp; &nbsp; dobu| Pomocí `experiment_timeout_minutes` Možnosti v nastavení můžete určit, jak dlouho má experiment běžet v řádu minut. <br><br> Aby se zabránilo chybám při experimentování, je k dispozici minimálně 15 minut nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.

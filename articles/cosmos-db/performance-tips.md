@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: 962b95307b440c3bafde019b5b2b630461718073
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339678"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029001"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy pro zvýšení výkonu pro službu Azure Cosmos DB a sadu .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského syst�
 
 - U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**  v okně **Vlastnosti projektu** na kartě **sestavení** .
 
-- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test** že  >  v nabídce Test sady Visual Studio vyberete **možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
+- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, že  >  v nabídce Test sady Visual Studio vyberete **možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . 
 
 - Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty**.
 
@@ -180,7 +180,7 @@ Chcete-li snížit počet síťových přenosů potřebných k načtení všech 
 > [!NOTE] 
 > `maxItemCount`Vlastnost by se neměla používat jenom pro stránkování. Jeho hlavním použitím je zvýšit výkon dotazů omezením maximálního počtu položek vrácených na jednu stránku.  
 
-Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Například:
+Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

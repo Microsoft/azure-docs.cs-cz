@@ -7,13 +7,13 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperfq1
-ms.openlocfilehash: b16880f42cab21c1437d9adcbeb9825d77475e0e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413169"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032367"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -35,7 +35,7 @@ Můžete například:
 > [!Tip]
 > Když zapnete export dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte nejdříve export dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li používat funkce exportu dat, je nutné mít [aplikaci V3](howto-get-app-info.md)a musíte mít oprávnění k [exportu dat](howto-manage-users-roles.md) .
 
@@ -142,20 +142,20 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
     - **Vyfiltruje** exportovaný datový proud tak, aby obsahoval pouze telemetrii ze zařízení, která odpovídají názvu zařízení, ID zařízení a podmínky filtru šablony zařízení.
     - **Filtrovat** přes možnosti: Pokud zvolíte položku telemetrie v rozevíracím seznamu **název** , exportovaný datový proud obsahuje jenom telemetrii, která splňuje podmínku filtru. Pokud v rozevíracím seznamu **název** zvolíte položku zařízení nebo cloudová vlastnost, exportovaný datový proud obsahuje jenom telemetrii ze zařízení s vlastnostmi, které odpovídají podmínkám filtru.
-    - **Filtr vlastností zpráv** : zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
+    - **Filtr vlastností zpráv**: zařízení, která používají sady SDK pro zařízení, mohou odesílat *vlastnosti zprávy* nebo *Vlastnosti aplikace* v každé zprávě telemetrie. Vlastnosti jsou kontejner párů klíč-hodnota, které označí zprávu vlastními identifikátory. Chcete-li vytvořit filtr vlastností zprávy, zadejte klíč vlastnosti zprávy, který hledáte, a zadejte podmínku. Exportují se jenom zprávy telemetrie s vlastnostmi, které odpovídají zadané podmínce filtru. Jsou podporovány následující řetězcové operátory porovnání: Equals, není rovno, obsahuje, neobsahuje, existuje, neexistuje. [Přečtěte si další informace o vlastnostech aplikace z IoT Hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Chcete-li filtrovat změny vlastností, použijte **Filtr schopností**. V rozevíracím seznamu vyberte položku Vlastnosti. Exportovaný datový proud obsahuje pouze změny vybrané vlastnosti, která splňuje podmínku filtru.
 
 <a name="DataExportEnrichmnents"></a>
 1. Volitelně můžete rozšířit exportované zprávy s dalšími metadaty páru klíč-hodnota. K dispozici jsou následující obohacení pro telemetrie a vlastnost pro změny typů exportu dat:
 
-    - **Vlastní řetězec** : přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
-    - **Vlastnost** : přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
+    - **Vlastní řetězec**: přidá do každé zprávy vlastní statický řetězec. Zadejte libovolný klíč a zadejte libovolnou hodnotu řetězce.
+    - **Vlastnost**: přidá do každé zprávy aktuální nahlášenou vlastnost nebo hodnotu vlastnosti cloudu. Zadejte libovolný klíč a vyberte vlastnost zařízení nebo cloudu. Pokud je vyexportovaná zpráva ze zařízení, které nemá zadanou vlastnost, vyexportovaná zpráva nezíská obohacení.
 
 1. Přidejte nový cíl nebo přidejte cíl, který jste už vytvořili. Vyberte odkaz **vytvořit nové** a přidejte následující informace:
 
-    - **Název cíle** : zobrazovaný název cíle v IoT Central.
-    - **Cílový typ** : Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
+    - **Název cíle**: zobrazovaný název cíle v IoT Central.
+    - **Cílový typ**: Vyberte typ cíle. Pokud jste ještě nevytvořili cíl, přečtěte si téma [Nastavení cíle exportu](#set-up-export-destination).
     - V případě služby Azure Event Hubs Azure Service Bus Queue nebo téma vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název centra událostí s rozlišováním velkých a malých písmen, fronty nebo tématu.
     - Pro Azure Blob Storage vložte připojovací řetězec pro váš prostředek a v případě potřeby zadejte název kontejneru rozlišující velká a malá písmena.
     - Pro Webhook vložte adresu URL zpětného volání pro svůj koncový bod Webhooku. Volitelně můžete nakonfigurovat autorizaci Webhooku (OAuth 2,0 a autorizační token) a přidat vlastní hlavičky. 

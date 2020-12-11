@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 3587beaeb788665c68c1fcb6376af40566b6c35e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659042"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032775"
 ---
 # <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
@@ -130,7 +130,7 @@ Po vytvoření zásady pro vyjádření souhlasu s aplikací můžete této zás
 
 Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro vyjádření souhlasu s aplikacemi.
 
-| Stav | Popis|
+| Podmínka | Popis|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
 | PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |

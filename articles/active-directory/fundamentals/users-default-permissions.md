@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: ajburnle
 ms.reviewer: vincesm
-ms.custom: it-pro, seodec18, contperfq1
+ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602026"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032758"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.

@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
-ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: c85989dc02bddd136c56a81993df7a507a84d3b4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460285"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032843"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Připojení ke službám úložiště v Azure
 
@@ -28,7 +28,7 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).

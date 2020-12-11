@@ -6,12 +6,12 @@ ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
-ms.openlocfilehash: 187e17bcf385ba6b3c17566fc00e5ee77cf009fe
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: ce712736c25c0757f5b654e4442a4f08acdf15e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752477"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029783"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta) – PowerShell
 
@@ -464,7 +464,7 @@ while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.Sta
 Write-Output $StopReplicationJob.State
 ```
 
-2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](../virtual-machines/extensions/agent-windows.md) nebo [Linux](../virtual-machines/extensions/agent-linux.md) .
+2. Nainstalujte agenta pro [Linux](../virtual-machines/extensions/agent-linux.md) do migrovaných počítačů, pokud má počítač Linux OS. Během migrace automaticky nainstalujete agenta virtuálního počítače pro virtuální počítače s Windows.
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure

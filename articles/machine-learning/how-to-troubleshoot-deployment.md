@@ -10,19 +10,19 @@ ms.author: gopalv
 ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
-ms.custom: contperfq4, devx-track-python, deploy, contperfq2
-ms.openlocfilehash: 0b8da0be16adc79b606b59f394b223b001453607
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
+ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185058"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031500"
 ---
 # <a name="troubleshoot-model-deployment"></a>Řešení potíží s nasazením modelu
 
 Přečtěte si, jak řešit a řešit běžné chyby nasazení vzdáleného Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40, contperfq2
-ms.openlocfilehash: 3f18913bb0d05c45ae57152d438b229b8bcc1d48
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627910"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029613"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
@@ -30,10 +30,10 @@ Platforma Microsoft Identity Platform tvoří několik součástí:
   - Pracovní nebo školní účty zřízené prostřednictvím služby Azure AD
   - Osobní účet Microsoft, jako Skype, Xbox a Outlook.com
   - Sociální nebo místní účty pomocí Azure AD B2C
-- **Open source knihovny** : knihovny Microsoft Authentication Library (MSAL) a podpora dalších knihoven odpovídajících standardům
-- **Portál pro správu aplikací** : prostředí pro registraci a konfiguraci v Azure Portal společně s dalšími možnostmi správy Azure.
-- **Rozhraní API pro konfiguraci aplikací a PowerShell** : Programová konfigurace vašich aplikací prostřednictvím rozhraní Microsoft Graph API a PowerShellu, abyste mohli automatizovat úlohy DevOps.
-- **Vývojářský obsah** : Technická dokumentace, včetně rychlých startů, kurzů, průvodců návody a ukázek kódu.
+- **Open source knihovny**: knihovny Microsoft Authentication Library (MSAL) a podpora dalších knihoven odpovídajících standardům
+- **Portál pro správu aplikací**: prostředí pro registraci a konfiguraci v Azure Portal společně s dalšími možnostmi správy Azure.
+- **Rozhraní API pro konfiguraci aplikací a PowerShell**: Programová konfigurace vašich aplikací prostřednictvím rozhraní Microsoft Graph API a PowerShellu, abyste mohli automatizovat úlohy DevOps.
+- **Vývojářský obsah**: Technická dokumentace, včetně rychlých startů, kurzů, průvodců návody a ukázek kódu.
 
 Pro vývojáře nabízí platforma Microsoft Identity Platform integraci moderních inovací v rámci identity a prostoru zabezpečení, jako je ověřování bez hesla, podrobné ověřování a podmíněný přístup. Nemusíte tyto funkce implementovat sami: aplikace integrované s Microsoft Identity platformou nativně využívají takové inovace.
 

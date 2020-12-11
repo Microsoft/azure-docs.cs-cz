@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785880"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032673"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -27,10 +27,10 @@ Tento dokument vám pomůže se správou řešení zabezpečení již propojený
 Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Mezi výhody patří:
 
 - **Zjednodušené nasazení:** Security Center nabízí zjednodušené zřízení integrovaných partnerských řešení. Pro řešení, jako jsou antimalware a posouzení ohrožení zabezpečení, Security Center může zřídit agenta na virtuálních počítačích. U zařízení s bránou firewall může Security Center pořídit většinu požadovaných konfigurací sítě.
-- **Integrované detekce** : události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují jako součást Security Center výstrah a incidentů. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
+- **Integrované detekce**: události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují jako součást Security Center výstrah a incidentů. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
 - **Sjednocená správa a monitorování stavu:** Zákazníci můžou využít integrované události týkající se stavu k monitorování všech partnerských řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
 
-Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a firewall webových aplikací Microsoft Application Gateway.
+Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a [Microsoft Azure Firewall webových aplikací v Azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
 
 > [!NOTE]
 > Security Center neinstaluje agenta Log Analytics na partnerských virtuálních zařízeních, protože většina dodavatelů zabezpečení brání externím agentům běžícím na jejich zařízeních.
@@ -49,9 +49,9 @@ Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Správa integrovaných řešení zabezpečení Azure a dalších zdrojů dat
 
-1. Z [Azure Portal](https://azure.microsoft.com/features/azure-portal/)otevřete **Security Center** .
+1. Z [Azure Portal](https://azure.microsoft.com/features/azure-portal/)otevřete **Security Center**.
 
-1. V nabídce Security Center vyberte **řešení zabezpečení** .
+1. V nabídce Security Center vyberte **řešení zabezpečení**.
 
 Na stránce **řešení zabezpečení** uvidíte stav integrovaných řešení zabezpečení Azure a spouštějte základní úlohy správy.
 
@@ -95,7 +95,7 @@ Vyberte **připojit** v rámci řešení, které chcete integrovat s Security Ce
 
 ### <a name="add-data-sources"></a>Přidat zdroje dat
 
-Část **Přidat zdroje dat** obsahuje další dostupné zdroje dat, které je možné připojit. Pokyny k přidání dat z některého z těchto zdrojů získáte kliknutím na **PŘIDAT** .
+Část **Přidat zdroje dat** obsahuje další dostupné zdroje dat, které je možné připojit. Pokyny k přidání dat z některého z těchto zdrojů získáte kliknutím na **PŘIDAT**.
 
 ![Zdroje dat](./media/security-center-partner-integration/add-data-sources.png)
 

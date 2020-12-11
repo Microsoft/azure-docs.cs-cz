@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.custom: contperfq2
-ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170333"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032520"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -166,7 +166,7 @@ Vlastnosti cloudu jsou metadata zařízení přidružená k zařízení, jako je
 
 1. Upravte vlastnosti na hodnoty, které potřebujete. Současně můžete upravovat více vlastností a současně je aktualizovat.
 
-1. Klikněte na tlačítko **Uložit**. Pokud jste uložili vlastnosti zapisovatelné pro zápis, hodnoty se odešlou do vašeho zařízení. Když zařízení potvrdí změnu vlastnosti pro zápis, vrátí se zpátky do **synchronizovaného**stavu. Pokud jste uložili vlastnost cloudu, hodnota se aktualizuje.
+1. Klikněte na tlačítko **Uložit**. Pokud jste uložili vlastnosti zapisovatelné pro zápis, hodnoty se odešlou do vašeho zařízení. Když zařízení potvrdí změnu vlastnosti pro zápis, vrátí se zpátky do **synchronizovaného** stavu. Pokud jste uložili vlastnost cloudu, hodnota se aktualizuje.
 
 ## <a name="next-steps"></a>Další kroky
 

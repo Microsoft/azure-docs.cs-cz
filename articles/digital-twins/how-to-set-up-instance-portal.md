@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280593"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032316"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Tento článek popisuje postup **Nastavení nové instance digitálního vlákna Azure** , včetně vytvoření instance a nastavení ověřování. Po dokončení tohoto článku budete mít instanci digitálních vláken Azure, která je připravená na zahájení programování.
+Tento článek popisuje postup **Nastavení nové instance digitálního vlákna Azure**, včetně vytvoření instance a nastavení ověřování. Po dokončení tohoto článku budete mít instanci digitálních vláken Azure, která je připravená na zahájení programování.
 
 Tato verze tohoto článku prochází těmito kroky ručně, jednou po jednom, pomocí Azure Portal. Azure Portal je unifikovaná webová konzola, která poskytuje alternativu k nástrojům příkazového řádku.
 * Pokud chcete projít tyto kroky ručně pomocí rozhraní příkazového řádku, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
@@ -41,10 +41,10 @@ Ve vyhledávacím poli vyhledejte *digitální vlákna Azure* a z výsledků vyb
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Výběr možnosti ' vytvořit ' na stránce služby Azure Digital Service":::
 
 Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené níže:
-* **Předplatné** : předplatné Azure, které používáte
-  - **Skupina prostředků** : Skupina prostředků, do které se má instance nasadit. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit tak, že vyberete odkaz *vytvořit nový* a zadáte název nové skupiny prostředků.
-* **Umístění** : oblast s povolenými digitálními podtechnologiemi Azure pro nasazení. Další podrobnosti o místní podpoře najdete v [*produktech Azure dostupných v oblasti (digitální vlákna Azure)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* **Název prostředku** : název vaší instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
+* **Předplatné**: předplatné Azure, které používáte
+  - **Skupina prostředků**: Skupina prostředků, do které se má instance nasadit. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit tak, že vyberete odkaz *vytvořit nový* a zadáte název nové skupiny prostředků.
+* **Umístění**: oblast s povolenými digitálními podtechnologiemi Azure pro nasazení. Další podrobnosti o místní podpoře najdete v [*produktech Azure dostupných v oblasti (digitální vlákna Azure)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+* **Název prostředku**: název vaší instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Naplnění popsaných hodnot k vytvoření prostředku digitálních vláken Azure":::
 
@@ -61,7 +61,7 @@ Případně, pokud se nasazení nezdaří, oznámení indikuje, proč. Sledujte 
 >[!TIP]
 >Po vytvoření instance se můžete kdykoli vrátit na svou stránku tak, že na panelu hledání Azure Portal vyhledáte název vaší instance.
 
-Na stránce *Přehled* instance si poznamenejte její *název* , *skupinu prostředků* a *název hostitele*. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s vaší instancí digitálních vláken Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
+Na stránce *Přehled* instance si poznamenejte její *název*, *skupinu prostředků* a *název hostitele*. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s vaší instancí digitálních vláken Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
 
@@ -76,9 +76,9 @@ Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Po
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Výběr přidání přiřazení role ze stránky řízení přístupu (IAM)":::
 
 Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončené uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
-* **Role** : vyberte v rozevírací nabídce možnost *vlastník dat digitálních vláken Azure* .
-* **Přiřadit přístup k** : vyberte *uživatele, skupinu nebo INSTANČNÍ objekt Azure AD* z rozevírací nabídky.
-* **Vyberte** : Vyhledejte jméno nebo e-mailovou adresu uživatele, který chcete přiřadit. Když vyberete výsledek, uživatel se zobrazí v části *Vybrané členy* .
+* **Role**: vyberte v rozevírací nabídce možnost *vlastník dat digitálních vláken Azure* .
+* **Přiřadit přístup k**: vyberte *uživatele, skupinu nebo INSTANČNÍ objekt Azure AD* z rozevírací nabídky.
+* **Vyberte**: Vyhledejte jméno nebo e-mailovou adresu uživatele, který chcete přiřadit. Když vyberete výsledek, uživatel se zobrazí v části *Vybrané členy* .
 
 :::row:::
     :::column:::

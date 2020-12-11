@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 88b3879a648117329f2485012542b48d6a7a7755
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 56a350f886229cfb5479b5adae52a9c871f5bb65
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752681"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032333"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -173,7 +173,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     ![Replikace serverů](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. V části **Replikace počítačů** klikněte pravým tlačítkem na virtuální počítač a vyberte **Migrovat**.
-3. V **Migrate**  >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  **OK**.
+3. V   >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  .
     - Azure Migrate ve výchozím nastavení vypne místní virtuální počítač a spustí replikaci na vyžádání, při které se synchronizují všechny změny virtuálního počítače, ke kterým došlo od poslední replikace. Tím se zajistí, že nedojde ke ztrátě dat.
     - Pokud virtuální počítač nechcete vypnout, vyberte **Ne**.
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.
@@ -182,7 +182,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="complete-the-migration"></a>Dokončete migraci
 
 1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit replikaci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
-2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](../virtual-machines/extensions/agent-windows.md) nebo [Linux](../virtual-machines/extensions/agent-linux.md) .
+2. Pokud má počítač Linux OS, nainstalujte do migrovaných počítačů agenta Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) . Během migrace automaticky nainstalujete agenta virtuálního počítače pro virtuální počítače s Windows.
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure

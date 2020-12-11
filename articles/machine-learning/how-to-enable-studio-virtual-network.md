@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: contperf-fy20q4, tracking-python
+ms.openlocfilehash: 8dc8446ecbc203622ce7c2163136c1c26aac1cc7
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576606"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032724"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -40,7 +40,7 @@ Podívejte se na další články v této sérii:
 > Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__, například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) a seznamte se s běžnými scénáři a architekturou virtuální sítě.
 

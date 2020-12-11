@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906246"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032707"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -84,7 +84,7 @@ Virtuální počítače, které používají virtuální sítě pro komunikaci, 
 
 ### <a name="communicate-over-private-link-in-azure"></a>Komunikace prostřednictvím privátního propojení v Azure
 
-Virtuální počítače můžou používat [privátní propojení](../../../private-link/private-link-overview.md) ke komunikaci se službou konfigurace hosta. `EnablePrivateNeworkGC` `TRUE` Chcete-li povolit tuto funkci, použijte značku s názvem a hodnotou. Značku lze použít před nebo po použití definic zásad konfigurace hosta pro daný počítač.
+Virtuální počítače můžou používat [privátní propojení](../../../private-link/private-link-overview.md) ke komunikaci se službou konfigurace hosta. `EnablePrivateNetworkGC` `TRUE` Chcete-li povolit tuto funkci, použijte značku s názvem a hodnotou. Značku lze použít před nebo po použití definic zásad konfigurace hosta pro daný počítač.
 
 Provoz se směruje pomocí [virtuální veřejné IP adresy](../../../virtual-network/what-is-ip-address-168-63-129-16.md) Azure a vytvoří zabezpečený a ověřený kanál s prostředky platformy Azure.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591712"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031058"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -47,25 +47,22 @@ K provedení této ukázky budete potřebovat:
 >
 > K registraci aplikace a ručnímu přidání registračních informací aplikace do aplikace použijte následující postup:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
->
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace** , zadejte registrační informace vaší aplikace:
->    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
->    - Vyberte **Zaregistrovat**.
-> 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
-> 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - Přidejte konfiguraci **webové** platformy.  Přidejte `https://localhost:8443/msal4jsample/secure/aad` je a `https://localhost:8443/msal4jsample/graph/me` jako **identifikátory URI přesměrování**..
->    - Vyberte **Uložit**.
-> 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
->
->    - Zadejte popis klíče (např. tajný klíč aplikace).
->    - Vyberte dobu trvání klíče **v 1 roce**.
->    - Hodnota klíče se zobrazí, když vyberete **Přidat**.
->    - Zkopírujte hodnotu klíče pro pozdější verzi. Tato hodnota klíče se znovu nezobrazí ani není dostupná žádným jiným způsobem, takže ji nahrajte hned, jak je vidět z Azure Portal.
->
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `java-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Vyberte **Zaregistrovat**.
+> 1. Na stránce **Přehled** si poznamenejte **ID aplikace (klienta)** a **ID adresáře (tenant)** pro pozdější použití.
+> 1. V části **Spravovat** vyberte **ověřování**.
+> 1. Vyberte **Přidat**  >  **Web** platformy.
+> 1. V části **identifikátory URI pro přesměrování** přidejte `https://localhost:8443/msal4jsample/secure/aad` .
+> 1. Vyberte **Konfigurovat**.
+> 1. V části **Web** přidejte `https://localhost:8443/msal4jsample/graph/me` jako druhý **identifikátor URI přesměrování**.
+> 1. V části **Spravovat** vyberte **certifikáty & tajných** kódů. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
+> 1. Zadejte popis klíče (například pro tajný klíč aplikace), ponechte výchozí hodnotu vypršení platnosti a vyberte **Přidat**.
+> 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 >
@@ -110,7 +107,7 @@ K provedení této ukázky budete potřebovat:
 > #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
 > 1. Soubor .zip extrahujte do místní složky.
 > 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
-> 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID* , *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace** , **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
+> 1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -150,13 +147,13 @@ Spusťte ji přímo z integrovaného vývojového prostředí pomocí integrovan
 
 ##### <a name="running-from-ide"></a>Spuštění z IDE
 
-Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránky https://localhost:8443
+Pokud používáte webovou aplikaci z rozhraní IDE, vyberte spustit a potom přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránky https://localhost:8443 .
 
 1. Na přední stránce vyberte tlačítko **přihlášení** , které chcete přesměrovat na Azure Active Directory a vyzvat uživatele k zadání přihlašovacích údajů.
 
 1. Po ověření uživatele budou přesměrováni na *https://localhost:8443/msal4jsample/secure/aad* . Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
-    - *Odhlášení* : podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
-    - *Zobrazit informace o uživateli* : Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
+    - *Odhlášení*: podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
+    - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
 
 ##### <a name="running-from-tomcat"></a>Spuštění z Tomcat
 
