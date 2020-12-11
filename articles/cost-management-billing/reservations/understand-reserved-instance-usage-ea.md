@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350887"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545600"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získání nákladů na rezervace a jejich využití u smlouvy Enterprise
 
@@ -139,6 +139,8 @@ Opatřete si data Amortizované náklady a vyfiltrujte v datech rezervovanou ins
 1. Získejte odhadované náklady na průběžné platby. Vynásobením hodnot _UnitPrice_ a _Quantity_ získáte odhadované náklady na průběžné platby, kdyby na využití nebyla uplatněna sleva za rezervaci.
 2. Získejte náklady na rezervaci. Sečtením hodnot _Cost_ získáte peněžní hodnotu, kterou jste zaplatili za rezervovanou instanci. Zahrnuje využité a nevyužité náklady na rezervaci.
 3. Odečtením nákladů na rezervaci od odhadovaných nákladů na průběžné platby získáte odhadované úspory.
+
+Nezapomínejte, že v případě nedostatečně využité rezervace je potřeba vzít v úvahu také položku _UnusedReservation_ pro _ChargeType_. Pokud máte plně využitou rezervaci, získáváte maximální možnou úsporu. Libovolná hodnota _UnusedReservation_ vaše úspory snižuje.
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Nákupy a amortizace rezervací v analýze nákladů
 

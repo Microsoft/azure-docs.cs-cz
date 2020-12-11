@@ -132,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: Úlohy po skončení instalace
           href: how-to-connect-post-installation.md
+        - name: Odinstalace služby Azure AD Connect
+          href: how-to-connect-uninstall.md
     - name: Plánování a návrh
       items:
         - name: Koncepty návrhu

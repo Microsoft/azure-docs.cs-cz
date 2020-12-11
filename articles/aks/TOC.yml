@@ -179,7 +179,7 @@
         - name: Nasazení AKS s Terraformem
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Použití prohlížeče prostředků Kubernetes (Preview)
+        - name: Zobrazení prostředků Azure Portal Kubernetes
           href: kubernetes-portal.md
         - name: Použití řídicího panelu Kubernetes
           href: kubernetes-dashboard.md

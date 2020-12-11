@@ -3,18 +3,18 @@ title: Kurz – Vytvoření a správa exportovaných dat ze služby Azure Cost M
 description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007218"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929255"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -58,20 +58,20 @@ Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevře
 > - Kromě předplatných můžete vytvářet exporty u skupin prostředků, skupin pro správu, oddělení a registrací. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
 >- Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojený s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
 
-1. Vyberte **Přidat** a zadejte název exportu. 
+1. Vyberte **Přidat** a zadejte název exportu.
 1. Jako **metriku** vyberte:
     - **Skutečné náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat standardní využití a nákupy.
     - **Amortizované náklady (využití a nákupy)** – Tuto možnost vyberte, pokud chcete exportovat amortizované náklady pro nákupy, jako jsou rezervace Azure.
 1. V poli **Typ exportu** vyberte:
     - **Denní export nákladů od začátku měsíce** – Poskytuje každý den nový soubor exportu s náklady od začátku měsíce. Nejnovější data jsou agregována z předchozích denních exportů.
-    - **Týdenní export nákladů za posledních 7 dní** – Vytvoří týdenní export nákladů za posledních 7 dní od vybraného počátečního data exportu.  
-    - **Měsíční export nákladů za poslední měsíc** – Poskytne vám export nákladů za poslední měsíc na základě aktuálního měsíce, ve kterém jste export vytvořili. Podle rozvrhu se export spustí vždy pátého dne v měsíci pro náklady za předchozí měsíc.  
-    - **Jednorázový export** – Umožňuje zvolit časový rozsah historických dat pro export do služby Azure Blob Storage. Můžete exportovat maximálně 90 dní historických nákladů, a to od libovolného data. Tento export se spustí okamžitě a v účtu úložiště je k dispozici do dvou hodin.  
+    - **Týdenní export nákladů za posledních 7 dní** – Vytvoří týdenní export nákladů za posledních 7 dní od vybraného počátečního data exportu.
+    - **Měsíční export nákladů za poslední měsíc** – Poskytne vám export nákladů za poslední měsíc na základě aktuálního měsíce, ve kterém jste export vytvořili. Podle rozvrhu se export spustí vždy pátého dne v měsíci pro náklady za předchozí měsíc.
+    - **Jednorázový export** – Umožňuje zvolit časový rozsah historických dat pro export do služby Azure Blob Storage. Můžete exportovat maximálně 90 dní historických nákladů, a to od libovolného data. Tento export se spustí okamžitě a v účtu úložiště je k dispozici do dvou hodin.
         V závislosti na typu exportu buď vyberte počáteční datum, nebo vyberte data **Od** a **Do**.
-1. Zadejte předplatné pro účet úložiště Azure a potom vyberte skupinu prostředků nebo vytvořte novou. 
-1. Vyberte název účtu úložiště nebo vytvořte nový. 
+1. Zadejte předplatné pro účet úložiště Azure a potom vyberte skupinu prostředků nebo vytvořte novou.
+1. Vyberte název účtu úložiště nebo vytvořte nový.
 1. Vyberte umístění (oblast Azure).
-1. Zadejte kontejner úložiště a cestu k adresáři, do kterého chcete soubor exportu poslat. 
+1. Zadejte kontejner úložiště a cestu k adresáři, do kterého chcete soubor exportu poslat.
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Příklad nového exportu" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. Zkontrolujte podrobnosti o exportu a vyberte **Vytvořit**.
 
@@ -132,7 +132,7 @@ Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 1. K aktualizaci exportu můžete použít příkaz [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update):
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ K odstranění exportu můžete použít příkaz [az costmanagement export dele
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Začněte přípravou vašeho prostředí pro Azure PowerShell:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > Když je powershellový modul **Az.CostManagement** ve verzi Preview, musíte ho nainstalovat samostatně pomocí rutiny `Install-Module`. Jakmile bude tento powershellový modul obecně dostupný, stane se součástí budoucích verzí modulu Az PowerShellu a bude ve výchozím nastavení dostupný v rámci Azure Cloud Shellu.
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. K zobrazení vašich aktuálních exportů po přihlášení použijte rutinu [Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport):
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* Kromě předplatných můžete vytvářet exporty pro skupiny prostředků a skupiny pro správu. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
+   >* Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojený s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
+
+1. Vytvořte skupinu prostředků nebo použijte stávající skupinu prostředků. K vytvoření skupiny prostředků použijte rutinu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. Vytvořte účet úložiště pro příjem exportů, nebo použijte už existující účet úložiště. K vytvoření účtu úložiště použijte rutinu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount):
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. Spusťte rutinu [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport) pro vytvoření exportu:
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   Jako parametr **DefinitionType** můžete zvolit `ActualCost`, `AmortizedCost` nebo `Usage`.
+
+   Tento příklad používá `MonthToDate`. Každý den se vytvoří soubor exportu pro náklady od začátku měsíce. Nejnovější data jsou agregována z předchozích denních exportů tohoto měsíce.
+
+1. K zobrazení podrobných informací o operaci exportu použijte rutinu `Get-AzCostManagementExport`:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. K aktualizaci exportu můžete použít rutinu [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport):
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   Tento příklad změní výstupní adresář.
+
+>[!NOTE]
+>Na začátku může trvat 12 až 24 hodin, než se export spustí. Může však trvat i déle, než se v exportovaných souborech zobrazí data.
+
+K odstranění exportu můžete použít rutinu [Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport):
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ Pokud máte smlouva Enterprise, můžete použít skupinu pro správu k agregaci
 Export pro skupiny pro správu jiných typů předplatného se nepodporuje.
 
 1. Pokud jste si ještě nevytvořili skupinu pro správu, vytvořte si ji a přiřaďte do ní předplatná.
-1. V analýze nákladů jako rozsah nastavte skupinu pro správu a vyberte možnost **Vybrat tuto skupinu pro správu**.  
+1. V analýze nákladů jako rozsah nastavte skupinu pro správu a vyberte možnost **Vybrat tuto skupinu pro správu**.
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Příklad ukazující možnost Vybrat tuto skupinu pro správu" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.  
+1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Příklad ukazující možnost vytvoření nového exportu s rozsahem skupiny pro správu":::
 
 ## <a name="verify-that-data-is-collected"></a>Ověřte, že jsou data shromážděná
@@ -196,7 +279,7 @@ Vyexportovaný soubor CSV si také můžete stáhnout na webu Azure Portal. Nás
 
 [![Příklad stažení exportu](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>Zobrazení historie spuštění exportu  
+## <a name="view-export-run-history"></a>Zobrazení historie spuštění exportu
 
 Historii spuštění naplánovaného exportu můžete zobrazit výběrem příslušného exportu na stránce se seznam exportů. Stránka se seznamem exportů také poskytuje rychlý přístup k zobrazení doby běhu předchozích exportů a času příštího spuštění exportu. Tady je příklad ukazující historii spuštění.
 

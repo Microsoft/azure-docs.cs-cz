@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657308"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905670"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -262,7 +262,7 @@ K filtrování a seskupení také můžete použít vlastnost **PartnerEarnedCre
 
 ## <a name="export-cost-data-to-azure-storage"></a>Export dat o nákladech do Azure Storage
 
-Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou exportovat data o nákladech a využití do úložiště objektů blob v Azure. Objekt blob musí být v předplatném partnerského tenanta, který nepatří k předplatnému sdílené služby ani k předplatnému zákazníka. Pokud chcete povolit export nákladových dat, doporučujeme v partnerském tenantovi nastavit nezávislé předplatné s průběžnými platbami, které bude hostovat exportovaná nákladová data. Účet úložiště pro export se vytvoří v úložišti objektů služby Azure Storage hostovaném v předplatném s průběžnými platbami. Na základě rozsahu, ve kterém partner vytvoří export, se související data pravidelně automaticky exportují do účtu úložiště.
+Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou exportovat data o nákladech a využití do úložiště objektů blob v Azure. Objekt blob musí být v předplatném partnerského tenanta, který nepatří k [předplatnému sdílené služby](/partner-center/shared-services) ani k předplatnému zákazníka. Pokud chcete povolit export nákladových dat, doporučujeme v partnerském tenantovi nastavit nezávislé předplatné s průběžnými platbami, které bude hostovat exportovaná nákladová data. Účet úložiště pro export se vytvoří v úložišti objektů služby Azure Storage hostovaném v předplatném s průběžnými platbami. Na základě rozsahu, ve kterém partner vytvoří export, se související data pravidelně automaticky exportují do účtu úložiště.
 
 Uživatelé s přístupem Azure RBAC k předplatnému také můžou nákladová data exportovat do úložiště objektů blob v Azure hostovaného v některém předplatném zákaznického tenanta.
 

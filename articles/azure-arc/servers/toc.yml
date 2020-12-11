@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Nasazení rozšíření pomocí šablony ARM
               href: manage-vm-extensions-template.md
+        - name: Použité spravované identity na serveru
+          href: managed-identity-authentication.md
         - name: Správa agenta
           href: manage-agent.md
     - name: Scénáře

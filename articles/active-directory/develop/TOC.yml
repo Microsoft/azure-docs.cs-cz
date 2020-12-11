@@ -563,10 +563,10 @@
             - name: Udělení přihlašovacího hesla vlastníka prostředku OAuth 2.0
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: Tok kontrolních výrazů nosiče OAuth 2.0 SAML
-              href: v2-saml-bearer-assertion.md
             - name: Výměna podpisových klíčů
               href: active-directory-signing-key-rollover.md
+            - name: Scénáře výměny tokenů
+              href: scenario-token-exchange-saml-oauth.md
             - name: Tokeny ID
               href: id-tokens.md
             - name: Přístupové tokeny
