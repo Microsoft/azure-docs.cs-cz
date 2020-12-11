@@ -3,12 +3,12 @@ title: Aktualizace delegování
 description: Přečtěte si, jak aktualizovat delegování pro zákazníka dříve připojeného do Azure Lighthouse.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610894"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093413"
 ---
 # <a name="update-a-delegation"></a>Aktualizace delegování
 
@@ -17,7 +17,7 @@ Po připojení předplatného (nebo skupiny prostředků) k Azure Lighthouse mů
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , použít stejný postup k nastavení Azure Lighthouse a konsolidovat prostředí pro správu.
 
-Pokud jste [připojili zákazníky k šablonám Azure Resource Manager (ARM)](onboard-customer.md), musí se pro tohoto zákazníka provést nové nasazení. V závislosti na tom, co měníte, možná budete chtít aktualizovat původní nabídku nebo odebrat původní nabídku a vytvořit novou.
+Pokud jste [zákazníkovi připojili Azure Resource Manager šablon (šablony ARM)](onboard-customer.md), musí se pro tohoto zákazníka provést nové nasazení. V závislosti na tom, co měníte, možná budete chtít aktualizovat původní nabídku nebo odebrat původní nabídku a vytvořit novou.
 
 - **Pokud měníte jenom autorizaci**: delegování můžete aktualizovat tak, že změníte jenom část **autorizace** v šabloně ARM.
 - **Pokud měníte tenanta pro správu**: musíte vytvořit novou šablonu ARM pomocí jiného **mspOfferName** než předchozí nabídky.

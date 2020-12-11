@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353880"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093702"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat iPass SmartConnect pro Automatické zřizování už
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v iPass SmartConnect na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
->  Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro BitaBIZ podle pokynů uvedených v [kurzu IPASS SmartConnect jednotného přihlašování](ipasssmartconnect-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+>  Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro iPass SmartConnect, a to podle pokynů uvedených v [kurzu IPASS SmartConnect jednotného přihlašování](ipasssmartconnect-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro iPass SmartConnect ve službě Azure AD:
 

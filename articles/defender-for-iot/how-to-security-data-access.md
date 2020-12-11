@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 677ab3327f2357ce7b242c314b44702370779def
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351669"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092053"
 ---
 # <a name="access-your-security-data"></a>Přístup k datům zabezpečení
 
@@ -37,7 +37,7 @@ Přístup k výstrahám a doporučením v pracovním prostoru Log Analytics po k
 1. Vyberte výstrahu nebo doporučení v programu Defender pro IoT.
 1. Klikněte na **Další šetření** a potom kliknutím na zobrazit, **která zařízení mají tato upozornění, klikněte sem a zobrazte sloupec DeviceID**.
 
-Podrobnosti o dotazování na data z Log Analytics najdete v tématu Začínáme [s dotazy v Log Analytics](//azure/log-analytics/query-language/get-started-queries).
+Podrobnosti o dotazování na data z Log Analytics najdete v tématu Začínáme [s dotazy v Log Analytics](/azure/azure-monitor/log-query/get-started-queries).
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 

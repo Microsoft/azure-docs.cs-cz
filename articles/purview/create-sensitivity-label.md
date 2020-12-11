@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558160"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092682"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -190,7 +190,6 @@ Další informace o tom, jak nastavit kontroly v různých assetech v Azure dosa
 |**Azure Blob Storage**     |[Registrace a kontrola Blob Storage v Azure](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake Storage**     |[Registrovat a kontrolovat Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[Registrovat a kontrolovat Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
 |**Azure SQL Databases**|[Registrace a kontrola Azure SQL Database](register-scan-azure-sql-database.md) </br>[Registrace a kontrola Azure SQL Database spravované instance](register-scan-azure-sql-database-managed-instance.md)|
-|**Účty úložiště za branami firewall**     |[Kontrola účtů úložiště za bránou firewall ve službě Azure dosah](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>Zobrazit popisky u prostředků

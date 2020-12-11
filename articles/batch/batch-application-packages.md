@@ -6,13 +6,13 @@ ms.date: 09/24/2020
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
-- contperfq1
-ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+- contperf-fy21q1
+ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91277695"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033727"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -33,7 +33,7 @@ Existují omezení počtu aplikací a balíčků aplikací v rámci účtu Batch
 
 ## <a name="understand-applications-and-application-packages"></a>Porozumění aplikacím a balíčkům aplikací
 
-V rámci Azure Batch *aplikace* odkazuje na sadu binárních souborů s verzí, které se dají automaticky stáhnout do výpočetních uzlů ve fondu. Aplikace obsahuje jeden nebo více *balíčků aplikací* , které reprezentují různé verze aplikace.
+V rámci Azure Batch *aplikace* odkazuje na sadu binárních souborů s verzí, které se dají automaticky stáhnout do výpočetních uzlů ve fondu. Aplikace obsahuje jeden nebo více *balíčků aplikací*, které reprezentují různé verze aplikace.
 
 Každý *balíček aplikace* je soubor. zip, který obsahuje binární soubory aplikace a všechny podpůrné soubory. Podporován je pouze formát. zip.
 
@@ -81,9 +81,9 @@ Pokud chcete zobrazit aplikace ve vašem účtu Batch, v levé navigační nabí
 
 Po výběru této možnosti nabídky se otevře okno **aplikace** . V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
-- **Balíčky** : počet verzí přidružených k této aplikaci.
-- **Výchozí verze** : Pokud je to možné, verze aplikace, která se nainstaluje, když při nasazování aplikace nebude zadána žádná verze
-- **Povolit aktualizace** : Určuje, jestli jsou povolené aktualizace balíčků a odstranění.
+- **Balíčky**: počet verzí přidružených k této aplikaci.
+- **Výchozí verze**: Pokud je to možné, verze aplikace, která se nainstaluje, když při nasazování aplikace nebude zadána žádná verze
+- **Povolit aktualizace**: Určuje, jestli jsou povolené aktualizace balíčků a odstranění.
 
 Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku aplikace na výpočetním uzlu, přejděte na účet Batch v Azure Portal. Vyberte **fondy**. pak vyberte fond, který obsahuje výpočetní uzel. Vyberte výpočetní uzel, na kterém je nainstalován balíček aplikace, a otevřete složku **aplikace** .
 
@@ -91,9 +91,9 @@ Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku a
 
 Chcete-li zobrazit podrobnosti o aplikaci, vyberte ji v okně **aplikace** . Pro svou aplikaci můžete nakonfigurovat následující nastavení.
 
-- **Allow Updates** : Určuje, zda lze balíčky aplikací [aktualizovat nebo odstranit](#update-or-delete-an-application-package). Výchozí hodnota je **Yes** (Ano). Pokud je tato možnost nastavená na **ne** , existující balíčky aplikací se nedají aktualizovat ani odstranit, ale pořád se můžou přidat nové verze balíčku aplikace.
-- **Výchozí verze** : výchozí balíček aplikace, který se má použít při nasazení aplikace, pokud není zadaná žádná verze.
-- **Zobrazovaný název** : popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci. Tento název lze například použít v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
+- **Allow Updates**: Určuje, zda lze balíčky aplikací [aktualizovat nebo odstranit](#update-or-delete-an-application-package). Výchozí hodnota je **Yes** (Ano). Pokud je tato možnost nastavená na **ne**, existující balíčky aplikací se nedají aktualizovat ani odstranit, ale pořád se můžou přidat nové verze balíčku aplikace.
+- **Výchozí verze**: výchozí balíček aplikace, který se má použít při nasazení aplikace, pokud není zadaná žádná verze.
+- **Zobrazovaný název**: popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci. Tento název lze například použít v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
 
 ### <a name="add-a-new-application"></a>Přidat novou aplikaci
 
@@ -105,9 +105,9 @@ V účtu Batch vyberte **aplikace** a pak vyberte **Přidat**.
 
 Zadejte následující informace:
 
-- **ID aplikace** : ID vaší nové aplikace.
-- **Version (verze** ): verze balíčku aplikace, kterou nahráváte.
-- **Balíček aplikace** : soubor. zip obsahující binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace.
+- **ID aplikace**: ID vaší nové aplikace.
+- **Version (verze**): verze balíčku aplikace, kterou nahráváte.
+- **Balíček aplikace**: soubor. zip obsahující binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace.
 
 ID a **verze** **aplikace** , které zadáte, musí splňovat tyto požadavky:
 
@@ -130,9 +130,9 @@ Chcete-li aktualizovat nebo odstranit existující balíček aplikace, vyberte a
 
 :::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Snímek obrazovky znázorňující možnosti aktualizace a odstranění pro balíčky aplikací v Azure Portal.":::
 
-Pokud vyberete možnost **aktualizovat** , budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
+Pokud vyberete možnost **aktualizovat**, budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
 
-Pokud vyberete **Odstranit** , zobrazí se výzva k potvrzení odstranění této verze. Jakmile vyberete **OK** , Batch odstraní soubor. zip z účtu Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro tuto aplikaci odebrána **výchozí nastavení verze** .
+Pokud vyberete **Odstranit**, zobrazí se výzva k potvrzení odstranění této verze. Jakmile vyberete **OK**, Batch odstraní soubor. zip z účtu Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro tuto aplikaci odebrána **výchozí nastavení verze** .
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
 

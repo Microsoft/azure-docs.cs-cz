@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888687"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033115"
 ---
 # <a name="communication-services-logs"></a>Protokoly služby Communication Services
 
@@ -39,6 +39,7 @@ Komunikační služby nabízí tři typy protokolů, které můžete povolit:
 * **Protokoly využití** – poskytuje data o využití přidružená k jednotlivým položkám s fakturovanými službami.
 * **Provozní protokoly chatu** – poskytuje základní informace týkající se služby chatu.
 * **Operační protokoly SMS** – poskytuje základní informace týkající se služby SMS.
+* **Provozní protokoly ověřování** – poskytuje základní informace týkající se ověřovací služby.
 
 ### <a name="usage-logs-schema"></a>Schéma protokolů využití
 
@@ -69,7 +70,7 @@ Komunikační služby nabízí tři typy protokolů, které můžete povolit:
 | ResultDescription | Popis statického textu této operace. |
 | DurationMs | Doba trvání operace v milisekundách. |
 | CallerIpAddress | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
-| Úroveň | Úroveň závažnosti události |
+| Level | Úroveň závažnosti události |
 | Identifikátor URI | Identifikátor URI požadavku |
 | UserId | ID uživatele žádosti odesílatele. |
 | ChatThreadId | ID vlákna chatu přidružené k žádosti |
@@ -91,7 +92,7 @@ Komunikační služby nabízí tři typy protokolů, které můžete povolit:
 | ResultDescription | Popis statického textu této operace. |
 | DurationMs | Doba trvání operace v milisekundách. |
 | CallerIpAddress | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
-| Úroveň | Úroveň závažnosti události |
+| Level | Úroveň závažnosti události |
 | Identifikátor URI | Identifikátor URI požadavku |
 | OutgoingMessageLength | Počet znaků v odchozí zprávě. |
 | IncomingMessageLength | Počet znaků v příchozí zprávě. |
@@ -100,3 +101,23 @@ Komunikační služby nabízí tři typy protokolů, které můžete povolit:
 | SdkType | Typ sady SDK použitý v žádosti. |
 | PlatformType | Typ platformy použitý v žádosti |
 | Metoda | Metoda použitá v žádosti |
+
+### <a name="authentication-operational-logs"></a>Provozní protokoly ověřování
+
+| Vlastnost | Popis |
+| -------- | ---------------|
+| TimeGenerated | Časové razítko (UTC), kdy se protokol vygeneroval. |
+| OperationName | Operace přidružená k záznamu protokolu |
+| ID | ID pro korelační události Dá se použít k identifikaci korelačních událostí mezi několika tabulkami. |
+| OperationVersion | `api-version`Přidružená k operaci, pokud `operationName` byla provedena pomocí rozhraní API. Pokud neexistuje žádné rozhraní API, které by odpovídalo této operaci, verze představuje verzi této operace pro případ, že se vlastnosti přidružené k operaci v budoucnu mění. |
+| Kategorie | Kategorie protokolu události Kategorie je členitost, na které můžete povolit nebo zakázat protokoly na konkrétním prostředku. Vlastnosti, které se zobrazují v objektu BLOB vlastností události, jsou stejné v rámci konkrétní kategorie protokolu a typu prostředku. |
+| ResultType | Stav operace. |
+| ResultSignature | Dílčí stav operace. Pokud tato operace odpovídá volání REST API, toto pole je stavový kód HTTP odpovídajícího volání REST. |
+| DurationMs | Doba trvání operace v milisekundách. |
+| CallerIpAddress | IP adresa volajícího, pokud operace odpovídá volání rozhraní API, které pochází z entity s veřejně dostupnou IP adresou. |
+| Level | Úroveň závažnosti události |
+| Identifikátor URI | Identifikátor URI požadavku |
+| SdkType | Typ sady SDK použitý v žádosti. |
+| PlatformType | Typ platformy použitý v žádosti |
+| Identita | Identita komunikačních služeb, která souvisí s operací. |
+| Obory | Obory komunikačních služeb přítomné v přístupovém tokenu. |

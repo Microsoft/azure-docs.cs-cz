@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344189"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092186"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Pro bezpečnostní hrozby použít Jupyter Notebook
 
@@ -23,7 +23,7 @@ Základem Azure Sentinel je úložiště dat; kombinuje dotazování s vysokým 
 
 ![Příklad poznámkového bloku](./media/notebooks/sentinel-notebooks-map.png)
 
-Prostředí Jupyter jsme integroval do Azure Portal, což usnadňuje vytváření a spouštění poznámkových bloků pro analýzu dat. Knihovna *Kqlmagic* poskytuje připevňování, který umožňuje převzít dotazy z Sentinel Azure a spustit je přímo v poznámkovém bloku. Dotazy používají [dotazovací jazyk Kusto](https://kusto.azurewebsites.net/docs/query/index.html). Několik poznámkových bloků vyvinutých analytiky zabezpečení Microsoftu se zabalí do Azure Sentinel. Některé z těchto poznámkových bloků jsou sestaveny pro konkrétní scénář a lze je použít tak, jak jsou. Jiné jsou určené jako vzorky k ilustraci techniků a funkcí, které můžete zkopírovat nebo přizpůsobit pro použití ve vlastních poznámkových blocích. Další poznámkové bloky se můžou importovat taky z GitHubu komunity služby Azure Sentinel.
+Prostředí Jupyter jsme integroval do Azure Portal, což usnadňuje vytváření a spouštění poznámkových bloků pro analýzu dat. Knihovna *Kqlmagic* poskytuje připevňování, který umožňuje převzít dotazy z Sentinel Azure a spustit je přímo v poznámkovém bloku. Dotazy používají [dotazovací jazyk Kusto](https://kusto.azurewebsites.net/docs/kusto/query/index.html). Několik poznámkových bloků vyvinutých analytiky zabezpečení Microsoftu se zabalí do Azure Sentinel. Některé z těchto poznámkových bloků jsou sestaveny pro konkrétní scénář a lze je použít tak, jak jsou. Jiné jsou určené jako vzorky k ilustraci techniků a funkcí, které můžete zkopírovat nebo přizpůsobit pro použití ve vlastních poznámkových blocích. Další poznámkové bloky se můžou importovat taky z GitHubu komunity služby Azure Sentinel.
 
 Integrované prostředí Jupyter používá [Azure Notebooks](https://notebooks.azure.com/) k ukládání, sdílení a spouštění poznámkových bloků. Tyto poznámkové bloky můžete také spustit místně, pokud máte prostředí Pythonu a Jupyter na vašem počítači nebo v jiných prostředích JupterHub, jako je například Azure Databricks.
 
@@ -49,7 +49,7 @@ Chcete-li použít poznámkové bloky, musíte nejprve vytvořit pracovní prost
 
 ## <a name="create-an-azure-ml-workspace"></a>Vytvoření pracovního prostoru Azure ML
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky** služby Azure Sentinel Threat Management a pak vyberte **Spustit Poznámkový blok**.
+1. V Azure Portal přejděte na   >    >  **poznámkové bloky** služby Azure Sentinel Threat Management a pak vyberte **Spustit Poznámkový blok**.
 
     > [!div class="mx-imgBorder"]
     > ![spustit Poznámkový blok pro spuštění pracovního prostoru Azure ml](./media/notebooks/sentinel-notebooks-launch.png)
@@ -89,7 +89,7 @@ Po dokončení nasazení můžete poznámkové bloky spustit v novém pracovním
 
 ## <a name="launch-a-notebook-using-your-azure-ml-workspace"></a>Spuštění poznámkového bloku pomocí pracovního prostoru Azure ML
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky** služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel.
+1. V Azure Portal přejděte na   >    >  **poznámkové bloky** služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel.
 
     > [!TIP]
     > Vyberte možnost **průvodci & zpětnou vazbu** a otevřete tak podokno s další nápovědu a pokyny pro poznámkové bloky.

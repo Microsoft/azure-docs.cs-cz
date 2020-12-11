@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512357"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093515"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Koncepty sítě pro Azure Red Hat OpenShift (ARO)
 
@@ -76,7 +76,7 @@ Následující síťové funkce jsou specifické pro Azure Red Hat OpenShift:
 * Hodnota pod směrováním CIDR by měla být minimálně/18 (síť pod Nesměrovatelné IP adresy a používá se jenom uvnitř OpenShift SDN).
 * Každému uzlu je přiděleno/23 podsítě (512 IP adres) pro své lusky. Tato hodnota se nedá změnit.
 * Nemůžete připojit objekt pod k více sítím.
-* Nemůžete nakonfigurovat statickou statickou IP adresu. (Jedná se o funkci OpenShift. Informace najdete v tématu [Konfigurace odchozích IP adres](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html).
+* Nemůžete nakonfigurovat statickou statickou IP adresu. (Jedná se o funkci OpenShift. Informace najdete v tématu [Konfigurace odchozích IP adres](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).
 
 ## <a name="network-settings"></a>Nastavení sítě
 

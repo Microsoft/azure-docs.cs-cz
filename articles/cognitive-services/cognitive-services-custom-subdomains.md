@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368810"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032962"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
 
@@ -34,12 +34,12 @@ Pokud chcete migrovat existující prostředek, abyste mohli využívat názvy v
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>Potřebuji aktualizovat moje stávající prostředky?
 
-Ne. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
+No. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Co když SDK požádá o oblast pro určitý prostředek?
 
 > [!WARNING]
-> Služba Speech Services v tuto **chvíli nepodporuje vlastní** subdomény. Při použití služeb Speech a přidružených sad SDK prosím použijte místní koncové body.
+> Služba Speech Services používá vlastní subdomény **pouze** s [privátními koncovými body](Speech-Service/speech-services-private-link.md) . Ve všech ostatních případech používají pro služby řeči a přidružené sady SDK **regionální koncové body** .
 
 Místní koncové body a názvy vlastních subdomén jsou podporovány a lze je použít zaměnitelné. Vyžaduje se ale plný koncový bod.
 
@@ -55,7 +55,7 @@ Název vlastní subdomény je pro váš prostředek jedinečný. Název může o
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Můžu změnit vlastní název domény?
 
-Ne. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
+No. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>Můžu znovu použít vlastní název domény?
 
@@ -86,10 +86,10 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
-| | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
+| | Southeast Asia | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Spojené království – jih | `https://uksouth.api.cognitive.microsoft.com` |
 | | USA – středozápad | `https://westcentralus.api.cognitive.microsoft.com` |
-| | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
+| | West Europe | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA – západ | `https://westus.api.cognitive.microsoft.com` |
 | | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |

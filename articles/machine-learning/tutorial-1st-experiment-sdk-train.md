@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574118"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093549"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
@@ -38,7 +38,7 @@ V tomto kurzu jste:
 > * Protokoluje metriky pro Azure Machine Learning.
 > * Podívejte se na vaše metriky v cloudu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [části 2](tutorial-1st-experiment-hello-world.md) série.
 * Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
@@ -133,7 +133,7 @@ Vytvořte nový soubor Python v adresáři s `tutorial` názvem `04-run-pytorch.
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [Vytvořili jste řídicí skript,](?success=control-script#submit) který [jsem narazil na problém](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [Vytvořili jste řídicí skript,](?success=control-script#submit) který [jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Odeslat běh do Azure Machine Learning
@@ -186,7 +186,7 @@ Azure Machine Learning také udržuje kolekci podmnožinových prostředí. Tato
 V krátké době vám použití registrovaných prostředí může ušetřit čas. Další informace najdete v tématu [použití prostředí](./how-to-use-environments.md) .
 
 > [!div class="nextstepaction"]
-> [Jsem mi poslal (a](?success=test-w-environment#log) ) [jsem to](https://www.research.net/r/7CTJQQ?issue=test-w-environment) , že mi běžela chyba
+> [Jsem mi poslal (a](?success=test-w-environment#log) ) [jsem to](https://www.research.net/r/7CTJQQN?issue=test-w-environment) , že mi běžela chyba
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Metriky školení protokolu
 
@@ -203,7 +203,7 @@ Upravte `train.py` skript tak, aby zahrnoval dva další řádky kódu:
 
 #### <a name="understand-the-additional-two-lines-of-code"></a>Pochopení dalších dvou řádků kódu
 
-V aplikaci `train.py` získáte přístup k objektu Run z _within_ školicího skriptu samotného pomocí `Run.get_context()` metody a použijete ho k protokolování metrik:
+V aplikaci `train.py` získáte přístup k objektu Run z  školicího skriptu samotného pomocí `Run.get_context()` metody a použijete ho k protokolování metrik:
 
 ```python
 # in train.py
@@ -221,7 +221,7 @@ Metriky v Azure Machine Learning jsou:
 - Tato výhoda je navržena pro škálování, takže tyto výhody udržujete i při spouštění stovek experimentů.
 
 > [!div class="nextstepaction"]
-> [Změnil ](?success=modify-train#log) (a) jsem Train.py [jsem narazili na problém](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [Změnil ](?success=modify-train#log) (a) jsem Train.py [jsem narazili na problém](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>Aktualizace souboru prostředí conda
 
@@ -230,7 +230,7 @@ Metriky v Azure Machine Learning jsou:
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [Aktualizoval (a) jsem soubor prostředí, u kterého](?success=update-environment#submit-again) [došlo k problému](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [Aktualizoval (a) jsem soubor prostředí, u kterého](?success=update-environment#submit-again) [došlo k problému](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Odeslat běh do Azure Machine Learning
 Odeslat tento skript jednou za další:
@@ -244,7 +244,7 @@ Tentokrát, když navštívíte Studio, přejděte na kartu **metriky** , kde se
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Graf ztrát školení na kartě metriky.":::
 
 > [!div class="nextstepaction"]
-> Znovu [jsem odeslal spuštění, které](?success=resubmit-with-logging#next-steps) [jsem narazil na problém](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging) .
+> Znovu [jsem odeslal spuštění, které](?success=resubmit-with-logging#next-steps) [jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501467"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092138"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (Preview)
 
@@ -29,7 +29,7 @@ Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/
 
 | Operace | Popis | Obor názvů API Management | Minimální verze rozhraní API |
 |--|--|--|--|
-| [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Vytvoří nebo aktualizuje službu API Management.  | Služba API Management | Všechny |
+| [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Vytvoří nebo aktualizuje službu API Management.  | Služba API Management | Libovolný |
 | [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) s `restore` vlastností nastavenou na **hodnotu true** | Odstraní API Management službu, pokud byla dříve odstraněna. Pokud `restore` je zadána a nastavena na `true` všechny ostatní vlastnosti, budou ignorovány.  | Služba API Management |  2020-06-01 – Preview |
 | [Odstranit](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Odstraní existující službu API Management. | Služba API Management | 2020-01-01 – Preview|
 | [Získat podle názvu](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Získejte dočasná odstraněnou službu API Management podle názvu. | Odstraněné služby | 2020-06-01 – Preview |
@@ -48,7 +48,7 @@ Pokud se vaše instance APIM v rámci 48 hodin neobnoví, bude odstraněna (neob
 
 ## <a name="list-deleted-apim-instances"></a>Vypsat odstranění instancí APIM
 
-Můžete ověřit, jestli je k dispozici APIM instance s přístupným odstraněnou pro obnovení (obnovení), a to pomocí odstraněných služeb [Get podle názvu](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) nebo [seznamu podle jejich předplatného](/deletedservices/listbysubscription) .
+Můžete ověřit, jestli je k dispozici APIM instance s přístupným odstraněnou pro obnovení (obnovení), a to pomocí odstraněných služeb [Get podle názvu](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) nebo [seznamu podle jejich předplatného](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) .
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>Získat instanci s odstraněnou přístupným názvem
 
@@ -76,7 +76,7 @@ Pokud je k dispozici pro obnovení, Azure vrátí záznam instance APIM, na kter
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Vypsat všechny obnovitelné odstraněné instance pro dané předplatné
 
-Použijte seznam API Management [podle předplatného](/deletedservices/listbysubscription) a nahraďte `{subscriptionId}` ID vašeho předplatného:
+Použijte seznam API Management [podle předplatného](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) a nahraďte `{subscriptionId}` ID vašeho předplatného:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

@@ -3,14 +3,14 @@ title: Správa Change Tracking a inventáře v Azure Automation
 description: V tomto článku se dozvíte, jak pomocí Change Tracking a inventáře sledovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288747"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093617"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -35,7 +35,7 @@ Pomocí Change Tracking a inventáře můžete sledovat změny souborů a slože
 
 Ke konfiguraci sledování souborů na počítačích se systémem Windows použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Automation**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Účty Automation**.
 
@@ -53,7 +53,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
+    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **c:\Temp \\ \* . txt**. Můžete také použít proměnné prostředí, například `%winDir%\System32\\\*.*` .       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a složka.        |    
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |    
@@ -82,7 +82,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
+    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **/etc/*. conf**.       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a adresář.        |
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |
@@ -99,6 +99,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
 Sledování obsahu souborů umožňuje zobrazit obsah souboru před a po sledované změně. Tato funkce uloží obsah souboru do [účtu úložiště](../../storage/common/storage-account-overview.md) poté, co dojde ke změně. Tady jsou některá pravidla, která se mají dodržovat při sledování obsahu souboru:
 
 * Pro ukládání obsahu souboru se vyžaduje účet úložiště úrovně Standard, který používá model nasazení Správce prostředků.
+* Účty úložiště ve výchozím nastavení přijímají připojení z klientů v jakékoli síti. Pokud jste účet úložiště zabezpečili tak, aby povoloval jenom určitý provoz, musíte upravit svoje pravidla konfigurace, aby se k němu mohl připojit váš účet Automation. Viz [Konfigurace bran firewall a virtuálních sítí Azure Storage](../../storage/common/storage-network-security.md).
 * Nepoužívejte účty úložiště modelu nasazení Premium a Classic. Přečtěte si informace [o Azure Storagech účtech](../../storage/common/storage-account-create.md).
 * Účet úložiště můžete připojit jenom k jednomu účtu Automation.
 * Change Tracking a inventář musí být ve vašem účtu Automation povolené.
@@ -151,7 +152,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název klíče registru, který se má sledovat        |
-    |Group (Skupina)     | Název skupiny pro logicky seskupené klíče registru.        |
+    |Skupina     | Název skupiny pro logicky seskupené klíče registru.        |
     |Klíč registru systému Windows   | Název klíče s cestou, například `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>V protokolech hledání záznamů změn

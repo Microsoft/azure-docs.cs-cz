@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919393"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092002"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Machine Learning s Apache Spark
 
@@ -43,8 +43,8 @@ Další informace o možnostech strojového učení najdete v článku o postupu
 ### <a name="sparkml-and-mllib"></a>SparkML a MLlib
 Funkce distribuovaného výpočtu v paměti Sparku nabízí dobrou volbu pro iterativní algoritmy používané v strojovém učení a výpočtech grafů. ```spark.ml``` poskytuje jednotnou sadu rozhraní API vysoké úrovně, které uživatelům umožňují vytvářet a ladit kanály strojového učení. Další informace o nástroji najdete ```spark.ml``` v [Průvodci programováním Apache Spark ml](https://spark.apache.org/docs/1.2.2/ml-guide.html).
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
-[Azure Machine Learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (automatizované Machine Learning) pomáhá automatizovat proces vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Komponenty pro spuštění sady Azure Machine Learning AutoML SDK jsou sestaveny přímo do modulu runtime synapse.
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning automatizované ML
+[Azure Machine Learning automatizovanou ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (automatizované Machine Learning) pomáhá automatizovat proces vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Komponenty pro spuštění Azure Machine Learning automatizovaného ML sady SDK jsou přímo integrovány do modulu runtime synapse.
 
 ### <a name="open-source-libraries"></a>Open source knihovny
 Každý Apache Spark fond ve službě Azure synapse Analytics se dodává se sadou předem načtených a oblíbených knihoven strojového učení.  Mezi relevantní knihovny strojového učení, které jsou zahrnuté ve výchozím nastavení, patří:
@@ -68,7 +68,7 @@ Registrace modelu umožňuje ukládat, uchovávat verze a sledovat metadata o mo
 Pokud chcete začít se službou Machine Learning ve službě Azure synapse Analytics, přečtěte si následující kurzy:
 - [Analýza dat pomocí notebooků Azure synapse](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [Výuka modelu strojového učení pomocí AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [Výuka modelu strojového učení s využitím automatizovaného ML](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Školení modelu strojového učení pomocí Apache Spark MLlib](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

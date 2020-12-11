@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
-ms.openlocfilehash: 3668d4e5164ad731058f944feaef66029c2ed2a9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127042"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033829"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -27,7 +27,7 @@ Když spustíte ukázku pro připojení k IoT Central, používá službu Device
 
 V *program.cs* `main` metoda volá `SetupDeviceClientAsync` :
 
-* ID modelu použijte, `dtmi:com:example:Thermostat;1` když zřídí zařízení s DPS.
+* ID modelu použijte, `dtmi:com:example:Thermostat;1` když zřídí zařízení s DPS. IoT Central používá ID modelu k identifikaci nebo generování šablony zařízení pro toto zařízení. Další informace najdete v tématu [přidružení zařízení k šabloně zařízení](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Vytvořte instanci **DeviceClient** pro připojení k IoT Central.
 
 ```csharp

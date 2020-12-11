@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: a15ac2b5632cb881b094ca2c333dfca55a689062
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928463"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092614"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
 Azure Active Directory (Azure AD) obsahuje službu proxy aplikací, která uživatelům umožňuje přístup k místním aplikacím přihlášením pomocí svého účtu Azure AD. Tento kurz připraví vaše prostředí pro použití s proxy aplikací. Až bude vaše prostředí připravené, pomocí Azure Portal přidejte místní aplikaci do svého tenanta Azure AD.
+
+Konektory jsou klíčovou součástí proxy aplikace. Další informace o konektorech najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).
 
 V tomto kurzu:
 
@@ -31,7 +34,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 
@@ -191,7 +194,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
 1. Přihlaste se jako správce v [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním panelu vyberte **Azure Active Directory**.
 3. Vyberte **podnikové aplikace** a pak vyberte **Nová aplikace**.
-4. V části **vytvořit vlastní aplikaci** vyberte **konfigurovat proxy aplikací pro zabezpečený vzdálený přístup k místní aplikaci**.
+4. Vyberte tlačítko **Přidat místní aplikaci** , které se zobrazí přibližně uprostřed stránky v části místní **aplikace** . Alternativně můžete vybrat **vytvořit vlastní aplikaci** v horní části stránky a pak vybrat **konfigurovat proxy aplikace pro zabezpečený vzdálený přístup k místní aplikaci**.
 5. V části **Přidat vlastní místní aplikaci** zadejte následující informace o vaší aplikaci:
 
     | Pole | Popis |

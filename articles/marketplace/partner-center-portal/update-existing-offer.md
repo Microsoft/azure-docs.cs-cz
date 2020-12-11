@@ -7,13 +7,13 @@ ms.topic: how-to
 author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491949"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033353"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualizace stávajících nabídek na komerčním webu Marketplace
 
@@ -23,13 +23,13 @@ Tento článek vysvětluje, jak provádět aktualizace stávajících nabídek a
 
 Pomocí těchto kroků můžete aktualizovat nabídku, která byla úspěšně publikována ve verzi Preview nebo v reálném čase.
 
-1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uveden jako **Náhled** , **Live** , **publikování probíhá** , **koncept** , **nutná pozornost** nebo **není k dispozici** (Pokud jste se předtím rozhodli tuto nabídku přestat prodávat). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
-1. Vyberte stránku nabídky, kterou chcete aktualizovat, například **vlastnosti** , **seznam nabídek** nebo **Náhled** (nebo vyberte možnost **aktualizovat** na příslušné kartě na stránce **Přehled nabídky** ).
+1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uveden jako **Náhled**, **Live**, **publikování probíhá**, **koncept**, **nutná pozornost** nebo **není k dispozici** (Pokud jste se předtím rozhodli tuto nabídku přestat prodávat). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
+1. Vyberte stránku nabídky, kterou chcete aktualizovat, například **vlastnosti**, **seznam nabídek** nebo **Náhled** (nebo vyberte možnost **aktualizovat** na příslušné kartě na stránce **Přehled nabídky** ).
 1. Proveďte požadované změny a vyberte **Uložit koncept**. Tento postup opakujte, dokud nebudou všechny změny dokončeny.
 1. Zkontrolujte změny na stránce **[porovnání](#compare-changes-to-your-offer)** .
 1. Až budete připraveni publikovat aktualizovanou nabídku, vyberte možnost **zkontrolovat a publikovat** na libovolné stránce. Otevře se stránka **Kontrola a publikování** . Na této stránce se zobrazí stav dokončení pro části nabídky, kterou jste aktualizovali: 
-    - **Nepublikované změny** : oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
-    - **Nedokončeno** : aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
+    - **Nepublikované změny**: oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
+    - **Nedokončeno**: aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
 2. Vyberte **publikovat** a odešlete aktualizovanou nabídku pro publikování. Vaše nabídka pak projde standardním [postupem ověřování a publikování](../review-publish-offer.md#validation-and-publishing-steps).
 
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ Teď, když jste plán skryli se starou cenou, vytvoříte kopii tohoto plánu s
 2. Vyberte **vytvořit nový plán**. Zadejte **ID plánu** a **název plánu** a pak vyberte **vytvořit**.
 1. Pokud chcete znovu použít technickou konfiguraci z plánu, který jste skryli, zaškrtněte políčko **znovu použít technickou konfiguraci** . Další informace najdete [v tématu Vytvoření plánů pro nabídku virtuálních počítačů](../azure-vm-create-plans.md) .
     > [!IMPORTANT]
-    > Pokud vyberete tento plán, který znovu **použije technickou konfiguraci z jiného plánu** , nebudete moct později svůj nadřazený plán přestat prodávat. Tuto možnost nepoužívejte, pokud chcete ukončit prodej nadřazeného plánu.
+    > Pokud vyberete tento plán, který znovu **použije technickou konfiguraci z jiného plánu**, nebudete moct později svůj nadřazený plán přestat prodávat. Tuto možnost nepoužívejte, pokud chcete ukončit prodej nadřazeného plánu.
 3. Dokončete všechny požadované části nového plánu, včetně nové ceny.
 1. Vyberte **Uložit koncept**.
 1. Po dokončení všech požadovaných sekcí pro nový plán vyberte **zkontrolovat a publikovat**. Tím se vaše nabídka pošle na kontrolu a publikování. Další podrobnosti najdete na [stránce věnované kontrole a publikování nabídky na komerčním webu Marketplace](../review-publish-offer.md) .
@@ -102,7 +102,7 @@ Před publikováním aktualizací v živé nabídce nebo ve [verzi Preview](#com
   ![Filtry pro porovnávání aktualizací vaší nabídky Publikováno nebo Preview](./media/compare-changes-marketplace.png)
 
 >[!NOTE]
-> Následující stránky v současné době nepodporují **porovnání** :
+> Následující stránky v současné době nepodporují **porovnání**:
 >- Cílová skupina pro prodejce CSP
 >- Technická konfigurace testovacích jednotek
 >- Seznam tržišť testovacích jednotek

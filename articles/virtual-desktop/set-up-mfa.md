@@ -3,15 +3,15 @@ title: Nastavení vícefaktorového ověřování Azure pro virtuální počíta
 description: Jak nastavit vícefaktorové ověřování Azure pro zvýšené zabezpečení na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312655"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092376"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Povolení vícefaktorového ověřování Azure pro virtuální počítače s Windows
 
@@ -24,7 +24,7 @@ Při prvním přihlášení si klient vyžádá vaše uživatelské jméno, hesl
 
 I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, můžete se ujistit, že klient bude dál podávat dotazy na přihlašovací údaje vícefaktorového ověřování Azure. V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 
@@ -40,13 +40,13 @@ Tady je přehled toho, co budete potřebovat k zahájení práce:
 Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při připojování k virtuálnímu počítači s Windows vyžaduje vícefaktorové ověřování:
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-2. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+2. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 3. Vyberte **nové zásady**.
 4. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 5. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
-6. V části **Zahrnout**vyberte **Vybrat uživatele a skupiny**  >  **Uživatelé a skupiny** > vyberte skupinu, kterou jste vytvořili ve fázi [požadavků](#prerequisites) .
+6. V části **Zahrnout** vyberte **Vybrat uživatele a skupiny**  >  **Uživatelé a skupiny** > vyberte skupinu, kterou jste vytvořili ve fázi [požadavků](#prerequisites) .
 7. Vyberte **Hotovo**.
-8. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**.
+8. V části **cloudové aplikace nebo akce**  >  vyberte **vybrat aplikace**.
 9. Vyberte jednu z následujících aplikací podle toho, kterou verzi virtuálního klienta Windows používáte.
    
    - Pokud používáte virtuální plochu Windows (Classic), vyberte tyto aplikace:
@@ -67,7 +67,7 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
    > 
    > Pokud používáte virtuální plochu Windows (Classic), pokud zásada podmíněného přístupu zablokuje veškerý přístup a vyloučí jenom ID aplikací virtuálních počítačů s Windows, můžete to opravit přidáním ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07 do zásady. Když nepřidáte toto ID aplikace, zablokuje se zjišťování prostředků virtuálních ploch Windows (Classic) v informačním kanálu.
 
-10. Přejít na **podmínky**  >  **klientské aplikace**a pak vyberte, na kde chcete zásadu použít:
+10. Přejít na **podmínky**  >  **klientské aplikace** a pak vyberte, na kde chcete zásadu použít:
     
     - Vyberte možnost **prohlížeč** , pokud chcete, aby se zásady projevily u webového klienta.
     - Pokud chcete zásady použít pro ostatní klienty, vyberte **mobilní aplikace a klienti klasické pracovní plochy** .
@@ -76,7 +76,7 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky se stránkou klientské aplikace Uživatel vybral zaškrtávací políčko mobilní aplikace a klienti klasické pracovní plochy.](media/select-apply.png)
 
-11. Po výběru aplikace zvolte **Vybrat**a potom vyberte **Hotovo**.
+11. Po výběru aplikace zvolte **Vybrat** a potom vyberte **Hotovo**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise.png)
@@ -84,10 +84,13 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
     >[!NOTE]
     >Pokud chcete najít ID aplikace, kterou chcete vybrat, přejděte na **podnikové aplikace** a v rozevírací nabídce Typ aplikace vyberte **aplikace Microsoftu** .
 
-12. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a pak **Vyberte**.
-13. V části relace **řízení přístupu**  >  **Session**vyberte **četnost přihlášení**, nastavte hodnotu na požadovaný čas mezi jednotlivými výzvami a pak vyberte **Vybrat**. Například nastavení hodnoty na hodnotu **1** a jednotka na **hodiny**budou vyžadovat vícefaktorové ověřování, pokud se připojení spustí za hodinu za poslední.
+12. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování** a pak **Vyberte**.
+13. V části relace **řízení přístupu**  >  vyberte **četnost přihlášení**, nastavte hodnotu na požadovaný čas mezi jednotlivými výzvami a pak vyberte **Vybrat**. Například nastavení hodnoty na hodnotu **1** a jednotka na **hodiny** budou vyžadovat vícefaktorové ověřování, pokud se připojení spustí za hodinu za poslední.
 14. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 15. Vyberte **vytvořit** a povolte tak zásady.
+
+>[!NOTE]
+>Když použijete webového klienta pro přihlášení k virtuálnímu klientovi Windows přes prohlížeč, protokol zobrazí seznam ID aplikace klienta jako a85cf173-4192-42f8-81fa-777a763e6e2c (klient virtuální plochy Windows). Je to proto, že klientská aplikace je interně propojená s ID aplikace serveru, na které se nastavily zásady podmíněného přístupu. 
 
 ## <a name="next-steps"></a>Další kroky
 

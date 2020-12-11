@@ -12,13 +12,13 @@ ms.topic: end-user-help
 ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
-metadata ms.custom: contperfq1
-ms.openlocfilehash: 095ea62ee992fa12fc80f715f9e63725e9930595
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886205"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033778"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
 

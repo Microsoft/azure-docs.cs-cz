@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127041"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033828"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -28,7 +28,7 @@ Když spustíte ukázku pro připojení k IoT Central, používá službu Device
 
 `main`Metoda:
 
-* Voláním `initializeAndProvisionDevice` pro nastavení `dtmi:com:example:Thermostat;1` ID modelu použijte DPS ke zřízení a registraci zařízení, vytvoření instance **DeviceClient** a připojení k aplikaci IoT Central.
+* Voláním `initializeAndProvisionDevice` pro nastavení `dtmi:com:example:Thermostat;1` ID modelu použijte DPS ke zřízení a registraci zařízení, vytvoření instance **DeviceClient** a připojení k aplikaci IoT Central. IoT Central používá ID modelu k identifikaci nebo generování šablony zařízení pro toto zařízení. Další informace najdete v tématu [přidružení zařízení k šabloně zařízení](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Vytvoří obslužnou rutinu příkazu pro `getMaxMinReport` příkaz.
 * Vytvoří obslužnou rutinu aktualizace vlastnosti pro vlastnost s možností zápisu `targetTemperature` .
 * Spustí vlákno, které odešle telemetrii teploty a aktualizuje `maxTempSinceLastReboot` vlastnost každých pět sekund.
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-`initializeAndProvisionDevice`Metoda ukazuje, jak zařízení používá DPS k registraci a připojení k IoT Central. Datová část zahrnuje ID modelu:
+`initializeAndProvisionDevice`Metoda ukazuje, jak zařízení používá DPS k registraci a připojení k IoT Central. Datová část zahrnuje ID modelu, které IoT Central používá k [přidružení zařízení k šabloně zařízení](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).:
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

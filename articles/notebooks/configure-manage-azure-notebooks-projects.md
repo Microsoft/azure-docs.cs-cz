@@ -4,14 +4,14 @@ description: Naučte se spravovat metadata projektu, soubory projektu, prostřed
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb106132cf0dfb14dc41c1d4b480fd3a1d7fd7fe
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852799"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093532"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Správa a konfigurace projektů v Azure Notebooks Preview
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a>Správa a konfigurace projektů v Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -36,7 +36,7 @@ Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní*
 
 ## <a name="edit-project-metadata"></a>Upravit metadata projektu
 
-Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu **informace** , která obsahuje metadata projektu, jak je popsáno v následující tabulce. Metadata projektu můžete kdykoli změnit.
+Na řídicím panelu projekt vyberte **nastavení projektu** a pak vyberte kartu **informace** , která obsahuje metadata projektu, jak je popsáno v následující tabulce. Metadata projektu můžete kdykoli změnit.
 
 | Nastavení | Popis |
 | --- | --- |
@@ -57,7 +57,7 @@ Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu 
 
 Příkaz **+ New** (Klávesová zkratka: n) vytvoří nové soubory nebo složky. Při použití příkazu nejdřív vyberte typ položky, kterou chcete vytvořit:
 
-| Typ položky | Description | Chování příkazu |
+| Typ položky | Popis | Chování příkazu |
 | --- | --- | --- |
 | **Poznámkový blok** | Jupyter Poznámkový blok | Zobrazí místní nabídku, ve které zadáte název souboru a jazyk poznámkového bloku. |
 | **Složka** | Podsložka | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název složky. |
@@ -121,7 +121,7 @@ Na řídicím panelu projekt vyberte možnost **nastavení projektu**, pak vyber
 
 ![Místní nabídka nastavení projektu s vybranou kartou prostředí](media/project-settings-environment-steps.png)
 
-Pokud chcete přidat krok, nejdřív vyberte **+ Přidat**a pak v rozevíracím seznamu **operace** vyberte typ kroku:
+Pokud chcete přidat krok, nejdřív vyberte **+ Přidat** a pak v rozevíracím seznamu **operace** vyberte typ kroku:
 
 ![Výběr operace pro nový krok nastavení prostředí](media/project-settings-environment-details.png)
 
@@ -145,7 +145,7 @@ Na řídicím panelu projekt otevře příkaz **terminálu** terminál pro Linux
 > [!Note]
 > Pokud máte spouštěcí skripty v prostředí projektu, otevření terminálu může zobrazit zprávu oznamující, že instalace stále probíhá.
 
-V terminálu můžete vydat všechny standardní příkazy systému Linux. Můžete také použít `ls` v domovské složce k zobrazení různých prostředí, která existují na virtuálním počítači, například *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*a *R*, spolu se složkou *projektu* , který obsahuje projekt:
+V terminálu můžete vydat všechny standardní příkazy systému Linux. Můžete také použít `ls` v domovské složce k zobrazení různých prostředí, která existují na virtuálním počítači, například *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp* a *R*, spolu se složkou *projektu* , který obsahuje projekt:
 
 ![Terminál projektu v Azure Notebooks](media/project-terminal.png)
 

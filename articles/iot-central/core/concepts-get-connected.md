@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121817"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033170"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -178,11 +178,21 @@ Tento přístup je užitečný při experimentování s IoT Central nebo testov�
 
 ## <a name="associate-a-device-with-a-device-template"></a>Přidružení zařízení k šabloně zařízení
 
-IoT Central automaticky přidružuje zařízení k šabloně zařízení, když se zařízení připojí. Zařízení pošle ID modelu při připojení. IoT Central používá ID modelu k identifikaci šablony zařízení pro konkrétní model zařízení. Proces zjišťování funguje takto:
+IoT Central automaticky přidružuje zařízení k šabloně zařízení, když se zařízení připojí. Zařízení pošle [ID modelu](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) při připojení. IoT Central používá ID modelu k identifikaci šablony zařízení pro konkrétní model zařízení. Proces zjišťování funguje takto:
 
 1. Pokud je šablona zařízení již publikována v aplikaci IoT Central, je zařízení přidruženo k šabloně zařízení.
-1. Pokud už šablona zařízení není v aplikaci IoT Central publikovaná, IoT Central v úložišti veřejného modelu vyhledá model zařízení. Pokud IoT Central najde model, použije ho k vygenerování základní šablony zařízení.
+1. Pokud už šablona zařízení není v aplikaci IoT Central publikovaná, IoT Central v [úložišti veřejného modelu](https://github.com/Azure/iot-plugandplay-models)vyhledá model zařízení. Pokud IoT Central najde model, použije ho k vygenerování základní šablony zařízení.
 1. Pokud IoT Central nenajde model v úložišti veřejného modelu, zařízení se označí jako **Nepřidruženo**. Operátor může vytvořit šablonu zařízení pro zařízení a pak migrovat nepřidružené zařízení do nové šablony zařízení.
+
+Následující snímek obrazovky ukazuje, jak zobrazit ID modelu šablony zařízení v IoT Central. V šabloně zařízení vyberte součást a pak vyberte **Zobrazit identitu**:
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="Snímek obrazovky znázorňující ID modelu v šabloně zařízení termostata":::
+
+[Model termostatu](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) můžete zobrazit v úložišti veřejného modelu. Definice ID modelu vypadá takto:
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>Hodnoty stavu zařízení
 

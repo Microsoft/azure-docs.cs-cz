@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835743"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033336"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -104,15 +104,15 @@ Správci podmíněného přístupu můžou také vytvářet zásady, které při
 
 | Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Yes | 
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Yes |
-| Sestavy zabezpečení | Přehled |  Ne | Ne |Yes |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Ano | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Ano |
+| Sestavy zabezpečení | Přehled |  Ne | Ne |Ano |
 | Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
 | Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
 | Sestavy zabezpečení | Detekce rizik   | Ne | Omezené informace. Žádný zásobník podrobností| Full access|
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Yes |
-| Oznámení | Týdenní výtah| Ne | Ne | Yes | 
-| | Zásady registrace MFA | Ne | Ne | Yes |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Ano |
+| Oznámení | Týdenní výtah| Ne | Ne | Ano | 
+| | Zásady registrace MFA | Ne | Ne | Ano |
 
 Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

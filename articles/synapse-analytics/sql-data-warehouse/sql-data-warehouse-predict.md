@@ -11,12 +11,12 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510824"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093651"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Skóre modelů strojového učení s předpovídat
 
@@ -35,7 +35,7 @@ Vyhrazený fond SQL očekává předem vyškolený model. Při školení modelu 
 
 - Vyhrazený fond SQL podporuje jenom modely formátu ONNX. ONNX je open source formát modelu, který umožňuje výměnu modelů mezi různými architekturami, aby bylo možné vzájemnou funkční spolupráci. Stávající modely můžete převést do formátu ONNX pomocí platforem, které ji buď nativně podporují, nebo převádění dostupných balíčků. Například balíček [skriptu sklearn-Onnx](https://github.com/onnx/sklearn-onnx) převádí modely scikit-učení na Onnx. [Úložiště GitHub ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format) nabízí seznam podporovaných rozhraní a příkladů.
 
-   Pokud používáte [automatizované ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) pro školení, nezapomeňte nastavit parametr *enable_onnx_compatible_models* na hodnotu true, aby se vytvořil model formátu Onnx. [Automatizovaný Machine Learning Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) ukazuje příklad použití AutoML k vytvoření modelu strojového učení ve formátu ONNX.
+   Pokud používáte [automatizované ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) pro školení, nezapomeňte nastavit parametr *enable_onnx_compatible_models* na hodnotu true, aby se vytvořil model formátu Onnx. [Automatizovaný Machine Learning Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) ukazuje příklad použití automatizovaného ml k vytvoření modelu strojového učení formátu ONNX.
 
 - Pro vstupní data jsou podporovány následující datové typy:
     - int, bigint, Real, float

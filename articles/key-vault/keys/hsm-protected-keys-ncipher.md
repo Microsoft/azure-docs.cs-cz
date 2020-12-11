@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784656"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092325"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Import klíčů chráněných HSM pro Key Vault (podpůrný software nCipher)
 
@@ -61,7 +61,7 @@ Seznam požadavků pro Přineste si vlastní klíč (BYOK) pro Azure Key Vault n
 | --- | --- |
 | Předplatné Azure |Pokud chcete vytvořit Azure Key Vault, potřebujete předplatné Azure: [Zaregistrujte se do bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/) . |
 | Úroveň služby Azure Key Vault Premium na podporu klíčů chráněných HSM |Další informace o úrovních služby a možnostech pro Azure Key Vault najdete na webu [Azure Key Vault s cenami](https://azure.microsoft.com/pricing/details/key-vault/) . |
-| Podpůrný software nCipher hardwarového nShield HSM, SmartCard a software podpory |Musíte mít přístup k modulu hardwarového zabezpečení podpůrný software nCipher a základnímu provoznímu znalostí podpůrný software nCipher hardwarového nShield HSM. Seznam kompatibilních modelů najdete v tématu [podpůrný software nCipher hardwarového nShield hardware Security Module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) , případně si můžete koupit modul hardwarového zabezpečení (HSM), pokud ho ještě nemáte. |
+| Podpůrný software nCipher hardwarového nShield HSM, SmartCard a software podpory |Musíte mít přístup k modulu hardwarového zabezpečení podpůrný software nCipher a základnímu provoznímu znalostí podpůrný software nCipher hardwarového nShield HSM. Seznam kompatibilních modelů najdete v tématu [podpůrný software nCipher hardwarového nShield hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) , případně si můžete koupit modul hardwarového zabezpečení (HSM), pokud ho ještě nemáte. |
 | Následující hardware a software:<ol><li>Offline pracovní stanice x64 s minimálním operačním systémem Windows pro Windows 7 a software podpůrný software nCipher hardwarového nShield, který je minimálně verze 11,50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je potřeba [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a nainstalovanou **minimální verzi** [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 1.1.0.</li><li>Jednotka USB nebo jiné přenosné úložné zařízení, které má alespoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se ale nevynutilo programově.<br/><br/>V následujících pokynech se tato pracovní stanice označuje jako odpojená pracovní stanice.</p></blockquote><br/>Pokud je váš klíč tenanta pro produkční síť, doporučujeme, abyste k stažení sady nástrojů používali druhou, samostatnou pracovní stanici a nahráli jste klíč tenanta. Pro účely testování k tomu ale můžete použít první pracovní stanici.<br/><br/>V následujících pokynech se tato druhá pracovní stanice označuje jako pracovní stanice připojená k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generování a přenos klíče pro Azure Key Vault HSM
@@ -255,7 +255,7 @@ Pro tento druhý krok proveďte následující postupy na pracovní stanici, kte
 
 Nainstalujte software podpory podpůrný software nCipher do počítače se systémem Windows a potom k tomuto počítači Připojte modul HARDWAROVÉho zabezpečení podpůrný software nCipher hardwarového nShield.
 
-Ujistěte se, že jsou nástroje podpůrný software nCipher ve vaší cestě ( **% nfast_home% \ bin** ). Zadejte například tento příkaz:
+Ujistěte se, že jsou nástroje podpůrný software nCipher ve vaší cestě (**% nfast_home% \ bin**). Zadejte například tento příkaz:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -416,7 +416,7 @@ Ověření staženého balíčku:
      >
 2. Potvrďte, že se zobrazí následující informace, které indikují úspěšné ověření: **výsledek: úspěch**
 
-Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** . Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com).
 
 Nyní jste připraveni vytvořit nový klíč.
 
@@ -432,11 +432,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 Při spouštění tohoto příkazu použijte tyto pokyny:
 
-* Parametr *protect* musí být nastavený na hodnotu **module** , jak je vidět na obrázku. Vytvoří se tím klíč chráněný modulem. Sada nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
+* Parametr *protect* musí být nastavený na hodnotu **module**, jak je vidět na obrázku. Vytvoří se tím klíč chráněný modulem. Sada nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
 * Hodnotu *contosokey* nahraďte hodnotou **ident** a hodnotu **plainname** nahraďte jakoukoli řetězcovou hodnotou. Pro minimalizaci administrativních režijních a snížení rizik chyb doporučujeme použít stejnou hodnotu pro obojí. Hodnota **Ident** musí obsahovat jenom čísla, pomlčky a malá písmena.
-* Parametr pubexp je v tomto příkladě prázdný (výchozí nastavení), můžete ale zadat konkrétní hodnoty. Další informace najdete v [dokumentaci k podpůrný software nCipher.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* Parametr pubexp je v tomto příkladě prázdný (výchozí nastavení), můžete ale zadat konkrétní hodnoty. Další informace najdete v [dokumentaci k podpůrný software nCipher.](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
-Tento příkaz vytvoří soubor klíčového klíče ve složce% NFAST_KMDATA% \ s názvem začínajícím na **key_simple_** a následovaný **Ident** , který byl zadán v příkazu. Například: **key_simple_contosokey** . Tento soubor obsahuje šifrovaný klíč.
+Tento příkaz vytvoří soubor klíčového klíče ve složce% NFAST_KMDATA% \ s názvem začínajícím na **key_simple_** a následovaný **Ident** , který byl zadán v příkazu. Například: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
 
 Tento soubor tokenizovaného klíče zálohujte do bezpečného umístění.
 
@@ -668,7 +668,7 @@ Při spouštění tohoto příkazu použijte tyto pokyny:
 * Položku *SubscriptionId* NAHRAĎte ID předplatného Azure, které obsahuje váš Trezor klíčů. Tuto hodnotu jste dříve získali v **kroku 1,2: získání ID předplatného Azure** z kroku [Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation) .
 * Nahraďte *ContosoFirstHSMKey* názvem, který se používá pro název výstupního souboru.
 
-Po úspěšném dokončení se zobrazí **výsledek: úspěch** a v aktuální složce je nový soubor s následujícím názvem: KeyTransferPackage- *ContosoFirstHSMkey* . BYOK
+Po úspěšném dokončení se zobrazí **výsledek: úspěch** a v aktuální složce je nový soubor s následujícím názvem: KeyTransferPackage-*ContosoFirstHSMkey*. BYOK
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4,3: zkopírování balíčku pro přenos klíčů na pracovní stanici připojenou k Internetu
 

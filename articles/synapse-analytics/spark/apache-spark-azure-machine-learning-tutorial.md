@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: spouštění experimentů pomocí automatizovaného ML Azure'
-description: Kurz spuštění experimentů machine learningu pomocí Apache Spark a Azure Automated ML
+title: 'Kurz: výuka modelu v Pythonu s využitím automatizovaného ML'
+description: Kurz o tom, jak pomocí Apache Spark a automatizovaného ML naučit model strojového učení v Pythonu ve službě Azure synapse.
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458829"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093328"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kurz: spouštění experimentů pomocí automatizovaného ML a Apache Spark
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Kurz: výuka modelu strojového učení v Pythonu ve službě Azure synapse s využitím Apache Spark a automatizovaného ML
 
 Azure Machine Learning je cloudové prostředí, které umožňuje výukové, nasazování, automatizaci, správu a sledování modelů strojového učení. 
 
@@ -155,11 +155,11 @@ Následující kód získá existující pracovní prostor a výchozí Azure Mac
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![Obrázek nahrané datové sady](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>Odeslat experiment AutoML
+## <a name="submit-an-automated-ml-experiment"></a>Odeslání automatizovaného experimentu ML
 
 #### <a name="define-training-settings"></a>Definování nastavení školení
 1. Chcete-li odeslat experiment, je nutné definovat parametr experiment a nastavení modelu pro školení. Úplný seznam nastavení můžete zobrazit [tady](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
@@ -221,7 +221,7 @@ Po dokončení experimentu bude výstup vracet podrobnosti o dokončených itera
 ![Snímek výstupu modelu](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> Po odeslání bude experiment AutoML spouštět různé iterace a typy modelů. Tento běh obvykle trvá 1 – 1,5 hodiny. 
+> Po odeslání automatizované experimenty ML spustí různé iterace a typy modelů. Tento běh obvykle trvá 1 – 1,5 hodiny. 
 
 #### <a name="retrieve-the-best-model"></a>Načtení nejlepšího modelu
 K výběru nejlepšího modelu z vašich iterací použijeme tuto ```get_output``` funkci k vrácení nejlepšího běhu a namontovaného modelu. Následující kód načte nejlepší běh a namontovaný model pro všechny protokolované metriky nebo konkrétní iterace.
@@ -325,7 +325,7 @@ plt.show()
 Po ověření našeho nejlepšího modelu můžeme model zaregistrovat pro Azure Machine Learning. Po registraci modelu můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které jste zaregistrovali.
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,7 +336,7 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>Zobrazit výsledky v Azure Machine Learning
 Nakonec můžete k výsledkům iterací přistupovat tak, že přejdete do experimentu v pracovní prostor Azure Machine Learning. Tady budete moct dig do dalších podrobností o stavu spuštění, pokusůch o modelech a dalších metrikách modelu. 
 
-![Snímek obrazovky pracovního prostoru AML](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Snímek obrazovky Azure Machine Learning pracovního prostoru](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Další kroky
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

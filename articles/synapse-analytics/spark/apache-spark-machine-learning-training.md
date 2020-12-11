@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 8250f7154cfb2739d065980284da67a200680d89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919723"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97091985"
 ---
 # <a name="train-machine-learning-models"></a>Výuka modelů strojového učení
 Apache Spark ve službě Azure synapse Analytics umožňuje strojové učení s velkými objemy dat a poskytuje možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. K dispozici je několik možností pro školení modelů strojového učení pomocí Azure Spark ve službě Azure synapse Analytics: Apache Spark MLlib, Azure Machine Learning a různých dalších open source knihoven. 
@@ -44,13 +44,13 @@ Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://githu
 MMLSpark poskytuje vrstvu nad rozhraními API nízké úrovně SparkML při sestavování škálovatelných modelů ML, jako jsou indexování řetězců, vynucený data do rozložení očekávaného algoritmy strojového učení a nastavování vektorů funkcí. MMLSpark Library zjednodušuje tyto a další běžné úlohy pro vytváření modelů v PySpark.
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Automatizované ML v Azure Machine Learning 
-Azure Machine Learning je cloudové prostředí, které umožňuje výukové, nasazování, automatizaci, správu a sledování modelů strojového učení. Automatizovaná ML (AutoML) v Azure Machine Learning přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu. 
+Azure Machine Learning je cloudové prostředí, které umožňuje výukové, nasazování, automatizaci, správu a sledování modelů strojového učení. Automatizovaná ML v Azure Machine Learning přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu. 
 
-Při použití AutoML v rámci služby Azure synapse Analytics můžete využít hloubkovou integraci mezi různými službami a zjednodušit tak & školení modelu ověřování. 
+Při použití automatizovaného ML v rámci služby Azure synapse Analytics můžete využít hloubkovou integraci mezi různými službami a zjednodušit tak & školení modelu ověřování. 
 
 > [!NOTE]
 > 
-> Další informace o Azure Machine Learning vytváření AutoML experimentů najdete v tomto [kurzu](./spark/../apache-spark-azure-machine-learning-tutorial.md).
+> V tomto [kurzu](./spark/../apache-spark-azure-machine-learning-tutorial.md)se dozvíte víc o vytváření Azure Machine Learning automatizované experimenty ml.
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
 [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) poskytuje možnosti strojového učení, které řeší Obecné problémy, jako je například analýza textu pro emocionálních mínění nebo analýza obrázků pro rozpoznávání objektů a ploch. Abyste mohli s těmito službami pracovat, nepotřebujete žádné speciální vědomosti o strojovém učení nebo datových vědách. Služba rozpoznávání poskytuje součást nebo všechny komponenty v řešení strojového učení: data, algoritmus a trained model. Tyto služby mají vyžadovat obecné znalosti o vašich datech, aniž by bylo potřeba mít zkušenosti s Machine Learningem nebo datovou vědy. Tyto předem připravené Cognitive Services můžete v rámci služby Azure synapse Analytics využít automaticky.
@@ -58,6 +58,6 @@ Při použití AutoML v rámci služby Azure synapse Analytics můžete využít
 ## <a name="next-steps"></a>Další kroky
 Tento článek poskytuje přehled různých možností pro učení modelů strojového učení v rámci fondů Apache Spark ve službě Azure synapse Analytics. Další informace o školení modelů najdete v následujícím kurzu:
 
-- Spouštění automatizovaných experimentů ML pomocí Azure Machine Learning a Azure synapse Analytics: [kurz AutoML](./spark/../apache-spark-autoscale.md) 
+- Spouštění automatizovaných experimentů ML pomocí Azure Machine Learning a Azure synapse Analytics: [kurz automatizovaného ml](./spark/../apache-spark-autoscale.md) 
 - Spuštění SparkML experimentů: [kurz Apache SparkML](../spark/apache-spark-azure-machine-learning-tutorial.md)
 - Zobrazit výchozí knihovny: [Azure synapse Analytics runtime](../spark/apache-spark-version-support.md)
