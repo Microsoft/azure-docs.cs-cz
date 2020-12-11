@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701445"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094858"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
 
@@ -33,8 +33,6 @@ Existují dva druhy seznamů řízení přístupu (ACL) – **přístupové sezn
 
 
 Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
-
-
 
 > [!NOTE]
 > Změna výchozího seznamu ACL u nadřazené položky nemá vliv na přístupový seznam ACL ani na výchozí seznam ACL u podřízených položek, které již existují.
@@ -74,7 +72,7 @@ Níže jsou uvedeny některé běžné scénáře, které vám pomohou pochopit,
 | Operace | Objekt              |    /      | Síti   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Číst      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Připojit k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Připojit k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Odstranit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
@@ -250,7 +248,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-Ne. Řízení přístupu prostřednictvím seznamů ACL je u účtu Data Lake Storage Gen1 vždy zapnuté.
+No. Řízení přístupu prostřednictvím seznamů ACL je u účtu Data Lake Storage Gen1 vždy zapnuté.
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Jaká oprávnění jsou vyžadována pro rekurzivní odstranění složky a jejího obsahu?
 

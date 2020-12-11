@@ -3,12 +3,12 @@ title: 'Rychlý Start: QnA Maker klientskou knihovnu pro Python'
 description: V tomto rychlém startu se dozvíte, jak začít s knihovnou klienta QnA Maker pro Python.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 8a9796b0378e6e0bfc04a6e54aafb3001637cac6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61c67b66e85e1d8d03cbe07b0c8d2053151e3513
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615827"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096281"
 ---
 Použití klientské knihovny QnA Maker pro Python pro:
 
@@ -25,7 +25,7 @@ Použití klientské knihovny QnA Maker pro Python pro:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
@@ -70,7 +70,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 Klient pro vytváření QnA Maker je objekt [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Po vytvoření klienta použijte vlastnost [znalostní báze](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebaseoperations?view=azure-python) k vytvoření, správě a publikování znalostní báze.
+Po vytvoření klienta použijte vlastnost [znalostní báze](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) k vytvoření, správě a publikování znalostní báze.
 
 Spravujte znalostní bázi odesláním objektu JSON. Pro okamžité operace metoda obvykle vrací objekt JSON indikující stav. V případě dlouhotrvajících operací je odpověď ID operace. Chcete-li určit [stav žádosti](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python), zavolejte metodu [Operations.get_details](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) s ID operace.
 
@@ -121,7 +121,7 @@ Použijte metodu [Download](https://docs.microsoft.com/python/api/azure-cognitiv
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
-Publikujte znalostní bázi pomocí metody [Publish](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) . Tím se převezme aktuální uložený a vycvičený model, na který odkazuje ID znalostní báze, a publikuje ho na koncovém bodu.
+Publikujte znalostní bázi pomocí metody [Publish](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) . Tím se převezme aktuální uložený a vycvičený model, na který odkazuje ID znalostní báze, a publikuje ho na koncovém bodu.
 
 [!code-python[Publish a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=PublishKB&highlight=2)]
 
@@ -154,7 +154,7 @@ Toto je jednoduchý příklad dotazování znalostní báze. Pokud chcete pochop
 
 ## <a name="delete-a-knowledge-base"></a>Odstranění znalostní báze
 
-Odstraňte znalostní bázi pomocí metody [Delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) s parametrem ID znalostní báze.
+Odstraňte znalostní bázi pomocí metody [Delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) s parametrem ID znalostní báze.
 
 [!code-python[Delete a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=DeleteKB&highlight=2)]
 

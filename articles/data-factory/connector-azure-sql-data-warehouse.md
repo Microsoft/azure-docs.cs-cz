@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913530"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095113"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics pomocí Azure Data Factory
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 >
@@ -41,7 +41,7 @@ Tento konektor Azure synapse Analytics se podporuje pro následující činnosti
 U aktivity kopírování tento konektor Azure synapse Analytics podporuje tyto funkce:
 
 - Zkopírujte data pomocí ověřování SQL a Azure Active Directory (Azure AD) ověřování tokenu aplikace pomocí instančního objektu nebo spravovaných identit pro prostředky Azure.
-- Jako zdroj načte data pomocí dotazu SQL nebo uložené procedury. Můžete si také vybrat paralelní kopírování ze zdroje Azure synapse Analytics. Podrobnosti najdete v části [paralelní kopírování z synapse Analytics](#parallel-copy-from-synapse-analytics) .
+- Jako zdroj načte data pomocí dotazu SQL nebo uložené procedury. Můžete si také vybrat paralelní kopírování ze zdroje analýzy Azure synapse, podrobnosti najdete v části [paralelní kopírování z Azure synapse Analytics](#parallel-copy-from-azure-synapse-analytics) .
 - Jako jímky načtěte data pomocí příkazu [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) nebo [copy](#use-copy-statement) nebo hromadného vložení. Pro lepší výkon kopírování doporučujeme použít příkaz Base nebo COPY. Konektor také podporuje automatické vytváření cílových tabulek, pokud na základě zdrojového schématu neexistuje.
 
 > [!IMPORTANT]
@@ -63,12 +63,12 @@ Pro propojenou službu Azure synapse Analytics jsou podporovány následující 
 
 | Vlastnost            | Popis                                                  | Povinné                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| typ                | Vlastnost Type musí být nastavená na **AzureSqlDW** .             | Ano                                                          |
+| typ                | Vlastnost Type musí být nastavená na **AzureSqlDW**.             | Ano                                                          |
 | připojovací řetězec    | Zadejte informace potřebné pro připojení ke službě Azure synapse Analytics instance pro vlastnost **ConnectionString** . <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit klíč k hlavnímu názvu hesla nebo služby a v případě, že ověřování SQL vyžádá `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v příkladech JSON pod tabulkou a [přihlašovacími údaji pro Store v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano                                                          |
 | servicePrincipalId  | Zadejte ID klienta aplikace.                         | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
 | tenant              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic** , **AzureChina** , **AzureUsGovernment** a **AzureGermany** . Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
 | connectVia          | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne                                                           |
 
 Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
@@ -224,7 +224,7 @@ Pro datovou sadu Azure synapse Analytics jsou podporovány následující vlastn
 
 | Vlastnost  | Popis                                                  | Povinné                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlDWTable** . | Ano                         |
+| typ      | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlDWTable**. | Ano                         |
 | schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
@@ -257,23 +257,23 @@ Pro datovou sadu Azure synapse Analytics jsou podporovány následující vlastn
 ### <a name="azure-synapse-analytics-as-the-source"></a>Azure synapse Analytics jako zdroj
 
 >[!TIP]
->Pokud chcete data z Azure synapse Analytics efektivně načíst pomocí dělení dat, přečtěte si další informace z [paralelního kopírování z synapse Analytics](#parallel-copy-from-synapse-analytics).
+>Pokud chcete data z Azure synapse Analytics efektivně načíst pomocí dělení dat, přečtěte si další informace z [paralelního kopírování z Azure synapse Analytics](#parallel-copy-from-azure-synapse-analytics).
 
-Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **SqlDWSource** . V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **SqlDWSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost                     | Popis                                                  | Povinné |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SqlDWSource** . | Ano      |
+| typ                         | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SqlDWSource**. | Ano      |
 | sqlReaderQuery               | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `select * from MyTable`. | Ne       |
 | sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. | Ne       |
 | storedProcedureParameters    | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne       |
-| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** , **READUNCOMMITTED** , **RepeatableRead** , **serializovatelný** , **Snapshot** . Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | Ne |
-| partitionOptions | Určuje možnosti dělení dat používané při načítání dat ze služby Azure synapse Analytics. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange** .<br>Když je povolená možnost oddílu (to znamená, že ne `None` ), stupeň paralelismu na souběžně načtená data z Azure synapse Analytics se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | Ne |
+| partitionOptions | Určuje možnosti dělení dat používané při načítání dat ze služby Azure synapse Analytics. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Když je povolená možnost oddílu (to znamená, že ne `None` ), stupeň paralelismu na souběžně načtená data z Azure synapse Analytics se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | Ne |
 | **_Pod `partitionSettings` :_* _ | | |
-| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime* * ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-synapse-analytics) . | Ne |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-synapse-analytics) . | Ne |
-| partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-synapse-analytics) . | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
+| partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
 
 **Příklad: použití dotazu SQL**
 
@@ -374,17 +374,17 @@ Azure Data Factory podporuje tři způsoby, jak načíst data do služby Azure s
 
 Nejrychlejší a nejškálovatelný způsob, jak načíst data, je prostřednictvím [základny](/sql/relational-databases/polybase/polybase-guide) nebo [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql) (Preview).
 
-Pokud chcete kopírovat data do služby Azure synapse Analytics, nastavte typ jímky v aktivitě kopírování na **SqlDWSink** . V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data do služby Azure synapse Analytics, nastavte typ jímky v aktivitě kopírování na **SqlDWSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost          | Popis                                                  | Povinné                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| typ              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink** . | Ano                                           |
-| allowPolyBase     | Označuje, jestli se má k načtení dat do služby Azure synapse Analytics použít základ. `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br/>Platí při použití základny.     |
-| polyBaseSettings  | Skupina vlastností, které lze zadat, pokud `allowPolybase` je vlastnost nastavena na **hodnotu true** . | Ne.<br/>Platí při použití základny. |
-| allowCopyCommand | Označuje, jestli se má při načítání dat do služby Azure synapse Analytics použít [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql) (Preview). `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití příkazu copy k načtení dat do služby Azure synapse Analytics](#use-copy-statement) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br>Použijte při použití kopírování. |
-| copyCommandSettings | Skupina vlastností, které lze zadat, pokud `allowCopyCommand` je vlastnost nastavena na hodnotu true. | Ne.<br/>Použijte při použití kopírování. |
-| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku** .<br/><br/>Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | Ne.<br/>Platí při použití hromadného vložení.     |
-| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí, než vyprší časový limit.<br/><br/>Povolená hodnota je **TimeSpan** . Příklad: "00:30:00" (30 minut). | Ne.<br/>Platí při použití hromadného vložení.        |
+| typ              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink**. | Ano                                           |
+| allowPolyBase     | Označuje, jestli se má k načtení dat do služby Azure synapse Analytics použít základ. `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | No.<br/>Platí při použití základny.     |
+| polyBaseSettings  | Skupina vlastností, které lze zadat, pokud `allowPolybase` je vlastnost nastavena na **hodnotu true**. | No.<br/>Platí při použití základny. |
+| allowCopyCommand | Označuje, jestli se má při načítání dat do služby Azure synapse Analytics použít [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql) (Preview). `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití příkazu copy k načtení dat do služby Azure synapse Analytics](#use-copy-statement) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | No.<br>Použijte při použití kopírování. |
+| copyCommandSettings | Skupina vlastností, které lze zadat, pokud `allowCopyCommand` je vlastnost nastavena na hodnotu true. | No.<br/>Použijte při použití kopírování. |
+| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**.<br/><br/>Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | No.<br/>Platí při použití hromadného vložení.     |
+| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí, než vyprší časový limit.<br/><br/>Povolená hodnota je **TimeSpan**. Příklad: "00:30:00" (30 minut). | No.<br/>Platí při použití hromadného vložení.        |
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se spustí před zápisem dat do služby Azure synapse Analytics v každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | Ne                                            |
 | tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . |Ne |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je Azure synapse Analytics DWU, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, určete, jestli `true` ho chcete vypnout. | Ne (výchozí nastavení je `false` ) |
@@ -405,7 +405,7 @@ Pokud chcete kopírovat data do služby Azure synapse Analytics, nastavte typ j�
 }
 ```
 
-## <a name="parallel-copy-from-synapse-analytics"></a>Paralelní kopírování z synapse Analytics
+## <a name="parallel-copy-from-azure-synapse-analytics"></a>Paralelní kopírování z Azure synapse Analytics
 
 Konektor Azure synapse Analytics v aktivitě kopírování poskytuje integrované datové oddíly pro kopírování dat paralelně. Možnosti dělení dat můžete najít na kartě **zdroj** aktivity kopírování.
 
@@ -417,9 +417,9 @@ Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů da
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Úplné načtení z velké tabulky s fyzickými oddíly.        | **Možnost oddílu** : fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a kopíruje data podle oddílů. <br><br/>Pokud chcete zjistit, jestli má tabulka fyzický oddíl, nebo ne, můžete na [Tento dotaz](#sample-query-to-check-physical-partition)odkazovat. |
-| Úplné načtení z velké tabulky bez fyzických oddílů při použití celého čísla nebo sloupce data a času pro dělení dat. | **Možnosti oddílu** : dynamický oddíl rozsahu.<br>**Sloupec oddílu** (volitelné): Zadejte sloupec, který se používá k dělení dat. Pokud není zadaný, použije se sloupec index nebo primární klíč.<br/>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, přičemž všechny řádky v tabulce budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnoty.<br><br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. |
-| Načtěte velké množství dat pomocí vlastního dotazu, bez fyzických oddílů, zatímco se sloupcem typu Integer nebo Date/DateTime pro dělení dat. | **Možnosti oddílu** : dynamický oddíl rozsahu.<br>**Dotaz** : `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partition – sloupec** : Určete sloupec, který se používá k dělení dat.<br>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, všechny řádky ve výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br><br>Při provádění Data Factory nahrazuje `?AdfRangePartitionColumnName` skutečný název sloupce a rozsahy hodnot pro každý oddíl a odesílá je do Azure synapse Analytics. <br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. <br><br>Tady je více ukázkových dotazů pro různé scénáře:<br> 1. dotazování celé tabulky: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. dotazování z tabulky s výběrem sloupce a dalšími filtry klauzule WHERE: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. dotazování s poddotazy: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. dotazování pomocí oddílu v poddotazu: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| Úplné načtení z velké tabulky s fyzickými oddíly.        | **Možnost oddílu**: fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a kopíruje data podle oddílů. <br><br/>Pokud chcete zjistit, jestli má tabulka fyzický oddíl, nebo ne, můžete na [Tento dotaz](#sample-query-to-check-physical-partition)odkazovat. |
+| Úplné načtení z velké tabulky bez fyzických oddílů při použití celého čísla nebo sloupce data a času pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Sloupec oddílu** (volitelné): Zadejte sloupec, který se používá k dělení dat. Pokud není zadaný, použije se sloupec index nebo primární klíč.<br/>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, přičemž všechny řádky v tabulce budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnoty.<br><br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. |
+| Načtěte velké množství dat pomocí vlastního dotazu, bez fyzických oddílů, zatímco se sloupcem typu Integer nebo Date/DateTime pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partition – sloupec**: Určete sloupec, který se používá k dělení dat.<br>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, všechny řádky ve výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br><br>Při provádění Data Factory nahrazuje `?AdfRangePartitionColumnName` skutečný název sloupce a rozsahy hodnot pro každý oddíl a odesílá je do Azure synapse Analytics. <br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. <br><br>Tady je více ukázkových dotazů pro různé scénáře:<br> 1. dotazování celé tabulky: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. dotazování z tabulky s výběrem sloupce a dalšími filtry klauzule WHERE: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. dotazování s poddotazy: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. dotazování pomocí oddílu v poddotazu: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 Osvědčené postupy načítání dat s možností oddílu:
@@ -474,7 +474,7 @@ Pokud má tabulka fyzický oddíl, vidíte "HasPartition" jako "Yes".
 
 Použití [základny](/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst velké množství dat do Azure synapse Analytics s vysokou propustností. Místo výchozího mechanismu BULKINSERT se zobrazí velký nárůst propustnosti pomocí základu. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics](v1/data-factory-load-sql-data-warehouse.md).
 
-- Pokud jsou vaše zdrojová data ve **službě Azure Blob, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2** a **formát je** standardně kompatibilní, můžete k přímému vyvolání základny použít aktivitu kopírování a umožnit tak službě Azure synapse Analytics načíst data ze zdroje. Podrobnosti najdete v tématu **[Přímá kopie pomocí základu](#direct-copy-by-using-polybase)** .
+- Pokud jsou vaše zdrojová data ve **službě Azure Blob, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2** a **formát je** standardně kompatibilní, můžete k přímému vyvolání základny použít aktivitu kopírování a umožnit tak službě Azure synapse Analytics načíst data ze zdroje. Podrobnosti najdete v tématu **[Přímá kopie pomocí základu](#direct-copy-by-using-polybase)**.
 - Pokud se vaše zdrojové úložiště dat a formát v základu nepodporují, použijte místo toho funkci **[dvoufázové kopie pomocí základní](#staged-copy-by-using-polybase)** funkce. Funkce dvoufázové kopírování nabízí také lepší propustnost. Automaticky převádí data do formátu kompatibilního se standardem, ukládá data do úložiště objektů BLOB v Azure a pak volá základnu, aby načetla data do Azure synapse Analytics.
 
 > [!TIP]
@@ -485,8 +485,8 @@ V rámci aktivity kopírování jsou podporovány následující základní nast
 | Vlastnost          | Popis                                                  | Povinné                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil.<br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v oddílu argumenty v tématu [vytvoření externí tabulky (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql). <br/><br/>Povolené hodnoty jsou 0 (výchozí), 1, 2 atd. | Ne                                            |
-| rejectType        | Určuje, zda je možnost **rejectValue** hodnotou literálu nebo procentem.<br/><br/>Povolené hodnoty jsou **hodnota** (výchozí) a **procento** . | Ne                                            |
-| Rejecttype rejectsamplevalue | Určuje počet řádků, které se mají načíst před tím, než základ přepočítá procento odmítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2 atd. | Ano, pokud je **rejectType** **procent** . |
+| rejectType        | Určuje, zda je možnost **rejectValue** hodnotou literálu nebo procentem.<br/><br/>Povolené hodnoty jsou **hodnota** (výchozí) a **procento**. | Ne                                            |
+| Rejecttype rejectsamplevalue | Určuje počet řádků, které se mají načíst před tím, než základ přepočítá procento odmítnutých řádků.<br/><br/>Povolené hodnoty jsou 1, 2 atd. | Ano, pokud je **rejectType** **procent**. |
 | useTypeDefault    | Určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.<br/><br/>Přečtěte si další informace o této vlastnosti z oddílu argumenty v tématu [Create External File Format (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql).<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí).<br><br> | Ne                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>Přímá kopie pomocí základu
@@ -508,17 +508,17 @@ Pokud požadavky nejsou splněné, Azure Data Factory zkontroluje nastavení a a
 
     >[!IMPORTANT]
     >- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
-    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-2. **Zdrojový formát dat** je **Parquet** , **ORC** nebo **text s oddělovači** , s následujícími konfiguracemi:
+2. **Zdrojový formát dat** je **Parquet**, **ORC** nebo **text s oddělovači**, s následujícími konfiguracemi:
 
    1. Cesta ke složce neobsahuje filtr zástupných znaků.
    2. Název souboru je prázdný nebo odkazuje na jeden soubor. Pokud v aktivitě kopírování zadáte název souboru se zástupnými znaky, může to být pouze `*` nebo `*.*` .
-   3. `rowDelimiter` je **Výchozí hodnota** , **\n** , **\r\n** nebo **\r** .
+   3. `rowDelimiter` je **Výchozí hodnota**, **\n**, **\r\n** nebo **\r**.
    4. `nullValue` je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("") a `treatEmptyAsNull` je ponechán jako výchozí nebo nastaven na hodnotu true.
-   5. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8** .
+   5. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
    6. `quoteChar`, `escapeChar` a `skipLineCount` nejsou zadány. Základní podpora – přeskočit řádek záhlaví, který se dá nakonfigurovat jako `firstRowAsHeader` v ADF.
-   7. `compression` nemůže být **žádná komprese** , **gzip** nebo **Deflate** .
+   7. `compression` nemůže být **žádná komprese**, **gzip** nebo **Deflate**.
 
 3. Pokud je zdrojem složka, `recursive` musí být v aktivitě kopírování nastavena hodnota true (pravda).
 
@@ -569,7 +569,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 
 >[!IMPORTANT]
 >- Pokud pro pracovní propojenou službu používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
->- Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity s povoleným účtem úložiště povolit důvěryhodnou službu Microsoftu. Podívejte se na [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
+>- Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity s povoleným účtem úložiště povolit důvěryhodnou službu Microsoftu. Podívejte se na [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -638,7 +638,7 @@ Pokud jsou vaše zdrojová data v textovém formátu nebo v jiných nekompatibil
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-Řešením je zrušit výběr možnosti **použít výchozí typ** (jako false) ve jímky aktivity kopírování – > základní nastavení. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" je základní nativní konfigurace, která určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.
+Řešením je zrušit výběr možnosti **použít výchozí typ**(jako false) ve jímky aktivity kopírování – > základní nastavení. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" je základní nativní konfigurace, která určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.
 
 **`tableName` ve službě Azure synapse Analytics**
 
@@ -669,7 +669,7 @@ Hodnota NULL je speciální forma výchozí hodnoty. Pokud sloupec může mít h
 
 ## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics-preview"></a><a name="use-copy-statement"></a> Použití příkazu COPY k načtení dat do služby Azure synapse Analytics (Preview)
 
-[Příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql) pro Azure synapse Analytics (Preview) přímo podporuje načítání dat z **Azure Blob a Azure Data Lake Storage Gen2** . Pokud zdrojová data splňují kritéria popsaná v této části, můžete použít příkaz COPY v ADF k načtení dat do služby Azure synapse Analytics. Azure Data Factory kontroluje nastavení a v případě, že nejsou splněná kritéria, se spustí aktivita kopírování.
+[Příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql) pro Azure synapse Analytics (Preview) přímo podporuje načítání dat z **Azure Blob a Azure Data Lake Storage Gen2**. Pokud zdrojová data splňují kritéria popsaná v této části, můžete použít příkaz COPY v ADF k načtení dat do služby Azure synapse Analytics. Azure Data Factory kontroluje nastavení a v případě, že nejsou splněná kritéria, se spustí aktivita kopírování.
 
 >[!NOTE]
 >V současné době Data Factory pouze podpora kopírování ze zdrojů kompatibilních se KOPÍROVÁNÍm, které jsou uvedeny níže.
@@ -690,19 +690,19 @@ Použití příkazu COPY podporuje následující konfiguraci:
 
     >[!IMPORTANT]
     >- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
-    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
 2. Nastavení formátu jsou následující:
 
-   1. Pro **Parquet** : `compression` nemůže být **žádná komprese** , **přichycení** nebo **gzip** .
-   2. Pro **ORC** : `compression` nemůže být **žádná komprese** , **```zlib```** nebo **přichycení** .
-   3. Pro **text s oddělovačem** :
-      1. `rowDelimiter` je explicitně nastaveno jako **jeden znak** nebo " **\r\n** ", výchozí hodnota není podporována.
+   1. Pro **Parquet**: `compression` nemůže být **žádná komprese**, **přichycení** nebo **gzip**.
+   2. Pro **ORC**: `compression` nemůže být **žádná komprese**, **```zlib```** nebo **přichycení**.
+   3. Pro **text s oddělovačem**:
+      1. `rowDelimiter` je explicitně nastaveno jako **jeden znak** nebo "**\r\n**", výchozí hodnota není podporována.
       2. `nullValue` je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("").
-      3. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8 nebo UTF-16** .
+      3. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8 nebo UTF-16**.
       4. `escapeChar` musí být stejný jako `quoteChar` a není prázdný.
       5. `skipLineCount` je ponechán jako výchozí nebo nastavený na 0.
-      6. `compression` nemůže být **žádná komprese** ani **gzip** .
+      6. `compression` nemůže být **žádná komprese** ani **gzip**.
 
 3. Je-li zdrojem složka, `recursive` musí být v aktivitě kopírování nastavena hodnota true a musí `wildcardFilename` být `*` . 
 
@@ -775,15 +775,15 @@ Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **
 **Povolit přípravu** Doporučuje se použít tuto možnost v produkčních úlohách se zdroji Azure synapse Analytics. Když provedete [aktivitu toku dat](control-flow-execute-data-flow-activity.md) se zdroji analýzy Azure synapse z kanálu, zobrazí se v něm výzva k zadání účtu úložiště pracovního umístění a použije se pro přípravu načítání dat. Je to nejrychlejší mechanismus načítání dat z Azure synapse Analytics.
 
 - Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
-- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-**Dotaz** : Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání.
+**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání.
 
 Příklad SQL: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Velikost dávky** : zadejte velikost dávky pro velké objemy dat v čtení. V datových tocích bude ADF pomocí tohoto nastavení nastavit sloupcovou mezipaměť Spark. Toto je pole možností, které použije výchozí hodnoty Sparku, pokud je ponecháno prázdné.
+**Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení. V datových tocích bude ADF pomocí tohoto nastavení nastavit sloupcovou mezipaměť Spark. Toto je pole možností, které použije výchozí hodnoty Sparku, pokud je ponecháno prázdné.
 
-**Úroveň izolace** : ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
+**Úroveň izolace**: ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
 
 - Čtení potvrzeno
 - Čtení nepotvrzených
@@ -807,11 +807,11 @@ Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **
 **Povolit přípravu:** Určuje, jestli se má při zápisu do Azure synapse Analytics použít [základ](/sql/relational-databases/polybase/polybase-guide) . Pracovní úložiště je nakonfigurované v [aktivitě spustit tok dat](control-flow-execute-data-flow-activity.md). 
 
 - Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
-- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-**Velikost dávky** : Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
+**Velikost dávky**: Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
 
-**Skripty před a po SQL** : zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
+**Skripty před a po SQL**: zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
 
 ![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
 
@@ -836,7 +836,7 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | binární                                | Byte []                         |
 | bit                                   | Logická hodnota                        |
 | char                                  | Řetězec, znak []                 |
-| date                                  | DateTime                       |
+| datum                                  | DateTime                       |
 | Datum a čas                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |
@@ -849,7 +849,7 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | nchar                                 | Řetězec, znak []                 |
 | numerické                               | Decimal                        |
 | nvarchar                              | Řetězec, znak []                 |
-| real                                  | Jednoduché                         |
+| real                                  | Jeden                         |
 | rowversion                            | Byte []                         |
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |

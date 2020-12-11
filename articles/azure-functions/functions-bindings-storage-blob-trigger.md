@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998825"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094841"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
 
@@ -69,7 +69,7 @@ Další informace o atributu naleznete `BlobTrigger` v tématu [atributy a pozn�
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a kódu, který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a kódu, který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Tady jsou data vazby v *function.js* souboru:
 
@@ -150,7 +150,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Tady je *function.js* souboru:
 
@@ -285,7 +285,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `BlobTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
@@ -322,6 +322,9 @@ Přístup k datům objektů BLOB prostřednictvím parametru zadaného jako [Inp
 ## <a name="blob-name-patterns"></a>Vzory názvů objektů BLOB
 
 Můžete určit vzor názvu objektu BLOB ve `path` vlastnosti v *function.jsna* nebo v `BlobTrigger` konstruktoru atributu. Vzor názvu může být [filtr nebo výraz vazby](./functions-bindings-expressions-patterns.md). V následujících částech jsou uvedeny příklady.
+
+> [!TIP]
+> Název kontejneru nemůže obsahovat překladač ve vzoru názvu.
 
 ### <a name="get-file-name-and-extension"></a>Získat název a příponu souboru
 

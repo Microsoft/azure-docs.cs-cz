@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977268"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095351"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
 
@@ -51,7 +51,7 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-ove
 
 <table>
 <thead>
-    <tr><th>Type</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
+    <tr><th>Typ</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
 </thead>
 <tbody>
 <tr><td>Soubory Azure
@@ -94,7 +94,7 @@ Typ úložiště pro daný systém závisí na požadavcích systému, včetně 
 
 SSD poskytují nejvyšší výkon úložiště v Azure. K dispozici jsou následující možnosti (od zápisu tohoto dokumentu):
 
-| Type         | Velikost           | IOPS                  |
+| Typ         | Velikost           | IOPS                  |
 |--------------|----------------|-----------------------|
 | SSD úrovně Ultra    | 4 GB až 64 TB  | 1 200 až 160 000 IOPS |
 | SSD úrovně Premium  | 32 GB až 32 TB | 12 až 15 000 IOPS     |
@@ -127,4 +127,4 @@ BLOB Storage poskytuje největší objem úložiště v Azure. Kromě velikosti 
 ### <a name="more-migration-resources"></a>Další zdroje migrace
 
 - [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

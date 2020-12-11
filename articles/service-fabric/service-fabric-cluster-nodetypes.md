@@ -4,16 +4,16 @@ description: Přečtěte si, jak se typy uzlů Azure Service Fabric vztahují k 
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576396"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095249"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
 
-Služby [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastavuje přesně jednu sadu škálování: více typů uzlů nejde zálohovat stejnou sadou škálování a jeden typ uzlu by neměl (ve většině případů) být zálohovaný pomocí více sad škálování. Výjimkou je situace, kdy je v některých případech [vertikální škálování](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) typu uzlu, když dočasně máte dvě sady škálování se stejnou `nodeTypeRef` hodnotou, zatímco repliky se migrují z originálu do upgradované sady škálování.
+Služby [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastavuje přesně jednu skupinu škálování: více typů uzlů nejde zálohovat stejnou sadou škálování a jeden typ uzlu by neměl být zálohovaný pomocí více sad škálování.
 
 Modul runtime Service Fabric se instaluje na každý virtuální počítač ve škále nastaveném rozšířením virtuálního počítače *Microsoft. Azure. ServiceFabric* . Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
 

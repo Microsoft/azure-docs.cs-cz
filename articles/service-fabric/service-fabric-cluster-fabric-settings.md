@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187217"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095266"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -857,7 +857,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Úroveň |Int, výchozí hodnota je 4. | Dynamická |Trasovat úroveň trasování událostí pro Windows může přibírat hodnoty 1, 2, 3, 4. Aby byla podpora podporovaná, musíte udržet úroveň trasování 4. |
+|Level |Int, výchozí hodnota je 4. | Dynamická |Trasovat úroveň trasování událostí pro Windows může přibírat hodnoty 1, 2, 3, 4. Aby byla podpora podporovaná, musíte udržet úroveň trasování 4. |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 
@@ -877,7 +877,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60)|Static|Zadejte časový interval v sekundách. Časový limit pro nastavení připojení na straně příjmu (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
 |FrameHeaderErrorCheckingEnabled|logická hodnota, výchozí hodnota je TRUE.|Static|Výchozí nastavení pro kontrolu chyb v hlavičce snímku v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
-|MessageErrorCheckingEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Výchozí nastavení pro kontrolu chyb v záhlaví a textu zprávy v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
+|MessageErrorCheckingEnabled|logická hodnota, výchozí hodnota je TRUE.|Static|Výchozí nastavení pro kontrolu chyb v záhlaví a textu zprávy v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
 |ResolveOption|řetězec, výchozí hodnota je "Neurčeno".|Static|Určuje, jak se přeloží plně kvalifikovaný název domény.  Platné hodnoty jsou "Neurčeno/IPv4/IPv6". |
 |SendTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamická|Zadejte časový interval v sekundách. Vypršel časový limit pro detekci zablokování připojení. Zprávy o chybách TCP nejsou v některých prostředí spolehlivé. To může být potřeba upravit podle dostupné šířky pásma sítě a velikosti odchozích dat ( \* MaxMessageSize \/ \* SendQueueSizeLimit). |
 

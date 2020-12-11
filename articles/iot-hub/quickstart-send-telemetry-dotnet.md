@@ -14,26 +14,26 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844518"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094790"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí aplikace služby (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím služby IoT Hub do back-endové aplikace za účelem zpracování.
+IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrii z aplikace simulovaného zařízení prostřednictvím IoT Hub do aplikace služby ke zpracování.
 
 V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna k odesílání telemetrických dat a jedna ke čtení telemetrických dat z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Ve vývojovém počítači potřebujete .NET Core SDK 3,0 nebo vyšší.
+* Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Ve vývojovém počítači potřebujete .NET Core SDK 3,1 nebo vyšší.
 
     Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
 
@@ -44,7 +44,7 @@ V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna
     ```
 
     > [!NOTE]
-    > Pro kompilaci kódu služby Event Hubs používaného pro čtení telemetrie v tomto rychlém startu se doporučuje .NET Core SDK 3,0 nebo vyšší. .NET Core SDK 2,1 můžete použít, pokud nastavíte jazykovou verzi pro kód služby na náhled, jak je uvedeno v části [přečtení telemetrie z vašeho centra](#read-the-telemetry-from-your-hub) .
+    > Pro kompilaci kódu služby Event Hubs používaného pro čtení telemetrie v tomto rychlém startu se doporučuje .NET Core SDK 3,1 nebo vyšší.
 
 
 * Stáhněte si ukázky pro Azure IoT C# z webu [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a Extrahujte archiv zip.
@@ -87,7 +87,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v rychlém startu.
 
-3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. K tomu, aby se mohla aplikace služby připojit ke službě IoT Hub a jak se budou tyto zprávy načítat, potřebujete také _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
@@ -105,22 +105,18 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
-1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Pak přejděte do složky **IoT-hub\Quickstarts\SimulatedDevice** .
 
-2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
-
-    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.cs**.
-
-3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
+2. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Spuštěním následujícího příkazu v okně místního terminálu sestavte a spusťte aplikaci simulovaného zařízení:
+3. V okně místního terminálu spusťte následující příkaz, který sestaví a spustí aplikaci simulovaného zařízení s připojovacím řetězcem zařízení, který jste si poznamenali v předchozím kroku:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
@@ -129,36 +125,37 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrie z centra
 
-Back-endová aplikace se připojí ke koncovému bodu **Events** na straně služby ve vašem centru IoT. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Aplikace služby se připojí ke koncovému bodu **událostí** na straně služby na vašem IoT Hub. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Aplikace služby IoT Hub obvykle běží v cloudu pro příjem a zpracování zpráv ze zařízení do cloudu.
 
-1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Pak přejděte do složky **IoT-hub\Quickstarts\ReadD2cMessages** .
 
-2. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.cs**. Aktualizujte následující proměnné a uložte provedené změny souboru.
-
-    | Proměnná | Hodnota |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
-    | `EventHubName`                | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
-    | `IotHubSasKey`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
-
-    > [!NOTE]
-    > Pokud používáte .NET Core SDK 2,1, musíte nastavit jazykovou verzi na náhled pro zkompilování kódu. Provedete to tak, že otevřete soubor **Read-D2C-Messages. csproj** a nastavíte hodnotu `<LangVersion>` elementu na `preview` .
-
-3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
+2. V okně místního terminálu spusťte následující příkaz, který nainstaluje požadované knihovny pro aplikaci:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Spuštěním následujících příkazů v okně místního terminálu sestavte a spusťte back-endovou aplikaci:
+3. V okně místního terminálu spusťte následující příkaz, který zobrazí možnosti parametrů.
 
     ```cmd/sh
     dotnet run
     ```
 
-    Následující snímek obrazovky ukazuje výstup, zatímco back-endová aplikace přijímá telemetrická data odeslaná simulovaným zařízením do centra:
+4. V okně místního terminálu spusťte jeden z následujících příkazů, který sestaví a spustí aplikaci s:
 
-    ![Spuštění back-endové aplikace](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    nebo
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    Následující snímek obrazovky ukazuje výstup, protože aplikace služby obdrží telemetrii odeslanou simulovaným zařízením do centra:
+
+    ![Spuštění aplikace služby](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -166,9 +163,9 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, poslali simulovanou telemetrii do centra pomocí aplikace v jazyce C# a načetli telemetrii z centra pomocí jednoduché back-endové aplikace.
+V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, poslali simulovanou telemetrii do centra pomocí aplikace v jazyce C# a načetli telemetrii z centra pomocí jednoduché aplikace služby.
 
-Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
+Další informace o tom, jak ovládat simulované zařízení z aplikace služby, můžete pokračovat v dalším rychlém startu.
 
 > [!div class="nextstepaction"]
 > [Rychlý start: Řízení zařízení připojeného k centru IoT](quickstart-control-device-dotnet.md)

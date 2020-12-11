@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466534"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095028"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Použití výpočetní akcelerace na Azure Stackovém procesoru Edge pro nasazení Kubernetes
 
@@ -28,8 +28,8 @@ Výpočetní akcelerace je pojem, který se používá konkrétně pro Azure Sta
 
 Článek se zabývá výpočetní akcelerací jenom pomocí GPU nebo VPU pro následující zařízení:
 
-- **Grafický procesor Azure Stack Edge pro** : Tato zařízení můžou mít 1 nebo 2 NVIDIA T4 TENSOR Core GPU. Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
-- **Azure Stack Edge pro R** – tato zařízení mají 1 grafický procesor NVIDIA T4 tensor Core. Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
+- **Grafický procesor Azure Stack Edge pro** : Tato zařízení můžou mít 1 nebo 2 NVIDIA T4 TENSOR Core GPU. Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
+- **Azure Stack Edge pro R** – tato zařízení mají 1 grafický procesor NVIDIA T4 tensor Core. Další informace najdete v tématu [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 - **Azure Stack hraniční Mini R** – tato zařízení mají 1 Intel Movidius NESČETNÝCH X VPU. Další informace najdete v tématu [Intel Movidius nesčetných X VPU](https://www.movidius.com/MyriadX).
 
 

@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648238"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095419"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -53,7 +53,12 @@ Níže jsou uvedeny některé důvody, proč byste mohli chtít přenést předp
 - Část vaší firmy byla rozdělena do samostatné společnosti a potřebujete přesunout některé z vašich prostředků do jiného adresáře služby Azure AD.
 - Chcete spravovat některé z vašich prostředků v jiném adresáři služby Azure AD pro účely izolace zabezpečení.
 
-Převod předplatného vyžaduje ukončení procesu. V závislosti na vašem scénáři může být vhodnější pouze znovu vytvořit prostředky a kopírovat data do cílového adresáře a předplatného.
+### <a name="alternate-approaches"></a>Alternativní přístupy
+
+Přenos odběru vyžaduje k dokončení procesu výpadky. V závislosti na vašem scénáři můžete zvážit následující alternativní přístupy:
+
+- Znovu vytvořte prostředky a zkopírujte data do cílového adresáře a předplatného.
+- Přijmete architekturu s více adresáři a ponechte předplatné ve zdrojovém adresáři. Pomocí Azure Lighthouse můžete delegovat prostředky, aby uživatelé v cílovém adresáři měli přístup k předplatnému ve zdrojovém adresáři. Další informace najdete v tématu [Azure Lighthouse v podnikových scénářích](../lighthouse/concepts/enterprise.md).
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>Pochopení dopadu na převod předplatného
 
@@ -69,15 +74,15 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 | Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
 | Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
 | Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Soubory Azure | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Synchronizace souborů Azure | Ano | Ano |  |  |
 | Spravované disky Azure | Ano | Ano |  |  Pokud používáte šifrovací sady disku k šifrování Managed Disks pomocí klíčů spravovaných zákazníkem, je nutné zakázat a znovu povolit identity přiřazené systémem, které jsou přidruženy k sadám šifrování disku. A musíte znovu vytvořit přiřazení rolí, tj. znovu udělit požadovaná oprávnění sadám Disk Encryption v trezorech klíčů. |
 | Azure Kubernetes Service | Ano | Ano |  |  |
-| Azure Policy | Ano | No | Všechny Azure Policy objekty, včetně vlastních definicí, přiřazení, výjimek a dat o dodržování předpisů. | Je nutné [exportovat](../governance/policy/how-to/export-resources.md), importovat a znovu přiřazovat definice. Pak vytvořte nová přiřazení zásad a všechny potřebné [výjimky zásad](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory Domain Services | Ano | No |  |  |
+| Azure Policy | Ano | Ne | Všechny Azure Policy objekty, včetně vlastních definicí, přiřazení, výjimek a dat o dodržování předpisů. | Je nutné [exportovat](../governance/policy/how-to/export-resources.md), importovat a znovu přiřazovat definice. Pak vytvořte nová přiřazení zásad a všechny potřebné [výjimky zásad](../governance/policy/concepts/exemption-structure.md). |
+| Azure Active Directory Domain Services | Ano | Ne |  |  |
 | Registrace aplikací | Ano | Ano |  |  |
 
 > [!WARNING]
@@ -383,3 +388,4 @@ Pokud je vaším záměrem odebrat přístup uživatelů ve zdrojovém adresář
 - [Převod vlastnictví fakturace předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Přenos předplatných Azure mezi předplatiteli a CSP](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure Lighthouse v podnikových scénářích](../lighthouse/concepts/enterprise.md)

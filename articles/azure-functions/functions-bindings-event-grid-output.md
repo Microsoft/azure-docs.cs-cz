@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214122"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094672"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid výstupní vazba pro Azure Functions
 
@@ -100,6 +100,10 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje Event Grid výstupní data vazby v *function.jsv* souboru.
@@ -160,6 +164,70 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak nakonfigurovat funkci pro výstup zprávy události Event Grid. Oddíl, ve kterém `type` je nastavena `eventGrid` Konfigurace hodnot potřebných pro vytvoření výstupní vazby Event Grid.
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    },
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+Ve své funkci použijte `Push-OutputBinding` k odeslání události do vlastního tématu prostřednictvím výstupní vazby Event Grid.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+
+Push-OutputBinding -Name outputEvent -Value  @{
+    id = "1"
+    EventType = "testEvent"
+    Subject = "testapp/testPublish"
+    EventTime = "2020-08-27T21:03:07+00:00"
+    Data = @{
+        Message = $message
+    }
+    DataVersion = "1.0"
+}
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Pak pošle v události do vlastního tématu, jak je uvedeno v `topicEndpointUri` .
@@ -194,7 +262,6 @@ import logging
 import azure.functions as func
 import datetime
 
-
 def main(eventGridEvent: func.EventGridEvent, 
          outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
 
@@ -209,10 +276,6 @@ def main(eventGridEvent: func.EventGridEvent,
             event_time=datetime.datetime.utcnow(),
             data_version="1.0"))
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 ---
 
@@ -239,17 +302,21 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Vazba Event Grid Output není pro Python k dispozici.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 ---
 
@@ -257,7 +324,7 @@ Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `EventGrid` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastavené na "eventGrid". |
 |**směr** | neuvedeno | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
@@ -280,17 +347,21 @@ Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEv
 
 Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
 
+# <a name="java"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k události výstupu pomocí `context.bindings.<name>` Where `<name>` je hodnota zadaná ve `name` vlastnosti *function.json*.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Přístup k události výstupu pomocí `Push-OutputBinding` rutiny k odeslání události do výstupní vazby Event Grid.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Vazba Event Grid Output není pro Python k dispozici.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 ---
 

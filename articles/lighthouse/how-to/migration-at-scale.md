@@ -3,12 +3,12 @@ title: Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
 description: Naučte se efektivně používat Azure Migrate na delegovaných zákaznických zdrojích.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621565"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095385"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Správa projektů migrace ve velkém měřítku pomocí Azure Migrate
 
@@ -39,7 +39,7 @@ Tento přístup minimalizuje přepínání kontextu pro poskytovatele služeb pr
 Pracovní postup pro tento model bude vypadat přibližně takto:
 
 1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele. Příklad použití této role najdete v ukázkové šabloně [delegované-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) .
-1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/migrate/create-manage-projects.md)a vybere odpovídající delegovaný odběr zákazníka.
+1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/azure/migrate/create-manage-projects)a vybere odpovídající delegovaný odběr zákazníka.
 1. Uživatel pak [provede kroky pro zjišťování a posouzení](../../migrate/tutorial-discover-vmware.md).
 
    U virtuálních počítačů VMware můžete před konfigurací zařízení omezit zjišťování na vCenter Server datacentra, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé virtuální počítače. Pokud chcete nastavit obor, přiřaďte oprávnění k účtu, který zařízení používá pro přístup k vCenter Server. To je užitečné v případě, že je na hypervisoru hostováno několik virtuálních počítačů zákazníků. Rozsah vyhledávání technologie Hyper-V se nedá omezit.
@@ -61,7 +61,7 @@ Tento přístup umožňuje poskytovatelům služeb rychle spustit zjišťování
 Pracovní postup pro tento model bude vypadat přibližně takto:
 
 1. Zákazník je připojen [do Azure Lighthouse](onboard-customer.md). Pro identitu, která se bude používat s Azure Migrate, se vyžaduje předdefinovaná role přispěvatele. Příklad použití této role najdete v ukázkové šabloně [delegované-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) .
-1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/migrate/create-manage-projects.md) v rámci předplatného patřícího ke správě tenanta.
+1. Označený uživatel se přihlásí ke správě tenanta v Azure Portal a pak přejde na Azure Migrate. Tento uživatel [vytvoří Azure Migrate projekt](/azure/migrate/create-manage-projects) v rámci předplatného patřícího ke správě tenanta.
 1. Uživatel pak [provede kroky pro zjišťování a posouzení](../../migrate/tutorial-discover-vmware.md). Místní virtuální počítače budou zjišťovány a posouzeny v rámci projektu migrace vytvořeného ve správě tenanta a pak z něj budou migrovány.
 
    Pokud spravujete více zákazníků na stejném hostiteli Hyper-V, můžete zjistit všechny úlohy najednou. Virtuální počítače specifické pro zákazníka mohou být vybrány ve stejné skupině, pak může být vytvořen odhad a lze provést migraci výběrem příslušného předplatného zákazníka jako cílového umístění. Není nutné omezit rozsah vyhledávání a můžete udržovat úplný přehled všech zákaznických úloh v jednom projektu migrace.

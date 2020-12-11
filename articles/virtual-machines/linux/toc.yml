@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Srovnávací test disku
               href: disks-benchmarks.md
-            - name: Optimalizace výkonu
-              href: optimization.md
         - name: Vyhledání nepřipojených disků – CLI
           href: find-unattached-disks.md
         - name: Vyhledání nepřipojených disků – portál

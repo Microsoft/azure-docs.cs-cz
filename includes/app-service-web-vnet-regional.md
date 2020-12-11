@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999421"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096439"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -96,7 +96,17 @@ Trasy Border Gateway Protocol (BGP) ovlivňují také přenosy aplikací. Pokud 
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Toto chování můžete v aplikaci přepsat konfigurací nastavení aplikace WEBSITE_DNS_SERVER s adresou požadovaného serveru DNS. Pokud jste měli ve své virtuální síti nakonfigurovaný vlastní server DNS, ale chtěli byste, aby vaše aplikace používala Azure DNS privátní zóny, měli byste nastavit WEBSITE_DNS_SERVER s hodnotou 168.63.129.16. 
+Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Chcete-li pracovat s Azure DNS Private Zones, je nutné přidat následující nastavení aplikace:
+
+
+1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16 1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16
+1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1 1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
+
+
+Tato nastavení budou posílat všechna vaše odchozí volání z vaší aplikace do vaší virtuální sítě a zároveň umožníte, aby aplikace používala Azure DNS privátní zóny.   Tato nastavení budou posílat všechna odchozí volání z vaší aplikace do vaší virtuální sítě. Kromě toho umožní aplikaci použít Azure DNS dotazem Privátní DNS zóny na úrovni pracovního procesu. Tato funkce se použije, když běžící aplikace přistupuje k zóně Privátní DNS.
+
+> [!NOTE]
+>Pokus o přidání vlastní domény do webové aplikace pomocí Privátní DNS zóny není možné použít s Integrace virtuální sítě. Vlastní ověření domény se provádí na úrovni kontroleru, nikoli na úrovni pracovního procesu, což brání tomu, aby se záznamy DNS zobrazily. Pokud chcete použít vlastní doménu ze zóny Privátní DNS, musí být ověření obejít pomocí Application Gateway nebo interního nástroje App Service Environment.
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744461"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095096"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve verzi Preview odkazu na Azure synapse
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Nepoužívejte `OPENROWSET` bez explicitně definovaného schématu, protože by to mohlo mít vliv na výkon. Ujistěte se, že používáte nejmenší možné velikosti pro sloupce (například VARCHAR (100) namísto default VARCHAR (8000)). Měli byste použít určitou kolaci UTF-8 jako výchozí kolaci databáze nebo ji nastavit jako explicitní kolaci sloupců, aby nedocházelo k [problémům s převodem ve formátu UTF-8](/troubleshoot/reading-utf8-text). Kolace `Latin1_General_100_BIN2_UTF8` poskytuje nejlepší výkon, když Yu filtruje data pomocí některých řetězcových sloupců.
+Nepoužívejte `OPENROWSET` bez explicitně definovaného schématu, protože by to mohlo mít vliv na výkon. Ujistěte se, že používáte nejmenší možné velikosti pro sloupce (například VARCHAR (100) namísto default VARCHAR (8000)). Měli byste použít určitou kolaci UTF-8 jako výchozí kolaci databáze nebo ji nastavit jako explicitní kolaci sloupců, aby nedocházelo k [problémům s převodem ve formátu UTF-8](/azure/synapse-analytics/troubleshoot/reading-utf8-text). Kolace `Latin1_General_100_BIN2_UTF8` poskytuje nejlepší výkon, když Yu filtruje data pomocí některých řetězcových sloupců.
 
 ## <a name="query-nested-objects-and-arrays"></a>Dotazování vnořených objektů a polí
 
@@ -422,7 +422,7 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce.
 
-| Chyba | Původní příčina |
+| Chybová | Původní příčina |
 | --- | --- |
 | Chyby syntaxe:<br/> – Nesprávná syntaxe poblíž textu `Openrowset`<br/> - `...` není rozpoznanou `BULK OPENROWSET` možností poskytovatele.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny:<br/> – Nepoužívá CosmosDB jako první parametr.<br/> – Použití řetězcového literálu místo identifikátoru ve třetím parametru.<br/> -Nelze zadat třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze nebo klíč není zadaný. <br/> – V připojovacím řetězci je nějaká možnost, která není rozpoznaná.<br/> – Střední ( `;` ) je umístěn na konci připojovacího řetězce. |

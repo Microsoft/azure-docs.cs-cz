@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184089"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095300"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics spoléhá na Azure Storage v nejrůznějších scénářích. Toto
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Ingestování protokolů rozšíření Azure Diagnostics (WAD/LAD)
 Agenti rozšíření Azure Diagnostics (označované také jako WAD a LAD agenti pro systémy Windows a Linux) shromažďují různé protokoly operačního systému a ukládají je do účtu úložiště spravovaného zákazníky. Pak můžete tyto protokoly ingestovat do Log Analytics, abyste je zkontrolovali a analyzovali.
-Jak shromažďovat protokoly rozšíření Azure Diagnostics z účtu úložiště připojte účet úložiště k vašemu pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate).
+Jak shromažďovat protokoly rozšíření Azure Diagnostics z účtu úložiště připojte účet úložiště k vašemu pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
 
 Podporované datové typy:
 * Syslog

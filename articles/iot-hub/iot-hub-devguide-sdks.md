@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9921ed500f831f2a002335fe83eae8f1bb47ecd4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499981"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095334"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Principy a použití sad SDK služby Azure IoT Hub.
 
@@ -59,7 +59,7 @@ Sada Azure IoT Hub SDK pro zařízení Embedded C (ANSI C-C99):
 * [Sestavení vložené sady C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
 * [Zdrojový kód](https://github.com/Azure/azure-sdk-for-c)
 * [Graf velikosti](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart) omezených zařízení
-* [Referenční materiály k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+* [Referenční materiály k rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.0.0/api/index.html)
 
 
 Sada SDK pro zařízení Azure IoT Hub pro jazyk C (ANSI C-C99):

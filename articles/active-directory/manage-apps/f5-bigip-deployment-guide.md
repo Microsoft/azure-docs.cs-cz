@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317990"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095181"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Kurz nasazení virtuálního počítače F5 BIG-IP Virtual Edition ve službě Azure IaaS pro zajištění zabezpečeného hybridního přístupu
 
@@ -44,7 +44,7 @@ Předchozí prostředí BIG-IP s velkým objemem adres nebo znalostí se ale ned
 
 - Certifikát se zástupným znakem nebo alternativním názvem subjektu (SAN) pro publikování webových aplikací přes protokol SSL (Secure Socket Layer). [Zašifrujeme si](https://letsencrypt.org/) bezplatný 90 dní pro testování.
 
-- Certifikát SSL pro zabezpečení rozhraní správy BIG-IPs. Certifikát používaný k publikování webových aplikací se dá použít, pokud jeho subjekt odpovídá plně kvalifikovanému názvu domény (FQDN) BIG-IP. Například certifikát se zástupným znakem definovaný subjektem *. contoso.com by byl vhodný pro https://big-ip-vm.contoso.com:8443
+- Certifikát SSL pro zabezpečení rozhraní správy BIG-IPs. Certifikát používaný k publikování webových aplikací se dá použít, pokud jeho subjekt odpovídá plně kvalifikovanému názvu domény (FQDN) BIG-IP. Například certifikát se zástupným znakem definovaný subjektem *. contoso.com by byl vhodný pro `https://big-ip-vm.contoso.com:8443`
 
 Nasazení virtuálních počítačů a konfigurace základních systémů budou trvat přibližně 30 minut, přičemž vaše platforma pro velké IP adresy bude připravená na implementaci libovolného ze scénářů SHA, které jsou [tady](f5-aad-integration.md)uvedené.
 
@@ -315,7 +315,7 @@ Aby bylo možné nakonfigurovat služby pro publikování a SHA, musí být syst
 
 Zabezpečení provozu správy do a z BIG-IPs webové konfigurace je nejdůležitější. Nakonfigurujte certifikát správy zařízení, aby chránil kanál webové konfigurace před ohrožením.
 
-1. V levém navigačním panelu přejdete do části **System**  >  **Certificate Management**  >  **Traffic** Certificate  >  **list import seznam certifikátů protokol SSL**  >  **Import**
+1. V levém navigačním panelu přejdete do části **System**  >  **Certificate Management**  >  **Traffic** Certificate  >  **list import seznam certifikátů protokol SSL**  >  
 
 2. V rozevíracím seznamu **typ importu** vyberte **PKCS 12 (IIS)** a **Zvolte soubor**. Vyhledejte webový certifikát SSL s názvem subjektu nebo SAN, který bude pokrývat plně kvalifikovaný název domény, který budete přiřazovat k virtuálnímu počítači BIG-IP-VM v několika dalších krocích.
 
@@ -327,7 +327,7 @@ Zabezpečení provozu správy do a z BIG-IPs webové konfigurace je nejdůležit
 
 ![Obrázek zobrazuje obecné vlastnosti.](./media/f5ve-deployment-plan/general-properties.png)
 
-6. V levém navigačním panelu přejít na konfigurace **systému**  >  **Configuration**  >  **zařízení**  >  **NTP**
+6. V levém navigačním panelu přejít na konfigurace **systému**  >    >  **zařízení**  >  **NTP**
 
 7. Zadejte spolehlivý zdroj NTP a vyberte **Přidat** a pak **aktualizace**. Například `time.windows.com`.
 
@@ -348,7 +348,7 @@ Existují dva typy profilů:
 
 Zřizování profilů SSL pro klienty i servery budou mít předem nakonfigurovanou a připravenou službu BIG-IP pro všechny scénáře služby SHA.
 
-1. V levém navigačním panelu přejdete do části **System**  >  **Certificate Management**  >  **Traffic** Certificate  >  **list import seznam certifikátů protokol SSL**  >  **Import**
+1. V levém navigačním panelu přejdete do části **System**  >  **Certificate Management**  >  **Traffic** Certificate  >  **list import seznam certifikátů protokol SSL**  >  
 
 2. V rozevíracím seznamu **typ importu** vyberte **PKCS 12 (IIS)** .
 
@@ -358,7 +358,7 @@ Zřizování profilů SSL pro klienty i servery budou mít předem nakonfigurova
 
 5. Zadejte **heslo** pro importovaný certifikát a pak vyberte **importovat** .
 
-6. V levém navigačním panelu přejdete na profily **místních přenosů**  >  **Profiles**  >  **SSL**  >  **klient** a pak vyberte **vytvořit** .
+6. V levém navigačním panelu přejdete na profily **místních přenosů**  >    >  **SSL**  >  **klient** a pak vyberte **vytvořit** .
 
 7. Na stránce **Nový profil SSL klienta** zadejte jedinečný popisný název nového profilu SSL klienta a ujistěte se, že je nadřazený profil nastavený na **Clientssl** .
 
@@ -383,7 +383,7 @@ Zřizování profilů SSL pro klienty i servery budou mít předem nakonfigurova
 
 Jedním z konečných kroků při přípravě silné IP adresy pro SHA je zajistit, aby bylo možné najít prostředky, které se publikují, a také adresářová služba, na které se spoléhá na jednotné přihlašování. Velká IP adresa má dva zdroje překladu názvů počínaje místním/.../hostem, nebo pokud záznam nenalezne, používá systém BIG-IP, na kterém je nakonfigurovaná služba DNS. Metoda souboru Hosts se nevztahuje na uzly a fondy APM, které používají plně kvalifikovaný název domény.
 
-1. Ve webové konfiguraci přejít na konfigurace **systému**  >  **Configuration**  >  **Device**  >  **DNS** zařízení
+1. Ve webové konfiguraci přejít na konfigurace **systému**  >    >    >  **DNS** zařízení
 
 2. V **seznamu vyhledávací server DNS** zadejte IP adresu vašeho serveru DNS prostředí.
 

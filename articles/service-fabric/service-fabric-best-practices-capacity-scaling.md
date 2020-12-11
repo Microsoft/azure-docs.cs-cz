@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531300"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095283"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -42,7 +42,7 @@ Díky automatickému škálování přes služby Virtual Machine Scale Sets bude
 
 ## <a name="vertical-scaling-considerations"></a>Požadavky vertikálního škálování
 
-[Vertikální škálování](./virtual-machine-scale-set-scale-node-type-scale-out.md) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležitých informací. Například:
+[Vertikální škálování](./virtual-machine-scale-set-scale-node-type-scale-out.md) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležitých informací. Příklad:
 
 * Před škálováním musí být cluster v pořádku. V opačném případě budete cluster dále rozstabilizovat.
 * Pro všechny Service Fabric typy uzlů clusteru, které hostují stavové služby, se vyžaduje úroveň trvanlivosti stříbra nebo vyšší.
@@ -50,21 +50,11 @@ Díky automatickému škálování přes služby Virtual Machine Scale Sets bude
 > [!NOTE]
 > Váš typ primárního uzlu, který hostuje stavové Service Fabric systémové služby, musí být na úrovni trvanlivosti stříbra nebo vyšší. Po povolení odolnosti proti stříbru budou operace clusteru, jako například upgrady, přidávání nebo odebírání uzlů, pomalejší, protože systém optimalizuje zabezpečení dat nad zrychlou operací.
 
-Vertikální škálování: sada škálování virtuálního počítače je destruktivní operace. Místo toho horizontálně škálovat cluster přidáním nové sady škálování s požadovanou SKU. Pak migrujte své služby do požadované SKU a dokončete tak bezpečnou operaci vertikálního škálování. Změna SKU prostředku prostředků sady škálování virtuálního počítače je destruktivní operace, protože přeimagí hostitelů, které odstraňují všechny místně trvalé stavy.
+Vertikální škálování pro sadu škálování virtuálního počítače jednoduše změnou skladové položky prostředku je destruktivní operace, protože hostitelé znovu odeberou všechny místně trvalé stavy. Místo toho budete chtít škálovat cluster tak, že přidáte novou sadu škálování s požadovanou SKU a pak migrujete vaše služby na novou škálu, aby se dokončila bezpečná vertikální operace škálování.
 
-Cluster používá Service Fabric [Vlastnosti uzlu a omezení umístění](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) k rozhodnutí, kde hostovat služby vaší aplikace. Když vertikálně měníte velikost primárního typu uzlu, deklarujte identické hodnoty vlastností pro `"nodeTypeRef"` . Tyto hodnoty najdete v rozšíření Service Fabric pro Virtual Machine Scale Sets. 
-
-Následující fragment kódu šablony Správce prostředků zobrazuje vlastnosti, které deklarujete. Má stejnou hodnotu pro nově zřízené sady škálování, na které se škáluje, a podporuje se jenom jako dočasná stavová služba pro váš cluster.
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+Cluster používá Service Fabric [Vlastnosti uzlu a omezení umístění](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) k rozhodnutí, kde hostovat služby vaší aplikace. Při vertikálním horizontálním škálování typu primárního uzlu nasadíte druhý typ primárního uzlu a pak nastavíte ( `"isPrimary": false` ) na původním primárním uzlu a budete pokračovat v zakázání jeho uzlů a odeberete jeho skupinu škálování a související prostředky. Podrobnosti najdete v tématu [horizontální navýšení kapacity Service Fabric typ primárního uzlu clusteru](service-fabric-scale-up-primary-node-type.md).
 
 > [!NOTE]
-> Nenechte cluster spuštěný s více sadami škálování, které používají stejnou `nodeTypeRef` hodnotu vlastnosti, která je delší, než je potřeba k dokončení úspěšné operace vertikálního škálování.
->
 > Před pokusem o změnu v produkčním prostředí vždy ověřte operace v testovacích prostředích. Ve výchozím nastavení mají služby Service Fabric systému clusterů omezení umístění jenom na cílový typ primárního uzlu.
 
 V případě deklarovaných vlastností uzlu a omezení umístění proveďte v jednom okamžiku následující kroky po jednotlivých instancích virtuálních počítačů. To umožňuje, aby se systémové služby (a stavové služby) na instanci virtuálního počítače, kterou odebíráte, korektně vypnuly, protože nové repliky se vytvářejí jinde.
@@ -127,7 +117,7 @@ Pokud chcete ručně škálovat, aktualizujte kapacitu ve vlastnosti SKU požado
 }
 ```
 
-Je nutné připravit uzel na vypnutí, aby bylo možné programově škálovat. Vyhledejte uzel, který má být odebrán (nejvyšší uzel instance). Například:
+Je nutné připravit uzel na vypnutí, aby bylo možné programově škálovat. Vyhledejte uzel, který má být odebrán (nejvyšší uzel instance). Příklad:
 
 ```csharp
 using (var client = new FabricClient())
@@ -170,7 +160,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Můžete:
+> Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Máte následující možnosti:
 > * Zavolejte [příkaz Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) s odpovídajícím názvem uzlu.
 > * Nasaďte do clusteru [aplikaci pomocníka automatického škálování Service Fabric](https://github.com/Azure/service-fabric-autoscale-helper/) . Tato aplikace zajišťuje, aby se nezaškrtnuté uzly s horizontálním škálováním z Service Fabric Explorer.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 4f1aceed7e6a41a8ad4f3a062f23a796e31e34ad
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601675"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095232"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -152,6 +152,7 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 
 ## <a name="more-resources"></a>Další zdroje informací
 
+* [Kurz: ověřování a autorizace uživatelů ve webové aplikaci, která přistupuje k Azure Storage a Microsoft Graph](scenario-secure-app-authentication-app-service.md)
 * [Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](tutorial-auth-aad.md)  
 * [Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 * [Přizpůsobení ověřování a autorizace v App Service](app-service-authentication-how-to.md)

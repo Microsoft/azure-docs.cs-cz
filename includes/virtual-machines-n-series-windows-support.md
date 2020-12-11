@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96537079"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096399"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
@@ -34,7 +34,9 @@ Ovladače NVIDIA Tesla (CUDA) pro virtuální počítače s NC, NCv2, NCv3, NCas
 
 Microsoft redistribuuje instalační programy ovladačů NVIDIA GRID pro virtuální počítače a virtuální počítače řady NVv3-Series používané jako virtuální pracovní stanice nebo pro virtuální aplikace. Nainstalujte jenom tyto ovladače mřížky na virtuální počítače Azure NV-Series jenom v operačních systémech uvedených v následující tabulce. Tyto ovladače zahrnují licencování pro software služby GRID Virtual GPU v Azure. Nemusíte nastavovat licenční server pro software NVIDIA vGPU.
 
-Ovladače mřížky znovu distribuované pomocí Azure nefungují na virtuálních počítačích bez řady NV, jako jsou například NC, NCv2, NCv3, ND a NDv2-Series VM. Jedinou výjimkou jsou NCas_T4_V3 řady virtuálních počítačů, ve kterých budou ovladače mřížky umožňovat fungování grafiky podobně jako u řady NV.
+Ovladače mřížky distribuované pomocí Azure nefungují na virtuálních počítačích řady bez NV, jako jsou virtuální počítače NCv2, NCv3, ND a NDv2-Series. Jedinou výjimkou jsou NCas_T4_V3 řady virtuálních počítačů, ve kterých budou ovladače mřížky umožňovat fungování grafiky podobně jako u řady NV.
+
+NC-Series s grafickými procesory NVIDIA K80 nepodporuje aplikace mřížky a grafiky.  
 
 Počítejte s tím, že rozšíření NVIDIA bude vždycky instalovat nejnovější ovladač. Odkazy na předchozí verzi poskytujeme pro zákazníky, kteří mají závislost na starší verzi.
 

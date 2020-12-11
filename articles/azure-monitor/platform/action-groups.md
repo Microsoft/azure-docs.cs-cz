@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920651"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095164"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -251,8 +251,46 @@ Ve skupině akcí můžete mít omezený počet akcí serveru SMS.
 
 Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-**Seznam zemí, ve kterých je podporováno** 
-| oznámení serveru SMS **Kód země**  |  **Název země** | | 61 | Austrálie | | 43 | Rakousko | | 32 | Belgie | | 55 | Brazílie | | 1 | Kanada | | 56 | Chile | | 86 | Čína | | 420 | Česká republika | | 45 | Dánsko | | 372 | Estonsko | | 358 | Finsko | | 33 | Francie | | 49 | Německo | | 852 | Hongkong | | 91 | Indie | | 353 | Irsko | | 972 | Izrael | | 39 | Itálie | | 81 | Japonsko | | 352 | Lucembursko | | 60 | Malajsie | | 52 | Mexiko | | 31 | Nizozemsko | | 64 | Nový Zéland | | 47 | Norsko | | 351 | Portugalsko | | 1 | Portoriko | | 40 | Rumunsko | | 65 | Singapur | | 27 | Jihoafrická Afrika | | 82 | Jižní Korea | | 34 | Španělsko | | 41 | Švýcarsko | | 886 | Tchaj-wan | | 44 |  Spojené království | | 1 | USA |
+**Seznam zemí, ve kterých je podporováno oznámení serveru SMS**
+
+| Kód země | Jméno země |
+|:---|:---|
+| 61 | Austrálie |
+| 43 | Rakousko |
+| 32 | Belgie |
+| 55 | Brazílie |
+| 1 |Kanada |
+| 56 | Chile |
+| 86 | Čína |
+| 420 | Česká republika |
+| 45 | Dánsko |
+| 372 | Estonsko |
+| 358 | Finsko |
+| 33 | Francie |
+| 49 | Německo |
+| 852 | Hongkong |
+| 91 | Indie |
+| 353 | Irsko |
+| 972 | Izrael |
+| 39 | Itálie |
+| 81 | Japonsko |
+| 352 | Lucembursko |
+| 60 | Malajsie |
+| 52 | Mexiko |
+| 31 | Nizozemsko |
+| 64 | Nový Zéland |
+| 47 | Norsko |
+| 351 | Portugalsko |
+| 1 | Portoriko |
+| 40 | Rumunsko |
+| 65 | Singapur |
+| 27 | Jižní Afrika |
+| 82 | Jižní Korea |
+| 34 | Španělsko |
+| 41 | Švýcarsko |
+| 886 | Tchaj-wan |
+| 44 | Spojené království |
+| 1 | USA |
 
 ### <a name="voice"></a>Hlas
 Další důležité chování najdete v článku [o omezení rychlosti](./alerts-rate-limiting.md) .

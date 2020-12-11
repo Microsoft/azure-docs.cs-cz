@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0e2e09bc72991330ccdec7a35400460cbeba26fc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0e3ba9aa4eac30c3387bdf6c2890a1172ebef544
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327028"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094722"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
-
-Tady jsou data vazby v *function.js* souboru:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Tady je kód JavaScriptu:
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
-
-Tady jsou data vazby v *function.js* souboru:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Tady je kód Pythonu:
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Tato část obsahuje následující příklady:
@@ -265,6 +193,103 @@ Po doručení je datová část JSON události deserializovaná do ```EventSchem
 
 V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `EventGridTrigger` anotaci pro parametry, jejichž hodnota by pocházela z EventGrid. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující příklad ukazuje, jak nakonfigurovat vazbu triggeru Event Grid v souboru *function.json* .
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Událost Event Grid zpřístupňuje funkci prostřednictvím parametru s názvem `eventGridEvent` , jak je znázorněno v následujícím příkladu PowerShellu.
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
@@ -289,17 +314,21 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#example) a [konfigurací](#configuration) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#example) a [konfigurací](#configuration) .
 
 ---
 
@@ -343,17 +372,21 @@ V Azure Functions 2. x a vyšší máte také možnost pro aktivační událost 
 > [!NOTE]
 > Ve funkcích v1 Pokud se pokusíte vytvořit vazby na `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , kompilátor zobrazí "zastaralé" zprávy a pomůže vám `Microsoft.Azure.EventGrid.Models.EventGridEvent` místo toho použít. Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně kvalifikováním `EventGridEvent` názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models` . Informace o tom, jak odkazovat na balíčky NuGet ve funkci skriptu jazyka C#, najdete v tématu [použití balíčků NuGet](functions-reference-csharp.md#using-nuget-packages) .
 
+# <a name="java"></a>[Java](#tab/java)
+
+Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný jako `EventSchema` . Další podrobnosti najdete v [příkladu](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsna* souboru `name` .
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsna* souboru `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
 Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsu* souboru, který je `name` zadaný jako `func.EventGridEvent` .
-
-# <a name="java"></a>[Java](#tab/java)
-
-Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný jako `EventSchema` . Další podrobnosti najdete v [příkladu](#example) .
 
 ---
 

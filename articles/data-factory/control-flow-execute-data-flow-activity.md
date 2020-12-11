@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003938"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095079"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -57,13 +57,13 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-toku dat | Odkaz na prováděný tok dat | DataFlowReference | Yes
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | No
-Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
-Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
-Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, zadejte účet úložiště, který se používá pro základní fázování.<br/><br/>Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Seznamte se také s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.<br/> | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
+Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, zadejte účet úložiště, který se používá pro základní fázování.<br/><br/>Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Seznamte se také s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.<br/> | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
 Příprava. folderPath | Pokud používáte zdroj nebo jímku Azure synapse Analytics, cesta ke složce v účtu BLOB Storage použitá pro základní fázování | Řetězec | Jenom v případě, že tok dat čte nebo zapisuje do služby Azure synapse Analytics
-traceLevel | Nastavení úrovně protokolování pro spuštění aktivity toku dat | Pokuta, hrubá, žádná | No
+traceLevel | Nastavení úrovně protokolování pro spuštění aktivity toku dat | Pokuta, hrubá, žádná | Ne
 
 ![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
 
@@ -88,7 +88,7 @@ V případě spuštění kanálu je cluster clusterem úloh, který trvá někol
 
 ### <a name="polybase"></a>PolyBase
 
-Pokud jako jímku nebo zdroj používáte Azure synapse Analytics (dříve SQL Data Warehouse), musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce významně zkracuje dobu načítání do Azure synapse Analytics.
+Pokud jako jímku nebo zdroj používáte Azure synapse Analytics, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce významně zkracuje dobu načítání do Azure synapse Analytics.
 
 ## <a name="logging-level"></a>Úroveň protokolování
 
