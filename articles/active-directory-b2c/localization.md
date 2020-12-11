@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095894"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108616"
 ---
 # <a name="localization-element"></a>Element Localization
 
@@ -342,7 +342,7 @@ Hodnota ovládacího prvku DataGridView slouží k lokalizaci jednoho z prvků u
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
 ```
 
-V části metadata technického profilu s vlastním příznakem musí mít odkazované ContentDefinition DataUri nastavenou na [rozložení stránky verze](page-layout.md) 2.1.0 nebo vyšší. Například:
+V části metadata technického profilu s vlastním příznakem musí mít odkazované ContentDefinition DataUri nastavenou na [rozložení stránky verze](page-layout.md) 2.1.0 nebo vyšší. Příklad:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">
@@ -354,5 +354,5 @@ V části metadata technického profilu s vlastním příznakem musí mít odkaz
 
 Příklady lokalizace najdete v následujících článcích:
 
-- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](custom-policy-localization.md)
-- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](user-flow-language-customization.md)
+- [Přizpůsobení jazyka s vlastními zásadami v Azure Active Directory B2C](language-customization.md)
+- [Přizpůsobení jazyka pomocí toků uživatelů v Azure Active Directory B2C](language-customization.md)

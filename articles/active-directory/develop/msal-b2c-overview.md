@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673508"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107868"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
 
@@ -169,7 +169,7 @@ V následujících krocích se předpokládá, že jste už provedli kroky uvede
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Krok 2: zachycení a zpracování chyb ověřování v metodě přihlášení
 
-Když uživatel vybere **zapomenuté heslo** , vaše aplikace vyvolá chybu, kterou byste měli zachytit ve svém kódu, a pak ji zpracovat tak, že prezentuje příslušný tok uživatele. V tomto případě je to `b2c_1_reset` tok resetování hesla.
+Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kterou byste měli zachytit ve svém kódu, a pak ji zpracovat tak, že prezentuje příslušný tok uživatele. V tomto případě je to `b2c_1_reset` tok resetování hesla.
 
 1. Metodu přihlašování rozšíříte takto:
 
@@ -207,14 +207,14 @@ Když uživatel vybere **zapomenuté heslo** , vaše aplikace vyvolá chybu, kte
 
     Po resetování hesla se uživatel vrátí zpátky do aplikace, aby se znovu přihlásil.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Přihlašovací obrazovka zobrazovaná Azure AD B2C" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Obrazovky toku resetování hesla zobrazené Azure AD B2C" border="false":::
 
-    Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-handling-exceptions.md).
+    Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
-- [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/configure-user-input.md)

@@ -1,15 +1,15 @@
 ---
 title: Rychlý Start Azure – spuštění první úlohy služby Batch v Azure Portal
-description: Naučte se, jak pomocí Azure Portal vytvořit účet Batch, fond výpočetních uzlů a úlohu, která spouští základní úlohy ve fondu.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit účet Batch, fond výpočetních uzlů a úlohu, která spouští základní úlohy ve fondu.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88511367"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106470"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -23,7 +23,7 @@ Začněte s Azure Batch pomocí Azure Portal k vytvoření účtu Batch, fondu v
 
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Služba COMPUTE Batch**. 
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >    >  **Služba COMPUTE Batch**. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Snímek obrazovky služby Batch v Azure Marketplace.":::
 
@@ -31,9 +31,9 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 1. Zadejte hodnotu **názvu účtu**. Tento název musí být v rámci vybraného **umístění** Azure jedinečný. Může obsahovat jenom malá písmena a číslice a musí mít 3-24 znaků.
 
-1. V části **účet úložiště**vyberte existující účet úložiště nebo vytvořte nový.
+1. V části **účet úložiště** vyberte existující účet úložiště nebo vytvořte nový.
 
-1. Neměňte žádná další nastavení. Vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit** a vytvořte účet Batch.
+1. Neměňte žádná další nastavení. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit** a vytvořte účet Batch.
 
 Až se zobrazí zpráva o **úspěšném nasazení** , přejdete na účet Batch, který jste vytvořili.
 
@@ -65,7 +65,7 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů úložiště bude několik minut trvat. Během této doby bude mít položka **Stav přidělení** fondu hodnotu **Změna velikosti**. Během změny velikosti můžete pokračovat vytvořením úlohy a úkolů.
 
-Po několika minutách se stav přidělení změní na **ustáleno**a uzly se spustí. Pokud chcete kontrolovat stav uzlů, vyberte fond a pak vyberte **uzly**. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly.
+Po několika minutách se stav přidělení změní na **ustáleno** a uzly se spustí. Pokud chcete kontrolovat stav uzlů, vyberte fond a pak vyberte **uzly**. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly.
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
@@ -97,7 +97,7 @@ Pokud chcete vytvořit druhou úlohu, opakujte výše uvedené kroky. Zadejte ji
 
 Ukázkové úlohy, které jste vytvořili, budou dokončeny během několika minut. Chcete-li zobrazit výstup dokončené úlohy, vyberte úlohu a pak vyberte **soubory v uzlu**. Vyberte soubor `stdout.txt` pro zobrazení standardního výstupu úkolu. Obsah by měl vypadat zhruba takto:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Snímek obrazovky služby Batch v Azure Marketplace.":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Snímek obrazovky s výstupem z dokončené úlohy":::
 
 Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh a úkolů služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky.
 

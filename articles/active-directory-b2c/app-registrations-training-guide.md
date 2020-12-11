@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936467"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109092"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ V novém prostředí místo klíčů použijete okno **certifikáty & tajných**
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Funkce, které se nevztahují na Azure AD B2C klienty
 Následující možnosti registrace aplikací Azure AD se nevztahují na Azure AD B2C klienty a nejsou k dispozici:
 - **Role a správci** – nejsou aktuálně k dispozici pro Azure AD B2C.
-- **Branding** – uživatelské rozhraní a přizpůsobení uživatelského rozhraní je nakonfigurované v prostředí **brandingu společnosti** nebo v rámci toku uživatele. Naučte se [přizpůsobit uživatelské rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
+- **Branding** – uživatelské rozhraní a přizpůsobení uživatelského rozhraní je nakonfigurované v prostředí **brandingu společnosti** nebo v rámci toku uživatele. Naučte se [přizpůsobit uživatelské rozhraní v Azure Active Directory B2C](customize-ui-with-html.md).
 - **Ověřování domény vydavatele** – vaše aplikace je zaregistrovaná v *. onmicrosoft.com*, což není ověřená doména. Doména vydavatele se navíc primárně používá pro udělení souhlasu uživatele, která se nevztahují na Azure AD B2C aplikace pro ověřování uživatelů. [Přečtěte si další informace o doméně vydavatele](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Konfigurace tokenu** – token se konfiguruje jako součást uživatelského toku, nikoli aplikace.
 - Prostředí **rychlý Start** v současnosti není pro Azure AD B2C klienty k dispozici.

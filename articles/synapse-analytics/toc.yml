@@ -134,7 +134,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Spravovaná identita pracovního prostoru Synapse
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Praktičtí průvodci
+    - name: Návody
       items:
         - name: Správa a monitorování
           items:
@@ -1095,9 +1095,9 @@
         - name: Použití průvodce bodováním pro vyhrazené fondy SQL
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Trénování modelu bez kódu s využitím Azure AutoML
+        - name: Trénování modelu bez kódu s využitím automatizovaného strojového učení
           href: ./machine-learning/tutorial-automl.md
-        - name: Trénování modelu v Pythonu s využitím Azure AutoML
+        - name: Trénování modelu v Pythonu s využitím automatizovaného strojového učení
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Vytvoření modelu s využitím knihovny Apache Spark MLlib

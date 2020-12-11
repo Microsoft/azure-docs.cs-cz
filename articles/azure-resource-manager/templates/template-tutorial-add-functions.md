@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931040"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107103"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Kurz: Přidání funkcí šablony do šablony ARM
 
@@ -33,11 +33,11 @@ Umístění účtu úložiště je pevně zakódováno pro **východní USA**. J
 
 ## <a name="use-function"></a>Použití funkce
 
-Pokud jste dokončili předchozí kurz v této sérii, už jste použili funkci. Když jste přidali `"[parameters('storageName')]"` , použili jste funkci [Parameters](template-functions-deployment.md#parameters) . Hranaté závorky označují, že syntaxe uvnitř závorek je [výraz šablony](template-expressions.md). Správce prostředků vyřeší syntax místo toho, aby ji znovu nakládala jako hodnota literálu.
+Pokud jste dokončili předchozí kurz v této sérii, už jste použili funkci. Po přidání `"[parameters('storageName')]"` jste použili funkci [Parameters](template-functions-deployment.md#parameters) . Hranaté závorky označují, že syntaxe uvnitř závorek je [výraz šablony](template-expressions.md). Správce prostředků vyřeší syntax místo toho, aby ji znovu nakládala jako hodnota literálu.
 
 Funkce přidávají vaší šabloně flexibilitu pomocí dynamického načítání hodnot během nasazování. V tomto kurzu použijete funkci k získání umístění skupiny prostředků, kterou používáte pro nasazení.
 
-Následující příklad zvýrazní změny pro přidání parametru s názvem **Location**.  Výchozí hodnota parametru volá funkci [Resource](template-functions-resource.md#resourcegroup) . Tato funkce vrací objekt s informacemi o skupině prostředků, která se používá k nasazení. Jedna z vlastností objektu je vlastnost umístění. Když použijete výchozí hodnotu, umístění účtu úložiště má stejné umístění jako skupina prostředků. Prostředky ve skupině prostředků nemusí sdílet stejné umístění. V případě potřeby můžete také zadat jiné umístění.
+Následující příklad zvýrazní změny pro přidání parametru s názvem `location` . Výchozí hodnota parametru volá funkci [Resource](template-functions-resource.md#resourcegroup) . Tato funkce vrací objekt s informacemi o skupině prostředků, která se používá k nasazení. Jedna z vlastností objektu je vlastnost umístění. Když použijete výchozí hodnotu, umístění účtu úložiště má stejné umístění jako skupina prostředků. Prostředky ve skupině prostředků nemusí sdílet stejné umístění. V případě potřeby můžete také zadat jiné umístění.
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
@@ -47,7 +47,7 @@ Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 V předchozích kurzech jste v Východní USA vytvořili účet úložiště, ale skupina prostředků se vytvořila v Střed USA. V tomto kurzu se účet úložiště vytvoří ve stejné oblasti jako skupina prostředků. Použijte výchozí hodnotu pro umístění, takže tuto hodnotu parametru nemusíte zadávat. Musíte zadat nový název účtu úložiště, protože vytváříte účet úložiště v jiném umístění. Použijte například **store2** jako předponu namísto **store1**.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,13 +74,13 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že je prostředek účtu úložiště nasazený a má stejné umístění jako skupina prostředků.

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203805"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108412"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
 
@@ -46,7 +46,7 @@ Element **predikátu** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | Id | Ano | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 | Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
-| HelpText | No | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
+| HelpText | Ne | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
 
 Element **predikát** obsahuje následující prvky:
 
@@ -211,7 +211,7 @@ Element **PredicateReferences** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MatchAtLeast | No | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
+| MatchAtLeast | Ne | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
 
 Element **PredicateReferences** obsahuje následující prvky:
 
@@ -428,4 +428,4 @@ V typu deklarace přidejte element **PredicateValidationReference** a určete id
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [Konfigurovat složitost hesla pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-password-complexity.md) pomocí ověřování predikátů.
+- Naučte se [Konfigurovat složitost hesla pomocí vlastních zásad v Azure Active Directory B2C](password-complexity.md) pomocí ověřování predikátů.

@@ -3,12 +3,12 @@ title: Správa agenta serverů s podporou ARC Azure
 description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serverů s podporou ARC Azure, které jsou agentem počítače připojené.
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130965"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107188"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -160,16 +160,16 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serverů s povol
 
 * **-h nebo--help** -zobrazí dostupné parametry příkazového řádku.
 
-    Pokud například chcete zobrazit podrobnou nápovědu pro parametr **reconnect** , zadejte `azcmagent reconnect -h` . 
+    Pokud například chcete zobrazit podrobnou nápovědu k parametru **připojení** , zadejte `azcmagent connect -h` . 
 
 * **-v nebo--verbose** – Povolit podrobné protokolování
 
 Můžete provést **připojení** a **odpojení** ručně během interaktivního přihlášení nebo automatizovat pomocí stejného instančního objektu, který jste použili k připojování více agentů nebo k Microsoft Identity Platform [Access tokenu](../../active-directory/develop/access-tokens.md). Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou ARC Azure, přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
 
 >[!NOTE]
->Aby bylo možné spustit **azcmagent** , musíte mít oprávnění *root* Access pro počítače se systémem Linux.
+>Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
-### <a name="connect"></a>Připojit
+### <a name="connect"></a>Připojení
 
 Tento parametr určuje prostředek v Azure Resource Manager, který představuje počítač vytvořený v Azure. Prostředek je v předplatném a v zadané skupině prostředků a data o počítači se ukládají v oblasti Azure určené `--location` nastavením. Výchozí název prostředku je název hostitele počítače, pokud není zadaný.
 
@@ -219,8 +219,8 @@ Obě následující metody odeberou agenta, ale neodstraňují složku *C:\Progr
 1. Chcete-li odinstalovat agenta systému Windows z počítače, postupujte takto:
 
     a. Přihlaste se k počítači pomocí účtu, který má oprávnění správce.  
-    b. V **Ovládacích panelech** vyberte **programy a funkce** .  
-    c. V **programech a funkcích** vyberte **Azure Connected Machine agent** , vyberte **odinstalovat** a pak vyberte **Ano** .  
+    b. V **Ovládacích panelech** vyberte **programy a funkce**.  
+    c. V **programech a funkcích** vyberte **Azure Connected Machine agent**, vyberte **odinstalovat** a pak vyberte **Ano**.  
 
     >[!NOTE]
     > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček Instalační služby **AzureConnectedMachineAgent.msi** .
@@ -281,7 +281,7 @@ Pokud plánujete ukončit správu počítače s podpůrnými službami v Azure, 
 
 1. Otevřete servery s podporou ARC Azure pomocí přechodu na [Azure Portal](https://aka.ms/hybridmachineportal).
 
-2. Vyberte počítač v seznamu, vyberte tři tečky ( **...** ) a pak vyberte **Odstranit** .
+2. Vyberte počítač v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.
 
 ## <a name="update-or-remove-proxy-settings"></a>Aktualizovat nebo odebrat nastavení proxy serveru
 

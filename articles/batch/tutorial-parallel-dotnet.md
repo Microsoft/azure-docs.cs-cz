@@ -1,16 +1,16 @@
 ---
-title: Spuštění paralelní úlohy pomocí rozhraní .NET API
+title: Kurz – spuštění paralelní úlohy pomocí rozhraní .NET API
 description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578293"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106525"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -29,7 +29,7 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows.
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Přejděte do adresáře, který obsahuje soubor řešení sady Visual Studio `BatchDotNetFfmpegTutorial.sln`.
 
-Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Například:
+Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Příklad:
 
 ```csharp
 // Batch account credentials
@@ -124,7 +124,7 @@ Když jsou úkoly spuštěné, heat mapa vypadá přibližně takto:
 
 ![Heat mapa fondu](./media/tutorial-parallel-dotnet/pool.png)
 
-Obvyklá doba provádění je přibližně **10 minut** , když aplikaci spouštíte v její výchozí konfiguraci. Vytvoření fondu trvá nejdéle.
+Obvyklá doba provádění je přibližně **10 minut**, když aplikaci spouštíte v její výchozí konfiguraci. Vytvoření fondu trvá nejdéle.
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -317,7 +317,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a ú�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili těmto úkonům:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Přidání balíčku aplikace do účtu Batch
@@ -332,6 +332,3 @@ Další příklady použití rozhraní .NET API k plánování a zpracování ú
 
 > [!div class="nextstepaction"]
 > [Ukázky pro službu Batch v jazyce C#](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-Nastavení proměnné instance LowPriorityNodeCount = 0 a DedicatedNodeCount = 5 opravili problém a umožnili dokončení úlohy.

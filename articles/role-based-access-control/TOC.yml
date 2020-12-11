@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: Rychlé starty
   items:
-    - name: Zobrazení přístupu pro uživatele
+    - name: Kontrola přístupu pro uživatele
       href: check-access.md
     - name: Šablona ARM
       displayName: Resource Manager

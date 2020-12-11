@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840546"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108379"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran
@@ -162,7 +162,7 @@ V Azure AD B2C můžete pracovat s identitou vašich uživatelů, aby se stránk
 
 ![Snímky obrazovky s přizpůsobenou přihlašovací stránkou značky](media/technical-overview/seamless-ux.png)
 
-Informace o přizpůsobení uživatelského rozhraní najdete v tématu věnovaném [přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
+Informace o přizpůsobení uživatelského rozhraní najdete v tématu věnovaném [přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui-with-html.md).
 
 ## <a name="localization"></a>Lokalizace
 
@@ -170,7 +170,7 @@ Přizpůsobení jazyka v Azure AD B2C umožňuje přizpůsobení různých jazyk
 
 ![Tři přihlašovací stránky pro přihlášení zobrazující text uživatelského rozhraní v různých jazycích](media/technical-overview/localization.png)
 
-Podívejte se, jak lokalizace funguje v [přizpůsobení jazyka v Azure Active Directory B2C](user-flow-language-customization.md).
+Podívejte se, jak lokalizace funguje v [přizpůsobení jazyka v Azure Active Directory B2C](language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Přidání vlastní obchodní logiky
 
@@ -221,7 +221,7 @@ Další informace o rolích služby Azure AD, včetně podpory rolí Azure AD B2
 
 Azure AD B2C Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost vašich uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a poskytuje silné ověřování tím, že nabízí řadu snadno použitelných metod ověřování. Uživatelé můžou nebo nemusí být v rámci VÍCEFAKTOROVÉHO ověřování vyučeni na základě rozhodnutí týkajících se konfigurace, která můžete nastavit jako správce.
 
-Podívejte se, jak povolit VÍCEFAKTOROVÉ ověřování v tocích uživatelů v tématu [Povolení vícefaktorového ověřování v Azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
+Podívejte se, jak povolit VÍCEFAKTOROVÉ ověřování v tocích uživatelů v tématu [Povolení vícefaktorového ověřování v Azure Active Directory B2C](multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Uzamčení inteligentního účtu
 
@@ -235,7 +235,7 @@ Další informace o správě nastavení ochrany heslem najdete v tématu [Správ
 
 Při registraci nebo resetování hesla musí vaši uživatelé zadávat heslo, které splňuje pravidla složitosti. Ve výchozím nastavení Azure AD B2C vynutila zásady silného hesla. Azure AD B2C taky nabízí možnosti konfigurace pro určení požadavků na složitost hesel, která vaši zákazníci používají.
 
-Požadavky na složitost hesla můžete nakonfigurovat jak v [toku uživatelů](user-flow-password-complexity.md) , tak i ve [vlastních zásadách](custom-policy-password-complexity.md).
+Požadavky na složitost hesla můžete nakonfigurovat jak v [toku uživatelů](password-complexity.md) , tak i ve [vlastních zásadách](password-complexity.md).
 
 ## <a name="auditing-and-logs"></a>Auditování a protokoly
 

@@ -1,23 +1,23 @@
 ---
 title: Kurz – použití souboru parametrů k nasazení šablony
-description: Použijte soubory parametrů, které obsahují hodnoty, které se mají použít k nasazení šablony Azure Resource Manager.
+description: Použijte soubory parametrů, které obsahují hodnoty, které se mají použít k nasazení šablony Azure Resource Manager (šablona ARM).
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069505"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106763"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: použití souborů parametrů k nasazení šablony ARM
 
 V tomto kurzu se naučíte používat [soubory parametrů](parameter-files.md) k uložení hodnot, které předáte během nasazování. V předchozích kurzech jste v příkazu nasazení použili vložené parametry. Tento přístup pracoval při testování šablony Azure Resource Manager (šablona ARM), ale když je automatizace nasazení snazší, můžete předat sadu hodnot pro vaše prostředí. Soubory parametrů usnadňují zabalení hodnot parametrů pro konkrétní prostředí. V tomto kurzu vytvoříte soubory parametrů pro vývojová a produkční prostředí. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se značek](template-tutorial-add-tags.md), ale není to nutné.
 
@@ -41,23 +41,25 @@ Nemusíte zadávat hodnotu pro každý parametr. Pokud má nespecifikovaný para
 
 V souboru parametrů nemůžete zadat název parametru, který se neshoduje s názvem parametru v šabloně. Pokud jsou k dispozici neznámé parametry, zobrazí se chyba.
 
-V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.dev.jsv**.
+V Visual Studio Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem _azuredeploy.parameters.dev.jsv_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že pro účet úložiště používá Standard_LRS, pojmenuje prostředky s předponou pro **vývoj** a nastaví značku **prostředí** na **dev**.
+Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že používá **Standard_LRS** pro účet úložiště, názvy prostředků s předponou pro **vývoj** a nastaví `Environment` značku na **dev**.
 
-Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.prod.jsv**.
+Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem _azuredeploy.parameters.prod.jsv_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá Standard_GRS pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku **prostředí** na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
+Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá **Standard_GRS** pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku _prostředí_ na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
 K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
 Jako konečný test šablony vytvoříme dvě nové skupiny prostředků. Jednu pro vývojové prostředí a jednu pro produkční prostředí.
+
+Pro proměnné Template a parametr, nahraďte `{path-to-the-template-file}` , `{path-to-azuredeploy.parameters.dev.json}` , a `{path-to-azuredeploy.parameters.prod.json}` složené závorky `{}` pomocí cest k souborům šablon a parametrů.
 
 Nejdřív nasadíme do vývojového prostředí.
 
@@ -128,13 +130,13 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. V tomto kurzu se zobrazí dvě nové skupiny prostředků, které jste nasadili.
 1. Vyberte buď skupinu prostředků, a zobrazte nasazené prostředky. Všimněte si, že odpovídají hodnotám, které jste zadali v souboru parametrů pro toto prostředí.
@@ -142,7 +144,7 @@ Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
-2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. Pokud jste tuto řadu dokončili, máte tři skupiny prostředků pro odstranění – myResourceGroup, myResourceGroupDev a myResourceGroupProd.
+2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků. Pokud jste tuto řadu dokončili, máte tři skupiny prostředků pro odstranění – **myResourceGroup**, **myResourceGroupDev** a **myResourceGroupProd**.
 3. Vyberte název skupiny prostředků.
 4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 

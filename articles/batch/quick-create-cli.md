@@ -1,15 +1,15 @@
 ---
 title: Rychlý Start – spuštění první úlohy služby Batch pomocí Azure CLI
-description: Rychle se naučíte, jak vytvořit účet Batch a spustit dávkovou úlohu pomocí Azure CLI.
+description: V tomto rychlém startu se dozvíte, jak vytvořit účet Batch a spustit dávkovou úlohu pomocí Azure CLI.
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: eb5bb4a627ff26250519651f5e6d47ddd6f5a776
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 297af47b6280381646e654eaededfe8b71a5d874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562283"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106678"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
@@ -35,7 +35,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -72,7 +72,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
-Teď, když máte účet služby Batch, vytvořte ukázkový fond linuxových výpočetních uzlů pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). Následující příkaz vytvoří fond nazvaný *mypool* se 2 uzly velikosti *Standard_A1_v2* , na kterých běží Ubuntu 16.04 LTS. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
+Teď, když máte účet služby Batch, vytvořte ukázkový fond linuxových výpočetních uzlů pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). Následující příkaz vytvoří fond nazvaný *mypool* se 2 uzly velikosti *Standard_A1_v2*, na kterých běží Ubuntu 16.04 LTS. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
  
 ```azurecli-interactive
 az batch pool create \
@@ -105,7 +105,7 @@ az batch job create \
 
 Teď použijte příkaz [az batch task create](/cli/azure/batch/task#az-batch-task-create) pro vytvoření úkolů ke spuštění v této úloze. V tomto příkladu vytvoříte čtyři stejné úkoly. Každý úkol spustí `command-line`, kde se zobrazí proměnné prostředí služby Batch ve výpočetním uzlu, a potom 90 sekund čeká. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
-Následující skript Bash vytvoří 4 paralelní úkoly ( *mytask1* až *mytask4* ).
+Následující skript Bash vytvoří 4 paralelní úkoly (*mytask1* až *mytask4*).
 
 ```azurecli-interactive
 for i in {1..4}
@@ -135,7 +135,7 @@ Výstup tohoto příkazu obsahuje řadu podrobností, ale poznamenejte si `exitC
 
 ## <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-K zobrazení seznamu souborů, které úkol vytvořil ve výpočetním uzlu, použijte příkaz [az batch task file list](/cli/azure/batch/task). Následující příkaz zobrazí seznam souborů, které vytvořil úkol *mytask1* :
+K zobrazení seznamu souborů, které úkol vytvořil ve výpočetním uzlu, použijte příkaz [az batch task file list](/cli/azure/batch/task). Následující příkaz zobrazí seznam souborů, které vytvořil úkol *mytask1*:
 
 ```azurecli-interactive
 az batch task file list \
@@ -166,7 +166,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Například:
+Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Příklad:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

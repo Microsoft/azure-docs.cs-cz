@@ -1,15 +1,15 @@
 ---
-title: Vykreslení scény v cloudu
+title: Kurz – vykreslení scény v cloudu
 description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542384"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106338"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -24,7 +24,7 @@ Azure Batch nabízí možnosti vykreslování v cloudovém měřítku a s platba
 
 V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru se sledováním paprsků [Arnold](https://www.autodesk.com/products/arnold/overview). Fond služby Batch používá bitovou kopii Azure Marketplace s předem nainstalovanými grafickými a vykreslovacími aplikacemi, které poskytují licencování s platbami na základě využití.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  - Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
 
@@ -93,7 +93,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Například:
+Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Příklad:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -278,7 +278,7 @@ Otevřete na svém počítači soubor *dragon.jpg*. Vykreslený obrázek vypadá
 
 ## <a name="scale-the-pool"></a>Škálování fondu
 
-Teď fond upravíte, abyste ho připravili na větší úlohu vykreslování s několika snímky. Služba Batch nabízí řadu způsobů, jak škálovat výpočetní prostředky, včetně [automatického škálování](batch-automatic-scaling.md), které přidává a odebírá uzly v závislosti na měnících se požadavcích úkolů. Pro účely tohoto základního příkladu zvyšte pomocí příkazu [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) počet uzlů s nízkou prioritou ve fondu na *6* :
+Teď fond upravíte, abyste ho připravili na větší úlohu vykreslování s několika snímky. Služba Batch nabízí řadu způsobů, jak škálovat výpočetní prostředky, včetně [automatického škálování](batch-automatic-scaling.md), které přidává a odebírá uzly v závislosti na měnících se požadavcích úkolů. Pro účely tohoto základního příkladu zvyšte pomocí příkazu [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) počet uzlů s nízkou prioritou ve fondu na *6*:
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -298,7 +298,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Například:
+Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Příklad:
 
 ```azurecli-interactive
 az batch task list \
@@ -306,7 +306,7 @@ az batch task list \
     --output table
 ```
 
-K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Například:
+K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Příklad:
 
 ```azurecli-interactive
 az batch task show \
@@ -314,7 +314,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Například:
+Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Příklad:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -346,7 +346,7 @@ V tomto kurzu jste se naučili těmto úkonům:
 > * Škálování fondu a vykreslení scény s více snímky
 > * Stažení vykresleného výstupu
 
-Další informace o vykreslování v cloudovém měřítku najdete v popisu možností služby Batch Rendering. 
+Další informace o vykreslování v cloudovém měřítku najdete v dokumentaci dávkového vykreslování.
 
 > [!div class="nextstepaction"]
 > [Služba Batch Rendering](batch-rendering-service.md)

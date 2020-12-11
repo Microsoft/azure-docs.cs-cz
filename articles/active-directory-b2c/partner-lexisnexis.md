@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928643"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108429"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci LexisNexis s využitím Azure Active Directory B2C
 
@@ -95,7 +95,7 @@ Nastavení aplikace je možné [nakonfigurovat ve službě App Service v Azure](
 
 Toto řešení používá vlastní šablony uživatelského rozhraní, které jsou načteny Azure AD B2C. Tyto šablony uživatelského rozhraní provádí profilování, které se odesílá přímo do služby ThreatMetrix.
 
-Informace o nasazení zahrnutých [souborů uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) do účtu služby Blob Storage najdete v těchto [pokynech](./custom-policy-ui-customization.md#custom-page-content-walkthrough) . Pokyny zahrnují nastavení účtu úložiště BLOB, konfigurace CORS a povolení veřejného přístupu.
+Informace o nasazení zahrnutých [souborů uživatelského rozhraní](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) do účtu služby Blob Storage najdete v těchto [pokynech](./customize-ui-with-html.md#custom-page-content-walkthrough) . Pokyny zahrnují nastavení účtu úložiště BLOB, konfigurace CORS a povolení veřejného přístupu.
 
 Uživatelské rozhraní je založeno na [modré šabloně oceánu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue). Všechny odkazy v uživatelském rozhraní by se měly aktualizovat tak, aby odkazovaly na nasazené umístění. Ve složce uživatelského rozhraní vyhledejte a nahraďte https://yourblobstorage/blobcontainer nasazeným umístěním.
 

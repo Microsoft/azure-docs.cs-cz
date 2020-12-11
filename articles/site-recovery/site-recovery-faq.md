@@ -4,12 +4,12 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369433"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109551"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
 
@@ -23,7 +23,7 @@ Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
 
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Přečtěte si další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -273,6 +273,9 @@ Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků ko
 
 Vzhledem k tomu, že se jedná o další obsah, jsou nejdůležitější snímky konzistentní vzhledem k aplikacím a trvat nejdéle. Pro databázové operační systémy a aplikace, jako je například SQL Server, doporučujeme body obnovení konzistentní vzhledem k aplikacím.
 
+>[!Note]
+>Při vytváření bodů obnovení konzistentních vzhledem k aplikacím dojde v počítači s Windows k chybě, pokud má více než 64 svazků.
+
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaký je dopad bodů obnovení konzistentních vzhledem k aplikacím na výkon aplikace?
 
 Body obnovení konzistentní vzhledem k aplikacím zachytí všechna data v paměti a v procesu. Vzhledem k tomu, že body obnovení zachytí tato data, vyžadují rozhraní, jako služba Stínová kopie svazku ve Windows, aby bylo možné aplikaci neuvést. Pokud je proces zachytávání častý, může to mít vliv na výkon, pokud je zatížení už zaneprázdněné. Nedoporučujeme používat pro úlohy mimo databázi nízkou frekvenci pro body obnovení konzistentní vzhledem k aplikacím. I pro databázová zatížení je k dispozici 1 hodina.
@@ -304,7 +307,7 @@ Ne, Site Recovery bude uchovávat všechny předchozí body obnovení. V závisl
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Jak se po replikaci na virtuálním počítači povolí replikace, jak změním zásady replikace?
 
-Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace**infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
+Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace** infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Má všechny body obnovení úplnou kopii virtuálního počítače nebo rozdílu?
 
@@ -318,7 +321,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?

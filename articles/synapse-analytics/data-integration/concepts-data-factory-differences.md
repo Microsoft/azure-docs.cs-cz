@@ -2,50 +2,45 @@
 title: Rozdíly oproti Azure Data Factory
 description: Přečtěte si, jak se možnosti integrace dat služby Azure synapse Analytics liší od Azure Data Factory
 services: synapse-analytics
-author: shirleywangmsft
+author: kromerm
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.author: shwang
+ms.date: 12/10/2020
+ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a8fd0ef006b246e30c02cfb321c72b4e070f54de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930207"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109143"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 
-Ve službě Azure synapse Analytics jsou možnosti integrace dat, jako jsou kanály synapse a toky dat, založené na Azure Data Factory. Další informace najdete v tématu [co je Azure Data Factory](../../data-factory/introduction.md). Téměř všechny funkce jsou stejné nebo podobné a dokumentace je sdílená mezi těmito dvěma službami. V tomto článku se zvýrazňují a identifikují se aktuální rozdíly mezi Azure Data Factory a Azure synapse.
+Ve službě Azure synapse Analytics jsou možnosti integrace dat, jako jsou kanály synapse a toky dat, založené na Azure Data Factory. Další informace najdete v tématu [co je Azure Data Factory](../../data-factory/introduction.md).
 
-Pokud chcete zjistit, jestli se funkce Azure Data Factory nebo článek vztahuje na Azure synapse, zkontrolujte moniker v horní části článku.
 
-![Platí pro moniker](../media/concepts-data-factory-differences/applies-to-moniker.png "Platí pro moniker")
+## <a name="available-features-in-azure-data-factory-and-azure-synapse-analytics"></a>Dostupné funkce v Azure Data Factory a Azure synapse Analytics
 
-## <a name="features-in-azure-data-factory-not-planned-for-azure-synapse"></a>Funkce v Azure Data Factory nejsou plánované pro Azure synapse
+Níže najdete níže uvedenou tabulku pro dostupnost funkcí:
 
-V Azure Data Factory jsou k dispozici následující funkce, ale nejsou plánovány pro Azure synapse.
+| Kategorie                 | Funkce    |  Azure Data Factory  | Azure Synapse Analytics |
+| ------------------------ | ---------- | :------------------: | :---------------------: |
+| **Integration Runtime**  | Použití SSIS a SSIS Integration Runtime | ✓ | ✗ |
+|                          | Podpora Integration Runtime mezi oblastmi (toky dat) | ✓ | ✗ |
+|                          | Sdílení Integration Runtime | ✓<br><small>*Dá se sdílet napříč různými objekty pro vytváření dat.* | ✗ |
+|                          | Doba do provozu | ✓ | ✗ |
+| **Aktivity kanálů** | Aktivita balíčku SSIS | ✓ | ✗ |
+|                          | Podpora aktivity Power Query | ✓ | ✓ |
+| **Galerie šablon a centrum znalostí** | Šablony řešení | ✓<br><small>*Galerie šablon Azure Data Factory* | ✓<br><small>*Centrum znalostí pro synapse Workspace* |
+| **Integrace úložiště GIT** | Integrace GITU | ✓ | ✓ |
+| **Monitorování**           | Monitorování úloh Sparku pro tok dat | ✗ | ✓<br><small>*Využijte fondy synapse Spark* |
+|                          | Integrace s Azure Monitor | ✓ | ✗ |
 
-* **SSIS balíčky pro životní cyklus a posunutí:** V Azure Data Factory máte možnost naSSIS balíčky a přesouvat je pomocí prostředí SSIS Integration runtime. V pracovních prostorech synapse nejsou k dispozici aktivity SSIS Integration runtime i SSIS pro spuštění balíčku. 
-* **Doba do provozu:** Hodnota TTL (Time to Live) je nastavení v prostředí Azure Integration runtime, které umožňuje clusteru Spark v mapování datových toků, *aby zůstaly* zaplněny po určitou dobu po dokončení toku dat. Tato funkce není k dispozici v pracovních prostorech synapse.
+> [!Note]
+> Hodnota **TTL (Time to Live** ) je Azure Integration Runtimeé nastavení, které umožňuje clusteru Spark *zabývat* po určitou dobu po spuštění toku dat.
+>
 
-## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Funkce Azure synapse nejsou podporované v Azure Data Factory
-
-V Azure synapse jsou k dispozici následující funkce, ale nejsou plánovány pro Azure Data Factory.
-
-* **Monitorování úloh Sparku pro mapování toků dat:** V synapse je modul Spark obsažený v předplatném uživatele, aby si uživatelé mohli zobrazit podrobné protokoly Sparku. V Azure Data Factory dojde k provádění úloh v clusteru Spark Azure Data Factory spravovaném a tyto informace nejsou k dispozici. 
-
-## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>Azure Data Factory funkce, které se chovají jinak v synapse
-
-Následující funkce se chovají odlišně nebo v současnosti neexistují v Azure synapse. 
-
-* **Toky dat tahání:** Aktivita toku dat tahání je v tuto chvíli dostupná jenom v Azure Data Factory.
-* **Galerie šablon řešení:** V Azure Data Factory můžou uživatelé najít šablony kanálu v galerii šablon řešení. V pracovních prostorech synapse obsahuje znalostní centrum jinou sadu šablon spolu s dalšími datovými sadami a skripty SQL. 
-* **Integrace se službou Azure monitor:** Pracovní prostory synapse se neintegrují s Azure Monitor jako Azure Data Factory.
-* **Konfigurace hybridního prostředí Integration Runtime:** V pracovním prostoru synapse nemůže uživatel mít spravovanou virtuální síť IR i Azure IR. Tato funkce je podporovaná v Azure Data Factory.
-* **Sdílení modulu runtime integrace:** Místní prostředí Integration runtime se nedají sdílet mezi synapse pracovními prostory. Tato funkce je podporovaná v Azure Data Factory.
-* **Prostředí Integration runtime pro různé oblasti pro toky dat:** Datové toky nemůžou běžet v prostředí Integration runtime v různých oblastech než synapse pracovní prostor. Tato funkce je podporovaná v Azure Data Factory.
 
 ## <a name="next-steps"></a>Další kroky
 

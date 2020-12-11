@@ -3,12 +3,12 @@ title: Profil a ID uživatele pro použití s Azure Notebooks Preview
 description: Jak vytvořit a spravovat profil uživatele a ID uživatele pomocí Azure Notebooks, které se stávají součástí adresy URL sdílených poznámkových bloků.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831348"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109500"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Váš profil a ID uživatele pro Azure Notebooks Preview
 
@@ -54,11 +54,11 @@ Pokud chcete upravit svůj profil, použijte na stránce profilu příkaz **Upra
 | Profilová fotografie | Obrázek, který se zobrazí na stránce vašeho profilu. |
 | Informace o účtu | Vaše zobrazované jméno, ID uživatele a veřejný e-mailový účet. Tento e-mailový účet poskytuje ostatním uživatelům střední význam pro vás a může se lišit od [účtu](azure-notebooks-user-account.md) , který používáte k přihlášení k Azure Notebooks sám. |
 | Informace o profilu | Vaše poloha, společnost, název úlohy, web a stručný popis. |
-| Profily sociální sítě | ID vašeho GItHubu, Twitteru a Facebooku, pokud je chcete sdílet. |
+| Profily sociální sítě | ID vašeho GitHubu, Twitteru a Facebooku, pokud je chcete sdílet. |
 | Nastavení ochrany osobních údajů | Nabízí dva příkazy:<ul><li>**Exportovat profil**: vytvoří a stáhne soubor *. zip* obsahující všechny informace, které Azure Notebooks ukládá ve vašem profilu, včetně fotografií, informací o profilech a protokolů zabezpečení.</li><li>**Odstranit můj účet**: trvale odstraní všechny vaše osobní údaje uložené v Azure Notebooks.</li></ul> |
-| Povolit funkce webu | Umožňuje řídit aspekty chování Azure Notebooks:<ul><li>**Sjednocený front-end pro poznámkové**bloky: umožňuje rychlejší spuštění poznámkového bloku a lepší trvalost.</li><li>**Spustit v JupyterLab ve výchozím**nastavení: Azure Notebooks poskytuje jednoduché uživatelské rozhraní, které je vhodné pro většinu uživatelů. JupyterLab poskytuje bohatší, ale složitější rozhraní pro zkušené uživatele.</li><li>**Web vNext**: povolí moderní webové rozložení uvedené v této dokumentaci.</li></ul> |
+| Povolit funkce webu | Umožňuje řídit aspekty chování Azure Notebooks:<ul><li>**Sjednocený front-end pro poznámkové** bloky: umožňuje rychlejší spuštění poznámkového bloku a lepší trvalost.</li><li>**Spustit v JupyterLab ve výchozím** nastavení: Azure Notebooks poskytuje jednoduché uživatelské rozhraní, které je vhodné pro většinu uživatelů. JupyterLab poskytuje bohatší, ale složitější rozhraní pro zkušené uživatele.</li><li>**Web vNext**: povolí moderní webové rozložení uvedené v této dokumentaci.</li></ul> |
 
 ## <a name="next-steps"></a>Další kroky  
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a spuštění poznámkového bloku Jupyter pro lineární regresi](tutorial-create-run-jupyter-notebook.md)
+> [Rychlý Start: Export Jupyter Notebook projektu](quickstart-export-jupyter-notebook-project.md)

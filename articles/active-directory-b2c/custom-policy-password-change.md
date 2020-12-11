@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a471f510f60eeb6428c5c4e8ec7cccd1e0804d10
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131747"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108854"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -166,7 +166,7 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
@@ -178,9 +178,9 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 ### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_profile_edit_password_change*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+2. V případě **aplikace** vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 3. Klikněte na **Spustit**. Přihlaste se pomocí účtu, který jste vytvořili dříve. Nyní byste měli mít možnost změnit heslo.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak můžete [nakonfigurovat složitost hesla pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-password-complexity.md).
+- Přečtěte si, jak můžete [nakonfigurovat složitost hesla pomocí vlastních zásad v Azure Active Directory B2C](password-complexity.md).

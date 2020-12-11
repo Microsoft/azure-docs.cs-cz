@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994056"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108548"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Arkose Labs s Azure Active Directory B2C
 
 V tomto kurzu se dozvíte, jak integrovat Azure AD B2C ověřování pomocí Arkose Labs. Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -35,7 +35,7 @@ Následující diagram popisuje, jak se Arkose Labs integrují s Azure AD B2C.
 
 ![Diagram architektury Arkose Labs](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| Krok  | Description |
+| Krok  | Popis |
 |---|---|
 |1     | Uživatel se přihlásí pomocí dříve vytvořeného účtu. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs. Jakmile uživatel tuto výzvu dokončí, pošle se do Arkose Labs stav, ve kterém se vygeneruje token.        |
 |2     |  Arkose Labs pošle token zpátky do Azure AD B2C.       |
@@ -138,7 +138,7 @@ Stáhněte si Git bash a postupujte podle následujících kroků:
 
 5. Nahrajte soubor index.html do úložiště objektů BLOB vytvořené výše.
 
-6. Přejít na **Storage**  >  **Container**  >  **nahrávání** kontejneru úložiště.
+6. Přejít na   >    >  **nahrávání** kontejneru úložiště.
 
 #### <a name="set-up-azure-ad-b2c"></a>Nastavit Azure AD B2C
 
@@ -147,9 +147,9 @@ Stáhněte si Git bash a postupujte podle následujících kroků:
 
 1. Na základě informací [zde](tutorial-create-user-flows.md)vytvořte tok uživatele. Zastavte se, až se dostanete k části **Testování toku uživatele**.
 
-2. Povolte JavaScript v [toku uživatele](user-flow-javascript-overview.md).
+2. Povolte JavaScript v [toku uživatele](javascript-and-page-layout.md).
 
-3. Na stránce stejný tok uživatelů Povolit adresu URL vlastní stránky: Přejít na rozložení **stránky toku uživatele**  >  **page layout**  >  **použít vlastní obsah stránky**  =  **Ano**  >  **Vložit vlastní adresu URL stránky**.
+3. Na stránce stejný tok uživatelů Povolit adresu URL vlastní stránky: Přejít na rozložení **stránky toku uživatele**  >    >  **použít vlastní obsah stránky**  =  **Ano**  >  **Vložit vlastní adresu URL stránky**.
 Tato vlastní adresa URL stránky se získává z umístění souboru index.html v úložišti objektů BLOB.  
 
    ![Snímek obrazovky s adresou URL úložiště Arkose Labs](media/partner-arkose-labs/arkose-storage-url.png)

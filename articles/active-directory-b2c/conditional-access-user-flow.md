@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271535"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109075"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
 
@@ -37,18 +37,18 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Přidání podmíněného přístupu do nového toku uživatele
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
+1. V části **zásady** vyberte **toky uživatelů** a pak vyberte **Nový tok uživatele**.
 1. Na stránce **vytvořit tok uživatele** vyberte typ toku uživatele.
-1. V části **vybrat verzi**vyberte **doporučeno**a pak vyberte **vytvořit**. (Další[informace](user-flow-versions.md) o verzích toku uživatele)
+1. V části **vybrat verzi** vyberte **doporučeno** a pak vyberte **vytvořit**. (Další[informace](user-flow-versions.md) o verzích toku uživatele)
 
     ![Stránka vytvoření toku uživatele v Azure Portal se zvýrazněnými vlastnostmi](./media/tutorial-create-user-flows/select-version.png)
 
 1. Zadejte **název** toku uživatele. Například *signupsignin1*.
 1. V části **Zprostředkovatelé identity** vyberte zprostředkovatele identity, které chcete pro tento tok uživatelů použít.
-2. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA**a potom v části **vynucení MFA** vyberte **podmíněný (doporučeno)**.
+2. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA** a potom v části **vynucení MFA** vyberte **podmíněný (doporučeno)**.
  
    ![Konfigurace vícefaktorového ověřování](media/conditional-access-user-flow/configure-mfa.png)
 
@@ -56,7 +56,7 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 
    ![Konfigurace nastavení podmíněného přístupu](media/conditional-access-user-flow/configure-conditional-access.png)
 
-1. V části **atributy a deklarace identity uživatele** vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více**a pak zvolte možnost atributy a deklarace identity pro **zemi nebo oblast** a **zobrazované jméno**. Vyberte **OK**.
+1. V části **atributy a deklarace identity uživatele** vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více** a pak zvolte možnost atributy a deklarace identity pro **zemi nebo oblast** a **zobrazované jméno**. Vyberte **OK**.
 
     ![Stránka pro výběr atributů a deklarací se třemi vybranými deklaracemi](./media/conditional-access-user-flow/configure-user-attributes-claims.png)
 
@@ -67,19 +67,19 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 > [!NOTE]
 > Stávající tok uživatele musí být verze, která podporuje podmíněný přístup. Tyto verze uživatelských toků jsou označeny jako **Doporučené**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-1. V části **zásady**vyberte **toky uživatelů**. Pak vyberte tok uživatele.
+1. V části **zásady** vyberte **toky uživatelů**. Pak vyberte tok uživatele.
 
 1. Vyberte **vlastnosti** a ujistěte se, že tok uživatele podporuje podmíněný přístup, a to tak, že vybere **vlastnosti** a vyhledá nastavení s označením **podmíněný přístup**.
  
    ![Konfigurace vícefaktorového ověřování a podmíněného přístupu ve vlastnostech](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA**a potom v části **vynucení MFA** vyberte **podmíněný (doporučeno)**.
+1. V části vícefaktorového **ověřování** vyberte požadovanou **metodu MFA** a potom v části **vynucení MFA** vyberte **podmíněný (doporučeno)**.
  
 1. V části **podmíněný přístup** zaškrtněte políčko **vyhovět zásadám podmíněného přístupu** .
 
@@ -96,16 +96,16 @@ Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zás
 - Chcete-li simulovat rizikové přihlašování, Stáhněte si prohlížeč pro mandát a pokuste se přihlásit ke koncovému bodu toku uživatele.
 - Pomocí následujících nastavení [Vytvořte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md):
    
-   - Pro **uživatele a skupiny**vyberte testovacího uživatele (nevybírejte možnost **Všichni uživatelé** nebo jste se mohli zablokovat přihlášení).
-   - U **cloudových aplikací nebo akcí**zvolte **vybrat aplikace**a pak zvolte svoji aplikaci předávající strany.
-   - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední**a **Nízká** úroveň rizika.
-   - V případě **udělení**vyberte možnost **blokovat přístup**.
+   - Pro **uživatele a skupiny** vyberte testovacího uživatele (nevybírejte možnost **Všichni uživatelé** nebo jste se mohli zablokovat přihlášení).
+   - U **cloudových aplikací nebo akcí** zvolte **vybrat aplikace** a pak zvolte svoji aplikaci předávající strany.
+   - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední** a **Nízká** úroveň rizika.
+   - V případě **udělení** vyberte možnost **blokovat přístup**.
 
       ![Detekce rizik](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Spuštění toku uživatele
 
-1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**. V části **aplikace**vyberte *WebApp1*. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**. V části **aplikace** vyberte *WebApp1*. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 
    ![Stránka spustit tok uživatele na portálu s zvýrazněným tlačítkem Spustit uživatele toku](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
@@ -119,4 +119,4 @@ Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zás
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přizpůsobení uživatelského rozhraní v Azure AD B2C toku uživatele](customize-ui-overview.md)
+[Přizpůsobení uživatelského rozhraní v Azure AD B2C toku uživatele](customize-ui-with-html.md)

@@ -1,23 +1,31 @@
 ---
-title: Aktivace dávkové úlohy pomocí Azure Functions
+title: Kurz – aktivace dávkové úlohy pomocí Azure Functions
 description: Kurz – použití rozpoznávání OCR u naskenovaných dokumentů při jejich přidání do objektu BLOB úložiště
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930090"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106378"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Kurz: Aktivace dávkové úlohy pomocí Azure Functions
 
-V tomto kurzu se dozvíte, jak aktivovat dávkovou úlohu pomocí Azure Functions. Provedeme si příklad, ve kterém dokumenty přidané do kontejneru objektů blob Azure Storage mají pro ně použit optické rozpoznávání znaků (OCR) prostřednictvím Azure Batch. Abychom zjednodušili zpracování optického rozpoznávání znaků, nakonfigurujeme funkci Azure, která spustí úlohu dávkového optického rozpoznávání při každém přidání souboru do kontejneru objektů BLOB.
+V tomto kurzu se dozvíte, jak aktivovat dávkovou úlohu pomocí [Azure Functions](../azure-functions/functions-overview.md). Provedeme si příklad, ve kterém dokumenty přidané do kontejneru objektů blob Azure Storage mají pro ně použit optické rozpoznávání znaků (OCR) prostřednictvím Azure Batch. Abychom zjednodušili zpracování optického rozpoznávání znaků, nakonfigurujeme funkci Azure, která spustí úlohu dávkového optického rozpoznávání při každém přidání souboru do kontejneru objektů BLOB. Získáte informace o těchto tématech:
 
-## <a name="prerequisites"></a>Požadavky
+> [!div class="checklist"]
+> * Použití Batch Explorer k vytváření fondů a úloh
+> * Použití Průzkumník služby Storage k vytvoření kontejnerů objektů BLOB a sdíleného přístupového podpisu (SAS)
+> * Vytvoření funkce Azure Function aktivované objektem BLOB
+> * Nahrání vstupních souborů do služby Storage
+> * Monitorování provádění úkolů
+> * Načtení výstupních souborů
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 * Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
@@ -26,7 +34,7 @@ V tomto kurzu se dozvíte, jak aktivovat dávkovou úlohu pomocí Azure Function
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Vytvoření fondu Batch a úlohy Batch pomocí Batch Explorer
 
@@ -37,7 +45,7 @@ V této části použijete Batch Explorer k vytvoření fondu Batch a úlohy Bat
 1. Přihlaste se k Batch Explorer pomocí svých přihlašovacích údajů Azure.
 1. Vytvořte fond tak, že na levé straně vyberete **fondy** a pak tlačítko **Přidat** nad formulář pro hledání. 
     1. Vyberte ID a zobrazované jméno. `ocr-pool`V tomto příkladu budeme používat.
-    1. Nastavte typ škálování na **pevnou velikost**a nastavte počet vyhrazených uzlů na 3.
+    1. Nastavte typ škálování na **pevnou velikost** a nastavte počet vyhrazených uzlů na 3.
     1. Jako operační systém vyberte **Ubuntu 18,04-LTS** .
     1. Vyberte `Standard_f2s_v2` Velikost virtuálního počítače.
     1. Povolte spouštěcí úkol a přidejte příkaz `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Ujistěte se, že jste nastavili identitu uživatele jako **výchozího uživatele úlohy (správce)**, což umožňuje, aby úlohy pro začátek zahrnovaly příkazy `sudo` .
@@ -62,7 +70,7 @@ V tomto příkladu je vstupní kontejner pojmenovaný `input` a je tam, kde se z
     * Vstupní kontejner je místo, kde jsou původně nahrány všechny dokumenty bez optického rozpoznávání znaků.  
     * Výstupní kontejner je místo, kde dávková úloha zapisuje dokumenty s rozpoznáváním OCR.  
 
-Vytvořte sdílený přístupový podpis pro svůj výstupní kontejner v Průzkumník služby Storage. Provedete to tak, že kliknete pravým tlačítkem na výstupní kontejner a vyberete **získat sdílený přístupový podpis...**. V části **oprávnění**zaškrtněte **zapisovat**. Žádná další oprávnění nejsou nezbytná.  
+Vytvořte sdílený přístupový podpis pro svůj výstupní kontejner v Průzkumník služby Storage. Provedete to tak, že kliknete pravým tlačítkem na výstupní kontejner a vyberete **získat sdílený přístupový podpis...**. V části **oprávnění** zaškrtněte **zapisovat**. Žádná další oprávnění nejsou nezbytná.  
 
 ## <a name="create-an-azure-function"></a>Vytvoření funkce Azure Function
 
@@ -70,7 +78,7 @@ V této části vytvoříte funkci Azure, která aktivuje dávkovou úlohu OCR p
 
 1. Pomocí postupu v části [Vytvoření funkce aktivované službou Azure Blob Storage](../azure-functions/functions-create-storage-blob-triggered-function.md) vytvořte funkci.
     1. Po zobrazení výzvy k zadání účtu úložiště použijte stejný účet úložiště, který jste propojili s vaším účtem Batch.
-    1. V případě **zásobníků modulu runtime**vyberte .NET. Napíšeme naši funkci v jazyce C#, abychom využili sadu Batch .NET SDK.
+    1. V případě **zásobníků modulu runtime** vyberte .NET. Napíšeme naši funkci v jazyce C#, abychom využili sadu Batch .NET SDK.
 1. Jakmile je funkce aktivovaná objektem BLOB vytvořená, použijte [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) ve funkci a z GitHubu.
     * `run.csx` se spustí při přidání nového objektu blob do vstupního kontejneru objektů BLOB.
     * `function.proj` obsahuje seznam externích knihoven v kódu funkce, například sadu Batch .NET SDK.
@@ -97,9 +105,13 @@ Chcete-li stáhnout výstupní soubory z Průzkumník služby Storage do místn�
 > [!TIP]
 > Stažené soubory jsou v případě, že jsou otevřeny v čtečce PDF, prohledávatelné.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. V zobrazení účtu vyberte **Fondy** a název fondu. Vyberte **Odstranit**. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. Výstupní soubory ale zůstanou v účtu úložiště. Pokud už je nepotřebujete, můžete také odstranit účet Batch a účet úložiště.
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili: 
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Použití Batch Explorer k vytváření fondů a úloh
@@ -109,6 +121,10 @@ V tomto kurzu jste se naučili:
 > * Monitorování provádění úkolů
 > * Načtení výstupních souborů
 
-* Další příklady použití rozhraní .NET API k plánování a zpracování úloh služby Batch najdete v [ukázkách na GitHubu](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* Další Azure Functions triggery, které můžete použít ke spouštění dávkových úloh, najdete v [dokumentaci k Azure Functions](../azure-functions/functions-triggers-bindings.md).
+Pokračujte tím, že prozkoumáte aplikace pro vykreslování dostupné prostřednictvím Batch Explorer v části **Galerie** . Pro každou aplikaci je k dispozici několik šablon a jejich počet se časem bude rozšiřovat. Pro Blender například existují šablony, které rozdělí obrázek na čtverce, aby bylo možné části obrázku vykreslit paralelně.
+
+Další příklady použití rozhraní .NET API k plánování a zpracování úloh služby Batch najdete v ukázkách na GitHubu.
+
+> [!div class="nextstepaction"]
+> [Ukázky pro službu Batch v jazyce C#](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

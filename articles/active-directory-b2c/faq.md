@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951787"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108718"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -78,7 +78,7 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce.
 1. Otevřete okno **Azure Active Directory**.
-1. Klikněte na kartu **vlastnosti** .
+1. Klikněte na kartu **Properties** (Vlastnosti).
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
 
@@ -124,7 +124,7 @@ Ne, Azure AD B2C nepodporuje stejnou sadu sestav jako Azure AD Premium. Existuje
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Můžu lokalizovat uživatelské rozhraní stránek obsluhované Azure AD B2C? Jaké jazyky se podporují?
 
-Ano, podívejte se na téma [přizpůsobení jazyka](user-flow-language-customization.md). Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
+Ano, podívejte se na téma [přizpůsobení jazyka](language-customization.md). Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Můžu vlastní adresy URL používat na přihlašovacích a přihlašovacích stránkách, které obsluhuje Azure AD B2C? Například je možné změnit adresu URL z contoso.b2clogin.com na login.contoso.com?
 

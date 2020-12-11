@@ -1,16 +1,16 @@
 ---
-title: Spuštění paralelní úlohy pomocí rozhraní Python API
+title: Kurz – spuštění paralelní úlohy pomocí rozhraní Python API
 description: Kurz – Zpracování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch Python
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853326"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106508"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
@@ -28,7 +28,7 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python verze 2.7 nebo 3.3 nebo novější](https://www.python.org/downloads/)
 
@@ -60,7 +60,7 @@ Ve prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Například:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Příklad:
 
 
 ```Python
@@ -268,7 +268,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a ú�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili těmto úkonům:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Ověření pomocí účtů Batch a Storage

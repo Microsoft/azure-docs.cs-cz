@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontroleru dat pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
-description: Vytvořte řadič dat ARC Azure na typickém clusteru s více uzly Kubernetes, který jste už vytvořili pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
+title: Vytvoření kontroleru dat pomocí Azure Data CLI (azdata)
+description: Vytvořte řadič dat ARC Azure na typickém clusteru s více uzly Kubernetes, který jste už vytvořili pomocí Azure Data CLI (azdata).
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 94f347cc24c675c69c69dad6a7d7a796b395c1a6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f00cd1ec9c2900998596df3baded562059012658
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493607"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107293"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Vytvořte řadič dat ARC Azure pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -54,32 +54,144 @@ Můžete zkontrolovat, že máte aktuální připojení Kubernetes a potvrdit ak
 
 ```console
 kubectl get namespace
-
 kubectl config current-context
 ```
+
+### <a name="connectivity-modes"></a>Režimy připojení
+
+Jak je popsáno v tématu [režimy připojení a požadavky](https://docs.microsoft.com/azure/azure-arc/data/connectivity), může být nasazený řadič dat Azure ARC buď v `direct` `indirect` režimu připojení, nebo. V `direct` režimu připojení se data o využití automaticky a do Azure se odesílají do Azure. V tomto článku příklady určují `direct` režim připojení následujícím způsobem:
+
+   ```console
+   --connectivity-mode direct
+   ```
+
+   Pokud chcete vytvořit kontrolér s `indirect` režimem připojení, aktualizujte skripty v příkladu, jak je uvedeno níže:
+
+   ```console
+   --connectivity-mode indirect
+   ```
+
+#### <a name="create-service-principal"></a>Vytvoření instančního objektu
+
+Pokud nasazujete řadič dat ARC Azure pomocí `direct` režimu připojení, jsou pro připojení Azure vyžadovány přihlašovací údaje instančního objektu. Instanční objekt slouží k odesílání dat o využití a metrikách. 
+
+Pomocí těchto příkazů vytvořte objekt služby nahrávání metrik:
+
+> [!NOTE]
+> Vytvoření instančního objektu vyžaduje [určitá oprávnění v Azure](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
+
+Chcete-li vytvořit instanční objekt, aktualizujte následující příklad. Nahraďte `<ServicePrincipalName>` názvem objektu služby a spusťte příkaz:
+
+```azurecli
+az ad sp create-for-rbac --name <ServicePrincipalName>
+``` 
+
+Pokud jste instanční objekt dříve vytvořili a stačí získat aktuální přihlašovací údaje, spusťte následující příkaz, kterým přihlašovací údaje resetujete.
+
+```azurecli
+az ad sp credential reset --name <ServicePrincipalName>
+```
+
+Pokud například chcete vytvořit instanční objekt s názvem `azure-arc-metrics` , spusťte následující příkaz.
+
+```console
+az ad sp create-for-rbac --name azure-arc-metrics
+```
+
+Příklad výstupu:
+
+```output
+"appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
+"displayName": "azure-arc-metrics",
+"name": "http://azure-arc-metrics",
+"password": "5039d676-23f9-416c-9534-3bd6afc78123",
+"tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
+```
+
+Uložte `appId` hodnoty, `password` a `tenant` v proměnné prostředí pro pozdější použití. 
+
+#### <a name="save-environment-variables-in-windows"></a>Uložení proměnných prostředí ve Windows
+
+```console
+SET SPN_CLIENT_ID=<appId>
+SET SPN_CLIENT_SECRET=<password>
+SET SPN_TENANT_ID=<tenant>
+```
+
+#### <a name="save-environment-variables-in-linux-or-macos"></a>Uložení proměnných prostředí v systému Linux nebo macOS
+
+```console
+export SPN_CLIENT_ID='<appId>'
+export SPN_CLIENT_SECRET='<password>'
+export SPN_TENANT_ID='<tenant>'
+```
+
+#### <a name="save-environment-variables-in-powershell"></a>Uložení proměnných prostředí v PowerShellu
+
+```console
+$Env:SPN_CLIENT_ID="<appId>"
+$Env:SPN_CLIENT_SECRET="<password>"
+$Env:SPN_TENANT_ID="<tenant>"
+```
+
+Po vytvoření instančního objektu přiřaďte instančnímu objektu příslušnou roli. 
+
+### <a name="assign-roles-to-the-service-principal"></a>Přiřazení rolí k instančnímu objektu
+
+Spuštěním tohoto příkazu přiřaďte instanční objekt k `Monitoring Metrics Publisher` roli v předplatném, kde jsou umístěny prostředky vaší instance databáze:
+
+#### <a name="run-the-command-on-windows"></a>Spuštění příkazu ve Windows
+
+> [!NOTE]
+> Při spuštění z prostředí systému Windows je třeba použít pro názvy rolí dvojité uvozovky.
+
+```azurecli
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-on-linux-or-macos"></a>Spuštění příkazu v systému Linux nebo macOS
+
+```azurecli
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-in-powershell"></a>Spuštění příkazu v PowerShellu
+
+```powershell
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+```output
+{
+  "canDelegate": null,
+  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
+  "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
+  "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
+  "principalType": "ServicePrincipal",
+  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
+  "scope": "/subscriptions/<Subscription ID>",
+  "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+S instančním objektem přiřazeným k příslušné roli a nastavením proměnných prostředí můžete pokračovat v vytváření kontroleru dat. 
 
 ## <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
 > [!NOTE]
 > `--namespace`V níže uvedených příkladech můžete použít jinou hodnotu parametru příkazu azdata ARC DC Create, ale nezapomeňte použít tento název oboru názvů pro `--namespace parameter` všechny ostatní příkazy níže.
 
-Postupujte podle příslušné části v závislosti na cílové platformě ke konfiguraci vašeho vytvoření.
-
-[Vytvoření ve službě Azure Kubernetes (AKS)](#create-on-azure-kubernetes-service-aks)
-
-[Vytvoření v modulu AKS v centru Azure Stack](#create-on-aks-engine-on-azure-stack-hub)
-
-[Vytvoření AKS v systému Azure Stack HCI](#create-on-aks-on-azure-stack-hci)
-
-[Vytvoření v Azure Red Hat OpenShift (ARO)](#create-on-azure-red-hat-openshift-aro)
-
-[Vytvoření na platformě Red Hat OpenShift Container Platform (OCP)](#create-on-red-hat-openshift-container-platform-ocp)
-
-[Vytvoření v open source, Kubernetes pro odesílání dat (kubeadm)](#create-on-open-source-upstream-kubernetes-kubeadm)
-
-[Vytvoření ve službě AWS elastické Kubernetes (EKS)](#create-on-aws-elastic-kubernetes-service-eks)
-
-[Vytvoření ve službě Google Cloud Kubernetes Engine (GKE)](#create-on-google-cloud-kubernetes-engine-service-gke)
+- [Vytvoření ve službě Azure Kubernetes (AKS)](#create-on-azure-kubernetes-service-aks)
+- [Vytvoření v modulu AKS v centru Azure Stack](#create-on-aks-engine-on-azure-stack-hub)
+- [Vytvoření AKS v systému Azure Stack HCI](#create-on-aks-on-azure-stack-hci)
+- [Vytvoření v Azure Red Hat OpenShift (ARO)](#create-on-azure-red-hat-openshift-aro)
+- [Vytvoření na platformě Red Hat OpenShift Container Platform (OCP)](#create-on-red-hat-openshift-container-platform-ocp)
+- [Vytvoření v open source, Kubernetes pro odesílání dat (kubeadm)](#create-on-open-source-upstream-kubernetes-kubeadm)
+- [Vytvoření ve službě AWS elastické Kubernetes (EKS)](#create-on-aws-elastic-kubernetes-service-eks)
+- [Vytvoření ve službě Google Cloud Kubernetes Engine (GKE)](#create-on-google-cloud-kubernetes-engine-service-gke)
 
 ### <a name="create-on-azure-kubernetes-service-aks"></a>Vytvoření ve službě Azure Kubernetes (AKS)
 
@@ -88,10 +200,10 @@ Ve výchozím nastavení používá profil nasazení AKS `managed-premium` tří
 Pokud se chystáte použít `managed-premium` jako třídu úložiště, můžete spustit následující příkaz a vytvořit tak řadič dat. Zástupné symboly v příkazu nahraďte názvem skupiny prostředků, ID předplatného a umístěním Azure.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Pokud si nejste jistí, jakou třídu úložiště chcete použít, měli byste použít `default` třídu úložiště, která je podporovaná bez ohledu na typ používaného virtuálního počítače. Neposkytuje jenom nejrychlejší výkon.
@@ -99,10 +211,10 @@ Pokud si nejste jistí, jakou třídu úložiště chcete použít, měli byste 
 Pokud chcete použít `default` třídu úložiště, můžete spustit tento příkaz:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -114,10 +226,10 @@ Ve výchozím nastavení používá profil nasazení `managed-premium` třídu �
 Spuštěním následujícího příkazu můžete vytvořit řadič dat pomocí třídy úložiště Managed-Premium:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Pokud si nejste jistí, jakou třídu úložiště chcete použít, měli byste použít `default` třídu úložiště, která je podporovaná bez ohledu na typ používaného virtuálního počítače. V centru Azure Stack se disky Premium a standardní disky zálohují stejnou infrastrukturou úložiště. Proto se očekává, že budou poskytovat stejný obecný výkon, ale s různými limity IOPS.
@@ -125,10 +237,10 @@ Pokud si nejste jistí, jakou třídu úložiště chcete použít, měli byste 
 Pokud chcete použít `default` třídu úložiště, můžete spustit tento příkaz.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -140,10 +252,10 @@ Ve výchozím nastavení používá profil nasazení třídu úložiště s náz
 Spuštěním následujícího příkazu můžete vytvořit řadič dat pomocí `default` třídy úložiště a typu služby `LoadBalancer` .
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -151,38 +263,93 @@ Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitori
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Vytvoření v Azure Red Hat OpenShift (ARO)
 
-Pokud chcete na Azure Red Hat OpenShift vytvořit řadič dat, budete muset pro svůj cluster spustit následující příkazy a zmírnit tak omezení zabezpečení. Jedná se o dočasný požadavek, který bude v budoucnu odstraněn.
-> [!NOTE]
->   Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
+#### <a name="apply-the-scc"></a>Použít SCC
 
-Nejdřív Stáhněte omezení vlastního kontextu zabezpečení (SCC) z [GitHubu](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) a použijte ho pro svůj cluster.
+Před vytvořením řadiče dat v Azure Red Hat OpenShift budete muset použít určitá omezení kontextu zabezpečení (SCC). Pro verzi Preview tyto omezení zabezpečení neuvolní. Budoucí vydání budou poskytovat aktualizované SCC.
 
-Chcete-li vytvořit řadič dat, můžete spustit následující příkaz:
-> [!NOTE]
->   Použijte stejný obor názvů, a to v `oc adm policy add-scc-to-user` předchozích příkazech. Příklad je `arc` .
+1. Stáhněte si omezení vlastního kontextu zabezpečení (SCC). Použijte jednu z následujících možností: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` Následující příkaz stáhne oblouk-data-SCC. yaml:
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. Vytvořte SCC.
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. Použijte SCC pro účet služby.
+
+   > [!NOTE]
+   > Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+
+#### <a name="create-custom-deployment-profile"></a>Vytvořit vlastní profil nasazení
+
+Použijte profil `azure-arc-azure-openshift` pro Azure RedHat Open Shift.
 
 ```console
-azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
+```
+
+#### <a name="create-data-controller"></a>Vytvoření kontroleru dat
+
+Chcete-li vytvořit řadič dat, můžete spustit následující příkaz:
+
+> [!NOTE]
+> Použijte stejný obor názvů, a to v `oc adm policy add-scc-to-user` předchozích příkazech. Příklad je `arc` .
+
+```console
+azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example
-#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
 
 ### <a name="create-on-red-hat-openshift-container-platform-ocp"></a>Vytvoření na platformě Red Hat OpenShift Container Platform (OCP)
 
-
 > [!NOTE]
 > Pokud používáte platformu Red Hat OpenShift Container Platform v Azure, doporučuje se použít nejnovější dostupnou verzi.
 
-Pokud chcete na platformě Red Hat OpenShift vytvořit řadič dat, budete muset pro svůj cluster spustit následující příkazy a zmírnit tak omezení zabezpečení. Jedná se o dočasný požadavek, který bude v budoucnu odstraněn.
-> [!NOTE]
->   Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
+#### <a name="apply-the-scc"></a>Použít SCC
 
-```console
-oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-```
+Než vytvoříte řadič dat na Red Hat OCP, budete muset použít určitá omezení kontextu zabezpečení (SCC). Pro verzi Preview tyto omezení zabezpečení neuvolní. Budoucí vydání budou poskytovat aktualizované SCC.
+
+1. Stáhněte si omezení vlastního kontextu zabezpečení (SCC). Použijte jednu z následujících možností: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` Následující příkaz stáhne oblouk-data-SCC. yaml:
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. Vytvořte SCC.
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. Použijte SCC pro účet služby.
+
+   > [!NOTE]
+   > Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+#### <a name="determine-storage-class"></a>Určení třídy úložiště
 
 Také budete muset určit, kterou třídu úložiště použít, spuštěním následujícího příkazu.
 
@@ -190,18 +357,17 @@ Také budete muset určit, kterou třídu úložiště použít, spuštěním n�
 kubectl get storageclass
 ```
 
-Nejdřív Začněte vytvořením nového souboru s vlastním profilem nasazení na základě profilu nasazení Azure-ARC-OpenShift spuštěním následujícího příkazu. Tento příkaz vytvoří adresář `custom` v aktuálním pracovním adresáři a vlastním souboru profilu nasazení `control.json` v tomto adresáři.
+#### <a name="create-custom-deployment-profile"></a>Vytvořit vlastní profil nasazení
+
+Spuštěním následujícího příkazu vytvořte nový soubor vlastního profilu nasazení na základě `azure-arc-openshift` profilu nasazení. Tento příkaz vytvoří adresář `custom` v aktuálním pracovním adresáři a vlastním souboru profilu nasazení `control.json` v tomto adresáři.
 
 Použijte profil `azure-arc-openshift` pro OpenShift kontejnerové platformy.
 
 ```console
 azdata arc dc config init --source azure-arc-openshift --path ./custom
 ```
-Použijte profil `azure-arc-azure-openshift` pro Azure RedHat Open Shift.
 
-```console
-azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
-```
+#### <a name="set-storage-class"></a>Nastavení třídy úložiště 
 
 Teď v následujícím příkazu nastavte požadovanou třídu úložiště tak, že nahradíte `<storageclassname>` název třídy úložiště, která se má použít, a to tak, že se určí spuštěním `kubectl get storageclass` příkazu výše.
 
@@ -214,13 +380,17 @@ azdata arc dc config replace --path ./custom/control.json --json-values "spec.st
 #azdata arc dc config replace --path ./custom/control.json --json-values "spec.storage.logs.className=mystorageclass"
 ```
 
-Ve výchozím nastavení používá profil nasazení Azure-ARC-OpenShift `NodePort` jako typ služby. Pokud používáte cluster OpenShift, který je integrovaný s nástrojem pro vyrovnávání zatížení, můžete změnit konfiguraci tak, aby používala typ služby Vyrovnávání zatížení, a to pomocí následujícího příkazu:
+#### <a name="set-loadbalancer-optional"></a>Nastavit nástroj pro vyrovnávání zatížení (volitelné)
+
+Ve výchozím nastavení `azure-arc-openshift` používá profil nasazení `NodePort` jako typ služby. Pokud používáte cluster OpenShift, který je integrovaný s nástrojem pro vyrovnávání zatížení, můžete změnit konfiguraci tak, aby používala `LoadBalancer` typ služby, a to pomocí následujícího příkazu:
 
 ```console
 azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.services[*].serviceType=LoadBalancer"
 ```
 
-Pokud používáte OpenShift, můžete chtít spustit s výchozími zásadami zabezpečení v OpenShift nebo chcete obecně uzamknout prostředí z více než typických. Volitelně můžete zvolit, že chcete zakázat některé funkce pro minimalizaci oprávnění potřebných v době nasazení a v době spuštění spuštěním následujících příkazů.
+#### <a name="verify-security-policies"></a>Ověření zásad zabezpečení
+
+Při použití OpenShift můžete chtít spustit s výchozími zásadami zabezpečení v OpenShift nebo chcete obecně uzamknout prostředí z více než typických. Volitelně můžete zvolit, že chcete zakázat některé funkce pro minimalizaci oprávnění potřebných v době nasazení a v době spuštění spuštěním následujících příkazů.
 
 Tento příkaz zakáže kolekce metrik o luskech. Pokud tuto funkci zakážete, nebudete moct zobrazit metriky o luskech v řídicích panelech Grafana. Platí výchozí hodnota.
 
@@ -239,7 +409,10 @@ Tento příkaz zakáže možnost převzít výpisy paměti pro účely řešení
 azdata arc dc config replace --path ./custom/control.json --json-values spec.security.allowDumps=false
 ```
 
+#### <a name="create-data-controller"></a>Vytvoření kontroleru dat
+
 Nyní jste připraveni vytvořit řadič dat pomocí následujícího příkazu.
+
 > [!NOTE]
 >   Použijte stejný obor názvů, a to v `oc adm policy add-scc-to-user` předchozích příkazech. Příklad je `arc` .
 
@@ -248,10 +421,10 @@ Nyní jste připraveni vytvořit řadič dat pomocí následujícího příkazu.
 
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -292,10 +465,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 Nyní jste připraveni vytvořit řadič dat pomocí následujícího příkazu.
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -307,10 +480,10 @@ Ve výchozím nastavení je třída úložiště EKS `gp2` a typ služby je `Loa
 Spuštěním následujícího příkazu vytvořte řadič dat pomocí zadaného profilu nasazení EKS.
 
 ```console
-azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).
@@ -322,10 +495,10 @@ Ve výchozím nastavení je třída úložiště GKE `standard` a typ služby je
 Spuštěním následujícího příkazu vytvořte řadič dat pomocí zadaného profilu nasazení GKE.
 
 ```console
-azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Po spuštění příkazu pokračujte a [Monitorujte stav vytváření](#monitoring-the-creation-status).

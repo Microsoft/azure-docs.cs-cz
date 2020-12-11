@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015326"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107426"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se Azure Active Directory sestav
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: teď používáme `https://graph.windows.net/<tenant-name>/reports/` rozhraní API koncových bodů k vyžádání sestav zabezpečení Azure AD (konkrétní typy detekcí, jako jsou nevrácená pověření nebo přihlášení z anonymních IP adres) do našich systémů vytváření sestav prostřednictvím kódu programu. Co mám přepnout na?**
 
-**A:**  [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)můžete použít   k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), což je standard Microsoftu pro taková rozhraní api jako Microsoft 365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
+**A:** [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/howto-identity-protection-graph-api.md) můžete použít k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), což je standard Microsoftu pro taková rozhraní api jako Microsoft 365 nebo Azure AD. To znamená, že požadovaná práce může buď rozšířila vaše aktuální Microsoft Graph investice, nebo vám umožní začít přejít na tuto novou standardní platformu.
 
 ---
 
@@ -49,7 +49,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: jak brzy bych po získání licence na verzi Premium viděli data o aktivitách?**
 
-**A:** Pokud již máte data o aktivitách jako bezplatnou licenci, pak ji můžete okamžitě zobrazit. Pokud nemáte žádná data, pak se data budou zobrazovat v sestavách za dobu jednoho nebo dvou dnů.
+**A:** Pokud již máte data o aktivitách jako bezplatnou licenci, pak ji můžete okamžitě zobrazit. Pokud nemáte žádná data, bude trvat až 3 dny, než se data zobrazí v sestavách.
 
 ---
 

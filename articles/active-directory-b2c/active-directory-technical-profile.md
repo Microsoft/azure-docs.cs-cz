@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201510"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109109"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -60,9 +60,9 @@ Následující příklad ukazuje technický profil pro **AAD-Common** :
 
 Element InputClaims obsahuje deklaraci identity, která se používá k vyhledání účtu v adresáři, nebo vytvoření nového. Ve vstupní kolekci deklarací pro všechny technické profily služby Azure AD musí existovat přesně jeden element InputClaim. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory.
 
-Pokud chcete číst, aktualizovat nebo odstranit existující uživatelský účet, vstupní deklarace identity je klíč, který jedinečně identifikuje účet v adresáři služby Azure AD. Například **objectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username**nebo **alternativeSecurityId**. 
+Pokud chcete číst, aktualizovat nebo odstranit existující uživatelský účet, vstupní deklarace identity je klíč, který jedinečně identifikuje účet v adresáři služby Azure AD. Například **objectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username** nebo **alternativeSecurityId**. 
 
-Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames. EmailAddress**nebo **signInNames. username**. Pro federovaný účet: **alternativeSecurityId**.
+Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames. EmailAddress** nebo **signInNames. username**. Pro federovaný účet: **alternativeSecurityId**.
 
 Element [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
 
@@ -249,11 +249,11 @@ Následující technický profil odstraní účet uživatele sociální sítě p
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
-| ApplicationObjectId | No | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |
-| ClientId | No | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md) . |
-| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
+| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |
+| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md) . |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  
@@ -261,15 +261,15 @@ Následující nastavení lze použít ke konfiguraci chybové zprávy, která s
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | No | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
-| UserMessageIfClaimsPrincipalDoesNotExist | No | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |
+| UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na následující článek, například používání technického profilu Azure AD:
 
-- [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](configure-user-input.md)
 
 
 

@@ -1,44 +1,45 @@
 ---
-title: Kurz – použití klientské knihovny Azure Batch pro Node.js
+title: Použití klientské knihovny Azure Batch pro Node.js
 description: Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js.
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850604"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106695"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
 Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](/javascript/api/overview/azure/batch). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
 Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá se také, že máte nastavený účet Azure s přístupovými právy k vytvoření služeb Batch a Storage.
 
 Doporučujeme, abyste si přečetli článek [Technický přehled služby Azure Batch](batch-technical-overview.md), než budete postupovat podle kroků popsaných v tomto článku.
 
-## <a name="the-tutorial-scenario"></a>Scénář tohoto kurzu
-Podívejme se na scénář pracovního postupu služby Batch. Máme jednoduchý skript napsaný v Pythonu, který z kontejneru služby Azure Blob Storage stáhne všechny soubory CSV a převede je do formátu JSON. Pokud chceme paralelně zpracovávat více kontejnerů účtu úložiště, můžeme skript nasadit jako úlohu služby Azure Batch.
+## <a name="understand-the-scenario"></a>Vysvětlení scénáře
 
-## <a name="azure-batch-architecture"></a>Architektura služby Azure Batch
+Tady máme jednoduchý skript napsaný v Pythonu, který stáhne všechny soubory CSV z kontejneru úložiště objektů BLOB v Azure a převede je na JSON. Pokud chceme paralelně zpracovávat více kontejnerů účtu úložiště, můžeme skript nasadit jako úlohu služby Azure Batch.
+
+## <a name="azure-batch-architecture"></a>Architektura Azure Batch
+
 Následující diagram znázorňuje možnost škálování skriptu Pythonu pomocí služby Azure Batch a klienta Node.js.
 
-![Scénář služby Azure Batch](./media/batch-nodejs-get-started/BatchScenario.png)
+![Diagram znázorňující architekturu scénáře](./media/batch-nodejs-get-started/BatchScenario.png)
 
 Klient Node.js nasadí dávkovou úlohu s přípravným úkolem (podrobně si ho popíšeme později) a sadou úkolů v závislosti na počtu kontejnerů v účtu úložiště. Skripty si můžete stáhnout z úložiště GitHub.
 
-* [Node.js](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-* [Skripty prostředí pro přípravný úkol](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [Procesor formátu CSV do formátu JSON v Pythonu](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+- [Skripty prostředí pro přípravný úkol](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+- [Procesor formátu CSV do formátu JSON v Pythonu](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > Klient Node.js na uvedeném odkazu neobsahuje konkrétní kód umožňující nasadit ho jako aplikaci Azure Function App. Na následujících odkazech najdete pokyny k jejímu vytvoření.
 > - [Vytvoření aplikace funkcí](../azure-functions/functions-create-first-azure-function.md)
 > - [Vytvoření funkce pro aktivaci časovače](../azure-functions/functions-bindings-timer.md)
->
->
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 
@@ -54,8 +55,6 @@ Tento příkaz nainstaluje nejnovější verzi sady azure-batch node SDK.
 
 >[!Tip]
 > V aplikaci Azure Function App můžete spouštět příkazy npm install z konzoly Kudu na kartě Nastavení funkce Azure. V tomto případě k instalaci sady SDK služby Azure Batch pro Node.js.
->
->
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Krok 2: Vytvoření účtu Azure Batch
 
@@ -78,6 +77,7 @@ Každý účet Batch má odpovídající přístupové klíče. Tyto klíče jso
 Zkopírujte a uložte klíč, který použijete v dalších krocích.
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>Krok 3: Vytvoření klienta služby Azure Batch
+
 Následující fragment kódu nejprve importuje modul Node.js azure-batch a pak vytvoří klienta služby Batch. Nejprve musíte vytvořit objekt SharedKeyCredentials s klíčem účtu Batch, který jste zkopírovali v předchozím kroku.
 
 ```nodejs
@@ -109,19 +109,16 @@ Podívejte se na snímek obrazovky:
 
 ![Identifikátor URI služby Azure Batch](./media/batch-nodejs-get-started/azurebatchuri.png)
 
-
-
 ### <a name="step-4-create-an-azure-batch-pool"></a>Krok 4: Vytvoření fondu služby Azure Batch
+
 Fond služby Azure Batch se skládá z několika virtuálních počítačů (označovaných také jako uzly služby Batch). Služba Azure Batch do uzlů nasazuje úkoly a spravuje je. Pro váš fond můžete definovat následující parametry konfigurace.
 
-* Typ image virtuálních počítačů
-* Velikost uzlů virtuálních počítačů
-* Počet uzlů virtuálních počítačů
+- Typ image virtuálních počítačů
+- Velikost uzlů virtuálních počítačů
+- Počet uzlů virtuálních počítačů
 
-> [!Tip]
+> [!TIP]
 > Velikost a počet uzlů virtuálních počítačů úzce souvisí s počtem úkolů, které chcete paralelně spouštět, a se samotnými úkoly. K určení ideálního počtu a velikosti doporučujeme otestovat různé možnosti.
->
->
 
 Následující fragment kódu vytvoří objekty parametrů konfigurace.
 
@@ -139,10 +136,8 @@ var vmSize = "STANDARD_F4"
 var numVMs = 4
 ```
 
-> [!Tip]
+> [!TIP]
 > Seznam imagí virtuálních počítačů s Linuxem, které jsou dostupné pro Azure Batch, a ID jejich skladových jednotek (SKU) najdete v tématu se [seznamem imagí virtuálních počítačů](batch-linux-nodes.md#list-of-virtual-machine-images).
->
->
 
 Jakmile je konfigurace fondu definovaná, můžete vytvořit fond služby Azure Batch. Příkaz k vytvoření fondu služby Batch vytvoří uzly virtuálních počítačů Azure a připraví je na příjem úkolů ke zpracování. Každý fond musí mít jedinečné ID, abyste na něj mohli odkazovat v dalších krocích.
 
@@ -245,40 +240,37 @@ Následuje ukázka objektu výsledků vráceného funkcí pool.get.
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
-
 ### <a name="step-4-submit-an-azure-batch-job"></a>Krok 4: Odeslání úlohy služby Azure Batch
+
 Úloha služby Azure Batch je logická skupina podobných úkolů. V našem scénáři se jedná o úlohu „Zpracování formátu CSV do formátu JSON“. Každý z těchto úkolů může zpracovávat soubory CSV v jednotlivých kontejnerech služby Azure Storage.
 
 Tyto úkoly budou spouštěné paralelně, nasazené v několika uzlech a orchestrované službou Azure Batch.
 
-> [!Tip]
+> [!TIP]
 > Vlastnost [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete použít k určení maximálního počtu úloh, které mohou běžet souběžně v jednom uzlu.
->
->
 
 #### <a name="preparation-task"></a>Přípravný úkol
 
 Vytvořené uzly virtuálních počítačů jsou prázdné uzly s Ubuntu. Často musíte pro splnění požadavků nainstalovat řadu programů.
 Pro uzly s Linuxem obvykle můžete mít skript prostředí, který požadavky nainstaluje před spuštěním vlastních úkolů. Může se ale jednat o jakýkoli programovatelný spustitelný soubor.
+
 [Skript prostředí](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) v tomto příkladu nainstaluje Python-pip a sadu SDK služby Azure Storage pro Python.
 
 Skript můžete nahrát do účtu služby Azure Storage a vygenerovat identifikátor URI SAS pro přístup ke skriptu. Tento proces je také možné automatizovat pomocí sady SDK služby Azure Storage pro Node.js.
 
-> [!Tip]
+> [!TIP]
 > Přípravný úkol pro úlohu se spustí pouze na uzlech virtuálních počítačů, na kterých je potřeba spustit konkrétní úkol. Pokud chcete, aby se požadované programy nainstalovaly na všech uzlech bez ohledu na to, jaké úkoly se na nich spouští, můžete během přidávání fondu použít vlastnost [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Pro srovnání můžete použít následující definici přípravného úkolu.
->
->
 
 Přípravný úkol se zadává během odesílání úlohy služby Azure Batch. Následují parametry konfigurace přípravného úkolu:
 
-* **ID:** Jedinečný identifikátor přípravného úkolu.
-* **commandLine:** Příkazový řádek, který spustí spustitelný soubor s úkolem.
-* **resourceFiles:** Pole objektů poskytujících podrobnosti o souborech, které je potřeba stáhnout pro spuštění tohoto úkolu.  Následují jeho možnosti:
-    - blobSource: Identifikátor URI SAS souboru.
-    - filePath: Místní cesta pro stažení a uložení souboru.
-    - fileMode: Režim souboru, který lze použít pouze pro uzly s Linuxem, v osmičkovém formátu a s výchozí hodnotou 0770.
-* **waitForSuccess:** Pokud je tento parametr nastavený na hodnotu true, úkol se nespustí, pokud dojde k chybě přípravného úkolu.
-* **runElevated:** Nastavte tento parametr na hodnotu true, pokud jsou ke spuštění úkolu potřeba zvýšená oprávnění.
+- **ID:** Jedinečný identifikátor přípravného úkolu.
+- **commandLine:** Příkazový řádek, který spustí spustitelný soubor s úkolem.
+- **resourceFiles:** Pole objektů poskytujících podrobnosti o souborech, které je potřeba stáhnout pro spuštění tohoto úkolu.  Následují jeho možnosti:
+  - blobSource: Identifikátor URI SAS souboru.
+  - filePath: Místní cesta pro stažení a uložení souboru.
+  - fileMode: Režim souboru, který lze použít pouze pro uzly s Linuxem, v osmičkovém formátu a s výchozí hodnotou 0770.
+- **waitForSuccess:** Pokud je tento parametr nastavený na hodnotu true, úkol se nespustí, pokud dojde k chybě přípravného úkolu.
+- **runElevated:** Nastavte tento parametr na hodnotu true, pokud jsou ke spuštění úkolu potřeba zvýšená oprávnění.
 
 Následující fragment kódu ukazuje příklad konfigurace skriptu přípravného úkolu:
 
@@ -302,15 +294,14 @@ Pokud ke spuštění vašich úkolů není potřeba instalovat žádné požadav
      }});
 ```
 
-
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>Krok 5: Odeslání úkolů služby Azure Batch pro úlohu
 
 Nyní, když máme vytvořenou úlohu pro zpracování formátu CSV, vytvoříme pro tuto úlohu úkoly. Za předpokladu, že máme čtyři kontejnery, musíme vytvořit čtyři úkoly, jeden pro každý kontejner.
 
 Když se podíváme na [skript Pythonu](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py), uvidíme, že přijímá dva parametry:
 
-* container name: Kontejner služby Storage, ze kterého se mají stáhnout soubory.
-* pattern: Volitelný parametr se vzorem názvu souboru.
+- container name: Kontejner služby Storage, ze kterého se mají stáhnout soubory.
+- pattern: Volitelný parametr se vzorem názvu souboru.
 
 Za předpokladu, že máme čtyři kontejnery con1, con2, con3 a con4, následující kód ukazuje odesílání úkolů do úlohy služby Azure Batch „process csv“, kterou jsme vytvořili dříve.
 
@@ -347,4 +338,3 @@ Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také pou
 
 - Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Pokud chcete prozkoumat rozhraní API služby Batch, přečtěte si článek [Reference k Batch Node.js](/javascript/api/overview/azure/batch).
-

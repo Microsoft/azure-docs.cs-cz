@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993699"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107342"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ Další informace o používání selektorů uzlů najdete v tématu [přiřazen
 
 ### <a name="node-affinity"></a>Spřažení uzlů
 
-Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale pokud není k dispozici, nechejte možnost naplánovaná na jiném hostiteli.
+Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale nechat možnost v případě, že má být naplánováno na jiném hostiteli, pokud není k dispozici žádná shoda.
 
 Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tento spřažení vyžaduje, aby plán Kubernetes používal uzel se shodným popiskem. Pokud není k dispozici žádný uzel, musí čekat na pokračování plánování. Chcete-li nechat naplánovaná hodnota v poli pod jiným uzlem, můžete místo toho nastavit hodnotu na *preferredDuringSchedulingIgnoreDuringExecution*:
 

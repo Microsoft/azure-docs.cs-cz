@@ -3,12 +3,12 @@ title: Přihlášení k Azure Notebooks Preview
 description: Rychle se přihlaste Azure Notebooks Preview a nastavte ID uživatele, které vám umožní přístup k uloženým projektům a sdílení poznámkových bloků s ostatními.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830413"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109449"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Rychlý Start: přihlášení a nastavení ID uživatele pro Azure Notebooks Preview
 
@@ -59,4 +59,4 @@ Pokud se chcete odhlásit, vyberte své uživatelské jméno v pravém horním r
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+> [Rychlý Start: Export Jupyter Notebook projektu](quickstart-export-jupyter-notebook-project.md)

@@ -1,14 +1,14 @@
 ---
 title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: a88c5a2577456e188beb83d13ae0e5667b31180c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87447123"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106644"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -62,7 +62,7 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 
 ![Diagram kroků v řešení Batch.](./media/batch-technical-overview/tech_overview_03.png)
 
-|Krok  |Description  |
+|Krok  |Popis  |
 |---------|---------|
 |1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
 |2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | [Výpočetní uzly](nodes-and-pools.md) jsou virtuální počítače, které spouštějí vaše [úkoly](jobs-and-tasks.md). Zadejte vlastnosti fondu, jako je počet a velikost uzlů, image virtuálního počítače s Windows nebo Linux, a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Spravujte náklady a velikost fondu pomocí [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo pomocí [automatického škálování](batch-automatic-scaling.md) počtu uzlů při změně zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |

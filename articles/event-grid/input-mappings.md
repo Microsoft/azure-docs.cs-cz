@@ -3,22 +3,16 @@ title: Mapování vlastního pole na Azure Event Grid schéma
 description: Tento článek popisuje, jak převést vlastní schéma na Azure Event Grid schématu, když data události neodpovídají schématu Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105519"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109194"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma Event Gridu
 
 Pokud vaše data události neodpovídají očekávanému [schématu Event Grid](event-schema.md), můžete i nadále používat Event Grid ke směrování událostí odběratelům. Tento článek popisuje, jak namapovat schéma na Event Grid schématu.
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Nainstalovat funkci Preview
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>Původní schéma událostí
 
@@ -40,7 +34,7 @@ I když tento formát neodpovídá požadovanému schématu, Event Grid vám umo
 
 Při vytváření vlastního tématu určete, jak se mají mapovat pole z původní události do schématu Event Grid. Existují tři hodnoty, které použijete k přizpůsobení mapování:
 
-* Hodnota **vstupního schématu** určuje typ schématu. Dostupné možnosti jsou schéma CloudEvents, vlastní schéma události nebo schéma Event Grid. Výchozí hodnota je Event Grid schématu. Při vytváření vlastního mapování mezi schématem a schématem služby Event Grid použijte vlastní schéma událostí. Pokud jsou události ve schématu CloudEvents, použijte schéma Cloudevents.
+* Hodnota **vstupního schématu** určuje typ schématu. Dostupné možnosti jsou schéma CloudEvents, vlastní schéma události nebo schéma Event Grid. Výchozí hodnota je Event Grid schématu. Při vytváření vlastního mapování mezi schématem a schématem služby Event Grid použijte vlastní schéma událostí. Pokud jsou události ve formátu CloudEvents, použijte schéma CloudEvents.
 
 * Vlastnost **mapování výchozích hodnot** určuje výchozí hodnoty pro pole ve schématu Event Grid. Můžete nastavit výchozí hodnoty pro `subject` , `eventtype` a `dataversion` . Tento parametr obvykle použijete, pokud vlastní schéma neobsahuje pole, které odpovídá jednomu z těchto tří polí. Například můžete určit, že verze dat je vždy nastavená na **1,0**.
 
@@ -49,10 +43,6 @@ Při vytváření vlastního tématu určete, jak se mají mapovat pole z původ
 Pokud chcete vytvořit vlastní téma pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -65,11 +55,7 @@ az eventgrid topic create \
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -107,9 +93,9 @@ az eventgrid event-subscription create \
 V následujícím příkladu se přihlásí k odběru tématu služby Event Grid a použije se schéma Event Grid. Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -120,7 +106,7 @@ New-AzureRmEventGridSubscription `
 Následující příklad používá vstupní schéma pro událost:
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -146,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"

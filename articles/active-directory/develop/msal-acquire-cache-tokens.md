@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628131"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107834"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -122,6 +122,8 @@ Když si klient vyžádá přístupový token, Azure AD také vrátí výsledek 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud používáte MSAL for Java, přečtěte si informace o [serializaci mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md).
-
-Další informace o [zpracování chyb a výjimek](msal-handling-exceptions.md).
+Několik platforem podporovaných nástrojem MSAL má další informace související s mezipamětí tokenů v dokumentaci k této knihovně platformy. Příklad:
+- [Získání tokenu z mezipaměti tokenů pomocí MSAL.NET](msal-net-acquire-token-silently.md)
+- [Jednotné přihlašování s využitím MSAL.js](msal-js-sso.md)
+- [Serializace mezipaměti vlastního tokenu v MSAL pro Python](msal-python-token-cache-serialization.md)
+- [Serializace mezipaměti vlastního tokenu v MSAL pro Java](msal-java-token-cache-serialization.md)

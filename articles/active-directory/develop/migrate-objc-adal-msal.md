@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119925"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107915"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrace aplikací do MSAL pro iOS a macOS
 
@@ -65,7 +65,7 @@ V MSAL místo jednoho identifikátoru prostředku poskytují aplikace sadu obor�
 
 Existují dva způsoby, jak poskytnout obory v MSAL:
 
-* Zadejte seznam všech oprávnění, která aplikace potřebuje. Například: 
+* Zadejte seznam všech oprávnění, která aplikace potřebuje. Příklad: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -75,7 +75,7 @@ Existují dva způsoby, jak poskytnout obory v MSAL:
 
 Toto je vestavěný rozsah pro každou aplikaci. Odkazuje na statický seznam oprávnění nakonfigurovaných při registraci aplikace. Jeho chování je podobné jako u `resource` . To může být užitečné při migraci, aby se zajistilo, že bude zachována podobná sada oborů a činnost koncového uživatele.
 
-Chcete-li použít `/.default` rozsah, přidejte `/.default` k identifikátoru prostředku. Například: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem ( `/` ), měli byste se stále připojit `/.default` , včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko ( `//` ).
+Chcete-li použít `/.default` rozsah, přidejte `/.default` k identifikátoru prostředku. Příklad: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem ( `/` ), měli byste se stále připojit `/.default` , včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko ( `//` ).
 
 Další informace o používání oboru "/.default" si můžete přečíst [tady](./v2-permissions-and-consent.md#the-default-scope) .
 
@@ -136,7 +136,7 @@ MSAL poskytuje větší přehlednost mezi chybami, které může zpracovat vaše
 
 Zpracování všech ostatních chyb v [ `MSALError` seznamu](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) je volitelné. Pomocí informací v těchto chybách můžete zlepšit činnost koncového uživatele.
 
-Další informace o zpracování chyb MSAL najdete v tématu [zpracování výjimek a chyb pomocí MSAL](msal-handling-exceptions.md) .
+Další informace o zpracování chyb MSAL najdete v tématu [zpracování výjimek a chyb pomocí MSAL](msal-error-handling-ios.md) .
 
 ### <a name="broker-support"></a>Podpora zprostředkovatele
 
@@ -146,7 +146,7 @@ Postup povolení zprostředkovatele pro vaši aplikaci:
 
 1. Zaregistrujte pro aplikaci formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth` . Nahraďte `<app.bundle.id>` ID sady prostředků vaší aplikace. Pokud migrujete z ADAL a vaše aplikace už je zavedená, nemusíte nic dalšího dělat. Váš předchozí identifikátor URI pro přesměrování je plně kompatibilní s MSAL, takže můžete přejít na krok 3.
 
-2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>` . Například:
+2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>` . Příklad:
 
     ```xml
     <key>CFBundleURLSchemes</key>

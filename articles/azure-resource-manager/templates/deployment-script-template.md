@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092750"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107137"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>Použití skriptů pro nasazení v šablonách ARM (Preview)
 
@@ -41,7 +41,7 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
 > Rozhraní deploymentScripts Resource API verze 2020-10-01 podporuje [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Pomocí OBO využívá služba skriptu nasazení token objektu zabezpečení nasazení k vytvoření základních prostředků pro spouštění skriptů nasazení, mezi které patří Azure Container instance, účet Azure Storage a přiřazení rolí pro spravovanou identitu. Ve starší verzi rozhraní API se k vytváření těchto prostředků používá spravovaná identita.
 > Logika opakování pro přihlášení k Azure je teď integrovaná do skriptu obálky. Pokud udělíte oprávnění ve stejné šabloně, kde spouštíte skripty nasazení.  Služba skriptu nasazení opakuje přihlášení po dobu 10 minut a 10 sekund, dokud se nereplikuje přiřazení role spravované identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **(Volitelné) uživatelem přiřazená spravovaná identita s požadovanými oprávněními k provedení operací ve skriptu**. Pro nasazení rozhraní API skriptu verze 2020-10-01 nebo novější se k vytváření základních prostředků používá objekt zabezpečení nasazení. Pokud se skript potřebuje k ověřování v Azure a provádění akcí specifických pro Azure, doporučujeme pro tento skript poskytnout spravovanou identitu přiřazenou uživatelem. Aby bylo možné dokončit operaci ve skriptu, musí mít spravovaná identita požadovaný přístup k cílové skupině prostředků. Můžete se také přihlásit do Azure ve skriptu nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného. 
 
@@ -536,7 +536,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 > [!NOTE]
 > Pro jiné účely se nedoporučuje používat účet úložiště a instanci kontejneru vygenerované službou skriptu. Tyto dva prostředky mohou být odstraněny v závislosti na životním cyklu skriptu.
 
-Pokud chcete zachovat instanci kontejneru a účet úložiště pro řešení potíží, můžete do skriptu přidat příkaz Sleep.  Například použijte [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
+Instance kontejneru a účet úložiště se odstraní podle **cleanupPreference**. Pokud se ale skript nepovede a **cleanupPreference** není nastavené na **vždycky**, proces nasazení automaticky udržuje kontejner spuštěný po dobu jedné hodiny. Tuto hodinu můžete použít k řešení potíží se skriptem. Pokud chcete po úspěšném nasazení zachovat kontejner spuštěný, přidejte do skriptu krok přechodu do režimu spánku. Například na konec skriptu přidejte [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) . Pokud nepřidáte krok spánku, kontejner je nastaven na stav terminálu a nebude k němu mít k dispozici, i když ještě nebyl odstraněn.
 
 ## <a name="run-script-more-than-once"></a>Spustit skript více než jednou
 

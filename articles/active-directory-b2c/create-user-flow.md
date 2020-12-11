@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbb55d71c2ed56bac14380960f9a0777be549566
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754856"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109008"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Vytvoření toku uživatele v Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvářet [uživ
 - Pokud chcete povolit přihlašování uživatelů pomocí poskytovatelů, jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter, **přidejte externí zprostředkovatele identity** . Příklad najdete v tématu [kurz: Přidání zprostředkovatelů identit do aplikací v Azure AD B2C](tutorial-add-identity-providers.md).
 - **Nakonfigurujte poskytovatele identity místního účtu** a určete typy identit (e-mail, uživatelské jméno, telefonní číslo), které chcete podporovat pro místní účty ve vašem tenantovi. Pak můžete vybírat z těchto podporovaných typů identity při vytváření toků jednotlivých uživatelů. Když uživatel dokončí tok uživatele, vytvoří se ve vašem adresáři Azure AD B2C místní účet a poskytovatel identity **místního účtu** ověří informace o uživateli. Nakonfigurujte zprostředkovatele identity místního účtu vašeho tenanta pomocí těchto kroků:
 
-   1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
+   1. Přihlaste se na [Azure Portal](https://portal.azure.com/). 
    2. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
    3. Na panelu hledání v horní části Azure Portal vyhledejte a vyberte **Azure AD B2C**.
    4. V části **Spravovat** vyberte **Zprostředkovatelé identity**.
@@ -43,7 +43,7 @@ V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvářet [uživ
 
 ## <a name="create-a-user-flow"></a>Vytvoření toku uživatele
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
     ![B2C, okno klienta, adresáře a předplatného, Azure Portal](./media/create-user-flow/directory-subscription-pane.png)
@@ -91,4 +91,4 @@ V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvářet [uživ
 ## <a name="next-steps"></a>Další kroky
 
 - [Přidání podmíněného přístupu k Azure AD B2C toků uživatelů](conditional-access-user-flow.md)
-- [Přizpůsobení uživatelského rozhraní v Azure AD B2C toku uživatele](customize-ui-overview.md)
+- [Přizpůsobení uživatelského rozhraní v Azure AD B2C toku uživatele](customize-ui-with-html.md)

@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613590"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106899"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Kurz: použití šablon Azure pro rychlý Start
 
 [Šablony Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/) jsou úložištěm, které vám poskytla komunita. Můžete použít ukázkové šablony pro vývoj šablon. V tomto kurzu najdete definici prostředků webu a přidáte ji do své vlastní šablony. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se exportovaných šablon](template-tutorial-export-template.md), ale není to nutné.
 
@@ -34,10 +34,10 @@ Tato šablona funguje pro nasazení účtů úložiště a plánů služby App S
 ## <a name="find-template"></a>Najít šablonu
 
 1. Otevření [šablon pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
-1. Do **Hledat**zadejte **nasazení webové aplikace Linux**.
-1. Vyberte jeden s nadpisem **nasazení základní webové aplikace pro Linux**. Pokud máte potíže s jeho hledáním, tady je [přímý odkaz](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. Do **Hledat** zadejte _nasazení webové aplikace Linux_.
+1. Vyberte dlaždici s názvem **nasazení základní webové aplikace pro Linux**. Pokud máte potíže s jeho hledáním, tady je [přímý odkaz](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
 1. Vyberte **Procházet na GitHubu**.
-1. Vyberte **azuredeploy.js**.
+1. Vyberte _azuredeploy.js_.
 1. Zkontrolujte šablonu. Konkrétně vyhledejte `Microsoft.Web/sites` prostředek.
 
     ![Web rychlý Start pro šablonu Správce prostředků](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ Sloučit šablonu pro rychlý Start se stávající šablonou:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Název webové aplikace musí být v rámci Azure jedinečný. Aby nedocházelo k duplicitním názvům, byla proměnná **webAppPortalName** aktualizována z **"webAppPortalName": "[Concat (Parameters (' webAppName '), '-WebApp ')]"** na **"webAppPortalName": "[Concat (Parameters (' webAppName '), uniqueString (resourceName (). ID))]"**.
+Název webové aplikace musí být v rámci Azure jedinečný. Aby nedocházelo k duplicitním názvům, byla `webAppPortalName` Proměnná aktualizována z `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` na `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` .
 
 Přidejte čárku na konec `Microsoft.Web/serverfarms` definice pro oddělení definice prostředků od `Microsoft.Web/sites` definice.
 
 V tomto novém prostředku si můžete všimnout několika důležitých funkcí.
 
-Všimněte si, že má element s názvem **dependsOn** , který je nastavený na plán služby App Service. Toto nastavení se vyžaduje, protože plán služby App Service musí existovat před vytvořením webové aplikace. Element **dependsOn** oznamuje správce prostředků, jak objednat prostředky pro nasazení.
+Všimněte si, že má element s názvem `dependsOn` , který je nastavený na plán služby App Service. Toto nastavení se vyžaduje, protože plán služby App Service musí existovat před vytvořením webové aplikace. `dependsOn`Element informuje správce prostředků, jak objednat prostředky pro nasazení.
 
-Vlastnost **serverFarmId** používá funkci [ResourceID](template-functions-resource.md#resourceid) . Tato funkce získá jedinečný identifikátor prostředku. V tomto případě získá jedinečný identifikátor plánu služby App Service. Webová aplikace je přidružená k jednomu konkrétnímu plánu služby App Service.
+Tato `serverFarmId` vlastnost používá funkci [ResourceID](template-functions-resource.md#resourceid) . Tato funkce získá jedinečný identifikátor prostředku. V tomto případě získá jedinečný identifikátor plánu služby App Service. Webová aplikace je přidružená k jednomu konkrétnímu plánu služby App Service.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c9fde904d6befebfcfd87b55bd7b2bf4e4c825f2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443819"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107783"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
@@ -27,10 +27,12 @@ K registraci jednostránkové aplikace (SPA) na platformě Microsoft Identity pr
 
 U aplikací založených na MSAL.js 1,0 a 2,0 začněte provedením následujících kroků a vytvořte prvotní registraci aplikace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
-1. V části **Spravovat** vyberte **Registrace aplikací**.
-1. Vyberte **Nová registrace** , zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md).
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. Vyberte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**.  Popis různých typů účtů najdete v tématu [Registrace aplikace](quickstart-register-app.md).
 1. Kliknutím na **Registrovat** vytvořte registraci aplikace.
 
 V dalším kroku nakonfigurujte registraci aplikace pomocí **identifikátoru URI přesměrování** , abyste určili, kde má platforma Microsoft identity by měla přesměrovat klienta spolu s případnými tokeny zabezpečení. Použijte postup, který je vhodný pro verzi MSAL.js, kterou používáte ve vaší aplikaci:
@@ -43,7 +45,7 @@ V dalším kroku nakonfigurujte registraci aplikace pomocí **identifikátoru UR
 Pomocí těchto kroků přidejte identifikátor URI přesměrování pro aplikaci, která používá MSAL.js 2,0 nebo novější. MSAL.js 2.0 + podporuje tok autorizačního kódu s PKCE a CORS v reakci na [omezení souborů cookie třetích stran v prohlížeči](reference-third-party-cookies-spas.md). V MSAL.js 2.0 + není podporován tok implicitního udělení.
 
 1. V Azure Portal vyberte registraci aplikace, kterou jste vytvořili dříve v části [Vytvoření registrace aplikace](#create-the-app-registration).
-1. V části **Spravovat** vyberte **ověřování** a pak vyberte **Přidat platformu**.
+1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**.
 1. V části **webové aplikace** vyberte dlaždici **aplikace s jednou stránkou** .
 1. V části **identifikátory URI pro přesměrování** zadejte [identifikátor URI pro přesměrování](reply-url.md). Nevybírejte **buď** CheckBox v rámci **implicitního udělení**.
 1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
@@ -57,10 +59,10 @@ Další pokyny najdete v tomto [kurzu](tutorial-v2-javascript-auth-code.md) .
 Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jednostránkovou aplikaci, která používá MSAL.js 1,3 nebo starší a implicitně udělený tok. Aplikace, které používají MSAL.js 1,3 nebo starší, nepodporují tok kódu ověřování.
 
 1. V Azure Portal vyberte registraci aplikace, kterou jste vytvořili dříve v části [Vytvoření registrace aplikace](#create-the-app-registration).
-1. V části **Spravovat** vyberte **ověřování** a pak vyberte **Přidat platformu**.
+1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**.
 1. V části **webové aplikace** vyberte dlaždici **aplikace s jednou stránkou** .
 1. V části **identifikátory URI pro přesměrování** zadejte [identifikátor URI pro přesměrování](reply-url.md).
-1. Povolit **implicitní tok** :
+1. Povolit **implicitní tok**:
     - Pokud se vaše aplikace přihlásí uživatelům, vyberte **tokeny ID**.
     - Pokud vaše aplikace také potřebuje volat chráněné webové rozhraní API, vyberte **přístupové tokeny**. Další informace o těchto typech tokenů najdete v tématu [tokeny ID](id-tokens.md) a [přístupové tokeny](access-tokens.md).
 1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
@@ -79,4 +81,4 @@ Když všechny vaše produkční aplikace s jednou stránkou, které jsou reprez
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále nakonfigurujte kód vaší aplikace tak, aby používal registraci aplikace, kterou jste vytvořili v předchozích krocích: [Konfigurace kódu aplikace](scenario-spa-app-configuration.md).
+Nakonfigurujte kód vaší aplikace tak, aby používal registraci aplikace, kterou jste vytvořili v předchozích krocích: [Konfigurace kódu aplikace](scenario-spa-app-configuration.md).

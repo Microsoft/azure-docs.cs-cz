@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007802"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107528"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu 
 
@@ -34,7 +34,7 @@ Získáte informace o těchto tématech:
 > * Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault 
 > * Použití identity virtuálního počítače k získání přístupového tokenu a použití tohoto tokenu k načtení tajného kódu z Key Vault 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Základní porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
@@ -62,6 +62,20 @@ Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup sprav
 1. Vybrat **kontrolu + vytvořit**
 1. Vyberte **Vytvořit**.
 
+### <a name="create-a-secret"></a>Vytvoření tajného klíče
+
+Potom do Key Vault přidejte tajný klíč, abyste ho mohli později načíst pomocí kódu spuštěného na vašem VIRTUÁLNÍm počítači. Pro účely tohoto kurzu používáme PowerShell, ale stejné koncepty platí i pro veškerý kód spuštěný na tomto virtuálním počítači.
+
+1. Přejděte k nově vytvořeným Key Vault.
+1. Vyberte **Tajné kódy** a klikněte na **Přidat**.
+1. Vybrat **vygenerovat/importovat**
+1. Na obrazovce **vytvořit tajný kód** z **možností odeslání** ponechte možnost **ručně** vybraná.
+1. Zadejte název a hodnotu tajného kódu.  Může jít o libovolnou hodnotu. 
+1. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
+1. Kliknutím na **Vytvořit** vytvořte tajný kód.
+
+   ![Vytvoření tajného klíče](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Udělení přístupu
 
 Spravovaná identita, kterou používá virtuální počítač, musí mít udělený přístup pro čtení tajného klíče, který ukládáme do Key Vault.
@@ -77,20 +91,6 @@ Spravovaná identita, kterou používá virtuální počítač, musí mít uděl
 1. Vyberte **Přidat**.
 1. Vyberte **Uložit**.
 
-## <a name="create-a-secret"></a>Vytvoření tajného klíče
-
-Potom do Key Vault přidejte tajný klíč, abyste ho mohli později načíst pomocí kódu spuštěného na vašem VIRTUÁLNÍm počítači. Pro účely tohoto kurzu používáme PowerShell, ale stejné koncepty platí i pro veškerý kód spuštěný na tomto virtuálním počítači.
-
-1. Přejděte k nově vytvořeným Key Vault.
-1. Vyberte **Tajné kódy** a klikněte na **Přidat**.
-1. Vybrat **vygenerovat/importovat**
-1. Na obrazovce **vytvořit tajný kód** z **možností odeslání** ponechte možnost **ručně** vybraná.
-1. Zadejte název a hodnotu tajného kódu.  Může jít o libovolnou hodnotu. 
-1. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
-1. Kliknutím na **Vytvořit** vytvořte tajný kód.
-
-   ![Vytvoření tajného klíče](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>Přístup k datům
 
 K dokončení tohoto postupu potřebujete klienta SSH.  Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).

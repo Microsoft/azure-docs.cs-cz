@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930724"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106950"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Kurz: Přidání proměnných do šablony ARM
 
@@ -37,17 +37,17 @@ Následující příklad zvýrazní změny a přidá proměnnou do šablony, kte
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Všimněte si, že obsahuje proměnnou s názvem **uniqueStorageName**. Tato proměnná používá čtyři funkce k vytvoření řetězcové hodnoty.
+Všimněte si, že obsahuje proměnnou s názvem `uniqueStorageName` . Tato proměnná používá čtyři funkce k vytvoření řetězcové hodnoty.
 
 Již jste obeznámeni s funkcí [Parameters](template-functions-deployment.md#parameters) , takže ji nebudeme posuzovat.
 
-Také jste obeznámeni se funkcí [Resource](template-functions-resource.md#resourcegroup) . V takovém případě získáte vlastnost **ID** místo vlastnosti **Location** , jak je znázorněno v předchozím kurzu. Vlastnost **ID** vrátí úplný identifikátor skupiny prostředků, včetně ID předplatného a názvu skupiny prostředků.
+Také jste obeznámeni se funkcí [Resource](template-functions-resource.md#resourcegroup) . V takovém případě získáte `id` vlastnost namísto `location` vlastnosti, jak je znázorněno v předchozím kurzu. `id`Vlastnost vrátí úplný identifikátor skupiny prostředků, včetně ID předplatného a názvu skupiny prostředků.
 
 Funkce [uniqueString](template-functions-string.md#uniquestring) vytvoří hodnotu hash znaku 13 znaků. Vrácená hodnota je určena parametry, které předáte. V tomto kurzu použijete ID skupiny prostředků jako vstup pro hodnotu hash. To znamená, že můžete tuto šablonu nasadit do různých skupin prostředků a získat jinou jedinečnou řetězcovou hodnotu. Pokud však nasadíte do stejné skupiny prostředků, získáte stejnou hodnotu.
 
-Funkce [Concat](template-functions-string.md#concat) přebírá hodnoty a kombinuje je. Pro tuto proměnnou přebírá řetězec z parametru a řetězce z funkce uniqueString a kombinuje je do jednoho řetězce.
+Funkce [Concat](template-functions-string.md#concat) přebírá hodnoty a kombinuje je. Pro tuto proměnnou přebírá řetězec z parametru a řetězce z `uniqueString` funkce a kombinuje je do jednoho řetězce.
 
-Parametr **storagePrefix** vám umožní předat předponu, která vám pomůže identifikovat účty úložiště. Můžete vytvořit vlastní zásadu vytváření názvů, která usnadňuje identifikaci účtů úložiště po nasazení z dlouhého seznamu prostředků.
+`storagePrefix`Parametr vám umožní předat předponu, která vám pomůže identifikovat účty úložiště. Můžete vytvořit vlastní zásadu vytváření názvů, která usnadňuje identifikaci účtů úložiště po nasazení z dlouhého seznamu prostředků.
 
 Nakonec si všimněte, že název úložiště je nyní nastaven na proměnnou namísto parametru.
 
@@ -55,7 +55,7 @@ Nakonec si všimněte, že název úložiště je nyní nastaven na proměnnou n
 
 Pojďme šablonu nasadit. Nasazení této šablony je snazší než u předchozích šablon, protože zadáváte pouze předponu názvu úložiště.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,13 +83,13 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že byl nasazen prostředek účtu úložiště. Název účtu úložiště je **uložený** spolu s řetězcem náhodných znaků.

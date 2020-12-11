@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888653"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105999"
 ---
 # <a name="metrics-overview"></a>Přehled metrik
 
@@ -76,6 +76,17 @@ V metrikách žádostí na rozhraní API služby SMS jsou k dispozici následuj�
 
 
 :::image type="content" source="./media/sms-metric.png" alt-text="Metrika žádosti rozhraní API SMS":::
+
+### <a name="authentication-api-requests"></a>Žádosti rozhraní API pro ověřování
+
+V metrikách žádosti rozhraní API pro ověřování jsou dostupné tyto operace:
+
+| Operace/trasa    | Popis                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | Vytvoří identitu představující jednoho uživatele. |
+| DeleteIdentity       | Odstraní identitu. |
+| Okta          | Vytvoří přístupový token. |
+| RevokeToken          | Odvolá všechny přístupové tokeny vytvořené pro identitu před uplynutím zadaného času. |
 
 ## <a name="next-steps"></a>Další kroky
 

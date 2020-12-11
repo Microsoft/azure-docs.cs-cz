@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ad3743a90f5773163a8f115e1924b8c5bbe097
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87481321"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108089"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Verze toku uživatele v Azure Active Directory B2C
 
@@ -33,25 +33,25 @@ Toky uživatelů v Azure Active Directory B2C (Azure AD B2C) vám pomůžou nast
 
 Doporučené toky pro uživatele jsou verze Preview, které spojují nové funkce se staršími možnostmi verze V2 a V 1.1. Dál se budou udržovat a aktualizovat Doporučené toky uživatelů.
 
-| Tok uživatele | Description |
+| Tok uživatele | Popis |
 | --------- | ----------- |
-| Resetování hesla (Preview) | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
+| Resetování hesla (Preview) | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[požadavky na složitost hesla](password-complexity.md)</li></ul> |
 | Úpravy profilu (Preview) | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |
-| Přihlášení (Preview) | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>Přizpůsobení přihlašovací stránky</li></ul> |
-| Zaregistrovat se (Preview) | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
-| Registrace a přihlášení (Preview) | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
+| Přihlášení (Preview) | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>Přizpůsobení přihlašovací stránky</li></ul> |
+| Zaregistrovat se (Preview) | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
+| Registrace a přihlášení (Preview) | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>Toky standardních uživatelů
 
 Standardní uživatelské toky (dříve označované jako V1) jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Standardní uživatelské toky se nebudou dál aktualizovat.
 
-| Tok uživatele | Description |
+| Tok uživatele | Popis |
 | --------- | ----------- | ----------- |
-| Resetování hesla | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
+| Resetování hesla | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
 | Úpravy profilu | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |
-| Přihlásit se | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>Blokovat přihlášení</li><li>Vynutit resetování hesla</li><li>Zůstat přihlášeni (políčko zůstat přihlášeni)</ul><br>Pomocí tohoto toku uživatele nemůžete přizpůsobit uživatelské rozhraní. |
-| Registrace | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
-| Registrace a přihlášení | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul>|
+| Přihlásit se | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>Blokovat přihlášení</li><li>Vynutit resetování hesla</li><li>Zůstat přihlášeni (políčko zůstat přihlášeni)</ul><br>Pomocí tohoto toku uživatele nemůžete přizpůsobit uživatelské rozhraní. |
+| Registrace | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
+| Registrace a přihlášení | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul>|
 
 
 ## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>Postup přepnutí na nový doporučený uživatelský tok

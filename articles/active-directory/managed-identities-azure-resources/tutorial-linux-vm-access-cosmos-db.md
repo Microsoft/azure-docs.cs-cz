@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b57fcc26a64ee766d2fd70ebaad36edb133566e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ece1fbd75c975f549cb9096149c2a2d562dec6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968812"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107562"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Cosmos DB 
 
@@ -36,10 +36,11 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu a jeho použití k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
+- Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
+- Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Chcete-li spustit ukázkové skripty, máte dvě možnosti:
     - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
     - Spusťte skripty místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login). Použijte účet přidružený k předplatnému Azure, ve kterém byste chtěli vytvářet prostředky.
@@ -48,14 +49,14 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
 
-1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
+1. Na webu Azure Portal klikněte v levém horním rohu na tlačítko **+ Vytvořit prostředek**.
 2. Klikněte na **Databáze**, pak na **Azure Cosmos DB** a zobrazí se nový panel Nový účet.
 3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
 4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
 6. Klikněte na **Vytvořit**.
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu služby Cosmos DB
+### <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu služby Cosmos DB
 
 Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se můžete v dalších krocích dotazovat.
 
@@ -63,7 +64,7 @@ Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se m�
 2. Na kartě **Přehled** klikněte na tlačítko **pro přidání kolekce** a vysune se panel Přidat kolekci.
 3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když použijete „Test“ jako ID databáze a ID kolekce, vyberete kapacitu pevného úložiště a nejnižší propustnost (400 RU/s).  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>Načtení `principalID` spravované identity přiřazené systémem virtuálního počítače s Linuxem
+## <a name="grant-access"></a>Udělení přístupu
 
 Jelikož budete v následující části potřebovat získat přístup z Resource Manageru k přístupovým klíčům účtu Cosmos DB, je potřeba načíst `principalID` spravované identity přiřazené systémem virtuálního počítače s Linuxem.  Nezapomeňte nahradit `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` skupinu prostředků, ve které se virtuální počítač nachází, a `<VM NAME>` hodnoty parametrů vlastními hodnotami.
 
@@ -82,7 +83,7 @@ Odpověď bude obsahovat podrobnosti o spravované identitě přiřazené systé
  }
 ```
 
-## <a name="grant-your-linux-vms-system-assigned-identity-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu Cosmos DB spravované identitě zřizované systémem virtuálního počítače s Linuxem
+### <a name="grant-your-linux-vms-system-assigned-identity-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu Cosmos DB spravované identitě zřizované systémem virtuálního počítače s Linuxem
 
 Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu ale můžete použít k načtení přístupového klíče ke Cosmos DB z Resource Manageru a tento klíč pak použít pro přístup ke Cosmos DB. V tomto kroku udělíte spravované identitě přiřazené systémem přístup ke klíčům k účtu Cosmos DB.
 
@@ -108,9 +109,9 @@ Odpověď bude obsahovat podrobnosti a vytvořeném přiřazení role:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače s Linuxem a jeho použití k volání Azure Resource Manageru
+## <a name="access-data"></a>Přístup k datům
 
-Ve zbývající části kurzu použijte k práci dříve vytvořený virtuální počítač.
+Ve zbývající části kurzu Pracujte s virtuálním počítačem.
 
 K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/install-win10). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
@@ -137,7 +138,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
      "client_id":"1ef89848-e14b-465f-8780-bf541d325cd5"}
      ```
     
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB  
+### <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB  
 
 Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
 
@@ -146,7 +147,7 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 ```
 
 > [!NOTE]
-> V textu předchozí adresy URL se rozlišují velká a malá písmena. Proto zkontrolujte, že jste je u svých skupin prostředků zadali správně. Je také důležité vědět, že se jedná o požadavek POST, a nikoli o požadavek GET. Ujistěte se, že parametrem -d předáte hodnotu, která zachycuje limit délky. Tato hodnota může být NULL.  
+> Text v předchozí adrese URL rozlišuje velká a malá písmena, takže použijte případ, který se shoduje s případem použitým v názvu vaší skupiny prostředků. Je také důležité vědět, že se jedná o požadavek POST, a nikoli o požadavek GET. Ujistěte se, že parametrem -d předáte hodnotu, která zachycuje limit délky. Tato hodnota může být NULL.  
 
 V odpovědi CURL získáte seznam klíčů.  Pokud například získáte klíče jen pro čtení:  
 

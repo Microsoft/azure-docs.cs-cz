@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963240"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109432"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -38,7 +38,7 @@ Můžete spustit diagnostiku výkonu přímo z Azure Portal, kde můžete také 
 * Windows Server 2012 R2
 * Windows Server 2012
 * Windows Server 2008 R2
-* Windows 10
+* Windows 10
 * Windows 8.1
 * Windows 8
 
@@ -48,12 +48,12 @@ Můžete spustit diagnostiku výkonu přímo z Azure Portal, kde můžete také 
 
     | Distribuce               | Verze                                         |
     |----------------------------|-------------------------------------------------|
-    | Server Oracle Linux        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
-    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Server Oracle Linux        | 6,10 [ `*` ], 7,3, 7,5, 7,6, 7,7, 7,8 |
+    | CentOS                     | 6,5 [ `*` ], 7,6, 7,7, 7,8                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ], 8,1, 8,2                               |
     | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
     | Debian                     | 8, 9, 10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ], 12 SP5 [ `*` ], 15 [ `*` ], 15 SP1 [ `*` ], 15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -188,7 +188,7 @@ Informace o účtu úložiště si můžete zobrazit pomocí tlačítka nastaven
 Existuje několik způsobů, jak sdílet sestavy diagnostiky s Microsoftem.
 
 **Možnost 1:** Automaticky sdílet nejnovější sestavu  
-Když otevřete lístek podpory s Microsoftem, je důležité sdílet sestavu diagnostiky výkonu. Pokud jste se rozhodli tyto informace sdílet se společností Microsoft, když spouštíte diagnostiku (zaškrtnutím políčka souhlasím**Sdílet diagnostické informace s Microsoftem**), Microsoft bude moci získat přístup k sestavě z účtu úložiště pomocí odkazu SAS na výstupní soubor zip po dobu až 30 dnů od data spuštění. Pracovníkovi podpory je k dispozici pouze nejnovější sestava.
+Když otevřete lístek podpory s Microsoftem, je důležité sdílet sestavu diagnostiky výkonu. Pokud jste se rozhodli tyto informace sdílet se společností Microsoft, když spouštíte diagnostiku (zaškrtnutím políčka souhlasím **Sdílet diagnostické informace s Microsoftem**), Microsoft bude moci získat přístup k sestavě z účtu úložiště pomocí odkazu SAS na výstupní soubor zip po dobu až 30 dnů od data spuštění. Pracovníkovi podpory je k dispozici pouze nejnovější sestava.
 
 **Možnost 2:** Generování sdíleného přístupového podpisu pro komprimovaný soubor sestavy diagnostiky  
 Můžete sdílet odkaz na komprimovaný soubor sestav pomocí sdílených přístupových podpisů. Postupujte takto:
@@ -199,7 +199,7 @@ Můžete sdílet odkaz na komprimovaný soubor sestav pomocí sdílených přís
 1. Vyberte komprimovaný soubor výstupu diagnostiky výkonu, který chcete sdílet.
 1. Na kartě **Generovat SAS** vyberte kritéria pro sdílení.
 1. Klikněte na **Generovat token SAS objektu BLOB a adresu URL**.
-1. Zkopírujte **adresu URL SAS objektu BLOB**a sdílejte ji s pracovníkem podpory.
+1. Zkopírujte **adresu URL SAS objektu BLOB** a sdílejte ji s pracovníkem podpory.
 
 **Možnost 3:** Stažení sestavy z účtu úložiště
 

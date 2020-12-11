@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 70cb1297c4b47f22f9eb5cc6992e6fcd6c58b364
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545034"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109466"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Vytvoření a správa virtuálních sítí pro Azure Database for MySQL flexibilní Server pomocí Azure CLI
 
@@ -25,7 +25,7 @@ Flexibilní server Azure Database for MySQL podporuje dva typy vzájemně se vyl
 
 V tomto článku se zaměříme na vytvoření serveru MySQL s **privátním přístupem (Integration VNET) pomocí rozhraní** příkazového řádku Azure CLI. Pomocí *privátního přístupu (Integration VNET)* můžete nasadit flexibilní Server do svého prostředí [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Virtuální sítě Azure poskytují soukromou a zabezpečenou síťovou komunikaci. V privátních přístupech se připojení k serveru MySQL omezují jenom na virtuální síť. Další informace o této službě najdete v tématu [privátní přístup (Integration VNET)](./concepts-networking.md#private-access-vnet-integration).
 
-V Azure Database for MySQL flexibilním serveru můžete nasadit server do virtuální sítě a podsítě během vytváření serveru. Po nasazení flexibilního serveru do virtuální sítě a podsítě ho nemůžete přesunout do jiné virtuální sítě, podsítě ani *veřejného přístupu (povolené IP adresy)* .
+V Azure Database for MySQL flexibilním serveru můžete nasadit server do virtuální sítě a podsítě během vytváření serveru. Po nasazení flexibilního serveru do virtuální sítě a podsítě ho nemůžete přesunout do jiné virtuální sítě, podsítě ani *veřejného přístupu (povolené IP adresy)*.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -35,7 +35,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
@@ -50,10 +50,10 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-azure-database-for-mysql-flexible-server-using-cli"></a>Vytvoření Azure Database for MySQL flexibilního serveru pomocí rozhraní příkazového řádku
-Pomocí `az mysql flexible-server` příkazu můžete vytvořit flexibilní Server s *privátním přístupem (Integration VNET)* . Tento příkaz jako výchozí metodu připojení používá privátní přístup (Integration VNet). Pokud není zadaná žádná virtuální síť a podsíť, vytvoří se za vás. Existující virtuální síť a podsíť můžete také poskytnout pomocí ID podsítě. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> K dispozici jsou různé možnosti vytvoření flexibilního serveru pomocí rozhraní příkazového řádku, jak je znázorněno v níže uvedených příkladech.
+Pomocí `az mysql flexible-server` příkazu můžete vytvořit flexibilní Server s *privátním přístupem (Integration VNET)*. Tento příkaz jako výchozí metodu připojení používá privátní přístup (Integration VNet). Pokud není zadaná žádná virtuální síť a podsíť, vytvoří se za vás. Existující virtuální síť a podsíť můžete také poskytnout pomocí ID podsítě. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> K dispozici jsou různé možnosti vytvoření flexibilního serveru pomocí rozhraní příkazového řádku, jak je znázorněno v níže uvedených příkladech.
 
 >[!Important]
-> Pomocí tohoto příkazu se přenese podsíť do **Microsoft. DBforMySQL/flexibleServers** . Toto delegování znamená, že danou podsíť můžou využívat pouze flexibilní servery Azure Database for MySQL. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure.
+> Pomocí tohoto příkazu se přenese podsíť do **Microsoft. DBforMySQL/flexibleServers**. Toto delegování znamená, že danou podsíť můžou využívat pouze flexibilní servery Azure Database for MySQL. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure.
 >
 
 Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k rozhraní příkazového řádku Azure CLI. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
@@ -62,21 +62,22 @@ Pomocí `az mysql flexible-server` příkazu můžete vytvořit flexibilní Serv
     ```azurecli-interactive
     az mysql flexible-server create
     ```
-<!--- Create a flexible server using already existing virtual network and subnet
+- Vytvořte flexibilní Server pomocí již existující virtuální sítě a podsítě. Pokud zadaná virtuální síť a podsíť neexistují, vytvoří se virtuální síť a podsíť s výchozí předponou adresy.
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --subnet mySubnet
-    ```-->
-- Vytvořte flexibilní Server pomocí již existující virtuální sítě, podsítě a s použitím ID podsítě. V zadané podsíti by neměl být nasazen žádný jiný prostředek a tato podsíť bude delegována na **Microsoft. DBforMySQL/flexibleServers** (Pokud již není delegovaná).
+    ```
+
+- Vytvořte flexibilní Server pomocí již existující virtuální sítě, podsítě a s použitím ID podsítě. V zadané podsíti by neměl být nasazen žádný jiný prostředek a tato podsíť bude delegována na **Microsoft. DBforMySQL/flexibleServers**(Pokud již není delegovaná).
     ```azurecli-interactive
     az mysql flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
     > Virtuální síť a podsíť by měly být ve stejné oblasti a předplatném jako flexibilní Server.
-<!--
-- Create a flexible server using new virtual network, subnet with non-default address prefix
+<
+- Vytvoření flexibilního serveru pomocí nové virtuální sítě, podsítě s předponou adresy jiné než výchozí.
     ```azurecli-interactive
-    az mysql flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
-    ```-->
+    az mysql flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
+    ```
 Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k rozhraní příkazového řádku Azure CLI.
 
 

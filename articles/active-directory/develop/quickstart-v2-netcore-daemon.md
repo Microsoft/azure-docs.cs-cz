@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7c0efbae3576a5b57433fe70885fd97aae5e87e3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993886"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107936"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API pomocí identity konzolové aplikace
 
@@ -26,7 +26,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý Start vyžaduje [.NET Core 3,1](https://www.microsoft.com/net/download/dotnet-core).
 
@@ -49,17 +49,17 @@ Tento rychlý Start vyžaduje [.NET Core 3,1](https://www.microsoft.com/net/down
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Na stránce hledání **Registrace aplikací** na webu Azure Portal přejděte na stránku Microsoft Identity Platform for developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-> 1. Vyberte **Nová registrace**.
-> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte registrační informace vaší aplikace.
-> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console` Vyberte možnost **Registrovat** a vytvořte aplikaci.
-> 1. Po registraci vyberte nabídku **certifikáty & tajných klíčů** .
-> 1. V části **tajné klíče klienta** vyberte **+ nový tajný klíč klienta**. Zadejte název a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete ho potřebovat pro použití ve vašem kódu a na portálu se znovu nezobrazí.
-> 1. Nyní vyberte nabídku **oprávnění rozhraní API** , vyberte **+ Přidat oprávnění** tlačítko a vyberte možnost **Microsoft Graph**.
+> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Daemon-console` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+> 1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
+> 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**, zadejte název a pak vyberte **Přidat**. Poznamenejte si tajnou hodnotu v bezpečném umístění pro použití v pozdějším kroku.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. Vyberte **Microsoft Graph**.
 > 1. Vyberte **oprávnění aplikace**.
-> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění** .
+> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
@@ -121,7 +121,7 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 ##### <a name="global-tenant-administrator"></a>Globální správce klienta
 
 > [!div renderon="docs"]
-> Pokud jste globální správce klienta, přejděte na webu Azure Portal do části **podnikové aplikace** > klikněte na registrace aplikace > v části zabezpečení v levém navigačním podokně vyberte **oprávnění** . Klikněte na velké tlačítko s popiskem **udělení souhlasu správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
+> Pokud jste globální správce klienta, na webu Azure Portal přejděte na **podnikové aplikace** > vyberte registraci vaší aplikace > v části zabezpečení v levém navigačním podokně vyberte **oprávnění** . Vyberte velké tlačítko s popiskem **udělení souhlasu správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Pokud jste globální správce, přejít na stránku **oprávnění rozhraní API** , vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**
@@ -198,7 +198,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Kde: | Description |
+> | Kde: | Popis |
 > |---------|---------|
 > | `config.ClientSecret` | Vytvoří se tajný klíč klienta pro aplikaci na webu Azure Portal. |
 > | `config.ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Kde:| Description |
+> |Kde:| Popis |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 

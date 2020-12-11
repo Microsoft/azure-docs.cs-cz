@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519174"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109262"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
 
@@ -54,7 +54,7 @@ Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďt
 ## <a name="step-1-set-up-security-groups"></a>Krok 1: nastavení skupin zabezpečení
 
 >[!Note] 
->Během období Preview se doporučuje vytvořit skupiny zabezpečení namapované na synapse **synapse SQL Administrator** a **synapse Apache Spark role správců** .  Díky zavedení nových jemnějších rolí a oborů synapse RBAC se teď doporučuje používat tyto nové funkce k řízení přístupu k vašemu pracovnímu prostoru.  Tyto nové role a obory poskytují větší flexibilitu v konfiguraci a rozpoznávají, že vývojáři často používají kombinaci SQL a Spark při vytváření analytických aplikací a může být potřeba udělit přístup ke konkrétním prostředkům v pracovním prostoru. [Další informace](./synapse-workspace-synapse-rbac.md).
+>Během období Preview se doporučuje vytvořit skupiny zabezpečení namapované na synapse **synapse SQL Administrator** a **synapse Apache Spark role správců** .  Díky zavedení nových jemnějších rolí a oborů synapse RBAC se teď doporučuje používat tyto nové funkce k řízení přístupu k vašemu pracovnímu prostoru.  Tyto nové role a obory poskytují větší flexibilitu v konfiguraci a rozpoznávají, že vývojáři často používají kombinaci SQL a Sparku při vytváření analytických aplikací a můžou se jim dát udělit přístup ke konkrétním prostředkům, a ne k celému pracovnímu prostoru. [Přečtěte si další informace](./synapse-workspace-synapse-rbac.md) o synapse RBAC.
 
 Vytvořte následující skupiny zabezpečení pro váš pracovní prostor:
 
@@ -66,9 +66,9 @@ Vytvořte následující skupiny zabezpečení pro váš pracovní prostor:
 Brzy přiřadíte role synapse těmto skupinám v oboru pracovního prostoru.  
 
 Vytvořit také tuto skupinu zabezpečení: 
-- **`workspace1_SQLAdministrators`**, skupina pro uživatele, kteří potřebují autoritu pro správu služby Active Directory v rámci fondů SQL v pracovním prostoru. 
+- **`workspace1_SQLAdmins`**, skupina pro uživatele, kteří potřebují autoritu Správce služby SQL Active Directory v rámci fondů SQL v pracovním prostoru. 
 
-`workspace1_SynapseSQLAdministrators`Skupina se použije při konfiguraci oprávnění SQL v fondech SQL při jejich vytváření. 
+`workspace1_SQLAdmins`Skupina se použije při konfiguraci oprávnění SQL v fondech SQL při jejich vytváření. 
 
 Pro základní nastavení jsou tyto pět skupin dostatečné. Později můžete přidat skupiny zabezpečení, které budou obsluhovat uživatele, kteří potřebují více specializovaného přístupu, nebo poskytnout uživatelům přístup pouze k určitým prostředkům.
 
@@ -84,6 +84,7 @@ Pro základní nastavení jsou tyto pět skupin dostatečné. Později můžete 
 Pracovní prostor synapse používá výchozí kontejner úložiště pro:
   - Ukládání souborů zálohovaných dat pro tabulky Spark
   - Protokoly spuštění pro úlohy Spark
+  - Správa knihoven, které se rozhodnete nainstalovat
 
 Identifikujte následující informace o úložišti:
 
@@ -94,7 +95,7 @@ Identifikujte následující informace o úložišti:
 
   - Přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k `workspace1_SynapseAdmins` 
   - Přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k `workspace1_SynapseContributors`
-  - Přiřaďte roli **Přispěvatel dat objektu BLOB úložiště** , aby bylo možné `workspace1_SynapseComputeOperators` **<< ověřit** .  
+  - Přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k `workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>Krok 3: vytvoření a konfigurace pracovního prostoru synapse
 
@@ -106,14 +107,14 @@ V Azure Portal vytvořte pracovní prostor synapse:
 - Zvolit `storage1` účet úložiště
 - Vyberte `container1` pro kontejner, který se používá jako systém souborů.
 - Otevřít WS1 v synapse studiu
-- Přejděte ke **správě**  >  **Access Control** a přiřaďte do skupin zabezpečení následující role synapse v *oboru pracovního prostoru* .
+- Přejděte ke **správě**  >  **Access Control** a přiřaďte role synapse v *oboru pracovního prostoru* do skupin zabezpečení následujícím způsobem:
   - Přiřadit roli **správce synapse** k `workspace1_SynapseAdministrators` 
   - Přiřadit roli **Přispěvatel synapse**`workspace1_SynapseContributors` 
-  - Přiřaďte roli **výpočetního operátoru SQL synapse** k `workspace1_SynapseComputeOperators`
+  - Přiřazení role **operátora COMPUTE synapse**`workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>Krok 4: Udělte pracovnímu prostoru MSI přístup k výchozímu kontejneru úložiště.
 
-Aby bylo možné spouštět kanály a provádět systémové úlohy, synapse vyžaduje, aby služba Service identity (MSI) v pracovním prostoru měla přístup k `container1` výchozímu účtu adls Gen2.
+Aby bylo možné spouštět kanály a provádět systémové úlohy, synapse vyžaduje, aby identita spravovaného pracovního prostoru (MSI) měla přístup ke službě `container1` ve výchozím účtu adls Gen2.
 
 - Otevřete Azure Portal.
 - Vyhledejte účet úložiště, `storage1` a potom `container1`
@@ -121,9 +122,9 @@ Aby bylo možné spouštět kanály a provádět systémové úlohy, synapse vy�
   - Pokud není přiřazen, přiřaďte ho.
   - Soubor MSI má stejný název jako pracovní prostor. V tomto článku by to bylo `workspace1` .
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>Krok 5: Udělte správci synapse roli přispěvatele Azure v pracovním prostoru. 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>Krok 5: udělení synapse správcům roli Přispěvatel Azure v pracovním prostoru 
 
-Aby bylo možné vytvářet fondy SQL, Apache Spark fondy a prostředí Integration runtime, uživatelé musí mít alespoň přístup k Azure přispěvateli v pracovním prostoru. Role přispěvatele také umožňuje těmto uživatelům spravovat prostředky, včetně pozastavení a škálování.
+Aby uživatelé mohli vytvářet fondy SQL, Apache Spark fondy a prostředí Integration runtime, musí mít k pracovnímu prostoru aspoň přístup k Azure přispěvateli. Role přispěvatele také umožňuje těmto uživatelům spravovat prostředky, včetně pozastavení a škálování.
 
 - Otevřete Azure Portal.
 - Vyhledejte pracovní prostor. `workspace1`
@@ -131,44 +132,44 @@ Aby bylo možné vytvářet fondy SQL, Apache Spark fondy a prostředí Integrat
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>Krok 6: přiřazení role správce služby SQL Active Directory
 
-Tvůrce pracovní stanice je automaticky nastavený jako správce služby Active Directory pro pracovní prostor.  Tuto roli lze udělit pouze jednomu uživateli nebo skupině. V tomto kroku přiřadíte ke skupině zabezpečení Správce služby Active Directory v pracovním prostoru `workspace1_SynapseSQLAdministrators` .  Přiřazení této role poskytuje této skupině vysoce privilegovaný přístup správce ke všem fondům SQL.   
+Tvůrce pracovní stanice je automaticky nastavený jako správce služby SQL Active Directory pro daný pracovní prostor.  Tuto roli lze udělit pouze jednomu uživateli nebo skupině. V tomto kroku přiřadíte ke skupině zabezpečení Správce služby SQL Active Directory v pracovním prostoru `workspace1_SQLAdmins` .  Přiřazení této role poskytuje této skupině vysoce privilegovaný přístup správce ke všem fondům a databázím SQL v pracovním prostoru.   
 
 - Otevřete Azure Portal.
 - Přejděte na adresu `workspace1`.
 - V části **Nastavení** vyberte **Správce služby SQL Active Directory** .
-- Vyberte **nastavit správce** a zvolte **`workspace1_SynapseSQLAdministrators`**
+- Vyberte **nastavit správce** a zvolte **`workspace1_SQLAdmins`**
 
 >[!Note]
->Tento krok je volitelný.  Můžete se rozhodnout udělit správcům SQL méně privilegované role. Chcete-li přiřadit `db_owner` nebo jiné role SQL, je nutné spustit skripty v každé databázi SQL. 
+>Krok 6 je nepovinný.  Můžete se rozhodnout udělit `workspace1_SQLAdmins` skupině méně privilegované role. Chcete-li přiřadit `db_owner` nebo jiné role SQL, je nutné spustit skripty v každé databázi SQL. 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>Krok 7: udělení přístupu ke fondům SQL
 
-Ve výchozím nastavení se všem uživatelům, kteří mají přiřazenou roli správce synapse, přiřadí taky `db_owner` role SQL na bezserverovém fondu SQL, který je integrovaný.
+Ve výchozím nastavení se všem uživatelům, kteří mají přiřazenou roli správce synapse, přiřadí taky `db_owner` role SQL na neserverovém fondu SQL, integrovaném a všech jeho databázích.
 
-Přístup k fondům SQL pro ostatní uživatele a pro pracovní prostor MSI se řídí pomocí oprávnění SQL.  Přiřazení oprávnění SQL vyžaduje, aby se skripty SQL po vytvoření spouštěly na každém fondu SQL.  Existují tři případy, které vyžadují spuštění těchto skriptů:
-1. Udělení přístupu jiným uživatelům k fondu SQL bez serveru, integrovanému
-2. Udělení přístupu libovolným uživatelům k vyhrazeným fondům
-3. Udělení přístupu ke službě MSI v pracovním prostoru pro fond SQL, aby bylo možné úspěšně spustit kanály, které vyžadují přístup ke fondu SQL.
+Přístup k fondům SQL pro ostatní uživatele a pro pracovní prostor MSI se řídí pomocí oprávnění SQL.  Přiřazení oprávnění SQL vyžaduje, aby se skripty SQL po vytvoření spouštěly na všech databázích SQL.  Existují tři případy, které vyžadují spuštění těchto skriptů:
+1. Udělení přístupu jiným uživatelům k fondu SQL bez serveru, integrovanému a databázím
+2. Udělení přístupu libovolným uživatelům k vyhrazenému fondu databází
+3. Udělení přístupu ke službě MSI v pracovním prostoru pro databázi fondu SQL za účelem umožnění úspěšného spuštění kanálů, které vyžadují přístup ke fondu SQL
 
 Příklady skriptů SQL jsou uvedeny níže.
 
-Chcete-li udělit přístup k vyhrazenému fondu SQL, mohou být skripty spouštěny autorem pracovního prostoru nebo libovolným členem `workspace1_SynapseSQL Administrators` skupiny.  
+Chcete-li udělit přístup k vyhrazené databázi fondu SQL, mohou být skripty spouštěny autorem pracovního prostoru nebo libovolným členem `workspace1_SQLAdmins` skupiny.  
 
-Chcete-li udělit přístup k fondu SQL bez serveru, "předdefinované", mohou být skripty spouštěny také jakýmkoli členem  `workspace1_SynapseAdministrators` skupiny. 
+Chcete-li udělit přístup k fondu SQL bez serveru, "předdefinované", mohou být skripty spouštěny libovolným členem `workspace1_SQLAdmins` skupiny nebo  `workspace1_SynapseAdministrators` skupiny. 
 
 > [!TIP]
-> Níže uvedené kroky musí být spuštěny pro **každý** fond SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL s výjimkou oddílu [oprávnění vymezeného v pracovním prostoru](#workspace-scoped-permission) , kde můžete přiřadit uživatele roli sysadmin.
+> Níže uvedené kroky musí být spuštěny pro **každý** fond SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL s výjimkou oddílu [oprávnění vymezeného v pracovním prostoru](#workspace-scoped-permission) , kde můžete uživateli přiřadit roli sysadmin na úrovni pracovního prostoru.
 
-### <a name="step-71-serverless-sql-pools"></a>Krok 7,1: fondy SQL bez serveru
+### <a name="step-71-serverless-sql-pool-built-in"></a>Krok 7,1: fond SQL bez serveru, integrovaná
 
-V této části najdete příklady, jak dát uživateli oprávnění ke konkrétní databázi nebo úplnému oprávnění serveru.
+V této části jsou příklady skriptů, které ukazují, jak udělit uživateli oprávnění k přístupu ke konkrétní databázi nebo ke všem databázím ve fondu SQL bez serveru, vestavěném.
 
 > [!NOTE]
 > V příkladech skriptu nahraďte *alias* aliasem uživatele nebo skupiny, kterým se uděluje přístup, a *domény* s doménou společnosti, kterou používáte.
 
-#### <a name="pool-scoped-permission"></a>Oprávnění vymezené fondem
+#### <a name="database-scoped-permission"></a>Oprávnění s rozsahem databáze
 
-Pokud chcete uživateli udělit přístup k **jednomu** fondu SQL bez serveru, postupujte podle kroků v tomto příkladu:
+Pokud chcete uživateli udělit přístup k **jediné** databázi SQL bez serveru, postupujte podle kroků v tomto příkladu:
 
 1. Vytvořit přihlašovací údaje
 
@@ -182,7 +183,7 @@ Pokud chcete uživateli udělit přístup k **jednomu** fondu SQL bez serveru, p
 2. Vytvořit uživatele
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Pokud chcete uživateli udělit přístup k **jednomu** fondu SQL bez serveru, p
 3. Přidat uživatele do členů zadané role
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Pokud chcete uživateli udělit přístup k **jednomu** fondu SQL bez serveru, p
 Chcete-li udělit úplný přístup ke **všem** fondům SQL bez serveru v pracovním prostoru, použijte skript v tomto příkladu:
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>Krok 7,2: vyhrazené fondy SQL
 
-Pokud chcete udělit přístup k **jednomu** vyhrazenému fondu SQL, postupujte podle těchto kroků v editoru skriptu SQL synapse:
+Pokud chcete udělit přístup k **jedné** vyhrazené databázi fondu SQL, postupujte podle těchto kroků v editoru skriptu SQL synapse:
 
 1. Vytvořte uživatele v databázi tak, že v cílové databázi spustíte následující příkaz, který vyberete pomocí rozevíracího seznamu *připojit k* :
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. Udělit uživateli roli pro přístup k databázi:
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ Pokud chcete udělit přístup k **jednomu** vyhrazenému fondu SQL, postupujte 
 > *db_datareader* a *db_datawriter* mohou fungovat pro oprávnění ke čtení a zápisu, pokud udělení *db_owner* oprávnění není žádoucí.
 > Aby mohl uživatel Spark číst a zapisovat přímo z Sparku do nebo z fondu SQL, je nutné mít *db_owner* oprávnění.
 
-Po vytvoření uživatelů ověřte, že se fond SQL bez serveru může dotazovat na účet úložiště.
+Po vytvoření uživatelů spusťte dotazy, abyste ověřili, že fond SQL bez serveru se může dotazovat na účet úložiště.
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>Krok 7,3: řízení přístupu SL pro spuštění kanálu pracovního prostoru
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>Krok 7,3: řízení přístupu SQL pro spuštění kanálu synapse
 
-### <a name="workspace-managed-identity"></a>Identita spravovaná pracovním prostorem
+### <a name="workspace-managed-identity"></a>Spravovaná identita v pracovním prostoru
 
 > [!IMPORTANT]
 > Chcete-li úspěšně spustit kanály zahrnující datové sady nebo aktivity, které odkazují na fond SQL, musí být identitám pracovního prostoru udělen přístup ke fondu SQL.
 
-Spuštěním následujících příkazů v každém z fondů SQL umožněte, aby identita spravovaná pracovním prostorem spouštěla kanály v databázi fondu SQL:
+Spusťte následující příkazy v každém fondu SQL, abyste povolili identitu spravovaného systému v pracovním prostoru ke spouštění kanálů v databázích fondu SQL:  
+
+>[!note]
+>V níže uvedených skriptech pro vyhrazenou databázi fondu SQL je název DatabaseName stejný jako název fondu.  Pro databázi v předdefinovaném fondu SQL bez serveru je název databáze DatabaseName názvem databáze.
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 Toto oprávnění je možné odebrat spuštěním následujícího skriptu na stejném fondu SQL:
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: Použití samoobslužné expedice
               href: data-box-portal-customer-managed-shipping.md
+            - name: Používání vlastních certifikátů
+              href: data-box-bring-your-own-certificates.md
             - name: Povolení klíče spravovaného zákazníkem
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Použití Customer Lockboxu

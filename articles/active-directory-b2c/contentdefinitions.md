@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628656"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108973"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -90,7 +90,7 @@ Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C p
 
 ### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
-Můžete povolit [javascriptový kód na straně klienta](javascript-samples.md) vložením `contract` mezi `elements` a a typem stránky. Například, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+Můžete povolit [javascriptový kód na straně klienta](javascript-and-page-layout.md) vložením `contract` mezi `elements` a a typem stránky. Například `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ Následující příklad ukazuje **DataUri** `selfasserted` verze `1.2.0` :
 
 #### <a name="migrating-to-page-layout"></a>Migrace na rozložení stránky
 
-Formát hodnoty musí obsahovat slovo `contract` : _urn: com: Microsoft: AAD: B2C: Elements: **kontrakt** :p věk-Name: Version_ . Chcete-li určit rozložení stránky ve vlastních zásadách, které používají starou hodnotu **DataUri** , proveďte migraci do nového formátu pomocí následující tabulky.
+Formát hodnoty musí obsahovat slovo `contract` : _urn: com: Microsoft: AAD: B2C: Elements:**kontrakt**:p věk-Name: Version_. Chcete-li určit rozložení stránky ve vlastních zásadách, které používají starou hodnotu **DataUri** , proveďte migraci do nového formátu pomocí následující tabulky.
 
 | Stará hodnota DataUri | Nová hodnota DataUri |
 | ----------------- | ----------------- |
@@ -238,4 +238,4 @@ Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahu
 
 Příklad přizpůsobení uživatelského rozhraní pomocí definic obsahu najdete v těchto tématech:
 
-[Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](custom-policy-ui-customization.md)
+[Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](customize-ui-with-html.md)

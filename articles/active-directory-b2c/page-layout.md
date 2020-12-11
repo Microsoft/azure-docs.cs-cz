@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028100"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108497"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -46,16 +46,17 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 - Pole uživatelské jméno, e-mail a heslo nyní pomocí `form` elementu HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
 - Pro vylepšené uživatelské prostředí bylo přidáno zpoždění ověřování uživatelem (konfigurovatelného) vstupu uživatele.
+- Opravy usnadnění
 - Opravili jsme problém s přístupností, takže se v programu Narrator čtou chybové zprávy. 
 - Po ověření e-mailu se teď fokus umístí do pole heslo.
 - Odebráno `autofocus` z ovládacího prvku CheckBox. 
-- Přidali jsme podporu pro pomůcku zobrazení pro ověřování pomocí telefonního čísla.
-- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+- Přidání podpory pro ovládací prvek zobrazení pro ověřování pomocí telefonního čísla.
+- Nyní můžete přidat `data-preload="true"` atribut [ve značkách HTML] (přizpůsobení-UI-with-HTML. MD # pokyny – pro
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
 - Podpora překladu pro Chrome
-- Přidání podpory pro branding klienta na stránkách toku uživatele.
+- Přidání podpory pro branding společnosti na stránkách toku uživatele.
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 **1.2.0**
 
 - Pole uživatelské jméno, e-mail a heslo nyní pomocí `form` elementu HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
-- Opravy usnadnění.
-- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+- Opravy usnadnění
+- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](customize-ui-with-html.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
@@ -118,7 +119,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 **1.2.0**
 
 - Opravy usnadnění
-- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](customize-ui-with-html.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
@@ -144,7 +145,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 **1.2.0**
 
 - Opravy usnadnění
-- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](customize-ui-with-html.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
@@ -165,7 +166,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 **1.2.0**
 
 - Opravy usnadnění
-- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](customize-ui-with-html.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
@@ -177,4 +178,4 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnosti o tom, jak přizpůsobit uživatelské rozhraní vašich aplikací ve vlastních zásadách, najdete v tématu [přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](custom-policy-ui-customization.md).
+Podrobnosti o tom, jak přizpůsobit uživatelské rozhraní vašich aplikací ve vlastních zásadách, najdete v tématu [přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](customize-ui-with-html.md).

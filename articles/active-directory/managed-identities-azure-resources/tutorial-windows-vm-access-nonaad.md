@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180502"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107511"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
 
@@ -61,6 +61,20 @@ Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup sprav
 1. Vybrat **kontrolu + vytvořit**
 1. Vyberte **Vytvořit**.
 
+### <a name="create-a-secret"></a>Vytvoření tajného klíče
+
+Potom do Key Vault přidejte tajný klíč, abyste ho mohli později načíst pomocí kódu spuštěného na vašem VIRTUÁLNÍm počítači. Pro účely tohoto kurzu používáme PowerShell, ale stejné koncepty platí i pro veškerý kód spuštěný na tomto virtuálním počítači.
+
+1. Přejděte k nově vytvořeným Key Vault.
+1. Vyberte **Tajné kódy** a klikněte na **Přidat**.
+1. Vybrat **vygenerovat/importovat**
+1. Na obrazovce **vytvořit tajný kód** z **možností odeslání** ponechte možnost **ručně** vybraná.
+1. Zadejte název a hodnotu tajného kódu.  Může jít o libovolnou hodnotu. 
+1. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
+1. Kliknutím na **Vytvořit** vytvořte tajný kód.
+
+   ![Vytvoření tajného klíče](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Udělení přístupu
 
 Spravovaná identita, kterou používá virtuální počítač, musí mít udělený přístup pro čtení tajného klíče, který ukládáme do Key Vault.
@@ -76,19 +90,6 @@ Spravovaná identita, kterou používá virtuální počítač, musí mít uděl
 1. Vyberte **Přidat**.
 1. Vyberte **Uložit**.
 
-## <a name="create-a-secret"></a>Vytvoření tajného klíče
-
-Potom do Key Vault přidejte tajný klíč, abyste ho mohli později načíst pomocí kódu spuštěného na vašem VIRTUÁLNÍm počítači. Pro účely tohoto kurzu používáme PowerShell, ale stejné koncepty platí i pro veškerý kód spuštěný na tomto virtuálním počítači.
-
-1. Přejděte k nově vytvořeným Key Vault.
-1. Vyberte **Tajné kódy** a klikněte na **Přidat**.
-1. Vybrat **vygenerovat/importovat**
-1. Na obrazovce **vytvořit tajný kód** z **možností odeslání** ponechte možnost **ručně** vybraná.
-1. Zadejte název a hodnotu tajného kódu.  Může jít o libovolnou hodnotu. 
-1. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
-1. Kliknutím na **Vytvořit** vytvořte tajný kód.
-
-   ![Vytvoření tajného klíče](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>Přístup k datům  
 

@@ -3,12 +3,12 @@ title: Požadavky na úložiště pro Azure Functions
 description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318177"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107239"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
@@ -27,15 +27,19 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště jen pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS. Tyto nepodporované účty se při vytváření aplikace Function App odfiltrují z okna účtu úložiště.
+Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování. Některé účty úložiště nepodporují fronty a tabulky. Tyto účty zahrnují účty úložiště jen pro objekty blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací ZRS.
 
 Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#core-storage-services). 
 
-I když pomocí aplikace Function App můžete použít existující účet úložiště, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást služby Function App vytvořit tok jsou zaručené splňovat tyto požadavky na účet úložiště.  
+I když pomocí aplikace Function App můžete použít existující účet úložiště, musíte se ujistit, že splňuje tyto požadavky. Účty úložiště vytvořené jako součást aplikace Function App vytvořit tok v Azure Portal jsou zaručené splňovat tyto požadavky na účet úložiště. Na portálu se při výběru existujícího účtu úložiště při vytváření aplikace Function App odfiltrují nepodporované účty. V tomto toku můžete zvolit jenom existující účty úložiště ve stejné oblasti jako aplikace Function App, kterou vytváříte. Další informace najdete v tématu [umístění účtu úložiště](#storage-account-location).
 
 ## <a name="storage-account-guidance"></a>Doprovodné materiály k účtu úložiště
 
 Každá aplikace Function App vyžaduje, aby účet úložiště fungoval. Pokud se tento účet odstraní, aplikace Function App se nespustí. Pokud chcete řešit problémy související s úložištěm, přečtěte si téma řešení [potíží souvisejících s úložištěm](functions-recover-storage-account.md). Následující další požadavky platí pro účet úložiště používaný aplikacemi Function App.
+
+### <a name="storage-account-location"></a>Umístění účtu úložiště
+
+Nejlepšího výkonu dosáhnete, když vaše aplikace Function App používá účet úložiště ve stejné oblasti, což snižuje latenci. Azure Portal Tento osvědčený postup vynutil. Pokud z nějakého důvodu potřebujete použít účet úložiště v jiné oblasti než aplikace Function App, musíte vytvořit aplikaci Function App mimo portál. 
 
 ### <a name="storage-account-connection-setting"></a>Nastavení připojení účtu úložiště
 

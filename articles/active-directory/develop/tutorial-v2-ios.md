@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746723"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107630"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS
 
@@ -35,7 +35,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní Microsoft Graph API
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Xcode 11. x +](https://developer.apple.com/xcode/)
 
@@ -63,7 +63,7 @@ Pokud chcete stáhnout dokončenou verzi aplikace, kterou jste vytvořili v tomt
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Otevřete Xcode a vyberte **vytvořit nový projekt Xcode**.
-2. V případě aplikací pro iOS **iOS** vyberte možnost  >  **aplikace s jedním zobrazením** pro iOS a vyberte **Další**.
+2. V případě aplikací pro iOS vyberte možnost  >  **aplikace s jedním zobrazením** pro iOS a vyberte **Další**.
 3. V případě aplikací MacOS vyberte **MacOS**  >  **aplikace pro kakao** a vyberte **Další**.
 4. Zadejte název produktu.
 5. Nastavte **jazyk** na **SWIFT** a vyberte **Další**.
@@ -520,7 +520,7 @@ Následující fragment kódu získá token poprvé, a to vytvořením `MSALInte
 
 1. Vytvoří `MSALInteractiveTokenParameters` s rozsahy.
 2. Volání `acquireToken()` s vytvořenými parametry.
-3. Zpracovává chyby. Další podrobnosti najdete v tématu [Průvodce zpracováním chyb MSAL pro iOS a MacOS](msal-handling-exceptions.md).
+3. Zpracovává chyby. Další podrobnosti najdete v tématu [Průvodce zpracováním chyb MSAL pro iOS a MacOS](msal-error-handling-ios.md).
 4. Zpracuje úspěšný případ.
 
 Do třídy `ViewController` přidejte následující kód.
@@ -635,7 +635,7 @@ Chcete-li získat aktualizovaný token tiše, přidejte do třídy následujíc�
 
 Jakmile máte token, může ji aplikace v hlavičce HTTP použít k provedení autorizované žádosti na Microsoft Graph:
 
-| klíč záhlaví    | value                 |
+| klíč záhlaví    | hodnota                 |
 | ------------- | --------------------- |
 | Autorizace | Nosný \<access-token> |
 

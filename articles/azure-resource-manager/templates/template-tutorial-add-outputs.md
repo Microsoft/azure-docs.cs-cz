@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931737"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107120"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Kurz: Přidání výstupů do šablony ARM
 
@@ -41,17 +41,17 @@ Následující příklad zvýrazní změnu šablony pro přidání výstupní ho
 
 V některých důležitých položkách si všimněte o výstupní hodnotě, kterou jste přidali.
 
-Typ vrácené hodnoty je nastaven na **Object**, což znamená, že vrátí objekt JSON.
+Typ vrácené hodnoty je nastaven na `object` , což znamená, že vrátí objekt JSON.
 
 Pomocí [referenční](template-functions-resource.md#reference) funkce získá běhový stav účtu úložiště. Chcete-li získat běhový stav prostředku, předáte název nebo ID prostředku. V takovém případě použijete stejnou proměnnou, kterou jste použili k vytvoření názvu účtu úložiště.
 
-Nakonec vrátí vlastnost **primaryEndpoints** z účtu úložiště.
+Nakonec vrátí `primaryEndpoints` vlastnost z účtu úložiště.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
 Jste připraveni šablonu nasadit a podívat se na vrácenou hodnotu.
 
-Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili `templateFile` proměnnou na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ Ve výstupu příkazu pro nasazení se zobrazí objekt podobný následujícímu
 ```
 
 > [!NOTE]
-> Pokud se nasazení nepovedlo, pomocí **podrobného** přepínače Získejte informace o vytvářených prostředcích. K získání dalších informací pro ladění použijte přepínač **ladění** .
+> Pokud se nasazení nepovedlo, pomocí `verbose` přepínače Získejte informace o vytvářených prostředcích. K `debug` získání dalších informací pro ladění použijte přepínač.
 
 ## <a name="review-your-work"></a>Kontrola práce
 
@@ -100,7 +100,7 @@ Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co
 
 Teď se podívejme na skupinu prostředků a historii nasazení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. V závislosti na krocích, které jste provedli, byste měli mít ve skupině prostředků aspoň jeden a možná několik účtů úložiště.

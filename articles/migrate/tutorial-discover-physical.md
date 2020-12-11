@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 1263bc3ffe18aa951b3e5b61747c889d36acbab1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 2da5577b1b82c5374f33b732a0af54bac5ebae58
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752802"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109211"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Kurz: zjištění fyzických serverů pomocí posouzení serveru
 
@@ -223,7 +223,15 @@ Nastavte zařízení poprvé.
 
 Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit, a spusťte zjišťování.
 
-1. V **kroku 1: zadejte přihlašovací údaje pro zjišťování fyzických nebo virtuálních serverů s Windows a Linux**, klikněte na **Přidat přihlašovací údaje** a zadejte popisný název pro přihlašovací údaje, přidejte **uživatelské jméno** a **heslo** pro server s Windows nebo Linux. Klikněte na **Uložit**.
+1. V **kroku 1: zadejte přihlašovací údaje pro zjišťování fyzických nebo virtuálních serverů s Windows a Linux**, klikněte na **Přidat přihlašovací údaje**.
+1. Pro Windows Server vyberte typ zdroje jako **Windows Server**, zadejte popisný název pro přihlašovací údaje, přidejte uživatelské jméno a heslo. Klikněte na **Uložit**.
+1. Pokud používáte ověřování založené na heslech pro server Linux, vyberte typ zdroje jako server pro **Linux (založený na heslech)**, zadejte popisný název pro přihlašovací údaje a přidejte uživatelské jméno a heslo. Klikněte na **Uložit**.
+1. Pokud používáte ověřování pomocí klíče SSH pro Linux Server, můžete vybrat typ zdroje jako **Server Linux (založený na klíči SSH)**, zadat popisný název pro přihlašovací údaje, přidat uživatelské jméno a vybrat soubor privátního klíče SSH. Klikněte na **Uložit**.
+
+    - Azure Migrate podporuje privátní klíč SSH generovaný pomocí příkazu ssh-keygen s využitím algoritmů RSA, DSA, ECDSA a ed25519.
+    - Aktuálně Azure Migrate nepodporuje klíč SSH založený na hesle. Použijte prosím klíč SSH bez hesla.
+    - V současné době Azure Migrate nepodporuje soubor privátního klíče SSH generovaný pomocí výstupu.
+
 1. Pokud chcete přidat více přihlašovacích údajů najednou, klikněte na **Přidat další** a uložte a přidejte další přihlašovací údaje. Pro zjišťování fyzických serverů je podporováno více přihlašovacích údajů.
 1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru** klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.
 1. Můžete buď **přidat jednu položku** najednou, nebo **Přidat více položek** do jednoho přechodu. K dispozici je také možnost zadat podrobnosti o serveru prostřednictvím **importu CSV**.

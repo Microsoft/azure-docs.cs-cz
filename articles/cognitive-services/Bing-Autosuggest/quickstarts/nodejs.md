@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a69a9fa712aaa9d4c02243d28dcae8b72c3db73
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348275"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106117"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node.js
 
@@ -27,7 +27,7 @@ ms.locfileid: "96348275"
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá Node.js aplikace pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 
@@ -86,14 +86,13 @@ V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické n�
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
-## Create a search handler
+## <a name="create-a-search-handler"></a>Vytvoření obslužné rutiny vyhledávání
 
-1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
-Do the following steps within this function:
+1. Definujte funkci s názvem `response_handler` , která přijímá volání http, `response` jako parametr. V rámci této funkce proveďte následující kroky:
     
-    1. Define a variable to contain the body of the JSON response.  
+    1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
 
         ```javascript
         let response_handler = function (response) {
@@ -101,7 +100,7 @@ Do the following steps within this function:
         };
         ```
 
-    2. Store the body of the response when the `data` flag is called
+    2. Uložit tělo odpovědi při `data` volání příznaku
         
         ```javascript
         response.on ('data', function (d) {
@@ -109,7 +108,7 @@ Do the following steps within this function:
         });
         ```
 
-    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
+    3. Pokud `end` je příznak signalizována, použijte `JSON.parse()` a `JSON.stringify()` k vytištění odpovědi.
     
         ```javascript
         response.on ('end', function () {
@@ -122,11 +121,11 @@ Do the following steps within this function:
         });
         ```
 
-2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
+2. Voláním `get_suggestions()` odešlete požadavek do rozhraní API pro automatické návrhy Bingu.
 
-## Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-A successful response is returned in JSON, as shown in the following example: 
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
 ```json
 {

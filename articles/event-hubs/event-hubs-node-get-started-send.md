@@ -1,18 +1,18 @@
 ---
 title: Posílání a přijímání událostí z Azure Event Hubs pomocí JavaScriptu (nejnovější)
-description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
+description: Tento článek popisuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události do a z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-Centers.
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728943"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106083"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub)
+V tomto rychlém startu se dozvíte, jak odesílat události do a přijímat události z centra událostí pomocí balíčku JavaScriptu pro **Azure/Event-Center** . 
 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -25,7 +25,7 @@ K dokončení tohoto rychlého startu potřebujete následující požadavky:
 - Visual Studio Code (doporučeno) nebo jakékoli jiné integrované vývojové prostředí (IDE).  
 - Aktivní Event Hubs obor názvů a centrum událostí. Pokud je chcete vytvořit, proveďte následující kroky: 
 
-   1. V [Azure Portal](https://portal.azure.com)vytvořte obor názvů typu *Event Hubs*a pak Získejte přihlašovací údaje pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. 
+   1. V [Azure Portal](https://portal.azure.com)vytvořte obor názvů typu *Event Hubs* a pak Získejte přihlašovací údaje pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. 
    1. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md).
    1. Pokračujte podle pokynů v tomto rychlém startu. 
    1. Pokud chcete získat připojovací řetězec pro obor názvů centra událostí, postupujte podle pokynů v části [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Poznamenejte si připojovací řetězec pro pozdější použití v tomto rychlém startu.
@@ -55,7 +55,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 V této části vytvoříte aplikaci JavaScriptu, která odesílá události do centra událostí.
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com).
-1. Vytvořte soubor s názvem *send.js*a vložte do něj následující kód:
+1. Vytvořte soubor s názvem *send.js* a vložte do něj následující kód:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -113,7 +113,7 @@ V této části obdržíte události z centra událostí pomocí úložiště ko
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů BLOB v něm, proveďte následující akce:
 
-1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
@@ -122,7 +122,7 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
 ### <a name="write-code-to-receive-events"></a>Psaní kódu pro příjem událostí
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com).
-1. Vytvořte soubor s názvem *receive.js*a vložte do něj následující kód:
+1. Vytvořte soubor s názvem *receive.js* a vložte do něj následující kód:
 
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");

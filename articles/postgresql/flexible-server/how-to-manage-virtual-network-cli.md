@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 830a97db562820853efcd88b1ab8c0b729a5dc9a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb22946bb3f0858a545d5b854afe48b2e1e61927
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490131"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109228"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Vytvoření a správa virtuálních sítí pro Azure Database for PostgreSQL flexibilní Server pomocí Azure CLI
 
@@ -61,22 +61,22 @@ Informace najdete v referenční dokumentaci k Azure CLI. <!--FIXME --> Úplný 
     ```azurecli-interactive
     az postgres flexible-server create
     ```
-<!--- Create a flexible server using already existing virtual network and subnet
+- Vytvořte flexibilní Server pomocí již existující virtuální sítě a podsítě. Pokud zadaná virtuální síť a podsíť neexistují, vytvoří se virtuální síť a podsíť s výchozí předponou adresy.
     ```azurecli-interactive
     az postgres flexible-server create --vnet myVnet --subnet mySubnet
-    ```-->
+    ```
 - Vytvořte flexibilní Server pomocí již existující virtuální sítě, podsítě a s použitím ID podsítě. V zadané podsíti by neměl být nasazen žádný jiný prostředek a tato podsíť bude delegována na **Microsoft. DBforPostgreSQL/flexibleServers**(Pokud již není delegovaná).
     ```azurecli-interactive
     az postgres flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
     > Virtuální síť a podsíť by měly být ve stejné oblasti a předplatném jako flexibilní Server.
-<!--  
-- Create a flexible server using new virtual network, subnet with non-default address prefix
+
+- Vytvoření flexibilního serveru pomocí nové virtuální sítě, podsítě s předponou jiné než výchozí adresy
     ```azurecli-interactive
-    az postgres flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
-    ```-->
-Informace najdete v referenční dokumentaci k Azure CLI. <!--FIXME --> Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku.
+    az postgres flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
+    ```
+Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/postgres/flexible-server) k rozhraní příkazového řádku Azure CLI.
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [sítích v Azure Database for PostgreSQL flexibilním serveru](./concepts-networking.md).

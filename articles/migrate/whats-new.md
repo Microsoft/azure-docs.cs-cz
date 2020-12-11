@@ -1,22 +1,24 @@
 ---
 title: Co je nového v Azure Migrate
 description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě Azure Migrate.
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752443"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109177"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+## <a name="update-december-2020"></a>Aktualizace (prosince 2020)
+- Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
 
 ## <a name="update-september-2020"></a>Aktualizace (září 2020)
 - Migrace serverů do Zóny dostupnosti se teď podporuje.
@@ -25,7 +27,7 @@ ms.locfileid: "96752443"
 - Analýza závislostí (bez agenta) se teď dá na virtuálních počítačích 1000 současně spustit současně.
 - Analýza závislostí (bez agentů) se teď dá ve velkém měřítku povolit nebo zakázat pomocí skriptů PowerShellu. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Vizualizujte síťová připojení v Power BI pomocí dat shromážděných pomocí analýzy závislostí (bez agentů) [. Další informace najdete](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) v části.
-- Migrace virtuálních počítačů VMware s velikostí datových disků až 32 TB je teď podporovaná pomocí Azure Migrate: Migrace serveru bez agenta pro migraci VMware. 
+- Migrace virtuálních počítačů VMware s velikostí datových disků až 32 TB je teď podporovaná pomocí Azure Migrate: Migrace serveru bez agenta pro migraci VMware.
 
 ## <a name="update-august-2020"></a>Aktualizace (srpen 2020)
 
