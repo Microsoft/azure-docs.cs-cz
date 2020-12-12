@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600859"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359927"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -76,22 +77,22 @@ Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Ser
 
 Následující tabulka poskytuje porovnání dostupných možností:
 
-| | Azure Portal | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
+| | portál Azure | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
 |---------|---------|---------|---------|---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
 |**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše|
-|**Vytvoří cluster za vás.**|Yes|Yes | Yes |No|
-|**Vytvoří skupinu dostupnosti pro vás.** |Yes |No|No|No|
-|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |No|No|No|Yes|
-|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|No|No|No|Yes|
+|**Vytvoří cluster za vás.**|Ano|Ano | Ano |Ne|
+|**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
+|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
+|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
 |**Konfigurace kvora služby WSFC**|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
-|**DR s více oblastmi** |No|No|No|Yes|
-|**Podpora více podsítí** |Yes|Yes|Yes|Yes|
-|**Podpora pro existující službu AD**|Yes|Yes|Yes|Yes|
-|**DR s více zónami ve stejné oblasti**|Yes|Yes|Yes|Yes|
-|**Distributed AG bez AD**|No|No|No|Yes|
-|**Distribuovaný AG bez clusteru** |No|No|No|Yes|
+|**DR s více oblastmi** |Ne|Ne|Ne|Ano|
+|**Podpora více podsítí** |Ano|Ano|Ano|Ano|
+|**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
+|**DR s více zónami ve stejné oblasti**|Ano|Ano|Ano|Ano|
+|**Distributed AG bez AD**|Ne|Ne|Ne|Ano|
+|**Distribuovaný AG bez clusteru** |Ne|Ne|Ne|Ano|
 
 Další informace najdete v tématech [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablony rychlý Start](availability-group-quickstart-template-configure.md)a [Ruční](availability-group-manually-configure-prerequisites-tutorial.md).
 

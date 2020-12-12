@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4af7e10b573743602fea609264c73d58a1e6a7d1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789994"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359383"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -59,50 +60,50 @@ Nejdřív vytvořte Nástroj pro vyrovnávání zatížení.
 
 1. V Azure Portal otevřete skupinu prostředků, která obsahuje SQL Server virtuálních počítačů. 
 
-2. Ve skupině prostředků vyberte **Přidat** .
+2. Ve skupině prostředků vyberte **Přidat**.
 
-3. Vyhledejte **Nástroj pro vyrovnávání zatížení** . Ve výsledcích hledání vyberte možnost **Load Balancer** (Publikováno **Microsoftem** ).
+3. Vyhledejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte možnost **Load Balancer** (Publikováno **Microsoftem**).
 
-4. V okně **Load Balancer** vyberte **vytvořit** .
+4. V okně **Load Balancer** vyberte **vytvořit**.
 
 5. V dialogovém okně **vytvořit nástroj pro vyrovnávání zatížení** nakonfigurujte nástroj pro vyrovnávání zatížení následujícím způsobem:
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB** . |
-   | **Typ** |**Interní** : většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí** : umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
-   | **Skladová jednotka (SKU)** |**Basic** : výchozí možnost. Platí pouze v případě, že instance SQL Server jsou ve stejné skupině dostupnosti. </br> **Standardní** : upřednostňovaná. Platí, pokud jsou instance SQL Server ve stejné skupině dostupnosti. Vyžaduje se, pokud jsou vaše SQL Server instance v různých zónách dostupnosti. |
+   | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
+   | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
+   | **Skladová jednotka (SKU)** |**Basic**: výchozí možnost. Platí pouze v případě, že instance SQL Server jsou ve stejné skupině dostupnosti. </br> **Standardní**: upřednostňovaná. Platí, pokud jsou instance SQL Server ve stejné skupině dostupnosti. Vyžaduje se, pokud jsou vaše SQL Server instance v různých zónách dostupnosti. |
    | **Virtuální síť** |Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. |
-   | **Přiřazení IP adresy** |**staticky** . |
+   | **Přiřazení IP adresy** |**staticky**. |
    | **Privátní IP adresa** |Zadejte dostupnou IP adresu z podsítě. Tuto IP adresu použijte při vytváření naslouchacího procesu v clusteru. V rámci skriptu PowerShellu dále v tomto článku použijte tuto adresu pro `$ILBIP` proměnnou. |
    | **Předplatné** |Pokud máte více předplatných, může se toto pole zobrazit. Vyberte předplatné, které chcete k tomuto prostředku přidružit. Obvykle se jedná o stejné předplatné, jako všechny prostředky pro skupinu dostupnosti. |
    | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
    | **Umístění** |Vyberte umístění Azure, ve kterém jsou instance SQL Server. |
 
-6. Vyberte **Vytvořit** . 
+6. Vyberte **Vytvořit**. 
 
 Azure vytvoří nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení patří do konkrétní sítě, podsítě, skupiny prostředků a umístění. Po dokončení úlohy Azure ověřte nastavení nástroje pro vyrovnávání zatížení v Azure. 
 
 ### <a name="step-2-configure-the-back-end-pool"></a>Krok 2: Konfigurace fondu back-end
 
-Azure volá *fond back* -end fondu adres back-endu. V tomto případě je fond back-end adresami dvou instancí SQL Server ve skupině dostupnosti. 
+Azure volá *fond back*-end fondu adres back-endu. V tomto případě je fond back-end adresami dvou instancí SQL Server ve skupině dostupnosti. 
 
 1. Ve vaší skupině prostředků vyberte nástroj pro vyrovnávání zatížení, který jste vytvořili. 
 
-2. V **Nastavení** vyberte **back-endové fondy** .
+2. V **Nastavení** vyberte **back-endové fondy**.
 
 3. V případě **back-endu fondů** vyberte **Přidat** a vytvořte fond back-endu adres. 
 
 4. V části **název** do pole název zadejte **název back-** end fondu.
 
-5. V části **virtuální počítače** vyberte **Přidat virtuální počítač** . 
+5. V části **virtuální počítače** vyberte **Přidat virtuální počítač**. 
 
 6. V části **zvolit virtuální počítače** vyberte vybrat **skupinu dostupnosti** a pak určete skupinu dostupnosti, do které patří SQL Server virtuální počítače.
 
-7. Po výběru skupiny dostupnosti vyberte možnost **zvolit virtuální počítače** , vyberte dva virtuální počítače, které hostují instance SQL Server ve skupině dostupnosti, a pak zvolte **Vybrat** . 
+7. Po výběru skupiny dostupnosti vyberte možnost **zvolit virtuální počítače**, vyberte dva virtuální počítače, které hostují instance SQL Server ve skupině dostupnosti, a pak zvolte **Vybrat**. 
 
-8. Výběrem **OK** zavřete okna pro **Výběr virtuálních počítačů** a **přidejte back-end fond** . 
+8. Výběrem **OK** zavřete okna pro **Výběr virtuálních počítačů** a **přidejte back-end fond**. 
 
 Azure aktualizuje nastavení fondu back-endu adres. Vaše skupina dostupnosti teď má fond dvou instancí SQL Server.
 
@@ -110,21 +111,21 @@ Azure aktualizuje nastavení fondu back-endu adres. Vaše skupina dostupnosti te
 
 Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlastní naslouchací proces skupiny dostupnosti. Azure sonduje službu na základě IP adresy na portu, který definujete při vytváření testu.
 
-1. V okně **Nastavení** nástroje pro vyrovnávání zatížení vyberte **sondy stavu** . 
+1. V okně **Nastavení** nástroje pro vyrovnávání zatížení vyberte **sondy stavu**. 
 
-2. V okně **sondy stavu** vyberte **Přidat** .
+2. V okně **sondy stavu** vyberte **Přidat**.
 
 3. Nakonfigurujte sondu v okně **Přidat test paměti** . Ke konfiguraci testu použijte následující hodnoty:
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe** . |
-   | **Protokol** |**TCP** |
-   | **Port** |Můžete použít libovolný dostupný port. Například *59999* . |
+   | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
+   | **Protokol** |**PROTOKOLU** |
+   | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
    | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
 
-4.  Vyberte **OK** . 
+4.  Vyberte **OK**. 
 
 > [!NOTE]
 > Ujistěte se, že port, který zadáte, je otevřený v bráně firewall obou SQL Serverch instancí. Obě instance vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [Přidání nebo úprava pravidla brány firewall](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)). 
@@ -136,18 +137,18 @@ Azure vytvoří test a pak ho použije k otestování, která instance SQL Serve
 
 Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vyrovnávání zatížení směruje provoz do instancí SQL Server. Pro tento nástroj pro vyrovnávání zatížení povolte přímé vrácení serveru, protože prostředek naslouchacího procesu skupiny dostupnosti má vlastní jenom jedna z těchto dvou instancí SQL Server.
 
-1. V okně **Nastavení** nástroje pro vyrovnávání zatížení vyberte **pravidla vyrovnávání zatížení** . 
+1. V okně **Nastavení** nástroje pro vyrovnávání zatížení vyberte **pravidla vyrovnávání zatížení**. 
 
-2. V okně **pravidla vyrovnávání zatížení** vyberte **Přidat** .
+2. V okně **pravidla vyrovnávání zatížení** vyberte **Přidat**.
 
 3. V okně **Přidat pravidla vyrovnávání zatížení** nakonfigurujte pravidlo vyrovnávání zatížení. Použijte následující nastavení: 
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener** . |
-   | **Protokol** |**TCP** |
+   | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
+   | **Protokol** |**PROTOKOLU** |
    | **Port** |*1433* |
-   | **Port back-endu** |*1433* . Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)** . |
+   | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
    | **Trvalost relace** |**Žádný** |
    | **Časový limit nečinnosti (minuty)** |*4* |
@@ -157,7 +158,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    > Možná se budete muset posunout dolů, aby se zobrazila všechna nastavení.
    > 
 
-4. Vyberte **OK** . 
+4. Vyberte **OK**. 
 
 5. Azure nakonfiguruje pravidlo vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení teď má nakonfigurované směrování provozu do SQL Server instance, která hostuje naslouchací proces pro skupinu dostupnosti. 
 
@@ -187,13 +188,13 @@ Pokud jsou prostředky a závislosti clusteru správně nakonfigurovány, měli 
 
 1. Spusťte SQL Server Management Studio a pak se připojte k primární replice.
 
-2. Přejít na **AlwaysOn High Availability**  >  **Availability Groups**  >  **naslouchací procesy** skupin dostupnosti AlwaysOn vysoké dostupnosti  
+2. Přejít na   >    >  **naslouchací procesy** skupin dostupnosti AlwaysOn vysoké dostupnosti  
 
     Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. 
 
-3. Klikněte pravým tlačítkem myši na název naslouchacího procesu a pak vyberte **vlastnosti** .
+3. Klikněte pravým tlačítkem myši na název naslouchacího procesu a pak vyberte **vlastnosti**.
 
-4. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (výchozí nastavení je 1433), a pak vyberte **OK** .
+4. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti pomocí $EndpointPort, který jste použili dříve (výchozí nastavení je 1433), a pak vyberte **OK**.
 
 Teď máte ve virtuálních počítačích Azure spuštěnou skupinu dostupnosti v režimu Správce prostředků. 
 
@@ -219,7 +220,7 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
 
 1. V Azure Portal otevřete skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a pak vyberte nástroj pro vyrovnávání zatížení. 
 
-2. V části **Nastavení** vyberte **fond IP adres front-end** a pak vyberte **Přidat** . 
+2. V části **Nastavení** vyberte **fond IP adres front-end** a pak vyberte **Přidat**. 
 
 3. V části **Přidat IP adresu front-endu** přiřaďte název front-endu. 
 
@@ -244,7 +245,7 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
 
 8. Výběrem **OK** uložte test. 
 
-9. Vytvořte pravidlo vyrovnávání zatížení. Vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat** .
+9. Vytvořte pravidlo vyrovnávání zatížení. Vyberte **pravidla vyrovnávání zatížení** a pak vyberte **Přidat**.
 
 10. Nakonfigurujte nové pravidlo vyrovnávání zatížení pomocí následujících nastavení:
 
@@ -254,7 +255,7 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
     |**IP adresa front-endu** |Vyberte IP adresu, kterou jste vytvořili. 
     |**Protokol** |TCP
     |**Port** |Použijte port, který používají instance SQL Server. Výchozí instance používá port 1433, pokud jste ho nezměnili. 
-    |**Back-endový port** |Použijte stejnou hodnotu jako **port** .
+    |**Back-endový port** |Použijte stejnou hodnotu jako **port**.
     |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
     |**Sonda stavu** |Vyberte test, který jste vytvořili.
     |**Trvalost relace** |Žádné
@@ -293,7 +294,7 @@ Pokud se skupina dostupnosti účastní distribuované skupiny dostupnosti, nás
 
 1. Na každém serveru, který je součástí distribuované skupiny dostupnosti, vytvořte příchozí pravidlo na portu TCP naslouchacího procesu naslouchacího skupiny dostupnosti. Dokumentace používá v mnoha příkladech 5022. 
 
-1. V Azure Portal vyberte v nástroji pro vyrovnávání zatížení možnost **pravidla vyrovnávání zatížení** a pak vyberte **+ Přidat** . 
+1. V Azure Portal vyberte v nástroji pro vyrovnávání zatížení možnost **pravidla vyrovnávání zatížení** a pak vyberte **+ Přidat**. 
 
 1. Vytvořte pravidlo vyrovnávání zatížení s následujícím nastavením:
 
@@ -303,7 +304,7 @@ Pokud se skupina dostupnosti účastní distribuované skupiny dostupnosti, nás
    |**IP adresa front-endu** |Jako skupinu dostupnosti použijte stejnou IP adresu front-endu.
    |**Protokol** |TCP
    |**Port** |5022 – port pro [naslouchací proces koncového bodu skupiny dostupnosti](/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)</br> Může to být libovolný dostupný port.  
-   |**Back-endový port** | 5022 – použijte stejnou hodnotu jako **port** .
+   |**Back-endový port** | 5022 – použijte stejnou hodnotu jako **port**.
    |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
    |**Sonda stavu** |Vyberte test, který jste vytvořili.
    |**Trvalost relace** |Žádné

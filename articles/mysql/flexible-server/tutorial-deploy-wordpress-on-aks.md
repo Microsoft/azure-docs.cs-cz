@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749262"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359009"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Kurz: nasazení aplikace WordPress v AKS s Azure Database for MySQLm flexibilním serverem
 
-V tomto rychlém startu nasadíte aplikaci WordPress do clusteru Azure Kubernetes Service (AKS) s Azure Database for MySQLm flexibilním serverem (ve verzi Preview) pomocí Azure CLI. [AKS](../../aks/intro-kubernetes.md) je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. [Azure Database for MySQL-flexibilní Server (Preview)](overview.md) je plně spravovaná databázová služba navržená tak, aby poskytovala přesnější kontrolu a flexibilitu nad funkcemi správy databáze a nastaveními konfigurace. Aktuálně flexibilní Server je ve verzi Preview.
+V tomto rychlém startu nasadíte aplikaci WordPress do clusteru Azure Kubernetes Service (AKS) s Azure Database for MySQLm flexibilním serverem (ve verzi Preview) pomocí Azure CLI. 
+**[AKS](../../aks/intro-kubernetes.md)** je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. **[Azure Database for MySQL-flexibilní Server (Preview)](overview.md)** je plně spravovaná databázová služba navržená tak, aby poskytovala přesnější kontrolu a flexibilitu nad funkcemi správy databáze a nastaveními konfigurace. Aktuálně flexibilní Server je ve verzi Preview.
 
 > [!NOTE]
 > - Azure Database for MySQL flexibilní Server je momentálně ve verzi Public Preview.
@@ -115,7 +116,7 @@ Vytvořený server má následující atributy:
 - Vzhledem k tomu, že příkaz používá místní kontext, vytvoří server ve skupině prostředků ```wordpress-project``` a v oblasti ```eastus``` .
 
 
-## <a name="build-your-wordpress-docker-image"></a>Sestavení image Docker pro WordPress
+### <a name="build-your-wordpress-docker-image"></a>Sestavení image Docker pro WordPress
 
 Stáhněte si [nejnovější verzi WordPress](https://wordpress.org/download/) . Vytvoření nového adresáře ```my-wordpress-app``` pro projekt a použití této jednoduché struktury složek
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Vytvoření souboru Dockerfile
 Vytvořte nový souboru Dockerfile a zkopírujte tento fragment kódu. Tato souboru Dockerfile při nastavování webového serveru Apache pomocí PHP a povolení rozšíření MySQL.
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>Sestavení image Docker
-Ujistěte se, že jste v adresáři ```my-wordpress-app``` v terminálu, pomocí ```cd``` příkazu. Spusťte následující příkaz, který sestaví obrázek tabule:
+### <a name="build-your-docker-image"></a>Sestavení image Docker
+Ujistěte se, že jste v adresáři ```my-wordpress-app``` v terminálu, pomocí ```cd``` příkazu. Spusťte následující příkaz, který sestaví bitovou kopii:
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ Následující příklad výstupu ukazuje, že se nasazení a služby úspěšn�
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

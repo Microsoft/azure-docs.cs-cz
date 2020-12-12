@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789790"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358686"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Spuštění SQL Server virtuálního počítače na vyhrazeném hostiteli Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho
 
 Při umísťování SQL Server virtuálního počítače do vyhrazeného hostitele Azure si můžete vybrat mezi dvěma různými možnostmi licencování. 
 
-  - **Licencování virtuálních počítačů SQL** : Jedná se o existující možnost licencování, kde platíte za každou SQL Server licenci virtuálních počítačů jednotlivě. 
-  - **Licencování vyhrazených hostitelů** : nový licenční model dostupný pro vyhrazeného hostitele Azure, kde SQL Server licence jsou zabalené a placené pro na úrovni hostitele. 
+  - **Licencování virtuálních počítačů SQL**: Jedná se o existující možnost licencování, kde platíte za každou SQL Server licenci virtuálních počítačů jednotlivě. 
+  - **Licencování vyhrazených hostitelů**: nový licenční model dostupný pro vyhrazeného hostitele Azure, kde SQL Server licence jsou zabalené a placené pro na úrovni hostitele. 
 
 
 Možnosti na úrovni hostitele pro používání stávajících licencí SQL Server: 

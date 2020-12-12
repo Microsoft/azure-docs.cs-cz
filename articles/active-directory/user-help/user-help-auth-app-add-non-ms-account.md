@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020088"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359196"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
-Přidejte k aplikaci Microsoft Authenticator své účty, jako je Google, Facebook nebo GitHub, do aplikace pro ověřování dvou faktorů. Microsoft Authenticator aplikace funguje se všemi aplikacemi, které používají dvojúrovňové ověřování, a s libovolným účtem, který podporuje standardy pro jednorázové heslo (TOTP) založené na čase.
+Pokud máte účty jiných účtů než Microsoft, například pro Google, Facebook nebo GitHub, můžete je přidat do aplikace Microsoft Authenticator pro účely dvou faktorů ověřování. Microsoft Authenticator aplikace funguje se všemi aplikacemi, které používají dvojúrovňové ověřování, a s libovolným účtem, který podporuje standardy pro jednorázové heslo (TOTP) založené na čase.
 
 >[!Important]
 >Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
@@ -44,7 +44,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a **Get Started** pak ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a pak ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -130,7 +130,7 @@ Přidejte svůj účet GitHubu tím, že zapnete dvojúrovňové ověřování a
 
 1. Na stránce **dvojúrovňové ověřování** v počítači vyberte možnost **nastavit pomocí aplikace**.
 
-2. Uložte si kódy obnovení, abyste se mohli vrátit ke svému účtu, pokud ztratíte přístup, a pak vyberte **Další**. 
+2. Uložte si kódy obnovení, abyste se mohli vrátit ke svému účtu, pokud ztratíte přístup, a pak vyberte **Další**.
 
     Své kódy můžete uložit tak, že je stáhnete do svého zařízení, vytisknete je pomocí tisku nebo je zkopírujete do nástroje Správce hesel.
 

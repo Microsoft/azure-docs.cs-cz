@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449020"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359145"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualizace GPU Azure Stack Edge pro 
 
@@ -22,9 +22,14 @@ Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack 
 Postup popsaný v tomto článku byl proveden s použitím jiné verze softwaru, ale proces zůstane stejný jako aktuální verze softwaru.
 
 > [!IMPORTANT]
-> - Aktualizace **2011** je aktuální aktualizace. <!--and corresponds to **2.1.1377.2170** software version on your device.--> Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2011-release-notes.md).
->
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace obsahuje aktualizace softwaru zařízení a aktualizace Kubernetes. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a vaše zařízení bude mít za následek výpadek až 30 minut.
+> - Aktualizace **2012** je aktuální aktualizací a odpovídá:
+>   - Verze softwaru zařízení – **2.2.1438.2470**
+>   - Kubernetes Server verze **1.17.3**
+>   - Verze IoT Edge: **0.1.0-Beta10**
+>    
+>    Informace o tom, co je nového v této aktualizaci, najdete v [poznámkách k verzi](azure-stack-edge-gpu-2012-release-notes.md).
+> - Aby bylo možné použít aktualizaci 2012, musí vaše zařízení používat 2010.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace obsahuje aktualizace softwaru zařízení a aktualizace Kubernetes. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a vaše zařízení bude mít výpadek až 1,5 hodin pro aktualizaci.
 
 Chcete-li nainstalovat aktualizace do zařízení, je třeba nejprve nakonfigurovat umístění serveru aktualizací. Po nakonfigurování serveru aktualizací můžete aktualizace použít prostřednictvím uživatelského rozhraní Azure Portal nebo místního webového uživatelského rozhraní.
 
@@ -32,7 +37,7 @@ Každý z těchto kroků je popsaný v následujících částech.
 
 ## <a name="configure-update-server"></a>Konfigurace serveru aktualizací
 
-1. V místním webovém uživatelském rozhraní přejdete na **Configuration**  >  **Server aktualizace** konfigurace. 
+1. V místním webovém uživatelském rozhraní přejdete na   >  **Server aktualizace** konfigurace. 
    
     ![Konfigurace aktualizací 1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
@@ -161,7 +166,7 @@ Chcete-li stáhnout aktualizaci z katalogu Microsoft Update, proveďte následuj
 
 2. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix nebo podmínek pro aktualizaci, kterou chcete stáhnout, do znalostní báze (KB). Zadejte například **Azure Stack Edge pro** a pak klikněte na **Hledat**.
    
-    Seznam aktualizací se zobrazí jako **Azure Stack Edge update 2011**.
+    Seznam aktualizací se zobrazí jako **Azure Stack Edge update 2012**.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -196,7 +201,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
 5. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. V aktuální verzi by se zobrazila verze zobrazeného softwaru **Azure Stack Edge 2011**.
+6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web  >  **aktualizace softwaru** údržba. V aktuální verzi by se zobrazila verze zobrazeného softwaru **Azure Stack Edge 2012**.
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

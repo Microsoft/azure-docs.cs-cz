@@ -1,5 +1,5 @@
 ---
-title: Průvodce migrací SQL Server SQL Database
+title: 'SQL Server SQL Database: Průvodce migrací'
 description: Podle tohoto průvodce migrujte databáze SQL Server do Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326960"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358975"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Průvodce migrací: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-s
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Chcete-li migrovat SQL Server do Azure SQL Database, ujistěte se, že máte následující požadavky: 
 
@@ -100,7 +100,7 @@ Pokud máte více serverů a databází, které je potřeba posoudit a analyzova
 > [!IMPORTANT]
 > Průběžné hodnocení pro více databází, zejména velké, můžou být automatizované pomocí [nástroje příkazového řádku DMA](/sql/dma/dma-commandline) a nahrály na [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) pro další analýzy a cílení na cíle.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení úloh přidružených ke fázi před migrací jste připraveni provést migraci schématu a dat. 
 

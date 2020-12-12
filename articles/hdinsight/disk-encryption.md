@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005652"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359755"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -36,7 +36,7 @@ Tyto typy jsou shrnuty v následující tabulce.
 |Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
 |---|---|---|---|
 |Kafka, HBA s akcelerovanými zápisy|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení layer2: volitelné šifrování v klidovém stavu s VYUŽITÍm CMK|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
-|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|Není k dispozici|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|–|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
@@ -119,15 +119,24 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 Nyní jste připraveni vytvořit nový cluster HDInsight. Klíče spravované zákazníkem se dají použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z klíčových clusterů spravovaných zákazníkem a klíče spravované zákazníkem se nedají přidat do existujících clusterů.
 
+Od verze z [listopadu 2020](hdinsight-release-notes.md#release-date-11182020)podporuje HDInsight vytváření clusterů pomocí identifikátorů URI klíčů bez verzí. Pokud vytvoříte cluster s identifikátorem URI klíče bez verze, pokusí se cluster HDInsight při aktualizaci klíče v Azure Key Vault provést automatické střídání klíče. Pokud vytvoříte cluster s identifikátorem URI klíče se správou verzí, budete muset provést ruční střídání klíče, jak je popsáno v tématu [otočení šifrovacího klíče](#rotating-the-encryption-key).
+
+V případě clusterů vytvořených před vydáním verze z listopadu 2020 bude nutné ručně provést střídání klíčů pomocí identifikátoru URI klíče s verzí.
+
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Během vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+Během vytváření clusteru můžete buď použít klíč s verzí, nebo klíč bez verze následujícím způsobem:
+
+- **Verze** – při vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- Bez **verzí** – při vytváření clusteru zadejte jenom **identifikátor klíče**. Například `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+Musíte také přiřadit spravovanou identitu ke clusteru.
 
 ![Vytvořit nový cluster](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create).
+Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure vytvořit nový cluster Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create). Parametr `encryption-key-version` je nepovinný.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 
-Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](../azure-resource-manager/templates/overview.md).
+Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](../azure-resource-manager/templates/overview.md). Vlastnost šablony Resource Manageru `diskEncryptionKeyVersion` je volitelná.
 
 V tomto příkladu se k volání šablony používá PowerShell.
 
@@ -355,7 +364,7 @@ Obsah šablony správy prostředků `azuredeploy.json` :
 
 ### <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
 
-Můžou nastat situace, kdy budete možná chtít změnit šifrovací klíče používané clusterem HDInsight po jeho vytvoření. To může být snadné prostřednictvím portálu. Pro tuto operaci musí mít cluster přístup k aktuálnímu klíči i k zamýšlenému novému klíči. v opačném případě se operace otočení klíče nezdaří.
+Šifrovací klíče používané ve spuštěném clusteru můžete změnit pomocí Azure Portal nebo Azure CLI. Pro tuto operaci musí mít cluster přístup k aktuálnímu klíči i k zamýšlenému novému klíči. v opačném případě se operace otočení klíče nezdaří. Pro clustery vytvořené po vydání verze z listopadu 2020 můžete zvolit, jestli chcete, aby nový klíč měl verzi nebo ne. Pro clustery vytvořené před vydáním verze z listopadu 2020 je nutné při střídání šifrovacího klíče použít klíč se správou verzí.
 
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 

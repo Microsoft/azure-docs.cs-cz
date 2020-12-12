@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540400"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358567"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -35,7 +35,7 @@ V tomto kurzu se používá aplikace logiky k tomu, abyste si ukázali, jak:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Abyste mohli začít, budete potřebovat účet Video Indexer společně s [přístupem k rozhraním API přes klíč rozhraní API](video-indexer-use-apis.md). 
 * Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  
@@ -56,7 +56,7 @@ Pokud chcete nastavit první tok, budete muset zadat Video Indexer klíč rozhra
 > [!TIP]
 > Pokud jste dříve připojili účet Azure Storage nebo účet Video Indexer k aplikaci logiky, budou se vám podrobnosti o připojení ukládat a automaticky se připojí. <br/>Připojení můžete upravit kliknutím na **změnit připojení** v dolní části Azure Storage (okno úložiště) nebo v akci video indexer (okno přehrávače).
 
-Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, najděte a vyberte v **návrháři Logic Apps**Trigger "při přidání nebo úpravě objektu BLOB".
+Jakmile se můžete připojit ke svým účtům Azure Storage a Video Indexer, najděte a vyberte v **návrháři Logic Apps** Trigger "při přidání nebo úpravě objektu BLOB".
 
 Vyberte kontejner, ve kterém budou umístěny soubory videa. 
 
@@ -80,7 +80,7 @@ Adresu URL zpětného volání teď vynecháte prázdné. Přidáte ho až po do
 
 Můžete použít výchozí hodnotu pro ostatní parametry nebo je nastavit podle vašich potřeb. 
 
-Klikněte na **Uložit**a pojďme přejít na, aby se nakonfigurovali druhý tok, aby se přehledy po nahrání a indexování dokončily. 
+Klikněte na **Uložit** a pojďme přejít na, aby se nakonfigurovali druhý tok, aby se přehledy po nahrání a indexování dokončily. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>Nastavení druhého toku – extrakce JSON  
 
@@ -136,3 +136,5 @@ Tento kurz ukázal pouze jeden příklad konektoru Video Indexer. Video Indexer 
 
 > [!div class="nextstepaction"]
 > [Použití rozhraní API Video Indexeru](video-indexer-use-apis.md)
+
+Další zdroje najdete v tomto dokumentu v části [video indexer.](https://docs.microsoft.com/connectors/videoindexer-v2/)

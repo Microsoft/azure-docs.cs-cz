@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484652"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360171"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
 
@@ -39,26 +39,25 @@ Data můžete snadno hromadně načítat pomocí vyhrazených fondů SQL, a to j
 
 ### <a name="steps"></a>Postup
 
-1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet. Pokud se typ souboru Parquet nedá potvrdit, použije se ve výchozím nastavení text s oddělovači (CSV).
+1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet i soubory s oddělovači (CSV) včetně mapování zdrojových polí ze souboru na příslušné cílové datové typy SQL. 
 
    ![Výběr zdrojového umístění](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Vyberte nastavení formátu souboru včetně účtu úložiště, do kterého chcete zapsat odmítnuté řádky (soubor s chybou). V současné době jsou podporovány pouze soubory CSV a Parquet.
+2. Vyberte nastavení formátu souboru včetně nastavení chyb, pro které se během procesu hromadného načtení odmítnou řádky. Můžete také vybrat možnost data verze Preview, abyste viděli, jak příkaz COPY analyzuje soubor, který vám pomůže nakonfigurovat nastavení formátu souboru. Vyberte možnost Ukázková data pokaždé, když změníte nastavení formátu souboru, abyste viděli, jak příkaz COPY bude analyzovat soubor s aktualizovaným nastavením:
 
-    ![Výběr nastavení formátu souboru](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. Můžete vybrat možnost Ukázková data, abyste viděli, jak příkaz COPY analyzuje soubor, abyste mohli nakonfigurovat nastavení formátu souboru. Vyberte možnost Ukázková data pokaždé, když změníte nastavení formátu souboru, abyste viděli, jak příkaz COPY bude analyzovat soubor s aktualizovaným nastavením: ![ Náhled dat](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Náhled dat](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - V Průvodci hromadnou zátěží není podporováno zobrazení náhledu dat pomocí koncových znaků polí s více znaky. Průvodce hromadnou zátěží zobrazí náhled dat v jednom sloupci, pokud je zadán ukončovací znak pole s více znaky. 
+> - Když vyberete možnost "odvodit názvy sloupců", Průvodce hromadným zatížením analyzuje názvy sloupců z prvního řádku zadaného polem první řádek. Průvodce hromadnou zátěží automaticky zvýší hodnotu FIRSTROW v příkazu COPY na hodnotu 1 pro ignorování tohoto řádku záhlaví. 
 > - V příkazu COPY se podporuje zadání zakončení řádků s více znaky. v průvodci hromadným zatížením to však není podporováno, pokud bude vyvolána chyba.
 
-4. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
+3. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pokud je povolená možnost "odvodit názvy sloupců", názvy sloupců poznámky se automaticky zjistí. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce:
 
-5. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pokud je povolená možnost "odvodit názvy sloupců", názvy sloupců poznámky se automaticky zjistí. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce: ![ Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. Vyberte otevřít skript a skript T-SQL se vygeneruje příkazem COPY, který se má načíst ze služby Data Lake: ![ otevření skriptu SQL.](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Vyberte otevřít skript a skript T-SQL se vygeneruje příkazem COPY, který se má načíst ze služby Data Lake: ![ otevření skriptu SQL.](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Další kroky
 

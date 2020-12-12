@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852519"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359842"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -41,7 +41,7 @@ Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasa
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/signin/index/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/signin/index/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Pak vyberte **Webová aplikace**. 
 
@@ -86,7 +86,7 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
    * Adresa URL serveru – nastavte tuto hodnotu na `https://mcr.microsoft.com`
    * Username (volitelné) – vytvořte uživatelské jméno. 
    * Heslo (volitelné) – vytvořte zabezpečené heslo, které si zapamatujete.
-   * Image a tag – nastavte tuto hodnotu na `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Image a tag – nastavte tuto hodnotu na `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * Průběžné nasazování – toto nastavte na **zapnuto** , pokud chcete dostávat automatické aktualizace, když vývojový tým provede změny v nástroji Sample labeling.
    * Spouštěcí příkaz – nastavte tuto hodnotu na `./run.sh eula=accept`
     

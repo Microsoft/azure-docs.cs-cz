@@ -2,18 +2,17 @@
 title: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL ve virtuálních počítačích Azure-Linux | Microsoft Docs
 description: Přečtěte si o nastavení naslouchacího procesu skupiny dostupnosti v SQL Server na virtuálních počítačích s RHEL v Azure.
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485784"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359978"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,13 +71,13 @@ Azure volá *fond back*-end fondu adres back-endu. V tomto případě je fond ba
 
 1. Ve vaší skupině prostředků klikněte na nástroj pro vyrovnávání zatížení, který jste vytvořili. 
 
-2. V **Nastavení**klikněte na **back-endové fondy**.
+2. V **Nastavení** klikněte na **back-endové fondy**.
 
-3. V případě **back-endu fondů**klikněte na tlačítko **Přidat** a vytvořte fond adres back-endu. 
+3. V případě **back-endu fondů** klikněte na tlačítko **Přidat** a vytvořte fond adres back-endu. 
 
-4. V části **název**do pole název zadejte **název back-** end fondu.
+4. V části **název** do pole název zadejte **název back-** end fondu.
 
-5. V části **přidruženo k**vyberte **virtuální počítač**. 
+5. V části **přidruženo k** vyberte **virtuální počítač**. 
 
 6. Vyberte každý virtuální počítač v prostředí a přidružte k jednotlivým výběrům příslušnou IP adresu.
 
@@ -99,7 +98,7 @@ Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlast
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
-   | **Protokol** |**TCP** |
+   | **Protokol** |**PROTOKOLU** |
    | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
    | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
@@ -128,7 +127,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
-   | **Protokol** |**TCP** |
+   | **Protokol** |**PROTOKOLU** |
    | **Port** |*1433* |
    | **Back-endový port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
@@ -136,7 +135,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | **Časový limit nečinnosti (minuty)** |*4* |
    | **Plovoucí IP adresa (přímá návrat ze serveru)** |**Povoleno** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Přidat back-end fond":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Přidat pravidlo vyrovnávání zatížení":::
 
 4. Klikněte na **OK**. 
 5. Azure nakonfiguruje pravidlo vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení teď má nakonfigurované směrování provozu do SQL Server instance, která hostuje naslouchací proces pro skupinu dostupnosti. 
@@ -176,7 +175,7 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
     sudo pcs constraint list --full
     ```
 
-    Měl by se zobrazit následující výstup:
+    Měli byste vidět následující výstup:
 
     ```output
     Location Constraints:

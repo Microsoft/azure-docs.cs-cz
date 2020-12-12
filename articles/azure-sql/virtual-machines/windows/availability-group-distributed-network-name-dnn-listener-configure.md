@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: abfcd6a13bc5e8ad262fe47111eb680ad00a34df
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168875"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359434"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurace naslouchacího procesu DNN pro skupinu dostupnosti
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -110,7 +111,7 @@ Za předpokladu, že jako název skupiny dostupnosti `ag1` , název naslouchací
 
 1. Otevřete nástroj rozhraní příkazového řádku, jako je třeba příkazový řádek nebo PowerShell. 
 1. Přejděte do umístění, do kterého jste `.ps1` skript uložili, například c:\Documents. 
-1. Spusťte skript: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Například: 
+1. Spusťte skript: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Příklad: 
 
    ```console
    c:\Documents> add_dnn_listener.ps1 ag1 dnnlsnr 6789
@@ -136,7 +137,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 Hodnota `1` pro `is_distributed_network_name` znamená, že naslouchací proces je název distribuované sítě (DNN): 
 
-:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="Zobrazení naslouchacího procesu DNN v rámci naslouchacího procesu skupiny dostupnosti v SQL Server Management Studio (SSMS)":::
+:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="Použijte sys.availability_group_listeners k identifikaci naslouchacího procesu DNN, který má hodnotu 1 v is_distributed_network_name":::
 
 
 ## <a name="update-connection-string"></a>Aktualizovat připojovací řetězec

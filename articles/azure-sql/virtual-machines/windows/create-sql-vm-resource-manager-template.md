@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556416"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359638"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
 
@@ -58,24 +59,24 @@ Další SQL Server v šablonách virtuálních počítačů Azure najdete v [gal
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-    * **Předplatné** : vyberte předplatné Azure.
-    * **Skupina prostředků** : Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
-    * **Oblast** : Vyberte oblast.  Například **USA – střed**.
-    * **Název virtuálního počítače** : zadejte název pro SQL Server virtuální počítač. 
-    * **Velikost virtuálního počítače** : v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
-    * **Existující Virtual Network název** : zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
+    * **Předplatné**: vyberte předplatné Azure.
+    * **Skupina prostředků**: Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
+    * **Oblast**: Vyberte oblast.  Například **USA – střed**.
+    * **Název virtuálního počítače**: zadejte název pro SQL Server virtuální počítač. 
+    * **Velikost virtuálního počítače**: v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
+    * **Existující Virtual Network název**: zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
     * **Existující skupina prostředků virtuální** sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
-    * **Název existující podsítě** : název připravené podsítě. 
-    * **Nabídka Image** : vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
-    * **SKU SQL** : vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
-    * **Uživatelské jméno správce** : uživatelské jméno pro správce virtuálního počítače. 
-    * **Heslo správce** : heslo používané účtem správce virtuálních počítačů. 
-    * **Typ úlohy úložiště** : typ úložiště pro zatížení, které nejlépe odpovídá vašemu podniku. 
-    * **Počet datových disků SQL** : počet disků, které SQL Server používá pro datové soubory.  
-    * **Cesta k datům** : cesta k datovým souborům SQL Server. 
-    * **Počet disků protokolu SQL** : počet disků, které SQL Server používá pro soubory protokolu. 
-    * **Cesta protokolu** : cesta pro soubory protokolu SQL Server. 
-    * **Umístění** : umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
+    * **Název existující podsítě**: název připravené podsítě. 
+    * **Nabídka Image**: vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
+    * **SKU SQL**: vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
+    * **Uživatelské jméno správce**: uživatelské jméno pro správce virtuálního počítače. 
+    * **Heslo správce**: heslo používané účtem správce virtuálních počítačů. 
+    * **Typ úlohy úložiště**: typ úložiště pro zatížení, které nejlépe odpovídá vašemu podniku. 
+    * **Počet datových disků SQL**: počet disků, které SQL Server používá pro datové soubory.  
+    * **Cesta k datům**: cesta k datovým souborům SQL Server. 
+    * **Počet disků protokolu SQL**: počet disků, které SQL Server používá pro soubory protokolu. 
+    * **Cesta protokolu**: cesta pro soubory protokolu SQL Server. 
+    * **Umístění**: umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
 
 3. Vyberte **Zkontrolovat a vytvořit**. Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
 

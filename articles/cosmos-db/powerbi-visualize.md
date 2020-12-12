@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339729"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359859"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB s využitím konektoru Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ Než budete postupovat podle pokynů v tomto Power BI kurzu, ujistěte se, že m
 
 * [Stáhněte si nejnovější verzi Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
-* Stáhněte si [ukázková data Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) z GitHubu.
+* Stáhněte si [ukázková data Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json) z GitHubu.
 
 * [Vytvořte účet databáze Azure Cosmos](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) a importujte data Volcano pomocí [Nástroje pro migraci dat Azure Cosmos DB](import-data.md). Při importu dat zvažte následující nastavení zdroje a cíle v nástroji pro migraci dat:
 
@@ -76,13 +76,13 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
 
 1. Spusťte Power BI Desktop.
 
-2. Můžete **získat data** , zobrazit **Poslední zdroje** nebo **otevřít jiné sestavy** přímo z úvodní obrazovky. Kliknutím na X v pravém horním rohu zavřete obrazovku. Zobrazí se zobrazení Power BI Desktop **sestavy** .
+2. Můžete **získat data**, zobrazit **Poslední zdroje** nebo **otevřít jiné sestavy** přímo z úvodní obrazovky. Kliknutím na X v pravém horním rohu zavřete obrazovku. Zobrazí se zobrazení Power BI Desktop **sestavy** .
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop zobrazení sestav – konektor Power BI":::
 
 3. Vyberte pás karet **Domů** a pak klikněte na **získat data**.  Mělo by se zobrazit okno **získat data** .
 
-4. Klikněte na **Azure** , vyberte **Azure Cosmos dB (beta verze)** a pak klikněte na **připojit**. 
+4. Klikněte na **Azure**, vyberte **Azure Cosmos dB (beta verze)** a pak klikněte na **připojit**. 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop get data-Power BI Connector":::
 

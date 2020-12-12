@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142107"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359026"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Kurz: návratová Azure Data Box (Preview)
 
@@ -45,7 +45,7 @@ Další kroky závisí na tom, kam zařízení vracíte.
 
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
-Zajistěte, aby byla kopie dat ze zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, kam zařízení odesíláte.
+Zajistěte, aby byla kopie dat ze zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, kam zařízení dodáváte.
 
 ## <a name="us-canada-europe"></a>[USA, Kanada, Evropa](#tab/in-us-canada-europe)
 
@@ -53,12 +53,12 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 
 1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. 
 2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se štítek poškodí, ztratí nebo nezobrazí na displeji s elektronickým inkoustem, obraťte se na podporu Microsoftu. Pokud vám to podpora navrhne, můžete pak na webu Azure Portal přejít do části **Přehled > Stáhnout expediční štítek**. Stáhněte si expediční štítek a připevněte ho na zařízení. 
+3. Ujistěte se, že se popisek expedice zobrazuje na displeji elektronického inkoustu, a naplánujte vyzvednutí u svého operátora. Pokud je popisek poškozený nebo ztracený nebo se nezobrazuje v zobrazení E-inkoustu, kontaktujte podpora Microsoftu. Pokud je tato podpora navrhována, můžete přejít na **přehled > stáhnout expediční štítek** v Azure Portal. Stáhněte si expediční štítek a připněte ho na zařízení. 
 4. Pokud zařízení vracíte, domluvte si vyzvednutí s UPS. Naplánování vyzvednutí:
 
-    - Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
-    - Během volání uveďte sledovací číslo zpětné zásilky, jak je uvedené na displeji s elektronickým inkoustem nebo na vytištěném štítku.
-    - Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
+   - Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
+   - Během volání uveďte sledovací číslo zpětné zásilky, jak je uvedené na displeji s elektronickým inkoustem nebo na vytištěném štítku. Pokud sledovací číslo nezařadíte do uvozovek, bude zdroj napájení během vyzvednutí vyžadovat dodatečné poplatky.
+   - Pokud se při plánování výdeje objeví nějaké problémy nebo budete požádáni o platbu dalších poplatků, kontaktujte Azure Data Box operace. Odešlete e-mail na adresu [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     Místo naplánování vyzvednutí můžete také Data Box dovézt na nejbližší sběrné místo.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
@@ -67,7 +67,7 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
 
-1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
+1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
 2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
@@ -75,7 +75,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 
 ## <a name="japan"></a>[Japonsko](#tab/in-japan)
 
-1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
+1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
 2. Vypněte zařízení a odpojte kabely.
 3. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
 4. Vyplňte název vaší společnosti a adresu do nákladního listu do části informací o odesílateli.
@@ -105,7 +105,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
-1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
+1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
 2. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení přípravy k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení. 
@@ -129,12 +129,12 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 ## <a name="south-africa"></a>[Jižní Afrika](#tab/in-sa)
 
-1. Uchová původní pole použité k balení zařízení pro odeslání zpětné zásilky.
+1. Ponechat původní pole používané k balení zařízení k odeslání zpětné zásilky.
 2. Poznamenejte si referenční číslo (číslo nákladového čísla) zobrazené v místním webovém uživatelském rozhraní zařízení. Toto číslo se zobrazí po úspěšném **spuštění Příprava k odeslání** .
 3. Stáhněte a tiskněte expediční štítek, který je k dispozici v místním webovém uživatelském rozhraní zařízení, a přihlaste se k balíčku dodávek.
 4. Pokud chcete vyrezervovat vyzvednutí pomocí DHL, vyberte jednu z následujících možností:
 
-    * Zavolejte kontaktní centrum služby zákazníkům před 2:00. odp. na **+ 27 (0) 11 9213600**vyberte možnost 1 a pak zadejte číslo nákladového pole.
+    * Zavolejte kontaktní centrum služby zákazníkům před 2:00. odp. na **+ 27 (0) 11 9213600** vyberte možnost 1 a pak zadejte číslo nákladového pole.
     * Pomocí následující šablony odešlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com):
 
     ```output
@@ -145,9 +145,9 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Další možností je donést balíček na nejbližší sběrné místo DHL.
+    * Místo toho můžete balíček odpustit na nejbližším místě služby DHL.
 
-5. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
+5. Pokud provedete nějaké problémy, pošlete e-mail [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) s podrobnostmi o problémech, se kterými jste se setkali, a vložte číslo poštovního pole do předmětu: řádek. Můžete také zavolat na číslo +27(0)119213902.
 
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
@@ -157,7 +157,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
 5. Během pracovní doby (pondělí až pátek, 9:00 až 18:00) zavolejte na zákaznickou linku společnosti **Quantium Solutions** na čísle **(852) 2318 1213**.  
 6. Při žádosti o vyzvednutí uveďte, že se jedná o vyzvednutí pro Microsoft Azure, referenční číslo a také sledovací číslo (nad čárovým kódem) ze zpátečního expedičního štítku.
-7. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti Quantium Solutions a domluvte se na náhradním řešení.
+7. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud se Courier nedostane do kolekce, zavolejte na linku řešení Quantium pro alternativní opatření.
 8. Při rezervaci vyzvednutí u společnosti Quantium zašlete oddělení [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) potvrzení pomocí následující šablony:
 
     ```output
@@ -172,7 +172,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
        * Pickup time:
     ```
 
-Pokud se vyskytnou nějaké problémy, pošlete e-mail Data Box operací Asie [adbo@microsoft.com](mailto:adbo@microsoft.com) a poskytněte název úlohy v hlavičce předmětu a nastaly potíže.
+Pokud jste procházeli mezi všemi problémy, pošlete e-mail Data Box Operations Asie, [adbo@microsoft.com](mailto:adbo@microsoft.com) který poskytuje název úlohy v hlavičce předmětu a byl zjištěn problém.
 
 ## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
@@ -180,7 +180,7 @@ Pokud používáte Data Box v Japonsku, Singapuru, Indii, Jihoafrické republice
 
 1. Po úspěšném dokončení tohoto kroku si poznamenejte autorizační kód uvedený na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu.
 2. Vypněte zařízení a odpojte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Až budete připraveni toto zařízení vrátit, použijte následující šablonu a odešlete e-mail provoznímu týmu služby Azure Data Box.
+3. Až budete připraveni vrátit zařízení, odešlete e-mailem Azure Data Box provoznímu týmu pomocí šablony níže.
     
     ```
     To: adbops@microsoft.com 
@@ -194,7 +194,7 @@ Pokud používáte Data Box v Japonsku, Singapuru, Indii, Jihoafrické republice
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
- 
+
 Jakmile zařízení dosáhne datacentra Azure, Data Box vymaže data na svých discích podle [pokynů 1 pro aktualizaci SP 800-88 revize 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
 ## <a name="next-steps"></a>Další kroky
@@ -202,7 +202,7 @@ Jakmile zařízení dosáhne datacentra Azure, Data Box vymaže data na svých d
 V tomto kurzu jste se seznámili s tématy, jako například:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Vymazání dat z Data Boxu

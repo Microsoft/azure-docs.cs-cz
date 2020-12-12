@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094451"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359077"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurace skupiny dostupnosti Always On SQL Server napříč různými oblastmi Azure
 
@@ -96,7 +97,7 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
 
 1. Přidejte prostředek IP adresy do clusteru.
 
-   Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Vyberte název clusteru, klikněte pravým tlačítkem na název clusteru v části **základní prostředky clusteru** a vyberte **vlastnosti** : 
+   Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Vyberte název clusteru, klikněte pravým tlačítkem na název clusteru v části **základní prostředky clusteru** a vyberte **vlastnosti**: 
 
    ![Snímek obrazovky zobrazující "Správce clusteru s podporou převzetí služeb při selhání" s názvem clusteru, názvem serveru a "vlastnostmi".](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
@@ -113,7 +114,7 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
 
 1. Přidejte prostředek IP adresy do role skupiny dostupnosti v clusteru. 
 
-   Klikněte pravým tlačítkem na roli skupiny dostupnosti v Správce clusteru s podporou převzetí služeb při selhání, zvolte **Přidat prostředek** , **Další prostředky** a vyberte **IP adresa** .
+   Klikněte pravým tlačítkem na roli skupiny dostupnosti v Správce clusteru s podporou převzetí služeb při selhání, zvolte **Přidat prostředek**, **Další prostředky** a vyberte **IP adresa**.
 
    ![Vytvořit IP adresu](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -170,16 +171,16 @@ Pokud připojovací řetězce upravovat nemůžete, můžete nakonfigurovat ukl�
 Pokud chcete otestovat připojení naslouchacího procesu ke vzdálené oblasti, můžete převzít služby repliky do vzdálené oblasti. I když je replika asynchronní, převzetí služeb při selhání je ohroženo potenciální ztrátou dat. Pokud chcete převzít služby při selhání bez ztráty dat, změňte režim dostupnosti na synchronní a nastavte režim převzetí služeb při selhání na automaticky. Použijte k tomu následující postup:
 
 1. V **Průzkumník objektů** se připojte k instanci SQL Server, která je hostitelem primární repliky.
-1. V části **skupiny dostupnosti AlwaysOn** , **skupiny dostupnosti** klikněte pravým tlačítkem na vaši skupinu dostupnosti a vyberte **vlastnosti** .
+1. V části **skupiny dostupnosti AlwaysOn**, **skupiny dostupnosti** klikněte pravým tlačítkem na vaši skupinu dostupnosti a vyberte **vlastnosti**.
 1. Na stránce **Obecné** v části **repliky dostupnosti** nastavte sekundární repliku na webu Dr tak, aby používala režim **synchronního potvrzování** a režim **automatického** převzetí služeb při selhání.
-1. Pokud máte sekundární repliku ve stejné lokalitě jako primární replika pro zajištění vysoké dostupnosti, nastavte tuto repliku na **asynchronní potvrzení** a **Ruční** .
+1. Pokud máte sekundární repliku ve stejné lokalitě jako primární replika pro zajištění vysoké dostupnosti, nastavte tuto repliku na **asynchronní potvrzení** a **Ruční**.
 1. Vyberte OK.
-1. V **Průzkumník objektů** klikněte pravým tlačítkem na skupinu dostupnosti a vyberte **zobrazit řídicí panel** .
+1. V **Průzkumník objektů** klikněte pravým tlačítkem na skupinu dostupnosti a vyberte **zobrazit řídicí panel**.
 1. Na řídicím panelu ověřte, zda je replika na webu DR synchronizovaná.
-1. V **Průzkumník objektů** klikněte pravým tlačítkem na skupinu dostupnosti a vyberte **převzetí služeb při selhání...** . Studia Management SQL Server otevře Průvodce pro převzetí služeb při selhání SQL Server.  
+1. V **Průzkumník objektů** klikněte pravým tlačítkem na skupinu dostupnosti a vyberte **převzetí služeb při selhání...**. Studia Management SQL Server otevře Průvodce pro převzetí služeb při selhání SQL Server.  
 1. Vyberte **Další** a na webu Dr vyberte instanci SQL Server. Znovu vyberte **Další** .
-1. Připojte se k instanci SQL Server na webu DR a vyberte **Další** .
-1. Na stránce **Souhrn** ověřte nastavení a vyberte **Dokončit** .
+1. Připojte se k instanci SQL Server na webu DR a vyberte **Další**.
+1. Na stránce **Souhrn** ověřte nastavení a vyberte **Dokončit**.
 
 Po otestování připojení přesuňte primární repliku zpátky do svého primárního datového centra a nastavte režim dostupnosti zpět na normální provozní nastavení. Následující tabulka ukazuje normální provozní nastavení pro architekturu popsanou v tomto dokumentu:
 

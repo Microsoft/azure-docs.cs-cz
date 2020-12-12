@@ -1,5 +1,5 @@
 ---
-title: 'Průvodce migrací: spravovaná instance DB2 do SQL'
+title: 'Spravovaná instance DB2 do SQL: Průvodce migrací'
 description: Podle tohoto průvodce migrujte databáze DB2 do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324750"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359179"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Průvodce migrací: spravovaná instance DB2 do SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ V této příručce se naučíte migrovat databáze DB2 do spravované instance 
 
 Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K migraci databáze DB2 do spravované instance SQL potřebujete:
 
@@ -102,7 +102,7 @@ K převedení schématu použijte následující postup:
 1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení vyhodnocení databází a vyřešení případných rozporů je dalším krokem spuštění procesu migrace.
 

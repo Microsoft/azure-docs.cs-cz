@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008414"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360063"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení na vyhrazené hostitele pomocí Azure CLI
  
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](../dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu Azure pomocí `az login` . 
+Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.16.0 nebo novější a přihlásili jste se k účtu Azure pomocí `az login` . 
 
 
 ## <a name="limitations"></a>Omezení

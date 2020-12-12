@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327470"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358916"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Provozní kontinuita a HADR pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,20 @@ Můžete mít řešení zotavení po havárii pro vaše SQL Server databáze v A
 
 Pokud máte [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), můžete implementovat plány hybridního zotavení po havárii s SQL Server bez dalších nákladů na licencování pro instanci pasivního zotavení po havárii.
 
-Na následujícím obrázku instalační program používá SQL Server běžící na virtuálním počítači Azure, který používá 12 jader jako repliku zotavení po havárii pro místní SQL Server nasazení, které využívá 12 jader. V minulosti byste potřebovali pro místní nasazení a nasazení Azure Virtual Machines licenci na 12 jader SQL Server. Nové zvýhodnění nabízí výhody pasivních replik pro spouštění na virtuálním počítači Azure. Teď budete muset licencovat jenom 12 jader SQL Server běžících v místním prostředí, pokud jsou splněné kritéria zotavení po havárii pro pasivní repliku v Azure Virtual Machines.
+Můžete mít například aktivní primární místní prostředí a bezplatnou pasivní sekundární službu pro zotavení po havárii v Azure: 
 
-![Volná replika pro zotavení po havárii v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![Bezplatná sekundární pasivní v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
+
+Na předchozím obrázku instalační program používá SQL Server běžící na virtuálním počítači Azure, který používá 12 jader jako repliku zotavení po havárii pro místní SQL Server nasazení, které využívá 12 jader. V minulosti byste potřebovali pro místní nasazení a nasazení Azure Virtual Machines licenci na 12 jader SQL Server. Nové zvýhodnění nabízí výhody pasivních replik pro spouštění na virtuálním počítači Azure. Teď budete muset licencovat jenom 12 jader SQL Server běžících v místním prostředí, pokud jsou splněné kritéria zotavení po havárii pro pasivní repliku v Azure Virtual Machines.
+
+Pokud jsou všechny tři repliky hostované v Azure, můžete mít také dva bezplatné pasivní sekundární služby: 
+
+![Dva bezplatné pasivní služby v případě všeho v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+Nebo můžete nakonfigurovat hybridní prostředí s podporou převzetí služeb při selhání s licencovaným primárním místním, jedním bezplatným pasivním pro HA a dvěma bezplatnými pasivními službami pro DR: 
+
+![Tři bezplatné pasivní při hybridním prostředí s jednou primární místní replikou](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
+
 
 Další informace najdete v [licenčních podmínkách k produktu](https://www.microsoft.com/licensing/product-licensing/products). 
 

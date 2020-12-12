@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602350"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359294"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "96602350"
 
 V tomto rychlém startu vytvoříte účet Azure dosah.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -30,6 +30,10 @@ V tomto rychlém startu vytvoříte účet Azure dosah.
 * Váš účet musí mít oprávnění k vytváření prostředků v předplatném.
 
 * Pokud jste **Azure Policy** blokující všechny aplikace při vytváření **účtu úložiště** a **oboru názvů EventHub**, je potřeba vytvořit výjimku zásad pomocí značky, která se dá zadat během procesu vytváření účtu dosah. Hlavním důvodem je to, že pro každý vytvořený účet dosah je potřeba vytvořit spravovanou skupinu prostředků a v rámci této skupiny prostředků, účtu úložiště a oboru názvů EventHub.
+
+    > [!important]
+    > Nemusíte postupovat podle tohoto kroku, pokud nemáte Azure Policy nebo existující Azure Policy neblokuje vytváření **účtu úložiště** a **oboru názvů EventHub**.
+
     1. Přejděte na Azure Portal a vyhledejte **zásady** .
     1. Postupujte podle pokynů pro [Vytvoření vlastní definice zásad](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) nebo upravte existující zásady a přidejte dvě výjimky s `not` operátorem a `resourceBypass` tagem:
 
@@ -151,7 +155,7 @@ Pokud kliknete na tlačítko Přidat, zobrazí se dvě možnosti s označením (
 
 1. Vyberte **Přidat přiřazení role**.
 
-1. Pro typ role v roli **dosah data kurátor role** nebo **Správce zdrojů dat dosah** v závislosti na tom, k čemu se instanční objekt používá (podrobnosti najdete v tématu [oprávnění katalogu](catalog-permissions.md) ).
+1. Pro typ role v roli **dosah data kurátor role** nebo **Správce zdrojů dat dosah** v závislosti na tom, jaký objekt zabezpečení se bude používat (podrobnosti najdete v tématu [oprávnění katalogu](catalog-permissions.md) a [objekty zabezpečení aplikací a služeb v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ).
 
 1. Pro **přiřazení přístupu** ponechte výchozí nastavení, **uživatele, skupinu nebo instanční objekt**.
 

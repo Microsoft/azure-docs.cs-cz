@@ -8,18 +8,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429fe39f84a54c22fa97178b85f417d76dc84a8e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298877"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359468"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +32,7 @@ Automatizované opravy vytváří okno údržby pro virtuální počítač Azure
 
 Automatizované opravy závisí na [rozšíření agenta SQL Server infrastruktury jako služby (IaaS)](sql-server-iaas-agent-extension-automate-management.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete používat automatizované opravy, vezměte v úvahu následující požadavky:
 
 **Operační systém**:
@@ -65,7 +66,7 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 ## <a name="settings"></a>Nastavení
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované opravy. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
-| Nastavení | Možné hodnoty | Description |
+| Nastavení | Možné hodnoty | Popis |
 | --- | --- | --- |
 | **Automatizované opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatizované opravy pro virtuální počítač Azure. |
 | **Plán údržby** |Každodenní, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán pro stažení a instalaci aktualizací Windows, SQL Server a Microsoft pro váš virtuální počítač. |
@@ -79,7 +80,7 @@ Pomocí Azure Portal můžete nakonfigurovat automatizované opravy během zřiz
 ### <a name="new-vms"></a>Nové virtuální počítače
 Pomocí Azure Portal můžete nakonfigurovat automatizované opravy při vytváření nového virtuálního počítače s SQL Server v modelu nasazení Správce prostředků.
 
-Na kartě **nastavení SQL Server** v části **automatizovaná oprava**proveďte možnost **změnit konfiguraci** . Na následujícím Azure Portal snímku obrazovky se zobrazuje okno **automatizované opravy SQL** .
+Na kartě **nastavení SQL Server** v části **automatizovaná oprava** proveďte možnost **změnit konfiguraci** . Na následujícím Azure Portal snímku obrazovky se zobrazuje okno **automatizované opravy SQL** .
 
 ![Automatizované opravy SQL v Azure Portal](./media/automated-patching/azure-sql-arm-patching.png)
 
@@ -89,7 +90,7 @@ Další informace najdete v tématu [zřízení virtuálního počítače s SQL 
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-U stávajících virtuálních počítačů s SQL Server otevřete svůj [prostředek virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení**vyberte **opravit** . 
+U stávajících virtuálních počítačů s SQL Server otevřete svůj [prostředek virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení** vyberte **opravit** . 
 
 ![Automatické opravy SQL pro existující virtuální počítače](./media/automated-patching/azure-sql-rm-patching-existing-vms.png)
 

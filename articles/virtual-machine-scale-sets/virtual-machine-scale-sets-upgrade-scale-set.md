@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016671"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358737"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -284,7 +284,7 @@ Po aktualizaci modelu sady škálování se nová konfigurace použije pro všec
 Sady škálování mají "zásady upgradu", které určují, jak jsou virtuální počítače aktualizované pomocí nejnovějšího modelu sady škálování. Existují tři režimy pro zásady upgradu:
 
 - **Automaticky** – v tomto režimu neposkytuje sada škálování žádné záruky týkající se pořadí vypínání virtuálních počítačů. Sada škálování může současně zabrat všechny virtuální počítače. 
-- **Rolling** V tomto režimu se sada škálování zaznamená aktualizace v dávkách s volitelnou dobou pozastavení mezi dávkami.
+-  V tomto režimu se sada škálování zaznamená aktualizace v dávkách s volitelnou dobou pozastavení mezi dávkami.
 - **Ruční** – v tomto režimu se při aktualizaci modelu sady škálování nic nestane se stávajícími virtuálními počítači.
  
 Pokud chcete aktualizovat stávající virtuální počítače, musíte provést ruční upgrade každého existujícího virtuálního počítače. Tento ruční upgrade můžete provést pomocí:
@@ -350,12 +350,12 @@ Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuál
 
 - **singlePlacementGroup** – Pokud má singlePlacementGroup hodnotu true, může být změněno na false. Pokud je však singlePlacementGroup false, **nemusí** být upraveno na hodnotu true.
 - **podsíť** – podsíť sady škálování může být upravena tak dlouho, dokud je původní podsíť a Nová podsíť ve stejné virtuální síti.
+- **imageReferenceSku** -SKU odkazu image se dá aktualizovat pro schválené verze [Linux distribuce](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), image Windows serveru/klienta a image bez [informací o plánu](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties). 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
 Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Mezi tyto vlastnosti patří:
 
-- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
-
+- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>Aktualizace specifické pro virtuální počítače
 Některé úpravy se můžou použít na konkrétní virtuální počítače místo vlastností globální sady škálování. V současné době je jedinou aktualizací specifickou pro konkrétní virtuální počítač připojení nebo odpojení datových disků k virtuálním počítačům v sadě škálování nebo k jejich odpojení. Tato funkce je ve verzi Preview. Další informace najdete v dokumentaci k [verzi Preview](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).

@@ -1,5 +1,5 @@
 ---
-title: SQL Server do spravované instance SQL – Průvodce migrací
+title: 'SQL Server do spravované instance SQL: Průvodce migrací'
 description: Podle tohoto průvodce migrujte vaše databáze SQL Server do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326892"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358890"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Další informace o migraci najdete v tématu [Přehled migrace](sql-server-to-m
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="Tok procesu migrace":::
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete migrovat SQL Server do spravované instance Azure SQL, nezapomeňte projít následující požadavky: 
 
@@ -102,7 +102,7 @@ Pokud potřebujete porovnat výkon úlohy na spravované instanci SQL s původn�
 Na základě informací ve fázi zjišťování a vyhodnocení vytvořte správnou velikost cílové spravované instance SQL. Můžete k tomu použít [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [šablonu Azure Resource Manager (ARM)](../../managed-instance/create-template-quickstart.md). 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení úloh přidružených ke fázi před migrací jste připraveni provést migraci schématu a dat. 
 

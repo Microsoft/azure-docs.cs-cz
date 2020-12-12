@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces AG VNN
+title: Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces VNN skupiny dostupnosti
 description: Naučte se konfigurovat Azure Load Balancer pro směrování provozu do naslouchacího procesu VNN (Virtual Network Name) pro vaši skupinu dostupnosti s SQL Server na virtuálních počítačích Azure pro zajištění vysoké dostupnosti a zotavení po havárii (HADR).
 services: virtual-machines-windows
 documentationcenter: na
@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a07f0416f26f81e8a2b6d22c79047dc8651bb78c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168803"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359876"
 ---
-# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces AG VNN
+# <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurace nástroje pro vyrovnávání zatížení pro naslouchací proces VNN skupiny dostupnosti
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 V Azure Virtual Machines clustery pomocí nástroje pro vyrovnávání zatížení uchovávají IP adresy, které se musí nacházet na jednom uzlu clusteru. V tomto řešení má nástroj pro vyrovnávání zatížení uloženou IP adresu pro naslouchací proces virtuální sítě (VNN) pro skupinu dostupnosti Always On (AG). 
@@ -72,11 +73,11 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. Vraťte se do skupiny prostředků Azure, která obsahuje virtuální počítače, a Najděte nový nástroj pro vyrovnávání zatížení. Možná budete muset aktualizovat zobrazení skupiny prostředků. Vyberte nástroj pro vyrovnávání zatížení.
 
-1. Vyberte **back-end fondy**a pak vyberte **Přidat**.
+1. Vyberte **back-end fondy** a pak vyberte **Přidat**.
 
 1. Přidružte back-end fond ke skupině dostupnosti, která obsahuje virtuální počítače.
 
-1. V části **cílové konfigurace sítě IP**vyberte **virtuální počítač** a zvolte virtuální počítače, které se budou podílet jako uzly clusteru. Nezapomeňte zahrnout všechny virtuální počítače, které budou hostovat FCI nebo skupinu dostupnosti.
+1. V části **cílové konfigurace sítě IP** vyberte **virtuální počítač** a zvolte virtuální počítače, které se budou podílet jako uzly clusteru. Nezapomeňte zahrnout všechny virtuální počítače, které budou hostovat FCI nebo skupinu dostupnosti.
 
 1. Výběrem **OK** vytvořte fond back-end.
 
@@ -86,7 +87,7 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. Vyberte **Přidat**.
 
-1. V podokně **Přidat sondu stavu** <span id="probe"> </span> nastavte následující parametry sondy stavu:
+1. V podokně **Přidat sondu stavu** <span id="probe"></span> nastavte následující parametry sondy stavu:
 
    - **Name (název**): název pro sondu stavu.
    - **Protokol**: TCP.
@@ -138,10 +139,10 @@ Následující tabulka popisuje hodnoty, které je třeba aktualizovat:
 
 |**Hodnota**|**Popis**|
 |---------|---------|
-|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě**klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
-|`AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V **Failover Cluster Manager**  >  **rolích**Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru**klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
+|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě** klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
+|`AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V   >  **rolích** Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru** klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
 |`ILBIP`|IP adresa interního nástroje pro vyrovnávání zatížení (interního nástroje). Tato adresa je nakonfigurovaná v Azure Portal jako interního nástroje adresa front-endu. To je také adresa IP SQL Server FCI. Můžete ji najít v **Správce clusteru s podporou převzetí služeb při selhání** na stejné stránce vlastností, kde jste našli `<AG listener IP Address Resource Name>` .|
-|`nnnnn`|Port testu, který jste nakonfigurovali v testu stavu nástroje pro vyrovnávání zatížení. Nepoužívaný port TCP je platný.|
+|`nnnnn`|Port testu, který jste nakonfigurovali v testu stavu nástroje pro vyrovnávání zatížení. Platný je jakýkoli nepoužívaný port TCP.|
 |SubnetMask| Maska podsítě pro parametr clusteru. Musí se jednat o adresu všesměrového vysílání IP protokolu TCP: `255.255.255.255` .| 
 
 

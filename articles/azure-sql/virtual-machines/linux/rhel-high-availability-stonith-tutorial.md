@@ -2,18 +2,17 @@
 title: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL ve virtuálních počítačích Azure-Linux | Microsoft Docs
 description: Přečtěte si o nastavení vysoké dostupnosti v prostředí clusteru RHEL a nastavení STONITH.
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 8e7ccacce732da4a0194af959abe94438451028a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 74dd14298b3c1cc72e72de9b4abcee8a9c2d9c37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559044"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359672"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -532,7 +531,7 @@ Chcete-li přidat roli, spusťte následující příkaz:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Měl by se zobrazit následující výstup:
+Měli byste vidět následující výstup:
 
 ```output
 {
@@ -669,7 +668,7 @@ Po dokončení konfigurace můžete zkontrolovat stav SQL Server a ověřit, jes
 systemctl status mssql-server --no-pager
 ```
 
-Měl by se zobrazit následující výstup:
+Měli byste vidět následující výstup:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -969,7 +968,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs resource
     ```
 
-    Měl by se zobrazit následující výstup:
+    Měli byste vidět následující výstup:
     
     **RHEL 7** 
     
@@ -1051,7 +1050,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs constraint list --full
     ```
 
-    Měl by se zobrazit následující výstup:
+    Měli byste vidět následující výstup:
     
     **RHEL 7**
 

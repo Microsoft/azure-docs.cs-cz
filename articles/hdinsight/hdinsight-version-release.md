@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350190"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359723"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -38,7 +38,12 @@ Podregistr teď podporuje dynamická materializovaná zobrazení nebo předem vy
 
 ### <a name="hive-transactional-tables"></a>Transakční tabulky Hive
 
-HDI 4,0 obsahuje Apache Hive 3. Podregistr 3 vyžaduje, aby byly v případě transakčních tabulek, které jsou ve skladu podregistru živé, shodné, konzistenci, izolaci a odolnost. Tabulky a tabulková data dodržující model ACID jsou používána a spravována produktem Hive. Data v tabulkách Create, načítat, Update a Delete (CRUD) musí být ve formátu optimalizovaného řádkového sloupce (ORC). Tabulky jen pro vložení podporují všechny formáty souborů.
+HDI 4,0 obsahuje Apache Hive 3. Podregistr 3 vyžaduje, aby byly v případě transakčních tabulek, které jsou ve skladu podregistru živé, shodné, konzistenci, izolaci a odolnost. Tabulky a tabulková data dodržující model ACID jsou používána a spravována produktem Hive. Data v tabulkách Create, načítat, Update a Delete (CRUD) musí být ve formátu optimalizovaného řádkového sloupce (ORC). Tabulky jen pro vložení podporují všechny formáty souborů. 
+
+> [!Note]
+> Podpora KYSELého a transakčního prostředí funguje pouze pro spravované tabulky a nikoli pro externí tabulky. Externí tabulky podregistru jsou navržené tak, aby externí strany mohly číst a zapisovat data tabulky, bez podregistru perfoming jakékoli změny podkladových dat. V případě tabulek pro KYSELINu může podregistr změnit podkladová data s komprimacemi a transakcemi.
+
+Mezi výhody v tabulkách KYSELosti patří následující:
 
 * V modelu ACID v2 došlo k navýšení výkonu jak u formátu úložiště, tak u prováděcího modulu.
 

@@ -4,15 +4,15 @@ description: Přihlašovací údaje autorizace pro operace AzCopy můžete zadat
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498111"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360284"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorizace přístupu k objektům blob pomocí AzCopy a Azure Active Directory (Azure AD)
 
@@ -73,7 +73,7 @@ Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadej
 
 Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomocí svých přihlašovacích údajů k účtu Azure. Po úspěšném přihlášení můžete zavřít okno prohlížeče a začít používat AzCopy.
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>Autorizace spravované identity
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 `<resource-id>`Zástupný symbol nahraďte ID prostředku spravované identity přiřazené uživatelem.
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>Autorizovat instanční objekt
 
@@ -181,8 +183,113 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > Zvažte použití výzvy, jak je znázorněno v tomto příkladu. Tímto způsobem se vaše heslo nezobrazí v historii příkazů vaší konzole. 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>Autorizovat bez Správce klíčů (Linux)
 
+Pokud váš operační systém nemá úložiště tajného klíče, jako je například *Správce klíčů*, `azcopy login` příkaz nebude fungovat. Místo toho můžete nastavit proměnné prostředí v paměti před spuštěním jednotlivých operací. Po dokončení operace zmizí tyto hodnoty z paměti, takže budete muset nastavit tyto proměnné pokaždé, když spustíte příkaz AzCopy.
+
+### <a name="authorize-a-user-identity"></a>Autorizovat identitu uživatele
+
+Po ověření, že byla identitě uživatele přidělena potřebná úroveň autorizace, zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+Pak spusťte libovolný příkaz AzCopy (například: `azcopy list https://contoso.blob.core.windows.net` ).
+
+Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadejte kód a potom klikněte na tlačítko **Další** .
+
+![Vytvoření kontejneru](media/storage-use-azcopy-v10/azcopy-login.png)
+
+Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomocí svých přihlašovacích údajů k účtu Azure. Po úspěšném přihlášení se operace může dokončit.
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>Autorizovat pomocí spravované identity v rámci systému
+
+Nejdřív se ujistěte, že máte na svém VIRTUÁLNÍm počítači povolenou spravovanou identitu na úrovni systému. Viz [spravovaná identita přiřazená systémem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+Zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Pak spusťte libovolný příkaz AzCopy (například: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>Autorizovat pomocí spravované identity přiřazené uživatelem
+
+Nejdřív se ujistěte, že jste na svém VIRTUÁLNÍm počítači povolili spravovanou identitu přiřazenou uživatelem. Podívejte se [na spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
+
+Zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Pak zadejte libovolný z následujících příkazů a potom stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+`<client-id>`Zástupný symbol nahraďte ID klienta spravované identity přiřazené uživatelem.
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+`<object-id>`Zástupný symbol nahraďte ID objektu spravované identity přiřazené uživatelem.
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+`<resource-id>`Zástupný symbol nahraďte ID prostředku spravované identity přiřazené uživatelem.
+
+Po nastavení těchto proměnných můžete spustit libovolný AzCopy příkaz (například: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-a-service-principal"></a>Autorizovat instanční objekt
+
+Před spuštěním skriptu se musíte interaktivně přihlásit aspoň jednou, abyste AzCopy mohli zadat přihlašovací údaje k instančnímu objektu.  Tyto přihlašovací údaje jsou uložené v zabezpečeném a zašifrovaném souboru, aby váš skript nemusel poskytovat citlivé informace.
+
+K účtu se můžete přihlásit pomocí tajného klíče klienta nebo pomocí hesla certifikátu, který je přidružený k registraci aplikace vašeho objektu služby.
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>Autorizace instančního objektu pomocí tajného klíče klienta
+
+Zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+`<application-id>`Zástupný symbol nahraďte ID aplikace registrace aplikace vašeho objektu služby. `<client-secret>`Zástupný symbol nahraďte tajným klíčem klienta.
+
+> [!NOTE]
+> Zvažte použití výzvy ke shromáždění hesla od uživatele. Tímto způsobem se vaše heslo nezobrazí v historii příkazů. 
+
+Pak spusťte libovolný příkaz AzCopy (například: `azcopy list https://contoso.blob.core.windows.net` ).
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Autorizace instančního objektu pomocí certifikátu
+
+Pokud dáváte přednost používání vlastních přihlašovacích údajů pro autorizaci, můžete k registraci aplikace nahrát certifikát a potom k přihlášení použít tento certifikát.
+
+Kromě odeslání certifikátu do registrace aplikace budete také muset mít uloženou kopii certifikátu uloženého na počítači nebo virtuální počítač, kde bude AzCopy běžet. Tato kopie certifikátu by měla být v. PFX nebo. Formát PEM a musí obsahovat privátní klíč. Privátní klíč by měl být chráněn heslem. 
+
+Zadejte následující příkaz a stiskněte klávesu ENTER.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+`<path-to-certificate-file>`Zástupný text nahraďte relativní nebo úplnou cestou k souboru certifikátu. AzCopy uloží cestu k tomuto certifikátu, ale neuloží kopii certifikátu, proto nezapomeňte tento certifikát ponechat na místě. `<certificate-password>`Zástupný symbol nahraďte heslem certifikátu.
+
+> [!NOTE]
+> Zvažte použití výzvy ke shromáždění hesla od uživatele. Tímto způsobem se vaše heslo nezobrazí v historii příkazů. 
+
+Pak spusťte libovolný příkaz AzCopy (například: `azcopy list https://contoso.blob.core.windows.net` ).
 
 ## <a name="next-steps"></a>Další kroky
 

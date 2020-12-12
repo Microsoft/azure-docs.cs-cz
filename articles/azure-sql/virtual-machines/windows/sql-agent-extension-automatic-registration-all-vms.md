@@ -5,16 +5,17 @@ author: MashaMSFT
 ms.author: mathoma
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: a8eb112b0895d1c7a927621e6fb9e5160038692d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557626"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359995"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatická registrace pomocí rozšíření agenta SQL IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +35,7 @@ Po povolení automatické registrace u předplatného se všechny aktuální a b
 > [!IMPORTANT]
 > Rozšíření agenta SQL IaaS shromažďuje data pro účely výslovného účelu poskytování dobrovolných výhod při používání SQL Server v rámci Azure Virtual Machines. Microsoft nebude tato data používat pro audity licencování bez předchozího souhlasu zákazníka. Další informace najdete v tématu [SQL Server ochrany osobních údajů](/sql/sql-server/sql-server-privacy#non-personal-data) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, budete potřebovat: 
 
@@ -46,7 +47,7 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, b
 
 Pokud chcete povolit automatickou registraci SQL Server virtuálních počítačů v Azure Portal, postupujte podle následujících kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na stránku prostředku [**virtuální počítače SQL**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. Výběrem **automatického SQL Server registrace virtuálního počítače** otevřete stránku **Automatická registrace** . 
 
@@ -92,7 +93,7 @@ To můžete provést pomocí těchto kroků:
 1. Spusťte skript a předejte SubscriptionIds jako parametry jako   
    `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
 
-   Například: 
+   Příklad: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb

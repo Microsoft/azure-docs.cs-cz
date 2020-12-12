@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553524"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359247"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatizovaná správa pomocí rozšíření agenta SQL Server IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,13 +36,13 @@ Tento článek poskytuje přehled o rozšíření. Pokud chcete nainstalovat roz
 
 Rozšíření agenta SQL Server IaaS poskytuje řadu výhod pro SQL Server na virtuálních počítačích Azure: 
 
-- **Výhody funkcí** : rozšíření odzamkne řadu výhod funkce automatizace, jako je Správa portálu, flexibilita licencí, automatizované zálohování, automatizované opravy a další. Podrobnosti najdete v tématu [výhody funkcí](#feature-benefits) dále v tomto článku. 
+- **Výhody funkcí**: rozšíření odzamkne řadu výhod funkce automatizace, jako je Správa portálu, flexibilita licencí, automatizované zálohování, automatizované opravy a další. Podrobnosti najdete v tématu [výhody funkcí](#feature-benefits) dále v tomto článku. 
 
-- **Dodržování předpisů** : rozšíření nabízí zjednodušenou metodu, která vyžaduje, abyste Microsoftu informovali, že zvýhodněné hybridní využití Azure je povolená, jak je uvedeno v dodacích číslech produktu. Tento proces vyžaduje, aby ve všech zdrojích spravovali formuláře pro registraci licencí.  
+- **Dodržování předpisů**: rozšíření nabízí zjednodušenou metodu, která vyžaduje, abyste Microsoftu informovali, že zvýhodněné hybridní využití Azure je povolená, jak je uvedeno v dodacích číslech produktu. Tento proces vyžaduje, aby ve všech zdrojích spravovali formuláře pro registraci licencí.  
 
-- **Free** : rozšíření v všech třech režimech spravovatelnosti je zcela bezplatné. K rozšíření se nevztahují žádné další náklady ani se měnícími se režimy správy. 
+- **Free**: rozšíření v všech třech režimech spravovatelnosti je zcela bezplatné. K rozšíření se nevztahují žádné další náklady ani se měnícími se režimy správy. 
 
-- **Zjednodušená správa licencí** : rozšíření zjednodušuje správu licencí SQL Server a umožňuje rychle identifikovat SQL Server virtuálních počítačů pomocí zvýhodněné hybridní využití Azure povolených pomocí [Azure Portal](manage-sql-vm-portal.md), Azure CLI nebo PowerShellu: 
+- **Zjednodušená správa licencí**: rozšíření zjednodušuje správu licencí SQL Server a umožňuje rychle identifikovat SQL Server virtuálních počítačů pomocí zvýhodněné hybridní využití Azure povolených pomocí [Azure Portal](manage-sql-vm-portal.md), Azure CLI nebo PowerShellu: 
 
    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -171,7 +172,7 @@ Ne. Microsoft automaticky registruje virtuální počítače zřízené z SQL Se
 
 **Je k dispozici rozšíření agenta SQL IaaS pro všechny zákazníky?** 
 
-Yes. Zákazníci by měli své SQL Server virtuálních počítačů registrovat s příponou, pokud nepoužívali SQL Server Image ze Azure Marketplace a místo toho SQL Server, nebo pokud se vlastní VHD nainstalují. Virtuální počítače vlastněné všemi typy předplatných (Direct, smlouva Enterprise a Cloud Solution Provider) se můžou registrovat pomocí rozšíření agenta SQL IaaS.
+Ano. Zákazníci by měli své SQL Server virtuálních počítačů registrovat s příponou, pokud nepoužívali SQL Server Image ze Azure Marketplace a místo toho SQL Server, nebo pokud se vlastní VHD nainstalují. Virtuální počítače vlastněné všemi typy předplatných (Direct, smlouva Enterprise a Cloud Solution Provider) se můžou registrovat pomocí rozšíření agenta SQL IaaS.
 
 **Jaký je výchozí režim správy při registraci pomocí rozšíření agenta SQL IaaS?**
 
@@ -208,7 +209,7 @@ Ne. Upgrade režimu spravovatelnosti na úplný nebo lehký není pro režim bez
 
 **Můžu upgradovat rozšíření SQL Server IaaS z režimu prostého režimu na režim Full?**
 
-Yes. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje prostřednictvím Azure PowerShell nebo Azure Portal. Tím se aktivuje restartování služby SQL Server.
+Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje prostřednictvím Azure PowerShell nebo Azure Portal. Tím se aktivuje restartování služby SQL Server.
 
 **Můžu SQL Server rozšíření IaaS z úplného režimu snížit na režim bez agenta nebo režimu prosté správy?**
 
@@ -226,15 +227,15 @@ Ne. Aby se virtuální počítač mohl úspěšně zaregistrovat do rozšířen�
 
 **Můžu zaregistrovat virtuální počítač s rozšířením agenta SQL IaaS, pokud existuje více instancí SQL Server?**
 
-Yes. Rozšíření agenta SQL IaaS bude registrovat pouze jednu instanci SQL Server (databázový stroj). Rozšíření agenta SQL IaaS bude v případě více instancí registrovat výchozí instanci SQL Server. Pokud neexistuje žádná výchozí instance, je podporována pouze registrace v režimu prostého režimu. Chcete-li provést upgrade z prostého režimu na režim správy, musí být použita výchozí instance SQL Server, nebo by měl mít virtuální počítač pouze jednu pojmenovanou instanci SQL Server.
+Ano. Rozšíření agenta SQL IaaS bude registrovat pouze jednu instanci SQL Server (databázový stroj). Rozšíření agenta SQL IaaS bude v případě více instancí registrovat výchozí instanci SQL Server. Pokud neexistuje žádná výchozí instance, je podporována pouze registrace v režimu prostého režimu. Chcete-li provést upgrade z prostého režimu na režim správy, musí být použita výchozí instance SQL Server, nebo by měl mít virtuální počítač pouze jednu pojmenovanou instanci SQL Server.
 
 **Můžu u SQL Server instance clusteru s podporou převzetí služeb při selhání zaregistrovat rozšíření agenta SQL IaaS?**
 
-Yes. SQL Server instancí clusteru s podporou převzetí služeb při selhání na virtuálním počítači Azure se dá v jednoduchém režimu zaregistrovat s rozšířením agenta SQL IaaS. SQL Server instancí clusteru s podporou převzetí služeb při selhání se ale nedá upgradovat na režim úplné správy.
+Ano. SQL Server instancí clusteru s podporou převzetí služeb při selhání na virtuálním počítači Azure se dá v jednoduchém režimu zaregistrovat s rozšířením agenta SQL IaaS. SQL Server instancí clusteru s podporou převzetí služeb při selhání se ale nedá upgradovat na režim úplné správy.
 
 **Můžu zaregistrovat virtuální počítač s rozšířením agenta SQL IaaS, pokud je nakonfigurovaná Skupina dostupnosti Always On?**
 
-Yes. Neexistují žádná omezení pro registraci instance SQL Server na virtuálním počítači Azure s rozšířením agenta SQL IaaS, pokud se účastníte konfigurace skupiny dostupnosti Always On.
+Ano. Neexistují žádná omezení pro registraci instance SQL Server na virtuálním počítači Azure s rozšířením agenta SQL IaaS, pokud se účastníte konfigurace skupiny dostupnosti Always On.
 
 **Jaké jsou náklady na registraci pomocí rozšíření agenta SQL IaaS nebo upgrade na úplný režim správy?**
 

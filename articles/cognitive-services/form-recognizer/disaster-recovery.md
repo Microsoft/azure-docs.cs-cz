@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486513"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359808"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID prostředku a název oblasti cílového prostředku. Budete také potřebovat ID modelu, přístupový token a hodnotu vypršení platnosti, kterou jste zkopírovali z předchozího kroku.
+Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID prostředku a název oblasti cílového prostředku. ID prostředku můžete najít na kartě **vlastnosti** prostředku v Azure Portal a název oblasti můžete najít na kartě **klíče a koncový bod** . Budete také potřebovat ID modelu, přístupový token a hodnotu vypršení platnosti, kterou jste zkopírovali z předchozího kroku.
 
 ```json
 {
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>Běžné chyby
 
-|Chyba|Řešení|
+|Chybová|Řešení|
 |:--|:--|
 | 400/Chybný požadavek s `"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>Běžné chyby
 
-|Chyba|Řešení|
+|Chybová|Řešení|
 |:--|:--|
 |"chyby": [{"Code": "AuthorizationError";<br>zpráva: "Chyba autorizace z důvodu <br>chybějící nebo neplatné deklarace identity autorizace. "}]   | Nastane, pokud se `copyAuthorization` datová část nebo obsah upraví z toho, co vrátilo `copyAuthorization` rozhraní API. Ujistěte se, že datová část je stejný přesný obsah, který byl vrácen z předchozího `copyAuthorization` volání.|
 |"chyby": [{"Code": "AuthorizationError";<br>zpráva: nepovedlo se načíst autorizaci. <br>mezipaměť. Pokud s tím budou dál problémy používat jiné <br>cílový model, do kterého se mají kopírovat. "}] | Indikuje, že se `copyAuthorization` datová část znovu používá s požadavkem Copy. Požadavek Copy, který je úspěšný, neumožní žádné další požadavky, které používají stejnou `copyAuthorization` datovou část. Pokud vyvoláte samostatnou chybu (například ty, které jsou uvedené níže), a pak znovu spustíte kopii se stejnou datovou částí autorizace, vyvolá se tato chyba. Řešením je vygenerovat novou `copyAuthorization` datovou část a pak znovu vystavit požadavek na kopírování.|

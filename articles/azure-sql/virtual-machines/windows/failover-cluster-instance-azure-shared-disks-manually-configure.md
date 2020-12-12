@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556382"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359349"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,12 +28,12 @@ Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzet�
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
 - Předplatné Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
-- [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). Podporují se skupiny [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs). Pokud použijete PPG, musí všechny uzly existovat ve stejné skupině.
+- [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). [Sady dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) podporované pro SSD úrovně Premium a [zóny dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) se podporují pro disky Ultra. Pokud použijete PPG, musí všechny uzly existovat ve stejné skupině.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 
@@ -44,7 +44,7 @@ Nasaďte spravovaný SSD úrovně Premium disk s povolenou funkcí sdíleného d
 Pomocí následujícího postupu přidejte sdílený disk Azure: 
 
 
-1. Následující skript uložte jako *SharedDiskConfig.jsna* : 
+1. Následující skript uložte jako *SharedDiskConfig.jsna*: 
 
    ```JSON
    { 

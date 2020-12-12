@@ -6,6 +6,7 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553519"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359162"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,9 +67,9 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 
 Řešení zotavení po havárii pro EOS SQL Server na virtuálním počítači Azure jsou následující:
 
-- **SQL Server zálohy** : pomocí Azure Backup můžete chránit EOS SQL Server 2008 a 2008 R2 proti ransomwarem, náhodnému odstranění a poškození s 15-min. RPO a obnovením k bodu v čase. Další podrobnosti najdete v [tomto článku](../../../backup/sql-support-matrix.md#scenario-support).
-- **Přesouvání protokolu** : můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
-- **Azure Site Recovery** : virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
+- **SQL Server zálohy**: pomocí Azure Backup můžete chránit EOS SQL Server 2008 a 2008 R2 proti ransomwarem, náhodnému odstranění a poškození s 15-min. RPO a obnovením k bodu v čase. Další podrobnosti najdete v [tomto článku](../../../backup/sql-support-matrix.md#scenario-support).
+- **Přesouvání protokolu**: můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
+- **Azure Site Recovery**: virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
 
 ## <a name="security-patching"></a>Opravy zabezpečení
 

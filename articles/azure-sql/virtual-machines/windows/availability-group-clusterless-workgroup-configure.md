@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124930"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359451"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,19 +49,19 @@ Pro referenci se v tomto článku používají následující parametry, které 
 
 ## <a name="set-a-dns-suffix"></a>Nastavit příponu DNS 
 
-V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například, `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
+V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
 
 K nakonfigurování přípony DNS použijte následující postup:
 
 1. Protokol RDP do prvního uzlu a otevřete Správce serveru. 
 1. Vyberte **místní server** a pak v části **název počítače** vyberte název vašeho virtuálního počítače. 
-1. V části **Chcete-li přejmenovat tento počítač** , vyberte možnost **změnit.** ... 
+1. V části **Chcete-li přejmenovat tento počítač**, vyberte možnost **změnit.** ... 
 1. Název pracovní skupiny změňte na něco smysluplného, například `AGWORKGROUP` : 
 
    ![Změnit název pracovní skupiny](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. Pokud chcete otevřít dialogové okno **přípona DNS a název počítače pro rozhraní NetBIOS** , vyberte **Další...** 
-1. Do pole **Přípona primárního serveru DNS tohoto počítače** zadejte název vaší přípony DNS, například `ag.wgcluster.example.com` a pak vyberte **OK** : 
+1. Do pole **Přípona primárního serveru DNS tohoto počítače** zadejte název vaší přípony DNS, například `ag.wgcluster.example.com` a pak vyberte **OK**: 
 
    ![Snímek obrazovky se zobrazí v dialogovém okně Přípona D N S a název počítače pro rozhraní NetBIOS, kde můžete zadat hodnotu.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -111,16 +112,16 @@ Významné rozdíly mezi kurzem a to, co je potřeba udělat pro cluster pracovn
 - Při přidávání uzlů do clusteru přidejte plně kvalifikovaný název, například:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- Zrušte kontrolu **Přidat do clusteru veškeré oprávněné úložiště** . 
+- Zrušte kontrolu **Přidat do clusteru veškeré oprávněné úložiště**. 
 
 Po vytvoření clusteru přiřaďte IP adresu statického clusteru. To můžete provést pomocí těchto kroků:
 
-1. Na jednom z uzlů otevřete **Správce clusteru s podporou převzetí služeb při selhání** , vyberte cluster, klikněte pravým tlačítkem myši na **Název: \<ClusterNam>** v části **základní prostředky clusteru** a pak vyberte **vlastnosti** . 
+1. Na jednom z uzlů otevřete **Správce clusteru s podporou převzetí služeb při selhání**, vyberte cluster, klikněte pravým tlačítkem myši na **Název: \<ClusterNam>** v části **základní prostředky clusteru** a pak vyberte **vlastnosti**. 
 
    ![Spustit vlastnosti pro název clusteru](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
-1. V části **IP adresy** vyberte IP adresu a pak vyberte **Upravit** . 
-1. Vyberte **použít statické** , zadejte IP adresu clusteru a pak vyberte **OK** : 
+1. V části **IP adresy** vyberte IP adresu a pak vyberte **Upravit**. 
+1. Vyberte **použít statické**, zadejte IP adresu clusteru a pak vyberte **OK**: 
 
    ![Zadejte statickou IP adresu clusteru.](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 
@@ -184,7 +185,7 @@ Chcete-li nakonfigurovat první uzel, postupujte podle následujících kroků:
 
 Pokud chcete nakonfigurovat druhý uzel, postupujte podle těchto kroků: 
 
-1. Připojte se k druhému uzlu pomocí **SQL Server Management Studio** , například `AGNode2` . 
+1. Připojte se k druhému uzlu pomocí **SQL Server Management Studio**, například `AGNode2` . 
 1. V **novém okně dotazu** spusťte následující příkaz Transact-SQL (T-SQL) po aktualizaci na složité a zabezpečené heslo: 
 
    ```sql

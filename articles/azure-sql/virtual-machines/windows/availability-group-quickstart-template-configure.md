@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556501"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359910"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +38,7 @@ Ostatní části Konfigurace skupiny dostupnosti se musí provádět ručně, na
 I když tento článek používá šablony pro rychlý Start Azure ke konfiguraci prostředí skupiny dostupnosti, je taky možné ho použít [Azure Portal](availability-group-azure-portal-configure.md), [PowerShellu nebo rozhraní příkazového řádku Azure](availability-group-az-commandline-configure.md)nebo taky [ručně](availability-group-manually-configure-tutorial.md) . 
  
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 K automatizaci nastavení skupiny dostupnosti Always On pomocí šablon pro rychlý Start musíte mít následující požadavky: 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
 - Skupina prostředků s řadičem domény. 
@@ -66,7 +67,7 @@ Přidáním SQL Server virtuálních počítačů do skupiny prostředků *SqlVi
    | **Předplatné** |  Předplatné, ve kterém SQL Server virtuální počítače existují. |
    |**Skupina prostředků** | Skupina prostředků, ve které se nacházejí SQL Server virtuálních počítačů. | 
    |**Název clusteru převzetí služeb při selhání** | Název, který chcete pro nový cluster s podporou převzetí služeb při selhání systému Windows. |
-   | **Existující seznam virtuálních počítačů** | SQL Server virtuální počítače, které chcete zapojit do skupiny dostupnosti a které jsou součástí tohoto nového clusteru. Oddělte tyto hodnoty čárkou a mezerou (například: *SQLVM1, SQLVM2* ). |
+   | **Existující seznam virtuálních počítačů** | SQL Server virtuální počítače, které chcete zapojit do skupiny dostupnosti a které jsou součástí tohoto nového clusteru. Oddělte tyto hodnoty čárkou a mezerou (například: *SQLVM1, SQLVM2*). |
    | **Verze SQL Server** | SQL Server verze vašich SQL Serverch virtuálních počítačů. Vyberte ho z rozevíracího seznamu. V současné době jsou podporovány pouze SQL Server 2016 a SQL Server 2017 bitové kopie. |
    | **Existující plně kvalifikovaný název domény** | Stávající plně kvalifikovaný název domény pro doménu, ve které se nachází vaše virtuální počítače s SQL Server. |
    | **Existující doménový účet** | Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** jako [objekt CNO](/windows-server/failover-clustering/prestage-cluster-adds) , se vytvoří během nasazování šablony. Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com ). *Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster.*| 
@@ -116,14 +117,14 @@ Stačí vytvořit interní nástroj pro vyrovnávání zatížení. V kroku 4 š
 
 1. V Azure Portal otevřete skupinu prostředků, která obsahuje SQL Server virtuálních počítačů. 
 2. Ve skupině prostředků vyberte **Přidat**.
-3. Vyhledejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte položku **Load Balancer** , která je publikována společností **Microsoft**.
+3. Vyhledejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte položku **Load Balancer**, která je publikována společností **Microsoft**.
 4. V okně **Load Balancer** vyberte **vytvořit**.
 5. V dialogovém okně **vytvořit nástroj pro vyrovnávání zatížení** nakonfigurujte nástroj pro vyrovnávání zatížení následujícím způsobem:
 
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Zadejte textový název, který představuje nástroj pro vyrovnávání zatížení. Zadejte například **sqlLB**. |
-   | **Typ** |**Interní** : většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí** : umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
+   | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
    | **Virtuální síť** | Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** | Vyberte podsíť, ve které jsou instance SQL Server. |
    | **Přiřazení IP adresy** |**staticky**. |
@@ -137,7 +138,7 @@ Stačí vytvořit interní nástroj pro vyrovnávání zatížení. V kroku 4 š
 
 
 >[!IMPORTANT]
-> Prostředek veřejné IP adresy pro každý virtuální počítač SQL Server by měl mít standardní SKU, aby byl kompatibilní s nástrojem Load Balancer úrovně Standard. Pokud chcete zjistit SKU prostředku veřejné IP adresy vašeho virtuálního počítače, přejděte do **skupiny prostředků** , vyberte prostředek **veřejné IP adresy** pro virtuální počítač SQL Server a vyhledejte hodnotu v části **SKU** v podokně **Přehled** . 
+> Prostředek veřejné IP adresy pro každý virtuální počítač SQL Server by měl mít standardní SKU, aby byl kompatibilní s nástrojem Load Balancer úrovně Standard. Pokud chcete zjistit SKU prostředku veřejné IP adresy vašeho virtuálního počítače, přejděte do **skupiny prostředků**, vyberte prostředek **veřejné IP adresy** pro virtuální počítač SQL Server a vyhledejte hodnotu v části **SKU** v podokně **Přehled** . 
 
 ## <a name="create-listener"></a>Vytvořit naslouchací proces 
 
@@ -163,11 +164,11 @@ Pokud chcete nakonfigurovat interní nástroj pro vyrovnávání zatížení a v
    |**Skupina prostředků** | Skupina prostředků, ve které existuje SQL Server virtuálních počítačů a skupin dostupnosti. | 
    |**Existující název clusteru s podporou převzetí služeb při selhání** | Název clusteru, ke kterému jsou připojené vaše virtuální počítače s SQL Server. |
    | **Existující skupina dostupnosti SQL**| Název skupiny dostupnosti, do které jsou vaše virtuální počítače s SQL Server součástí. |
-   | **Existující seznam virtuálních počítačů** | Názvy SQL Serverch virtuálních počítačů, které jsou součástí dříve zmíněné skupiny dostupnosti. Názvy oddělte čárkou a mezerou (například: *SQLVM1, SQLVM2* ). |
+   | **Existující seznam virtuálních počítačů** | Názvy SQL Serverch virtuálních počítačů, které jsou součástí dříve zmíněné skupiny dostupnosti. Názvy oddělte čárkou a mezerou (například: *SQLVM1, SQLVM2*). |
    | **Naslouchací proces** | Název DNS, který chcete přiřadit k naslouchacího procesu. Ve výchozím nastavení tato šablona určuje název "aglistener", ale můžete jej změnit. Název nesmí být delší než 15 znaků. |
    | **Port naslouchacího procesu** | Port, který má naslouchací proces používat. Tento port by měl být obvykle výchozí hodnota 1433. Toto je číslo portu, které šablona určuje. Pokud se ale změnil váš výchozí port, port naslouchacího procesu by měl místo toho použít tuto hodnotu. | 
    | **IP adresa naslouchacího procesu** | IP adresa, kterou má naslouchací proces používat. Tato adresa se vytvoří během nasazování šablony, takže ji zajistěte, aby se už nepoužívala.  |
-   | **Existující podsíť** | Název interní podsítě vašich SQL Server virtuálních počítačů (například: *výchozí* ). Tuto hodnotu můžete zjistit tak, že do **skupiny prostředků** vyberete virtuální síť, vybíráte **podsítě** v podokně **Nastavení** a zkopírujete hodnotu pod **názvem**. |
+   | **Existující podsíť** | Název interní podsítě vašich SQL Server virtuálních počítačů (například: *výchozí*). Tuto hodnotu můžete zjistit tak, že do **skupiny prostředků** vyberete virtuální síť, vybíráte **podsítě** v podokně **Nastavení** a zkopírujete hodnotu pod **názvem**. |
    | **Stávající interní Load Balancer** | Název interního nástroje pro vyrovnávání zatížení, který jste vytvořili v kroku 3. |
    | **Port testu paměti** | Port testu, který má používat interní nástroj pro vyrovnávání zatížení. Šablona používá standardně 59999, ale tuto hodnotu můžete změnit. |
    | &nbsp; | &nbsp; |

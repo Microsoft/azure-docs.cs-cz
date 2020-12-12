@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341378"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359315"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -45,11 +45,11 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Přidejte do Key Vault přístupové klíče Azure Cosmos DB.
 1. Přejděte na Key Vault, který jste vytvořili v předchozím kroku, a otevřete kartu **tajné klíče** .  
-2. Vybrat **+ Generovat/importovat** , 
+2. Vybrat **+ Generovat/importovat**, 
 
    * Pro **Možnosti odeslání** vyberte možnost **ručně** .
    * Zadejte **název** tajného klíče.
-   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . A pak vyberte **vytvořit**.
+   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . Pak vyberte **Vytvořit**.
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Vytvoření tajného kódu":::
 
@@ -59,7 +59,7 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 ## <a name="create-an-azure-web-application"></a>Vytvoření webové aplikace Azure
 
-1. Vytvořte webovou aplikaci Azure nebo si aplikaci můžete stáhnout z [úložiště GitHub](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Jedná se o jednoduchou aplikaci MVC.  
+1. Vytvořte webovou aplikaci Azure nebo si aplikaci můžete stáhnout z [úložiště GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Jedná se o jednoduchou aplikaci MVC.  
 
 2. Rozbalte staženou aplikaci a otevřete soubor **HomeController.cs** . Aktualizujte tajné ID na následujícím řádku:
 
@@ -82,7 +82,7 @@ V této části zaregistrujete aplikaci pomocí Azure Active Directory a udělí
 
 1. Přejděte na Azure Portal otevřete **Key Vault** , který jste vytvořili v předchozí části.  
 
-2. Otevřete **zásady přístupu** , vyberte **+ Přidat nový** najít webovou aplikaci, kterou jste nasadili, vyberte oprávnění a vyberte **OK**.  
+2. Otevřete **zásady přístupu**, vyberte **+ Přidat nový** najít webovou aplikaci, kterou jste nasadili, vyberte oprávnění a vyberte **OK**.  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Přidat zásady přístupu":::
 

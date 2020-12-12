@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341769"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358635"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování výkonu a škálování pomocí Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Po přečtení tohoto článku budete moci zodpovědět následující otázky:
 * Kde najdu ukázkovou klientskou aplikaci rozhraní .NET pro testování výkonu Azure Cosmos DB? 
 * Návody dosáhnout vysoké propustnosti pomocí Azure Cosmos DB z mé klientské aplikace?
 
-Chcete-li začít s kódem, Stáhněte projekt z [Azure Cosmos DB ukázka testování výkonu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
+Chcete-li začít s kódem, Stáhněte projekt z [Azure Cosmos DB ukázka testování výkonu](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark). 
 
 > [!NOTE]
 > Cílem této aplikace je Ukázat, jak dosáhnout nejlepšího výkonu z Azure Cosmos DB s malým počtem klientských počítačů. Cílem této ukázky je nedosáhnout kapacity propustnosti Azure Cosmos DB (což se může škálovat bez omezení).
@@ -37,7 +37,7 @@ Pokud hledáte možnosti konfigurace na straně klienta pro zlepšení výkonu A
 ## <a name="run-the-performance-testing-application"></a>Spuštění aplikace testování výkonu
 Nejrychlejší způsob, jak začít, je zkompilovat a spustit ukázku .NET, jak je popsáno v následujícím postupu. Můžete si také projít zdrojový kód a implementovat podobné konfigurace na vlastní klientské aplikace.
 
-**Krok 1:** Stáhněte si projekt z [ukázky Azure Cosmos DB testování výkonu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)nebo rozvětvete úložiště GitHub.
+**Krok 1:** Stáhněte si projekt z [ukázky Azure Cosmos DB testování výkonu](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)nebo rozvětvete úložiště GitHub.
 
 **Krok 2:** Upravte nastavení pro EndpointUrl, Authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v App.config.
 
@@ -97,7 +97,7 @@ Po spuštění aplikace můžete vyzkoušet různé [zásady indexování](index
 
 V tomto článku jsme se podívali na to, jak můžete provádět testování výkonu a škálování pomocí Azure Cosmos DB pomocí konzolové aplikace .NET. Další informace najdete v následujících článcích:
 
-* [Ukázka testování výkonu Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Ukázka testování výkonu Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [Možnosti konfigurace klienta pro zlepšení výkonu Azure Cosmos DB](performance-tips.md)
 * [Dělení na straně serveru v Azure Cosmos DB](partitioning-overview.md)
 

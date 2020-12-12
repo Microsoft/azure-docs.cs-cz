@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937487"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360216"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>Napravit rizika zabezpečení s minimální verzí TLS
 
 Pokud jste si jisti, že provoz od klientů používajících starší verze protokolu TLS je minimální nebo je přijatelný pro neúspěšné požadavky se starší verzí TLS, můžete začít vynucovat minimální verzi protokolu TLS v účtu úložiště. Vyžadování, aby klienti používali minimální verzi TLS k tomu, aby byly požadavky na účet úložiště součástí strategie pro minimalizaci rizik zabezpečení vašich dat.
+
+> [!IMPORTANT]
+> Pokud používáte službu, která se připojuje k Azure Storage, zajistěte, aby tato služba používala příslušnou verzi protokolu TLS, aby odesílala žádosti do Azure Storage předtím, než nastavíte požadovanou minimální verzi pro účet úložiště.
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurace minimální verze protokolu TLS pro účet úložiště
 
