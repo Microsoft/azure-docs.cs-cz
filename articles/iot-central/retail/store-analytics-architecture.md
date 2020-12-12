@@ -9,15 +9,14 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3486b636325393f9c8e96669ba3d21e7d489efee
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80999023"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347978"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektura analýzy v úložišti
-
 
 
 Analytická řešení v obchodě umožňují sledovat různé podmínky v rámci prostředí maloobchodního obchodu. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a níže uvedenou architekturou jako doprovodné materiály.
@@ -55,4 +54,4 @@ Data IoT se dají použít k napájení různých druhů podnikových aplikací 
 
 ## <a name="next-steps"></a>Další kroky
 * Začněte s [rezervací analýz v rámci obchodu](https://aka.ms/checkouttemplate) a v šablonách aplikací [monitorování podmínek analýzy v úložišti](https://aka.ms/conditiontemplate) . 
-* Podívejte se na úvodní [kurz](https://aka.ms/storeanalytics-tutorial) , který vás provede vytvořením řešení pomocí jedné z šablon aplikací pro analýzu v úložišti.
+* Podívejte se na úvodní [kurz](https://aka.ms/storeanalytics-tutorial) , který vás provede vytvořením řešení pomocí jedné z šablon aplikace In-Store Analytics.

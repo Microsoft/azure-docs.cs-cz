@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489348"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347859"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
@@ -55,7 +55,7 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
 
     ![Tabulky Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    Data v tabulce úložiště můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jakéhokoli jiného nástroje. Data můžete také exportovat v tabulce Azure.
+    Data v tabulce úložiště můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://www.storageexplorer.com) nebo jakéhokoli jiného nástroje. Data můžete také exportovat v tabulce Azure.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Volitelné Použití Power Automate k získání oznámení o potenciálních zákazníků
 
@@ -98,21 +98,21 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
 1. Vyberte **+ Nový krok**. Pak v okně **Zvolte akci** vyhledejte **entity Get** .
 1. V části **Akce** vyberte **získat entity (Azure Table Storage)**.
-1. V okně **Azure Table Storage** zadejte informace do následujících polí a vyberte **vytvořit** :
+1. V okně **Azure Table Storage** zadejte informace do následujících polí a vyberte **vytvořit**:
 
-    * **Název připojení** : zadejte smysluplný název pro připojení, které jste navázáni mezi tímto tokem a tabulkou.
-    * **Název účtu úložiště** : zadejte název účtu úložiště pro tabulku. Tento název najdete na stránce **přístupové klíče** účtu úložiště.
-    * **Klíč sdíleného úložiště** : zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku. Tuto hodnotu najdete na stránce **přístupové klíče** účtu úložiště.
+    * **Název připojení**: zadejte smysluplný název pro připojení, které jste navázáni mezi tímto tokem a tabulkou.
+    * **Název účtu úložiště**: zadejte název účtu úložiště pro tabulku. Tento název najdete na stránce **přístupové klíče** účtu úložiště.
+    * **Klíč sdíleného úložiště**: zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku. Tuto hodnotu najdete na stránce **přístupové klíče** účtu úložiště.
 
       ![Okno Azure Table Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    Po výběru položky **vytvořit** se zobrazí okno **získat entity** . Tady vyberte **Zobrazit upřesňující možnosti** a zadejte informace pro následující pole:
 
-   * **Tabulka** : vyberte název tabulky (z části [vytvořit tabulku](#create-a-table-in-your-storage-account)). Následující obrázek ukazuje výzvu, když `marketplaceleads` je pro tento příklad vybrána tabulka.
+   * **Tabulka**: vyberte název tabulky (z části [vytvořit tabulku](#create-a-table-in-your-storage-account)). Následující obrázek ukazuje výzvu, když `marketplaceleads` je pro tento příklad vybrána tabulka.
 
      ![Získat okno s entitami](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Dotaz filtru** : zaškrtněte toto políčko a vložte tuto funkci do pole: `Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Dotaz filtru**: zaškrtněte toto políčko a vložte tuto funkci do pole: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Získat entity, filtrovat pole dotazu](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -134,10 +134,10 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
    V několika dalších krocích jste nastavili akci, která se má provést na základě výsledku podmínky:
 
-   * Pokud se podmínka vyřeší na **ne** , neprovádějte nic.
-   * Pokud se podmínka přeloží na **hodnotu Ano** , spusťte akci, která připojí pracovní nebo školní účet k odeslání e-mailu. 
+   * Pokud se podmínka vyřeší na **ne**, neprovádějte nic.
+   * Pokud se podmínka přeloží na **hodnotu Ano**, spusťte akci, která připojí pracovní nebo školní účet k odeslání e-mailu. 
 
-1. **Pokud ano** , vyberte **přidat akci** .
+1. **Pokud ano**, vyberte **přidat akci** .
 
     ![Okno podmínky, pokud ano, přidat akci](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes.png)
 
@@ -150,9 +150,9 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
 1. V okně Office 365 Outlook zadejte informace do následujících polí:
 
-    1. **Komu** : Zadejte e-mailovou adresu pro všechny uživatele, kteří obdrží toto oznámení.
-    1. **Předmět** : Zadejte předmět e-mailu. Jedná se například o **nové zájemce.**
-    1. **Tělo** : přidejte text, který chcete zahrnout do každého e-mailu (volitelné) a vložte ho do `body('Get_entities')?['value']` .
+    1. **Komu**: Zadejte e-mailovou adresu pro všechny uživatele, kteří obdrží toto oznámení.
+    1. **Předmět**: Zadejte předmět e-mailu. Jedná se například o **nové zájemce.**
+    1. **Tělo**: přidejte text, který chcete zahrnout do každého e-mailu (volitelné) a vložte ho do `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >Do těla tohoto e-mailu můžete vložit další statické nebo dynamické datové body.
@@ -193,7 +193,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 1. Vložte do připojovacího řetězce z účtu služby Azure Storage, který jste vytvořili pomocí předchozích kroků v poli **připojovací řetězec účtu úložiště** .
      ![Správa zájemců, účet úložiště podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **Kontaktní e-mail** : Zadejte e-maily pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
+1. **Kontaktní e-mail**: Zadejte e-maily pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
 
 1. Vyberte **OK**.
 

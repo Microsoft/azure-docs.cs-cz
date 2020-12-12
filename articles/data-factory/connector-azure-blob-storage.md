@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: c13f3e2e4e5ee6fb60f6691abe8164e9e7a03712
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 327ab63a048e08328cd5b1334b0a697a61ced6c8
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094654"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346312"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -379,7 +379,7 @@ V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formá
 | MOŽNOST 1: statická cesta<br> | Kopírování ze zadaného kontejneru nebo složky/cesty k souboru v datové sadě. Pokud chcete kopírovat všechny objekty BLOB z kontejneru nebo složky, zadejte také `wildcardFileName` jako `_` . |  |
 | MOŽNOST 2: Předpona objektu BLOB<br>-prefix | Předpona pro název objektu BLOB v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových objektů BLOB Jsou vybrány objekty blob, jejichž názvy začínají na `container_in_dataset/this_prefix` . Využívá filtr na straně služby pro úložiště objektů blob, což poskytuje lepší výkon než filtr zástupných znaků.<br><br>Když použijete předponu a zvolíte kopírování do jímky založené na souborech s zachováním hierarchie, poznamenejte si podcestu za poslední znak "/" v předponě, která bude zachována. Například máte zdroj  `container/folder/subfolder/file.txt` a nakonfigurujete předponu jako `folder/sub` , pak je zachovaná cesta k souboru `subfolder/file.txt` . | Ne                                                          |
 | MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k Escape, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
-| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném kontejneru a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
+| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném kontejneru a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` pro Escape, jestli název souboru obsahuje zástupný znak nebo tento řídicí znak uvnitř. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
 | MOŽNOST 4: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |Ne |
 | ***Další nastavení:** _ |  | |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že když je příkaz _ "*rekurzivní**" nastaven na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |

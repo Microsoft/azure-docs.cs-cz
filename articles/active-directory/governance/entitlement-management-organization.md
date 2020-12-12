@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029366"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347485"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -29,7 +29,13 @@ Díky správě nároků služby Azure Active Directory (Azure AD) můžete spolu
 
 ## <a name="what-is-a-connected-organization"></a>Co je propojená organizace?
 
-Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
+Propojená organizace je jiná organizace, se kterou máte relaci.  Aby uživatelé v této organizaci měli přístup k prostředkům, jako jsou například vaše weby nebo aplikace SharePoint Online, budete potřebovat zastoupení uživatelů této organizace v tomto adresáři.  Vzhledem k tomu, že uživatelé v této organizaci ve většině případů ještě nejsou ve vašem adresáři služby Azure AD, můžete pomocí správy oprávnění podle potřeby přenést do adresáře služby Azure AD.  
+
+Existují tři způsoby, jak vám Správa nároků umožňuje určit uživatele, kteří tvoří připojenou organizaci.  Může to být
+
+* Uživatelé v jiném adresáři služby Azure AD,
+* Uživatelé v jiném adresáři mimo Azure AD, který byl nakonfigurován pro přímou federaci, nebo
+* Uživatelé v jiném adresáři mimo Azure AD, jehož e-mailové adresy mají stejný název domény, se společnými.
 
 Předpokládejme například, že pracujete s Woodgrove bankou a chcete spolupracovat se dvěma externími organizacemi. Tyto dvě organizace mají různé konfigurace:
 

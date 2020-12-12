@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463297"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346193"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
@@ -35,10 +35,9 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
     :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="Šablona aplikace digitálního distribučního centra":::
+1. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
 
-2. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
-
-3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
+1. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
    **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
@@ -105,7 +104,7 @@ Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako
 > ![Snímek obrazovky zobrazující seznam úloh v aplikaci digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce **Administration**  >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce   >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky ukazující, jak aplikaci odstranit, když s ní jste hotovi](./media/tutorial-iot-central-ddc/ddc-cleanup.png)

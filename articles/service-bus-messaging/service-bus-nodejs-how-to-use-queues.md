@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f37fcc6d58eb1c206aef6db15c7826cfdcda274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 009b060cc479c520dde8c4f595b24be7dcb4c6a6
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489424"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347757"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Odesílání zpráv do a příjem zpráv z Azure Service Busch front (JavaScript)
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání a přijímání zpráv z fronty Service Bus.
@@ -205,6 +205,6 @@ Na stránce s **přehledem** Vyberte frontu a přejděte na stránku **Service B
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující dokumentaci a ukázky: 
 
-- [Klientská knihovna Azure Service Bus pro Python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
+- [Klientská knihovna Azure Service Bus pro JS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). Složka **JavaScriptu** obsahuje ukázky JavaScriptu a v **TypeScript** jsou ukázky TypeScriptu. 
 - [Referenční dokumentace k Azure-ServiceBus](/javascript/api/overview/azure/service-bus)

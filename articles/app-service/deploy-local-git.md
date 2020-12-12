@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007513"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347774"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup je popsaný v tomto návodu:
 
@@ -80,7 +80,7 @@ Použijte adresu URL, která se vrátí k nasazení aplikace v dalším kroku.
    git remote add azure <url>
    ```
    
-1. Nahrajte službu Azure Remote pomocí služby `git push azure main` . 
+1. Nahrajte službu Azure Remote pomocí služby `git push azure master` . 
    
 1. V okně **Správce přihlašovacích údajů Git** zadejte [heslo uživatele nasazení](#configure-a-deployment-user), ne heslo pro přihlášení k Azure.
    
@@ -131,7 +131,7 @@ Povolení místního nasazení Git pro vaši aplikaci pomocí Azure Pipelines (P
    git remote add azure <url>
    ```
    
-1. Nahrajte službu Azure Remote pomocí služby `git push azure main` . 
+1. Nahrajte službu Azure Remote pomocí služby `git push azure master` . 
    
 1. Na stránce **Správce přihlašovacích údajů Git** se přihlaste pomocí uživatelského jména VisualStudio.com. Další metody ověřování najdete v tématu [Přehled ověřování Azure DevOps Services](/vsts/git/auth-overview?view=vsts).
    
@@ -149,8 +149,8 @@ Když použijete Git k publikování App Service aplikace v Azure, může se zob
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Aplikace není v provozu.|Spusťte aplikaci v Azure Portal. Nasazení Git není po zastavení webové aplikace dostupné.|
 |`Couldn't resolve host 'hostname'`|Informace o adrese pro vzdálené úložiště Azure jsou nesprávné.|Pomocí `git remote -v` příkazu můžete vypsat všechny vzdálené části společně s přidruženou adresou URL. Ověřte, jestli je adresa URL vzdáleného webu Azure správná. V případě potřeby tento vzdálený příkaz odeberte a znovu vytvořte pomocí správné adresy URL.|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Nezadali jste větev během `git push` nebo jste nenastavili `push.default` hodnotu v `.gitconfig` .|Spusťte `git push` znovu a určete hlavní větev: `git push azure main` .|
-|`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné větve než na vzdáleném Azure.|Spusťte `git push` znovu a určete hlavní větev: `git push azure main` .|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Nezadali jste větev během `git push` nebo jste nenastavili `push.default` hodnotu v `.gitconfig` .|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
+|`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné větve než na vzdáleném Azure.|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu na místním počítači, aby byla `postBuffer` větší. Příklad: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.jsv_ souboru, který určuje další požadované moduly.|`npm ERR!`Před touto chybou zkontrolujte chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Nesprávně vytvořený package.jsv souboru**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />nebo <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 

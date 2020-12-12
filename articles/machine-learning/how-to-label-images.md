@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.custom: data4ml
+ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324716"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347961"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -24,7 +25,7 @@ Poté, co správce projektu [vytvoří projekt označování](./how-to-create-la
 > * Nástroje pro označování
 > * Jak používat nástroje pro konkrétní úkoly označování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Microsoft](https://account.microsoft.com/account) nebo účet Azure Active Directory pro organizaci a projekt
 * Přístup na úrovni přispěvatele k pracovnímu prostoru, který obsahuje projekt značení.
@@ -121,7 +122,7 @@ Ve výchozím nastavení můžete upravit existující ohraničovací rámečky.
 
 Použijte nástroj pro **manipulaci s oblastmi** ![ : ikona nástroje pro manipulaci s oblastmi – čtyři šipky směřující ven od středu, nahoru, doprava, dolů a doleva.](./media/how-to-label-images/regions-tool.png) nebo "M", chcete-li upravit existující ohraničovací rámeček. Přetažením okrajů nebo rohů upravte tvar. Klikněte na vnitřek, abyste mohli přetahovat celý ohraničovací rámeček. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
 
-**Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) K vytvoření více ohraničujících polí se stejnou velikostí použijte nástroj pro pole šablony založené na šablonách nebo "T". Pokud se v obrázku neobsahují žádná ohraničující pole a aktivujete pole na základě šablon, nástroj vytvoří pole 50 až 50-pixel. Pokud vytvoříte ohraničující rámeček a pak aktivujete pole založené na šablonách, budou mít všechny nové ohraničovací rámečky velikost posledního pole, které jste vytvořili. Po umístění lze změnit velikost polí založených na šablonách. Změna velikosti pole založeného na šablonách mění pouze velikost určitého pole.
+ ![ ](./media/how-to-label-images/template-box-tool.png) K vytvoření více ohraničujících polí se stejnou velikostí použijte nástroj pro pole šablony založené na šablonách nebo "T". Pokud se v obrázku neobsahují žádná ohraničující pole a aktivujete pole na základě šablon, nástroj vytvoří pole 50 až 50-pixel. Pokud vytvoříte ohraničující rámeček a pak aktivujete pole založené na šablonách, budou mít všechny nové ohraničovací rámečky velikost posledního pole, které jste vytvořili. Po umístění lze změnit velikost polí založených na šablonách. Změna velikosti pole založeného na šablonách mění pouze velikost určitého pole.
 
 Chcete-li odstranit *všechny* ohraničovací rámečky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
 

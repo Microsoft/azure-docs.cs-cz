@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937725"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347522"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -48,7 +48,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
     |--|--|
     |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Vícenásobné zapnutí výchozího textu**| Vybrat a možnost|
-    |**+ Přidat adresu URL**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Přidat adresu URL**|`https://www.microsoft.com/software-download/faq`|
     |**Povídání**|Vybrat **Professional**|
 
 7. V **kroku 5** vyberte **vytvořit znalostní báze**.
@@ -83,7 +83,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
     |--|--|
     |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Vícenásobné zapnutí výchozího textu**| Vybrat a možnost|
-    |**+ Přidat adresu URL**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Přidat soubor**| Ruční stažení Surface notebooku z: ' https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf ' 
     |**Povídání**|Vybrat **Professional**|
 
 8. V **kroku 5** vyberte **vytvořit znalostní báze**.
@@ -122,9 +122,9 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily.
 2. Do textového pole zadejte ukázkový dotaz uživatele.
 
-    `How many Azure services are used by a knowledge base?`
+    `I want to know the difference between 32 bit and 64 bit Windows`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Do textového pole zadejte ukázkový dotaz uživatele.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/query-dialogue.png" alt-text="Do textového pole zadejte ukázkový dotaz uživatele.":::
 
 3. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Testovací okno slouží k otestování změn ve znalostní bázi před publikováním znalostní báze.
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837120"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347434"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -157,6 +157,9 @@ Přiřazení rolí pro virtuální počítač můžete nakonfigurovat několika 
 - Použití prostředí portálu Azure AD
 - Použití prostředí Azure Cloud Shell
 
+> [!NOTE]
+> Přihlášení správce virtuálního počítače a role přihlášení uživatelů virtuálních počítačů používají operace dataactions a nelze je proto přiřadit v oboru skupiny pro správu. V současné době je možné tyto role přiřadit pouze v oboru předplatného.
+
 ### <a name="using-azure-ad-portal-experience"></a>Použití prostředí portálu Azure AD
 
 Konfigurace přiřazení rolí pro virtuální počítače Windows serveru 2019 Datacenter s povolenou službou Azure AD:
@@ -177,8 +180,8 @@ Po chvíli se objektu zabezpečení přiřadí role ve vybraném oboru.
 V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a platí normální oprávnění dědičnosti Azure RBAC. Další informace najdete v tématu [přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \

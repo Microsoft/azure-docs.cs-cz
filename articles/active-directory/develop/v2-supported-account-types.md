@@ -12,12 +12,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518126"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347451"
 ---
 # <a name="supported-account-types"></a>Podporované typy účtu
 
@@ -43,7 +43,7 @@ Ve veřejném cloudu Microsoft Azure se může většina typů aplikací přihla
 Některé typy účtů se nedají používat s určitými toky ověřování. Například v aplikacích Desktop, UWP nebo démon:
 
 - Aplikace démona se dají používat jenom s organizacemi Azure AD. Nedává smysl použít aplikace démona k manipulaci s osobními účty Microsoft. Souhlas správce nebude nikdy udělen.
-- Tok integrovaného ověřování systému Windows můžete použít jenom s pracovními nebo školními účty (ve vaší organizaci nebo v jakékoli organizaci). Integrované ověřování systému Windows spolupracuje s účty domény a vyžaduje, aby počítače byly připojené k doméně nebo aby bylo připojení k Azure AD připojené k Azure AD. Tento tok nedává smysl pro osobní účty Microsoft.
+- Tok integrovaného ověřování systému Windows můžete použít jenom s pracovními nebo školními účty (ve vaší organizaci nebo v jakékoli organizaci). Integrované ověřování systému Windows funguje s doménovým účtem a vyžaduje, aby počítače byly připojené k doméně nebo aby bylo připojené k Azure AD. Tento tok nedává smysl pro osobní účty Microsoft.
 - [Udělení přihlašovacích údajů pro heslo vlastníka prostředku](./v2-oauth-ropc.md) (uživatelské jméno a heslo) se nedá použít u osobních účtů Microsoft. Osobní účty Microsoft vyžadují, aby uživatel souhlasil s přístupem k osobním prostředkům v každé přihlašovací relaci. To je důvod, proč toto chování není kompatibilní s neinteraktivními toky.
 
 ## <a name="account-types-in-national-clouds"></a>Typy účtů v národních cloudech

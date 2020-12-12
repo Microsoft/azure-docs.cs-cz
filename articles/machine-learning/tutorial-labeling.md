@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913258"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347502"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
 
@@ -58,19 +59,19 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 Úložiště dat Azure Machine Learning slouží k ukládání informací o připojení, jako je vaše ID předplatného a autorizace tokenu. Tady použijete úložiště dat pro připojení k účtu úložiště, který obsahuje obrázky pro tento kurz.
 
-1. Na levé straně pracovního prostoru vyberte **úložiště dat** .
+1. Na levé straně pracovního prostoru vyberte **úložiště dat**.
 
-1. Vyberte **+ nové úložiště dat** .
+1. Vyberte **+ nové úložiště dat**.
 
 1. Vyplňte formulář s těmito nastaveními:
 
     Pole|Popis 
     ---|---
-    Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial** .
-    Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage** , což je preferované úložiště pro obrázky.
-    Metoda výběru účtu | Vyberte **zadat ručně** .
+    Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial**.
+    Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage**, což je preferované úložiště pro obrázky.
+    Metoda výběru účtu | Vyberte **zadat ručně**.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
-    Typ ověřování | Vyberte **token SAS** .
+    Typ ověřování | Vyberte **token SAS**.
     Klíč účtu | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Vyberte **vytvořit** a vytvořte úložiště dat.
@@ -79,9 +80,9 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 Teď, když máte přístup k datům, která mají být označená, vytvořte svůj projekt označování.
 
-1. V horní části stránky vyberte **projekty** .
+1. V horní části stránky vyberte **projekty**.
 
-1. Vyberte **+ Přidat projekt** .
+1. Vyberte **+ Přidat projekt**.
 
     :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Vytvoření projektu":::
 
@@ -91,22 +92,22 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
     Pole|Popis 
     ---|---
-    Název projektu | Zadejte název svého projektu.  Tady budeme používat **kurz-kočky-n-psi** .
-    Popis typu úlohy | Vyberte možnost **klasifikace imagí s více třídami** .  
+    Název projektu | Zadejte název svého projektu.  Tady budeme používat **kurz-kočky-n-psi**.
+    Popis typu úlohy | Vyberte možnost **klasifikace imagí s více třídami**.  
     
     Kliknutím na tlačítko **Další** pokračujte v vytváření projektu.
 
 ### <a name="select-or-create-a-dataset"></a>Vybrat nebo vytvořit datovou sadu
 
-1.   Na formuláři **Vybrat nebo vytvořit datovou sadu** vyberte druhou volbu, **Vytvořte datovou sadu** a pak vyberte odkaz **z úložiště dat** .
+1.   Na formuláři **Vybrat nebo vytvořit datovou sadu** vyberte druhou volbu, **Vytvořte datovou sadu** a pak vyberte odkaz **z úložiště dat**.
 
 1. Pro formulář **vytvořit datovou sadu z úložiště** dat použijte následující vstup:
 
-    1. Do formuláře **základní informace** přidejte název, v tomto příkladu budeme používat **obrázky-for-tutorial** .  Pokud chcete, přidejte popis.  Pak vyberte **Další** .
-    1. Ve formuláři pro **Výběr úložiště dat** vyberte pomocí rozevíracího seznamu **dříve vytvořené úložiště dat** , například **tutorial_images (Azure Blob Storage)** .
-    1. Dál ještě na formuláři pro **Výběr úložiště dat** vyberte **Procházet** a pak vyberte DogsCats **(více tříd** ).  Vyberte **Uložit** a jako cestu použijte **/MultiClass-DogsCats** .
+    1. Do formuláře **základní informace** přidejte název, v tomto příkladu budeme používat **obrázky-for-tutorial**.  Pokud chcete, přidejte popis.  Pak vyberte **Další**.
+    1. Ve formuláři pro **Výběr úložiště dat** vyberte pomocí rozevíracího seznamu **dříve vytvořené úložiště dat**, například **tutorial_images (Azure Blob Storage)** .
+    1. Dál ještě na formuláři pro **Výběr úložiště dat** vyberte **Procházet** a pak vyberte DogsCats **(více tříd**).  Vyberte **Uložit** a jako cestu použijte **/MultiClass-DogsCats** .
     1. Kliknutím na tlačítko **Další** potvrďte podrobnosti **a vytvořte** datovou sadu a vytvořte ji.
-    1. V seznamu vyberte kroužek vedle názvu datové sady, například **obrázky-for-tutorial** .
+    1. V seznamu vyberte kroužek vedle názvu datové sady, například **obrázky-for-tutorial**.
 
 1. Kliknutím na tlačítko **Další** pokračujte v vytváření projektu.
 
@@ -114,11 +115,11 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 Pokud plánujete přidat nové image do datové sady, přírůstková aktualizace tyto nové image najde a přidá je do projektu.  Pokud tuto funkci povolíte, bude projekt pravidelně kontrolovat nové image.  Pro tento kurz nebudete přidávat nové image do úložiště dat, takže tuto funkci nechte nezaškrtnuté.
 
-Pokračujte výběrem tlačítka **Další** .
+Pokračujte výběrem tlačítka **Další**.
 
 ### <a name="label-classes"></a>Třídy popisků
 
-1. Ve formuláři **třídy popisků** zadejte název popisku a pak vyberte **+ Přidat popisek** k zadání dalšího popisku.  Pro tento projekt jsou popisky **Cat** , **pes** a **nejisté** .
+1. Ve formuláři **třídy popisků** zadejte název popisku a pak vyberte **+ Přidat popisek** k zadání dalšího popisku.  Pro tento projekt jsou popisky **Cat**, **pes** a **nejisté**.
 
 1. Pokud jste přidali všechny popisky, vyberte **Další** .
 
@@ -128,13 +129,13 @@ Pokračujte výběrem tlačítka **Další** .
 
 1. Stručný popis úlohy můžete také přidat přímo do formuláře.  **Kurz označování typů – kočky & psi.**
 
-1. Vyberte **Další** .
+1. Vyberte **Další**.
 
 1. V části s **asistencí pro označování** ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
 
-1. Vyberte **Vytvořit projekt** .
+1. Vyberte **Vytvořit projekt**.
 
-Tato stránka se automaticky neaktualizuje. Po pozastavení ručně aktualizujte stránku, dokud se stav projektu nezmění na hodnotu **Vytvořeno** .
+Tato stránka se automaticky neaktualizuje. Po pozastavení ručně aktualizujte stránku, dokud se stav projektu nezmění na hodnotu **Vytvořeno**.
 
 ## <a name="start-labeling"></a>Úvodní značení
 
@@ -142,17 +143,17 @@ Nyní jste nastavili prostředky Azure a nakonfigurovali projekt pro popisky dat
 
 ### <a name="tag-the-images"></a>Označení obrázků
 
-V této části kurzu přepnete role ze *správce projektu* na *štítek s popiskem* .  Každý, kdo má přístup přispěvatele k vašemu pracovnímu prostoru, se může stát popiskem.
+V této části kurzu přepnete role ze *správce projektu* na *štítek s popiskem*.  Každý, kdo má přístup přispěvatele k vašemu pracovnímu prostoru, se může stát popiskem.
 
 1. V [Machine Learning Studiu](https://ml.azure.com)vyberte na levé straně **popisky dat** , které se mají najít v projektu.  
 
 1. Vyberte **odkaz popisek** pro projekt.
 
-1. Přečtěte si pokyny a pak vyberte **úlohy** .
+1. Přečtěte si pokyny a pak vyberte **úlohy**.
 
 1. Vyberte obrázek miniatury na pravé straně, abyste zobrazili počet obrázků, které chcete označit v jednom snímku. Aby bylo možné přejít na, je nutné označit všechny tyto obrázky. Pokud máte novou stránku neoznačených dat, přepínejte jenom rozložení. Přepínání rozložení vymaže práci s označováním probíhajících prvků stránky.
 
-1. Vyberte jeden nebo více obrázků a pak vyberte značku, kterou chcete použít pro výběr. Značka se zobrazí pod obrázkem.  Pokračujte výběrem a označením všech imagí na stránce.  Chcete-li vybrat všechny zobrazené obrázky současně, vyberte **možnost Vybrat vše** . Vyberte alespoň jeden obrázek pro použití značky.
+1. Vyberte jeden nebo více obrázků a pak vyberte značku, kterou chcete použít pro výběr. Značka se zobrazí pod obrázkem.  Pokračujte výběrem a označením všech imagí na stránce.  Chcete-li vybrat všechny zobrazené obrázky současně, vyberte **možnost Vybrat vše**. Vyberte alespoň jeden obrázek pro použití značky.
 
 
     > [!TIP]
@@ -178,7 +179,7 @@ Jako vedoucí může být vhodné zkontrolovat práci s popisem.
 
 1. Na řídicím panelu se zobrazí průběh projektu.
 
-1. V horní části stránky vyberte **data** .
+1. V horní části stránky vyberte **data**.
 
 1. Na levé straně vyberte **označená data** , aby se zobrazily označené obrázky.  
 
@@ -194,7 +195,7 @@ Popisky obrázků lze exportovat ve [formátu díky Coco](http://cocodataset.org
 
 1. Vyberte odkaz název projektu.
 
-1. Vyberte **exportovat** a zvolte **exportovat jako datovou sadu Azure ml** . 
+1. Vyberte **exportovat** a zvolte **exportovat jako datovou sadu Azure ml**. 
 
     Stav exportu se zobrazí hned pod tlačítkem **exportovat** . 
 

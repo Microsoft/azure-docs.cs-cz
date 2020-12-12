@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.custom: data4ml
+ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558721"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346652"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -44,7 +45,7 @@ V tomto článku se naučíte:
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
 * Pokyny pro označování.
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
@@ -103,7 +104,7 @@ Přímé nahrání dat:
 
 Data se nahrají do výchozího úložiště objektů BLOB (workspaceblobstore) pracovního prostoru Machine Learning.
 
-## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Konfigurovat přírůstkovou aktualizaci
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"></a> Konfigurovat přírůstkovou aktualizaci
 
 Pokud máte v úmyslu přidat nové image do datové sady, použijte přírůstkovou aktualizaci pro přidání těchto nových imagí do projektu.   Když je zapnutá **přírůstková aktualizace** , datová sada se pravidelně kontroluje, aby se do projektu přidaly nové image, a to na základě sazby dokončení označení.   Kontroly nových dat se zastaví, když projekt obsahuje maximálně 500 000 imagí.
 

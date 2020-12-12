@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340554"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347553"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Transakční dávkové operace v Azure Cosmos DB s využitím sady .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Transakční dávka popisuje skupinu operací s body, které musí být buď úspěšné, nebo neúspěšné společně se stejným klíčem oddílu v kontejneru. V sadě .NET SDK `TranscationalBatch` je třída použita k definování této dávky operací. Pokud jsou všechny operace úspěšné v pořadí, v jakém jsou popsány v rámci operace transakční dávky, transakce bude potvrzena. Nicméně pokud dojde k chybě nějaké operace, vrátí se celá transakce zpátky.
+Transakční dávka popisuje skupinu operací s body, které musí být buď úspěšné, nebo neúspěšné společně se stejným klíčem oddílu v kontejneru. V sadě .NET SDK `TransactionalBatch` je třída použita k definování této dávky operací. Pokud jsou všechny operace úspěšné v pořadí, v jakém jsou popsány v rámci operace transakční dávky, transakce bude potvrzena. Nicméně pokud dojde k chybě nějaké operace, vrátí se celá transakce zpátky.
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Co je transakce v Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB aktuálně podporuje uložené procedury, které také poskytuj�
 
 * **Možnost jazyka** – transakční dávka je podporovaná v sadě SDK a jazyce, se kterým už pracujete, zatímco uložené procedury je potřeba zapsat v JavaScriptu.
 * **Správa verzí kódu** – kód aplikace a jeho registrace do kanálu CI/CD je mnohem přirozenější než orchestrace aktualizace úložné procedury a zajištění, aby se změna projevila ve správnou dobu. Také usnadňuje vracení změn.
-* **Výkon** – sníží latenci ekvivalentních operací až do 30% ve srovnání s prováděním uložených procedur.
+* **Výkon** – zmenšená latence ekvivalentních operací až o 30% ve srovnání s prováděním uložených procedur.
 * **Serializace obsahu** – každá operace v rámci transakční dávky může využít vlastní možnosti serializace pro jeho datovou část.
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>Postup vytvoření transakční operace v dávce
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-Dále budete muset zavolat na `ExecuteAsync` :
+V dalším kroku budete muset zavolat `ExecuteAsync` do dávky:
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-Až odpověď obdržíte, budete muset zjistit, jestli je úspěšná, a extrahovat výsledky:
+Jakmile je odpověď přijata, prověřte, jestli je úspěšná, a extrahujte výsledky:
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-Pokud dojde k selhání, bude mít neúspěšná operace stavový kód odpovídající chyby. Vzhledem k tomu, že všechny ostatní operace budou mít stavový kód 424 (neúspěšná závislost). V následujícím příkladu se operace nezdařila, protože se pokusí vytvořit položku, která již existuje (409 HttpStatusCode. konflikty). Stavové kódy usnadňují identifikaci příčiny selhání transakce.
+Pokud dojde k selhání, bude mít neúspěšná operace stavový kód odpovídající chyby. Všechny ostatní operace budou mít stavový kód 424 (neúspěšná závislost). V následujícím příkladu se operace nezdařila, protože se pokusí vytvořit položku, která již existuje (409 HttpStatusCode. konflikty). Stavový kód umožňuje určit příčinu selhání transakce.
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 Při `ExecuteAsync` volání metody jsou všechny operace v `TransactionalBatch` objektu seskupeny, serializovány do jediné datové části a odeslány jako jediný požadavek na službu Azure Cosmos DB.
 
-Služba obdrží požadavek a provede všechny operace v rámci transakčního oboru a vrátí odpověď pomocí stejného protokolu serializace. Tato odpověď je buď úspěšná, nebo neúspěšná a obsahuje interně všechny odpovědi na jednotlivé operace.
+Služba obdrží požadavek a provede všechny operace v rámci transakčního oboru a vrátí odpověď pomocí stejného protokolu serializace. Tato odpověď je buď úspěšná, nebo neúspěšná, a poskytuje jednotlivé odezvy operací na operaci.
 
 Sada SDK zpřístupňuje odpověď pro ověření výsledku a volitelně extrahuje všechny výsledky vnitřní operace.
 
@@ -108,8 +108,8 @@ Sada SDK zpřístupňuje odpověď pro ověření výsledku a volitelně extrahu
 
 V současné době existují dvě známá omezení:
 
-* Limit velikosti požadavku na Azure Cosmos DB určuje velikost `TransactionalBatch` datové části nemůže být větší než 2 MB a maximální doba spuštění je 5 sekund.
-* Pro zajištění, `TransactionalBatch` že výkon je podle očekávání a v rámci SLA, existuje aktuální limit 100 operací.
+* Limit velikosti požadavku Azure Cosmos DB omezuje velikost `TransactionalBatch` datové části na hodnotu nepřesahující 2 MB a maximální doba spuštění je 5 sekund.
+* `TransactionalBatch`Pro zajištění toho, že výkon je podle očekávání a v rámci SLA, existuje aktuální limit 100 operací za sekundu.
 
 ## <a name="next-steps"></a>Další kroky
 

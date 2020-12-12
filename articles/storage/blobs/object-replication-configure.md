@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427594"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347944"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -291,7 +291,7 @@ Při konfiguraci replikace objektů na cílovém účtu se souborem JSON v Azure
 Pak můžete stáhnout soubor JSON obsahující definici zásady, kterou můžete zadat jinému uživateli ke konfiguraci zdrojového účtu. Pro stažení tohoto souboru JSON postupujte takto:
 
 1. Přejděte do nastavení **replikace objektů** pro cílový účet v Azure Portal.
-1. Vyberte tlačítko **Další** vedle zásady, kterou chcete stáhnout, a pak vyberte **Stáhnout pravidla** , jak je znázorněno na následujícím obrázku.
+1. Vyberte tlačítko **Další** vedle zásady, kterou chcete stáhnout, a pak vyberte **Stáhnout pravidla**, jak je znázorněno na následujícím obrázku.
 
     :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak stáhnout pravidla replikace do souboru JSON":::
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Chcete-li použít soubor JSON ke konfiguraci zásad replikace ve zdrojovém účtu pomocí prostředí PowerShell, načtěte místní soubor a převeďte jej z formátu JSON na objekt. Pak zavolejte příkaz [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) a nakonfigurujte zásady na zdrojovém účtu, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
+Chcete-li použít soubor JSON k definování zásad replikace ve zdrojovém účtu pomocí prostředí PowerShell, načtěte místní soubor a převeďte jej z formátu JSON na objekt. Pak zavolejte příkaz [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) a nakonfigurujte zásady na zdrojovém účtu, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách a cestu k souboru vlastními hodnotami:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json

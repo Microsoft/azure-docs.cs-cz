@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187268"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346363"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
-
 
 
 V obou předchozích kurzech jste vytvořili a přizpůsobili IoT Central aplikaci pomocí šablony aplikace v rámci služby **Store Analytics** . V tomto kurzu nakonfigurujete IoT Central aplikaci pro export telemetrie shromážděných ze zařízení. Pak použijete Power BI k vytvoření vlastního řídicího panelu pro správce úložiště, který bude vizualizovat přehledy odvozené z telemetrie.
@@ -35,14 +34,14 @@ V tomto kurzu se naučíte, jak:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Pokud chcete dokončit předchozí dva kurzy, [vytvořte v Azure aplikaci pro analýzu v obchodě IoT Central](./tutorial-in-store-analytics-create-app.md) a [Přizpůsobte řídicí panel operátora a spravujte zařízení ve službě Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet Power BI. Pokud nemáte účet Power BI, zaregistrujte si [bezplatnou zkušební verzi Power BI pro](https://app.powerbi.com/signupredirect?pbi_source=web) , než začnete.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit skupinu prostředků pro jejich správu. Skupina prostředků by měla být ve stejném umístění jako vaše aplikace IoT Central pro **analýzu v rámci služby Store** . Vytvoření skupiny prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
 1. V poli **předplatné** vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.

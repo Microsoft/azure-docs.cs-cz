@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000116"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348046"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Kurz: přizpůsobení řídicího panelu operátora a Správa zařízení v Azure IoT Central
 
 
-V tomto kurzu se jako tvůrce naučíte, jak přizpůsobit řídicí panel operátoru ve službě Azure IoT Central v aplikaci pro analýzu v obchodě. Obsluha aplikace může pomocí přizpůsobeného řídicího panelu spustit aplikaci a spravovat připojená zařízení.
+V tomto kurzu se jako tvůrce naučíte, jak přizpůsobit řídicí panel operátoru v aplikaci Azure IoT Central v rámci analytické aplikace v obchodě. Obsluha aplikace může pomocí přizpůsobeného řídicího panelu spustit aplikaci a spravovat připojená zařízení.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Přidat dlaždice vlastností pro zobrazení podrobností o zařízení
 > * Přidání dlaždic příkazů ke spuštění příkazů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tvůrce by měl dokončit kurz pro vytvoření aplikace Azure IoT Central in-Store Analytics a přidat zařízení:
 
@@ -80,13 +80,13 @@ Pokud chcete přizpůsobit dlaždici s obrázkem, která zobrazuje obrázek zna�
 
     ![Obrázek značky uložení v Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard/brand-image-save.png)
 
-1. Volitelně můžete vybrat **Konfigurovat** na dlaždici s názvem **dokumentace**a zadat adresu URL pro obsah podpory. 
+1. Volitelně můžete vybrat **Konfigurovat** na dlaždici s názvem **dokumentace** a zadat adresu URL pro obsah podpory. 
 
 Pokud chcete přizpůsobit dlaždici s obrázkem, která zobrazuje mapu zón senzorů ve Storu:
 
 1. Na dlaždici obrázek vyberte **Konfigurovat** , kde se zobrazuje výchozí mapa zóny úložiště. 
 
-1. Vyberte **Image**a pomocí dialogového okna nahrajte vlastní image mapy zóny úložiště. 
+1. Vyberte **Image** a pomocí dialogového okna nahrajte vlastní image mapy zóny úložiště. 
 
 1. Vyberte **Konfigurace aktualizace**.
 
@@ -107,13 +107,13 @@ Chcete-li odebrat dlaždice, které nechcete použít v aplikaci:
 
 1. Na panelu nástrojů řídicí panel vyberte **Upravit** . 
 
-1. Vyberte **X Delete** pro odebrání následujících dlaždic: **zpět do všech zón**, **navštívit řídicí panel obchodu**, **čekací doba**a všechny tři dlaždice spojené s **rezervací 3**. Řídicí panel společnosti Contoso tyto dlaždice nepoužívá. 
+1. Vyberte **X Delete** pro odebrání následujících dlaždic: **zpět do všech zón**, **navštívit řídicí panel obchodu**, **čekací doba** a všechny tři dlaždice spojené s **rezervací 3**. Řídicí panel společnosti Contoso tyto dlaždice nepoužívá. 
 
     ![Odstranění dlaždic v Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles.png)
 
 1. Posuňte se a přepněte zbývající dlaždice řídicího panelu na zobrazení.
 
-1. Pokud chcete odebrat následující dlaždice, vyberte **X Delete** : **zóna zahřívání**, **zóna pro vyjmutí**z **elektrického prostředí, nastavení senzoru pro vyobsazení**, **nastavení snímače termostatu**a **podmínky prostředí**. 
+1. Pokud chcete odebrat následující dlaždice, vyberte **X Delete** : **zóna zahřívání**, **zóna pro vyjmutí** z **elektrického prostředí, nastavení senzoru pro vyobsazení**, **nastavení snímače termostatu** a **podmínky prostředí**. 
 
    ![Zbývající dlaždice odstranění služby Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles-2.png)
 
@@ -127,7 +127,7 @@ Po odebrání nepoužívaných dlaždic znovu uspořádejte zbývající dlaždi
 
 Změna uspořádání zbývajících dlaždic:
 
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 
 1. Vyberte dlaždici s **firmwarem obsazení** a přetáhněte ji napravo od dlaždice **obsazení** baterie.
 
@@ -146,7 +146,7 @@ V této části přidáte dvě další dlaždice telemetrie pro zobrazení telem
 
 Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů RuuviTag:
 
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 
 1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
@@ -178,17 +178,17 @@ Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů Ruuv
 
 Postup úpravy dlaždice **provoz osob** pro zobrazení telemetrie jenom pro dvě zóny rezervace:
 
-1. Vyberte **Upravit**. 
+1. Vyberte **Edit** (Upravit). 
 
 1. Na dlaždici **provoz osob** vyberte **Konfigurovat** .
 
-1. V **telemetrie** vyberte **počet 1**, **Počet 2**a **počet 3**. 
+1. V **telemetrie** vyberte **počet 1**, **Počet 2** a **počet 3**. 
 
 1. Vyberte **Konfigurace aktualizace**. Vymaže existující konfiguraci na dlaždici. 
 
 1. Na dlaždici **provoz osob** znovu vyberte **Konfigurovat** .
 
-1. V **telemetrie** vyberte **počet 1**a **Počet 2**. 
+1. V **telemetrie** vyberte **počet 1** a **Počet 2**. 
 
 1. Vyberte **Konfigurace aktualizace**. 
 
@@ -201,7 +201,7 @@ Operátoři aplikace používají řídicí panel ke správě zařízení a stav
 
 Chcete-li přidat dlaždici vlastností pro jednotlivé RuuviTag:
 
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 
 1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
@@ -211,7 +211,7 @@ Chcete-li přidat dlaždici vlastností pro jednotlivé RuuviTag:
 
 1. Vyberte **kombinovat**. 
 
-1. Na nově vytvořené dlaždici s názvem **verze softwaru**vyberte **Konfigurovat** . 
+1. Na nově vytvořené dlaždici s názvem **verze softwaru** vyberte **Konfigurovat** . 
 
 1. Změňte **název** na *Ruuvi 1 verzi softwaru*.
 
@@ -230,7 +230,7 @@ Operátoři aplikace také používají řídicí panel ke správě zařízení 
 
 Chcete-li přidat dlaždici příkazu pro restartování brány:
 
-1. Vyberte **Upravit**. 
+1. Vyberte **Edit** (Upravit). 
 
 1. `C500`V seznamu **Šablona zařízení** vyberte. Jedná se o šablonu pro bránu Rigado C500. 
 

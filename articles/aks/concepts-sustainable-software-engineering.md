@@ -4,16 +4,16 @@ description: Přečtěte si o udržitelném vývojovém softwaru ve službě Azu
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984978"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346890"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Udržitelné principy softwarového inženýrství ve službě Azure Kubernetes (AKS)
 
-Zásady udržitelného nastavování softwaru představují sadu kompetencí, které vám pomůžou definovat, sestavovat a spouštět udržitelné aplikace. Celkovým cílem je omezit nároky na uhlíku všech aspektů aplikace. V článku [Principy. zelený projekt][principles-green] je přehled zásad udržitelného softwarového inženýrství.
+Zásady udržitelného nastavování softwaru představují sadu kompetencí, které vám pomůžou definovat, sestavovat a spouštět udržitelné aplikace. Celkovým cílem je omezit nároky na uhlíku všech aspektů aplikace. [Zásady udržitelného řízení softwaru][principles-sse] mají přehled o zásadách udržitelného softwarového inženýrství.
 
 Je důležité si uvědomit o udržitelném vývojovém softwaru, protože se jedná o posun v prioritách a zaměřuje se na něj. V mnoha případech je software navržený a spuštěný způsobem, který se zaměřuje na vysoký výkon a nízkou latenci. Udržitelný vývoj softwaru se zaměřuje na snížení co nejvíc emisí uhlíku. V některých případech může použití udržitelného principu softwarového inženýrství poskytovat rychlejší výkon nebo nižší latenci, například snížením celkového síťového provozu. V ostatních případech může snížení emisí uhlíku způsobit pomalejší výkon nebo vyšší latenci, například zpoždění úloh s nízkou prioritou. Než se rozhodnete, že se na vaši aplikaci budou uplatňovat udržitelné zásady softwarového inženýrství, Projděte si priority, potřeby a kompromisy vaší aplikace.
 
@@ -32,7 +32,7 @@ Po kontrole využití clusteru zvažte použití funkcí nabízených [více fon
 
 Zvýšení využití může také snížit nadbytečné uzly, což snižuje spotřebu energie využívané [rezervacemi prostředků na jednotlivých uzlech][resource-reservations].
 
-Přečtěte si také *požadavky* na procesor a paměť a *Omezení* v manifestech Kubernetes vašich aplikací. Když tyto hodnoty snížíte pro paměť a procesor, k dispozici je více paměti a CPU pro spouštění dalších úloh. Když spouštíte více úloh s nižšími nároky na procesor a paměť, váš cluster se bude trochu přidělovat, což zvyšuje vaše využití. Když snižujete kapacitu procesoru a paměti pro vaše aplikace, může se chování vašich aplikací snížit nebo nestabilní, pokud nastavíte tyto hodnoty příliš nízké. Před změnou *požadavků* a *omezení*procesoru a paměti zvažte spuštění některých testů srovnávacích testů, abyste zjistili, jestli jsou tyto hodnoty správně nastavené. Kromě toho nikdy nezmenšujte tyto hodnoty do bodu, kdy se vaše aplikace stane nestabilní.
+Přečtěte si také *požadavky* na procesor a paměť a *Omezení* v manifestech Kubernetes vašich aplikací. Když tyto hodnoty snížíte pro paměť a procesor, k dispozici je více paměti a CPU pro spouštění dalších úloh. Když spouštíte více úloh s nižšími nároky na procesor a paměť, váš cluster se bude trochu přidělovat, což zvyšuje vaše využití. Když snižujete kapacitu procesoru a paměti pro vaše aplikace, může se chování vašich aplikací snížit nebo nestabilní, pokud nastavíte tyto hodnoty příliš nízké. Před změnou *požadavků* a *omezení* procesoru a paměti zvažte spuštění některých testů srovnávacích testů, abyste zjistili, jestli jsou tyto hodnoty správně nastavené. Kromě toho nikdy nezmenšujte tyto hodnoty do bodu, kdy se vaše aplikace stane nestabilní.
 
 ## <a name="reduce-network-travel"></a>Snížení síťové cesty
 
@@ -74,4 +74,4 @@ Přečtěte si další informace o funkcích AKS uvedených v tomto článku:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

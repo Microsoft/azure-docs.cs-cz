@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366838"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347791"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování a zarovnání vět v paralelních dokumentech
 
-V průběhu školení jsou věty přítomné v paralelních dokumentech spárovány nebo zarovnány. Vlastní Překladatel oznamuje počet vět, které byly v každé sadě dat spárovány jako zarovnaných vět.
+Po nahrání dokumentů jsou věty, které jsou přítomné v paralelních dokumentech, spárovány nebo zarovnány. Vlastní Překladatel oznamuje počet vět, které byly v každé sadě dat spárovány jako zarovnaných vět.
 
 ## <a name="pairing-and-alignment-process"></a>Párování a proces zarovnání
 
@@ -37,7 +37,7 @@ Aby bylo školení úspěšné, zobrazí následující tabulka minimální poč
 | Typ dokumentu   | Navrhovaný minimální počet vět | Maximální počet vět |
 |------------|--------------------------------------------|--------------------------------|
 | Školení   | 10 000                                     | Bez horní meze                 |
-| Ladění     | 500                                      | 2,500       |
+| Optimalizace     | 500                                      | 2,500       |
 | Testování    | 500                                      | 2,500  |
 | Slovník | 0                                          | Bez horní meze                 |
 

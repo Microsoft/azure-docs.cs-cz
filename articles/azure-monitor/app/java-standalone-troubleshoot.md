@@ -1,72 +1,72 @@
 ---
-title: Řešení potíží – Azure Monitor Application Insights Java
-description: Řešení potíží s Azure Monitor Application Insights Java
+title: Řešení potíží s Azure Monitor Application Insights pro Java
+description: Informace o řešení potíží s agentem Java pro Azure Monitor Application Insights
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cf27763f857cc1fd1aad5256d0c6cecf91251caf
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855619"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347826"
 ---
-# <a name="troubleshooting-azure-monitor-application-insights-java"></a>Řešení potíží s Azure Monitor Application Insights Java
+# <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
-V tomto článku jsme pokryli některé běžné problémy, se kterými se uživatel může setkat při instrumentaci aplikace Java pomocí agenta Java společně s postupem, jak tyto problémy vyřešit.
+V tomto článku se zaměříme na některé běžné problémy, které byste mohli využít při instrumentaci aplikace Java pomocí agenta Java pro Application Insights. Popisujeme také postup řešení těchto problémů. Application Insights je funkce služby Azure Monitor Platform.
 
-## <a name="self-diagnostic-log-file"></a>Soubor protokolu samočinného diagnostiky
+## <a name="check-the-self-diagnostic-log-file"></a>Podívejte se na soubor protokolu, který je v samostatném diagnostickém
 
-Ve výchozím nastavení Application Insights Java 3,0 vytvoří soubor protokolu s názvem `applicationinsights.log` ve stejném adresáři, ve kterém `applicationinsights-agent-3.0.0.jar` je soubor umístěný.
+Ve výchozím nastavení agent Java 3,0 pro Application Insights vytvoří soubor protokolu s názvem `applicationinsights.log` ve stejném adresáři, ve kterém je uložený `applicationinsights-agent-3.0.0.jar` soubor.
 
-Tento soubor protokolu je prvním místem, kde můžete vyhledat tipy pro všechny problémy, se kterými se můžete setkat.
+Tento soubor protokolu je prvním místem, kde můžete vyhledat tipy pro případné problémy, se kterými se můžete setkat.
 
-## <a name="upgrade-from-application-insights-java-2x-sdk"></a>Upgrade z Application Insights Java 2. x SDK
+## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Upgrade z Application Insights Java 2. x SDK
 
-Viz [upgrade ze sady 2. x SDK](./java-standalone-upgrade-from-2x.md).
+Pokud už v aplikaci používáte sadu Application Insights Java 2. x SDK, můžete ji dál používat. Agent Java 3,0 ho detekuje. Další informace najdete v tématu [upgrade ze sady Java 2. x SDK](./java-standalone-upgrade-from-2x.md).
 
-## <a name="upgrade-from-30-preview"></a>Upgrade z verze 3,0 Preview
+## <a name="upgrade-from-application-insights-java-30-preview"></a>Upgrade z verze Application Insights Java 3,0 Preview
 
-Pokud upgradujete z verze 3,0 Preview, pečlivě si přečtěte všechny [Možnosti konfigurace](./java-standalone-config.md) , protože se struktura JSON úplně změnila ve verzi 3,0 GA.
+Pokud upgradujete z agenta Java 3,0 Preview, pečlivě si Projděte všechny [Možnosti konfigurace](./java-standalone-config.md) . Struktura JSON se úplně změnila ve verzi 3,0 pro obecné dostupnosti (GA).
 
 Mezi tyto změny patří:
 
-1.  Název konfiguračního souboru se změnil z `ApplicationInsights.json` na `applicationinsights.json` .
-2.  `instrumentationSettings`Uzel již není k dispozici. Veškerý obsah v nástroji `instrumentationSettings` je přesunut na kořenovou úroveň. 
-3.  Konfigurační uzly jako `sampling` , `jmxMetrics` `instrumentation` a `heartbeat` jsou přesunuty z `preview` kořenové úrovně.
+-  Změnil se název konfiguračního souboru z `ApplicationInsights.json` na `applicationinsights.json` .
+-  `instrumentationSettings`Uzel již není k dispozici. Veškerý obsah v nástroji `instrumentationSettings` je přesunut na kořenovou úroveň. 
+-  Konfigurační uzly jako `sampling` , `jmxMetrics` , `instrumentation` a `heartbeat` jsou přesunuty z `preview` úrovně na kořenovou úroveň.
 
-## <a name="ssl-certificate-issues"></a>Problémy s certifikátem SSL
+## <a name="import-ssl-certificates"></a>Importovat certifikáty SSL
 
-Pokud používáte výchozí úložiště klíčů Java, bude už mít všechny kořenové certifikáty certifikační autority a nemusíte naimportovat žádné další certifikáty SSL.
+Pokud používáte výchozí úložiště klíčů Java, bude už mít všechny kořenové certifikáty certifikační autority. Nemusíte potřebovat naimportovat víc certifikátů SSL.
 
 Pokud používáte vlastní úložiště klíčů Java, možná budete muset importovat do něj certifikáty Application Insights koncového bodu SSL.
 
-### <a name="some-key-terminology"></a>Některá klíčová terminologie:
-*Úložiště klíčů* je úložiště certifikátů, veřejných a privátních klíčů. JDK distribuce obvykle mají spustitelný soubor pro jejich správu – `keytool` .
+### <a name="key-terminology"></a>Klíčová terminologie
+*Úložiště klíčů* je úložiště certifikátů, veřejných klíčů a privátních klíčů. Distribuce sady Java Development Kit obvykle obsahuje spustitelný soubor, který je spravuje: `keytool` .
 
 Následující příklad představuje jednoduchý příkaz pro import certifikátu protokolu SSL do úložiště klíčů:
 
 `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
 
-### <a name="steps-to-download-and-add-the-ssl-certificate"></a>Postup stažení a přidání certifikátu SSL:
+### <a name="steps-to-download-and-add-an-ssl-certificate"></a>Postup stažení a přidání certifikátu SSL
 
-1.  Otevřete oblíbený prohlížeč a `IngestionEndpoint` v připojovacím řetězci, který se používá k instrumentaci vaší aplikace, použijte adresu URL, jak je znázorněno níže.
+1.  Otevřete oblíbený prohlížeč a pokračujte na `IngestionEndpoint` adresu URL v připojovacím řetězci, který se používá k instrumentaci vaší aplikace.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Připojovací řetězec Application Insights":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Snímek obrazovky zobrazující připojovací řetězec Application Insights":::
 
-2.  Klikněte na ikonu zobrazit informace o lokalitě (uzamknout) v prohlížeči a klikněte na možnost certifikát, jak je vidět níže.
+2.  Vyberte ikonu **Zobrazit informace o lokalitě** (uzamknout) v prohlížeči a pak vyberte možnost **certifikát** .
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Zachytávání certifikátů SSL":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Snímek obrazovky s možností certifikátu v informacích o lokalitě":::
 
-3.  Přejděte na kartu Podrobnosti a klikněte na Kopírovat do souboru.
-4.  Klikněte na tlačítko Další a vyberte X. 509 s kódováním Base-64 (. CER) "formátovat a vybrat další.
+3.  Přejít na kartu **Podrobnosti** a vyberte **Kopírovat do souboru**.
+4.  Klikněte na tlačítko **Další** a vyberte **kódovaný znak X. 509 s kódováním Base-64 (. CER)** a pak znovu vyberte **Další** .
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="ExportWizard certifikátu SSL":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Snímek obrazovky Průvodce exportem certifikátu s vybraným formátem":::
 
-5.  Zadejte soubor, do kterého chcete uložit certifikát SSL. Nakonec klikněte na další a dokončit. Měla by se zobrazit zpráva o úspěšném exportu.
-6.  Jakmile certifikát naimportujete do úložiště klíčů Java, můžete certifikát naimportovat. Pomocí výše uvedeného [příkazu](#some-key-terminology) importujte certifikáty.
+5.  Zadejte soubor, do kterého chcete uložit certifikát SSL. Pak vyberte **Další**  >  **Dokončit**. Měla by se zobrazit zpráva o úspěšném exportu.
+6.  Po vytvoření certifikátu je čas importovat certifikát do úložiště klíčů Java. K importu certifikátů použijte [předchozí příkaz](#key-terminology) .
 
 > [!WARNING]
-> Tento postup se bude muset zopakovat, aby se nový certifikát dostal do vypršení platnosti aktuálního certifikátu. Informace o vypršení platnosti najdete na kartě Podrobnosti v překryvném okně certifikátu, jak je znázorněno níže.
-
-:::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Podrobnosti certifikátu SSL":::
+> Chcete-li získat nový certifikát před vypršením platnosti aktuálního certifikátu, je nutné tento postup opakovat. Informace o vypršení platnosti najdete na kartě **Podrobnosti** v dialogovém okně **certifikát** .
+>
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti certifikátu SSL":::

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: afb940d63f76acce6575b74bf5a21a7fb912fc4e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4741053acdefe27eadc380d9144c548af4b5143c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920099"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346092"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírování dat do nebo ze systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -153,7 +153,7 @@ Pro systém souborů jsou podporovány následující vlastnosti `storeSettings`
 | MOŽNOST 1: statická cesta<br> | Kopírovat ze zadané cesty ke složce nebo souboru v datové sadě. Pokud chcete zkopírovat všechny soubory ze složky, zadejte také `wildcardFileName` jako `_` . |  |
 | MOŽNOST 2: filtr na straně serveru<br>– Filtr  | Nativní filtr na straně souborového serveru, který poskytuje lepší výkon než filtr zástupných znaků možnosti 3. Používá `*` se pro spárování nula nebo více znaků a `?` pro porovnávání s žádným nebo jedním znakem. Přečtěte **si další** informace o syntaxi a poznámkách od poznámek v [této části](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_). | Ne                                                          |
 | MOŽNOST 3: filtr na straně klienta<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. K takovému filtru dochází na straně ADF. potom můžete vytvořit výčet složek nebo souborů v dané cestě přes ADF a potom použít filtr zástupných znaků.<br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
-| MOŽNOST 3: filtr na straně klienta<br>- wildcardFileName | Název souboru se zástupnými znaky v rámci daného folderPath/wildcardFolderPath pro filtrování zdrojových souborů. K takovému filtru dochází na straně ADF a potom se v rámci dané cesty provede výčet souborů a potom se použije filtr zástupných znaků.<br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape.<br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
+| MOŽNOST 3: filtr na straně klienta<br>- wildcardFileName | Název souboru se zástupnými znaky v rámci daného folderPath/wildcardFolderPath pro filtrování zdrojových souborů. K takovému filtru dochází na straně ADF a potom se v rámci dané cesty provede výčet souborů a potom se použije filtr zástupných znaků.<br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); použijte `^` k Escape, jestli váš skutečný název souboru obsahuje zástupný znak nebo tento řídicí znak v.<br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
 | MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |Ne |
 | ***Další nastavení:** _ |  | |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je rekurzivní nastavení nastaveno na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou _ *true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |

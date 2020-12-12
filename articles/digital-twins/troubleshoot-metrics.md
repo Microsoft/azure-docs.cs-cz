@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763244"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347893"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -49,6 +49,17 @@ Digitální vlákna Azure nabízí několik metrik, které vám poskytnou přehl
 
 Následující tabulky popisují metriky sledované každou instancí digitálních vláken Azure a o tom, jak každá metrika souvisí s celkovým stavem vaší instance.
 
+#### <a name="metrics-for-tracking-service-limits"></a>Metriky pro omezení služby sledování
+
+Tyto metriky můžete nakonfigurovat tak, aby se mohly sledovat při přístupu k [limitu publikované služby](reference-service-limits.md#functional-limits) pro určitý aspekt řešení. 
+
+Pokud ho chcete nastavit, použijte funkci [výstrahy](troubleshoot-alerts.md) v Azure monitor. Můžete definovat prahové hodnoty pro tyto metriky, abyste zobrazili upozornění, když metrika dosáhne určitého procenta jeho publikovaného limitu.
+
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | Počet zdvojených (Náhled) | Počet | Celkem | Celkový počet vláken v instanci digitálních vláken Azure Pomocí této metriky můžete určit, jestli se k [limitu služby](reference-service-limits.md#functional-limits) přiblížíte, aby se dosáhlo maximálního počtu vláken povolených na jednu instanci. |  Žádné |
+| ModelCount | Počet modelů (Preview) | Počet | Celkem | Celkový počet modelů v instanci digitálních vláken Azure Pomocí této metriky můžete určit, jestli se blížíte [limitu služby](reference-service-limits.md#functional-limits) pro maximální počet modelů povolených na jednu instanci. | Žádné |
+
 #### <a name="api-request-metrics"></a>Metriky žádostí API
 
 Metriky, které se musí dělat s požadavky rozhraní API:
@@ -77,9 +88,9 @@ Metriky, které se musí dělat s daty příchozího přenosu dat:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| IngressEvents | Události příchozího přenosu dat | Počet | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Result |
-| IngressEventsFailureRate | Frekvence neúspěšných událostí příchozího přenosu dat | Procento | Průměr | Procento příchozích událostí telemetrie, pro které služba vrací kód odpovědi vnitřní chyba (500). | Result |
-| IngressEventsLatency | Latence událostí příchozího přenosu dat | Milisekund | Průměr | Čas od okamžiku, kdy událost dorazí, když je připravená na výstup pomocí digitálních vláken Azure, kdy služba odešle výsledek úspěch/selhání. | Result |
+| IngressEvents | Události příchozího přenosu dat | Počet | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Výsledek |
+| IngressEventsFailureRate | Frekvence neúspěšných událostí příchozího přenosu dat | Procento | Průměr | Procento příchozích událostí telemetrie, pro které služba vrací kód odpovědi vnitřní chyba (500). | Výsledek |
+| IngressEventsLatency | Latence událostí příchozího přenosu dat | Milisekund | Průměr | Čas od okamžiku, kdy událost dorazí, když je připravená na výstup pomocí digitálních vláken Azure, kdy služba odešle výsledek úspěch/selhání. | Výsledek |
 
 #### <a name="routing-metrics"></a>Metriky směrování
 
@@ -87,9 +98,9 @@ Metriky, které se musí dělat s směrováním:
 
 | Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Směrované zprávy | Počet | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Result |
-| RoutingFailureRate | Frekvence neúspěšných směrování | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Result |
-| RoutingLatency | Latence směrování | Milisekund | Průměr | Uplynulý čas mezi událostí, která je směrována z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Result |
+| MessagesRouted | Směrované zprávy | Počet | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
+| RoutingFailureRate | Frekvence neúspěšných směrování | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
+| RoutingLatency | Latence směrování | Milisekund | Průměr | Uplynulý čas mezi událostí, která je směrována z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
 
 ## <a name="dimensions"></a>Dimenze
 
@@ -97,11 +108,11 @@ Dimenze vám pomůžou identifikovat další podrobnosti o metrikách. Některé
 
 | Dimenze | Hodnoty |
 | --- | --- |
-| Ověřování | OAuth |
+| Authentication | OAuth |
 | Operace (pro požadavky rozhraní API) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modely/číst, <br>Microsoft. DigitalTwins/modely/Write, <br>Microsoft. DigitalTwins/modely/DELETE, <br>Microsoft. DigitalTwins/dotaz/akce |
 | Typ koncového bodu | Event Grid <br>Centrum událostí, <br>Service Bus |
 | Protokol | HTTPS |
-| Result | Nástup <br>Selhání |
+| Výsledek | Nástup <br>Selhání |
 | Stavový kód | 200, 404, 500 a tak dále. |
 | Třída stavového kódu | 2xx, 4xx, 5xx a tak dále. |
 | Stavový text | Došlo k vnitřní chybě serveru, Nenalezeno a tak dále. |

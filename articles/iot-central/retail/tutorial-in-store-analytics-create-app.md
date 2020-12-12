@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165668"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346703"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
@@ -71,7 +71,7 @@ Vytvoření nové aplikace pro rezervaci v rámci úložiště:
 1. Volitelně můžete zvolit popisný **název aplikace**. Tato aplikace je založená na fiktivním maloobchodním obchodě s názvem contoso. V tomto kurzu se používá rezervace **název aplikace** *Contoso*. Šablona aplikace je založena na fiktivní společnosti Northwind. V tomto kurzu se seznámíte s postupem přizpůsobení aplikace pomocí contoso.
 
     > [!NOTE]
-    > Použijete-li popisný **název aplikace**, je stále nutné použít jedinečnou hodnotu pro **adresu URL**aplikace.
+    > Použijete-li popisný **název aplikace**, je stále nutné použít jedinečnou hodnotu pro **adresu URL** aplikace.
 
 1. Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
@@ -111,7 +111,7 @@ Vytvoření vlastního motivu:
 
 1. Pomocí tlačítka **změnit** můžete zvolit obrázek **ikony prohlížeče** , který se zobrazí na kartách prohlížeče.
 
-1. V případě potřeby nahraďte výchozí **barvy v prohlížeči** přidáním hexadecimálních kódů HTML. Pro **záhlaví**přidejte *#008575*.  Pro **zvýraznění**přidejte *#A1F3EA*. 
+1. V případě potřeby nahraďte výchozí **barvy v prohlížeči** přidáním hexadecimálních kódů HTML. Pro **záhlaví** přidejte *#008575*.  Pro **zvýraznění** přidejte *#A1F3EA*. 
 
 1. Vyberte **Uložit**. 
 
@@ -236,7 +236,7 @@ Provedením kroků v následujících dvou článcích spojíte skutečnou Rigad
 ## <a name="add-rules-and-actions"></a>Přidat pravidla a akce
 V rámci používání senzorů ve vaší aplikaci Azure IoT Central k monitorování podmínek můžete vytvořit pravidla ke spouštění akcí, když jsou splněné určité podmínky. Pravidlo je spojeno se šablonou zařízení a jedním nebo více zařízeními a obsahuje podmínky, které musí být splněny na základě telemetrie a událostí zařízení. Pravidlo má také jednu nebo více přidružených akcí. Akce můžou zahrnovat posílání e-mailových oznámení nebo aktivaci akce Webhooku pro posílání dat do jiných služeb. Šablona aplikace v rámci služby **Store Analytics – rezervace** obsahuje některá předdefinovaná pravidla pro zařízení v aplikaci.
 
-V této části vytvoříte nové pravidlo, které kontroluje maximální relativní úroveň vlhkosti na základě telemetrie senzorů RuuviTag. Do pravidla přidáte akci, aby v případě, že vlhkost překračuje maximum, aplikace posílá e-mail. 
+V této části vytvoříte nové pravidlo, které kontroluje maximální relativní úroveň vlhkosti na základě telemetrie senzorů RuuviTag. Do pravidla přidáte akci, aby v případě, že vlhkost překračuje maximum, aplikace pošle e-mail. 
 
 Vytvoření pravidla: 
 
@@ -248,13 +248,13 @@ Vytvoření pravidla:
 
 1. Jako název pravidla zadejte *hladinu vlhkosti* . 
 
-1. V části **obory**vyberte šablonu zařízení RuuviTag. Pravidlo, které definujete, bude platit pro všechny senzory založené na této šabloně. Volitelně můžete vytvořit filtr, který by pravidlo použilo jenom pro definovanou podmnožinu senzorů. 
+1. V části **obory** vyberte šablonu zařízení RuuviTag. Pravidlo, které definujete, bude platit pro všechny senzory založené na této šabloně. Volitelně můžete vytvořit filtr, který by pravidlo použilo jenom pro definovanou podmnožinu senzorů. 
 
 1. Vyberte si `Relative humidity` jako **telemetrii**. Je to funkce zařízení, kterou jste přizpůsobili v předchozím kroku.
 
 1. Vyberte `Is greater than` jako **operátor**. 
 
-1. Jako **hodnotu**zadejte typickou vnitřní úroveň vlhkosti v horním rozsahu pro vaše prostředí. Zadejte například *65*. Nastavili jste podmínku pro pravidlo, ke kterému dochází, když relativní vlhkost v jakémkoli RuuviTag reálném nebo simulovaném senzoru překročí tuto hodnotu. V závislosti na normálním rozsahu vlhkosti ve vašem prostředí možná budete muset upravit hodnotu nahoru nebo dolů.  
+1. Jako **hodnotu** zadejte typickou vnitřní úroveň vlhkosti v horním rozsahu pro vaše prostředí. Zadejte například *65*. Nastavili jste podmínku pro pravidlo, ke kterému dochází, když relativní vlhkost v jakémkoli RuuviTag reálném nebo simulovaném senzoru překročí tuto hodnotu. V závislosti na normálním rozsahu vlhkosti ve vašem prostředí možná budete muset upravit hodnotu nahoru nebo dolů.  
 
    ![Azure IoT Central – přidat podmínky pravidla](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
 

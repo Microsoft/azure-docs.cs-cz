@@ -3,14 +3,14 @@ title: Konfigurace vzájemného ověřování TLS
 description: Přečtěte si, jak ověřit klientské certifikáty v TLS. Azure App Service může klientský certifikát zpřístupnit kódu aplikace pro ověření.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213645"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347713"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
 
@@ -24,20 +24,33 @@ Přístup k aplikaci Azure App Service můžete omezit povolením různých typ�
 
 ## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, můžete přepnout **na** vyžádání příchozího certifikátu tak, že na webu Azure Portal vyberete **Konfigurace**  >  **Obecné nastavení** , nebo musíte nastavit `clientCertEnabled` nastavení aplikace na `true` . Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
+Nastavení aplikace tak, aby vyžadovala klientské certifikáty:
+
+1. V levém navigačním panelu stránky správy vaší aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
+
+1. Nastavte **režim klientského certifikátu** tak, aby **vyžadoval**. Klikněte na **Uložit** v horní části stránky.
+
+Pokud to chcete udělat s rozhraním příkazového řádku Azure, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Vyloučit cesty z vyžadování ověřování
 
-Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace budou vyžadovat klientský certifikát pro přístup. Pokud chcete, aby některé cesty zůstaly otevřené pro anonymní přístup, můžete v rámci konfigurace aplikace definovat cesty vyloučení.
+Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace vyžadují klientský certifikát pro přístup. Chcete-li tento požadavek pro určité cesty odebrat, definujte cesty vyloučení jako součást konfigurace aplikace.
 
-Cesty vyloučení se dají nakonfigurovat tak, že vyberete nastavení **Konfigurace**  >  **Obecné** a definujete cestu vyloučení. V tomto příkladu žádná z `/public` cest k vaší aplikaci nepožaduje klientský certifikát.
+1. V levém navigačním panelu stránky správy vaší aplikace vyberte **Konfigurace**  >  **Obecné nastavení**.
+
+1. Vedle možnosti **cesty vyloučení klienta** klikněte na ikonu Upravit.
+
+1. Klikněte na **Nová cesta**, zadejte cestu a klikněte na **OK**.
+
+1. Klikněte na **Uložit** v horní části stránky.
+
+Na následujícím snímku obrazovky `/public` nepožaduje klientský certifikát žádná pod cestou k vaší aplikaci.
 
 ![Cesty vyloučení certifikátu][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>Přístup k klientskému certifikátu
 

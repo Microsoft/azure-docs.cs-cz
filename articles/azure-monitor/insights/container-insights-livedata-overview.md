@@ -4,12 +4,12 @@ description: Tento článek popisuje zobrazení Kubernetes protokolů, událost�
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920713"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346799"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
 
@@ -35,7 +35,7 @@ Následující postup slouží k zobrazení živých protokolů pro nasazení, k
 
 5. Vyberte položku pod a spusťte shromažďování živých dat.
 
-    ![Živé protokoly nasazení](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![Živé protokoly nasazení](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 
@@ -112,11 +112,17 @@ Funkce Live data (Preview) zahrnuje funkce hledání. V poli **hledání** můž
 
 ![Příklad filtru podokna konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
+![Příklad filtru podokna konzoly živé dat pro nasazení](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
 ### <a name="scroll-lock-and-pause"></a>Posunout zámek a pozastavit
 
 Chcete-li pozastavit automatické posouvání a ovládat chování podokna, což vám umožní ruční procházení nových čtených dat, můžete použít možnost **Scroll** . Chcete-li znovu povolit automatické posouvání, stačí znovu vybrat možnost **Scroll** . Můžete také pozastavit načítání dat protokolů nebo událostí výběrem možnosti **pozastavit** a až budete připraveni na obnovení, stačí vybrat možnost **Přehrát**.
 
 ![Živý pohled na pozastavit podokno konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![Živý pohled na nasazení v podokně konzoly živá data](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >Při řešení problému doporučujeme pozastavit nebo pozastavit automatické posouvání po krátkou dobu. Tyto požadavky mohou mít vliv na dostupnost a omezování rozhraní Kubernetes API v clusteru.

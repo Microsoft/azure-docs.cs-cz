@@ -1,21 +1,21 @@
 ---
 title: Konfigurace aplikací na portálu
-description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal. Nastavení aplikace, připojovací řetězce, platforma, sada jazyků, kontejner atd.
+description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal. Nastavení aplikace, konfigurace aplikace, připojovací řetězce, platforma, sada jazyků, kontejner atd.
 keywords: Azure App Service, Webová aplikace, nastavení aplikace, proměnné prostředí
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854644"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346750"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
-Toto téma vysvětluje, jak nakonfigurovat společná nastavení pro webové aplikace, mobilní back-end nebo aplikaci API pomocí [Azure Portal].
+Tento článek vysvětluje, jak nakonfigurovat společná nastavení pro webové aplikace, mobilní back-end nebo aplikaci API pomocí [Azure Portal].
 
 ## <a name="configure-app-settings"></a>Konfigurace nastavení aplikace
 
@@ -118,7 +118,10 @@ V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikac
 
 V případě vývojářů ASP.NET a ASP.NET Core nastavení připojovacích řetězců v App Service je třeba je nastavovat v `<connectionStrings>` v *Web.config*, ale hodnoty, které nastavíte App Service přepisují ty v *Web.config*. Nastavení vývoje (například databázový soubor) můžete zachovat v *Web.config* a v produkčních tajných klíčích (například SQL Database pověření) v App Service. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
-Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. Tady je jedna výjimka. některé typy databází Azure se ale zálohují společně s aplikací, pokud ve své aplikaci nakonfigurujete své připojovací řetězce. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
+Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. 
+
+> [!NOTE]
+> Existuje jeden případ, kdy možná budete chtít použít připojovací řetězce místo nastavení aplikace pro jazyky non-.NET: některé typy databází Azure se zálohují společně s aplikací _pouze_ v případě, že nakonfigurujete připojovací řetězec pro databázi v aplikaci App Service. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
 
 V době běhu jsou připojovací řetězce k dispozici jako proměnné prostředí s předponou následujících typů připojení:
 
@@ -224,25 +227,31 @@ Pokud aplikace používá moduly, které směrují na základě adresy URL namí
 
 ## <a name="configure-path-mappings"></a>Konfigurace mapování cest
 
-V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Configuration**  >  **mapování cest** konfigurace.
+V [Azure Portal]vyhledejte a vyberte **App Services** a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte   >  **mapování cest** konfigurace.
 
 ![Mapování cest](./media/configure-common/open-path.png)
 
-Na stránce **mapování cest** se zobrazují různé věci podle typu operačního systému.
+> [!NOTE] 
+> Na kartě **mapování cest** se může zobrazit nastavení specifické pro operační systém, které se liší od uvedeného příkladu.
 
 ### <a name="windows-apps-uncontainerized"></a>Aplikace pro Windows (nekontejnerované)
 
 Pro aplikace pro Windows můžete přizpůsobit mapování obslužných rutin služby IIS a virtuální aplikace a adresáře.
 
-Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **Nová obslužná rutina**. Nastavte obslužnou rutinu následujícím způsobem:
+Mapování obslužných rutin umožňují přidat vlastní skriptové procesory, které budou zpracovávat požadavky na konkrétní přípony souborů. Chcete-li přidat vlastní obslužnou rutinu, klikněte na tlačítko **nové mapování obslužných rutin**. Nastavte obslužnou rutinu následujícím způsobem:
 
 - **Přípona**. Přípona souboru, kterou chcete zpracovat, například *\* . php* nebo *obslužných rutin. fcgi*.
 - **Procesor skriptů**. Absolutní cesta k procesoru skriptu. Požadavky na soubory, které odpovídají příponám souborů, zpracovává procesor skriptu. Použijte cestu `D:\home\site\wwwroot` pro odkaz na kořenový adresář vaší aplikace.
 - **Argumenty**. Volitelné argumenty příkazového řádku pro procesor skriptu.
 
-Každá aplikace má výchozí kořenovou cestu ( `/` ) namapovanou na `D:\home\site\wwwroot` , kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. Klikněte na **Nová virtuální aplikace nebo adresář**.
+Každá aplikace má výchozí kořenovou cestu ( `/` ) namapovanou na `D:\home\site\wwwroot` , kde je váš kód nasazený ve výchozím nastavení. Pokud je kořenový adresář aplikace v jiné složce nebo pokud vaše úložiště obsahuje více než jednu aplikaci, můžete zde upravit nebo přidat virtuální aplikace a adresáře. 
 
-Chcete-li konfigurovat virtuální aplikace a adresáře, zadejte každý virtuální adresář a jeho odpovídající fyzickou cestu vzhledem k kořenovému adresáři webu ( `D:\home` ). Volitelně můžete zaškrtnout políčko **aplikace** a označit tak virtuální adresář jako aplikaci.
+Na kartě **mapování cest** klikněte na **Nová virtuální aplikace nebo adresář**. 
+
+- Chcete-li mapovat virtuální adresář na fyzickou cestu, ponechejte zaškrtnuté políčko **adresář** . Zadejte virtuální adresář a odpovídající relativní (fyzickou) cestu k kořenovému adresáři webu ( `D:\home` ).
+- Chcete-li označit virtuální adresář jako webovou aplikaci, zrušte zaškrtnutí políčka **adresář** .
+  
+  ![Zaškrtávací políčko adresáře](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Kontejnerové aplikace
 

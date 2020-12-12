@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999905"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348063"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -51,16 +51,13 @@ Chcete-li změnit vlastnictví prostředku, můžete provést jednu z následuj�
 * Přeneste [vlastnictví](../../cost-management-billing/manage/billing-subscription-transfer.md) svého předplatného.
 * Exportujte aplikaci LUIS jako soubor a pak aplikaci importujte na jiné předplatné. Export je k dispozici na stránce **Moje aplikace** na portálu Luis.
 
-
 ## <a name="resource-limits"></a>Omezení prostředků
 
 ### <a name="authoring-key-creation-limits"></a>Vytváření omezení vytváření klíčů
 
-V rámci každého předplatného můžete vytvořit až 10 klíčů pro tvorbu na oblast.
+V rámci každého předplatného můžete vytvořit až 10 klíčů pro tvorbu na oblast. Oblasti publikování se liší od oblastí vytváření obsahu. Ujistěte se, že jste v oblasti vytváření obsahu vytvořili aplikaci, která odpovídá oblasti publikování, kde chcete, aby se vaše klientská aplikace nacházela. Informace o tom, jak se oblasti vytváření mapují na oblasti publikování, najdete v tématu [oblasti vytváření a publikování](luis-reference-regions.md). 
 
-Další informace najdete v tématech [omezení klíčů](luis-limits.md#key-limits) a [oblasti Azure](luis-reference-regions.md).
-
-Oblasti publikování se liší od oblastí vytváření obsahu. Ujistěte se, že jste v oblasti vytváření obsahu vytvořili aplikaci, která odpovídá oblasti publikování, kde chcete, aby se vaše klientská aplikace nacházela.
+Další informace o omezeních klíčů najdete v tématu [omezení klíčů](luis-limits.md#key-limits).
 
 ### <a name="errors-for-key-usage-limits"></a>Chyby při omezeních použití klíče
 

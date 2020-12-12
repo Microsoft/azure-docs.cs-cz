@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000424"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347468"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Architektura Micro-splního centra
 
@@ -22,11 +22,11 @@ ms.locfileid: "81000424"
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Sada senzorů IoT odesílajících data telemetrie na zařízení brány
-- Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
-- Průběžný export dat do požadované služby Azure za účelem manipulace
-- Data mohou být strukturovaná v požadovaném formátu a odeslána do služby úložiště.
-- Obchodní aplikace se mohou dotazovat na data a generovat přehledy, které maloobchodní operace spotřeby
+1. Sada senzorů IoT odesílajících data telemetrie na zařízení brány
+2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
+3. Průběžný export dat do požadované služby Azure za účelem manipulace
+4. Data mohou být strukturovaná v požadovaném formátu a odeslána do služby úložiště.
+5. Obchodní aplikace se mohou dotazovat na data a generovat přehledy, které maloobchodní operace spotřeby
  
 Pojďme se podívat na klíčové komponenty, které obvykle hrají součást v rámci řešení pro doplňování v centru.
 

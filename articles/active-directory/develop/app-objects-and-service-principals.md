@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861098"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347141"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -47,9 +47,9 @@ Entita Microsoft Graph [aplikace][MS-Graph-App-Entity] definuje schéma pro vlas
 ## <a name="service-principal-object"></a>Instanční objekt služby
 Aby bylo možné získat přístup k prostředkům, které jsou zabezpečeny klientem služby Azure AD, musí být entita, která vyžaduje přístup, reprezentovaná objektem zabezpečení. Tento požadavek platí pro uživatele (objekt zabezpečení uživatele) i aplikace (instanční objekt). Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tenantovi Azure AD. To umožňuje základní funkce, jako je ověřování uživatelů nebo aplikací během přihlašování, a autorizaci během přístupu k prostředkům.
 
-Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat.
+Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace. Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat.
 
-Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
+Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Můžete také vytvořit instanční objekty služby v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů. Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
 
 Okno **podnikové aplikace** na portálu slouží k vypsání a správě objektů služby v tenantovi. Můžete se podívat na oprávnění instančního objektu, uživatelská oprávnění, která uživatelé provedli, kteří si ho udělali, informace o přihlášení a další.
 

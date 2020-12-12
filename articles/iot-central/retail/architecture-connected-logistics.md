@@ -8,12 +8,12 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686224"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345955"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architektura šablony logistické aplikace IoT Central připojené
 
@@ -27,7 +27,7 @@ Partneři & zákazník může použít šablonu aplikace & následující pokyny
 1. Sada značek IoT odesílajících data telemetrie na zařízení brány
 2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
 3. Data jsou směrována do požadované služby Azure pro manipulaci
-4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
+4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště.
 5. Různé obchodní pracovní postupy můžou být napájené pomocí podnikových aplikací koncových uživatelů.
 
 ## <a name="details"></a>Podrobnosti
@@ -37,7 +37,7 @@ Následující část popisuje jednotlivé části ingestování telemetrie arch
 Značky IoT poskytují možnosti fyzických, okolních a environmentálních senzorů, jako je teplota, vlhkost, náraz, náklon &světlo. Značky IoT se obvykle připojují k zařízení brány prostřednictvím ZigBee (802.15.4). Značky jsou levnější senzory; To znamená, že je můžete zahodit na konci typické logistické cesty, abyste se vyhnuli problémům s reverzní logistikou.
 
 ## <a name="gateway"></a>brána
-Brány mohou fungovat také jako značky IoT s možnostmi okolního průzkumu. Brána umožňuje navázat Azure IoT Cloud konektivitu (MQTT) pomocí mobilních kanálů Wi-Fi.  Režimy Bluetooth, NFC a 802.15.4 bezdrátového senzoru sítě (WSN) se používají pro bezkontaktní komunikaci se značkami IoT. Brány poskytují koncovým zabezpečeným cloudovým připojením, párování značek IoT, agregaci dat senzorů, uchovávání dat a možnost konfigurace prahových hodnot alarmu.
+Brány mohou fungovat také jako značky IoT s možnostmi okolního průzkumu. Brána umožňuje navázat Azure IoT Cloud konektivitu (MQTT) pomocí mobilních Wi-Fi kanálů.  Režimy Bluetooth, NFC a 802.15.4 bezdrátového senzoru sítě (WSN) se používají pro bezkontaktní komunikaci se značkami IoT. Brány poskytují koncovým zabezpečeným cloudovým připojením, párování značek IoT, agregaci dat senzorů, uchovávání dat a možnost konfigurace prahových hodnot alarmu.
 
 ## <a name="device-management-with-iot-central"></a>Správa zařízení pomocí IoT Central 
 Azure IoT Central je vývojová platforma pro řešení, která zjednodušuje připojení zařízení IoT, konfiguraci a správu. Platforma významně snižuje zatížení a náklady na správu zařízení IoT, operace a související vývoj. Zákazníci, kteří & partneři, mohou vytvořit koncová podniková řešení pro zajištění smyčky digitální zpětné vazby v logistikě.
