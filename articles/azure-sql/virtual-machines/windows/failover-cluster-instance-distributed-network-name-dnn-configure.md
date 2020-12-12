@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168841"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358312"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Konfigurace DNN pro instanci clusteru s podporou převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,7 +132,7 @@ Chcete-li aktualizovat možné vlastníky, použijte následující postup:
 
 1. Zrušte zaškrtnutí políček u všech uzlů, které se nepodílejí v instanci clusteru s podporou převzetí služeb při selhání. Seznam možných vlastníků prostředku DNN by měl odpovídat seznamu možných vlastníků pro prostředek instance SQL Server. Například za předpokladu, že se DATA3 neúčastní v FCI, je následující obrázek příklad odebrání DATA3 ze seznamu možných vlastníků pro prostředek DNN: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Místní nabídka pro prostředek DNN s zvýrazněným příkazem Properties":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Zrušte zaškrtnutí políčka vedle uzlů, které nejsou součástí FCIu pro možné vlastníky prostředku DNN.":::
 
 1. Kliknutím na **OK** uložte nastavení. 
 
@@ -161,7 +162,7 @@ Při testování převzetí služeb při selhání postupujte takto:
 1. Připojte se k jednomu z SQL Server uzlů clusteru pomocí protokolu RDP.
 1. Otevřete **Správce clusteru s podporou převzetí služeb při selhání**. Vyberte **role**. Všimněte si, že uzel je vlastníkem role SQL Server FCI.
 1. Klikněte pravým tlačítkem na roli SQL Server FCI. 
-1. Vyberte **přesunout**a pak vyberte **nejlepší možný uzel**.
+1. Vyberte **přesunout** a pak vyberte **nejlepší možný uzel**.
 
 **Správce clusteru s podporou převzetí služeb při selhání** zobrazuje roli a její prostředky přejít do režimu offline. Prostředky se pak přesunou a vrátí zpátky do režimu online v druhém uzlu.
 

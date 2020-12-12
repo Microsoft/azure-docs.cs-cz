@@ -1,14 +1,14 @@
 ---
 title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371082"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356374"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
@@ -42,6 +42,12 @@ Další informace najdete v tématu [vytváření a správa výstrah protokolu a
 Můžete vytvářet dotazy k analýze protokolované aktivity nebo zaměření na konkrétní položky. Například audit vyžaduje, abyste nahlásili všechny akce na úrovni správy provedené v rámci předplatného. Můžete vytvořit dotaz pro filtrování pouze těchto akcí a seřadit výsledky podle uživatele, datum nebo jiné hodnoty.
 
 Další informace najdete v tématu [Přehled dotazů protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="view-user-activity-across-domains"></a>Zobrazení aktivity uživatelů napříč doménami
+
+Aktivitu můžete zobrazit z jednotlivých uživatelů napříč více doménami pomocí ukázkového sešitu [protokolů aktivit podle domény](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) .
+
+Výsledky je možné filtrovat podle názvu domény. Můžete také použít další filtry, například kategorii, úroveň nebo skupinu prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339506"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357598"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 
 * V Azure Cosmos DB není nutné, aby hierarchie nejvyšší úrovně naznamenala kolekci, protože název kolekce již existuje. Tato funkce zpřístupňuje strukturu JSON mnohem jednodušší. Následuje příklad, který ukazuje rozdíly v datovém modelu mezi Couchbase a Azure Cosmos DB:
 
-   **Couchbase** : Document ID = "99FF4444"
+   **Couchbase**: Document ID = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
     }
    ```
 
-   **Azure Cosmos DB** : v dokumentu uveďte "ID", jak je znázorněno níže.
+   **Azure Cosmos DB**: v dokumentu uveďte "ID", jak je znázorněno níže.
 
     ```json
     {
@@ -181,7 +181,7 @@ Dokument si můžete přečíst s nebo bez zadání klíče oddílu. Pokud klí�
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-To je to, teď můžete aplikaci používat s Azure Cosmos DB. Kompletní ukázka kódu pro příklad popsaný v tomto dokumentu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) .
+To je to, teď můžete aplikaci používat s Azure Cosmos DB. Kompletní ukázka kódu pro příklad popsaný v tomto dokumentu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) .
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase jako úložiště dokumentů & pomocí dotazů N1QL
 
@@ -222,9 +222,9 @@ Použijte asynchronní sadu Java SDK s následujícími kroky:
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) .
+Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) .
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase jako pár klíč/hodnota
 
@@ -351,9 +351,9 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) .
+Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předplatného mono. Kompletní ukázka kódu je k dispozici v úložišti GitHub [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) .
 
 ## <a name="data-migration"></a>Migrace dat
 

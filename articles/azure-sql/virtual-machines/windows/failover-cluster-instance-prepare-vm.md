@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564459"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358006"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +27,7 @@ Tento článek popisuje, jak připravit virtuální počítače Azure na jejich 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Předplatné Microsoft Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - Doména Windows na virtuálních počítačích Azure nebo v místním datacentru, které se rozšířily do Azure s párováním virtuálních sítí.
@@ -47,19 +48,22 @@ Funkce clusteru s podporou převzetí služeb při selhání vyžaduje, aby virt
 
 Pečlivě vyberte možnost dostupnosti virtuálního počítače, která odpovídá vaší zamýšlené konfiguraci clusteru: 
 
- - **Sdílené disky Azure** : skupina [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nakonfigurovaná s doménou selhání a aktualizační doménou je nastavená na 1 a umístěna do [skupiny umístění blízkosti](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
- - **Souborové sdílené složky Premium** : [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nebo [zóna dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Sdílené složky Premium jsou jedinou možností sdíleného úložiště, pokud zvolíte zóny dostupnosti jako Konfigurace dostupnosti pro vaše virtuální počítače. 
- - **Prostory úložiště s přímým přístupem** : [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+- **Sdílené disky Azure**: možnost dostupnosti se liší v případě, že používáte Premium SSD nebo UltraDisk:
+   - SSD úrovně Premium: skupina [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) je v různých doménách selhání nebo aktualizace pro Premium SSD umístěná ve [skupině umístění blízkosti](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
+   - Ultra disk: [zóna dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) , ale virtuální počítače musí být umístěné ve stejné zóně dostupnosti, což snižuje dostupnost clusteru až 99,9%. 
+- **Souborové sdílené složky Premium**: [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nebo [zóna dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
+- **Prostory úložiště s přímým přístupem**: [Skupina dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
->[!IMPORTANT]
->Po vytvoření virtuálního počítače už skupinu dostupnosti nemůžete nastavit ani změnit.
+> [!IMPORTANT]
+> Po vytvoření virtuálního počítače už skupinu dostupnosti nemůžete nastavit ani změnit.
 
 ## <a name="create-the-virtual-machines"></a>Vytvoření virtuálních počítačů
 
 Po dokončení konfigurace dostupnosti virtuálního počítače jste připraveni vytvořit virtuální počítače. Můžete použít Azure Marketplace bitovou kopii, která má nebo nemá SQL Server již nainstalována. Pokud ale zvolíte image pro SQL Server na virtuálních počítačích Azure, budete muset před konfigurací instance clusteru s podporou převzetí služeb při selhání odinstalovat SQL Server z virtuálního počítače. 
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
-Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS.
+### <a name="considerations"></a>Požadavky
+
+V clusteru s podporou převzetí služeb při selhání hosta virtuálního počítače Azure doporučujeme jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS.
 
 Umístit oba virtuální počítače:
 
@@ -110,8 +114,8 @@ Tato tabulka podrobně popisuje porty, které může být potřeba otevřít, v 
    | Účel | Port | Poznámky
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře. </br> </br> **Používá** se: všechny konfigurace FCI. |
-   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá** : FCI s nástrojem pro vyrovnávání zatížení. |
-   | Sdílená složka | UDP 445 | Port, který používá služba sdílení souborů. </br> </br> **Používá se v** : FCI se službou Premium File Share. |
+   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá**: FCI s nástrojem pro vyrovnávání zatížení. |
+   | Sdílená složka | UDP 445 | Port, který používá služba sdílení souborů. </br> </br> **Používá se v**: FCI se službou Premium File Share. |
 
 ## <a name="join-the-domain"></a>Připojení k doméně
 

@@ -1,14 +1,14 @@
 ---
 title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336594"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356408"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -175,9 +175,10 @@ Uživatelé, kterým byla přiřazena integrovaná role Azure Monitoring Reader 
 1. Přejděte na stránku **moji zákazníci** a potom v navigační nabídce vlevo vyberte **Protokol aktivit** .
 1. Ujistěte se, že je ve filtru v horní části obrazovky vybraná **aktivita adresáře** .
 
-Zobrazí se seznam změn delegování. Můžete vybrat **Upravit sloupce** a zobrazit nebo skrýt **stav**, **kategorii události**, **čas**, **časové razítko**, **předplatné**, **událost iniciované**, **skupinu prostředků**, **typ prostředku**a hodnoty **prostředků** .
+Zobrazí se seznam změn delegování. Můžete vybrat **Upravit sloupce** a zobrazit nebo skrýt **stav**, **kategorii události**, **čas**, **časové razítko**, **předplatné**, **událost iniciované**, **skupinu prostředků**, **typ prostředku** a hodnoty **prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se začlenit zákazníky do [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
 - Přečtěte si o [Azure monitor](../../azure-monitor/index.yml) a [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
+- Projděte si ukázkový sešit [protokolů aktivit podle domény](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) a zjistěte, jak zobrazit protokoly aktivit Azure v rámci předplatných s možností filtrování podle názvu domény.

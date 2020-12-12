@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347141"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355762"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -66,7 +66,7 @@ Aplikační objekt slouží jako šablona, ze které se *odvozují* běžné neb
 V každém tenantovi, kde se aplikace používá, se musí vytvořit instanční objekt, který mu umožní vytvořit identitu pro přihlášení a/nebo přístup k prostředkům, které klient zabezpečuje. Aplikace s jedním tenantem má jenom jeden instanční objekt (ve svém domovském tenantovi), který je vytvořený a odsouhlasený k použití při registraci aplikace. Víceklientská webová aplikace/rozhraní API obsahuje taky instanční objekt vytvořený v každém tenantovi, kde uživatel z tohoto tenanta souhlasí s jeho použitím.
 
 > [!NOTE]
-> Všechny změny, které provedete v objektu aplikace, se projeví také v hlavním objektu služby v domovském tenantovi aplikace (tenant, ve kterém byl zaregistrován). U aplikací s více klienty se změny v objektu aplikace neprojeví v žádných objektech instančních objektů služby klienta, dokud se přístup neodebere přes [přístupový panel aplikace](https://myapps.microsoft.com) a znovu udělen.
+> Všechny změny, které provedete u objektu aplikace, se projeví také v hlavním objektu služby v domovském tenantovi aplikace (tenant, ve kterém byl zaregistrován). U aplikací s více klienty se změny v objektu aplikace neprojeví v žádných objektech instančních objektů služby klienta, dokud se přístup neodebere přes [přístupový panel aplikace](https://myapps.microsoft.com) a znovu udělen.
 >
 > Všimněte si také, že nativní aplikace jsou ve výchozím nastavení registrovány jako víceklientské klienty.
 

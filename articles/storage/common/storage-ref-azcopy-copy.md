@@ -4,16 +4,16 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512150"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356170"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Další informace najdete v části Příklady tohoto článku.
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Pokročilý
 
 AzCopy automaticky detekuje typ obsahu souborů při jejich nahrávání z místního disku. AzCopy detekuje typ obsahu na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -275,6 +275,8 @@ Přenos souborů a adresářů do Azure Storage účtu a nastavení daných zna�
 **--**  nápovědu pro kopírování.
 
 **--include-After** String zahrnuje pouze soubory změněné za dané datum a čas nebo po něm. Hodnota by měla být ve formátu ISO8601. Pokud není zadané žádné časové pásmo, předpokládá se, že hodnota je v místním časovém pásmu počítače, na kterém běží AzCopy. například `2020-08-19T15:04:00Z` pro čas UTC nebo `2020-08-19` pro půlnoc (00:00) v místním časovém pásmu. Jako u AzCopy 10,5 se tento příznak vztahuje pouze na soubory, nikoli na složky, takže vlastnosti složky nebudou zkopírovány při použití tohoto příznaku v `--preserve-smb-info` nebo `--preserve-smb-permissions` .
+
+ **--include-před** řetězec obsahuje pouze soubory změněné před nebo podle daného data a času. Hodnota by měla být ve formátu ISO8601. Pokud není zadané žádné časové pásmo, předpokládá se, že hodnota je v místním časovém pásmu počítače, na kterém běží AzCopy. Například `2020-08-19T15:04:00Z` pro čas UTC nebo `2020-08-19` pro půlnoc (00:00) v místním časovém pásmu. Od AzCopy 10,7 se tento příznak vztahuje pouze na soubory, nikoli na složky, takže vlastnosti složky nebudou zkopírovány při použití tohoto příznaku v `--preserve-smb-info` nebo `--preserve-smb-permissions` .
 
 **--include-** Attribute String (pouze Windows) obsahuje soubory, jejichž atributy se shodují se seznamem atributů. Příklad: A; Pracují Í
 

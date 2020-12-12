@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793122"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356709"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +34,7 @@ Pokud byste chtěli mít úplný návod k zřizování a připojení, přečtět
 
 Způsob připojení klienta k SQL Servermu virtuálnímu počítači se liší v závislosti na umístění klienta a konfiguraci sítě.
 
-Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnost určit typ **připojení SQL** .
+Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnost určit typ **připojení SQL**.
 
 ![Možnost veřejné připojení SQL během zřizování](./media/ways-to-connect-to-sql/sql-vm-portal-connectivity.png)
 
@@ -76,7 +77,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Připojení k SQL Server v rámci virtuální sítě
 
-Zvolíte-li možnost **privátní** pro typ **připojení SQL** na portálu, Azure nakonfiguruje většinu nastavení jako **veřejné** . Jediným rozdílem je, že neexistuje žádné pravidlo skupiny zabezpečení sítě, které by umožňovalo povolení mimo provoz na portu SQL Server (standardně 1433).
+Zvolíte-li možnost **privátní** pro typ **připojení SQL** na portálu, Azure nakonfiguruje většinu nastavení jako **veřejné**. Jediným rozdílem je, že neexistuje žádné pravidlo skupiny zabezpečení sítě, které by umožňovalo povolení mimo provoz na portu SQL Server (standardně 1433).
 
 > [!IMPORTANT]
 > Image virtuálních počítačů pro edice SQL Server Developer a Express nepovolují automaticky protokol TCP/IP. Pro edice Developer a Express musíte po vytvoření virtuálního počítače [ručně povolit protokol TCP/IP](#manualtcp) pomocí SQL Server Configuration Manager.
@@ -97,11 +98,11 @@ Server=mysqlvm;Integrated Security=true
 
 Nastavení připojení pro virtuální počítač s SQL Server můžete změnit v Azure Portal.
 
-1. V Azure Portal vyberte **virtuální počítače SQL** .
+1. V Azure Portal vyberte **virtuální počítače SQL**.
 
 2. Vyberte svůj virtuální počítač SQL Server.
 
-3. V části **Nastavení** vyberte **zabezpečení** .
+3. V části **Nastavení** vyberte **zabezpečení**.
 
 4. Změňte **úroveň připojení SQL** na požadované nastavení. Volitelně můžete pomocí této oblasti změnit port SQL Server nebo nastavení ověřování SQL.
 
@@ -119,7 +120,7 @@ Nejdřív se připojte k virtuálnímu počítači s SQL Server pomocí vzdálen
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-V dalším kroku Povolte protokol TCP/IP s **SQL Server Configuration Manager** .
+V dalším kroku Povolte protokol TCP/IP s **SQL Server Configuration Manager**.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 

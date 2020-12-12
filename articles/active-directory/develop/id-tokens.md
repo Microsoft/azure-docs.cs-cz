@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646603"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355643"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
-`id_tokens` jsou odesílány do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) (OIDC). Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele.
+`id_tokens` jsou odesílány do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) (OIDC). Je možné je odeslat společně nebo místo přístupového tokenu a klient je používá k ověření uživatele.
 
 ## <a name="using-the-id_token"></a>Použití id_token
 
@@ -96,7 +96,7 @@ V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím n
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Spolehlivá identifikace uživatele (subjektu a ID objektu) pomocí deklarací identity
 
-Když identifikujete uživatele (řekněme, že je vyhledáte v databázi nebo rozhodujete, jaká oprávnění mají), je důležité používat informace, které zůstanou v čase konstantní a jedinečné.  Starší verze aplikací někdy používají pole, jako je e-mailová adresa, telefonní číslo nebo hlavní název uživatele (UPN).  Všechny tyto změny se můžou v průběhu času měnit a dají se použít i v čase – Když zaměstnanec změní svůj název, nebo zaměstnanec má přiřazenou e-mailovou adresu, která odpovídá předchozímu, už není k dispozici zaměstnanec. Proto je **důležité** , aby vaše aplikace nepoužívala uživatelsky čitelné údaje k identifikaci uživatelsky čitelného čtení, obecně znamená, že někdo ho přečte a chcete ho změnit.  Místo toho použijte deklarace identity poskytované standardem OIDC nebo rozšíření deklarací identity poskytovaných Microsoftem `sub` a `oid` deklaracemi identity.
+Když identifikujete uživatele (řekněme, že je vyhledáte v databázi nebo rozhodujete, jaká oprávnění mají), je důležité používat informace, které zůstanou v čase konstantní a jedinečné. Starší verze aplikací někdy používají pole, jako je e-mailová adresa, telefonní číslo nebo hlavní název uživatele (UPN).  Všechny tyto změny se můžou v průběhu času měnit a dají se použít i v čase – Když zaměstnanec změní svůj název, nebo zaměstnanec má přiřazenou e-mailovou adresu, která odpovídá předchozímu, už není k dispozici zaměstnanec. Proto je **důležité** , aby vaše aplikace nepoužívala uživatelsky čitelné údaje k identifikaci uživatelsky čitelného čtení, obecně znamená, že někdo ho přečte a chcete ho změnit. Místo toho použijte deklarace identity poskytované standardem OIDC nebo rozšíření deklarací identity poskytovaných Microsoftem `sub` a `oid` deklaracemi identity.
 
 Aby bylo možné správně ukládat informace pro jednotlivé uživatele, použití `sub` nebo `oid` samostatné (což jsou jedinečné identifikátory GUID), které se `tid` používají pro směrování nebo horizontálního dělení v případě potřeby.  Pokud potřebujete sdílet data napříč službami, `oid` + `tid` je nejlepší, protože všechny aplikace získají stejné `oid` a `tid` deklarace identity pro daného uživatele.  `sub`Deklarace identity na platformě Microsoft identity je "párové" – je jedinečná na základě kombinace příjemce, tenanta a uživatele tokenu.  Proto dvě aplikace, které vyžadují tokeny ID pro daného uživatele, obdrží různé `sub` deklarace identity, ale stejné `oid` deklarace identity pro tohoto uživatele.
 

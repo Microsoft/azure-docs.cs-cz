@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8f8513746271fff0ab52603e31b75304d5ebc1bf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168878"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357972"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Konfigurace Azure Load Balancer pro instanci clusteru s podporou převzetí služeb při selhání VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,11 +72,11 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. Vraťte se do skupiny prostředků Azure, která obsahuje virtuální počítače, a Najděte nový nástroj pro vyrovnávání zatížení. Možná budete muset aktualizovat zobrazení skupiny prostředků. Vyberte nástroj pro vyrovnávání zatížení.
 
-1. Vyberte **back-end fondy**a pak vyberte **Přidat**.
+1. Vyberte **back-end fondy** a pak vyberte **Přidat**.
 
 1. Přidružte back-end fond ke skupině dostupnosti, která obsahuje virtuální počítače.
 
-1. V části **cílové konfigurace sítě IP**vyberte **virtuální počítač** a zvolte virtuální počítače, které se budou podílet jako uzly clusteru. Nezapomeňte zahrnout všechny virtuální počítače, které budou hostovat FCI nebo skupinu dostupnosti.
+1. V části **cílové konfigurace sítě IP** vyberte **virtuální počítač** a zvolte virtuální počítače, které se budou podílet jako uzly clusteru. Nezapomeňte zahrnout všechny virtuální počítače, které budou hostovat FCI nebo skupinu dostupnosti.
 
 1. Výběrem **OK** vytvořte fond back-end.
 
@@ -85,7 +86,7 @@ K vytvoření nástroje pro vyrovnávání zatížení použijte [Azure Portal](
 
 1. Vyberte **Přidat**.
 
-1. V podokně **Přidat sondu stavu** <span id="probe"> </span> nastavte následující parametry sondy stavu:
+1. V podokně **Přidat sondu stavu** <span id="probe"></span> nastavte následující parametry sondy stavu:
 
    - **Name (název**): název pro sondu stavu.
    - **Protokol**: TCP.
@@ -137,10 +138,10 @@ Následující tabulka popisuje hodnoty, které je třeba aktualizovat:
 
 |**Hodnota**|**Popis**|
 |---------|---------|
-|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě**klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V **Failover Cluster Manager**  >  **rolích**Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru**klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
+|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě** klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V   >  **rolích** Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru** klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
 |`ILBIP`|IP adresa interního nástroje pro vyrovnávání zatížení (interního nástroje). Tato adresa je nakonfigurovaná v Azure Portal jako interního nástroje adresa front-endu. To je také adresa IP SQL Server FCI. Můžete ji najít v **Správce clusteru s podporou převzetí služeb při selhání** na stejné stránce vlastností, kde jste našli `<SQL Server FCI/AG listener IP Address Resource Name>` .|
-|`nnnnn`|Port testu, který jste nakonfigurovali v testu stavu nástroje pro vyrovnávání zatížení. Nepoužívaný port TCP je platný.|
+|`nnnnn`|Port testu, který jste nakonfigurovali v testu stavu nástroje pro vyrovnávání zatížení. Platný je jakýkoli nepoužívaný port TCP.|
 |SubnetMask| Maska podsítě pro parametr clusteru. Musí se jednat o adresu všesměrového vysílání IP protokolu TCP: `255.255.255.255` .| 
 
 
@@ -161,7 +162,7 @@ Postupujte následovně:
 1. Připojte se k jednomu z SQL Server uzlů clusteru pomocí protokolu RDP.
 1. Otevřete **Správce clusteru s podporou převzetí služeb při selhání**. Vyberte **role**. Všimněte si, že uzel je vlastníkem role SQL Server FCI.
 1. Klikněte pravým tlačítkem na roli SQL Server FCI. 
-1. Vyberte **přesunout**a pak vyberte **nejlepší možný uzel**.
+1. Vyberte **přesunout** a pak vyberte **nejlepší možný uzel**.
 
 **Správce clusteru s podporou převzetí služeb při selhání** zobrazuje roli a její prostředky přejít do režimu offline. Prostředky se pak přesunou a vrátí zpátky do režimu online v druhém uzlu.
 

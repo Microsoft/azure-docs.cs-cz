@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: c113a252363d3b94131ac423f795f6efb13b1975
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029545"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355694"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -89,7 +89,7 @@ Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-
 [ `offline_access` Rozsah](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Na stránce souhlasu se tento obor zobrazí jako "Správa přístupu k datům, ke kterým jste udělili oprávnění k přístupu. Když uživatel `offline_access` obor schválí, vaše aplikace může přijímat aktualizační tokeny z koncového bodu tokenu platformy Microsoft identity. Aktualizační tokeny jsou dlouhodobě dlouhodobé. Vaše aplikace může získat nové přístupové tokeny, jejichž platnost brzy vyprší.
 
 > [!NOTE]
-> Toto oprávnění se zobrazí na všech obrazovkách souhlasu ještě dnes, a to i pro toky, které neposkytují obnovovací token ( [implicitní tok](v2-oauth2-implicit-grant-flow.md)).  Tato možnost se zabývá scénáři, kdy může klient začít v rámci implicitního toku, a pak přejít na tok kódu, kde je očekáván obnovovací token.
+> Toto oprávnění se zobrazí na všech obrazovkách souhlasu ještě dnes, a to i pro toky, které neposkytují obnovovací token ( [implicitní tok](v2-oauth2-implicit-grant-flow.md)). Tato možnost se zabývá scénáři, kdy může klient začít v rámci implicitního toku, a pak přejít na tok kódu, kde se očekává obnovovací token.
 
 Na platformě Microsoft identity (požadavky odeslané na koncový bod v 2.0) musí vaše aplikace explicitně požádat o `offline_access` obor, aby přijímala obnovovací tokeny. To znamená, že při uplatnění autorizačního kódu v [toku autorizačního kódu OAuth 2,0](active-directory-v2-protocols.md)obdržíte jenom přístupový token z `/token` koncového bodu. Přístupový token je po krátkou dobu platný. Platnost přístupového tokenu obvykle vyprší za jednu hodinu. V tomto okamžiku potřebuje vaše aplikace přesměrovat uživatele zpátky na `/authorize` koncový bod, aby získal nový autorizační kód. V závislosti na typu aplikace může uživatel po tomto přesměrování znovu zadat své přihlašovací údaje nebo odsouhlasit oprávnění.
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265707"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355507"
 ---
 # <a name="identity-providers-for-external-identities"></a>Zprostředkovatelé identity pro externí identity
 
@@ -25,6 +25,9 @@ ms.locfileid: "91265707"
 Můžete ale uživatelům povolit, aby se přihlásili pomocí různých poskytovatelů identity.
 
 - **Google**: Google Federation umožňuje externím uživatelům uplatnit pozvánky od vás tím, že se přihlásí k aplikacím pomocí vlastních účtů Gmail. Google Federation se dá použít taky v uživatelských tocích samoobslužné registrace.
+   > [!IMPORTANT]
+   > **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
+
    > [!NOTE]
    > Pokud je v aktuálním předplatném samoobslužné přihlášení přidaný tok uživatele k aplikaci a když uživateli odešlete pozvánku k této aplikaci, uživatel nebude moct použít účet Gmail k uplatnění pozvánky. Alternativním řešením je, že uživatel může projít samoobslužným procesem registrace. Nebo můžou uplatnit pozvánku pomocí přístupu k jiné aplikaci nebo pomocí portálu moje aplikace na https://myapps.microsoft.com .
 

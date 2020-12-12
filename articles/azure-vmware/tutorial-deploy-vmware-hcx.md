@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352455"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357887"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -47,7 +47,7 @@ Při přípravě nasazení doporučujeme Přečtěte si následující dokumenta
 * [Síťové porty vyžadované pro VMware HCX](https://ports.vmware.com/home/VMware-HCX)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud plánujete použít VMware HCX Enterprise, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
 
@@ -62,7 +62,7 @@ Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) spl
 
 * [Všechny požadované porty](https://ports.vmware.com/home/VMware-HCX) jsou otevřené pro komunikaci mezi místními komponentami a Azure VMware Solution SDDC.
 
-### <a name="ip-addresses"></a>IP adresy,
+### <a name="ip-addresses"></a>IP adresy
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
@@ -85,7 +85,7 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 
 1. Otevřete okno prohlížeče a přihlaste se k Azure VMware Solution HCX Manageru na `https://x.x.x.9` portu 443 s **cloudadmin \@ vSphere.** přihlašovací údaje místního uživatele
 
-1. Vyberte **Administration**  >  **aktualizace systému** pro správu a pak vyberte **odkaz pro stažení požadavku**.
+1. Vyberte   >  **aktualizace systému** pro správu a pak vyberte **odkaz pro stažení požadavku**.
 
 1. Vyberte možnost podle vašeho výběru a Stáhněte si soubor s VAJÍČKy VMware HCX Connectoru.
 
@@ -163,7 +163,7 @@ Po restartování služeb se na obrazovce, která se zobrazí, zobrazí položka
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Snímek obrazovky řídicího panelu se stavem zelených vCenter" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/jzQZawslF8w) videa.
+Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) videa.
 
    > [!IMPORTANT]
    > Bez ohledu na to, jestli používáte VMware HCX Advanced nebo VMware HCX Enterprise, budete možná muset nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro systém 81558. 
@@ -192,7 +192,7 @@ Správce cloudu VMware HCX můžete v řešení Azure VMware připojit nebo spá
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Snímek obrazovky zobrazující párování HCX Manageru v řešení Azure VMware a konektoru VMware HCX":::
 
-Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video párování webu HCX](https://www.youtube.com/embed/iTJtjbiwvsw) .
+Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: video párování webu HCX](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720) .
 
 ### <a name="create-network-profiles"></a>Vytvoření profilů sítě
 
@@ -218,7 +218,7 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 ### <a name="create-a-compute-profile"></a>Vytvořit výpočetní profil
 
-1. V části **infrastruktura** vyberte **Interconnect**  >  **výpočetní profily** propojení  >  **vytvořit výpočetní profil**.
+1. V části **infrastruktura** vyberte   >  **výpočetní profily** propojení  >  **vytvořit výpočetní profil**.
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Snímek obrazovky, který zobrazuje výběry pro začátek vytváření výpočetního profilu." lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
@@ -335,7 +335,7 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
 1. Zkontrolujte stav zařízení pomocí kontroly stavu sítě. 
 
-1. Vyberte **Interconnect**  >  **zařízení** Interconnect.
+1. Vyberte   >  **zařízení** Interconnect.
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="Snímek obrazovky zobrazující výběry pro kontrolu stavu zařízení." lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 

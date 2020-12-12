@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbcb3367f4a1b99ae6689a5d9fa33b7629145ead
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092543"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356119"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -51,6 +51,7 @@ Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro MFA 
 |:-------------------------|:--------------|
 | ![Snímek obrazovky s logem hypr](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) je poskytovatel ověřování bez hesla, který nahrazuje hesla s šifrováním pomocí veřejných klíčů, která odstraňují podvod, phishing a opakované použití přihlašovacích údajů. |
 | ![Snímek obrazovky s logem itsme](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) je řešení digitálního ID s elektronickými identifikacemi, ověřováním a důvěryhodnými službami (eiDAS), které uživatelům umožňuje bezpečné přihlášení bez čtecích zařízení, hesel, dvojúrovňového ověřování a více kódů PIN. |
+| ![Snímek obrazovky s logem Nevis](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) umožňuje ověřování bez hesla a poskytuje mobilní a plnohodnotné prostředí koncového uživatele s přístupem k aplikacím Nevis pro zajištění silného ověřování zákazníků a dodržování požadavků PSD2 transakcí. |
 | ![Snímek obrazovky s logem trusona](./media/partner-gallery/trusona-logo.png) | Integrace [Trusona](./partner-trusona.md) vám pomůže bezpečně se přihlásit a povolit ověřování bez hesla, MFA a digitální licence. |
 | ![Snímek obrazovky s logem Twilio](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) nabízí více řešení pro povolení MFA prostřednictvím jednorázového hesla SMS (jednorázové heslo), časově náročného hesla (TOTP) a nabízených oznámení a pro splnění požadavků SCA pro PSD2. |
 | ![Snímek obrazovky s logem typingDNA](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) umožňuje silné ověřování zákazníků analýzou psaní vzoru uživatele. Pomáhá společnostem povolit tiché MFA a splňovat požadavky SCA pro PSD2. |

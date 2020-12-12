@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c37e4aeb9b9af1c4f792d0827fec39750a1b1c2a
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095978"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357341"
 ---
 # <a name="recover-a-deleted-storage-account"></a>Obnovení odstraněného účtu úložiště
 
@@ -73,3 +73,5 @@ Pokud chcete obnovit odstraněný účet úložiště v jiném účtu úložišt
 
 - [Přehled účtu úložiště](storage-account-overview.md)
 - [Vytvoření účtu úložiště](storage-account-create.md)
+- [Upgrade na účet úložiště pro obecné účely verze 2](storage-account-upgrade.md)
+- [Přesunutí účtu Azure Storage do jiné oblasti](storage-account-move.md)

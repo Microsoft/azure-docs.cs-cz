@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337009"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357565"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rychlý Start: použití akcí GitHubu pro připojení k Azure MySQL
 
-Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/). 
+**Platí pro**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-Single server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-flexibilní Server
+
+Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -68,6 +71,11 @@ Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které po
 
 V Azure Portal přejdete na server Azure Database for MySQL a otevřete **Nastavení**  >  **připojovací řetězce**. Zkopírujte připojovací řetězec pro **ADO.NET**. Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako v tomto příkladu. 
 
+> [!IMPORTANT]
+> - Pro jeden server použijte **UID = adminusername@servername**. Všimněte si, že **@servername** je povinné.
+> - V případě flexibilního serveru použijte **UID = AdminUsername** bez @servername . Mějte na paměti, že server MySQL flexibilní je ve verzi Preview. 
+
+
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
 ```
@@ -81,7 +89,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
     ```yaml
     - uses: azure/login@v1

@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685932"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358142"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,9 +51,9 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |---------|---------|---------|---------|
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
-|**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Yes|No|Yes |
-|**Mezipaměť objektů BLOB v Azure**|No|No|Yes|
+|**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkosti (pro SSD úrovně Premium) </br> Stejná zóna dostupnosti (pro SSD úrovně Ultra) |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
+|**Podporuje FileStream**|Ano|Ne|Ano |
+|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -69,12 +70,16 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 - Podporuje sdílené SSD úrovně Premium Azure a úložiště Azure Ultra disk.
 - Může použít jeden sdílený disk nebo rozkládat více sdílených disků k vytvoření sdíleného fondu úložiště. 
 - Podporuje FileStream.
+- SSD úrovně Premium podporují sady dostupnosti. 
 
 
 **Omezení**: 
-- Virtuální počítače musí být umístěné ve stejné skupině dostupnosti a skupině umístění blízkosti.
-- Zóny dostupnosti se nepodporují.
+- Doporučuje se umístit virtuální počítače do stejné skupiny dostupnosti a umístění blízkosti.
+- Disky Ultra nepodporují skupiny dostupnosti. 
+- Zóny dostupnosti se podporují pro disky Ultra, ale virtuální počítače musí být ve stejné zóně dostupnosti, což snižuje dostupnost virtuálního počítače. 
+- Bez ohledu na zvolené řešení dostupnosti hardwaru je dostupnost clusteru s podporou převzetí služeb při selhání při použití sdílených disků Azure vždycky 99,9%. 
 - Mezipaměť SSD úrovně Premium disku není podporována.
+
  
 Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podporou převzetí služeb při selhání se sdílenými disky](failover-cluster-instance-azure-shared-disks-manually-configure.md) 
 

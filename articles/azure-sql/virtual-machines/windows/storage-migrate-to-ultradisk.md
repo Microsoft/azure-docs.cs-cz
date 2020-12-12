@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146667"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356748"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrovat disk protokolu na Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +45,15 @@ Pokud chcete povolit kompatibilitu, postupujte podle těchto kroků:
 
 1. Přejít na virtuální počítač v [Azure Portal](https://portal.azure.com/). 
 1. Zastavte nebo zrušte přidělení virtuálního počítače. 
-1. V části **Nastavení** vyberte **disky** a pak vyberte **Další nastavení** . 
+1. V části **Nastavení** vyberte **disky** a pak vyberte **Další nastavení**. 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="V části nastavení v Azure Portal vyberte další nastavení pro disky.":::
 
-1. Vyberte **Ano** , pokud chcete **Povolit kompatibilitu s Ultra diskem** . 
+1. Vyberte **Ano** , pokud chcete **Povolit kompatibilitu s Ultra diskem**. 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="V části nastavení v Azure Portal vyberte další nastavení pro disky.":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Snímek obrazovky zobrazující možnost Ano":::
 
-1. Vyberte **Uložit** . 
+1. Vyberte **Uložit**. 
 
 
 
@@ -83,7 +84,7 @@ Nakonfigurujte SQL Server pro použití nové jednotky protokolu. Můžete tak u
 1. Ověřte účet služby, který používá služba SQL Server. Můžete to provést pomocí SQL Server Configuration Manager nebo Services. msc.
 1. Přejděte na nový disk. 
 1. Vytvořte složku (nebo více složek), která se má použít pro soubor protokolu. 
-1. Klikněte pravým tlačítkem na složku a vyberte **vlastnosti** .
+1. Klikněte pravým tlačítkem na složku a vyberte **vlastnosti**.
 1. Na kartě **zabezpečení** udělte oprávnění Úplné řízení k účtu služby SQL Server. 
 1. Kliknutím na **OK**  uložte nastavení. 
 1. Tento postup opakujte pro každou složku na úrovni root, kde plánujete mít data SQL. 
@@ -143,14 +144,14 @@ V tomto okamžiku se databáze nachází v online režimu s protokolem v novém 
 Pomocí SSMS přesuňte stávající soubory do nového umístění:
 
 1. Připojte se k databázi v SQL Server Management Studio (SSMS). 
-1. Klikněte pravým tlačítkem na databázi, vyberte **vlastnosti** a pak vyberte **soubory** . 
+1. Klikněte pravým tlačítkem na databázi, vyberte **vlastnosti** a pak vyberte **soubory**. 
 1. Poznamenejte si cestu k existujícím souborům. 
 1. Kliknutím na **tlačítko OK** zavřete dialogové okno. 
-1. Klikněte pravým tlačítkem na databázi a vyberte **úlohy**  >  **Odpojit** . 
+1. Klikněte pravým tlačítkem na databázi a vyberte **úlohy**  >  **Odpojit**. 
 1. Postupujte podle pokynů průvodce a odpojte databázi. 
 1. Použijte Průzkumníka souborů k ručnímu přesunutí souboru protokolu do nového umístění.
 1. Připojit databázi v SQL Server Management Studio
-   1. V **Průzkumník objektů** klikněte pravým tlačítkem na **databáze** a vyberte **připojit databázi** . 
+   1. V **Průzkumník objektů** klikněte pravým tlačítkem na **databáze** a vyberte **připojit databázi**. 
    1. Pomocí dialogového okna přidejte jednotlivé soubory včetně souboru protokolu do nového umístění. 
    1. Vyberte **OK** k připojení databáze. 
 

@@ -9,16 +9,17 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
+ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 37f6e60aea033dee8adfd66839c82b9fd165c879
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556250"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357904"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se dá nakonfigurovat při zřizování virtuálního počítače, nebo kdykoli později. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 
@@ -75,7 +76,7 @@ Licenční model můžete změnit přímo z portálu:
 
 Ke změně modelu licence můžete použít rozhraní příkazového řádku Azure CLI.  
 
-Zadejte následující hodnoty pro **typ licence** :
+Zadejte následující hodnoty pro **typ licence**:
 - `AHUB` pro Zvýhodněné hybridní využití Azure
 - `PAYG` pro průběžné platby
 - `DR` Aktivace bezplatné repliky HA/DR
@@ -91,7 +92,7 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type <license-type
 
 Pro změnu modelu licence můžete použít PowerShell.
 
-Zadejte následující hodnoty pro **typ licence** :
+Zadejte následující hodnoty pro **typ licence**:
 - `AHUB` pro Zvýhodněné hybridní využití Azure
 - `PAYG` pro průběžné platby
 - `DR` Aktivace bezplatné repliky HA/DR

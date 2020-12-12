@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744104"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355862"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Data o sídle a zákaznických datech pro Azure AD Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Pro veřejné cloudy Azure, kromě ověřování Azure B2C, serveru NPS a Window
 | Oznámení Microsoft Authenticator | V protokolech Multi-Factor Authentication<br />Úložiště dat sestavy Multi-Factor Authentication aktivit<br />Blokování uživatelů při nahlášení podvodu<br />Žádosti o změnu při Microsoft Authenticator změně tokenu zařízení |
 
 > [!NOTE]
-> Úložiště dat sestavy Multi-Factor Authentication aktivita je uloženo v USA pro všechny cloudy, bez ohledu na oblast, která žádost o ověření zpracovává. Microsoft Azure (Německo), Microsoft Azure provozovaný společností 21Vianet a Cloud pro státní správu Microsoftu mají svá vlastní nezávislá úložiště dat odděleně od úložišť dat oblasti veřejného cloudu, ale tato data se vždycky ukládají do USA.
+> Úložiště dat sestavy Multi-Factor Authentication aktivita je uloženo v USA pro všechny cloudy, bez ohledu na oblast, která žádost o ověření zpracovává. Microsoft Azure (Německo), Microsoft Azure provozovaný společností 21Vianet a Cloud pro státní správu Microsoftu mají svá vlastní nezávislá úložiště dat odděleně od úložišť dat oblasti veřejného cloudu, ale tato data se vždycky ukládají do USA. Tato úložiště dat obsahují osobní údaje, například hlavní název uživatele (UPN) a úplné telefonní číslo. 
 
 V případě Microsoft Azure Government, Microsoft Azure (Německo) Microsoft Azure provozovaných společností 21Vianet, ověřování Azure B2C, rozšíření serveru NPS a Windows Server 2016 nebo 2019 AD FS adaptér jsou uloženy následující osobní údaje:
 

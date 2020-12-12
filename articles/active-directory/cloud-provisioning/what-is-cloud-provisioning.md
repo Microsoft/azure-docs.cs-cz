@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0acef468aa53e456cd6fb416fe45558aee064699
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856802"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355813"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
@@ -32,7 +32,7 @@ Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, a
 Při zřizování cloudu Azure AD Connect se zřizování ze služby AD do služby Azure AD orchestruje v online službách Microsoftu. Organizace potřebuje nasadit, ve svém místním a IaaS prostředí, což je jednoduchý agent, který funguje jako most mezi Azure AD a AD. Konfigurace zřizování je uložená v Azure AD a spravovaná jako součást služby.
 
 ## <a name="azure-ad-connect-cloud-provisioning-video"></a>Video zřizování cloudu Azure AD Connect
-Následující krátké video poskytuje vynikající overveiw Azure AD Connectho zřizování cloudu:
+Následující krátké video poskytuje vynikající přehled Azure AD Connectho zřizování cloudu:
 
 > [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
 
@@ -54,7 +54,7 @@ Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Con
 | Podpora pro objekty kontaktů |● |● |
 | Podpora pro objekty zařízení |● | |
 | Umožňuje základní přizpůsobení toků atributů. |● |● |
-| Sychronize atributy Exchange Online |● |● |
+| Synchronizovat atributy Exchange Online |● |● |
 | Synchronizovat atributy rozšíření 1-15 |● |● |
 | Synchronizace atributů AD definovaných zákazníkem (rozšíření adresáře) |● | |
 | Podpora synchronizace hodnot hash hesel |●|●|
@@ -72,6 +72,7 @@ Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Con
 | Podpora Azure AD Domain Services|● | |
 | [Hybridní zpětný zápis systému Exchange](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Podpora více než 50 000 objektů na doménu AD |● | |
+| Odkazy mezi doménami|● | |
 
 ## <a name="next-steps"></a>Další kroky 
 

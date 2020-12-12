@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484987"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357377"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -54,7 +54,7 @@ Informace o vytvoření účtu úložiště Azure najdete v tématu [Vytvoření
 - Fronty
 - Tabulky
 
-Ve většině případů byste měli používat účty pro obecné účely v2. Účty pro obecné účely v1 můžete použít pro tyto scénáře:
+Společnost Microsoft doporučuje pro většinu scénářů použití účtů pro obecné účely verze 2. Účty pro obecné účely v1 můžete použít pro tyto scénáře:
 
 - Vaše aplikace vyžadují model nasazení Azure Classic. Účty pro obecné účely v2 a účty BLOB Storage podporují jenom model nasazení Azure Resource Manager.
 
@@ -152,7 +152,7 @@ Přístup k datům ve vašem účtu úložiště můžete udělit pomocí někte
 
 - **Azure Active Directory:** Použijte přihlašovací údaje pro Azure Active Directory (Azure AD) k ověření uživatele, skupiny nebo jiné identity pro přístup k datům objektů BLOB a front. Pokud je ověření identity úspěšné, pak Azure AD vrátí token, který se použije při autorizaci žádosti do úložiště objektů BLOB v Azure nebo ve frontě. Další informace najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).
 - **Autorizace sdíleného klíče:** Použijte přístupový klíč účtu úložiště k vytvoření připojovacího řetězce, který vaše aplikace používá za běhu pro přístup k Azure Storage. Hodnoty v připojovacím řetězci slouží k vytvoření hlavičky *autorizace* , která je předána Azure Storage. Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
-- **Sdílený přístupový podpis:** Pokud nepoužíváte autorizaci Azure AD, můžete pomocí sdíleného přístupového podpisu delegovat přístup k prostředkům v účtu úložiště. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Můžete zadat prostředek úložiště, udělená oprávnění a interval, ve kterém jsou oprávnění platná, jako součást sdíleného přístupového podpisu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
+- **Sdílený přístupový podpis:** Sdílený přístupový podpis (SAS) je token, který umožňuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Token SAS zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Když vytvoříte SAS, můžete určit, která oprávnění SAS udělí prostředku, a interval, po kterém jsou oprávnění platná. Token SAS se dá podepsat buď pomocí přihlašovacích údajů Azure AD, nebo pomocí sdíleného klíče. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS.
@@ -192,3 +192,5 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 - [Vytvoření účtu úložiště](storage-account-create.md)
 - [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)
+- [Upgrade na účet úložiště pro obecné účely verze 2](storage-account-upgrade.md)
+- [Obnovení odstraněného účtu úložiště](storage-account-recover.md)

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173698"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355852"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Požadavky pro zřízení cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -51,11 +51,23 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
+ 1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
 
-1. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
+ >[!NOTE]
+ > Počítejte s tím, že definováním filtru oboru vzniká náklady na paměť na hostitelském serveru.  Pokud není použit žádný filtr oborů, neplatí žádné dodatečné náklady na paměť. Minimální počet 4 GB bude podporovat synchronizaci až pro 12 organizačních jednotek definovaných ve filtru oborů. Pokud potřebujete synchronizovat další organizační jednotky, bude nutné zvýšit minimální množství paměti. Jako vodítko použijte následující tabulku:
+ >
+ >  
+ >  | Počet organizačních jednotek ve filtru oborů| minimální požadovaná paměť|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5,5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
+ 2. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
+
+ 3. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
    - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:
 
         | Číslo portu | Jak se používá |
@@ -100,7 +112,20 @@ Pokud chcete povolit TLS 1,2, postupujte podle těchto kroků.
 
 1. Restartujte server.
 
+## <a name="known-limitations"></a>Známá omezení
+Toto jsou známá omezení:
 
+### <a name="delta-synchronization"></a>Rozdílová synchronizace
+
+- Filtrování oboru skupiny pro rozdílovou synchronizaci nepodporuje více než 1500 členů.
+- Když odstraníte skupinu, která se používá jako součást filtru oboru skupiny, uživatelé, kteří jsou členy skupiny, se neodstraní. 
+- Pokud přejmenujete organizační jednotku nebo skupinu, která je v oboru, rozdílová synchronizace tyto uživatele neodebere.
+
+### <a name="provisioning-logs"></a>Protokoly zřizování
+- Protokoly zřizování nejsou jasně odlišené mezi operacemi vytvoření a aktualizace.  Může se zobrazit operace vytvoření aktualizace a operace aktualizace pro vytvoření.
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Opětovné pojmenování skupin nebo opětovné pojmenovávání organizační jednotky
+- Pokud přejmenujete skupinu nebo organizační jednotku ve službě AD, která je v rozsahu pro danou konfiguraci, úloha zřizování cloudu nebude schopna rozpoznat změnu názvu ve službě AD. Úloha se nepřejde do karantény a zůstane v dobrém stavu.
 
 
 ## <a name="next-steps"></a>Další kroky 

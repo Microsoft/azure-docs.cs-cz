@@ -1,14 +1,14 @@
 ---
 title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
-ms.date: 11/12/2020
+ms.date: 12/10/2020
 ms.topic: overview
-ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528818"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356357"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
@@ -45,3 +45,4 @@ Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a sprá
 - Další informace o [správě delegovaných prostředků Azure](concepts/azure-delegated-resource-management.md)
 - Prozkoumejte [prostředí pro správu mezi klienty](concepts/cross-tenant-management-experience.md).
 - Podívejte se, jak [používat Azure Lighthouse v rámci podniku](concepts/enterprise.md).
+- Podívejte se na podrobnosti o rozsahu auditu [dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all) a [FEDRAMP a DoD CC SRG](../azure-government/compliance/azure-services-in-fedramp-auditscope.md) pro Azure Lighthouse.

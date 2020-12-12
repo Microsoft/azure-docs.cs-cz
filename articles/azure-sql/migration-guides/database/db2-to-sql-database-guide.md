@@ -1,5 +1,5 @@
 ---
-title: Průvodce migrací z DB2 do SQL Database
+title: 'DB2 do SQL Database: Průvodce migrací'
 description: Podle tohoto průvodce migrujte databáze DB2 do Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325158"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356340"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Průvodce migrací: DB2 do SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ Tato příručka vás seznámí s migrací databází DB2 do Azure SQL Database 
 
 Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K migraci databáze DB2 na SQL Database potřebujete:
 
@@ -102,7 +102,7 @@ K převedení schématu použijte následující postup:
 1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 Po dokončení vyhodnocení databází a vyřešení případných rozporů je dalším krokem spuštění procesu migrace.
 

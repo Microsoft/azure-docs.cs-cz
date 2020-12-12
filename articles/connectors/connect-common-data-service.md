@@ -1,26 +1,29 @@
 ---
-title: Připojení k Common Data Service
-description: Vytváření a Správa záznamů Common Data Service pomocí Azure Logic Apps
+title: Připojení k Common Data Service (Microsoft datatext)
+description: Vytváření a Správa záznamů Common Data Service (Microsoft datavert) pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334578"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355113"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service (Microsoft dataRecord) pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](/connectors/commondataservice/)můžete vytvářet automatizované pracovní postupy, které spravují záznamy v databázi [Common data Service](/powerapps/maker/common-data-service/data-platform-intro) . Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze Common Data Service a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Například při aktualizaci záznamu ve vaší databázi Common Data Service můžete odeslat e-mail pomocí konektoru Office 365 Outlook.
+> [!NOTE]
+> V listopadu 2020 se Common Data Service přejmenovala na Microsoft datavert.
+
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Common data Service](/connectors/commondataservice/)můžete sestavovat automatizované pracovní postupy, které spravují záznamy ve vašich [Common data Service, teď Microsoft](/powerapps/maker/common-data-service/data-platform-intro) datadatabase. Tyto pracovní postupy mohou vytvářet záznamy, aktualizovat záznamy a provádět jiné operace. Můžete také získat informace z databáze Common Data Service a zpřístupnit výstup ostatním akcím pro použití v aplikaci logiky. Například při aktualizaci záznamu ve vaší databázi Common Data Service můžete odeslat e-mail pomocí konektoru Office 365 Outlook.
 
 Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při každém vytvoření záznamu nového zájemce vytvoří záznam úkolu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -49,11 +52,11 @@ V tomto příkladu přidejte Trigger Common Data Service, který se aktivuje př
 
    ![Aktivovat informace o prostředí pro monitorování](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Prostředí** | Yes | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
-   | **Název entity** | Yes | Entita, která se má monitorovat například "Zájemci" |
-   | **Rozsah** | Yes | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
+   | **Prostředí** | Ano | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](/power-platform/admin/environments-overview). |
+   | **Název entity** | Ano | Entita, která se má monitorovat například "Zájemci" |
+   | **Rozsah** | Ano | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Přidat Common Data Service akci
@@ -70,10 +73,10 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    ![Informace o akcích pro prostředí, kde se má záznam vytvořit](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název organizace** | Yes | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
-   | **Název entity** | Yes | Entita, ve které chcete záznam vytvořit, například "úkoly" |
+   | **Název organizace** | Ano | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
+   | **Název entity** | Ano | Entita, ve které chcete záznam vytvořit, například "úkoly" |
    | **Předmět** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
    ||||
 
@@ -87,7 +90,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
       ![Vyberte výstupy triggerů, které se mají použít v záznamu úlohy.](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Výstup triggeru | Description |
+      | Výstup triggeru | Popis |
       |----------------|-------------|
       | **Jméno** | Křestní jméno z záznamu zájemce pro použití jako primární kontakt v záznamu úkolu |
       | **Příjmení** | Příjmení ze záznamu zájemce, které se má použít jako primární kontakt v záznamu úkolu |
@@ -110,7 +113,7 @@ Pro aktivační události, které se spouštějí při aktualizaci záznamů, ja
 
    ![Snímek obrazovky zobrazující akci aktualizovat záznam "když je aktualizován" a otevře se seznam přidat nový parametr s vybranou vlastností "filtry atributů".](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. Pro každou **položku filtrování atributů**vyberte atribut, který chcete monitorovat, například:
+1. Pro každou **položku filtrování atributů** vyberte atribut, který chcete monitorovat, například:
 
    ![Přidat vlastnost "Filters" (filtry atributů)](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 

@@ -1,23 +1,23 @@
 ---
-title: vytvořit účet úložiště
+title: Vytvoření účtu úložiště
 titleSuffix: Azure Storage
 description: Naučte se vytvořit účet úložiště pro ukládání objektů blob, souborů, front a tabulek. Účet úložiště Azure poskytuje jedinečný obor názvů v Microsoft Azure pro čtení a zápis dat.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005537"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357445"
 ---
-# <a name="create-a-storage-account"></a>vytvořit účet úložiště
+# <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
@@ -98,11 +98,11 @@ az login
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Není k dispozici
+–
 
 ---
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
@@ -286,3 +286,4 @@ Alternativně můžete odstranit skupinu prostředků, která odstraní účet �
 - [Přehled účtu úložiště](storage-account-overview.md)
 - [Upgrade na účet úložiště pro obecné účely verze 2](storage-account-upgrade.md)
 - [Přesunutí účtu Azure Storage do jiné oblasti](storage-account-move.md)
+- [Obnovení odstraněného účtu úložiště](storage-account-recover.md)

@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f31cf22ae8814975dcee92c33026d223275cf121
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376208"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356544"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Nahrát metriky do Azure Monitor
 
@@ -32,7 +32,7 @@ Než budete pokračovat, ujistěte se, že jste vytvořili požadovaný instanč
 * [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)
 * [Přiřazení rolí k instančnímu objektu](upload-metrics-and-logs-to-azure-monitor.md#assign-roles-to-the-service-principal)
 
-## <a name="upload-metrics"></a>Nahrát metriky
+## <a name="upload-metrics"></a>Odesílání metrik
 
 S datovými službami Azure ARC můžete volitelně nahrát metriky do Azure Monitor, abyste mohli agregovat a analyzovat metriky, vyvolávat výstrahy, odesílat oznámení nebo aktivovat automatizované akce. 
 
@@ -47,7 +47,7 @@ Nastavení adresy URL autority SPN v proměnné prostředí:
 ::: zone pivot="client-operating-system-windows-command"
 
 ```console
-SET SPN_AUTHORITY='https://login.microsoftonline.com'
+SET SPN_AUTHORITY=https://login.microsoftonline.com
 ```
 
 ::: zone-end
@@ -126,7 +126,7 @@ Pokud chcete nahrát metriky pro spravované instance Azure s podporou ARC a Azu
    >[!NOTE]
    >Po prvním odeslání vyčkejte aspoň 30 minut, než se vytvoří instance dat s povoleným ARC Azure.
    >
-   >Ujistěte `upload` se, že metriky hned po `export` Azure monitor akceptují jenom metriky za posledních 30 minut. [Další informace](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
+   >Ujistěte `upload` se, že metriky hned po `export` Azure monitor akceptují jenom metriky za posledních 30 minut. [Přečtěte si další informace](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Pokud se při exportu zobrazí nějaké chyby znamenající "selhání získání metrik", zkontrolujte, jestli je shromažďování dat nastavené `true` spuštěním tohoto příkazu:
