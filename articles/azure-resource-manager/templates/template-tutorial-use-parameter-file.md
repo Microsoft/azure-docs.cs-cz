@@ -6,12 +6,12 @@ ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106763"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368422"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: použití souborů parametrů k nasazení šablony ARM
 
@@ -51,7 +51,7 @@ Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá **Standard_GRS** pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku _prostředí_ na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
+Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá **Standard_GRS** pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví `Environment` značku na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487792"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368898"
 ---
 # <a name="security-control-v2-asset-management"></a>Řízení zabezpečení v2: Správa prostředků
 
@@ -20,7 +20,7 @@ Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti za
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Zajištění přehledu o rizicích u prostředků pro bezpečnostní tým
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 1 | 1,1, 1,2 | CM-8, PM-5 |
 
@@ -46,7 +46,7 @@ Poznámka: K získání přehledu o úlohách a službách se můžou vyžadovat
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Zajištění přístupu k inventáři a metadatům prostředků pro bezpečnostní tým
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
@@ -72,7 +72,7 @@ Uspořádejte logicky prostředky podle taxonomie vaší organizace pomocí zna�
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Používání jenom schválených služeb Azure
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 3 | 2,3, 2,4 | CM-7, CM-8 |
 
@@ -94,7 +94,7 @@ Pomocí Azure Policy můžete auditovat a omezovat služby, které můžou uživ
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Zajištění zabezpečení správy životního cyklu prostředků
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 4 | 2,3, 2,4, 2,5 | CM-7, CM-8, CM-10, CM-11 |
 
@@ -116,7 +116,7 @@ Pokud už je nepotřebujete, odeberte prostředky Azure.
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>DOP. 5: Omezte schopnost uživatelů pracovat s Azure Resource Manager
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů komuniko
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>DOP. 6: používejte ve výpočetních prostředcích jenom schválené aplikace.
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DOP. 6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 

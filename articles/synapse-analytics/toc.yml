@@ -96,8 +96,6 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Zabezpečení
           items:
-            - name: Standardní hodnoty zabezpečení
-              href: security-baseline.md
             - name: Šifrování
               href: ./security/workspaces-encryption.md
             - name: Zabezpečení sítě

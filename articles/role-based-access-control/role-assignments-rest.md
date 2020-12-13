@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feb647cc42c878778b4326c9ee76a32809751314
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790842"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369306"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí REST API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -58,21 +58,21 @@ Když v Azure RBAC udělíte přístup, přidáte přiřazení role. K přidán�
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Skupina prostředků |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Prostředek |
 
-    V předchozím příkladu je Microsoft. Web poskytovatelem prostředků, který odkazuje na instanci App Service. Podobně můžete použít jiné poskytovatele prostředků a zadat obor. Další informace najdete v tématech [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) a podporované [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md).  
+    V předchozím příkladu je Microsoft. Web poskytovatelem prostředků, který odkazuje na instanci App Service. Podobně můžete použít jiné poskytovatele prostředků a zadat obor. Další informace najdete v tématech [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) a podporované [operace poskytovatele prostředků Azure](resource-provider-operations.md).  
 
 1. Nahraďte *{roleAssignmentId}* identifikátorem GUID přiřazení role.
 
 1. V textu žádosti nahraďte *{Scope}* oborem pro přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
@@ -132,7 +132,7 @@ Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role. K odebr
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro odebrání přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |

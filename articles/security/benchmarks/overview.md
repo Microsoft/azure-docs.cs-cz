@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2471aaad4ef10b611ab4ad812c5b1566cc7c4a07
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412676"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369153"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Přehled srovnávacích testů zabezpečení Azure (v2)
 
@@ -25,7 +25,7 @@ Tento srovnávací test je součástí sady holistických pokynů pro zabezpeče
 - **Azure Well-Architected Framework** – pokyny k [zabezpečení vašich úloh](/assessments/?mode=pre-assessment&session=local) v Azure.
 - **Osvědčené postupy zabezpečení od Microsoftu** – [doporučení](/security/compass/microsoft-security-compass-introduction) s příklady v Azure.
 
- Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP800-53.
+ Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP 800-53.
 Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky:
 
 | DOKUMENTEM SSAE – domény ovládacích prvků | Popis 
@@ -46,12 +46,12 @@ Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky
 
 Každé doporučení zahrnuje následující informace:
 
-- **Azure ID** : ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení.
-- **ID ovládacích prvků CIS v 7.1** : ovládací prvky CIS v 7.1, které odpovídají tomuto doporučení.
-- **NIST SP800-53 R4 ID** : ovládací prvky NIST SP800-53 R4 (mírný), které odpovídají tomuto doporučení.
-- **Podrobnosti** : odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
-- **Zodpovědnost** : Určuje, zda je pro implementaci tohoto doporučení zodpovědný zákazník, poskytovatel služeb nebo obojí. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby.
-- **Účastníci zabezpečení zákazníka** : [bezpečnostní funkce](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) v organizaci zákazníka, které mohou být pro příslušný ovládací prvek vyúčtovány, zodpovědné nebo konzultované. Může se lišit od organizace až po organizaci v závislosti na struktuře organizace zabezpečení vaší společnosti a rolích a zodpovědností, které jste si nastavili v souvislosti se zabezpečením Azure.
+- **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení.
+- **ID ovládacích prvků CIS v 7.1**: ovládací prvky CIS v 7.1, které odpovídají tomuto doporučení.
+- **NIST sp 800-53 R4 ID**: ovládací prvky NIST SP 800-53 R4 (mírný), které odpovídají tomuto doporučení.
+- **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
+- **Zodpovědnost**: Určuje, zda je pro implementaci tohoto doporučení zodpovědný zákazník, poskytovatel služeb nebo obojí. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby.
+- **Účastníci zabezpečení zákazníka**: [bezpečnostní funkce](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) v organizaci zákazníka, které mohou být pro příslušný ovládací prvek vyúčtovány, zodpovědné nebo konzultované. Může se lišit od organizace až po organizaci v závislosti na struktuře organizace zabezpečení vaší společnosti a rolích a zodpovědností, které jste si nastavili v souvislosti se zabezpečením Azure.
 
 > [!NOTE]
 > Mapování ovládacích prvků mezi dokumentem SSAE a oborovými srovnávacími testy (jako je NIST a SNS) znamená pouze to, že konkrétní funkce Azure lze použít k plnému nebo částečnému vyřešení požadavku na řízení definovaného v NIST nebo CIS. Je třeba si uvědomit, že taková implementace nemusí nutně překládat na celé dodržování předpisů odpovídajícím ovládacím prvkům v CIS nebo NIST.

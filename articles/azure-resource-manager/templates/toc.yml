@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Zdroje a prostředky
   items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Šablony rychlého zprovoznění pro Azure
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Plány Azure do budoucna

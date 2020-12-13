@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337521"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368660"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Vstupním bodem pro maximální propustnost pro automatické škálování `Tmax
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Povolit automatické škálování u stávajících prostředků
 
-Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) můžete povolit automatické škálování existující databáze nebo kontejneru. Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . V současné době můžete pro všechna rozhraní API použít Azure Portal jenom k povolení automatického škálování u stávajících prostředků.
+K povolení automatického škálování u existující databáze nebo kontejneru použijte [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), [Azure Resource Manager šablonu](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) nebo [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) . Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) .
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Omezení propustnosti a úložiště pro automatické škálování
 

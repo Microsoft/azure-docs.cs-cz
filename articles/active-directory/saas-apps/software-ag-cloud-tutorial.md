@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 144263835e129c3571dcc5c2f8e8bde03dca9a0e
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602015"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369340"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování do programu Software AG Cloud
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Software AG Cloud s Azure Active Direc
 * Umožněte, aby se vaši uživatelé automaticky přihlásili do cloudu Software AG pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -99,7 +99,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -145,15 +145,12 @@ V této části se v cloudu Software AG vytvoří uživatel s názvem Britta Sim
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následující možnosti. 
 
-* Za předpokladu, že Microsoft Azure je v cloudu Software AG nakonfigurovaný jako poskytovatel, přejděte na `www.softwareag.cloud` tlačítko přihlásit a klikněte na tlačítko pro přihlášení a zadejte název prostředí. Na další obrazovce klikněte na odkaz Přihlásit se pomocí <IDP NAME> a zadejte přihlašovací údaje. Po ověření se budete přihlásíte k domovské stránce cloudu Software AG a přejdete na ni.
-
-* Přejít na adresu URL pro přihlášení ke cloudu softwaru AG přímo a zahájit tok přihlášení.
-
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Software AG Cloud v části Moje aplikace, přesměruje se na adresu URL pro přihlášení ke cloudu softwaru AG. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) .
-
+Za předpokladu, že Microsoft Azure je v cloudu Software AG nakonfigurovaný jako poskytovatel, přejděte na `www.softwareag.cloud` tlačítko přihlásit a klikněte na tlačítko pro přihlášení a zadejte název prostředí. Na další obrazovce klikněte na odkaz Přihlásit se pomocí <IDP NAME> a zadejte přihlašovací údaje. Po ověření se budete přihlásíte k domovské stránce cloudu Software AG a přejdete na ni.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování cloudu Software AG můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování cloudu Software AG můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

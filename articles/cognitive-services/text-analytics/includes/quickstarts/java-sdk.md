@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: b7e5ebb9ac4c71d71b19b10763ebbdf57d752d49
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 5aa14ae179270813a8c7410425c1614d95b8b497
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980934"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366530"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](/java/api/overview/azure/ai-textanalytics-readme-pre?view=azure-java-preview)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples)
+[Referenční dokumentace](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
@@ -33,13 +33,14 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) s verzí 8 nebo vyšší
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod.  Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* Pokud chcete použít funkci analyzovat, budete potřebovat prostředek Analýza textu s cenovou úrovní Standard (y).
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -54,7 +55,7 @@ Vytvořte projekt Maven v upřednostňovaném prostředí IDE nebo vývojovém p
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.1</version>
+        <version>5.1.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
@@ -132,6 +133,7 @@ public static void main(String[] args) {
     recognizeEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
+        AnalyzeOperationExample(client)
 }
 ```
 
@@ -598,3 +600,93 @@ Recognized phrases:
 cat
 veterinarian
 ```
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Asynchronní použití rozhraní API s operací analyzovat
+
+# <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
+
+> [!CAUTION]
+> Chcete-li použít příkaz analyzovat operace, je nutné použít prostředek Analýza textu s cenovou úrovní Standard (y).  
+
+Vytvořte novou funkci nazvanou `analyzeOperationExample()` , která volá `beginAnalyzeTasks()` funkci. Výsledkem bude dlouhodobá operace, která se bude dotazovat na výsledky.
+
+```java
+static void analyzeOperationExample(TextAnalyticsClient client)
+{
+        List<TextDocumentInput> documents = Arrays.asList(
+                        new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen.")
+                        );
+
+        SyncPoller<TextAnalyticsOperationResult, PagedIterable<AnalyzeTasksResult>> syncPoller =
+                        client.beginAnalyzeTasks(documents,
+                                        new AnalyzeTasksOptions().setDisplayName("{tasks_display_name}")
+                                                        .setEntitiesRecognitionTasks(Arrays.asList(new EntitiesTask())),
+                                        Context.NONE);
+
+        syncPoller.waitForCompletion();
+        PagedIterable<AnalyzeTasksResult> result = syncPoller.getFinalResult();
+
+        result.forEach(analyzeJobState -> {
+                System.out.printf("Job Display Name: %s, Job ID: %s.%n", analyzeJobState.getDisplayName(),
+                                analyzeJobState.getJobId());
+                System.out.printf("Total tasks: %s, completed: %s, failed: %s, in progress: %s.%n",
+                                analyzeJobState.getTotal(), analyzeJobState.getCompleted(), analyzeJobState.getFailed(),
+                                analyzeJobState.getInProgress());
+
+                List<RecognizeEntitiesResultCollection> entityRecognitionTasks =
+                                analyzeJobState.getEntityRecognitionTasks();
+                if (entityRecognitionTasks != null) {
+                        entityRecognitionTasks.forEach(taskResult -> {
+                                // Recognized entities for each of documents from a batch of documents
+                                AtomicInteger counter = new AtomicInteger();
+                                for (RecognizeEntitiesResult entitiesResult : taskResult) {
+                                        System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
+                                        if (entitiesResult.isError()) {
+                                                // Erroneous document
+                                                System.out.printf("Cannot recognize entities. Error: %s%n",
+                                                                entitiesResult.getError().getMessage());
+                                        } else {
+                                                // Valid document
+                                                entitiesResult.getEntities().forEach(entity -> System.out.printf(
+                                                                "Recognized entity: %s, entity category: %s, entity subcategory: %s, "
+                                                                                + "confidence score: %f.%n",
+                                                                entity.getText(), entity.getCategory(), entity.getSubcategory(),
+                                                                entity.getConfidenceScore()));
+                                        }
+                                }
+                        });
+                }
+        });
+    }
+```
+
+Po přidání tohoto příkladu do aplikace jej zavolejte v `main()` metodě.
+
+```java
+analyzeOperationExample(client);
+```
+
+### <a name="output"></a>Výstup
+
+```console
+Job Display Name: {tasks_display_name}, Job ID: 84fd4db4-0734-47ec-b263-ac5451e83f2a_637432416000000000.
+Total tasks: 1, completed: 1, failed: 0, in progress: 0.
+
+Text = Microsoft was founded by Bill Gates and Paul Allen., Id = 0, Language = null
+Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.960000.
+Recognized entity: Bill Gates, entity category: Person, entity subcategory: null, confidence score: 1.000000.
+Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
+```
+
+Můžete také použít operaci analyzovat ke zjištění kódu PII a extrakce klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeTasksAsync.java) na GitHubu.
+
+# <a name="version-30"></a>[Verze 3,0](#tab/version-3)
+
+Tato funkce není k dispozici ve verzi 3,0.
+
+# <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+
+Tato funkce není k dispozici ve verzi 2,1.
+
+---

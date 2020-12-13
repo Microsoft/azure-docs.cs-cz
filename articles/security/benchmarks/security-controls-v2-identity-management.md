@@ -7,45 +7,45 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408733"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368847"
 ---
 # <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
 
 Správa identit pokrývá ovládací prvky pro vytvoření zabezpečené identity a řízení přístupu pomocí Azure Active Directory. To zahrnuje použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií.
 
-## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: standardizace Azure Active Directory jako centrální systém pro ověřování a identifikaci
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardizace Azure Active Directory jako centrálního systému pro identifikaci a ověřování
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD) je výchozí služba pro správu identit a přístupu v Azure. Ve službě Azure AD byste se měli standardizovat, aby bylo možné spravovat identitu a správu přístupu vaší organizace v nástroji:
-- Cloudové prostředky Microsoftu, jako jsou Azure Portal, Azure Storage, Azure Virtual Machines (Linux a Windows), Azure Key Vault, PaaS a SaaS aplikace.
+Azure Active Directory (Azure AD) je výchozí služba pro správu identit a přístupu v Azure. S využitím Azure AD byste měli standardizovat řízení správy identit a přístupu v rámci vaší organizace pro:
+- cloudové prostředky Microsoftu, jako jsou Azure Portal, Azure Storage, virtuální počítače Azure (s Linuxem a Windows), Azure Key Vault a aplikace PaaS a SaaS
 
-- Prostředky vaší organizace, jako jsou aplikace v Azure nebo podnikové síťové prostředky.
+- prostředky vaší organizace, jako jsou aplikace v Azure nebo prostředky vaší podnikové sítě
 
-Zabezpečení služby Azure AD by mělo mít vysokou prioritu v praxi cloudového zabezpečení vaší organizace. Azure AD poskytuje bezpečnostní skóre identity, které vám pomůžou vyhodnotit stav zabezpečení identity vzhledem k osvědčeným postupům Microsoftu. Pomocí skóre můžete vyhodnotit, jak pečlivě vaše konfigurace vyhovuje doporučení osvědčených postupů, a v stav zabezpečení dělat vylepšení.
+Zabezpečení Azure AD by v rámci postupů vaší organizace v oblasti cloudového zabezpečení mělo mít vysokou prioritu. Azure AD nabízí skóre zabezpečení identit, které pomáhá vyhodnocovat stav zabezpečení identit s ohledem na doporučené osvědčené postupy Microsoftu. S využitím tohoto skóre můžete změřit, nakolik vaše konfigurace odpovídá doporučeným osvědčeným postupům, a zlepšit stav zabezpečení.
 
-Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje uživatelům bez účet Microsoft přihlašovat se k aplikacím a prostředkům s jejich externí identitou.
+Poznámka: Azure AD podporuje externí zprostředkovatele identit, kteří umožňují uživatelům bez účtu Microsoft přihlašovat se ke svým aplikacím a prostředkům s využitím své externí identity.
 
-- [Nájem v Azure AD](../../active-directory/develop/single-and-multi-tenant-apps.md)
+- [Architektura tenantů v Azure AD](../../active-directory/develop/single-and-multi-tenant-apps.md)
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Vytvoření a konfigurace instance Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [Definování tenantů Azure AD](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [Použití externích zprostředkovatelů identity pro aplikaci](../../active-directory/external-identities/identity-providers.md)
+- [Používání externích zprostředkovatelů identit pro aplikaci](../../active-directory/external-identities/identity-providers.md)
 
-- [Co je bezpečné skóre identity ve službě Azure AD](../../active-directory/fundamentals/identity-secure-score.md)
+- [Co je skóre zabezpečení identit v Azure AD?](../../active-directory/fundamentals/identity-secure-score.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -55,11 +55,11 @@ Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: zabezpečená a Automatická správa identit aplikací
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: Zabezpečená a automatická správa identit aplikací
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| IM – 2 | Není k dispozici | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| IM – 2 | – | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 Pro jiné než lidské účty, jako jsou služby nebo automatizace, použijte spravované identity Azure, místo abyste vytvořili výkonnější účet pro přístup k prostředkům nebo spustit kód. Spravované identity Azure se můžou ověřit u služeb a prostředků Azure, které podporují ověřování Azure AD. Ověřování je povoleno prostřednictvím předdefinovaných pravidel udělení přístupu, což vyloučí pevně zakódované přihlašovací údaje ve zdrojovém kódu nebo konfiguračních souborech. 
 
@@ -75,17 +75,17 @@ Pro služby, které nepodporují spravované identity, použijte službu Azure A
 
 Použití Azure Key Vault k registraci objektu zabezpečení: ověřování # autorizovat-a-Security-Principal-to-Access-Key-trezor
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: použití jednotného přihlašování (SSO) Azure AD pro přístup k aplikacím
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Použití jednotného přihlašování (SSO) Azure AD pro přístup k aplikacím
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM – 3 | 4.4 | IA-2, IA-4 |
 
@@ -95,9 +95,9 @@ Pomocí jednotného přihlašování (SSO) Azure AD můžete spravovat a zabezpe
 
 - [Principy jednotného přihlašování k aplikacím pomocí Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -105,9 +105,9 @@ Pomocí jednotného přihlašování (SSO) Azure AD můžete spravovat a zabezpe
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: použití ovládacích prvků pro silné ověřování pro všechny přístupy založené na Azure Active Directory
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Použití řídicích prvků silného ověřování pro veškerý přístup založený na Azure Active Directory
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM – 4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
@@ -124,15 +124,15 @@ Poznámka: ověřování založené jenom na přihlašovacích údajích hesla j
 
 - [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Seznámení s možnostmi ověřování s neheslem pro Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)
+- [Úvod do možností ověřování bez hesla pro Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)
 
-- [Výchozí zásady hesel pro Azure AD](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
+- [Výchozí zásady hesel Azure AD](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
 
-- [Odstranění chybných hesel pomocí ochrany heslem Azure AD](../../active-directory/authentication/concept-password-ban-bad.md)
+- [Eliminace špatných hesel s využitím ochrany hesel Azure AD](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -140,14 +140,14 @@ Poznámka: ověřování založené jenom na přihlašovacích údajích hesla j
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: monitorování a upozornění na anomálie účtů
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: Monitorování a upozornění na anomálie účtů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM 5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
 
 Azure AD poskytuje následující zdroje dat: 
--   Přihlášení – sestava přihlášení poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+-   Přihlášení – Sestava přihlášení poskytuje informace o využití spravovaných aplikací a aktivitách přihlašování uživatelů.
 
 -   Protokoly auditu – poskytuje sledovatelnost prostřednictvím protokolů pro všechny změny provedené prostřednictvím různých funkcí služby Azure AD. Příklady protokolů auditu v protokolovaných změnách zahrnují přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
 
@@ -155,7 +155,7 @@ Azure AD poskytuje následující zdroje dat:
 
 -   Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
 
-Tyto zdroje dat je možné integrovat s Azure Monitor, službou Azure Sentinel nebo systémy SIEM třetích stran.
+Tyto zdroje dat je možné integrovat se službami Azure Monitor a Azure Sentinel nebo se systémy SIEM třetích stran.
 
 Azure Security Center může také upozorňovat na určité podezřelé aktivity, jako je například nadměrný počet neúspěšných pokusů o ověření a zastaralých účtů v rámci předplatného. 
 
@@ -163,13 +163,13 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Sestavy aktivit auditu v Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Jak zobrazit rizikové přihlašování Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Zobrazení rizikových přihlášení Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Identifikace uživatelů Azure AD označených příznakem rizikové aktivity](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../../security-center/security-center-identity-access.md)
+- [Monitorování identit a aktivit přístupu uživatelů ve službě Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Výstrahy v modulu Azure Security Center ochrany před hrozbami](../../security-center/alerts-reference.md)
+- [Upozornění v modulu ochrany na základě analýzy hrozeb služby Azure Security Center](../../security-center/alerts-reference.md)
 
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,31 +177,31 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM – 6: omezit přístup k prostředkům Azure na základě podmínek
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: Omezení přístupu k prostředkům Azure na základě podmínek
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| IM – 6 | Není k dispozici | AC-2, AC-3 |
+| IM – 6 | – | AC-2, AC-3 |
 
 Podmíněný přístup Azure AD můžete použít pro přesnější řízení přístupu na základě uživatelem definovaných podmínek, jako je třeba vyžadování přihlášení uživatelů z určitých rozsahů IP adres pro použití MFA. Pomocí zásad podmíněného přístupu Azure AD pro různé případy použití lze také použít podrobnou správu relace ověřování. 
 
 - [Přehled podmíněného přístupu Azure](../../active-directory/conditional-access/overview.md)
 
-- [Běžné zásady podmíněného přístupu](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)
+- [Společné zásady podmíněného přístupu](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)
 
 - [Konfigurace správy relací ověřování pomocí podmíněného přístupu](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -211,23 +211,23 @@ Podmíněný přístup Azure AD můžete použít pro přesnější řízení p�
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: Eliminujte nezamýšlenou expozici přihlašovacích údajů
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: Eliminace nezamýšleného prozrazení přihlašovacích údajů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM – 7 | 18,1, 18,7 | IA-5 |
 
 Implementujte ke službě Azure DevOps Credential Scanner k identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je například Azure Key Vault.
 
-V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jiné formy tajných kódů v kódu použít funkci nativního prohledávání tajného klíče.
+V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jiné formy tajných kódů v kódu použít funkci nativního skenování tajných kódů.
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-- [Kontrola tajného kódu GitHubu](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+- [Skenování tajných kódů GitHubu](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -235,7 +235,7 @@ V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jin�
 
 ## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8: zabezpečený přístup uživatelů k starším aplikacím
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | IM-8 | 14,6 | AC-2, AC-3, SC-11 |
 
@@ -245,13 +245,13 @@ Azure Proxy aplikací služby AD umožňuje publikovat starší verze místních
 
 Alternativně Microsoft Cloud App Security je služba CASB (Cloud Access Security Broker), která poskytuje ovládací prvky pro monitorování uživatelských relací a blokování akcí (pro starší místní aplikace a aplikace cloudového softwaru jako služby (SaaS)). 
 
-- [Proxy aplikací služby Azure AD](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
+- [Proxy aplikací služby AD Azure](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 
 - [Microsoft Cloud App Security osvědčené postupy](/cloud-app-security/best-practices)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

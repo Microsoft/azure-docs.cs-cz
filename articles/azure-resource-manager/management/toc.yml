@@ -180,6 +180,8 @@
       href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-resource-manager
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Cenová kalkulačka

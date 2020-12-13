@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534042"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369000"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics – poznámky k verzi
 
@@ -59,7 +59,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Správa úloh – prostředí portálu**|Uživatelé můžou nakonfigurovat a spravovat svá nastavení správy úloh prostřednictvím Azure Portal. Možnost konfigurace [skupin úloh](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) a [klasifikátorů úloh](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) je možná.|
-|**Vylepšené zobrazení katalogu mapování tabulek**|Nové zobrazení katalogu [Sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) mapuje **object_ids** trvalých uživatelských tabulek na své fyzické názvy tabulek.|
+|**Vylepšené zobrazení katalogu mapování tabulek**|Nové zobrazení katalogu [Sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) mapuje **object_ids** trvalých uživatelských tabulek na své fyzické názvy tabulek.|
 
 ## <a name="july-2020"></a>Červenec 2020
 
@@ -187,7 +187,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 
 | Vylepšení dokumentace | Podrobnosti |
 | --- | --- |
-|Žádná | |
+|žádné | |
 | | |
 
 ## <a name="december-2018"></a>Prosinec 2018

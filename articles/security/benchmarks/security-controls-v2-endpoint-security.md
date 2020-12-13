@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408869"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368949"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Řízení zabezpečení v2: zabezpečení koncového bodu
 
@@ -20,7 +20,7 @@ Služba Endpoint Security pokrývá ovládací prvky pro detekci a odezvu koncov
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: použití detekce a odpovědi koncového bodu (EDR)
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | ES-1 | 8.1 | -2, SI-3, SC-3 |
 
@@ -34,9 +34,9 @@ Rozšířená ochrana před internetovými útoky v programu Microsoft Defender 
 
 - [Služba ochrany ATP v programu Microsoft Defender pro servery jiné než Windows](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -48,7 +48,7 @@ Rozšířená ochrana před internetovými útoky v programu Microsoft Defender 
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2: použití centrálně spravovaného malwarového softwaru pro moderní správu
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | ES – 2 | 8.1 | -2, SI-3, SC-3 |
 
@@ -62,9 +62,9 @@ Microsoft Antimalware pro Azure Cloud Services je výchozí Antimalwarový progr
 
 - [Podporovaná řešení ochrany koncových bodů](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -76,7 +76,7 @@ Microsoft Antimalware pro Azure Cloud Services je výchozí Antimalwarový progr
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3: kontrola, jestli je antimalwarový software a signatury aktualizované
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | ES – 3 | 8.2 | KDE-2, SI-3 |
 
@@ -86,9 +86,9 @@ Použijte doporučení v Azure Security Center: "COMPUTE &amp; Apps", abyste zaj
 
 - [Jak nasadit Microsoft Antimalware pro Azure Cloud Services a Virtual Machines](../fundamentals/antimalware.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security)
 

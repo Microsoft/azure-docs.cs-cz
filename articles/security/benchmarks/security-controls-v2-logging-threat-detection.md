@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408698"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369068"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Řízení zabezpečení v2: protokolování a detekce hrozeb
 
@@ -20,7 +20,7 @@ Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: povolení detekce hrozeb pro prostředky Azure
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -38,9 +38,9 @@ Kromě toho použijte Azure Sentinel k vytváření pravidel analýzy, které us
 
 - [Funkce Azure Sentinel pro internetovou analýzu hrozeb](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -52,16 +52,16 @@ Kromě toho použijte Azure Sentinel k vytváření pravidel analýzy, které us
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: povolení detekce hrozeb pro správu identit a přístupu v Azure
+## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Povolení detekce hrozeb pro správu identit a přístupu v Azure
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT – 2 | 6.8 | AU-3, AU-6, AU-12, SI-4 |
 
 Azure AD poskytuje následující protokoly uživatelů, které se dají zobrazit v sestavách Azure AD nebo v nich integrovat s Azure Monitor, Azure Sentinelem nebo jinými nástroji SIEM/Monitoring pro složitější účely monitorování a analýzy: 
--   Přihlášení – sestava přihlášení poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+-   Přihlášení – Sestava přihlášení poskytuje informace o využití spravovaných aplikací a aktivitách přihlašování uživatelů.
 
--   Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+-   Protokoly auditu – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidání nebo odebrání uživatelů, aplikací, skupin, rolí nebo zásad.
 
 -   Riziková přihlášení – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
 
@@ -71,13 +71,13 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 - [Sestavy aktivit auditu v Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Povolit Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Povolení ochrany identit Azure](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Ochrana před hrozbami v Azure Security Center](../../security-center/azure-defender.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -89,9 +89,9 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: povolení protokolování pro síťové aktivity Azure
+## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Povolení protokolování pro síťové aktivity Azure
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -109,9 +109,9 @@ Povolte a Shromážděte protokoly o prostředcích skupiny zabezpečení sítě
 
 - [Získejte přehled o vaší infrastruktuře DNS pomocí DNS Analytics řešení](../../azure-monitor/insights/dns-analytics.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -123,9 +123,9 @@ Povolte a Shromážděte protokoly o prostředcích skupiny zabezpečení sítě
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: povolení protokolování pro prostředky Azure
+## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Povolení protokolování pro prostředky Azure
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
@@ -137,9 +137,9 @@ Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostře
 
 - [Pochopení Azure Security Center shromažďování dat](../../security-center/security-center-enable-data-collection.md)
 
-**Odpovědnost** : sdílená
+**Odpovědnost:** Sdílené
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -149,9 +149,9 @@ Zabezpečení infrastruktury a koncových bodů
 
 - [Analýza hrozeb](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: centralizace správy protokolu zabezpečení a analýzy
+## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Centralizace správy a analýz protokolu zabezpečení
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT-5 | 6,5, 6,6 | AU-3, SI-4 |
 
@@ -167,9 +167,9 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -177,9 +177,9 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurace uchovávání úložiště protokolu
+## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurace uchovávání úložiště protokolů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT – 6 | 6.4 | AU-3, AU-11 |
 
@@ -193,9 +193,9 @@ V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analy
 
 - [Azure Security Center upozornění a export doporučení](../../security-center/continuous-export.md)
 
-**Zodpovědnost** : zákazník
+**Odpovědnost:** Zákazník
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -207,7 +207,7 @@ V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analy
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7: použití schválených zdrojů synchronizace času
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | LT-7 | 6.1 | AU – 8 |
 
@@ -221,9 +221,9 @@ Všechny protokoly generované prostředky v Azure poskytují časová razítka 
 
 - [Jak zakázat příchozí UDP pro služby Azure](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**Odpovědnost** : sdílená
+**Odpovědnost:** Sdílené
 
-**Účastníci zabezpečení zákazníků** ( [Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zásady a standardy](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

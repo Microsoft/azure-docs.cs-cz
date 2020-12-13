@@ -87,8 +87,6 @@
     - name: Monitorování diagnostických protokolů
       href: firewall-diagnostics.md
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
-    - name: Protokoly služby Azure Monitor
-      href: log-analytics-samples.md
     - name: Sešit služby Azure Firewall
       href: firewall-workbook.md
 - name: Referenční informace

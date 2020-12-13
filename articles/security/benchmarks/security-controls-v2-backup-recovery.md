@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698797"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368881"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Řízení zabezpečení v2: zálohování a obnovení
 
@@ -20,7 +20,7 @@ Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se b
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: zajištění pravidelného automatizovaného zálohování
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2, CP4, CP-6, CP-9 |
 
@@ -34,9 +34,9 @@ V případě vyšší úrovně ochrany můžete povolit geograficky redundantní
 
 - [Postup povolení Azure Backup](../../backup/index.yml)
 
-- [Jak povolit obnovení mezi oblastmi](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Povolení obnovení mezi oblastmi](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -50,7 +50,7 @@ V případě vyšší úrovně ochrany můžete povolit geograficky redundantní
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2: šifrování zálohovaných dat
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | BR – 2 | 10,2 | CP-9 |
 
@@ -68,7 +68,7 @@ Pomocí řízení přístupu na základě role Azure v Azure Backup, Azure Key V
 
 - [Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy před útoky](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -78,9 +78,9 @@ Pomocí řízení přístupu na základě role Azure v Azure Backup, Azure Key V
 
 - [Příprava na incidenty](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
-## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: ověření všech záloh včetně klíčů spravovaných zákazníkem
+## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: Ověření všech záloh včetně klíčů spravovaných zákazníkem
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | BR-3 | 10,3 | CP-4, CP-9 |
 
@@ -90,7 +90,7 @@ Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můž
 
 - [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -98,17 +98,17 @@ Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můž
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4: zmírnění rizika ztracených klíčů
+## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4: Zmírnění rizika ztracených klíčů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | BR-4 | 10,4 | CP-9 |
 
-Ujistěte se, že máte k dispozici míry, abyste zabránili ztrátě klíčů a obnovili je. Povolí v Azure Key Vault ochranu před náhodným odstraněním a vyprázdněním, aby se chránily klíče proti náhodnému nebo škodlivému odstranění.  
+Ujistěte se, že máte k dispozici míry, abyste zabránili ztrátě klíčů a obnovili je. Povolte v Azure Key Vaultu obnovitelné odstranění a ochranu před vymazáním, aby byly klíče chráněné proti náhodnému nebo zlomyslnému odstranění.  
 
-- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění a ochranu před vymazáním v Key Vaultu](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

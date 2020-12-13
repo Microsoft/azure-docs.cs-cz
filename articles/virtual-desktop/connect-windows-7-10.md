@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287334"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368711"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
@@ -69,3 +69,5 @@ Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prosto
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o použití desktopového klienta Windows najdete v tématu [Začínáme s klientem Windows pro stolní počítače](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+
+Pokud jste správce, který vás zajímá o podrobnější informace o použití plochy Windows, přečtěte si článek [klient Windows Desktop pro správce](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin).

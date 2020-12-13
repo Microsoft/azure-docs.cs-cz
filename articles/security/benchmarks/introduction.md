@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328254"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369187"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Úvod do Azure Security srovnávacích testů
 
@@ -27,7 +27,7 @@ Srovnávací test zabezpečení Azure zahrnuje kolekci vysoce ovlivňujících d
 - **Směrné plány služeb**: tyto ovládací prvky se vztahují na jednotlivé služby Azure a poskytují doporučení k této konfiguraci zabezpečení této služby.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Implementace srovnávacího testu zabezpečení Azure
-- **Plánování** implementace srovnávacích testů zabezpečení Azure najdete v [dokumentaci](overview.md) pro podnikové ovládací prvky a směrné plány specifické pro danou službu k naplánování řídicí architektury a způsobu, jakým se MAPUJE na pokyny jako CIS (Controls v 7.1) a NIST (SP800-53) Framework.
+- **Plánování** implementace srovnávacích testů zabezpečení Azure najdete v [dokumentaci](overview.md) pro podnikové ovládací prvky a směrné plány specifické pro danou službu k naplánování řídicí architektury a způsobu, jakým se MAPUJE na pokyny jako CIS (Controls v 7.1) a NIST (SP 800-53) Framework.
 - **Monitorujte** dodržování předpisů pomocí služby Azure Security test status (a dalších sad ovládacích prvků) pomocí [řídicího panelu pro dodržování předpisů Azure Security Center předpisy](../../security-center/security-center-compliance-dashboard.md).
 - **Navažte guardrails** k automatizaci zabezpečených konfigurací a prosazování dodržování předpisů Azure Security test (a dalších požadavků ve vaší organizaci) pomocí Azure modrotisky a Azure Policy.
  

@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367478"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369289"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
 Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure. To zahrnuje řadu ovládacích prvků pro ochranu modelu správy, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku.
 
-## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: ochrana a omezení vysoce privilegovaných uživatelů
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Ochrana a omezení vysoce privilegovaných uživatelů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-1 | 4,3, 4,8 | AC – 2 |
 
@@ -32,15 +32,15 @@ Omezte počet vysoce privilegovaných uživatelských účtů a chraňte tyto ú
 
 Poznámka: Pokud používáte vlastní role s přiřazenými konkrétními privilegovanými oprávněními, můžete mít i jiné kritické role, které je potřeba řídit. A můžete také chtít použít podobné ovládací prvky pro účet správce důležitých obchodních prostředků.  
 
-Přístup k prostředkům Azure a Azure AD pomocí Azure AD Privileged Identity Management (PIM) můžete povolit pomocí privilegovaného přístupu JIT (just-in-time). Kompilátor JIT uděluje dočasná oprávnění k provádění privilegovaných úloh pouze v případě, že ji uživatelé potřebují. PIM může také generovat výstrahy zabezpečení v případě podezřelé nebo nebezpečné aktivity ve vaší organizaci Azure AD.
+S využitím služby Azure AD Privileged Identity Management (PIM) můžete povolit privilegovaný přístup podle potřeby (JIT) k prostředkům Azure a Azure AD. JIT uděluje dočasná oprávnění k provádění privilegovaných úloh, pouze když je uživatelé potřebují. PIM může také generovat upozornění zabezpečení v případě podezřelých nebo nebezpečných aktivit ve vaší organizaci Azure AD.
 
 - [Oprávnění role správce v Azure AD](../../active-directory/roles/permissions-reference.md)
 
-- [Použití výstrah zabezpečení Azure Privileged Identity Management](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
+- [Používání upozornění zabezpečení služby Azure Privileged Identity Management](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
 - [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/roles/security-planning.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -52,9 +52,9 @@ Přístup k prostředkům Azure a Azure AD pomocí Azure AD Privileged Identity 
 
 - [Operace zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: omezení přístupu pro správu na systémy kritické pro podnikání
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Omezení přístupu pro správu k nejdůležitějším podnikovým systémům
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA – 2 | 13,2, 2,10 | AC-2, SC-3, SC-7 |
 
@@ -70,7 +70,7 @@ Ujistěte se, že přiřadíte samostatné privilegované účty, které se liš
 
 - [Správci předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -80,9 +80,9 @@ Ujistěte se, že přiřadíte samostatné privilegované účty, které se liš
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: pravidelně kontrolovat a sjednotit přístup uživatelů
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Pravidelná kontrola a sjednocování přístupu uživatelů
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-3 | 4,1, 16,9, 16,10 | AC – 2 |
 
@@ -93,9 +93,9 @@ Poznámka: některé služby Azure podporují místní uživatele a role, které
 
 - [Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
-- [Jak používat kontroly identity a přístupu v Azure AD](../../active-directory/governance/access-reviews-overview.md)
+- [Používání kontrol přístupu a identit Azure AD](../../active-directory/governance/access-reviews-overview.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -105,18 +105,18 @@ Poznámka: některé služby Azure podporují místní uživatele a role, které
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: nastavení nouzového přístupu v Azure AD
+## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Nastavení nouzového přístupu v Azure AD
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-4 | 16 | AC-2, CP-2 |
 
-Pokud se chcete vyhnout náhodnému uzamčení vaší organizace Azure AD, nastavte účet pro nouzový přístup pro přístup, když nebudete moct použít normální účty pro správu. Účty pro nouzový přístup jsou obvykle vysoce privilegované a neměly by být přiřazeny konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezené na nouzové nebo "oddělovací sklo", kde se nedají použít běžné účty pro správu.
-Měli byste zajistit, aby pověření (například heslo, certifikát nebo čipová karta) pro účty pro nouzový přístup byla zabezpečená a známá jenom jednotlivcům, kteří jsou oprávněni je používat jenom v nouzi.
+Pokud se chcete vyhnout náhodnému uzamčení vaší organizace Azure AD, nastavte účet pro nouzový přístup pro přístup, když nebudete moct použít normální účty pro správu. Účty pro nouzový přístup jsou obvykle vysoce privilegované a neměly by se přiřazovat konkrétním jednotlivcům. Jejich použití je omezené na nouzové nebo kritické situace, kdy se nedají použít běžné účty pro správu.
+Měli byste zajistit, aby přihlašovací údaje (například heslo, certifikát nebo čipová karta) pro účty pro nouzový přístup byly zabezpečené a aby o nich věděli jenom ti, kteří jsou oprávněni je použít jenom v případě nouze.
 
 - [Správa účtů pro nouzový přístup v Azure AD](../../active-directory/roles/security-emergency-access.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -130,7 +130,7 @@ Měli byste zajistit, aby pověření (například heslo, certifikát nebo čipo
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: automatizace správy nároků
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-5 | 16 | AC-2, AC-5, PM-10 |
 
@@ -139,7 +139,7 @@ Pomocí funkcí správy opravňujících ke službě Azure AD můžete automatiz
 
 - [Co je Správa nároků Azure AD](../../active-directory/governance/entitlement-management-overview.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -149,19 +149,19 @@ Pomocí funkcí správy opravňujících ke službě Azure AD můžete automatiz
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: použití pracovních stanic s privilegovaným přístupem
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Použití pracovních stanic s privilegovaným přístupem
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA – 6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých rolí, jako jsou správci, vývojáři a provozovatelé důležitých služeb. Pro úlohy správy Používejte vysoce zabezpečené uživatelské pracovní stanice nebo Azure bastionu. Pomocí Azure Active Directory, programu Microsoft Defender Advanced Threat Protection (ATP) a/nebo Microsoft Intune nasaďte zabezpečenou a spravovanou pracovní stanici uživatelů pro úlohy správy. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
+Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých rolí, jako jsou správci, vývojáři a provozovatelé důležitých služeb. Pro úlohy správy Používejte vysoce zabezpečené uživatelské pracovní stanice nebo Azure bastionu. K nasazení zabezpečené a spravované uživatelské pracovní stanice pro úlohy správy použijte Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
 
 - [Pochopení pracovních stanic s privilegovaným přístupem](../../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Nasazení privilegované pracovní stanice přístupu](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Nasazení pracovní stanice s privilegovaným přístupem](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -171,22 +171,22 @@ Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezp
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: sledování pouze dostatečné správy (princip nejnižší úrovně oprávnění)
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: Využívání správy jen v potřebném rozsahu (princip nejnižší úrovně nutných oprávnění)
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Řízení přístupu na základě role Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, objektům služby skupin a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell a Azure Portal. Oprávnění, která přiřadíte k prostředkům prostřednictvím Azure RBAC, by měla být vždy omezená na to, co role vyžadují. Omezená oprávnění přidávají přístup k funkcím PIM (just in time) Azure AD Privileged Identity Management (PIM) a tato oprávnění by se měla pravidelně kontrolovat.
-Pomocí integrovaných rolí můžete přidělit oprávnění a v případě potřeby vytvořit pouze vlastní roli. 
+Využijte k přidělování oprávnění předdefinované role a vlastní role vytvářejte pouze v případě potřeby. 
 
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Jak nakonfigurovat službu Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
-- [Jak používat kontroly identity a přístupu v Azure AD](../../active-directory/governance/access-reviews-overview.md)
+- [Používání kontrol přístupu a identit Azure AD](../../active-directory/governance/access-reviews-overview.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -200,7 +200,7 @@ Pomocí integrovaných rolí můžete přidělit oprávnění a v případě pot
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: výběr procesu schválení pro podporu Microsoftu 
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | PA-8 | 16 | AC-2, AC-3, AC-4 |
 
@@ -208,7 +208,7 @@ Ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznic
 
 - [Pochopení Customer Lockbox](../fundamentals/customer-lockbox-overview.md)
 
-**Zodpovědnost**: zákazník
+**Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

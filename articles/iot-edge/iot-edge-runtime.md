@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444280"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368496"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení Azure IoT Edge runtime a jeho architektury
 
@@ -81,7 +81,7 @@ Centrum IoT Edge není plná verze IoT Hub spuštěná místně. Centrum IoT Edg
 
 Aby se snížila šířka pásma, kterou používá vaše IoT Edge řešení, Centrum IoT Edge optimalizuje, kolik skutečných připojení se do cloudu provedlo. Centrum IoT Edge přijímá logická připojení z modulů nebo podřízených zařízení a kombinuje je s jedním fyzickým připojením ke cloudu. Podrobnosti tohoto procesu jsou pro zbytek řešení transparentní. Klienti si budou myslet, že mají vlastní připojení ke cloudu, i když se všechny odesílají přes stejné připojení. Rozbočovač IoT Edge může buď použít protokol AMQP nebo MQTT ke komunikaci s cloudem, nezávisle na protokolech používaných zařízeními pro příjem dat. Centrum IoT Edge aktuálně podporuje pouze kombinování logických připojení do jednoho fyzického připojení pomocí AMQP jako nadřazeného protokolu a jeho možností multiplexování. AMQP je výchozí nadřazený protokol.
 
-![Centrum IoT Edge je brána mezi fyzickými zařízeními a IoT Hub](./media/iot-edge-runtime/Gateway.png)
+![Centrum IoT Edge je brána mezi fyzickými zařízeními a IoT Hub](./media/iot-edge-runtime/gateway-communication.png)
 
 Centrum IoT Edge může určit, jestli je připojené k IoT Hub. Pokud dojde ke ztrátě připojení, IoT Edge centrum ukládá zprávy nebo bude mít zdvojené aktualizace místně. Jakmile je připojení znovu navázáno, synchronizuje všechna data. Umístění používané pro tuto dočasnou mezipaměť je určeno vlastností vlákna modulu IoT Edgeového rozbočovače. Velikost mezipaměti není omezené a bude růst, dokud má zařízení kapacitu úložiště. Další informace najdete v tématu [Možnosti offline](offline-capabilities.md).
 
@@ -94,7 +94,7 @@ Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako
 
 ![IoT Edge hub usnadňuje komunikaci mezi moduly a moduly.](./media/iot-edge-runtime/module-endpoints.png)
 
-Chcete-li odesílat data do centra IoT Edge, modul volá metodu SendEventAsync. První argument určuje, na který výstup bude zpráva odeslána. Následující pseudokódu odešle zprávu na **output1** :
+Chcete-li odesílat data do centra IoT Edge, modul volá metodu SendEventAsync. První argument určuje, na který výstup bude zpráva odeslána. Následující pseudokódu odešle zprávu na **output1**:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings);
@@ -102,7 +102,7 @@ Chcete-li odesílat data do centra IoT Edge, modul volá metodu SendEventAsync. 
    await client.SendEventAsync("output1", message);
    ```
 
-Chcete-li získat zprávu, zaregistrujte zpětné volání, které zpracovává zprávy přicházející do konkrétního vstupu. Následující pseudokódu zaregistruje funkci messageProcessor, která se má použít ke zpracování všech zpráv přijatých v **input1** :
+Chcete-li získat zprávu, zaregistrujte zpětné volání, které zpracovává zprávy přicházející do konkrétního vstupu. Následující pseudokódu zaregistruje funkci messageProcessor, která se má použít ke zpracování všech zpráv přijatých v **input1**:
 
    ```csharp
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
@@ -112,7 +112,7 @@ Další informace o třídě ModuleClient a jejích metodách komunikace najdete
 
 Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování jsou definovaná v cloudu a jsou vložená dolů do IoT Edgeho centra v jeho modulu. Stejná syntaxe pro IoT Hub trasy se používá k definování tras mezi moduly v Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).
 
-![Trasy mezi moduly procházejí prostřednictvím centra IoT Edge.](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Trasy mezi moduly procházejí prostřednictvím centra IoT Edge.](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ Centrum IoT Edge podporuje dva mechanismy zprostředkovatele:
 
 První mechanismus zprostředkovatele využívá stejné funkce směrování jako IoT Hub k určení toho, jak se zprávy předávají mezi zařízeními nebo moduly. První zařízení nebo moduly určují vstupy, na kterých budou přijímat zprávy, a výstupy, na které zapisují zprávy. Vývojář řešení pak může směrovat zprávy mezi zdrojem, například výstupy, a cílem, např. vstupy, s potenciálními filtry.
 
-![Trasy mezi moduly procházejí prostřednictvím centra IoT Edge.](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Trasy mezi moduly procházejí prostřednictvím centra IoT Edge.](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 Směrování můžou používat zařízení nebo moduly sestavené pomocí sad SDK pro zařízení Azure IoT prostřednictvím protokolu AMQP nebo MQTT. Všechna zasílání zpráv IoT Hub primitivních, např. telemetrie, přímé metody, C2D a vlákna, jsou podporovány, ale komunikace prostřednictvím uživatelsky definovaných témat není podporována.
 
@@ -194,7 +194,7 @@ Pokud se klient připojí k rozbočovači IoT Edge na portu 8883 (MQTTS) nebo 56
 
 Postup pro instalaci tohoto kořenového certifikátu zprostředkovatele na klientech zařízení je popsaný v [transparentní bráně](how-to-create-transparent-gateway.md) a v dokumentaci [Příprava na zařízení pro příjem dat](how-to-connect-downstream-device.md#prepare-a-downstream-device) . Moduly můžou používat stejný kořenový certifikát jako centrum IoT Edge, a to prostřednictvím rozhraní API pro IoT Edge démona.
 
-#### <a name="authentication"></a>Ověřování
+#### <a name="authentication"></a>Authentication
 
 Centrum IoT Edge akceptuje jenom připojení ze zařízení nebo modulů, které mají IoT Hub identitu, třeba zaregistrovali v IoT Hub a mají jednu ze tří metod ověřování klientů, které služba IoT Hub podporuje, aby prokázala jejich identitu: [ověřování symetrických klíčů](how-to-authenticate-downstream-device.md#symmetric-key-authentication), ověřování pomocí 509 podepsané [svým držitelem](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) [x.](how-to-authenticate-downstream-device.md#x509-ca-signed-authentication).  Tyto IoT Hub identity je možné místně ověřit pomocí centra IoT Edge, aby se připojení pořád mohla provádět v offline režimu.
 
@@ -203,7 +203,7 @@ Poznámky:
 * IoT Edge moduly aktuálně podporují pouze ověřování symetrického klíče.
 * MQTT klienti s pouze místními uživatelskými jmény a hesly nejsou přijímáni službou IoT Edge hub MQTT Broker, musí používat IoT Hub identity.
 
-#### <a name="authorization"></a>Authorization (Autorizace)
+#### <a name="authorization"></a>Autorizace
 
 Po ověření mají rozbočovač IoT Edge dva způsoby, jak autorizovat připojení klientů:
 

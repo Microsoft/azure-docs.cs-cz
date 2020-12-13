@@ -7,34 +7,34 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701044"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368864"
 ---
 # <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
 Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu. To zahrnuje zjišťování, klasifikaci, ochranu a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure.
 
-## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: zjišťování, klasifikace a označení citlivých dat
+## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Zjišťování, klasifikace a označení citlivých dat
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Zjišťování, klasifikace a označování citlivých dat, abyste mohli navrhovat příslušné ovládací prvky pro zajištění, že se citlivé informace ukládají, zpracovávají a bezpečně odesílají technologické systémy organizace. 
 
-Pro citlivé informace v dokumentech Office v Azure, v místním prostředí, v sadě Office 365 a v jiných umístěních použijte Azure Information Protection (a příslušný nástroj pro kontrolu). 
+V případě citlivých informací v rámci dokumentů Office v Azure, místním prostředí, Office 365 a dalších umístěních můžete využít službu Azure Information Protection (a přidružený nástroj pro zjišťování). 
 
-Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a označování informací uložených v databázích Azure SQL.
+Služba Azure SQL Information Protection vám může pomoct s klasifikací a označováním informací uložených v databázích Azure SQL.
 
-- [Označení citlivých informací pomocí Azure Information Protection](/azure/information-protection/what-is-information-protection) 
+- [Označování citlivých informací s využitím služby Azure Information Protection](/azure/information-protection/what-is-information-protection) 
 
-- [Implementace zjišťování dat SQL Azure](../../azure-sql/database/data-discovery-and-classification-overview.md)
+- [Implementace zjišťování dat Azure SQL](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílené
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -46,21 +46,21 @@ Pomocí Azure SQL Information Protection můžete pomoct při klasifikaci a ozna
 
 ## <a name="dp-2-protect-sensitive-data"></a>DP-2: Ochrana citlivých dat
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DP – 2 | 13,2, 2,10 | SC-7, AC-4 |
 
 Chraňte citlivá data omezením přístupu pomocí řízení přístupu založeného na rolích Azure (Azure RBAC), řízení přístupu na základě sítě a specifických ovládacích prvků ve službách Azure (například šifrování v SQL a dalších databázích). 
 
-Aby se zajistilo jednotné řízení přístupu, měly by být všechny typy řízení přístupu zarovnané na vaši strategii podnikového segmentace. Strategie segmentace podniku by měla být také informována o umístění citlivých nebo důležitých podnikových dat a systémů.
+Aby se zajistilo konzistentní řízení přístupu, všechny typy řízení přístupu by měly být v souladu s vaší podnikovou strategií segmentace. Podniková strategie segmentace by měla vycházet také z umístění citlivých nebo důležitých obchodních dat a systémů.
 
-Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a chrání před ztrátou a expozicí zákaznických dat. Aby bylo zajištěno, že zákaznická data v Azure zůstanou zabezpečená, Microsoft implementuje některé výchozí ovládací prvky a možnosti ochrany dat.
+Pro základní platformu spravovanou Microsoftem platí, že Microsoft považuje veškerý obsah zákazníků za citlivý a zajišťuje ochranu před ztrátou a vystavením zákaznických dat. V zájmu zajištění zabezpečení zákaznických dat v rámci Azure Microsoft implementovat určité výchozí kontrolní mechanismy a funkce ochrany dat.
 
 - [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
-- [Pochopení ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
+- [Principy ochrany zákaznických dat v Azure](../fundamentals/protection-customer-data.md)
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílené
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -70,25 +70,25 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: monitorování neoprávněného přenosu citlivých dat
+## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: Monitorování neoprávněného přenosu citlivých dat
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DP-3 | 13,3 | AC-4, SI-4 |
 
-Monitorujte neoprávněný přenos dat do umístění mimo nepodnikovou viditelnost a kontrolu. To obvykle zahrnuje monitorování neobvykléch aktivit (velkých nebo neobvyklých přenosů), které by mohly označovat neoprávněné datové exfiltracey. 
+Monitorujte neoprávněný přenos dat do umístění mimo nepodnikovou viditelnost a kontrolu. To obvykle zahrnuje monitorování neobvyklých aktivit (velké nebo neobvyklé přenosy), které můžou značit neautorizovanou exfiltraci dat. 
 
-Azure Storageá ochrana před internetovými útoky (ATP) a Azure SQL ATP může upozorňovat na neobvyklé přenos informací, které by mohly označovat neoprávněné přenosy citlivých informací. 
+Rozšířená ochrana před internetovými útoky (ATP) pro službu Azure Storage a ochrana ATP pro Azure SQL dokáží upozorňovat na neobvyklé přenosy informací, které můžou značit neautorizované přenosy citlivých informací. 
 
-Azure Information Protection (AIP) poskytuje možnosti monitorování pro informace klasifikované a označené. 
+Azure Information Protection (AIP) nabízí funkce monitorování důvěrných a označených informací. 
 
-Pokud je to vyžadováno pro zajištění kompatibility ochrany před únikem informací (DLP), můžete použít řešení ochrany před únikem informací, které vynutilo vyšetřovací nástroj a/nebo preventivní ovládací prvky, aby se zabránilo datovým exfiltrace.
+Pokud to v rámci ochrany před únikem informací vyžaduje dodržování předpisů, můžete k vynucování kontrolních mechanismů detekce a prevence za účelem zajištění ochrany před exfiltrací dat využít řešení ochrany před únikem informací na hostiteli.
 
-- [Povolit Azure SQL ATP](../../azure-sql/database/threat-detection-overview.md)
+- [Povolení ochrany ATP pro Azure SQL](../../azure-sql/database/threat-detection-overview.md)
 
-- [Povolit Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Povolení ochrany ATP pro službu Azure Storage](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílené
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -98,9 +98,9 @@ Pokud je to vyžadováno pro zajištění kompatibility ochrany před únikem in
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: šifrování citlivých informací při přenosu
+## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Šifrování citlivých informací při přenosu
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DP-4 | 14,4 | SC-8 |
 
@@ -116,7 +116,7 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 - [Dvojité šifrování pro Azure data při přenosu](../fundamentals/double-encryption.md#data-in-transit)
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílené
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -128,9 +128,9 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 - [Zabezpečení dat](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
 
-## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: šifrování citlivých dat v klidovém umístění
+## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: Šifrování citlivých neaktivních uložených dat
 
-| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
+| ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
 | DP-5 | 14,8 | SC-28, SC-12 |
 
@@ -138,7 +138,7 @@ Pro doplnění řízení přístupu by měla být neaktivní data chráněná p�
 
 Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vysoce citlivých dat máte možnost implementovat další šifrování v klidovém umístění všech prostředků Azure, kde jsou k dispozici. Azure spravuje vaše šifrovací klíče ve výchozím nastavení, ale Azure poskytuje možnosti pro správu vlastních klíčů (zákaznických klíčů) pro určité služby Azure.
 
-- [Vysvětlení šifrování v klidovém umístění v Azure](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
+- [Principy šifrování neaktivních uložených dat v Azure](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
 - [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -146,7 +146,7 @@ Azure ve výchozím nastavení poskytuje šifrování pro neaktivní data. U vys
 
 - [Data s dvojitým šifrováním v Azure](../fundamentals/double-encryption.md#data-at-rest)
 
-**Odpovědnost**: sdílená
+**Odpovědnost:** Sdílené
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

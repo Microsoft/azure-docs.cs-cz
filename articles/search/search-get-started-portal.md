@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056476"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368626"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 
-Průvodce **importem dat** je Azure Portal nástroj, který vás provede vytvořením indexu hledání, abyste mohli psát zajímavé dotazy během několika minut. 
+Vytvořte svůj první index pomocí průvodce **importem dat** a vestavěný ukázkový zdroj dat skládající se z fiktivních dat o hotelu. Průvodce vás provede vytvořením indexu hledání (Hotely-Sample-index), abyste mohli psát zajímavé dotazy během několika minut. 
 
-Průvodce má také stránky pro rozšíření AI, takže můžete extrahovat text a strukturu ze souborů obrázků a nestrukturovaného textu. Zpracování obsahu pomocí AI zahrnuje optické rozpoznávání znaků (OCR), klíčové fráze a extrakci entit a analýzu obrázků.
+I když nepoužijete možnosti v tomto rychlém startu, průvodce obsahuje stránku pro obohacení AI, takže můžete extrahovat text a strukturu z obrazových souborů a nestrukturovaného textu. Podobný návod, který zahrnuje obohacení AI, najdete v tématu [rychlý Start: vytvoření rozpoznávání dovednosti](cognitive-search-quickstart-blob.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -41,7 +41,7 @@ Oddíly na řídicím panelu služby ukazují, kolik indexů, indexerů a datov�
 
 Vyhledávací dotazy provádějí iterace [*indexu*](search-what-is-an-index.md), který obsahuje data s možností vyhledávání, metadata a další konstrukce, které optimalizují určité chování vyhledávání.
 
-Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze procházet pomocí [*indexeru*](search-indexer-overview.md) prostřednictvím [Průvodce **importem dat** ](search-import-data-portal.md). Indexer je prohledávací modul pro určitý zdroj, který dokáže číst metadata a obsah z podporovaných zdrojů dat Azure. Obvykle se indexer používá programově, ale na portálu můžete k nim přistupovat pomocí průvodce **importem dat** . 
+Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze procházet pomocí [*indexeru*](search-indexer-overview.md) prostřednictvím [Průvodce **importem dat**](search-import-data-portal.md). Indexer je prohledávací modul pro určitý zdroj, který dokáže číst metadata a obsah z podporovaných zdrojů dat Azure. Obvykle se indexer používá programově, ale na portálu můžete k nim přistupovat pomocí průvodce **importem dat** . 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 – spuštění Průvodce importem dat a vytvoření zdroje dat
 
@@ -49,11 +49,11 @@ Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze proc
 
 1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled klikněte na tlačítko **importovat data** na panelu příkazů a vytvořte a naplňte index vyhledávání.
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Příkaz pro import dat":::
 
 1. V průvodci klikněte na **připojit k datům**  >  **Ukázka**  >  **hotelů – ukázka**. Tento zdroj dat je integrovaný. Pokud jste vytvořili vlastní zdroj dat, budete muset zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
 
-   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Výběr ukázkové datové sady":::
 
 1. Pokračujte na další stránku.
 
@@ -63,7 +63,7 @@ Průvodce podporuje vytvoření [kanálu rozšíření AI](cognitive-search-conc
 
 Tento krok prozatím přeskočíme a přejdete přímo na, abyste mohli **přizpůsobit cílový index**.
 
-   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Vynechání kroku kognitivních dovedností":::
 
 > [!TIP]
 > Můžete si projít příkladem indexování AI v [rychlém](cognitive-search-quickstart-blob.md) startu nebo [kurzu](cognitive-search-tutorial-blob.md).
@@ -76,18 +76,18 @@ Pole mají datové typy a atributy. Zaškrtávací políčka v horní části js
 
 * **Retrievable** (Zobrazitelné) znamená, že se zobrazí v seznamu výsledků vyhledávání. Můžete označit jednotlivá pole jako vypnutá omezení pro výsledky hledání zrušením zaškrtnutí tohoto políčka, například u polí používaných pouze ve výrazech filtru.
 * **Klíč** je jedinečný identifikátor dokumentu. Vždycky se jedná o řetězec, který je povinný.
-* **Filtrovatelné**, seřaditelné a **plošky** **určují, zda**jsou pole používána ve filtru, řazení nebo v navigační struktuře s omezujícími vlastnostmi.
+* **Filtrovatelné**, seřaditelné a **plošky** **určují, zda** jsou pole používána ve filtru, řazení nebo v navigační struktuře s omezujícími vlastnostmi.
 * **Searchable** (Prohledávatelné) znamená, že je pole součástí fulltextové vyhledávání. Řetězce je možné prohledávat. Číselná pole a logická pole jsou často označena jako neprohledávatelné.
 
 Požadavky na úložiště se neliší v důsledku vašeho výběru. Například pokud nastavíte **atribut získat** u více polí, požadavky na úložiště se nevrátí.
 
-Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. *Řetězce* jsou atributy s možností **získat a** **prohledávatelné**. *Celá čísla jsou typu* **s možnou**hodnotou, **filtrovatelné**, **seřaditelné**a **plošky**.
+Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. *Řetězce* jsou atributy s možností **získat a** **prohledávatelné**. *Celá čísla jsou typu* **s možnou** hodnotou, **filtrovatelné**, **seřaditelné** a **plošky**.
 
-1. Přijměte výchozí hodnoty. 
+1. Přijměte výchozí hodnoty.
 
    Pokud průvodce znovu spustíte podruhé pomocí stávajícího zdroje dat hotelů, index nebude nakonfigurovaný s výchozími atributy. V budoucích importech bude nutné vybrat atributy ručně. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Index vygenerovaných hotelů":::
 
 2. Pokračujte na další stránku.
 
@@ -100,7 +100,7 @@ Tento objekt definuje spustitelný proces. Můžete ji umístit do opakujícího
 
 Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
-  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Indexer hotelů":::
 
 ## <a name="monitor-progress"></a>Průběh monitorování
 
@@ -108,7 +108,7 @@ Průvodce by vás měl přenést do seznamu indexerů, kde můžete monitorovat 
 
 Aby portál mohl aktualizovat stránku, může trvat několik minut, ale v seznamu byste měli vidět nově vytvořený indexer se stavem "probíhá" nebo "úspěch" spolu s počtem indexovaných dokumentů.
 
-   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Zpráva indexeru o průběhu":::
 
 ## <a name="view-the-index"></a>Zobrazení indexu
 
@@ -116,13 +116,13 @@ Hlavní stránka služby poskytuje odkazy na prostředky vytvořené ve službě
 
 Počkejte, až se stránka portálu aktualizuje. Po několika minutách by se měl zobrazit index s počtem dokumentů a velikostí úložiště.
 
-   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Seznam indexů na řídicím panelu služby":::
 
 V tomto seznamu můžete kliknout na index s *ukázkami hotelů* , který jste právě vytvořili, a zobrazit schéma indexu. a volitelně můžete přidat nová pole. 
 
 Karta **pole** zobrazuje schéma indexu. Posuňte se do dolní části seznamu a zadejte nové pole. Ve většině případů nelze změnit existující pole. Existující pole mají v Azure Kognitivní hledání fyzickou reprezentaci, takže nejsou ani v kódu. Chcete-li v podstatě změnit existující pole, vytvořte nový index, který vyřadí původní.
 
-   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Ukázková definice indexu":::
 
 Kdykoli lze přidat další konstrukce, jako jsou bodovací profily a možnosti CORS.
 
@@ -140,15 +140,15 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
 1. Klikněte na **Průzkumník služby Search** na panelu příkazů.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Příkaz průzkumníka služby Search":::
 
 2. V rozevíracím seznamu **index** vyberte  *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2020-06-30).
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Příkazy rozhraní API a index":::
 
 3. Do panelu hledání vložte následující řetězce dotazu a klikněte na tlačítko **Hledat**.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Řetězec dotazu a tlačítko Hledat":::
 
 ## <a name="example-queries"></a>Ukázky dotazů
 
@@ -188,8 +188,8 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=Category&$top=2`
 
-* Parametr **search=*** znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Například chcete, aby se navigační struktura omezující vlastnosti sestávat ze všech hotelů v indexu.
-* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V takovém případě jsou kategorie založené na poli, které se pohodlně označuje jako *kategorie*. V Azure Kognitivní hledání neexistuje žádná agregace, ale je možné přibližnou agregaci prostřednictvím `facet` , která poskytuje počet dokumentů v každé kategorii.
+* **hledání =** _ je prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Například chcete, aby se navigační struktura omezující vlastnosti sestávat ze všech hotelů v indexu.
+_ **omezující vlastnost** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V takovém případě jsou kategorie založené na poli, které se pohodlně označuje jako *kategorie*. V Azure Kognitivní hledání neexistuje žádná agregace, ale je možné přibližnou agregaci prostřednictvím `facet` , která poskytuje počet dokumentů v každé kategorii.
 
 * Parametr **$top=2** vrací dva dokumenty a ilustruje, že parametr `top` můžete použít ke snížení i navýšení počtu výsledků.
 
@@ -256,7 +256,7 @@ Zjistili jste také, jak na portálu najít indexy, indexery a zdroje dat. Pomoc
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

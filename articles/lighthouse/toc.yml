@@ -121,5 +121,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: Zpětná vazba k produktu
       href: 'https://feedback.azure.com/forums/922753'

@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145565"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368592"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -29,7 +29,7 @@ Když upravíte zásady zálohování, můžete přidat nové položky, odebrat 
 
 ### <a name="add-new-items-to-existing-policy"></a>Přidat nové položky do existujících zásad
 
-1. V **Možnosti akce**vyberte **naplánovat zálohování**.
+1. V **Možnosti akce** vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
 
@@ -59,7 +59,7 @@ Můžete přidat pravidla vyloučení pro přeskočení souborů a složek, kter
 
     ![Nastavení vyloučení](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. V **Nastavení vyloučení**vyberte **Přidat vyloučení**.
+2. V **Nastavení vyloučení** vyberte **Přidat vyloučení**.
 
     ![Přidat vyloučení](./media/backup-azure-manage-mars/add-exclusion.png)
 
@@ -100,7 +100,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Zastavení ochrany a uchování zálohovaných dat
 
-1. Otevřete konzolu pro správu MARS, klikněte na **podokno akce**a **Vyberte naplánovat zálohování**.
+1. Otevřete konzolu pro správu MARS, klikněte na **podokno akce** a **Vyberte naplánovat zálohování**.
 
     ![Vybrat plán zálohování](./media/backup-azure-manage-mars/mars-actions.png)
 1. Na stránce **Vybrat položku zásady** vyberte možnost **Upravit plán zálohování pro vaše soubory a složky** a vyberte **Další**.
@@ -109,10 +109,10 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 1. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **zastavit použití tohoto plánu zálohování, ale uložte uložené zálohy, dokud nebude plán znovu aktivován**. Pak vyberte **Další**.
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. V části **pozastavit naplánované zálohování**zkontrolujte informace a vyberte **Dokončit**.
+1. V části **pozastavit naplánované zálohování** zkontrolujte informace a vyberte **Dokončit**.
 
     ![Pozastaví naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. V nástroji **Upravit průběh zálohování**ověřte, že je v plánu úspěšné ukončení zálohování, a pak vyberte **Zavřít** .
+1. V nástroji **Upravit průběh zálohování** ověřte, že je v plánu úspěšné ukončení zálohování, a pak vyberte **Zavřít** .
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zastavení ochrany a odstranění zálohovaných dat
 
@@ -125,8 +125,8 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
     ![Zastavte naplánované zálohování a vyberte Dokončit.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >  **Settings**  >  **Properties**.
-6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
+5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >    >  .
+6. V části **bezpečnostní kód PIN** vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
     ![Vygenerujte bezpečnostní kód PIN.](./media/backup-azure-delete-vault/security-pin.png)
@@ -145,11 +145,11 @@ Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit och
 1. Vyberte **znovu povolit plán zálohování. Můžete také upravit Zálohované položky nebo časy** a vybrat **Další**.<br>
 
     ![Znovu povolit plán zálohování](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. V poli **Vybrat položky, které se mají zálohovat**vyberte **Další**.
+1. V poli **Vybrat položky, které se mají zálohovat** vyberte **Další**.
 
     ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-manage-mars/re-enable-next.png)
-1. V části **zadat plán zálohování**zadejte plán zálohování a vyberte **Další**.
-1. V poli **Vybrat zásady uchovávání informací**zadejte dobu uchování a vyberte **Další**.
+1. V části **zadat plán zálohování** zadejte plán zálohování a vyberte **Další**.
+1. V poli **Vybrat zásady uchovávání informací** zadejte dobu uchování a vyberte **Další**.
 1. Nakonec na obrazovce **potvrzení** zkontrolujte podrobnosti zásady a vyberte **Dokončit**.
 
 ## <a name="re-generate-passphrase"></a>Znovu vygenerovat heslo
@@ -189,6 +189,19 @@ Správa zásad zálohování pro MARS se provádí prostřednictvím konzoly MAR
   1. Nainstalujte agenta a znovu ho zaregistrujte do stejného trezoru a se stejným heslem.
   1. Spusťte klienta MARS a prodlužte dobu uchovávání podle vašich požadavků.
 - Váš nově obnovený počítač chráněný pomocí MARS bude i nadále provádět zálohování.  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>Konfigurace antivirového programu pro agenta MARS
+
+Pro antivirový software doporučujeme následující konfiguraci, aby nedocházelo ke konfliktům s operací agenta MARS.
+
+1. **Přidat vyloučení cest**: Chcete-li se vyhnout snížení výkonu a možných konfliktů, vylučte následující cesty z monitorování v reálném čase antivirového softwaru:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` a podsložky
+    1. **Pomocná složka**: Pokud složka pomocné složky není ve standardním umístění, přidejte ji také k vyloučení.  Postup určení umístění pomocné složky [najdete tady](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) .
+1. **Přidat binární vyloučení**: aby se zabránilo snížení výkonu aktivit zálohování a konzoly, vylučte procesy pro následující binární soubory ze sledování v reálném čase pomocí antivirového softwaru:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>I když vyloučení těchto cest bude pro většinu antivirového softwaru dostatečné, může se stát, že i nadále nekoliduje s operacemi agenta MARS. Pokud se vám zobrazují neočekávané chyby, dočasně odinstalujte antivirový software a monitorujte, abyste viděli, jestli problém nezmizí. Pokud se problém vyřeší, obraťte se na dodavatele antivirového softwaru a požádejte ho o správnou konfiguraci jejich produktu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092683"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368575"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ V rámci účtů oblastí s jedním zápisem je sazba automatického škálován
 V účtech s více oblastmi zápisu je sazba automatického škálování za 100 RU/s stejná jako sazba pro standardní (ruční) zřízené více než jednu propustnost v oblasti zápisu. Ve vyúčtování se zobrazí existující měřič více oblastí zápisu. Vzhledem k tomu, že sazby jsou stejné, pokud používáte automatické škálování, uvidíte stejné množství jako u standardní propustnosti.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Funguje automatické škálování s vyhrazenou kapacitou?
-Ano. Když si koupíte rezervovanou kapacitu pro účty s více oblastmi zápisu, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
+Ano. Když si koupíte rezervovanou kapacitu pro účty s jednou oblastí zápisu, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
 
 Vyhrazená kapacita oblasti s více zápisy funguje stejně pro zajištění propustnosti v rámci automatického škálování a standardní (ruční). Zobrazit [rezervovanou kapacitu Azure Cosmos DB](cosmos-db-reserved-capacity.md)
 
@@ -109,9 +109,9 @@ Když odešlete požadavek na zvýšení maximálního RU/s `Tmax` , v závislos
 #### <a name="lowering-the-max-rus"></a>Snížení maximálního počtu RU/s
 Když snížíte maximální RU/s, minimální hodnota, kterou můžete nastavit, je: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` , zaokrouhlená na nejbližší 1000 ru/s. 
 
-Příklad #1: Předpokládejme, že máte kontejner automatického škálování s maximálním RU/s 20 000 RU/s (škáluje se v rozmezí 2000-20 000 RU/s) a 50 GB úložiště. Nejnižší minimální hodnota, kterou můžete nastavit na maximum RU/s, je: MAX (4000, 20 000/10, **50 * 100** ) = 5000 ru/s (stupnice mezi 500 a 5000 ru/s).
+Příklad #1: Předpokládejme, že máte kontejner automatického škálování s maximálním RU/s 20 000 RU/s (škáluje se v rozmezí 2000-20 000 RU/s) a 50 GB úložiště. Nejnižší minimální hodnota, kterou můžete nastavit na maximum RU/s, je: MAX (4000, 20 000/10, **50 * 100**) = 5000 ru/s (stupnice mezi 500 a 5000 ru/s).
 
-Příklad #2: Předpokládejme, že máte kontejner automatického škálování s maximálním RU/s 100 000 RU/s a 100 GB úložiště. Nyní můžete škálovat maximum RU/s až 150 000 RU/s (škály mezi 15 000-150 000 RU/s). Nejnižší minimální hodnota, kterou teď můžete nastavit na maximum RU/s, je: MAX (4000, **150 000/10** , 100 * 100) = 15 000 ru/s (škáluje se mezi 1500 a 15 000 ru/s). 
+Příklad #2: Předpokládejme, že máte kontejner automatického škálování s maximálním RU/s 100 000 RU/s a 100 GB úložiště. Nyní můžete škálovat maximum RU/s až 150 000 RU/s (škály mezi 15 000-150 000 RU/s). Nejnižší minimální hodnota, kterou teď můžete nastavit na maximum RU/s, je: MAX (4000, **150 000/10**, 100 * 100) = 15 000 ru/s (škáluje se mezi 1500 a 15 000 ru/s). 
 
 U sdílené databáze propustnosti platí, že při snížení maximálního počtu RU/s je minimální hodnota, kterou můžete nastavit, na: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` , zaokrouhlená na nejbližší 1000 ru/s.  
 

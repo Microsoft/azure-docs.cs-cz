@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329528"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366501"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -73,7 +73,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
 | Velikost fondu back-endu                       | 1 000 konfigurace IP adres, jedna virtuální síť |
-| Back-endové prostředky na Load Balancer <sup> 1<sup> | 150                   |
+| Back-endové prostředky na Load Balancer <sup> 1<sup> | 250                   |
 | Porty s vysokou dostupností                 | 1 za interní front-end       |
 | Odchozí pravidla na Load Balancer        | 600                           |
 | Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)   |

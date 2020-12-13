@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 986a3c56a1e0dcc79ab472a7e18d7eeb7e2fddb5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b437ce7b6894ebefe38b32f27d370d9f8c4bfe80
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448351"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369017"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Příprava na selhání zařízení s GRAFICKÝm rozhraním Azure Stack Edge pro
 
@@ -25,15 +25,15 @@ Tento článek vám pomůže připravit se na selhání zařízení tím, že po
 
 Zařízení GPU Azure Stack Edge pro může docházet k dvěma typům selhání hardwaru.
 
-- Přípustné chyby, které vyžadují, abyste nahradili hardwarovou součást. Tyto chyby vám umožní pracovat se zařízením v neomezeném stavu. Mezi příklady těchto selhání patří jedna neúspěšná jednotka napájení (PSU) nebo jeden disk, který selhal v zařízení. V každém z těchto případů může zařízení fungovat i nadále. Doporučuje se kontaktovat podpora Microsoftu v nejbližším, aby se neúspěšné součásti nahradily.
+- Přípustné chyby, které vyžadují, abyste nahradili hardwarovou součást. Tyto chyby vám umožní pracovat se zařízením v neomezeném stavu. Mezi příklady těchto selhání patří jedna neúspěšná jednotka napájení (PSU) nebo jeden disk, který selhal v zařízení. V každém z těchto případů může zařízení fungovat i nadále. Pokud chcete nahradit neúspěšné součásti, kontaktujte podpora Microsoftu co nejdříve.
 
-- Nepřípustné chyby, které by vyžadovaly, abyste nahradili celé zařízení. Příkladem této chyby může být to, že se na zařízení nezdařily dva disky. V těchto případech se obrátíte podpora Microsoftu a jakmile zjistíte, že je potřeba zařízení vyměnit, pomůže vám to, aby se usnadnila výměna zařízení Azure Stack Edge.
+- Nepřípustné chyby, které vyžadují, abyste celé zařízení nahradili například v případě, že se na zařízení nezdařily dva disky. V těchto případech kontaktujte podpora Microsoftu hned. Po zjištění, že je potřeba zařízení vyměnit, vám podpora pomůže s náhradou zařízení Azure Stack Edge.
 
-Pro přípravu nepřípustných chyb musíte na svém zařízení zálohovat následující:
+V rámci přípravy na nepřípustné chyby musíte na svém zařízení zálohovat následující věci:
 
-- Informace o konfiguraci zařízení.
-- Data, která se nacházejí v hraničních sdíleních a v cloudu Edge.
-- Soubory a složky přidružené k virtuálním počítačům běžícím na vašem zařízení.
+- Informace o konfiguraci zařízení
+- Data v hraničních místních sdílených složkách a sdílených cloudech na hraničních zařízeních
+- Soubory a složky přidružené k virtuálním počítačům běžícím na vašem zařízení
 
 
 ## <a name="back-up-device-configuration"></a>Zálohování konfigurace zařízení
@@ -52,9 +52,9 @@ Následující části popisují kroky a doporučení pro ochranu každého z t�
 
 ## <a name="protect-data-in-edge-cloud-shares"></a>Ochrana dat ve sdílených cloudech Edge
 
-Můžete vytvořit hraniční sdílení na úrovni cloudu, která budou mít data z vašeho zařízení do Azure. V závislosti na dostupné šířce pásma sítě nakonfigurujte na svém zařízení šablony šířky pásma, aby se minimalizovala ztráta dat v případě nepřípustného selhání.
+Můžete vytvořit hraniční sdílení na úrovni cloudu, která budou mít data z vašeho zařízení do Azure. V závislosti na dostupné šířce pásma sítě nakonfigurujte na svém zařízení šablony šířky pásma, aby se minimalizovala ztráta dat, pokud dojde k nepřípustnému selhání.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Pokud zařízení obsahuje neplatnou chybu, může dojít ke ztrátě místních dat, která nejsou ve vrstvách od zařízení do Azure. 
 
 ## <a name="protect-data-in-edge-local-shares"></a>Ochrana dat v místních sdílených složkách Edge
@@ -65,9 +65,10 @@ Následující řešení ochrany dat třetích stran můžou poskytnout řešen�
 
 | Software jiných výrobců           | Odkaz na řešení                               |
 |--------------------------------|---------------------------------------------------------|
-| Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> Podrobnosti získáte od Cohesity.          |
-| CommVault                      | https://www.commvault.com/azure <br> Podrobnosti získáte od CommVault.          |
-| Veritas                        | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.   |
+| Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> Podrobnosti získáte od Cohesity.          |
+| CommVault                      | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br> Podrobnosti získáte od CommVault.          |
+| Veritas                        | [http://veritas.com/azure](http://veritas.com/azure) <br> Podrobnosti získáte od společnosti Veritas.   |
+| Veeam                          | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> Podrobnosti získáte od Veeam. |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>Ochrana souborů a složek na virtuálních počítačích
@@ -78,10 +79,10 @@ Azure Stack Edge spolupracuje s Azure Backup a dalšími řešeními ochrany dat
 | Řešení zálohování        | Podporovaný operační systém   | Referenční informace                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Agent Microsoft Azure Recovery Services (MARS) pro Azure Backup | Windows        | [Informace o agentovi Mars](../backup/backup-azure-about-mars.md)    |
-| Cohesity                | Windows, Linux | [Stručně Microsoft Azure integrace, řešení zálohování a obnovení](https://www.cohesity.com/solution/cloud/azure) <br>Podrobnosti získáte od Cohesity.                          |
-| CommVault               | Windows, Linux | https://www.commvault.com/azure <br>Podrobnosti získáte od CommVault.                          |
-| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.                    |
-
+| Cohesity                | Windows, Linux | [Stručný Microsoft Azure integrace, řešení zálohování & obnovení](https://www.cohesity.com/solution/cloud/azure) <br>Podrobnosti získáte od Cohesity.                          |
+| CommVault               | Windows, Linux | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br>Podrobnosti získáte od CommVault.                          |
+| Veritas                 | Windows, Linux | [https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-Edge-with-NetBackup/ba-p/883370](https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-Edge-with-NetBackup/ba-p/883370) <br> Podrobnosti získáte od společnosti Veritas.                    |
+| Veeam                   | Windows, Linux | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> Podrobnosti získáte od Veeam. |
 
 
 ## <a name="next-steps"></a>Další kroky

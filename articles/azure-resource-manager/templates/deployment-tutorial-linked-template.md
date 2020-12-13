@@ -5,18 +5,18 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611669"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368099"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Kurz: nasazení propojené šablony
 
 V [předchozích kurzech](./deployment-tutorial-local-template.md)jste zjistili, jak nasadit šablonu, která je uložená v místním počítači. Pro nasazení složitých řešení můžete rozdělit šablonu na mnoho šablon a tyto šablony nasadit pomocí hlavní šablony. V tomto kurzu se naučíte, jak nasadit hlavní šablonu obsahující odkaz na propojenou šablonu. Jakmile se nasadí hlavní šablona, aktivuje se nasazení propojené šablony. Naučíte se také, jak uložit a zabezpečit propojenou šablonu pomocí tokenu SAS. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili předchozí kurz, ale není to nutné.
 
@@ -32,11 +32,11 @@ Prostředek účtu úložiště můžete oddělit do propojené šablony:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Následující šablona je hlavní šablonou.  Zvýrazněný objekt **Microsoft. Resources/Deployments** ukazuje, jak zavolat propojenou šablonu. Propojená šablona nemůže být uložena jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat jenom hodnotu identifikátoru URI, která zahrnuje buď *http* , nebo *https*. Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
+Následující šablona je hlavní šablonou. Zvýrazněný `Microsoft.Resources/deployments` objekt ukazuje, jak zavolat propojenou šablonu. Propojená šablona nemůže být uložena jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat jenom hodnotu identifikátoru URI, která obsahuje buď `HTTP` nebo `HTTPS` . Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Uložte kopii hlavní šablony do místního počítače s příponou. JSON, například azuredeploy.js. Nemusíte ukládat kopii propojené šablony.  Odkazovaná šablona se zkopíruje z úložiště GitHubu do účtu úložiště.
+Uložte kopii hlavní šablony do místního počítače s příponou _. JSON_ , například _azuredeploy.js_. Nemusíte ukládat kopii propojené šablony. Odkazovaná šablona se zkopíruje z úložiště GitHubu do účtu úložiště.
 
 ## <a name="store-the-linked-template"></a>Uložit propojenou šablonu
 
@@ -45,7 +45,7 @@ Následující skript prostředí PowerShell vytvoří účet úložiště, vytv
 Vyberte **try-it** a otevřete Cloud Shell, vyberte **Kopírovat** pro zkopírování skriptu PowerShellu a kliknutím pravým tlačítkem na podokno prostředí vložte skript:
 
 > [!IMPORTANT]
-> Názvy účtů úložiště musí mít délku 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Název musí být jedinečný. V šabloně je název účtu úložiště název projektu s připojeným úložištěm a název projektu musí být dlouhý 3 až 11 znaků. Proto název projektu musí splňovat požadavky na název účtu úložiště a má méně než 11 znaků.
+> Názvy účtů úložiště musí mít délku 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Název musí být jedinečný. V šabloně je název účtu úložiště název projektu s připojeným **úložištěm** a název projektu musí být dlouhý 3 až 11 znaků. Proto název projektu musí splňovat požadavky na název účtu úložiště a má méně než 11 znaků.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Pokud chcete v účtu úložiště nasadit soukromou šablonu, vygenerujte token
 Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> V níže uvedeném kódu Azure CLI je parametr Date-d v macOS neplatný argument. Takže uživatelé macOS k tomu, aby do terminálu mohli přidat 2 hodiny v terminálu na macOS, měli byste použít-v + 2 h.
+> V níže uvedeném kódu Azure CLI `date` je parametr `-d` v MacOS neplatný argument. Takže uživatelé macOS k aktuálnímu času v terminálu na macOS, kterou byste měli použít, aby přidali 2 hodiny `-v+2H` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ Vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředk�
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak nasadit propojenou šablonu. V dalším kurzu se dozvíte, jak vytvořit DevOp kanál pro nasazení šablony.
+Zjistili jste, jak nasadit propojenou šablonu. V dalším kurzu se dozvíte, jak vytvořit DevOps kanál pro nasazení šablony.
 
 > [!div class="nextstepaction"]
 > [Vytvoření kanálu](./deployment-tutorial-pipeline.md)
