@@ -3,12 +3,12 @@ title: Připravenost na produkční prostředí a osvědčené postupy – Azure
 description: Tento článek poskytuje pokyny ke konfiguraci a nasazení živé analýzy videí v modulu IoT Edge v produkčním prostředí.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906331"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400552"
 ---
 # <a name="production-readiness-and-best-practices"></a>Připravenost na produkční prostředí a osvědčené postupy
 
@@ -109,7 +109,11 @@ Pokud se podíváte na ukázkové mediální grafy pro rychlý Start a kurzy, ja
 
 ### <a name="naming-video-assets-or-files"></a>Pojmenování prostředků videí nebo videosouborů
 
-Grafy médií umožňují vytvářet prostředky v cloudu nebo souborech MP4 na hraničních zařízeních. Prostředky médií je možné vygenerovat [nepřetržitým záznamem videa](continuous-video-recording-tutorial.md) nebo [nahráváním videa založeného na událostech](event-based-video-recording-tutorial.md). I když se tyto prostředky a soubory můžou pojmenovat tak, jak chcete, doporučuje se u nepřetržitého mediálního záznamu založeného na záznamech, která je " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}", doporučená struktura pojmenování. Jako příklad můžete nastavit assetNamePattern na jímku assetu následujícím způsobem:
+Grafy médií umožňují vytvářet prostředky v cloudu nebo souborech MP4 na hraničních zařízeních. Prostředky médií je možné vygenerovat [nepřetržitým záznamem videa](continuous-video-recording-tutorial.md) nebo [nahráváním videa založeného na událostech](event-based-video-recording-tutorial.md). I když se tyto prostředky a soubory můžou pojmenovat tak, jak chcete, doporučuje se u nepřetržitého mediálního záznamu založeného na záznamech, která je " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}", doporučená struktura pojmenování.   
+
+Vzor nahrazení je definovaný znakem $ následovaným složenými závorkami: **$ {Variable}**.  
+
+Jako příklad můžete nastavit assetNamePattern na jímku assetu následujícím způsobem:
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Pokud spouštíte více instancí stejného grafu, můžete použít název a n�
 U video na hranách vygenerovaných datovými klipy MP4 založenými na událostech by měl být doporučený vzor pro pojmenování typu DateTime a pro více instancí stejného grafu doporučujeme použít systémové proměnné GraphTopologyName a GraphInstanceName. Jako příklad můžete nastavit filePathPattern pro jímky souborů následujícím způsobem: 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 Nebo 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> V předchozím příkladu je proměnná **fileSinkOutputName** názvem ukázkové proměnné, kterou definujete v topologii grafu. Toto není **Systémová** proměnná. 
 
+#### <a name="system-variables"></a>Systémové proměnné
+Některé proměnné definované systémem, které lze použít, jsou:
+
+|Systémová proměnná|Popis|Příklad|
+|-----------|-----------|-----------|
+|System. DateTime|Datum a čas UTC ve formátu kompatibilním se soubory ISO8601 (základní reprezentace YYYYMMDDThhmmss).|20200222T173200Z|
+|System. PreciseDateTime|Datum a čas UTC ve formátu kompatibilním se soubory ISO8601 s milisekundami (základní reprezentace YYYYMMDDThhmmss. zabezpečené úložiště).|20200222T 173200.123 Z|
+|System. GraphTopologyName|Uživatel zadal název zpracovávané topologie grafu.|IngestAndRecord|
+|System. GraphInstanceName|Uživatelem zadaný název instance spouštěného grafu|camera001|
+
+>[!TIP]
+> System. PreciseDateTime nelze použít při pojmenování prostředků z důvodu "." v názvu
 ### <a name="keeping-your-vm-clean"></a>Údržba virtuálního počítače
 
 Virtuální počítač se systémem Linux, který používáte jako hraniční zařízení, může přestat reagovat, pokud není spravován v pravidelných intervalech. Je nutné uchovat vyčištění mezipaměti, eliminovat nepotřebné balíčky a odebírat také nepoužívané kontejnery z virtuálního počítače. Pokud to chcete udělat, je to sada doporučených příkazů, které můžete použít na hraničním VIRTUÁLNÍm počítači.
@@ -153,7 +171,7 @@ Virtuální počítač se systémem Linux, který používáte jako hraniční z
 
     Možnost automaticky odebrat odstraní balíčky, které byly automaticky nainstalovány, protože je vyžaduje jiný balíček, ale s odebranými balíčky již není potřeba.
 1. `sudo docker image ls` – Poskytuje seznam imagí Docker na hraničním systému
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker využívá konzervativní přístup k vymazání nepoužívaných objektů (často označovaného jako "uvolňování paměti"), jako jsou obrázky, kontejnery, svazky a sítě: tyto objekty se většinou neodstraňují, pokud k tomu nechcete explicitně požádat Docker. Může to způsobit, že Docker použije dodatečné místo na disku. Pro každý typ objektu nabízí Docker příkaz k vyřazení. Kromě toho můžete použít vyřazení Docker System k vyčištění více typů objektů najednou. Další informace najdete v tématu [vyřazení nepoužívaných objektů Docker](https://docs.docker.com/config/pruning/).
 1. `sudo docker rmi REPOSITORY:TAG`

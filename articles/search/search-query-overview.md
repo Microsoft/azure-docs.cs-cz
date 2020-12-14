@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387662"
+ms.locfileid: "97400807"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Dotazování v Azure Kognitivní hledání
 
-Azure Kognitivní hledání nabízí bohatý dotazovací jazyk pro podporu široké škály scénářů, od bezplatného vyhledávání textu až po vysoce specifikované vzory dotazů. Tento článek shrnuje typy dotazů, které můžete vytvořit.
+Azure Kognitivní hledání nabízí bohatý dotazovací jazyk pro podporu široké škály scénářů, od bezplatného vyhledávání textu až po vysoce specifikované vzory dotazů. Tento článek popisuje požadavky na dotazy a typy dotazů, které můžete vytvořit.
 
-V Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip **`search`** s parametry, které informují provádění dotazů a tvarují odpověď zpět. Parametry a analyzátory určují typ žádosti o dotaz. Následující příklad dotazu používá [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents), které cílí na [ukázkový index hotelů](search-get-started-portal.md).
+V Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip **`search`** s parametry, které informují provádění dotazů a tvarují odpověď zpět. Parametry a analyzátory určují typ žádosti o dotaz. Následující příklad dotazu je bezplatný textový dotaz s logickým operátorem, který používá [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents), cílení na kolekci [hotelů – Sample-index](search-get-started-portal.md) Documents.
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-Parametry používané při provádění dotazu:
+Mezi parametry používané při provádění dotazu patří:
 
 + **`queryType`** Nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližná a zástupné vyhledávání, pro pojmenování několika.
 
@@ -66,7 +66,7 @@ Pokud vaše aplikace pro vyhledávání obsahuje vyhledávací pole, které shro
 
 V Kognitivní hledání je fulltextové vyhledávání založené na dotazovacím stroji Apache Lucene. Řetězce dotazů v fulltextovém vyhledávání procházejí lexikální analýzou, aby bylo prohledávání efektivnější. Analýza zahrnuje všechny termíny s malým celým písmenem, odebrání stop slov, jako je "a", a zkrácení podmínek pro primitivní kořenové formuláře. Výchozí analyzátor je standardní Lucene.
 
-Když se najde odpovídající výrazy, dotazovací modul znovu vytvoří vyhledávací dokument, který obsahuje shodu, přiřadí dokumenty v pořadí podle relevance a v odpovědi vrátí nejvyšší 50 (ve výchozím nastavení).
+V případě, že jsou nalezeny odpovídající výrazy, modul dotazů znovu vytvoří vyhledávací dokument obsahující shodu pomocí klíče dokumentu nebo ID k sestavení hodnot polí, rozhodne dokumenty v pořadí podle relevance a vrátí nejvyšší 50 (ve výchozím nastavení) v odpovědi nebo jiné číslo, pokud jste určili **`top`** .
 
 Pokud implementujete fulltextové vyhledávání, pomůže vám pochopit, jakým způsobem je váš obsah založen na tokenech, a pomůže vám ladit případné anomálie dotazů. Dotazy nad řetězci s pomlčkou nebo speciálními znaky můžou vyžadovat použití analyzátoru jiného než výchozího standardního poiterace, aby se zajistilo, že index obsahuje správné tokeny. Můžete přepsat výchozí hodnoty pomocí [analyzátorů jazyka](index-add-language-analyzers.md#language-analyzer-list) nebo [specializovaných analyzátorů](index-add-custom-analyzers.md#AnalyzerTable) , které upraví lexikální analýzu. Jedním z příkladů je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které se zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. Další informace naleznete v části [hledání částečného termínu a vzory se speciálními znaky](search-query-partial-matching.md).
 
@@ -78,7 +78,7 @@ Pokud předpokládáte těžké použití logických operátorů, což je pravd�
 
 ## <a name="filter-search"></a>Filtrovat hledání
 
-Filtry se běžně používají v aplikacích, které zahrnují Kognitivní hledání. Na stránkách aplikace jsou filtry často vizuálně znázorněné jako charakteristiky v navigačních strukturách odkazů pro uživatelsky orientované filtrování. Filtry se používají také interně k vystavování řezů indexovaných obsahu. Například můžete filtrovat podle jazyka, pokud index obsahuje pole v angličtině i ve francouzštině. 
+Filtry se běžně používají v aplikacích, které zahrnují Kognitivní hledání. Na stránkách aplikace jsou filtry často vizuálně znázorněné jako charakteristiky v navigačních strukturách odkazů pro uživatelsky orientované filtrování. Filtry se používají také interně k vystavování řezů indexovaných obsahu. Můžete například inicializovat stránku vyhledávání pomocí filtru v kategorii produktů nebo jazyka, pokud rejstřík obsahuje pole v angličtině i ve francouzštině.
 
 Je také možné, že budete potřebovat filtry k vyvolání specializovaného formuláře dotazu, jak je popsáno v následující tabulce. Můžete použít filtr s neurčeným hledáním ( **`search=*`** ) nebo s řetězcem dotazu, který obsahuje výrazy, fráze, operátory a vzory.
 

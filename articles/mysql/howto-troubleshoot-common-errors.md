@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387339"
+ms.locfileid: "97401708"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
@@ -73,8 +73,30 @@ K výše uvedené chybě může dojít při provádění příkazu CREATE VIEW s
 > [!Tip] 
 > Pomocí příkazu SED nebo Perl upravte soubor s výpisem paměti nebo skript SQL, který nahradí příkaz DEFINe =.
 
+## <a name="common-connection-errors-for-server-admin-login"></a>Běžné chyby připojení pro přihlášení správce serveru
+
+Při vytvoření serveru Azure Database for MySQL se koncovým uživatelem během vytváření serveru poskytne přihlašovací jméno správce serveru. Přihlašovací jméno správce serveru umožňuje vytvářet nové databáze, přidávat nové uživatele a udělovat oprávnění. Pokud se přihlašovací jméno správce serveru odstraní, odvolají se jeho oprávnění nebo se změní jeho heslo, můžete v aplikaci při připojení zobrazit chyby připojení. Níže jsou uvedené některé běžné chyby.
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>Chyba 1045 (28000): přístup byl odepřen pro uživatelské jméno @ IP adresa (pomocí hesla: Ano).
+
+K výše uvedené chybě dochází v těchto případech:
+
+* Uživatelské jméno neexistuje.
+* Uživatelské jméno uživatele bylo odstraněno.
+* jeho heslo se změnilo nebo resetuje.
+
+Řešení chyby je 
+
+**Řešení**: 
+* Ověří, jestli uživatelské jméno na serveru existuje jako platný uživatel, nebo se nechtěně odstraní. Následující dotaz můžete spustit tak, že se přihlásíte k Azure Database for MySQLmu uživateli:
+  ```sql
+  select user from mysql.user;
+  ```
+* Pokud se nemůžete přihlásit k MySQL a spustit výše uvedený dotaz, doporučujeme, abyste [heslo správce obnovili pomocí Azure Portal](howto-create-manage-server-portal.md). Možnost resetovat heslo z Azure Portal vám pomůže znovu vytvořit uživatele, resetovat heslo a obnovit oprávnění správce, což vám umožní přihlásit se pomocí Správce serveru a provést další operace.
+
 ## <a name="next-steps"></a>Další kroky
-Pokud jste nenašli odpověď, kterou jste hledali, zvažte následující:
+Pokud jste nenašli odpověď, kterou hledáte, zvažte následující:
+
 - Vystavte svůj dotaz na [Microsoft Q&stránku s dotazy](/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Odešlete e-mail do Azure Database for MySQL týmu [ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com). Tato e-mailová adresa není alias technické podpory.
 - Obraťte se na podporu Azure, [zasoubor lístku z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

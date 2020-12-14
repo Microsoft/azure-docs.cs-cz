@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387424"
+ms.locfileid: "97400212"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Vytvoření dotazu v Azure Kognitivní hledání
 
-Seznamte se s nástroji a rozhraními API pro vytváření dotazů, které metody slouží k vytvoření dotazu a jak může mít struktura indexu a obsah vliv na výsledky dotazu. Chcete-li se seznámit s tím, co požadavek na dotaz vypadá, začněte s [typy a kompozici dotazů](search-query-overview.md).
+Pokud vytváříte dotaz poprvé, Tento článek popisuje nástroje a rozhraní API, které budete potřebovat, které metody slouží k vytvoření dotazu a jak může mít struktura indexu a obsah vliv na výsledky dotazu. Chcete-li se seznámit s tím, co požadavek na dotaz vypadá, začněte s [typy a kompozici dotazů](search-query-overview.md).
 
 ## <a name="choose-tools-and-apis"></a>Výběr nástrojů a rozhraní API
 
-Pomocí některého z následujících nástrojů a rozhraní API můžete vytvářet dotazy pro testovací nebo produkční úlohy.
+K vytvoření dotazu budete potřebovat nástroj nebo rozhraní API. Některé z následujících návrhů jsou užitečné při testování a produkčních úlohách.
 
 | Metodologie | Popis |
 |-------------|-------------|
-| Portál| [Průzkumník služby Search (portál)](search-explorer.md) je rozhraní pro dotazy v Azure Portal, které lze použít ke spouštění dotazů na indexech v základní vyhledávací službě. Portál zajišťuje REST API volání na pozadí. Můžete vybrat libovolný index a libovolnou podporovanou REST API verzi, včetně verze Preview. Řetězec dotazu může být v jednoduché a úplné syntaxi a může zahrnovat výrazy Filter, omezující vlastnosti, příkazy SELECT a Seachfield a searchMode. Při otevření indexu můžete na portálu pracovat s Průzkumníkem služby Search společně s definicí JSON indexu na souběžných kartách pro snadný přístup k atributům polí. Při testování dotazů můžete zjistit, která pole jsou prohledávatelné, seřaditelné, filtrovatelné a plošky. Doporučuje se pro prvotní šetření, testování a ověřování. <br/>[Další informace](search-explorer.md) |
-| Nástroje pro testování webu| [Post nebo Visual Studio Code](search-get-started-rest.md) jsou silné možnosti pro formulování žádosti o [hledání dokumentů](/rest/api/searchservice/search-documents) v klidovém umístění. REST API podporuje každou programovou operaci v Azure Kognitivní hledání a když použijete nástroj, jako je například post nebo Visual Studio Code, můžete požadavky vydávat interaktivně, abyste porozuměli tomu, jak funguje před investicem do kódu. Nástroj pro testování webu je vhodný, pokud nemáte práva přispěvatele nebo správce v Azure Portal. Pokud máte adresu URL pro vyhledávání a klíč rozhraní API pro dotaz, můžete použít nástroje ke spouštění dotazů pro existující index. |
-| Azure SDK | Až budete připraveni k psaní kódu, můžete použít klientské knihovny Azure.Search.Document v sadách Azure SDK pro .NET, Python, JavaScript nebo Java. Každá sada SDK má vlastní plán vydaných verzí, můžete je ale vytvářet a dotazovat na ně. <br/><br/>[SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v jazyce C#.  [Další informace](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v Pythonu. [Další informace](search-get-started-python.md) <br/><br/> [SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v JavaScriptu. [Další informace](search-get-started-javascript.md) |
+| Portál| [Průzkumník služby Search (portál)](search-explorer.md) je rozhraní pro dotazy v Azure Portal, které spouští dotazy pro indexy v základní vyhledávací službě. Portál zajišťuje REST API volání na pozadí do operace [hledání dokumentů](/rest/api/searchservice/search-documents) , ale nemůže vyvolat funkci automatického dokončování, návrhů nebo vyhledávání dokumentů.<br/><br/> Můžete vybrat jakýkoli index a REST API verzi, včetně verze Preview. Řetězec dotazu může používat jednoduchou nebo úplnou syntaxi s podporou pro všechny parametry dotazu (Filter, SELECT, searchFields a tak dále). Při otevření indexu můžete na portálu pracovat s Průzkumníkem služby Search společně s definicí JSON indexu na souběžných kartách pro snadný přístup k atributům polí. Zkontroluje, jaká pole jsou při testování dotazů prohledávatelné, seřaditelné, filtrovatelné a plošky. <br/>Doporučuje se pro prvotní šetření, testování a ověřování. [Další informace](search-explorer.md) |
+| Nástroje pro testování webu| [Post nebo Visual Studio Code](search-get-started-rest.md) jsou silné možnosti pro formulování žádosti o [vyhledávání dokumentů](/rest/api/searchservice/search-documents) a jakékoli jiné žádosti v klidovém umístění. Rozhraní REST API podporují všechny možné programové operace v Azure Kognitivní hledání a když použijete nástroj, jako je například post nebo Visual Studio Code, můžete požadavky vydávat interaktivně, abyste porozuměli tomu, jak funkce funguje před investicem do kódu. Nástroj pro testování webu je vhodný, pokud nemáte práva přispěvatele nebo správce v Azure Portal. Pokud máte adresu URL pro vyhledávání a klíč rozhraní API pro dotaz, můžete použít nástroje ke spouštění dotazů pro existující index. |
+| Azure SDK | Až budete připraveni k psaní kódu, můžete použít klientské knihovny Azure.Search.Document v sadách Azure SDK pro .NET, Python, JavaScript nebo Java. Každá sada SDK má vlastní plán vydaných verzí, můžete je ale vytvářet a dotazovat na ně. <br/><br/>[SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v jazyce C#.  [Další informace](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v Pythonu. [Další informace](search-get-started-python.md)<br/><br/>[SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v JavaScriptu. [Další informace](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Nastavení vyhledávacího klienta
 

@@ -1,18 +1,18 @@
 ---
 title: Osvědčené postupy pro nasazení
 description: Tento článek poskytuje osvědčené postupy pro nasazení služby Azure dosah. Azure dosah umožňuje každému uživateli registrovat, zjišťovat, pochopit a využívat zdroje dat.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552801"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400688"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Osvědčené postupy pro nasazení Azure dosah
 
@@ -53,7 +53,7 @@ Obecným přístupem je rozdělení těchto cílů do různých kategorií a cí
 |---------|---------|
 |Zjišťování|Uživatelé s oprávněním správce by měli být schopni kontrolovat zdroje dat v Azure a mimo Azure (včetně místních zdrojů) a automaticky tak shromažďovat informace o datových prostředcích.|
 |Classification|Platforma by měla automaticky klasifikovat data na základě vzorkování dat a umožnit ruční přepsání pomocí vlastních klasifikací.|
-|Využití|Obchodní uživatelé by měli být schopni najít informace o jednotlivých prostředcích pro obchodní i technická metadata.|
+|Consumption|Obchodní uživatelé by měli být schopni najít informace o jednotlivých prostředcích pro obchodní i technická metadata.|
 |Lineage|Každý Asset musí zobrazit grafické zobrazení podkladových datových sad, aby uživatelé pochopili původní zdroje a jaké změny byly provedeny.|
 |Spolupráce|Platforma musí uživatelům umožňovat spolupráci tím, že poskytuje další informace o jednotlivých datových prostředcích.|
 |Generování sestav|Uživatelé musí být schopni zobrazit vykazování na datovém majetku, včetně citlivých dat a dat, která vyžadují další obohacení.|
@@ -165,7 +165,7 @@ V této fázi je třeba vytvořit dosah a nakonfigurovat pro velmi malou skupinu
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úkol|Podrobnosti|Doba trvání|
+|Úloha|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Shromáždění & souhlasit s požadavky|Diskuze se všemi zúčastněnými stranami a Shromážděte kompletní sadu požadavků. Různé osoby se musí účastnit souhlasu s podmnožinou požadavků, které je potřeba dokončit pro každou fázi projektu.|1 týden|
 |Nastavení startovní sady|Projděte si [dosah rychlé zprovoznění](create-catalog-portal.md) a nastavte [dosah Starter Kit](tutorial-scan-data.md) pro demo dosah všem zúčastněným stranám.|1 den|
@@ -192,7 +192,7 @@ Až budete mít dohodnuté požadavky a podílované obchodní jednotky na dosah
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úkol|Podrobnosti|Doba trvání|
+|Úloha|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |[Kontrola Azure synapse Analytics](register-scan-azure-synapse-analytics.md)|Zprovoznění zdrojů databáze a jejich kontrola, aby bylo možné naplnit klíčové prostředky|2 dny|
 |[Vytváření vlastních klasifikací a pravidel](create-a-custom-classification-and-classification-rule.md)|Po prohledání vašich prostředků si uživatelé můžou uvědomit, že další případy použití pro další klasifikaci vedle výchozích klasifikací z dosah jsou další.|2-4 týdnů|
@@ -217,7 +217,7 @@ Po úspěšné fázi MVP je čas naplánovat předprodukční milník. Vaše org
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úkol|Podrobnosti|Doba trvání|
+|Úloha|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Zpřesnit kontrolu pomocí sady pravidel skenování|Vaše organizace bude mít spoustu zdrojů dat pro předprodukční prostředí. Je důležité předem definovat klíčová kritéria pro kontrolu, aby se klasifikace a přípony souborů mohly použít konzistentně napříč panelem.|1-2 dní|
 |Vyhodnotit dostupnost oblasti pro kontrolu|V závislosti na oblasti zdrojů dat a požadavcích organizace na dodržování předpisů a zabezpečení je vhodné zvážit, jaké oblasti musí být k dispozici ke skenování.|1 den|
@@ -243,7 +243,7 @@ Výše uvedené fáze by měly následovat za účelem vytvoření efektivního 
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úkol|Podrobnosti|Doba trvání|
+|Úloha|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Kontrola zdrojů produkčních dat s povolenou bránou firewall|Pokud je to volitelné, pokud je brána firewall zavedena, ale je důležité prozkoumat možnosti pro posílení vaší infrastruktury.|1-5 dní|
 |Povolit privátní propojení|Pokud je to volitelné při použití privátního odkazu. V opačném případě můžete tuto hodnotu přeskočit, protože je to kritérium typu "musí být", pokud je povoleno soukromé.|1-5 dní|

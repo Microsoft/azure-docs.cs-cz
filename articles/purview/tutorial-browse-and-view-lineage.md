@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: procházení prostředků v Azure dosah a zobrazení jejich vydaných řádků'
 description: V tomto kurzu se dozvíte, jak vyhledat prostředky v katalogu a zobrazit datové řádky.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 8f548261f180209ff3a6f664f03163e6e7a5c523
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ab51e604412e79fb706190fef769ad76c694fd6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555697"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399430"
 ---
 # <a name="tutorial-browse-assets-in-azure-purview-preview-and-view-their-lineage"></a>Kurz: procházení assetů ve službě Azure dosah (Preview) a zobrazení jejich vydaných řádků
 
@@ -36,7 +36,7 @@ V tomto kurzu:
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="browse-for-assets-in-the-catalog"></a>Vyhledat prostředky v katalogu
 
@@ -66,7 +66,7 @@ V této části se dozvíte, jak procházet katalog Azure dosah.
 
 Na stránce Podrobnosti o aktivech prozkoumejte zdroj dat.
 
-1. Vyberte kartu **Lineage** Contoso_GrossProfit_ sady prostředků **{N}. SSV** .
+1. Vyberte kartu  Contoso_GrossProfit_ sady prostředků **{N}. SSV** .
 
    Zobrazí se Asset, který jste vybrali. Informace o zobrazených řádcích ukazují, že se tato sada prostředků zkopírovala z účtu služby Azure Blob Storage do Azure Data Lake Storage Gen2.
 

@@ -3,12 +3,12 @@ title: Koncept Media graphu – Azure
 description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007836"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401096"
 ---
 # <a name="media-graph"></a>Graf médií
 
@@ -87,6 +87,8 @@ Uzel procesoru pro detekci pohybu umožňuje detekovat pohyb v živém videu. Pr
 #### <a name="frame-rate-filter-processor"></a>Procesor filtru snímkové rychlosti  
 
 Uzel procesor filtru frekvence snímků umožňuje vzorkovat snímky z příchozího streamu videa v zadané míře. Díky tomu můžete snížit počet rámců poslaných komponentám mimo datový proud (například uzel procesoru rozšíření HTTP) pro další zpracování.
+>[!WARNING]
+> Tento procesor je **zastaralý** v nejnovější verzi nástroje Live video Analytics v modulu IoT Edge. Správa frekvence snímků se teď podporuje v rámci samotného procesoru rozšíření grafu.
 
 #### <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
@@ -108,8 +110,9 @@ Uzel jímka assetu umožňuje zapisovat data médií (videa nebo zvuku) do prost
 
 #### <a name="file-sink"></a>Jímka souborů  
 
-Uzel jímky souborů umožňuje zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. V mediálním grafu může být jenom jeden uzel jímky souborů a musí se jednat o uzel procesoru brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech uzlu procesoru brány signálu.
-
+Uzel jímky souborů umožňuje zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. V mediálním grafu může být jenom jeden uzel jímky souborů a musí se jednat o uzel procesoru brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech uzlu procesoru brány signálu. Aby bylo zajištěno, že vaše hraniční zařízení nemá nedostatek místa na disku, můžete také nastavit maximální velikost, kterou může aplikace Live video Analytics v modulu IoT Edge použít k ukládání dat.  
+> [!NOTE]
+Pokud se jímka souboru zaplní, Live video Analytics v modulu IoT Edge začne odstraňovat nejstarší data a nahradí je novým.
 #### <a name="iot-hub-message-sink"></a>IoT Hub jímka zpráv  
 
 Uzel jímky zpráv IoT Hub umožňuje publikovat události do centra IoT Edge. Centrum IoT Edge pak může směrovat data do jiných modulů nebo aplikací na hraničním zařízení nebo do IoT Hub v cloudu (na trasách uvedených v manifestu nasazení). Uzel jímky zpráv IoT Hub může přijímat události z nadřazených procesorů, jako je například uzel procesoru detekce pohybu, nebo externí odvozenou službu přes uzel procesoru rozšíření HTTP.

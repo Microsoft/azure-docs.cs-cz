@@ -3,18 +3,18 @@ title: Přehled Azure Notebooks Preview
 description: Spusťte poznámkové bloky Jupyter v cloudu pomocí bezplatné služby Azure Notebooks Preview, kde není potřeba žádné nastavení nebo konfigurace.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109483"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400251"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Přehled Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je open source projekt, který umožňuje snadno kombinovat Markdownu text, spustitelný kód, trvalá data, grafiky a vizualizace na jediném dostupném plátnu s názvem, který se označuje jako *Poznámkový blok* (obrazový soubor Jupyter.org):
+Azure Notebooks je bezplatná hostované služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu bez instalace. [Jupyter](https://jupyter.org/) (dříve IPython) je open source projekt, který umožňuje snadno kombinovat Markdownu text, spustitelný kód, trvalá data, grafiky a vizualizace na jediném dostupném plátnu s názvem, který se označuje jako *Poznámkový blok* (obrazový soubor Jupyter.org):
 
 [![Příklady poznámkových bloků Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -92,4 +92,4 @@ Pokud chcete diskutovat o Azure Notebooks, zapište problém do [úložiště Gi
 - Rychlá zprovoznění:
 
   - [Přihlášení a nastavení ID uživatele](quickstart-sign-in-azure-notebooks.md)
-  - [Export poznámkového bloku Jupyter](quickstart-export-jupyter-notebook-project.md)
+  - [Exportovat Jupyter Notebook](quickstart-export-jupyter-notebook-project.md)

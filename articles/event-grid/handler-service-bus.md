@@ -3,12 +3,12 @@ title: Service Bus fronty a témata jako obslužné rutiny událostí pro Azure 
 description: Popisuje, jak můžete použít Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96024210"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399855"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Service Bus** je jednou z nich. 
@@ -40,7 +40,7 @@ V Azure Portal při vytváření odběru událostí vyberte **Service Bus téma*
 
 ### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Přidání obslužné rutiny tématu Service Bus pomocí rozhraní příkazového řádku
 
-V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k frontě Service Bus:
+V případě Azure CLI následující příklad přihlašuje a připojí téma Event gridu k Service Bus tématu:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \

@@ -4,13 +4,13 @@ description: Tento článek popisuje postup řešení potíží pro analýzy ži
 author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
-ms.date: 05/24/2020
-ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/04/2020
+ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823201"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401293"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -31,27 +31,32 @@ Jako součást nasazení živé analýzy videí nastavujete prostředky Azure, j
 
 ### <a name="pre-deployment-issues"></a>Problémy před nasazením
 
-Pokud je hraniční infrastruktura v pořádku, můžete vyhledat problémy se souborem manifestu nasazení. Chcete-li nasadit Live video Analytics na IoT Edge modul na IoT Edge zařízení spolu s jinými moduly IoT, použijte manifest nasazení, který obsahuje IoT Edgeho centra, agenta IoT Edge a další moduly a jejich vlastnosti. Pokud kód JSON nemá správný formát, může se zobrazit následující chyba: 
+Pokud je hraniční infrastruktura v pořádku, můžete vyhledat problémy se souborem manifestu nasazení. Chcete-li nasadit Live video Analytics na IoT Edge modul na IoT Edge zařízení spolu s jinými moduly IoT, použijte manifest nasazení, který obsahuje IoT Edgeho centra, agenta IoT Edge a další moduly a jejich vlastnosti. K nasazení souboru manifestu můžete použít následující příkaz:
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content <path-to-deployment_manifest.json>
 ```
-
-Nepodařilo se analyzovat JSON ze souboru: ' <deployment manifest.json> ' pro Argument ' Content ' s výjimkou: "extra data: řádek 101 sloupec 1 (znak 5325)"
+Pokud kód JSON nemá správný formát, může se zobrazit následující chyba:   
+&nbsp;&nbsp;&nbsp;**Nepodařilo se analyzovat JSON ze souboru: ' <deployment manifest.json> ' pro Argument ' Content ' s výjimkou: "extra data: řádek 101 sloupec 1 (znak 5325)"**
 
 Pokud se zobrazí tato chyba, doporučujeme, abyste si vyhledáte ve formátu JSON chybějící závorky nebo jiné problémy se strukturou souboru. Chcete-li ověřit strukturu souborů, můžete použít klienta, jako je [Poznámkový blok](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) , nebo online nástroj, jako je například [formátovací modul JSON &](https://jsonformatter.curiousconcept.com/).
 
 ### <a name="during-deployment-diagnose-with-media-graph-direct-methods"></a>Během nasazování: Diagnostika pomocí přímých metod Media graphu 
 
-Po správném nasazení nástroje Live video Analytics v modulu IoT Edge na zařízení IoT Edge můžete vytvořit a spustit mediální graf vyvoláním [přímých metod](direct-methods.md). Pomocí Azure Portal můžete spustit diagnostiku mediálního grafu prostřednictvím přímých metod:
+Po správném nasazení nástroje Live video Analytics v modulu IoT Edge na zařízení IoT Edge můžete vytvořit a spustit mediální graf vyvoláním [přímých metod](direct-methods.md).  
+>[!NOTE]
+>  Volání přímé metody by se mělo provádět jenom v **`lvaEdge`** modulu.
+
+Pomocí Azure Portal můžete spustit diagnostiku mediálního grafu pomocí přímých metod:
 
 1. V Azure Portal přejdete do služby IoT Hub, která je připojená k vašemu zařízení IoT Edge.
 
-1. Vyhledejte **automatickou správu zařízení**a pak vyberte **IoT Edge**.  
+1. Vyhledejte **automatickou správu zařízení** a pak vyberte **IoT Edge**.  
 
 1. V seznamu hraničních zařízení vyberte zařízení, které chcete diagnostikovat.  
          
     ![Snímek obrazovky Azure Portal zobrazující seznam hraničních zařízení](./media/troubleshoot-how-to/lva-sample-device.png)
+
 
 1. Zkontrolujte, zda je kód odpovědi *200 – OK*. Další kódy odpovědí pro modul [runtime IoT Edge](../../iot-edge/iot-edge-runtime.md) zahrnují:
     * 400 – konfigurace nasazení je poškozená nebo neplatná.
@@ -60,7 +65,9 @@ Po správném nasazení nástroje Live video Analytics v modulu IoT Edge na zař
     * 406 – IoT Edge zařízení je offline nebo neodesílá zprávy o stavu.
     * 500 – při IoT Edge modulu runtime došlo k chybě.
 
-1. Pokud obdržíte stav 501, zkontrolujte, zda je název přímé metody přesný. Pokud je název metody a datová část požadavku přesný, měli byste získat výsledky spolu s kódem úspěšnosti = 200. Pokud je datová část požadavku nepřesná, získáte stav = 400 a datovou část odpovědi, která označuje kód chyby a zprávu, která by měla pomáhat s diagnostikou problému pomocí přímé volání metody.
+### <a name="post-deployment-direct-method-error-code"></a>Post Deployment: kód chyby přímé metody
+1. Pokud se zobrazí stav `501 code` , zkontrolujte, zda je název přímé metody přesný. Pokud je název metody a datová část požadavku přesný, měli byste získat výsledky spolu s kódem úspěšnosti = 200. 
+1. Pokud je datová část požadavku nepřesná, získáte stav `400 code` a datovou část odpovědi, která označuje kód chyby a zprávu, která by měla pomáhat s diagnostikou problému s přímým voláním metody.
     * Kontrola hlášených a požadovaných vlastností vám může pomáhat pochopit, jestli se vlastnosti modulu synchronizovaly s nasazením. Pokud ne, můžete restartovat zařízení IoT Edge. 
     * Použijte průvodce [přímými metodami](direct-methods.md) pro volání několika metod, zejména jednoduchých, jako je GraphTopologyList. Průvodce také určí očekávaná datová část požadavku a odpovědi a kódy chyb. Po úspěšném provedení jednoduchých přímých metod si můžete být jisti, že je modul IoT Edge pro analýzu videí v reálném čase funkčně v pořádku.
         
@@ -86,158 +93,19 @@ Live video Analytics se nasadí jako modul IoT Edge v zařízení IoT Edge a spo
 * [Při živé analýze videa nebo jakémkoli jiném vlastním IoT Edge modulu se nepovede odeslat zpráva do centra Edge s 404 chybou](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [Modul IoT Edge se úspěšně nasazuje a pak zmizí ze zařízení](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
-### <a name="edge-setup-script-issues"></a>Nastavení Edge – problémy se skripty
-
-V rámci naší dokumentace jsme poskytli [instalační skript](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) pro nasazení hraničních a cloudových prostředků a začali začít se službou Live video Analytics Edge. V této části jsou uvedeny některé chyby skriptu, se kterými se můžete setkat, spolu s řešeními pro jejich ladění.
-
-Problém: skript se spustí, částečně se vytvoří několik prostředků, ale dojde k chybě s následující zprávou:
-
-```
-registering device...
-
-Unable to load extension 'eventgrid: unrecognized kwargs: ['min_profile']'. Use --debug for more information.
-The command failed with an unexpected error. Here is the traceback:
-
-No module named 'azure.mgmt.iothub.iot_hub_client'
-Traceback (most recent call last):
-File "/opt/az/lib/python3.6/site-packages/knack/cli.py", line 215, in invoke
-  cmd_result = self.invocation.execute(args)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 631, in execute
-  raise ex
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 695, in _run_jobs_serially
-  results.append(self._run_job(expanded_arg, cmd_copy))
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 688, in _run_job
-  six.reraise(*sys.exc_info())
-File "/opt/az/lib/python3.6/site-packages/six.py", line 693, in reraise
-  raise value
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 665, in _run_job
-  result = cmd_copy(params)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 324, in __call__
-  return self.handler(*args, **kwargs)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/__init__.py", line 574, in default_command_handler
-  return op(**command_args)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 75, in iot_device_list
-  result = iot_query(cmd, query, hub_name, top, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 45, in iot_query
-  target = get_iot_hub_connection_string(cmd, hub_name, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/common/_azure.py", line 112, in get_iot_hub_connection_string
-  client = iot_hub_service_factory(cmd.cli_ctx)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/_factory.py", line 28, in iot_hub_service_factory
-  from azure.mgmt.iothub.iot_hub_client import IotHubClient
-ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
-```
-    
-Pokud chcete tento problém vyřešit:
-
-1. Spusťte následující příkaz:
-
-    ```
-    az --version
-    ```
-1. Ujistěte se, že máte nainstalovanou následující rozšíření. Od publikování tohoto článku jsou rozšíření a jejich verze:
-
-    | Linka | Verze |
-    |---|---|
-    |azure-cli   |      2.5.1|
-    |příkazové moduly – nspkg         |   2.0.3|
-    |Core  |    2.5.1|
-    |nspkg    | 3.0.4|
-    |telemetrie| 1.0.4|
-    |storage-preview          |     0.2.10|
-    |azure-cli-iot-ext          |    0.8.9|
-    |eventgrid| 0.4.9|
-    |azure-iot                       | 0.9.2|
-1. Pokud máte nainstalované rozšíření, jehož verze je starší než číslo verze uvedené zde, aktualizujte rozšíření pomocí následujícího příkazu:
-
-    ```
-    az extension update --name <Extension name>
-    ```
-
-    Můžete například spustit `az extension update --name azure-iot` .
-
-### <a name="sample-app-issues"></a>Problémy s ukázkovou aplikací
-
-V rámci naší verze jsme získali několik ukázek kódu .NET, které vám pomůžou zajistit, aby naše komunita vývojářů mohla zavedena. V této části jsou uvedeny některé chyby, se kterými se můžete setkat při spuštění ukázkového kódu, spolu s řešeními pro jejich ladění.
-
-Problém: Program.cs se nezdařila s následující chybou volání přímé metody:
-
-```
-Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedException: {"Message":"{\"errorCode\":401002,\"trackingId\":\"b1da85801b2e4faf951a2291a2c467c3-G:32-TimeStamp:04/06/2020 17:15:11\",\"message\":\"Unauthorized\",\"timestampUtc\":\"2020-04-06T17:15:11.6990676Z\"}","ExceptionMessage":""}
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpClient httpClient, HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`2 isMappedToException, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-        
-        at Microsoft.Azure.Devices.HttpClientHelper.PostAsync[T,T2](Uri requestUri, T entity, TimeSpan operationTimeout, IDictionary`2 errorMappingOverrides, IDictionary`2 customHeaders, CancellationToken cancellationToken)…
-```
-
-1. Ujistěte se, že máte nainstalované [nástroje Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) v prostředí Visual Studio Code a že jste nastavili připojení ke službě IoT Hub. Provedete to tak, že vyberete CTRL + SHIFT + P a pak zvolíte **vybrat IoT Hub metoda**.
-
-1. Zkontrolujte, zda můžete vyvolat přímou metodu v modulu IoT Edge pomocí Visual Studio Code. Například zavolejte GraphTopologyList s následující datovou částí { &nbsp; " @apiVersion ": "1,0"}. Měla by se zobrazit následující odpověď: 
-
-    ```
-    {
-      "status": 200,
-      "payload": {
-        "values": [
-          {…
-    …}
-          ]
-        }
-    }
-    ```
-
-    ![Snímek obrazovky s odpovědí v Visual Studio Code.](./media/troubleshoot-how-to/visual-studio-code1.png)
-1. Pokud předchozí řešení selžou, zkuste následující:
-
-    a. V zařízení IoT Edge na příkazovém řádku a spusťte následující příkaz:
-    
-      ```
-      sudo systemctl restart iotedge
-      ```
-
-      Tento příkaz restartuje zařízení IoT Edge a všechny moduly. Počkejte pár minut a potom se před dalším pokusem o použití přímé metody potvrďte, že moduly běží, spuštěním následujícího příkazu:
-
-      ```
-      sudo iotedge list
-      ```
-
-    b. Pokud předchozí přístup neproběhne úspěšně, zkuste restartovat virtuální počítač nebo počítač.
-
-    c. Pokud všechny přístupy selžou, spusťte následující příkaz, který získá soubor zip se všemi [relevantními protokoly](../../iot-edge/troubleshoot.md#gather-debug-information-with-support-bundle-command)a připojí ho k [lístku podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-    ```
-    sudo iotedge support-bundle --since 2h
-    ```
-
-1. Pokud obdržíte kód odpovědi na chybu *400* , ujistěte se, že datová část volání metody je ve správném formátu, podle průvodce [přímými metodami](direct-methods.md) .
-1. Pokud obdržíte stav *200* , znamená to, že vaše centrum funguje dobře a vaše nasazení modulu je správné a reaguje. 
-
-1. Zkontrolujte, jestli je konfigurace aplikace přesná. Vaše konfigurace aplikace se skládá z následujících polí *appsettings.js* v souboru. Dvojitá kontrola ověří, že deviceId a moduleId jsou přesné. Snadný způsob, jak to provést, je projít si část rozšíření Azure IoT Hub v Visual Studio Code. Hodnoty v souboru *appsettings.json* a oddílu IoT Hub by se měly shodovat.
-    
-    ```
-    {
-        "IoThubConnectionString" : 
-        "deviceId" : 
-        "moduleId" : 
-    }
-    ```
-
-1. V *appsettings.jsv* souboru zkontrolujte, že jste zadali připojovací řetězec IoT Hub a *ne* připojovací řetězec IoT Hub zařízení, protože se [liší formát připojovacího řetězce](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/).
-
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
-Live video Analytics prostřednictvím procesoru rozšíření HTTP může rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů přes HTTP pomocí REST. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:
+Live video Analytics můžou pomocí procesorů rozšíření pro multimediální graf rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů pomocí protokolů HTTP nebo gRPC. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může tento mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON pomocí protokolu HTTP. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:
 
 * Zkontrolujte, jestli se na rozbočovače, na který se bude Publisher graf nahrává, a zda je vaše centrum, které zkoumáte, stejné. Při vytváření více nasazení může dorazit k několika rozbočovačům a omylem kontrolovat chybné rozbočovače pro události.
-* V části Visual Studio Code zkontrolujte, jestli je externí modul nasazený a spuštěný. V tomto příkladu obrázku jsou rtspsim a CV IoT Edge moduly, které jsou spuštěny externě v modulu lvaEdge.
+* V části Azure Portal zkontrolujte, jestli je externí modul nasazený a spuštěný. V příkladu obrázku zde jsou rtspsim, yolov3, tinyyolov3 a logAnalyticsAgent IoT Edge moduly, které jsou spuštěny externě v modulu lvaEdge.
 
-    ![Snímek obrazovky, který zobrazuje stav spuštěných modulů v Azure IoT Hub.](./media/troubleshoot-how-to/iot-hub.png)
+    [![Snímek obrazovky, který zobrazuje stav spuštěných modulů v Azure IoT Hub. ](./media/troubleshoot-how-to/iot-hub-azure.png)](./media/troubleshoot-how-to/iot-hub-azure.png#lightbox)
 
-* Zkontrolujte, zda odesíláte události do správného koncového bodu adresy URL. Externí kontejner AI zpřístupňuje adresu URL a port, přes který obdrží, a vrátí data z požadavků POST. Tato adresa URL je zadána jako `endpoint: url` vlastnost pro procesor rozšíření http. Jak je vidět na [adrese URL topologie](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json), koncový bod je nastaven na parametr adresy URL Inferencing. Ujistěte se, že výchozí hodnota pro parametr nebo předaná hodnota je přesná. Můžete otestovat a zjistit, zda funguje pomocí adresy URL klienta (kudrlinkou).  
+* Zkontrolujte, zda odesíláte události do správného koncového bodu adresy URL. Externí kontejner AI zpřístupňuje adresu URL a port, přes který obdrží, a vrátí data z požadavků POST. Tato adresa URL je zadána jako `endpoint: url` vlastnost pro procesor rozšíření http. Jak je vidět na [adrese URL topologie](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/2.0/topology.json), koncový bod je nastaven na parametr adresy URL Inferencing. Ujistěte se, že výchozí hodnota pro parametr nebo předaná hodnota je přesná. Můžete otestovat a zjistit, zda funguje pomocí adresy URL klienta (kudrlinkou).  
 
-    Tady je příklad kontejner Yolo v3, který běží na místním počítači s IP adresou 172.17.0.3. K vyhledání IP adresy použijte Docker kontroler.
-
+    Tady je příklad kontejner Yolo v3, který běží na místním počítači s IP adresou 172.17.0.3.  
+    
     ```
     curl -X POST http://172.17.0.3/score -H "Content-Type: image/jpeg" --data-binary @<fullpath to jpg>
     ```
@@ -247,12 +115,12 @@ Live video Analytics prostřednictvím procesoru rozšíření HTTP může rozš
     ```
     {"inferences": [{"type": "entity", "entity": {"tag": {"value": "car", "confidence": 0.8668569922447205}, "box": {"l": 0.3853073438008626, "t": 0.6063712999658677, "w": 0.04174524943033854, "h": 0.02989496027381675}}}]}
     ```
+    > [!TIP]
+    > K vyhledání IP adresy počítače použijte **[příkaz Docker prověřit](https://docs.docker.com/engine/reference/commandline/inspect/)** .
+    
+* Pokud používáte jednu nebo více instancí grafu, které používají procesor rozšíření Media Graph, měli byste `samplingOptions` pole použít ke správě míry snímků videa za sekundu. 
 
-* Pokud používáte jednu nebo víc instancí grafu, které používají procesor rozšíření HTTP, měli byste před každým procesorem rozšíření HTTP mít filtr snímkové frekvence, abyste mohli spravovat míru snímků videa za sekundu (FPS). 
-
-   V některých situacích, kdy je procesor nebo paměť hraničního počítače vysoce využitý, můžete přijít o určité události odvození. Pokud chcete tento problém vyřešit, nastavte pro vlastnost maximumFps v filtru frekvence snímků nízkou hodnotu. Můžete ji nastavit na 0,5 ("maximumFps": 0,5) na všech instancích grafu a pak znovu spustit instanci, abyste kontrolovali události odvození v centru.
-
-   Alternativně můžete získat výkonnější hraniční počítač s vyšším využitím procesoru a paměti.
+   * V některých situacích, kdy je procesor nebo paměť hraničního počítače vysoce využitý, můžete přijít o určité události odvození. Chcete-li tento problém vyřešit, nastavte pro `maximumSamplesPerSecond` vlastnost v poli nízkou hodnotu `samplingOptions` . Můžete ho nastavit na 0,5 ("maximumSamplesPerSecond": "0,5") na všech instancích grafu a pak znovu spustit instanci, abyste kontrolovali události odvození v centru.
     
 ### <a name="multiple-direct-methods-in-parallel--timeout-failure"></a>Paralelní více přímých metod – Chyba časového limitu 
 
@@ -269,7 +137,36 @@ Když kroky pro řešení potíží s vlastním průvodcem nevyřeší váš pro
 > [!WARNING]
 > Protokoly mohou obsahovat identifikovatelné osobní údaje (PII), jako je například vaše IP adresa. Všechny místní kopie protokolů se odstraní hned po dokončení jejich prověření a uzavření lístku podpory.  
 
-Pokud chcete shromáždit příslušné protokoly, které by se měly přidat k lístku, postupujte podle pokynů v dalších částech. Soubory protokolu můžete nahrát v podokně **podrobností** žádosti o podporu.
+Pokud chcete shromáždit příslušné protokoly, které by se měly přidat k lístku, postupujte podle pokynů níže v uvedeném pořadí a nahrajte soubory protokolů v podokně **podrobností** žádosti o podporu.  
+1. [Konfigurace modulu Live video Analytics pro shromažďování podrobných protokolů](#configure-live-video-analytics-module-to-collect-verbose-logs)
+1. [Zapnout protokoly ladění](#live-video-analytics-debug-logs)
+1. Reprodukujte problém.
+1. Připojení k virtuálnímu počítači ze stránky **IoT Hub** na portálu
+    1. PSČ všechny soubory ve složce *debugLogs*
+
+       > [!NOTE]
+       > Tyto soubory protokolu nejsou určeny pro samostatnou diagnostiku. Jsou určeny pro technický tým Azure k analýze vašich problémů.
+
+       * V následujícím příkazu Nezapomeňte nahradit **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** umístění protokolů ladění na hraničním zařízení, které jste nastavili dříve v **kroku 2**.  
+
+           ```
+           sudo apt install zip unzip  
+           zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
+           ```
+
+    1. Připojte soubor *debugLogs.zip* k lístku podpory.
+1. Spusťte [příkaz sady prostředků podpory](#use-the-support-bundle-command), Shromážděte protokoly a připojte se k lístku podpory.
+
+### <a name="configure-live-video-analytics-module-to-collect-verbose-logs"></a>Konfigurace modulu Live video Analytics pro shromažďování podrobných protokolů
+Nakonfigurujte modul Live video Analytics tak, aby shromáždil podrobné protokoly, a to nastavením `logLevel` a následujícím `logCategories` způsobem:
+```
+"logLevel": "Verbose",
+"logCategories": "Application,Events,MediaPipeline",
+```
+
+Můžete to provést v těchto akcích:
+* V **Azure Portal** aktualizujete ve vlastnostech nefunkčních vlastností identity modulu funkční vlastnosti [ ![ identity ](media/troubleshoot-how-to/module-twin.png) modulu](media/troubleshoot-how-to/module-twin.png#lightbox) Live video Analytics.    
+* Případně můžete v souboru **manifestu nasazení** přidat tyto položky do uzlu Properties (Live video Analytics Module).
 
 ### <a name="use-the-support-bundle-command"></a>Použití příkazu support-komplet
 
@@ -277,7 +174,7 @@ Pokud potřebujete shromáždit protokoly ze zařízení IoT Edge, nejjednoduš�
 
 - Protokoly modulů
 - Protokoly IoT Edge Security Manager a modul kontejnerů
-- Výstup JSON pro kontrolu Iotedge
+- IoT Edge výstup JSON
 - Užitečné informace o ladění
 
 1. Spusťte `support-bundle` příkaz s příznakem *--od* , který určuje, kolik času má vaše protokoly pokrýt. Například 2 – 2 – 2 obdrží protokoly za poslední dvě hodiny. Hodnotu tohoto příznaku můžete změnit tak, aby zahrnovala protokoly pro různá období.
@@ -317,7 +214,7 @@ Pokud chcete nakonfigurovat Live video Analytics v modulu IoT Edge tak, aby gene
 
     a. V tabulce **moduly** vyberte **lvaEdge**.  
     b. V horní části podokna vyberte možnost **Nevlákenovaná identita modulu**. Otevře se upravitelné podokno.  
-    c. V části **požadovaný klíč**přidejte následující dvojici klíč/hodnota:  
+    c. V části **požadovaný klíč** přidejte následující dvojici klíč/hodnota:  
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
@@ -328,25 +225,90 @@ Pokud chcete nakonfigurovat Live video Analytics v modulu IoT Edge tak, aby gene
     
     d. Vyberte **Uložit**.
 
-1. Reprodukujte problém.
-1. Připojte se k virtuálnímu počítači na stránce **IoT Hub** na portálu.
-1. PSČ všechny soubory ve složce *debugLogs*
-
-   > [!NOTE]
-   > Tyto soubory protokolu nejsou určeny pro samostatnou diagnostiku. Jsou určeny pro technický tým Azure k analýze vašich problémů.
-
-   a. V následujícím příkazu Nezapomeňte nahradit **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** umístění protokolů ladění na hraničním zařízení, které jste nastavili dříve.  
-
-   ```
-   sudo apt install zip unzip  
-   zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
-   ```
-
-   b. Připojte soubor *debugLogs.zip* k lístku podpory.
 
 1. Shromažďování protokolů můžete zastavit nastavením hodnoty v poli **Identita modulu** na *hodnotu null*. Vraťte se na stránku s **Nevlákenou identity modulu** a aktualizujte následující parametr jako:
 
     `"DebugLogsDirectory": ""`
+
+### <a name="best-practices-around-logging"></a>Osvědčené postupy kolem protokolování
+
+[Monitorování a protokolování](monitoring-logging.md) by mělo pomáhat při porozumění taxonomii a způsobu generování protokolů, které vám pomůžou s laděním problémů s lva. 
+
+Protože implementace gRPC serveru se v různých jazycích liší, neexistuje standardní způsob přidávání protokolování do serveru.  
+
+Pokud například sestavíte Server gRPC pomocí .NET Core, služba gRPC přidá do kategorie **gRPC** protokoly. Pokud chcete povolit podrobné protokoly z gRPC, nakonfigurujte předpony Grpc na úroveň ladění ve vašem appsettings.jsv souboru přidáním následujících položek do dílčí části LogLevel v protokolování: 
+
+```
+{ 
+  "Logging": { 
+    "LogLevel": { 
+      "Default": "Debug", 
+      "System": "Information", 
+      "Microsoft": "Information", 
+      "Grpc": "Debug" 
+       } 
+  } 
+} 
+``` 
+
+Můžete ho taky nakonfigurovat v souboru Startup.cs pomocí ConfigureLogging: 
+
+```
+public static IHostBuilder CreateHostBuilder(string[] args) => 
+    Host.CreateDefaultBuilder(args) 
+        .ConfigureLogging(logging => 
+        { 
+
+           logging.AddFilter("Grpc", LogLevel.Debug); 
+        }) 
+        .ConfigureWebHostDefaults(webBuilder => 
+        { 
+            webBuilder.UseStartup<Startup>(); 
+        }); 
+
+``` 
+
+[Protokolování a diagnostika v gRPC v rozhraní .NET](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) poskytují pokyny pro shromažďování některých diagnostických protokolů ze serveru gRPC. 
+
+### <a name="a-failed-grpc-connection"></a>Neúspěšné připojení gRPC 
+
+Pokud je graf aktivní a streamuje z kamery, zachová se připojení ve službě Live video Analytics. 
+
+### <a name="monitoring-and-balancing-the-load-of-cpu-and-gpu-resources-when-these-resources-become-bottlenecks"></a>Monitorování a vyrovnávání zatížení prostředků procesoru a GPU, když se tyto prostředky stanou kritickými body
+
+Live video Analytics nesleduje ani neposkytuje žádné monitorování hardwarových prostředků. Vývojáři budou muset používat řešení monitorování výrobců hardwaru. Pokud ale používáte kontejnery Kubernetes, můžete zařízení monitorovat pomocí [řídicího panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
+
+gRPC v dokumentech .NET Core také sdílí některé cenné informace o [osvědčených postupech výkonu](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) a [Vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true).  
+
+### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Řešení potíží s odvozeným serverem, když neobdrží žádné rámce a přijímáte, Chyba protokolu "Neznámý". 
+
+K dispozici je několik věcí, které vám pomohou získat další informace o problému.  
+
+* Do požadovaných vlastností modulu Live video Analytics zahrňte kategorii protokolu **ediaPipeline** a zajistěte, aby byla úroveň protokolu nastavena na `Information` .  
+* Pokud chcete otestovat připojení k síti, můžete z hraničního zařízení spustit následující příkaz. 
+
+   ```
+   sudo docker exec lvaEdge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>” 
+   ```
+
+   Pokud příkaz vypíše krátký řetězec jumbled textu, program Telnet byl úspěšně schopný otevřít připojení k serveru odvození a otevřít binární kanál gRPC. Pokud to nevidíte, odešle protokol Telnet chybu sítě. 
+* V rámci odvozeného serveru můžete povolit další protokolování v knihovně gRPC. To může poskytovat další informace o samotném kanálu gRPC. To se liší podle jazyka, tady jsou pokyny pro [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true). 
+
+### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>Vybírání dalších imagí z vyrovnávací paměti gRPC bez odeslání výsledku zpět pro první vyrovnávací paměť
+
+Jako součást smlouvy pro přenos dat gRPC by se měly potvrdit všechny zprávy, které posílá Live video Analytics na server gRPC Inferencing. Nepotvrzující příjem rámce obrázku přerušuje kontrakt dat a může mít za následek nepožadovanou situaci.  
+
+Pokud chcete používat server gRPC s živými video analýzami, můžete k dosažení nejlepšího výkonu použít sdílenou paměť. To vyžaduje, abyste používali funkce sdílené paměti pro Linux zveřejněné programovacím jazykem nebo prostředím. 
+
+1. Otevřete popisovač sdílené paměti systému Linux.
+1. Po přijetí snímku přejděte na posun adresy v rámci sdílené paměti.
+1. Potvrďte dokončení zpracování snímků, aby jeho paměť mohla být uvolněna živým analýzou videí.
+
+   > [!NOTE]
+   > Pokud se zpožděním přiřadíte příjem rámce do živé analýzy videí po dlouhou dobu, může dojít k úplnému zaplnění sdílené paměti a k poškození dat.
+1. Uložte jednotlivé rámce do datové struktury podle svého výběru (seznam, pole a tak dále) na serveru Inferencing.
+1. Logiku zpracování pak můžete spustit, když máte požadovaný počet snímků obrázku.
+1. Až budete připraveni, vraťte výsledek Inferencing zpět do živé analýzy videí.
 
 ## <a name="next-steps"></a>Další kroky
 

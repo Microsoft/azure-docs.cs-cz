@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652106"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401640"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Kurz: vytvoření vlastních pravidel analýzy pro detekci hrozeb
 
@@ -145,7 +145,13 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Naplánované pravidlo se nepovedlo spustit, nebo se zobrazuje s automaticky ZAKÁZANým přidaným názvem.
+### <a name="issue-no-events-appear-in-query-results"></a>Problém: ve výsledcích dotazu se neobjeví žádné události.
+
+Pokud je **seskupení událostí** nastaveno tak, aby **pro každou událost aktivovalo výstrahu**, pak v některých scénářích při zobrazení výsledků dotazu v pozdějším čase (například při překlopení zpět na výstrahy z incidentu) je možné, že se nezobrazí žádné výsledky dotazu. Důvodem je to, že připojení události k výstraze je provedeno pomocí hashování informací o konkrétní události a zahrnutím hodnoty hash do dotazu. Pokud se výsledky dotazu od vygenerování výstrahy změnily, hodnota hash už nebude platná a nezobrazí se žádné výsledky. 
+
+Chcete-li zobrazit události, ručně odeberte řádek s hodnotou hash z dotazu pravidla a spusťte dotaz.
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Problém: naplánované pravidlo se nepovedlo spustit, nebo se zobrazuje s AUTOMATICKÝm ZAKÁZÁNím přidaným do názvu.
 
 Jedná se o vzácnou chybu, kterou se nepodařilo spustit naplánované pravidlo dotazu, ale může k tomu dojít. Azure Sentinel klasifikuje chyby vpřed jako přechodné nebo trvalé, a to na základě konkrétního typu selhání a okolností, které to vedlo.
 

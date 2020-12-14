@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dd15df0e745a5c6e3130233e693bbdb22655775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500440"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401181"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů s Linuxem
 
@@ -70,7 +70,7 @@ Domény selhání definují skupinu virtuálních počítačů, které sdílejí
    ![Koncepční nákres konfigurace aktualizačních domén a domén selhání](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti
-Pokud aktuálně používáte virtuální počítače s nespravovanými disky, důrazně doporučujeme převést z nespravovaného na spravované disky pro [Linux](./linux/convert-unmanaged-to-managed-disks.md) a [Windows](./windows/convert-unmanaged-to-managed-disks.md).
+Pokud aktuálně používáte virtuální počítače s nespravovanými disky, důrazně doporučujeme převádět z nespravovaných na spravované disky pro [Linux](./linux/convert-unmanaged-to-managed-disks.md) a [Windows](./windows/convert-unmanaged-to-managed-disks.md).
 
 [Spravované disky](./managed-disks-overview.md) poskytují vyšší spolehlivost skupiny dostupnosti tím, že zajišťují dostatečné oddělení jednotlivých disků virtuálních počítačů ve skupině dostupnosti, aby se zabránilo jedinému bodu selhání. Provede to tím, že automaticky umístí disky do různých domén selhání úložiště (clustery úložiště) a zarovnají je s doménou selhání virtuálního počítače. Pokud doména selhání úložiště selže kvůli selhání hardwaru nebo softwaru, dojde k chybě jenom instance virtuálního počítače s disky v doméně selhání úložiště.
 ![Doménami selhání spravované disky](./media/virtual-machines-common-manage-availability/md-fd-updated.png)

@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90057404"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400399"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Rychlý Start: vytvoření nové instance služby Azure API Management Service pomocí Visual Studio Code
 
@@ -55,7 +55,7 @@ Vytvoří se nová instance API Management (a Nadřazená skupina prostředků) 
 >
 > I když *se skladová položka ke zřízení* trvá méně než minutu, jiné skladové jednotky obvykle zabírají 30-40 minut.
 
-V tuto chvíli jste připraveni k importu a publikování vašeho prvního rozhraní API. Můžete to udělat a také provádět běžné operace API Management v rámci rozšíření pro Visual Studio Code. Další informace najdete v tématu [API Management rozšíření pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) dokumentaci.
+V tuto chvíli jste připraveni k importu a publikování vašeho prvního rozhraní API. Můžete to udělat a také provádět běžné operace API Management v rámci rozšíření pro Visual Studio Code. Další informace najdete [v tomto kurzu](visual-studio-code-tutorial.md) .
 
 ![Nově vytvořená instance API Management v podokně rozšíření API Management VS Code](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,4 +70,4 @@ Alternativně můžete vybrat možnost **odstranit API Management** a odstranit 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Import a publikování vašeho prvního rozhraní API](import-and-publish.md)
+> [Import a správa rozhraní API pomocí rozšíření API Management](visual-studio-code-tutorial.md)

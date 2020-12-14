@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341875"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400722"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Ladění zásad Azure API Management v Visual Studio Code
 
@@ -28,11 +28,13 @@ Tento článek popisuje, jak ladit zásady API Management pomocí [rozšíření
 > [!NOTE]
 > Tato funkce je ve verzi Public Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pomocí tohoto [kurzu](get-started-create-service-instance.md) nejdřív vytvořte API Management instanci vývojové vrstvy.
+* Pomocí tohoto [rychlého](get-started-create-service-instance.md) startu nejprve vytvořte API Management instanci vývojové vrstvy.
 
-Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) a nejnovější verzi [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
+* Nainstalujte [Visual Studio Code](https://code.visualstudio.com/) a nejnovější verzi [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
+
+* Importujte rozhraní API do instance API Management. Příklady kroků najdete v tématu [kurz: použití rozšíření API Management pro Visual Studio Code k importu a správě rozhraní API](visual-studio-code-tutorial.md).
 
 ## <a name="restrictions-and-limitations"></a>Omezení a omezení
 

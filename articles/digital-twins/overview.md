@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099109"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400603"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -64,7 +64,7 @@ Můžete také řídit digitální vlákna Azure z jiných zdrojů dat pomocí r
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>Výstup do TSI, úložiště a analýzy
 
-Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí** , které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
+Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí**, které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
 
 Mezi trasy událostí můžete dělat tyto věci:
 * Ukládání dat digitálních vláken Azure v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
@@ -88,7 +88,7 @@ Kompletní řešení využívající digitální vlákna Azure může obsahovat 
 
 Následující diagram znázorňuje, kde se digitální vlákna Azure nachází v kontextu většího řešení Azure IoT.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Snímek obrazovky s ukázkovou aplikací Průzkumníka digitálních vláken Azure a zobrazením grafu uzlů reprezentujících digitální vlákna" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Diagram znázorňující vstupní zdroje, výstupní služby a obousměrnou komunikaci s klientskými aplikacemi i s externími výpočetními prostředky." border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits"></a>Omezení služby
 
@@ -96,9 +96,6 @@ Seznam omezení digitálních vláken Azure najdete v tématu [*referenční inf
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste pracovali s první verzí Preview digitálních vláken Azure (říjen 2018), přečtěte si, co se změnilo:
-* [*Přehled: rozdíly od první verze*](overview-differences.md)
+Pokud jste pracovali s první verzí Preview digitálních vláken Azure (říjen 2018), přečtěte si, co se změnilo: [*Přehled: rozdíly od první verze*](overview-differences.md).
 
-Nebo si pokračujte a podrobněi se s využitím digitálních vláken Azure pomocí prvního kurzu:
-
-[*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
+Nebo se dostanete k práci s digitálními podmnožinami Azure pomocí rychlého startu: rychlý Start: [*Prozkoumejte ukázkový scénář*](quickstart-adt-explorer.md)a podrobně se na něj.

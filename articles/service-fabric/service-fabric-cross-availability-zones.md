@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109809"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401725"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -407,12 +407,12 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 >[!NOTE]
 > * Veřejné IP adresy a Load Balancer prostředky by měly používat standardní SKU, jak je popsáno výše v článku.
 > * vlastnost "multipleAvailabilityZones" v nodeType lze definovat pouze v době vytváření nodeType a nelze ji změnit později. Proto se pomocí této vlastnosti nedají konfigurovat existující nodeType.
-> * Pokud je parametr "hierarchicalUpgradeDomain" vynechán nebo je nastaven na hodnotu true, nasazení clusteru a aplikace bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu.
+> * Pokud je hodnota "sfZonalUpgradeMode" vynechána nebo nastavena na "hierarchické", nasazení clusteru a aplikací bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu.
 > * Doporučuje se nastavit úroveň spolehlivosti clusteru na Platinum a zajistit tak, že cluster bude zachován v případě scénáře s jednou zónou.
 
 >[!NOTE]
-> Pro osvědčený postup doporučujeme hierarchicalUpgradeDomain nastavit na hodnotu true nebo vynechat. Nasazení bude následovat po rozbalení virtuálních počítačů, které mají vliv na menší množství replik a/nebo instancí, čímž budou bezpečnější.
-> Použijte hierarchicalUpgradeDomain nastavenou na hodnotu false, pokud je rychlost nasazení nastavena jako priorita, nebo pokud je v typu uzlu spuštěno pouze bezstavové úlohy s několika více AZs. Výsledkem bude, že UD probíhají paralelně ve všech AZ 's.
+> Pro osvědčené postupy doporučujeme sfZonalUpgradeMode nastavit na hierarchické nebo vynechat. Nasazení bude následovat po rozbalení virtuálních počítačů, které mají vliv na menší množství replik a/nebo instancí, čímž budou bezpečnější.
+> SfZonalUpgradeMode sadu použijte k paralelnímu nastavení, pokud je rychlost nasazení nastavena jako priorita, nebo pokud je v typu uzlu spuštěno pouze bezstavové úlohy s více než jednou funkcí AZ. Výsledkem bude, že UD probíhají paralelně ve všech AZ 's.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrace na typ uzlu s více Zóny dostupnosti
 Pro všechny scénáře migrace je nutné přidat nový uzel nodeType, který bude mít podporu více zón dostupnosti. Existující uzel nodeType nejde migrovat na podporu více zón.

@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015681"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400504"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -35,7 +35,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -51,7 +51,7 @@ Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Přehled prostorové analýzy":::
  
-Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje snímkovou frekvenci streamu videa, která dosáhne uzlu procesoru MediaGraphCognitiveServicesVisionExtension.
+Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa na `MediaGraphCognitiveServicesVisionExtension` uzel procesoru.
 
 Uzel MediaGraphCognitiveServicesVisionExtension hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes **sdílenou paměť** do jiného modulu Edge, který spouští operace AI za koncovým bodem gRPC. V tomto příkladu je tento modul Edge modul pro prostorovou analýzu. Uzel procesoru MediaGraphCognitiveServicesVisionExtension má dvě věci:
 
@@ -71,7 +71,7 @@ Existují tři primární parametry pro všechny požadované kontejnery Cogniti
 Klíč se používá ke spuštění kontejneru prostorové analýzy a je k dispozici na `Keys and Endpoint` stránce Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na tuto stránku a vyhledejte klíče a identifikátor URI koncového bodu.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Přehled prostorové analýzy":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Identifikátor URI koncového bodu":::
 
 ## <a name="set-up-azure-stack-edge"></a>Nastavení Azure Stack Edge
 
@@ -169,17 +169,17 @@ Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasa�
 1. Vedle podokna AZURE IOT HUB vyberte ikonu Další akce a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec z src/Cloud-to-Device-Console-App/appsettings.jsv souboru.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Přehled prostorové analýzy":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Prostorová analýza: připojovací řetězec":::
 1. Klikněte pravým tlačítkem `src/edge/deployment.spatialAnalysis.template.json` a vyberte generovat IoT Edge manifest nasazení.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Přehled prostorové analýzy":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Prostorová analýza: nasazení amd64 JSON":::
     
     Tato akce by měla vytvořit soubor manifestu s názvem deployment.amd64.jsve složce src/Edge/config.
 1. Klikněte pravým tlačítkem myši `src/edge/config/deployment.spatialAnalysis.amd64.json` , vyberte vytvořit nasazení pro jedno zařízení a pak vyberte název hraničního zařízení.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Přehled prostorové analýzy":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Prostorová analýza: JSON šablony nasazení":::   
 1. Až se zobrazí výzva k výběru zařízení IoT Hub, zvolte název Azure Stack Edge z rozevírací nabídky.
 1. Po přibližně 30 sekundách se v levém dolním rohu okna aktualizují Azure IoT Hub. Hraniční zařízení nyní zobrazuje následující nasazené moduly:
     
@@ -204,17 +204,17 @@ Chcete-li zobrazit tyto události, postupujte podle následujících kroků:
 1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Přehled prostorové analýzy":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Přehled prostorové analýzy":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Otevřete podokno Průzkumník a vyhledejte Azure IoT Hub v levém dolním rohu.
 1. Rozbalte uzel zařízení.
 1. Pravým tlačítkem myši klikněte na Azure Stack Edge a vyberte spustit sledování integrovaný koncový bod události.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Přehled prostorové analýzy":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Prostorová analýza: spustit monitorování":::
      
 ## <a name="run-the-program"></a>Spuštění programu
 
@@ -265,11 +265,11 @@ V operations.js:
 
 `topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
-V části **GraphInstanceSet**upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
+V části **GraphInstanceSet** upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
 
 `topologyName` : InferencingWithCVExtension
 
-V části **GraphTopologyDelete**upravte název:
+V části **GraphTopologyDelete** upravte název:
 
 `name`: InferencingWithCVExtension
 

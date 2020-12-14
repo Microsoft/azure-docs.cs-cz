@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: c9f29a891061dc0e6dcfe8c8f6a65f0f190c6afc
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593582"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400790"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Urychlené obnovení databáze v Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 **Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. 
 
-Pravidlo automatického nasazení je aktuálně dostupné pro Azure SQL Database, Azure SQL Managed instance, databáze ve službě Azure synapse Analytics (aktuálně ve verzi Preview) a SQL Server na virtuálních počítačích Azure počínaje SQL Server 2019. 
+Pravidlo automatického nasazení je aktuálně k dispozici pro Azure SQL Database, Azure SQL Managed instance, databáze ve službě Azure synapse Analytics a SQL Server na virtuálních počítačích Azure počínaje SQL Server 2019. 
 
 > [!NOTE] 
 > V Azure SQL Database a Azure SQL Managed instance je ve výchozím nastavení povolená možnost ADR a zakázání pravidla automatického nasazení pro některý z těchto produktů se nepodporuje. 

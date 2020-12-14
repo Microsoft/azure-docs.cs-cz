@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498298"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401661"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -68,13 +68,13 @@ Případně můžete spustit záznam pouze v případě, že služba Inferencing
 Diagram je obrazové znázornění [mediálního grafu](media-graph-concept.md) a dalších modulů, které provádějí požadovaný scénář. Jsou zapojené čtyři IoT Edge moduly:
 
 * Live video Analytics v modulu IoT Edge.
-* Modul Edge, který spouští model AI za koncovým bodem HTTP. Tento modul AI používá model [Yolo V3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který dokáže detekovat mnoho typů objektů.
+* Modul Edge, který spouští model AI za koncovým bodem HTTP. Tento modul AI používá model [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který dokáže detekovat mnoho typů objektů.
 * Vlastní modul pro počítání a filtrování objektů, který se označuje jako čítač objektu v diagramu. Sestavíte čítač objektu a nasadíte ho v tomto kurzu.
 * [Modul simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro simulaci kamery RTSP.
     
 Jak znázorňuje diagram, použijete v mediálním grafu [zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) k zachycení simulovaného živého videa na dálnici a odeslání tohoto videa na dvě cesty:
 
-* První cesta je uzel [procesoru filtru frekvence snímků](media-graph-concept.md#frame-rate-filter-processor) , který zapisuje snímky videa na zadané (zmenšené) snímkové rychlosti snímků. Tyto snímky videa se odesílají do uzlu rozšíření HTTP. Uzel pak přenáší snímky jako obrázky do modulu AI YOLO v3, což je objektový detektor. Uzel obdrží výsledky, což jsou objekty (vozidla v provozu) zjištěné modelem. Uzel rozšíření HTTP pak tyto výsledky publikuje prostřednictvím uzlu jímky zpráv IoT Hub do centra IoT Edge.
+* První cesta je uzel rozšíření HTTP. Uzel navzorkuje snímky videa na hodnotu nastavenou pomocí `samplingOptions` pole a pak přenáší snímky jako obrázky do modulu AI YOLOv3, což je objektový detektor. Uzel obdrží výsledky, což jsou objekty (vozidla v provozu) zjištěné modelem. Uzel rozšíření HTTP pak tyto výsledky publikuje prostřednictvím uzlu jímky zpráv IoT Hub do centra IoT Edge.
 * Modul objectCounter je nastavený tak, aby přijímal zprávy z centra IoT Edge, které zahrnuje výsledky detekce objektu (vozidla v provozu). Modul tyto zprávy zkontroluje a vyhledá objekty určitého typu, které byly nakonfigurovány prostřednictvím nastavení. Když takový objekt najde, tento modul pošle zprávu do centra IoT Edge. Zprávy o nalezených objektech se pak přesměrují do zdrojového uzlu IoT Hub v mediálním grafu. Po přijetí takové zprávy IoT Hub zdrojový uzel v mediálním grafu aktivuje uzel [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) . Uzel procesoru brány signálu se pak otevře po nakonfigurované době. Video prochází bránou do uzlu jímka assetu za tuto dobu. Tato část živého streamu se pak prostřednictvím uzlu [jímka assetu](media-graph-concept.md#asset-sink) zaznamená do [assetu](terminology.md#asset) v účtu Azure Media Services.
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí

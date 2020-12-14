@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1e16c984e48c11961dba0c977d3bdbddbd6bdf36
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032104"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400315"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -26,7 +26,7 @@ Nasazení umožňuje:
 * Interakce jarního cloudu Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích
 * Podpora zákazníků pro řízení příchozí a odchozí síťové komunikace pro jarní cloud Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Musíte zaregistrovat poskytovatele prostředků cloudu Azure pro *Microsoft. AppPlatform* a *Microsoft. ContainerService* podle pokynů [v článku registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu AZ CLI:
 
 ```azurecli
@@ -157,14 +157,17 @@ Tyto síťové prostředky jsou připojené k vaší virtuální síti vytvořen
 
 Rozsah malých podsítí ukládá IP adresy, ale přináší omezení maximálního počtu instancí aplikace, které může cloudové úložiště Azure uchovávat. 
 
-| IPv4/IPv6 | Celkový počet IP adres | Dostupné IP adresy | Maximální počet instancí aplikace                                        |
-| ---- | --------- | ------------- | ------------------------------------------------------------ |
-| za 28  | 16        | 8             | <p> Aplikace s 1 jádrem: 96 <br/> Aplikace se 2 jádry: 48<br/>  Aplikace se 3 jádry: 32 <br/> Aplikace se 4 jádry: 24 </p> |
-| /27  | 32        | 24            | <p> Aplikace s 1 jádrem: 228<br/> Aplikace se 2 jádry: 144<br/>  Aplikace se 3 jádry: 96 <br/>  Aplikace se 4 jádry: 72</p> |
-| za 26  | 64        | 56            | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 336<br/>  Aplikace se 3 jádry: 224<br/>  Aplikace se 4 jádry: 168</p> |
-| za 25  | 128       | 120           | <p> Aplikace s 1 jádrem: 500<br> Aplikace se 2 jádry: 500<br>  Aplikace se 3 jádry: 480<br>  Aplikace se 4 jádry: 360</p> |
-| za 24  | 256       | 248           | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 500<br/>  Aplikace se 3 jádry: 500<br/>  Aplikace se 4 jádry: 500</p> |
+| CIDR podsítě aplikace | Celkový počet IP adres | Dostupné IP adresy | Maximální počet instancí aplikace                                        |
+| --------------- | --------- | ------------- | ------------------------------------------------------------ |
+| za 28             | 16        | 8             | <p> Aplikace s 1 jádrem: 96 <br/> Aplikace se 2 jádry: 48<br/>  Aplikace se 3 jádry: 32 <br/> Aplikace se 4 jádry: 24 </p> |
+| /27             | 32        | 24            | <p> Aplikace s 1 jádrem: 228<br/> Aplikace se 2 jádry: 144<br/>  Aplikace se 3 jádry: 96 <br/>  Aplikace se 4 jádry: 72</p> |
+| za 26             | 64        | 56            | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 336<br/>  Aplikace se 3 jádry: 224<br/>  Aplikace se 4 jádry: 168</p> |
+| za 25             | 128       | 120           | <p> Aplikace s 1 jádrem: 500<br> Aplikace se 2 jádry: 500<br>  Aplikace se 3 jádry: 480<br>  Aplikace se 4 jádry: 360</p> |
+| za 24             | 256       | 248           | <p> Aplikace s 1 jádrem: 500<br/> Aplikace se 2 jádry: 500<br/>  Aplikace se 3 jádry: 500<br/>  Aplikace se 4 jádry: 500</p> |
 
+Pro podsítě je 5 IP adres rezervovaných Azure a minimálně 4 adresy vyžaduje Azure jaře Cloud. Vyžaduje se aspoň 9 IP adres, takže/29 a/30 nejsou funkční.
+
+Pro podsíť modulu runtime služby je minimální velikost a/28 a nemá žádný vliv na počet instancí aplikace.
 ## <a name="next-steps"></a>Další kroky
 
 [Nasazení aplikace do jarního cloudu Azure ve vaší virtuální síti](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)

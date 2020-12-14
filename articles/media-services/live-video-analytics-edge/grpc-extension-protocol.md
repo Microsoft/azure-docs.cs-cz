@@ -3,25 +3,29 @@ title: protokol rozšíření gRPC – Azure
 description: V tomto článku se dozvíte o použití protokolu rozšíření gRPC k odesílání zpráv mezi modulem Live video Analytics a vlastním rozšířením AI nebo CV.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448354"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401623"
 ---
 # <a name="grpc-extension-protocol"></a>Protokol rozšíření gRPC
 
+Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím [uzlu rozšíření grafu](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update). Pokud používáte jako uzel rozšíření procesor rozšíření gRPC, pak je komunikace mezi modulem Live video Analytics a vaším modulem AI nebo CV přes gRPC, vysoce výkonného strukturovaného protokolu.
+
 V tomto článku se dozvíte o použití protokolu rozšíření gRPC k odesílání zpráv mezi modulem Live video Analytics a vlastním rozšířením AI nebo CV.
 
-gRPC je moderní, open source a vysoce výkonné rozhraní RPC, které běží v jakémkoli prostředí. Služba gRPC Transport používá obousměrné streamování HTTP/2 mezi:
+gRPC je moderní, open source a vysoce výkonné rozhraní RPC, které běží v jakémkoli prostředí a podporuje komunikaci mezi platformami a různými jazyky. Služba gRPC Transport používá obousměrné streamování HTTP/2 mezi:
 
 * klient gRPC (Live video Analytics v modulu IoT Edge) a 
 * Server gRPC (vaše vlastní rozšíření).
 
 Relace gRPC je jediné připojení od klienta gRPC k serveru gRPC přes port TCP/TLS. 
 
-V jedné relaci: klient pošle popisovač streamování médií následovaný snímky videa na server jako zprávu [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) prostřednictvím relace gRPC streamu. Server ověří popisovač streamu, analyzuje snímek videa a vrátí výsledky odvození jako protobuf zprávu.
+V jedné relaci: klient pošle popisovač streamování médií následovaný snímky videa na server jako zprávu [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) prostřednictvím relace gRPC streamu. Server ověří popisovač streamu, analyzuje snímek videa a vrátí výsledky odvození jako protobuf zprávu. 
+
+Důrazně doporučujeme, aby se odpovědi vracely pomocí platných dokumentů JSON po předem zavedeném schématu definovaném podle [modelu objektu schématu pro odvození metadat](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update). To zajistí lepší spolupráci s ostatními komponentami a možné budoucí možnosti přidané do modulu Live video Analytics.
 
 ![kontrakt rozšíření gRPC](./media/grpc-extension-protocol/grpc.png)
 
@@ -32,9 +36,10 @@ V jedné relaci: klient pošle popisovač streamování médií následovaný sn
 Vlastní rozšíření musí implementovat tuto službu gRPC:
 
 ```
-service MediaGraphExtension {
-  rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
-}
+service MediaGraphExtension
+    {
+        rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
+    }
 ```
 
 Když se tato akce zavolá, otevře se obousměrný datový proud pro zprávy, které se budou přenášet mezi rozšířením gRPC a grafem Live video Analytics. První zpráva odeslaná v tomto datovém proudu každou stranou bude obsahovat MediaStreamDescriptor, který definuje, jaké informace se budou odesílat v následujících MediaSamples.
@@ -45,18 +50,23 @@ Například může rozšíření grafu odeslat zprávu (vyjádřenou ve formátu
  {
     "sequence_number": 1,
     "ack_sequence_number": 0,
-    "media_stream_descriptor": {
-        "graph_identifier": {
+    "media_stream_descriptor": 
+    {
+        "graph_identifier": 
+        {
             "media_services_arm_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/microsoft.media/mediaservices/mediaAccountName",
             "graph_instance_name": "mediaGraphName",
             "graph_node_name": "grpcExtension"
         },
-        "media_descriptor": {
+        "media_descriptor": 
+        {
             "timescale": 90000,
-            "video_frame_sample_format": {
+            "video_frame_sample_format": 
+            {
                 "encoding": "RAW",
                 "pixel_format": "RGB24",
-                "dimensions": {
+                "dimensions": 
+                {
                     "width": 416,
                     "height": 416
                 },
@@ -73,13 +83,17 @@ Vlastní rozšíření by v reakci poslalo následující zprávu, aby označova
 {
     "sequence_number": 1,
     "ack_sequence_number": 1,
-    "media_stream_descriptor": {
-        "extension_identifier": "customExtensionName"    }
+    "media_stream_descriptor": 
+    {
+        "extension_identifier": "customExtensionName"    
+    }
 }
 ```
 
 Teď, když se na obou stranách vyměnily popisovače médií, začne dynamická analýza videa zasílat do tohoto rozšíření snímky.
 
+> [!NOTE]
+> Implementaci na straně serveru gRPC můžete provést v programovacím jazyce podle vašeho výběru.
 ### <a name="sequence-numbers"></a>Pořadová čísla
 
 Uzel rozšíření gRPC a vlastní rozšíření uchovávají samostatnou sadu pořadových čísel, která jsou přiřazena ke svým zprávám. Tato pořadová čísla by se měla rovnoměrně zvětšující zvýšit od 1. `ack_sequence_number` může být ignorováno, pokud není potvrzena žádná zpráva, což může nastat při odeslání první zprávy.
@@ -106,7 +120,8 @@ Příjemce pak soubor otevře `/dev/shm/inference_client_share_memory_2146989006
 ```
 {
     "timestamp": 143598615750000,
-    "content_reference": {
+    "content_reference": 
+    {
         "address_offset": 519168,
         "length_bytes": 173056
     }
@@ -123,25 +138,27 @@ Aby kontejner Live video Analytics mohl komunikovat přes sdílenou paměť, mus
 V takovém případě se to může podobat tomu, že se zařízení bude líbit pomocí první možnosti výše.
 
 ```
-"liveVideoAnalytics": {
+"liveVideoAnalytics": 
+{
   "version": "1.0",
   "type": "docker",
   "status": "running",
   "restartPolicy": "always",
-  "settings": {
+  "settings": 
+  {
     "image": "mcr.microsoft.com/media/live-video-analytics:1",
     "createOptions": 
-      "HostConfig": {
+      "HostConfig": 
+      {
         "IpcMode": "host"
       }
-    }
   }
 }
 ```
 
 Další informace o režimech IPC naleznete v tématu https://docs.docker.com/engine/reference/run/#ipc-settings---ipc .
 
-## <a name="media-graph-grpc-extension-contract-definitions"></a>Definice kontraktu rozšíření gRPC Media graphu
+## <a name="mediagraph-grpc-extension-contract-definitions"></a>Definice kontraktů rozšíření MediaGraph gRPC
 
 Tato část definuje kontrakt gRPC definující tok dat.
 
@@ -159,10 +176,12 @@ K tomu můžete použít přihlašovací údaje uživatelského jména a hesla. 
 {
   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
   "name": "{moduleIdentifier}",
-  "endpoint": {
+  "endpoint": 
+  {
     "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
     "url": "tcp://customExtension:8081",
-    "credentials": {
+    "credentials": 
+    {
       "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
       "username": "username",
       "password": "password"
@@ -175,6 +194,35 @@ K tomu můžete použít přihlašovací údaje uživatelského jména a hesla. 
 Po odeslání žádosti gRPC bude v metadatech žádosti mimicking základní ověřování HTTP, které obsahuje následující hlavičku.
 
 `x-ms-authentication: Basic (Base64 Encoded username:password)`
+
+
+## <a name="configuring-inference-server-for-each-mediagraph-over-grpc-extension"></a>Konfigurace odvození serveru pro každý MediaGraph prostřednictvím rozšíření gRPC
+Při konfiguraci odvozeného serveru není nutné zveřejnit uzel pro každý model AI, který je zabalen v rámci odvozeného serveru. Místo toho můžete pro instanci grafu použít `extensionConfiguration` vlastnost `MediaGraphGrpcExtension` uzlu a definovat, jak se mají vybrat modely AI. Během provádění bude LVA tento řetězec předat serveru Inferencing, který ho může použít k vyvolání požadovaného modelu AI. Tato `extensionConfiguration` vlastnost je volitelnou vlastností a je specifická pro server. Vlastnost lze použít podobně jako v následujícím příkladu:
+```
+{
+  "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+  "name": "{moduleIdentifier}",
+  "endpoint": 
+  {
+    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+    "url": "${grpcExtensionAddress}",
+    "credentials": 
+    {
+      "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+      "username": "${grpcExtensionUserName}",
+      "password": "${grpcExtensionPassword}"
+    }
+  },
+    // Optional server configuration string. This is server specific 
+  "extensionConfiguration": "{Optional extension specific string}",
+  "dataTransfer": 
+  {
+    "mode": "sharedMemory",
+    "SharedMemorySizeMiB": "5"
+  }
+    //Other fields omitted
+}
+```
 
 ## <a name="using-grpc-over-tls"></a>Použití gRPC přes TLS
 

@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: vytvoření účtu Azure dosah v Azure Portal (Preview)'
 description: V tomto rychlém startu se dozvíte, jak vytvořit účet Azure dosah a nakonfigurovat oprávnění, abyste ho mohli začít používat.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359294"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400382"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -25,7 +25,7 @@ V tomto rychlém startu vytvoříte účet Azure dosah.
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Váš vlastní [Azure Active Directory tenant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Vlastní [klient Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
 * Váš účet musí mít oprávnění k vytváření prostředků v předplatném.
 

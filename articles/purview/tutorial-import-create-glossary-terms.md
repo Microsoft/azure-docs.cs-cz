@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: vytvoření a import podmínek glosáře v Azure dosah (Preview)'
 description: V tomto kurzu se dozvíte, jak vytvořit Glosář pojmů, přidat do assetu výrazy glosáře a importovat terminologie glosáře.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3a81d9480dfb07703d5f1ccfb495d069f140dd71
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555685"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399804"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Kurz: vytvoření a import podmínek glosáře v Azure dosah (Preview)
 
@@ -37,9 +37,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-## <a name="create-glossary-terms"></a>Vytvoření pojmů glosáře
+## <a name="create-glossary-terms"></a>Vytváření termínů glosáře
 
 V glosáři můžete vytvořit obchodní nebo technické výrazy. Prostředky můžete také opatřit poznámkami, a to použitím podmínek.
 
@@ -63,7 +63,7 @@ Vytvořte Glosář pomocí následujících kroků:
 
    :::image type="content" source="./media/tutorial-import-create-glossary-terms/glossary-terms-page.png" alt-text="Snímek obrazovky zobrazující stránku pojmů glosáře":::
 
-1. Vyberte možnost **nové**  >  **Výchozí označení systému**  >  **Continue**.
+1. Vyberte možnost **nové**  >  **Výchozí označení systému**  >  .
 
 1. Na kartě **Přehled** na stránce **nový termín** zadejte **název** nového termínu: *finanční*.
 
@@ -115,7 +115,7 @@ V tomto postupu importujete pojem glosáře prostřednictvím souboru. CSV:
 
 V této části se dozvíte, jak vytvořit vlastní šablonu s vlastními atributy a importovat data pomocí souboru CSV šablony.
 
-Existuje několik existujících šablon systémových termínů, které můžete zobrazit výběrem **Glosář**  >  **spravovat systém šablon termínů**  >  **System**.
+Existuje několik existujících šablon systémových termínů, které můžete zobrazit výběrem **Glosář**  >  **spravovat systém šablon termínů**  >  .
 
 :::image type="content" source="./media/tutorial-import-create-glossary-terms/system-term-templates.png" alt-text="Šablony systémových termínů.":::
 

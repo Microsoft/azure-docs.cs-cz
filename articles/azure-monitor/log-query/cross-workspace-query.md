@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013645"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400756"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Provádění dotazů protokolu v Azure Monitor, které jsou rozloženy mezi pracovními prostory a aplikacemi
 
@@ -22,7 +22,7 @@ Existují dvě metody dotazování na data, která jsou uložená ve více praco
 2. Implicitně pomocí [dotazů kontextu prostředků](../platform/design-logs-deployment.md#access-mode). Při dotazování v kontextu konkrétního prostředku, skupiny prostředků nebo předplatného budou relevantní data načtena ze všech pracovních prostorů, které obsahují data pro tyto prostředky. Application Insights data uložená v aplikacích nebudou načtena.
 
 > [!IMPORTANT]
-> Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
+> Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Použijte výraz pracovní prostor () k zápisu dotazu, který obsahuje aplikaci v několika pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
 
 ## <a name="cross-resource-query-limits"></a>Omezení dotazů mezi prostředky 
