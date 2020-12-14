@@ -141,6 +141,8 @@
           href: howto-firewall.md
         - name: Konfigurace možností připojení Private Linku
           href: howto-private-link.md
+        - name: Správa přístupu k prostředkům – Spoke VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: Monitorování
       items:
         - name: Protokoly a metriky

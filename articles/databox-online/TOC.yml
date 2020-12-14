@@ -285,8 +285,8 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Sdílené poznámky k verzi
       items:
-        - name: 2011 – aktuální
-          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2012 – aktuální
+          href: azure-stack-edge-gpu-2012-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
         - name: 2008

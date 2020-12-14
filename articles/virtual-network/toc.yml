@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: Koncepty
   items:
+    - name: Koncepty a osvědčené postupy
+      href: concepts-and-best-practices.md
     - name: Kontinuita podnikových procesů
       href: virtual-network-disaster-recovery-guidance.md
     - name: Připojení

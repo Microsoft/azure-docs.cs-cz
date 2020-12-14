@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Stack Edge – online přenos
-summary: Zařízení Azure Stack Edge použijte pro vysoce výkonné přenosy dat prostřednictvím sítě. Zařízení Azure Stack Edge Pro vybavená hardwarem pro zrychlení výpočetních funkcí můžete využít k filtrování, analýze a transformaci dat, ještě než se přesunou do Azure.
+title: Dokumentace ke službě Azure Stack Edge
+summary: Pomocí zařízení Azure Stack Edge můžete doručovat možnosti Azure, jako jsou výpočetní funkce, úložiště, sítě a strojového učení s hardwarovou akcelerací, do libovolného hraničního umístění.
 metadata:
-  title: Dokumentace ke službě Azure Stack Edge – online přenos
+  title: Dokumentace ke službě Azure Stack Edge
   description: Dokumentace ke službě Azure Stack Edge pro vysoce výkonné přenosy dat prostřednictvím sítě do Azure
   services: databox
   ms.service: databox
@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 10/27/2020
-  ms.openlocfilehash: 2ee9153bc500c7d5184e32712e0707d1c0f2507e
-  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.openlocfilehash: e0b1c488635314a8583f216d966a75095ac5e279
+  ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96574186"
+  ms.lasthandoff: 12/12/2020
+  ms.locfileid: "97356085"
 landingContent:
 - title: Informace o službě Azure Stack Edge
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: azure-stack-edge-overview.md
     - text: Co je Azure Stack Edge R?
       url: azure-stack-edge-j-series-overview.md
-    - text: Co je Azure Stack Edge Mini?
+    - text: Co je Azure Stack Edge Mini R?
       url: azure-stack-edge-k-series-overview.md
   - linkListType: architecture
     links:
@@ -39,8 +39,8 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: Poznámky k verzi 2011
-      url: azure-stack-edge-gpu-2011-release-notes.md
+    - text: Poznámky k verzi 2012
+      url: azure-stack-edge-gpu-2012-release-notes.md
 - title: Požadavky a omezení
   linkLists:
   - linkListType: concept

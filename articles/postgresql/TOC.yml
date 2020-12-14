@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Sdílená dokumentace
   items:
+    - name: Nasazení databáze
+      items:
+        - name: Github Actions
+          href: how-to-deploy-github-action.md
     - name: Migrace
       items:
         - name: Migrace dat s využitím pg_dump a pg_restore
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: Vývoj aplikací
           items:
+            - name: Osvědčené postupy
+              href: application-best-practices.md
             - name: Knihovny připojení
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: Kurzy
       items:
-        - name: Vytvoření webové aplikace ve virtuální síti
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: Nasazení aplikace v Djangu
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: Sestavování aplikací s využitím AKS
+          items:
+            - name: Nasazení aplikace v Pythonu v Kubernetes
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: Sestavování aplikací s využitím App Services
+          items:
+            - name: Vytvoření webové aplikace ve virtuální síti
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: Nasazení aplikace v Djangu na App Service
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: Koncepty
       items:
         - name: Servery
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: Průvodce připojením a dotazováním
+              href: flexible-server/how-to-connect-query-guide.md
         - name: Plánovaná údržba
           items:
             - name: portál Azure

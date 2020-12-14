@@ -322,9 +322,10 @@
               href: msal-net-migration-ios-broker.md
             - name: Aspekty webových prohlížečů
               href: msal-net-web-browsers.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=dotnet
-            - name: Protokolování
+            - name: Zpracování chyb a výjimek v MSAL.NET
+              href: msal-error-handling-dotnet.md
+              displayName: 'handling, catch'
+            - name: Protokolování v MSAL.NET
               href: msal-logging.md?tabs=dotnet
             - name: Získání tokenu z mezipaměti
               href: msal-net-acquire-token-silently.md
@@ -363,9 +364,10 @@
               href: msal-js-use-ie-browser.md
             - name: Známé problémy – IE a Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=javascript
-            - name: Protokolování
+            - name: Zpracování chyb a výjimek v MSAL.js
+              href: msal-error-handling-js.md
+              displayName: 'handling, catch'
+            - name: Protokolování v MSAL.js
               href: msal-logging.md?tabs=javascript
         - name: MSAL pro iOS a MacOS
           items:
@@ -392,9 +394,10 @@
               href: sso-between-adal-msal-apps-macos-ios.md
             - name: Řešení potíží s protokolem SSL (MSAL iOS/macOS)
               href: ssl-issues.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=iosmacos
-            - name: Protokolování
+            - name: Zpracování chyb a výjimek v MSAL pro iOS/macOS
+              href: msal-error-handling-ios.md
+              displayName: 'handling, catch'
+            - name: Protokolování v MSAL pro iOS/macOS
               href: msal-logging.md?tabs=swift
         - name: MSAL pro Python
           items:
@@ -404,9 +407,10 @@
               href: migrate-python-adal-msal.md
             - name: Podpora ADFS v MSAL pro Python
               href: msal-python-adfs-support.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=python
-            - name: Protokolování
+            - name: Zpracování chyb a výjimek v MSAL pro Python
+              href: msal-error-handling-python.md
+              displayName: 'handling, catch'
+            - name: Protokolování v MSAL pro Python
               href: msal-logging.md?tabs=python
         - name: MSAL pro Javu
           items:
@@ -418,9 +422,10 @@
               href: migrate-adal-msal-java.md
             - name: Podpora ADFS v MSAL pro Javu
               href: msal-java-adfs-support.md
-            - name: Zpracování chyb a výjimek
-              href: msal-handling-exceptions.md?tabs=java
-            - name: Protokolování
+            - name: Zpracování chyb a výjimek v MSAL pro Javu
+              href: msal-error-handling-java.md
+              displayName: 'handling, catch'
+            - name: Protokolování v MSAL pro Javu
               href: msal-logging.md?tabs=java
         - name: MSAL pro Android
           items:
@@ -437,10 +442,10 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: Veřejné klientské aplikace s jedním a více účty
               href: single-multi-account.md
-            - name: Zpracování chyb a výjimek
+            - name: Zpracování chyb a výjimek v MSAL pro Android
               href: msal-android-handling-exceptions.md
-              displayName: 'android, mobile'
-            - name: Protokolování
+              displayName: 'android, mobile, handling, catch'
+            - name: Protokolování v MSAL pro Android
               href: msal-logging.md?tabs=android
     - name: Přizpůsobení tokenů a deklarací identity
       items:
