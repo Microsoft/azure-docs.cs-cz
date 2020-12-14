@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 9bdda9b78e103f02d91c81cb3dc28c957d313436
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 8734c43ecb92faf37f1d95b1a24d1c99db3e86d5
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95321444"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371913"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,7 +31,11 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
-V tuto chvíli neexistují žádné nadcházející důležité změny, které vyžadují předběžné oznámení. 
+### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení
+
+**Odhadované datum změny:** Leden 2021
+
+V současné době se prostředky vyhodnocené pro doporučení a zjištěné jako nevyhovující **se zobrazí v** Azure Policy jako "nekompatibilní". Žádná akce uživatele nemůže změnit stav na "kompatibilní". Z této plánované změny budou pro lepší přehlednost nahlášeny jako "vyhovující".
 
 
 ## <a name="next-steps"></a>Další kroky

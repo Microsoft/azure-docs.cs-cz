@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601131"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371879"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -143,13 +143,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Yes    |
-| **Vlastní metriky**  |  Yes       |                     |  Yes    |
-| **Závislosti**    |            |                     |  Yes    |
-| **Výjimky**      |            |  Yes                |  Yes    |
-| **Page Views**      |            |                     |  Yes    |
-| **Žádosti**        |            |                     |  Yes    |
-| **Trasování**          |            |  Yes                |  Yes    |
+| **Vlastní události**   |            |                     |  Ano    |
+| **Vlastní metriky**  |  Ano       |                     |  Ano    |
+| **Závislosti**    |            |                     |  Ano    |
+| **Výjimky**      |            |  Ano                |  Ano    |
+| **Page Views**      |            |                     |  Ano    |
+| **Žádosti**        |            |                     |  Ano    |
+| **Trasování**          |            |  Ano                |  Ano    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -186,17 +186,17 @@ Log4j, Logback a Java. util. protokolování je automaticky instrumentované a p
 Ve výchozím nastavení je protokolování shromažďováno pouze v případě, že je protokolování provedeno na úrovni informací nebo výše.
 Postup změny této úrovně najdete v [možnostech konfigurace](./java-standalone-config.md#auto-collected-logging) .
 
-Pokud chcete připojovat vlastní dimenze k protokolům, můžete použít [log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)nebo [Logback MDC](http://logback.qos.ch/manual/mdc.html)a Application Insights Java 3,0 budou tyto vlastnosti MDC automaticky zachytit jako vlastní rozměry na telemetrii trasování a telemetrie výjimek.
+Pokud chcete k protokolům připojovat vlastní dimenze, můžete použít [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)nebo [Logback MDC](http://logback.qos.ch/manual/mdc.html)a Application Insights Java 3,0 automaticky zachytává tyto vlastnosti MDC jako vlastní rozměry na vaší platformě trasování a telemetrie výjimek.
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Odeslání vlastní telemetrie pomocí Application Insights Java 2. x SDK
 
-Přidejte `applicationinsights-core-2.6.0.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
+Přidejte `applicationinsights-core-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 

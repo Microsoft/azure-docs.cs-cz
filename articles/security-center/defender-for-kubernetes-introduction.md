@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791915"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371998"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -20,7 +20,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vý
 
 Azure Security Center a AKS tvoří nejlepší nabídku Kubernetes zabezpečení cloudu a společně poskytují posílení zabezpečení prostředí, ochranu úloh a ochranu za běhu, jak je uvedeno níže.
 
-Pro detekci hrozeb pro clustery Kubernetes povolte **Azure Defender pro Kubernetes** .
+Pro detekci hrozeb pro clustery Kubernetes povolte **Azure Defender pro Kubernetes**.
 
 Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozici, pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md).
 
@@ -31,7 +31,7 @@ Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozi
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Kubernetes** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) Čína gov<br>![Ne](./media/icons/no-icon.png) US Gov, jiné gov|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Jaké jsou výhody Azure Defenderu pro Kubernetes?
@@ -72,7 +72,7 @@ Můžete vidět, že položky přijaté a analyzované pomocí Security Center z
 - protokoly auditu ze serveru rozhraní API
 - nezpracované události zabezpečení od agenta Log Analytics
 - informace o konfiguraci clusteru z clusteru AKS
-- Konfigurace úlohy z Azure Policy (prostřednictvím **Azure Policy doplňku pro Kubernetes** ). [Další informace o osvědčených postupech ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- Konfigurace úlohy z Azure Policy (prostřednictvím **Azure Policy doplňku pro Kubernetes**). [Další informace o osvědčených postupech ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Architektura interakce mezi Azure Security Center, službou Azure Kubernetes a Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -113,6 +113,6 @@ V tomto článku jste se dozvěděli o ochraně Security Center Kubernetes, vče
 
 Související materiály najdete v následujících článcích: 
 
-- [Povolit Azure Defender](security-center-pricing.md)
+- [Povolení Azure Defenderu](security-center-pricing.md)
 - [Streamování výstrah do řešení pro správu služeb SIEM, společnosti nebo IT](export-to-siem.md)
 - [Referenční tabulka výstrah](alerts-reference.md)

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932264"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371981"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -42,9 +42,12 @@ Informace o právních výrazech a zásadách ochrany osobních údajů najdete 
 Můžete začít používat ITSMC provedením následujících kroků:
 
 1.  [Přidat ITSMC.](#add-it-service-management-connector)
-2.  [Vytvořte připojení ITSM.](#create-an-itsm-connection)
-3.  [Použijte připojení.](#use-itsmc)
-
+2. [Propojení produktů nebo služeb ITSM s využitím ITSM konektoru](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
+3.  [Vytvořte připojení ITSM.](#create-an-itsm-connection)
+4.  [Použijte připojení.](#use-itsmc)
+   
+   >[!NOTE]
+> Je nutné postupovat podle tohoto pořadí, jinak se zobrazí chyba.
 
 ##  <a name="add-it-service-management-connector"></a>Přidat konektor pro správu služeb IT
 

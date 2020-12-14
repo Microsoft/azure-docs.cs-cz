@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309830"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371964"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -48,7 +48,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 > [!NOTE]
 > Log Analytics export dat zapisuje data jako doplňovací objekt blob, který je aktuálně ve verzi Preview pro Azure Data Lake Storage Gen2. Před konfigurací exportu do tohoto úložiště musíte otevřít žádost o podporu. Pro tento požadavek použijte následující podrobnosti.
 > - Typ problému: Technický
-> - Předplatné: vaše předplatné
+> - Předplatné:Vaše předplatné
 > - Služba: Data Lake Storage Gen2
 > - Prostředek: název prostředku
 > - Shrnutí: probíhá žádost o registraci předplatného pro příjem dat z Log Analytics exportu dat.
@@ -58,7 +58,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 ## <a name="data-completeness"></a>Úplnost dat
 Export dat bude pokračovat v pokusu o odeslání dat po dobu až 30 minut v případě, že cíl není k dispozici. Pokud není po 30 minutách k dispozici, budou data zahozena, dokud nebude cíl k dispozici.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 Pro funkci exportu dat se momentálně neúčtují žádné další poplatky. Ceny za export dat budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete, že budete exportovat data i po uplynutí období oznámení, bude se vám účtovat příslušná sazba.
 
 ## <a name="export-destinations"></a>Exportovat cíle
@@ -122,6 +122,10 @@ Pravidlo exportu dat definuje data, která se mají exportovat pro sadu tabulek 
 
 –
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu rozhraní příkazového řádku můžete zobrazit tabulky v pracovním prostoru. Může vám to usnadnit kopírování tabulek, které chcete, a zahrnutí v pravidle exportu dat.
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 Pomocí následujícího příkazu vytvořte pravidlo exportu dat do účtu úložiště pomocí rozhraní příkazového řádku.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-Pomocí následujícího příkazu můžete vytvořit pravidlo exportu dat do centra událostí pomocí rozhraní příkazového řádku (CLI).
+Pomocí následujícího příkazu můžete vytvořit pravidlo exportu dat do centra událostí pomocí rozhraní příkazového řádku (CLI). Pro každou tabulku se vytvoří samostatné centrum událostí.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+Pomocí následujícího příkazu vytvořte pravidlo exportu dat pro konkrétní centrum událostí pomocí rozhraní příkazového řádku. Všechny tabulky jsou exportovány do zadaného názvu centra událostí. 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ Následuje ukázkový text žádosti REST pro centrum událostí, kde je zadaný
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>Zobrazit konfiguraci exportu dat
+## <a name="view-data-export-rule-configuration"></a>Zobrazit konfiguraci pravidla exportu dat
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 –
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>Zakázat pravidlo exportu
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+–
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 –
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 –
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu odstraňte pravidlo exportu dat pomocí rozhraní příkazového řádku.
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 –
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+–
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pomocí následujícího příkazu můžete zobrazit všechna pravidla exportu dat v pracovním prostoru pomocí rozhraní příkazového řádku (CLI).
@@ -315,14 +344,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Nepodporované tabulky
 Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, konfigurace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud je tabulka později podporována, budou data exportována v daném čase.
 
-Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou. ```Table <tableName> does not exist in the workspace.```
+Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou tabulka <tableName> v pracovním prostoru neexistuje.
 
 
 ## <a name="supported-tables"></a>Podporované tabulky
 Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže. Všechna data z tabulky budou exportována, pokud nejsou zadána omezení. Tento seznam se bude aktualizovat, protože se přidá podpora dalších tabulek.
 
 
-| Table | Omezení |
+| Tabulka | Omezení |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

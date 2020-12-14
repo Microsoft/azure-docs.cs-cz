@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957805"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371845"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Který software SAP se podporuje pro nasazení Azure
 Tento článek popisuje, jak zjistit, který software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
@@ -82,6 +82,12 @@ Operační systém, verze Oracle DBMS a funkce Oracle podporované v Azure jsou 
 - Systémy SAP jiné než Unicode jsou podporovány pouze s aplikačními servery, které používají hostovaný operační systém Windows. Hostovaný operační systém DBMS může být Oracle Linux nebo Windows. Důvod pro toto omezení je zjevné při kontrole matice dostupnosti produktů SAP (PAM). Pro Oracle Linux SAP nikdy neuvolnilo jádra SAP bez kódování Unicode.
 
 Znalost verzí DBMS, které jsou podporované s cílovou infrastrukturou Azure, je potřeba, abyste zkontrolovali, jestli jsou vydané verze operačních systémů a systémy DBMS podporované u vydání produktu SAP, které jste chtěli spustit. 
+
+## <a name="oracle-linux"></a>Oracle Linux
+Nejvýraznějším dotazům Oracle Linux je, zda SAP podporuje jádro Red Hat, které je nedílnou součástí Oracle Linux. Podrobnosti najdete v [poznámkách k podpoře SAP #1565179](https://launchpad.support.sap.com/#/notes/1565179).
+
+## <a name="other-database-than-sap-hana"></a>Jiná databáze než SAP HANA
+Podpora databází nehana pro úlohy SAP je popsána v [poznámkách k podpoře sap #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
 
 ## <a name="sap-hana-support"></a>Podpora SAP HANA

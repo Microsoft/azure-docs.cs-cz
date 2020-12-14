@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486466"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371930"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -47,6 +47,8 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
 - Které služby Azure, typy virtuálních počítačů Azure a služby Azure Storage jsou k dispozici v různých oblastech Azure, Prohlédněte si [Dostupné produkty](https://azure.microsoft.com/global-infrastructure/services/) v lokalitě v oblasti 
 - Funguje rámec HA třetí strany, kromě Windows a Pacemaker? Zkontrolujte dolní část [poznámky k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - Co je Azure Storage pro můj scénář nejvhodnější? Číst [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md)
+- Je jádro Red Hat v Oracle Enterprise Linux podporované systémem SAP? Přečtěte [si poznámku o podpoře SAP sap #1565179](https://launchpad.support.sap.com/#/notes/1565179)
+- Proč jsou rodiny virtuálních počítačů Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [(](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) s) necertifikované pro SAP HANA? Rodiny virtuálních počítačů Azure Das/EAS jsou založené na hardwaru založeném na procesorech AMD. SAP HANA nepodporuje procesory AMD, a to ani ve virtualizovaných scénářích.
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -74,12 +76,13 @@ V této části najdete informace v tématu Postup konfigurace jednotného přih
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Dokumentace k integraci služeb Azure do komponent SAP
-V této části najdete dokumenty o integraci PowerBI do zdrojů dat SAP a také Azure Data Factory integraci do SAP BW.
+V této části najdete dokumenty ke službě Microsoft Power BI Integration do zdrojů dat SAP a také Azure Data Factory integraci do SAP BW.
 
 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 12/12/2020: byl přidán ukazatel na poznámku ke službě SAP poznámky objasňující podrobnosti o podpoře Oracle Enterprise Linux podle SAP pro to, [co je software SAP podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) .
 - 11/26/2020: Přizpůsobte [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) a [Azure Storage typů pro úlohy SAP](./planning-guide-storage.md) na změnu jednoho [virtuálního počítače SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020: Změna odkazu na nové poznámky SAP týkající se typů systému souborů podporovaných systémem HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) 
 - 10/26/2020: Změna některých tabulek pro konfiguraci služby Azure Premium Storage za účelem objasnění zajištěné a propustnosti v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md)
