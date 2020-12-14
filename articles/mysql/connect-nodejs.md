@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: d1291b645e987f33bd2035580587650b843f1771
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 12/11/2020
+ms.openlocfilehash: b055201bba5147e72fc7ee80e1e9f24320f124a5
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535652"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387645"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for MySQL
 
@@ -53,7 +53,13 @@ V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)pod
 1. Spuštěním následujících příkazů nainstalujte **Node.js** a **npm** – správce balíčků pro Node.js.
 
    ```bash
-   sudo apt-get install -y nodejs npm
+    # Using Ubuntu
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+    # Using Debian, as root
+    curl -sL https://deb.nodesource.com/setup_14.x | bash -
+    apt-get install -y nodejs
    ```
 
 2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček MySQL.
@@ -68,12 +74,8 @@ V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)pod
 
 ### <a name="macos"></a>macOS
 
-1. Zadáním následujících příkazů nainstalujte **Brew** , snadno použitelný správce balíčků pro macOS a **Node.js**.
+1. Přejděte na [ stránkuNode.js ke stažení](https://nodejs.org/en/download/)a pak vyberte instalační program MacOS.
 
-   ```bash
-   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   brew install node
-   ```
 2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček MySQL.
 
    ```bash
@@ -90,7 +92,7 @@ V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)pod
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky** a potom vyhledejte server, který jste vytvořili (například **mydemoserver** ).
+2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky** a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Název serveru Azure Database for MySQL":::

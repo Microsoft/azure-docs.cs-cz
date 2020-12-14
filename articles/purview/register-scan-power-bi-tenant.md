@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904988"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387577"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
 Tento článek popisuje, jak pomocí portálu Azure dosah zaregistrovat a kontrolovat klienta Power BI.
 
 > [!Note]
-> Pokud je instance dosah a tenant Power BI ve stejném tenantovi Azure, můžete k nastavení kontroly Power BI tenanta použít jenom ověřování pomocí spravované identity (MSI). Pokud je instance dosah a klienta Power BI v různých klientech Azure, musíte ověřit pomocí delegovaného ověřování a k nastavení vašich kontrol musíte použít PowerShell. Viz [použití PowerShellu k registraci a kontrole Power BI](powershell-register-scan-power-bi.md).
+> Pokud je instance dosah a tenant Power BI ve stejném tenantovi Azure, můžete k nastavení kontroly Power BI tenanta použít jenom ověřování pomocí spravované identity (MSI). 
 
 ## <a name="create-a-security-group-for-permissions"></a>Vytvoření skupiny zabezpečení pro oprávnění
 

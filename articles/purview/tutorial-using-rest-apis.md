@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 185cb24d5edd08438c56603b602448226ce31f0b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360236"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387815"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Kurz: použití rozhraní REST API
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Abyste mohli začít, musíte mít existující účet Azure dosah. Pokud nemáte katalog, přečtěte si [rychlý Start pro vytvoření účtu Azure dosah](create-catalog-portal.md).
 
@@ -113,7 +113,7 @@ Vyhledejte a uložte následující hodnoty:
   * V levém podokně vyberte v části **Spravovat** možnost **vlastnosti**, najděte **ID tenanta** a potom vyberte ikonu **Kopírovat do schránky** a uložte její hodnotu.
 * Koncový bod aplikace Atlas:
   * Na [stránce účty Azure dosah](https://aka.ms/purviewportal) v Azure Portal vyhledejte a vyberte svůj účet Azure dosah v seznamu.
-  * Vyberte **Přehled**, najděte **koncový bod aplikace Atlas** a potom vyberte ikonu **Kopírovat do schránky** a uložte její hodnotu. Odeberte část *https://* řetězce při pozdějším použití.
+  * Vyberte **vlastnosti**, najděte **koncový bod aplikace Atlas** a potom kliknutím na ikonu **Kopírovat do schránky** uložte její hodnotu. Odeberte část *https://* řetězce při pozdějším použití.
 * Název účtu:
   * Extrahujte název vašeho katalogu z řetězce koncového bodu Atlas. Pokud je například koncový bod aplikace Atlas `https://ThisIsMyCatalog.catalog.purview.azure.com` , je název vašeho účtu `ThisIsMyCatalog` .
 

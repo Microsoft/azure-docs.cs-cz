@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737190"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387339"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Řešení** : Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů a vraťte zpět log_bin_trust_function_creators parametr na předchozí hodnotu po vytvoření.
+**Řešení**: Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů a vraťte zpět log_bin_trust_function_creators parametr na předchozí hodnotu po vytvoření.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>Chyba 1227 (42000) na řádku 101: přístup byl odepřen; pro tuto operaci potřebujete (aspoň jedno z) oprávnění SUPER. Operace selhala s ExitCode 1.
 
 Výše uvedená chyba může nastat při importu souboru s výpisem paměti nebo vytvoření procedury, která obsahuje [zpřesnění](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html). 
 
-**Řešení** : Chcete-li vyřešit tuto chybu, uživatel s právy pro správu může udělit oprávnění k vytvoření nebo spuštění procedur spuštěním příkazu Grant jako v následujících příkladech:
+**Řešení**: Chcete-li vyřešit tuto chybu, uživatel s právy pro správu může udělit oprávnění k vytvoření nebo spuštění procedur spuštěním příkazu Grant jako v následujících příkladech:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -61,6 +61,17 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>Chyba 1227 (42000) na řádku 295: přístup byl odepřen; potřebujete (aspoň jedno z) oprávnění SUPER nebo SET_USER_ID pro tuto operaci.
+
+K výše uvedené chybě může dojít při provádění příkazu CREATE VIEW s příkazy DEFINe v rámci importu souboru s výpisem paměti nebo spuštěním skriptu. Azure Database for MySQL pro žádného uživatele nepovoluje oprávnění SUPER nebo SET_USER_ID. 
+
+**Řešení**: 
+* Pokud je to možné, použijte uživatele definující, aby spustil zobrazení vytvořit. Je možné, že existuje mnoho zobrazení s různými podrobnějšími oprávněními, takže to nemusí být proveditelné.  NEBO
+* Upravte soubor s výpisem paměti nebo vytvořte skript pro zobrazení a odeberte příkaz DEFINe = ze souboru s výpisem paměti nebo 
+* Upravte soubor s výpisem paměti nebo vytvořte skript pro zobrazení a nahraďte hodnoty definované uživatelem s oprávněními správce, které provádí import nebo spuštění souboru skriptu.
+
+> [!Tip] 
+> Pomocí příkazu SED nebo Perl upravte soubor s výpisem paměti nebo skript SQL, který nahradí příkaz DEFINe =.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud jste nenašli odpověď, kterou jste hledali, zvažte následující:

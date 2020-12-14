@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754367"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387466"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
@@ -68,12 +68,24 @@ Níže najdete stránku s cenami za ukázkové předplatné. Všimnete si, že k
 
 ## <a name="faq---pricing-and-billing"></a>Nejčastější dotazy – ceny a fakturace 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Azure Security Center
+- [Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Jaké jsou plány, které nabízí Security Center?](#what-are-the-plans-offered-by-security-center)
+- [Jak pro předplatné povolím Azure Defender?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Security Center?
 K předplatným Azure může mít několik správců oprávnění ke změně nastavení cen. Chcete-li zjistit, který uživatel provedl změnu, použijte protokol aktivit Azure.
 
-Pokud informace o uživateli nejsou uvedené ve sloupci **událost iniciováno** , prozkoumejte událost pro příslušné podrobnosti.
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Protokol aktivit Azure zobrazující událost změny cen":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Protokol událostí Azure zobrazující událost změny cen":::
+Pokud informace o uživateli nejsou uvedené ve sloupci **událost iniciováno** , prozkoumejte ve formátu JSON události příslušné podrobnosti.
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Průzkumník JSON protokolu aktivit Azure":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Jaké jsou plány, které nabízí Security Center? 
@@ -107,14 +119,18 @@ No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introducti
 > To platí i pro ostatní typy prostředků, které jsou chráněné pomocí Security Center. 
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?
-Yes. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
+Ano. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát? 
-Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
+Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.
-Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
+Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?
+Pro každý počítač připojený k pracovnímu prostoru získáte 500 MB bezplatného příjmu dat za den. Konkrétně pro datové typy zabezpečení přímo shromažďované nástrojem Azure Security Center.
+
+Tato data tvoří průměrnou denní rychlost napříč všemi uzly. Takže i když některé počítače odesílají 100-MB a jiné odesílají 800-MB, pokud celková hodnota nepřekročí limit **[počet počítačů] × 500-MB** , nebude se vám účtovat žádná další.
 
 ## <a name="next-steps"></a>Další kroky
 Tento článek vysvětluje Security Center cenové možnosti. Související materiály najdete v tématech:

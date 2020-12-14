@@ -8,19 +8,61 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948268"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387084"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
+Technický profil poskytuje rozhraní s integrovaným mechanismem pro komunikaci s různými typy stran pomocí vlastních zásad v Azure Active Directory B2C (Azure AD B2C). Technické profily se používají ke komunikaci s vaším klientem Azure AD B2C, k vytvoření uživatele nebo čtení profilu uživatele. Technický profil může být vlastním uplatněním, aby bylo možné interakci s uživatelem. Například Shromážděte přihlašovací údaje uživatele pro přihlášení a pak vykreslete stránku pro registraci nebo resetování hesla.
+
+## <a name="type-of-technical-profiles"></a>Typ technických profilů
+
+Technický profil umožňuje tyto typy scénářů:
+
+- [Application Insights](application-insights-technical-profile.md) – odesílání dat události do [Application Insights](../azure-monitor/app/app-insights-overview.md).
+- [Azure Active Directory](active-directory-technical-profile.md) – poskytuje podporu pro správu uživatelů Azure Active Directory B2C.
+- [Azure ad Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – poskytuje podporu pro ověření telefonního čísla pomocí Azure AD Multi-Factor Authentication (MFA). 
+- [Transformace deklarací identity](claims-transformation-technical-profile.md) – volá výstupní transformace deklarací identity za účelem manipulace s hodnotami deklarací identity, ověřování deklarací identity nebo nastavení výchozích hodnot pro sadu výstupních deklarací.
+- [Pomocný parametr tokenu ID](id-token-hint.md) – ověřuje `id_token_hint` signaturu tokenu JWT, název vystavitele a cílovou skupinu tokenů a extrahuje deklaraci identity z příchozího tokenu.
+- [Vystavitel tokenu JWT](jwt-issuer-technical-profile.md) – vygeneruje token JWT, který se vrátí zpět do aplikace předávající strany.
+- [OAuth1](oauth1-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu OAuth 1,0.
+- [OAuth2](oauth2-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu OAuth 2,0.
+- [Jednorázové heslo](one-time-password-technical-profile.md) – poskytuje podporu pro správu generování a ověřování jednorázového hesla.
+- [OpenID Connect](openid-connect-technical-profile.md) -Federation s libovolným poskytovatelem identity protokolu OpenID Connect.
+- [Phone Factor](phone-factor-technical-profile.md) – podpora registrace a ověření telefonních čísel.
+- [Poskytovatel RESTful](restful-technical-profile.md) – volání služeb REST API Services, například ověření vstupu uživatele, rozšíření uživatelských dat nebo integrace s podnikovými aplikacemi.
+- [Zprostředkovatel identity SAML](saml-identity-provider-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu SAML
+- [Vystavitel tokenu SAML](saml-issuer-technical-profile.md) – vygeneruje token SAML, který se vrátí zpátky do aplikace předávající strany.
+- Uživatel s [vlastním uplatněním](self-asserted-technical-profile.md) : interakce s uživatelem. Například Shromážděte přihlašovací údaje uživatele pro přihlášení, vykreslete stránku pro registraci nebo resetování hesla.
+- [Správa relací](custom-policy-reference-sso.md) – zpracovává různé typy relací.
+
+## <a name="technical-profile-flow"></a>Tok technického profilu
+
+Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat vstupní deklarace identity, spouštět transformaci deklarací identity a komunikovat s nakonfigurovanou stranou, jako je zprostředkovatel identity, REST API nebo adresářové služby Azure AD. Po dokončení procesu bude technický profil vracet výstupní deklarace identity a může spustit transformaci deklarací identity. Následující diagram znázorňuje, jak se zpracovávají transformace a mapování, na které se odkazuje v technickém profilu. Bez ohledu na to, v jaké straně technický profil spolupracuje, se po provedení jakékoli transformace deklarací identity z technického profilu hned uloží i deklarace identity z technického profilu do kontejneru deklarací identity.
+
+![Diagram znázorňující tok technického profilu](./media/technical-profiles/technical-profile-flow.png)
+
+1. **Správa relací jednotného přihlašování (SSO)** – obnoví stav relace technického profilu pomocí [správy relace jednotného](custom-policy-reference-sso.md)přihlašování.
+1. **Transformace vstupních deklarací** – před zahájením technického profilu Azure AD B2C spustí vstup [transformace deklarací]. (claimstransformations.md).
+1. **Vstupní deklarace identity** – deklarace se vybírají z kontejneru deklarací identity, které se používají pro technický profil.
+1. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Například:
+    - Přesměrujte uživatele na zprostředkovatele identity, abyste mohli dokončit přihlášení. Po úspěšném přihlášení se uživatel vrátí zpět a provádění technického profilu bude pokračovat.
+    - Volání REST API při posílání parametrů jako InputClaims a získání informací zpět jako OutputClaims.
+    - Vytvořte nebo aktualizujte uživatelský účet.
+    - Odešle a ověří textovou zprávu MFA.
+1. **Technické profily ověřování** – technický profil pro ověření s [vlastním uplatněním](self-asserted-technical-profile.md) může volat [technické profily pro ověřování](validation-technical-profile.md) a ověřit data profilování uživatelem.
+1. **Deklarace** identity na výstup – deklarace identity se vrátí zpět do kontejneru deklarací identity. Tyto deklarace identity můžete použít v dalších krokech orchestrace nebo z výstupních transformací deklarací.
+1. **Transformace výstupních deklarací** – po dokončení technického profilu Azure AD B2C spustí [transformaci](claimstransformations.md)výstupních deklarací. 
+1. **Správa relací jednotného přihlašování (SSO)** – uchovává data technického profilu do relace pomocí [správy relací jednotného](custom-policy-reference-sso.md)přihlašování.
 
 Element **TechnicalProfiles** obsahuje sadu technických profilů, které podporuje zprostředkovatel deklarací identity. Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů.
 
@@ -32,42 +74,9 @@ Element **TechnicalProfiles** obsahuje sadu technických profilů, které podpor
       <DisplayName>Display name of technical profile</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="ServiceUrl">URL of service</Item>
-        <Item Key="AuthenticationType">None</Item>
-        <Item Key="SendClaimsIn">Body</Item>
+        ...
       </Metadata>
-      <InputTokenFormat>JWT</InputTokenFormat>
-      <OutputTokenFormat>JWT</OutputTokenFormat>
-      <CryptographicKeys>
-        <Key ID="Key identifier" StorageReferenceId="Storage key container identifier"/>
-        ...
-      </CryptographicKeys>
-      <InputClaimsTransformations>
-        <InputClaimsTransformation ReferenceId="Claims transformation identifier" />
-        ...
-      <InputClaimsTransformations>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="givenName" DefaultValue="givenName" PartnerClaimType="firstName" />
-        ...
-      </InputClaims>
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="givenName" DefaultValue="givenName" PartnerClaimType="firstName" />
-        ...
-      </PersistedClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="loyaltyNumber" DefaultValue="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-      </OutputClaims>
-      <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="Claims transformation identifier" />
-        ...
-      <OutputClaimsTransformations>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="Technical profile identifier" />
-        ...
-      </ValidationTechnicalProfiles>
-      <SubjectNamingInfo ClaimType="Claim type identifier" />
-      <IncludeTechnicalProfile ReferenceId="Technical profile identifier" />
-      <UseTechnicalProfileForSessionManagement ReferenceId="Technical profile identifier" />
+      ...
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -86,7 +95,7 @@ Element **TechnicalProfile** obsahuje následující atribut:
 | Doména | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
 | DisplayName | 1:1 | Zobrazovaný název technického profilu. |
 | Popis | 0:1 | Popis technického profilu. |
-| Protokol | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
+| Protokol | 1:1 | Protokol používaný pro komunikaci s druhou stranou. |
 | Metadata | 0:1 | Kolekce párů klíč/hodnota, které jsou využívány protokolem pro komunikaci s koncovým bodem v průběhu transakce. |
 | InputTokenFormat | 0:1 | Formát vstupního tokenu. Možné hodnoty: `JSON` , `JWT` , `SAML11` , nebo `SAML2` . `JWT`Hodnota představuje JSON web token podle specifikace IETF. `SAML11`Hodnota představuje token zabezpečení SAML 1,1 podle specifikace pro Oasis.  `SAML2`Hodnota představuje token zabezpečení SAML 2,0 podle specifikace pro Oasis. |
 | OutputTokenFormat | 0:1 | Formát výstupního tokenu. Možné hodnoty: `JSON` , `JWT` , `SAML11` , nebo `SAML2` . |
@@ -107,16 +116,16 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 ## <a name="protocol"></a>Protokol
 
-Element **Protocol** obsahuje následující atributy:
+**Protokol** určuje protokol, který se má použít pro komunikaci s druhou stranou. Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OAuth1` , `OAuth2` , `SAML2` , `OpenIdConnect` , `Proprietary` , nebo `None` . |
-| Obslužná rutina | No | Pokud je název protokolu nastaven na `Proprietary` , zadejte plně kvalifikovaný název sestavení, které je používáno Azure AD B2C k určení obslužné rutiny protokolu. |
+| Obslužná rutina | Ne | Pokud je název protokolu nastaven na `Proprietary` , zadejte plně kvalifikovaný název sestavení, které je používáno Azure AD B2C k určení obslužné rutiny protokolu. |
 
 ## <a name="metadata"></a>Metadata
 
-Element **metadata** obsahuje následující prvky:
+Element **metadata** obsahuje relevantní možnosti konfigurace pro konkrétní protokol. Seznam podporovaných metadat je zdokumentován v odpovídající specifikaci [technického profilu](#type-of-technical-profiles) . Element **metadata** obsahuje následující element:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
@@ -124,13 +133,51 @@ Element **metadata** obsahuje následující prvky:
 
 ### <a name="item"></a>Položka
 
-Element **Item** elementu **metadata** obsahuje následující atributy:
+Element **Item** elementu **metadata** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Ano | Klíč metadat. Seznam položek metadat najdete u každého typu technického profilu. |
+| Klíč | Ano | Klíč metadat. Seznam položek metadat najdete u každého [typu technického profilu](#type-of-technical-profiles). |
 
-## <a name="cryptographickeys"></a>CryptographicKeys
+Následující příklad ilustruje použití metadat relevantních pro [OAuth2 Technical Profile](oauth2-technical-profile.md#metadata).
+
+```xml
+<TechnicalProfile Id="Facebook-OAUTH">
+  ...
+  <Metadata>
+    <Item Key="ProviderName">facebook</Item>
+    <Item Key="authorization_endpoint">https://www.facebook.com/dialog/oauth</Item>
+    <Item Key="AccessTokenEndpoint">https://graph.facebook.com/oauth/access_token</Item>
+    <Item Key="HttpBinding">GET</Item>
+    <Item Key="UsePolicyInRedirectUri">0</Item>
+    ...
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+Následující příklad ilustruje použití metadat relevantních pro [REST API technický profil](restful-technical-profile.md#metadata).
+
+```xml
+<TechnicalProfile Id="REST-Validate-Email">
+  ...
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    ...
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+## <a name="cryptographic-keys"></a>Kryptografické klíče
+
+Azure AD B2C ukládá tajné klíče a certifikáty ve formě [klíčů zásad](policy-keys-overview.md) , aby se navázala důvěryhodnost se službami, se kterými se integruje. Během provádění technického profilu Azure AD B2C načte kryptografické klíče z klíčů zásad Azure AD B2C a pak použije klíče pro vytvoření důvěryhodnosti, šifrování nebo podepsání tokenu. Tyto vztahy důvěryhodnosti se skládají z těchto vztahů:
+
+- Federace s poskytovateli identity [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)a [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys)
+- Zabezpečení připojení pomocí [služby REST API Services](secure-rest-api.md)
+- Podepisování a šifrování tokenů [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) a [SAML](saml-issuer-technical-profile.md#cryptographic-keys)
 
 Element **CryptographicKeys** obsahuje následující element:
 
@@ -144,10 +191,14 @@ Element **CryptographicKeys** obsahuje následující element:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | No | Jedinečný identifikátor konkrétního páru klíčů, na který se odkazuje z dalších prvků v souboru zásad. |
+| Id | Ne | Jedinečný identifikátor konkrétního páru klíčů, na který se odkazuje z dalších prvků v souboru zásad. |
 | StorageReferenceId | Ano | Identifikátorem kontejneru klíčů úložiště, na který odkazuje jiný element v souboru zásad. |
 
-## <a name="inputclaimstransformations"></a>InputClaimsTransformations
+## <a name="input-claims-transformations"></a>Transformace vstupních deklarací identity
+
+Element **InputClaimsTransformations** může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupních deklarací nebo k vygenerování nového. 
+
+Výstupní deklarace identity předchozí transformace deklarací identity v kolekci transformací deklarací identity můžou být vstupními deklaracemi následných transformačních deklarací identity, které vám umožní mít sekvenci transformace deklarací v závislosti na sobě.
 
 Element **InputClaimsTransformations** obsahuje následující element:
 
@@ -163,7 +214,30 @@ Element **InputClaimsTransformation** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
-## <a name="inputclaims"></a>InputClaims
+Následující technické profily odkazují na transformaci deklarací identity **CreateOtherMailsFromEmail** . Transformace deklarací přidá hodnotu `email` deklarace identity do `otherMails` kolekce před tím, než se data uloží do adresáře.
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  ...
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="CreateOtherMailsFromEmail" />
+  </InputClaimsTransformations>
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="alternativeSecurityId" />
+    <PersistedClaim ClaimTypeReferenceId="userPrincipalName" />
+    <PersistedClaim ClaimTypeReferenceId="mailNickName" DefaultValue="unknown" />
+    <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+    <PersistedClaim ClaimTypeReferenceId="otherMails" />
+    <PersistedClaim ClaimTypeReferenceId="givenName" />
+    <PersistedClaim ClaimTypeReferenceId="surname" />
+  </PersistedClaims>
+  ...
+</TechnicalProfile>
+```
+
+## <a name="input-claims"></a>Vstupní deklarace identity
+
+**InputClaims** vybírá deklarace identity z kontejneru deklarací identity a používá se pro technický profil. Například [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) používá vstupní deklarace identity, které vyplní výstupní deklarace identity, které uživatel poskytuje. REST API technický profil používá vstupní deklarace identity k posílání vstupních parametrů do koncového bodu REST API. Azure Active Directory používá pro čtení, aktualizaci nebo odstranění účtu vstupní deklaraci identity jako jedinečný identifikátor.
 
 Element **InputClaims** obsahuje následující element:
 
@@ -178,10 +252,20 @@ Element **InputClaim** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Hodnot | No | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
-| PartnerClaimType | No | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
 
-## <a name="displayclaims"></a>DisplayClaims
+## <a name="display-claims"></a>Zobrazit deklarace
+
+Element **DisplayClaims** obsahuje seznam deklarací identity definovaných [vlastním technickým profilem](self-asserted-technical-profile.md) , který se zobrazí na obrazovce pro shromažďování dat od uživatele. V části Zobrazit kolekci deklarací můžete zahrnout odkaz na [typ deklarace identity](claimsschema.md)nebo [ovládací prvek](display-controls.md) zobrazení, který jste vytvořili. 
+
+- Typ deklarace identity je odkaz na deklaraci identity, která se má zobrazit na obrazovce. 
+  - Chcete-li vynutit, aby uživatel poskytoval hodnotu pro konkrétní deklaraci identity, nastavte **požadovaný** atribut prvku **DisplayClaim** na hodnotu `true` .
+  - Chcete-li předem naplnit hodnoty pro zobrazení deklarací identity, použijte vstupní deklarace, které byly dříve popsány. Element může obsahovat také výchozí hodnotu.
+  - Element **ClaimType** v kolekci **DisplayClaims** musí nastavit element **UserInputType** na libovolný typ vstupu uživatele podporovaný Azure AD B2C. Příkladem je `TextBox` nebo `DropdownSingleSelect`.
+- Ovládací prvek zobrazení je prvek uživatelského rozhraní, který má zvláštní funkce a komunikuje s Azure AD B2C back-end službou. Umožňuje uživateli provádět akce na stránce, která vyvolá technický profil ověření na back-endu. Například ověřte e-mailovou adresu, telefonní číslo nebo věrnostní číslo zákazníka.
+
+Pořadí prvků v **DisplayClaims** určuje pořadí, ve kterém Azure AD B2C vykreslí deklarace na obrazovce. 
 
 Element **DisplayClaims** obsahuje následující element:
 
@@ -189,21 +273,45 @@ Element **DisplayClaims** obsahuje následující element:
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
-Funkce DislayClaims je aktuálně ve **verzi Preview**.
-
 ### <a name="displayclaim"></a>DisplayClaim
 
 Element **DisplayClaim** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | No | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| DisplayControlReferenceId | No | Identifikátor [ovládacího prvku zobrazení](display-controls.md) , který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Povinné | No | Určuje, zda je požadována deklarace identity zobrazení. |
+| ClaimTypeReferenceId | Ne | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
+| DisplayControlReferenceId | Ne | Identifikátor [ovládacího prvku zobrazení](display-controls.md) , který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
+| Vyžadováno | Ne | Určuje, zda je požadována deklarace identity zobrazení. |
 
-**DisplayClaim** vyžaduje, abyste zadali buď `ClaimTypeReferenceId` nebo `DisplayControlReferenceId` .
+Následující příklad ilustruje použití zobrazení deklarací identity a zobrazení v rámci technického profilu s vlastním uplatněním.
 
-### <a name="persistedclaims"></a>PersistedClaims
+![Technický profil s vlastním uplatněním se zobrazením deklarací identity](./media/technical-profiles/display-claims.png)
+
+V následujícím technickém profilu:
+
+- První deklarace identity zobrazení vytvoří odkaz na `emailVerificationControl` ovládací prvek zobrazení, který shromažďuje a ověřuje e-mailovou adresu.
+- Pátá deklarace zobrazení vytvoří odkaz na `phoneVerificationControl` ovládací prvek zobrazení, který shromáždí a ověří telefonní číslo.
+- Ostatní zobrazované deklarace identity jsou ClaimTypes, které se mají shromáždit od uživatele.
+
+```xml
+<TechnicalProfile Id="Id">
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim DisplayControlReferenceId="phoneVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
+</TechnicalProfile>
+```
+
+### <a name="persisted-claims"></a>Trvalé deklarace identity
+
+Element **PersistedClaims** obsahuje všechny hodnoty, které by se měly zachovat prostřednictvím [technického profilu Azure AD](active-directory-technical-profile.md) s možnými informacemi o mapování mezi typem deklarace identity, který je už definovaný v části [ClaimsSchema](claimsschema.md) v zásadách a v názvu atributu Azure AD.
+
+Název deklarace identity je název [atributu Azure AD](user-profile-attributes.md) , pokud není zadaný atribut **PartnerClaimType** , který obsahuje název atributu Azure AD.
 
 Element **PersistedClaims** obsahuje následující prvky:
 
@@ -218,12 +326,25 @@ Element **PersistedClaim** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Hodnot | No | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
-| PartnerClaimType | No | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
 
-## <a name="outputclaims"></a>OutputClaims
+V následujícím příkladu se v nástroji **AAD-UserWriteUsingLogonEmail** Technical Profile nebo [počáteční Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts), který vytvoří nový místní účet, přetrvá následující deklarace identity:
 
-Element **OutputClaims** obsahuje následující element:
+```xml
+<PersistedClaims>
+  <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+  <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password"/>
+  <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+  <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+  <PersistedClaim ClaimTypeReferenceId="givenName" />
+  <PersistedClaim ClaimTypeReferenceId="surname" />
+</PersistedClaims>
+```
+
+## <a name="output-claims"></a>Deklarace výstupů
+
+**OutputClaims** jsou kolekce deklarací identity, které se vrátí zpět do kontejneru deklarací identity po dokončení technického profilu. Tyto deklarace identity můžete použít v dalších krokech orchestrace nebo z výstupních transformací deklarací. Element **OutputClaims** obsahuje následující element:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
@@ -236,11 +357,15 @@ Element **OutputClaim** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Hodnot | No | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
-|AlwaysUseDefaultValue |No |Vynutit použití výchozí hodnoty.  |
-| PartnerClaimType | No | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
+| Hodnot | Ne | Výchozí hodnota, která se má použít k vytvoření deklarace identity, pokud deklarace identity uvedená v ClaimTypeReferenceId neexistuje, aby se dala výsledná deklarace použít jako InputClaim pro technický profil. |
+|AlwaysUseDefaultValue |Ne |Vynutit použití výchozí hodnoty.  |
+| PartnerClaimType | Ne | Identifikátor typu deklarace externího partnera, na který se mapuje zadaný typ deklarace identity. Pokud není zadán atribut PartnerClaimType, je zadaný typ deklarace identity mapován na partnerský typ deklarace se stejným názvem. Tuto vlastnost použijte v případě, že se název typu deklarace identity liší od druhé strany. Například první název deklarace je "daný", zatímco partner používá deklaraci s názvem "first_name". |
 
-## <a name="outputclaimstransformations"></a>OutputClaimsTransformations
+## <a name="output-claims-transformations"></a>Transformace výstupních deklarací identity
+
+Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových. Po spuštění se výstupní deklarace identity vrátí do kontejneru deklarací identity. Tyto deklarace identity můžete použít v dalším kroku orchestrace.
+
+Výstupní deklarace identity předchozí transformace deklarací identity v kolekci transformací deklarací identity můžou být vstupními deklaracemi následných transformačních deklarací identity, které vám umožní mít sekvenci transformace deklarací v závislosti na sobě.
 
 Element **OutputClaimsTransformations** obsahuje následující element:
 
@@ -256,7 +381,34 @@ Element **OutputClaimsTransformation** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor transformace deklarací identity už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
-## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
+Následující technický profil odkazuje na transformaci deklarací AssertAccountEnabledIsTrue k vyhodnocení, jestli je účet povolený, nebo ne po přečtení `accountEnabled` deklarace z tohoto adresáře.    
+
+```xml
+<TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+  ...
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" />
+    <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+    <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <OutputClaim ClaimTypeReferenceId="displayName" />
+    <OutputClaim ClaimTypeReferenceId="accountEnabled" />
+    <OutputClaim ClaimTypeReferenceId="otherMails" />
+    <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+  </OutputClaims>
+  <OutputClaimsTransformations>
+    <OutputClaimsTransformation ReferenceId="AssertAccountEnabledIsTrue" />
+  </OutputClaimsTransformations>
+  ...
+</TechnicalProfile>
+```
+
+## <a name="validation-technical-profiles"></a>Technické profily ověřování
+
+Technický profil ověřování se používá k ověření některých nebo všech výstupních deklarací identity odkazujících na [technický profil s vlastním uplatněním](self-asserted-technical-profile.md#validation-technical-profiles). Technický profil ověření je běžný technický profil z libovolného protokolu, například [Azure Active Directory](active-directory-technical-profile.md) nebo [REST API](restful-technical-profile.md). Technický profil ověřování vrátí deklarace výstupů nebo vrátí kód chyby. Chybová zpráva se vykreslí uživateli na obrazovce, takže se uživatel bude moct pokusit opakovat.
+
+Následující diagram znázorňuje, jak Azure AD B2C používá k ověření přihlašovacích údajů uživatele technický profil ověřování.
+
+![Tok technického profilu ověřování diagramu](./media/technical-profiles/validation-technical-profile.png) 
 
 Element **ValidationTechnicalProfiles** obsahuje následující element:
 
@@ -274,13 +426,15 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 ## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
-**SubjectNamingInfo** obsahuje následující atribut:
+**SubjectNamingInfo** definuje název subjektu, který se používá v tokenech v [zásadách předávající strany](relyingparty.md#subjectnaminginfo). **SubjectNamingInfo** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimType | Ano | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad. |
 
-## <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
+## <a name="include-technical-profile"></a>Zahrnout technický profil
+
+Technický profil může zahrnovat jiný technický profil pro změnu nastavení nebo přidání nových funkcí. Element **IncludeTechnicalProfile** je odkaz na společný technický profil, ze kterého je odvozen technický profil. Pokud chcete snížit redundanci a složitost prvků zásad, použijte zahrnutí, pokud máte více technických profilů, které sdílejí základní prvky. Využijte společný technický profil se společnou sadou konfigurací spolu s konkrétními technickými profily úkolů, které zahrnují společný technický profil. Předpokládejme například, že máte [REST API technický profil](restful-technical-profile.md) s jedním koncovým bodem, kde potřebujete odeslat různé sady deklarací pro různé scénáře. Vytvořte společný technický profil se sdílenými funkcemi, jako je REST API identifikátor URI koncového bodu, metadata, typ ověřování a kryptografické klíče. Pak vytvořte konkrétní technické profily úkolů, které zahrnují společný technický profil, přidejte vstupní deklarace identity, výstupní deklarace identity nebo přepište identifikátor URI koncového bodu REST API relevantního pro daný technický profil.
 
 Element **IncludeTechnicalProfile** obsahuje následující atribut:
 
@@ -288,25 +442,126 @@ Element **IncludeTechnicalProfile** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad, nebo v nadřazeném souboru zásad. |
 
-## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
-Element **UseTechnicalProfileForSessionManagement** obsahuje následující atribut:
+Následující příklad ilustruje použití zahrnutí:
+
+- *REST API – společný* – společný technický profil se základní konfigurací.
+- *REST-ValidateProfile* – zahrnuje technický profil *REST-API-Commom* a určuje vstupní a výstupní deklarace identity.
+- *REST-UpdateProfile* – zahrnuje technický profil *REST-API-Commom* , určuje vstupní deklarace a přepíše `ServiceUrl` metadata.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-API-Commom">
+      <DisplayName>Base REST API configuration</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity</Item>
+        <Item Key="AuthenticationType">Basic</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_B2cRestClientId" />
+        <Key Id="BasicAuthenticationPassword" StorageReferenceId="B2C_1A_B2cRestClientSecret" />
+      </CryptographicKeys>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+
+    <TechnicalProfile Id="REST-ValidateProfile">
+      <DisplayName>Validate the account and return promo code</DisplayName>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="email" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="promoCode" />
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+    </TechnicalProfile>
+
+    <TechnicalProfile Id="REST-UpdateProfile">
+       <Metadata>
+        <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/update</Item>
+      </Metadata>
+      <DisplayName>Update the user profile</DisplayName>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="email" />
+      </InputClaims>
+      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+### <a name="multi-level-inclusion"></a>Zahrnutí na více úrovní 
+
+Technický profil může obsahovat jeden technický profil. Počet úrovní zařazení není nijak omezený. Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví `RaiseErrorIfClaimsPrincipalDoesNotExist` položku metadat na `true` a vyvolá chybu, pokud účet sociální sítě v adresáři neexistuje. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže tuto chybovou zprávu.
+
+```xml
+<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
+  </Metadata>
+  <IncludeTechnicalProfile ReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
+</TechnicalProfile>
+```
+
+**AAD-UserReadUsingAlternativeSecurityId** zahrnuje `AAD-Common` technický profil.
+
+```xml
+<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="Operation">Read</Item>
+    <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">User does not exist. Please sign up before you can sign in.</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="AlternativeSecurityId" PartnerClaimType="alternativeSecurityId" Required="true" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" />
+    <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <OutputClaim ClaimTypeReferenceId="displayName" />
+    <OutputClaim ClaimTypeReferenceId="otherMails" />
+    <OutputClaim ClaimTypeReferenceId="givenName" />
+    <OutputClaim ClaimTypeReferenceId="surname" />
+  </OutputClaims>
+  <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+</TechnicalProfile>
+```
+
+Parametr **AAD-UserReadUsingAlternativeSecurityId-inerror** a  **AAD-UserReadUsingAlternativeSecurityId** nezaurčují požadovaný element **protokolu** , protože je zadaný v technickém profilu **AAD-Common** .
+
+```xml
+<TechnicalProfile Id="AAD-Common">
+  <DisplayName>Azure Active Directory</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  ...
+</TechnicalProfile>
+```
+
+## <a name="use-technical-profile-for-session-management"></a>Použití technického profilu pro správu relací
+
+Odkaz na element **UseTechnicalProfileForSessionManagement** na [technický profil relace jednotného přihlašování](custom-policy-reference-sso.md). Element **UseTechnicalProfileForSessionManagement** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu, který už je definovaný v souboru zásad nebo v nadřazeném souboru zásad. |
 
-## <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
+## <a name="enabled-for-user-journeys"></a>Povoleno pro cesty uživatelů
 
-**ClaimsProviderSelections** v cestě uživatele definuje seznam možností výběru zprostředkovatele deklarací a jejich pořadí. Pomocí filtrovaného prvku **EnabledForUserJourneys** , který je k dispozici pro uživatele. Element **EnabledForUserJourneys** obsahuje jednu z následujících hodnot:
+[ClaimsProviderSelections](userjourneys.md#claimsproviderselection) v cestě uživatele definuje seznam možností výběru zprostředkovatele deklarací a jejich pořadí. Pomocí filtrovaného prvku **EnabledForUserJourneys** , který je k dispozici pro uživatele. Element **EnabledForUserJourneys** obsahuje jednu z následujících hodnot:
 
-- **Vždy**spusťte technický profil.
+- **Vždy** spusťte technický profil.
 - **Nikdy**, přeskočte technický profil.
 - **OnClaimsExistence** se spustí jenom v případě, že existuje určitá deklarace identity zadaná v technickém profilu.
-- **OnItemExistenceInStringCollectionClaim**spustí se pouze v případě, že položka existuje v deklaraci kolekce řetězců.
+- **OnItemExistenceInStringCollectionClaim** spustí se pouze v případě, že položka existuje v deklaraci kolekce řetězců.
 - **OnItemAbsenceInStringCollectionClaim** provést pouze v případě, že položka v deklaraci kolekce řetězců neexistuje.
 
-Pomocí **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** nebo **OnItemAbsenceInStringCollectionClaim**musíte zadat následující metadata: **ClaimTypeOnWhichToEnable** určuje typ deklarace identity, který se má vyhodnotit, **ClaimValueOnWhichToEnable** Určuje hodnotu, která se má porovnat.
+Pomocí **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** nebo **OnItemAbsenceInStringCollectionClaim** musíte zadat následující metadata: **ClaimTypeOnWhichToEnable** určuje typ deklarace identity, který se má vyhodnotit, **ClaimValueOnWhichToEnable** Určuje hodnotu, která se má porovnat.
 
 Následující technický profil se spustí pouze v případě, že kolekce řetězců **identityProviders** obsahuje hodnotu `facebook.com` :
 

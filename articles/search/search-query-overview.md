@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368116"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387662"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Dotazování v Azure Kognitivní hledání
 
-Azure Kognitivní hledání nabízí dotazovací jazyk obsáhlém pro podporu široké škály scénářů, od hledání bezplatného formuláře až po vysoce specifikované vzory dotazů. Tento článek shrnuje typy dotazů, které můžete vytvořit.
+Azure Kognitivní hledání nabízí bohatý dotazovací jazyk pro podporu široké škály scénářů, od bezplatného vyhledávání textu až po vysoce specifikované vzory dotazů. Tento článek shrnuje typy dotazů, které můžete vytvořit.
 
 V Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip **`search`** s parametry, které informují provádění dotazů a tvarují odpověď zpět. Parametry a analyzátory určují typ žádosti o dotaz. Následující příklad dotazu používá [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents), které cílí na [ukázkový index hotelů](search-get-started-portal.md).
 
@@ -38,7 +38,7 @@ Parametry používané při provádění dotazu:
 
 + **`queryType`** Nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližná a zástupné vyhledávání, pro pojmenování několika.
 
-+ **`search`** poskytuje kritéria shody, obvykle celé podmínky nebo fráze s operátory nebo bez. Každé pole, které je s atributy *prohledávatelné* ve schématu indexu, je kandidátem pro tento parametr. 
++ **`search`** poskytuje kritéria shody, obvykle celé podmínky nebo fráze s operátory nebo bez. Každé pole, které je s atributy *prohledávatelné* ve schématu indexu, je kandidátem pro tento parametr.
 
 + **`searchFields`** omezuje provádění dotazů na konkrétní hledaná pole.
 
@@ -110,10 +110,8 @@ Rozšířený formulář dotazu závisí na úplném analyzátoru a operátorech
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí portálu nebo jiného nástroje, jako je například post nebo Visual Studio Code, nebo jedné ze sad SDK můžete prozkoumat dotazy podrobněji. Následující odkazy vám pomohou začít.
+Pro bližší pohled na implementaci dotazu si Projděte příklady jednotlivých syntaxí. Pokud začínáte s fulltextovým vyhledáváním, podíváme se na to, co modul dotazů může být stejně dobrý.
 
-+ [Průzkumník vyhledávání](search-explorer.md)
-+ [Dotazování v REST](search-get-started-rest.md)
-+ [Dotazování v .NET](search-get-started-dotnet.md)
-+ [Dotazování v Pythonu](search-get-started-python.md)
-+ [Dotazování v JavaScriptu](search-get-started-javascript.md)
++ [Příklady jednoduchých dotazů](search-query-simple-examples.md)
++ [Příklady dotazů syntaxe Lucene pro vytváření pokročilých dotazů](search-query-lucene-examples.md)
++ [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)

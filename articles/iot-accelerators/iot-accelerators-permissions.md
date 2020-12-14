@@ -8,18 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853219"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387832"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
 Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com je hostitelem akcelerátorů řešení Microsoft Open Source i partner. Tyto akcelerátory řešení se zarovnají s [referenční architekturou Azure IoT](/azure/architecture/reference-architectures/iot). Web můžete použít k rychlému nasazení akcelerátoru řešení jako ukázkové nebo produkční prostředí.
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="Domovská stránka řešení IoT":::
 
 > [!TIP]
 > Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového řádku k nasazení akcelerátoru řešení.

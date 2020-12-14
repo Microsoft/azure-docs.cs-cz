@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8fd0ef006b246e30c02cfb321c72b4e070f54de
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109143"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387611"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 
 Ve službě Azure synapse Analytics jsou možnosti integrace dat, jako jsou kanály synapse a toky dat, založené na Azure Data Factory. Další informace najdete v tématu [co je Azure Data Factory](../../data-factory/introduction.md).
 
 
-## <a name="available-features-in-azure-data-factory-and-azure-synapse-analytics"></a>Dostupné funkce v Azure Data Factory a Azure synapse Analytics
+## <a name="available-features-in-adf--azure-synapse-analytics"></a>Dostupné funkce v ADF & Azure synapse Analytics
 
 Níže najdete níže uvedenou tabulku pro dostupnost funkcí:
 
@@ -34,7 +34,7 @@ Níže najdete níže uvedenou tabulku pro dostupnost funkcí:
 |                          | Podpora aktivity Power Query | ✓ | ✓ |
 | **Galerie šablon a centrum znalostí** | Šablony řešení | ✓<br><small>*Galerie šablon Azure Data Factory* | ✓<br><small>*Centrum znalostí pro synapse Workspace* |
 | **Integrace úložiště GIT** | Integrace GITU | ✓ | ✓ |
-| **Monitorování**           | Monitorování úloh Sparku pro tok dat | ✗ | ✓<br><small>*Využijte fondy synapse Spark* |
+| **Sledování**           | Monitorování úloh Sparku pro tok dat | ✗ | ✓<br><small>*Využijte fondy synapse Spark* |
 |                          | Integrace s Azure Monitor | ✓ | ✗ |
 
 > [!Note]

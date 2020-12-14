@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485787"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387713"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,6 +26,9 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 > [!NOTE]
 > Webová aktivita se podporuje pro volání adres URL hostovaných v privátní virtuální síti a také adres URL hostovaných s využitím místního prostředí Integration Runtime. Modul runtime integrace by měl být v dohledu koncového bodu adresy URL. 
+
+> [!NOTE]
+> Maximální podporovaná velikost datové části odpovědi je 4 MB.  
 
 ## <a name="syntax"></a>Syntax
 
@@ -72,16 +75,16 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity webu | Řetězec | Yes
-typ | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Yes
-method | Metoda rozhraní REST API pro cílový koncový bod | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Yes
-url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud aktivita neobdrží odpověď z koncového bodu do 1 minuty, vyprší její časový limit s chybou. | Yes
+name | Název aktivity webu | Řetězec | Ano
+typ | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
+method | Metoda rozhraní REST API pro cílový koncový bod | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
+url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud aktivita neobdrží odpověď z koncového bodu do 1 minuty, vyprší její časový limit s chybou. | Ano
 záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
 text | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
-ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | No
-datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Yes
-linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Yes
-connectVia | [Prostředí Integration runtime](./concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. | Referenční informace o prostředí Integration runtime. | No 
+ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
+datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
+linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Ano
+connectVia | [Prostředí Integration runtime](./concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. | Referenční informace o prostředí Integration runtime. | Ne 
 
 > [!NOTE]
 > Koncové body REST volané webovou aktivitou musí vracet odpověď typu JSON. Pokud aktivita neobdrží odpověď z koncového bodu do 1 minuty, vyprší její časový limit s chybou.
@@ -104,7 +107,7 @@ Níže jsou uvedené podporované typy ověřování v aktivitě webu.
 
 Pokud není vyžadováno ověřování, nezahrnujte vlastnost "ověřování".
 
-### <a name="basic"></a>Základní
+### <a name="basic"></a>Basic
 
 Zadejte uživatelské jméno a heslo, které chcete použít se základním ověřováním.
 

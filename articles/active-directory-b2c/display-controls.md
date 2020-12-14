@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532371"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387050"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
 
@@ -46,16 +46,16 @@ Element **zobrazitelné ovládací** prvky obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Yes | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
-| UserInterfaceControlType | Yes | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
+| Id | Ano | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
+| UserInterfaceControlType | Ano | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
 
 Element **Zobrazit ovládací** prvek obsahuje následující prvky:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [InputClaims](technicalprofiles.md#inputclaims) element. |
+| InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [InputClaims](technicalprofiles.md#input-claims) element. |
 | DisplayClaims | 0:1 | **DisplayClaims** slouží k reprezentaci deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [DisplayClaim](technicalprofiles.md#displayclaim) element.|
-| OutputClaims | 0:1 | **OutputClaims** slouží k reprezentaci deklarací, které se dočasně ukládají pro tento **ovládací prvek** zobrazení. Další informace naleznete v tématu [OutputClaims](technicalprofiles.md#outputclaims) element.|
+| OutputClaims | 0:1 | **OutputClaims** slouží k reprezentaci deklarací, které se dočasně ukládají pro tento **ovládací prvek** zobrazení. Další informace naleznete v tématu [OutputClaims](technicalprofiles.md#output-claims) element.|
 | Akce | 0:1 | **Akce** se používají k vypsání technických profilů ověřování pro vyvolání uživatelských akcí, které probíhají na front-endu. |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
@@ -94,7 +94,7 @@ Chcete-li zobrazit výstupní deklarace identity k dalšímu kroku orchestrace, 
 
 **Akce** ovládacího prvku zobrazení jsou procedury, ke kterým dochází v Azure AD B2C back-endu, když uživatel provede určitou akci na straně klienta (prohlížeč). Například ověření, které se má provést, když uživatel vybere na stránce tlačítko.
 
-Akce definuje seznam **technických profilů ověření**. Používají se k ověřování některých nebo všech zobrazení deklarací ovládacího prvku zobrazení. Technický profil ověření ověřuje vstup uživatele a může uživateli vrátit chybu. V akci ovládacího prvku zobrazení můžete použít **ContinueOnError** , **ContinueOnSuccess** a **předběžné podmínky** podobné způsobu, jakým jsou použity v technických profilech [ověření](validation-technical-profile.md) v rámci kontrolního technického profilu.
+Akce definuje seznam **technických profilů ověření**. Používají se k ověřování některých nebo všech zobrazení deklarací ovládacího prvku zobrazení. Technický profil ověření ověřuje vstup uživatele a může uživateli vrátit chybu. V akci ovládacího prvku zobrazení můžete použít **ContinueOnError**, **ContinueOnSuccess** a **předběžné podmínky** podobné způsobu, jakým jsou použity v technických profilech [ověření](validation-technical-profile.md) v rámci kontrolního technického profilu.
 
 #### <a name="actions"></a>Akce
 
@@ -110,7 +110,7 @@ Element **Action** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Yes | Typ operace. Možné hodnoty: `SendCode` nebo `VerifyCode` . `SendCode`Hodnota pošle uživateli kód. Tato akce může obsahovat dva technické profily ověřování: jednu pro vygenerování kódu a jednu pro odeslání. `VerifyCode`Hodnota ověří kód, který uživatel zadal ve vstupním textovém poli. |
+| Id | Ano | Typ operace. Možné hodnoty: `SendCode` nebo `VerifyCode` . `SendCode`Hodnota pošle uživateli kód. Tato akce může obsahovat dva technické profily ověřování: jednu pro vygenerování kódu a jednu pro odeslání. `VerifyCode`Hodnota ověří kód, který uživatel zadal ve vstupním textovém poli. |
 
 Element **Action** obsahuje následující element:
 
@@ -130,7 +130,7 @@ Element **ValidationTechnicalProfile** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
 |ContinueOnError|Ne| Určuje, jestli se má v případě, že bude tento technický profil ověřování zobrazovat chyba, ověřit, jestli má ověřování všech následných technických profilů. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
 |ContinueOnSuccess | Ne | Určuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
 
@@ -145,7 +145,7 @@ Prvek **předběžné podmínky** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Možné hodnoty: `ClaimsExist` nebo `ClaimEquals` . `ClaimsExist` Určuje, že akce by se měly provádět v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele. `ClaimEquals` Určuje, že akce mají být provedeny, pokud existuje zadaná deklarace identity a její hodnota je rovna zadané hodnotě. |
-| `ExecuteActionsIf` | Yes | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
+| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
 
 Prvek **podmínky** obsahuje následující prvky:
 

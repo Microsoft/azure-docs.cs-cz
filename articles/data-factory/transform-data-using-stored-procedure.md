@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4d62619fe2641ec1aded39650b47b53cf4269d8b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368872"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387537"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +33,7 @@ Aktivity transformace dat v [kanálu](concepts-pipelines-activities.md) Data Fac
 Aktivitu uložené procedury můžete použít k vyvolání uložené procedury v jednom z následujících úložišť dat v podniku nebo na virtuálním počítači Azure (VM): 
 
 - Azure SQL Database
-- Azure Synapse Analytics (dříve SQL Data Warehouse)
+- Azure Synapse Analytics
 - SQL Server databázi.  Pokud používáte SQL Server, nainstalujte modul runtime integrace v místním prostředí do stejného počítače, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Self-Hosted Integration runtime je komponenta, která připojuje zdroje dat místně nebo na virtuálním počítači Azure s Cloud Services zabezpečeným a spravovaným způsobem. Podrobnosti najdete v článku věnovaném místnímu [prostředí Integration runtime](create-self-hosted-integration-runtime.md) .
 
 > [!IMPORTANT]
@@ -88,9 +88,7 @@ Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se m
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
-## <a name="error-info"></a>Informace o chybě
 
-Pokud uložená procedura selhává a vrátí podrobnosti o chybě, nemůžete zachytit informace o chybě přímo ve výstupu aktivity. Data Factory se však všechny události spouštějí do Azure Monitor. V rámci událostí, které Data Factory pumpy Azure Monitor, se tam zobrazí podrobnosti o chybě. Můžete například nastavit e-mailová upozornění z těchto událostí. Další informace najdete v tématu [Alert and Monitoring Data Factory pomocí Azure monitor](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby: 
@@ -102,5 +100,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
+* [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

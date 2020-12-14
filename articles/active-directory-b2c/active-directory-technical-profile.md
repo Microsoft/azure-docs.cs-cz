@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c8f4c91070d87e9e6e3cdbb5534b988063eaba14
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109109"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387172"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -64,13 +64,13 @@ Pokud chcete číst, aktualizovat nebo odstranit existující uživatelský úč
 
 Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames. EmailAddress** nebo **signInNames. username**. Pro federovaný účet: **alternativeSecurityId**.
 
-Element [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
+Element [InputClaimsTransformations](technicalprofiles.md#input-claims-transformations) může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
 
 ## <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje seznam deklarací vrácených technickým profilem Azure AD. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory. Můžete také zahrnout deklarace identity, které nejsou vráceny Azure Active Directory, pokud nastavíte `DefaultValue` atribut.
 
-Element [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
+Element [OutputClaimsTransformations](technicalprofiles.md#output-claims-transformations) může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
 Například technický profil **AAD-UserWriteUsingLogonEmail** vytvoří místní účet a vrátí následující deklarace identity:
 
