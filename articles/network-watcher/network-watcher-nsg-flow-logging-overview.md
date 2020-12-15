@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033421"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399243"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -371,9 +371,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Povolit pro kritické virtuální sítě/podsítě**: protokoly toků by měly být povolené na všech kritických virtuální sítě/podsítích ve vašem předplatném jako osvědčený postup pro audit a zabezpečení. 
 
-**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toků NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě.
+**Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme povolit protokoly toku NSG na všech skupin zabezpečení sítě použitých v podsíti prostředku nebo síťovém rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace najdete v tématu [jak se vyhodnocuje provoz](../virtual-network/network-security-group-how-it-works.md) ve skupinách zabezpečení sítě. 
 
-**NSG na obou síťových rozhraních a na úrovni podsítě**: v případě, že je NSG nakonfigurovaná na síťové kartě a také na úrovni podsítě, musí se protokolování toku povolit jak v skupin zabezpečení sítě. 
+Několik běžných scénářů:
+1. **Několik NSG na síťové kartě**: v případě, že je k síťovému rozhraní připojeno více skupin zabezpečení sítě, musí být protokolování toků povolené na všech těchto počítačích.
+1. **NSG na obou síťových rozhraních a na úrovni podsítě**: v případě, že je NSG nakonfigurovaná na síťové kartě a také na úrovni podsítě, musí se protokolování toku povolit jak v skupin zabezpečení sítě. 
 
 **Zřizování úložiště**: úložiště by mělo být zřízené ve službě Intune s očekávaným objemem protokolu toku.
 

@@ -1,18 +1,18 @@
 ---
 title: Registrace a kontrola Azure SQL Database spravované instance
 description: V tomto kurzu se dozvíte, jak zkontrolovat Azure SQL Database spravovanou instanci.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 09fcaf0fb0c358c1e94d5cd7064c225d7f185ee0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920305"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400773"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrace a kontrola Azure SQL Database spravované instance
 
@@ -24,7 +24,7 @@ Zdroj dat spravované instance Azure SQL Database podporuje následující funkc
 
 - **Úplné a přírůstkové kontroly** pro zachycení metadat a klasifikace v Azure SQL Database Managed instance.
 
-- **Lineage** Počet vydaných datových assetů pro kopírování ADF a aktivity toku dat
+-  Počet vydaných datových assetů pro kopírování ADF a aktivity toku dat
 
 ### <a name="known-limitations"></a>Známá omezení
 

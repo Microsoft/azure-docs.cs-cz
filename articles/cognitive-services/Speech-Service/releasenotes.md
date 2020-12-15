@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483950"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401147"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
+
+## <a name="text-to-speech-2020-december-release"></a>Převod textu na řeč 2020 – prosinec verze
+
+**Nové hlasy neuronové v GA a ve verzi Preview**
+
+Vydání 51 nových hlasů z celkem 129 neuronové hlasů v rámci 54 jazyky/národní prostředí:
+
+- **46 nových hlasů v národních prostředích GA**: shakir v `ar-EG` arabštině (Egypt), Hamed v `ar-SA` arabštině (Saúdská Arábie), Borislav v `bg-BG` bulharštině (Bulharsko), Joana v `ca-ES` Katalánština (Španělsko), Antonin v `cs-CZ` češtině (Česká republika), Jeppe v dánštině (Dánsko), Jonas v němčině (dánském), `da-DK` LED v `de-AT` `de-CH` němčině (Švýcarsko), Nestoras v `el-GR` řečtině (Řecko), Liam v angličtině (Kanada), Connor v angličtině (Irsko), Madhur v hindštině (Indie), Mohan v jazyce Telugská (Indie), Prabhat v `en-CA` `en-IE` `en-IN` `en-IN` `en-IN` češtině (Indie); Valluvar v `en-IN` tamilština (Indie), Enric v `es-ES` Katalánština (Španělsko), kert v `et-EE` estonské (Estonsko), Harri ve `fi-FI` finštině (Finsko), Selma ve `fi-FI` finštině (Finsko), Fabrice ve `fr-CH` francouzštině (Švýcarsko), Colm v `ga-IE` irštině (Irsko), avri v `he-IL` hebrejském (Izrael), Srecko v `hr-HR` chorvatština (Chorvatsko), Tamas v `hu-HU` maďarštině (Maďarsko), Gadis v `id-ID` indonéských (Indonésie), Leonas v `lt-LT` litevské (Litva), Nils v `lv-LV` lotyšském (Lotyšsko), Osman v `ms-MY` Malajština (Malajsie), Josepha v `mt-MT` maltštině (Malta) Finna in `nb-NO` norština, Bokmål (Norsko), Pernille in `nb-NO` norština, Bokmål (Norsko), Fenna v `nl-NL` holandštině (Nizozemsko), Martin v `nl-NL` holandštině (Nizozemsko), Agnieszka v polštině (Polsko), Marek v polštině (Polsko), Duarte v portugalštině (Brazílie), Raquel `pl-PL` `pl-PL` `pt-BR` v `pt-PT` portugalštině (Potugal), Emil v rumunský (Rumunsko), Dmitry v ruštině (Rusko) `ro-RO` `ru-RU` Svetlana v `ru-RU` ruštině (Rusko), Lukas v `sk-SK` slovenské (Slovensko), rok v `sl-SI` slovinském (Slovinsko), Mattias v `sv-SE` švédském (Švédsku), Sofie ve `sv-SE` švédštině (Švédsku), Niwat v `th-TH` thajštině (Thajsko), Ahmetem v `tr-TR` turečtině (Turecko), NamMinh ve `vi-VN` vietnamštině (Vietnam), HsiaoChen v `zh-TW` tchajwanských mandarincích (Tchaj-wan), YunJhe v `zh-TW` tchajwanských mandarincích (Tchaj-wan), HiuMaan v čínském kantonština (Hongkong) `zh-HK` , WanLung v `zh-HK` čínském kantonština (Hongkong).
+
+- **5 nových hlasů v národních prostředích Preview**: kert v `et-EE` estonském (Estonska), Colm v `ga-IE` irštině (Irsko), Nils v `lv-LV` lotyšském (Lotyšsko), Leonas v `lt-LT` litevské (Litva), Josepha v `mt-MT` maltštině (Malta).
+
+V této verzi teď podporujeme celkem 129 neuronové hlasy v různých 54 jazycích nebo národních prostředích. Kromě toho je více než 70 standardních hlasů dostupných v 49 jazycích nebo národních prostředích. Úplný seznam najdete v části [Podpora jazyků](language-support.md#text-to-speech) .
+
+**Aktualizace pro vytvoření zvukového obsahu**
+- Vylepšené uživatelské rozhraní pro výběr hlasu pomocí kategorií hlasu a podrobných popisů hlasu 
+- Aktivované vyladění pro všechny hlasy neuronové napříč různými jazyky.
+- Automatické localizaiton uživatelského rozhraní na základě jazyka prohlížeče.
+- Povolené `StyleDegree` ovládací prvky pro všechny `zh-CN` hlasy neuronové
+Nové funkce najdete v [nástroji pro tvorbu zvukového obsahu](https://speech.microsoft.com/audiocontentcreation) . 
+
+**Aktualizace pro v případě zh-CN – hlasy**
+- Všechny `zh-CN` hlasy neuronové se aktualizovaly pro podporu anglického hlasu.
+- Povolené všechny `zh-CN` hlasy neuronové, aby podporovaly úpravu výbušnosti. Nástroj pro vytváření obsahu SSML nebo zvuku se dá použít k přizpůsobení pro nejlepší výbuchy.
+- Všechny `zh-CN` hlasy neuronové ve více stylech se aktualizovaly tak, aby podporovaly `StyleDegree` řízení. Intenzita emoce (měkké nebo silné) je přizpůsobitelná.
+- Aktualizováno `zh-CN-YunyeNeural` na podporu více stylů, které mohou provádět různé emoce.
+
+## <a name="text-to-speech-2020-november-release"></a>Převod textu na řeč 2020 – listopad Release
+
+**Nové národní prostředí a hlasy ve verzi Preview**
+- Do portfolia neuronové TTS se zavádí **pět nových hlasů a jazyků** . Jsou to: poskytnutá lhůta v maltštině (Malta), běžícího v Litevské (Litva), Anu v estonském (Estonska), orla v irštině (Irsko) a Everita v lotyšském (Lotyšsku).
+- **Pět nových `zh-CN` hlasů s více různými styly a rolemi podporují**: Xiaohan, Xiaomo, Xiaorui, Xiaoxuan a Yunxi.
+
+> Tyto hlasy jsou k dispozici ve verzi Public Preview ve třech oblastech Azure: EastUS, SouthEastAsia a WestEurope.
+
+**Kontejner neuronové TTS GA**
+- Pomocí kontejneru neuronové TTS můžou vývojáři spustit syntézu řeči s nejpřirozenými digitálními hlasy ve vlastním prostředí pro konkrétní požadavky na zabezpečení a zabezpečení dat. Podívejte [se, jak nainstalovat kontejnery řeči](speech-container-howto.md). 
+
+**Nové funkce**
+- **Vlastní hlas**: enabed uživatelé ke kopírování hlasového modelu z jedné oblasti do druhé. podporuje se pozastavení a obnovení koncového bodu. Tady můžete přejít na [portál](https://speech.microsoft.com/customvoice) .
+- Podpora [značek tichého SSML](speech-synthesis-markup.md#add-silence) 
+- Obecná vylepšení kvality hlasu TTS: Vylepšená přesnost výslovnosti na úrovni aplikace v NB-NO. Byla snížena 53% chyba výslovnosti.
+
+> Další informace najdete na [tomto technickém blogu](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604).
 
 ## <a name="text-to-speech-2020-october-release"></a>Převod textu na řeč 2020 – říjen vydaná verze
 
