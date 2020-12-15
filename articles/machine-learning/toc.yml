@@ -503,7 +503,7 @@
       displayName: pipelines
       items:
         - name: Vytváření kanálů ML (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: Přesun dat kroků kanálu ML a mezi nimi (Python)
           href: how-to-move-data-in-out-of-pipelines.md
         - name: Nasazování kanálů ML (Python)

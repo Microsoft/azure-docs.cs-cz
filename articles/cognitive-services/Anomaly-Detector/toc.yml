@@ -30,6 +30,8 @@
   items:
     - name: Zjištění anomálií ve vašich datech
       href: how-to/identify-anomalies.md
+    - name: Nasazení do IoT Edge
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096439"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506298"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -99,8 +99,8 @@ Trasy Border Gateway Protocol (BGP) ovlivňují také přenosy aplikací. Pokud 
 Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Chcete-li pracovat s Azure DNS Private Zones, je nutné přidat následující nastavení aplikace:
 
 
-1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16 1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16
-1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1 1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
+1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16
+1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
 
 
 Tato nastavení budou posílat všechna vaše odchozí volání z vaší aplikace do vaší virtuální sítě a zároveň umožníte, aby aplikace používala Azure DNS privátní zóny.   Tato nastavení budou posílat všechna odchozí volání z vaší aplikace do vaší virtuální sítě. Kromě toho umožní aplikaci použít Azure DNS dotazem Privátní DNS zóny na úrovni pracovního procesu. Tato funkce se použije, když běžící aplikace přistupuje k zóně Privátní DNS.
