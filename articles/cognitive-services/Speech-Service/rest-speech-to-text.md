@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483916"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504470"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
-Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) nemůže.
+Převod řeči na text má dvě různá rozhraní REST API. Každé rozhraní API slouží ke speciálnímu účelu a používá jiné sady koncových bodů.
 
-Před použitím REST API řeči na text zvažte následující:
+Rozhraní REST API pro text jsou:
+- [Převod řeči na text REST API v 3.0](#speech-to-text-rest-api-v30) se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Převod řeči na text REST API pro krátký zvuk](#speech-to-text-rest-api-for-short-audio) se používá pro online přepis jako alternativu k [sadě Speech SDK](speech-sdk.md). Požadavky, které používají toto rozhraní API, můžou přenášet až 60 sekund zvuk na jednu žádost. 
 
-* Požadavky, které používají REST API a přímo odesílají zvuk, můžou obsahovat až 60 sekund zvukového přenosu.
-* REST API převodu řeči na text vrátí pouze konečné výsledky. Neposkytují se částečné výsledky.
+## <a name="speech-to-text-rest-api-v30"></a>Převod řeči na text REST API v 3.0
 
-Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo souborového REST API, jako je například [Batch přepis](batch-transcription.md).
+Převod řeči na text REST API v 3.0 se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). Pokud potřebujete komunikovat s OnLine přepisem přes REST, používejte [pro krátké zvukové REST API převod řeči na text](#speech-to-text-rest-api-for-short-audio).
+
+REST API v 3.0 použijte k těmto akcím:
+- Zkopírujte modely do jiných předplatných, pokud chcete, aby měli kolegové přístup k modelu, který jste vytvořili, nebo v případech, kdy chcete model nasadit do více než jedné oblasti.
+- Přepisovat data z kontejneru (hromadný přepis) a poskytněte několik adres URL zvukového souboru.
+- Nahrávání dat z Azure Storage účtů pomocí identifikátoru URI SAS
+- Získat protokoly na koncový bod, pokud se pro tento koncový bod požadovaly protokoly
+- Vyžádejte si manifest modelů, které vytvoříte, pro účely nastavení místních kontejnerů.
+
+REST API v 3.0 zahrnuje tyto funkce:
+- **Oznámení – Webhooky**– všechny spuštěné procesy služby teď podporují oznámení Webhooku. REST API v 3.0 poskytuje volání, která umožňují registrovat Webhooky, ve kterých se odesílají oznámení.
+- **Aktualizace modelů za koncovými body** 
+- **Přizpůsobení modelu s více datovými sadami**– přizpůsobení modelu pomocí více kombinací dat akustického, jazyka a výslovnosti pro více datových sad
+- **Přineste si vlastní úložiště**– používejte vlastní účty úložiště pro protokoly, přepisované soubory a další data.
+
+V [tomto článku](batch-transcription.md)najdete příklady použití REST API v 3.0 s dávkovým přepisem.
+
+Pokud používáte převod řeči na text REST API v 2.0, přečtěte si téma jak můžete v [této příručce](/azure/cognitive-services/speech-service/migrate-v2-to-v3)migrovat na verzi 3.0.
+
+[Tady](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)najdete odkaz na celý převod řeči na text REST API v 3.0.
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>REST API řeči na text pro krátký zvuk
+
+Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API pro krátký zvuk je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) není.
+
+Před použitím REST API řeči na text pro krátký zvuk zvažte následující:
+
+* Požadavky, které používají REST API pro krátký zvuk a přímý přenos zvuku, můžou obsahovat až 60 sekund zvukového přenosu.
+* REST API řeči na text pro krátký zvuk vrátí pouze konečné výsledky. Neposkytují se částečné výsledky.
+
+Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo [řeči-to-text REST API v 3.0](#speech-to-text-rest-api-v30).
 
 > [!TIP]
 > Podívejte [se na koncové body Azure pro státní](../../azure-government/compare-azure-government-global-azure.md) správu (FairFax).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Oblasti a koncové body
+### <a name="regions-and-endpoints"></a>Oblasti a koncové body
 
-Koncový bod pro REST API má tento formát:
+Koncový bod pro REST API pro krátký zvuk má tento formát:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,7 +80,7 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 > [!NOTE]
 > Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Parametry dotazů
+### <a name="query-parameters"></a>Parametry dotazů
 
 Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
@@ -60,7 +91,7 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 | `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou hodnoty `masked` , které nahradí vulgární znaky hvězdičkami, `removed` , které odstraní všechny vulgární výrazy z výsledku, nebo `raw` , které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Volitelné |
 | `cid` | Při použití [portálu Custom Speech](./custom-speech-overview.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu použijte **ID koncového bodu** `cid` . | Volitelné |
 
-## <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Hlavičky požadavku
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
@@ -74,7 +105,7 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádos
 | `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue` . Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Vyžaduje se, když se posílají zvuková data v bloku. |
 | `Accept` | Je-li tento příkaz zadán, musí být `application/json` . Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept` . | Volitelné, ale doporučené. |
 
-## <a name="audio-formats"></a>Formáty zvuku
+### <a name="audio-formats"></a>Formáty zvuku
 
 V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů v této tabulce:
 
@@ -84,9 +115,9 @@ V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů 
 | OGG    | OPUS  | 256 KPBS | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
+>Výše uvedené formáty jsou podporovány prostřednictvím REST API pro krátké zvukové a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="pronunciation-assessment-parameters"></a>Parametry vyhodnocení výslovnosti
+### <a name="pronunciation-assessment-parameters"></a>Parametry vyhodnocení výslovnosti
 
 Tato tabulka uvádí seznam požadovaných a volitelných parametrů pro posouzení výslovnosti.
 
@@ -123,7 +154,7 @@ Při odesílání zvukových dat důrazně doporučujeme nahrávání streamová
 >[!NOTE]
 >Funkce posouzení výslovnosti je aktuálně dostupná pouze v `westus` `eastasia` oblastech a `centralindia` . A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
 
-## <a name="sample-request"></a>Ukázková žádost
+### <a name="sample-request"></a>Ukázková žádost
 
 Níže uvedená ukázka obsahuje název hostitele a požadované hlavičky. Je důležité si uvědomit, že služba také očekává zvuková data, která nejsou obsažena v této ukázce. Jak už bylo zmíněno dříve, doporučuje se používat bloky dat, ale nevyžadují se.
 
@@ -143,7 +174,7 @@ Pokud chcete povolit posouzení výslovnosti, můžete přidat pod záhlaví. In
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>Stavové kódy HTTP
+### <a name="http-status-codes"></a>Stavové kódy HTTP
 
 Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
@@ -155,9 +186,9 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | `401` | Neautorizováno | Klíč předplatného nebo autorizační token není v zadané oblasti platný, nebo je neplatný koncový bod. |
 | `403` | Forbidden | Chybí klíč předplatného nebo autorizační token. |
 
-## <a name="chunked-transfer"></a>Přenos v bloku
+### <a name="chunked-transfer"></a>Přenos v bloku
 
-Přenos v bloku ( `Transfer-Encoding: chunked` ) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API neposkytuje částečné nebo dočasné výsledky.
+Přenos v bloku ( `Transfer-Encoding: chunked` ) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API pro krátký zvuk neposkytuje částečné nebo dočasné výsledky.
 
 Tato ukázka kódu ukazuje, jak odeslat zvuk v blocích. Pouze první blok by měl obsahovat hlavičku zvukového souboru. `request` je `HttpWebRequest` objekt připojený k příslušnému koncovému bodu REST. `audioFile` je cesta ke zvukovému souboru na disku.
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Parametry odpovědi
+### <a name="response-parameters"></a>Parametry odpovědi
 
 Výsledky se poskytují jako JSON. Tento `simple` Formát zahrnuje tato pole nejvyšší úrovně.
 
@@ -233,7 +264,7 @@ Objekt v `NBest` seznamu může zahrnovat:
 | `PronScore` | Celkové skóre označující kvalitu výslovnosti daného řeči. To je agregované z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
 | `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, ve srovnání s `ReferenceText` . Možné hodnoty jsou `None` (to znamená, že toto slovo neobsahuje žádnou chybu), `Omission` `Insertion` a `Mispronunciation` . |
 
-## <a name="sample-responses"></a>Ukázkové odpovědi
+### <a name="sample-responses"></a>Ukázkové odpovědi
 
 Typická odpověď pro `simple` rozpoznávání:
 
@@ -309,3 +340,4 @@ Typická odpověď pro rozpoznávání s hodnocením výslovnosti:
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
 - [Přizpůsobení akustických modelů](./how-to-custom-speech-train-model.md)
 - [Přizpůsobení jazykových modelů](./how-to-custom-speech-train-model.md)
+- [Seznámení se službou Batch – přepis](batch-transcription.md)

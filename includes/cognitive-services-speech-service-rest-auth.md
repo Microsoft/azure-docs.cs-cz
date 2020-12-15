@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864946"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504487"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které hlavičky jsou pro každou službu podporované:
 
 | Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Yes | No |
-| Autorizace: nosič | Yes | Yes |
+| Ocp-Apim-Subscription-Key | Ano | Ne |
+| Autorizace: nosič | Ano | Ano |
 
 Když použijete `Ocp-Apim-Subscription-Key` hlavičku, budete muset zadat svůj klíč předplatného. Například:
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 Přístupový token by měl být službě odeslán jako `Authorization: Bearer <TOKEN>` Hlavička. Každý přístupový token je platný po dobu 10 minut. Nový token můžete kdykoli získat, ale k minimalizaci síťového provozu a latence doporučujeme použít stejný token po dobu devíti minut.
 
-Tady je ukázka požadavku HTTP na REST API převodu textu na řeč:
+Tady je ukázka požadavku HTTP na REST API převodu řeči na text pro krátký zvuk:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

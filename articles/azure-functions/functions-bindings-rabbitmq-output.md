@@ -1,0 +1,326 @@
+---
+title: RabbitMQ výstupní vazby pro Azure Functions
+description: Naučte se odesílat RabbitMQ zprávy z Azure Functions.
+author: cachai2
+ms.assetid: ''
+ms.topic: reference
+ms.date: 12/13/2020
+ms.author: cachai
+ms.custom: ''
+ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505734"
+---
+# <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ výstupní vazba pro Azure Functions přehled
+
+> [!NOTE]
+> Vazby RabbitMQ se plně podporují jenom v plánech **Windows Premium** . Spotřeba a Linux se aktuálně nepodporují.
+
+Pomocí výstupní vazby RabbitMQ můžete odesílat zprávy do fronty RabbitMQ.
+
+Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-rabbitmq-output.md).
+
+## <a name="example"></a>Příklad
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která pošle zprávu RabbitMQ, když se aktivuje TimerTrigger každých 5 minut pomocí návratové hodnoty metody jako výstup:
+
+```cs
+[FunctionName("RabbitMQOutput")]
+[return: RabbitMQ("outputQueue", ConnectionStringSetting = "ConnectionStringSetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+    return $"{DateTime.Now}";
+}
+```
+
+Následující příklad ukazuje, jak používat rozhraní IAsyncCollector k posílání zpráv.
+
+```cs
+[FunctionName("RabbitMQOutput")]
+public static async Task Run(
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
+[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+ILogger log)
+{
+    // processing:
+    var myProcessedEvent = DoSomething(rabbitMQEvent);
+    
+     // send the message
+    await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+}
+```
+
+Následující příklad ukazuje, jak odeslat zprávy jako POCOs.
+
+```cs
+public class TestClass
+{
+    public string x { get; set; }
+}
+
+[FunctionName("RabbitMQOutput")]
+public static async Task Run(
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] TestClass rabbitMQEvent,
+[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<TestClass> outputPocObj,
+ILogger log)
+{
+    // send the message
+    await outputPocObj.Add(rabbitMQEvent);
+}
+```
+
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
+
+Následující příklad ukazuje výstupní vazbu RabbitMQ v souboru *function.js* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu. Funkce přečte zprávu z triggeru HTTP a zapíše ji do fronty RabbitMQ.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+    "bindings": [
+        {
+            "type": "httpTrigger",
+            "direction": "in",
+            "authLevel": "function",
+            "name": "input",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "type": "rabbitMQ",
+            "name": "outputMessage",
+            "queueName": "outputQueue",
+            "connectionStringSetting": "connectionStringAppSetting",
+            "direction": "out"
+        }
+    ]
+}
+```
+
+Tady je kód skriptu jazyka C#:
+
+```csx
+using System;
+using Microsoft.Extensions.Logging;
+
+public static void Run(string input, out string outputMessage, ILogger log)
+{
+    log.LogInformation(input);
+    outputMessage = input;
+}
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje výstupní vazbu RabbitMQ v souboru v *function.js* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce přečte zprávu z triggeru HTTP a zapíše ji do fronty RabbitMQ.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+    "bindings": [
+        {
+            "type": "httpTrigger",
+            "direction": "in",
+            "authLevel": "function",
+            "name": "input",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "type": "rabbitMQ",
+            "name": "outputMessage",
+            "queueName": "outputQueue",
+            "connectionStringSetting": "connectionStringAppSetting",
+            "direction": "out"
+        }
+    ]
+}
+```
+
+Kód JavaScriptu:
+
+```javascript
+module.exports = function (context, input) {
+    context.bindings.myQueueItem = input.body;
+    context.done();
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Následující příklad ukazuje výstupní vazbu RabbitMQ v souboru v *function.js* a funkci Pythonu, která používá vazbu. Funkce přečte zprávu z triggeru HTTP a zapíše ji do fronty RabbitMQ.
+
+Tady jsou data vazby v *function.js* souboru:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "$return"
+        },
+        {
+            "type": "rabbitMQ",
+            "name": "outputMessage",
+            "queueName": "outputQueue",
+            "connectionStringSetting": "connectionStringAppSetting",
+            "direction": "out"
+        }
+    ]
+}
+```
+
+V *_\_ init_ \_ . py* můžete do fronty napsat zprávu předáním hodnoty `set` metodě.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+    input_msg = req.params.get('message')
+    msg.set(input_msg)
+    return 'OK'
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty RabbitMQ při aktivaci TimerTrigger každých 5 minut.
+
+```java
+@FunctionName("RabbitMQOutputExample")
+public void run(
+@TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+@RabbitMQOutput(connectionStringSetting = "rabbitMQ", queueName = "hello") OutputBinding<String> output,
+final ExecutionContext context) {
+    output.setValue("Some string");
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>Atributy a poznámky
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte rozhraní [RabbitMQAttribute](https://github.com/Azure/azure-functions-rabbitmq-extension/blob/dev/src/RabbitMQAttribute.cs).
+
+Zde je `RabbitMQAttribute` atribut v signatuře metody:
+
+```csharp
+[FunctionName("RabbitMQOutput")]
+public static async Task Run(
+[RabbitMQTrigger("SourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
+[RabbitMQ("DestinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+ILogger log)
+{
+    ...
+}
+```
+
+Úplný příklad najdete v tématu [příklad](#example)v jazyce C#.
+
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
+
+Skripty jazyka C# nepodporují atributy.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
+# <a name="java"></a>[Java](#tab/java)
+
+`RabbitMQOutput`Poznámka umožňuje vytvořit funkci, která se spustí při odeslání zprávy RabbitMQ. K dispozici jsou možnosti konfigurace, včetně názvu fronty a názvu připojovacího řetězce. Další podrobnosti o parametrech najdete v [poznámkách Java RabbitMQOutput](https://github.com/Azure/azure-functions-rabbitmq-extension/blob/dev/binding-library/java/src/main/java/com/microsoft/azure/functions/rabbitmq/annotation/RabbitMQOutput.java).
+
+Další podrobnosti najdete v [příkladu](#example) výstupní vazby.
+
+---
+
+## <a name="configuration"></a>Konfigurace
+
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `RabbitMQ` atribut.
+
+|function.jsvlastnost | Vlastnost atributu |Popis|
+|---------|---------|----------------------|
+|**textový** | neuvedeno | Musí být nastavené na "RabbitMQ".|
+|**směr** | neuvedeno | Musí být nastavené na "out". |
+|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. |
+|**Proměnné QueueName**|**Proměnné QueueName**| Název fronty, do které se budou posílat zprávy |
+|**Název hostitele**|**Název hostitele**|(volitelné, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
+|**passwordSetting**|**PasswordSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
+|**connectionStringSetting**|**ConnectionStringSetting**|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat. (Např.: v *function.jsna*: connectionStringSetting: "rabbitMQConnection" <br> V *local.settings.js*: "rabbitMQConnection": "< ActualConnectionstring >")|
+|**přístavní**|**Port**|Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+
+## <a name="usage"></a>Využití
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Pro výstupní vazbu použijte následující typy parametrů:
+
+* `byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `POCO` – Pokud hodnota parametru není formátována jako objekt jazyka C#, bude přijata chyba. Úplný příklad najdete v tématu [příklad](#example)v jazyce C#.
+
+Při práci s funkcemi jazyka C#:
+
+* Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
+
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
+
+Pro výstupní vazbu použijte následující typy parametrů:
+
+* `byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `POCO` – Pokud hodnota parametru není formátována jako objekt jazyka C#, bude přijata chyba.
+
+Při práci s funkcemi skriptu jazyka C#:
+
+* Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Zpráva RabbitMQ se odesílá prostřednictvím řetězce.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Zpráva RabbitMQ se odesílá prostřednictvím řetězce.
+
+# <a name="java"></a>[Java](#tab/java)
+
+Pro výstupní vazbu použijte následující typy parametrů:
+
+* `byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `POJO` – Pokud hodnota parametru není formátována jako objekt Java, bude přijata chyba.
+
+---
+
+## <a name="next-steps"></a>Další kroky
+
+- [Spustit funkci při vytvoření zprávy RabbitMQ (trigger)](./functions-bindings-rabbitmq-trigger.md)

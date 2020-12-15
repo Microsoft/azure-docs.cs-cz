@@ -1,80 +1,121 @@
 ---
 title: Jak používat pojmenované hodnoty v zásadách Azure API Management
-description: Naučte se používat pojmenované hodnoty v zásadách Azure API Management. Pojmenované hodnoty mohou obsahovat řetězce literálů a výrazy zásad.
+description: Naučte se používat pojmenované hodnoty v zásadách Azure API Management. Pojmenované hodnoty mohou obsahovat literálové řetězce, výrazy zásad a tajné klíče uložené v Azure Key Vault.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852187"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504728"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
+# <a name="use-named-values-in-azure-api-management-policies"></a>Použití pojmenovaných hodnot v zásadách Azure API Management
 
-Zásady API Management představují výkonnou schopnost systému, která umožňuje Azure Portal změnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze vytvořit pomocí textových hodnot literálů, výrazů zásad a pojmenovaných hodnot.
+[Zásady API Management](api-management-howto-policies.md) představují výkonnou schopnost systému, která umožňuje vydavateli změnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze vytvořit pomocí textových hodnot literálů, výrazů zásad a pojmenovaných hodnot.
 
-Každá instance API Management služby má kolekci párů klíč/hodnota, které se nazývají pojmenované hodnoty, které jsou globální pro instanci služby. Počet položek v kolekci není nijak omezen. Pojmenované hodnoty se dají použít ke správě konstantních řetězcových hodnot napříč všemi konfiguracemi a zásadami rozhraní API. Každá pojmenovaná hodnota může mít následující atributy:
+*Pojmenované hodnoty* jsou globální kolekce párů název/hodnota v každé instanci API Management. Počet položek v kolekci není nijak omezen. Pojmenované hodnoty se dají použít ke správě konstantních hodnot řetězců a tajných kódů napříč všemi konfiguracemi a zásadami rozhraní API. 
 
-| Atribut      | Typ            | Description                                                                                                                            |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | řetězec          | Používá se pro odkazování pojmenované hodnoty v zásadách. Řetězec o 1 až 256 znaků. Jsou povoleny pouze písmena, číslice, tečky a spojovníky. |
-| `Value`        | řetězec          | Skutečná hodnota. Nesmí být prázdný nebo obsahovat pouze prázdné znaky. Maximálně 4096 znaků.                                        |
-| `Secret`       | boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                               |
-| `Tags`         | pole řetězce | Slouží k filtrování seznamu pojmenovaných hodnot. Až 32 značek.                                                                                    |
+:::image type="content" source="media/api-management-howto-properties/named-values.png" alt-text="Pojmenované hodnoty v Azure Portal":::
 
-![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
+## <a name="value-types"></a>Typy hodnot
 
-Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](./api-management-policy-expressions.md). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná hodnota `Credential` je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
+|Typ  |Popis  |
+|---------|---------|
+|Podobě     |  Řetězcový literál nebo výraz zásady     |
+|Tajný kód     |   Řetězcový literál nebo výraz zásad, který je zašifrovaný pomocí API Management      |
+|[Trezor klíčů](#key-vault-secrets)     |  Identifikátor tajného kódu uloženého v trezoru klíčů Azure.      |
 
-| Name       | Hodnota                      | Tajný kód | Značky          |
-| ---------- | -------------------------- | ------ | ------------- |
-| Hodnota      | 42                         | Nepravda  | důležitá – čísla |
-| Přihlašovací údaj | ••••••••••••••••••••••     | Ano   | security      |
-| Výraz | @ (DateTime. Now. ToString ()) | Nepravda  |               |
+Jednoduché hodnoty nebo tajné klíče můžou obsahovat [výrazy zásad](./api-management-policy-expressions.md). Například výraz `@(DateTime.Now.ToString())` vrátí řetězec obsahující aktuální datum a čas.
 
-> [!NOTE]
-> Místo pojmenovaných hodnot uložených v rámci služby API Management můžete použít hodnoty uložené ve službě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak je znázorněno v tomto [příkladu](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
+Podrobnosti o atributech pojmenované hodnoty naleznete v [odkazu API Management REST API](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate).
 
-## <a name="to-add-and-edit-a-named-value"></a>Přidání a úprava pojmenované hodnoty
+## <a name="key-vault-secrets"></a>Tajné kódy trezoru klíčů
 
-![Přidat pojmenovanou hodnotu](./media/api-management-howto-properties/add-property.png)
+Tajné hodnoty mohou být uloženy buď jako šifrované řetězce v API Management (vlastní tajné klíče), nebo odkazem na tajné kódy v [Azure Key Vault](../key-vault/general/overview.md). 
 
-1. V části **API MANAGEMENT** vyberte **rozhraní API**.
-2. Vyberte **pojmenované hodnoty**.
-3. Stiskněte **+ Přidat**.
+Doporučuje se používat tajné klíče trezoru klíčů, protože pomáhá vylepšit API Management zabezpečení:
 
-    Název a hodnota jsou požadované hodnoty. Pokud je hodnota tajná, zaškrtněte políčko _Toto je tajné_ . Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
+* Tajné kódy uložené v trezorech klíčů je možné opakovaně používat napříč službami.
+* Podrobné [zásady přístupu](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) se dají použít u tajných klíčů.
+* Tajné kódy, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se pojmenovaná hodnota v API Management v rámci 4 hodin aktualizuje. 
 
-4. Klikněte na **Vytvořit**.
+### <a name="prerequisites-for-key-vault-integration"></a>Předpoklady pro integraci trezoru klíčů
 
-Jakmile je pojmenovaná hodnota vytvořena, můžete ji upravit kliknutím na ni. Změníte-li název pojmenované hodnoty, budou automaticky aktualizovány všechny zásady, které odkazují na tuto pojmenovanou hodnotu, aby používaly nový název.
+1. Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
+1. Povolte [spravovanou identitu](api-management-howto-use-managed-service-identity.md) přiřazenou systémem nebo uživatelem v instanci API Management.
+1. Přiřaďte [zásady přístupu trezoru klíčů](../key-vault/general/assign-access-policy-portal.md) ke spravované identitě s oprávněními k získání a výpisu tajných kódů z trezoru. Postup přidání zásady:
+    1. Na portálu přejděte do svého trezoru klíčů.
+    1. Vyberte **nastavení > zásady přístupu > + přidat zásady přístupu**.
+    1. Vyberte **oprávnění tajného klíče** a pak vyberte **získat** a **seznam**.
+    1. V části **Vybrat objekt zabezpečení** vyberte název prostředku spravované identity. Pokud používáte identitu přiřazenou systémem, je objekt zabezpečení názvem vaší instance API Management.
+1. Vytvořte nebo importujte tajný klíč do trezoru klíčů. Viz [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
-## <a name="to-delete-a-named-value"></a>Odstranění pojmenované hodnoty
+Pokud chcete použít tajný klíč trezoru klíčů, [přidejte nebo upravte pojmenovanou hodnotu](#add-or-edit-a-named-value)a zadejte typ **trezoru klíčů**. Vyberte tajný klíč z trezoru klíčů.
 
-Pojmenovanou hodnotu odstraníte tak, že kliknete na **Odstranit** vedle pojmenované hodnoty, kterou chcete odstranit.
+> [!CAUTION]
+> Při použití tajného klíče trezoru klíčů v API Management buďte opatrní, abyste neodstranili tajný klíč, Trezor klíčů ani spravovanou identitu, která se používá pro přístup k trezoru klíčů.
 
-> [!IMPORTANT]
-> Pokud je pojmenovaná hodnota odkazována pomocí jakýchkoli zásad, nebudete ji moci úspěšně odstranit, dokud neodeberete pojmenovanou hodnotu ze všech zásad, které ji používají.
+Pokud je v trezoru klíčů zapnutá [Brána firewall Key Vault](../key-vault/general/network-security.md) , jsou zde uvedené další požadavky na používání tajných klíčů trezoru klíčů:
 
-## <a name="to-search-and-filter-named-values"></a>Hledání a filtrování pojmenovaných hodnot
+* Pro přístup k trezoru klíčů je nutné použít spravovanou identitu **přiřazenou systémem** API Management instance.
+* V bráně Key Vault firewall povolte možnost **Povolit používání této brány firewall důvěryhodným službám Microsoftu** .
 
-Karta **pojmenované hodnoty** obsahuje možnosti vyhledávání a filtrování, které vám pomůžou se správou pojmenovaných hodnot. Chcete-li filtrovat seznam pojmenovaných hodnot podle názvu, zadejte hledaný termín do textového pole **Vlastnosti hledání** . Chcete-li zobrazit všechny pojmenované hodnoty, zrušte zaškrtnutí pole **Vlastnosti hledání** a stiskněte klávesu ENTER.
+Pokud je instance API Management nasazená ve virtuální síti, nakonfigurujte taky následující nastavení sítě:
+* Povolení [koncového bodu služby](../key-vault/general/overview-vnet-service-endpoints.md) Azure Key Vault v podsíti API Management.
+* Nakonfigurujte pravidlo skupiny zabezpečení sítě (NSG) tak, aby povolovalo odchozí přenosy do [značek služby](../virtual-network/service-tags-overview.md)AzureKeyVault a azureactivedirectory selhala. 
 
-Chcete-li filtrovat seznam podle značky, zadejte do textového pole **filtrovat podle značek** jednu nebo více značek. Chcete-li zobrazit všechny pojmenované hodnoty, zrušte zaškrtnutí políčka **filtrovat podle značek** a stiskněte klávesu ENTER.
+Podrobnosti najdete v tématu podrobnosti o konfiguraci sítě v tématu [připojení k virtuální síti](api-management-using-with-vnet.md#-common-network-configuration-issues).
 
-## <a name="to-use-a-named-value"></a>Použití pojmenované hodnoty
+## <a name="add-or-edit-a-named-value"></a>Přidat nebo upravit pojmenovanou hodnotu
 
-Chcete-li použít pojmenovanou hodnotu v zásadě, umístěte svůj název do dvojice dvojitých závorek jako `{{ContosoHeader}}` , jak je znázorněno v následujícím příkladu:
+### <a name="add-a-key-vault-secret"></a>Přidání tajného klíče trezoru klíčů
+
+Viz [předpoklady pro integraci trezoru klíčů](#prerequisites-for-key-vault-integration).
+
+1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
+1. V části **rozhraní API** vyberte **pojmenované hodnoty**  >  **+ Přidat**.
+1. Zadejte identifikátor **názvu** a zadejte **Zobrazovaný název** , který se použije k odkazování na vlastnost v zásadách.
+1. V **typ hodnoty** vyberte **Trezor klíčů**.
+1. Zadejte identifikátor tajného klíče trezoru klíčů (bez verze) nebo zvolte **Vybrat** a vyberte tajný klíč z trezoru klíčů.
+    > [!IMPORTANT]
+    > Pokud zadáte identifikátor tajného klíče trezoru klíčů sami, ujistěte se, že nemá informace o verzi. V opačném případě se tajný kód v API Management po aktualizaci trezoru klíčů automaticky neotočí.
+1. V **klientské identitě** vyberte spravovanou identitu přiřazenou systémem nebo existující uživatelem přiřazenou identitu. Naučte se [přidávat nebo upravovat spravované identity ve službě API Management](api-management-howto-use-managed-service-identity.md).
+    > [!NOTE]
+    > Identita potřebuje oprávnění k získání a výpisu tajných kódů z trezoru klíčů. Pokud jste ještě nenakonfigurovali přístup k trezoru klíčů, API Management vás vyzve, aby mohl automaticky konfigurovat identitu s potřebnými oprávněními.
+1. Přidejte jednu nebo více volitelných značek, které vám pomůžou uspořádat pojmenované hodnoty a pak je **Uložit**.
+1. Vyberte **Vytvořit**.
+
+    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Přidat tajnou hodnotu trezoru klíčů":::
+
+### <a name="add-a-plain-or-secret-value"></a>Přidat jednoduchou nebo tajnou hodnotu
+
+1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
+1. V části **rozhraní API** vyberte **pojmenované hodnoty**  >  **+ Přidat**.
+1. Zadejte identifikátor **názvu** a zadejte **Zobrazovaný název** , který se použije k odkazování na vlastnost v zásadách.
+1. V **typ hodnoty** vyberte možnost **prostý** nebo **tajný**.
+1. Do **hodnoty** zadejte výraz řetězce nebo zásady.
+1. Přidejte jednu nebo více volitelných značek, které vám pomůžou uspořádat pojmenované hodnoty a pak je **Uložit**.
+1. Vyberte **Vytvořit**.
+
+Jakmile se pojmenovaná hodnota vytvoří, můžete ji upravit tak, že vyberete název. Změníte-li zobrazovaný název, všechny zásady, které se na tuto pojmenovanou hodnotu odkazují, se automaticky aktualizují, aby používaly nový zobrazovaný název.
+
+## <a name="use-a-named-value"></a>Použít pojmenovanou hodnotu
+
+Příklady v této části používají pojmenované hodnoty uvedené v následující tabulce.
+
+| Název               | Hodnota                      | Tajný kód | 
+|--------------------|----------------------------|--------|---------|
+| ContosoHeader      | `TrackingId`                 | Ne  | 
+| ContosoHeaderValue | ••••••••••••••••••••••     | Ano   | 
+| ExpressionProperty | `@(DateTime.Now.ToString())` | Ne  | 
+
+Chcete-li použít pojmenovanou hodnotu v zásadě, umístěte svůj zobrazovaný název do dvojice dvojitých závorek jako `{{ContosoHeader}}` , jak je znázorněno v následujícím příkladu:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,9 +125,13 @@ Chcete-li použít pojmenovanou hodnotu v zásadě, umístěte svůj název do d
 
 V tomto příkladu `ContosoHeader` se používá jako název záhlaví v `set-header` zásadě a `ContosoHeaderValue` používá se jako hodnota této hlavičky. Když se tato zásada vyhodnotí během žádosti nebo odpovědi na bránu API Management `{{ContosoHeader}}` a `{{ContosoHeaderValue}}` nahradí se jejich příslušnými hodnotami.
 
-Pojmenované hodnoty lze použít jako úplný atribut nebo hodnoty prvků, jak je znázorněno v předchozím příkladu, ale mohou být také vloženy do nebo kombinovány s částí textového výrazu literálu, jak je znázorněno v následujícím příkladu: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Pojmenované hodnoty lze použít jako úplný atribut nebo hodnoty prvků, jak je znázorněno v předchozím příkladu, ale mohou být také vloženy do nebo kombinovány s částí textového výrazu literálu, jak je znázorněno v následujícím příkladu: 
 
-Pojmenované hodnoty mohou obsahovat také výrazy zásad. V následujícím příkladu `ExpressionProperty` je použit.
+```xml
+<set-header name = "CustomHeader{{ContosoHeader}}" ...>
+```
+
+Pojmenované hodnoty mohou obsahovat také výrazy zásad. V následujícím příkladu `ExpressionProperty` je použit výraz.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -94,17 +139,27 @@ Pojmenované hodnoty mohou obsahovat také výrazy zásad. V následujícím př
 </set-header>
 ```
 
-Když se tato zásada vyhodnotí, `{{ExpressionProperty}}` nahradí se její hodnotou: `@(DateTime.Now.ToString())` . Vzhledem k tomu, že hodnota je výrazem zásady, vyhodnocuje se výraz a zásada se provede s jeho spuštěním.
+Když se tato zásada vyhodnotí, `{{ExpressionProperty}}` nahradí se její hodnotou `@(DateTime.Now.ToString())` . Vzhledem k tomu, že hodnota je výrazem zásady, vyhodnocuje se výraz a zásada se provede s jeho spuštěním.
 
-Tuto možnost můžete vyzkoušet na portálu pro vývojáře voláním operace, která má zásadu s pojmenovanými hodnotami v oboru. V následujícím příkladu je operace volána s použitím dvou předchozích ukázkových `set-header` zásad s pojmenovanými hodnotami. Všimněte si, že odpověď obsahuje dvě vlastní hlavičky, které byly nakonfigurovány pomocí zásad s pojmenovanými hodnotami.
+Můžete ji otestovat ve Azure Portal nebo [portálu pro vývojáře](api-management-howto-developer-portal.md) voláním operace, která má zásadu s pojmenovanými hodnotami v oboru. V následujícím příkladu je operace volána s použitím dvou předchozích ukázkových `set-header` zásad s pojmenovanými hodnotami. Všimněte si, že odpověď obsahuje dvě vlastní hlavičky, které byly nakonfigurovány pomocí zásad s pojmenovanými hodnotami.
 
-![Portál pro vývojáře][api-management-send-results]
+:::image type="content" source="media/api-management-howto-properties/api-management-send-results.png" alt-text="Test odpovědi rozhraní API":::
 
-Pokud se podíváte na [trasování rozhraní API](api-management-howto-api-inspector.md) pro volání, které obsahuje dvě předchozí ukázkové zásady s pojmenovanými hodnotami, uvidíte dvě `set-header` zásady s vloženými pojmenovanými hodnotami i vyhodnocením výrazu zásady pro pojmenovanou hodnotu, která obsahovala výraz zásad.
+Pokud se podíváte na výstupní [trasování API](api-management-howto-api-inspector.md) pro volání, které obsahuje dvě předchozí ukázkové zásady s pojmenovanými hodnotami, uvidíte dvě `set-header` zásady s vloženými pojmenovanými hodnotami i vyhodnocením výrazu zásady pro pojmenovanou hodnotu, která obsahovala výraz zásad.
 
-![Trasování v inspektoru API][api-management-api-inspector-trace]
+:::image type="content" source="media/api-management-howto-properties/api-management-api-inspector-trace.png" alt-text="Trasování v inspektoru API":::
+
+> [!CAUTION]
+> Pokud zásada odkazuje na tajný kód v Azure Key Vault, bude hodnota z trezoru klíčů viditelná pro uživatele, kteří mají přístup k předplatným, která jsou povolená pro [trasování požadavků rozhraní API](api-management-howto-api-inspector.md).
 
 Pojmenované hodnoty můžou obsahovat výrazy zásad, ale nemůžou obsahovat jiné pojmenované hodnoty. Pokud se text obsahující odkaz s názvem hodnoty používá pro hodnotu, například `Text: {{MyProperty}}` , tento odkaz nebude vyřešen a nahrazen.
+
+## <a name="delete-a-named-value"></a>Odstranění pojmenované hodnoty
+
+Pokud chcete odstranit pojmenovanou hodnotu, vyberte název a pak v místní nabídce (**...**) vyberte **Odstranit** .
+
+> [!IMPORTANT]
+> Pokud je pojmenovaná hodnota odkazována pomocí zásad API Management, nemůžete ji odstranit, dokud neodeberete pojmenovanou hodnotu ze všech zásad, které ji používají.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -114,5 +169,4 @@ Pojmenované hodnoty můžou obsahovat výrazy zásad, ale nemůžou obsahovat j
     -   [Výrazy zásad](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-[api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
-[api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
+

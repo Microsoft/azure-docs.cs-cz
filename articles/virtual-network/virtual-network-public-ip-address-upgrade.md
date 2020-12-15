@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905787"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503929"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -32,9 +32,6 @@ V tomto článku jsou revidovány následující scénáře:
 * Postup migrace klasického Vyhrazená IP adresa Azure do veřejné IP adresy Azure Resource Manager Basic SKU
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Upgrade veřejné IP adresy z úrovně Basic na standard SKU
-
->[!NOTE]
->Možnost upgradovat veřejné IP adresy z úrovně Basic na standard není dostupná ve všech oblastech.  Další podrobnosti najdete v tématu [**omezení**](#limitations) .
 
 Aby bylo možné upgradovat veřejnou IP adresu, nesmí být přidružená k žádnému prostředku (Další informace o zrušení přidružení veřejných IP adres) najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .
 
@@ -147,15 +144,6 @@ V Azure Resource Manager se vytvoří nová skupina prostředků s použitím n�
 ---
 
 ## <a name="limitations"></a>Omezení
-
-* Tato funkce není aktuálně k dispozici v následujících oblastech:<br>
-USA (Gov) – Virginia<br>
-US DoD – východ<br>
-US DoD – střed<br>
-Čína – východ<br>
-Čína – východ 2<br>
-Čína – sever<br>
-Čína – sever 2
 
 * Aby bylo možné upgradovat základní veřejnou IP adresu, nelze ji přidružit k žádnému prostředku Azure.  Přečtěte si prosím [tuto stránku](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) , kde najdete další informace, jak zrušit přidružení veřejných IP adres.  Podobně, aby bylo možné migrovat Vyhrazená IP adresa, nelze je přidružit k žádné cloudové službě.  Další informace o tom, jak zrušit přidružení rezervovaných IP adres, najdete na [této stránce](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , a proto se nedají přidružit k prostředku Azure, který je buď redundantní v zóně nebo v oblasti.  Všimněte si, že to platí jenom pro oblasti, které nabízí zóny dostupnosti.

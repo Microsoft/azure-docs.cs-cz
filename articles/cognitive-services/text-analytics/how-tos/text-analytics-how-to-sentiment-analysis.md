@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558755"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505218"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
@@ -51,7 +51,7 @@ Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají 
 
 ## <a name="opinion-mining"></a>Dolování názoru
 
-Dolování stanovisek je funkce Analýza mínění, počínaje verzí 3,1-Preview. 1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu. 
+Dolování stanovisek je funkce Analýza mínění, počínaje verzí Preview verze 3,1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
 Například pokud zákazník opustí svůj názor na Hotel, například "místnost byla Skvělé, ale zaměstnanci byli nepříteli.", dolování názorů vyhledá aspekty v textu a jejich přidružená stanoviska a zabarvení. Analýza mínění může hlásit pouze negativní mínění.
 
@@ -74,7 +74,7 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Maximální 
 
 Vytvořte žádost POST. V následujících referenčních odkazech můžete [použít možnost post](text-analytics-how-to-call-api.md) nebo **Konzola pro testování API** k rychlému uspořádání a odeslání jednoho. 
 
-#### <a name="version-31-preview2"></a>[Verze 3,1-Preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
 
 [Referenční informace pro Analýza mínění v 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -86,22 +86,22 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek můžete najít na Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-31-preview2"></a>[Verze 3,1-Preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
 
 **Analýza mínění**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **Dolování názoru**
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 Tento parametr je ve výchozím nastavení nastaven na hodnotu `false` . 
 
@@ -144,7 +144,7 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunů](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview2"></a>[Verze 3,1-Preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Příklad odpovědi na příklad dolování Analýza mínění a názoru
 
@@ -299,8 +299,8 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 + Využijte `opinionMining=true` v žádostech o analýzu sentient k získání názoru na výsledky dolování.
 + Výstup odpovědi, který se skládá z mínění skóre pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON. Například Excel a Power BI.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled analýzy textu](../overview.md)
-* [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
+* [Použití klientské knihovny Analýza textu](../quickstarts/client-libraries-rest-api.md)
 * [Co je nového](../whats-new.md)

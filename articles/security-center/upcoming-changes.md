@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: 63ae35da973525a8331eeeb463eb09e36e8b6e26
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97398928"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505490"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -40,6 +40,7 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 V současné době se prostředky vyhodnocené pro doporučení a zjištěné jako nevyhovující **se zobrazí v** Azure Policy jako "nekompatibilní". Žádná akce uživatele nemůže změnit stav na "kompatibilní". Z této plánované změny budou pro lepší přehlednost nahlášeny jako "vyhovující".
 
+Jediný dopad bude zobrazen v Azure Policy, kde se zvýší počet odpovídajících prostředků. Vaše zabezpečené skóre v Azure Security Center nebude nijak ovlivněno.
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure
 

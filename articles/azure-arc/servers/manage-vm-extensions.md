@@ -1,20 +1,20 @@
 ---
 title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358027"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504504"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 
-Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače.
+Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud třeba virtuální počítač vyžaduje instalaci softwaru, antivirovou ochranu nebo spuštění skriptu, můžete použít rozšíření virtuálního počítače.
 
-Servery s podporou ARC Azure vám umožňují nasadit rozšíření virtuálních počítačů Azure do virtuálních počítačů s jiným než Azure a Linux, což zjednodušuje správu hybridního počítače v místním prostředí, hraničních zařízeních a dalších cloudových prostředích v životním cyklu. Rozšíření virtuálních počítačů je možné spravovat pomocí následujících metod na hybridních počítačích nebo serverech spravovaných servery s podporou ARC:
+Servery s podporou ARC Azure umožňují nasadit rozšíření virtuálních počítačů Azure na virtuální počítače, které nejsou v Azure a Linux, a zjednoduší správu hybridního počítače prostřednictvím jejich životního cyklu. Rozšíření virtuálních počítačů je možné spravovat pomocí následujících metod na hybridních počítačích nebo serverech spravovaných servery s podporou ARC:
 
 - [Azure Portal](manage-vm-extensions-portal.md)
 - Rozhraní příkazového [řádku Azure](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ Podpora rozšíření virtuálních počítačů serverů s podporou ARC Azure n
 
 - [Konfigurace stavu Azure Automation](../../automation/automation-dsc-overview.md) slouží k centrálnímu ukládání konfigurací a údržbě požadovaného stavu hybridních připojených počítačů povolených prostřednictvím rozšíření virtuálního počítače DSC.
 
-- Shromažďovat data protokolu pro analýzu s [protokoly v Azure monitor](../../azure-monitor/platform/data-platform-logs.md) povolené prostřednictvím rozšíření virtuálního počítače agenta Log Analytics. To je užitečné při provádění složitých analýz napříč daty z nejrůznějších zdrojů.
+- Shromažďovat data protokolu pro analýzu s [protokoly v Azure monitor](../../azure-monitor/platform/data-platform-logs.md) povolené prostřednictvím rozšíření virtuálního počítače agenta Log Analytics. To je užitečné při komplexní analýze napříč daty z různých druhů zdrojů.
 
 - Díky [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md)analyzuje výkon virtuálních počítačů s Windows a Linux a monitoruje jejich procesy a závislosti na dalších prostředcích a externích procesech. Toho dosáhnete tím, že povolíte rozšíření Log Analytics agenta a rozšíření virtuálního počítače agenta závislostí.
 
@@ -58,7 +58,7 @@ V této verzi podporujeme následující rozšíření virtuálních počítač�
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 
@@ -67,9 +67,11 @@ Tato funkce závisí na následujících poskytovatelích prostředků Azure v r
 
 Pokud ještě nejsou zaregistrované, postupujte podle kroků v části [registrace poskytovatelů prostředků Azure](agent-overview.md#register-azure-resource-providers).
 
+Nezapomeňte si projít dokumentaci pro každé rozšíření virtuálních počítačů, na které odkazuje předchozí tabulka, a zjistěte, jestli obsahuje nějaké požadavky na síť nebo systém. To vám může pomáhat při potížích s připojením ke službě Azure nebo funkci, která spoléhá na toto rozšíření virtuálního počítače.
+
 ### <a name="log-analytics-vm-extension"></a>Rozšíření virtuálního počítače Log Analytics
 
-Rozšíření virtuálního počítače agenta Log Analytics pro Linux vyžaduje Python 2. x na cílovém počítači.
+Rozšíření virtuálního počítače agenta Log Analytics pro Linux vyžaduje Python 2. x na cílovém počítači. 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Rozšíření virtuálního počítače Azure Key Vault (Preview)
 

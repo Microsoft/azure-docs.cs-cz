@@ -12,17 +12,17 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b255f64547c3bae56d31415dc94a751989ca1f45
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860486"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504895"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidat nebo odebrat vlastníky skupiny v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) jsou vlastněné a spravované vlastníky skupin. Vlastníci skupiny můžou být uživatelé nebo instanční objekty a můžou spravovat skupinu včetně členství. Vlastníci skupiny můžou přiřadit jenom existující vlastníci skupiny nebo skupiny – Správa správců. Vlastníci skupiny nemusí být členy skupiny.
 
-Pokud skupina nemá žádného vlastníka, skupina – Správa správců stále dokáže spravovat skupinu. Doporučuje se, aby každá skupina měla aspoň jednoho vlastníka. Jakmile se vlastníci přiřadit do skupiny, nepůjde odebrat posledního vlastníka skupiny. Než odeberete posledního vlastníka ze skupiny, ujistěte se prosím, že jste vybrali jiného vlastníka.
+Pokud skupina nemá žádného vlastníka, skupina – Správa správců stále dokáže spravovat skupinu. Doporučuje se, aby každá skupina měla aspoň jednoho vlastníka. Po přiřazení vlastníků ke skupině nebude možné odebrat posledního vlastníka skupiny. Než odeberete posledního vlastníka ze skupiny, ujistěte se prosím, že jste vybrali jiného vlastníka.
 
 ## <a name="add-an-owner-to-a-group"></a>Přidat vlastníka do skupiny
 Níže jsou uvedeny pokyny pro přidání uživatele jako vlastníka do skupiny pomocí portálu Azure AD. Pokud chcete přidat instanční objekt jako vlastníka skupiny, postupujte podle pokynů v tématu použití [PowerShellu](/powershell/module/Azuread/Add-AzureADGroupOwner).

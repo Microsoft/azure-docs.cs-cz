@@ -5,20 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294071"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503552"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>Konfigurace vývojového prostředí pro skripty nasazení v šablonách (Preview)
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurace vývojového prostředí pro skripty nasazení v šablonách
 
 Naučte se vytvářet vývojové prostředí pro vývoj a testování skriptů nasazení pomocí Image skriptu nasazení. Můžete buď vytvořit službu [Azure Container instance](../../container-instances/container-instances-overview.md) , nebo použít [Docker](https://docs.docker.com/get-docker/). Jak je popsáno v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud nemáte skript nasazení, můžete vytvořit soubor **hello.ps1** s následujícím obsahem:
 
@@ -197,7 +197,7 @@ Soubor můžete také nahrát pomocí Azure Portal a Azure CLI.
 
     ![instance kontejneru nasazení připojit ke skriptu](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
-1. Vyberte **připojit**a pak vyberte **připojit**. Pokud se nemůžete připojit k instanci kontejneru, restartujte skupinu kontejnerů a zkuste to znovu.
+1. Vyberte **připojit** a pak vyberte **připojit**. Pokud se nemůžete připojit k instanci kontejneru, restartujte skupinu kontejnerů a zkuste to znovu.
 1. V podokně konzoly spusťte následující příkazy:
 
     ```
@@ -237,7 +237,7 @@ Je také nutné nakonfigurovat sdílení souborů pro připojení adresáře, kt
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Nahraďte ** &lt; písmeno hostitelského ovladače>** a ** &lt; název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
+    Nahraďte **&lt; písmeno hostitelského ovladače>** a **&lt; název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3

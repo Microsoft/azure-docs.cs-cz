@@ -4,13 +4,13 @@ description: Popisuje, jak zobrazit žádosti o podporu, odesílat zprávy, měn
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 12/14/2020
+ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359060"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504810"
 ---
 # <a name="manage-an-azure-support-request"></a>Správa žádosti o podporu Azure
 
@@ -119,9 +119,17 @@ Při použití možnosti nahrávání souborů postupujte podle těchto pokynů:
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . zzz    |
 
+## <a name="close-a-support-request"></a>Zavřít žádost o podporu
+
+Pokud potřebujete zavřít žádost o podporu, [odešlete zprávu s](#send-a-message) žádostí o uzavření žádosti.
+
 ## <a name="reopen-a-closed-request"></a>Znovu otevřít uzavřenou žádost
 
 Pokud potřebujete znovu otevřít uzavřenou žádost o podporu, vytvořte [novou zprávu](#send-a-message), která automaticky znovu otevře požadavek.
+
+## <a name="cancel-a-support-plan"></a>Zrušit plán podpory
+
+Pokud potřebujete zrušit plán podpory, přečtěte si článek [zrušení plánu podpory](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 
 ## <a name="next-steps"></a>Další kroky
 

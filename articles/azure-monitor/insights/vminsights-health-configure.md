@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505592"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta (Preview)
 Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak můžete upravit výchozí monitorování pomocí Azure Portal. Popisuje také základní koncepty monitorování požadovaných ke [konfiguraci monitorování pomocí pravidla shromažďování dat](vminsights-health-configure-dcr.md).
@@ -33,6 +33,12 @@ Monitor jednotky i agregované monitory mají nastavení **stavu monitorování 
 Pokud je monitorování zakázané, zobrazí se všechna kritéria, jak je znázorněno v následujícím příkladu.
 
 ![Zakázané monitorování](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> Pokud je nadřazené monitorování zakázané, pak se zakázané i podřízené monitory. Pokud povolíte podřízené monitorování explicitně, bude povolen i nadřazený, ale jeho stav konfigurace zůstane stejný. V takovém případě se v nadřazeném monitorování zobrazí následující zpráva.
+>
+> *Stav nakonfigurovaného monitorování je nepovolený, ale stav se neodráží. Důvodem je to, že se buď našíří nakonfigurované změny, nebo některé z jejích podřízených monitorování byly explicitně povoleny.*
 
 ## <a name="enable-or-disable-virtual-machine"></a>Povolit nebo zakázat virtuální počítač
 Monitorování virtuálního počítače můžete zakázat pro dočasné zastavení všech monitorování. Monitorování virtuálního počítače můžete zakázat například při provádění údržby.

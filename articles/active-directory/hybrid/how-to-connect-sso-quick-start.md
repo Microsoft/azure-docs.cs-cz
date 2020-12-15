@@ -16,18 +16,21 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500202"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504385"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Snadné nasazení jednoduchého Sign-On
 
 Azure Active Directory (Azure AD) bezproblémové jednoduché Sign-On (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 Chcete-li nasadit bezproblémové jednotné přihlašování, postupujte podle těchto kroků.
 
@@ -124,7 +127,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte na **zásady konfigurace uživatele**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení **ovládacích panelů Internetu** aplikace Internet Explorer  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
+3. Přejděte na **zásady konfigurace uživatele**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >    >  Stránka zabezpečení **ovládacích panelů Internetu** aplikace Internet Explorer  >  . Pak vyberte **seznam přiřazení lokality k zóně**.
     ![Snímek obrazovky se zvolenou stránkou zabezpečení se seznamem pro přiřazení na webu k zóně](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
@@ -144,7 +147,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
     ![Snímek obrazovky zobrazující okno zobrazit obsah s vybraným přiřazením zóny](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení **ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
+6. Přejděte do části zásady **Konfigurace uživatele**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení **ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
     ![Snímek obrazovky zobrazující stránku intranetová zóna s vybraným příkazem pro povolení aktualizací stavového řádku prostřednictvím skriptu.](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +159,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do okna Předvolby **Konfigurace uživatele**  >  **Preferences**  >  **registr nastavení systému Windows**  >  **Registry**  >  **Nová**  >  **položka registru**.
+3. Přejděte do okna Předvolby **Konfigurace uživatele**  >    >  **registr nastavení systému Windows**  >    >  **Nová**  >  **položka registru**.
 
     ![Snímek obrazovky s vybraným registrem a položkou registru](./media/how-to-connect-sso-quick-start/sso15.png)
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ace6866ef863b2f901c98f9a32a12540a990d0d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931907"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505541"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -90,6 +90,15 @@ Tento prvek IFRAME například umožňuje přístup ke kameře a mikrofonu:
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>Volání podpory streamování klientské knihovny
+Komunikační služby volající klientské knihovny podporují následující konfigurace streamování:
+
+|           |Web | Android/iOS|
+|-----------|----|------------|
+|počet odchozích streamů, které se dají poslat současně |1 sdílení obrazovky a 1 video + 1 | 1 sdílení obrazovky a 1 video + 1|
+|počet příchozích streamů, které se dají vykreslovat současně |1 sdílení obrazovky a 1 video + 1| 6 sdílení obrazovky a videa 1 |
+
 
 ## <a name="next-steps"></a>Další kroky
 

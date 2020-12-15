@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369552"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505405"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs (Preview) s využitím Debezium for Change Data Capture
 
 Funkce **Change Data Capture (CDC)** je technika používaná ke sledování změn na úrovni řádků v databázových tabulkách v reakci na operace vytvoření, aktualizace a odstranění. [Debezium](https://debezium.io/) je distribuovaná platforma, která se sestavuje nad funkcemi funkce Change Data Capture, které jsou k dispozici v různých databázích (například [logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Poskytuje sadu [konektorů Kafka Connect](https://debezium.io/documentation/reference/1.2/connectors/index.html) , které klepnutím na změny na úrovni řádků v databázových tabulkách a převádí je do datových proudů událostí odesílaných do [Apache Kafka](https://kafka.apache.org/).
 
 V tomto kurzu se dozvíte, jak nastavit systém založený na Change Data Capture v Azure pomocí [azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (pro Kafka), [Azure DB pro PostgreSQL](../postgresql/overview.md) a Debezium. Použije [konektor Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) k streamování úprav databáze z PostgreSQL na Kafka témata v Azure Event Hubs
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 V tomto kurzu provedete následující kroky:
 

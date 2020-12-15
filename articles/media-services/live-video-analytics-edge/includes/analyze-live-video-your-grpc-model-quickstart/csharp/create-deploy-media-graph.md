@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: de72e3e033dfa91ae1448bd8c378fd1db5229e4c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829157"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486713"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -26,7 +26,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Upravit *operations.jsv* souboru:
  
     * Změňte odkaz na topologii grafu:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
     * V části GraphInstanceSet upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * V části GraphTopologyDelete upravte název:
@@ -119,7 +119,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Nastavení rozšíření":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code.
 
    ![Spustit monitorování](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)

@@ -2,13 +2,13 @@
 title: Co je nového u agenta serverů s podporou ARC Azure
 description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Pro mnohé z souhrnných problémů existují odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445281"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505643"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
@@ -17,6 +17,16 @@ Server s podporou ARC Azure, který je připojený agentem počítače, obdrží
 - Nejnovější verze
 - Známé problémy
 - Opravy chyb
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="new-feature"></a>Nová funkce
+
+Přidání podpory pro Windows Server 2008 R2
+
+### <a name="fixed"></a>Pevný
+
+Vyřešil se problém, který brání úspěšné instalaci rozšíření vlastních skriptů v systému Linux.
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -71,7 +81,7 @@ Verze: 0,11
 
 ### <a name="known-issues"></a>Známé problémy
 
-Pokud používáte starší verzi agenta pro Linux a nakonfigurovali jste ho, aby používal proxy server, musíte po upgradu překonfigurovat nastavení proxy server. Pokud to chcete provést, spusťte příkaz `sudo azcmagent_proxy add http://proxyserver.local:83` .
+Pokud používáte starší verzi agenta pro Linux a je nakonfigurované na použití proxy server, budete muset po upgradu překonfigurovat nastavení proxy server. Pokud to chcete provést, spusťte příkaz `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
 ## <a name="next-steps"></a>Další kroky
 

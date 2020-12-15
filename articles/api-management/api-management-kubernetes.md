@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254686"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505371"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes
 
@@ -39,7 +39,7 @@ V clusteru Kubernetes se kontejnery nasazují v [luskech](https://kubernetes.io/
 
 Pro vyřešení tohoto problému Kubernetes představil koncept [služeb](https://kubernetes.io/docs/concepts/services-networking/service/). Služba Kubernetes je abstraktní vrstva, která definuje logickou skupinu lusků a umožňuje externí expozici provozu, Vyrovnávání zatížení a zjišťování služeb pro tyto lusky. 
 
-Až budeme připraveni publikovat mikroslužby jako rozhraní API prostřednictvím API Management, musíme si představit, jak namapovat naše služby v Kubernetes na rozhraní API v API Management. Neexistují žádná pravidla pro nastavení. Záleží na tom, jak jste navrhli a rozdělili své obchodní možnosti nebo domény na mikroslužby na začátku. Pokud je například lusky za službu zodpovědná za všechny operace na daném prostředku (např. zákazník), služba může být namapována na jedno rozhraní API. Pokud jsou operace s prostředkem rozdělené do několika mikroslužeb (např. GetOrder, PlaceOrder), může být víc služeb logicky agregované do jednoho jediného rozhraní API ve službě API Management (viz obrázek. 1). 
+Až budeme připraveni publikovat mikroslužby jako rozhraní API prostřednictvím API Management, musíme si představit, jak namapovat naše služby v Kubernetes na rozhraní API v API Management. Neexistují žádná pravidla pro nastavení. Záleží na tom, jak jste navrhli a rozdělili své obchodní možnosti nebo domény na mikroslužby na začátku. Pokud jsou například lusky za službu zodpovědné za všechny operace na daném prostředku (např. zákazník), služba může být namapována na jedno rozhraní API. Pokud jsou operace s prostředkem rozdělené do několika mikroslužeb (např. GetOrder, PlaceOrder), může být víc služeb logicky agregované do jednoho jediného rozhraní API ve službě API Management (viz obrázek. 1). 
 
 Mapování je také možné vyvíjet. Vzhledem k tomu, že API Management vytvoří fasádu před mikroslužby, umožňuje nám Refaktorovat a napravovat velikost našich mikroslužeb v průběhu času. 
 

@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e9368b5c6c90fe7ce65fc066e0b19523e07ece51
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899446"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504334"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce informací o textu a rozložení pomocí REST API pro rozpoznávání formulářů v Pythonu
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci informací o rozložení textu a tabulkových datech z dokumentů formuláře.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Dokument formuláře. Pro tento rychlý Start si můžete stáhnout obrázek ze [sady ukázek dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip* ).
+- Dokument formuláře. Pro tento rychlý Start si můžete stáhnout obrázek ze [sady ukázek dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
 
 > [!NOTE]
 > V tomto rychlém startu se používá místně uložený dokument. Informace o použití vzdálených souborů přístupných pomocí adresy URL najdete v [referenční dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync).
@@ -90,7 +90,7 @@ Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat r
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -118,9 +118,9 @@ Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat r
       ---
 
 
-1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-layout.py* .
+1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-layout.py*.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-layout.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například `python form-recognizer-layout.py`.
 
 Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec následuje `operations/` ID operace.
 
@@ -130,7 +130,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 ``` 
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)  
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```  
 
 ---
@@ -170,7 +170,7 @@ while n_try < n_tries:
 ```
 
 1. Uložte skript.
-1. Znovu použijte `python` příkaz ke spuštění ukázky. Například, `python form-recognizer-layout.py`.
+1. Znovu použijte `python` příkaz ke spuštění ukázky. Například `python form-recognizer-layout.py`.
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 

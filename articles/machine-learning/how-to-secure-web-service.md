@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 97017e104ecff38ebf4e475fb5f6ae42707ef10e
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919586"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503994"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 
@@ -28,7 +28,7 @@ Pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) můžete omezit p
 > [!TIP]
 > Sada Azure Machine Learning SDK používá pojem "SSL" pro vlastnosti, které se vztahují k zabezpečené komunikaci. To neznamená, že webová služba nepoužívá protokol *TLS*. SSL je jenom častěji rozpoznaná doba.
 >
-> Konkrétně webové služby nasazené prostřednictvím Azure Machine Learning podporují protokol TLS verze 1,2 pro AKS a ACI nová nasazení. V případě nasazení ACI, pokud používáte starší verzi TLS, doporučujeme opětovné nasazení a získat nejnovější verzi TLS.
+> Konkrétně webové služby nasazené prostřednictvím Azure Machine Learning podporují protokol TLS verze 1,2 pro AKS a ACI. V případě nasazení ACI, pokud používáte starší verzi TLS, doporučujeme opětovné nasazení a získat nejnovější verzi TLS.
 
 Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pomůžou se šifrováním a ověřením identity. Další informace o tom, jak digitální certifikáty fungují, najdete v tématu [Infrastruktura veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure)tématu Wikipedii.
 

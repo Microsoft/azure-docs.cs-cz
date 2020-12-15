@@ -1,5 +1,5 @@
 ---
-title: Použití dosah studia
+title: Použití sady Purview Studio
 description: Tento koncepční článek popisuje, jak používat Azure dosah Studio.
 author: nayenama
 ms.author: nayenama
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1b2d371153d6612f454e1bf51b78c6b6189a08b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552623"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503946"
 ---
-# <a name="use-purview-studio"></a>Použití dosah studia
+# <a name="use-purview-studio"></a>Použití sady Purview Studio
 
 Tento článek obsahuje přehled některých hlavních funkcí služby Azure dosah.
 
@@ -44,21 +44,22 @@ Následující seznam shrnuje hlavní funkce **domovské stránky**. Každé č�
     - Uživatelé, skupiny a aplikace
     - Zdroje dat
     - Prostředky
-    - Glosář pojmů
+    - Termíny glosáře
 
 3. Vyhledávací pole umožňuje vyhledávat datové assety v rámci katalogu Data Catalog.
 
 4. Tlačítka rychlý přístup poskytují přístup k často používaným funkcím aplikace. Zobrazená tlačítka závisí na roli přiřazené k vašemu uživatelskému účtu.
 
-    - Pro *správce zdroje dat* jsou k distlačítkům rychlý přístup: **Zaregistrujte zdroje dat** a **Centrum znalostí**.
     - Pro *data kurátor* jsou tato tlačítka **centrem znalostí**, **procházejí assety**, **spravují Glosář** a **zobrazují přehledy**.
     - V případě *čtecího zařízení* jsou doporučenými tlačítky **znalostní báze**, **Procházet prostředky**, **zobrazovat Glosář** a **Zobrazovat přehledy**.
+    - V případě kurátor dat *správců zdrojů dat*  +  jsou doporučenými tlačítky **centra Knowledge Center**, **Registrovat zdroje dat**, **Procházet prostředky** a **Spravovat Glosář**.
+    - V případě  +  *čtečky dat* správce zdroje dat jsou doporučenými tlačítky **centra Knowledge Center**, **Registrovat zdroje dat**, **Procházet prostředky** a **zobrazovat Glosář**.
 
 5. Levý navigační panel vám pomůže najít hlavní stránky aplikace. Zobrazená tlačítka závisí na roli přiřazené k vašemu uživatelskému účtu.
 
-    - Pro *správce zdroje dat* jsou tato tlačítka  **Domovská stránka**, **zdroje** a **Centrum pro správu**.
     - Pro *data kurátor* jsou tato tlačítka **Domovská**, **glosářová**, **přehledová** a **centra pro správu**.
     - Pro *čtečku dat* jsou tato tlačítka **Domovská**, **glosářová**, **přehledová** a **centra pro správu**.
+    - Pro data *správce zdroje dat*  +  *kurátor/Reader* jsou k dispozici **tlačítka Domů**, **zdroje**, **Glosář**, **Přehled** a **Centrum pro správu**.
   
 6. Na kartě **nedávno použité** se zobrazuje seznam nedávno použitých datových assetů. Informace o přístupu k assetům najdete v tématu [hledání Data Catalog](how-to-search-catalog.md) a [procházení podle typu assetu](how-to-browse-catalog.md#browse-experience).  Karta **Moje položky** je seznam datových assetů vlastněných přihlášeným uživatelem.
 7. **Užitečné odkazy** obsahují odkazy na stav oblasti, dokumentaci, ceny, přehled a stav dosah.
@@ -73,6 +74,9 @@ Centrum znalostí vám umožní najít všechna videa a kurzy týkající se dos
 Každé uživatelské prostředí ve službě Azure dosah Studio bude mít k dispozici prohlídky, které vám pomohou s přehledem stránky. Pokud chcete spustit prohlídku s průvodcem, vyberte v horním panelu **nápovědu** a vyberte **prohlídky s asistencí**.
 
 :::image type="content" source="./media/use-purview-studio/guided-tour.png" alt-text="Snímek obrazovky s průvodcem":::
+
+> [!Important]
+   > Role správce zdroje dat sama o sobě nemá přístup k dosah studiu.
 
 ## <a name="next-steps"></a>Další kroky
 

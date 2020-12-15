@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318313"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505269"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály pro osobní údaje uložené ve službách Log Analytics a Application Insights
 
@@ -81,7 +81,7 @@ Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](
 Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pro Log Analytics dotazů](https://dev.loganalytics.io/) nebo  [rozhraní API pro Application Insights dotazování](https://dev.applicationinsights.io/quickstart) . K implementaci můžete použít logiku pro převod tvaru dat na příslušný objekt, který bude poskytovat vašim uživatelům. [Azure Functions](https://azure.microsoft.com/services/functions/) představuje pro hostování takové logiky Skvělé místo.
 
 > [!IMPORTANT]
->  I když velká většina operací vyprázdnění může trvat mnohem rychlejší než smlouva SLA, **je formální smlouva SLA pro dokončení operací vyprázdnění nastavená na 30 dní** kvůli jejich těžkému dopadu na využitou datovou platformu. Toto je automatizovaný proces; neexistuje žádný způsob, jak vyžádat zpracování operace rychleji.
+>  I když velká většina operací vyprázdnění může trvat mnohem rychlejší než smlouva SLA, **je formální smlouva SLA pro dokončení operací vyprázdnění nastavená na 30 dní** kvůli jejich těžkému dopadu na využitou datovou platformu. Tato smlouva SLA splňuje požadavky na GDPR. Jedná se o automatizovaný proces, takže neexistuje žádný způsob, jak vyžádat zpracování operace rychleji. 
 
 ### <a name="delete"></a>Odstranit
 
@@ -89,6 +89,9 @@ Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pr
 > Odstranění v Log Analytics jsou destruktivní a nevratná! Při jejich provádění prosím buďte velmi opatrní.
 
 K dispozici jako součást ochrany osobních údajů, která zpracovává cestu rozhraní API pro *vyprázdnění* . Tato cesta by se měla používat zřídka, protože rizika spojená s tím spojené s tím, jaký je potenciální dopad na výkon, a potenciál pro zkosení všech agregací, měření a dalších aspektů vašich Log Analytics dat. Alternativní přístupy k manipulaci s privátními daty najdete v části [strategie pro zpracování osobních údajů](#strategy-for-personal-data-handling) .
+
+> [!NOTE]
+> Po provedení operace vyprázdnění nelze k datům přistupovat, pokud je [stav operace vyprázdnění](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *čeká na vyřízení*. 
 
 Vyprázdnit je vysoce privilegovaná operace, kterou žádná aplikace ani uživatel v Azure (včetně ani vlastníka prostředku) bude mít oprávnění ke spuštění bez explicitního udělení role v Azure Resource Manager. Tato role je modul pro _vyprázdnění dat_ a měla by být řádně delegovaná kvůli možné ztrátě dat. 
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 99f2c690360167626566b2ea45aef172e1e832ab
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 29e1578ee2c9ff0fc320cc62a17f4b7033560316
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828754"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486809"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -16,11 +16,11 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
 1. Přejít do složky *Src/Cloud-to-Device-Console-App* Tady vidíte *appsettings.jsv* souboru a několik dalších souborů:
 
-    * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
-    * ***operations.jsna*** seznam operací, které má program spustit.
-    * ***Program.cs*** – vzorový programový kód. Tento kód:
+    * ***C2D-Console-App. csproj** _ – soubor projektu pro Visual Studio Code.
+    _ ***operations.jsv** _ – seznam operací, které má program spustit.
+    _ ***Program.cs** _ – ukázkový kód programu. Tento kód:
 
-        * Načte nastavení aplikace.
+        _ Načte nastavení aplikace.
         * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](../../../direct-methods.md).
         * Pozastaví, aby bylo možné kontrolovat výstup programu v okně **terminálu** a prozkoumávat události vygenerované modulem v okně **výstup** .
         * Vyvolá přímé metody pro vyčištění prostředků.
@@ -29,7 +29,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Upravit *operations.jsv* souboru:
     * Změňte odkaz na topologii grafu:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * V části `GraphInstanceSet` upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
 
@@ -76,7 +76,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Nastavení rozšíření":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code. 
 
    ![Spustit monitorování](../../../media/quickstarts/start-monitoring-iothub-events.png) 

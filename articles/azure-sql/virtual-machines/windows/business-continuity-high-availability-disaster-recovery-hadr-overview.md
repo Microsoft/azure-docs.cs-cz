@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358916"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504130"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Provozní kontinuita a HADR pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Můžete mít řešení zotavení po havárii pro vaše SQL Server databáze v A
 
 Pokud máte [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), můžete implementovat plány hybridního zotavení po havárii s SQL Server bez dalších nákladů na licencování pro instanci pasivního zotavení po havárii.
 
-Můžete mít například aktivní primární místní prostředí a bezplatnou pasivní sekundární službu pro zotavení po havárii v Azure: 
-
-![Bezplatná sekundární pasivní v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-Na předchozím obrázku instalační program používá SQL Server běžící na virtuálním počítači Azure, který používá 12 jader jako repliku zotavení po havárii pro místní SQL Server nasazení, které využívá 12 jader. V minulosti byste potřebovali pro místní nasazení a nasazení Azure Virtual Machines licenci na 12 jader SQL Server. Nové zvýhodnění nabízí výhody pasivních replik pro spouštění na virtuálním počítači Azure. Teď budete muset licencovat jenom 12 jader SQL Server běžících v místním prostředí, pokud jsou splněné kritéria zotavení po havárii pro pasivní repliku v Azure Virtual Machines.
-
-Pokud jsou všechny tři repliky hostované v Azure, můžete mít také dva bezplatné pasivní sekundární služby: 
+Můžete mít například dva bezplatné pasivní sekundární služby, když jsou všechny tři repliky hostovány v Azure: 
 
 ![Dva bezplatné pasivní služby v případě všeho v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-Nebo můžete nakonfigurovat hybridní prostředí s podporou převzetí služeb při selhání s licencovaným primárním místním, jedním bezplatným pasivním pro HA a dvěma bezplatnými pasivními službami pro DR: 
+Nebo můžete nakonfigurovat hybridní prostředí s podporou převzetí služeb při selhání s licencovaným primárním místním a bezplatným cloudem pro HA, jedním bezplatným pasivním pro místní zotavení po havárii a jedním bezplatným pasivním pro zotavení po havárii v Azure:
 
 ![Tři bezplatné pasivní při hybridním prostředí s jednou primární místní replikou](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 Další informace najdete v [licenčních podmínkách k produktu](https://www.microsoft.com/licensing/product-licensing/products). 
 

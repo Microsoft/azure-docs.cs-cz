@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183766"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505524"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -92,7 +92,7 @@ Azure Automation Hybrid Runbook Worker lze v Azure Government použít pro podpo
 
 * [Izolovaný virtuální počítač](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Při nasazení vybírají pro tento počítač celý fyzický hostitel, který poskytuje potřebnou úroveň izolace potřebnou k podpoře úloh IL5.
 
-* [Vyhrazené hostitele Azure](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts), které poskytují fyzické servery, které mohou hostovat jeden nebo více virtuálních počítačů vyhrazených pro jedno předplatné Azure.
+* [Vyhrazené hostitele Azure](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host), které poskytují fyzické servery, které mohou hostovat jeden nebo více virtuálních počítačů vyhrazených pro jedno předplatné Azure.
 
 >[!NOTE]
 >Výpočetní izolaci prostřednictvím role Hybrid Runbook Worker je k dispozici pro cloudy Azure komerčních i státních úřadů USA. 

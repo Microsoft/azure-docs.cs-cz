@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369235"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505456"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Řešení potíží s fondy kapacity
 
@@ -33,7 +33,7 @@ Tento článek popisuje řešení problémů, ke kterým může dojít při spr�
 | Problémy s odstraněním fondu kapacity  |  Ujistěte se, že jste odebrali všechny Azure NetApp Files svazky a snímky v předplatném, kde se pokoušíte odstranit fond kapacit. <br> Pokud jste už odebrali všechny svazky a snímky a stále nemůžete odstranit fond kapacit, můžou existovat odkazy na prostředky, aniž by se na portálu zobrazovaly. V takovém případě zadejte lístek podpory a určete, že jste provedli výše uvedené doporučené kroky. |
 | Vytvoření nebo změna svazku se nezdařila s `Requested throughput not available` chybou | Dostupná propustnost svazku závisí na velikosti fondu kapacity a na úrovni služby. Pokud nemáte dostatek propustnosti, měli byste zvětšit velikost fondu nebo upravit stávající propustnost svazku. | 
 
-## <a name="issues-moving-a-capacity-pool"></a>Problémy s přesunutím fondu kapacity 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Problémy při změně fondu kapacity svazku 
 
 > [!IMPORTANT] 
 > [Dynamická Změna úrovně služby](dynamic-change-volume-service-level.md) pro registraci ve verzi Public Preview se podrží, dokud nebudete pokračovat.

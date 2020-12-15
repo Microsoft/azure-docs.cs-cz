@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 466b9e389beb94ff527cbce014ca39f85de8d5bd
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109075"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503620"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
 
@@ -34,6 +35,22 @@ Podmíněný přístup je podporován v nejnovějších verzích uživatelských
 - **Podmíněný přístup**: Toto nastavení by mělo být vždycky **zapnuté**. Obvykle byste **Toto nastavení zapnuli** během řešení potíží nebo migrace nebo pro starší implementace.
 
 Přečtěte si další informace o [identitě a podmíněném přístupu](conditional-access-identity-protection-overview.md) v Azure AD B2C, nebo se podívejte, [jak ji nastavit](conditional-access-identity-protection-setup.md).
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Pro vytváření zásad rizikového přihlašování se vyžaduje Azure AD B2C Premium 2. Klienti Premium P1 můžou vytvářet umístění, aplikace nebo zásady na základě skupin.
+- Pro účely testování můžete [zaregistrovat testovací webovou aplikaci](tutorial-register-applications.md) `https://jwt.ms` , což je webová aplikace vlastněná společností Microsoft, která zobrazuje dekódování obsahu tokenu (obsah tokenu nikdy nezůstane v prohlížeči). 
+- Chcete-li simulovat rizikové přihlašování, Stáhněte si prohlížeč pro mandát a pokuste se přihlásit ke koncovému bodu toku uživatele.
+- Pomocí následujících nastavení [Vytvořte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md):
+   
+  - Pro **uživatele a skupiny** vyberte testovacího uživatele (nevybírejte možnost **Všichni uživatelé** nebo jste se mohli zablokovat přihlášení).
+  - U **cloudových aplikací nebo akcí** zvolte **vybrat aplikace** a pak zvolte svoji aplikaci předávající strany.
+  - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední** a **Nízká** úroveň rizika.
+  - V případě **udělení** vyberte možnost **blokovat přístup**.
+
+      ![Detekce rizik](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Přidání podmíněného přístupu do nového toku uživatele
 
@@ -89,19 +106,6 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 
 Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md) a v toku uživatele povolte podmíněný přístup, jak je popsáno výše. 
 
-### <a name="prerequisites"></a>Předpoklady
-
-- Pro vytváření zásad rizikového přihlašování se vyžaduje Azure AD B2C Premium 2. Klienti Premium P1 můžou vytvářet umístění, aplikace nebo zásady na základě skupin.
-- Pro účely testování můžete [zaregistrovat testovací webovou aplikaci](tutorial-register-applications.md) `https://jwt.ms` , což je webová aplikace vlastněná společností Microsoft, která zobrazuje dekódování obsahu tokenu (obsah tokenu nikdy nezůstane v prohlížeči). 
-- Chcete-li simulovat rizikové přihlašování, Stáhněte si prohlížeč pro mandát a pokuste se přihlásit ke koncovému bodu toku uživatele.
-- Pomocí následujících nastavení [Vytvořte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md):
-   
-   - Pro **uživatele a skupiny** vyberte testovacího uživatele (nevybírejte možnost **Všichni uživatelé** nebo jste se mohli zablokovat přihlášení).
-   - U **cloudových aplikací nebo akcí** zvolte **vybrat aplikace** a pak zvolte svoji aplikaci předávající strany.
-   - V případě podmínek vyberte možnost **rizika přihlášení** a **Vysoká**, **střední** a **Nízká** úroveň rizika.
-   - V případě **udělení** vyberte možnost **blokovat přístup**.
-
-      ![Detekce rizik](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Spuštění toku uživatele
 
@@ -116,6 +120,16 @@ Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zás
 1. Na přihlašovací stránce zadejte požadované informace a pokuste se o přihlášení. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat. V tokenu Dekódovatelné v jwt.ms byste měli vidět, že přihlášení bylo blokované:
 
    ![Otestování blokovaného přihlášení](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>Přidání podmíněného přístupu k zásadám
+
+Příklad zásad podmíněného přístupu na [GitHubu](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)najdete v části.
+
+::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
 

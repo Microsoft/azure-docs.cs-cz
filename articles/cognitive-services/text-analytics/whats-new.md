@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 157bef31b375db54f294284ca0a5d97cd7035b17
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c304c2aad3ba40d7b3a044f0e3222e31bb013648
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558959"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503977"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
 
-## <a name="december-2020"></a>Prosince 2020
+## <a name="december-2020"></a>Prosinec 2020
 
 * [Aktualizované](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) podrobnosti o cenách pro rozhraní API pro analýzu textu
 
@@ -61,7 +61,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
     * v 3.0 – Preview. 1
     
 > [!div class="nextstepaction"]
-> [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 2](quickstarts/text-analytics-sdk.md)
+> [Další informace o rozhraní API pro analýzu textu v 3.1 – Preview. 2](quickstarts/client-libraries-rest-api.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>Analýza textu pro aktualizace kontejneru stavu
 
@@ -178,13 +178,13 @@ V případě potřeby se změnily názvy následujících vlastností v odpověd
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>Podpora sady SDK pro rozhraní API pro analýzu textu V3 Public Preview
 
 V rámci [sjednocené verze sady Azure SDK](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)je teď sada rozhraní API pro analýzu textu V3 SDK dostupná jako verze Public Preview pro následující programovací jazyky:
-   * [C#](./quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp&tabs=version-3)
-   * [Python](./quickstarts/text-analytics-sdk.md?pivots=programming-language-python&tabs=version-3)
-   * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
-   * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
+   * [C#](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp&tabs=version-3)
+   * [Python](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-python&tabs=version-3)
+   * [JavaScript (Node.js)](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript&tabs=version-3)
+   * [Java](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-java&tabs=version-3)
    
 > [!div class="nextstepaction"]
-> [Další informace o sadě rozhraní API pro analýzu textu V3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
+> [Další informace o sadě rozhraní API pro analýzu textu V3 SDK](./quickstarts/client-libraries-rest-api.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Rozpoznávání pojmenovaných entit V3 Public Preview
 
@@ -242,6 +242,6 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Co je rozhraní API pro analýzu textu?](overview.md)  
 * [Ukázkové uživatelské scénáře](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání jazyka,](how-tos/text-analytics-how-to-language-detection.md)
+* [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
 * [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
-* [extrakce klíčových frází,](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)

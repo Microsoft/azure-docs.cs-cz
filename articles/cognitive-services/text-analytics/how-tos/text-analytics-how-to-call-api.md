@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602780"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505252"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -33,10 +33,10 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 
 | Příznak | Synchronní | Asynchronní |
 |--|--|--|
-| rozpoznávání jazyka, | ✔ |  |
+| Rozpoznávání jazyka | ✔ |  |
 | Analýza mínění | ✔ |  |
 | Dolování názoru | ✔ |  |
-| extrakce klíčových frází, | ✔ | ✔* |
+| Extrakce klíčových frází | ✔ | ✔* |
 | Rozpoznávání pojmenovaných entit (včetně PII a FÍ) | ✔ | ✔* |
 | Analýza textu pro stav (kontejner) | ✔ |  |
 | Analýza textu pro stav (API) |  | ✔  |
@@ -48,7 +48,7 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 > [!NOTE]
@@ -188,7 +188,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>Nastavení žádosti 
 
-V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Příklad:
+V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Například:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -196,10 +196,10 @@ V části post (nebo jiný nástroj pro testování webového rozhraní API) př
 
 | Příznak | Typ žádosti | Koncové body prostředků |
 |--|--|--|
-| rozpoznávání jazyka, | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
+| Rozpoznávání jazyka | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Analýza mínění | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
 | Dolování názoru | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
-| extrakce klíčových frází, | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
+| Extrakce klíčových frází | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
 | Rozpoznávání pojmenovaných entit – obecné | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
 | Rozpoznávání pojmenovaných entit – PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Rozpoznávání pojmenovaných entit – FÍ | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
@@ -241,8 +241,8 @@ Až budete mít koncový bod, v post (nebo jiném testovacím nástroji webovéh
 
 5. Vložte je do některých dokumentů JSON v platném formátu. Použijte příklady v části **Formát žádosti API** výše a další informace a příklady najdete v následujících tématech:
 
-      + [rozpoznávání jazyka,](text-analytics-how-to-language-detection.md)
-      + [extrakce klíčových frází,](text-analytics-how-to-keyword-extraction.md)
+      + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)
+      + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)
       + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)
       + [rozpoznávání entit,](text-analytics-how-to-entity-linking.md)
 
@@ -253,7 +253,7 @@ Odešlete žádost o rozhraní API. Pokud jste provedli volání synchronního k
 Pokud jste provedli volání asynchronních `/analyze` nebo `/health` koncových bodů, ověřte, že jste obdrželi kód odpovědi 202. k zobrazení výsledků budete muset získat odpověď:
 
 1. V odpovědi rozhraní API vyhledejte `Operation-Location` z hlavičky, která označuje úlohu, kterou jste odeslali do rozhraní API. 
-2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Příklad:
+2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Například:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 
@@ -269,8 +269,8 @@ Počítejte s tím, že pro `/analyze` asynchronní `/health` operace nebo jsou 
 
 Odezvy synchronního koncového bodu se budou lišit v závislosti na použitém koncovém bodu. Příklady odpovědí najdete v následujících článcích.
 
-+ [rozpoznávání jazyka,](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [extrakce klíčových frází,](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [rozpoznávání entit,](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -278,7 +278,7 @@ Odezvy synchronního koncového bodu se budou lišit v závislosti na použitém
 
 V případě úspěchu vrátí požadavek GET na `/analyze` koncový bod objekt obsahující přiřazené úkoly. Příklad: `keyPhraseExtractionTasks`. Tyto úlohy obsahují objekt odpovědi z příslušné funkce Analýza textu. Další informace najdete v následujících článcích.
 
-+ [extrakce klíčových frází,](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [rozpoznávání entit,](text-analytics-how-to-entity-linking.md#view-results)
 
 
@@ -346,5 +346,5 @@ Další informace o Analýza textu pro odpověď na asynchronní rozhraní API p
 * [Přehled analýzy textu](../overview.md)
 * [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
 * [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
+* [Použití klientské knihovny Analýza textu](../quickstarts/client-libraries-rest-api.md)
 * [Co je nového](../whats-new.md)

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2349939d4997ddc57d0c0c56a21eeec0357bf0ec
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
-ms.translationtype: MT
+ms.openlocfilehash: 8319de85cdd8b3527fc6bfb13dd9ed1e8f6fc0fa
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829023"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486718"
 ---
 Pomocí těchto kroků spusťte vzorový kód:
 
@@ -16,7 +16,57 @@ Pomocí těchto kroků spusťte vzorový kód:
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Nastavení rozšíření"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
+1. V Visual Studio Code v nástroji použijte *Src/Cloud-to-Device-Console-App/operations.js*.
+1. V uzlu **GraphTopologySet** se ujistěte, že vidíte následující hodnotu:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/2.0/topology.json"`
+1. V uzlech **GraphInstanceSet** a **GraphTopologyDelete**  zajistěte, aby hodnota `topologyName` odpovídala hodnotě `name` vlastnosti v topologii grafu:
+
+    `"topologyName" : "MotionDetection"`
+    
+1. Spusťte ladicí relaci, a to tak, že vyberete klávesu F5. V okně **terminálu** se zobrazí některé zprávy.
+1. *operations.jsv* souboru se spouští s voláními `GraphTopologyList` a `GraphInstanceList` . Pokud jste vyčistili prostředky po dokončení předchozích rychlých startů, pak tento proces vrátí prázdné seznamy a potom se pozastaví. Chcete-li pokračovat, vyberte klávesu ENTER.
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+        "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+        "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+    
+    V okně **terminálu** se zobrazí další sada volání přímých metod:
+     * Volání `GraphTopologySet` , které používá předchozí `topologyUrl`
+     * Volání `GraphInstanceSet` , které používá následující tělo:
+         
+    ```
+    {
+      "@apiVersion": "1.0",
+      "name": "Sample-Graph",
+      "properties": {
+        "topologyName": "MotionDetection",
+        "description": "Sample graph description",
+        "parameters": [
+          {
+            "name": "rtspUrl",
+            "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+          },
+          {
+            "name": "rtspUserName",
+            "value": "testuser"
+          },
+          {
+            "name": "rtspPassword",
+            "value": "testpassword"
           }
         ]
       }
