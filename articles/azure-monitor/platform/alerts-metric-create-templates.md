@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813215"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511616"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorné
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ Níže uvedený formát JSON uložte jako simpledynamicmetricalert.parameters.js
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -570,7 +570,6 @@ Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pama
 - \*Jako hodnotu dimenze nelze použít "".
 - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
     - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **ApiName** a *Criterion1* Určuje hodnotu *getblob* pro dimenzi **ApiName** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **ApiName** .
-
 
 Uložte JSON níže jako advancedstaticmetricalert.jspro účely tohoto Názorného postupu.
 
@@ -976,7 +975,7 @@ Pro účely tohoto návodu uložte a upravte JSON níže jako multidimensionalst
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }

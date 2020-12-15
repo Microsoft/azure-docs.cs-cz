@@ -3,12 +3,12 @@ title: Připojení prostředí k virtuální síti testovacího prostředí v Az
 description: Naučte se, jak připojit prostředí (jako je Service Fabric cluster) k virtuální síti testovacího prostředí v Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 31f924a4b6d7cbe1b6f71c7e34d43fd9c135bac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483767"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511956"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Připojte prostředí k virtuální síti testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs usnadňuje vytváření virtuálních počítačů v testovacím prostředí s [integrovanými sítěmi](devtest-lab-configure-vnet.md). Má značnou flexibilitu při [vytváření prostředí s více virtuálními počítači](devtest-lab-test-env.md). Tento článek ukazuje, jak připojit virtuální počítače v prostředí k virtuální síti testovacího prostředí. Jedním z scénářů, kde tuto funkci použijete, je nastavení N-vrstvé aplikace s SQL Server datovou vrstvou, která je připojená k virtuální síti testovacího prostředí, aby k ní měli testovací virtuální počítače.  

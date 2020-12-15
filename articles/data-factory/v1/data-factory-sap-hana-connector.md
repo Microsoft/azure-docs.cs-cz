@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c08aeca8e7aaa71e5a2a80cbdece762b989e28c2
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019561"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510137"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,11 +59,11 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro SAP HANA pro
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port` . | řetězec | Yes
-authenticationType | Typ ověřování. | . "Basic" nebo "Windows" | Yes 
-username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
-heslo | Heslo pro tohoto uživatele. | řetězec | Yes
-gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Yes
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port` . | řetězec | Ano
+authenticationType | Typ ověřování. | . "Basic" nebo "Windows" | Ano 
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
+heslo | Heslo pro tohoto uživatele. | řetězec | Ano
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Ano
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -81,7 +81,7 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Dotaz SQL. | Yes |
+| query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Dotaz SQL. | Ano |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>Příklad JSON: kopírování dat z SAP HANA do objektu blob Azure
 Následující ukázka poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V této ukázce se dozvíte, jak kopírovat data z místního SAP HANA do Azure Blob Storage. Data je ale možné zkopírovat **přímo** do kterékoli z těchto [umyvadel pomocí aktivity](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopírování v Azure Data Factory.  
@@ -296,10 +296,10 @@ NVARCHAR | Řetězec
 DATOVÝ typ CLOB | Byte []
 ALPHANUM | Řetězec
 PŘÍZNAKY | Byte []
-DATE | DateTime
+DATE | Datum a čas
 ČAS | TimeSpan
-ČASOVÉ razítko | DateTime
-SECONDDATE | DateTime
+ČASOVÉ razítko | Datum a čas
+SECONDDATE | Datum a čas
 
 ## <a name="known-limitations"></a>Známá omezení
 Při kopírování dat z SAP HANA existuje několik známých omezení:

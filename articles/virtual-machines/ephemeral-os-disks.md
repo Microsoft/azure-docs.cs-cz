@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927919"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510987"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -40,7 +40,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | **Trvalost dat**            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |
 | **Stav zastavení a zrušení přidělení**      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
-| **Specializovaná podpora disků s operačním systémem** | Yes                                                                                          | No                                                                                 |
+| **Specializovaná podpora disků s operačním systémem** | Ano                                                                                          | Ne                                                                                 |
 | **Změna velikosti disku s operačním systémem**              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
 | **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.       
 | **Umístění stránkovacího souboru**   | Pro Windows je stránkovací soubor uložený na disku prostředků.                                              | Pro Windows je stránkovací soubor uložený na disku s operačním systémem.   |
@@ -86,15 +86,15 @@ az vm create \
 
 Pro sady škálování použijte stejný `--ephemeral-os-disk true` parametr pro [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) a nastavte `--os-disk-caching` parametr na `ReadOnly` .
 
-## <a name="portal"></a>Portál   
+## <a name="portal"></a>Portál
 
-V Azure Portal můžete při nasazení virtuálního počítače použít dočasné disky otevřením části **Upřesnit** na kartě **disky** . Pro možnost **použít dočasný disk s operačním systémem** vyberte **Ano** .
+V Azure Portal můžete při nasazení virtuálního počítače použít dočasné disky otevřením části **Upřesnit** na kartě **disky** . Pro možnost **použít dočasný disk s operačním systémem** vyberte **Ano**.
 
 ![Snímek obrazovky znázorňující přepínač pro výběr použití dočasného disku s operačním systémem](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 Pokud je možnost použít dočasný disk šedá, možná jste vybrali velikost virtuálního počítače, která nemá větší velikost mezipaměti než bitová kopie operačního systému nebo nepodporuje službu Premium Storage. Vraťte se na stránku **základy** a zkuste zvolit jinou velikost virtuálního počítače.
 
-Pomocí portálu můžete také vytvořit škálované sady s dočasnými disky s operačním systémem. Jenom se ujistěte, že jste vybrali velikost virtuálního počítače, která má dostatečnou velikost mezipaměti, a pak v rámečku **použít dočasný disk s operačním systémem** vyberte **Ano** .
+Pomocí portálu můžete také vytvořit škálované sady s dočasnými disky s operačním systémem. Jenom se ujistěte, že jste vybrali velikost virtuálního počítače, která má dostatečnou velikost mezipaměti, a pak v rámečku **použít dočasný disk s operačním systémem** vyberte **Ano**.
 
 ![Snímek obrazovky znázorňující přepínač pro výběr použití dočasného disku s operačním systémem pro sadu škálování](./media/virtual-machines-common-ephemeral/scale-set.png)
 
@@ -120,7 +120,7 @@ Proces vytvoření sady škálování, která používá dočasný disk s opera�
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c3ead4dbdf0608c6b7cd1be6a9edf242ecd2b5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012318"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510759"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce webhooku pro pravidla výstrah protokolu
 
@@ -316,7 +316,6 @@ Následující ukázková datová část je určena pro vlastní akci Webhooku p
         }
     }
 ```
-
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si informace o [upozorněních protokolu v Azure Alerts](alerts-unified-log.md).

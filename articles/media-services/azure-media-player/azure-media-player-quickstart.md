@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81726463"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511735"
 ---
 # <a name="azure-media-player-quickstart"></a>Rychlé zprovoznění Azure Media Playeru
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Azure Media Services trvá jenom několik minut. Tato část ukazuje základní kroky a nezachází do podrobností. Následující části vám poskytnou konkrétní informace o tom, jak nastavit a nakonfigurovat Azure Media Player.  Stačí přidat následující příkazy include do části `<head>` vašeho dokumentu:
@@ -22,7 +22,7 @@ Nastavení Azure Media Player je snadné. Získání základního přehrávání
 ```
 
 > [!IMPORTANT]
-> Tuto verzi **NOT** byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player, například nahraďte parametrem `latest` `1.0.0` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi  byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player, například nahraďte parametrem `latest` `1.0.0` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 ## <a name="use-the-video-element"></a>Použití prvku video
 
@@ -63,4 +63,4 @@ Pokud nechcete použít automatické nastavení, můžete `data-setup` atribut v
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)
+- [Azure Media Player úplnou instalaci](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)

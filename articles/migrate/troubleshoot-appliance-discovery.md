@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753412"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511582"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -41,6 +41,13 @@ K tomu může dojít, pokud je počítač zařízení za proxy serverem.
 - Pokud proxy server vyžaduje přihlašovací údaje pro autorizaci, zkontrolujte, že jste je zadali.
 - Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte [tyto adresy URL](migrate-appliance.md#url-access) do seznamu povolených.
 - Pokud pro připojení k Internetu používáte zachycení proxy serveru, importujte certifikát proxy serveru do virtuálního počítače zařízení pomocí [těchto kroků](./migrate-appliance.md).
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>Kliknutí na tlačítko Login otevře novou kartu bez kódu zařízení.
+
+Pokud po kliknutí na Login ve Správci konfigurace zařízení otevřete novou kartu bez kódu, vraťte se zpátky na kartu Správce konfigurace zařízení a kód zařízení můžete najít tučným písmem na tlačítku Login, jak je znázorněno na snímku obrazovky níže. Zkopírujte kód a vložte ho na přihlašovací kartu pro ověření pomocí Azure.
+
+![Kód zařízení](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Z webové aplikace zařízení se nejde přihlásit k Azure.
 
@@ -157,7 +164,7 @@ Pokud to nefunguje a chystáte se zjišťovat servery VMware:
 
 Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud jsou data virtuálního počítače zastaralá, počkejte několik minut. Na portálu trvá až 30 minut, než se změny zjištěných konfiguračních dat virtuálního počítače zobrazí na portálu. Může trvat několik hodin, než se změny dat aplikace zobrazí. Pokud po této době žádná data neexistují, zkuste aktualizovat následujícím způsobem.
 
-1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
+1. V   >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
 2. V části **Spravovat** vyberte **Agent Health**.
 3. Vyberte **aktualizovat agenta**.
 4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
@@ -179,7 +186,7 @@ Tento stav se zobrazí, pokud selhalo nahrávání sdíleného svazku clusteru z
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Nevidíte podrobnosti o aplikacích ani po aktualizaci přihlašovacích údajů hostů.
 Zjišťování aplikací se spouští každých 24 hodin. Chcete-li zobrazit podrobnosti okamžitě, proveďte aktualizaci následujícím způsobem. To může trvat několik minut v závislosti na ne. zjištěných virtuálních počítačů.
 
-1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
+1. V   >  **Azure Migrate servery vyhodnocování serveru** vyberte **Přehled**.
 2. V části **Spravovat** vyberte **Agent Health**.
 3. Vyberte **aktualizovat agenta**.
 4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843772"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511242"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Předplatná ve službě Azure API Management
 
@@ -33,7 +33,7 @@ Pokud chcete získat klíč předplatného pro přístup k rozhraním API, vyža
 > API Management také podporuje další mechanismy pro zabezpečení přístupu k rozhraním API, včetně následujících příkladů:
 > - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Klientské certifikáty](api-management-howto-mutual-certificates-for-clients.md)
-> - [Seznam povolených IP adres](./api-management-access-restriction-policies.md#RestrictCallerIPs)
+> - [Omezení IP adres volajícího](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Rozsah předplatných
 
@@ -43,7 +43,7 @@ Odběry je možné přidružit k různým oborům: produkt, všechna rozhraní A
 
 Předplatná v API Management byla tradičně přidružena k jednomu oboru [produktu API](api-management-terminology.md) . Vývojáři nalezli seznam produktů na portálu pro vývojáře. Pak by v rámci předplatného odeslali požadavky na produkty, které chtěli používat. Po schválení žádosti o předplatné buď automaticky, nebo vydavatelům rozhraní API může vývojář použít klíče v tomto produktu pro přístup ke všem rozhraním API v produktu. Portál pro vývojáře v současnosti zobrazuje jenom odběry oborů produktů v části Profil uživatele. 
 
-![Odběry produktů](./media/api-management-subscriptions/product-subscription.png)
+![Předplatná produktů](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
 > V některých případech můžou vydavatelé rozhraní API chtít publikovat produkt API na veřejném, aniž by museli mít požadavek na odběry. V Azure Portal můžou zrušit výběr možnosti **vyžadovat předplatné** na stránce **Nastavení** produktu. V důsledku toho je přístup k všem rozhraním API v rámci produktu možné bez klíče rozhraní API.

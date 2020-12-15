@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401708"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510958"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
@@ -83,9 +83,7 @@ K výše uvedené chybě dochází v těchto případech:
 
 * Uživatelské jméno neexistuje.
 * Uživatelské jméno uživatele bylo odstraněno.
-* jeho heslo se změnilo nebo resetuje.
-
-Řešení chyby je 
+* heslo je změněno nebo resetováno.
 
 **Řešení**: 
 * Ověří, jestli uživatelské jméno na serveru existuje jako platný uživatel, nebo se nechtěně odstraní. Následující dotaz můžete spustit tak, že se přihlásíte k Azure Database for MySQLmu uživateli:

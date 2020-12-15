@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351891"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512041"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -104,11 +104,11 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 
 |Cílový QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1, 1 instance   | S1, 1 instance    |
-| 50         | S3, 10 instancí       | S1, 12 instancí         |
-| 80         | S3, 10 instancí      |  S3, 12 instancí  |
-| 100         | P3V2, 10 instancí  | S3, 12 instancí, 3 oddíly   |
-| 200 až 250         | P3V2, 20 instancí | S3, 12 instancí, 3 oddíly    |
+| 3             | S1, 1 replika   | S1, 1 replika    |
+| 50         | S3, 10 replik       | S1, 12 replik         |
+| 80         | S3, 10 replik      |  S3, 12 replik  |
+| 100         | P3V2, 10 replik  | S3, 12 replik, 3 oddíly   |
+| 200 až 250         | P3V2, 20 replik | S3, 12 replik, 3 oddíly    |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 

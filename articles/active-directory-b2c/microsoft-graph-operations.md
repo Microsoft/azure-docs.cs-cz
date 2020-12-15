@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170935"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509814"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
 
@@ -107,7 +107,7 @@ Prostředek nejvyšší úrovně pro klíče zásad v rozhraní Microsoft Graph 
 
 - [Seznam vlastností rozšíření](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atributů na uživatele. V případě toků uživatelů se tyto vlastnosti rozšíření [spravují pomocí Azure Portal](custom-policy-custom-attributes.md). Pro vlastní zásady Azure AD B2C vytvoří pro vás vlastnost, při prvním zapíše hodnotu do vlastnosti Extension.
+Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atributů na uživatele. V případě toků uživatelů se tyto vlastnosti rozšíření [spravují pomocí Azure Portal](user-flow-custom-attributes.md). Pro vlastní zásady Azure AD B2C vytvoří pro vás vlastnost, při prvním zapíše hodnotu do vlastnosti Extension.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 

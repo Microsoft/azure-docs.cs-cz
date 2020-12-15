@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 61a4119947b1412d3e874458e06748fd40a381b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566414"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510256"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
 
@@ -50,7 +50,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
     V tomto kurzu uložíte hodnotu meze do databáze SQL.
 
-3. **Vytvořte kanál s následujícími aktivitami** :
+3. **Vytvořte kanál s následujícími aktivitami**:
     
     a. Vytvořte aktivitu ForEach, která prochází seznam názvů zdrojových tabulek, který je předaný kanálu jako parametr. Pro každou zdrojovou tabulku vyvolá následující aktivity, aby pro tabulku provedl rozdílové načtení.
 
@@ -167,8 +167,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -357,7 +357,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureStorageLinkedService propojené služby. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName* : 
+3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureStorageLinkedService propojené služby. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName*: 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -365,7 +365,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : SqlServerLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -398,7 +398,7 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
     Zde je ukázkový výstup:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -773,7 +773,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
    Zde je ukázkový výstup: 
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -814,7 +814,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Všechny služby** , spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
+2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
 3. V seznamu datových továren vyhledejte vaši datovou továrnu a vyberte ji. Otevře se stránka **Datová továrna**. 
 
@@ -834,7 +834,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi SQL a ověřte, že data byla ze zdrojových tabulek zkopírována do cílových tabulek: 
 
-**Dotaz** 
+*Query (Dotaz) 
 ```sql
 select * from customer_table
 ```
@@ -851,7 +851,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Dotaz**
+*Query (Dotaz)
 
 ```sql
 select * from project_table
@@ -868,7 +868,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Dotaz**
+*Query (Dotaz)
 
 ```sql
 select * from watermarktable
@@ -917,7 +917,7 @@ VALUES
 
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi a ověřte, že aktualizovaná/nová data byla ze zdrojových tabulek zkopírována do cílových tabulek. 
 
-**Dotaz** 
+*Query (Dotaz) 
 ```sql
 select * from customer_table
 ```
@@ -936,7 +936,7 @@ PersonID    Name    LastModifytime
 
 Všimněte si nových hodnot položek **Name** a **LastModifytime** pro **PersonID** pro číslo 3. 
 
-**Dotaz**
+*Query (Dotaz)
 
 ```sql
 select * from project_table
@@ -956,7 +956,7 @@ NewProject  2017-10-01 00:00:00.000
 
 Všimněte si, že do tabulky project_table byla přidána položka **NewProject**. 
 
-**Dotaz**
+*Query (Dotaz)
 
 ```sql
 select * from watermarktable

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400212"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510460"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Vytvoření dotazu v Azure Kognitivní hledání
 
@@ -76,31 +76,7 @@ Pokud je dotaz fulltextovým vyhledáváním, bude použit analyzátor pro zprac
 
 [Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, když přidáváte `queryType=full` žádost, je založená na [analyzátoru Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-Úplná syntaxe je rozšíření jednoduché syntaxe s dalšími operátory, abyste mohli vytvářet pokročilé dotazy, jako je hledání přibližných hodnot, hledání pomocí zástupných znaků, hledání blízkosti a regulární výrazy. Následující příklady ilustrují bod: stejný dotaz, ale s různými **`queryType`** nastaveními, která poskytují různé výsledky. V prvním jednoduchém dotazu `^3` `historic` je potom považován za součást hledaného termínu. Výsledek nejvyšší úrovně pro tento dotaz je "Marquis Plaza & sady", jejichž popis má *oceánu* .
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "simple",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
-
-Stejný dotaz používající kompletní analyzátor Lucene se interpretuje `^3` jako rozbuška termínů v terénu. Přepínáním analyzátorů se mění pořadí s výsledky, které obsahují *historické* přesuny do horní části.
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
+Úplná syntaxe a jednoduchá syntaxe se překrývají v rozsahu, který podporuje stejnou předponu a logické operace, ale plná syntaxe poskytuje více operátorů. V plném rozsahu existuje více operátorů pro logické výrazy a další operátory pro pokročilé dotazy, jako je hledání přibližných hodnot, hledání pomocí zástupných znaků, hledání blízkosti a regulární výrazy.
 
 ## <a name="choose-query-methods"></a>Výběr metod dotazů
 

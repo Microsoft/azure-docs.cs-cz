@@ -2,14 +2,14 @@
 title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841154"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511650"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -114,7 +114,7 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Součást | Verze  |
+|Komponenta | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
 | python | 2.6.6 a vyšší  |
@@ -156,7 +156,7 @@ Když spustíte spustitelný soubor, operační systém tyto nové svazky připo
 
    ![Připojené svazky pro obnovení](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**Pro zálohované virtuální počítače s velkými disky (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>Pro zálohované virtuální počítače s velkými disky (Windows)
 
 Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obnovení souborů (například pokud disky nejsou nikdy připojeny nebo jsou připojeny, ale svazky se nezobrazí), proveďte následující kroky:
   
@@ -182,7 +182,7 @@ V systému Linux jsou svazky bodu obnovení připojeny ke složce, ve které je 
   ![Nabídka obnovení souborů pro Linux](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**Pro zálohované virtuální počítače s velkými disky (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>Pro zálohované virtuální počítače s velkými disky (Linux) * *
 
 Pokud proces obnovení souboru přestane reagovat po spuštění skriptu pro obnovení souborů (například pokud disky nejsou nikdy připojeny nebo jsou připojeny, ale svazky se nezobrazí), proveďte následující kroky:
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837596"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509984"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
-Azure AD terms of use poskytuje jednoduchou metodu, kterou můžou organizace používat k prezentování informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s podmínkami použití.
+Azure AD terms of use poskytuje jednoduchou metodu, kterou můžou organizace používat k prezentování informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s podmínkami použití (podmínky použití).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -52,7 +52,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít a nakonfigurovat používání podmínek Azure AD, musíte mít:
 
@@ -104,14 +104,14 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
    | Náležící | 1. ledna | 1. února | Březen 1 | Duben 1 |
    | Bob | 15. ledna | 1. února | Březen 1 | Duben 1 |
 
-1. Pokud chcete zadat počet dní, než uživatel musí znovu přijmout podmínky použití, použijte nastavení **Doba trvání před přijetím vyžaduje (dny)** . To uživatelům umožňuje postupovat podle vlastního plánu. Pokud například nastavíte dobu trvání na **30** dní, v tomto příkladu se může vyskytnout vypršení platnosti pro dva uživatele:
+1. Chcete-li zadat počet dní, než uživatel musí znovu přijmout podmínky použití, použijte nastavení **Doba trvání před přijetím vyžaduje (dny)** . To uživatelům umožňuje postupovat podle vlastního plánu. Pokud například nastavíte dobu trvání na **30** dní, v tomto příkladu se může vyskytnout vypršení platnosti pro dva uživatele:
 
    | Uživatel | Datum prvního přijetí | Datum prvního vypršení platnosti | Datum ukončení platnosti druhého dne | Třetí datum vypršení platnosti |
    | --- | --- | --- | --- | --- |
    | Náležící | 1. ledna | 31. ledna | Březen 2 | Duben 1 |
    | Bob | 15. ledna | 14. února | 16. března | Duben 15 |
 
-   Je možné použít potvrzení a dobu **platnosti vypršení platnosti** **před tím, než znovu přijme nastavení (dny)** , ale obvykle použijete jednu nebo druhou.
+   Je možné použít souhlas a dobu **platnosti vypršení platnosti** **před přijetím hodnoty (dny)** , ale obvykle používáte jednu nebo druhou.
 
 1. V části **podmíněný přístup** použijte seznam **vykonat se šablonou zásad podmíněného přístupu** a vyberte šablonu, která vynutila podmínky použití.
 
@@ -219,15 +219,55 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 1. Vyberte podmínkami použití, které chcete upravit.
 1. Klikněte na **Upravit výrazy**.
-1. V podokně upravit podmínek použití změňte název, zobrazované jméno nebo vyžadovat, aby uživatelé rozšířili hodnoty.
+1. V podokně upravit podmínek použití můžete změnit následující:
+     - **Název** – jedná se o interní název podmínky použití, který není sdílený s koncovými uživateli.
+     - **Zobrazovaný název** – jedná se o název, který koncoví uživatelé uvidí při prohlížení podmínky použití
+     - **Vyžadovat, aby uživatelé rozšířili podmínek použití** – když toto nastavení nastavíte **na zapnuto** , vynutí se koncovým příkazem rozšířit požadavky na použití dokumentu před přijetím.
+     - Tisk Můžete **aktualizovat existující dokument podmínek použití**
+     - Do existujícího podmínky použití můžete přidat jazyk.
 
    Pokud existují další nastavení, která byste chtěli změnit, třeba dokument PDF, vyžadovat, aby uživatelé souhlasili na každém zařízení, souhlas s vypršenou platností, doba před přijetím nebo zásady podmíněného přístupu, musíte vytvořit nové podmínky použití.
 
-   ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-tou.png)
+    ![Upravit zobrazení různých možností jazyka ](./media/terms-of-use/edit-terms-use.png)
 
-1. Kliknutím na **Uložit** změny uložte.
+1. Až budete hotovi, uložte změny kliknutím na **Uložit** .
 
-   Po uložení změn nebudou uživatelé tyto úpravy znovu přijímat.
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Aktualizuje verzi nebo PDF stávajícího podmínek použití.
+
+1.  Přihlaste se k Azure a přejděte na [podmínky použití](https://aka.ms/catou)
+2.  Vyberte podmínkami použití, které chcete upravit.
+3.  Klikněte na **Upravit výrazy**.
+4.  Pro jazyk, ve kterém chcete aktualizovat novou verzi, klikněte na **aktualizovat** ve sloupci akce.
+ 
+     ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-terms-use.png)
+
+5.  V pravém podokně nahrajte PDF novou verzi.
+6.  K dispozici je také možnost přepínacího parametru, která **vyžaduje opětovné přijetí** , pokud chcete, aby uživatelé při příštím přihlášení přijali tuto novou verzi. Pokud požadujete, aby se vaši uživatelé znovu přijali, při příštím pokusu o přístup k prostředku definovanému v zásadách podmíněného přístupu se zobrazí výzva, abyste tuto novou verzi přijali. Pokud nepožadujete, aby vaši uživatelé znovu přijali, jejich předchozí souhlas zůstane aktuální a jenom noví uživatelé, kteří nesouhlasí s jeho vypršenou platností nebo jejichž souhlas vyprší, uvidí novou verzi.
+
+    ![Upravit vybranou možnost opětovného přijetí podmínek použití](./media/terms-of-use/re-accept.png)
+
+7.  Jakmile nahrajete nový soubor PDF a rozhodnete se o jeho přijetí, klikněte na tlačítko Přidat v dolní části podokna.
+8.  Ve sloupci dokumentu se teď zobrazí nejnovější verze.
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>Zobrazit předchozí verze podmínek použití
+
+1.  Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese https://aka.ms/catou.
+2.  Vyberte podmínkami použití, pro které chcete zobrazit historii verzí.
+3.  Klikněte na **jazyky a historii verzí** .
+4.  Klikněte na **Zobrazit předchozí verze.**
+
+    ![Podrobnosti dokumentu včetně jazykových verzí](./media/terms-of-use/document-details.png)
+
+5.  Pro stažení této verze můžete kliknout na název dokumentu.
+
+## <a name="see-who-has-accepted-each-version"></a>Zobrazit, kdo přijal jednotlivé verze
+
+1.  Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese https://aka.ms/catou.
+2.  Pokud chcete zjistit, kdo podmínky použití aktuálně přijal, klikněte na číslo ve sloupci **přijato** pro podmínky použití, který chcete.
+3.  Ve výchozím nastavení na další stránce se zobrazí aktuální stav všech uživatelů, kteří přijmou podmínky použití.
+4.  Chcete-li zobrazit předchozí události souhlasu, můžete vybrat možnost **vše** z rozevíracího seznamu **aktuální stav** . Nyní uvidíte jednotlivé události uživatelů v podrobnostech o každé verzi a o tom, co se stalo.
+5.  Případně můžete vybrat konkrétní verzi z rozevírací nabídky **verze**  , abyste viděli, kdo tuto konkrétní verzi přijal.
+
 
 ## <a name="add-a-terms-of-use-language"></a>Přidat jazyk podmínek použití
 
@@ -235,14 +275,14 @@ Následující postup popisuje, jak přidat jazyk podmínek použití.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 1. Vyberte podmínkami použití, které chcete upravit.
-1. V podokně podrobností klikněte na kartu **jazyky** .
-
-   ![Vybraná Podmínky použití a zobrazení karty jazyky v podokně podrobností](./media/terms-of-use/languages-tou.png)
-
-1. Klikněte na **Přidat jazyk**.
+1. Klikněte na **Upravit výrazy** .
+1. V dolní části stránky klikněte na **Přidat jazyk** .
 1. V podokně Přidat podmínek použití jazyka nahrajte lokalizovaný soubor PDF a vyberte jazyk.
 
-   ![Přidejte podokno jazyk použití s možnostmi pro nahrání lokalizovaných souborů PDF.](./media/terms-of-use/language-add-tou.png)
+   ![Vybraná Podmínky použití a zobrazení karty jazyky v podokně podrobností](./media/terms-of-use/select-language.png)
+
+1. Klikněte na **Přidat jazyk**.
+1. Klikněte na **Uložit**.
 
 1. Kliknutím na **Přidat** přidejte jazyk.
 
@@ -253,12 +293,12 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Telefon | Windows 10 | Jiné |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
-> | **Native app** | Yes | Yes | Yes |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
-> | **Internet Explorer** | Yes | Yes | Yes |  |
-> | **Chrome (s příponou)** | Yes | Yes | Yes |  |
+> | **Native app** | Ano | Ano | Ano |  |
+> | **Microsoft Edge** | Ano | Ano | Ano |  |
+> | **Internet Explorer** | Ano | Ano | Ano |  |
+> | **Chrome (s příponou)** | Ano | Ano | Ano |  |
 
 Podmínky použití podle zařízení mají následující omezení:
 
@@ -318,7 +358,7 @@ Zásady podmíněného přístupu se projeví okamžitě. Pokud k tomu dojde, sp
 > - zásada podmíněného přístupu je povolená pro podmínky použití.
 > - nebo pokud se vytvoří druhé podmínky použití.
 
-## <a name="b2b-guests-preview"></a>Hosty B2B (Preview)
+## <a name="b2b-guests"></a>Hosty B2B
 
 Většina organizací má k dispozici proces, který svým zaměstnancům souhlasí s podmínkami použití a prohlášeními o zásadách ochrany osobních údajů organizace. Jak ale můžete vyhovět stejným souhlasům pro hosty Azure AD Business-to-Business (B2B), když se přidávají prostřednictvím SharePointu nebo týmů? Pomocí podmíněného přístupu a podmínek použití můžete zásadu vyhovět přímo ke uživatelům typu Host B2B. Během postupu pro uplatnění pozvánky se uživatel zobrazí s podmínkami použití. Tato podpora je aktuálně ve verzi Preview.
 
@@ -326,7 +366,7 @@ Podmínky použití se zobrazí jenom v případě, že uživatel má účet hos
 
 ![Podokno uživatelé a skupiny – zahrňte kartu se zaškrtnutou možností všichni uživatelé typu Host.](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>Podpora pro cloudové aplikace (Preview)
+## <a name="support-for-cloud-apps"></a>Podpora pro cloudové aplikace
 
 Podmínky použití lze použít pro různé cloudové aplikace, například Azure Information Protection a Microsoft Intune. Tato podpora je aktuálně ve verzi Preview.
 

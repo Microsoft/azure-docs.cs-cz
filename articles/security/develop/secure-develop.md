@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517083"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511276"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -38,7 +38,7 @@ Před vrácením kódu se změnami proveďte [Revize kódu](/azure/devops/learn/
 
 ### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
 
-[Statická analýza kódu](https://owasp.org/www-community/controls/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu* ) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statická analýza kódu](https://owasp.org/www-community/controls/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace nabízí [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , které provádějí analýzu statického kódu a pomáhají s revizemi kódu.
 
@@ -48,21 +48,21 @@ Zacházet se všemi vstupy jako nedůvěryhodnými k ochraně aplikace před nej
 
 Ověřte vstup na začátku v toku dat, abyste zajistili, že pracovní postup bude do pracovního postupu zajišťovat pouze správně vytvořená data. Nechcete, aby ve vaší databázi trvaly poškozená data, nebo aby se v součásti pro příjem dat aktivovala selhání.
 
-Zakázané a povolené přidávání jsou dva obecné přístupy k provádění ověřování zadáním syntaxe:
+Blocklisting a allowlisting jsou dva obecné přístupy k provádění ověřování zadáním syntaxe:
 
-  - Zakázané pokusy o kontrolu, že zadaný uživatelský vstup neobsahuje "známý jako škodlivý" obsah.
+  - Blocklisting se pokusí ověřit, že zadaný uživatelský vstup neobsahuje "známý jako škodlivý" obsah.
 
-  - Seznam povolených pokusů o kontrolu, že daný vstup uživatele odpovídá sadě "známých dobrých" vstupů. Přidávání na základě znaků je forma seznamu povolených, kde aplikace kontroluje, jestli vstup uživatele obsahuje jenom "známé" znaky, nebo že tento vstup odpovídá známému formátu.
+  - Allowlisting se pokusí ověřit, jestli daný vstup uživatele odpovídá sadě "známých dobrých" vstupů. Znaková allowlisting je forma allowlisting, kde aplikace kontroluje, zda vstup uživatele obsahuje pouze "známé" znaky, nebo že vstup odpovídá známému formátu.
     To může zahrnovat například kontrolu, že uživatelské jméno obsahuje pouze alfanumerické znaky nebo že obsahuje přesně dvě čísla.
 
-Seznam povolených je upřednostňovaným přístupem k sestavování zabezpečeného softwaru.
-Zakázané je náchylné k chybě, protože není možné považovat úplný seznam potenciálně špatného vstupu.
+Allowlisting je upřednostňovaným přístupem k sestavování zabezpečeného softwaru.
+Blocklisting je náchylná k chybě, protože není možné považovat úplný seznam potenciálně špatného vstupu.
 
 Proveďte tuto činnost na serveru, nikoli na straně klienta (nebo na straně serveru a na straně klienta).
 
 ### <a name="verify-your-applications-outputs"></a>Ověření výstupů aplikace
 
-Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování* , slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
+Jakýkoli výstup, který prezentujete vizuálně nebo v dokumentu, by měl být vždy kódovaný a řídicí. [Uvozovací znaky](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), označované také jako *výstupní kódování*, slouží k zajištění, že nedůvěryhodná data nejsou vozidlo pro útok na injektáže. Uvozovací znaky kombinované s ověřováním dat poskytují vrstvenou obranu za účelem zvýšení zabezpečení systému jako celku.
 
 Uvozovací znaky zajistí, že se všechny zobrazují jako *výstup.* Uvozovací znaky také umožňuje Překladači zjistit, že data nejsou určena ke spuštění, a tím zabráníte útokům v práci. Toto je další běžná technika útoku označovaná jako *skriptování mezi weby* (XSS).
 

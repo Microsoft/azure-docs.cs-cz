@@ -1,19 +1,19 @@
 ---
 title: Zajištění provozní kontinuity & zotavení po havárii pomocí spárovaných oblastí Azure
 description: Zajištění odolnosti aplikací pomocí regionálního párování Azure
-author: barbkess
-manager: barbkess
+author: martinekuan
+manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.author: barbkess
+ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539052"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511225"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
 
@@ -33,17 +33,17 @@ Všimněte si, že ne všechny služby Azure automaticky replikují data, ani ne
 
 ## <a name="can-i-select-my-regional-pairs"></a>Můžu vybrat své místní páry?
 
-Ne. Některé služby Azure spoléhají na regionální páry, jako je třeba [redundantní úložiště](./storage/common/storage-redundancy.md)Azure. Tyto služby neumožňují vytváření nových oblastí pro místní párování.  Podobně vzhledem k tomu, že Azure řídí plánovanou údržbu a stanovení priorit obnovení pro regionální páry, nemůžete definovat vlastní regionální páry, které tyto služby budou využívat. Můžete ale vytvořit vlastní řešení pro zotavení po havárii vytvořením služeb v libovolném počtu oblastí a využitím služeb Azure k jejich párování. 
+No. Některé služby Azure spoléhají na regionální páry, jako je třeba [redundantní úložiště](./storage/common/storage-redundancy.md)Azure. Tyto služby neumožňují vytváření nových oblastí pro místní párování.  Podobně vzhledem k tomu, že Azure řídí plánovanou údržbu a stanovení priorit obnovení pro regionální páry, nemůžete definovat vlastní regionální páry, které tyto služby budou využívat. Můžete ale vytvořit vlastní řešení pro zotavení po havárii vytvořením služeb v libovolném počtu oblastí a využitím služeb Azure k jejich párování. 
 
 Například můžete použít služby Azure, například [AzCopy](./storage/common/storage-use-azcopy-v10.md) , k plánování zálohování dat do účtu úložiště v jiné oblasti.  Pomocí [Azure DNS a Azure Traffic Manager](./networking/disaster-recovery-dns-traffic-manager.md)můžou zákazníci navrhovat odolnou architekturu svých aplikací, které budou zachovány se ztrátou primární oblasti.
 
 ## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>Je omezeno na používání služeb v rámci místních párů?
 
-Ne. Zatímco konkrétní služba Azure může spoléhat na regionální dvojici, můžete své další služby hostovat v libovolné oblasti, která vyhovuje vašim obchodním potřebám.  Řešení úložiště Azure GRS může párovat data v oblasti Kanada – střed s partnerským uzlem v Kanadě – východ při použití výpočetních prostředků umístěných v Východní USA.  
+No. Zatímco konkrétní služba Azure může spoléhat na regionální dvojici, můžete své další služby hostovat v libovolné oblasti, která vyhovuje vašim obchodním potřebám.  Řešení úložiště Azure GRS může párovat data v oblasti Kanada – střed s partnerským uzlem v Kanadě – východ při použití výpočetních prostředků umístěných v Východní USA.  
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Je nutné použít místní páry Azure?
 
-Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](/azure/architecture/framework/resiliency/backup-and-recovery).
+No. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](/azure/architecture/framework/resiliency/backup-and-recovery).
 
 ## <a name="azure-regional-pairs"></a>Regionální páry Azure
 
@@ -51,7 +51,7 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 |:--- |:--- |:--- |
 | Asia-Pacific |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
-| Australia |Austrálie – střed |Austrálie – střed 2 |
+| Austrálie |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazil South |Středojižní USA |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
@@ -59,8 +59,8 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| India |Indie – střed |Indie – jih |
-| India |Západní Indie |Indie – jih |
+| Indie |Indie – střed |Indie – jih |
+| Indie |Západní Indie |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
 | Severní Amerika |East US |USA – západ |

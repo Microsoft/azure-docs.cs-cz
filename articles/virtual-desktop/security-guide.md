@@ -3,15 +3,15 @@ title: Osvědčené postupy zabezpečení virtuálních počítačů s Windows �
 description: Osvědčené postupy pro zabezpečení prostředí virtuálních počítačů s Windows
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023152"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511531"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -29,12 +29,12 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 
 | Nutnost zabezpečení | Je zákazník zodpovědný za to? |
 |---------------|:-------------------------:|
-|Identita|Yes|
-|Zařízení uživatelů (mobilní zařízení a počítač)|Yes|
-|Zabezpečení aplikací|Yes|
-|Operační systém hostitele relace|Yes|
-|Konfigurace nasazení|Yes|
-|Správa sítě|Yes|
+|Identita|Ano|
+|Zařízení uživatelů (mobilní zařízení a počítač)|Ano|
+|Zabezpečení aplikací|Ano|
+|Operační systém hostitele relace|Ano|
+|Konfigurace nasazení|Ano|
+|Správa sítě|Ano|
 |Rovina řízení virtualizace|Ne|
 |Fyzičtí hostitelé|Ne|
 |Fyzická síť|Ne|
@@ -98,6 +98,25 @@ Monitorujte využití a dostupnost služby virtuálních počítačů s Windows 
 ## <a name="session-host-security-best-practices"></a>Osvědčené postupy zabezpečení hostitele relací
 
 Hostitelé relací jsou virtuální počítače, které běží v rámci předplatného Azure a virtuální sítě. Celkové zabezpečení nasazení virtuálních klientů ve Windows závisí na řízeních zabezpečení, které jste umístili na hostitele relace. Tato část popisuje osvědčené postupy pro udržení zabezpečení relace.
+
+### <a name="enable-screen-capture-protection-preview"></a>Povolit ochranu snímku obrazovky (Preview)
+
+Funkce ochrany snímku obrazovky zabraňuje zachycení citlivých informací na koncových bodech klienta. Když tuto funkci povolíte, vzdálený obsah se na snímky obrazovky a sdílené složky automaticky zablokuje nebo skryje. Bude taky skrytá proti škodlivému softwaru, který může průběžně zachytit obsah vaší obrazovky.
+
+Tato zásada se vynutila na úrovni hostitele nakonfigurováním klíče registru. Pokud chcete tuto zásadu povolit, otevřete PowerShell a nastavte klíč registru **fEnableScreenCaptureProtection** spuštěním této rutiny:
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+Otestování této nové funkce:
+
+- Ujistěte se, že jsou vaše fondy hostitelů zřízené v prostředí ověřování.
+- Ujistěte se, že jste stáhli a nainstalovali desktopový klient Windows verze 1.2.1526 nebo novější.
+
+>[!NOTE]
+>Během období Preview podporují tuto funkci pouze kompletní připojení klientů z koncových bodů Windows 10.
+
 
 ### <a name="enable-endpoint-protection"></a>Povolit službu Endpoint Protection
 

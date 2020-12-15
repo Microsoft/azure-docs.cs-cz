@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 052758079d8d413f7b0fead2a5abf3b47b9a691e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505490"
+ms.locfileid: "97511327"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -32,7 +32,7 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 ## <a name="planned-changes"></a>Plánované změny
 
 - ["Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
-- [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení
 
@@ -42,13 +42,13 @@ V současné době se prostředky vyhodnocené pro doporučení a zjištěné ja
 
 Jediný dopad bude zobrazen v Azure Policy, kde se zvýší počet odpovídajících prostředků. Vaše zabezpečené skóre v Azure Security Center nebude nijak ovlivněno.
 
-### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure
+### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučených doporučení pro zvýšení pokrytí testu zabezpečení Azure
 
 **Odhadované datum změny:** Prosince 2020
 
 Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. [Další informace o srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md)
 
-Následující doporučení 35 Preview byla přidána do Security Center pro zvýšení pokrytí tohoto srovnávacího testu.
+Následující doporučení 35 verze Preview budou přidána do Security Center, aby se zvýšilo pokrytí tohoto srovnávacího testu.
 
 Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahrnutá do výpočtů vašeho zabezpečeného skóre. Opravte je všude, kde je to možné, takže až do doby, kdy období Preview skončí, přispějete k vašemu skóre. Přečtěte si další informace o tom, jak na tato doporučení reagovat v tématu o [opravách doporučení v Azure Security Center](security-center-remediate-recommendations.md).
 

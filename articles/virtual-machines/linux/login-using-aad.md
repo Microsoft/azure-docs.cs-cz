@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340879"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510885"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -119,7 +119,7 @@ Zásady řízení přístupu na základě role Azure (Azure RBAC) určují, kdo 
 - **Přihlášení uživatele k virtuálnímu počítači**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
 
 > [!NOTE]
-> Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes SSH, musíte přiřadit buď roli *přihlášení správce virtuálního počítače* , nebo *přihlašovací údaje uživatele virtuálního počítače* . Uživatel Azure s rolemi *vlastník* nebo *Přispěvatel* přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes SSH.
+> Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes SSH, musíte přiřadit buď roli *přihlášení správce virtuálního počítače* , nebo *přihlašovací údaje uživatele virtuálního počítače* . Přihlášení správce virtuálního počítače a role přihlášení uživatelů virtuálních počítačů používají operace dataactions a nelze je proto přiřadit v oboru skupiny pro správu. V současné době je možné tyto role přiřadit pouze v rámci předplatného, skupiny prostředků nebo oboru prostředků. Uživatel Azure s rolemi *vlastník* nebo *Přispěvatel* přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes SSH. 
 
 V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role *přihlášení správce virtuálního počítače* pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a *obor* se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a platí normální oprávnění dědičnosti Azure RBAC. Další informace najdete v tématu [Azure RBAC](../../role-based-access-control/overview.md) .
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v tématu použití rozhraní příkazového [řádku Azure](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)nebo [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Službu Azure AD můžete také nakonfigurovat tak, aby vyžadovala službu Multi-Factor Authentication pro konkrétního uživatele, aby se přihlásil k virtuálnímu počítači se systémem Linux. Další informace najdete v tématu [Začínáme se službou Azure AD Multi-Factor Authentication v cloudu](../../active-directory/authentication/howto-mfa-getstarted.md).
+## <a name="using-conditional-access"></a>Použití podmíněného přístupu
+
+Před autorizací přístupu k virtuálním počítačům se systémem Linux v Azure, které jsou povolené pomocí přihlášení Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo kontrolu rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte vybrat aplikaci přihlášení k virtuálnímu počítači Azure Linux z možnosti přiřazení cloudových aplikací nebo akcí a pak použít rizikové přihlašování jako podmínku nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
+
+> [!WARNING]
+> Pro přihlášení k virtuálnímu počítači se nepodporuje Multi-Factor Authentication služby Azure AD, které jsou povolené nebo vyžadované pro uživatele.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Přihlášení k virtuálnímu počítači se systémem Linux
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> Pokud máte problémy s přiřazením rolí Azure, přečtěte si téma [řešení potíží s technologií Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
 
 ### <a name="continued-ssh-sign-in-prompts"></a>Pokračování přihlašovacích výzev protokolu SSH
 

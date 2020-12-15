@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 12/15/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920567"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510678"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované prostředky pro výstrahy metriky v Azure Monitor
 
@@ -41,10 +41,10 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. ClassicCompute/domainNames/sloty/role | Ne | Ne | [Klasický Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Ne | Ne | [Klasický Virtual Machines](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Ano | Ne | [Účty úložiště (klasické)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft. ClassicStorage/storageAccounts/blobServices | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/služby | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/queueServices | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/tableServices | Ano | Ne | |
+|Microsoft. ClassicStorage/storageAccounts/blobServices | Ano | Ne | [Účty úložiště (klasické) – objekty blob](./metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
+|Microsoft. ClassicStorage/storageAccounts/služby | Ano | Ne | [Účty úložiště (klasické) – soubory](./metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
+|Microsoft. ClassicStorage/storageAccounts/queueServices | Ano | Ne | [Účty úložiště (klasické) – fronty](./metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
+|Microsoft. ClassicStorage/storageAccounts/tableServices | Ano | Ne | [Účty úložiště (klasické) – tabulky](./metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft. Cognitiveservices Account/účty | Ano | Ne | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Ano | Ano<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ano | Ne |[Virtual Machine Scale Sets](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
@@ -57,10 +57,9 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. datashare/Accounts | Ano | Ne | |
 |Microsoft. DBforMariaDB/servery | Ne | Ne | [DB pro MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. DBforMySQL/servery | Ne | Ne |[DB pro MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/flexibleServers | Ano | Ne | |
 |Microsoft. DBforPostgreSQL/servery | Ne | Ne | [DB pro PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Ne | Ne | [DB pro PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/flexibilní | Ne | Ne | [DB pro PostgreSQL (servery flexiable)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Ano | Ne | [DB pro PostgreSQL (flexibilní servery)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Ano | Ne |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Ano | Ne | [Služby Device Provisioning](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/digitalTwinsInstances | Ano | Ne | |
@@ -104,7 +103,10 @@ Tady je úplný seznam Azure Monitor zdrojů metrik podporovaných novějšími 
 |Microsoft. SQL/servery/databáze | Ne | Ano | [Databáze SQL](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft. SQL/servery/elasticPools | Ne | Ano | [Elastické fondy SQL](./metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft. Storage/storageAccounts |Ano | Ne | [Účty úložiště](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft. Storage/storageAccounts/Services | Ano| Ne | Služby [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [souborové](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)služby, [služby front](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [tabulkové služby](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft. Storage/storageAccounts/blobServices | Ano| Ne | [Účty úložiště – objekty blob](./metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
+|Microsoft. Storage/storageAccounts/služby | Ano| Ne | [Účty úložiště – soubory](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
+|Microsoft. Storage/storageAccounts/queueServices | Ano| Ne | [Účty úložiště – fronty](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
+|Microsoft. Storage/storageAccounts/tableServices | Ano| Ne | [Účty úložiště – tabulky](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
 |Microsoft. StorageCache/caches | Ano | Ne | |
 |Microsoft. StorageSync/storageSyncServices | Ano | Ne | [Služby synchronizace úložiště](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft. StreamAnalytics/streamingjobs | Ano | Ne | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |

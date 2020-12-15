@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254659"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511208"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -140,6 +140,10 @@ Při plánování úlohy na uzlech Batch můžete zvolit, jestli se má spustit 
 ### <a name="idempotent-start-tasks"></a>Idempotentní počáteční úlohy
 
 Stejně jako u jiných úloh by měl být [spouštěcí úkol](jobs-and-tasks.md#start-task) uzlu idempotentní, protože bude znovu spuštěn při každém spuštění uzlu. Úkol idempotentní je jednoduše ten, který při spuštění několikrát vytvoří konzistentní výsledek.
+
+### <a name="isolated-nodes"></a>Izolované uzly
+
+Zvažte použití izolované velikosti virtuálních počítačů pro úlohy s požadavky na dodržování předpisů nebo zákonných požadavků. Mezi podporované izolované velikosti v režimu konfigurace virtuálních počítačů patří `Standard_E64i_v3` , `Standard_E80ids_v4` ,, `Standard_F72s_v2` `Standard_G5` , `Standard_GS5` a `Standard_M128ms` . Další informace o velikostech izolovaného virtuálního počítače najdete v tématu věnovaném [izolaci virtuálních počítačů v Azure](https://docs.microsoft.com/azure/virtual-machines/isolation).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Správa dlouhotrvajících služeb prostřednictvím rozhraní služeb operačního systému
 

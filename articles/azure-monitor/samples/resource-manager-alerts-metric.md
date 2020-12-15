@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893977"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510562"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Ukázky šablon pro pravidla upozornění metrik v Azure Monitor Správce prostředků
 
@@ -343,7 +343,7 @@ Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorné
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorné
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -712,10 +712,10 @@ V této ukázce pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenzí
 2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
 Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
-- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *getblob*
-- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *PutBlob*
-- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *getblob*
-- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Soubor šablony
 
@@ -875,7 +875,7 @@ Například několik možných časových řad, které jsou monitorovány pomoc�
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -903,10 +903,10 @@ V této ukázce pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenzí
 2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
 Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
-- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *getblob*
-- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *PutBlob*
-- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *getblob*
-- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
 >[!NOTE]
 > Pro pravidla upozornění metrik, která používají dynamické prahové hodnoty, se aktuálně nepodporují více kritérií.
