@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111289"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508114"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Přidání atributů uživatele a přizpůsobení uživatelského vstupu v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "97111289"
 
 V tomto článku shromáždíte nový atribut během cesty pro registraci v Azure Active Directory B2C (Azure AD B2C). Získáte město uživatele, nakonfigurujete ho jako rozevírací seznam a definujete, jestli je potřeba poskytnout.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -129,7 +129,7 @@ Zadání seznamu sad hodnot pro atribut City:
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> V této ukázce se používá integrovaná deklarace identity "City". Místo toho můžete zvolit jeden z podporovaných [předdefinovaných atributů Azure AD B2C](user-profile-attributes.md) nebo vlastní atribut. Pokud chcete použít vlastní atribut, [Povolte v zásadách vlastní atributy](custom-policy-custom-attributes.md). Chcete-li použít jiný vestavěný nebo vlastní atribut, nahraďte ' City ' atributem dle vašeho výběru, například vestavěný atribut *jobtitle* nebo vlastní atribut jako *extension_loyaltyId*.  
+> V této ukázce se používá integrovaná deklarace identity "City". Místo toho můžete zvolit jeden z podporovaných [předdefinovaných atributů Azure AD B2C](user-profile-attributes.md) nebo vlastní atribut. Chcete-li použít vlastní atribut, [Povolte vlastní atributy](user-flow-custom-attributes.md). Chcete-li použít jiný vestavěný nebo vlastní atribut, nahraďte ' City ' atributem dle vašeho výběru, například vestavěný atribut *jobtitle* nebo vlastní atribut jako *extension_loyaltyId*.  
 
 Počáteční data můžete shromažďovat od uživatelů pomocí cesty uživatelů při registraci nebo přihlašování. Další deklarace identity je možné shromažďovat později pomocí profilu upravit cestu uživatele. Kdykoli Azure AD B2C shromažďuje informace přímo od uživatele interaktivně, rozhraní identity Experience Framework používá svůj [technický profil s vlastním uplatněním](self-asserted-technical-profile.md). V této ukázce:
 
@@ -342,6 +342,6 @@ Token, který se odesílá zpátky do vaší aplikace, zahrnuje `city` deklaraci
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o elementu [ClaimsSchema](claimsschema.md) najdete v referenčních informacích k IEF.
-- Naučte se [používat vlastní atributy v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md).
+- Naučte se [používat vlastní atributy v Azure AD B2C](user-flow-custom-attributes.md).
 
 ::: zone-end

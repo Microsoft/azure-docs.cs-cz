@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406595"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509423"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -33,7 +33,7 @@ V tomto kurzu:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2017 nebo 2019](https://visualstudio.microsoft.com/downloads/).
 - Tenanta Azure AD. Další informace najdete v tématu [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md).
@@ -65,7 +65,7 @@ Nebo [si ukázku Stáhněte v souboru ZIP](https://github.com/Azure-Samples/ms-i
 
 Tato ukázka má jeden projekt. Pokud chcete aplikaci zaregistrovat u svého tenanta Azure AD, můžete:
 
-- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-your-application) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
+- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-the-client-app-dotnet-web-daemon-v2) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
 - Použijte skripty prostředí PowerShell, které:
   - *Automaticky* vytvořte aplikace Azure AD a související objekty (hesla, oprávnění, závislosti) za vás.
   - Upravte konfigurační soubory projektů sady Visual Studio.
@@ -93,40 +93,34 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 
 ### <a name="choose-the-azure-ad-tenant"></a>Výběr tenanta Azure AD
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. Pokud je váš účet ve více než jednom tenantovi služby Azure AD, vyberte svůj profil v nabídce v horní části stránky a pak vyberte **Přepnout adresář**.
-1. Změňte relaci portálu na požadovaného tenanta Azure AD.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Registrace klientské aplikace (dotnet-web-démon-v2)
 
-1. Přejít na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) na platformě Microsoft identity pro vývojáře.
-1. Vyberte **Nová registrace**.
-1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například příkaz **dotnet-web-démon-v2**.
-   - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
-   - V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátory URI pro přesměrování:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `dotnet-web-daemon-v2` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** v poli se seznamem a zadejte `https://localhost:44316/` a `https://localhost:44316/Account/GrantPermissions` jako identifikátory URI přesměrování.
 
-     Pokud existuje více než dva identifikátory URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
+    Pokud existuje více než dva identifikátory URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
-1. V seznamu stránek pro aplikaci vyberte **Ověřování**. Pak:
-   - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44316/Account/EndSession** .
-   - V části **Upřesnit nastavení**  >  **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
+1. V části **Spravovat** vyberte **ověřování**.
+1. Nastavte **adresu URL pro odhlášení** `https://localhost:44316/Account/EndSession` .
+1. V části **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
 1. Vyberte **Uložit**.
-1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. Pak:
-
-   1. Zadejte popis klíče (například **tajný klíč aplikace**),
-   1. Vyberte dobu trvání klíče buď **v 1 roce**, **2 roky**, nebo **nikdy nevyprší**.
-   1. Vyberte tlačítko **Přidat** .
-   1. Když se zobrazí hodnota klíče, zkopírujte ji a uložte ji v bezpečném umístění. Tento klíč budete potřebovat později ke konfiguraci projektu v aplikaci Visual Studio. Nebude se znovu zobrazovat ani získat jiným způsobem.
-1. V seznamu stránek aplikace vyberte **oprávnění rozhraní API**. Pak:
-   1. Vyberte tlačítko **Přidat oprávnění**.
-   1. Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
-   1. V části **běžně používaná rozhraní Microsoft API** vyberte **Microsoft Graph**.
-   1. V části **oprávnění aplikace** se ujistěte, že jsou vybrána správná oprávnění: **User. Read. All**.
-   1. Klikněte na tlačítko **Přidat oprávnění** .
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. 
+1. Zadejte popis klíče (například **tajný klíč aplikace**).
+1. Vyberte dobu trvání klíče buď **v 1 roce**, **2 roky**, nebo **nikdy nevyprší**.
+1. Vyberte **Přidat**. Poznamenejte si hodnotu klíče v bezpečném umístění. Tento klíč budete potřebovat později ke konfiguraci projektu v aplikaci Visual Studio.
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
+1. V části **běžně používaná rozhraní Microsoft API** vyberte **Microsoft Graph**.
+1. V části **oprávnění aplikace** se ujistěte, že jsou vybrána správná oprávnění: **User. Read. All**.
+1. Vyberte **Přidat oprávnění**.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Konfigurace ukázky pro použití vašeho tenanta Azure AD
 
@@ -209,7 +203,7 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Vytvoření a publikování dotnet-web-démon-v2 na webu Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu vyberte **Vytvořit prostředek**.
 1. Vyberte **Webová**  >  **Webová aplikace** a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
 1. Vyberte informace pro **předplatné**, **skupinu prostředků** a **plán a umístění služby App Service**. **Operační** systém je **Windows** a **publikování** je **kód**.
@@ -236,7 +230,7 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Konfiguraci uložte.
-1. V seznamu hodnot v **Authentication**  >  nabídce **identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
+1. V seznamu hodnot v   >  nabídce **identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).

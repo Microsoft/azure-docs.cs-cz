@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030141"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507791"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
 > [!IMPORTANT]
-> Po 30. ledna 2021 už klienti nebudou moct konfigurovat aktualizace a životnosti tokenů relace a Azure Active Directory v zásadách po tomto datu přestanou dodržovat konfiguraci tokenu aktualizace a relace.
+> Po 2020 května již klienti nebudou moci konfigurovat dobu platnosti tokenů aktualizace a relace.  Azure Active Directory přestane dodržovat stávající konfiguraci tokenu aktualizace a tokenu relace v zásadách po 30. lednu 2021. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
 >
-> Pokud potřebujete pokračovat v definování časového období, než se uživateli zobrazí výzva k opětovnému přihlášení, nakonfigurujte četnost přihlášení v podmíněném přístupu. Další informace o podmíněném přístupu najdete na [stránce s cenami služby Azure AD](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
+> Pokud potřebujete pokračovat v definování časového období, než se uživateli zobrazí výzva k opětovnému přihlášení, nakonfigurujte četnost přihlášení v podmíněném přístupu. Další informace o podmíněném přístupu najdete v části [Konfigurace správy relace ověřování pomocí podmíněného přístupu](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
 >
 > Pro klienty, kteří nechtějí používat podmíněný přístup po datu vyřazení, můžou očekávat, že Azure AD bude dodržovat výchozí konfiguraci podanou v následující části.
 

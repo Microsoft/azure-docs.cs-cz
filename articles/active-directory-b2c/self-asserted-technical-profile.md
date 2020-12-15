@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345078"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509696"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -209,7 +209,7 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 | nastavení. showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo `false` |
 | nastavení. showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo `false` |
 | nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
-| nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
+| nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) . Možné hodnoty: `true` , nebo `false` (výchozí). |
 | nastavení. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Ne| Zlepšuje činnost koncového uživatele čekáním, až uživatel přestane psát, a pak hodnotu ověří. Výchozí hodnota je 2000 milisekund. |
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 

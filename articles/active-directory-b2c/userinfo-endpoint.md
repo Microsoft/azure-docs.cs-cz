@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425770"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509576"
 ---
 # <a name="userinfo-endpoint"></a>Koncový bod UserInfo
 
@@ -32,7 +32,7 @@ Koncový bod UserInfo je součástí specifikace OIDC ( [OpenID Connect Standard
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
@@ -103,7 +103,7 @@ Informace o uživateli UserJourney určuje:
 
 1. Oddíl outputClaims v rámci technického profilu UserInfoIssuer určuje atributy, které chcete vrátit. Technický profil UserInfoIssuer se volá na konci cesty uživatele. 
 1. Technický profil UserInfoAuthorization ověří podpis, název vystavitele a cílovou skupinu tokenů a extrahuje deklaraci identity z příchozího tokenu. Změňte následující metadata tak, aby odrážela vaše prostředí:
-    1. **Vystavitel** – tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace přístupového tokenu. Tokeny vydané Azure AD B2C používají Vystavitel ve formátu `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . Přečtěte si další informace o [přizpůsobení tokenu](configure-tokens-custom-policy.md).
+    1. **Vystavitel** – tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace přístupového tokenu. Tokeny vydané Azure AD B2C používají Vystavitel ve formátu `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . Přečtěte si další informace o [přizpůsobení tokenu](configure-tokens.md).
     1. **IdTokenAudience** -musí být identické s `aud` deklarací identity v rámci deklarace přístupového tokenu. V Azure AD B2C `aud` deklarace identity je ID vaší aplikace předávající strany. Tato hodnota je kolekce a podporuje více hodnot pomocí oddělovače čárky.
 
 V následujícím přístupovém tokenu `iss` je hodnota deklarace identity `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . `aud`Hodnota deklarace identity je `22222222-2222-2222-2222-222222222222` .

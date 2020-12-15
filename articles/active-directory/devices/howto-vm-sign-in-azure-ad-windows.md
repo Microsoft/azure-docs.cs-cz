@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347434"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509304"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -158,7 +158,7 @@ Přiřazení rolí pro virtuální počítač můžete nakonfigurovat několika 
 - Použití prostředí Azure Cloud Shell
 
 > [!NOTE]
-> Přihlášení správce virtuálního počítače a role přihlášení uživatelů virtuálních počítačů používají operace dataactions a nelze je proto přiřadit v oboru skupiny pro správu. V současné době je možné tyto role přiřadit pouze v oboru předplatného.
+> Přihlášení správce virtuálního počítače a role přihlášení uživatelů virtuálních počítačů používají operace dataactions a nelze je proto přiřadit v oboru skupiny pro správu. V současné době je možné tyto role přiřadit pouze v rámci předplatného, skupiny prostředků nebo oboru prostředků.
 
 ### <a name="using-azure-ad-portal-experience"></a>Použití prostředí portálu Azure AD
 

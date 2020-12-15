@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928745"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509542"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -24,7 +24,7 @@ Známé problémy, které je třeba znát při práci s zřizováním aplikací.
 > [!NOTE]
 > Nejedná se o úplný seznam známých problémů. Pokud víte, který problém není uveden, poskytněte nám zpětnou vazbu v dolní části stránky.
 
-## <a name="authorization"></a>Authorization (Autorizace) 
+## <a name="authorization"></a>Autorizace 
 
 **Po úspěšném testu připojení se nepovedlo Uložit.**
 
@@ -68,7 +68,8 @@ Rozšíření adresáře, appRoleAssignments, userType a accountExpires nejsou p
 
 - Hesla zřizování se nepodporují. 
 - Zřizování vnořených skupin se nepodporuje. 
-- Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů. 
+- Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů.
+- Ne všechny zřizovací aplikace jsou k dispozici ve všech cloudech. Například Atlassian ještě není k dispozici v cloudu pro státní správu. Pracujeme na tom, aby vývojáři aplikací připojili své aplikace ke všem cloudům.
 
 **Automatické zřizování není v naší aplikaci založené na OIDC k dispozici.**
 

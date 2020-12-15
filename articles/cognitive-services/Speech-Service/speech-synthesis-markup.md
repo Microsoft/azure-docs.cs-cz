@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894010"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508828"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -200,6 +200,7 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 * `zh-CN-YunxiNeural` Tisk
 * `zh-CN-XiaohanNeural` Tisk
 * `zh-CN-XiaomoNeural` Tisk
@@ -243,7 +244,7 @@ Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se 
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Description                                                 |
+| Hlas                   | Styl                     | Popis                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
@@ -271,7 +272,14 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
-| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.    | 
+|                         | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
+|                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
+|                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
+|                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
+|                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
+|                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
 |                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
@@ -383,7 +391,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
-| Obsahem                      | Description |
+| Obsahem                      | Popis |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -657,7 +665,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například, `<prosody pitch="600Hz">some text</prosody>`.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: `<prosody pitch="+80Hz">some text</prosody>` nebo `<prosody pitch="-2st">some text</prosody>` . "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul> | Volitelné |
+| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například `<prosody pitch="600Hz">some text</prosody>`.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: `<prosody pitch="+80Hz">some text</prosody>` nebo `<prosody pitch="-2st">some text</prosody>` . "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul> | Volitelné |
 | `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
 | `range` | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch` . | Volitelné |
 | `rate` | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |

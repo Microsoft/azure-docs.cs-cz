@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996181"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507757"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -373,15 +373,16 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
    1. v Průzkumník řešení vyberte projekt a zobrazte okno Vlastnosti (Pokud nevidíte okno Vlastnosti stiskněte F4).
    1. Změňte povolený protokol SSL na `True` .
    1. Klikněte pravým tlačítkem myši na projekt v aplikaci Visual Studio, vyberte možnost **vlastnosti** a pak vyberte kartu **Web** . V části **servery** změňte nastavení **adresy URL projektu** na **adresu URL SSL**.
-   1. Zkopírujte adresu URL protokolu SSL. Tuto adresu URL přidáte do seznamu adres URL pro přesměrování v seznamu adres URL pro přesměrování v dalším kroku.<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
-1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte svou relaci portálu na klienta služby Azure AD, kterého chcete.
-1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Vyberte **Nová registrace**.
-1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například **ASPNET-tutorial**.
-   1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/` ) v **adrese URL odpovědi**, a vyberte možnost **Registrovat**.
-1. Vyberte nabídku **ověřování** , v části **implicitní udělení** vyberte **tokeny ID** a pak vyberte **Uložit**.
+   1. Zkopírujte adresu URL protokolu SSL. Tuto adresu URL přidáte do seznamu identifikátorů URI přesměrování v seznamu identifikátorů URI přesměrování v dalším kroku.<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `ASPNET-Tutorial` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. Přidejte adresu URL protokolu SSL, kterou jste zkopírovali ze sady Visual Studio v kroku 1 (například `https://localhost:44368/` ) v **identifikátoru URI přesměrování**.
+1. Vyberte **Zaregistrovat**.
+1. V části **Spravovat** vyberte **ověřování**.
+1. V části **implicitní udělení** vyberte možnost **tokeny ID** a pak vyberte **Uložit**.
 1. V souboru web.config přidejte následující příkaz, který se nachází v kořenové složce v `configuration\appSettings` části:
 
     ```xml

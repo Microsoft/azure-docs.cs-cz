@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107630"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507706"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS
 
@@ -35,7 +35,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní Microsoft Graph API
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Xcode 11. x +](https://developer.apple.com/xcode/)
 
@@ -71,16 +71,17 @@ Pokud chcete stáhnout dokončenou verzi aplikace, kterou jste vytvořili v tomt
 
 ## <a name="register-your-application"></a>Registrace aplikace
 
-1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
-2. Otevřete okno Registrace aplikací a vyberte **+ Nová registrace**.
-3. Zadejte **název** aplikace a pak bez nastavení identifikátoru URI přesměrování.
-4. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný Azure AD Directory – víceklientské klienty) a osobní účty Microsoft (např. Skype, Xbox)** .
-5. Vybrat **registraci**
-6. V části **Spravovat** v podokně, které se zobrazí, vyberte **ověřování**.
-
-7. Vyberte **vyzkoušet nové prostředí** v horní části obrazovky a otevřete tak nové prostředí pro registraci aplikace a pak vyberte **+ Nová registrace**  >  **+ Přidat platformu**  >  **iOS/MacOS**.
-    - Zadejte ID sady projektu. Pokud jste kód stáhli, je to `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
-8. Vyberte `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace. Vyberte **Hotovo**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný Azure AD Directory – víceklientské klienty) a osobní účty Microsoft (např. Skype, Xbox)** .
+1. Vyberte **Zaregistrovat**.
+1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**  >  **iOS/MacOS**.
+1. Zadejte ID sady projektu. Pokud jste kód stáhli, je to `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
+1. Vyberte **Konfigurovat** a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace. 
+1. Vyberte **Hotovo**.
 
 ## <a name="add-msal"></a>Přidat MSAL
 

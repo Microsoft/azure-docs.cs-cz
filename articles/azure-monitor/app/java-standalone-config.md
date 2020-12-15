@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387747"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507655"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -184,9 +184,9 @@ Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalo
 
 Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí.
 
-Ve výchozím nastavení se protokolování shromáždí jenom v případě, že se protokolování provádí na `INFO` úrovni nebo výše.
+Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou hodnotu nakonfigurovanou rozhraní protokolování a druhá také splňuje Application Insights nakonfigurovanou prahovou hodnotu.
 
-Pokud chcete změnit tuto úroveň kolekce:
+Výchozí prahová hodnota Application Insights je `INFO` . Pokud chcete změnit tuto úroveň:
 
 ```json
 {

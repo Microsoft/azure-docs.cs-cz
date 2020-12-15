@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007201"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507468"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopírování dat z Azure Databricks rozdílových Lake pomocí Azure Data Factory
 
@@ -81,11 +81,11 @@ Pro propojenou službu Azure Databricks Delta Lake jsou podporovány následují
 
 | Vlastnost    | Popis                                                  | Povinné |
 | :---------- | :----------------------------------------------------------- | :------- |
-| typ        | Vlastnost Type musí být nastavená na **AzureDatabricksDeltaLake**. | Yes      |
+| typ        | Vlastnost Type musí být nastavená na **AzureDatabricksDeltaLake**. | Ano      |
 | doména      | Zadejte adresu URL Azure Databricks pracovního prostoru, třeba `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
 | clusterId   | Zadejte ID clusteru existujícího clusteru. Měl by to být již vytvořený interaktivní cluster. <br>ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Přečtěte si další informace](/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky pro vyhledání přístupového tokenu najdete [tady](/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
-| connectVia  | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | No       |
+| connectVia  | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | Ne       |
 
 **Příklad:**
 
@@ -114,7 +114,7 @@ Pro Azure Databricks rozdílovou datovou sadu se podporují následující vlast
 
 | Vlastnost  | Popis                                                  | Povinné                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Vlastnost Type datové sady musí být nastavená na **AzureDatabricksDeltaLakeDataset**. | Yes                         |
+| typ      | Vlastnost Type datové sady musí být nastavená na **AzureDatabricksDeltaLakeDataset**. | Ano                         |
 | database | Název databáze. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název rozdílové tabulky |Ne pro zdroj, Ano pro jímku  |
 
@@ -148,13 +148,13 @@ Pokud chcete kopírovat data z Azure Databricks rozdílových Lake, v části **
 
 | Vlastnost                     | Popis                                                  | Povinné |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureDatabricksDeltaLakeSource**. | Yes      |
-| query          | Zadejte dotaz SQL pro čtení dat. Pro řízení času služební cesty použijte následující vzor:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
-| exportSettings | Rozšířená nastavení používaná k načtení dat z rozdílové tabulky. | No       |
+| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureDatabricksDeltaLakeSource**. | Ano      |
+| query          | Zadejte dotaz SQL pro čtení dat. Pro řízení času služební cesty použijte následující vzor:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Ne       |
+| exportSettings | Rozšířená nastavení používaná k načtení dat z rozdílové tabulky. | Ne       |
 | ***Pod `exportSettings` :** _ |  |  |
-| typ | Typ příkazu pro export nastavený na _ * AzureDatabricksDeltaLakeExportCommand * *. | Yes |
-| Parametr DateFormat | Umožňuje formátovat typ data String pomocí formátu data. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
-| timestampFormat | Formátujte typ časového razítka na řetězec ve formátu timestamp. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ | Typ příkazu pro export nastavený na _ * AzureDatabricksDeltaLakeExportCommand * *. | Ano |
+| Parametr DateFormat | Umožňuje formátovat typ data String pomocí formátu data. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | Ne |
+| timestampFormat | Formátujte typ časového razítka na řetězec ve formátu timestamp. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Ne |
 
 #### <a name="direct-copy-from-delta-lake"></a>Přímá kopie ze rozdílových Lake
 
@@ -262,13 +262,13 @@ Chcete-li kopírovat data do Azure Databricks rozdílových dat, jsou v části 
 
 | Vlastnost      | Popis                                                  | Povinné |
 | :------------ | :----------------------------------------------------------- | :------- |
-| typ          | Vlastnost Type jímky aktivity kopírování nastavená na **AzureDatabricksDeltaLakeSink**. | Yes      |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do tabulky Delta datacihly v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat nebo k přidání zkrácené tabulky nebo výpisu vaku. | No       |
-| importSettings | Rozšířená nastavení použitá pro zápis dat do rozdílové tabulky | No |
+| typ          | Vlastnost Type jímky aktivity kopírování nastavená na **AzureDatabricksDeltaLakeSink**. | Ano      |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do tabulky Delta datacihly v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat nebo k přidání zkrácené tabulky nebo výpisu vaku. | Ne       |
+| importSettings | Rozšířená nastavení použitá pro zápis dat do rozdílové tabulky | Ne |
 | **_Pod `importSettings` :_* _ |                                                              |  |
-| typ | Typ příkazu pro import, nastavený na _ * AzureDatabricksDeltaLakeImportCommand * *. | Yes |
-| Parametr DateFormat | Řetězec formátu pro typ data s formátem data Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
-| timestampFormat | Řetězec formátu pro typ časového razítka ve formátu časového razítka. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ | Typ příkazu pro import, nastavený na _ * AzureDatabricksDeltaLakeImportCommand * *. | Ano |
+| Parametr DateFormat | Řetězec formátu pro typ data s formátem data Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | Ne |
+| timestampFormat | Řetězec formátu pro typ časového razítka ve formátu časového razítka. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Ne |
 
 #### <a name="direct-copy-to-delta-lake"></a>Přímá kopie do rozdílových Lake
 

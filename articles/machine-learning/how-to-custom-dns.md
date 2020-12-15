@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012989"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509287"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
@@ -41,6 +41,7 @@ Při použití Azure Machine Learningho pracovního prostoru s privátním konco
 
 Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) používané vaším pracovním prostorem a privátním koncovým bodem:
 
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
@@ -90,6 +91,7 @@ Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného 
 > [!IMPORTANT]
 > Některé plně kvalifikované názvy domén nejsou zobrazeny v seznamu privátním koncovým bodem, ale jsou vyžadovány pracovním prostorem. Tyto plně kvalifikované názvy domén jsou uvedené v následující tabulce a musí se taky přidat na server DNS:
 >
+> * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`

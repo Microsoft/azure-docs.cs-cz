@@ -11,22 +11,22 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e47eda29b0ad1c47edad08195b2ffd0fe3835af
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750471"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508046"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Správa [relací jednotného přihlašování (SSO)](session-overview.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro referenci zobrazí dotaz na technický profil přidružený k tomuto kroku `UseTechnicalProfileForSessionManagement` . Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
+Správa [relací jednotného přihlašování (SSO)](session-behavior.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro referenci zobrazí dotaz na technický profil přidružený k tomuto kroku `UseTechnicalProfileForSessionManagement` . Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
 
 Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlašování, které se dají použít:
 
-|Zprostředkovatel relací  |Rozsah  |
+|Zprostředkovatel relací  |Obor  |
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádné       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C interního správce relací.      |       
@@ -168,5 +168,4 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Azure AD B2C relaci](session-overview.md).
-- Naučte se [Konfigurovat chování relace ve vlastních zásadách](session-behavior-custom-policy.md).
+Naučte se [Konfigurovat chování relace](session-behavior.md).

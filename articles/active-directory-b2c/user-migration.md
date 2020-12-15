@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383967"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509610"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
 
@@ -90,7 +90,7 @@ Ne všechny informace ze staršího zprostředkovatele identity by měly být mi
 
 Než zahájíte proces migrace, využijte možnost vyčištění adresáře.
 
-- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C, a migrujte pouze to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](custom-policy-custom-attributes.md) , které budou ukládat více dat o uživateli.
+- Identifikujte sadu uživatelských atributů, které mají být uloženy v Azure AD B2C, a migrujte pouze to, co potřebujete. V případě potřeby můžete vytvořit [vlastní atributy](user-flow-custom-attributes.md) , které budou ukládat více dat o uživateli.
 - Pokud migrujete z prostředí s více zdroji ověřování (například každá aplikace má vlastní adresář uživatele), migrujte na jednotný účet v Azure AD B2C.
 - Pokud má více aplikací různá uživatelská jména, můžete je Uložit do Azure AD B2C uživatelského účtu pomocí kolekce identity. S ohledem na heslo nechte uživatele zvolit jednu a nastavit v adresáři. V případě bezproblémové migrace by například mělo být v účtu Azure AD B2C uloženo pouze zvolené heslo.
 - Před migrací odeberte nepoužívané uživatelské účty nebo Nemigrujte zastaralé účty.

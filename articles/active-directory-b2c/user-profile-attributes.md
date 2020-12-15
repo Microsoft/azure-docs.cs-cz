@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750403"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509593"
 ---
 # <a name="user-profile-attributes"></a>Atributy profilu uživatele
 
@@ -44,7 +44,7 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](/graph/api
 |city            |Řetězec|Město, ve kterém se uživatel nachází Maximální délka 128.|Ano|Ano|Trvalý výstup|
 |consentProvidedForMinor|Řetězec|Zda byl souhlas poskytnut pro méně závažná. Povolené hodnoty: null, uděleno, zamítnuto nebo notRequired.|Ano|Ne|Trvalý výstup|
 |country         |Řetězec|Země nebo oblast, ve které se uživatel nachází. Příklad: "US" nebo "UK". Maximální délka 128.|Ano|Ano|Trvalý výstup|
-|createdDateTime|DateTime|Datum vytvoření objektu uživatele. Jen pro čtení.|Ne|Ne|Trvalý výstup|
+|createdDateTime|Datum a čas|Datum vytvoření objektu uživatele. Jen pro čtení.|Ne|Ne|Trvalý výstup|
 |creationType    |Řetězec|Pokud byl uživatelský účet vytvořen jako místní účet pro klienta Azure Active Directory B2C, hodnota je LocalAccount nebo nameCoexistence. Jen pro čtení.|Ne|Ne|Trvalý výstup|
 |dateOfBirth     |Datum|Datum narození.|Ne|Ne|Trvalý výstup|
 |Oddělení      |Řetězec|Název oddělení, ve kterém uživatel pracuje. Maximální délka 64.|Ano|Ne|Trvalý výstup|
@@ -62,15 +62,15 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](/graph/api
 |objectId        |Řetězec|Globálně jedinečný identifikátor (GUID), který je jedinečným identifikátorem pro uživatele. Příklad: 12345678-9ABC-def0-1234-56789abcde. Jen pro čtení, neměnný.|Jen pro čtení|Ano|Vstup, trvalý výstup|
 |otherMails      |Kolekce řetězců|Seznam dalších e-mailových adres pro uživatele Příklad: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ano (alternativní e-mail)|Ne|Trvalý výstup|
 |heslo        |Řetězec|Heslo pro místní účet během vytváření uživatele.|Ne|Ne|Trvalé|
-|passwordPolicies     |Řetězec|Zásady hesla Jedná se o řetězec skládající se z názvu jiné zásady oddělené čárkou. například "DisablePasswordExpiration, DisableStrongPassword".|Ne|Ne|Trvalý výstup|
+|passwordPolicies     |Řetězec|Zásady hesla Jedná se o řetězec skládající se z názvu jiné zásady oddělené čárkou. Například "DisablePasswordExpiration, DisableStrongPassword".|Ne|Ne|Trvalý výstup|
 |physicalDeliveryOfficeName (officeLocation)|Řetězec|Umístění kanceláře v místě podnikání uživatele. Maximální délka 128.|Ano|Ne|Trvalý výstup|
 |postalCode      |Řetězec|Poštovní směrovací číslo pro poštovní adresu uživatele Poštovní směrovací číslo je specifické pro zemi nebo oblast uživatele. V USA systému America tento atribut obsahuje PSČ. Maximální délka 40.|Ano|Ne|Trvalý výstup|
 |preferredLanguage    |Řetězec|Preferovaný jazyk pro uživatele. By měl dodržovat kód ISO 639-1. Příklad: "en-US".|Ne|Ne|Trvalý výstup|
-|refreshTokensValidFromDateTime|DateTime|Všechny obnovovací tokeny vydané před tímto časem jsou neplatné a aplikace při použití neplatného obnovovacího tokenu k získání nového přístupového tokenu zobrazí chybu. Pokud k tomu dojde, aplikace bude muset získat nový obnovovací token tím, že odešle požadavek na koncový bod autorizace. Jen pro čtení.|Ne|Ne|Výstup|
-|signInNames ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečný přihlašovací jméno uživatele místního účtu libovolného typu v adresáři. Tuto hodnotu použijte k získání uživatele s hodnotou přihlášení bez zadání typu místního účtu.|Ne|Ne|Vstup|
-|signInNames. userName ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné uživatelské jméno uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním přihlašovacím jménem. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
-|signInNames. phoneNumber ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné telefonní číslo uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním telefonním číslem přihlášení. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
-|signInNames. emailAddress ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jedinečná e-mailová adresa uživatele místního účtu v adresáři Toto použijte k vytvoření nebo získání uživatele s konkrétní přihlašovací e-mailovou adresou. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|refreshTokensValidFromDateTime|Datum a čas|Všechny obnovovací tokeny vydané před tímto časem jsou neplatné a aplikace při použití neplatného obnovovacího tokenu k získání nového přístupového tokenu zobrazí chybu. Pokud k tomu dojde, aplikace bude muset získat nový obnovovací token tím, že odešle požadavek na koncový bod autorizace. Jen pro čtení.|Ne|Ne|Výstup|
+|signInNames ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečný přihlašovací jméno uživatele místního účtu libovolného typu v adresáři. Tento atribut použijte k získání uživatele s hodnotou přihlášení bez zadání typu místního účtu.|Ne|Ne|Vstup|
+|signInNames. userName ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné uživatelské jméno uživatele místního účtu v adresáři. Tento atribut použijte k vytvoření nebo získání uživatele s konkrétním přihlašovacím jménem. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|signInNames. phoneNumber ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné telefonní číslo uživatele místního účtu v adresáři. Pomocí tohoto atributu můžete vytvořit nebo získat uživatele s konkrétním telefonním číslem přihlášení. Zadání tohoto atributu v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|signInNames. emailAddress ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jedinečná e-mailová adresa uživatele místního účtu v adresáři Toto použijte k vytvoření nebo získání uživatele s konkrétní přihlašovací e-mailovou adresou. Zadání tohoto atributu v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
 |state           |Řetězec|Kraj v adrese uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
 |streetAddress   |Řetězec|Ulice na adrese uživatele místo podnikání. Maximální délka 1024.|Ano|Ano|Trvalý výstup|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Řetězec|Sekundární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Ano|Ne|Trvalý výstup|
@@ -82,7 +82,7 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](/graph/api
 |usageLocation   |Řetězec|Vyžadováno pro uživatele, kteří budou mít přiřazené licence z důvodu právního požadavku na kontrolu dostupnosti služeb v zemích nebo oblastech. Nelze nabývat hodnoty null. Dvoumístné označení země/oblasti (ISO standard 3166). Příklady: "US", "JP" a "GB".|Ano|Ne|Trvalý výstup|
 |userType        |Řetězec|Řetězcová hodnota, která se dá použít ke klasifikaci uživatelských typů v adresáři. Hodnota musí být členem. Jen pro čtení.|Jen pro čtení|Ne|Trvalý výstup|
 |userState (externalUserState)<sup>3</sup>|Řetězec|Pouze pro účet Azure AD B2B označuje, zda je pozvánka PendingAcceptance nebo přijata.|Ne|Ne|Trvalý výstup|
-|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Zobrazuje časové razítko poslední změny vlastnosti UserState.|Ne|Ne|Trvalý výstup|
+|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|Datum a čas|Zobrazuje časové razítko poslední změny vlastnosti UserState.|Ne|Ne|Trvalý výstup|
 
 <sup>1 </sup> Nepodporováno Microsoft Graph<br><sup>2</sup> . Další informace najdete v tématu [atribut pro telefonní číslo MFA](#mfa-phone-number-attribute) .<br><sup>3 </sup> . Neměl by se používat s Azure AD B2C
 
@@ -113,12 +113,11 @@ Následující datové typy jsou podporovány při definování vlastnosti v roz
 |Typ vlastnosti |Poznámky  |
 |--------------|---------|
 |Logická hodnota    | Možné hodnoty: **true** nebo **false**. |
-|DateTime   | Musí být zadáno ve formátu ISO 8601. Bude uloženo v UTC.   |
+|Datum a čas   | Musí být zadáno ve formátu ISO 8601. Bude uloženo v UTC.   |
 |Integer    | 32-bitová hodnota.               |
 |Řetězec     | maximálně 256 znaků.     |
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o atributech rozšíření:
 - [Rozšíření schématu](/graph/extensibility-overview#schema-extensions)
-- [Definování vlastních atributů pomocí toku uživatele](user-flow-custom-attributes.md)
-- [Definování vlastních atributů vlastními zásadami](custom-policy-custom-attributes.md)
+- [Definování vlastních atributů](user-flow-custom-attributes.md)

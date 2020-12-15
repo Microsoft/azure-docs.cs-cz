@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/11/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005125"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508710"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště objektů BLOB v Azure do databáze v Azure SQL Database pomocí Azure Data Factory
 
@@ -26,7 +26,7 @@ ms.locfileid: "96005125"
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště objektů BLOB v Azure do databáze v Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
-> - Pokud se službou Data Factory teprve začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md).
+> Pokud se službou Data Factory teprve začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md).
 
 V tomto kurzu budete provádět následující kroky:
 
@@ -81,25 +81,27 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál.
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory**.
-3. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  .
+3. Na stránce **vytvořit data Factory** na kartě **základy** vyberte **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
+4. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
+
+    a. Z rozevíracího seznamu vyberte existující skupinu prostředků.
+
+    b. Vyberte **vytvořit novou** a zadejte název nové skupiny prostředků.
+    
+    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
+5. V části **oblast** vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
+6. Do **pole název** zadejte **ADFTutorialDataFactory**.
 
    Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 
      ![Nová datová továrna](./media/doc-common-process/name-not-available-error.png)
-4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit.
-5. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
 
-    a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-
-    b. Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
-         
-    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
-6. Jako **Verzi** vyberte **V2**.
-7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
-8. Vyberte **Vytvořit**.
-9. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejděte na stránku Datová továrna.
-10. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
+7. Jako **Verzi** vyberte **V2**.
+8. V horní části vyberte kartu **Konfigurace Git** a zaškrtněte políčko **Konfigurovat Git později** .
+9. Vyberte možnost **zkontrolovat + vytvořit** a po ověření platnosti vyberte **vytvořit** .
+10. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejděte na stránku Datová továrna.
+11. Vyberte **vytvořit & monitorování** a spusťte Azure Data Factory uživatelské rozhraní na samostatné kartě.
 
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
@@ -115,7 +117,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
    ![Vytvoření kanálu](./media/doc-common-process/get-started-page.png)
 
-1. 1. Na panelu Obecné v části **vlastnosti** zadejte **CopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
+1. Na panelu Obecné v části **vlastnosti** zadejte **CopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
 
 1. V poli nástroje **aktivity** rozbalte kategorii **přesunout a transformovat** a přetáhněte **kopírování dat** aktivity z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
 

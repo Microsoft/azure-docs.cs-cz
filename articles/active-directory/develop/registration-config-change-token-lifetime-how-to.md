@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 90b4468693736068bd54b62082c43a1988202e6f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516779"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509100"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Jak změnit výchozí hodnoty životnosti tokenů pro aplikaci vytvořenou pro vlastní nastavení
 
 V tomto článku se dozvíte, jak pomocí Azure AD PowerShellu nastavit zásady životnosti tokenů. Azure AD Premium umožňuje vývojářům aplikací a správcům tenantů nakonfigurovat životnost tokenů vydaných pro nedůvěrné klienty. Zásady životnosti tokenů se nastavují na úrovni tenanta nebo prostředků, ke kterým se přistupoval.
 
 > [!IMPORTANT]
-> Po 30. ledna 2021 už klienti nebudou moct konfigurovat aktualizace a životnosti tokenů relace a Azure Active Directory přestanou dodržovat existující konfiguraci tokenu aktualizace a relace v zásadách, které platí od tohoto data. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu. Další informace najdete v tématu [Konfigurace životností tokenů ve službě Azure AD](./active-directory-configurable-token-lifetimes.md).
+> Po 2020 května již klienti nebudou moci konfigurovat dobu platnosti tokenů aktualizace a relace.  Azure Active Directory přestane dodržovat stávající konfiguraci tokenu aktualizace a tokenu relace v zásadách po 30. lednu 2021. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu. Další informace najdete v tématu [Konfigurace životností tokenů ve službě Azure AD](./active-directory-configurable-token-lifetimes.md).
 > Implementovali jsme [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md)   v podmíněném přístupu Azure AD. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení.  
 
 Pokud chcete nastavit zásady životnosti tokenů, musíte si stáhnout [modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).

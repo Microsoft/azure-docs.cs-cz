@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920864"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508879"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920864"
 Tento kurz ukazuje **kopírování několika tabulek z Azure SQL Database do Azure synapse Analytics**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například kopírujete tabulky z SQL Server/Oracle do služby Azure SQL Database/Azure synapse Analytics/Azure Blob a kopírujete různé cesty z objektu blob do tabulek Azure SQL Database.
 
 > [!NOTE]
-> - Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
+> Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
 
 Tento kurz zahrnuje následující základní kroky:
 
@@ -76,7 +76,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. Přejděte na [Azure Portal](https://portal.azure.com). 
-1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory pro**  >  **integraci** prostředků  >  **Data Factory**. 
+1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory pro**  >  **integraci** prostředků  >  . 
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialBulkCopyDF** . 
@@ -99,9 +99,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 1. Po dokončení vytváření vyberte **Přejít k prostředku** a přejděte na stránku **Data Factory** . 
    
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
-1. Na stránce **Začínáme** přepněte na levém panelu na kartu **Autor** , jak je znázorněno na následujícím obrázku:
 
-     ![Stránka Začínáme](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 Vytvoříte propojené služby, které propojí vaše úložiště dat a výpočetní prostředí s datovou továrnou. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti dat za běhu. 
@@ -177,7 +175,9 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>Vytvoření datové sady pro zdrojovou databázi SQL Database
 
-1. Klikněte na **+ (plus)** v levém podokně a pak klikněte na **datová sada**. 
+1. V levém podokně vyberte kartu **Autor** .
+
+1. **+** V levém podokně vyberte (plus) a pak vyberte **datová sada**. 
 
     ![Nabídka Nová datová sada](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. V okně **Nová datová sada** vyberte **Azure SQL Database** a potom klikněte na **pokračovat**. 
@@ -277,7 +277,7 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
     1. Zaškrtněte políčko **Povolit přípravu**.
     1. Jako **Propojená služba účtu úložiště** zadejte **AzureStorageLinkedService**.
 
-1. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na horním panelu nástrojů kanálu. Ujistěte se, že se nevyskytla žádná chyba ověřování. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
+1. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na horním panelu nástrojů kanálu. Ujistěte se, že se nevyskytla žádná chyba ověřování. Pokud chcete **sestavu ověření kanálu** zavřít, klikněte na dvojité lomené závorky **>>** .
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Vytvoření kanálu GetTableListAndTriggerCopyData
 
@@ -285,6 +285,8 @@ Tento kanál provádí dvě akce:
 
 * Vyhledá systémové tabulky Azure SQL Database a získá seznam tabulek, které se mají zkopírovat.
 * Aktivuje kanál IterateAndCopySQLTables, který provede vlastní kopírování dat.
+
+Postup vytvoření kanálu:
 
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Kanál**.
 1. Na panelu Obecné v části **vlastnosti** změňte název kanálu na **GetTableListAndTriggerCopyData**. 

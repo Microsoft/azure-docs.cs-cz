@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974322"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509457"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
@@ -48,7 +48,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 Nyní je nutné zaregistrovat aplikaci:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**.
-1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
-1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)**. Pak pokračujte výběrem **zaregistrovat** .
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `UWP-App-calling-MSGraph` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)**. 
+1. Vyberte **Zaregistrovat**.
 1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs* a nahraďte hodnotu `ClientId` touto hodnotou.
 
 Konfigurace ověřování pro vaši aplikaci:
 
-1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat** vyberte **ověřování**.
-1. V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní počítače)** ověřte https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. Vyberte **Uložit**.
+1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat** vyberte **ověřování**  >  **Přidat platformu** a pak vyberte **mobilní a desktopové aplikace**.
+1. V části **identifikátory URI pro přesměrování** ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Vyberte **Konfigurovat**.
 
 Konfigurace oprávnění rozhraní API pro aplikaci:
 
-1. V části **Spravovat** vyberte **oprávnění rozhraní API**.
-1. Vyberte **Přidat oprávnění** a pak ověřte, že jste vybrali **rozhraní Microsoft API**.
+1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
 1. Vyberte **Microsoft Graph**.
 1. Vyberte **delegovaná oprávnění**, vyhledejte *uživatele. číst* a ověřte, zda je vybrána možnost **uživatel. čtení** .
 1. Pokud jste provedli nějaké změny, vyberte **Přidat oprávnění** a uložte je.

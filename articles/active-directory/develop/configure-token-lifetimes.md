@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503617"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507740"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurace zásad životnosti tokenů (Preview)
 V Azure AD můžete vytvářet a spravovat životnosti tokenů pro aplikace, instanční objekty a vaši celkovou organizaci.  
 
 > [!IMPORTANT]
-> Po 30. ledna 2021 už klienti nebudou moct konfigurovat aktualizace a životnosti tokenů relace a služba Azure AD přestane dodržovat existující konfiguraci a konfiguraci tokenu relace v zásadách po tomto datu. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.  Pokud se chcete dozvědět víc, přečtěte si [konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
+> Po 2020 května již klienti nebudou moci konfigurovat dobu platnosti tokenů aktualizace a relace.  Azure Active Directory přestane dodržovat stávající konfiguraci tokenu aktualizace a tokenu relace v zásadách po 30. lednu 2021. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.  Pokud se chcete dozvědět víc, přečtěte si [konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
 > Implementovali jsme [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md)   v podmíněném přístupu Azure AD. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení.
 
 
@@ -41,7 +41,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:
@@ -88,7 +88,7 @@ V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům méně č
         Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
         ```
 
-    1. Pokud chcete zobrazit novou zásadu a získat **objectID**této zásady, spusťte následující příkaz:
+    1. Pokud chcete zobrazit novou zásadu a získat **objectID** této zásady, spusťte následující příkaz:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -116,7 +116,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby se uživatelé ve 
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. Pokud chcete zobrazit nové zásady a získat **objectID**zásad, spusťte rutinu [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) :
+    1. Pokud chcete zobrazit nové zásady a získat **objectID** zásad, spusťte rutinu [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) :
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -153,7 +153,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby se uživatelé neo
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. Přiřaďte zásady k webovému rozhraní API. Také je nutné získat **identifikátor objectID** vaší aplikace. Pomocí rutiny [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) Najděte **identifikátor objectID**vaší aplikace nebo použijte [Azure Portal](https://portal.azure.com/).
+1. Přiřaďte zásady k webovému rozhraní API. Také je nutné získat **identifikátor objectID** vaší aplikace. Pomocí rutiny [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) Najděte **identifikátor objectID** vaší aplikace nebo použijte [Azure Portal](https://portal.azure.com/).
 
     Získejte **objectID** vaší aplikace a přiřaďte zásady:
 

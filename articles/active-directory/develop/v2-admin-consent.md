@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119602"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509321"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Souhlas správce na platformě Microsoft identity
 
@@ -31,7 +31,7 @@ Když uživatele podepíšete do své aplikace, můžete určit organizaci, ke k
 
 ## <a name="request-the-permissions-from-a-directory-admin"></a>Vyžádání oprávnění od správce adresáře
 
-Až budete připraveni požádat o oprávnění od správce vaší organizace, můžete uživatele přesměrovat na *koncový bod souhlasu správce*Microsoft Identity Platform.
+Až budete připraveni požádat o oprávnění od správce vaší organizace, můžete uživatele přesměrovat na *koncový bod souhlasu správce* Microsoft Identity Platform.
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -44,14 +44,13 @@ https://graph.microsoft.com/calendars.read
 https://graph.microsoft.com/mail.send
 ```
 
-
-| Parametr     | Stav     | Popis                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+| Parametr | Podmínka | Popis |
+| ---: | ---: | :---: |
 | `tenant` | Povinné | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se zadat v GUID nebo ve formátu popisného názvu nebo obecně odkazovaného, `organizations` jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
 | `redirect_uri` | Vyžadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
 | `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-|`scope`        | Vyžadováno      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory.  To může zahrnovat obory OIDC ( `openid` , `profile` , `email` ). |
+|`scope` | Vyžadováno | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory. To může zahrnovat obory OIDC ( `openid` , `profile` , `email` ). |
 
 
 V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v `scope` parametru.  Pokud jste použili statickou `/.default` hodnotu (), bude fungovat jako koncový bod souhlasu správce v 1.0 a souhlas se žádostí pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.
@@ -64,12 +63,12 @@ Pokud správce schválí oprávnění pro vaši aplikaci, úspěšná odpověď 
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| Parametr         | Popis                                                                                       |
-|------------------:|:-------------------------------------------------------------------------------------------------:|
+| Parametr | Popis |
+| ---: | :---: |
 | `tenant`| Tenant adresáře, který vaší aplikaci udělil požadovaná oprávnění, ve formátu identifikátoru GUID.|
-| `state`           | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází.|
-| `scope`          | Sada oprávnění, kterým byl udělen přístup pro aplikaci.|
-| `admin_consent`   | Bude nastaveno na `True` .|
+| `state` | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází.|
+| `scope` | Sada oprávnění, kterým byl udělen přístup pro aplikaci.|
+| `admin_consent` | Bude nastaveno na `True` .|
 
 ### <a name="error-response"></a>Chybová odezva
 
@@ -77,13 +76,13 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 Při přidání k parametrům zobrazeným v úspěšné odpovědi se zobrazí parametry chyby uvedené níže.
 
-| Parametr          | Popis                                                                                      |
+| Parametr | Popis |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
-| `error`            | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby.|
-| `error_description`| Konkrétní chybová zpráva, která může vývojářům pomáhat určit hlavní příčinu chyby.|
+| `error` | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a lze jej použít k reakci na chyby.|
+| `error_description` | Konkrétní chybová zpráva, která může vývojářům pomáhat určit hlavní příčinu chyby.|
 | `tenant`| Tenant adresáře, který vaší aplikaci udělil požadovaná oprávnění, ve formátu identifikátoru GUID.|
-| `state`           | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází.|
-| `admin_consent`   | Bude nastaveno na `True` , aby označovali, že k této odezvě došlo v toku souhlasu správce.|
+| `state` | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází.|
+| `admin_consent` | Bude nastaveno na `True` , aby označovali, že k této odezvě došlo v toku souhlasu správce.|
 
 ## <a name="next-steps"></a>Další kroky
 - Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .

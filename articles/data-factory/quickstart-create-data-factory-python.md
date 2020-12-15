@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 1ebeae8e16acf4ca2b82270cc6ec40151794ad58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cc25ce4aa51535bbfd03d99ed413afa66a184fdb
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497329"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508777"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -34,7 +34,7 @@ Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vyt
 
 Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou Azure synapse Analytics pro aplikace business intelligence (BI).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -421,7 +421,7 @@ Konzola vytiskne průběh vytváření datové továrny, propojených služeb, d
 
 Zde je ukázkový výstup:
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

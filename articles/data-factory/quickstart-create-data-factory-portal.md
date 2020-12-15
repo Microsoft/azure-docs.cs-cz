@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013390"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509015"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý start: Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory 
 
@@ -40,47 +40,47 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na web [Azure Portal](https://portal.azure.com). 
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**.
 1. Vyberte **integrace** a pak vyberte **Data Factory**. 
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
+1. Na stránce **vytvořit data Factory** na kartě **základy** vyberte **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
+1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
+
+    a. Z rozevíracího seznamu vyberte existující skupinu prostředků.
+
+    b. Vyberte **vytvořit novou** a zadejte název nové skupiny prostředků.
+    
+    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
+
+1. V poli **oblast** vyberte umístění pro datovou továrnu.
+
+   Seznam obsahuje jenom umístění podporovaná službou Data Factory, do kterých se budou ukládat vaše metadata Azure Data Factory. Přidružená úložiště dat (například Azure Storage a Azure SQL Database) a výpočetní prostředí (například Azure HDInsight), které Data Factory používá, mohou běžet v jiných oblastech.
  
+1. Jako **název** zadejte **ADFTutorialDataFactory**.
    Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na **&lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
-1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
-1. Pro položku **Skupina prostředků** proveďte jeden z následujících kroků:
-     
-   - Vyberte **Použít existující** a ze seznamu vyberte existující skupinu prostředků. 
-   - Vyberte **vytvořit novou** a zadejte název skupiny prostředků.   
-         
-   Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
+
 1. V poli **Verze** vyberte **V2**.
-1. V poli **Umístění** vyberte umístění pro datovou továrnu.
 
-   Seznam obsahuje jenom umístění podporovaná službou Data Factory, do kterých se budou ukládat vaše metadata Azure Data Factory. Přidružená úložiště dat (například Azure Storage a Azure SQL Database) a výpočetní prostředí (například Azure HDInsight), které Data Factory používá, mohou běžet v jiných oblastech.
+1. Vyberte **Další: Konfigurace Git** a pak zrušte zaškrtnutí políčka **Konfigurovat Git později** .
 
-1. Vyberte **Další: Konfigurace Gitu** a pak vyberte **Konfigurovat Git později**.
+1. Vyberte možnost **zkontrolovat + vytvořit** a po ověření platnosti vyberte **vytvořit** . Po dokončení vytváření vyberte **Přejít k prostředku** a přejděte na stránku **Data Factory** . 
 
-1. Vyberte **Vytvořit**. Po dokončení vytváření vyberte **Přejít k prostředku** a přejděte na stránku **Data Factory** . 
-
-1. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory.
+1. Výběrem dlaždice **autora & monitorování** spustíte aplikaci Azure Data Factory uživatelského rozhraní (UI) na samostatné kartě prohlížeče.
    
    ![Domovská stránka datové továrny s dlaždici Author & Monitor (Vytvořit a sledovat)](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > Pokud vidíte, že webový prohlížeč je zablokovaný při autorizaci, zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** . Nebo ho nechejte vybraný, vytvořte výjimku pro **Login.microsoftonline.com** a pak zkuste aplikaci znovu otevřít.
    
-1. Na stránce **Začínáme** přepněte na levém panelu na kartu **Vytvořit**. 
-
-    ![Stránka Začínáme](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>Vytvoření propojené služby
 V tomto postupu vytvoříte propojenou službu, která propojí váš Azure Storage účet s datovou továrnou. Tato propojená služba má informace o připojení, které služba Data Factory používá pro připojení za běhu.
 
-1. V levém podokně otevřete [kartu spravovat](./author-management-hub.md) .
+1. Na stránce Azure Data Factory uživatelské rozhraní otevřete v levém podokně kartu [**Spravovat**](./author-management-hub.md) .
 
 1. Na stránce propojené služby vyberte **+ Nová** a vytvořte novou propojenou službu.
 
@@ -109,10 +109,13 @@ Vstupní datová sada představuje zdrojová data ve vstupní složce. V definic
 Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů blob (**adftutorial**), složku (**output**) a soubor, do kterého se data kopírují. Ke každému spuštění kanálu je přiřazené jedinečné ID. Přístup k tomuto ID můžete získat pomocí systémové proměnné **RunId**. Název výstupního souboru se dynamicky vyhodnocuje na základě ID spuštění kanálu.   
 
 V nastavení propojené služby jste zadali Azure Storage účet, který obsahuje zdrojová data. V nastavení zdrojové datové sady určíte, kde přesně se data nacházejí (kontejner objektů blob, složka a soubor). V nastavení datové sady jímky určíte, kam se data kopírují (kontejner objektů blob, složka a soubor). 
- 
+
+1. V levém podokně vyberte kartu **Autor** .
+
 1. Vyberte **+** tlačítko (plus) a pak vyberte **datová sada**.
 
    ![Nabídka pro vytvoření datové sady](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. Na stránce **Nová datová sada** vyberte **Azure Blob Storage** a pak vyberte **pokračovat**. 
 
 1. Na stránce **Vybrat formát** zvolte typ formátu dat a pak vyberte **pokračovat**. V takovém případě vyberte **binární soubor** při kopírování souborů bez analýzy obsahu.
@@ -163,7 +166,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 
 1. V nastavení aktivity kopírování přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **OutputDataset**.
 
-1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte **>>** tlačítko (šipka doprava). 
+1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte v pravém horním rohu tlačítko ověření. 
 
    ![Ověření kanálu](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ V tomto postupu nasadíte entity (propojené služby, datové sady a kanály) do
 
     ![Publikovat vše](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. Pokud chcete kanál aktivovat ručně, vyberte **Přidat aktivační událost** na panelu nástrojů kanálu a potom vyberte **aktivovat nyní**. Na stránce **spuštění kanálu** vyberte **Dokončit**.
+1. Pokud chcete kanál aktivovat ručně, vyberte **Přidat aktivační událost** na panelu nástrojů kanálu a potom vyberte **aktivovat nyní**. Na stránce **spuštění kanálu** vyberte **OK**.
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 

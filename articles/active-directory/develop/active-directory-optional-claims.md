@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108140"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509559"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -124,7 +124,8 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 
@@ -132,7 +133,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 
 [![Konfigurace volitelných deklarací v uživatelském rozhraní](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. V části **Správa** vyberte **Konfigurace tokenu**.
+1. V části **Spravovat** vyberte **Konfigurace tokenu**.
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Vyberte typ tokenu, který chcete konfigurovat.
 1. Vyberte volitelné deklarace, které se mají přidat.
@@ -225,19 +226,16 @@ V rámci tokenů SAML budou tyto deklarace vygenerovány s následujícím form�
 
 ## <a name="configuring-groups-optional-claims"></a>Konfigurace volitelných deklarací skupin
 
-   > [!NOTE]
-   > Možnost generovat názvy skupin uživatelů a skupin synchronizovaných z místního prostředí je Public Preview.
-
 Tato část se zabývá možnostmi konfigurace v části volitelné deklarace identity pro změnu atributů skupin používaných v deklaracích skupin z výchozí skupiny objectID na atributy synchronizované z místní služby Windows Active Directory. Můžete nakonfigurovat volitelné deklarace identity pro vaši aplikaci prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
 > [!IMPORTANT]
-> Další podrobnosti včetně důležitých aspektů pro veřejnou verzi Preview deklarací identity skupin z místních atributů najdete v tématu [Konfigurace deklarací identity skupin pro aplikace s Azure AD](../hybrid/how-to-connect-fed-group-claims.md).
+> Další podrobnosti včetně důležitých aspektů pro deklarace skupin z místních atributů najdete v tématu [Konfigurace deklarací identity skupin pro aplikace s Azure AD](../hybrid/how-to-connect-fed-group-claims.md).
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
-1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 1. V části **Spravovat** vyberte **Konfigurace tokenu**.
@@ -250,7 +248,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
-1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 1. V části **Spravovat** vyberte možnost **manifest**.
 1. Přidejte následující položku pomocí editoru manifestu:
@@ -262,7 +260,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Příklad:
+   Například:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -382,7 +380,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
-1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. Vyhledejte a vyberte **Azure Active Directory**.
 
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 
@@ -404,7 +402,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
-1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.
 1. V části **Spravovat** vyberte **manifest** a otevřete tak vložený editor manifestu.
 1. Manifest můžete přímo upravit pomocí tohoto editoru. Manifest následuje po schématu pro [entitu aplikace](./reference-app-manifest.md)a po uložení automaticky zformátuje manifest. Do vlastnosti budou přidány nové prvky `OptionalClaims` .

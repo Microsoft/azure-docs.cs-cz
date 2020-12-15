@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973197"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507672"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -72,7 +72,7 @@ Ujistěte se, že jsou splněné následující požadavky.
      | **8080** (volitelné) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do souborů **\* . msappproxy.NET** a **\* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud vaše brána firewall nebo proxy server umožňuje přidat záznamy DNS do povolených, přidejte připojení do souborů **\* . msappproxy.NET** a **\* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaše agenti ověřování potřebují pro počáteční registraci přístup k **Login.Windows.NET** a **Login.microsoftonline.com** . Otevřete taky bránu firewall pro tyto adresy URL.
     - Pro ověření certifikátu Odblokujte následující adresy URL: **crl3.DigiCert.com:80**, **crl4.DigiCert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-CA2-2009.OCSP.d-Trust.NET:80**, **CRL.Microsoft.com:80**, **oneocsp.Microsoft.com:80** a **OCSP.msocsp.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 

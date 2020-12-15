@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546896"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507570"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -87,7 +87,7 @@ V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i** cíl (jazyk
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurační soubory v úložišti dat
 
-Chování rozhraní příkazového řádku pro rozpoznávání řeči se může spoléhat na nastavení v konfiguračních souborech, které můžete v rámci volání rozhraní příkazového řádku CLI využít symbol @.
+Chování rozhraní příkazového řádku pro rozpoznávání řeči se může spoléhat na nastavení v konfiguračních souborech, které můžete v rámci volání rozhraní příkazového řádku CLI použít \@ symbol.
 Funkce Speech CLI uloží nové nastavení do nového `./spx/data` podadresáře, který vytvoří v aktuálním pracovním adresáři.
 Při hledání hodnoty konfigurace vyhledá funkce rozpoznávání řeči v aktuálním pracovním adresáři, pak v úložišti dat v `./spx/data` a v dalších dataobchodech, včetně konečného úložiště dat jen pro čtení v `spx` binárním souboru.
 Dřív jste používali úložiště dat `@key` a uložili `@region` hodnoty a, takže jste je nemuseli zadávat při každém volání příkazového řádku.

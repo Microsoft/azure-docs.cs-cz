@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996198"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507808"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -75,24 +75,28 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
 ### <a name="register-your-application"></a>Registrace aplikace
 
-1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
-2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a klikněte na **+ Nová registrace**.
-3. Zadejte **název** vaší aplikace a pak **bez** nastavení identifikátoru URI přesměrování klikněte na **zaregistrovat**.
-4. V části **Spravovat** v podokně, které se zobrazí, vyberte **ověřování**  >  **+ Přidat platformu**  >  **Android**. (V horní části okna možná budete muset vybrat možnost "přepnout na nové prostředí", abyste viděli tuto část.)
-5. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je tato hodnota `com.azuresamples.msalandroidapp` .
-6. V části **Signature hash** na stránce **Konfigurace aplikace pro Android** klikněte na **vygenerovat hodnotu hash signatury pro vývoj.** a zkopírujte příkaz nástroje nástroje, který se má použít pro vaši platformu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. Vyberte **Zaregistrovat**.
+1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**  >  **Android**.
+1. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je tato hodnota `com.azuresamples.msalandroidapp` .
+1. V části **hodnota hash podpisu** na stránce **Konfigurace aplikace pro Android** vyberte možnost **vygenerovat hodnotu hash signatury pro vývoj.** a zkopírujte příkaz nástroje nástroje, který se má použít pro vaši platformu.
 
    > [!Note]
    > KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) .
 
-7. Zadejte **hodnotu hash podpisu** generovanou nástrojem.
-8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Hotovo**.
+1. Zadejte **hodnotu hash podpisu** generovanou nástrojem.
+1. Vyberte **Konfigurovat** a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  
+1. Vyberte **Hotovo**.
 
 ### <a name="configure-your-application"></a>Konfigurace aplikace
 
 1. V podokně projektu Android Studio přejděte na **app\src\main\res**.
-2. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový**  >  **adresář**. `raw`Jako název nového adresáře zadejte a klikněte na **OK**.
-3. V části **App**  >  **Src**  >  **Main**  >  **res**  >  **raw** vytvořte nový soubor JSON s názvem `auth_config_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili.
+1. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový**  >  **adresář**. `raw`Jako název nového adresáře zadejte a klikněte na **OK**.
+1. V části **App**  >  **Src**  >  **Main**  >    >  **raw** vytvořte nový soubor JSON s názvem `auth_config_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili.
 
     Pod identifikátorem URI přesměrování vložte:
     ```json

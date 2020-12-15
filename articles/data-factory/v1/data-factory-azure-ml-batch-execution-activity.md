@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496515"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508468"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496515"
 ## <a name="introduction"></a>Úvod
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí strojového učení v Data Factory](../transform-data-using-machine-learning.md).
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasický)
 [Azure Machine Learning Studio (Classic)](https://azure.microsoft.com/documentation/services/machine-learning/) umožňuje sestavovat, testovat a nasazovat řešení prediktivní analýzy. Z hlediska vysoké úrovně je to provedeno ve třech krocích:
@@ -86,7 +85,7 @@ V tomto scénáři zpřístupňuje webová služba Studio (Classic) předpovědi
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ V tomto scénáři zpřístupňuje webová služba Studio (Classic) předpovědi
   }
 }
 ```
+
 > [!NOTE]
 > Jako parametry webové služby lze předat pouze vstupy a výstupy aktivity AzureMLBatchExecution. Například ve výše uvedeném fragmentu kódu JSON je DecisionTreeInputBlob jako vstup aktivity AzureMLBatchExecution, která se předává jako vstup do webové služby prostřednictvím parametru webServiceInput.
 >
@@ -139,115 +139,119 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
 
 1. Vytvořte **propojenou službu** pro vaši **Azure Storage**. Pokud jsou vstupní a výstupní soubory v různých účtech úložiště, potřebujete dvě propojené služby. Tady je příklad JSON:
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. Vytvořte **vstupní** Azure Data Factory **datovou sadu**. Na rozdíl od některých jiných Data Factory datových sad musí tyto datové sady obsahovat hodnoty **FolderPath** i **filename** . Pomocí dělení můžete způsobit, že každé spuštění dávky (každý datový řez) zpracuje nebo vytváří jedinečné vstupní a výstupní soubory. Možná budete muset zahrnout některé nadřazené aktivity pro transformaci vstupu do formátu souboru CSV a umístit ho do účtu úložiště pro každý řez. V takovém případě nebudete zahrnovat nastavení **externích** a **externalData** , která jsou uvedená v následujícím příkladu, a váš DecisionTreeInputBlob by byl výstupní datovou sadou jiné aktivity.
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Příklad:
+   Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Například:
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Chyba při čtení řetězce. Neočekávaný token: metodě StartObject. Cesta ' ', řádek 1, pozice 1**.
+   Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Chyba při čtení řetězce. Neočekávaný token: metodě StartObject. Cesta ' ', řádek 1, pozice 1**.
+
 3. Vytvořte **výstupní** Azure Data Factory **datovou sadu**. Tento příklad používá dělení k vytvoření jedinečné výstupní cesty pro každé spuštění řezu. Bez dělení by aktivita mohla soubor přepsat.
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. Vytvořte **propojenou službu** typu: **AzureMLLinkedService**, která poskytuje adresu URL pro spuštění klíče rozhraní API a dávky modelu.
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. Nakonec vytvořte kanál obsahující aktivitu **AzureMLBatchExecution** . Kanál za běhu provede následující kroky:
 
    1. Získá umístění vstupního souboru ze vstupních datových sad.
@@ -259,45 +263,45 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ Při použití modulů pro čtení a zápis je vhodné použít parametr webové
 
 Pojďme se podívat na scénář použití parametrů webové služby. Máte nasazenou webovou službu studia (Classic), která používá modul čtenáře ke čtení dat z jednoho zdroje dat podporovaného nástrojem Studio (Classic) (například: Azure SQL Database). Po provedení dávky se výsledky zapisují pomocí modulu zapisovače (Azure SQL Database).  V experimentech nejsou definovány vstupy a výstupy webové služby. V takovém případě doporučujeme nakonfigurovat parametry relevantní webové služby pro moduly pro čtení a zápis. Tato konfigurace umožňuje, aby byly moduly pro čtení a zápis nastaveny při použití aktivity AzureMLBatchExecution. Parametry webové služby v části **globalParameters** v kódu JSON aktivity určíte následujícím způsobem.
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Pojďme se podívat na scénář použití parametrů webové služby. Máte nas
 
 V rámci předávání hodnot pro parametry webové služby můžete také použít [funkci Data Factory Functions](data-factory-functions-variables.md) , jak je znázorněno v následujícím příkladu:
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

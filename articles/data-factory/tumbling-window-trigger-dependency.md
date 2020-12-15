@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421775"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508794"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Ukázku, jak vytvořit závislé kanály v Azure Data Factory pomocí triggeru b
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Vytvoření závislosti v uživatelském rozhraní Data Factory
 
-Pokud chcete vytvořit závislost na triggeru, vyberte **trigger > upřesnit > nový**a potom zvolte Trigger, který bude záviset na odpovídajícím posunu a velikosti. Vyberte **Dokončit** a publikujte změny objektu pro vytváření dat, aby se závislosti projevily.
+Pokud chcete vytvořit závislost na triggeru, vyberte **trigger > upřesnit > nový** a potom zvolte Trigger, který bude záviset na odpovídajícím posunu a velikosti. Vyberte **Dokončit** a publikujte změny objektu pro vytváření dat, aby se závislosti projevily.
 
 ![Vytvoření závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Vytvoření závislosti")
 
@@ -79,11 +79,11 @@ Aktivační událost bubnového okna se závislostí má následující vlastnos
 
 Následující tabulka uvádí seznam atributů potřebných k definování závislosti bubnu okna.
 
-| **Název vlastnosti** | **Popis**  | **Typ** | **Požadováno** |
+| **Název vlastnosti** | **Popis**  | **Typ** | **Povinné** |
 |---|---|---|---|
-| typ  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Yes |
+| typ  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
 | posun | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | No  |
+| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
 
 > [!NOTE]
 > Aktivační událost bubnového okna může záviset na maximálně pět dalších triggerů.

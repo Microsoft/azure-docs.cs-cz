@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347826"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507638"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -34,6 +34,14 @@ Mezi tyto změny patří:
 -  Změnil se název konfiguračního souboru z `ApplicationInsights.json` na `applicationinsights.json` .
 -  `instrumentationSettings`Uzel již není k dispozici. Veškerý obsah v nástroji `instrumentationSettings` je přesunut na kořenovou úroveň. 
 -  Konfigurační uzly jako `sampling` , `jmxMetrics` , `instrumentation` a `heartbeat` jsou přesunuty z `preview` úrovně na kořenovou úroveň.
+
+## <a name="some-logging-is-not-auto-collected"></a>Některé protokolování není automaticky shromážděno
+
+Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou hodnotu nakonfigurovanou rozhraní protokolování a druhá také splňuje Application Insights nakonfigurovanou prahovou hodnotu.
+
+Nejlepším způsobem, jak zjistit, jestli konkrétní příkaz protokolování splňuje prahovou hodnotu nakonfigurovaných protokolovacích rozhraní, je potvrzení, že se zobrazuje v normálním aplikačním protokolu (např. soubor nebo konzola).
+
+Další podrobnosti najdete v tématu [Automatická shromážděná konfigurace protokolování](./java-standalone-config.md#auto-collected-logging) .
 
 ## <a name="import-ssl-certificates"></a>Importovat certifikáty SSL
 

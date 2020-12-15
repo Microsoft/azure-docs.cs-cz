@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498536"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507434"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
 Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
@@ -39,10 +39,10 @@ Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupn
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název `Filter` aktivity | Řetězec | Yes
-typ | Musí být nastavené na **Filter**. | Řetězec | Yes
-pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Yes
-položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Yes
+name | Název `Filter` aktivity | Řetězec | Ano
+typ | Musí být nastavené na **Filter**. | Řetězec | Ano
+pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
+položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
 
 ## <a name="example"></a>Příklad
 

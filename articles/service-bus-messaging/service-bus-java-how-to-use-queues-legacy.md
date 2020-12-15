@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d24645ada2ef4ac12101aa747aacc1bbf90f123e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452605"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509253"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 
@@ -18,10 +18,10 @@ ms.locfileid: "96452605"
 V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Azure Service Bus. 
 
 > [!WARNING]
->  V tomto rychlém startu se používají staré balíčky Azure-ServiceBus. Rychlý Start, který používá nejnovější balíček Azure-Messaging-ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-queues.md). 
+>  V tomto rychlém startu se používají staré `azure-servicebus` balíčky. Rychlý Start, který používá nejnovější `azure-messaging-servicebus` balíček, najdete v tématu [posílání a přijímání `azure-messaging-servicebus` zpráv pomocí ](service-bus-java-how-to-use-queues.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 
@@ -136,7 +136,7 @@ Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomo
     void registerReceiver(QueueClient queueClient) throws Exception {
         // register the RegisterMessageHandler callback
         queueClient.registerMessageHandler(new IMessageHandler() {
-        // callback invoked when the message handler loop has obtained a message
+            // callback invoked when the message handler loop has obtained a message
             public CompletableFuture<Void> onMessageAsync(IMessage message) {
             // receives message is passed to callback
                 if (message.getLabel() != null &&
@@ -183,8 +183,7 @@ V případě, že dojde k chybě aplikace po zpracování zprávy, ale před vyd
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-Ukázky Java můžete najít na GitHubu v [úložišti Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
-
+Ukázky Java můžete najít na GitHubu v [ `azure-service-bus` úložišti](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

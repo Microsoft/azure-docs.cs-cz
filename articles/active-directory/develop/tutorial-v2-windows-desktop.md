@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518766"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507689"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -104,18 +104,17 @@ Aplikaci můžete rychle zaregistrovat pomocí následujícího postupu:
 ### <a name="option-2-advanced-mode"></a>Možnost 2: rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-1. Vyberte **Nová registrace**.
-   - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
-   - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
-   - Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-   1. V části **identifikátory URI pro přesměrování** v seznamu identifikátorů URI pro přesměrování:
-   1. Ve sloupci **typ** vyberte **veřejný klient/nativní (mobilní & Desktop)**.
-   1. Do sloupce **URI pro přesměrování** zadejte `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `Win-App-calling-MsGraph` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské rozhraní) a osobní účty Microsoft (např. Skype, Xbox)**.
 1. Vyberte **Zaregistrovat**.
+1. V části **Spravovat** vyberte **ověřování**  >  **Přidat platformu**.
+1. Vyberte **mobilní a desktopové aplikace**.
+1. V části **identifikátory URI pro přesměrování** vyberte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Vyberte **Konfigurovat**.
 1. Do sady Visual Studio otevřete soubor *App.XAML.cs* a potom `Enter_the_Application_Id_here` v následujícím fragmentu kódu nahraďte ID aplikace, které jste právě zaregistrovali a zkopírovali.
 
     ```csharp

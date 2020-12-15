@@ -1,14 +1,14 @@
 ---
 title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461523"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509270"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
@@ -40,7 +40,25 @@ Když určíte, které zásady se mají nasadit, můžete [je nasadit na škálo
 
 ## <a name="analyze-the-gathered-data"></a>Analyzovat shromážděná data
 
-Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, které jste vytvořili v každém tenantovi zákazníka. Pokud chcete získat přehledy pro všechny spravované zákazníky, můžete pomocí nástrojů, jako jsou [Azure monitor sešity](../../azure-monitor/platform/workbooks-overview.md) , shromažďovat a analyzovat informace z více zdrojů dat. 
+Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, které jste vytvořili v každém tenantovi zákazníka. Pokud chcete získat přehledy pro všechny spravované zákazníky, můžete pomocí nástrojů, jako jsou [Azure monitor sešity](../../azure-monitor/platform/workbooks-overview.md) , shromažďovat a analyzovat informace z více zdrojů dat.
+
+## <a name="view-alerts-across-customers"></a>Zobrazit výstrahy mezi zákazníky
+
+Můžete zobrazit [výstrahy](../../azure-monitor/platform/alerts-overview.md) pro delegovaná předplatná v klientech zákazníků, které spravujete.
+
+Pokud chcete výstrahy aktualizovat automaticky napříč více zákazníky, použijte dotaz na [Azure Resource Graph](../../governance/resource-graph/overview.md) k filtrování výstrah. Dotaz můžete připnout na řídicí panel a vybrat všechny příslušné zákazníky a odběry.
+
+Následující vzorový dotaz zobrazí výstrahy o závažnosti 0 a 1, přičemž aktualizace proběhne každých 60 minut.
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456906"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508394"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Aktivita uložené procedury SQL Server
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -305,13 +305,13 @@ Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| name | Název aktivity |Yes |
-| description |Text popisující, k čemu se aktivita používá |No |
-| typ | Musí být nastavené na: **SqlServerStoredProcedure** | Yes |
-| vztahují | Nepovinný parametr. Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. |No |
-| činnosti | Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu. Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). <br/><br/>Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure synapse Analytics nebo databáze SQL Server, ve které chcete uloženou proceduru spustit. <br/><br/>Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. <br/><br/>V některých případech může být výstupní datovou sadou **fiktivní datová** sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury. |Yes |
-| storedProcedureName |Zadejte název uložené procedury v Azure SQL Database, Azure synapse Analytics nebo SQL Server reprezentované propojenou službou, kterou používá výstupní tabulka. |Yes |
-| storedProcedureParameters |Zadejte hodnoty pro parametry uložené procedury. Pokud pro parametr potřebujete předat hodnotu null, použijte syntaxi: "param1": null (bez velkých malých písmen). V následující ukázce se dozvíte, jak tuto vlastnost použít. |No |
+| name | Název aktivity |Ano |
+| Popis |Text popisující, k čemu se aktivita používá |Ne |
+| typ | Musí být nastavené na: **SqlServerStoredProcedure** | Ano |
+| vztahují | Nepovinný parametr. Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. |Ne |
+| činnosti | Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu. Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). <br/><br/>Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure synapse Analytics nebo databáze SQL Server, ve které chcete uloženou proceduru spustit. <br/><br/>Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. <br/><br/>V některých případech může být výstupní datovou sadou **fiktivní datová** sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury. |Ano |
+| storedProcedureName |Zadejte název uložené procedury v Azure SQL Database, Azure synapse Analytics nebo SQL Server reprezentované propojenou službou, kterou používá výstupní tabulka. |Ano |
+| storedProcedureParameters |Zadejte hodnoty pro parametry uložené procedury. Pokud pro parametr potřebujete předat hodnotu null, použijte syntaxi: "param1": null (bez velkých malých písmen). V následující ukázce se dozvíte, jak tuto vlastnost použít. |Ne |
 
 ## <a name="passing-a-static-value"></a>Předání statické hodnoty
 Teď zvažte přidání dalšího sloupce s názvem "scénář" v tabulce, která obsahuje statickou hodnotu s názvem "dokument Sample".
