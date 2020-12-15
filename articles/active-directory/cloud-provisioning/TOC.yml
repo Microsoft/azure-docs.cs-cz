@@ -48,6 +48,8 @@
       items:
         - name: Automatický upgrade agentů
           href: how-to-automatic-upgrade.md
+        - name: Možnosti registru agentů
+          href: how-to-manage-registry-options.md
     - name: Vývoj
       items:
         - name: Transformace

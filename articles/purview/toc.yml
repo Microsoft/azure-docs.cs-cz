@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: Přehledy dat
         href: concept-insights.md
+      - name: Podporované prohlížeče
+        href: supported-browsers.md
       - name: Nejčastější dotazy
         href: frequently-asked-questions.md
   - name: Návody
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Správa šablon termínů
             href: how-to-manage-term-templates.md
+          - name: Prostředky hromadné úpravy pro přiřazení termínů glosáře
+            href: how-to-bulk-edit-assets.md
       - name: Klasifikace
         items:
           - name: Vytváření vlastních klasifikací a klasifikačních pravidel
@@ -132,7 +136,7 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Rodokmen služby Azure Data Share
             href: how-to-link-azure-data-share.md
-      - name: Monitor
+      - name: Monitorování
         items:
           - name: Monitorování pomocí služby Azure Monitor
             href: how-to-monitor-with-azure-monitor.md

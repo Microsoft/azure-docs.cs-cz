@@ -251,7 +251,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Functions
+            - name: Funkce
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: Skupiny
               href: platform/workbooks-groups.md
+            - name: Používání vlastního úložiště
+              href: platform/workbooks-bring-your-own-storage.md
             - name: Transformace dat JSON s využitím JSONPath
               href: platform/workbooks-jsonpath.md
             - name: Přesun sešitů do jiné oblasti

@@ -256,9 +256,11 @@
       items:
         - name: Sestavení a typy dotazů
           href: search-query-overview.md
-        - name: Vytvoření jednoduchého dotazu
+        - name: Vytvoření základního dotazu
+          href: search-query-create.md
+        - name: Použití jednoduché syntaxe (příklady)
           href: search-query-simple-examples.md
-        - name: Použití úplné syntaxe Lucene
+        - name: Použití úplné syntaxe Lucene (příklady)
           href: search-query-lucene-examples.md
         - name: Částečné výrazy a speciální znaky
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Ukázka souborů JFK
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: Ukázka úloh NYC
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Školení
       items:
         - name: Úvod (Microsoft Learn)

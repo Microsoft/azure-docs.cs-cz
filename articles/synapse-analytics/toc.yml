@@ -564,7 +564,7 @@
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Správa knihoven
           href: ./spark/apache-spark-azure-portal-add-libraries.md
-        - name: Použití poznámkových bloků
+        - name: Použití poznámkových bloků a nástrojů IDE
           items:
             - name: Správa poznámkových bloků
               href: ./spark/apache-spark-development-using-notebooks.md
