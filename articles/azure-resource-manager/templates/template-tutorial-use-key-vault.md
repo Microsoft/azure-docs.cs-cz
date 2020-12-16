@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929312"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584081"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace služby Azure Key Vault v nasazení šablony ARM
 
@@ -43,6 +43,7 @@ K dokončení tohoto článku potřebujete:
     ```console
     openssl rand -base64 32
     ```
+
     Ověřte, že vygenerovaná hesla splňují požadavky na heslo k virtuálnímu počítači. Každá služba Azure má specifické požadavky na hesla. Požadavky na heslo k virtuálnímu počítači najdete v tématu [Jaké jsou požadavky na heslo při vytváření virtuálního počítače](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Příprava trezoru klíčů
@@ -53,7 +54,7 @@ V této části vytvoříte Trezor klíčů a do něj přidáte tajný klíč, a
 * Přidá tajný klíč do trezoru klíčů. Tajný kód uchovává heslo správce virtuálního počítače.
 
 > [!NOTE]
-> Jako uživatel, který nasazuje šablonu virtuálního počítače, pokud nejste vlastníkem nebo přispěvatelem trezoru klíčů, vlastník nebo přispěvatel vám musí udělit přístup ke službě *Microsoft. webkey trezor/trezory/* k oprávněním k nasazení/akci pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
+> V případě, že uživatel, který šablonu virtuálního počítače nasazuje, nejste vlastníkem nebo přispěvatelem trezoru klíčů, musí vám vlastník nebo přispěvatel udělit přístup k `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./key-vault-parameter.md).
 
 Chcete-li spustit následující skript Azure PowerShell, vyberte možnost **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Výchozí název tajného klíče je **vmAdminPassword**. Je pevně zakódované v šabloně.
 > * Pokud chcete šabloně povolit načtení tajného kódu, musíte povolit zásady přístupu **s názvem povolení přístupu k Azure Resource Manager pro nasazení šablony** pro Trezor klíčů. Tato zásada je v šabloně povolená. Další informace o zásadách přístupu najdete v tématu [nasazení trezorů klíčů a tajných](./key-vault-parameter.md#deploy-key-vaults-and-secrets)kódů.
 
-Šablona obsahuje jednu výstupní hodnotu s názvem *keyVaultId*. Pomocí tohoto ID společně s tajným názvem načtete tajnou hodnotu později v tomto kurzu. Formát ID prostředku je:
+Šablona obsahuje jednu výstupní hodnotu s názvem `keyVaultId` . Pomocí tohoto ID společně s tajným názvem načtete tajnou hodnotu později v tomto kurzu. Formát ID prostředku je:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 Když zkopírujete a vložíte ID, může být rozděleno na více řádků. Sloučí řádky a ořízne nadbytečné mezery.
 
-Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou *$keyVaultName*, která je definována v předchozím skriptu prostředí PowerShell.
+Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou `$keyVaultName` , která je definována v předchozím skriptu prostředí PowerShell.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
     ```
 
     > [!IMPORTANT]
-    > Nahraďte hodnotu pro **ID** ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu. Tajný kód je pevně zakódované jako **vmAdminPassword**.  Viz [Příprava trezoru klíčů](#prepare-a-key-vault).
+    > Nahraďte hodnotu pro `id` ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu. `secretName`Je pevně zakódované jako **vmAdminPassword**.  Viz [Příprava trezoru klíčů](#prepare-a-key-vault).
 
     ![Integrace trezoru klíčů a Správce prostředků šablonou souborů parametrů nasazení virtuálního počítače](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Aktualizujte následující hodnoty:
 
-    * **adminUsername**: název účtu správce virtuálního počítače.
-    * **dnsLabelPrefix**: pojmenujte hodnotu dnsLabelPrefix.
+    * `adminUsername`: Název účtu správce virtuálního počítače.
+    * `dnsLabelPrefix`: Pojmenujte `dnsLabelPrefix` hodnotu.
 
     Příklady názvů naleznete na předchozím obrázku.
 
@@ -167,7 +168,7 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Do Cloud Shell nahrajte jak *azuredeploy.js* , tak *azuredeploy.parameters.js* . Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Do Cloud Shell nahrajte jak *azuredeploy.js* , tak *azuredeploy.parameters.js* . Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 

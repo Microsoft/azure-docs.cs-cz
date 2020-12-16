@@ -6,18 +6,18 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a44852fb2f491dd949b58217eca3e4f3e392cf17
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931414"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584132"
 ---
 # <a name="tutorial-utilize-the-arm-template-reference"></a>Kurz: Využijte odkaz na šablonu ARM.
 
 Naučte se najít informace o schématu šablony a použít je k vytváření Azure Resource Manager šablon (šablony ARM).
 
-V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace šablon můžete šablonu přizpůsobit.
+V tomto kurzu použijete základní šablonu ze šablon Azure pro rychlý Start. Pomocí referenční dokumentace šablon můžete šablonu přizpůsobit.
 
 ![Odkaz na šablonu Správce prostředků nasazení účtu úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
 
@@ -42,7 +42,7 @@ K dokončení tohoto článku potřebujete:
 
 [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -50,26 +50,26 @@ K dokončení tohoto článku potřebujete:
     ```
 
 1. Výběrem **Open** (Otevřít) soubor otevřete.
-1. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
+1. Vyberte **soubor**  >  **Uložit jako** a uložte soubor jako _azuredeploy.js_ do svého místního počítače.
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
 
-1. V nástroji VS Code sbalte šablony na kořenovou úroveň. Vidíte nejjednodušší strukturu s následující elementy:
+1. Z Visual Studio Code sbalte šablonu na kořenovou úroveň. Vidíte nejjednodušší strukturu s následující elementy:
 
     ![Nejjednodušší struktura šablony Resource Manageru](./media/template-tutorial-use-template-reference/resource-manager-template-simplest-structure.png)
 
-    * **$schema**: zadejte umístění souboru schématu JSON, který popisuje verzi jazyka šablony.
-    * **contentVersion**: pro tento element můžete zvolit libovolnou hodnotu, která dokumentuje významné změny v šabloně.
-    * **parameters**: přizpůsobte nasazení prostředků zadáním hodnot, které se použijí při provádění nasazení.
-    * **variables**: určete hodnoty sloužící v šabloně jako fragmenty formátu JSON, aby se zjednodušily výrazy jazyka šablony.
-    * **resources**: určete typy prostředků nasazovaných nebo aktualizovaných ve skupině prostředků.
-    * **outputs**: uvádí hodnoty vrácené po nasazení.
+    * `$schema`: zadejte umístění souboru schématu JSON, který popisuje verzi jazyka šablony.
+    * `contentVersion`: zadejte libovolnou hodnotu pro tento element, aby dokumentoval významné změny v šabloně.
+    * `parameters`: zadejte hodnoty, které jsou k dispozici při spuštění nasazení za účelem přizpůsobení nasazení prostředků.
+    * `variables`: zadejte hodnoty, které se použijí jako fragmenty JSON v šabloně pro zjednodušení výrazů jazyka šablony.
+    * `resources`: Určete typy prostředků, které se nasazují nebo aktualizují ve skupině prostředků.
+    * `outputs`: zadejte hodnoty, které se vrátí po nasazení.
 
-1. Rozbalte element **resources**. Obsahuje definici prostředku `Microsoft.Storage/storageAccounts`. Název SKU používá hodnotu parametru.  Parametr se nazývá **storageAccountType**.
+1. Rozbalte `resources` . Je `Microsoft.Storage/storageAccounts` definován prostředek. Název SKU používá hodnotu parametru. Je volán parametr `storageAccountType` .
 
     ![Definice účtu úložiště v šabloně Resource Manageru](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. Rozbalením **parametrů** zjistíte, jak je definována **storageAccountType** . Parametr má čtyři povolené hodnoty. Zjistíte ostatní povolené hodnoty a pak opravíte definici parametru.
+1. Rozbalením `parameters` zjistíte, jak `storageAccountType` je definováno. Parametr má čtyři povolené hodnoty. Zjistíte ostatní povolené hodnoty a pak opravíte definici parametru.
 
     ![Skladové jednotky prostředků účtu úložiště Správce prostředků šablony](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
@@ -88,9 +88,9 @@ K dokončení tohoto článku potřebujete:
 
     ![Verze typů účtů úložiště odkazů na šablonu Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Vyberte nejnovější verzi typu prostředku **storageAccount** . Nejnovější verze je **2019-06-01** , pokud je tento článek napsán. Ujistěte se, že tato verze odpovídá verzi používané pro prostředek účtu úložiště ve vaší šabloně. Pokud aktualizujete verzi rozhraní API, ověřte, zda definice prostředků odpovídá odkazu na šablonu.
+1. Vyberte nejnovější verzi `storageAccount` typu prostředku. Nejnovější verze je **2019-06-01** , pokud je tento článek napsán. Ujistěte se, že tato verze odpovídá verzi používané pro prostředek účtu úložiště ve vaší šabloně. Pokud aktualizujete verzi rozhraní API, ověřte, zda definice prostředků odpovídá odkazu na šablonu.
 
-1. Tato stránka obsahuje podrobné informace o typu prostředku storageAccount.  Například obsahuje seznam povolených hodnot pro objekt **SKU** . Existuje více SKU, než je uvedeno v šabloně pro rychlý Start, kterou jste otevřeli dříve. Šablonu pro rychlé zprovoznění můžete přizpůsobit tak, aby zahrnovala všechny dostupné typy úložišť.
+1. Tato stránka obsahuje podrobné informace o typu prostředku storageAccount. Například obsahuje seznam povolených hodnot pro **objekt SKU**. Existuje více SKU, než je uvedeno v šabloně pro rychlý Start, kterou jste otevřeli dříve. Šablonu pro rychlé zprovoznění můžete přizpůsobit tak, aby zahrnovala všechny dostupné typy úložišť.
 
     ![Správce prostředků referenčních skladů pro šablonu úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
@@ -108,9 +108,11 @@ Z Visual Studio Code přidejte další typy účtů úložiště, jak je znázor
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Z Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
+
+   Když nasadíte šablonu, zadejte `storageAccountType` parametr s nově přidanou hodnotou, například **Standard_RAGRS**. Nasazení se nezdaří, pokud jste použili původní šablonu pro rychlé spuštění, protože **Standard_RAGRS** nepovoluje hodnotu.
 
     # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -137,16 +139,14 @@ Z Visual Studio Code přidejte další typy účtů úložiště, jak je znázor
 
     ---
 
- Když nasadíte šablonu, zadejte parametr **storageAccountType** s nově přidanou hodnotou, například **Standard_RAGRS**. Nasazení se nezdaří, pokud použijete původní šablonu pro rychlé spuštění, protože **Standard_RAGRS** nebyla povolená hodnota.
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
 
 1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
-2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
-3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
+1. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
+1. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
+1. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 

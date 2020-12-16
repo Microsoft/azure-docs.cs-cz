@@ -1,6 +1,6 @@
 ---
 title: Instalace agenta zřizování cloudů Azure AD Connect
-description: Tento článek popisuje, jak nainstalovat agenta pro zřizování cloudu Azure AD Connect.
+description: Naučte se, jak nainstalovat Azure AD Connect agenta zřizování cloudu a jak ho nakonfigurovat v Azure Portal.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9553608fdd72d4dec4c1572e0d38cd460018a469
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348530"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584336"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Instalace agenta zřizování cloudů Azure AD Connect
 Tento dokument vás provede procesem instalace agenta zřizování služby Azure Active Directory (Azure AD) Connect a jeho počáteční konfigurace v Azure Portal.
@@ -76,7 +76,7 @@ Pokud chcete ověřit, jestli je agent v Azure, postupujte podle těchto kroků.
 1. Přihlaste se k webu Azure Portal.
 1. Na levé straně vyberte **Azure Active Directory**  >  **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)**.
 
-   ![portál Azure](media/how-to-install/install-6.png)</br>
+   ![Azure Portal](media/how-to-install/install-6.png)</br>
 
 1.  Na obrazovce **Azure AD zřizování (Preview)** vyberte **zkontrolovat všechny agenty**.
 

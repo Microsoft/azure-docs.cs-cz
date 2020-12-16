@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742319"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584387"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější server Azure Multi-Factor Authentication
 
@@ -33,16 +33,16 @@ Pokud upgradujete z verze 6. x nebo starší na v7. x nebo novější, změní s
 
 Postup upgradu na první pohled:
 
-* Upgrade serverů Azure MFA (podřízené potom hlavní)
+* Upgrade serverů Azure MFA (podřízených a primárních)
 * Upgrade instancí portálu User Portal
 * Upgrade instancí adaptérů AD FS
 
 ## <a name="upgrade-azure-mfa-server"></a>Upgrade serveru Azure MFA
 
 1. Pomocí pokynů v tématu [stažení Multi-Factor Authentication Server Azure](howto-mfaserver-deploy.md#download-the-mfa-server) získáte nejnovější verzi instalačního programu serveru Azure MFA.
-2. Vytvořte zálohu datového souboru MFA serveru, který se nachází ve složce C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (za předpokladu, že výchozí umístění instalace) na vašem hlavním serveru MFA.
+2. Vytvořte zálohu datového souboru MFA serveru, který se nachází ve složce C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (za předpokladu, že výchozí umístění instalace) na primárním serveru MFA.
 3. Pokud spouštíte více serverů pro zajištění vysoké dostupnosti, změňte klientské systémy, které se ověřují na MFA serveru, aby zastavily odesílání provozu na servery, které provádí upgrade. Pokud použijete nástroj pro vyrovnávání zatížení, odeberte podřízený server MFA z nástroje pro vyrovnávání zatížení, proveďte upgrade a pak přidejte server zpátky do farmy.
-4. Spusťte nový instalační program na každém serveru MFA. Nejprve upgradujte podřízené servery, protože mohou číst starý datový soubor, který je replikován hlavním serverem.
+4. Spusťte nový instalační program na každém serveru MFA. Nejprve upgradujte podřízené servery, protože mohou číst starý datový soubor, který je replikován primárním serverem.
 
    > [!NOTE]
    > Při upgradu serveru by se měl odebrat z jakéhokoli vyrovnávání zatížení nebo sdílení přenosů s jinými MFA servery.
@@ -51,7 +51,7 @@ Postup upgradu na první pohled:
   
 5. Pokud se zobrazí výzva k instalaci balíčku aktualizace Microsoft Visual C++ 2015 Redistributable, Přijměte výzvu. Jsou nainstalovány verze x86 i x64 balíčku.
 6. Pokud používáte sadu SDK webové služby, zobrazí se výzva k instalaci nové sady SDK webové služby. Při instalaci nové sady SDK webové služby se ujistěte, že název virtuálního adresáře odpovídá dříve nainstalovanému virtuálnímu adresáři (například MultiFactorAuthWebServiceSdk).
-7. Opakujte kroky na všech podřízených serverech. Zvyšte úroveň jednoho z podřízených na nový hlavní server a pak upgradujte starý hlavní server.
+7. Opakujte kroky na všech podřízených serverech. Zvyšte úroveň jednoho z podřízených na novou primární a potom upgradujte starý primární server.
 
 ## <a name="upgrade-the-user-portal"></a>Upgrade portálu User Portal
 

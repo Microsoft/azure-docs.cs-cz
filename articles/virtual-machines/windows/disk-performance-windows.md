@@ -1,20 +1,20 @@
 ---
-title: Výkon disků a virtuálních počítačů
-description: Další informace o tom, jak virtuální počítače a jejich připojené disky fungují v kombinaci pro výkon
+title: Výkon virtuálního počítače a disku – Windows
+description: Přečtěte si další informace o tom, jak virtuální počítače a jejich připojené disky fungují v kombinaci s výkonem ve Windows.
 author: albecker1
 ms.author: albecker
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 88cf9c28a9d325d617f4b049015f0cd238a2fb31
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: dec8b0cc33a9fffa7cac1ac9261b3c38ef5a6449
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016442"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584115"
 ---
-# <a name="virtual-machine-and-disk-performance"></a>Výkon disků a virtuálních počítačů
+# <a name="virtual-machine-and-disk-performance-windows"></a>Výkon virtuálního počítače a disku (Windows)
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>Virtuální počítač neuložený v mezipaměti a omezení v mezipaměti
