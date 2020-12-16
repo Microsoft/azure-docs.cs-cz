@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: b90fe6b7e0937a9ac3b300e904085122610d5645
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e74098d368b6aef3a9f12d8b1369132b29e7a0f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957074"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608948"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
@@ -123,104 +123,102 @@ Rozhraní API pro analýzu textu může detekovat široké spektrum jazyků, var
 
 Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zkusit Rozpoznávání jazyka, abyste viděli, jestli vrátí kód. Odpověď pro jazyky, které nelze zjistit, je `unknown` .
 
-| Jazyk | Kód jazyka |  Podpora V3 | K dispozici od verze V3 modelu: |
-|:---------|:-------------:|:----------:|:-----------------------------------------:|
-|Afrikánština|`af`|✓|    |
-|Albánština|`sq`|✓|    |
-|Arabština|`ar`|✓|    |
-|Arménština|`hy`|✓|    |
-|Baskičtina|`eu`|✓|    |
-|Běloruština|`be`|✓|    |
-|Bengálština|`bn`|✓|    |
-|Bosenština|`bs`|✓|2020-09-01|
-|Bulharština|`bg`|✓|    |
-|Barmština|`my`|✓|    |
-|Katalánština, Valencijština|`ca`|✓|    |
-|Středová šipka doprava|`km`|✓|    |
-|Čínština|`zh`|✓|    |
-|Čínština (zjednodušená)|`zh_chs`|✓|    |
-|Čínština (tradiční)|`zh_cht`|✓|    |
-|Chorvatština|`hr`|✓|    |
-|Čeština|`cs`|✓|    |
-|Dánština|`da`|✓|    |
-|Dáríština|`prs`|✓|2020-09-01|
-|Divehština, dhivehi, Maledivština|`dv`|✓|    |
-|Holandština, Flemish|`nl`|✓|    |
-|Angličtina|`en`|✓|    |
-|Esperanto|`eo`|✓|    |
-|Estonština|`et`|✓|    |
-|Fijian|`fj`|✓|2020-09-01|
-|Finština|`fi`|✓|    |
-|Francouzština|`fr`|✓|    |
-|Galicijština|`gl`|✓|    |
-|Gruzínština|`ka`|✓|    |
-|Němčina|`de`|✓|    |
-|Řečtina|`el`|✓|    |
-|Gudžarátština|`gu`|✓|    |
-|Haitská, haitská kreolština|`ht`|✓|    |
-|Hebrejština|`he`|✓|    |
-|Hindština|`hi`|✓|    |
-|Hmong Macek|`mww`|✓|2020-09-01|
-|Maďarština|`hu`|✓|    |
-|Islandština|`is`|✓|    |
-|Indonéština|`id`|✓|    |
-|Inuktitutština|`iu`|✓|    |
-|Irština|`ga`|✓|    |
-|Italština|`it`|✓|    |
-|Japonština|`ja`|✓|    |
-|Kannadština|`kn`|✓|    |
-|Kazaština|`kk`|✓|2020-09-01|
-|Korejština|`ko`|✓|    |
-|Kurdština|`ku`|✓|    |
-|Laoský|`lo`|✓|    |
-|Znak|`la`|✓|    |
-|Lotyština|`lv`|✓|    |
-|Litevština|`lt`|✓|    |
-|Makedonie|`mk`|✓|    |
-|Malgašština|`mg`|✓|2020-09-01|
-|Malajština|`ms`|✓|    |
-|Malajalámština|`ml`|✓|    |
-|Maltština|`mt`|✓|    |
-|Maorština|`mi`|✓|2020-09-01|
-|Maráthština|`mr`|✓|2020-09-01|
-|Norština|`no`|✓|    |
-|Norština (Nynorsk)|`nn`|✓|    |
-|Krí|`or`|✓|    |
-|Paštština, Paštština|`ps`|✓|    |
-|Perština|`fa`|✓|    |
-|Polština|`pl`|✓|    |
-|Portugalština|`pt`|✓|    |
-|Paňdžábština, Panjabi|`pa`|✓|    |
-|Queretaro Otomi|`otq`|✓|2020-09-01|
-|Rumunština, Moldavian, moldavský|`ro`|✓|    |
-|Ruština|`ru`|✓|    |
-|Samoan|`sm`|✓|2020-09-01|
-|Srbština|`sr`|✓|    |
-|Sinhálské, Sinhalese|`si`|✓|    |
-|Slovenština|`sk`|✓|    |
-|Slovinština|`sl`|✓|    |
-|Somálština|`so`|✓|    |
-|Španělština, kastilština|`es`|✓|    |
-|Svahilština|`sw`|✓|    |
-|Švédština|`sv`|✓|    |
-|Římské|`tl`|✓|    |
-|Tahitian|`ty`|✓|2020-09-01|
-|Tamilština|`ta`|✓|    |
-|Telugština|`te`|✓|    |
-|Thajština|`th`|✓|    |
-|Tongánština|`to`|✓|2020-09-01|
-|Turečtina|`tr`|✓|    |
-|Ukrajinština|`uk`|✓|    |
-|Urdština|`ur`|✓|    |
-|Uzbečtina|`uz`|✓|    |
-|Vietnamština|`vi`|✓|    |
-|Velština|`cy`|✓|    |
-|Jidiš|`yi`|✓|    |
-|Yucatec Maya|`yua`|✓|    |
-
+| Jazyk | Kód jazyka | Podpora V3 | K dispozici od verze V3 modelu: |
+|:-|:-:|:-:|:-:|
+| Afrikánština | `af` | ✓ |  |
+| Albánština | `sq` | ✓ |  |
+| Arabština | `ar` | ✓ |  |
+| Arménština | `hy` | ✓ |  |
+| Baskičtina | `eu` | ✓ |  |
+| Běloruština | `be` | ✓ |  |
+| Bengálština | `bn` | ✓ |  |
+| Bosenština | `bs` | ✓ | 2020-09-01 |
+| Bulharština | `bg` | ✓ |  |
+| Barmština | `my` | ✓ |  |
+| Katalánština, Valencijština | `ca` | ✓ |  |
+| Středová šipka doprava | `km` | ✓ |  |
+| Čínština | `zh` | ✓ |  |
+| Čínština (zjednodušená) | `zh_chs` | ✓ |  |
+| Čínština (tradiční) | `zh_cht` | ✓ |  |
+| Chorvatština | `hr` | ✓ |  |
+| Čeština | `cs` | ✓ |  |
+| Dánština | `da` | ✓ |  |
+| Dáríština | `prs` | ✓ | 2020-09-01 |
+| Divehština, dhivehi, Maledivština | `dv` | ✓ |  |
+| Holandština, Flemish | `nl` | ✓ |  |
+| Angličtina | `en` | ✓ |  |
+| Esperanto | `eo` | ✓ |  |
+| Estonština | `et` | ✓ |  |
+| Fijian | `fj` | ✓ | 2020-09-01 |
+| Finština | `fi` | ✓ |  |
+| Francouzština | `fr` | ✓ |  |
+| Galicijština | `gl` | ✓ |  |
+| Gruzínština | `ka` | ✓ |  |
+| Němčina | `de` | ✓ |  |
+| Řečtina | `el` | ✓ |  |
+| Gudžarátština | `gu` | ✓ |  |
+| Haitská, haitská kreolština | `ht` | ✓ |  |
+| Hebrejština | `he` | ✓ |  |
+| Hindština | `hi` | ✓ |  |
+| Hmong Macek | `mww` | ✓ | 2020-09-01 |
+| Maďarština | `hu` | ✓ |  |
+| Islandština | `is` | ✓ |  |
+| Indonéština | `id` | ✓ |  |
+| Inuktitutština | `iu` | ✓ |  |
+| Irština | `ga` | ✓ |  |
+| Italština | `it` | ✓ |  |
+| Japonština | `ja` | ✓ |  |
+| Kannadština | `kn` | ✓ |  |
+| Kazaština | `kk` | ✓ | 2020-09-01 |
+| Korejština | `ko` | ✓ |  |
+| Kurdština | `ku` | ✓ |  |
+| Laoský | `lo` | ✓ |  |
+| Znak | `la` | ✓ |  |
+| Lotyština | `lv` | ✓ |  |
+| Litevština | `lt` | ✓ |  |
+| Makedonie | `mk` | ✓ |  |
+| Malgašština | `mg` | ✓ | 2020-09-01 |
+| Malajština | `ms` | ✓ |  |
+| Malajalámština | `ml` | ✓ |  |
+| Maltština | `mt` | ✓ |  |
+| Maorština | `mi` | ✓ | 2020-09-01 |
+| Maráthština | `mr` | ✓ | 2020-09-01 |
+| Norština | `no` | ✓ |  |
+| Norština (Nynorsk) | `nn` | ✓ |  |
+| Krí | `or` | ✓ |  |
+| Paštština, Paštština | `ps` | ✓ |  |
+| Perština | `fa` | ✓ |  |
+| Polština | `pl` | ✓ |  |
+| Portugalština | `pt` | ✓ |  |
+| Paňdžábština, Panjabi | `pa` | ✓ |  |
+| Queretaro Otomi | `otq` | ✓ | 2020-09-01 |
+| Rumunština, Moldavian, moldavský | `ro` | ✓ |  |
+| Ruština | `ru` | ✓ |  |
+| Samoan | `sm` | ✓ | 2020-09-01 |
+| Srbština | `sr` | ✓ |  |
+| Sinhálské, Sinhalese | `si` | ✓ |  |
+| Slovenština | `sk` | ✓ |  |
+| Slovinština | `sl` | ✓ |  |
+| Somálština | `so` | ✓ |  |
+| Španělština, kastilština | `es` | ✓ |  |
+| Svahilština | `sw` | ✓ |  |
+| Švédština | `sv` | ✓ |  |
+| Římské | `tl` | ✓ |  |
+| Tahitian | `ty` | ✓ | 2020-09-01 |
+| Tamilština | `ta` | ✓ |  |
+| Telugština | `te` | ✓ |  |
+| Thajština | `th` | ✓ |  |
+| Tongánština | `to` | ✓ | 2020-09-01 |
+| Turečtina | `tr` | ✓ |  |
+| Ukrajinština | `uk` | ✓ |  |
+| Urdština | `ur` | ✓ |  |
+| Uzbečtina | `uz` | ✓ |  |
+| Vietnamština | `vi` | ✓ |  |
+| Velština | `cy` | ✓ |  |
+| Jidiš | `yi` | ✓ |  |
+| Yucatec Maya | `yua` | ✓ |  |
 
 ---
-
 
 ## <a name="see-also"></a>Viz také
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6a000daa7d9e2aa93e68844e8aec5aa168c9fa60
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592411"
+ms.locfileid: "97607265"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,6 @@ ms.locfileid: "97592411"
 Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzetí služeb při selhání (FCI) pomocí sdílených disků Azure s SQL Server v Azure Virtual Machines (VM). 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
-
 
 ## <a name="prerequisites"></a>Předpoklady 
 
@@ -37,12 +36,10 @@ Před dokončením kroků v tomto článku byste už měli mít:
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 
-
 ## <a name="add-azure-shared-disk"></a>Přidat sdílený disk Azure
 Nasaďte spravovaný SSD úrovně Premium disk s povolenou funkcí sdíleného disku. Nastavte, `maxShares` aby se **zarovnal počet uzlů clusteru** , aby bylo možné sdílet disk ve všech FCI uzlech. 
 
 Pomocí následujícího postupu přidejte sdílený disk Azure: 
-
 
 1. Následující skript uložte jako *SharedDiskConfig.jsna*: 
 
@@ -85,7 +82,6 @@ Pomocí následujícího postupu přidejte sdílený disk Azure:
    }
    ```
 
-
 2. Spusťte *SharedDiskConfig.jsna* pomocí prostředí PowerShell: 
 
    ```powershell
@@ -119,7 +115,6 @@ Pokud chcete vytvořit cluster s podporou převzetí služeb při selhání, bud
 - Název clusteru s podporou převzetí služeb při selhání.
 - IP adresa pro cluster s podporou převzetí služeb při selhání. Můžete použít IP adresu, která se nepoužívá ve stejné virtuální síti Azure a podsíti jako uzly clusteru.
 
-
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
 Následující skript PowerShellu vytvoří cluster s podporou převzetí služeb při selhání. Aktualizujte skript s použitím názvů uzlů (názvy virtuálních počítačů) a dostupné IP adresy z virtuální sítě Azure.
@@ -139,7 +134,6 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 Další informace najdete v tématu [cluster pro převzetí služeb při selhání: objekt sítě s clustery](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).
 
 ---
-
 
 ## <a name="configure-quorum"></a>Konfigurace kvora
 
@@ -198,7 +192,6 @@ Datové adresáře FCI musí být na sdílených discích Azure.
 
 Pokud chcete virtuální počítač SQL Server spravovat z portálu, zaregistrujte ho pomocí rozšíření SQL IaaS Agent (RP) v [režimu zjednodušené správy](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), v současné době se jedná o jediný režim podporovaný FCI a SQL Server na virtuálních počítačích Azure. 
 
-
 Zaregistrujte SQL Server virtuální počítač v jednoduchém režimu pomocí prostředí PowerShell:  
 
 ```powershell-interactive
@@ -221,7 +214,6 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste to ještě neudělali, nakonfigurujte připojení k vašemu FCI pomocí [názvu virtuální sítě a nástroje pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [názvu DISTRIBUOVANÉ sítě (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
-
 
 Pokud se pro vás nejedná o vhodné řešení úložiště FCI, doporučujeme místo toho vytvořit FCI pomocí [prémiových sdílených složek](failover-cluster-instance-premium-file-share-manually-configure.md) nebo [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md) . 
 

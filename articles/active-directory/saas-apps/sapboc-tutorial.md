@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671846"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608829"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Kurz: integrace cloudu SAP Analytics s Azure Active Directory
 
@@ -47,15 +47,15 @@ Pokud chcete nakonfigurovat integraci služby SAP Analytics Cloud do služby Azu
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Cloud SAP Analytics** .
 1. Z panelu výsledků vyberte **Cloud SAP Analytics** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby SAP Analytics Cloud pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudu SAP Analytics.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby SAP Analytics Cloud pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudu SAP Analytics.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí cloudu SAP Analytics, dokončete následující stavební bloky:
 
@@ -70,8 +70,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s **cloudovou aplikací SAP Analytics** najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace s **cloudovou aplikací SAP Analytics** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -103,7 +103,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V jiném okně webového prohlížeče se přihlaste k webu SAP Analytics Cloud společnosti jako správce.
 
-2. Vyberte **Menu** možnost  >  **System**  >  **Správa** systému v nabídce.
+2. Vyberte možnost  >    >  **Správa** systému v nabídce.
     
     ![Vyberte nabídku, pak systém a potom na Správa.](./media/sapboc-tutorial/config1.png)
 
@@ -111,15 +111,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     
     ![Na kartě zabezpečení vyberte ikonu Upravit.](./media/sapboc-tutorial/config2.png)  
 
-4. V případě **metody ověřování** vyberte **SAML Single Sign-On (SSO)** .
+4. V případě **metody ověřování** vyberte **SAML Single Sign-On (SSO)**.
 
     ![Pro metodu ověřování vybrat jeden Sign-On SAML](./media/sapboc-tutorial/config3.png)  
 
-5. Pokud chcete stáhnout metadata poskytovatele služeb (krok 1), vyberte **Stáhnout** . V souboru metadat vyhledejte a zkopírujte hodnotu **entityID** . V Azure Portal v základní dialogovém okně **Konfigurace SAML** vložte hodnotu do pole **identifikátor** .
+5. Pokud chcete stáhnout metadata poskytovatele služeb (krok 1), vyberte **Stáhnout**. V souboru metadat vyhledejte a zkopírujte hodnotu **entityID** . V Azure Portal v základní dialogovém okně **Konfigurace SAML** vložte hodnotu do pole **identifikátor** .
 
     ![Zkopírování a vložení hodnoty entityID](./media/sapboc-tutorial/config4.png)  
 
-6. Pokud chcete nahrát metadata poskytovatele služeb (krok 2) do souboru, který jste stáhli z Azure Portal, vyberte v části **nahrát metadata zprostředkovatele identity** možnost **nahrát** .  
+6. Pokud chcete nahrát metadata poskytovatele služeb (krok 2) do souboru, který jste stáhli z Azure Portal, vyberte v části **nahrát metadata zprostředkovatele identity** možnost **nahrát**.  
 
     ![V části nahrát metadata zprostředkovatele identity vyberte nahrát.](./media/sapboc-tutorial/config5.png)
 
@@ -127,7 +127,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Vybrat atribut uživatele](./media/sapboc-tutorial/config6.png)
 
-8. Pokud chcete ověřit účet se zprostředkovatelem identity (krok 4), zadejte do pole přihlašovací **údaje (e-mail)** e-mailovou adresu uživatele. Pak vyberte **ověřit účet** . Systém přidá pověření pro přihlášení k uživatelskému účtu.
+8. Pokud chcete ověřit účet se zprostředkovatelem identity (krok 4), zadejte do pole přihlašovací **údaje (e-mail)** e-mailovou adresu uživatele. Pak vyberte **ověřit účet**. Systém přidá pověření pro přihlášení k uživatelskému účtu.
 
     ![Zadejte e-mail a vyberte ověřit účet.](./media/sapboc-tutorial/config7.png)
 
@@ -139,21 +139,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke cloudu SAP Analytics.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **Cloud SAP Analytics** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Cloud SAP Analytics**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -173,7 +173,7 @@ Zřízení uživatelského účtu:
 
 1. Přihlaste se k webu SAP Analytics Cloud Company jako správce.
 
-2. Vyberte **Menu** možnost  >  **Security**  >  **Uživatelé** zabezpečení nabídky.
+2. Vyberte možnost  >    >  **Uživatelé** zabezpečení nabídky.
 
     ![Přidat zaměstnance](./media/sapboc-tutorial/user1.png)
 
@@ -183,21 +183,21 @@ Zřízení uživatelského účtu:
 
     Pak proveďte následující kroky:
 
-    a. Do pole **ID uživatele** zadejte ID uživatele, například **B** .
+    1. Do pole **ID uživatele** zadejte ID uživatele, například **B**.
 
-    b. Do pole **jméno** zadejte jméno uživatele, například **B** .
+    1. Do pole **jméno** zadejte jméno uživatele, například **B**.
 
-    c. Do pole **příjmení** zadejte příjmení uživatele, například **Simon** .
+    1. Do pole **příjmení** zadejte příjmení uživatele, například **Simon**.
 
-    d. Do pole **ZOBRAZOVANÝ název** zadejte jméno a příjmení uživatele, například **B. Simon** .
+    1. Do pole **ZOBRAZOVANÝ název** zadejte jméno a příjmení uživatele, například **B. Simon**.
 
-    e. Do pole **e-mail** zadejte e-mailovou adresu uživatele, třeba `b.simon@contoso.com` .
+    1. Do pole **e-mail** zadejte e-mailovou adresu uživatele, třeba `b.simon@contoso.com` .
 
-    f. Na stránce **Vybrat role** vyberte příslušnou roli pro uživatele a pak vyberte **OK** .
+    1. Na stránce **Vybrat role** vyberte příslušnou roli pro uživatele a pak vyberte **OK**.
 
-      ![Vybrat roli](./media/sapboc-tutorial/user3.png)
+        ![Vybrat roli](./media/sapboc-tutorial/user3.png)
 
-    například Vyberte ikonu **Uložit** .
+    1. Vyberte ikonu **Uložit** .
 
 ### <a name="test-sso"></a>Test SSO 
 
@@ -205,7 +205,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici cloudu SAP Analytics na přístupovém panelu byste se měli automaticky přihlášeni ke cloudu SAP Analytics, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

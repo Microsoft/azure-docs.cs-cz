@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459165"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Kurz: Azure Active Directory Integration s Kantega SSO pro JIRA
 
@@ -30,7 +30,7 @@ Integrace Kantega SSO pro JIRA se službou Azure AD poskytuje následující vý
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Kantega SSO pro JIRA potřebujete následující položky:
 
@@ -162,31 +162,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Vyberte úroveň předplatného jako **základní**.
 
-    ![Snímek obrazovky, který zobrazuje oddíl "Příprava Azure A D" pomocí příkazu "Basic".](./media/kantegassoforjira-tutorial/addon5.png)     
+    ![Snímek obrazovky, který zobrazuje oddíl "Příprava Azure A D" pomocí příkazu "Basic".](./media/kantegassoforjira-tutorial/addon5.png)
 
 1. V části **Vlastnosti aplikace** proveďte následující kroky: 
 
     ![Snímek obrazovky s oddílem "vlastnosti aplikace" se zvýrazněným textovým polem App I D U R L a vybraným tlačítkem pro kopírování a tlačítkem Další](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
+    1. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
 
-    b. Klikněte na **Next** (Další).
+    1. Klikněte na **Next** (Další).
 
 1. V části **import metadat** proveďte následující kroky: 
 
     ![Snímek obrazovky s vybraným oddílem "import metadat" se souborem metadat v mém počítači](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. Vyberte **soubor metadat na mém počítači**a nahrajte soubor metadat, který jste stáhli z Azure Portal.
+    1. Vyberte **soubor metadat na mém počítači** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    b. Klikněte na **Next** (Další).
+    1. Klikněte na **Next** (Další).
 
 1. V části **název a umístění jednotného přihlašování** proveďte následující kroky:
 
     ![Snímek obrazovky, který zobrazuje "název a S S S/S" umístění "se zvýrazněným názvem poskytovatele identity" a tlačítkem "Další".](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
+    1. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
 
-    b. Klikněte na **Next** (Další).
+    1. Klikněte na **Next** (Další).
 
 1. Ověřte podpisový certifikát a klikněte na tlačítko **Další**.
 
@@ -196,9 +196,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Snímek obrazovky, který zobrazuje "uživatelské účty JIRA" se zvýrazněnou možností "vytvořit uživatele v interním adresáři JIRA", pokud je to potřeba, a vybrané tlačítko "Další".](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři JIRA** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
+    1. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři JIRA** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
 
-    b. Klikněte na **Next** (Další).
+    1. Klikněte na **Next** (Další).
 
 1. Klikněte na **Finish** (Dokončit).
 
@@ -208,17 +208,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. Na levém panelu stránky vyberte **známé domény** .
+    1. Na levém panelu stránky vyberte **známé domény** .
 
-    b. Do textového pole **známé domény** zadejte název domény.
+    2. Do textového pole **známé domény** zadejte název domény.
 
-    c. Klikněte na **Uložit**.
+    3. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -230,19 +230,19 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
+    1. Do pole **název** zadejte **BrittaSimon**.
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    1. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
-    d. Klikněte na **Vytvořit**.
+    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Kantega SSO pro JIRA.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Kantega SSO pro JIRA**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Kantega SSO pro JIRA**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -284,15 +284,15 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA, musí se zřídit v JIRA
 
     ![Přidat zaměstnance](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
+    1. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
 
-    b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je Britta Simon.
+    2. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je Britta Simon.
 
-    c. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
+    3. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
 
-    d. Do textového pole **heslo** zadejte heslo uživatele.
+    4. Do textového pole **heslo** zadejte heslo uživatele.
 
-    e. Klikněte na **vytvořit uživatele**.
+    5. Klikněte na **vytvořit uživatele**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -300,7 +300,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Kantega SSO for JIRA na přístupovém panelu byste se měli automaticky přihlásili k Kantega SSO pro JIRA, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

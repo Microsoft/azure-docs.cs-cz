@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515621"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Kurz: Azure Active Directory integrace s Peakon
 
@@ -135,7 +135,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Peakon, 
 
 1. V jiném okně webového prohlížeče se přihlaste k Peakon jako správce.
 
-2. V panelu nabídek na levé straně stránky klikněte na **Konfigurace**a potom přejděte k **integrací**.
+2. V panelu nabídek na levé straně stránky klikněte na **Konfigurace** a potom přejděte k **integrací**.
 
     ![Konfigurace](./media/peakon-tutorial/tutorial_peakon_config.png)
 
@@ -167,7 +167,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Peakon, 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -192,7 +192,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Peakon.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Peakon**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Peakon**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -223,23 +223,23 @@ V případě Peakon je zřizování ručním úkolem.
 
 1. Přihlaste se k webu Peakon společnosti jako správce.
 
-2. V panelu nabídek na levé straně stránky klikněte na **Konfigurace**a potom přejděte k **zaměstnancům**.
+2. V panelu nabídek na levé straně stránky klikněte na **Konfigurace** a potom přejděte k **zaměstnancům**.
 
     ![Zaměstnanec](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
 3. V pravém horním rohu stránky klikněte na **Přidat zaměstnance**.
 
-      ![Přidat zaměstnance](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![Přidat zaměstnance](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. Na stránce **nový zaměstnanec** proveďte následující kroky:
 
-     ![Nový zaměstnanec](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![Nový zaměstnanec](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. Do textového pole **název** zadejte jako **Britta** a příjmení název jako **Simon**.
+    1. Do textového pole **název** zadejte jako **Britta** a příjmení název jako **Simon**.
 
-    b. Do textového pole **e-mail** zadejte e-mailovou adresu jako **Brittasimon \@ contoso.com**.
+    1. Do textového pole **e-mail** zadejte e-mailovou adresu jako **Brittasimon \@ contoso.com**.
 
-    c. Klikněte na **vytvořit zaměstnance**.
+    1. Klikněte na **vytvořit zaměstnance**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
@@ -247,7 +247,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Peakon, měli byste se automaticky přihlásit k Peakon, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

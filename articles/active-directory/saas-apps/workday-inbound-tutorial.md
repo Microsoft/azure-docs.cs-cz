@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5cbfdd57ebd25da013bfb82b761839b1e74ee012
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017640"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609016"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -25,7 +25,6 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování 
 >Použijte tento kurz, pokud uživatelé, které chcete zřídit z Workday, potřebují místní účet služby AD a účet Azure AD. 
 >* Pokud uživatelé z Workday potřebují jenom účet Azure AD (jenom pro cloudové uživatele), přečtěte si prosím kurz [Konfigurace pracovního dne pro zřizování uživatelů Azure AD](workday-inbound-cloud-only-tutorial.md) . 
 >* Pokud chcete nakonfigurovat zpětný zápis atributů, jako je e-mailová adresa, uživatelské jméno a telefonní číslo z Azure AD do Workday, přečtěte si prosím kurz [Konfigurace zpětného zápisu](workday-writeback-tutorial.md)do Workday.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -39,7 +38,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování 
 
 * **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) pro Active Directory, Azure Active Directory a volitelně Microsoft 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Novinky
+### <a name="whats-new"></a>Co je nového
 V této části jsou zachycena nedávná vylepšení integrace pracovního dne. Seznam komplexních aktualizací, plánovaných změn a archivů najdete na stránce [co je nového v Azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Květen 2020 – možnost zápisu telefonních čísel do Workday:** Navíc k e-mailu a uživatelskému jménu teď můžete do pracovního dne služby Azure AD znovu spustit zpětný zápis a číslo mobilního telefonu. Další podrobnosti najdete v [kurzu aplikace zpětného zápisu](workday-writeback-tutorial.md).
@@ -112,7 +111,7 @@ Běžným požadavkem na všechny konektory zřizování Workday je to, že vyž
    >[!div class="mx-imgBorder"] 
    >![Vytvořit uživatele](./media/workday-inbound-tutorial/wd_isu_01.png "Vytvořit uživatele")
 2. Dokončete úkol **vytvořit uživatel Integration System** zadáním uživatelského jména a hesla pro nového uživatele integračního systému.  
-  
+
    * Nechejte možnost **vyžadovat nové heslo při příštím přihlášení** nezaškrtnutou, protože se tento uživatel přihlašuje programově.
    * Ponechte **časový limit relace** s výchozí hodnotou 0, což zabrání předčasně vypršení relace uživatele.
    * Vyberte možnost **Nepovolit relace uživatelského rozhraní** , protože poskytuje přidanou vrstvu zabezpečení, která brání uživateli s heslem systému Integration v přihlášení do Workday.
@@ -164,7 +163,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
    * *Data pracovního procesu: aktuální personální informace*
    * *Data pracovního procesu: obchodní titul v profilu pracovního procesu*
    * *Účty Workday*
-   
+
      >[!div class="mx-imgBorder"]
      >![Snímek obrazovky zobrazující sestavu konfigurace zabezpečení domény s externím účtem v textovém poli Doména](./media/workday-inbound-tutorial/wd_isu_07.png "Zásady zabezpečení domény")  
 
@@ -218,7 +217,7 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
    >![Snímek obrazovky, který zobrazuje stránku "upravit zásady zabezpečení obchodních procesů" a "v nabídce" typ obchodního procesu "zvolené pracovní kontakt změny.](./media/workday-inbound-tutorial/wd_isu_13.png "Zásady zabezpečení obchodních procesů")  
 
 3. Na stránce **upravit zásady zabezpečení obchodního procesu** se posuňte do části **Změna pracovních kontaktních informací (webová služba)** .
-    
+
 
 4. Vyberte a přidejte novou skupinu zabezpečení systému Integration Service do seznamu skupin zabezpečení, které mohou iniciovat požadavek webové služby. 
 
@@ -250,9 +249,9 @@ Po identifikaci Windows serveru, který bude hostovat zřizovacího agenta, se p
 
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>Oprávnění požadovaná ke konfiguraci služby zřizovacího agenta
 Pomocí následujících kroků nastavte účet služby, který se dá použít k zřizování operací agenta. 
-1.  V řadiči domény služby AD otevřete modul snap-in *Uživatelé a počítače služby Active Directory* . 
-2.  Vytvořit nového uživatele domény (příklad: *provAgentAdmin*)  
-3.  Klikněte pravým tlačítkem na organizační jednotku nebo název domény a vyberte *delegovat řízení* . tím otevřete *Průvodce delegováním řízení*. 
+1. V řadiči domény služby AD otevřete modul snap-in *Uživatelé a počítače služby Active Directory* . 
+2. Vytvořit nového uživatele domény (příklad: *provAgentAdmin*)  
+3. Klikněte pravým tlačítkem na organizační jednotku nebo název domény a vyberte *delegovat řízení* . tím otevřete *Průvodce delegováním řízení*. 
 
 > [!NOTE] 
 > Pokud chcete omezit zřizovacího agenta jenom na vytváření a čtení uživatelů z určité organizační jednotky pro účely testování, pak doporučujeme delegovat ovládací prvek na příslušné úrovni organizační jednotky během testovacích běhů.
@@ -270,7 +269,6 @@ Pomocí následujících kroků nastavte účet služby, který se dá použít 
    >![Obrazovka úlohy](./media/workday-inbound-tutorial/delegation-wizard-02.png "Obrazovka úlohy")
 
 7. Klikněte na **Další** a **uložte** konfiguraci.
-
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfigurace zřizování uživatelů z Workday na službu Active Directory
 
@@ -298,13 +296,12 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změňte režim **zřizování** **Mode** na **automaticky**.
+7. Změňte režim **zřizování**  na **automaticky**.
 
 8. Pokud chcete stáhnout agenta pro zřizování, klikněte na zobrazený informační banner. 
 
    >[!div class="mx-imgBorder"]
    >![Stáhnout agenta](./media/workday-inbound-tutorial/pa-download-agent.png "Stáhnout agenta – obrazovka")
-
 
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Část 2: instalace a konfigurace místních agentů zřizování
 
@@ -322,12 +319,12 @@ Přeneste stažený instalační program agenta na hostitele serveru a podle ní
 
    >[!div class="mx-imgBorder"]
    >![Instalační obrazovka](./media/workday-inbound-tutorial/pa_install_screen_1.png "Instalační obrazovka")
-   
+
 1. Po dokončení instalace se Průvodce spustí a zobrazí se obrazovka **připojit Azure AD** . Kliknutím na tlačítko **ověřit** se připojte k instanci Azure AD.
 
    >[!div class="mx-imgBorder"]
    >![Připojení Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Připojení Azure AD")
-   
+
 1. Ověřte se u své instance Azure AD pomocí pověření správce hybridní identity.
 
    >[!div class="mx-imgBorder"]
@@ -340,12 +337,12 @@ Přeneste stažený instalační program agenta na hostitele serveru a podle ní
 
    >[!div class="mx-imgBorder"]
    >![Přidat adresář](./media/workday-inbound-tutorial/pa_install_screen_4.png "Přidat adresář")
-  
+
 1. Nyní budete vyzváni k zadání přihlašovacích údajů požadovaných pro připojení k doméně služby AD. Na stejné obrazovce můžete použít **prioritu vybrat řadič domény** a zadat řadiče domény, které by měl agent použít pro odesílání žádostí o zřízení.
 
    >[!div class="mx-imgBorder"]
    >![Přihlašovací údaje domény](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-   
+
 1. Po nakonfigurování domény instalační program zobrazí seznam nakonfigurovaných domén. Na této obrazovce můžete opakovat krok #5 a #6 přidat další domény, kliknutím na tlačítko **Další** pokračujte v registraci agenta.
 
    >[!div class="mx-imgBorder"]
@@ -354,22 +351,22 @@ Přeneste stažený instalační program agenta na hostitele serveru a podle ní
    > [!NOTE]
    > Pokud máte více domén služby AD (například na.contoso.com, emea.contoso.com), přidejte každou doménu do seznamu jednotlivě.
    > Pouze přidání nadřazené domény (např. contoso.com) není dostačující. Musíte zaregistrovat každou podřízenou doménu s agentem.
-   
+
 1. Zkontrolujte podrobnosti o konfiguraci a kliknutím na **Potvrdit** agenta zaregistrujte.
-  
+
    >[!div class="mx-imgBorder"]
    >![Potvrdit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_7.png "Potvrdit obrazovku")
-   
+
 1. Průvodce konfigurací zobrazí průběh registrace agenta.
-  
+
    >[!div class="mx-imgBorder"]
    >![Registrace agenta](./media/workday-inbound-tutorial/pa_install_screen_8.png "Registrace agenta")
-   
+
 1. Po úspěšné registraci agenta můžete kliknutím na tlačítko **ukončit** průvodce ukončit.
 
    >[!div class="mx-imgBorder"]
    >![Ukončit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ukončit obrazovku")
-   
+
 1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete Snap-In služby a vyhledáte službu s názvem "Microsoft Azure AD Connect zřizovací agent".
 
    >[!div class="mx-imgBorder"]
@@ -387,12 +384,12 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
    * **Heslo pracovního dne –** Zadejte heslo účtu systému pro integraci Workday.
 
    * **Adresa URL rozhraní API webových služeb Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Adresa URL určuje verzi rozhraní API webových služeb Workday, kterou používá konektor. 
-   
+
      | Formát URL | Použitá verze rozhraní API WWS | Jsou vyžadovány změny XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Ne |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Ne |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>
@@ -403,7 +400,7 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
 
    * **Kontejner služby Active Directory –** Zadejte rozlišující název kontejneru, kde by měl agent ve výchozím nastavení vytvářet uživatelské účty.
         Příklad: *ou = Standard Users, OU = Users, DC = contoso, DC = test*
-        
+
      > [!NOTE]
      > Toto nastavení se dá přehrát jenom pro vytváření uživatelských účtů, pokud není atribut *parentDistinguishedName* nakonfigurovaný v mapování atributů. Toto nastavení se nepoužívá pro operace vyhledávání a aktualizace uživatelů. Celý podstrom domény spadá do rozsahu operace hledání.
 
@@ -446,7 +443,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
    > [!CAUTION] 
    > Výchozím chováním modulu zřizování je zakázat nebo odstranit uživatele, kteří se přestanou přidělovat z oboru. To nemusí být žádoucí pro integraci vaší pracovní doby do AD. Pokud chcete přepsat toto výchozí chování, přečtěte si článek [přeskočení odstranění uživatelských účtů, které se nacházejí mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md) .
-  
+
 1. V poli **Akce cílového objektu** můžete globálně filtrovat akce prováděné ve službě Active Directory. **Vytváření** a **aktualizace** jsou nejběžnější.
 
 1. V části **mapování atributů** můžete definovat, jak se mají jednotlivé atributy Workday mapovat na atributy služby Active Directory.
@@ -510,7 +507,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 | **CountryReferenceTwoLetter**    |  c  |     |         Vytvořit a aktualizovat |
 | **CountryRegionReference** |  st     |     | Vytvořit a aktualizovat |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Vytvořit a aktualizovat |
-| **PostalCode**  |   Ovládacím  |     | Vytvořit a aktualizovat |
+| **Ovládacím**  |   postalCode  |     | Vytvořit a aktualizovat |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvořit a aktualizovat |
 | **Fax**      | facsimileTelephoneNumber     |     |    Vytvořit a aktualizovat |
 | **Mobilní**  |    mobil       |     |       Vytvořit a aktualizovat |
@@ -538,8 +535,6 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
    > [!div class="mx-imgBorder"]
    > ![Indikátor průběhu zřizování](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-
-
 ## <a name="frequently-asked-questions-faq"></a>Časté otázky
 
 * **Otázky k schopnostem řešení**
@@ -562,7 +557,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
   * [Návody zajistěte, aby agent zřizování mohl komunikovat s tenant Azure AD, a žádné brány firewall neblokují porty vyžadované agentem?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
   * [Návody zrušit registraci domény přidružené k mému agentovi zřizování?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
   * [Návody odinstalovat zřizovacího agenta?](#how-do-i-uninstall-the-provisioning-agent)
-  
+
 * **Mapování atributů z Workday na AD a na konfigurační otázky**
   * [Návody zálohovat nebo exportovat pracovní kopii mapování a schématu zřizování Workday?](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
   * [Mám vlastní atributy v Workday i ve službě Active Directory. Návody nakonfigurovat řešení tak, aby fungovalo s vlastními atributy?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
@@ -604,7 +599,7 @@ Tato funkce se momentálně nepodporuje. Doporučený postup je nasadit skript P
   * Pokud je formát adresy URL: https:// \# \# \# \# \. Workday \. com/CCX/Service/tenant, použije se rozhraní API v 21.1. 
   * Pokud je formát adresy URL: https:// \# \# \# \# \. Workday \. com/CCX/Service/tenant/lidské \_ zdroje, použije se rozhraní API v 21.1. 
   * Pokud je formát adresy URL: https:// \# \# \# \# \. Workday \. com/CCX/Service/tenant/lidské \_ zdroje/v \# \# \. \# , použije se zadaná verze rozhraní API. (Příklad: Pokud je zadáno v 34.0, pak se používá.)  
-   
+
 * Funkce zpětného zápisu e-mailu Workday používá Change_Work_Contact_Information (v 30.0) 
 * Funkce zpětného zápisu uživatelského jména v Workday používá Update_Workday_Account (v 31.2) 
 
@@ -698,7 +693,7 @@ Ano, jeden zřizovací Agent se dá nakonfigurovat tak, aby zpracovával víc do
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* Ze seznamu zobrazených agentů – Zkopírujte hodnotu `id` pole z tohoto prostředku, jehož název domény se *resourceName* rovná názvu domény služby AD.
+* Ze seznamu zobrazených agentů – Zkopírujte hodnotu `id` pole z tohoto prostředku, jehož název domény se  rovná názvu domény služby AD.
 * Vložte hodnotu ID do tohoto příkazu a spusťte příkaz v PowerShellu.
 
   ```powershell
@@ -779,7 +774,7 @@ Tady je postup, jak můžete zvládnout tyto požadavky pro vytváření *CN* ne
      | PreferredLastName | nepracovní: Work/FORMED: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/text () |
      | Společnost | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data Organization_Data [/WD: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [\: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' dohledu ']/WD: Organization_Name/text () |
-  
+
    Potvrďte u svého pracovního týmu, že výše uvedený výraz rozhraní API je platný pro vaši konfiguraci tenanta Workday. V případě potřeby je můžete upravit, jak je popsáno v části [přizpůsobení seznamu atributů uživatele Workday](#customizing-the-list-of-workday-user-attributes).
 
 * Podobně informace o zemi nebo oblasti přítomné v Workday jsou načteny pomocí následujícího výrazu XPATH:/WD: *Work//WD: Worker_Data: Employment_Data: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
@@ -995,7 +990,6 @@ Pokud se služba zřizování nemůže připojit k Workday nebo službě Active 
 |--|---|---|---|
 |1.| Když kliknete na **Test připojení**, zobrazí se chybová zpráva: došlo k *chybě při připojování ke službě Active Directory. Ujistěte se prosím, že místní zřizovací Agent běží a že je nakonfigurovaný se správnou doménou služby Active Directory.* | Tato chyba se obvykle zobrazuje, pokud Agent zřizování není spuštěný nebo že brána firewall blokuje komunikaci mezi službou Azure AD a agentem zřizování. Tato chyba se může zobrazit i v případě, že doména není nakonfigurovaná v průvodci agentem. | Otevřete konzolu *služby* na Windows serveru a potvrďte, že je agent spuštěný. Otevřete Průvodce zřizovacím agentem a potvrďte, že je správná doména zaregistrovaná u agenta.  |
 |2.| Úloha zřizování přejde do karantény po víkendech (Pá-SAT) a pošle vám e-mailové oznámení, že při synchronizaci dojde k chybě. | Jednou z běžných příčin této chyby je plánovaná údržba aplikace Workday. Pokud používáte tenanta implementace Workday, mějte na paměti, že Workday má naplánované výpadky tenantů implementace na víkendy (obvykle od pátečního večera do sobotního rána) a během této doby můžou aplikace zřizování Workday přejít do stavu karantény, protože se k Workday nemůžou připojit. Jakmile bude tenant implementace Workday opět online, vrátí se zpět do normálního stavu. Ve výjimečných případech k této chybě může dojít také v případě, že se kvůli aktualizaci tenanta změní heslo uživatele systému integrace nebo pokud dojde k uzamčení nebo vypršení platnosti účtu. | Zjistěte od svého správce Workday nebo partnera pro integraci období plánovaných výpadků Workday, abyste během výpadků mohli ignorovat upozornění a zkontrolovat dostupnost, jakmile bude instance Workday opět online.  |
-
 
 #### <a name="ad-user-account-creation-errors"></a>Chyby při vytváření uživatelských účtů služby AD
 

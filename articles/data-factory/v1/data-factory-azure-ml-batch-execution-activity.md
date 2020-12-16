@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: c04c94ef2a73085b982fde3efefecea351b083af
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508468"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608064"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
 
@@ -183,7 +183,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
    }
    ```
 
-   Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Například:
+   Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Příklad:
 
    ```json
    sink:
@@ -269,7 +269,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
         "properties": {
           "description": "use AzureML model",
           "activities": [
-              {
+            {
               "name": "MLActivity",
               "type": "AzureMLBatchExecution",
               "description": "prediction analysis on batch input",
@@ -301,7 +301,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
           ],
           "start": "2016-02-13T00:00:00Z",
           "end": "2016-02-14T00:00:00Z"
-          }
+        }
       }
       ```
 

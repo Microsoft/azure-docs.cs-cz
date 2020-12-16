@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520298"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608931"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Kurz: integrace způsobu práce s Azure Active Directory
 
@@ -117,36 +117,36 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Způsob ukládání](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Pokud chcete povolit jednotné přihlašování, klikněte na přepínač **zapnout jednotné přihlašování** a klikněte na **Ano** .
+    1. Pokud chcete povolit jednotné přihlašování, klikněte na přepínač **zapnout jednotné přihlašování** a klikněte na **Ano** .
 
-    b. Do textového pole **název jednotného přihlašování** zadejte své jméno.
+    1. Do textového pole **název jednotného přihlašování** zadejte své jméno.
 
-    c. Do textového pole **ID entity** vložte hodnotu **identifikátoru služby Azure AD**, který jste zkopírovali z Azure Portal.
+    1. Do textového pole **ID entity** vložte hodnotu **identifikátoru služby Azure AD**, který jste zkopírovali z Azure Portal.
 
-    d. Do textového pole **URL jednotného přihlašování SAML** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
+    1. Do textového pole **URL jednotného přihlašování SAML** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
-    e. Nahrajte certifikát kliknutím na tlačítko **Vybrat** vedle **certifikátu**.
+    1. Nahrajte certifikát kliknutím na tlačítko **Vybrat** vedle **certifikátu**.
 
-    f. **Volitelná nastavení** -
-    
-    * Povolit hesla – Pokud je tato možnost zakázaná, běžné heslo funguje tak, aby uživatelé mohli používat jenom jednotné přihlašování.
+    1. **Volitelná nastavení** -
 
-    * Povolit automatické zřizování – Pokud je tato možnost povolená, e-mailová adresa použitá k přihlášení se automaticky porovná se seznamem uživatelů v cestě. Pokud se e-mailová adresa neshoduje s aktivním uživatelem, automaticky přidá nový uživatelský účet pro uživatele, který se přihlašuje, a požaduje všechny chybějící informace.
+        * Povolit hesla – Pokud je tato možnost zakázaná, běžné heslo funguje tak, aby uživatelé mohli používat jenom jednotné přihlašování.
 
-      > [!NOTE]
-      > Uživatelé přidaní prostřednictvím jednotného přihlašování se přidávají jako základní uživatelé a v systému se nepřiřazují role. Správce je schopný přejít do role zabezpečení a změnit ji jako editor nebo správce a může také přiřadit jednu nebo několik rolí organizačního diagramu.
+        * Povolit automatické zřizování – Pokud je tato možnost povolená, e-mailová adresa použitá k přihlášení se automaticky porovná se seznamem uživatelů v cestě. Pokud se e-mailová adresa neshoduje s aktivním uživatelem, automaticky přidá nový uživatelský účet pro uživatele, který se přihlašuje, a požaduje všechny chybějící informace.
 
-    například Klikněte na **Uložit** a zachovejte nastavení.
+          > [!NOTE]
+          > Uživatelé přidaní prostřednictvím jednotného přihlašování se přidávají jako základní uživatelé a v systému se nepřiřazují role. Správce je schopný přejít do role zabezpečení a změnit ji jako editor nebo správce a může také přiřadit jednu nebo několik rolí organizačního diagramu.
+
+    1. Klikněte na **Uložit** a zachovejte nastavení.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -154,13 +154,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k cestě.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte způsob, **jakým máme**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -179,7 +179,7 @@ V této části se v takovém případě vytvoří uživatel s názvem Britta Si
 
 Když na přístupovém panelu kliknete na dlaždici způsob, že se přihlásíte k tomu, že jste nastavili jednotné přihlašování, musíte se automaticky přihlásit. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

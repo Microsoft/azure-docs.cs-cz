@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace Java, která od
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591544"
+ms.locfileid: "97607979"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
 
@@ -17,7 +17,6 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 
 > [!WARNING]
 > V tomto rychlém startu se používají staré balíčky **Azure-eventhubs** a **Azure-eventhubs-EPH** . Rychlý Start, který používá nejnovější balíček  **Azure-Messaging-eventhubs** , najdete v tématu [posílání a přijímání událostí pomocí Azure-Messaging-eventhubs](event-hubs-java-get-started-send.md). Pokud chcete aplikaci přesunout z použití starého balíčku na nový, přečtěte si [Průvodce migrace z Azure-eventhubs do Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
-
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ Pomocí transformace řetězce na jeho kódování UTF-8 Vytvořte událost v je
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -418,7 +415,6 @@ V rámci vaší implementace můžete přepsat výchozí mechanizmus kontrolníh
 Můžete použít libovolné úložiště dat, které je k dispozici ve vašem prostředí.
 
 Třída com. Microsoft. Azure. eventprocessorhost. EventProcessorHost poskytuje dva konstruktory, které umožňují přepsat Správce kontrolních bodů pro váš EventProcessorHost.
-
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články: 

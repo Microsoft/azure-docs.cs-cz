@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608778"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -36,7 +36,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 - Open source upstreamové prostředí Kubernetes obvykle nasazené s využitím nástroje kubeadm
 
 > [!IMPORTANT]
-> * Minimální podporovaná verze Kubernetes je v 1.17.
+> * Minimální podporovaná verze Kubernetes je v 1.17. Další informace najdete v tématu [známé problémy](./release-notes.md#known-issues) . 
 > * Minimální podporovaná verze OCP je 4,3.
 > * Podívejte se na [požadavky na připojení](connectivity.md) a zjistěte, co je mezi vaším prostředím a Azure vyžadováno připojení.
 > * Podrobné informace o tom, jak nakonfigurovat trvalé úložiště, najdete v tématu [pokyny ke konfiguraci úložiště](storage-configuration.md) .
@@ -64,10 +64,10 @@ Bez ohledu na to, kterou možnost zvolíte, budete muset během procesu vytvář
 K dispozici je několik možností pro vytvoření kontroleru dat ARC Azure:
 
 > **Chcete něco vyzkoušet?**  
-> Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure!
+> Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure!
 > 
 - [Vytvoření kontroleru dat pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Vytvoření kontroleru dat pomocí Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Z Azure Portal pomocí poznámkového bloku Jupyter v Azure Data Studio vytvořit řadič dat](create-data-controller-resource-in-azure-portal.md)
 - [Vytvoření kontroleru dat s Kubernetes nástroji, jako je kubectl nebo oC](create-data-controller-using-kubernetes-native-tools.md)
-- [Vytvoření kontroleru dat pomocí Azure ARC rychlé zprovoznění pro urychlené prostředí testovacího nasazení](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [Vytvoření kontroleru dat pomocí Azure ARC rychlé zprovoznění pro urychlené prostředí testovacího nasazení](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

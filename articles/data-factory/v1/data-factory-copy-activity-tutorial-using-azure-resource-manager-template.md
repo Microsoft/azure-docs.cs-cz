@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053893"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608744"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití šablony Azure Resource Manageru k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > [!NOTE] 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -341,46 +341,58 @@ Vytvořte soubor JSON s názvem **ADFCopyTutorialARM-Parameters.json**, který o
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
-2. Klikněte na **Datové továrny** v levé nabídce (nebo) klikněte na **Všechny služby** a v kategorii **INTELIGENTNÍ FUNKCE A ANALÝZY** klikněte na **Datové továrny**.
+
+1. Klikněte na **Datové továrny** v levé nabídce (nebo) klikněte na **Všechny služby** a v kategorii **INTELIGENTNÍ FUNKCE A ANALÝZY** klikněte na **Datové továrny**.
    
     ![Nabídka Datové továrny](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. Na stránce **Datové továrny** vyhledejte svou datovou továrnu (AzureBlobToAzureSQLDatabaseDF). 
+
+1. Na stránce **Datové továrny** vyhledejte svou datovou továrnu (AzureBlobToAzureSQLDatabaseDF). 
    
     ![Vyhledávání datové továrny](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. Klikněte na svou datovou továrnu Azure. Zobrazí se domovská stránka datové továrny.
+
+1. Klikněte na svou datovou továrnu Azure. Zobrazí se domovská stránka datové továrny.
    
     ![Domovská stránka datové továrny](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. Postupujte podle pokynů v tématu [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md) k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu. V současné době Visual Studio monitorování kanálů Data Factory nepodporuje.
-7. Když je řez ve stavu **připraveno** , ověřte, že se data zkopírují do tabulky **EMP** v Azure SQL Database.
 
+1. Postupujte podle pokynů v tématu [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md) k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu. V současné době Visual Studio monitorování kanálů Data Factory nepodporuje.
+
+1. Když je řez ve stavu **připraveno** , ověřte, že se data zkopírují do tabulky **EMP** v Azure SQL Database.
 
 Další informace o používání oken portálu Azure Portal k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu, najdete v článku [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md).
 
 Další informace o používání aplikace pro monitorování a správu k monitorování datových kanálů najdete v tématu [Monitorování a správa kanálů služby Azure Data Factory pomocí monitorovací aplikace](data-factory-monitor-manage-app.md).
 
 ## <a name="data-factory-entities-in-the-template"></a>Entity služby Data Factory v šabloně
+
 ### <a name="define-data-factory"></a>Definování datové továrny
-Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v následující ukázce:  
+
+Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v následující ukázce:
 
 ```json
-"resources": [
 {
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
+  "resources": [
+    {
+      "name": "[variables('dataFactoryName')]",
+      "apiVersion": "2015-10-01",
+      "type": "Microsoft.DataFactory/datafactories",
+      "location": "West US"
+    }
+  ]
 }
 ```
 
 Hodnota dataFactoryName je definována takto: 
 
 ```json
-"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+{
+    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+}
 ```
 
-Je to jedinečný řetězec vycházející z ID skupiny prostředků.  
+Je to jedinečný řetězec vycházející z ID skupiny prostředků.
 
 ### <a name="defining-data-factory-entities"></a>Definování entit služby Data Factory
+
 V šabloně JSON jsou definovány následující entity služby Data Factory: 
 
 1. [Propojená služba Azure Storage](#azure-storage-linked-service)
@@ -390,6 +402,7 @@ V šabloně JSON jsou definovány následující entity služby Data Factory:
 5. [Data Pipeline s aktivitou kopírování](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
+
 Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. V rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) jste vytvořili kontejner a nahráli data do tohoto účtu úložiště. V tomto oddílu zadáte název a klíč svého účtu služby Azure Storage. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure Storage najdete v oddílu [Propojená služba Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service). 
 
 ```json
@@ -413,6 +426,7 @@ Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s�
 Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a DataFactory definované v šabloně. 
 
 #### <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database
+
 AzureSqlLinkedService propojuje vaši databázi v Azure SQL Database s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp. V této části zadáte název logického serveru SQL, název databáze, uživatelské jméno a heslo uživatele. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure SQL najdete v oddílu [Propojená služba Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
@@ -424,11 +438,11 @@ AzureSqlLinkedService propojuje vaši databázi v Azure SQL Database s datovou t
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureSqlDatabase",
-          "description": "Azure SQL linked service",
-          "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-          }
+      "type": "AzureSqlDatabase",
+      "description": "Azure SQL linked service",
+      "typeProperties": {
+        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+      }
     }
 }
 ```

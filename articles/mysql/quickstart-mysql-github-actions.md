@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357565"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607962"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rychlý Start: použití akcí GitHubu pro připojení k Azure MySQL
 
 **Platí pro**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-Single server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-flexibilní Server
 
-Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
 
 ## <a name="prerequisites"></a>Předpoklady
