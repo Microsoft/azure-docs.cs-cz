@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854049"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591818"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
 Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP.  
 
 
-## <a name="before-you-begin"></a>Než začnete 
+## <a name="before-you-begin"></a>Před zahájením 
 
 * Je potřeba, abyste už vytvořili fond kapacit.  
     Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).   
@@ -49,8 +49,8 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     
     | Styl zabezpečení    | Klienti, kteří mohou měnit oprávnění   | Oprávnění, která mohou klienti používat  | Výsledný efektivní styl zabezpečení    | Klienti, kteří mají přístup k souborům     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | Bity režimu NFSv3   | UNIX  | Systém souborů NFS a Windows   |
-    | NTFS  | Windows   | Seznamy řízení přístupu NTFS     | NTFS  |Systém souborů NFS a Windows|
+    | `Unix`    | NFS   | Bity režimu NFSv3   | UNIX  | Systém souborů NFS a Windows   |
+    | `Ntfs`    | Windows   | Seznamy řízení přístupu NTFS     | NTFS  |Systém souborů NFS a Windows|
 * Uživatelé systému UNIX, kteří přidávají svazek se zabezpečením NTFS pomocí systému souborů NFS, budou ověřeni jako uživatel systému Windows `root` pro systém UNIX `root` a `pcuser` pro všechny ostatní uživatele. Před připojením svazku při použití systému souborů NFS se ujistěte, že tyto uživatelské účty existují ve službě Active Directory. 
 
 

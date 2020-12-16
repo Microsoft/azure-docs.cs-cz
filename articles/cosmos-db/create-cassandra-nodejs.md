@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6b05e8fbd2f688b4dd5611302c8df1b1deb16ab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b9e036df91eecadc701664a19905a92c142b7585
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099789"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591884"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady Node.js SDK a Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -107,7 +107,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
    ```javascript
    function createTable(next) {
-    var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
+       var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
         client.execute(query, next);
         console.log("created table");
    },
@@ -149,7 +149,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
             });
         },
     ```  
-    
+
 * Spustí se dotaz pro získání páru klíč-hodnota.
 
     ```javascript
@@ -170,7 +170,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
 
-1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec** . 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
 
 1. Pomocí :::image type="icon" source="./media/create-cassandra-nodejs/copy.png"::: tlačítka na pravé straně obrazovky zkopírujte horní hodnotu a kontaktní bod.
 
@@ -189,7 +189,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     Řádek 2 by teď měl vypadat nějak takto: 
 
     `config.username = 'cosmos-db-quickstart';`
-    
+
 1. Zkopírujte z portálu hodnotu HESLO a vložte ji místo `<FillMEIN>` na řádku 3.
 
     Řádek 3 by teď měl vypadat nějak takto:
@@ -197,12 +197,12 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     `config.password = '2Ggkr662ifxz2Mg==';`
 
 1. Uložte soubor `config.js`.
-    
+
 ## <a name="use-the-x509-certificate"></a>Použití certifikátu X509
 
 1. Stáhněte si kořenový certifikát Baltimore CyberTrust z umístění v místním počítači [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Přejmenujte příponu souboru na `.cer`.
 
-   Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
+   Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
 2. Otevřete `uprofile.js` a změňte cestu `path\to\cert` tak, aby odkazovala na váš nový certifikát.
 
@@ -213,11 +213,11 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 > 
 > Dvojím kliknutím na soubor. CRT ho otevřete v zobrazení certifikátu. 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Zobrazení a zkopírování hodnot KONTAKTNÍ BOD, UŽIVATELSKÉ JMÉNO a HESLO ze stránky připojovacího řetězce na webu Azure Portal":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Snímek obrazovky, který zobrazuje okno certifikátu.":::
 >
 > V průvodci certifikátem klikněte na tlačítko Další. Vyberte X. 509 s kódováním Base-64 (. CER) a pak klikněte na další.
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Zobrazení a zkopírování hodnot KONTAKTNÍ BOD, UŽIVATELSKÉ JMÉNO a HESLO ze stránky připojovacího řetězce na webu Azure Portal":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Snímek obrazovky zobrazující kódovaný znak X. 509 s kódováním Base-64 (. CER) – možnost.":::
 >
 > Vyberte Procházet (vyhledat cíl) a zadejte název souboru.
 > Vyberte další a dokončit.
@@ -238,13 +238,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 4. Na příkazovém řádku zkontrolujte očekávané výsledky.
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Zobrazení a zkopírování hodnot KONTAKTNÍ BOD, UŽIVATELSKÉ JMÉNO a HESLO ze stránky připojovacího řetězce na webu Azure Portal":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Zobrazení a ověření výstupu":::
 
     Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly. 
 
-5. Na portálu Azure Portal otevřete **Data Explorer** , abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+5. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Zobrazení a zkopírování hodnot KONTAKTNÍ BOD, UŽIVATELSKÉ JMÉNO a HESLO ze stránky připojovacího řetězce na webu Azure Portal"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Zobrazení dat v Průzkumníku dat"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

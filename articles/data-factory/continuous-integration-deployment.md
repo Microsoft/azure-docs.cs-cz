@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902294"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591892"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
@@ -41,7 +41,7 @@ Níže najdete ukázkový Přehled životního cyklu CI/CD v objektu pro vytvá�
 
 1.  Vývojář [vytvoří větev funkcí](source-control.md#creating-feature-branches) , aby provedla změnu. Spouštějí jejich kanály s nejnovějšími změnami. Další informace o tom, jak ladit spuštění kanálu, najdete v tématu [iterativní vývoj a ladění pomocí Azure Data Factory](iterative-development-debugging.md).
 
-1.  Jakmile je vývojář spokojen s jejich změnami, vytvoří žádost o přijetí změn ze své větve funkcí do hlavní větve nebo do větve pro spolupráci, aby byly změny zkontrolovány partnerskými uzly.
+1.  Jakmile je vývojář spokojen s jejich změnami, vytvoří žádost o přijetí změn ze své větve funkcí do hlavní větve nebo do větve pro spolupráci, aby byly změny zkontrolovány pomocí partnerských uzlů.
 
 1.  Po schválení žádosti o přijetí změn a jejich sloučení do hlavní větve se změny publikují do továrny pro vývoj.
 
@@ -305,7 +305,7 @@ Tady je příklad toho, co může šablona Parametrizace vypadat jako:
 ```
 Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
 
-#### <a name="pipelines"></a>Kanály
+#### <a name="pipelines"></a>Pipelines
     
 * Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
 * Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (JObject). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.
@@ -314,10 +314,10 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 * Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties` . Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Aktivační procedury
+#### <a name="triggers"></a>Aktivační události
 
 * V rámci `typeProperties` jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency` , který má mít výchozí hodnotu a je typu `string` . Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency` .
-* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `int` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
+* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `int` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
