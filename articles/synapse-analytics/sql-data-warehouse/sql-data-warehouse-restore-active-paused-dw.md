@@ -1,5 +1,5 @@
 ---
-title: Obnovení existujícího vyhrazeného fondu SQL
+title: Obnovení existujícího vyhrazeného fondu SQL (dřív SQL DW)
 description: Návod pro obnovení existujícího vyhrazeného fondu SQL ve službě Azure synapse Analytics
 services: synapse-analytics
 author: anumjs
@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d3c84f7d951db715d26042f524f385826197e076
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2ce552a13592c9d26ef70575f98b0b76ecc454ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450005"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591986"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Obnovení existujícího vyhrazeného fondu SQL (dřív SQL DW)
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak obnovit existující vyhrazený fond SQL (dř�
 
 **Ověřte svoji kapacitu DTU.** Každý fond je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, že server má pro obnovenou databázi dostatečný počet zbývajících kvót DTU. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 1. Nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Máte existující bod obnovení, ze kterého chcete obnovit. Pokud chcete vytvořit nové obnovení, přečtěte si [kurz vytvoření nového bodu obnovení definovaného uživatelem](sql-data-warehouse-restore-points.md).
@@ -91,7 +91,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw-through-the-azure-portal"></a>Obnovte existující vyhrazený fond SQL (dřív SQL DW) prostřednictvím Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejděte na vyhrazené, ze kterého chcete obnovit.
 3. V horní části okna Přehled vyberte **obnovit**.
 

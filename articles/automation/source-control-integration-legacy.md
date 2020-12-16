@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187332"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591869"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Použití integrace správy zdrojového kódu v Azure Automation – starší verze
 
@@ -34,14 +34,14 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
 ### <a name="set-up-source-control"></a>Nastavení správy zdrojového kódu
 
-1. Na stránce účet Automation v Azure Portal v části **Nastavení účtu**klikněte na **Správa zdrojového kódu.**
+1. Na stránce účet Automation v Azure Portal v části **Nastavení účtu** klikněte na **Správa zdrojového kódu.**
 
 2. Otevře se stránka Správa zdrojového kódu, kde můžete nakonfigurovat podrobnosti o svém účtu GitHubu. Níže je uvedený seznam parametrů ke konfiguraci:  
 
    | **Parametr** | **Popis** |
    |:--- |:--- |
    | Zvolit zdroj |Vyberte zdroj. V současné době se podporuje jenom **GitHub** . |
-   | Autorizace |Kliknutím na tlačítko **autorizovat** udělíte Azure Automation přístup k úložišti GitHub. Pokud jste už přihlášení k účtu GitHub v jiném okně, použijí se přihlašovací údaje tohoto účtu. Po úspěšném ověření se na stránce v části **vlastnost autorizace**zobrazí uživatelské jméno GitHubu. |
+   | Autorizace |Kliknutím na tlačítko **autorizovat** udělíte Azure Automation přístup k úložišti GitHub. Pokud jste už přihlášení k účtu GitHub v jiném okně, použijí se přihlašovací údaje tohoto účtu. Po úspěšném ověření se na stránce v části **vlastnost autorizace** zobrazí uživatelské jméno GitHubu. |
    | Zvolit úložiště |Vyberte úložiště GitHub ze seznamu dostupných úložišť. |
    | Zvolit větev |Vyberte větev ze seznamu dostupných větví. Pokud jste nevytvořili žádné větve, zobrazí se jenom **Hlavní** větev. |
    | Cesta ke složce sady Runbook |Cesta ke složce sady Runbook Určuje cestu v úložišti GitHub, ze které chcete vložit nebo načíst svůj kód. Musí být zadán ve formátu **/FolderName/subfoldername**. Pouze Runbooky v cestě ke složce sady Runbook budou synchronizovány do vašeho účtu Automation. Runbooky v podsložkách cesty ke složce sady **Runbook nebudou** synchronizovány. Použijte **/** k synchronizaci všech runbooků v úložišti. |
@@ -53,7 +53,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 4. Po nakonfigurování parametrů se zobrazí na stránce nastavit správu zdrojového kódu.  
 
     ![Stránka Správa zdrojového kódu zobrazující nastavení](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
-5. Po kliknutí na **OK**se integrace správy zdrojového kódu teď nakonfigurovala pro váš účet Automation a měla by se aktualizovat s informacemi z GitHubu. Nyní můžete kliknutím na tuto část zobrazit veškerou historii úloh synchronizace správy zdrojového kódu.  
+5. Po kliknutí na **OK** se integrace správy zdrojového kódu teď nakonfigurovala pro váš účet Automation a měla by se aktualizovat s informacemi z GitHubu. Nyní můžete kliknutím na tuto část zobrazit veškerou historii úloh synchronizace správy zdrojového kódu.  
 
     ![Hodnoty pro aktuálně konfigurovanou konfiguraci správy zdrojového kódu](media/source-control-integration-legacy/automation-RepoValues.png)
 6. Po nastavení správy zdrojového kódu se ve vašem účtu Automation vytvoří dva [prostředky s proměnnými](./shared-resources/variables.md) . Do vašeho účtu GitHubu se navíc přidá autorizovaná aplikace.
@@ -66,7 +66,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
      | `Type`  |Řetězec |
      | `Value` |{"Větev": \<*Your branch name*> , "RunbookFolderPath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "úložiště": \<*Name of your repository*> , "username": \<*Your GitHub user name*> } |
 
-   * Proměnná **Microsoft. Azure. Automation. SourceControl. OAuthToken**obsahuje zabezpečenou šifrovanou hodnotu vašeho OAuthToken.  
+   * Proměnná **Microsoft. Azure. Automation. SourceControl. OAuthToken** obsahuje zabezpečenou šifrovanou hodnotu vašeho OAuthToken.  
 
      |**Parametr**            |**Hodnota** |
      |:---|:---|
@@ -76,7 +76,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
      ![Okno zobrazující proměnné správy zdrojového kódu](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * **Správa zdrojového kódu** se přidá jako autorizovaná aplikace do vašeho účtu GitHubu. Pokud chcete zobrazit aplikaci, na domovské stránce GitHubu přejděte na nastavení **profilu**  >  **Settings**  >  **aplikace**. Tato aplikace umožňuje Azure Automation synchronizovat úložiště GitHub s účtem Automation.  
+   * **Správa zdrojového kódu** se přidá jako autorizovaná aplikace do vašeho účtu GitHubu. Pokud chcete zobrazit aplikaci, na domovské stránce GitHubu přejděte na nastavení **profilu**  >    >  **aplikace**. Tato aplikace umožňuje Azure Automation synchronizovat úložiště GitHub s účtem Automation.  
 
      ![Nastavení aplikace na GitHubu](media/source-control-integration-legacy/automation-GitApplication.png)
 
