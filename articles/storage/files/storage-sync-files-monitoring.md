@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008295"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586546"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -161,7 +161,7 @@ Stav vrstvení cloudu
   - Událost s ID 9003 poskytuje distribuci chyb pro koncový bod serveru. Příklad: celkový počet chyb a kód chyby. Jedna událost je protokolována podle kódu chyby.
   - ID události 9016 poskytuje duplikování výsledků pro svazek. Například: volné místo v procentech je, počet souborů, které byly v relaci opuštěné, a počet souborů, jejichž počet se nezdařil.
   - Událost s ID 9029 poskytuje duplikaci informací o relaci koncového bodu serveru. Například: počet souborů, které se v relaci pokoušely, počet souborů vrstvených v relaci a počet souborů, které jsou již vrstveny.
-  
+
 - Chcete-li monitorovat aktivitu odvolání na serveru, použijte ID události 9005, 9006, 9009, 9059 a 9071 v protokolu událostí telemetrie, který je umístěn v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
   - Událost s ID 9005 poskytuje spolehlivost odvolání pro koncový bod serveru. Například: celkový přístup k jedinečným souborům a celkový počet jedinečných souborů s neúspěšným přístupem.
@@ -192,7 +192,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
 
   > [!Note]  
   > Pokud vytvoříte výstrahu a je příliš hlučná, upravte prahovou hodnotu a logiku výstrahy.
-  
+
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Jak vytvořit výstrahu v případě, že stav koncového bodu serveru zobrazuje chybu na portálu
 
 1. V **Azure Portal** přejděte do příslušné **služby synchronizace úložiště**. 
@@ -201,16 +201,16 @@ V této části najdete příklady výstrah pro Azure File Sync.
 4. Kliknutím na **vybrat podmínku** nakonfigurujte podmínku.
 5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **výsledek synchronizace relace** .  
 6. Vyberte následující konfiguraci dimenzí: 
-    - Název dimenze: **název koncového bodu serveru**  
-    - Podnikatel **=** 
-    - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
+     - Název dimenze: **název koncového bodu serveru**  
+     - Podnikatel **=** 
+     - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
 7. Přejděte do **logiky výstrah** a proveďte následující: 
-    - Prahová hodnota nastavená na **static** 
-    - Operátor: **menší než** 
-    - Typ agregace: **Maximum**  
-    - Prahová hodnota: **1** 
-    - Vyhodnocováno podle: členitosti agregace = **24 hodin** | Frekvence vyhodnocení = **každou hodinu** 
-    - Klikněte na **Hotovo.** 
+     - Prahová hodnota nastavená na **static** 
+     - Operátor: **menší než** 
+     - Typ agregace: **Maximum**  
+     - Prahová hodnota: **1** 
+     - Vyhodnocováno podle: členitosti agregace = **24 hodin** | Frekvence vyhodnocení = **každou hodinu** 
+     - Klikněte na **Hotovo.** 
 8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 10. Klikněte na **Vytvořit pravidlo upozornění**. 
@@ -254,7 +254,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
      - Typ agregace: **Maximum**  
      - Prahová hodnota (v bajtech): **1** 
      - Vyhodnoceno na základě členitosti agregace = **1 hodina** | Frekvence vyhodnocení = **každých 30 minut** 
-        - Všimněte si, že metriky se odesílají do Azure Monitor každých 15 až 20 minut. Nenastavujte **četnost vyhodnocení** na méně než 30 minut (vygeneruje falešná upozornění).
+         - Všimněte si, že metriky se odesílají do Azure Monitor každých 15 až 20 minut. Nenastavujte **četnost vyhodnocení** na méně než 30 minut (vygeneruje falešná upozornění).
      - Klikněte na **Hotovo.** 
 8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
@@ -277,7 +277,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
      - Typ agregace: **celkem**  
      - Prahová hodnota (v bajtech): **67108864000** 
      - Vyhodnocováno podle: členitosti agregace = **24 hodin** | Frekvence vyhodnocení = **každou hodinu** 
-    - Klikněte na **Hotovo.** 
+     - Klikněte na **Hotovo.** 
 8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
 10. Klikněte na **Vytvořit pravidlo upozornění**. 

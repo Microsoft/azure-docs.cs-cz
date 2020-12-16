@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 854c988346bce9be06811d386b3798d2d0427dd7
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095921"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585377"
 ---
 # <a name="ncv3-series"></a>Řada NCv3
 
@@ -23,6 +23,7 @@ Virtuální počítače řady NCv3-Series využívají grafické procesory NVIDI
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+NVIDIA NVLink Interconnect: nepodporováno<br>
 
 > [!IMPORTANT]
 > Pro tuto řadu virtuálních počítačů je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/). Tyto SKU nejsou k dispozici pro zkušební verze nebo předplatné Azure pro předplatitele sady Visual Studio. Vaše úroveň předplatného nemusí podporovat výběr nebo nasazení těchto SKU. 

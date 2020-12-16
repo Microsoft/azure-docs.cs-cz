@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356378"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587277"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
@@ -165,6 +165,21 @@ Laser používaný hloubkovou kamerou k výpočtu dat hloubky obrazu má omezen�
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Použití sady SDK pro sledování těla pomocí Unreal
 
 Chcete-li použít sadu SDK pro sledování textu s Unreal, ujistěte se, že jste přidali `<SDK Installation Path>\tools` proměnnou prostředí `PATH` a zkopírovali `dnn_model_2_0.onnx` `cudnn64_7.dll` do `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` .
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Použití Azure Kinect na bezobslužném systému Linux
+
+Modul pro hloubku Azure Kinect v systému Linux používá OpenGL. OpenGL vyžaduje instanci okna, která vyžaduje, aby monitorování bylo připojené k systému. Alternativní řešení pro tento problém:
+
+1. Povolte automatické přihlašování pro uživatelský účet, který plánujete použít. Pokyny, jak povolit automatické přihlašování, najdete v [tomto](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) článku.
+2. Vypněte systém, odpojte monitor a zapněte systém. Automatické přihlašování vynutí vytvoření relace x-serveru.
+2. Připojení přes SSH a nastavení proměnné pro zobrazení ENV `export DISPLAY=:0`
+3. Spusťte aplikaci Azure Kinect.
+
+## <a name="missing-c-documentation"></a>Chybějící dokumentace jazyka C#
+
+Dokumentace k sadě senzor SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
+
+Dokumentace pro sledování těla sady SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263444"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586699"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services
 
@@ -31,7 +31,7 @@ ms.locfileid: "89263444"
 
 Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa pomocí služby Azure Media Services s využitím Java SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro dokončení tohoto kurzu potřebujete následující položky:
 
@@ -51,7 +51,7 @@ Pokud například jako nástroj pro sestavování používáte `gradle`, přidej
 >Počínaje balíčkem `azure-media` verze `0.9.8` se v sadě SDK přidala podpora pro ověřování Azure Active Directory (AAD) a odebrala podpora pro ověřování Azure Access Control Service (ACS). Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve. Podrobné informace o migraci najdete v článku věnovaném [přístupu k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
->Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Zkontrolujte, že jste přešli k větvi 0.9, nikoli k hlavní větvi. 
+>Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Ujistěte se, že jste přešli na větev 0,9, a ne na hlavní větev. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Postupy: Používání Azure Media Services s Javou
 

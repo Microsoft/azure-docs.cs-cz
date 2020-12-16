@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544507"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585764"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Nejčastější dotazy týkající se vývoje Azure cache pro Redis
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se vývoje pro službu Azure cache pro Redis.
 
-## <a name="common-questions-and-answers"></a>Časté otázky a odpovědi
+## <a name="common-questions-and-answers"></a>Běžné otázky a odpovědi
 Tato část obsahuje následující Nejčastější dotazy:
 
 * [Jak můžu začít pracovat s Azure cache pro Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -55,7 +55,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
 
 * **Opakování**
   * V případě ConnectRetry a ConnectTimeout je obecné pokyny pro rychlé selhání a zkuste to znovu. Tyto doprovodné materiály jsou založené na vašich úlohách a o tom, kolik času v průměru trvá klientovi, aby vydával příkaz Redis a dostal odpověď.
-  * Nechejte StackExchange. Redis automaticky znovu připojit místo kontroly stavu připojení a opětovném připojení. **Vyhněte se použití vlastnosti ConnectionMultiplexer. nepřipojená** .
+  * Nechejte StackExchange. Redis automaticky znovu připojit místo kontroly stavu připojení a opětovném připojení. **Vyhněte se použití vlastnosti ConnectionMultiplexer. nepřipojená**.
   * Snowballing – někdy můžete narazit na problém, ve kterém zkoušíte, a pokusy Snowball a nikdy se neobnoví. Pokud dojde k Snowballing, měli byste zvážit použití exponenciálního algoritmu opakování omezení rychlosti, jak je popsáno v [obecných pokynech](/azure/architecture/best-practices/transient-faults) , které publikovala skupina Microsoft patterns & Practices.
   
 * **Hodnoty časového limitu**
@@ -64,12 +64,12 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
   * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
-      * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
-      * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
-      * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
-      * Nastavte `ClientName` u každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
-      * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer` .
+    * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
+    * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
+    * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
+    * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
+    * Nastavte `ClientName` u každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
+    * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakou mezipaměť Azure pro klienty Redis můžu použít?
 Jednou z skvělých věcí o Redis je to, že mnoho klientů podporuje mnoho různých vývojových jazyků. Aktuální seznam klientů najdete v tématu [Redis klienti](https://redis.io/clients). Výukové kurzy, které pokrývají několik různých jazyků a klientů, najdete v článku [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a na stejné úrovni jako v obsahu.

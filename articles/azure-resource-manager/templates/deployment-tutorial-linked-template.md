@@ -5,12 +5,12 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368099"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585645"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Kurz: nasazení propojené šablony
 
@@ -32,7 +32,7 @@ Prostředek účtu úložiště můžete oddělit do propojené šablony:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Následující šablona je hlavní šablonou. Zvýrazněný `Microsoft.Resources/deployments` objekt ukazuje, jak zavolat propojenou šablonu. Propojená šablona nemůže být uložena jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat jenom hodnotu identifikátoru URI, která obsahuje buď `HTTP` nebo `HTTPS` . Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
+Následující šablona je hlavní šablonou. Zvýrazněný `Microsoft.Resources/deployments` objekt ukazuje, jak zavolat propojenou šablonu. Propojená šablona nemůže být uložena jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat jenom hodnotu identifikátoru URI, která zahrnuje buď HTTP, nebo HTTPS. Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 

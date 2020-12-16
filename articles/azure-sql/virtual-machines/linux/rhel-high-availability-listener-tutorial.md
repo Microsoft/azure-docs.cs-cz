@@ -7,12 +7,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359978"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586207"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -262,6 +262,10 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
     ```
 
 1. Pomocí příkazu zkontrolujte prostředky clusteru `sudo pcs resource` a měli byste vidět, že je primární instance nyní `<VM2>` .
+
+    > [!NOTE]
+    > Tento článek obsahuje odkazy na podřízený termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

@@ -3,21 +3,21 @@ title: Povolení pro zotavení po havárii virtuálních počítačů VMware pom
 description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004207"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587742"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
 
 Tento článek popisuje, jak povolit replikaci místních virtuálních počítačů VMware do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že váš systém splňuje následující kritéria:
 
@@ -84,7 +84,7 @@ Pokud chcete povolit replikaci, postupujte následovně:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Povolit okno pro konfiguraci replikace – vlastnosti":::
 
-1. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace** a ověřte, jestli je vybraná správná zásada replikace. Nastavení zásad replikace můžete upravit nastavením zásady **Settings**  >  **replikace** nastavení  >  _název_  >  **Upravit nastavení**. Změny použité u zásad platí taky pro replikaci a nové virtuální počítače.
+1. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace** a ověřte, jestli je vybraná správná zásada replikace. Nastavení zásad replikace můžete upravit nastavením zásady   >  **replikace** nastavení  >  _název_  >  **Upravit nastavení**. Změny použité u zásad platí taky pro replikaci a nové virtuální počítače.
 1. Pokud chcete shromáždit virtuální počítače do replikační skupiny, povolte **konzistenci pro víc virtuálních počítačů**. Zadejte název skupiny a pak vyberte **OK**.
 
    > [!NOTE]
@@ -94,6 +94,41 @@ Pokud chcete povolit replikaci, postupujte následovně:
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Povolit okno replikace":::
 
 1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení**  >  **úlohy**  >  **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připravený na převzetí služeb při selhání.
+
+## <a name="monitor-initial-replication"></a>Monitorování počáteční replikace
+
+Po dokončení možnosti Povolit replikaci chráněné položky Azure Site Recovery iniciuje replikaci dat ze zdrojového počítače do cílové oblasti. Během této doby se vytvoří replika zdrojových disků. Změny rozdílů se zkopírují do cílové oblasti jenom po dokončení kopírování původních disků. Doba potřebná ke kopírování původních disků závisí na několika parametrech, jako například:
+
+- Velikost disků zdrojového počítače
+- Šířka pásma dostupná pro přenos dat do Azure (můžete využít Plánovač nasazení k identifikaci požadované optimální šířky pásma)
+- prostředky procesového serveru, jako je paměť, volné místo na disku, procesor dostupný pro ukládání do mezipaměti & zpracovat data přijatá z chráněných položek (Ujistěte se, že procesový Server je [v pořádku](vmware-physical-azure-monitor-process-server.md#monitor-proactively))
+
+Chcete-li sledovat průběh počáteční replikace, přejděte do trezoru služby Recovery Services v Azure Portal > replikovaných položkách – > hodnotu sloupce "stav" replikované položky. Stav zobrazuje procento dokončení počáteční replikace. Po najetí myší na stav budou k dispozici "Total data přenesená". Po kliknutí na stav se otevře kontextová stránka a zobrazí se následující parametry:
+
+- Poslední aktualizace: označuje poslední čas, kdy služba obnovila informace o replikaci celého počítače.
+- Dokončeno% – indikuje procento počáteční replikace pro virtuální počítač.
+- Celkový počet přenesených dat – objem dat přenesených z virtuálního počítače do Azure
+
+:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="stav replikace" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- Průběh synchronizace (sledování podrobností na úrovni disku)
+    - Stav replikace
+      - Pokud se replikace ještě spustí, stav se aktualizuje jako ve frontě. Během počáteční replikace se replikují jenom 3 disky. Tento mechanismus je následován, aby nedocházelo k omezování na procesovém serveru.
+      - Po spuštění replikace se stav aktualizuje na probíhá.
+      - Po dokončení počáteční replikace se stav označí jako dokončený.        
+   - Site Recovery čte přes původní disk, přenáší data do Azure a zachycuje průběh na úrovni disku. Všimněte si, že Site Recovery přeskočí replikaci neobsazené velikosti disku a přidá ji do dokončených dat. To znamená, že součet dat přenesených na všech discích se nemusí na úrovni virtuálního počítače přidat k celkovému počtu přenesených dat.
+   - Když kliknete na informační bublinu na disku, můžete získat podrobnosti o tom, kdy se pro disk aktivovala replikace (synonymum for Synchronization), data přenesená do Azure za posledních 15 minut a za poslední obnovené časové razítko. Toto časové razítko indikuje poslední čas, kdy služba Azure přijala informace ze zdrojového počítače :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="počáteční replikace-informace-bublina-podrobnosti" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png"::: .
+   - Zobrazí se stav jednotlivých disků.
+      - Pokud je replikace pomalejší, než se očekávalo, stav disku se změní na upozornění.
+      - Pokud replikace nepokračuje, stav disku se změní na kritický.
+
+Pokud je stav v kritickém nebo varovném stavu, ujistěte se, že stav replikace v počítači a na serveru [procesu](vmware-physical-azure-monitor-process-server.md) jsou v pořádku. 
+
+Jakmile je úloha povolit replikaci dokončená, průběh replikace by byl 0% a celková přenesená data by byla NA. Po kliknutí budou data u jednotlivých identifikovaných disků "NA". To znamená, že replikace je ještě spuštěná a Azure Site Recovery ještě získat nejnovější statistiky. Průběh se aktualizuje v intervalu 30 min.
+
+> [!NOTE]
+> Nezapomeňte aktualizovat konfigurační servery, procesní servery se škálováním na více systémů a agenty mobility na verze 9,36 nebo vyšší, aby bylo zajištěno, že se přes Site Recovery služby zachytí a pošle správný průběh.
+
 
 ## <a name="view-and-manage-vm-properties"></a>Zobrazení a správa vlastností virtuálního počítače
 

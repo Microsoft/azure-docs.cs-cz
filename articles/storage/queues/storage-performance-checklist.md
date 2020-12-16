@@ -1,58 +1,60 @@
 ---
-title: Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue Azure Storage
-description: Kontrolní seznam osvědčených postupů pro použití s úložištěm front při vývoji vysoce výkonných aplikací.
-services: storage
+title: Kontrolní seznam pro výkon a škálovatelnost Queue Storage-Azure Storage
+description: Kontrolní seznam osvědčených postupů pro použití s Queue Storage při vývoji vysoce výkonných aplikací.
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345750"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585662"
 ---
-# <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue
+<!-- docutune:casing "Timeout and Server Busy errors" -->
 
-Společnost Microsoft vyvinula řadu osvědčených postupů pro vývoj vysoce výkonných aplikací s využitím služby Queue Storage. Tento kontrolní seznam popisuje klíčové postupy, které můžou vývojáři použít k optimalizaci výkonu. Při navrhování aplikace a celého procesu mějte na paměti tyto postupy.
+# <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro Queue Storage
 
-Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) a [škálovatelnost a výkonnostní cíle pro úložiště front](scalability-targets.md).
+Společnost Microsoft vyvinula řadu osvědčených postupů pro vývoj vysoce výkonných aplikací s Queue Storage. Tento kontrolní seznam popisuje klíčové postupy, které můžou vývojáři použít k optimalizaci výkonu. Při navrhování aplikace a celého procesu mějte na paměti tyto postupy.
+
+Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) a [škálovatelnost a výkonnostní cíle pro Queue Storage](scalability-targets.md).
 
 ## <a name="checklist"></a>Kontrolní seznam
 
-Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznamu, který můžete sledovat při vývoji aplikace úložiště front.
+Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznamu, který můžete sledovat při vývoji aplikace Queue Storage.
 
 | Hotovo | Kategorie | Aspekt návrhu |
-| --- | --- | --- |
-| &nbsp; |Cíle škálovatelnosti |[Můžete navrhnout aplikaci tak, aby nepoužívala více než maximální počet účtů úložiště?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Cíle škálovatelnosti |[Nechcete se vyhnout přístupu k kapacitě a omezením transakcí?](#capacity-and-transaction-targets) |
-| &nbsp; |Sítě |[Mají zařízení na straně klienta dostatečně velkou šířku pásma a nízkou latenci pro dosažení potřebného výkonu?](#throughput) |
-| &nbsp; |Sítě |[Má zařízení na straně klienta vysoce kvalitní síťový odkaz?](#link-quality) |
-| &nbsp; |Sítě |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
-| &nbsp; |Přímý přístup klienta |[Používáte k tomu přímý přístup k Azure Storage pomocí sdílených přístupových podpisů (SAS) a sdílení prostředků mezi zdroji (CORS)?](#sas-and-cors) |
-| &nbsp; |Konfigurace .NET |[Používáte pro optimální výkon .NET Core 2,1 nebo novější?](#use-net-core) |
-| &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
-| &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
-| &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
-| &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
-| &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
-| &nbsp; |Konfigurace |[Vypnuli jste Nagle algoritmus, aby se zlepšil výkon malých požadavků?](#disable-nagle) |
-| &nbsp; |Velikost zpráv |[Mají vaše zprávy kompresi pro zlepšení výkonu fronty?](#message-size) |
-| &nbsp; |Hromadné načtení |[Načítáte více zpráv v rámci jedné operace GET?](#batch-retrieval) |
-| &nbsp; |Frekvence cyklického dotazování |[Je dotazování na často dostatečně časté, aby se snížila zjištěná latence vaší aplikace?](#queue-polling-interval) |
-| &nbsp; |Aktualizovat zprávu |[Používáte operaci aktualizovat zprávu pro uložení průběhu zpracování zpráv, abyste se mohli vyhnout nutnosti opakovanému zpracování celé zprávy, pokud dojde k chybě?](#use-update-message) |
-| &nbsp; |Architektura |[Používáte fronty k zajištění větší škálovatelnosti celé aplikace tím, že zachováte dlouhodobě spuštěné úlohy ze kritické cesty a škálování pak nezávisle na sobě?](#application-architecture) |
+|--|--|--|
+| &nbsp; | Cíle škálovatelnosti | [Můžete navrhnout aplikaci tak, aby nepoužívala více než maximální počet účtů úložiště?](#maximum-number-of-storage-accounts) |
+| &nbsp; | Cíle škálovatelnosti | [Nechcete se vyhnout přístupu k kapacitě a omezením transakcí?](#capacity-and-transaction-targets) |
+| &nbsp; | Sítě | [Mají zařízení na straně klienta dostatečně velkou šířku pásma a nízkou latenci pro dosažení potřebného výkonu?](#throughput) |
+| &nbsp; | Sítě | [Má zařízení na straně klienta vysoce kvalitní síťový odkaz?](#link-quality) |
+| &nbsp; | Sítě | [Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
+| &nbsp; | Přímý přístup klienta | [Používáte k tomu přímý přístup k Azure Storage pomocí sdílených přístupových podpisů (SAS) a sdílení prostředků mezi zdroji (CORS)?](#sas-and-cors) |
+| &nbsp; | Konfigurace .NET | [Používáte pro optimální výkon .NET Core 2,1 nebo novější?](#use-net-core) |
+| &nbsp; | Konfigurace .NET | [Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
+| &nbsp; | Konfigurace .NET | [Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-the-minimum-number-of-threads) |
+| &nbsp; | Paralelismu | [Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
+| &nbsp; | nástroje | [Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; | Opakování | [Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
+| &nbsp; | Opakování | [Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
+| &nbsp; | Konfigurace | [Vypnuli jste algoritmus Nagle, aby se zlepšil výkon malých požadavků?](#disable-nagles-algorithm) |
+| &nbsp; | Velikost zpráv | [Mají vaše zprávy kompresi pro zlepšení výkonu fronty?](#message-size) |
+| &nbsp; | Hromadné načtení | [Načítáte více zpráv v rámci jedné operace Get?](#batch-retrieval) |
+| &nbsp; | Frekvence cyklického dotazování | [Je dotazování na často dostatečně časté, aby se snížila zjištěná latence vaší aplikace?](#queue-polling-interval) |
+| &nbsp; | Zpráva aktualizace | [Provádíte operaci aktualizace zprávy, která ukládá průběh zpracování zpráv, takže se můžete vyhnout nutnosti opakovanému zpracování celé zprávy, pokud dojde k chybě?](#perform-an-update-message-operation) |
+| &nbsp; | Architektura | [Používáte fronty k zajištění větší škálovatelnosti celé aplikace tím, že zachováte dlouhodobě spuštěné úlohy ze kritické cesty a škálování pak nezávisle na sobě?](#application-architecture) |
 
 ## <a name="scalability-targets"></a>Cíle škálovatelnosti
 
-Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
+Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 ( `Server Busy` ) nebo 500 ( `Operation Timeout` ). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](./scalability-targets.md#scale-targets-for-queue-storage).
+Další informace o cílech škálovatelnosti pro Queue Storage najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
@@ -66,7 +68,7 @@ Pokud se vaše aplikace blíží cílům škálovatelnosti pro jeden účet úlo
 - Převezměte v úvahu zatížení, které způsobí, že vaše aplikace bude přistupovat k cíli škálovatelnosti nebo nad něj. Můžete ji navrhovat odlišně, abyste mohli používat menší šířku pásma nebo kapacitu nebo méně transakcí?
 - Pokud vaše aplikace musí překročit jeden z cílů škálovatelnosti, vytvořte několik účtů úložiště a vytvořte oddíly dat aplikací napříč těmito různými účty úložiště. Pokud použijete tento model, nezapomeňte navrhnout aplikaci, abyste mohli v budoucnu přidat další účty úložiště pro vyrovnávání zatížení. Účty úložiště samy nemají žádné náklady jiné než vaše využití v závislosti na uložených datech, provedených transakcích nebo přenesených datech.
 - Pokud se vaše aplikace blíží cílům šířky pásma, zvažte komprimaci dat na straně klienta, aby se snížila šířka pásma nutná k odeslání dat do Azure Storage. I když komprimace dat může ušetřit šířku pásma a zvýšit výkon sítě, může mít také negativní vliv na výkon. Vyhodnoťte dopad dalších požadavků na zpracování pro kompresi a dekompresi dat na straně klienta. Mějte na paměti, že ukládání komprimovaných dat může řešit obtíže, protože může být náročnější na zobrazení dat pomocí standardních nástrojů.
-- Pokud se vaše aplikace blíží cílům škálovatelnosti, ujistěte se, že používáte exponenciální omezení rychlosti pro opakované pokusy. Doporučujeme, abyste se vyhnuli dosažení cílů škálovatelnosti, a to implementací doporučení popsaných v tomto článku. Použití exponenciálního omezení rychlosti pro opakování však zabrání aplikaci v rychlém opakování, což by mohlo způsobit horší omezení. Další informace najdete v části s názvem [timeout a chyby zaneprázdněnosti serveru](#timeout-and-server-busy-errors).
+- Pokud se vaše aplikace blíží cílům škálovatelnosti, ujistěte se, že používáte exponenciální omezení rychlosti pro opakované pokusy. Doporučujeme, abyste se vyhnuli dosažení cílů škálovatelnosti, a to implementací doporučení popsaných v tomto článku. Použití exponenciálního omezení rychlosti pro opakování však zabrání aplikaci v rychlém opakování, což by mohlo způsobit horší omezení. Další informace najdete v části [timeout a chyby zaneprázdněnosti serveru](#timeout-and-server-busy-errors) .
 
 ## <a name="networking"></a>Sítě
 
@@ -78,17 +80,17 @@ Omezení fyzické sítě aplikace mohou mít významný dopad na výkon. Násled
 
 #### <a name="throughput"></a>Propustnost
 
-V případě šířky pásma je problém často funkcemi klienta. Větší instance Azure mají síťové karty s větší kapacitou, takže byste měli zvážit použití větší instance nebo více virtuálních počítačů, pokud potřebujete vyšší omezení sítě z jednoho počítače. Pokud přistupujete Azure Storage z místní aplikace, platí stejné pravidlo: Pochopte síťové možnosti klientského zařízení a připojení k síti pro Azure Storage umístění a buď je Vylepšete podle potřeby, nebo Navrhněte svou aplikaci tak, aby fungovala v jejich schopnostech.
+V případě šířky pásma je problém často funkcemi klienta. Větší instance Azure mají síťové karty s větší kapacitou, takže byste měli zvážit použití větší instance nebo více virtuálních počítačů, pokud potřebujete vyšší omezení sítě z jednoho počítače. Pokud přistupujete Azure Storage z místní aplikace, platí stejné pravidlo: Pochopte síťové možnosti klientského zařízení a připojení k síti pro Azure Storage umístění a buď je Vylepšete podle potřeby, nebo Navrhněte aplikaci, která bude fungovat v rámci svých schopností.
 
 #### <a name="link-quality"></a>Kvalita propojení
 
-Stejně jako u všech využití sítě Pamatujte na to, že síťové podmínky, které mají za následek chyby a ztráty paketů, budou zpomalit efektivní propustnost. K diagnostice tohoto problému může využít nástroj WireShark nebo NetMon.
+Stejně jako u všech využití sítě Pamatujte na to, že síťové podmínky, které mají za následek chyby a ztráty paketů, budou zpomalit efektivní propustnost. K diagnostice tohoto problému může použít Nástroj Wireshark nebo Sledování sítě.
 
 ### <a name="location"></a>Umístění
 
-V jakémkoli distribuovaném prostředí je umístění klienta poblíž serveru k dispozici nejlepšího výkonu. Pro přístup k Azure Storage s nejnižší latencí je nejlepší umístění pro vašeho klienta ve stejné oblasti Azure. Například pokud máte webovou aplikaci Azure, která používá Azure Storage, vyhledáte je v rámci jedné oblasti, jako je například USA – západ nebo Asie – jihovýchod. Společné umístění prostředků snižuje latenci a náklady, protože využití šířky pásma v rámci jedné oblasti je zdarma.
+V jakémkoli distribuovaném prostředí je umístění klienta poblíž serveru k dispozici nejlepšího výkonu. Pro přístup k Azure Storage s nejnižší latencí je nejlepší umístění pro vašeho klienta ve stejné oblasti Azure. Například pokud máte webovou aplikaci Azure, která používá Azure Storage, vyhledáte je v rámci jedné oblasti, jako je například Západní USA nebo jihovýchodní Asie. Společné umístění prostředků snižuje latenci a náklady, protože využití šířky pásma v rámci jedné oblasti je zdarma.
 
-Pokud budou klientské aplikace přistupovat k Azure Storage, ale nejsou hostovány v rámci Azure, jako jsou aplikace pro mobilní zařízení nebo místní podnikové služby, pak hledání účtu úložiště v oblasti blízko těchto klientů může snížit latenci. Pokud jsou vaši klienti široce distribuované (například některé v Severní Amerika a některé v Evropě), zvažte použití jednoho účtu úložiště v každé oblasti. Tento přístup je snazší implementovat, pokud jsou data, která aplikace ukládá, specifická pro jednotlivé uživatele a nevyžadují replikaci dat mezi účty úložiště.
+Pokud budou klientské aplikace přistupovat k Azure Storage, ale nejsou hostovány v rámci Azure, jako jsou aplikace pro mobilní zařízení nebo místní podnikové služby, pak hledání účtu úložiště v oblasti poblíž těchto klientů může snížit latenci. Pokud jsou vaši klienti široce distribuované (například některé v Severní Amerika a některé v Evropě), zvažte použití jednoho účtu úložiště v každé oblasti. Tento přístup je snazší implementovat, pokud jsou data, která aplikace ukládá, specifická pro jednotlivé uživatele a nevyžadují replikaci dat mezi účty úložiště.
 
 ## <a name="sas-and-cors"></a>SAS a CORS
 
@@ -104,7 +106,7 @@ SAS i CORS vám můžou přispět k tomu, abyste se vyhnuli zbytečnému zatíž
 
 ## <a name="net-configuration"></a>Konfigurace .NET
 
-Pokud používáte .NET Framework, v této části najdete několik nastavení rychlých konfigurací, pomocí kterých můžete provádět významná vylepšení výkonu. Pokud používáte jiné jazyky, podívejte se, jestli se ve zvoleném jazyce použijí podobné koncepty.
+Pokud používáte .NET Framework, v této části najdete několik nastavení rychlých konfigurací, pomocí kterých můžete provádět významná vylepšení výkonu. Pokud používáte jiné jazyky, zkontrolujte, zda se v zvoleném jazyce použijí podobné koncepty.
 
 ### <a name="use-net-core"></a>Použití .NET Core
 
@@ -129,7 +131,7 @@ Další programovací jazyky najdete v dokumentaci k příslušnému jazyku, kde
 
 Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).
 
-### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
+### <a name="increase-the-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
 Pokud používáte synchronní volání spolu s asynchronními úkoly, můžete zvýšit počet vláken ve fondu vláken:
 
@@ -137,7 +139,7 @@ Pokud používáte synchronní volání spolu s asynchronními úkoly, můžete 
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Další informace naleznete v tématu metoda [fondu vláken. SetMinThreads –](/dotnet/api/system.threading.threadpool.setminthreads) .
+Další informace naleznete v [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads) metodě.
 
 ## <a name="unbounded-parallelism"></a>Neohraničené paralelismus
 
@@ -153,19 +155,19 @@ Azure Storage vrátí chybu, pokud služba nemůže zpracovat požadavek. Porozu
 
 ### <a name="timeout-and-server-busy-errors"></a>Vypršení časového limitu a chyb zaneprázdněnosti serveru
 
-Azure Storage může aplikaci omezit, pokud se blíží omezením škálovatelnosti. V některých případech nemusí Azure Storage být schopen zpracovat požadavek z důvodu přechodné podmínky. V obou případech může služba vracet chybu 503 (zaneprázdněný serverem) nebo 500 (časový limit). K těmto chybám může dojít také v případě, že je služba vyrovnávající datové oddíly, aby bylo možné dosáhnout vyšší propustnosti. Klientská aplikace by obvykle měla operaci zopakovat, což způsobí jednu z těchto chyb. Pokud však Azure Storage omezuje vaši aplikaci, protože je nad rámec škálovatelnosti, nebo i v případě, že služba nemohla tuto žádost z nějakého důvodu nedokázala zpracovat, agresivní pokusy mohou problém vyřešit. Doporučuje se použít exponenciální back-mailové zásady opakování, přičemž klientské knihovny jsou pro toto chování výchozí. Vaše aplikace se může například opakovat po 2 sekundách, potom 4 sekundy, 10 sekund, 30 sekund a potom zcela. Tímto způsobem vaše aplikace významně snižuje zatížení služby, spíše než exacerbating chování, které by mohlo vést k omezení.
+Azure Storage může aplikaci omezit, pokud se blíží omezením škálovatelnosti. V některých případech nemusí Azure Storage být schopen zpracovat požadavek z důvodu přechodné podmínky. V obou případech může služba vracet chybu 503 ( `Server Busy` ) nebo 500 ( `Timeout` ). K těmto chybám může dojít také v případě, že je služba vyrovnávající datové oddíly, aby bylo možné dosáhnout vyšší propustnosti. Klientská aplikace by obvykle měla operaci zopakovat, což způsobí jednu z těchto chyb. Pokud však Azure Storage omezuje vaši aplikaci, protože je nad rámec škálovatelnosti, nebo i v případě, že služba nemohla tuto žádost z nějakého důvodu nedokázala zpracovat, agresivní pokusy mohou problém vyřešit. Doporučuje se použít exponenciální back-mailové zásady opakování, přičemž klientské knihovny jsou pro toto chování výchozí. Vaše aplikace se může například opakovat po 2 sekundách, potom 4 sekundy, 10 sekund, 30 sekund a potom zcela. Tímto způsobem vaše aplikace významně snižuje zatížení služby, spíše než exacerbating chování, které by mohlo vést k omezení.
 
 Chyby připojení se dají opakovat okamžitě, protože nejsou výsledkem omezení a očekává se, že budou přechodné.
 
 ### <a name="non-retryable-errors"></a>Neopakující se chyby
 
-Knihovny klienta zpracovává opakované pokusy s vědomím, které chyby lze opakovat a které nemohou. Nicméně pokud voláte Azure Storage REST API přímo, dojde k chybám, které byste neměli opakovat. Například Chyba 400 (chybný požadavek) indikuje, že klientská aplikace odeslala požadavek, který nebylo možné zpracovat, protože nebyl v očekávané podobě. Při opakovaném odeslání této žádosti se pokaždé pošle stejná odpověď, takže nedojde k žádnému bodu v dalším pokusu. Pokud voláte Azure Storage REST API přímo, pamatujte na potenciální chyby a určete, zda se mají opakovat.
+Knihovny klienta zpracovává opakované pokusy s vědomím, které chyby lze opakovat a které nemohou. Nicméně pokud voláte Azure Storage REST API přímo, dojde k chybám, které byste neměli opakovat. Například Chyba 400 ( `Bad Request` ) označuje, že klientská aplikace odeslala požadavek, který nebylo možné zpracovat, protože nebyl v očekávané podobě. Při opakovaném odeslání této žádosti se pokaždé pošle stejná odpověď, takže nedojde k žádnému bodu v dalším pokusu. Pokud voláte Azure Storage REST API přímo, pamatujte na potenciální chyby a určete, zda se mají opakovat.
 
 Další informace o kódech chyb Azure Storage naleznete v tématu [stav a chybové kódy](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="disable-nagle"></a>Zakázat Nagle
+## <a name="disable-nagles-algorithm"></a>Zakázat algoritmus Nagle
 
-Algoritmus Nagle se v sítích TCP/IP široce implementuje jako prostředek pro zlepšení výkonu sítě. Není ale optimální pro všechny okolnosti (například vysoce interaktivní prostředí). Nagle algoritmus má negativní dopad na výkon požadavků na Azure Table service a pokud je to možné, měli byste ho zakázat.
+Algoritmus Nagle se v sítích TCP/IP široce implementuje jako prostředek pro zlepšení výkonu sítě. Není ale optimální pro všechny okolnosti (například vysoce interaktivní prostředí). Nagle algoritmus má negativní dopad na výkon požadavků do Azure Table Storage a pokud je to možné, měli byste ho deaktivovat.
 
 ## <a name="message-size"></a>Velikost zpráv
 
@@ -173,7 +175,7 @@ Zmenšení výkonu fronty a škálovatelnosti při zvýšení velikosti zprávy 
 
 ## <a name="batch-retrieval"></a>Dávkové načítání
 
-V jedné operaci můžete načíst až 32 zpráv z fronty. Dávkové načítání může snížit počet zpětných přenosů z klientské aplikace, což je zvláště užitečné pro prostředí, jako jsou například mobilní zařízení s vysokou latencí.
+V jedné operaci můžete načíst až 32 zpráv z fronty. Dávkové načítání může snížit počet zpátečních cest z klientské aplikace, což je zvláště užitečné pro prostředí, jako jsou například mobilní zařízení s vysokou latencí.
 
 ## <a name="queue-polling-interval"></a>Interval cyklického dotazování fronty
 
@@ -181,9 +183,9 @@ Většina aplikací se dotazuje na zprávy z fronty, což může být jeden z ne
 
 Aktuální informace o nákladech najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="use-update-message"></a>Použít zprávu Update
+## <a name="perform-an-update-message-operation"></a>Provést operaci aktualizace zprávy
 
-Pomocí operace **Aktualizovat zprávu** můžete prodloužit časový limit neviditelnosti nebo aktualizovat informace o stavu zprávy. Použití **zprávy Update** může být efektivnější přístup, než když máte pracovní postup, který projde úlohu z jedné fronty do další, podle toho, jak se dokončil každý krok úlohy. Vaše aplikace může uložit stav úlohy do zprávy a potom pokračovat v práci, místo aby se zpráva znovu zařadila do fronty pro další krok úlohy pokaždé, když se krok dokončí. Mějte na paměti, že každá operace **zprávy o aktualizaci** se počítá směrem k cíli škálovatelnosti.
+Operaci aktualizace zprávy můžete použít ke zvýšení časového limitu inviditelnosti nebo k aktualizaci informací o stavu zprávy. Tento přístup může být efektivnější než pracovní postup, který projde úlohu z jedné fronty do další, protože je dokončený každý krok úlohy. Vaše aplikace může uložit stav úlohy do zprávy a potom pokračovat v práci, místo aby se zpráva znovu zařadila do fronty pro další krok úlohy pokaždé, když se krok dokončí. Mějte na paměti, že každá operace zprávy o aktualizaci se počítá směrem k cíli škálovatelnosti.
 
 ## <a name="application-architecture"></a>Architektura aplikace
 
@@ -194,6 +196,6 @@ Pomocí front můžete nastavit škálovatelnost architektury aplikace. Následu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Škálovatelnost a výkonnostní cíle pro úložiště Queue](scalability-targets.md)
+- [Škálovatelnost a výkonnostní cíle pro Queue Storage](scalability-targets.md)
 - [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

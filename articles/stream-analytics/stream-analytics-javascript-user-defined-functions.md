@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780837"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585475"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -34,7 +34,7 @@ Tady je několik věcí, které se uživatelsky definovanou funkcí jazyka JavaS
 * Provádění vlastní serializace nebo deserializace formátu událostí u vstupů nebo výstupů
 * Vytváření vlastních agregací
 
-I když funkce jako **Date. GETDATE ()** nebo **Math. Random ()** nejsou v definici Functions blokované, neměli byste je používat. Tyto funkce **don't** nevrátí stejný výsledek pokaždé, když je zavoláte, a služba Azure Stream Analytics neudržuje deník vyvolání funkcí a vrácené výsledky. Vrátí-li funkce jiný výsledek pro stejné události, není zaručena opakovatelnost při restartování úlohy vámi nebo službou Stream Analytics.
+I když funkce jako **Date. GETDATE ()** nebo **Math. Random ()** nejsou v definici Functions blokované, neměli byste je používat. Tyto funkce  nevrátí stejný výsledek pokaždé, když je zavoláte, a služba Azure Stream Analytics neudržuje deník vyvolání funkcí a vrácené výsledky. Vrátí-li funkce jiný výsledek pro stejné události, není zaručena opakovatelnost při restartování úlohy vámi nebo službou Stream Analytics.
 
 ## <a name="add-a-javascript-user-defined-function-to-your-job"></a>Přidání uživatelem definované funkce jazyka JavaScript do úlohy
 
@@ -84,7 +84,7 @@ Mezi typy podporovanými dotazovacím jazykem Stream Analytics a jazykem JavaScr
 Stream Analytics | JavaScript
 --- | ---
 bigint | Číslo (JavaScript může používat celá čísla jenom do hodnoty 2^53)
-DateTime | Datum (JavaScript podporuje jenom milisekundy)
+Datum a čas | Datum (JavaScript podporuje jenom milisekundy)
 double | Číslo
 nvarchar(MAX) | Řetězec
 Záznam | Objekt
@@ -96,7 +96,7 @@ Převody z jazyka JavaScript do Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Číslo | Bigint (pokud je číslo zaokrouhlené a je v rozsahu long.MinValue a long.MaxValue; jinak typ double)
-Datum | DateTime
+Datum | Datum a čas
 Řetězec | nvarchar(MAX)
 Objekt | Záznam
 Pole | Pole
@@ -215,6 +215,14 @@ Výstupem tohoto dotazu bude vstupní hodnota DateTime v **de-de** s poskytnutý
 Samstag, 28. Dezember 2019
 ```
 
+### <a name="user-logging"></a>Protokolování uživatele
+Mechanismus protokolování umožňuje zachytit vlastní informace, když je úloha spuštěná. Data protokolu můžete použít k ladění nebo vyhodnocení správnosti vlastního kódu v reálném čase. Tento mechanismus je k dispozici prostřednictvím metody Console. log ().
+
+```javascript
+console.log('my error message');
+```
+
+Ke zprávám protokolu můžete přistupovat prostřednictvím [diagnostických protokolů](data-errors.md).
 ## <a name="next-steps"></a>Další kroky
 
 * [Machine Learning UDF](./machine-learning-udf.md)

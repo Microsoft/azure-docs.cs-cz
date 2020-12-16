@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560029"
+ms.locfileid: "97586019"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 > [!NOTE]
@@ -27,7 +27,7 @@ Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší
 > [!NOTE]
 > Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 ### <a name="add-social-identity-providers-optional"></a>Přidat zprostředkovatele sociálních identit (volitelné)
 
@@ -70,6 +70,9 @@ V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a p
 7. V části **atributy uživatele** vyberte atributy, které mají být od uživatele shromažďovány. U dalších atributů vyberte **Zobrazit další**. Vyberte například možnost **Zobrazit více** a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno** a **poštovní směrovací číslo**. Vyberte **OK**.
 
    ![Vytvoří novou stránku toku uživatele.](media/self-service-sign-up-user-flow/create-user-flow.png)
+
+> [!NOTE]
+> Atributy můžete shromažďovat pouze v případě, že se uživatel poprvé zaregistruje. Po zaregistrování se uživatel už nebude vyzván ke shromažďování informací o atributu, a to i v případě, že změníte tok uživatele.
 
 8. Vyberte **Vytvořit**.
 9. Nový tok uživatele se zobrazí v seznamu **toky uživatelů (Preview)** . V případě potřeby aktualizujte stránku.

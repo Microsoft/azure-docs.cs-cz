@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361230"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586094"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značek pomocí Video Indexer webu
 
@@ -31,20 +31,23 @@ Podrobný přehled najdete v tomto [přehledu](customize-brands-model-overview.m
 
 Web Video Indexer můžete použít k vytváření, používání a úpravám vlastních značek, které byly zjištěny ve videu, jak je popsáno v tomto tématu. Můžete také použít rozhraní API, jak je popsáno v tématu [Přizpůsobení modelu značek pomocí rozhraní API](customize-brands-model-with-api.md).
 
+> [!NOTE]
+> Pokud bylo video indexováno před přidáním značky, je nutné ho znovu indexovat. V rozevírací nabídce přidružené k videu najdete položku **opětovného indexování** . Vyberte **Pokročilé možnosti**  ->  **Kategorie značky** a zaškrtněte **všechny značky**.
+
 ## <a name="edit-brands-model-settings"></a>Upravit nastavení modelu značek
 
 Máte možnost nastavit, jestli chcete, aby se zjistily značky z databáze značek Bingu. Chcete-li nastavit tuto možnost, je nutné upravit nastavení modelu značek. Postupujte takto:
 
 1. Přejít na web [video indexer](https://www.videoindexer.ai/) a přihlásit se.
-2. Pokud chcete ve svém účtu přizpůsobit model, vyberte tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu stránky.
+1. Pokud chcete ve svém účtu přizpůsobit model, vyberte tlačítko **Přizpůsobení modelu obsahu** na levé straně stránky.
 
-   ![Přizpůsobení modelu obsahu v Video Indexer](./media/content-model-customization/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Přizpůsobení modelu obsahu v Video Indexer":::
+1. Chcete-li upravit značky, vyberte kartu **značky** .
 
-3. Chcete-li upravit značky, vyberte kartu **značky** .
-
-    ![Snímek obrazovky dialogového okna přizpůsobení modelu obsahu zobrazí kartu značky.](./media/customize-brand-model/customize-brand-model.png)
-
-4. Pokud chcete, aby Video Indexer zjistila značky navržené v rámci Bingu, přečtěte si možnost **Zobrazit značky navržené podle Bingu** . Pokud to neuděláte, nechte možnost nezaškrtnutou.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="Snímek obrazovky se zobrazí v dialogovém okně Přizpůsobení modelu obsahu – karta značky":::
+1. Pokud chcete, aby Video Indexer zjistila značky navržené v rámci Bingu, přečtěte si možnost **Zobrazit značky navržené podle Bingu** . Pokud to neuděláte, nechte možnost nezaškrtnutou.
 
 ## <a name="include-brands-in-the-model"></a>Zahrnutí značek do modelu
 
@@ -52,16 +55,14 @@ Oddíl **include** Tags reprezentuje vlastní značky, které chcete video index
 
 ### <a name="add-a-brand-to-include-list"></a>Přidat značku k seznamu zahrnutí
 
-1. Vyberte **+ Přidat značku**.
-
-    ![Snímek obrazovky se zobrazí v dialogovém okně zahrnout značky, kde můžete přidat značky.](./media/customize-brand-model/add-brand.png)
+1. Vyberte **+ vytvořit novou značku**.
 
     Zadejte název (povinné), kategorii (volitelné), popis (nepovinné) a adresu URL odkazu (volitelné).
     Pole kategorie je určeno, aby vám pomohly označit značky. Toto pole se zobrazuje jako *značka* značky při použití video indexer rozhraní API. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".
 
     Pole Adresa URL odkazu může být libovolný referenční web pro značku (například odkaz na jeho stránku Wikipedii).
 
-2. Vyberte **Přidat značku** a uvidíte, že byla značka přidána do seznamu **vložených značek** .
+2. Vyberte **Uložit** a uvidíte, že byla značka přidána do seznamu **vložených značek** .
 
 ### <a name="edit-a-brand-on-the-include-list"></a>Úprava značky v seznamu zahrnutí
 
@@ -82,11 +83,11 @@ Oddíl **include** Tags reprezentuje vlastní značky, které chcete video index
 
 ### <a name="add-a-brand-to-exclude-list"></a>Přidat značku k seznamu vyloučení
 
-1. Vyberte **+ Přidat značku.**
+1. Vyberte **+ vytvořit novou značku.**
 
     Zadejte název (povinné), kategorii (volitelné).
 
-2. Vyberte **Přidat značku** a uvidíte, že se do seznamu *vyloučení značek* přidala značka.
+2. Vyberte **Uložit** a uvidíte, že byla značka přidána do seznamu *vyloučených značek* .
 
 ### <a name="edit-a-brand-on-the-exclude-list"></a>Úprava značky na seznamu vyloučení
 

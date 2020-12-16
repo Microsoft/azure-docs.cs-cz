@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
-ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 12/15/2020
+ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324954"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587107"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Postup povolení ochrany proti odstranění a vyprázdnění
 
@@ -23,7 +23,7 @@ Tento článek se zabývá dvěma funkcemi pro obnovení Azure Key Vault a ochra
 
 Ochrana proti odstranění a vyprázdnění je ve dvou různých funkcích pro obnovení trezoru klíčů.
 > [!IMPORTANT]
-> U všech trezorů klíčů je nutné povolit ochranu před odstraněním. Možnost zakázat ochranu proti tichému odstranění bude od prosince 2020 zastaralá. Podívejte se prosím na [ **všechny podrobnosti**.](soft-delete-change.md)
+> Zapnutí obnovitelného odstranění je důležité, aby bylo zajištěno, že vaše trezory klíčů a přihlašovací údaje jsou chráněny před náhodným odstraněním. Zapnutí obnovitelného odstranění je ale považováno za zásadní změnu, protože může vyžadovat změnu logiky aplikace nebo poskytnutí dalších oprávnění k objektům služby. Než zapnete obnovitelné odstranění pomocí níže uvedených pokynů, ujistěte se, že je vaše aplikace kompatibilní se změnou v tomto dokumentu [ .](soft-delete-change.md)
 
 **Obnovitelné odstranění** je navrženo tak, aby nedocházelo k nechtěnému odstranění trezoru klíčů a klíčů, tajných kódů a certifikátů uložených v trezoru klíčů. Představte si obnovitelné odstranění podobně jako odpadkový koš. Když odstraníte Trezor klíčů nebo objekt trezoru klíčů, zůstane možné, že bude možné obnovit uživatelsky nastavitelnou dobu uchování nebo výchozí dobu 90 dnů. Trezory klíčů ve stavu tichého odstranění je také možné **Vymazat** , což znamená, že jsou trvale odstraněny. To umožňuje znovu vytvořit trezory klíčů a objekty trezoru klíčů se stejným názvem. Obnovení a odstranění trezorů klíčů a objektů vyžaduje oprávnění zásad zvýšeného přístupu. **Po povolení obnovitelného odstranění ho nejde zakázat.**
 

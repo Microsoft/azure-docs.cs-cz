@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028270"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586342"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
@@ -33,7 +33,9 @@ Pokud chcete otevřít stránku konfigurace jednotného přihlašování založe
 1.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Azure Active Directory** .
 1.  V levé navigační nabídce Azure Active Directory vyberte **Podnikové aplikace**.
 1.  Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
+
     Pokud se požadovaná aplikace nezobrazí, použijte ovládací prvek **filtru** v horní části **seznamu Všechny aplikace** a nastavte možnost **Zobrazit** na **Všechny aplikace**.
+
 1.  Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 1. Po načtení aplikace vyberte v levé navigační nabídce aplikace **jednotné přihlašování** .
 1. Vyberte Jednotné přihlašování založené na SAML.
@@ -63,7 +65,7 @@ Na stránce konfigurace jednotného přihlašování založeného na SAML ověř
 Zajistěte, aby `AssertionConsumerServiceURL` hodnota v požadavku SAML odpovídala hodnotě adresy URL odpovědi nakonfigurované ve službě Azure AD. 
 
 Ověřte nebo aktualizujte hodnotu v textovém poli adresy URL odpovědi tak, aby odpovídala `AssertionConsumerServiceURL` hodnotě v požadavku SAML.   
-    
+
 Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnotě odeslané aplikací v žádosti SAML, byste měli být schopni se přihlásit k aplikaci.
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel nemá přiřazenou roli.
@@ -145,7 +147,7 @@ Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Dire
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 
-Na stránce konfigurace jednotného přihlašování založeného na SAML v části **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+Na stránce konfigurace jednotného přihlašování založeného na SAML v části **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například `https://127.0.0.1:444/applications/default.aspx`.
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování.

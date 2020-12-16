@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 2e05701b92d2d96074a07e0e61ce65145a1d9dfd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302394"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586155"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
 
@@ -50,16 +50,16 @@ Pokud je k dispozici verze Helm a `STATUS: deployed` Určete stav agentů pomoc�
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
-NAME                                        READY   UP-TO-DATE AVAILABLE AGE
-deployment.apps/cluster-metadata-operator   1/1     1           1        16h
-deployment.apps/clusteridentityoperator     1/1     1           1        16h
-deployment.apps/config-agent                1/1     1           1        16h
-deployment.apps/controller-manager          1/1     1           1        16h
-deployment.apps/flux-logs-agent             1/1     1           1        16h
-deployment.apps/metrics-agent               1/1     1           1        16h
-deployment.apps/resource-sync-agent         1/1     1           1        16h
+NAME                                       READY  UP-TO-DATE  AVAILABLE  AGE
+deployment.apps/clusteridentityoperator     1/1       1          1       16h
+deployment.apps/config-agent                1/1       1          1       16h
+deployment.apps/cluster-metadata-operator   1/1       1          1       16h
+deployment.apps/controller-manager          1/1       1          1       16h
+deployment.apps/flux-logs-agent             1/1       1          1       16h
+deployment.apps/metrics-agent               1/1       1          1       16h
+deployment.apps/resource-sync-agent         1/1       1          1       16h
 
-NAME                                            READY   STATUS   RESTART AGE
+NAME                                            READY   STATUS  RESTART  AGE
 pod/cluster-metadata-operator-7fb54d9986-g785b  2/2     Running  0       16h
 pod/clusteridentityoperator-6d6678ffd4-tx8hr    3/3     Running  0       16h
 pod/config-agent-544c4669f9-4th92               3/3     Running  0       16h
@@ -103,7 +103,7 @@ This operation might take a while...
 
 ### <a name="helm-issue"></a>Problém Helm
 
-Helm verze obsahuje problém s tím, že se při `v3.3.0-rc.1` instalaci nebo upgradu Helm (za použití v rámci rozšíření digestoře CONNECTEDK8S CLI) spustí všechny háky, což vede k následující chybě: [issue](https://github.com/helm/helm/pull/8527)
+Helm verze obsahuje problém s tím, že se při `v3.3.0-rc.1` instalaci nebo upgradu Helm (za použití v rámci rozšíření digestoře CONNECTEDK8S CLI) spustí všechny háky, což vede k následující chybě: [](https://github.com/helm/helm/pull/8527)
 
 ```console
 $ az connectedk8s connect -n shasbakstest -g shasbakstest

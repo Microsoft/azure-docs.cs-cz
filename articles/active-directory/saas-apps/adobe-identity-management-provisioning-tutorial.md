@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181117"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586587"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Adobe Identity Management pro Automatické zřizování uživatelů
 
@@ -61,7 +61,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 3. Vyberte možnost **synchronizovat uživatele z Microsoft Azure** a klikněte na tlačítko **Další**.
 
-      ![Sync](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+      ![Snímek obrazovky zobrazující, že je vybraná možnost synchronizovat uživatele z Microsoft Azure Active Directory](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Zkopírujte a uložte **adresu URL tenanta** a **tajný token**. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování vaší aplikace Adobe Identity Management v Azure Portal.
 

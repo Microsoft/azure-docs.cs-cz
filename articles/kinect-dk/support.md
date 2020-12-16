@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, nahrávání, senzor, SDK, přístup, Hloubka, video, fotoaparát, imu, pohyb, senzor, zvuk, mikrofon, Matroska, sada senzorů, stažení, tělo, sledování, podpora
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357041"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587090"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Možnosti a prostředky podpory Azure Kinect
 
@@ -56,6 +56,8 @@ Můžete taky chtít zjistit naše [známé problémy a řešit](troubleshooting
 [Získejte pomoc](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) s funkcemi zařízení nebo senzorů, aktualizacemi firmwaru nebo možnostmi nákupu.
 
 Další informace o nabídkách podpory najdete v podrobnějších informacích o [podpoře Microsoftu pro firmy](https://support.microsoft.com/help/4341255/support-for-business).
+
+[Tady](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3) jsou deklarace shody EU pro hardwarové produkty Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 

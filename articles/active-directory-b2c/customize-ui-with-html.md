@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111297"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585186"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -29,9 +29,7 @@ Branding a přizpůsobení uživatelského rozhraní, které Azure Active Direct
 > [!TIP]
 > Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti](company-branding.md) .
 
-
 ## <a name="custom-html-and-css-overview"></a>Vlastní HTML a CSS – přehled
-
 
 Azure AD B2C spouští kód v prohlížeči zákazníka pomocí [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). V době běhu se obsah načte z adresy URL, kterou zadáte v toku uživatele nebo vlastní zásady. Každá stránka v uživatelském prostředí načte svůj obsah z adresy URL, kterou zadáte pro tuto stránku. Po načtení obsahu z vaší adresy URL se sloučí s fragmentem kódu HTML vloženým pomocí Azure AD B2C a potom se stránka zobrazí vašemu zákazníkovi.
 
@@ -121,7 +119,6 @@ Tady je přehled tohoto procesu:
 ## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. vytvoření obsahu HTML
 
@@ -235,7 +232,6 @@ Ověřte, že jste připraveni, provedením následujících kroků:
 1. Vyberte **Odeslat žádost**.
     Výsledek by měl být `XHR status: 200` . 
     Pokud se zobrazí chyba, ujistěte se, že je nastavení CORS správné. Je také možné, že budete muset vymazat mezipaměť prohlížeče nebo otevřít soukromou relaci procházení stisknutím kombinace kláves CTRL + SHIFT + P.
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ Postup použití ukázky:
 1. Nyní upravte zásady tak, aby odkazovaly na soubor HTML, jak bylo uvedeno dříve.
 1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v \* souborech. html.
 
-
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak povolit [Kód JavaScriptu na straně klienta](javascript-and-page-layout.md).
-
-
 

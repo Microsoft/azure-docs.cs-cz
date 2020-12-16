@@ -3,20 +3,18 @@ title: Referenční architektura pro řešení monitorování spotřeby vody ses
 description: Přečtěte si o konceptech řešení monitorování spotřeby vody sestavené s využitím Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873555"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586784"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Referenční architektura monitorování spotřeby vody 
-
-
 
 Řešení pro monitorování spotřeby vody se dají vytvořit pomocí **šablony aplikace Azure IoT Central** jako aplikace IoT Starter. Tento článek poskytuje podrobné pokyny k architektuře referenční architektury pro vytváření kompletního řešení. 
 
@@ -26,8 +24,8 @@ Koncepty:
 
 1. Zařízení a připojení  
 1. IoT Central 
-2. Rozšiřitelnost a integrace
-3. Obchodní aplikace
+1. Rozšiřitelnost a integrace
+1. Obchodní aplikace
 
 Pojďme se podívat na klíčové komponenty, které obecně hrají součást v řešení monitorování spotřeby vody.
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501473"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586971"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Připojení k Azure synapse studiu pomocí Center privátních odkazů Azure 
 
@@ -35,9 +35,9 @@ Své soukromé centrum odkazů můžete vytvořit tak, že v Azure Portal vyhled
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Centra privátních odkazů Azure a Azure Virtual Network
 Virtuální síť Azure se musí připojit k prostředku rozbočovače privátního propojení synapse, aby bylo možné zabezpečit koncové připojení k synapse studiu. V takovém případě je nutné vytvořit privátní koncový bod z vaší virtuální sítě k vytvořenému rozbočovači privátního propojení. Můžete použít Azure Portal pro vaše privátní centrum odkazů a přejít na oddíl privátního koncového bodu. Vyberte + privátní koncový bod a vytvořte nový privátní koncový bod, který se připojí k vašemu privátnímu centru odkazů.
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Vytvoření privátního koncového bodu na centrum privátních odkazů":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Snímek obrazovky zobrazující stránku připojení privátního koncového bodu":::
 
-Ujistěte se, že na kartě prostředek zvolíte typ prostředku Microsoft. synapse/privateLinkHubs. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Vytvoření privátního koncového bodu do centra privátních odkazů":::
+Ujistěte se, že na kartě prostředek zvolíte typ prostředku Microsoft. synapse/privateLinkHubs. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="snímek obrazovky, který ukazuje stránku vytvořit privátní koncový bod se zvýrazněným typem prostředku.":::
 
 Na kartě Konfigurace vyberte privatelink.azuresynapse.net pro zóny Privátní DNS při integraci s vaší virtuální sítí a privátní zónou DNS.
 

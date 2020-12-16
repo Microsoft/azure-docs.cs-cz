@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 02919c8e31e556ab7b5e7e04fcbde27dcf981736
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511565"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586002"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -29,7 +29,7 @@ Služba brány je hostovaná ve skupině bezstavových výpočetních uzlů s IP
 
 V rámci průběžné údržby služby pravidelně aktualizujeme výpočetní hardware hostující brány, abychom zajistili, že poskytujeme nejbezpečnější a výkonné prostředí. Po obnovení hardwaru brány se nejprve vystaví nový prstenec výpočetních uzlů. Tento nový okruh obsluhuje provoz pro všechny nově vytvořené Azure Database for MySQL servery a bude mít jinou IP adresu než starší prstence brány ve stejné oblasti pro odlišení provozu. Jakmile je nový okruh plně funkční, starší hardware brány obsluhující stávající servery se plánuje na vyřazení z provozu. Před vyřazením hardwaru brány do provozu budou zákazníci, kteří používají své servery a připojení ke starším partnerům brány, dostávat e-mailem a v Azure Portal tři měsíce předem před vyřazením z provozu. Vyřazení bran může mít vliv na připojení k vašim serverům, pokud 
 
-* V připojovacím řetězci vaší aplikace můžete zakódovat IP adresy brány. Nedoporučuje se. 
+* V připojovacím řetězci vaší aplikace můžete zakódovat IP adresy brány. Nedoporučuje se. V připojovacím řetězci pro vaši aplikaci byste měli použít plně kvalifikovaný název domény (FQDN) vašeho serveru ve formátu <servername> . MySQL.Database.Azure.com. 
 * Novější IP adresy brány v bráně firewall na straně klienta neaktualizujete, aby odchozí přenosy umožňovaly přístup k novým okruhům bran.
 
 V následující tabulce jsou uvedené IP adresy brány Azure Database for MySQL brány pro všechny oblasti dat. Nejaktuálnější informace o IP adresách brány pro jednotlivé oblasti jsou zachovány v následující tabulce. Následující tabulka uvádí následující sloupce:

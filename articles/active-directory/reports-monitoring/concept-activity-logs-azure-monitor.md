@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229850"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586189"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit služby Azure AD v Azure Monitoru
 
@@ -48,7 +48,7 @@ Pomocí této funkce můžete směrovat protokoly auditu Azure AD a protokoly p�
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -111,11 +111,11 @@ Následující tabulka obsahuje odhadované náklady na měsíc pro základní c
 
 
 
-| Kategorie protokolu       | Počet uživatelů | Počet událostí za den | Události za měsíc (30 dní) | Cena za měsíc v USD (EST) |
-| :--                | ---             | ---            | ---                        | --:                          |
-| Audit a přihlášení | 100 000         | 16 500 000     | 495 000 000                |  $1093,00                       |
-| Auditování              | 100 000         | 1 500 000      | 45 000 000                 |  $246,66                     |
-| Přihlášení           | 100 000         | 15 000 000     | 450 000 000                |  $847,28                     |
+| Kategorie protokolu | Počet uživatelů | Počet událostí za den | Události za měsíc (30 dní) | Cena za měsíc v USD (EST) |
+|:-|--|--|--|-:|
+| Audit a přihlášení | 100 000 | 16 500 000 | 495 000 000 | $1093,00 |
+| Auditování | 100 000 | 1 500 000 | 45 000 000 | $246,66 |
+| Přihlášení | 100 000 | 15 000 000 | 450 000 000 | $847,28 |
 
 
 
@@ -152,7 +152,7 @@ V této části najdete odpovědi na nejčastější dotazy a popis známých pr
 
 **Otázka: co se stane, když správce změní dobu uchování nastavení diagnostiky?**
 
-Odpověď **: nové**zásady uchovávání informací budou aplikovány na protokoly shromážděné po změně. Protokoly shromážděné před změnou zásad nebudou nijak ovlivněny.
+Odpověď **: nové** zásady uchovávání informací budou aplikovány na protokoly shromážděné po změně. Protokoly shromážděné před změnou zásad nebudou nijak ovlivněny.
 
 ---
 
@@ -180,7 +180,7 @@ Odpověď **: nové**zásady uchovávání informací budou aplikovány na proto
 
 **Otázka: Jaké nástroje SIEM se aktuálně podporují?** 
 
-Odpověď: **a** **: v**současné době je Azure monitor podporován [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm a LOGZ.IO. Další informace o fungování konektorů najdete v tématu [Streamování dat monitorování Azure do centra událostí, aby je mohl používat externí nástroj](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Odpověď: **a** **: v** současné době je Azure monitor podporován [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm a LOGZ.IO. Další informace o fungování konektorů najdete v tématu [Streamování dat monitorování Azure do centra událostí, aby je mohl používat externí nástroj](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 

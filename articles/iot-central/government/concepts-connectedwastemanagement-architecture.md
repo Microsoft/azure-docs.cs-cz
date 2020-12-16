@@ -3,20 +3,18 @@ title: Referenční architektura pro řešení pro správu propojených odpadů 
 description: Seznamte se s koncepty řešení pro správu propojených odpadů sestavených s využitím Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873688"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586801"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Referenční architektura propojeného monitorování odpadů 
-
-
 
 Řešení pro správu propojených odpadů se dá vytvořit pomocí **šablony aplikace Azure IoT Central** jako aplikace IoT Starter. Tento článek poskytuje podrobné pokyny k architektuře referenční architektury pro vytváření kompletního řešení. 
 
@@ -27,8 +25,8 @@ Koncepty:
 
 1. Zařízení a připojení  
 1. IoT Central 
-2. Rozšiřitelnost a integrace
-3. Obchodní aplikace
+1. Rozšiřitelnost a integrace
+1. Obchodní aplikace
 
 Pojďme se podívat na klíčové komponenty, které obecně hrají součást v řešení monitorování spotřeby vody.
 

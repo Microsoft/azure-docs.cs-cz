@@ -3,23 +3,19 @@ title: Připojení aplikace Azure IoT Central k polím služby Dynamics 365 | Mi
 description: Naučte se vytvářet ucelená řešení s využitím Azure IoT Central a služby pole Dynamics 365.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 702de11abc274d1f4001df5b28498928fde71109
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014454"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586670"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Sestavení uceleného řešení s využitím Azure IoT Central a služby pole Dynamics 365 
-
-
-
 Jako tvůrce můžete povolit integraci vaší aplikace Azure IoT Central do jiných podnikových systémů. 
-
 
 Například v řešení pro správu propojených odpadů můžete optimalizovat odesílání nákladových kolekcí odpadků. Optimalizace se dá udělat na základě dat ze senzorů IoT z připojených přihrádek odpadu. V [aplikaci pro správu propojených odpadů v IoT Central](./tutorial-connected-waste-management.md) můžete nakonfigurovat pravidla a akce a nastavit je tak, aby aktivovaly vytváření výstrah ve službě Dynamics Field Service. Tento scénář je možné provést pomocí Power Automate, který se nakonfiguruje přímo v IoT Central pro automatizaci pracovních postupů napříč aplikacemi a službami. Kromě toho je možné informace na základě aktivit služeb v poli služby odeslat zpět do Azure IoT Central. 
 

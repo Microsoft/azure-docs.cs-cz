@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686221"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585781"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
@@ -29,7 +29,7 @@ API Management instanci můžete udělit dva typy identit:
 
 ## <a name="create-a-system-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené systémem
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Pokud chcete nastavit spravovanou identitu v Azure Portal, vytvoříte nejprve instanci API Management a pak tuto funkci povolíte.
 
@@ -272,14 +272,14 @@ Identitu přiřazenou systémem můžete použít k ověření do back-endu pros
 > [!NOTE]
 > Instanci API Management můžete přidružit až 10 spravovaných identit přiřazených uživatelem.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management a pak tuto funkci povolte.
 
 1. Na portálu vytvořte instanci API Management, normálně by to bylo. Přejděte na portál na portálu.
 2. Vyberte **spravované identity**.
 3. Na kartě **přiřazený uživatel** vyberte **Přidat**.
-4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte možnost **Přidat**.
+4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte **Přidat**.
 
    :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené uživatelem" border="true":::
 
@@ -361,7 +361,7 @@ Například kompletní šablona Azure Resource Manager může vypadat takto:
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
