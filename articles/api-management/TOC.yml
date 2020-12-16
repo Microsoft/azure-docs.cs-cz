@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9. Přizpůsobení vývojářského portálu
       href: api-management-howto-developer-portal-customize.md
+    - name: 10. Správa rozhraní API v nástroji Visual Studio Code
+      href: visual-studio-code-tutorial.md
 - name: ukázky
   items:
     - name: Zásady
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: Použití externích služeb
           href: api-management-sample-send-request.md
-        - name: Správa tajných klíčů pomocí vlastností
+        - name: Správa tajných klíčů pomocí pojmenovaných hodnot
           href: api-management-howto-properties.md
         - name: Zásady omezení přístupu
           href: api-management-access-restriction-policies.md

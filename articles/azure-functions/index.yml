@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Functions
-summary: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
+summary: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Její možnosti „výpočtů na vyžádání“ umožňují zjednodušenou integraci a jednorázové funkce podpory. Můžete ji také použít k poskytnutí webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT a správě front zpráv.
 metadata:
   title: Dokumentace ke službě Azure Functions
-  description: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu.
+  description: Azure Functions je bezserverová výpočetní služba umožňující spouštět kód aktivovaný událostmi bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Její možnosti „výpočtů na vyžádání“ umožňují zjednodušenou integraci a jednorázové funkce podpory. Můžete ji také použít k poskytnutí webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT a správě front zpráv.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: c2271970fb9a8b500e78687547030d39c5f241e3
-  ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96751704"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97505286"
 landingContent:
 - title: Informace o službě Azure Functions
   linkLists:

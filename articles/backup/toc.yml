@@ -423,6 +423,8 @@
       items:
         - name: Virtuální počítač Azure
           href: backup-azure-vms-troubleshoot.md
+        - name: Obnovení souborů virtuálního počítače Azure
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Vypršení platnosti agenta Azure Backup nebo rozšíření virtuálního počítače
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Agent Azure Backup

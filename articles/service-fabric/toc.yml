@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Nasazení clusteru služby Azure Service Fabric napříč zónami dostupnosti
                   href: service-fabric-cross-availability-zones.md
+                - name: Nasazení clusteru služby Azure Service Fabric s bezstavovými typy uzlů
+                  href: service-fabric-stateless-node-types.md
                 - name: Nastavení ověřování pomocí Azure Active Directory
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Vytvoření vlastní šablony clusteru

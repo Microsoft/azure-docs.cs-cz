@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Pravidla posouzení ohrožení zabezpečení
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Protokol změn pravidel posouzení ohrožení zabezpečení
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: Ukládání kontrol ohrožení zabezpečení v úložišti
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Přihlášení, uživatelské účty, role a oprávnění'

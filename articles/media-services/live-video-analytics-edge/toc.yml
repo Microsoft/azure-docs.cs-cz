@@ -66,6 +66,7 @@
     - name: Graf médií
       href: media-graph-concept.md
     - name: Rozšíření grafu médií
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: Záznam videa
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: Řešení potíží
       href: troubleshoot-how-to.md
+    - name: Upgrade
+      href: upgrading-lva-module.md
+    - name: Vývoj a nasazení odvozovacího serveru gRPC
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: Referenční informace
   items:
     - name: Protokol rozšíření HTTP

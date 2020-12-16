@@ -132,7 +132,7 @@ groups:
     title: C++
 - id: programming-languages-text-analytics
   title: Programovací jazyky
-  prompt: Volba programovacího jazyka
+  prompt: Vyberte jeden z jazyků klientských knihoven nebo REST API.
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -142,8 +142,8 @@ groups:
     title: JavaScript
   - id: programming-language-java
     title: Java
-  - id: programming-language-other
-    title: Další jazyky...
+  - id: rest-api
+    title: REST API
 - id: programming-languages-set-ten
   title: Programovací jazyky
   prompt: Volba programovacího jazyka
@@ -937,9 +937,9 @@ groups:
   - id: b2c-custom-policy
     title: Vlastní zásady
 metadata:
-  ms.openlocfilehash: e08450244e33189eafe2009660c4175a1a5776b1
-  ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+  ms.openlocfilehash: 8c246dacc9a8b1f5370352489a156fa0ebc92742
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96938422"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97503722"
