@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 70ab0b5c70e94c4784a7ab260b3304107bcb1175
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7458f6868d7fbee72b55ad002148691a113c269d
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096398"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531926"
 ---
 Při klonování konfigurace z jiného slotu nasazení je naklonovaná konfigurace upravitelná. Některé prvky konfigurace následují po prohození obsahu (ne pro konkrétní sloty), zatímco jiné konfigurační prvky zůstávají na stejném slotu po prohození (specifické pro slot). Následující seznamy obsahují nastavení, která se mění při prohození slotů.
 
@@ -41,5 +41,7 @@ Funkce označené hvězdičkou (*) jsou plánovány jako neswapé.
 * Integrace virtuální sítě
 
 > [!NOTE]
+> Chcete-li tato nastavení vyměnit, přidejte nastavení aplikace `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` do každé pozice aplikace a nastavte její hodnotu na `0` nebo `false` . Tato nastavení jsou buď všechna zaměnitelné, nebo vůbec ne. Nemůžete dělat jenom některá nastavení, která by se dala měnit, a ne ostatní.
+
 > Některá nastavení aplikace, která platí pro nezaměnitelné nastavení, se také nemění. Například vzhledem k tomu, že nastavení diagnostiky nejsou zaměněna, související nastavení aplikace, například `WEBSITE_HTTPLOGGING_RETENTION_DAYS` a `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` , se nemění ani v případě, že se nezobrazují jako nastavení slotu.
 >

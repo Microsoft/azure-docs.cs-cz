@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512605"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531962"
 ---
 | Prostředek | Basic | Standard | Premium |
 |---|---|---|---|
@@ -25,7 +25,7 @@ ms.locfileid: "86512605"
 | Šířka pásma pro stažení<sup>2</sup> MB/s | 30 | 60 | 100 |
 | Šířka pásma při nahrávání<sup>2</sup> MB/s | 10 | 20 | 50 |
 | Webhooky | 2 | 10 | 500 |
-| Geografickou replikací | N/A | N/A | [Podporováno][geo-replication] |
+| Geografická replikace | N/A | N/A | [Podporováno][geo-replication] |
 | Důvěryhodnost obsahu | N/A | N/A | [Podporováno][content-trust] |
 | Privátní odkaz s privátními koncovými body | N/A | N/A | [Podporováno][plink] |
 | &bull; Soukromé koncové body | N/A | N/A | 10 |
@@ -39,7 +39,7 @@ ms.locfileid: "86512605"
 
 <sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. V případě dalšího úložiště se vám bude účtovat další denní sazba za GiB, a to až do limitu úložiště. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].
 
-<sup>2</sup>*ReadOps*, *WriteOps*a *Šířka pásma* jsou minimální odhady. Azure Container Registry se snaží zvýšit výkon, protože vyžaduje použití.
+<sup>2</sup>*ReadOps*, *WriteOps* a *Šířka pásma* jsou minimální odhady. Azure Container Registry se snaží zvýšit výkon, protože vyžaduje použití.
 
 <sup>3</sup> . [Docker Pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) se překládá na více operací čtení na základě počtu vrstev v imagi a načítání manifestu.
 
