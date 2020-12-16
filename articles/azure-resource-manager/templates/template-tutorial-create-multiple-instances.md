@@ -6,14 +6,14 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: fc1401959adb97f8c4caf6d413a212d9f3b62801
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930794"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588110"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Kurz: vytvoření více instancí prostředků pomocí šablon ARM
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Kurz: Vytváření více instancí prostředků pomocí šablon ARM
 
 Přečtěte si, jak iterovat šablonu Azure Resource Manager (šablonu ARM) a vytvořit víc instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
 
@@ -38,15 +38,16 @@ K dokončení tohoto článku potřebujete:
 
 [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
-2. Do pole **File name** (Název souboru) vložte následující adresu URL:
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
+1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Šablona obsahuje definici prostředku Microsoft.Storage/storageAccounts. Porovnejte tuto šablonu s [referenčními informacemi k šablonám](/azure/templates/Microsoft.Storage/storageAccounts). Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
-5. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
+
+1. Výběrem **Open** (Otevřít) soubor otevřete.
+1. `Microsoft.Storage/storageAccounts`V šabloně je definován prostředek. Porovnejte tuto šablonu s [referenčními informacemi k šablonám](/azure/templates/Microsoft.Storage/storageAccounts). Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
+1. Vyberte **soubor**  >  **Uložit jako** a uložte soubor jako _azuredeploy.js_ do svého místního počítače.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -56,10 +57,10 @@ Z Visual Studio Code proveďte následující čtyři změny:
 
 ![Azure Resource Manager vytvoří více instancí](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Přidejte prvek `copy` k definování prostředků účtu úložiště. V elementu copy určíte počet iterací a proměnnou pro tuto smyčku. Početní hodnota musí být kladný integer a nesmí překročit 800.
-2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. Tento index použijete jako předponu názvu. `copyIndex()` je založen na nule. Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Například *copyIndex(1)*.
-3. Odstraňte prvek **proměnné**, protože se už nepoužívá.
-4. Odstraňte prvek **výstupu**. Už není zapotřebí.
+1. Přidejte prvek `copy` k definování prostředků účtu úložiště. V `copy` elementu zadejte počet iterací a proměnnou pro tuto smyčku. Početní hodnota musí být kladný integer a nesmí překročit 800.
+2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. Tento index použijete jako předponu názvu. `copyIndex()` je založen na nule. K posunutí hodnoty indexu můžete předat hodnotu ve `copyIndex()` funkci. Například `copyIndex(1)`.
+3. Odstraňte `variables` element, protože už se nepoužívá.
+4. Odstraňte `outputs` element. Už to není potřeba.
 
 Hotová šablona vypadá takto:
 
@@ -109,17 +110,17 @@ Hotová šablona vypadá takto:
 }
 ```
 
-Další informace o vytváření více instancí najdete v tématu [nasazení více instancí prostředku nebo vlastnosti v šablonách ARM](./copy-resources.md) .
+Další informace o vytváření více instancí najdete v tématu [iterace prostředků v šablonách ARM](./copy-resources.md) .
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Přihlaste se k [Azure Cloud Shell](https://shell.azure.com)
 
-1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí.  Po přepnutí se vyžaduje restartování prostředí.
+1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí. Po přepnutí se vyžaduje restartování prostředí.
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Z Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
@@ -148,9 +149,9 @@ Další informace o vytváření více instancí najdete v tématu [nasazení v�
 
     ---
 
-Chcete-li vypsat všechny tři účty úložiště, vynechejte --název parametru:
+Po úspěšném nasazení šablony můžete zobrazit tři účty úložiště vytvořené v zadané skupině prostředků. Porovnejte názvy účtů úložiště s názvem definice v šabloně.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
 
 ```azurecli
 echo "Enter a project name that is used to generate resource group name:" &&
@@ -172,8 +173,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 ---
 
-Porovnejte názvy účtů úložiště s názvem definice v šabloně.
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
@@ -185,7 +184,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky a více typy prostředků. Některé prostředky mají závislé prostředky.
+V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště. V dalším kurzu se zaměříte na vývoj šablony s více prostředky a více typy prostředků. Některé prostředky mají závislé prostředky.
 
 > [!div class="nextstepaction"]
 > [Vytvořit závislé prostředky](./template-tutorial-create-templates-with-dependent-resources.md)

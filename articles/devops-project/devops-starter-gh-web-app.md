@@ -7,12 +7,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
-ms.openlocfilehash: 9a2abf7e714b75f2551a35a220e30c2465d86a49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332732"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588773"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>Kurz: nasazení aplikace Node.js do webové aplikace Azure pomocí DevOps Starter pro akce GitHubu
 
@@ -44,7 +44,7 @@ DevOps Starter vytvoří pracovní postup v GitHubu. Můžete použít stávají
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -52,11 +52,11 @@ DevOps Starter vytvoří pracovní postup v GitHubu. Můžete použít stávají
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
-1. Vyberte **Node.js**a pak vyberte **Další**.
+1. Vyberte **Node.js** a pak vyberte **Další**.
 
-1. V části **zvolte Aplikační architekturu**vyberte **Express.js**a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
+1. V části **zvolte Aplikační architekturu** vyberte **Express.js** a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
 
-1. Vyberte **webovou aplikaci Windows**a potom vyberte **Další**.
+1. Vyberte **webovou aplikaci Windows** a potom vyberte **Další**.
 
 ## <a name="configure-github-and-an-azure-subscription"></a>Konfigurace GitHubu a předplatného Azure
 
@@ -104,14 +104,14 @@ DevOps Starter vytvoří úložiště v GitHubu. Chcete-li zobrazit úložiště
 
 1. Na levé straně řídicího panelu DevOps Starter vyberte odkaz pro svou hlavní větev. Tento odkaz otevře zobrazení nově vytvořeného úložiště GitHub.
 
-1. Pokud chcete zobrazit adresu URL klonování úložiště, vyberte v pravém horním rohu v prohlížeči možnost **klonovat** . Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE). V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
+1. Pokud chcete zobrazit adresu URL klonování úložiště, vyberte v pravém horním rohu v prohlížeči možnost **klonovat** . Úložiště Git můžete naklonovat do svého oblíbeného integrovaného vývojového prostředí (IDE). V několika dalších krocích můžete pomocí webového prohlížeče vytvořit a potvrdit změny kódu přímo do hlavní větve.
 
 1. Na levé straně prohlížeče otevřete soubor **/Application/views/index.pug** .
 
-1. Vyberte **Upravit**a pak proveďte změnu textu.
+1. Vyberte **Upravit** a pak proveďte změnu textu.
     Můžete například změnit některý text pro jednu ze značek.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Starter.   
 Teď byste měli vidět probíhající úlohu sestavení pracovního postupu GitHubu. Změny, které jste právě provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím pracovního postupu GitHubu.
@@ -128,11 +128,11 @@ Azure Application Insights umožňuje snadné monitorování výkonu a využití
 
    ![Podokno Application Insights](_img/azure-devops-project-github/appinsights.png) 
 
-1. Vyberte **časový rozsah**a pak vyberte **poslední hodina**. Pokud chcete filtrovat výsledky, vyberte **aktualizovat**. Nyní můžete zobrazit všechny aktivity za posledních 60 minut. 
+1. Vyberte **časový rozsah** a pak vyberte **poslední hodina**. Pokud chcete filtrovat výsledky, vyberte **aktualizovat**. Nyní můžete zobrazit všechny aktivity za posledních 60 minut. 
     
 1. Chcete-li ukončit časový rozsah, vyberte **x**.
 
-1. Vyberte **výstrahy**a pak vyberte **Přidat výstrahu metriky**. 
+1. Vyberte **výstrahy** a pak vyberte **Přidat výstrahu metriky**. 
 
 1. Zadejte název výstrahy.
 
@@ -144,7 +144,7 @@ Azure Application Insights umožňuje snadné monitorování výkonu a využití
 
 1. Ukončete oblast **výstrahy** a vraťte se do podokna **Application Insights** .
 
-1. Vyberte možnost **dostupnost**a poté vyberte možnost **Přidat test**. 
+1. Vyberte možnost **dostupnost** a poté vyberte možnost **Přidat test**. 
 
 1. Zadejte název testu a pak vyberte **vytvořit**. Vytvoří se jednoduchý test pomocí příkazu Ping, který ověří dostupnost vaší aplikace. Po několika minutách budou k dispozici výsledky testu a na řídicím panelu Application Insights se zobrazí stav dostupnosti.
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501188"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588824"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Sada SDK pro zařízení Azure IoT pro jazyk C
 
@@ -101,7 +101,7 @@ Pokud nejste obeznámeni s nástrojem Průzkumník zařízení, následující p
 
 1. Do prvního pole zadejte **připojovací řetězec IoT Hub** a klikněte na **aktualizovat**. Tento krok nakonfiguruje nástroj tak, aby mohl komunikovat s IoT Hub. 
 
-**Připojovací řetězec** najdete v části IoT Hub nastavení **služby**  >  **Settings**  >  **zásady sdíleného přístupu**  >  **iothubowner**.
+**Připojovací řetězec** najdete v části IoT Hub nastavení **služby**  >    >  **zásady sdíleného přístupu**  >  **iothubowner**.
 
 1. Po nakonfigurování připojovacího řetězce IoT Hub klikněte na kartu **Správa** :
 

@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931448"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587940"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM
 
@@ -42,7 +42,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-powershell-script"></a>Příprava skriptu PowerShellu
 
-Můžete použít vložený skript prostředí PowerShell nebo soubor skriptu.  V tomto kurzu se dozvíte, jak použít soubor skriptu. Z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)se sdílí skript prostředí PowerShell s následujícím obsahem:
+Můžete použít vložený skript PowerShellu nebo soubor skriptu. V tomto kurzu se dozvíte, jak použít soubor skriptu. Z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)se sdílí skript prostředí PowerShell s následujícím obsahem:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,22 +105,22 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 
 Další informace o této definici prostředků najdete v odkazu na [rozšíření](/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
 
-* **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md).
-* **dependsOn**: po vytvoření virtuálního počítače vytvořte prostředek rozšíření.
-* **identifikátory URI**: umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete, že nepoužijete zadané umístění, je nutné aktualizovat hodnoty.
-* **commandToExecute**: Tento příkaz vyvolá skript.
+* `name`: Protože prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, název musí mít předponu názvu virtuálního počítače. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md).
+* `dependsOn`: Po vytvoření virtuálního počítače vytvořte prostředek rozšíření.
+* `fileUris`: Umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete, že nepoužijete zadané umístění, je nutné aktualizovat hodnoty.
+* `commandToExecute`: Tento příkaz vyvolá skript.
 
-Pokud chcete použít vložený skript, odeberte **identifikátory URI** a aktualizujte **commandToExecute** na:
+Použití vloženého skriptu, odebrání `fileUris` a aktualizace `commandToExecute` na:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Tento vložený skript také aktualizuje obsah iisstart.html.
+Tento vložený skript také aktualizuje _iisstart.htm_ obsah.
 
-Musíte taky otevřít port HTTP, abyste mohli získat přístup k webovému serveru.
+Musíte taky otevřít port HTTP, abyste mohli přistupovat k webovému serveru.
 
-1. V šabloně vyhledejte **securityRules** .
+1. `securityRules`V šabloně vyhledejte.
 1. Do pole **výchozí-Allow-3389** přidejte následující pravidlo.
 
     ```json
@@ -141,7 +141,7 @@ Musíte taky otevřít port HTTP, abyste mohli získat přístup k webovému ser
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Postup nasazení najdete v části "nasazení šablony" v tématu [kurz: vytvoření šablon ARM se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [požadavky](#prerequisites) tohoto článku.
+Postup nasazení najdete v části věnované **nasazení šablony** v tématu [kurz: vytvoření šablon ARM se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [požadavky](#prerequisites) tohoto článku.
 
 Z Cloud Shell pro načtení veřejné IP adresy virtuálního počítače spusťte následující příkaz:
 

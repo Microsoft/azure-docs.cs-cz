@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652818"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589422"
 ---
 # <a name="nvv3-series"></a>Řada NVv3
 
@@ -26,6 +26,7 @@ Každý grafický procesor v NVv3 instancích obsahuje licenci na MŘÍŽKu. Tat
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+Akcelerované síťové služby: podporované<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | Virtuální pracovní stanice | Virtuální aplikace |
@@ -35,8 +36,6 @@ Každý grafický procesor v NVv3 instancích obsahuje licenci na MŘÍŽKu. Tat
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = jedna polovina M60 karta.
-
-<sup>2</sup> v tomto okamžiku se v této rodině virtuálních počítačů nepodporuje urychlení sítě, takže skutečný výkon sítě může být nižší než špičková teoretická čísla zachycená.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

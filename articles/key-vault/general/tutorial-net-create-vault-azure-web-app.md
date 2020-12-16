@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 473ed1f14d77470e31c2f14665a12542a70a2a98
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6bb1aafd942046faa77072d99af043ebd43b4a8a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512294"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589963"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
@@ -23,7 +23,7 @@ ms.locfileid: "96512294"
 
 V tomto kurzu použijete spravovanou identitu k ověření webové aplikace Azure pomocí trezoru klíčů Azure. Použijete [klientskou knihovnu Azure Key Vault tajných klíčů pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -31,7 +31,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 * [Sada .NET Core 3,1 SDK (nebo novější)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Instalace [Gitu](https://www.git-scm.com/downloads) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
-* [Azure Key Vault.](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
+* [Azure Key Vault](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
 * Key Vault [tajný klíč](../secrets/about-secrets.md). Tajný klíč můžete vytvořit pomocí [Azure Portal](../secrets/quick-create-portal.md), [PowerShellu](../secrets/quick-create-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="create-a-net-core-app"></a>Vytvoření aplikace .NET Core
@@ -180,7 +180,7 @@ git remote add azure <deploymentLocalGitUrl-from-create-step>
 Pomocí následujícího příkazu nahrajte do vzdáleného úložiště Azure a nasaďte svoji aplikaci. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, použijte přihlašovací údaje, které jste vytvořili v části [Konfigurace místního nasazení Git](#configure-the-local-git-deployment) .
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Spuštění tohoto příkazu může trvat několik minut. Při spuštění se zobrazí podobné informace jako v následujícím příkladu:
@@ -191,7 +191,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Deploy Async
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'd6b54472f7'.
 remote: Repository path is /home/site/repository
@@ -208,7 +208,7 @@ remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
 remote: Deployment successful.
 remote: Deployment Logs : 'https://&lt;your-webapp-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
 To https://&lt;your-webapp-name&gt;.scm.azurewebsites.net:443/&lt;your-webapp-name&gt;.git
-   d87e6ca..d6b5447  master -> master
+   d87e6ca..d6b5447  main -> main
 </pre>
 
 Pomocí webového prohlížeče (nebo aktualizujte) nasazené aplikace:
@@ -311,7 +311,7 @@ Teď, když jste aktualizovali kód, můžete ho znovu nasadit do Azure pomocí 
 ```bash
 git add .
 git commit -m "Updated web app to access my key vault"
-git push azure master
+git push azure main
 ```
 
 ## <a name="go-to-your-completed-web-app"></a>Přejít na dokončenou webovou aplikaci

@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708148"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589232"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
@@ -45,7 +45,7 @@ Kdykoli je to možné, použijte [nasazovací sloty](deploy-staging-slots.md) p�
 
 Pokud váš projekt obsahuje určené větve pro testování, kontrolu a přípravu, pak je třeba každou z těchto větví trvale nasadit do přípravného slotu. (To se označuje jako [Návrh Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) To umožňuje zúčastněným stranám snadno posoudit a otestovat nasazenou větev. 
 
-Průběžné nasazování by nikdy nemělo být povolené pro produkční slot. Místo toho by měla být vaše produkční větev (často Master) nasazená do neprodukčního slotu. Až budete připraveni k vydání základní větve, Proměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – místo nasazení do produkčního prostředí zabraňuje výpadkům a umožňuje vrátit zpět změny tím, že se znovu odsadí. 
+Průběžné nasazování by nikdy nemělo být povolené pro produkční slot. Místo toho by měla být vaše produkční větev (často hlavní) nasazená do neprodukčního slotu. Až budete připraveni k vydání základní větve, Proměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – místo nasazení do produkčního prostředí zabraňuje výpadkům a umožňuje vrátit zpět změny tím, že se znovu odsadí. 
 
 ![Diagram znázorňující tok mezi vývojem, přípravnou a hlavní větví a sloty, na které jsou nasazeny.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
@@ -65,7 +65,7 @@ Níže jsou uvedeny příklady pro běžné rozhraní automatizace.
 
 ### <a name="use-azure-devops"></a>Použití Azure DevOps
 
-App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) pro kontejnery prostřednictvím centra nasazení. Přejděte do aplikace v [Azure Portal](https://portal.azure.com/) a v části **nasazení**vyberte **centrum nasazení** . Podle pokynů vyberte úložiště a větev. Tím se nakonfiguruje kanál sestavení a verze DevOps pro automatické sestavení, označení a nasazení kontejneru při vložení nových potvrzení do vybrané větve.
+App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) pro kontejnery prostřednictvím centra nasazení. Přejděte do aplikace v [Azure Portal](https://portal.azure.com/) a v části **nasazení** vyberte **centrum nasazení** . Podle pokynů vyberte úložiště a větev. Tím se nakonfiguruje kanál sestavení a verze DevOps pro automatické sestavení, označení a nasazení kontejneru při vložení nových potvrzení do vybrané větve.
 
 ### <a name="use-github-actions"></a>Použití akcí GitHubu
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1
@@ -129,7 +129,7 @@ V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal` a 
 
 Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
-### <a name="node"></a>Node
+### <a name="node"></a>Uzel
 
 Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci Node ( `npm install` ). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení aplikace `SCM_DO_BUILD_DURING_DEPLOYMENT` s hodnotou `false` .
 

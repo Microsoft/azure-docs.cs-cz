@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780701"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588467"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Jak naplánovat nabídku konzultační služby na komerčním webu Marketplace
 
@@ -29,17 +29,42 @@ Konzultační nabídky služby se publikují jako seznam **kontaktů** . To znam
 
 Každá konzultační služba se musí soustředit na jeden z těchto produktů společnosti Microsoft, který se nazývá **primární produkt** této nabídky:
 
-|Primární produkt                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Automatizace služby projektu Dynamics 365 |
-|Dynamics 365 Business Central  |Dynamics 365 Sales |
-|Dynamics 365 – obchod          |Správa dodavatelských řetězců Dynamics 365 |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Zákaznická služba Dynamics 365  |Power Apps |
-|Služba pole Dynamics 365     |Power Automate |
-|Dynamics 365 – finance           |Power BI |
-|Dynamics 365 marketing         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365 – obchod
+
+        Dynamics 365 Customer Insights
+
+        Zákaznická služba Dynamics 365
+
+        Služba pole Dynamics 365
+
+        Dynamics 365 – finance
+
+        Dynamics 365 marketing
+    :::column-end:::
+    :::column:::
+        Automatizace služby projektu Dynamics 365
+
+        Dynamics 365 Sales
+
+        Správa dodavatelských řetězců Dynamics 365
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 Primární produkt, který vyberete v partnerském centru, určuje, jestli se vaše nabídka publikuje do Microsoft AppSource nebo Azure Marketplace.
 

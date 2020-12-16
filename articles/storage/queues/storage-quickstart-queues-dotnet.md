@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý Start: knihovna Azure Queue Storage V12 – .NET'
-description: Naučte se používat knihovnu Azure V12 Library k vytvoření fronty a přidání zpráv do fronty. V dalším kroku se dozvíte, jak číst a odstraňovat zprávy z fronty. Naučíte se také, jak odstranit frontu.
+title: 'Rychlý Start: V12 klientské knihovny Azure Queue Storage – .NET'
+description: Naučte se, jak pomocí klientské knihovny Azure Queue Storage V12 for .NET vytvořit frontu a přidat do ní zprávy. V dalším kroku se dozvíte, jak číst a odstraňovat zprávy z fronty. Naučíte se také, jak odstranit frontu.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8900db8ed43b8c255915bf5429e1211f04e7338
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491957"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589521"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: V12 klientské knihovny Azure Queue Storage pro .NET
 
-Začněte s klientskou knihovnou Azure Queue Storage verze 12 pro .NET. Azure Queue Storage je služba pro ukládání velkého počtu zpráv pro pozdější načtení a zpracování. Postupujte podle těchto kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+Začínáme s klientskou knihovnou Azure Queue Storage verze 12 pro .NET Azure Queue Storage je služba pro ukládání velkého počtu zpráv pro pozdější načtení a zpracování. Postupujte podle těchto kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
-Použijte klientskou knihovnu Azure Queue Storage V12 pro .NET pro:
+Pomocí V12 klientské knihovny Azure Queue Storage pro .NET:
 
 - Vytvoření fronty
 - Přidání zpráv do fronty
@@ -39,24 +39,24 @@ Další prostředky:
 ## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- Účet Azure Storage – [Vytvoření účtu úložiště](../common/storage-account-create.md)
 - Aktuální [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém. Ujistěte se, že jste získali sadu SDK a ne modul runtime.
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou Azure Queue Storage V12 for .NET.
+Tato část vás provede přípravou projektu pro práci s V12 klientské knihovny Azure Queue Storage pro .NET.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci .NET Core s názvem *QueuesQuickstartV12*.
+Vytvořte aplikaci .NET Core s názvem `QueuesQuickstartV12` .
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) pomocí `dotnet new` příkazu vytvořte novou konzolovou aplikaci s názvem *QueuesQuickstartV12*. Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*.
+1. V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `QueuesQuickstartV12` . Tento příkaz vytvoří jednoduchý projekt "Hello World" s jedním zdrojovým souborem s názvem `Program.cs` .
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. Přepněte do nově vytvořeného adresáře *QueuesQuickstartV12* .
+1. Přepněte do nově vytvořeného `QueuesQuickstartV12` adresáře.
 
    ```console
    cd QueuesQuickstartV12
@@ -64,7 +64,7 @@ Vytvořte aplikaci .NET Core s názvem *QueuesQuickstartV12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Ještě pořád v adresáři aplikace nainstalujte klientskou knihovnu Azure Queue Storage pro balíček .NET pomocí `dotnet add package` příkazu.
+I když v adresáři aplikace ještě pořád nainstalujete balíček klientské knihovny Azure Queue Storage pro .NET pomocí `dotnet add package` příkazu.
 
 ```console
 dotnet add package Azure.Storage.Queues
@@ -74,8 +74,8 @@ dotnet add package Azure.Storage.Queues
 
 Z adresáře projektu:
 
-1. V editoru otevřete soubor *program.cs*
-1. Odebrat `Console.WriteLine("Hello World!");` příkaz
+1. Otevřete `Program.cs` soubor v editoru.
+1. Odebrat `Console.WriteLine("Hello, World");` příkaz
 1. Přidat `using` direktivy
 1. Aktualizujte `Main` deklaraci metody pro [podporu asynchronního kódu](/dotnet/csharp/whats-new/csharp-7#async-main) .
 
@@ -115,9 +115,9 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy .NET:
 
-- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-- [QueueClient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) ve frontě.
+- [`QueueServiceClient`](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` Umožňuje spravovat všechny fronty v účtu úložiště.
+- [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+- [`QueueMessage`](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -139,7 +139,7 @@ Následující kód načte připojovací řetězec pro účet úložiště. Při
 Přidejte tento kód do `Main` metody:
 
 ```csharp
-Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Queue Storage client library v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable called
@@ -155,9 +155,9 @@ string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONN
 Určete název nové fronty. Následující kód připojí hodnotu identifikátoru GUID k názvu fronty, aby bylo zajištěno, že je jedinečný.
 
 > [!IMPORTANT]
-> Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/naming-queues-and-metadata).
+> Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/naming-queues-and-metadata).
 
-Vytvořte instanci třídy [QueueClient](/dotnet/api/azure.storage.queues.queueclient) . Pak zavolejte metodu [CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) a vytvořte ve svém účtu úložiště frontu.
+Vytvořte instanci [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient) třídy. Pak zavolejte [`CreateAsync`](/dotnet/api/azure.storage.queues.queueclient.createasync) metodu pro vytvoření fronty ve vašem účtu úložiště.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -177,7 +177,7 @@ await queueClient.CreateAsync();
 
 ### <a name="add-messages-to-a-queue"></a>Přidání zpráv do fronty
 
-Následující fragment kódu asynchronně přidá zprávy do fronty voláním metody [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) . Také ukládá [SendReceipt](/dotnet/api/azure.storage.queues.models.sendreceipt) vrácené `SendMessageAsync` voláním. Příjem se používá k aktualizaci zprávy později v programu.
+Následující fragment kódu asynchronně přidá zprávy do fronty voláním [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) metody. Také uloží [`SendReceipt`](/dotnet/api/azure.storage.queues.models.sendreceipt) vrácené `SendMessageAsync` volání. Příjem se používá k aktualizaci zprávy později v programu.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -194,7 +194,7 @@ SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) . `PeekMessagesAsync`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě tím, že zavoláte [`PeekMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) metodu. Tato metoda načte jednu nebo více zpráv z přední části fronty, ale nezmění viditelnost zprávy.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -213,7 +213,7 @@ foreach (PeekedMessage peekedMessage in peekedMessages)
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) . `UpdateMessageAsync`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte hodnoty z rozhraní `SendReceipt` , které bylo uloženo dříve v kódu. `SendReceipt`Hodnoty identifikují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním [`UpdateMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) metody. Tato metoda může změnit časový limit a obsah viditelnosti zprávy. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte hodnoty z rozhraní `SendReceipt` , které bylo uloženo dříve v kódu. `SendReceipt`Hodnoty identifikují, která zpráva se má aktualizovat.
 
 ```csharp
 Console.WriteLine("\nUpdating the third message in the queue...");
@@ -224,7 +224,7 @@ await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Thi
 
 ### <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
 
-Stáhněte dříve přidané zprávy voláním metody [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) .
+Stažení dříve přidaných zpráv voláním [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) metody.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -261,7 +261,7 @@ foreach (QueueMessage message in messages)
 
 ### <a name="delete-a-queue"></a>Odstranění fronty
 
-Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) .
+Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí [`DeleteAsync`](/dotnet/api/azure.storage.queues.queueclient.deleteasync) metody.
 
 Přidejte tento kód na konec `Main` metody:
 
@@ -293,7 +293,7 @@ dotnet run
 Výstup aplikace je podobný následujícímu příkladu:
 
 ```output
-Azure Queue storage v12 - .NET quickstart sample
+Azure Queue Storage client library v12 - .NET quickstart sample
 
 Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
 
@@ -322,7 +322,7 @@ Done
 
 Když se aplikace před přijetím zpráv pozastaví, ověřte si účet úložiště v [Azure Portal](https://portal.azure.com). Ověřte, zda jsou zprávy ve frontě.
 
-Stiskněte klávesu **ENTER** pro příjem a odstranění zpráv. Po zobrazení výzvy znovu stiskněte klávesu **ENTER** , aby se fronta odstranila, a dokončete ukázku.
+Pokud `Enter` chcete zprávy přijmout a odstranit, stiskněte klávesu. Po zobrazení výzvy znovu stiskněte klávesu `Enter` a odstraňte frontu a dokončete ukázku.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -334,5 +334,5 @@ Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 > [Azure pro vývojáře na platformě .NET a .NET Core](/dotnet/azure/)
 
 - Další informace najdete v tématu [knihovny Azure Storage pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
-- Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte do [v12ch ukázek klientské knihovny .NET pro Azure Queue Storage](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).
+- Další ukázkové aplikace pro Azure Queue Storage najdete v tématu [ukázky .NET pro klientské knihovny azure Queue Storage](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).
 - Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).

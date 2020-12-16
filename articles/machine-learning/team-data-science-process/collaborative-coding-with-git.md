@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090208"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588705"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
 
@@ -39,7 +39,7 @@ Novou větev můžete vytvořit také pomocí následujícího příkazu git bas
 git checkout -b <new branch name> <base branch name>
 
 ```
-Pokud nezadáte a \<base branch name> , je nová větev založená na `master` . 
+Pokud nezadáte a \<base branch name> , je nová větev založená na `main` . 
 
 Chcete-li přepnout do své pracovní větve, spusťte následující příkaz: 
 
@@ -47,7 +47,7 @@ Chcete-li přepnout do své pracovní větve, spusťte následující příkaz:
 git checkout <working branch name>
 ```
 
-Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání se spouští `git checkout master` zpátky do `master` větve.
+Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání se spouští `git checkout main` zpátky do `main` větve.
 
 Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají relaci uživatele Story-Task, když máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
 
@@ -72,7 +72,7 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Vytvoření žádosti o získání dat
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Vytvoření žádosti o přijetí změn
 
 Po jednom nebo několika potvrzeních a nabízených oznámeních, až budete připraveni k sloučení aktuální pracovní větve do své základní větve, můžete vytvořit a odeslat *žádost o* přijetí změn v Azure Repos. 
 
@@ -80,7 +80,7 @@ Na hlavní stránce projektu Azure DevOps **ukažte na úložiště**  >  **žá
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejděte do úložiště Git a větev, do které chcete sloučit změny. Přidejte nebo změňte jakékoli jiné požadované informace. V části **revidující**přidejte jména revidujících a pak vyberte **vytvořit**. 
+Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejděte do úložiště Git a větev, do které chcete sloučit změny. Přidejte nebo změňte jakékoli jiné požadované informace. V části **revidující** přidejte jména revidujících a pak vyberte **vytvořit**. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -90,7 +90,7 @@ Po vytvoření žádosti o přijetí změn obdrží kontroloři e-mailové ozná
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-Jakmile recenzenti schválí změny, můžete vy nebo někdo jiný s oprávněním sloučit sloučit pracovní větev do její základní větve. Vyberte **Dokončit**a pak v dialogovém okně **kompletní žádost o** přijetí změn vyberte **Dokončit sloučení** . Pracovní větev můžete odstranit poté, co byla sloučena. 
+Jakmile recenzenti schválí změny, můžete vy nebo někdo jiný s oprávněním sloučit sloučit pracovní větev do její základní větve. Vyberte **Dokončit** a pak v dialogovém okně **kompletní žádost o** přijetí změn vyberte **Dokončit sloučení** . Pracovní větev můžete odstranit poté, co byla sloučena. 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
@@ -105,7 +105,7 @@ Až se vrátíte do **úložišť** v levém navigačním panelu, uvidíte, že 
 Pomocí následujících příkazů Git bash můžete sloučit `script` pracovní větev do své základní větve a po sloučení odstranit pracovní větev:
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

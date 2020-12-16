@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: fd474a32b4a517230a82615065d7815c04140045
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432964"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589453"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Firewall webových aplikací Azure a Azure Policy
 
@@ -47,7 +47,7 @@ K dispozici je několik předdefinovaných Azure Policy definic pro správu pros
     2.  **Vyloučení**: vyberte všechny prostředky z oboru, které chcete vyloučit z přiřazení zásad.
     3.  **Definice zásady**: Vyberte definici zásady, která se má použít pro obor s vyloučeními. Na panelu hledání zadejte "Firewall webových aplikací" a vyberte odpovídající Azure Policy firewallu webových aplikací.
 
-:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Karta základy na stránce přiřadit zásady":::
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Snímek obrazovky zobrazující kartu Definice zásad na stránce available definitions (dostupné definice)":::
 
 5.  Vyberte kartu **parametry** a aktualizujte parametry přiřazení zásad. Pro lepší objasnění toho, co parametr dělá, najeďte myší na ikonu informace vedle názvu parametru pro další objasnění.
 

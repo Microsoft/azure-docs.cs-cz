@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931363"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589130"
 ---
-# <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: použití podmínky v šablonách ARM
+# <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: Používání podmínky v šablonách ARM
 
 Přečtěte si, jak nasadit prostředky Azure na základě podmínek v šabloně Azure Resource Manager (šablona ARM).
 
-V kurzu [Nastavení pořadí nasazování prostředků](./template-tutorial-create-templates-with-dependent-resources.md) vytvoříte virtuální počítač, virtuální síť a několik dalších závislých prostředků včetně účtu úložiště. Místo nutnosti pokaždé vytvářet nový účet úložiště umožníte uživatelům vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Docílíte toho definováním dalšího parametru. Pokud hodnota tohoto parametru bude „new“, vytvoří se nový účet úložiště. V opačném případě se použije existující účet úložiště se zadaným názvem.
+V kurzu [Nastavení pořadí nasazování prostředků](./template-tutorial-create-templates-with-dependent-resources.md) vytvoříte virtuální počítač, virtuální síť a několik dalších závislých prostředků včetně účtu úložiště. Místo nutnosti pokaždé vytvářet nový účet úložiště umožníte uživatelům vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Docílíte toho definováním dalšího parametru. Pokud je hodnota parametru **Nová**, vytvoří se nový účet úložiště. V opačném případě se použije existující účet úložiště se zadaným názvem.
 
 ![Diagram podmínky použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -54,7 +54,7 @@ K dokončení tohoto článku potřebujete:
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -73,19 +73,19 @@ K dokončení tohoto článku potřebujete:
 
     Před přizpůsobením šablony je vhodné si projít odkaz na šablonu.
 
-1. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy.js**.
+1. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem _azuredeploy.js_.
 
 ## <a name="modify-the-template"></a>Úprava šablony
 
 Ve stávající šabloně proveďte dvě změny:
 
 * Přidejte parametr názvu účtu úložiště. Uživatelé můžou zadat buď název nového účtu úložiště, nebo název existujícího účtu úložiště.
-* Přidejte nový parametr **newOrExisting**. Nasazení používá tento parametr k určení toho, jestli se má vytvořit nový účet úložiště, nebo použít existující účet úložiště.
+* Přidejte nový parametr s názvem `newOrExisting` . Nasazení používá tento parametr k určení toho, jestli se má vytvořit nový účet úložiště, nebo použít existující účet úložiště.
 
 Tady je postup, jak tyto změny provést:
 
-1. Ve Visual Studio Code otevřete soubor **azuredeploy.json**.
-1. Nahraďte tři **proměnné (' storageAccountName ')** **parametry (' storageAccountName ')** v celé šabloně.
+1. Ve Visual Studio Code otevřete soubor _azuredeploy.json_.
+1. Nahraďte tři `variables('storageAccountName')` řetězcem `parameters('storageAccountName')` v celé šabloně.
 1. Odeberte definici následující proměnné:
 
     ![Snímek obrazovky, který zvýrazní definice proměnných, které je třeba odebrat.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
@@ -105,7 +105,7 @@ Tady je postup, jak tyto změny provést:
     },
     ```
 
-    Stisknutím kláves **[ALT] + [SHIFT] + F** naformátujte šablonu v Visual Studio Code.
+    Stisknutím kombinace kláves ALT + SHIFT + F naformátujte šablonu v Visual Studio Code.
 
     Aktualizovaná definice parametrů vypadá takto:
 
@@ -117,12 +117,12 @@ Tady je postup, jak tyto změny provést:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Podmínka zkontroluje hodnotu parametru **newOrExisting**. Pokud je hodnota parametru **new**, nasazení vytvoří účet úložiště.
+    Podmínka kontroluje hodnotu parametru `newOrExisting` . Pokud je hodnota parametru **new**, nasazení vytvoří účet úložiště.
 
     Aktualizovaná definice účtu úložiště vypadá takto:
 
     ![Snímek obrazovky zobrazující aktualizovanou definici účtu úložiště](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače na následující hodnotu:
+1. Aktualizujte `storageUri` vlastnost definice prostředku virtuálního počítače na tuto hodnotu:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +136,16 @@ Tady je postup, jak tyto změny provést:
 
 1. Přihlaste se k [Azure Cloud Shell](https://shell.azure.com)
 
-1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí.  Po přepnutí se vyžaduje restartování prostředí.
+1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí. Po přepnutí se vyžaduje restartování prostředí.
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí `ls` příkazu a `cat` příkazu ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
     > [!IMPORTANT]
-    > Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Název účtu úložiště je název projektu s připojeným úložištěm. Ujistěte se, že název projektu a název vygenerovaného účtu úložiště splňují požadavky na název účtu úložiště.
+    > Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Název účtu úložiště je název projektu s připojeným **úložištěm** . Ujistěte se, že název projektu a název vygenerovaného účtu úložiště splňují požadavky na název účtu úložiště.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,9 +172,9 @@ Tady je postup, jak tyto změny provést:
     ```
 
     > [!NOTE]
-    > Pokud má parametr **newOrExisting** hodnotu **new**, ale účet úložiště se zadaným názvem již existuje, nasazení selže.
+    > Pokud je toto nasazení `newOrExisting` **nové**, ale účet úložiště se zadaným názvem účtu úložiště už existuje, nasazení se nezdařilo.
 
-Zkuste provést jiné nasazení s **newOrExisting** nastavenou na "existující" a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
+Zkuste provést jiné nasazení se `newOrExisting` **stávajícím** nastavením na existující a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

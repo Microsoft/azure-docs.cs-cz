@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746450"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588790"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -205,7 +205,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 8. Chcete-li nasadit kód, který App Service, zadejte následující příkaz v příkazovém okně. Pokud se zobrazí výzva k zadání přihlašovacích údajů, zadejte přihlašovací údaje pro nasazení na úrovni uživatele, které jste vytvořili v kroku 5. Ujistěte se, že nahrajete do hlavní větve App Service vzdálené.
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. Průběh nasazení se aktualizuje v příkazovém okně. Úspěšné nasazení skončí s řádky podobnými následujícímu výstupu:
@@ -216,7 +216,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. Spuštěním následujícího příkazu se dotazuje na stav webové aplikace a ujistěte se, že je spuštěná:

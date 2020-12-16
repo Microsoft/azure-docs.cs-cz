@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854719"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589153"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET pomocí Azure DevOps Starter
 
@@ -34,7 +34,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 
 1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový. 
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový. 
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -72,7 +72,7 @@ DevOps Starter vytvořil úložiště Git v Azure Repos nebo GitHubu. Chcete-li 
 
 3. Vlevo přejděte ke struktuře souborů aplikace na **Application/ASPNET-Core-dotnet-Core/pages/index. cshtml**.
 
-4. Vyberte **Upravit**a pak proveďte změnu nadpisu H2. Zadejte například text Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
+4. Vyberte **Upravit** a pak proveďte změnu nadpisu H2. Zadejte například text Začínáme hned **s Azure DevOps Starter** nebo Udělejte nějakou jinou změnu.
 
       ![Úpravy kódu](_img/azure-devops-project-aspnet-core/codechange.png)
 
@@ -88,7 +88,7 @@ V předchozím kroku Azure DevOps Starter automaticky nakonfiguroval úplný kan
 
 1. Vyberte tři tečky (...).  Tato akce otevře nabídku, kde můžete spustit několik aktivit, jako je například zařazování nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 
     ![Kanál buildu](_img/azure-devops-project-aspnet-core/builddef.png)
 
@@ -96,7 +96,7 @@ V předchozím kroku Azure DevOps Starter automaticky nakonfiguroval úplný kan
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**.   
 V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn pro sestavení.  Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
@@ -105,7 +105,7 @@ V podokně **Historie** se zobrazí záznam pro audit vašich nedávných změn 
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  
 DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1.  Na levé straně vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje kanál, který definuje proces vydání.  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318782"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Azure Active Directory integrace s Andromeda
 
@@ -126,30 +126,30 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Andromed
 
     | Název | Zdrojový atribut|
     | ------ | -----------|
-    | role        | Role specifická pro aplikaci |
-    | typ        | Typ aplikací |
-    | company       | CompanyName |
+    | role | Role specifická pro aplikaci |
+    | typ | Typ aplikací |
+    | company | CompanyName |
 
     > [!NOTE]
     > Neexistují reálné hodnoty. Tyto hodnoty jsou jenom pro demonstrační účely, použijte prosím své role organizace.
 
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
+    1. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![Snímek obrazovky zobrazuje deklarace identity uživatelů s možnostmi přidání nové deklarace identity a uložení.](common/new-save-attribute.png)
+        ![Snímek obrazovky zobrazuje deklarace identity uživatelů s možnostmi přidání nové deklarace identity a uložení.](common/new-save-attribute.png)
 
-    ![Snímek obrazovky ukazuje spravovat deklarace identity uživatelů, kde můžete zadat hodnoty popsané I v tomto kroku.](common/new-attribute-details.png)
+        ![Snímek obrazovky ukazuje spravovat deklarace identity uživatelů, kde můžete zadat hodnoty popsané I v tomto kroku.](common/new-attribute-details.png)
 
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
+    1. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Ponechte **obor názvů** prázdný.
+    1. Ponechte **obor názvů** prázdný.
 
-    d. Jako **atribut**vyberte zdroj.
+    1. Jako **atribut** vyberte zdroj.
 
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
+    1. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Klikněte na **OK** .
+    1. Klikněte na **OK** .
 
-    například Klikněte na **Uložit**.
+    1. Klikněte na **Uložit**.
 
 8. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -159,11 +159,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Andromed
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    1. Identifikátor Azure AD
 
-    c. Odhlašovací adresa URL
+    1. Odhlašovací adresa URL
 
 ### <a name="configure-andromeda-single-sign-on"></a>Nakonfigurovat Andromeda jednu Sign-On
 
@@ -181,31 +181,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Andromed
 
     ![Andromeda konfigurace](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. Zaškrtněte **Povolit jednotné přihlašování pomocí SAML**.
+    1. Zaškrtněte **Povolit jednotné přihlašování pomocí SAML**.
 
-    b. V části **informace o Andromeda** Zkopírujte hodnotu **identity SP** a vložte ji do textového pole **identifikátor** **základního konfiguračního oddílu SAML** .
+    1. V části **informace o Andromeda** Zkopírujte hodnotu **identity SP** a vložte ji do textového pole **identifikátor** **základního konfiguračního oddílu SAML** .
 
-    c. Zkopírujte hodnotu **adresy URL příjemce** a vložte ji do textového pole **Adresa URL odpovědi** **základního konfiguračního oddílu SAML** .
+    1. Zkopírujte hodnotu **adresy URL příjemce** a vložte ji do textového pole **Adresa URL odpovědi** **základního konfiguračního oddílu SAML** .
 
-    d. Zkopírujte hodnotu **URL pro přihlášení** a vložte ji do pole **přihlašovací adresa URL** pro **základní konfigurační oddíl SAML** .
+    1. Zkopírujte hodnotu **URL pro přihlášení** a vložte ji do pole **přihlašovací adresa URL** pro **základní konfigurační oddíl SAML** .
 
-    e. V části **poskytovatel identity SAML** zadejte svůj název IDP.
+    1. V části **poskytovatel identity SAML** zadejte svůj název IDP.
 
-    f. V textovém poli **jednotné přihlašování koncového bodu** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    1. V textovém poli **jednotné přihlašování koncového bodu** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    například Otevřete stažený **certifikát kódovaný v kódování Base64** z Azure Portal v programu Poznámkový blok, vložte jej do textového pole **certifikátu X 509** .
-    
-    h. Namapujte následující atributy s příslušnou hodnotou pro usnadnění přihlášení SSO ze služby Azure AD. Pro přihlášení je vyžadován atribut **ID uživatele** . Pro zřizování jsou vyžadovány **e-maily**, **společnosti**, **usertype**a **role** . V této části definujeme mapování atributů (název a hodnoty), které koreluje s definicemi definovanými v rámci Azure Portal
+    1. Otevřete stažený **certifikát kódovaný v kódování Base64** z Azure Portal v programu Poznámkový blok, vložte jej do textového pole **certifikátu X 509** .
 
-    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. Namapujte následující atributy s příslušnou hodnotou pro usnadnění přihlášení SSO ze služby Azure AD. Pro přihlášení je vyžadován atribut **ID uživatele** . Pro zřizování jsou vyžadovány **e-maily**, **společnosti**, **usertype** a **role** . V této části definujeme mapování atributů (název a hodnoty), které koreluje s definicemi definovanými v rámci Azure Portal
 
-    i. Klikněte na **Uložit**.
+        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -218,7 +218,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
@@ -229,7 +229,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Andromeda.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Andromeda**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Andromeda**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -261,7 +261,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Andromeda, měli byste se automaticky přihlásit k Andromeda, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

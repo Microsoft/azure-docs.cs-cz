@@ -3,12 +3,12 @@ title: Běžné dotazy týkající se zotavení po havárii VMware pomocí Azure
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379986"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587788"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
@@ -112,7 +112,7 @@ Site Recovery replikuje místní virtuální počítače VMware a fyzické serve
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>Můžu replikovat nové počítače do účtů úložiště?
 
-Ne. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
+No. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
 
 Replikace nových virtuálních počítačů do účtu úložiště je k dispozici pouze pomocí prostředí PowerShell ([AZ. RecoveryServices Module verze 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) nebo REST API (verze 2018-01-10 nebo 2016-08-10). [Přečtěte si, jak](./vmware-azure-disaster-recovery-powershell.md) nastavit replikaci pomocí příkazů PowerShellu.
 
@@ -131,7 +131,7 @@ Ano, pro průběžné replikace můžete snadno [změnit typ spravovaného disku
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Můžu přepínat replikaci ze spravovaných disků na nespravované disky?
 
-Ne. Přepnutí ze spravovaného na nespravované není podporováno.
+No. Přepnutí ze spravovaného na nespravované není podporováno.
 
 ## <a name="replication"></a>Replikace
 
@@ -146,6 +146,10 @@ Replikace je nepřetržitá při replikaci virtuálních počítačů VMware do 
 ### <a name="can-i-extend-replication"></a>Je možné rozšířenou replikaci?
 
 Rozšířená nebo zřetězená replikace není podporována. Vyžádejte si tuto funkci ve [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Jak se dá sledovat průběh počáteční replikace nebo synchronizace?
+
+Tato možnost byla nedávno Site Recovery služby. Pokud chcete získat přesné podrobnosti, aktualizujte svou infrastrukturu Site Recovery (konfigurační servery, procesové servery se škálováním na více systémů) a agenta mobility na verze 9,36 nebo vyšší. Další informace o tom, jak sledovat průběh, najdete [tady](vmware-azure-enable-replication.md#monitor-initial-replication).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Můžu provést počáteční replikaci offline?
 
@@ -234,7 +238,7 @@ Doporučujeme [vytvořit virtuální počítač konfiguračního serveru](vmware
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Může být konfigurační server replikován do více než jedné oblasti?
 
-Ne. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
+No. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Můžu hostovat konfigurační server v Azure?
 
@@ -266,15 +270,15 @@ Yes. Stáhněte si instalační program MySQL a umístěte ho do složky C:\Temp
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Můžu použít virtuální počítač konfiguračního serveru pro cokoli jiného?
 
-Ne. Virtuální počítač používejte jenom pro konfigurační server.
+No. Virtuální počítač používejte jenom pro konfigurační server.
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Můžu naklonovat konfigurační server a použít ho k orchestraci?
 
-Ne. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
+No. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>Můžu změnit trezor, ve kterém je konfigurační server zaregistrovaný?
 
-Ne. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
+No. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Můžu použít stejný konfigurační server pro zotavení po havárii virtuálních počítačů VMware i fyzických serverů?
 
@@ -286,7 +290,7 @@ Ano, ale Upozorňujeme, že fyzický počítač se může vrátit zpátky jenom 
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kde můžu stahovat registrační klíče trezoru?
 
-V trezoru Recovery Services v části Správa **infrastruktury Site Recovery** vyberte **konfigurační servery**  >  **Manage**. Pak na stránce **servery** vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+V trezoru Recovery Services v části Správa **infrastruktury Site Recovery** vyberte **konfigurační servery**  >  . Pak na stránce **servery** vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Může být pro ochranu více instancí vCenter použit jediný konfigurační server?
 

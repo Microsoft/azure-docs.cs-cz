@@ -4,12 +4,12 @@ description: Naučte se průběžně sestavovat, testovat a nasazovat šablony A
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1b9e60ec1b3f7626a3cb67a673bf12d14d7d259b
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368201"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588127"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon ARM pomocí Azure Pipelines
 
@@ -100,10 +100,10 @@ _azuredeploy.jsv_ byla přidána do místního úložiště. V dalším kroku na
     ```bash
     git add .
     git commit -m "Add web app templates."
-    git push origin master
+    git push origin main
     ```
 
-    Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Hlavní** větev je hlavní.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu budete používat hlavní větev přímo.
+    Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Main** je hlavní větev.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu použijete hlavní větev přímo.
 
 1. Přejděte do úložiště GitHub z prohlížeče. Adresa URL je `https://github.com/[YourAccountName]/[YourGitHubRepository]` . V rámci složky se zobrazí složka _CreateWebApp_ a tři soubory.
 1. Vyberte _linkedStorageAccount.js_ pro otevření šablony.
@@ -217,10 +217,10 @@ Když aktualizujete šablonu a nahrajete změny do vzdáleného úložiště, ka
 1. Dodejte změny do vzdáleného úložiště spuštěním následujících příkazů z Gitu bash/shell.
 
     ```bash
-    git pull origin master
+    git pull origin main
     git add .
     git commit -m "Update the storage account type."
-    git push origin master
+    git push origin main
     ```
 
     První příkaz ( `pull` ) synchronizuje místní úložiště se vzdáleným úložištěm. Soubor YAML kanálu se přidal jenom do vzdáleného úložiště. Spuštění `pull` příkazu stáhne kopii souboru YAML do místní větve.

@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344279"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560538"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -21,7 +21,7 @@ Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejíc�
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
 > [!NOTE]
-> - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+> - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 > - Microsoft v současnosti u refundací rezervací neúčtuje poplatky za předčasné ukončení. Možná budeme účtovat poplatky za refundace provedené v budoucnu. Momentálně ale nemáme pro aktivaci tohoto poplatku stanovený žádný pevný termín.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Postup při výměně nebo refundaci existující rezervace
@@ -66,7 +66,7 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 **Zásady pro výměny**
 
 - Můžete vrátit více stávajících rezervací za účelem nákupu jedné nové rezervace stejného typu. Rezervace jednoho typu není možné měnit za jiný typ. Pro nákup rezervace SQL tak například nemůžete vrátit rezervaci virtuálního počítače. Současně s výměnou můžete měnit vlastnosti rezervace, jako je rodina, verze, SKU, oblast, množství a období.
-- Výměny mohou provádět jen vlastníci rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Výměny mohou provádět jen vlastníci rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 - Výměna se zpracuje jako refundace a opětovný nákup (pro zrušení a nový nákup rezervace se vytváří odlišné transakce). Za rezervace, které jste dali na protiúčet, se vrátí přepočítaná částka za rezervaci. Za nový nákup se účtuje celá částka. Přepočítaná částka za rezervaci představuje zbývající hodnotu vrácené rezervace přepočítanou podle počtu dní.
 - Rezervace můžete vyměnit nebo refundovat i tehdy, pokud smlouvě Enterprise použité při nákupu rezervace vypršela platnost, a obnovila se jako nová smlouva.
 - Celkový závazek životnosti nové rezervace by měl být stejný nebo větší než zbývající závazek vracené rezervace. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, by celkový závazek životnosti nové rezervace měl být 1 800 USD nebo víc (placeno měsíčně nebo předem).
@@ -79,7 +79,7 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 - Celkový zrušený závazek pro fakturační profil nebo jednu registraci nesmí za průběžné období 12 měsíců překročit 50 000 USD. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, se zrušený závazek rovná 1 800 USD. Váš nový dostupný limit po provedení této refundace bude 48 200 USD. Za 365 dnů od provedení této refundace se limit 48 200 USD zvýší o 1 800 USD a znovu budete mít k dispozici 50 000 USD. Z tohoto fondu se odčítají všechny ostatní zrušené rezervace pro fakturační profil nebo registraci EA a platí pro ně stejná doplňovací logika.
 - Azure nebude zpracovávat žádnou refundaci, která by pro fakturační profil nebo registraci EA za dobu 12 měsíců překročila limit 50 000 USD.
 - Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
-- Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

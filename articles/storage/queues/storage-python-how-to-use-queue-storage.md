@@ -1,20 +1,20 @@
 ---
 title: Jak používat Azure Queue Storage z Pythonu – Azure Storage
-description: Naučte se používat Azure Služba front z Pythonu k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv.
+description: Naučte se používat Azure Queue Storage z Pythonu k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/25/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345648"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588272"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Jak používat Azure Queue Storage z Pythonu
 
@@ -24,7 +24,7 @@ ms.locfileid: "93345648"
 
 Tento článek popisuje běžné scénáře použití služby Azure Queue Storage. Mezi zahrnuté scénáře patří vkládání, prohlížení, získávání a odstraňování zpráv fronty. Kód pro vytváření a odstraňování front je také pokrytý.
 
-Příklady v tomto článku jsou napsané v Pythonu a používají [klientskou knihovnu Azure Queue Storage pro Python]. Další informace o frontách najdete v části [Další kroky](#next-steps) .
+Příklady v tomto článku jsou napsané v Pythonu a používají [klientskou knihovnu Azure Queue Storage pro Python](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue). Další informace o frontách najdete v části [Další kroky](#next-steps) .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -32,7 +32,7 @@ Příklady v tomto článku jsou napsané v Pythonu a používají [klientskou k
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Stáhnout a nainstalovat sadu SDK služby Azure Storage pro Python
 
-[Sada SDK Azure Storage pro Python](https://github.com/azure/azure-storage-python) vyžaduje python verze 2,7, 3,3 nebo novější.
+[Sada SDK Azure Storage pro Python](https://github.com/azure/azure-storage-python) vyžaduje Python v 2.7, v 3.3 nebo novější verzi.
 
 ### <a name="install-via-pypi"></a>Instalace prostřednictvím PyPI
 
@@ -53,23 +53,23 @@ pip install azure-storage-queue==2.1.0
 ---
 
 > [!NOTE]
-> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK pomocí nástroje `pip uninstall azure-storage` před instalací nejnovějšího balíčku.
+> Pokud upgradujete z Azure Storage SDK pro Python v 0.36 nebo starší verzi, odinstalujte starší sadu SDK pomocí nástroje `pip uninstall azure-storage` před instalací nejnovějšího balíčku.
 
-Alternativní metody instalace najdete v tématu [sada Azure SDK pro Python].
+Alternativní metody instalace najdete v tématu [sada Azure SDK pro Python](https://github.com/Azure/Azure-SDK-for-Python).
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup do úložiště Queue
+## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k Queue Storage
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Objekt [QueueClient](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient) vám umožní pracovat s frontou. V horní části každého souboru Pythonu, ve kterém chcete programově přistupovat ke frontě Azure, přidejte následující kód:
+[`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient)Objekt vám umožní pracovat s frontou. V horní části každého souboru Pythonu, ve kterém chcete programově přistupovat ke frontě Azure, přidejte následující kód:
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ImportStatements":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Objekt [QueueService](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2) vám umožní pracovat s frontami. Následující kód vytvoří `QueueService` objekt. Do horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující kód Azure Storage:
+[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2)Objekt vám umožní pracovat s frontami. Následující kód vytvoří `QueueService` objekt. Do horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující kód Azure Storage:
 
 ```python
 from azure.storage.queue import (
@@ -121,16 +121,16 @@ queue_service.create_queue(queue_name)
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Chcete-li vložit zprávu do fronty, použijte metodu [send_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) .
+Chcete-li vložit zprávu do fronty, použijte [`send_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) metodu.
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_AddMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Chcete-li vložit zprávu do fronty, pomocí metody [put_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) vytvořte novou zprávu a přidejte ji do fronty.
+Chcete-li vložit zprávu do fronty, použijte [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) metodu k vytvoření nové zprávy a jejímu přidání do fronty.
 
 ```python
-message = u"Hello World"
+message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
 ```
@@ -147,7 +147,7 @@ Nakonfigurujte funkce kódování a dekódování Base64 na objekt klienta Queue
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Nakonfigurujte funkce kódování a dekódování Base64 v objektu Queue Service.
+Nakonfigurujte funkce kódování a dekódování Base64 na objekt Queue Storage.
 
 ```python
 # Setup Base64 encoding and decoding functions
@@ -161,13 +161,13 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Můžete prohlížet zprávy bez jejich odebrání z fronty voláním metody [peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) . Ve výchozím nastavení se `peek_messages` v jedné zprávě prohlédne.
+Můžete prohlížet zprávy bez jejich odebrání z fronty voláním [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) metody. Ve výchozím nastavení tato metoda prohlédne jednu zprávu.
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_PeekMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Můžete prohlížet zprávy bez jejich odebrání z fronty voláním metody [peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) . Ve výchozím nastavení se `peek_messages` v jedné zprávě prohlédne.
+Můžete prohlížet zprávy bez jejich odebrání z fronty voláním [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) metody. Ve výchozím nastavení tato metoda prohlédne jednu zprávu.
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -184,20 +184,20 @@ Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva 
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Následující kód používá metodu [update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
+Následující kód používá [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) metodu k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ChangeMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Následující kód používá metodu [update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
+Následující kód používá [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) metodu k aktualizaci zprávy. Časový limit viditelnosti je nastavený na 0, což znamená, že se zpráva zobrazuje hned a obsah se aktualizuje.
 
 ```python
 messages = queue_service.get_messages(queue_name)
 
 for message in messages:
     queue_service.update_message(
-        queue_name, message.id, message.pop_receipt, 0, u"Hello World Again")
+        queue_name, message.id, message.pop_receipt, 0, u"Hello, World Again")
 ```
 
 ---
@@ -208,13 +208,13 @@ Podle potřeby můžete získat odhadovaný počet zpráv ve frontě.
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Metoda [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) požádá službu front, aby vrátila vlastnosti fronty, včetně `approximate_message_count` .
+Metoda [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) vrátí vlastnosti fronty včetně `approximate_message_count` .
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_GetQueueLength":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Metoda [get_queue_metadata](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) požádá službu front, aby vrátila metadata o frontě, včetně `approximate_message_count` .
+[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-)Metoda vrátí vlastnosti fronty včetně `approximate_message_count` .
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -224,7 +224,7 @@ print("Message count: " + str(count))
 
 ---
 
-Výsledek je pouze přibližný, protože je možné přidat nebo odebrat zprávy poté, co služba Queue odpoví na vaši žádost.
+Výsledek je pouze přibližný, protože je možné přidat nebo odebrat zprávy poté, co služba odpoví na vaši žádost.
 
 ## <a name="dequeue-messages"></a>Vyřadit zprávy z fronty
 
@@ -254,13 +254,13 @@ Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Následující příklad kódu používá metodu [receive_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) k získání zpráv v dávkách. Potom zpracuje každou zprávu v rámci každé dávky pomocí vnořené `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Následující příklad kódu používá [`receive_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) metodu k získání zpráv v dávkách. Potom zpracuje každou zprávu v rámci každé dávky pomocí vnořené `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DequeueByPage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Následující příklad kódu používá metodu [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) k získání 16 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Následující příklad kódu používá [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) metodu k získání 16 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -276,13 +276,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu [delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) .
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) metodu.
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DeleteQueue":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu [delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) .
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) metodu.
 
 ```python
 print("Deleting queue: " + queue_name)
@@ -295,12 +295,8 @@ queue_service.delete_queue(queue_name)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili základy ukládání do fronty, můžete získat další informace pomocí těchto odkazů.
+Teď, když jste se naučili základy Queue Storage, přečtěte si následující odkazy, kde najdete další informace.
 
-- [Reference k rozhraní API Pythonu pro fronty Azure](/python/api/azure-storage-queue)
-- [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
-- [REST API služby Azure Storage](/rest/api/storageservices/)
-
-[Klientská knihovna pro Azure Queue Storage pro Python]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
-[Azure SDK pro Python]: https://github.com/azure/azure-sdk-for-python
-[Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog
+- [Referenční informace k rozhraní API pro Python pro Azure Queue Storage](/python/api/azure-storage-queue)
+- [Středisko pro vývojáře v Pythonu](https://azure.microsoft.com/develop/python/)
+- [Odkaz na Azure Storage REST API](/rest/api/storageservices/)

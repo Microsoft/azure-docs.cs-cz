@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535363"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587923"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -52,9 +52,9 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 
 Následující kroky připravují a konfigurují místně hostovaný Server MariaDB, na virtuálním počítači nebo v cloudové databázové službě pro Replikace vstupních dat. Server MariaDB je zdrojem v Replikace vstupních dat.
 
-1. Než budete pokračovat, zkontrolujte [požadavky hlavního serveru](concepts-data-in-replication.md#requirements) . 
+1. Než budete pokračovat, zkontrolujte [požadavky primárního serveru](concepts-data-in-replication.md#requirements) . 
 
-2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
+2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
    
    Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](../cloud-shell/overview.md) k dispozici v Azure Portal.
 
@@ -78,7 +78,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
       ```bash
       ping <output of step 2b>
       ``` 
-      Například: 
+      Příklad: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -284,7 +284,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
     
     Z důvodu nativního omezení replikace v MariaDB je nutné nastavit  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) proměnné pro replikaci bez scénáře GTID.
 
-    Zkontrolujte, jestli jsou na podřízeném serveru `sync_master_info` a `sync_relay_log_info` proměnné, aby se zajistila stabilita replikace dat, a nastavte proměnné na `1` .
+    Zkontrolujte proměnné serveru repliky `sync_master_info` a ujistěte se `sync_relay_log_info` , že je replikace dat stabilní, a nastavte proměnné na `1` .
     
 ## <a name="other-stored-procedures"></a>Jiné uložené procedury
 

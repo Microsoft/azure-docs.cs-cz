@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b26c24149d422021dcb86f75c915ade89cbccdec
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563207"
+ms.locfileid: "97589871"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování
 
@@ -60,19 +60,19 @@ Azure AD se dá nakonfigurovat tak, aby fungoval s poskytovateli identity, kteř
 V rámci zprávy s odpovědí SAML obsahuje uzel podpisu informace o digitální signatuře samotné zprávy. Blok signatury má následující požadavky:
 
 1. Samotný uzel kontrolního výrazu musí být podepsán.
-2.  Algoritmus RSA-SHA1 se musí použít jako DigestMethod. Jiné algoritmy digitálního podpisu nejsou přijímány.
+2. Algoritmus RSA-SHA1 se musí použít jako DigestMethod. Jiné algoritmy digitálního podpisu nejsou přijímány.
    `<ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>`
-3.  Dokument XML můžete také podepsat. 
-4.  Transformační algoritmus musí odpovídat hodnotám v následující ukázce:    `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+3. Dokument XML můžete také podepsat. 
+4. Transformační algoritmus musí odpovídat hodnotám v následující ukázce:     `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  Algoritmus metodě SignatureMethod musí odpovídat následující ukázce:   `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9. Algoritmus metodě SignatureMethod musí odpovídat následující ukázce:    `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>Podporované vazby
 Vazby jsou povinné parametry komunikace související s přenosem. Následující požadavky platí pro vazby.
 
 1. Požadovaná přeprava je HTTPS.
-2.  Služba Azure AD bude během přihlašování vyžadovat pro odeslání tokenu HTTP POST.
-3.  Azure AD použije HTTP POST pro požadavek na ověření pro zprostředkovatele identity a přesměruje zprávy pro odhlášení do zprostředkovatele identity.
+2. Služba Azure AD bude během přihlašování vyžadovat pro odeslání tokenu HTTP POST.
+3. Azure AD použije HTTP POST pro požadavek na ověření pro zprostředkovatele identity a přesměruje zprávy pro odhlášení do zprostředkovatele identity.
 
 ## <a name="required-attributes"></a>Požadované atributy
 Tato tabulka zobrazuje požadavky na konkrétní atributy ve zprávě SAML 2,0.
@@ -91,16 +91,16 @@ Pro výměnu přihlašovacích zpráv se zobrazí dvojice zpráv požadavek a od
 Následuje ukázka zprávy požadavku, která je odeslána z Azure AD do ukázkového poskytovatele identity SAML 2,0. Vzorový zprostředkovatel identity SAML 2,0 je Active Directory Federation Services (AD FS) (AD FS) nakonfigurovaným pro použití protokolu SAML-P. Testování interoperability bylo také dokončeno s jinými zprostředkovateli identity SAML 2,0.
 
 ```xml
-    <samlp:AuthnRequest 
-        xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
-        xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
-        ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" 
-        IssueInstant="2014-01-30T16:18:35Z" 
-        Version="2.0" 
-        AssertionConsumerServiceIndex="0" >
-            <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
-            <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
-    </samlp:AuthnRequest>
+  <samlp:AuthnRequest 
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
+    ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" 
+    IssueInstant="2014-01-30T16:18:35Z" 
+    Version="2.0" 
+    AssertionConsumerServiceIndex="0" >
+        <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
+        <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
+  </samlp:AuthnRequest>
 ```
 
 Následuje ukázka zprávy s odpovědí, která je odeslána z ukázkového poskytovatele identity kompatibilního s SAML 2,0 do Azure AD/Microsoft 365.
@@ -196,47 +196,47 @@ Následující postup vás provede převodem existující standardní domény na
 
 1. Připojte se k adresáři služby Azure AD jako správce klienta:
 
-    ```powershell
-    Connect-MsolService
-    ```
-    
+  ```powershell
+  Connect-MsolService
+  ```
+  
 2. Nakonfigurujte požadovanou doménu Microsoft 365 pro použití federace s SAML 2,0:
 
-    ```powershell
-    $dom = "contoso.com" 
-    $BrandName - "Sample SAML 2.0 IDP" 
-    $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
-    $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
-    $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 
-    $MyURI = "urn:uri:MySamlp2IDP" 
-    $MySigningCert = "MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" 
-    $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" 
-    $Protocol = "SAMLP" 
-    Set-MsolDomainAuthentication `
-        -DomainName $dom `
-        -FederationBrandName $BrandName `
-        -Authentication Federated `
-        -PassiveLogOnUri $LogOnUrl `
-        -ActiveLogOnUri $ecpUrl `
-        -SigningCertificate $MySigningCert `
-        -IssuerUri $MyURI `
-        -LogOffUri $LogOffUrl `
-        -PreferredAuthenticationProtocol $Protocol
-    ``` 
+  ```powershell
+  $dom = "contoso.com" 
+  $BrandName - "Sample SAML 2.0 IDP" 
+  $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
+  $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
+  $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 
+  $MyURI = "urn:uri:MySamlp2IDP" 
+  $MySigningCert = "MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" 
+  $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" 
+  $Protocol = "SAMLP" 
+  Set-MsolDomainAuthentication `
+    -DomainName $dom `
+    -FederationBrandName $BrandName `
+    -Authentication Federated `
+    -PassiveLogOnUri $LogOnUrl `
+    -ActiveLogOnUri $ecpUrl `
+    -SigningCertificate $MySigningCert `
+    -IssuerUri $MyURI `
+    -LogOffUri $LogOffUrl `
+    -PreferredAuthenticationProtocol $Protocol
+  ``` 
 
 3.  V souboru metadat IDP můžete získat řetězec kódovaný pomocí kódování Base64 pro podpisový certifikát. Příklad tohoto umístění byl poskytnut, ale může se mírně lišit podle vaší implementace.
 
-    ```xml
-    <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-        <KeyDescriptor use="signing">
-          <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
-             <X509Data>
-                 <X509Certificate> MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate>
-              </X509Data>
-            </KeyInfo>
-        </KeyDescriptor>
-    </IDPSSODescriptor>
-    ``` 
+  ```xml
+  <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <KeyDescriptor use="signing">
+      <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+       <X509Data>
+         <X509Certificate> MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+  </IDPSSODescriptor>
+  ``` 
 
 Další informace o příkazu set-MsolDomainAuthentication najdete v tématu: [/Previous-Versions/Azure/dn194112 (v = Azure. 100)](/previous-versions/azure/dn194112(v=azure.100)).
 
@@ -278,13 +278,12 @@ Další informace o registraci New-MsolUser, [/Previous-Versions/Azure/dn194096 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Ověření jednotného přihlašování s využitím SAML 2,0 IDP
 Než ověříte a spravujete jednotné přihlašování (označované také jako federace identit), zkontrolujte informace a proveďte kroky v následujících článcích a nastavte jednotné přihlašování s vaším poskytovatelem identity založeném na SP-Lite SAML 2,0:
 
-
-1.  Zkontrolovali jste požadavky na protokol SAML 2,0 pro Azure AD.
-2.  Nakonfigurovali jste poskytovatele identity SAML 2,0.
-3.  Instalace prostředí Windows PowerShell pro jednotné přihlašování pomocí zprostředkovatele identity SAML 2,0
-4.  Nastavení vztahu důvěryhodnosti mezi poskytovatelem služeb SAML 2,0 a službou Azure AD
-5.  Byl zřízen známý objekt zabezpečení testovacího uživatele pro Azure Active Directory (Microsoft 365) buď pomocí prostředí Windows PowerShell nebo Azure AD Connect.
-6.  Nakonfigurujte synchronizaci adresářů pomocí [Azure AD Connect](whatis-hybrid-identity.md).
+1. Zkontrolovali jste požadavky na protokol SAML 2,0 pro Azure AD.
+2. Nakonfigurovali jste poskytovatele identity SAML 2,0.
+3. Instalace prostředí Windows PowerShell pro jednotné přihlašování pomocí zprostředkovatele identity SAML 2,0
+4. Nastavení vztahu důvěryhodnosti mezi poskytovatelem služeb SAML 2,0 a službou Azure AD
+5. Byl zřízen známý objekt zabezpečení testovacího uživatele pro Azure Active Directory (Microsoft 365) buď pomocí prostředí Windows PowerShell nebo Azure AD Connect.
+6. Nakonfigurujte synchronizaci adresářů pomocí [Azure AD Connect](whatis-hybrid-identity.md).
 
 Po nastavení jednotného přihlašování pomocí poskytovatele identity založeného na SP-Lite SAML 2,0 byste měli ověřit, že funguje správně.
 
@@ -302,29 +301,33 @@ Společnost Microsoft poskytuje nástroj, který můžete použít k otestován�
 
 
 
-1. Stáhněte si analyzátor připojení z nástroje, [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) .
-2.  Kliknutím na Instalovat nyní začněte stahovat a instalovat nástroj.
-3.  Vyberte nemůžu nastavit federaci s Office 365, Azure nebo jinými službami, které používají Azure Active Directory.
-4.  Po stažení a spuštění nástroje se zobrazí okno Diagnostika připojení. Nástroj vás provede testováním federačního připojení.
-5.  Analyzátor připojení otevře IDP SAML 2,0, abyste se mohli přihlásit, zadejte přihlašovací údaje pro objekt zabezpečení uživatele, který testujete: ![ snímek obrazovky, který zobrazuje přihlašovací okno pro váš IDP SAML 2,0.](./media/how-to-connect-fed-saml-idp/saml1.png)
+1. Stáhněte si [analyzátor připojení](https://testconnectivity.microsoft.com/?tabid=Client).
+2. Kliknutím na Instalovat nyní začněte stahovat a instalovat nástroj.
+3. Vyberte nemůžu nastavit federaci s Office 365, Azure nebo jinými službami, které používají Azure Active Directory.
+4. Po stažení a spuštění nástroje se zobrazí okno Diagnostika připojení. Nástroj vás provede testováním federačního připojení.
+5. Analyzátor připojení otevře IDP SAML 2,0, abyste se mohli přihlásit, zadejte přihlašovací údaje pro objekt zabezpečení uživatele, který testujete:
+
+    ![Snímek obrazovky zobrazující okno pro přihlášení pro váš IDP SAML 2,0.](./media/how-to-connect-fed-saml-idp/saml1.png)
+
 6.  V okně přihlášení k testu federace byste měli zadat název účtu a heslo pro tenanta Azure AD, které je nakonfigurované tak, aby byly federované s vaším poskytovatelem identity SAML 2,0. Nástroj se pokusí přihlásit pomocí těchto přihlašovacích údajů a podrobné výsledky testů provedených během pokusu o přihlášení budou poskytnuty jako výstup.
-![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
+
+    ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
+
 7. V tomto okně se zobrazuje neúspěšný výsledek testování. Kliknutím na zkontrolovat podrobné výsledky zobrazíte informace o výsledcích pro každý provedený test. Výsledky můžete také uložit na disk, aby je bylo možné sdílet.
  
->[!NOTE]
->Analyzátor připojení také testuje aktivní federaci pomocí protokolů WS-based a ECP/PAOS. Pokud tyto chyby nepoužíváte, můžete ignorovat následující chybu: testování aktivního procesu přihlašování pomocí koncového bodu aktivní federace poskytovatele identity.
+> [!NOTE]
+> Analyzátor připojení také testuje aktivní federaci pomocí protokolů WS-based a ECP/PAOS. Pokud tyto chyby nepoužíváte, můžete ignorovat následující chybu: testování aktivního procesu přihlašování pomocí koncového bodu aktivní federace poskytovatele identity.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Ruční ověření, jestli se jednotné přihlašování správně nastavilo
+
 Ruční ověření poskytuje další kroky, které můžete provést, abyste zajistili, že váš poskytovatel identity SAML 2,0 funguje správně v mnoha scénářích.
 Chcete-li ověřit, zda bylo jednotné přihlašování nastaveno správně, proveďte následující kroky:
 
-
 1. Na počítači připojeném k doméně se přihlaste ke cloudové službě pomocí stejného přihlašovacího jména, které používáte pro vaše podnikové přihlašovací údaje.
-2.  Klikněte do pole heslo. Pokud je nastaveno jednotné přihlašování, bude pole heslo ve stínovém zobrazení šedé a zobrazí se následující zpráva: "nyní se budete muset přihlásit ve &lt; vaší společnosti &gt; ."
-3.  Klikněte na přihlášení na &lt; svém firemním &gt; odkazu. Pokud se můžete přihlásit, pak bylo nastaveno jednotné přihlašování.
+2. Klikněte do pole heslo. Pokud je nastaveno jednotné přihlašování, bude pole heslo ve stínovém zobrazení šedé a zobrazí se následující zpráva: "nyní se budete muset přihlásit ve &lt; vaší společnosti &gt; ."
+3. Klikněte na přihlášení na &lt; svém firemním &gt; odkazu. Pokud se můžete přihlásit, pak bylo nastaveno jednotné přihlašování.
 
 ## <a name="next-steps"></a>Další kroky
-
 
 - [Active Directory Federation Services (AD FS) Správa a přizpůsobení pomocí Azure AD Connect](how-to-connect-fed-management.md)
 - [Seznam kompatibilit pro federaci Azure AD](how-to-connect-fed-compatibility.md)

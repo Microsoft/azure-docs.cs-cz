@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936793"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589215"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funkce a možnosti spravované instance SQL ARC Azure
 
@@ -35,23 +35,23 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
   
 |Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
-|Přesouvání protokolu|Yes| 
-|Komprese záloh|Yes|
-|Snímek databáze|Yes|
+|Přesouvání protokolu|Ano| 
+|Komprese záloh|Ano|
+|Snímek databáze|Ano|
 |Vždy v instanci clusteru s podporou převzetí služeb při selhání<sup>1</sup>| Nelze použít. Podobné možnosti k dispozici |
 |Skupiny dostupnosti Always On<sup>2</sup>|Možnosti HA jsou plánovány.|
 |Základní skupiny dostupnosti <sup>2</sup>|Možnosti HA jsou plánovány.|
 |Minimální Skupina dostupnosti potvrzení repliky <sup>2</sup>|Možnosti HA jsou plánovány.|
-|Skupina dostupnosti bez clusteru|Yes|
-|Online stránka a obnovení souborů|Yes|
-|Online indexování|Yes|
-|Obnovitelné online opětovné sestavení indexu|Yes|
-|Změna schématu online|Yes|
-|Rychlé obnovení|Yes|
-|Zrcadlené zálohy|Yes|
-|Horké přidání paměti a procesoru|Yes|
-|Šifrované zálohování|Yes|
-|Hybridní zálohování do Azure (zálohování na adresu URL)|Yes|
+|Skupina dostupnosti bez clusteru|Ano|
+|Online stránka a obnovení souborů|Ano|
+|Online indexování|Ano|
+|Obnovitelné online opětovné sestavení indexu|Ano|
+|Změna schématu online|Ano|
+|Rychlé obnovení|Ano|
+|Zrcadlené zálohy|Ano|
+|Horké přidání paměti a procesoru|Ano|
+|Šifrované zálohování|Ano|
+|Hybridní zálohování do Azure (zálohování na adresu URL)|Ano|
 
 <sup>1</sup> v situaci, kdy dojde k selhání, se spustí nová spravovaná instance SQL a znovu se připojí k trvalému svazku obsahujícímu vaše data. [Další informace o trvalých svazcích Kubernetes najdete tady](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
@@ -59,96 +59,96 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS škálovatelnost a výkon  
 
-|Příznak|SQL Managed Instance s podporou služby Azure Arc|
-|-------------|----------------|
-|Clusterovaného|   Yes|
-|Binární soubory velkých objektů v clusterovaných indexech columnstore|    Yes|
-|Opětovné sestavení neclusterovaných indexů columnstore online| Yes|
-|OLTP v paměti|    Yes|
-|Trvalá hlavní paměť|    Yes|
-|Dělení tabulek a indexů|  Yes
-|Komprese dat|  Yes|
-|Správce prostředků| Yes|
-|Paralelismus dělené tabulky| Yes|
-|Technologie NUMA a přidělování paměťových polí a vyrovnávací paměti pro velké stránky|  Yes|
-|Zásady správného řízení prostředků v/v|    Yes|
-|Opožděná trvanlivost|    Yes|
-|Automatické ladění|  Yes|
-|Adaptivní spojení v dávkovém režimu| Yes|
-|Váš názor na přidělení paměti v dávkovém režimu|  Yes|
-|Prokládaný běh pro funkce vracející tabulku s více příkazy|  Yes|
-|Vylepšení hromadného vkládání   |Yes|
+| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+|--|--|
+| Clusterovaného | Ano |
+| Binární soubory velkých objektů v clusterovaných indexech columnstore | Ano |
+| Opětovné sestavení neclusterovaných indexů columnstore online | Ano |
+| OLTP v paměti | Ano |
+| Trvalá hlavní paměť | Ano |
+| Dělení tabulek a indexů | Ano |
+| Komprese dat | Ano |
+| Správce prostředků | Ano |
+| Paralelismus dělené tabulky | Ano |
+| Technologie NUMA a přidělování paměťových polí a vyrovnávací paměti pro velké stránky | Ano |
+| Zásady správného řízení prostředků v/v | Ano |
+| Opožděná trvanlivost | Ano |
+| Automatické ladění | Ano |
+| Adaptivní spojení v dávkovém režimu | Ano |
+| Váš názor na přidělení paměti v dávkovém režimu | Ano |
+| Prokládaný běh pro funkce vracející tabulku s více příkazy | Ano |
+| Vylepšení hromadného vkládání | Ano |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> Zabezpečení RDBMS  
-|Příznak|SQL Managed Instance s podporou služby Azure Arc|
-|-------------|----------------|
-|Zabezpečení na úrovni řádků|    Yes|
-|Funkce Always Encrypted|  Yes|
-|Always Encrypted se zabezpečeným Enclaves| No|
-|Dynamické maskování dat|  Yes|
-|Základní auditování|    Yes|
-|Podrobné auditování| Yes|
-|Transparentní šifrování databáze|   Yes|
-|Uživatelsky definované role|    Yes|
-|Databáze s omezením|   Yes|
-|Šifrování pro zálohy|    Yes|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> Zabezpečení RDBMS
+
+| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+|--|--|
+| Zabezpečení na úrovni řádků | Ano |
+| Funkce Always Encrypted | Ano |
+| Always Encrypted se zabezpečenými enklávami | Ne |
+| Dynamické maskování dat | Ano |
+| Základní auditování | Ano |
+| Podrobné auditování | Ano |
+| Transparentní šifrování databáze | Ano |
+| Uživatelsky definované role | Ano |
+| Databáze s omezením | Ano |
+| Šifrování pro zálohy | Ano |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> Správa RDBMS  
 
-|Příznak|SQL Managed Instance s podporou služby Azure Arc|
-|-------------|----------------|
-|Vyhrazené připojení správce|    Yes|
-|Podpora skriptování prostředí PowerShell|  Yes|
-|Podpora operací komponenty aplikace na datové vrstvě – extrakce, nasazení, upgrade, odstranění| Yes
-|Automatizace zásad (kontrolu plánu a změny)   |Yes|
-|Kolektor dat výkonu|    Yes|
-|Standardní sestavy výkonu   |Yes|
-|Průvodce plánem a zamrznutí pro plány plánů| Yes|
-|Přímý dotaz na indexovaná zobrazení (pomocí příkazu Rozbalit nápovědu)|   Yes|
-|Údržba automatických indexovaných zobrazení    |Yes|
-|Distribuované zobrazení oddílů| Yes|
-|Paralelní indexované operace    |Yes|
-|Automatické použití indexovaného zobrazení pomocí optimalizátoru dotazů|  Yes|
-|Paralelní kontrola konzistence |Yes|
-
+| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+|--|--|
+| Vyhrazené připojení správce | Ano |
+| Podpora skriptování prostředí PowerShell | Ano |
+| Podpora operací komponenty aplikace na datové vrstvě – extrakce, nasazení, upgrade, odstranění | Ano |
+| Automatizace zásad (kontrolu plánu a změny) | Ano |
+| Kolektor dat výkonu | Ano |
+| Standardní sestavy výkonu | Ano |
+| Průvodce plánem a zamrznutí pro plány plánů | Ano |
+| Přímý dotaz na indexovaná zobrazení (pomocí příkazu Rozbalit nápovědu) | Ano |
+| Údržba automatických indexovaných zobrazení | Ano |
+| Distribuované zobrazení oddílů | Ano |
+| Paralelní indexované operace | Ano |
+| Automatické použití indexovaného zobrazení pomocí optimalizátoru dotazů | Ano |
+| Paralelní kontrola konzistence | Ano |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programovatelnosti  
 
-|Příznak|SQL Managed Instance s podporou služby Azure Arc|
-|-------------|----------------|
-|JSON|  Yes |       |
-|Úložiště dotazů    |Yes    |       
-|Dočasné|  Yes |       
-|Nativní podpora jazyka XML|    Yes |       
-|Indexování XML   |Yes    |       
-|UPSERT možnosti sloučení &|   Yes |       
-|Datové typy data a času    |Yes    |       
-|Podpora pro mezinárodní využití|  Yes |       
-|Fulltextové a sémantické vyhledávání |    No      |
-|Specifikace jazyka v dotazu |Yes        |   
-|Service Broker (zasílání zpráv)|    Yes     |   
-|Koncové body Transact-SQL|    Yes |       
-|Graph| Yes |   
-|Machine Learning Services| No  |   
-|PolyBase| No   |
+| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+|--|--|
+| JSON | Ano |
+| Úložiště dotazů | Ano |  |
+| Dočasné | Ano |  |
+| Nativní podpora jazyka XML | Ano |  |
+| Indexování XML | Ano |  |
+| UPSERT možnosti sloučení & | Ano |  |
+| Datové typy data a času | Ano |  |
+| Podpora pro mezinárodní využití | Ano |  |
+| Fulltextové a sémantické vyhledávání | Ne |
+| Specifikace jazyka v dotazu | Ano |  |
+| Service Broker (zasílání zpráv) | Ano |  |
+| Koncové body Transact-SQL | Ano |  |
+| Graph | Ano |  |
+| Machine Learning Services | Ne |  |
+| PolyBase | Ne |
 
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Spravovaná instance SQL s podporou ARC Azure podporuje různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 
 | **Nástroj** | SQL Managed Instance s podporou služby Azure Arc|
 | --- | --- | --- |
-| Azure Portal <sup>1</sup> | No |
-| Azure CLI | No |
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
-| Azure PowerShell | Yes |
-| [Soubor BACPAC (export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
-| [Soubor BACPAC (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
+| Azure Portal <sup>1</sup> | Ne |
+| Azure CLI | Ne |
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Ano |
+| Azure PowerShell | Ano |
+| [Soubor BACPAC (export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano |
+| [Soubor BACPAC (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ano |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ano |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ano |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Ano |
 
 <sup>1</sup> Azure Portal se v režimu jen pro čtení ve verzi Preview používá jenom k zobrazení spravovaných instancí SQL ARC s podporou Azure ARC.
 

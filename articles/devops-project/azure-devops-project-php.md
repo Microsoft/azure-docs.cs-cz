@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856088"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588960"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro PHP pomocí Azure DevOps Starter
 
@@ -32,7 +32,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -70,9 +70,9 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Na levé straně přejdete do souboru **Resources/views/Welcome. Blade. php** .
 
-1. Vyberte **Upravit**a pak proveďte změnu textu.  Změňte například text v některé ze značek div.
+1. Vyberte **Upravit** a pak proveďte změnu textu.  Změňte například text v některé ze značek div.
 
-1. Vyberte **Potvrdit**a potom změny uložte.
+1. Vyberte **Potvrdit** a potom změny uložte.
 
 1. V prohlížeči přejdete na řídicí panel DevOps Starter. Nyní by se mělo zobrazit sestavení probíhá. Změny, které jste právě provedli, jsou automaticky vytvořeny a nasazeny prostřednictvím kanálu CI/CD.
 
@@ -84,13 +84,13 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Přejděte na pole **stav** a potom vyberte **tři tečky** (...). V nabídce se zobrazí několik možností, jako je například zařazování nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
-1. Vyberte **Upravit**.
+1. Vyberte **Edit** (Upravit).
 
 1. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení. Sestavení spouští různé úlohy, jako například načítání zdrojů z úložiště Git, obnovení závislostí a publikování výstupů, které se používají pro nasazení.
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název kanálu sestavení na výstižnější, vyberte, **uložte & frontu**a potom vyberte **Uložit**.
+1. Změňte název kanálu sestavení na výstižnější, vyberte, **uložte & frontu** a potom vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**.  V podokně **Historie** se zobrazí záznam o tom, jak vaše poslední změny sestavení provést. Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -98,7 +98,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje kanál, který definuje proces vydání. 
 

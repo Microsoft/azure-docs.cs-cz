@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928524"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589113"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Kurz: řešení potíží s nasazeními šablon ARM
 
@@ -43,7 +43,7 @@ K dokončení tohoto článku potřebujete:
 
 Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/)a nastavte dvě problémy se šablonou.
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -51,16 +51,16 @@ Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](htt
     ```
 
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Změňte **apiVersion** čáru na následující řádek:
+4. Změňte `apiVersion` řádek na následující řádek:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** je neplatný název elementu. Jedná se o chybu ověřování.
-    - Verze rozhraní API musí být "2018-07-01".  Jedná se o chybu nasazení.
+    - `apiVersion1` je neplatný název elementu. Jedná se o chybu ověřování.
+    - Verze rozhraní API musí být `"2018-07-01"` .  Jedná se o chybu nasazení.
 
-5. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
+5. Vyberte **soubor**  >  **Uložit jako** a uložte soubor jako _azuredeploy.js_ do svého místního počítače.
 
 ## <a name="troubleshoot-the-validation-error"></a>Řešení chyby ověřování
 
@@ -68,13 +68,13 @@ Chcete-li nasadit šablonu, přečtěte si část [nasazení šablony](template-
 
 Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Chybová zpráva indikuje, že se jedná o problém s **apiVersion1**.
+Chybová zpráva indikuje, že se jedná o problém s `apiVersion1` .
 
-K opravě problému použijte Visual Studio Code změňte **apiVersion1** na **apiVersion** a pak šablonu uložte.
+Pomocí Visual Studio Code opravte problém tak, že změníte `apiVersion1` na `apiVersion` a pak šablonu uložíte.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Řešení potíží s chybami nasazení
 
@@ -82,7 +82,7 @@ Chcete-li nasadit šablonu, přečtěte si část [nasazení šablony](template-
 
 Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení** se zobrazí **1 chyba** .
 
     ![Snímek obrazovky, který zvýrazní neúspěšné nasazení.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,7 +107,7 @@ Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
 Chybu můžete najít také v protokolech aktivit:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte **monitorování**  >  **protokolu aktivit**.
 3. K vyhledání protokolu použijte filtry.
 

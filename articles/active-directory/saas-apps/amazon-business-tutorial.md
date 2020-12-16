@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f2ad0cb67a41c0a5c59f6428a4912bd91a00e56
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318804"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589889"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Kurz: integrace Amazon Business s Azure Active Directory
 
@@ -109,19 +109,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace Amazon Business Application očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **atributy uživatele & deklarace** v dialogovém okně **deklarace skupiny** proveďte následující kroky:
 
-    a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
+    1. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
-    ![Snímek obrazovky zobrazuje atributy uživatele & deklarace identity pomocí ikony pro skupiny vrácené ve vybrané deklaraci identity.](./media/amazon-business-tutorial/config04.png)
+        ![Snímek obrazovky zobrazuje atributy uživatele & deklarace identity pomocí ikony pro skupiny vrácené ve vybrané deklaraci identity.](./media/amazon-business-tutorial/config04.png)
 
-    ![Snímek obrazovky zobrazuje deklarace skupin s hodnotami, jak je popsáno v tomto postupu.](./media/amazon-business-tutorial/config05.png)
+        ![Snímek obrazovky zobrazuje deklarace skupin s hodnotami, jak je popsáno v tomto postupu.](./media/amazon-business-tutorial/config05.png)
 
-    b. V seznamu přepínačů vyberte **všechny skupiny** .
+    1. V seznamu přepínačů vyberte **všechny skupiny** .
 
-    c. Jako **zdrojový atribut**vyberte **ID skupiny** .
+    1. Jako **zdrojový atribut** vyberte **ID skupiny** .
 
-    d. Zaškrtněte políčko **přizpůsobit název deklarace skupiny** a zadejte název skupiny podle požadavků vaší organizace.
+    1. Zaškrtněte políčko **přizpůsobit název deklarace skupiny** a zadejte název skupiny podle požadavků vaší organizace.
 
-    e. Klikněte na **Uložit**.
+    1. Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **XML metadata** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -182,7 +182,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Snímek obrazovky ukazuje připojení testu s S s tlačítkem test.](media/amazon-business-tutorial/sso-connection2.png)
 
-1. V průvodci **spouštěnou adresu URL IDP** před kliknutím na **aktivovat**Zkopírujte hodnotu, která je přiřazená **idpid** a vložte do parametru **Idpid** v **adrese URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
+1. V průvodci **spouštěnou adresu URL IDP** před kliknutím na **aktivovat** Zkopírujte hodnotu, která je přiřazená **idpid** a vložte do parametru **Idpid** v **adrese URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
     ![Snímek obrazovky zobrazuje I D P iniciované U R L, kde můžete získat U R l nezbytnou pro testování a pak vybrat aktivovat.](media/amazon-business-tutorial/sso-connection3.png)
 
@@ -206,11 +206,11 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 > [!NOTE]
 > Správci potřebují v případě potřeby vytvářet testovací uživatele ve svém tenantovi. Následující kroky ukazují, jak vytvořit testovacího uživatele.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -232,13 +232,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k organizaci Amazon Business.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Amazon Business**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Snímek obrazovky se zobrazeným tlačítkem Přidat uživatele](common/add-assign-user.png)
 
@@ -253,7 +253,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Přiřaďte skupinu zabezpečení Azure AD v Azure Portal
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Amazon Business**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Amazon Business**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -269,7 +269,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. Vyhledejte skupinu zabezpečení, kterou chcete použít, a potom ji kliknutím na skupinu přidejte do oddílu Vybrat členy. Klikněte na **Vybrat**a pak na **přiřadit**.
+5. Vyhledejte skupinu zabezpečení, kterou chcete použít, a potom ji kliknutím na skupinu přidejte do oddílu Vybrat členy. Klikněte na **Vybrat** a pak na **přiřadit**.
 
     ![Hledat skupinu zabezpečení](./media/amazon-business-tutorial/assign-group.png)
 
@@ -286,7 +286,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Amazon Business na přístupovém panelu byste se měli automaticky přihlášeni k organizaci Amazon Business, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

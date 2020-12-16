@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515672"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589538"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Rámec zabezpečení: ověření vstupu | Hrozeb 
 | Produkt/služba | Článek |
 | --------------- | ------- |
 | **Webová aplikace** | <ul><li>[Zakázat skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů](#disable-xslt)</li><li>[Zajistěte, aby každá stránka, která by mohla obsahovat uživatelsky ovladatelného obsahu, výslovný z automatického sledování MIME.](#out-sniffing)</li><li>[Posílení nebo zakázání rozlišení entit XML](#xml-resolution)</li><li>[Aplikace, které využívají http.sys provádění ověřování pomocí kanonického zpracování adresy URL](#app-verification)</li><li>[Zajistěte, aby byly při přijímání souborů od uživatelů k dismístě správné ovládací prvky.](#controls-users)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webové aplikaci.](#typesafe)</li><li>[Použití samostatných tříd vazeb modelů nebo seznamů filtru vazeb k zamezení ohrožení zabezpečení pro hromadné přiřazení MVC](#binding-mvc)</li><li>[Kódování nedůvěryhodného webového výstupu před vykreslením](#rendering)</li><li>[Provede ověřování vstupu a filtrování u všech vlastností modelu řetězcového typu.](#typemodel)</li><li>[Pro pole formuláře, která přijímají všechny znaky, například Editor formátovaného textu, by měla být použita upravená část.](#richtext)</li><li>[Nepřiřazujte elementy modelu DOM k jímky, které nemají sestavené kódování.](#inbuilt-encode)</li><li>[Ověření všech přesměrování v rámci aplikace je uzavřeno nebo provedeno bezpečně.](#redirect-safe)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami řadiče](#string-method)</li><li>[Nastavte časový limit horní meze pro zpracování regulárního výrazu, aby se zabránilo DoS v důsledku chybných regulárních výrazů.](#dos-expression)</li><li>[Nepoužívejte HTML. Raw v zobrazeních Razor](#html-razor)</li></ul> | 
 | **Databáze** | <ul><li>[Nepoužívejte dynamické dotazy v uložených procedurách](#stored-proc)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.](#validation-api)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API](#string-api)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.](#typesafe-api)</li></ul> | 
+| **Web API** | <ul><li>[Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.](#validation-api)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API](#string-api)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.](#typesafe-api)</li></ul> | 
 | **Azure Document DB** | <ul><li>[Použití parametrizovaných dotazů SQL pro Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[Ověřování vstupu WCF prostřednictvím vazby schématu](#schema-binding)</li><li>[WCF – ověřování vstupu prostřednictvím inspektorů parametrů](#parameters)</li></ul> |
 
@@ -73,7 +73,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Reference**              | [IE8 zabezpečení část V – komplexní ochrana](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **Kroky** | <p>Pro každou stránku, která by mohla obsahovat uživatelsky ovladatelné obsahy, je nutné použít hlavičku protokolu HTTP `X-Content-Type-Options:nosniff` . Aby bylo možné tento požadavek splnit, můžete buď nastavit požadovanou stránku záhlaví na stránce pouze na ty stránky, které mohou obsahovat uživatelsky přizpůsobený obsah, nebo je můžete nastavit globálně pro všechny stránky v aplikaci.</p><p>Každý typ souboru dodaný z webového serveru má přidružený [typ MIME](https://en.wikipedia.org/wiki/Mime_type) (označuje se také jako *typ obsahu* ), který popisuje povahu obsahu (tj. obrázek, text, aplikace atd.).</p><p>Hlavička X-Content-Type-Options je hlavička protokolu HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být ve formátu MIME. Tato hlavička je navržená tak, aby zmírnila MIME-Sniffing útoky. Podpora pro tuto hlavičku se přidala v Internet Exploreru 8 (IE8).</p><p>Jenom uživatelé aplikace Internet Explorer 8 (IE8) budou využívat možnosti X-Content-Type-Type. Předchozí verze aplikace Internet Explorer aktuálně nerespektují hlavičku X-Content-Type-Options</p><p>Internet Explorer 8 (a novější) jsou jediné hlavní prohlížeče, které implementují funkci pro odhlášení pomocí kódování MIME. Pokud a pokud jiné hlavní prohlížeče (Firefox, Safari, Chrome) implementují podobné funkce, bude toto doporučení aktualizováno, aby obsahovalo i syntaxi pro tyto prohlížeče.</p>|
+| **Kroky** | <p>Pro každou stránku, která by mohla obsahovat uživatelsky ovladatelné obsahy, je nutné použít hlavičku protokolu HTTP `X-Content-Type-Options:nosniff` . Aby bylo možné tento požadavek splnit, můžete buď nastavit požadovanou stránku záhlaví na stránce pouze na ty stránky, které mohou obsahovat uživatelsky přizpůsobený obsah, nebo je můžete nastavit globálně pro všechny stránky v aplikaci.</p><p>Každý typ souboru dodaný z webového serveru má přidružený [typ MIME](https://en.wikipedia.org/wiki/Mime_type) (označuje se také jako *typ obsahu*), který popisuje povahu obsahu (tj. obrázek, text, aplikace atd.).</p><p>Hlavička X-Content-Type-Options je hlavička protokolu HTTP, která vývojářům umožňuje určit, že jejich obsah by neměl být ve formátu MIME. Tato hlavička je navržená tak, aby zmírnila MIME-Sniffing útoky. Podpora pro tuto hlavičku se přidala v Internet Exploreru 8 (IE8).</p><p>Jenom uživatelé aplikace Internet Explorer 8 (IE8) budou využívat možnosti X-Content-Type-Type. Předchozí verze aplikace Internet Explorer aktuálně nerespektují hlavičku X-Content-Type-Options</p><p>Internet Explorer 8 (a novější) jsou jediné hlavní prohlížeče, které implementují funkci pro odhlášení pomocí kódování MIME. Pokud a pokud jiné hlavní prohlížeče (Firefox, Safari, Chrome) implementují podobné funkce, bude toto doporučení aktualizováno, aby obsahovalo i syntaxi pro tyto prohlížeče.</p>|
 
 ### <a name="example"></a>Příklad
 Pokud chcete povinnou hlavičku globálně povolit pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí: 
@@ -184,7 +184,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud potřebujete vyřešit vložené entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost překladače XmlReaderSettings.Xmlna hodnotu null. Například: 
+Pokud potřebujete vyřešit vložené entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost překladače XmlReaderSettings.Xmlna hodnotu null. Příklad: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -501,7 +501,7 @@ Nepoužívejte, `Html.Raw()` Pokud není nutné zobrazit značky. Tato metoda ne
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
+| **Komponenta**               | Database | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
@@ -561,7 +561,7 @@ AS
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
@@ -618,7 +618,7 @@ namespace MyApi.Controllers
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, MVC 5, MVC 6 |
 | **Atributy**              | –  |
@@ -629,7 +629,7 @@ namespace MyApi.Controllers
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
+| **Komponenta**               | Web API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |

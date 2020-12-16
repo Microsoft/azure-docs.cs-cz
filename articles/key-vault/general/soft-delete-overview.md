@@ -4,20 +4,20 @@ description: Obnovitelné odstranění v Azure Key Vault umožňuje obnovit odst
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452181"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589980"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění ve službě Azure Key Vault
 
 > [!IMPORTANT]
-> V trezorech klíčů musíte okamžitě povolit obnovitelné odstranění. Možnost Odhlásit se od obnovitelného odstranění bude zastaralá na konci roku a ochrana s antiodstraněním se automaticky zapne pro všechny trezory klíčů.  Zobrazit [Úplné podrobnosti](soft-delete-change.md)
+> V trezorech klíčů musíte okamžitě povolit obnovitelné odstranění. Možnost Odhlásit se z slabého odstranění bude brzy zastaralá. Zobrazit [Úplné podrobnosti](soft-delete-change.md)
 
 Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných trezorů a odstraněných objektů trezoru klíčů (například klíče, tajné klíče a certifikáty), označované jako obnovitelné odstranění. Konkrétně řešíme následující scénáře: Tato ochrana nabízí následující ochrany:
 

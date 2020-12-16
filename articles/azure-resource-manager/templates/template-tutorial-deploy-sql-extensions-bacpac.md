@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931397"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588025"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon ARM
 
-Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager (šablony ARM). Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefaktem.
+Naučte se používat rozšíření Azure SQL Database k importu souboru [BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) pomocí šablon Azure Resource Manager (šablony ARM). Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefaktem.
 
 V tomto kurzu vytvoříte šablonu pro nasazení [logického SQL serveru](../../azure-sql/database/logical-servers.md) a jediné databáze a naimportujete soubor BacPac. Informace o tom, jak nasadit rozšíření virtuálních počítačů Azure pomocí šablon ARM, najdete v tématu [kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM](./template-tutorial-deploy-vm-extensions.md).
 
@@ -55,7 +55,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 * Nahrajte soubor BACPAC do kontejneru.
 * Zobrazte klíč účtu úložiště a adresu URL objektu BLOB.
 
-1. Vyberte **vyzkoušet** a otevřete Cloud Shell. Pak vložte následující skript PowerShellu do okna prostředí.
+1. Vyberte **zkusit** pro otevření prostředí. Pak vložte následující skript PowerShellu do okna prostředí.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-1. Pokud chcete nastavit klíč účtu úložiště a adresu URL BACPAC, přidejte na konec oddílu **Parameters** další dva parametry.
+1. Přidejte další dva parametry na konci `parameters` oddílu a nastavte klíč účtu úložiště a adresu URL BacPac.
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
         }
     ```
 
-    Za **adminPassword** vložte čárku. Pokud chcete soubor JSON naformátovat z Visual Studio Code, vyberte SHIFT + ALT + F.
+    Za uzavírací složenou `adminPassword` závorku vlastnosti přidejte čárku ( `}` ). Pokud chcete soubor JSON naformátovat z Visual Studio Code, vyberte SHIFT + ALT + F.
 
     Chcete-li získat tyto dvě hodnoty, přečtěte si téma [Příprava souboru BacPac](#prepare-a-bacpac-file).
 
@@ -196,11 +196,11 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
         Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
-        * **dependsOn**: prostředek rozšíření se musí vytvořit po vytvoření databáze.
-        * **storageKeyType**: zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Použijte `StorageAccessKey` v tomto kurzu.
-        * **storageKey**: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BacPac. Pokud je typ klíče úložiště `SharedAccessKey` , musí předcházet "?".
-        * **storageUri**: zadejte adresu URL souboru BacPac uloženého v účtu úložiště.
-        * **administratorLoginPassword:** Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
+        * `dependsOn`: Prostředek rozšíření musí být vytvořen po vytvoření databáze.
+        * `storageKeyType`: Zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Použijte `StorageAccessKey` v tomto kurzu.
+        * `storageKey`: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BACPAC. Pokud je typ klíče úložiště `SharedAccessKey` , musí předcházet "?".
+        * `storageUri`: Zadejte adresu URL souboru BACPAC uloženého v účtu úložiště.
+        * `administratorLoginPassword`: Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 Hotová šablona vypadá takto:
 
