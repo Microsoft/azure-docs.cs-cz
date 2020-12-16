@@ -3,21 +3,19 @@ title: 'Kurz: Vytvoření aplikace pro analýzu inteligentních dat pomocí IoT 
 description: 'Kurz: Naučte se vytvářet aplikace pro monitorování inteligentních měřičů pomocí šablon aplikací Azure IoT Central.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127127"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516777"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
-
-
 
 Tento kurz vás provede procesem vytvoření aplikace pro monitorování inteligentního měření, která zahrnuje ukázkový model zařízení se simulovanými daty. V tomto kurzu se naučíte:
 
@@ -38,14 +36,13 @@ Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://
 Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
 1. Otevřete [Azure IoT Central domovskou stránku](https://apps.azureiotcentral.com) a kliknutím na **sestavit** vytvořte novou aplikaci. 
-
-2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
+1. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
 
     > [!div class="mx-imgBorder"]
     > ![Sestavit aplikaci](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
+1. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
     * **Název aplikace**: vyberte název aplikace IoT Central. 
     * **Adresa URL**: vyberte adresu URL IoT Central, platforma ověří její jedinečnost.
     * **7. den bezplatné zkušební verze**: Pokud už máte předplatné Azure, doporučuje se výchozí nastavení. Pokud nemáte předplatné Azure, začněte s bezplatnou zkušební verzí.
@@ -55,7 +52,6 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
         ![Formulář nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
         ![Informace o fakturaci formuláře nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
-
 
 ### <a name="verify-the-application-and-simulated-data"></a>Ověření aplikace a simulovaných dat
 
@@ -99,7 +95,7 @@ Pokud chcete zobrazit model zařízení inteligentního měření, klikněte na 
 Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci pomocí následujících kroků:
 
 1. V levém podokně otevřete kartu Správa.
-2. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
+1. Vyberte nastavení aplikace a klikněte na tlačítko Odstranit v dolní části stránky. 
 
     > [!div class="mx-imgBorder"]
     > ![Odstranit aplikaci](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)

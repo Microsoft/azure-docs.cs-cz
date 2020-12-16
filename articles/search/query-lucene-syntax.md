@@ -7,65 +7,38 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/14/2020
+ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923445"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516592"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
-Dotazy na Azure Kognitivní hledání můžete zapisovat na základě syntaxe s bohatou syntaxí [analyzátoru dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) pro specializované formuláře dotazů: zástupné vyhledávání, přibližné vyhledávání, vyhledávání blízkých výrazů, regulární výrazy jsou několik příkladů. Většina syntaxe analyzátoru dotazů Lucene se [v azure kognitivní hledání implementuje beze změny](search-lucene-query-architecture.md), s výjimkou *hledání rozsahů* , které jsou vytvořené v Azure kognitivní hledání prostřednictvím `$filter` výrazů. 
+Při vytváření dotazů můžete pro specializované formuláře dotazů použít syntaxi [analyzátoru dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) : zástupný znak, přibližné vyhledávání, vyhledávání blízkých výrazů, regulární výrazy. Většina syntaxe analyzátoru dotazů Lucene se [v Azure kognitivní hledání implementuje beze změny](search-lucene-query-architecture.md), s výjimkou *hledání rozsahů* , které jsou vytvořené pomocí **`$filter`** výrazů. 
 
-> [!NOTE]
-> Úplná syntaxe Lucene se používá pro výrazy dotazů předané v parametru **Search** rozhraní API pro [hledání dokumentů](/rest/api/searchservice/search-documents) , takže se Nezaměňujte se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter](search-filters.md) rozhraní API. Tyto různé syntaxe mají vlastní pravidla pro vytváření dotazů, uvozovacích řetězců a tak dále.
+Úplná syntaxe Lucene se používá pro výrazy dotazů předané v **`search`** parametru žádosti [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents) , a nelze je zaměňovat se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitými pro [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) výrazy a v rámci stejné žádosti. Parametry OData mají odlišnou syntaxi a pravidla pro sestavování dotazů, uvozovacích řetězců a tak dále.
 
-## <a name="invoke-full-parsing"></a>Vyvolat úplnou analýzu
+## <a name="example-full-syntax"></a>Příklad (Úplná syntaxe)
 
-Nastavte `queryType` parametr Search a určete, který analyzátor se má použít. Platné hodnoty zahrnují `simple|full` , s `simple` jako výchozí a `full` pro Lucene. 
+Nastavte **`queryType`** parametr pro zadání úplného Lucene. Následující příklad vyvolá vyhledávání v terénu a vyzvyšování podmínek. Tento dotaz vyhledá hotely, kde pole kategorie obsahuje výraz "rozpočet". Všechny dokumenty, které obsahují frázi "naposledy renovated", jsou seřazeny výše v důsledku hodnoty zvýšení termínu (3).  
 
-<a name="bkmk_example"></a> 
-
-### <a name="example-showing-full-syntax"></a>Příklad znázorňující úplnou syntaxi
-
-Následující příklad vyhledá dokumenty v indexu pomocí syntaxe dotazů Lucene, zjevné v `queryType=full` parametru. Tento dotaz vrátí hotely, kde pole kategorie obsahuje výraz "rozpočet" a všechna hledaná pole obsahující frázi "nedávno renovated". Dokumenty obsahující frázi "nedávno renovated" jsou seřazené výše v důsledku hodnoty zvýšení termínu (3).  
-
-`searchMode=all`Parametr je v tomto příkladu relevantní. Vždy, když jsou operátory na dotazu, je obecně nutné nastavit, aby bylo `searchMode=all` zajištěno, že *všechna* kritéria jsou shodná.
-
-```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
-```
-
- Alternativně můžete použít POST:  
-
-```
-POST /indexes/hotels/docs/search?api-version=2020-06-30
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-  "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
+  "search": "category:budget AND \"recently renovated\"^3",
   "searchMode": "all"
 }
 ```
 
-Další příklady najdete v tématu [Příklady syntaxe dotazů Lucene pro vytváření dotazů v Azure kognitivní hledání](search-query-lucene-examples.md). Podrobnosti o tom, jak zadat úplný odkaz na parametry dotazu, najdete v tématu [Prohledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/Search-Documents).
+**`searchMode`** Parametr je v tomto příkladu relevantní. Vždy, když jsou operátory na dotazu, je obecně nutné nastavit, aby bylo `searchMode=all` zajištěno, že *všechna* kritéria jsou shodná.  
 
-> [!NOTE]  
->  Azure Kognitivní hledání podporuje také [jednoduchou syntaxi dotazů](query-simple-syntax.md), jednoduchý a robustní dotazovací jazyk, který je možné použít pro jednoznačné hledání klíčových slov.  
+Další příklady naleznete v tématu [Příklady syntaxe dotazů Lucene](search-query-lucene-examples.md). Podrobnosti o požadavku a parametrech dotazu naleznete v tématu [Search Documents (REST API)](/rest/api/searchservice/Search-Documents).
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Základy syntaxe  
+## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Základy syntaxe  
 
 Následující Základy syntaxe se vztahují na všechny dotazy, které používají syntaxi Lucene.  
 
@@ -95,39 +68,15 @@ Ujistěte se prosím, že všechny nebezpečné a rezervované znaky jsou v adre
 
 Nezabezpečené znaky jsou ``" ` < > # % { } | \ ^ ~ [ ]`` . Vyhrazené znaky jsou `; / ? : @ = + &` .
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Omezení velikosti dotazů
+## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> Logické operátory
 
- Existuje omezení velikosti dotazů, které můžete odeslat do služby Azure Kognitivní hledání. Konkrétně můžete mít maximálně 1024 klauzulí (výrazy oddělené a, nebo a tak dále). Velikost jakéhokoli jednotlivého výrazu v dotazu je také omezena na přibližně 32 KB. Pokud vaše aplikace generuje vyhledávací dotazy programově, doporučujeme ji navrhovat takovým způsobem, že negeneruje dotazy na neohraničenou velikost.  
+Můžete vložit logické operátory do řetězce dotazu, aby se zlepšila přesnost shody. Úplná syntaxe podporuje kromě operátorů znaků i operátory textu. Vždy zadejte text Boolean Operators (AND, OR, NOT) All CAPS.
 
-### <a name="precedence-operators-grouping"></a>Operátory priority (seskupení)
-
- Pomocí závorek lze vytvořit poddotazy, včetně operátorů v rámci příkazu kulatého závorky. Nástroj například `motel+(wifi||luxury)` vyhledá dokumenty obsahující termín "Motel" a buď "WiFi", nebo "luxus" (nebo obojí).
-
-Seskupení polí je podobné, ale obor seskupení do jednoho pole. Například `hotelAmenities:(gym+(wifi||pool))` vyhledá pole "hotelAmenities" pro "posilovně" a "WiFi" nebo "posilovně" a "Pool".  
-
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> Logické hledání
-
- Vždy zadejte text Boolean Operators (AND, OR, NOT) All CAPS.  
-
-### <a name="or-operator-or-or-"></a>OR – operátor `OR` or `||`
-
-Operátor OR je znak svislého pruhu nebo svislé čáry. Například: `wifi || luxury` vyhledá dokumenty obsahující buď "WiFi", nebo "luxus" nebo obojí. Vzhledem k tomu, že nebo je výchozím operátorem spojení, můžete jej také opustit, což `wifi luxury` je ekvivalent  `wifi || luxury` .
-
-### <a name="and-operator-and--or-"></a>AND – `AND` operátor `&&` or `+`
-
-Operátor AND je znak ampersand nebo znaménko plus. Například: `wifi && luxury` vyhledá dokumenty obsahující obě "WiFi" i "luxus". Znak plus (+) se používá pro požadované podmínky. Například `+wifi +luxury` stanoví, že oba výrazy se musí objevit někde v poli jediného dokumentu.
-
-### <a name="not-operator-not--or--"></a>NOT – `NOT` operátor `!` nebo `-`
-
-Operátor NOT je symbol mínus. Vyhledá například `wifi –luxury` dokumenty, které mají `wifi` podmínky a/nebo nemají `luxury` .
-
-Parametr **searchMode** v požadavku na dotaz řídí, zda je výraz s operátorem NOT ANDed nebo ORed s jinými podmínkami v dotazu (za předpokladu, že se nejedná `+` `|` o operátor jiné podmínky). Platné hodnoty jsou `any` nebo `all` .
-
-`searchMode=any` zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují termín `luxury` .
-
-`searchMode=all` zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste měli zvážit použití `searchMode=all` místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.
-
-Při rozhodování o nastavení **searchMode** zvažte vzory interakce uživatele pro dotazy v různých aplikacích. Uživatelům, kteří hledají informace, je pravděpodobnější, že v dotazu zařadí operátor, a to na rozdíl od webů elektronického obchodování, které mají více integrovaných navigačních struktur.
+|Textový operátor | Znak | Příklad | Využití |
+|--------------|----------- |--------|-------|
+| A | `&`, `+` | `wifi + luxury` | Určuje výrazy, které musí shoda obsahovat. V tomto příkladu modul dotazů hledá dokumenty obsahující `wifi` a `luxury` . Znak plus ( `+` ) se používá pro požadované podmínky. Například `+wifi +luxury` stanoví, že oba výrazy se musí objevit někde v poli jediného dokumentu.|
+| NEBO | `|` | `wifi | luxury` | Najde shodu, pokud je nalezen libovolný termín. V tomto příkladu dotazovací stroj vrátí shodu s dokumenty, které obsahují buď `wifi` nebo `luxury` nebo obojí. Vzhledem k tomu, že nebo je výchozím operátorem spojení, můžete jej také opustit, což `wifi luxury` je ekvivalent  `wifi | luxury` .|
+| NOT | `!`, `-` | `wifi –luxury` | Vrátí shodu pro dokumenty, které vyloučily podmínky. Vyhledá například `wifi –luxury` dokumenty, které mají `wifi` termín, ale ne `luxury` . <br/><br/>`searchMode`Parametr v požadavku na dotaz řídí, zda je výraz s operátorem NOT ANDed nebo ORed s jinými podmínkami v dotazu (za předpokladu, že se nejedná `+` `|` o operátor nebo na jiné podmínky). Platné hodnoty jsou `any` nebo `all` .  <br/><br/>`searchMode=any` zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují termín `luxury` .  <br/><br/>`searchMode=all` zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste měli zvážit použití `searchMode=all` místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.<br/><br/>Při rozhodování o `searchMode` nastavení zvažte vzory interakce uživatele pro dotazy v různých aplikacích. Uživatelům, kteří hledají informace, je pravděpodobnější, že v dotazu zařadí operátor, a to na rozdíl od webů elektronického obchodování, které mají více integrovaných navigačních struktur. |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a> Hledání v poli
 
@@ -148,14 +97,13 @@ Pole zadané v `fieldName:searchExpression` musí být `searchable` pole.  Podro
 
 Hledání přibližných výsledků vyhledává shody v termínech, které mají podobnou konstrukci, rozšíří pojem až do maximálního počtu 50 podmínek, které splňují kritéria vzdálenosti dvě nebo méně. Další informace najdete v tématu [hledání přibližných výsledků](search-query-fuzzy.md).
 
- Chcete-li provést hledání přibližné hodnoty, použijte symbol tilda "~" na konci jednoho slova s volitelným parametrem, číslo mezi 0 a 2 (výchozí), které určuje vzdálenost úprav. Například "Blue ~" nebo "Blue ~ 1" vrátí "Blue", "blues" a "Glue".
+Chcete-li provést hledání přibližné hodnoty, použijte symbol tilda "~" na konci jednoho slova s volitelným parametrem, číslo mezi 0 a 2 (výchozí), které určuje vzdálenost úprav. Například "Blue ~" nebo "Blue ~ 1" vrátí "Blue", "blues" a "Glue".
 
- Hledání přibližných hodnot lze použít pouze pro termíny, nikoli pro fráze, ale můžete přidat vlnovku k jednotlivým termínům jednotlivě v názvu nebo frázi s více částmi. Například "Unviersty ~ ~" Wshington ~ "by se shodovala s" University of Washington ".
+Hledání přibližných hodnot lze použít pouze pro termíny, nikoli pro fráze, ale můžete přidat vlnovku k jednotlivým termínům jednotlivě v názvu nebo frázi s více částmi. Například "Unviersty ~ ~" Wshington ~ "by se shodovala s" University of Washington ".
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> Hledání blízkosti
 
 Hledání v blízkosti se používá k vyhledání podmínek, které jsou poblíž sebe v dokumentu. Vložte symbol tildy "~" na konec fráze následovaný počtem slov, která vytvářejí hranice blízkosti. Například `"hotel airport"~5` nalezne termíny "Hotel" a "letiště" do 5 slov navzájem v dokumentu.  
-
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> Zvyšování termínů
 
@@ -194,9 +142,27 @@ Pokud byste chtěli použít analyzátor en. Lucene (English Lucene), uplatní s
 
 Na druhé straně analyzátory Microsoftu (v tomto případě je to v tomto případě en. Microsoft Analyzer) trochu pokročilejší a používají lemmatizátor nebo předzpracování místo odvozování. To znamená, že všechny vygenerované tokeny by měly být platná anglická slova. Například klíčové slovo "ukončit", "ukončeno" a "ukončení" většinou zachová celý index a může být vhodnější pro scénáře, které jsou závislé na zástupných znacích a přibližném vyhledávání.
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Vyhodnocování zástupných znaků a dotazů Regex
+## <a name="scoring-wildcard-and-regex-queries"></a>Vyhodnocování zástupných znaků a dotazů Regex
 
 Azure Kognitivní hledání používá pro textové dotazy hodnocení založené na kmitočtech ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). U dotazů se zástupným znakem a regulárních výrazů, u kterých může být obor pojmů potenciálně rozsáhlý, se ale četnost frekvencí ignoruje, aby nedocházelo k tomu, aby se zabránilo vyřazení shody směrem k Všechny shody jsou zpracovány stejně pro hledání pomocí zástupných znaků a Regex.
+
+## <a name="special-characters"></a>Speciální znaky
+
+V některých případech můžete chtít vyhledat speciální znak, například ❤ emoji nebo symbol €. V takových případech se ujistěte, že analyzátor, který používáte, nefiltruje tyto znaky. Standardní analyzátor obchází mnoho speciálních znaků a vyloučí je z indexu.
+
+Analyzátory, které budou tokenizovat speciální znaky, zahrnují analyzátor "prázdných", který bere v úvahu všechny sekvence znaků oddělené prázdnými znaky jako tokeny (takže řetězec "❤" by byl považován za token). Také analyzátor jazyka, jako je Microsoft English Analyzer ("en. Microsoft"), by měl jako token přebírat řetězec "€". Můžete [otestovat analyzátor](/rest/api/searchservice/test-analyzer) a zjistit, jaké tokeny generuje pro daný dotaz.
+
+Při použití znaků Unicode zajistěte, aby byly symboly v adrese URL dotazu správně uvozeny řídicími znaky (například ❤ by používaly řídicí sekvenci `%E2%9D%A4+` ). Post provede tento převod automaticky.  
+
+## <a name="precedence-grouping"></a>Priorita (seskupení)
+
+Pomocí závorek lze vytvořit poddotazy, včetně operátorů v rámci příkazu kulatého závorky. Nástroj například `motel+(wifi|luxury)` vyhledá dokumenty obsahující termín "Motel" a buď "WiFi", nebo "luxus" (nebo obojí).
+
+Seskupení polí je podobné, ale obor seskupení do jednoho pole. Například `hotelAmenities:(gym+(wifi|pool))` vyhledá pole "hotelAmenities" pro "posilovně" a "WiFi" nebo "posilovně" a "Pool".  
+
+## <a name="query-size-limits"></a>Omezení velikosti dotazů
+
+Existuje omezení velikosti dotazů, které můžete odeslat do služby Azure Kognitivní hledání. Konkrétně můžete mít maximálně 1024 klauzulí (výrazy oddělené a, nebo a tak dále). Velikost jakéhokoli jednotlivého výrazu v dotazu je také omezena na přibližně 32 KB. Pokud vaše aplikace generuje vyhledávací dotazy programově, doporučujeme ji navrhovat takovým způsobem, že negeneruje dotazy na neohraničenou velikost.  
 
 ## <a name="see-also"></a>Viz také
 

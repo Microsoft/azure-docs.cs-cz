@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173562"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516501"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -28,7 +28,7 @@ Pokud teprve začínáte, podívejte se na dokumentaci k [platformě Microsoft I
 Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](./index.yml).
 
 > [!TIP]
-> *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Průvodce integrací (Preview)** , abyste mohli začít používat pomocníka.
+> *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Pomocník pro integraci** , abyste mohli začít s pomocníkem.
 
 ## <a name="basics"></a>Základy
 
@@ -100,7 +100,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Prostudujte si podrobné informace týkající se v2.0:
 

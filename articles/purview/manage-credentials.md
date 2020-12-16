@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551879"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516688"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Přihlašovací údaje pro ověřování zdroje v Azure dosah
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak v Azure dosah vytvořit přihlašovací údaje pro 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Trezor klíčů Azure. Pokud ho ještě nemáte, můžete ho vytvořit sami (vložením odkazu na článek o vytvoření KV).
+* Trezor klíčů Azure. Další informace o tom, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Úvod
 Přihlašovací údaje jsou ověřovací informace, které může Azure dosah použít k ověřování vašich registrovaných zdrojů dat. Objekt přihlašovacích údajů se dá vytvořit pro různé typy scénářů ověřování (například základní ověřování vyžadující uživatelské jméno/heslo) a zachytí konkrétní informace požadované na základě zvoleného typu metody ověřování. Přihlašovací údaje používají stávající tajné klíče Azure Key trezorů pro načítání citlivých ověřovacích informací během procesu vytváření přihlašovacích údajů.
@@ -32,7 +32,7 @@ Pokud k nastavení kontrol používáte spravovanou identitu dosah, nebudete mus
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Azure SQL Database spravovaná instance](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Spravovaná instance Azure SQL Database](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Vytvoření připojení k trezorům klíčů Azure v účtu Azure dosah

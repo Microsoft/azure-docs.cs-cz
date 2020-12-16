@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507978"
+ms.locfileid: "97516089"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 | Parametr řetězce dotazu `login_hint` |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
 | Vložení formátu JSON do cesty uživatele prostřednictvím `client_assertion` | X |  |  | Bude zastaralá. |
 | Vložení formátu JSON do cesty uživatele jako `id_token_hint` |  | X |  | Přejít k předávanému přístupu a předávat JSON. |
-| [Předání tokenu identity provider do aplikace](idp-pass-through-custom.md) |  | X |  | Například z Facebooku do aplikace. |
+| [Předání tokenu identity provider do aplikace](idp-pass-through-user-flow.md) |  | X |  | Například z Facebooku do aplikace. |
 
 
 ### <a name="session-management"></a>Správa relací

@@ -2,13 +2,13 @@
 title: Připojit hybridní počítač k serverům s podporou ARC Azure
 description: Naučte se připojit a zaregistrovat svůj hybridní počítač se servery s podporou ARC Azure.
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576750"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516779"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure
 
@@ -29,6 +29,9 @@ ms.locfileid: "94576750"
     * Pokud se počítač připojuje prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, ujistěte se, že [uvedené](../agent-overview.md#networking-configuration) adresy URL nejsou blokované.
 
     * Servery s podporou ARC Azure podporují jenom oblasti, které jsou [tady](../overview.md#supported-regions)uvedené.
+
+> [!WARNING]
+> Název hostitele nebo počítač se systémem Linux nemůže v názvu použít jedno z vyhrazených slov nebo ochranných známek, jinak se pokus o registraci připojeného počítače k Azure nezdaří. Seznam rezervovaných slov najdete v tématu [řešení chyb rezervovaných názvů prostředků](../../../azure-resource-manager/templates/error-reserved-resource-name.md) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 

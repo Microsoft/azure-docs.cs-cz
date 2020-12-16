@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 12/15/2020
 ms.custom: references_regions
-ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 118ee6ffb189b7a5558477912bd6b27ea739afde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011791"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516167"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
@@ -40,7 +40,7 @@ V Azure Kognitivní hledání začíná šifrování připojení a přenosů a r
 
 V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-models.md)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
 
-| Modelování | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
+| Model | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
 |------------------|-------|-------------|--------------|------------|
 | šifrování na straně serveru | Klíče spravované Microsoftem | Žádný (integrovaný) | Žádná, k dispozici na všech úrovních ve všech oblastech pro obsah vytvořený po lednu 24 2018. | Obsah (indexy a mapy synonym) a definice (indexery, zdroje dat, dovednosti) |
 | šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici pro Fakturovatelné úrovně pro obsah vytvořený po lednu 2019 ve všech oblastech. | Obsah (indexy a mapy synonym) na datových discích |
@@ -76,7 +76,7 @@ Příchozí funkce zabezpečení chrání koncový bod vyhledávací služby pro
 
 ### <a name="public-access-using-api-keys"></a>Veřejný přístup s použitím klíčů rozhraní API
 
-Ve výchozím nastavení se k vyhledávací službě přistupuje prostřednictvím veřejného cloudu, a to pomocí ověřování založeného na klíčích pro správce nebo dotazování na koncový bod vyhledávací služby. Klíč rozhraní API je řetězec tvořený náhodně generovanými čísly a písmeny. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platného klíče se považuje za důkaz, že požadavek pochází z důvěryhodné entity.
+Ve výchozím nastavení se k vyhledávací službě přistupuje prostřednictvím veřejného cloudu, a to pomocí ověřování založeného na klíčích pro správce nebo dotazování na koncový bod vyhledávací služby. [Klíč rozhraní API](search-security-rbac.md) je řetězec tvořený náhodně generovanými čísly a písmeny. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platného klíče se považuje za důkaz, že požadavek pochází z důvěryhodné entity.
 
 Existují dvě úrovně přístupu k vaší vyhledávací službě, které jsou povoleny pomocí následujících klíčů rozhraní API:
 
@@ -114,19 +114,19 @@ I když toto řešení je nejbezpečnější, je za použití dalších služeb 
 
 V Azure Kognitivní hledání není jednotlivý index zabezpečitelným objektem. Místo toho se přístup k indexu určí na úrovni služby (přístup pro čtení nebo zápis ke službě) spolu s kontextem operace.
 
-Pro přístup koncového uživatele můžete strukturovat požadavky na dotazy pro připojení pomocí klíče dotazu, který zpřístupňuje všechny požadavky jen pro čtení a zahrnuje konkrétní index používaný vaší aplikací. V požadavku na dotaz neexistuje koncept spojování indexů ani přístup k několika indexům současně, takže všechny požadavky cílí na jeden index podle definice. V důsledku toho konstrukce samotné žádosti o dotaz (klíč a jeden cílový index) definuje hranici zabezpečení.
+Pro přístup koncového uživatele můžete strukturovat požadavky na dotazy pro připojení pomocí [klíče dotazu](search-security-rbac.md), který zpřístupňuje všechny požadavky jen pro čtení a zahrnuje konkrétní index používaný vaší aplikací. V požadavku na dotaz neexistuje koncept spojování indexů ani přístup k několika indexům současně, takže všechny požadavky cílí na jeden index podle definice. V důsledku toho konstrukce samotné žádosti o dotaz (klíč a jeden cílový index) definuje hranici zabezpečení.
 
-Přístup správců a vývojářů k indexům není odlišený: musí mít přístup pro zápis k vytváření, odstraňování a aktualizaci objektů spravovaných službou. Kdokoli s klíčem správce ke službě může číst, upravovat nebo odstraňovat libovolný index ve stejné službě. Pro ochranu proti náhodnému nebo škodlivému odstranění indexů je vaše interní Správa zdrojového kódu pro assety kódů nápravou pro vrácení nechtěného odstranění nebo změny indexu. Azure Kognitivní hledání má v rámci clusteru převzetí služeb při selhání, aby se zajistila dostupnost, ale neukládá ani neprovádí vlastní kód používaný k vytváření nebo načítání indexů.
+Přístup správců a vývojářů k indexům není odlišený: musí mít přístup pro zápis k vytváření, odstraňování a aktualizaci objektů spravovaných službou. Kdokoli s [klíčem správce](search-security-rbac.md) ke službě může číst, upravovat nebo odstraňovat libovolný index ve stejné službě. Pro ochranu proti náhodnému nebo škodlivému odstranění indexů je vaše interní Správa zdrojového kódu pro assety kódů nápravou pro vrácení nechtěného odstranění nebo změny indexu. Azure Kognitivní hledání má v rámci clusteru převzetí služeb při selhání, aby se zajistila dostupnost, ale neukládá ani neprovádí vlastní kód používaný k vytváření nebo načítání indexů.
 
 Pro řešení s více architekturami, které vyžadují hranice zabezpečení na úrovni indexu, taková řešení obvykle zahrnují střední úroveň, kterou zákazníci používají ke zpracování izolace indexu. Další informace o případu použití s více klienty najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS a Azure kognitivní hledání](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="user-access"></a>Přístup uživatelů
 
-Způsob, jakým uživatel přistupuje k indexu a dalším objektům, je určen typem klíče rozhraní API v žádosti. Většina vývojářů vytváří a přiřazuje [*klíče dotazů*](search-security-api-keys.md) pro žádosti o vyhledávání na straně klienta. Klíč dotazu uděluje přístup jen pro čtení k prohledávatelné obsahu v rámci indexu.
+Způsob, jakým uživatel přistupuje k indexu a dalším objektům, je určen typem klíče rozhraní API v žádosti. Většina vývojářů vytváří a přiřazuje [klíče dotazů](search-security-api-keys.md) pro žádosti o vyhledávání na straně klienta. Klíč dotazu uděluje přístup jen pro čtení k prohledávatelné obsahu v rámci indexu.
 
 Pokud pro výsledky hledání potřebujete podrobný ovládací prvek pro jednotlivé uživatele, můžete pro své dotazy vytvořit filtry zabezpečení a vracet dokumenty přidružené k dané identitě zabezpečení. Místo předdefinovaných rolí a přiřazení rolí se řízení přístupu na základě identity implementuje jako *Filtr* , který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neoprávněného obsahu.
 
-| Přístup | Description |
+| Přístup | Popis |
 |----------|-------------|
 |[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu identity uživatele. Zahrnuje přidávání identifikátorů zabezpečení do indexu a pak vysvětluje filtrování na základě tohoto pole za účelem oříznutí výsledků zakázaného obsahu. |
 |[Oříznutí zabezpečení na základě Azure Active Directory identit](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek se rozbalí v předchozím článku, který poskytuje kroky pro načtení identit z Azure Active Directory (Azure AD), jedné z [bezplatných služeb](https://azure.microsoft.com/free/) na cloudové platformě Azure. |

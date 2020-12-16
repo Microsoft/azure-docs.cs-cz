@@ -3,25 +3,20 @@ title: Nasazení diagnostického nástroje pro virtuální plochu Windows (Class
 description: Postup nasazení nástroje Diagnostika UX pro virtuální plochu Windows (Classic)
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023067"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515639"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows (Classic), která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows.
-
->[!IMPORTANT]
->Od 16. března 2020 jsme dočasně vypnuli diagnostické dotazy, které ovlivnily uživatelské prostředí kvůli zvýšené poptávce na službě. Tím dojde k tomu, že nástroj přestane fungovat, protože spoléhá na to, jaké dotazy mají fungovat. Tento článek aktualizujeme, až budou diagnostické dotazy znovu k dispozici.
->
->Dokud pak nebudete, doporučujeme, abyste pro průběžné monitorování [používali Log Analytics](diagnostics-log-analytics-2019.md) .
 
 Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Windows umožňuje:
 
@@ -32,7 +27,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -43,8 +38,8 @@ Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj
 
 Tyto dva moduly PowerShellu je potřeba nainstalovat i před zahájením práce:
 
-- [Modul Azure PowerShellu](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Modul Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Modul Azure PowerShellu](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Modul Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 Ujistěte se, že máte ID předplatného připravené pro přihlášení.
 
@@ -113,7 +108,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 1. Otevřete internetový prohlížeč a přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce.
 2. V dalším kroku přejdete do části **Log Analytics pracovní prostory** , ve kterých si prohlédnete nakonfigurované čítače výkonu systému Windows.
 3. V části **Nastavení** vyberte  **Upřesnit nastavení**.
-4. Potom přejděte do části **Data**  >  **čítače výkonu data systému Windows** a přidejte následující čítače:
+4. Potom přejděte do části   >  **čítače výkonu data systému Windows** a přidejte následující čítače:
 
     -   Logický disk ( \* ) \\ % volného místa
     -   Logický disk (C:) \\ prům. délka fronty disku
@@ -145,7 +140,7 @@ Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfiguro
 
 1. V [Azure Portal](https://portal.azure.com/)můžete zkontrolovat nakonfigurované čítače výkonu systému Windows, přejít do **Log Analytics pracovních prostorů** .
 2. V části **Nastavení** vyberte **Upřesnit nastavení**.
-3. Pak přejdete na **Data**  >  **čítače výkonu data Windows**.
+3. Pak přejdete na   >  **čítače výkonu data Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
    - Logický disk ( \* ) \\ % volné místo: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
@@ -191,7 +186,7 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Stránka s identifikátorem URI pro přesměrování](../media/redirect-uri-page.png)

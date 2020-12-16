@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349176"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516541"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podniková
 
 Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy do jiné. [Azure Databricks](https://azure.microsoft.com/services/databricks/) je platforma jako nabídka služeb pro [Apache Spark](https://spark.apache.org/) , která nabízí způsob, jak provádět offline migrace ve velkém měřítku. Tento článek popisuje kroky, které jsou potřebné k migraci dat z nativních Cassandra a tabulek pro Apache, do Azure Cosmos DB rozhraní API Cassandra pomocí Azure Databricks.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -42,7 +42,7 @@ Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy 
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Zřízení clusteru Azure Databricks
 
-Podle pokynů můžete [zřídit cluster Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Upozorňujeme však, že Apache Spark 3. x se v současnosti pro konektor Apache Cassandra nepodporuje. Modul runtime datacihly bude potřeba zřídit s podporovanou verzí v2. x Apache Spark. Doporučujeme verzi 6,6 modulu runtime datacihly:
+Podle pokynů můžete [zřídit cluster Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Upozorňujeme však, že Apache Spark 3. x se v současnosti pro konektor Apache Cassandra nepodporuje. Modul runtime datacihly bude potřeba zřídit s podporovanou verzí v2. x Apache Spark. Doporučujeme vybrat verzi modulu runtime datacihly, která podporuje nejnovější verzi Sparku 2. x bez pozdější verze Scala 2,11:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Runtime datacihly":::
 

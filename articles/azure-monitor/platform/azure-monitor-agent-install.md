@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4c6252b31b4be05ea3c0bcf160a28bf335239b23
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 893a04f5acd48cf1e6f34033c06a758492e70abf
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324851"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516714"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Instalace agenta Azure Monitor (Preview)
 Tento článek poskytuje různé možnosti, které jsou aktuálně k dispozici pro instalaci [agenta Azure monitor](azure-monitor-agent-overview.md) na virtuálních počítačích Azure i serverech s podporou ARC Azure a také možnosti vytváření [přidružení s pravidly shromažďování dat](data-collection-rule-azure-monitor-agent.md) , která určují, která data má agent shromažďovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před instalací agenta Azure Monitor se vyžaduje splnění následujících požadavků.
 
 - Na virtuálních počítačích Azure musí být povolená [Identita spravovaného systému](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) . To není vyžadováno pro servery s podporou ARC Azure. Identita systému bude povolena automaticky, pokud je agent nainstalován jako součást procesu pro [Vytvoření a přiřazení pravidla shromažďování dat pomocí Azure Portal](#install-with-azure-portal).
@@ -29,7 +29,7 @@ Agent Azure Monitor se implementuje jako [rozšíření virtuálního počítač
 |:---|:---|:---|
 | Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
 | Typ      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1.5 |
+| TypeHandlerVersion  | 1.0 | 1.5 |
 
 
 ## <a name="install-with-azure-portal"></a>Instalace pomocí Azure Portal
@@ -75,11 +75,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 Pomocí následujících příkazů PowerShellu nainstalujte servery služby Azure Monitor Agent na Azure ARC s podporou.
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI

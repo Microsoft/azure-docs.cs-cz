@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341970"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516518"
 ---
-# <a name="introduction-to-azure-defender-for-storage"></a>Seznámení se službou Azure Defender pro službu Storage
+# <a name="introduction-to-azure-defender-for-storage"></a>Úvod do Azure Defenderu pro úložiště
 
-**Azure Defender pro úložiště** detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
 
-Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení.
+**Azure Defender pro úložiště** je vrstva zabezpečení Azure Native, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Využívá pokročilé možnosti zabezpečení AI a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) k poskytování kontextových výstrah a doporučení zabezpečení.
+
+Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
 
 ## <a name="availability"></a>Dostupnost
@@ -36,14 +37,14 @@ Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborn�
 
 Výstrahy zabezpečení se aktivují, když dojde k těmto akcím:
 
-- **Podezřelá aktivita** – například účet úložiště byl úspěšně ZÍSKÁN z IP adresy, která se označuje jako aktivní uzel ukončení systému.
-- **Neobvyklé chování** – například změny ve vzoru přístupu k účtu úložiště
-- **Potenciální nahraný malware** – analýza reputace hodnoty hash indikuje, že nahraný soubor obsahuje malware.
+- **Podezřelé vzorce přístupu** – například úspěšný přístup z uzlu pro ukončení systému pro zápis nebo z IP adresy považované za podezřelé službou Microsoft Threat Intelligence
+- **Podezřelé aktivity** – například extrakce dat neobvyklé nebo neobvyklé změny přístupových oprávnění
+- **Nahrání škodlivého obsahu** , například potenciálních malwarových souborů (na základě analýzy reputace hodnot hash) nebo hostování obsahu podvodné pošty
 
-Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit.
+Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit. Výstrahy se dají exportovat do Azure Sentinel nebo jakýchkoli jiných SIEM třetích stran nebo jiných externích nástrojů.
 
 > [!TIP]
-> Výstrahy úložiště můžete simulovat podle pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
+> Osvědčeným postupem je [nakonfigurovat Azure Defender pro úložiště](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) na úrovni předplatného, ale můžete [ho nakonfigurovat i na jednotlivých účtech úložiště](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Co je analýza reputace hodnot hash pro malware?

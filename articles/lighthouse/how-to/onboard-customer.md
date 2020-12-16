@@ -1,18 +1,18 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608465"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516132"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
-V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka připojit do Azure Lighthouse. V takovém případě se delegované prostředky zákazníka (předplatná a skupiny prostředků) dají a spravují prostřednictvím vlastního tenanta Azure Active Directory (Azure AD) pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
+V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka připojit do Azure Lighthouse. Pokud tak učiníte, delegované prostředky (předplatná nebo skupiny prostředků) můžete v tenantovi Azure Active Directory zákazníka (Azure AD) spravovat prostřednictvím vašeho vlastního tenanta pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , použít stejný postup k nastavení Azure Lighthouse a konsolidovat prostředí pro správu.
@@ -22,7 +22,7 @@ Postup připojování můžete opakovat pro více zákazníků. Když se uživat
 Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Toto přidružení bude nutné provést v tenantovi poskytovatele služeb. Ve vašem tenantovi doporučujeme vytvořit instanční účet služby, který je přidružený k vašemu ID MPN, a pak tento instanční objekt, který bude pokaždé, když se připojíte k zákazníkovi. Další informace najdete v tématu [propojení ID partnera, aby bylo možné na delegovaných zdrojích povolit kredit získaný pro partnery](partner-earned-credit.md).
 
 > [!NOTE]
-> Zákazníci se také mohou připojit k Azure Lighthouse při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou [publikujete do Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán spolu s nabídkami publikovanými do Azure Marketplace.
+> Zákazníci se můžou do Azure Lighthouse připravit při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou [publikujete do Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění popsaný tady spolu s nabídkami publikovanými do Azure Marketplace.
 
 Proces zprovoznění vyžaduje akce, které se mají provést v rámci tenanta poskytovatele služeb i z tenanta zákazníka. Všechny tyto kroky jsou popsány v tomto článku.
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -208,7 +208,7 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 
 Nasazení se může provést v Azure Portal, pomocí PowerShellu nebo pomocí rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. V našem [úložišti GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)vyberte tlačítko **nasadit do Azure** zobrazené vedle šablony, kterou chcete použít. Šablona se otevře v prostředí Azure Portal.
 1. Zadejte hodnoty pro **název nabídky MSP**, **Popis nabídky MSP**, **spravovaný podle ID tenanta** a **autorizací**. Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
@@ -260,7 +260,7 @@ az deployment sub create --name <deploymentName> \
 
 Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V tenantovi poskytovatele služeb:
 
@@ -303,7 +303,19 @@ az account list
 
 Pokud po zprovoznění zákazníka potřebujete provést změny, můžete [delegování aktualizovat](update-delegation.md). [Přístup k delegování](remove-delegation.md) můžete také odebrat úplně.
 
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud se vám nepodaří úspěšně připojit zákazníka nebo pokud vaši uživatelé mají potíže s přístupem k delegovaným prostředkům, Projděte si následující tipy a požadavky a zkuste to znovu.
+
+- `managedbyTenantId`Hodnota nesmí být stejná jako ID tenanta pro odběr, který se připojuje.
+- Nemůžete mít více přiřazení ve stejném oboru se stejným oborem `mspOfferName` . 
+- U delegovaného předplatného musí být zaregistrován poskytovatel prostředků **Microsoft. ManagedServices** . K tomu by mělo dojít automaticky během nasazování, ale v případě potřeby je můžete [zaregistrovat ručně](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+- Autorizace nesmí obsahovat žádné uživatele s předdefinovanou rolí [vlastníka](../../role-based-access-control/built-in-roles.md#owner) ani žádné předdefinované role s [akcemi](../../role-based-access-control/role-definitions.md#dataactions).
+- Skupiny musí být vytvořeny s [**typem skupiny**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) nastavenou na **zabezpečení** a nesmí **Microsoft 365**.
+- Uživatelé, kteří potřebují zobrazit prostředky v Azure Portal, musí mít roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .
+- Přečtěte si, jak [aktualizovat](update-delegation.md) nebo [Odebrat](remove-delegation.md) delegování.

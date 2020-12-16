@@ -3,12 +3,12 @@ title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452954"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516810"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -55,6 +55,9 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+
+> [!WARNING]
+> Název hostitele nebo počítač se systémem Linux nemůže v názvu použít jedno z vyhrazených slov nebo ochranných známek, jinak se pokus o registraci připojeného počítače k Azure nezdaří. Seznam rezervovaných slov najdete v tématu [řešení chyb rezervovaných názvů prostředků](../../azure-resource-manager/templates/error-reserved-resource-name.md) .
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 

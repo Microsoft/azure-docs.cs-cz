@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: d3ce6e888c937676027f2b71578c38b56f3bd6af
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97388018"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516612"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Nasazení clusteru Azure Service Fabric s nestavovým uzlem bez stavu (Preview)
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.
@@ -24,6 +24,8 @@ K dispozici jsou ukázkové šablony: [Service Fabric šablona typů uzlů bez s
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Povolení typů bezstavových uzlů v Service Fabric clusteru
 Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředku clusteru, nastavte vlastnost **nestavové** vlastnosti na hodnotu "true". Při nasazování Service Fabric clusteru s bezstavovým uzlem nemusíte mít v prostředku clusteru minimálně jeden typ primárního uzlu.
+
+* ApiVersion prostředku clusteru Service Fabric by měl být "2020-12-01-Preview" nebo vyšší.
 
 ```json
 {
@@ -238,6 +240,8 @@ Standard Load Balancer a standardní veřejná IP adresa přináší do odchozí
 
 
 ### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrujte na použití bezstavových uzlů z clusteru pomocí základní SKU Load Balancer a IP adresy základní SKU.
+Pro všechny scénáře migrace je nutné přidat nový typ uzlu pouze bez stavu. Existující typ uzlu nejde migrovat jenom na stavový.
+
 K migraci clusteru, který používal Load Balancer a IP adresu se základní SKU, je nutné nejprve vytvořit zcela nový Load Balancer a prostředek IP pomocí standardní SKU. Tyto prostředky není možné aktualizovat místně.
 
 Nová disdoba a IP adresa by měly být odkazovány v nových typech bezstavových uzlů, které chcete použít. V předchozím příkladu se přidá nový prostředek sady škálování virtuálních počítačů, který se použije pro bezstavové typy uzlů. Tyto sady škálování virtuálních počítačů odkazují na nově vytvořenou a IP adresu, která je označena jako bezstavové uzly v prostředku clusteru Service Fabric.
@@ -247,28 +251,8 @@ Chcete-li začít, budete muset přidat nové prostředky do existující šablo
 * Load Balancer prostředek pomocí standardní SKU.
 * NSG, na který odkazuje podsíť, ve které nasadíte služby Virtual Machine Scale Sets.
 
-
-Příklad těchto prostředků najdete v [ukázkové šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure).
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
-
 Po dokončení nasazení prostředků můžete začít s zakázáním uzlů v typu uzlu, který chcete odebrat z původního clusteru.
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-```
 
 ## <a name="next-steps"></a>Další kroky 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

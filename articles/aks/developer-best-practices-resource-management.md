@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900359"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516737"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -27,14 +27,14 @@ Tento článek o osvědčených postupech se zaměřuje na spuštění clusteru 
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definování požadavků a omezení prostředků pod
 
-**Doprovodné materiály k osvědčeným postupům** – nastavte v YAML manifestech pod požadavky a omezení na všechny lusky. Pokud cluster AKS používá *kvóty prostředků* , může být nasazení odmítnuto, pokud tyto hodnoty nedefinujete.
+**Doprovodné materiály k osvědčeným postupům** – nastavte v YAML manifestech pod požadavky a omezení na všechny lusky. Pokud cluster AKS používá *kvóty prostředků*, může být nasazení odmítnuto, pokud tyto hodnoty nedefinujete.
 
 Hlavním způsobem správy výpočetních prostředků v rámci clusteru AKS je použití požadavků a omezení pod. Tyto požadavky a omezení umožňují plánovači Kubernetes zjistit, jaké výpočetní prostředky by měl být pod ním přiřazen.
 
 * V případě **požadavků na procesor a paměť** definujte v pravidelných intervalech velikost procesoru a paměti, které musí.
     * Když se Plánovač Kubernetes pokusí umístit uzel pod na uzel, používají se k určení, který uzel má dostatek dostupných zdrojů pro plánování, použít žádosti pod.
     * Požadavek na hodnotu pod se nastaví jako výchozí pro definovaný limit.
-    * Pro úpravu těchto požadavků je velmi důležité monitorovat výkon vaší aplikace. Pokud nejsou k dispozici žádné požadavky, může vaše aplikace obdržet snížený výkon z důvodu naplánování uzlu. Pokud jsou požadavky přehodnoceny, může být vaše aplikace zvýšena o naplánovaných potížích.
+    * Pro úpravu těchto požadavků je velmi důležité monitorovat výkon vaší aplikace. Pokud jsou požadavky na prostředky nedostatečné, může vaše aplikace obdržet snížený výkon, protože by bylo možné naplánovat uzel. Pokud jsou požadavky přehodnoceny, může být vaše aplikace zvýšena o naplánovaných potížích.
 * **Omezení počtu procesorů a paměti** jsou maximální množství procesorů a paměti, které může použít pod. Omezení paměti usnadňují definování, které lusky by měly být ukončeny v případě nestability uzlu kvůli nedostatečným prostředkům. Bez správných limitů se bude ukončit až do chvíle, kdy je zatížení prostředku zrušeno. Část pod může nebo nemusí být schopná překročit limit procesoru po určitou dobu, ale v seznamu nebude ukončený za překročení limitu procesoru. 
     * Omezení pod vám pomůžou definovat, kdy došlo ke ztrátě řízení spotřeby prostředků pod. Při překročení limitu je pole pod prioritou pro usmrcování, aby udržoval stav uzlu a minimalizoval dopad na lusky sdílející uzel.
     * Při nastavení limitu na hodnotu pod se výchozí hodnota nastaví na nejvyšší dostupnou hodnotu na daném uzlu.
