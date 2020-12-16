@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Konektory
           href: connector-troubleshoot-guide.md
+        - name: Aktivační události kanálu
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: Toky dat
           href: data-flow-troubleshoot-guide.md
         - name: "Průběžná integrace a\_nasazování"

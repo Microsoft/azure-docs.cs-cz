@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: Použití Azure Resource Manager k nasazení služby Key Vault
           href: vault-create-template.md
-        - name: Uložení tajných kódů webové aplikace
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: Ověřování služba-služba s využitím .NET
-          href: service-to-service-authentication.md
         - name: Používání připojené služby Key Vault
           href: vs-key-vault-add-connected-service.md
     - name: Monitorování a řízení

@@ -118,31 +118,31 @@
       items:
         - name: Obecné účely
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: B-Series s možností zvládání výkonových špiček
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: Optimalizované z hlediska výpočetních služeb
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Optimalizované z hlediska paměti
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: Virtuální procesory s omezením
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: Optimalizované z hlediska úložiště
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: Optimalizované z hlediska GPU
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: Nastavení ovladačů NVIDIA GPU
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: Vysokovýkonné výpočetní prostředí
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +165,6 @@
     - name: Údržba a aktualizace
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: Režimy orchestrace
-      href: orchestration-modes.md
     - name: Diskové úložiště
       items:
         - name: Spravované disky
