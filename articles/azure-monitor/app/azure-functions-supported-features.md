@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b44279f31aea8fc02130f1c3d7520f42c648bd4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168575"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607945"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights pro podporované funkce Azure Functions
 
@@ -23,37 +23,35 @@ Další informace o kompatibilních verzích Application Insights najdete v tém
 
 ## <a name="supported-features"></a>Podporované funkce
 
-| Azure Functions                       | V1                | V2 & V3   | 
-|-----------------------------------    |---------------    |------------------ |
+| Azure Functions                   | V1            | V2 & V3 | 
+|-----------------------------------|---------------|------------------|
 | | | | 
-| **Automatická kolekce**        |                 |                   |               
-| &bull; Požádal                     | Ano             | Ano               | 
-| &bull; Výjimek                   | Ano             | Ano               | 
-| &bull; Čítače výkonu         | Ano             | Ano               |
-| &bull; Závislosti                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ano               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ano               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ano               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ano               | 
+| **Automatická kolekce**        |               |                  |
+| &bull; Požádal                     | Ano           | Ano              |
+| &bull; Výjimek                   | Ano           | Ano              |
+| &bull; Čítače výkonu         | Ano           | Ano              |
+| &bull; Závislosti                 |               |                  |
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |               | Ano              |
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|               | Ano              |
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |               | Ano              |
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |               | Ano              |
 | | | | 
-| **Podporované funkce**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Ano             | Ano               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Kanál zabezpečeného řízení|                 | Ano               | 
-| &bull; Kontrol                     | Ano             | Ano               | 
-| &bull; Prezenčních signálů                   |                 | Ano               | 
+| **Podporované funkce**              |               |                  |
+| &bull; QuickPulse/LiveMetrics       | Ano           | Ano              | 
+| &nbsp;&nbsp;&nbsp;&mdash; Kanál zabezpečeného řízení |               | Ano | 
+| &bull; Kontrol                     | Ano           | Ano              | 
+| &bull; Prezenčních signálů                   | | Ano              | 
+| | | |
+| **Korelace**                    |               |                  |
+| &bull; ServiceBus                  |               | Ano              |
+| &bull; EventHub                    |               | Ano              |
 | | | | 
-| **Korelace**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | Ano               | 
-| &bull; EventHub                       |                   | Ano               | 
-| | | | 
-| **Konfigurovatelné**                      |                   |                   |           
-| &bull;Plně konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v tématu [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Ano                   | 
-
+| **Konfigurovatelné**                  |               |                  |           
+| &bull;Plně konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v tématu [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .           |               | Ano                 | 
 
 ## <a name="performance-counters"></a>Čítače výkonu
 
 Automatická kolekce čítačů výkonu funguje pouze v počítačích se systémem Windows.
-
 
 ## <a name="live-metrics--secure-control-channel"></a>Aktivní metriky & kanál zabezpečeného řízení
 
@@ -65,7 +63,7 @@ Azure Functions povolí vzorkování ve výchozím nastavení v konfiguraci. Dal
 
 Pokud váš projekt získá závislost na sadě Application Insights SDK a provede ruční sledování telemetrie, může docházet k podivnému chování, pokud se konfigurace vzorkování liší od konfigurace vzorkování funkcí. 
 
-Doporučujeme použít stejnou konfiguraci jako funkce. Se službami **Functions v2**můžete získat stejnou konfiguraci pomocí injektáže závislosti v konstruktoru:
+Doporučujeme použít stejnou konfiguraci jako funkce. Se službami **Functions v2** můžete získat stejnou konfiguraci pomocí injektáže závislosti v konstruktoru:
 
 ```csharp
 using Microsoft.ApplicationInsights;

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938932"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607996"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Kurz: Konfigurace konzoly Oracle Cloud Infrastructure pro Automatické zřizování uživatelů
 
@@ -120,40 +120,40 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Oracle Cloud Infrastructure Console v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v konzole cloudové infrastruktury Oracle pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), budete muset zajistit, aby rozhraní API konzoly pro cloudovou infrastrukturu Oracle podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-      |Atribut|Typ|
-      |---|---|
-      |displayName|Řetězec|
-      |userName|Řetězec|
-      |active|Logická hodnota|
-      |title|Řetězec|
-      |emails[type eq "work"].value|Řetězec|
-      |preferredLanguage|Řetězec|
-      |name.givenName|Řetězec|
-      |name.familyName|Řetězec|
-      |adresy [Type EQ "Work"]. formátovaný|Řetězec|
-      |adresy [typ EQ "Work"].|Řetězec|
-      |adresy [typ EQ "Work"]. region|Řetězec|
-      |adresy [typ EQ "Work"]. postalCode|Řetězec|
-      |adresy [typ EQ "Work"]. Country|Řetězec|
-      |adresy [Type EQ "]. streetAddress|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
-      |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
-      |urn: IETF: parametry: SCIM: schémata: Oracle: IDCs: rozšíření: uživatel: uživatel: bypassNotification|Logická hodnota|
-      |urn: IETF: parametry: SCIM: schémata: Oracle: IDCs: rozšíření: uživatel: uživatel: isFederatedUser|Logická hodnota|
+    |Atribut|Typ|
+    |---|---|
+    |displayName|Řetězec|
+    |userName|Řetězec|
+    |active|Logická hodnota|
+    |title|Řetězec|
+    |emails[type eq "work"].value|Řetězec|
+    |preferredLanguage|Řetězec|
+    |name.givenName|Řetězec|
+    |name.familyName|Řetězec|
+    |adresy [Type EQ "Work"]. formátovaný|Řetězec|
+    |adresy [typ EQ "Work"].|Řetězec|
+    |adresy [typ EQ "Work"]. region|Řetězec|
+    |adresy [typ EQ "Work"]. postalCode|Řetězec|
+    |adresy [typ EQ "Work"]. Country|Řetězec|
+    |adresy [Type EQ "]. streetAddress|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
+    |urn: IETF: parametry: SCIM: schémata: Oracle: IDCs: rozšíření: uživatel: uživatel: bypassNotification|Logická hodnota|
+    |urn: IETF: parametry: SCIM: schémata: Oracle: IDCs: rozšíření: uživatel: uživatel: isFederatedUser|Logická hodnota|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Oracle Cloud infrastruktura konzoly**.
 
 11. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do Oracle Cloud Infrastructure Console v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v konzole cloudové infrastruktury Oracle pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-      |Atribut|Typ|
-      |---|---|
-      |displayName|Řetězec|
-      |externalId|Řetězec|
-      |členy|Referenční informace|
+    | Atribut | Typ |
+    |--|--|
+    | displayName | Řetězec |
+    | externalId | Řetězec |
+    | členy | Referenční informace |
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -178,7 +178,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 * Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

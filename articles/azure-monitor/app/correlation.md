@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853318"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607911"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -79,7 +79,6 @@ Mapování datových modelů v [kontextu W3C Trace-Context](https://w3c.github.i
 | `Operation_Id`                         | [ID trasování](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | [nadřazený identifikátor](https://w3c.github.io/trace-context/#parent-id) nadřazeného nadřazeného rozsahu tohoto rozsahu Pokud se jedná o kořenový rozsah, musí být toto pole prázdné.     |
 
-
 Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Povolení podpory distribuovaného trasování W3C pro aplikace .NET
@@ -103,7 +102,7 @@ Distribuované trasování založené na formátu W3C je ve výchozím nastaven�
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - V případě aplikací pro spouštění pružiny přidejte tyto vlastnosti:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Přidejte následující konfiguraci:
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[Nastavení na základě fragmentů kódu](./javascript.md#snippet-based-setup)**
 
 Přidejte následující konfiguraci:

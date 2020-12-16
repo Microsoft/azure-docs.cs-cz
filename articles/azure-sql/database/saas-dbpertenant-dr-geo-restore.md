@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780882"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607707"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ Proces obnovení provádí následující akce:
 
     * K databázím tenanta může aplikace přicházet ihned po označení online v katalogu.
 
-    * Součet hodnot rowversion v databázi tenanta je uložen v katalogu. Tato suma funguje jako otisk prstu, který umožňuje procesu repatriace zjistit, jestli se databáze aktualizovala v oblasti obnovení.       
+    * Součet hodnot rowversion v databázi tenanta je uložen v katalogu. Tato suma funguje jako otisk prstu, který umožňuje procesu repatriace zjistit, jestli se databáze aktualizovala v oblasti obnovení.
 
 ## <a name="run-the-recovery-script"></a>Spuštění skriptu pro obnovení
 

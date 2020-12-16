@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182047"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607877"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -165,18 +165,18 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |name.familyName|Řetězec|
    |název. formátovaný|Řetězec|
    |externalID|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do MediusFlow**.
 
 11. Zkontrolujte atributy skupiny synchronizované z Azure AD do MediusFlow v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v MediusFlow pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-      |Atribut|Typ|
-      |---|---|
-      |displayName|Řetězec|
-      |externalID|Řetězec|
-      |členy|Referenční informace|
+    | Atribut | Typ |
+    |--|--|
+    | displayName | Řetězec |
+    | externalID | Řetězec |
+    | členy | Referenční informace |
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

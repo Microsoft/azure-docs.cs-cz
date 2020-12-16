@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601012"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607894"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
 
@@ -63,7 +63,6 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 Případně, pokud je váš klient aplikace na [telefonu nebo jiném zařízení][platforms], můžete z něj poslat telemetrii.
 
 Použijte stejný klíč instrumentace k nastavení telemetrie klienta i serveru. Data se zobrazí ve stejném prostředku Application Insights a budete moci korelovat události z klienta a serveru.
-
 
 ## <a name="disabling-telemetry"></a>Zakázání telemetrie
 **Jak můžu zakázat shromažďování telemetrie?**
@@ -183,7 +182,6 @@ Application Insights používá `org.apache.http` . Toto je přemístěné v rá
 
 >[!NOTE]
 >Pokud povolíte protokolování na úrovni ladění pro všechny obory názvů v aplikaci, budou tyto moduly přijaty všemi spuštěnými moduly, včetně `org.apache.http` přejmenování `com.microsoft.applicationinsights.core.dependencies.http` . Application Insights nebude moct pro tato volání použít filtrování, protože se v knihovně Apache provádí volání protokolu. Protokolování úrovně ladění vytvoří značnou část dat protokolu a nedoporučuje se pro živé provozní instance.
-
 
 ## <a name="next-steps"></a>Další kroky
 **Nastavil jsem Application Insights pro aplikaci Java Server. Co dalšího můžu udělat?**
