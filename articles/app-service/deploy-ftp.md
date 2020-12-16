@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150265"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605072"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace pro Azure App Service pomocí FTP/S
 
@@ -29,7 +29,7 @@ Koncový bod FTP/S pro vaši aplikaci je už aktivní. Pro povolení nasazení F
 
     ![Vyberte svou aplikaci.](media/app-service-continuous-deployment/select-your-app.png)
 
-3. Vyberte **Deployment Center**  >  **FTP**  >  **řídicí panel**FTP centra nasazení.
+3. Vyberte   >    >  **řídicí panel** FTP centra nasazení.
 
     ![Otevření řídicího panelu FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -42,7 +42,7 @@ Na řídicím panelu FTP vyberte **Kopírovat** a zkopírujte koncový bod FTPS 
 Doporučujeme, abyste pro nasazení do aplikace použili **přihlašovací údaje aplikace** , protože jsou pro každou aplikaci jedinečné. Pokud ale kliknete na **přihlašovací údaje uživatele**, můžete nastavit přihlašovací údaje na úrovni uživatele, které můžete použít pro přihlášení k FTP/S pro všechny App Service aplikace v rámci vašeho předplatného.
 
 > [!NOTE]
-> Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele requirers uživatelské jméno v následujícím formátu: 
+> Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele vyžaduje uživatelské jméno v následujícím formátu: 
 >
 >`<app-name>\<user-name>`
 >
@@ -52,7 +52,7 @@ Doporučujeme, abyste pro nasazení do aplikace použili **přihlašovací údaj
 ## <a name="deploy-files-to-azure"></a>Nasazení souborů do Azure
 
 1. Z klienta FTP (například sady [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/)nebo [WinSCP](https://winscp.net/index.php)) použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikaci.
-2. Zkopírujte své soubory a příslušné adresářové struktury do [adresáře **/site/wwwroot** ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo adresáře **/site/wwwroot/App_Data/Jobs/** pro WebJobs).
+2. Zkopírujte své soubory a příslušné adresářové struktury do [adresáře **/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo adresáře **/site/wwwroot/App_Data/Jobs/** pro WebJobs).
 3. Vyhledejte adresu URL vaší aplikace a ověřte, že aplikace funguje správně. 
 
 > [!NOTE] 
@@ -85,9 +85,18 @@ Informace o nasazení FTP pomocí [Azure PowerShell](/cli/azure)najdete v témat
 
 ## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s nasazením FTP
 
-- [Jak můžu řešit potíže s nasazením FTP?](#how-can-i-troubleshoot-ftp-deployment)
-- [Nedaří se mi FTP a publikovat můj kód. Jak můžu problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [Nasazení aplikace pro Azure App Service pomocí FTP/S](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [Otevření řídicího panelu FTP](#open-ftp-dashboard)
+  - [Získat informace o připojení FTP](#get-ftp-connection-information)
+  - [Nasazení souborů do Azure](#deploy-files-to-azure)
+  - [Vyhovět FTPS](#enforce-ftps)
+  - [Automatizace pomocí skriptů](#automate-with-scripts)
+  - [Řešení potíží s nasazením FTP](#troubleshoot-ftp-deployment)
+    - [Jak můžu řešit potíže s nasazením FTP?](#how-can-i-troubleshoot-ftp-deployment)
+    - [Nedaří se mi FTP a publikovat můj kód. Jak můžu problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [Další kroky](#next-steps)
+  - [Další zdroje informací](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak můžu řešit potíže s nasazením FTP?
 

@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014590"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606262"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
 Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -113,7 +113,7 @@ Na stránce **Konfigurace výpočetních hraničních** zařízení   Vybert
 
 Klikněte na **Vytvořit**. Vytváření prostředků IoT Hub může trvat několik minut. Po vytvoření prostředku IoT Hub se aktualizuje dlaždice **Konfigurace hraničních výpočtů** , aby se zobrazila nová konfigurace. Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte **Zobrazit** na dlaždici **Konfigurovat výpočty**   .
 
-Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V zařízení IoT Edge již bude spuštěn modul runtime Azure IoT Edge.            
+Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V zařízení IoT Edge již bude spuštěn modul runtime Azure IoT Edge.
 
 > [!NOTE]
 > * Pro IoT Edge zařízení je momentálně podporovaná jenom Platforma Linux. Pomoc při řešení potíží se zařízením Azure Stack Edge naleznete v článku [protokolování a řešení potíží](spatial-analysis-logging.md) .
@@ -418,7 +418,7 @@ Kontejner prostorové analýzy odesílá informace o fakturaci do Azure pomocí 
 U kontejnerů Azure Cognitive Services není licencováno běžet bez připojení ke koncovému bodu měření/fakturace. Kontejnerům musíte povolit, aby informace o fakturaci komunikovaly s koncovým bodem fakturace. Kontejnery Cognitive Services neodesílají zákaznická data, jako je video nebo obrázek, který se analyzuje, do Microsoftu.
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejneru prostorové analýzy. Souhrn:
 

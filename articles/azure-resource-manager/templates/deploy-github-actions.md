@@ -4,16 +4,16 @@ description: Popisuje způsob nasazení Azure Resource Manager šablon (šablon 
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8c669393d38d7af2af4f63f251740d8ad72edf7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905838"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607299"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Nasazení šablon ARM pomocí akcí GitHubu
 
-[Akce GitHubu](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
+[Akce GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) je sada funkcí v GitHubu pro automatizaci pracovních postupů vývoje softwaru na stejném místě, kam ukládáte kód a spolupracujete na žádostech o přijetí změn a problémech.
 
 Použijte [akci nasadit Azure Resource Manager šablonu](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) k automatizaci nasazení Azure Resource Manager šablony (šablony ARM) do Azure.
 
@@ -21,7 +21,7 @@ Použijte [akci nasadit Azure Resource Manager šablonu](https://github.com/mark
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).
-    - Úložiště GitHub pro uložení šablon Správce prostředků a souborů pracovního postupu. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření nového úložiště](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
+    - Úložiště GitHub pro uložení šablon Správce prostředků a souborů pracovního postupu. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření nového úložiště](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository).
 
 
 ## <a name="workflow-file-overview"></a>Přehled souboru pracovního postupu

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585781"
+ms.locfileid: "97605594"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
@@ -38,7 +38,6 @@ Pokud chcete nastavit spravovanou identitu v Azure Portal, vytvoříte nejprve i
 3. Na kartě **přiřazeno systému** přepněte **stav** na **zapnuto**. Vyberte **Uložit**.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené systémem" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ Při vytvoření instance má následující další vlastnosti:
 ```
 
 `tenantId`Vlastnost určuje, do jakého tenanta Azure AD patří identita. `principalId`Vlastnost je jedinečný identifikátor pro novou identitu instance. V rámci služby Azure AD má instanční objekt stejný název, který jste zadali vaší instanci API Management.
-
 
 > [!NOTE]
 > Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla `SystemAssigned,UserAssigned` .
@@ -265,7 +263,6 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Ověřování pro back-end pomocí API Management identity
 
 Identitu přiřazenou systémem můžete použít k ověření do back-endu prostřednictvím zásad [ověřování spravované-identity](api-management-authentication-policies.md#ManagedIdentity) .
-
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
@@ -415,7 +412,6 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Ověřování v back-endu pomocí uživatelsky přiřazené identity
 
 K ověření v back-endu pomocí zásad [ověřování spravovaného pomocí identity](api-management-authentication-policies.md#ManagedIdentity) můžete použít uživatelem přiřazenou identitu.
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Odebrání identity
 

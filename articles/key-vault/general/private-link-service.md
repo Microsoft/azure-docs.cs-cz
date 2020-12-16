@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460067"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592292"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -53,7 +53,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Na kartě síť vyberte přepínač privátního koncového bodu.
 1. Kliknutím na tlačítko + Přidat přidáte soukromý koncový bod.
 
-    ![Image](../media/private-link-service-1.png)
+    ![Snímek obrazovky zobrazující kartu "sítě" na stránce vytvoření trezoru klíčů.](../media/private-link-service-1.png)
  
 1. V poli umístění v okně vytvořit privátní koncový bod vyberte oblast, ve které se nachází vaše virtuální síť. 
 1. V poli název Vytvořte popisný název, který vám umožní identifikovat Tento soukromý koncový bod. 
@@ -61,7 +61,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 1. Vyberte OK.
 
-    ![Image](../media/private-link-service-8.png)
+    ![Snímek obrazovky zobrazující stránku vytvořit privátní koncový bod s vybraným nastavením](../media/private-link-service-8.png)
  
 Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte možnost Tento soukromý koncový bod odstranit a upravit. Vyberte tlačítko "revize + vytvořit" a vytvořte Trezor klíčů. Dokončení nasazení bude trvat 5-10 minut. 
 
@@ -76,12 +76,13 @@ Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu p
 1. Vyberte kartu připojení privátního koncového bodu v horní části stránky.
 1. V horní části stránky vyberte tlačítko + privátní koncový bod.
 
-    ![](../media/private-link-service-3.png) ![ Obrázek obrázku](../media/private-link-service-4.png)
+    ![Snímek obrazovky, na které se na stránce síť zobrazuje tlačítko + soukromý koncový bod](../media/private-link-service-3.png)
+    ![Snímek obrazovky zobrazující kartu základy na stránce vytvoření privátního koncového bodu (Preview)](../media/private-link-service-4.png)
 
 Pro libovolný prostředek Azure v tomto okně se můžete rozhodnout vytvořit privátní koncový bod. Pomocí rozevíracích nabídek můžete vybrat typ prostředku a vybrat prostředek ve vašem adresáři, nebo se můžete připojit k libovolnému prostředku Azure pomocí ID prostředku. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 
-![](../media/private-link-service-3.png)
- ![ Obrázek obrázku](../media/private-link-service-4.png)
+![Snímek obrazovky, který ukazuje přidání privátního koncového bodu pomocí aktuálního okna. ](../media/private-link-service-3.png)
+ ![ Snímek obrazovky, který ukazuje příklad stránky vytvořit privátní koncový bod (Preview).](../media/private-link-service-4.png)
 
 Při vytváření privátního koncového bodu musí být připojení schváleno. Pokud je prostředek, pro který vytváříte privátní koncový bod, ve vašem adresáři, budete moci schválit žádost o připojení, pokud máte dostatečná oprávnění. Pokud se připojujete k prostředku Azure v jiném adresáři, musíte počkat, až vlastník tohoto prostředku schválí žádost o připojení.
 
@@ -92,7 +93,7 @@ Existují čtyři stavy zřizování:
 | Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
-| Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
+| Odebrat | Odpojeno | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
 
 ### <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Správa připojení privátního koncového bodu k Key Vault pomocí Azure Portal 
 
@@ -105,7 +106,7 @@ Existují čtyři stavy zřizování:
 1. Vyberte tlačítko Schválit.
 1. Pokud existují nějaká připojení privátního koncového bodu, která chcete zamítnout, ať už se jedná o nevyřízenou žádost nebo existující připojení, vyberte připojení a klikněte na tlačítko "zamítnout".
 
-    ![Image](../media/private-link-service-7.png)
+    ![Obrázek](../media/private-link-service-7.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1376dcb76c22bcd70937f533d337ee9679e9dc59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455818"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Kurz: Azure Active Directory integrace s LoginRadius
 
@@ -151,7 +151,7 @@ V této části povolíte jednotné přihlašování Azure AD v konzole pro spr�
        - Příkaz pro získání klíče certifikátu pro SP: `openssl genrsa -out lr.hub.loginradius.com.key 2048`
 
        - Příkaz pro získání certifikátu pro SP: `openssl req -new -x509 -key lr.hub.loginradius.com.key -out lr.hub.loginradius.com.cert -days 3650 -subj /CN=lr.hub.loginradius.com`
-     
+
        > [!NOTE]
        > Nezapomeňte zadat certifikát a hodnoty klíčů certifikátu s hlavičkou a zápatím:
        > - Příklad formátu hodnoty certifikátu: `-----BEGIN CERTIFICATE-----<certifciate value>-----END CERTIFICATE-----`
@@ -188,7 +188,7 @@ Cílem této části je vytvořit testovacího uživatele s názvem Britta Simon
 
    1. Do pole **název** zadejte **BrittaSimon**.
   
-   1. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například, BrittaSimon@contoso.com.
+   1. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 

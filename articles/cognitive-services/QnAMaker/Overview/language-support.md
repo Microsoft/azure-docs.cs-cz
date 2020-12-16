@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353115"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605055"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
@@ -83,61 +83,61 @@ Pokud potřebujete podporovat systém znalostní báze, který obsahuje několik
 
 Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem. 
 
-|Jazyk|
+| Jazyk |
 |--|
-|Arabština|
-|Arménština|
-|Bengálština|
-|Baskičtina|
-|Bulharština|
-|Katalánština|
-|Chinese_Simplified|
-|Chinese_Traditional|
-|Chorvatština|
-|Čeština|
-|Dánština|
-|Nizozemština|
-|Angličtina|
-|Estonština|
-|Finština|
-|Francouzština|
-|Galicijština|
-|Němčina|
-|Řečtina|
-|Gudžarátština|
-|Hebrejština|
-|Hindština|
-|Maďarština|
-|Islandština|
-|Indonéština|
-|Irština|
-|Italština|
-|Japonština|
-|Kannadština|
-|Korejština|
-|Lotyština|
-|Litevština|
-|Malajalámština|
-|Malajština|
-|Norština|
-|Polština|
-|Portugalština|
-|Paňdžábština|
-|Rumunština|
-|Ruština|
-|Serbian_Cyrillic|
-|Serbian_Latin|
-|Slovenština|
-|Slovinština|
-|Španělština|
-|Švédština|
-|Tamilština|
-|Telugština|
-|Thajština|
-|Turečtina|
-|Ukrajinština|
-|Urdština|
-|Vietnamština|
+| Arabština |
+| Arménština |
+| Bengálština |
+| Baskičtina |
+| Bulharština |
+| Katalánština |
+| Chinese_Simplified |
+| Chinese_Traditional |
+| Chorvatština |
+| Čeština |
+| Dánština |
+| Nizozemština |
+| Angličtina |
+| Estonština |
+| Finština |
+| Francouzština |
+| Galicijština |
+| Němčina |
+| Řečtina |
+| Gudžarátština |
+| Hebrejština |
+| Hindština |
+| Maďarština |
+| Islandština |
+| Indonéština |
+| Irština |
+| Italština |
+| Japonština |
+| Kannadština |
+| Korejština |
+| Lotyština |
+| Litevština |
+| Malajalámština |
+| Malajština |
+| Norština |
+| Polština |
+| Portugalština |
+| Paňdžábština |
+| Rumunština |
+| Ruština |
+| Serbian_Cyrillic |
+| Serbian_Latin |
+| Slovenština |
+| Slovinština |
+| Španělština |
+| Švédština |
+| Tamilština |
+| Telugština |
+| Thajština |
+| Turečtina |
+| Ukrajinština |
+| Urdština |
+| Vietnamština |
 
 ## <a name="query-matching-and-relevance"></a>Shoda a závažnost dotazu
 QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](/rest/api/searchservice/language-support) pro poskytování výsledků.

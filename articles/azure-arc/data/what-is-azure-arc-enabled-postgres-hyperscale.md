@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936018"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607503"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Co je rozšíření Azure ARC povolené PostgreSQL.
 
@@ -43,14 +43,14 @@ Toto je faktor formy Postgres databázového stroje, který je k dispozici jako 
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL s povoleným škálováním Azure ARC
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database PostgreSQL s měřítkem (Citus)":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="PostgreSQL s povoleným škálováním Azure ARC":::
 
 Toto je faktor formuláře pro škálování Postgres databázového stroje, který je dostupný pro datové služby s podporou ARC Azure. Je také napájený pomocí rozšíření Citus, které umožňuje prostředí s technologií škálování. V tomto formuláři poskytují naši zákazníci infrastrukturu, která je hostitelem systémů a pracuje s nimi.
 
 ## <a name="next-steps"></a>Další kroky
 - **Vytvořit**
-   > **Chcete něco vyzkoušet?**  
-   > Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
+   > **Chcete něco vyzkoušet? Nemáte k dispozici cluster Kubernetes? Poskytujeme vám izolovaný prostor:**  
+   > Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
 
    - **Vytvořeny**
       - [Instalace klientských nástrojů](install-client-tools.md)

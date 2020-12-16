@@ -1,5 +1,5 @@
 ---
-title: Akce GitHubu pro CI/CD
+title: GitHub Actions pro CI/CD
 titleSuffix: Azure Machine Learning
 description: Přečtěte si, jak vytvořit pracovní postup akcí GitHubu pro výuku modelu na Azure Machine Learning
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4336827dc7f8cb45f04e4cef94d79d1e6409d5c0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795146"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605021"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Použití akcí GitHubu s Azure Machine Learning
 
-Začněte s [akcemi GitHubu](https://help.github.com/en/articles/about-github-actions) , které vám pomohou naučit model na Azure Machine Learning. 
+Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) , které vám pomohou naučit model na Azure Machine Learning. 
 
 > [!NOTE]
 > Akce GitHubu pro Azure Machine Learning jsou k dispozici tak, jak jsou, a společnost Microsoft je plně nepodporuje. Pokud narazíte na problémy s určitou akcí, otevřete problém pro akci v úložišti. Například pokud narazíte na problém s akcí AML-Deploy, nahlaste problém v [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) úložišti.
@@ -47,7 +47,7 @@ Soubor obsahuje čtyři části:
 Vytvořte nové úložiště z [operace ml v rámci akce GitHubu a šablony Azure Machine Learning](https://github.com/machine-learning-apps/ml-template-azure). 
 
 1. Otevřete [šablonu](https://github.com/machine-learning-apps/ml-template-azure) na GitHubu. 
-2. Vyberte **Použít tuto šablonu** . 
+2. Vyberte **Použít tuto šablonu**. 
 
     :::image type="content" source="media/how-to-github-actions-machine-learning/gh-actions-use-template.png" alt-text="Vyberte použít tuto šablonu.":::
 3. Vytvoří nové úložiště ze šablony. Nastavte název úložiště na `ml-learning` nebo název podle vlastního výběru. 
@@ -77,7 +77,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 ## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód** .
+1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
 2. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 

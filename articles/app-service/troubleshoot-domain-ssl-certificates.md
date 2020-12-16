@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590354"
+ms.locfileid: "97607605"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
 
 V tomto článku jsou uvedené běžné problémy, se kterými se můžete setkat při konfiguraci certifikátu domény nebo TLS/SSL pro webové aplikace v Azure App Service. Popisuje také možné příčiny a řešení těchto problémů.
 
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

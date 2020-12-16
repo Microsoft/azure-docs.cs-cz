@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2fb1ae2bbda55a04f4e76505a55b28372af00f33
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561405"
+ms.locfileid: "97606670"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -1171,8 +1171,8 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-12 | [4470199] | Internet Explorer  | 2,81, 3,68, 4,61 | 11. prosince 2018 |
 | – | [4468323] | Aktualizace časového pásma    | 2,81, 3,68, 4,61 | 13. prosince 2018 |
 | – | [4467107] | Kumulativní nezabezpečení od listopadu   | 2,81 | 13. listopadu 2018 |
-| – | [4467701] | Kumulativní nezabezpečení od listopadu     | 3,68 | 13. listopadu 2018 |
-| – | [4467697] | Kumulativní nezabezpečení od listopadu     | 4,61 | 13. listopadu 2018 |
+| – | [4467701] | Kumulativní nezabezpečení od listopadu | 3,68 | 13. listopadu 2018 |
+| – | [4467697] | Kumulativní nezabezpečení od listopadu | 4,61 | 13. listopadu 2018 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328

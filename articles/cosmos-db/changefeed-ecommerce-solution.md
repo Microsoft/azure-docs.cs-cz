@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342160"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606330"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat v reálném čase
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,14 +35,14 @@ Následující diagram představuje tok dat a součásti zapojené do řešení:
  
 1. **Generování dat:** Simulátor dat se používá ke generování maloobchodních dat, která představují události, jako je například uživatel, který zobrazuje položku, přidání položky na košík a nákup položky. Pomocí generátoru dat můžete vygenerovat rozsáhlou sadu ukázkových dat. Vygenerovaná ukázková data obsahují dokumenty v následujícím formátu:
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** Vygenerovaná data se ukládají do kontejneru Azure Cosmos.  
 
@@ -180,7 +180,7 @@ Chcete-li zjistit, jak kanál změny zpracovává nové akce na webu elektronick
  
 6. Počkejte, než se program spustí. Hvězdičky znamenají, že data přicházejí. Nechte program spuštěný – je důležité, aby se shromáždila spousta dat.  
 
-7. Pokud přejdete na [Azure Portal](https://portal.azure.com/) , pak na účet Cosmos DB v rámci skupiny prostředků a potom na **Průzkumník dat** , zobrazí se náhodovaná data importovaná v **changefeedlabcollection** .
+7. Pokud přejdete na [Azure Portal](https://portal.azure.com/) , pak na účet Cosmos DB v rámci skupiny prostředků a potom na **Průzkumník dat**, zobrazí se náhodovaná data importovaná v **changefeedlabcollection** .
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Data generovaná na portálu":::
 
@@ -253,7 +253,7 @@ Power BI je sada nástrojů pro obchodní analýzu, která umožňuje analyzovat
  
 5. V **datových sadách** vyberte **averagePrice** a pak vyberte **Další**.  
 
-6. V poli **typ vizualizace** vyberte v rozevírací nabídce **Skupinový pruhový graf** . V části **osa** přidejte akci. Přeskočit **legendu** bez přidání cokoli V další části s názvem **hodnota** přidejte **prům**. Vyberte **Další** , potom název grafu a vyberte **použít**. Na řídicím panelu by se měl zobrazit nový graf.  
+6. V poli **typ vizualizace** vyberte v rozevírací nabídce **Skupinový pruhový graf** . V části **osa** přidejte akci. Přeskočit **legendu** bez přidání cokoli V další části s názvem **hodnota** přidejte **prům**. Vyberte **Další**, potom název grafu a vyberte **použít**. Na řídicím panelu by se měl zobrazit nový graf.  
 
 7. Pokud teď chcete vizualizovat další metriky, můžete přejít zpátky na **streamjob1** a vytvořit tři další výstupy pomocí následujících polí.
 
@@ -381,7 +381,7 @@ Teď budete sledovat, jak můžete použít nový nástroj pro analýzu dat pro 
 
 7. V rámci `<appSettings>` bloku přidejte **identifikátor URI** a **primární klíč** , který jste předtím uložili, kde uvádí **identifikátor URI tady** a **váš primární klíč**. Pak přidejte **název databáze** a **název kolekce** , jak je uvedeno níže. (Tyto názvy by měly být **changefeedlabdatabase** a **changefeedlabcollection** , pokud se nerozhodnete své pojmenovat jinak.)
 
-   Zadejte název **kolekce Products** , **název kolekce kategorií** a **název kolekce hlavních položek** , jak je uvedeno. (Tato jména by měla být **Products, categories a topItems,** Pokud se nerozhodnete, že si nebudete pojmenovat jinak.)  
+   Zadejte název **kolekce Products**, **název kolekce kategorií** a **název kolekce hlavních položek** , jak je uvedeno. (Tato jména by měla být **Products, categories a topItems,** Pokud se nerozhodnete, že si nebudete pojmenovat jinak.)  
 
 8. Přejděte do **složky pro registraci** v **EcommerceWebApp. sln** a otevřete ji. Pak otevřete soubor **Web.config** v této složce.  
 

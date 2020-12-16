@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008023"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604970"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
-[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) nabízí flexibilitu při vytváření automatizovaného pracovního postupu vývoje softwaru. Pomocí [akce nasazení webu Azure](https://github.com/Azure/webapps-deploy)můžete automatizovat pracovní postup a nasadit vlastní kontejnery, které se [App Service](overview.md) pomocí akcí GitHubu.
+[Akce GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) nabízí flexibilitu při vytváření automatizovaného pracovního postupu vývoje softwaru. Pomocí [akce nasazení webu Azure](https://github.com/Azure/webapps-deploy)můžete automatizovat pracovní postup a nasadit vlastní kontejnery, které se [App Service](overview.md) pomocí akcí GitHubu.
 
 Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které jsou v pracovním postupu.
 
@@ -28,7 +28,7 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join). K nasazení do Azure App Service musíte mít v úložišti GitHub kód. 
@@ -39,7 +39,7 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
 Doporučený způsob ověřování pomocí Azure App Services pro akce GitHubu je profil publikování. Můžete se také ověřit pomocí instančního objektu, ale proces vyžaduje více kroků. 
 
-Uložte přihlašovací údaje k publikačnímu profilu nebo instančnímu objektu jako [tajný kód GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets) pro ověření v Azure. V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
+Uložte přihlašovací údaje k publikačnímu profilu nebo instančnímu objektu jako [tajný kód GitHubu](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) pro ověření v Azure. V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ Můžete najít naši sadu akcí seskupených do různých úložišť na GitHub
 
 - [Přihlášení nebo odhlášení Docker](https://github.com/Azure/docker-login)
 
-- [Události, které aktivují pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Události, které aktivují pracovní postupy](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [Nasazení K8s](https://github.com/Azure/k8s-deploy)
 

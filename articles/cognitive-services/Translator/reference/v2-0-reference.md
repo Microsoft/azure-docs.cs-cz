@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 25dda63c6450040e396de9ee0d3fb0a459416343
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369507"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606823"
 ---
 # <a name="translator-v20"></a>Překladatel v 2.0
 
@@ -51,9 +51,9 @@ Pokud chcete zabránit vulgárním slovům v překladu i v případě, že je ve
 
 |ProfanityAction    |Akce |Ukázkový zdroj (japonština)  |Příklad překladu (angličtina)  |
 |:--|:--|:--|:--|
-|Akce   |Default (Výchozí). Stejné jako nastavení možnosti. Vulgární výrazy přecházejí ze zdroje do cíle.        |彼はジャッカスです Marketplace.     |Je Jackass.   |
-|Vyznačen     |Slova v vulgárních textech budou obklopeny značkami XML \<profanity> a \</profanity> .       |彼はジャッカスです Marketplace. |Je \<profanity> Jackass \</profanity> .  |
-|Odstraněné    |Slova v vulgárních textech se z výstupu odeberou bez náhrady.     |彼はジャッカスです Marketplace. |Je.   |
+|Akce   |Default (Výchozí). Stejné jako nastavení možnosti. Vulgární výrazy přecházejí ze zdroje do cíle. |彼はジャッカスです Marketplace. |Je Jackass.  |
+|Vyznačen |Slova v vulgárních textech budou obklopeny značkami XML \<profanity> a \</profanity> . |彼はジャッカスです Marketplace.   |Je \<profanity> Jackass \</profanity> .  |
+|Odstraněné    |Slova v vulgárních textech se z výstupu odeberou bez náhrady. |彼はジャッカスです Marketplace. |Je.   |
 
     
 ## <a name="excluding-content-from-translation"></a>Vyloučení obsahu z překladu
@@ -607,11 +607,11 @@ Tělo žádosti zahrnuje volitelný `TranslationOptions` objekt, který má tent
 
 * `Category`: Řetězec, který obsahuje kategorii (doménu) překladu. Výchozí formát je `general`.
 * `ContentType`: Jedinou podporovanou možností a výchozí hodnota je `text/plain` .
-* `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte vytváření umělých alternativ, plně integrovaných s rozhraním překladu spolupráce (CTF). Funkce umožňuje vracet alternativy pro věty, které nemají v CTF žádné překlady, přidáním umělých alternativ z *n* -nejlepších seznamů dekodéru.
+* `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte vytváření umělých alternativ, plně integrovaných s rozhraním překladu spolupráce (CTF). Funkce umožňuje vracet alternativy pro věty, které nemají v CTF žádné překlady, přidáním umělých alternativ z *n*-nejlepších seznamů dekodéru.
     - Hodnotící. Tato hodnocení se používají takto: 
          - Nejlepší automatický překlad má hodnocení 5.
        - Alternativy z CTF odráží oprávnění kontrolora. Jsou v rozsahu od-10 do + 10.
-       - Automaticky vygenerované alternativy *n* překladu mají hodnocení 0 a stupeň shody 100.
+       - Automaticky vygenerované alternativypřekladu mají hodnocení 0 a stupeň shody 100.
     - Počet alternativ Počet vrácených alternativ může být stejně vysoký jako hodnota zadaná v `maxTranslations` , ale může být nižší.
     - Páry jazyků. Tato funkce není v obou směrech k dispozici pro překlady mezi zjednodušenou čínskou a tradiční čínštinou. Je k dispozici pro všechny ostatní páry jazyků podporované Microsoft Translatorem.
 * `State`: Stav uživatele, který vám umožní sladit požadavek a odpověď. V odpovědi se vrátí stejný obsah.
@@ -719,11 +719,11 @@ Tady je formát textu žádosti:
 * `Options`Volitelné. `Options`Objekt, který obsahuje následující hodnoty. Jsou to všechna volitelná a výchozí nastavení pro nejběžnější nastavení. Zadané elementy musí být uvedeny v abecedním pořadí.
     - `Category`: Řetězec, který obsahuje kategorii (doménu) překladu. Výchozí formát je `general`.
     - `ContentType`: Jedinou podporovanou možností a výchozí hodnota je `text/plain` .
-    - `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte generaci umělých alternativ v překladu, která je plně integrovaná s architekturou CTF (spolupráce s překlady). Funkce umožňuje vracet alternativy pro věty, které nemají žádné alternativy v CTF, a to přidáním umělých alternativ ze seznamu *n* -nejlepších dekodéru.
+    - `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte generaci umělých alternativ v překladu, která je plně integrovaná s architekturou CTF (spolupráce s překlady). Funkce umožňuje vracet alternativy pro věty, které nemají žádné alternativy v CTF, a to přidáním umělých alternativ ze seznamu *n*-nejlepších dekodéru.
         - Hodnocení hodnocení se používají takto:
           - Nejlepší automatický překlad má hodnocení 5.
           - Alternativy z CTF odráží oprávnění kontrolora. Jsou v rozsahu od-10 do + 10.
-          - Automaticky vygenerované alternativy *n* překladu mají hodnocení 0 a stupeň shody 100.
+          - Automaticky vygenerované alternativypřekladu mají hodnocení 0 a stupeň shody 100.
         - Počet alternativ Počet vrácených alternativ může být stejně vysoký jako hodnota zadaná v `maxTranslations` , ale může být nižší.
         - Páry jazyků. Tato funkce není v obou směrech k dispozici pro překlady mezi zjednodušenou čínskou a tradiční čínštinou. Je k dispozici pro všechny ostatní páry jazyků podporované Microsoft Translatorem.
 * `State`: Stav uživatele, který vám umožní sladit požadavek a odpověď. V odpovědi se vrátí stejný obsah.

@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543098"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605254"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
 
-Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení statické lokality do účtu služby Azure Storage. Jakmile nastavíte pracovní postup akcí GitHubu, budete moct svůj web automaticky nasadit do Azure z GitHubu, když provedete změny v kódu vašeho webu.
+Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) pomocí pracovního postupu k nasazení statické lokality do účtu služby Azure Storage. Jakmile nastavíte pracovní postup akcí GitHubu, budete moct svůj web automaticky nasadit do Azure z GitHubu, když provedete změny v kódu vašeho webu.
 
 > [!NOTE]
 > Pokud používáte službu [Azure Static Web Apps](../../static-web-apps/index.yml), nemusíte ručně nastavit pracovní postup akcí GitHubu.
@@ -68,7 +68,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného kódu jako `AZURE_CREDENTIALS` .
 
-    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
     ```yaml
     - uses: azure/login@v1

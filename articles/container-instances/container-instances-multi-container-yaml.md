@@ -3,12 +3,12 @@ title: Kurz – nasazení skupiny více kontejnerů – YAML
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí souboru YAML pomocí Azure CLI.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091289"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605157"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: nasazení skupiny s více kontejnery pomocí souboru YAML
 
@@ -37,7 +37,7 @@ V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigu
 
 Pokud chcete nasadit skupinu s více kontejnery pomocí příkazu [AZ Container Create][az-container-create] v rozhraní příkazového řádku Azure, musíte v souboru YAML zadat konfiguraci skupiny kontejnerů. Pak předejte soubor YAML jako parametr do příkazu.
 
-Začněte zkopírováním následujících YAML do nového souboru nazvaného **Deploy-ACI. yaml** . V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+Začněte zkopírováním následujících YAML do nového souboru nazvaného **Deploy-ACI. yaml**. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```
 code deploy-aci.yaml
@@ -178,7 +178,6 @@ V tomto kurzu jste použili soubor YAML k nasazení skupiny více kontejnerů v 
 Skupinu s více kontejnery můžete zadat také pomocí [šablony Správce prostředků](container-instances-multi-container-group.md). Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, pokud potřebujete nasadit další prostředky služby Azure ve skupině kontejnerů.
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

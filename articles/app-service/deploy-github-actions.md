@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3c2f90403afbc581f80312be2271d802f4d719a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584234"
+ms.locfileid: "97604919"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service funkcí GitHub Actions
 
-Začněte s [akcemi GitHubu](https://help.github.com/en/articles/about-github-actions) a Automatizujte pracovní postup a nasaďte ho do [Azure App Service](overview.md) z GitHubu. 
+Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) a Automatizujte pracovní postup a nasaďte ho do [Azure App Service](overview.md) z GitHubu. 
 
 ## <a name="prerequisites"></a>Předpoklady 
 
@@ -63,7 +63,7 @@ Pracovní postup můžete nasadit i bez použití centra nasazení. K tomu budet
 
 Doporučený způsob ověřování pomocí Azure App Services pro akce GitHubu je profil publikování. Můžete se také ověřit pomocí instančního objektu, ale proces vyžaduje více kroků. 
 
-Uložte přihlašovací údaje k publikačnímu profilu nebo instančnímu objektu jako [tajný kód GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets) pro ověření v Azure. V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
+Uložte přihlašovací údaje k publikačnímu profilu nebo instančnímu objektu jako [tajný kód GitHubu](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) pro ověření v Azure. V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/applevel)
 
@@ -746,7 +746,7 @@ Můžete najít naši sadu akcí seskupených do různých úložišť na GitHub
 
 - [Přihlášení nebo odhlášení Docker](https://github.com/Azure/docker-login)
 
-- [Události, které aktivují pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Události, které aktivují pracovní postupy](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [Nasazení K8s](https://github.com/Azure/k8s-deploy)
 

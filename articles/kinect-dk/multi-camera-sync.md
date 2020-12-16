@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specifikace, hardware, DK, možnosti, Hloubka, barva, RGB, IMU, pole, Hloubka, více, synchronizace
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361156"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592275"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronizace více zařízení Azure s Kinect DK
 
@@ -83,11 +83,14 @@ Pro každou podobu zachycení kamery se laser zapne devět časů a v každém o
 
 Rozdíly mezi hodinami kamery a firmwarem zařízení navíc zvyšují minimální posun na 160 &mu; s. Pokud chcete vypočítat přesnější posun konfigurace, poznamenejte si režim hloubky, který používáte, a podívejte se na [tabulku nezpracovaného časování senzoru hloubky](hardware-specification.md#depth-sensor-raw-timing). Pomocí dat z této tabulky můžete vypočítat minimální posun (dobu expozice každého fotoaparátu) pomocí následující rovnice:
 
-> *Doba expozice* = (*IR Pulses* &times; *Tloušťka impulsů*IR) + (*Doba nečinnosti nečinných dob* &times; *Idle Time*)
+> *Doba expozice* = ( &times; *Tloušťka impulsů* IR) + (*Doba nečinnosti nečinných dob* &times; )
 
 Když použijete posun od 160 &mu; s, můžete nakonfigurovat až devět dalších hloubkových fotoaparátů, aby se každý laser zapíná, zatímco ostatní Lasers jsou nečinné.
 
 Ve svém softwaru použijte ```depth_delay_off_color_usec``` nebo ```subordinate_delay_off_master_usec``` k zajistěte, aby se každé infračervené laserové prostředí &mu; vyvolalo ve vlastním okně 160 s, nebo má jiné pole zobrazení.
+
+> [!NOTE]  
+> Skutečná šířka Pulse je 125us, ale 160us pro poskytování některých leewayů. NFOV UNBINNED jako příklad, každé 125us Pulse je následováno 1450us nečinné. Celkový součet těchto: (9 × 125) + (8 x 1450) – vydává dobu expozice 12.8 ms. Skříň, na kterou můžete prokládat expozici 2 zařízení, musí mít první impuls druhé kamery, aby v první době nečinnosti prvního fotoaparátu mohla klesnout. Zpoždění mezi prvním a druhým fotoaparátem může být stejně malé jako 125us (šířka Pulse), ale doporučujeme některé Leeway, tedy 160us. Vzhledem k 160us můžete vykládat doby expozice s maximálně 10 fotoaparáty.
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>Příprava zařízení a dalšího hardwaru
 
@@ -160,17 +163,17 @@ Pokud chcete ověřit, jestli jsou zařízení správně připojená, použijte 
 > Pro účely tohoto postupu musíte znát sériové číslo každé služby Azure Kinect DK.
 
 1. Otevřete dvě instance aplikace Azure Kinect Viewer.
-1. V části **otevřít zařízení**vyberte sériové číslo podřízeného zařízení, které chcete testovat.  
+1. V části **otevřít zařízení** vyberte sériové číslo podřízeného zařízení, které chcete testovat.  
    ![Otevřít zařízení](./media/open-devices.png)
    > [!IMPORTANT]  
    > Aby bylo možné dosáhnout přesného zachytávání imagí mezi všemi zařízeními, je nutné spustit hlavní zařízení jako poslední.  
-1. V části **externí synchronizace**vyberte **Sub**.  
+1. V části **externí synchronizace** vyberte **Sub**.  
    ![Spuštění podřízené kamery](./media/sub-device-start.png)
 1.  Vyberte **Spustit**.  
     > [!NOTE]  
     > Vzhledem k tomu, že se jedná o podřízené zařízení, Azure Kinect Viewer po spuštění zařízení nezobrazí obrázek. Nezobrazuje se žádný obrázek, dokud podřízené zařízení neobdrží z hlavního zařízení signál synchronizace.
 1. Po spuštění podřízeného zařízení můžete k otevření hlavního zařízení použít jinou instanci Azure Kinect Vieweru.
-1. V části **externí synchronizace**vyberte **hlavní**.
+1. V části **externí synchronizace** vyberte **hlavní**.
 1. Vyberte **Spustit**.
 
 Po spuštění hlavního zařízení Azure Kinect by měly být v obou instancích aplikace Azure Kinect Viewer zobrazeny obrázky.

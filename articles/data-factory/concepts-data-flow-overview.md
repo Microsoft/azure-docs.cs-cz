@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
-ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590389"
+ms.locfileid: "97606177"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
@@ -99,7 +99,7 @@ Tým Azure Data Factory vytvořil [Průvodce optimalizací výkonu](concepts-dat
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Mapování toků dat je k dispozici v následujících oblastech v ADF:
+= = = = = = = = Datové toky mapování jsou k dispozici v následujících oblastech v ADF:
 
 | Oblast Azure | Toky dat v ADF |
 | ------------ | ----------------- |

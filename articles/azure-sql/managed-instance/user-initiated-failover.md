@@ -9,15 +9,15 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985514"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605390"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
 
 Tento článek vysvětluje, jak ručně převzetí služeb při selhání primárního uzlu na úrovních služby SQL Managed instance Pro obecné účely (GP) a Pro důležité obchodní informace (BC) a ruční převzetí služeb při selhání sekundárního uzlu repliky jen pro čtení jenom na úrovni služby BC.
 
@@ -140,7 +140,7 @@ Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno vý
 
 > [!IMPORTANT]
 > Funkční omezení uživatelsky iniciované ruční převzetí služeb při selhání:
-> - Každých **30 minut** může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
+> - V rámci jedné spravované instance se každých **15 minut** může nacházet jedna (1) převzetí služeb při selhání.
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
 

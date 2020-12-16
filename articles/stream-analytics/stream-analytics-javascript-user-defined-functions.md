@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585475"
+ms.locfileid: "97605526"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -215,7 +215,7 @@ Výstupem tohoto dotazu bude vstupní hodnota DateTime v **de-de** s poskytnutý
 Samstag, 28. Dezember 2019
 ```
 
-### <a name="user-logging"></a>Protokolování uživatele
+## <a name="user-logging"></a>Protokolování uživatele
 Mechanismus protokolování umožňuje zachytit vlastní informace, když je úloha spuštěná. Data protokolu můžete použít k ladění nebo vyhodnocení správnosti vlastního kódu v reálném čase. Tento mechanismus je k dispozici prostřednictvím metody Console. log ().
 
 ```javascript

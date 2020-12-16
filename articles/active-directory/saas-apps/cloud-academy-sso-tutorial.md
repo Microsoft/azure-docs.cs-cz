@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180995"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607214"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí cloudu Academy-SSO
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat Cloud Academy-SSO pomocí Azure Active
 * Pomocí Azure AD můžete řídit, kdo má přístup ke cloudu Academy-SSO.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke cloudu Academy-SSO pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -39,15 +37,14 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-Cloud Academy – SSO podporuje jednotné přihlašování iniciované v SP.
-
-Po nakonfigurování Cloud Academy-SSO můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Cloud Academy – jednotné přihlašování (SSO) s podporou služeb **SP** iniciované
+* Cloud Academy – jednotné přihlašování (SSO) podporuje zřizování uživatelů **jenom včas**
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>Přidání cloudu Academy-SSO z Galerie
 
 Pokud chcete nakonfigurovat integraci Cloud Academy-SSO do Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat Cloud Academy-SSO z Galerie:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
 1. V levém podokně vyberte **Azure Active Directory**.
 1. Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat aplikaci, vyberte možnost **Nová aplikace**.
@@ -72,14 +69,29 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **cloudová integrace aplikací Academy-SSO** v části **Spravovat** vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce **cloudová integrace aplikací Academy-SSO** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
    ![Snímek obrazovky, který zobrazuje tlačítko tužky pro úpravu základní konfigurace SAML.](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** v poli **přihlašovací adresa URL** zadejte `https://cloudacademy.com/login/enterprise/` .
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
+    a. Do textového pole **přihlašovací adresa URL** zadejte jednu z těchto adres URL:
+    
+    | Přihlašovací adresa URL |
+    |--------------|
+    | `https://cloudacademy.com/login/enterprise/` |
+    | `https://app.qa.com/login/enterprise/` |
+    |
+    
+    b. Do textového pole **Adresa URL odpovědi** zadejte jednu z těchto adres URL:
+    
+    | Adresa URL odpovědi |
+    |--------------|
+    | `https://cloudacademy.com/labs/social/complete/saml/` |
+    | `https://app.qa.com/labs/social/complete/saml/` |
+    |
 1. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte tlačítko Kopírovat, aby se zkopírovala **Adresa URL federačních metadat aplikace**. Uložte adresu URL.
 
     ![Snímek obrazovky, který zobrazuje tlačítko pro kopírování pro adresu URL federačních metadat aplikace](common/copy-metadataurl.png)
@@ -92,7 +104,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. V části vlastnosti **uživatele** proveďte tyto kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -103,15 +115,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Cloud Academy-SSO**.
 1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
-
-   ![Snímek obrazovky, který zobrazuje možnost Uživatelé a skupiny.](common/users-groups-blade.png)
-
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
-
-    ![Snímek obrazovky zobrazující tlačítko Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>Konfigurace jednotného přihlašování pro cloudové Academy
@@ -145,36 +151,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-a-cloud-academy-test-user"></a>Vytvoření Academy testovacího uživatele cloudu
 
-1. Přihlaste se ke cloudu Academy-SSO.
-
-1. Vyberte název vaší společnosti a potom v zobrazené nabídce vyberte **Členové** :
-
-    ![Snímek obrazovky zobrazující možnost členů](./media/cloud-academy-sso-tutorial/create-user.PNG)
-
-1. Vyberte **pozvat členy** a pak vyberte **pozvat jednoho člena**:
-
-    ![Snímek obrazovky, který ukazuje možnost pozvat jeden člen.](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
-
-1. Zadejte hodnoty do požadovaných polí a pak vyberte **pozvat**:
-
-    ![Snímek obrazovky, který zobrazuje dialogové okno pozvat člena](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+V této části se v cloudu Academy-SSO vytvoří uživatel s názvem Britta Simon. Cloud Academy – SSO podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v cloudu Academy-SSO neexistuje, vytvoří se po ověření nový.
 
 ## <a name="test-sso"></a>Test SSO 
 
-Nyní otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když vyberete dlaždici Cloud Academy-SSO na přístupovém panelu, měli byste se automaticky přihlásit k instanci Cloud Academy-SSO, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL Academy přihlášení ke cloudu, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Přejít na adresu URL pro přihlášení ke cloudu Academy-SSO přímo a zahájit tok přihlášení.
 
-- [Kurzy k integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Cloud Academy-SSO v části Moje aplikace, přesměruje se na přihlašovací adresu Cloud Academy-SSO Signing. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Vyzkoušejte Cloud Academy-SSO s Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit Cloud Academy-SSO pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování Cloud Academy-SSO můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

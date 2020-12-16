@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606483"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Kurz: Azure Active Directory integrace se Infogix Data3Sixty se řídí
 
@@ -30,7 +30,7 @@ Integrace Infogix Data3Sixty, která se řídí pomocí Azure AD, poskytuje nás
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Infogix Data3Sixty se řídí tyto položky:
 
@@ -64,7 +64,7 @@ Pokud chcete nakonfigurovat integraci Infogix Data3Sixty na Azure AD, musíte p�
 
 4. Do vyhledávacího pole zadejte **Infogix Data3Sixty**, vyberte **Infogix Data3Sixty** řízení z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Infogix Data3Sixty se řídí v seznamu výsledků](common/search-new-app.png)
+    ![Infogix Data3Sixty se řídí v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -121,11 +121,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Infogix 
 
 7. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | -----------| -------------- |
     | FirstName  | User. křestní jméno |
-    | polím   | User. příjmení |
-    | username   | uživatel. pošta    |
+    | polím | User. příjmení |
+    | username | uživatel. pošta |
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -137,7 +137,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Infogix 
 
     c. Ponechte **obor názvů** prázdný.
 
-    d. Jako **atribut**vyberte zdroj.
+    d. Jako **atribut** vyberte zdroj.
 
     e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
@@ -167,7 +167,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na **Infogix Data3Sixty** , 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -180,7 +180,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
@@ -192,7 +192,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Infogix Data3Sixty řízení.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Infogix Data3Sixty**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Infogix Data3Sixty**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -227,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Infogix Data3Sixty, měli byste být automaticky přihlášeni k Infogix Data3Sixty řízení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

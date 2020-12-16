@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185908"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592428"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -50,7 +50,7 @@ Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho 
 
 Úroveň rezervace kapacity clusteru je konfigurována prostřednictvím programu programově s Azure Resource Manager pomocí `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Tato podrobná [Azure monitor klíč spravovaný zákazníkem](customer-managed-keys.md#create-cluster). Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#customer-managed-key-operations). Tyto dva režimy: 
+Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#customer-managed-key-operations). Tyto dva režimy jsou: 
 
 1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](../../security-center/index.yml) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. 
 
@@ -150,11 +150,11 @@ Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](../s
 
 Pracovní prostory s dobou uchování 30 dnů můžou uchovávat data po dobu 31 dnů. Pokud je nutné, aby data byla uchovávána pouze po dobu 30 dnů, použijte Azure Resource Manager k nastavení uchování na 30 dní a s `immediatePurgeDataOn30Days` parametrem.  
 
-Ve výchozím nastavení se standardně uchovávají dva datové typy-- `Usage` a--a za `AzureActivity` Toto 90 dne se neúčtují žádné poplatky za 90 dní. Pokud se uchování v pracovním prostoru zvyšuje nad 90 dnů, bude se také zvyšovat doba uchování těchto datových typů.  Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
+Ve výchozím nastavení se standardně 90 uchovávají dva datové typy-- `Usage` a--a za `AzureActivity` Tento 90 dnů se neúčtují žádné poplatky. Pokud se uchování v pracovním prostoru zvyšuje nad 90 dnů, bude se také zvyšovat doba uchování těchto datových typů.  Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
 
 Datové typy z prostředků Application Insights založených na pracovních prostorech ( `AppAvailabilityResults` , `AppBrowserTimings` ,, `AppDependencies` `AppExceptions` , `AppEvents` , `AppMetrics` , `AppPageViews` , `AppPerformanceCounters` , `AppRequests` `AppSystemEvents` a `AppTraces` ) se ve výchozím nastavení uchovávají i po dobu 90 dnů a za toto 90 dne se neúčtují žádné poplatky. Jejich uchování je možné upravit pomocí funkce uchování podle datového typu. 
 
-Všimněte si, že [rozhraní API](/rest/api/loganalytics/workspacepurge/purge) pro Log Analytics mazání neovlivňuje účtování uchovávání informací a je určeno pro použití v velmi omezených případech. Aby se snížila doba uchovávání informací, je nutné dobu uchování snížit buď pro pracovní prostor, nebo pro konkrétní datové typy. 
+Upozorňujeme, že rozhraní Log Analytics [Purge API](/rest/api/loganalytics/workspacepurge/purge) nemá vliv na fakturaci uchovávání a je určené k použití ve velmi omezených případech. Aby se snížila doba uchovávání informací, je nutné dobu uchování snížit buď pro pracovní prostor, nebo pro konkrétní datové typy. 
 
 ### <a name="retention-by-data-type"></a>Uchovávání dat podle datového typu
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928779"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606908"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -173,7 +173,7 @@ Pokud chcete vytvořit fondy uzlů s modulem runtime Moby (Docker), můžete to 
 * Už nemůžete získat přístup k modulu Docker, `/var/run/docker.sock` ani použít Docker-in-Docker (DinD).
   * Pokud v současné době extrahujete protokoly aplikací nebo monitorovaná data z modulu Docker, použijte místo toho něco jako [Azure monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) . AKS navíc nepodporuje spouštění jakýchkoli příkazů mimo pásmo na uzlech agentů, které by mohly způsobit nestabilitu.
   * I když používáte Moby/Docker, sestavování imagí a přímé využití modulu Docker prostřednictvím výše uvedených metod se důrazně nedoporučuje. Kubernetes není plně vědoma těch spotřebovaných prostředků a tyto přístupy obsahují řadu problémů, které jsou [zde](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) popsané, a [tady](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), například.
-* Vytváření imagí – doporučený postup pro vytváření imagí je použití [úloh ACR](../container-registry/container-registry-quickstart-task-cli.md). Alternativním řešením je použití bezpečnějších možností v clusteru jako [Docker buildx](https://github.com/docker/buildx).
+* Sestavování imagí – stávající pracovní postup sestavení Docker můžete dál používat jako normální, pokud imagages nevytváříte v rámci clusteru AKS. V takovém případě zvažte přechod na doporučený postup pro vytváření imagí pomocí [ACR úloh](../container-registry/container-registry-quickstart-task-cli.md)nebo bezpečnější možnost v clusteru, jako je [Docker buildx](https://github.com/docker/buildx).
 
 ## <a name="generation-2-virtual-machines-preview"></a>Virtuální počítače generace 2 (Preview)
 

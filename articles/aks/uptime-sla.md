@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607335"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -25,15 +25,14 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech a Azure Government oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-
-## <a name="limitations"></a>Omezení
+* Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech a Azure Government oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+* Smlouva SLA o provozuschopnosti je dostupná pro [privátní clustery AKS][private-clusters] ve všech oblastech, kde se podporuje AKS.
 
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
 Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.8.0 nebo novější.
 
@@ -138,3 +137,4 @@ Nakonfigurujte cluster tak, aby [omezil přenos odchozího provozu](limit-egress
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

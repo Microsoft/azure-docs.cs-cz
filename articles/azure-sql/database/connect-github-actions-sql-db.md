@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 216658b5f5443409e7bd44cbd29bff40cd56c75f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669756"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606976"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Použití akcí GitHubu pro připojení k Azure SQL Database
 
-Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md). 
+Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md). 
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -68,7 +68,7 @@ Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které po
 
 ## <a name="copy-the-sql-connection-string"></a>Zkopírování připojovacího řetězce SQL 
 
-V Azure Portal přejdete do Azure SQL Database a otevřete **Nastavení**  >  **připojovací řetězce** . Zkopírujte připojovací řetězec pro **ADO.NET** . Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako tento výstup. 
+V Azure Portal přejdete do Azure SQL Database a otevřete **Nastavení**  >  **připojovací řetězce**. Zkopírujte připojovací řetězec pro **ADO.NET**. Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako tento výstup. 
 
 ```output
     Server=tcp:my-sql-server.database.windows.net,1433;Initial Catalog={your-database};Persist Security Info=False;User ID={admin-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -80,7 +80,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
-1. Vyberte **nastavení > tajných klíčů > nový tajný kód** .
+1. Vyberte **nastavení > tajných klíčů > nový tajný kód**.
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
@@ -101,7 +101,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. Přejít na **Akce** pro úložiště GitHub. 
 
-2. Vyberte **nastavit pracovní postup sami** . 
+2. Vyberte **nastavit pracovní postup sami**. 
 
 2. Odstraňte vše po `on:` části souboru pracovního postupu. Zbývající pracovní postup může vypadat například takto: 
 

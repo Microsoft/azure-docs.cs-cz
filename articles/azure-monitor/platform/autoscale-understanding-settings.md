@@ -4,12 +4,12 @@ description: Podrobný rozpis nastavení automatického škálování a způsobu
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317463"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605235"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování vám pomůžou zajistit, že máte správné množství prostředků, na kterých běží, aby bylo možné zvládnout kolísání vaší aplikace. Nastavení automatického škálování můžete nakonfigurovat tak, aby se aktivovalo na základě metrik, které indikují zatížení nebo výkon, nebo aktivované v naplánovaném datu a času. V tomto článku se podíváme na podrobné znalosti nastavení automatického škálování. Článek začíná schématem a vlastnostmi nastavení a pak projde různými typy profilů, které lze konfigurovat. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje, který profil se má v daném okamžiku provést.
@@ -60,7 +60,7 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -106,7 +106,7 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 | metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě vezměte v úvahu ukázky 10 1 minut a průměrně. |
 | pravidlo | scaleAction | Akce, která se má provést, když se aktivuje metricTrigger pravidla |
 | scaleAction | směr | "Zvětšit" pro horizontální navýšení kapacity nebo "zmenšení" pro horizontální navýšení kapacity.|
-| scaleAction | value | Kolik se má zvýšit nebo snížit kapacita prostředku. |
+| scaleAction | hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
 | scaleAction | cooldown | Doba, po kterou se má počkat po operaci škálování, než se znovu změní velikost Například pokud **cooldown = "PT10M"**, automatické škálování se znovu nepokouší o horizontální navýšení kapacity po dobu dalších 10 minut. Cooldown je, aby bylo možné metriky stabilizovat po přidání nebo odebrání instancí. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování
@@ -119,34 +119,41 @@ Existují tři typy profilů automatického škálování:
 
 - **Pevný profil data:** Tento profil je určen pro zvláštní případy. Řekněme například, že máte důležitou událost, která se dokončí 26. prosince 2017 (PST). Chcete, aby se minimální a maximální kapacita vašeho prostředku v daném dni lišila, ale pořád škálovat na stejné metriky. V takovém případě byste měli do seznamu profilů nastavení přidat pevný profil data. Profil je nakonfigurován tak, aby běžel pouze v den události. V jakémkoli jiném dni používá automatické škálování běžný profil.
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     

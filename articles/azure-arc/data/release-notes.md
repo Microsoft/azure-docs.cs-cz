@@ -7,18 +7,86 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 10/29/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359812"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605458"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="new-capabilities--features"></a>Nové funkce & funkcemi
+
+Azure Data CLI ( `azdata` ) číslo verze: 20.2.5. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) .
+
+Zobrazení koncových bodů pro spravovanou instanci SQL a PostgreSQL škálování pomocí příkazů Azure Data CLI ( `azdata` ) `azdata arc sql endpoint list` a `azdata arc postgres endpoint list` .
+
+Upravte požadavky a omezení prostředku spravované instance SQL (jádra procesoru a paměti) pomocí Azure Data Studio.
+     
+PostgreSQL s povoleným rozšířením Azure teď podporuje obnovení v časovém intervalu kromě úplného zálohování pro verze 11 a 12 z PostgreSQL. Možnost obnovení k určitému bodu v čase umožňuje označit konkrétní datum a čas pro obnovení.
+
+Zásady vytváření názvů lusků pro PostgreSQL s povoleným rozšířením Azure Arc se změnily. Teď je ve formátu: ServergroupName {r, s}-_n_. Například skupina serverů se třemi uzly, jeden uzel koordinátora a dva pracovní uzly jsou reprezentovány jako:
+- `postgres02r-0` (uzel koordinátora)
+- `postgres02s-0` (pracovní uzel)
+- `postgres02s-1` (pracovní uzel)
+
+### <a name="breaking-change"></a>Zásadní změna
+
+#### <a name="new-resource-provider"></a>Nový poskytovatel prostředků
+
+Tato verze zavádí aktualizovaného [poskytovatele prostředků](../../azure-resource-manager/management/azure-services-resource-providers.md) `Microsoft.AzureArcData` . Než budete moct tuto funkci používat, musíte zaregistrovat tohoto poskytovatele prostředků. 
+
+Chcete-li zaregistrovat tohoto poskytovatele prostředků: 
+
+1. V Azure Portal vyberte **předplatná** . 
+2. Zvolte vaše předplatné.
+3. V části **Nastavení** vyberte **poskytovatelé prostředků** . 
+4. Vyhledejte `Microsoft.AzureArcData` a vyberte **Registrovat** 
+
+Podrobné kroky najdete v těchto [typech: poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md). Tato změna taky odebere všechny existující prostředky Azure, které jste nahráli do Azure Portal. Pokud chcete použít poskytovatele prostředků, musíte aktualizovat řadič dat a použít nejnovější rozhraní příkazového `azdata` řádku.  
+
+### <a name="platform-release-notes"></a>Poznámky k verzi platformy
+
+#### <a name="direct-connectivity-mode"></a>Režim přímého připojení
+
+Tato verze zavádí režim přímého připojení. Režim přímého připojení umožňuje řadiči dat automaticky nahrávat informace o použití do Azure. V rámci nahrávání využití se prostředek řadiče dat ARC automaticky vytvoří na portálu, pokud už není vytvořený prostřednictvím `azdata` nahrání.  
+
+Při vytváření kontroleru dat můžete zadat přímé připojení. Následující příklad vytvoří řadič dat s `azdata arc dc create` názvem `arc` pomocí režimu přímého připojení ( `connectivity-mode direct` ). Před spuštěním tohoto příkladu nahraďte `<subscription id>` ID vašeho předplatného.
+
+```console
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group my-resource-group --location eastus --connectivity-mode direct
+```
+
+### <a name="known-issues"></a>Známé problémy
+
+- Ve službě Azure Kubernetes Service (AKS) je Kubernetes verze 1.19. x podporovaná.
+- V Kubernetes 1,19 `containerd` se nepodporuje.
+- Prostředek řadiče dat v Azure je aktuálně prostředek Azure. Jakékoli aktualizace, jako je třeba DELETE, se nešíří zpátky do clusteru Kubernetes.
+- Názvy instancí nemůžou být delší než 13 znaků.
+- Žádný místní upgrade pro řadič dat nebo databázové instance ARC Azure
+- Image kontejnerů datových služeb s podporou služby Arc nejsou podepsané.  Možná budete muset nakonfigurovat uzly Kubernetes tak, aby umožňovaly načítání nepodepsaných imagí kontejnerů.  Například pokud používáte Docker jako modul runtime kontejneru, můžete nastavit proměnnou prostředí DOCKER_CONTENT_TRUST = 0 a restartovat.  Ostatní moduly runtime kontejnerů, jako je [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration), obsahují podobné možnosti.
+- Z Azure Portal nejde vytvořit spravované instance SQL ARC s povoleným rozšířením Azure, nebo PostgreSQL skupiny serverů.
+- Prozatím, pokud používáte systém souborů NFS, musíte `allowRunAsRoot` `true` před vytvořením řadiče dat ARC Azure nastavit v souboru profilu nasazení.
+- Ověřování SQL a PostgreSQL přihlášení.  Žádná podpora pro Azure Active Directory ani službu Active Directory.
+- Vytvoření kontroleru dat v OpenShift vyžaduje odlehčené omezení zabezpečení.  Podrobnosti najdete v dokumentaci.
+- Pokud používáte modul Azure Kubernetes Service (AKS) v Azure Stackovém centru s řadiči dat a instancemi databáze Azure ARC, upgrade na novější verzi Kubernetes není podporován. Před upgradem clusteru Kubernetes odinstalujte řadič dat ARC Azure a všechny instance databáze.
+- AKS clustery, které mají [více zón dostupnosti](../../aks/availability-zones.md) , se v současné době pro datové služby s podporou ARC Azure nepodporují. Chcete-li se tomuto problému vyhnout, při vytváření clusteru AKS v Azure Portal vyberte oblast, ve které jsou zóny k dispozici, a zrušte zaškrtnutí všech zón v ovládacím prvku výběr. Viz následující obrázek:
+
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Zrušte zaškrtnutí políček u jednotlivých zón a určete možnost žádná.":::
+
+#### <a name="postgresql"></a>PostgreSQL
+
+- PostgreSQL s povoleným rozšířením Azure ARC vrátí nepřesnou chybovou zprávu, pokud se nemůže obnovit k relativnímu bodu v čase, který určíte. Pokud jste například zadali bod v čase k obnovení, který je starší než vaše zálohy, obnovení se nezdaří a zobrazí se chybová zpráva, například: Chyba: (404). Důvod: Nenalezeno. Tělo odpovědi HTTP: {"Code": 404, "internalStatus": "NOT_FOUND", "důvod": "nepovedlo se obnovit zálohu pro server...}
+Pokud k tomu dojde, restartujte příkaz po určení bodu v čase, který je v rozsahu kalendářních dat, pro které máte zálohy. Tento rozsah určíte tak, že zadáte svoje zálohy a prohlížíte data, ve kterých byly provedeny.
+- Obnovení bodu v čase je podporováno pouze v rámci skupin serverů. Cílový server operace obnovení bodu v čase nemůže být server, ze kterého jste provedli zálohování. Musí se jednat o jinou skupinu serverů. Úplné obnovení je však podporováno pro stejnou skupinu serverů.
+- Při úplném obnovení je vyžadováno ID zálohy. Pokud neindikujete ID zálohy, použije se ve výchozím nastavení poslední záloha. Tato verze v této verzi nefunguje.
 
 ## <a name="october-2020"></a>Říjen 2020 
 
@@ -34,32 +102,19 @@ Tato verze přináší následující zásadní změny:
 
 ### <a name="additional-changes"></a>Další změny
 
-* Do volaného se přidal nový volitelný `azdata arc postgres server create` parametr `--volume-claim mounts` . Hodnota je čárkou oddělený seznam přípojných deklarací svazků. Připojení svazku je dvojice typu svazku a názvu virtuálního okruhu. Jediným typem svazku, který se aktuálně podporuje `backup` , je.  V PostgreSQL je při typu svazku `backup` připojen k okruhu PVC `/mnt/db-backups` .  To umožňuje sdílení záloh mezi instancemi PostgresSQL, aby bylo možné obnovit zálohu jedné instance PostgresSQL v jiné instanci.
+* Do volaného se přidal nový volitelný `azdata arc postgres server create` parametr `--volume-claim mounts` . Hodnota je čárkami oddělený seznam přípojných deklarací svazků. Připojení svazku je dvojice typu svazku a názvu virtuálního okruhu. Jediným typem svazku, který se aktuálně podporuje `backup` , je.  V PostgreSQL je při typu svazku `backup` připojen k okruhu PVC `/mnt/db-backups` .  To umožňuje sdílení záloh mezi instancemi PostgresSQL, aby bylo možné obnovit zálohu jedné instance PostgresSQL v jiné instanci.
 
 * Nové krátké názvy pro vlastní definice prostředků PostgresSQL: 
-
   * `pg11` 
-
   * `pg12`
-
 * Nahrávání telemetrie poskytuje uživateli jednu z těchto akcí:
-
-   * Počet bodů odeslaných do Azure
-
-     nebo 
-
+   * Počet bodů odeslaných do Azure nebo 
    * Pokud se do Azure nezavedla žádná data, zobrazí se výzva k jejímu pokusu.
-
 * `azdata arc dc debug copy-logs` nyní také čte ze `/var/opt/controller/log` složky a shromažďuje protokoly PostgreSQL Engine v systému Linux.
-
 *   Zobrazit pracovní indikátor během vytváření a obnovování zálohy s PostgreSQL s měřítkem.
-
 * `azdata arc postrgres backup list` nyní obsahuje informace o velikosti zálohy.
-
 * Do pravého sloupce okna přehledu v Azure Portal byla přidána vlastnost název správce spravované instance SQL.
-
 * Azure Data Studio podporuje konfiguraci počtu pracovních uzlů, vCore a nastavení paměti pro PostgreSQL s měřítkem. 
-
 * Preview podporuje zálohování a obnovení pro Postgres verze 11 a 12.
 
 ## <a name="september-2020"></a>Září 2020
@@ -71,40 +126,13 @@ Datové služby s podporou ARC Azure jsou vydané pro verzi Public Preview. Dato
 
 Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview.md) .
 
-## <a name="known-limitations-and-issues"></a>Známá omezení a problémy
-
-- Názvy instancí nemohou být delší než 13 znaků.
-- Žádný místní upgrade pro řadič dat nebo databázové instance ARC Azure
-- Image kontejnerů datových služeb s podporou služby Arc nejsou podepsané.  Možná budete muset nakonfigurovat uzly Kubernetes tak, aby umožňovaly načítání nepodepsaných imagí kontejnerů.  Například pokud používáte Docker jako modul runtime kontejneru, můžete nastavit proměnnou prostředí DOCKER_CONTENT_TRUST = 0 a restartovat.  Ostatní moduly runtime kontejnerů, jako je [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration), obsahují podobné možnosti.
-- Z Azure Portal nejde vytvořit spravované instance SQL ARC s povoleným rozšířením Azure, nebo PostgreSQL skupiny serverů.
-- Prozatím, pokud používáte systém souborů NFS, musíte `allowRunAsRoot` `true` před vytvořením řadiče dat ARC Azure nastavit v souboru profilu nasazení.
-- Ověřování SQL a PostgreSQL přihlášení.  Žádná podpora pro Azure Active Directory ani službu Active Directory.
-- Vytvoření kontroleru dat v OpenShift vyžaduje odlehčené omezení zabezpečení.  Podrobnosti najdete v dokumentaci.
-- Pokud používáte Azure Kubernetes Service Engine (AKS Engine) v Azure Stack hub s řadiči dat a instancemi databáze Azure ARC, upgrade na novější verzi Kubernetes není podporován. Před upgradem clusteru Kubernetes odinstalujte řadič dat ARC Azure a všechny instance databáze.
-- Služba Azure Kubernetes Service (AKS), clustery, které mají [více zón dostupnosti](../../aks/availability-zones.md) , se v současné době pro datové služby s podporou ARC Azure nepodporují. Chcete-li se tomuto problému vyhnout, při vytváření clusteru AKS v Azure Portal vyberte oblast, ve které jsou zóny k dispozici, a zrušte zaškrtnutí všech zón v ovládacím prvku výběr. Viz následující obrázek:
-
-   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Zrušte zaškrtnutí políček u jednotlivých zón a určete možnost žádná.":::
-
-
-### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Známé problémy s povoleným PostgreSQLm škálováním pro Azure ARC   
-
-- Verze Preview nepodporuje modul zálohování a obnovení pro PostgreSQL verze 11. Podporuje jenom zálohování a obnovení pro PostgreSQL verze 12.
-- `azdata arc dc debug copy-logs` nnezachytí není shromažďovat protokoly PostgreSQL Engine v systému Windows.
-- Opětovné vytvoření skupiny serverů s názvem skupiny serverů, kterou jste právě odstranili, může selhat nebo přestat reagovat. 
-   - **Alternativní řešení** Nepoužívejte stejný název při opětovném vytvoření skupiny serverů nebo počkejte na Vyrovnávání zatížení/externí službu dříve odstraněné skupiny serverů. Za předpokladu, že název skupiny serverů, kterou jste odstranili `postgres01` a která byla hostována v oboru názvů `arc` , než znovu vytvoříte skupinu serverů se stejným názvem, počkejte, dokud `postgres01-external-svc` se nezobrazuje ve výstupu příkazu kubectl `kubectl get svc -n arc` .
- - Načítání stránky s přehledem a konfigurace služby COMPUTE + úložiště v Azure Data Studio je pomalé. 
-
-
-
 ## <a name="next-steps"></a>Další kroky
   
 > **Chcete něco vyzkoušet?**  
-> Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
+> Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) na AKS, AWS elastické služby KUBERNETES (EKS), modul Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
 
-[Instalace klientských nástrojů](install-client-tools.md)
-
-[Vytvoření řadiče dat ARC Azure](create-data-controller.md) (nejprve vyžaduje instalaci nástrojů klienta)
-
-[Vytvoření spravované instance Azure SQL v Arc Azure](create-sql-managed-instance.md) (vyžaduje nejprve vytvoření řadiče dat ARC Azure)
-
-[Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním na ARC Azure](create-postgresql-hyperscale-server-group.md) (vyžaduje nejprve vytvoření řadiče dat ARC Azure)
+- [Instalace klientských nástrojů](install-client-tools.md)
+- [Vytvoření řadiče dat ARC Azure](create-data-controller.md) (nejprve vyžaduje instalaci nástrojů klienta)
+- [Vytvoření spravované instance Azure SQL v Arc Azure](create-sql-managed-instance.md) (vyžaduje nejprve vytvoření řadiče dat ARC Azure)
+- [Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním na ARC Azure](create-postgresql-hyperscale-server-group.md) (vyžaduje nejprve vytvoření řadiče dat ARC Azure)
+- [Poskytovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md)

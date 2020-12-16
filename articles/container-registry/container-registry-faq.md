@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346991"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606279"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -33,11 +33,11 @@ Pokyny k odstraňování potíží registru najdete v těchto tématech:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
 
-Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Yes. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/defender-for-container-registries-introduction.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Yes. Přečtěte si dokumentaci od [Azure Security Center](../security-center/defender-for-container-registries-introduction.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -111,6 +111,7 @@ Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně n
 - [Návody udělit přístup k vyžádanému nebo nabízenému obrázku bez oprávnění ke správě prostředku registru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Návody povolit automatické karantény imagí pro registr?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [Návody povolit anonymní přístup pro vyžádání obsahu?](#how-do-i-enable-anonymous-pull-access)
+- [Návody do registru vložit nedistribuovatelné vrstvy?](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Návody přístup k HTTP API v2 registru Docker?
 
@@ -265,6 +266,33 @@ Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístup
 > * Anonymně lze získat přístup pouze k rozhraním API vyžadovaným k vyžádání známého obrázku. Žádná další rozhraní API pro operace, jako je seznam značek nebo seznam úložišť, nejsou anonymní přístupná.
 > * Před pokusem o anonymní operaci vyžádání obsahu se `docker logout` ujistěte, že jste vymazali všechna existující pověření Docker.
 
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Návody do registru vložit nedistribuovatelné vrstvy?
+
+Nedistribuovatelný vrstva v manifestu obsahuje parametr adresy URL, ze kterého se dá obsah načíst. Některé možné případy použití pro povolení nedistribuovatelných nabízených vrstev jsou pro Registry s omezenou sítí, gapped Registry s omezeným přístupem nebo pro Registry bez připojení k Internetu.
+
+Pokud máte třeba pravidla NSG nastavená tak, aby virtuální počítač mohl vyžádat image jenom z Azure Container Registry, Docker bude načítat chyby pro cizí a nedistribuovatelné vrstvy. Například bitová kopie Windows serveru by obsahovala v manifestu službu Azure Container Registry odkazy na cizí vrstvy a v tomto scénáři by se v tomto scénáři nepodaří načíst.
+
+Chcete-li povolit vkládání nedistribuovatelných vrstev:
+
+1. Upravte `daemon.json` soubor, který se nachází `/etc/docker/` na hostitelích se systémem Linux a v `C:\ProgramData\docker\config\daemon.json` systému Windows Server. Za předpokladu, že soubor byl dřív prázdný, přidejte následující obsah:
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > Hodnota je pole adres registru oddělené čárkami.
+
+2. Soubor uložte a zavřete.
+
+3. Restartujte Docker.
+
+Při nahrávání obrázků do registrů v seznamu se jejich nedistribuovatelné vrstvy vloží do registru.
+
+> [!WARNING]
+> Nedistribuovatelný artefakty mají obvykle omezení, jak a kde je lze distribuovat a sdílet. Tuto funkci lze použít pouze pro vložení artefaktů do privátních registrů. Ujistěte se, že dodržujete podmínky, které se týkají opětovné distribuce nedistribuovatelných artefaktů.
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
 
 - [Ověřit stav pomocí `az acr check-health`](#check-health-with-az-acr-check-health)
@@ -322,7 +350,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Například:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Příklad:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -457,7 +485,7 @@ Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "nep
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Povolit dešifrování HTTPS v Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -509,10 +537,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | No |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | No |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

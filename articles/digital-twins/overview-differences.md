@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099075"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604992"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Co je nového digitálních vláken Azure? Jak se liší od předchozí verze (2018)?
 
 První veřejná verze Preview digitálních vláken Azure byla vydaná v říjnu 2018. I když se základní koncepty z této první verze přenesly do nové služby, mnohé z rozhraní a podrobnosti implementace se změnily, aby služba byla pružnější a přístupná. Tyto změny byly motivovány názory zákazníků.
 
 > [!IMPORTANT]
-> Na základě rozšířených možností nové služby bude předchozí služba Azure Digital Service vyřazena na konci roku 2020.
+> Na základě rozšířených možností nové služby se vyřadí předchozí služba Azure Digital Service s rozhraními API a přidruženými daty, která už od ledna 18 2021.
 
 Pokud jste v první verzi Public Preview použili první verzi digitálních vláken Azure, použijte informace a osvědčené postupy v tomto článku, abyste se dozvěděli, jak pracovat s novou službou a využívat její funkce.
 

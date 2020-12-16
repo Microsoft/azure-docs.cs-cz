@@ -3,12 +3,12 @@ title: Distribuované vývojové prostředí pro Azure DevTest Labs prostředky
 description: Poskytuje osvědčené postupy pro nastavení distribuovaného prostředí pro vývoj a spolupráci pro vývoj prostředků DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483801"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592360"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Osvědčené postupy pro distribuování a spolupráci s vývojem Azure DevTest Labsch prostředků
 Distribuovaný vývoj pro spolupráci umožňuje různým týmům nebo lidem vyvíjet a udržovat základ kódu. Aby byl proces vývoje úspěšný, závisí na možnosti vytváření, sdílení a integraci informací. Tento klíčový princip vývoje lze použít v rámci Azure DevTest Labs. V rámci testovacího prostředí je několik typů prostředků, které jsou často distribuované mezi různými cvičeními v rámci podniku. Různé typy prostředků jsou zaměřené na dvě oblasti:
@@ -39,7 +39,7 @@ Nejběžnější konfigurací pro řízení zdrojového kódu (SCC) je nastaven�
 - Prostředky obchodní jednotky/oddělení – celá
 - Prostředky specifické pro tým.
 
-Každá z těchto úrovní odkazuje na jiné úložiště, kde je hlavní větev nutná k produkční kvalitě. [Větve](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti by byly pro vývoj těchto specifických prostředků (artefakty nebo šablony). Tato struktura je dobře zarovnaná s DevTest Labs, protože můžete snadno propojit více úložišť a více větví současně s laboratořemi organizace. Název úložiště je obsažen v uživatelském rozhraní (UI), aby nedocházelo k záměně, pokud jsou k dispozici stejné názvy, popis a vydavatel.
+Každá z těchto úrovní odkazuje na jiné úložiště, kde musí být hlavní větev v produkční kvalitě. [Větve](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti by byly pro vývoj těchto specifických prostředků (artefakty nebo šablony). Tato struktura je dobře zarovnaná s DevTest Labs, protože můžete snadno propojit více úložišť a více větví současně s laboratořemi organizace. Název úložiště je obsažen v uživatelském rozhraní (UI), aby nedocházelo k záměně, pokud jsou k dispozici stejné názvy, popis a vydavatel.
      
 Následující diagram ukazuje dvě úložiště: firemní úložiště, které je udržováno oddělením IT, a prostorové úložiště, které je udržováno v rámci oddílu R&D.
 

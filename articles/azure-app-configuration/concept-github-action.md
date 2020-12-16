@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: cd644ed4a3edb1110f2cef60c2bb9170a81fe8d7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584064"
+ms.locfileid: "97607360"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizovat úložiště GitHub s konfigurací aplikace
 
@@ -20,9 +20,9 @@ Týmy, které chtějí dál používat své stávající postupy správy zdrojov
 &nbsp;&nbsp;&nbsp;&nbsp;• Aktualizace konfigurace bez opětovného nasazení celé aplikace <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integrace se službami, jako jsou Azure App Service a funkce. 
 
-[Pracovní postup](https://help.github.com/articles/about-github-actions#workflow) akcí GitHubu definuje automatizovaný proces v úložišti GitHub. Akce *synchronizace konfigurace aplikace Azure* aktivuje aktualizace instance konfigurace aplikace, když se provedou změny ve zdrojovém úložišti. Pomocí souboru YAML (. yml), který se nachází v `/.github/workflows/` cestě k úložišti, můžete definovat kroky a parametry. Aktualizace konfigurace můžete aktivovat při doručování, revizi nebo rozvětvení konfiguračních souborů aplikace stejně jako s kódem aplikace.
+[Pracovní postup](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) akcí GitHubu definuje automatizovaný proces v úložišti GitHub. Akce *synchronizace konfigurace aplikace Azure* aktivuje aktualizace instance konfigurace aplikace, když se provedou změny ve zdrojovém úložišti. Pomocí souboru YAML (. yml), který se nachází v `/.github/workflows/` cestě k úložišti, můžete definovat kroky a parametry. Aktualizace konfigurace můžete aktivovat při doručování, revizi nebo rozvětvení konfiguračních souborů aplikace stejně jako s kódem aplikace.
 
-[Dokumentace k](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) GitHubu poskytuje podrobný pohled na pracovní postupy a akce GitHubu. 
+[Dokumentace k](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) GitHubu poskytuje podrobný pohled na pracovní postupy a akce GitHubu. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Povolení akcí GitHubu v úložišti
 Tuto akci GitHubu můžete začít používat tak, že přejdete do svého úložiště a vyberete kartu **Akce** . Vyberte **nový pracovní postup** a pak **nastavte pracovní postup sami**. Nakonec na webu Marketplace vyhledejte "synchronizace konfigurace aplikací Azure".
@@ -35,7 +35,7 @@ Tuto akci GitHubu můžete začít používat tak, že přejdete do svého úlo�
 ## <a name="sync-configuration-files-after-a-push"></a>Synchronizovat konfigurační soubory po vložení
 Tato akce synchronizuje konfigurační soubory aplikace Azure při vložení změny do `appsettings.json` . Když vývojář nahraje změnu na `appsettings.json` , akce synchronizace konfigurace aplikace aktualizuje instanci konfigurace aplikace o nové hodnoty.
 
-První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` do *hlavní* větve. Druhá část uvádí úlohy, které se spustí, jakmile se spustí akce. Tato akce rezervuje příslušné soubory a aktualizuje instanci konfigurace aplikace pomocí připojovacího řetězce uloženého jako tajného klíče v úložišti.  Další informace o používání tajných kódů v GitHubu najdete v [článku GitHubu](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) o vytváření a používání šifrovaných tajných klíčů.
+První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` do *hlavní* větve. Druhá část uvádí úlohy, které se spustí, jakmile se spustí akce. Tato akce rezervuje příslušné soubory a aktualizuje instanci konfigurace aplikace pomocí připojovacího řetězce uloženého jako tajného klíče v úložišti.  Další informace o používání tajných kódů v GitHubu najdete v [článku GitHubu](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) o vytváření a používání šifrovaných tajných klíčů.
 
 ```json
 on: 
@@ -300,7 +300,7 @@ V případě, že výše uvedená hloubka je 2, vrátí výše uvedený příkla
 | Objekt: vnitřní | {"InnerKey": "InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>Pochopení vstupů akcí
-Vstupní parametry určují data, která akce používá během běhu.  Následující tabulka obsahuje vstupní parametry akceptované synchronizací konfigurace aplikace a očekávané hodnoty pro každý z nich.  Další informace o vstupech akcí pro akce GitHubu najdete v [dokumentaci k](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)GitHubu.
+Vstupní parametry určují data, která akce používá během běhu.  Následující tabulka obsahuje vstupní parametry akceptované synchronizací konfigurace aplikace a očekávané hodnoty pro každý z nich.  Další informace o vstupech akcí pro akce GitHubu najdete v [dokumentaci k](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs)GitHubu.
 
 > [!Note]
 > U ID vstupu se nerozlišují malá a velká písmena.

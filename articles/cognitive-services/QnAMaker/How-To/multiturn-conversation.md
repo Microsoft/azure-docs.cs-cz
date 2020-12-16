@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: b04a5535ada9532d62d395f7070d9bcd8aa4380c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591774"
+ms.locfileid: "97605140"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -38,7 +38,6 @@ Pomocí vícenásobného zapínání robota v konverzaci spravuje konverzaci s u
 Na předchozím obrázku uživatel zahájil konverzaci zadáním **mého účtu**. Znalostní báze obsahuje tři propojené páry otázek a odpovědí. K upřesnění odpovědi uživatel vybere jednu ze tří možností ve znalostní bázi. Otázka (#1) obsahuje tři výzvy pro následné zpracování, které jsou prezentovány ve robotovi chatu jako tři možnosti (#2).
 
 Když uživatel vybere možnost (#3), zobrazí se další seznam možností upřesnění (#4). Tato sekvence pokračuje (#5), dokud uživatel neurčí správnou odpověď (#6).
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>Použití vícenásobného zapínání v robotu
 
@@ -79,7 +78,6 @@ Když přidáte hierarchický dokument, QnA Maker určí následné výzvy ze st
 > [!Caution]
 > Podpora pro použití exportovaného souboru. základní znalostní báze ve formátu TSV nebo XLS jako zdroj dat pro novou nebo prázdnou znalostní bázi není podporována. Tento typ souboru je potřeba **importovat** na stránce **nastavení** na portálu QnA maker, aby se do znalostní báze přidaly exportované výzvy s vícenásobným zapnutím.
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Vytvoření znalostní báze s použitím s více zapnutími výzev pomocí rozhraní API pro vytvoření
 
 Můžete vytvořit znalostní případ s vícenásobnými výzvami, a to pomocí [QnA Maker vytvořit rozhraní API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Výzvy se přidávají do `context` `prompts` pole vlastnosti.
@@ -116,7 +114,6 @@ Přidejte následnou výzvu na existující pár otázek a odpovědí, který ne
     |Pouze kontext| Zaškrtněte toto políčko. Odpověď je vrácena pouze v případě, že otázka určuje kontext.|
     |Odkaz na odpověď|Pokud chcete najít existující pár otázek a odpovědí, zadejte **použít přihlašovací obrazovku** .|
 
-
 1.  Vrátí se jedna shoda. Vyberte tuto odpověď jako následnou a potom vyberte **Uložit**.
 
     ![Stránka "následné výzvy (PREVIEW)"](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ Když se vytvoří následná výzva a jako **odkaz na odpověď** se zadá exis
 1. Až budete hotovi s úpravou zobrazovaného textu, vyberte **Uložit**.
 1. V horním navigačním panelu **uložte a prohlaste**.
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Přidání nového páru otázek a odpovědí jako následné výzvy
 
 Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá dvojice by měla být propojená s existující otázkou jako následná výzva.
@@ -155,7 +151,6 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
     |||
 
     ![Vytvořit novou otázku a odpověď na výzvu](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. Vyberte **vytvořit novou** a potom vyberte **Uložit**.
 
@@ -353,7 +348,6 @@ Odpověď QnA Maker _GenerateAnswer_ JSON zahrnuje následné výzvy ve `context
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Dotazování znalostní báze s ID QnA Maker
 
 Pokud vytváříte vlastní aplikaci pomocí funkce vícenásobného zapnutí. V reakci prvotní otázky se vrátí všechny následné výzvy a její přidružené výzvy `qnaId` . Teď, když máte ID, můžete to předat v textu žádosti o následné výzvy. Pokud tělo požadavku obsahuje `qnaId` , a kontextový objekt (který obsahuje předchozí vlastnosti QnA maker), vrátí GenerateAnswer přesný dotaz podle ID namísto použití algoritmu řazení k vyhledání odpovědi textem otázky.
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>V rozhraní API pro aktualizaci se podporuje pořadí zobrazení.
 

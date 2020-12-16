@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364415"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606840"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -34,88 +34,88 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 
 [Referenční dokumentace operace zobrazení překladu](reference/v3-0-translate.md)
 
-|Jazyk|  Kód jazyka|
-|:-----|:-----:|
-|Afrikánština| `af`|
-|Arabština|    `ar`    |
-|Ásámština|  `as`    |
-|Bengálština|    `bn`    |
-|Bosenština (latinka)|   `bs`    |
-|Bulharština| `bg`    |
-|Kantonština (tradiční)|   `yue`|
-|Katalánština|   `ca`    |
-|Čínština (zjednodušená)|    `zh-Hans`|
-|Čínština (tradiční)|   `zh-Hant`       |
-|Chorvatština|  `hr`    |
-|Čeština| `cs`    |
-|Dáríština|  `prs`   |
-|Dánština|    `da`        |
-|Nizozemština| `nl`|
-|Angličtina|   `en`    |
-|Estonština|  `et`    |
-|Fijian|    `fj`    |
-|Filipino|  `fil`   |
-|Finština|   `fi`    |
-|Francouzština|    `fr`    |
-|Francouzština (Kanada)|   `fr-ca` |
-|Němčina|    `de`    |
-|Řečtina| `el`    |
-|Gudžarátština|  `gu`    |
-|Haitská kreolština|    `ht`        |
-|Hebrejština |`he`   |
-|Hindština| `hi`    |
-|Hmong Macek| `mww`   |
-|Maďarština| `hu`    |
-|Islandština| `is`    |
-|Indonéština|    `id`    |
-|Irština | `ga`|
-|Italština|   `it`    |
-|Japonština|  `ja`    |
-|Kannadština|`kn`|
-|Kazaština|`kk`|
-|Klingon|   `tlh-Latn`  |
-|Klingon (plqaD)|   `tlh-Piqd`  |
-|Korejština |`ko`   |
-|Kurdština (střed)  |`ku`   |
-|Kurdština (Severní) |`kmr`  |
-|Lotyština|   `lv`    |
-|Litevština|    `lt`    |
-|Malgašština|  `mg`    |
-|Malajština| `ms`        |
-|Malajalámština| `ml` |
-|Maltština|   `mt`    |
-|Maorština| `mi`  |
-|Maráthština| `mr`  |
-|Norština| `nb`    |
-|Udijština|  `or`    |
-|Paštština|    `ps`    |
-|Perština|   `fa`    |
-|Polština|    `pl`    |
-|Portugalština (Brazílie)|   `pt-br` |
-|portugalština (Portugalsko)| `pt-pt` |
-|Paňdžábština|`pa`|
-|Queretaro Otomi|   `otq`   |
-|Rumunština|  `ro`    |
-|Ruština|   `ru`    |
-|Samoan|    `sm`    |
-|Srbština (cyrilice)|    `sr-Cyrl`|
-|Srbština (latinka)|   `sr-Latn`       |
-|Slovenština|    `sk`    |
-|Slovinština| `sl`    |
-|Španělština|   `es`    |
-|Svahilština|   `sw`    |
-|Švédština|   `sv`    |
-|Tahitian|  `ty`    |
-|Tamilština| `ta`    |
-|Telugština|    `te`    |
-|Thajština|  `th`    |
-|Tongánština|    `to`    |
-|Turečtina|   `tr`        |
-|Ukrajinština| `uk`    |
-|Urdština|  `ur`    |
-|Vietnamština|    `vi`    |
-|Velština| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Jazyk | Kód jazyka |
+|:-|:-:|
+| Afrikánština | `af` |
+| Arabština | `ar` |
+| Ásámština | `as` |
+| Bengálština | `bn` |
+| Bosenština (latinka) | `bs` |
+| Bulharština | `bg` |
+| Kantonština (tradiční) | `yue` |
+| Katalánština | `ca` |
+| Čínština (zjednodušená) | `zh-Hans` |
+| Čínština (tradiční) | `zh-Hant` |
+| Chorvatština | `hr` |
+| Čeština | `cs` |
+| Dáríština | `prs` |
+| Dánština | `da` |
+| Nizozemština | `nl` |
+| Angličtina | `en` |
+| Estonština | `et` |
+| Fijian | `fj` |
+| Filipino | `fil` |
+| Finština | `fi` |
+| Francouzština | `fr` |
+| Francouzština (Kanada) | `fr-ca` |
+| Němčina | `de` |
+| Řečtina | `el` |
+| Gudžarátština | `gu` |
+| Haitská kreolština | `ht` |
+| Hebrejština | `he` |
+| Hindština | `hi` |
+| Hmong Macek | `mww` |
+| Maďarština | `hu` |
+| Islandština | `is` |
+| Indonéština | `id` |
+| Irština | `ga` |
+| Italština | `it` |
+| Japonština | `ja` |
+| Kannadština | `kn` |
+| Kazaština | `kk` |
+| Klingon | `tlh-Latn` |
+| Klingon (plqaD) | `tlh-Piqd` |
+| Korejština | `ko` |
+| Kurdština (střed) | `ku` |
+| Kurdština (Severní) | `kmr` |
+| Lotyština | `lv` |
+| Litevština | `lt` |
+| Malgašština | `mg` |
+| Malajština | `ms` |
+| Malajalámština | `ml` |
+| Maltština | `mt` |
+| Maorština | `mi` |
+| Maráthština | `mr` |
+| Norština | `nb` |
+| Udijština | `or` |
+| Paštština | `ps` |
+| Perština | `fa` |
+| Polština | `pl` |
+| Portugalština (Brazílie) | `pt-br` |
+| portugalština (Portugalsko) | `pt-pt` |
+| Paňdžábština | `pa` |
+| Queretaro Otomi | `otq` |
+| Rumunština | `ro` |
+| Ruština | `ru` |
+| Samoan | `sm` |
+| Srbština (cyrilice) | `sr-Cyrl` |
+| Srbština (latinka) | `sr-Latn` |
+| Slovenština | `sk` |
+| Slovinština | `sl` |
+| Španělština | `es` |
+| Svahilština | `sw` |
+| Švédština | `sv` |
+| Tahitian | `ty` |
+| Tamilština | `ta` |
+| Telugština | `te` |
+| Thajština | `th` |
+| Tongánština | `to` |
+| Turečtina | `tr` |
+| Ukrajinština | `uk` |
+| Urdština | `ur` |
+| Vietnamština | `vi` |
+| Velština | `cy` |
+| Yucatec Maya | `yua` |
 
 > [!NOTE]
 > Kód jazyka `pt` bude výchozí `pt-br` , portugalština (Brazílie).
@@ -126,63 +126,63 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 
 [Referenční dokumentace k operaci zjišťování zobrazení](reference/v3-0-detect.md)
 
-|Jazyk|  Kód jazyka|
-|:-----|:-----:|
-|Afrikánština| `af`|
-|Arabština|    `ar`    |
-|Bulharština| `bg`    |
-|Katalánština|   `ca`    |
-|Čínština (zjednodušená)|    `zh-Hans`|
-|Čínština (tradiční)|   `zh-Hant`       |
-|Chorvatština|  `hr`    |
-|Čeština| `cs`    |
-|Dánština|    `da`        |
-|Nizozemština| `nl`|
-|Angličtina|   `en`    |
-|Estonština|  `et`    |
-|Finština|   `fi`    |
-|Francouzština|    `fr`    |
-|Němčina|    `de`    |
-|Řečtina| `el`    |
-|Gudžarátština|  `gu`    |
-|Haitská kreolština|    `ht`        |
-|Hebrejština |`he`   |
-|Hindština| `hi`    |
-|Maďarština| `hu`    |
-|Islandština| `is`    |
-|Indonéština|    `id`    |
-|Irština | `ga`|
-|Italština|   `it`    |
-|Japonština|  `ja`    |
-|Klingon|   `tlh-Latn`  |
-|Korejština |`ko`   |
-|Kurdština (střed)  |`ku-Arab`  |
-|Lotyština|   `lv`    |
-|Litevština|    `lt`    |
-|Malajština| `ms`        |
-|Maltština|   `mt`    |
-|Norština| `nb`    |
-|Paštština|    `ps`    |
-|Perština|   `fa`    |
-|Polština|    `pl`    |
-|Portugalština|    `pt`    |
-|Rumunština|  `ro`    |
-|Ruština|   `ru`    |
-|Srbština (cyrilice)|    `sr-Cyrl`|
-|Srbština (latinka)|   `sr-Latn`       |
-|Slovenština|    `sk`    |
-|Slovinština| `sl`    |
-|Španělština|   `es`    |
-|Svahilština|   `sw`    |
-|Švédština|   `sv`    |
-|Tahitian|  `ty`    |
-|Thajština|  `th`    |
-|Turečtina|   `tr`        |
-|Ukrajinština| `uk`    |
-|Urdština|  `ur`    |
-|Vietnamština|    `vi`    |
-|Velština| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Jazyk | Kód jazyka |
+|:-|:-:|
+| Afrikánština | `af` |
+| Arabština | `ar` |
+| Bulharština | `bg` |
+| Katalánština | `ca` |
+| Čínština (zjednodušená) | `zh-Hans` |
+| Čínština (tradiční) | `zh-Hant` |
+| Chorvatština | `hr` |
+| Čeština | `cs` |
+| Dánština | `da` |
+| Nizozemština | `nl` |
+| Angličtina | `en` |
+| Estonština | `et` |
+| Finština | `fi` |
+| Francouzština | `fr` |
+| Němčina | `de` |
+| Řečtina | `el` |
+| Gudžarátština | `gu` |
+| Haitská kreolština | `ht` |
+| Hebrejština | `he` |
+| Hindština | `hi` |
+| Maďarština | `hu` |
+| Islandština | `is` |
+| Indonéština | `id` |
+| Irština | `ga` |
+| Italština | `it` |
+| Japonština | `ja` |
+| Klingon | `tlh-Latn` |
+| Korejština | `ko` |
+| Kurdština (střed) | `ku-Arab` |
+| Lotyština | `lv` |
+| Litevština | `lt` |
+| Malajština | `ms` |
+| Maltština | `mt` |
+| Norština | `nb` |
+| Paštština | `ps` |
+| Perština | `fa` |
+| Polština | `pl` |
+| Portugalština | `pt` |
+| Rumunština | `ro` |
+| Ruština | `ru` |
+| Srbština (cyrilice) | `sr-Cyrl` |
+| Srbština (latinka) | `sr-Latn` |
+| Slovenština | `sk` |
+| Slovinština | `sl` |
+| Španělština | `es` |
+| Svahilština | `sw` |
+| Švédština | `sv` |
+| Tahitian | `ty` |
+| Thajština | `th` |
+| Turečtina | `tr` |
+| Ukrajinština | `uk` |
+| Urdština | `ur` |
+| Vietnamština | `vi` |
+| Velština | `cy` |
+| Yucatec Maya | `yua` |
 
 ### <a name="transliterate"></a>Transliterace
 
@@ -319,7 +319,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
 | Malgašština| `mg`    |
-| Malajština|    `ms`        |
+| Malajština|    `ms` |
 |Maltština|   `mt`    |
 | Maorština| `mi`  |
 | Maráthština| `mr`  |
@@ -387,47 +387,47 @@ Převod řeči na text, aby se přeložil do jazyka textu dle vašeho výběru. 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 Převod textu na řeč Převod textu na řeč se používá k přidání zvukového výstupu výsledků překladu nebo převodu řeči na řeč při použití s převodem na text. 
 
-| Jazyk    |
-|:----------- |
-|Arabština|
-|Bulharština|
-|Kantonština (tradiční)|
-|Katalánština|
-|Čínština (zjednodušená)|
-|Čínština (tradiční)|
-|Chorvatština|
-|Čeština|
-|Dánština|
-|Nizozemština|
-|Angličtina|
-|Finština|
-|Francouzština|
-|Francouzština (Kanada)|
-|Němčina|
-|Řečtina|
-|Hebrejština|
-|Hindština|
-|Maďarština|
-|Indonéština|
-|Italština|
-|Japonština|
-|Korejština|
-|Malajština|
-|Norština|
-|Polština|
-|Portugalština (Brazílie)|
-|portugalština (Portugalsko)|
-|Rumunština|
-|Ruština|
-|Slovenština|
-|Slovinština|
-|Španělština|
-|Švédština|
-|Tamilština|
-|Telugština|
-|Thajština|
-|Turečtina|
-|Vietnamština|
+| Jazyk |
+|:-|
+| Arabština |
+| Bulharština |
+| Kantonština (tradiční) |
+| Katalánština |
+| Čínština (zjednodušená) |
+| Čínština (tradiční) |
+| Chorvatština |
+| Čeština |
+| Dánština |
+| Nizozemština |
+| Angličtina |
+| Finština |
+| Francouzština |
+| Francouzština (Kanada) |
+| Němčina |
+| Řečtina |
+| Hebrejština |
+| Hindština |
+| Maďarština |
+| Indonéština |
+| Italština |
+| Japonština |
+| Korejština |
+| Malajština |
+| Norština |
+| Polština |
+| Portugalština (Brazílie) |
+| portugalština (Portugalsko) |
+| Rumunština |
+| Ruština |
+| Slovenština |
+| Slovinština |
+| Španělština |
+| Švédština |
+| Tamilština |
+| Telugština |
+| Thajština |
+| Turečtina |
+| Vietnamština |
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>Zobrazit seznam jazyků na webu Microsoft Translator
 

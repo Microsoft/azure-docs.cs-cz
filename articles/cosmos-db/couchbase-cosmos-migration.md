@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357598"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606194"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,12 +24,12 @@ Azure Cosmos DB je škálovatelná, globálně distribuovaná a plně spravovan�
 
 Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s Couchbase fungují jinak:
 
-|   Couchbase     |   Azure Cosmos DB   |
-| ---------------|-------------------|
-|Server Couchbase| Účet       |
-|Blocích           | databáze      |
-|Blocích           | Kontejner/kolekce |
-|Dokument JSON    | Položka/dokument |
+| Couchbase | Azure Cosmos DB |
+|--|--|
+| Server Couchbase | Účet |
+| Blocích | Database |
+| Blocích | Kontejner/kolekce |
+| Dokument JSON | Položka/dokument |
 
 ## <a name="key-differences"></a>Klíčové rozdíly
 
@@ -189,7 +189,7 @@ Dotazy N1QL slouží jako způsob, jak definovat dotazy v Couchbase.
 
 |Dotaz N1QL | Dotaz na Azure CosmosDB|
 |-------------------|-------------------|
-|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c._type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c. |
+|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0 | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c._type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c. |
 
 Ve svých dotazech N1QL si můžete všimnout následujících změn:
 
@@ -221,12 +221,12 @@ Použijte asynchronní sadu Java SDK s následujícími kroky:
    cp.connectionMode(ConnectionMode.DIRECT);
     
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();   
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
    
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -242,22 +242,22 @@ Nyní můžete pomocí výše uvedené metody předat více dotazů a provést b
 ```java
 for(SqlQuerySpec query:queries)
 {
-    objFlux= container.queryItems(query, fo);
-    objFlux .publishOn(Schedulers.elastic())
-            .subscribe(feedResponse->
-                {
-                    if(feedResponse.results().size()>0)
-                    {
-                        _docs.addAll(feedResponse.results());
-                    }
-                
-                },
-                Throwable::printStackTrace,latch::countDown);
-    lstFlux.add(objFlux);
+   objFlux= container.queryItems(query, fo);
+   objFlux .publishOn(Schedulers.elastic())
+         .subscribe(feedResponse->
+            {
+               if(feedResponse.results().size()>0)
+               {
+                  _docs.addAll(feedResponse.results());
+               }
+            
+            },
+            Throwable::printStackTrace,latch::countDown);
+   lstFlux.add(objFlux);
 }
-                        
-        Flux.merge(lstFlux);
-        latch.await();
+                  
+      Flux.merge(lstFlux);
+      latch.await();
 }
 ```
 
@@ -267,7 +267,7 @@ Pomocí předchozího kódu můžete spouštět dotazy paralelně a zvýšit tak
 
 Chcete-li vložit dokument, spusťte následující kód:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -278,13 +278,13 @@ CountDownLatch latch=new CountDownLatch(1);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
+           if(resourceResponse.statusCode()!=successStatus)
+              {
+                 throw new RuntimeException(resourceResponse.toString());
+              }
+           },
         Throwable::printStackTrace,latch::countDown);
-latch.await();              
+latch.await();
 ```
 
 ### <a name="upsert-operation"></a>Operace Upsert
@@ -300,7 +300,7 @@ Pak se přihlaste k odběru mono. Přečtěte si fragment předplatného mono v 
 
 Následující fragment kódu provede operaci odstranění:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
@@ -350,12 +350,12 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
    cp.connectionMode(ConnectionMode.DIRECT);
    
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
     
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -370,16 +370,16 @@ Chcete-li číst položku, použijte následující fragment kódu:
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
 ro.partitionKey(new PartitionKey(documentId));
 CountDownLatch latch=new CountDownLatch(1);
-        
+      
 var objCosmosItem= container.getItem(documentId, documentId);
 Mono<CosmosItemResponse> objMono = objCosmosItem.read(ro);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.item()!=null)
-            {
-                doc= resourceResponse.properties().toObject(UserModel.class);
-            }
+           if(resourceResponse.item()!=null)
+           {
+              doc= resourceResponse.properties().toObject(UserModel.class);
+           }
         },
         Throwable::printStackTrace,latch::countDown);
 latch.await();
@@ -389,7 +389,7 @@ latch.await();
 
 Chcete-li vložit položku, můžete provést následující kód:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -398,14 +398,14 @@ Pak se přihlaste k odběru mono jako:
 ```java
 CountDownLatch latch=new CountDownLatch(1);
 objMono.subscribeOn(Schedulers.elastic())
-        .subscribe(resourceResponse->
-        {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
-        Throwable::printStackTrace,latch::countDown);
+      .subscribe(resourceResponse->
+      {
+         if(resourceResponse.statusCode()!=successStatus)
+            {
+               throw new RuntimeException(resourceResponse.toString());
+            }
+         },
+      Throwable::printStackTrace,latch::countDown);
 latch.await();
 ```
 
@@ -422,7 +422,7 @@ Pak se přihlaste k odběru mono, v operaci vložení použijte fragment předpl
 
 Pomocí následujícího fragmentu kódu spusťte operaci odstranění:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
