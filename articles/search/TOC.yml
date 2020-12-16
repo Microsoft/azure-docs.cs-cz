@@ -306,10 +306,12 @@
       items:
         - name: Volba úrovně
           href: search-sku-tier.md
-        - name: Omezení služby
-          href: search-limits-quotas-capacity.md
+        - name: Odhad kapacity a nákladů
+          href: search-sku-manage-costs.md
         - name: Úprava kapacity
           href: search-capacity-planning.md
+        - name: Omezení služby
+          href: search-limits-quotas-capacity.md
         - name: Škálování pro zajištění výkonu
           href: search-performance-optimization.md
         - name: Víceklientská architektura
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: Vytvoření privátního koncového bodu
               href: service-create-private-endpoint.md
-        - name: Přístup na základě identity
-          items:
-            - name: Filtry zabezpečení
-              href: search-security-trimming-for-azure-search.md
-            - name: Filtrování identit uživatelů
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: Odchozí zabezpečení (indexery)
           items:
             - name: Přístup přes rozsah IP adres
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Přístup prostřednictvím privátních koncových bodů
               href: search-indexer-howto-access-private.md
+        - name: Přístup na základě identity
+          items:
+            - name: Filtry zabezpečení
+              href: search-security-trimming-for-azure-search.md
+            - name: Filtrování identit uživatelů
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Spravovat
       items:
         - name: Portál

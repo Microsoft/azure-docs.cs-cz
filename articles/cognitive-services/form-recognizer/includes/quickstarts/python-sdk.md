@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 89520dacd9faea0373559119636d5c558b3b1536
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a33490d289e3867dffec0041a5da21ea5f235b28
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366399"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582488"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -36,17 +36,23 @@ ms.locfileid: "97366399"
 
 Po instalaci Pythonu můžete nainstalovat nejnovější verzi klientské knihovny pro rozpoznávání formulářů pomocí:
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+> [!NOTE]
+> Nejnovější nástroj pro rozpoznávání formulářů odráží rozhraní API verze 2,0.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Sada SDK pro rozpoznávání formulářů verze Preview odráží rozhraní API verze 2,1 Preview.
 
 ---
 
@@ -91,7 +97,7 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro Python:
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
@@ -100,7 +106,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
@@ -194,11 +200,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu. K rozpoznání vizitek z adresy URL použijte `begin_recognize_business_cards_from_url` metodu. 
 
@@ -207,7 +217,16 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglic
 > [!TIP]
 > Můžete také rozpoznat obrázky místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
+---
+
 ## <a name="recognize-invoices"></a>Rozpoznávání faktur
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu. Chcete-li rozpoznat faktury z adresy URL, použijte `begin_recognize_invoices_from_url` metodu. 
 

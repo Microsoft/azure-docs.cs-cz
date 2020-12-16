@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 23d76f441178238ae6527c2fa5440c4ab7b1d4e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ac14f6331d01325302dd7dda753695ca3a129c27
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366466"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582744"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -58,7 +58,7 @@ V tomto rychlém startu se používá správce závislostí Gradle. Knihovnu kli
 
 V souboru *Build. Gradle. kts* projektu přidejte klientskou knihovnu jako `implementation` příkaz spolu s požadovanými moduly plug-in a nastavením.
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> 3.0.0 SDK pro rozpoznávání formulářů odráží rozhraní API verze 2,0.
+
 #### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje rozhraní API verze 2,1 Preview
+
 ---
 
 ### <a name="create-a-java-file"></a>Vytvoření souboru Java
@@ -124,11 +132,11 @@ V metodě **Main** aplikace přidejte volání metod používaných v rámci toh
 * Chcete-li získat adresu URL formuláře k otestování, můžete použít výše uvedené kroky a získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. Nebo si Převezměte adresu URL dokumentu, který se nachází jinde.
 * K získání adresy URL obrázku účtenky použijte výše uvedenou metodu.
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +173,14 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro Java:
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
 * [Rozpoznávání příjmů](#recognize-receipts)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
 * [Rozpoznávání příjmů](#recognize-receipts)
@@ -259,11 +267,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu.
 
@@ -278,7 +289,16 @@ Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou kar
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Rozpoznávání faktur
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: dapine
-ms.openlocfilehash: a3e99ee53097d679391ef9235f43a353091f5298
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f36e6ecbd0050566b60efcbc13d029cf1d8631d2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96021979"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582483"
 ---
 | Programovací jazyk | Platforma                                                                           | Referenční informace k sadě SDK              |
 |----------------------|------------------------------------------------------------------------------------|----------------------------|
@@ -24,7 +24,7 @@ ms.locfileid: "96021979"
 
 <sup>2 sada Java Speech SDK je také k dispozici v rámci [sady Speech Devices SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md).</sup>
 
-[net-sdk]: /dotnet/api/microsoft.cognitiveservices.speech
+[net-sdk]: /dotnet/api/overview/azure/cognitiveservices/client/speechservice
 [cpp-sdk]: /cpp/cognitive-services/speech/
 [javasdk]: /java/api/com.microsoft.cognitiveservices.speech
 [ecmasdk]: /javascript/api/microsoft-cognitiveservices-speech-sdk/

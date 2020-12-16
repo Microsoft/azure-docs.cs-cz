@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c67a859177695b71c6607c53b3ae9c268aee7797
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366420"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582474"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -58,17 +58,24 @@ Build succeeded.
 
 V adresáři aplikace nainstalujte klientskou knihovnu pro rozpoznávání formulářů pro rozhraní .NET pomocí následujícího příkazu:
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+> [!NOTE]
+> 3.0.0 SDK pro rozpoznávání formulářů odráží rozhraní API verze 2,0.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje rozhraní API verze 2,1 Preview
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ Do třídy **programu** aplikace vytvořte proměnné pro klíč a koncový bod 
 
 V metodě **Main** aplikace přidejte volání asynchronních úloh používaných v rámci tohoto rychlého startu. Později je budete implementovat.
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Podívejte se na příklady [výukového modelu](#train-a-custom-model) a [sprav
 
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro .NET:
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
@@ -136,7 +143,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Rozpoznávání obsahu formuláře](#recognize-form-content)
@@ -172,9 +179,9 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Potom opakujte výše uvedené kroky a získejte adresu URL SAS jednotlivého dokumentu v kontejneru úložiště objektů BLOB. Uložte je taky do dočasného umístění.
 * Nakonec uložte adresu URL ukázkových imagí, které jsou uvedené níže (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)). 
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +296,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[verze 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[verze 3,1 Preview](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
+
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu.
 
@@ -308,7 +319,16 @@ Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Rozpoznávání faktur
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu.
 

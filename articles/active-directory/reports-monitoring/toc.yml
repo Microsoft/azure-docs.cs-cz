@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Co je sledování služby Azure AD?
       href: overview-monitoring.md
+    - name: Co je diagnostika přihlašování?
+      href: overview-sign-in-diagnostics.md
 - name: Rychlé starty
   expanded: true
   items:

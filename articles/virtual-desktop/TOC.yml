@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: Publikování integrovaných aplikací
       href: publish-apps.md
-    - name: Nastavení připojení aplikace MSIX
-      href: app-attach.md
+    - name: Použití připojení aplikace MSIX
+      items:
+        - name: Nastavení připojení aplikace MSIX s využitím webu Azure Portal
+          href: app-attach-azure-portal.md
+        - name: Nastavení připojení aplikace MSIX s využitím PowerShellu
+          href: app-attach-powershell.md
+        - name: Vytváření skriptů PowerShellu
+          href: app-attach.md
+        - name: Příprava image MSIX
+          href: app-attach-image-prep.md
+        - name: Nastavení sdílené složky
+          href: app-attach-file-share.md
     - name: Použití Microsoft Teams
       href: teams-on-wvd.md
     - name: Nastavení vícefaktorového ověřování Azure AD
@@ -112,6 +122,8 @@
       href: disaster-recovery.md
 - name: Koncepty
   items:
+    - name: Vestavěné role
+      href: rbac.md
     - name: Ověřování
       href: authentication.md
     - name: Prostředí Windows Virtual Desktop

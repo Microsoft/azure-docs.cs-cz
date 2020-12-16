@@ -16,6 +16,8 @@
       items:
         - name: Přidání chatu do aplikace
           href: quickstarts/chat/get-started.md
+        - name: Připojení chatovací aplikace ke schůzce v Teams
+          href: quickstarts/chat/meeting-interop.md
     - name: Telefonie a SMS
       items:
         - name: Získání telefonního čísla

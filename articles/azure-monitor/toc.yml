@@ -190,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: Pokročilé funkce Průzkumníku metrik
               href: platform/metrics-charts.md
+            - name: Zobrazení více prostředků v Průzkumníku metrik
+              href: platform/metrics-dynamic-scope.md
             - name: Příklady grafů metrik
               href: platform/metric-chart-samples.md
             - name: Řešení potíží s grafy metrik
@@ -546,12 +548,12 @@
               href: platform/itsmc-overview.md
             - name: Připojení IT Service Management
               href: platform/itsmc-connections.md
-            - name: Integrace se zabezpečeným exportem
-              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Vytvoření webové aplikace Service Manageru
               href: platform/itsmc-service-manager-script.md
             - name: Řešení potíží v ITSM konektoru
               href: platform/itsmc-resync-servicenow.md
+            - name: Integrace se zabezpečeným exportem
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: Migrace klasických pravidel upozornění
           items:
             - name: Informace o klasických upozorněních
@@ -752,6 +754,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Definice metrik založených na protokolech
               href: platform/app-insights-metrics.md
+            - name: Standardní metriky
+              href: app/standard-metrics.md
         - name: Search
           href: app/diagnostic-search.md
         - name: Profiler
