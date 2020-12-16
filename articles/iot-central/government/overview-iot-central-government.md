@@ -3,22 +3,20 @@ title: Sestavování řešení pro státní správu s využitím služby Azure I
 description: Naučte se vytvářet řešení inteligentních měst pomocí šablon aplikací pro Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126562"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590813"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Sestavování řešení pro státní správu s využitím služby Azure IoT Central
 
-
-
-Začněte s vytvářením řešení inteligentních měst pomocí šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody**a **správou propojených odpadů**.
+Začněte s vytvářením řešení inteligentních měst pomocí šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody** a **správou propojených odpadů**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Co je šablona aplikace monitorování kvality vody?   
 
@@ -41,7 +39,6 @@ Začněte s [kurzem pro monitorování kvality vody](./tutorial-water-quality-mo
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Co je šablona aplikace monitorování spotřeby vody? 
 
 Tradiční sledování konzumace vod spoléhá na ruční čtení měřičů spotřeby vody na lokalitách měřiče. Další a další města nahrazují tradiční měřiče s pokročilými inteligentními měřiči, což umožňuje vzdálené monitorování spotřeby a vzdálené řízení ventilů pro kontrolu vodního toku. Monitorování spotřeby vody společně se zprávou o digitální zpětné vazbě na občana může zvýšit povědomí a snížit spotřebu vody. 
-
 
 Aplikace pro monitorování spotřeby vody je šablonou aplikace IoT Central, která vám pomůže Kickstart vývoj řešení IoT, aby bylo možné na dálku monitorovat a řídit vodní toky a snižovat spotřebu. 
 

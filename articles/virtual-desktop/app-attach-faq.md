@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518681"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591191"
 ---
 # <a name="msix-app-attach-faq"></a>DOTAZY k připojení aplikace MSIX
 
@@ -27,7 +27,7 @@ MSIX je formát balení pro aplikace, zatímco připojení aplikace MSIX je funk
 
 Připojení aplikace MSIX nepoužívá FSLogix. Připojení k aplikaci MSIX a FSLogix jsou však navržená tak, aby poskytovaly bezproblémové uživatelské prostředí.
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Můžu použít připojení aplikace MSIX mimo virtuální plochu Windows?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>Můžu použít aplikaci MSIX připojit mimo virtuální plochu Windows?
 
 K dispozici jsou rozhraní API pro Windows 10 Enterprise, která se připojují k aplikaci Power MSIX. Tato rozhraní API se dají používat mimo virtuální počítač s Windows. Není však k dispozici žádná rovina správy pro připojení aplikace MSIX mimo virtuální plochu Windows.
 
@@ -53,7 +53,7 @@ Aby dvě verze stejných aplikací MSIX běžely současně, musí být řada ba
 
 ## <a name="should-i-disable-auto-update-when-using-msix-app-attach"></a>Mám při použití aplikace MSIX připojit automatickou aktualizaci?
 
-Ano. Připojení aplikace MSIX nepodporuje automatické aktualizace pro aplikace MSIX.
+Yes. Připojení aplikace MSIX nepodporuje automatické aktualizace pro aplikace MSIX.
 
 ## <a name="how-do-permissions-work-with-msix-app-attach"></a>Jak fungují oprávnění s připojením aplikace MSIX?
 
@@ -65,7 +65,7 @@ Všechny virtuální počítače, které jsou součástí fondu hostitelů, kter
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Můžu znovu připravit stejnou aplikaci MSIX?
 
-Ano. Můžete znovu připravit aplikace, které jste již znovu připravili, a nemělo by dojít k chybám.
+Yes. Můžete znovu připravit aplikace, které jste již znovu připravili, a nemělo by dojít k chybám.
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Podporuje aplikace MSIX připojení certifikátů podepsaných svým držitelem?
 

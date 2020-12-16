@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace Java, která od
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b973f8c132d9faec4fd6c9185345c0926cc35e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88942516"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591544"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
 
@@ -74,8 +74,8 @@ public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
-            
-            
+
+
     }
  }
 ```
@@ -136,7 +136,7 @@ Pomocí transformace řetězce na jeho kódování UTF-8 Vytvořte událost v je
 
 Sestavte a spusťte program a ujistěte se, že nejsou k dispozici žádné chyby.
 
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+Blahopřejeme vám. Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Příloha: způsob směrování zpráv do oddílů EventHub
 
@@ -172,17 +172,17 @@ Kód v tomto kurzu vychází z [EventProcessorSample kódu na GitHubu](https://g
 
 **EventProcessorHost** je třída Java, která zjednodušuje přijímání událostí z Event Hubs tím, že spravuje trvalé kontrolní body a paralelní příjem z těchto Event Hubs. Pomocí EventProcessorHost můžete rozdělit události mezi několik přijímačů, a to i v případě, že jsou hostovány v různých uzlech. Tento příklad ukazuje způsob použití třídy EventProcessorHost pro jednoho příjemce.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Chcete-li použít EventProcessorHost, musíte mít účet [Azure Storage] [Azure Storage účet]:
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com)a na levé straně obrazovky vyberte **vytvořit prostředek** .
-2. Vyberte **úložiště**a pak vyberte **účet úložiště**. V okně **vytvořit účet úložiště** zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
-   
+2. Vyberte **úložiště** a pak vyberte **účet úložiště**. V okně **vytvořit účet úložiště** zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
+
     ![Vytvořte účet úložiště v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Vyberte nově vytvořený účet úložiště a pak vyberte **přístupové klíče**:
-   
+
     ![Získání přístupových klíčů v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Zkopírujte hodnotu klíč1 do dočasného umístění. Použijete ho později v tomto kurzu.
@@ -207,11 +207,11 @@ Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektec
 Pro různé typy prostředí sestavení můžete explicitně získat nejnovější vydané soubory JAR z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
 1. Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Třída je volána `ErrorNotificationHandler` .     
-   
+
     ```java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
-   
+
     public class ErrorNotificationHandler implements Consumer<ExceptionReceivedEventArgs>
     {
         @Override
@@ -222,7 +222,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
     }
     ```
 2. Použijte následující kód k vytvoření nové třídy s názvem `EventProcessorSample`. Zástupné symboly nahraďte hodnotami použitými při vytváření centra událostí a účtu úložiště:
-   
+
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
 
@@ -250,13 +250,13 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
            String storageConnectionString = "----AzureStorageConnectionString----";
            String storageContainerName = "----StorageContainerName----";
            String hostNamePrefix = "----HostNamePrefix----";
-        
+
            ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
                 .setNamespaceName(namespaceName)
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey);
-        
+
            EventProcessorHost host = new EventProcessorHost(
                 EventProcessorHost.createHostName(hostNamePrefix),
                 eventHubName,
@@ -264,7 +264,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
                 eventHubConnectionString.toString(),
                 storageConnectionString,
                 storageContainerName);
-        
+
            System.out.println("Registering host named " + host.getHostName());
            EventProcessorOptions options = new EventProcessorOptions();
            options.setExceptionNotification(new ErrorNotificationHandler());
@@ -284,7 +284,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
            .thenAccept((unused) ->
            {
                System.out.println("Press enter to stop.");
-               try 
+                 try 
                {
                    System.in.read();
                }
@@ -294,8 +294,8 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
                }
            })
            .thenCompose((unused) ->
-           {
-               return host.unregisterEventProcessor();
+            {
+                return host.unregisterEventProcessor();
            })
            .exceptionally((e) ->
            {
@@ -307,13 +307,13 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
                return null;
            })
            .get(); // Wait for everything to finish before exiting main!
-        
+
            System.out.println("End of sample");
        }
    }
    ```
 3. Vytvořte jednu další třídu s názvem `EventProcessor` pomocí následujícího kódu:
-   
+
     ```java
     public static class EventProcessor implements IEventProcessor
     {
@@ -332,7 +332,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is closing for reason " + reason.toString());
         }
-        
+
         // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
         @Override
         public void onError(PartitionContext context, Throwable error)
@@ -353,7 +353,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
                     System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
                             data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
                     eventCount++;
-                    
+
                     // Checkpointing persists the current position in the event stream for this partition and means that the next
                     // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
                     // receiving at the event after this one. 
@@ -361,7 +361,7 @@ Pro různé typy prostředí sestavení můžete explicitně získat nejnovějš
                     if ((checkpointBatchingCount % 5) == 0)
                     {
                         System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                            data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
+                               data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
                         // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
                         // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
                         context.checkpoint(data).get();
@@ -426,4 +426,3 @@ Přečtěte si následující články:
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
-

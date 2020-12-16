@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184276"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591357"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
@@ -109,14 +109,14 @@ Chcete-li použít šablonu, je nutné provést následující akce:
 }
 ```
 
-Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení ve skupině prostředků s názvem example.
+Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení ve skupině prostředků s názvem example.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Níže vidíte příklad přiřazení role čtenáře uživateli pro skupinu prostředků po nasazení šablony.
@@ -187,24 +187,24 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 > [!NOTE]
 > Tato šablona není idempotentní, pokud není stejná `roleNameGuid` hodnota zadána jako parametr pro každé nasazení šablony. Pokud se nezadá žádný `roleNameGuid` , ve výchozím nastavení se v každém nasazení vygeneruje nový identifikátor GUID a další nasazení se nezdaří s `Conflict: RoleAssignmentExists` chybou.
 
-Rozsah přiřazení role je určen z úrovně nasazení. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru skupiny prostředků.
+Rozsah přiřazení role je určen z úrovně nasazení. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru skupiny prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Tady jsou příklady [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) a [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) Command, jak spustit nasazení v oboru předplatného a zadat umístění.
+Tady jsou příklady [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) a [AZ Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create) Commands, jak spustit nasazení v oboru předplatného a zadat umístění.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Obor prostředku
@@ -290,14 +290,14 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 }
 ```
 
-K nasazení předchozí šablony použijte příkazy skupiny prostředků. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru prostředků.
+K nasazení předchozí šablony použijte příkazy skupiny prostředků. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Níže vidíte příklad přiřazení role přispěvatele uživateli pro účet úložiště po nasazení šablony.
@@ -360,14 +360,14 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 }
 ```
 
-Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru skupiny prostředků.
+Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) Commands, jak spustit nasazení v oboru skupiny prostředků.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Následuje příklad přiřazení role přispěvatele k novému instančnímu objektu služby spravované identity po nasazení šablony.
@@ -385,7 +385,7 @@ Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+- [Rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Vysvětlení struktury a syntaxe šablon ARM](../azure-resource-manager/templates/template-syntax.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

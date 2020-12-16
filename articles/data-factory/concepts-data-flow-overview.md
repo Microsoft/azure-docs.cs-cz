@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/10/2020
+ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027597"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590389"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
@@ -27,9 +27,9 @@ Mapování toků dat poskytuje zcela vizuální prostředí bez nutnosti kódov�
 
 ## <a name="getting-started"></a>Začínáme
 
-Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a datové sady. Tok dat vytvoříte tak, že vyberete znaménko plus vedle **prostředků výrobce** a pak vyberete **tok dat** . 
+Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a datové sady. Tok dat vytvoříte tak, že vyberete znaménko plus vedle **prostředků výrobce** a pak vyberete **tok dat**. 
 
-![Nový tok dat](media/data-flow/new-data-flow.png "Nový tok dat")
+![Nový tok dat](media/data-flow/new-data-flow.png)
 
 Tato akce přejde k plátnu toku dat, kde můžete vytvořit logiku transformace. Pokud chcete začít konfigurovat transformaci zdrojového kódu, vyberte **Přidat zdroj** . Další informace najdete v tématu [transformace zdroje](data-flow-source.md).
 
@@ -37,17 +37,17 @@ Tato akce přejde k plátnu toku dat, kde můžete vytvořit logiku transformace
 
 Mapování toku dat má jedinečné plátno pro vytváření, které usnadňuje sestavování logiky transformace. Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-![Snímek obrazovky znázorňující plátno toku dat s popisem horního panelu, grafu a panelu konfigurace.](media/data-flow/canvas1.png "Plátno")
+![Snímek obrazovky znázorňující plátno toku dat s popisem horního panelu, grafu a panelu konfigurace.](media/data-flow/canvas-1.png "Plátno")
 
 ### <a name="graph"></a>Graph
 
-Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj** . Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace. Přečtěte si další informace o tom, jak [Spravovat Graf toku dat](concepts-data-flow-manage-graph.md).
+Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace. Přečtěte si další informace o tom, jak [Spravovat Graf toku dat](concepts-data-flow-manage-graph.md).
 
-![Snímek obrazovky znázorňuje část grafu na plátně s textovým polem hledání.](media/data-flow/canvas2.png "Plátno")
+![Snímek obrazovky znázorňuje část grafu na plátně s textovým polem hledání.](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Panel konfigurace
 
-Panel konfigurace zobrazuje nastavení specifická pro aktuálně vybranou transformaci. Pokud není vybraná žádná transformace, zobrazuje tok dat. V celkové konfiguraci toku dat můžete upravit název a popis na kartě **Obecné** nebo přidat parametry přes kartu **parametry** . Další informace najdete v tématu [mapování parametrů toku dat](parameters-data-flow.md).
+Panel konfigurace zobrazuje nastavení specifická pro aktuálně vybranou transformaci. Pokud není vybraná žádná transformace, zobrazuje tok dat. V celkové konfiguraci toku dat můžete přidat parametry přes kartu **parametry** . Další informace najdete v tématu [mapování parametrů toku dat](parameters-data-flow.md).
 
 Každá transformace obsahuje alespoň čtyři karty konfigurace.
 
@@ -99,63 +99,63 @@ Tým Azure Data Factory vytvořil [Průvodce optimalizací výkonu](concepts-dat
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Datové toky mapování jsou k dispozici v následujících oblastech:
+Mapování toků dat je k dispozici v následujících oblastech v ADF:
 
-| Oblast Azure | Toky dat v ADF | Toky dat v synapse studiu |
-| ------------ | ----------------- | ---------------------------- |
-|  Austrálie – střed | | |  
-| Austrálie – střed 2 | | |
-| Austrálie – východ | ✓ |  ✓ |
-| Australia Southeast   | ✓ | ✓ |
-| Brazil South  | ✓ |  |
-| Střední Kanada | ✓ |  |
-| Indie – střed | ✓ |   ✓ |
-| Střední USA    | ✓ |   ✓ |
-| Čína – východ |      | ✓ |
-| Čína – východ 2  |   |    |
-| Čína – neregionální | | |
-| Čína – sever |     | |
-| Čína – sever 2 | |  |
-| Východní Asie | ✓ | |
-| East US   | ✓ | ✓ |
-| USA – východ 2 | ✓ | ✓ |
-| Francie – střed | ✓ | ✓ |
-| Francie – jih  | | |
-| Německo – střed (Svrchovan) | | |
-| Německo – bez ohledu na oblast (Svrchovan) | | |
-| Německo – sever (veřejné) | | |
-| Německo – Severovýchod (Svrchovan) | | |
-| Německo – středozápad (veřejné) |  | ✓ |
-| Japan East | ✓ |  |
-| Japonsko – západ |  | |
-| Jižní Korea – střed | ✓ |  |
-| Jižní Korea – jih | | |
-| USA – středosever  | ✓ | ✓ |
-| Severní Evropa  | ✓ |    |
-| Norsko – východ | | |
-| Norsko – západ | | |
-| Jižní Afrika – sever    | ✓ | |
-| Jižní Afrika – západ |  |    |
-| Středojižní USA  | | ✓ |
-| Indie – jih | | |
-| Southeast Asia    | ✓ | ✓ |
-| Švýcarsko – sever |   |  |
-| Švýcarsko – západ | | |
-| Spojené arabské emiráty – střed | | |
-| Spojené arabské emiráty sever |  |    |
-| Spojené království – jih  | ✓ |   | ✓ |
-| Spojené království – západ |     | ✓ |
-| US DoD – střed | |  |
-| US DoD – východ | |  |
-| USA (Gov) – Arizona |      |  |
-| US Gov – bez ohledu na oblast | |  |
-| USA (Gov) – Texas | |  |
-| USA (Gov) – Virginia |     |  |
-| USA – středozápad |     | ✓ |
-| West Europe   | ✓ |   ✓ |
-| Západní Indie | | |
-| USA – západ   | ✓ |   |
-| Západní USA 2 | ✓ |   ✓ | 
+| Oblast Azure | Toky dat v ADF |
+| ------------ | ----------------- |
+|  Austrálie – střed | |
+| Austrálie – střed 2 | |
+| Austrálie – východ | ✓ |
+| Australia Southeast   | ✓ |
+| Brazil South  | ✓ |
+| Střední Kanada | ✓ |
+| Indie – střed | ✓ |
+| Střední USA    | ✓ |
+| Čína – východ |      |
+| Čína – východ 2  |   |
+| Čína – neregionální | |
+| Čína – sever |     |
+| Čína – sever 2 | |
+| Východní Asie | ✓ |
+| East US   | ✓ |
+| USA – východ 2 | ✓ |
+| Francie – střed | ✓ |
+| Francie – jih  | |
+| Německo – střed (Svrchovan) | |
+| Německo – bez ohledu na oblast (Svrchovan) | |
+| Německo – sever (veřejné) | |
+| Německo – Severovýchod (Svrchovan) | |
+| Německo – středozápad (veřejné) |  |
+| Japan East | ✓ |
+| Japonsko – západ |  |
+| Jižní Korea – střed | ✓ |
+| Jižní Korea – jih | |
+| USA – středosever  | ✓ |
+| Severní Evropa  | ✓ |
+| Norsko – východ | |
+| Norsko – západ | |
+| Jižní Afrika – sever    | ✓ |
+| Jižní Afrika – západ |  |
+| Středojižní USA  | |
+| Indie – jih | |
+| Southeast Asia    | ✓ |
+| Švýcarsko – sever |   |
+| Švýcarsko – západ | |
+| Spojené arabské emiráty – střed | |
+| Spojené arabské emiráty sever |  |
+| Spojené království – jih  | ✓ |
+| Spojené království – západ |     |
+| US DoD – střed | |
+| US DoD – východ | |
+| USA (Gov) – Arizona |      |
+| US Gov – bez ohledu na oblast | |
+| USA (Gov) – Texas | |
+| USA (Gov) – Virginia |     |
+| USA – středozápad |     |
+| West Europe   | ✓ |
+| Západní Indie | |
+| USA – západ   | ✓ |
+| Západní USA 2 | ✓ |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997677"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591170"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémovému jednoduchému Sign-On
 
@@ -55,7 +55,7 @@ Pokud má tenant přidruženou licenci Azure AD Premium, můžete se také podí
 
 ![Centrum pro správu Azure Active Directory: sestava přihlášení](./media/tshoot-connect-sso/sso9.png)
 
-**Azure Active Directory**  >  V centru pro [správu Azure Active Directory](https://aad.portal.azure.com/)přejděte na Azure Active Directory **přihlášení** a pak vyberte přihlašovací aktivitu konkrétního uživatele. Vyhledejte pole **kód chyby přihlášení** . Namapujte hodnotu tohoto pole na důvod selhání a rozlišení pomocí následující tabulky:
+  >  V centru pro [správu Azure Active Directory](https://aad.portal.azure.com/)přejděte na Azure Active Directory **přihlášení** a pak vyberte přihlašovací aktivitu konkrétního uživatele. Vyhledejte pole **kód chyby přihlášení** . Namapujte hodnotu tohoto pole na důvod selhání a rozlišení pomocí následující tabulky:
 
 |Kód chyby přihlášení|Důvod neúspěšného přihlášení|Řešení
 | --- | --- | ---
@@ -94,11 +94,11 @@ Pomocí následujícího kontrolního seznamu můžete vyřešit bezproblémové
 Pokud povolíte v řadiči domény auditování úspěšného přihlášení, pokaždé, když se uživatel přihlásí prostřednictvím bezproblémového přihlašování, zaznamená se položka zabezpečení v protokolu událostí. Tyto události zabezpečení můžete najít pomocí následujícího dotazu. (Vyhledejte událost **4769** spojenou s účtem počítače **AzureADSSOAcc $**.)
 
 ```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
+  <QueryList>
+    <Query Id="0" Path="Security">
+      <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
+    </Query>
+  </QueryList>
 ```
 
 ## <a name="manual-reset-of-the-feature"></a>Ruční resetování funkce

@@ -1,5 +1,5 @@
 ---
-title: U všech trezorů klíčů Azure se povolí obnovitelné odstranění | Microsoft Docs
+title: Povolit obnovitelné odstranění u všech trezorů klíčů Azure | Microsoft Docs
 description: Pomocí tohoto dokumentu můžete u všech trezorů klíčů přijmout obnovitelné odstranění.
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825255"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590082"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Obnovitelné odstranění bude povolené u všech trezorů klíčů.
 
 > [!WARNING]
-> Zásadní **Změna**: možnost odsouhlasení s tichou úpravou bude po konci roku zastaralá a ochrana proti softwarovému odstranění se automaticky zapne pro všechny trezory klíčů.  Azure Key Vault uživatelé a Správci by měli pro svoje trezory klíčů okamžitě povolit obnovitelné odstranění.
+> Zásadní **Změna**: možnost Odhlásit se z slabého odstranění už brzy přestane. Azure Key Vault uživatelé a Správci by měli pro svoje trezory klíčů okamžitě povolit obnovitelné odstranění.
 >
 > V případě spravovaného modulu HSM je ve výchozím nastavení povolené obnovitelné odstranění a nedá se zakázat.
 
@@ -29,9 +29,18 @@ Při odstranění tajného klíče z trezoru klíčů bez ochrany proti tichému
 
 Úplné informace o funkci obnovitelného odstranění najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](soft-delete-overview.md).
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>Návody reagovat na průlomové změny
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Může moje aplikace pracovat s povoleným obnovitelném odstraněním?
 
-Objekt trezoru klíčů nelze vytvořit se stejným názvem jako objekt trezoru klíčů ve stavu undeleteded.  Pokud například odstraníte klíč s názvem `test key` trezoru klíčů a, nebudete moci vytvořit nový klíč s názvem `test key` v trezoru klíčů a, dokud nebude odstraněn objekt, který je odstraněn `test key` .
+> [!Important] 
+> **Před zapnutím obnovitelného odstranění pro vaše trezory klíčů pečlivě zkontrolujte tyto informace.**
+
+Názvy Key Vault jsou globálně jedinečné. Názvy tajných kódů uložených v trezoru klíčů jsou také jedinečné. Nebudete moct znovu použít název trezoru klíčů nebo objektu trezoru klíčů, který existuje ve stavu tichého odstranění. 
+
+**Příklad #1** Pokud vaše aplikace programově vytvoří Trezor klíčů s názvem trezor A a později odstraní trezor A. Trezor klíčů bude přesunut do stavu tichého odstranění. Vaše aplikace nebude moct znovu vytvořit další Trezor klíčů s názvem "trezor A", dokud se Trezor klíčů nevymaže ze stavu tichého odstranění. 
+
+**Příklad #2** Pokud vaše aplikace vytvoří klíč s názvem `test key` v trezoru klíčů a a později odstraní klíč z trezoru a, aplikace nebude moci vytvořit nový klíč s názvem `test key` v trezoru klíčů a, dokud nebude `test key` objekt vymazán ze stavu nepodmíněného odstranění. 
+
+To může vést k chybám konfliktů, pokud se pokusíte odstranit objekt trezoru klíčů a znovu ho vytvořit se stejným názvem, aniž byste ho nejdřív odstranili ze stavu podmíněně odstraněno. To může způsobit selhání aplikací nebo automatizace. Před provedením požadované změny aplikace a správy se poraďte se svým vývojovým týmem. 
 
 ### <a name="application-changes"></a>Změny aplikace
 
@@ -59,13 +68,14 @@ Pokud vaše organizace podléhá zákonným požadavkům na dodržování předp
 2. Vyhledejte "Azure Policy".
 3. Vyberte definice.
 4. V části Kategorie vyberte v filtru možnost "Key Vault".
-5. Zaškrtněte políčko Key Vault objekty by měly být obnovitelné.
+5. Vyberte zásadu "Key Vault by měla mít povolená možnost obnovitelného odstranění.
 6. Klikněte na přiřadit.
 7. Nastavte obor na své předplatné.
-8. Vyberte "zkontrolovat + vytvořit".
-9. V nástroji může trvat až 24 hodin, než se úplná kontrola vašeho prostředí dokončí.
-10. V okně Azure Policy klikněte na "dodržování předpisů".
-11. Vyberte zásadu, kterou jste použili.
+8. Ujistěte se, že je efekt zásady nastavený na audit.
+9. Vyberte "zkontrolovat + vytvořit".
+10. V nástroji může trvat až 24 hodin, než se úplná kontrola vašeho prostředí dokončí.
+11. V okně Azure Policy klikněte na "dodržování předpisů".
+12. Vyberte zásadu, kterou jste použili.
 
 Nyní byste měli mít možnost filtrovat a zjistit, které z vašich trezorů klíčů mají povolené obnovitelné odstranění (kompatibilní prostředky) a které trezory klíčů nemají povolené obnovitelné odstranění (nekompatibilní prostředky).
 
@@ -106,15 +116,11 @@ Postupujte prosím podle kroků uvedených v části Postup pro audit vašich tr
 
 ### <a name="what-action-do-i-need-to-take"></a>Jakou akci Potřebuji udělat?
 
-Ujistěte se, že není nutné provádět změny v logice aplikace. Až to ověříte, zapněte u všech vašich trezorů klíčů obnovitelné odstranění. Tím zajistíte, že nebudete mít vliv na zásadní změnu, pokud je u všech trezorů klíčů na konci roku zapnuté obnovitelné odstranění.
+Ujistěte se, že není nutné provádět změny v logice aplikace. Až to ověříte, zapněte u všech vašich trezorů klíčů obnovitelné odstranění.
 
 ### <a name="by-when-do-i-need-to-take-action"></a>Kdy je potřeba provést akci?
 
-Obnovitelné odstranění bude zapnuté pro všechny trezory klíčů na konci roku. Abyste se ujistili, že vaše aplikace nebudou ovlivněny, zapněte v trezorech klíčů obnovitelné odstranění, a to co nejdříve.
-
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>Co se stane, když neprovedem žádnou akci?
-
-Pokud neprovedete žádnou akci, obnovitelné odstranění se automaticky zapne pro všechny vaše trezory klíčů na konci roku. To může vést k chybám konfliktů, pokud se pokusíte odstranit objekt trezoru klíčů a znovu ho vytvořit se stejným názvem, aniž byste ho nejdřív odstranili ze stavu podmíněně odstraněno. To může způsobit selhání aplikací nebo automatizace.
+Abyste se ujistili, že vaše aplikace nebudou ovlivněny, zapněte v trezorech klíčů obnovitelné odstranění, a to co nejdříve.
 
 ## <a name="next-steps"></a>Další kroky
 

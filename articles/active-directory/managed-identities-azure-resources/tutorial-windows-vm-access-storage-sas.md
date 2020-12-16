@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8c88f040bbd527b0d9f219a81fa090f53c84ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255813"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590541"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Storage prostřednictvím přihlašovacích údajů SAS
 
@@ -31,24 +31,28 @@ V tomto kurzu se dozvíte, jak používat identitu přiřazenou systémem pro vi
 SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu úložiště, a to po dobu omezeného času a konkrétní služby (v našem případě u služby BLOB Service) bez odhalení přístupového klíče účtu. Pověření SAS můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. Pro účely tohoto kurzu předvádíme nahrání a stažení objektu BLOB pomocí Azure Storage PowerShellu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
+- Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
+- Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+- Budete také potřebovat virtuální počítač s Windows, který má povolené spravované identity přiřazené systémem.
+  - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) .
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte). Tento krok můžete také přeskočit a udělit spravované identitě přidělené systémem vašeho virtuálního počítače k přihlašovacím údajům SAS existujícího účtu úložiště. 
 
 1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Klikněte na **Úložiště** a potom na **Účet úložiště**. Zobrazí se nový panel Vytvořit účet úložiště.
 3. Zadejte název tohoto účtu úložiště, který použijete později.  
-4. V polích **Model nasazení** a **Druh účtu** nastavte Resource manager a Pro obecné účely (v uvedeném pořadí). 
+4. **Model nasazení** a **druh účtu** by měly být nastavené na "Správce prostředků" a "obecné účely", v uvedeném pořadí. 
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
 6. Klikněte na **Vytvořit**.
 
@@ -79,16 +83,16 @@ Azure Storage nativně nepodporuje ověřování Azure AD.  Spravovanou identitu
 
     ![Alternativní text k obrázku](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 
-Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač.
+Ve zbývající části kurzu budeme pracovat na vašem VIRTUÁLNÍm počítači.
 
 V této části budete muset používat rutiny prostředí PowerShell pro Azure Resource Manager.  Pokud ji nemáte nainstalovanou, [Stáhněte si nejnovější verzi](/powershell/azure/) ještě před tím, než budete pokračovat.
 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**.
 2. Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
-3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell. 
-4. Pomocí příkazu Invoke-WebRequest v PowerShellu požádejte místní spravovanou identitu o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.
+3. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem.
+4. Otevřete PowerShell ve vzdálené relaci a použijte Invoke-WebRequest k získání tokenu Azure Resource Manager z místní spravované identity pro koncový bod prostředků Azure.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

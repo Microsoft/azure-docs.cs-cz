@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026968"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590456"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Správa grafu toku dat mapování
 
@@ -21,13 +21,13 @@ ms.locfileid: "93026968"
 
 Mapování toků dat se vytváří pomocí návrhové plochy, která je v grafu toku dat. V grafu je logika transformace sestavena zleva doprava a další datové proudy jsou přidány shora dolů. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
-![Plátno](media/data-flow/canvas2.png "Plátno")
+![Plátno](media/data-flow/canvas-2.png)
 
 Díky následujícím mechanismům můžete efektivně Procházet a spravovat Graf toku dat, protože vaše toky dat jsou složitější. 
 
 ## <a name="moving-transformations"></a>Přesun transformací
 
-V části mapování toků dat se sada propojených transformačních logiky označuje jako **datový proud** . V poli **příchozí datový** proud se určí, který datový proud zaznamená aktuální transformaci. Každá transformace má jeden nebo dva příchozí datové proudy v závislosti na její funkci a představuje výstupní datový proud. Výstupní schéma příchozích datových proudů určuje, která metadata sloupce mohou být odkazována aktuální transformací.
+V části mapování toků dat se sada propojených transformačních logiky označuje jako **datový proud**. V poli **příchozí datový** proud se určí, který datový proud zaznamená aktuální transformaci. Každá transformace má jeden nebo dva příchozí datové proudy v závislosti na její funkci a představuje výstupní datový proud. Výstupní schéma příchozích datových proudů určuje, která metadata sloupce mohou být odkazována aktuální transformací.
 
 ![Přesunout uzel](media/data-flow/move-nodes.png "přesunout uzel")
 
@@ -39,7 +39,7 @@ Při úpravách transformace můžete panel konfigurace rozbalit, aby se zabralo
 
 ![Skrýt graf](media/data-flow/hide-graph.png "Skrýt graf")
 
-Když je graf skrytý, můžete se pohybovat mezi transformacemi v rámci datového proudu kliknutím na tlačítko **Další** nebo **předchozí** . Kliknutím na dvojitou šipku směřující dolů zobrazíte graf.
+Když je graf skrytý, můžete se pohybovat mezi transformacemi v rámci datového proudu kliknutím na tlačítko **Další** nebo **předchozí**. Kliknutím na dvojitou šipku směřující dolů zobrazíte graf.
 
 ![Zobrazit graf](media/data-flow/show-graph.png "Zobrazit graf")
 
@@ -55,7 +55,7 @@ Můžete vyhledat transformaci podle názvu nebo popisu transformace.
 
 ## <a name="hide-reference-nodes"></a>Skrýt uzly odkazů
 
-Pokud má váš datový tok jakékoli transformace, vyhledávání, zobrazení nebo sjednocení, tok dat zobrazuje referenční uzly pro všechny příchozí streamy. Pokud chcete minimalizovat velikost svislého místa, můžete své referenční uzly minimalizovat. Provedete to tak, že kliknete pravým tlačítkem na plátno a vyberete **Skrýt referenční uzly** .
+Pokud má váš datový tok jakékoli transformace, vyhledávání, zobrazení nebo sjednocení, tok dat zobrazuje referenční uzly pro všechny příchozí streamy. Pokud chcete minimalizovat velikost svislého místa, můžete své referenční uzly minimalizovat. Provedete to tak, že kliknete pravým tlačítkem na plátno a vyberete **Skrýt referenční uzly**.
 
 ![Skrýt uzly odkazů](media/data-flow/hide-reference-nodes.png "Skrýt uzly odkazů")
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contentperfq2
-ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675904"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032571"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -26,7 +26,7 @@ Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost
 
 ## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 
-Následující informace zobrazují aktuálně podporované [nabídky Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/) ve službě Azure Cost Management. Nabídka Azure je typ předplatného Azure, které máte. Data jsou dostupná ve službě Cost Management od data uvedeného ve sloupci **Dostupnost dat od** . Pokud předplatné změní nabídky, náklady před datem změny nabídky nejsou dostupné.
+Následující informace zobrazují aktuálně podporované [nabídky Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/) ve službě Azure Cost Management. Nabídka Azure je typ předplatného Azure, které máte. Data jsou dostupná ve službě Cost Management od data uvedeného ve sloupci **Dostupnost dat od**. Pokud předplatné změní nabídky, náklady před datem změny nabídky nejsou dostupné.
 
 | **Kategorie**  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** | **Dostupnost dat od** |
 | --- | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ Informace o dostupnosti služeb úrovně Free po upgradu z bezplatné zkušební
 
 ### <a name="determine-your-offer-type"></a>Určení typu nabídky
 
-Pokud nevidíte data pro předplatné a chcete určit, zda vaše předplatné spadá do podporovaných nabídek, můžete si případnou podporu svého předplatného ověřit. Pokud chcete ověřit, zda se předplatné Azure podporuje, přihlaste se k webu Azure Portal. V levém podokně nabídky vyberte **Všechny služby** . V seznamu služeb vyberte **Předplatná** . V nabídce se seznamem vyberte předplatné, které chcete ověřit. Vaše předplatné se zobrazuje na kartě Přehled, kde je uvedena také **nabídka** a **ID nabídky** . Příklad ukazuje následující obrázek.
+Pokud nevidíte data pro předplatné a chcete určit, zda vaše předplatné spadá do podporovaných nabídek, můžete si případnou podporu svého předplatného ověřit. Pokud chcete ověřit, zda se předplatné Azure podporuje, přihlaste se k webu Azure Portal. V levém podokně nabídky vyberte **Všechny služby**. V seznamu služeb vyberte **Předplatná**. V nabídce se seznamem vyberte předplatné, které chcete ověřit. Vaše předplatné se zobrazuje na kartě Přehled, kde je uvedena také **nabídka** a **ID nabídky**. Příklad ukazuje následující obrázek.
 
 ![Příklad karty s přehledem a vyznačenou nabídkou a ID nabídky](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -150,7 +150,7 @@ Data o nákladech a využití jsou obvykle dostupná v části Správa nákladů
 - Odhadované poplatky pro aktuální fakturační období se aktualizují šestkrát denně.
 - Odhadované poplatky pro aktuální fakturační období se mohou změnit s tím, jak generujete větší využití.
 - Každá aktualizace je kumulativní a zahrnuje všechny řádkové položky a informace z předchozí aktualizace.
-- Azure finalizuje, neboli _uzavře_ , aktuální fakturační období až 72 hodin (tři kalendářní dny) po skončení fakturačního období.
+- Azure finalizuje, neboli _uzavře_, aktuální fakturační období až 72 hodin (tři kalendářní dny) po skončení fakturačního období.
 
 Následující příklady ilustrují to, jak by mohla fakturační období skončit:
 

@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328381"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590269"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -200,7 +200,7 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 Ano, k virtuálním počítačům můžete připojit několik disků.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
-Ano. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
+Yes. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
@@ -280,7 +280,7 @@ Pokud chcete najít cílový účet úložiště, který je přidružený k vaš
 1.  Přihlaste se na [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
-4.  V části **Přehled**vyberte jeden z účtů úložiště.
+4.  V části **Přehled** vyberte jeden z účtů úložiště.
 5.  Vyberte **objekty blob**.
 6.  Vyhledejte v seznamu nahrávání. Pokud žádný neexistuje, vraťte se ke kroku 4 a zkuste použít jiný účet úložiště.
 7.  Použijte **adresu URL** jako cíl v příkazu AzCopy.
@@ -357,7 +357,7 @@ Při použití sdílených veřejných IP adres sdílí virtuální počítače 
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 - **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 - **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.

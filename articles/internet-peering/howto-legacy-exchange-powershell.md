@@ -6,15 +6,15 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 769522238939fe8ee786ae51a1b3b6051604451e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acc32f4916f5f7f8fe22eebdd1e72db297cac94c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071665"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590201"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí PowerShellu
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak převést existující starší partnerský vztah E
 
 Pokud chcete, můžete tuto příručku dokončit pomocí webu Azure [Portal](howto-legacy-exchange-portal.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 * Před zahájením konfigurace si Projděte návod [požadavky](prerequisites.md) a [partnerský vztah Exchange](walkthrough-exchange-all.md) .
 
 ### <a name="work-with-azure-powershell"></a>Práce s Azure PowerShell
@@ -92,7 +92,7 @@ Tato příklad reakce ukazuje, kdy bylo úspěšné dokončení kompletního zř
     MaxPrefixesAdvertisedV6  : 2000
     ConnectionState          : Active
 ```
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Podrobnější popis všech parametrů získáte spuštěním následujícího příkazu:
 
 ```powershell

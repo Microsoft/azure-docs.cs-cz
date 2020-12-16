@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b73146302c740dfd8d97d275bad003a6d8a9a23c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852774"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590762"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Monitorování služby Azure Blob Storage
 
@@ -154,7 +154,7 @@ Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za obj
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 `<storage-service-resource--id>`V tomto fragmentu kódu nahraďte zástupný symbol ID prostředku služby BLOB Service. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
@@ -174,7 +174,7 @@ Pokud se rozhodnete streamovat protokoly do centra událostí, platíte za objem
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Tady je příklad:
@@ -188,7 +188,7 @@ Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se E
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Tady je příklad:

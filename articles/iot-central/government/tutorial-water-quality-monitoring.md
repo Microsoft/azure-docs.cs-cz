@@ -3,17 +3,17 @@ title: 'Kurz: Vytvoření aplikace pro monitorování kvality vody pomocí Azure
 description: 'Kurz: Naučte se vytvářet aplikace monitorování kvality vody pomocí šablon aplikací Azure IoT Central.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6e8f9b8b33d391c4e13c6076a8589d336455d8c0
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014488"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590218"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Nakonfigurujte úlohy.
 > * Přizpůsobte branding aplikace pomocí označení bílé.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste měli k dokončení tohoto kurzu předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
 
@@ -241,7 +241,7 @@ Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatels
 
 ### <a name="update-the-application-image"></a>Aktualizace image aplikace
 
-1. Vyberte **Administration**  >  **nastavení aplikace** pro správu.
+1. Vyberte   >  **nastavení aplikace** pro správu.
 
 1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace.
 

@@ -7,12 +7,12 @@ description: Revize a testování změn z žádosti o přijetí změn přímo ve
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995556"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591561"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -30,7 +30,7 @@ V tomto průvodci se naučíte:
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli-installed]
@@ -53,7 +53,7 @@ Uložte hodnotu *loginServer* z výstupu, protože se používá v pozdějším 
 
 ## <a name="create-a-service-principal-for-authentication"></a>Vytvoření instančního objektu pro ověřování
 
-K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Například:
+K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Příklad:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -103,7 +103,7 @@ Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém b
 > [!NOTE]
 > Všechny tyto tajné kódy používá akce GitHub a jsou nakonfigurované v [. GitHub/Workflows/Bikes. yml][github-action-yaml].
 
-Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Po sloučení změn do hlavní větve ve vašem rozvětvení se spustí další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Až změny sloučíte do hlavní větve ve větvi, spustí se další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 Kromě toho, pokud chcete, aby se změny v žádosti o přijetí změn spouštěly na místě, aktualizujte *MASTER_SPACE* a tajné klíče *hostitele* . Například pokud vaše aplikace běží ve *vývoji s* podřízeným prostorem pro *vývoj/azureuser1*, aby se žádost o přijetí změn spouštěla v podřízeném prostoru pro *vývoj/azureuser1*:
 

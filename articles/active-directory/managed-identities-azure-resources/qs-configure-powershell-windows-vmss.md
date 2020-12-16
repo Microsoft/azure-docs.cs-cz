@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d193637122cb388ea2c5012638526719d245f524
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd7ec1f6cdfc8ecfe32de04f5d06b42f9492b88c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997361"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590898"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure ve službě Virtual Machine Scale Sets pomocí PowerShellu
 
@@ -29,12 +29,13 @@ ms.locfileid: "95997361"
 Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
 V tomto článku se naučíte, jak provádět spravované identity prostředků Azure v sadě škálování virtuálního počítače pomocí PowerShellu:
+
 - Povolí nebo zakáže spravovanou identitu přiřazenou systémem v sadě škálování virtuálního počítače.
 - Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálního počítače
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi přiřazenou identitou systému a uživatelem spravované identity](overview.md#managed-identity-types)**.
 

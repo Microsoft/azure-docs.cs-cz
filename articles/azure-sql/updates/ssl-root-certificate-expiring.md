@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792527"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590847"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Porozumění změnám v kořenové CA změna Azure SQL Database & SQL Managed instance
 
@@ -61,7 +61,7 @@ Pokud nepoužíváte protokol SSL/TLS, nejsou nutné žádné akce týkající s
 Pokud kořenový certifikát neaktualizujete před 30. listopadu 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s Azure SQL Database & spravované instance SQL a aplikace budou mít problémy s připojením ke službě Azure SQL Database & SQL Managed instance.
 
 ### <a name="do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>Musím pro tuto změnu naplánovat výpadky údržby?<BR>
-Ne. Vzhledem k tomu, že se tato změna dá připojit k serveru jenom na straně klienta, pro tuto změnu není potřeba žádné prostoje údržby.
+No. Vzhledem k tomu, že se tato změna dá připojit k serveru jenom na straně klienta, pro tuto změnu není potřeba žádné prostoje údržby.
 
 ### <a name="what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020"></a>Co když mi po 26. října 2020 nemůžete získat plánované výpadky této změny?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
@@ -72,7 +72,7 @@ Pro servery vytvořené po 26. října 2020 můžete použít nově vydaný cert
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Tyto certifikáty, které používá Azure SQL Database & spravované instance SQL, poskytují důvěryhodné certifikační autority (CA). To znamená, že podpora těchto certifikátů v Azure SQL Database & spravované instance SQL je svázána s podporou těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>Pokud používám repliky čtení, musím tuto aktualizaci provést jenom na hlavním serveru nebo ve všech replikách pro čtení?
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>Pokud používám repliky čtení, musím tuto aktualizaci provést pouze na primárním serveru nebo v replikách pro čtení?
 Vzhledem k tomu, že tato aktualizace je změnou na straně klienta, je nutné, aby se při čtení dat ze serveru repliky tyto změny použily i pro tyto klienty. 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>Máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?

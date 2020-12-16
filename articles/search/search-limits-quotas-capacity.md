@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107823"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591340"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
-Maximální limity pro úložiště, úlohy a množství indexů a dalších objektů závisí na tom, jestli [zřídíte Azure kognitivní hledání](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage s optimalizovaným úložištěm** .
+Maximální limity pro úložiště, úlohy a množství indexů a dalších objektů závisí na tom, jestli [zřídíte Azure kognitivní hledání](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard** nebo **Storage s optimalizovaným úložištěm** .
 
 + **Zdarma** je sdílená služba s více klienty, která se dodává s vaším předplatným Azure. 
 
@@ -78,15 +78,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Zdarma &nbsp; <sup>1</sup> | Základní &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |Paměť |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |– |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |– |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu| 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
-| Maximální doba běhu indexerů s dovednosti <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není k dispozici  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |Není k dispozici |4 &nbsp; miliony |4 &nbsp; miliony |
+| Maximální doba běhu| 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |–  |24 hodin |24 hodin |
+| Maximální doba běhu indexerů s dovednosti <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |–  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |–  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |– |4 &nbsp; miliony |4 &nbsp; miliony |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -109,7 +109,7 @@ Indexery mají přístup k dalším prostředkům Azure [prostřednictvím priv�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Podpora indexeru privátního koncového bodu | Ne | Ano | Ano | Ano | Ano | Ne | Ano | Ano |
 | Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | Ne | Ne | Ne | Ano | Ano | Ne | Ano | Ano |
-| Maximální počet privátních koncových bodů | Není k dispozici | 10 nebo 30 | 100 | 400 | 400 | Není k dispozici | 20 | 20 |
+| Maximální počet privátních koncových bodů | – | 10 nebo 30 | 100 | 400 | 400 | – | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 
 <sup>1</sup> obohacení a analýza obrázků AI jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Z tohoto důvodu jsou privátní připojení na nižších úrovních zakázaná, aby se předešlo nepříznivému dopadu na výkon a stabilitu vyhledávací služby.
@@ -143,7 +143,7 @@ Vyhledávací dotaz a požadavky na indexování jsou omezené, protože systém
 
 Omezení požadavků na statickou rychlost pro operace související s indexem:
 
-+ Seznam indexů (GET/Indexes): 5 za sekundu na jednotku vyhledávání
++ Seznam indexů (GET/Indexes): 3 za sekundu na jednotku vyhledávání
 + Získat index (GET/Indexes/MyIndex): 10 za sekundu na jednotku vyhledávání
 + Vytvořit index (POST/Indexes): 12 za minutu na jednotku vyhledávání
 + Vytvořit nebo aktualizovat index (PUT/Indexes/MyIndex): 6 za sekundu na jednotku vyhledávání

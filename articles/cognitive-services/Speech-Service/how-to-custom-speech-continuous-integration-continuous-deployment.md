@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025663"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591612"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD pro Custom Speech
 
@@ -84,7 +84,7 @@ Pro už implementované řešení DevOps pro Custom Speech se můžete dostat do
 
 - Zkopírujte úložiště šablon do svého účtu GitHubu a pak vytvořte prostředky Azure a [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) pro pracovní postupy CI/CD akcí GitHubu.
 - Projděte si "[vnitřní smyčka pro vývoj](https://mitchdenny.com/the-inner-loop/)". Aktualizace školení a testování dat z větve funkcí, testování změn pomocí dočasného vývojového modelu a získání žádosti o přijetí změn pro návrh a kontrolu změn.
-- V případě, že jsou školicí data aktualizována v rámci žádosti o přijetí změn na *Hlavní*, výukové modely s pracovním postupem akce GitHubu.
+- V případě, že se školicí data v žádosti o přijetí změn aktualizují na *Hlavní*, provedou se modely s pracovními postupy pro akce GitHubu.
 - Proveďte automatizované testování přesnosti, aby se navázala [míra chyb ve wordovém](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) modelu (WER). Výsledky testů uložte do objektu blob Azure.
 - Spusťte pracovní postup CD pro vytvoření koncového bodu, když se služba WER vylepšuje.
 

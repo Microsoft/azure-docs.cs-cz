@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501424"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590556"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou data exfiltrace Protection a jak spravovat schválené klienty Azure AD pro tento pracovní prostor.
@@ -33,7 +33,7 @@ Postupujte podle kroků uvedených v části [rychlý Start: vytvoření pracovn
 1. Vyberte Ano pro možnost "povolí přenos odchozích dat pouze do schválených cílů".
 1. Vyberte schválené klienty Azure AD pro tento pracovní prostor.
 1. Zkontrolujte konfiguraci a vytvořte pracovní prostor.
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Vytvoření pracovního prostoru s exfiltrace data Protection":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Snímek obrazovky, který zobrazuje pracovní prostor vytvoření synapse s vybranou možností povolit správu virtuální sítě":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>Správa schválených klientů Azure Active Directory pro pracovní prostor
 1. Z Azure Portal pracovního prostoru přejděte do části schválené klienty Azure AD. Tady se zobrazí seznam schválených tenantů Azure AD pro tento pracovní prostor. Tenant pracovního prostoru je ve výchozím nastavení zahrnutý a není uveden.

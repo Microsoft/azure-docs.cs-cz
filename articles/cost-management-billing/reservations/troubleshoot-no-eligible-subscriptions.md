@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 12/15/2020
+ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887191"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561201"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>Řešení potíží s chybou typu Žádné opravňující předplatné
 
@@ -94,8 +94,8 @@ Aktuální vlastník objednávky rezervace nebo vlastník rezervace vám může 
 1. Zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka.
 1. Vyberte uživatele a pak vyberte **Uložit**.
 
-Další informace najdete v tématu [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+Další informace najdete v tématu [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud potřebujete, aby vám vlastník rezervace udělil přístup, projděte si téma [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Pokud potřebujete, aby vám vlastník rezervace udělil přístup, projděte si téma [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998630"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591187"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) pomocí ADP
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat ADP s Azure Active Directory (Azure AD). K
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -110,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -155,11 +155,11 @@ Po přijetí potvrzení od zástupce ADP nakonfigurujte vaše služby ADP a při
 
     ![Propojené vlastnosti jednotného přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  Nastavte hodnotu pole **povoleno pro uživatele na** možnost **Ano**.
+    1. Nastavte hodnotu pole **povoleno pro uživatele na** možnost **Ano**.
 
-    b.  Nastavte hodnotu pole **vyžadováno přiřazení uživatele** na **Ano**.
+    1. Nastavte hodnotu pole **vyžadováno přiřazení uživatele** na **Ano**.
 
-    c.  Nastavte hodnotu pole **viditelné pro uživatele** na **Ano**.
+    1. Nastavte hodnotu pole **viditelné pro uživatele** na **Ano**.
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ADP** najděte část **Správa** a vyberte **jednotné přihlašování**.
 
@@ -171,39 +171,39 @@ Po přijetí potvrzení od zástupce ADP nakonfigurujte vaše služby ADP a při
 
     ![Prop – jednotné přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. Vložte **adresu URL přístupu uživatele**, kterou jste zkopírovali z **karty vlastností** výše (z hlavní aplikace ADP).
-                                                             
-    b. Níže jsou uvedené 5 aplikací, které podporují různé **adresy URL stavu přenosu**. Do **adresy URL přístupu uživatele** musíte ručně připojit příslušnou hodnotu **adresy URL stavu přenosu** konkrétní aplikace.
-    
-    * **Nyní můžete pracovní síly ADP**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. Vložte **adresu URL přístupu uživatele**, kterou jste zkopírovali z **karty vlastností** výše (z hlavní aplikace ADP).
 
-    * **Pracovní síly ADP teď zvyšují čas**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **Vantage HCM ADP**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. Níže jsou uvedené 5 aplikací, které podporují různé **adresy URL stavu přenosu**. Do **adresy URL přístupu uživatele** musíte ručně připojit příslušnou hodnotu **adresy URL stavu přenosu** konkrétní aplikace.
 
-    * **ADP Enterprise HR**
+        * **Nyní můžete pracovní síly ADP**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **Pracovní síly ADP teď zvyšují čas**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **Uložte** změny.
+        * **Vantage HCM ADP**
 
-10. Po přijetí potvrzení od zástupce ADP spusťte test s jedním nebo dvěma uživateli.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. K otestování federovaného přístupu přiřaďte k aplikaci služby ADP několik uživatelů.
+        * **ADP Enterprise HR**
 
-    b. Test je úspěšný, když uživatelé přistupují k aplikaci služby ADP v galerii a mají přístup ke službě ADP.
- 
-11. Po potvrzení úspěšného testu přiřaďte službu federovaného ADP jednotlivým uživatelům nebo skupinám uživatelů, které jsou vysvětleny dále v kurzu a převeďte je do vašich zaměstnanců.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. **Uložte** změny.
+
+1. Po přijetí potvrzení od zástupce ADP spusťte test s jedním nebo dvěma uživateli.
+
+    1. K otestování federovaného přístupu přiřaďte k aplikaci služby ADP několik uživatelů.
+
+    1. Test je úspěšný, když uživatelé přistupují k aplikaci služby ADP v galerii a mají přístup ke službě ADP.
+
+1. Po potvrzení úspěšného testu přiřaďte službu federovaného ADP jednotlivým uživatelům nebo skupinám uživatelů, které jsou vysvětleny dále v kurzu a převeďte je do vašich zaměstnanců.
 
 ### <a name="create-adp-test-user"></a>Vytvořit testovacího uživatele ADP
 
@@ -217,10 +217,8 @@ Když kliknete na dlaždici ADP na přístupovém panelu, měli byste se automat
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 - [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte si ADP pomocí Azure AD](https://aad.portal.azure.com)

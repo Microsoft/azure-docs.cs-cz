@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457431"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -43,7 +43,7 @@ Integrace Amazon Web Services (AWS) se službou Azure AD poskytuje následujíc�
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -119,23 +119,23 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name  | Zdrojový atribut  | Obor názvů |
+    | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | "zadejte hodnotu v rozmezí 900 sekund (15 minut) až 43200 sekund (12 hodin)" |  `https://aws.amazon.com/SAML/Attributes` |
+    | Role | User. assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | "zadejte hodnotu v rozmezí 900 sekund (15 minut) až 43200 sekund (12 hodin)" |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
+    1. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![Snímek obrazovky zobrazuje deklarace identity uživatelů pomocí Přidat novou deklaraci identity a uložit, která se vyvolala.](common/new-save-attribute.png)
+        ![Snímek obrazovky zobrazuje deklarace identity uživatelů pomocí Přidat novou deklaraci identity a uložit, která se vyvolala.](common/new-save-attribute.png)
 
-    ![Snímek obrazovky ukazuje spravovat deklarace identity uživatelů, kde můžete zadat hodnoty popsané v tomto kroku.](common/new-attribute-details.png)
+        ![Snímek obrazovky ukazuje spravovat deklarace identity uživatelů, kde můžete zadat hodnoty popsané v tomto kroku.](common/new-attribute-details.png)
 
     b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
     c. Do textového pole **obor názvů** zadejte hodnotu oboru názvů zobrazenou pro tento řádek.
 
-    d. Jako **atribut**vyberte zdroj.
+    d. Jako **atribut** vyberte zdroj.
 
     e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
@@ -159,7 +159,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Konfigurovat jednu Sign-On identitu][12]
 
-1. Klikněte na **Zprostředkovatelé identity**a pak klikněte na **vytvořit poskytovatele**.
+1. Klikněte na **Zprostředkovatelé identity** a pak klikněte na **vytvořit poskytovatele**.
 
     ![Konfigurovat jednoho poskytovatele Sign-On][13]
 
@@ -167,7 +167,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Nakonfigurovat jeden Sign-On dialog][14]
 
-    a. Jako **Typ poskytovatele**vyberte **SAML**.
+    a. Jako **Typ poskytovatele** vyberte **SAML**.
 
     b. Do textového pole **název zprostředkovatele** zadejte název zprostředkovatele (například: *WAAD*).
 
@@ -179,7 +179,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Konfigurace jednoho Sign-On ověření][15]
 
-1. Klikněte na **role**a pak klikněte na **vytvořit roli**.
+1. Klikněte na **role** a pak klikněte na **vytvořit roli**.
 
     ![Konfigurace rolí s jednou Sign-On][16]
 
@@ -190,12 +190,12 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Nakonfigurovat jeden Sign-On Trust][19]
 
-    a. V části **Vybrat typ důvěryhodné entity**vyberte možnost **federace SAML 2,0** .
+    a. V části **Vybrat typ důvěryhodné entity** vyberte možnost **federace SAML 2,0** .
 
-    b. V části **zvolte poskytovatele saml 2,0**vyberte **poskytovatele SAML** , kterého jste předtím vytvořili (například: *WAAD*).
+    b. V části **zvolte poskytovatele saml 2,0** vyberte **poskytovatele SAML** , kterého jste předtím vytvořili (například: *WAAD*).
 
     c. Zaškrtněte políčko **povolí přístup k programovým a AWS Management Console**.
-  
+
     d. Klikněte na **Další: oprávnění**.
 
 1. Na panelu hledání vyhledejte **přístup správce** a zaškrtněte políčko **AdministratorAccess** a potom klikněte na **Další: značky**.
@@ -253,39 +253,35 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Otevřete [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
-    a. Přihlaste se k webu Průzkumníka Microsoft Graph pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
+    1. Přihlaste se k webu Průzkumníka Microsoft Graph pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
-    b. Musíte mít dostatečná oprávnění k vytvoření rolí. Kliknutím na **Upravit oprávnění** získáte požadovaná oprávnění.
+    1. Musíte mít dostatečná oprávnění k vytvoření rolí. Kliknutím na **Upravit oprávnění** získáte požadovaná oprávnění.
 
-    ![Box1 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Box1 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. V seznamu vyberte následující oprávnění (Pokud je ještě nemáte) a klikněte na změnit oprávnění. 
+    1. V seznamu vyberte následující oprávnění (Pokud je ještě nemáte) a klikněte na změnit oprávnění. 
 
-    ![Box2 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Box2 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. To vás vyzve k opětovnému přihlášení a přijetí souhlasu. Po přijetí souhlasu se znovu přihlaste k Průzkumníku Microsoft Graph.
+    1. To vás vyzve k opětovnému přihlášení a přijetí souhlasu. Po přijetí souhlasu se znovu přihlaste k Průzkumníku Microsoft Graph.
 
-    e. Změňte rozevírací seznam verze na **beta**. K načtení všech instančních objektů z vašeho tenanta použijte následující dotaz:
+    1. Změňte rozevírací seznam verze na **beta**. K načtení všech instančních objektů z vašeho tenanta použijte následující dotaz: `https://graph.microsoft.com/beta/servicePrincipals` . Pokud používáte více adresářů, můžete použít následující vzor, který má v něm svou primární doménu: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` .
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Box3 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    Pokud používáte více adresářů, můžete použít následující vzor, který má vaši primární doménu v něm.  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. V seznamu načtených instančních objektů Získejte ten, který potřebujete upravit. K vyhledání aplikace ze všech uvedených ServicePrincipals můžete použít také kombinaci kláves CTRL + F. Můžete použít následující dotaz pomocí **ID objektu instančního objektu** , který jste zkopírovali ze stránky vlastností Azure AD, abyste se dostali k příslušnému instančnímu objektu.
 
-    ![Box3 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. V seznamu načtených instančních objektů Získejte ten, který potřebujete upravit. K vyhledání aplikace ze všech uvedených ServicePrincipals můžete použít také kombinaci kláves CTRL + F. Můžete použít následující dotaz pomocí **ID objektu instančního objektu** , který jste zkopírovali ze stránky vlastností Azure AD, abyste se dostali k příslušnému instančnímu objektu.
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Box4 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Box4 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. Rozbalte vlastnost appRoles z instančního objektu služby.
 
-    například Rozbalte vlastnost appRoles z instančního objektu služby.
+        ![Box5 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Box5 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. Nyní musíte pro svou aplikaci vygenerovat nové role. 
 
-    h. Nyní musíte pro svou aplikaci vygenerovat nové role. 
-
-    i. Pod JSON je příkladem objektu appRoles. Vytvořte podobný objekt pro přidání rolí, které chcete pro vaši aplikaci.
+    1. Pod JSON je příkladem objektu appRoles. Vytvořte podobný objekt pro přidání rolí, které chcete pro vaši aplikaci.
 
     ```
     {
@@ -329,9 +325,9 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     > [!Note]
     > Nové role můžete přidat až po **msiam_access** pro operaci patch. V rámci vaší organizace taky můžete přidat tolik rolí, kolik potřebujete. Azure AD pošle **hodnotu** těchto rolí jako hodnotu deklarace v odpovědi SAML.
 
-    j. Vraťte se do aplikace Microsoft Graph Explorer a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost appRoles podobnou té, kterou vidíte výše v příkladu. Kliknutím na **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role pro vaši aplikaci Amazon Web Services.
+    1. Vraťte se do aplikace Microsoft Graph Explorer a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost appRoles podobnou té, kterou vidíte výše v příkladu. Kliknutím na **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role pro vaši aplikaci Amazon Web Services.
 
-    ![Box6 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Box6 dialogového okna Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. Po opravě instančního objektu s více rolemi můžete přiřadit uživatele nebo skupiny k příslušným rolím. To se dá udělat tak, že přejdete na portál a přejdete na Amazon Web Services aplikaci. Klikněte na kartu **Uživatelé a skupiny** v horní části.
 

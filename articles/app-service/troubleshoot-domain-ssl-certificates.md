@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958384"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590354"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
 
@@ -88,8 +88,8 @@ K tomuto problému může dojít z některého z následujících důvodů:
 
     **Řešení**: Pokud je certifikát označený jako podvod a za 24 hodin se nevyřešil, postupujte podle těchto kroků:
 
-    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-    2. Přejít na **App Service certifikáty**a vyberte certifikát.
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+    2. Přejít na **App Service certifikáty** a vyberte certifikát.
     3. Vyberte **Konfigurace certifikátu**  >  **Krok 2: ověření**  >  **domény ověření**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
 
 ## <a name="custom-domain-problems"></a>Problémy s vlastní doménou
@@ -120,7 +120,7 @@ Internetový prohlížeč možná pořád ukládá do mezipaměti starou IP adre
 
 **Řešení pro příčinu 2**
 
-Vymažte prohlížeč. Pro zařízení s Windows můžete spustit příkaz `ipconfig /flushdns` . Pomocí [WhatsmyDNS.NET](https://www.whatsmydns.net/) ověřte, že vaše doména odkazuje na IP adresu aplikace. 
+Vymažte prohlížeč. Pro zařízení s Windows můžete spustit příkaz `ipconfig /flushdns` . Pomocí [WhatsmyDNS.NET](https://www.whatsmydns.net/) ověřte, že vaše doména odkazuje na IP adresu aplikace.
 
 ### <a name="you-cant-add-a-subdomain"></a>Nejde přidat subdoménu. 
 
@@ -185,13 +185,13 @@ Certifikát App Service se obnovil, ale aplikace, která používá certifikát 
 
 #### <a name="cause"></a>Příčina 
 App Service automaticky synchronizuje certifikát během 48 hodin. Při otočení nebo aktualizaci certifikátu někdy aplikace stále načítá starý certifikát a nikoli nově aktualizovaný certifikát. Důvodem je, že úloha synchronizace prostředku certifikátu ještě neběžela. Klikněte na synchronizovat. Operace synchronizace automaticky aktualizuje vazby hostitelů pro certifikát v App Service, aniž by to mělo za následek jakékoliv výpadky aplikací.
- 
+
 #### <a name="solution"></a>Řešení
 
 Můžete vynutit synchronizaci certifikátu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
-2. Vyberte opětovné vytvoření klíče **a synchronizaci**a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty** a pak vyberte certifikát.
+2. Vyberte opětovné vytvoření klíče **a synchronizaci** a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
 3. Po dokončení synchronizace se zobrazí následující oznámení: "úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem".
 
 ### <a name="domain-verification-is-not-working"></a>Ověřování domény nefunguje 
@@ -201,17 +201,17 @@ App Service certifikát vyžaduje ověření domény před tím, než bude certi
 
 #### <a name="solution"></a>Řešení
 Ručně ověřte doménu přidáním záznamu TXT:
- 
-1.  Přejít na poskytovatele služby DNS (Domain Name Service), který hostuje název vaší domény.
-2.  Přidejte záznam TXT pro vaši doménu, který používá hodnotu tokenu domény, který je zobrazený v Azure Portal. 
+
+1. Přejít na poskytovatele služby DNS (Domain Name Service), který hostuje název vaší domény.
+1. Přidejte záznam TXT pro vaši doménu, který používá hodnotu tokenu domény, který je zobrazený v Azure Portal. 
 
 Počkejte několik minut, než se rozšíření DNS spustí, a potom výběrem tlačítka **aktualizovat** spusťte ověření. 
 
 Jako alternativu můžete použít metodu webové stránky HTML k ručnímu ověření vaší domény. Tato metoda umožňuje certifikační autoritě potvrdit vlastnictví domény, pro kterou je certifikát vystavený.
 
-1.  Vytvořte soubor HTML s názvem {Domain Verification token}. html. Obsah tohoto souboru by měl být hodnota tokenu pro ověření domény.
-3.  Tento soubor nahrajte do kořenového adresáře webového serveru, který je hostitelem vaší domény.
-4.  Vyberte **aktualizovat** a ověřte stav certifikátu. Dokončení ověření může trvat několik minut.
+1. Vytvořte soubor HTML s názvem {Domain Verification token}. html. Obsah tohoto souboru by měl být hodnota tokenu pro ověření domény.
+1. Tento soubor nahrajte do kořenového adresáře webového serveru, který je hostitelem vaší domény.
+1. Vyberte **aktualizovat** a ověřte stav certifikátu. Dokončení ověření může trvat několik minut.
 
 Pokud například koupíte standardní certifikát pro azure.com s tokenem pro ověření domény 1234abcd, https://azure.com/1234abcd.html měla by webová žádost vrátit 1234abcd. 
 
@@ -266,7 +266,7 @@ K tomuto problému dochází z jednoho z následujících důvodů:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Musím po nákupu nakonfigurovat vlastní doménu pro svůj web?**
 
@@ -306,7 +306,7 @@ Když si koupíte doménu, nebudete se vám účtovat po dobu pěti dnů, během
 
 **Můžu v předplatném použít doménu v jiné aplikaci Azure App Service?**
 
-Ano. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
+Yes. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
 
 **Můžu přenést doménu z jednoho předplatného do jiného předplatného?**
 

@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995477"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591292"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení informací o schválení a žadateli o změnu (Preview) pro balíček přístupu v Azure AD – Správa nároků
 
@@ -93,7 +93,7 @@ Pomocí následujících kroků přidejte schvalovatele po výběru počtu fáz�
 
 1. Pokud jste vybrali **možnost zvolit konkrétní schvalovatele**, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin v adresáři, které mají být schvalovatelé.
 
-1. V poli v části **rozhodnutí se musí**zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento přístupový balíček.
+1. V poli v části **rozhodnutí se musí** zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento přístupový balíček.
 
     Pokud žádost není v rámci tohoto časového období schválena, bude automaticky odepřena. Uživatel bude muset odeslat další žádost o přístup k balíčku.
 
@@ -132,13 +132,15 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
 1. V části první schvalovatel, druhý schvalovatel nebo obojí klikněte na **Zobrazit upřesňující nastavení žádostí**.
 
-    ![Přístup k balíčku – zásady-Zobrazit upřesňující nastavení žádostí](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="Přístup k balíčku – zásady-Zobrazit upřesňující nastavení žádostí":::
 
 1. Nastavit **, jestli se žádná akce neuskutečnila, předají se k alternativním schvalovatelům?** přepnout na **Ano**.
 
 1. Klikněte na **Přidat alternativní schvalovatele** a ze seznamu vyberte alternativní schvalovatele.
 
     ![Přístup k balíčku – zásady – přidání alternativních schvalovatelů](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    Pokud jako schvalovatele vyberete pro prvního schvalovatele možnost manažer, budete mít další možnost **jako alternativního schvalovatele**, která je dostupná pro výběr v poli alternativní schvalovatel. Vyberete-li tuto možnost, je nutné přidat záložního schvalovatele, kterému bude žádost předána, v případě, že systém nemůže najít správce druhé úrovně.
 
 1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
 
@@ -173,7 +175,7 @@ Chcete-li zajistit, aby uživatelé měli přístup ke správným balíčkům pr
 
     ![Přístup k balíčku – zásady – konfigurace lokalizovaného textu](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. Vyberte **Formát odpovědi** , ve kterém chcete, aby žadatelé odpověděli. Formáty odpovědí zahrnují: *krátký text*, *Vícenásobný výběr*a *dlouhý text*.
+1. Vyberte **Formát odpovědi** , ve kterém chcete, aby žadatelé odpověděli. Formáty odpovědí zahrnují: *krátký text*, *Vícenásobný výběr* a *dlouhý text*.
  
     ![Přístup k balíčku – zásady – výběr zobrazení a úprava formátu odpovědi s více volbami](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
