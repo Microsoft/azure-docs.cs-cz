@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356490"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561507"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Java. Pomocí těchto kroků nainstalujete balíček Maven a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -24,12 +24,12 @@ Content Moderator je služba AI, která umožňuje zpracovávat obsah, který je
 
 Pomocí klientské knihovny Content Moderator pro jazyk Java:
 
-* Střední obrázky
 * Střední text
+* Střední obrázky
 
 [Referenční dokumentace](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Artefakt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Ukázky](/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -127,14 +127,42 @@ Následující třídy zpracovávají některé hlavní funkce klientské knihov
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Content Moderator klientské knihovny pro Java:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Střední obrázky](#moderate-images)
 * [Střední text](#moderate-text)
+* [Střední obrázky](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 V `main` metodě aplikace vytvořte objekt [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) pomocí hodnoty koncového bodu předplatného a klíče předplatného.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>Střední text
+
+### <a name="set-up-sample-text"></a>Nastavení ukázkového textu
+
+V horní části třídy **ContentModeratorQuickstart** definujte odkaz na místní textový soubor. Přidejte soubor. txt do adresáře projektu a zadejte text, který se má analyzovat.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Analyzovat text
+
+Vytvořte novou metodu, která přečte soubor. txt a zavolá metodu **screenText** na každém řádku.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Vytiskněte výsledky moderování textu.
+
+Přidejte následující kód pro vytištění výsledků moderování do souboru. JSON v adresáři projektu.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+`try` `catch` Pro dokončení metody zavřete příkaz a.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>Střední obrázky
 
@@ -180,31 +208,6 @@ Po `while` smyčce přidejte následující kód, který vytiskne výsledky do k
 Zavřete `try` příkaz a přidejte `catch` příkaz pro dokončení metody.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
-
-## <a name="moderate-text"></a>Střední text
-
-### <a name="set-up-sample-text"></a>Nastavení ukázkového textu
-
-V horní části třídy **ContentModeratorQuickstart** definujte odkaz na místní textový soubor. Přidejte soubor. txt do adresáře projektu a zadejte text, který se má analyzovat.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>Analyzovat text
-
-Vytvořte novou metodu, která přečte soubor. txt a zavolá metodu **screenText** na každém řádku.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>Vytiskněte výsledky moderování textu.
-
-Přidejte následující kód pro vytištění výsledků moderování do souboru. JSON v adresáři projektu.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-`try` `catch` Pro dokončení metody zavřete příkaz a.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 

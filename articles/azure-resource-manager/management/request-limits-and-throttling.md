@@ -2,14 +2,14 @@
 title: Limity požadavků a omezování
 description: Popisuje, jak používat omezování s požadavky na Azure Resource Manager, když se dosáhlo limitu předplatného.
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239362"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563122"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
@@ -25,7 +25,7 @@ Každá operace na úrovni předplatného a tenanta na úrovni klienta podléhá
 
 V následující tabulce jsou uvedeny výchozí limity omezení za hodinu.
 
-| Rozsah | Operace | Omezení |
+| Obor | Operace | Omezení |
 | ----- | ---------- | ------- |
 | Předplatné | operace | 12000 |
 | Předplatné | odstraníte | 15 000 |
@@ -66,6 +66,13 @@ Pro kontrolu instancí virtuálních počítačů v rámci sady škálování vi
 
 [Graf Azure Resource](../../governance/resource-graph/overview.md) omezuje počet požadavků na jeho operace. Kroky v tomto článku k určení zbývajících požadavků a způsobu, jak reagovat na to, jak se dosáhlo limitu, platí také pro graf prostředků. Graf prostředků ale nastaví svůj vlastní limit a rychlost resetování. Další informace najdete v tématu [hlavičky omezení grafu prostředků](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
+### <a name="other-resource-providers"></a>Jiní poskytovatelé prostředků
+
+Informace o omezování v jiných poskytovatelích prostředků najdete v těchto tématech:
+
+* [Pokyny k omezování služby Azure Key Vault](../../key-vault/general/overview-throttling.md)
+* [Řešení potíží s AKS](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
+
 ## <a name="error-code"></a>Kód chyby
 
 Pokud dosáhnete limitu, obdržíte stavový kód HTTP **429 příliš mnoho požadavků**. Odpověď obsahuje hodnotu opakovat, která určuje počet sekund, **po** jejichž uplynutí má aplikace čekat (nebo přejít do režimu spánku) před odesláním dalšího požadavku. Pokud odešlete žádost před uplynutím hodnoty opakování, vaše žádost se nezpracuje a vrátí se nová hodnota opakování.
@@ -103,7 +110,7 @@ Například v **jazyce C#** načtete hodnotu hlavičky z objektu **HttpWebRespon
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-V **PowerShellu**načtete hodnotu hlavičky z operace Invoke-WebRequest.
+V **PowerShellu** načtete hodnotu hlavičky z operace Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
@@ -150,7 +157,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-V rozhraní příkazového **řádku Azure CLI**načtěte hodnotu hlavičky pomocí možnosti Podrobnější informace.
+V rozhraní příkazového **řádku Azure CLI** načtěte hodnotu hlavičky pomocí možnosti Podrobnější informace.
 
 ```azurecli
 az group list --verbose --debug

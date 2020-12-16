@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852842"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563156"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -23,6 +23,8 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 ## <a name="november-2020"></a>Listopad 2020
 
 ### <a name="new-features"></a>Nové funkce
+
+**Nástroj pro rozpoznávání formulářů v 2.1 Public Preview 2 je nyní k dispozici.** Verze 2.1-Preview. 2 byla vydaná, včetně následujících funkcí: 
 
 - **Nový předem sestavený model faktury** – nový předem sestavený model faktury umožňuje zákazníkům přebírat faktury v nejrůznějších formátech a vracet strukturovaná data pro automatizaci zpracování faktury. Kombinuje naše výkonné funkce optického rozpoznávání znaků (OCR) s fakturací s porozuměním modelem obsáhlého učení pro extrakci klíčových informací z faktur v angličtině. Extrahuje text, tabulky a informace, jako je například zákazník, dodavatel, ID faktury, datum splatnosti faktury, celková částka, splatnost, částka daně, částka pro odeslání, fakturaci a další.
 
@@ -37,7 +39,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
  
   > [Další informace o extrakci rozložení](concept-layout.md)
 
-- **Aktualizace klientské knihovny** – nejnovější verzi [klientských knihoven](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript podporují rozhraní API pro rozpoznávání formulářů 2,1.
+- **Aktualizace klientské knihovny** – nejnovější verze [klientských knihoven](quickstarts/client-library.md) pro .NET, Python, Java a JavaScript podporují rozhraní API pro rozpoznávání formulářů 2,1.
 - **Podporován nový jazyk: japonština** : nyní jsou podporovány následující nové jazyky: pro `AnalyzeLayout` a `AnalyzeCustomForm` : japonština ( `ja` ). [Podpora jazyků](language-support.md)
 - **Označení stylu čáry textu (ručně psané) (jenom v jazycích Latin)** – Nástroj pro rozpoznávání formulářů teď vytvoří výstup `appearance` objektu, který klasifikuje, jestli je každý textový řádek v rukopisu, nebo ne, společně s skóre spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 - **Vylepšení kvality** – vylepšení extrakce, včetně vylepšení pro extrakci s jednou číslicí.

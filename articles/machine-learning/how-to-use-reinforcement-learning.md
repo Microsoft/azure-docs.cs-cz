@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302565"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562442"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -24,9 +24,9 @@ ms.locfileid: "96302565"
 > [!NOTE]
 > Azure Machine Learning posílení učení je aktuálně funkcí verze Preview. V současné době jsou podporovány pouze architektury ray a RLlib.
 
-V tomto článku se naučíte, jak pomocí agenta pro výuku RL (výztuže Learning) hrát pong hry pro video. Pro správu složitosti distribuovaných úloh RL budete používat open source [RLlib](https://ray.readthedocs.io/en/master/rllib.html) knihovny Pythonu s Azure Machine Learning.
+V tomto článku se naučíte, jak pomocí agenta pro výuku RL (výztuže Learning) hrát pong hry pro video. Pomocí Open source knihovny Pythonu [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) s Azure Machine Learning můžete spravovat složitost distribuovaných RL.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 > * Nastavení experimentu
 > * Definování hlav a pracovních uzlů
@@ -36,9 +36,9 @@ V tomto článku se dozvíte, jak:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
+Spusťte tento kód v některém z těchto prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. Můžete rychle klonovat a spustit vyztužení ukázkových poznámkových bloků na instanci služby Azure Machine Learning Compute.
 
  - Výpočetní instance Azure Machine Learningu
 
@@ -61,19 +61,21 @@ Posílení učení (RL) je přístup ke strojovém učení, který se učí pomo
 
 Vaše školicí agenti se naučí, aby se pong ve **simulovaném prostředí**. Školení agenti zavedou rozhodnutí, že každý rámec hry bude paddle nahoru, dolů nebo zůstat na pracovišti. Při rozhodování se vyhledá stav hry (obrázek RGB obrazovky).
 
-RL využívá **k oznámení agenta, pokud** je jeho rozhodnutí úspěšné. V tomto prostředí získá agent pozitivní nepracovní hodnotu, pokud je vyhodnocen jako bod a záporná nepracovní hodnota, když se na něj vrátí bod. V rámci řady iterací se agent školení učí vybrat akci na základě aktuálního stavu, který se optimalizuje na součet očekávaných budoucích neprospěchů.
-
-K provedení této optimalizace v RL je běžné použít model DNN ( **rozsáhlá neuronové síť** ). Na začátku bude mít agent učení nesplatně, ale každá hra bude vygenerovat další vzorky k dalšímu zlepšení modelu.
+RL využívá **k oznámení agenta, pokud** je jeho rozhodnutí úspěšné. V tomto příkladu získá agent pozitivní nepracovní hodnotu, pokud má za následek určení bodu a zápornou odměnu, když je bod na základě skóre. V rámci řady iterací se agent školení učí vybrat akci na základě aktuálního stavu, který se optimalizuje na součet očekávaných budoucích neprospěchů. K provedení této optimalizace v RL je běžné použití DNN ( **hluboký neuronové Network** ). 
 
 Školení skončí, když agent dosáhne průměrného skóre pro 18 v epocha školení. To znamená, že agent beaten svého protihráče na průměr nejméně 18 bodů v porovnání až 21.
 
-Proces iterace díky simulaci a rekurzování DNN je výpočetně nákladný a vyžaduje velké objemy dat. Jedním ze způsobů, jak zlepšit výkon úloh RL, je **virtuálního práce** , aby několik školicích agentů mohli současně působit a učit se. Správa distribuovaného prostředí RL ale může být složitým podnikem.
+Proces iterace díky simulaci a rekurzování DNN je výpočetně nákladný a vyžaduje velké množství dat. Jedním ze způsobů, jak zlepšit výkon úloh RL, je **virtuálního práce** , aby několik školicích agentů mohli současně působit a učit se. Správa distribuovaného prostředí RL ale může být složitým podnikem.
 
 Azure Machine Learning poskytuje rozhraní pro správu těchto složitých procesů pro horizontální navýšení kapacity úloh RL.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
 
-Nastavte místní prostředí RL načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a zadáním nakonfigurované virtuální sítě.
+Nastavte místní prostředí RL pomocí:
+1. Načítají se požadované balíčky Pythonu.
+1. Inicializuje se pracovní prostor.
+1. Vytvoření experimentu
+1. Určuje nakonfigurovanou virtuální síť.
 
 ### <a name="import-libraries"></a>Import knihoven
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte.
-
-Inicializujte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites). Pokud tento kód spouštíte ve Azure Machine Learning výpočetní instanci, konfigurační soubor již byl vytvořen za vás.
+Inicializujte objekt [pracovního prostoru](concept-workspace.md) ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites). Pokud tento kód spouštíte ve Azure Machine Learning výpočetní instanci, konfigurační soubor již byl vytvořen za vás.
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Zadat virtuální síť
 
-U úloh RL, které používají více výpočetních cílů, je nutné zadat virtuální síť s otevřenými porty, které umožňují vzájemnou komunikaci uzlů pracovních procesů a hlavních uzlů. Virtuální síť se může nacházet v jakékoli skupině prostředků, ale měla by být ve stejné oblasti jako váš pracovní prostor. Další informace o nastavení virtuální sítě najdete v poznámkovém bloku instalace pracovního prostoru, který najdete v části požadavky. Tady zadáte název virtuální sítě ve vaší skupině prostředků.
+U úloh RL, které používají více výpočetních cílů, je nutné zadat virtuální síť s otevřenými porty, které umožňují vzájemnou komunikaci uzlů pracovních procesů a hlavních uzlů.
+
+Virtuální síť se může nacházet v jakékoli skupině prostředků, ale měla by být ve stejné oblasti jako váš pracovní prostor. Další informace o nastavení virtuální sítě najdete v poznámkovém bloku instalace pracovního prostoru v části požadavky. Tady zadáte název virtuální sítě ve vaší skupině prostředků.
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>Definování cílových výpočetních hodnot hlav a pracovních procesů
 
-V tomto příkladu se používají samostatné výpočetní cíle pro uzly paprskových hlav a pracovníků. Tato nastavení umožňují škálovat výpočetní prostředky nahoru a dolů v závislosti na očekávaném zatížení. Nastavte počet uzlů a velikost jednotlivých uzlů v závislosti na potřebách experimentů.
+V tomto příkladu se používají samostatné výpočetní cíle pro uzly paprskových hlav a pracovníků. Tato nastavení umožňují škálovat výpočetní prostředky nahoru a dolů v závislosti na vašich úlohách. Nastavte počet uzlů a velikost jednotlivých uzlů podle vašich potřeb.
 
 ### <a name="head-computing-target"></a>Cíl hlavního výpočetního prostředí
 
-V tomto příkladu se používá hlavní cluster s podporou GPU k optimalizaci výkonu hloubkového učení. Hlavní uzel nakládá neuronové síť, kterou agent používá k rozhodování. Hlavní uzel také shromažďuje datové body z pracovních uzlů pro další vzdělávání sítě neuronové.
+K vylepšení výkonu hloubkového učení můžete použít hlavní cluster, který je vybaven grafickým procesorem. Hlavní uzel nakládá neuronové síť, kterou agent používá k rozhodování. Hlavní uzel také shromažďuje datové body z pracovních uzlů pro výuku neuronové sítě.
 
-Hlavní výpočetní prostředí používá jeden [ `STANDARD_NC6` virtuální počítač](../virtual-machines/nc-series.md) (VM). Má 6 virtuálních procesorů, což znamená, že může distribuovat práci mezi 6 funkčních procesorů.
+Hlavní výpočetní prostředí používá jeden [ `STANDARD_NC6` virtuální počítač](../virtual-machines/nc-series.md) (VM). Má 6 virtuálních procesorů pro distribuci práce napříč.
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Cluster Computing Worker
 
-Tento příklad používá pro výpočetní cíl pro pracovní proces čtyři [ `STANDARD_D2_V2` virtuální počítače](../virtual-machines/nc-series.md) . Každý pracovní uzel má 2 dostupné procesory, celkem 8 dostupných procesorů, které paralelizovat práci.
+Tento příklad používá pro výpočetní cíl pro pracovní proces čtyři [ `STANDARD_D2_V2` virtuální počítače](../virtual-machines/nc-series.md) . Každý pracovní uzel má 2 dostupné procesory na celkem 8 dostupných procesorů.
 
 GPU nejsou pro pracovní uzly nutné, protože neprovádějí důkladné učení. Pracovníci spouštějí simulace her a shromažďují data.
 
@@ -212,14 +214,13 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Vytvoření posílení výukového Estimator
+Pomocí [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) můžete odeslat školicí úlohu Azure Machine Learning.
 
-V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) odeslat školicí úlohu Azure Machine Learning.
-
-Azure Machine Learning používá třídy Estimator k zapouzdření informací o konfiguraci spuštění. To vám umožní snadno určit, jak se má nakonfigurovat provádění skriptu. 
+Azure Machine Learning používá třídy Estimator k zapouzdření informací o konfiguraci spuštění. To vám umožní určit, jak se má nakonfigurovat provádění skriptu. 
 
 ### <a name="define-a-worker-configuration"></a>Definování konfigurace pracovního procesu
 
-Objekt WorkerConfiguration oznamuje Azure Machine Learning, jak inicializovat pracovní cluster, který spustí vstupní skript.
+Objekt WorkerConfiguration oznamuje Azure Machine Learning, jak inicializovat pracovní cluster, který spouští vstupní skript.
 
 ```python
 # Pip packages we will use for both head and worker
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 Skript vstupu `pong_rllib.py` přijímá seznam parametrů, které definují, jak spustit úlohu školení. Předání těchto parametrů prostřednictvím Estimator jako vrstvy zapouzdření usnadňuje změnu parametrů skriptu a konfigurací spouštění nezávisle na sobě.
 
-Určením správného nastavení `num_workers` bude vaše úsilí na maximum na maximum. Nastavte počet pracovních procesů na stejný jako počet dostupných procesorů. V tomto příkladu to můžete vypočítat následujícím způsobem:
+Zadáním správného nastavení `num_workers` zajistíte, aby vaše úsilí na maximum bylo na maximum. Nastavte počet pracovních procesů na stejný jako počet dostupných procesorů. V tomto příkladu můžete použít následující výpočet:
 
-Hlavní uzel je [Standard_NC6](../virtual-machines/nc-series.md) s 6 vCPU. Pracovní cluster má 4 [Standard_D2_V2 virtuálních počítačů](../cloud-services/cloud-services-sizes-specs.md#dv2-series) se dvěma procesory (celkem 8 procesorů). Je ale potřeba odečíst 1 procesor od počtu pracovních procesů, protože 1 se musí vyhradit roli hlavního uzlu. 6 procesorů + 8 procesorů – 1 hlavní procesor = 13 současných pracovních procesů. Azure Machine Learning využívá hlavní a pracovní clustery k odlišení výpočetních prostředků. Ray ale nerozlišuje mezi vedoucími a pracovními procesy a všechny procesory jsou dostupné CPU pro provádění pracovních vláken.
+Hlavní uzel je [Standard_NC6](../virtual-machines/nc-series.md) s 6 vCPU. Pracovní cluster má 4 [Standard_D2_V2 virtuálních počítačů](../cloud-services/cloud-services-sizes-specs.md#dv2-series) se dvěma procesory (celkem 8 procesorů). Je ale potřeba odečíst 1 procesor od počtu pracovních procesů, protože 1 se musí vyhradit roli hlavního uzlu.
+
+6 procesorů + 8 procesorů – 1 hlavní procesor = 13 současných pracovních procesů. Azure Machine Learning využívá hlavní a pracovní clustery k odlišení výpočetních prostředků. Ray ale nerozlišuje mezi vedoucími a pracovníky a všechny procesory jsou k dispozici jako pracovní vlákna.
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>Monitorování a zobrazení výsledků
 
-Pomocí widgetu Azure Machine Learning Jupyter můžete zobrazit stav spuštění v reálném čase. V tomto příkladu Widget zobrazuje dvě podřízené běhy: jeden pro hlavní a jeden pro pracovní procesy. 
+Pomocí widgetu Azure Machine Learning Jupyter můžete zobrazit stav spuštění v reálném čase. Pomůcka ukazuje dvě podřízené běhy: jednu pro hlavu a jednu pro pracovníky. 
 
 ```python
 from azureml.widgets import RunDetails
@@ -429,7 +432,7 @@ Vyberte **kliknutím sem zobrazíte informace o spuštění v Azure Machine Lear
 
 Pokud procházíte protokoly podřízeného spuštění, můžete zobrazit výsledky vyhodnocení zaznamenané v souboru driver_log.txt. Než budou tyto metriky k dispozici na stránce spuštění, možná budete muset počkat několik minut.
 
-V krátké práci jste se naučili nakonfigurovat více výpočetních prostředků, aby se mohl naučit posílit výukový Agent na hraní pong.
+V krátké práci jste se naučili nakonfigurovat více výpočetních prostředků, abyste mohli naučit posílit vzdělávacího agenta, aby se pong velmi dobře na oppponent počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

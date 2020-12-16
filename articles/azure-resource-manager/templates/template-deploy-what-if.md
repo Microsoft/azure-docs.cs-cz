@@ -1,27 +1,24 @@
 ---
-title: Template deployment co-if (Preview)
+title: Template deployment citlivosti
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810067"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563088"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
+# <a name="arm-template-deployment-what-if-operation"></a>Operace what-if (citlivostní analýza) při nasazení šablony ARM
 
-Před nasazením šablony Azure Resource Manager (šablona ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
-
-> [!NOTE]
-> Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+Před nasazením šablony Azure Resource Manager (šablona ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace what-if neprovede žádné změny stávajících prostředků. Místo toho předpoví změny, k nimž by došlo při nasazení zadané šablony.
 
 Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi. Co když je podporováno pro nasazení skupiny prostředků, předplatného, skupiny pro správu a na úrovni tenanta.
 
-## <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
+## <a name="install-azure-powershell-module"></a>Instalace modulu Azure PowerShellu
 
 Pokud chcete v PowerShellu použít co v prostředí PowerShell, musíte mít verzi **4,2 nebo novější z modulu AZ Module**.
 
@@ -37,34 +34,9 @@ Install-Module -Name Az -Force
 
 Další informace o instalaci modulů najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
-### <a name="uninstall-alpha-version"></a>Odinstalace verze Alpha
-
-Pokud jste dříve nainstalovali verzi Alpha modulu citlivostní instalace, odinstalujte tento modul. Verze alfa byla dostupná jenom pro uživatele, kteří si zaregistrovali předběžnou verzi Preview. Pokud jste tuto verzi Preview nenainstalovali, můžete tuto část přeskočit.
-
-1. Spusťte PowerShell jako správce.
-1. Ověřte nainstalované verze modulu AZ. Resources.
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. Pokud máte nainstalovanou verzi s číslem verze ve formátu **2. x. x-Alpha**, odinstalujte tuto verzi.
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. Zrušte registraci citlivostního úložiště, které jste použili k instalaci verze Preview.
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-Jste připraveni použít co dělat.
-
 ## <a name="install-azure-cli-module"></a>Instalace modulu CLI Azure
 
-Pokud chcete v Azure CLI použít co dělat, musíte mít Azure CLI 2.5.0 nebo novější. V případě potřeby [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+Pokud chcete v Azure CLI použít operaci what-if, musíte mít Azure CLI 2.5.0 nebo novější. V případě potřeby si [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Zobrazit výsledky
 
@@ -129,8 +101,8 @@ Chcete-li zobrazit náhled změn před nasazením šablony, použijte:
 
 * [AZ Deployment Group Co-if](/cli/azure/deployment/group#az-deployment-group-what-if) pro nasazení skupin prostředků
 * [AZ Deployment sub a if](/cli/azure/deployment/sub#az-deployment-sub-what-if) on Deployment na úrovni předplatného
-* [AZ Deployment mg co-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) pro nasazení skupin pro správu
-* [AZ Deployment tenant co-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) pro nasazení klientů
+* [AZ Deployment mg co-if](/cli/azure/deployment/mg#az-deployment-mg-what-if) pro nasazení skupin pro správu
+* [AZ Deployment tenant co-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) pro nasazení klientů
 
 Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení. Přidat tento přepínač do:
 
@@ -154,23 +126,23 @@ Pro REST API použijte:
 * [Nasazení – what if v oboru skupiny pro správu](/rest/api/resources/deployments/whatifatmanagementgroupscope) pro nasazení skupin pro správu
 * [Nasazení – what if v oboru tenanta](/rest/api/resources/deployments/whatifattenantscope) pro nasazení klientů.
 
-## <a name="change-types"></a>Změnit typy
+## <a name="change-types"></a>Typy změn
 
 Operace citlivostní zpracování seznamu obsahuje šest různých typů změn:
 
 - **Vytvořit**: prostředek aktuálně neexistuje, ale je definován v šabloně. Prostředek se vytvoří.
 
-- **Odstranit**: Tento typ změny platí pouze v případě, že je pro nasazení použit [režim úplného režimu](deployment-modes.md) . Prostředek existuje, ale není definovaný v šabloně. V režimu úplného režimu se prostředek odstraní. V tomto typu změny jsou zahrnuty pouze prostředky, které [podporují odstranění režimu dokončení](complete-mode-deletion.md) .
+- **Odstranit**: Tento typ změny platí pouze v případě, že je pro nasazení použit [režim úplného režimu](deployment-modes.md) . Prostředek existuje, ale není v šabloně definovaný. V úplném režimu se prostředek odstraní. V tomto typu změny jsou zahrnuty pouze prostředky, které [podporují odstranění režimu dokončení](complete-mode-deletion.md) .
 
 - **Ignore**: prostředek existuje, ale není definovaný v šabloně. Prostředek se nebude nasazovat ani upravovat.
 
 - Žádná **Změna**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí, ale vlastnosti prostředku se nezmění. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads` , což je výchozí hodnota.
 
-- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a změní se vlastnosti prostředku. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads` , což je výchozí hodnota.
+- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a vlastnosti prostředku se změní. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads` , což je výchozí hodnota.
 
-- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku mohou nebo nemusí být změněny. Tato operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní některé vlastnosti. Tento stav se zobrazí pouze v případě, že je [ResultFormat](#result-format) nastaveno na `ResourceIdOnly` .
+- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku se mohou nebo nemusí změnit. Operace vrátí tento typ změny, pokud nemá dostatek informací k určení, jestli se některé vlastnosti změní. Tento stav se zobrazí pouze v případě, že je [ResultFormat](#result-format) nastaveno na `ResourceIdOnly` .
 
-## <a name="result-format"></a>Výsledný formát
+## <a name="result-format"></a>Formát výsledku
 
 Můžete řídit úroveň podrobností, která se vrátí o předpokládaných změnách. Máte dvě možnosti:
 
@@ -282,7 +254,7 @@ az deployment group what-if \
 
 ---
 
-Výstup citlivosti se zobrazuje jako:
+Výstup citlivostní analýzy bude vypadat asi takto:
 
 ![Výstup operace s popisem operace s Správce prostředků šablonou](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -354,7 +326,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
 
-Chcete-li zobrazit náhled změn před nasazením šablony, použijte parametr potvrdit přepínač s příkazem nasazení. Pokud jsou změny podle očekávání, potvrďte, že chcete nasazení dokončit.
+Pokud chcete zobrazit náhled změn před nasazením šablony, použijte v příkazu pro nasazení parametr confirm switch. Pokud jsou změny podle očekávání, potvrďte, že chcete nasazení dokončit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -415,15 +387,15 @@ Zobrazí se očekávané změny a můžete potvrdit, že se nasazení má spusti
 
 Můžete použít operaci citlivostní zpracování prostřednictvím sad Azure SDK.
 
-* V případě Pythonu použijte [co dělat](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
+* V případě Pythonu použijte [co dělat](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
 
-* Pro jazyk Java použijte [třídu DeploymentWhatIf](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable).
+* Pro jazyk Java použijte [třídu DeploymentWhatIf](/java/api/com.microsoft.azure.management.resources.deploymentwhatif).
 
-* Pro .NET použijte [třídu DeploymentWhatIf](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+* Pro .NET použijte [třídu DeploymentWhatIf](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud si všimnete nesprávných výsledků z verze Preview, co-if, nahlaste problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- Pokud si všimnete nesprávných výsledků operace citlivostní zpracování, nahlaste prosím problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
 - Pokud chcete nasadit šablony pomocí Azure CLI, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Azure CLI](deploy-cli.md).
 - Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Správce prostředků REST API](deploy-rest.md).

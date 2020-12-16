@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902999"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561898"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -100,7 +100,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Budete nabízet Nástroj pro převod šablon JSON na nový jazyk šablony?**
 
-  Ano.
+  Yes.
 
 ## <a name="template-specs"></a>Specifikace šablon
 
@@ -154,7 +154,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Když používám, co když se zobrazuje změny ve vlastnostech, které nejsou v mé šabloně Očekával se tento "hluk"?**
 
-  Co když je ve verzi Preview. Pracujeme na snížení hluku. Pomůžete nám vylepšit odesláním problémů v našem úložišti GitHub: https://aka.ms/WhatIfIssues
+  Pracujeme na snížení hluku. Pomůžete nám vylepšit odesláním problémů v našem úložišti GitHub: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Vizualizér šablon
 
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Yes. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 

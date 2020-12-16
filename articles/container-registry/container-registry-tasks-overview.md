@@ -3,12 +3,12 @@ title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027662"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562850"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -58,8 +58,8 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 | Trigger | Ve výchozím nastavení povolená |
 | ------- | ------------------ |
-| Potvrzení | Yes |
-| Žádost o přijetí změn | No |
+| Potvrzení | Ano |
+| Žádost o přijetí změn | Ne |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
 
@@ -70,7 +70,7 @@ Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém ku
 
 ## <a name="automate-os-and-framework-patching"></a>Automatizace oprav operačního systému a rozhraní
 
-Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci *základní image* . Pro většinu imagí kontejnerů je základní image nadřazená image, na které je založena jedna nebo více imagí aplikace. Základní image obvykle obsahují operační systém a někdy aplikační architektury. 
+Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci *základní image*. Pro většinu imagí kontejnerů je základní image nadřazená image, na které je založena jedna nebo více imagí aplikace. Základní image obvykle obsahují operační systém a někdy aplikační architektury. 
 
 Můžete nastavit úlohu ACR pro sledování závislosti na základní imagi při sestavení image aplikace. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
 Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
@@ -105,7 +105,7 @@ V následující tabulce jsou uvedeny příklady podporovaných umístění kont
 | Umístění kontextu | Popis | Příklad |
 | ---------------- | ----------- | ------- |
 | Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
-| Větev hlavní větve GitHubu | Soubory v rámci hlavní větve (nebo jiné výchozí) ve veřejném nebo privátním úložišti GitHub.  | `https://github.com/gituser/myapp-repo.git` |
+| Hlavní větev GitHubu | Soubory v hlavní (nebo jiné výchozí) větvi veřejného nebo privátního úložiště GitHubu.  | `https://github.com/gituser/myapp-repo.git` |
 | Větev GitHubu | Konkrétní větev veřejného nebo privátního úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podsložka GitHubu | Soubory v podsložce ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Potvrzení GitHubu | Konkrétní potvrzení ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace SHA (commit hash) a podsložky. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

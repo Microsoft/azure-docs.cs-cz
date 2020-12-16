@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168558"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562799"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -46,7 +46,7 @@ Klikněte na **přidat graf** a vytvořte další graf s jinou metrikou.
 
 ### <a name="order-or-delete-multiple-charts"></a>Objednat nebo odstranit více grafů
 
-Chcete-li seřadit nebo odstranit více grafů, klikněte na symbol tří teček ( **...** ) a otevřete nabídku graf a vyberte odpovídající položku v nabídce **Přesunout nahoru**, **Přesunout dolů**nebo **Odstranit**.
+Chcete-li seřadit nebo odstranit více grafů, klikněte na symbol tří teček ( **...** ) a otevřete nabídku graf a vyberte odpovídající položku v nabídce **Přesunout nahoru**, **Přesunout dolů** nebo **Odstranit**.
 
 ## <a name="changing-aggregation"></a>Změna agregace
 
@@ -59,7 +59,7 @@ Předpokládejme například, že se v grafu zobrazuje metrika **doby odezvy ser
 - Pokud je časová členitost nastavená na 30 minut, graf se vykreslí z 48 agregovaných DataPoint (například Spojnicový graf připojuje 48 teček v oblasti vykreslení grafu). To znamená 24 hodin × 2 datapoints za hodinu. Každý DataPoint představuje *průměr* všech zaznamenaných dob odezvy pro žádosti serveru, ke kterým došlo během každé z příslušných 30 minut časových období.
 - Pokud časové rozlišení přepnete na 15 minut, dostanete 96 agregovaných datapoints.  To znamená 24 hodin × 4 datapoints za hodinu.
 
-V Průzkumníkovi metriky je dostupných pět základních výpočetních výpočtů: **Sum**, **Count**, **min**, **Max**a **Average**. Agregace **součtu** je někdy označována jako **Celková** agregace. U mnoha metrik Průzkumník metrik skryje agregace, které jsou zcela nepodstatné a nelze je použít.
+V Průzkumníkovi metriky je dostupných pět základních výpočetních výpočtů: **Sum**, **Count**, **min**, **Max** a **Average**. Agregace **součtu** je někdy označována jako **Celková** agregace. U mnoha metrik Průzkumník metrik skryje agregace, které jsou zcela nepodstatné a nelze je použít.
 
 - **Sum** – součet všech hodnot zachycených v intervalu agregace
 - **Count** – počet měření zachycených v intervalu agregace. Počítejte s tím, že v případě, že je metrika vždycky zachycena s hodnotou 1, se **počet** bude rovnat **součtu** . To je běžné v případě, že metrika sleduje počet různých událostí a každé měření představuje jednu událost (tj. kód se při každém výskytu nové žádosti aktivuje na záznam metriky).
@@ -77,15 +77,15 @@ Můžete použít filtry na grafy, které zobrazují metriky s rozměry. Pokud n
 
 2. Vyberte dimenzi (vlastnost), kterou chcete filtrovat.
 
-   ![Snímek obrazovky zobrazující dimenze (vlastnosti), které můžete filtrovat.](./media/metrics-charts/00006.png)
+   ![Snímek obrazovky zobrazující dimenze (vlastnosti), které můžete filtrovat.](./media/metrics-charts/028.png)
 
 3. Vyberte, které hodnoty dimenze chcete zahrnout při vykreslování grafu (Tento příklad ukazuje odfiltrování úspěšných transakcí úložiště):
 
-   ![Snímek obrazovky zobrazující filtrování z úspěšných transakcí úložiště](./media/metrics-charts/00007.png)
+   ![Snímek obrazovky zobrazující filtrování z úspěšných transakcí úložiště](./media/metrics-charts/029.png)
 
 4. Po výběru hodnot filtru klikněte na pryč v selektoru filtru a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
 
-   ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo](./media/metrics-charts/00008.png)
+   ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo](./media/metrics-charts/030.png)
 
 5. Opakováním kroků 1-4 můžete použít více filtrů pro stejné grafy.
 
@@ -104,11 +104,11 @@ Metriku můžete rozdělit podle dimenzí, abyste vizualizují, jak různé segm
 
 2. Vyberte dimenzi, na které chcete graf rozdělit:
 
-   ![Snímek obrazovky zobrazující vybranou dimenzi, na které se má váš graf rozdělit](./media/metrics-charts/00010.png)
+   ![Snímek obrazovky zobrazující vybranou dimenzi, na které se má váš graf rozdělit](./media/metrics-charts/031.png)
 
    Nyní graf nyní zobrazuje více řádků, jeden pro každý segment dimenze:
 
-   ![Snímek obrazovky, který zobrazuje více řádků, jeden pro každý segment dimenze.](./media/metrics-charts/00012.png)
+   ![Snímek obrazovky, který zobrazuje více řádků, jeden pro každý segment dimenze.](./media/metrics-charts/032.png)
 
 3. Kliknutím na tlačítko mimo **Výběr seskupení** jej zavřete.
 
@@ -123,9 +123,13 @@ Například pokud se objem úspěšných žádostí sníží z 99,99% na 99,5%, 
 
 Dalším příkladem je kolísání dostupné paměti, kde hodnota nebude technicky nikdy dostupná 0. Když opravíte rozsah na vyšší hodnotu, může to být tím, že se v paměti uvolní. 
 
-Chcete-li řídit rozsah osy y, použijte znak "...". Nabídka graf a vyberte **Upravit graf** pro přístup k rozšířeným nastavením grafu. Upravte hodnoty v části Rozsah osy Y nebo použijte tlačítko **auto** a vraťte se k výchozímu nastavení.
+Chcete-li řídit rozsah osy y, použijte znak "...". Nabídka graf a vyberte **nastavení grafu** pro přístup k rozšířeným nastavením grafu.
 
-![Snímek obrazovky, který zvýrazní možnost upravit graf](./media/metrics-charts/00014-manually-set-granularity.png)
+![Snímek obrazovky, který zvýrazní možnost nastavení grafu](./media/metrics-charts/033.png)
+
+ Upravte hodnoty v části Rozsah osy Y nebo použijte tlačítko **auto** a vraťte se k výchozímu nastavení.
+ 
+ ![Snímek obrazovky, který zvýrazní část rozsahu osy Y.](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > Uzamykání ohraničení osy y pro grafy, které sledují různé počty nebo součty v určitém časovém období (a proto používají počty, součty, minimum nebo maximum agregace) obvykle vyžadují zadání členitosti času, ale nespoléhání se na automatické výchozí hodnoty. To je nezbytné, protože hodnoty v grafech se mění, když je časová hustota automaticky upravována uživatelem v prohlížeči nebo při přechodu z jednoho rozlišení obrazovky na jiný. Výsledná změna v časovém intervalu ovlivňuje vzhled grafu, neověřuje aktuální výběr rozsahu osy y.
@@ -136,9 +140,9 @@ Po nakonfigurování grafů jsou čáry grafu automaticky přiřazeny barevně z
 
 Chcete-li změnit barvu čáry grafu, klikněte na barevný pruh v legendě, která odpovídá grafu. Otevře se dialogové okno pro výběr barvy. Použijte výběr barvy ke konfiguraci barvy čáry.
 
-Až budou barvy grafu nakonfigurované, zůstanou při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
+![Snímek obrazovky, který ukazuje, jak změnit barvu](./media/metrics-charts/035.png)
 
-![Snímek obrazovky, který ukazuje, jak připnout graf](./media/metrics-charts/018.png)
+Až budou barvy grafu nakonfigurované, zůstanou při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
 
 ## <a name="pin-charts-to-dashboards"></a>Připnutí grafů na řídicí panely
 
@@ -146,9 +150,9 @@ Po nakonfigurování grafů je můžete chtít přidat na řídicí panely, abys
 
 Připnutí nakonfigurovaného grafu na řídicí panel:
 
-Po konfiguraci grafu klikněte v pravém horním rohu grafu na nabídku **Akce grafu** a pak klikněte na **Připnout na řídicí panel**.
+Po konfiguraci grafu klikněte na **Připnout na řídicí panel** v pravém horním rohu grafu.
 
-![obrázek metriky](./media/metrics-charts/00013.png)
+![Snímek obrazovky, který ukazuje, jak připnout na graf](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>Vytváření pravidel upozornění
 
@@ -156,11 +160,11 @@ Můžete použít kritéria, která jste nastavili k vizualizaci metrik, jako z�
 
 ### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Chcete-li vytvořit nové pravidlo výstrahy, klikněte na **nové pravidlo výstrahy** .
 
-![Tlačítko nové pravidlo upozornění zvýrazněné červeně](./media/metrics-charts/015.png)
+![Tlačítko nové pravidlo upozornění zvýrazněné červeně](./media/metrics-charts/042.png)
 
 Převezmete podokno pro vytvoření pravidla výstrahy se základními rozměry metriky z vašeho grafu, aby bylo snazší generovat vlastní pravidla upozornění.
 
-![Vytvořit pravidlo výstrahy](./media/metrics-charts/016.png)
+![Vytvořit pravidlo výstrahy](./media/metrics-charts/041.png)
 
 Další informace o nastavení výstrah metrik najdete v tomto [článku](alerts-metric.md) .
 

@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory externích identit
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory externích identit.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573897"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562374"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externích identit: co je nového
 
 Vítá vás, co je nového v dokumentaci Azure Active Directory externích identit. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového u služby External identity, najdete v tématu [co je nového v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Nejčastější dotazy k Azure Active Directory spolupráci B2B](faq.md)
+- [Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B](google-federation.md)
+- [Zprostředkovatelé identity pro externí identity](identity-providers.md)
+- [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](redemption-experience.md)
+- [Přidání konektoru API do toku uživatele](self-service-sign-up-add-api-connector.md)
+- [Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení](self-service-sign-up-add-approvals.md)
+- [Řešení potíží s Azure Active Directory spolupráce B2B](troubleshoot.md)
+- [Co je uživatel typu host v Azure Active Directory B2B?](what-is-b2b.md)
+- [Doporučené postupy Azure Active Directory B2B](b2b-fundamentals.md)
+- [Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty](delegate-invitations.md)
+- [E-mailové ověřování heslem jednorázového hesla](one-time-passcode.md)
 
 ## <a name="november-2020"></a>Listopad 2020
 

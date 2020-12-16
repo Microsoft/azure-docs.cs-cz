@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424712"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563003"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -25,7 +25,7 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu CloudSimpl
 
 2. Přejděte na **prostředky**  >  **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
 
-3. Na stránce **Souhrn** v privátním cloudu v části **základní informace**ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
+3. Na stránce **Souhrn** v privátním cloudu v části **základní informace** ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
 
     ![Servery DNS privátního cloudu](media/private-cloud-dns-server.png)
 
@@ -44,6 +44,9 @@ Zónu můžete nastavit jako zónu se zástupným inzerováním a nasměrovat na
 Konkrétní soubor a parametry, které je potřeba nakonfigurovat, se můžou lišit v závislosti na vašem individuálním nastavení DNS.
 
 Například pro výchozí konfiguraci serveru BIND upravte soubor/etc/Named.conf na serveru DNS a přidejte následující informace o zóně.
+
+> [!NOTE]
+>Tento článek obsahuje odkazy na podřízený termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ```
 zone "az.cloudsimple.io"

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027318"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562119"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -26,9 +26,11 @@ V rámci přihlašovacího prostředí pro účty v Azure Active Directory (Azur
 
 Metody ověřování bez hesla, jako jsou Windows Hello, FIDO2 Security Keys a aplikace Microsoft Authenticator poskytují nejbezpečnější přihlašovací události.
 
-Azure AD Multi-Factor Authentication zvyšuje zabezpečení při použití hesla, když se uživatel přihlásí. Uživateli se může zobrazit výzva k zadání dalších forem ověřování, jako je třeba reakce na nabízené oznámení, zadání kódu ze softwaru nebo hardwarového tokenu nebo reakce na volání SMS nebo telefon.
+Azure AD Multi-Factor Authentication (MFA) zvyšuje zabezpečení při použití hesla, když se uživatel přihlásí. Uživateli se může zobrazit výzva k zadání dalších forem ověřování, jako je třeba reakce na nabízené oznámení, zadání kódu ze softwaru nebo hardwarového tokenu nebo reakce na volání SMS nebo telefon.
 
-Pro zjednodušení možnosti zprovoznění uživatelů a registraci pro MFA i SSPR doporučujeme [Povolit registraci kombinovaných zabezpečení informací](howto-registration-mfa-sspr-combined.md). Pro odolnost proti chybám doporučujeme, abyste uživatelům vyžadovali registraci více metod ověřování. Když je jedna metoda pro uživatele během přihlašování nebo SSPR k dispozici, může se rozhodnout ověřit jinou metodu. Další informace najdete v tématu [Vytvoření odolné strategie správy řízení přístupu v Azure AD](concept-resilient-controls.md).
+Pro zjednodušení možnosti zprovoznění uživatelů a registraci pro MFA a Samoobslužné resetování hesla (SSPR) doporučujeme [Povolit registraci kombinovaných informací o zabezpečení](howto-registration-mfa-sspr-combined.md). Pro odolnost proti chybám doporučujeme, abyste uživatelům vyžadovali registraci více metod ověřování. Když je jedna metoda pro uživatele během přihlašování nebo SSPR k dispozici, může se rozhodnout ověřit jinou metodu. Další informace najdete v tématu [Vytvoření odolné strategie správy řízení přístupu v Azure AD](concept-resilient-controls.md).
+
+Tady je [video](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) , které jsme vytvořili, abychom vám pomohli vybrat nejlepší metodu ověřování a zajistit tak bezpečnou organizaci.
 
 ## <a name="authentication-method-strength-and-security"></a>Síla a zabezpečení metody ověřování
 
@@ -47,7 +49,10 @@ Následující tabulka popisuje požadavky na zabezpečení pro dostupné metody
 | Hlas                          | Střední   | Střední    | Střední       |
 | Heslo                       | Nízká      | Vysoká      | Vysoké         |
 
-Další informace o zabezpečení najdete v tématu [chyby zabezpečení ověřování a vektory útoku](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+Nejnovější informace o zabezpečení najdete v našem blogovém příspěvku:
+
+- [Je čas zavěsit na přenosech telefonů pro ověřování.](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Chyby zabezpečení ověřování a vektory útoku](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > Pro flexibilitu a použitelnost doporučujeme, abyste používali aplikaci Microsoft Authenticator. Tato metoda ověřování poskytuje nejlepší uživatelské prostředí a několik režimů, jako je například bez hesla, nabízená oznámení MFA a kódy OATH.

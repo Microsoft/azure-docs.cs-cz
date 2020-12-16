@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562833"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
@@ -57,6 +57,16 @@ Následující tabulka porovnává tyto dvě metody podrobněji:
 |  **Doba spouštění** | Provede poměrně krátkou dobu, od několika sekund až po několik hodin. | Výuka obvykle trvá příliš dlouho, protože algoritmus hloubkového učení zahrnuje mnoho vrstev. |
 |  **Výstup** | Výstupem je obvykle číselná hodnota, jako je například skóre nebo klasifikace. | Výstup může mít několik formátů, jako je text, skóre nebo zvuk. |
 
+## <a name="transfer-learning"></a>Učení pro přenos
+
+Školení modelů pro hloubkové učení často vyžaduje velké množství školicích dat, špičkových výpočetních prostředků (GPU, TPU) a delší dobu výuky. Ve scénářích, kdy nemáte k dispozici žádnou z těchto možností, můžete postupovat podle techniky, která je známá jako přenosová výuka.
+
+Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém.
+
+Vzhledem ke struktuře sítí neuronové, první sada vrstev obvykle obsahuje funkce nižší úrovně, zatímco konečná sada vrstev obsahuje funkci vyšší úrovně, která je blíže k příslušné doméně. Tím, že ještě potřeba vyřadit konečné vrstvy pro použití v nové doméně nebo problému, můžete významně zkrátit dobu, data a výpočetní prostředky potřebné ke školení nového modelu. Například pokud již máte model, který rozpozná automobily, můžete změnit účel, který model používá ke studiu přenosu, a také rozpoznávat nákladní automobily, motocykly a jiné druhy vozidel.
+
+Naučte se, jak použít učení přenosu pro klasifikaci imagí pomocí Open-Source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+
 ## <a name="deep-learning-use-cases"></a>Případy použití hloubkového učení
 
 Z důvodu umělé struktury Neuronové sítě je obsáhlý Learning v Excelu v identifikaci vzorů nestrukturovaných dat, jako jsou obrázky, zvuk, video a text. Z tohoto důvodu obsáhlé učení rychle transformuje spoustu odvětví, včetně zdravotní péče, energie, financí a dopravy. Tyto obory nyní přemýšlení o tradičních obchodních procesech. 
@@ -72,8 +82,6 @@ Rozpoznávání pojmenovaných entit je metoda hloubkového učení, která pře
 Obsáhlý Learning se použil v mnoha případech použití detekce objektů. Detekce objektu se skládá ze dvou částí: klasifikace obrázku a pak lokalizace imagí. _Klasifikace_ obrázku identifikuje objekty obrázku, například auta nebo lidi. _Lokalizace_ obrázků poskytuje konkrétní umístění těchto objektů. 
 
 Detekce objektů se už používá v oborech, jako jsou hry, maloobchodní prodej, cestovní ruch a osobní automobily.
-
-Naučte se používat model klasifikace obrázků z open-source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri) .
 
 ### <a name="image-caption-generation"></a>Generování titulku obrázku
 
@@ -107,7 +115,7 @@ Síť neuronové Feedforward je nejjednodušší typ umělé neuronové sítě. 
 
 Opakující se neuronové sítě jsou široce využívanou umělou neuronovéou síť. Tyto sítě ukládají výstup vrstvy a předává je zpět do vstupní vrstvy, aby bylo možné odhadnout výsledek vrstvy. Opakující se neuronové sítě mají skvělé možnosti učení. Jsou často používány pro komplexní úlohy, jako je prognózování časových řad, rozpoznávání rukopisu a rozpoznávání jazyka.
 
-### <a name="convolutional-neural-networks"></a>Konvoluční neuronové sítě
+### <a name="convolutional-neural-network"></a>Síť neuronové konvoluční
 
 Síť neuronové konvoluční je zvláště efektivní umělá síť neuronové a představuje jedinečnou architekturu. Vrstvy jsou uspořádány do tří rozměrů: šířka, Výška a hloubka. Neurons v jedné vrstvě se připojí k neurons v následující vrstvě, ale pouze do malých oblastí neurons vrstvy. Konečný výstup je snížen na jeden vektor skóre pravděpodobnosti uspořádané podél rozměru hloubky. 
 

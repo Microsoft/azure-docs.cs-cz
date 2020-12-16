@@ -3,15 +3,15 @@ title: Aktualizace služby fondu hostitelů virtuálních počítačů s Windows
 description: Jak vytvořit fond ověřovacích hostitelů pro monitorování aktualizací služby před výstupem aktualizací do produkčního prostředí.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526506"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563241"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
 
@@ -30,7 +30,7 @@ Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagn
 >[!IMPORTANT]
 >Virtuální plocha Windows s integrací správy prostředků Azure v současné době má potíže při povolování a zakazování ověřovacích prostředí. Tento článek aktualizujeme, až problém vyřešíme.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 
@@ -66,6 +66,20 @@ Výsledky rutiny by měly vypadat podobně jako tento výstup:
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Povolení prostředí pro ověřování pomocí Azure Portal
+
+K povolení prostředí ověřování můžete použít taky Azure Portal.
+
+Chcete-li použít Azure Portal ke konfiguraci fondu ověřovacích hostitelů:
+
+1. Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
+2. Vyhledejte a vyberte **virtuální počítač s Windows**.
+3. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů**.
+4. Vyberte název fondu hostitelů, který chcete upravit.
+5. Vyberte **Vlastnosti**.
+6. V poli prostředí ověřování vyberte **Ano** , pokud chcete povolit prostředí ověřování.
+7. Vyberte **Uložit**. Tím se použijí nová nastavení.
 
 ## <a name="update-schedule"></a>Aktualizovat plán
 

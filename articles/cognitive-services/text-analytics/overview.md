@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2d8ebe87cdf1d11ae4d9c9050ba1ac924089aa33
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505609"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563224"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -64,7 +64,7 @@ Rozpoznávání pojmenovaných entit (NER) dokáže [identifikovat a kategorizov
 
 Pracovní postup je jednoduchý: odešlete data pro analýzu a obdržíte výstupy ve svém kódu. Analyzátory jsou používány tak, jak jsou, bez dalších konfigurací nebo přizpůsobení.
 
-1. [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu. Potom [získáte klíč](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali k ověření vašich požadavků.
+1. [Vytvořte prostředek Azure](how-tos/text-analytics-how-to-call-api.md) pro analýza textu. Potom [získáte klíč](how-tos/text-analytics-how-to-call-api.md) , který jste vygenerovali k ověření vašich požadavků.
 
 2. [Zformulujte požadavek](how-tos/text-analytics-how-to-call-api.md#json-schema) obsahující vaše data ve formě nezpracovaného nestrukturovaného textu ve formátu JSON.
 

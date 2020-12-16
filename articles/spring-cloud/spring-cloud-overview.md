@@ -4,15 +4,15 @@ description: Seznamte se s funkcemi a výhodami Azure jarního cloudu pro nasaze
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 12/02/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: 041ef9950300129d54c9374939e13a2f99035bc1
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: devx-track-java, contperf-fy21q2
+ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532838"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563139"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
 
@@ -20,7 +20,7 @@ Jarní cloud Azure usnadňuje nasazení aplikací mikroslužeb s pružinou v sys
 
 ## <a name="why-use-azure-spring-cloud"></a>Proč používat jarní cloud Azure?
 
-Nasazení aplikací do Azure Pramenitého cloudu má spoustu výhod.  Můžete:
+Nasazení aplikací do Azure Pramenitého cloudu má spoustu výhod.  Máte následující možnosti:
 * Efektivně Migrujte stávající jarní aplikace a spravujte škálování a náklady v cloudu.
 * Modernizovat aplikace pomocí jarních vzorů cloudu, abyste vylepšili flexibilitu a rychlost doručování.
 * Spouštějte Java v cloudovém měřítku a vyšší využití bez komplikované infrastruktury.

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350207"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563071"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení statických Next.js websites ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Next.js](https://nextjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Next.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Next.js
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 - Účet GitHub. [Vytvořte si účet zdarma](https://github.com/join).
@@ -125,7 +125,7 @@ Azure static Web Apps nasadí vaši aplikaci z úložiště GitHubu a zachová s
 1. Doručovat změny do GitHubu.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>Nasazení statického webu
@@ -155,7 +155,7 @@ Nový účet statického Web Apps potřebuje přístup k úložišti pomocí apl
 1. Klikněte na **tlačítko Přihlásit se pomocí GitHubu** .
 1. Vyberte **organizaci** , ve které jste úložiště vytvořili pro svůj Next.js projekt, což může být vaše uživatelské jméno GitHubu.
 1. Vyhledejte a vyberte název úložiště, které jste vytvořili dříve.
-1. Z rozevíracího seznamu *větev* vyberte možnost **Hlavní** jako větev.
+1. Z rozevíracího seznamu *větev* vyberte **Main (Hlavní** ) jako větev.
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Připojení ke GitHubu":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 Při vytváření aplikace se v úložišti Azure static Web Apps vytvořil soubor pracovního postupu akcí GitHubu. Tento soubor budete muset přenést do místního úložiště, aby se synchronizoval historie Gitu.
 
-Vraťte se do terminálu a spusťte následující příkaz `git pull origin master` .
+Vraťte se do terminálu a spusťte následující příkaz `git pull origin main` .
 
 ## <a name="configure-dynamic-routes"></a>Konfigurace dynamických tras
 

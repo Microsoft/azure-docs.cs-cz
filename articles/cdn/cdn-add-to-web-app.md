@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779540"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562238"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
 
@@ -49,7 +49,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-the-web-app"></a>Vytvoření webové aplikace
 
-Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](../app-service/quickstart-html.md) až do kroku **Přechod do aplikace** .
+Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](../app-service/quickstart-html.md) až do kroku **Přechod do aplikace**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -64,7 +64,7 @@ Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, k
 
 ![Výběr aplikace App Service na portálu](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-Na stránce **App Service** v části **Nastavení** vyberte **Sítě > Konfigurovat Azure CDN pro aplikaci** .
+Na stránce **App Service** v části **Nastavení** vyberte **Sítě > Konfigurovat Azure CDN pro aplikaci**.
 
 ![Výběr CDN na portálu](media/cdn-add-to-web-app/portal-select-cdn.png)
 
@@ -75,12 +75,12 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 | Nastavení | Navrhovaná hodnota | Popis |
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
-| **Cenová úroveň** | Akamai úrovně Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard* . |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně *&lt; koncového bodu &gt;* . azureedge.NET.
+| **Cenová úroveň** | Akamai úrovně Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně *&lt; koncového bodu &gt;*. azureedge.NET.
 
 Vyberte **Vytvořit** a vytvořte profil CDN.
 
-Azure vytvoří profil a koncový bod. Nový koncový bod se zobrazí v seznamu **Koncové body** a až se zřídí, bude jeho stav **Spuštěno** .
+Azure vytvoří profil a koncový bod. Nový koncový bod se zobrazí v seznamu **Koncové body** a až se zřídí, bude jeho stav **Spuštěno**.
 
 ![Nový koncový bod v seznamu](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
@@ -91,7 +91,7 @@ Azure vytvoří profil a koncový bod. Nový koncový bod se zobrazí v seznamu 
    - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut. 
 
-Ukázková aplikace má soubor *index.html* a složky *css* , *img* a *js* , které obsahují další statické prostředky. Cesty k obsahu jsou v koncovém bodu CDN pro všechny tyto soubory stejné. Například obě následující adresy URL slouží k přístupu k souboru *bootstrap.css* ve složce *css* :
+Ukázková aplikace má soubor *index.html* a složky *css*, *img* a *js*, které obsahují další statické prostředky. Cesty k obsahu jsou v koncovém bodu CDN pro všechny tyto soubory stejné. Například obě následující adresy URL slouží k přístupu k souboru *bootstrap.css* ve složce *css*:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -125,7 +125,7 @@ V této části kurzu nasadíte do webové aplikace změnu a vyprázdníte CDN, 
 
 ### <a name="deploy-a-change-to-the-web-app"></a>Nasazení změny do webové aplikace
 
-Otevřete soubor *index.html* a do nadpisu H1 přidejte *– V2* , jak je znázorněno v následujícím příkladu: 
+Otevřete soubor *index.html* a do nadpisu H1 přidejte *– V2*, jak je znázorněno v následujícím příkladu: 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
@@ -135,7 +135,7 @@ Potvrďte změnu a nasaďte ji do webové aplikace.
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Po dokončení nasazení přejděte na adresu URL webové aplikace, abyste viděli změnu.
@@ -166,13 +166,13 @@ V seznamu prostředků vyberte koncový bod CDN.
 
 ![Výběr koncového bodu](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-V horní části stránky **Koncový bod** vyberte **Vyprázdnit** .
+V horní části stránky **Koncový bod** vyberte **Vyprázdnit**.
 
 ![Výběr možnosti Vyprázdnit](media/cdn-add-to-web-app/portal-select-purge.png)
 
-Zadejte cesty k obsahu, který chcete vyprázdnit. Můžete předat úplnou cestu k souboru pro vyprázdnění jednotlivých souborů, nebo část cesty pro vyprázdnění a aktualizaci veškerého obsahu ze složky. Vzhledem k tomu, že jste změnili soubor *index.html* , zkontrolujte, že se nachází v jedné z cest.
+Zadejte cesty k obsahu, který chcete vyprázdnit. Můžete předat úplnou cestu k souboru pro vyprázdnění jednotlivých souborů, nebo část cesty pro vyprázdnění a aktualizaci veškerého obsahu ze složky. Vzhledem k tomu, že jste změnili soubor *index.html*, zkontrolujte, že se nachází v jedné z cest.
 
-V dolní části stránky klikněte na **Vyprázdnit** .
+V dolní části stránky klikněte na **Vyprázdnit**.
 
 ![Stránka Vyprázdnit](media/cdn-add-to-web-app/app-service-web-purge-cdn.png)
 
@@ -182,7 +182,7 @@ Počkejte na dokončení zpracování žádosti o vyprázdnění, což obvykle t
 
 ![Oznámení vyprázdnění](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-Když přejdete na adresu URL koncového bodu CDN pro soubor *index.html* , uvidíte řetězec *V2* , který jste přidali do nadpisu na domovské stránce. Ten označuje, že se mezipaměť CDN aktualizovala.
+Když přejdete na adresu URL koncového bodu CDN pro soubor *index.html*, uvidíte řetězec *V2*, který jste přidali do nadpisu na domovské stránce. Ten označuje, že se mezipaměť CDN aktualizovala.
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -206,11 +206,11 @@ V této části kurzu změníte chování při ukládání do mezipaměti tak, �
 
 ### <a name="change-the-cache-behavior"></a>Změna chování mezipaměti
 
-Na webu Azure Portal na stránce **Koncový bod CDN** vyberte **Mezipaměť** .
+Na webu Azure Portal na stránce **Koncový bod CDN** vyberte **Mezipaměť**.
 
-Z rozevíracího seznamu **Chování při ukládání řetězců dotazu do mezipaměti** vyberte **Ukládat do mezipaměti každou jedinečnou adresu URL** .
+Z rozevíracího seznamu **Chování při ukládání řetězců dotazu do mezipaměti** vyberte **Ukládat do mezipaměti každou jedinečnou adresu URL**.
 
-Vyberte **Uložit** .
+Vyberte **Uložit**.
 
 ![Výběr chování při ukládání řetězce dotazu do mezipaměti](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -226,14 +226,14 @@ Azure CDN vrátí obsah webové aplikace, který obsahuje text *V2* v nadpisu.
 
 Abyste zajistili uložení této stránky v mezipaměti v CDN, aktualizujte stránku. 
 
-Otevřete soubor *index.html* , změňte *V2* na *V3* a pak změnu nasaďte. 
+Otevřete soubor *index.html*, změňte *V2* na *V3* a pak změnu nasaďte. 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
-V prohlížeči přejděte na adresu URL koncového bodu CDN s novým řetězcem dotazu, například `q=2`. Azure CDN získá aktuální soubor *index.html* a zobrazí *V3* . Pokud ale přejdete na koncový bod CDN s řetězcem dotazu `q=1`, uvidíte *V2* .
+V prohlížeči přejděte na adresu URL koncového bodu CDN s novým řetězcem dotazu, například `q=2`. Azure CDN získá aktuální soubor *index.html* a zobrazí *V3*. Pokud ale přejdete na koncový bod CDN s řetězcem dotazu `q=1`, uvidíte *V2*.
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

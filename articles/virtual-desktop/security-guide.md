@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511531"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562612"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -101,7 +101,7 @@ Hostitelé relací jsou virtuální počítače, které běží v rámci předpl
 
 ### <a name="enable-screen-capture-protection-preview"></a>Povolit ochranu snímku obrazovky (Preview)
 
-Funkce ochrany snímku obrazovky zabraňuje zachycení citlivých informací na koncových bodech klienta. Když tuto funkci povolíte, vzdálený obsah se na snímky obrazovky a sdílené složky automaticky zablokuje nebo skryje. Bude taky skrytá proti škodlivému softwaru, který může průběžně zachytit obsah vaší obrazovky.
+Funkce ochrany snímku obrazovky zabraňuje zachycení citlivých informací na koncových bodech klienta. Když tuto funkci povolíte, vzdálený obsah se na snímky obrazovky a sdílené složky automaticky zablokuje nebo skryje. Bude taky skrytá proti škodlivému softwaru, který může průběžně zachytit obsah vaší obrazovky. Doporučujeme zakázat přesměrování schránky, abyste zabránili kopírování vzdáleného obsahu do koncových bodů při použití této funkce.
 
 Tato zásada se vynutila na úrovni hostitele nakonfigurováním klíče registru. Pokud chcete tuto zásadu povolit, otevřete PowerShell a nastavte klíč registru **fEnableScreenCaptureProtection** spuštěním této rutiny:
 

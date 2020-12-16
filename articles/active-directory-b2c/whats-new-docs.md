@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory obchodních na zákazníky (B2C)
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory B2C (Business-to-zákazníka).
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571075"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559723"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: co je nového
 
 Vítá vás novinky v Azure Active Directory B2C dokumentaci. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě B2C, najdete v tématu [novinky v Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="new-articles"></a>Nové články
+
+- [Vytvoření toku uživatele v Azure Active Directory B2C](create-user-flow.md)
+- [Nastavení registrace a přihlášení k telefonu pro toky uživatelů (Preview)](phone-authentication-user-flows.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Kurz: Vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md)
+- [Ukázky kódu pro Azure Active Directory B2C](code-samples.md)
+- [Verze rozložení stránky](page-layout.md)
 
 ## <a name="november-2020"></a>Listopad 2020
 

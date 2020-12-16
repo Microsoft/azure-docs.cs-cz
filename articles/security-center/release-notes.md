@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922922"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560249"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -39,6 +39,7 @@ Aktualizace v prosinci zahrnují:
 - [Podpora Azure Defenderu pro Azure synapse Analytics vyhrazený fond SQL je všeobecně dostupná.](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [Globální správci teď můžou udělovat oprávnění na úrovni tenanta.](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Dva nové plány Azure Defenderu: Azure Defender pro DNS a Azure Defender pro Správce prostředků (ve verzi Preview)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Stránka nové výstrahy zabezpečení v Azure Portal (Preview)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender pro servery SQL na počítačích je všeobecně dostupný.
 
@@ -95,6 +96,24 @@ Tyto nové ochrany významně zvyšují odolnost proti útokům z aktérů hroze
     - [Reakce na upozornění Azure Defenderu pro DNS](defender-for-dns-usage.md)
     - [Seznam upozornění poskytovaných službou Azure Defender pro DNS](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Stránka nové výstrahy zabezpečení v Azure Portal (Preview)
+
+Přenavrhli jsme stránku výstrahy zabezpečení Azure Security Center, aby poskytovala tyto:
+
+- **Vylepšené možnosti třídění výstrah** – pomáhají snížit únavu výstrah a soustředit se na nejrelevantnější hrozby, a to díky tomu, že seznam obsahuje přizpůsobitelné filtry a možnosti seskupení.
+- **Další informace najdete v seznamu výstrah** , například MITRE ATT&ACK taktiku
+- **Tlačítko pro vytvoření ukázkových upozornění** – k vyhodnocení možností Azure Defenderu a otestování konfigurace výstrah (pro integraci Siem, e-mailová oznámení a automatizace pracovních postupů) můžete vytvářet ukázkové výstrahy ze všech plánů Azure Defenderu.
+- **Přizpůsobení s incidentem funkce Sentinel Azure** – pro zákazníky, kteří používají oba produkty, je teď mezi nimi přepínání mezi nimi jednodušší a je snadné ho snadno učit.
+- **Lepší výkon** pro velké seznamy výstrah
+- **Navigace pomocí klávesnice** v seznamu výstrah
+- **Výstrahy z Azure Resource graphu** – pro všechny vaše prostředky můžete zadávat dotazy na výstrahy v Azure Resource graphu, Kusto jako rozhraní API. To je užitečné také při vytváření vlastních řídicích panelů výstrah. [Přečtěte si další informace o Azure Resource graphu](../governance/resource-graph/index.yml).
+
+Pro přístup k novému prostředí použijte odkaz vyzkoušet si ho z banneru v horní části stránky výstrahy zabezpečení.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner s odkazem na nové prostředí upozornění ve verzi Preview":::
+
+Pokud chcete vytvořit ukázkové výstrahy z nového prostředí výstrah, přečtěte si téma [Generování ukázkových výstrah v Azure Defenderu](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -271,7 +290,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
@@ -514,7 +533,7 @@ Související stránky:
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků
 
-Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center nyní mají schopnost *zabránit* v neúspěšně konfiguracích nových prostředků s ohledem na konkrétní doporučení. 
+Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center má teď možnost pomáhat *zabránit* neúspěšně se konfigurací nových prostředků s ohledem na konkrétní doporučení. 
 
 Tato funkce vám může přispět k zabezpečení vašich úloh a ke stabilizaci zabezpečeného skóre.
 
@@ -650,7 +669,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="before-august-2020"></a>Před srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Povolení integrovaného řešení posouzení ohrožení zabezpečení na virtuálních počítačích (používá se Qualys)**<br>Klíč: 550e890b-e652-4d22-8274-60b3bdb24c63|Integrované|
 |**Náprava ohrožení zabezpečení zjištěná na vašich virtuálních počítačích (používá se Qualys)**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Integrované|
@@ -659,7 +678,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásada|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -668,13 +687,13 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="from-august-2020"></a>Od srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.**<br>Klíč: ffff0522-1e88-47fc-8382-2a80ba848f5d|Předdefinované + BYOL|
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásada|Rozsah|
+|Zásady|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||

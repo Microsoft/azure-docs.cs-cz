@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535550"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561269"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps postupy pro LUIS
 
@@ -98,7 +98,7 @@ Jakékoli strategie větvení, kterou přijmete, je klíčovým principem všech
 
 Podpora nezávislého fungování v větvích s projektem LUIS:
 
-- **Hlavní větev má svou vlastní aplikaci pro LUIS.** Tato aplikace představuje aktuální stav vašeho řešení pro váš projekt a jeho aktuální aktivní verze by měla být vždy namapována na `.lu` zdroj, který je ve větvi Master. Všechny aktualizace `.lu` zdroje pro tuto aplikaci by měly být přezkoumány a testovány, aby bylo možné tuto aplikaci nasadit do prostředí pro vytváření prostředí, jako je například výroba. Pokud jsou aktualizace do `.lu` hlavní větve sloučeny z větve funkcí, měli byste v aplikaci Luis vytvořit novou verzi a přeložit [číslo verze](#versioning).
+- **Hlavní větev má svou vlastní aplikaci pro LUIS.** Tato aplikace představuje aktuální stav vašeho řešení pro váš projekt a jeho aktuální aktivní verze by měla být vždy namapována na `.lu` zdroj, který je v hlavní větvi. Všechny aktualizace `.lu` zdroje pro tuto aplikaci by měly být přezkoumány a testovány, aby bylo možné tuto aplikaci nasadit do prostředí pro vytváření prostředí, jako je například výroba. Když `.lu` se aktualizace sloučí do hlavní větve z nějaké funkce, měli byste v aplikaci Luis vytvořit novou verzi a přeložit [číslo verze](#versioning).
 
 - **Každá větev funkce musí používat svou vlastní instanci aplikace Luis**. Vývojáři pracují s touto aplikací ve větvi funkcí bez rizika ovlivnění vývojářů, kteří pracují v jiných větvích. Tato aplikace pro vývojovou větev je pracovní kopie, která se má odstranit při odstranění větve funkce.
 
@@ -108,13 +108,13 @@ Podpora nezávislého fungování v větvích s projektem LUIS:
 
 Vývojáři můžou pracovat na aktualizacích aplikace v LUIS nezávisle na jiných větvích:
 
-1. Vytvoření větve funkce z hlavní větve (v závislosti na strategii vaší větve, obvykle na hlavním nebo vývojovém).
+1. Vytvoření větve funkce z hlavní větve (v závislosti na strategii vaší větve, obvykle hlavní nebo vyvíjené).
 
 1. [Vytvořte novou aplikaci Luis na portálu Luis](./luis-how-to-start-new-app.md) (*aplikace pro vývojovou větev*), která podporuje výhradně práci ve větvi funkce.
 
    * Pokud `.lu` zdroj vašeho řešení již existuje ve větvi, protože byl uložen po dokončení práce v jiné větvi dříve v projektu, vytvořte Luis aplikaci pro vývojovou větev pomocí importu `.lu` souboru.
 
-   * Pokud spouštíte práci na novém projektu, zatím nebudete mít `.lu` zdroj pro svou hlavní aplikaci Luis v úložišti. Soubor vytvoříte tak, `.lu` že svou aplikaci pro vývojovou větev vyexportujete z portálu, když jste dokončili práci ve větvi vaší funkce, a odešlete ji jako součást vaší žádosti o přijetí změn.
+   * Pokud spouštíte práci na novém projektu, zatím nebudete mít `.lu` zdroj vaší hlavní aplikace pro Luis v úložišti. Soubor vytvoříte tak, `.lu` že svou aplikaci pro vývojovou větev vyexportujete z portálu, když jste dokončili práci ve větvi vaší funkce, a odešlete ji jako součást vaší žádosti o přijetí změn.
 
 1. K implementaci požadovaných změn Pracujte na aktivní verzi aplikace pro vývojovou větev. Doporučujeme pracovat pouze v jediné verzi aplikace pro vývojovou větev pro veškerou funkci práce s větví. Pokud vytvoříte více než jednu verzi v aplikaci pro vývojovou větev, buďte opatrní, abyste sledovali, která verze obsahuje změny, které chcete vrátit se změnami při vyvolání žádosti o přijetí změn.
 
@@ -124,7 +124,7 @@ Vývojáři můžou pracovat na aktualizacích aplikace v LUIS nezávisle na jin
 
 1. Zaregistrujte aktualizace a pozvěte druhou kontrolu vašich aktualizací. Pokud používáte GitHub, vyvoláte [žádost o](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)přijetí změn.
 
-1. Pokud jsou změny schváleny, sloučí aktualizace do hlavní větve. V tomto okamžiku vytvoříte novou [verzi](./luis-how-to-manage-versions.md) *hlavní* aplikace Luis pomocí aktualizovaného `.lu` v hlavní části. Pokyny k nastavení názvu verze najdete v tématu [Správa verzí](#versioning) .
+1. Po schválení změn sloučíte aktualizace do hlavní větve. V tuto chvíli vytvoříte novou [verzi](./luis-how-to-manage-versions.md) *hlavní* aplikace Luis pomocí aktualizovaného `.lu` v části Main. Pokyny k nastavení názvu verze najdete v tématu [Správa verzí](#versioning) .
 
 1. Když je větev funkce odstraněna, je vhodné odstranit aplikaci pro vývojovou větev LUIS, kterou jste vytvořili pro funkci pracovní větve.
 
@@ -150,7 +150,7 @@ Současně můžete podporovat více vývojářů pracujících na stejné větv
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Zahrnutí změn z jedné větve do druhé se přenesením změn nebo sloučením
 
-Někteří jiní vývojáři v týmu, kteří pracují v jiné větvi, mohli ve svém týmu aktualizovat `.lu` zdroj a sloučit je do hlavní větve až po vytvoření vaší větve funkce. Před tím, než budete moci provádět vlastní změny v rámci větve funkcí, můžete chtít své změny začlenit do své pracovní verze. To můžete provést [přenesením změn nebo sloučením do Hlavní](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) větve stejným způsobem jako jakýkoli jiný prostředek kódu. Vzhledem k tomu, že aplikace LUIS ve formátu LUDown je humánní čitelnost, podporuje sloučení pomocí standardních nástrojů pro sloučení.
+Někteří vývojáři v týmu, kteří pracují v jiné větvi, mohli ve svém týmu aktualizovat `.lu` zdroj a sloučit je do hlavní větve po vytvoření vaší větve funkce. Před tím, než budete moci provádět vlastní změny v rámci větve funkcí, můžete chtít své změny začlenit do své pracovní verze. To můžete provést [přenesením změn nebo sloučením do Main](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) stejným způsobem jako jakýkoli jiný prostředek kódu. Vzhledem k tomu, že aplikace LUIS ve formátu LUDown je humánní čitelnost, podporuje sloučení pomocí standardních nástrojů pro sloučení.
 
 Pokud vaše aplikace LUIS přenášíte do větve funkcí, postupujte podle těchto tipů:
 
@@ -162,7 +162,7 @@ Pokud vaše aplikace LUIS přenášíte do větve funkcí, postupujte podle těc
 
 ### <a name="merge-prs"></a>Sloučit PR
 
-Po schválení žádosti o přijetí změn můžete sloučit změny do své hlavní větve. Na zdroj LUDown pro aplikaci LUIS se nevztahují žádné zvláštní požadavky: Jedná se o lidské čtení a podporuje slučování pomocí standardních nástrojů pro sloučení. Jakékoli konflikty sloučení lze vyřešit stejným způsobem jako u jiných zdrojových souborů.
+Po schválení žádosti o přijetí změn můžete sloučit změny do vaší hlavní větve. Na zdroj LUDown pro aplikaci LUIS se nevztahují žádné zvláštní požadavky: Jedná se o lidské čtení a podporuje slučování pomocí standardních nástrojů pro sloučení. Jakékoli konflikty sloučení lze vyřešit stejným způsobem jako u jiných zdrojových souborů.
 
 Po sloučení žádosti o přijetí změn se doporučuje vyčistit:
 
@@ -185,9 +185,9 @@ Aplikace LUIS ve formátu LUDown je humánní čitelnost, která podporuje komun
 
 Aplikace se skládá z několika komponent, které můžou zahrnovat věci, jako je robot běžící v [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA maker](https://www.qnamaker.ai/), [Služba Azure Speech Service](../speech-service/overview.md)a další. Aby bylo možné dosáhnout cíle volně vázaných aplikací, použijte [řízení verze](/azure/devops/learn/git/what-is-version-control) tak, aby každá komponenta aplikace byla oddělená od verze, a umožní vývojářům detekovat zásadní změny nebo aktualizace pouze tím, že si prohlíží číslo verze. Aplikaci LUIS je snazší používat nezávisle na jiných součástech, pokud ji udržujete ve vlastním úložišti.
 
-Aplikace LUIS pro hlavní větev by měla mít použité schéma správy verzí. Když sloučíte aktualizace do `.lu` aplikace pro Luis do hlavní větve, naimportujete aktualizovaný zdroj do nové verze v aplikaci Luis pro hlavní větev.
+Aplikace LUIS pro hlavní větev by měla mít použité schéma správy verzí. Když sloučíte aktualizace do `.lu` aplikace Luis do Main, naimportujete aktualizovaný zdroj do nové verze v aplikaci Luis pro hlavní větev.
 
-Doporučuje se pro hlavní verzi aplikace LUIS použít schéma numerických verzí, například:
+Doporučujeme, abyste pro hlavní verzi aplikace LUIS používali schéma numerických verzí, například:
 
 `major.minor[.build[.revision]]`
 
@@ -207,9 +207,9 @@ Přečtěte si:
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>Správa verzí aplikace LUIS pro větev funkcí
 
-Když pracujete s aplikací LUIS vývojová větev, kterou jste vytvořili pro podporu práce ve větvi funkce, budete aplikaci exportovat po dokončení práce a v žádosti o přijetí změn zahrnete aktualizovaný `'lu` . Větev v úložišti a aplikace LUIS pro vývojovou větev by se měla po sloučení žádosti o přijetí změn do hlavní větve odstranit. Vzhledem k tomu, že tato aplikace existuje výhradně pro podporu práce ve větvi funkce, neexistuje žádné konkrétní schéma správy verzí, které by bylo potřeba v této aplikaci použít.
+Když pracujete s aplikací LUIS vývojová větev, kterou jste vytvořili pro podporu práce ve větvi funkce, budete aplikaci exportovat po dokončení práce a v žádosti o přijetí změn zahrnete aktualizovaný `'lu` . Větev v úložišti a aplikace LUIS pro vývojovou větev by se měla po sloučení žádosti o přijetí změn na Main odstranit. Vzhledem k tomu, že tato aplikace existuje výhradně pro podporu práce ve větvi funkce, neexistuje žádné konkrétní schéma správy verzí, které by bylo potřeba v této aplikaci použít.
 
-Když jsou změny v žádosti o přijetí změn sloučeny do hlavní větve, to znamená, že by se měla použít Správa verzí, aby všechny aktualizace Master byly nezávislé na verzi.
+Když se změny v žádosti o přijetí změn sloučí do hlavní, to znamená, že se má použít Správa verzí, aby se všechny aktualizace Main používaly nezávisle.
 
 ## <a name="next-steps"></a>Další kroky
 

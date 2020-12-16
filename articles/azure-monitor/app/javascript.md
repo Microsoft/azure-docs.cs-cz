@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921877"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559875"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name (Název) | Výchozí | Popis |
+| Name | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -178,7 +178,7 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
 | maxBatchSizeInBytes | 10000 | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. |
 | maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
-| disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky nebudou shromažďovány. Výchozí hodnota je false. |
+| disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky se nebudou shromažďovat. Výchozí hodnota je false. |
 | disableTelemetry | false (nepravda) | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
 | enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_* _ povolení tohoto nastavení bude mít za následek vyřazení telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
 | loggingLevelConsole | 0 | Protokoluje *interní** Application Insights chyby do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
@@ -258,7 +258,7 @@ Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na
 
 V současné době nabízíme samostatný [modul plug-in pro reakce](javascript-react-plugin.md), který můžete inicializovat pomocí této sady SDK. Bude také plnit sledování změn směrování pro vás a shromažďovat další reakce na konkrétní telemetrii.
 > [!NOTE]
-> Použijte `enableAutoRouteTracking: true` pouze v případě, **not** že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
+> Použijte `enableAutoRouteTracking: true` pouze v případě,  že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
 
 ## <a name="extensions"></a>Rozšíření
 

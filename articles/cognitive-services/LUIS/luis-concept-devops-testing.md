@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025938"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561218"
 ---
 # <a name="testing-for-luis-devops"></a>Testování pro LUIS DevOps
 
@@ -18,7 +18,7 @@ Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), moho
 
 V případě metodologie vývoje agilního softwaru hraje testování v budování kvalitního softwaru integrální roli. Každá významná změna aplikace LUIS by měla být doprovázena testy navrženými k otestování nových funkcí, které vývojář sestaví do aplikace. Tyto testy jsou zkontrolovány do vašeho úložiště zdrojového kódu společně se `.lu` zdrojem vaší aplikace Luis. Implementace změny je dokončena, když aplikace splňuje testy.
 
-Testy jsou důležitou součástí [pracovních postupů CI/CD](luis-concept-devops-automation.md). V případě, že se změny aplikace LUIS navrhují v žádosti o přijetí změn (PR) nebo po sloučení změn do vaší hlavní větve, by měly pracovní postupy CI spustit testy, aby ověřili, že aktualizace nezpůsobily žádné regrese.
+Testy jsou důležitou součástí [pracovních postupů CI/CD](luis-concept-devops-automation.md). Když se změny aplikace v LUIS navrhují v žádosti o přijetí změn (PR) nebo po sloučení změn do hlavní větve, pracovní postupy CI by měly spustit testy, aby ověřili, že aktualizace nezpůsobily žádné regrese.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Jak provádět testování částí a dávkové testování
 
@@ -123,7 +123,7 @@ Můžete použít [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) balíč
 Můžete také použít NLU. DevOps balíček pro spouštění dávkových testů na příkazovém řádku.
 
 * Použijte NLU. DevOps [test Command](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) pro odeslání testů z testovacího souboru do koncového bodu a zachycení skutečných výsledků předpovědi v souboru stejným způsobem jako u testů jednotek.
-* Použijte NLU. [Příkaz DevOps Compare](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) v [režimu testu výkonu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) pro měření výkonu aplikace můžete také porovnat výkon aplikace s srovnávacím testem výkonnosti, například výsledky z nejnovějšího potvrzení na hlavní nebo aktuální vydání. V režimu testu výkonu `compare` příkaz vygeneruje výstup testu nunit a [výsledky dávkových testů](./luis-glossary.md#batch-test) ve formátu JSON.
+* Použijte NLU. DevOps [Compare – příkaz](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) v [režimu testu výkonnosti](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) pro měření výkonu aplikace můžete také porovnat výkon aplikace s srovnávacím testem výkonnosti, například výsledky z posledního potvrzení na hlavní nebo aktuální vydání. V režimu testu výkonu `compare` příkaz vygeneruje výstup testu nunit a [výsledky dávkových testů](./luis-glossary.md#batch-test) ve formátu JSON.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS nedeterministické školení a vliv na testování
 

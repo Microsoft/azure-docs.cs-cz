@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025972"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561303"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Pracovní postupy průběžné integrace a průběžného doručování pro LUIS DevOps
 
@@ -23,7 +23,7 @@ Technici softwaru, kteří vyvíjí aplikaci Language Understanding (LUIS), moho
 V systému správy zdrojového kódu (SCM) nakonfigurujte automatizované kanály sestavení tak, aby běžely na následujících událostech:
 
 1. **Pracovní postup PR** aktivovaný při vyvolání [žádosti o](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) přijetí změn (PR). Tento pracovní postup ověří obsah žádosti o přijetí změn *předtím, než* se aktualizace sloučí do hlavní větve.
-1. **Pracovní postup CI/CD** byl aktivován při vložení aktualizací do hlavní větve, například při sloučení změn z žádosti o přijetí změn. Tento pracovní postup zajišťuje kvalitu všech aktualizací do hlavní větve.
+1. **Pracovní postup CI/CD** byl aktivován při vložení aktualizací do hlavní větve, například při sloučení změn z žádosti o přijetí změn. Tento pracovní postup zajišťuje kvalitu všech aktualizací v hlavní větvi.
 
 **Pracovní postup CI/CD** kombinuje dva doplňkové vývojové procesy:
 
@@ -31,7 +31,7 @@ V systému správy zdrojového kódu (SCM) nakonfigurujte automatizované kanál
 
 * [Průběžné doručování](/azure/devops/learn/what-is-continuous-delivery) (CD) pořizuje koncept plynulé integrace, který automaticky nasadí aplikaci do prostředí, kde můžete provádět podrobnější testování. CD vám umožní rychle se seznámit s případnými neočekávanými problémy, které vznikají v našich změnách co nejrychleji, a také se dozvědět o mezerách v rámci našeho pokrytí testu.
 
-Cílem průběžné integrace a průběžného doručování je zajistit, že "hlavní" je vždycky zasílaná za "". V případě aplikace LUIS to znamená, že jsme v případě potřeby mohli využít libovolnou verzi z hlavní aplikace LUIS a dodat ji v produkčním prostředí.
+Cílem průběžné integrace a průběžného doručování je zajistit, že "hlavní" je vždycky zasílané oznámení, ". V případě aplikace LUIS to znamená, že jsme v případě potřeby mohli využít libovolnou verzi z hlavní aplikace LUIS a dodat ji v produkčním prostředí.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>Nástroje pro vytváření pracovních postupů automatizace pro LUIS
 
@@ -47,7 +47,7 @@ Pro vytváření pracovních postupů automatizace pro LUIS použijte následuj�
 
 ### <a name="the-pr-workflow"></a>Pracovní postup žádosti o přijetí změn
 
-Jak už jsme uvedli, nakonfigurujete tento pracovní postup tak, aby běžel, když vývojář vyvolá žádost o přijetí změn, aby navrhl změny, které se mají sloučit z větve funkce, do hlavní větve. Jeho účelem je ověřit kvalitu změn v žádosti o přijetí změn před jejich sloučením do hlavní větve.
+Jak už jsme uvedli, nakonfigurujete tento pracovní postup tak, aby běžel, když vývojář vyvolá žádost o přijetí změn, která navrhuje změny, které se mají sloučit z větve funkce, do hlavní větve. Jeho účelem je ověřit kvalitu změn v žádosti o přijetí změn před jejich sloučením do hlavní větve.
 
 Tento pracovní postup by měl:
 
@@ -59,7 +59,7 @@ Tento pracovní postup by měl:
 
 Pokud je vaše SCM podporuje, nakonfigurujte pravidla ochrany větví, aby se tento pracovní postup musel úspěšně dokončit, aby bylo možné žádost o přijetí změn dokončit.
 
-### <a name="the-master-branch-cicd-workflow"></a>Pracovní postup CI/CD hlavní větve
+### <a name="the-main-branch-cicd-workflow"></a>Pracovní postup CI/CD hlavní větve
 
 Nakonfigurujte tento pracovní postup tak, aby běžel po sloučení aktualizací v žádosti o přijetí změn do hlavní větve. Jeho účelem je udržet si vysokou úroveň kvality pro hlavní větev tím, že otestujete aktualizace. Pokud aktualizace vyhovují panelu kvality, tento pracovní postup nasadí novou verzi aplikace LUIS do prostředí, kde můžete provádět podrobnější testování.
 

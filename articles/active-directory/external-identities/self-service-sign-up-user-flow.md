@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287045"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560029"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 > [!NOTE]
@@ -48,18 +48,18 @@ Atributy uživatele jsou hodnoty shromážděné uživatelem během samoobslužn
 Předtím, než budete moci do svých aplikací přidat samoobslužný uživatelský tok, je nutné povolit funkci pro vašeho tenanta. Po jeho povolení budou ovládací prvky k dispozici v uživatelském toku, který umožňuje přidružit tok uživatele k aplikaci.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
-3. Vyberte **nastavení uživatele**a potom v části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
+3. Vyberte **nastavení uživatele** a potom v části **externí uživatelé** vyberte **Spravovat nastavení externí spolupráce**.
 4. Nastavte možnost **Povolit samoobslužnou registraci hosta prostřednictvím uživatelských toků (Preview)** na **Ano**.
 
    ![Povolit samoobslužnou registraci hosta](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-
+5. Vyberte **Uložit**.
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>Vytvoření toku uživatele pro samoobslužnou registraci
 
 V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a přidáte ho do aplikace.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **toky uživatelů (Preview)** a pak vyberte **Nový tok uživatele**.
 
@@ -67,7 +67,7 @@ V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a p
 
 5. Na stránce **vytvořit** zadejte **název** toku uživatele. Všimněte si, že název je automaticky předponou **B2X_1_**.
 6. V seznamu **Zprostředkovatelé identity** vyberte jednoho nebo víc zprostředkovatelů identity, které můžou externí uživatelé použít k přihlášení do vaší aplikace. Ve výchozím nastavení je vybraná možnost **registrace Azure Active Directory** . (Další informace o tom, jak přidat zprostředkovatele identity, najdete v části dřív, co [jste začali](#before-you-begin) v tomto článku.)
-7. V části **atributy uživatele**vyberte atributy, které mají být od uživatele shromažďovány. U dalších atributů vyberte **Zobrazit další**. Vyberte například možnost **Zobrazit více**a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno**a **poštovní směrovací číslo**. Vyberte **OK**.
+7. V části **atributy uživatele** vyberte atributy, které mají být od uživatele shromažďovány. U dalších atributů vyberte **Zobrazit další**. Vyberte například možnost **Zobrazit více** a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno** a **poštovní směrovací číslo**. Vyberte **OK**.
 
    ![Vytvoří novou stránku toku uživatele.](media/self-service-sign-up-user-flow/create-user-flow.png)
 
@@ -81,8 +81,8 @@ Můžete zvolit pořadí, ve kterém se atributy zobrazí na stránce pro regist
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**.
 2. Vyberte **externí identity**, vyberte **toky uživatelů (Preview)**.
 3. V seznamu vyberte tok uživatele samoobslužné registrace.
-4. V části **přizpůsobit**vyberte **rozložení stránky**.
-5. Zobrazí se atributy, které jste si zvolili ke shromáždění. Chcete-li změnit pořadí zobrazení, vyberte atribut a pak vyberte možnost **Přesunout nahoru**, **Přesunout dolů**, **přesunout do horní části**nebo **Přejít na konec**.
+4. V části **přizpůsobit** vyberte **rozložení stránky**.
+5. Zobrazí se atributy, které jste si zvolili ke shromáždění. Chcete-li změnit pořadí zobrazení, vyberte atribut a pak vyberte možnost **Přesunout nahoru**, **Přesunout dolů**, **přesunout do horní části** nebo **Přejít na konec**.
 6. Vyberte **Uložit**.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Přidání aplikací do uživatelského toku samoobslužné registrace
@@ -90,11 +90,11 @@ Můžete zvolit pořadí, ve kterém se atributy zobrazí na stránce pro regist
 Nyní můžete přidružit aplikace k toku uživatele.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
-4. V části **samoobslužné registrace**vyberte **toky uživatelů (Preview)**.
+4. V části **samoobslužné registrace** vyberte **toky uživatelů (Preview)**.
 5. V seznamu vyberte tok uživatele samoobslužné registrace.
-6. V nabídce vlevo v části **použít**vyberte **aplikace**.
+6. V nabídce vlevo v části **použít** vyberte **aplikace**.
 7. Vyberte **Přidat aplikaci**.
 
    ![Přiřazení aplikace k toku uživatele](media/self-service-sign-up-user-flow/assign-app-to-user-flow.png)

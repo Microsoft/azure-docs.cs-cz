@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516810"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563020"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -80,9 +80,9 @@ Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučuj
 
 ### <a name="networking-configuration"></a>Konfigurace sítě
 
-Agent připojeného počítače pro systémy Linux a Windows komunikuje zabezpečeným způsobem přes Azure ARC přes port TCP 443. Pokud se počítač připojí prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, Projděte si níže uvedené požadavky, abyste pochopili požadavky na konfiguraci sítě.
+Agent připojeného počítače pro systémy Linux a Windows komunikuje zabezpečeným způsobem přes Azure ARC přes port TCP 443. Pokud se počítač připojí prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, Projděte si následující informace, abyste pochopili požadavky na konfiguraci sítě.
 
-Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujistěte se, že níže uvedené adresy URL nejsou blokované. Pokud povolíte pouze rozsahy IP adres nebo názvy domén, které musí agent komunikovat se službou, musíte taky dovolit přístup k následujícím značkám služby a adresám URL.
+Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujistěte se, že níže uvedené adresy URL nejsou blokované. Pokud povolíte pouze rozsahy IP adres nebo názvy domén, které musí agent komunikovat se službou, budete potřebovat přístup k následujícím značkám služby a adresám URL.
 
 Značky služby:
 
@@ -181,8 +181,9 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
     |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
-    |himds |Hybridní Instance Metadata Service Azure |himds.exe |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
-    |DscService |Služba konfigurace hosta |dsc_service.exe |Základ kódu pro konfiguraci požadovaného stavu (DSC v2) používaný v rámci Azure k implementaci zásad In-Guest.|
+    |himds |Hybridní Instance Metadata Service Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
+    |GCArcService |Služba ARC konfigurace hosta |gc_service |Monitoruje konfiguraci požadovaného stavu počítače.|
+    |ExtensionService |Služba rozšíření konfigurace hosta | gc_service |Nainstaluje požadovaná rozšíření, která cílí na daný počítač.|
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
@@ -232,8 +233,9 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
     |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
-    |himdsd. Service |Hybridní Instance Metadata Service Azure |/opt/azcmagent/bin/himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
-    |dscd. Service |Služba konfigurace hosta |/opt/DSC/dsc_linux_service |Toto je základ kódu požadovaného stavu (DSC v2), který se používá v Azure k implementaci zásad In-Guest.|
+    |himdsd. Service |Služba agenta připojeného počítače Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
+    |gcad.servce |Služba oblouku GC |gc_linux_service |Monitoruje konfiguraci požadovaného stavu počítače. |
+    |ExtD. Service |Služba rozšíření |gc_linux_service | Nainstaluje požadovaná rozšíření, která cílí na daný počítač.|
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 

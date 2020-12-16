@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032180"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563105"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -107,19 +107,31 @@ Na kartě Zobrazit podrobné metriky se otevře předem vyplněný sešit shrnuj
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrace z řešení Azure Gateway Analytics do sešitů Azure Monitor
 
 > [!NOTE]
-> Řešení Azure Application Gateway Analytics je zastaralé a doporučený způsob využívání analýz je prostřednictvím sešitů vydaných prostřednictvím Azure Monitor Network Insights pro Application Gateway prostředek.
+> Pro přístup k metrikám a Log Analytics pro vaše prostředky Application Gateway doporučujeme sešit Azure Monitor Network Insights.
 
-* Pokud je už povolené nastavení diagnostiky, aby se protokoly ukládaly do pracovního prostoru Log Analytics, Azure Monitor sešit Network Insights může spotřebovávat data ze stejného umístění. Není vyžadována žádná nová konfigurace.
+1. Zajistěte, aby [nastavení diagnostiky byla povolená](#enable-azure-application-gateway-diagnostics-in-the-portal) pro ukládání protokolů do pracovního prostoru Log Analytics. Pokud je už nakonfigurovaná, Azure Monitor sešit Network Insights bude moct využívat data ze stejného umístění a žádné další změny se nevyžadují.
 
-* Všechna minulá data jsou již v sešitu k dispozici z nastavení diagnostiky bodu byla povolena. Není vyžadován žádný přenos dat.
+> [!NOTE]
+> Všechna minulá data jsou již k dispozici v rámci sešitu z nastavení diagnostiky bodu byla původně povolena. Není vyžadován žádný přenos dat.
 
-* Pro přepnutí na sešity není nutný žádný aktivní přepínač. Řešení pro analýzu a sešit s přehledem sítě můžou pracovat paralelně.
+2. Přístup k [výchozímu sešitu Insights](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) pro váš Application Gateway prostředek. Všechny existující přehledy podporované řešením Application Gateway Analytics už v sešitu existují. To můžete roztáhnout tak, že přidáte vlastní [vizualizace](../platform/workbooks-overview.md#visualizations) na základě metriky & data protokolu.
 
-* K Azure Monitor sešitům nejsou přidruženy žádné další náklady. Pracovní prostor Log Analytics bude nadále účtován jako na základě využití.
-
-* Pokud chcete řešení Azure Gateway Analytics vyčistit z pracovního prostoru, můžete řešení odstranit ze stránky prostředků řešení.
+3. Až budete moct zobrazit veškerou metriku a log Insights, můžete řešení Azure Gateway Analytics odstranit z pracovního prostoru pomocí stránky řešení.
 
 [![Snímek obrazovky s možností odstranění pro řešení Azure Application Gateway Analytics](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Nové funkce se sešitem Azure Monitor Network Insights
+
+> [!NOTE]
+> K sešitu Azure Monitor Insights nejsou přidružené žádné další náklady. Pracovní prostor Log Analytics bude nadále účtován jako na základě využití.
+
+Sešit Network Insights vám umožní využít výhod nejnovějších funkcí Azure Monitor a Log Analytics, včetně těchto:
+
+* Centralizovaná Konzola pro monitorování a řešení potíží s daty [metriky](../insights/network-insights-overview.md#resource-health-and-metrics) a protokolů.
+
+* Flexibilní plátno pro podporu vytváření vlastních propracovaných [vizualizací](../platform/workbooks-overview.md#visualizations).
+
+* Možnost využívat a [sdílet šablony sešitů](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) s širší komunitou
 
 Další informace o možnostech nového sešitu řešení pro rezervaci [sešitů – přehled](../platform/workbooks-overview.md)
 

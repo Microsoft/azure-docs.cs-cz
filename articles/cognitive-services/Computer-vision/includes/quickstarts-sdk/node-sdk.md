@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: e0767e50ac6d88922281b10389b77c5cf0c481be
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 50d1222f5c33b327c92799ccf27ed0650ba0226c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96912162"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560861"
 ---
 <a name="HOLTop"></a>
 
@@ -83,7 +83,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu Node.js SDK.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 | [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot **VisualFeatureTypes** . |
@@ -251,7 +251,7 @@ Přidejte následující kód, který volá `readTextFromURL` funkci pro dané o
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Definujte `readTextFromURL` funkci. Tato metoda volá metodu **Read** THES objektu klienta, která vrací ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Pak pomocí ID operace zkontroluje stav operace, dokud nebudou vráceny výsledky. Vrátí extrahované výsledky.
+Definujte `readTextFromURL` funkci. Volá metodu **Read** objektu klienta, který vrací ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Pak pomocí ID operace zkontroluje stav operace, dokud nebudou vráceny výsledky. Vrátí extrahované výsledky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

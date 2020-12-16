@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743033"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562136"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS (Network Policy Server) se službou Azure AD Multi-Factor Authentication
 
@@ -224,6 +224,10 @@ Pokud chcete poskytnout funkce Vyrovnávání zatížení nebo redundanci, opaku
    ```
 
 1. Spusťte PowerShellový skript vytvořený instalačním programem.
+
+   Možná budete muset nejdřív Povolit TLS 1,2 pro PowerShell, aby bylo možné správně připojit a stáhnout balíčky:
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
 
    > [!IMPORTANT]
    > Pro zákazníky, kteří používají Azure Government nebo cloudy Azure Čína 21Vianet, nejprve upravte `Connect-MsolService` rutiny ve skriptu *AzureMfaNpsExtnConfigSetup.ps1* tak, aby zahrnovaly parametry *AzureEnvironment* pro požadovaný Cloud. Zadejte například *-AzureEnvironment USGovernment* nebo *-AzureEnvironment AzureChinaCloud*.

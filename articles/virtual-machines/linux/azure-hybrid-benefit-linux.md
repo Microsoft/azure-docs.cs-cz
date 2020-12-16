@@ -1,6 +1,6 @@
 ---
 title: Virtuální počítače Zvýhodněné hybridní využití Azure a Linux
-description: Zvýhodněné hybridní využití Azure vám umožní ušetřit peníze na virtuálních počítačích Linux běžících v Azure.
+description: Přečtěte si, jak vám Zvýhodněné hybridní využití Azure můžou ušetřit peníze na virtuálních počítačích s Linux běžícími na Azure.
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
@@ -10,63 +10,67 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b565a3e653d05ffcecfbc5718c74d07d8f45373
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109160"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560012"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Zvýhodněné hybridní využití Azure – způsob použití pro Linux Virtual Machines
+# <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Jak Zvýhodněné hybridní využití Azure platí pro virtuální počítače se systémem Linux
 
-## <a name="overview"></a>Přehled
+Zvýhodněné hybridní využití Azure je zvýhodněné licencování, které vám pomůže významně snížit náklady na spouštění vašich Red Hat Enterprise Linux (RHEL) a virtuálních počítačů SUSE Linux Enterprise Server (SLES) v cloudu. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože předplatné RHEL nebo SLES pokrývá poplatky za software. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
 
-Zvýhodněné hybridní využití Azure je zvýhodněné licencování, které vám pomůže významně snížit náklady na spouštění vašich Red Hat Enterprise Linux (RHEL) a virtuálních počítačů SUSE Linux Enterprise Server (SLES) v cloudu. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
-
-> [!IMPORTANT]
-> Zvýhodněné hybridní využití Azure pro virtuální počítače se systémem Linux jsou nyní k dispozici veřejnosti
-
+Zvýhodněné hybridní využití Azure pro virtuální počítače se systémem Linux je teď veřejně dostupný.
 
 ## <a name="benefit-description"></a>Popis výhod
 
-Prostřednictvím Zvýhodněné hybridní využití Azure můžete snadněji migrovat místní servery RHEL a SLES do Azure tím, že převedete stávající virtuální počítače RHEL a SLES PAYG v Azure a budete mít k disu fakturaci s vlastními předplatnými (BYOS). Virtuální počítače nasazené z imagí PAYG v Azure se obvykle účtují jako poplatek za infrastrukturu i jako poplatek za software. Pomocí Zvýhodněné hybridní využití Azure můžete virtuální počítače s PAYG převést na model fakturace BYOS bez nutnosti opětovného nasazení, což zaloučí případné riziko výpadku.
+Prostřednictvím Zvýhodněné hybridní využití Azure můžete migrovat místní servery RHEL a SLES do Azure tím, že převedete stávající virtuální počítače RHEL a SLES PAYG v Azure a budete mít k disu fakturaci na vlastní předplatné (BYOS). Virtuální počítače nasazené z imagí PAYG v Azure obvykle budou účtovat poplatek za infrastrukturu a poplatek za software. Pomocí Zvýhodněné hybridní využití Azure můžou být virtuální počítače PAYG převedené do modelu fakturace BYOS bez opětovného nasazení, takže se můžete vyhnout jakémukoli nebezpečí výpadku.
 
 :::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Zvýhodněné hybridní využití Azure vizualizace nákladů na virtuální počítače se systémem Linux.":::
 
-Po povolení výhody na virtuálním počítači s RHEL nebo SLES se už nebudete účtovat za další poplatek za software, který se obvykle účtuje na virtuálním počítači s PAYG. Místo toho začne váš virtuální počítač vysílat poplatek za BYOS, který zahrnuje jenom výpočetní a licenční poplatek.
+Po povolení výhody na virtuálním počítači s RHEL nebo SLES se už nebudete účtovat za další poplatek za software, který se obvykle účtuje na virtuálním počítači s PAYG. Místo toho začne váš virtuální počítač počítat s BYOS poplatky, které zahrnují jenom výpočetní a licenční poplatek za daný software.
 
-Pokud budete chtít, můžete také převést virtuální počítač s povoleným přínosem zpátky na PAYG model fakturace.
+Můžete také převést virtuální počítač s povoleným přínosem zpátky na PAYG model fakturace.
 
 ## <a name="scope-of-azure-hybrid-benefit-eligibility-for-linux-vms"></a>Rozsah Zvýhodněné hybridní využití Azure způsobilosti pro virtuální počítače se systémem Linux
 
-Zvýhodněné hybridní využití Azure je k dispozici pro všechny PAYG image SLES na webu Marketplace. Tato výhoda ještě není dostupná pro Image BYOS nebo vlastní image RHEL nebo SLES Marketplace.
+Zvýhodněné hybridní využití Azure je k dispozici pro všechny obrázky PAYG a SLES z Azure Marketplace. Tato výhoda ještě není dostupná pro image RHEL nebo SLES BYOS nebo vlastní image z Azure Marketplace.
 
-Rezervované instance, vyhrazené hostitele a zvýhodněné hybridní využití SQL nejsou způsobilé pro Zvýhodněné hybridní využití Azure, pokud už tuto výhodu používáte s virtuálními počítači se systémem Linux.
+Rezervované instance, instance vyhrazených hostitelů Azure a zvýhodněné hybridní využití SQL nejsou způsobilé pro Zvýhodněné hybridní využití Azure, pokud už tuto výhodu používáte s virtuálními počítači Linux.
 
-## <a name="how-to-get-started"></a>Jak začít
+## <a name="get-started"></a>Začínáme
 
 ### <a name="red-hat-customers"></a>Zákazníci se Red Hat
 
-Zvýhodněné hybridní využití Azure pro RHEL je k dispozici pro zákazníky, kteří mají aktivní/nepoužívané odběry RHEL, které mají nárok na použití v Azure a kteří povolili jedno nebo více předplatných v Azure s použitím programu [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) . 
+Zvýhodněné hybridní využití Azure pro RHEL je k dispozici pro zákazníky se Red Hat, kteří splňují obě tato kritéria:
 
-1.  Povolte jedno nebo více vašich oprávněných předplatných RHEL pro použití v Azure s využitím [rozhraní zákazníka pro cloudový přístup Red Hat](https://access.redhat.com/management/cloud).
-1.  Předplatné Azure, které jste zadali během procesu povolení pro cloudový přístup Red Hat, pak budou moct používat funkci Zvýhodněné hybridní využití Azure.
-1.  Použijte Zvýhodněné hybridní využití Azure pro libovolný ze stávajících virtuálních počítačů PAYG s RHEL a také všechny nové virtuální počítače RHEL, které nasazujete z Azure Marketplacech imagí PAYG.
-1.  Použijte doporučené [Další kroky](https://access.redhat.com/articles/5419341) pro konfiguraci zdrojů aktualizací pro virtuální počítače s RHEL a pokyny pro dodržování předpisů RHEL pro předplatné.
+- Mít aktivní nebo nepoužívané předplatná RHEL, která mají nárok na použití v Azure
+- Povolili jste jedno nebo více předplatných pro použití v Azure s programem [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) .
+
+Pokud chcete začít využívat výhody pro Red Hat, postupujte takto:
+
+1. Povolte jedno nebo více vašich oprávněných předplatných RHEL pro použití v Azure pomocí [rozhraní Red Hat Cloud Access](https://access.redhat.com/management/cloud).
+
+   Předplatné Azure, které zadáte během procesu povolení pro cloudový přístup Red Hat, pak budou moci používat funkci Zvýhodněné hybridní využití Azure.
+1. Použijte Zvýhodněné hybridní využití Azure na libovolný ze stávajících virtuálních počítačů PAYG s RHEL a všech nových virtuálních počítačů RHEL, které nasadíte z Azure Marketplacech imagí PAYG.
+1. Použijte doporučené [Další kroky](https://access.redhat.com/articles/5419341) pro konfiguraci zdrojů aktualizací pro virtuální počítače s RHEL a pokyny pro dodržování předpisů RHEL pro předplatné.
 
 
 ### <a name="suse-customers"></a>Zákazníci SUSE
 
-1.    Registrace pomocí programu veřejné cloudy SUSE
-1.    Využijte výhod pro existující virtuální počítače prostřednictvím rozhraní příkazového řádku Azure
-1.    Zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
+Pokud chcete začít využívat výhody pro SUSE:
+
+1. Zaregistrujte se pomocí programu veřejné cloudy SUSE.
+1. Využijte výhod pro vaše stávající virtuální počítače prostřednictvím Azure CLI.
+1. Zaregistrujte své virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
 
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Povolení nebo zakázání výhod v Azure CLI
+## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Povolení nebo zakázání výhod v Azure CLI
 
-K aktualizaci stávajících virtuálních počítačů můžete použít příkaz AZ VM Update. U virtuálních počítačů s RHEL spusťte příkaz s parametrem--License-Type typu "RHEL_BYOS". U virtuálních počítačů s SLES spusťte příkaz s parametrem--License-Type typu "SLES_BYOS".
+`az vm update`K aktualizaci existujících virtuálních počítačů můžete použít příkaz. Pro virtuální počítače s RHEL spusťte příkaz s `--license-type` parametrem `RHEL_BYOS` . Pro virtuální počítače s SLES spusťte příkaz s `--license-type` parametrem `SLES_BYOS` .
 
-#### <a name="cli-example-to-enable-the-benefit"></a>Příklad rozhraní příkazového řádku pro povolení výhod:
+### <a name="cli-example-to-enable-the-benefit"></a>Příklad rozhraní příkazového řádku pro povolení výhody
 ```azurecli
 # This will enable the benefit on a RHEL VM
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
@@ -74,24 +78,26 @@ az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
 # This will enable the benefit on a SLES VM
 az vm update -g myResourceGroup -n myVmName --license-type SLES_BYOS
 ```
-#### <a name="cli-example-to-disable-the-benefit"></a>Příklad rozhraní příkazového řádku pro zakázání výhody:
-Pokud chcete tuto výhodu zakázat, použijte hodnotu typu licence None.
+### <a name="cli-example-to-disable-the-benefit"></a>Příklad rozhraní příkazového řádku pro zakázání výhody
+Pokud chcete tuto výhodu zakázat, použijte `--license-type` hodnotu `None` :
+
 ```azurecli
 # This will disable the benefit on a VM
 az vm update -g myResourceGroup -n myVmName --license-type None
 ```
 
-#### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>Příklad rozhraní příkazového řádku pro povolení výhody pro velký počet virtuálních počítačů
-Pokud chcete tuto výhodu povolit pro velký počet virtuálních počítačů, můžete použít `--ids` parametr v Azure CLI.
+### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>Příklad rozhraní příkazového řádku pro povolení výhody pro velký počet virtuálních počítačů
+Pokud chcete tuto výhodu povolit pro velký počet virtuálních počítačů, můžete použít `--ids` parametr v Azure CLI:
 
 ```azurecli
 # This will enable the benefit on a RHEL VM. In this example, ids.txt is an
-# existing text file containing a delimited list of resource IDs corresponding
+# existing text file that contains a delimited list of resource IDs corresponding
 # to the VMs using the benefit
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS --ids $(cat ids.txt)
 ```
 
-Následující příklady znázorňují dvě metody získání seznamu ID prostředků – jednu na úrovni skupiny prostředků, jednu na úrovni předplatného.
+Následující příklady znázorňují dvě metody získání seznamu ID prostředků: jednu na úrovni skupiny prostředků a jednu na úrovni předplatného.
+
 ```azurecli
 # To get a list of all the resource IDs in a resource group:
 $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
@@ -100,13 +106,18 @@ $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
-## <a name="check-ahb-status-of-a-vm"></a>Zkontroluje stav AHB virtuálního počítače.
-Stav AHB virtuálního počítače můžete zobrazit dvěma způsoby: pomocí rozhraní příkazového řádku Azure nebo pomocí Azure Instance Metadata Service (Azure IMDS).
+## <a name="apply-the-azure-hybrid-benefit-at-vm-create-time"></a>Použít Zvýhodněné hybridní využití Azure v čase vytvoření virtuálního počítače
+Kromě použití Zvýhodněné hybridní využití Azure pro existující virtuální počítače s průběžnými platbami, můžete ji vyvolat v době vytváření virtuálního počítače. Výhody tohoto postupu jsou threefold:
+- Pomocí stejného obrazu a procesu můžete zřídit virtuální počítače PAYG i BYOS.
+- Umožňuje budoucí změny v režimu licencování, není k dispozici s BYOS imagí nebo pokud přenesete vlastní virtuální počítač.
+- Virtuální počítač bude ve výchozím nastavení připojen ke službě RHUI (Red Hat Update Infrastructure), aby bylo zajištěno, že bude stále aktuální a zabezpečený. Aktualizovaný mechanismus můžete po nasazení změnit kdykoli.
 
+## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>Zkontroluje stav Zvýhodněné hybridní využití Azure virtuálního počítače.
+Stav Zvýhodněné hybridní využití Azure virtuálního počítače můžete zobrazit pomocí rozhraní příkazového řádku Azure nebo pomocí Azure Instance Metadata Service.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`az vm get-instance-view`Příkaz lze použít k tomuto účelu. Vyhledejte v odpovědi pole licenseType. Pokud pole licenseType existuje a hodnota je "RHEL_BYOS" nebo "SLES_BYOS", má váš virtuální počítač povolený přínos.
+`az vm get-instance-view`K tomuto účelu můžete použít příkaz. Vyhledejte `licenseType` pole v odpovědi. Pokud `licenseType` pole existuje a hodnota je `RHEL_BYOS` nebo `SLES_BYOS` , má váš virtuální počítač povolený přínos.
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVm
@@ -114,7 +125,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-V samotném virtuálním počítači můžete zadat dotaz na metadata IMDS identity, abyste určili licenseType virtuálního počítače. Hodnota licenseType "RHEL_BYOS" nebo "SLES_BYOS" bude označovat, že má váš virtuální počítač povolené výhody. [Tady](./instance-metadata-service.md#attested-data) najdete další informace o ověřených metadatech.
+V samotném virtuálním počítači můžete zadat dotaz na ověřená metadata v Azure Instance Metadata Service k určení hodnoty virtuálního počítače `licenseType` . `licenseType`Hodnota `RHEL_BYOS` nebo `SLES_BYOS` bude označovat, že váš virtuální počítač má povolený přínos. Další [informace o ověřených metadatech](./instance-metadata-service.md#attested-data)
 
 ## <a name="compliance"></a>Dodržování předpisů
 
@@ -124,68 +135,64 @@ Zákazníci, kteří používají Zvýhodněné hybridní využití Azure pro RH
 
 Zákazníci, kteří používají Zvýhodněné hybridní využití Azure pro RHEL, mají tři možnosti poskytování aktualizací softwaru a oprav těchto virtuálních počítačů:
 
-1.  [RHUI (Red Hat Update Infrastructure)](../workloads/redhat/redhat-rhui.md) (výchozí možnost)
-1.  Red Hat satelitní Server
-1.  Správce předplatného Red Hat
+- [Infrastruktura aktualizace Red Hat](../workloads/redhat/redhat-rhui.md) (výchozí možnost)
+- Red Hat satelitní Server
+- Správce předplatného Red Hat
 
-Zákazníci, kteří si zvolí možnost RHUI, můžou dál používat RHUI jako hlavní zdroj aktualizace pro své virtuální počítače AHB RHEL bez připojení RHEL předplatných k těmto virtuálním počítačům.  Zákazníci, kteří si zvolí možnost RHUI, jsou zodpovědní za zajištění dodržování předpisů v RHEL předplatném.
+Zákazníci, kteří zvolí možnost RHUI, můžou dál používat RHUI jako hlavní zdroj aktualizace pro své Zvýhodněné hybridní využití Azure virtuální počítače RHEL bez připojení k těmto virtuálním počítačům RHEL odběry. Zákazníci, kteří zvolí možnost RHUI, jsou odpovědni za zajištění dodržování předpisů RHEL pro předplatné.
 
-Zákazníci, kteří si vybrali možnost Red Hat satelitní Server nebo správce předplatného Red Hat, by měli odebrat konfiguraci RHUI a pak připojit RHEL předplatné s povoleným cloudovým přístupem ke svým VIRTUÁLNÍm počítačům AHB RHEL.  
+Zákazníci, kteří zvolí systém Red Hat satelitní Server nebo správce předplatného Red Hat, by měli odebrat konfiguraci RHUI a pak připojit předplatné RHEL s povoleným přístupem ke svým Zvýhodněné hybridní využití Azurem virtuálním počítačům RHEL.  
 
-Další informace o kompatibilitě předplatného Red Hat, aktualizacích softwaru a zdrojích pro virtuální počítače s AHB RHEL najdete [tady](https://access.redhat.com/articles/5419341).
+Další informace o dodržování předpisů pro předplatné Red Hat, aktualizacích softwaru a zdrojích pro Zvýhodněné hybridní využití Azure virtuálních počítačů s RHEL najdete v [článku o použití RHEL předplatných s zvýhodněné hybridní využití Azure na Red Hat](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 
-Aby bylo možné použít Zvýhodněné hybridní využití Azure pro virtuální počítače s SLES, musíte být nejprve registrováni pomocí programu SUSE Public Cloud. Přečtěte si další informace o programu. Po zakoupení předplatných SUSE musíte své virtuální počítače zaregistrovat pomocí těchto předplatných pro vlastní zdroj aktualizací, a to buď pomocí centra SUSE pro zákazníky, serveru nástroje pro správu předplatného nebo správce SUSE.
+Pokud chcete použít Zvýhodněné hybridní využití Azure pro virtuální počítače s SLES, musíte se nejdřív zaregistrovat v [programu SUSE Public Cloud](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). Po zakoupení předplatných SUSE musíte zaregistrovat své virtuální počítače, které používají tyto odběry, do svého vlastního zdroje aktualizací. Pro tuto registraci použijte SUSE Customer Center, server nástrojů pro správu předplatného nebo správce SUSE.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-*Otázka: mohu použít typ licence "RHEL_BYOS" s SLES obrázkem, nebo naopak?*
+*Otázka: mohu použít typ licence `RHEL_BYOS` s SLES obrázkem nebo naopak?*
 
-Odpověď: Ne, nemůžete. Pokud se pokusíte zadat typ licence, který nesprávně odpovídá distribuce běžícímu na vašem VIRTUÁLNÍm počítači, neaktualizují se žádná fakturační metadata. Pokud ale omylem zadáte špatný typ licence, budete moct znovu aktualizovat svůj virtuální počítač na správný typ licence.
+Odpověď: Ne, nemůžete. Když se pokusíte zadat typ licence, který nesprávně odpovídá distribuci běžící na vašem VIRTUÁLNÍm počítači, neaktualizují se žádná fakturační metadata. Pokud ale omylem zadáte špatný typ licence, budete moct znovu aktualizovat svůj virtuální počítač na správný typ licence.
 
-*Otázka: zaregistroval (a) se službou Red Hat Cloud Access, ale stále není možné povolit výhodu na mých virtuálních počítačích RHEL. Co mám dělat?*
+*Otázka: zaregistroval (a) se službou Red Hat Cloud Access, ale na mých virtuálních počítačích s RHEL pořád nemůže povolit výhodu. Co mám dělat?*
 
-Odpověď: může trvat nějakou dobu, než se registrace předplatného služby Red Hat pro cloudový přístup došíří z Red Hat do Azure. Pokud se vám i po jednom pracovním dni stále zobrazuje chyba, obraťte se na podporu Microsoftu.
+Odpověď: může trvat nějakou dobu, než se registrace předplatného služby Red Hat pro cloudový přístup došíří z Red Hat do Azure. Pokud se chyba stále zobrazuje po jednom pracovním dni, obraťte se na podporu Microsoftu.
 
-*Otázka: nasadil (a) jsem virtuální počítač pomocí RHEL BYOS "zlatý image". Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
-
-Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje převod jenom na image s průběžnými platbami.
-
-*Otázka: nasadil (a) jsem virtuální počítač pomocí RHEL BYOS "zlatý image". Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+*Otázka: nasadil (a) jsem virtuální počítač pomocí zlaté image RHEL BYOS ". Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
 
 Odpověď: Ne, nemůžete. Zvýhodněné hybridní využití Azure podporuje převod jenom na image s průběžnými platbami.
 
-*Otázka: nahrál (a) vlastní image RHEL z Prem (prostřednictvím Azure Migrate, ASR nebo jinak) do Azure. Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
+*Otázka: nahráli jsem vlastní RHEL image z místního prostředí (přes Azure Migrate, Azure Site Recovery nebo jinak) do Azure. Můžu převést fakturaci na těchto obrázcích z BYOS na PAYG?*
 
-Odpověď: Ne, nemůžete. Funkce Zvýhodněné hybridní využití Azure je k dispozici pouze pro image RHEL a SLES v současnosti. 
+Odpověď: Ne, nemůžete. Funkce Zvýhodněné hybridní využití Azure je v tuto chvíli dostupná jenom pro image RHEL a SLES v Azure Marketplace. 
 
-*Otázka: nahrál (a) vlastní image RHEL z Prem (prostřednictvím Azure Migrate, ASR nebo jinak) do Azure. Musím od Zvýhodněné hybridní využití Azure něco dělat?*
+*Otázka: nahráli jsem vlastní RHEL image z místního prostředí (přes Azure Migrate, Azure Site Recovery nebo jinak) do Azure. Musím od Zvýhodněné hybridní využití Azure něco dělat?*
 
-Odpověď: ne. RHEL image se už považují za BYOS a účtují se jenom náklady na infrastrukturu Azure. Zodpovídáte za náklady na předplatná RHEL, stejně jako v případě vašich místních prostředí. 
+Odpověď: Ne, nemusíte. RHEL obrázky se už považují za BYOS a účtují se jenom za náklady na infrastrukturu Azure. Zodpovídáte za náklady na předplatné RHEL, stejně jako u vašich místních prostředí. 
 
-*Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálních počítačích nasazených z webu Marketplace RHEL a imagí SLES SAP?*
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálních počítačích nasazených z Azure Marketplacech imagí SAP RHEL a SLES?*
 
-Odpověď: Ano, můžete. Typ licence RHEL_BYOS pro virtuální počítače s RHEL a SLES_BYOS můžete použít pro převody virtuálních počítačů nasazených z Marketplace RHEL a SLESch imagí SAP.
+Odpověď: Ano, můžete. Můžete použít typ licence `RHEL_BYOS` pro virtuální počítače s RHEL a `SLES_BYOS` pro převody virtuálních počítačů nasazených z Azure Marketplace imagí RHEL a SLES SAP.
 
-*Otázka: je možné použít Zvýhodněné hybridní využití Azure ve VMSS (Virtual Machine Scale set) pro RHEL a SLES?*
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure na Virtual Machine Scale Sets pro RHEL a SLES?*
 
-Odpověď: Ne, nemůžete. VMSS nejsou v současné době v rozsahu Zvýhodněné hybridní využití Azure pro RHEL a SLES.
+Odpověď: Ne, nemůžete. Služba Virtual Machine Scale Sets není aktuálně v oboru Zvýhodněné hybridní využití Azure pro RHEL a SLES.
 
-*Otázka: je možné použít Zvýhodněné hybridní využití Azure u rezervovaných instancí (RIs) pro RHEL a SLES?*
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure u rezervovaných instancí pro RHEL a SLES?*
 
-Odpověď: Ne, nemůžete. Služby vzdálené instalace nejsou v současné době Zvýhodněné hybridní využití Azure RHEL a SLES v současnosti.
+Odpověď: Ne, nemůžete. Rezervované instance nejsou aktuálně v rozsahu Zvýhodněné hybridní využití Azure pro RHEL a SLES.
 
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálním počítači nasazeném pro SQL Server na obrázcích RHEL?*
 
 Odpověď: Ne, nemůžete. Neexistují žádné plány pro jejich podporu.
  
 
-## <a name="common-issues"></a>Běžné problémy
-Tato část obsahuje seznam běžných problémů, které by mohly být zjištěny, a kroky pro zmírnění rizik.
+## <a name="common-problems"></a>Běžné problémy
+V této části jsou uvedené běžné problémy, se kterými se můžete setkat, a postup pro zmírnění rizik.
 
-| Chybová | Omezení rizik |
+| Chyba | Omezení rizik |
 | ----- | ---------- |
-| Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Aby bylo možné využívat výhod s virtuálními počítači s RHEL, musíte nejdřív zaregistrovat vaše předplatná Azure s přístupem Red Hat Cloud Access. Navštivte tento odkaz, kde najdete další informace o registraci předplatných Azure pro cloudový přístup Red Hat.
+| Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Pokud chcete využít výhod s virtuálními počítači s RHEL, musíte nejdřív [zaregistrovat vaše předplatná Azure pomocí služby Red Hat Cloud Access](https://access.redhat.com/management/cloud).
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, jak vytvořit a aktualizovat virtuální počítače a přidat typy licencí (RHEL_BYOS, SLES_BYOS) pro Zvýhodněné hybridní využití Azure pomocí [Azure CLI tady.](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [Naučte se vytvářet a aktualizovat virtuální počítače a přidávat typy licencí (RHEL_BYOS, SLES_BYOS) pro Zvýhodněné hybridní využití Azure pomocí Azure CLI.](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505252"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562561"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
 V tomto článku používáme Analýza textu [REST API a](https://www.postman.com/downloads/) potomer k předvedení klíčových konceptů. Rozhraní API poskytuje několik synchronních a asynchronních koncových bodů pro používání funkcí služby. 
+
+## <a name="create-a-text-analytics-resource"></a>Vytvoření prostředku Analýza textu
+
+> [!NOTE]
+> * Pokud chcete použít koncové body nebo, budete potřebovat prostředek Analýza textu s použitím [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Standard (S) `/analyze` `/health` . `/analyze`Koncový bod je zahrnutý ve vaší [cenové úrovni](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+
+Před použitím rozhraní API pro analýzu textu budete muset vytvořit prostředek Azure s klíčem a koncovým bodem pro vaše aplikace. 
+
+1.  Nejprve přejdete na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a vytvořte nový prostředek analýza textu, pokud ho ještě nemáte. Vyberte [cenovou úroveň](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+
+2.  Vyberte oblast, kterou chcete použít pro koncový bod.  Všimněte si prosím, že `/analyze` `/health` koncové body a jsou dostupné jenom v těchto oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a západní Evropa.
+
+3.  Vytvořte prostředek Analýza textu a v levé části stránky přejdete do okna klíče a koncový bod. Zkopírujte klíč, který se použije později při volání rozhraní API. Později ho přidáte jako hodnotu pro `Ocp-Apim-Subscription-Key` hlavičku.
+
+## <a name="using-the-api-synchronously"></a>Synchronní používání rozhraní API
+
+Můžete volat Analýza textu synchronně (pro scénáře s nízkou latencí). Při použití synchronního rozhraní API je třeba každé rozhraní API (funkce) zavolat samostatně. Pokud potřebujete zavolat více funkcí, přečtěte si níže část o postupu volání Analýza textu asynchronně. 
 
 ## <a name="using-the-api-asynchronously"></a>Asynchronní použití rozhraní API
 
@@ -48,24 +66,16 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Předpoklady
-
-
-> [!NOTE]
-> * Pokud chcete použít koncové body nebo, budete potřebovat prostředek Analýza textu s použitím [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Standard (S) `/analyze` `/health` .
-
-1.  Nejprve přejdete na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a vytvořte nový prostředek analýza textu, pokud ho ještě nemáte. Pokud chcete použít koncové body nebo, vyberte **cenovou úroveň Standard (y)** `/analyze` `/health` . `/analyze`Koncový bod je zahrnutý ve vaší [cenové úrovni](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
-
-2.  Vyberte oblast, kterou chcete použít pro koncový bod.  Všimněte si prosím, že `/analyze` `/health` koncové body a jsou dostupné jenom v těchto oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a západní Evropa.
-
-3.  Vytvořte prostředek Analýza textu a v levé části stránky přejdete do okna klíče a koncový bod. Zkopírujte klíč, který se použije později při volání rozhraní API. Později ho přidáte jako hodnotu pro `Ocp-Apim-Subscription-Key` hlavičku.
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>Formát požadavku rozhraní API
+## <a name="api-request-formats"></a>Formáty požadavků rozhraní API
+
+Do rozhraní API pro analýzu textu lze odeslat synchronní i asynchronní volání.
 
 #### <a name="synchronous"></a>[Synchronní](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>Synchronní požadavky
 
 Formát pro požadavky rozhraní API je stejný pro všechny synchronní operace. Dokumenty jsou odesílány v objektu JSON jako nezpracovaný nestrukturovaný text. KÓD XML není podporován. Schéma JSON se skládá z prvků popsaných níže.
 
@@ -89,7 +99,9 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
 }
 ```
 
-#### <a name="analyze"></a>[Analýza](#tab/analyze)
+#### <a name="asynchronous"></a>[Asynchronní](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Asynchronní požadavky na `/analyze` koncový bod
 
 > [!NOTE]
 > Nejnovější předběžná verze klientské knihovny Analýza textu umožňuje volat asynchronní operace analýzy pomocí objektu klienta. Příklady najdete na GitHubu:
@@ -154,7 +166,7 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[Analýza textu pro zdravotnictví](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>Asynchronní požadavky na `/health` koncový bod
 
 Formát požadavků rozhraní API na Analýza textu pro hostované rozhraní API pro stav je stejný jako u svého kontejneru. Dokumenty jsou odesílány v objektu JSON jako nezpracovaný nestrukturovaný text. KÓD XML není podporován. Schéma JSON se skládá z prvků popsaných níže.  Vyplňte prosím [formulář žádosti Cognitive Services](https://aka.ms/csgate) , abyste požádali o přístup k analýza textu ve verzi Public Preview. Nebudete se vám účtovat Analýza textu pro využívání stavu. 
 
@@ -194,6 +206,8 @@ V části post (nebo jiný nástroj pro testování webového rozhraní API) př
 
 #### <a name="synchronous"></a>[Synchronní](#tab/synchronous)
 
+### <a name="endpoints-for-sending-synchronous-requests"></a>Koncové body pro odesílání synchronních žádostí
+
 | Příznak | Typ žádosti | Koncové body prostředků |
 |--|--|--|
 | Rozpoznávání jazyka | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
@@ -204,14 +218,16 @@ V části post (nebo jiný nástroj pro testování webového rozhraní API) př
 | Rozpoznávání pojmenovaných entit – PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Rozpoznávání pojmenovaných entit – FÍ | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[Analýza](#tab/analyze)
+#### <a name="asynchronous"></a>[Asynchronní](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Koncové body pro odesílání asynchronních požadavků na `/analyze` koncový bod
 
 | Příznak | Typ žádosti | Koncové body prostředků |
 |--|--|--|
 | Odeslat úlohu analýzy | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Získání stavu a výsledků analýzy | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[Analýza textu pro zdravotnictví](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Koncové body pro odesílání asynchronních požadavků na `/health` koncový bod
 
 | Příznak | Typ žádosti | Koncové body prostředků |
 |--|--|--|
@@ -244,7 +260,7 @@ Až budete mít koncový bod, v post (nebo jiném testovacím nástroji webovéh
       + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)
       + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)
       + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)
-      + [rozpoznávání entit,](text-analytics-how-to-entity-linking.md)
+      + [Rozpoznávání entit](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>Odeslat žádost
 
@@ -267,77 +283,24 @@ Počítejte s tím, že pro `/analyze` asynchronní `/health` operace nebo jsou 
  
 # <a name="synchronous"></a>[Synchronní](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>Příklady odpovědí na synchronní operaci
+
 Odezvy synchronního koncového bodu se budou lišit v závislosti na použitém koncovém bodu. Příklady odpovědí najdete v následujících článcích.
 
 + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md#step-3-view-the-results)
 + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md#view-the-results)
-+ [rozpoznávání entit,](text-analytics-how-to-entity-linking.md#view-results)
++ [Rozpoznávání entit](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[Analýza](#tab/analyze)
+# <a name="asynchronous"></a>[Asynchronní](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>Příklady odpovědí pro asynchronní operace
 
 V případě úspěchu vrátí požadavek GET na `/analyze` koncový bod objekt obsahující přiřazené úkoly. Příklad: `keyPhraseExtractionTasks`. Tyto úlohy obsahují objekt odpovědi z příslušné funkce Analýza textu. Další informace najdete v následujících článcích.
 
 + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [rozpoznávání entit,](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[Analýza textu pro zdravotnictví](#tab/health)
-
-Další informace o Analýza textu pro odpověď na asynchronní rozhraní API pro stav najdete v následujícím článku:
-
++ [Rozpoznávání entit](text-analytics-how-to-entity-linking.md#view-results)
 + [Analýza textu pro zdravotnictví](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 

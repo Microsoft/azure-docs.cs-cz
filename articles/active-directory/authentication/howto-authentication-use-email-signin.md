@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743169"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559836"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -36,6 +36,9 @@ V tomto článku se dozvíte, jak povolit a používat e-maily jako alternativn�
 
 > [!NOTE]
 > Tato funkce je určena jenom pro uživatele Azure AD ověřené pro Cloud.
+
+> [!NOTE]
+> V současné době není tato funkce podporovaná na zařízeních s Windows 10 připojená k Azure AD pro klienty s ověřováním pomocí cloudu. Tato funkce se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Přehled přístupů ke službě Azure AD pro přihlášení
 
@@ -132,7 +135,7 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     5de3afbe-4b7a-4b33-86b0-7bbe308db7f7 BasicAutoAccelerationPolicy HomeRealmDiscoveryPolicy True
     ```
 
-1. Pokud už je nakonfigurovaná zásada, ověřte, jestli *AlternateIdLogin*   je povolený atribut AlternateIdLogin, jak je znázorněné v následujícím příkladu výstupu zásady:
+1. Pokud už je nakonfigurovaná zásada, ověřte, jestli **   je povolený atribut AlternateIdLogin, jak je znázorněné v následujícím příkladu výstupu zásady:
 
     ```powershell
     Id : 5de3afbe-4b7a-4b33-86b0-7bbe308db7f7

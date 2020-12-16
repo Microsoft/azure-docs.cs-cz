@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3d3fb983f5e55f8b262be0925c2138b465413fc3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095402"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562493"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Služby Azure, které podporují Azure Data Lake Storage Gen2
 
@@ -39,7 +39,7 @@ V této tabulce jsou uvedené služby Azure, které můžete používat s Azure 
 |HDInsight |Obecná dostupnost|Ano|Ano|[Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Použití rozhraní příkazového řádku HDFS s Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Kurz: extrakce, transformace a načtení dat pomocí Apache Hive ve službě Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Obecná dostupnost|Ano|Ano|[Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Obecná dostupnost|Ano|Ano|[Analyzovat data v Data Lake Storage Gen2 pomocí Power BI](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (dříve SQL Data Warehouse)|Obecná dostupnost|Ano|Ano|[Použití s Azure synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (dříve SQL Data Warehouse)|Obecná dostupnost|Ano|Ano|[Analýza dat v účtu úložiště](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Služba SSIS (SQL Server Integration Services)|Obecná dostupnost|Ano|Ano|[Správce připojení Azure Storage](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Průzkumník dat Azure|Obecná dostupnost|Ano|Ano|[Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Preview|Ano|Ano|[Index a hledání Azure Data Lake Storage Gen2ch dokumentů (Preview)](../../search/search-howto-index-azure-data-lake-storage.md)|

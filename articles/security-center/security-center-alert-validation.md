@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340814"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560097"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Ověřování výstrah v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -27,7 +27,42 @@ Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správ
 Výstrahy jsou oznámení, která Security Center generuje, když zjistí ohrožení vašich prostředků. Tato nastavení upřednostní a vypíše výstrahy spolu s informacemi potřebnými k rychlému prozkoumání problému. Security Center také poskytuje doporučení pro nápravu útoku.
 Další informace najdete v tématech [výstrahy zabezpečení v Security Center](security-center-alerts-overview.md) a [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md) .
 
-## <a name="validate-alerts-on-windows-vms"></a>Ověřit výstrahy na virtuálních počítačích s Windows <a name="validate-windows"></a>
+
+## <a name="generate-sample-azure-defender-alerts"></a>Generování ukázkových výstrah Azure Defenderu
+
+Pokud používáte nové prostředí výstrah ve verzi Preview, jak je popsáno v tématu [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md), můžete pomocí několika kliknutí na stránce výstrahy zabezpečení v Azure Portal vytvořit ukázkové výstrahy.
+
+Použijte ukázkové výstrahy pro:
+
+- vyhodnocení hodnoty a možností v Azure Defenderu
+- Ověřte všechny konfigurace, které jste udělali pro výstrahy zabezpečení (například integrace SIEM, automatizace pracovních postupů a e-mailová oznámení).
+
+> [!NOTE]
+> Tento postup vyžaduje, aby v horní části stránky **výstrahy zabezpečení** bylo dostupné nové (Preview) výstrahy.
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner s odkazem na nové prostředí upozornění ve verzi Preview":::
+
+Postup vytvoření ukázkových výstrah:
+
+1. Na panelu nástrojů na stránce Výstrahy vyberte **Vytvořit Ukázkové výstrahy**. 
+1. Vyberte předplatné.
+1. Vyberte příslušné plány Azure Defenderu, pro které chcete zobrazit výstrahy. 
+1. Vyberte **Vytvořit Ukázkové výstrahy**.
+
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Postup vytvoření ukázkových výstrah v Azure Security Center":::
+    
+    Zobrazí se oznámení s informací, že se vytváří ukázková upozornění:
+
+    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="Oznámení, že se generují ukázková upozornění.":::
+
+    Po několika minutách se výstrahy zobrazí na stránce výstrahy zabezpečení. Zobrazí se také kdekoli jinde, které jste nakonfigurovali pro příjem výstrah zabezpečení Azure Security Center (připojená systémů Siem, e-mailová oznámení atd.).
+
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="Ukázkové výstrahy v seznamu výstrah zabezpečení":::
+
+    > [!TIP]
+    > Výstrahy jsou pro simulované prostředky.
+
+## <a name="simulate-alerts-on-your-azure-vms-windows"></a>Simulace výstrah na virtuálních počítačích Azure (Windows) <a name="validate-windows"></a>
 
 Po instalaci agenta Security Center do počítače postupujte podle těchto kroků z počítače, ve kterém chcete být napadeným prostředkem výstrahy:
 
@@ -40,7 +75,7 @@ Po instalaci agenta Security Center do počítače postupujte podle těchto krok
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Ověřit výstrahy pro virtuální počítače se systémem Linux <a name="validate-linux"></a>
+## <a name="simulate-alerts-on-your-azure-vms-linux"></a>Simulace výstrah na virtuálních počítačích Azure (Linux) <a name="validate-linux"></a>
 
 Po instalaci agenta Security Center do počítače postupujte podle těchto kroků z počítače, ve kterém chcete být napadeným prostředkem výstrahy:
 1. Zkopírujte spustitelný soubor do vhodného umístění a přejmenujte ho na **./asc_alerttest_662jfi039n**, například:
@@ -54,7 +89,7 @@ Po instalaci agenta Security Center do počítače postupujte podle těchto krok
 1. Počkejte 5 až 10 minut a otevřete výstrahy služby Security Center. Měla by se zobrazit výstraha.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Ověřit výstrahy na Kubernetes <a name="validate-kubernetes"></a>
+## <a name="simulate-alerts-on-kubernetes"></a>Simulace výstrah na Kubernetes <a name="validate-kubernetes"></a>
 
 Pokud jste Kubernetes službu Azure s Security Center, můžete otestovat, zda vaše výstrahy pracují s následujícím příkazem kubectl:
 

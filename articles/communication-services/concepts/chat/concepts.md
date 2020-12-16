@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886018"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560232"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
 
@@ -46,8 +46,9 @@ K dispozici jsou dvě základní součásti pro konverzaci: 1) klientská aplika
 
 Služba Communications Services chat sdílí uživatelem generované zprávy i zprávy generované systémem, které se nazývají **aktivity vláken**. Aktivity vlákna jsou generovány při aktualizaci vlákna chatu. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat textové zprávy generované uživatelem a také systémové zprávy v chronologickém pořadí. To vám pomůže určit, kdy se člen přidal nebo odebral nebo když se aktualizovalo téma konverzačního vlákna. Podporované typy zpráv:  
 
- - `Text`: Skutečná zpráva vytvořená a odeslaná uživatelem jako součást konverzace chatu. 
- - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Například:
+ - `Text`: Zpráva s prostým textem složená a odeslaná uživatelem jako součást konverzace chatu. 
+ - `RichText/HTML`: Naformátovaná textová zpráva. Všimněte si, že uživatelé komunikačních služeb aktuálně nemůžou odesílat zprávy RTF. Tento typ zprávy je podporován zprávami odesílanými od týmů uživatelů ke komunikačním službám ve scénářích spolupráce týmů.
+ - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů byl přidán do vlákna chatu. Například:
 
 ```xml
 
@@ -92,6 +93,30 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```
 
+- `ThreadActivity/MemberJoined`: Systémová zpráva generovaná v případě, že se uživatel typu Host připojí k chatu schůzky. Uživatelé komunikačních služeb se můžou připojit jako host týmu, kteří se účastní chatů. Například:  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`: Systémová zpráva generovaná v případě, že uživatel typu Host opustí schůzku v konverzaci. Uživatelé komunikačních služeb se můžou připojit jako host týmu, kteří se účastní chatů. Například: 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Například:
 
 ```xml

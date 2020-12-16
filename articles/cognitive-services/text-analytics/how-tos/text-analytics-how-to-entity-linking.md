@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505235"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562527"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -99,6 +99,14 @@ Počínaje `v3.1-preview.3` verzí odpověď JSON obsahuje `redactedText` vlastn
 
 [Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**Asynchronní operace**
+
+Počínaje `v3.1-preview.3` nástrojem můžete odesílat požadavky ner asynchronně pomocí `/analyze` koncového bodu.
+
+* Asynchronní operace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+Informace o posílání asynchronních požadavků naleznete v tématu [How to Call the rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md) .
+
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
@@ -117,7 +125,11 @@ Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro
 
 Nastavte hlavičku požadavku tak, aby obsahovala klíč rozhraní API pro analýzu textu. V textu žádosti zadejte dokumenty JSON, které jste připravili.
 
-### <a name="example-ner-request"></a>Příklad žádosti NER 
+## <a name="example-requests"></a>Příklady požadavků
+
+#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>Příklad synchronní žádosti NER 
 
 Následující JSON je příkladem obsahu, který můžete odeslat do rozhraní API. Formát požadavku je pro obě verze rozhraní API stejný.
 
@@ -131,8 +143,64 @@ Následující JSON je příkladem obsahu, který můžete odeslat do rozhraní 
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>Příklad asynchronní žádosti NER
+
+Použijete-li `/analyze` koncový bod pro [asynchronní operaci](text-analytics-how-to-call-api.md), dostanete odpověď obsahující úkoly, které jste odeslali do rozhraní API.
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>Příklad synchronní žádosti NER 
+
+Verze 3,0 obsahuje pouze synchronní operaci. Následující JSON je příkladem obsahu, který můžete odeslat do rozhraní API. Formát požadavku je pro obě verze rozhraní API stejný.
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>Publikování žádosti
 
@@ -148,11 +216,68 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 ### <a name="example-responses"></a>Příklady odpovědí
 
-Verze 3 poskytuje samostatné koncové body pro obecné NER, PII a propojení entit. Odpovědi pro obě operace jsou uvedené níže. 
+Verze 3 poskytuje samostatné koncové body pro obecné NER, PII a propojení entit. Verze 3,1 – pareview obsahuje režim asynchronní analýzy. Odpovědi na tyto operace jsou uvedené níže. 
 
 #### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>Synchronní příklady výsledků
+
+Příklad obecné odpovědi NER:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 Příklad odpovědi PII:
+
 ```json
 {
   "documents": [
@@ -236,6 +361,58 @@ Příklad odpovědi na propojení entity:
   ],
   "errors": [],
   "modelVersion": "2020-02-01"
+}
+```
+
+### <a name="example-asynchronous-result"></a>Příklad asynchronního výsledku
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
 }
 ```
 

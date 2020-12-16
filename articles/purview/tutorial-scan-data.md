@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922574"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559960"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Kurz: Kontrola dat pomocí Azure dosah (Preview)
 
@@ -39,7 +39,7 @@ V části 1 této série kurzů budete:
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-data-estate"></a>Vytvořit datovou nemovitost
 
@@ -146,10 +146,11 @@ Po dokončení konfigurace katalogu spusťte v okně PowerShellu následující 
 
    Když příkaz spustíte, zobrazí se automaticky otevírané okno, abyste se mohli přihlásit pomocí přihlašovacích údajů Azure Active Directory.
 
-1. K spuštění Úvodní sady použijte následující příkaz. Nahraďte `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` `CatalogResourceGroupName` zástupné symboly,,, a. Pro `newresourcegroupname` použijte jedinečný název pro skupinu prostředků, která bude obsahovat datovou nemovitost.
 
-> [!IMPORTANT]
-> **Newresourcegroupname** používají pouze čísla a malá písmena a musí být kratší než 17 znaků. **Neexistují velká písmena velkých a malých písmen a speciální znaky jsou povoleny.** Toto omezení pochází z pravidel pojmenování účtů úložiště.
+1. K spuštění Úvodní sady použijte následující příkaz. Nahraďte `CatalogName` `TenantID` `SubscriptionID` `NewResourceGroupName` `CatalogResourceGroupName` zástupné symboly,,, a. Pro `NewResourceGroupName` použijte jedinečný název (jenom s malými alfanumerickými znaky) pro skupinu prostředků, která bude obsahovat datovou nemovitost.
+
+   > [!IMPORTANT]
+   > **Newresourcegroupname** používají pouze čísla a malá písmena a musí být kratší než 17 znaků. **Neexistují velká písmena velkých a malých písmen a speciální znaky jsou povoleny.** Toto omezení pochází z pravidel pojmenování účtů úložiště.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`
