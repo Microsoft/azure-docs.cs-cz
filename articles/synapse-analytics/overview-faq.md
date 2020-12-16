@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576022"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563258"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics
 
@@ -59,7 +59,7 @@ Odpověď: jako výchozí bod funguje Azure synapse s integrovanou analýzou ná
 
 Odpověď: pracovní prostory synapse podporují uživatelsky definované složky.
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>Otázka: Mohu propojit více než jeden Power BI pracovní prostory do jednoho pracovního prostoru Azure synapse?
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>Otázka: Mohu propojit více než jeden Power BI pracovní prostor k jednomu pracovnímu prostoru Azure synapse?
     
 Odpověď: v současné době můžete propojit pouze jeden Power BI pracovní prostor k pracovnímu prostoru Azure synapse. 
 
@@ -69,9 +69,9 @@ Odpověď: synapse odkaz na Apache Spark je GA. Odkaz synapse pro fond SQL bez s
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>Otázka: poskytuje Azure synapse Workspace podporu CI/CD? 
 
-Odpověď: Ano! Všechny artefakty kanálů, poznámkové bloky, skripty SQL a definice úloh Sparku se budou nacházet v GITU. Všechny definice fondů budou uloženy v GITU jako šablony ARM. Vyhrazené objekty fondu SQL (schémata, tabulky, zobrazení atd.) se budou spravovat pomocí databázových projektů s podporou CI/CD.
+Odpověď: Ano! Všechny artefakty kanálů, poznámkové bloky, skripty SQL a definice úloh Sparku se budou nacházet v Gitu. Všechny definice fondů budou uloženy v Gitu jako šablony ARM. Vyhrazené objekty fondu SQL (schémata, tabulky, zobrazení atd.) se budou spravovat pomocí databázových projektů s podporou CI/CD.
 
-## <a name="pipelines"></a>Kanály
+## <a name="pipelines"></a>Pipelines
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>Otázka: Návody vědět, jaké přihlašovací údaje se používají ke spuštění kanálu? 
 
@@ -91,11 +91,11 @@ Odpověď: v tuto chvíli musíte ručně znovu vytvořit kanály Azure Data Fac
 
 Odpověď: Apache Spark pro synapse je Apache Spark s přidanou podporou pro integraci s jinými službami (AAD, AzureML atd.) a dalšími knihovnami (mssparktuils, Hummingbird) a předem vyladěnými konfiguracemi výkonu.
 
-Jakékoli zatížení, které aktuálně běží na Apache Spark, se spustí v protokolu MSFT Spark beze změny. 
+Jakékoli zatížení, které aktuálně běží na Apache Spark, se spustí v Apache Spark pro Azure synapse beze změny. 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>Otázka: Jaké verze Sparku jsou k dispozici?
 
-Odpověď: Azure synapse Apache Spark plně podporuje Spark 2,4. Úplný seznam základních komponent a aktuálně podporované verze najdete v tématu [podpora Apache Spark verzí ](./spark/apache-spark-version-support.md).
+Odpověď: Azure synapse Apache Spark plně podporuje Spark 2,4. Úplný seznam základních komponent a aktuálně podporované verze najdete v tématu [podpora Apache Spark verzí](./spark/apache-spark-version-support.md).
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>Otázka: existuje ekvivalent DButils v Azure synapse Spark?
 
@@ -121,13 +121,13 @@ Nejjednodušší způsob, jak tento úkol provést, je vyšetřit data pomocí S
  
 Pro splnění tohoto scénáře byste měli všem vývojářům poskytnout fond Spark bez serveru, který je nastavený tak, aby používal malý počet prostředků Sparku. Vzhledem k tomu, že fondy Spark bez serveru neúčtují žádné náklady, dokud je nebudete aktivně používat, minimalizují se náklady, pokud existuje více vývojářů Fondy sdílejí metadata (tabulky Spark), aby s nimi mohli snadno pracovat.
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>Otázka: Návody zahrnout, spravovat a instalovat knihovny 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>Otázka: Návody zahrnout, spravovat a instalovat knihovny?
 
 Odpověď: můžete nainstalovat externí balíčky pomocí requirements.txt souboru při vytváření fondu Spark, z pracovního prostoru synapse nebo z Azure Portal. Viz [Správa knihoven pro Apache Spark ve službě Azure synapse Analytics](./spark/apache-spark-azure-portal-add-libraries.md).
 
 ## <a name="dedicated-sql-pools"></a>Vyhrazené fondy SQL
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>Otázka: Jaké jsou funkční rozdíly mezi vyhrazenými fondy SQL a fondy bez serveru
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>Otázka: Jaké jsou funkční rozdíly mezi vyhrazenými fondy SQL a fondy bez serveru?
 
 Odpověď: můžete najít úplný seznam rozdílů v [rozdílech funkcí T-SQL v synapse SQL](./sql/overview-features.md).
 
@@ -140,7 +140,7 @@ Odpověď: není k dispozici žádný "Přesun" nebo "migrace". Ve stávajícíc
 Odpověď: ve výchozím nastavení budou všechny nové vyhrazené fondy SQL nasazeny do pracovního prostoru. Pokud ale potřebujete, můžete i nadále vytvořit vyhrazený fond SQL (dřív SQL DW) v samostatném faktoru formuláře. 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>Otázka: Jaké jsou funkční rozdíly mezi vyhrazenými fondy SQL a neserverovým fondem SQL 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>Otázka: Jaké jsou funkční rozdíly mezi vyhrazenými fondy SQL a fondy SQL serverů bez serveru?
 
 Odpověď: můžete najít úplný seznam rozdílů v [rozdílech funkcí T-SQL v synapse SQL](./sql/overview-features.md).
 

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351618"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563462"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Nuxt.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Nuxt.js](https://nuxtjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Nuxt.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Nuxt.js
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 - Účet GitHub. [Vytvořte si účet zdarma](https://github.com/join).
@@ -109,7 +109,7 @@ Azure static Web Apps nasadí vaši aplikaci z úložiště GitHubu a zachová s
 1. Doručovat změny do GitHubu.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>Nasazení statického webu
@@ -139,7 +139,7 @@ Nový účet statického Web Apps potřebuje přístup k úložišti pomocí apl
 1. Klikněte na **tlačítko Přihlásit se pomocí GitHubu** .
 1. Vyberte **organizaci** , ve které jste úložiště vytvořili pro svůj Nuxt.js projekt, což může být vaše uživatelské jméno GitHubu.
 1. Vyhledejte a vyberte název úložiště, které jste vytvořili dříve.
-1. Z rozevíracího seznamu *větev* vyberte možnost **Hlavní** jako větev.
+1. Z rozevíracího seznamu *větev* vyberte **Main (Hlavní** ) jako větev.
 
    :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Připojení ke GitHubu":::
 
@@ -172,7 +172,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 Při vytváření aplikace se v úložišti Azure static Web Apps vytvořil soubor pracovního postupu akcí GitHubu. Tento soubor budete muset přenést do místního úložiště, aby se synchronizoval historie Gitu.
 
-Vraťte se do terminálu a spusťte následující příkaz `git pull origin master` .
+Vraťte se do terminálu a spusťte následující příkaz `git pull origin main` .
 
 ## <a name="configure-dynamic-routes"></a>Konfigurace dynamických tras
 
