@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401555"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631597"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **Azureactivedirectory selhala** | Azure Active Directory | Odchozí | Ne | Ano |
 | **AzureActiveDirectoryDomainServices** | Provoz správy pro nasazení vyhrazená pro Azure Active Directory Domain Services. | Obojí | Ne | Ano |
 | **AzureAdvancedThreatProtection** | Rozšířená ochrana před internetovými útoky Azure. | Odchozí | Ne | Ne |
+| **AzureArcInfrastructure** | Servery s podporou ARC Azure, Kubernetes a konfigurace hosta s povoleným přenosem.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala**,**AzureTrafficManager** a **AzureResourceManager** . *Tato značka se v tuto chvíli nedá nakonfigurovat přes Azure Portal*.| Odchozí | Ne | Ano |
 | **AzureBackup** |Azure Backup.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . | Odchozí | Ne | Ano |
 | **AzureBotService** | Azure Bot Service. | Odchozí | Ne | Ne |
 | **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=56519) | Odchozí | Ano | Ano |
@@ -69,7 +70,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureEventGrid** | Azure Event Grid. | Obojí | Ne | Ne |
 | **AzureFrontDoor. front-end** <br/> **AzureFrontDoor. back-end** <br/> **AzureFrontDoor.FirstParty**  | Přední dveře Azure. | Obojí | Ne | Ne |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala**, **AzureFrontDoor. front.** a **AzureFrontDoor. FirstParty** . | Odchozí | Ne | Ne |
-| **AzureIoTHub** | IoT Hub Azure. | Odchozí | Ne | Ne |
+| **AzureIoTHub** | Azure IoT Hub | Odchozí | Ne | Ne |
 | **AzureKeyVault** | Azure Key Vault<br/><br/>*Poznámka:* Tato značka má závislost na značce **azureactivedirectory selhala** . | Odchozí | Ano | Ano |
 | **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), ve které vznikly sondy stavu Azure. To zahrnuje jenom přenos dat sondy, ne skutečný provoz do back-endu prostředku. Pokud nepoužíváte Azure Load Balancer, můžete toto pravidlo přepsat. | Obojí | Ne | Ne |
 | **AzureMachineLearning** | Azure Machine Learning. | Obojí | Ne | Ano |

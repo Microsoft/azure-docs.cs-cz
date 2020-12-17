@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4da0fccf10d387e7496a8b0ecc7623a22df58c93
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618745"
+ms.locfileid: "97629118"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -33,9 +33,14 @@ ms.locfileid: "97618745"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Pokud platnost relace vyprší až do doby, kdy uživatel získá tok změny hesla, zobrazí se výzva k opětovnému přihlášení. V tomto článku se dozvíte, jak nakonfigurovat změnu hesla ve [vlastních zásadách](custom-policy-overview.md). Pro toky uživatelů je také možné nakonfigurovat [Samoobslužné resetování hesla](user-flow-self-service-password-reset.md) .
+V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Tok změny hesla zahrnuje následující kroky:
 
-## <a name="prerequisites"></a>Předpoklady
+1. Přihlaste se pomocí místního účtu. Pokud je relace stále aktivní, Azure AD B2C autorizuje uživatele a přeskočí k dalšímu kroku.
+1. Uživatelé musí ověřit **staré heslo**, vytvořit a potvrdit **nové heslo**.
+
+![Tok změny hesla](./media/add-password-change-policy/password-change-flow.png)
+
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 * Pokud jste to ještě neudělali, [Zaregistrujte webovou aplikaci v Azure Active Directory B2C](tutorial-register-applications.md).
@@ -66,41 +71,10 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
         <TechnicalProfiles>
           <TechnicalProfile Id="login-NonInteractive-PasswordChange">
             <DisplayName>Local Account SignIn</DisplayName>
-            <Protocol Name="OpenIdConnect" />
-            <Metadata>
-              <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
-              <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
-              <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
-              <Item Key="ProviderName">https://sts.windows.net/</Item>
-              <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
-              <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
-              <Item Key="response_types">id_token</Item>
-              <Item Key="response_mode">query</Item>
-              <Item Key="scope">email openid</Item>
-              <Item Key="grant_type">password</Item>
-              <Item Key="UsePolicyInRedirectUri">false</Item>
-              <Item Key="HttpBinding">POST</Item>
-              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-            </Metadata>
             <InputClaims>
-              <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
               <InputClaim ClaimTypeReferenceId="oldPassword" PartnerClaimType="password" Required="true" />
-              <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
-              <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
-              <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-            </InputClaims>
-            <OutputClaims>
-              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
-              <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid" />
-              <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-              <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-              <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-              <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
-              <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-            </OutputClaims>
+              </InputClaims>
+            <IncludeTechnicalProfile ReferenceId="login-NonInteractive" />
           </TechnicalProfile>
         </TechnicalProfiles>
       </ClaimsProvider>
@@ -113,9 +87,6 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
             <Metadata>
               <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
             </Metadata>
-            <CryptographicKeys>
-              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-            </CryptographicKeys>
             <InputClaims>
               <InputClaim ClaimTypeReferenceId="objectId" />
             </InputClaims>
@@ -134,15 +105,13 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
     </ClaimsProviders>
     ```
 
-    Nahraďte `IdentityExperienceFrameworkAppId` ID aplikace IdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Nahraďte `ProxyIdentityExperienceFrameworkAppId` ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste ještě vytvořili.
-
 3. Element [UserJourney](userjourneys.md) definuje cestu, kterou uživatel provede při interakci s aplikací. Přidejte element **userjourney** , pokud neexistuje s **UserJourney** identifikovaným jako `PasswordChange` :
 
     ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
-          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.signuporsignin">
             <ClaimsProviderSelections>
               <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
             </ClaimsProviderSelections>
@@ -157,7 +126,12 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
               <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordChangeUsingObjectId" />
             </ClaimsExchanges>
           </OrchestrationStep>
-          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+          <OrchestrationStep Order="4" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
         </OrchestrationSteps>
         <ClientDefinition ReferenceId="DefaultWeb" />
       </UserJourney>
@@ -170,13 +144,7 @@ V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou 
 7. Upravte atribut **ReferenceId** v nástroji `<DefaultUserJourney>` tak, aby odpovídal ID nové cesty uživatele, kterou jste vytvořili. Například *PasswordChange*.
 8. Uložte provedené změny.
 
-Ukázkovou zásadu najdete [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
-
-## <a name="test-your-policy"></a>Testování zásad
-
-Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen, aby bylo možné `https://jwt.ms` zkontrolovat deklarace identity v ní.
-
-### <a name="upload-the-files"></a>Nahrání souborů
+## <a name="upload-and-test-the-policy"></a>Nahrávání a testování zásad
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
@@ -195,6 +163,8 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 
 ## <a name="next-steps"></a>Další kroky
 
+- Vyhledejte ukázkové zásady na [GitHubu](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 - Přečtěte si, jak můžete [nakonfigurovat složitost hesla v Azure AD B2C](password-complexity.md).
+- Nastavte [tok resetování hesla](add-password-reset-policy.md).
 
 ::: zone-end

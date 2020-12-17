@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484800"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631945"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
 
@@ -28,13 +28,13 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Vytvoření virtuální sítě a hostitele bastionu
 
@@ -93,7 +93,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
 
 V této části vytvoříte virtuální počítač, který se použije k otestování privátního koncového bodu.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -106,7 +106,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Název virtuálního počítače | Zadejte **myVM** |
     | Oblast | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
-    | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -135,7 +135,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncový bod.
 
-1. V nabídce na levé straně vyberte vytvořit databáze **prostředků**  >  **Databases**  >  **Cosmos DB účet** nebo ve vyhledávacím poli vyhledejte **účet Cosmos DB** .
+1. V nabídce na levé straně vyberte vytvořit databáze **prostředků**  >    >  **Cosmos DB účet** nebo ve vyhledávacím poli vyhledejte **účet Cosmos DB** .
 
 2. Na kartě **základy** v části **vytvořit Cosmos DB účet** zadejte nebo vyberte následující informace:
 
@@ -174,7 +174,7 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
     | Předplatné | Vyberte své předplatné Azure. |
     | Skupina prostředků | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Name | Zadejte **myPrivateEndpoint** |
+    | Název | Zadejte **myPrivateEndpoint** |
     | Cílový podprostředek | Ponechat výchozí **jádro (SQL)** |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |
@@ -208,13 +208,9 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
 
 5. Vyberte **OK**.
 
-10. V části **Nastavení** účtu CosmosDB vyberte **klíče**.
+6. V části **Nastavení** účtu CosmosDB vyberte **klíče**.
 
-11. Vyberte **myResourceGroup**.
-
-12. Vyberte účet úložiště, který jste vytvořili v předchozích krocích.
-
-14. Vyberte Kopírovat na **primárním připojovacím řetězci**.
+7. Vyberte Kopírovat na **primárním připojovacím řetězci**.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Test připojení k privátnímu koncovému bodu
 
@@ -234,7 +230,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 7. Po připojení otevřete Windows PowerShell na serveru.
 
-8. Zadejte `nslookup <storage-account-name>.documents.azure.com`. Nahraďte **\<storage-account-name>** názvem účtu úložiště, který jste vytvořili v předchozích krocích. 
+8. Zadejte `nslookup <cosmosdb-account-name>.documents.azure.com`. Nahraďte **\<cosmosdb-account-name>** názvem Cosmos DB účtu, který jste vytvořili v předchozích krocích. 
 
     ```powershell
     Server:  UnKnown
