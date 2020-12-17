@@ -4,12 +4,12 @@ description: Popisuje, jak použít Service Bus k optimalizaci výkonu při vým
 ms.topic: article
 ms.date: 11/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12de7edd5dec42b01c46307febbef7d739d0495d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811673"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655624"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -176,7 +176,7 @@ Funkce dávkování pro sadu .NET Standard SDK zatím nevystavuje vlastnost k ma
 
 Ve výchozím nastavení klient používá interval dávky 20 MS. Interval dávky můžete změnit nastavením vlastnosti [BatchFlushInterval][BatchFlushInterval] před vytvořením objektu pro vytváření zpráv. Toto nastavení má vliv na všechny klienty vytvořené touto továrnou.
 
-Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Například:
+Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Příklad:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -349,7 +349,7 @@ Cíl: minimalizace latence fronty nebo tématu. Počet odesílatelů a přijíma
 
 Cíl: maximalizuje propustnost fronty nebo tématu s velkým počtem odesílatelů. Každý odesilatel odesílá zprávy se střední sazbou. Počet přijímačů je malý.
 
-Service Bus umožňuje až 1000 souběžných připojení k entitě zasílání zpráv. Tento limIt se vynutil na úrovni oboru názvů a fronty, témata nebo odběry se omezené omezením souběžných připojení na obor názvů. U front se toto číslo sdílí mezi odesílateli a přijímači. Pokud se pro odesílatele vyžadují všechna připojení 1000, nahraďte frontu tématem a jedním předplatným. Téma přijímá až 1000 souběžných připojení od odesílatelů. Předplatné přijímá další 1000 souběžných připojení od přijímačů. Pokud potřebujete více než 1000 současných odesílatelů, odesílají odesílatelé zprávy do protokolu Service Bus přes HTTP.
+Service Bus umožňuje až 1000 souběžných připojení k entitě zasílání zpráv. Toto omezení se vynutilo na úrovni oboru názvů a fronty, témata nebo odběry se omezené omezením počtu souběžných připojení na obor názvů. U front se toto číslo sdílí mezi odesílateli a přijímači. Pokud se pro odesílatele vyžadují všechna připojení 1000, nahraďte frontu tématem a jedním předplatným. Téma přijímá až 1000 souběžných připojení od odesílatelů. Předplatné přijímá další 1000 souběžných připojení od přijímačů. Pokud potřebujete více než 1000 současných odesílatelů, odesílají odesílatelé zprávy do protokolu Service Bus přes HTTP.
 
 K maximalizaci propustnosti použijte následující postup:
 

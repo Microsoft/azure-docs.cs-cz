@@ -2,16 +2,16 @@
 title: Kurz – vytvoření šablony & nasazení
 description: Vytvořte první šablonu Azure Resource Manager (šablonu ARM). V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 09/28/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107019"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656984"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
 
@@ -19,7 +19,7 @@ V tomto kurzu se seznámíte s Azure Resource Manager šablonou (šablony ARM). 
 
 Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte úvodní šablonu krok za krokem, dokud neprojdete všechny základní části šablony ARM. Tyto prvky jsou stavebními bloky pro mnohem složitější šablony. Doufáme, že na konci řady jste si jistí, že máte jistotu, že vytváříte vlastní šablony a jste připraveni automatizovat nasazení pomocí šablon.
 
-Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Přehled šablon ARM](overview.md).
+Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Přehled šablon ARM](overview.md). Další informace o šablonách ARM pomocí příručky sady modulů na Microsoft Learn najdete v tématu [nasazení a Správa prostředků v Azure pomocí šablon ARM](/learn/paths/deploy-manage-resource-manager-templates/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -35,7 +35,7 @@ Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete
 
 K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokud používáte Azure CLI, musíte mít nejnovější verzi. Pokyny k instalaci najdete v těchto tématech:
 
-- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalace Azure PowerShellu](/powershell/azure/install-az-ps)
 - [Instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 - [Instalace Azure CLI v macOS](/cli/azure/install-azure-cli-macos)

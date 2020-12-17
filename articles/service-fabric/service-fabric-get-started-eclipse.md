@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590864"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656916"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -53,7 +53,6 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnov
 
 > [!NOTE]
 >Pokud Eclipse nefunguje na vašem počítači Mac podle očekávání nebo vyžaduje spuštění od superuživatele, přepněte se do složky **ECLIPSE_INSTALLATION_PATH** a přejděte do podsložky **Eclipse.app/Contents/MacOS**. Spusťte Eclipse spuštěním příkazu `./eclipse`.
-
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Vytvoření aplikace Service Fabric pomocí Eclipse
 
@@ -156,7 +155,6 @@ K publikování aplikace v cloudu použijte následující postup:
 
 4. Průběh operace publikování můžete sledovat v okně konzoly.
 5. Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v clusteru Azure v okně prohlížeče. V příkladu výše by to bylo: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` . Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
-
 
 Pokud vaše aplikace obsahuje služby Reliable Services Services, je třeba v systému zabezpečit clustery se systémem Linux nakonfigurovat certifikát, který mohou vaše služby používat k volání rozhraní API modulu runtime Service Fabric. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
