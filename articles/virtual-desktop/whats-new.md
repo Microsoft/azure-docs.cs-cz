@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533957"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617353"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -49,7 +49,7 @@ Vystavili jsme verzi 2.0.1 rutin pro virtuální počítače s Windows. Tato akt
 
 ### <a name="azure-advisor-updates"></a>Aktualizace Azure Advisor
 
-Azure Advisor teď má nové doporučení na pokyny k blízkosti na virtuálním počítači s Windows. Další informace najdete na [webu Azure](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
+Azure Advisor teď má nové doporučení na pokyny k blízkosti na virtuálním počítači s Windows a nové doporučení pro optimalizaci výkonu v rámci hloubkového fondu hostitelů s vyrovnáváním zatížení. Další informace najdete na [webu Azure](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
 
 ## <a name="october-2020"></a>Říjen 2020
 

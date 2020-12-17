@@ -1,20 +1,20 @@
 ---
 title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.topic: overview
-ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356357"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617149"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
 Azure Lighthouse umožňuje správu pro více tenantů a zajišťuje vyšší automatizaci, větší škálovatelnost a vylepšené zásady správného řízení napříč prostředky i tenanty.
 
-S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Zákazníci si udrží kontrolu nad tím, kdo má přístup ke svému tenantovi, k jakým prostředkům mají přístup a jaké akce je možné provést. Tato nabídka může také těžit z [podnikových IT organizací,](concepts/enterprise.md) které spravují prostředky napříč více klienty.
+S Azure Lighthouse můžou poskytovatelé služeb poskytovat spravované služby pomocí komplexních a robustních nástrojů pro správu, které jsou integrované v platformě Azure. Zákazníci mají kontrolu nad tím, kdo má přístup ke svému tenantovi a k jakým prostředkům mají přístup, a jaké akce je možné učinit. Tato nabídka může také těžit z [podnikových IT organizací,](concepts/enterprise.md) které spravují prostředky napříč více klienty.
 
 ![Diagram s přehledem Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
@@ -28,7 +28,7 @@ Azure Lighthouse pomáhá poskytovatelům služeb efektivně sestavovat a dodáv
 
 K používání Azure Lighthouse ke správě prostředků Azure se nevztahují žádné další poplatky. Azure Lighthouse může používat libovolný zákazník nebo partner Azure.
 
-## <a name="capabilities"></a>Možnosti
+## <a name="capabilities"></a>Schopnosti
 
 Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a správu:
 

@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167691"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617064"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -118,8 +118,8 @@ V tomto příkladu se používá balíček [Microsoft. Extensions. http](https:/
 
 Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládání závislostí ASP.NET](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). U aplikace Functions se chovají různé životnosti služby následujícím způsobem:
 
-- **Přechodný**: přechodné služby se vytvářejí při každém požadavku služby.
-- **Vymezené**: rozsah platnosti služby odpovídá době trvání spuštění funkce. Oborové služby se pro každé spuštění vytvoří jednou. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby.
+- **Přechodný**: přechodné služby se vytvářejí při každém vyřešení služby.
+- **Vymezené**: rozsah platnosti služby odpovídá době trvání spuštění funkce. Vymezené služby se vytvoří jednou za spuštění funkce. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby.
 - **Singleton**: životnost služby typu Singleton odpovídá době životnosti hostitele a je znovu používána napříč prováděním funkce v dané instanci. Pro připojení a klienty jsou doporučovány služby životnosti singleton, `DocumentClient` například `HttpClient` instance.
 
 Zobrazit nebo stáhnout [ukázku různých životností služby](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) na GitHubu.
@@ -181,6 +181,8 @@ Následující příklad `host.json` souboru Přidá filtr protokolu.
     }
 }
 ```
+
+Další informace o úrovních protokolu najdete v tématu [Configure log úrovně](configure-monitoring.md#configure-log-levels).
 
 ## <a name="function-app-provided-services"></a>Poskytnuté služby Function App
 

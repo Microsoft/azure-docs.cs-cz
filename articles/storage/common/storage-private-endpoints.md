@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905549"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617251"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -45,6 +45,9 @@ Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé
 > Pokud chcete omezit přístup k účtu úložiště jenom prostřednictvím privátního koncového bodu, nakonfigurujte bránu firewall úložiště tak, aby odepřela nebo řízení přístupu prostřednictvím veřejného koncového bodu.
 
 Svůj účet úložiště můžete zabezpečit tak, aby přijímal jenom připojení z vaší virtuální sítě. [nakonfigurujete bránu firewall úložiště](storage-network-security.md#change-the-default-network-access-rule) tak, aby odepřela přístup prostřednictvím veřejného koncového bodu ve výchozím nastavení. Nepotřebujete pravidlo brány firewall, abyste mohli povolit provoz z virtuální sítě s privátním koncovým bodem, protože brána firewall úložiště řídí přístup jenom prostřednictvím veřejného koncového bodu. Místo toho privátní koncové body spoléhají na tok souhlasu pro udělení přístupu ke službě úložiště pro podsítě.
+
+> [!NOTE]
+> Při kopírování objektů BLOB mezi účty úložiště musí mít váš klient přístup k síti obou účtů. Takže pokud se rozhodnete použít privátní odkaz jenom pro jeden účet (zdroj nebo cíl), ujistěte se, že má váš klient přístup k síti k druhému účtu. Další informace o dalších způsobech konfigurace přístupu k síti najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Soukromé koncové body pro Azure Storage
 

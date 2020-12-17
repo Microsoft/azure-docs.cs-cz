@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907477"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617285"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>Kopírování objektů BLOB mezi účty úložiště Azure pomocí AzCopy v10 za účelem
 
@@ -21,13 +21,15 @@ Objekty blob, adresáře a kontejnery mezi účty úložiště můžete kopírov
 
 Chcete-li zobrazit příklady pro jiné typy úloh, jako je například nahrávání souborů, stahování objektů BLOB a synchronizace s úložištěm objektů blob, přečtěte si odkazy v části [Další kroky](#next-steps) v tomto článku.
 
-AzCopy používá [server-to-server](/rest/api/storageservices/put-block-from-url) [rozhraní API](/rest/api/storageservices/put-page-from-url)pro servery, takže se data zkopírují přímo mezi úložnými servery. Tyto operace kopírování nepoužívají šířku pásma sítě vašeho počítače.
+AzCopy používá [](/rest/api/storageservices/put-block-from-url) [rozhraní API](/rest/api/storageservices/put-page-from-url)pro servery, takže se data zkopírují přímo mezi úložnými servery. Tyto operace kopírování nepoužívají šířku pásma sítě vašeho počítače.
 
 Pokud si chcete stáhnout AzCopy a získat informace o způsobech poskytování přihlašovacích údajů k autorizaci službě úložiště, přečtěte si téma Začínáme [s AzCopy](storage-use-azcopy-v10.md). 
 
 ## <a name="guidelines"></a>Pokyny
 
 Pro příkazy AzCopy použijte následující pokyny. 
+
+- Váš klient musí mít síťový přístup ke zdrojovému i cílovému účtu úložiště. Informace o tom, jak nakonfigurovat nastavení sítě pro každý účet úložiště, najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
 - Připojí token SAS ke každé zdrojové adrese URL. 
 
@@ -52,7 +54,7 @@ Zkopírujte objekt blob do jiného účtu úložiště pomocí příkazu [AzCopy
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
 Operace kopírování je synchronní, takže když příkaz vrátí výsledek, znamená to, že se zkopírovaly všechny soubory. 
@@ -66,7 +68,7 @@ Zkopírujte adresář do jiného účtu úložiště pomocí příkazu [AzCopy C
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 Operace kopírování je synchronní, takže když příkaz vrátí výsledek, znamená to, že se zkopírovaly všechny soubory.
@@ -80,7 +82,7 @@ Zkopírujte kontejner do jiného účtu úložiště pomocí příkazu [AzCopy C
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 Operace kopírování je synchronní, takže když příkaz vrátí výsledek, znamená to, že se zkopírovaly všechny soubory.
@@ -94,7 +96,7 @@ Zkopírujte všechny kontejnery, adresáře a objekty blob do jiného účtu úl
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
+| **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Příklad** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 Operace kopírování je synchronní, takže když příkaz vrátí výsledek, znamená to, že se zkopírovaly všechny soubory.
@@ -146,10 +148,10 @@ Operaci kopírování můžete upravit pomocí volitelných příznaků. Tady je
 
 Další příklady najdete v těchto článcích:
 
-- [Příklady: nahrání](storage-use-azcopy-blobs-upload.md)
-- [Příklady: stažení](storage-use-azcopy-blobs-download.md)
-- [Příklady: synchronizace](storage-use-azcopy-blobs-synchronize.md)
-- [Příklady: sady Amazon S3](storage-use-azcopy-s3.md)
+- [Příklady: Odeslat](storage-use-azcopy-blobs-upload.md)
+- [Příklady: Stáhnout](storage-use-azcopy-blobs-download.md)
+- [Příklady: Synchronizace](storage-use-azcopy-blobs-synchronize.md)
+- [Příklady: Kbelíky Amazon S3](storage-use-azcopy-s3.md)
 - [Příklady: soubory Azure](storage-use-azcopy-files.md)
 - [Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)

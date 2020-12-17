@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369119"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617319"
 ---
 # <a name="azure-custom-roles"></a>Vlastní role Azure
 
@@ -208,6 +208,7 @@ Následující seznam popisuje omezení pro vlastní role.
 - Každý adresář může mít až **5000** vlastních rolí.
 - Azure Německo a Azure Čína 21Vianet můžou mít pro každý adresář až 2000 vlastních rolí.
 - Nelze nastavit `AssignableScopes` do kořenového oboru ( `"/"` ).
+- V nástroji nelze použít zástupné znaky ( `*` ) `AssignableScopes` . Toto omezení zástupných znaků pomáhá zajistit, aby uživatel mohl získat přístup k oboru aktualizací definice role.
 - V rámci vlastní role můžete definovat jenom jednu skupinu pro správu `AssignableScopes` . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 - Vlastní role se `DataActions` nedají přiřadit v oboru skupiny pro správu.
 - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role.

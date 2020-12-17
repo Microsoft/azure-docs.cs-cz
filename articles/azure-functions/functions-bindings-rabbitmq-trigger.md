@@ -4,15 +4,15 @@ description: Naučte se spouštět funkci Azure, když se vytvoří zpráva Rabb
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505729"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617217"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ Trigger for Azure Functions – přehled
 
@@ -133,14 +133,12 @@ Vazba RabbitMQ je definována v *function.jsna* místě, kde je *typ* nastaven n
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-Kód v příkazu *_\_ init_ \_ . py* deklaruje parametr jako `func.RabbitMQMessage` , což umožňuje číst zprávu ve funkci.
 
 ```python
 import logging
@@ -214,11 +212,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**směr** | neuvedeno | Musí být nastavené na "in".|
 |**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**| Název fronty, ze které se mají přijímat zprávy |
-|**Název hostitele**|**Název hostitele**|(volitelné, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
-|**passwordSetting**|**PasswordSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
+|**Název hostitele**|**Název hostitele**|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje uživatelské jméno pro přístup do fronty. Například UserNameSetting: "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje heslo pro přístup do fronty. Například PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat. (Např.: v *function.jsna*: connectionStringSetting: "rabbitMQConnection" <br> V *local.settings.js*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**přístavní**|**Port**|Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+|**přístavní**|**Port**|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Pro zprávu jsou k dispozici následující typy parametrů:
+Výchozí typ zprávy je [RabbitMQ událost](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
 
-* [Událost RabbitMQ](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – výchozí formát pro zprávy RabbitMQ.
-  * `byte[]`-Prostřednictvím vlastnosti "tělo" události RabbitMQ.
-* `string` – Zpráva je text.
 * `An object serializable as JSON` -Zpráva je doručena jako platný řetězec JSON.
+* `string`
+* `byte[]`
 * `POCO` -Zpráva je formátována jako objekt jazyka C#. Úplný příklad najdete v tématu [příklad](#example)v jazyce C#.
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Pro zprávu jsou k dispozici následující typy parametrů:
+Výchozí typ zprávy je [RabbitMQ událost](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
 
-* [Událost RabbitMQ](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – výchozí formát pro zprávy RabbitMQ.
-  * `byte[]`-Prostřednictvím vlastnosti "tělo" události RabbitMQ.
-* `string` – Zpráva je text.
 * `An object serializable as JSON` -Zpráva je doručena jako platný řetězec JSON.
-* `POCO` -Zpráva je formátována jako objekt jazyka C#.
+* `string`
+* `byte[]`
+* `POCO` -Zpráva je formátována jako objekt jazyka C#. Úplný příklad najdete v tématu [příklad](#example)skriptu jazyka C#.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Zpráva RabbitMQ se předává do funkce jako objekt String nebo JSON.
+Zpráva fronty je k dispozici prostřednictvím Context. Bindings.<NAME> kde <NAME> odpovídá názvu definovanému v function.js. Pokud je datová část JSON, hodnota je deserializována do objektu.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zpráva RabbitMQ se předává do funkce jako objekt String nebo JSON.
+Podívejte se na [příklad](#example)Pythonu.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -284,7 +280,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |prefetchCount|30|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat a který je uložen do mezipaměti.|
 |Proměnné QueueName|neuvedeno| Název fronty, ze které se mají přijímat zprávy |
 |připojovací řetězec|neuvedeno|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat.|
-|port|0|Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
+|port|0|(ignoruje se při použití connectionString) Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
 
 ## <a name="local-testing"></a>Místní testování
 
@@ -300,8 +296,8 @@ Pokud testujete místně bez připojovacího řetězce, měli byste nastavit nas
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +305,9 @@ Pokud testujete místně bez připojovacího řetězce, měli byste nastavit nas
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|Název hostitele|neuvedeno|(volitelné, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
-|userName|neuvedeno|(volitelné, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
-|heslo|neuvedeno|(volitelné, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
+|Název hostitele|neuvedeno|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|userName|neuvedeno|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
+|heslo|neuvedeno|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Monitorování koncového bodu RabbitMQ
 Monitorování front a výměn pro určitý koncový bod RabbitMQ:

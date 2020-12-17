@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360284"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617404"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorizace přístupu k objektům blob pomocí AzCopy a Azure Active Directory (Azure AD)
 
@@ -183,9 +183,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > Zvažte použití výzvy, jak je znázorněno v tomto příkladu. Tímto způsobem se vaše heslo nezobrazí v historii příkazů vaší konzole. 
 
-## <a name="authorize-without-a-keyring-linux"></a>Autorizovat bez Správce klíčů (Linux)
+## <a name="authorize-without-a-secret-store"></a>Autorizovat bez tajného úložiště
 
-Pokud váš operační systém nemá úložiště tajného klíče, jako je například *Správce klíčů*, `azcopy login` příkaz nebude fungovat. Místo toho můžete nastavit proměnné prostředí v paměti před spuštěním jednotlivých operací. Po dokončení operace zmizí tyto hodnoty z paměti, takže budete muset nastavit tyto proměnné pokaždé, když spustíte příkaz AzCopy.
+Pokud váš operační systém nemá úložiště tajného klíče, jako je třeba *Správce klíčů* Linux, `azcopy login` příkaz nebude fungovat. Místo toho můžete nastavit proměnné prostředí v paměti před spuštěním jednotlivých operací. 
 
 ### <a name="authorize-a-user-identity"></a>Autorizovat identitu uživatele
 

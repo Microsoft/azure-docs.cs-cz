@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595499"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617370"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Osvědčené postupy pro službu Azure RBAC
 
@@ -24,7 +24,7 @@ Tento článek popisuje některé osvědčené postupy pro použití řízení p
 
 Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo toho, abyste všem uživatelům udělili neomezená oprávnění v předplatném nebo prostředcích Azure, můžete povolit pouze určité akce v určitém oboru.
 
-Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Nepřiřazujte širší role v širších oborech, i když se zpočátku zdá být pohodlnější. Omezením rolí a oborů, které omezíte, jaké prostředky jsou ohroženy, pokud dojde k ohrožení zabezpečení objektu zabezpečení.
+Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Nepřiřazujte širší role v širších oborech, i když se zpočátku zdá být pohodlnější. Při vytváření vlastních rolí zahrňte jenom oprávnění uživatelé. Omezením rolí a oborů omezíte, jaké prostředky budou ohroženy, pokud dojde k ohrožení zabezpečení objektu zabezpečení.
 
 Následující diagram znázorňuje navrhovaný vzor pro používání Azure RBAC.
 

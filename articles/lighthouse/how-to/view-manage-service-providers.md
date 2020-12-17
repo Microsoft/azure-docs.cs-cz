@@ -1,23 +1,23 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 10/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371099"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617200"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Zákazníci můžou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit podrobnosti o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky na [Azure Lighthouse](../overview.md)a nakupovat nové nabídky poskytovatelů služeb.
+Stránka **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) poskytuje zákazníkům kontrolu a viditelnost svých poskytovatelů služeb, kteří používají [Azure Lighthouse](../overview.md). Zákazníci si můžou zobrazit podrobnosti o poskytovatelích služeb, delegovat konkrétní prostředky, nakupovat nové nabídky poskytovatelů služeb, odebírat přístup k poskytovateli služeb a další.
 
 > [!TIP]
 > V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup využít k konsolidaci prostředí pro správu.
 
-Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby**a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" nebo "Azure Lighthouse" do vyhledávacího pole v horní části Azure Portal.
+Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby** a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" nebo "Azure Lighthouse" do vyhledávacího pole v horní části Azure Portal.
 
 > [!NOTE]
 > Aby bylo možné zobrazit stránku **poskytovatelé služeb** , musí mít uživatel v tenantovi zákazníka [vestavěnou roli Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
@@ -41,7 +41,7 @@ Ve sloupci **delegování** si zákazník uvidí, kolik předplatných a skupin 
 
 Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **nabídky poskytovatele služeb** výběrem možnosti **přidat nabídku**. Poskytovatel služeb musí publikovat nabídku pro tohoto zákazníka. Zákazník pak může vybrat tuto nabídku z obrazovky **soukromé nabídky** a pak vybrat **vytvořit**.
 
-Pokud chce zákazník odebrat nabídku poskytovatele služeb, může vybrat ikonu odpadkového koše na řádku této nabídky. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
+Pokud chce zákazník odebrat nabídku poskytovatele služeb, může to provést kdykoli tak, že na řádku této nabídky vybere ikonu odpadkového koše. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
 
 ## <a name="delegate-resources"></a>Delegování prostředků
 
@@ -85,4 +85,5 @@ Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodr�
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Azure Lighthouse](../overview.md).
+- Přečtěte si, jak [Auditovat aktivitu poskytovatele služeb](view-service-provider-activity.md).
 - Naučte se, jak můžou poskytovatelé služeb [zobrazovat a spravovat zákazníky](view-manage-customers.md) na stránce **moji zákazníci** v Azure Portal.

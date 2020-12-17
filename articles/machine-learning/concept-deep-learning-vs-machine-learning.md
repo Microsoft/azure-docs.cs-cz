@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562833"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617115"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
@@ -57,9 +57,9 @@ Následující tabulka porovnává tyto dvě metody podrobněji:
 |  **Doba spouštění** | Provede poměrně krátkou dobu, od několika sekund až po několik hodin. | Výuka obvykle trvá příliš dlouho, protože algoritmus hloubkového učení zahrnuje mnoho vrstev. |
 |  **Výstup** | Výstupem je obvykle číselná hodnota, jako je například skóre nebo klasifikace. | Výstup může mít několik formátů, jako je text, skóre nebo zvuk. |
 
-## <a name="transfer-learning"></a>Učení pro přenos
+## <a name="transfer-learning"></a>Přenos učení
 
-Školení modelů pro hloubkové učení často vyžaduje velké množství školicích dat, špičkových výpočetních prostředků (GPU, TPU) a delší dobu výuky. Ve scénářích, kdy nemáte k dispozici žádnou z těchto možností, můžete postupovat podle techniky, která je známá jako přenosová výuka.
+Školení modelů pro hloubkové učení často vyžaduje velké množství školicích dat, špičkových výpočetních prostředků (GPU, TPU) a delší dobu výuky. Ve scénářích, kdy nemáte k dispozici žádnou z těchto možností, můžete postupovat podle techniky, která je známá jako *přenosová výuka.*
 
 Učení přenosu je technika, která používá znalostní bázi získanou z řešení jednoho problému na jiný, ale související problém.
 

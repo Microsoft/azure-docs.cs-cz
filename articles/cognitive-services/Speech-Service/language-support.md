@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606874"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617047"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -144,8 +144,8 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Arabština (Egypt) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>Nový</sup> | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Obecné |
 | Arabština (Saúdská Arábie) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>Nový</sup> | Obecné |
-| Bulharština (Bulgary) | `bg-BG` | Female | `bg-BG-KalinaNeural` | Obecné |
-| Bulharština (Bulgary) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>Nový</sup> | Obecné |
+| Bulharština (Bulharsko) | `bg-BG` | Female | `bg-BG-KalinaNeural` | Obecné |
+| Bulharština (Bulharsko) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>Nový</sup> | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>Nový</sup> | Obecné |
 | katalánština (Španělsko) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>Nový</sup> | Obecné |

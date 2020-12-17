@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950257"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617132"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
@@ -28,7 +28,7 @@ V tomto článku se seznámíte s [příručkou pro zálohování SAP HANA v Azu
 
 Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
 
-Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
+Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html).
 
 ![Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohování v SAP HANA studiu](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

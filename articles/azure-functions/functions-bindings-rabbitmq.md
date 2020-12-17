@@ -4,15 +4,15 @@ description: Naučte se odesílat triggery Azure RabbitMQ a vazby v Azure Functi
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505708"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617183"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ – Přehled vazeb pro Azure Functions
 
@@ -30,7 +30,7 @@ Azure Functions se integruje s [RabbitMQ](https://www.rabbitmq.com/) prostředni
 
 Pokud chcete začít s vývojem s tímto rozšířením, nezapomeňte nejdřív [nastavit koncový bod RabbitMQ](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint). Pokud se chcete dozvědět víc o RabbitMQ, podívejte se na jeho [stránku Začínáme](https://www.rabbitmq.com/getstarted.html).
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
+### <a name="functions-3x-and-higher"></a>Funkce 3. x a vyšší
 
 Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
@@ -46,9 +46,9 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [Aktualizace rozšíření]: ./functions-bindings-register.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>Funkce 1. x a 2. x
 
-Rozšíření vazby RabbitMQ nejsou podporována pro funkce 1. x. Použijte prosím Functions 2. x a vyšší.
+Rozšíření vazby RabbitMQ nejsou podporována pro funkce 1. x a 2. x. Použijte prosím Functions 3. x a vyšší.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219900"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617081"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -21,7 +21,7 @@ Azure Data Share podporuje sdílení na základě snímků z účtu úložiště
 
 Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Data, která z těchto zdrojů sdílíte, můžete přijmout do Azure Data Lake Gen2 nebo Azure Blob Storage.
 
-Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou přepsány.
+Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou během snímku přepsány. Soubor odstraněný ze zdroje se v cíli neodstraní. Prázdné podsložky ve zdroji nejsou zkopírovány do cíle. 
 
 ## <a name="share-data"></a>Sdílení dat
 
@@ -39,7 +39,7 @@ Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení zalo
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -61,7 +61,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
-1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
+1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
 
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
@@ -130,13 +130,13 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="open-invitation"></a>Otevřít pozvánku
 
 1. Můžete otevřít pozvánku z e-mailu nebo přímo z Azure Portal. 
 
-   Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com> **. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
+   Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com>**. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
 
    Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tím přejdete do seznamu pozvání ke sdílení dat.
 
@@ -149,7 +149,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
    ![Podmínky použití](./media/terms-of-use.png "Podmínky použití") 
 
-1. V části *cílový účet sdílení dat*vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
+1. V části *cílový účet sdílení dat* vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
 
    V poli **účet pro sdílení dat** vyberte **vytvořit novou** , pokud nemáte existující účet pro sdílení dat. V opačném případě vyberte existující účet pro sdílení dat, do kterého chcete vaši sdílenou složku přijmout. 
 
@@ -185,7 +185,7 @@ Tyto kroky platí pouze pro sdílení na základě snímků.
 
    ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
 
-1. Po *úspěšném*stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady**a klikněte na odkaz v cílové cestě. 
+1. Po *úspěšném* stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady** a klikněte na odkaz v cílové cestě. 
 
    ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
 

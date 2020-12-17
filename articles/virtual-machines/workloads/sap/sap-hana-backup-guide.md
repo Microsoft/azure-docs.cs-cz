@@ -13,16 +13,16 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950019"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617098"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA v Azure Virtual Machines
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Průvodce zálohováním pro SAP HANA běžící na virtuálních počítačích Azure bude popsat jenom Témata specifická pro Azure. Obecné položky SAP HANA související s zálohováním najdete v dokumentaci k SAP HANA. Očekáváme, že budete obeznámeni s principem strategie zálohování databáze, důvody a motivace, které mají zvukovou a platnou strategii zálohování, a mají na paměti informace, které vaše společnost má pro postup zálohování, dobu uchování záloh a postup obnovení.
 
@@ -103,7 +103,7 @@ Informace o kontrole konzistence tabulky najdete také na webu SAP v části [ko
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>Specialisté a nevýhody zálohování HANA oproti snímku úložiště
 
-SAP ne&#39;t dává přednost buď na úložiště HANA, tak i na snímek úložiště. Uvádí jejich specialisty a nevýhody, takže je možné určit, která z nich se má použít v závislosti na situaci a dostupné technologii úložiště (viz [Plánování strategie zálohování a obnovení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
+SAP ne&#39;t dává přednost buď na úložiště HANA, tak i na snímek úložiště. Uvádí jejich specialisty a nevýhody, takže je možné určit, která z nich se má použít v závislosti na situaci a dostupné technologii úložiště (viz [Plánování strategie zálohování a obnovení](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)).
 
 V Azure si pamatujte na skutečnost, že funkce snímku Azure Blob nenabízí&#39;k zajištění konzistence systému souborů na více discích (viz [použití snímků objektů BLOB pomocí PowerShellu](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 
