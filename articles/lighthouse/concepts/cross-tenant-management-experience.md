@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510647"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616571"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -77,6 +77,11 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 [Azure cost management + fakturace](../../cost-management-billing/index.yml):
 
 - Od tenanta pro správu můžou partneři CSP zobrazovat, spravovat a analyzovat náklady na předběžnou spotřebu (bez nákupů) pro zákazníky, kteří jsou v rámci plánu Azure. Náklady budou založené na prodejních tarifech a na řízení přístupu na základě role Azure (Azure RBAC), které má partner pro předplatné zákazníka.
+
+[Azure Key Vault](../../key-vault/general/index.yml):
+
+- Vytváření trezorů klíčů v klientech zákazníků
+- Použití spravované identity k vytvoření trezorů klíčů v klientech zákazníků
 
 [Služba Azure Kubernetes (AKS)](../../aks/index.yml):
 

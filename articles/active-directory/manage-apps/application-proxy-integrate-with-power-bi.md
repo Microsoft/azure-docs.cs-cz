@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658107"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616894"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k Power BI Mobile s využitím proxy aplikací služby Azure AD
 
 Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
@@ -153,6 +153,8 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](/power-bi/power-bi-reports-performance).
+
+Pomocí služby Azure Proxy aplikací služby AD povolíte, aby se mobilní aplikace Power BI připojovala k místním Server sestav Power BI není podporovaná pro zásady podmíněného přístupu, které vyžadují aplikaci Microsoft Power BI jako schválenou klientskou aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Vytvoření a správa instančního objektu služby Azure Active Di
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607819"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614791"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -17,7 +17,7 @@ Pro interakci s rozhraními API Azure vyžaduje cluster AKS buď [instanční ob
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
@@ -100,18 +100,7 @@ Pokud jako úložiště imagí kontejneru použijete Azure Container Registry (A
 
 ### <a name="networking"></a>Sítě
 
-Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsíť nebo veřejné IP adresy nacházejí v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
-
-- Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
-  - *Microsoft. Network/virtualNetworks/subnets/JOIN/Action*
-  - *Microsoft. Network/virtualNetworks/podsítí/čtení*
-  - *Microsoft. Network/publicIPAddresses/JOIN/Action*
-  - *Microsoft. Network/publicIPAddresses/Read*
-  - *Microsoft. Network/publicIPAddresses/Write*
-  - Pokud používáte [Vlastní směrovací tabulky v clusterech Kubenet](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , přidejte tato další oprávnění:
-    - *Microsoft. Network/routeTables/Write*
-    - *Microsoft. Network/routeTables/Read*
-- Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
+Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsíť nebo veřejné IP adresy nacházejí v jiné skupině prostředků. Přiřaďte integrovanou roli [přispěvatele sítě][rbac-network-contributor] v podsíti v rámci virtuální sítě. Případně můžete vytvořit [vlastní roli][rbac-custom-role] s oprávněními pro přístup k síťovým prostředkům v této skupině prostředků. Další podrobnosti najdete v tématu věnovaném [oprávněním služby AKS][aks-permissions] .
 
 ### <a name="storage"></a>Storage
 
@@ -145,7 +134,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 
 Přihlašovací údaje instančního objektu pro cluster AKS se ukládají do mezipaměti rozhraní příkazového řádku Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování AKS clusterů. Při spuštění [AZ AKS Create][az-aks-create] může znamenat problém s přihlašovacími údaji instančního objektu uloženého v mezipaměti následující chybová zpráva:
 
@@ -188,3 +177,4 @@ Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [akt
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

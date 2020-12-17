@@ -2,14 +2,14 @@
 title: Kvóty a omezení služeb
 description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a omezeních a o zvýšení kvóty.
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325960"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614506"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -98,7 +98,7 @@ Zobrazení kvót účtu Batch v [Azure Portal](https://portal.azure.com):
 Můžete požádat o zvýšení kvóty pro účet Batch nebo předplatné pomocí [Azure Portal](https://portal.azure.com). Typ zvýšení kvóty závisí na režimu přidělování fondů účtu Batch. Chcete-li požádat o zvýšení kvóty, je nutné zahrnout řadu virtuálních počítačů, pro kterou chcete kvótu zvýšit. Při použití zvýšení kvóty se tato kvóta použije na všechny řady virtuálních počítačů.
 
 1. Na řídicím panelu portálu vyberte dlaždici **Nápověda a podpora** nebo otazník (**?**) v pravém horním rohu portálu.
-1. Vyberte **nové základy žádosti o podporu**  >  **Basics**.
+1. Vyberte **nové základy žádosti o podporu**  >  .
 1. **Základní informace**:
    
     1. **Typ problému**  >  **Omezení služeb a předplatného (kvóty)**

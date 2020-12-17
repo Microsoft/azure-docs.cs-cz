@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029400"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615763"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -110,6 +110,7 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
    - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
    - K registraci zařízení se vyžaduje aplikace zprostředkovatele. Aplikace zprostředkovatele může být Microsoft Authenticator pro iOS nebo buď Microsoft Authenticator nebo portál společnosti Microsoft pro zařízení s Androidem.
 - Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
+- Pomocí služby Azure Proxy aplikací služby AD povolíte, aby se mobilní aplikace Power BI připojovala k místním Server sestav Power BI není podporovaná pro zásady podmíněného přístupu, které vyžadují aplikaci Microsoft Power BI jako schválenou klientskou aplikaci.
 
 Informace najdete v článku [How to: vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím s podmíněným přístupem](app-based-conditional-access.md) pro příklady konfigurace.
 

@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371879"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616639"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -139,7 +139,7 @@ Application Insights Java 3,0 automaticky zachycuje telemetrii poslaná pomocí 
 
 ### <a name="supported-custom-telemetry"></a>Podporovaná vlastní telemetrie
 
-Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk).
+Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](#send-custom-telemetry-using-the-2x-sdk).
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
@@ -188,7 +188,7 @@ Postup změny této úrovně najdete v [možnostech konfigurace](./java-standalo
 
 Pokud chcete k protokolům připojovat vlastní dimenze, můžete použít [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)nebo [Logback MDC](http://logback.qos.ch/manual/mdc.html)a Application Insights Java 3,0 automaticky zachytává tyto vlastnosti MDC jako vlastní rozměry na vaší platformě trasování a telemetrie výjimek.
 
-### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Odeslání vlastní telemetrie pomocí Application Insights Java 2. x SDK
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>Odeslání vlastní telemetrie pomocí sady 2. x SDK
 
 Přidejte `applicationinsights-core-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
@@ -251,3 +251,80 @@ try {
     telemetryClient.trackException(e);
 }
 ```
+
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>Přidání vlastních dimenzí žádosti pomocí sady 2. x SDK
+
+> [!NOTE]
+> Tato funkce je jenom 3.0.1-BETA a novější.
+
+Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+a přidejte vlastní dimenze do kódu:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>Nastavení telemetrie požadavků user_Id pomocí sady 2. x SDK
+
+> [!NOTE]
+> Tato funkce je jenom 3.0.1-BETA a novější.
+
+Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+a nastavte `user_Id` v kódu:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>Přepsat název telemetrie žádosti pomocí sady 2. x SDK
+
+> [!NOTE]
+> Tato funkce je jenom 3.0.1-BETA a novější.
+
+Přidejte `applicationinsights-web-2.6.2.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+a nastavte název v kódu:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```
+
+> [!NOTE]
+> Všechny ostatní operace `RequestTelemetry` načtené z `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` více než těch, které jsou popsané výše, selžou rychle a vyvolají výjimku, která vám umožní zjistit, že v agentovi 3,0 není definované chování.
+>
+> Pokud potřebujete spolupráci pro jakékoli jiné metody `RequestTelemetry` , obraťte se na nás a otevřete problém https://github.com/microsoft/ApplicationInsights-Java/issues .

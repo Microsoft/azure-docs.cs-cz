@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614579"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -29,15 +29,14 @@ Azure Monitor Průzkumník metrik je součástí portál Microsoft Azure, která
 
 Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení, otevřete kartu **metriky** a proveďte následující kroky:
 
-1. Pomocí ovládacího prvku pro výběr prostředku vyberte prostředek, pro který chcete zobrazit metriky. (Prostředek je předem vybraný, pokud jste spustili **metriky** v kontextu konkrétního prostředku).
-
-    > ![Výběr prostředku](./media/metrics-getting-started/resource-picker.png)
+1. Klikněte na tlačítko Vybrat obor a otevřete tak výběr oboru prostředků. To vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, prostředek by se už měl naplnit. Pokud se chcete dozvědět, jak zobrazit metriky napříč více prostředky, [Přečtěte si tento článek](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope).
+    > ![Výběr prostředku](./media/metrics-getting-started/scope-picker.png)
 
 2. U některých prostředků je nutné vybrat obor názvů. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.
 
 3. Vyberte metriku ze seznamu dostupných metrik.
 
-    > ![Vyberte metriku](./media/metrics-getting-started/metric-picker.png)
+    > ![Vyberte metriku](./media/metrics-getting-started/metrics-dropdown.png)
 
 4. Volitelně můžete [změnit agregaci metriky](metrics-charts.md#changing-aggregation). Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
 
@@ -51,7 +50,7 @@ Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků
 
 Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. Panel **pro výběr času** použijte ke změně časového rozsahu, přiblížení nebo oddálení v grafu. 
 
-![Panel změnit rozsah času](./media/metrics-getting-started/time-picker.png)
+![Panel změnit rozsah času](./media/metrics-getting-started/time.png)
 
 > [!TIP]
 > Použijte **časový štětec** k prozkoumání zajímavé oblasti grafu (špička nebo DIP). Umístěte ukazatel myši na začátek oblasti, klikněte na levé tlačítko myši, přetáhněte ho na druhou stranu oblasti a pak uvolněte tlačítko. Graf se v tomto časovém rozsahu přiblíží. 
@@ -73,6 +72,7 @@ Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o rozšířených funkcích Průzkumník metrik](metrics-charts.md)
+* [Zobrazení více prostředků v Průzkumník metrik](metrics-dynamic-scope.md)
 * [Řešení potíží s Průzkumníkem metrik](metrics-troubleshoot.md)
 * [Seznam dostupných metrik pro služby Azure](metrics-supported.md)
 * [Příklady nakonfigurovaných grafů](metric-chart-samples.md)

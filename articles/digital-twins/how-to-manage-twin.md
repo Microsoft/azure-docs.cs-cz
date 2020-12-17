@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 558e03e698d184aa9b5914f7d494ea61b5a6b18e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452978"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616928"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -202,7 +202,7 @@ Volání opravy může aktualizovat libovolný počet vlastností u jediného vl
 > [!TIP]
 > Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dříve v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově aktualizovaná vlákna, pokud potřebujete okamžitou reakci. 
 
-Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty *mass* vlastností Replace a *poloměru* digitálního vlákna, na které se aplikuje.
+Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty  vlastností Replace a *poloměru* digitálního vlákna, na které se aplikuje.
 
 ```json
 [
@@ -271,12 +271,12 @@ Oprava pro tuto situaci musí aktualizovat model i vlastnost teploty vlákna, na
 [
   {
     "op": "replace",
-    "path": "$metadata.$model",
-    "value": "dtmi:example:foo_new"
+    "path": "/$metadata/$model",
+    "value": "dtmi:example:foo_new;1"
   },
   {
     "op": "add",
-    "path": "temperature",
+    "path": "/temperature",
     "value": 60
   }
 ]

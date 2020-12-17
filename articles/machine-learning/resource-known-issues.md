@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094433"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616996"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -429,11 +429,21 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
   3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.
 
+## <a name="model-explanations"></a>Vysvětlení modelu
+
+* **Zhuštěná data nejsou podporovaná**: model, který porušuje řídicí panely nebo se v podstatě zpomaluje s velkým počtem funkcí, proto Momentálně nepodporujeme formát zhuštěných dat. Kromě toho vznikají Obecné problémy s pamětí s velkými datovými sadami a velkým počtem funkcí. 
+
+* **Prognózy modelů, které nejsou podporovány pomocí vysvětlení modelů**: interpretace, nejlepšího vysvětlení modelu, není k dispozici pro AutoML prognózy experimentů, které doporučují následující algoritmy jako nejlepší model: TCNForecaster, AutoArima, ExponentialSmoothing, Average, Naive, sezónní průměr a sezónní Naive. AutoML prognózování má regresní modely, které podporují vysvětlení. V vysvětlení dashbord ale karta důležitost jednotlivých funkcí není pro prognózování podporovaná, protože je ve svých datových kanálech složitá složitost.
+
+* **Místní vysvětlení indexu dat**: řídicí panel vysvětlení nepodporuje související hodnoty místní důležitost k identifikátoru řádku z původní datové sady ověření, pokud je tato datová sada větší než 5000 datových bodů jako řídicí panel náhodně downsamples data. Řídicí panel ale v rámci karty důležitost jednotlivých funkcí zobrazuje nezpracované hodnoty funkcí datové sady pro každý element DataPoint předaný na řídicí panel. Uživatelé mohou mapovat místní důležitost zpátky na původní datovou sadu pomocí porovnání hodnot funkcí nezpracovaných datových sad. Pokud je velikost datové sady ověření menší než 5000 vzorků, `index` funkce v nástroji AzureML Studio bude odpovídat indexu v datové sadě ověřování.
+
+* V nástroji **AML Studio není podporováno vykreslení typu co-if/Ice**: What-If a jednotlivé podmíněná očekávání (ICE) se v nástroji AzureML Studio na kartě vysvětlení nepodporují, protože nahrané vysvětlení potřebují aktivní výpočetní prostředky k přepočítání předpovědi a pravděpodobnosti funkcí perturbed. V současné době je podporována v poznámkových blocích Jupyter při spuštění jako pomůcka pomocí sady SDK.
+
 ## <a name="deploy--serve-models"></a>Nasazení a obsluha modelů
 
 Proveďte tyto akce při následujících chybách:
 
-|Chybová  | Řešení  |
+|Chyba  | Řešení  |
 |---------|---------|
 |Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |

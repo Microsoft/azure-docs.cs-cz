@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028059"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614505"
 ---
 | **Prostředek** | **Výchozí omezení** | **Maximální omezení** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96028059"
 | Počet fondů na účet Batch | 20–100 | 500<sup>1</sup> |
 
 <sup>1</sup>Pokud chcete požádat o navýšení nad tyto limity, kontaktujte podporu Azure.
-
-> [!IMPORTANT]
-> Měníme, jak vyžádáte a spravujete vyhrazenou kvótu.  Celková vyhrazená vCPU je aktuálně vynutilná hodnota, ale brzy využijeme vyhrazenou kvótu pro každou řadu virtuálních počítačů. Kvóta s nízkou prioritou se bude i nadále uplatňovat na základě celkového limitu. nebude vynutila řada virtuálních počítačů.
 
 > [!NOTE]
 > Výchozí limity se liší v závislosti na typu předplatného, které použijete k vytvoření účtu Batch. Zobrazené kvóty jader se týkají účtů Batch v režimu služby Batch. [Zobrazení kvót v účtu Batch](../articles/batch/batch-quota-limit.md#view-batch-quotas)

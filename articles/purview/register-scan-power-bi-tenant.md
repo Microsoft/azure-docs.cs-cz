@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387577"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615844"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -50,6 +50,7 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
 ## <a name="associate-the-security-group-with-the-tenant"></a>Přidružte skupinu zabezpečení ke klientovi.
 
 1. Přihlaste se na [portál pro správu Power BI](https://app.powerbi.com/admin-portal/tenantSettings).
+1. Vyberte stránku **Nastavení tenanta** .
 
     > [!Important]
     > Aby bylo možné zobrazit stránku nastavení klienta, musíte být správcem Power BI.

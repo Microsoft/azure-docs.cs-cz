@@ -4,15 +4,15 @@ description: Naučte se odesílat RabbitMQ zprávy z Azure Functions.
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505734"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616656"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ výstupní vazba pro Azure Functions přehled
 
@@ -193,8 +193,6 @@ Tady jsou data vazby v *function.js* souboru:
 }
 ```
 
-V *_\_ init_ \_ . py* můžete do fronty napsat zprávu předáním hodnoty `set` metodě.
-
 ```python
 import azure.functions as func
 
@@ -271,11 +269,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**směr** | neuvedeno | Musí být nastavené na "out". |
 |**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**| Název fronty, do které se budou posílat zprávy |
-|**Název hostitele**|**Název hostitele**|(volitelné, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
-|**passwordSetting**|**PasswordSetting**|(volitelné, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
+|**Název hostitele**|**Název hostitele**|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|**Jmen**|**Jmen**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje uživatelské jméno pro přístup do fronty. Například UserNameSetting: "< UserNameFromSettings >"|
+|**heslo**|**Heslo**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje heslo pro přístup do fronty. Například UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat. (Např.: v *function.jsna*: connectionStringSetting: "rabbitMQConnection" <br> V *local.settings.js*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**přístavní**|**Port**|Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+|**přístavní**|**Port**|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
@@ -297,7 +297,7 @@ Pro výstupní vazbu použijte následující typy parametrů:
 
 * `byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
 * `string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
-* `POCO` – Pokud hodnota parametru není formátována jako objekt jazyka C#, bude přijata chyba.
+* `POCO` – Pokud hodnota parametru není formátována jako objekt jazyka C#, bude přijata chyba. Úplný příklad najdete v tématu [příklad](#example)skriptu jazyka C#.
 
 Při práci s funkcemi skriptu jazyka C#:
 
@@ -305,11 +305,11 @@ Při práci s funkcemi skriptu jazyka C#:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Zpráva RabbitMQ se odesílá prostřednictvím řetězce.
+Zpráva fronty je k dispozici prostřednictvím Context. Bindings.<NAME> kde <NAME> odpovídá názvu definovanému v function.js. Pokud je datová část JSON, hodnota je deserializována do objektu.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zpráva RabbitMQ se odesílá prostřednictvím řetězce.
+Podívejte se na [příklad](#example)Pythonu.
 
 # <a name="java"></a>[Java](#tab/java)
 

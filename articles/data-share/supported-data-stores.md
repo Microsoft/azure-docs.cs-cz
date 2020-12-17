@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/7/2020
-ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.date: 12/16/2020
+ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853134"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616741"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat ve službě Azure Data Share
 
@@ -50,7 +50,7 @@ Následující tabulka obsahuje podrobnosti různých kombinací a možností, k
 | Průzkumník dat Azure ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Sdílení z účtu úložiště
-Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou přepsány.
+Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou během snímku přepsány. Soubor odstraněný ze zdroje se v cíli neodstraní. 
 
 Podrobnosti najdete [v tématu sdílení a příjem dat z Azure Blob Storage a Azure Data Lake Storage](how-to-share-from-storage.md) .
 

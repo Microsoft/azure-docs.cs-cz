@@ -3,12 +3,12 @@ title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
 ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563020"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616157"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -49,7 +49,7 @@ Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na 
 
 Pro agenta připojeného počítače Azure jsou oficiálně podporované následující verze operačního systému Windows a Linux:
 
-- Windows Server 2012 R2 a vyšší (včetně jádra Windows serveru)
+- Windows Server 2008 R2, Windows Server 2012 R2 a vyšší (včetně jádra serveru)
 - Ubuntu 16,04 a 18,04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
@@ -187,7 +187,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Name |Výchozí hodnota |Popis |
+    |Název |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -250,7 +250,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Výchozí hodnota |Popis |
+    |Název |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

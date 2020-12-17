@@ -3,12 +3,12 @@ title: Přehled služby Azure Arc
 description: Přečtěte si, co je Azure ARC a jak pomáhá zákazníkům povolit správu a řízení hybridních prostředků pomocí dalších služeb a funkcí Azure.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714153"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616520"
 ---
 # <a name="azure-arc-overview"></a>Přehled služby Azure Arc
 
@@ -50,7 +50,7 @@ Níže jsou uvedeny podrobnosti o cenách pro funkce, které jsou dnes k dispozi
 
 ### <a name="arc-enabled-servers"></a>Servery s podporou služby Arc
 
-Funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků.Sem patří:
+Funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků. Sem patří:
 
 * Organizace prostředků prostřednictvím skupin a značek pro správu Azure
 
@@ -73,6 +73,8 @@ V aktuální fázi Preview se Kubernetes s povoleným Azure ARC bez dalších n�
 V aktuální fázi Preview se datové služby s podporou ARC Azure nabízejí bez dalších nákladů.
 
 ## <a name="next-steps"></a>Další kroky
+
+* Spuštění služeb s povoleným obloukem z [rychlé zprovoznění scénářů](https://azurearcjumpstart.io/azure_arc_jumpstart/)
 
 * Další informace o serverech s podporou ARC najdete v následujícím [přehledu](./servers/overview.md) .
 

@@ -5,23 +5,24 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973406"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616622"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Vytvoření Azure Database for PostgreSQL – Citus (škálování)
+
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Vytvoření Azure Database for PostgreSQL – Citus (škálování)
 
 Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 1. V levém horním rohu Azure Portal klikněte na **vytvořit prostředek**  .
@@ -30,7 +31,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 4. Do formuláře podrobností o novém serveru zadejte následující informace:
    - Skupina prostředků: klikněte na odkaz **vytvořit nový** pod textovým polem pro toto pole. Zadejte název, například **myresourcegroup**.
    - Název skupiny serverů: Zadejte jedinečný název pro novou skupinu serverů, která se bude používat i pro subdoménu serveru.
-   - Uživatelské jméno správce: v tuto chvíli se musí jednat o hodnotu **citus**a nedá se změnit.
+   - Uživatelské jméno správce: v tuto chvíli se musí jednat o hodnotu **citus** a nedá se změnit.
    - Heslo: musí mít aspoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií – velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0-9) a jiné než alfanumerické znaky (!, $, #,% a tak dále).
    - Umístění: použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.
 
@@ -53,7 +54,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 10. Stránka se přesměruje na monitorování nasazení. Až se stav živé změny z **vašeho nasazení probíhají** po **nasazení**, klikněte na položku nabídky **výstupy** na levé straně stránky.
 11. Stránka s výstupy bude obsahovat název hostitele koordinátora s tlačítkem vedle něj pro zkopírování hodnoty do schránky. Tyto informace si poznamenejte pro pozdější použití.
 
-## <a name="connect-to-the-database-using-psql"></a>Připojení k databázi pomocí psql
+### <a name="connect-to-the-database-using-psql"></a>Připojení k databázi pomocí psql
 
 Při vytváření serveru Azure Database for PostgreSQL se vytvoří výchozí databáze s názvem **citus** . Abyste se mohli připojit k databázovému serveru, potřebujete připojovací řetězec a heslo správce.
 

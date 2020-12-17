@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616129"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614927"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -30,7 +30,10 @@ Dalším přístupem je použití skupin Azure AD a deklarací skupin, jak je zn
 
 ## <a name="declare-roles-for-an-application"></a>Deklarace rolí pro aplikaci
 
-Role aplikace definujete pomocí [Azure Portal](https://portal.azure.com). Když se uživatel přihlásí k aplikaci, Azure AD vygeneruje `roles` deklaraci identity pro každou roli, které uživatel získal individuálně pro uživatele, a z jejich členství ve skupinách.
+Role aplikace definujete pomocí [Azure Portal](https://portal.azure.com). Role aplikací se obvykle definují v registraci aplikace, která představuje službu, aplikaci nebo rozhraní API. Když se uživatel přihlásí k aplikaci, Azure AD vygeneruje `roles` deklaraci identity pro každou roli, které uživatel nebo instanční objekt získal individuálně pro uživatele, a z jejich členství ve skupinách. Dá se použít k implementaci autorizace založené na deklaracích. Role aplikací se dají přiřadit [uživateli nebo skupině uživatelů](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app). Role aplikací lze také přiřadit instančnímu objektu pro jinou aplikaci nebo [instančnímu objektu spravované identity](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md).
+
+> [!IMPORTANT]
+> Když v tuto chvíli přidáte instanční objekt do skupiny a potom k této skupině přiřadíte roli aplikace, Azure AD tuto deklaraci nepřidá k tokenům, které vystaví `roles` IT problémy.
 
 Existují dva způsoby, jak deklarovat aplikační role pomocí Azure Portal:
 
@@ -169,7 +172,7 @@ Nově přidané role by se měly zobrazit v podokně **oprávnění API** pro re
 
 #### <a name="grant-admin-consent"></a>Udělit souhlas správce
 
-Vzhledem k tomu, že se jedná o *oprávnění aplikace* , nedelegovaná oprávnění, správce musí udělit souhlas s použitím rolí aplikace přiřazených k aplikaci.
+Vzhledem k tomu, že se jedná o *oprávnění aplikace*, nedelegovaná oprávnění, správce musí udělit souhlas s použitím rolí aplikace přiřazených k aplikaci.
 
 1. V podokně **oprávnění rozhraní API** pro registraci aplikace vyberte **\<tenant name\> udělit souhlas správce pro**.
 1. Po zobrazení výzvy pro udělení souhlasu pro požadovaná oprávnění vyberte **Ano** .

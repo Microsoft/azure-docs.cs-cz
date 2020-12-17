@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860962"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614910"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -78,7 +78,7 @@ V předchozím fragmentu kódu:
 
 - `policy` je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow` vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Příklad:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -134,7 +134,7 @@ Pomocí uživatelského jména a hesla v toku ROPC jste si zarovnali několik v�
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurace toku ROPC v Azure AD B2C
 
-V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](../../active-directory-b2c/configure-ropc.md).
+V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` obsahuje `AcquireTokenByUsernamePassword` metodu:
 

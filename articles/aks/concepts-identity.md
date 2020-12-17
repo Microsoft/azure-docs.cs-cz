@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457165"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615797"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
 Existují různé způsoby ověřování, řízení přístupu, autorizaci a zabezpečení clusterů Kubernetes. Pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) můžete uživatelům, skupinám a účtům služeb udělit přístup pouze k potřebným prostředkům. Pomocí služby Azure Kubernetes Service (AKS) můžete dál zdokonalit strukturu zabezpečení a oprávnění pomocí Azure Active Directory a Azure RBAC. Tyto přístupy vám pomůžou zabezpečit přístup ke clusteru a poskytnout jenom minimální požadovaná oprávnění vývojářům a operátorům.
 
-V tomto článku se seznámíte se základními koncepty, které vám pomůžou ověřit a přiřadit oprávnění v AKS:
+V tomto článku se seznámíte se základními koncepcemi, které vám pomůžou ověřit a přiřadit oprávnění v AKS.
 
-- [Kubernetes řízení přístupu na základě role (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Role a ClusterRoles](#roles-and-clusterroles)
-  - [RoleBindings a ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Účty služby Kubernetes](#kubernetes-service-accounts)
-- [Integrace Azure Active Directory](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [Azure RBAC pro autorizaci přístupu k prostředku AKS](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Azure RBAC pro autorizaci Kubernetes (Preview)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>Oprávnění služby AKS
 
+Při vytváření clusteru AKS vytvoří nebo upraví prostředky, které potřebuje k vytvoření a spuštění clusteru, jako jsou virtuální počítače a síťové karty, jménem uživatele, který vytváří cluster. Tato identita se liší od oprávnění identity clusteru, které se vytváří při vytváření clusteru.
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>Identita, která vytváří a pracuje s oprávněními clusteru
+
+Identita, která vytváří a provozuje cluster, vyžaduje následující oprávnění.
+
+| Oprávnění | Důvod |
+|---|---|
+| Microsoft. COMPUTE/diskEncryptionSets/Read | Vyžaduje se pro čtení ID sady šifrování disku. |
+| Microsoft. COMPUTE/proximityPlacementGroups/Write | Vyžaduje se pro aktualizaci skupin umístění blízkosti. |
+| Microsoft. Network/applicationGateways/Read <br/> Microsoft. Network/applicationGateways/Write <br/> Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Vyžaduje se ke konfiguraci aplikačních bran a připojení k podsíti. |
+| Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Vyžaduje se ke konfiguraci skupiny zabezpečení sítě pro podsíť při použití vlastní virtuální sítě.|
+| Microsoft. Network/publicIPAddresses/JOIN/Action <br/> Microsoft. Network/publicIPPrefixes/JOIN/Action | Vyžaduje se ke konfiguraci odchozích veřejných IP adres na Standard Load Balancer. |
+| Microsoft. OperationalInsights/pracovní prostory/sharedkeys/číst <br/> Microsoft. OperationalInsights/pracovní prostory/číst <br/> Microsoft. OperationsManagement/Solutions/Write <br/> Microsoft. OperationsManagement/Solutions/Read <br/> Microsoft. ManagedIdentity/userAssignedIdentities/Assign/Action | Vyžaduje se k vytváření a aktualizaci Log Analyticsch pracovních prostorů a monitorování Azure pro kontejnery. |
+
+### <a name="aks-cluster-identity-permissions"></a>Oprávnění pro identitu clusteru AKS
+
+Následující oprávnění používá identita clusteru AKS, která je vytvořená a přidružená ke clusteru AKS při vytváření clusteru. Každé oprávnění se používá z následujících důvodů:
+
+| Oprávnění | Důvod |
+|---|---|
+| Microsoft. Network/loadBalancers/DELETE <br/> Microsoft. Network/loadBalancers/Read <br/> Microsoft. Network/loadBalancers/Write | Vyžaduje se ke konfiguraci nástroje pro vyrovnávání zatížení pro službu Vyrovnávání zatížení. |
+| Microsoft. Network/publicIPAddresses/DELETE <br/> Microsoft. Network/publicIPAddresses/Read <br/> Microsoft. Network/publicIPAddresses/Write | Je nutné najít a nakonfigurovat veřejné IP adresy pro službu Vyrovnávání zatížení. |
+| Microsoft. Network/publicIPAddresses/JOIN/Action | Vyžaduje se pro konfiguraci veřejných IP adres pro službu Vyrovnávání zatížení. |
+| Microsoft. Network/networkSecurityGroups/Read <br/> Microsoft. Network/networkSecurityGroups/Write | Je nutné vytvořit nebo odstranit pravidla zabezpečení pro službu Vyrovnávání zatížení. |
+| Microsoft. COMPUTE/disks/DELETE <br/> Microsoft. COMPUTE/disky/číst <br/> Microsoft. COMPUTE/disks/Write <br/> Microsoft. COMPUTE/Locations/DiskOperations/Read | Vyžaduje se ke konfiguraci AzureDisks. |
+| Microsoft. Storage/storageAccounts/DELETE <br/> Microsoft. Storage/storageAccounts/klíče listkey/Action <br/> Microsoft. Storage/storageAccounts/Read <br/> Microsoft. Storage/storageAccounts/Write <br/> Microsoft. Storage/Operations/Read | Vyžaduje se ke konfiguraci účtů úložiště pro AzureFile nebo AzureDisk. |
+| Microsoft. Network/routeTables/Read <br/> Microsoft. Network/routeTables/Routes/DELETE <br/> Microsoft. Network/routeTables/Routes/Read <br/> Microsoft. Network/routeTables/Routes/Write <br/> Microsoft. Network/routeTables/Write | Vyžaduje se ke konfiguraci směrovacích tabulek a tras pro uzly. |
+| Microsoft. COMPUTE/virtualMachines/Read | Vyžaduje se k vyhledání informací pro virtuální počítače v VMAS, jako jsou zóny, doména selhání, velikost a datové disky. |
+| Microsoft. COMPUTE/virtualMachines/Write | Vyžaduje se k připojení AzureDisks k virtuálnímu počítači v VMAS. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/Read <br/> Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Read <br/> Microsoft. COMPUTE/virtualMachineScaleSets/VirtualMachines/instanceView/Read | Vyžaduje se k vyhledání informací o virtuálních počítačích v sadě škálování virtuálních počítačů, jako jsou zóny, doména selhání, velikost a datové disky. |
+| Microsoft. Network/networkInterfaces/Write | Vyžadováno pro přidání virtuálního počítače do VMAS do fondu adres back-endu nástroje pro vyrovnávání zatížení. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/Write | Vyžaduje se pro přidání škály virtuálních počítačů do back-endového fondu adres služby Load Balancer a navýšení kapacity uzlů v sadě škálování virtuálního počítače. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/VirtualMachines/Write | Vyžaduje se pro připojení AzureDisks a přidání virtuálního počítače ze sady škálování virtuálního počítače do nástroje pro vyrovnávání zatížení. |
+| Microsoft. Network/networkInterfaces/Read | Vyžadováno pro hledání interních IP adres a back-endové fondy adres pro virtuální počítače v VMAS. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/Read | Vyžadováno pro hledání interních IP adres a back-endové fondy adres pro virtuální počítač v sadě škálování virtuálního počítače. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/IPConfiguration/publicipaddresses/číst | Vyžaduje se najít veřejné IP adresy pro virtuální počítač v sadě škálování virtuálního počítače. |
+| Microsoft. Network/virtualNetworks/Read <br/> Microsoft. Network/virtualNetworks/podsítí/čtení | Vyžaduje se k ověření, jestli podsíť existuje pro interní nástroj pro vyrovnávání zatížení v jiné skupině prostředků. |
+| Microsoft. COMPUTE/snímky/odstranit <br/> Microsoft. COMPUTE/snímky/číst <br/> Microsoft. COMPUTE/snímky/zápis | Vyžaduje se ke konfiguraci snímků pro AzureDisk. |
+| Microsoft. COMPUTE/Locations/povolených velikostí/Read <br/> Microsoft. COMPUTE/umístění/operace/čtení | Vyžadovaná k nalezení velikostí virtuálních počítačů pro hledání AzureDisk limitů svazků. |
+
+### <a name="additional-cluster-identity-permissions"></a>Další oprávnění pro identitu clusteru
+
+Při vytváření clusteru se specifickými atributy jsou pro identitu clusteru potřeba tato další oprávnění. Tato oprávnění se automaticky nepřiřazují, takže musíte po jejím vytvoření přidat tato oprávnění do identity clusteru.
+
+| Oprávnění | Důvod |
+|---|---|
+| Microsoft. Network/networkSecurityGroups/Write <br/> Microsoft. Network/networkSecurityGroups/Read | Vyžaduje se, pokud používáte skupinu zabezpečení sítě v jiné skupině prostředků. Vyžaduje se ke konfiguraci pravidel zabezpečení pro službu Vyrovnávání zatížení. |
+| Microsoft. Network/virtualNetworks/podsítí/čtení <br/> Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Vyžaduje se, pokud používáte podsíť v jiné skupině prostředků, jako je třeba vlastní virtuální síť. |
+| Microsoft. Network/routeTables/Routes/Read <br/> Microsoft. Network/routeTables/Routes/Write | Vyžaduje se, pokud používáte podsíť přidruženou k tabulce směrování v jiné skupině prostředků, jako je například vlastní virtuální síť s vlastní směrovací tabulkou. Vyžaduje se, aby se ověřilo, jestli pro podsíť v jiné skupině prostředků už existuje podsíť. |
+| Microsoft. Network/virtualNetworks/podsítí/čtení | Vyžaduje se, pokud používáte interní nástroj pro vyrovnávání zatížení v jiné skupině prostředků. Vyžaduje se, aby se ověřilo, jestli už podsíť pro interní nástroj pro vyrovnávání zatížení ve skupině prostředků existuje. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes řízení přístupu na základě role (Kubernetes RBAC)
 
 K zajištění podrobného filtrování akcí, které mohou uživatelé provádět, Kubernetes používá řízení přístupu na základě role Kubernetes (Kubernetes RBAC). Tento řídicí mechanismus umožňuje přiřadit uživatele nebo skupiny uživatelů, oprávnění k provádění akcí, jako je vytváření nebo úpravy prostředků, nebo zobrazení protokolů ze spuštěných úloh aplikací. Tato oprávnění můžou být vymezená na jeden obor názvů nebo udělená v rámci celého clusteru AKS. Pomocí Kubernetes RBAC vytvoříte *role* pro definování oprávnění a pak jim přiřadíte tyto role uživatelům s *vazbami rolí*.
 
 Další informace najdete v tématu [použití autorizace KUBERNETES RBAC][kubernetes-rbac].
-
 
 ### <a name="roles-and-clusterroles"></a>Role a ClusterRoles
 
@@ -84,11 +127,11 @@ Jak je znázorněno na obrázku výše, Server rozhraní API volá server Webhoo
 1. Klientská aplikace Azure AD se používá v kubectl k přihlašování uživatelů pomocí [toku udělení autorizace zařízení OAuth 2,0](../active-directory/develop/v2-oauth2-device-code.md).
 2. Azure AD poskytuje access_token, id_token a refresh_token.
 3. Uživatel vytvoří požadavek na kubectl s access_token z kubeconfig.
-4. Kubectl odesílá access_token do APIServer.
+4. Kubectl odesílá access_token do serveru API.
 5. Server rozhraní API je nakonfigurovaný se serverem Webhooku ověřování a provede ověření.
 6. Server Webhooku ověřování potvrdí, že je podpis JSON Web Token platný, kontrolou veřejného podpisového klíče Azure AD.
 7. Serverová aplikace používá k dotazování členství přihlášeného uživatele ze služby MS Graph API uživateli zadané přihlašovací údaje.
-8. Do APIServer se pošle odpověď s informacemi o uživateli, jako je například deklarace identity přístupového tokenu (UPN) hlavního názvu uživatele (UPN), a členství uživatele ve skupině na základě ID objektu.
+8. Do serveru rozhraní API se pošle odpověď s informacemi o uživateli, jako je například deklarace identity přístupového tokenu (UPN) hlavního názvu uživatele (UPN), a členství uživatele ve skupině na základě ID objektu.
 9. Rozhraní API provede rozhodnutí o autorizaci na základě role Kubernetes nebo RoleBinding.
 10. Po ověření Server API vrátí odpověď na kubectl.
 11. Kubectl poskytuje zpětnou vazbu uživateli.
@@ -134,7 +177,7 @@ Tato funkce vám umožní například nejen udělit uživatelům oprávnění k 
 
 #### <a name="built-in-roles"></a>Vestavěné role
 
-AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integrovaným rolím Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) , ale s několika rozdíly, jako je podpora CRDs. Úplný seznam akcí povolených všemi integrovanými rolemi najdete [tady](../role-based-access-control/built-in-roles.md).
+AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integrovaným rolím Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) , ale s několika rozdíly, jako je podpora CRDs. Úplný seznam akcí povolených jednotlivými integrovanými rolemi najdete [tady](../role-based-access-control/built-in-roles.md).
 
 | Role                                | Popis  |
 |-------------------------------------|--------------|
@@ -192,3 +235,4 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

@@ -1,21 +1,23 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace v Pythonu pro Linux'
+title: 'Rychlý Start: Vytvoření aplikace v Pythonu na platformě Linux'
 description: Začněte s Azure App Service nasazením aplikace v Pythonu do kontejneru Linux v App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561541"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614655"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service pro Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
 V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](overview.md#app-service-on-linux), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Pomocí místního [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows nasadíte ukázku s použitím této baňky nebo Djangoch architektur. Webová aplikace, kterou nakonfigurujete, využívá bezplatnou App Serviceovou úroveň, takže v tomto článku nebudete mít žádné náklady.
+
+**Definice běžných termínů** najdete v tématu [Stručná terminologie Azure](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma **[nasazení aplikací Python pro App Service z Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.

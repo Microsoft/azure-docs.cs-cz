@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443088"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614893"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -72,16 +72,21 @@ Po dokončení tohoto postupu se identifikátor URI pro přesměrování vypoč�
 
 Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Tady je doporučený formát pro manifest:
 
-- **iOS** : `msauth.<BUNDLE_ID>://auth`
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
   - Zadejte například `msauth.com.yourcompany.appName://auth`
-- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Hodnotu hash podpisu pro Android můžete vygenerovat pomocí klíče verze nebo klíče pro ladění pomocí příkazu nástroje.
 
 ### <a name="username-password-authentication"></a>Uživatelské jméno – ověřování hesla
 
 Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 
-Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Provedete to tak, že začnete v části **ověřování** vaší aplikace. V podčásti **Upřesnit nastavení** v části **výchozí typ klienta zadejte** pro otázku **považovat aplikaci jako veřejný klient** možnost **Ano**.
+Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Postupujte následovně:
+
+1. Pořád v [Azure Portal](https://portal.azure.com)vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
+1. V části **Upřesnit nastavení**  >  **Povolit toky veřejného klienta**  >  **Povolte následující toky mobilních a desktopových toků:** vyberte **Ano**.
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Povolit nastavení veřejného klienta v podokně ověřování v Azure Portal":::
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 

@@ -27,6 +27,8 @@
   items:
     - name: Zabezpečení
       items:
+        - name: Přehled zabezpečení
+          href: security.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Terminologie služby Azure Data Share
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: Monitorování
       href: how-to-monitor.md
-    - name: Zabezpečení
-      href: security.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
     - name: Řešení potíží

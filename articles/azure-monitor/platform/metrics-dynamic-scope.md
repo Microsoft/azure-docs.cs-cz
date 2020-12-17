@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577644"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614638"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>Zobrazení více prostředků v Průzkumník metrik
 
@@ -71,7 +71,7 @@ Níže je například graf procentuální podílu CPU v rámci 9VMs. Rozdělení
 
 ![Snímek obrazovky, který ukazuje, jak můžete použít rozdělování k zobrazení procenta využití procesoru na virtuální počítač](./media/metrics-charts/026.png)
 
-Kromě rozdělení můžete pomocí funkce filtrování zobrazit jenom skupiny prostředků, které chcete zobrazit.  Pokud například chcete zobrazit procentuální hodnotu procesoru pro virtuální počítače pro určitou skupinu prostředků, můžete použít nástroj Přidat filtr pro filtrování podle skupiny prostředků. V tomto příkladu filtrujeme podle TailspinToys, čímž se odstraní metriky přidružené k prostředkům v TailspinToysDemo. 
+Kromě rozdělení můžete pomocí funkce filtrování zobrazit jenom skupiny prostředků, které chcete zobrazit.  Pokud například chcete zobrazit procentuální hodnotu procesoru pro virtuální počítače pro určitou skupinu prostředků, můžete použít nástroj Přidat filtr pro filtrování podle skupiny prostředků. V tomto příkladu filtrujeme podle TailspinToysDemo, čímž se odstraní metriky přidružené k prostředkům v TailspinToys. 
 
 ![Snímek obrazovky, který ukazuje, jak můžete filtrovat podle skupiny prostředků](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ Kromě rozdělení můžete pomocí funkce filtrování zobrazit jenom skupiny p
 > [!WARNING] 
 > Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Pokud to chcete provést, postupujte podle pokynů v [tomto dokumentu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
-Pokud chcete svůj graf více zdrojů připnout, postupujte prosím podle [pokynů.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules) 
+Pokud chcete svůj graf více zdrojů připnout, postupujte prosím podle [pokynů.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards) 
 
 ## <a name="next-steps"></a>Další kroky
 
