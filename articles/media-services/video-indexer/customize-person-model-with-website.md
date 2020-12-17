@@ -3,19 +3,19 @@ title: Přizpůsobení modelu osoby pomocí Video Indexer webu
 titleSuffix: Azure Media Services
 description: Naučte se, jak přizpůsobit model osoby pomocí Video Indexer webu.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/06/2020
-ms.author: kumud
-ms.openlocfilehash: 9f5a18cc51aa92b53a5391404b1e9d3fc800bb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.author: juliako
+ms.openlocfilehash: 890f8c159c3e8e8d0b4164cf218f320551ea63ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356617"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628923"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Přizpůsobení modelu osoby pomocí Video Indexer webu
 
@@ -26,34 +26,27 @@ Web Video Indexer můžete použít k úpravě ploch zjištěných ve videu, jak
 ## <a name="central-management-of-person-models-in-your-account"></a>Centrální Správa modelů osob v účtu
 
 1. Pokud chcete zobrazit, upravit a odstranit modely osob v účtu, přejděte na Web Video Indexer a přihlaste se.
+1. Vyberte tlačítko Přizpůsobení modelu obsahu na levé straně stránky.
 
-2. V pravém horním rohu stránky vyberte tlačítko pro přizpůsobení obsahu modelu.
-
-    ![Snímek obrazovky s vybraným tlačítkem přizpůsobení Content model zobrazí Video Indexer.](./media/customize-face-model/content-model-customization.png)
-
-3. Vyberte kartu osoby.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Přizpůsobení modelu obsahu":::
+1. Vyberte kartu osoby.
 
     Ve svém účtu se zobrazí výchozí model osoby. Model výchozí osoby obsahuje všechny plošky, které jste si v přehledu vašich videí mohli upravit nebo změnit, pro které jste při indexování neurčili vlastní model osoby.
 
     Pokud jste vytvořili jiné modely osob, budou také uvedeny na této stránce.
 
-    ![Snímek obrazovky se zobrazí v dialogovém okně Přizpůsobení modelu obsahu.](./media/customize-face-model/content-model-customization-people-tab.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/content-model-customization-people-tab.png" alt-text="Přizpůsobení uživatelů":::
 
 ## <a name="create-a-new-person-model"></a>Vytvoření nového modelu osoby
 
-1. Vyberte tlačítko **+ přidat model** .
+1. Na pravé straně vyberte tlačítko **+ přidat model** .
+1. Zadejte název modelu. Do modelu New person teď můžete přidat nové lidi a obličeje.
+1. Vyberte tlačítko nabídky seznam a zvolte **+ Přidat osobu**.
 
-    ![Snímek obrazovky se zobrazí dialogové okno Přizpůsobení modelu obsahu s vybranou kartou lidé.](./media/customize-face-model/add-new-person.png)
-
-2. Zadejte název modelu a zaškrtněte tlačítko zaškrtnutí vedle názvu.
-
-    ![Snímek obrazovky se zobrazí dialogové okno Přizpůsobení modelu obsahu s názvem zadaným pro model.](./media/customize-face-model/add-new-person2.png)
-
-    Vytvořili jste nový model Person. Nyní můžete přidat plošky do modelu nové osoby.
-
-3. Vyberte tlačítko nabídky seznam a zvolte **+ Přidat osobu**.
-
-    ![Snímek obrazovky se zobrazí v dialogovém okně Přizpůsobení modelu obsahu s místní nabídkou pro nový model s možností přidat osobu.](./media/customize-face-model/add-new-person3.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/add-new-person.png" alt-text="Přidat Peron":::
 
 ## <a name="add-a-new-person-to-a-person-model"></a>Přidat novou osobu do modelu osoby
 
@@ -61,14 +54,9 @@ Web Video Indexer můžete použít k úpravě ploch zjištěných ve videu, jak
 > Video Indexer umožňuje přidat více osob se stejným názvem v modelu osoby. Doporučuje se ale každému uživateli v modelu udělit jedinečné názvy pro použitelnost a přehlednost.
 
 1. Pokud chcete přidat novou plochu do modelu osoby, vyberte tlačítko nabídky seznam vedle modelu osoby, ke kterému chcete přidat obličej.
-
 1. V nabídce vyberte **+ Přidat osobu** .
 
-    ![Snímek obrazovky s dialogovým oknem přizpůsobení modelu obsahu, který je připravený k přidání osoby s místní nabídkou](./media/customize-face-model/add-new-face.png)
-
     Automaticky otevírané okno vás vyzve, abyste vyplnili podrobnosti o této osobě. Zadejte jméno osoby a zaškrtněte tlačítko zaškrtnutí.
-
-    ![Snímek obrazovky se zobrazí podrobnosti o uživateli.](./media/customize-face-model/add-new-face2.png)
 
     Pak si můžete vybrat z Průzkumníka souborů nebo přetáhnout plošky na plošku. Video Indexer budou přebírat všechny standardní typy obrázkových souborů (např.: JPG, PNG a další).
 
@@ -79,15 +67,9 @@ Web Video Indexer můžete použít k úpravě ploch zjištěných ve videu, jak
 Ve svém účtu můžete přejmenovat libovolný model osoby včetně modelu výchozí osoby. I když přejmenujete výchozí pracovní model, bude i nadále sloužit jako výchozí model osoby ve vašem účtu.
 
 1. Vyberte tlačítko nabídky seznam vedle modelu osoby, který chcete přejmenovat.
-2. V nabídce vyberte **Přejmenovat** .
-
-    ![Snímek obrazovky s dialogovým oknem přizpůsobení modelu obsahu obsahuje místní nabídku s možností přejmenovat model osoby. ](./media/customize-face-model/rename-person.png)
-
-3. Vyberte aktuální název modelu a zadejte nový název.
-
-    ![Snímek obrazovky se zobrazí v přejmenovaném modelu osoby.](./media/customize-face-model/rename-person2.png)
-
-4. Zaškrtněte tlačítko zaškrtnutí pro váš model, který chcete přejmenovat.
+1. V nabídce vyberte **Přejmenovat** .
+1. Vyberte aktuální název modelu a zadejte nový název.
+1. Zaškrtněte tlačítko zaškrtnutí pro váš model, který chcete přejmenovat.
 
 ## <a name="delete-a-person-model"></a>Odstranění modelu osoby
 
@@ -95,12 +77,7 @@ Můžete odstranit jakýkoli model osoby, který jste ve svém účtu vytvořili
 
 1. V nabídce vyberte **Odstranit** .
 
-    ![Snímek obrazovky s dialogovým oknem přizpůsobení modelu obsahu obsahuje místní nabídku s možností odstranit model osoby.](./media/customize-face-model/delete-person.png)
-
     Automaticky otevírané okno se zobrazí a upozorní vás, že tato akce odstraní model osoby a všechny osoby a soubory, které obsahuje. Tuto akci nejde vrátit zpátky.
-
-    ![Snímek obrazovky se zobrazí dialogové okno Potvrdit pro odstranění modelu osoby.](./media/customize-face-model/delete-person2.png)
-
 1. Pokud si jste jisti, vyberte odstranit znovu.
 
 > [!NOTE]
@@ -149,19 +126,10 @@ K indexování nového videa můžete použít pracovní model přiřazením mod
 
 Pokud chcete použít svůj pracovní model na novém videu, proveďte následující kroky:
 
-1. V horní části stránky vyberte tlačítko **nahrát** .
-
-    ![Snímek obrazovky zobrazující tlačítko pro nahrání](./media/customize-face-model/upload.png)
-
-1. Přetáhněte videosoubor do kruhu nebo ho vyhledejte.
+1. Vyberte tlačítko **nahrát** na pravé straně stránky.
+1. Přetáhněte soubor videa nebo ho vyhledejte.
 1. Vyberte šipku **Upřesnit možnosti** .
-
-    ![Snímek obrazovky se zobrazí dialogové okno nahrát mediální soubor.](./media/customize-face-model/upload2.png)
-
 1. Vyberte rozevírací seznam a vyberte model osoby, který jste vytvořili.
-
-    ![Snímek obrazovky se zobrazí dialogové okno nahrát mediální soubor s výchozím nastavením pro model osob v pokročilých možnostech.](./media/customize-face-model/upload3.png)
-
 1. V dolní části stránky vyberte možnost **nahrávání** a nové video bude indexováno pomocí modelu vaší osoby.
 
 Pokud během nahrávání nezadáte model osoby, Video Indexer bude video indexovat pomocí výchozího modelu osoby ve vašem účtu.
@@ -178,9 +146,6 @@ Zobrazí se možnosti pro úpravu, odstranění a přeindexování videa.
 
     Nyní můžete vybrat model osoby, pomocí kterého se má video znovu indexovat.
 1. Vyberte rozevírací seznam a vyberte model osoby, který chcete použít.
-
-    ![Snímek obrazovky zobrazuje možnosti videa, včetně výběru modelu osob.](./media/customize-face-model/reindex2.png)
-
 1. Vyberte tlačítko **Přeindexovat** a vaše video se přeindexuje pomocí modelu vaší osoby.
 
 Všechny nové úpravy, které jste provedli u plošek zjištěných a rozpoznaných ve videu, které jste právě reindexováni, budou uloženy v modelu osoby, který jste použili k přeindexování videa.
@@ -211,15 +176,11 @@ Pokud k videu během nahrávání nepřiřadíte model osoby, vaše úprava se u
 
 Pokud pojmenujte obličej s názvem existující osoby v modelu osoby, kterou video používá, zjištěné obrázky z tohoto videa této osoby se sloučí s tím, co už v modelu existuje. Pokud vytvoříte název obličeje s novým názvem, vytvoří se nová položka osoby v modelu osoby, kterou video používá.
 
-![Snímek obrazovky zobrazuje plošku s názvem, který jste přidali.](./media/customize-face-model/edit-face2.png)
-
 ### <a name="delete-a-face"></a>Odstranit obličej
 
 Pokud chcete ve videu odstranit zjištěnou plošku, v pravém horním rohu podokna vyberte ikonu tužky. Vyberte možnost **Odstranit** pod názvem obličeje. Tato akce odebere z videa zjištěnou plochu. Ploška osoby bude i nadále detekována v dalších videích, ve kterých se zobrazí, ale z videí můžete odstranit i po jejich indexování.
 
 Osoba, pokud byla pojmenována, bude i nadále existovat v modelu osoby, který byl použit k indexování videa, ze kterého jste odstranili plochu, pokud výslovně neodstraníte osobu z modelu osoby.
-
-![Odstranění obličeje ve videu](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>Další kroky
 
