@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 5aa14ae179270813a8c7410425c1614d95b8b497
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e68a46070f03154092d148552fffbb99ae82bcfd
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366530"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612598"
 ---
 <a name="HOLTop"></a>
 
@@ -328,7 +328,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci s názvem `detectLanguageExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `detectLanguage()` funkci. Vrácený `DetectLanguageResult` objekt bude obsahovat nalezen primární jazyk, seznam dalších jazyků, který byl nalezen v případě úspěchu, nebo v `errorMessage` případě potřeby. Tento příklad je stejný pro verze 3,0 a 3,1 rozhraní API.
 
@@ -576,7 +576,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 Vytvořte novou funkci s názvem `extractKeyPhrasesExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `extractKeyPhrases()` funkci. Vrácený `ExtractKeyPhraseResult` objekt bude obsahovat seznam klíčových frází, pokud je to úspěšné, nebo `errorMessage` Pokud ne. Tento příklad je stejný pro verze 3,0 a 3,1 rozhraní API.
 

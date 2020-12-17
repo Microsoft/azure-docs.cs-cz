@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111166"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614247"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
 
@@ -218,7 +218,7 @@ Uložte soubor zásad.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se [Konfigurovat změnu hesla pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-password-change.md).
+- Naučte se [Konfigurovat změnu hesla v Azure Active Directory B2C](add-password-change-policy.md).
 - Přečtěte si další informace o [predikátech](predicates.md) a elementech [PredicateValidations](predicates.md#predicatevalidations) v odkazu na IEF.
 
 

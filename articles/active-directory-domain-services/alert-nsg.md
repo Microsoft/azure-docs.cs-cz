@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620252"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615643"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
@@ -40,12 +40,12 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 | Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Povolit |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Libovolný | Odepřít<sup>1</sup> |
 | 65000    | AllVnetInBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerInBound | Všechny | Všechny | AzureLoadBalancer | Všechny | Povolit |
 | 65500    | DenyAllInBound | Všechny | Všechny | Všechny | Všechny | Odepřít |
+<sup>1</sup> Volitelné pro ladění. Povolte, pokud je to nutné pro pokročilé řešení potíží.
 
 > [!NOTE]
 > Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps]. Toto dodatečné pravidlo je vyžadováno pro správné komunikace LDAPs.

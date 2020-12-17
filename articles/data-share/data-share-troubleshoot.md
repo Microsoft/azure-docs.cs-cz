@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579143"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617234"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných potíží se službou Azure Data Share 
 
@@ -67,6 +67,10 @@ Snímek se kvůli nejrůznějším důvodům nezdařil. Podrobnou chybovou zprá
 * Firewall zablokuje připojení ke zdroji dat nebo cílovému úložišti dat.
 * Sdílená datová sada nebo zdrojové nebo cílové úložiště dat se odstraní.
 
+V případě účtu úložiště jsou zde další příčiny selhání snímku.
+
+* Soubor se aktualizuje ve zdroji, zatímco probíhá snímek. To může mít za následek 0 bajtů souboru v cíli. Následný snímek po aktualizaci je dokončený ve zdroji, který by měl být úspěšný.
+
 V případě zdrojů SQL jsou zde další příčiny selhání snímku. 
 
 * Zdrojový nebo cílový skript SQL pro udělení oprávnění ke sdílení dat není spuštěn. Nebo pro Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL DW) se používá ověřování SQL místo ověřování Azure Active Directory.  
@@ -75,6 +79,9 @@ V případě zdrojů SQL jsou zde další příčiny selhání snímku.
 * Zdrojové nebo cílové úložiště dat SQL jsou zamčené jinými procesy. Azure Data Share nepoužívá zámky pro zdrojové a cílové úložiště dat SQL. Stávající zámky na zdrojovém a cílovém úložišti dat SQL však způsobí selhání snímku.
 * Cílová tabulka SQL je odkazována omezením cizího klíče. Pokud v průběhu snímku existuje cílová tabulka se stejným názvem, Azure Data Share ponechá tabulku a vytvoří novou tabulku. Pokud je cílová tabulka SQL odkazována omezením cizího klíče, nelze tabulku vyřadit.
 * Cílový soubor CSV je vygenerovaný, ale data nejde číst v Excelu. K tomu může dojít, pokud zdrojová tabulka SQL obsahuje data, která nemají anglické znaky. V Excelu vyberte kartu načíst data a vyberte soubor CSV, vyberte počátek souboru jako 65001: Unicode (UTF-8) a načtěte data.
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Problém s snímkem po aktualizaci plánu snímků
+Po dokončení plánu snímku aktualizace zprostředkovatele dat pro odeslanou sdílenou složku musí spotřebitel dat zakázat předchozí plán snímku a znovu povolit aktualizovaný plán snímků pro přijatou sdílenou složku. 
 
 ## <a name="next-steps"></a>Další kroky
 

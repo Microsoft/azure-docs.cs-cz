@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2020
+ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af0fafe98c3ca48ecced46cef6fb5fe8876c7f50
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215990"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614264"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
@@ -28,12 +28,12 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření toku uživatele upravujícího profil
 > * Vytvoření toku uživatele pro resetování hesla
 
-V tomto kurzu se dozvíte, jak vytvořit několik doporučených uživatelských toků pomocí Azure Portal. Pokud hledáte informace o tom, jak ve své aplikaci nastavit tok přihlašovacích údajů vlastníka prostředku (ROPC), přečtěte si téma [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C](configure-ropc.md).
+V tomto kurzu se dozvíte, jak vytvořit několik doporučených uživatelských toků pomocí Azure Portal. Pokud hledáte informace o tom, jak ve své aplikaci nastavit tok přihlašovacích údajů vlastníka prostředku (ROPC), přečtěte si téma [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C](add-ropc-policy.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
-> Změnili jsme způsob, jakým jsme odkazovali na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021**se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
+> Změnili jsme způsob, jakým jsme odkazovali na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -43,13 +43,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i přihlašovací prostředí s jedinou konfigurací. Uživatelé vaší aplikace jsou ve správném umístění v závislosti na kontextu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
     ![B2C, okno klienta, adresáře a předplatného, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
+1. V části **zásady** vyberte **toky uživatelů** a pak vyberte **Nový tok uživatele**.
 
     ![Stránka toky uživatelů na portálu s zvýrazněným tlačítkem nový uživatelský tok](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -57,13 +57,13 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 
     ![Výběr stránky toku uživatelů pomocí registrace a zvýrazněného toku pro přihlášení](./media/tutorial-create-user-flows/select-user-flow-type.png)
 
-1. V části **vybrat verzi**vyberte **doporučeno**a pak vyberte **vytvořit**. (Další[informace](user-flow-versions.md) o verzích toku uživatele)
+1. V části **vybrat verzi** vyberte **doporučeno** a pak vyberte **vytvořit**. (Další[informace](user-flow-versions.md) o verzích toku uživatele)
 
     ![Stránka vytvoření toku uživatele v Azure Portal se zvýrazněnými vlastnostmi](./media/tutorial-create-user-flows/select-version.png)
 
 1. Zadejte **název** toku uživatele. Například *signupsignin1*.
-1. V případě **zprostředkovatelů identity**vyberte **registrace e-mailu**.
-1. V případě **atributů a deklarací uživatelů**vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více**a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno**a **poštovní směrovací číslo**. Klikněte na **OK**.
+1. V případě **zprostředkovatelů identity** vyberte **registrace e-mailu**.
+1. V případě **atributů a deklarací uživatelů** vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více** a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno** a **poštovní směrovací číslo**. Klikněte na **OK**.
 
     ![Stránka pro výběr atributů a deklarací se třemi vybranými deklaracemi](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -72,8 +72,8 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 ### <a name="test-the-user-flow"></a>Testování toku uživatele
 
 1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**.
-1. V poli **aplikace**vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele**a pak vyberte **zaregistrovat se hned**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** a pak vyberte **zaregistrovat se hned**.
 
     ![Stránka spustit tok uživatele na portálu s zvýrazněným tlačítkem Spustit uživatele toku](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
@@ -89,30 +89,30 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 
 Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte uživatelský tok upravující profil.
 
-1. V nabídce na stránce Přehled klienta Azure AD B2C vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
+1. V nabídce na stránce Přehled klienta Azure AD B2C vyberte **toky uživatelů** a pak vyberte **Nový tok uživatele**.
 1. Na stránce **vytvořit tok uživatele** vyberte uživatelský tok **upravující profil** . 
-1. V části **vybrat verzi**vyberte **doporučeno**a pak vyberte **vytvořit**.
+1. V části **vybrat verzi** vyberte **doporučeno** a pak vyberte **vytvořit**.
 1. Zadejte **název** toku uživatele. Například *profileediting1*.
-1. V případě **zprostředkovatelů identity**vyberte **přihlášení k místnímu účtu**.
-2. V případě **atributů uživatele**vyberte atributy, které má zákazník ve svém profilu upravovat. Vyberte například **Zobrazit více**a potom zvolte atributy i deklarace identity pro **zobrazované jméno** a **název úlohy**. Klikněte na **OK**.
+1. V případě **zprostředkovatelů identity** vyberte **přihlášení k místnímu účtu**.
+2. V případě **atributů uživatele** vyberte atributy, které má zákazník ve svém profilu upravovat. Vyberte například **Zobrazit více** a potom zvolte atributy i deklarace identity pro **zobrazované jméno** a **název úlohy**. Klikněte na **OK**.
 3. Kliknutím na **vytvořit** přidejte tok uživatele. K názvu se automaticky připojí předpona *B2C_1* .
 
 ### <a name="test-the-user-flow"></a>Testování toku uživatele
 
 1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**.
-1. V poli **aplikace**vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele**a pak se přihlaste pomocí účtu, který jste vytvořili dříve.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Klikněte na **Spustit tok uživatele** a pak se přihlaste pomocí účtu, který jste vytvořili dříve.
 1. Teď máte příležitost změnit zobrazované jméno a název úlohy pro uživatele. Klikněte na **Pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.
 
 ## <a name="create-a-password-reset-user-flow"></a>Vytvoření toku uživatele pro resetování hesla
 
 Pokud chcete uživatelům vaší aplikace povolit resetování hesla, použijte uživatelský tok pro resetování hesla.
 
-1. V nabídce přehled Azure AD B2C tenanta vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
+1. V nabídce přehled Azure AD B2C tenanta vyberte **toky uživatelů** a pak vyberte **Nový tok uživatele**.
 1. Na stránce **vytvořit tok uživatele** vyberte tok uživatele **resetování hesla** . 
-1. V části **vybrat verzi**vyberte **doporučeno**a pak vyberte **vytvořit**.
+1. V části **vybrat verzi** vyberte **doporučeno** a pak vyberte **vytvořit**.
 1. Zadejte **název** toku uživatele. Například *passwordreset1*.
-1. U **zprostředkovatelů identity**povolte možnost **resetovat heslo pomocí e-mailové adresy**.
+1. U **zprostředkovatelů identity** povolte možnost **resetovat heslo pomocí e-mailové adresy**.
 2. V části deklarace identity aplikace klikněte na **Zobrazit další** a vyberte deklarace identity, které chcete vrátit do vaší aplikace, do své aplikace. Vyberte například **ID objektu uživatele**.
 3. Klikněte na **OK**.
 4. Kliknutím na **vytvořit** přidejte tok uživatele. K názvu se automaticky připojí předpona *B2C_1* .
@@ -120,7 +120,7 @@ Pokud chcete uživatelům vaší aplikace povolit resetování hesla, použijte 
 ### <a name="test-the-user-flow"></a>Testování toku uživatele
 
 1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**.
-1. V poli **aplikace**vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Klikněte na **Spustit tok uživatele**, ověřte e-mailovou adresu účtu, který jste vytvořili dříve, a vyberte **pokračovat**.
 1. Teď máte možnost změnit heslo pro uživatele. Změňte heslo a vyberte **pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.
 

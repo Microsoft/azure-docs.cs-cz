@@ -11,20 +11,20 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 29bacfff2e7b555143c0483f9b7e4b4f61c9e973
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779417"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612717"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
@@ -38,13 +38,13 @@ Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k 
 
 ![Nový projekt – Android](../../media/android/java/android-studio-create-project.png)
 
-V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
+V okně **Zvolte projekt** vyberte možnost **prázdná aktivita** a potom vyberte možnost **Další**.
 
 ![Prázdný projekt aktivity – Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
-Pojmenujte projekt **QuickstartJava**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Java** a pak vyberte **Dokončit**.
+Pojmenujte projekt **QuickstartJava** a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Java** a pak vyberte **Dokončit**.
 
 ![Konfigurace projektu – Android](../../media/android/java/android-studio-configure-project.png)
 
@@ -292,7 +292,7 @@ public class MainActivity extends Activity {
 
 Ve složce **/Java/com.example.quickstartjava** vytvoříme 16 dalších souborů třídy Java. Každá z těchto tříd se používá v aplikaci k integraci sady pro moderní čtečku. U každého nového souboru je k dispozici několik tříd v kódu, které ještě neexistují a budou vytvořeny později. Po vytvoření všech tříd by neměly být žádné chyby odkazu s hodnotou null.
 
-Pokud chcete vytvořit nový soubor třídy Java **ImmersiveReader. Java** , klikněte pravým tlačítkem na složku v Android Studio, vyberte **Nový**a pak vyberte **Třída Java**. Stejnou metodu použijete k vytvoření souborů tříd Java pro každý nový soubor třídy Java, který vytvoříte.
+Pokud chcete vytvořit nový soubor třídy Java **ImmersiveReader. Java** , klikněte pravým tlačítkem na složku v Android Studio, vyberte **Nový** a pak vyberte **Třída Java**. Stejnou metodu použijete k vytvoření souborů tříd Java pro každý nový soubor třídy Java, který vytvoříte.
 
 ![ImmersiveReader – Android](../../media/android/java/android-studio-immersivereader-java.png)
 
@@ -318,7 +318,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -402,7 +401,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -770,7 +768,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             urlStringBuilder.append("/oauth2/token");
             URL tokenUrl = new URL(urlStringBuilder.toString());
 
-
             StringBuilder formStringBuilder = new StringBuilder();
             formStringBuilder.append("grant_type=client_credentials&resource=https://cognitiveservices.azure.com/&client_id=");
             formStringBuilder.append(clientId);
@@ -793,7 +790,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             if (responseCode == HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
-
 
                 String line = bufferedReader.readLine();
                 while (!TextUtils.isEmpty(line)) {
