@@ -7,17 +7,17 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028202"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656440"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Export certifikátů emulátoru Azure Cosmos DB pro použití s aplikacemi Java, Python a Node.js
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor Azure Cosmos podporuje jenom zabezpečenou komunikaci prostřednictvím připojení TLS.
+Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor Azure Cosmos DB podporuje jenom zabezpečenou komunikaci prostřednictvím připojení TLS.
 
 Certifikáty v Azure Cosmos DB místním emulátoru se generují při prvním spuštění emulátoru. Existují dva certifikáty. Jedna z nich se používá pro připojení k místnímu emulátoru a druhá se používá ke správě výchozího šifrování dat emulátoru v rámci emulátoru. Certifikát, který chcete exportovat, je certifikát připojení s popisným názvem DocumentDBEmulatorCertificate.
 

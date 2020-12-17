@@ -11,12 +11,12 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2dd16f89851b9376557e544b86dc5e088891e63b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 03cd612e5a48d6f17eb28c0c1503335e33bebcdf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446987"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654095"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADSyncTools
 Následující dokumentace obsahuje referenční informace pro modul ADSyncTools. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
@@ -557,7 +557,7 @@ Funkce dotazuje historii spuštění AAD Connect a exportuje všechny uživatele
 ```
 
 $sourcePath = Read-Host-prompt "zadejte cestu k souboru protokolu s názvem souboru" # " \<Source_Path\> " $outputPath = Read-Host-prompt "zadejte cestu k souboru s názvem souboru" # " \<Out_Path\> ".
- 
+
  Get-ADSyncToolsUsersSourceAnchorChanged-zdrojová_cesta $sourcePath-outputPath $outputPath
 
 #### <a name="example-2"></a>PŘÍKLAD 2

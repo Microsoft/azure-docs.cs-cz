@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503034"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655165"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
@@ -54,14 +54,14 @@ Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuáln�
 4. Po dokončení příkazu zadejte **Exit** a zavřete tak klienta ssh.  Virtuální počítač bude v tuto chvíli i nadále spuštěn.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: vytvoření image virtuálního počítače
-Pomocí rozhraní příkazového řádku Azure můžete označit virtuální počítač jako zobecněný a zachytit image. V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
+Pomocí rozhraní příkazového řádku Azure můžete označit virtuální počítač jako zobecněný a zachytit image. V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet* a *myVM*.
 
 1. Zrušte přidělení virtuálního počítače, který jste zrušili pomocí [AZ VM disallocate](/cli/azure/vm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Počkejte, až se virtuální počítač kompletně uvolní, než se přesunete na. Dokončení tohoto může trvat několik minut.  Virtuální počítač je vypnutý během navracení.
@@ -70,8 +70,8 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     Virtuální počítač, který je zobecněn, již nelze restartovat.
@@ -80,8 +80,8 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

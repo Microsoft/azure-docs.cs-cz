@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509984"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653720"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -238,8 +238,8 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 2.  Vyberte podmínkami použití, které chcete upravit.
 3.  Klikněte na **Upravit výrazy**.
 4.  Pro jazyk, ve kterém chcete aktualizovat novou verzi, klikněte na **aktualizovat** ve sloupci akce.
- 
-     ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-terms-use.png)
+
+    ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-terms-use.png)
 
 5.  V pravém podokně nahrajte PDF novou verzi.
 6.  K dispozici je také možnost přepínacího parametru, která **vyžaduje opětovné přijetí** , pokud chcete, aby uživatelé při příštím přihlášení přijali tuto novou verzi. Pokud požadujete, aby se vaši uživatelé znovu přijali, při příštím pokusu o přístup k prostředku definovanému v zásadách podmíněného přístupu se zobrazí výzva, abyste tuto novou verzi přijali. Pokud nepožadujete, aby vaši uživatelé znovu přijali, jejich předchozí souhlas zůstane aktuální a jenom noví uživatelé, kteří nesouhlasí s jeho vypršenou platností nebo jejichž souhlas vyprší, uvidí novou verzi.
@@ -293,7 +293,7 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Jiné |
+> |  | iOS | Android | Windows 10 | Další |
 > | --- | --- | --- | --- | --- |
 > | **Native app** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |

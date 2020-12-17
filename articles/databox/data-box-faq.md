@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516392"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655471"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -97,11 +97,11 @@ Tyto doby realizace jsou *odhady*. Čas pro každou fázi zpracování objednáv
 **Odhadované doby realizace Data Boxho pořadí:**
 
 1. Pořadí Data Box: několik minut, z portálu
-2. Přidělení a příprava zařízení: 1–2 pracovní dny
+2. Přidělení a příprava zařízení: 1-2 pracovních dní v závislosti na dostupnosti inventáře a dalších objednávkách, které čekají na splnění
 3. Doprava: 2–3 pracovní dny
 4. Kopírování dat na zákaznických webech: závisí na povaze dat, velikosti a počtu souborů.
 5. Vrácení: 2–3 pracovní dny
-6. Zařízení se zpracovává v datacentru: 1-2 pracovních dnů.
+6. Zpracovává se zařízení v datacentru: 1-2 pracovních dnů, s výjimkou dalších objednávek, které čekají na zpracování.
 7. Nahrávání dat do Azure: začíná ihned po dokončení zpracování a připojení zařízení. Doba nahrávání závisí na charakteru dat, velikosti a počtu souborů.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Otázka: Objednal(a) jsem několik zařízení Data Box. Nemůžu vytvořit další objednávky. Proč?

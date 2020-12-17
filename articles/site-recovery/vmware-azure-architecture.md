@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626492"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652224"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii VMware do Azure
 
@@ -45,7 +45,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 | **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
@@ -81,7 +81,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
     - Pokud počítač napadne na vynucené vypnutí
     - Pokud počítač nahraje změny konfigurace, jako je změna velikosti disku (Změna velikosti disku z 2 TB na 4 TB)
 4. Opětovná synchronizace pošle do Azure jenom rozdílová data. Přenos dat mezi místním prostředím a Azure, a to minimalizováním výpočetních kontrolních součtů dat mezi zdrojovým počítačem a daty uloženými v Azure.
-5. Ve výchozím nastavení je automatické spuštění resynchronizace naplánováno mimo kancelářskou dobu. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Provedete to tak, že přejdete na Azure Portal a > znovu **synchronizujete**virtuální počítač.
+5. Ve výchozím nastavení je automatické spuštění resynchronizace naplánováno mimo kancelářskou dobu. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Provedete to tak, že přejdete na Azure Portal a > znovu **synchronizujete** virtuální počítač.
 6. Pokud se výchozí opětovná synchronizace nezdařila mimo kancelářskou dobu a vyžaduje se ruční zásah, vygeneruje se na konkrétním počítači v Azure Portal chyba. Tuto chybu můžete vyřešit a ručním spuštěním synchronizace.
 7. Po dokončení opětovné synchronizace bude obnovena replikace rozdílových změn.
 

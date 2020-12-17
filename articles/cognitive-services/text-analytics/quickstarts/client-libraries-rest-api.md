@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: a1eba2f599a0365f43707ff7c9035d91e8637481
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f93b7954861bf3351d2930132e1391e1f21b2a6f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505811"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655114"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>Rychlý Start: použití klientské knihovny Analýza textu a REST API
 
@@ -39,8 +39,6 @@ Pomocí tohoto článku můžete začít s Analýza textu klientské knihovny a 
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 > * Pokud chcete použít analýza textu pro stav nebo asynchronní operace, přečtěte si příklady na GitHubu pro [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) nebo [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) .
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -104,6 +102,6 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

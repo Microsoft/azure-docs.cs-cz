@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540308"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654638"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBA
 
@@ -38,13 +38,13 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Položku název_clusteru nahraďte názvem clusteru HDInsight HBA a uživatelské jméno a heslo s přihlašovacími údaji Apache Hadoop zadaným při vytváření clusteru. Výchozí uživatelské jméno Hadoop je **admin** .
+Položku název_clusteru nahraďte názvem clusteru HDInsight HBA a uživatelské jméno a heslo s přihlašovacími údaji Apache Hadoop zadaným při vytváření clusteru. Výchozí uživatelské jméno Hadoop je **admin**.
 
-## <a name="create-a-new-table"></a>Vytvořit novou tabulku
+## <a name="create-a-new-table"></a>Vytvoření nové tabulky
 
-HBA ukládají data v tabulkách. Tabulka se skládá z *Rowkey* , primárního klíče a jedné nebo více skupin sloupců s názvem *rodin sloupců* . Data v každé tabulce jsou horizontálně distribuována Rowkey rozsahem do *oblastí* . Každá oblast má počáteční a koncový klíč. Tabulka může mít jednu nebo více oblastí. Při zvětšování dat v tabulce rozděluje adaptéry HBA velké oblasti do menších oblastí. Oblasti jsou uloženy v oblastech *servery* , kde jeden server oblasti může ukládat více oblastí.
+HBA ukládají data v tabulkách. Tabulka se skládá z *Rowkey*, primárního klíče a jedné nebo více skupin sloupců s názvem *rodin sloupců*. Data v každé tabulce jsou horizontálně distribuována Rowkey rozsahem do *oblastí*. Každá oblast má počáteční a koncový klíč. Tabulka může mít jednu nebo více oblastí. Při zvětšování dat v tabulce rozděluje adaptéry HBA velké oblasti do menších oblastí. Oblasti jsou uloženy v oblastech *servery*, kde jeden server oblasti může ukládat více oblastí.
 
-Data se fyzicky ukládají do *HFiles* . Jeden HFile obsahuje data pro jednu tabulku, jednu oblast a jednu rodinu sloupců. Řádky v HFile jsou uloženy seřazené podle Rowkey. Každý HFile má index *B + stromu* pro urychlení načítání řádků.
+Data se fyzicky ukládají do *HFiles*. Jeden HFile obsahuje data pro jednu tabulku, jednu oblast a jednu rodinu sloupců. Řádky v HFile jsou uloženy seřazené podle Rowkey. Každý HFile má index *B + stromu* pro urychlení načítání řádků.
 
 Chcete-li vytvořit novou tabulku, zadejte `TableSchema` sloupce a. Následující kód zkontroluje, zda tabulka ' RestSDKTable ' již existuje – Pokud není, tabulka je vytvořena.
 

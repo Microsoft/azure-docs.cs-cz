@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440939"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654060"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -61,9 +61,9 @@ Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni p
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
 
 Ověřování domény AD umožňuje uživatelům připojit se k Azure pomocí svých přihlašovacích údajů domény organizace. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace můžou využít i stávající nasazení RADIUS.
-  
-Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.  
-  
+  
+Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.  
+  
 Server RADIUS se taky může integrovat se službou AD Certificate Services. To vám umožní používat server RADIUS a nasazení podnikového certifikátu pro ověřování certifikátů P2S jako alternativu k ověřování certifikátů Azure. Výhodou je, že nemusíte do Azure nahrávat kořenové certifikáty a odvolané certifikáty.
 
 Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.
@@ -102,41 +102,41 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 
 **IKEv2**
 
-|**Šifr** | **Integrita** | **PRF** | **Skupina DH** |
-|---        | ---           | ---       | ---   |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384      | SHA384    | GROUP_24 |
-|AES256     |   SHA384      | SHA384    | GROUP_14 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_24 |
-|AES256     |   SHA256      | SHA256    | GROUP_14 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_2 |
+| **Šifr** | **Integrita** | **PRF** | **Skupina DH** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
 **IPsec**
 
-|**Šifr** | **Integrita** | **Skupina PFS** |
-|---        | ---           | ---       |
-|GCM_AES256 | GCM_AES256 | GROUP_NONE |
-|GCM_AES256 | GCM_AES256 | GROUP_24 |
-|GCM_AES256 | GCM_AES256 | GROUP_14 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **Šifr** | **Integrita** | **Skupina PFS** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
 ## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Jaké zásady TLS jsou nakonfigurované na bránách VPN pro P2S?
 **PROTOKOLY**

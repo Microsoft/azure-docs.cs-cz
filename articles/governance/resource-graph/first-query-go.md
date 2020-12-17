@@ -3,12 +3,12 @@ title: 'Rychlý Start: první dotaz na cestách'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení balíčku Resource Graph pro přechod a spuštění prvního dotazu.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e09bbb63b56fd30eb3aa9e7e527acdd8691d3ee6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057446"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655794"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí příkazu Přejít
 
@@ -57,48 +57,48 @@ Pomocí balíčků pro cestách přidaných do vašeho prostředí podle vlastn�
    package main
    
    import (
-       "fmt"
-       "os"
-       "context"
-       "strconv"
-       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
-       "github.com/Azure/go-autorest/autorest/azure/auth"
+      "fmt"
+      "os"
+      "context"
+      "strconv"
+      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
+      "github.com/Azure/go-autorest/autorest/azure/auth"
    )
    
    func main() {
-      // Get variables from command line arguments
-      var query = os.Args[1]
-      var subList = os.Args[2:]
+       // Get variables from command line arguments
+       var query = os.Args[1]
+       var subList = os.Args[2:]
    
-      // Create and authorize a ResourceGraph client
-      argClient := arg.New()
-      authorizer, err := auth.NewAuthorizerFromCLI()
-      if err == nil {
-          argClient.Authorizer = authorizer
-      } else {
-          fmt.Printf(err.Error())
-      }
-   
-      // Set options
-      RequestOptions := arg.QueryRequestOptions {
-          ResultFormat: "objectArray",
-      }
-   
-      // Create the query request
-      Request := arg.QueryRequest {
-          Subscriptions: &subList,
-          Query: &query,
-          Options: &RequestOptions,
-      }
-   
-      // Run the query and get the results
-      var results, queryErr = argClient.Resources(context.Background(), Request)
-      if queryErr == nil {
-          fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
-          fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
-      } else {
-          fmt.Printf(queryErr.Error())
-      }
+       // Create and authorize a ResourceGraph client
+       argClient := arg.New()
+       authorizer, err := auth.NewAuthorizerFromCLI()
+       if err == nil {
+           argClient.Authorizer = authorizer
+       } else {
+           fmt.Printf(err.Error())
+       }
+     
+       // Set options
+       RequestOptions := arg.QueryRequestOptions {
+           ResultFormat: "objectArray",
+       }
+     
+       // Create the query request
+       Request := arg.QueryRequest {
+           Subscriptions: &subList,
+           Query: &query,
+           Options: &RequestOptions,
+       }
+     
+       // Run the query and get the results
+       var results, queryErr = argClient.Resources(context.Background(), Request)
+       if queryErr == nil {
+           fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
+           fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
+       } else {
+           fmt.Printf(queryErr.Error())
+       }
    }
    ```
 

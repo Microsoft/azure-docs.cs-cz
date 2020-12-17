@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074664"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651969"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
 
@@ -89,7 +89,7 @@ Pokud aktuálně používáte ADAL a nepotřebujete používat přírůstkový s
 > [!CAUTION]
 > Není možné nastavit oba obory a ID prostředku. Pokus o nastavení obou výsledků bude `IllegalArgumentException` .
 
- Výsledkem bude stejné chování V1, které jste použili. Všechna oprávnění požadovaná v registraci vaší aplikace jsou během první interakce požadována od uživatele.
+Výsledkem bude stejné chování V1, které jste použili. Všechna oprávnění požadovaná v registraci vaší aplikace jsou během první interakce požadována od uživatele.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Ověření a vyžádání oprávnění pouze podle potřeby
 
@@ -128,16 +128,16 @@ MSAL nemá příznak pro povolení nebo zakázání ověřování autority. Ově
 
 Pokud se pokusíte použít autoritu, která není známá na Microsoftu, a není zahrnutá do vaší konfigurace, zobrazí se `UnknownAuthorityException` .
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 Nyní můžete v rámci konfigurace deklarativně nakonfigurovat protokolování, například takto:
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrace z UserInfo na účet
 

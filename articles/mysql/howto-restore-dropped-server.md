@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546717"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657086"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Obnovení vynechaného serveru Azure Database for MySQL
 
@@ -45,15 +45,15 @@ Chcete-li obnovit vyřazený Azure Database for MySQL server, budete potřebovat
  6. V části tělo žádosti se posuňte dolů a vložte následující text nahrazující "umístění vyřazeného serveru", "submissionTimestamp" a "resourceId". Pro "restorePointInTime" zadejte hodnotu "submissionTimestamp" mínus **15 minut** , abyste se ujistili, že příkaz nechybí.
  
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
+    {
+        "location": "Dropped Server Location",  
+        "properties": 
+            {
+                "restorePointInTime": "submissionTimestamp - 15 minutes",
+                "createMode": "PointInTimeRestore",
+                "sourceServerId": "resourceId"
             }
-        }
+    }
     ```
 
 7. Pokud se zobrazí kód odpovědi 201 nebo 202, požadavek na obnovení se úspěšně odeslal. 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928813"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657171"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -102,7 +102,7 @@ Odpověď **: 135**% se sdílí mezi 8 vCPU a tvoří velikost virtuálního po�
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak můžu monitorovat zůstatek a spotřebu svého kreditu?
 
-**A** Odpověď: metrika **kreditu** vám umožní zobrazit, kolik KREDITů byl váš virtuální počítač v bance, a metrika **CONSUMEDCREDIT** zobrazí počet KREDITů procesoru, které váš virtuální počítač využil od banky.    Tyto metriky budete moct zobrazit z podokna metrik na portálu nebo programově prostřednictvím rozhraní Azure Monitor API.
+Odpověď: metrika **kreditu** vám umožní zobrazit, kolik KREDITů byl váš virtuální počítač v bance, a metrika **CONSUMEDCREDIT** zobrazí počet KREDITů procesoru, které váš virtuální počítač využil od banky.    Tyto metriky budete moct zobrazit z podokna metrik na portálu nebo programově prostřednictvím rozhraní Azure Monitor API.
 
 Další informace o tom, jak získat přístup k datům metrik pro Azure, najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
@@ -112,7 +112,7 @@ Odpověď: míra akumulace a spotřeby virtuálních počítačů je nastavená 
 
 **Příklad**: nasadím virtuální počítač s využitím B1msé velikosti pro moji malou dobu a aplikaci pro databázi docházky. Tato velikost umožňuje, aby moje aplikace používala až 20% vCPU jako můj směrný plán, což je 0,2 kreditů za minutu, které můžu použít nebo banku.
 
-Moje aplikace je zaneprázdněna na začátku a konci mého pracovního dne zaměstnanců, mezi 7:00-9:00 a 4:00-6:13:00. V průběhu dalších 20 hodin dne je moje aplikace obvykle při nečinnosti, a to pouze pomocí 10% vCPU. V době mimo špičku získáme 0,2 kreditů za minutu, ale spotřebujete jenom 0. l kredity za minutu, takže můj virtuální počítač bude bankou 0,1 x 60 = 6 kreditů za hodinu.  Po dobu 20 hodin, u kterých jsem mimo špičku, budu k dis120 kredity bank.  
+Moje aplikace je zaneprázdněna na začátku a konci mého pracovního dne zaměstnanců, mezi 7:00-9:00 a 4:00-6:13:00. V průběhu dalších 20 hodin dne je moje aplikace obvykle při nečinnosti, a to pouze pomocí 10% vCPU. V době mimo špičku získáme 0,2 kreditů za minutu, ale spotřebujete jenom 0,1 kreditů za minutu, takže můj virtuální počítač bude bankou 0,1 × 60 = 6 kreditů za hodinu.  Po dobu 20 hodin, u kterých jsem mimo špičku, budu k dis120 kredity bank.  
 
 Během špičky moje aplikace průměrně 60% využití vCPU, přebírám 0,2 kreditů za minutu, ale 0,6 spotřebovávám kreditů za minutu, a za čistých nákladů 0,4 na 0,4 kreditů za minutu a za hodinu. Počet hodin využití ve špičce je 4 hodiny, takže náklady 4 × 24 = 96 se za využití ve špičce zadarmo.
 

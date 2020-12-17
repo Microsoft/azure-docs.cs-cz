@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61f5a470046ba3ddca157e83737a29ed936a0c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490070"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656321"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -171,7 +171,7 @@ Příklad:
 |id|ID obličeje|
 |name|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
 |spolehlivost|Spolehlivost identifikace obličeje.|
-|description|Popis celebrit. |
+|Popis|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
 |knownPersonId|Interní ID (Pokud se jedná o známého uživatele).|
 |referenceId|ID Bingu (Pokud se jedná o celebrit Bingu).|
@@ -257,7 +257,7 @@ Příklad:
       ],
       "instances": [
         {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "thumbnailId": "00000000-0000-0000-0000-000000000000",
           "start": "00: 00: 05.2670000",
           "end": "00: 00: 10.3000000"
         }

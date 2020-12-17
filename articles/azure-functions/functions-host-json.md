@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746076"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654808"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -129,7 +129,8 @@ Následující vzorový *host.js* souboru pro verzi 2. x + obsahuje všechny mo�
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -275,7 +276,7 @@ Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle f
 
 | Typ plánu | Výchozí (min.) | Maximum (min) |
 | -- | -- | -- |
-| Využití | 5 | 10 |
+| Consumption | 5 | 10 |
 | Premium<sup>1</sup> | 30 | -1 (nevázané)<sup>2</sup> |
 | Vyhrazeno (App Service) | 30 | -1 (nevázané)<sup>2</sup> |
 
@@ -444,6 +445,16 @@ Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-direc
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+Pole jednoho nebo více názvů souborů, které jsou monitorovány pro změny, které vyžadují restartování vaší aplikace.  To zaručuje, že při změně kódu v těchto souborech jsou aktualizace převzaty funkcemi.
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

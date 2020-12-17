@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e9cf9a7c2556a1f0710b2bf646d83ffbf84ea97
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585050"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653839"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -36,10 +36,10 @@ ms.locfileid: "97585050"
 
 V tomto článku se dozvíte, jak povolit přihlášení AD FS uživatelského účtu pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [technického profilu zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md) do vlastních zásad.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
-- Ujistěte se, že máte přístup k souboru certifikátu. pfx s privátním klíčem. Můžete vygenerovat vlastní podepsaný certifikát a odeslat ho do Azure AD B2C. Azure AD B2C používá tento certifikát k podepsání žádosti SAML odeslané poskytovateli identity SAML. Další informace o tom, jak vygenerovat certifikát, najdete v tématu [vygenerování podpisového certifikátu](identity-provider-salesforce.md#generate-a-signing-certificate).
+- Ujistěte se, že máte přístup k souboru certifikátu. pfx s privátním klíčem. Můžete vygenerovat vlastní podepsaný certifikát a odeslat ho do Azure AD B2C. Azure AD B2C používá tento certifikát k podepsání žádosti SAML odeslané poskytovateli identity SAML. Další informace o tom, jak vygenerovat certifikát, najdete v tématu [vygenerování podpisového certifikátu](identity-provider-salesforce-saml.md#generate-a-signing-certificate).
 - Aby mohl Azure přijmout heslo k souboru. pfx, musí být heslo zašifrované s možností TripleDES-SHA1 v nástroji pro export certifikátů Windows, a to na rozdíl od AES256-SHA256.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad

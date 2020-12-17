@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518239"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653278"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -81,7 +81,7 @@ Některé deklarace identity se používají k usnadnění zabezpečených token
 
 ### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Popis |
+|Deklarovat | Formát | Description |
 |--------|--------|-------------|
 | `typ` | Řetězec – vždycky "JWT" | Označuje, že token je JWT.|
 | `nonce` | Řetězec | Jedinečný identifikátor, který slouží k ochraně před útoky na opakované přehrání tokenu. Prostředek může tuto hodnotu zaznamenat k ochraně před přehráním. |
@@ -91,7 +91,7 @@ Některé deklarace identity se používají k usnadnění zabezpečených token
 
 ### <a name="payload-claims"></a>Deklarace datové části
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
 | `aud` | Řetězec, identifikátor URI ID aplikace nebo identifikátor GUID | Identifikuje zamýšleného příjemce tokenu – jeho cílovou skupinu.  Rozhraní API by mělo tuto hodnotu ověřit a zamítnout token, pokud se hodnota neshoduje. V tokenech v 2.0 se jedná vždy o ID klienta rozhraní API, zatímco v tokenech v 1.0 může to být ID klienta nebo identifikátor URI prostředku použitý v žádosti v závislosti na tom, jak klient požádal o token.|
 | `iss` | Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud je vydaný token tokenem v 2.0 (viz `ver` deklaraci identity), identifikátor URI skončí `/v2.0` . Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad` . Vaše aplikace může použít část s identifikátorem GUID k omezení sady klientů, které se můžou k aplikaci přihlásit, pokud jsou k dispozici. |
@@ -140,8 +140,8 @@ Aby se zajistilo, že velikost tokenu nepřekračuje limity velikosti hlavičky 
        }
      }
   ...
- }
- ```
+}
+```
 
 Můžete použít `BulkCreateGroups.ps1` ve složce [Scripts pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) , které vám pomůžou vyzkoušet scénáře překročení limitu.
 
@@ -149,7 +149,7 @@ Můžete použít `BulkCreateGroups.ps1` ve složce [Scripts pro vytváření ap
 
 Pokud je to možné, budou v tokenech v 1.0 zahrnuté tyto deklarace, ale ve výchozím nastavení nejsou zahrnuté v tokenech verze 2.0. Pokud používáte v 2.0 a potřebujete jednu z těchto deklarací, požádejte o ně použití [volitelných deklarací identity](active-directory-optional-claims.md).
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
 | `ipaddr`| Řetězec | IP adresa, ze které uživatel ověřil. |
 | `onprem_sid`| Řetězec ve [formátu SID](/windows/desktop/SecAuthZ/sid-components) | V případech, kdy má uživatel místní ověřování, tato deklarace identity poskytuje identifikátor SID. Můžete použít `onprem_sid` pro autorizaci ve starších verzích aplikací.|
@@ -186,7 +186,7 @@ Ne všechny aplikace by měly ověřovat tokeny. Aplikace ověří token jenom v
 
 Pokud se žádný z výše uvedených scénářů nepoužije, nebude mít vaše aplikace nárok na ověření tokenu a může představovat riziko zabezpečení a spolehlivosti, pokud se rozhodnutí provádějí na základě platnosti tokenu.  Veřejné klienty, jako jsou nativní aplikace nebo jednostránkové, nevyužívají ověřování tokenů – aplikace komunikuje přímo s IDP, takže ochrana SSL zajišťuje platnost tokenů.
 
- Rozhraní API a webové aplikace musí ověřovat jenom tokeny, které mají `aud` deklaraci identity, která odpovídá jejich aplikaci. jiné prostředky můžou mít vlastní ověřovací pravidla tokenu. Například tokeny pro Microsoft Graph neověřují podle těchto pravidel z důvodu jejich vlastního formátu. Příkladem problému se [zástupcem zmateného](https://cwe.mitre.org/data/definitions/441.html) programu je ověřování a přijetí tokenů, které jsou určené pro jiný prostředek.
+Rozhraní API a webové aplikace musí ověřovat jenom tokeny, které mají `aud` deklaraci identity, která odpovídá jejich aplikaci. jiné prostředky můžou mít vlastní ověřovací pravidla tokenu. Například tokeny pro Microsoft Graph neověřují podle těchto pravidel z důvodu jejich vlastního formátu. Příkladem problému se [zástupcem zmateného](https://cwe.mitre.org/data/definitions/441.html) programu je ověřování a přijetí tokenů, které jsou určené pro jiný prostředek.
 
 Pokud vaše aplikace potřebuje ověřit id_token nebo access_token podle výše uvedených požadavků, měla by nejdřív ověřit signaturu a vystavitele tokenu proti hodnotám v dokumentu zjišťování OpenID. Například verze dokumentu nezávislá na klientovi je umístěna na adrese [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) .
 

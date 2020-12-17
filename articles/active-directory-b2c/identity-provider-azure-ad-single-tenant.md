@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0b6e8b165dc8663d253ebd2ed2314195341142e0
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584992"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654383"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -32,21 +32,9 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkr�
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-::: zone pivot="b2c-user-flow"
-
-* [Vytvořte uživatelský tok](tutorial-create-user-flows.md), který uživatelům umožní registraci a přihlášení do vaší aplikace.
-* Pokud jste to ještě neudělali, [přidejte do svého tenanta Azure Active Directory B2C aplikaci webového rozhraní API](add-web-api-application.md).
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
-* Pokud jste to ještě neudělali, [přidejte do svého tenanta Azure Active Directory B2C aplikaci webového rozhraní API](add-web-api-application.md).
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>Registrace aplikace Azure AD
 

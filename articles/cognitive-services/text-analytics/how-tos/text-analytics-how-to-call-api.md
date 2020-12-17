@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562561"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654825"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -64,9 +64,6 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
-
 <a name="json-schema"></a>
 
 ## <a name="api-request-formats"></a>Formáty požadavků rozhraní API
@@ -81,8 +78,8 @@ Formát pro požadavky rozhraní API je stejný pro všechny synchronní operace
 
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
-|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Vyžadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Vyžadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../language-support.md). |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Povinné | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Povinné | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../language-support.md). |
 |`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../language-support.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat vašemu `text` zadání. |
 
 Následuje příklad požadavku rozhraní API pro synchronní Analýza textu koncové body. 
@@ -117,14 +114,14 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
 |`displayName` | Řetězec | Volitelné | Slouží jako zobrazovaný název pro jedinečný identifikátor úlohy.|
-|`analysisInput` | Zahrnuje `documents` pole níže. | Vyžadováno | Obsahuje informace o dokumentech, které chcete odeslat. |
-|`documents` | Obsahuje `id` pole a `text` níže. | Vyžadováno | Obsahuje informace pro každý odesílaný dokument a nezpracovaný text dokumentu. |
-|`id` | Řetězec | Vyžadováno | ID, která zadáte, se použijí k uspořádání výstupu. |
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 125 000 znaků. | Vyžadováno | Musí být v anglickém jazyce, což je jediný aktuálně podporovaný jazyk. |
-|`tasks` | Obsahuje následující funkce Analýza textu: `entityRecognitionTasks` , `keyPhraseExtractionTasks` nebo `entityRecognitionPiiTasks` . | Vyžadováno | Jedna nebo více Analýza textuch funkcí, které chcete použít. Všimněte si, že `entityRecognitionPiiTasks` má volitelný `domain` parametr, který lze nastavit na `pii` nebo `phi` . Pokud tento parametr nezadáte, použije se výchozí hodnota systému `pii` . |
-|`parameters` | Obsahuje `model-version` pole a `stringIndexType` níže. | Vyžadováno | Toto pole je zahrnuté ve výše uvedených úlohách funkcí, které jste si zvolili. Obsahují informace o verzi modelu, kterou chcete použít, a typ indexu. |
-|`model-version` | Řetězec | Vyžadováno | Určete, která verze modelu je volána, kterou chcete použít.  |
-|`stringIndexType` | Řetězec | Vyžadováno | Určete dekodér textu, který odpovídá vašemu programovacímu prostředí.  Podporované typy jsou `textElement_v8` (výchozí), `unicodeCodePoint` , `utf16CodeUnit` . Další informace najdete v [článku posuny textu](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
+|`analysisInput` | Zahrnuje `documents` pole níže. | Povinné | Obsahuje informace o dokumentech, které chcete odeslat. |
+|`documents` | Obsahuje `id` pole a `text` níže. | Povinné | Obsahuje informace pro každý odesílaný dokument a nezpracovaný text dokumentu. |
+|`id` | Řetězec | Povinné | ID, která zadáte, se použijí k uspořádání výstupu. |
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 125 000 znaků. | Povinné | Musí být v anglickém jazyce, což je jediný aktuálně podporovaný jazyk. |
+|`tasks` | Obsahuje následující funkce Analýza textu: `entityRecognitionTasks` , `keyPhraseExtractionTasks` nebo `entityRecognitionPiiTasks` . | Povinné | Jedna nebo více Analýza textuch funkcí, které chcete použít. Všimněte si, že `entityRecognitionPiiTasks` má volitelný `domain` parametr, který lze nastavit na `pii` nebo `phi` . Pokud tento parametr nezadáte, použije se výchozí hodnota systému `pii` . |
+|`parameters` | Obsahuje `model-version` pole a `stringIndexType` níže. | Povinné | Toto pole je zahrnuté ve výše uvedených úlohách funkcí, které jste si zvolili. Obsahují informace o verzi modelu, kterou chcete použít, a typ indexu. |
+|`model-version` | Řetězec | Povinné | Určete, která verze modelu je volána, kterou chcete použít.  |
+|`stringIndexType` | Řetězec | Povinné | Určete dekodér textu, který odpovídá vašemu programovacímu prostředí.  Podporované typy jsou `textElement_v8` (výchozí), `unicodeCodePoint` , `utf16CodeUnit` . Další informace najdete v [článku posuny textu](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
 |`domain` | Řetězec | Volitelné | Platí pouze jako parametr `entityRecognitionPiiTasks` úlohy a lze ji nastavit na `pii` nebo `phi` . Nastaví se na výchozí hodnotu, je- `pii` li tento parametr zadán.  |
 
 ```json
@@ -172,9 +169,9 @@ Formát požadavků rozhraní API na Analýza textu pro hostované rozhraní API
 
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
-|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Vyžadováno | Systém používá ID, která zadáte k strukturování výstupu. |
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Vyžadováno | Všimněte si, že v současné době je podporován pouze anglický text. |
-|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../language-support.md) | Vyžadováno | V tuto `en` chvíli se podporuje jenom. |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Povinné | Systém používá ID, která zadáte k strukturování výstupu. |
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Povinné | Všimněte si, že v současné době je podporován pouze anglický text. |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../language-support.md) | Povinné | V tuto `en` chvíli se podporuje jenom. |
 
 Následuje příklad požadavku rozhraní API pro Analýza textu pro koncové body stavu. 
 
@@ -200,7 +197,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>Nastavení žádosti 
 
-V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Například:
+V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Příklad:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -269,7 +266,7 @@ Odešlete žádost o rozhraní API. Pokud jste provedli volání synchronního k
 Pokud jste provedli volání asynchronních `/analyze` nebo `/health` koncových bodů, ověřte, že jste obdrželi kód odpovědi 202. k zobrazení výsledků budete muset získat odpověď:
 
 1. V odpovědi rozhraní API vyhledejte `Operation-Location` z hlavičky, která označuje úlohu, kterou jste odeslali do rozhraní API. 
-2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Například:
+2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Příklad:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 

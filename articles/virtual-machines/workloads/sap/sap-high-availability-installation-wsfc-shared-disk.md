@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81721cb52035a51cffa2667568914c780b4c397b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1324afb38560afeb43b5be9191b6e2e7afc5c81d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588654"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654893"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Instalace SAP NetWeaver HA do clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro instanci SAP ASCS/SCS v Azure
 
@@ -66,8 +66,6 @@ ms.locfileid: "97588654"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-
-
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
@@ -153,7 +151,7 @@ Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou
 - [Sdílené disky Azure](../../disks-shared.md)
 - Vytvoření zrcadleného úložiště s využitím s využitím s využitím s [DataKeeper Edition](https://us.sios.com/products/datakeeper-cluster/) pro simulaci sdíleného disku v clusteru 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si tyto dokumenty:
 
@@ -173,7 +171,6 @@ Neexistují žádné zvláštní požadavky, pokud různé služby DBMS komuniku
 > [!IMPORTANT]
 > Pokud používáte s k prezentaci sdíleného disku, neumísťujte stránkovací soubor na zrcadlené svazky s datakeeping. Stránkovací soubor můžete ponechat na dočasné jednotce na virtuálním počítači Azure, což je výchozí nastavení. Pokud tam ještě není, přesuňte soubor stránky Windows na jednotku D virtuálního počítače Azure.  
 
-
 Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 
 * Vytvořte název virtuálního hostitele pro clusterovanou instanci SAP ASCS/SCS.
@@ -189,7 +186,6 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
    > [!IMPORTANT]
    > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ASCS/SCS, musí být stejná jako IP adresa, kterou jste přiřadili Azure Load Balancer.  
 
-
    ![Obrázek 1: definování položky DNS pro virtuální název clusteru SAP ASCS/SCS a adresu protokolu TCP/IP][sap-ha-guide-figure-3046]
 
    _Zadejte položku DNS pro virtuální název clusteru SAP ASCS/SCS a adresu TCP/IP._
@@ -199,11 +195,9 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
    > [!IMPORTANT]
    > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ERS2, musí být druhá IP adresa, kterou jste přiřadili Azure Load Balancer.    
 
-
    ![Obrázek 1A: definujte položku DNS pro virtuální název clusteru SAP ASCS/SCS a adresu TCP/IP.][sap-ha-guide-figure-3046-ers2]
 
    _Zadejte položku DNS pro virtuální název clusteru SAP ERS2 a adresu TCP/IP._
-
 
 3. Pokud chcete zadat IP adresu, která je přiřazená k názvu virtuálního hostitele, vyberte doména **Správce DNS**  >  .
 
@@ -219,7 +213,6 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
    * **Java System**: **SCS** instance číslo **01**
    * **ABAP + Java System**: **ASCS** instance číslo **00** a **SCS** instance číslo **01**
 
-
    > [!IMPORTANT]
    > Pamatujte, že konfigurace v pravidlech vyrovnávání zatížení interního vyrovnávání zatížení Azure (Pokud se používá základní SKU) a vybraná čísla instancí SAP se musí shodovat.
 
@@ -227,8 +220,6 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 
 > [!TIP]
 > Dokumentace k instalaci SAP popisuje, jak nainstalovat první uzel clusteru ASCS/SCS.
-
-
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> Úprava profilu SAP instance ASCS/SCS
 
@@ -295,7 +286,6 @@ Pokud chcete přidat port testu, spusťte tento modul PowerShellu na jednom z vi
     .PARAMETER IsSAPERSClusteredInstance 
     Optional parameter.Default value is '$False'.
     If set to $True , then handle clsutered new SAP ERS2 instance.
-
 
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.

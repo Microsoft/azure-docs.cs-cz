@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913041"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652190"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimalizuje Azure Data Lake Storage Gen2 pro výkon.
 
@@ -43,11 +43,11 @@ Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen2 může něk
 
 Po vyřešení výše uvedených slabých míst zdrojového hardwaru a síťového připojení budete připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu.  Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](data-lake-storage-data-scenarios.md).
 
-| Nástroj               | Nastavení     | Další podrobnosti                                                                 |
+| Nástroj               | Nastavení | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapovač)   | [Propojit](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Propojit](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Propojit](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -m (mapovač)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper)    |   [Odkaz](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 

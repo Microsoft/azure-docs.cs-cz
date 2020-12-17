@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505218"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656270"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
@@ -24,8 +24,6 @@ Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsob
 Modely AI používané rozhraním API jsou součástí služby, stačí ale odeslat obsah k analýze.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Analýza mínění verze a funkce
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
@@ -86,7 +84,7 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek můžete najít na Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
@@ -99,7 +97,7 @@ Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza 
 
 **Dolování názoru**
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
