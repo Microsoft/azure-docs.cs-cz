@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356701"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631988"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Sada Batch Processing Kit pro kontejnery řeči
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 Spuštění klienta Batch:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 Spuštění klienta Batch a kontejneru v jednom příkazu:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -151,12 +151,12 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 ---
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 > [!NOTE]
 > Klient Batch může soubor *Run. log* pravidelně přepsat, pokud je příliš velký.
 
-Klient vytvoří soubor *Run. log* v adresáři určeném `-log_folder` argumentem v příkazu Docker `run` . Protokoly jsou zachyceny ve výchozím nastavení na úrovni ladění. Stejné protokoly jsou odesílány do `stdout/stderr` a filtrovány v závislosti na `-log_level` argumentu. Tento protokol je nutný pouze pro ladění, nebo pokud potřebujete odeslat trasování pro podporu. Složka protokolování obsahuje také protokoly sady Speech SDK pro jednotlivé zvukové soubory.
+Klient vytvoří soubor *Run. log* v adresáři určeném `-log_folder` argumentem v příkazu Docker `run` . Protokoly jsou zachyceny ve výchozím nastavení na úrovni ladění. Stejné protokoly jsou odesílány do `stdout/stderr` a filtrovány v závislosti na `-file_log_level` `console_log_level` argumentech nebo. Tento protokol je nutný pouze pro ladění, nebo pokud potřebujete odeslat trasování pro podporu. Složka protokolování obsahuje také protokoly sady Speech SDK pro jednotlivé zvukové soubory.
 
 Výstupní adresář určený parametrem `-output_folder` bude obsahovat *run_summary.jsv*   souboru, který se pravidelně přepíše každých 30 sekund nebo kdykoli po dokončení nových přepisů. Tento soubor můžete použít ke kontrole průběhu zpracování dávky. Bude také obsahovat konečné statistiky spuštění a konečný stav všech souborů po dokončení dávky. Dávka se dokončí, až proces skončí čistým ukončením. 
 

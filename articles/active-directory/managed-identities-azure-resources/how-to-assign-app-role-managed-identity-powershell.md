@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8890eb76e3f9521aa5070789f969ffeb8f3e4ec6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618803"
+ms.locfileid: "97631172"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Přiřazení spravované identity přístup k roli aplikace pomocí PowerShellu
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak přiřadit spravovanou identitu k aplikační 
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak přiřadit spravovanou identitu k aplikační 
     - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
     - Spouštět skripty místně pomocí instalace nejnovější verze [Azure AD PowerShellu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
 
-## <a name="use-azure-ad-to-assign-a-managed-identity-access-to-another-applications-app-role"></a>Pomocí Azure AD přiřaďte přístup spravované identity k aplikační roli jiné aplikace.
+## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Přiřaďte přístup spravovaných identit k aplikační roli jiné aplikace.
 
 1. Povolte spravovanou identitu na prostředku Azure, [jako je třeba virtuální počítač Azure](qs-configure-powershell-windows-vm.md).
 
@@ -86,14 +86,53 @@ V tomto článku se dozvíte, jak přiřadit spravovanou identitu k aplikační 
 
 1. Přiřaďte roli aplikace spravované identitě. K přiřazení role aplikace budete potřebovat následující informace:
     * `managedIdentityObjectId`: ID objektu instančního objektu spravované identity, který jste našli v kroku 2.
-    * `serverApplicationObjectId`: ID objektu instančního objektu serverové aplikace, který jste našli v kroku 4.
+    * `serverServicePrincipalObjectId`: ID objektu instančního objektu serverové aplikace, který jste našli v kroku 4.
     * `appRoleId`: ID aplikační role vystavené serverovou aplikací, kterou jste vytvořili v kroku 5 – v příkladu je ID aplikační role `0566419e-bb95-4d9d-a4f8-ed9a0f147fa6` .
    
    Přidejte přiřazení role spuštěním následujícího skriptu prostředí PowerShell:
 
     ```powershell
-    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverApplicationObjectId
+    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverServicePrincipalObjectId
     ```
+
+## <a name="complete-script"></a>Celý skript
+
+Tento ukázkový skript ukazuje, jak přiřadit roli aplikace spravovanou identitu webové aplikace Azure.
+
+```powershell
+# Install the module. (You need admin on the machine.)
+# Install-Module AzureAD
+
+# Your tenant ID (in the Azure portal, under Azure Active Directory > Overview).
+$tenantID = '<tenant-id>'
+
+# The name of your web app, which has a managed identity that should be assigned to the server app's app role.
+$webAppName = '<web-app-name>'
+$resourceGroupName = '<resource-group-name-containing-web-app>'
+
+# The name of the server app that exposes the app role.
+$serverApplicationName = '<server-application-name>' # For example, MyApi
+
+# The name of the app role that the managed identity should be assigned to.
+$appRoleName = '<app-role-name>' # For example, MyApi.Read.All
+
+# Look up the web app's managed identity's object ID.
+$managedIdentityObjectId = (Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName).identity.principalid
+
+Connect-AzureAD -TenantId $tenantID
+
+# Look up the details about the server app's service principal and app role.
+$serverServicePrincipal = (Get-AzureADServicePrincipal -Filter "DisplayName eq '$serverApplicationName'")
+$serverServicePrincipalObjectId = $serverServicePrincipal.ObjectId
+$appRoleId = ($serverServicePrincipal.AppRoles | Where-Object {$_.Value -eq $appRoleName }).Id
+
+# Assign the managed identity access to the app role.
+New-AzureADServiceAppRoleAssignment `
+    -ObjectId $managedIdentityObjectId `
+    -Id $appRoleId `
+    -PrincipalId $managedIdentityObjectId `
+    -ResourceId $serverServicePrincipalObjectId
+```
 
 ## <a name="next-steps"></a>Další kroky
 

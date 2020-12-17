@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: dcf7c8db955b2e85ad7d1c047c714eb2c5968455
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e0141d4a5658b8612ee083c6ed1825b10c0009ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780803"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631704"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro .NET (SDK v4)
 
@@ -27,7 +27,7 @@ Další informace o Key Vault a tajných klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled tajných klíčů](about-secrets.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core)
@@ -159,7 +159,7 @@ Váš tajný kód se teď uloží jako `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
-Nakonec smažte tajný klíč z vašeho trezoru klíčů pomocí metod [StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) a [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedsecretasync) .
+Nakonec smažte tajný klíč z vašeho trezoru klíčů pomocí metod [StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) a [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient) .
 
 ```csharp
 var operation = await client.StartDeleteSecretAsync("mySecret");

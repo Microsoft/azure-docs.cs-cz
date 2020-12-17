@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503994"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631087"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 
@@ -75,34 +75,23 @@ Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény
 
 Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Nasadit v AKS a poli brány pole brány (FPGA)
+### <a name="deploy-on-azure-kubernetes-service"></a>Nasazení ve službě Azure Kubernetes
 
   > [!NOTE]
   > Informace v této části platí také při nasazení zabezpečené webové služby pro návrháře. Pokud nejste obeznámeni s používáním sady Python SDK, přečtěte si téma [co je Azure Machine Learning SDK pro Python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existující. Další informace o vytvoření nebo připojení clusteru najdete v tématu [nasazení modelu do clusteru služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
-  
--  Pokud vytvoříte nový cluster, použijete **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**.
-- Pokud připojíte existující cluster, použijete **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Vrátí objekt konfigurace, který má metodu **Enable_ssl** .
+**[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** i **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** vracejí objekt konfigurace, který má metodu **Enable_ssl** , a můžete použít metodu **Enable_ssl** k povolení TLS.
 
-Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
+Protokol TLS můžete povolit buď s certifikátem společnosti Microsoft, nebo s vlastním certifikátem zakoupeným od certifikační autority. 
 
-> [!WARNING]
-> Pokud je váš cluster AKS nakonfigurovaný s interním nástrojem pro vyrovnávání zatížení __, nepodporuje se__ certifikát poskytnutý společností Microsoft. Použití certifikátu poskytnutého společností Microsoft vyžaduje prostředek veřejné IP adresy v Azure, který není k dispozici pro AKS, pokud je nakonfigurovaný pro interní nástroj pro vyrovnávání zatížení.
-
-  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", kde \<azureregion> je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
-
-    Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
-
-    > [!IMPORTANT]
-    > Pokud používáte certifikát od Microsoftu, nemusíte kupovat svůj vlastní certifikát ani název domény.
-
-    Následující příklad ukazuje, jak vytvořit konfiguraci, která povoluje certifikát TLS/SSL od společnosti Microsoft:
+* Použijete **-li certifikát od společnosti Microsoft**, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", kde \<azureregion> je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*. Následující příklad ukazuje, jak vytvořit konfiguraci, která umožňuje protokol TLS s certifikátem Microsoftu:
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +101,28 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > Pokud používáte certifikát od Microsoftu, nemusíte kupovat svůj vlastní certifikát ani název domény.
 
-  * Když použijete *zakoupený certifikát*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file* a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát TLS/SSL, který jste zakoupili:
+    > [!WARNING]
+    > Pokud je váš cluster AKS nakonfigurovaný s interním nástrojem pro vyrovnávání zatížení, nepodporuje se certifikát poskytnutý společností __Microsoft a musíte__ použít vlastní certifikát k povolení TLS.
 
+* **Když použijete vlastní certifikát, který jste zakoupili**, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file* a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů. pem vytvořit konfiguraci, která používá certifikát TLS/SSL, který jste zakoupili:
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +147,17 @@ Další informace najdete v tématu [AciWebservice.deploy_configuration ()](/pyt
 
 ## <a name="update-your-dns"></a>Aktualizace DNS
 
-Dál je potřeba aktualizovat DNS tak, aby odkazoval na webovou službu.
+Pro nasazení AKS s vlastním certifikátem nebo nasazením ACI je potřeba aktualizovat záznam DNS tak, aby odkazoval na IP adresu bodování koncového bodu.
 
-+ **Pro Container Instances:**
+  > [!IMPORTANT]
+  > Když použijete certifikát od nasazení Microsoft pro AKS, nemusíte ručně aktualizovat hodnotu DNS pro cluster. Hodnota by měla být nastavena automaticky.
 
-  Pomocí nástrojů z registrátora názvu domény aktualizujte záznam DNS pro název domény. Záznam musí ukazovat na IP adresu služby.
+Pomocí následujících kroků můžete aktualizovat záznam DNS pro vlastní název domény:
+* Získejte IP adresu koncového bodu vyhodnocování z identifikátoru URI koncového bodu, který je obvykle ve formátu *http://104.214.29.152:80/api/v1/service/<service-name>/score* . 
+* Pomocí nástrojů z registrátora názvu domény aktualizujte záznam DNS pro název domény. Záznam musí ukazovat na IP adresu koncového bodu bodování.
+* Po aktualizaci záznamu DNS můžete překlad DNS ověřit pomocí příkazu *nslookup Custom-Domain-Name* . Pokud je záznam DNS správně aktualizovaný, bude název vlastní domény ukazovat na IP adresu bodování koncového bodu.
+* Může dojít ke zpoždění minut nebo hodin, než klienti budou moci přeložit název domény v závislosti na registrátoru a TTL (Time to Live), který je nakonfigurován pro název domény.
 
-  Může dojít ke zpoždění minut nebo hodin, než klienti budou moci přeložit název domény v závislosti na registrátoru a TTL (Time to Live), který je nakonfigurován pro název domény.
-
-+ **Pro AKS:**
-
-  > [!WARNING]
-  > Pokud jste použili *leaf_domain_label* k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
-  >
-  > Pokud je váš cluster AKS nakonfigurovaný pomocí interního nástroje pro vyrovnávání zatížení __, nepodporuje se__ certifikát poskytnutý společností Microsoft (nastavením *leaf_domain_label*). Použití certifikátu poskytnutého společností Microsoft vyžaduje prostředek veřejné IP adresy v Azure, který není k dispozici pro AKS, pokud je nakonfigurovaný pro interní nástroj pro vyrovnávání zatížení.
-  Aktualizujte DNS veřejné IP adresy clusteru AKS na kartě **Konfigurace** v části **Nastavení** v levém podokně. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
-
-  [![Azure Machine Learning: zabezpečení webových služeb pomocí protokolu TLS](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>Aktualizace certifikátu TLS/SSL
 

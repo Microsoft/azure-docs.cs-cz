@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862203"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630611"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migrace kódu z verze 2.0 do verze 3.0 REST API
 
@@ -33,12 +33,16 @@ Seznam nejnovějších změn byl seřazen podle velikosti změn požadovaných k
 ### <a name="host-name-changes"></a>Změny názvu hostitele
 
 Názvy hostitelů koncového bodu se změnily z `{region}.cris.ai` na `{region}.api.cognitive.microsoft.com` . Cesty k novým koncovým bodům už neobsahují `api/` , protože jsou součástí názvu hostitele. [Dokument Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) obsahuje seznam platných oblastí a cest.
+>[!IMPORTANT]
+>Změňte název hostitele z `{region}.cris.ai` na `{region}.api.cognitive.microsoft.com` , kde oblast je oblast vašeho předplatného pro rozpoznávání řeči. Odeberte také `api/` z jakékoli cesty v kódu klienta.
 
 ### <a name="identity-of-an-entity"></a>Identita entity
 
 Vlastnost `id` je nyní `self` . V v2 měl uživatel rozhraní API zjistit, jak se vytvářejí naše cesty k rozhraní API. To bylo nerozšiřitelné a vyžadovala to nepotřebnou práci od uživatele. Vlastnost `id` (UUID) je nahrazena `self` řetězcem (String), což je umístění entity (adresa URL). Hodnota je stále jedinečná mezi všemi vašimi entitami. Pokud `id` je uložen jako řetězec ve vašem kódu, je pro podporu nového schématu dostatečně přejmenování. Tento obsah teď můžete použít `self` jako adresu URL pro `GET` `PATCH` volání, a `DELETE` REST pro vaši entitu.
 
 Pokud má entita další funkce, které jsou k dispozici prostřednictvím jiných cest, jsou uvedeny v části `links` . Následující příklad pro přepis ukazuje samostatnou metodu `GET` obsahu přepisu:
+>[!IMPORTANT]
+>Přejmenujte vlastnost `id` na `self` v kódu klienta. V případě potřeby změňte typ z `uuid` na `string` . 
 
 **V2 – přepis:**
 
@@ -91,6 +95,9 @@ Základní tvar odpovědi je stejný pro všechny kolekce:
 
 Tato změna vyžaduje volání metody `GET` pro kolekci ve smyčce, dokud nebudou vráceny všechny prvky.
 
+>[!IMPORTANT]
+>Pokud odpověď příkazu GET na `speechtotext/v3.0/{collection}` obsahuje hodnotu v `$.@nextLink` , pokračujte v vystavování `GETs` , `$.@nextLink` dokud `$.@nextLink` není nastavena pro načtení všech prvků kolekce.
+
 ### <a name="creating-transcriptions"></a>Vytváření přepisů
 
 Podrobný popis postupu vytvoření dávek přepisů najdete v tématu [postup v dávkovém přepisu](./batch-transcription.md).
@@ -134,6 +141,8 @@ Nová vlastnost `timeToLive` v rámci `properties` může přispět k vyřazení
   }
 }
 ```
+>[!IMPORTANT]
+>Přejmenujte vlastnost `recordingsUrl` na `contentUrls` a předejte pole adres URL místo jedné adresy URL. Předejte nastavení `diarizationEnabled` pro `wordLevelTimestampsEnabled` nebo `bool` místo `string` .
 
 ### <a name="format-of-v3-transcription-results"></a>Formát V3 přepisu výsledků
 
@@ -201,6 +210,9 @@ Ukázka výsledků přepisu v3. Rozdíly jsou popsány v komentářích.
   ]
 }
 ```
+>[!IMPORTANT]
+>Deserializovat výsledek přepisu do nového typu, jak je uvedeno výše. Místo jednoho souboru na zvukový kanál rozliší kanály kontrolou hodnoty vlastnosti `channel` pro každý prvek v `recognizedPhrases` . Pro každý vstupní soubor teď existuje jeden soubor výsledků.
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Získání obsahu entit a výsledků
 
@@ -269,6 +281,9 @@ V části v3 `links` Zahrňte dílčí vlastnost volanou `files` pro případ, �
 
 `kind`Vlastnost určuje formát obsahu souboru. V případě přepisů jsou soubory typu `TranscriptionReport` souhrnem úlohy a soubory typu `Transcription` jsou výsledkem samotné úlohy.
 
+>[!IMPORTANT]
+>Chcete-li získat výsledky operací, použijte `GET` na `/speechtotext/v3.0/{collection}/{id}/files` , již nejsou obsaženy v odpovědích `GET` na `/speechtotext/v3.0/{collection}/{id}` nebo `/speechtotext/v3.0/{collection}` .
+
 ### <a name="customizing-models"></a>Přizpůsobení modelů
 
 Před v3m bylo při školení modelu rozdíl mezi _akustickým modelem_ a _jazykovým modelem_ . Výsledkem tohoto rozdílu je nutnost zadat více modelů při vytváření koncových bodů nebo přepisů. Pro zjednodušení tohoto procesu pro volající jsme odebrali rozdíly a provedli vše na základě obsahu datových sad, které se používají pro školení modelů. Při této změně vytváření modelů teď podporuje smíšenou datovou sadu (data v jazyce a akustická data). Koncové body a Přepisy teď vyžadují jenom jeden model.
@@ -277,11 +292,17 @@ V důsledku této změny je potřeba `kind` v `POST` operaci odebrat a `datasets
 
 Pro zlepšení výsledků trained model se akustická data automaticky používají interně během školení jazyka. Obecně platí, že modely vytvořené prostřednictvím rozhraní V3 API poskytují přesnější výsledky než modely vytvořené pomocí rozhraní v2 API.
 
+>[!IMPORTANT]
+>Chcete-li přizpůsobit akustický a jazykový model, předejte všechny požadované jazyky a akustické datové sady v `datasets[]` příspěvku do `/speechtotext/v3.0/models` . Tím se vytvoří jeden model s oběma částmi, které jsou přizpůsobené.
+
 ### <a name="retrieving-base-and-custom-models"></a>Načítají se základní a vlastní modely.
 
 Aby bylo možné zjednodušit získání dostupných modelů, hodnota V3 oddělí kolekce "základních modelů" od zákazníka, který vlastní "přizpůsobené modely". Tyto dvě trasy jsou nyní `GET /speechtotext/v3.0/models/base` a `GET /speechtotext/v3.0/models/` .
 
 V v2 všechny modely byly vráceny v rámci jedné odpovědi.
+
+>[!IMPORTANT]
+>Chcete-li získat seznam zadaných základních modelů pro přizpůsobení, použijte `GET` `/speechtotext/v3.0/models/base` . Vlastní přizpůsobené modely můžete najít `GET` v `/speechtotext/v3.0/models` .
 
 ### <a name="name-of-an-entity"></a>Název entity
 
@@ -302,6 +323,9 @@ V v2 všechny modely byly vráceny v rámci jedné odpovědi.
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>Přejmenujte vlastnost `name` na `displayName` v kódu klienta.
 
 ### <a name="accessing-referenced-entities"></a>Přístup k odkazovaným entitám
 
@@ -351,6 +375,10 @@ V v2 byly odkazované entity vždycky vložené, například používané modely
 
 Pokud potřebujete spotřebovat podrobnosti odkazovaného modelu, jak je znázorněno v předchozím příkladu, stačí, když vydáte příkaz získat na `$.model.self` .
 
+>[!IMPORTANT]
+>Pokud chcete načíst metadata odkazovaných entit, vydejte si `$.{referencedEntity}.self` například příkaz Get on, který načte model přepisu `GET` `$.model.self` .
+
+
 ### <a name="retrieving-endpoint-logs"></a>Načítání protokolů koncových bodů
 
 Verze V2 služby podporovala výsledky koncového bodu protokolování. Chcete-li načíst výsledky koncového bodu s v2, vytvořte "Export dat", který představoval snímek výsledků definovaných časovým rozsahem. Proces exportu dávek dat byl neflexibilní. Rozhraní V3 API poskytuje přístup ke každému jednotlivému souboru a umožňuje iteraci prostřednictvím nich.
@@ -392,6 +420,9 @@ Stránkování protokolů koncového bodu funguje podobně jako u všech ostatn�
 
 V systému V3 lze každý protokol koncového bodu odstranit jednotlivě vyvoláním `DELETE` operace na `self` soubor nebo pomocí příkazu `DELETE` zapnuto `$.links.logs` . K určení koncového data `endDate` lze do žádosti přidat parametr dotazu.
 
+>[!IMPORTANT]
+>Místo vytváření exportů protokolů při `/api/speechtotext/v2.0/endpoints/{id}/data` použití `/v3.0/endpoints/{id}/files/logs/` pro přístup k souborům protokolu jednotlivě. 
+
 ### <a name="using-custom-properties"></a>Použití vlastních vlastností
 
 Chcete-li oddělit vlastní vlastnosti z volitelných vlastností konfigurace, jsou nyní všechny explicitně pojmenované vlastnosti umístěny ve `properties` vlastnosti a všechny vlastnosti definované volajícími jsou nyní umístěny ve `customProperties` Vlastnosti.
@@ -424,15 +455,26 @@ Chcete-li oddělit vlastní vlastnosti z volitelných vlastností konfigurace, j
 
 Tato změna také umožňuje používat správné typy pro všechny explicitně pojmenované vlastnosti v části `properties` (například Boolean namísto řetězce).
 
+>[!IMPORTANT]
+>Předejte všechny vlastní vlastnosti jako `customProperties` místo `properties` v rámci vašich `POST` požadavků.
+
 ### <a name="response-headers"></a>Hlavičky odpovědi
 
 hodnota V3 již nevrací `Operation-Location` hlavičku kromě `Location` záhlaví `POST` požadavků. Hodnota obou hlaviček v v2 byla stejná. Nyní `Location` je vrácen pouze.
 
 Vzhledem k tomu, že nová verze rozhraní API je teď spravovaná pomocí Azure API Management (APIM), hlavičky související s omezováním `X-RateLimit-Limit` `X-RateLimit-Remaining` a `X-RateLimit-Reset` nejsou obsažené v hlavičkách odpovědi.
 
+>[!IMPORTANT]
+>Přečtěte si umístění z hlavičky odpovědi `Location` místo `Operation-Location` . V případě kódu odpovědi 429 si přečtěte `Retry-After` hodnotu hlavičky místo `X-RateLimit-Limit` , `X-RateLimit-Remaining` nebo `X-RateLimit-Reset` .
+
+
 ### <a name="accuracy-tests"></a>Testy přesnosti
 
 Testy přesnosti byly přejmenovány na hodnocení, protože nový název popisuje lepší význam, co představují. Nové cesty jsou: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+>[!IMPORTANT]
+>Přejmenujte segment cesty `accuracytests` na `evaluations` svůj klientský kód.
+
 
 ## <a name="next-steps"></a>Další kroky
 

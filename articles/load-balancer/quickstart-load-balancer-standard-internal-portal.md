@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6ac76b3d3cc8fb27734730275836fba0dbfb08fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700303"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630668"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,6 +40,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Prostředky služby Load Balancer úrovně Standard vytvořené pro rychlý Start." border="false":::
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
 
@@ -110,7 +112,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
@@ -197,7 +199,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Sonda stavu | Vyberte **myHealthProbe**. |
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
     | Resetování protokolu TCP | Vyberte **Povoleno**. |
-    | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla k poskytování back-end členů fondu přístup k Internetu**.. |
+    | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla pro poskytování back-end členů fondu pro přístup k Internetu.** |
 
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -217,7 +219,7 @@ V této části vytvoříte dva virtuální počítače (**myVM1** a **myVM2**).
 
 Tyto virtuální počítače se přidají do back-endového fondu nástroje pro vyrovnávání zatížení, který se vytvořil dříve.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** Compute. 
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** Compute. 
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -231,7 +233,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
-    | Image | Vyberte **Windows Server 2019 Datacenter** |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -266,7 +268,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2|
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Název |  **myVM2** |
     | Zóna dostupnosti | **2** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -275,6 +277,8 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Základní prostředky nástroje pro vyrovnávání zatížení vytvořené v rychlém startu." border="false":::
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
 
@@ -345,7 +349,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **základní** |
@@ -457,7 +461,7 @@ Oba virtuální počítače se přidají do skupiny dostupnosti s názvem **myAv
 
 Tyto virtuální počítače se přidají do back-endového fondu nástroje pro vyrovnávání zatížení, který se vytvořil dříve.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** Compute. 
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** Compute. 
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -471,7 +475,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myAvailabilitySet** . </br> Vyberte **OK**. |
-    | Image | **Windows Server 2019 Datacenter** |
+    | Obrázek | **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -502,7 +506,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 |
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Název |  **myVM2** |
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -529,7 +533,7 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tento virtuální počítač se použije k otestování konfigurace nástroje pro vyrovnávání zatížení.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** Compute. 
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** Compute. 
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -542,7 +546,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Název virtuálního počítače | Zadejte **myTestVM** |
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
-    | Image | Vyberte **Windows Server 2019 Datacenter** |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -633,6 +637,6 @@ V tomto rychlém startu:
 * K nástroji pro vyrovnávání zatížení připojené dva virtuální počítače.
 * Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení, sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení. 
 
-Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte na..
+Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte tady:
 > [!div class="nextstepaction"]
 > [Co je Azure Load Balancer?](load-balancer-overview.md)

@@ -4,20 +4,20 @@ description: Naučte se spouštět funkci Azure, když se vytvoří zpráva Rabb
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617217"
+ms.locfileid: "97630730"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ Trigger for Azure Functions – přehled
 
 > [!NOTE]
-> Vazby RabbitMQ se plně podporují jenom v plánech **Windows Premium** . Spotřeba a Linux se aktuálně nepodporují.
+> Vazby RabbitMQ jsou plně podporované jenom na **Windows Premium a na vyhrazených** plánech. Spotřeba a Linux se aktuálně nepodporují.
 
 Pomocí triggeru RabbitMQ můžete reagovat na zprávy z fronty RabbitMQ.
 

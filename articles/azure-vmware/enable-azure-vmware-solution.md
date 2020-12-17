@@ -3,12 +3,12 @@ title: Jak povolit prostředek řešení Azure VMware
 description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346533"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630883"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Jak povolit prostředek řešení Azure VMware
 Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
@@ -61,7 +61,7 @@ Před vytvořením prostředku řešení Azure VMware budete muset odeslat líst
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Povolit řešení Azure VMware pro zákazníky CSP 
 
-Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://partner.microsoft.com) k povolení řešení Azure VMware pro své zákazníky. Tento článek používá [plán Azure CSP](/partner-center/azure-plan-lp.md) jako příklad k ilustraci kupního postupu pro partnery.
+Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://partner.microsoft.com) k povolení řešení Azure VMware pro své zákazníky. Tento článek používá [plán Azure CSP](/partner-center/azure-plan-lp) jako příklad k ilustraci kupního postupu pro partnery.
 
    >[!IMPORTANT] 
    >Služba řešení Azure VMware neposkytuje víceklientské požadavky. Hostující partneři vyžadují, aby se nepodporovali. 
@@ -76,9 +76,9 @@ Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://par
 
 1. Vyberte **plán Azure** a pak vyberte **Přidat do košíku**. 
 
-1. Přečtěte si a dokončete Obecné nastavení předplatného Azure pro vaše zákazníky. Další informace najdete v [dokumentaci k Microsoft Partner Center](/partner-center/azure-plan-manage.md).
+1. Přečtěte si a dokončete Obecné nastavení předplatného Azure pro vaše zákazníky. Další informace najdete v [dokumentaci k Microsoft Partner Center](/partner-center/azure-plan-manage).
 
-Po nakonfigurování plánu Azure a nastavení potřebných [oprávnění Azure RBAC](/partner-center/azure-plan-manage.md) pro předplatné zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z [partnerského centra Microsoftu](https://partner.microsoft.com) pomocí postupu Administrate ( **admin) jménem uživatele** ().
+Po nakonfigurování plánu Azure a nastavení potřebných [oprávnění Azure RBAC](/partner-center/azure-plan-manage) pro předplatné zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z [partnerského centra Microsoftu](https://partner.microsoft.com) pomocí postupu Administrate ( **admin) jménem uživatele** ().
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com).
 

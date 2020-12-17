@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 54ac683dcc2b124c4a6410b2e8449fa7e969ce8c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468214"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631240"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Kurz: Příprava na nasazení Azure Stack hraniční Mini R
 
@@ -34,13 +34,13 @@ Pokud chcete nasadit Azure Stack hraničního Mini R, přečtěte si následují
 
 | Krok | Popis |
 | --- | --- |
-| **Příprava** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
+| **Součást** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
 | **[Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist)** |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
 | **[Požadavky nasazení](#prerequisites)** |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
 |  | |
 |**Kurzy k nasazení** |Tyto kurzy se vyžadují k nasazení Azure Stackch Mini R zařízení v produkčním prostředí. |
 |**[1. Příprava Azure Portal pro zařízení](azure-stack-edge-mini-r-deploy-prep.md)** |Před instalací fyzického zařízení vytvořte a nakonfigurujte Azure Stack hraničního prostředku. |
-|**[2. Nainstalujte zařízení.](azure-stack-edge-mini-r-deploy-install.md)**|Rozbalení, stojan a kabel fyzického zařízení  |
+|**[2. Nainstalujte zařízení.](azure-stack-edge-mini-r-deploy-install.md)**|Zkontrolujte a kabelujte fyzické zařízení.  |
 |**[3. Připojte se k zařízení.](azure-stack-edge-mini-r-deploy-connect.md)** |Jakmile je zařízení nainstalované, připojte se k místnímu webovému uživatelskému rozhraní zařízení.  |
 |**[4. Konfigurace nastavení sítě](azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md)** |Nakonfigurujte síť včetně nastavení výpočetní sítě a webového proxy serveru pro vaše zařízení.   |
 |**[5. Konfigurace nastavení zařízení](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Přiřaďte název zařízení a doménu DNS, nakonfigurujte server aktualizací a čas zařízení. |
@@ -54,7 +54,7 @@ Teď můžete začít nastavovat Azure Portal.
 
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na Azure Stack hraničním zařízení s hraničním konektorem R. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stackho Edge Mini R](azure-stack-edge-mini-r-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční zdroj, vaše zařízení Azure Stack Edge a síť datacenter.
 

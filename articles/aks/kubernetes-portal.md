@@ -3,13 +3,13 @@ title: Přístup k prostředkům Kubernetes z Azure Portal
 description: Naučte se pracovat s prostředky Kubernetes a spravovat cluster Azure Kubernetes Service (AKS) z Azure Portal.
 services: container-service
 ms.topic: article
-ms.date: 12/09/2020
-ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/16/2020
+ms.openlocfilehash: 4f34535f74de562c0a1b65c31f28476ca02e540f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921581"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631861"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Přístup k prostředkům Kubernetes z Azure Portal
 
@@ -17,17 +17,19 @@ Azure Portal obsahuje zobrazení prostředků Kubernetes pro snadný přístup k
 
 Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicího panelu AKS][kubernetes-dashboard], který je zastaralý.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade].
+K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade]. K vytvoření nového clusteru AKS můžete [použít taky Azure Portal][portal-cluster] .
 
 ## <a name="view-kubernetes-resources"></a>Zobrazení prostředků Kubernetes
 
 Pokud chcete zobrazit prostředky Kubernetes, přejděte do svého clusteru AKS v Azure Portal. Navigační podokno na levé straně se používá pro přístup k prostředkům. Mezi prostředky patří:
 
 - **Obory názvů** zobrazují obory názvů vašeho clusteru. Filtr v horní části seznamu oborů názvů poskytuje rychlý způsob, jak filtrovat a zobrazit prostředky oboru názvů.
-- **Úlohy** zobrazují informace o nasazeních, luskech, sadách replik a sadách démonů nasazených do vašeho clusteru. Níže uvedený snímek obrazovky ukazuje výchozí systémovou lusky v ukázkovém clusteru AKS.
+- **Úlohy zobrazují informace** o nasazeních, luskech, sadách replik, stavových sadách, sadách démonů, úlohách a úlohách cron nasazených do vašeho clusteru. Níže uvedený snímek obrazovky ukazuje výchozí systémovou lusky v ukázkovém clusteru AKS.
 - **Služby a příchozí přenosy** zobrazují všechny prostředky služby a příchozí přenosy v clusteru.
+- **Storage** zobrazuje vaše třídy úložiště Azure a informace o trvalém svazku.
+- **Konfigurace** zobrazuje mapy a tajné klíče v clusteru.
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal." lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -35,7 +37,7 @@ Pokud chcete zobrazit prostředky Kubernetes, přejděte do svého clusteru AKS 
 
 V tomto příkladu použijeme náš vzorový cluster AKS k nasazení hlasovací aplikace Azure z [rychlého startu AKS][portal-quickstart].
 
-1. Vyberte **Přidat** z libovolného zobrazení prostředků (obor názvů, úlohy nebo služby a příchozí přenosy).
+1. Vyberte **Přidat** z libovolného zobrazení prostředků (obor názvů, úlohy, služby a příchozí přenosy, úložiště nebo konfigurace).
 1. Vložte YAML pro hlasovou aplikaci Azure z rychlého startu [AKS][portal-quickstart].
 1. V dolní části editoru YAML vyberte **Přidat** a nasaďte aplikaci. 
 
@@ -45,7 +47,7 @@ Po přidání souboru YAML zobrazí prohlížeč prostředků obě služby Kuber
 
 ### <a name="monitor-deployment-insights"></a>Monitorovat přehledy nasazení
 
-AKS clustery s podporou [Azure monitor pro kontejnery][enable-monitor] můžou rychle zobrazit přehledy o nasazení. V zobrazení prostředků Kubernetes můžou uživatelé zobrazit stav živého provozu jednotlivých nasazení, včetně využití CPU a paměti, a také přejít na Azure monitor, kde najdete podrobnější informace. Tady je příklad přehledů nasazení z ukázkového clusteru AKS:
+Clustery AKS s povoleným [Azure monitor pro kontejnery][enable-monitor] se můžou rychle podívat na nasazení a další přehledy. V zobrazení prostředků Kubernetes můžou uživatelé zobrazit stav živého provozu jednotlivých nasazení, včetně využití CPU a paměti, a přejít na Azure monitor, kde najdete podrobnější informace o konkrétních uzlech a kontejnerech. Tady je příklad přehledů nasazení z ukázkového clusteru AKS:
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="V Azure Portal se zobrazují přehledy nasazení." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,8 +77,6 @@ Chcete-li získat přístup k prostředkům Kubernetes, musíte mít přístup k
 
 Pro existující clustery možná budete muset povolit zobrazení prostředků Kubernetes. Pokud chcete povolit zobrazení prostředků, postupujte podle výzev na portálu pro váš cluster.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portalovou zprávu pro povolení zobrazení prostředků Kubernetes." lightbox="media/kubernetes-portal/enable-resource-view.png":::
-
 > [!TIP]
 > Funkci AKS pro [**rozsahy IP adres autorizovaných serverem API**](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Další možností pro tyto clustery je aktualizace `--api-server-authorized-ip-ranges` , aby zahrnovaly přístup k místnímu klientskému počítači nebo rozsahu IP adres (ze kterého se právě prohlíží portál). K povolení tohoto přístupu potřebujete veřejnou IPv4 adresu tohoto počítače. Tuto adresu můžete najít pomocí příkazu níže nebo v internetovém prohlížeči pomocí hledání "Co je moje IP adresa".
 ```bash
@@ -100,3 +100,4 @@ Tento článek ukazuje, jak získat přístup k prostředkům Kubernetes pro vá
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 [enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

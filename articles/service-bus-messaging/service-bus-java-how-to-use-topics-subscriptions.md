@@ -4,12 +4,12 @@ description: V tomto rychlém startu napíšete kód Java pomocí balíčku Azur
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 011dbfef1155b82daca216e9519db07188260130
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cd95b84c4b55279b40f95eef65cb2490a55d1780
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489543"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630237"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (Java)
 V tomto rychlém startu napíšete kód Java pomocí balíčku Azure-Messaging-ServiceBus k posílání zpráv do Azure Service Busho tématu a potom dostanete zprávy z odběrů do tohoto tématu.
@@ -17,7 +17,7 @@ V tomto rychlém startu napíšete kód Java pomocí balíčku Azure-Messaging-S
 > [!IMPORTANT]
 > V tomto rychlém startu se používá nový balíček Azure-Messaging-ServiceBus. Rychlý Start, který používá starý balíček Azure-ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí Azure-ServiceBus](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md). Poznamenejte si připojovací řetězec, název tématu a název předplatného. Pro tento rychlý Start budete používat jenom jedno předplatné. 
@@ -225,8 +225,8 @@ Po výběru předplatného na této stránce se dostanete na stránku **Service 
 Podívejte se na následující dokumentaci a ukázky:
 
 - [Klientská knihovna Azure Service Bus pro Java – soubor Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [Ukázky na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Referenční dokumentace k rozhraní API v Javě](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
+- [Ukázky na GitHubu](https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Referenční dokumentace k rozhraní API v Javě](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 
 [Azure SDK for Java]: /java/api/overview/azure/

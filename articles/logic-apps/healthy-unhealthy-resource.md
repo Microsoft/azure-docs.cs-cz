@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 9c22e7cbc71c2b29c4b3e50319c6b6d256856bb3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855626"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629591"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Nastavení protokolování pro monitorování aplikací logiky v Azure Security Center
 
@@ -20,11 +20,11 @@ Když monitorete Logic Apps prostředky v [Microsoft Azure Security Center](../s
 > [!TIP]
 > Chcete-li zjistit aktuální stav služby Logic Apps, přečtěte si [stránku stavu Azure](https://status.azure.com/), která obsahuje seznam stavů různých produktů a služeb v každé oblasti, kterou máte k dispozici.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Stávající aplikace logiky s [povolenou diagnostikou protokolování](#enable-diagnostic-logging)
-* Log Analytics pracovní prostor, který je nutný k povolení protokolování pro vaši aplikaci logiky. Pokud nemáte pracovní prostor, [vytvořte nejprve pracovní prostor](/learn/quick-create-workspace.md).
+* Log Analytics pracovní prostor, který je nutný k povolení protokolování pro vaši aplikaci logiky. Pokud nemáte pracovní prostor, [vytvořte nejprve pracovní prostor](/azure/azure-monitor/learn/quick-create-workspace).
 
 ## <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
 
@@ -37,7 +37,7 @@ Než budete moct zobrazit stav prostředků pro aplikace logiky, musíte nejdř�
 
 Pokud si nejste jistí, jestli vaše aplikace logiky mají povolené diagnostické protokolování, můžete vrátit se změnami Security Center:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu hledání zadejte a vyberte **Security Center**.
 1. V nabídce řídicího panelu Security Center v části **Obecné** vyberte **doporučení**.
 1. V tabulce návrhů zabezpečení Najděte a zaškrtněte políčko **Povolit auditování a** &gt; **protokoly diagnostiky v Logic Apps musí být povolené** v tabulce ovládacích prvků zabezpečení.
@@ -47,7 +47,7 @@ Pokud si nejste jistí, jestli vaše aplikace logiky mají povolené diagnostick
 
 Po [Povolení protokolování diagnostiky](#enable-diagnostic-logging)uvidíte stav aplikací logiky v Security Center.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu hledání zadejte a vyberte **Security Center**.
 1. V nabídce řídicího panelu Security Center v části **Obecné** vyberte **inventarizace**.
 1. Na stránce inventarizace vyfiltrujte seznam assets (prostředky), abyste zobrazili pouze Logic Apps prostředky. V nabídce Stránka vyberte **typy prostředků** &gt; **Logic Apps**.
@@ -69,7 +69,7 @@ Pokud jako cíl pro diagnostické protokoly Logic Apps používáte Log Analytic
 1. Chcete-li ověřit, zda jste povolili diagnostické protokoly, zkontrolujte, zda je pole nastavení diagnostiky `logs.enabled` nastaveno na hodnotu `true` . 
 1. Pokud chcete potvrdit, že jste místo toho nastavili účet úložiště jako cíl, zkontrolujte, že `storageAccountId` je pole nastavené na `false` .
 
-Zde je příklad:
+Například:
 
 ```json
 "allOf": [

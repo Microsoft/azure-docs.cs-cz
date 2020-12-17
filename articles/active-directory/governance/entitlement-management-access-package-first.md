@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362803"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631277"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -44,12 +44,12 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
 - Azure AD Premium P2
-- Licence pro Enterprise Mobility + Security (EMS) E5
+- Licence Enterprise Mobility + Security (EMS) E5
 
 Další informace najdete v tématu [licenční požadavky](entitlement-management-overview.md#license-requirements).
 
@@ -67,12 +67,12 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Name | Role adresáře |
+    | Název | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | Uživatel |
 
-1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným**typem členství.
+1. Vytvořte skupinu zabezpečení Azure AD s názvem **marketingové zdroje** s **přiřazeným** typem členství.
 
     Tato skupina bude cílovým prostředkem pro správu nároků. Skupina by měla být prázdná pro členy, kteří mají být spuštěni.
 
@@ -117,6 +117,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 11. V rozevíracím seznamu **role** vyberte **člen**.
 
     ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
+
     >[!IMPORTANT]
     >Skupiny role, které přiřadíte do balíčku přístupu, budou označeny pomocí podtypu, který **lze přiřadit k rolím**. Další podrobnosti o skupinách, které je možné přiřadit k rolím Azure AD, najdete v tématu [Vytvoření skupiny s přiřazením rolí](../roles/groups-create-eligible.md) v Azure Active Directory. Pokud nevidíte skupinu přiřazenou rolí, kterou chcete přidat, nebo ji nemůžete přidat, ujistěte se, že máte požadovanou roli Azure AD a správu oprávnění k provedení této operace. Možná budete muset požádat někoho s požadovanými rolemi přidat prostředek do katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -146,7 +147,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 18. Nechte položku **vyžadovat schválení** nastavenou na **ne**.
 
-19. Pro **Povolit žádosti**klikněte na **Ano** , aby se tento balíček pro přístup vyžádal, jakmile se vytvoří.
+19. Pro **Povolit žádosti** klikněte na **Ano** , aby se tento balíček pro přístup vyžádal, jakmile se vytvoří.
 
     ![Nový přístupový balíček – vyžádá schválení a povolí žádosti na kartě.](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
@@ -250,17 +251,17 @@ V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček p�
 
 1. Klikněte na **přiřazení**.
 
-1. V případě **Requestor1**klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odebrat přístup**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V případě **Requestor1** klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odebrat přístup**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
     Po chvíli se stav změní ze doručeno na vypršela jeho platnost.
 
 1. Klikněte na **role prostředků**.
 
-1. U **marketingových zdrojů**klikněte na tři tečky (**...**) a pak klikněte na **Odebrat roli prostředku**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. U **marketingových zdrojů** klikněte na tři tečky (**...**) a pak klikněte na **Odebrat roli prostředku**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
 1. Otevřete seznam balíčků přístupu.
 
-1. V případě **marketingové kampaně**klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odstranit**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
+1. V případě **marketingové kampaně** klikněte na tlačítko se třemi tečkami (**...**) a pak klikněte na **Odstranit**. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano**.
 
 1. V Azure Active Directory odstraňte všechny uživatele, které jste vytvořili, jako je **Requestor1** a **admin1**.
 
@@ -270,4 +271,4 @@ V tomto kroku odeberete změny, které jste provedli, a odstraníte balíček p�
 
 V dalším článku se dozvíte víc o běžných krocích scénářů v tématu Správa nároků.
 > [!div class="nextstepaction"]
-> [Typické scénáře](entitlement-management-scenarios.md)
+> [Obvyklé scénáře](entitlement-management-scenarios.md)

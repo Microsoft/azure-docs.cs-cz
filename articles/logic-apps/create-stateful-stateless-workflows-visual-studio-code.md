@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923409"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632056"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -47,7 +47,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Visua
 > [!NOTE]
 > Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -88,7 +88,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Visua
 
 Když se později pokusíte otevřít návrháře pro pracovní postup v aplikaci logiky, zobrazí se zpráva, že `Workflow design time could not be started` . Po zobrazení této zprávy je nutné přidat připojovací řetězec účtu úložiště do dvou **local.settings.js** souborů v projektu a znovu znovu otevřít návrháře.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 * [Visual Studio Code 1.30.1 (leden 2019) nebo vyšší](https://code.visualstudio.com/), což je zdarma. Také si stáhněte a nainstalujte tyto další nástroje pro Visual Studio Code, pokud je ještě nemáte:
 
@@ -162,7 +162,7 @@ Když se později pokusíte otevřít návrháře pro pracovní postup v aplikac
 
    Pokud chcete toto nastavení ověřit, postupujte následovně:
 
-   1. V nabídce **soubor** přejděte na **Preferences** **>** **Nastavení** předvolby.
+   1. V nabídce **soubor** přejděte na  **>** **Nastavení** předvolby.
 
    1. Na kartě **uživatel** přejdete na **funkce** **>** **rozšíření**.
 
@@ -173,7 +173,7 @@ Když se později pokusíte otevřít návrháře pro pracovní postup v aplikac
    * **Azure Logic Apps v2: režim panelu**
    * **Azure Logic Apps v2: modul runtime projektu**
 
-   1. V nabídce **soubor** přejděte na **Preferences** **>** **Nastavení** předvolby.
+   1. V nabídce **soubor** přejděte na  **>** **Nastavení** předvolby.
 
    1. Na kartě **uživatel** přejdete do části **>** **rozšíření** **>** **Azure Logic Apps (Preview)**.
 
@@ -769,7 +769,7 @@ Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky v
 
       1. Vyberte buď existující prostředek Application Insights, nebo **vytvořte nový prostředek Application Insights**.
 
-      1. V [Azure Portal](htpps://portal.azure.com)přejít na prostředek Application Insights.
+      1. V [Azure Portal](https://portal.azure.com)přejít na prostředek Application Insights.
 
       1. V nabídce prostředek vyberte **Přehled**. Vyhledejte a zkopírujte hodnotu **klíče instrumentace** .
 

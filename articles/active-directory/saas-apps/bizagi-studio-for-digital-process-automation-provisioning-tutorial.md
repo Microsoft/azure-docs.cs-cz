@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008040"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632025"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Kurz: Konfigurace bizagi studia pro automatizaci digitálních procesů pro Automatické zřizování uživatelů
 
@@ -88,7 +88,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
 
 ### <a name="configure-automatic-user-provisioning-for-bizagi-studio-for-digital-process-automation-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro bizagi Studio pro automatizaci digitálních procesů v Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Snímek obrazovky Azure Portal, u podnikových aplikací a všech aplikací se zvýrazní.](common/enterprise-applications.png)
 
@@ -105,7 +105,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
 5. V části **přihlašovací údaje správce** zadejte adresu URL tenanta a tajný token pro bizagi Studio pro automatizaci digitálního procesu. 
 
       * **Adresa URL klienta:** Zadejte koncový bod bizagi SCIM s následující strukturou:  `<Your_Bizagi_Project>/scim/v2/` .
-         Příklad: `https://my-company.bizagi.com/scim/v2/`.
+         Například: `https://my-company.bizagi.com/scim/v2/`.
 
       * **Tajný token:** Tato hodnota se načte z kroku popsaného výše v tomto článku.
 
@@ -132,7 +132,14 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
    |name.familyName|Řetězec|
    |název. formátovaný|Řetězec|
    |phoneNumbers[type eq "mobile"].value|Řetězec|
+
+   Vlastní atributy rozšíření se dají přidat tak, že přejdete na **Zobrazit pokročilé možnosti > upravit seznam atributů pro bizagi**. Vlastní atributy rozšíření musí obsahovat předponu **urn: IETF: params: SCIM: schemas: bizagi: 2.0: UserProperties:**. Například pokud je atribut vlastního rozšíření **IdentificationNumber**, musí být atribut přidán jako **urn: IETF: param: SCIM: schemas: Extension: bizagi: 2.0: UserProperties: IdentificationNumber**. Vyberte **Uložit** a potvrďte všechny změny.
    
+    ![Upravit seznam atributů](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   Další informace o tom, jak přidat vlastní atributy, najdete v tématu [přizpůsobení atributů aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+
+
 10. Postup konfigurace filtrů oborů najdete v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Pokud chcete povolit službu Azure AD Provisioning pro bizagi Studio pro automatizaci digitálních procesů, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.

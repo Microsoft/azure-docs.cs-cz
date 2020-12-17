@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468194"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630764"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Kurz: Příprava na nasazení Azure Stack Edge pro R
 
@@ -35,13 +35,13 @@ Pokud chcete nasadit Azure Stack Edge pro R, přečtěte si následující kurzy
 
 | K provedení tohoto kroku | Použijte tyto dokumenty |
 | --- | --- |
-| **Příprava** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
+| **Součást** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
 | **[Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist)** |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
 | **[Požadavky nasazení](#prerequisites)** |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
 |  | |
 |**Kurzy k nasazení** |Tyto kurzy se vyžadují k nasazení zařízení Azure Stack Edge pro R v produkčním prostředí. |
 |**[1. Příprava Azure Portal pro zařízení](azure-stack-edge-pro-r-deploy-prep.md)** |Před instalací fyzického zařízení hraničního Azure Stack box vytvořte a nakonfigurujte Azure Stack hraničního prostředku. |
-|**[2. Nainstalujte zařízení.](azure-stack-edge-pro-r-deploy-install.md)**|Rozbalení, stojan a kabel fyzického zařízení  |
+|**[2. Nainstalujte zařízení.](azure-stack-edge-pro-r-deploy-install.md)**|Zkontrolujte a kabelujte fyzické zařízení.  |
 |**[3. Připojte se k zařízení.](azure-stack-edge-pro-r-deploy-connect.md)** |Jakmile je zařízení nainstalované, připojte se k místnímu webovému uživatelskému rozhraní zařízení.  |
 |**[4. Konfigurace nastavení sítě](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |Nakonfigurujte síť včetně nastavení výpočetní sítě a webového proxy serveru pro vaše zařízení.   |
 |**[5. Konfigurace nastavení zařízení](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Přiřaďte název zařízení a doménu DNS, nakonfigurujte server aktualizací a čas zařízení. |
@@ -55,7 +55,7 @@ Teď můžete začít nastavovat Azure Portal.
 
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge pro. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge pro R](azure-stack-edge-pro-r-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční zdroj, vaše zařízení Azure Stack Edge a síť datacenter.
 

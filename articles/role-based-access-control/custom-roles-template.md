@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní role Azure pomocí šablony Azure Resource Manager – Azure RBAC
-description: Naučte se, jak vytvořit vlastní roli Azure pomocí šablony Azure Resource Manager (šablony ARM) a řízení přístupu na základě role v Azure (Azure RBAC).
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí šablony Azure Resource Manager – Azure RBAC
+description: Naučte se vytvářet nebo aktualizovat vlastní role Azure pomocí šablony Azure Resource Manager (šablony ARM) a řízení přístupu na základě role v Azure (Azure RBAC).
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,24 +8,24 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097018"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631308"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>Vytvoření vlastní role Azure pomocí šablony ARM
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí šablony ARM
 
-Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [role](custom-roles.md). Tento článek popisuje, jak vytvořit vlastní roli pomocí šablony Azure Resource Manager (šablona ARM).
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [role](custom-roles.md). Tento článek popisuje, jak vytvořit nebo aktualizovat vlastní roli pomocí šablony Azure Resource Manager (šablona ARM).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Pokud chcete vytvořit vlastní roli, zadejte název role, oprávnění a místo, kde se dá role použít. V tomto článku vytvoříte roli s názvem _Custom role – Reader RG_ s oprávněními k prostředkům, která se dají přiřadit v oboru předplatného nebo v nižším rozsahu.
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsubscription-deployments%2Fcreate-role-def%2Fazuredeploy.json)
 
@@ -66,15 +66,13 @@ Pomocí těchto kroků nasaďte předchozí šablonu.
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Zadejte umístění pro nasazení, například *centralus* .
+1. Zadejte umístění pro nasazení, jako je například `centralus` .
 
-1. Zadejte seznam akcí pro vlastní roli jako seznam oddělený čárkami, jako je Microsoft. Resources */Resources/Read, Microsoft. Resources/Subscriptions/resourceGroups/Read* .
+1. Zadejte seznam akcí pro vlastní roli jako seznam oddělený čárkami, například `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` .
 
 1. V případě potřeby stiskněte klávesu ENTER a spusťte `New-AzDeployment` příkaz.
 
@@ -143,15 +141,56 @@ Pomocí těchto kroků ověříte, že se vlastní role vytvořila.
 
 1. V Azure Portal otevřete své předplatné.
 
-1. V nabídce vlevo vyberte **řízení přístupu (IAM)** .
+1. V nabídce vlevo vyberte **řízení přístupu (IAM)**.
 
 1. Vyberte kartu **role** .
 
-1. V seznamu **typ** nastavte **CustomRole** .
+1. V seznamu **typ** nastavte **CustomRole**.
 
 1. Ověřte, že je uvedená role **RG Reader vlastní role** .
 
    ![Nová vlastní role v Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
+
+## <a name="update-a-custom-role"></a>Aktualizace vlastní role
+
+Podobně jako při vytváření vlastní role můžete aktualizovat existující vlastní roli pomocí šablony. Chcete-li aktualizovat vlastní roli, je nutné zadat roli, kterou chcete aktualizovat.
+
+Tady jsou změny, které byste museli udělat v předchozí šabloně pro rychlý Start, abyste mohli aktualizovat vlastní roli.
+
+- Zahrňte ID role jako parametr.
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- Do definice role přidejte parametr ID role.
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+Tady je příklad, jak šablonu nasadit.
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

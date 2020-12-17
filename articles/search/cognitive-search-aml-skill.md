@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445451"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630271"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML dovednosti v kanálu pro rozšíření Azure Kognitivní hledání
 
@@ -29,11 +29,11 @@ Podobně jako v případě integrovaných dovedností mají **AML** dovednosti v
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Pracovní prostor AML](../machine-learning/concept-workspace.md)
 * [Azure Kubernetes Service AML Target COMPUTE](../machine-learning/concept-compute-target.md) v tomto pracovním prostoru s [nasazeným modelem](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
-  * [Cíl výpočtů by měl mít povolený protokol SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Kognitivní hledání povoluje přístup jenom k koncovým bodům **https** .
+  * [Cíl výpočtů by měl mít povolený protokol SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service). Azure Kognitivní hledání povoluje přístup jenom k koncovým bodům **https** .
   * Certifikáty podepsané svým držitelem se nedají použít.
 
 ## <a name="odatatype"></a>@odata.type  

@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a3f2eb8fe3da9b272c5fe61ef5dd66726cf7764d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 169a8dba979571a5f4b8c8056737fce72db1d058
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348424"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629863"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -46,7 +46,7 @@ Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou techno
 | ![Tento obrázek znázorňuje úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL-úhlové)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| SPA volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Tento obrázek znázorňuje úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL-úhlové)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | B2C, volání hesla |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 | ![Tento obrázek ukazuje reakci na reakci loga ](media/sample-v2-code/logo_react.png) [(MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-tutorial-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-tutorial-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Tento obrázek znázorňuje úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL-úhlové)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | SPA volá vlastní webové rozhraní API s aplikačními rolemi a skupinami zabezpečení. |[MS-identity-JavaScript-úhlová-Spa-dotnetcore-WebApi-role-skupiny](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 | ![Tento obrázek ukazuje Blazor logo ](media/sample-v2-code/logo-blazor.png) [Blazor WebAssembly (MSAL-js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) . | Kurz Blazor WebAssembly pro přihlašování uživatelů a volání rozhraní API pomocí Azure Active Directory |[MS-identity – blazor-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 

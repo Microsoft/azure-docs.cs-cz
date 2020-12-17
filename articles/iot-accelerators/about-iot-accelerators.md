@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852910"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629064"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
@@ -29,7 +29,7 @@ Akcelerátory řešení můžete využít také jako učební nástroje před t�
 Kód aplikace v každém akcelerátoru řešení obsahuje webovou aplikaci, ve které můžete akcelerátor řešení spravovat.
 
 > [!NOTE]
-> Řešení vzdáleného monitorování a prediktivní údržby byla odebrána z webu [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Další informace najdete v tématu [co jsou akcelerátory řešení Azure IoT? (předchozí verze)](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md).
+> Řešení vzdáleného monitorování a prediktivní údržby byla odebrána z webu [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Další informace najdete v tématu [co jsou akcelerátory řešení Azure IoT? (předchozí verze)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
 
 ## <a name="supported-iot-scenarios"></a>Podporované scénáře IoT
 

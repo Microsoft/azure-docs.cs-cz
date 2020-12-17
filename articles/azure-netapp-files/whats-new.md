@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421698"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631155"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
+
+## <a name="december-2020"></a>Prosinec 2020
+
+* [Nástroj pro snímek konzistentní vzhledem k aplikacím Azure](azacsnap-introduction.md) (Public Preview)    
+
+    Nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (AzAcSnap) je nástroj příkazového řádku, který umožňuje zjednodušit ochranu dat pro databáze třetích stran (SAP HANA) v prostředích Linux (například SUSE a RHEL).   
+
+    AzAcSnap využívá snímky svazku a funkce replikace v Azure NetApp Files a velké instanci Azure. Přináší následující výhody:
+
+    * Ochrana dat konzistentní vzhledem k aplikacím 
+    * Správa katalogu databází 
+    * Ochrana svazků *ad hoc* 
+    * Klonování svazků úložiště 
+    * Podpora pro zotavení po havárii 
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -52,10 +66,10 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 * Nové [metriky](azure-netapp-files-metrics.md):   
 
     * Nové metriky svazků: 
-        * *Velikost přiděleného svazku* : zřízená velikost svazku
+        * *Velikost přiděleného svazku*: zřízená velikost svazku
     * Metriky nového fondu: 
-        * *Velikost přiděleného fondu* : zřízená velikost fondu 
-        * *Celková velikost snímku pro fond* : součet velikosti snímku ze všech svazků ve fondu
+        * *Velikost přiděleného fondu*: zřízená velikost fondu 
+        * *Celková velikost snímku pro fond*: součet velikosti snímku ze všech svazků ve fondu
 
 ## <a name="july-2020"></a>Červenec 2020
 

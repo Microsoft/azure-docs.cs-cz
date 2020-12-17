@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 470dc146d1658b97a707be8cb7ad868d943a8e60
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170888"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629387"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Kurz konfigurace Nevisu pomocí Azure Active Directory B2C pro ověřování bez hesla
 
 V tomto ukázkovém kurzu se naučíte, jak Azure AD B2C s nástrojem  [Nevis](https://www.nevis.net/solution/authentication-cloud) a povolit ověřování bez hesla. Nevis nabízí mobilní a plně náročné prostředí koncového uživatele s aplikací Nevis Access, které poskytuje silné ověřování zákazníků a dodržuje požadavky na transakce 2 (PSD2) pro platební služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -134,9 +134,9 @@ Dostanete dvě e-maily:
 
 4. **Uložte** změny do souboru.
 
-5. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account) a nahrajte soubor **nevis.html** do úložiště objektů BLOB v Azure.
+5. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) a nahrajte soubor **nevis.html** do úložiště objektů BLOB v Azure.
 
-6. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) a povolte sdílení prostředků mezi zdroji (CORS) pro tento soubor.
+6. Postupujte podle [pokynů](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) a povolte sdílení prostředků mezi zdroji (CORS) pro tento soubor.
 
 7. Po dokončení nahrávání a povolení CORS vyberte v seznamu soubor **nevis.html** .
 

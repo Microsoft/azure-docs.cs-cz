@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 1b1ff2649f54005eff139b1ed1d4d0b4ea152b1f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855018"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632005"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Referenční informace o Azure Cosmos DB dat monitorování
 
@@ -92,7 +92,7 @@ V následující tabulce jsou uvedeny vlastnosti protokolu prostředků v Azure 
 | **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |
 | **requestCharge** | **requestCharge_s** | Počet RU/s, které tato operace používá |
 | **collectionRid** | **collectionId_s** | Jedinečné ID pro kolekci.|
-| **doba trvání** | **duration_d** | Doba trvání operace v milisekundách. |
+| **úkolu** | **duration_d** | Doba trvání operace v milisekundách. |
 | **requestLength** | **requestLength_s** | Délka požadavku (v bajtech). |
 | **responseLength** | **responseLength_s** | Délka odpovědi v bajtech|
 | **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | Tato vlastnost označuje ID oprávnění tokenu prostředku, které jste zadali. Další informace o oprávněních najdete v článku [zabezpečený přístup k datům](./secure-access-to-data.md#permissions) . |
@@ -104,7 +104,7 @@ Seznam všech kategorií protokolu Azure Monitor a odkazy na související sché
 
 ## <a name="azure-monitor-logs-tables"></a>Tabulky protokolů Azure Monitor
 
-Azure Cosmos DB používá tabulky Kusto z protokolů Azure Monitor. Pomocí Log Analytics můžete zadávat dotazy na tyto tabulky. Seznam Kustoch použití Bales najdete v článku [referenční informace k tabulce Azure monitor protokoly](/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) .
+Azure Cosmos DB používá tabulky Kusto z protokolů Azure Monitor. Pomocí Log Analytics můžete zadávat dotazy na tyto tabulky. Seznam Kustoch použití Bales najdete v článku [referenční informace k tabulce Azure monitor protokoly](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) .
 
 ## <a name="see-also"></a>Viz také
 

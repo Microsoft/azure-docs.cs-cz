@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617183"
+ms.locfileid: "97629625"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ – Přehled vazeb pro Azure Functions
 
 > [!NOTE]
-> Vazby RabbitMQ se plně podporují jenom v plánech **Windows Premium** . Spotřeba a Linux se aktuálně nepodporují.
+> Vazby RabbitMQ jsou plně podporované jenom na **Windows Premium a na vyhrazených** plánech. Spotřeba a Linux se aktuálně nepodporují.
 
 Azure Functions se integruje s [RabbitMQ](https://www.rabbitmq.com/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Rozšíření Azure Functions RabbitMQ Binding umožňují odesílat a přijímat zprávy pomocí rozhraní RabbitMQ API s funkcemi.
 

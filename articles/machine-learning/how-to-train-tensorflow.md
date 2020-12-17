@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c82b1ffbb005542822016a55346d9067e23050b2
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542282"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630866"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow se škálováním modelů pomocí Azure Machine Learning
 
@@ -216,7 +216,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 Další informace o konfiguraci úloh pomocí ScriptRunConfig najdete v tématu [Konfigurace a odeslání školicích běhů](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Pokud jste dříve používali TensorFlow Estimator ke konfiguraci školicích úloh TensorFlow, Upozorňujeme, že odhady bude v budoucí verzi sady Azure ML SDK zastaralá. S Azure ML SDK >= 1.15.0, ScriptRunConfig je doporučeným způsobem konfigurace školicích úloh, včetně těch, které používají rozhraní DL.
+> Pokud jste dříve používali TensorFlow Estimator ke konfiguraci školicích úloh TensorFlow, Upozorňujeme, že odhady byly zastaralé jako verze sady 1.19.0 SDK. S Azure ML SDK >= 1.15.0, ScriptRunConfig je doporučeným způsobem konfigurace školicích úloh, včetně těch, které používají architekturu pro hloubkové učení. Běžné otázky týkající se migrace najdete v [Průvodci migrací Estimator do ScriptRunConfig](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ### <a name="submit-a-run"></a>Odeslat běh
 
@@ -229,13 +229,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Co se stane při spuštění
 Po spuštění se spustí v následujících fázích:
 
-- **Příprava** : image Docker se vytvoří podle definovaného prostředí. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu. Pokud je místo toho zadáno spravované prostředí, bude použit obrázek uložený v mezipaměti, který bude toto prostředí obsahovat.
+- **Příprava**: image Docker se vytvoří podle definovaného prostředí. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu. Pokud je místo toho zadáno spravované prostředí, bude použit obrázek uložený v mezipaměti, který bude toto prostředí obsahovat.
 
-- **Škálování** : cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
+- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
-- **Spuštěno** : všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a `script` spustí se. Výstupy z stdout a složky **./logs** se streamují do historie spuštění a dají se použít k monitorování běhu.
+- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a `script` spustí se. Výstupy z stdout a složky **./logs** se streamují do historie spuštění a dají se použít k monitorování běhu.
 
-- **Následné zpracování** : složka **./Outputs** se v běhu kopíruje do historie spuštění.
+- **Následné zpracování**: složka **./Outputs** se v běhu kopíruje do historie spuštění.
 
 ## <a name="register-or-download-a-model"></a>Registrace nebo stažení modelu
 

@@ -4,15 +4,15 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 12/16/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4ba4e5f462a3cc88de5b23b32a5e749f9363e93f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081888"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629642"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
 
 1. V podokně **všechny prostředky** vyberte účet Azure Cosmos.
 
-1. V seznamu nastavení vyberte **připojení privátního koncového bodu** a pak vyberte **privátní koncový bod** :
+1. V seznamu nastavení vyberte **připojení privátního koncového bodu** a pak vyberte **privátní koncový bod**:
 
    :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
 
@@ -49,19 +49,19 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Name | Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný. |
     |Oblast| Vyberte oblast, ve které chcete nasadit privátní propojení. Vytvořte privátní koncový bod ve stejném umístění, kde existuje vaše virtuální síť.|
     |||
-1. Vyberte **Další: prostředek** .
+1. Vyberte **Další: prostředek**.
 1. V **Vytvoření privátního koncového bodu – prostředek** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure** . <br/><br/> Pak můžete zvolit jeden z vašich prostředků pro nastavení privátního propojení. Nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
+    |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure**. <br/><br/> Pak můžete zvolit jeden z vašich prostředků pro nastavení privátního propojení. Nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
     | Předplatné| Vyberte své předplatné. |
-    | Typ prostředku | Vyberte **Microsoft. AzureCosmosDB/databaseAccounts** . |
+    | Typ prostředku | Vyberte **Microsoft. AzureCosmosDB/databaseAccounts**. |
     | Prostředek |Vyberte svůj účet Azure Cosmos. |
     |Cílový dílčí prostředek |Vyberte Azure Cosmos DB typ rozhraní API, který chcete namapovat. Tato možnost je standardně jenom jedna volba pro rozhraní API SQL, MongoDB a Cassandra. Pro Gremlin a rozhraní Table API můžete také zvolit **SQL** , protože tato rozhraní API se vzájemně spolupracují s rozhraním SQL API. |
     |||
 
-1. Vyberte **Další: Konfigurace** .
+1. Vyberte **Další: Konfigurace**.
 1. V **Vytvoření privátního koncového bodu – konfigurace** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
@@ -70,12 +70,12 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Virtuální síť| Vyberte svou virtuální síť. |
     | Podsíť | Vyberte podsíť. |
     |**Integrace Privátní DNS**||
-    |Integrovat s privátní zónou DNS |Vyberte **Ano** . <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. |
-    |Zóna Privátního DNS |Vyberte **privatelink.documents.Azure.com** . <br><br/> Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.|
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. |
+    |Zóna Privátního DNS |Vyberte **privatelink.documents.Azure.com**. <br><br/> Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.|
     |||
 
-1. Vyberte **Zkontrolovat a vytvořit** . Na stránce **Revize + vytvořit** Azure ověří vaši konfiguraci.
-1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit** .
+1. Vyberte **Zkontrolovat a vytvořit**. Na stránce **Revize + vytvořit** Azure ověří vaši konfiguraci.
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Pokud jste pro účet Azure Cosmos schválili privátní odkaz, v podokně Azure Portal není dostupná možnost **všechny sítě** v podokně **Brána firewall a virtuální sítě** .
 
@@ -95,11 +95,11 @@ Následující tabulka ukazuje mapování mezi různými typy rozhraní API úč
 
 Po zřízení privátního koncového bodu můžete zadat dotaz na IP adresy. Postup zobrazení IP adres z Azure Portal:
 
-1. Vyberte **Všechny prostředky** .
-1. Vyhledejte privátní koncový bod, který jste vytvořili dříve. V tomto případě je to **cdbPrivateEndpoint3** .
+1. Vyberte **Všechny prostředky**.
+1. Vyhledejte privátní koncový bod, který jste vytvořili dříve. V tomto případě je to **cdbPrivateEndpoint3**.
 1. Vyberte kartu **Přehled** a zobrazte tak nastavení DNS a IP adresy.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privátní IP adresy v Azure Portal":::
 
 Pro jeden privátní koncový bod se vytvoří víc IP adres:
 
@@ -412,7 +412,7 @@ Pro tyto účty musíte pro každý typ rozhraní API vytvořit jeden privátní
 
 Po úspěšném nasazení šablony se zobrazí výstup podobný následujícímu obrázku. `provisioningState`Hodnota je, `Succeeded` Pokud jsou privátní koncové body nastaveny správně.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Výstup nasazení pro šablonu Správce prostředků":::
 
 Po nasazení šablony jsou privátní IP adresy rezervované v rámci podsítě. Pravidlo brány firewall účtu Azure Cosmos je nakonfigurované tak, aby přijímalo jenom připojení z privátního koncového bodu.
 
@@ -616,6 +616,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 V podsíti, ve které jste vytvořili privátní koncový bod, byste měli použít privátní zónu DNS. Konfigurace koncových bodů tak, aby každá privátní IP adresa byla namapovaná na položku DNS. (Podívejte se na `fqdns` vlastnost v odpovědi uvedené dříve.)
 
 Při vytváření privátního koncového bodu ho můžete integrovat s privátní zónou DNS v Azure. Pokud se rozhodnete místo toho použít vlastní zónu DNS, musíte ji nakonfigurovat tak, aby přidala záznamy DNS pro všechny privátní IP adresy rezervované pro soukromý koncový bod.
+
+> [!IMPORTANT]
+> Jedná se o překlad DNS vašich požadavků, který určuje, jestli tyto požadavky přecházejí přes vaše soukromé koncové body, nebo využijte standardní veřejnou trasu. Ujistěte se, že vaše místní DNS správně odkazuje na soukromou IP adresu adresovanou Vaším privátním koncovým bodem.
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privátní propojení v kombinaci s pravidly brány firewall
 

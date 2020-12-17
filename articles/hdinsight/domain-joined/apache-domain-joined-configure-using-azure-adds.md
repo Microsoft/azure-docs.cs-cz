@@ -1,5 +1,5 @@
 ---
-title: Konfigurace clusterů pro integraci služby Active Directory
+title: Konfigurace clusterů pro integraci Azure Active Directory
 titleSuffix: Azure HDInsight
 description: Naučte se, jak nastavit a nakonfigurovat cluster HDInsight integrovaný se službou Active Directory pomocí Azure Active Directory Domain Services a funkce Balíček zabezpečení podniku.
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031478"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631546"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Konfigurace clusterů HDInsight pro integraci služby Active Directory s Balíček zabezpečení podniku
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Konfigurace clusterů HDInsight pro integraci Azure Active Directory s Balíček zabezpečení podniku
 
-V tomto článku se dozvíte, jak vytvořit a nakonfigurovat cluster HDInsight integrovaný se službou Active Directory pomocí funkce s názvem Balíček zabezpečení podniku (ESP), Azure Active Directory Domain Services (Azure AD-DS) a stávající místní služby Active Directory.
+Tento článek poskytuje souhrn a přehled procesu vytváření a konfigurace clusteru HDInsight integrovaného s Azure Active Directory. Tato integrace spoléhá na funkci HDInsight s názvem Balíček zabezpečení podniku (ESP), Azure Active Directory Domain Services (Azure AD-DS) a stávající místní službu Active Directory.
 
-Kurz týkající se nastavení a konfigurace domény v Azure a vytvoření clusteru s povoleným protokolem ESP najdete v tématu [Vytvoření a konfigurace balíček zabezpečení podnikuch clusterů ve službě Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
+Podrobný návod k nastavení a konfiguraci domény v Azure a vytvoření clusteru s povoleným protokolem ESP a následné synchronizaci místních uživatelů najdete v tématu [Vytvoření a konfigurace balíček zabezpečení podnikuch clusterů ve službě Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ## <a name="background"></a>Pozadí
 
@@ -33,12 +33,13 @@ Balíček zabezpečení podniku (ESP) poskytuje integraci služby Active Directo
 
 Předtím, než budete moci vytvořit cluster HDInsight s podporou protokolu ESP, je nutné provést několik požadavků:
 
+- Existující místní služba Active Directory a Azure Active Directory.
 - Povolte službu Azure AD-DS.
 - Zkontrolujte stav služby Azure AD-DS Health a ujistěte se, že se synchronizace dokončila.
 - Vytvořte a autorizujte spravovanou identitu.
 - Dokončete nastavení sítě DNS a související problémy.
 
-Každá z těchto položek bude podrobněji popsána níže.
+Každá z těchto položek bude podrobněji popsána níže. Návod k dokončení všech těchto kroků najdete v tématu [Vytvoření a konfigurace balíček zabezpečení podnikuch clusterů ve službě Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ### <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 

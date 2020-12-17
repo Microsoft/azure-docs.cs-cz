@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559637"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631036"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
 
@@ -26,7 +26,7 @@ Ukázkové skripty v tomto článku se používají ke klasifikaci kuřecích a 
 
 Bez ohledu na to, jestli školicíte model PyTorch pro obsáhlý Learning od základu nebo přenášíte stávající model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -199,7 +199,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 Další informace o konfiguraci úloh pomocí ScriptRunConfig najdete v tématu [Konfigurace a odeslání školicích běhů](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Pokud jste dříve používali PyTorch Estimator ke konfiguraci školicích úloh PyTorch, Upozorňujeme, že odhady bude v budoucí verzi sady Azure ML SDK zastaralá. S Azure ML SDK >= 1.15.0, ScriptRunConfig je doporučeným způsobem konfigurace školicích úloh, včetně těch, které používají rozhraní DL.
+> Pokud jste dříve používali PyTorch Estimator ke konfiguraci školicích úloh PyTorch, Upozorňujeme, že odhady byly zastaralé jako verze sady 1.19.0 SDK. S Azure ML SDK >= 1.15.0, ScriptRunConfig je doporučeným způsobem konfigurace školicích úloh, včetně těch, které používají architekturu pro hloubkové učení. Běžné otázky týkající se migrace najdete v [Průvodci migrací Estimator do ScriptRunConfig](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ## <a name="submit-your-run"></a>Odeslat běh
 

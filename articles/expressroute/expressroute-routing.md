@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007167"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629030"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -229,9 +229,12 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure Resource Manager |12076:5070 |
 | Další online služby Office 365 * * | 12076:5100 |
 
-\* Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps. \
-\*\* Autorizace požadovaná od Microsoftu, viz [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md)\
-\*\*\* Tato komunita také zveřejňuje potřebné trasy pro Microsoft Team Services. \
+\* Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps.
+
+\*\* Autorizace požadovaná od Microsoftu, viz [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md)
+
+\*\*\* Tato komunita také zveřejňuje potřebné trasy pro Microsoft Team Services.
+
 \*\*\*\* CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
 
 > [!NOTE]

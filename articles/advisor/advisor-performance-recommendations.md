@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59de7ee14a3af2f8740d63a3cae19571469afd7f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183341"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630339"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -175,6 +175,11 @@ Zjistili jsme, že se vaše virtuální počítače nacházejí v jiné oblasti,
 V tomto předplatném jsme identifikovali prostředky využívající zastaralé verze sady SDK Asistivní čtečky. Použitím nejnovější verze sady SDK Asistivní čtečky získáte aktualizované funkce zabezpečení, funkce pro zajištění výkonu a rozšířenou sadu funkcí pro přizpůsobení a vylepšení prostředí integrace.
 Přečtěte si další informace o [sadě moderního čtecího zařízení](../cognitive-services/immersive-reader/index.yml).
 
+## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Zvýšení výkonu virtuálních počítačů změnou maximálního limitu relací
+
+Advisor detekuje, že máte fond hostitelů, který má nejprve nastavenou hloubku jako algoritmus vyrovnávání zatížení, a maximální počet relací fondu hostitelů je větší nebo roven 99999. Při vyrovnávání zatížení do hloubky se na základě limitu maximálního počtu relací určuje maximální počet uživatelů, kteří můžou mít souběžné relace s jedním hostitelem relací. Pokud je maximální počet relací příliš vysoký, budou všechny uživatelské relace směrovány na stejného hostitele relace a to způsobí problémy s výkonem a spolehlivostí. Proto když nakonfigurujete fond hostitelů tak, aby měl při prvním vyrovnávání zatížení určitou hloubku, musíte nastavit vhodný maximální počet relací podle konfigurace nasazení a kapacity virtuálních počítačů. 
+
+Další informace o vyrovnávání zatížení na virtuálním počítači s Windows najdete v tématu [Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows](/virtual-desktop/troubleshoot-set-up-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučením k výkonu v Advisoru
 

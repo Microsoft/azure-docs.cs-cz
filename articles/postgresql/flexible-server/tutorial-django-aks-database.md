@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 4fd652885bb7a78dd1c27c5d9c0e5188af240f96
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15e94b647b0f12baceffc60ad1c6ab81cc84cf22
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365033"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631937"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Kurz: nasazení aplikace Django v AKS s Azure Database for PostgreSQLm flexibilním serverem
 
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>Vytvoření Azure Database for PostgreSQLho flexibilního serveru
-Pomocí příkazu [AZ postgreSQL flexibilního serveru Create](/cli/azure/postgresql/flexible-server?view=azure-cli-latest&preserve-view=true)vytvořte flexibilní Server. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z místního kontextu rozhraní příkazového řádku Azure.
+Pomocí příkazu [AZ postgreSQL flexibilního serveru Create](/azure/postgresql/flexible-server?view=azure-cli-latest&preserve-view=true)vytvořte flexibilní Server. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z místního kontextu rozhraní příkazového řádku Azure.
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>

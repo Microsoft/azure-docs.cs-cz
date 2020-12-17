@@ -1,30 +1,29 @@
 ---
-title: Škálování clusterů Azure HDInsight s horizontálním škálováním
-description: K automatickému škálování Apache Hadoop clusterů použijte funkci automatického škálování Azure HDInsight.
+title: Automatické škálování clusterů Azure HDInsight
+description: Pomocí funkce automatického škálování můžete automaticky škálovat clustery Azure HDInsight na základě plánu nebo metriky výkonu.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033132"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629251"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
-Bezplatná funkce automatického škálování služby Azure HDInsight může automaticky zvýšit nebo snížit počet pracovních uzlů v clusteru na základě dříve nastavených kritérií. Během vytváření clusteru nastavíte minimální a maximální počet uzlů, určíte kritéria škálování pomocí plánu denního času nebo konkrétní metriky výkonu a platforma HDInsight provede zbytek.
+Bezplatná funkce automatického škálování služby Azure HDInsight může automaticky zvýšit nebo snížit počet pracovních uzlů v clusteru na základě dříve nastavených kritérií. Funkce automatického škálování funguje tak, že škáluje počet uzlů v rámci přednastavených omezení na základě metriky výkonu nebo plánu operací horizontálního navýšení kapacity a horizontálního navýšení kapacity.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Funkce automatického škálování používá ke spuštění událostí škálování dva typy podmínek: prahové hodnoty pro různé metriky výkonu clusteru (nazývané *škálování na základě zatížení*) a aktivační události založené na čase (nazývané *škálování na základě plánu*). Škálování na základě zatížení mění počet uzlů v clusteru v rozsahu, který jste nastavili, k zajištění optimálního využití procesoru a minimalizaci průběžných nákladů. Škálování na základě plánu mění počet uzlů v clusteru na základě operací, ke kterým přiřadíte konkrétní data a časy.
+Funkce automatického škálování používá ke spuštění událostí škálování dva typy podmínek: prahové hodnoty pro různé metriky výkonu clusteru (nazývané *škálování na základě zatížení*) a aktivační události založené na čase (nazývané *škálování na základě plánu*). Škálování na základě zatížení mění počet uzlů v clusteru v rozsahu, který jste nastavili, k zajištění optimálního využití procesoru a minimalizaci průběžných nákladů. Škálování na základě plánu mění počet uzlů v clusteru na základě plánu operací horizontálního škálování a horizontálního navýšení kapacity.
 
 Následující video poskytuje přehled výzev, které automatické škálování řeší a jak vám může pomáhat s řízením nákladů pomocí služby HDInsight.
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -39,7 +38,7 @@ Při volbě typu škálování Vezměte v úvahu následující faktory:
 
 Automatické škálování průběžně monitoruje cluster a shromažďuje následující metriky:
 
-|Metrika|Popis|
+|Metric|Popis|
 |---|---|
 |Celkový počet vyřízených PROCESORů|Celkový počet jader potřebných ke spuštění provádění všech nevyřízených kontejnerů.|
 |Celkový počet nevyřízených paměti|Celková paměť (v MB) požadovaná k zahájení provádění všech kontejnerů, které čekají na zpracování.|
@@ -133,7 +132,7 @@ Další informace o vytváření clusteru HDInsight pomocí Azure Portal najdete
 
 #### <a name="load-based-autoscaling"></a>Automatické škálování na základě zatížení
 
-Cluster HDInsight s automatickým škálováním na základě zatížení můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi, `minInstanceCount` `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON. Úplnou šablonu Resource Manageru najdete v tématu [Šablona pro rychlý Start: nasazení clusteru Spark se zapnutým AutoLoadbased AutoScale](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
+Cluster HDInsight s automatickým škálováním na základě zatížení můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi, `minInstanceCount` `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON. Úplnou šablonu Správce prostředků najdete v tématu [Šablona pro rychlý Start: nasazení clusteru Spark s povoleným autoškálováním na základě zatížení](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -161,7 +160,7 @@ Cluster HDInsight s automatickým škálováním na základě zatížení může
 
 #### <a name="schedule-based-autoscaling"></a>Automatické škálování na základě plánu
 
-Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale`Uzel obsahuje a `recurrence` , který `timezone` `schedule` popisuje, kdy bude provedeno provedení změny. Úplnou šablonu Resource Manageru najdete v tématu [nasazení clusteru Spark s povoleným autoškálováním na základě plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
+Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale`Uzel obsahuje a `recurrence` , který `timezone` `schedule` popisuje, kdy bude provedeno provedení změny. Úplnou šablonu Správce prostředků najdete v tématu [nasazení clusteru Spark s povoleným autoškálováním na základě plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {
@@ -231,7 +230,7 @@ Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v
 | Aktualizace  | Aktualizuje se konfigurace automatického škálování clusteru.  |
 | Konfigurace HDInsight  | Probíhá operace škálování a škálování clusteru.  |
 | Chyba aktualizace  | HDInsight během aktualizace konfigurace automatického škálování splnila problémy. Zákazníci si můžou zvolit, že se má znovu aktualizovat nebo zakázat automatické škálování.  |
-| Chybová  | S clusterem je něco špatného a nedá se použít. Odstraňte tento cluster a vytvořte nový.  |
+| Chyba  | S clusterem je něco špatného a nedá se použít. Odstraňte tento cluster a vytvořte nový.  |
 
 Pokud chcete zobrazit aktuální počet uzlů v clusteru, na stránce **Přehled** pro váš cluster použijte graf **velikosti clusteru** . Nebo v části **Nastavení** vyberte **Velikost clusteru** .
 
