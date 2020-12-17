@@ -86,8 +86,8 @@
                 - name: Skript SQL
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: Mapování toku dat
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Data Flow
+                  href: concepts-data-flow-overview.md
         - name: Plán údržby
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Správa zdrojového kódu
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Toky dat
           items:
-            - name: Přehled mapování toků dat
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Přehled toků dat
+              href: concepts-data-flow-overview.md
             - name: Režim ladění
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Posun schématu

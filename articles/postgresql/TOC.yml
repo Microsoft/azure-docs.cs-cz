@@ -234,7 +234,7 @@
               displayName: 'scale server, reset password'
         - name: Restartování serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
@@ -242,7 +242,7 @@
               href: howto-restart-server-powershell.md
         - name: Pravidla brány firewall
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-manage-firewall-using-portal.md
               displayName: 'firewall, portal, rules'
             - name: Azure CLI
@@ -297,7 +297,7 @@
           displayName: 'application development, TLS'
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI
@@ -308,7 +308,7 @@
               displayName: 'application development, server parameters'
         - name: Automatické zvětšení úložiště
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
             - name: Azure CLI
@@ -319,7 +319,7 @@
               displayName: 'business continuity, scale , storage'
         - name: Protokoly přístupu
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'access logs, monitor'
             - name: Azure CLI
@@ -504,7 +504,7 @@
                   href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: flexible-server/howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI
@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: Kurzy
       items:
+        - name: Vytvoření skupiny serverů
+          href: tutorial-hyperscale-server-group.md
+        - name: Modelování a načítání dat
+          items:
+            - name: Horizontální dělení dat na pracovních uzlech
+              href: tutorial-hyperscale-shard.md
         - name: Návrh víceklientské databáze
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

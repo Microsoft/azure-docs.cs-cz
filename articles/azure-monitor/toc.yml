@@ -546,6 +546,8 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
+            - name: Definice pro ITSM konektor
+              href: platform/itsmc-definition.md
             - name: Připojení IT Service Management
               href: platform/itsmc-connections.md
             - name: Vytvoření webové aplikace Service Manageru

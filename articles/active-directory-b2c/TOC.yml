@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: Android s využitím ověřování aplikace
           href: signin-appauth-android.md
+    - name: Vytvořit tok
+      items:
+        - name: Zásady registrace nebo přihlašování
+          href: add-sign-up-and-sign-in-policy.md
+        - name: Zásady resetování hesel
+          href: add-password-reset-policy.md
+        - name: Zásady změny hesel
+          href: add-password-change-policy.md
+        - name: Zásady upravování profilu
+          href: add-profile-editing-policy.md
+        - name: Zásady oprávnění hesla vlastníka prostředku
+          href: add-ropc-policy.md
+        - name: Zásady nastavení samoobslužného resetování hesla (zastaralé)
+          href: user-flow-self-service-password-reset.md
+        - name: Registrace a přihlašování telefonem
+          href: phone-authentication-user-flows.md
     - name: Zprostředkovatelé identit
       items:
         - name: Přidání zprostředkovatele identity
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: Konfigurace ověřování věku
       href: basic-age-gating.md
-    - name: Tok uživatele
+    - name: Konektory rozhraní API (Preview)
       items:
-        - name: Vytvořit tok
-          items:
-            - name: Registrace nebo přihlášení
-              href: tutorial-create-user-flows.md
-            - name: Přihlašovací údaje vlastníka prostředku s heslem
-              href: configure-ropc.md
-            - name: Nastavení samoobslužného resetování hesla
-              href: user-flow-self-service-password-reset.md
-        - name: Konektory rozhraní API (Preview)
-          items:
-            - name: Přehled
-              href: api-connectors-overview.md
-            - name: Přidání konektoru rozhraní API
-              href: add-api-connector.md
+        - name: Přehled
+          href: api-connectors-overview.md
+        - name: Přidání konektoru rozhraní API
+          href: add-api-connector.md
     - name: Vlastní zásady
       items:
         - name: Přehled vlastních zásad
           href: custom-policy-trust-frameworks.md
         - name: Začínáme s vlastními zásadami
           href: custom-policy-get-started.md
-        - name: Vytvoření zásad
-          items:
-            - name: Přihlašovací údaje vlastníka prostředku s heslem
-              href: ropc-custom.md
-              displayName: ropc
-            - name: Změna hesla
-              href: custom-policy-password-change.md
-            - name: Registrace a přihlašování telefonem
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: Vlastní ověření e-mailu
           items:
             - name: Mailjet
