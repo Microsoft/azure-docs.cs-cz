@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262105"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652938"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Použití ověřování Azure AD pro přístup k rozhraní API Azure Media Services pomocí .NET
 
@@ -61,9 +61,9 @@ Máte také možnost nahradit výchozí implementaci **AzureAdTokenProvider** vl
 >Pokud chcete používat ověřování Azure AD s Media Services .NET SDK, musíte mít nejnovější balíček [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) . Přidejte také odkaz na sestavení **Microsoft. IdentityModel. clients. Active** . Pokud používáte existující aplikaci, zahrňte **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** sestavení.
 
 1. Vytvořte novou konzolovou aplikaci v jazyce C# v aplikaci Visual Studio.
-2. K instalaci **Azure Media Services .NET SDK**použijte balíček NuGet [windowsazure. MediaServices](https://www.nuget.org/packages/windowsazure.mediaservices) .
+2. K instalaci **Azure Media Services .NET SDK** použijte balíček NuGet [windowsazure. MediaServices](https://www.nuget.org/packages/windowsazure.mediaservices) .
 
-    Chcete-li přidat odkazy pomocí NuGet, proveďte následující kroky: v **Průzkumník řešení**klikněte pravým tlačítkem myši na název projektu a pak vyberte **Spravovat balíčky NuGet**. Pak vyhledejte **windowsazure. MediaServices** a vyberte **nainstalovat**.
+    Chcete-li přidat odkazy pomocí NuGet, proveďte následující kroky: v **Průzkumník řešení** klikněte pravým tlačítkem myši na název projektu a pak vyberte **Spravovat balíčky NuGet**. Pak vyhledejte **windowsazure. MediaServices** a vyberte **nainstalovat**.
 
     -nebo-
 
@@ -90,7 +90,7 @@ Pokud se chcete připojit k rozhraní API služby Azure Media Service pomocí mo
 
 Hodnoty pro tyto parametry lze nalézt v **AzureEnvironments. AzureCloudEnvironment**. Konstanta **AzureEnvironments. AzureCloudEnvironment** je pomocná rutinou v sadě .NET SDK pro získání správného nastavení proměnných prostředí pro veřejné datové centrum Azure.
 
-Obsahuje předdefinovaná nastavení prostředí pro přístup k Media Services pouze ve veřejných datových centrech. V případě státních nebo státních cloudových oblastí můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**nebo **AzureGermanCloudEnvironment** .
+Obsahuje předdefinovaná nastavení prostředí pro přístup k Media Services pouze ve veřejných datových centrech. V případě státních nebo státních cloudových oblastí můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment** nebo **AzureGermanCloudEnvironment** .
 
 Následující příklad kódu vytvoří token:
 
@@ -101,7 +101,7 @@ var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
 Chcete-li začít programovat proti Media Services, je nutné vytvořit instanci **CloudMediaContext** , která představuje kontext serveru. **CloudMediaContext** obsahuje odkazy na důležité kolekce, včetně úloh, prostředků, souborů, zásad přístupu a lokátorů.
 
-Také je nutné předat **identifikátor URI prostředku pro služby Media REST Services** do konstruktoru **CloudMediaContext** . Chcete-li získat identifikátor URI prostředku pro služby Media REST Services, přihlaste se k Azure Portal, vyberte účet Azure Media Services, vyberte možnost **přístup přes rozhraní API**a pak vyberte možnost **připojit k Azure Media Services s ověřováním uživatele**.
+Také je nutné předat **identifikátor URI prostředku pro služby Media REST Services** do konstruktoru **CloudMediaContext** . Chcete-li získat identifikátor URI prostředku pro služby Media REST Services, přihlaste se k Azure Portal, vyberte účet Azure Media Services, vyberte možnost **přístup přes rozhraní API** a pak vyberte možnost **připojit k Azure Media Services s ověřováním uživatele**.
 
 Následující příklad kódu vytvoří instanci **CloudMediaContext** :
 
@@ -153,8 +153,8 @@ Následující příklad kódu vytvoří token pomocí konstruktoru **AzureAdTok
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,8 +165,8 @@ Pokyny, jak vytvořit a nakonfigurovat certifikát ve formuláři, který může
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
 Chcete-li začít programovat proti Media Services, je nutné vytvořit instanci **CloudMediaContext** , která představuje kontext serveru. Také je nutné předat **identifikátor URI prostředku pro služby Media REST Services** do konstruktoru **CloudMediaContext** . Z Azure Portal taky můžete získat **identifikátor URI prostředku pro hodnotu Media REST Services** .

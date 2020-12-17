@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 318095e6cf68ec100dc9ea5221ecd93cba8f7c1e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082439"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656814"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Zpracování oznámení o plánované údržbě pomocí portálu
 
@@ -22,7 +22,7 @@ Po naplánování naplánovaných vln [údržby](maintenance-notifications.md) m
 
 Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovanou údržbou.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V levém navigačním panelu klikněte na **Virtual Machines**.
 
@@ -32,15 +32,14 @@ Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovano
 
    **Stav údržby**: zobrazuje stav údržby pro virtuální počítač. Možné hodnoty jsou následující:
       
-      | Hodnota | Popis |
-      |-------|-------------|
-      | Spustit teď | Virtuální počítač je v okně samoobslužné údržby, které umožňuje zahájit údržbu sami. Níže najdete informace o tom, jak na VIRTUÁLNÍm počítači spustit údržbu. | 
-      | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Okno údržby můžete zjistit tak, že v tomto zobrazení vyberete okno naplánované údržby nebo kliknutím na virtuální počítač. | 
-      | Již Aktualizováno | Váš virtuální počítač už je aktualizovaný a v tuto chvíli se nevyžaduje žádná další akce. | 
-      | Opakovat později | Zahájili jste údržbu bez úspěchu. Možnost samoobslužná údržba bude možné používat později. | 
-      | Opakovat nyní | Můžete opakovat dříve neúspěšnou údržbu, kterou jste zahájili sami. | 
-      | - | Váš virtuální počítač není součástí plánovaného formátu Wave pro údržbu. |
-      
+    | Hodnota | Popis |
+    |-------|-------------|
+    | Spustit teď | Virtuální počítač je v okně samoobslužné údržby, které umožňuje zahájit údržbu sami. Níže najdete informace o tom, jak na VIRTUÁLNÍm počítači spustit údržbu. | 
+    | Naplánované | Pro virtuální počítač je naplánovaná údržba bez možnosti iniciace údržby. Okno údržby můžete zjistit tak, že v tomto zobrazení vyberete okno naplánované údržby nebo kliknutím na virtuální počítač. | 
+    | Již Aktualizováno | Váš virtuální počítač už je aktualizovaný a v tuto chvíli se nevyžaduje žádná další akce. | 
+    | Opakovat později | Zahájili jste údržbu bez úspěchu. Možnost samoobslužná údržba bude možné používat později. | 
+    | Opakovat nyní | Můžete opakovat dříve neúspěšnou údržbu, kterou jste zahájili sami. | 
+    | - | Váš virtuální počítač není součástí plánovaného formátu Wave pro údržbu. |
 
    **Údržba – samoobslužné okno**: zobrazuje časový interval, po kterém můžete na virtuálních počítačích sami začít údržbu.
    
@@ -52,7 +51,7 @@ Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovano
 
 Azure komunikuje s plánem plánované údržby odesláním e-mailu vlastníkovi předplatného a spoluvlastníci. Můžete přidat další příjemce a kanály do této komunikace vytvořením výstrah protokolu aktivit Azure. Další informace najdete v tématu [vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-Ujistěte se, že jste nastavili **Typ události** jako **plánovaná údržba**a **služby** jako **Virtual Machine Scale Sets** nebo **Virtual Machines**.
+Ujistěte se, že jste nastavili **Typ události** jako **plánovaná údržba** a **služby** jako **Virtual Machine Scale Sets** nebo **Virtual Machines**.
 
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Spuštění údržby virtuálního počítače z portálu
 

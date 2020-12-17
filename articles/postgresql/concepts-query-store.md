@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710528"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657018"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
@@ -149,25 +149,25 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 ### <a name="query_storequery_texts_view"></a>query_store query_store.query_texts_view
 Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý query_text je k dispozici jeden řádek.
 
-|**Název**|  **Typ**|   **Popis**|
-|---|---|---|
-|query_text_id  |bigint     |ID pro query_textsovou tabulku|
-|query_sql_text |Varchar (10000)     |Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
+| **Název** | **Typ** | **Popis** |
+|--|--|--|
+| query_text_id | bigint | ID pro query_textsovou tabulku |
+| query_sql_text | Varchar (10000) | Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru. |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-|**Název**|  **Typ**|   **Reference**| **Popis**|
-|---|---|---|---|
-|user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
-|db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
-|query_id   |bigint     ||Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
-|event_type |text       ||Typ události, pro kterou back-end čeká|
-|event  |text       ||Název události čekání, pokud back-end momentálně čeká|
-|volání  |Integer        ||Číslo stejné zachycené události|
-
+| **Název** | **Typ** | **Reference** | **Popis** |
+|--|--|--|--|
+| user_id | identifikátor | pg_authid. OID | Identifikátor OID uživatele, který příkaz provedl |
+| db_id | identifikátor | pg_database. OID | Identifikátor objektu databáze, ve kterém byl příkaz proveden |
+| query_id | bigint |  | Vnitřní kód hash vypočítaný z stromu analýzy příkazu |
+| event_type | text |  | Typ události, pro kterou back-end čeká |
+| event | text |  | Název události čekání, pokud back-end momentálně čeká |
+| volání | Integer |  | Číslo stejné zachycené události |
 
 ### <a name="functions"></a>Funkce
+
 Query_store Query_store.qs_reset () vrátí typ void.
 
 `qs_reset` zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.

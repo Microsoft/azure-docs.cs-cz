@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335481"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653533"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management zásady integrace Dapr
 
@@ -85,15 +85,15 @@ Následující příklad ukazuje vyvolání metody s názvem "back" v mikrosluž
 
 | Element             | Popis  | Povinné |
 |---------------------|--------------|----------|
-| nastavení-back-endu – služba | Kořenový element | Yes      |
+| nastavení-back-endu – služba | Kořenový element | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut        | Popis                     | Povinné | Výchozí |
 |------------------|---------------------------------|----------|---------|
-| back-end – ID       | Musí být nastavené na "dapr".           | Yes      | –     |
-| dapr-ID aplikace      | Název cílové mikroslužby Provede mapování na parametr [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) v Dapr.| Yes | – |
-| dapr – metoda      | Název metody nebo adresy URL, která se má vyvolat u cílové mikroslužby. Provede mapování na parametr [názvu metody](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) v Dapr.| Yes | – |
+| back-end – ID       | Musí být nastavené na "dapr".           | Ano      | –     |
+| dapr-ID aplikace      | Název cílové mikroslužby Provede mapování na parametr [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) v Dapr.| Ano | – |
+| dapr – metoda      | Název metody nebo adresy URL, která se má vyvolat u cílové mikroslužby. Provede mapování na parametr [názvu metody](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) v Dapr.| Ano | – |
 
 ### <a name="usage"></a>Využití
 
@@ -153,19 +153,19 @@ Oddíl "back-end" je prázdný a žádost není předána do back-endu.
 
 | Element             | Popis  | Povinné |
 |---------------------|--------------|----------|
-| publikování na dapr     | Kořenový element | Yes      |
+| publikování na dapr     | Kořenový element | Ano      |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut        | Popis                     | Povinné | Výchozí |
 |------------------|---------------------------------|----------|---------|
-| pubsub – název      | Název cílové součásti PubSub Provede mapování na parametr [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) v Dapr. Pokud není k dispozici, hodnota atributu __tématu__ musí být ve formátu `pubsub-name/topic-name` .    | No       | Žádné    |
-| téma            | Název tématu. Provede mapování na parametr [tématu](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) v Dapr.               | Yes      | –     |
-| ignorovat – chyba     | Pokud se nastaví `true` pokyn, aby se při přijetí chyby ["on-error"](api-management-error-handling-policies.md) z modulu runtime Dapr | No | `false` |
-| Response – proměnná – Název | Název položky kolekce [Variables](api-management-policy-expressions.md#ContextVariables) , která se má použít pro uložení odpovědi z modulu runtime Dapr | No | Žádné |
-| timeout | Čas (v sekundách), po který se má čekat na odpověď Dapr runtime Může být v rozsahu od 1 do 240 sekund. | No | 5 |
-| šablona | Modul šablonování, který se má použít pro transformaci obsahu zprávy Jedinou podporovanou hodnotou je "kapalina". | No | Žádné |
-| typ obsahu | Typ obsahu zprávy jedinou podporovanou hodnotou je "Application/JSON". | No | Žádné |
+| pubsub – název      | Název cílové součásti PubSub Provede mapování na parametr [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) v Dapr. Pokud není k dispozici, hodnota atributu __tématu__ musí být ve formátu `pubsub-name/topic-name` .    | Ne       | Žádné    |
+| téma            | Název tématu. Provede mapování na parametr [tématu](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) v Dapr.               | Ano      | –     |
+| ignorovat – chyba     | Pokud se nastaví `true` pokyn, aby se při přijetí chyby [](api-management-error-handling-policies.md) z modulu runtime Dapr | Ne | `false` |
+| Response – proměnná – Název | Název položky kolekce [Variables](api-management-policy-expressions.md#ContextVariables) , která se má použít pro uložení odpovědi z modulu runtime Dapr | Ne | Žádné |
+| timeout | Čas (v sekundách), po který se má čekat na odpověď Dapr runtime Může být v rozsahu od 1 do 240 sekund. | Ne | 5 |
+| šablona | Modul šablonování, který se má použít pro transformaci obsahu zprávy Jedinou podporovanou hodnotou je "kapalina". | Ne | Žádné |
+| typ obsahu | Typ obsahu zprávy jedinou podporovanou hodnotou je "Application/JSON". | Ne | Žádné |
 
 ### <a name="usage"></a>Využití
 
@@ -236,22 +236,22 @@ Oddíl "back-end" je prázdný a žádost není předána do back-endu.
 
 | Element             | Popis  | Povinné |
 |---------------------|--------------|----------|
-| Invoke-dapr-Binding | Kořenový element | Yes      |
-| zprostředkovatele identity            | Vazba specifických metadat ve formě párů klíč/hodnota. Provede mapování na vlastnost [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | No |
-| data            | Obsah zprávy Provede mapování na vlastnost [data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | No |
+| Invoke-dapr-Binding | Kořenový element | Ano      |
+| zprostředkovatele identity            | Vazba specifických metadat ve formě párů klíč/hodnota. Provede mapování na vlastnost [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | Ne |
+| data            | Obsah zprávy Provede mapování na vlastnost [data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | Ne |
 
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut        | Popis                     | Povinné | Výchozí |
 |------------------|---------------------------------|----------|---------|
-| name            | Název cílové vazby Musí odpovídat názvu vazeb [definovaných](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) v Dapr.           | Yes      | –     |
-| operation       | Název cílové operace (konkrétní vazba). Provede mapování na vlastnost [Operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | No | Žádné |
-| ignorovat – chyba     | Pokud se nastaví `true` pokyn, aby se při přijetí chyby ["on-error"](api-management-error-handling-policies.md) z modulu runtime Dapr | No | `false` |
-| Response – proměnná – Název | Název položky kolekce [Variables](api-management-policy-expressions.md#ContextVariables) , která se má použít pro uložení odpovědi z modulu runtime Dapr | No | Žádné |
-| timeout | Čas (v sekundách), po který se má čekat na odpověď Dapr runtime Může být v rozsahu od 1 do 240 sekund. | No | 5 |
-| šablona | Modul šablonování, který se má použít pro transformaci obsahu zprávy Jedinou podporovanou hodnotou je "kapalina". | No | Žádné |
-| typ obsahu | Typ obsahu zprávy jedinou podporovanou hodnotou je "Application/JSON". | No | Žádné |
+| name            | Název cílové vazby Musí odpovídat názvu vazeb [definovaných](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) v Dapr.           | Ano      | –     |
+| operation       | Název cílové operace (konkrétní vazba). Provede mapování na vlastnost [Operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | Ne | Žádné |
+| ignorovat – chyba     | Pokud se nastaví `true` pokyn, aby se při přijetí chyby [](api-management-error-handling-policies.md) z modulu runtime Dapr | Ne | `false` |
+| Response – proměnná – Název | Název položky kolekce [Variables](api-management-policy-expressions.md#ContextVariables) , která se má použít pro uložení odpovědi z modulu runtime Dapr | Ne | Žádné |
+| timeout | Čas (v sekundách), po který se má čekat na odpověď Dapr runtime Může být v rozsahu od 1 do 240 sekund. | Ne | 5 |
+| šablona | Modul šablonování, který se má použít pro transformaci obsahu zprávy Jedinou podporovanou hodnotou je "kapalina". | Ne | Žádné |
+| typ obsahu | Typ obsahu zprávy jedinou podporovanou hodnotou je "Application/JSON". | Ne | Žádné |
 
 ### <a name="usage"></a>Využití
 

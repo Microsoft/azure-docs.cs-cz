@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355852"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651986"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Požadavky pro zřízení cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -51,33 +51,33 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
- 1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
+1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
 
- >[!NOTE]
- > Počítejte s tím, že definováním filtru oboru vzniká náklady na paměť na hostitelském serveru.  Pokud není použit žádný filtr oborů, neplatí žádné dodatečné náklady na paměť. Minimální počet 4 GB bude podporovat synchronizaci až pro 12 organizačních jednotek definovaných ve filtru oborů. Pokud potřebujete synchronizovat další organizační jednotky, bude nutné zvýšit minimální množství paměti. Jako vodítko použijte následující tabulku:
- >
- >  
- >  | Počet organizačních jednotek ve filtru oborů| minimální požadovaná paměť|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5,5 GB|
- >  | 28|10 + GB|
- >
- > 
+    >[!NOTE]
+    > Počítejte s tím, že definováním filtru oboru vzniká náklady na paměť na hostitelském serveru.  Pokud není použit žádný filtr oborů, neplatí žádné dodatečné náklady na paměť. Minimální počet 4 GB bude podporovat synchronizaci až pro 12 organizačních jednotek definovaných ve filtru oborů. Pokud potřebujete synchronizovat další organizační jednotky, bude nutné zvýšit minimální množství paměti. Jako vodítko použijte následující tabulku:
+    >
+    >
+    > | Počet organizačních jednotek ve filtru oborů| minimální požadovaná paměť|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5,5 GB|
+    > | 28 | 10 + GB|
+    >
+    > 
 
- 2. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
+2. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
 
- 3. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
+3. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
+
    - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:
 
-        | Číslo portu | Jak se používá |
-        | --- | --- |
-        | **80** | Při ověřování certifikátu TLS/SSL stáhne seznamy odvolaných certifikátů (CRL).  |
-        | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
-        |**8082**|Vyžaduje se pro instalaci a pokud chcete nakonfigurovat své rozhraní API pro správu.  Tento port lze odebrat po instalaci agenta a v případě, že neplánujete použití rozhraní API.   |
-        | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
-   
-     
+      | Číslo portu | Jak se používá |
+      | --- | --- |
+      | **80** | Při ověřování certifikátu TLS/SSL stáhne seznamy odvolaných certifikátů (CRL).  |
+      | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
+      |**8082**|Vyžaduje se pro instalaci a pokud chcete nakonfigurovat své rozhraní API pro správu.  Tento port lze odebrat po instalaci agenta a v případě, že neplánujete použití rozhraní API.   |
+      | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
+
    - Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
    - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaši agenti potřebují přístup k login.windows.net a login.microsoftonline.com pro počáteční registraci. Otevřete taky bránu firewall pro tyto adresy URL.
@@ -86,10 +86,8 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 >[!NOTE]
 > Instalace agenta zřizování cloudu na Windows serveru Core není podporovaná.
 
-
-
-
 ### <a name="additional-requirements"></a>Další požadavky
+
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>Požadavky TLS
@@ -102,7 +100,7 @@ Systém Windows Server, který je hostitelem Azure AD Connect agenta zřizován�
 Pokud chcete povolit TLS 1,2, postupujte podle těchto kroků.
 
 1. Nastavte následující klíče registru:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001

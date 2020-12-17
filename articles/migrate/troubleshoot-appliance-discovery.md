@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511582"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654009"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -203,58 +203,56 @@ Azure Migrate podporuje zjišťování aplikací, rolí a funkcí pomocí Azure 
 
 Typické chyby zjišťování aplikací jsou shrnuté v tabulce. 
 
-**Chyba** | **Příčina** | **Akce**
---- | --- | ---
-9000: nelze zjistit stav nástroje VMware.     |   Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny.    |   Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware.
-9001: nástroje VMware nejsou nainstalovány.     |   Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny.    |   Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware.
-9002: nástroje VMware nejsou spuštěny.   |   Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny.    |   Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware.
-9003: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje.    |   Operační systém spuštěný na serveru není ani Windows ani Linux.    |   Podporované typy operačních systémů jsou pouze systémy Windows a Linux. Pokud je server ve skutečnosti Windows nebo Linux, ověřte typ operačního systému zadaný v vCenter Server.
-9004: virtuální počítač není spuštěný.     |   Virtuální počítač je vypnutý.  |   Ujistěte se, že je virtuální počítač zapnutý.
-9005: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje.    |   Typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje.     |   Podporované typy operačních systémů jsou pouze systémy Windows a Linux.
-9006: adresa URL pro stažení souboru metadat z hosta je prázdná.     |   K tomu může dojít, pokud agent zjišťování nepracuje podle očekávání.    |   Problém by měl automaticky vyřešit in24 hodiny. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-9007: proces spuštění úlohy zjišťování v hostovaném virtuálním počítači se nenašel.   |   K tomu může dojít, pokud agent zjišťování nepracuje správně.   |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-9008: nelze načíst stav procesu virtuálního počítače hosta.   |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-9009: řízení uživatelských účtů systému Windows zabránilo spuštění úlohy zjišťování na serveru.  |   Nastavení řízení uživatelských účtů systému Windows (UAC) na serveru jsou omezující a zabraňují zjišťování nainstalovaných aplikací.  |   V nastavení řízení uživatelských účtů na serveru nakonfigurujte nastavení nástroje řízení uživatelských účtů na jednu z nižších dvou úrovní.
-9010: virtuální počítač je vypnutý.     |   Virtuální počítač je vypnutý.  |   Ujistěte se, že je virtuální počítač zapnutý.
-9011: zjištěn soubor metadat nebyl nalezen v systému souborů hostovaného virtuálního počítače.    |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-9012: soubor metadat byl zjištěn jako prázdný.     |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-9013: pro každé přihlášení je vytvořen nový dočasný profil.    |   Pro každé přihlášení k virtuálnímu počítači VMware se vytvoří nový dočasný profil.    |   Pro řešení kontaktujte podpora Microsoftu.
-9014: Nepodařilo se načíst metadata ze systému souborů hostovaného virtuálního počítače.     |   Žádné připojení k hostiteli ESXi    |   Ujistěte se, že se zařízení může připojit k portu 443 na hostiteli ESXi, na kterém běží virtuální počítač.
-9015: role operací hosta není v uživatelském účtu vCenter povolena.   |   Role operace hosta není povolena na uživatelském účtu vCenter.   |   Zajistěte, aby byla na uživatelském účtu vCenter povolená role operace hosta.
-9016: nelze zjistit, protože agent operací hosta není aktuální.   |   Nástroje VMware nejsou správně nainstalované nebo nejsou aktuální.    |   Ujistěte se, že jsou nástroje VMware správně nainstalované a aktuální.
-9017: soubor se zjištěnými metadaty se na virtuálním počítači nenašel.  |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Pro řešení kontaktujte podpora Microsoftu.
-9018: prostředí PowerShell není nainstalováno v hostovaných virtuálních počítačích.  |   Prostředí PowerShell není v hostovaném virtuálním počítači k dispozici.    |   Nainstalujte PowerShell do virtuálního počítače hosta.
-9019: nelze zjistit z důvodu selhání operace virtuálního počítače hosta.     |   Operace hosta VMware se na virtuálním počítači nezdařila.    |   Ujistěte se, že přihlašovací údaje virtuálního počítače jsou platné a že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači má formát UPN.
-9020: oprávnění k vytvoření souboru bylo odepřeno.    |   Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na vytvoření souboru ve složce.    |   Zkontroluje, jestli zadaný uživatel typu host má oprávnění k vytvoření souboru ve složce. Viz **oznámení** v tématu vyhodnocování serveru pro název složky.
-9021: v dočasné cestě k systému nelze vytvořit soubor.     |   Nástroj VMware hlásí systémovou dočasnou cestu namísto dočasné cesty uživatele.    |   Upgradujte si verzi nástroje VMware nad 10287 (formát klienta NGC/VI).
-9022: přístup k objektu WMI byl odepřen.    |   Role přidružená k uživateli nebo zásadám skupiny omezuje uživateli přístup k objektu rozhraní WMI.  |   Kontaktujte prosím podpora Microsoftu.
-9023: nelze spustit prostředí PowerShell, protože hodnota proměnné prostředí SystemRoot je prázdná.    |   Hodnota proměnné prostředí SystemRoot je pro virtuální počítač hosta prázdná.     |   Pro řešení kontaktujte podpora Microsoftu.
-9024: nelze zjistit, že hodnota proměnné prostředí TEMP je prázdná.    |   Hodnota proměnné prostředí TEMP je pro virtuální počítač hosta prázdná.   |   Kontaktujte prosím podpora Microsoftu.
-9025: v hostovaných virtuálních počítačích je PowerShell poškozený.  |   Prostředí PowerShell je poškozeno v hostovaném virtuálním počítači.    |   Přeinstalujte PowerShell v hostovaném virtuálním počítači a ověřte, že je možné spustit PowerShell na virtuálním počítači hosta.
-9026: nejde spustit operace hosta na virtuálním počítači.  |   Stav virtuálního počítače neumožňuje spuštění operací hosta na virtuálním počítači.   |   Pro řešení kontaktujte podpora Microsoftu.
-9027: na virtuálním počítači není spuštěný agent operací hosta.   |   Nepovedlo se kontaktovat agenta operací hosta běžícího uvnitř virtuálního počítače.    |   Pro řešení kontaktujte podpora Microsoftu.
-9028: soubor nejde vytvořit z důvodu nedostatku místa na disku ve virtuálním počítači.     |   Na disku není dostatek místa.   |   Zajistěte, aby bylo na disku ve virtuálním počítači k dispozici dostatek místa.
-9029: nebylo zadáno oprávnění k PowerShellu v zadaném přihlašovacím údaji k virtuálnímu počítači hosta.   |   Přístup k PowerShellu není pro uživatele k dispozici.     |   Ujistěte se, že uživatel přidaný do zařízení má přístup k PowerShellu na virtuálním počítači hosta.
-9030: nelze shromáždit zjištěná metadata, protože hostitel ESXi je odpojen.     |   Hostitel ESXi je v odpojeném stavu.   |   Ujistěte se, že je hostitel ESXi, na kterém běží virtuální počítač, připojený.
-9031: nelze shromáždit zjištěná metadata, protože hostitel ESXi neodpovídá.   |   Vzdálený hostitel je v neplatném stavu.    |   Ujistěte se, že je hostitel ESXi, na kterém běží virtuální počítač, spuštěný a připojený.
-9032: kvůli vnitřní chybě se nepovedlo zjistit.   |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Pro řešení kontaktujte podpora Microsoftu.
-9033: Nejde zjistit, protože uživatelské jméno virtuálního počítače obsahuje neplatné znaky.     |   V uživatelském jménu byly zjištěny neplatné znaky.   |   Zadejte znovu přihlašovací údaje k virtuálnímu počítači, aby nedocházelo k neplatným znakům.
-9034: zadané uživatelské jméno není ve formátu UPN.    |   Uživatelské jméno není ve formátu UPN.  |   Ujistěte se, že uživatelské jméno je ve formátu hlavního názvu uživatele (UPN).
-9035: nelze zjistit, protože režim jazyka PowerShell není nastaven na hodnotu Full Language.  |   Jazykový režim pro PowerShell v hostovaném virtuálním počítači není nastavený na úplný jazyk.   |   Ujistěte se, že je režim jazyka PowerShell nastavený na úplný jazyk.
-9037: shromažďování dat je dočasně pozastaveno, protože doba odezvy virtuálního počítače je příliš vysoká.    |   Zjištěný virtuální počítač trvá příliš dlouho, než odpoví     |   Nevyžaduje se žádná akce. V průběhu 24 hodin se bude opakovat pokus o zjištění aplikace a 3 hodiny pro analýzu závislostí (bez agentů).
-10000: typ operačního systému se nepodporuje.   |   Operační systém spuštěný na serveru není ani Windows ani Linux.    |   Podporované typy operačních systémů jsou pouze systémy Windows a Linux.
-10001: skript pro zjišťování serveru se v zařízení nenašel.    |   Zjišťování nefunguje podle očekávání.   |   Pro řešení kontaktujte podpora Microsoftu.
-10002: úloha zjišťování nebyla dokončena včas.     |   Agent zjišťování nepracuje podle očekávání.     |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu.
-10003: proces provádění úlohy zjišťování byl ukončen s chybou.    |   Proces provádění úlohy zjišťování byl ukončen s chybou.  |   Problém by se měl automaticky vyřešit za 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
-10004: nebylo zadáno pověření pro typ hostovaného operačního systému.  |   Přihlašovací údaje pro přístup k počítačům tohoto typu operačního systému nebyly v zařízení Azure Migrate k dispozici.    |   Přidat přihlašovací údaje pro počítače na zařízení
-10005: zadané přihlašovací údaje nejsou platné.   |   Přihlašovací údaje zadané pro zařízení pro přístup na server nejsou správné.  |   Aktualizujte přihlašovací údaje, které jste zadali v zařízení, a ujistěte se, že je server přístupný pomocí přihlašovacích údajů.
-10006: typ hostovaného operačního systému není podporovaný úložištěm přihlašovacích údajů.  |   Operační systém spuštěný na serveru není ani Windows ani Linux.    |   Podporované typy operačních systémů jsou pouze systémy Windows a Linux.
-10007: Nepodařilo se zpracovat metadata zjištěná.    |   Při pokusu o deserializaci formátu JSON došlo k chybě.    |   Pro řešení kontaktujte podpora Microsoftu.
-10008: na serveru nelze vytvořit soubor.    |  K tomuto problému může dojít z důvodu vnitřní chyby.    |   Pro řešení kontaktujte podpora Microsoftu.
-10009: Nepodařilo se zapsat zjištěná metadata do souboru na serveru.  |   K tomuto problému může dojít z důvodu vnitřní chyby.   |   Pro řešení kontaktujte podpora Microsoftu.
-
-
-
+| **Chyba** | **Příčina** | **Akce** |
+|--|--|--|
+| 9000: nelze zjistit stav nástroje VMware. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9001: nástroje VMware nejsou nainstalovány. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9002: nástroje VMware nejsou spuštěny. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9003: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Operační systém spuštěný na serveru není ani Windows ani Linux. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. Pokud je server ve skutečnosti Windows nebo Linux, ověřte typ operačního systému zadaný v vCenter Server. |
+| 9004: virtuální počítač není spuštěný. | Virtuální počítač je vypnutý. | Ujistěte se, že je virtuální počítač zapnutý. |
+| 9005: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. |
+| 9006: adresa URL pro stažení souboru metadat z hosta je prázdná. | K tomu může dojít, pokud agent zjišťování nepracuje podle očekávání. | Problém by měl automaticky vyřešit in24 hodiny. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 9007: proces spuštění úlohy zjišťování v hostovaném virtuálním počítači se nenašel. | K tomu může dojít, pokud agent zjišťování nepracuje správně. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 9008: nelze načíst stav procesu virtuálního počítače hosta. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 9009: řízení uživatelských účtů systému Windows zabránilo spuštění úlohy zjišťování na serveru. | Nastavení řízení uživatelských účtů systému Windows (UAC) na serveru jsou omezující a zabraňují zjišťování nainstalovaných aplikací. | V nastavení řízení uživatelských účtů na serveru nakonfigurujte nastavení nástroje řízení uživatelských účtů na jednu z nižších dvou úrovní. |
+| 9010: virtuální počítač je vypnutý. | Virtuální počítač je vypnutý. | Ujistěte se, že je virtuální počítač zapnutý. |
+| 9011: zjištěn soubor metadat nebyl nalezen v systému souborů hostovaného virtuálního počítače. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 9012: soubor metadat byl zjištěn jako prázdný. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 9013: pro každé přihlášení je vytvořen nový dočasný profil. | Pro každé přihlášení k virtuálnímu počítači VMware se vytvoří nový dočasný profil. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9014: Nepodařilo se načíst metadata ze systému souborů hostovaného virtuálního počítače. | Žádné připojení k hostiteli ESXi | Ujistěte se, že se zařízení může připojit k portu 443 na hostiteli ESXi, na kterém běží virtuální počítač. |
+| 9015: role operací hosta není v uživatelském účtu vCenter povolena. | Role operace hosta není povolena na uživatelském účtu vCenter. | Zajistěte, aby byla na uživatelském účtu vCenter povolená role operace hosta. |
+| 9016: nelze zjistit, protože agent operací hosta není aktuální. | Nástroje VMware nejsou správně nainstalované nebo nejsou aktuální. | Ujistěte se, že jsou nástroje VMware správně nainstalované a aktuální. |
+| 9017: soubor se zjištěnými metadaty se na virtuálním počítači nenašel. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9018: prostředí PowerShell není nainstalováno v hostovaných virtuálních počítačích. | Prostředí PowerShell není v hostovaném virtuálním počítači k dispozici. | Nainstalujte PowerShell do virtuálního počítače hosta. |
+| 9019: nelze zjistit z důvodu selhání operace virtuálního počítače hosta. | Operace hosta VMware se na virtuálním počítači nezdařila. | Ujistěte se, že přihlašovací údaje virtuálního počítače jsou platné a že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači má formát UPN. |
+| 9020: oprávnění k vytvoření souboru bylo odepřeno. | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na vytvoření souboru ve složce. | Zkontroluje, jestli zadaný uživatel typu host má oprávnění k vytvoření souboru ve složce. Viz **oznámení** v tématu vyhodnocování serveru pro název složky. |
+| 9021: v dočasné cestě k systému nelze vytvořit soubor. | Nástroj VMware hlásí systémovou dočasnou cestu namísto dočasné cesty uživatele. | Upgradujte si verzi nástroje VMware nad 10287 (formát klienta NGC/VI). |
+| 9022: přístup k objektu WMI byl odepřen. | Role přidružená k uživateli nebo zásadám skupiny omezuje uživateli přístup k objektu rozhraní WMI. | Kontaktujte prosím podpora Microsoftu. |
+| 9023: nelze spustit prostředí PowerShell, protože hodnota proměnné prostředí SystemRoot je prázdná. | Hodnota proměnné prostředí SystemRoot je pro virtuální počítač hosta prázdná. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9024: nelze zjistit, že hodnota proměnné prostředí TEMP je prázdná. | Hodnota proměnné prostředí TEMP je pro virtuální počítač hosta prázdná. | Kontaktujte prosím podpora Microsoftu. |
+| 9025: v hostovaných virtuálních počítačích je PowerShell poškozený. | Prostředí PowerShell je poškozeno v hostovaném virtuálním počítači. | Přeinstalujte PowerShell v hostovaném virtuálním počítači a ověřte, že je možné spustit PowerShell na virtuálním počítači hosta. |
+| 9026: nejde spustit operace hosta na virtuálním počítači. | Stav virtuálního počítače neumožňuje spuštění operací hosta na virtuálním počítači. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9027: na virtuálním počítači není spuštěný agent operací hosta. | Nepovedlo se kontaktovat agenta operací hosta běžícího uvnitř virtuálního počítače. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9028: soubor nejde vytvořit z důvodu nedostatku místa na disku ve virtuálním počítači. | Na disku není dostatek místa. | Zajistěte, aby bylo na disku ve virtuálním počítači k dispozici dostatek místa. |
+| 9029: nebylo zadáno oprávnění k PowerShellu v zadaném přihlašovacím údaji k virtuálnímu počítači hosta. | Přístup k PowerShellu není pro uživatele k dispozici. | Ujistěte se, že uživatel přidaný do zařízení má přístup k PowerShellu na virtuálním počítači hosta. |
+| 9030: nelze shromáždit zjištěná metadata, protože hostitel ESXi je odpojen. | Hostitel ESXi je v odpojeném stavu. | Ujistěte se, že je hostitel ESXi, na kterém běží virtuální počítač, připojený. |
+| 9031: nelze shromáždit zjištěná metadata, protože hostitel ESXi neodpovídá. | Vzdálený hostitel je v neplatném stavu. | Ujistěte se, že je hostitel ESXi, na kterém běží virtuální počítač, spuštěný a připojený. |
+| 9032: kvůli vnitřní chybě se nepovedlo zjistit. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
+| 9033: Nejde zjistit, protože uživatelské jméno virtuálního počítače obsahuje neplatné znaky. | V uživatelském jménu byly zjištěny neplatné znaky. | Zadejte znovu přihlašovací údaje k virtuálnímu počítači, aby nedocházelo k neplatným znakům. |
+| 9034: zadané uživatelské jméno není ve formátu UPN. | Uživatelské jméno není ve formátu UPN. | Ujistěte se, že uživatelské jméno je ve formátu hlavního názvu uživatele (UPN). |
+| 9035: nelze zjistit, protože režim jazyka PowerShell není nastaven na hodnotu Full Language. | Jazykový režim pro PowerShell v hostovaném virtuálním počítači není nastavený na úplný jazyk. | Ujistěte se, že je režim jazyka PowerShell nastavený na úplný jazyk. |
+| 9037: shromažďování dat je dočasně pozastaveno, protože doba odezvy virtuálního počítače je příliš vysoká. | Zjištěný virtuální počítač trvá příliš dlouho, než odpoví | Nevyžaduje se žádná akce. V průběhu 24 hodin se bude opakovat pokus o zjištění aplikace a 3 hodiny pro analýzu závislostí (bez agentů). |
+| 10000: typ operačního systému se nepodporuje. | Operační systém spuštěný na serveru není ani Windows ani Linux. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. |
+| 10001: skript pro zjišťování serveru se v zařízení nenašel. | Zjišťování nefunguje podle očekávání. | Pro řešení kontaktujte podpora Microsoftu. |
+| 10002: úloha zjišťování nebyla dokončena včas. | Agent zjišťování nepracuje podle očekávání. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud se problém nevyřeší, obraťte se na podpora Microsoftu. |
+| 10003: proces provádění úlohy zjišťování byl ukončen s chybou. | Proces provádění úlohy zjišťování byl ukončen s chybou. | Problém by se měl automaticky vyřešit za 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu. |
+| 10004: nebylo zadáno pověření pro typ hostovaného operačního systému. | Přihlašovací údaje pro přístup k počítačům tohoto typu operačního systému nebyly v zařízení Azure Migrate k dispozici. | Přidat přihlašovací údaje pro počítače na zařízení |
+| 10005: zadané přihlašovací údaje nejsou platné. | Přihlašovací údaje zadané pro zařízení pro přístup na server nejsou správné. | Aktualizujte přihlašovací údaje, které jste zadali v zařízení, a ujistěte se, že je server přístupný pomocí přihlašovacích údajů. |
+| 10006: typ hostovaného operačního systému není podporovaný úložištěm přihlašovacích údajů. | Operační systém spuštěný na serveru není ani Windows ani Linux. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. |
+| 10007: Nepodařilo se zpracovat metadata zjištěná. | Při pokusu o deserializaci formátu JSON došlo k chybě. | Pro řešení kontaktujte podpora Microsoftu. |
+| 10008: na serveru nelze vytvořit soubor. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
+| 10009: Nepodařilo se zapsat zjištěná metadata do souboru na serveru. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu. |
 
 ## <a name="next-steps"></a>Další kroky
+
 Nastavte zařízení pro [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)nebo [fyzické servery](how-to-set-up-appliance-physical.md).

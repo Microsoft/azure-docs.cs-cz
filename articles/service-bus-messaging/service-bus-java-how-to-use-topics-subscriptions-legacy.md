@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 33d8aa9be6a6ee4182e49e658bd41ebf6da588e5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c44f3329626c42bdbb9e206c9dbf258c97b1aa57
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655641"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Rychlý Start: použití témat Service Bus a předplatných v jazyce Java
 V tomto rychlém startu napíšete kód Java, který odešle zprávy do Azure Service Busho tématu, a pak dostanou zprávy z odběrů do tohoto tématu. 
@@ -19,7 +19,7 @@ V tomto rychlém startu napíšete kód Java, který odešle zprávy do Azure Se
 >  V tomto rychlém startu se používají staré balíčky Azure-ServiceBus. Rychlý Start, který používá nejnovější balíček Azure-Messaging-ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí Azure-Messaging-ServiceBus](service-bus-java-how-to-use-topics-subscriptions.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:

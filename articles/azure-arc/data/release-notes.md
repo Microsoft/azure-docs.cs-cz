@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605458"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653567"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -29,7 +29,7 @@ Azure Data CLI ( `azdata` ) číslo verze: 20.2.5. Stáhnout v [https://aka.ms/a
 Zobrazení koncových bodů pro spravovanou instanci SQL a PostgreSQL škálování pomocí příkazů Azure Data CLI ( `azdata` ) `azdata arc sql endpoint list` a `azdata arc postgres endpoint list` .
 
 Upravte požadavky a omezení prostředku spravované instance SQL (jádra procesoru a paměti) pomocí Azure Data Studio.
-     
+
 PostgreSQL s povoleným rozšířením Azure teď podporuje obnovení v časovém intervalu kromě úplného zálohování pro verze 11 a 12 z PostgreSQL. Možnost obnovení k určitému bodu v čase umožňuje označit konkrétní datum a čas pro obnovení.
 
 Zásady vytváření názvů lusků pro PostgreSQL s povoleným rozšířením Azure Arc se změnily. Teď je ve formátu: ServergroupName {r, s}-_n_. Například skupina serverů se třemi uzly, jeden uzel koordinátora a dva pracovní uzly jsou reprezentovány jako:
@@ -127,7 +127,7 @@ Datové služby s podporou ARC Azure jsou vydané pro verzi Public Preview. Dato
 Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview.md) .
 
 ## <a name="next-steps"></a>Další kroky
-  
+
 > **Chcete něco vyzkoušet?**  
 > Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) na AKS, AWS elastické služby KUBERNETES (EKS), modul Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
 

@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7fabad618233e8866c545e1c5ccbcc8cb7508ebf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348799"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652093"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect mapování atributů zřizování cloudu
 
@@ -52,45 +52,51 @@ Spolu s touto vlastností také mapování atributů podporuje následující at
 > Tento dokument popisuje, jak použít Azure Portal k mapování atributů.  Informace o použití grafu naleznete v tématu [transformace](how-to-transformation.md)
 
 ## <a name="using-attribute-mapping"></a>Použití mapování atributů
+
 Chcete-li použít novou funkci, postupujte podle následujících kroků.
-
- 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
- 2.  Vyberte **Azure AD Connect**.
- 3.  Vyberte **Spravovat zřizování**.
-
-   ![Spravovat zřizování](media/how-to-configure/manage1.png)
- 
- 4. V části **Konfigurace** vyberte svou konfiguraci.
- 5. Vyberte **kliknutím upravit mapování**.  Tím se otevře obrazovka mapování atributů.
-
- ![Přidávání atributů](media/how-to-attribute-mapping/mapping6.png)
- 6.  Klikněte na **Přidat atribut**.
-
- ![Typ mapování](media/how-to-attribute-mapping/mapping1.png)
- 
- 7. Vyberte **typ mapování**.  V tomto příkladu používáme výraz.
- 8.  Do pole zadejte výraz.  V tomto příkladu používáme: `Replace([mail], "@contoso.com", , ,"", ,).`
- 9.  Zadejte cílový atribut.  V tomto příkladu používáme ExtensionAttribute15.
- 10. Vyberte, kdy se má použít, a potom klikněte na **použít** .
-   
-   ![Upravit mapování](media/how-to-attribute-mapping/mapping2a.png)
- 11. Zpátky na obrazovce mapování atributů byste měli vidět vaše nové mapování atributů.  
- 12. Klikněte na **Uložit schéma**.
-
- ![Uložit schéma](media/how-to-attribute-mapping/mapping3.png)
-
-## <a name="test-your-attribute-mapping"></a>Otestování mapování atributů
-K otestování mapování atributů můžete použít [zřizování na vyžádání](how-to-on-demand-provision.md).  Z okna 
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 2.  Vyberte **Azure AD Connect**.
 3.  Vyberte **Spravovat zřizování**.
+
+    ![Spravovat zřizování](media/how-to-configure/manage1.png)
+
+4. V části **Konfigurace** vyberte svou konfiguraci.
+5. Vyberte **kliknutím upravit mapování**.  Tím se otevře obrazovka mapování atributů.
+
+    ![Přidávání atributů](media/how-to-attribute-mapping/mapping6.png)
+
+6.  Klikněte na **Přidat atribut**.
+
+    ![Typ mapování](media/how-to-attribute-mapping/mapping1.png)
+
+7. Vyberte **typ mapování**.  V tomto příkladu používáme výraz.
+8.  Do pole zadejte výraz.  V tomto příkladu používáme: `Replace([mail], "@contoso.com", , ,"", ,).`
+9.  Zadejte cílový atribut.  V tomto příkladu používáme ExtensionAttribute15.
+10. Vyberte, kdy se má použít, a potom klikněte na **použít** .
+
+    ![Upravit mapování](media/how-to-attribute-mapping/mapping2a.png)
+
+11. Zpátky na obrazovce mapování atributů byste měli vidět vaše nové mapování atributů.  
+12. Klikněte na **Uložit schéma**.
+
+    ![Uložit schéma](media/how-to-attribute-mapping/mapping3.png)
+
+## <a name="test-your-attribute-mapping"></a>Otestování mapování atributů
+
+K otestování mapování atributů můžete použít [zřizování na vyžádání](how-to-on-demand-provision.md).  Z okna 
+
+1. Na portálu Azure Portal vyberte **Azure Active Directory**.
+2. Vyberte **Azure AD Connect**.
+3. Vyberte **Spravovat zřizování**.
 4. V části **Konfigurace** vyberte svou konfiguraci.
 5. V části **ověřit** klikněte na tlačítko **zřídit uživatele** . 
 6. Na obrazovce zřizování na vyžádání.  Zadejte **rozlišující jméno** uživatele nebo skupiny a klikněte na tlačítko **zřídit** .  
 7. Po dokončení by se měla zobrazit obrazovka úspěšná a 4 zelená zaškrtávací políčka, která označují úspěšné zřízení.  
-  ![Úspěch pro zřizování](media/how-to-attribute-mapping/mapping4.png)
-1. V části **provést akci** klikněte na **Zobrazit podrobnosti**.  Na pravé straně by se měl zobrazit nový atribut syncrhonized a použit výraz.
+
+    ![Úspěch pro zřizování](media/how-to-attribute-mapping/mapping4.png)
+
+8. V části **provést akci** klikněte na **Zobrazit podrobnosti**.  Na pravé straně by se měl zobrazit nový atribut syncrhonized a použit výraz.
 
   ![Provést akci](media/how-to-attribute-mapping/mapping5.png)
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2a557bb436b3bc10cf83beb450761465b43f621f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586002"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655352"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for MySQL
 | Brazil South |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Střední Kanada |40.85.224.249  | | |
 | Kanada – východ | 40.86.226.166    | | |
-| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Čína – východ | 139.219.130.35    | | |
 | Čína – východ 2 | 40.73.82.1  | | |
 | Čína – sever | 139.219.15.17    | | |

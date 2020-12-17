@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342993"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652921"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Obnovení vynechaného serveru Azure Database for PostgreSQL
 
@@ -39,23 +39,26 @@ Chcete-li obnovit vyřazený Azure Database for PostgreSQL Server, budete potře
 
  4. Přejděte na stránku PostgreSQL [vytvořit Server REST API](/rest/api/PostgreSQL/servers/create) a vyberte kartu **vyzkoušet,** která se zvýrazní zeleně. Přihlaste se pomocí svého účtu Azure.
 
- 5. Zadejte **resourceGroupName** , **servername** (název odstraněného serveru) a **SUBSCRIPTIONID** vlastnosti na základě hodnoty JSON atributu ResourceID zaznamenané v předchozím kroku 3. Vlastnost verze rozhraní API je předem vyplněná a může být ponechána tak, jak je znázorněno na následujícím obrázku.
+ 5. Zadejte **resourceGroupName**, **servername** (název odstraněného serveru) a **SUBSCRIPTIONID** vlastnosti na základě hodnoty JSON atributu ResourceID zaznamenané v předchozím kroku 3. Vlastnost verze rozhraní API je předem vyplněná a může být ponechána tak, jak je znázorněno na následujícím obrázku.
 
     ![Vytvoření serveru pomocí REST API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. V části tělo žádosti se posuňte dolů a vložte následující text nahrazující "umístění vyřazeného serveru", "submissionTimestamp" a "resourceId". Pro "restorePointInTime" zadejte hodnotu "submissionTimestamp" mínus **15 minut** , abyste se ujistili, že příkaz nechybí.
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     Pokud je aktuální čas například 2020-11-02T23:59:59.0000000 Z, doporučujeme minimálně 15 minut před bodem obnovení v čase 2020-11-02T23:44:59.0000000 Z.
+
     > [!Important]
     > Po zahození serveru je časový limit pět dní. Po pěti dnech se očekává chyba, protože se nepovedlo najít záložní soubor.
     

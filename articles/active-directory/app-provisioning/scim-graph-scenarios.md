@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8dec19443bbafa300144b1aa42b3973cce9e6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235498"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655148"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
 **Cílová skupina:** Tento článek je zaměřený na vývojáře, kteří sestavují aplikace, které se mají integrovat s Azure Active Directory (Azure AD). Pokud chcete používat aplikace, které už jsou integrované s Azure AD, jako je například Lupa, ServiceNow a DropBox, můžete tento článek přeskočit a přečíst si [kurzy](../saas-apps/tutorial-list.md) specifické pro aplikaci nebo zkontrolovat, [Jak služba zřizování funguje](./how-provisioning-works.md).
 
-**Typické scénáře**
+**Obvyklé scénáře**
 
 Azure AD poskytuje od služby Box službu pro zřizování a rozšiřitelnou platformu pro vytváření aplikací na. Rozhodovací strom popisuje, jak má vývojář použít [SCIM](https://aka.ms/scimoverview) a [Microsoft Graph](/graph/overview) k automatizaci zřizování. 
 
@@ -62,7 +62,7 @@ POST /Users
     "roles": []
 }
 ```
-    
+
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>Scénář 2: Automatické odebrání uživatelů z mé aplikace
 Zákazníci, kteří používají moji aplikaci, jsou zaměřené na zabezpečení a mají požadavky na zásady správného řízení pro odebrání účtů, pokud je už zaměstnanci nepotřebují. Jak můžu automatizovat zrušení zřizování z mé aplikace?
 

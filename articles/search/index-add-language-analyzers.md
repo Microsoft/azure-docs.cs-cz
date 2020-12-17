@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422327"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656032"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -68,64 +68,64 @@ Další informace o vlastnostech indexu najdete v tématu [Create index &#40;Azu
 ## <a name="language-analyzer-list"></a>Seznam analyzátoru jazyka 
  Níže je uvedený seznam podporovaných jazyků společně s názvy Lucene a Microsoft Analyzer.  
 
-|Jazyk|Název programu Microsoft Analyzer|Název analyzátoru Lucene|  
-|--------------|-----------------------------|--------------------------|  
-|Arabština|ar. Microsoft|ar. Lucene|  
-|Arménština||HY. Lucene|  
-|Bengálština|BN. Microsoft||  
-|Baskičtina||EU. Lucene|  
-|Bulharština|BG. Microsoft|BG. Lucene|  
-|Katalánština|CA. Microsoft|CA. Lucene|  
-|Čínština (zjednodušená)|zh-Hans. Microsoft|zh-Hans. Lucene|  
-|Čínština (tradiční)|zh-Hant. Microsoft|zh-Hant. Lucene|  
-|Chorvatština|HR. Microsoft||  
-|Čeština|cs. Microsoft|cs. Lucene|  
-|Dánština|da. Microsoft|da. Lucene|  
-|Nizozemština|NL – Microsoft|NL – Lucene|  
-|Angličtina|EN. Microsoft|EN. Lucene|  
-|Estonština|et. Microsoft||  
-|Finština|Fi. Microsoft|Fi. Lucene|  
-|Francouzština|fr. Microsoft|fr. Lucene|  
-|Galicijština||HK. Lucene|  
-|Němčina|de. Microsoft|de. Lucene|  
-|Řečtina|El. Microsoft|El. Lucene|  
-|Gudžarátština|Gu. Microsoft||  
-|Hebrejština|IT. Microsoft||  
-|Hindština|Dobrý den. Microsoft|Dobrý den. Lucene|  
-|Maďarština|hu. Microsoft|hu. Lucene|  
-|Islandština|je. Microsoft||  
-|Indonéština (Bahasa)|ID. Microsoft|ID. Lucene|  
-|Irština||GA. Lucene|  
-|Italština|IT. Microsoft|IT. Lucene|  
-|Japonština|Ja. Microsoft|Ja. Lucene|  
-|Kannadština|KN. Microsoft||  
-|Korejština|Ko. Microsoft|Ko. Lucene|  
-|Lotyština|Lotyšsko. Microsoft|Lotyšsko. Lucene|  
-|Litevština|lt. Microsoft||  
-|Malajalámština|ml. Microsoft||  
-|Malajština (latinka)|MS. Microsoft||  
-|Maráthština|Mr. Microsoft||  
-|Norština|NB. Microsoft|Ne. Lucene|  
-|Perština||FA. Lucene|  
-|Polština|pl. Microsoft|pl. Lucene|  
-|Portugalština (Brazílie)|pt-br. Microsoft|pt-br. Lucene|  
-|portugalština (Portugalsko)|pt-PT. Microsoft|pt-PT. Lucene|  
-|Paňdžábština|PA. Microsoft||  
-|Rumunština|ro. Microsoft|ro. Lucene|  
-|Ruština|ru. Microsoft|ru. Lucene|  
-|Srbština (cyrilice)|SR-cyrilice. Microsoft||  
-|Srbština (latinka)|SR-Latin. Microsoft||  
-|Slovenština|sk. Microsoft||  
-|Slovinština|SL. Microsoft||  
-|Španělština|ES. Microsoft|ES. Lucene|  
-|Švédština|sv. Microsoft|sv. Lucene|  
-|Tamilština|Ta. Microsoft||  
-|Telugština|te. Microsoft||  
-|Thajština|th. Microsoft|th. Lucene|  
-|Turečtina|TR. Microsoft|TR. Lucene|  
-|Ukrajinština|Spojené království. Microsoft||  
-|Urdština|vaše společnost. Microsoft||  
-|Vietnamština|VI. Microsoft||  
+| Jazyk | Název programu Microsoft Analyzer | Název analyzátoru Lucene |  |
+|--|--|--|--|
+| Arabština | ar. Microsoft | ar. Lucene |  |
+| Arménština |  | HY. Lucene |  |
+| Bengálština | BN. Microsoft |  |  |
+| Baskičtina |  | EU. Lucene |  |
+| Bulharština | BG. Microsoft | BG. Lucene |  |
+| Katalánština | CA. Microsoft | CA. Lucene |  |
+| Čínština (zjednodušená) | zh-Hans. Microsoft | zh-Hans. Lucene |  |
+| Čínština (tradiční) | zh-Hant. Microsoft | zh-Hant. Lucene |  |
+| Chorvatština | HR. Microsoft |  |  |
+| Čeština | cs. Microsoft | cs. Lucene |  |
+| Dánština | da. Microsoft | da. Lucene |  |
+| Nizozemština | NL – Microsoft | NL – Lucene |  |
+| Angličtina | EN. Microsoft | EN. Lucene |  |
+| Estonština | et. Microsoft |  |  |
+| Finština | Fi. Microsoft | Fi. Lucene |  |
+| Francouzština | fr. Microsoft | fr. Lucene |  |
+| Galicijština |  | HK. Lucene |  |
+| Němčina | de. Microsoft | de. Lucene |  |
+| Řečtina | El. Microsoft | El. Lucene |  |
+| Gudžarátština | Gu. Microsoft |  |  |
+| Hebrejština | IT. Microsoft |  |  |
+| Hindština | Dobrý den. Microsoft | Dobrý den. Lucene |  |
+| Maďarština | hu. Microsoft | hu. Lucene |  |
+| Islandština | je. Microsoft |  |  |
+| Indonéština (Bahasa) | ID. Microsoft | ID. Lucene |  |
+| Irština |  | GA. Lucene |  |
+| Italština | IT. Microsoft | IT. Lucene |  |
+| Japonština | Ja. Microsoft | Ja. Lucene |  |
+| Kannadština | KN. Microsoft |  |  |
+| Korejština | Ko. Microsoft | Ko. Lucene |  |
+| Lotyština | Lotyšsko. Microsoft | Lotyšsko. Lucene |  |
+| Litevština | lt. Microsoft |  |  |
+| Malajalámština | ml. Microsoft |  |  |
+| Malajština (latinka) | MS. Microsoft |  |  |
+| Maráthština | Mr. Microsoft |  |  |
+| Norština | NB. Microsoft | Ne. Lucene |  |
+| Perština |  | FA. Lucene |  |
+| Polština | pl. Microsoft | pl. Lucene |  |
+| Portugalština (Brazílie) | pt-br. Microsoft | pt-br. Lucene |  |
+| portugalština (Portugalsko) | pt-PT. Microsoft | pt-PT. Lucene |  |
+| Paňdžábština | PA. Microsoft |  |  |
+| Rumunština | ro. Microsoft | ro. Lucene |  |
+| Ruština | ru. Microsoft | ru. Lucene |  |
+| Srbština (cyrilice) | SR-cyrilice. Microsoft |  |  |
+| Srbština (latinka) | SR-Latin. Microsoft |  |  |
+| Slovenština | sk. Microsoft |  |  |
+| Slovinština | SL. Microsoft |  |  |
+| Španělština | ES. Microsoft | ES. Lucene |  |
+| Švédština | sv. Microsoft | sv. Lucene |  |
+| Tamilština | Ta. Microsoft |  |  |
+| Telugština | te. Microsoft |  |  |
+| Thajština | th. Microsoft | th. Lucene |  |
+| Turečtina | TR. Microsoft | TR. Lucene |  |
+| Ukrajinština | Spojené království. Microsoft |  |  |
+| Urdština | vaše společnost. Microsoft |  |  |
+| Vietnamština | VI. Microsoft |  |  |
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 

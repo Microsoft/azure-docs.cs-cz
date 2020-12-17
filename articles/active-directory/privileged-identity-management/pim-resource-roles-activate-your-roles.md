@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023859"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653414"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Aktivovat moje role prostředků Azure v Privileged Identity Management
 
@@ -32,7 +32,7 @@ Tento článek je určen pro členy, kteří potřebují aktivovat svoji roli pr
 
 Pokud potřebujete převzít roli prostředku Azure, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 
@@ -50,7 +50,7 @@ Pokud potřebujete převzít roli prostředku Azure, můžete požádat o aktiva
 
 1. Kliknutím na tlačítko **aktivovat** otevřete stránku aktivovat.
 
-     ![Otevřené podokno aktivace s rozsahem, časem spuštění, dobou trvání a důvodem](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+    ![Otevřené podokno aktivace s rozsahem, časem spuštění, dobou trvání a důvodem](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. Pokud vaše role vyžaduje službu Multi-Factor Authentication, vyberte **před pokračováním ověřit identitu**. Stačí provést ověření pouze jednou za každou relaci.
 
@@ -104,7 +104,7 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
    ![Seznam mých žádostí s zvýrazněnou akcí zrušit](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstranit potíže
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 

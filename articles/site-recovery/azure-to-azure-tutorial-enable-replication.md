@@ -4,12 +4,12 @@ description: V tomto kurzu nastavíte zotavení po havárii pro virtuální poč
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922481"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656865"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Kurz: nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -28,7 +28,7 @@ Pokud povolíte replikaci pro virtuální počítač, aby se nastavilo zotavení
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -79,7 +79,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 | **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
@@ -109,7 +109,7 @@ Ověřte, že virtuální počítače mají nejnovější kořenové certifikát
 
 Vytvořte Trezor Recovery Services v jakékoli oblasti kromě zdrojové oblasti, ze které chcete replikovat virtuální počítače.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do vyhledávacího pole zadejte *Recovery*. V části **služby** vyberte **úložiště Recovery Services**.
 
     ![Hledat trezory Recovery Services](./media/azure-to-azure-tutorial-enable-replication/search.png)

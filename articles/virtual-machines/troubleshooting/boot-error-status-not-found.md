@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088661"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657120"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Řešení potíží s Windows Boot Managerem – chyba – 0xC0000225 "status nenalezen"
  
@@ -105,12 +105,12 @@ Poškození podregistru může mít následující příčiny:
 ### <a name="repair-the-system-file"></a>Opravte systémový soubor
 
 1. Pomocí připojeného virtuálního pevného disku přejděte do umístění souboru binárního souboru (VM), který se zobrazuje na snímku obrazovky virtuálního počítače.
-1. Klikněte na soubor pravým tlačítkem, vyberte **vlastnosti**a pak vyberte kartu **Podrobnosti** a zobrazte informace o souboru.
+1. Klikněte na soubor pravým tlačítkem, vyberte **vlastnosti** a pak vyberte kartu **Podrobnosti** a zobrazte informace o souboru.
    1. Poznamenejte si verzi souboru, jak je znázorněno na následujícím obrázku:
 
       ![Okno vlastností souboru ' cng.sys ' se zvýrazněnou verzí souboru.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Přejmenujte soubor na **< BINARY.SYS >. old**a nahraďte **< BINARY.SYS >** názvem souboru.
+1. Přejmenujte soubor na **< BINARY.SYS >. old** a nahraďte **< BINARY.SYS >** názvem souboru.
 
    V případě obrázku v kroku výše by se **cng.sys** souboru přejmenoval na **cng.sys. old.**
 
@@ -126,7 +126,7 @@ Poškození podregistru může mít následující příčiny:
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       Tento příkaz zobrazí seznam všech verzí souboru, které má počítač, a poskytuje tak historii cest této součásti.
-      
+
       Například **dir cng.sys** by se přejmenovala **dir cng.sys/s**
 
    1. V seznamu vyberte nejnovější verzi souboru (nebo všechny, které dáváte přednost), a zkopírujte soubor do složky **Windows\System32** pomocí předchozí cesty a následujícího příkazu:
@@ -163,7 +163,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
    Poznamenejte si identifikátor zaváděcího nástroje pro spouštění systému Windows, jehož cesta je **\windows\system32\winload.exe**.
 
 1. U virtuálních počítačů 2. generace ověřte, že je disk s operačním systémem online a že byla přiřazena písmena jednotek oddílů. Po ověření Shromážděte informace o instalaci spuštění.
-   1. Ve **Windows Search**zadejte **Správa disků** a otevřete konzolu Správa disků. Pomocí této konzoly můžete identifikovat číslo disku připojené k opravnému VIRTUÁLNÍmu počítači a oddíl EFI (Extensible Firmware Interface), který obsahuje úložiště BCD.
+   1. Ve **Windows Search** zadejte **Správa disků** a otevřete konzolu Správa disků. Pomocí této konzoly můžete identifikovat číslo disku připojené k opravnému VIRTUÁLNÍmu počítači a oddíl EFI (Extensible Firmware Interface), který obsahuje úložiště BCD.
 
    Na následujícím obrázku je disk 2 číslo disku připojené k opravnému virtuálnímu počítači. V imagi se taky zobrazuje systémový oddíl EFI na disku 2, což je velikost 100 MB a nemá přiřazené písmeno.
 
@@ -220,7 +220,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
    Pro disky s operačním systémem s jedním oddílem přidejte `BOOT` .
 
    > [!NOTE]
-   > Spouštěcí složka bude obsahovat stejný oddíl jako složka **\Windows**složky systému Windows.
+   > Spouštěcí složka bude obsahovat stejný oddíl jako složka **\Windows** složky systému Windows.
    > - Spouštěcí složka pro virtuální počítače 1. generace je **(\boot\bcd složka)**.
    > - Spouštěcí složka pro virtuální počítače 2. generace je **EFI\Microsoft\boot\bcd**.
 
@@ -235,7 +235,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
    Pro více disků s operačním systémem oddílů přidejte `PARTITION=<LETTER OF WINDOWS FOLDER>:` .
 
    > [!NOTE]
-   > Spouštěcí-možná složka bude pravděpodobně na jiném oddílu než složka **\Windows**složky systému Windows.
+   > Spouštěcí-možná složka bude pravděpodobně na jiném oddílu než složka **\Windows** složky systému Windows.
    > - Spouštěcí složka pro virtuální počítače 1. generace je **(\boot\bcd složka)**.
    > - Spouštěcí složka pro virtuální počítače 2. generace je **EFI\Microsoft\boot\bcd**.
 

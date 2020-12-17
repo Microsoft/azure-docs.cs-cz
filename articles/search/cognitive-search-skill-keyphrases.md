@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936057"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652309"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce klíčových frází vnímání znalostí
 
@@ -37,21 +37,21 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Description |
+| Vstupy | Popis |
 |---------------------|-------------|
 | `defaultLanguageCode` | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)najdete v části. |
 | `maxKeyPhraseCount`   | Volitelné Maximální počet klíčových frází, které mají být vyprodukovány. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Vstup  | Description |
+| Vstup  | Popis |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
 | `languageCode`    |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Výstup     | Description |
+| Výstup     | Popis |
 |--------------------|-------------|
 | `keyPhrases` | Seznam klíčových frází extrahovaných ze vstupního textu. Klíčové fráze jsou vraceny v pořadí podle důležitosti. |
 

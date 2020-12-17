@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 9b097b561ef6b91ae648a950247d1a88b99e7e64
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 86fd136cdf03c9bdd6bd1f610cccc339512f8fbc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614808"
+ms.locfileid: "97657103"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -25,17 +25,17 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 > [!NOTE]
 > 
-> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
+> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](./action-groups.md#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Připojení System Center Service Manager ke konektoru pro správu služeb IT v Azure
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-definition.md).
 - Webová aplikace Service Manager (webová aplikace) je nasazená a nakonfigurovaná. [Tady](#create-and-deploy-service-manager-web-app-service)jsou informace o webové aplikaci.
 - Hybridní připojení se vytvořilo a nakonfigurovalo. Další informace: [Konfigurace hybridního připojení](#configure-the-hybrid-connection).
 - Podporované verze Service Manager: 2012 R2 nebo 2016.
@@ -45,7 +45,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > [!NOTE]
 > 
 > - Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
-> - Aby bylo možné používat vlastní [šablony](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
+> - Aby bylo možné používat vlastní [šablony](./itsmc-definition.md#template-definitions) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Postup připojení
 
@@ -85,7 +85,7 @@ K připojení instance System Center Service Manager k ITSMC použijte následuj
 - Můžete vytvářet incidenty z výstrah Log Analytics nebo ze záznamů protokolů nebo z výstrah Azure v této instanci Service Manager.
 
 
-Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts).
+Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Vytvoření a nasazení služby Service Manager Web App Service
 
@@ -182,9 +182,9 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující předpoklady:
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-definition.md#add-it-service-management-connector).
 - Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
 - V současné době se výstrahy odesílané z Azure Monitor můžou vytvořit v ServiceNow jednom z následujících prvků: události, incidenty nebo výstrahy.
 > [!NOTE]
@@ -257,7 +257,7 @@ K vytvoření připojení ServiceNow použijte následující postup:
 
 - Můžete vytvářet incidenty z výstrah Log Analytics nebo ze záznamů protokolů nebo z výstrah Azure v této instanci ServiceNow.
 
-Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts).
+Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 
 > [!NOTE]
@@ -309,14 +309,14 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 > [!NOTE]
 > 
-> Naši zákazníci s pořízením navrhují, aby používali [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro Cherwell a inprovcí koncový bod jako jiné řešení pro integraci.
+> Naši zákazníci s pořízením navrhují, aby používali [akci Webhooku](./action-groups.md#webhook) pro Cherwell a inprovcí koncový bod jako jiné řešení pro integraci.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-definition.md#add-it-service-management-connector).
 - Aplikace pro zakazování by měla být zaregistrovaná ve službě Azure AD – a ID klienta je dostupné. Podrobné informace najdete v tématu [Konfigurace ověřování služby Active Directory](../../app-service/configure-authentication-provider-aad.md).
 
 - Role uživatele: správce.
@@ -358,7 +358,7 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 
 - Můžete vytvářet incidenty z výstrah Log Analytics nebo ze záznamů protokolů nebo z výstrah Azure v této instanci prov.
 
-Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts).
+Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Připojení Cherwell ke konektoru pro správu služeb IT v Azure
 
@@ -366,13 +366,13 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 > [!NOTE]
 > 
-> Naši zákazníci v Cherwell navrhují použít [akci Webhooku](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
+> Naši zákazníci v Cherwell navrhují použít [akci Webhooku](./action-groups.md#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-definition.md#add-it-service-management-connector).
 - ID klienta bylo vygenerováno. Další informace: [vygenerujte ID klienta pro Cherwell](#generate-client-id-for-cherwell).
 - Role uživatele: správce.
 
@@ -414,7 +414,7 @@ K vytvoření připojení Cherwell použijte následující postup:
 
 - Můžete vytvářet incidenty z výstrah Log Analytics nebo ze záznamů protokolů nebo z výstrah Azure v této instanci Cherwell.
 
-Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts).
+Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Vygenerovat ID klienta pro Cherwell
 
@@ -426,6 +426,7 @@ K vygenerování ID klienta/klíče pro Cherwell použijte následující postup
 
     ![ID uživatele Cherwell](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
-
 ## <a name="next-steps"></a>Další kroky
- - [Vytváření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)
+
+[Přehled konektoru ITSM](itsmc-overview.md) [vytvořit pracovní položky ITSM z Azure výstrahy](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) 
+ [řešení potíží v konektoru ITSM](./itsmc-resync-servicenow.md)

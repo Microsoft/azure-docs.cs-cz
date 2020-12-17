@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 93759cf239a2e7ef79c719c83299740ea3722130
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: aaaeb23ef24f0d8a0fa4b38139fed57cda6fa63d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614553"
+ms.locfileid: "97657035"
 ---
 # <a name="it-service-management-connector-overview"></a>Přehled IT Service Management Connectoru
 
@@ -43,11 +43,13 @@ Informace o právních výrazech a zásadách ochrany osobních údajů najdete 
 
 Můžete začít používat ITSMC provedením následujících kroků:
 
-1. [Připojte ITSM produkty/služby ke službě IT Service Management Connector.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
-2. [Přidat ITSMC.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)
-3. [Vytvořte připojení ITSM.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-an-itsm-connection)
-4. [Použijte připojení.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#use-itsmc)
+1. [Připojte ITSM produkty/služby ke službě IT Service Management Connector.](./itsmc-connections.md)
+1. [Přidat ITSMC.](/.itsmc-definition.md#add-it-service-management-connector)
+1. [Vytvořte připojení ITSM.](./itsmc-definition.md#create-an-itsm-connection)
+1. [Použijte připojení.](./itsmc-definition.md#use-itsmc)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přidat ITSM produkty/služby do konektoru správy služeb IT](./itsmc-connections.md)
+[Přidat ITSM produkty/služby do konektoru](./itsmc-connections.md) 
+ správy služeb IT [Přidat konektor ITSM](./itsmc-definition.md) 
+ [Řešení problémů v konektoru ITSM](./itsmc-resync-servicenow.md)

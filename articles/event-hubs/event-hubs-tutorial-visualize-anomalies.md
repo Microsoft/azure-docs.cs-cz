@@ -3,12 +3,12 @@ title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934051"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655675"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -26,14 +26,12 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
 - K analýze výstupu z úlohy Stream Analytics potřebujete účet Power BI. [Power BI si můžete vyzkoušet zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Příprava prostředků
 
@@ -153,8 +151,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 Event Hubs [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) obsahují aplikaci pro detekci anomálií, která vytváří testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
 
 1. Z GitHubu si stáhněte [ukázky pro službu Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) a místně je rozbalte.
-2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet \\ ** složky. 
-3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector \\ ** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
+2. Přejděte do složky **\azure-Event-Hubs-master\samples\DotNet \\** složky. 
+3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector \\** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
 
     Pokud chcete použít starou verzi ukázky, která používá starý balíček Microsoft. Azure. EventHubs, otevřete řešení ze složky **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Otevřete soubor Program.cs a nahraďte **Event Hubs connection string** připojovacím řetězcem, který jste si uložili při spuštění skriptu. 
@@ -308,7 +306,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    ![Snímek obrazovky se zadáváním datové sady.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Jako typ vizualizace vyberte **Karta**. V části **pole**klikněte na **Přidat hodnotu**a pak vyberte `fraudulentuses` .
+9. Jako typ vizualizace vyberte **Karta**. V části **pole** klikněte na **Přidat hodnotu** a pak vyberte `fraudulentuses` .
 
    ![Snímek obrazovky se zadáváním typu vizualizace a polí.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +327,9 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
 12. V části **Typ vizualizace** vyberte **Spojnicový graf**.
 
-13. V části **osa**klikněte na **Přidat hodnotu**a vyberte `windowend` . 
+13. V části **osa** klikněte na **Přidat hodnotu** a vyberte `windowend` . 
 
-14. V části **hodnoty**klikněte na **Přidat hodnotu** a vyberte `fraudulentuses` .
+14. V části **hodnoty** klikněte na **Přidat hodnotu** a vyberte `fraudulentuses` .
 
 15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Next** (Další).
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516448"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654621"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -100,13 +100,11 @@ Tyto doby realizace jsou *odhady*. Čas pro každou fázi zpracování objednáv
 **Odhadované doby realizace Data Box Diskho pořadí:**
 
 1. Pořadí Data Box Disk: několik minut, z portálu
-2. Přidělení a Příprava disku: 1-2 pracovních dnů
+2. Přidělení a Příprava disku: až 5 pracovních dní v závislosti na dostupnosti inventáře a počtu nevyřízených objednávek, které se mají zpracovat
 3. Doprava: 2–3 pracovní dny
 4. Kopírování dat na zákaznických webech: závisí na povaze dat, velikosti a počtu souborů.
 5. Vrácení: 2–3 pracovní dny
-6. Zpracování disku v datacentru: 1-2 pracovních dnů
-7. Nahrávání dat do Azure: začíná ihned po dokončení zpracování a disk se připojí. Doba nahrávání závisí na charakteru dat, velikosti a počtu souborů.
-
+6. Zpracování v datacentru a nahrání do Azure: nahrání dat začíná v datovém centru ihned po dokončení provozního zpracování a disk se připojí. Doba nahrávání závisí na charakteru dat, velikosti a počtu souborů.
 
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
  

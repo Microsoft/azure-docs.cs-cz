@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781715"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654026"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -75,7 +75,7 @@ Element **DataType** podporuje následující hodnoty:
 |phoneNumber|Představuje telefonní číslo. |
 |int| Představuje číslo mezi-2 147 483 648 a 2 147 483 647.|
 |long| Představuje číslo mezi-9223372036854775808 a 9 223 372 036 854 775 807. |
-|string| Představuje text jako posloupnost jednotek kódu UTF-16.|
+|řetězec| Představuje text jako posloupnost jednotek kódu UTF-16.|
 |Třída StringCollection|Představuje kolekci `string` .|
 |userIdentity| Představuje identitu uživatele.|
 |userIdentityCollection|Představuje kolekci `userIdentity` .|
@@ -109,7 +109,7 @@ V následujícím příkladu, když architektura prostředí identity komunikuje
 </ClaimType>
 ```
 
-Výsledkem je, že token JWT vystavil Azure AD B2C a místo něho vygeneruje `family_name` jméno typu "název **surname** deklarace identity".
+Výsledkem je, že token JWT vystavil Azure AD B2C a místo něho vygeneruje `family_name` jméno typu "název deklarace identity".
 
 ```json
 {
@@ -223,14 +223,14 @@ V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ově
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
   <DefaultPartnerClaimTypes>
-    <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
+  <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
   </DefaultPartnerClaimTypes>
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
     <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
-    </Restriction>
- </ClaimType>
+  </Restriction>
+</ClaimType>
 ```
 
 Architektura prostředí identity vykreslí deklaraci identity e-mailové adresy pomocí ověřování vstupu formátu e-mailu:

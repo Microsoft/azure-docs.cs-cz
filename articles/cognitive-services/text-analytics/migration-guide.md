@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980894"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656950"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrace na verzi 3. x z rozhraní API pro analýzu textu
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 Pokud používáte verzi 2,1 rozhraní API pro analýzu textu, Tento článek vám pomůže při upgradu aplikace na použití verze 3. x. Verze 3,0 je všeobecně dostupná a přináší nové funkce, jako jsou rozšířené [rozpoznávání pojmenovaných entit (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) a [Správa verzí modelů](concepts/model-versioning.md). K dispozici je také verze Preview verze 3.1 (v 3.1 – Preview. x), která přidává funkce, jako je třeba dolování v podobě [názoru](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). Modely používané v v2 nebudou dostávat budoucí aktualizace. 
 

@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956496"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653108"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto článku se dozvíte, jak vytvořit, nahrát nebo importovat privátní certifikát nebo veřejný certifikát do App Service. 
 
 Po přidání certifikátu do aplikace App Service aplikace nebo [aplikace Function App](../azure-functions/index.yml)můžete [ZABEZPEČIT vlastní název DNS](configure-ssl-bindings.md) nebo ho [použít ve svém kódu aplikace](configure-ssl-certificate-in-code.md).
+
+> [!NOTE]
+> Certifikát nahraný do aplikace je uložený v jednotce nasazení, která je vázaná na kombinaci skupiny prostředků aplikace a oblasti (interně se nazývá *webový prostor*). Tím se certifikát zpřístupní ostatním aplikacím ve stejné kombinaci skupiny prostředků a oblasti. 
 
 V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů v App Service:
 
@@ -272,7 +275,7 @@ Nyní jste si certifikát nahráli do App Service.
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**  >  certifikát pro odeslání certifikátu **privátního klíče (. pfx)**  >  **Upload Certificate**.
+V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**  >  certifikát pro odeslání certifikátu **privátního klíče (. pfx)**  >  .
 
 ![Nahrání privátního certifikátu v App Service](./media/configure-ssl-certificate/upload-private-cert.png)
 

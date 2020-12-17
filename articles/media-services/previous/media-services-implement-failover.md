@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256527"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657256"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementace streamování převzetí služeb při selhání s Media Services V2
 
@@ -66,7 +66,7 @@ V této části vytvoříte a nastavíte projekt konzolové aplikace v jazyce C#
 
 1. Pomocí sady Visual Studio vytvořte nové řešení, které obsahuje projekt konzolové aplikace jazyka C#. Jako název zadejte **HandleRedundancyForOnDemandStreaming** a pak klikněte na **OK**.
 2. Vytvořte složku **SupportFiles** na stejné úrovni jako soubor projektu **HandleRedundancyForOnDemandStreaming. csproj** . Ve složce **SupportFiles** vytvořte složky **OutputFiles** a **MP4Files** . Zkopírujte soubor. mp4 do složky **MP4Files** . (V tomto příkladu se používá soubor **ignite.mp4** .) 
-3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio**vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices**a stiskněte klávesu ENTER.
+3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio** vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices** a stiskněte klávesu ENTER.
 4. Přidejte další odkazy, které jsou požadovány pro tento projekt: System. Runtime. Serialization a System. Web.
 5. Nahraďte **pomocí** příkazy, které byly přidány do souboru **Programs.cs** ve výchozím nastavení, následující:
 

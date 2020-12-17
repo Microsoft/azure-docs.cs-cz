@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495265"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654604"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Správa IoT technologie Plug and Play digitálních vláken
 
@@ -26,7 +26,7 @@ Zařízení IoT technologie Plug and Play implementuje Model popsaný v tématu 
 
 Zařízení IoT technologie Plug and Play, které se používá jako příklad v tomto článku, implementuje [model řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) s [termostatem](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) komponentami.
 
-Následující fragment kódu ukazuje reakci na žádost o **získání digitálního vlákna** formátovanou jako objekt JSON. Další informace o formátu digitálního vlákna najdete v tématu [vysvětlení technologie Plug and Play digitálních vláken v IoT](./concepts-digital-twin.md#digital-twin-json-format):
+Následující fragment kódu ukazuje reakci na žádost o **získání digitálního vlákna** formátovanou jako objekt JSON. Další informace o formátu digitálního vlákna najdete v tématu [vysvětlení technologie Plug and Play digitálních vláken v IoT](./concepts-digital-twin.md#digital-twin-example):
 
 ```json
 {

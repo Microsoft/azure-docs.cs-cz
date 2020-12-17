@@ -1,7 +1,7 @@
 ---
 title: Diagnostika výkonu pro virtuální počítače Azure | Microsoft Docs
 description: Zavádí diagnostiku výkonu Azure pro Windows.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655386"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -191,7 +191,7 @@ Existuje několik způsobů, jak sdílet sestavy diagnostiky s Microsoftem.
 Když otevřete lístek podpory s Microsoftem, je důležité sdílet sestavu diagnostiky výkonu. Pokud jste se rozhodli tyto informace sdílet se společností Microsoft, když spouštíte diagnostiku (zaškrtnutím políčka souhlasím **Sdílet diagnostické informace s Microsoftem**), Microsoft bude moci získat přístup k sestavě z účtu úložiště pomocí odkazu SAS na výstupní soubor zip po dobu až 30 dnů od data spuštění. Pracovníkovi podpory je k dispozici pouze nejnovější sestava.
 
 **Možnost 2:** Generování sdíleného přístupového podpisu pro komprimovaný soubor sestavy diagnostiky  
-Můžete sdílet odkaz na komprimovaný soubor sestav pomocí sdílených přístupových podpisů. Postupujte takto:
+Můžete sdílet odkaz na komprimovaný soubor sestav pomocí sdílených přístupových podpisů. Postupujte přitom takto:
 
 1. V Azure Portal přejděte k účtu úložiště, ve kterém jsou uložená diagnostická data.
 1. V části **BLOB Service** vyberte **objekty blob** .

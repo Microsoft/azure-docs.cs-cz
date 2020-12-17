@@ -6,30 +6,30 @@ ms.date: 05/19/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
-keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
+keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
+ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659790"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653448"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
-GitOps je postup, který deklaruje požadovaný stav konfigurace Kubernetes (nasazení, obory názvů atd.) v úložišti Git následovaným dotazem a nasazením těchto konfigurací na cluster pomocí operátoru. Tento dokument popisuje nastavení takových pracovních postupů u clusterů Kubernetes s podporou ARC Azure.
+GitOps, jak se týká Kubernetes, je postup, který deklaruje požadovaný stav konfigurace Kubernetes (nasazení, obory názvů atd.) v úložišti Git následovaným nasazením těchto konfigurací na základě požadavků na vyžádání do clusteru pomocí operátoru. Tento dokument popisuje nastavení takových pracovních postupů u clusterů Kubernetes s podporou ARC Azure.
 
-Připojení mezi clusterem a jedním nebo více úložišť Git je sledováno v Azure Resource Manager jako `sourceControlConfiguration` prostředek rozšíření. `sourceControlConfiguration`Vlastnosti prostředku reprezentují, kde a jak by se měly prostředky Kubernetes z Gitu přesměrovat do vašeho clusteru. `sourceControlConfiguration`Data jsou uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
+Připojení mezi clusterem a úložištěm Git se vytvoří v Azure Resource Manager jako `Microsoft.KubernetesConfiguration/sourceControlConfigurations` prostředek rozšíření. `sourceControlConfiguration`Vlastnosti prostředku reprezentují, kde a jak by se měly prostředky Kubernetes z Gitu přesměrovat do vašeho clusteru. `sourceControlConfiguration`Data jsou uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
 
-`config-agent`Spuštění ve vašem clusteru zodpovídá za sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření na prostředku Kubernetes ARC Azure s povoleným nasazením operátoru toku, který sleduje úložiště Git a šíří jakékoli aktualizace provedené v `sourceControlConfiguration` . Pro dosažení víceklientské architektury je dokonce možné vytvořit více `sourceControlConfiguration` prostředků s `namespace` rozsahem na stejném clusteru Kubernetes s povoleným ARC Azure. V takovém případě každý operátor může nasadit konfigurace pouze do příslušného oboru názvů.
+`config-agent`Spuštění ve vašem clusteru zodpovídá za sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření u prostředku Kubernetes s povoleným ARC Azure, který slouží k nasazení operátoru toku pro sledování úložiště Git pro každou `sourceControlConfiguration` a uplatnění všech aktualizací, které se u nich udělaly `sourceControlConfiguration` . `sourceControlConfiguration`Pro dosažení víceklientské architektury je možné vytvořit více prostředků na stejném clusteru Kubernetes s povoleným ARC Azure. Můžete vytvořit každý `sourceControlConfiguration` s jiným `namespace` oborem a omezit tak nasazení na v rámci příslušných oborů názvů.
 
-Úložiště Git může obsahovat všechny platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd.  Může obsahovat také Helm grafy pro nasazení aplikací. Mezi běžné sady scénářů patří definování základní konfigurace pro vaši organizaci, která může zahrnovat běžné role a vazby Azure, agenty monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
+Úložiště Git může obsahovat YAML manifesty, které popisují jakékoli platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd.  Může obsahovat také Helm grafy pro nasazení aplikací. Mezi běžné sady scénářů patří definování základní konfigurace pro vaši organizaci, která může zahrnovat běžné role a vazby Azure, agenty monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
 
 Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou být nasazeny v heterogenních prostředích. Například můžete mít jedno úložiště, které definuje konfiguraci standardních hodnot vaší organizace, a použít ho na desítky Kubernetes clusterů najednou. [Azure Policy může automatizovat](use-azure-policy.md) vytváření a `sourceControlConfiguration` s konkrétní sadou parametrů ve všech prostředcích Azure ARC s povoleným Kubernetes prostředky v oboru (předplatné nebo skupina prostředků).
 
 Tato úvodní příručka vás provede použitím sady konfigurací s oborem Správce clusteru.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se předpokládá, že máte existující cluster Kubernetes s povoleným připojením k Arc Azure. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start pro připojení clusteru](./connect-cluster.md).
 
@@ -46,7 +46,7 @@ Pokud přidružíte soukromé úložiště s nástrojem `sourceControlConfigurat
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-Pomocí rozšíření Azure CLI pro `k8sconfiguration` , pojďme propojit náš připojený cluster s [ukázkovým úložištěm Git](https://github.com/Azure/arc-k8s-demo). Této konfiguraci přiřadíme název `cluster-config` , dáte pokyn agentovi, aby nasadil operátor do `cluster-config` oboru názvů a udělí operátorovi `cluster-admin` oprávnění.
+Pomocí rozšíření Azure CLI pro `k8sconfiguration` můžete propojit připojený cluster s [ukázkovým úložištěm Git](https://github.com/Azure/arc-k8s-demo). Této konfiguraci přiřadíme název `cluster-config` , dáte pokyn agentovi, aby nasadil operátor do `cluster-config` oboru názvů a udělí operátorovi `cluster-admin` oprávnění.
 
 ```console
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -58,70 +58,101 @@ az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "ComplianceStatus": 1,
-    "clientAppliedTime": null,
-    "level": 3,
-    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}"
+    "complianceState": "Pending",
+    "lastConfigApplied": "0001-01-01T00:00:00",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
+    "messageLevel": "3"
   },
-  "configKind": "Git",
-  "configName": "cluster-config",
-  "configOperator": {
-    "operatorInstanceName": "cluster-config",
-    "operatorNamespace": "cluster-config",
-    "operatorParams": "--git-readonly",
-    "operatorScope": "cluster",
-    "operatorType": "flux"
-  },
-  "configType": "",
-  "id": null,
-  "name": null,
-  "operatorInstanceName": null,
-  "operatorNamespace": null,
-  "operatorParams": null,
-  "operatorScope": null,
-  "operatorType": null,
-  "providerName": "ConnectedClusters",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": null,
+  "id": "/subscriptions/<sub id>/resourceGroups/<group name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "name": "cluster-config",
+  "operatorInstanceName": "cluster-config",
+  "operatorNamespace": "cluster-config",
+  "operatorParams": "--git-readonly",
+  "operatorScope": "cluster",
+  "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": null,
-  "repositoryUrl": null,
-  "sourceControlConfiguration": {
-    "repositoryPublicKey": "",
-    "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git"
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-k8s-demo",
+  "resourceGroup": "MyRG",
+  "sshKnownHostsContents": "",
+  "systemData": {
+    "createdAt": "2020-11-24T21:22:01.542801+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-11-24T21:22:01.542801+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
   },
-  "type": null
-}
-```
+  "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
+  ```
 
-#### <a name="repository-url-parameter"></a>úložiště – parametr adresy URL
+#### <a name="use-a-public-git-repo"></a>Použít veřejné úložiště Git
 
-Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
+| Parametr | Formát |
+| ------------- | ------------- |
+| --úložiště-adresa URL | http [s]://Server/repo [. Git] nebo git://Server/repo [. Git]
 
-| Scénář | Formát | Popis |
+#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Použití privátního úložiště Git s klíči SSH a toků vytvořenými tokem
+
+| Parametr | Formát | Poznámky
 | ------------- | ------------- | ------------- |
-| Veřejné úložiště Git | http [s]://Server/repo.Git nebo git://server/repo.git   | Veřejné úložiště Git  |
-| Privátní úložiště Git – SSH – klíče vytvořené tokem | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Veřejný klíč generovaný tokem musí být přidán do uživatelského účtu vašeho poskytovatele služby Git. Pokud se klíč nasazení přidá do úložiště místo uživatelského účtu, použijte `git@` místo `user@` . Další podrobnosti najdete [tady](#apply-configuration-from-a-private-git-repository). |
+| --úložiště-adresa URL | ssh://user@server/repo[. Git] nebo user@server:repo [. Git] | `git@` může dosadit za `user@`
 
-Tyto scénáře jsou podporovány tokem, ale ne ještě pomocí sourceControlConfiguration.
+> [!NOTE]
+> Veřejný klíč generovaný tokem musí být přidán do uživatelského účtu vašeho poskytovatele služby Git. Pokud se klíč přidá do úložiště místo > uživatelského účtu, použijte `git@` místo `user@` v adrese URL. [Zobrazit další podrobnosti](#apply-configuration-from-a-private-git-repository)
 
-| Scénář | Formát | Popis |
+#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Použití privátního úložiště Git s protokolem SSH a uživatelem poskytnutými klíči
+
+| Parametr | Formát | Poznámky |
 | ------------- | ------------- | ------------- |
-| Privátní úložiště Git – HTTPS | https://server/repo.git | Již brzy (bude podporovat uživatelské jméno/heslo, uživatelské jméno/token, certifikát) |
-| Privátní úložiště Git – SSH – uživatelsky poskytnuté klíče | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Již brzy |
-| Privátní hostitel Git – SSH – vlastní known_hosts | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Již brzy |
+| --úložiště-adresa URL  | ssh://user@server/repo[. Git] nebo user@server:repo [. Git] | `git@` může dosadit za `user@` |
+| --SSH-privátní – klíč | klíč s kódováním base64 ve [formátu PEM](https://aka.ms/PEMformat) | Zadat klíč přímo |
+| --SSH-Private-Key-File | Úplná cesta k místnímu souboru | Zadejte úplnou cestu k místnímu souboru, který obsahuje klíč PEM-Format.
+
+> [!NOTE]
+> Poskytněte vlastní privátní klíč přímo nebo v souboru. Klíč musí být ve [formátu PEM](https://aka.ms/PEMformat) a končit znakem nového řádku (\n).  Přidružený veřejný klíč musí být přidán k uživatelskému účtu ve vašem poskytovateli služby Git. Pokud se klíč přidá do úložiště místo uživatelského účtu, použijte `git@` místo `user@` . [Zobrazit další podrobnosti](#apply-configuration-from-a-private-git-repository)
+
+#### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>Použití privátního hostitele Git s SSH a uživatelem zadanými známými hostiteli
+
+| Parametr | Formát | Poznámky |
+| ------------- | ------------- | ------------- |
+| --úložiště-adresa URL  | ssh://user@server/repo[. Git] nebo user@server:repo [. Git] | `git@` může dosadit za `user@` |
+| --SSH – známé – hostitelé | kódovaný v kódování Base64 | poskytoval se známý obsah hostitelů přímo |
+| --SSH-známé – Host-File | Úplná cesta k místnímu souboru | známý obsah hostitele poskytovaný v místním souboru
+
+> [!NOTE]
+> Operátor toku udržuje seznam běžných hostitelů Git v jeho známém souboru hostitelů, aby bylo možné ověřit úložiště Git před vytvořením připojení SSH. Pokud používáte Neběžné úložiště Git nebo vlastního hostitele Git, možná budete muset zadat klíč hostitele, abyste zajistili, že tok může identifikovat vaše úložiště. Svůj známý obsah hostitelů můžete poskytnout přímo nebo v souboru. [Zobrazit specifikace formátu obsahu známých hostitelů](https://aka.ms/KnownHostsFormat).
+> Tuto možnost můžete použít ve spojení s jedním z klíčových scénářů SSH popsaných výše.
+
+#### <a name="use-a-private-git-repo-with-https"></a>Použití privátního úložiště Git s protokolem HTTPS
+
+| Parametr | Formát | Poznámky |
+| ------------- | ------------- | ------------- |
+| --úložiště-adresa URL | https://server/repo[. Git] | HTTPS se základním ověřováním |
+| --https – uživatel | RAW nebo kódovaná kódování Base64 | Uživatelské jméno HTTPS |
+| --https-Key | RAW nebo kódovaná kódování Base64 | Osobní přístupový token nebo heslo HTTPS
+
+> [!NOTE]
+> Privátní ověřování pomocí protokolu HTTPS Helm je podporováno pouze pomocí grafu Helm operator verze >= 1.2.0.  Ve výchozím nastavení se používá 1.2.0 verze.
+> Privátní ověřování pomocí protokolu HTTPS Helm se momentálně nepodporuje pro spravované clustery služeb Azure Kubernetes.
+> Pokud potřebujete tok pro přístup k úložišti Git prostřednictvím proxy serveru, budete muset agenty Azure ARC aktualizovat pomocí nastavení proxy serveru. [Další informace](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Další parametry
 
-Chcete-li upravit vytvoření konfigurace, je zde několik dalších parametrů:
+Pokud chcete konfiguraci přizpůsobit, můžete použít více parametrů:
 
 `--enable-helm-operator` : *Volitelný* přepínač, který povolí podporu pro nasazení grafu Helm.
 
-`--helm-operator-chart-values` : *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
+`--helm-operator-params` : *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
 
-`--helm-operator-chart-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 0.6.0 '.
+`--helm-operator-chart-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 1.2.0 '.
 
 `--operator-namespace` : *Volitelný* název oboru názvů operátoru. Výchozí: výchozí
 
-`--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases' ```.
+`--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```.
 
 Možnosti podporované v--operator-params
 
@@ -148,7 +179,7 @@ Možnosti podporované v--operator-params
 Další informace najdete v [dokumentaci ke službě tokem](https://aka.ms/FluxcdReadme).
 
 > [!TIP]
-> Je možné vytvořit sourceControlConfiguration na Azure Portal i na kartě **Konfigurace** v okně prostředku Kubernetes s podporou ARC Azure.
+> V Azure Portal na kartě **GitOps** prostředku Kubernetes s povoleným obloukem Azure je možné vytvořit sourceControlConfiguration.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>Ověřit sourceControlConfiguration
 
@@ -167,11 +198,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 {
   "complianceStatus": {
     "complianceState": "Installed",
-    "lastConfigApplied": "2019-12-05T05:34:41.481000",
+    "lastConfigApplied": "2020-12-10T18:26:52.801000+00:00",
     "message": "...",
-    "messageLevel": "3"
+    "messageLevel": "Information"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": {
+    "chartValues": "",
+    "chartVersion": ""
+  },
+  "id": "/subscriptions/<sub id>/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
   "name": "cluster-config",
   "operatorInstanceName": "cluster-config",
   "operatorNamespace": "cluster-config",
@@ -182,20 +219,29 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "repositoryPublicKey": "...",
   "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git",
   "resourceGroup": "AzureArcTest",
+  "sshKnownHostsContents": null,
+  "systemData": {
+    "createdAt": "2020-12-01T03:58:56.175674+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-12-10T18:30:56.881219+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+},
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
 ```
 
 Při `sourceControlConfiguration` vytvoření se v digestoři stane několik věcí:
 
-1. Azure ARC `config-agent` monitoruje Azure Resource Manager pro nové nebo aktualizované konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` ).
+1. Azure ARC `config-agent` monitoruje Azure Resource Manager pro nové nebo aktualizované konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ).
 1. `config-agent` oznámení o nové `Pending` konfiguraci
 1. `config-agent` přečte vlastnosti konfigurace a připraví nasazení spravované instance. `flux`
     * `config-agent` vytvoří cílový obor názvů.
     * `config-agent` připraví účet služby Kubernetes s příslušným oprávněním ( `cluster` nebo `namespace` oborem).
     * `config-agent` nasadí instanci `flux`
-    * `flux` vygeneruje klíč SSH a zaprotokoluje veřejný klíč.
-1. `config-agent` oznamuje stav zpět do `sourceControlConfiguration`
+    * `flux` vygeneruje klíč SSH a zaprotokoluje veřejný klíč (Pokud použijete možnost SSH s klíči generovanými tokem).
+1. `config-agent` hlásí stav zpět do `sourceControlConfiguration` prostředku v Azure.
 
 Během procesu zřizování se `sourceControlConfiguration` přesunou mezi několika změnami stavu. Sledujte průběh pomocí `az k8sconfiguration show ...` příkazu výše:
 
@@ -205,9 +251,13 @@ Během procesu zřizování se `sourceControlConfiguration` přesunou mezi něko
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Použít konfiguraci z privátního úložiště Git
 
-Pokud používáte privátní úložiště Git, musíte provést další úlohu, abyste ukončili smyčku: do úložiště přidejte veřejný klíč vygenerovaný `flux` jako **klíč nasazení** .
+Pokud používáte privátní úložiště Git, musíte v úložišti nakonfigurovat veřejný klíč SSH. Veřejný klíč můžete nakonfigurovat buď v úložišti Git, nebo v rámci uživatele git, který má přístup k úložišti. Veřejný klíč SSH bude buď ten, který poskytnete, nebo ten, který vygeneruje tok.
 
-**Získání veřejného klíče pomocí Azure CLI**
+**Získání vlastního veřejného klíče**
+
+Pokud jste vygenerovali vlastní klíče SSH, pak už máte privátní a veřejné klíče.
+
+**Získání veřejného klíče pomocí Azure CLI (užitečné, pokud tok vygeneruje klíče)**
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
@@ -215,16 +265,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**Získat veřejný klíč z Azure Portal**
+**Získat veřejný klíč z Azure Portal (užitečné, pokud tok vygeneruje klíče)**
 
 1. V Azure Portal přejděte na prostředek připojeného clusteru.
-2. Na stránce prostředek vyberte konfigurace a podívejte se na seznam konfigurací pro tento cluster.
+2. Na stránce prostředek vyberte "GitOps" a podívejte se na seznam konfigurací pro tento cluster.
 3. Vyberte konfiguraci, která používá soukromé úložiště Git.
 4. V kontextovém okně, které se otevře, zkopírujte **veřejný klíč úložiště** do dolní části okna.
 
 Pokud používáte GitHub, použijte jednu z následujících dvou možností:
 
-**Možnost 1: přidejte veřejný klíč do svého uživatelského účtu.**
+**Možnost 1: přidejte veřejný klíč do svého uživatelského účtu (platí pro všechna úložiště ve vašem účtu).**
 
 1. Otevřete GitHub, klikněte na ikonu profilu v pravém horním rohu stránky.
 2. Klikněte na **Nastavení** .
@@ -234,7 +284,7 @@ Pokud používáte GitHub, použijte jednu z následujících dvou možností:
 6. Vložte veřejný klíč (mínus všechny okolní uvozovky).
 7. Klikněte na **Přidat klíč SSH** .
 
-**Možnost 2: přidejte veřejný klíč jako klíč nasazení do úložiště Git.**
+**Možnost 2: přidejte veřejný klíč jako klíč nasazení do úložiště Git (týká se jenom tohoto úložiště).**
 
 1. Otevřete GitHub, přejděte do svého úložiště, do **Nastavení** a pak **Nasaďte klíče** .
 2. Klikněte na **Přidat klíč nasazení** .
@@ -301,10 +351,10 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Odstraní konfiguraci.
 
-Odstraňte `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po zahájení příkazu DELETE se `sourceControlConfiguration` prostředek v Azure odstraní hned, ale může trvat až 1 hodinu, než se z clusteru dokončí úplné odstranění přidružených objektů (pro snížení tohoto časového prodlevy máme položku backlogu).
+Odstraňte `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po zahájení příkazu DELETE se `sourceControlConfiguration` prostředek v Azure odstraní hned a úplné odstranění přidružených objektů z clusteru by se mělo provádět do 10 minut.  Pokud `sourceControlConfiguration` je při odstranění v neúspěšném stavu, může trvat až hodinu úplné odstranění přidružených objektů.
 
 > [!NOTE]
-> Po vytvoření sourceControlConfiguration s oborem názvů je možné používat pro uživatele s `edit` vazbou role v oboru názvů nasazení úloh v tomto oboru názvů. Pokud se tato akce `sourceControlConfiguration` s oborem názvů odstraní, obor názvů zůstane beze změny a nebude odstraněn, aby nedošlo k porušení těchto ostatních úloh.
+> Po vytvoření sourceControlConfiguration s oborem názvů je možné pro uživatele s `edit` vazbou role v oboru názvů nasadit úlohy v tomto oboru názvů. Pokud se tato akce `sourceControlConfiguration` s oborem názvů odstraní, obor názvů zůstane beze změny a nebude odstraněn, aby nedošlo k porušení těchto ostatních úloh.  V případě potřeby můžete tento obor názvů odstranit ručně pomocí kubectl.
 > Změny v clusteru, které byly výsledkem nasazení ze sledovaného úložiště Git, se při odstranění neodstraní `sourceControlConfiguration` .
 
 ```console
