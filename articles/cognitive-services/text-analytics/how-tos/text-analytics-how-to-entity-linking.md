@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656287"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683364"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -35,7 +35,7 @@ Funkce PII je součástí NER a může identifikovat a redigování citlivé ent
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Funkce a verze nástroje pro rozpoznávání pojmenovaných entit
 
-| Příznak                                                         | NER v 3.0 | NER v 3.1 – Preview. 3 |
+| Funkce                                                         | NER v 3.0 | NER v 3.1 – Preview. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
@@ -52,7 +52,7 @@ Recognitioned entity Recognition v 3.1-Preview. 3 zahrnuje možnosti detekce v 3
 * Volitelný `domain=phi` parametr pro detekci důvěrných informací o stavu ( `PHI` ).
 * [Asynchronní operace](text-analytics-how-to-call-api.md) s použitím `/analyze` koncového bodu.
 
-Další informace najdete v oddílu [kategorie entit](../named-entity-types.md) a níže v části [požadavky na koncové body](#request-endpoints) . 
+Další informace najdete v oddílu [kategorie entit](../named-entity-types.md) a níže v části [požadavky na koncové body](#request-endpoints) . Další informace o konfidenčních hodnoceních najdete v části [Analýza textu transparentnosti poznámky](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API.
 

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545923"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683100"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,13 @@ Podívejte se na [část problémy GitHubu](https://github.com/Azure/azure-cosmo
 
 ### <a name="check-the-portal-metrics"></a>Kontrolovat metriky portálu
 Kontrola [metrik portálu](./monitor-cosmos-db.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký](troubleshoot-request-rate-too-large.md) . 
+
+## <a name="retry-logic"></a>Logika opakování <a id="retry-logics"></a>
+Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné operace, pokud je to možné znovu v sadě SDK. Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
+
+1. Čtení a vstupně-výstupní chyby se budou opakovat sadou SDK, aniž by je zpřístupnění koncovým uživatelům.
+2. Zápisy (Create, Upsert, Replace, DELETE) jsou "NOT" idempotentní a proto sada SDK nemůže vždy bez chybně opakovat operace zápisu. Je nutné, aby logika aplikace uživatele mohla zpracovat selhání a opakovat akci.
+3. [Problémy s řešením dostupnosti sady SDK](troubleshoot-sdk-availability.md) popisují opakované pokusy pro Cosmos DB účty ve více oblastech.
 
 ## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 

@@ -3,14 +3,14 @@ title: Správa předzálohovacích a pozálohovacích skriptů v nasazení Updat
 description: V tomto článku se dozvíte, jak nakonfigurovat a spravovat předzálohovací skripty a následné skripty pro nasazení aktualizací.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb2a272829374cfeba5c334ff87268c4928885f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4c37fe107d9256461e5aa632f859ae02c5dc42f5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222194"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683420"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -100,7 +100,7 @@ Pokud chcete použít předzálohovací skript nebo pozálohovací skript v nasa
 
 ![Vybrat skripty](./media/pre-post-scripts/select-scripts.png)
 
-Vyberte skript, který chcete použít. V tomto příkladu používáme sadu Runbook **UpdateManagement-TurnOnVms** . Když vyberete Runbook, otevře se stránka **Konfigurace skriptu** . Vyberte možnost **před skriptem**a pak vyberte **OK**.
+Vyberte skript, který chcete použít. V tomto příkladu používáme sadu Runbook **UpdateManagement-TurnOnVms** . Když vyberete Runbook, otevře se stránka **Konfigurace skriptu** . Vyberte možnost **před skriptem** a pak vyberte **OK**.
 
 Tento postup opakujte pro skript **UpdateManagement-TurnOffVms** . Když ale zvolíte **typ skriptu**, vyberte **pozálohovací skript**.
 
@@ -146,7 +146,7 @@ Předběžné úlohy a následné úkoly se spouštějí jako Runbooky a nativn�
 * Účet Spustit jako
 * Runbook, který chcete spustit
 
-Pro interakci s počítači s Azure byste měli použít rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) k interakci s virtuálními počítači Azure. Příklad toho, jak to udělat, najdete v ukázce Runbooku [Update Management – spuštění skriptu pomocí příkazu Run](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Pro interakci s počítači s Azure byste měli použít rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) k interakci s virtuálními počítači Azure. Příklad toho, jak to udělat, najdete v ukázce Runbooku [Update Management – spuštění skriptu pomocí příkazu Run](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Interakce s počítači mimo Azure
 
@@ -157,7 +157,7 @@ Předběžné úkoly a následné úkoly běží v kontextu Azure a nemají př�
 * Sada Runbook, kterou chcete spustit místně
 * Nadřazený Runbook
 
-Aby bylo možné pracovat s počítači mimo Azure, je spuštěn nadřazený Runbook v kontextu Azure. Tato sada runbook volá podřízený Runbook pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) . Musíte zadat `RunOn` parametr a zadat název Hybrid Runbook Worker, na kterém se má skript spustit. Podívejte se na příklad Runbooku [Update Management – spusťte skript místně](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Aby bylo možné pracovat s počítači mimo Azure, je spuštěn nadřazený Runbook v kontextu Azure. Tato sada runbook volá podřízený Runbook pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Musíte zadat `RunOn` parametr a zadat název Hybrid Runbook Worker, na kterém se má skript spustit. Podívejte se na příklad Runbooku [Update Management – spusťte skript místně](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Přerušit nasazení opravy
 
@@ -173,7 +173,7 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>ukázky
 
-Ukázky pro předzálohovací skripty a pozálohovací skripty najdete v [galerii centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) a v [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat prostřednictvím Azure Portal. Uděláte to tak, že v účtu Automation v části **Automatizace procesu**vyberete **Galerie runbooků**. Pro filtr použijte **Update Management** .
+Ukázky předzálohovacích a pozálohovacích skriptů najdete v [Azure Automation organizaci GitHubu](https://github.com/azureautomation) a [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat prostřednictvím Azure Portal. Uděláte to tak, že v účtu Automation v části **Automatizace procesu** vyberete **Galerie runbooků**. Pro filtr použijte **Update Management** .
 
 ![Seznam galerie](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -186,7 +186,7 @@ Můžete je také vyhledat podle názvu skriptu, jak je znázorněno v následuj
 * Update Management – spuštění skriptu pomocí příkazu Run
 
 > [!IMPORTANT]
-> Po importu runbooků je musíte publikovat, aby bylo možné je použít. Provedete to tak, že v účtu Automation vyhledáte Runbook, vyberete **Upravit**a pak vyberete **publikovat**.
+> Po importu runbooků je musíte publikovat, aby bylo možné je použít. Provedete to tak, že v účtu Automation vyhledáte Runbook, vyberete **Upravit** a pak vyberete **publikovat**.
 
 Ukázky jsou všechny na základě základní šablony, která je definována v následujícím příkladu. Tato šablona se dá použít k vytvoření vlastní sady Runbook pro použití s předzálohovacími skripty a po skriptu. K dispozici je nezbytná logika pro ověřování pomocí Azure a zpracování `SoftwareUpdateConfigurationRunContext` parametru.
 
@@ -242,8 +242,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](../automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Tyto rutiny můžete použít nebo můžete [své moduly](../automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o správě aktualizací najdete v tématu [Správa aktualizací a oprav pro vaše virtuální počítače](manage-updates-for-vm.md).
+Podrobnosti o správě aktualizací najdete v tématu [Správa aktualizací a oprav pro vaše virtuální počítače](manage-updates-for-vm.md).

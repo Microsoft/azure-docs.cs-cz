@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017572"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683125"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Java SDK V4 s účty SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Začněte s tímto seznamem:
 * Podívejte se na sadu Java SDK v Azure Cosmos DB centrálním úložišti, které je k dispozici [pro open source na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos). Má aktivně monitorovanou [část s problémy](https://github.com/Azure/azure-sdk-for-java/issues) . Zkontrolujte, zda je již archivován případný podobný problém s alternativním řešením. Jedním z užitečných tipů je vyfiltrovat problémy pomocí značky *Cosmos: v4-Item* .
 * Přečtěte si [tipy ke zvýšení výkonu](performance-tips-java-sdk-v4-sql.md) pro Azure Cosmos DB Java SDK v4 a použijte doporučené postupy.
 * Pokud jste nenalezli řešení, přečtěte si zbytek tohoto článku. Pak zapište [problém GitHubu](https://github.com/Azure/azure-sdk-for-java/issues). Pokud je k dispozici možnost Přidat značky k vašemu problému GitHubu, přidejte značku *Cosmos: v4-Item* .
+
+### <a name="retry-logic"></a>Logika opakování <a id="retry-logics"></a>
+Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné operace, pokud je to možné znovu v sadě SDK. Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
+
+1. Čtení a vstupně-výstupní chyby se budou opakovat sadou SDK, aniž by je zpřístupnění koncovým uživatelům.
+2. Zápisy (Create, Upsert, Replace, DELETE) jsou "NOT" idempotentní a proto sada SDK nemůže vždy bez chybně opakovat operace zápisu. Je nutné, aby logika aplikace uživatele mohla zpracovat selhání a opakovat akci.
+3. [Problémy s řešením dostupnosti sady SDK](troubleshoot-sdk-availability.md) popisují opakované pokusy pro Cosmos DB účty ve více oblastech.
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Běžné problémy a alternativní řešení
 

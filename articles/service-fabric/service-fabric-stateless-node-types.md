@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605492"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683196"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Nasazení clusteru Azure Service Fabric s nestavovým uzlem bez stavu (Preview)
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.
@@ -44,7 +44,7 @@ Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředk
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -71,9 +71,9 @@ Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředk
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>Konfiguruje se sada škálování virtuálního počítače pro typy bezstavových uzlů.
 Pokud chcete povolit bezstavové typy uzlů, měli byste nakonfigurovat základní prostředek sady škálování virtuálního počítače následujícím způsobem:
 
-* Vlastnost Value  **singlePlacementGroup** , která má být nastavena na hodnotu true nebo false v závislosti na požadavku na škálování na více než 100 virtuálních počítačů.
-* **UpgradeMode** sady škálování, která by měla být nastavená na vracení.
-* Režim postupného upgradu vyžaduje konfiguraci rozšíření stavu aplikace nebo sondy stavu. Nakonfigurujte sondu stavu s výchozí konfigurací pro bezstavové uzly, jak je navrženo níže. Jakmile budou aplikace nasazeny do uzlu NodeType, stav testu stavu/stavu aplikace, lze je změnit na stav monitorování.
+* Vlastnost Value  **singlePlacementGroup** , která by měla být nastavena na **hodnotu false** , pokud požadujete škálování na více než 100 virtuálních počítačů.
+* **UpgradePolicy** nastaví, který **režim** má být nastaven na **vracení**.
+* Režim postupného upgradu vyžaduje konfiguraci rozšíření stavu aplikace nebo sondy stavu. Nakonfigurujte sondu stavu s výchozí konfigurací pro bezstavové uzly, jak je navrženo níže. Jakmile se aplikace nasadí do typu uzlu, můžete změnit porty sondy stavu nebo rozšíření stavu tak, aby se sledovaly stav aplikace.
 
 ```json
 {

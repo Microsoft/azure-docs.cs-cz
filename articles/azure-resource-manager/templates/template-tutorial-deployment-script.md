@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7352bde887648918cbfd2a9ebeaae83cddefc61e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673274"
+ms.locfileid: "97683502"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Kurz: vytvoření certifikátu podepsaného svým držitelem pomocí skriptů pro nasazení
 
@@ -42,7 +42,7 @@ K dokončení tohoto článku potřebujete:
 
 * **[Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
+* **Spravovaná identita přiřazená uživatelem** Tato identita se používá k provádění akcí specifických pro Azure ve skriptu. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -255,7 +255,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
     `deploymentScripts`Prostředek závisí na prostředku trezoru klíčů a prostředku přiřazení role. Má tyto vlastnosti:
 
-    * `identity`: Skript nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem.
+    * `identity`: Skript nasazení používá ke spuštění operací ve skriptu spravovanou identitu přiřazenou uživatelem.
     * `kind`: Zadejte typ skriptu. V současné době jsou podporovány pouze skripty prostředí PowerShell.
     * `forceUpdateTag`: Určete, jestli se má skript nasazení spustit i v případě, že se nezměnil zdroj skriptu. Může to být aktuální časové razítko nebo identifikátor GUID. Další informace najdete v tématu [spuštění skriptu více než jednou](./deployment-script-template.md#run-script-more-than-once).
     * `azPowerShellVersion`: Určuje verzi modulu Azure PowerShell, která se má použít. Skript nasazení v současné době podporuje verze 2.7.0, 2.8.0 a 3.0.0.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 67e28e8c5092f2b52a3a34053f81d8a00afb24ed
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129452"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683219"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopírování nebo zálohování úloh Azure Stream Analytics
 
@@ -37,8 +37,6 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 
     Projekt se vyexportuje do vybrané složky a přidá se do vašeho aktuálního pracovního prostoru.
 
-    ![Exportovat úlohu ASA v Visual Studio Code](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
-
 3. Pokud chcete úlohu publikovat do jiné oblasti nebo zálohy s použitím jiného názvu, vyberte v editoru dotazů (. asaql) **možnost vybrat ze svých předplatných** \* a postupujte podle pokynů.
 
     ![Publikování do Azure v Visual Studio Code](./media/quick-create-visual-studio-code/submit-job.png)
@@ -53,4 +51,3 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Visual Studio Code](quick-create-visual-studio-code.md)
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Nasazení úlohy Azure Stream Analytics s CI/CD pomocí Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
