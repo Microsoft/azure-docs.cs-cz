@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457771"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Kurz: Azure Active Directory integrace s ArcGIS Online
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat integraci ArcGIS Online do služby Azure AD, musíte
 
 4. Do vyhledávacího pole zadejte **ArcGIS Online**, vyberte **ArcGIS Online** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![ArcGIS Online v seznamu výsledků](common/search-new-app.png)
+    ![ArcGIS Online v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -133,7 +133,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ArcGIS O
 
     ![Zabezpečení](./media/arcgis-tutorial/ic784743.png "Zabezpečení")
 
-4. V části **Podniková přihlášení**klikněte na **nastavit poskytovatele identity**.
+4. V části **Podniková přihlášení** klikněte na **nastavit poskytovatele identity**.
 
     ![Podniková přihlášení](./media/arcgis-tutorial/ic784744.png "Podniková přihlášení")
 
@@ -153,7 +153,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ArcGIS O
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -166,7 +166,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -178,7 +178,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ArcGIS Online.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ArcGIS Online**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **ArcGIS Online**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -210,24 +210,24 @@ V případě ArcGIS Online je zřizování ručním úkolem.
 1. Přihlaste se ke svému tenantovi **ArcGIS** .
 
 2. Klikněte na **pozvat členy**.
-   
+
     ![Pozvat členy](./media/arcgis-tutorial/ic784747.png "Pozvat členy")
 
-3. Vyberte možnost **přidat členy automaticky bez odeslání e-mailu**a potom klikněte na tlačítko **Další**.
-   
+3. Vyberte možnost **přidat členy automaticky bez odeslání e-mailu** a potom klikněte na tlačítko **Další**.
+
     ![Přidat členy automaticky](./media/arcgis-tutorial/ic784748.png "Přidat členy automaticky")
 
 4. Na stránce dialog **Členové** proveďte následující kroky:
-   
-     ![Přidat a zkontrolovat](./media/arcgis-tutorial/ic784749.png "Přidat a zkontrolovat")
-    
-     a. Zadejte **e-mail**, **jméno**a **příjmení** platného účtu Azure AD, který chcete zřídit.
-  
+
+    ![Přidat a zkontrolovat](./media/arcgis-tutorial/ic784749.png "Přidat a zkontrolovat")
+
+     a. Zadejte **e-mail**, **jméno** a **příjmení** platného účtu Azure AD, který chcete zřídit.
+
      b. Klikněte na **Přidat a zkontrolovat**.
 5. Zkontrolujte data, která jste zadali, a pak klikněte na **přidat členy**.
-   
+
     ![Přidat člena](./media/arcgis-tutorial/ic784750.png "Přidat člena")
-        
+
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz pro potvrzení, že účet ještě nebude aktivní.
 
@@ -237,7 +237,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ArcGIS Online, měli byste se automaticky přihlásit k ArcGIS Online, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

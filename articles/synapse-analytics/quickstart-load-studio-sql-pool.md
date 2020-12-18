@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: hromadné načtení dat s vyhrazeným fondem SQL'
-description: Pomocí nástroje synapse Studio můžete hromadně načítat data do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
+title: 'Rychlý Start: hromadné načtení dat pomocí vyhrazeného fondu SQL'
+description: Pomocí synapse studia můžete hromadně načítat data do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
@@ -9,57 +9,58 @@ ms.topic: quickstart
 ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360171"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672793"
 ---
-# <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
+# <a name="quickstart-bulk-loading-with-synapse-studio"></a>Rychlý Start: hromadné načítání pomocí synapse studia
 
-Načítání dat je snadné pomocí Průvodce hromadným zatížením v synapse studiu. Průvodce hromadným zatížením vás provede vytvořením skriptu T-SQL s [příkazem Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro hromadné načtení dat. 
+Načítání dat je snadné pomocí Průvodce hromadným zatížením v synapse studiu. Synapse Studio je funkce služby Azure synapse Analytics. Průvodce hromadným zatížením vás provede vytvořením skriptu T-SQL s [příkazem Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro hromadné načtení dat do vyhrazeného fondu SQL. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Vstupní body Průvodce hromadnou zátěží
 
-Data můžete snadno hromadně načítat pomocí vyhrazených fondů SQL, a to jednoduše tak, že kliknete pravým tlačítkem na následující oblasti v rámci synapse studia:
+Data můžete hromadně načíst kliknutím pravým tlačítkem myši na následující oblast v synapse studiu: soubor nebo složka z účtu služby Azure Storage, který je připojený k vašemu pracovnímu prostoru.
 
-- Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
+![Snímek obrazovky, který ukazuje kliknutí pravým tlačítkem myši na soubor nebo složku z účtu úložiště.](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](
-./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2. 
+- Průvodce vygeneruje příkaz COPY, který používá předávací předávání Azure Active Directory (Azure AD) pro ověřování. Váš [uživatel Azure AD musí mít přístup](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet Azure Data Lake Storage Gen2. 
 
 - Pokud vytváříte novou tabulku, do které se načítají, musíte mít požadovaná [oprávnění pro použití příkazu Kopírovat](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) a oprávnění k vytváření tabulek.
 
-- Propojená služba přidružená k účtu adls Gen2 **musí mít přístup ke** / **složce** souborů, která se má načíst. Pokud má například mechanismus ověřování propojených služeb spravovanou identitu, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění čtenář objektů BLOB úložiště v účtu úložiště.
+- Propojená služba přidružená k účtu Data Lake Storage Gen2 *musí mít přístup k souboru nebo složce* , které se mají načíst. Pokud je například mechanismus ověřování pro propojenou službu spravovaná identita, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění ke čtečce dat objektů BLOB úložiště v účtu úložiště.
 
-- Pokud je ve vašem pracovním prostoru povolená virtuální síť, ujistěte se, že integrovaný modul runtime přidružený k účtu ADLS Gen2 propojené služby pro zdrojová data a umístění souboru chyb má povolený interaktivní vytváření. Interaktivní vytváření se vyžaduje pro detekci v rámci schématu, zobrazení náhledu obsahu zdrojového souboru a procházení ADLS Gen2 účtů úložiště v průvodci.
+- Pokud je v pracovním prostoru povolená virtuální síť, ujistěte se, že integrovaný modul runtime přidružený k propojeným službám účtu Data Lake Storage Gen2 pro zdrojová data a umístění souboru chyb má povolený interaktivní vytváření. Interaktivní vytváření se vyžaduje pro detekci v rámci schématu, zobrazení náhledu obsahu zdrojového souboru a procházení Data Lake Storage Gen2 účtů úložiště v průvodci.
 
-### <a name="steps"></a>Postup
+## <a name="steps"></a>Postup
 
-1. V panelu umístění úložiště zdroje vyberte účet úložiště a soubor nebo složku, které nahráváte. Průvodce se automaticky pokusí zjistit soubory Parquet i soubory s oddělovači (CSV) včetně mapování zdrojových polí ze souboru na příslušné cílové datové typy SQL. 
+1. Na panelu **umístění zdrojového úložiště** vyberte účet úložiště a soubor nebo složku, ze které nahráváte. Průvodce se automaticky pokusí rozpoznat soubory Parquet a soubory s oddělovači (CSV), včetně mapování zdrojových polí ze souboru na příslušné cílové datové typy SQL. 
 
-   ![Výběr zdrojového umístění](./sql/media/bulk-load/bulk-load-source-location.png)
+   ![Snímek obrazovky, který zobrazuje výběr zdrojového umístění.](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Vyberte nastavení formátu souboru včetně nastavení chyb, pro které se během procesu hromadného načtení odmítnou řádky. Můžete také vybrat možnost data verze Preview, abyste viděli, jak příkaz COPY analyzuje soubor, který vám pomůže nakonfigurovat nastavení formátu souboru. Vyberte možnost Ukázková data pokaždé, když změníte nastavení formátu souboru, abyste viděli, jak příkaz COPY bude analyzovat soubor s aktualizovaným nastavením:
+2. Vyberte nastavení formátu souboru, včetně nastavení chyby pro to, kdy během procesu hromadného načtení existují odmítnuté řádky. Můžete také vybrat možnost **Zobrazit data** a zjistit, jak bude příkaz Kopírovat analyzovat soubor, který vám pomůže nakonfigurovat nastavení formátu souboru. Při každé změně nastavení formátu souboru vyberte **Náhled dat** , abyste viděli, jak příkaz Copy bude analyzovat soubor s aktualizovaným nastavením.
 
-   ![Náhled dat](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Snímek obrazovky, který zobrazuje náhled dat.](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
-> [!NOTE]  
->
-> - V Průvodci hromadnou zátěží není podporováno zobrazení náhledu dat pomocí koncových znaků polí s více znaky. Průvodce hromadnou zátěží zobrazí náhled dat v jednom sloupci, pokud je zadán ukončovací znak pole s více znaky. 
-> - Když vyberete možnost "odvodit názvy sloupců", Průvodce hromadným zatížením analyzuje názvy sloupců z prvního řádku zadaného polem první řádek. Průvodce hromadnou zátěží automaticky zvýší hodnotu FIRSTROW v příkazu COPY na hodnotu 1 pro ignorování tohoto řádku záhlaví. 
-> - V příkazu COPY se podporuje zadání zakončení řádků s více znaky. v průvodci hromadným zatížením to však není podporováno, pokud bude vyvolána chyba.
+   > [!NOTE]  
+   >
+   > - Průvodce hromadným zatížením nepodporuje náhled dat pomocí ukončovacích polí s více znaky. Když zadáte ukončovací znak pole s více znaky, Průvodce zobrazí náhled dat v jednom sloupci. 
+   > - Když vyberete možnost **odvodit názvy sloupců**, Průvodce hromadným zatížením analyzuje názvy sloupců z prvního řádku zadaného polem **první řádek** . Průvodce hromadnou zátěží automaticky zvýší `FIRSTROW` hodnotu v příkazu copy hodnotou 1 pro ignorování tohoto řádku záhlaví. 
+   > - V příkazu COPY se podporuje zadání zakončení řádků s více znaky. Průvodce hromadným zatížením ho ale nepodporuje a vyvolá chybu.
 
-3. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
-4. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pokud je povolená možnost "odvodit názvy sloupců", názvy sloupců poznámky se automaticky zjistí. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce:
+3. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, zda bude zatížení pro existující tabulku nebo novou tabulku.
+   ![Snímek obrazovky, který zobrazuje výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Vyberte **Konfigurovat mapování sloupce** a ujistěte se, že máte vhodné mapování sloupce. Názvy sloupců poznámek se budou automaticky detekovat, pokud jste povolili možnost **odvodit názvy sloupců**. Pro nové tabulky je konfigurace mapování sloupce důležitá pro aktualizaci datových typů cílového sloupce.
 
-   ![Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-5. Vyberte otevřít skript a skript T-SQL se vygeneruje příkazem COPY, který se má načíst ze služby Data Lake: ![ otevření skriptu SQL.](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Snímek obrazovky zobrazující konfiguraci mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Vyberte **otevřít skript**. Skript T-SQL se vygeneruje příkazem COPY, který se má načíst ze služby Data Lake.
+   ![Snímek obrazovky, který ukazuje otevření skriptu SQL.](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o možnostech kopírování najdete v článku o [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) .
-- Podívejte se na článek [Přehled načítání dat](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) .
+- Informace o použití procesu extrakce, transformace a načítání (ETL) najdete v článku [Přehled načítání dat](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) .

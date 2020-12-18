@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179690"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673660"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Kurz: Konfigurace Clarizen jednoho pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v Clarizen a Azure Active D
 > * Zřizování skupin a členství ve skupinách v Clarizen jednom.
 > * Pro Clarizen se doporučuje [jednotné přihlašování (SSO)](./clarizen-tutorial.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -76,21 +76,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-clarizen-one-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Clarizen jednu v Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
-    ![Snímek obrazovky, který zobrazuje podokno podnikové aplikace](common/enterprise-applications.png)
+      ![Snímek obrazovky, který zobrazuje podokno podnikové aplikace](common/enterprise-applications.png)
 
 1. V seznamu aplikace vyberte **Clarizen jednu**.
 
-    ![Snímek obrazovky, který zobrazuje Clarizen jeden odkaz v seznamu aplikací](common/all-applications.png)
+      ![Snímek obrazovky, který zobrazuje Clarizen jeden odkaz v seznamu aplikací](common/all-applications.png)
 
 1. Vyberte kartu **Zřizování**.
 
-    ![Snímek obrazovky zobrazující kartu zřizování](common/provisioning.png)
+      ![Snímek obrazovky zobrazující kartu zřizování](common/provisioning.png)
 
 1. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Snímek obrazovky zobrazující automatickou možnost karty zřizování](common/provisioning-automatic.png)
+      ![Snímek obrazovky zobrazující automatickou možnost karty zřizování](common/provisioning-automatic.png)
 
 1. V části **přihlašovací údaje správce** zadejte Clarizen jednu **adresu URL tenanta** a **tajný token**. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k Clarizen. Pokud se připojení nepovede, zajistěte, aby Clarizen jeden účet měl oprávnění správce, a zkuste to znovu.
 
@@ -143,7 +143,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |userType|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
@@ -162,15 +162,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Clarizen jednu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Snímek obrazovky, na kterém se zobrazuje stav zřizování zapnuto.](common/provisioning-toggle-on.png)
+      ![Snímek obrazovky, na kterém se zobrazuje stav zřizování zapnuto.](common/provisioning-toggle-on.png)
 
 1. Definujte uživatele nebo skupiny, které chcete zřídit, aby je Clarizen, a to tak, že v části **Nastavení** vyberou požadované hodnoty v **rozsahu** .
 
-    ![Snímek obrazovky zobrazující obor zřizování](common/provisioning-scope.png)
+      ![Snímek obrazovky zobrazující obor zřizování](common/provisioning-scope.png)
 
 1. Až budete připraveni zřídit, vyberte **Uložit**.
 
-    ![Snímek obrazovky, který ukazuje uložení konfigurace zřizování.](common/provisioning-configuration-save.png)
+      ![Snímek obrazovky, který ukazuje uložení konfigurace zřizování.](common/provisioning-configuration-save.png)
 
 Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná.
 

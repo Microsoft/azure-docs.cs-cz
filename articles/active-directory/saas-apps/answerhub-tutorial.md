@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458043"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Azure Active Directory integrace s AnswerHub
 
@@ -53,7 +53,7 @@ K nastavení integrace AnswerHub do služby Azure AD je nutné přidat AnswerHub
 
     ![Azure Active Directory – tlačítko](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -63,7 +63,7 @@ K nastavení integrace AnswerHub do služby Azure AD je nutné přidat AnswerHub
 
 4. Do vyhledávacího pole zadejte **AnswerHub**. V seznamu výsledků vyberte **AnswerHub** a pak vyberte **Přidat**.
 
-     ![AnswerHub v seznamu výsledků](common/search-new-app.png)
+    ![AnswerHub v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Nastavení a testování jednotného přihlašování Azure AD
 
@@ -141,13 +141,13 @@ V této části nastavíte jednotné přihlašování pro AnswerHub.
 4. Na kartě **Konfigurace IDP** proveďte tyto kroky:
 
     ![Snímek obrazovky se zobrazí stránka AnswerHub s vybranou kartou uživatelé & skupiny.](./media/answerhub-tutorial/ic785172.png "Nastavení SAML")  
-  
+
     a. Do pole **Adresa URL přihlášení IDP** vložte **adresu URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
-  
+
     b. Do pole **Adresa URL pro odhlášení IDP** vložte **adresu URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
     c. V poli **Formát identifikátoru názvu IDP** zadejte hodnotu **identifikátoru** vybranou v části **atributy uživatele** na Azure Portal.
-  
+
     d. Vyberte **klíče a certifikáty**.
 
 5. V části **klíče a certifikáty** proveďte tyto kroky:
@@ -155,7 +155,7 @@ V této části nastavíte jednotné přihlašování pro AnswerHub.
     ![Sekce klíčů a certifikátů](./media/answerhub-tutorial/ic785173.png "Klíče a certifikáty")  
 
     a. Otevřete certifikát kódovaný v kódování Base64, který jste stáhli z Azure Portal v poznámkovém bloku, zkopírujte jeho obsah a pak obsah vložte do pole **IDP Public Key (x509 Format)** .
-  
+
     b. Vyberte **Uložit**.
 
 6. Na kartě **Konfigurace IDP** vyberte **Uložit** znovu.
@@ -166,7 +166,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 **Chcete-li vytvořit testovacího uživatele služby Azure AD:**
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Vyberte Azure Active Directory, uživatelé, všichni uživatelé.](common/users.png)
 
@@ -179,9 +179,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
     ![Uživatelské vlastnosti](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@<yourcompanydomain. Extension>**.  
-    Například, BrittaSimon@contoso.com.
+    Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -193,7 +193,7 @@ V této části nastavíte uživatele Britta Simon, aby používali jednotné p�
 
 **Přiřazení testovacího uživatele Azure AD:**
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **AnswerHub**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **AnswerHub**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -205,7 +205,7 @@ V této části nastavíte uživatele Britta Simon, aby používali jednotné p�
 
     ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Přidat podokno přiřazení](common/add-assign-user.png)
 
@@ -229,11 +229,11 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k AnswerHub, mus
 
 3. Vyberte kartu **uživatelé & skupiny** .
 
-4. V levém podokně v části **Správa uživatelů** vyberte **vytvořit nebo importovat uživatele**a pak vyberte **Uživatelé & skupiny**.
+4. V levém podokně v části **Správa uživatelů** vyberte **vytvořit nebo importovat uživatele** a pak vyberte **Uživatelé & skupiny**.
 
-   ![Snímek obrazovky zobrazuje stránku AnswerHub s vybranými kartami uživatelé & skupiny a odkaz vytvořit nebo importovat uživatele se nazývá.](./media/answerhub-tutorial/ic785175.png "Uživatelé & skupiny")
+    ![Snímek obrazovky zobrazuje stránku AnswerHub s vybranými kartami uživatelé & skupiny a odkaz vytvořit nebo importovat uživatele se nazývá.](./media/answerhub-tutorial/ic785175.png "Uživatelé & skupiny")
 
-5. Do příslušných polí zadejte **e-mailovou adresu**, **uživatelské jméno**a **heslo** platného účtu Azure AD, který chcete přidat, a pak vyberte **Uložit**.
+5. Do příslušných polí zadejte **e-mailovou adresu**, **uživatelské jméno** a **heslo** platného účtu Azure AD, který chcete přidat, a pak vyberte **Uložit**.
 
 > [!NOTE]
 > K nastavení uživatelských účtů Azure AD můžete použít jakýkoli jiný nástroj pro vytváření uživatelských účtů nebo rozhraní API, které poskytuje AnswerHub.
@@ -244,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici AnswerHub, měli byste se automaticky přihlásit k AnswerHub, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ba4d245329c8edad411fcca0398fc3810b833178
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ac85fc0478f4e775b92de21cf931358d63aa95b4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458006"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Azure Active Directory integrace s AppDynamics
 
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat integraci AppDynamics do služby Azure AD, musíte p
 
 4. Do vyhledávacího pole zadejte **AppDynamics**, vyberte **AppDynamics** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![AppDynamics v seznamu výsledků](common/search-new-app.png)
+    ![AppDynamics v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí AppDynam
 
 1. V jiném okně webového prohlížeče se přihlaste k webu AppDynamics společnosti jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na **Nastavení**a pak klikněte na **Správa**.
+1. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak klikněte na **Správa**.
 
     ![Správa](./media/appdynamics-tutorial/ic790216.png "Správa")
 
@@ -138,9 +138,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí AppDynam
 
 1. V části **Zprostředkovatel ověřování** proveďte následující kroky:
 
-   ![Konfigurace SAML](./media/appdynamics-tutorial/ic790225.png "Konfigurace SAML")
+    ![Konfigurace SAML](./media/appdynamics-tutorial/ic790225.png "Konfigurace SAML")
 
-   a. Jako **Zprostředkovatel ověřování**vyberte **SAML**.
+   a. Jako **Zprostředkovatel ověřování** vyberte **SAML**.
 
    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -154,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí AppDynam
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -167,7 +167,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k AppDynamics.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **AppDynamics**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **AppDynamics**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -214,7 +214,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici AppDynamics, měli byste se automaticky přihlásit k AppDynamics, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

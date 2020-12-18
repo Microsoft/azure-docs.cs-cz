@@ -2,13 +2,13 @@
 title: Key Vault tajný klíč se šablonou
 description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazování.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677861"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672701"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazení
 
@@ -377,3 +377,4 @@ Následující šablona dynamicky vytvoří ID trezoru klíčů a předá ho jak
 
 - Obecné informace o trezorech klíčů najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md).
 - Kompletní Příklady referenčních tajných klíčů najdete v tématu [Key Vault příklady](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- Microsoft Learn modul, který pokrývá předávání zabezpečené hodnoty z trezoru klíčů, najdete v tématu [Správa složitých nasazení cloudu pomocí pokročilých funkcí šablon ARM](/learn/modules/manage-deployments-advanced-arm-template-features/).

@@ -3,12 +3,12 @@ title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324331"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674133"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
@@ -37,6 +37,9 @@ Průběžný export **nepodporuje** následující funkce a konfigurace služby 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Vytvoření průběžného exportu
+
+> [!NOTE]
+> Aplikace nemůže exportovat více než zřizuje dat za den. Pokud je exportováno více než zřizuje za den, export bude zakázán. Pro export bez omezení použijte [Export založený na nastavení diagnostiky](#diagnostic-settings-based-export).
 
 1. V Application Insights prostředek pro aplikaci v části konfigurovat na levé straně otevřete průběžný export a klikněte na **Přidat**:
 
@@ -135,7 +138,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)
@@ -190,7 +193,7 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Ne, je nám líto. Náš Exportní modul v tuto chvíli funguje jenom s Azure Storage.  
 * *Existuje nějaké omezení množství dat, které jste umístili do Storu?*
 
-    Ne. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
+    No. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
 * *Kolik objektů BLOB se má v úložišti zobrazit?*
 
   * Pro každý datový typ, který jste vybrali k exportu, se vytvoří nový objekt BLOB každou minutu (pokud jsou k dispozici data).
@@ -200,13 +203,26 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Upravte export a otevřete kartu exportovat cíl. Vyberte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
-    Ano. Klikněte na Zakázat.
+    Yes. Klikněte na Zakázat.
 
 ## <a name="code-samples"></a>Ukázky kódů
 
 * [Ukázka Stream Analytics](export-stream-analytics.md)
 * [Export do SQL s použitím Stream Analytics][exportasa]
 * [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>Export založený na nastavení diagnostiky
+
+Export založený na nastaveních diagnostiky používá jiné schéma než průběžný export. Podporuje také funkce, které průběžný export nevypadá:
+
+* Účty Azure Storage s virtuální sítí, branami firewall a soukromými odkazy.
+* Exportujte do centra událostí.
+
+Migrace na základě exportu podle nastavení diagnostiky:
+
+1. Zakáže aktuální průběžný export.
+2. [Migruje aplikaci na základě pracovního prostoru](convert-classic-resource.md).
+3. [Povolit export nastavení diagnostiky](create-workspace-resource.md#export-telemetry) V rámci prostředku Application Insights vyberte **nastavení diagnostiky > přidat nastavení diagnostiky** .
 
 <!--Link references-->
 

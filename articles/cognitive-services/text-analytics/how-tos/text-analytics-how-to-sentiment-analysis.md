@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656270"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673049"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
@@ -45,7 +45,7 @@ Popisky jsou *kladné*, *záporné* a *neutrální*. Na úrovni dokumentu lze ta
 | `negative`V dokumentu je alespoň jedna věta a alespoň jedna `positive` věta.    | `mixed`                 |
 | Všechny věty v dokumentu jsou `neutral` .                                                  | `neutral`               |
 
-Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. U každého dokumentu nebo každé věty jsou předpovězené skóre spojené s popisky (kladné, záporné a neutrální) přidány až 1.
+Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. U každého dokumentu nebo každé věty jsou předpovězené skóre spojené s popisky (kladné, záporné a neutrální) přidány až 1. Další informace najdete v [poznámce transparentnosti analýza textu](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ## <a name="opinion-mining"></a>Dolování názoru
 

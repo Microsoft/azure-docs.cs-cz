@@ -2,13 +2,13 @@
 title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905991"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672844"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Podmíněné nasazení v šablonách ARM
 
@@ -90,5 +90,6 @@ Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a
 
 ## <a name="next-steps"></a>Další kroky
 
+* Microsoft Learn modul, který pokrývá podmíněné nasazení, najdete v tématu [Správa složitých nasazení cloudu pomocí pokročilých funkcí šablon ARM](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Doporučení k vytváření šablon najdete v tématu [osvědčené postupy pro šablonu ARM](template-best-practices.md).
 * Pokud chcete vytvořit víc instancí prostředku, přečtěte si téma [iterace prostředků v šablonách ARM](copy-resources.md).

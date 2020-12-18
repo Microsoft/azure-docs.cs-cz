@@ -1,6 +1,6 @@
 ---
 title: Model fakturace ceny &
-description: Přehled o tom, jak model cen a fakturace funguje Azure Logic Apps
+description: Přehled o tom, jak ceny a fakturace fungují pro Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937589"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673106"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -65,11 +65,11 @@ Pro aplikace logiky, které vytvoříte a spustíte v ISE, platíte za tyto funk
 
   * **Vývojář** ISE SKU: jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  Bez ohledu na SKLADOVOU položku můžou mít jednotlivé ISE [omezený počet účtů pro integraci](logic-apps-limits-and-config.md#integration-account-limits). Tento limit můžete zvýšit na další náklady:
+  Za další náklady můžete vytvořit další účty pro integraci pro ISE [až do celkového limitu](logic-apps-limits-and-config.md#integration-account-limits). 
 
-  * Úroveň **Premium** ISE SKU: až čtyři další standardní účty. Žádné účty zdarma nebo Basic.
+  * Úroveň **Premium** ISE SKU: až 19 více standardních účtů. Nejsou povoleny žádné bezplatné nebo základní účty.
 
-  * **Vývojář** ISE SKU: buď až 4 účty na úrovni Standard, nebo až 5 celkových standardních účtů. Žádné základní účty.
+  * **Vývojář** ISE SKU: až 19 dalších standardních účtů, pokud už máte bezplatný účet, nebo 20 celkových standardních účtů, pokud nemáte bezplatný účet. Nejsou povoleny žádné základní účty.
 
   Další informace o omezeních účtu pro integraci najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtu integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
 
@@ -81,7 +81,7 @@ Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikac
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Aktivační procedury
+## <a name="triggers"></a>Aktivační události
 
 Trigger je vždy prvním krokem v pracovním postupu aplikace logiky a jedná se o speciální akci, která vytvoří a spustí instanci aplikace logiky, když jsou splněna určitá kritéria nebo dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
 
@@ -95,7 +95,7 @@ Trigger je vždy prvním krokem v pracovním postupu aplikace logiky a jedná se
 
 <a name="actions"></a>
 
-## <a name="actions"></a>Akce
+## <a name="actions"></a>Actions
 
 "Integrované" akce Azure Logic Apps měřičů, jako jsou například HTTP, jako nativní akce. Například integrované akce zahrnují volání HTTP, volání z Azure Functions nebo API Management a kroky toku řízení, jako jsou podmínky, smyčky a příkazy Switch. Každá akce má svůj vlastní typ akce. Například akce, které volají [konektory](/connectors) , mají typ "vstupech apiconnection". Tyto konektory jsou klasifikované jako konektory Standard nebo Enterprise, které se měří na základě příslušných [cen](https://azure.microsoft.com/pricing/details/logic-apps). Podnikové konektory ve *verzi Preview* se účtují jako standardní konektory.
 
@@ -118,7 +118,7 @@ Zakázané aplikace logiky se neúčtují, protože nemůžou vytvářet nové i
 
 Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Úrovně Basic a Standard jsou podporovány Logic Apps smlouvou o úrovni služeb (SLA), zatímco úroveň Free není podporována smlouvou SLA a má omezení dostupnosti, propustnosti a využití oblasti. S výjimkou účtů pro integraci bezplatné úrovně můžete mít v každé oblasti Azure více než jeden účet pro integraci. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-Pokud máte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)bez ohledu na [skladovou](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)položku, vaše ISE může mít [omezený počet účtů pro integraci](logic-apps-limits-and-config.md#integration-account-limits), ale [Toto omezení můžete zvýšit na další náklady](#fixed-pricing). Další informace o tom, jak model fixního cenového modelu funguje pro ISE, najdete v části předchozí [pevný cenový model](#fixed-pricing) v tomto tématu. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
+Pokud máte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), může vaše ISE používat jediný účet pro integraci bez dalších poplatků, i když se zahrnutý typ účtu liší podle [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). Za [Další náklady](#fixed-pricing)můžete vytvořit další účty pro integraci pro ISE až do [celkového limitu na integračních účtech](logic-apps-limits-and-config.md#integration-account-limits). Další informace o tom, jak model fixního cenového modelu funguje pro ISE, najdete v části předchozí [pevný cenový model](#fixed-pricing) v tomto tématu. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Pokud si chcete vybrat mezi účtem pro integraci Free, Basic nebo Standard, přečtěte si tyto popisy případů použití:
 

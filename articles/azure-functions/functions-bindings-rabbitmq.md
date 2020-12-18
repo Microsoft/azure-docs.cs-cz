@@ -4,22 +4,22 @@ description: Naučte se odesílat triggery Azure RabbitMQ a vazby v Azure Functi
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629625"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672504"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ – Přehled vazeb pro Azure Functions
 
 > [!NOTE]
 > Vazby RabbitMQ jsou plně podporované jenom na **Windows Premium a na vyhrazených** plánech. Spotřeba a Linux se aktuálně nepodporují.
 
-Azure Functions se integruje s [RabbitMQ](https://www.rabbitmq.com/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Rozšíření Azure Functions RabbitMQ Binding umožňují odesílat a přijímat zprávy pomocí rozhraní RabbitMQ API s funkcemi.
+Azure Functions se integruje s [RabbitMQ](https://www.rabbitmq.com/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Rozšíření Azure Functions RabbitMQ umožňuje odesílat a přijímat zprávy pomocí rozhraní RabbitMQ API s funkcemi.
 
 | Akce | Typ |
 |---------|---------|
