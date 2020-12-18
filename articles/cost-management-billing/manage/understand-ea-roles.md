@@ -1,24 +1,24 @@
 ---
-title: Principy rolí správce smlouvy Enterprise v Azure
+title: Principy rolí správce smluv Enterprise (EA) v Azure
 description: Přečtěte si informace o rolích správce smlouvy Enterprise v Azure. Můžete přiřadit pět různých rolí správce.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409194"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560521"
 ---
-# <a name="managing-azure-enterprise-roles"></a>Správa rolí Azure Enterprise
+# <a name="managing-azure-enterprise-agreement-roles"></a>Správa rolí pro smlouvu Enterprise v Azure
 
-Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různých rolí správce, které jim v organizaci usnadní spravovat využívání a výdaje:
+Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různých rolí správce, které jim usnadní správu využití a výdajů v rámci organizace:
 
 - Podnikový správce
 - Podnikový správce (jen pro čtení)<sup>1</sup>
@@ -82,6 +82,8 @@ Uživatelé s touto rolí mají nejvyšší úroveň přístupu. Mohou:
 - spravovat kontakty pro oznámení,
 - zobrazovat využití napříč všemi účty,
 - zobrazovat nefakturované poplatky napříč všemi účty.
+- zobrazovat a spravovat všechny objednávky a rezervace, které souvisejí se smlouvou Enterprise.
+  - Podnikový správce (jen pro čtení) může zobrazovat rezervace a objednávky rezervací. Nemůže je ale spravovat.
 
 V podnikové registraci můžete mít více podnikových správců. Podnikovým správcům můžete udělit přístup jen pro čtení. Všichni navíc přebírají roli Správce oddělení.
 
