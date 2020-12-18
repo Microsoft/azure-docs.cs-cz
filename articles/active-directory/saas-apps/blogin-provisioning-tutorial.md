@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3d5becd92d78432873eb640ea6c4bbf588739e67
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5d75aeb4771d49266e6cb09286b026054319591b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180162"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674238"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlogIn pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v BlogIn i Azure Active Dir
 > * Zřizování skupin a členství ve skupinách v BlogIn
 > * [Jednotné přihlašování](./blogin-tutorial.md) k BlogIn (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

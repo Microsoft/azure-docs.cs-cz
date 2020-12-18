@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928184"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674008"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Použít sadu nástrojů pro test šablon ARM
 
@@ -282,4 +282,5 @@ Další příklad ukazuje, jak spustit testy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o výchozích testech naleznete v tématu [Default test Cases for a Template test Toolkit](test-cases.md).
+- Další informace o výchozích testech naleznete v tématu [Default test Cases for a Template test Toolkit](test-cases.md).
+- Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).

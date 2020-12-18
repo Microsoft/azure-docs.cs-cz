@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 97d95f9993f85a51ac7baa69ebb331f6c8588c18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acc1660be99b3b7cc9a3c7414c47f9f6e159b559
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318721"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Kurz: Azure Active Directory integraci s &Jan
 
@@ -30,7 +30,7 @@ Integrací &ve službě Azure AD jsou tyto výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s &Jan, potřebujete následující položky:
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci &do Azure AD, musíte do seznamu spravovan
 
 4. Do vyhledávacího pole zadejte **&Jan**, vyberte **&** od panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![&Jan v seznamu výsledků](common/search-new-app.png)
+    ![&Jan v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -123,7 +123,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
 Postup při povolení jednotného přihlašování v &ě Jan:
 
-1. Přihlaste se, abyste &i Jan. Přejít na **Account**  >  **správu uživatelských**účtů.
+1. Přihlaste se, abyste &i Jan. Přejít na   >  **správu uživatelských** účtů.
 1. Změňte ověřovací mechanismus z výchozího na **Enterprise Signing (SAML)**.
 1. Nahrajte **soubor XML federačních metadat** , který jste stáhli v kroku 6 v předchozí části.
 1. Vyberte **Uložit**.
@@ -132,7 +132,7 @@ Postup při povolení jednotného přihlašování v &ě Jan:
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -145,7 +145,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -157,7 +157,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup &Jan.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak **&Jan**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak **&Jan**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -181,7 +181,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-frankly-test-user"></a>Vytvořit &Jan test uživatele
 
-V této části vytvoříte ve &Frank uživatele s názvem Britta Simon. Pokud chcete přidat uživatele v &Jan Platform, pracujte s [&em, který tým podporuje](mailto:help@andfrankly.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte ve &Frank uživatele s názvem Britta Simon. Pokud chcete přidat uživatele v &Jan Platform, pracujte s [&em, který tým podporuje](mailto:help@andfrankly.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -189,7 +189,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici &Jan, měli byste se automaticky přihlásit k &, ve kterém jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

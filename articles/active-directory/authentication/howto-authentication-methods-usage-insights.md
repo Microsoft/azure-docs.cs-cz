@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 12/17/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743628"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670787"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
@@ -31,7 +31,7 @@ K využití a přehledům můžou získat přístup následující role:
 - Správce zabezpečení
 - Čtečka sestav
 
-Pro přístup k používání a přehledům nejsou potřeba žádné další licence. Informace o licencování služby Azure AD Multi-Factor Authentication a samoobslužného resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+ Pro přístup k využití a přehledům se vyžaduje licence Azure AD Premium P1 nebo P2. Informace o licencování služby Azure AD Multi-Factor Authentication a samoobslužného resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -53,7 +53,7 @@ Uživatelé zaregistrovaní, uživatelé a uživatelé s podporou dlaždic zobra
 
 Kliknutím na kteroukoli z těchto dlaždic nebo přehledů zobrazených v nich získáte předem filtrovaný seznam podrobností o registraci.
 
-Graf **registrací** na kartě **registrace** zobrazuje počet úspěšných a neúspěšných zaregistrovaných metod ověřování podle metody ověřování. Graf **Resets** resetování na kartě **využití** zobrazuje počet úspěšných a neúspěšných ověření během metody resetování hesla podle ověření.
+Graf **registrací** na kartě **registrace** zobrazuje počet úspěšných a neúspěšných zaregistrovaných metod ověřování podle metody ověřování. Graf  resetování na kartě **využití** zobrazuje počet úspěšných a neúspěšných ověření během metody resetování hesla podle ověření.
 
 Když kliknete na některé z grafů, zobrazí se předem filtrovaný seznam událostí registrace nebo resetování.
 

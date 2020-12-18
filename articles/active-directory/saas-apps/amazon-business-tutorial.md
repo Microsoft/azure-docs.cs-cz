@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589889"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672895"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Kurz: integrace Amazon Business s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat organizaci Amazon Business pomocí Azure A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -74,12 +74,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
 
     1. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí jednoho z následujících vzorů:
-    
+
        | URL | Oblast |
        |-|-|
        | `https://www.amazon.com`| Severní Amerika |
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
        | `https://www.amazon.de`| Evropa |
 
     1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
-    
+
        | URL | Oblast |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Severní Amerika |
@@ -146,7 +146,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V průvodci **nastavením jednotného přihlašování** vyberte poskytovatele podle požadavků vaší organizace a klikněte na **Další**.
 
     ![Snímek obrazovky ukazuje nastavení S S S, s Microsoft Azureem D a dalším vybraným.](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > I když je uvedená možnost Microsoft ADFS, nebude fungovat s přihlašováním pomocí Azure AD.
 
@@ -193,12 +193,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Nakonec v části **Podrobnosti připojení SSO** se **stav** zobrazuje jako **aktivní**.
 
     ![Snímek obrazovky se zobrazí podrobnosti o připojení s stavem aktivní.](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok a vložte adresu URL pro přihlášení z obrazovky výše v textovém poli **Adresa URL pro přihlášení** v části **nastavit další adresy URL** v Azure Portal. Použijte tento formát:
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
@@ -236,7 +236,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **Amazon Business**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -288,8 +288,8 @@ Po kliknutí na dlaždici Amazon Business na přístupovém panelu byste se měl
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 - [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a618cae375b9d67976fa618ed5804da7ce73c784
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c6d102f4d9a67f58469242cb44d2c6466782f006
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455149"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Azure Active Directory integrace s Coupa
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci Coupa do služby Azure AD, musíte přidat
 
 4. Do vyhledávacího pole zadejte **Coupa**, vyberte **Coupa** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Coupa v seznamu výsledků](common/search-new-app.png)
+    ![Coupa v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -140,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Coupa, p
 
 1. Přihlaste se k webu Coupa společnosti jako správce.
 
-2. Přejít k ** \> ovládacímu prvku zabezpečení instalace**.
+2. Přejít k **\> ovládacímu prvku zabezpečení instalace**.
 
     ![Ovládací prvky zabezpečení](./media/coupa-tutorial/ic791900.png "Zabezpečovací mechanismy")
 
@@ -158,7 +158,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Coupa, p
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -171,7 +171,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -183,7 +183,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Coupa.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Coupa**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Coupa**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -215,7 +215,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Coupa, musí se zřídit v Cou
 
 1. Přihlaste se k webu společnosti **Coupa** jako správce.
 
-2. V nabídce v horní části klikněte na **Nastavení**a potom klikněte na **Uživatelé**.
+2. V nabídce v horní části klikněte na **Nastavení** a potom klikněte na **Uživatelé**.
 
     ![Uživatelé](./media/coupa-tutorial/ic791908.png "Uživatelé")
 
@@ -227,7 +227,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Coupa, musí se zřídit v Cou
 
     ![Podrobnosti o uživateli](./media/coupa-tutorial/ic791910.png "Podrobnosti o uživateli")
 
-    a. Do příslušných textových polí zadejte **přihlašovací**jméno, **jméno**, **příjmení, jméno**a **jedno Sign-On**, atributy **e-mailu** platného Azure Active Directory účtu, který chcete zřídit.
+    a. Do příslušných textových polí zadejte **přihlašovací** jméno, **jméno**, **příjmení, jméno** a **jedno Sign-On**, atributy **e-mailu** platného Azure Active Directory účtu, který chcete zřídit.
 
     b. Klikněte na **Vytvořit**.
 
@@ -244,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Coupa, měli byste se automaticky přihlásit k Coupa, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

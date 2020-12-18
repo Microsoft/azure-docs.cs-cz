@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6c2d89c20294446da63889e53e807db7919eb2e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d09a5ef43e267550dd584a9f6356493887d6d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455523"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Kurz: Azure Active Directory integrace s Communifire
 
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat integraci Communifire do služby Azure AD, musíte p
 
 4. Do vyhledávacího pole zadejte **Communifire**, vyberte **Communifire** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Communifire v seznamu výsledků](common/search-new-app.png)
+    ![Communifire v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -124,12 +124,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Communif
 
     ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-    a. V **možnosti podepisování**vyberte **podepsat odpověď SAML a kontrolní výraz** .
-    
+    a. V **možnosti podepisování** vyberte **podepsat odpověď SAML a kontrolní výraz** .
+
     b. Klikněte na **Uložit**.
 
     ![Communifire – možnost podepisování](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
- 
+
 8. V části **Nastavení Communifire** zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
@@ -148,7 +148,7 @@ Ke konfiguraci jednotného přihlašování na straně **Communifire** je potře
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -161,7 +161,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -173,7 +173,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Communifire.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Communifire**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Communifire**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -208,7 +208,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Communifire, měli byste se automaticky přihlásit k Communifire, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

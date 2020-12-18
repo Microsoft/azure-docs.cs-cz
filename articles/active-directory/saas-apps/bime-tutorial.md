@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: d2a94b1503a6c7cd4a5790cc3ba4693103e70bfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457193"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Kurz: Azure Active Directory integrace s Bime
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci Bime do služby Azure AD, musíte přidat 
 
 4. Do vyhledávacího pole zadejte **Bime**, vyberte **Bime** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Bime v seznamu výsledků](common/search-new-app.png)
+    ![Bime v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -130,12 +130,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Bime, pr
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Bime společnosti jako správce.
 
-2. Na panelu nástrojů klikněte na **správce**a pak na **účet**.
-  
-    ![Snímek obrazovky se zobrazuje vybraný a vybraný účet pro správu.](./media/bime-tutorial/ic775558.png "Správce")
+2. Na panelu nástrojů klikněte na **správce** a pak na **účet**.
+
+    ![Snímek obrazovky se zobrazuje vybraný a vybraný účet pro správu.](./media/bime-tutorial/ic775558.png "správce")
 
 3. Na stránce Konfigurace účtu proveďte následující kroky:
-  
+
     ![Konfigurace jednotného přihlašování](./media/bime-tutorial/ic775559.png "Konfigurace jednoho Sign-On")
 
     a. Vyberte **Povolit ověřování SAML**.
@@ -150,7 +150,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Bime, pr
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -163,7 +163,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -175,7 +175,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Bime.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Bime**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Bime**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -205,11 +205,11 @@ Aby se uživatelé Azure AD mohli přihlásit k Bime, musí se zřídit v Bime. 
 
 1. Přihlaste se ke svému tenantovi **Bime** .
 
-2. Na panelu nástrojů klikněte na **správce**a pak na **Uživatelé**.
+2. Na panelu nástrojů klikněte na **správce** a pak na **Uživatelé**.
 
-    ![Snímek obrazovky zobrazuje vybrané položky pro správu a vybrané uživatele.](./media/bime-tutorial/ic775561.png "Správce")
+    ![Snímek obrazovky zobrazuje vybrané položky pro správu a vybrané uživatele.](./media/bime-tutorial/ic775561.png "správce")
 
-3. V **seznamu Uživatelé**klikněte na tlačítko **Přidat nového uživatele** ("+").
+3. V **seznamu Uživatelé** klikněte na tlačítko **Přidat nového uživatele** ("+").
 
     ![Uživatelé](./media/bime-tutorial/ic775562.png "Uživatelé")
 
@@ -234,7 +234,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Bime, měli byste se automaticky přihlásit k Bime, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456428"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Kurz: Azure Active Directory integrace s centrální plochou
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci centrální plochy do Azure AD, musíte do
 
 4. Do vyhledávacího pole zadejte **Central Desktop**, vyberte **centrální plocha** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Centrální plocha v seznamu výsledků](common/search-new-app.png)
+    ![Centrální plocha v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí centrál
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.centraldesktop.com`
 
     b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -133,7 +133,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí centrál
 
 1. Přihlaste se ke svému klientovi **centrální plochy** .
 
-2. Přejít na **Nastavení**. Vyberte **Upřesnit**a pak vyberte **jednotné přihlašování**.
+2. Přejít na **Nastavení**. Vyberte **Upřesnit** a pak vyberte **jednotné přihlašování**.
 
     ![Nastavení – rozšířené](./media/central-desktop-tutorial/ic769563.png "Nastavení – rozšířené")
 
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí centrál
 4. V části **metoda ověření podpisu zprávy** proveďte následující kroky:
 
     ![Metoda ověření podpisu zprávy](./media/central-desktop-tutorial/ic769565.png "Metoda ověření podpisu zprávy")
-    
+
     a. Vyberte **Certifikát**.
 
     b. V seznamu **certifikát jednotného přihlašování** vyberte **rsh SHA256**.
@@ -167,7 +167,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí centrál
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -180,7 +180,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -192,7 +192,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k centrální ploše.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **centrální plocha**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **centrální plocha**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -236,7 +236,7 @@ Aby se uživatelé Azure AD mohli přihlásit, musí se zřídit v aplikaci cent
 4. Vyberte **Přidat interní členy**.
 
     ![Přidat interního člena](./media/central-desktop-tutorial/ic781053.png "Přidat interního člena")
-  
+
    > [!NOTE]
    > Uživatelé, které přidáte, obdrží e-mail, který obsahuje potvrzovací odkaz pro aktivaci jejich účtů.
 
@@ -246,7 +246,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici centrální plocha na přístupovém panelu, měli byste být automaticky přihlášeni k centrální ploše, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

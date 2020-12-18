@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616140"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671161"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -78,7 +78,7 @@ Do faktury Azure se přidají poplatky za Log Analytics. Podrobnosti o fakturaci
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Zobrazení využití Log Analytics na faktuře Azure 
 
-Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/Workspace for Log Analytics clusters) vám umožní sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
+Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/cluster pro Log Analytics clustery), abyste mohli sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
 
 Další vysvětlení vašeho využití můžete získat [stažením informací o využití z webu Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Ve stažené tabulce uvidíte využití jednotlivých prostředků Azure (např. pracovního prostoru služby Log Analytics) po dnech. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít prvním filtrováním ve sloupci měřiče měření, ve kterém se zobrazí "Log Analytics", "přehledy a analýzy (používané některými staršími cenovými úrovněmi) a" Azure Monitor "(používané cenovými úrovněmi rezervací kapacity) a pak přidání filtru do sloupce" ID instance ", který je" obsahuje pracovní prostor "nebo" obsahuje cluster "(druhý k zahrnutí Log Analytics využití clusteru). Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou také další podrobnosti, které vám pomůžou [porozumět informacím na faktuře za Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -150,7 +150,7 @@ Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](../s
 
 Pracovní prostory s dobou uchování 30 dnů můžou uchovávat data po dobu 31 dnů. Pokud je nutné, aby data byla uchovávána pouze po dobu 30 dnů, použijte Azure Resource Manager k nastavení uchování na 30 dní a s `immediatePurgeDataOn30Days` parametrem.  
 
-Ve výchozím nastavení se standardně 90 uchovávají dva datové typy-- `Usage` a--a za `AzureActivity` Tento 90 dnů se neúčtují žádné poplatky. Pokud se uchování v pracovním prostoru zvyšuje nad 90 dnů, bude se také zvyšovat doba uchování těchto datových typů.  Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
+Ve výchozím nastavení se standardně uchovávají dva datové typy-- `Usage` a--a za `AzureActivity` Toto 90 dne se neúčtují žádné poplatky za 90 dní. Pokud se uchování v pracovním prostoru zvyšuje nad 90 dnů, bude se také zvyšovat doba uchování těchto datových typů.  Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
 
 Datové typy z prostředků Application Insights založených na pracovních prostorech ( `AppAvailabilityResults` , `AppBrowserTimings` ,, `AppDependencies` `AppExceptions` , `AppEvents` , `AppMetrics` , `AppPageViews` , `AppPerformanceCounters` , `AppRequests` `AppSystemEvents` a `AppTraces` ) se ve výchozím nastavení uchovávají i po dobu 90 dnů a za toto 90 dne se neúčtují žádné poplatky. Jejich uchování je možné upravit pomocí funkce uchování podle datového typu. 
 
@@ -216,7 +216,7 @@ Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů 
 > Denní limit nemůže zastavit shromažďování dat přesně na zadané úrovni zakončení a je očekáváno několik přebytečných dat, zejména v případě, že pracovní prostor přijímá velké objemy dat. [Níže](#view-the-effect-of-the-daily-cap) najdete dotaz, který je užitečný při studiu chování denního limitu. 
 
 > [!WARNING]
-> Denní limit nezastaví shromažďování dat z Azure Sentinal ani Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
+> Denní limit nezastaví shromažďování datových typů, které jsou zahrnuté do [Azure Security Center denního příspěvku na uzel](#log-analytics-and-security-center) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus, Update a UpdateSummary), s výjimkou pracovních prostorů, ve kterých Azure Security Center nainstalovala před 19. června 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
 
@@ -266,7 +266,7 @@ Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Op
 - Název pravidla výstrahy: dosáhlo se denního limitu dat.
 - Závažnost: upozornění (závažnost 1)
 
-Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts). 
+Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
 

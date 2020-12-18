@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632025"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673432"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Kurz: Konfigurace bizagi studia pro automatizaci digitálních procesů pro Automatické zřizování uživatelů
 
@@ -139,6 +139,8 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD pro 
 
    Další informace o tom, jak přidat vlastní atributy, najdete v tématu [přizpůsobení atributů aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
+> [!NOTE]
+> Jsou podporovány pouze základní vlastnosti typu (například řetězec, celé číslo, logická hodnota, datum a čas atd.). Vlastnosti propojené s tabulkami ukazatelů nebo více typy se ještě nepodporují.
 
 10. Postup konfigurace filtrů oborů najdete v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

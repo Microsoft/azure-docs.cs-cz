@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178938"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673372"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Kurz: Konfigurace CybSafe pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v CybSafe i Azure Active Di
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a CybSafe
 > * Zřizování skupin a členství ve skupinách v CybSafe
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -135,15 +135,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 13. Pokud chcete povolit službu Azure AD Provisioning pro CybSafe, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
+      ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 14. Definujte uživatele nebo skupiny, které chcete zřídit pro CybSafe, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Rozsah zřizování](common/provisioning-scope.png)
+      ![Rozsah zřizování](common/provisioning-scope.png)
 
 15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+      ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 

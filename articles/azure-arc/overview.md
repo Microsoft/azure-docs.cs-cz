@@ -3,12 +3,12 @@ title: Přehled služby Azure Arc
 description: Přečtěte si, co je Azure ARC a jak pomáhá zákazníkům povolit správu a řízení hybridních prostředků pomocí dalších služeb a funkcí Azure.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616520"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672682"
 ---
 # <a name="azure-arc-overview"></a>Přehled služby Azure Arc
 
@@ -74,10 +74,10 @@ V aktuální fázi Preview se datové služby s podporou ARC Azure nabízejí be
 
 ## <a name="next-steps"></a>Další kroky
 
-* Spuštění služeb s povoleným obloukem z [rychlé zprovoznění scénářů](https://azurearcjumpstart.io/azure_arc_jumpstart/)
-
 * Další informace o serverech s podporou ARC najdete v následujícím [přehledu](./servers/overview.md) .
 
 * Další informace o Kubernetes s povoleným ARC najdete v následujícím [přehledu](./kubernetes/overview.md) .
 
 * Další informace o datových službách s podporou ARC najdete v následujícím [přehledu](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/) .
+
+* Služby s povoleným Arcm v [rychlé zprovozněníi pro zkoušku konceptu](https://azurearcjumpstart.io/azure_arc_jumpstart/)

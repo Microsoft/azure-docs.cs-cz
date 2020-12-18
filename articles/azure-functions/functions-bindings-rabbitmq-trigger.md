@@ -4,15 +4,15 @@ description: Naučte se spouštět funkci Azure, když se vytvoří zpráva Rabb
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630730"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673983"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ Trigger for Azure Functions – přehled
 
@@ -32,7 +32,7 @@ Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-libra
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ Tady jsou data vazby v *function.js* souboru:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ Tady jsou data vazby v *function.js* souboru:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ Vazba RabbitMQ je definována v *function.jsna* místě, kde je *typ* nastaven n
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ Následující funkce jazyka Java používá `@RabbitMQTrigger` anotaci z [typů
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-Úplný příklad najdete v tématu příklad v jazyce C#.
+Úplný příklad najdete v tématu [příklad](#example)v jazyce C#.
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -278,9 +278,9 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |prefetchCount|30|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat a který je uložen do mezipaměti.|
-|Proměnné QueueName|neuvedeno| Název fronty, ze které se mají přijímat zprávy |
-|připojovací řetězec|neuvedeno|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat.|
-|port|0|(ignoruje se při použití connectionString) Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
+|Proměnné QueueName|neuvedeno| Název fronty, ze které se mají přijímat zprávy|
+|připojovací řetězec|neuvedeno|Připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že připojovací řetězec je zde přímo určen a nikoli prostřednictvím nastavení aplikace.|
+|port|0|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
 
 ## <a name="local-testing"></a>Místní testování
 

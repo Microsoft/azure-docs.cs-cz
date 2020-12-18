@@ -4,13 +4,15 @@ description: Snímky ladění se automaticky shromažďují, pokud jsou výjimky
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
+author: cweining
+ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5913f5fa8d45e6bf92d6132468e0e3bf7a121c65
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530229"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673514"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](./app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](./asp-net-exceptions.md) na portálu Application Insights.
@@ -47,7 +49,7 @@ Přístup k snímkům je chráněn řízením přístupu na základě role Azure
 Vlastníci předplatného by měli přiřadit `Application Insights Snapshot Debugger` roli uživatelům, kteří budou kontrolovat snímky. Tato role se dá přiřadit jednotlivým uživatelům nebo skupinám podle vlastníků předplatného pro cílový Application Insights prostředek nebo jeho skupinu prostředků nebo předplatné.
 
 1. V Azure Portal přejděte na prostředek Application Insights.
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 1. Klikněte na tlačítko **+ Přidat přiřazení role** .
 1. V rozevíracím seznamu **role** vyberte **Application Insights Snapshot Debugger** .
 1. Vyhledejte a zadejte jméno uživatele, kterého chcete přidat.

@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653227"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672141"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
 Tento článek popisuje, co potřebujete znát o veřejných klíčích, které používá platforma Microsoft Identity Platform k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
@@ -68,28 +68,30 @@ Funkce ověřování/autorizace v Azure App Services (EasyAuth) již má potřeb
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webové aplikace/rozhraní API chrání prostředky pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middlewaru
 Pokud vaše aplikace používá middleware rozhraní .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication, již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v Startup.cs nebo Startup.Auth.cs vaší aplikace.
+Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v souborech Startup.cs nebo Startup.Auth.cs vaší aplikace.
 
-```
+```csharp
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+    new OpenIdConnectAuthenticationOptions
+    {
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-     });
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+    new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+    {
+        // ...
+    });
 ```
 
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware

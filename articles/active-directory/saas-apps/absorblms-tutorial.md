@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319074"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s absorpčním LMS
 
@@ -30,7 +30,7 @@ Integrování absorbovaného LMS pomocí Azure AD vám poskytne následující v
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s použitím nástroje pro zavedení s použitím absorpčního LMS potřebujete následující položky:
 
@@ -66,7 +66,7 @@ Chcete-li nakonfigurovat integraci systému pro pohlcování do služby Azure AD
 
 4. Do vyhledávacího pole zadejte text **absorbovaný LMS**, vyberte **absorpční LMS** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Absorpční LMS v seznamu výsledků](common/search-new-app.png)
+    ![Absorpční LMS v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -159,7 +159,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     a. Do textového pole **název** zadejte název, jako je například jednotné přihlašování Azure AD Marketplace.
 
-    b. Jako **metodu**vyberte **SAML** .
+    b. Jako **metodu** vyberte **SAML** .
 
     c. V programu Poznámkový blok otevřete certifikát, který jste stáhli z Azure Portal. Odeberte **---počáteční---certifikátu** a **------značky koncového certifikátu** . Potom do pole **klíč** vložte zbývající obsah.
 
@@ -167,11 +167,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     e. V poli **vlastnost ID** vyberte atribut, který jste nakonfigurovali jako identifikátor uživatele v Azure AD. Pokud je například ve službě Azure AD vybraný *NameIdentifier* , vyberte **uživatelské jméno**.
 
-    f. Jako **typ podpisu**vyberte **SHA256** .
+    f. Jako **typ podpisu** vyberte **SHA256** .
 
     například Do pole **Adresa URL pro přihlášení** vložte **adresu URL přístupu uživatele** ze stránky **vlastností** aplikace Azure Portal.
 
-    h. Do pole **Adresa URL pro odhlášení**vložte hodnotu **URL** pro odhlášení, kterou jste zkopírovali z okna **Konfigurace přihlášení** Azure Portal.
+    h. Do pole **Adresa URL pro odhlášení** vložte hodnotu **URL** pro odhlášení, kterou jste zkopírovali z okna **Konfigurace přihlášení** Azure Portal.
 
     i. Přepínač **automaticky přesměrovat** na **zapnuto**.
 
@@ -183,7 +183,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -196,7 +196,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole typ **uživatelského jména**`brittasimon\@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
@@ -208,7 +208,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k pohlcování LMS.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **absorpční LMS**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **absorpční LMS**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 

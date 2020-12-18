@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3329d092e27e7d8885daa87650734cd8e84202c9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: cf74b563352ccd0f62e583bccccd72078cbb2046
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313657"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Kurz: Azure Active Directory integrace s Accredible
 
@@ -30,7 +30,7 @@ Integrace Accredible s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Accredible potřebujete následující položky:
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci Accredible do služby Azure AD, musíte p�
 
 4. Do vyhledávacího pole zadejte **Accredible**, vyberte **Accredible** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Accredible v seznamu výsledků](common/search-new-app.png)
+    ![Accredible v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -135,7 +135,7 @@ Ke konfiguraci jednotného přihlašování na straně **Accredible** je potřeb
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -148,7 +148,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -160,7 +160,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Accredible.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Accredible**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Accredible**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -184,7 +184,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-accredible-test-user"></a>Vytvořit testovacího uživatele Accredible
 
-V této části vytvoříte uživatele s názvem Britta Simon v Accredible. Musíte odeslat e-mailové ID uživatele do [Accredible týmu podpory](mailto:support@accredible.com), potom e-mail ověřit a poslat e-mailem pozvánku, abyste mohli přidat uživatele na Accredible platformu.
+V této části vytvoříte uživatele s názvem Britta Simon v Accredible. Musíte odeslat e-mailové ID uživatele do [Accredible týmu podpory](mailto:support@accredible.com), potom e-mail ověřit a poslat e-mailem pozvánku, abyste mohli přidat uživatele na Accredible platformu.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -192,7 +192,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Accredible, měli byste se automaticky přihlásit k Accredible, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

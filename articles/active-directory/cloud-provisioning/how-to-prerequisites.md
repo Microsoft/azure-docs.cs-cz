@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651986"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671008"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Požadavky pro zřízení cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -62,14 +62,11 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
     > | 12 | 4 GB |
     > | 18 | 5,5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
 
 3. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
-
-   - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:
+    - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:
 
       | Číslo portu | Jak se používá |
       | --- | --- |
@@ -78,13 +75,13 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
       |**8082**|Vyžaduje se pro instalaci a pokud chcete nakonfigurovat své rozhraní API pro správu.  Tento port lze odebrat po instalaci agenta a v případě, že neplánujete použití rozhraní API.   |
       | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
 
-   - Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
-   - Vaši agenti potřebují přístup k login.windows.net a login.microsoftonline.com pro počáteční registraci. Otevřete taky bránu firewall pro tyto adresy URL.
-   - Pro ověření certifikátu Odblokujte následující adresy URL: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 a www \. Microsoft.com:80. Tyto adresy URL se používají pro ověřování certifikátů s jinými produkty Microsoftu, takže je možné, že už tyto adresy URL máte odblokované.
+    - Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
+    - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+    - Vaši agenti potřebují přístup k login.windows.net a login.microsoftonline.com pro počáteční registraci. Otevřete taky bránu firewall pro tyto adresy URL.
+    - Pro ověření certifikátu Odblokujte následující adresy URL: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 a www \. Microsoft.com:80. Tyto adresy URL se používají pro ověřování certifikátů s jinými produkty Microsoftu, takže je možné, že už tyto adresy URL máte odblokované.
 
->[!NOTE]
-> Instalace agenta zřizování cloudu na Windows serveru Core není podporovaná.
+    >[!NOTE]
+    > Instalace agenta zřizování cloudu na Windows serveru Core není podporovaná.
 
 ### <a name="additional-requirements"></a>Další požadavky
 
@@ -92,8 +89,8 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 
 #### <a name="tls-requirements"></a>Požadavky TLS
 
->[!NOTE]
->TLS (Transport Layer Security) je protokol, který zajišťuje zabezpečenou komunikaci. Změna nastavení TLS má vliv na celou doménovou strukturu. Další informace najdete v tématu [aktualizace povolení tls 1,1 a tls 1,2 jako výchozích zabezpečených protokolů v WinHTTP v systému Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
+> [!NOTE]
+> TLS (Transport Layer Security) je protokol, který zajišťuje zabezpečenou komunikaci. Změna nastavení TLS má vliv na celou doménovou strukturu. Další informace najdete v tématu [aktualizace povolení tls 1,1 a tls 1,2 jako výchozích zabezpečených protokolů v WinHTTP v systému Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
 
 Systém Windows Server, který je hostitelem Azure AD Connect agenta zřizování cloudu, musí mít povolený protokol TLS 1,2, než ho nainstalujete.
 
@@ -111,6 +108,7 @@ Pokud chcete povolit TLS 1,2, postupujte podle těchto kroků.
 1. Restartujte server.
 
 ## <a name="known-limitations"></a>Známá omezení
+
 Toto jsou známá omezení:
 
 ### <a name="delta-synchronization"></a>Rozdílová synchronizace

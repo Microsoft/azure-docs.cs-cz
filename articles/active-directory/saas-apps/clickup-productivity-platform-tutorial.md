@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455865"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Kurz: Azure Active Directory integrace s platformou produktivity ClickUp
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci ClickUp produktivity platformy do Azure AD
 
 4. Do vyhledávacího pole zadejte **ClickUp produktivitu platformy**, vyberte **ClickUp produktivita platformy** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![ClickUp produktivní platforma v seznamu výsledků](common/search-new-app.png)
+    ![ClickUp produktivní platforma v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -116,7 +116,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
 1. V jiném okně webového prohlížeče se přihlaste do svého tenanta ClickUp produktivity vaší platformy jako správce.
 
-2. Klikněte na **Profil uživatele**a pak vyberte **Nastavení**.
+2. Klikněte na **Profil uživatele** a pak vyberte **Nastavení**.
 
     ![Snímek obrazovky s vybraným ikonou nastavení zobrazuje tenant ClickUp produktivity.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
@@ -131,7 +131,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
     ![Snímek obrazovky se zobrazí na stránce Konfigurovat jednotné přihlašování Microsoftu, kde můžete zkopírovat entitu I D a uložit federační metadata Azure U R L.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Kliknutím na **Kopírovat** ZKOPÍRUJTE hodnotu ID entity a vložte ji do textového pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
-    
+
     b. V poli **Adresa URL federačních metadat Azure** vložte hodnotu adresy URL federačních metadat aplikace, kterou jste zkopírovali z Azure Portal, a pak klikněte na **Uložit**.
 
 5. Instalaci dokončíte kliknutím na **ověřit u Microsoftu a dokončíte instalaci** a ověříte ho pomocí účtu Microsoft.
@@ -142,7 +142,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -155,7 +155,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -167,7 +167,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k platformě ClickUp produktivity.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **ClickUp produktivní platforma**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **ClickUp produktivní platforma**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -193,8 +193,8 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V jiném okně webového prohlížeče se přihlaste do svého tenanta ClickUp produktivity vaší platformy jako správce.
 
-2. Klikněte na **Profil uživatele**a pak vyberte **lidé**.
-   
+2. Klikněte na **Profil uživatele** a pak vyberte **lidé**.
+
     ![Snímek obrazovky se zobrazí jako tenant ClickUp produktivity.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![Snímek obrazovky se zobrazuje vybraný odkaz lidé.](./media/clickup-productivity-platform-tutorial/user1.png)
@@ -212,7 +212,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici ClickUp produktivita platformy na přístupovém panelu, měli byste se automaticky přihlásili k platformě ClickUp produktivity, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

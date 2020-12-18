@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951651"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669155"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu pomocného tokenu ID v Azure Active Directory B2C vlastní zásady
 
@@ -34,12 +34,12 @@ Pomocí id_token_hint Vystavitel tokenu (aplikace předávající strany nebo po
 
 Id_token_hint musí být platný token JWT. V následující tabulce jsou uvedeny deklarace identity, které jsou povinné. Další deklarace identity jsou volitelné.
 
-| Name | Deklarovat | Příklad hodnoty | Popis |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
-| Cílová skupina | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifikuje zamýšleného příjemce tokenu. Toto je libovolný řetězec definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
-| Vystavitel | `iss` |`https://localhost` | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Toto je libovolný identifikátor URI definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
-| Čas vypršení platnosti | `exp` | `1600087315` | Čas, kdy se token stal neplatným, reprezentovaný v epocha času. Azure AD B2C neověřuje tuto deklaraci identity. |
-| Ne před | `nbf` | `1599482515` | Čas, kdy bude token platný, reprezentovaný v epocha času. Tato doba je obvykle stejná jako čas, kdy byl token vydán. Azure AD B2C neověřuje tuto deklaraci identity. |
+| Cílová skupina | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifikuje zamýšleného příjemce tokenu. Cílová skupina je libovolný řetězec definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a zamítnutí tokenu, pokud se neshoduje.  |
+| Vystavitel | `iss` |`https://localhost` | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Vystavitel je libovolný identifikátor URI definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a zamítnutí tokenu, pokud se neshoduje.  |
+| Čas vypršení platnosti | `exp` | `1600087315` | Čas, kdy se token stal neplatným, reprezentovaný v epocha času. Azure AD B2C ověří tuto hodnotu a zamítne token, pokud vypršela platnost tokenu.|
+| Ne před | `nbf` | `1599482515` | Čas, kdy bude token platný, reprezentovaný v epocha času. Tato doba je obvykle stejná jako čas, kdy byl token vydán. Azure AD B2C ověří tuto hodnotu a zamítne token, pokud je životnost tokenu neplatná. |
 
  Následující token je příkladem platného tokenu ID:
 
@@ -84,16 +84,16 @@ Následující metadata jsou relevantní při použití symetrického klíče.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer | Yes | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
-| IdTokenAudience | Yes | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. | 
+| issuer | Ano | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
+| IdTokenAudience | Ano | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. | 
 
 Následující metadata jsou relevantní při použití asymetrického klíče. 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MEZIPAMĚŤ| Yes | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
+| MEZIPAMĚŤ| Ano | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
 | issuer | Ne | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
-| IdTokenAudience | Ne | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. |  
+| IdTokenAudience | Ne | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. |  
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -101,7 +101,7 @@ Při použití symetrického klíče obsahuje element **CryptographicKeys** nás
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
+| client_secret | Ano | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
 
 
 ## <a name="how-to-guide"></a>Praktičtí průvodci
@@ -249,7 +249,7 @@ V případě symetrických i asymetrických přístupů `id_token_hint` je techn
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Například:
+1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Příklad:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />
@@ -272,7 +272,7 @@ V případě symetrických i asymetrických přístupů `id_token_hint` je techn
     </RelyingParty>
     ```
 
-V závislosti na potřebách vaší firmy možná budete muset přidat ověření tokenů, například vypršení platnosti tokenu, formát e-mailové adresy a další. Uděláte to tak, že přidáte kroky orchestrace, které vyvolají [technický profil transformace deklarací identity](claims-transformation-technical-profile.md). Pokud chcete zobrazit chybovou zprávu, přidejte také [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) . 
+V závislosti na vašich obchodních požadavcích může být nutné přidat ověření tokenů, například můžete kontrolovat formát e-mailové adresy. Uděláte to tak, že přidáte kroky orchestrace, které vyvolají [technický profil transformace deklarací identity](claims-transformation-technical-profile.md). Pokud chcete zobrazit chybovou zprávu, přidejte také [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) . 
 
 ### <a name="create-and-sign-a-token"></a>Vytvoření a podepsání tokenu
 

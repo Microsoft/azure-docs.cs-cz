@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046447"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672776"
 ---
 # <a name="iot-plug-and-play-bridge"></a>Přemostění IoT Plug and Play
 
@@ -29,63 +29,125 @@ IoT technologie Plug and Play most podporuje ve výchozím nastavení následuj�
 
 |Okraj|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Yes|No|
-|[Kamery](https://aka.ms/iot-pnp-bridge-camera)               |Yes|No|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Yes|Yes|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Yes|Yes|
-|[Sér](https://aka.ms/iot-pnp-bridge-serial)                |Yes|Yes|
-|[Periferní zařízení s Windows USB](https://aka.ms/iot-pnp-bridge-usb)  |Yes|Neuvedeno|
+|[Adaptér snímače Bluetooth](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) připojuje senzory s povoleným Bluetooth s nízkou spotřebou (tivovat).       |Ano|Ne|
+|[Adaptér kamery](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) připojuje kamery na zařízení s Windows 10.               |Ano|Ne|
+|[Modbus adaptér](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) připojuje senzory na zařízení Modbus.              |Ano|Ano|
+|[MQTT adaptér](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) připojuje zařízení, která používají zprostředkovatele MQTT.                  |Ano|Ano|
+|[SerialPnP adaptér](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) připojuje zařízení, která komunikují přes sériové připojení.               |Ano|Ano|
+|[Periferní zařízení s Windows USB](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) využívají seznam tříd rozhraní zařízení podporovaných adaptérem pro připojení zařízení, která mají určité ID hardwaru.  |Ano|Neuvedeno|
 
->[!Important]
->Vývojáři můžou pomocí pokynů v **[dokumentaci pro vývojáře iot technologie Plug and Play přemostění](https://aka.ms/iot-pnp-bridge-dev-doc)** v rámci dokumentace ke službě IoT technologie Plug and Play Přemostit podporu dalších protokolů zařízení.
-
-## <a name="prerequisites"></a>Požadované součásti
-
-### <a name="os-platform"></a>Platforma operačního systému
-
-Podporovány jsou následující platformy a verze operačního systému:
-
-|Platforma  |Podporované verze  |
-|---------|---------|
-|Windows 10 |     Všechny SKU systému Windows jsou podporovány. Například: IoT Enterprise, server, Desktop, IoT Core. *Pro funkci sledování stavu kamery se doporučuje sestavení 20H1 nebo novějším. Všechny ostatní funkce jsou k dispozici ve všech sestaveních Windows 10.*  |
-|Linux     |Testováno a podporováno na Ubuntu 18,04, funkce v jiných distribucích nebyla testována.         |
-||
-
-### <a name="hardware"></a>Hardware
-
-- Jakékoli hardwarové platformy, které podporují výše uvedené SKU a verze operačního systému.
-- Sériová periferní zařízení, USB, Bluetooth a kamery se nativně podporují. Technologie Plug and Play most IoT můžete rozšířit tak, aby podporoval jakékoli vlastní periferní zařízení nebo senzor ([Viz část periferní zařízení výše](#iot-plug-and-play-bridge)).
-
-### <a name="development-environment"></a>Vývojové prostředí
-
-K sestavení, rozšiřování a vývoji technologie Plug and Play mostu IoT budete potřebovat:  
-
-- Vývojové prostředí, které podporuje kompilaci C++, jako je například [Visual Studio (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/)– Ujistěte se, že při instalaci sady Visual Studio zahrnete úlohu vývoj desktopových aplikací v jazyce c++.
-- [Cmake](https://cmake.org/download/) – při instalaci cmake vyberte možnost `Add CMake to the system PATH` .
-- Pokud vytváříte systém Windows, budete také muset stáhnout sadu Windows 17763 SDK: [https://developer.microsoft.com/windows/downloads/windows-10-sdk](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-- [Azure IoT Hub zařízení C SDK](https://github.com/Azure/azure-iot-sdk-c). Zahrnuté skripty sestavení v tomto úložišti automaticky naklonují požadovanou sadu SDK služby Azure IoT C za vás.
-
-### <a name="azure-iot-products-and-tools"></a>Produkty a nástroje Azure IoT
-
-- **Azure IoT Hub** – v předplatném Azure budete potřebovat službu [Azure IoT Hub](../iot-hub/index.yml) , ke které vaše zařízení připojíte. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). Pokud Centrum IoT nemáte, [vytvořte ho podle těchto pokynů](../iot-hub/iot-hub-create-using-cli.md).
-
-> [!Note]
-> Služba IoT technologie Plug and Play je aktuálně dostupná ve službě IoT Hub vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko. Podpora IoT technologie Plug and Play není součástí centra IoT na úrovni Basic. Pokud chcete komunikovat se zařízením IoT technologie Plug and Play, můžete použít nástroj Azure IoT Explorer. [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
+Informace o tom, jak technologie Plug and Play most IoT pro podporu dalších protokolů zařízení, najdete v tématu [sestavování, nasazování a rozšiřování technologie Plug and Play mostu IoT](howto-build-deploy-extend-pnp-bridge.md).
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>Architektura IoT technologie Plug and Play mostu
 
-:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="Na levé straně je k dispozici několik stávajících senzorů (kabelových i bezdrátových) do počítače s Windows nebo Linux, který obsahuje IoT technologie Plug and Play most. IoT technologie Plug and Play most se pak připojí ke službě IoT Hub na pravé straně":::
+:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="Na levé straně je několik polí, která označují různá periferní zařízení připojená k počítači s Windows nebo Linux obsahujícím IoT technologie Plug and Play most. V horní části je pole označené konfigurační body směrem k mostu. Most se pak připojí ke službě IoT Hub na pravé straně diagramu.":::
+
+### <a name="iot-plug-and-play-bridge-adapters"></a>Adaptéry pro mosty IoT technologie Plug and Play
+
+IoT technologie Plug and Play most podporuje sadu adaptérů IoT technologie Plug and Play mostu pro různé typy zařízení. *Manifest adaptéru* staticky definuje adaptéry pro most.
+
+Správce adaptéru mostu používá k identifikaci a volání funkcí adaptéru manifest. Správce adaptéru volá pouze funkci CREATE na adaptérech mostu, které jsou vyžadovány komponentami rozhraní uvedenými v konfiguračním souboru. Instance adaptéru se vytvoří pro každou komponentu technologie Plug and Play IoT.
+
+Adaptér mostu vytvoří a získá popisovač digitálního vlákna. Adaptér používá tento popisovač k navázání funkce zařízení k digitálnímu vlákna.
+
+Pomocí informací v konfiguračním souboru umožňuje adaptér mostu použít následující postupy, pomocí kterých umožní kompletnímu zařízení používat digitální dvojitou komunikaci prostřednictvím mostu:
+
+- Naváže komunikační kanál přímo.
+- Vytvoří sledovací proces zařízení, který čeká, až bude dostupný komunikační kanál.
+
+### <a name="configuration-file"></a>Konfigurační soubor
+
+IoT technologie Plug and Play most používá konfigurační soubor založený na formátu JSON, který určuje:
+
+- Jak se připojit ke službě IoT Hub nebo k aplikaci IoT Central: možnosti zahrnují připojovací řetězce, parametry ověřování nebo službu Device Provisioning (DPS).
+- Umístění modelů schopností technologie Plug and Play IoT, které používá most. Model definuje možnosti zařízení IoT technologie Plug and Play a je statický a neměnný.
+- Seznam komponent rozhraní IoT technologie Plug and Play a následující informace pro každou součást:
+- ID rozhraní a název součásti.
+- Adaptér mostu potřebný k interakci s komponentou.
+- Informace o zařízení, které adaptér mostu potřebuje k navázání komunikace se zařízením. Například ID hardwaru nebo konkrétní informace pro adaptér, rozhraní nebo protokol.
+- Volitelný typ podtypu adaptéru mostu nebo konfigurace rozhraní, pokud adaptér podporuje více typů komunikace s podobnými zařízeními. Příklad ukazuje, jak lze nakonfigurovat komponentu senzoru Bluetooth:
+
+    ```json
+    {
+      "_comment": "Component BLE sensor",
+      "pnp_bridge_component_name": "blesensor1",
+      "pnp_bridge_adapter_id": "bluetooth-sensor-pnp-adapter",
+      "pnp_bridge_adapter_config": {
+        "bluetooth_address": "267541100483311",
+        "blesensor_identity" : "Blesensor1"
+      }
+    }
+    ```
+
+- Volitelný seznam parametrů adaptéru globálního mostu. Například adaptér mostu Bluetooth snímače má slovník podporovaných konfigurací. Komponenta rozhraní, která vyžaduje, aby adaptér senzoru Bluetooth mohl zvolit jednu z těchto konfigurací `blesensor_identity` :
+
+    ```json
+    {
+      "pnp_bridge_adapter_global_configs": {
+        "bluetooth-sensor-pnp-adapter": {
+          "Blesensor1" : {
+            "company_id": "0x499",
+            "endianness": "big",
+            "telemetry_descriptor": [
+              {
+                "telemetry_name": "humidity",
+                "data_parse_type": "uint8",
+                "data_offset": 1,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.5
+              },
+              {
+                "telemetry_name": "temperature",
+                "data_parse_type": "int8",
+                "data_offset": 2,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "pressure",
+                "data_parse_type": "int16",
+                "data_offset": 4,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "acceleration_x",
+                "data_parse_type": "int16",
+                "data_offset": 6,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_y",
+                "data_parse_type": "int16",
+                "data_offset": 8,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_z",
+                "data_parse_type": "int16",
+                "data_offset": 10,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
 
 ## <a name="download-iot-plug-and-play-bridge"></a>Stáhnout IoT technologie Plug and Play most
 
-Můžete si stáhnout předem vytvořenou verzi mostu s podporovanými adaptéry ve službě [IoT technologie Plug and Play mostech](https://aka.ms/iot-pnp-bridge-releases) a rozšířit seznam prostředků pro nejnovější verzi. Stáhněte si nejnovější verzi aplikace pro váš operační systém.
+Můžete si stáhnout předem vytvořenou verzi mostu s podporovanými adaptéry ve službě [IoT technologie Plug and Play mostech](https://github.com/Azure/iot-plug-and-play-bridge/releases) a rozšířit seznam prostředků pro nejnovější verzi. Stáhněte si nejnovější verzi aplikace pro váš operační systém.
 
-Můžete si také stáhnout a zobrazit zdrojový kód pro [IoT technologie Plug and Play Bridge na GitHubu](https://aka.ms/bridge).
+Můžete si také stáhnout a zobrazit zdrojový kód pro [IoT technologie Plug and Play Bridge na GitHubu](https://github.com/Azure/iot-plug-and-play-bridge).
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když máte přehled o architektuře IoT technologie Plug and Play Bridge, další kroky jsou další informace o:
 
 - [Jak používat IoT technologie Plug and Play most](./howto-use-iot-pnp-bridge.md)
-- [Přečtěte si referenční informace pro vývojáře GitHubu pro IoT technologie Plug and Play most](https://aka.ms/iot-pnp-bridge-dev-doc)
-- [IoT technologie Plug and Play most na GitHubu](https://aka.ms/iotplugandplaybridge)
+- [Sestavování, nasazování a rozšiřování IoT technologie Plug and Play mostu](howto-build-deploy-extend-pnp-bridge.md)
+- [IoT technologie Plug and Play most na GitHubu](https://github.com/Azure/iot-plug-and-play-bridge)

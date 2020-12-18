@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183256"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673881"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -24,9 +24,11 @@ Privátní cluster je dostupný ve veřejných oblastech, Azure Government a v o
 > [!NOTE]
 > Azure Government weby jsou podporovány, ale US Gov – Texas aktuálně nejsou podporovány z důvodu chybějící podpory privátních odkazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI verze 2.2.0 nebo novější
+* Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
+* Pokud chcete použít vlastní server DNS, přidejte Azure DNS IP 168.63.129.16 jako nadřazený server DNS do vlastního serveru DNS.
 
 ## <a name="create-a-private-aks-cluster"></a>Vytvoření privátního clusteru AKS
 
@@ -64,6 +66,20 @@ Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster.
 > [!NOTE]
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
 
+### <a name="configure-private-dns-zone"></a>Konfigurovat zónu Privátní DNS
+
+Výchozí hodnota je "System", pokud je argument--Private-DNS-Zone vynechán. AKS vytvoří zónu Privátní DNS ve skupině prostředků uzlu. Předání parametru None znamená, že AKS nebude vytvářet zónu Privátní DNS.  To spoléhá na to, že Přineste si vlastní server DNS a konfiguraci překladu DNS pro privátní plně kvalifikovaný název domény.  Pokud neprovedete konfiguraci překladu DNS, dá se služba DNS přeložit jenom v rámci uzlů agentů a po nasazení způsobí problémy s clusterem.
+
+## <a name="no-private-dns-zone-prerequisites"></a>Žádné požadavky na Privátní DNS zóny
+Žádné PrivateDNSZone
+* Azure CLI verze 0.4.67 nebo novější
+* Rozhraní API verze 2020-11-01 nebo novější
+
+## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Vytvoření privátního clusteru AKS s Privátní DNS zónou
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Možnosti připojení k privátnímu clusteru
 
 Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chcete spravovat Server API, budete muset použít virtuální počítač, který má přístup k Azure Virtual Network AKS (VNet) clusteru. K dispozici je několik možností pro vytvoření síťového připojení k privátnímu clusteru.
@@ -74,7 +90,7 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chc
 
 Nejjednodušší možností je vytvoření virtuálního počítače ve stejné virtuální síti jako cluster AKS.  Expresní směrování a sítě VPN přidávají náklady a vyžadují další složitost sítě.  Partnerský vztah virtuálních sítí vyžaduje, abyste naplánovali rozsahy směrování sítě, aby se zajistilo, že se překrývají rozsahy.
 
-## <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+## <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
 Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze způsobů, jak získat přístup k privátnímu clusteru. Pokud chcete použít partnerský vztah virtuálních sítí, musíte nastavit propojení mezi virtuální sítí a privátní zónou DNS.
     
@@ -100,23 +116,19 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 
 3. Ve scénářích, kdy virtuální síť, která obsahuje váš cluster, má vlastní nastavení DNS (4), nasazení clusteru se nepovede, pokud privátní zóna DNS není propojená s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz se dá vytvořit ručně, až se privátní zóna vytvoří během zřizování clusteru nebo přes automatizaci při detekci vytváření zóny pomocí mechanismů nasazení založeného na událostech (například Azure Event Grid a Azure Functions).
 
-## <a name="dependencies"></a>Závislosti  
-
-* Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
-* Pokud chcete použít vlastní server DNS, přidejte Azure DNS IP 168.63.129.16 jako nadřazený server DNS do vlastního serveru DNS.
+> [!NOTE]
+> Pokud používáte [Vlastní směrovací tabulku s kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) a přineste si vlastní DNS s privátním clusterem, vytvoření clusteru se nezdaří. Aby bylo možné vytvořit úspěšné vytvoření clusteru, bude nutné přidružit [cestu](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) v rámci skupiny prostředků uzlu k podsíti v případě, že se vytvoření clusteru nepovedlo.
 
 ## <a name="limitations"></a>Omezení 
 * Pro koncový bod privátního serveru API se nedají použít rozsahy autorizovaných IP adres, které se vztahují jenom na veřejný server API.
-* [Zóny dostupnosti][availability-zones] se v současné době podporují pro určité oblasti. 
 * [Omezení služby privátního propojení Azure][private-link-service] se vztahují na soukromé clustery.
-* Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování][devops-agents]. 
+* Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true). 
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
-* Žádná aktuální podpora pro Azure Dev Spaces
 * Žádná podpora pro převod stávajících clusterů AKS na privátní clustery
 * Odstraněním nebo úpravou privátního koncového bodu v podsíti zákazníka dojde k zastavení fungování clusteru. 
 * Služba Azure Monitor for Containers Live data není v současné době podporovaná.
-* Smlouva SLA pro dobu provozu není v současné době podporovaná.
-
+* Jakmile si zákazníci aktualizují záznam A na svých vlastních serverech DNS, budou tyto lusky i po migraci dál překládat apiserver plně kvalifikovaný název domény na starší IP adresu, dokud se nerestartují. Zákazníci musí po migraci řídicí plochy restartovat hostNetwork lusky a výchozí-DNSPolicy lusky.
+* V případě údržby na rovině ovládacího prvku se může vaše [IP adresa AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) změnit. V takovém případě musíte aktualizovat záznam A odkazující na server rozhraní API privátní IP adresu na svém vlastním serveru DNS a restartovat jakékoli vlastní lusky nebo nasazení pomocí hostNetwork.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

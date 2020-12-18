@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600900"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674038"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Výchozí testovací případy pro sadu nástrojů pro test šablon ARM
 
@@ -693,4 +693,5 @@ Následující příklad se **nezdařil** , protože používá funkci [list *](
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
+- Další informace o spuštění sady nástrojů test Toolkit najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
+- Microsoft Learn modul, který se zabývá používáním sady nástrojů test Toolkit, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).

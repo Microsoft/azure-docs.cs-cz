@@ -1,14 +1,14 @@
 ---
 title: Nasazení zásady, která se dá napravit
 description: Pokud chcete nasadit zásady, které používají úlohu nápravy prostřednictvím Azure Lighthouse, musíte vytvořit spravovanou identitu v tenantovi zákazníka.
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010091"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670487"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, která se dá opravit v rámci delegovaného předplatného
 
@@ -41,7 +41,7 @@ Následující příklad ukazuje **principalId** , který bude mít roli správc
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Nasazení zásad, které se dají opravit
 
-Po vytvoření uživatele s potřebnými oprávněními, jak je popsáno výše, může uživatel nasadit zásady, které používají nápravné úlohy v rámci tenanta zákazníka.
+Po vytvoření uživatele s potřebnými oprávněními, jak je popsáno výše, může tento uživatel nasadit zásady, které používají nápravné úkoly v rámci delegovaných předplatných zákazníků.
 
 Řekněme například, že jste chtěli povolit diagnostiku na Azure Key Vault prostředky v tenantovi zákazníka, jak je znázorněno v této [ukázce](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). Uživatel v tenantovi pro správu s příslušnými oprávněními (jak je popsáno výše) nasadí [šablonu Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) , která tento scénář povolí.
 

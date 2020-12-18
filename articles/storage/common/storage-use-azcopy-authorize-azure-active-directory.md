@@ -4,15 +4,15 @@ description: Přihlašovací údaje autorizace pro operace AzCopy můžete zadat
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617404"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672487"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorizace přístupu k objektům blob pomocí AzCopy a Azure Active Directory (Azure AD)
 
@@ -185,7 +185,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ## <a name="authorize-without-a-secret-store"></a>Autorizovat bez tajného úložiště
 
-Pokud váš operační systém nemá úložiště tajného klíče, jako je třeba *Správce klíčů* Linux, `azcopy login` příkaz nebude fungovat. Místo toho můžete nastavit proměnné prostředí v paměti před spuštěním jednotlivých operací. 
+`azcopy login`Příkaz načte token OAuth a pak umístí tento token do úložiště tajného kódu ve vašem systému. Pokud váš operační systém nemá úložiště tajného klíče, jako je například *Správce klíčů* Linux, `azcopy login` příkaz nebude fungovat, protože je nikde k umístění tokenu. 
+
+Místo použití `azcopy login` příkazu můžete nastavit proměnné prostředí v paměti. Pak spusťte libovolný příkaz AzCopy. AzCopy načte token ověřování potřebný k dokončení operace. Po dokončení operace token zmizí z paměti. 
 
 ### <a name="authorize-a-user-identity"></a>Autorizovat identitu uživatele
 
@@ -248,8 +250,6 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 Po nastavení těchto proměnných můžete spustit libovolný AzCopy příkaz (například: `azcopy list https://contoso.blob.core.windows.net` ).
 
 ### <a name="authorize-a-service-principal"></a>Autorizovat instanční objekt
-
-Před spuštěním skriptu se musíte interaktivně přihlásit aspoň jednou, abyste AzCopy mohli zadat přihlašovací údaje k instančnímu objektu.  Tyto přihlašovací údaje jsou uložené v zabezpečeném a zašifrovaném souboru, aby váš skript nemusel poskytovat citlivé informace.
 
 K účtu se můžete přihlásit pomocí tajného klíče klienta nebo pomocí hesla certifikátu, který je přidružený k registraci aplikace vašeho objektu služby.
 

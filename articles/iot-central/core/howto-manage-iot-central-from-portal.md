@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653328"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674442"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -41,7 +41,7 @@ Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři,
 
 ![Vytvořit formulář IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v zeměpisných oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
+**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v zeměpisných oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království** a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
 
 Po vyplnění všech polí vyberte **vytvořit**.
 
@@ -50,7 +50,7 @@ Po vyplnění všech polí vyberte **vytvořit**.
 Pokud už máte aplikaci Azure IoT Central, můžete ji odstranit nebo ji přesunout do jiného předplatného nebo skupiny prostředků v Azure Portal.
 
 > [!NOTE]
-> V Azure Portal neuvidíte aplikace vytvořené v cenovém plánu zdarma, protože nejsou přidružené k vašemu předplatnému.
+> Aplikace vytvořené pomocí *bezplatného* plánu nevyžadují předplatná Azure, a proto je v Azure Portal nenajdete v seznamu předplatného Azure. Na portálu IoT Central můžete zobrazit a spravovat jenom bezplatné aplikace.
 
 Začněte tím, že vyberete **všechny prostředky** na portálu. Vyberte **Zobrazit skryté typy** a začněte psát název vaší aplikace ve **filtru podle názvu** a vyhledejte ji. Pak vyberte aplikaci IoT Central, kterou chcete spravovat.
 

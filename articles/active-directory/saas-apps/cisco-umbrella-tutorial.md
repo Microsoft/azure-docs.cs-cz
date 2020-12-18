@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dde618b28e004e87edc2783bc44c5e7dd9f0ebba
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456118"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Kurz: Azure Active Directory integrace s Cisco deštníkem
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci Cisco deštníku do služby Azure AD, mus�
 
 4. Do vyhledávacího pole zadejte **Cisco deštník**, vyberte **Cisco deštník** z panelu výsledků a potom kliknutím na **Přidat** přidejte aplikaci.
 
-     ![Cisco deštník v seznamu výsledků](common/search-new-app.png)
+    ![Cisco deštník v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -133,7 +133,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     ![Druhá](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_other.png)
 
-4. Na stránce **metadata Cisco zastřešující**klikněte na **Další**.
+4. Na stránce **metadata Cisco zastřešující** klikněte na **Další**.
 
     ![Metadata](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_metadata.png)
 
@@ -141,7 +141,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     ![Další](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. V **Možnosti a: nahrání souboru XML**nahrajte soubor **XML s federačními metadaty** , který jste stáhli z Azure Portal a po nahrání metadat, že se automaticky naplní následující hodnoty, a pak klikněte na **Další**.
+6. V **Možnosti a: nahrání souboru XML** nahrajte soubor **XML s federačními metadaty** , který jste stáhli z Azure Portal a po nahrání metadat, že se automaticky naplní následující hodnoty, a pak klikněte na **Další**.
 
     ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
@@ -155,7 +155,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -168,7 +168,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
@@ -180,7 +180,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Cisco zastřešující.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Cisco deštník**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Cisco deštník**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -223,8 +223,8 @@ V případě Cisco zastřešující je zřizování ručním úkolem.
 
     b. Do pole **příjmení** zadejte příjmení, jako je **Simon**.
 
-    c. Z **role zvolte delegovaného správce**vyberte svou roli.
-  
+    c. Z **role zvolte delegovaného správce** vyberte svou roli.
+
     d. Do pole **e-mailová adresa** zadejte EmailAddress uživatele, jako je **brittasimon \@ contoso.com**.
 
     e. Do pole **heslo** zadejte své heslo.
@@ -239,7 +239,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Cisco deštník na přístupovém panelu, měli byste se automaticky přihlásit k Cisco zastřešující, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

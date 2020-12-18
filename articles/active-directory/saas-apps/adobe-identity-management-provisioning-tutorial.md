@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586587"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673295"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Adobe Identity Management pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci služby Adobe Iden
 > * Zřizování skupin a členství ve skupinách v sadě Adobe Identity Management
 > * Jednotné přihlašování do společnosti Adobe Identity Management (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -57,15 +57,15 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 2. Klikněte na **Přidat synchronizaci**.
 
-      ![Přidání](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![Přidání](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. Vyberte možnost **synchronizovat uživatele z Microsoft Azure** a klikněte na tlačítko **Další**.
 
-      ![Snímek obrazovky zobrazující, že je vybraná možnost synchronizovat uživatele z Microsoft Azure Active Directory](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![Snímek obrazovky zobrazující, že je vybraná možnost synchronizovat uživatele z Microsoft Azure Active Directory](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Zkopírujte a uložte **adresu URL tenanta** a **tajný token**. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování vaší aplikace Adobe Identity Management v Azure Portal.
 
-      ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání služby Adobe Identity Management z Galerie aplikací Azure AD
 

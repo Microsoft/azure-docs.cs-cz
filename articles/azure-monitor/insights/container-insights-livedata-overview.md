@@ -2,23 +2,20 @@
 title: Zobrazit živá data (Preview) s Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje zobrazení Kubernetes protokolů, událostí a metrik v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346799"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672864"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
 
 Azure Monitor for Containers zahrnuje funkci živá data (Preview), která je pokročilou diagnostickou, která umožňuje přímý přístup k vašim protokolům kontejnerů AKS (Azure Kubernetes Service), událostem a metrikám pod. Zpřístupňuje přímý přístup k `kubectl logs -c` `kubectl get` událostem a `kubectl top pods` . V podokně konzoly se zobrazují protokoly, události a metriky vygenerované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
 
 Tento článek poskytuje podrobný přehled a pomůže vám pochopit, jak tuto funkci používat.
-
->[!NOTE]
->AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz.
 
 Nápovědu k nastavení funkce živá data (Preview) najdete v naší [příručce k instalaci](container-insights-livedata-setup.md). Tato funkce přímo přistupuje k rozhraní Kubernetes API. Další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
@@ -107,7 +104,7 @@ Po úspěšném ověření se pod mřížkou dat výkonu zobrazí podokno konzol
 ## <a name="using-live-data-views"></a>Používání zobrazení dynamických dat
 Následující části popisují funkčnost, kterou můžete použít v různých zobrazeních dynamických dat.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 Funkce Live data (Preview) zahrnuje funkce hledání. V poli **hledání** můžete výsledky filtrovat zadáním klíčového slova nebo termínu. všechny vyhovující výsledky jsou zvýrazněny, aby umožňovaly rychlou kontrolu. Při prohlížení událostí můžete kromě toho omezit výsledky pomocí **filtru** , který se nachází na pravé straně panelu hledání. V závislosti na tom, jaký prostředek jste vybrali, zobrazuje funkce pilla seznam pod, oborem názvů nebo clusteru, ze kterého se má vybrat.
 
 ![Příklad filtru podokna konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)

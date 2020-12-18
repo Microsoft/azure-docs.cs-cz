@@ -9,12 +9,12 @@ ms.custom: mvc, contperf-fy21q1
 ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 3bfc8704919fc26db692701eaca526dd5c333b6f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 04ba20bd5607bc309735e509ac37b15c33445c52
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033489"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672729"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -68,7 +68,6 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Aktualizace konfigurace můžou v průměru trvat pět minut.|Aktualizace konfigurace Azure Firewall může v průměru trvat tři až pět minut a paralelní aktualizace nejsou podporované.|Probíhá šetření opravy.|
 |Azure Firewall používá k filtrování provozu HTTPS a MSSQL hlavičky SNI TLS.|Pokud prohlížeč nebo serverový software nepodporuje rozšíření SNI (název serveru), nebudete se moct připojit prostřednictvím Azure Firewall.|Pokud prohlížeč nebo serverový software nepodporuje SNI, může být možné řídit připojení pomocí síťového pravidla namísto pravidla aplikace. Software, který podporuje SNI, najdete v tématu [indikace názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication) .|
 |Vlastní DNS nefunguje s vynuceným tunelovým propojením|Pokud je povolené vynucené tunelování, vlastní DNS nefunguje.|Probíhá šetření opravy.|
-|Nová podpora veřejných IP adres pro více Zóny dostupnosti|Novou veřejnou IP adresu nemůžete přidat při nasazení brány firewall se dvěma zónami dostupnosti (1 a 2, 2 a 3 nebo 1 a 3).|Toto je omezení prostředků veřejné IP adresy.|
 |Funkce Spustit/zastavit nefunguje s bránou firewall nakonfigurovanou v režimu vynuceného tunelového propojení.|Spuštění/zastavení nefunguje s bránou Azure firewall nakonfigurovanou v režimu vynuceného tunelového propojení. Při pokusu o spuštění Azure Firewall s nakonfigurovaným vynuceným tunelovým propojením dojde k následující chybě:<br><br>*Set-AzFirewall: AzureFirewall nelze přidat konfiguraci IP adresy pro správu FW-XX do existující brány firewall. Pokud chcete používat vynucené tunelové propojení, proveďte znovu nasazení s konfigurací IP adresy pro správu. <br> StatusCode: 400 <br> ReasonPhrase: Chybný požadavek*|V rámci šetření.<br><br>Jako alternativní řešení můžete odstranit existující bránu firewall a vytvořit novou se stejnými parametry.|
 |Nejde přidat značky zásad brány firewall pomocí portálu.|Zásady Azure Firewall mají omezení podpory oprav, které vám brání v přidávání značky pomocí Azure Portal. Vygenerovala se následující chyba: *značky pro prostředek se nepovedlo Uložit*.|Probíhá šetření opravy. Alternativně můžete použít rutinu Azure PowerShell `Set-AzFirewallPolicy` k aktualizaci značek.|
 |Protokol IPv6 ještě není podporovaný.|Pokud přidáte adresu IPv6 k pravidlu, brána firewall se nezdařila.|Používejte jenom IPv4 adresy. V rámci šetření je podporována podpora protokolu IPv6.|

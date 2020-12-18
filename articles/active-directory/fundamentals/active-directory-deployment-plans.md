@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498077"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672377"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny k nasazení funkcí Azure Active Directory (Azure AD)? Plány nasazení Azure AD vás seznámí s obchodní hodnotou, požadavky na plánování a provozními postupy potřebnými k úspěšnému nasazení běžných funkcí služby Azure AD.
@@ -29,7 +29,7 @@ Na kterékoli stránce plánu použijte možnost Tisk v prohlížeči do formát
 
 | Schopnost | Description|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) je řešení ověřování dvou kroků od Microsoftu. Pomocí metod ověřování schválených správcem Azure AD MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) je řešení ověřování dvou kroků od Microsoftu. Pomocí metod ověřování schválených správcem Azure AD MFA pomáhá chránit přístup k vašim datům a aplikacím a současně splňuje požadavky na jednoduchý proces přihlašování. Podívejte se na toto video o [tom, jak nakonfigurovat a vymáhat službu Multi-Factor Authentication ve vašem tenantovi](https://www.youtube.com/watch?v=qNndxl7gqVM) .|
 | [Podmíněný přístup](../conditional-access/plan-conditional-access.md)| Pomocí podmíněného přístupu můžete implementovat automatizované rozhodnutí řízení přístupu, která budou mít přístup k vašim cloudovým aplikacím, a to na základě podmínek. |
 | [Samoobslužné resetování hesla](../authentication/howto-sspr-deployment.md)| Samoobslužné resetování hesla pomáhá uživatelům resetovat hesla bez zásahu správce, kdy a kde potřebují. |
 | [Bez hesla](../authentication/howto-authentication-passwordless-deployment.md) | Implementace ověřování pomocí hesla pomocí Microsoft Authenticator aplikace nebo klíčů zabezpečení FIDO2 ve vaší organizaci |
@@ -49,7 +49,7 @@ Na kterékoli stránce plánu použijte možnost Tisk v prohlížeči do formát
 | -| -|
 | [ADFS pro synchronizaci hodnot hash hesel](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Díky synchronizaci hodnot hash hesel jsou hash hesla uživatelů synchronizovaná z místní služby Active Directory do Azure AD a umožňují tak uživatelům ověřování Azure AD bez interakce s místní službou Active Directory. |
 | [ADFS pro předávací ověřování](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Předávací ověřování Azure AD pomáhá uživatelům přihlašovat se pomocí stejných hesel k místním i cloudovým aplikacím. Tato funkce poskytuje uživatelům lepší možnosti – jedno méně než jedno heslo, které si zapamatuje a snižuje náklady na helpdesk, protože uživatelé mají méně pravděpodobný způsob, jak se přihlásit. Když se uživatelé přihlásí pomocí Azure AD, tato funkce ověří jejich hesla přímo v místní službě Active Directory. |
-| [Proxy aplikací služby Azure AD](../manage-apps/application-proxy-deployment-plan.md) |Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Potřebují přístup k SaaS aplikacím v cloudu a místních aplikacích. Proxy aplikace služby Azure AD umožňuje tento robustní přístup bez nákladných a složitých virtuálních privátních sítí (zóny DMZ) nebo zón demilitarizovaná (). |
+| [Proxy aplikací služby AD Azure](../manage-apps/application-proxy-deployment-plan.md) |Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Potřebují přístup k SaaS aplikacím v cloudu a místních aplikacích. Proxy aplikace služby Azure AD umožňuje tento robustní přístup bez nákladných a složitých virtuálních privátních sítí (zóny DMZ) nebo zón demilitarizovaná (). |
 | [Bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso-quick-start.md)| Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémové jednotné přihlašování Azure AD) automaticky přihlašuje uživatele, kteří zrovna používají svá podniková zařízení připojená k vaší podnikové síti. S touto funkcí uživatelé nebudou muset zadávat hesla pro přihlášení ke službě Azure AD a obvykle nemusejí zadávat svá uživatelská jména. Tato funkce poskytuje autorizovaným uživatelům, kteří mají snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent. |
 
 ## <a name="deploy-user-provisioning"></a>Nasazení zřizování uživatelů

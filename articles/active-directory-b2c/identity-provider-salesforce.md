@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654281"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669223"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Salesforce pomocí Azure Active Directory B2C
 
@@ -39,7 +39,9 @@ ms.locfileid: "97654281"
 
 Pokud chcete použít účet Salesforce v Azure Active Directory B2C (Azure AD B2C), musíte ve **správci aplikací** Salesforce vytvořit aplikaci. Další informace najdete v tématech [Konfigurace základního nastavení připojené aplikace](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)a [Povolení nastavení OAuth pro integraci rozhraní API](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm) .
 
-1. Z **instalačního programu** zadejte **aplikace** do pole **Rychlé hledání** a vyberte **App Manager**.
+1. [Přihlaste se k Salesforce](https://login.salesforce.com/).
+1. V nabídce vyberte možnost **Nastavení**.
+1.  Rozbalte položku **aplikace** a pak vyberte **App Manager**.
 1. Vyberte **Nová připojená aplikace**.
 1. V části **základní informace** zadejte:
     1. **Název propojené aplikace** – název připojené aplikace se zobrazí ve správci aplikací a na dlaždici spouštěče aplikací. Název musí být jedinečný v rámci vaší organizace. 

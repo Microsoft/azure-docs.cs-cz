@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e17c4e768d02226c1c50baea05b9231acb78cba6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b1c4ab22db3bb9cadc783357bd9963c5de3b6f98
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455404"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Kurz: Azure Active Directory integrace s Confirmit horizonty
 
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat integraci Confirmitch horizontů do služby Azure AD
 
 4. Do vyhledávacího pole zadejte **Confirmit horizonts**, vyberte **Confirmit horizonts** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Confirmit – horizonty v seznamu výsledků](common/search-new-app.png)
+    ![Confirmit – horizonty v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **Confirmit Ho
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -165,7 +165,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
     ![Uživatelský dialog](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
@@ -177,7 +177,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Confirmit horizontům.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Confirmit horizonty**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Confirmit horizonty**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -209,7 +209,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Confirmit horizonty, měli byste se automaticky přihlásit k horizontům Confirmit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

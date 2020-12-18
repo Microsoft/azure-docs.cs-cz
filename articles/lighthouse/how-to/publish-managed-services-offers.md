@@ -1,14 +1,14 @@
 ---
 title: Publikování nabídky spravované služby pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí do Azure Lighthouse.
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023921"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673150"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby pro Azure Marketplace
 
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku s
 
 Aby bylo možné vytvořit a publikovat nabídky, musíte mít platný [účet v partnerském centru](../../marketplace/partner-center-portal/create-account.md) . Pokud účet ještě nemáte, [proces registrace](https://aka.ms/joinmarketplace) vás provede kroky pro vytvoření účtu v partnerském centru a registraci v programu komerčního tržiště.
 
-Aby bylo možné publikovat nabídku spravované služby podle [spravované služby](/legal/marketplace/certification-policies#7004-business-requirements), musíte mít [úroveň kompetence cloudové platformy stříbrné nebo Gold](/partner-center/learn-about-competencies) nebo být [odborníkem na Azure Experts MSP](https://partner.microsoft.com/membership/azure-expert-msp) .
+Aby bylo možné publikovat nabídku spravované služby podle [spravované služby](/legal/marketplace/certification-policies#7004-business-requirements), musíte mít [úroveň kompetence cloudové platformy stříbrné nebo Gold](/partner-center/learn-about-competencies) nebo být [odborníkem na Azure Experts MSP](https://partner.microsoft.com/membership/azure-expert-msp) . Je také nutné [zadat cíl zájemce, který vytvoří záznam v systému CRM](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) pokaždé, když zákazník nasadí vaši nabídku.
 
 Vaše ID Microsoft Partner Network (MPN) se [automaticky přidruží](../../cost-management-billing/manage/link-partner-id.md) k nabídkám, které publikujete, abyste mohli sledovat svůj dopad na zapojení zákazníků.
 
@@ -28,13 +28,13 @@ Následující tabulka vám pomůže určit, jestli se zákazníci mají připoj
 
 |**Aspekty**  |**Nabídka spravované služby**  |**Šablony ARM**  |
 |---------|---------|---------|
-|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Yes         |No        |
-|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Yes         |No         |
-|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Yes     |No       |
-|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Yes         |
-|Vyžaduje přijetí zákazníkem v Azure Portal     |Yes     |No   |
-|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |No     |Yes    |
-|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Yes         |
+|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Ano         |Ne        |
+|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Ano         |Ne         |
+|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Ano     |Ne       |
+|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Ano         |
+|Vyžaduje přijetí zákazníkem v Azure Portal     |Ano     |Ne   |
+|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |Ne     |Ano    |
+|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Ano         |
 
 ## <a name="create-your-offer"></a>Vytvoření nabídky
 

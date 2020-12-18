@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456050"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s WebEx schůzkami Cisco
 
@@ -92,8 +92,8 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     a. V části **základní konfigurace SAML** klikněte na ikonu Upravit/pero.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-    
-    b. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: ` https://<customername>.my.webex.com`
+
+    b. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<customername>.my.webex.com`
 
 5. Aplikace WebEx pro schůzky Cisco očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. Kromě výše očekává aplikace WebEx schůzky Cisco několik atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------|  --------- |
     |   FirstName    | User. křestní jméno |
     |   polím    | User. příjmení |
@@ -114,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. Ponechte **obor názvů** prázdný.
 
-    d. Jako **atribut**vyberte zdroj.
+    d. Jako **atribut** vyberte zdroj.
 
     e. V seznamu **zdrojový atribut** vyberte v rozevíracím seznamu hodnotu atributu zobrazenou pro tento řádek.
 
@@ -132,11 +132,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
     1. Do pole **Název** zadejte `B.Simon`.  
-    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
     1. Klikněte na **Vytvořit**.
 
@@ -144,13 +144,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k schůzkám Cisco Webex.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **schůzky Cisco Webex**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -163,14 +163,14 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V rámci `https://<customername>.webex.com/admin` svých přihlašovacích údajů pro správu použijte adresu URL.
 
 2. Přejděte na **běžné nastavení webu** a přejděte na **Konfigurace jednotného přihlašování**.
- 
+
     ![Snímek obrazovky se správou Cisco Webex s vybranými běžnými nastaveními lokality a konfigurací S. O.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. Na stránce **Správa WebEx** proveďte následující kroky:
 
     ![Snímek obrazovky se stránkou pro správu WebEx, která obsahuje informace popsané v tomto kroku.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-    a. jako **federační protokol**vyberte **SAML 2,0** .
+    a. jako **federační protokol** vyberte **SAML 2,0** .
 
     b. Kliknutím na odkaz **importovat metadata SAML** nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
@@ -198,11 +198,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici WebEx schůzky Cisco na přístupovém panelu, měli byste se automaticky přihlásit k schůzkám Cisco Webex, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 - [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 

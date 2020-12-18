@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653720"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672396"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -74,11 +74,11 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 1. Přihlaste se k Azure jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Podmíněný přístup – okno Podmínky použití](./media/terms-of-use/tou-blade.png)
+    ![Podmíněný přístup – okno Podmínky použití](./media/terms-of-use/tou-blade.png)
 
 1. Klikněte na **Nové podmínky**.
 
-   ![Nové období použití, které umožňuje zadat nastavení podmínek použití](./media/terms-of-use/new-tou.png)
+    ![Nové období použití, které umožňuje zadat nastavení podmínek použití](./media/terms-of-use/new-tou.png)
 
 1. Do pole **název** zadejte název podmínek použití, který bude použit v Azure Portal.
 1. Do pole **Zobrazovaný název** zadejte název, který se uživatelům zobrazí při přihlášení.
@@ -88,7 +88,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 1. Pokud chcete, aby koncoví uživatelé přijali vaše podmínky použití na každém zařízení, **ze kterého** přistupují, nastavte vyžadovat od **uživatelů souhlas na každém zařízení** . Pokud je tato možnost povolena, mohou být uživatelé vyzváni k instalaci dalších aplikací. Další informace najdete v tématu věnovaném [podmínkám použití v rámci zařízení](#per-device-terms-of-use).
 1. Pokud chcete, aby vypršela platnost podmínek použití podle plánu, nastavte na **zapnuto** **vypršení platnosti** . Pokud je nastaveno na on, zobrazí se dvě další nastavení plánu.
 
-   ![Nastavení souhlasu s vypršenou platností pro nastavení počátečního data, četnosti a trvání](./media/terms-of-use/expire-consents.png)
+    ![Nastavení souhlasu s vypršenou platností pro nastavení počátečního data, četnosti a trvání](./media/terms-of-use/expire-consents.png)
 
 1. Pokud chcete zadat plán pro **vyprší** platnosti podmínek použití, použijte nastavení **frekvence** od do. Následující tabulka ukazuje výsledek pro několik příkladů nastavení:
 
@@ -115,7 +115,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
 1. V části **podmíněný přístup** použijte seznam **vykonat se šablonou zásad podmíněného přístupu** a vyberte šablonu, která vynutila podmínky použití.
 
-   ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
+    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
    | Template (Šablona) | Popis |
    | --- | --- |
@@ -131,7 +131,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
 1. Klikněte na **Vytvořit**.
 
-   Pokud jste vybrali vlastní šablonu podmíněného přístupu, zobrazí se nová obrazovka, která vám umožní vytvořit vlastní zásady podmíněného přístupu.
+    Pokud jste vybrali vlastní šablonu podmíněného přístupu, zobrazí se nová obrazovka, která vám umožní vytvořit vlastní zásady podmíněného přístupu.
 
    ![Nový podoknem podmíněný přístup, pokud jste zvolili šablonu vlastní zásady podmíněného přístupu](./media/terms-of-use/custom-policy.png)
 
@@ -145,15 +145,15 @@ V okně Terms of Use se zobrazí počet uživatelů, kteří podmínky přijali 
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Okno Podmínky použití výpis počtu přijatých a odmítnutých uživatelských zobrazení](./media/terms-of-use/view-tou.png)
+    ![Okno Podmínky použití výpis počtu přijatých a odmítnutých uživatelských zobrazení](./media/terms-of-use/view-tou.png)
 
 1. Pro účely podmínek použití klikněte na čísla v části **přijato** nebo **Odmítnuto** pro zobrazení aktuálního stavu pro uživatele.
 
-   ![Podokno souhlasu Podmínky použití se seznamem uživatelů, kteří přijali](./media/terms-of-use/accepted-tou.png)
+    ![Podokno souhlasu Podmínky použití se seznamem uživatelů, kteří přijali](./media/terms-of-use/accepted-tou.png)
 
 1. Chcete-li zobrazit historii pro jednotlivé uživatele, klikněte na tlačítko se třemi tečkami (**...**) a pak **Zobrazte historii**.
 
-   ![Místní nabídka zobrazení historie pro uživatele](./media/terms-of-use/view-history-menu.png)
+    ![Místní nabídka zobrazení historie pro uživatele](./media/terms-of-use/view-history-menu.png)
 
    V podokně historie zobrazení se zobrazí historie všech přijetí, odmítnutí a vypršení platnosti.
 
@@ -169,11 +169,11 @@ Pokud chcete začít s protokoly auditu Azure AD, použijte následující postu
 1. Vyberte podmínek použití.
 1. Klikněte na **Zobrazit protokoly auditu**.
 
-   ![Okno Podmínky použití s zvýrazněnou možností zobrazit protokoly auditu](./media/terms-of-use/audit-tou.png)
+    ![Okno Podmínky použití s zvýrazněnou možností zobrazit protokoly auditu](./media/terms-of-use/audit-tou.png)
 
 1. Na obrazovce protokoly auditu Azure AD můžete filtrovat informace pomocí uvedených seznamů a zaměřit se na konkrétní informace protokolu auditu.
 
-   Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
+    Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
 
    ![Datum výpisu obrazovky protokolů auditu Azure AD, cílové zásady, zahájení a aktivita](./media/terms-of-use/audit-logs-tou.png)
 
@@ -204,11 +204,11 @@ Pomocí následujícího postupu mohou uživatelé zkontrolovat a zjistit, jaké
 1. Přihlaste se k webu [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. V pravém horním rohu klikněte na své jméno a vyberte **profil**.
 
-   ![Web aplikace Mojeapl s otevřeným podoknem uživatele](./media/terms-of-use/tou14.png)
+    ![Web aplikace Mojeapl s otevřeným podoknem uživatele](./media/terms-of-use/tou14.png)
 
 1. Na stránce svého profilu klikněte na **Přečíst podmínky použití**.
 
-   ![Stránka profilu pro uživatele, který zobrazuje odkaz na kontrolu podmínek použití](./media/terms-of-use/tou13a.png)
+    ![Stránka profilu pro uživatele, který zobrazuje odkaz na kontrolu podmínek použití](./media/terms-of-use/tou13a.png)
 
 1. Tady si můžete přečíst podmínky použití, které jste přijali.
 
@@ -220,11 +220,11 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 1. Vyberte podmínkami použití, které chcete upravit.
 1. Klikněte na **Upravit výrazy**.
 1. V podokně upravit podmínek použití můžete změnit následující:
-     - **Název** – jedná se o interní název podmínky použití, který není sdílený s koncovými uživateli.
-     - **Zobrazovaný název** – jedná se o název, který koncoví uživatelé uvidí při prohlížení podmínky použití
-     - **Vyžadovat, aby uživatelé rozšířili podmínek použití** – když toto nastavení nastavíte **na zapnuto** , vynutí se koncovým příkazem rozšířit požadavky na použití dokumentu před přijetím.
-     - Tisk Můžete **aktualizovat existující dokument podmínek použití**
-     - Do existujícího podmínky použití můžete přidat jazyk.
+    - **Název** – jedná se o interní název podmínky použití, který není sdílený s koncovými uživateli.
+    - **Zobrazovaný název** – jedná se o název, který koncoví uživatelé uvidí při prohlížení podmínky použití
+    - **Vyžadovat, aby uživatelé rozšířili podmínek použití** – když toto nastavení nastavíte **na zapnuto** , vynutí se koncovým příkazem rozšířit požadavky na použití dokumentu před přijetím.
+    - Tisk Můžete **aktualizovat existující dokument podmínek použití**
+    - Do existujícího podmínky použití můžete přidat jazyk.
 
    Pokud existují další nastavení, která byste chtěli změnit, třeba dokument PDF, vyžadovat, aby uživatelé souhlasili na každém zařízení, souhlas s vypršenou platností, doba před přijetím nebo zásady podmíněného přístupu, musíte vytvořit nové podmínky použití.
 
@@ -279,7 +279,7 @@ Následující postup popisuje, jak přidat jazyk podmínek použití.
 1. V dolní části stránky klikněte na **Přidat jazyk** .
 1. V podokně Přidat podmínek použití jazyka nahrajte lokalizovaný soubor PDF a vyberte jazyk.
 
-   ![Vybraná Podmínky použití a zobrazení karty jazyky v podokně podrobností](./media/terms-of-use/select-language.png)
+    ![Vybraná Podmínky použití a zobrazení karty jazyky v podokně podrobností](./media/terms-of-use/select-language.png)
 
 1. Klikněte na **Přidat jazyk**.
 1. Klikněte na **Uložit**.
@@ -340,7 +340,7 @@ Pomocí následujícího postupu můžete odstranit stará pravidla použití.
 1. Klikněte na **Odstranit podmínky**.
 1. Ve zprávě s dotazem, jestli chcete pokračovat, která se zobrazí, klikněte na **Ano**.
 
-   ![Zpráva s výzvou k potvrzení odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
+    ![Zpráva s výzvou k potvrzení odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
 
    Nemusíte už zobrazovat vaše podmínkami použití.
 
