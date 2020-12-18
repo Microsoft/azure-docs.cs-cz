@@ -658,6 +658,8 @@
           href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Prostředí Integration Runtime
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Rozdíly oproti Azure Data Factory
+          href: ./data-integration/concepts-data-factory-differences.md
         - name: Toky dat
           items:
             - name: Přehled toků dat
@@ -678,8 +680,6 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Jazyk výrazů
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Rozdíly oproti Azure Data Factory
-              href: ./data-integration/concepts-data-factory-differences.md
     - name: Návody
       items:
         - name: Autor

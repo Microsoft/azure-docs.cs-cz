@@ -110,6 +110,8 @@
       items:
         - name: Metrika kapacity
           href: api-management-capacity.md
+        - name: Plánování a správa nákladů
+          href: plan-manage-costs.md
         - name: Upgrade a škálování
           href: upgrade-and-scale.md
         - name: Konfigurace automatického škálování

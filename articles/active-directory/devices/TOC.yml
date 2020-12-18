@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: Primární obnovovací tokeny
       href: concept-primary-refresh-token.md
-    - name: Pracovní stanice spravované v Azure
-      href: concept-azure-managed-workstation.md
 - name: Návody
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Infrastruktura virtuálního klienta
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Nasazení pracovních stanic spravovaných v Azure
-      href: howto-azure-managed-workstation.md
     - name: Řešení problémů s identitami zařízení
       items:
         - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
