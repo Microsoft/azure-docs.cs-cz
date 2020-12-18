@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337657"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678878"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
@@ -98,11 +98,11 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
 > [!IMPORTANT]
 > Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
-Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
+Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Některé alternativy dostupné v systému Linux jsou [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [úlohách](https://www.cis.upenn.edu/~bcpierce/unison/)nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
 Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
+Pokud použijete `rsync` možnost pro kopírování s více vlákny, postupujte podle těchto pokynů:
 
 * V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
@@ -110,7 +110,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 
     `sudo apt-get install nfs-utils`
 
-* Nainstalujte **rsync** a **Parallel** (liší se v závislosti na distribuované verzi systému Linux).
+* Instalace `rsync` a **paralelní** (liší se v závislosti na distribuované verzi systému Linux).
 
     `sudo apt-get install rsync`
    

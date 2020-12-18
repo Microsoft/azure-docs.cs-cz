@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896374"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680148"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -24,16 +24,16 @@ Vykreslení desítky tisíc bodů, protože symboly mohou pokrývat většinu ob
 
 Můžete použít Heat mapy v mnoha různých scénářích, mezi které patří:
 
-- **Data o teplotě** : poskytuje přibližné hodnoty pro to, co je teplota mezi dvěma datovými body.
-- **Data pro senzory hluku** : ukazuje nejen intenzitu hluku, kde je senzor, ale může také poskytnout přehled o rozptylu v rámci určité vzdálenosti. Úroveň hluku v některém webu nemusí být vysoká. Pokud se oblast pokrytí hluku od více senzorů překrývá, je možné, že se tato překrývající oblast dostanou o vyšší úrovně hluku. V takovém případě by se překrytá oblast zobrazila v Heat mapě.
-- **GPS Trace** : zahrnuje rychlost jako mapu s váženou výškou, kde je intenzita jednotlivých datových bodů založena na rychlosti. Tato funkce například poskytuje způsob, jak zjistit, kde bylo vozidlo urychleno.
+- **Data o teplotě**: poskytuje přibližné hodnoty pro to, co je teplota mezi dvěma datovými body.
+- **Data pro senzory hluku**: ukazuje nejen intenzitu hluku, kde je senzor, ale může také poskytnout přehled o rozptylu v rámci určité vzdálenosti. Úroveň hluku v některém webu nemusí být vysoká. Pokud se oblast pokrytí hluku od více senzorů překrývá, je možné, že se tato překrývající oblast dostanou o vyšší úrovně hluku. V takovém případě by se překrytá oblast zobrazila v Heat mapě.
+- **GPS Trace**: zahrnuje rychlost jako mapu s váženou výškou, kde je intenzita jednotlivých datových bodů založena na rychlosti. Tato funkce například poskytuje způsob, jak zjistit, kde bylo vozidlo urychleno.
 
 > [!TIP]
 > Vrstvy Heat mapy ve výchozím nastavení vykreslují souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte `filter` vlastnost vrstvy na `['==', ['geometry-type'], 'Point']` . Pokud chcete zahrnout i funkce systému MultiPoint, nastavte `filter` vlastnost vrstvy na `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -103,7 +103,7 @@ Použijte `zoom` výraz pro horizontální navýšení kapacity poloměru pro ka
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Konzistentní Heat mapa s přiblížením" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Podívejte se na CodePen () s Azure Maps použitím <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>lupy s přiblížením na vyměnitelné Heat mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na CodePen () s Azure Maps použitím <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>lupy s přiblížením na vyměnitelné Heat mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'></a>.
 </iframe>
 
 > [!TIP]

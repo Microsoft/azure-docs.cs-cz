@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 37cd2051670221b8b78c075f249f633f9f447099
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674293"
+ms.locfileid: "97680345"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,17 +32,9 @@ V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](ht
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databáze. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
+- Databáze, ve které můžete spustit dotaz. 
 
-  | Akce | Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure | Azure Synapse Analytics |
-  |:--- |:--- |:---|:---|:---|
-  | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [Azure Portal](/azure/synapse-analytics/quickstart-create-workspace.md) |
-  || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | | [Rozhraní příkazového řádku](/azure/synapse-analytics/quickstart-create-workspace-cli.md) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md) | [PowerShell](/azure/synapse-analytics/quickstart-create-workspace-powershell.md) |
-  || | | [Šablona nasazení](/azure/azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Šablona nasazení](/azure/synapse-analytics/quickstart-deployment-template-workspaces.md) | 
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md)| [Připojení z virtuálního počítače](../managed-instance/connect-vm-instance-configure.md)| |
-  |||[Připojení z místního prostředí](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
-  ||||
+[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Rozhraní .NET Core pro nainstalovaný operační systém](https://www.microsoft.com/net/core) .
 
@@ -50,7 +42,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 

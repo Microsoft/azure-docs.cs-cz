@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889795"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680027"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
@@ -29,9 +29,9 @@ Možnosti stylu lze nastavit při inicializaci webového ovládacího prvku. Neb
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -101,7 +101,7 @@ Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v 
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `list` rozložení.
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Rozložení ikony výběru stylu":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Rozložení seznamu výběru stylu":::
 
 > [!IMPORTANT]
 > Ve výchozím nastavení ovládací prvek pro výběr stylu vypíše všechny styly, které jsou k dispozici v rámci cenové úrovně S0 Azure Maps. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do `mapStyle` Možnosti výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnost výběru stylu na `"all"` .
@@ -129,10 +129,13 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Přidejte ovládací prvky do svých map:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Přidání mapových ovládacích prvků](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Přidání špendlíku](map-add-pin.md)
+> [Přidání vrstvy symbolů](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy bublin](map-add-bubble-layer.md)

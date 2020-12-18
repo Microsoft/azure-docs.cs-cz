@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499726"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680658"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -86,17 +86,17 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForLinux | řetězec |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | Ignoruje se na Linux. | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | řetězec |
-| requiredInitialSync | true | boolean |
+| requireInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | pole řetězců
 | msiEndpoint | http://169.254.169.254/metadata/identity | řetězec |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | řetězec |
@@ -223,7 +223,7 @@ Mějte na paměti následující omezení/požadavky:
   Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
 
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377370"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679092"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Kurz: publikování několika verzí vašeho rozhraní API 
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/azure-portal.png" alt-text="Verze zobrazená v Azure Portal":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
 1. Vyberte **Rozhraní API**.
 1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**. 
-1. Vyberte kontextovou nabídku ( **...** ) vedle pole **demo konferenčního rozhraní API**.
+1. Vyberte kontextovou nabídku (**...**) vedle pole **demo konferenčního rozhraní API**.
 1. Vyberte **Přidat verzi**.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="Místní nabídka rozhraní API – přidat verzi":::
@@ -52,7 +52,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="choose-a-versioning-scheme"></a>Výběr schématu vytváření verzí
 
-V Azure API Management zvolíte způsob, jakým volající určuje verzi rozhraní API, výběrem *schématu správy verzí* : **cesta, záhlaví** nebo **řetězec dotazu**. V následujícím příkladu se jako schéma správy verzí používá *cesta* .
+V Azure API Management zvolíte způsob, jakým volající určuje verzi rozhraní API, výběrem *schématu správy verzí*: **cesta, záhlaví** nebo **řetězec dotazu**. V následujícím příkladu se jako schéma správy verzí používá *cesta* .
 
 Zadejte hodnoty z následující tabulky. Pak vyberte **vytvořit** a vytvořte svou verzi.
 
@@ -111,4 +111,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení stylu stránek portálu pro vývojáře](api-management-customize-styles.md)
+> [Přizpůsobení stylu stránek portálu pro vývojáře](api-management-howto-developer-portal-customize.md)

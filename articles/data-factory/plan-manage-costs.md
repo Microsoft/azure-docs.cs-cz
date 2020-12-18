@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638002"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678895"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Plánování a Správa nákladů na Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory je služba pro integraci dat bez serveru, která je vytvořená pro škálování v cloudu.  To znamená, že není k dispozici výpočetní výkon, který musíte naplánovat pro zatížení ve špičce; místo toho určíte, kolik prostředků se má přidělit na vyžádání na operaci, což vám umožní navrhovat procesy ETL mnohem škálovatelným způsobem. Navíc se ADF účtuje podle plánu založeného na spotřebě, což znamená, že platíte jenom za to, co využijete.
 
@@ -62,9 +62,9 @@ Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-managemen
 
 Při zahájení používání Azure Data Factory můžete zobrazit náklady vzniklé v podokně [Analýza nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md) v Azure Portal.
 
-1. Chcete-li zobrazit [analýzu nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md), otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte možnost **otevřít analýzu nákladů** .
+1. Chcete-li zobrazit [analýzu nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md), otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte možnost **otevřít analýzu nákladů**.
 2. Výchozí zobrazení zobrazuje akumulované náklady na aktuální měsíc.  Můžete přepnout na jiný časový rozsah a jinou členitost, například denně nebo měsíčně.
-3. Chcete-li zúžit náklady na jednu službu, například Azure Data Factory, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby** .  Pak ze seznamu zvolte **Azure Data Factory v2** .
+3. Chcete-li zúžit náklady na jednu službu, například Azure Data Factory, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby**.  Pak ze seznamu zvolte **Azure Data Factory v2** .
 4. Můžete přidat další filtry, abyste mohli analyzovat náklady na konkrétní instanci továrny a konkrétní členitost měřičů ADF.
 
    ![Analýza nákladů](media/plan-manage-costs/cost-analysis.png)

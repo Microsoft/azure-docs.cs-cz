@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
+title: Kopírování dat z HubSpot pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z HubSpot do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151f156439a40b2e5515886849635f00b2fcc1e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415210"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680904"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Kopírování dat z HubSpot pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z HubSpot. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
-
-> [!IMPORTANT]
-> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a sdělit nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -55,9 +52,9 @@ Pro propojenou službu HubSpot jsou podporovány následující vlastnosti:
 | clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | accessToken | Přístupový token získaný při počátečním ověřování integrace OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | Refreshtoken kontextového tokenu | Obnovovací token získaný při počátečním ověřování integrace OAuth. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 

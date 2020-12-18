@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027896"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679518"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
@@ -25,8 +25,8 @@ Když vytváříte službu Kognitivní hledání, získáte:
 + Vyhledávací modul, který provádí indexování a provádění dotazů
 + Trvalé úložiště vyhledávacích indexů, které vytvoříte a spravujete
 + Dotazovací jazyk pro vytváření jednoduchých a složitých dotazů
-+ Analýzy na základě AI, vytváření prohledávatelných obsahu z imagí, nezpracovaný text, soubory aplikací
-+ Integrace se službou Azure data prostřednictvím indexerů hledání, automatizace importu a aktualizace dat
++ [Rozšíření řízená AI](cognitive-search-concept-intro.md), vytváření prohledávatelných obsahu na základě obrázků, nezpracovaného textu, souborů aplikace
++ Integrace s dalšími službami Azure pro data, Machine Learning/AI a zabezpečení
 
 Služba vyhledávání v architektuře je mezi externími úložišti dat, která obsahují vaše neindexovaná data, a klientskou aplikací, která odesílá dotazy do indexu vyhledávání a zpracovává odpověď.
 
@@ -89,11 +89,11 @@ Mezi poskytovateli cloudu je Azure Kognitivní hledání nejsilnější pro úlo
 Mezi hlavní silné stránky patří:
 
 + Integrace dat Azure (prohledávací moduly) ve vrstvě indexování
-+ Portál Azure Portal pro centrální správu
-+ Škálování kapacity, spolehlivost a špičková dostupnost Azure
-+ Zpracování souborů AI z nezpracovaných dat, aby bylo možné je prohledávat, včetně textu z obrázků nebo hledání vzorců v nestrukturovaném obsahu.
++ Integrace privátních odkazů Azure pro podporu požadavků na zabezpečení z Internetu
++ Integrace se zpracováním AI, aby bylo možné v neprohledávatelných typech obsahu prohledávat text.
 + Jazykové a vlastní analýzy s analyzátory pro výkonné fulltextové vyhledávání v 56 jazycích
-+ [Základní funkce společné pro aplikace zaměřené na vyhledávání](search-features-list.md): vyhodnocování (bodování), používání faset, návrhy, synonyma, geografické vyhledávání a další.
++ [Důležité funkce](search-features-list.md): bohatý dotazovací jazyk, optimalizace závažnosti, charakteristiky, automatické dokončování, synonyma, geografické vyhledávání a kompozice výsledků.
++ Škálování kapacity, spolehlivost a špičková dostupnost Azure
 
 Mezi naše zákazníky dokázali využít nejširší škálu funkcí v Azure Kognitivní hledání zahrnuje online katalogy, obchodní programy a aplikace pro zjišťování dokumentů.
 

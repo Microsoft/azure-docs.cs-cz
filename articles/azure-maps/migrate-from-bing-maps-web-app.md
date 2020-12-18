@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589997"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679402"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Kurz – migrace webové aplikace z map Bing
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Kurz: migrace webové aplikace z map Bing
 
-Webové aplikace, které používají mapy Bing, často používají sadu SDK služby Bing Maps V8 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a pomocí obrázků pro zobrazení ve vašich webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
+Webové aplikace, které používají mapy Bing, často používají sadu SDK služby Bing Maps V8 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a pomocí obrázků pro zobrazení ve vašich webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK. V tomto kurzu se naučíte, jak:
+
+> [!div class="checklist"]
+> * Načtení mapy
+> * Lokalizace mapy
+> * Přidejte špendlíky, lomené čáry a mnohoúhelníky.
+> * Zobrazení informací v místní nabídce nebo Infobox
+> * Načtení a zobrazení dat KML a data o jednotlivých standardech JSON
+> * Špendlíky clusteru
+> * Překrytí vrstvy dlaždice
+> * Zobrazení provozních dat
+> * Přidání překrytí základní desky
 
 Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapa, například cesium, leták a OpenLayers. Pokud je to a chcete, aby se tato knihovna dál používala, můžete ji připojit ke službám Azure Maps dlaždice ([cesty](/rest/api/maps/render/getmaptile) \| [satelitních](/rest/api/maps/render/getmapimagerytile)bloků). Odkazy níže poskytují podrobné informace o tom, jak používat Azure Maps v některých běžně používaných Open Source knihovnách ovládacích prvků.
 
--   Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
--   Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
--   OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
+* Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
+* Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
+* OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
 
 Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z následujících open-source projektů:
 
-- [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
-- [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
+* [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
+* [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
+
+## <a name="prerequisites"></a>Požadavky
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>Podpora klíčových funkcí
 
@@ -68,24 +85,24 @@ Azure Maps také obsahuje mnoho dalších [Open Source modulů pro webovou sadu 
 
 Níže jsou uvedeny některé z klíčových rozdílů mezi mapami Bing a Azure Maps Web SDK, na kterých je třeba vědět:
 
--   Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](./how-to-use-map-control.md) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
--   Mapy Bing poskytují dvě hostované větve své sady SDK. Vydávat a experimentovat. Experimentální větev může obdržet několik aktualizací za den, kdy dojde k vývoji nového vývoje. Azure Maps pouze hostitelskou větev verze, ale experimentální funkce jsou vytvořeny jako vlastní moduly v projektu ukázek Open-Source Azure Maps kódu. Mapy Bing používaly k dispozici zmrazenou větev, která byla aktualizována méně často, čímž se snížilo riziko zásadních změn z důvodu vydání verze. V Azure Maps můžete použít modul NPM a nasměrovat ho na předchozí verzi dílčí verze.
+* Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
+* Mapy Bing poskytují dvě hostované větve své sady SDK. Vydávat a experimentovat. Experimentální větev může obdržet několik aktualizací za den, kdy dojde k vývoji nového vývoje. Azure Maps pouze hostitelskou větev verze, ale experimentální funkce jsou vytvořeny jako vlastní moduly v projektu ukázek Open-Source Azure Maps kódu. Mapy Bing používaly k dispozici zmrazenou větev, která byla aktualizována méně často, čímž se snížilo riziko zásadních změn z důvodu vydání verze. V Azure Maps můžete použít modul NPM a nasměrovat ho na předchozí verzi dílčí verze.
 
 > [!TIP]
 > Azure Maps zveřejňuje minifikovaného i unminified verze sady SDK. Jednoduché odebrání `.min` z názvů souborů Verze unminified je užitečná při ladění problémů, ale nezapomeňte použít verzi minifikovaného v produkčním prostředí, abyste mohli využít menší velikost souboru.
 
--   Po vytvoření instance třídy mapy v Azure Maps by váš kód měl čekat na to, než se mapy `ready` nebo `load` události aktivují před interakcí s mapou. Tyto události zajišťují, že se načetly všechny prostředky mapy a jsou připravené k jejímu použití.
--   Obě platformy pro základní mapy používají podobný systém dlaždic, ale dlaždice v mapách Bing jsou v dimenzi 256 pixelů, zatímco dlaždice v Azure Maps jsou v dimenzi 512 pixelů. Aby bylo možné získat stejné zobrazení mapy jako v Azure Maps jako mapy Bing, je třeba v Azure Maps použít úroveň přiblížení ve službě Mapy Bing o jednu odchylku.
--   Souřadnice v mapách Bing se označují jako `latitude, longitude` při použití Azure Maps `longitude, latitude` . Tento formát se zarovnává se standardem `[x, y]` , který následuje po většině platforem GIS.
+* Po vytvoření instance třídy mapy v Azure Maps by váš kód měl čekat na to, než se mapy `ready` nebo `load` události aktivují před interakcí s mapou. Tyto události zajišťují, že se načetly všechny prostředky mapy a jsou připravené k jejímu použití.
+* Obě platformy pro základní mapy používají podobný systém dlaždic, ale dlaždice v mapách Bing jsou v dimenzi 256 pixelů, zatímco dlaždice v Azure Maps jsou v dimenzi 512 pixelů. Aby bylo možné získat stejné zobrazení mapy jako v Azure Maps jako mapy Bing, je třeba v Azure Maps použít úroveň přiblížení ve službě Mapy Bing o jednu odchylku.
+* Souřadnice v mapách Bing se označují jako `latitude, longitude` při použití Azure Maps `longitude, latitude` . Tento formát se zarovnává se standardem `[x, y]` , který následuje po většině platforem GIS.
 
--   Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
--   Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` nebo `new atlas.data.Position(longitude, latitude)` .
+* Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
+* Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` nebo `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
 > Třída Position má statickou pomocnou funkci pro import souřadnic, které jsou ve `latitude, longitude` formátu. Funkce [Atlas. data. Position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)může často nahradit `new Microsoft.Maps.Location` funkci v kódu služby mapy Bing.
 
--   Namísto zadání informací o stylech na každém obrazci, který je přidán k mapě, Azure Maps odděluje styly od dat. Data jsou uložena ve zdrojích dat a jsou připojena k vykreslovacím vrstvám, které Azure Maps kód používá k vykreslování dat. Tento přístup poskytuje vyšší výhody výkonu. Kromě toho mnoho vrstev podporuje styly řízené daty, kde obchodní logika může být přidána do možností stylu vrstvy, které změní způsob, jakým se jednotlivé tvary vykreslují v rámci vrstvy na základě vlastností definovaných v prvku Shape.
--   Azure Maps poskytuje spoustu užitečných matematických funkcí v `atlas.math` oboru názvů, ale liší se od těch, které jsou v prostorovém matematickém modulu mapy Bing. Hlavní rozdíl spočívá v tom, že Azure Maps neposkytuje integrované funkce pro binární operace, jako je například sjednocení a průnik, protože Azure Maps je založena na geografickém JSON, které je otevřený standard, je k dispozici celá řada Open Source knihoven. Jedna oblíbená možnost, která dobře funguje s Azure Maps a poskytuje spoustu prostorových matematických funkcí je [Turf js](http://turfjs.org/).
+* Namísto zadání informací o stylech na každém obrazci, který je přidán k mapě, Azure Maps odděluje styly od dat. Data jsou uložena ve zdrojích dat a jsou připojena k vykreslovacím vrstvám, které Azure Maps kód používá k vykreslování dat. Tento přístup poskytuje vyšší výhody výkonu. Kromě toho mnoho vrstev podporuje styly řízené daty, kde obchodní logika může být přidána do možností stylu vrstvy, které změní způsob, jakým se jednotlivé tvary vykreslují v rámci vrstvy na základě vlastností definovaných v prvku Shape.
+* Azure Maps poskytuje spoustu užitečných matematických funkcí v `atlas.math` oboru názvů, ale liší se od těch, které jsou v prostorovém matematickém modulu mapy Bing. Hlavní rozdíl spočívá v tom, že Azure Maps neposkytuje integrované funkce pro binární operace, jako je například sjednocení a průnik, protože Azure Maps je založena na geografickém JSON, které je otevřený standard, je k dispozici celá řada Open Source knihoven. Jedna oblíbená možnost, která dobře funguje s Azure Maps a poskytuje spoustu prostorových matematických funkcí je [Turf js](http://turfjs.org/).
 
 Viz také [glosář Azure Maps](./glossary.md) pro podrobný seznam terminologie přidružených k Azure Maps.
 
@@ -95,41 +112,40 @@ Následuje kolekce ukázek kódu pro každou platformu, která se vztahuje na b�
 
 **Témata**
 
-- [Načtení mapy](#load-a-map)
-- [Lokalizace mapy](#localizing-the-map)
-- [Nastavení zobrazení mapy](#setting-the-map-view)
-- [Přidání připínáček](#adding-a-pushpin)
-- [Přidání vlastního připínáček](#adding-a-custom-pushpin)
-- [Přidání lomené čáry](#adding-a-polyline)
-- [Přidání mnohoúhelníku](#adding-a-polygon)
-- [Zobrazit Infobox](#display-an-infobox)
-- [Clustering připínáček](#pushpin-clustering)
-- [Přidat Heat mapu](#add-a-heat-map)
-- [Překrytí vrstvy dlaždice](#overlay-a-tile-layer)
-- [Zobrazení provozních dat](#show-traffic-data)
-- [Přidání překrytí základní desky](#add-a-ground-overlay)
-- [Přidání dat KML do mapy](#add-kml-data-to-the-map)
-- [Přidat nástroje pro kreslení](#add-drawing-tools)
-
+* [Načtení mapy](#load-a-map)
+* [Lokalizace mapy](#localizing-the-map)
+* [Nastavení zobrazení mapy](#setting-the-map-view)
+* [Přidání připínáček](#adding-a-pushpin)
+* [Přidání vlastního připínáček](#adding-a-custom-pushpin)
+* [Přidání lomené čáry](#adding-a-polyline)
+* [Přidání mnohoúhelníku](#adding-a-polygon)
+* [Zobrazit Infobox](#display-an-infobox)
+* [Clustering připínáček](#pushpin-clustering)
+* [Přidat Heat mapu](#add-a-heat-map)
+* [Překrytí vrstvy dlaždice](#overlay-a-tile-layer)
+* [Zobrazení provozních dat](#show-traffic-data)
+* [Přidání překrytí základní desky](#add-a-ground-overlay)
+* [Přidání dat KML do mapy](#add-kml-data-to-the-map)
+* [Přidat nástroje pro kreslení](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>Načtení mapy
 
 Načtení mapy v sadě SDK se řídí stejnou sadou kroků.
 
--   Přidejte odkaz na mapovou sadu SDK.
--   Přidejte `div` značku k textu stránky, která bude sloužit jako zástupný symbol pro mapu.
--   Vytvořte funkci JavaScriptu, která se volá při načtení stránky.
--   Vytvořte instanci příslušné mapové třídy.
+* Přidejte odkaz na mapovou sadu SDK.
+* Přidejte `div` značku k textu stránky, která bude sloužit jako zástupný symbol pro mapu.
+* Vytvořte funkci JavaScriptu, která se volá při načtení stránky.
+* Vytvořte instanci příslušné mapové třídy.
 
 **Některé klíčové rozdíly**
 
--   Služby mapy Bing vyžadují, aby byl klíč účtu zadán v odkazu na skript rozhraní API nebo jako možnost mapy. Pověření ověřování pro Azure Maps jsou zadána jako možnosti třídy map. Může se jednat o klíč předplatného nebo informace Azure Active Directory.
--   Mapy Bing přebírají ve funkci zpětného volání v odkazu na skript rozhraní API, které se používá k volání funkce inicializace pro načtení mapy. V Azure Maps by se měla použít událost při načtení stránky.
--   Při použití ID k odkazování na `div` prvek, ve kterém bude mapa vykreslena, používá mapy Bing SELEKTOR HTML (tj. `#myMap` ), zatímco Azure Maps používá pouze hodnotu ID (tj. `myMap` ).
--   Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` .
--   Úroveň přiblížení v Azure Maps je jedna úroveň nižší než příklad mapy Bingu, protože se jedná o rozdíl v velikostech systému dlaždic mezi platformami.
--   Ve výchozím nastavení Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy, jako jsou tlačítka lupy a tlačítka stylů mapy. Existují však ovládací prvky pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku pro sklon.
--   Do Azure Maps se přidá obslužná rutina události, která monitoruje `ready` událost instance mapy. Spustí se, až se mapa dokončí načítání WebGL kontextu a všech potřebných prostředků. V této obslužné rutině události lze přidat libovolný kód následného načtení.
+* Služby mapy Bing vyžadují, aby byl klíč účtu zadán v odkazu na skript rozhraní API nebo jako možnost mapy. Pověření ověřování pro Azure Maps jsou zadána jako možnosti třídy map. Může se jednat o klíč předplatného nebo informace Azure Active Directory.
+* Mapy Bing přebírají ve funkci zpětného volání v odkazu na skript rozhraní API, které se používá k volání funkce inicializace pro načtení mapy. V Azure Maps by se měla použít událost při načtení stránky.
+* Při použití ID k odkazování na `div` prvek, ve kterém bude mapa vykreslena, používá mapy Bing SELEKTOR HTML (tj. `#myMap` ), zatímco Azure Maps používá pouze hodnotu ID (tj. `myMap` ).
+* Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` .
+* Úroveň přiblížení v Azure Maps je jedna úroveň nižší než příklad mapy Bingu, protože se jedná o rozdíl v velikostech systému dlaždic mezi platformami.
+* Ve výchozím nastavení Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy, jako jsou tlačítka lupy a tlačítka stylů mapy. Existují však ovládací prvky pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku pro sklon.
+* Do Azure Maps se přidá obslužná rutina události, která monitoruje `ready` událost instance mapy. Spustí se, až se mapa dokončí načítání WebGL kontextu a všech potřebných prostředků. V této obslužné rutině události lze přidat libovolný kód následného načtení.
 
 Níže uvedené příklady ukazují, jak načíst základní mapu, která je zarovnána na střed v New York v souřadnicích (zeměpisná délka:-73,985, zeměpisná šířka: 40,747) a je na úrovni přiblížení 12 v mapách Bing.
 
@@ -152,7 +168,7 @@ Následující kód představuje příklad zobrazení mapy Bingu a přiblížen�
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ Následující kód představuje příklad zobrazení mapy Bingu a přiblížen�
 
 Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na následujícím obrázku:
 
-<center>
-
-![Mapa Mapy Bing](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![Mapa Mapy Bing](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **Po: Azure Maps**
 
@@ -209,10 +223,10 @@ Následující kód ukazuje, jak načíst mapu se stejným zobrazením v Azure M
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ Následující kód ukazuje, jak načíst mapu se stejným zobrazením v Azure M
 
 Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na následujícím obrázku:
 
-<center>
+![Mapa Azure Maps](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Mapa Azure Maps](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-Podrobná dokumentace k nastavení a použití mapového ovládacího prvku Azure Maps ve webové aplikaci najdete [tady](./how-to-use-map-control.md).
+Podrobná dokumentace k nastavení a použití mapového ovládacího prvku Azure Maps ve webové aplikaci najdete [tady](how-to-use-map-control.md).
 
 > [!TIP]
 > Azure Maps zveřejňuje minifikovaného i unminified verze sady SDK. Odeberte `.min` z názvů souborů. Verze unminified je užitečná při ladění problémů, ale nezapomeňte použít verzi minifikovaného v produkčním prostředí, abyste mohli využít menší velikost souboru.
 
 **Další materiály**
 
--   Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](./map-add-controls.md).
+* Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](map-add-controls.md).
 
 ### <a name="localizing-the-map"></a>Lokalizace mapy
 
@@ -253,13 +265,11 @@ Chcete-li lokalizovat mapy Bing, jazyk a oblast jsou zadány `setLang` pomocí `
 
 Tady je příklad map Bingu s jazykem nastaveným na "fr-FR".
 
-<center>
-
-![Lokalizované mapy mapy Bing](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Lokalizované mapy mapy Bing](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **Po: Azure Maps**
 
-Azure Maps poskytuje jenom možnosti pro nastavení jazyka a regionálního zobrazení mapy. Parametr trhu se nepoužívá k omezení funkcí. Existují dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního `atlas` oboru názvů, který způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastavení jazyk na francouzštinu ("fr-FR") a místní zobrazení `"auto"` :
+Azure Maps poskytuje jenom možnosti pro nastavení jazyka a regionálního zobrazení mapy. Parametr trhu se nepoužívá k omezení funkcí. Existují dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního `atlas` oboru názvů, který způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastavení jazyk na francouzštinu ("fr-FR") a místní zobrazení `"Auto"` :
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 Tady je příklad Azure Maps s jazykem nastaveným na "fr" a oblastí uživatele nastavenou na "fr-FR".
 
-<center>
-
-![Lokalizovaná mapa Azure Maps](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Lokalizovaná mapa Azure Maps](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>Nastavení zobrazení mapy
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![Zobrazení mapy sady map Bing](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![Zobrazení mapy sady map Bing](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **Po: Azure Maps**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps nastavit zobrazení mapy](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure Maps nastavit zobrazení mapy](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **Další materiály**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 V Azure Maps existuje více způsobů, jak lze na mapě vykreslovat data.
 
--   Značky HTML – vykresluje body pomocí tradičních elementů DOM. Značky HTML podporují přetahování.
--   Vrstva symbolu – vykreslí body s ikonou nebo textem v rámci WebGL kontextu.
--   Bublinová vrstva – vykreslí body jako kružnice na mapě. Poloměry kroužků se dají škálovat na základě vlastností v datech.
+* Značky HTML – vykresluje body pomocí tradičních elementů DOM. Značky HTML podporují přetahování.
+* Vrstva symbolu – vykreslí body s ikonou nebo textem v rámci WebGL kontextu.
+* Bublinová vrstva – vykreslí body jako kružnice na mapě. Poloměry kroužků se dají škálovat na základě vlastností v datech.
 
 Symbol i bublinové vrstvy jsou vykresleny v rámci WebGL kontextu a je možné vykreslovat velmi velké sady bodů na mapě. Tyto vrstvy vyžadují, aby data byla uložená ve zdroji dat. Zdroje dat a vrstvy vykreslování by měly být přidány do mapy po `ready` vyvolání události. Značky HTML jsou vykresleny jako elementy DOM na stránce a nepoužívají zdroj dat. Čím více elementů modelu DOM má stránku, tím pomalejší stránka bude. Pokud je vykreslování více než několik stovek bodů na mapě, doporučuje se místo toho použít jednu z vrstev vykreslování.
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![Mapy Bingu – přidat puspin](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![Mapy Bingu – přidat puspin](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **Po: Azure Maps použití značek HTML**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps přidat značku](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps přidat značku](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **Po: Azure Maps používání vrstvy symbolů**
 
@@ -456,9 +456,7 @@ Při použití vrstvy symbolů musí být data přidána ke zdroji dat a zdroji 
 </html>
 ```
 
-<center>
-
-![Azure Maps přidat vrstvu symbolů](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps přidat vrstvu symbolů](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **Další materiály**
 
@@ -481,7 +479,6 @@ Vlastní image lze použít k reprezentaci bodů na mapě. Následující obráz
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **Před: mapy Bing**
 
 Ve službě Mapy Bing je vlastní značka vytvořena předáním adresy URL obrázku do `icon` možností připínáček. `anchor`Možnost slouží k zarovnání bodu obrázku připínáčku s souřadnicí na mapě. Hodnota kotvy ve službě Bing Maps vzhledem k levému hornímu rohu obrázku.
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Mapy Bingu – přidat vlastní puspin](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![Mapy Bingu – přidat vlastní puspin](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **Po: Azure Maps použití značek HTML**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps přidat vlastní značku](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![Azure Maps přidat vlastní značku](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **Po: Azure Maps používání vrstvy symbolů**
 
@@ -584,9 +577,7 @@ Vrstvy symbolů v Azure Maps podporují i vlastní image, ale image se nejdřív
 </html>
 ```
 
-<center>
-
-![Mapy Bingu přidat vlastní vrstvu symbolů](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![Mapy Bingu přidat vlastní vrstvu symbolů](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > Chcete-li vytvořit rozšířené vlastní vykreslování bodů, použijte více vrstev vykreslování dohromady. Například pokud chcete mít více špendlíků, které mají stejnou ikonu na různých barevných kruhech, místo vytvoření řady obrázků pro každou barvu překrytí vrstvy symbolů nad bublinovou vrstvu a jejich odkazování na stejný zdroj dat. To bude mnohem efektivnější než vytváření a mapa bude udržovat spoustu různých imagí.
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Lomená čáry mapy Bing](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![Lomená čáry mapy Bing](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **Po: Azure Maps**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps řádek](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure Maps řádek](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **Další materiály**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Polyogn mapy Bing](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Polyogn mapy Bing](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **Po: Azure Maps**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **Další materiály**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![Infobox mapy Bing](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![Infobox mapy Bing](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **Po: Azure Maps**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Místní nabídka Azure Maps](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Místní nabídka Azure Maps](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > Chcete-li provést stejnou akci se symbolem, bublinou, čárou nebo mnohoúhelníkovou vrstvou, předejte vrstvu do kódu události Maps místo do značky.
@@ -883,7 +862,7 @@ Ve službě Mapy Bing je možné data typu injson načíst pomocí modulu pro po
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,18 +896,16 @@ Ve službě Mapy Bing je možné data typu injson načíst pomocí modulu pro po
 </html>
 ```
 
-<center>
-
-![Clusterování map Bing](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![Clusterování map Bing](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **Po: Azure Maps**
 
 V Azure Maps se data přidávají a spravují zdrojem dat. Vrstvy se připojují ke zdrojům dat a vykreslují data v nich. `DataSource`Třída v Azure Maps poskytuje několik možností clusteringu.
 
--   `cluster` – Instruuje zdroj dat na data bodu clusteru. 
--   `clusterRadius` -Mezi protokolem RADIUS a propojenými body clusteru.
--   `clusterMaxZoom` – Maximální úroveň přiblížení, ke které dochází clustering. Pokud přiblížíte více než to, všechny body se vykreslí jako symboly.
--   `clusterProperties` – Definuje vlastní vlastnosti, které se vypočítávají pomocí výrazů pro všechny body v jednotlivých clusterech a přidají se do vlastností každého bodu clusteru.
+* `cluster` – Instruuje zdroj dat na data bodu clusteru. 
+* `clusterRadius` -Mezi protokolem RADIUS a propojenými body clusteru.
+* `clusterMaxZoom` – Maximální úroveň přiblížení, ke které dochází clustering. Pokud přiblížíte více než to, všechny body se vykreslí jako symboly.
+* `clusterProperties` – Definuje vlastní vlastnosti, které se vypočítávají pomocí výrazů pro všechny body v jednotlivých clusterech a přidají se do vlastností každého bodu clusteru.
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Clusterovaný datový bod má následující vlastnosti:
 
@@ -1045,9 +1022,7 @@ Data o úrovni injson je možné přímo importovat v Azure Maps pomocí `import
 </html>
 ```
 
-<center>
-
-![Azure Maps clusteringu](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure Maps clusteringu](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **Další materiály**
 
@@ -1113,9 +1088,7 @@ Pokud chcete vytvořit Heat mapu v mapách Bingu, načtěte v modulu heat map. P
 </html>
 ```
 
-<center>
-
-![Heatmapu mapy Bing](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![Heatmapu mapy Bing](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **Po: Azure Maps**
 
@@ -1177,9 +1150,7 @@ V Azure Maps načtěte data o úrovni injson do zdroje dat a propojte zdroj dat 
 </html>
 ```
 
-<center>
-
-![Azure Maps heatmapu](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure Maps heatmapu](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **Další materiály**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![Mapy Bing vážené heatmapu](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![Mapy Bing vážené heatmapu](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **Po: Azure Maps**
 
@@ -1217,7 +1186,7 @@ V Azure Maps lze do mapy přidat vrstvu dlaždice podobným způsobem jako jaká
 
 > [!TIP]
 > V Azure Maps vrstev lze snadno vykreslovat pod jinými vrstvami, včetně základních vrstev mapy. Často je žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. `map.layers.add`Funkce přebírá druhý parametr, který je ID druhé vrstvy pro vložení nové vrstvy níže. Chcete-li vložit vrstvu dlaždice pod popisky map, lze použít následující kód:
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Azure Maps vážená heatmapu](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Azure Maps vážená heatmapu](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > Žádosti o dlaždici se dají zachytit pomocí `transformRequest` Možnosti mapy. V případě potřeby vám umožní upravit nebo přidat hlavičky do žádosti.
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![Přenosy map Bingu](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![Přenosy map Bingu](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **Po: Azure Maps**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure Maps provoz](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure Maps provoz](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 Pokud kliknete na jednu z ikon přenosů v Azure Maps, zobrazí se další informace v automaticky otevřeném okně.
 
-<center>
-
-![Místní nabídka provozu Azure Maps](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Místní nabídka provozu Azure Maps](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **Další materiály**
 
@@ -1335,9 +1296,7 @@ Při vytváření překrytí základní desky v mapách Bing musíte zadat adres
 
 Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na následujícím obrázku:
 
-<center>
-
-![Základní překrytí mapy Bing](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![Základní překrytí mapy Bing](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **Po: Azure Maps**
 
@@ -1398,9 +1357,7 @@ V Azure Maps mohou být neodkazované obrázky překryty pomocí `atlas.layer.Im
 </html>
 ```
 
-<center>
-
-![Azure Maps překryvná deska](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure Maps překryvná deska](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **Další materiály**
 
@@ -1433,7 +1390,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 </html>
 ```
 
-<center>
-
-![KML mapy Bing](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![KML mapy Bing](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **Po: Azure Maps**
 
@@ -1558,9 +1513,7 @@ V Azure Maps je pro informating data ve webové sadě v angličtině hlavní for
 </html>
 ```
 
-<center>
-
-![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **Další materiály**
 
@@ -1617,9 +1570,7 @@ V mapách Bing se `DrawingTools` modul načítá pomocí `Microsoft.Maps.loadMod
 
 ```
 
-<center>
-
-![Nástroje pro kreslení map Bing](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![Nástroje pro kreslení map Bing](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **Po: Azure Maps**
 
@@ -1649,8 +1600,8 @@ V Azure Maps modul nástrojů pro kreslení musí být načten načtením soubor
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ V Azure Maps modul nástrojů pro kreslení musí být načten načtením soubor
 </html>
 ```
 
-<center>
-
-![Nástroje pro kreslení Azure Maps](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Nástroje pro kreslení Azure Maps](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > V Azure Maps vrstvy nástrojů pro kreslení poskytují více způsobů, jak mohou uživatelé kreslit obrazce. Například při kreslení mnohoúhelníku může uživatel kliknout na přidat jednotlivé body, nebo podržet levé tlačítko myši a přetažením myši nakreslit cestu. To lze upravit pomocí `interactionType` možnosti `DrawingManager` .
@@ -1686,7 +1635,7 @@ V Azure Maps modul nástrojů pro kreslení musí být načten načtením soubor
 -   [Dokumentace](./set-drawing-options.md)
 -   [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="additional-resources"></a>Další zdroje
 
 Podívejte se na [Open Source moduly Azure Maps Web SDK](open-source-projects.md#open-web-sdk-modules). Tyto moduly poskytují spoustu dalších funkcí a jsou plně přizpůsobitelné.
 
@@ -1733,3 +1682,14 @@ Přečtěte si další informace o Azure Maps Web SDK.
 
 > [!div class="nextstepaction"]
 > [Referenční dokumentace k rozhraní API služby Azure Maps Web SDK](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nenašly se žádné prostředky, které by se vyčistily.
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o migraci z map Bing na Azure Maps.
+
+> [!div class="nextstepaction"]
+> [Migrace webové služby](migrate-from-bing-maps-web-services.md)

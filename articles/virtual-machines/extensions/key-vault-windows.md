@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0418c11d84fb82ac4a4b181289f032407a29f92e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0b2346ae4777b31ce2e5c396fb03084d38b2008f
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500661"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678974"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -88,17 +88,17 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForWindows | řetězec |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
 | linkOnRenewal | false (nepravda) | boolean |
 | certificateStoreLocation  | LocalMachine nebo CurrentUser (rozlišuje velká a malá písmena) | řetězec |
-| requiredInitialSync | true | boolean |
+| requireInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | pole řetězců
 | msiEndpoint | http://169.254.169.254/metadata/identity | řetězec |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | řetězec |
@@ -227,7 +227,7 @@ Mějte na paměti následující omezení/požadavky:
 * Existuje omezení počtu observedCertificates, která můžete nastavit?
   Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

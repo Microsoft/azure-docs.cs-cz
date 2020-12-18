@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315698"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680407"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -35,6 +35,9 @@ Představte si například prostředí se sadou virtuálních počítačů, na k
 
 Můžete použít Azure Portal k vytvoření pravidla shromažďování dat a přidružení virtuálních počítačů k tomuto pravidlu v rámci předplatného. Agent Azure Monitor se automaticky nainstaluje a vytvoří se spravovaná identita pro všechny virtuální počítače, které ještě nemají nainstalovanou.
 
+> [!IMPORTANT]
+> V současné době se jedná o známý problém, kdy Pokud pravidlo shromažďování dat vytvoří spravovanou identitu na virtuálním počítači, který už má přiřazenou spravovanou identitu, je identita přiřazená uživateli zakázaná.
+
 V nabídce **Azure monitor** v Azure Portal vyberte **pravidla shromažďování dat** z oddílu **Nastavení** . Kliknutím na **Přidat** přidejte nové pravidlo shromažďování dat a přiřazení.
 
 [![Pravidla shromažďování dat](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ Na kartě **shromáždit a poskytnout** klikněte na **Přidat zdroj dat** a př
 [![Základní zdroj dat](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Chcete-li zadat další protokoly a čítače výkonu, vyberte možnost **vlastní**. Pak můžete zadat [cestu XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) pro všechny konkrétní hodnoty, které mají být shromažďovány. Příklady najdete v části [Sample DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
+Chcete-li určit další protokoly a čítače výkonu z [aktuálně podporovaných zdrojů dat](azure-monitor-agent-overview.md#data-sources-and-destinations) nebo filtrovat události pomocí dotazů XPath, vyberte možnost **vlastní**. Pak můžete zadat [cestu XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) pro všechny konkrétní hodnoty, které mají být shromažďovány. Příklady najdete v části [Sample DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
 
 [![Vlastní zdroj dat](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

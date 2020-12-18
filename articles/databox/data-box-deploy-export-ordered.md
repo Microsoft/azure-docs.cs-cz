@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003155"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680782"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
 
 Azure Data Box je hybridní řešení, které umožňuje přesunout data z Azure do svého umístění. V tomto kurzu se dozvíte, jak vytvořit objednávku exportu pro Azure Data Box. Hlavním důvodem pro vytvoření objednávky exportu je zotavení po havárii, pokud dojde k ohrožení zabezpečení úložiště v případě, že je nutné obnovit zálohování.
 
@@ -27,8 +27,6 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Objednat Data Box pro export
 > * Sledovat objednávku exportu
 > * Zrušit export objednávky
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -332,7 +330,7 @@ Mezi důležité body v souvislosti se soubory XML:
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

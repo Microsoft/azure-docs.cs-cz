@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511912"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679186"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -156,12 +156,12 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
     1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
     1. Nahrajte soubor ZIP jako **datovou sadu souboru** do studia. 
     1. Přetáhněte modul DataSet ze seznamu *datových sad* v levém podokně modulu na stránce vytváření návrháře. 
-    1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
+    1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu Python Script** .
     
     Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová.
  
     > [!WARNING]
-    > **Don't** Nepoužívejte **aplikaci** jako název složky nebo skriptu, protože **aplikace** je vyhrazeným slovem pro předdefinované služby. Můžete ale použít jiné obory názvů jako `app123` .
+    >  Nepoužívejte **aplikaci** jako název složky nebo skriptu, protože **aplikace** je vyhrazeným slovem pro předdefinované služby. Můžete ale použít jiné obory názvů jako `app123` .
    
     Následuje příklad sady skriptu, který obsahuje soubor skriptu Pythonu a soubor txt:
       

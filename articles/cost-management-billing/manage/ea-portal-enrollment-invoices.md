@@ -3,18 +3,18 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.custom: contperfq1
-ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410949"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030718"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -39,14 +39,10 @@ Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhn�
 Zobrazení sestav a grafů se souhrnem využití:
 
 1. Přihlaste se k portálu Azure Enterprise Portal.
-
 1. Vyberte období zálohy.
-
-   Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.
-
+   Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.  
    ![Vytvoření a zobrazení souhrnu využití a stahování sestav ve vlastním zobrazení](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 1. Pokud se chcete podívat na další podrobnosti, můžete vybrat období nebo měsíc v grafu.
-
    - V grafu se zobrazuje meziměsíční využití s rozpisem spotřebovaného využití, nadměrného vyúčtování služeb, poplatků fakturovaných samostatně a poplatků z Azure Marketplace.
    - Pro vybraný měsíc můžete pomocí polí pod grafem filtrovat podle oddělení, účtů a předplatných.
    - Můžete přepínat mezi volbami **Charge by Services** (Vyúčtování podle služeb) a **Charge by Hierarchy** (Vyúčtování podle hierarchie).
@@ -72,7 +68,7 @@ Jak sestavy stáhnout:
 3. Vyberte tlačítko **Download** (Stáhnout) vedle sestavy pro požadovaný měsíc.
 
    > [!NOTE]
-   > Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 5 dní.
+   > Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 72 hodin.
    >
    > U uživatelů, kteří si soubory CSV stahují přes Safari do Excelu, může docházet k chybám formátování. Chybám se vyhnete tak, že soubor otevřete pomocí textového editoru.
 

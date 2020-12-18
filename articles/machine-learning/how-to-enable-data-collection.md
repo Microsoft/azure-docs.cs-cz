@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000449"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680954"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
 
@@ -116,6 +116,12 @@ Chcete-li povolit shromažďování dat, je třeba:
 
 1. Pokud chcete vytvořit novou image a nasadit model Machine Learning, přečtěte si [článek Jak nasadit a kde](how-to-deploy-and-where.md).
 
+1. Přidejte balíček PIP ' Azure-Monitoring ' do conda závislostí prostředí webové služby:
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
+
 
 ## <a name="disable-data-collection"></a>Zakázání shromažďování dat
 
@@ -155,7 +161,7 @@ Pro analýzu dat shromažďovaných v úložišti objektů blob můžete zvolit 
 
     [![Nastavení objektu BLOB Power BI](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že **Settings**  >  v objektu BLOB vyberete nastavení **přístupové klíče** .
+1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že   >  v objektu BLOB vyberete nastavení **přístupové klíče** .
 
 1. Vyberte kontejner **dat modelu** a vyberte **Upravit**.
 

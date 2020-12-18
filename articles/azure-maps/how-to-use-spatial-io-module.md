@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895388"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680682"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Azure Maps prostorového vstupu/výstupu
 
-Sada Azure Maps Web SDK poskytuje **modul pro prostorové vstupně-výstupní operace** , který integruje prostorová data do Azure Maps Web SDK pomocí JavaScriptu nebo TypeScript. Robustní funkce v tomto modulu umožňují vývojářům:
+Sada Azure Maps Web SDK poskytuje **modul pro prostorové vstupně-výstupní operace**, který integruje prostorová data do Azure Maps Web SDK pomocí JavaScriptu nebo TypeScript. Robustní funkce v tomto modulu umožňují vývojářům:
 
 - [Čtení a zápis běžných souborů prostorových dat](spatial-io-read-write-spatial-data.md). Mezi podporované formáty souborů patří: KML, KMZ, GPX, GeoRSS, GML, soubory. JSON a CSV, které obsahují sloupce s prostorovými informacemi. Podporuje také Well-Known text (Well).
 - [Připojte se ke službám Open Geospatial Consortium (OGC) a integrujte je se sadou Azure Maps Web SDK. Překrývá služby webového mapování (WMS) a WMTS (Web Map) jako vrstvy na mapě](spatial-io-add-ogc-map-layer.md).
@@ -30,15 +30,14 @@ V této příručce se dozvíte, jak integrovat a používat modul pro prostorov
 
 Toto video poskytuje přehled modulu pro prostorové vstupně-výstupní operace v sadě Azure Maps Web SDK.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Snadná integrace prostorových dat do Azure Maps – Microsoft Channel 9 video"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > Používejte jenom data a služby, které jsou ze zdroje, kterému důvěřujete, zejména v případě, že se na něj odkazuje z jiné domény. Modul pro prostorové vstupně-výstupní operace provede kroky pro minimalizaci rizika, ale nejbezpečnější přístup je příliš, takže danagerous data do vaší aplikace neumožňují začít. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít modul pro vytváření prostorových dat, budete muset [vytvořit účet Azure Maps](./quick-demo-map-app.md#create-an-azure-maps-account) a [získat pro svůj účet primární klíč předplatného](./quick-demo-map-app.md#get-the-primary-key-for-your-account).
 

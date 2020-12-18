@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505541"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680741"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -58,13 +58,13 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️   
 | Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>Volání podpory prohlížeče klientské knihovny
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>JavaScript – volání klientské podpory pomocí operačního systému a prohlížeče
 
 Následující tabulka představuje sadu podporovaných prohlížečů a verzí, které jsou aktuálně k dispozici.
 
-|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **Volání klientské knihovny** | Chrome *, nová hrana | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * |
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | operační systém iPad|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Volání klientské knihovny** | Chrome *, nová hrana | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * | Safari * * |
 
 
 * Všimněte si, že nejnovější verze Chrome je podporovaná Kromě předchozích dvou verzí.<br/>

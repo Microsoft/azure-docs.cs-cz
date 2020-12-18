@@ -7,14 +7,14 @@ ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895966"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680051"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -24,9 +24,9 @@ Styly řízené daty omezují množství kódu potřebného k implementaci obcho
 
 Toto video poskytuje přehled stylů řízených daty v sadě Azure Maps Web SDK.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
 Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je řetězec, který určuje název operátoru výrazu. Například "+" nebo "Case". Další prvky (pokud existují) jsou argumenty výrazu. Každý argument je buď hodnota literálu (řetězec, číslo, logická hodnota nebo `null` ), nebo jiné pole výrazu. Následující pseudokódu definuje základní strukturu výrazu. 
 
@@ -58,7 +58,7 @@ Sada Azure Maps Web SDK podporuje mnoho typů výrazů. Výrazy lze použít na 
 
 Všechny příklady v tomto dokumentu používají následující funkci k předvedení různých způsobů, jak lze použít různé typy výrazů. 
 
-```javascript
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -70,13 +70,13 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
-        "temperature": 72,
+        "temperature": 64,
         "title": "Cafeteria", 
-        "zoneColor": "red",
-        "abcArray": ['a', 'b', 'c'],
-        "array2d": [['a', 'b'], ['x', 'y']],
+        "zoneColor": "purple",
+        "abcArray": ["a", "b", "c"],
+        "array2d": [["a", "b"], ["x", "y"]],
         "_style": {
-            "fillColor": 'red'
+            "fillColor": "red"
         }
     }
 }
@@ -88,22 +88,22 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | Načte položku z pole. |
+| `['at', number, array]` | hodnota | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
 | `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
 | `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
-| `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | boolean | Určuje, zda podřetězec existuje v řetězci. |
 | `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | číslo | Vrátí první pozici, kde lze najít položku v poli nebo podřetězec v řetězci, nebo `-1` Pokud nelze nalézt vstup. Přijme volitelný index z místa, kde začíná vyhledávání. |
-| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|pole | Vrátí položku z pole nebo podřetězce z řetězce ze zadaného počátečního indexu nebo mezi počátečním indexem a koncovým indexem, pokud je nastavena. Vrácená hodnota je včetně počátečního indexu, ale ne koncového indexu. |
+| `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | \|pole řetězců | Vrátí položku z pole nebo podřetězce z řetězce ze zadaného počátečního indexu nebo mezi počátečním indexem a koncovým indexem, pokud je nastavena. Vrácená hodnota je včetně počátečního indexu, ale ne koncového indexu. |
 
 **Příklady**
 
-K vlastnostem funkce lze získat přímý pøístup ve výrazu pomocí `get` výrazu. V tomto příkladu je použita hodnota funkce "zoneColor", která určuje vlastnost Color pro bublinovou vrstvu. 
+K vlastnostem funkce lze získat přímý pøístup ve výrazu pomocí `get` výrazu. V tomto příkladu je použita `zoneColor` hodnota funkce k určení vlastnosti Color pro bublinovou vrstvu. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -111,7 +111,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Výše uvedený příklad bude fungovat správně, pokud všechny funkce bodu mají `zoneColor` vlastnost. Pokud ne, barva bude nejspíš přechodná na "Black". Chcete-li upravit záložní barvu, použijte `case` výraz v kombinaci s `has` výrazem k ověření, zda vlastnost existuje. Pokud vlastnost neexistuje, vrátí se záložní barva.
+Výše uvedený příklad bude fungovat správně, pokud všechny funkce bodu mají `zoneColor` vlastnost. Pokud ne, barva se nejspíš vrátí na "Black". Chcete-li upravit záložní barvu, použijte `case` výraz v kombinaci s `has` výrazem k ověření, zda vlastnost existuje. Pokud vlastnost neexistuje, vrátí se záložní barva.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -203,7 +203,7 @@ Matematické výrazy poskytují matematické operátory pro provádění výpoč
 | `['max', number, number, …]` | číslo | Vypočítá maximální počet v zadané sadě čísel. |
 | `['min', number, number, …]` | číslo | Vypočítá minimální číslo v zadané sadě čísel. |
 | `['pi']` | číslo | Vrátí matematickou konstantu `PI` . |
-| `['round', number]` | číslo | Zaokrouhlí číslo na nejbližší celé číslo. Hodnoty v polovině se zaokrouhlují směrem od nuly. Například `['round', -1.5]` vyhodnotí na-2. |
+| `['round', number]` | číslo | Zaokrouhlí číslo na nejbližší celé číslo. Hodnoty v polovině se zaokrouhlují směrem od nuly. Například je `['round', -1.5]` vyhodnocen jako `-2` . |
 | `['sin', number]` | číslo | Vypočítá sinus zadaného čísla. |
 | `['sqrt', number]` | číslo | Vypočítá druhou odmocninu určeného čísla. |
 | `['tan', number]` | číslo | Vypočítá tangens zadaného čísla. |
@@ -228,6 +228,16 @@ Agregační výraz přebírá tři hodnoty: hodnotu operátoru a počáteční h
 
 Pokud všechny funkce v datové sadě mají `revenue` vlastnost, která je číslo. Pak lze vypočítat celkový výnos všech bodů v clusteru, které jsou vytvořeny ze sady dat. Tento výpočet se provádí pomocí následujícího agregačního výrazu: `['+', 0, ['get', 'revenue']]`
 
+### <a name="accumulated-expression"></a>Akumulované výrazy
+
+`accumulated`Výraz Získá hodnotu dosud shromážděné vlastnosti clusteru. Tato možnost se dá použít jenom v `clusterProperties` Možnosti clusterového `DataSource` zdroje.
+
+**Použití**
+
+```javascript
+["accumulated"]
+```
+
 ## <a name="boolean-expressions"></a>Logické výrazy
 
 Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání.
@@ -245,6 +255,7 @@ Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých
 | `['>=' value, value]` | boolean | Vrátí `true` , zda je první zadání větší než nebo rovno druhému, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
 | `['all', boolean, boolean, …]` | boolean | Vrátí `true` , zda jsou všechny vstupy `true` , `false` jinak. |
 | `['any', boolean, boolean, …]` | boolean | Vrátí `true` , zda je některý ze vstupů `true` , `false` jinak. |
+| `['within', Polygon | MultiPolygon | Feature<Polygon | MultiPolygon>]` | boolean | Vrátí `true` , zda je vyhodnocená funkce plně obsažena uvnitř hranice vstupní geometrie, v opačném případě false. Vstupní hodnota může být platný typ injson typu `Polygon` , `MultiPolygon` , `Feature` nebo `FeatureCollection` . Podporované funkce pro vyhodnocení:<br/><br/>-Point: vrátí `false` , zda je bod na hranici nebo spadá mimo hranici.<br/>-LineString: vrátí `false` , pokud kterákoli část řádku spadá mimo hranici, čára protíná hranici nebo koncový bod řádku je na hranici. |
 
 ## <a name="conditional-expressions"></a>Podmíněné výrazy
 
@@ -355,28 +366,6 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Následující příklad používá výraz shody k provedení filtru typu "in Array" nebo "Array Contains". V tomto případě výraz filtruje data s hodnotou ID, která je v seznamu povolených ID. Při použití výrazů s filtry musí být výsledkem logická hodnota.
-
-```javascript
-var layer = new atlas.layer.BubbleLayer(datasource, null, {
-    filter: [
-        'match',  
-
-        //Get the property to match.
-        ['get', 'id'],  
-
-         //List of values to match.
-        [24, 53, 98], 
-
-        //If there is a match, return true.
-        true,
-    
-        //Otherwise return false.
-        false
-    ]
-});
-```
-
 ### <a name="coalesce-expression"></a>Výraz COALESCE
 
 `coalesce`Kroky výrazu pomocí sady výrazů, dokud není získána první hodnota, která není null, a vrátí tuto hodnotu. 
@@ -394,7 +383,7 @@ Následující pseudokódu definuje strukturu `coalesce` výrazu.
 
 **Příklad**
 
-Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subtitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce. 
+Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subTitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -405,8 +394,8 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
             //Try getting the title property.
             ['get', 'title'],
 
-            //If there is no title, try getting the subtitle. 
-            ['get', 'subtitle'],
+            //If there is no title, try getting the subTitle. 
+            ['get', 'subTitle'],
 
             //Default to an empty string.
             ''
@@ -439,8 +428,14 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
+| `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Objekt [] | Vyhodnotí, že vstup je pole. |
+| `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Vyhodnotí, že vstupní hodnota je logická hodnota. Pokud je k dispozici více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získána logická hodnota. Pokud žádný ze vstupů není logických hodnot, je výraz chybou. |
+| `['collator', { 'case-sensitive': boolean, 'diacritic-sensitive': boolean, 'locale': string }]` | Collator | Vrátí komplet pro použití v operacích porovnání závislých na národním prostředí. Možnosti s rozlišením velkých a malých písmen a s diakritikou jsou výchozí na false. Argument locale určuje značku jazyka IETF národního prostředí, které se má použít. Pokud není zadáno, použije se výchozí národní prostředí. Pokud požadované národní prostředí není k dispozici, komplet bude používat základní národní prostředí definované systémem. K otestování výsledků nouzového chování národního prostředí použijte vyřešený-locale. |
 | `['literal', array]`<br/><br/>`['literal', object]` | array – \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
 | `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
+| `['number', value]` \| `["number", value, fallback: value, fallback: value, ...]` | číslo | Vyhodnotí, že vstupní hodnota je číslo. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud není získáno číslo. Pokud žádné vstupy nejsou čísla, je výraz chybou. |
+| `['object', value]`  \| `["object", value, fallback: value, fallback: value, ...]` | Objekt | Vyhodnotí, že vstupní hodnota je objekt.  Pokud je k dispozici více hodnot, je každá z nich vyhodnocována v pořadí až do získání objektu. Pokud žádné vstupy nejsou objekty, je výraz chybou. |
+| `['string', value]` \| `["string", value, fallback: value, fallback: value, ...]` | řetězec | Vyhodnotí, že vstupní hodnota je řetězec. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí až do získání řetězce. Pokud žádné vstupy nejsou řetězce, je výraz chybou. |
 | `['to-boolean', value]` | boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledkem je, že `false` vstup je prázdný řetězec,,, `0` `false` nebo, `null` `NaN` v opačném případě `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je vstup `null` nebo `false` , výsledkem je 0. Pokud je vstup `true` , výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
@@ -475,13 +470,13 @@ Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených* , *zelených* a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené* , *zelené* a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou* , *zelenou* , *modrou* a *alfa* komponentu vstupní barvy v tomto pořadí. |
+| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených* a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené* a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou*, *zelenou*, *modrou* a *alfa* komponentu vstupní barvy v tomto pořadí. |
 
 **Příklad**
 
-Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené* .
+Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -505,6 +500,8 @@ Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Použijte `to-string` výraz Type pro převod ostatních typů hodnot na řetězec v případě potřeby. |
 | `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | Určuje, zda vstupní řetězec používá znakovou sadu podporovanou aktuálním zásobníkem písem. Příklad: `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['resolved-locale', string]` | řetězec | Vrátí značku jazyka IETF národního prostředí, které používá poskytnutý řadicí modul. Dá se použít k určení výchozího národního prostředí systému nebo k určení, jestli se požadované národní prostředí úspěšně načetlo. |
 | `['upcase', string]` | řetězec | Převede zadaný řetězec na velká písmena. |
 
 **Příklad**
@@ -575,14 +572,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'interpolate',
         ['linear'],
         ['get', 'temperature'],
-        50,        
-        'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        50, 'blue',
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -624,12 +617,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'step',
         ['get', 'temperature'],
         'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -724,7 +714,6 @@ Výraz formátu textového pole lze použít s `textField` možností vlastnosti
 
  * `'font-scale'` -Určuje faktor škálování pro velikost písma. Je-li tento parametr zadán, tato hodnota přepíše `size` vlastnost `textOptions` pro jednotlivé řetězce.
  * `'text-font'` -Určuje jednu nebo více rodin písem, které by měly být použity pro tento řetězec. Je-li tento parametr zadán, tato hodnota přepíše `font` vlastnost `textOptions` pro jednotlivé řetězce.
- * `'text-color'` -Určuje barvu, která má být použita pro text při vykreslování. 
 
 Následující pseudokódu definuje strukturu výrazu formátu textového pole. 
 
@@ -734,14 +723,12 @@ Následující pseudokódu definuje strukturu výrazu formátu textového pole.
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[],
-        'text-color': color
+        'text-font': string[]
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] ,
-        'text-color': color
+        'text-font': string[]
     },
     …
 ]
@@ -749,7 +736,7 @@ Následující pseudokódu definuje strukturu výrazu formátu textového pole.
 
 **Příklad**
 
-Následující příklad formátuje textové pole přidáním tučného písma a vertikálního navýšení velikosti písma `title` vlastnosti funkce. Tento příklad také přidá `subtitle` vlastnost funkce na nový řádek, se zvětšenou velikostí písma a barvou červenou.
+Následující příklad formátuje textové pole přidáním tučného písma a vertikálního navýšení velikosti písma `title` vlastnosti funkce. Tento příklad také přidá `subTitle` vlastnost funkce na nový řádek, se zvětšenou velikostí písma.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -766,11 +753,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             '\n', {},   //Add a new line without any formatting.
 
-            //Scale the font size down of the subtitle property. 
-            ['get', 'subtitle'],
+            //Scale the font size down of the subTitle property. 
+            ['get', 'subTitle'],
             { 
-                'font-scale': 0.75, 
-                'text-color': 'red' 
+                'font-scale': 0.75
             }
         ]
     }
@@ -817,7 +803,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency': 'USD' }
+            { 'currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -885,7 +871,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         ['zoom'],
         
         //For zoom level 1 set the radius to 2 pixels.
-        10, 2,
+        1, 2,
 
         //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
         19, 2 * Math.pow(2, 19 - 1)

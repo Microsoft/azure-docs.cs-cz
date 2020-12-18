@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904954"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679066"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Kurz – migrace webové služby z map Bing
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>Kurz: migrace webové služby z map Bing
 
-Azure i mapy Bing poskytují přístup k prostorovým rozhraním API prostřednictvím webových služeb REST. Rozhraní API pro tyto platformy provádějí podobné funkce, ale používají různé konvence pojmenování a objekty odpovědí.
+Azure i mapy Bing poskytují přístup k prostorovým rozhraním API prostřednictvím webových služeb REST. Rozhraní API pro tyto platformy provádějí podobné funkce, ale používají různé konvence pojmenování a objekty odpovědí. V tomto kurzu se naučíte, jak:
+
+> * Dopředné a obrácené geografické kódování
+> * Hledání bodů zájmu
+> * Vypočítat trasy a směry
+> * Načtení obrázku mapy
+> * Vypočítat matici vzdálenosti
+> * Získat podrobnosti o časovém pásmu
 
 Následující tabulka poskytuje rozhraní API služby Azure Maps, která poskytují podobné funkce pro uvedená rozhraní API služby Bing Maps.
 
@@ -59,6 +66,12 @@ Nezapomeňte si také projít následující Příručky k osvědčeným postup�
 -   [Osvědčené postupy pro hledání](./how-to-use-best-practices-for-search.md)
 -   [Osvědčené postupy pro směrování](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>Požadavky
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+
 ## <a name="geocoding-addresses"></a>Adresy geografického kódování
 
 Geografické kódování je proces převodu adresy (jako `"1 Microsoft way, Redmond, WA"` ) na souřadnici (například zeměpisná délka:-122,1298, zeměpisná šířka: 47,64005). Souřadnice se pak často používají k umístění připínáčku na mapě nebo na střed mapy.
@@ -91,9 +104,9 @@ Následující tabulky křížově odkazují na parametry rozhraní API služby 
 
 Azure Maps také podporuje;
 
--   `countrySecondarySubdivision` – Okres, oblasti
--   `countryTertiarySubdivision` -Pojmenované oblasti; boroughs, kantony, obce
--   `ofs` – Stránkou výsledků v kombinaci s `maxResults` parametrem.
+* `countrySecondarySubdivision` – Okres, oblasti
+* `countryTertiarySubdivision` -Pojmenované oblasti; boroughs, kantony, obce
+* `ofs` – Stránkou výsledků v kombinaci s `maxResults` parametrem.
 
 **Umístění podle dotazu (řetězec adresy ve volném formátu)**
 
@@ -109,10 +122,10 @@ Azure Maps také podporuje;
 
 Azure Maps také podporuje;
 
--   `typeahead` -Druh, pokud se dotaz interpretuje jako částečný vstup, a hledání se zahájí v prediktivním režimu (Automatický návrh/automatické dokončování).
--   `countrySet` – Čárkami oddělený seznam ISO2 zemí, ve kterých se má omezit hledání na.
--   `lat`/`lon`, `topLeft` / `btmRight` ,, `radius` – Zadání umístění uživatele a oblasti, aby se výsledky podrobnější.
--   `ofs` – Stránkou výsledků v kombinaci s `maxResults` parametrem.
+* `typeahead` -Druh, pokud se dotaz interpretuje jako částečný vstup, a hledání se zahájí v prediktivním režimu (Automatický návrh/automatické dokončování).
+* `countrySet` – Čárkami oddělený seznam ISO2 zemí, ve kterých se má omezit hledání na.
+* `lat`/`lon`, `topLeft` / `btmRight` ,, `radius` – Zadání umístění uživatele a oblasti, aby se výsledky podrobnější.
+* `ofs` – Stránkou výsledků v kombinaci s `maxResults` parametrem.
 
 Příklad použití vyhledávací služby je popsán [zde](./how-to-search-for-address.md). Nezapomeňte si projít [osvědčené postupy pro vyhledávání](./how-to-use-best-practices-for-search.md) v dokumentaci.
 
@@ -142,15 +155,15 @@ Nezapomeňte si projít [osvědčené postupy pro vyhledávání](./how-to-use-b
 
 Rozhraní API pro invertování Azure Maps obsahuje některé další funkce, které nejsou k dispozici ve službě Bing Maps, které by mohly být užitečné při migraci aplikace:
 
--   Načte data omezení rychlosti.
--   Načíst informace o využití cest; místní silnice, Arterial, omezený přístup, rampa atd.
--   Strana ulice, na kterou souřadnice spadá.
+* Načte data omezení rychlosti.
+* Načíst informace o využití cest; místní silnice, Arterial, omezený přístup, rampa atd.
+* Strana ulice, na kterou souřadnice spadá.
 
 **Srovnávací tabulka typů entit**
 
 Následující tabulka odkazuje na hodnoty typu entity mapy Bing na ekvivalentní názvy vlastností v Azure Maps.
 
-| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Description                                |
+| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Popis                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adresa*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Včetně*                             |
@@ -174,10 +187,10 @@ Některé z prediktivního režimu podpory rozhraní API pro hledání Azure Map
 
 Azure Maps lze použít k výpočtu tras a směrů. Azure Maps má mnoho stejných funkcí jako směrovací službu mapy Bing, jako je například;
 
--   časy doručení a odchodu
--   trasy provozu v reálném čase a prediktivní provoz na bázi
--   různé režimy dopravy; jízda, navýšení, nákladní vůz
--   Optimalizace pořadí bod na trase (cestovní salesmen)
+* časy doručení a odchodu
+* trasy provozu v reálném čase a prediktivní provoz na bázi
+* různé režimy dopravy; jízda, navýšení, nákladní vůz
+* Optimalizace pořadí bod na trase (cestovní salesmen)
 
 > [!NOTE]
 > Azure Maps vyžaduje, aby všechny Waypoints byly souřadnice. Adresy musí být nejprve v INCODE.
@@ -221,12 +234,12 @@ Rozhraní API pro směrování Azure Maps podporuje také směrování nákladn�
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **NENÍ K DISPOZICI**                                    |
+| `vehicleTrailers` (`vt`)                 | **–**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **NENÍ K DISPOZICI**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **NENÍ K DISPOZICI**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **NENÍ K DISPOZICI**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **NENÍ K DISPOZICI**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **–**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **–**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **–**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **–**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -237,21 +250,21 @@ Nezapomeňte si také projít [osvědčené postupy pro](./how-to-use-best-pract
 
 Rozhraní API pro směrování Azure Maps má mnoho dalších funkcí, které nejsou v mapách Bingu k dispozici, které by mohly být užitečné při migraci vaší aplikace:
 
--   Podpora pro typ směrování: nejkratší, nejrychlejší, Trilling a většina pohonných hmot.
--   Podpora dalších způsobů cestovních cest: jízdní kolo, sběrnice, motocykl, taxislužby, nákladní vůz a van.
--   Podpora 150 Waypoints.
--   Výpočet více dob cestování v rámci jediné žádosti; historické přenosy, živý provoz bez provozu.
--   Vyhněte se dalším typům cest: carpool silnice, Unpaved silnice, již využité silnice.
--   Směrování na základě specifikace stroje. Vypočítat trasy pro spalovací nebo elektrická vozidla založená na jejich zbývajících specifikacích pro palivo/poplatek a stroj.
--   Zadejte maximální rychlost vozidla.
+* Podpora pro typ směrování: nejkratší, nejrychlejší, Trilling a většina pohonných hmot.
+* Podpora dalších způsobů cestovních cest: jízdní kolo, sběrnice, motocykl, taxislužby, nákladní vůz a van.
+* Podpora 150 Waypoints.
+* Výpočet více dob cestování v rámci jediné žádosti; historické přenosy, živý provoz bez provozu.
+* Vyhněte se dalším typům cest: carpool silnice, Unpaved silnice, již využité silnice.
+* Směrování na základě specifikace stroje. Vypočítat trasy pro spalovací nebo elektrická vozidla založená na jejich zbývajících specifikacích pro palivo/poplatek a stroj.
+* Zadejte maximální rychlost vozidla.
 
 ## <a name="snap-coordinates-to-road"></a>Souřadnice přichycení k silnici
 
 K dispozici je několik způsobů, jak přitahovat souřadnice na silnice v Azure Maps.
 
--   K roztahování souřadnic do logické trasy podél síťové sítě použijte rozhraní API pro směrování tras.
--   Pomocí Azure Maps webové sady SDK můžete přitahovat jednotlivé souřadnice k nejbližší cestě na vektorové dlaždice.
--   Použijte vektorové dlaždice Azure Maps přímo k přichycení jednotlivých souřadnic.
+* K roztahování souřadnic do logické trasy podél síťové sítě použijte rozhraní API pro směrování tras.
+* Pomocí Azure Maps webové sady SDK můžete přitahovat jednotlivé souřadnice k nejbližší cestě na vektorové dlaždice.
+* Použijte vektorové dlaždice Azure Maps přímo k přichycení jednotlivých souřadnic.
 
 **Použití rozhraní API pro směr směrování k přichycení souřadnic**
 
@@ -259,8 +272,8 @@ Azure Maps může přitahovat souřadnice na cesty pomocí rozhraní API pro [tr
 
 Existují dva různé způsoby, jak použít rozhraní API trasy směrování k přitahování souřadnic do cest.
 
--   Pokud jsou 150 nebo méně souřadnice, dají se předat jako Waypoints v rozhraní API pro získání tras. Pomocí tohoto přístupu se dají načíst dva různé typy přichycených dat. pokyny k trase budou obsahovat jednotlivé přichycené waypoints, zatímco cesta trasy bude obsahovat interpolované sady souřadnic, které plní úplnou cestu mezi souřadnicemi.
--   Je-li k dispozici více než 150 souřadnic, lze použít rozhraní API pro přesměrování tras po směru. Souřadnice počátečního a koncového souřadnic musí být předány do parametru dotazu, ale všechny souřadnice lze předat do `supportingPoints` parametru v těle požadavku POST a naformátovat kolekci geometrických geometrických bodů. Jediná přichycená data, která jsou k dispozici pomocí tohoto přístupu, budou cestou trasy, která je interpolovaná Sada souřadnic, které plní úplnou cestu mezi souřadnicemi. [Tady je příklad](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) tohoto přístupu pomocí modulu služby v sadě Azure Maps Web SDK.
+* Pokud jsou 150 nebo méně souřadnice, dají se předat jako Waypoints v rozhraní API pro získání tras. Pomocí tohoto přístupu se dají načíst dva různé typy přichycených dat. pokyny k trase budou obsahovat jednotlivé přichycené waypoints, zatímco cesta trasy bude obsahovat interpolované sady souřadnic, které plní úplnou cestu mezi souřadnicemi.
+* Je-li k dispozici více než 150 souřadnic, lze použít rozhraní API pro přesměrování tras po směru. Souřadnice počátečního a koncového souřadnic musí být předány do parametru dotazu, ale všechny souřadnice lze předat do `supportingPoints` parametru v těle požadavku POST a naformátovat kolekci geometrických geometrických bodů. Jediná přichycená data, která jsou k dispozici pomocí tohoto přístupu, budou cestou trasy, která je interpolovaná Sada souřadnic, které plní úplnou cestu mezi souřadnicemi. [Tady je příklad](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) tohoto přístupu pomocí modulu služby v sadě Azure Maps Web SDK.
 
 Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pomocí srovnatelných parametrů rozhraní API v Azure Maps.
 
@@ -287,12 +300,12 @@ Rozhraní API směrování Azure Maps také podporuje parametr směrování nák
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **NENÍ K DISPOZICI**                                    |
+| `vehicleTrailers` (`vt`)                | **–**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **NENÍ K DISPOZICI**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **NENÍ K DISPOZICI**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **NENÍ K DISPOZICI**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **NENÍ K DISPOZICI**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **–**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **–**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **–**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **–**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -368,9 +381,7 @@ Například v mapách Bingu se k mapě dá přidat červená připínáček s po
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Statický mapový kód mapy Bing Maps](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Statický mapový kód mapy Bing Maps](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **Po: Azure Maps**
 
@@ -384,21 +395,21 @@ Když přichází do připnutí umístění, Azure Maps vyžaduje, aby byly sou�
 
 `iconType`Hodnota určuje typ pinu, který se má vytvořit, a může mít následující hodnoty:
 
--   `default` – Výchozí ikona PIN
--   `none` – Není zobrazena žádná ikona, budou vykresleny pouze popisky.
--   `custom` – Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
--   `{udid}` – Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
+* `default` – Výchozí ikona PIN
+* `none` – Není zobrazena žádná ikona, budou vykresleny pouze popisky.
+* `custom` – Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
+* `{udid}` – Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
 
 Styly připnutí v Azure Maps jsou přidány ve formátu `optionNameValue` s více znaky oddělenými svislou čárou ( `|` ), jako je to `iconType|optionName1Value1|optionName2Value2` . Všimněte si, že názvy možností a hodnoty nejsou oddělené. Následující názvy možností stylu lze použít pro styl připínáček v Azure Maps:
 
--   `al` – Určuje neprůhlednost (alfa) špendlíků. Může se jednat o číslo mezi 0 a 1.
--   `an` – Určuje kotvu PIN. Hodnoty X a y v pixelech, které jsou zadány ve formátu `x y` .
--   `co` – Barva kódu PIN. Musí se jednat o 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
--   `la` – Určuje kotvu popisku. Hodnoty X a y v pixelech, které jsou zadány ve formátu `x y` .
--   `lc` – Barva popisku. Musí být 24, ale hexadecimální Barva: `000000` na `FFFFFF` .
--   `ls` – Velikost popisku v pixelech. Může být číslo větší než 0.
--   `ro` – Hodnota ve stupních pro otočení ikony. Může to být číslo mezi-360 a 360.
--   `sc` – Hodnota měřítka pro ikonu připnutí. Může být číslo větší než 0.
+* `al` – Určuje neprůhlednost (alfa) špendlíků. Může se jednat o číslo mezi 0 a 1.
+* `an` – Určuje kotvu PIN. Hodnoty X a y v pixelech, které jsou zadány ve formátu `x y` .
+* `co` – Barva kódu PIN. Musí se jednat o 24bitové hexadecimální barvu: `000000` na `FFFFFF` .
+* `la` – Určuje kotvu popisku. Hodnoty X a y v pixelech, které jsou zadány ve formátu `x y` .
+* `lc` – Barva popisku. Musí být 24, ale hexadecimální Barva: `000000` na `FFFFFF` .
+* `ls` – Velikost popisku v pixelech. Může být číslo větší než 0.
+* `ro` – Hodnota ve stupních pro otočení ikony. Může to být číslo mezi-360 a 360.
+* `sc` – Hodnota měřítka pro ikonu připnutí. Může být číslo větší než 0.
 
 Hodnoty popisků jsou určené pro každé místo kódu PIN, a ne jako jediná hodnota popisku, která se vztahuje na všechna připínáček v seznamu umístění. Hodnota popisku může být řetězec více znaků a zabalená pomocí jednoduchých uvozovek, aby se zajistilo, že není možné je označit jako styl nebo hodnotu umístění.
 
@@ -406,17 +417,13 @@ Například v Azure Maps přidání červené ( `FF0000` ) výchozí ikony s pop
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure Maps kód PIN statické mapy](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure Maps kód PIN statické mapy](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 Následující příklad přidá tři PIN kódy s hodnotami popisku "1", "2" a "3":
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure Maps více kódů PIN statických map](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure Maps více kódů PIN statických map](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>Nakreslit porovnání formátu parametru URL křivky
 
@@ -436,9 +443,7 @@ Například v mapách Bing je modrá čára s 50% neprůhledností a tloušťka 
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Statická mapová čára mapy Bing](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Statická mapová čára mapy Bing](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **Po: Azure Maps**
 
@@ -450,20 +455,18 @@ Pokud se nachází do umístění cest, Azure Maps vyžaduje, aby byly souřadni
 
 Styly cest v Azure Maps jsou přidány ve formátu `optionNameValue` s více znaky oddělenými znaky svislé čáry ( `|` ), jako je to `optionName1Value1|optionName2Value2` . Všimněte si, že názvy možností a hodnoty nejsou oddělené. Následující názvy možností stylu lze použít k použití stylu cest v Azure Maps:
 
--   `fa` – Barva výplně pozadí (alfa) použitá při vykreslování mnohoúhelníků. Může se jednat o číslo mezi 0 a 1.
--   `fc` – Barva výplně použitá k vykreslení oblasti mnohoúhelníku
--   `la` – Barva čáry neprůhlednosti (alfa), která se používá při vykreslování čar a obrysu mnohoúhelníků. Může se jednat o číslo mezi 0 a 1.
--   `lc` – Barva čáry použitá k vykreslení čar a obrysu mnohoúhelníků.
--   `lw` – Šířka čáry v pixelech.
--   `ra` – Určuje poloměr kroužků v měřičích.
+* `fa` – Barva výplně pozadí (alfa) použitá při vykreslování mnohoúhelníků. Může se jednat o číslo mezi 0 a 1.
+* `fc` – Barva výplně použitá k vykreslení oblasti mnohoúhelníku
+* `la` – Barva čáry neprůhlednosti (alfa), která se používá při vykreslování čar a obrysu mnohoúhelníků. Může se jednat o číslo mezi 0 a 1.
+* `lc` – Barva čáry použitá k vykreslení čar a obrysu mnohoúhelníků.
+* `lw` – Šířka čáry v pixelech.
+* `ra` – Určuje poloměr kroužků v měřičích.
 
 Například v Azure Maps může být k mapě mezi souřadnicemi (zeměpisná délka:-110, zeměpisná šířka: 45 a zeměpisná délka:-100, zeměpisná šířka: 50) s následujícím parametrem adresy URL přidána modrá čára s 50% krytím:
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure Maps statická čára mapy](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure Maps statická čára mapy](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>Vypočítat matici vzdálenosti
 
@@ -547,8 +550,8 @@ Nezapomeňte si projít [osvědčené postupy pro vyhledávání](./how-to-use-b
 
 Azure Maps poskytuje několik rozhraní API pro načítání dat o provozu. K dispozici jsou dva typy dat provozu;
 
--   **Data toku** – poskytuje metriky toku provozu v částech cest. To se často používá k barvování cest kódu. Tato data se aktualizují každé 2 minuty.
--   **Data incidentu** – poskytuje data týkající se konstrukce, uzavření provozu, havárií a dalších incidentů, které mohou mít vliv na provoz. Tato data se aktualizují každou minutu.
+* **Data toku** – poskytuje metriky toku provozu v částech cest. To se často používá k barvování cest kódu. Tato data se aktualizují každé 2 minuty.
+* **Data incidentu** – poskytuje data týkající se konstrukce, uzavření provozu, havárií a dalších incidentů, které mohou mít vliv na provoz. Tato data se aktualizují každou minutu.
 
 Služba mapy Bing poskytuje data toku a dat incidentu v interaktivních ovládacích prvcích mapy a také zpřístupňuje data incidentu jako službu.
 
@@ -602,9 +605,9 @@ Kromě této Azure Maps platforma poskytuje také řadu dalších rozhraní API 
 
 Služby prostorových dat v mapách Bing poskytují tři klíčové funkce:
 
--   Geografické kódování dávky – zpracování velké dávky adresování geografického kódu s jediným požadavkem.
--   Načíst data hranic pro správu – použijte souřadnici a získejte hranici přeprotínající se pro zadaný typ entity.
--   Hostování a dotazování prostorových podnikových dat – nahrajte jednoduchou 2D tabulku dat a získejte k ní přístup pomocí několika jednoduchých prostorových dotazů.
+* Geografické kódování dávky – zpracování velké dávky adresování geografického kódu s jediným požadavkem.
+* Načíst data hranic pro správu – použijte souřadnici a získejte hranici přeprotínající se pro zadaný typ entity.
+* Hostování a dotazování prostorových podnikových dat – nahrajte jednoduchou 2D tabulku dat a získejte k ní přístup pomocí několika jednoduchých prostorových dotazů.
 
 ### <a name="batch-geocode-data"></a>Data o subkódu Batch
 
@@ -656,11 +659,15 @@ Tady je několik užitečných prostředků pro hostování a dotazování prost
 
 Azure Maps poskytuje klientské knihovny pro následující programovací jazyky;
 
--   JavaScript, TypeScript, Node.js – [documentation](./how-to-use-services-module.md) \| [balíček dokumentace npm](https://www.npmjs.com/package/azure-maps-rest)
+-   JavaScript, TypeScript, Node.js – [](./how-to-use-services-module.md) \| [balíček dokumentace npm](https://www.npmjs.com/package/azure-maps-rest)
 
 Open Source klientské knihovny pro jiné programovací jazyky;
 
--   .NET Standard 2,0 – [GitHub project](https://github.com/perfahlen/AzureMapsRestServices) \| [balíček NuGet](https://www.nuget.org/packages/AzureMapsRestToolkit/) pro projekt GitHubu
+* .NET Standard 2,0 – [](https://github.com/perfahlen/AzureMapsRestServices) \| [balíček NuGet](https://www.nuget.org/packages/AzureMapsRestToolkit/) pro projekt GitHubu
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nenašly se žádné prostředky, které by se vyčistily.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -668,15 +675,3 @@ Přečtěte si další informace o službě Azure Maps REST.
 
 > [!div class="nextstepaction"]
 > [Osvědčené postupy pro používání vyhledávací služby](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Osvědčené postupy pro používání směrovací služby](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Jak používat modul služby (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Referenční dokumentace k rozhraní API služby Azure Maps REST](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Ukázky kódu](/samples/browse/?products=azure-maps)

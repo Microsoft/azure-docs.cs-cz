@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 1fdf026e9271ef6eb30c2b4ca96a04880b65be75
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/17/2020
+ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578089"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678429"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Přehled zabezpečení služby Azure Data Share
 
@@ -23,7 +23,11 @@ Azure Data Share využívá základní zabezpečení, které Azure nabízí k oc
 
 Azure Data Share využívá spravovanou identitu (dříve známou jako MSI) k přístupu k úložištím dat, která se používají ke sdílení dat. Neexistuje žádná výměna přihlašovacích údajů mezi poskytovatelem dat a příjemcem dat. Další informace o spravované identitě najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Další informace o rolích a oprávněních potřebných ke sdílení dat najdete v tématu [role a požadavky](concepts-roles-permissions.md).
 
-Řízení přístupu ke sdílené složce Azure Data Share lze nastavit na úrovni prostředku sdílení dat, aby bylo zajištěno, že k nim budou mít přístup pouze oprávnění, která jsou autorizována. 
+## <a name="access-control"></a>Řízení přístupu
+
+Řízení přístupu ke sdílené složce Azure Data Share lze nastavit na úrovni prostředku sdílení dat, aby bylo zajištěno, že k nim budou mít přístup pouze oprávnění, která jsou autorizována. Vlastník a přispěvatel prostředku pro sdílení dat můžou sdílet data, přijímat sdílené složky a provádět změny ve stávajících sdílených složkách. Čtenář prostředku pro sdílení dat může zobrazit sdílené složky, ale nemůže provádět změny. 
+
+Po vytvoření nebo přijetí sdílené složky můžou změny provádět uživatelé s řádným oprávněním ke sdílení dat. Pokud uživatel, který vytvoří nebo přijme sdílenou složku, odejde z organizace, neukončí sdílení nebo zastaví tok dat. Jiní uživatelé, kteří mají správné oprávnění k prostředku sdílení dat, můžou dál spravovat sdílenou složku.
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>Sdílení dat z nebo do úložišť dat s povolenou bránou firewall
 Pokud chcete sdílet data z nebo do účtů úložiště s bránou firewall zapnutou, musíte povolit v účtu úložiště **Povolit důvěryhodné služby Microsoftu** . Podrobnosti najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](

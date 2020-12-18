@@ -3,22 +3,36 @@ title: 'Kurz: migrace z map Bing na Azure Maps | Mapy Microsoft Azure'
 description: V tomto kurzu se naučíte migrovat z map Bingu na Microsoft Azure Maps. Průvodce vás seznámí s postupem, jak přepnout na Azure Maps rozhraní API a sady SDK.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897003"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679453"
 ---
-# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Kurz – migrace z map Bingu na Azure Maps
+# <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Kurz: migrace z map Bingu na Azure Maps
 
-V této příručce najdete informace o tom, jak migrovat webové a mobilní aplikace a aplikace založené na serveru z mapy Bing na Azure Mapsovou platformu. Tato příručka obsahuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci na Azure Maps.
+V této příručce najdete informace o tom, jak migrovat webové a mobilní aplikace a aplikace založené na serveru z mapy Bing na Azure Mapsovou platformu. Tato příručka obsahuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci na Azure Maps. 
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Porovnání vysoké úrovně pro ekvivalentní funkce map Bing dostupné v Azure Maps.
+> * Jaké jsou rozdíly v licencích, které je potřeba vzít v úvahu.
+> * Postup plánování migrace.
+> * Kde najít technické prostředky a podporu.
+
+## <a name="prerequisites"></a>Požadavky
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="azure-maps-platform-overview"></a>Přehled platformy Azure Maps
 
@@ -39,7 +53,7 @@ Následující tabulka obsahuje seznam funkcí mapy Bing na nejvyšší úrovni 
 | Automatické návrhy                           | ✓                  |
 | Pokyny (včetně nákladní auto)          | ✓                  |
 | Matice vzdáleností                       | ✓                  |
-| Zvyšovat                            | Plánováno            |
+| Zvyšovat                            | ✓ (Preview)        |
 | Obrázek – statická mapa                  | ✓                  |
 | Metadata z snímků                      | ✓                  |
 | Izochronů                            | ✓                  |
@@ -52,19 +66,19 @@ Následující tabulka obsahuje seznam funkcí mapy Bing na nejvyšší úrovni 
 | Prostorové Data Services (SDS)           | Částečné            |
 | Časové pásmo                             | ✓                  |
 | Incidenty provozu                     | ✓                  |
-| Mapy řízené konfigurací             | Není k dispozici                |
+| Mapy řízené konfigurací             | –                |
 
-Mapy Bing poskytují základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčích i vysoce zabezpečené ověřování Azure Active Directory.
+Mapy Bing poskytují základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčových a vysoce zabezpečených Azure Active Directorych ověřování.
 
 ## <a name="licensing-considerations"></a>Požadavky na licencování
 
-Při migraci na Azure Maps ze služby mapy Bing byste měli zvážit následující postup s ohledem na licencování.
+Při migraci na Azure Maps z map Bing by se měly brát v úvahu následující informace týkající se licencování.
 
--   Azure Maps poplatky za použití interaktivních map na základě počtu načtených dlaždic map, zatímco mapy Bing se účtují za načítání mapového ovládacího prvku (relace). Na Azure Maps jsou mapové dlaždice automaticky ukládány do mezipaměti, aby se snížily náklady pro vývojáře. Jedna Azure Mapsová transakce je vygenerována pro každých 15 dlaždic map, které jsou načteny. Interaktivní Azure Maps sady SDK používají dlaždice 512-pixel a v průměru generuje jednu nebo méně transakcí na zobrazení stránky.
+* Azure Maps poplatky za použití interaktivních map na základě počtu načtených dlaždic map, zatímco mapy Bing se účtují za načítání mapového ovládacího prvku (relace). Aby se snížily náklady pro vývojáře, Azure Maps automaticky ukládá do mezipaměti dlaždice map. Jedna Azure Mapsová transakce je vygenerována pro každých 15 dlaždic map, které jsou načteny. Interaktivní Azure Maps sady SDK používají dlaždice 512-pixel a v průměru generuje jednu nebo méně transakcí na zobrazení stránky.
 
--   Azure Maps umožňuje ukládat data z své platformy do Azure. Dá se taky ukládat do mezipaměti jinde až po dobu šesti měsíců, a to podle [podmínek použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+* Azure Maps umožňuje ukládat data z své platformy do Azure. Dá se taky ukládat do mezipaměti jinde až po dobu šesti měsíců, a to podle [podmínek použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-Tady je několik prostředků souvisejících s licencováním pro Azure Maps:
+Zde jsou některé prostředky týkající se licencování pro Azure Maps:
 
 -   [Stránka s cenami Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/)
 -   [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
@@ -73,7 +87,7 @@ Tady je několik prostředků souvisejících s licencováním pro Azure Maps:
 
 ## <a name="suggested-migration-plan"></a>Navrhovaný plán migrace
 
-Následuje plán migrace na vysoké úrovni.
+Tady je příklad plánu migrace na vysoké úrovni.
 
 1.  Seznamte se s využitím sad SDK a služeb Bing Maps, které vaše aplikace používá, a ověřte, že Azure Maps poskytuje alternativní sady SDK a služby, na které můžete migrovat.
 2.  Vytvořte si předplatné Azure (pokud ho ještě nemáte) na adrese <https://azure.com> .
@@ -86,30 +100,30 @@ Následuje plán migrace na vysoké úrovni.
 
 Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
 
-1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
-2. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md). 
+1. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md).
 4. [Získejte Azure Maps klíč předplatného](./how-to-manage-authentication.md#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps technické prostředky
 
 Tady je seznam užitečných technických prostředků pro Azure Maps.
 
--   Přehled: https://azure.com/maps
--   Nápovědě <https://aka.ms/AzureMapsDocs>
--   Ukázky kódu pro web SDK: <https://aka.ms/AzureMapsSamples>
--   Fóra pro vývojáře: <https://aka.ms/AzureMapsForums>
--   Videa <https://aka.ms/AzureMapsVideos>
--   Webový <https://aka.ms/AzureMapsBlog>
--   Azure Maps váš názor (UserVoice): <https://aka.ms/AzureMapsFeedback>
+* Přehled: <https://azure.com/maps>
+* Nápovědě <https://aka.ms/AzureMapsDocs>
+* Ukázky kódu pro web SDK: <https://aka.ms/AzureMapsSamples>
+* Fóra pro vývojáře: <https://aka.ms/AzureMapsForums>
+* Videa <https://aka.ms/AzureMapsVideos>
+* Webový <https://aka.ms/AzureMapsBlog>
+* Azure Maps váš názor (UserVoice): <https://aka.ms/AzureMapsFeedback>
 
 ## <a name="migration-support"></a>Podpora migrace
 
 Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](/answers/topics/azure-maps.html) nebo pomocí jedné z mnoha možností podpory Azure: <https://azure.microsoft.com/support/options/>
 
-## <a name="new-terminology"></a>Nová terminologie 
+## <a name="new-terminology"></a>Nová terminologie
 
-Níže najdete seznam běžných termínů map Bingu, které jsou známé jiným termínem v Azure Maps.
+Následující seznam obsahuje běžné výrazy služby mapy Bing a jejich odpovídající Azure Mapsé výrazy.
 
 | Termín mapy Bing                    | Azure Maps termín                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -128,12 +142,13 @@ Níže najdete seznam běžných termínů map Bingu, které jsou známé jiným
 | Navigační panel                    | Výběr stylu mapy, ovládací prvek přiblížení, ovládací prvek sklonu, ovládací prvek kompas |
 | Ikonu                           | Bublinová vrstva, vrstva symbolu nebo značka HTML                      |
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejsou k dispozici žádné prostředky, které vyžadují vyčištění.
+
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si podrobnosti o migraci aplikace Bing Maps pomocí těchto článků:
 
 > [!div class="nextstepaction"]
 > [Migrace webové aplikace](migrate-from-bing-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Migrace webové služby](migrate-from-bing-maps-web-services.md)

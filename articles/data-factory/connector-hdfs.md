@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6670d6dc676ebefa149815253d5ce65c8a9b1abe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346227"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680947"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Konkrétně konektor HDFS podporuje:
 - Kopírování souborů pomocí protokolu *webhdfs* nebo integrované podpory *DistCp* .
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -253,7 +253,7 @@ Tato část popisuje chování, které je výsledkem použití cesty seznamu sou
 
 Aktivita kopírování podporuje použití DistCp ke kopírování souborů do úložiště objektů BLOB v Azure (včetně [připravené kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. V takovém případě může DistCp využít výkon vašeho clusteru místo spuštění v místním prostředí Integration runtime. Použití DistCp poskytuje lepší propustnost kopírování, zejména v případě, že je cluster velmi výkonný. Na základě konfigurace ve vaší datové továrně aktivita kopírování automaticky vytvoří příkaz DistCp, odešle ho do vašeho clusteru Hadoop a monitoruje stav kopírování.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů BLOB v Azure (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje následující požadavky:
 
@@ -284,7 +284,7 @@ U obou možností se ujistěte, že jste zapnuli webhdfs pro cluster Hadoop:
 1. Vytvořte objekt zabezpečení HTTP a keytab pro webhdfs.
 
     > [!IMPORTANT]
-    > Objekt zabezpečení protokolu HTTP Kerberos musí začínat řetězcem **http/**, podle specifikace protokolu Kerberos http SPNEGO.
+    > Objekt zabezpečení protokolu HTTP Kerberos musí začínat řetězcem **http/**, podle specifikace protokolu Kerberos http SPNEGO. Další informace najdete [tady](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#HDFS_Configuration_Options).
 
     ```bash
     Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>

@@ -1,77 +1,129 @@
 ---
-title: Nastavení stylu mapy pomocí Azure Maps Android SDK
-description: Přečtěte si dva způsoby nastavení stylu mapy. Chcete-li upravit styl, přečtěte si téma jak použít Microsoft Azure Maps Android SDK v souboru rozložení nebo třídě Activity.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/18/2020
-ms.topic: how-to
+title: Nastavení stylu mapy v zařízeních s Androidem Maps | Mapy Microsoft Azure
+description: Přečtěte si dva způsoby nastavení stylu mapy. Chcete-li upravit styl, přečtěte si téma jak použít Azure Maps Android SDK v souboru rozložení nebo třídě Activity.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 04/26/2019
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8c7689fb87575ac6e150f793b43f35e8bf6adc83
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 1cce355c8ffbcd4704bd32b0e4d1739c77c2b623
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532467"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678484"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
+# <a name="set-map-style-android-sdk"></a>Nastavit styl mapy (Android SDK)
 
-V tomto článku se dozvíte, jak nastavit styly mapy pomocí Android SDK Azure Maps. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](./supported-map-styles.md).
+Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](supported-map-styles.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
-3. Stáhněte a nainstalujte [Azure Maps Android SDK](./how-to-use-android-map-control-library.md).
-
+Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) .
 
 ## <a name="set-map-style-in-the-layout"></a>Nastavení stylu mapy v rozložení
 
-Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte `res > layout > activity_main.xml` , takže vypadá takto:
+Při přidávání mapového ovládacího prvku lze v souboru rozložení pro třídu Activity nastavit styl mapy. Následující kód nastaví střed umístění, úroveň přiblížení a styl mapy.
 
 ```XML
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.microsoft.azure.maps.mapcontrol.MapControl
+    android:id="@+id/mapcontrol"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-
-    <com.microsoft.azure.maps.mapcontrol.MapControl
-        android:id="@+id/mapcontrol"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:mapcontrol_centerLat="47.602806"
-        app:mapcontrol_centerLng="-122.329330"
-        app:mapcontrol_zoom="12"
-        app:mapcontrol_style="grayscale_dark"
-        />
-
-</FrameLayout>
+    app:mapcontrol_centerLat="47.602806"
+    app:mapcontrol_centerLng="-122.329330"
+    app:mapcontrol_zoom="12"
+    app:mapcontrol_style="grayscale_dark"
+    />
 ```
 
-`mapcontrol_style`Atribut výše nastaví styl mapy na **grayscale_dark**.
+Na následujícím snímku obrazovky vidíte výše uvedený kód, který zobrazuje mapu s tmavým stylem ve stupních šedi.
 
-:::image type="content" source="./media/set-android-map-styles/grayscale-dark.png" border="true" alt-text="Azure Maps, obrázek mapy znázorňující styl jako grayscale_dark":::
+![Mapa s tmavou silniční mapou ve stupních šedi](media/set-android-map-styles/android-grayscale-dark.png)
 
-## <a name="set-map-style-in-the-mainactivity-class"></a>Nastavení stylu mapy ve třídě MainActivity
+## <a name="set-map-style-in-code"></a>Nastavení stylu mapy v kódu
 
-Styl mapy lze také nastavit ve třídě MainActivity. Otevřete `java > com.example.myapplication > MainActivity.java` soubor a zkopírujte následující fragment kódu do metody **Create ()** . Tento kód nastaví styl mapy na **satellite_road_labels**.
+Styl mapy lze nastavit programově v kódu pomocí `setStyle` metody mapy. Následující kód nastaví střed umístění a úroveň přiblížení pomocí `setCamera` metody map a stylu mapy na `SATELLITE_ROAD_LABELS` .
 
->[!WARNING]
->Android Studio pravděpodobně neimportoval požadované třídy.  V důsledku toho bude mít kód nějaké nepřeložitelné odkazy. Chcete-li importovat požadované třídy, Stačí umístit ukazatel myši na každý nerozpoznaný odkaz a stisknout `Alt + Enter` (možnost + návrat na Macu).
-
-```Java
+```java
 mapControl.onReady(map -> {
 
     //Set the camera of the map.
-    map.setCamera(center(47.64, -122.33), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-122.33, 47.64)), zoom(14));
 
     //Set the style of the map.
-    map.setStyle((style(SATELLITE_ROAD_LABELS)));
-       
+    map.setStyle(style(MapStyle.SATELLITE_ROAD_LABELS));
 });
 ```
 
-:::image type="content" source="./media/set-android-map-styles/satellite-road-labels.png" border="true" alt-text="Azure Maps, obrázek mapy znázorňující styl jako satellite_road_labels":::
+Na následujícím snímku obrazovky vidíte výše uvedený kód, který zobrazuje mapu se stylem satelitních cest.
+
+![Mapování se stylem satelitních cest k popiskům](media/set-android-map-styles/android-satellite-road-labels.png)
+
+## <a name="setting-the-map-camera"></a>Nastavení videokamery mapy
+
+Mapová kamera řídí, jaká část mapy se zobrazuje na mapě. Fotoaparát může být v rozložení programově v kódu. Při nastavování v kódu existují dvě hlavní metody nastavení pozice mapy; použití Center a přiblížení nebo předání v ohraničujícím poli. Následující kód ukazuje, jak nastavit všechny volitelné možnosti kamery při použití `center` a `zoom` .
+
+```java
+//Set the camera of the map using center and zoom.
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.64)), 
+
+    //The zoom level. Typically a value between 0 and 22.
+    zoom(14),
+
+    //The amount of tilt in degrees the map where 0 is looking straight down.
+    pitch(45),
+
+    //Direction the top of the map is pointing in degrees. 0 = North, 90 = East, 180 = South, 270 = West
+    bearing(90),
+
+    //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
+    minZoom(10),
+    
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+);
+```
+
+Často je žádoucí soustředit se na mapu v sadě dat. Ohraničující rámeček lze vypočítat z funkcí pomocí `MapMath.fromData` metody a lze jej předat do `bounds` Možnosti na mapě. Při nastavování zobrazení mapy založeného na ohraničujícím poli je často užitečné zadat `padding` hodnotu pro určení velikosti pixelu pro body vykreslené jako bubliny nebo symboly. Následující kód ukazuje, jak nastavit všechny volitelné možnosti kamery při použití ohraničujícího pole k nastavení pozice kamery.
+
+```java
+//Set the camera of the map using a bounding box.
+map.setCamera(
+    //The area to focus the map on.
+    bounds(BoundingBox.fromLngLats(
+        //West
+        -122.4594,
+
+        //South
+        47.4333,
+        
+        //East
+        -122.21866,
+        
+        //North
+        47.75758
+    )),
+
+    //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
+    padding(20),
+
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+);
+```
+
+Všimněte si, že poměr stran ohraničujícího pole nesmí být stejný jako poměr stran mapy, protože tato mapa často zobrazuje celou oblast ohraničujícího pole, ale často je příliš svislá nebo horizontálně.
+
+## <a name="next-steps"></a>Další kroky
+
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy symbolů](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy bublin](map-add-bubble-layer-android.md)

@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889863"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679963"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
 Při vizualizaci řady datových bodů na mapě se mohou datové body překrývat mezi sebou. Překrytí může způsobit, že mapa může být nečitelná a obtížné ji používat. Data bodu clusteringu je proces kombinování bodových dat blízko sebe a jejich reprezentace na mapě jako jeden clusterovaný datový bod. Když se uživatel přiblíží k mapě, rozdělí se clustery do jednotlivých datových bodů. Když pracujete s velkým počtem datových bodů, pomocí procesů clusteringu Vylepšete uživatelské prostředí.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player?format=ny]
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Povolení clusteringu u zdroje dat
 
@@ -63,7 +63,7 @@ Chcete-li zobrazit velikost clusteru nad bublinou, použijte symbolovou vrstvu s
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Základní clustery s bublinovou vrstvou" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>cluster s bublinovou vrstvou základního</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>cluster s bublinovou vrstvou základního</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>Zobrazení clusterů pomocí vrstvy symbolů
@@ -75,7 +75,7 @@ Použití clusteringu k zobrazení hustoty datových bodů při zachování čis
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Clusterovaný Symbolová vrstva" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>vrstvu se clusterovaným symbolem</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>vrstvu se clusterovaným symbolem</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>Vytváření clusterů a vrstva Heat mapy
@@ -85,7 +85,7 @@ Heat mapy představují skvělý způsob, jak zobrazit hustotu dat na mapě. Tat
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vážená Heat mapa clusteru" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na CodePen () na () <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>vážené Heat Azure Maps mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Podívejte se na CodePen () na () <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>vážené Heat Azure Maps mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="mouse-events-on-clustered-data-points"></a>Události myši v clusterovaných datových bodech

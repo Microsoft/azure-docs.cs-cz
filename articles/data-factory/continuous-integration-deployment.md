@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591892"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680298"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
@@ -28,7 +28,7 @@ Nepřetržitá integrace je postup testování každé změny provedené v zákl
 
 V Azure Data Factory průběžná integrace a doručování (CI/CD) znamená přesun Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného. Azure Data Factory využívá [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k uložení konfigurace různých entit ADF (kanálů, datových sad, toků dat atd.). Existují dva navrhované metody, jak propagovat datovou továrnu na jiné prostředí:
 
--    Automatizované nasazení pomocí Data Factory integrace s [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
+-    Automatizované nasazení pomocí Data Factory integrace s [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)
 -    Ručně nahrajte šablonu Správce prostředků pomocí integrace Data Factory UX s Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
 1.  Uložte kanál pro vydávání verzí.
 
-1. Pokud chcete aktivovat vydanou verzi, vyberte **vytvořit vydání**. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers?view=azure-devops) .
+1. Pokud chcete aktivovat vydanou verzi, vyberte **vytvořit vydání**. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers) .
 
    ![Vyberte vytvořit vydání.](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete př
 
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
+
+    Pokud chcete zpracovat vlastní parametr 256, je k dispozici 3 možnosti:    
+  
+    * Použijte vlastní soubor parametrů a odeberte vlastnosti, které nepotřebují Parametrizace, tj. vlastnosti, které mohou zachovat výchozí hodnotu, a proto snižte počet parametrů.
+    * Refaktorujte logiku toku dat, aby se snížily parametry, například parametry kanálu mají stejnou hodnotu, můžete místo toho použít pouze globální parametry.
+    * Rozdělit jednu datovou továrnu do více toků dat.
 
 Pokud chcete přepsat výchozí šablonu Parametrizace, klikněte na Centrum správy a v části Správa zdrojového kódu vyberte **šablonu Parametrizace** . Výběrem **Upravit šablonu** otevřete Editor kódu šablony Parametrizace. 
 
@@ -639,7 +645,7 @@ Podívejte se na video pod podrobným výukovým kurzem o tom, jak horká prost�
 
 ## <a name="exposure-control-and-feature-flags"></a>Řízení a příznaky funkcí pro expozici
 
-Při práci na týmu existují instance, ve kterých můžete sloučit změny, ale nechcete, aby byly spuštěny v prostředích se zvýšenými oprávněními, jako jsou například PROD a QA. Pro zpracování tohoto scénáře tým ADF doporučuje [koncept DevOps používání příznaků funkcí](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). V rámci ADF můžete kombinovat [globální parametry](author-global-parameters.md) a [aktivitu if podmínka](control-flow-if-condition-activity.md) , aby se na základě těchto příznaků prostředí skryly sady logiky.
+Při práci na týmu existují instance, ve kterých můžete sloučit změny, ale nechcete, aby byly spuštěny v prostředích se zvýšenými oprávněními, jako jsou například PROD a QA. Pro zpracování tohoto scénáře tým ADF doporučuje [koncept DevOps používání příznaků funkcí](/azure/devops/migrate/phase-features-with-feature-flags). V rámci ADF můžete kombinovat [globální parametry](author-global-parameters.md) a [aktivitu if podmínka](control-flow-if-condition-activity.md) , aby se na základě těchto příznaků prostředí skryly sady logiky.
 
 Další informace o tom, jak nastavit příznak funkce, najdete v následujícím kurzu videa:
 

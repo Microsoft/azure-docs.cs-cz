@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855001"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678917"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
 Tento článek popisuje některé úlohy konfigurace a správy prováděné na Data Box a Data Box Heavy zařízeních. Zařízení Data Box a Data Box Heavy můžete spravovat prostřednictvím uživatelského rozhraní Azure Portal a místního webového uživatelského rozhraní pro dané zařízení. Tento článek se zaměřuje na úlohy prováděné pomocí místního webového uživatelského rozhraní.
 
 Místní webové uživatelské rozhraní pro Data Box a pro Data Box Heavy se používá pro počáteční konfiguraci zařízení. Můžete také použít místní webové uživatelské rozhraní k vypnutí nebo restartování zařízení, spuštění diagnostických testů, aktualizace softwaru, zobrazení kopírování protokolů, mazání místních dat ze zařízení a vygenerování balíčku pro podporu pro podpora Microsoftu. Na zařízení Data Box Heavy se dvěma nezávislými uzly můžete přistupovat ke dvěma samostatným místním webovým uživatelská rozhraníám, které odpovídají každému uzlu zařízení.
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
 

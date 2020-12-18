@@ -9,10 +9,10 @@ ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
 ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 12/18/2020
 ms.locfileid: "97586971"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Připojení k Azure synapse studiu pomocí Center privátních odkazů Azure 

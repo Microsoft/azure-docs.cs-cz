@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905056"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680871"
 ---
-# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Kurz – migrace webové aplikace z Map Google
+# <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Kurz: migrace webové aplikace z Map Google
 
 Většina webových aplikací, které používají mapy Google, používá sadu SDK pro Google Maps V3 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Svou aplikaci můžete spustit na webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK. V tomto kurzu se naučíte, jak:
 
@@ -31,29 +31,29 @@ Většina webových aplikací, které používají mapy Google, používá sadu 
 > * Zobrazení provozních dat
 > * Přidání překrytí základní desky
 
-Naučíte se také: 
+Naučíte se také:
 
 > [!div class="checklist"]
-> * Jak provádět běžné úlohy mapování pomocí Azure Maps Web SDK
-> * Osvědčené postupy pro zlepšení výkonu a uživatelského prostředí
-> * Tipy, jak zajistit, aby vaše aplikace používaly více funkcí k dispozici v Azure Maps
+> * Jak provádět běžné úlohy mapování pomocí Azure Maps Web SDK.
+> * Osvědčené postupy pro zlepšení výkonu a uživatelského prostředí.
+> * Tipy, jak zajistit, aby vaše aplikace používaly více funkcí k dispozici v Azure Maps.
 
-Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte svoji aplikaci ke službám Azure Maps dlaždic (satelitní dlaždice[cest](/rest/api/maps/render/getmaptile) \| [satellite tiles](/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
+Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte svoji aplikaci ke službám Azure Maps dlaždic (satelitní dlaždice[cest](/rest/api/maps/render/getmaptile) \| [](/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
 
-- Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
-- Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
-- OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
+* Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
+* Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
+* OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
 
 Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z následujících open-source projektů:
 
-- [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
-- [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
+* [NG-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -úhlová Obálka kolem Azure Maps.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – komponenta Azure Maps Blazor.
+* [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -97,40 +97,40 @@ Tato kolekce obsahuje ukázky kódu pro každou platformu a každá ukázka pokr
 
 **Témata**
 
-- [Načtení mapy](#load-a-map)
-- [Lokalizace mapy](#localizing-the-map)
-- [Nastavení zobrazení mapy](#setting-the-map-view)
-- [Přidání značky](#adding-a-marker)
-- [Přidání vlastní značky](#adding-a-custom-marker)
-- [Přidání lomené čáry](#adding-a-polyline)
-- [Přidání mnohoúhelníku](#adding-a-polygon)
-- [Zobrazit informační okno](#display-an-info-window)
-- [Importovat soubor. JSON](#import-a-geojson-file)- 
-- [Clusteringu značek](#marker-clustering)
-- [Přidat Heat mapu](#add-a-heat-map)
-- [Překrytí vrstvy dlaždice](#overlay-a-tile-layer)
-- [Zobrazení provozních dat](#show-traffic-data)
-- [Přidání překrytí základní desky](#add-a-ground-overlay)
-- [Přidání dat KML do mapy](#add-kml-data-to-the-map)
+* [Načtení mapy](#load-a-map)
+* [Lokalizace mapy](#localizing-the-map)
+* [Nastavení zobrazení mapy](#setting-the-map-view)
+* [Přidání značky](#adding-a-marker)
+* [Přidání vlastní značky](#adding-a-custom-marker)
+* [Přidání lomené čáry](#adding-a-polyline)
+* [Přidání mnohoúhelníku](#adding-a-polygon)
+* [Zobrazit informační okno](#display-an-info-window)
+* [Importovat soubor. JSON](#import-a-geojson-file)* 
+* [Clusteringu značek](#marker-clustering)
+* [Přidat Heat mapu](#add-a-heat-map)
+* [Překrytí vrstvy dlaždice](#overlay-a-tile-layer)
+* [Zobrazení provozních dat](#show-traffic-data)
+* [Přidání překrytí základní desky](#add-a-ground-overlay)
+* [Přidání dat KML do mapy](#add-kml-data-to-the-map)
 
 ### <a name="load-a-map"></a>Načtení mapy
 
 Obě sady SDK mají stejný postup pro načtení mapy:
 
-- Přidejte odkaz na mapovou sadu SDK.
-- Přidejte `div` značku k textu stránky, který bude fungovat jako zástupný symbol pro mapu.
-- Vytvořte funkci JavaScriptu, která se volá při načtení stránky.
-- Vytvořte instanci příslušné mapové třídy.
+* Přidejte odkaz na mapovou sadu SDK.
+* Přidejte `div` značku k textu stránky, který bude fungovat jako zástupný symbol pro mapu.
+* Vytvořte funkci JavaScriptu, která se volá při načtení stránky.
+* Vytvořte instanci příslušné mapové třídy.
 
 **Některé klíčové rozdíly**
 
-- Google Maps vyžaduje zadání klíče účtu v odkazu na skript rozhraní API. Pověření ověřování pro Azure Maps jsou zadána jako možnosti třídy map. Tímto pověřením může být klíč předplatného nebo informace Azure Active Directory.
-- Google Maps akceptuje funkci zpětného volání v odkazu na skript rozhraní API, který se používá k volání funkce inicializace pro načtení mapy. V Azure Maps by se měla použít událost při načtení stránky.
-- Při odkazování na `div` prvek, ve kterém bude mapa vykreslena, `Map` třída v Azure Maps vyžaduje pouze hodnotu, `id` zatímco Google Maps vyžaduje `HTMLElement` objekt.
-- Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` .
-- Úroveň přiblížení v Azure Maps je jedna úroveň nižší než úroveň přiblížení v Mapách Google Maps. Tato nesrovnalost je způsobená rozdílem velikosti systému dlaždic dvou platforem.
-- Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy. Takže ve výchozím nastavení nemá mapa tlačítka lupy a tlačítka pro mapování stylů. Existují však možnosti ovládacího prvku pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku sklonu.
-- Do Azure Maps se přidá obslužná rutina události, která monitoruje `ready` událost instance mapy. Tato událost se aktivuje, jakmile mapa dokončí načtení kontextu WebGL a všech potřebných prostředků. Přidejte veškerý kód, který chcete spustit po dokončení načítání mapy, do této obslužné rutiny události.
+* Google Maps vyžaduje zadání klíče účtu v odkazu na skript rozhraní API. Pověření ověřování pro Azure Maps jsou zadána jako možnosti třídy map. Tímto pověřením může být klíč předplatného nebo informace Azure Active Directory.
+* Google Maps akceptuje funkci zpětného volání v odkazu na skript rozhraní API, který se používá k volání funkce inicializace pro načtení mapy. V Azure Maps by se měla použít událost při načtení stránky.
+* Při odkazování na `div` prvek, ve kterém bude mapa vykreslena, `Map` třída v Azure Maps vyžaduje pouze hodnotu, `id` zatímco Google Maps vyžaduje `HTMLElement` objekt.
+* Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` .
+* Úroveň přiblížení v Azure Maps je jedna úroveň nižší než úroveň přiblížení v Mapách Google Maps. Tato nesrovnalost je způsobená rozdílem velikosti systému dlaždic dvou platforem.
+* Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy. Takže ve výchozím nastavení nemá mapa tlačítka lupy a tlačítka pro mapování stylů. Existují však možnosti ovládacího prvku pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku sklonu.
+* Do Azure Maps se přidá obslužná rutina události, která monitoruje `ready` událost instance mapy. Tato událost se aktivuje, jakmile mapa dokončí načtení kontextu WebGL a všech potřebných prostředků. Přidejte veškerý kód, který chcete spustit po dokončení načítání mapy, do této obslužné rutiny události.
 
 Základní příklady níže využívají Google Maps k načtení mapy uprostřed v New Yorku v souřadnicích. Zeměpisná délka:-73,985, zeměpisná šířka: 40,747 a mapa jsou na úrovni přiblížení 12.
 
@@ -235,7 +235,7 @@ Přečtěte si podrobnou dokumentaci k nastavení a použití ovládacího prvku
 
 **Další zdroje informací:**
 
-- Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](map-add-controls.md).
+* Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](map-add-controls.md).
 
 ### <a name="localizing-the-map"></a>Lokalizace mapy
 
@@ -277,7 +277,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Pomocí Azure Maps lze načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Po načtení je také možné aktualizovat Tato nastavení v mapě. 
+> Pomocí Azure Maps lze načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Po načtení je také možné aktualizovat Tato nastavení v mapě.
 
 Podrobný seznam [podporovaných jazyků](supported-languages.md) najdete v Azure Maps.
 
@@ -325,16 +325,16 @@ map.setStyle({
 
 **Další zdroje informací:**
 
-- [Výběr stylu mapy](choose-map-style.md)
-- [Podporované styly map](supported-map-styles.md)
+* [Výběr stylu mapy](choose-map-style.md)
+* [Podporované styly map](supported-map-styles.md)
 
 ### <a name="adding-a-marker"></a>Přidání značky
 
 V Azure Maps existuje více způsobů, jak lze na mapě vykreslovat data z těchto bodů:
 
-- **Značky HTML** – vykresluje body pomocí tradičních elementů DOM. Značky HTML podporují přetahování.
-- **Vrstva symbolu** – vykreslí body s ikonou nebo textem v rámci WebGL kontextu.
-- **Bublinová vrstva** – vykreslí body jako kružnice na mapě. Poloměry kroužků se dají škálovat na základě vlastností v datech.
+* **Značky HTML** – vykresluje body pomocí tradičních elementů DOM. Značky HTML podporují přetahování.
+* **Vrstva symbolu** – vykreslí body s ikonou nebo textem v rámci WebGL kontextu.
+* **Bublinová vrstva** – vykreslí body jako kružnice na mapě. Poloměry kroužků se dají škálovat na základě vlastností v datech.
 
 Vykreslení vrstev symbolů a bublinových vrstev v kontextu WebGL. Obě vrstvy mohou vykreslovat velké sady bodů na mapě. Tyto vrstvy vyžadují, aby data byla uložená ve zdroji dat. Zdroje dat a vrstvy vykreslování by měly být přidány do mapy po `ready` vyvolání události. Značky HTML jsou vykresleny jako elementy DOM v rámci stránky a nepoužívají zdroj dat. Čím více elementů modelu DOM má stránku, tím pomalejší stránka bude. Pokud je vykreslování více než několik stovek bodů na mapě, doporučuje se místo toho použít jednu z vrstev vykreslování.
 
@@ -455,7 +455,6 @@ Vlastní obrázky můžete použít k reprezentaci bodů na mapě. Níže uveden
 ![Obrázek žlutého připínáčku](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
 yellow-pushpin.png</center>
 
-
 #### <a name="before-google-maps"></a>Před: Google Maps
 
 Vytvořte vlastní značku zadáním `Icon` objektu, který obsahuje, `url` do obrázku. Určete `anchor` bod pro zarovnání bodu odšpendlíku s souřadnicí na mapě. Hodnota ukotvení v Google Maps je relativní vzhledem k levému hornímu rohu obrázku.
@@ -470,7 +469,6 @@ var marker = new google.maps.Marker({
     map: map
 });
 ```
-
 
 ![Vlastní značka Google Maps](media/migrate-google-maps-web-app/google-maps-custom-marker.png)
 
@@ -639,6 +637,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeDashArray: [3, 3]
 }));
 ```
+
 ![Azure Maps lomená čáry](media/migrate-google-maps-web-app/azure-maps-polyline.png)
 
 **Další zdroje informací:**
@@ -709,6 +708,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeWidth: 2
 }));
 ```
+
 ![Azure Maps mnohoúhelník](media/migrate-google-maps-web-app/azure-maps-polygon.png)
 
 **Další zdroje informací:**
@@ -744,6 +744,7 @@ marker.addListener('click', function () {
     infowindow.open(map, marker);
 });
 ```
+
 ![Místní nabídka mapy Google](media/migrate-google-maps-web-app/google-maps-popup.png)
 
 #### <a name="after-azure-maps"></a>Po: Azure Maps
@@ -772,6 +773,7 @@ map.events.add('click', marker, function () {
     popup.open(map);
 });
 ```
+
 ![Místní nabídka Azure Maps](media/migrate-google-maps-web-app/azure-maps-popup.png)
 
 > [!NOTE]
@@ -940,16 +942,14 @@ Injson je základní datový typ v Azure Maps. Importujte jej do zdroje dat pomo
 </html>
 ```
 
-
-
 ![Azure Maps pro injson](media/migrate-google-maps-web-app/azure-maps-geojson.png)
 
 **Další zdroje informací:**
 
-- [Přidat vrstvu symbolů](map-add-pin.md)
-- [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
-- [Data bodů clusteru](clustering-point-data-web-sdk.md)
-- [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
+* [Přidat vrstvu symbolů](map-add-pin.md)
+* [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
+* [Data bodů clusteru](clustering-point-data-web-sdk.md)
+* [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="marker-clustering"></a>Clusteringu značek
 
@@ -1017,22 +1017,20 @@ Použijte knihovnu MarkerCluster ke značkám clusteru. Ikony clusteru jsou omez
 </html>
 ```
 
-
-
 ![Clusteringu Google Maps](media/migrate-google-maps-web-app/google-maps-clustering.png)
 
 #### <a name="after-azure-maps"></a>Po: Azure Maps
 
 Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom data vykreslete. `DataSource`Třída v Azure Maps poskytuje několik možností clusteringu.
 
-- `cluster` – Instruuje zdroj dat na data bodu clusteru.
-- `clusterRadius` -Mezi protokolem RADIUS a propojenými body clusteru.
-- `clusterMaxZoom` – Maximální úroveň přiblížení, při které dojde k clusteringu. Pokud přiblížíte více než tuto úroveň, všechny body se vykreslí jako symboly.
-- `clusterProperties` – Definuje vlastní vlastnosti, které se vypočítávají pomocí výrazů pro všechny body v jednotlivých clusterech a přidají se do vlastností každého bodu clusteru.
+* `cluster` – Instruuje zdroj dat na data bodu clusteru.
+* `clusterRadius` -Mezi protokolem RADIUS a propojenými body clusteru.
+* `clusterMaxZoom` – Maximální úroveň přiblížení, při které dojde k clusteringu. Pokud přiblížíte více než tuto úroveň, všechny body se vykreslí jako symboly.
+* `clusterProperties` – Definuje vlastní vlastnosti, které se vypočítávají pomocí výrazů pro všechny body v jednotlivých clusterech a přidají se do vlastností každého bodu clusteru.
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Datový bod v clusteru má následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Description   |
+| Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
@@ -1041,7 +1039,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Metoda | Návratový typ | Description |
+| Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | `getClusterExpansionZoom(clusterId: number)` | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
@@ -1145,16 +1143,14 @@ Přímo importujte data typu injson pomocí `importDataFromUrl` funkce `DataSour
 </html>
 ```
 
-
-
 ![Azure Maps clusteringu](media/migrate-google-maps-web-app/azure-maps-clustering.png)
 
 **Další zdroje informací:**
 
-- [Přidat vrstvu symbolů](map-add-pin.md)
-- [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
-- [Data bodů clusteru](clustering-point-data-web-sdk.md)
-- [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
+* [Přidat vrstvu symbolů](map-add-pin.md)
+* [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
+* [Data bodů clusteru](clustering-point-data-web-sdk.md)
+* [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Přidat Heat mapu
 
@@ -1227,8 +1223,6 @@ Pokud chcete vytvořit Heat mapu, načtěte knihovnu vizualizace přidáním `&l
 </html>
 ```
 
-
-
 ![Heat mapa Google Maps](media/migrate-google-maps-web-app/google-maps-heatmap.png)
 
 #### <a name="after-azure-maps"></a>Po: Azure Maps
@@ -1293,8 +1287,6 @@ Načtěte data o úrovni injson do zdroje dat a propojte zdroj dat s vrstvou Hea
 </html>
 ```
 
-
-
 ![Azure Maps Heat mapa](media/migrate-google-maps-web-app/azure-maps-heatmap.png)
 
 **Další zdroje informací:**
@@ -1324,8 +1316,6 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 }));
 ```
 
-
-
 ![Vrstva dlaždic mapy Google](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
 
 #### <a name="after-azure-maps"></a>Po: Azure Maps
@@ -1343,8 +1333,6 @@ map.layers.add(new atlas.layer.TileLayer({
     tileSize: 256
 }), 'labels');
 ```
-
-
 
 ![Vrstva Azure Maps dlaždice](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)
 
@@ -1370,8 +1358,6 @@ var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 ```
 
-
-
 ![Přenosy Google Maps](media/migrate-google-maps-web-app/google-maps-traffic.png)
 
 #### <a name="after-azure-maps"></a>Po: Azure Maps
@@ -1387,20 +1373,16 @@ map.setTraffic({
 });
 ```
 
-
-
 ![Azure Maps provoz](media/migrate-google-maps-web-app/azure-maps-traffic.png)
 
 Pokud kliknete na jednu z ikon přenosů v Azure Maps, zobrazí se další informace v automaticky otevřeném okně.
-
-
 
 ![Incident Azure Maps provozu](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)
 
 **Další zdroje informací:**
 
-- [Zobrazit provoz na mapě](map-show-traffic.md)
-- [Možnosti překrytí provozu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+* [Zobrazit provoz na mapě](map-show-traffic.md)
+* [Možnosti překrytí provozu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 
 ### <a name="add-a-ground-overlay"></a>Přidání překrytí základní desky
 
@@ -1514,8 +1496,6 @@ Použijte `atlas.layer.ImageLayer` třídu k překrytí nesledovaných imagí. T
 </html>
 ```
 
-
-
 ![Překrytí obrázku Azure Maps](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)
 
 **Další zdroje informací:**
@@ -1528,7 +1508,6 @@ Použijte `atlas.layer.ImageLayer` třídu k překrytí nesledovaných imagí. T
 Mapy Azure i Google můžou na mapě importovat a vykreslovat data KML, KMZ a GeoRSS. Azure Maps podporuje také GPX, GML, prostorové Web-Mapping soubory CSV, služby (WMS), služby pro Web-Mapping dlaždici (WMTS) a služby webových funkcí (WFS). Azure Maps přečte soubory místně do paměti a ve většině případů může zvládnout mnohem větší soubory KML. 
 
 #### <a name="before-google-maps"></a>Před: Google Maps
-
 
 ```javascript
 <!DOCTYPE html>
@@ -1661,9 +1640,7 @@ V Azure Maps je pro informating data ve webové sadě v angličtině hlavní for
 </html>
 ```
 
-
 ![Azure Maps KML](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
-
 
 **Další zdroje informací:**
 
@@ -1675,18 +1652,18 @@ V Azure Maps je pro informating data ve webové sadě v angličtině hlavní for
 
 Níže jsou uvedeny některé další ukázky kódu související s migrací Google Maps:
 
-- [Nástroje pro kreslení](map-add-drawing-toolbar.md)
-- [Omezení mapování na dva posouvání prstů](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
-- [Omezit přiblížení rolovacího kolečka](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
-- [Vytvoření celoobrazovkového ovládacího prvku](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
+* [Nástroje pro kreslení](map-add-drawing-toolbar.md)
+* [Omezení mapování na dva posouvání prstů](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
+* [Omezit přiblížení rolovacího kolečka](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
+* [Vytvoření celoobrazovkového ovládacího prvku](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
 
 **Orgány**
 
-- [Použití modulu služby Azure Maps Services](how-to-use-services-module.md)
-- [Hledání bodů zájmu](map-search-location.md)
-- [Získat informace ze souřadnice (zpětného zobrazení kódu)](map-get-information-from-coordinate.md)
-- [Zobrazení pokynů pro trasu z A do B](map-route.md)
-- [Vyhledat automatické návrhy pomocí uživatelského rozhraní JQuery](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
+* [Použití modulu služby Azure Maps Services](how-to-use-services-module.md)
+* [Hledání bodů zájmu](map-search-location.md)
+* [Získat informace ze souřadnice (zpětného zobrazení kódu)](map-get-information-from-coordinate.md)
+* [Zobrazení pokynů pro trasu z A do B](map-route.md)
+* [Vyhledat automatické návrhy pomocí uživatelského rozhraní JQuery](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Mapování tříd webu Google Maps V3 na Azure Maps Web SDK
 
@@ -1741,18 +1718,13 @@ Knihovny přidávají k mapě další funkce. Mnohé z těchto knihoven jsou v z
 | Knihovna geometrie      | [Atlas. Math](/javascript/api/azure-maps-control/atlas.math)   |
 | Knihovna vizualizace | [Vrstva tepelné mapy](map-add-heat-map-layer.md) |
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nenašly se žádné prostředky, které by se vyčistily.
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Maps Web SDK:
+Další informace o migraci na Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Jak používat mapový ovládací prvek](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Jak používat modul nástrojů pro kreslení](set-drawing-options.md)
-
-> [!div class="nextstepaction"]
-> [Jak používat modul služeb](how-to-use-services-module.md)
-
-> [!div class="nextstepaction"]
-> [Jak používat modul pro prostorové vstupně-výstupní operace](how-to-use-spatial-io-module.md)
+> [Migrace webové služby](migrate-from-google-maps-web-services.md)

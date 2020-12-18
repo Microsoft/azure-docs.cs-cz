@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903611"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678848"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
 Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat optimalizuje datové operace pro dotazování a vykreslování. V současné době existují dva typy zdrojů dat:
 
-- Geografická **zdrojová** data: Správa nezpracovaných dat umístění ve formátu geografických JSON místně. Vhodný pro malé až střední datové sady (nahoru z stovek tisíců tvarů).
-- **Zdroj vektorové dlaždice**: načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
+* Geografická **zdrojová** data: Správa nezpracovaných dat umístění ve formátu geografických JSON místně. Vhodný pro malé až střední datové sady (nahoru z stovek tisíců tvarů).
+* **Zdroj vektorové dlaždice**: načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
 
 ## <a name="geojson-data-source"></a>Zdroj dat pro injson
 
@@ -50,8 +50,8 @@ Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.source
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 Následující kód ukazuje různé způsoby, jak mohou být data typu injson přidána do `DataSource` .
@@ -60,13 +60,13 @@ Následující kód ukazuje různé způsoby, jak mohou být data typu injson p�
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,16 +76,16 @@ dataSource.setShapes(geoJsonData);
 
 Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu **PBF** . Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
 
- - Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. V takovém případě se používá menší šířka pásma. Znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
- - Vzhledem k tomu, že se na klientovi vykreslují vektorové dlaždice, přizpůsobuje se rozlišení zařízení, ve kterém se zobrazují. Výsledkem je, že vykreslené mapy jsou lépe definovány a s jasnými popisky.
- - Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože nový styl lze použít na straně klienta. Naopak změna stylu vrstvy rastrového dlaždice obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
- - Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je pro přípravu dat vyžadováno méně zpracování na straně serveru. V důsledku toho je možné novější data zpřístupnit rychleji.
+* Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. V takovém případě se používá menší šířka pásma. Znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
+* Vzhledem k tomu, že se na klientovi vykreslují vektorové dlaždice, přizpůsobuje se rozlišení zařízení, ve kterém se zobrazují. Výsledkem je, že vykreslené mapy jsou lépe definovány a s jasnými popisky.
+* Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože nový styl lze použít na straně klienta. Naopak změna stylu vrstvy rastrového dlaždice obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
+* Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je pro přípravu dat vyžadováno méně zpracování na straně serveru. V důsledku toho je možné novější data zpřístupnit rychleji.
 
 Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard. Azure Maps poskytuje následující služby vektorových dlaždic jako součást platformy:
 
-- [documentation](/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
-- [documentation](/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
-- [documentation](/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
+- [](/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
+- [](/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
+- [](/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
 - Azure Maps Creator (Preview) umožňuje také vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](/rest/api/maps/renderv2/getmaptilepreview) .
 
 > [!TIP]
@@ -95,14 +95,14 @@ Chcete-li zobrazit data ze zdroje vektorové dlaždice na mapě, připojte zdroj
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -133,7 +133,7 @@ map.layers.add(flowLayer, 'labels');
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vrstva čáry vektorové dlaždice" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-V CodePen () na se podívejte na <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>dlaždici Azure Maps čáry dlaždice pera Vector</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+V CodePen () na se podívejte na <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>dlaždici Azure Maps čáry dlaždice pera Vector</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 <br/>
@@ -142,30 +142,30 @@ V CodePen () na se podívejte na <a href='https://codepen.io/azuremaps/pen/wvMXJ
 
 Data se vykreslují na mapě pomocí vrstev vykreslování. Na jeden zdroj dat může odkazovat jedna nebo více vrstev vykreslování. Následující vrstvy vykreslování vyžadují zdroj dat:
 
-- [Bublinová vrstva](map-add-bubble-layer.md) – vykreslí data bodu jako kružnice škálované na mapě.
-- [Symbolová vrstva](map-add-pin.md) – vykreslí data bodu jako ikony nebo text.
-- [Vrstva Heat mapy](map-add-heat-map-layer.md) – vykreslí data bodu jako Heat mapu hustoty.
-- [Spojnicová vrstva](map-add-shape.md) – vykreslí čáru a nebo vykreslí obrys mnohoúhelníků. 
-- [Mnohoúhelníková vrstva](map-add-shape.md) – vyplní oblast mnohoúhelníku plnou barvou nebo vzorkem obrázku.
+* [Bublinová vrstva](map-add-bubble-layer.md) – vykreslí data bodu jako kružnice škálované na mapě.
+* [Symbolová vrstva](map-add-pin.md) – vykreslí data bodu jako ikony nebo text.
+* [Vrstva Heat mapy](map-add-heat-map-layer.md) – vykreslí data bodu jako Heat mapu hustoty.
+* [Spojnicová vrstva](map-add-shape.md) – vykreslí čáru a nebo vykreslí obrys mnohoúhelníků. 
+* [Mnohoúhelníková vrstva](map-add-shape.md) – vyplní oblast mnohoúhelníku plnou barvou nebo vzorkem obrázku.
 
 Následující kód ukazuje, jak vytvořit zdroj dat, přidat ho do mapy a připojit ho k bublinové vrstvě. A pak importujte data bodu geografického JSON ze vzdáleného umístění do zdroje dat. 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 Existují další vrstvy vykreslování, které se k těmto zdrojům dat nepřipojují, ale přímo načítají data pro vykreslování. 
 
-- [Vrstva obrázku](map-add-image-layer.md) – překrývá jeden obrázek nad mapou a vytvoří vazby jeho rohů k sadě zadaných souřadnic.
-- [Vrstva dlaždice](map-add-tile-layer.md) – nadmnožinou vrstvu rastrového dlaždice nad mapou.
+* [Vrstva obrázku](map-add-image-layer.md) – překrývá jeden obrázek nad mapou a vytvoří vazby jeho rohů k sadě zadaných souřadnic.
+* [Vrstva dlaždice](map-add-tile-layer.md) – nadmnožinou vrstvu rastrového dlaždice nad mapou.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Jeden zdroj dat s více vrstvami
 
@@ -179,34 +179,40 @@ V Azure Maps je vše, co potřebujete, jediným mnohoúhelníkem ve zdroji dat, 
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> Při přidávání vrstev do mapy pomocí `map.layers.add` funkce může být ID nebo instance existující vrstvy předána jako druhý parametr. To by znamenalo, že mapa pro vložení nové vrstvy se přidá pod existující vrstvu. Kromě předání v ID vrstvy tato metoda také podporuje následující hodnoty.
+>
+> * `"labels"` -Vloží novou vrstvu pod mapovou jmenovku vrstvy.
+> * `"transit"` – Vloží novou vrstvu pod vrstvu mapy a přenosové vrstvy.
 
 ## <a name="next-steps"></a>Další kroky
 

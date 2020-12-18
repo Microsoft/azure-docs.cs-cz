@@ -12,15 +12,15 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5bad2293078711456ff06d998c43b87ecc1c9b76
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674256"
+ms.locfileid: "97680042"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Pythonu k dotazování databáze ve Azure SQL Database nebo spravované instanci SQL Azure
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 V tomto rychlém startu pomocí Pythonu se připojíte k Azure SQL Database nebo spravované instanci SQL Azure a pro dotazování dat použijete příkazy T-SQL.
 
@@ -61,7 +61,7 @@ Další prozkoumání Pythonu a databáze v Azure SQL Database najdete v tématu
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL**  nebo **spravované instance SQL** .
 

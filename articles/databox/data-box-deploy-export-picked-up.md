@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359026"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680845"
 ---
-# <a name="tutorial-return-azure-data-box-preview"></a>Kurz: návratová Azure Data Box (Preview)
+# <a name="tutorial-return-azure-data-box"></a>Kurz: návrat Azure Data Box
 
 V tomto kurzu se dozvíte, jak vrátit Azure Data Box a když se zařízení obdrží v datech Azure, vymaže data.
 
@@ -27,8 +27,6 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Vymazání dat z Data Boxu
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +43,7 @@ Další kroky závisí na tom, kam zařízení vracíte.
 
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
-Zajistěte, aby byla kopie dat ze zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, kam zařízení dodáváte.
+Zajistěte, aby byla kopie dat ze zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, kam zařízení odesíláte.
 
 ## <a name="us-canada-europe"></a>[USA, Kanada, Evropa](#tab/in-us-canada-europe)
 
@@ -57,8 +55,8 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 4. Pokud zařízení vracíte, domluvte si vyzvednutí s UPS. Naplánování vyzvednutí:
 
    - Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
-   - Během volání uveďte sledovací číslo zpětné zásilky, jak je uvedené na displeji s elektronickým inkoustem nebo na vytištěném štítku. Pokud sledovací číslo nezařadíte do uvozovek, bude zdroj napájení během vyzvednutí vyžadovat dodatečné poplatky.
-   - Pokud se při plánování výdeje objeví nějaké problémy nebo budete požádáni o platbu dalších poplatků, kontaktujte Azure Data Box operace. Odešlete e-mail na adresu [adbops@microsoft.com](mailto:adbops@microsoft.com).
+   - Během volání uveďte sledovací číslo zpětné zásilky, jak je uvedené na displeji s elektronickým inkoustem nebo na vytištěném štítku. Pokud sledovací číslo neuvedete, bude společnost UPS při vyzvednutí vyžadovat další poplatek.
+   - Pokud se během plánování vyzvednutí objeví nějaké potíže nebo jste vyzváni k uhrazení dalších poplatků, kontaktujte provozní tým služby Azure Data Box. Odešlete e-mail na adresu [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     Místo naplánování vyzvednutí můžete také Data Box dovézt na nejbližší sběrné místo.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
@@ -67,7 +65,7 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
 
-1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
+1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
@@ -75,7 +73,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 
 ## <a name="japan"></a>[Japonsko](#tab/in-japan)
 
-1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
+1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Vypněte zařízení a odpojte kabely.
 3. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
 4. Vyplňte název vaší společnosti a adresu do nákladního listu do části informací o odesílateli.
@@ -105,7 +103,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
-1. Ponechat původní pole použité k odeslání zařízení pro odeslání vratky.
+1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení přípravy k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení. 
@@ -202,7 +200,7 @@ Jakmile zařízení dosáhne datacentra Azure, Data Box vymaže data na svých d
 V tomto kurzu jste se seznámili s tématy, jako například:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Vymazání dat z Data Boxu

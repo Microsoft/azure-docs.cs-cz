@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660835"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680628"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Kurz: kopírování dat z Azure Data Box přes systém souborů NFS (Preview)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Kurz: kopírování dat z Azure Data Box přes systém souborů NFS
 
 V tomto kurzu se dozvíte, jak se připojit ke svému místnímu datovému serveru pomocí systému souborů NFS a kopírovat z něj data z místního webového uživatelského rozhraní Data Box. Data ve vašem Data Box jsou exportována z účtu Azure Storage.
 
@@ -26,8 +26,6 @@ V tomto kurzu se naučíte:
 > * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat z Data Boxu
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,11 +77,11 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Teď můžete začít kopírovat data. Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
+ Teď můžete začít kopírovat data. Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Některé alternativy dostupné v systému Linux jsou [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [úlohách](https://www.cis.upenn.edu/~bcpierce/unison/)nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
 Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
+Pokud používáte `rsync` možnost kopírování s více vlákny, postupujte podle těchto pokynů:
 
 * V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
@@ -91,7 +89,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 
     `sudo apt-get install nfs-utils`
 
-* Nainstalujte **rsync** a **Parallel** (liší se v závislosti na distribuované verzi systému Linux).
+* Instalace `rsync` a **paralelní** (liší se v závislosti na distribuované verzi systému Linux).
 
     `sudo apt-get install rsync`
    

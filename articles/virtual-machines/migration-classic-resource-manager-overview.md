@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500406"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680210"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager v systému Linux
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500406"
 
 
 
-Tento článek popisuje, jak migrovat prostředky infrastruktury jako služby (IaaS) z modelu nasazení Classic na Správce prostředků a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které ve vašem předplatném existují, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. 
+Tento článek poskytuje přehled o nástroji pro migraci, který je podporovaný platformou, jak migrovat prostředky z Azure Service Manager (ASM), označované jako klasické modely nasazení Správce prostředků (ARM), a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které se ve vašem předplatném používají, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. 
 
 ## <a name="goal-for-migration"></a>Cíl migrace
 Správce prostředků umožňuje nasazení složitých aplikací prostřednictvím šablon, konfiguraci virtuálních počítačů pomocí rozšíření virtuálních počítačů a správu přístupu a označování v podniku. Azure Resource Manager zahrnuje škálovatelné paralelní nasazení virtuálních počítačů do skupin dostupnosti. Nový model nasazení také poskytuje životní cyklus pro výpočetní prostředky, síť a úložiště nezávisle. Nakonec se zaměřte na povolení zabezpečení ve výchozím nastavení s vynucením virtuálních počítačů ve virtuální síti.
@@ -37,7 +37,7 @@ Téměř všechny funkce z modelu nasazení Classic jsou podporovány pro výpo�
 * Účty úložiště
 * Virtuální sítě
 * Brány VPN Gateway
-* Brány Express Route _(ve stejném předplatném jako Virtual Network)_
+* [Brány Express Route](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(ve stejném předplatném jako Virtual Network)_
 * Network Security Groups (Skupiny zabezpečení sítě)
 * Směrovací tabulky
 * Vyhrazené IP adresy
@@ -88,7 +88,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.

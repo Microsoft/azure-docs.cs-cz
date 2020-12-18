@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444454"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503790"
 ---
 # <a name="cancel-your-azure-subscription"></a>Zrušení předplatného Azure
 
@@ -30,6 +30,17 @@ I když se to nevyžaduje, Microsoft *doporučuje*, abyste před zrušením vaš
 
 Pokud zrušíte placený plán podpory Azure, bude se vám účtovat zbývající část období předplatného. Další informace najdete v článku [Plány podpory Azure](https://azure.microsoft.com/support/plans/).
 
+## <a name="who-can-cancel-a-subscription"></a>Kdo může předplatné zrušit?
+
+Následující tabulka popisuje oprávnění nutná ke zrušení předplatného.
+
+|Typ předplatného     |Kdo může zrušit  |
+|---------|---------|
+|Předplatná vytvořená při registraci Azure prostřednictvím webu Azure Když si například zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo jste [předplatitelem sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Správce účtu a vlastníci předplatného  |
+|[Smlouva Microsoft Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/) a [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Vlastník účtu a vlastníci předplatného       |
+|[Plán Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) a [Plán Azure pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Vlastníci předplatného      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Zrušení předplatného na webu Azure Portal
 
 1. Vyberte své předplatné na [stránce Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
@@ -41,15 +52,13 @@ Pokud zrušíte placený plán podpory Azure, bude se vám účtovat zbývajíc�
 > [!NOTE]
 > Partneři můžou předplatné pozastavit nebo zrušit, pokud je o to požádá zákazník nebo v případě nezaplacení nebo podvodu. Další informace najdete v části věnované [pozastavení nebo zrušení předplatného](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
 
-## <a name="who-can-cancel-a-subscription"></a>Kdo může předplatné zrušit?
+## <a name="cancel-a-support-plan"></a>Zrušení plánu podpory
 
-Následující tabulka popisuje oprávnění nutná ke zrušení předplatného.
+Pokud jste plán podpory koupili prostřednictvím webu Azure nebo Azure Portal nebo pokud ho máte v rámci Smlouvy se zákazníkem Microsoftu, můžete tento plán podpory zrušit. Pokud jste si plán podpory koupili prostřednictvím partnera nebo zástupce Microsoftu, požádejte je o pomoc. 
 
-|Typ předplatného     |Kdo může zrušit  |
-|---------|---------|
-|Předplatná vytvořená při registraci Azure prostřednictvím webu Azure Když si například zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo jste [předplatitelem sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Správce účtu a vlastníci předplatného  |
-|[Smlouva Microsoft Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/) a [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Vlastník účtu a vlastníci předplatného       |
-|[Plán Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) a [Plán Azure pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Vlastníci předplatného      |
+1. Na webu Azure Portal přejděte na **Azure Cost Management + Billing**.
+1. V části **Fakturace** vyberte **Pravidelné poplatky**.
+1. Na pravé straně u řádkové položky pro požadovaný plán podpory vyberte tři tečky ( **...** ) a potom vyberte **Vypnout automatické prodlužování platnosti**.
 
 ## <a name="what-happens-after-subscription-cancellation"></a>Co se stane po zrušení předplatného?
 

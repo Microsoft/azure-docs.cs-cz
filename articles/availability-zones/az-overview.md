@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182729"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678543"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -94,10 +94,10 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Úložiště účtů | API Management | Azure API for FHIR |
 > | Application Gateway | App Configuration | Azure Analysis Services |
 > | Azure Backup | App Service | Služba Azure Blockchain |
-> | Azure Cosmos DB | Automation | Azure Blueprints |
+> | Azure Cosmos DB | Automatizace | Azure Blueprint |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Rezervované HSM Azure |
-> | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
+> | Databáze Azure SQL | Azure Cache for Redis | Azure Dev Spaces |
 > | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
 > | Cloud Services: Av2-Series | Průzkumník dat Azure | Azure Lab Services |
 > | Cloud Services: Dv2-Series | Azure Data Share | Azure NetApp Files |
@@ -107,7 +107,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Cloud Services: Vyhrazená IP adresa | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | Disk Storage | Azure DDoS Protection | Cloud Services: Řada G |
 > | Event Hubs | Azure DevTest Labs | Cloud Services: řada H-Series |
-> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
+> | Key Vault | Brána Azure Firewall | Cognitive Services: Custom Vision |
 > | Nástroj pro vyrovnávání zatížení | Azure Firewall Manager | Cognitive Services: rozpoznávání mluvčího |
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
@@ -181,6 +181,7 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Začínáme Azure cache pro Zóny dostupnosti Redis](https://aka.ms/redis/az/getstarted)
 - [Vytvoření instance Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)
 - [Vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti](../aks/availability-zones.md)
+- [Povolit redundanci zóny v Azure Container Registry](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>Další kroky
 
