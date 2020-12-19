@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482712"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97692005"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -53,7 +53,7 @@ Aby bylo možné získat přístup k `DeviceManager` instanci callAgent, je tře
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > V tuto chvíli nemůže být k dispozici více než jeden odchozí datový proud v místním videu.
 Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních fotoaparátů pomocí `getCameraList` rozhraní deviceManager API.
 Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v rámci `localVideoStream` pole do `call` metody.
-Po připojení se vaše volání automaticky spustí odeslání streamu videa od vybrané kamery k ostatním účastníkům.
+Jakmile se vaše volání připojí, automaticky začne odesílat Stream videa od vybrané kamery k ostatním účastníkům.
+
+To platí také pro volání možnosti videa. přijmout () a CallAgent. Join ().
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
+### <a name="receiving-an-incoming-call"></a>Přijetí příchozího volání
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
 ### <a name="join-a-group-call"></a>Připojit se k volání skupiny
 Chcete-li spustit nové volání skupiny nebo se připojit k průběžnému volání skupiny, použijte metodu JOIN a předejte objekt s `groupId` vlastností. Hodnota musí být identifikátor GUID.
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>Připojit se k týmům na schůzce
+Pokud se chcete připojit k týmu, použijte metodu JOIN a předejte odkaz na schůzku nebo souřadnice schůzky.
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>Správa volání
@@ -162,6 +192,11 @@ const callEndReason = call.callEndReason;
 * Chcete-li zjistit, zda je aktuální volání příchozím voláním, zkontrolujte `isIncoming` vlastnost, kterou vrátí `Boolean` .
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* Chcete-li zkontrolovat, zda je hovor zaznamenáván, zkontrolujte `isRecordingActive` vlastnost, kterou vrátí `Boolean` .
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  Pokud chcete zkontrolovat, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost a vrátí se `Boolean` .
@@ -234,7 +269,7 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
-### <a name="faq"></a>Časté otázky
+### <a name="faq"></a>Nejčastější dotazy
  * Pokud dojde ke ztrátě připojení k síti, změní se stav volání na odpojeno?
     * Ano, pokud dojde ke ztrátě síťového připojení po dobu delší než 2 minuty, volání se převede na odpojený stav a volání skončí.
 
@@ -415,7 +450,7 @@ Později můžete režim škálování aktualizovat vyvoláním `updateScalingMo
 ```js
 view.updateScalingMode('Crop')
 ```
-### <a name="faq"></a>Časté otázky
+### <a name="faq"></a>Nejčastější dotazy
 * Když vzdálený účastník ztratí své síťové připojení, změní se jeho stav na odpojeno?
     * Ano, pokud vzdálený účastník ztratí své síťové připojení po dobu delší než 2 minuty, jejich stav se převede na odpojeno a odebere se z tohoto volání.
 ## <a name="device-management"></a>Správa zařízení
