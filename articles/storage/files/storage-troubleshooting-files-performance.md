@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512065"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724659"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -46,7 +46,7 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
 ### <a name="solution"></a>Řešení
 
 - Pokud používáte standardní sdílení souborů, povolte ve svém účtu úložiště [velké sdílené složky](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) . Velké sdílené složky podporují až 10 000 vstupně-výstupních operací na sdílenou složku.
-- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v části porozumění zřizování pro sdílené složky prémiových souborů v [příručce pro plánování souborů Azure](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Pokud používáte prémiovou sdílenou složku, zvyšte velikost zřízené sdílené složky a zvyšte limit IOPS. Další informace najdete v tématu [Principy zřizování pro sdílené složky Premium](./understanding-billing.md#provisioned-billing).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Příčina 2: silná úloha pro metadata nebo obor názvů
 
@@ -264,7 +264,7 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
    Metriky odchozího přenosu dat, příchozího přenosu dat a transakcí se vyjadřují za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. Pokud máte například zřízený výstup 90 &nbsp; mebibytes za sekundu (MIB/s) a chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného odchozího přenosu, vyberte následující parametry výstrahy: 
    - Pro **mezní hodnotu**: *75497472* 
-   - For **Operator**– operátor *větší než nebo rovno*
+   - For – operátor *větší než nebo rovno*
    - Pro **typ agregace**: *průměr*
    
    V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete také vybrat hodnoty pro **členitost agregace** a **četnost vyhodnocení**. Pokud třeba chcete, aby se vaše výstraha zobrazila na průměrném počtu příchozích dat za dobu 1 hodiny, a chcete, aby se pravidlo upozornění spouštělo každou hodinu, vyberte následující:
@@ -285,7 +285,7 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)  
 - [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Nejčastější dotazy ke službě Azure Files](storage-files-faq.md)

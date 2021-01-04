@@ -3,16 +3,14 @@ title: Zpracování velkých zpráv pomocí bloků dat
 description: Naučte se zpracovávat velké velikosti zpráv pomocí bloků dat v automatizovaných úlohách a pracovních postupech, které vytvoříte pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656763"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695869"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
 
@@ -40,8 +38,57 @@ Služby, které komunikují s Logic Apps, můžou mít vlastní omezení velikos
 
 Pro konektory, které podporují dělení na bloky dat, je podkladový protokol pro zpracování dat neviditelný pro koncové uživatele. Ale ne všechny konektory podporují vytváření bloků dat, takže tyto konektory generují chyby za běhu, když příchozí zprávy překračují omezení velikosti konektorů.
 
-> [!NOTE]
-> V případě akcí, které používají bloky dat, nelze předat text triggeru ani použít výrazy jako `@triggerBody()?['Content']` v těchto akcích. Místo toho můžete pro obsah souboru text nebo JSON zkusit použít [  akci](../logic-apps/logic-apps-perform-data-operations.md#compose-action) vytvořit nebo [vytvořit proměnnou](../logic-apps/logic-apps-create-variables-store-values.md) , která tento obsah zpracuje. Pokud tělo aktivační události obsahuje další typy obsahu, jako jsou třeba mediální soubory, musíte provést další kroky, abyste mohli tento obsah zpracovat.
+
+Pro akce, které podporují a jsou povolené pro práci s bloky dat, nemůžete použít aktivační orgány, proměnné a výrazy, jako například, `@triggerBody()?['Content']` protože použití některého z těchto vstupů brání v výskytu operace s bloky dat. Místo toho použijte akci [ **vytvořit**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Konkrétně je nutné vytvořit `body` pole pomocí akce **psaní** k uložení výstupu dat z textu triggeru, proměnné, výrazu a tak dále, například:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Potom pro odkazování na data použijte v akci dělení na data `@body('Compose')` .
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 

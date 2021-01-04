@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: vytvoření účtu Azure dosah v Azure Portal (Preview)'
 description: V tomto rychlém startu se dozvíte, jak vytvořit účet Azure dosah a nakonfigurovat oprávnění, abyste ho mohli začít používat.
-author: hophanms
-ms.author: hophan
+author: nayenama
+ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400382"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693381"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "97400382"
 
 V tomto rychlém startu vytvoříte účet Azure dosah.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

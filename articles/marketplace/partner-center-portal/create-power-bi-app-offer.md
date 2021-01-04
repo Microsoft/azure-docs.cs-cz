@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131492"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693607"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikací Power BI
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby** .
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby**.
 
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-power-bi-app.png)
 
@@ -36,13 +36,13 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit** .
+- ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 - Po zvolení možnost **vytvořit** se alias nabídky nedá změnit.
@@ -81,7 +81,7 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, musíte j
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Potenciální zákazníci z komerční nabídky na webu Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Potenciální zákazníci z nabídky komerčního marketplace](commercial-marketplace-get-customer-leads.md)
 - [Běžné otázky týkající se správy potenciálních zákazníků](../lead-management-faq.md#common-questions-about-lead-management)
 - [Řešení chyb konfigurace potenciálních zákazníků](../lead-management-faq.md#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
@@ -97,7 +97,7 @@ Tato stránka vám umožní definovat kategorie a odvětví používané k sesku
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -109,9 +109,7 @@ Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí 
 
 #### <a name="terms-and-conditions"></a>podmínky a ujednání
 
-Pokud chcete zadat vlastní podmínky a ujednání, zadejte v poli **podmínky a ujednání** až 10 000 znaků. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte jeden webový odkaz na místo, kde se dají najít. Zobrazí se zákazníkům jako aktivní odkaz.
-
-Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+Pokud chcete zadat vlastní podmínky a ujednání, zadejte v poli **podmínky a ujednání** až 10 000 znaků. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
 Než budete pokračovat k další části seznamu nabídek, vyberte **Uložit koncept** .
 
@@ -143,10 +141,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 7. Zásady ochrany osobních údajů
 8. Název nabídky
 9. Shrnutí
-10. Description
+10. Popis
 11. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -160,7 +158,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -186,7 +184,7 @@ Zadejte webovou adresu do zásad ochrany osobních údajů vaší organizace. Zo
 
 ### <a name="contact-information"></a>Kontaktní informace
 
-Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
+Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
 
 - Kontakt podpory (povinné): pro obecné dotazy týkající se podpory.
 - Technický kontakt (povinné): pro technické dotazy a problémy certifikace.
@@ -248,7 +246,7 @@ Volitelně můžete přidat pokyny (až 3 000 znaků), které vám pomohou týmu
 
 Po dokončení všech požadovaných částí nabídky můžete odeslat nabídku pro kontrolu a publikování.
 
-V pravém horním rohu portálu vyberte **zkontrolovat a publikovat** .
+V pravém horním rohu portálu vyberte **zkontrolovat a publikovat**.
 
 Na stránce pro kontrolu můžete:
 
@@ -258,6 +256,6 @@ Na stránce pro kontrolu můžete:
   - **Complete** – oddíl obsahuje všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky dokončené.
 - Poskytněte pokyny pro testování certifikačního týmu, aby se zajistilo správné testování vaší aplikace. Poskytněte také všechny doplňkové poznámky, které jsou užitečné pro porozumění vaší nabídce.
 
-Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat** .
+Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
 
-Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live** .
+Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.

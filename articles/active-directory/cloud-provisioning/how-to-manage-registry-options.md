@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371102"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694145"
 ---
 # <a name="manage-agent-registry-options"></a>Spravovat možnosti registru agenta
 
@@ -63,6 +63,30 @@ K zapnutí referenčního dohledávání použijte následující postup:
     > ![Dohledávání odkazů](media/how-to-manage-registry-options/referral-chasing.png)
 1. Restartujte službu Azure AD Connect Provisioning z konzoly *služby* .
 1. Pokud jste nasadili více zřizovacích agentů, použijte tuto změnu v registru na všechny agenty pro zajištění konzistence.
+
+## <a name="skip-gmsa-configuration"></a>Přeskočit konfiguraci GMSA
+U agenta verze 1.1.281.0 + ve výchozím nastavení se při spuštění Průvodce konfigurací agenta zobrazí výzva k nastavení [skupinový účet spravované služby (gMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). Instalační program Průvodce GMSA se používá za běhu pro všechny operace synchronizace a zřizování. 
+
+Pokud provádíte upgrade z předchozí verze agenta a nastavili jste vlastní účet služby s delegovanými oprávněními na úrovni organizační jednotky, které jsou specifické pro vaši topologii služby Active Directory, můžete pro tuto změnu přeskočit nebo odložit GMSA konfiguraci a plán. 
+
+> [!NOTE]
+> Tento návod se vztahuje konkrétně na zákazníky, kteří nakonfigurovali příchozí zřizování HR (Workday/SuccessFactors) s verzemi agentů před 1.1.281.0 a které nastavily vlastní účet služby pro operace agenta. V dlouhodobém běhu doporučujeme přepnout na GMSA jako osvědčený postup.  
+
+V tomto scénáři můžete upgradovat binární soubory agenta a přeskočit konfiguraci GMSA pomocí následujících kroků: 
+
+1. Přihlaste se jako správce na Windows serveru, na kterém běží agent zřizování Azure AD Connect.
+1. Spusťte instalační program agenta a nainstalujte nové binární soubory agenta. Zavřete Průvodce konfigurací agenta, který se po úspěšném dokončení instalace automaticky otevře. 
+1. Použití položky nabídky *Spustit* k otevření editoru registru (regedit.exe) 
+1. Vyhledejte klíčovou složku **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Klikněte pravým tlačítkem a vyberte "New-> Value DWORD"
+1. Zadejte název: `UseCredentials`
+1. Dvakrát klikněte na **název hodnoty** a zadejte údaj hodnoty `1` .  
+    > [!div class="mx-imgBorder"]
+    > ![Použít přihlašovací údaje](media/how-to-manage-registry-options/use-credentials.png)
+1. Restartujte službu Azure AD Connect Provisioning z konzoly *služby* .
+1. Pokud jste nasadili více zřizovacích agentů, použijte tuto změnu v registru na všechny agenty pro zajištění konzistence.
+1. Na ploše se zkráceným vyjmutím spusťte Průvodce konfigurací agenta. Průvodce přeskočí konfiguraci GMSA. 
+
 
 > [!NOTE]
 > Možnosti registru si můžete ověřit tak, že povolíte [podrobné protokolování](how-to-troubleshoot.md#log-files). Protokoly generované během spuštění agenta zobrazí konfigurační hodnoty vydané z registru. 

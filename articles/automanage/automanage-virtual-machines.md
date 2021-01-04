@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182848"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695783"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -37,7 +37,7 @@ Azure automanage také automaticky monitoruje při zjištění posunu a oprav. T
 A konečně prostředí je neuvěřitelně jednoduché.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 
@@ -52,7 +52,7 @@ Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávaj
 > [!NOTE]
 > Pokud chcete použít automanage na virtuálním počítači, který je připojený k pracovnímu prostoru v jiném předplatném, musíte mít oprávnění popsaná výše v každém předplatném.
 
-Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v následujících oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA.
+Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v těchto oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA, Japonsko – východ.
 
 ## <a name="participating-services"></a>Zúčastněné služby
 
@@ -89,7 +89,7 @@ Důvodem pro tento rozdíl je, že některé služby jsou doporučené na zákla
 
 ### <a name="customizing-a-configuration-profile-using-preferences"></a>Přizpůsobení konfiguračního profilu pomocí předvoleb
 
-Kromě standardních služeb, na které vás připravujeme, vám umožníme nakonfigurovat určitou podmnožinu předvoleb. Tyto preference jsou povolené v rámci různých možností konfigurace, které neporušily osvědčené postupy. V případě Azure Backup vám například umožní definovat četnost zálohování a den v týdnu, ve kterém se vyskytuje. Nebudeme ale *not* moct úplně vypnout Azure Backup.
+Kromě standardních služeb, na které vás připravujeme, vám umožníme nakonfigurovat určitou podmnožinu předvoleb. Tyto preference jsou povolené v rámci různých možností konfigurace, které neporušily osvědčené postupy. V případě Azure Backup vám například umožní definovat četnost zálohování a den v týdnu, ve kterém se vyskytuje. Nebudeme ale  moct úplně vypnout Azure Backup.
 
 > [!NOTE]
 > V konfiguračním profilu pro vývoj/testování se virtuální počítač vůbec nezálohuje.

@@ -2,21 +2,21 @@
 title: Azure Key Vault přesunu trezoru do jiného předplatného | Microsoft Docs
 description: Pokyny k přesunutí trezoru klíčů do jiného předplatného.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289519"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724744"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -29,11 +29,16 @@ ms.locfileid: "93289519"
 > Ujistěte se, že rozumíte dopadu této změny, a před tím, než se rozhodnete přesunout Trezor klíčů k novému předplatnému, pečlivě postupujte podle pokynů v tomto článku.
 > Pokud používáte identity spravované služby (MSI), přečtěte si pokyny po přesunutí na konci dokumentu. 
 
-Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klienta Azure Active Directory pro předplatné, ve kterém je vytvořený. Zároveň jsou k tomuto ID tenanta vázány i všechny položky zásad přístupu. Pokud přesunete předplatné Azure z tenanta A na tenanta B, stávající trezory klíčů budou pro objekty služby (uživatelé a aplikace) v tenantovi B nepřístupné. Chcete-li tento problém vyřešit, je třeba provést následující kroky:
+[Azure Key Vault](overview.md) je automaticky svázán s výchozím ID klienta [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) pro předplatné, ve kterém je vytvořen. Pomocí této [příručky](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)můžete najít ID tenanta přidruženého k vašemu předplatnému. K tomuto ID tenanta se taky váže všechny položky zásad přístupu a přiřazení rolí.  Pokud přesunete předplatné Azure z tenanta A na tenanta B, stávající trezory klíčů budou pro objekty služby (uživatelé a aplikace) v tenantovi B nepřístupné. Chcete-li tento problém vyřešit, je třeba provést následující kroky:
 
 * Změňte ID tenanta přidružené ke všem stávajícím trezorům klíčů v předplatném na tenanta B.
 * Odeberte všechny stávající položky zásad přístupu.
 * Přidejte nové položky zásad přístupu přidružené k tenantovi B.
+
+Další informace o Azure Key Vault a Azure Active Directory najdete v tématu
+- [Informace o službě Azure Key Vault](overview.md)
+- [Co je Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Jak zjistit ID tenanta](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
 
 ## <a name="limitations"></a>Omezení
 
@@ -42,40 +47,31 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 Některé objekty služby (uživatelé a aplikace) jsou vázány na konkrétního tenanta. Pokud přesunete Trezor klíčů do předplatného jiného tenanta, může se stát, že nebudete moct obnovit přístup k určitému instančnímu objektu. Ujistěte se, že v tenantovi existují všechny základní instanční objekty, u kterých přesouváte Trezor klíčů.
 
-## <a name="design-considerations"></a>Na co dát pozor při navrhování
+## <a name="prerequisites"></a>Požadavky
 
-Vaše organizace mohla implementovat Azure Policy s vynucením nebo vyloučením na úrovni předplatného. V předplatném může být jiná sada přiřazení zásad, kde váš Trezor klíčů momentálně existuje, a předplatné, na které přesouváte Trezor klíčů. Konflikt v požadavcích zásad má potenciál pro přerušení vašich aplikací.
+* Přístup na úrovni [přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů. Roli můžete přiřadit pomocí [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)nebo [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+* Přístup na úrovni [přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout. Roli můžete přiřadit pomocí [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)nebo [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+* Skupina prostředků v novém předplatném. Můžete ho vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli).
 
-### <a name="example"></a>Příklad
+Existující role můžete kontrolovat pomocí [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal), [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell), rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)nebo [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest).
 
-Máte aplikaci připojenou k trezoru klíčů, která vytváří certifikáty platné po dobu dvou let. Předplatné, ve kterém se pokoušíte přesunout Trezor klíčů, má přiřazení zásady, které blokuje vytváření certifikátů, které jsou platné po dobu delší než jeden rok. Po přesunutí trezoru klíčů na nové předplatné bude operace vytvoření certifikátu, který je platný po dobu dvou let, blokována přiřazením zásad Azure.
 
-### <a name="solution"></a>Řešení
+## <a name="moving-a-key-vault-to-a-new-subscription"></a>Přesun trezoru klíčů do nového předplatného
 
-Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédněte si přiřazení zásad pro vaše aktuální předplatné a předplatné, na které se přesouváte, a zajistěte, aby nedocházelo k žádnému neshodě.
-
-## <a name="prerequisites"></a>Předpoklady
-
-* Přístup na úrovni přispěvatele nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů.
-* Přístup na úrovni přispěvatele nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout.
-* Skupina prostředků v novém předplatném.
-
-## <a name="procedure"></a>Postup
-
-### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Přesun Key Vault k novému předplatnému v rámci stejného tenanta
-
-1. Přihlášení k webu Azure Portal
-2. Přejděte do trezoru klíčů.
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+2. Přejděte do [trezoru klíčů](overview.md) .
 3. Klikněte na kartu Přehled.
 4. Vyberte tlačítko přesunout.
 5. Z možností rozevíracího seznamu vyberte přesunout do jiného předplatného.
 6. Vyberte skupinu prostředků, do které chcete přesunout Trezor klíčů.
 7. Potvrzení upozornění týkající se přesunu prostředků
-8. Vyberte OK.
+8. Vyberete OK.
 
-### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Další kroky, pokud jste přesunuli Trezor klíčů do předplatného v novém tenantovi
+## <a name="additional-steps-when-subscription-is-in-a-new-tenant"></a>Další kroky, pokud je předplatné v novém tenantovi
 
-Pokud jste Trezor klíčů přesunuli do předplatného v novém tenantovi, budete muset ručně aktualizovat ID tenanta a odebrat staré zásady přístupu. Tady jsou kurzy pro tyto kroky v PowerShellu a Azure CLI. Pokud používáte PowerShell, možná budete muset spustit příkaz Clear-AzContext popsaný níže, který vám umožní zobrazit prostředky mimo aktuálně vybraný obor. 
+Pokud jste Trezor klíčů přesunuli do předplatného v novém tenantovi, budete muset ručně aktualizovat ID tenanta a odebrat staré zásady přístupu a přiřazení rolí. Tady jsou kurzy pro tyto kroky v PowerShellu a Azure CLI. Pokud používáte PowerShell, možná budete muset spustit příkaz Clear-AzContext popsaný níže, který vám umožní zobrazit prostředky mimo aktuálně vybraný obor. 
+
+### <a name="update-tenant-id-in-a-key-vault"></a>Aktualizace ID tenanta v trezoru klíčů
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -97,12 +93,37 @@ tenantId=$(az account show --query tenantId)                               # Get
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
+### <a name="update-access-policies-and-role-assignments"></a>Aktualizace zásad přístupu a přiřazení rolí
 
-Teď, když je váš trezor přidružený ke správnému ID tenanta a staré položky zásad přístupu se odeberou, nastavte nové položky zásad přístupu pomocí rutiny Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) nebo pomocí příkazu Azure CLI [AZ klíčů trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) .
+> [!NOTE]
+> Pokud Key Vault používá model oprávnění [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) . Musíte taky odebrat přiřazení rolí trezoru klíčů. Přiřazení rolí můžete odebrat pomocí webu [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)nebo [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell). 
 
-Pokud používáte spravovanou identitu pro prostředky Azure, budete ji muset aktualizovat taky na nového tenanta Azure Active Directory. Další informace o spravovaných identitách najdete v [přehledu spravované identity](../../active-directory/managed-identities-azure-resources/overview.md).
+Teď, když je váš trezor přidružený ke správnému ID tenanta a staré položky zásad přístupu nebo přiřazení rolí se odeberou, nastavte nové položky zásad přístupu nebo přiřazení rolí.
+
+Informace o přiřazování zásad najdete v tématech:
+- [Přiřazení zásady přístupu pomocí portálu](assign-access-policy-portal.md)
+- [Přiřazení zásady přístupu pomocí Azure CLI](assign-access-policy-cli.md)
+- [Přiřazení zásady přístupu pomocí PowerShellu](assign-access-policy-powershell.md)
+
+Pokud chcete přidat přiřazení rolí, přečtěte si:
+- [Přidání přiřazení role pomocí portálu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Přidání přiřazení role pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [Přidání přiřazení role pomocí PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+
+
+### <a name="update-managed-identities"></a>Aktualizace spravovaných identit
+
+Pokud přenášíte celé předplatné a pomocí spravované identity prostředků Azure, budete ho muset aktualizovat taky na nového tenanta Azure Active Directory. Další informace o spravovaných identitách najdete v [přehledu spravované identity](../../active-directory/managed-identities-azure-resources/overview.md).
 
 Pokud používáte spravovanou identitu, musíte aktualizovat taky identitu, protože stará identita už nebude ve správném tenantovi Azure Active Directory. Tento problém můžete vyřešit v následujících dokumentech. 
 
 * [Aktualizace MSI](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 * [Přenést předplatné do nového adresáře](../../role-based-access-control/transfer-subscription.md)
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md)
+- Koncepční informace, včetně toho, jak interpretovat protokoly Key Vault, najdete v tématu [Key Vault Logging](logging.md) .
+- [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)
+- [Zabezpečení trezoru klíčů](secure-your-key-vault.md)
+- [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](network-security.md)

@@ -1,18 +1,18 @@
 ---
 title: Vytvoření vlastního pravidla klasifikace a klasifikace (Preview)
 description: Tento článek popisuje, jak můžete vytvořit vlastní klasifikace pro definování datových typů v datovém majetku, které jsou jedinečné pro vaši organizaci. Popisuje také vytváření vlastních pravidel klasifikace, která vám umožní najít zadaná data v celém datovém majetku.
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552671"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693468"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Vlastní klasifikace v Azure dosah 
 

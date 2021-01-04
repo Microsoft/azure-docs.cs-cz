@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac3f2cc1c68ea552b2858d932217a28055fee0fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466738"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709431"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Pokyny pro zabezpečení Azure Stack Edge pro R
 
@@ -86,6 +86,7 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
   * Izolované od silných elektromagnetických polí vyráběných elektrickými zařízeními.
   * Poskytuje se správně uzemněnými odbytištěmi.
   * K dispozici je dostatek místa pro přístup ke kabelům napájecího zdroje, protože slouží jako hlavní odpojení napájecího produktu.
+* Pro tento produkt nejsou k dispozici kabely Ethernet. Aby se snížilo elektromagnetické rušení, doporučuje se použít kabelovou kabeláž STP (s ochranou) CAT 6.
 * Nastavení vybavení v pracovní oblasti umožňující dostatečné vzduchové šíření zařízení; Zajistěte, aby se přední a zadní kryty kompletně odebraly, když je zařízení spuštěné.
 * Nainstalujte zařízení v oblasti řízené teplotou bez vhodných kontaminujících látek a umožněte vhodnému vzduchovým pohybům na zařízení.
 * Udržujte si zařízení pryč ze zdrojů tekutých a nadměrně humidch prostředí.
@@ -115,6 +116,11 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
   * Zařízení bylo vyřazeno a velikost zařízení je poškozena.
   * Máte podezření, že zařízení potřebuje službu nebo opravu.
 * Před přesunutím jednotky trvale odpojte, nebo pokud se domníváte, že dojde k poškození jakýmkoli způsobem.
+* Aby se předešlo vysokému úniku dat v současné době, kdy jeden tranzitní případ má více než jedno nepřerušované napájení (UPS), doporučuje se, aby se všechny zdroje UPS připojovaly k nezávislému okruhu. V případě, že se používá jednotka pro distribuci napájení (PDU) nebo jiné zařízení v případě, že bezpečnostní základ každé ze zdrojů UPS spoléhá na hnacím vodiči jediného informačního kanálu, musí být základní terminál na vnější straně každého zdroje UPS také použit spolu s dodatečnou deskou budování.
+
+  > [!NOTE]
+  > Pokud se použije jednotka PDU, která už má doplňkový deskový vodič, není nutné použít další podlahovou terminálu na UPS.
+
 * Poskytněte vhodné zdroje energie s ochranou přetížení elektrického zabezpečení, aby splňovaly následující specifikace napájení:
 
   * Napětí: 100 až 240 Volts AC
@@ -157,7 +163,7 @@ Zařízení je navržené tak, aby fungovalo v následujících prostředích:
 |:--- |:--- |
 |Specifikace teploty | <ul><li>Teplota úložiště: – 33 &deg; c – 63 &deg; c (– 28 &deg; F-145 &deg; F) </li><li>Průběžná operace: 5 &deg; c – 43 &deg; c (41 &deg; f – 110 &deg; f)</li><li>Maximální teplota při přechodu (provozní a úložné): 20 &deg; C/h (68 &deg; F/h)</li></ul> |
 |Specifikace relativní vlhkosti | <ul><li>Úložiště: 5% až 95% RH s 33 &deg; C (91 &deg; F) maximálním Dew bodem. Atmosféra musí být neustále nekondenzovaná.</li><li>Provoz: 5% až 85% relativní vlhkost s 29 &deg; C (84,2 &deg; F) maximálním bodem Dew</li></ul> |
-| Specifikace maximální výšky | <ul><li>Provoz (bez napájení): 15 000 ft (4 572 měřičů)</li><li>Provoz (se zdrojem UPS): 6,561 ft (2 000 měřičů)</li><li>Úložiště: 40 000 ft (12 192 měřičů)</li></ul> |
+| Specifikace maximální výšky | <ul><li>Provoz (bez napájení): 15 000 ft (4 572 měřičů)</li><li>Provoz (se zdrojem UPS): 10 000 ft (3 048 měřičů)</li><li>Úložiště: 40 000 ft (12 192 měřičů)</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |

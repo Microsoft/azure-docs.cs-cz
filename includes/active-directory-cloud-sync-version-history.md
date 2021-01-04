@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993941"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97700582"
 ---
 V tomto článku jsou uvedené verze a funkce Azure Active Directory Connect zřizovacího agenta, který byl vydán. Tým Azure AD pravidelně aktualizuje agenta zřizování o nové funkce a funkce. Agent zřizování se aktualizuje automaticky, když se uvolní nová verze. 
 
@@ -28,6 +28,8 @@ Microsoft poskytuje přímou podporu pro nejnovější verzi agenta a jednu verz
 * Podpora pro filtrování KOSMETICE jenom pro objekty v oboru (původně se jednalo o synchronizaci hodnot hash hesel pro všechny objekty)
 * Opravili jsme problém s nevracením paměti v agentovi.
 * Vylepšené protokoly zřizování
+* Podpora konfigurace [časového limitu připojení LDAP](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* Podpora konfigurace [dohledávání odkazů](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0
