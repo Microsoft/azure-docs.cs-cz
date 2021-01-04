@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Přístup prostřednictvím privátních koncových bodů
               href: search-indexer-howto-access-private.md
-        - name: Přístup na základě identity
+        - name: Zabezpečení na úrovni dokumentů
           items:
             - name: Filtry zabezpečení
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Kurz pro vývojáře (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: Partnerská řešení
+      href: resource-partners-knowledge-mining.md
     - name: Nejčastější dotazy
       href: search-faq-frequently-asked-questions.md
     - name: Ceny

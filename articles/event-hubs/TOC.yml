@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Škálovatelnost
       href: event-hubs-scalability.md
+    - name: metadata
+      items:
+        - name: Federace více lokalit a více oblastí
+          href: event-hubs-federation-overview.md
+        - name: Úlohy a aplikace replikace událostí
+          href: event-hubs-federation-replicator-functions.md
+        - name: Vzorce úloh replikace událostí
+          href: event-hubs-federation-patterns.md
+        - name: Nakonfigurované úlohy replikace
+          href: event-hubs-federation-configuration.md
+        - name: Replikace událostí mezi službami Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Odeslání událostí do služby Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Získávání událostí ze služby Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Geografické zotavení po havárii
       items:
         - name: Geografické zotavení po havárii a geografická replikace

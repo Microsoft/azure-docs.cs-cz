@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Nejčastější dotazy k Azure NetApp Files
       href: azure-netapp-files-faqs.md
+    - name: Co je nástroj Azure Application Consistent Snapshot
+      href: azacsnap-introduction.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Nástroj Azure Application Consistent Snapshot (AzAcSnap)
+      items:
+        - name: Začínáme s nástrojem AzAcSnap
+          href: azacsnap-get-started.md
+        - name: Instalace nástroje AzAcSnap
+          href: azacsnap-installation.md
+        - name: Zotavení po havárii s využitím nástroje AzAcSnap
+          href: azacsnap-disaster-recovery.md
+        - name: Tipy a triky pro používání nástrojem AzAcSnap
+          href: azacsnap-tips.md
+        - name: Řešení potíží s nástrojem AzAcSnap
+          href: azacsnap-troubleshoot.md
+        - name: Přehled příkazů nástroje AzAcSnap
+          items:
+            - name: Konfigurace nástroje AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: Test nástrojem AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: Zálohování pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-backup.md
+            - name: Získání podrobností pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-details.md
+            - name: Odstranění pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-delete.md
+            - name: Obnovení pomocí nástroje AzAcSnap
+              href: azacsnap-cmd-ref-restore.md
 - name: Zdroje a prostředky
   items:
     - name: Ceny

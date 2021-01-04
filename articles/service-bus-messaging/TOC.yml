@@ -15,7 +15,7 @@
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Optimalizace výkonu
       href: service-bus-performance-improvements.md
+    - name: metadata
+      items:
+        - name: Replikace zpráv a federace mezi oblastmi
+          href: service-bus-federation-overview.md
+        - name: Úlohy a aplikace replikace zpráv
+          href: service-bus-federation-replicator-functions.md
+        - name: Vzorce úloh replikace zpráv
+          href: service-bus-federation-patterns.md
+        - name: Nakonfigurované úlohy replikace
+          href: service-bus-federation-configuration.md
+        - name: Replikace událostí mezi entitami Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Replikace zpráv do služby Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Získávání zpráv ze služby Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Geografické zotavení po havárii a geografická replikace
       href: service-bus-geo-dr.md
     - name: "Asynchronní zasílání zpráv a\_vysoká dostupnost"

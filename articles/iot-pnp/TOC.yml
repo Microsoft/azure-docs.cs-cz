@@ -57,8 +57,6 @@
   items:
     - name: Instalace a použití průzkumníka IoT
       href: howto-use-iot-explorer.md
-    - name: Instalace a použití přemostění IoT Plug and Play
-      href: howto-use-iot-pnp-bridge.md
     - name: Instalace a použití nástrojů pro vytváření DTDL
       href: howto-use-dtdl-authoring-tools.md
     - name: Použití vloženého kódu C
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: Certifikace zařízení
       href: howto-certify-device.md
+    - name: Instalace a použití přemostění IoT Plug and Play
+      href: howto-use-iot-pnp-bridge.md
+    - name: 'Sestavení, nasazení a rozšiřování mostu IoT Plug and Play'
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: Referenční informace
   items:
     - name: Knihovny a sady SDK

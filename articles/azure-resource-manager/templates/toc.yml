@@ -290,6 +290,8 @@
         - name: Použití kontroly stavu v Deployment Manageru
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: Studijní program Microsoft Learn o šablonách
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: Koncepty
   items:
     - name: Osvědčené postupy pro šablony

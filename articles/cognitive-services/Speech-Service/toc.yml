@@ -363,25 +363,13 @@
               href: custom-commands.md
             - name: Rychlé starty
               items:
-                - name: Vytvoření aplikace vlastních příkazů
+                - name: Vytvoření aplikace Vlastní příkazy
                   href: quickstart-custom-commands-application.md
             - name: Návody
               items:
-                - name: Vývoj
-                  items:
-                    - name: Vytvoření aplikace s jednoduchými příkazy
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: Přidání parametrů do příkazů
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: Přidání konfigurací do parametrů příkazů
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: Přidání pravidel interakce
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: Přidání šablon generování jazyka pro hlasové odpovědi
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: Použití sady Vlastní hlas
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: Integrace
+                - name: Vývoj a přizpůsobení aplikací Vlastní příkazy
+                  href: how-to-develop-custom-commands-application.md
+                - name: Integrace s klientskými aplikacemi
                   items:
                     - name: Integrace s klientskou aplikací s využitím sady Speech SDK
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: Aktualizace příkazu z webového koncového bodu
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: Nasazení
-                  items:
-                    - name: Průběžné nasazování s využitím Azure DevOps
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: Test
-                  items:
-                    - name: Testování aplikace vlastních příkazů
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: Ladění
-                  items:
-                    - name: Ladění chyb při vytváření aplikace
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: Ladění chyb při spouštění aplikace
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: Odkazy
-                  items:
-                    - name: Koncepce vlastních příkazů (Preview)
-                      href: custom-commands-references.md
+                - name: Průběžné nasazování s využitím Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: Testování aplikací Vlastní příkazy
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: Ladění chyb při vytváření aplikace
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Ladění chyb při spouštění aplikace
+                  href: how-to-custom-commands-debug-runtime.md
             - name: Zdroje a prostředky
               items:
+                - name: Koncepce vlastních příkazů (Preview)
+                  href: custom-commands-references.md
                 - name: Ukázky vlastních příkazů (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: Ukázky hlasových asistentů (GitHub)
@@ -498,7 +478,7 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Nasadit
+- name: Nasazení
   items:
     - name: Povolit protokolování
       href: how-to-use-logging.md

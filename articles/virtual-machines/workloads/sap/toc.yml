@@ -72,6 +72,8 @@
       items:
         - name: Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
           href: hana-li-portal.md
+        - name: Správa instancí BareMetal pomocí webu Azure Portal
+          href: baremetal-infrastructure-portal.md
         - name: Nastavení vysoké dostupnosti s využitím techniky STONITH
           href: ha-setup-with-stonith.md
         - name: Zálohování operačního systému pro SKU typu II
