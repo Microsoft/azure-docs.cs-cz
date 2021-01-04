@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37dc6d234d243c79fe9bac206caaaa28bb29aa2d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f629ec5ccc1895b83cf7f1e831de8d128c49836d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659943"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702425"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí Azure CLI
 
@@ -44,7 +44,7 @@ Následující příklad vytvoří skupinu prostředků `<resource_group_name>` 
 az group create --name <resource_group_name> --location westcentralus
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. Účty úložiště pro **obecné účely verze 2** podporují všechny funkce ve všech službách úložiště, včetně objektů blob, souborů, front a tabulek. **Účet Blob Storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako objektů BLOB (objekty) v Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
@@ -69,7 +69,7 @@ Nahraďte `<your-site-name>` jedinečným názvem vaší webové aplikace. Náze
 ```azurecli-interactive
 sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group <resource_group_name> \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost

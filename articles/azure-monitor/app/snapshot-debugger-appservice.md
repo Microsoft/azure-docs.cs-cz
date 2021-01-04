@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673570"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695460"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
@@ -21,6 +21,7 @@ Snapshot Debugger v současné době funguje pro aplikace ASP.NET a ASP.NET Core
 Pokud chcete povolit Snapshot Debugger pro aplikaci, postupujte podle následujících pokynů.
 
 Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení Snapshot Debugger na dalších podporovaných platformách:
+* [Funkce Azure Functions](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Služby Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines a Virtual Machine Scale Sets](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)

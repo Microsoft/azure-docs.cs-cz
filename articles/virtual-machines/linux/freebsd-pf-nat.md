@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7027dd86945e53149b3c4daeb9d6faee3593e95
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371316"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702238"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak pomocí filtru paketů FreeBSD vytvořit zabezpečenou bránu firewall v Azure
 Tento článek popisuje, jak nasadit firewall překladu adres (NAT) pomocí filtru FreeBSD Pack Azure Resource Manager prostřednictvím šablony pro běžný scénář webového serveru.
@@ -34,10 +34,10 @@ Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure]
 az group create --name myResourceGroup --location westus
 ```
 
-V dalším kroku nasaďte šablonu PF-FreeBSD-Setup pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Stáhněte si azuredeploy.parameters.jspod stejnou cestou a definujte vlastní hodnoty prostředků, například `adminPassword` , `networkPrefix` a `domainNamePrefix` . 
+Dále nasaďte šablonu PF-FreeBSD-Setup pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Stáhněte si azuredeploy.parameters.jspod stejnou cestou a definujte vlastní hodnoty prostředků, například `adminPassword` , `networkPrefix` a `domainNamePrefix` . 
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeploymentName \
+az deployment group create --resource-group myResourceGroup --name myDeploymentName \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/pf-freebsd-setup/azuredeploy.json \
     --parameters '@azuredeploy.parameters.json' --verbose
 ```

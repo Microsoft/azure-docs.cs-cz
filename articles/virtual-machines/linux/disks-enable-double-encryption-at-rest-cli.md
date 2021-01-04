@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 55a49c5f8d066cd6893c46ef9942462bb7911307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7fabf5afa60590e92f7c0ca10197c436c1c0b8a0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360611"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702255"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Použití rozhraní příkazového řádku Azure pro povolení dvojitého šifrování v klidovém umístění pro spravované disky
 
@@ -49,7 +49,7 @@ Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azur
 1.    Vytvořte DiskEncryptionSet pomocí encryptionType sady jako EncryptionAtRestWithPlatformAndCustomerKeys. V šabloně Azure Resource Manager (ARM) použijte rozhraní API verze **2020-05-01** . 
     
         ```azurecli
-        az group deployment create -g $rgName \
+        az deployment group create -g $rgName \
        --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" \
         --parameters "diskEncryptionSetName=$diskEncryptionSetName" "encryptionType=EncryptionAtRestWithPlatformAndCustomerKeys" "keyVaultId=$keyVaultId" "keyVaultKeyUrl=$keyVaultKeyUrl" "region=$location"
         ```

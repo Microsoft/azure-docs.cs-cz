@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: c532758ce29646ba32530269233759551117968b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.date: 12/18/2020
+ms.openlocfilehash: d24eea36d45e49f19625c260f2518fb5ae0369e0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901641"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695078"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopírování a transformace dat ve spravované instanci SQL Azure pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ U aktivity kopírování tato Azure SQL Database konektor podporuje tyto funkce:
 >[!NOTE]
 > Tento konektor teď nepodporuje [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) spravované instance SQL. Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a SQL Server ovladač ODBC prostřednictvím prostředí Integration runtime v místním prostředí. Další informace najdete v části [použití Always Encrypted](#using-always-encrypted) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro přístup ke [veřejnému koncovému bodu](../azure-sql/managed-instance/public-endpoint-overview.md)spravované instance SQL můžete použít Azure Data Factory spravované prostředí Azure Integration runtime. Ujistěte se, že jste povolili veřejný koncový bod a zároveň povolili provoz veřejného koncového bodu ve skupině zabezpečení sítě, aby se Azure Data Factory mohl připojit k vaší databázi. Další informace najdete v [těchto pokynech](../azure-sql/managed-instance/public-endpoint-configure.md).
 
@@ -60,12 +60,12 @@ Pro propojenou službu SQL Managed instance jsou podporovány následující vla
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **AzureSqlMI** . | Ano |
+| typ | Vlastnost Type musí být nastavená na **AzureSqlMI**. | Ano |
 | připojovací řetězec |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení k spravované instanci SQL pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte spravovanou instanci SQL s veřejným koncovým bodem, explicitně zadejte port 3342.<br> Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z `password` připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic** , **AzureChina** , **AzureUsGovernment** a **AzureGermany** . Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
 | connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud má vaše spravovaná instance veřejný koncový bod a umožňuje Azure Data Factory k němu přistupovat, můžete použít místní prostředí Integration runtime nebo prostředí Azure Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ano |
 
 Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
@@ -132,7 +132,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
     - Klíč aplikace
     - ID tenanta
 
-3. [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin** . V **Hlavní** databázi spusťte následující příkaz T-SQL:
+3. [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
@@ -184,7 +184,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 
 1. Postupujte podle kroků a [zřiďte správce Azure Active Directory pro vaši spravovanou instanci](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
-2. [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin** . V **Hlavní** databázi spusťte následující příkaz T-SQL:
+2. [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql) údajů pro Azure Data Factory spravovanou identitu. V SQL Server Management Studio (SSMS) se připojte ke svojí spravované instanci pomocí účtu SQL Server, který je **sysadmin**. V **Hlavní** databázi spusťte následující příkaz T-SQL:
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
@@ -230,7 +230,7 @@ Chcete-li kopírovat data do a z spravované instance SQL, jsou podporovány ná
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na **AzureSqlMITable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na **AzureSqlMITable**. | Ano |
 | schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
@@ -269,22 +269,22 @@ Chcete-li kopírovat data z spravované instance SQL, jsou v části zdroje akti
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlMISource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlMISource**. | Ano |
 | sqlReaderQuery |Tato vlastnost používá vlastní dotaz SQL ke čtení dat. Příklad: `select * from MyTable`. |Ne |
 | sqlReaderStoredProcedureName |Tato vlastnost je název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
 | storedProcedureParameters |Tyto parametry jsou pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
-| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted** , **READUNCOMMITTED** , **RepeatableRead** , **serializovatelný** , **Snapshot** . Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | Ne |
-| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z SQL MI. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange** .<br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z SQL mi je řízeno [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | Ne |
+| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z SQL MI. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z SQL mi je řízeno [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | Ne |
 | **_Pod `partitionSettings` :_* _ | | |
-| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime* * ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-mi) . | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-mi) . | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-mi) . | Ne |
 | partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-mi) . | Ne |
 
 **Je třeba počítat s následujícím:**
 
 - Pokud je pro **SqlMISource** zadaný **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti zdroji spravované instance SQL a získá tak data. Uloženou proceduru lze také určit zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** , pokud uložená procedura přijímá parametry.
-- Pokud nezadáte buď vlastnost **sqlReaderQuery** nebo **sqlReaderStoredProcedureName** , použijí se k sestavení dotazu sloupce definované v oddílu Structure pro datovou sadu JSON. Dotaz se `select column1, column2 from mytable` spustí na spravované instanci SQL. Pokud definice datové sady nemá "strukturu", všechny sloupce jsou vybrány z tabulky.
+- Pokud k načtení dat používáte uloženou proceduru ve zdroji, Všimněte si, že pokud je uložená procedura navržena tak, aby vrátila jiné schéma, pokud je předána jiná hodnota parametru, může dojít k chybě nebo se při importu schématu z uživatelského rozhraní nebo při kopírování dat do SQL Database s automatickým vytvořením tabulky zobrazí neočekávaný výsledek.
 
 **Příklad: použití dotazu SQL**
 
@@ -382,14 +382,14 @@ Chcete-li kopírovat data do spravované instance SQL, v části jímka aktivity
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlMISink** . | Ano |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlMISink**. | Ano |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do spravované instance SQL. Vyvolá se jenom jednou pro každé spuštění kopírování. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |Ne |
 | tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. Vytvoření automatické tabulky není podporováno, je-li jímka určena pro uloženou proceduru. Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . |Ne |
-| sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku* . Pro operace, které se spouštějí jenom jednou a které nemají nic dělat se zdrojovými daty, například odstranit nebo zkrátit, použijte `preCopyScript` vlastnost.<br>Viz příklad [vyvolání uložené procedury z jímky SQL](#invoke-a-stored-procedure-from-a-sql-sink). | Ne |
+| sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku*. Pro operace, které se spouštějí jenom jednou a které nemají nic dělat se zdrojovými daty, například odstranit nebo zkrátit, použijte `preCopyScript` vlastnost.<br>Viz příklad [vyvolání uložené procedury z jímky SQL](#invoke-a-stored-procedure-from-a-sql-sink). | Ne |
 | storedProcedureTableTypeParameterName |Název parametru pro typ tabulky určený v uložené proceduře.  |Ne |
 | sqlWriterTableType |Název typu tabulky, který se má použít v uložené proceduře Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data, která jsou kopírována se stávajícími daty. |Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne |
-| writeBatchSize |Počet řádků, které mají být vloženy do tabulky SQL *na dávku* .<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku.  |Ne |
+| writeBatchSize |Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku.  |Ne |
 | writeBatchTimeout |Tato vlastnost určuje dobu čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou pro časové rozpětí. Příkladem je "00:30:00", což je 30 minut. |Ne |
 
 **Příklad 1: připojení dat**
@@ -477,9 +477,9 @@ Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů da
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Úplné načtení z velké tabulky s fyzickými oddíly.        | **Možnost oddílu** : fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a kopíruje data podle oddílů. <br><br/>Pokud chcete zjistit, jestli má tabulka fyzický oddíl, nebo ne, můžete na [Tento dotaz](#sample-query-to-check-physical-partition)odkazovat. |
-| Úplné načtení z velké tabulky bez fyzických oddílů při použití celého čísla nebo sloupce data a času pro dělení dat. | **Možnosti oddílu** : dynamický oddíl rozsahu.<br>**Sloupec oddílu** (volitelné): Zadejte sloupec, který se používá k dělení dat. Pokud není zadaný, použije se sloupec index nebo primární klíč.<br/>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, přičemž všechny řádky v tabulce budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnoty.<br><br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. |
-| Načtěte velké množství dat pomocí vlastního dotazu, bez fyzických oddílů, zatímco se sloupcem typu Integer nebo Date/DateTime pro dělení dat. | **Možnosti oddílu** : dynamický oddíl rozsahu.<br>**Dotaz** : `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partition – sloupec** : Určete sloupec, který se používá k dělení dat.<br>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, všechny řádky ve výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br><br>Během provádění Data Factory nahradí `?AdfRangePartitionColumnName` skutečným názvem sloupce a rozsahem hodnot pro každý oddíl a pošle do SQL mi. <br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. <br><br>Tady je více ukázkových dotazů pro různé scénáře:<br> 1. dotazování celé tabulky: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. dotazování z tabulky s výběrem sloupce a dalšími filtry klauzule WHERE: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. dotazování s poddotazy: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. dotazování pomocí oddílu v poddotazu: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| Úplné načtení z velké tabulky s fyzickými oddíly.        | **Možnost oddílu**: fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje fyzické oddíly a kopíruje data podle oddílů. <br><br/>Pokud chcete zjistit, jestli má tabulka fyzický oddíl, nebo ne, můžete na [Tento dotaz](#sample-query-to-check-physical-partition)odkazovat. |
+| Úplné načtení z velké tabulky bez fyzických oddílů při použití celého čísla nebo sloupce data a času pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Sloupec oddílu** (volitelné): Zadejte sloupec, který se používá k dělení dat. Pokud není zadaný, použije se sloupec index nebo primární klíč.<br/>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, přičemž všechny řádky v tabulce budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnoty.<br><br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. |
+| Načtěte velké množství dat pomocí vlastního dotazu, bez fyzických oddílů, zatímco se sloupcem typu Integer nebo Date/DateTime pro dělení dat. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partition – sloupec**: Určete sloupec, který se používá k dělení dat.<br>**Horní hranice oddílu** a **dolní mez oddílu** (volitelné): Určete, jestli chcete určit rozteč oddílu. Nejedná se o filtrování řádků v tabulce, všechny řádky ve výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br><br>Během provádění Data Factory nahradí `?AdfRangePartitionColumnName` skutečným názvem sloupce a rozsahem hodnot pro každý oddíl a pošle do SQL mi. <br>Například pokud má sloupec oddílu "ID" rozsah hodnot od 1 do 100 a nastavíte dolní mez na hodnotu 20 a horní mez jako 80, s paralelní kopií as 4 Data Factory načte data podle 4 identifikátorů oddílů – ID v rozsahu <= 20, [21, 50], [51, 80] a >= 81, v uvedeném pořadí. <br><br>Tady je více ukázkových dotazů pro různé scénáře:<br> 1. dotazování celé tabulky: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. dotazování z tabulky s výběrem sloupce a dalšími filtry klauzule WHERE: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. dotazování s poddotazy: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. dotazování pomocí oddílu v poddotazu: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 Osvědčené postupy načítání dat s možností oddílu:
@@ -553,11 +553,11 @@ Připojení dat je výchozím chováním konektoru jímky spravované instance S
 
 Aktivita kopírování aktuálně neposkytuje nativní podporu načítání dat do dočasné tabulky databáze. Existuje pokročilý způsob, jak ho nastavit s kombinací více aktivit, najdete v tématu věnovaném [optimalizaci SQL Database hromadně Upsertch scénářů](https://github.com/scoriani/azuresqlbulkupsert). Níže ukazuje ukázku použití trvalé tabulky jako přípravy.
 
-Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury** . Předchozí kopie dat ze zdrojového úložiště do pracovní tabulky Azure SQL Managed instance, jako je například **UpsertStagingTable** , jako název tabulky v datové sadě. Pak druhá procedura vyvolá uloženou proceduru ke sloučení zdrojových dat z pracovní tabulky do cílové tabulky a vyčištění pracovní tabulky.
+Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury**. Předchozí kopie dat ze zdrojového úložiště do pracovní tabulky Azure SQL Managed instance, jako je například **UpsertStagingTable**, jako název tabulky v datové sadě. Pak druhá procedura vyvolá uloženou proceduru ke sloučení zdrojových dat z pracovní tabulky do cílové tabulky a vyčištění pracovní tabulky.
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-V databázi definujte uloženou proceduru pomocí logiky sloučení, podobně jako v následujícím příkladu, který ukazuje z předchozí aktivity uložené procedury. Předpokládejme, že cílem je **marketingová** tabulka se třemi sloupci: **ProfileID** , **State** a **Category** . Proveďte Upsert na základě sloupce **ProfileID** .
+V databázi definujte uloženou proceduru pomocí logiky sloučení, podobně jako v následujícím příkladu, který ukazuje z předchozí aktivity uložené procedury. Předpokládejme, že cílem je **marketingová** tabulka se třemi sloupci: **ProfileID**, **State** a **Category**. Proveďte Upsert na základě sloupce **ProfileID** .
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -592,9 +592,9 @@ Při kopírování dat do spravované instance SQL můžete také nakonfigurovat
 
 Uloženou proceduru můžete použít, pokud předdefinované mechanismy kopírování neslouží k tomuto účelu. Příkladem je, že chcete použít dodatečné zpracování před konečným vložením zdrojových dat do cílové tabulky. Některé další příklady zpracování jsou, když chcete sloučit sloupce, vyhledat další hodnoty a vložit je do více než jedné tabulky.
 
-Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v databázi SQL Server. Předpokládejme, že vstupní data a **marketingová** tabulka jímky mají tři sloupce: **ProfileID** , **State** a **Category** . Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
+Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v databázi SQL Server. Předpokládejme, že vstupní data a **marketingová** tabulka jímky mají tři sloupce: **ProfileID**, **State** a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
 
-1. V databázi Definujte typ tabulky se stejným názvem jako **sqlWriterTableType** . Schéma typu tabulky je stejné jako schéma vrácené vašimi vstupními daty.
+1. V databázi Definujte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky je stejné jako schéma vrácené vašimi vstupními daty.
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -604,7 +604,7 @@ Následující příklad ukazuje, jak použít uloženou proceduru k provedení 
     )
     ```
 
-2. V databázi definujte uloženou proceduru se stejným názvem jako **sqlWriterStoredProcedureName** . Zpracovává vstupní data ze zadaného zdroje a sloučí je do výstupní tabulky. Název parametru typu tabulky v uložené proceduře je stejný jako **TableName** definovaný v datové sadě.
+2. V databázi definujte uloženou proceduru se stejným názvem jako **sqlWriterStoredProcedureName**. Zpracovává vstupní data ze zadaného zdroje a sloučí je do výstupní tabulky. Název parametru typu tabulky v uložené proceduře je stejný jako **TableName** definovaný v datové sadě.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -676,7 +676,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které podporuje jímka sprav
 | Update – metoda | Určete, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Ano | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
 | Klíčové sloupce | Pro aktualizace, upsertuje a DELETE musí být klíčové sloupce nastavené tak, aby určily, který řádek se má změnit.<br>Název sloupce, který vyberete jako klíč, bude použit jako součást následné aktualizace, Upsert a DELETE. Proto je nutné vybrat sloupec, který existuje v mapování jímky. | Ne | Pole | keys |
 | Přeskočit zápis klíčových sloupců | Pokud chcete hodnotu nezazapisovat do sloupce klíč, zaškrtněte políčko Přeskočit zápis klíčových sloupců. | Ne | `true` nebo `false` | skipKeyWrites |
-| Akce tabulky |Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné** : v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit** : tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit** : všechny řádky z cílové tabulky se odeberou. | Ne | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
+| Akce tabulky |Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné**: v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit**: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit**: všechny řádky z cílové tabulky se odeberou. | Ne | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
 | Velikost dávky | Určete, kolik řádků se má v každé dávce zapsat. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti. | Ne | Integer | batchSize |
 | Skripty před a po SQL | Zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky. | No | Řetězec | preSQLs<br>postSQLs |
 
@@ -729,7 +729,7 @@ Když se data zkopírují do a ze spravované instance SQL pomocí aktivity kop�
 | ntext |Řetězec, znak [] |
 | numerické |Decimal |
 | nvarchar |Řetězec, znak [] |
-| real |Jednoduché |
+| real |Jeden |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
@@ -759,13 +759,13 @@ A konkrétně:
 
 3. Vytvoření propojené služby s typem ODBC pro připojení k vaší databázi SQL najdete v následujících ukázkách:
 
-    - Použití **ověřování SQL** : zadejte připojovací řetězec ODBC, jak je uvedeno níže, a vyberte **základní** ověřování a nastavte uživatelské jméno a heslo.
+    - Použití **ověřování SQL**: zadejte připojovací řetězec ODBC, jak je uvedeno níže, a vyberte **základní** ověřování a nastavte uživatelské jméno a heslo.
 
         ```
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - Použití **spravovaného ověřování Identity Data Factory** : 
+    - Použití **spravovaného ověřování Identity Data Factory**: 
 
         1. Při vytváření uživatele databáze pro spravovanou identitu použijte stejné [předpoklady](#managed-identity) a udělte v databázi správnou roli.
         2. V části propojená služba zadejte připojovací řetězec ODBC následujícím způsobem a pak vyberte **anonymní** ověřování, které označuje samotný připojovací řetězec `Authentication=ActiveDirectoryMsi` .

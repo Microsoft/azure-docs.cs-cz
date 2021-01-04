@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095113"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695182"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics pomocí Azure Data Factory
 
@@ -274,6 +274,10 @@ Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ
 | partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
 | partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | Ne |
+
+**Vezměte na vědomí následující bod:**
+
+- Pokud k načtení dat používáte uloženou proceduru ve zdroji, Všimněte si, že pokud je uložená procedura navržena tak, aby vrátila jiné schéma, pokud je předána jiná hodnota parametru, může dojít k chybě nebo se při importu schématu z uživatelského rozhraní nebo při kopírování dat do SQL Database s automatickým vytvořením tabulky zobrazí neočekávaný výsledek.
 
 **Příklad: použití dotazu SQL**
 
@@ -836,7 +840,7 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | binární                                | Byte []                         |
 | bit                                   | Logická hodnota                        |
 | char                                  | Řetězec, znak []                 |
-| datum                                  | DateTime                       |
+| date                                  | DateTime                       |
 | Datum a čas                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |
