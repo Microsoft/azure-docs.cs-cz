@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657001"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722874"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 
-K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+K vytvoření webové aplikace pro instanci Service Manager použijte následující skript. Další informace o Service Manager připojení najdete tady: [Service Manager Web App](./itsmc-connections-scsm.md)
 
 Spusťte skript zadáním následujících požadovaných podrobností:
 
@@ -29,9 +29,6 @@ Spusťte skript zadáním následujících požadovaných podrobností:
 Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace**, **ID klienta** a **tajný klíč klienta**.
 
 Tyto hodnoty uložte, budete je potřebovat při vytváření připojení ke konektoru pro správu služby IT.
-
-> [!NOTE]
-> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-[Nakonfigurujte hybridní připojení](./itsmc-connections.md#configure-the-hybrid-connection).
+[Nakonfigurujte hybridní připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
 

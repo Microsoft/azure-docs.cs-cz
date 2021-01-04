@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak nasadit aplikaci Service Fabric v Ja
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738910"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702153"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -30,7 +30,7 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -114,10 +114,10 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 10. Pomocí následujícího příkazu vytvořte prostředek služby Event Hubs. Postupujte podle zobrazených výzev a zadejte podrobnosti pro hodnoty namespaceName (název oboru názvů), eventHubName (název centra událostí), consumerGroupName (název skupiny příjemců), sendAuthorizationRuleName (název autorizačního pravidla pro odesílání) a receiveAuthorizationRuleName (název autorizačního pravidla pro příjem).
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -154,7 +154,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
     ```
 
-    Zkopírujte hodnotu pole **sr** ve vráceném kódu JSON. Hodnota pole **sr** je token SAS pro službu Event Hubs. Následující adresa URL je příkladem pole **sr** :
+    Zkopírujte hodnotu pole **sr** ve vráceném kódu JSON. Hodnota pole **sr** je token SAS pro službu Event Hubs. Následující adresa URL je příkladem pole **sr**:
 
     ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
@@ -176,8 +176,8 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     }
     ```
 
-13. Otevřete soubor **sfdeploy.parameters.json** . Změňte následující parametry a pak soubor uložte.
-    - **clusterName** . Použijte pouze malá písmena a číslice.
+13. Otevřete soubor **sfdeploy.parameters.json**. Změňte následující parametry a pak soubor uložte.
+    - **clusterName**. Použijte pouze malá písmena a číslice.
     - **adminUserName** (na jinou než prázdnou hodnotu)
     - **adminPassword** (na jinou než prázdnou hodnotu)
 
@@ -189,7 +189,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 ## <a name="deploy-your-application-to-the-cluster"></a>Nasazení aplikace do clusteru
 
-1. Před nasazením aplikace je potřeba do souboru *Voting/VotingApplication/ApplicationManifest.xml* přidat následující fragment kódu. Pole **X509FindValue** obsahuje kryptografický otisk vrácený z kroku 4 v části **Vytvoření clusteru Service Fabric v Azure** . Tento fragment kódu je vnořený do pole **ApplicationManifest** (kořenové pole).
+1. Před nasazením aplikace je potřeba do souboru *Voting/VotingApplication/ApplicationManifest.xml* přidat následující fragment kódu. Pole **X509FindValue** obsahuje kryptografický otisk vrácený z kroku 4 v části **Vytvoření clusteru Service Fabric v Azure**. Tento fragment kódu je vnořený do pole **ApplicationManifest** (kořenové pole).
 
     ```xml
     <Certificates>
@@ -209,13 +209,13 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. Pokud chcete nasadit svou aplikaci, přejděte do složky *Voting/Scripts* a spusťte skript **install.sh** .
+4. Pokud chcete nasadit svou aplikaci, přejděte do složky *Voting/Scripts* a spusťte skript **install.sh**.
 
     ```bash
     ./install.sh
     ```
 
-5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj `https://testlinuxcluster.westus.cloudapp.azure.com:19080`. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh* . Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru.
+5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj `https://testlinuxcluster.westus.cloudapp.azure.com:19080`. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh*. Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru.
 
     ![SFX pro Javu v Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
@@ -223,7 +223,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     ![Hlasovací aplikace v Javě v Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. Pokud chcete aplikaci z clusteru odinstalovat, spusťte skript *uninstall.sh* ve složce **Scripts** .
+7. Pokud chcete aplikaci z clusteru odinstalovat, spusťte skript *uninstall.sh* ve složce **Scripts**.
 
     ```bash
     ./uninstall.sh

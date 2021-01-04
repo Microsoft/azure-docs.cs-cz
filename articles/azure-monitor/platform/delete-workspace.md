@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/20/2020
+ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758885"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706877"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje koncept obnovitelného odstranění pracovního prost
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Předpoklady při odstraňování pracovního prostoru
 
-Když odstraníte Log Analytics pracovní prostor, provede se operace obnovitelného odstranění, která umožňuje obnovení pracovního prostoru včetně jeho dat a připojených agentů do 14 dnů, bez ohledu na to, zda bylo odstranění nechtěné nebo úmyslné. Po období obnovitelného odstranění jsou prostředky pracovního prostoru a jeho data neobnovitelná – jeho data jsou zařazená do fronty pro trvalé odstranění a kompletně vyprázdněna do 30 dnů. Název pracovního prostoru je uvolněný a můžete ho použít k vytvoření nového pracovního prostoru.
+Když odstraníte Log Analytics pracovní prostor, provede se operace obnovitelného odstranění, která umožňuje obnovení pracovního prostoru včetně jeho dat a připojených agentů do 14 dnů, bez ohledu na to, zda bylo odstranění nechtěné nebo úmyslné. Po období obnovitelného odstranění jsou prostředky pracovního prostoru a jeho data neobnovitelná a zařazené do fronty se kompletně vyprázdní do 30 dnů. Název pracovního prostoru je uvolněný a můžete ho použít k vytvoření nového pracovního prostoru.
 
 > [!NOTE]
 > Pokud chcete přepsat chování podmíněného odstranění a trvale odstranit pracovní prostor, postupujte podle kroků v části [trvalé odstranění pracovního prostoru](#permanent-workspace-delete).
@@ -76,12 +76,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
 Když pracovní prostor odstraníte Log Analytics omylem nebo záměrně, služba ho umístí do stavu obnovitelného odstranění, takže nebude mít přístup k žádné operaci. Název odstraněného pracovního prostoru se zachová během období obnovitelného odstranění a nedá se použít k vytvoření nového pracovního prostoru. Po období obnovitelného odstranění je pracovní prostor neobnovitelný, je naplánován na trvalé odstranění a jeho název, který lze použít k vytvoření nového pracovního prostoru.
 
-Během období obnovitelného odstranění si můžete pracovní prostor obnovit, včetně jeho dat, konfigurace a připojených agentů. Musíte mít oprávnění přispěvatele k předplatnému a skupině prostředků, ve které byl pracovní prostor umístěn před operací obnovitelného odstranění. Obnovení pracovního prostoru se provádí vytvořením pracovního prostoru Log Analytics s podrobnostmi o odstraněném pracovním prostoru, včetně:
+Během období obnovitelného odstranění si můžete pracovní prostor obnovit, včetně jeho dat, konfigurace a připojených agentů. Musíte mít oprávnění přispěvatele k předplatnému a skupině prostředků, ve které byl pracovní prostor umístěn před operací obnovitelného odstranění. Obnovení pracovního prostoru se provádí opětovným vytvořením pracovního prostoru Log Analytics s podrobnostmi o odstraněném pracovním prostoru, včetně:
 
 - ID předplatného
 - Název skupiny prostředků
 - Název pracovního prostoru
 - Oblast
+
+> [!IMPORTANT]
+> Pokud se váš pracovní prostor odstranil jako součást operace odstranění skupiny prostředků, musíte nejdřív znovu vytvořit skupinu prostředků.
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -104,20 +107,19 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Řešení a propojené služby byly při odstranění trvale odebrány z pracovního prostoru a měly by být překonfigurovány, aby byl pracovní prostor nastaven do dříve nakonfigurovaného stavu. Některá data nemusí být k dispozici pro dotaz po obnovení pracovního prostoru, dokud nebudou přidružená řešení znovu nainstalována a jejich schémata jsou přidána do pracovního prostoru.
 
-> [!NOTE]
-> * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
- 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .
 
-* Pokud si nejste jistí, jestli je odstraněný pracovní prostor ve stavu obnovitelného odstranění a je možné ho obnovit, klikněte na stránce *Log Analytics pracovní prostory* na [obnovit](#recover-workspace) a zobrazí se seznam pracovních prostorů odstraněných v rámci předplatného. Trvale odstraněné pracovní prostory nejsou v seznamu zahrnuté.
+* Pokud si nejste jistí, jestli je odstraněný pracovní prostor ve stavu obnovitelného odstranění a že se dá obnovit, klikněte na stránce [otevřít koš](#recover-workspace) na stránce *Log Analytics pracovní prostory* a zobrazte seznam odstraněných pracovních prostorů na předplatné. Trvale odstraněné pracovní prostory nejsou v seznamu zahrnuté.
 * Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
   * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
-  * Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
+  * Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a nejprve obnovte pracovní prostor a pak proveďte trvalé odstranění:<br>
     1. [Obnovte](#recover-workspace) pracovní prostor.
     2. [Trvale odstraňte](#permanent-workspace-delete) pracovní prostor.
     3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
-* Pokud se zobrazí kód odpovědi 204, který ukazuje, že *prostředek nebyl nalezen*, může být příčinou opakované použití operace odstranit pracovní prostor. 204 je prázdná odpověď, což obvykle znamená, že prostředek neexistuje, takže se odstranění dokončilo bez jakéhokoli zásahu.
-  Po úspěšném dokončení volání odstranění na back-endu můžete pracovní prostor obnovit a dokončit operaci trvalého odstranění v jedné z výše navrhovaných metod.
+ 
+      Po úspěšném dokončení volání odstranění na back-endu můžete pracovní prostor obnovit a dokončit operaci trvalého odstranění v jedné z výše navrhovaných metod.
 
+* Pokud obdržíte kód odpovědi 204 s *prostředkem nenalezeným* při odstraňování pracovního prostoru, může dojít k operacím po sobě jdoucích opakovaných pokusech. 204 je prázdná odpověď, což obvykle znamená, že prostředek neexistuje, takže se odstranění dokončilo bez jakéhokoli zásahu.
+* Pokud odstraníte skupinu prostředků a váš pracovní prostor, uvidíte stránku odstraněný pracovní prostor na stránce [otevřít koš](#recover-workspace) , ale operace obnovení selže s kódem chyby 404, protože skupina prostředků neexistuje – vytvořte novou skupinu prostředků a zkuste obnovení zopakovat.

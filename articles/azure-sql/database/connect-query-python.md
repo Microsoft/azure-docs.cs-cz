@@ -11,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 12/19/2020
+ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680042"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703959"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Pythonu k dotazování databáze ve Azure SQL Database nebo spravované instanci SQL Azure
+# <a name="quickstart-use-python-to-query-a-database"></a>Rychlý Start: použití Pythonu k dotazování databáze
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto rychlém startu pomocí Pythonu se připojíte k Azure SQL Database nebo spravované instanci SQL Azure a pro dotazování dat použijete příkazy T-SQL.
+V tomto rychlém startu pomocí Pythonu se můžete připojit k Azure SQL Database, spravované instanci SQL Azure nebo synapse SQL Database a použít příkazy T-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +30,9 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
+- Databáze, ve které budete spouštět dotaz.
+
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 a související software
 
@@ -57,27 +59,11 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 ---
 Další prozkoumání Pythonu a databáze v Azure SQL Database najdete v tématu [knihovny Azure SQL Database pro Python](/python/api/overview/azure/sql), [úložiště pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [ukázku pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
-
-Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-
-2. Přejít na stránku **databáze SQL**  nebo **spravované instance SQL** .
-
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
-
-> [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
 ## <a name="create-code-to-query-your-database"></a>Vytvoření kódu pro dotazování databáze 
 
 1. V textovém editoru vytvořte nový soubor s názvem *sqltest.py*.  
    
-1. Přidejte následující kód. Nahraďte vlastní hodnoty pro \<server> , \<database> , a \<username> \<password> .
-   
-   >[!IMPORTANT]
-   >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
+1. Přidejte následující kód. Získejte informace o připojení z oddílu požadavků a nahraďte vlastní hodnoty pro \<server> , \<database> , \<username> a \<password> .
    
    ```python
    import pyodbc
@@ -105,7 +91,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
    python sqltest.py
    ```
 
-1. Ověřte, že jsou vraceny prvních 20 řádků kategorie/produktu, a pak zavřete příkazové okno.
+1. Ověřte, zda jsou vráceny databáze a jejich kolace, a poté okno příkazového řádku zavřete.
 
 ## <a name="next-steps"></a>Další kroky
 

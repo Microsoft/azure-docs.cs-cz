@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493096"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702605"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak vytvořit účet Video Indexer propojený s předpla
 
 Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, můžete si vybrat, jestli chcete zkopírovat všechna videa a přizpůsobení modelu na nový účet, jak je popsáno v části [Import obsahu z zkušebního účtu](#import-your-content-from-the-trial-account) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
 
@@ -107,9 +107,14 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
 
 1. Pomocí webu [Azure](https://portal.azure.com/) Portal vytvořte účet Azure Media Services, jak je popsáno v tématu [Vytvoření účtu](../previous/media-services-portal-create-account.md).
 
+     Ujistěte se, že byl účet Media Services vytvořen s klasickými rozhraními API. 
+ 
+    ![Rozhraní API pro Media Services Classic](./media/create-account/enable-classic-api.png)
+
+
     Při vytváření účtu úložiště pro účet Media Services vyberte **StorageV2** pro druh účtu a **geograficky redundantní** (GRS) pro pole replikace.
 
-    ![Nový účet AMS](./media/create-account/create-ams-account1.png)
+    ![Nový účet AMS](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > Nezapomeňte zapsat Media Services názvů prostředků a účtů. Budete je potřebovat pro kroky v další části.
@@ -120,7 +125,7 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
 
     V novém účtu Media Services vyberte **koncové body streamování**. Pak vyberte koncový bod streamování a stiskněte spustit.
 
-    ![Koncové body streamování](./media/create-account/create-ams-account2.png)
+    ![Koncové body streamování](./media/create-account/create-ams-account-se.png)
 4. Aby bylo možné Video Indexer ověřit pomocí rozhraní Media Services API, je potřeba vytvořit aplikaci AD. Následující kroky vás provedou procesem ověřování Azure AD popsaným v tématu [Začínáme s ověřováním Azure AD pomocí Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
     1. V novém Media Services účtu vyberte přístup přes **rozhraní API**.
@@ -163,7 +168,7 @@ Možnost importu obsahu je platná pro automatizované i ruční postupy popsan�
 
 Pokud později chcete odstranit účet, můžete účet odstranit z webu Video Indexer. Pokud chcete účet odstranit, musíte být vlastníkem.
 
-Vyberte nastavení účtu-> **Settings**  ->  **Odstranit tento účet**. 
+Vyberte nastavení účtu->   ->  **Odstranit tento účet**. 
 
 Účet se trvale odstraní během 90 dnů.
 
@@ -171,7 +176,9 @@ Vyberte nastavení účtu-> **Settings**  ->  **Odstranit tento účet**.
 
 Platí následující Azure Media Services související s požadavky:
 
-* Pokud se připojíte automaticky, zobrazí se ve vašem předplatném Azure nová skupina prostředků, účet Media Services a účet úložiště.
+* Pokud se chystáte připojit ke stávajícímu účtu Media Services, ujistěte se, že byl účet Media Services vytvořen s rozhraními API Classic. 
+ 
+    ![Rozhraní API pro Media Services Classic](./media/create-account/enable-classic-api.png)
 * Pokud se připojíte ke stávajícímu účtu Media Services, Video Indexer nemění existující konfiguraci **rezervovaných jednotek** médií.
 
    V závislosti na plánovaném zatížení možná budete muset upravit typ a počet rezervovaných jednotek médií. Mějte na paměti, že pokud je vaše zatížení vysoké a nemáte dost jednotek nebo rychlostí, může zpracování videí způsobit selhání s časovým limitem.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011893"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704890"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -241,23 +241,6 @@ K chybám souvisejícím s výkonem nedojde po celou dobu a jejich reprodukován
 3. Restartovat OMI: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problém: nevidíte žádná data v Azure Portal
-
-### <a name="probable-causes"></a>Pravděpodobné příčiny
-
-- Připojování k Azure Monitor se nezdařilo.
-- Připojení k Azure Monitor je blokované.
-- Zálohování dat Log Analytics agenta pro Linux
-
-### <a name="resolution"></a>Řešení
-1. Ověřte, jestli Azure Monitor Registrace proběhla úspěšně, a to tak, že zkontroluje, jestli tento soubor existuje: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. Reonboard pomocí `omsadmin.sh` instrukcí příkazového řádku
-3. Pokud používáte proxy server, přečtěte si výše uvedené kroky k vyřešení serveru proxy.
-4. V některých případech platí, že pokud Agent Log Analytics pro Linux nemůže komunikovat se službou, data v agentovi jsou zařazená do fronty na celou velikost vyrovnávací paměti, což je 50 MB. Agenta byste měli restartovat spuštěním následujícího příkazu: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
-
-    >[!NOTE]
-    >Tento problém je opravený ve verzi agenta 1.1.0-28 a novější.
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: nezobrazuje se předávané zprávy syslog 
 
@@ -313,7 +296,7 @@ Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovan
 
 ### <a name="resolution"></a>Řešení
 1. Pomocí následujících [pokynů](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)přidejte uživatele omsagent ke čtení ze souboru Nagios.
-2. V obecném konfiguračním souboru Log Analytics agenta pro Linux v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` Zkontrolujte, že **both** se Nagios zdroj i filtr odkomentovat.
+2. V obecném konfiguračním souboru Log Analytics agenta pro Linux v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` Zkontrolujte, že  se Nagios zdroj i filtr odkomentovat.
 
     ```
     <source>
@@ -335,6 +318,7 @@ Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovan
 * Připojení k Azure Monitor je blokované.
 * Virtuální počítač se restartoval.
 * Balíček OMI se ručně upgradoval na novější verzi ve srovnání s instalací balíčku Log Analytics Agent pro Linux.
+* OMI je zmrazený, blokuje agenta OMS.
 * V souboru protokolu *se nenašla chyba třídy* prostředků DSC. `omsconfig.log`
 * Zálohuje se Log Analytics agenta pro data
 * *Aktuální konfigurace protokolu DSC neexistuje. Spusťte Start-DscConfiguration příkazu s parametrem-Path pro určení konfiguračního souboru a nejprve vytvořte aktuální konfiguraci.* v `omsconfig.log` souboru protokolu neexistují žádná zpráva protokolu o `PerformRequiredConfigurationChecks` operacích.
@@ -345,6 +329,7 @@ Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovan
 4. Pokud používáte proxy server, Projděte si výše uvedené kroky pro řešení potíží s proxy serverem.
 5. V některých distribučních systémech Azure se démon OMID OMI serveru nespustí po restartování virtuálního počítače. Výsledkem bude, že se nebudou zobrazovat data týkající se auditu, sledování změn ve nebo UpdateManagement řešení. Alternativním řešením je ruční spuštění serveru OMI spuštěním `sudo /opt/omi/bin/service_control restart` .
 6. Po manuální aktualizaci balíčku OMI na novější verzi se musí ručně restartovat, aby agent Log Analytics pokračovat v fungování. Tento krok je nutný pro některé distribuce, kde se OMI Server po upgradu nespustí automaticky. Spusťte příkaz `sudo /opt/omi/bin/service_control restart` k RESTARTOVÁNÍ OMI.
+* V některých situacích může být OMI zmrazený. Agent OMS může zadat blokovaný stav čekající na OMI, který blokuje všechna shromažďování dat. Proces agenta OMS se spustí, ale neproběhne žádná aktivita, která by prokáže žádné nové řádky protokolu (například odeslané prezenční signály) v `omsagent.log` . Restartujte OMI pomocí `sudo /opt/omi/bin/service_control restart` a obnovte agenta.
 7. Pokud se v omsconfig. log *objevila chyba třídy* prostředků DSC, spusťte příkaz `sudo /opt/omi/bin/service_control restart` .
 8. V některých případech platí, že když agent Log Analytics pro Linux nemůže komunikovat s Azure Monitor, data v agentovi se zálohují do plné velikosti vyrovnávací paměti: 50 MB. Agenta byste měli restartovat spuštěním následujícího příkazu `/opt/microsoft/omsagent/bin/service_control restart` .
 

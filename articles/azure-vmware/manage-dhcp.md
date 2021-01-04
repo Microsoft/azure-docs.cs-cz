@@ -2,13 +2,14 @@
 title: Správa DHCP pro řešení Azure VMware
 description: Naučte se vytvářet a spravovat protokol DHCP pro privátní cloud řešení Azure VMware.
 ms.topic: how-to
+ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
-ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335931"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708547"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>Správa DHCP pro řešení Azure VMware
 
@@ -32,7 +33,7 @@ Pokud chcete server DHCP hostovat pomocí NSX-T, vytvoříte server DHCP. Pak p�
 
    :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="Přidat server DHCP" border="true":::
 
-1. Vyberte **brány vrstvy 1** , vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
+1. Vyberte **brány vrstvy 1**, vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Vyberte bránu, kterou chcete použít." border="true":::
 
@@ -61,7 +62,7 @@ Pokud chcete použít externí server DHCP třetí strany, budete muset vytvoři
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="vytvořit předávací službu DHCP" border="true":::
 
-1. Vyberte **brány vrstvy 1** , vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
+1. Vyberte **brány vrstvy 1**, vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Úprava brány vrstvy 1" border="true":::
 
@@ -78,7 +79,7 @@ Pokud chcete použít externí server DHCP třetí strany, budete muset vytvoři
 
 ## <a name="specify-the-dhcp-ip-address-range"></a>Zadejte rozsah IP adres DHCP.
 
-1. Ve Správci NSX-T vyberte **Networking**  >  **segmenty** sítě. 
+1. Ve Správci NSX-T vyberte   >  **segmenty** sítě. 
    
 1. V názvu segmentu vyberte svislá výpustka a vyberte **Upravit**.
    
@@ -109,7 +110,7 @@ Pokud chcete odesílat požadavky DHCP z virtuálních počítačů řešení Az
 
    :::image type="content" source="media/manage-dhcp/hcx-find-destination-network.png" alt-text="Snímek obrazovky s rozšířením sítě v klientovi VMware vSphere" lightbox="media/manage-dhcp/hcx-find-destination-network.png":::
 
-1. Ve Správci řešení Azure VMware NSX-T vyberte **sítě**  >  **Segments**  >  **profily segment segmentů segmentů**. 
+1. Ve Správci řešení Azure VMware NSX-T vyberte **sítě**  >    >  **profily segment segmentů segmentů**. 
 
 1. Vyberte **Přidat profil segmentu** a pak **segment zabezpečení**.
 
@@ -123,7 +124,7 @@ Pokud chcete odesílat požadavky DHCP z virtuálních počítačů řešení Az
 
    :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-allow-list.png" alt-text="Snímek obrazovky se adresami MAC v seznamu povolených filtrů BPDU":::
 
-1. V části segmentace segmentů **sítě**  >  **Segments**  >  **Segments** v oblasti hledání zadejte název definice sítě.
+1. V části segmentace segmentů **sítě**  >    >  v oblasti hledání zadejte název definice sítě.
 
    :::image type="content" source="media/manage-dhcp/networking-segments-search.png" alt-text="Snímek obrazovky s polem filtru segmentů > sítě":::
 

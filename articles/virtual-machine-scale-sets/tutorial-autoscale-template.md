@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518290"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705247"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí šablony Azure
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. Co se v tomto kurzu naučíte:
@@ -33,7 +33,7 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 
 
 ## <a name="define-an-autoscale-profile"></a>Definice profilu automatického škálování
-V šabloně Azure nadefinujete profil automatického škálování s použitím poskytovatele prostředků *Microsoft.insights/autoscalesettings*. *Profil* obsahuje podrobnosti o kapacitě škálovací sady a všechna přidružená pravidla. Následující příklad definuje profil *Autoscale by percentage based on CPU usage* (Procentní automatické škálování na základě využití CPU) a nastaví výchozí minimální kapacitu instancí virtuálních počítačů na *2* a maximální kapacitu na *10* :
+V šabloně Azure nadefinujete profil automatického škálování s použitím poskytovatele prostředků *Microsoft.insights/autoscalesettings*. *Profil* obsahuje podrobnosti o kapacitě škálovací sady a všechna přidružená pravidla. Následující příklad definuje profil *Autoscale by percentage based on CPU usage* (Procentní automatické škálování na základě využití CPU) a nastaví výchozí minimální kapacitu instancí virtuálních počítačů na *2* a maximální kapacitu na *10*:
 
 ```json
 {
@@ -143,10 +143,10 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser* , a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
+Teď vytvořte sadu škálování virtuálního počítače pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser*, a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```
@@ -180,7 +180,7 @@ Připojte se přes SSH k první instanci virtuálního počítače. Pomocí para
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů* **stress** , které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
+Po přihlášení nainstalujte nástroj **stress**. Spusťte *10 pracovních procesů* **stress**, které vygenerují zatížení CPU. Tyto pracovní procesy budou spuštěné *420* sekund, což je dostatečná doba na to, aby pravidla automatického škálování implementovala požadovanou akci.
 
 ```console
 sudo apt-get update
@@ -188,9 +188,9 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* , stisknutím klávesy *Enter* se vraťte do příkazového řádku.
+Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, stisknutím klávesy *Enter* se vraťte do příkazového řádku.
 
-Pokud chcete potvrdit, že nástroj **stress** generuje zatížení CPU, prozkoumejte zatížení aktivního systému pomocí nástroje **top** :
+Pokud chcete potvrdit, že nástroj **stress** generuje zatížení CPU, prozkoumejte zatížení aktivního systému pomocí nástroje **top**:
 
 ```console
 top
@@ -216,7 +216,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* , opět se stisknutím klávesy *Enter* vraťte do příkazového řádku.
+Jakmile nástroj **stress** zobrazí podobný výstup: *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, opět se stisknutím klávesy *Enter* vraťte do příkazového řádku.
 
 Ukončete připojení k druhé instanci virtuálního počítače. Nástroj **stress** zůstane na instanci virtuálního počítače spuštěný.
 

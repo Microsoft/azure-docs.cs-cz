@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: b41677d1e4f3ba3889472a3fb9bd6c6a9db4c0a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 326af3bc38ce70cc7cb205384bb4302c5ff73d28
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123366"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704176"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelismu dotazů v Azure Stream Analytics
 V tomto článku se dozvíte, jak využít paralelismus v Azure Stream Analytics. Naučíte se, jak škálovat Stream Analytics úlohy konfigurací vstupních oddílů a optimalizací definice analytického dotazu.
@@ -58,7 +58,7 @@ Další informace o oddílech najdete v následujících článcích:
 
 2. Dalším krokem je vytvoření oddílů dotazu. Pro úlohy s úrovní kompatibility 1,2 nebo vyšší (doporučeno) je možné zadat vlastní sloupec jako klíč oddílu ve vstupním nastavení a úloha bude paralellized automaticky. Úlohy s úrovní kompatibility 1,0 nebo 1,1 vyžadují, abyste v všech krocích dotazu používali **partition by PartitionID** . Je povoleno více kroků, ale všechny musí být rozděleny stejným klíčem. 
 
-3. Většina výstupů podporovaných v Stream Analytics může využít dělení. Pokud použijete typ výstupu, který nepodporuje vytváření oddílů vaší úlohy, nebude *zpracovatelné paralelní* . Pro výstupy centra událostí se ujistěte, že je **sloupec klíč oddílu** nastavený na stejný klíč oddílu, který se používá v dotazu. Další podrobnosti najdete v [části s výstupem](#outputs) .
+3. Většina výstupů podporovaných v Stream Analytics může využít dělení. Pokud použijete typ výstupu, který nepodporuje vytváření oddílů vaší úlohy, nebude *zpracovatelné paralelní*. Pro výstupy centra událostí se ujistěte, že je **sloupec klíč oddílu** nastavený na stejný klíč oddílu, který se používá v dotazu. Další podrobnosti najdete v [části s výstupem](#outputs) .
 
 4. Počet vstupních oddílů musí být stejný jako počet výstupních oddílů. Výstup služby Blob Storage může podporovat oddíly a zdědí schéma dělení nadřazeného dotazu. Když je zadaný klíč oddílu pro úložiště objektů blob, budou se data rozdělit na oddíly na vstupním oddílu, takže výsledek bude pořád plně paralelní. Tady jsou příklady hodnot oddílů, které umožňují plně paralelní úlohu:
 
@@ -89,7 +89,7 @@ Dotaz:
     WHERE TollBoothId > 100
 ```
 
-Tento dotaz je jednoduchým filtrem. Proto se nemusíte starat o dělení vstupu, který se odesílá do centra událostí. Všimněte si, že úlohy s úrovní kompatibility před 1,2 musí zahrnovat **oddíl podle identifikátoru PartitionID** , takže splní #2 požadavku ze starší verze. Pro výstup musíme v úloze nakonfigurovat výstup centra událostí tak, aby byl klíč oddílu nastavený na **PartitionID** . Od poslední kontroly se ujistěte, že počet vstupních oddílů je stejný jako počet výstupních oddílů.
+Tento dotaz je jednoduchým filtrem. Proto se nemusíte starat o dělení vstupu, který se odesílá do centra událostí. Všimněte si, že úlohy s úrovní kompatibility před 1,2 musí zahrnovat **oddíl podle identifikátoru PartitionID** , takže splní #2 požadavku ze starší verze. Pro výstup musíme v úloze nakonfigurovat výstup centra událostí tak, aby byl klíč oddílu nastavený na **PartitionID**. Od poslední kontroly se ujistěte, že počet vstupních oddílů je stejný jako počet výstupních oddílů.
 
 ### <a name="query-with-a-grouping-key"></a>Dotaz s klíčem seskupení
 
@@ -233,7 +233,7 @@ Aby bylo možné použít pro dotaz více SUs, musí být vstupní datový proud
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Když je dotaz rozdělený na oddíly, vstupní události se zpracují a agreguje do samostatných skupin oddílů. Výstupní události jsou také generovány pro každou skupinu. Dělení může způsobit neočekávané výsledky, když pole **Seskupit podle** není klíč oddílu ve vstupním datovém proudu. Například pole **TollBoothId** v předchozím dotazu není klíčem oddílu **Input1** . Výsledkem je, že data z TollBooth #1 lze rozložit do více oddílů.
+Když je dotaz rozdělený na oddíly, vstupní události se zpracují a agreguje do samostatných skupin oddílů. Výstupní události jsou také generovány pro každou skupinu. Dělení může způsobit neočekávané výsledky, když pole **Seskupit podle** není klíč oddílu ve vstupním datovém proudu. Například pole **TollBoothId** v předchozím dotazu není klíčem oddílu **Input1**. Výsledkem je, že data z TollBooth #1 lze rozložit do více oddílů.
 
 Každý z oddílů **Input1** se zpracuje samostatně pomocí Stream Analytics. Výsledkem je, že se vytvoří několik záznamů o počtu automobilů pro stejné tollboothy ve stejném Bubnovém okně. Pokud se klíč vstupního oddílu nedá změnit, můžete tento problém vyřešit přidáním kroku, který není rozdělený na oddíly pro agregaci hodnot napříč oddíly, jako v následujícím příkladu:
 
@@ -270,7 +270,7 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 | 5K     |    6    |  6.   |
 | 10K    |    12   |  10 Z  |
 
-Řešení [centra událostí](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) se škáluje lineárně v podobě jednotek streamování (SU) a propustnosti, takže je nejúčinnější a výkonný způsob analýzy a streamování dat z Stream Analytics. Úlohy je možné škálovat až do 192 SU, což zhruba souvisí se zpracováním až 200 MB/s, nebo 19 000 000 000 000 událostí za den.
+Řešení [centra událostí](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-eventhubs) se škáluje lineárně v podobě jednotek streamování (SU) a propustnosti, takže je nejúčinnější a výkonný způsob analýzy a streamování dat z Stream Analytics. Úlohy je možné škálovat až do 192 SU, což zhruba souvisí se zpracováním až 200 MB/s, nebo 19 000 000 000 000 událostí za den.
 
 #### <a name="azure-sql"></a>Azure SQL
 |Rychlost přijímání zpráv (události za sekundu) | Jednotky streamování | Výstupní prostředky  |
@@ -279,16 +279,16 @@ Následující poznámky používají úlohu Stream Analytics s dotazem bez stav
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)  podporuje zapisování paralelně, označované jako dědění oddílů, ale není ve výchozím nastavení povolené. Povolení dědění rozdělení na oddíly, společně s plně paralelním dotazem, ale nemusí být dostačující pro dosažení vyšší propustnosti. Propustnost zápisu SQL závisí významně na konfiguraci databáze a schématu tabulek. Článek o [výkonu SQL Output](./stream-analytics-sql-output-perf.md) obsahuje další podrobnosti o parametrech, které můžou maximalizovat propustnost zápisu. Jak je uvedeno ve [výstupu Azure Stream Analytics Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení se neškáluje lineárně jako plně paralelní kanál nad rámec 8 oddílů a může vyžadovat přerozdělení do výstupu SQL (viz [do](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Skladové jednotky úrovně Premium se potřebují pro udržení vysokého vstupně-výstupních operací spolu se režiemi ze záloh protokolů při každém několika minutách.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-azuresql)  podporuje zapisování paralelně, označované jako dědění oddílů, ale není ve výchozím nastavení povolené. Povolení dědění rozdělení na oddíly, společně s plně paralelním dotazem, ale nemusí být dostačující pro dosažení vyšší propustnosti. Propustnost zápisu SQL závisí významně na konfiguraci databáze a schématu tabulek. Článek o [výkonu SQL Output](./stream-analytics-sql-output-perf.md) obsahuje další podrobnosti o parametrech, které můžou maximalizovat propustnost zápisu. Jak je uvedeno ve [výstupu Azure Stream Analytics Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) článku, toto řešení se neškáluje lineárně jako plně paralelní kanál nad rámec 8 oddílů a může vyžadovat přerozdělení do výstupu SQL (viz [do](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Skladové jednotky úrovně Premium se potřebují pro udržení vysokého vstupně-výstupních operací spolu se režiemi ze záloh protokolů při každém několika minutách.
 
-#### <a name="cosmos-db"></a>Cosmos DB
+#### <a name="cosmos-db"></a>Databáze Cosmos
 |Rychlost přijímání zpráv (události za sekundu) | Jednotky streamování | Výstupní prostředky  |
 |-------|-------|---------|
 |  1 tis.   |  3    | 20 TISÍC RU  |
 |  5K   |  24   | 60K RU  |
 |  10K  |  48   | 120K RU |
 
-[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) výstup z Stream Analytics byl aktualizován tak, aby používal nativní integraci do [úrovně kompatibility 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Úroveň kompatibility 1,2 umožňuje významně vyšší propustnost a snižuje spotřebu RU v porovnání s 1,1, což je výchozí úroveň kompatibility pro nové úlohy. Toto řešení využívá kontejnery CosmosDB rozdělené na/deviceId a zbytek řešení je identický nakonfigurované.
+[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) výstup z Stream Analytics byl aktualizován tak, aby používal nativní integraci do [úrovně kompatibility 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Úroveň kompatibility 1,2 umožňuje významně vyšší propustnost a snižuje spotřebu RU v porovnání s 1,1, což je výchozí úroveň kompatibility pro nové úlohy. Toto řešení využívá kontejnery CosmosDB rozdělené na/deviceId a zbytek řešení je identický nakonfigurované.
 
 Všechny [datové proudy ve zkušebních ukázkách Azure](https://github.com/Azure-Samples/streaming-at-scale) používají jako vstup centrum událostí jako vstup, který je dodaný zátěží pro simulaci testovacích klientů. Každá vstupní událost je dokument 1 KB JSON, který překládá nakonfigurovanou rychlost přijímání do propustnosti (1 MB/s, 5 MB/s a 10 MB/s) snadno. Události simulují zařízení IoT odesílající následující data JSON (ve zkrácené formě) až do zařízení 1 tisíc:
 
@@ -311,9 +311,9 @@ Všechny [datové proudy ve zkušebních ukázkách Azure](https://github.com/Az
 
 ### <a name="identifying-bottlenecks"></a>Identifikace kritických bodů
 
-Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU** .
+Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

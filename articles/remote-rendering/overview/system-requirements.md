@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207406"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722687"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -64,7 +65,32 @@ Stabilní síťové připojení s nízkou latencí je důležité pro dobré už
 
 Informace o řešení problémů se sítí najdete v [Průvodci odstraňováním potíží](../resources/troubleshoot.md#unstable-holograms).
 
-### <a name="network-ports"></a>Síťové porty
+### <a name="network-firewall"></a>Síťová brána firewall
+
+### <a name="sdk-version--0176"></a>Verze sady SDK >= 0.1.76
+
+Virtuální počítače pro vzdálené vykreslování používají sdílené IP adresy z následujících rozsahů IP adres:
+
+| Název             | Oblast         | Předpona IP adresy         |
+|------------------|:---------------|:------------------|
+| Austrálie – východ   | australiaeast  | 20.53.44.240/28   |
+| East US          | eastus         | 20.62.129.224/28  |
+| USA – východ 2        | eastus2        | 20.49.103.240/28  |
+| Japan East       | japaneast      | 20.191.165.112/28 |
+| Severní Evropa     | northeurope    | 52.146.133.64/28  |
+| Středojižní USA | southcentralus | 20.65.132.80/28   |
+| Southeast Asia   | southeastasia  | 20.195.64.224/28  |
+| Spojené království – jih         | uksouth        | 51.143.209.144/28 |
+| West Europe      | westeurope     | 20.61.99.112/28   |
+| Západní USA 2        | westus2        | 20.51.9.64/28     |
+
+Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) neblokovaly tyto rozsahy IP adres a následující rozsahy portů:
+
+| Port              | Protokol  | Povolit    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | Odesílaná |
+
+#### <a name="sdk-version--0176"></a>Verze sady SDK < 0.1.76
 
 Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
 

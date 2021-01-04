@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512041"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705400"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -268,8 +268,10 @@ Okno Azure Portal vytvořit umožňuje vytvořit prostředek QnA Maker Managed (
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky Azure Portal seznamu prostředků QnA Maker spravovaného (Preview)](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > Při vytváření prostředku QnA Maker vytvořte novou skupinu prostředků. Díky tomu můžete při hledání podle skupiny prostředků Zobrazit všechny prostředky přidružené k prostředku QnA Maker Managed (Preview).
+
 > [!TIP]
 > Pomocí konvence vytváření názvů můžete označovat cenové úrovně v rámci názvu prostředku nebo skupiny prostředků. Když obdržíte chyby při vytváření nové znalostní báze nebo přidávání nových dokumentů, je běžným problémem omezení cenové úrovně Kognitivní hledání.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: fd4ea4b671ee8efa853109e288459fdc256bee23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73fd6c7f49c10c8aca1060e91fc69b0e581738b
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776676"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707499"
 ---
 # <a name="import-and-export-data-reference"></a>Odkaz na Import a export dat
 
@@ -18,4 +18,6 @@ Podívejte se na tento odkaz pro import a export, který vám umožní získat n
 
 ## <a name="import-and-export-knowledge-base"></a>Import a export znalostní báze Knowledge Base
 
-**Soubory TSV a XLS**z exportovaných základů znalostní báze lze použít pouze importem souborů ze stránky **nastavení** na portálu QnA maker. Nelze je použít jako zdroje dat během vytváření znalostní báze nebo na stránce **+ Přidat soubor** nebo **+ Přidat adresu URL** na stránce **Nastavení** .
+**Soubory TSV a XLS** z exportovaných základů znalostní báze lze použít pouze importem souborů ze stránky **nastavení** na portálu QnA maker. Nelze je použít jako zdroje dat během vytváření znalostní báze nebo na stránce **+ Přidat soubor** nebo **+ Přidat adresu URL** na stránce **Nastavení** . 
+
+Při importu znalostní báze prostřednictvím těchto **souborů TSV a XLS** se páry QnA přidají do redakčního zdroje, nikoli do zdrojů, ze kterých se QnAs extrahovali v exportované znalostní bázi. 

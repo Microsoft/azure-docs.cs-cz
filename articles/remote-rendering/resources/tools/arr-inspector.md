@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204737"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723821"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Kontrolní nástroj ArrInspector
 
@@ -108,17 +108,3 @@ V pravém horním rohu vám přepínač umožní pozastavit živou aktualizaci p
 ![Režim pozastavení](./media/pause-mode.png)
 
 Při opětovném povolení živé aktualizace se resetují všechny panely.
-
-## <a name="host-configuration"></a>Konfigurace hostitele
-
-Ve výchozím nastavení se nástroj připojí k serveru ARR, na kterém je spuštěný na stejném hostiteli, který obsluhuje ArrInspector. Můžete ji ale nakonfigurovat tak, aby zkontrolovala jiný server, za předpokladu, že je spuštěná instance ARR s otevřeným portem nástrojů.
-
-Provedete to tak, že získáte přístup k hlavní nabídce nalevo od záhlaví a vyberete *Konfigurace hostitele*. Klikněte na **Přidat nového hostitele**a zadejte název a název hostitele. Pro *název hostitele* použijte pouze název hostitele končící na `.mixedreality.azure.com` , Nezahrnovat `http://` ani port.
-
-![Konfigurace hostitele](./media/host-configuration.png)
-
-Chcete-li rychle přepínat z jednoho hostitele na druhého, použijte rozevírací nabídku v pravém horním rohu.
-
-![Pole se seznamem hostitelů](./media/host-switch-combo.png)
-
-Seznam hostitelů je uložený v prohlížeči místního úložiště, takže při opětovném otevření stejného prohlížeče se zachová.

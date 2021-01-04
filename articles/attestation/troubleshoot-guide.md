@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182831"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704312"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Microsoft Azure ověření identity
 
@@ -261,7 +261,7 @@ Viz [Příklady zásad](./policy-examples.md) ověřování identity a [vytvář
 
 V PowerShellu nejde nainstalovat moduly AZ nebo AZ. Attestation.
 
-### <a name="error"></a>Chyba
+### <a name="error"></a>Chybová
 
 Upozornění: nepovedlo se přeložit zdroj balíčku https://www.powershellgallery.com/api/v2 PackageManagement\Install-Package: pro zadaná kritéria hledání a název modulu se nenašla žádná shoda.
 
@@ -279,8 +279,8 @@ Pokud chcete pokračovat v interakci s Galerie prostředí PowerShell, spusťte 
 
 Uživatel přiřazený k příslušným rolím Ale problémy s autorizací při správě zásad ověřování pomocí PowerShellu.
 
-### <a name="error"></a>Chyba
-Klient s ID objektu nemá <object Id>  autorizaci k provedení akce Microsoft. Authorization/RoleAssignments/Write přes obor ' koupená/ <subscriptionId> resourcegroups/secure_enclave_poc/Providers/Microsoft.Authorization/RoleAssignments/ <role assignmentId> ' nebo je obor neplatný. Pokud byl přístup nedávno udělen, aktualizujte prosím svoje přihlašovací údaje.
+### <a name="error"></a>Chybová
+Klient s ID objektu ID objektu nemá &lt; &gt;  autorizaci k provedení akce Microsoft. Authorization/RoleAssignments/Write přes Scope koupená/ &lt; subscriptionId &gt; ResourceGroups/secure_enclave_poc/Providers/Microsoft.Authorization/RoleAssignments/ &lt; role assignmentId &gt; nebo je obor neplatný. Pokud byl přístup nedávno udělen, aktualizujte prosím svoje přihlašovací údaje.
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 

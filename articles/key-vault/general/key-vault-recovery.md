@@ -3,25 +3,37 @@ title: Přehled obnovení Azure Key Vault | Microsoft Docs
 description: Funkce Key Vault Recovery jsou navržené tak, aby se zabránilo nechtěnému nebo škodlivému odstranění trezoru klíčů a tajných klíčů, klíčů a certifikátů uložených v trezoru klíčů.
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587107"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704210"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Postup povolení ochrany proti odstranění a vyprázdnění
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault správu obnovení s ochranou pomocí obnovitelného odstranění a mazání
 
 Tento článek se zabývá dvěma funkcemi pro obnovení Azure Key Vault a ochranou proti odstranění a vyprázdnění. Tento dokument obsahuje přehled těchto funkcí a ukazuje, jak je spravovat prostřednictvím Azure Portal, Azure CLI a Azure PowerShell.
 
+Další informace o Key Vault najdete v tématu.
+- [Přehled služby Key Vault](overview.md)
+- [Přehled Azure Key Vault klíčů, tajných kódů a certifikátů](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
+* [Modul PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault – můžete ho vytvořit pomocí [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md)
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Co jsou ochrana obnovitelného odstranění a mazání
 
-Ochrana proti odstranění a vyprázdnění je ve dvou různých funkcích pro obnovení trezoru klíčů.
+Ochrana proti [odstranění](soft-delete-overview.md) a vyprázdnění je ve dvou různých funkcích pro obnovení trezoru klíčů.
+
 > [!IMPORTANT]
 > Zapnutí obnovitelného odstranění je důležité, aby bylo zajištěno, že vaše trezory klíčů a přihlašovací údaje jsou chráněny před náhodným odstraněním. Zapnutí obnovitelného odstranění je ale považováno za zásadní změnu, protože může vyžadovat změnu logiky aplikace nebo poskytnutí dalších oprávnění k objektům služby. Než zapnete obnovitelné odstranění pomocí níže uvedených pokynů, ujistěte se, že je vaše aplikace kompatibilní se změnou v tomto dokumentu [ .](soft-delete-change.md)
 
@@ -33,6 +45,8 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 
 > [!NOTE]
 > Ochrana vyprázdnění je navržená tak, že žádná role správce ani oprávnění nemůže přepsat, zakázat nebo obejít ochranu vyprázdnění. **Jakmile je ochrana vyprázdnění povolena, nelze ji zakázat ani přepsat kýmkoli včetně společnosti Microsoft.** To znamená, že musíte obnovit odstraněný Trezor klíčů nebo počkat na uplynutí doby uchovávání, než znovu použijete název trezoru klíčů.
+
+Další informace o obnovitelném odstranění najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](soft-delete-overview.md) .
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -66,7 +80,7 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. V horní části obrazovky klikněte na možnost Správa odstraněných trezorů.
 1. Na pravé straně obrazovky se otevře podokno kontextu.
 1. Vyberte své předplatné.
-1. Pokud jste Trezor klíčů odstranili jako měkký, zobrazí se v podokně kontext na pravé straně.
+1. Pokud byl váš Trezor klíčů měkký, zobrazí se v podokně kontext na pravé straně.
 1. Pokud existuje příliš mnoho trezorů, můžete v dolní části podokna kontextu kliknout na načíst více nebo získat výsledky pomocí CLI nebo PowerShellu.
 1. Jakmile najdete trezor, který chcete obnovit nebo vymazat, zaškrtněte políčko vedle něj.
 1. Pokud chcete obnovit Trezor klíčů, vyberte možnost obnovit v dolní části podokna kontextu.
@@ -370,3 +384,14 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>Další kroky
+
+- [Rutiny Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Key Vault příkazů rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/keyvault)
+- [Zálohování Azure Key Vault](backup.md)
+- [Postup povolení protokolování Key Vault](howto-logging.md)
+- [Zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md)
+- [Azure Key Vault příručka pro vývojáře](developers-guide.md)
+- [Osvědčené postupy použití trezoru klíčů](best-practices.md)

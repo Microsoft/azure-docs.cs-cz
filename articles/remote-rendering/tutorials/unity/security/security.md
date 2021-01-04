@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207525"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724108"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -172,7 +172,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     * **Cesta k modelu**: kombinace "outputFolderPath" a "outputAssetFileName" definovaná v *arrconfig.jsv* souboru. V tomto rychlém startu se jednalo o "outputFolderPath": "převedený/robot", "outputAssetFileName": "robot. arrAsset". Výsledkem bude, že hodnota cesty k modelu "Konvertovaný/robot/robot. arrAsset", vaše hodnota se bude lišit.
 
     >[!TIP]
-    > Pokud [spustíte skript **Conversion.ps1** ](../../../quickstarts/convert-model.md#run-the-conversion) bez argumentu "-UseContainerSas", skript vypíše všechny výše uvedené hodnoty pro místo tokenu SAS. ![Propojený model](./media/converted-output.png)
+    > Pokud [spustíte skript **Conversion.ps1**](../../../quickstarts/convert-model.md#run-the-conversion) bez argumentu "-UseContainerSas", skript vypíše všechny výše uvedené hodnoty pro místo tokenu SAS. ![Propojený model](./media/converted-output.png)
 1. V době, kdy je to potřeba, odeberte nebo zakažte GameObject **TestModel**, abyste uvolnili prostor pro načtení vlastního modelu.
 1. Nahrajte scénu a připojte se ke vzdálené relaci.
 1. Klikněte pravým tlačítkem na **RemoteRenderingCoordinator** a vyberte **načíst propojený vlastní model**.
@@ -190,7 +190,7 @@ Pro odebrání z místní aplikace máme ještě jedno "heslo", AccountKey. To s
 
 Ověřování AAD vám umožní lépe řízený způsob, jakým jednotlivci nebo skupiny používají ARR. ŠIPKA na základě této vlastnosti podporovala příjem [přístupových tokenů](../../../../active-directory/develop/access-tokens.md) namísto použití klíče účtu. Přístupové tokeny si můžete představit jako uživatelsky omezený klíč specifický uživatelem, který pouze odemkne určité části konkrétního prostředku, pro který byl vyžádán.
 
-Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGetter**, který obsahuje metodu, která vrací objekt **AzureFrontendAccountInfo** , který se používá ke konfiguraci vzdálené správy relací. K **ARRCredentialGetter**můžeme přiřadit jinou metodu. díky tomu můžeme použít tok přihlášení Azure, který vygeneruje objekt **AzureFrontendAccountInfo** , který obsahuje přístupový token Azure. Tento přístupový token bude specifický pro uživatele, který se přihlašuje.
+Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGetter**, který obsahuje metodu, která vrací objekt **AzureFrontendAccountInfo** , který se používá ke konfiguraci vzdálené správy relací. K **ARRCredentialGetter** můžeme přiřadit jinou metodu. díky tomu můžeme použít tok přihlášení Azure, který vygeneruje objekt **AzureFrontendAccountInfo** , který obsahuje přístupový token Azure. Tento přístupový token bude specifický pro uživatele, který se přihlašuje.
 
 1. Postupujte podle pokynů v tématu [Postupy: Konfigurace ověřování pro nasazené aplikace](../../../how-tos/authentication.md#authentication-for-deployed-applications), konkrétně budete postupovat podle pokynů uvedených v dokumentaci k Azure AD anchorch kotev v dokumentaci k [ověřování uživatelů Azure AD](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Zahrnuje registraci nové aplikace Azure Active Directory a konfiguraci přístupu k instanci ARR.
 1. Po nakonfigurování nové aplikace AAD ověřte, že vaše aplikace AAD vypadá jako na následujících obrázcích:
@@ -204,7 +204,7 @@ Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGet
     **AAR-> AccessControl (IAM)** ![ Role ARR](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > Role *vlastníka* není dostatečná ke správě relací prostřednictvím klientské aplikace. Pro každého uživatele, kterému chcete udělit možnost Spravovat relace, musíte poskytnout **klienta vzdáleného vykreslování**role. Pro každého uživatele, který chcete spravovat relace a převod modelů, je nutné zadat **Správce vzdáleného vykreslování**role.
+    > Role *vlastníka* není dostatečná ke správě relací prostřednictvím klientské aplikace. Pro každého uživatele, kterému chcete udělit možnost Spravovat relace, musíte poskytnout **klienta vzdáleného vykreslování** role. Pro každého uživatele, který chcete spravovat relace a převod modelů, je nutné zadat **Správce vzdáleného vykreslování** role.
 
 Když je služba Azure na místě, je teď potřeba změnit způsob připojení kódu ke službě AAR. Provedeme to implementací instance **BaseARRAuthentication**, která vrátí nový objekt **AzureFrontendAccountInfo** . V takovém případě se informace o účtu nakonfigurují pomocí přístupového tokenu Azure.
 
@@ -255,6 +255,14 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ Nejdůležitější část této třídy z perspektivy ARR je tento řádek:
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Tady vytvoříte nový objekt **AzureFrontendAccountInfo** pomocí domény účtu, ID účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
+Tady vytvoříte nový objekt **AzureFrontendAccountInfo** pomocí domény účtu, ID účtu, domény ověřování účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
 
 V důsledku této změny bude aktuální stav aplikace a její přístup k prostředkům Azure vypadat takto:
 
@@ -391,6 +399,7 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
     * **ID klienta aplikace služby Active Directory** je *ID aplikace (klienta)* nalezené v registraci aplikace AAD (viz obrázek níže).
     * **ID tenanta Azure** je *ID adresáře (tenant)* , které najdete v registraci aplikace AAD (viz obrázek níže).
     * **ID účtu vzdáleného vykreslování Azure** je stejné **ID účtu** , které jste používali pro **RemoteRenderingCoordinator**.
+    * **Doména ověřování účtu** je stejná **doména ověřování účtu** , kterou jste používali v **RemoteRenderingCoordinator**.
 
     ![Snímek obrazovky, který zvýrazňuje ID aplikace (klienta) a ID adresáře (tenanta).](./media/app-overview-data.png)
 
@@ -403,7 +412,7 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
 
 ## <a name="build-to-device"></a>Sestavit do zařízení
 
-Pokud vytváříte aplikaci s použitím MSAL k zařízení, budete muset zahrnout soubor do složky **assets** projektu. To pomůže kompilátoru sestavit aplikaci správně pomocí *Microsoft.Identity.Client.dll* zahrnutých v **výukovém**programu.
+Pokud vytváříte aplikaci s použitím MSAL k zařízení, budete muset zahrnout soubor do složky **assets** projektu. To pomůže kompilátoru sestavit aplikaci správně pomocí *Microsoft.Identity.Client.dll* zahrnutých v **výukovém** programu.
 
 1. Přidat nový soubor do **assetů** s názvem **link.xml**
 1. Do souboru přidejte následující:
@@ -418,7 +427,7 @@ Pokud vytváříte aplikaci s použitím MSAL k zařízení, budete muset zahrno
     </linker>
     ```
 
-1. Uložit změny
+1. Uložte změny.
 
 Postupujte podle kroků v části [rychlý Start: nasazení ukázky Unity do HoloLens – Sestavte vzorový projekt](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)pro sestavení na HoloLens.
 

@@ -1,7 +1,7 @@
 ---
-title: Přeučení modelů pomocí návrháře Azure Machine Learning
+title: Použití parametrů kanálu k reučení modelů v Návrháři
 titleSuffix: Azure Machine Learning
-description: Naučte se přeučení modelů strojového učení pomocí publikovaných kanálů v Návrháři Azure Machine Learning.
+description: Přeučení modelů s publikovanými kanály a parametry kanálu v Návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437112"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708462"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Přeučení modelů pomocí návrháře Azure Machine Learning
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Použití parametrů kanálu k reučení modelů v Návrháři
 
 
-V tomto článku se dozvíte, jak pomocí návrháře Azure Machine Learning znovu naučit model strojového učení. Publikované kanály použijete k automatizaci pracovního postupu a nastavení parametrů, abyste mohli svůj model proškolit na nových datech. 
+V tomto článku se dozvíte, jak pomocí nástroje Azure Machine Learning Designer přeškolit model strojového učení pomocí parametrů kanálu. Publikované kanály použijete k automatizaci pracovního postupu a nastavení parametrů, abyste mohli svůj model proškolit na nových datech. Parametry kanálu umožňují znovu použít existující kanály pro různé úlohy.  
 
 V tomto článku získáte informace o těchto tématech:
 

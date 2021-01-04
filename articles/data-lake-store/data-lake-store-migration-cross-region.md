@@ -3,7 +3,7 @@ title: Azure Data Lake Storage Gen1 migrace mezi oblastmi | Microsoft Docs
 description: Zjistěte, co je třeba vzít v úvahu při plánování a dokončení migrace pro Azure Data Lake Storage Gen1 tak, jak budou k dispozici v nových oblastech.
 services: data-lake-store
 documentationcenter: ''
-author: swums
+author: twooley
 manager: amitkul
 editor: swums
 ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
@@ -11,13 +11,13 @@ ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: stewu
-ms.openlocfilehash: ba28d767c11c15b2dd70eeed2b39e13b084a7500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: twooley
+ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191341"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723802"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrace Azure Data Lake Storage Gen1 napříč oblastmi
 

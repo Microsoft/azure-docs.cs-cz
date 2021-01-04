@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285135"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704516"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
@@ -23,7 +23,7 @@ ms.locfileid: "93285135"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení kroků v tomto článku:
 
@@ -176,14 +176,14 @@ Další Key Vault šablony můžete najít tady: [Key Vault správce prostředk�
 
 Pomocí Azure Portal můžete nasadit předchozí šablony pomocí možnosti **vytvořit vlastní šablonu v editoru** , jak je popsáno zde: [nasazení prostředků z vlastní šablony](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-Předchozí šablony můžete také uložit do souborů a použít tyto příkazy:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Předchozí šablony můžete také uložit do souborů a použít tyto příkazy:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -209,7 +209,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md).
 - Přečtěte si další informace o [Azure Resource Manager](../../azure-resource-manager/management/overview.md).

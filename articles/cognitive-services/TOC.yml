@@ -15,6 +15,8 @@
       href: cognitive-services-custom-subdomains.md
     - name: Podpora jazyků
       href: language-support.md
+    - name: Plánování a správa nákladů
+      href: plan-manage-costs.md
 - name: Rychlé starty
   items:
     - name: Vytvoření nového prostředku pomocí webu Azure Portal

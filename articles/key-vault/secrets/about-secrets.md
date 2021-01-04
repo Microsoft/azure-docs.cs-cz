@@ -1,6 +1,6 @@
 ---
 title: Informace o Azure Key Vault tajných klíčů – Azure Key Vault
-description: Přehled rozhraní REST Azure Key Vault a podrobností pro vývojáře pro tajné klíče.
+description: Přehled Azure Key Vault tajných klíčů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82930467"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705264"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
 
-Key Vault poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce.
+[Key Vault](../general/overview.md) poskytuje zabezpečené úložiště generických tajných klíčů, jako jsou hesla a databázové připojovací řetězce.
 
 Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. Interně Key Vault ukládá a spravuje tajné klíče jako sekvence oktetů (8bitové bajty) a maximální velikost 25k bajtů. Služba Key Vault neposkytuje sémantiku tajných kódů. Přijímá pouze data, šifruje je, ukládá je a vrací tajný identifikátor (ID). Identifikátor lze použít k pozdějšímu načtení tajného klíče.  
 
@@ -44,9 +44,11 @@ Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odp
 - *Vytvořeno*: IntDate, volitelné. Vytvořený atribut označuje, kdy byla tato verze tajného kódu vytvořena. Tato hodnota je null pro tajné klíče vytvořené před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 - *Aktualizováno*: IntDate, volitelné. Aktualizovaný atribut určuje, kdy byla tato verze tajného kódu aktualizována. Tato hodnota je null pro tajné kódy, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.
 
+Informace o běžných atributech pro každý typ objektu trezoru klíčů najdete v článku [přehled Azure Key Vault klíčů, tajných klíčů a certifikátů](../general/about-keys-secrets-certificates.md) .
+
 ### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno exp pro *NBF*  /  *exp* . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání**nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
+Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno exp pro *NBF*  /   . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání** nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
 
 ## <a name="secret-access-control"></a>Řízení přístupu k tajným klíčům
 
@@ -68,6 +70,12 @@ Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, 
 
 Další informace o práci s tajnými kódy naleznete [v tématu tajné operace v odkazu na Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
+Návody k řízení přístupu v Key Vault:
+- [Přiřazení zásad přístupu Key Vault pomocí rozhraní příkazového řádku](../general/assign-access-policy-cli.md)
+- [Přiřazení zásad přístupu Key Vault pomocí PowerShellu](../general/assign-access-policy-powershell.md)
+- [Přiřazení zásady přístupu Key Vault pomocí Azure Portal](../general/assign-access-policy-portal.md)
+- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>Tajné značky  
 Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
 
@@ -76,14 +84,17 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 
 ## <a name="azure-storage-account-key-management"></a>Správa klíčů účtu Azure Storage
 
-Key Vault můžou spravovat klíče účtu úložiště Azure:
+Key Vault můžou spravovat klíče [účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview) :
 
 - Interně Key Vault možné vypsat (synchronizovat) klíče s účtem služby Azure Storage. 
 - Key Vault znovu vygeneruje (otáčí) klíče pravidelně.
 - Hodnoty klíče se nikdy nevrátí v reakci na volajícího.
 - Key Vault spravuje klíče účtů úložiště i klasických účtů úložiště.
 
-Další informace najdete v tématu [Azure Key Vault klíče účtu úložiště](../secrets/overview-storage-keys.md)).
+Další informace najdete tady:
+- [Přístupové klíče účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Správa klíčů účtu úložiště v Azure Key Vault](../secrets/overview-storage-keys.md))
+
 
 ## <a name="storage-account-access-control"></a>Řízení přístupu k účtu úložiště
 
@@ -109,11 +120,18 @@ Následující oprávnění se dají použít při autorizaci objektu zabezpeče
 
 Další informace najdete v referenčních informacích o [operacích účtu úložiště v Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
+Návody k řízení přístupu v Key Vault:
+- [Přiřazení zásad přístupu Key Vault pomocí rozhraní příkazového řádku](../general/assign-access-policy-cli.md)
+- [Přiřazení zásad přístupu Key Vault pomocí PowerShellu](../general/assign-access-policy-powershell.md)
+- [Přiřazení zásady přístupu Key Vault pomocí Azure Portal](../general/assign-access-policy-portal.md)
+- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Informace o službě Key Vault](../general/overview.md)
 - [Informace o klíčích, tajných kódech a certifikátech](../general/about-keys-secrets-certificates.md)
 - [Informace o klíčích](../keys/about-keys.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
-- [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
+- [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)

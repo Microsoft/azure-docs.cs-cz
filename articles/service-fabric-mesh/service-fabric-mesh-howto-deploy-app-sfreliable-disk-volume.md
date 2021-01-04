@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86822c5a9cef84ff4b51bc94b6b2dd3dbdee91bf
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489186"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702005"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojení vysoce dostupného Service Fabric spolehlivého svazku založeného na disku v aplikaci Service Fabric sítě 
 Běžnou metodou trvalého stavu s aplikacemi typu kontejner je použití vzdáleného úložiště, jako je Azure File Storage nebo databáze jako Azure Cosmos DB. To má za následek značnou latenci čtení a zápisu v síti do vzdáleného úložiště.
@@ -23,7 +23,7 @@ V tomto příkladu má aplikace čítače ASP.NET Core službu s webovou stránk
 
 `counterService`Pravidelně čte hodnotu čítače ze souboru, zvětšuje ho a zapisuje ho zpátky do souboru. Soubor je uložený ve složce, která je připojená na svazek, který je zálohovaný Service Fabric spolehlivým diskem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud chcete používat Azure CLI s tímto článkem, ujistěte se, že se `az --version` vrátí aspoň `azure-cli (2.0.43)` .  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
 
@@ -60,7 +60,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 Stav nasazení můžete zobrazit také pomocí příkazu.
 
 ```azurecli-interactive
-az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
+az deployment group show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
 Všimněte si názvu prostředku brány, který má typ prostředku `Microsoft.ServiceFabricMesh/gateways` . Použije se při získávání veřejné IP adresy aplikace.

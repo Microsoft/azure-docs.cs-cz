@@ -6,16 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488006"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706766"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
-Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou základní součástí jakékoli strategie kontinuity podnikových procesů, protože chrání data před náhodným poškozením nebo odstraněním.
 
 ## <a name="backups"></a>Zálohování
 
@@ -47,7 +47,7 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 Azure Database for PostgreSQL poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
 
 > [!IMPORTANT]
-> Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování.
+> Místně redundantní nebo geograficky redundantní úložiště zálohování je možné nakonfigurovat pouze při vytváření serveru. Po zřízení serveru není možné změnit možnost redundance úložiště zálohování.
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 
@@ -59,7 +59,7 @@ Hlavním prostředkem řízení nákladů na úložiště zálohování je nasta
 
 ## <a name="restore"></a>Obnovení
 
-Při obnovení se v Azure Database for PostgreSQL vytvoří nový server ze zálohy původního serveru.
+Při obnovení se v Azure Database for PostgreSQL vytvoří nový server ze zálohy původního serveru. 
 
 K dispozici jsou dva typy obnovení:
 
@@ -68,8 +68,11 @@ K dispozici jsou dva typy obnovení:
 
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
-> [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
+> [!NOTE] 
+> Pokud je váš zdrojový server PostgreSQL zašifrovaný pomocí klíčů spravovaných zákazníkem, přečtěte si prosím [dokumentaci](concepts-data-encryption-postgresql.md) , kde najdete další informace. 
+
+> [!NOTE]
+> Pokud chcete obnovit odstraněný PostgreSQL Server, postupujte [podle popsané procedury.](howto-restore-dropped-server.md)
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
@@ -81,11 +84,14 @@ Možná budete muset počkat, než bude provedena další záloha protokolu tran
 
 ### <a name="geo-restore"></a>Geografické obnovení
 
-Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Servery, které podporují až 4 TB úložiště, se dají obnovit do geografické spárované oblasti nebo do jakékoli oblasti, která podporuje až 16 TB úložiště. Pro servery, které podporují až 16 TB úložiště, se geografické zálohy dají obnovit v libovolné oblasti, která podporuje i 16 TB serverů. Seznam podporovaných oblastí najdete v části [cenové úrovně služby Azure Database for PostgeSQL](concepts-pricing-tiers.md) .
+Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Servery, které podporují až 4 TB úložiště, se dají obnovit do geografické spárované oblasti nebo do jakékoli oblasti, která podporuje až 16 TB úložiště. Pro servery, které podporují až 16 TB úložiště, se geografické zálohy dají obnovit v libovolné oblasti, která podporuje i 16 TB serverů. Seznam podporovaných oblastí najdete v [Azure Database for PostgreSQL cenové úrovně](concepts-pricing-tiers.md) .
 
 Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
 Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště se nepodporuje.
+
+> [!NOTE]
+> Pokud váš zdrojový server používá dvojité šifrování infrastruktury pro obnovení serveru, existují omezení, včetně oblastí, které jsou k dispozici. Další podrobnosti najdete v tématu [šifrování s dvojitou infrastrukturou](concepts-infrastructure-double-encryption.md) .
 
 ### <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
 

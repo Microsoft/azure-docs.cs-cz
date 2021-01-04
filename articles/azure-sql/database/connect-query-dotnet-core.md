@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680345"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705207"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
+# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](https://www.microsoft.com/net/) a C#. Pak spustíte příkaz Transact-SQL k dotazování dat.
@@ -32,34 +32,10 @@ V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](ht
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Rozhraní .NET Core pro nainstalovaný operační systém](https://www.microsoft.com/net/core) .
 - Databáze, ve které můžete spustit dotaz. 
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
-
-- [Rozhraní .NET Core pro nainstalovaný operační systém](https://www.microsoft.com/net/core) .
-
-## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
-
-Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-
-2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
-
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
-
-> [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
-## <a name="get-adonet-connection-information-optional---sql-database-only"></a>Získat informace o připojení ADO.NET (jenom volitelné SQL Database)
-
-1. V Azure Portal přejděte do okna databáze a v části **Nastavení** vyberte **připojovací řetězce**.
-
-2. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
-
-    ![Připojovací řetězec pro ADO.NET](./media/connect-query-dotnet-core/adonet-connection-string2.png)
-
-3. Pokud ho máte v úmyslu používat, zkopírujte připojovací řetězec **ADO.NET** .
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
   
 ## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 

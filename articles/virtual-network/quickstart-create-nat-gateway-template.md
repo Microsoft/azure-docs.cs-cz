@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913326"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703785"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rychlý Start: Vytvoření šablony NAT Gateway – ARM
 
@@ -29,7 +29,7 @@ Začínáme se službou Virtual Network NAT pomocí šablony Azure Resource Mana
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
@@ -53,15 +53,15 @@ Virtuální počítač Ubuntu se nasadí do podsítě, která je přidružená k
 
 V šabloně jsou definované devět prostředků Azure:
 
-* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : vytvoří skupinu zabezpečení sítě.
-* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : vytvoří pravidlo zabezpečení.
-* **[Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)** : Vytvoří veřejnou IP adresu.
-* **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : vytvoří předponu veřejné IP adresy.
-* **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : vytvoří virtuální počítač.
-* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : vytvoří virtuální síť.
-* **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)** : vytvoří prostředek brány NAT.
-* **[Microsoft. Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : vytvoří podsíť virtuální sítě.
-* **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** : vytvoří síťové rozhraní.
+* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)**: vytvoří skupinu zabezpečení sítě.
+* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: vytvoří pravidlo zabezpečení.
+* **[Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)**: Vytvoří veřejnou IP adresu.
+* **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)**: vytvoří předponu veřejné IP adresy.
+* **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)**: vytvoří virtuální počítač.
+* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)**: vytvoří virtuální síť.
+* **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)**: vytvoří prostředek brány NAT.
+* **[Microsoft. Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)**: vytvoří podsíť virtuální sítě.
+* **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)**: vytvoří síťové rozhraní.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -76,7 +76,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -99,7 +99,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -130,7 +130,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure Portal**
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT** , která obsahuje bránu NAT, a pak vyberte **Odstranit** .
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT** , která obsahuje bránu NAT, a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

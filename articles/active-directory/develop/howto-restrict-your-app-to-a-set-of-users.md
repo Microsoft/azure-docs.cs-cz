@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116899"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722262"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Postupy: omezení aplikace Azure AD na skupinu uživatelů v tenantovi Azure AD
 
@@ -49,14 +49,14 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce**.
 1. V horním panelu vyberte přihlášený účet. 
-1. V části **adresář**vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
+1. V části **adresář** vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
 1. V navigaci vlevo vyberte **Azure Active Directory**. Pokud v navigačním podokně není Azure Active Directory k dispozici, postupujte následovně:
 
     1. V horní části hlavní navigační nabídky vlevo vyberte **všechny služby** .
     1. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte položku **Azure Active Directory** z výsledku.
 
 1. V podokně **Azure Active Directory** v navigační nabídce **Azure Active Directory** vlevo vyberte **podnikové aplikace** .
-1. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
+1. Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
 
      Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **všechny aplikace seznam všech aplikací** omezte nebo posuňte seznam a vyhledejte svoji aplikaci.
 
@@ -65,11 +65,11 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé v tenantovi musí být nejprve přiřazeni k této aplikaci nebo se nebudou moci přihlásit k této aplikaci.
 1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
 
-### <a name="app-registration"></a>Registrace aplikací
+### <a name="app-registration"></a>Registrace aplikace
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/).
 1. V horním panelu vyberte přihlášený účet. 
-1. V části **adresář**vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
+1. V části **adresář** vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
 1. V navigaci vlevo vyberte **Azure Active Directory**.
 1. V podokně **Azure Active Directory** v navigační nabídce **Azure Active Directory** levé straně vyberte **Registrace aplikací** .
 1. Vytvořte nebo vyberte aplikaci, kterou chcete spravovat. Musíte být **vlastníkem** této registrace aplikace.
@@ -82,7 +82,7 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 
 Jakmile nakonfigurujete aplikaci tak, aby umožňovala přiřazení uživatele, můžete pokračovat a přiřadit uživatele a skupiny k aplikaci.
 
-1. V navigační nabídce levé části aplikace vyberte podokno **Uživatelé a skupiny** .
+1. V navigační nabídce na levé straně podnikové aplikace vyberte podokno **Uživatelé a skupiny** .
 1. V horní části seznamu **uživatelů a skupin** vyberte tlačítko **Přidat uživatele** a otevřete podokno **Přidat přiřazení** .
 1. V podokně **Přidat přiřazení** vyberte selektor **uživatelů** . 
 

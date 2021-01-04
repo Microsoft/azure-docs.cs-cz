@@ -4,12 +4,12 @@ description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalšíc
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536077"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708428"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536077"
 Výstrahy protokolu aktivit jsou výstrahy, které se aktivují, když dojde k nové [události protokolu aktivit](activity-log-schema.md) , která odpovídá podmínkám zadaným ve výstraze. Na základě pořadí a objemu událostí zaznamenaných v [protokolu aktivit Azure](platform-logs-overview.md)se pravidlo výstrahy aktivuje. Pravidla upozornění protokolu aktivit jsou prostředky Azure, aby je bylo možné vytvořit pomocí šablony Azure Resource Manager. Také je možné je vytvořit, aktualizovat nebo odstranit v Azure Portal. Tento článek představuje koncepty za výstrahami protokolu aktivit. Další informace o vytváření a používání pravidel upozornění protokolů aktivit najdete v tématu [vytváření a správa výstrah protokolu aktivit](alerts-activity-log.md).
 
 > [!NOTE]
-> Pro události v kategorii výstrahy protokolu aktivit **nelze** vytvořit výstrahy.
+> * Pro události v kategorii výstrahy protokolu aktivit **nelze** vytvořit výstrahy.
+> * Výstrahy protokolu aktivit s kategorií zabezpečení je možné definovat taky v [novém upgradovaném toku](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) na [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) .
 
 Obvykle vytváříte výstrahy protokolu aktivit pro příjem oznámení v těchto případech:
 

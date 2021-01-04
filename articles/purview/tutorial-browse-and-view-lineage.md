@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: procházení prostředků v Azure dosah a zobrazení jejich vydaných řádků'
 description: V tomto kurzu se dozvíte, jak vyhledat prostředky v katalogu a zobrazit datové řádky.
-author: hophanms
-ms.author: hophan
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: ab51e604412e79fb706190fef769ad76c694fd6c
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7ffbe2ded44ded4f580655f6ae9e98391490f94a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399430"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696102"
 ---
 # <a name="tutorial-browse-assets-in-azure-purview-preview-and-view-their-lineage"></a>Kurz: procházení assetů ve službě Azure dosah (Preview) a zobrazení jejich vydaných řádků
 
@@ -30,7 +30,7 @@ V tomto kurzu:
 > * Vyhledejte prostředky v katalogu.
 > * Zobrazení počtu assetů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úplný [kurz: přejděte na domovskou stránku Azure dosah (Preview) a vyhledejte Asset](tutorial-asset-search.md).
 

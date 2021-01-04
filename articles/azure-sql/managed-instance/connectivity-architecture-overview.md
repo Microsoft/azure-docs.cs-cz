@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853284"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722398"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -311,12 +311,13 @@ Pokud virtuální síť obsahuje vlastní DNS, vlastní server DNS musí být sc
 
 Pro **odchozí připojení se vynutilo tls 1,2**: v lednu 2020 Microsoft vynutila 1,2 TLS pro provoz uvnitř služby ve všech službách Azure. U spravované instance Azure SQL to vedlo k vymáhání TLS 1,2 u odchozích připojení používaných pro replikaci a připojení k serveru SQL Server. Pokud používáte verze SQL Server starší než 2016 se službou SQL Managed instance, zajistěte, aby byly použity [specifické aktualizace TLS 1,2](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) .
 
-U spravované instance SQL se aktuálně nepodporují následující funkce virtuální sítě:
+U spravované instance SQL se aktuálně *nepodporují* následující funkce virtuální sítě:
 
 - **Partnerský vztah Microsoftu**: povolení [partnerského vztahu Microsoftu](../../expressroute/expressroute-faqs.md#microsoft-peering) na okruhech ExpressRoute partnerských vztahů přímo nebo v transitu s virtuální sítí, kde se nachází spravovaná instance SQL, ovlivňuje tok přenosů mezi komponentami spravované instance SQL uvnitř virtuální sítě a služeb, na kterých závisí, a způsobující problémy s dostupností. Očekává se, že nasazení spravované instance SQL do virtuální sítě s partnerským vztahem Microsoftu je už povolené.
 - **Globální partnerské vztahy virtuálních sítí**: připojení [partnerských vztahů virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) napříč oblastmi Azure nefunguje pro spravované instance SQL umístěné v podsítích vytvořených před 9/22/2020.
 - **AzurePlatformDNS**: použití [značky služby](../../virtual-network/service-tags-overview.md) AZUREPLATFORMDNS k blokování překladu DNS platformy by vygenerovalo nedostupné spravované instance SQL. I když spravovaná instance SQL podporuje DNS definované uživatelem pro překlad DNS v rámci motoru, je závislá na platformě DNS platformy pro operace platforem.
 - **Brána NAT**: použití služby [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) k řízení odchozího připojení s konkrétní veřejnou IP adresou by nedostupné pro vykreslování spravované instance SQL. Služba SQL Managed instance je momentálně omezená na použití základního nástroje pro vyrovnávání zatížení, který neposkytuje koexistenci příchozích a odchozích toků s Virtual Network překladem adres (NAT).
+- **Protokol IPv6 pro Azure Virtual Network**: očekává se, že nasazení spravované instance SQL do [virtuálních sítí IPv4/IPv6 ve duálním zásobníku](../../virtual-network/ipv6-overview.md) se nezdaří. Přidružení skupiny zabezpečení sítě (NSG) nebo směrovací tabulky (UDR) obsahující předpony adresy IPv6 k podsíti spravované instance SQL nebo přidání předpon IPv6 adres do NSG nebo UDR, která je již přidružena k podsíti spravované instance, by způsobila nedostupnost spravované instance SQL. U nasazení spravované instance SQL do podsítě s NSG a UDR, které už mají předpony IPv6, se očekává selhání.
 
 ## <a name="next-steps"></a>Další kroky
 

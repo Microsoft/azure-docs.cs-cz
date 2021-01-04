@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422140"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706792"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -28,7 +28,7 @@ Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pr
 
 Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na primární úrovni zátěže s kapacitou pro zápis.
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
+### <a name="considerations"></a>Požadavky
 Tato funkce je určena pro scénáře, kde je prodleva přijatelná a určena pro zpracování nepřesměrování dotazů. Nejedná se o scénáře synchronní replikace, ve kterých se očekává, že jsou data repliky v aktuálním stavu. Mezi primárním serverem a replikou bude měřitelné zpoždění. Může to být v řádu minut nebo dokonce i v závislosti na zatížení a latenci mezi primárním serverem a replikou. Data v replice nakonec budou konzistentní s daty na primárním virtuálním počítači. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit. 
 
 > [!NOTE]
@@ -72,6 +72,8 @@ Funkce replika čtení používá fyzickou replikaci PostgreSQL, ne logickou rep
 
 Naučte se [vytvořit repliku pro čtení v Azure Portal](howto-read-replicas-portal.md).
 
+Pokud je váš zdrojový server PostgreSQL zašifrovaný pomocí klíčů spravovaných zákazníkem, přečtěte si prosím [dokumentaci](concepts-data-encryption-postgresql.md) , kde najdete další informace.
+
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 Když vytváříte repliku, nedědí pravidla firewallu ani koncový bod služby virtuální sítě primárního serveru. Tato pravidla musí být pro repliku nastavena nezávisle.
 
@@ -106,7 +108,7 @@ Další informace najdete v dotazování primárního serveru přímo za účele
 ## <a name="stop-replication--promote-replica"></a>Zastavení replikace/zvýšení úrovně repliky
 Replikaci můžete kdykoli zastavit mezi primárním serverem a replikou. Akce zastavit způsobí, že se replika restartuje a povýší repliky jako nezávislého samostatného serveru pro čtení a zápis. Data na samostatném serveru jsou data, která byla k dispozici na serveru repliky v době zastavení replikace. Jakékoli následné aktualizace na primárním umístění nejsou rozšířeny do repliky. Server repliky ale může mít nashromážděné protokoly, které se zatím nepoužily. V rámci procesu restartování před přijetím připojení klientů používá replika všechny nevyřízené protokoly.  
 
-### <a name="considerations"></a>Co je potřeba vzít v úvahu
+### <a name="considerations"></a>Požadavky
 - Před zastavením replikace v replice pro čtení zkontrolujte prodlevu replikace, abyste zajistili, že má replika všechna data, která požadujete. 
 - Vzhledem k tomu, že replika pro čtení musí použít všechny nevyřízené protokoly předtím, než bude možné vytvořit samostatný server, RTO může být vyšší pro zápis těžkých úloh, když dojde k tomu, že se replikace stane významnou prodlevou na replice. Věnujte prosím pozornost tomu, když naplánujete zvýšení úrovně repliky.
 - Povýšený server repliky nelze znovu provést do repliky.
@@ -140,11 +142,11 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 
 Když dojde k závažné události havárie, jako je třeba zóna dostupnosti nebo regionální selhání, můžete provést operaci zotavení po havárii tím, že povýšíte svoji repliku pro čtení. Z portálu uživatelského rozhraní můžete přejít na server repliky pro čtení. Pak klikněte na kartu replikace a můžete ji zastavit, aby byla povýšení replikována na nezávislý server. Alternativně můžete pomocí rozhraní příkazového [řádku Azure](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) zastavit a zvýšit úroveň serveru repliky.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Repliky čtení a [logické dekódování](concepts-logical.md) závisí na protokolu Postgres Write předem log (WAL). Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
 
 Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:

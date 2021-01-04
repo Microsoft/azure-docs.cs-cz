@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512167"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723974"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -160,7 +160,7 @@ Máte možnost vybrat Storage úrovně Premium (SSD) pro sdílené složky Azure
 
 Pořád si nejste jisti?
 
-* Pokud potřebujete [výkon služby Azure File Share Premium](storage-files-planning.md#understanding-provisioning-for-premium-file-shares), vyberte Premium Storage.
+* Pokud potřebujete [výkon služby Azure File Share Premium](understanding-billing.md#provisioned-billing), vyberte Premium Storage.
 * Pro úlohy souborového serveru pro obecné účely vyberte úložiště Standard, které zahrnuje aktivní data a Archivovaná data. Pokud se Azure File Sync jedinou úlohou sdílené složky v cloudu, vyberte možnost standardní úložiště.
 
 #### <a name="account-kind"></a>Druh účtu
@@ -413,7 +413,7 @@ Tento přístup k migraci vyžaduje pro uživatele a aplikace nějaké výpadky.
 
 Když pro sdílenou složku Azure použijete Azure File Sync, je důležité, abyste *před* spuštěním jakékoli místní složky Robocopy zjistili, že jste dokončili stahování celého oboru názvů na server. Doba potřebná ke stažení vašeho oboru názvů závisí na počtu položek ve sdílené složce Azure. Existují dva způsoby, jak určit, zda byl váš obor názvů plně doručen na server.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pomocí Azure Portal můžete zobrazit, kdy váš obor názvů plně dorazil.
 

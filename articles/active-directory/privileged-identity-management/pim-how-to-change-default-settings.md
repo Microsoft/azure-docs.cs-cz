@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004649"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708479"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -43,8 +43,8 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 Pomocí těchto kroků otevřete nastavení role Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../roles/permissions-reference.md#privileged-role-administrator) .
-gt
-1. Otevřete **Azure AD Privileged Identity Management** &gt; Nastavení role **role Azure AD** &gt; **Role settings**.
+
+1. Otevřete **Azure AD Privileged Identity Management** &gt; Nastavení role **role Azure AD** &gt; .
 
     ![Stránka nastavení role se seznamem rolí Azure AD](./media/pim-how-to-change-default-settings/role-settings.png)
 

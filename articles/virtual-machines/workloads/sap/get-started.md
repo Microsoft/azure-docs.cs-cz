@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/12/2020
+ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371930"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722891"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -49,6 +49,7 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
 - Co je Azure Storage pro můj scénář nejvhodnější? Číst [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md)
 - Je jádro Red Hat v Oracle Enterprise Linux podporované systémem SAP? Přečtěte [si poznámku o podpoře SAP sap #1565179](https://launchpad.support.sap.com/#/notes/1565179)
 - Proč jsou rodiny virtuálních počítačů Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [(](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) s) necertifikované pro SAP HANA? Rodiny virtuálních počítačů Azure Das/EAS jsou založené na hardwaru založeném na procesorech AMD. SAP HANA nepodporuje procesory AMD, a to ani ve virtualizovaných scénářích.
+- Proč se mi pořád zobrazuje zpráva: příznaky CPU pro instrukci RDTSCP nebo příznaky CPU pro constant_tsc nebo nonstop_tsc nejsou nastavené nebo current_clocksource a available_clocksource nejsou správně nakonfigurované s SAP HANA, i když jsou na tom, že běží nejnovější jádra pro Linux. Odpověď najdete v [poznámce SAP support #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -82,6 +83,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 12/21/2020: přidejte nové certifikace do SKU velkých instancí HANA v části [dostupné SKU pro HLI](./hana-available-skus.md) .
 - 12/12/2020: byl přidán ukazatel na poznámku ke službě SAP poznámky objasňující podrobnosti o podpoře Oracle Enterprise Linux podle SAP pro to, [co je software SAP podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) .
 - 11/26/2020: Přizpůsobte [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) a [Azure Storage typů pro úlohy SAP](./planning-guide-storage.md) na změnu jednoho [virtuálního počítače SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020: Změna odkazu na nové poznámky SAP týkající se typů systému souborů podporovaných systémem HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) 
@@ -179,9 +181,3 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 - 10. ledna 2020: změny [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md) a v [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v RHEL s Azure NETAPP Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md) pro přidání pokynů k připojení Azure NetApp Filesch svazků názvů NFSv4.
 - 23. prosince 2019: vydání [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES průvodce pro více SID](./high-availability-guide-suse-multi-sid.md)
 - 18. prosince 2019: vydání [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- 21. listopadu 2019: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md) pro zjednodušení konfigurace mapování ID NFS a změna doporučeného primárního síťového rozhraní pro zjednodušení směrování.
-- 15. listopadu 2019: drobné změny [vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md) a [vysokou dostupnost pro sap NetWeaver v Red Hat Enterprise Linux s Azure NETAPP Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md) pro vysvětlení omezení velikosti fondu kapacity a příkazu Remove, který podporuje jenom NFSv3 verzi.
-- 12. listopadu 2019: vydání [vysoké dostupnosti pro SAP NetWeaver v systému Windows s využitím protokolu SMB (Azure NetApp Files)](high-availability-guide-windows-netapp-files-smb.md)
-- 8. listopadu 2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích Azure (virtuální počítače)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP](high-availability-guide-suse.md), Azure Virtual Machines High pro [SAP NetWeaver on SUSE Linux Enterprise Server s Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [Azure Virtual Machines vysoká dostupnost](high-availability-guide-rhel.md)pro systém souborů SAP NetWeaver v Red Hat Enterprise Linux, Azure Virtual Machines vysoká dostupnost pro systém souborů SAP [NetWeaver na Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)a [vysokou dostupností pro NFS na virtuálních počítačích Azure](high-availability-guide-suse-nfs.md)v SUSE Linux Enterprise Server, na [virtuálních](high-availability-guide-rhel-glusterfs.md) počítačích Azure v Red Hat Enterprise Linux, které doporučují Azure Load Balancer  
-- 8. listopadu 2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  
-- 4. listopadu 2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření clusteru přímo s konfigurací jednosměrového vysílání

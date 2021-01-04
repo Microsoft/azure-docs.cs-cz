@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630668"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704329"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
-Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
+Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -210,12 +210,12 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
 
 V této části:
 
-* Vytvořte dva virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
+* Vytvořte tři virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
 * K otestování nástroje pro vyrovnávání zatížení nainstalujte na virtuálních počítačích službu IIS.
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-V této části vytvoříte dva virtuální počítače (**myVM1** a **myVM2**).
+V této části vytvoříte tři virtuální počítače (**myVM1**, **myVM2** a **myVM3**).
 
 Tyto virtuální počítače se přidají do back-endového fondu nástroje pro vyrovnávání zatížení, který se vytvořil dříve.
 
@@ -233,7 +233,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter** |
+    | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -264,13 +264,13 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
   
 6. Zkontrolujte nastavení a pak vyberte **vytvořit**.
 
-7. Pokud chcete vytvořit další virtuální počítač s následujícími hodnotami a všechna ostatní nastavení stejné jako **myVM1**, postupujte podle kroků 1 až 8.
+7. Postupujte podle kroků 1 až 8 a vytvořte dva další virtuální počítače s následujícími hodnotami a všechna ostatní nastavení, která jsou stejná jako **myVM1**:
 
-    | Nastavení | VIRTUÁLNÍ POČÍTAČ 2|
-    | ------- | ----- |
-    | Název |  **myVM2** |
-    | Zóna dostupnosti | **2** |
-    | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
+    | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
+    | ------- | ----- | ---- |
+    | Název |  **myVM2** | **myVM3** |
+    | Zóna dostupnosti | **2** | **3** |
+    | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG** |
 
 
 # <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-internal-load-balancer-basic)
@@ -389,7 +389,7 @@ Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat virtuál
     | Virtuální síť | Vyberte **myVNet**. |
     | Přidruženo k | Vybrat **virtuální počítače** |
 
-4. Vyberte **Přidat**.
+4. Vyberte **Add** (Přidat).
 
 ### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 
@@ -449,13 +449,13 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
 
 V této části:
 
-* Vytvořte dva virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
+* Vytvořte tři virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
 * Vytvořte skupinu dostupnosti pro virtuální počítače.
 * K otestování nástroje pro vyrovnávání zatížení nainstalujte na virtuálních počítačích službu IIS.
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-V této části vytvoříte dva virtuální počítače (**myVM1** a **myVM2**).
+V této části vytvoříte tři virtuální počítače (**myVM1**, **myVM2**, **myVM3**).
 
 Oba virtuální počítače se přidají do skupiny dostupnosti s názvem **myAvailabilitySet**.
 
@@ -475,7 +475,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myAvailabilitySet** . </br> Vyberte **OK**. |
-    | Obrázek | **Windows Server 2019 Datacenter** |
+    | Image | **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -502,13 +502,13 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
   
 6. Zkontrolujte nastavení a pak vyberte **vytvořit**.
 
-7. Pokud chcete vytvořit další virtuální počítač s následujícími hodnotami a všechna ostatní nastavení stejné jako **myVM1**, postupujte podle kroků 1 až 8.
+7. Postupujte podle kroků 1 až 8 a vytvořte dva další virtuální počítače s následujícími hodnotami a všechna ostatní nastavení, která jsou stejná jako **myVM1**:
 
-    | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 |
-    | ------- | ----- |
-    | Název |  **myVM2** |
-    | Skupina dostupnosti| Vybrat **myAvailabilitySet** |
-    | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
+    | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
+    | ------- | ----- | ---- |
+    | Název |  **myVM2** | **myVM3** |
+    | Skupina dostupnosti | Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet** |
+    | Skupina zabezpečení sítě | Vybrat existující **myNSG** | Vybrat existující **myNSG** |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Přidání virtuálních počítačů do back-endového fondu
 
@@ -522,9 +522,9 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 4. V části **virtuální počítače** vyberte **+ Přidat**.
 
-5. Zaškrtněte políčka vedle **myVM1** a **myVM2**.
+5. Zaškrtněte políčka vedle **myVM1**, **myVM2** a **myVM3**.
 
-6. Vyberte **Přidat**.
+6. Vyberte **Add** (Přidat).
 
 7. Vyberte **Uložit**.
 ---
@@ -546,7 +546,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Název virtuálního počítače | Zadejte **myTestVM** |
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter** |
+    | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
     | **Účet správce** |  |
@@ -602,7 +602,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
    ```
 8. Zavřete relaci bastionu s **myVM1**.
 
-9. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na **myVM2**.
+9. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na **myVM2** a **myVM3**.
 
 
 ## <a name="test-the-load-balancer"></a>Testování Load Balanceru
@@ -634,7 +634,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrov
 V tomto rychlém startu:
 
 * Vytvořili jste interní nástroj pro vyrovnávání zatížení Azure Standard nebo Basic.
-* K nástroji pro vyrovnávání zatížení připojené dva virtuální počítače.
+* K nástroji pro vyrovnávání zatížení se připojily 3 virtuální počítače.
 * Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení, sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení. 
 
 Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte tady:

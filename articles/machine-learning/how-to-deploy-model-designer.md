@@ -10,17 +10,19 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.custom: how-to, deploy, studio, designer
+ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554678"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722619"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Použití studia k nasazení modelů vyškolených v Návrháři
 
-V tomto článku se dozvíte, jak nasadit vyškolený model z návrháře jako koncový bod v Azure Machine Learning studiu v reálném čase.
+V tomto článku se dozvíte, jak nasadit model návrháře jako koncový bod v Azure Machine Learning studiu v reálném čase.
+
+Po registraci nebo stažení můžete použít modely trained designeru stejně jako jakýkoliv jiný model. Exportované modely se dají nasadit v případech použití, jako je třeba Internet věcí (IoT) a místní nasazení.
 
 Nasazení v nástroji Studio se skládá z následujících kroků:
 
@@ -61,7 +63,6 @@ Po dokončení kanálu školení Zaregistrujte vyškolený model do svého praco
 Po registraci modelu je můžete najít na stránce Asset **modely** v studiu.
     
 ![Snímek obrazovky registrovaného modelu na stránce Asset Models](./media/how-to-deploy-model-designer/models-asset-page.png)
-
 
 ## <a name="download-the-entry-script-file-and-conda-dependencies-file"></a>Stažení souboru skriptu vstupu a souboru závislostí conda
 

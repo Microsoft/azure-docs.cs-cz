@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549221"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696283"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,12 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* Opravili jsme chybu při zpracování dotazu prostřednictvím interoperability služby.
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* Přidali jsme podporu pro dotazování na kanál změn z bodu v čase.
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
 * Opravuje problém v mezipaměti primárního oddílu pro dotazcollection dokumentu.
@@ -271,6 +277,8 @@ Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 mě
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |Dec 17, 2020 |--- |
+| [2.6.0](#2.6.0) |16. července 2020 |--- |
 | [2.5.1](#2.5.1) |03. června 2020 |--- |
 | [2.5.0](#2.5.0) |12. května 2020 |--- |
 | [2.4.7](#2.4.7) |20. února 2020 |--- |

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 12b7c86e528af6c174f456add4d29a92239cd01e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e53a5c4840cee0651090bec0b68cc53e13102299
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678018"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705485"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>Rychlý Start: Vytvoření automatické odpovědi na konkrétní výstrahu zabezpečení pomocí šablony ARM
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
@@ -46,21 +46,21 @@ Další šablony pro rychlý Start Security Center najdete v těchto [komunitác
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-- **PowerShell** :
+- **PowerShell**:
 
   ```azurepowershell-interactive
   New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new resource group for your deployment
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- Rozhraní příkazového **řádku** :
+- Rozhraní příkazového **řádku**:
 
   ```azurecli-interactive
   az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
-  az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
+  az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- **Portál** :
+- **Portál**:
 
   [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
@@ -70,7 +70,7 @@ Další šablony pro rychlý Start Security Center najdete v těchto [komunitác
 
 Pomocí Azure Portal můžete ověřit, jestli je automatizace pracovního postupu nasazená.
 
-1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center** .
+1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center**.
 1. V horním řádku nabídek vyberte ikonu filtru a vyberte konkrétní předplatné, na které jste nasadili novou automatizaci pracovního postupu.
 1. Z bočního panelu Security Center otevřete **automatizaci pracovních postupů** a vyhledejte novou automatizaci.
     :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Seznam nakonfigurovaných Automation" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
@@ -81,12 +81,12 @@ Pomocí Azure Portal můžete ověřit, jestli je automatizace pracovního postu
 
 Pokud už je nepotřebujete, odstraňte automatizaci pracovního postupu pomocí Azure Portal.
 
-1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center** .
+1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center**.
 1. V horním řádku nabídek vyberte ikonu filtru a vyberte konkrétní předplatné, na které jste nasadili novou automatizaci pracovního postupu.
 1. Z bočního panelu Security Center otevřete **automatizaci pracovních postupů** a najděte automatizaci, která se má odstranit.
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Seznam nakonfigurovaných Automation" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Postup odebrání automatizace pracovního postupu" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Zaškrtněte políčko pro položku, která se má odstranit.
-1. Na panelu nástrojů vyberte možnost **Odstranit** .
+1. Na panelu nástrojů vyberte možnost **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

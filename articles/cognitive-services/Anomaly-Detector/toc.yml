@@ -12,14 +12,6 @@
       items:
         - name: Klientské knihovny Detektoru anomálií
           href: ./quickstarts/client-libraries.md
-    - name: REST API
-      items:
-        - name: Pomocí C#
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Pomocí Javy
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Pomocí Pythonu
-          href: quickstarts/detect-data-anomalies-python.md
 - name: Kurzy
   items:
     - name: Vizualizace anomálií jako dávky s využitím Power BI

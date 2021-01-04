@@ -1,14 +1,14 @@
 ---
 title: Co je nového u agenta serverů s podporou ARC Azure
-description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Pro mnohé z souhrnných problémů existují odkazy na další podrobnosti.
+description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Mnohé z mnoha souhrnných problémů jsou odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505643"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722517"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
@@ -20,6 +20,8 @@ Server s podporou ARC Azure, který je připojený agentem počítače, obdrží
 
 ## <a name="december-2020"></a>Prosinec 2020
 
+Verze: 1,3
+
 ### <a name="new-feature"></a>Nová funkce
 
 Přidání podpory pro Windows Server 2008 R2
@@ -30,11 +32,15 @@ Vyřešil se problém, který brání úspěšné instalaci rozšíření vlastn
 
 ## <a name="november-2020"></a>Listopad 2020
 
+Verze: 1,2
+
 ### <a name="fixed"></a>Pevný
 
 Vyřešil se problém, kdy může dojít ke ztrátě konfigurace proxy serveru po upgradu na distribucí na bázi ot./min..
 
 ## <a name="october-2020"></a>Říjen 2020
+
+Version: 1.1
 
 ### <a name="fixed"></a>Pevný
 
@@ -61,7 +67,7 @@ Verze: 1,0 (Obecná dostupnost)
 - Přidání `azcmagent show --json` Možnosti do výstupního stavu agenta v snadno analyzovaném formátu.
 - Ve `azcmagent show` výstupu se přidal příznak, který označuje, jestli je server na virtuálním počítači hostovaném v Azure.
 - Přidání `azcmagent disconnect --force-local-only` Možnosti pro povolení resetování stavu místního agenta, když služba Azure není dostupná.
-- Přidání `azcmagent connect --cloud` Možnosti pro podporu dalších cloudů. V této verzi podporuje služba v době vydání agenta jenom Azure.
+- Přidání `azcmagent connect --cloud` Možnosti pro podporu jiných cloudů. V této verzi podporuje služba v době vydání agenta jenom Azure.
 - Agent byl lokalizován do jazyků podporovaných v Azure.
 
 ### <a name="fixed"></a>Pevný

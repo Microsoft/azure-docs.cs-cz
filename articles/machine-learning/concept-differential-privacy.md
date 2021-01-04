@@ -1,29 +1,26 @@
 ---
-title: Implementace rozdílového soukromí pomocí balíčku WhiteNoise (Preview)
+title: Implementace rozdílového soukromí pomocí balíčku SmartNoise (Preview)
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jaká je rozdílová ochrana osobních údajů a jak může balíček WhiteNoise pomáhat při implementaci rozdílových privátních systémů, které zachovávají ochranu dat.
+description: Přečtěte si, jaká je rozdílová ochrana osobních údajů a jak může balíček SmartNoise pomáhat při implementaci rozdílových privátních systémů, které zachovávají ochranu dat.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199788"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723486"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise (Preview)
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku SmartNoise (Preview)
 
-Přečtěte si, jaké jsou rozdílové ochrany osobních údajů a jak může balíček WhiteNoise pomáhat při implementaci rozdílových privátních systémů.
+Přečtěte si, jaké jsou rozdílové ochrany osobních údajů a jak může balíček SmartNoise pomáhat při implementaci rozdílových privátních systémů.
 
 Jak množství dat, které organizace shromažďuje a používá ke analýzám, se zvyšuje na ochranu osobních údajů a zabezpečení. Analýzy vyžadují data. Data, která se používají k učení modelů, jsou typicky přesnější. Pokud se pro tyto analýzy použijí osobní informace, je obzvláště důležité, aby data zůstala soukromá během jejího používání.
-
-> [!NOTE]
-> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
 ## <a name="how-differential-privacy-works"></a>Jak funguje rozdílová ochrana osobních údajů
 
@@ -54,10 +51,10 @@ I když zachování ochrany osobních údajů by mělo být cílem, existují ko
 
 ## <a name="implementing-differentially-private-systems"></a>Implementace rozdílových privátních systémů
 
-Implementace rozdílových privátních systémů je obtížná. WhiteNoise je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. WhiteNoise se skládá z následujících komponent nejvyšší úrovně:
+Implementace rozdílových privátních systémů je obtížná. SmartNoise je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. SmartNoise se skládá z následujících komponent nejvyšší úrovně:
 
 - Jádro
-- Systém
+- Sada SDK
 
 ### <a name="core"></a>Jádro
 
@@ -67,10 +64,10 @@ Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobní
 |---------|---------|
 |Analýza     | Graf s popisem libovolných výpočtů. |
 |Hodnocení     | Knihovna Rust, která obsahuje sadu nástrojů pro kontrolu a odvozování nezbytných podmínek pro účely analýzy rozdílných privátních.          |
-|Modul runtime     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
-|Vazby     | Vazby jazyka a pomocné knihovny pro sestavení analýz Aktuálně WhiteNoise poskytuje vazby Pythonu. |
+|Runtime (Modul runtime)     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
+|Vazby     | Vazby jazyka a pomocné knihovny pro sestavení analýz Aktuálně SmartNoise poskytuje vazby Pythonu. |
 
-### <a name="system"></a>Systém
+### <a name="sdk"></a>Sada SDK
 
 Systémová knihovna poskytuje následující nástroje a služby pro práci s tabulkovými a relačními daty:
 
@@ -84,4 +81,4 @@ Systémová knihovna poskytuje následující nástroje a služby pro práci s t
 
 [Zachovat ochranu osobních údajů](how-to-differential-privacy.md) v Azure Machine Learning.
 
-Další informace o součástech WhiteNoise najdete v části úložiště GitHub pro [balíček WhiteNoise Core](https://github.com/opendifferentialprivacy/whitenoise-core), [balíček WhiteNoise System](https://github.com/opendifferentialprivacy/whitenoise-system) a [ukázky WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Další informace o součástech SmartNoise najdete v části úložiště GitHub pro [balíček SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)a [ukázky SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples).

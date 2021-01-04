@@ -1,18 +1,18 @@
 ---
 title: Registrace a kontrola klienta Power BIu (Preview)
 description: Naučte se používat portál Azure dosah k registraci a skenování klienta Power BI.
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615844"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696235"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -72,8 +72,6 @@ Teď, když jste udělili oprávnění ke katalogu pro připojení k rozhraní A
 
 Nejdřív přidejte příznak speciální funkce na adresu URL dosah. 
 
-1. Přidejte následující řetězec na konec identifikátoru URI instance dosah: `?feature.ext.catalog={"pbi":"true"}` . Tím povolíte možnost registrace Power BI ve vašem katalogu.
-
 1. Vyberte ikonu **centra pro správu** .
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikona centra pro správu":::
@@ -112,6 +110,5 @@ Nejdřív přidejte příznak speciální funkce na adresu URL dosah.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití rutin PowerShellu k registraci a kontrole Power BI tenanta najdete tady:
-  
-- [Použití PowerShellu k registraci a kontrole Power BI](powershell-register-scan-power-bi.md)
+- [Procházet Azure dosah Data Catalog](how-to-browse-catalog.md)
+- [Hledání ve službě Azure dosah Data Catalog](how-to-search-catalog.md)

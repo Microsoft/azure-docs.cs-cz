@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533634"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696136"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 
@@ -30,7 +30,8 @@ V tomto článku se dozvíte, jak se zaregistrovat pro Azure NetApp Files, abyst
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Odeslat žádost o přístup ke službě pořadníku
 
-1. Odešlete žádost o pořadníku k přístupu ke službě Azure NetApp Files prostřednictvím [stránky pro odeslání Azure NetApp Files pořadníku](https://aka.ms/azurenetappfiles). 
+1. Přejít na následující stránku a odeslat žádost o pořadníku k přístupu ke službě Azure NetApp Files:  
+    [**Stránka pro odeslání Azure NetApp Files pořadníku**](https://aka.ms/azurenetappfiles) 
 
     Registrace pořadníku nezaručuje okamžitý přístup k službě. 
 

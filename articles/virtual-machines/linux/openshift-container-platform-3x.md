@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368145"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703731"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Nasazení OpenShift kontejneru platformy 3,11 v Azure
 
@@ -32,11 +32,11 @@ Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red H
 
 ### <a name="private-clusters"></a>Soukromé clustery
 
-Nasazení privátních clusterů OpenShift vyžaduje více než jen veřejnou IP adresu přidruženou k hlavnímu nástroji pro vyrovnávání zatížení (webová konzola) nebo k nástroji pro vyrovnávání zatížení (směrovač).  Privátní cluster obecně používá vlastní server DNS (nikoli výchozí Azure DNS), vlastní název domény (například contoso.com) a předem definované virtuální sítě (y).  U privátních clusterů je potřeba nakonfigurovat virtuální síť se všemi příslušnými podsítěmi a nastaveními DNS serveru předem.  Pak pomocí **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**a **existingNodeSubnetReference** určete existující podsíť pro použití clusterem.
+Nasazení privátních clusterů OpenShift vyžaduje více než jen veřejnou IP adresu přidruženou k hlavnímu nástroji pro vyrovnávání zatížení (webová konzola) nebo k nástroji pro vyrovnávání zatížení (směrovač).  Privátní cluster obecně používá vlastní server DNS (nikoli výchozí Azure DNS), vlastní název domény (například contoso.com) a předem definované virtuální sítě (y).  U privátních clusterů je potřeba nakonfigurovat virtuální síť se všemi příslušnými podsítěmi a nastaveními DNS serveru předem.  Pak pomocí **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference** a **existingNodeSubnetReference** určete existující podsíť pro použití clusterem.
 
-Je-li vybrána privátní hlavní server (**masterClusterType**= Private), musí být pro **masterPrivateClusterIp**zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu hlavního nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro hlavní podsíť a nepoužívá se.  **masterClusterDnsType** musí být nastavená na Custom a musí se zadat hlavní název DNS pro **masterClusterDns**.  Název DNS se musí namapovat na statickou privátní IP adresu a bude se používat pro přístup ke konzole na hlavních uzlech.
+Je-li vybrána privátní hlavní server (**masterClusterType**= Private), musí být pro **masterPrivateClusterIp** zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu hlavního nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro hlavní podsíť a nepoužívá se.  **masterClusterDnsType** musí být nastavená na Custom a musí se zadat hlavní název DNS pro **masterClusterDns**.  Název DNS se musí namapovat na statickou privátní IP adresu a bude se používat pro přístup ke konzole na hlavních uzlech.
 
-Pokud je vybrán privátní směrovač (**routerClusterType**= Private), musí být pro **routerPrivateClusterIp**zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro podsíť, která se nepoužívá.  **routingSubDomainType** musí být nastavená na Custom a pro **routingSubDomain**se musí zadat název DNS zástupného znaku pro směrování.  
+Pokud je vybrán privátní směrovač (**routerClusterType**= Private), musí být pro **routerPrivateClusterIp** zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro podsíť, která se nepoužívá.  **routingSubDomainType** musí být nastavená na Custom a pro **routingSubDomain** se musí zadat název DNS zástupného znaku pro směrování.  
 
 Pokud jsou vybrány privátní hlavní servery a privátní směrovač, je nutné zadat vlastní název domény také pro název **domény** .
 
@@ -276,7 +276,7 @@ Různé verze mohou mít různé parametry, takže ověřují parametry potřebn
 | `keyVaultName` | Název Key Vault, který jste vytvořili |  |  |
 | `enableAzure` | Povolit Azure Cloud Provider | true <br> false (nepravda) | true |
 | `aadClientId` | ID klienta Azure Active Directory také označované jako ID aplikace pro instanční objekt |  |  |
-| `domainName` | Název vlastního názvu domény, který se má použít (Pokud je k dispozici) Pokud není nasazen plně soukromý cluster, nastavte na hodnotu None. |  | žádné |
+| `domainName` | Název vlastního názvu domény, který se má použít (Pokud je k dispozici) Pokud není nasazen plně soukromý cluster, nastavte na hodnotu None. |  | Žádná |
 | `masterClusterDnsType` | Typ domény pro webovou konzolu OpenShift klíčové slovo Default bude používat označení DNS pro veřejnou IP adresu hlavního infračerveného provozu. možnost vlastní umožňuje definovat vlastní název. | default <br> vlastní | default |
 | `masterClusterDns` | Vlastní název DNS, který se použije pro přístup k webové konzoli OpenShift, pokud jste vybrali možnost Custom (vlastní) pro `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Pokud je nastavená na ' nipio ', použije `routingSubDomain` NIP.IO.  Pokud máte vlastní doménu, kterou chcete použít pro směrování, použijte možnost vlastní. | nipio <br> vlastní | nipio |
@@ -312,7 +312,7 @@ Různé verze mohou mít různé parametry, takže ověřují parametry potřebn
 Následující příklad nasadí cluster OpenShift a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHubu a používá se soubor místních parametrů s názvem azuredeploy.parameters.jsv souboru.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
@@ -330,7 +330,7 @@ Pokud nechcete vytvořit vazbu na příkazový řádek, který čeká na dokonč
 
 ## <a name="connect-to-the-openshift-cluster"></a>Připojení ke clusteru OpenShift
 
-Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. K hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift** se připojte ke konzole OpenShift pomocí prohlížeče. K hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e3bc8ed2745e06096e05f17319a8f7896f87f80f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016178"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702034"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači se systémem Linux
 
@@ -125,10 +125,10 @@ K vytvoření tohoto prostředí potřebujete mít nainstalované nejnovější 
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte vlastní jedinečné hodnoty pro *newStorageAccountName*, *dnsNameForPublicIP* a uživatelské jméno a heslo správce:
+V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). Po zobrazení výzvy zadejte vlastní jedinečné hodnoty pro *newStorageAccountName*, *dnsNameForPublicIP* a uživatelské jméno a heslo správce:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
@@ -176,10 +176,10 @@ K vytvoření tohoto prostředí potřebujete mít nainstalované nejnovější 
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). V případě potřeby definujte vlastní názvy prostředků a velikosti, jako třeba pro *mongoAdminUsername*, *sizeOfDataDiskInGB* a *configNodeVmSize*:
+V dalším kroku nasaďte šablonu MongoDB pomocí [AZ Deployment Group Create](/cli/azure/deployment/group). V případě potřeby definujte vlastní názvy prostředků a velikosti, jako třeba pro *mongoAdminUsername*, *sizeOfDataDiskInGB* a *configNodeVmSize*:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --parameters '{"adminUsername": {"value": "azureuser"},
     "adminPassword": {"value": "P@ssw0rd!"},
     "mongoAdminUsername": {"value": "mongoadmin"},
@@ -198,10 +198,10 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Nasazení a konfigurace všech instancí virtuálních počítačů může trvat až hodinu. `--no-wait`Příznak se používá na konci předchozího příkazu, který vrátí řízení do příkazového řádku, jakmile bude nasazení šablony přijato platformou Azure. Pak můžete zobrazit stav nasazení pomocí [AZ Group Deployment show](/cli/azure/group/deployment). V následujícím příkladu se zobrazí stav nasazení *myMongoDBCluster* ve skupině prostředků *myResourceGroup* :
+Nasazení a konfigurace všech instancí virtuálních počítačů může trvat až hodinu. `--no-wait`Příznak se používá na konci předchozího příkazu, který vrátí řízení do příkazového řádku, jakmile bude nasazení šablony přijato platformou Azure. Pak můžete zobrazit stav nasazení pomocí [AZ Deployment Group show](/cli/azure/deployment/group). V následujícím příkladu se zobrazí stav nasazení *myMongoDBCluster* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli
-az group deployment show \
+az deployment group show \
     --resource-group myResourceGroup \
     --name myMongoDBCluster \
     --query [properties.provisioningState] \

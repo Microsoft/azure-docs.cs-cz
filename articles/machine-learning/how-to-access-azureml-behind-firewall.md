@@ -11,18 +11,21 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461404"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705060"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
-V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Další informace o zabezpečení Azure Machine Learning najdete v tématu [Enterprise Security for Azure Machine Learning](concept-enterprise-security.md)
+V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Další informace o zabezpečení Azure Machine Learning najdete v tématu [Enterprise Security for Azure Machine Learning](concept-enterprise-security.md).
 
-## <a name="azure-firewall"></a>Azure Firewall
+> [!WARNING]
+> Přístup k úložišti dat za bránou firewall je podporován pouze v prostředí Code First. Použití aplikace [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) pro přístup k datům za bránou firewall není podporováno. Pokud chcete s nástrojem Studio pracovat s úložištěm dat v privátní síti, musíte nejdřív [nastavit virtuální síť](../virtual-network/quick-create-portal.md) a [dát studiu přístup k datům uloženým ve virtuální síti](how-to-enable-studio-virtual-network.md).
+
+## <a name="azure-firewall"></a>Brána Azure Firewall
 
 Při použití Azure Firewall použijte __cílovou síťovou adresu (DNAT)__ a vytvořte pravidla překladu adres (NAT) pro příchozí provoz. U odchozích přenosů vytvořte pravidla __sítě__ nebo __aplikace__ . Tyto kolekce pravidel jsou podrobněji popsány v tématu [co je několik Azure firewall konceptů](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts).
 
@@ -72,7 +75,7 @@ Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuáln�
     * MicrosoftContainerRegistry. region
     * AzureFrontDoor.FirstParty
 
-    Pro položky, které obsahují `region` , nahraďte oblastí Azure, kterou používáte. Například, `keyvault.westus`.
+    Pro položky, které obsahují `region` , nahraďte oblastí Azure, kterou používáte. Například `keyvault.westus`.
 
     Pro __protokol__ vyberte `TCP` . Pro zdrojový a cílový __port__ vyberte `*` .
 
@@ -118,7 +121,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **Vyžaduje se pro** | **Veřejný Azure** | **Azure Government** | **Azure (Čína) 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
-| Rozhraní API |\*. azureml.ms | \*. ml.azure.us | \*. ml.azure.cn |
+| rozhraní API |\*. azureml.ms | \*. ml.azure.us | \*. ml.azure.cn |
 | Experimentování, historie, Hyperdrive, označování | \*. experiments.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
 | Správa modelů | \*. modelmanagement.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
 | Kanál | \*. aether.ms | \*. ml.azure.us | \*. ml.azure.cn |

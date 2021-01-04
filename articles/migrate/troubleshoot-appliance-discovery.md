@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654009"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704023"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -42,12 +42,6 @@ K tomu může dojít, pokud je počítač zařízení za proxy serverem.
 - Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte [tyto adresy URL](migrate-appliance.md#url-access) do seznamu povolených.
 - Pokud pro připojení k Internetu používáte zachycení proxy serveru, importujte certifikát proxy serveru do virtuálního počítače zařízení pomocí [těchto kroků](./migrate-appliance.md).
 
-
-## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>Kliknutí na tlačítko Login otevře novou kartu bez kódu zařízení.
-
-Pokud po kliknutí na Login ve Správci konfigurace zařízení otevřete novou kartu bez kódu, vraťte se zpátky na kartu Správce konfigurace zařízení a kód zařízení můžete najít tučným písmem na tlačítku Login, jak je znázorněno na snímku obrazovky níže. Zkopírujte kód a vložte ho na přihlašovací kartu pro ověření pomocí Azure.
-
-![Kód zařízení](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Z webové aplikace zařízení se nejde přihlásit k Azure.
 

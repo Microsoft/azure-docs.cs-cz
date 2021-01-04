@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810051"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705162"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -59,6 +59,8 @@ Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody
 * Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
 * Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. ACR replikuje jenom jedinečné vrstvy, což snižuje přenos dat napříč oblastmi. 
 * Nakonfigurujte místní [Webhooky](container-registry-webhook.md) , aby vás upozornily na události v konkrétních replikách.
+
+Azure Container Registry taky podporuje [zóny dostupnosti](zone-redundancy.md) pro vytvoření odolného a vysoce dostupného registru kontejnerů Azure v oblasti Azure. Kombinace zón dostupnosti pro redundanci v rámci jedné oblasti a geografická replikace napříč několika oblastmi zvyšuje spolehlivost a výkon registru.
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
 

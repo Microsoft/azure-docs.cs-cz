@@ -1,17 +1,17 @@
 ---
 title: Videokurzy mapování toku dat
 description: Seznam výukových kurzů vysvětlujících koncept toku dat pro mapování
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 11/02/2020
-ms.openlocfilehash: 605d740b56b4f1cd57ab705e442a8b3e3946fcff
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/14/2020
+ms.openlocfilehash: 289f22230a38ef8dd6e369573091c5b30dd4a5c7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490699"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706996"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -88,6 +88,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Transformace řazení](https://youtu.be/6XvgkbMtws0)
 
 [Vyhledávání v mezipaměti](https://www.youtube.com/watch?v=HqCn42FaRJs)
+
+[Kontext řádku přes transformaci okna](http://youtu.be/jqt1gmX2XUg)
 
 ## <a name="source-and-sink"></a>Zdroj a jímka
 

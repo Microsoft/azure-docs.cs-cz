@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488532"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704125"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -23,7 +23,7 @@ Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtí
 
 Po operaci trezoru klíčů máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů v účtu úložiště je pouze na vás:
 
-* Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
+* Pomocí standardních metod řízení přístupu Azure v účtu úložiště Zabezpečte protokoly tím, že omezíte, kdo k nim má přístup.
 * Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
@@ -73,9 +73,9 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **callerIpAddress** |IP adresa klienta, který odeslal požadavek. |
 | **ID** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
-| **vlastnosti** |Informace, které se liší v závislosti na operaci ( **OperationName** ). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet** ), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
+| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -84,6 +84,8 @@ Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST API příkazy:
 
 ### <a name="operation-names-table"></a>Tabulka názvů operací
+
+# <a name="vault"></a>[Trezor](#tab/Vault)
 
 | operationName | REST API – příkaz |
 | --- | --- |
@@ -97,6 +99,12 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **VaultRecover** |Obnovit odstraněný trezor|
 | **VaultGetDeleted** |[Získat odstraněný trezor](/rest/api/keyvault/vaults/getdeleted) |
 | **VaultListDeleted** |[Vypsat odstraněné trezory](/rest/api/keyvault/vaults/listdeleted) |
+| **VaultAccessPolicyChangedEventGridNotification** | Publikovaná událost změny zásad přístupu k trezoru |
+
+# <a name="keys"></a>[Klíče](#tab/Keys)
+
+| operationName | REST API – příkaz |
+| --- | --- |
 | **KeyCreate** |[Vytvoření klíče](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Získání informací o klíči](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Import klíče do trezoru](/rest/api/keyvault/vaults) |
@@ -116,36 +124,13 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **Obnovení** |[Obnovení klíče](/rest/api/keyvault/recoverdeletedkey) |
 | **KeyGetDeleted** |[Získat odstraněný klíč](/rest/api/keyvault/getdeletedkey) |
 | **KeyListDeleted** |[Výpis odstraněných klíčů v trezoru](/rest/api/keyvault/getdeletedkeys) |
-| **CertificateGet** |[Získání informací o certifikátu](/rest/api/keyvault/getcertificate) |
-| **CertificateCreate** |[Vytvoření certifikátu](/rest/api/keyvault/createcertificate) |
-| **CertificateImport** |[Import certifikátu do trezoru](/rest/api/keyvault/importcertificate) |
-| **CertificateUpdate** |[Aktualizace certifikátu](/rest/api/keyvault/updatecertificate) |
-| **CertificateList** |[Výpis certifikátů v trezoru](/rest/api/keyvault/getcertificates) |
-| **CertificateListVersions** |[Seznam verzí certifikátu](/rest/api/keyvault/getcertificateversions) |
-| **CertificateDelete** |[Odstranit certifikát](/rest/api/keyvault/deletecertificate) |
-| **CertificatePurge** |[Vyprázdnit certifikát](/rest/api/keyvault/purgedeletedcertificate) |
-| **CertificateBackup** |[Zálohování certifikátu](/rest/api/keyvault/backupcertificate) |
-| **CertificateRestore** |[Obnovení certifikátu](/rest/api/keyvault/restorecertificate) |
-| **CertificateRecover** |[Obnovení certifikátu](/rest/api/keyvault/recoverdeletedcertificate) |
-| **CertificateGetDeleted** |[Získat odstraněný certifikát](/rest/api/keyvault/getdeletedcertificate) |
-| **CertificateListDeleted** |[Výpis odstraněných certifikátů v trezoru](/rest/api/keyvault/getdeletedcertificates) |
-| **CertificatePolicyGet** |[Získat Zásady certifikátů](/rest/api/keyvault/getcertificatepolicy) |
-| **CertificatePolicyUpdate** |[Aktualizovat zásady certifikátů](/rest/api/keyvault/updatecertificatepolicy) |
-| **CertificatePolicySet** |[Vytvořit zásady certifikátů](/rest/api/keyvault/createcertificate) |
-| **CertificateContactsGet** |[Získat kontakty certifikátu](/rest/api/keyvault/getcertificatecontacts) |
-| **CertificateContactsSet** |[Nastavení kontaktů certifikátu](/rest/api/keyvault/setcertificatecontacts) |
-| **CertificateContactsDelete** |[Odstranit kontakty certifikátu](/rest/api/keyvault/deletecertificatecontacts) |
-| **CertificateIssuerGet** |[Získat vystavitele certifikátu](/rest/api/keyvault/getcertificateissuer) |
-| **CertificateIssuerSet** |[Nastavit vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) |
-| **CertificateIssuerUpdate** |[Aktualizace vystavitele certifikátu](/rest/api/keyvault/updatecertificateissuer) |
-| **CertificateIssuerDelete** |[Odstranit vystavitele certifikátu](/rest/api/keyvault/deletecertificateissuer) |
-| **CertificateIssuersList** |[Výpis vystavitelů certifikátů](/rest/api/keyvault/getcertificateissuers) |
-| **CertificateEnroll** |Zápis certifikátu |
-| **CertificateRenew** |Obnovení certifikátu |
-| **CertificatePendingGet** |Načíst nevyřízený certifikát |
-| **CertificatePendingMerge** |Čeká se na sloučení certifikátů |
-| **CertificatePendingUpdate** |Čeká se na aktualizaci certifikátu. |
-| **CertificatePendingDelete** |Odstranit certifikát, který čeká |
+| **KeyNearExpiryEventGridNotification** |Vydaná událost v blízkosti vypršení platnosti klíče |
+| **KeyExpiredEventGridNotification** |Vydaná událost vypršení platnosti klíče |
+
+# <a name="secrets"></a>[Tajné kódy](#tab/Secrets)
+
+| operationName | REST API – příkaz |
+| --- | --- |
 | **SecretSet** |[Vytvoření tajného kódu](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Získat tajný kód](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Aktualizace tajného kódu](/rest/api/keyvault/updatesecret) |
@@ -158,13 +143,17 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **SecretRecover** |[Obnovení tajného klíče](/rest/api/keyvault/recoverdeletedsecret) |
 | **SecretGetDeleted** |[Získat odstraněný tajný klíč](/rest/api/keyvault/getdeletedsecret) |
 | **SecretListDeleted** |[Výpis odstraněných tajných klíčů v trezoru](/rest/api/keyvault/getdeletedsecrets) |
-| **VaultAccessPolicyChangedEventGridNotification** | Publikovaná událost změny zásad přístupu k trezoru |
 | **SecretNearExpiryEventGridNotification** |Publikovaná událost v blízkosti vypršení platnosti tajného kódu |
 | **SecretExpiredEventGridNotification** |Publikovaná událost vypršela v tajnosti |
-| **KeyNearExpiryEventGridNotification** |Vydaná událost v blízkosti vypršení platnosti klíče |
-| **KeyExpiredEventGridNotification** |Vydaná událost vypršení platnosti klíče |
-| **CertificateNearExpiryEventGridNotification** |Publikovaná událost poblíž vypršení platnosti certifikátu |
-| **CertificateExpiredEventGridNotification** |Událost vypršení platnosti certifikátu byla publikována. |
+
+# <a name="certificates"></a>[Certifikáty](#tab/Cerificates)
+
+| operationName | REST API – příkaz |
+| --- | --- |
+
+| **CertificateGet**  | [Získat informace o certifikátu](/rest/api/keyvault/getcertificate) | | **CertificateCreate**  | [Vytvoření certifikátu](/rest/api/keyvault/createcertificate) | | **CertificateImport**  | [Import certifikátu do trezoru](/rest/api/keyvault/importcertificate) | | **CertificateUpdate**  | [Aktualizace certifikátu](/rest/api/keyvault/updatecertificate) | | **CertificateList**  | [Výpis certifikátů v trezoru](/rest/api/keyvault/getcertificates) | | **CertificateListVersions**  | [Seznam verzí certifikátu](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete**  | [Odstranit certifikát](/rest/api/keyvault/deletecertificate) | | **CertificatePurge**  | [Vyprázdnit certifikát](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup**  | [Zálohování certifikátu](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Obnovení certifikátu](/rest/api/keyvault/restorecertificate) | | **CertificateRecover**  | [Obnovení certifikátu](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted**  | [Získat odstraněný certifikát](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted**  | [Výpis odstraněných certifikátů v trezoru](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet**  | [Získat Zásady certifikátů](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate**  | [Aktualizovat zásady certifikátů](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet**  | [Vytvořit zásadu certifikátu](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet**  | [Získat kontakty certifikátu](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet**  | [Nastavit kontakty certifikátu](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete**  | [Odstranit kontakty s certifikátem](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet**  | [Získat vystavitele certifikátu](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet**  | [Nastavit vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate**  | [Aktualizovat vystavitele certifikátu](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete**  | [Odstranit vystavitele certifikátu](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList**  | [Seznam vystavitelů certifikátů](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** | Zápis certifikátu | | **CertificateRenew** | Prodloužit platnost certifikátu | | **CertificatePendingGet** | Načíst nevyřízený certifikát | | **CertificatePendingMerge** | Čeká se na sloučení certifikátů | | **CertificatePendingUpdate** | Čeká se na aktualizaci certifikátu | | **CertificatePendingDelete** | Odstranit nevyřízený certifikát | | **CertificateNearExpiryEventGridNotification** | Událost vypršení platnosti certifikátu v blízkosti |
+<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Událost vypršení platnosti certifikátu je publikovaná |
+---
 
 ## <a name="use-azure-monitor-logs"></a>Použití protokolů Azure Monitoru
 
@@ -175,6 +164,7 @@ Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vau
 ## <a name="next-steps"></a>Další kroky
 
 - [Postup povolení protokolování Key Vault](howto-logging.md)
+- [Monitorování Azure](https://docs.microsoft.com/azure/azure-monitor/)
 - Kurz, který používá Azure Key Vault ve webové aplikaci .NET, najdete v tématu [použití Azure Key Vault z webové aplikace](tutorial-net-create-vault-azure-web-app.md).
 - Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md).
 - Seznam rutin Azure PowerShell 1,0 pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
