@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: f85df2e16554b4830d3e5f1bc82c5c8cdf22e28b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586626"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724812"
 ---
 # <a name="smb-multichannel-performance"></a>Výkon funkce SMB Multichannel
 
@@ -63,7 +63,7 @@ Ve většině scénářů, zejména u vícevláknových úloh, by klienti měli 
 1. Otevřete PowerShell jako správce a použijte tento příkaz: `Get-SmbMultichannelConnection |fl`
 1. Vyhledat vlastnosti **MaxChannels** a **CurrentChannels**
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Snímek obrazovky s výsledky Get-smbmultichannelconnection" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Snímek obrazovky s výsledky Get-SMBMultichannelConnection." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>Porovnání výkonu
 
@@ -119,7 +119,7 @@ Následující tipy vám mohou přispět k optimalizaci výkonu:
 - Ujistěte se, že váš účet úložiště a váš klient jsou společně umístěné ve stejné oblasti Azure, aby se snížila latence sítě.
 - Používejte vícevláknové aplikace a rozprostření zatížení mezi více souborů.
 - Výhody z hlediska výkonu vícekanálového nárůstu protokolu SMB s počtem souborů distribuují zatížení.
-- Výkon sdílené složky Premium je vázaný na velikost zřízené sdílené složky (IOPS/odchozí/příchozí/příchozí) a omezení na jeden soubor. Podrobnosti najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Výkon sdílené složky Premium je vázaný na velikost zřízené sdílené složky (IOPS/odchozí/příchozí/příchozí) a omezení na jeden soubor. Podrobnosti najdete v tématu [Principy zřizování pro sdílené složky prémiových souborů](understanding-billing.md#provisioned-billing).
 - Maximální výkon jednoho klienta virtuálního počítače je stále vázaný na omezení virtuálních počítačů. [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) například může podporovat maximální šířku pásma 16 000 MB/s (nebo peering –), odchozí z virtuálního počítače (zápisy do úložiště) se měří, příchozí přenos dat (čtení z úložiště) není. Výkon sdílené složky závisí na omezeních sítě počítačů, procesorech, interních dostupných úložištích šířky pásma sítě, velikostech v/v, paralelismuách a dalších faktorech.
 - Počáteční test je obvykle zahříváním, zrušením jeho výsledků a opakováním testu.
 - Pokud je výkon omezen jedním klientem a zatížení je stále pod zřízenými omezeními sdílení, je možné dosáhnout vyššího výkonu rozšířením zatížení více klientů.

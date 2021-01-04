@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537571"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734228"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Nasazení modelu Machine Learning pro Azure Functions s využitím Azure cache pro Redis 
 
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis je mimořádně výkonná a škálovatelná – při
 > I když jsou všeobecně k dispozici Azure Machine Learning i Azure Functions, možnost zabalit model ze služby Machine Learning for Functions je ve verzi Preview.  
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](../machine-learning/how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
@@ -41,9 +41,9 @@ Mezipaměť Azure pro Redis je mimořádně výkonná a škálovatelná – při
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Vytvoření mezipaměti Azure pro instanci Redis 
 Budete moct nasadit model strojového učení, abyste Azure Functions s instancí mezipaměti Basic, Standard nebo Premium. Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.  
 
-1. Přejděte na domovskou stránku Azure Portal nebo otevřete nabídku postranní panel a pak vyberte **vytvořit prostředek** . 
+1. Přejděte na domovskou stránku Azure Portal nebo otevřete nabídku postranní panel a pak vyberte **vytvořit prostředek**. 
    
-1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis** .
+1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vyberte mezipaměť Azure pro Redis.":::
    
@@ -51,7 +51,7 @@ Budete moct nasadit model strojového učení, abyste Azure Functions s instanc�
    
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . Redis.cache.Windows.NET* . | 
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . Redis.cache.Windows.NET*. | 
    | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
    | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
    | **Umístění** | Rozevírací seznam a vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
@@ -71,17 +71,17 @@ Budete moct nasadit model strojového učení, abyste Azure Functions s instanc�
 
 1. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
 
-1. Vyberte **Zkontrolovat a vytvořit** . Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
 
-1. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit** .
+1. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
 
-Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno** , mezipaměť je připravena k použití. 
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
 Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako webové služby. Následující seznam popisuje základní položky potřebné pro nasazení:
 
-* __Vstupní skript__ . Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
+* __Vstupní skript__. Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
 
     > [!IMPORTANT]
     > Vstupní skript je specifický pro váš model; musí pochopit formát příchozích dat požadavků, formát dat očekávaných modelem a formát dat vrácených klientům.
@@ -123,9 +123,9 @@ def run(data):
 
 Další informace o vstupním skriptu najdete v tématu [Definování kódu bodování.](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
-* **Závislosti** , například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
+* **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
-Tyto entity jsou zapouzdřeny do __Konfigurace odvození__ . Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
 > [!IMPORTANT]
 > Při vytváření odvozených konfigurací pro použití s Azure Functions je nutné použít objekt [prostředí](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) . Počítejte s tím, že pokud definujete vlastní prostředí, musíte přidat AzureML-Defaults s Version >= 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující příklad ukazuje vytvoření objektu prostředí a jeho použití s odvozenou konfigurací:
@@ -149,7 +149,7 @@ Další informace o prostředích najdete v tématu [vytváření a Správa pros
 Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration).
 
 > [!IMPORTANT]
-> Při nasazování do funkcí není nutné vytvářet __konfiguraci nasazení__ .
+> Při nasazování do funkcí není nutné vytvářet __konfiguraci nasazení__.
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>Instalace balíčku sady SDK Preview pro podporu funkcí
 
@@ -209,7 +209,7 @@ print(model_package.location)
     }
     ```
 
-    Uložte hodnotu pro __uživatelské jméno__ a jedno z __hesel__ .
+    Uložte hodnotu pro __uživatelské jméno__ a jedno z __hesel__.
 
 1. Pokud ještě nemáte skupinu prostředků nebo plán služby App Service pro nasazení služby, následující příkazy ukazují, jak vytvořit obojí:
 
@@ -283,14 +283,14 @@ V tuto chvíli začne aplikace Function App načítat obrázek.
 > [!IMPORTANT]
 > Než se image načte, může to trvat několik minut. Průběh můžete sledovat pomocí Azure Portal.
 
-## <a name="test-azure-function-http-trigger"></a>Test triggeru HTTP funkce Azure Functions 
+## <a name="test-azure-functions-http-trigger"></a>Aktivační událost testovacího Azure Functions HTTP 
 
-Nyní spustíme a otestujete naši aktivační proceduru HTTP funkce Azure Functions.
+Nyní spustíme a otestujeme Azure Functions triggeru HTTP.
 
-1. V Azure Portal přejdete do svojí aplikace Azure Functions.
-1. V části vývojář vyberte **kód + test** . 
+1. V Azure Portal přejdete do aplikace Function App.
+1. V části vývojář vyberte **kód + test**. 
 1. Na pravé straně vyberte kartu **vstup** . 
-1. Kliknutím na tlačítko **Spustit** otestujete Trigger http funkce Azure Functions. 
+1. Kliknutím na tlačítko **Spustit** otestujete Azure FUNCTIONS Trigger http. 
 
 Nyní jste úspěšně nasadili model z Azure Machine Learning jako aplikaci funkcí pomocí mezipaměti Azure pro instanci Redis. Další informace o službě Azure cache pro Redis najdete v odkazech v níže uvedené části.
 
@@ -305,17 +305,17 @@ V opačném případě, pokud jste hotovi s rychlým startem, můžete odstranit
 
 ### <a name="to-delete-a-resource-group"></a>Odstranění skupiny prostředků
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků** .
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků** .
+2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků**.
 
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit** .
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**.
 
 Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje, odstraní.
 
 ## <a name="next-steps"></a>Další kroky 
 
 * Další informace o [službě Azure cache pro Redis](./cache-overview.md)
-* Naučte se konfigurovat aplikaci Functions v dokumentaci k [funkcím](../azure-functions/functions-create-function-linux-custom-image.md) .
+* Naučte se konfigurovat aplikaci Function App v dokumentaci k [funkcím](../azure-functions/functions-create-function-linux-custom-image.md) .
 * [Referenční informace k rozhraním API](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
 * Vytvoření [aplikace v Pythonu, která používá Azure cache pro Redis](./cache-python-get-started.md)

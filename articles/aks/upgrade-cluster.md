@@ -3,17 +3,17 @@ title: Upgrade clusteru Azure Kubernetes Service (AKS)
 description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), abyste získali nejnovější funkce a aktualizace zabezpečení.
 services: container-service
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 12/17/2020
+ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751491"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734348"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
-V rámci životního cyklu clusteru AKS je často potřeba upgradovat na nejnovější verzi Kubernetes. Je důležité použít nejnovější verze zabezpečení Kubernetes nebo upgradovat, abyste získali nejnovější funkce. V tomto článku se dozvíte, jak upgradovat hlavní komponenty nebo jeden výchozí fond uzlů v clusteru AKS.
+Součástí životního cyklu clusteru AKS je provádění pravidelných upgradů na nejnovější verzi Kubernetes. Je důležité použít nejnovější verze zabezpečení nebo upgradovat, abyste získali nejnovější funkce. V tomto článku se dozvíte, jak upgradovat hlavní komponenty nebo jeden výchozí fond uzlů v clusteru AKS.
 
 Clustery AKS, které používají více fondů uzlů nebo uzlů Windows serveru, najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
@@ -26,27 +26,26 @@ Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Vyhledat dostupné upgrady clusteru AKS
 
-Chcete-li zjistit, které verze Kubernetes jsou pro váš cluster k dispozici, použijte příkaz [AZ AKS Get-Upgrades][az-aks-get-upgrades] . Následující příklad zkontroluje dostupné upgrady pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+Chcete-li zjistit, které verze Kubernetes jsou pro váš cluster k dispozici, použijte příkaz [AZ AKS Get-Upgrades][az-aks-get-upgrades] . Následující příklad zkontroluje dostupné upgrady na *myAKSCluster* v *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Například upgrady mezi *1.12. x*  ->  *1.13. x* nebo *1.13. x*  ->  *1.14. x* jsou povoleny, ale *1.12. x*  ->  *1.14. x* není.
->
-> Chcete-li provést upgrade, z *1.12. x*  ->  *1.14. x*, nejprve upgradujte z *1.12. x*  ->  *1.13. x* a potom proveďte upgrade z *1.13. x*  ->  *1.14. x*.
->
-> Přeskočení více verzí lze provést pouze při upgradu z nepodporované verze zpět do podporované verze. Například upgradujte z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* je možné dokončit.
+> Pokud upgradujete podporovaný cluster AKS, nelze podverze Kubernetes vynechat. Všechny upgrady se musí provádět postupně podle hlavního čísla verze. Například upgrady mezi *otázku 1.14. x*  ->  *1.15. x* nebo *1.15. x*  ->  *1.16. x* jsou povoleny, ale *1.14. x*  ->  *1.16. x* není povoleno. 
+> > Přeskočení více verzí lze provést pouze při upgradu z _nepodporované verze_ zpět na _podporovanou verzi_. Například upgrade z nepodporovaného prvku *1.10. x* --> podporovanou *1.15. x* lze dokončit.
 
-Následující příklad výstupu ukazuje, že cluster je možné upgradovat na verze *1.13.9* a *1.13.10*:
+Následující příklad výstupu ukazuje, že cluster je možné upgradovat na verze *1.19.1* a *1.19.3*:
 
 ```console
-Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
--------  ----------------  ---------------  -----------------  ---------------
-default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
+Name     ResourceGroup    MasterVersion    Upgrades
+-------  ---------------  ---------------  --------------
+default  myResourceGroup  1.18.10          1.19.1, 1.19.3
 ```
-Pokud upgrade není k dispozici, zobrazí se:
+
+Pokud upgrade není k dispozici, zobrazí se zpráva:
+
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
@@ -58,23 +57,13 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 >
 > Pokud používáte Azure CNI, ověřte, že jsou v podsíti dostupné IP adresy, a také [požadavky na IP adresu Azure CNI](configure-azure-cni.md).
 
-Ve výchozím nastavení AKS konfiguruje upgrady na přepětí s jedním dalším uzlem. Výchozí hodnota jednoho pro nastavení maximálního přepětí umožňuje AKS minimalizovat narušení úlohy vytvořením dalšího uzlu předtím, než Cordon/vyprázdní stávající aplikace nahradí starší uzel se správou verzí. Hodnota maximálního přepětí může být přizpůsobená pro každý fond uzlů, aby bylo možné kompromis mezi rychlostí upgradu a přerušením upgradu. Zvýšením maximální hodnoty přepětí dojde k rychlejšímu dokončení procesu upgradu, ale nastavení vysoké hodnoty pro maximální nárůst může způsobit přerušení během procesu upgradu. 
+Ve výchozím nastavení AKS konfiguruje upgrady na přepětí s jedním dalším uzlem. Výchozí hodnota jednoho pro maximální nastavení přepětí umožní AKS minimalizovat narušení úlohy vytvořením dalšího uzlu předtím, než Cordon/vyprázdní stávající aplikace nahradí starší uzel s verzí. Hodnota maximálního přepětí může být přizpůsobená pro každý fond uzlů, aby bylo možné kompromis mezi rychlostí upgradu a přerušením upgradu. Zvýšením maximální hodnoty přepětí dojde k rychlejšímu dokončení procesu upgradu, ale nastavení vysoké hodnoty pro maximální nárůst může způsobit přerušení během procesu upgradu. 
 
 Například maximální hodnota přepětí 100% poskytuje nejrychlejší možný proces upgradu (zdvojnásobuje počet uzlů), ale také způsobí, že všechny uzly ve fondu uzlů budou vyprázdněny současně. Možná budete chtít použít vyšší hodnotu, například pro testovací prostředí. Pro fondy produkčních uzlů doporučujeme nastavení max_surge 33%.
 
 AKS přijímá jak celočíselné hodnoty, tak i procentuální hodnotu pro maximální nárůst. Celé číslo, jako je "5", označuje pět dalších uzlů pro přepětí. Hodnota "50%" označuje hodnotu přepětí na polovinu aktuálního počtu uzlů ve fondu. Maximální procento nárůstu hodnoty může být minimálně 1% a maximálně 100%. Procentuální hodnota se zaokrouhluje na nejbližší počet uzlů. Pokud je maximální hodnota přepětí nižší než aktuální počet uzlů v době upgradu, použije se pro maximální hodnotu přepětí aktuální počet uzlů.
 
 Během upgradu může být maximální hodnota přepětí minimálně 1 a maximální hodnota se rovná počtu uzlů ve fondu uzlů. Můžete nastavit větší hodnoty, ale maximální počet uzlů, které se mají použít pro maximální nárůst, nebude vyšší než počet uzlů ve fondu v době upgradu.
-
-Až 2.16.0 verze CLI +, budete potřebovat rozšíření CLI *AKS-Preview* pro použití maximálního nárůstu. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 > [!Important]
 > Nastavení maximálního přepětí ve fondu uzlů je trvalé.  Toto nastavení budou používat následné upgrady Kubernetes nebo upgrady verze uzlu. Maximální hodnotu nárůstu počtu fondů uzlů můžete kdykoli změnit. Pro fondy produkčních uzlů doporučujeme nastavení maximálního přepětí 33%.
@@ -93,7 +82,12 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
-Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední uzel vyrovnávací paměti, čímž se zachová existující počet uzlů agenta a zůstatek v zóně.
+Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu bude AKS: 
+- Přidejte nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [Max. nárůstu](#customize-node-surge-upgrade)) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. 
+- [Cordon a vyprázdní][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spouštění aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). 
+- Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. 
+- Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. 
+- Na konci procesu se odstraní poslední uzel vyrovnávací paměti, čímž se zachová existující počet uzlů agenta a zůstatek v zóně.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -118,18 +112,20 @@ Následující příklad výstupu ukazuje, že cluster teď spouští *1.13.10*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded            myakscluster-dns-379cbbb9.hcp.eastus.azmk8s.io
 ```
 
-## <a name="set-auto-upgrade-channel-preview"></a>Nastavení kanálu pro automatické upgrady (Preview)
+## <a name="set-auto-upgrade-channel"></a>Nastavení kanálu automatického upgradu
 
 Kromě ručního upgradu clusteru můžete na svém clusteru nastavit kanál automatického upgradu. K dispozici jsou následující kanály upgradu:
 
-* *žádné*, což zakáže automatické upgrady a udržuje cluster v aktuální verzi Kubernetes. Toto je výchozí nastavení a používá se, pokud není zadána žádná možnost.
-* *Oprava*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy, když bude k dispozici a zůstane stejná podverze. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.17.9*.
-* *stabilní*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy v podverzi *n-1*, kde *n* je nejnovější podporovaná dílčí verze. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.18.6*.
-* *rychlá*, která bude automaticky upgradovat cluster na nejnovější podporovanou verzi opravy na nejnovější verzi, která je k dispozici. V případech, kdy je cluster ve verzi Kubernetes, která je v podverzi *n-2* , kde *n* je nejnovější podporovaná dílčí verze, cluster nejprve upgraduje na nejnovější podporovanou verzi opravy v *N-1* dílčí verzi. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , je váš cluster nejdřív upgradován na *1.18.6* a pak se upgraduje na *1.19.1*.
+|Kanál| Akce | Příklad
+|---|---|---|
+| `none`| zakáže automatické upgrady a zachová cluster v aktuální verzi Kubernetes.| Výchozí nastavení, pokud zůstane beze změny|
+| `patch`| automaticky upgradovat cluster na nejnovější podporovanou verzi opravy, jakmile bude k dispozici, a přitom zachovat dílčí verzi.| Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.17.9*|
+| `stable`| automaticky upgradujte cluster na nejnovější podporovanou verzi opravy v podverzi *n-1*, kde *n* je nejnovější podporovaná dílčí verze.| Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , váš cluster se upgraduje na *1.18.6*.
+| `rapid`| automaticky upgradovat cluster na nejnovější podporovanou verzi opravy na nejnovější verzi, která je k dispozici.| V případech, kdy je cluster ve verzi Kubernetes, která je v podverzi *n-2* , kde *n* je nejnovější podporovaná dílčí verze, cluster nejprve upgraduje na nejnovější podporovanou verzi opravy v *N-1* dílčí verzi. Pokud je například v clusteru spuštěná verze *1.17.7* a verze *1.17.9*, *1.18.4*, *1.18.6* a *1.19.1* , je váš cluster nejdřív upgradován na *1.18.6* a pak se upgraduje na *1.19.1*.
 
 > [!NOTE]
 > Automatický upgrade clusteru se aktualizuje jenom na verze GA Kubernetes a nebude se aktualizovat na verze Preview.
@@ -156,16 +152,6 @@ Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Micr
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
-```
-
-Pomocí příkazu [AZ Extension Add přidejte][az-extension-add] do instalace rozšíření *AKS-Preview* a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
 ```
 
 K nastavení kanálu automatického upgradu při vytváření clusteru použijte parametr pro *automatické upgrady* , podobně jako v následujícím příkladu.

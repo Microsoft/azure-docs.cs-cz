@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207219"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724920"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
@@ -68,14 +68,14 @@ Výchozí model, který vykreslíme, je [vestavěný Vzorový model](../samples/
 ### <a name="enter-your-account-info"></a>Zadejte informace o účtu.
 
 1. V prohlížeči assetů Unity přejděte do složky *scény* a otevřete scénu **rychlý Start** .
-1. Z *hierarchie*vyberte objekt **RemoteRendering** Game.
-1. V *inspektoru*zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md). Pokud ještě nemáte účet, [vytvořte ho](../how-tos/create-an-account.md).
+1. Z *hierarchie* vyberte objekt **RemoteRendering** Game.
+1. V *inspektoru* zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md). Pokud ještě nemáte účet, [vytvořte ho](../how-tos/create-an-account.md).
 
 ![Informace o účtu ARR](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure Portal zobrazí doménu vašeho účtu jenom jako *mixedreality.Azure.com*. To není pro úspěšné připojení dostatečné.
-> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md).
+> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md). \
+> Nastavte **AccountAuthenticationDomain** na [Doména účtu](../how-tos/create-an-account.md#retrieve-the-account-information) , jak se zobrazuje na webu Azure Portal.
 
 Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že jsme nemuseli na zařízení zadat přihlašovací údaje, ukázka pro rychlý Start **uloží přihlašovací údaje v rámci scény Unity**.
 
@@ -92,9 +92,7 @@ Blahopřejeme! Nyní prohlížíte vzdáleně vykreslený model.
 
 ## <a name="inspecting-the-scene"></a>Kontrola scény
 
-Po spuštění připojení vzdáleného vykreslování se panel inspektor aktualizuje o další informace o stavu:
-
-![Přehrávání ukázek Unity](./media/arr-sample-configure-session-running.png)
+Jakmile je připojení vzdáleného vykreslování spuštěné, panel inspektor aktualizuje informace o dalších stavech: ![ přehrávání ukázek Unity](./media/arr-sample-configure-session-running.png)
 
 Graf scény teď můžete prozkoumat tak, že vyberete nový uzel a v inspektoru kliknete na **Zobrazit podřízené objekty** .
 

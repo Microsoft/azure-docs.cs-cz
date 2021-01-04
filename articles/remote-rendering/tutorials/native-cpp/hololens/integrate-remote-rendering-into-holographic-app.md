@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 44c80703466f91ccdfa33934efa0a05e699fd5de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207508"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724387"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Kurz: integrace vzdáleného vykreslování do holografické aplikace HoloLens
 
@@ -30,7 +30,7 @@ Tento kurz se zaměřuje na přidání nezbytných bitů do nativního `Holograp
 
 Pro tento kurz potřebujete:
 
-* Informace o vašem účtu (ID účtu, klíč účtu, ID předplatného). Pokud účet nemáte, [vytvořte účet](../../../how-tos/create-an-account.md).
+* Informace o vašem účtu (ID účtu, klíč účtu, Doména účtu, ID předplatného). Pokud účet nemáte, [vytvořte účet](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/).
 * [Visual Studio Tools pro Mixed reality](/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
@@ -169,7 +169,8 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
         RR::AzureFrontendAccountInfo init;
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
-        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+        init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
         m_modelURI = "builtin://Engine";
         m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
@@ -220,7 +221,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
 Kód volá členské funkce `SetNewSession` a `SetNewState` , které budeme implementovat v dalším odstavci spolu se zbytkem stavového strojového kódu.
 
-Všimněte si, že přihlašovací údaje jsou v ukázce pevně zakódované a je třeba je vyplnit na místě ([ID účtu, klíč účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information)a [doména](../../../reference/regions.md)).
+Všimněte si, že přihlašovací údaje jsou v ukázce pevně zakódované a je třeba je vyplnit na místě ([ID účtu, klíč účtu, Doména účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information)a [doména vzdáleného vykreslování](../../../reference/regions.md)).
 
 Zrušení inicializace je symetrické a v obráceném pořadí na konci těla destruktoru:
 

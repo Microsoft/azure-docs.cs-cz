@@ -3,15 +3,15 @@ title: Správa připojení v Azure Automation
 description: V tomto článku se dozvíte, jak spravovat Azure Automation připojení k externím službám nebo aplikacím a jak s nimi pracovat v sadách Runbook.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/13/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071757"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733990"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
@@ -43,10 +43,10 @@ Rutiny v následující tabulce vytvářejí a spravují připojení automatizac
 
 |Rutina|Popis|
 |---|---|
-|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Načte informace o připojení.|
-|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Vytvoří nové připojení.|
-|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Odebere existující připojení.|
-|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Nastaví hodnotu konkrétního pole pro existující připojení.|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection)|Načte informace o připojení.|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)|Vytvoří nové připojení.|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection)|Odebere existující připojení.|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue)|Nastaví hodnotu konkrétního pole pro existující připojení.|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>Interní rutiny pro přístup k připojením
 
@@ -59,9 +59,9 @@ Interní rutina v následující tabulce se používá pro přístup k připojen
 >[!NOTE]
 >Vyhněte se použití proměnných s `Name` parametrem `Get-AutomationConnection` . Použití proměnných v tomto případě může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety připojení v době návrhu.
 
-## <a name="python-2-functions-to-access-connections"></a>Funkce Python 2 pro přístup k připojením
+## <a name="python-functions-to-access-connections"></a>Funkce Pythonu pro přístup k připojením
 
-Funkce v následující tabulce slouží k přístupu k připojením v sadě Runbook Python 2.
+Funkce v následující tabulce slouží k přístupu k připojením v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
 | Funkce | Popis |
 |:---|:---|
@@ -97,7 +97,7 @@ Když vytváříte účet Automation, ve výchozím nastavení zahrnuje několik
 
 ## <a name="add-a-connection-type"></a>Přidat typ připojení
 
-Pokud se vaše sada Runbook nebo konfigurace DSC připojuje k externí službě, musíte definovat typ připojení ve [vlastním modulu](shared-resources/modules.md#custom-modules) s názvem Integration Module. Tento modul obsahuje soubor metadat, který určuje vlastnosti typu připojení a má název ** &lt; Module &gt;-Automation.json**, umístěný ve složce modulu komprimovaného souboru **zip** . Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Pomocí tohoto souboru můžete pro typ připojení nastavit názvy polí, typy dat, stav šifrování a volitelný stav. 
+Pokud se vaše sada Runbook nebo konfigurace DSC připojuje k externí službě, musíte definovat typ připojení ve [vlastním modulu](shared-resources/modules.md#custom-modules) s názvem Integration Module. Tento modul obsahuje soubor metadat, který určuje vlastnosti typu připojení a má název **&lt; Module &gt;-Automation.json**, umístěný ve složce modulu komprimovaného souboru **zip** . Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Pomocí tohoto souboru můžete pro typ připojení nastavit názvy polí, typy dat, stav šifrování a volitelný stav. 
 
 V následujícím příkladu je šablona ve formátu souboru **. JSON** , která definuje vlastnosti uživatelského jména a hesla pro vlastní typ připojení s názvem `MyModuleConnection` :
 
@@ -124,9 +124,9 @@ V následujícím příkladu je šablona ve formátu souboru **. JSON** , která
 
 ## <a name="get-a-connection-in-a-runbook-or-dsc-configuration"></a>Získání připojení v sadě Runbook nebo konfiguraci DSC
 
-Načtěte připojení v sadě Runbook nebo konfiguraci DSC pomocí interní `Get-AutomationConnection` rutiny. Tato rutina je preferována prostřednictvím `Get-AzAutomationConnection` rutiny, protože načítá hodnoty připojení místo informací o připojení. 
+Načtěte připojení v sadě Runbook nebo konfiguraci DSC pomocí interní `Get-AutomationConnection` rutiny. Tato rutina je preferována prostřednictvím `Get-AzAutomationConnection` rutiny, protože načítá hodnoty připojení místo informací o připojení.
 
-### <a name="textual-runbook-example"></a>Příklad textového Runbooku
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Následující příklad ukazuje, jak použít účet Spustit jako k ověření pomocí Azure Resource Manager prostředků v Runbooku. Používá prostředek připojení představující účet Spustit jako, který odkazuje na objekt služby založený na certifikátu.
 
@@ -135,19 +135,9 @@ $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
-### <a name="graphical-runbook-examples"></a>Příklady grafického Runbooku
+# <a name="python"></a>[Python](#tab/python2)
 
-Do grafického Runbooku můžete přidat aktivitu pro interní `Get-AutomationConnection` rutinu. Klikněte pravým tlačítkem na připojení v podokně Knihovna v grafickém editoru a vyberte **Přidat na plátno**.
-
-![Přidat na plátno](media/automation-connections/connection-add-canvas.png)
-
-Následující obrázek ukazuje příklad použití objektu připojení v grafickém Runbooku. Tento příklad používá `Constant value` datovou sadu pro `Get RunAs Connection` aktivitu, která používá objekt připojení pro ověřování. [Odkaz na kanál](automation-graphical-authoring-intro.md#use-links-for-workflow) se tady používá, protože `ServicePrincipalCertificate` sada parametrů očekává jeden objekt.
-
-![získat připojení](media/automation-connections/automation-get-connection-object.png)
-
-### <a name="python-2-runbook-example"></a>Příklad Runbooku s Pythonem 2
-
-Následující příklad ukazuje, jak ověřit pomocí připojení spustit jako v sadě Runbook Python 2.
+Následující příklad ukazuje, jak provést ověření pomocí připojení spustit jako v sadě Runbook Python 2 a 3.
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
@@ -155,7 +145,7 @@ import azure.mgmt.resource
 import automationassets
 
 def get_automation_runas_credential(runas_connection):
-    """ Returns credentials to authenticate against Azure resoruce manager """
+    """ Returns credentials to authenticate against Azure resource manager """
     from OpenSSL import crypto
     from msrestazure import azure_active_directory
     import adal
@@ -189,6 +179,18 @@ runas_connection = automationassets.get_automation_connection(
     "AzureRunAsConnection")
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
+
+---
+
+### <a name="graphical-runbook-examples"></a>Příklady grafického Runbooku
+
+Do grafického Runbooku můžete přidat aktivitu pro interní `Get-AutomationConnection` rutinu. Klikněte pravým tlačítkem na připojení v podokně Knihovna v grafickém editoru a vyberte **Přidat na plátno**.
+
+![Přidat na plátno](media/automation-connections/connection-add-canvas.png)
+
+Následující obrázek ukazuje příklad použití objektu připojení v grafickém Runbooku. Tento příklad používá `Constant value` datovou sadu pro `Get RunAs Connection` aktivitu, která používá objekt připojení pro ověřování. [Odkaz na kanál](automation-graphical-authoring-intro.md#use-links-for-workflow) se tady používá, protože `ServicePrincipalCertificate` sada parametrů očekává jeden objekt.
+
+![získat připojení](media/automation-connections/automation-get-connection-object.png)
 
 ## <a name="next-steps"></a>Další kroky
 

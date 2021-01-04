@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461454"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734772"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>Funkce Python 2 pro přístup k proměnným
+## <a name="python-functions-to-access-variables"></a>Funkce Pythonu pro přístup k proměnným
 
-Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2.
+Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
-|Python 2 – funkce|Popis|
+|Funkce Pythonu|Popis|
 |:---|:---|
 |`automationassets.get_automation_variable`|Načte hodnotu existující proměnné. |
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>Příklady textových runbooků
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Načtení a nastavení jednoduché hodnoty z proměnné
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Následující příklad ukazuje, jak nastavit a načíst proměnnou v textovém Runbooku. Tento příklad předpokládá vytvoření celočíselných proměnných s názvem `NumberOfIterations` a `NumberOfRunnings` a řetězcovou proměnnou s názvem `SampleMessage` .
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Načtení a nastavení proměnné v Runbooku Python 2
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Následující příklad ukazuje, jak získat proměnnou, nastavit proměnnou a zpracovat výjimku pro neexistující proměnnou v sadě Runbook Python 2.
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Následující příklad ukazuje, jak získat proměnnou, nastavit proměnnou a zpracovat výjimku pro neexistující proměnnou v sadě Runbook Python 3 (Preview).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>Příklady grafického Runbooku
 

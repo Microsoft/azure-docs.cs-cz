@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016832"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740534"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -124,14 +124,6 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku o [práci s modely časových řad](./time-series-insights-overview.md).
 
   [![Nenadřazené instance zobrazí upozornění.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
-
-## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>Problém: konektor Power BI zobrazuje "nelze se připojit"
-
-K tomuto problému může dojít, pokud v Power BI Desktop nepoužíváte nejnovější verzi konektoru Power BI.
-
-[![Snímek obrazovky se zobrazí dialogové okno nelze připojit.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
-
-- Zkontrolujte verzi Power BI Desktop a ujistěte se, že používáte verzi z července 2020. Pokud ne, aktualizujte Power BI Desktop a spusťte konektor znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

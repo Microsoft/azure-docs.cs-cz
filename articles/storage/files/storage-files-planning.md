@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842698"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724220"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -114,56 +114,6 @@ Další informace najdete v tématu [Rozšířená ochrana před internetovými 
 
 ## <a name="storage-tiers"></a>Úrovně úložiště
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>Principy zřizování pro sdílení souborů úrovně Premium
-Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro všechny velikosti sdílených složek se nabízí minimální základní hodnota a propustnost a povolený nárůst. Pro každou zřízenou GiB bude mít sdílená složka minimální IOPS/propustnost a 1 IOPS a 0,1 MiB/s až do maximálních limitů pro každou sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním počtem vstupně-výstupních operací/propustnosti. 
-
-Všechny úrovně Premium jsou nabízeny zdarma, a to na základě optimálního úsilí. Všechny velikosti sdílených složek se můžou rozdělovat až na 4 000 IOPS nebo až na tři vstupně-výstupní operace za zřízené GiB, podle toho, která poskytuje větší shlukový IOPS pro sdílenou složku. Všechny sdílené složky podporují rozpínání po dobu maximálně 60 minut v limitu shlukového zatížení. Nové sdílené složky začínají úplným kreditem na základě zřízené kapacity.
-
-Sdílené složky musí být zřízené v 1 přírůstcích GiB. Minimální velikost je 100 GiB, příští velikost je 101 GiB atd.
-
-> [!TIP]
-> Směrného plánu IOPS = 400 + 1 * zřízené GiB. (Až do maximálního počtu 100 000 IOPS).
->
-> Limit počtu shluků = MAX (4 000, 3 × základní IOPS). (podle toho, jak je limit větší, až do maximálního počtu 100 000 IOPS).
->
-> míra odchozích dat = 60 MiB/s + 0,06 * zřízené GiB
->
-> rychlost příchozího přenosu dat = 40 MiB/s + 0,04 * zřízené GiB
-
-Velikost zřízené sdílené složky je určena kvótou sdílené složky. Kvótu sdílení můžete kdykoli prodloužit, ale můžete ji snížit až 24 hodin od posledního zvýšení. Po čekání na 24 hodin bez zvýšení kvóty můžete kvótu sdílení snížit tolikrát, kolikrát chcete, a to až do jejich opětovného zvýšení. Změny v rozsahu IOPS/propustnosti budou platit během několika minut od změny velikosti.
-
-Velikost zřízené sdílené složky můžete snížit pod použitou GiB. Pokud to uděláte, neztratíte data, ale bude se vám stále účtovat využitá velikost a bude se vám účtovat výkon (počet vstupně-výstupních operací za sekundu, propustnost a shlukové IOPS) zřízené sdílené složky, nikoli použitou velikost.
-
-Následující tabulka ilustruje několik příkladů těchto vzorců pro zřízené velikosti sdílených složek:
-
-|Kapacita (GiB) | Směrný IOPS | Shlukový IOPS | Výstup (MiB/s) | Příchozí přenosy (MiB/s) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | Až 4 000     | 66   | 44   |
-|500         | 900     | Až 4 000  | 90   | 60   |
-|1 024       | 1 424   | Až 4 000   | 122   | 81   |
-|5 120       | 5 520   | Až 15 360  | 368   | 245   |
-|10 240      | 10 640  | Až 30 720  | 675   | 450   |
-|33 792      | 34 192  | Až 100 000 | 2 088 | 1 392   |
-|51 200      | 51 600  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Až 100 000 | 6 204 | 4 136   |
-
-Je důležité si uvědomit, že účinný výkon sdílených složek se vztahuje na omezení sítě počítačů, dostupnou šířku pásma sítě, velikosti v/v, paralelismus mezi mnoha dalšími faktory. Například na základě interního testování s 8 KiB velikostí vstupně-výstupních operací čtení a zápisu se může jednat o jeden virtuální počítač s Windows bez povolených souborů protokolu SMB, *Standard F16s_v2*, který je připojený ke sdílené složce Premium přes SMB, mohl dosáhnout 20 tisíc čtení IOPS a 15 000 IOPS. S 512 velikostí čtení/zápisu v/v souboru MiB může stejný virtuální počítač dosáhnout propustnosti 1,1 GiB/s a 370 propustnosti příchozího přenosu dat MiB/s. Stejný klient může dosáhnout až \~ 3x výkonu, pokud je ve sdílených složkách na úrovni Premium povolená možnost SMB vícekanálový. Pokud chcete dosáhnout maximálního výkonu, povolte v rámci více virtuálních počítačů vícekanálový a rozprostření zátěže přes protokol [SMB](storage-files-enable-smb-multichannel.md) . Některé běžné problémy s výkonem a řešení [problémů najdete v Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) ve [vícekanálovém protokolu SMB](storage-files-smb-multichannel-performance.md) .
-
-#### <a name="bursting"></a>Shlukování
-Pokud vaše úloha potřebuje dodatečný výkon pro splnění požadavků na špičku, může vaše sdílená složka použít kredity za sekundu a přejít nad limit počtu IOPS podle směrného plánu, aby bylo možné nabídnout výkon, který musí splňovat požadavky. Soubory úrovně Premium můžou zvýšit zatížení za IOPS až do 4 000 nebo až do násobku tří, podle toho, co je vyšší hodnota. Shlukování je automatizované a funguje na základě úvěrového systému. Shluking funguje na nejvyšší úrovni a limit shluku není zárukou. sdílené složky se můžou *zvýšit až* na maximální dobu od 60 minut.
-
-Kredity se sčítají v rámci shlukového přenosu, kdykoli je přenos pro sdílenou složku pod směrným intervalem IOPS. Například sdílená složka 100 GiB má 500 směrný IOPS. Pokud byl skutečný provoz na sdílené složce 100 vstupně-výstupních operací pro určitý interval 1 sekund, pak je 400 nepoužitelné IOPS v kreditu do intervalu shlukování. Podobně nečinný TiB sdílená složka vyplyne nárůst kreditu na 1 424 IOPS. Tyto kredity se pak použijí později, pokud by operace překročily směrný IOPS.
-
-Pokaždé, když sdílená složka přesáhne základní IOPS a má kredity v intervalu shlukového přenosu, dojde k nárůstu maximální povolené míry shlukové zátěže na nejvyšší úrovni. Sdílené složky můžou pokračovat v nárůstu, dokud budou kredity zbývající, maximálně 60 minut, ale na základě počtu kumulovaných kreditů. Každý v/v za rámec standardních hodnot IOPS spotřebovává jeden kredit a jakmile se všechny kredity spotřebují, bude se tato sdílená hodnota vracet do směrného IOPS.
-
-Sdílené kredity mají tři stavy:
-
-- Probíhá nabíhání, Pokud sdílená složka používá méně než směrný IOPS.
-- Odmítnutí, Pokud sdílená složka používá více než IOPS a v režimu shlukování.
-- Je potřeba, aby sdílená složka používala přesně základní IOPS, ale nedošlo k žádnému kreditu nebo použití.
-
-Nové sdílené složky začínají úplným počtem kreditů v rámci svého shlukového intervalu. Kredity shluku se neúčtují, pokud se za vstupně-výstupní operace klesne pod základnu IOPS, a to kvůli omezení serveru.
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Povolit standardní sdílené složky pro rozsah až 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

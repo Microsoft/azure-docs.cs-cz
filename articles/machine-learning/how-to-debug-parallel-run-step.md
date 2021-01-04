@@ -1,35 +1,143 @@
 ---
-title: Ladění třídy ParallelRunStep a řešení souvisejících potíží
+title: Řešení potíží s ParallelRunStep
 titleSuffix: Azure Machine Learning
-description: Ladění a řešení potíží s ParallelRunStep v kanálech strojového učení v sadě Azure Machine Learning SDK pro Python.
+description: Tipy pro řešení potíží při získání chyb pomocí ParallelRunStep v kanálech Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 09f75e9e8f972ec44098e119dc5b30bd44638918
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 468af45f88c097e6f792a28df61ea0f1aea0d1ef
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630460"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740279"
 ---
-# <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění třídy ParallelRunStep a řešení souvisejících potíží
+# <a name="troubleshooting-the-parallelrunstep"></a>Řešení potíží s ParallelRunStep
 
+V tomto článku se dozvíte, jak řešit chyby pomocí třídy [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) ze sady [SDK Azure Machine Learning](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-V tomto článku se dozvíte, jak ladit a řešit potíže se třídou [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) z [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+Obecné tipy pro řešení potíží s kanálem najdete v tématu [řešení potíží s kanály strojového učení](how-to-debug-pipelines.md).
 
 ## <a name="testing-scripts-locally"></a>Místní testování skriptů
 
-Přečtěte si [část testování skriptů místně](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) pro kanály strojového učení. Vaše ParallelRunStep se spouští jako krok v kanálech ML, takže stejná odpověď platí i pro obě.
+ Vaše ParallelRunStep se spouští jako krok v kanálech ML. Skripty můžete chtít [místně testovat](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) jako první krok.
+
+##  <a name="script-requirements"></a>Požadavky na skripty
+
+Skript pro `ParallelRunStep` *musí obsahovat* dvě funkce:
+- `init()`: Tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu. Tato funkce bude volána pouze jednou na začátku procesu.
+-  `run(mini_batch)`: Funkce se spustí pro každou `mini_batch` instanci.
+    -  `mini_batch`: `ParallelRunStep` vyvolá metodu Run a předá `DataFrame` jako argument metody seznam nebo PANDAS. Každá položka v mini_batch bude cestou k souboru, pokud je vstupem `FileDataset` nebo PANDAS, `DataFrame` Pokud je vstupem `TabularDataset` .
+    -  `response`: metoda Run () by měla vracet PANDAS `DataFrame` nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Ujistěte se, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
+
+```python
+%%writefile digit_identification.py
+# Snippets from a sample script.
+# Refer to the accompanying digit_identification.py
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
+# for the implementation script.
+
+import os
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from azureml.core import Model
+
+
+def init():
+    global g_tf_sess
+
+    # Pull down the model from the workspace
+    model_path = Model.get_model_path("mnist")
+
+    # Construct a graph to execute
+    tf.reset_default_graph()
+    saver = tf.train.import_meta_graph(os.path.join(model_path, 'mnist-tf.model.meta'))
+    g_tf_sess = tf.Session()
+    saver.restore(g_tf_sess, os.path.join(model_path, 'mnist-tf.model'))
+
+
+def run(mini_batch):
+    print(f'run method start: {__file__}, run({mini_batch})')
+    resultList = []
+    in_tensor = g_tf_sess.graph.get_tensor_by_name("network/X:0")
+    output = g_tf_sess.graph.get_tensor_by_name("network/output/MatMul:0")
+
+    for image in mini_batch:
+        # Prepare each image
+        data = Image.open(image)
+        np_im = np.array(data).reshape((1, 784))
+        # Perform inference
+        inference_result = output.eval(feed_dict={in_tensor: np_im}, session=g_tf_sess)
+        # Find the best probability, and add it to the result list
+        best_result = np.argmax(inference_result)
+        resultList.append("{}: {}".format(os.path.basename(image), best_result))
+
+    return resultList
+```
+
+Pokud máte jiný soubor nebo složku ve stejném adresáři jako skript pro odvození, můžete na něj odkazovat pomocí hledání aktuálního pracovního adresáře.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
+### <a name="parameters-for-parallelrunconfig"></a>Parametry pro ParallelRunConfig
+
+`ParallelRunConfig` je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících položek:
+- `entry_script`: Uživatelský skript jako cesta k místnímu souboru, který bude spuštěn paralelně na více uzlech. Pokud `source_directory` je k dispozici, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
+- `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro `FileDataset` a `1MB` pro `TabularDataset` .)
+    - V případě je `FileDataset` to počet souborů s minimální hodnotou `1` . Můžete zkombinovat více souborů do jedné Mini-dávky.
+    - Pro `TabularDataset` je to velikost dat. Příklady hodnot jsou `1024` , `1024KB` , `10MB` a `1GB` . Doporučená hodnota je `1MB` . Ze zkrácené dávky `TabularDataset` nebude nikdy mezi hranicemi souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB` , budou se soubory s velikostí menší než 1 MB považovat za jednu miniickou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
+- `error_threshold`: Počet selhání záznamu `TabularDataset` a selhání souborů pro `FileDataset` , které by měly být během zpracování ignorovány. Pokud se počet chyb pro celý vstup překročí k této hodnotě, bude úloha přerušena. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do `run()` metody. Rozsah je `[-1, int.max]` . `-1`Část indikuje ignorování všech selhání během zpracování.
+- `output_action`: Jedna z následujících hodnot indikuje, jak bude uspořádán výstup:
+    - `summary_only`: Uživatelský skript uloží výstup. `ParallelRunStep` použije výstup pouze pro výpočet prahové hodnoty chyby.
+    - `append_row`: Pro všechny vstupy se ve výstupní složce vytvoří pouze jeden soubor pro připojení všech výstupů oddělených čárou.
+- `append_row_file_name`: Chcete-li přizpůsobit název výstupního souboru pro append_row output_action (volitelné; výchozí hodnota je `parallel_run_step.txt` ).
+- `source_directory`: Cesty ke složkám, které obsahují všechny soubory, které mají být spuštěny na cílovém výpočetním cíli (volitelné).
+- `compute_target`: `AmlCompute` Podporuje se jenom.
+- `node_count`: Počet výpočetních uzlů, které se mají použít ke spuštění skriptu uživatele.
+- `process_count_per_node`: Počet procesů na uzel. Osvědčeným postupem je nastavit počet GPU nebo PROCESORového jednoho uzlu (volitelné; výchozí hodnota je `1` ).
+- `environment`: Definice prostředí Pythonu. Můžete ji nakonfigurovat tak, aby používala existující prostředí Pythonu, nebo nastavit dočasné prostředí. Definice je také zodpovědná za nastavení požadovaných závislostí aplikace (volitelné).
+- `logging_level`: Podrobnosti protokolu. Hodnoty při zvyšování podrobností jsou: `WARNING` , `INFO` a `DEBUG` . (volitelné; výchozí hodnota je `INFO` )
+- `run_invocation_timeout`: `run()` Časový limit volání metody v sekundách. (volitelné; výchozí hodnota je `60` )
+- `run_max_try`: Maximální počet testovaných položek `run()` pro Mini-Batch. V `run()` případě, že dojde k výjimce, se nezdařila nebo není vrácena žádná hodnota, pokud `run_invocation_timeout` je dosaženo (volitelné; výchozí hodnota je `3` ). 
+
+Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a `run_max_try` jako, aby `PipelineParameter` při opakovaném odesílání kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete `PipelineParameter` pro `mini_batch_size` a `Process_count_per_node` a tyto hodnoty změníte, pokud je znovu spustíte později. 
+
+### <a name="parameters-for-creating-the-parallelrunstep"></a>Parametry pro vytvoření ParallelRunStep
+
+Vytvořte ParallelRunStep pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už připojili k pracovnímu prostoru jako cíl provádění pro váš skript pro odvození. Použijte `ParallelRunStep` k vytvoření kroku kanálu odvození dávky, který převezme všechny následující parametry:
+- `name`: Název kroku s následujícími omezeními pro pojmenovávání: jedinečné, 3-32 znaky a Regex ^ \[ a-z \] ([-a-Z0-9] * [a-Z0-9])? $.
+- `parallel_run_config`: `ParallelRunConfig` Objekt, jak je definováno výše.
+- `inputs`: Jedna nebo více Azure Machine Learning datových sad s jedním typem, které mají být rozděleny na oddíly pro paralelní zpracování.
+- `side_inputs`: Jedno nebo více referenčních dat nebo datových sad, které se používají jako vstupy na straně, není nutné rozdělit na oddíly.
+- `output`: `PipelineData` Objekt, který odpovídá výstupnímu adresáři.
+- `arguments`: Seznam argumentů předaných uživatelskému skriptu. Pomocí unknown_args je načtěte v vstupním skriptu (volitelné).
+- `allow_reuse`: Zda by měl krok při spuštění se stejnými nastaveními nebo vstupy znovu použít předchozí výsledky. Pokud je tento parametr `False` , nové spuštění bude pro tento krok vždy vygenerováno během provádění kanálu. (volitelné; výchozí hodnota je `True` .)
+
+```python
+from azureml.pipeline.steps import ParallelRunStep
+
+parallelrun_step = ParallelRunStep(
+    name="predict-digits-mnist",
+    parallel_run_config=parallel_run_config,
+    inputs=[input_mnist_ds_consumption],
+    output=output_dir,
+    allow_reuse=True
+)
+```
 
 ## <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md). Informace v této části platí i pro ParallelRunStep.
+Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v  [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md). Informace v této části platí i pro ParallelRunStep.
 
 Například soubor protokolu `70_driver_log.txt` obsahuje informace z kontroleru, který spouští kód ParallelRunStep.
 
@@ -66,6 +174,7 @@ Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skór
 Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Informace o každém procesu jsou k dispozici v části `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Návody se protokolovat z uživatelského skriptu ze vzdáleného kontextu?
+
 ParallelRunStep může na jednom uzlu na základě process_count_per_node spustit více procesů. K uspořádání protokolů z každého procesu na uzlu a kombinování tiskových a log příkazů doporučujeme použít protokolovací nástroj ParallelRunStep, jak je znázorněno níže. Získáte protokolovací nástroj z EntryScript a zpřístupníte protokoly ve složce **logs/uživatel** na portálu.
 
 **Ukázkový vstupní skript s použitím protokolovacího nástroje:**

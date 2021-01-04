@@ -3,26 +3,26 @@ title: Azure Automation typy runbooků
 description: Tento článek popisuje typy sad Runbook, které lze použít v Azure Automation a požadavky na určení typu, který se má použít.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/05/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185921"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733956"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
 Funkce automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 
-| Typ | Description |
+| Typ | Popis |
 |:--- |:--- |
 | [Grafický](#graphical-runbooks)|Grafická sada Runbook založená na prostředí Windows PowerShell a vytvořena a upravována zcela v grafickém editoru v Azure Portal. |
 | [Grafický pracovní postup PowerShellu](#graphical-runbooks)|Grafická sada Runbook založená na pracovním postupu prostředí Windows PowerShell a vytvořená a upravená úplně v grafickém editoru v Azure Portal. |
 | [PowerShell](#powershell-runbooks) |Textový Runbook založený na skriptování Windows PowerShellu |
 | [Pracovní postup PowerShellu](#powershell-workflow-runbooks)|Textový Runbook založený na skriptování pracovního postupu prostředí Windows PowerShell. |
-| [Python](#python-runbooks) |Textový Runbook založený na skriptování v Pythonu |
+| [Python](#python-runbooks) |Textový Runbook založený na skriptování Pythonu |
 
 Při určování typu, který se má použít pro konkrétní Runbook, vezměte v úvahu následující skutečnosti.
 
@@ -33,9 +33,9 @@ Při určování typu, který se má použít pro konkrétní Runbook, vezměte 
 
 Můžete vytvářet a upravovat grafické a grafické Runbooky pracovních postupů PowerShellu pomocí grafického editoru v Azure Portal. Tento typ sady Runbook však nelze vytvořit ani upravit pomocí jiného nástroje. Hlavní funkce grafických runbooků:
 
-* Je možné je exportovat do souborů v účtu Automation a pak je importovat do jiného účtu Automation. 
-* Vygeneruje kód PowerShellu. 
-* Dá se v průběhu importu převést na grafické Runbooky pracovního postupu PowerShellu nebo z něj. 
+* Exportovány do souborů v účtu Automation a pak se naimportují do jiného účtu Automation.
+* Vygeneruje kód PowerShellu.
+* Převede se na grafické Runbooky pracovních postupů PowerShellu během importu nebo z nich.
 
 ### <a name="advantages"></a>Výhody
 
@@ -59,7 +59,7 @@ Runbooky PowerShellu jsou založené na Windows PowerShellu. Kód sady Runbook m
 
 ### <a name="advantages"></a>Výhody
 
-* Implementujte všechny komplexní logiky pomocí kódu PowerShellu bez dalších složitosti pracovního postupu PowerShellu.
+* Implementujte všechny komplexní logiky pomocí kódu prostředí PowerShell bez dalších složitosti pracovního postupu PowerShellu.
 * Začněte rychleji než Runbooky pracovních postupů PowerShellu, protože je před spuštěním nemusíte kompilovat.
 * Spouštějte v Azure a na hybridních pracovních procesech Runbooku pro Windows i Linux.
 
@@ -68,7 +68,7 @@ Runbooky PowerShellu jsou založené na Windows PowerShellu. Kód sady Runbook m
 * Je nutné znát prostředí PowerShell Scripting.
 * Runbooky nemůžou použít [paralelní zpracování](automation-powershell-workflow.md#use-parallel-processing) k paralelnímu provádění více akcí.
 * Runbooky nemůžou použít [kontrolní body](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) k obnovení Runbooku, pokud dojde k chybě.
-* Pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) můžete zahrnout jenom Runbooky pracovního postupu PowerShellu a grafické Runbooky jako podřízené Runbooky. tím se vytvoří nová úloha.
+* Pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) můžete zahrnout jenom Runbooky pracovního postupu PowerShellu a grafické Runbooky jako podřízené Runbooky. tím se vytvoří nová úloha.
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -76,7 +76,7 @@ Tady jsou uvedené aktuální známé problémy s Runbooky PowerShellu:
 
 * Runbooky PowerShellu nemůžou načíst nešifrovaný [variabilní prostředek](./shared-resources/variables.md) s hodnotou null.
 * Runbooky PowerShellu nemůžou v názvu načíst variabilní prostředek `*~*` .
-* Operace [GET-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) ve smyčce v Runbooku PowerShellu může po přibližně 80 iterací selhat.
+* Operace [GET-Process](/powershell/module/microsoft.powershell.management/get-process) ve smyčce v Runbooku PowerShellu může po přibližně 80 iterací selhat.
 * PowerShellový Runbook může selhat, pokud se pokusí zapisovat velké množství dat do výstupního datového proudu najednou. Tento problém můžete obvykle obejít tak, že výstup Runbooku vydáte jenom informace potřebné pro práci s velkými objekty. Například namísto použití `Get-Process` bez omezení můžete mít výstup rutiny pouze požadované parametry, jako v `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>Runbooky pracovních postupů PowerShellu
@@ -100,18 +100,29 @@ Runbooky pracovních postupů PowerShellu jsou textové Runbooky založené na [
 
 ## <a name="python-runbooks"></a>Runbooky Python
 
-Runbooky Pythonu se zkompiluje v Pythonu 2. Můžete přímo upravit kód sady Runbook pomocí textového editoru v Azure Portal. Můžete také použít textový editor offline a [importovat Runbook](manage-runbooks.md) do Azure Automation.
+Runbooky Pythonu jsou kompilovány v Pythonu 2 a Python 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview. Můžete přímo upravit kód sady Runbook pomocí textového editoru v Azure Portal. Můžete také použít textový editor offline a [importovat Runbook](manage-runbooks.md) do Azure Automation.
 
 ### <a name="advantages"></a>Výhody
 
 * Používejte robustní knihovny Pythonu.
-* Může běžet v Azure nebo na hybridních pracovních procesech Runbooku pro Linux. Aplikace Windows Hybrid Runbook Worker je podporována s nainstalovanou [Python 2.7](https://www.python.org/downloads/release/latest/python2) .
+* Může běžet v Azure nebo na hybridních pracovních procesech Runbooku.
+* V Pythonu 2 jsou pracovní procesy Windows Hybrid Runbook Worker podporovány s nainstalovanou [Python 2,7](https://www.python.org/downloads/release/latest/python2) .
+* V případě cloudových úloh Python 3 je podporována verze Python 3,8. Skripty a balíčky z jakékoli 3. x verze mohou fungovat, pokud je kód kompatibilní napříč různými verzemi.  
+* V případě hybridních úloh Python 3 na počítačích s Windows můžete zvolit instalaci libovolné verze 3. x, kterou možná budete chtít použít.  
+* U hybridních úloh Pythonu 3 v počítačích se systémem Linux závisí na verzi Pythonu 3 nainstalované v počítači, aby se spouštěla OMSConfiga DSC a Linux Hybrid Worker. Doporučujeme nainstalovat 3,6 na počítače se systémem Linux. Různé verze by však měly fungovat i v případě, že se nevyskytnou žádné zásadní změny signatury metody nebo kontraktů mezi verzemi Pythonu 3.
 
 ### <a name="limitations"></a>Omezení
 
 * Musíte být obeznámeni se skriptováním v Pythonu.
-* V současné době se podporuje jenom Python 2. Jakékoli funkce specifické pro Python 3 selžou.
 * Chcete-li použít knihovny třetích stran, je nutné [importovat balíčky](python-packages.md) do účtu Automation.
+*    Spuštění sady Runbook (verze Preview) pomocí rutiny Start-AutomationRunbook v pracovním postupu PowerShell/PowerShell nefunguje. Chcete-li toto omezení vyřešit, můžete použít rutinu **Start-AzAutomationRunbook** z modulu AZ. Automation Module nebo rutinu **Start-AzureRmAutomationRunbook** z modulu AzureRm. Automation.  
+* Sady Runbook (verze Preview) Python 3 nefungují s prostředím PowerShell.
+* Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
+* Azure Automation nepodporuje **Sys. stderr**.
+
+### <a name="known-issues"></a>Známé problémy
+
+V některých úlohách Python 3 dojde k chybě, zpráva výjimky je *neplatná cesta ke spustitelnému souboru interpretu*. Tato výjimka se může zobrazit, pokud je úloha zpožděna a začíná více než 10 minut nebo se pomocí **Start-AutomationRunbook** spustí sady Python 3 pro Runbooky. Pokud je úloha zpožděna, měla by být sada Runbook restartem dostačující.
 
 ## <a name="next-steps"></a>Další kroky
 

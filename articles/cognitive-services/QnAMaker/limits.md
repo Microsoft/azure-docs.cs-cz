@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380893"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708936"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -82,10 +82,10 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
 Celková omezení obsahu ve znalostní bázi Knowledge Base:
-* Délka textu odpovědi: 25 000
-* Délka textu otázky: 1 000
-* Délka textu klíče metadat: 100
-* Délka textu hodnoty metadat: 500
+* Délka textu odpovědi: 25 000 znaků
+* Délka textu otázky: 1 000 znaků
+* Délka textu klíče metadat: 100 znaků
+* Délka textu hodnoty metadat: 500 znaků
 * Podporované znaky pro název metadat: abecedy, číslice a `_`
 * Podporované znaky pro hodnotu metadat: vše kromě `:` a `|`
 * Délka názvu souboru: 200

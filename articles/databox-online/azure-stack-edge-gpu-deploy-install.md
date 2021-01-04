@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449371"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734697"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Kurz: instalace Azure Stack Edge pro s grafickým procesorem
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.
@@ -159,14 +159,14 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 
 Směrování kabelů a potom kabel zařízení. Následující postupy vysvětlují, jak zařízení Azure Stack Edge pro pro napájení a síť kabelem.
 
-Než začnete kabelovat vaše zařízení, budete potřebovat následující:
+Než začnete kabelovat vaše zařízení, budete potřebovat následující věci:
 
 - Vaše fyzické zařízení Azure Stack Edge pro, nebalené a připojené k racku.
 - Dva napájecí kabely
 - Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
 - Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Aspoň jedno rozhraní datové sítě z portu 2, PORT 3, port 4, PORT 5 nebo PORT 6 musí být připojené k Internetu (s připojením k Azure).  
 - Přístup ke dvěma jednotkám distribuce napájení (doporučeno).
-- Aspoň 1 1 síťový přepínač pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Místní webové uživatelské rozhraní nebude dostupné, pokud připojený přepínač nemá aspoň 1 GbE. Pokud pro data používáte rozhraní 25/10 GbE, budete potřebovat přepínač s 25 gbemi nebo 10 přepínači. 
+- Aspoň 1 1 síťový přepínač pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Místní webové uživatelské rozhraní nebude dostupné, pokud připojený přepínač nemá aspoň 1 GbE. Pokud pro data používáte rozhraní s 25 a 10 GbE, budete potřebovat přepínač s 25 GbE nebo 10 GbE.
 
 > [!NOTE]
 > - Pokud se připojujete pouze k jednomu síťovému rozhraní, doporučujeme, abyste pro posílání dat do Azure používali síťové rozhraní 25 nebo 10 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
@@ -186,14 +186,14 @@ Na zařízení Azure Stack Edge pro:
     - Rozhraní 4 25-GB, která můžou sloužit taky jako rozhraní s rychlostí 10 GB/s.
     - Řadič pro správu základní desky (BMC).
 
-- Zadní rovina má dvě síťové karty odpovídající 6 portům:
+- Zadní rovina má dvě síťové karty odpovídající šesti portům:
 
-    - **Vlastní Microsoft QLogic Cavium 25G Norwegian Developers Conference Adapter** -port 1 až 4.
+    - **Vlastní Microsoft `Qlogic` Cavium 25G NORWEGIAN Developers Conference Adapter** -port 1 až 4.
     - **Mellanox Dual Port 25G ConnectX-4 síťový adaptér kanálu** – port 5 a port 6.
 
 Úplný seznam podporovaných kabelů, přepínačů a vysílačů pro tyto síťové karty najdete tady:
 
-- [Cavium 25G pro interoperabilitu adaptéru Norwegian Developers Conference pro adaptér QLogic](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` Cavium 25G pro interoperabilitu adaptéru Norwegian Developers Conference](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox Dual Port 25G ConnectX-4 kompatibilní produkty síťového adaptéru sítě](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)VLAN.  
 
  
@@ -201,15 +201,15 @@ Proveďte následující kroky, které zařízení zapojte do sítě pro napáje
 
 1. Identifikujte různé porty v zadní rovině zařízení. V závislosti na počtu GPU v zařízení můžete z továrny přijmout jedno z následujících zařízení.
 
-    - Zařízení s 2 sloty pro součásti Peripheral Component Interconnect (PCI) a jedním grafickým procesorem
+    - Zařízení se dvěma sloty PCI (Peripheral Component Interconnect) a jedním grafickým procesorem
 
         ![Zadní rovina kabelového zařízení](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - Zařízení se 3 PCI sloty a jedním grafickým procesorem
+    - Zařízení se třemi PCI sloty a jedním grafickým procesorem
 
         ![Zadní rovina kabelového zařízení 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - Zařízení se 3 PCI sloty a dvěma GPU
+    - Zařízení se třemi sloty PCI a dvěma GPU
 
         ![Zadní rovina kabelového zařízení 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

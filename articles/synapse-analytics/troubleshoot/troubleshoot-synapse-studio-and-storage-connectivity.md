@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445326"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733098"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Řešení potíží s připojením mezi funkcí Synapse Studio služby Azure Synapse Analytics a úložištěm
 
@@ -24,7 +24,11 @@ Pokud váš účet úložiště nemá správná oprávnění, nebudete moct roz�
 
 Podrobná chybová zpráva se může lišit, ale obecný význam chybové zprávy: "Tato žádost není autorizována k provedení této operace".
 
-![Potíže s připojením úložiště 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+V uzlu propojeného úložiště:  
+![Potíže s připojením úložiště 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+V uzlu kontejner úložiště:  
+![Potíže s připojením úložiště 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **Řešení**: Pokud chcete přiřadit účet ke správné roli, přečtěte si téma [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../../storage/common/storage-auth-aad-rbac-portal.md) .
 
@@ -33,7 +37,11 @@ Podrobná chybová zpráva se může lišit, ale obecný význam chybové zpráv
 
 Když vyberete šipku pro rozšíření struktury úložiště v "data"--> "propojený" v nástroji synapse Studio, může se na levém panelu zobrazit problém "REQUEST_SEND_ERROR". Podívejte se na následující snímek obrazovky s příznakem problému:
 
-![Potíže s připojením úložiště 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+V uzlu propojeného úložiště:  
+![Potíže s připojením úložiště 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+V uzlu kontejner úložiště:  
+![Potíže s připojením úložiště 2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 Je možné, že tento problém může nastat z několika důvodů:
 
@@ -51,6 +59,7 @@ Je možné, že tento problém může nastat z několika důvodů:
 
 * Prostředek úložiště, ke kterému přistupujete, je Azure Data Lake Storage Gen2 a za stejnou dobu je za bránou firewall a virtuální síť (s nakonfigurovaným privátním koncovým bodem úložiště).
 * Prostředek kontejneru, ke kterému přistupujete, byl odstraněn nebo neexistuje.
+* Křížení klienta: tenant pracovního prostoru, který uživatel použil k přihlášení, není stejný jako tenant účtu úložiště. 
 
 
 ## <a name="next-steps"></a>Další kroky

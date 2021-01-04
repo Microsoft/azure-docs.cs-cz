@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: radwiv
-ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661031"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733802"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurace zachytávání paketů pro brány VPN
 
@@ -31,6 +31,7 @@ Následující příklady JSON a schématu JSON poskytují vysvětlení jednotli
 - Nemůžete současně spustit více zachycení paketů v rámci brány.
 - V jednom připojení nemůžete současně spustit více zachycení paketů. Můžete spustit více zachycení paketů v různých připojeních současně.
 - Pro každou bránu je možné souběžně spustit maximálně pět zachycení paketů. Těmito zachyceními paketů může být kombinace zachycení paketů v rámci brány a zachytávání paketů vázané na připojení.
+- Jednotka pro MaxPacketBufferSize má hodnotu bytes a MaxFileSize je megabajtů.
 
 ### <a name="example-json"></a>Ukázkový kód JSON
 ```JSON-interactive

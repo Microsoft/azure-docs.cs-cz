@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010924"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740364"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup při rušení registrace zařízení z Azure IoT Hub Device Provisioning Service
 
@@ -26,7 +26,7 @@ Registrace ve službě Device Provisioning umožňuje [zřídit](about-iot-dps.m
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Zakázat zařízení pomocí individuální položky registrace
 
-Jednotlivé registrace se vztahují na jedno zařízení a můžou použít buď certifikáty X. 509, nebo tokeny SAS (ve skutečném nebo virtuálním čipu TPM) jako mechanismus ověřování. (Zařízení, která používají tokeny SAS jako mechanismus ověření identity, se dají zřídit jenom prostřednictvím individuální registrace.) Pokud chcete zakázat zařízení, které má jednotlivou registraci, můžete buď zakázat nebo odstranit jeho položku registrace. 
+Jednotlivé registrace se vztahují na jedno zařízení a můžou používat certifikáty X. 509, ověřovací klíče čipu TPM (ve skutečném nebo virtuálním čipu TPM) nebo tokeny SAS jako mechanismus ověřování. Pokud chcete zakázat zařízení, které má jednotlivou registraci, můžete buď zakázat nebo odstranit jeho položku registrace. 
 
 Pokud chcete zařízení dočasně zakázat tím, že zakážete jeho zápis: 
 

@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616157"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723265"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -43,7 +43,7 @@ Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete
 
 Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace najdete [tady](manage-agent.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -82,6 +82,10 @@ Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučuj
 
 Agent připojeného počítače pro systémy Linux a Windows komunikuje zabezpečeným způsobem přes Azure ARC přes port TCP 443. Pokud se počítač připojí prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, Projděte si následující informace, abyste pochopili požadavky na konfiguraci sítě.
 
+> [!NOTE]
+> Servery s podporou ARC nepodporují použití [Log Analytics brány](../../azure-monitor/platform/gateway.md) jako proxy pro agenta připojeného počítače.
+>
+
 Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujistěte se, že níže uvedené adresy URL nejsou blokované. Pokud povolíte pouze rozsahy IP adres nebo názvy domén, které musí agent komunikovat se službou, budete potřebovat přístup k následujícím značkám služby a adresám URL.
 
 Značky služby:
@@ -97,9 +101,11 @@ Adrese
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |Konfigurace hosta|
 |`*.his.arc.azure.com`|Služba hybridní identity|
+|`www.office.com`|Office 365|
 
 Agenti Preview (verze 0,11 a nižší) také vyžadují přístup k následujícím adresám URL:
 
@@ -163,7 +169,7 @@ Agenta připojeného počítače pro systém Windows lze nainstalovat pomocí je
 * Ručně spuštěním Instalační služba systému Windows balíčku `AzureConnectedMachineAgent.msi` z příkazového prostředí.
 * Z relace PowerShellu pomocí skriptované metody.
 
-Po instalaci agenta připojeného počítače pro Windows se aplikují následující další změny konfigurace v rámci systému.
+Po instalaci agenta připojeného počítače pro systém Windows jsou aplikovány následující změny konfigurace v rámci systému.
 
 * Během instalace se vytvoří následující instalační složky.
 
@@ -215,7 +221,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 Agent připojeného počítače pro Linux je k dispozici v preferovaném formátu balíčku pro distribuci (. Ot./min. nebo. DEB), která je hostovaná v [úložišti balíčků](https://packages.microsoft.com/)Microsoftu. Agent se instaluje a konfiguruje pomocí sady skriptů prostředí [Install_linux_azcmagent. sh](https://aka.ms/azcmagent).
 
-Po instalaci agenta připojeného počítače pro Linux se aplikují následující další změny konfigurace v rámci systému.
+Po instalaci agenta připojeného počítače pro Linux se aplikují následující změny konfigurace v rámci systému.
 
 * Během instalace se vytvoří následující instalační složky.
 

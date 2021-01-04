@@ -3,21 +3,21 @@ title: Správa certifikátů v Azure Automation
 description: Tento článek obsahuje informace o tom, jak pracovat s certifikáty pro přístup pomocí runbooků a konfigurací DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825812"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734806"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
 
 Azure Automation ukládá certifikáty bezpečně pro přístup pomocí runbooků a konfigurací DSC pomocí rutiny [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) pro prostředky Azure Resource Manager. Zabezpečené úložiště certifikátů umožňuje vytvářet Runbooky a konfigurace DSC, které používají certifikáty k ověřování, nebo je přidat do prostředků Azure nebo třetích stran.
 
 >[!NOTE]
->Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou šifrované a uložené v automatizaci pomocí jedinečného klíče, který se generuje pro každý účet Automation. Služba Automation ukládá klíč do služby Key Vault spravované systémem. Před uložením zabezpečeného prostředku Automation načte klíč z Key Vault a pak ho použije k zašifrování assetu. 
+>Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou šifrované a uložené v automatizaci pomocí jedinečného klíče, který se generuje pro každý účet Automation. Služba Automation ukládá klíč do služby Key Vault spravované systémem. Před uložením zabezpečeného prostředku Automation načte klíč z Key Vault a pak ho použije k zašifrování assetu.
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>Rutiny PowerShellu pro přístup k certifikátům
 
@@ -36,18 +36,18 @@ Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure
 
 Interní rutina v následující tabulce se používá pro přístup k certifikátům ve vašich sadách Runbook. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Description |
+| Interní rutina | Popis |
 |:---|:---|
 |`Get-AutomationCertificate`|Načte certifikát, který se má použít v sadě Runbook nebo konfiguraci DSC. Vrátí objekt [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) .|
 
-> [!NOTE] 
+> [!NOTE]
 > Nepoužívejte proměnné v `Name` parametru `Get-AutomationCertificate` v sadě Runbook nebo konfiguraci DSC. Tyto proměnné mohou zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a automatizačními proměnnými v době návrhu.
 
-## <a name="python-2-functions-to-access-certificates"></a>Funkce Python 2 pro přístup k certifikátům
+## <a name="python-functions-to-access-certificates"></a>Funkce Pythonu pro přístup k certifikátům
 
-Použijte funkci v následující tabulce pro přístup k certifikátům v sadě Runbook Python 2.
+Použijte funkci v následující tabulce pro přístup k certifikátům v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
-| Funkce | Description |
+| Funkce | Popis |
 |:---|:---|
 | `automationassets.get_automation_certificate` | Načte informace o prostředku certifikátu. |
 
@@ -63,7 +63,7 @@ Když vytváříte nový certifikát, nahrajete soubor. cer nebo. pfx pro automa
 1. Z účtu Automation v levém podokně vyberte **certifikáty** pod **sdíleným prostředkem**.
 1. Na stránce **certifikáty** vyberte **Přidat certifikát**.
 1. Do pole **název** zadejte název certifikátu.
-1. Chcete-li vyhledat soubor **. cer** nebo **. pfx** , v části **nahrát soubor certifikátu**zvolte **možnost vybrat soubor**. Pokud vyberete soubor **. pfx** , zadejte heslo a určete, jestli se dá exportovat.
+1. Chcete-li vyhledat soubor **. cer** nebo **. pfx** , v části **nahrát soubor certifikátu** zvolte **možnost vybrat soubor**. Pokud vyberete soubor **. pfx** , zadejte heslo a určete, jestli se dá exportovat.
 1. Vyberte **vytvořit** a uložte nový prostředek certifikátu.
 
 ### <a name="create-a-new-certificate-with-powershell"></a>Vytvoření nového certifikátu pomocí PowerShellu
@@ -126,7 +126,9 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupNam
 
 K načtení certifikátu použijte interní `Get-AutomationCertificate` rutinu. Nemůžete použít rutinu [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) , protože vrací informace o prostředku certifikátu, ale ne samotný certifikát.
 
-### <a name="textual-runbook-example"></a>Příklad textového Runbooku
+### <a name="textual-runbook-examples"></a>Příklady textových runbooků
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Následující příklad ukazuje, jak přidat certifikát do cloudové služby v sadě Runbook. V této ukázce je heslo načteno z šifrované proměnné automatizace.
 
@@ -138,17 +140,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>Příklad grafického Runbooku
-
-Přidejte aktivitu pro interní `Get-AutomationCertificate` rutinu do grafického Runbooku tak, že kliknete pravým tlačítkem na certifikát v podokně Knihovna a vyberete **Přidat na plátno**.
-
-![Snímek obrazovky s přidáním certifikátu na plátno](../media/certificates/automation-certificate-add-to-canvas.png)
-
-Následující obrázek ukazuje příklad použití certifikátu v grafickém Runbooku.
-
-![Snímek obrazovky s příkladem vytváření grafického obsahu](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python-2-example"></a>Příklad Pythonu 2
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Následující příklad ukazuje, jak získat přístup k certifikátům v sadách Python 2 Runbooky.
 
@@ -159,6 +151,30 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 # returns the binary cert content  
 print cert
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Následující příklad ukazuje, jak získat přístup k certifikátům v Python 3 Runbooky (Preview).
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>Příklad grafického Runbooku
+
+Přidejte aktivitu pro interní `Get-AutomationCertificate` rutinu do grafického Runbooku tak, že kliknete pravým tlačítkem na certifikát v podokně Knihovna a vyberete **Přidat na plátno**.
+
+![Snímek obrazovky s přidáním certifikátu na plátno](../media/certificates/automation-certificate-add-to-canvas.png)
+
+Následující obrázek ukazuje příklad použití certifikátu v grafickém Runbooku.
+
+![Snímek obrazovky s příkladem vytváření grafického obsahu](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>Další kroky
 

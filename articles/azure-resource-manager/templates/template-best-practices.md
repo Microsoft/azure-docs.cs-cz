@@ -1,18 +1,18 @@
 ---
 title: Osvědčené postupy pro šablony
-description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
+description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon (šablon ARM). Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497975"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724982"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
-V tomto článku se dozvíte, jak používat Doporučené postupy při sestavování šablony ARM. Tato doporučení vám pomůžou vyhnout se běžným problémům při použití šablony ARM k nasazení řešení.
+V tomto článku se dozvíte, jak používat Doporučené postupy při vytváření šablony Azure Resource Manager (šablona ARM). Tato doporučení vám pomůžou vyhnout se běžným problémům při použití šablony ARM k nasazení řešení.
 
 ## <a name="template-limits"></a>Omezení šablon
 
@@ -26,7 +26,7 @@ Máte také omezení:
 * 64 výstupní hodnoty
 * 24 576 znaků ve výrazu šablony
 
-Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených a vnořených šablon při nasazování prostředků Azure](linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Skupina prostředků
 
@@ -48,32 +48,32 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 * Použijte parametry pro názvy prostředků, které chcete zadat pro snadnější identifikaci.
 
-* Zadejte popis každého parametru v metadatech:
+* Zadejte popis všech parametrů v metadatech.
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* Definujte výchozí hodnoty pro parametry, které nejsou citlivé. Zadáním výchozí hodnoty je snazší šablonu nasadit a uživatelé šablony uvidí příklad odpovídající hodnoty. Všechny výchozí hodnoty pro parametr musí být platné pro všechny uživatele ve výchozí konfiguraci nasazení. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* Definujte výchozí hodnoty pro parametry, které nejsou citlivé. Zadáním výchozí hodnoty je snazší šablonu nasadit a uživatelé šablony uvidí příklad odpovídající hodnoty. Všechny výchozí hodnoty pro parametr musí být platné pro všechny uživatele ve výchozí konfiguraci nasazení.
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * Chcete-li zadat volitelný parametr, nepoužívejte jako výchozí hodnotu prázdný řetězec. Místo toho použijte literálovou hodnotu nebo výraz jazyka pro vytvoření hodnoty.
 
@@ -84,7 +84,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * Používejte `allowedValues` zřídka. Použijte ji pouze v případě, že je nutné zajistit, aby některé hodnoty nebyly zahrnuty do povolených možností. Pokud používáte `allowedValues` moc široce, můžete zablokovat platná nasazení tím, že seznam nezůstane v aktuálním stavu.
@@ -95,18 +95,18 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 * Vždy používejte parametry pro uživatelská jména a hesla (nebo tajné klíče).
 
-* Používá `securestring` se pro všechna hesla a tajné klíče. Pokud předáte citlivé údaje v objektu JSON, použijte `secureObject` typ. Parametry šablony se zabezpečeným řetězcem nebo typy zabezpečených objektů nelze přečíst po nasazení prostředků. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* Používá `securestring` se pro všechna hesla a tajné klíče. Pokud předáte citlivé údaje v objektu JSON, použijte `secureObject` typ. Parametry šablony se zabezpečeným řetězcem nebo typy zabezpečených objektů nelze přečíst po nasazení prostředků.
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * Nezadávejte výchozí hodnoty pro uživatelská jména, hesla ani žádná hodnota, která vyžaduje `secureString` typ.
 
@@ -114,7 +114,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 ### <a name="location-recommendations-for-parameters"></a>Doporučení pro umístění parametrů
 
-* Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location` . Zadání parametru Location umožňuje uživatelům šablony určit umístění, ke kterému mají oprávnění k nasazení.
+* Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location` . Zadání parametru Location umožňuje uživatelům šablony určit umístění, kde mají oprávnění k nasazení prostředků.
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * Nezadávejte `allowedValues` pro parametr Location. Zadaná umístění nemusí být k dispozici ve všech cloudech.
@@ -144,7 +144,7 @@ Následující informace můžou být užitečné při práci s [proměnnými](t
 
 * Použijte proměnné pro hodnoty, které vytváříte ze složitých uspořádání funkcí šablon. Pokud se složitý výraz zobrazuje pouze v proměnných, šablona je snazší číst.
 
-* V části **proměnné** v šabloně nemůžete použít [odkazovou](template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v **části** **Resources** nebo Outputs šablony.
+* [Odkazovou](template-functions-resource.md#reference) funkci nelze použít v `variables` části šablony. `reference`Funkce odvodí svoji hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které tuto `reference` funkci potřebují přímo v `resources` části nebo v `outputs` šabloně.
 
 * Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
 
@@ -166,7 +166,7 @@ Nepoužívejte proměnné pro verzi rozhraní API. Konkrétně Nepoužívejte [f
 
 Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají nastavit, postupujte podle následujících pokynů:
 
-* Použijte **odkazovou** funkci a předejte název prostředku k nastavení implicitní závislosti mezi prostředky, které potřebují sdílet vlastnost. Nepřidejte explicitní `dependsOn` element, pokud jste již definovali implicitní závislost. Tento přístup snižuje riziko zbytečných závislostí. Příklad nastavení implicitní závislosti naleznete v tématu [implicitní závislost](define-resource-dependency.md#reference-and-list-functions).
+* Použijte `reference` funkci a předejte název prostředku k nastavení implicitní závislosti mezi prostředky, které potřebují sdílet vlastnost. Nepřidejte explicitní `dependsOn` element, pokud jste již definovali implicitní závislost. Tento přístup snižuje riziko zbytečných závislostí. Příklad nastavení implicitní závislosti naleznete v tématu [reference and list Functions](define-resource-dependency.md#reference-and-list-functions).
 
 * Nastavte podřízený prostředek jako závislý na svém nadřazeném prostředku.
 
@@ -180,109 +180,108 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 
-* Aby mohli jiní přispěvatelé pochopit účel prostředku, zadejte **Komentáře** pro každý prostředek v šabloně:
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* Aby mohli jiní přispěvatelé pochopit účel prostředku, zadejte `comments` pro každý prostředek v šabloně.
 
-* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), *neprovádějte pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Pokud je účet úložiště nasazený ve stejné šabloně, kterou vytváříte, a název účtu úložiště se v šabloně nesdílí s jiným prostředkem, nemusíte při odkazování na prostředek zadávat obor názvů poskytovatele ani apiVersion. Následující příklad ukazuje zjednodušenou syntaxi:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
-   Můžete také vytvořit odkaz na existující účet úložiště, který je v jiné skupině prostředků:
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), *neprovádějte pevný kód* oboru názvů. Použijte `reference` funkci k dynamickému načtení oboru názvů. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště ve vaší šabloně.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Pokud je účet úložiště nasazený ve stejné šabloně, kterou vytváříte, a název účtu úložiště se v šabloně nesdílí s jiným prostředkem, nemusíte zadávat obor názvů poskytovatele ani `apiVersion` odkaz na prostředek. Následující příklad ukazuje zjednodušenou syntaxi.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Můžete také vytvořit odkaz na existující účet úložiště, který je v jiné skupině prostředků.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * Přiřaďte veřejné IP adresy virtuálnímu počítači pouze v případě, že je aplikace vyžaduje. Pokud se chcete připojit k virtuálnímu počítači (VM) pro ladění nebo pro účely správy nebo správy, použijte pravidla příchozího překladu adres (NAT), bránu virtuální sítě nebo JumpBox.
-   
+
      Další informace o připojení k virtuálním počítačům najdete v těchto tématech:
-   
+
    * [Spouštění virtuálních počítačů pro N-vrstvou architekturu v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí PowerShellu](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači se systémem Linux pomocí Azure CLI](../../virtual-machines/linux/nsg-quickstart.md)
 
-* Vlastnost **domainNameLabel** pro veřejné IP adresy musí být jedinečná. Hodnota **domainNameLabel** musí mít délku 3 až 63 znaků a musí následovat po pravidlech určených tímto regulárním výrazem: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Vzhledem k tomu, že funkce **uniqueString** generuje řetězec o délce 13 znaků, parametr **dnsPrefixString** je omezen na 50 znaků:
+* `domainNameLabel`Vlastnost pro veřejné IP adresy musí být jedinečná. `domainNameLabel`Hodnota musí být v rozmezí 3 až 63 znaků dlouhá a musí následovat pravidla určená tímto regulárním výrazem: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Vzhledem k tomu, že `uniqueString` funkce vygeneruje řetězec o délce 13 znaků, `dnsPrefixString` je parametr omezen na 50 znaků.
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* Když přidáte heslo do rozšíření vlastních skriptů, použijte vlastnost **commandToExecute** ve vlastnosti **protectedSettings** :
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* Když přidáte heslo do rozšíření vlastních skriptů, použijte `commandToExecute` vlastnost ve `protectedSettings` Vlastnosti.
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > Aby se zajistilo šifrování tajných klíčů při jejich předávání jako parametrů virtuálním počítačům a rozšířením, použijte vlastnost **protectedSettings** relevantních rozšíření.
-   > 
+   > Aby se zajistilo šifrování tajných kódů při jejich předání jako parametrů virtuálním počítačům a rozšířením, použijte `protectedSettings` vlastnost příslušných rozšíření.
 
 ## <a name="use-test-toolkit"></a>Použít sadu testů
 
 Sada nástrojů pro test šablon ARM je skript, který kontroluje, jestli vaše šablona používá Doporučené postupy. Pokud vaše šablona není kompatibilní s doporučenými postupy, vrátí seznam upozornění s navrhovanými změnami. Sada testů vám může pomáhat s postupem implementace osvědčených postupů ve vaší šabloně.
 
-Po dokončení šablony spusťte sadu nástrojů test Toolkit, abyste viděli, zda existují způsoby, jak můžete zlepšit její implementaci. Další informace najdete v tématu [Sada nástrojů pro test šablon ARM](test-toolkit.md).
+Po dokončení šablony spusťte sadu nástrojů test Toolkit, abyste viděli, zda existují způsoby, jak můžete zlepšit její implementaci. Další informace najdete v tématu [použití sady nástrojů pro test šablon ARM](test-toolkit.md).
 
 ## <a name="next-steps"></a>Další kroky
 

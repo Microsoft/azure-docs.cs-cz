@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320196"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739701"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -118,7 +118,7 @@ Prostředí můžete vytvořit v centru "**prostředí**" v části "**kanály**
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. K virtuálnímu počítači můžete přidat značky jako součást interaktivního registračního skriptu PS (nebo). můžete také přidat nebo odebrat stejné informace ze zobrazení prostředků kliknutím na tři tečky na konci každého prostředku virtuálního počítače v zobrazení prostředky.
+9. K virtuálnímu počítači můžete přidat značky jako součást interaktivního registračního skriptu PowerShellu (nebo) můžete také přidat nebo odebrat stejné informace ze zobrazení prostředků kliknutím na tři tečky na konci každého prostředku virtuálního počítače v zobrazení prostředky.
 
    Značky, které přiřadíte, umožňují omezit nasazení na konkrétní virtuální počítače, když se prostředí používá v úloze nasazení. Jednotlivé značky jsou omezené na 256 znaků, ale počet značek, které můžete použít, není nijak omezený.
 
@@ -202,7 +202,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
 
 - Podívejte se na kanál, abyste viděli, co dělá. Ujistěte se, že všechny výchozí vstupy jsou vhodné pro váš kód.
 
-- Vyberte **Uložit a spustit**, pak vyberte **potvrdit přímo do hlavní větve**a pak zvolte **Uložit a spustit** znovu.
+- Vyberte **Uložit a spustit**, pak vyberte **potvrdit přímo do hlavní větve** a pak zvolte **Uložit a spustit** znovu.
 
 - Spustí se nový běh. Počkejte na dokončení.
 
@@ -224,7 +224,7 @@ Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azu
 2. Můžete vybrat konkrétní sady virtuálních počítačů z prostředí pro příjem nasazení zadáním **značek** , které jste definovali pro každý virtuální počítač v prostředí.
 [Tady](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.
 
-3. Můžete zadat eithor `runOnce` nebo `rolling` strategii nasazení. 
+3. Můžete zadat buď `runOnce` `rolling` strategii nasazení, nebo. 
 
    `runOnce` je nejjednodušší strategii nasazení, která zaznamená, že všechny zavěšení životního cyklu, konkrétně, `preDeploy` `deploy` `routeTraffic` a `postRouteTraffic` , se spustí jednou. Pak se `on:` `success` spustí buď nebo `on:` `failure` .
 

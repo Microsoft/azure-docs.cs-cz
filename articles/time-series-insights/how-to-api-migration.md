@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020721"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740551"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
@@ -76,7 +76,7 @@ Pokud jste vygenerovali dotazy pomocí konektoru Power BI, provádí volání Az
 Chcete-li aktualizovat dotazy na použití nové verze rozhraní API a nové syntaxe výrazů časové řady, bude nutné dotazy v Průzkumníkovi znovu vygenerovat. Přečtěte si další informace o tom, jak [vytvářet dotazy pomocí konektoru Power BI](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> Je nutné použít Power BI Desktop verze z července 2020. Pokud ne, může se zobrazit [neplatná chyba verze datové části dotazu](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
+> Musíte používat minimálně 2020 Power BI Desktop verze z července. Pokud to neuděláte, může se zobrazit chyba "Neplatná verze datové části dotazu".
 
 ## <a name="migrate-custom-applications"></a>Migrace vlastních aplikací
 

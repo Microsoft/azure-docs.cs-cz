@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444779"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740466"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
@@ -20,41 +21,60 @@ Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav vi
 Azure Monitor pro virtuální počítače stav hosta má ve verzi Public Preview tato omezení:
 
 - V tuto chvíli se podporují jenom virtuální počítače Azure. Azure ARC pro servery se momentálně nepodporuje.
-- Virtuální počítač musí používat jeden z následujících operačních systémů: 
+
+
+## <a name="supported-operating-systems"></a>Podporované operační systémy
+Virtuální počítač musí používat jeden z následujících operačních systémů: 
+
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 nebo novější
-- Virtuální počítač se musí nacházet v jedné z následujících oblastí:
-  - Austrálie – východ
-  - Australia Southeast
-  - Indie – střed
-  - Střední USA
-  - East US
-  - USA – východ 2
-  - Východní USA 2 EUAP
-  - Německo – středozápad
-  - Japan East
-  - USA – středosever
-  - Severní Evropa
-  - Středojižní USA
-  - Southeast Asia
-  - Spojené království – jih
-  - West Europe
-  - USA – západ
-  - Západní USA 2
-- Log Analytics pracovní prostor se musí nacházet v jedné z následujících oblastí:
-  - East US
-  - Východní USA 2 EUAP
-  - Oblast Západní Evropa
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="supported-regions"></a>Podporované oblasti
+
+Virtuální počítač se musí nacházet v jedné z následujících oblastí:
+
+- Austrálie – střed
+- Austrálie – východ
+- Australia Southeast
+- Indie – střed
+- USA – střed
+- Východní Asie
+- East US
+- USA – východ 2
+- Východní USA 2 EUAP
+- Německo – středozápad
+- Japan East
+- USA – středosever
+- Severní Evropa
+- Středojižní USA
+- Southeast Asia
+- Spojené království – jih
+- USA – středozápad
+- West Europe
+- USA – západ
+- Západní USA 2
+
+
+Log Analytics pracovní prostor se musí nacházet v jedné z následujících oblastí:
+
+- Střední USA
+- East US
+- USA – východ 2
+- Východní USA 2 EUAP
+- Severní Evropa
+- Jihovýchodní Asie
+- Spojené království – jih
+- Oblast Západní Evropa
+- Západní USA 2
+
+## <a name="prerequisites"></a>Požadavky
 
 - Aby bylo možné Azure Monitor pro virtuální počítače, musí být virtuální počítač připojen.
 - Uživatel, který spouští kroky připojování, musí mít minimální přístup na úrovni přispěvatele k předplatnému, kde se nachází pravidlo pro virtuální počítače a shromažďování dat.
 - Požadovaná poskytovatelé prostředků Azure musí být zaregistrovaná, jak je popsáno v následující části.
 
-
 ## <a name="register-required-azure-resource-providers"></a>Registrace požadovaných poskytovatelů prostředků Azure
-Aby bylo možné povolit Azure Monitor pro virtuální počítače stav hosta, musí být pro vaše předplatné zaregistrované následující poskytovatelé prostředků Azure. 
+Aby bylo možné povolit Azure Monitor pro virtuální počítače stav hosta, zaregistrují se u vašeho předplatného následující poskytovatelé prostředků Azure. 
 
 - Microsoft. monitor zátěže byl
 - Microsoft. Insights

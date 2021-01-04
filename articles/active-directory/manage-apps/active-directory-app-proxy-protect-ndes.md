@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656747"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709006"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrace se službou Azure Proxy aplikací služby AD na serveru služby zápisu síťových zařízení (NDES)
 
@@ -81,7 +81,7 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 
 1. Vyberte **+ Přidat** a uložte svoji aplikaci.
 
-1. Otestujte, jestli k serveru NDES máte přístup prostřednictvím proxy aplikace služby Azure AD, a to tak, že do prohlížeče vložíte odkaz, který jste zkopírovali v kroku 10. Měla by se zobrazit výchozí úvodní stránka služby IIS.
+1. Otestujte, jestli k serveru NDES máte přístup prostřednictvím proxy aplikace služby Azure AD, a to tak, že do prohlížeče vložíte odkaz, který jste zkopírovali v kroku 15. Měla by se zobrazit výchozí úvodní stránka služby IIS.
 
 1. Jako konečný test přidejte *mscep.dll* cestu k existující adrese URL, kterou jste vložili v předchozím kroku:
 

@@ -3,14 +3,14 @@ title: Správa přihlašovacích údajů ve službě Automation
 description: V tomto článku se dozvíte, jak vytvořit assety přihlašovacích údajů a použít je v sadě Runbook nebo konfiguraci DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558827"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734823"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Správa přihlašovacích údajů ve službě Automation
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > Nepoužívejte proměnné v `Name` parametru `Get-AutomationPSCredential` . Jejich použití může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety přihlašovacích údajů v době návrhu.
 
-## <a name="python-2-functions-that-access-credentials"></a>Funkce Python 2, které přistupují k přihlašovacím údajům
+## <a name="python-functions-that-access-credentials"></a>Python – funkce pro přístup k přihlašovacím údajům
 
-Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2.
+Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2 a 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview.
 
 | Funkce | Popis |
 |:---|:---|
@@ -104,6 +104,8 @@ Alternativně můžete použít metodu [GetNetworkCredential](/dotnet/api/system
 
 ### <a name="textual-runbook-example"></a>Příklad textového Runbooku
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Následující příklad ukazuje způsob použití přihlašovacích údajů prostředí PowerShell v Runbooku. Načte přihlašovací údaje a přiřadí jí uživatelské jméno a heslo k proměnným.
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v sadách Python 2 Runbooky.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v Python 3 Runbooky (Preview).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>Příklad grafického Runbooku
 
 Aktivitu pro interní `Get-AutomationPSCredential` rutinu můžete do grafického Runbooku přidat tak, že kliknete pravým tlačítkem na přihlašovací údaje v podokně Knihovna v grafickém editoru a vyberete **Přidat na plátno**.
@@ -139,20 +171,6 @@ Následující obrázek ukazuje příklad použití přihlašovacích údajů v 
 ## <a name="use-credentials-in-a-dsc-configuration"></a>Použití přihlašovacích údajů v konfiguraci DSC
 
 I když konfigurace DSC v Azure Automation můžou pracovat s assety přihlašovacích údajů pomocí `Get-AutomationPSCredential` , můžou taky předávat assety přihlašovacích údajů prostřednictvím parametrů. Další informace najdete v tématu [kompilace konfigurací v Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Použití přihlašovacích údajů v sadě Runbook Python 2
-
-Následující příklad ukazuje příklad přístupu k přihlašovacím údajům v sadách Python 2 Runbooky.
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>Další kroky
 

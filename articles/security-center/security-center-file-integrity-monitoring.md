@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 1773e1345e9410f54a0364b586c3afca5b648b4c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ab173f47ed09dbe77c12cad844d8a1f3654f4a9b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341528"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734755"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -31,7 +31,7 @@ Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md).<br>FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data platí na základě objemu dat, která nahráváte. Další informace najdete v tématu [Log Analytics ceny](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Požadované role a oprávnění:|**Vlastník pracovního prostoru** může povolit nebo zakázat FIM (Další informace najdete v tématu [role Azure pro Log Analytics](/services-hub/health/azure-roles#azure-roles)).<br>**Čtenář** může zobrazit výsledky.|
-|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov<br>![Žádná ](./media/icons/no-icon.png) čínská gov, jiné gov<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Přečtěte si další informace o sledování změn](../automation/change-tracking/overview.md).|
+|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) National/svrchovan (US gov, Čína gov, jiný gov)<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Přečtěte si další informace o sledování změn](../automation/change-tracking/overview.md).|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Co je FIM v Security Center?
@@ -120,11 +120,11 @@ FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chv�
 
     - Přístup a zobrazení stavu a nastavení jednotlivých pracovních prostorů
 
-    - ![Ikona plánu upgradu ][4] upgradujte pracovní prostor tak, aby používal Azure Defender. Tato ikona označuje, že se pracovní prostor nebo předplatné nechrání pomocí Azure Defenderu. Pokud chcete používat funkce FIM, musí vaše předplatné chránit Azure Defender. [Další informace](security-center-pricing.md).
+    - ![Ikona plánu upgradu ][4] upgradujte pracovní prostor tak, aby používal Azure Defender. Tato ikona označuje, že se pracovní prostor nebo předplatné nechrání pomocí Azure Defenderu. Pokud chcete používat funkce FIM, musí vaše předplatné chránit Azure Defender. [Přečtěte si další informace](security-center-pricing.md).
 
     - ![Ikona povolit][3] Povolte FIM na všech počítačích v pracovním prostoru a nakonfigurujte možnosti FIM. Tato ikona označuje, že produkt FIM není pro tento pracovní prostor povolen.
 
-        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="Spouští se FIM":::
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="Povolení produktu FIM pro konkrétní pracovní prostor":::
 
 
     > [!TIP]
@@ -133,9 +133,9 @@ FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chv�
 
 1. Vyberte **Povolit**. Zobrazí se podrobnosti pracovního prostoru, včetně počtu počítačů se systémem Windows a Linux v pracovním prostoru.
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="Spouští se FIM":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="Stránka s podrobnostmi o pracovním prostoru FIM":::
 
-   Jsou uvedena také doporučená nastavení pro systémy Windows a Linux.  Pokud chcete zobrazit úplný seznam doporučených položek, rozbalte soubory **Windows**, **Registry**a **Linux Files** .
+   Jsou uvedena také doporučená nastavení pro systémy Windows a Linux.  Pokud chcete zobrazit úplný seznam doporučených položek, rozbalte soubory **Windows**, **Registry** a **Linux Files** .
 
 1. Zrušte zaškrtnutí políček u všech doporučených entit, které nechcete monitorovat pomocí produktu FIM.
 
@@ -150,7 +150,7 @@ FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chv�
 
 Řídicí panel **monitorování integrity souborů** se zobrazí pro pracovní prostory, ve kterých je povolený FIM. Po povolení produktu FIM v pracovním prostoru nebo při výběru pracovního prostoru v okně **monitorování integrity souborů** , které už má povolený FIM, se otevře řídicí panel FIM.
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="Spouští se FIM":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="Řídicí panel FIM a jeho různé informační panely":::
 
 Řídicí panel FIM pro pracovní prostor zobrazuje následující podrobnosti:
 
@@ -161,7 +161,7 @@ FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chv�
 
 Výběrem **filtru** v horní části řídicího panelu můžete změnit časové období, pro které se zobrazují změny.
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="Spouští se FIM":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="Filtr časového období pro řídicí panel FIM":::
 
 Karta **servery** obsahuje seznam počítačů, které se hlásí do tohoto pracovního prostoru. Pro každý počítač řídicí panel uvádí:
 
@@ -191,7 +191,7 @@ Možnost **změnit podrobnosti** se otevře při zadání změny do vyhledávac�
 
    ![Nastavení][11]
 
-   **Konfigurace pracovního prostoru** otevře tři karty: **Windows Registry**, **soubory Windows**a **Linux Files**. Každá karta obsahuje seznam entit, které můžete v této kategorii upravit. U každé entity uvedené Security Center identifikuje, jestli je FIM povolený (true) nebo není povolený (false).  Úprava entity umožňuje povolit nebo zakázat FIM.
+   **Konfigurace pracovního prostoru** otevře tři karty: **Windows Registry**, **soubory Windows** a **Linux Files**. Každá karta obsahuje seznam entit, které můžete v této kategorii upravit. U každé entity uvedené Security Center identifikuje, jestli je FIM povolený (true) nebo není povolený (false).  Úprava entity umožňuje povolit nebo zakázat FIM.
 
    ![Konfigurace pracovního prostoru][12]
 
@@ -208,11 +208,11 @@ V části **Upravit pro Change Tracking** můžete:
 
 ## <a name="add-a-new-entity-to-monitor"></a>Přidat novou entitu k monitorování
 1. Vraťte se na **řídicí panel monitorování integrity souborů** a v horní části vyberte **Nastavení** . Otevře se **Konfigurace pracovního prostoru** .
-2. V části **Konfigurace pracovního prostoru**vyberte kartu pro typ entity, kterou chcete přidat: Windows Registry, soubory Windows nebo soubory Linux. V tomto příkladu jsme vybrali **soubory pro Linux**.
+2. V části **Konfigurace pracovního prostoru** vyberte kartu pro typ entity, kterou chcete přidat: Windows Registry, soubory Windows nebo soubory Linux. V tomto příkladu jsme vybrali **soubory pro Linux**.
 
    ![Přidat novou položku, která se má monitorovat][14]
 
-3. Vyberte **Přidat**. Otevře se okno **Přidat pro Change Tracking** .
+3. Vyberte **Add** (Přidat). Otevře se okno **Přidat pro Change Tracking** .
 
    ![Zadejte požadované informace.][15]
 
@@ -228,7 +228,7 @@ V části **Upravit pro Change Tracking** můžete:
 
    ![Výběr nastavení][17]
 
-4. V části **Konfigurace pracovního prostoru**vyberte skupinu, ve které je **povolené** nastavení nastaveno na hodnotu true.
+4. V části **Konfigurace pracovního prostoru** vyberte skupinu, ve které je **povolené** nastavení nastaveno na hodnotu true.
 
    ![Konfigurace pracovního prostoru][18]
 
@@ -251,7 +251,7 @@ Můžete zakázat produkt FIM. FIM používá řešení Azure Change Tracking ke
 
 1. Pokud chcete produkt FIM zakázat, vraťte se na řídicí panel **monitorování integrity souborů** .
 2. Vyberte pracovní prostor.
-3. V části **monitorování integrity souborů**vyberte **Zakázat**.
+3. V části **monitorování integrity souborů** vyberte **Zakázat**.
 
    ![Zakázat FIM][20]
 

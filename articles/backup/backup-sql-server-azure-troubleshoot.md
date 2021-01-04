@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332776"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733913"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -56,13 +56,47 @@ V některých případech se může stát, že při operacích zálohování a o
 
 1. SQL také nabízí některé pokyny pro práci s antivirovými programy. Podrobnosti najdete v [tomto článku](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>Poškozená instance virtuálního počítače s několika instancemi SQL Server
+
+Na virtuální počítač SQL se můžete vrátit jenom v případě, že jsou všechny instance SQL běžící v rámci virtuálního počítače hlášené v pořádku. Pokud je jedna nebo víc instancí "vadný", virtuální počítač se nezobrazí jako cíl obnovení. To může být možný důvod, proč se virtuální počítač s více instancemi v rozevíracím seznamu Server během operace obnovení nemusí zobrazit.
+
+V části **Konfigurace zálohování** můžete ověřit "připravenost na zálohování" všech instancí SQL na virtuálním počítači.
+
+![Ověření připravenosti na zálohování](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+Pokud chcete aktivovat obnovení v dobré instanci SQL, proveďte následující kroky:
+
+1. Přihlaste se k virtuálnímu počítači SQL a pokračujte na `C:\Program Files\Azure Workload Backup\bin` .
+1. Vytvořte soubor JSON s názvem `ExtensionSettingsOverrides.json` (Pokud ještě není přítomen). Pokud tento soubor již na virtuálním počítači existuje, pokračujte v jeho používání.
+1. Do souboru JSON přidejte následující obsah a soubor uložte:
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. Aktivujte operaci znovu **zjistit databáze** na ovlivněném serveru z Azure Portal (stejné místo, kde se dá zobrazit připravenost k zálohování). Virtuální počítač se začne zobrazovat jako cíl pro operace obnovení.
+
+    ![Znovu zjistit databáze](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. Po dokončení operace obnovení odeberte položku *whitelistedInstancesForInquiry* z ExtensionSettingsOverrides.jsv souboru.
+
 ## <a name="error-messages"></a>Chybové zprávy
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
 | Závažnost | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
-| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Rozdílové zálohování a zálohování protokolu transakcí není možné. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Úprava nastavení databáze SP všechny typy zálohování v těchto zásadách jsou podporovány. Nebo změňte aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
+| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Rozdílové zálohování a zálohování protokolu transakcí není možné. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo změňte aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -130,7 +164,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Přečtěte si další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 

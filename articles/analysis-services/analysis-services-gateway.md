@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107602"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739599"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -57,7 +57,7 @@ Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Používá se k otestování připojení k internetu v případě, že je brána nedostupná pro službu Power BI. |
+| *.msftncsi.com |80 |Používá se k otestování připojení k internetu v případě, že je brána nedostupná pro službu Power BI. |
 | *.microsoftonline-p.com |443 |Používá se k ověření v závislosti na konfiguraci. |
 | dc.services.visualstudio.com    |443 |Používá se v AppInsights ke shromáždění telemetrie. |
 

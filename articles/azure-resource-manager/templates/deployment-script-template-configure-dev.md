@@ -7,18 +7,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503552"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734177"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurace vývojového prostředí pro skripty nasazení v šablonách
 
 Naučte se vytvářet vývojové prostředí pro vývoj a testování skriptů nasazení pomocí Image skriptu nasazení. Můžete buď vytvořit službu [Azure Container instance](../../container-instances/container-instances-overview.md) , nebo použít [Docker](https://docs.docker.com/get-docker/). Jak je popsáno v tomto článku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud nemáte skript nasazení, můžete vytvořit soubor **hello.ps1** s následujícím obsahem:
 
@@ -155,7 +155,10 @@ V následující šabloně ARM se vytvoří instance kontejneru a sdílená slo�
 ```
 Výchozí hodnota pro cestu pro připojení je **deploymentScript**.  Toto je cesta v instanci kontejneru, kde je připojena ke sdílené složce.
 
-Výchozí image kontejneru zadaná v šabloně je **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:az4.3**.  Seznam podporovaných verzí Azure PowerShell a verzí rozhraní příkazového řádku Azure CLI najdete v článku [Azure PowerShell nebo Azure CLI](./deployment-script-template.md#prerequisites).
+Výchozí image kontejneru zadaná v šabloně je **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:az4.3**.   Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+
+  >[!IMPORTANT]
+  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s přehledem podporovaných verzí.
 
 Šablona pozastaví instanci kontejneru 1800 sekund. Máte 30 minut, než se instance kontejneru dostane do stavu terminálu a relace skončí.
 
@@ -200,7 +203,7 @@ Soubor můžete také nahrát pomocí Azure Portal a Azure CLI.
 1. Vyberte **připojit** a pak vyberte **připojit**. Pokud se nemůžete připojit k instanci kontejneru, restartujte skupinu kontejnerů a zkuste to znovu.
 1. V podokně konzoly spusťte následující příkazy:
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Soubor můžete také nahrát pomocí Azure Portal a Azure CLI.
     Výstupem je **Hello Jan dole**.
 
     ![test instance kontejneru skriptu nasazení](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. Pokud použijete image kontejneru AZ CLI, spusťte tento kód:
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>Použít Docker
 

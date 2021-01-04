@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/27/2020
+ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186796"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740585"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -26,68 +26,27 @@ Tento článek poskytuje přehled možností, které jsou k dispozici pro povole
 
 Nastavení Azure Monitor pro virtuální počítače:
 
-* Pokud chcete povolit jeden virtuální počítač Azure, Azure VMSS nebo počítač ARC Azure, vyberte **přehledy** přímo z nabídky v Azure Portal.
-* Pomocí Azure Policy povolte více virtuálních počítačů Azure, Azure VMSS nebo počítačů s obloukem Azure ARC. Tato metoda zajišťuje, že u stávajících a nových virtuálních počítačů a sad škálování jsou požadované závislosti nainstalovány a správně nakonfigurovány. Nahlásí se nekompatibilní virtuální počítače a sady škálování, takže se můžete rozhodnout, jestli je chcete povolit, a opravit je.
-* Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
+* Pokud chcete povolit jeden virtuální počítač Azure, sadu škálování virtuálního počítače Azure nebo počítač ARC Azure, vyberte **přehledy** přímo z nabídky v Azure Portal.
+* Pomocí Azure Policy povolte více virtuálních počítačů Azure, virtuálních počítačů Azure nebo počítačů s obloukem Azure ARC. Tato metoda zajišťuje, že u stávajících a nových virtuálních počítačů a sad škálování jsou požadované závislosti nainstalovány a správně nakonfigurovány. Nahlásí se nekompatibilní virtuální počítače a sady škálování, takže se můžete rozhodnout, jestli je chcete povolit, a opravit je.
+* Povolte více virtuálních počítačů Azure, virtuálních počítačů Azure ARC, služby Azure Virtual Machine Scale Sets nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
-
-Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
-
->[!NOTE]
->Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
-
-### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
-
-Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
-
-- Afrika
-  - Jižní Afrika – sever
-- Asie a Tichomoří
-  - Východní Asie
-  - Southeast Asia
-- Austrálie
-  - Austrálie – východ
-  - Austrálie – jihovýchod
-- Azure Government
-  - US Gov AZ
-  - US Gov VA
-- Kanada
-  - Střední Kanada
-- Evropa
-  - Severní Evropa
-  - West Europe
-- Indie
-  - Indie – střed
-- Japonsko
-  - Japonsko – východ
-- Spojené království
-  - Spojené království – jih
-- USA
-  - Střední USA
-  - East US
-  - USA – východ 2
-  - USA – středosever
-  - Středojižní USA
-  - USA – středozápad
-  - USA – západ
-  - Západní USA 2
-
-
->[!NOTE]
->Virtuální počítače Azure můžete monitorovat v libovolné oblasti. Samotné virtuální počítače nejsou omezeny na oblasti podporované pracovním prostorem Log Analytics.
->
-
-Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jednoho z prostředků:
-* [Azure CLI](../learn/quick-create-workspace-cli.md)
-* [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Portal](../learn/quick-create-workspace.md)
-* [Azure Resource Manager](../samples/resource-manager-workspace.md)
+## <a name="supported-machines"></a>Podporované počítače
+Azure Monitor pro virtuální počítače podporuje následující počítače:
 
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
 - Hybridní virtuální počítač připojený pomocí ARC Azure
+
+
+## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
+Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
+
+| Připojený zdroj | Podporováno | Popis |
+|:--|:--|:--|
+| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ne | |
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -101,18 +60,8 @@ Přečtěte si následující seznam důležitých informací o podpoře agenta 
 - Pro Debian distribuce jiné než verze 9,4 není funkce map podporována a funkce Performance je k dispozici pouze z nabídky Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 - Jádro CentOSPlus je podporováno.
 - Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
-
-
-
-## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
-Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
-
-| Připojený zdroj | Podporováno | Popis |
-|:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | No | |
-
+## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
+Azure Monitor pro virtuální počítače vyžaduje pracovní prostor Log Analytics. Podrobnosti a požadavky tohoto pracovního prostoru najdete v tématu [konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenti
 Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Jediným požadavkem k zaregistrování prostředků je instalace těchto agentů a jejich připojení k pracovnímu prostoru.
 
@@ -135,7 +84,7 @@ Níže najdete několik metod pro nasazení těchto agentů.
 
 
 ## <a name="management-packs"></a>Sady Management Pack
-Pokud je pro Azure Monitor pro virtuální počítače nakonfigurovaný pracovní prostor Log Analytics, předají se dvě sady Management Pack na všechny počítače s Windows připojené k tomuto pracovnímu prostoru. Sady Management Pack jsou pojmenovány jako *Microsoft. IntelligencePacks. ApplicationDependencyMonitor* a *Microsoft. IntelligencePacks. VMInsights* a jsou zapisovány do *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health Service State\Management Packs \* . 
+Pokud je pro Azure Monitor pro virtuální počítače nakonfigurovaný pracovní prostor Log Analytics, předají se dvě sady Management Pack na všechny počítače s Windows připojené k tomuto pracovnímu prostoru. Sady Management Pack jsou pojmenovány jako *Microsoft. IntelligencePacks. ApplicationDependencyMonitor* a *Microsoft. IntelligencePacks. VMInsights* a jsou zapisovány do *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health Service State\Management Packs*. 
 
 Zdroj dat používaný Management Pack *ApplicationDependencyMonitor* je **% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. Zdroj dat používaný Management Pack *VMInsights* je *% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
 

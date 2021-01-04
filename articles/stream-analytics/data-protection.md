@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576488"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723333"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -56,11 +56,11 @@ Další informace o [nabídkách dodržování předpisů Microsoftu](https://ga
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 
-1.  **Analytics**   > V seznamu výsledků vyberte **úlohu Stream Analytics** analýzy   . 
+1.  ****   > V seznamu výsledků vyberte **úlohu Stream Analytics** analýzy   . 
 
 1. Vyplňte stránku úlohy Stream Analytics s potřebnými podrobnostmi, jako je název, oblast a škálování. 
 
@@ -72,7 +72,7 @@ Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
 
-1. Pokud se chcete ověřit pomocí spravované identity (Preview), vyberte v rozevíracím seznamu režim ověřování možnost **spravovaná identita** . Pokud zvolíte spravovanou identitu, musíte do seznamu řízení přístupu účtu úložiště přidat svou Stream Analyticsovou úlohu. Pokud neudělíte přístup k úloze, úloha nebude moci provádět žádné operace. Další informace o tom, jak udělit přístup, najdete v tématu [použití služby Azure RBAC k přiřazení spravované identity k jinému prostředku](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+1. Pokud se chcete ověřit pomocí spravované identity (Preview), vyberte v rozevíracím seznamu režim ověřování možnost **spravovaná identita** . Pokud zvolíte spravovaná identita, budete muset přidat svou Stream Analyticsovou úlohu do seznamu řízení přístupu účtu úložiště s rolí *Přispěvatel dat objektu BLOB úložiště* . Pokud neudělíte přístup k úloze, úloha nebude moci provádět žádné operace. Další informace o tom, jak udělit přístup, najdete v tématu [použití služby Azure RBAC k přiřazení spravované identity k jinému prostředku](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Nastavení účtu úložiště privátních dat s ověřováním spravovaných identit":::
 

@@ -4,12 +4,12 @@ description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901661"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734534"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -56,10 +56,10 @@ Nastavte PowerShell následujícím způsobem:
 
     ![Seznam rutin Recovery Services](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Přihlaste se ke svému účtu Azure pomocí **Connect-AzAccount** .
+4. Přihlaste se ke svému účtu Azure pomocí **Connect-AzAccount**.
 5. Na zobrazené webové stránce budete vyzváni k zadání přihlašovacích údajů k účtu.
 
-    * Alternativně můžete zahrnout přihlašovací údaje účtu jako parametr v rutině **Connect-AzAccount** s parametrem **-Credential** .
+    * Alternativně můžete zahrnout přihlašovací údaje účtu jako parametr v rutině **Connect-AzAccount** s parametrem **-Credential**.
     * Pokud jste partner CSP pro tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příkladem je **Connect-AzAccount-Tenant** Fabrikam.com.
 
 6. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných.
@@ -80,7 +80,7 @@ Nastavte PowerShell následujícím způsobem:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se **zaregistrují** . Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
+9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se **zaregistrují**. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -103,7 +103,7 @@ Recovery Services trezor je prostředek Správce prostředků, takže ho musíte
 3. Zadejte typ redundance, který se použije pro úložiště trezoru.
 
     * Můžete použít [místně redundantní](../storage/common/storage-redundancy.md#locally-redundant-storage)úložiště, [geograficky redundantní úložiště](../storage/common/storage-redundancy.md#geo-redundant-storage) nebo [redundantní úložiště zóny](../storage/common/storage-redundancy.md#zone-redundant-storage) .
-    * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní** .
+    * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -137,7 +137,7 @@ Uložte objekt trezoru do proměnné a nastavte kontext trezoru.
 * Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
 * Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext). Po nastavení je kontext použit pro všechny následné rutiny.
 
-Následující příklad nastaví kontext trezoru pro **testvault** .
+Následující příklad nastaví kontext trezoru pro **testvault**.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00".
 
-V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. Pak tyto proměnné používá jako parametry pro nové zásady ( **NewSQLPolicy** ). **NewSQLPolicy** přijímá každodenní "úplnou" zálohu, uchovává ji po dobu 180 dnů a při každém 2 hodinách provede zálohování protokolu.
+V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. Pak tyto proměnné používá jako parametry pro nové zásady (**NewSQLPolicy**). **NewSQLPolicy** přijímá každodenní "úplnou" zálohu, uchovává ji po dobu 180 dnů a při každém 2 hodinách provede zálohování protokolu.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -268,7 +268,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 * Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 * Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Před obnovením SQL [here](restore-sql-database-azure-vm.md#prerequisites) databáze se podívejte na zmíněné požadavky.
+Před obnovením SQL [](restore-sql-database-azure-vm.md#restore-prerequisites) databáze se podívejte na zmíněné požadavky.
 
 Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) prostředí PowerShell.
 
@@ -499,7 +499,7 @@ Pokud se výstup ztratí nebo pokud chcete získat příslušné ID úlohy, [Zí
 
 ### <a name="change-policy-for-backup-items"></a>Změnit zásady pro zálohované položky
 
-Zásady zálohované položky můžete změnit z *Policy1* na *Policy2* . Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
+Zásady zálohované položky můžete změnit z *Policy1* na *Policy2*. Chcete-li přepnout zásady pro zálohovanou položku, načtěte příslušné zásady a zálohujte položku a použijte příkaz [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) s položkou Backup jako parametr.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

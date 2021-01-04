@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629419"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739990"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
@@ -536,4 +536,10 @@ docker stop debug
 
 Teď, když jste nastavili VS Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z VS Code k interaktivnímu ladění kódu. 
 
-[Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
+Další informace o řešení potíží:
+
+* [Nasazení místního modelu](how-to-troubleshoot-deployment-local.md)
+* [Nasazení vzdáleného modelu](how-to-troubleshoot-deployment.md)
+* [Kanály Machine Learningu](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

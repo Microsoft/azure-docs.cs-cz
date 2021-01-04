@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/29/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: a960bb3590138ca5efa5146988240db1707a3cf0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182117"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725072"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s cloudem Terraformu
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Terraformu Cloud s Azure Active Direct
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Terraformu cloudu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -76,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
     Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:  `https://app.terraform.io/sso/saml/samlconf-<ID>/metadata`
 
@@ -98,7 +98,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -116,7 +116,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-terraform-cloud-sso"></a>Konfigurace jednotného přihlašování Terraformu Cloud
 
-1. V jiném okně webového prohlížeče se přihlaste do cloudového webu Terraformu jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci Terraformu cloudu, je potřeba nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit Cloud terraformu** , který vás přesměruje na cloudovou aplikaci terraformu. Odtud zadejte přihlašovací údaje správce pro přihlášení ke cloudu Terraformu. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit Cloud Terraformu ručně, v jiném okně webového prohlížeče se přihlaste k webu Terraformu cloudové společnosti jako správce.
 
 2. Přejít na **nastavení > jednotného přihlašování > upravit nastavení**
 

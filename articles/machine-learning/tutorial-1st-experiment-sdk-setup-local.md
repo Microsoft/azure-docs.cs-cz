@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574152"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734194"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -34,9 +34,9 @@ V části 1 této série kurzů budete:
 > [!NOTE]
 > Tato série kurzů se zaměřuje na Azure Machine Learning koncepty *založené* na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Mezi příklady patří prostředí, školení a bodování.
 - Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
 - Python (verze 3,5 až 3,7).
@@ -65,6 +65,9 @@ tutorial
 
 - `tutorial`: Adresář nejvyšší úrovně projektu.
 - `.azureml`: Skrytý podadresář pro ukládání Azure Machine Learning konfiguračních souborů.
+
+> [!TIP]
+> Pokud jste připojeni k Macu, v okně Finder použijte **příkaz + Shift +.** Chcete-li přepnout možnost zobrazit a vytvořit adresáře začínající tečkou.  Nebo k vytvoření adresáře použijte příkaz Terminal.
 
 
 > [!div class="nextstepaction"]

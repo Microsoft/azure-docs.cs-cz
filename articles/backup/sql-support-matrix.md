@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174055"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734789"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -39,7 +39,7 @@ Pomocí Azure Backup můžete zálohovat databáze SQL Server ve virtuálních p
 * Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku se nepodporuje.
 * Řešení je podporované v obou druzích [nasazení](../azure-resource-manager/management/deployment-models.md) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
 * Podporují se všechny typy zálohování (úplný/rozdíl/protokol) a modely obnovení (jednoduché/úplné/hromadné protokolování).
-* Pro databáze **jen pro čtení** jsou podporovány úplné typy úplné zálohy a pouze kopírování.
+* Pro databáze **jen pro čtení** : úplné a pouze úplné zálohování je jediným podporovaným typem zálohování.
 * Nativní komprese SQL je podporována, pokud je explicitně povolena uživatelem v zásadách zálohování. Azure Backup přepisuje výchozí hodnoty na úrovni instance pomocí klauzule COMPRESSION/NO_COMPRESSION v závislosti na hodnotě tohoto ovládacího prvku nastavené uživatelem.
 * Zálohování databáze s podporou TDE je podporováno. Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Komprese záloh pro databáze s povoleným TDE pro SQL Server 2016 a novější verze je dostupná, ale v nižší velikosti přenosu, jak je popsáno [zde](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593).
 * Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.

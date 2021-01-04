@@ -10,29 +10,36 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6bb1aafd942046faa77072d99af043ebd43b4a8a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589963"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733052"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
 
 [Azure Key Vault](./overview.md) poskytuje způsob ukládání přihlašovacích údajů a dalších tajných kódů s vyšším zabezpečením. Váš kód ale musí ověřit, aby se Key Vault načíst. [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) usnadňují řešení tohoto problému tím, že službám Azure poskytne automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti zobrazovat přihlašovací údaje v kódu.
 
-V tomto kurzu použijete spravovanou identitu k ověření webové aplikace Azure pomocí trezoru klíčů Azure. Použijete [klientskou knihovnu Azure Key Vault tajných klíčů pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
+V tomto kurzu vytvoříte a nasadíte webovou aplikaci Azure pro [Azure App Service](https://docs.microsoft.com/azure/app-service/overview). Pomocí spravované identity můžete svoji webovou aplikaci Azure ověřit pomocí trezoru klíčů Azure pomocí [Azure Key Vault tajné klientské knihovny pro .NET](/dotnet/api/overview/azure/key-vault) a [Azure CLI](/cli/azure/get-started-with-azure-cli). Stejné základní principy platí při použití vývojového jazyka dle vašeho výběru, Azure PowerShell a/nebo Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+Další informace o webových aplikacích a nasazení služby Azure App Service prezentovaných v tomto kurzu najdete v tématech:
+- [Přehled služby App Service](https://docs.microsoft.com/azure/app-service/overview)
+- [Vytvoření webové aplikace v ASP.NET Core v Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+- [Místní nasazení Gitu pro Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
 
-Co budete potřebovat k dokončení tohoto rychlého startu:
+## <a name="prerequisites"></a>Požadavky
+
+Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. [Vytvořte si ho zdarma.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Sada .NET Core 3,1 SDK (nebo novější)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Instalace [Gitu](https://www.git-scm.com/downloads) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/).
-* [Azure Key Vault](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
+* [Azure Key Vault.](./overview.md) Trezor klíčů můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [Azure PowerShell](quick-create-powershell.md).
 * Key Vault [tajný klíč](../secrets/about-secrets.md). Tajný klíč můžete vytvořit pomocí [Azure Portal](../secrets/quick-create-portal.md), [PowerShellu](../secrets/quick-create-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](../secrets/quick-create-cli.md).
+
+Pokud již máte webovou aplikaci nasazenou v Azure App Service, můžete přeskočit ke [konfiguraci přístupu k webové aplikaci k trezoru klíčů](#create-and-assign-a-managed-identity) a [úpravám částí kódu webové aplikace](#modify-the-app-to-access-your-key-vault) .
 
 ## <a name="create-a-net-core-app"></a>Vytvoření aplikace .NET Core
 V tomto kroku nastavíte místní projekt .NET Core.
@@ -59,6 +66,8 @@ dotnet run
 Ve webovém prohlížeči přejdete do aplikace na adrese `http://localhost:5000` .
 
 Uvidíte zprávu „Hello World!“, Zpráva z ukázkové aplikace zobrazené na stránce
+
+Další informace o vytváření webových aplikací pro Azure najdete v tématu [Vytvoření webové aplikace v ASP.NET Core v Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
@@ -218,6 +227,8 @@ http://<your-webapp-name>.azurewebsites.net
 ```
 
 Uvidíte zprávu „Hello World!“, zpráva, kterou jste viděli dříve po navštívení `http://localhost:5000` .
+
+Další informace o nasazení webové aplikace pomocí Gitu najdete v tématu [nasazení do místního úložiště git Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Konfigurace webové aplikace pro připojení k Key Vault
 

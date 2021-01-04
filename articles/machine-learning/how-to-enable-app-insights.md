@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536587"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739837"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 
@@ -157,14 +157,24 @@ Službu Azure Application Insights můžete taky povolit z Azure Machine Learnin
 
 ### <a name="query-logs-for-deployed-models"></a>Protokoly dotazů pro nasazené modely
 
-Funkci můžete použít `get_logs()` k načtení protokolů z dříve nasazené webové služby. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
+Protokoly koncových bodů v reálném čase jsou zákaznická data. Funkci můžete použít `get_logs()` k načtení protokolů z dříve nasazené webové služby. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+Pokud máte více tenantů, možná budete muset přidat následující ověřovací kód před `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>Zobrazit protokoly v studiu

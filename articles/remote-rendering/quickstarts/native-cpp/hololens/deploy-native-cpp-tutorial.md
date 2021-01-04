@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207270"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724965"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Rychlý Start: nasazení nativní ukázky C++ na HoloLens
 
@@ -39,7 +39,7 @@ Musí být nainstalovaný následující software:
 
 ## <a name="clone-the-arr-samples-repository"></a>Naklonujte úložiště ukázek ARR.
 
-Jako první krok naklonujte úložiště Git, které zveřejňuje veřejné ukázky pro vzdálené vykreslování Azure. Otevřete příkazový řádek (typ `cmd` v nabídce Start systému Windows) a přejděte do adresáře, kam chcete uložit vzorový projekt Arr.
+Jako první krok naklonujte úložiště Git, které je součástí globálních ukázek pro vzdálené vykreslování Azure. Otevřete příkazový řádek (typ `cmd` v nabídce Start systému Windows) a přejděte do adresáře, kam chcete uložit vzorový projekt Arr.
 
 Spusťte následující příkazy:
 
@@ -70,7 +70,8 @@ Vzhledem k tomu, že přihlašovací údaje účtu jsou pevně zakódované ve z
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,8 +79,8 @@ Vzhledem k tomu, že přihlašovací údaje účtu jsou pevně zakódované ve z
 ```
 
 Konkrétně změňte následující hodnoty:
-* `init.AccountId` a `init.AccountKey` k používání dat účtu. Přečtěte si článek o tom, jak [načíst informace o účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* Část `init.AccountDomain` řetězce pro jiné oblasti `westus2` , než například, např. `"westeurope.mixedreality.azure.com"`
+* `init.AccountId`, `init.AccountKey` a `init.AccountAuthenticationDomain` pro použití dat vašeho účtu. Přečtěte si článek o tom, jak [načíst informace o účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* Určete, kde vytvořit relaci vzdáleného vykreslování změnou části oblasti v `init.AccountDomain` řetězci pro jiné oblasti `westus2` , než je třeba `"westeurope.mixedreality.azure.com"` .
 * Kromě toho se `m_sessionOverride` dá změnit na existující ID relace. Relace je možné vytvořit mimo tuto ukázku, například pomocí [skriptu PowerShellu](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) nebo přímo pomocí [REST API relace](../../../how-tos/session-rest-api.md#create-a-session) .
 Vytvoření relace mimo ukázku se doporučuje, když by se vzorek spouštěl víckrát. Pokud není předána žádná relace, ukázka při každém spuštění vytvoří novou relaci, která může trvat několik minut.
 

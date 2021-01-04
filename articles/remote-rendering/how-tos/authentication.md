@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427467"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724869"
 ---
 # <a name="configure-authentication"></a>Konfigurace ověřování
 
@@ -19,14 +19,17 @@ Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako
 * **AccountKey**: lze získat na kartě Keys (klíče) pro účet vzdáleného vykreslování na Azure Portal. Klíče účtu doporučujeme jenom pro vývoj a vytváření prototypů.
     ![Account ID](./media/azure-account-primary-key.png)
 
+* **AccountDomain**: lze získat na kartě Přehled pro účet vzdáleného vykreslování na Azure Portal.
+    ![Doména účtu](./media/azure-account-domain.png)
+
 * **AuthenticationToken**: je token Azure AD, který se dá získat pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). K dispozici je více různých toků pro příjem přihlašovacích údajů uživatele a používání těchto pověření k získání přístupového tokenu.
 
-* **MRAccessToken**: je token Mr, který se dá získat ze služby STS (Azure Mixed reality Security token). Načteno z `https://sts.mixedreality.azure.com` koncového bodu pomocí volání REST podobného následujícímu volání:
+* **MRAccessToken**: je token Mr, který se dá získat ze služby STS (Azure Mixed reality Security token). Načteno z `https://sts.<accountDomain>` koncového bodu pomocí volání REST, které je podobné následujícímu:
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK

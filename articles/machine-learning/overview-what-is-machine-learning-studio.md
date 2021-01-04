@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565904"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740500"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -25,6 +25,11 @@ V tomto článku se dozvíte, jak:
 > - Jak [spravovat prostředky a prostředky](#manage-assets-and-resources) v nástroji Studio.
 > - Rozdíly mezi [Azure Machine Learning Studio a ml Studio (Classic)](#ml-studio-classic-vs-azure-machine-learning-studio).
 
+Doporučujeme používat nejnovější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
+  * Microsoft Edge (nová Microsoft Edge, nejnovější verze Ne Microsoft Edge starší verze)
+  * Safari (nejnovější verze, jen Mac)
+  * Chrome (nejnovější verze)
+  * Firefox (nejnovější verze)
 
 ## <a name="author-machine-learning-projects"></a>Vytváření projektů strojového učení
 
@@ -33,6 +38,8 @@ Studio nabízí více prostředí pro tvorbu v závislosti na typu projektu a ú
 + **Poznámkové bloky**
 
   Pište a spouštějte vlastní kód na spravovaných [Jupyter notebook serverech](how-to-run-jupyter-notebooks.md) , které jsou přímo integrované v studiu. 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="Snímek obrazovky: zápis a spuštění kódu v poznámkovém bloku":::
 
 + **Návrhář služby Azure Machine Learning**
 
@@ -80,7 +87,7 @@ Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro
 
 Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
 
-| Příznak | ML Studio (klasický) | Azure Machine Learning |
+| Funkce | ML Studio (klasický) | Azure Machine Learning |
 |---| --- | --- |
 | Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
 | Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |
@@ -94,6 +101,9 @@ Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure
 | Detekce posunu dat | Nepodporováno | [Podporováno](how-to-monitor-datasets.md) |
 | Projekty označování dat | Nepodporováno | [Podporováno](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>Řešení potíží
+
+* **Chybějící položky uživatelského rozhraní v studiu** Řízení přístupu na základě role v Azure je možné použít k omezení akcí, které můžete provádět s Azure Machine Learning. Tato omezení můžou zabránit tomu, aby se položky uživatelského rozhraní zobrazovaly v Azure Machine Learning Studiu. Například pokud máte přiřazenou roli, která nemůže vytvořit výpočetní instanci, možnost vytvoření instance COMPUTE se v studiu nezobrazí. Další informace najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
 
 ## <a name="next-steps"></a>Další kroky
 

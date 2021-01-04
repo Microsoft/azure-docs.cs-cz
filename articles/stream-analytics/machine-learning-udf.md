@@ -6,20 +6,20 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130676"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733001"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
 Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
@@ -47,17 +47,17 @@ Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přím
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci** . V rozevíracím seznamu vyberte **Machine Learning UDF** .
+1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci**. V rozevíracím seznamu vyberte **Machine Learning UDF** .
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Přidat UDF do VS Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Přidat UDF do VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Přidat Azure Machine Learning UDF v VS Code":::
 
 2. Zadejte název funkce a vyplňte nastavení v konfiguračním souboru pomocí **možnosti vybrat z předplatných** v CodeLens.
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Přidat UDF do VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Vyberte Azure Machine Learning UDF v VS Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Přidat UDF do VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Konfigurace Azure Machine Learning systému souborů UDF v VS Code":::
 
 V následující tabulce jsou popsány jednotlivé vlastnosti služby Azure Machine Learning Service Functions v Stream Analytics.
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit vaše data, než je předáte do strojového učení UDF.
+Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit vaše data, než je předáte do strojového učení UDF. Je nutné zajistit, aby vstup do ML UDF nebyl null, protože vstupy s hodnotou null způsobí selhání úlohy.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Předání více vstupních parametrů do systému souborů UDF
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 Po přidání JavaScriptu pro systém souborů UDF do úlohy můžete Azure Machine Learning UDF vyvolat pomocí následujícího dotazu:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 Následující kód JSON je příkladem požadavku:

@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591984"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739854"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
 
@@ -47,8 +47,7 @@ Pokud jsou výstupní data modulu v tabulkovém formátu, je nutné se rozhodnou
  - **Datová sada souborů** registruje výstupní složku modulu jako datovou sadu souboru. Výstupní složka obsahuje datový soubor a meta soubory, které Návrhář používá interně. Tuto možnost vyberte, pokud chcete i nadále používat registrovanou datovou sadu v návrháři. 
 
  - **Tabulková datová sada** registruje pouze výstupní datový soubor modulu jako tabelární datovou sadu. Tento formát je snadno využíván jinými nástroji, například v automatizovaných Machine Learning nebo v sadě Python SDK. Tuto možnost vyberte, pokud plánujete použít registrovanou datovou sadu mimo Návrhář.  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>Použití datové sady
 
@@ -62,6 +61,14 @@ Pokud zaregistrujete datovou sadu souborů, je typ výstupního portu datové sa
 > [!NOTE]
 > Návrhář podporuje [správu verzí datových sad](how-to-version-track-datasets.md). Zadejte verzi datové sady na panelu vlastností modulu DataSet.
 
+### <a name="limitations"></a>Omezení 
+
+- V současné době je možné vizualizovat pouze tabelární datovou sadu v návrháři. Pokud zaregistrujete souborovou sadu mimo návrháře, nemůžete ji vizualizovat na plátně návrháře.
+- Vaše datová sada je uložená ve virtuální síti (VNet). Chcete-li vizualizovat, je nutné povolit správu pracovního prostoru s identitou úložiště dat.
+    1. Přejděte na související úložiště dat a klikněte na **aktualizovat** přihlašovací údaje 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="aktualizovat"::: přihlašovací údaje.
+    1. Vyberte **Ano** , pokud chcete povolit spravovanou identitu pracovního prostoru.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Povolit spravovanou identitu pracovního prostoru":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Import dat pomocí modulu import dat
 

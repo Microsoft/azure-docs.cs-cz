@@ -1,18 +1,18 @@
 ---
 title: Registrovat a kontrolovat Azure SQL Database
 description: V tomto kurzu se dozvíte, jak kontrolovat Azure SQL Database
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920269"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739786"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrace a kontrola Azure SQL Database
 
@@ -24,13 +24,13 @@ Zdroj dat Azure SQL Database podporuje následující funkce:
 
 - **Úplné a přírůstkové kontroly** pro zachycení metadat a klasifikace v Azure SQL Database.
 
-- **Lineage** Počet vydaných datových assetů pro kopírování ADF a aktivity toku dat
+-  Počet vydaných datových assetů pro kopírování ADF a aktivity toku dat
 
 ### <a name="known-limitations"></a>Známá omezení
 
-Azure dosah nepodporuje kontrolu [zobrazení](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) v Azure SQL Database. 
+Azure dosah nepodporuje kontrolu [zobrazení](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) v Azure SQL Database. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Vytvořte nový účet dosah, pokud ho ještě nemáte.
 
@@ -89,7 +89,7 @@ Chcete-li použít instanční objekt, můžete použít existující nebo vytvo
 Objekt služby nebo spravovaná identita musí mít oprávnění k získání metadat pro databázi, schémata a tabulky. Musí být také schopné dotazovat tabulky na ukázku pro klasifikaci.
 
 - [Konfigurace a Správa ověřování Azure AD pomocí Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Pokud používáte spravovanou identitu, účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD v Azure SQL Database s přesnou identitou spravované dosah nebo vlastním instančním objektem, a to pomocí kurzu [Vytvoření uživatele instančního objektu v Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). `db_owner`K identitě musíte přiřadit (**doporučeno**) oprávnění. Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
+- Pokud používáte spravovanou identitu, účet dosah má svou vlastní spravovanou identitu, která je v podstatě vaším dosah názvem. Musíte vytvořit uživatele služby Azure AD v Azure SQL Database s přesnou identitou spravované dosah nebo vlastním instančním objektem, a to pomocí kurzu [Vytvoření uživatele instančního objektu v Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). K identitě musíte přiřadit správné oprávnění (například `db_owner` nebo `db_datareader` ). Příklad syntaxe SQL pro vytvoření uživatele a udělení oprávnění:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Objekt služby nebo spravovaná identita musí mít oprávnění k získání me
     ```
 
     > [!Note]
-    > `Username`Je to váš vlastní instanční objekt nebo spravovaná identita dosah.
+    > `Username`Je to váš vlastní instanční objekt nebo spravovaná identita dosah. Můžete si přečíst další informace o [rolích s pevnou databází a jejich schopnostech](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Přidání instančního objektu do trezoru klíčů a přihlašovacích údajů služby dosah
 

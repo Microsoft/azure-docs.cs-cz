@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483759"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724625"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault podporuje ukládání digitálního certifikátu vydaného jakou
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](./about-certificates.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Přidání certifikátu v Key Vault vydaném prostřednictvím partnerské certifikační autority
 Key Vault partneři s následujícími dvěma certifikačními autoritami pro zjednodušení vytváření certifikátů. 
@@ -38,7 +38,34 @@ Key Vault partneři s následujícími dvěma certifikačními autoritami pro zj
 Následující kroky vám pomůžou vytvořit certifikát od certifikačních autorit, které nejsou partnerské Key Vault (například GoDaddy není certifikační autoritou důvěryhodného trezoru klíčů). 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
+2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
+3.  Vyberte kartu **Generovat/importovat** .
+4.  Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
+    - **Metoda vytvoření certifikátu:** Vytváří.
+    - **Název certifikátu:** ContosoManualCSRCertificate.
+    - **Typ certifikační autority (CA):** Certifikát vydaný neintegrovanou certifikační autoritou
+    - **Předmět:**`"CN=www.contosoHRApp.com"`
+    - Vyberte další hodnoty podle potřeby. Klikněte na **Vytvořit**.
+
+    ![Vlastnosti certifikátu](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  Uvidíte, že certifikát se teď přidal do seznamu certifikáty. Vyberte tento nový certifikát, který jste právě vytvořili. Aktuální stav certifikátu by byl zakázán, protože ještě nebyl vydán certifikační autoritou.
+7. Klikněte na kartu **operace certifikátu** a vyberte **Stáhnout CSR**.
+
+   ![Snímek obrazovky, který zvýrazní tlačítko Stáhnout CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  Pořiďte si soubor. CSR pro certifikační autoritu, aby se žádost mohla podepsat.
+9.  Jakmile je žádost podepsána certifikační autoritou, vraťte soubor certifikátu pro **sloučení podepsané žádosti** na obrazovku stejné operace certifikátu.
+
+Žádost o certifikát byla nyní úspěšně sloučena.
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
     ```
 
     Žádost o certifikát se teď úspěšně sloučila.
-
-### <a name="azure-portal"></a>portál Azure
-
-1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
-2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
-3.  Vyberte kartu **Generovat/importovat** .
-4.  Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
-    - **Metoda vytvoření certifikátu:** Vytváří.
-    - **Název certifikátu:** ContosoManualCSRCertificate.
-    - **Typ certifikační autority (CA):** Certifikát vydaný neintegrovanou certifikační autoritou
-    - **Předmět:**`"CN=www.contosoHRApp.com"`
-    - Vyberte další hodnoty podle potřeby. Klikněte na **Vytvořit**.
-
-    ![Vlastnosti certifikátu](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  Uvidíte, že certifikát se teď přidal do seznamu certifikáty. Vyberte tento nový certifikát, který jste právě vytvořili. Aktuální stav certifikátu by byl zakázán, protože ještě nebyl vydán certifikační autoritou.
-7. Klikněte na kartu **operace certifikátu** a vyberte **Stáhnout CSR**.
-
-   ![Snímek obrazovky, který zvýrazní tlačítko Stáhnout CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  Pořiďte si soubor. CSR pro certifikační autoritu, aby se žádost mohla podepsat.
-9.  Jakmile je žádost podepsána certifikační autoritou, vraťte soubor certifikátu pro **sloučení podepsané žádosti** na obrazovku stejné operace certifikátu.
-
-Žádost o certifikát byla nyní úspěšně sloučena.
+---
 
 > [!NOTE]
 > Pokud vaše hodnoty RDN mají čárky, můžete je také přidat do pole **subjekt** , a to tak, že se hodnota doplní v uvozovkách, jak je znázorněno v kroku 4.
 > Příkladem záznamu do "Subject": `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` v tomto příkladu je `OU` hodnota RDN obsažena v názvu s čárkou. Výsledný výstup pro `OU` aplikace je **Docs, contoso**.
-
 
 ## <a name="adding-more-information-to-csr"></a>Přidání dalších informací CSR
 
@@ -105,7 +107,7 @@ Pokud chcete přidat další informace při vytváření CSR, např.
     - Země:
     - Město/místní:
     - Stát/provincie:
-    - Dotčen
+    - Vaší
     - Organizační jednotka: všechny tyto informace můžete přidat při vytváření CSR tím, že je definujete v tématu Subject.
 
 Příklad
@@ -118,6 +120,8 @@ Příklad
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
+- Pokud chcete monitorovat nebo spravovat odpověď na žádost o certifikát, další informace najdete [tady](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) .
+
 - **Typ chyby: veřejný klíč certifikátu koncové entity v zadaném obsahu certifikátu X. 509 se neshoduje s veřejnou součástí zadaného privátního klíče. Zkontrolujte prosím, jestli je certifikát platný** . k této chybě může dojít, pokud neslučujete CSR se stejným zahájeným požadavkem CSR. Při každém vytvoření CSR se vytvoří privátní klíč, který se při slučování podepsané žádosti musí shodovat.
     
 - Při sloučení CSR se celý řetězec sloučí?
@@ -129,6 +133,7 @@ Další informace najdete v referenčních informacích o [operacích certifiká
 
 - **Typ chyby: zadaný název subjektu není platným názvem souboru X500.** K této chybě může dojít, pokud jste zahrnuli všechny "speciální znaky" v hodnotách Subject. Viz poznámky v části Azure Portal a pokyny pro prostředí PowerShell. 
 
+---
 ## <a name="next-steps"></a>Další kroky
 
 - [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)

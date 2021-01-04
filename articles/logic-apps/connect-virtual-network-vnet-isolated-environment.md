@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669529"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739735"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -44,24 +44,14 @@ Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony
   > [!IMPORTANT]
   > Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
 
-* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Vaše virtuální síť musí mít čtyři *prázdné* podsítě, které jsou potřeba pro vytváření a nasazování prostředků v ISE a používané těmito interními a skrytými součástmi:
+* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md) se čtyřmi *prázdnými* podsítěmi, které jsou potřeba pro vytváření a nasazování prostředků v ISE a používané těmito interními a skrytými součástmi:
 
   * Logic Apps COMPUTE
   * Interní App Service Environment (konektory)
   * Interní API Management (konektory)
   * Interní Redis pro ukládání do mezipaměti a výkon
   
-  Můžete vytvořit podsítě předem nebo můžete počkat, dokud nevytvoříte ISE, abyste mohli vytvářet podsítě současně. Před vytvořením podsítí ale zkontrolujte [požadavky podsítě](#create-subnet).
-
-  > [!IMPORTANT]
-  >
-  > Pro virtuální síť nebo podsítě nepoužívejte následující adresní prostory IP adres, protože je nelze přeložit pomocí Azure Logic Apps:<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  Podsítě můžete vytvořit předem nebo při vytváření ISE, abyste mohli vytvořit podsítě ve stejnou dobu. Před vytvořením podsítí ale nezapomeňte zkontrolovat [požadavky podsítě](#create-subnet).
 
   * Ujistěte se, že vaše virtuální síť [umožňuje přístup k vašemu ISE](#enable-access) , takže vaše ISE může správně fungovat a zůstat přístupná.
 
@@ -170,14 +160,14 @@ Pokud pro tyto závislosti nepovolíte přístup, nasazení ISE se nepovede a va
 
 * Koncové body služby
 
-  Je potřeba povolit koncové body služby pro Azure SQL, Storage, Service Bus a Event Hubs, protože do těchto služeb nemůžete odesílat přenosy přes bránu firewall.
+  Je potřeba povolit koncové body služby pro Azure SQL, Storage, Service Bus, Trezor klíčů a Event Hubs, protože do těchto služeb nemůžete odesílat přenosy přes bránu firewall.
 
 *  Další příchozí a odchozí závislosti
 
    Brána firewall *musí* umožňovat následující příchozí a odchozí závislosti:
    
    * [Azure App Service závislosti](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
-   * [Závislosti Azure Cache Service](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Závislosti Azure Cache Service](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
    * [Závislosti Azure API Management](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
@@ -219,7 +209,7 @@ Pokud pro tyto závislosti nepovolíte přístup, nasazení ISE se nepovede a va
 
    * Používá název, který začíná abecedním znakem nebo podtržítkem (bez čísel), a nepoužívá tyto znaky: `<` , `>` , `%` , `&` , `\\` , `?` , `/` .
 
-   * Používá [Formát CIDR (classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
+   * Používá [Formát směrování Inter-Domain ve třídě (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
    
      > [!IMPORTANT]
      >

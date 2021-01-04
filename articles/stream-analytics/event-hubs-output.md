@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e01a4418681e0f78864eacbf70016cfb33fa6f53
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295262"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739633"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs výstup z Azure Stream Analytics
 
@@ -22,7 +22,7 @@ Služba [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) je 
 
 Následující tabulka obsahuje parametry potřebné ke konfiguraci datových proudů z Center událostí jako výstupu.
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název, který se používá v dotazech k nasměrování výstupu dotazu do tohoto centra událostí. |
 | Obor názvů centra událostí | Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste taky vytvořili obor názvů centra událostí. |
@@ -62,13 +62,9 @@ V následujícím příkladu `DeviceId` jsou pole a `DeviceStatus` přidána do 
 
 Následující obrázek má očekávané vlastnosti výstupní zprávy, které byly zkontrolovány v centru EventHub pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Sloupce vlastností":::
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Vlastní vlastnosti události":::
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Použití spravovaných identit k přístupu k centru událostí z Azure Stream Analytics úlohy (Preview)](event-hubs-managed-identity.md)
 * [Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal](stream-analytics-quick-create-portal.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI](quick-create-azure-cli.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony ARM](quick-create-azure-resource-manager.md)
-* [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)

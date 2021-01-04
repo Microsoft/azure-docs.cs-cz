@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 4df4c3d91c30dfd63de9073d8435f6f96c6ecd95
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626822"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724795"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -32,17 +32,17 @@ Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otá
 
 Další informace o těchto třech volbách najdete v tématu [Plánování nasazení služby soubory Azure](storage-files-planning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-Sdílené složky Azure se nasazují do *účtů úložiště* , což jsou objekty nejvyšší úrovně, které představují sdílený fond úložiště. Tento fond úložiště se dá použít k nasazení několika sdílených složek. 
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+Sdílené složky Azure se nasazují do *účtů úložiště*, což jsou objekty nejvyšší úrovně, které představují sdílený fond úložiště. Tento fond úložiště se dá použít k nasazení několika sdílených složek. 
 
 Azure podporuje více typů účtů úložiště pro různé scénáře úložiště, které mohou mít zákazníci, ale existují dva hlavní typy účtů úložiště pro soubory Azure. Typ účtu úložiště, který chcete vytvořit, závisí na tom, jestli chcete vytvořit standardní sdílenou složku nebo sdílenou složku prémiových souborů: 
 
-- **Účty úložiště pro obecné účely verze 2 (GPv2)** : účty úložiště GPv2 umožňují nasadit sdílené složky Azure na hardwaru založeném na standardu a na pevných discích (HDD). Kromě ukládání sdílených složek Azure můžou účty úložiště GPv2 ukládat i další prostředky úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. Sdílené složky lze nasadit do optimalizované transakce (výchozí), horké nebo studené úrovně.
+- **Účty úložiště pro obecné účely verze 2 (GPv2)**: účty úložiště GPv2 umožňují nasadit sdílené složky Azure na hardwaru založeném na standardu a na pevných discích (HDD). Kromě ukládání sdílených složek Azure můžou účty úložiště GPv2 ukládat i další prostředky úložiště, jako jsou kontejnery objektů blob, fronty nebo tabulky. Sdílené složky lze nasadit do optimalizované transakce (výchozí), horké nebo studené úrovně.
 
 - **Účty úložiště** úložiště: účty úložiště úložiště umožňují nasadit sdílené složky Azure na hardware Premium/Solid-State (SSD) na disku (SSD). Účty úložiště souborů se dají použít jenom k ukládání sdílených složek Azure. v účtu úložiště úložiště se nedají nasadit žádné další prostředky úložiště (kontejnery objektů blob, fronty, tabulky atd.).
 
@@ -61,12 +61,12 @@ Pokud chcete vytvořit účet úložiště úložiště, ujistěte se, že je p�
 ![Snímek obrazovky s přepínačem výkonu s vybraným a druhem účtu s vybraným úložištěm](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
 Ostatní pole základy jsou nezávislá na volbě účtu úložiště:
-- **Předplatné** : předplatné pro účet úložiště, do kterého se má nasadit. 
-- **Skupina prostředků** : Skupina prostředků pro účet úložiště, do kterého se má nasadit. Můžete buď vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků.
-- **Název účtu úložiště** : název prostředku účtu úložiště, který se má vytvořit. Tento název musí být globálně jedinečný, ale jinak může být libovolný název, který si přejete. Název účtu úložiště se použije jako název serveru při připojení sdílené složky Azure přes SMB.
-- **Umístění** : oblast, do které se má účet úložiště nasadit. Může to být oblast přidružená ke skupině prostředků nebo libovolné jiné dostupné oblasti.
-- **Replikace** : i když se jedná o replikaci s označením, toto pole ve skutečnosti znamená **redundanci**. Toto je požadovaná úroveň redundance: místně redundance (LRS), redundance zóny (ZRS), geografická redundance (GRS) a redundance geografické zóny. Tento rozevírací seznam taky obsahuje geografickou redundanci přístupu pro čtení (RA-GRS) a redundanci s přístupem pro čtení (RA-GZRS), které se nevztahují na sdílené složky Azure. jakákoli sdílená složka vytvořená v účtu úložiště s těmito vybranými možnostmi bude ve skutečnosti buď geograficky redundantní, nebo geografické zóny, v uvedeném pořadí. V závislosti na vaší oblasti nebo typu vybraného účtu úložiště nemusí být některé možnosti redundance povoleny.
-- **Úroveň přístupu objektu BLOB** : Toto pole se nevztahuje na soubory Azure, takže můžete zvolit jeden z přepínačů. 
+- **Předplatné**: předplatné pro účet úložiště, do kterého se má nasadit. 
+- **Skupina prostředků**: Skupina prostředků pro účet úložiště, do kterého se má nasadit. Můžete buď vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků.
+- **Název účtu úložiště**: název prostředku účtu úložiště, který se má vytvořit. Tento název musí být globálně jedinečný, ale jinak může být libovolný název, který si přejete. Název účtu úložiště se použije jako název serveru při připojení sdílené složky Azure přes SMB.
+- **Umístění**: oblast, do které se má účet úložiště nasadit. Může to být oblast přidružená ke skupině prostředků nebo libovolné jiné dostupné oblasti.
+- **Replikace**: i když se jedná o replikaci s označením, toto pole ve skutečnosti znamená **redundanci**. Toto je požadovaná úroveň redundance: místně redundance (LRS), redundance zóny (ZRS), geografická redundance (GRS) a redundance geografické zóny. Tento rozevírací seznam taky obsahuje geografickou redundanci přístupu pro čtení (RA-GRS) a redundanci s přístupem pro čtení (RA-GZRS), které se nevztahují na sdílené složky Azure. jakákoli sdílená složka vytvořená v účtu úložiště s těmito vybranými možnostmi bude ve skutečnosti buď geograficky redundantní, nebo geografické zóny, v uvedeném pořadí. V závislosti na vaší oblasti nebo typu vybraného účtu úložiště nemusí být některé možnosti redundance povoleny.
+- **Úroveň přístupu objektu BLOB**: Toto pole se nevztahuje na soubory Azure, takže můžete zvolit jeden z přepínačů. 
 
 > [!Important]  
 > Výběr úrovně přístupu objektu BLOB nemá vliv na úroveň sdílené složky.
@@ -77,8 +77,8 @@ Ostatní pole základy jsou nezávislá na volbě účtu úložiště:
 #### <a name="the-advanced-blade"></a>Okno Upřesnit
 Oddíl Upřesnit obsahuje několik důležitých nastavení pro sdílené složky Azure:
 
-- **Vyžadován zabezpečený přenos** : Toto pole označuje, zda účet úložiště vyžaduje při přenosu přenos dat do účtu úložiště šifrování. Doporučujeme, abyste tuto možnost nechali zapnuti, ale pokud požadujete podporu protokolu SMB 2,1, je nutné ji zakázat. Doporučujeme zakázat šifrování, které omezíte přístup účtu úložiště k virtuální síti pomocí koncových bodů služby a/nebo privátních koncových bodů.
-- **Velké sdílené složky** : Toto pole umožňuje, aby byl účet úložiště pro sdílené složky rozložený až do 100 TIB. Povolením této funkce omezíte účet úložiště jenom na místně redundantní a redundantní možnosti úložiště v zóně. Jakmile je pro velké sdílené složky povolený účet úložiště GPv2, nemůžete zakázat možnost sdílení velkých souborů. Účty úložiště úložiště (účty úložiště pro soubory úrovně Premium) nemají tuto možnost, protože všechny sdílené složky Premium se můžou škálovat až na 100 TiB. 
+- **Vyžadován zabezpečený přenos**: Toto pole označuje, zda účet úložiště vyžaduje při přenosu přenos dat do účtu úložiště šifrování. Doporučujeme, abyste tuto možnost nechali zapnuti, ale pokud požadujete podporu protokolu SMB 2,1, je nutné ji zakázat. Doporučujeme zakázat šifrování, které omezíte přístup účtu úložiště k virtuální síti pomocí koncových bodů služby a/nebo privátních koncových bodů.
+- **Velké sdílené složky**: Toto pole umožňuje, aby byl účet úložiště pro sdílené složky rozložený až do 100 TIB. Povolením této funkce omezíte účet úložiště jenom na místně redundantní a redundantní možnosti úložiště v zóně. Jakmile je pro velké sdílené složky povolený účet úložiště GPv2, nemůžete zakázat možnost sdílení velkých souborů. Účty úložiště úložiště (účty úložiště pro soubory úrovně Premium) nemají tuto možnost, protože všechny sdílené složky Premium se můžou škálovat až na 100 TiB. 
 
 ![Snímek obrazovky s důležitými pokročilými nastaveními, která se vztahují na soubory Azure](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
@@ -172,7 +172,7 @@ Vlastnost **Quota** znamená něco jiného, co se liší od úrovně Premium a s
 
 - U standardních sdílených složek se jedná o horní hranici sdílené složky Azure, nad kterou koncoví uživatelé nemůžou přejít. Hlavním účelem pro kvótu pro standardní sdílenou složku je rozpočtový stav: "Nechci, aby tato sdílená složka překročila rámec tohoto bodu". Pokud není zadaná kvóta, může standardní sdílená složka zahrnovat až 100 TiB (nebo 5 TiB, pokud pro účet úložiště není nastavená vlastnost sdílené složky velkých souborů).
 
-- U sdílených složek úrovně Premium je kvóta přetížená, což znamená **zřízené velikosti**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Když zřizujete sdílenou složku Premium, budete chtít vzít v úvahu dva faktory: 1) budoucí nárůst podílu z perspektivy využití prostoru a 2) IOPS požadované pro vaše zatížení. Každý zřízený GiB vám opravňuje k dodatečnému rezervovanému a roztržení IOPS. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- U sdílených složek úrovně Premium je kvóta přetížená, což znamená **zřízené velikosti**. Zřízená velikost je množství, které se vám bude účtovat bez ohledu na skutečné využití. Když zřizujete sdílenou složku Premium, budete chtít vzít v úvahu dva faktory: 1) budoucí nárůst podílu z perspektivy využití prostoru a 2) IOPS požadované pro vaše zatížení. Každý zřízený GiB vám opravňuje k dodatečnému rezervovanému a roztržení IOPS. Další informace o tom, jak naplánovat pro sdílenou složku Premium, najdete v tématu [zřizování souborů ke sdílení prémiových souborů](understanding-billing.md#provisioned-billing).
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Pokud jste právě vytvořili účet úložiště, můžete na něj přejít z obrazovky nasazení výběrem možnosti **Přejít k prostředku**. Pokud jste už vytvořili účet úložiště, můžete na něj přejít přes skupinu prostředků, která ho obsahuje. V účtu úložiště vyberte dlaždici s názvem **sdílené složky** (můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu pro účet úložiště).
@@ -183,9 +183,9 @@ V seznamu sdílení souborů byste měli vidět všechny sdílené složky, kter
 
 Na obrazovce by se mělo zobrazit okno nové sdílení souborů. V okně Nová sdílená složka vyplňte pole, aby se vytvořila sdílená složka:
 
-- **Name (název** ): název sdílené složky, která se má vytvořit.
-- **Kvóta** : kvóta sdílení souborů pro standardní sdílené složky; zřízená velikost sdílené složky pro sdílené složky prémiových souborů.
-- **Úrovně** : Vybraná vrstva pro sdílenou složku. Toto pole je dostupné jenom v **účtu úložiště pro obecné účely (GPv2)**. Můžete zvolit možnost transakce optimalizovaná, horká nebo studená. Úroveň sdílené složky se dá kdykoli změnit. Doporučujeme, abyste při migraci vypnuli nejvyšší možnou úroveň, abyste minimalizovali náklady na transakce a pak po dokončení migrace přepnuli na nižší úroveň.
+- **Name (název**): název sdílené složky, která se má vytvořit.
+- **Kvóta**: kvóta sdílení souborů pro standardní sdílené složky; zřízená velikost sdílené složky pro sdílené složky prémiových souborů.
+- **Úrovně**: Vybraná vrstva pro sdílenou složku. Toto pole je dostupné jenom v **účtu úložiště pro obecné účely (GPv2)**. Můžete zvolit možnost transakce optimalizovaná, horká nebo studená. Úroveň sdílené složky se dá kdykoli změnit. Doporučujeme, abyste při migraci vypnuli nejvyšší možnou úroveň, abyste minimalizovali náklady na transakce a pak po dokončení migrace přepnuli na nižší úroveň.
 
 Vyberte **vytvořit** a dokončí se vytváření nové sdílené složky. Všimněte si, že pokud je váš účet úložiště ve virtuální síti, nebudete moct úspěšně vytvořit sdílenou složku Azure, pokud je váš klient zároveň ve virtuální síti. Pomocí rutiny Azure PowerShell můžete také obejít toto omezení bodu v čase `New-AzRmStorageShare` .
 

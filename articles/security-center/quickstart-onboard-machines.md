@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734350"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740602"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -111,7 +111,7 @@ Chcete-li přidat počítače se systémem Windows, potřebujete informace na st
 1. Vyberte odkaz **Stáhnout agenta pro Windows** odpovídající typu procesoru vašeho počítače a stáhněte instalační soubor.
 1. Na stránce **Správa agentů** zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
 1. Zkopírujte stažený instalační soubor do cílového počítače a spusťte ho.
-1. Postupujte podle pokynů Průvodce instalací **Next**(Next **, souhlasím**, **Next**, **Next**).
+1. Postupujte podle pokynů Průvodce instalací(Next **, souhlasím**, **Next**, **Next**).
     1. Na stránce **Azure Log Analytics** vložte **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** , který jste zkopírovali do poznámkového bloku.
     1. Pokud by měl počítač nahlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte v rozevíracím seznamu **cloud Azure** možnost **státní správa Azure USA** .
     1. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
@@ -127,7 +127,7 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 
 ## <a name="verifying"></a>Ověřoval
 
-Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
+Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
 
   ![Ikona ASC pro počítač mimo Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 
@@ -139,4 +139,4 @@ Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo
 
 Na této stránce jste si ukázali, jak přidat počítače mimo Azure do Azure Security Center. Chcete-li monitorovat svůj stav, použijte nástroje inventáře, jak je vysvětleno na následující stránce:
 
-- [Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.](asset-inventory.md)
+- [Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků](asset-inventory.md)

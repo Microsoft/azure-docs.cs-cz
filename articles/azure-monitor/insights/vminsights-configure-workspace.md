@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/22/2020
+ms.openlocfilehash: 2625da3a397c2cdcf7880fb371d13e63caeb9ab1
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750520"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740568"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurace pracovního prostoru Log Analytics pro Azure Monitor pro virtuální počítače
 Azure Monitor pro virtuální počítače shromažďuje data z jednoho nebo více Log Analytics pracovních prostorů v Azure Monitor. Před registrací agentů musíte vytvořit a nakonfigurovat pracovní prostor. Tento článek popisuje požadavky pracovního prostoru a jeho konfiguraci pro Azure Monitor pro virtuální počítače.
 
 ## <a name="overview"></a>Přehled
-Jediné předplatné může používat libovolný počet pracovních prostorů v závislosti na vašich požadavcích. jediným požadavkem pracovního prostoru je, že se nachází v podporovaném umístění a je nakonfigurovaný s řešením *VMInsights* .
+Jedno předplatné může v závislosti na vašich požadavcích používat libovolný počet pracovních prostorů. Jediným požadavkem pracovního prostoru je, že se nachází v podporovaném umístění a bude nakonfigurovaný s řešením *VMInsights* .
 
-Po nakonfigurování pracovního prostoru můžete pomocí kterékoli z dostupných možností nainstalovat požadované agenty na virtuální počítače a VMSS a určit pracovní prostor pro odesílání svých dat. Azure Monitor pro virtuální počítače bude shromažďovat data z libovolného nakonfigurovaného pracovního prostoru ve svém předplatném.
+Po nakonfigurování pracovního prostoru můžete pomocí kterékoli z dostupných možností nainstalovat požadované agenty na virtuální počítač a sadu škálování virtuálního počítače a zadat pracovní prostor pro odesílání svých dat. Azure Monitor pro virtuální počítače bude shromažďovat data z libovolného nakonfigurovaného pracovního prostoru ve svém předplatném.
 
 > [!NOTE]
-> Pokud povolíte Azure Monitor pro virtuální počítače na jednom virtuálním počítači nebo VMSS pomocí Azure Portal, budete mít možnost vybrat si existující pracovní prostor nebo vytvořit nový. Řešení *VMInsights* se nainstaluje do tohoto pracovního prostoru, pokud ještě není. Tento pracovní prostor pak můžete použít pro jiné agenty.
+> Pokud povolíte Azure Monitor pro virtuální počítače na jednom virtuálním počítači nebo sadě škálování virtuálních počítačů pomocí Azure Portal, budete mít možnost vybrat si existující pracovní prostor nebo vytvořit nový. Řešení *VMInsights* se nainstaluje do tohoto pracovního prostoru, pokud ještě není. Tento pracovní prostor pak můžete použít pro jiné agenty.
 
 
 ## <a name="create-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
@@ -44,29 +44,13 @@ Nový pracovní prostor Log Analytics můžete vytvořit pomocí kterékoli z n�
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Podporované oblasti
+Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v některé oblasti, kterou [podporuje Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) s výjimkou následujících:
 
-Azure Monitor pro virtuální počítače podporuje pracovní prostory Log Analytics v následujících oblastech, i když můžete monitorovat virtuální počítače v libovolné oblasti. Virtuální počítače samy o sebe nejsou omezeny na oblasti podporované pracovním prostorem Log Analytics.
+- Německo – středozápad
+- Jižní Korea – střed
 
-- USA – středozápad
-- USA – západ
-- Západní USA 2
-- Středojižní USA
-- East US
-- USA – východ 2
-- Střední USA
-- USA – středosever
-- US Gov AZ
-- US Gov VA
-- Střední Kanada
-- Spojené království – jih
-- Severní Evropa
-- West Europe
-- Východní Asie
-- Southeast Asia
-- Indie – střed
-- Japan East
-- Austrálie – východ
-- Austrálie – jihovýchod
+>[!NOTE]
+>Virtuální počítače Azure můžete monitorovat v libovolné oblasti. Samotné virtuální počítače nejsou omezeny na oblasti podporované pracovním prostorem Log Analytics.
 
 ## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 Chcete-li povolit a přistupovat k funkcím v Azure Monitor pro virtuální počítače, musíte mít v pracovním prostoru [roli přispěvatele Log Analytics](../platform/manage-access.md#manage-access-using-azure-permissions) . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít [roli Čtenář monitorování](../platform/roles-permissions-security.md#built-in-monitoring-roles) pro virtuální počítač Azure. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../platform/manage-access.md).
@@ -84,12 +68,12 @@ Pokud chcete nakonfigurovat jeden pracovní prostor, přejděte v nabídce **Azu
 
 [![Konfigurace pracovního prostoru](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
-Chcete-li konfigurovat více pracovních prostorů, vyberte kartu **Konfigurace pracovního prostoru** v nabídce **Virtual Machines** v nabídce **monitorování** v Azure Portal. Nastavte hodnoty filtru tak, aby se zobrazil seznam existujících pracovních prostorů. Zaškrtněte políčko u každého pracovního prostoru, který chcete povolit, a pak klikněte na **Konfigurovat vybrané** .
+Chcete-li konfigurovat více pracovních prostorů, vyberte kartu **Konfigurace pracovního prostoru** v nabídce **Virtual Machines** v nabídce **monitorování** v Azure Portal. Nastavte hodnoty filtru tak, aby se zobrazil seznam existujících pracovních prostorů. Zaškrtněte políčko u každého pracovního prostoru, který chcete povolit, a pak klikněte na **Konfigurovat vybrané**.
 
 [![Konfigurace pracovního prostoru](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-Pokud povolíte Azure Monitor pro virtuální počítače na jednom virtuálním počítači nebo VMSS pomocí Azure Portal, budete mít možnost vybrat si existující pracovní prostor nebo vytvořit nový. Řešení *VMInsights* se nainstaluje do tohoto pracovního prostoru, pokud ještě není. Tento pracovní prostor pak můžete použít pro jiné agenty.
+Pokud povolíte Azure Monitor pro virtuální počítače na jednom virtuálním počítači nebo sadě škálování virtuálních počítačů pomocí Azure Portal, budete mít možnost vybrat si existující pracovní prostor nebo vytvořit nový. Řešení *VMInsights* se nainstaluje do tohoto pracovního prostoru, pokud ještě není. Tento pracovní prostor pak můžete použít pro jiné agenty.
 
 [![Povolit jeden virtuální počítač na portálu](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 
