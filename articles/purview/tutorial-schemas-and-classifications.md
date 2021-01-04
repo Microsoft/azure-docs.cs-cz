@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: prozkoumání sad prostředků, podrobností, schémat a klasifikací v Azure dosah (Preview)'
 description: V tomto kurzu se dozvíte, jak používat sady prostředků, podrobnosti o prostředcích, schémata a klasifikace.
-author: viseshag
-ms.author: viseshag
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: c39ed746630c646b0ce305a9535ae6d610f5161c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555671"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693323"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>Kurz: prozkoumání sad prostředků, podrobností, schémat a klasifikací v Azure dosah (Preview)
 
@@ -31,13 +31,13 @@ V tomto kurzu se naučíte:
 > * Zobrazit podrobnosti o prostředku
 > * Upravte schéma a přidejte klasifikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úplný [kurz: procházení assetů ve službě Azure dosah (Preview) a zobrazení jejich vydaných řádků](tutorial-browse-and-view-lineage.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="view-resource-sets"></a>Zobrazit sady prostředků
 

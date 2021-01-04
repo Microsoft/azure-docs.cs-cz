@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 89a9a1b762e02237a8ee08dca5d6eedefabaafbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee7072f9bc844fb1f89168de3547dc726472b67
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87328164"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695909"
 ---
 # <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>Povolení Azure Monitor pro virtuální počítače pomocí šablon Správce prostředků
 Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač nebo sadu škálování virtuálního počítače pomocí šablon Správce prostředků. Tento postup lze použít pro následující:
@@ -55,7 +55,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 
 
 ```azurecli
-az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
+az deployment group create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
 

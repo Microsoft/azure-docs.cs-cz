@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ae4a311bc4f5084ff930b97d68482d64671a782
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401181"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695759"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů s Linuxem
 
@@ -40,7 +40,6 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 * Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
 * Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti
 * Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti
-* Použití zón dostupnosti k ochraně před chybami na úrovni datacentra
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Použití zón dostupnosti k ochraně před chybami na úrovni datacentra
 

@@ -3,12 +3,12 @@ title: Zobrazení a použití šablony Azure Resource Manager virtuálního poč
 description: Naučte se používat Azure Resource Manager šablonu z virtuálního počítače k vytvoření dalších virtuálních počítačů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282489"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696012"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytváření virtuálních počítačů pomocí šablony Azure Resource Manager 
 
@@ -25,7 +25,7 @@ Existují dva způsoby, jak vytvořit virtuální počítače v DevTest Labs pom
 
    ![Snímek obrazovky, který zobrazuje seznam virtuálních počítačů jako jednu položku v seznamu virtuálních počítačů DevTest Labs.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Tento typ šablony Správce prostředků můžete zřídit pomocí příkazu Azure PowerShell **New-AzResourceGroupDeployment** nebo pomocí příkazu Azure CLI **AZ Group Deployment Create**. Vyžaduje oprávnění správce, takže uživatelé, kteří jsou přiřazeni pomocí role uživatele DevTest Labs, nemůžou nasazení provést. 
+   Tento typ šablony Správce prostředků lze zřídit pomocí příkazu Azure PowerShell **New-AzResourceGroupDeployment** nebo pomocí příkazu Azure CLI **AZ Deployment Group Create**. Vyžaduje oprávnění správce, takže uživatelé, kteří jsou přiřazeni pomocí role uživatele DevTest Labs, nemůžou nasazení provést. 
 
 - Správce prostředků šablony, které používají typ prostředku Microsoft. COMPUTE/VirtualMachines, mohou zřídit několik virtuálních počítačů jako jedno prostředí v seznamu virtuálních počítačů DevTest Labs:
 

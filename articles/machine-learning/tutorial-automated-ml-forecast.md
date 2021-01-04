@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921863"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695438"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
@@ -80,7 +80,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
-        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
@@ -100,7 +100,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
     1. Vyberte  **Další**.
 
-## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
+## <a name="configure-run"></a>Konfigurace běhu
 
 Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, který sloupec ve vašich datech chcete předpovědět.
 
@@ -111,14 +111,22 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
 
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Automatizovaná ML podporuje jenom Azure Machine Learning výpočetní výkon. 
 
-        Pole | Popis | Hodnota pro kurz
-        ----|---|---
-        Název výpočetních prostředků |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
-        &nbsp;Typ virtuálního počítače &nbsp;|Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
-        &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
-        Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
-        Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
-        Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné
+        1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
+
+            Pole | Popis | Hodnota pro kurz
+            ----|---|---
+            &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
+            &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
+            &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon. Seznam doporučených velikostí je k dispozici na základě vašich dat a typu experimentu. |Standard_DS12_V2
+        
+        1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
+        
+             Pole | Popis | Hodnota pro kurz
+            ----|---|---
+            Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | kolo – COMPUTE
+            Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
+            Počet sekund nečinnosti před horizontálním navýšení kapacity | Doba nečinnosti před tím, než se cluster automaticky škáluje na minimální počet uzlů.|120 (výchozí)
+            Pokročilá nastavení | Nastavení pro konfiguraci a autorizaci virtuální sítě pro svůj experiment.| Žádné 
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
 
@@ -154,11 +162,11 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
 
 ## <a name="run-experiment"></a>Spustit experiment
 
-Pokud chcete svůj experiment spustit, vyberte **Dokončit**. Otevře se obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části vedle čísla běhu. Tento stav se aktualizuje v průběhu experimentu.
+Pokud chcete svůj experiment spustit, vyberte **Dokončit**. Otevře se obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části vedle čísla běhu. Tento stav se aktualizuje v průběhu experimentu. Oznámení se zobrazí také v pravém horním rohu studia, aby se informovalo o stavu experimentu.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
-> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  <br> <br>
+> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.<br> <br>
 > V produkčním prostředí pravděpodobně nebudete chtít trochu, protože tento proces trvá čas. Během čekání doporučujeme začít zkoumat testované algoritmy na kartě **modely** , jak jsou dokončeny. 
 
 ##  <a name="explore-models"></a>Prozkoumat modely
@@ -169,7 +177,7 @@ Až budete čekat na dokončení všech modelů experimentů, vyberte **název a
 
 Následující příklad přechází na karty **Podrobnosti** a **metriky** pro zobrazení vlastností vybraného modelu, metrik a grafů výkonu. 
 
-![Podrobnosti o spuštění](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Podrobnosti o spuštění](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -232,7 +240,7 @@ V tomto kurzu jste pomocí automatizovaného ML v sadě Azure Machine Learning S
 Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby nově nasazené webové služby najdete v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Využívání webové služby](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) .

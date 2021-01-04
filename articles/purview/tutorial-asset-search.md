@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: navigace na domovské stránce Azure dosah a vyhledání assetu'
 description: V tomto kurzu se dozvíte, jak používat funkce na domovské stránce Azure dosah a hledat v katalogu.
-author: hophanms
-ms.author: hophan
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 46c2ee284c33cc8ffb7b0bd3bc536905cf4e2052
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399872"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693337"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Kurz: navigace na domovské stránce Azure dosah (Preview) a hledání prostředku
 
@@ -31,7 +31,7 @@ V tomto kurzu:
 > * Vyhledejte Asset.
 > * Přidejte vlastníka majetku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úplný [kurz: Kontrola dat pomocí Azure dosah](tutorial-scan-data.md).
 
