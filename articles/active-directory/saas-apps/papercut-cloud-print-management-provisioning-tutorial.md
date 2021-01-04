@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299086"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709366"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Kurz: Konfigurace správy tisku v cloudu PaperCut pro Automatické zřizování uživatelů
 
@@ -33,13 +33,13 @@ Tento kurz popisuje kroky, které je třeba provést v PaperCut cloudové správ
 > * Odebrat uživatele ve správě tisku PaperCut cloudu, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a PaperCut cloudovou správou tisku
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
-* Uživatelský účet v PaperCut Správa tisku v cloudu s oprávněními správce
+* Účet správce správy tisku PaperCut cloudu.
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -76,7 +76,7 @@ Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>Krok 5. Konfigurace automatického zřizování uživatelů pro PaperCut cloudové správy tisku
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v PaperCut cloudové správě tisku na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro správu cloudového tisku PaperCut ve službě Azure AD:
 
@@ -106,7 +106,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Vyberte **Uložit**.
 
-8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů a PaperCut cloudovou správu tisku**.
+8. V části **mapování** vyberte možnost **zřídit Azure Active Directory uživatelé**.
+   ![Mapování AAD](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. Zkontrolujte atributy uživatelů synchronizované z Azure AD a PaperCut cloudové správy tisku v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v nástroji PaperCut Cloud Print Management pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní API pro správu tisku PaperCut cloudu podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 

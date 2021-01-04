@@ -4,12 +4,12 @@ description: V tomto rychlém startu povolíte Event Grid události pro registr 
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074212"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694389"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
@@ -78,7 +78,7 @@ Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný n�
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -200,13 +200,13 @@ Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi udál
 
 ![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Gratulujeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
+Blahopřejeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Jakmile budete hotovi s prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete je odstranit pomocí následujícího příkazu rozhraní příkazového řádku Azure CLI. Když odstraníte skupinu prostředků, všechny prostředky, které obsahuje, se trvale odstraní.
 
-**Upozornění** : Tato operace je nevratná. Před spuštěním příkazu se ujistěte, že už ve skupině nepotřebujete žádné prostředky.
+**Upozornění**: Tato operace je nevratná. Před spuštěním příkazu se ujistěte, že už ve skupině nepotřebujete žádné prostředky.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

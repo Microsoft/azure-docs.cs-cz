@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/21/2020
+ms.openlocfilehash: 83bca8a2a81823cd0a8bda1633599292460ddd30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701428"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724323"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
 
@@ -62,10 +62,7 @@ Když se data používají k analýze, je důležité, aby data zůstala soukrom
 
 V tradičních scénářích se nezpracovaná data ukládají do souborů a databází. Když uživatelé analyzují data, obvykle používají nezpracovaná data. To je důležité, protože by mohlo dojít k porušení ochrany osobních údajů jednotlivce. Rozdílové soukromí se snaží s tímto problémem zabývat přidáním "šumu" nebo náhodnosti k datům, aby uživatelé nemohli identifikovat jednotlivé datové body.
 
-Implementace rozdílových privátních systémů je obtížná. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. Další informace o rozdílových zásadách ochrany osobních údajů a projektu WhiteNoise najdete v článku [zachování ochrany osobních údajů pomocí rozdílového soukromí a WhiteNoise](./concept-differential-privacy.md) .
-
-> [!NOTE]
-> Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
+Implementace rozdílových privátních systémů je obtížná. [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) je open source projekt, který obsahuje různé komponenty pro vytváření globálních rozdílných privátních systémů. Další informace o rozdílových zásadách ochrany osobních údajů a projektu SmartNoise najdete v článku [zachování ochrany osobních údajů pomocí rozdílového soukromí a SmartNoise](./concept-differential-privacy.md) .
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Práce s šifrovanými daty pomocí šifrování homomorphic
 
@@ -94,7 +91,7 @@ Některé informace o modelu, které byste mohli chtít dokumentovat jako souč�
 
 V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learning k implementaci [datových listů pro modely](https://github.com/microsoft/MLOps/blob/master/pytorch_with_datasheet/model_with_datasheet.ipynb).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](/azure/architecture/guide/responsible-innovation/) .
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

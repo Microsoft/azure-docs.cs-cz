@@ -5,21 +5,21 @@ description: Klienti, kteří provádějí požadavky na úložiště objektů B
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618722"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694693"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Zadání šifrovacího klíče pro požadavek na úložiště objektů BLOB
 
-Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč na základě jednotlivých požadavků. Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage. Klíče poskytované zákazníkem mohou být uloženy v Azure Key Vault nebo v jiném úložišti klíčů.
+Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč AES-256 na základě jednotlivých požadavků. Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage. Klíče poskytované zákazníkem mohou být uloženy v Azure Key Vault nebo v jiném úložišti klíčů.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -41,11 +41,11 @@ Každý snímek objektu BLOB může mít vlastní šifrovací klíč.
 
 V případě volání REST můžou klienti pomocí následujících hlaviček bezpečně předat informace o šifrovacím klíči na žádost do úložiště objektů BLOB:
 
-|Hlavička požadavku | Description |
+|Hlavička požadavku | Popis |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vyžaduje se pro požadavky zápisu i čtení. Hodnota šifrovacího klíče AES-256 kódovaná v kódování Base64. |
 |`x-ms-encryption-key-sha256`| Vyžaduje se pro požadavky zápisu i čtení. SHA256 šifrovacího klíče zakódovaného ve formátu base64. |
-|`x-ms-encryption-algorithm` | Vyžadováno pro požadavky na zápis, volitelné pro požadavky na čtení. Určuje algoritmus, který se použije při šifrování dat pomocí daného klíče. Musí být AES256. |
+|`x-ms-encryption-algorithm` | Vyžadováno pro požadavky na zápis, volitelné pro požadavky na čtení. Určuje algoritmus, který se použije při šifrování dat pomocí daného klíče.  Hodnota této hlavičky musí být `AES256` . |
 
 Zadání šifrovacích klíčů v žádosti je volitelné. Pokud však zadáte jednu z výše uvedených hlaviček pro operaci zápisu, je nutné zadat všechny z nich.
 

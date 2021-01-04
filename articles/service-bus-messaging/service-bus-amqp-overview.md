@@ -3,12 +3,12 @@ title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498774"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709278"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Cloudová služba Azure Service Bus jako svůj primární způsob komunikace používá [Rozšířený Protokol AMQP (Message Queueing Protocol) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) . Společnost Microsoft spolupracuje s partnery v celém odvětví, od zákazníků a dodavatelů konkurenčních zprostředkovatelů zasílání zpráv, aby bylo možné vyvíjet a vyvíjet AMQP za poslední desetiletí, a to s novými rozšířeními vyvinutými v [technickém výboru Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 je standard ISO a IEC ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -42,7 +42,7 @@ V říjnu 2011 se vývojová práce převedla na technický výbor v rámci orga
 * **Dodavatelé technologií**: Axway software, technologie Huawei, IIT software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, software pro průběh, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
 * **Firmy pro uživatele**: Bank of America, úvěrové Suisse, německý Boerse, Goldman Sachs, JPMorgan podstatou.
 
-Aktuální židle [OASIS AMQP Technical výborem] (( https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) reprezentují Red Hat a Microsoft.
+Aktuální židle [technického výboru Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) reprezentují Red Hat a Microsoft.
 
 Mezi běžně citované výhody otevřených standardů patří:
 

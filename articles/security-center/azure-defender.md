@@ -7,14 +7,16 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d9c8df4fe296bcd40f26847233fcd49bcab573c0
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750981"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709439"
 ---
-# <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
+# <a name="introduction-to-azure-defender"></a>Úvod do Azure Defenderu
+
+[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Funkce Azure Security Center pokrývají dva široké pilíře zabezpečení cloudu:
 
@@ -39,7 +41,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
-- [Azure Defender pro Správce prostředků](defender-for-resource-manager-introduction.md)
+- [Azure Defender pro Resource Manager](defender-for-resource-manager-introduction.md)
 - [Azure Defender pro DNS](defender-for-dns-introduction.md)
 
 Každý z těchto plánů je vysvětlen samostatně v dokumentaci Security Center.

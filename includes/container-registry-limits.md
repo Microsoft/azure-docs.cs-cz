@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531962"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97706231"
 ---
 | Prostředek | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,6 +26,7 @@ ms.locfileid: "97531962"
 | Šířka pásma při nahrávání<sup>2</sup> MB/s | 10 | 20 | 50 |
 | Webhooky | 2 | 10 | 500 |
 | Geografická replikace | N/A | N/A | [Podporováno][geo-replication] |
+| Zóny dostupnosti | N/A | N/A | [Preview][zones] |
 | Důvěryhodnost obsahu | N/A | N/A | [Podporováno][content-trust] |
 | Privátní odkaz s privátními koncovými body | N/A | N/A | [Podporováno][plink] |
 | &bull; Soukromé koncové body | N/A | N/A | 10 |
@@ -55,3 +56,4 @@ ms.locfileid: "97531962"
 [plink]: ../articles/container-registry/container-registry-private-link.md
 [cmk]: ../articles/container-registry/container-registry-customer-managed-keys.md
 [token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md
+[zones]: ../articles/container-registry/zone-redundancy.md

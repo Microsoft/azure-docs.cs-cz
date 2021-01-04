@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484606"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722959"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -193,7 +193,7 @@ Přístupový token Azure AD se načte přes [MSAL](../../active-directory/devel
 **Ve vašem kódu**
 
 >[!NOTE]
-> Můžete použít ukázku služby, která je k dispozici na GitHubu.
+> Můžete použít [ukázku služby](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample) , která je k dispozici v rámci [ukázkových aplikací prostorových ukotvení](https://github.com/Azure/azure-spatial-anchors-samples).
 
 1.    Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI přesměrování vlastní aplikace Azure AD jako **ID klienta**, **tajný klíč** a parametry **RedirectUri** v MSAL.
 2.    Nastavte ID tenanta na vlastní ID tenanta Azure AD v parametru **autorita** v MSAL.

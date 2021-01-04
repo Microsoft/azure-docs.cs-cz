@@ -57,6 +57,9 @@
           href: container-registry-image-tag-version.md
         - name: Geografická replikace
           href: container-registry-geo-replication.md
+        - name: Zónová redundance
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: Osvědčené postupy registru
           href: container-registry-best-practices.md
         - name: Správa veřejných imagí

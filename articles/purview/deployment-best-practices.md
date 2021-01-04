@@ -1,18 +1,18 @@
 ---
 title: Osvědčené postupy pro nasazení
 description: Tento článek poskytuje osvědčené postupy pro nasazení služby Azure dosah. Azure dosah umožňuje každému uživateli registrovat, zjišťovat, pochopit a využívat zdroje dat.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400688"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695849"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Osvědčené postupy pro nasazení Azure dosah
 
@@ -24,7 +24,7 @@ Dobře plánované nasazení platformy pro řízení dat (například Azure dosa
 - Vylepšená analytická spolupráce
 - Maximalizace návratnosti investic.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Přístup k Microsoft Azure pomocí vývojového nebo produkčního předplatného
 * Možnost vytvářet prostředky Azure, včetně dosah
@@ -52,7 +52,7 @@ Obecným přístupem je rozdělení těchto cílů do různých kategorií a cí
 |Kategorie|Cíl|
 |---------|---------|
 |Zjišťování|Uživatelé s oprávněním správce by měli být schopni kontrolovat zdroje dat v Azure a mimo Azure (včetně místních zdrojů) a automaticky tak shromažďovat informace o datových prostředcích.|
-|Classification|Platforma by měla automaticky klasifikovat data na základě vzorkování dat a umožnit ruční přepsání pomocí vlastních klasifikací.|
+|Klasifikace|Platforma by měla automaticky klasifikovat data na základě vzorkování dat a umožnit ruční přepsání pomocí vlastních klasifikací.|
 |Consumption|Obchodní uživatelé by měli být schopni najít informace o jednotlivých prostředcích pro obchodní i technická metadata.|
 |Lineage|Každý Asset musí zobrazit grafické zobrazení podkladových datových sad, aby uživatelé pochopili původní zdroje a jaké změny byly provedeny.|
 |Spolupráce|Platforma musí uživatelům umožňovat spolupráci tím, že poskytuje další informace o jednotlivých datových prostředcích.|
@@ -90,8 +90,8 @@ Mezi klíčové zúčastněné strany, které byste mohli chtít zahrnout:
 |**Vlastník domény/podniku**|Obchodní osoba, která ovlivňuje využití nástrojů a má kontrolu rozpočtu|
 |**Datový analytik**|Umožňuje vytvořit snímek podnikového problému a analyzovat data, abychom mohli dělat podniková rozhodnutí.|
 |**Architekt dat**|Navrhněte databáze pro klíčové podnikové aplikace společně s návrhem a implementací zabezpečení dat.|
-|**Odborník na data**|Provoz a údržba datových zásobníků, vyžádání dat z různých zdrojů, integrace a Příprava dat, nastavení datových kanálů|
-|**Odborník na datové vědy**|Sestavování analytických modelů a nastavení datových produktů, pro které budou mít k dispozici rozhraní API|
+|**Datový inženýr**|Provoz a údržba datových zásobníků, vyžádání dat z různých zdrojů, integrace a Příprava dat, nastavení datových kanálů|
+|**Datový vědec**|Sestavování analytických modelů a nastavení datových produktů, pro které budou mít k dispozici rozhraní API|
 |**Správce databáze**|Vlastní, sledovat a řešit incidenty a požadavky související s databází v rámci smluv o úrovni služeb (SLA); Může nastavit datové kanály|
 |**DevOps**|Vývoj a implementace obchodních aplikací; může zahrnovat psaní skriptů a možností orchestrace.|
 |**Specialista na zabezpečení dat**|Posouzení celkové bezpečnosti sítě a dat, která zahrnuje data přicházející z dosah a z nich|

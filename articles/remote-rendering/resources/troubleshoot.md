@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203666"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722228"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tato stránka obsahuje seznam běžných problémů, které mají vliv na vzdálené vykreslování Azure, a způsoby, jak je vyřešit.
 
-## <a name="cant-link-storage-account-to-arr-account"></a>Nejde propojit účet úložiště s účtem ARR.
+## <a name="cant-link-storage-account-to-arr-account"></a>Nejde propojit účet úložiště s účtem ARR
 
 V některých případech se během [propojování účtu úložiště](../how-tos/create-an-account.md#link-storage-accounts) v seznamu nenachází účet vzdáleného vykreslování. Pokud chcete tento problém vyřešit, v Azure Portal klikněte na účet ARR a ve skupině **Nastavení** na levé straně vyberte **Identita** . Ujistěte se, že **stav** je **zapnuto**.
 ![Ladicí program rámce Unity](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru.
 
-Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) neblokovaly porty uvedené v [požadavcích na systém](../overview/system-requirements.md#network-ports).
+Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) neblokovaly porty uvedené v [požadavcích na systém](../overview/system-requirements.md#network-firewall).
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Chyba: `Disconnected: VideoFormatNotAvailable` ' '
 

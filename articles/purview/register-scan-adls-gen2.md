@@ -1,18 +1,18 @@
 ---
 title: Registrovat a kontrolovat Azure Data Lake Storage (ADLS) Gen2
 description: V tomto kurzu se dozvíte, jak kontrolovat Azure Data Lake Storage Gen2.
-author: prmujumd
-ms.author: prmujumd
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: ec708009e3f3f258c1c40aa6a06a35452d5988f4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553198"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694797"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrovat a kontrolovat Azure Data Lake Storage Gen2
 
@@ -26,7 +26,7 @@ Zdroj dat Azure Data Lake Storage Gen2 podporuje následující funkce:
 
 - Počet **řádků** mezi datovými prostředky pro aktivity kopírování a toku dat ADF
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 

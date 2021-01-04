@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347791"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724302"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování a zarovnání vět v paralelních dokumentech
 
@@ -22,7 +22,7 @@ Po nahrání dokumentů jsou věty, které jsou přítomné v paralelních dokum
 
 ## <a name="pairing-and-alignment-process"></a>Párování a proces zarovnání
 
-Vlastní Překladatel se učí překlady vět v jednom okamžiku. Čte ze zdroje větu a pak překládá tuto větu z cíle. Pak zarovnává slova a fráze v těchto dvou větách sobě navzájem. Tento proces umožňuje IT vytvořit mapu slov a frází v jedné větě na ekvivalentní slova a fráze v překladu této věty. Zarovnání se snaží zajistit, aby systém vlakových a vět navzájem přecházejí.
+Vlastní Překladatel se učí překlady vět v jednom okamžiku. Čte ze zdrojového textu větu a pak překládá tuto větu z cílového textu. Pak zarovnává slova a fráze v těchto dvou větách sobě navzájem. Tento proces umožňuje IT vytvořit mapu slov a frází v jedné větě na ekvivalentní slova a fráze v překladu své věty. Zarovnání se snaží zajistit, aby systém vlakových a vět navzájem přecházejí.
 
 ## <a name="pre-aligned-documents"></a>Předem zarovnané dokumenty
 

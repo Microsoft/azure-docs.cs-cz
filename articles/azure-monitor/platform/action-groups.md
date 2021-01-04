@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095164"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695818"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -132,6 +132,18 @@ Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte s
 Odešlete e-mail členům role předplatného. E-mail se pošle jenom do členů této role pro **uživatele Azure AD** . E-mail se nepošle skupinám ani instančním objektům Azure AD.
 
 E-mail s oznámením se pošle jenom na *primární e-mailovou* adresu.
+
+Pokud nepřijímáte oznámení v *primárním e-mailu*, můžete zkusit provést následující kroky:
+
+1. V Azure Portal přejít na *Active Directory*.
+2. Klikněte na všichni uživatelé (v levém podokně), zobrazí se seznam uživatelů (v pravém podokně).
+3. Vyberte uživatele, u kterého chcete zkontrolovat *primární e-mailové* informace.
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Příklad kontroly profilu uživatele."border="true":::
+
+4. V profilu uživatele v části kontaktní informace pokud je karta E-mail prázdná, klikněte na tlačítko *Upravit* v horní části a v horní části přidejte svůj *primární e-mail* a tlačítko *Uložit* .
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Příklad přidání primárního e-mailu"border="true":::
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
 
