@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s nasazením vzdálené webové služby
+title: Řešení potíží s nasazením vzdáleného modelu
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vyřešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances vyřešit.
+description: Naučte se řešit, řešit a řešit některé běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031500"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740619"
 ---
-# <a name="troubleshoot-model-deployment"></a>Řešení potíží s nasazením modelu
+# <a name="troubleshooting-remote-model-deployment"></a>Řešení potíží s nasazením vzdáleného modelu 
 
-Přečtěte si, jak řešit a řešit běžné chyby nasazení vzdáleného Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
+Přečtěte si, jak řešit a řešit běžné chyby, ke kterým může dojít při nasazování modelu do Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +107,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Například:
 
 ```python
 def run(input_data):
@@ -177,6 +177,16 @@ Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_r
 Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí časový limit je 1 minuta.
 
 Časový limit můžete zvýšit nebo se pokusit o urychlení služby úpravou score.py pro odebrání nepotřebných volání. Pokud tyto akce problém nevyřeší, použijte informace v tomto článku k ladění souboru score.py. Kód může být v nereagující stavu nebo nekonečné smyčce.
+
+## <a name="other-error-messages"></a>Další chybové zprávy
+
+Proveďte tyto akce při následujících chybách:
+
+|Chybová  | Řešení  |
+|---------|---------|
+|Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |
+|Selhání FPGA     |  Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai       |
 
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 

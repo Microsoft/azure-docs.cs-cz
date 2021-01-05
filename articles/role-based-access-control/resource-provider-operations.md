@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: c9638ce3509ba181e9f716b3bb427128e50c80ac
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652887"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707635"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -1361,7 +1361,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/vpnsites/DELETE | Odstraní prostředek sítě VPN. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/Read | Získá odkaz na síť VPN. |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -4651,13 +4651,13 @@ Služba Azure: [Power BI Embedded](/azure/power-bi-embedded/)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/Register/Action | Zaregistruje Power BI vyhrazeného poskytovatele prostředků. |
-> | Microsoft. PowerBIDedicated/kapacit/čtení | Načte informace o zadané Power BI vyhrazené kapacitě. |
-> | Microsoft. PowerBIDedicated/kapacit/Write | Vytvoří nebo aktualizuje zadanou vyhrazenou kapacitu Power BI. |
-> | Microsoft. PowerBIDedicated/kapacit/DELETE | Odstraní vyhrazenou kapacitu Power BI. |
+> | Microsoft. PowerBIDedicated/kapacit/čtení | Načte informace o zadané kapacitě Power BI. |
+> | Microsoft. PowerBIDedicated/kapacit/Write | Vytvoří nebo aktualizuje zadanou kapacitu Power BI. |
+> | Microsoft. PowerBIDedicated/kapacit/DELETE | Odstraní kapacitu Power BI. |
 > | Microsoft. PowerBIDedicated/kapacit/pozastavit/akce | Pozastaví kapacitu. |
 > | Microsoft. PowerBIDedicated/kapacit/pokračování/akce | Obnoví kapacitu. |
 > | Microsoft. PowerBIDedicated/kapacity/SKU/číst | Načíst dostupné informace o SKU pro kapacitu |
-> | Microsoft. PowerBIDedicated/Locations/checkNameAvailability/Action | Kontroluje, že zadaný název vyhrazené kapacity Power BI je platný a nepoužívá se. |
+> | Microsoft. PowerBIDedicated/Locations/checkNameAvailability/Action | Kontroluje, zda je zadaný název Power BI kapacity platný a nepoužívá se. |
 > | Microsoft. PowerBIDedicated/Locations/operationresults/Read | Načte informace o výsledku zadané operace. |
 > | Microsoft. PowerBIDedicated/Locations/operationstatuses/Read | Načte informace o stavu zadané operace. |
 > | Microsoft. PowerBIDedicated/Operations/Read | Načte informace o operacích. |
@@ -9498,7 +9498,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Další
+## <a name="other"></a>Ostatní
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 

@@ -1,17 +1,17 @@
 ---
 title: Postup řešení potíží pro službu signalizace Azure
 description: Přečtěte si, jak řešit potíže s připojením a doručováním zpráv.
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183953"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707652"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Řešení potíží s připojením a doručováním zpráv
 
@@ -28,6 +28,8 @@ Nejdřív je potřeba ověřit z Azure Portal, který je [ServiceMode](./concept
 * Postup najdete v `Classic` tématu [řešení potíží v klasickém režimu](#classic_mode_tsg) .
 
 <a name="default_mode_tsg"></a>
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>Řešení potíží s výchozím režimem
 
@@ -73,6 +75,7 @@ Pomocí trasování sítě na straně klienta zkontrolujte, který požadavek se
 
 Zobrazit trasování sítě na straně serveru pro zjištění stavového kódu a podrobností o chybě, proč *připojení serveru* poklesne nebo je *službou* zamítnuto, a vyhledejte hlavní příčinu v [Průvodci odstraňováním potíží](./signalr-howto-troubleshoot-guide.md).
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>Postup přidání protokolů
 
@@ -166,19 +169,25 @@ Můžete také [Povolit diagnostické protokoly](./signalr-howto-diagnostic-logs
 
 <a name="serverless_mode_tsg"></a>
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>Řešení potíží s režimem bez serveru
 
-Když je **ASRS** v režimu bez *serveru* , podporuje ASP.NET Core pouze režim **signalizace** `Serverless` a **ASP.NET signál** nepodporuje tento režim **NOT** .
+Když je **ASRS** v režimu bez *serveru* , podporuje ASP.NET Core pouze režim **signalizace** `Serverless` a **ASP.NET signál** nepodporuje tento režim  .
 
 Pro diagnostiku problémů s připojením v `Serverless` režimu je nejpřímější způsob, jak [Zobrazit klientský provoz](#view_traffic_client). Povolení [protokolů na straně klienta](#add_logs_client) a [protokolů na straně služby](#add_logs_server) může být užitečné také.
 
 <a name="classic_mode_tsg"></a>
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="classic-mode-troubleshooting"></a>Řešení potíží s klasickým režimem
 
 `Classic` režim je zastaralý a nedoporučuje se ho používat. V tomto režimu používá služba Azure Signal připojení připojeného *serveru* k určení, jestli je aktuální služba v `default` režimu nebo režimu `serverless` . To může vést k určitým problémům s připojením klientů, protože když dojde k náhlému odpojení všech připojení k připojenému *serveru*, například kvůli nestabilitě sítě, služba Azure Signal se nyní přepnula na `serverless` režim a klienti připojení během této doby nebudou nikdy směrováni do hostovaného aplikačního serveru. Povolte [protokoly na straně služby](#add_logs_server) a ověřte, jestli nejsou nahrané žádné klienty, jako `ServerlessModeEntered` kdyby máte hostovaný aplikační server, ale někteří klienti nikdy nedosáhnou na straně aplikačního serveru. Pokud existuje, [přeruší tato klientská připojení](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) a umožní, aby se klienti mohli restartovat.
 
 `classic`Problémy s připojením do režimu řešení potíží a doručování zpráv se podobají problémům s [výchozím režimem](#default_mode_tsg).
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>Stav služeb
 
@@ -195,6 +204,8 @@ Rozhraní API pro stav služby můžete kontrolovat.
     * Pokud všechny výše uvedené možnosti nefungují, kontaktujte nás přidáním nové žádosti o podporu v Azure Portal.
 
 Další informace o [zotavení po havárii](./signalr-concept-disaster-recovery.md).
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563105"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707686"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -104,6 +104,21 @@ Na kartě Zobrazit podrobné metriky se otevře předem vyplněný sešit shrnuj
 
 [![Snímek obrazovky Application Gatewayového sešitu](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Nové funkce se sešitem Azure Monitor Network Insights
+
+> [!NOTE]
+> K sešitu Azure Monitor Insights nejsou přidružené žádné další náklady. Pracovní prostor Log Analytics bude nadále účtován jako na základě využití.
+
+Sešit Network Insights vám umožní využít výhod nejnovějších funkcí Azure Monitor a Log Analytics, včetně těchto:
+
+* Centralizovaná Konzola pro monitorování a řešení potíží s daty [metriky](../insights/network-insights-overview.md#resource-health-and-metrics) a protokolů.
+
+* Flexibilní plátno pro podporu vytváření vlastních propracovaných [vizualizací](../platform/workbooks-overview.md#visualizations).
+
+* Možnost využívat a [sdílet šablony sešitů](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) s širší komunitou
+
+Další informace o možnostech nového sešitu řešení pro rezervaci [sešitů – přehled](../platform/workbooks-overview.md)
+
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrace z řešení Azure Gateway Analytics do sešitů Azure Monitor
 
 > [!NOTE]
@@ -119,21 +134,6 @@ Na kartě Zobrazit podrobné metriky se otevře předem vyplněný sešit shrnuj
 3. Až budete moct zobrazit veškerou metriku a log Insights, můžete řešení Azure Gateway Analytics odstranit z pracovního prostoru pomocí stránky řešení.
 
 [![Snímek obrazovky s možností odstranění pro řešení Azure Application Gateway Analytics](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
-
-### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Nové funkce se sešitem Azure Monitor Network Insights
-
-> [!NOTE]
-> K sešitu Azure Monitor Insights nejsou přidružené žádné další náklady. Pracovní prostor Log Analytics bude nadále účtován jako na základě využití.
-
-Sešit Network Insights vám umožní využít výhod nejnovějších funkcí Azure Monitor a Log Analytics, včetně těchto:
-
-* Centralizovaná Konzola pro monitorování a řešení potíží s daty [metriky](../insights/network-insights-overview.md#resource-health-and-metrics) a protokolů.
-
-* Flexibilní plátno pro podporu vytváření vlastních propracovaných [vizualizací](../platform/workbooks-overview.md#visualizations).
-
-* Možnost využívat a [sdílet šablony sešitů](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) s širší komunitou
-
-Další informace o možnostech nového sešitu řešení pro rezervaci [sešitů – přehled](../platform/workbooks-overview.md)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Řešení analýzy skupin zabezpečení sítě Azure v Azure Monitor
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447318"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739582"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning 
 
@@ -23,14 +23,16 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning
 
 Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete také vytvořit a odstranit pracovní prostory [pomocí rozhraní](reference-azure-machine-learning-cli.md)příkazového řádku nebo [pomocí rozšíření vs Code](tutorial-setup-vscode-extension.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * Pokud používáte sadu SDK Python, [nainstalujte sadu SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="limitations"></a>Omezení
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+Při vytváření pracovního prostoru se ve výchozím nastavení vytvoří taky Azure Container Registry (ACR).  Vzhledem k tomu, že ACR v současné době nepodporuje znaky Unicode v názvech skupin prostředků, použijte skupinu prostředků, která tyto znaky neobsahuje.
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -155,6 +157,8 @@ Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nast
  
 ---
 
+
+
 ### <a name="networking"></a>Sítě  
 
 > [!IMPORTANT]  
@@ -189,7 +193,7 @@ Při vytváření privátního koncového bodu se vytvoří nová zóna Privátn
 
 1. V [Azure Portal](https://portal.azure.com)vyberte skupinu prostředků, která obsahuje pracovní prostor. Pak vyberte prostředek zóny Privátní DNS s názvem __privatelink.API.AzureML.MS__
 2. V __Nastavení__ vyberte __odkazy virtuální sítě__.
-3. Vyberte __Přidat__. Na stránce __Přidat virtuální síť__ zadejte jedinečný __název odkazu__ a potom vyberte __virtuální síť__ , kterou chcete přidat. Kliknutím na __tlačítko OK__ přidejte síťové propojení.
+3. Vyberte __Add__ (Přidat). Na stránce __Přidat virtuální síť__ zadejte jedinečný __název odkazu__ a potom vyberte __virtuální síť__ , kterou chcete přidat. Kliknutím na __tlačítko OK__ přidejte síťové propojení.
 
 Další informace najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md).
 
@@ -197,7 +201,7 @@ Další informace najdete v tématu [Konfigurace DNS privátního koncového bod
 
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste Azure Security Center, abyste mohli kontrolovat prostředky a dodržovat doporučení. Další informace najdete v tématu  [Azure Container Registry prověřování imagí Security Center](../security-center/defender-for-container-registries-introduction.md) a [Azure Kubernetes Services integration with Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
-### <a name="advanced"></a>Pokročilý
+### <a name="advanced"></a>Upřesnit
 
 Ve výchozím nastavení se metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou společnost Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem.
 
@@ -326,7 +330,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do pole nejvyšší hledání zadejte **Machine Learning**.  
 
@@ -368,6 +372,16 @@ V [Azure Portal](https://portal.azure.com/)v horní části pracovního prostoru
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
+
+* **Podporované prohlížeče v Azure Machine Learning Studiu**: Doporučujeme, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
+  * Microsoft Edge (nová Microsoft Edge, nejnovější verze Ne Microsoft Edge starší verze)
+  * Safari (nejnovější verze, jen Mac)
+  * Chrome (nejnovější verze)
+  * Firefox (nejnovější verze)
+
+* **Azure Portal**: 
+  * Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo Azure Portal, nemůžete zobrazit standardní stránku s **přehledem** , která obsahuje informace o předplatném v rozšíření. V tomto scénáři se také nedá přepnout na jiný pracovní prostor. Pokud chcete zobrazit jiný pracovní prostor, přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledejte název pracovního prostoru.
+  * Všechny prostředky (datové sady, experimenty, výpočty atd.) jsou k dispozici pouze v [Azure Machine Learning Studiu](https://ml.azure.com). *Nejsou* k dispozici z Azure Portal.
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

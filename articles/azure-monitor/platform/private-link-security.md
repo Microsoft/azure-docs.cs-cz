@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853917"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732100"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -190,7 +190,7 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |:--|:--|:--|:--|
 |Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
+|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 
@@ -215,9 +215,9 @@ Přístup tímto způsobem se omezuje jenom na data v prostředku Application In
 
 ## <a name="use-apis-and-command-line"></a>Použití rozhraní API a příkazového řádku
 
-Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager šablon a rozhraní příkazového řádku.
+Proces popsaný výše můžete automatizovat pomocí Azure Resource Manager šablon, REST a rozhraní příkazového řádku.
 
-Chcete-li vytvořit a spravovat obory privátních propojení, použijte příkaz [AZ monitor Private-Link-Scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest). Pomocí tohoto příkazu můžete vytvořit obory, přidružit Log Analytics pracovní prostory a Application Insights komponenty a přidávat/odebírat a schvalovat soukromé koncové body.
+Pokud chcete vytvořit a spravovat obory privátních odkazů, použijte [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) nebo [Azure CLI (AZ monitor Private-Link-Scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 Ke správě přístupu k síti použijte příznaky `[--ingestion-access {Disabled, Enabled}]` a `[--query-access {Disabled, Enabled}]` v [Log Analytics pracovní prostory](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) nebo [Application Insights součásti](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 

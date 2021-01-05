@@ -1,17 +1,17 @@
 ---
 title: Průvodce odstraňováním potíží pro službu Azure SignalR Service
 description: Zjistěte, jak řešit běžné problémy.
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607419"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707669"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Průvodce odstraňováním potíží pro běžné problémy služby signalizace Azure
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>Je vyžadován protokol TLS 1,2
 
 ### <a name="possible-errors"></a>Možné chyby:
@@ -104,11 +106,15 @@ Přidejte do svého spuštění následující kód:
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>400 Chybný požadavek pro žádosti klienta
 
 ### <a name="root-cause"></a>Původní příčina
 
 Ověřte, zda má váš požadavek klienta více `hub` řetězců dotazu. `hub` je zachovaný parametr dotazu a 400 vyvolá, pokud služba zjistí více než jednu `hub` v dotazu.
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>Požadavky klientů vrací chybu 401 Neautorizováno
 
@@ -128,6 +134,8 @@ Z důvodu zabezpečení nedoporučujeme rozšířenou hodnotu TTL. Doporučujeme
 
 [Zde](#restart_connection) najdete informace o tom, jak restartovat připojení klientů.
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>Požadavky klientů vrací chybu 404 Neautorizováno
 
 V případě trvalého připojení k signalizaci je nejprve `/negotiate` Služba Azure Signal Service a potom vytvoří skutečné připojení ke službě Azure Signal.
@@ -138,9 +146,13 @@ V případě trvalého připojení k signalizaci je nejprve `/negotiate` Služba
 * Ověřte adresu URL žádosti, když dojde k 404. Pokud se adresa URL zaměřuje na vaši webovou aplikaci a podobá se `{your_web_app}/hubs/{hubName}` , ověřte, jestli `SkipNegotiation` je klient `true` . Když používáte službu Azure Signaler, klient obdrží adresu URL pro přesměrování při prvním vyjednání s aplikačním serverem. Klient **by neměl** při použití nástroje Azure Signal vynechávat vyjednávání.
 * Další 404 může nastat, pokud je žádost o připojení zpracována více než **5** sekund po `/negotiate` volání. Podívejte se na časové razítko žádosti klienta a otevřete nám problém, pokud má požadavek na službu pomalou odezvu.
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>404 vráceno pro žádost o obnovení připojení ASP.NET Signal
 
 V případě ASP.NET signalizace, když se [připojení klienta](#client_connection_drop)napustí, se znovu připojí přes stejný `connectionId` čas třikrát před zastavením připojení. `/reconnect` může pomáhat, pokud je připojení vyřazené kvůli přerušovaným problémům v síti, které `/reconnect` můžou úspěšně obnovit trvalé připojení. V některých případech je připojení klienta například vyřazeno z důvodu přerušení připojení směrovaného serveru nebo služba signalizace obsahuje některé interní chyby, jako je restartování/převzetí služeb při selhání nebo nasazení, připojení již neexistuje, takže se `/reconnect` vrátí `404` . Jedná se o očekávané chování pro `/reconnect` a po trojnásobných pokusech o připojení se zastaví. Při zastavení připojení doporučujeme mít logiku [restartu připojení](#restart_connection) .
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (příliš mnoho požadavků) vrácených pro žádosti klientů
 
@@ -155,6 +167,8 @@ Připojení zahrnují připojení klienta i serveru. [tady](./signalr-concept-me
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>Současně existuje příliš mnoho požadavků na vyjednávání.
 
 Doporučujeme, abyste před opětovným připojením měli náhodné zpoždění, a to [prosím pro ukázky](#restart_connection) opakování.
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 Chyba při vyjednávání: Služba Azure Signaler ještě není připojená, zkuste to prosím znovu později.
 
@@ -215,6 +229,8 @@ Při použití sady SDK verze >= `1.0.0` můžete povolit trasování přidání
 
 <a name="client_connection_drop"></a>
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>Pokles připojení klienta
 
 Když je klient připojen ke službě Azure Signal, trvalé připojení mezi klientem a službou Azure Signal se někdy může vyřadit z různých důvodů. Tato část popisuje několik možností, které způsobují zrušení takového připojení a poskytuje některé pokyny k identifikaci hlavní příčiny.
@@ -240,6 +256,7 @@ Připojení klientů můžete vyřadit za různé okolnosti:
 2. Zkontrolujte protokol událostí na straně aplikačního serveru a zjistěte, jestli se App Server restartoval.
 3. Vytvořte problém, abychom vám poskytli časový rámec, a pošlete nám e-mail s názvem prostředku.
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>Nepřetržité zvyšování připojení klienta
 
@@ -263,7 +280,7 @@ Připojení klienta k signalizaci `DisposeAsync` není nikdy voláno, připojen�
 
 Ověřte, zda je ukončeno připojení. `HubConnection.DisposeAsync()`Po použití volání zastavte ručně.
 
-Příklad:
+Například:
 
 ```C#
 var connection = new HubConnectionBuilder()
@@ -295,6 +312,8 @@ K tomuto problému často dochází, když někdo naváže připojení klienta k
 
 <a name="server_connection_drop"></a>
 
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>Připojení k serveru je odložené.
 
 Po spuštění aplikačního serveru začne sada Azure SDK iniciovat připojení serveru ke vzdálenému signálu Azure. Jak je popsáno v [části interní služby pro službu Azure signaler, služba](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)Azure Signal směruje příchozí přenosy klientů na tato připojení serveru. Jakmile bude připojení k serveru vyřazeno, všechna připojení klientů, která obsluhuje, budou také zavřena.
@@ -320,6 +339,8 @@ Připojení služby serveru je uzavřeno pomocí **ASRS**(**Zure** **s** Ignal *
 1. Otevřete protokol na straně serveru aplikace a zjistěte, jestli došlo k nějakému abnormálnímu výskytu.
 2. Zkontrolujte protokol událostí na straně aplikačního serveru a zjistěte, jestli se App Server restartoval.
 3. Vytvořte problém, abychom vám poskytli časový rámec, a pošlete nám e-mail s názvem prostředku.
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>Tipy
 
@@ -352,6 +373,8 @@ Vezměte například ASP.NET Core jeden příklad (ASP.NET One je podobný):
     * [Klient ASP.NET C#](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [Klient ASP.NET JavaScript](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Další kroky
 

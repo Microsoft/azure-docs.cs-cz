@@ -1,29 +1,29 @@
 ---
-title: Rychlý Start-Azure Key Vault Klientská knihovna pro jazyk Java
-description: Poskytuje rychlý Start pro klientskou knihovnu Azure Key Vault tajných klíčů pro Java.
+title: Rychlý Start – Azure Key Vault Klientská knihovna certifikátů pro Java
+description: Poskytuje rychlý Start pro Azure Key Vault knihovnu klienta certifikátů pro Java.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 12/18/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 35133b32360f65d70aa1931b31fac6886fd00b02
+ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
 ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732950"
+ms.locfileid: "97733502"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rychlý Start: Azure Key Vaulta tajná Klientská knihovna pro Java
-Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Rychlý Start: Azure Key Vault klientské knihovny pro certifikáty pro Java
+Začínáme s klientskou knihovnou certifikátů Azure Key Vault pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
 Další prostředky:
 
-* [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets)
+* [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates)
 * [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Produktová dokumentace](index.yml)
-* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
 
 ## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -50,11 +50,11 @@ V tomto rychlém startu se k ověření uživatele do služeb Azure používá k
 2. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
 
 ### <a name="create-a-new-java-console-app"></a>Vytvoření nové konzolové aplikace v jazyce Java
-V okně konzoly pomocí `mvn` příkazu vytvořte novou konzolovou aplikaci v jazyce Java s názvem `akv-secrets-java` .
+V okně konzoly pomocí `mvn` příkazu vytvořte novou konzolovou aplikaci v jazyce Java s názvem `akv-certificates-java` .
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
-                       -DartifactId=akv-secrets-java
+mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
+                       -DartifactId=akv-certificates-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ Výstup z generování projektu bude vypadat přibližně takto:
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-secrets-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ Výstup z generování projektu bude vypadat přibližně takto:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Změňte adresář na nově vytvořenou `akv-secrets-java/` složku.
+Změňte adresář na nově vytvořenou `akv-certificates-java/` složku.
 
 ```console
-cd akv-secrets-java
+cd akv-certificates-java
 ```
 
 ### <a name="install-the-package"></a>Instalace balíčku
@@ -96,8 +96,8 @@ Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky z
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-secrets</artifactId>
-      <version>4.2.3</version>
+      <artifactId>azure-security-keyvault-certificates</artifactId>
+      <version>4.1.3</version>
     </dependency>
 
     <dependency>
@@ -111,10 +111,10 @@ Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky z
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění tajnosti k vašemu uživatelskému účtu.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění certifikátu vašemu uživatelskému účtu.
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Objektový model
-Klientská knihovna Azure Key Vault tajných klíčů pro Java umožňuje správu tajných kódů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
+Klientská knihovna certifikátů Azure Key Vault pro Java umožňuje správu certifikátů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, vytvořit certifikát, načíst certifikát a odstranit certifikát.
 
 Celá Konzolová aplikace je [níže](#sample-code).
 
@@ -147,10 +147,13 @@ Do horní části kódu přidejte následující direktivy:
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
@@ -162,48 +165,44 @@ V následujícím příkladu je název trezoru klíčů rozbalený do identifik�
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-SecretClient secretClient = new SecretClientBuilder()
+CertificateClient certificateClient = new CertificateClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
-Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí `secretClient.setSecret` metody. To vyžaduje název tajného kódu – k `secretName` proměnné v této ukázce přiřadíme hodnotu "mySecret".
+Teď, když je vaše aplikace ověřená, můžete v trezoru klíčů vytvořit certifikát pomocí `certificateClient.beginCreateCertificate` metody. To vyžaduje název certifikátu a Zásady certifikátů – k proměnné v této ukázce přiřadíme hodnotu myCertificate `certificateName` a použijeme výchozí zásady.
+
+Vytvoření certifikátu je dlouhodobá operace, pro kterou můžete dotazovat svůj průběh nebo počkat na jeho dokončení.
 
 ```java
-secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+certificatePoller.waitForCompletion();
 ```
 
-Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
-```
-
-### <a name="retrieve-a-secret"></a>Načtení tajného kódu
-Nyní můžete načíst dříve nastavený tajný klíč pomocí `secretClient.getSecret` metody.
+Certifikát můžete získat poté, co jste dokončili vytváření prostřednictvím tohoto volání:
 
 ```java
-KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
+KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```
+
+### <a name="retrieve-a-certificate"></a>Načtení certifikátu
+Nyní můžete načíst dříve vytvořený certifikát pomocí `certificateClient.getCertificate` metody.
+
+```java
+KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
  ```
 
-Přístup k hodnotě načteného tajného kódu teď můžete získat pomocí `retrievedSecret.getValue()` .
+Nyní můžete získat přístup k podrobnostem získaného certifikátu s operacemi `retrievedCertificate.getName` , jako je, `retrievedCertificate.getProperties` atd. I jeho obsah `retrievedCertificate.getCer` .
 
-### <a name="delete-a-secret"></a>Odstranění tajného klíče
-Nakonec klíč odstraníme z vašeho trezoru klíčů pomocí `secretClient.beginDeleteSecret` metody.
-
-Odstranění tajného klíče je dlouhodobá operace, pro kterou můžete dotazovat svůj průběh nebo počkat na jeho dokončení.
+### <a name="delete-a-certificate"></a>Odstranit certifikát
+Nakonec odstraňte certifikát z vašeho trezoru klíčů s `certificateClient.beginDeleteCertificate` metodou, která je také dlouhodobou operací.
 
 ```java
-SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
 deletionPoller.waitForCompletion();
-```
-
-Můžete ověřit, zda byl tajný klíč odstraněn pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -219,65 +218,57 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>Ukázka kódu
 ```java
-package com.keyvault.secrets.quickstart;
-
-import java.io.Console;
+package com.keyvault.certificates.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
 
-        SecretClient secretClient = new SecretClientBuilder()
-            .vaultUrl(keyVaultUri)
-            .credential(new DefaultAzureCredentialBuilder().build())
-            .buildClient();
+        CertificateClient certificateClient = new CertificateClientBuilder()
+                .vaultUrl(keyVaultUri)
+                .credential(new DefaultAzureCredentialBuilder().build())
+                .buildClient();
 
-        Console con = System.console();  
+        String certificateName = "myCertificate";
 
-        String secretName = "mySecret";
+        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
 
-        System.out.println("Please provide the value of your secret > ");
-        
-        String secretValue = con.readLine();
+        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+        certificatePoller.waitForCompletion();
 
-        System.out.print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with value '" + secretValue + "` ... ");
+        System.out.print("done.");
+        System.out.println("Retrieving certificate from " + keyVaultName + ".");
 
-        secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
 
-        System.out.println("done.");
-        System.out.println("Forgetting your secret.");
-        
-        secretValue = "";
-        System.out.println("Your secret's value is '" + secretValue + "'.");
+        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
+        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
 
-        System.out.println("Retrieving your secret from " + keyVaultName + ".");
-
-        KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
-
-        System.out.println("Your secret's value is '" + retrievedSecret.getValue() + "'.");
-        System.out.print("Deleting your secret from " + keyVaultName + " ... ");
-
-        SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
         deletionPoller.waitForCompletion();
 
-        System.out.println("done.");
+        System.out.print("done.");
     }
 }
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč, načetli ho a pak ho odstranili. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů, vytvořili certifikát, načetli ho a pak ho odstranili. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .

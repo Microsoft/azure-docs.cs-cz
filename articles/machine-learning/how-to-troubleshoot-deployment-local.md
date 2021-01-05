@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s nasazením webové služby místně
+title: Řešení potíží s nasazením místního modelu
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak místně vyřešit, vyřešit a řešit běžné chyby nasazení Azure Machine Learning Docker.
+description: Zkuste místní nasazení modelu jako první krok při řešení chyb nasazení modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680503"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740636"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>Řešení potíží s nasazením modelu místně
+# <a name="troubleshooting-with-a-local-model-deployment"></a>Řešení potíží s nasazením místního modelu
 
-Přečtěte si, jak řešit a řešit běžné chyby nasazení webové služby Docker Azure Machine Learning v místním prostředí.
+Zkuste místní nasazení modelu jako první krok při řešení potíží s nasazením do Azure Container Instances (ACI) nebo Azure Kubernetes Service (AKS).  Použití místní webové služby usnadňuje vystavování a opravy běžných chyb nasazení webové služby Azure Machine Learning Docker.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,8 +33,6 @@ Přečtěte si, jak řešit a řešit běžné chyby nasazení webové služby D
     K ověření instalace Docker použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Docker nebo odstraňování potíží s chybami Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
 
 ## <a name="debug-locally"></a>Místní ladění
-
-Pokud máte problémy při nasazování modelu do ACI nebo AKS, nasaďte ho jako místní webovou službu. Použití místní webové služby usnadňuje řešení potíží.
 
 Pokud chcete prozkoumat příklad spustitelný, najdete v úložišti [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) ukázkový [Poznámkový blok místního nasazení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) .
 

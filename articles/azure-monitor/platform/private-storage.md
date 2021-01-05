@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095300"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732052"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Azure Monitor Log Analytics
 
@@ -32,11 +32,11 @@ Podporované datové typy:
 * Protokoly IIS
 
 ## <a name="using-private-links"></a>Používání privátních odkazů
-V některých případech použití se vyžadují účty úložiště spravované zákazníkem, když se k připojení Azure Monitorch prostředků používají privátní odkazy. Jedním z takových případů je přijímání vlastních protokolů nebo protokolů IIS. Tyto datové typy se nejdřív nahrají jako objekty blob pro zprostředkující Azure Storage účet a pak se ingestují do pracovního prostoru. Podobně některá Azure Monitor řešení můžou používat účty úložiště k ukládání velkých souborů, jako jsou například soubory výpisu v programu Watson, které používá řešení Azure Security Center. 
+V některých případech použití se vyžadují účty úložiště spravované zákazníkem, když se k připojení Azure Monitorch prostředků používají privátní odkazy. Jedním z takových případů je přijímání vlastních protokolů nebo protokolů IIS. Tyto datové typy se nejdřív nahrají jako objekty blob pro zprostředkující Azure Storage účet a pak se ingestují do pracovního prostoru. Podobně některá Azure Monitor řešení můžou používat účty úložiště k ukládání velkých souborů, jako je Azure Security Center (ASC), které můžou potřebovat nahrávat soubory. 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Scénáře privátních odkazů, které vyžadují úložiště spravované zákazníkem
 * Přijímání vlastních protokolů a protokolů IIS
-* Povolení řešení ASC pro shromažďování souborů výpisu z programu Watson
+* Povolení řešení ASC nahrávat soubory
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Použití účtu úložiště spravovaného zákazníkem přes privátní propojení
 ##### <a name="workspace-requirements"></a>Požadavky na pracovní prostor
@@ -45,13 +45,14 @@ Pokud se připojujete k Azure Monitor přes privátní odkaz, agenti Log Analyti
 Aby se účet úložiště mohl úspěšně připojit k privátnímu propojení, musí:
 * Musí se nacházet ve vaší virtuální síti nebo v partnerské síti a připojená k virtuální síti prostřednictvím privátního propojení. To umožňuje agentům ve vaší virtuální síti odesílat protokoly do účtu úložiště.
 * Být umístěn ve stejné oblasti jako pracovní prostor, ke kterému je propojen.
-* Povolí Azure Monitor přístup k účtu úložiště. Pokud se rozhodnete, že chcete pro přístup k účtu úložiště vybrat jenom sítě, měli byste taky tuto výjimku zakázat: "Povolte přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu". To umožňuje Log Analytics číst protokoly ingestované do tohoto účtu úložiště.
+* Povolí Azure Monitor přístup k účtu úložiště. Pokud se rozhodnete, že chcete přístup k účtu úložiště vybrat jenom sítě, měli byste vybrat výjimku: "" udělit přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu ".
+![Obrázek důvěryhodné služby MS účtu úložiště](./media/private-storage/storage-trust.png)
 * Pokud váš pracovní prostor zpracovává provoz z jiných sítí, měli byste nakonfigurovat účet úložiště tak, aby povoloval příchozí provoz pocházející z příslušných sítí nebo Internetu.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Propojení účtu úložiště s Log Analytics pracovním prostorem
 Svůj účet úložiště můžete propojit s pracovním prostorem prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) nebo [REST API](/rest/api/loganalytics/linkedstorageaccounts). Platné hodnoty DataSourceType:
 * CustomLogs – pro použití úložiště pro vlastní protokoly a protokoly IIS během přijímání.
-* AzureWatson – použijte úložiště pro soubory výpisu paměti programu Watson odeslané řešením ASC (Azure Security Center). Další informace o správě uchovávání, nahrazení propojeného účtu úložiště a sledování aktivity účtu úložiště najdete v tématu [Správa propojených účtů úložiště](#managing-linked-storage-accounts). 
+* AzureWatson – použijte úložiště pro soubory odeslané řešením ASC (Azure Security Center). Další informace o správě uchovávání, nahrazení propojeného účtu úložiště a sledování aktivity účtu úložiště najdete v tématu [Správa propojených účtů úložiště](#managing-linked-storage-accounts). 
 
 ## <a name="encrypting-data-with-cmk"></a>Šifrování dat pomocí CMK
 Azure Storage šifruje všechna neaktivní neaktivní data v účtu úložiště. Ve výchozím nastavení šifruje data pomocí klíčů spravovaných Microsoftem (MMK). Azure Storage ale místo toho umožní šifrovat data úložiště pomocí klíče spravovaného zákazníkem (CMK) z trezoru klíčů Azure. Můžete buď importovat vlastní klíče do Azure Key Vault, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018116"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724693"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Monitorování a upozorňování na Azure Key Vault
 
@@ -40,7 +40,7 @@ Jakmile začnete používat Trezor klíčů k ukládání provozních tajných k
 
 **Sytost trezoru** – počet požadavků za sekundu, které může Trezor klíčů poskytovat, je založený na typu prováděné operace. Některé operace trezoru mají nižší prahovou hodnotu požadavků za sekundu. Tato metrika agreguje celkové využití trezoru klíčů napříč všemi typy operací, aby se nacházela s procentuální hodnotou, která označuje vaše aktuální využití trezoru klíčů. Úplný seznam omezení služby trezoru klíčů najdete v následujícím dokumentu. [Omezení služby Azure Key Vault](service-limits.md)
 
-**Latence rozhraní API služby** – Tato metrika ukazuje průměrnou latenci volání do trezoru klíčů. I když váš Trezor klíčů může být v rámci omezení služby, vysoké využití trezoru klíčů může způsobit latenci, která způsobí selhání aplikací pro příjem. 
+**Latence rozhraní API služby** – Tato metrika ukazuje průměrnou latenci volání do trezoru klíčů, měřená ve službě. Nezahrnuje čas spotřebovaný klientem ani sítí mezi klientem a službou.
 
 **Celkový počet přístupů k rozhraní API** – Tato metrika zobrazuje všechna volání provedená v trezoru klíčů. To vám pomůže určit, které aplikace zavolají váš Trezor klíčů. 
 

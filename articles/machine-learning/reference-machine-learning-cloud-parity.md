@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305754"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725016"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
 
@@ -34,7 +34,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Příznak | Stav veřejného cloudu  | US-Virginia | US-Arizona| 
+| Funkce | Stav veřejného cloudu  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** | | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA                   | ANO                | ANO         |
@@ -92,7 +92,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Popis s asistencí ML (klasifikace obrázků a detekce objektů)           | Public Preview       | ANO                | ANO         |
 | **Zodpovědné strojové učení** |   | | |
 | Vysvětlení v uživatelském rozhraní                                                       | Public Preview       | NO                 | NO          |
-| Rozdílová ochrana osobních údajů WhiteNoise Toolkit                                    | OSS                  | NO                 | NO          |
+| Rozdílová ochrana osobních údajů SmartNoise Toolkit                                    | OSS                  | NO                 | NO          |
 | vlastní značky v Azure Machine Learning k implementaci datových listů              | GA                   | NO                 | NO          |
 | Spravedlivá integrace AzureML                                               | Public Preview       | NO                 | NO          |
 | Sada SDK pro vyhodnocení                                                      | GA                   | ANO                | ANO         |
@@ -104,7 +104,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | **Odvození** |   | | |
 | Batch Inferencing                                                          | GA                   | ANO                | ANO         |
 | Data Box Edge s FPGA                                                    | Public Preview       | NO                 | NO          |
-| **Jiné** |   | | |
+| **Další** |   | | |
 | Open Datasets                                                              | Public Preview       | ANO                | ANO         |
 | Vlastní Kognitivní hledání                                                    | Public Preview       | ANO                | ANO         |
 | Mnoho modelů                                                                | Public Preview       | NO                 | NO          |
@@ -147,7 +147,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet 
 
-| Příznak                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
+| Funkce                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** |    | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA               | ANO       | –        |
@@ -205,7 +205,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Popis s asistencí ML (klasifikace obrázků a detekce objektů)           | Public Preview   | ANO       | –        |
 | **Zodpovědné strojové učení** |    | | |
 | Vysvětlení v uživatelském rozhraní                                                       | Public Preview   | NO        | –        |
-| Rozdílová ochrana osobních údajů WhiteNoise Toolkit                                    | OSS              | NO        | –        |
+| Rozdílová ochrana osobních údajů SmartNoise Toolkit                                    | OSS              | NO        | –        |
 | vlastní značky v Azure Machine Learning k implementaci datových listů              | GA               | NO        | –        |
 | Spravedlivá integrace AzureML                                               | Public Preview   | NO        | –        |
 | Sada SDK pro vyhodnocení                                                      | GA               | ANO       | –        |
@@ -217,7 +217,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | **Odvození** |   | | |
 | Batch Inferencing                                                          | GA               | ANO       | –        |
 | Data Box Edge s FPGA                                                    | Public Preview   | NO        | –        |
-| **Jiné** |    | | |
+| **Další** |    | | |
 | Open Datasets                                                              | Public Preview   | ANO       | –        |
 | Vlastní Kognitivní hledání                                                    | Public Preview   | ANO       | –        |
 | Mnoho modelů                                                                | Public Preview   | NO        | –        |

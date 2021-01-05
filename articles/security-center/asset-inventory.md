@@ -5,17 +5,17 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/22/2020
+ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341919"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740874"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků
 
 Stránka inventáře assetů Azure Security Center poskytuje jednu stránku pro zobrazení stav zabezpečení prostředků, ke kterým jste se připojili Security Center. 
 
@@ -43,7 +43,7 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|Všichni uživatelé|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -63,9 +63,9 @@ Na stránce inventarizace najdete následující nástroje:
 
     Jakmile použijete filtry, souhrnné hodnoty se aktualizují tak, aby se vztahovaly k výsledkům dotazu. 
 
-- **Možnosti exportu** – inventarizace nabízí možnost Exportovat výsledky vybraných možností filtrování do souboru CSV. Kromě toho můžete exportovat samotný dotaz do Průzkumníka Azure Resource graphu a dále upřesnit, Uložit nebo upravit dotaz KQL.
+- **Možnosti exportu** – inventarizace nabízí možnost Exportovat výsledky vybraných možností filtrování do souboru CSV. Kromě toho můžete exportovat samotný dotaz do Průzkumníka Azure Resource Graph a dále upřesnit, Uložit nebo upravit dotaz Kusto Query Language (KQL).
 
-    ![Možnosti exportu inventáře](./media/asset-inventory/inventory-export-options.png)
+    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Možnosti exportu inventáře":::
 
     > [!TIP]
     > Dokumentace ke službě KQL poskytuje databázi s ukázkovými daty společně s některými jednoduchými dotazy, aby se pro daný jazyk nezískal "pocit". [Další informace najdete v tomto kurzu pro KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
@@ -94,7 +94,7 @@ Při použití [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)m�
 
 1. Ve filtrech vyberte příslušné možnosti pro vytvoření konkrétního dotazu, který chcete provést.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Možnosti filtrování inventáře" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Ve výchozím nastavení se prostředky seřadí podle počtu aktivních doporučení zabezpečení.
 
@@ -114,16 +114,16 @@ Při použití [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)m�
 
     - **Off** – prostředky, které nejsou chráněné plánem Azure Defenderu. Můžete kliknout pravým tlačítkem na některý z těchto kroků a upgradovat je:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgrade prostředku na Azure Defender kliknutím pravým tlačítkem" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
-    - **On** Prostředky, které jsou chráněné plánem Azure Defenderu
+    -  Prostředky, které jsou chráněné plánem Azure Defenderu
     - **Částečný** – to platí pro **odběry** , které mají zakázané některé plány Azure Defenderu, ale ne všechny. Například následující předplatné má pět plánů programu Azure Defender zakázané. 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Předplatné je částečně v Azure Defenderu.":::
 
 1. Pokud chcete dále prozkoumávat výsledky dotazu, vyberte prostředky, které vás zajímají.
 
-1. Chcete-li zobrazit aktuálně vybrané možnosti filtru jako dotaz v Průzkumníku grafu prostředků, vyberte možnost **Zobrazit v Průzkumníku grafu prostředků**.
+1. Chcete-li zobrazit aktuálně vybrané možnosti filtru jako dotaz v Průzkumníku grafu prostředků, vyberte možnost **Otevřít dotaz**.
 
     ![Dotaz na inventář v ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
@@ -140,7 +140,7 @@ Zobrazení inventáře obsahuje seznam Security Center propojených prostředků
 
 Například následující snímek obrazovky ukazuje uživatele s přístupem k předplatným 38, ale pouze 10 aktuálně obsahuje doporučení. Takže když se filtrují podle **typu prostředku = odběry**, zobrazí se v inventáři jenom tyto 10 předplatných s aktivními doporučeními:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Pokud neexistují žádná aktivní doporučení, nevrátí se všechny.":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Proč některé z mých zdrojů ve sloupcích Azure Defenderu nebo monitorování agentů zobrazují prázdné hodnoty?
 
@@ -148,7 +148,7 @@ Ne všechny Security Center monitorované prostředky mají agenty. Například 
 
 Když ceny nebo monitorování agentů nejsou pro určitý prostředek relevantní, nezobrazí se v těchto sloupcích inventáře.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Některé zdroje zobrazují ve sloupcích monitorování agentů nebo v Azure Defenderu prázdné informace.":::
 
 ## <a name="next-steps"></a>Další kroky
 
