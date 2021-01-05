@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861445"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97838752"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Správa místní konzoly pro správu
 
@@ -298,26 +298,6 @@ Resetování hesla:
 
 > [!NOTE]
 > Senzor je propojený s předplatným, ke kterému byl původně připojený. Heslo můžete obnovit jenom pomocí stejného předplatného, ke kterému je připojené.
-
-## <a name="update-the-software-version"></a>Aktualizace verze softwaru
-
-Následující postup popisuje, jak aktualizovat místní verzi softwaru konzoly pro správu. Proces aktualizace trvá přibližně 30 minut.
-
-1. Přejděte na [Azure Portal](https://portal.azure.com/).
-
-1. Přejít na Defender pro IoT.
-
-1. Přejít na stránku **aktualizace** .
-
-1. V části místní konzole pro správu vyberte verzi.
-
-1. Vyberte **Stáhnout** a uložte soubor.
-
-1. Přihlaste se k místní konzole pro správu a v postranní nabídce vyberte **nastavení systému** .
-
-1. V podokně **aktualizace verze** vyberte **aktualizovat**.
-
-1. Vyberte soubor, který jste stáhli ze stránky **aktualizace** Defender pro IoT.
 
 ## <a name="see-also"></a>Viz také
 
