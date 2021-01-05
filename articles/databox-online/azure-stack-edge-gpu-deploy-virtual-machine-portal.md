@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466540"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763451"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure Portal
 
@@ -43,7 +43,7 @@ Souhrnný přehled pracovního postupu nasazení je následující:
     Pomocí výše uvedených prostředků vytvořte virtuální počítač.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete vytvářet a spravovat virtuální počítače na svém zařízení prostřednictvím Azure Portal, ujistěte se, že:
 
@@ -79,7 +79,7 @@ Pomocí těchto kroků můžete na zařízení Azure Stack Edge vytvořit virtu�
 
     ![Přidat image virtuálního počítače 3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
 
-1. V okně **Přidat obrázek** zadejte následující parametry. Vyberte **Přidat**.
+1. V okně **Přidat obrázek** zadejte následující parametry. Vyberte **Add** (Přidat).
 
 
     |Parametr  |Popis  |
@@ -123,7 +123,7 @@ Pomocí těchto kroků vytvoříte virtuální počítač po vytvoření image v
     |---------|---------|
     |Název virtuálního počítače     |         |
     |Image     | Vyberte z imagí virtuálních počítačů, které jsou k dispozici na zařízení.        |
-    |Velikost     | Vyberte si z [podporovaných velikostí virtuálních počítačů](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes).        |
+    |Velikost     | Vyberte si z [podporovaných velikostí virtuálních počítačů](azure-stack-edge-gpu-virtual-machine-sizes.md).        |
     |Uživatelské jméno     | Použijte výchozí uživatelské jméno *azureuser*.        |
     |Typ ověřování    | Vyberte si z veřejného klíče SSH nebo pomocí uživatelsky definovaného hesla.       |
     |Heslo     | Zadejte heslo pro přihlášení k virtuálnímu počítači. Heslo musí mít délku aspoň 12 znaků a musí splňovat definované požadavky na [složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 159df4c228f74bb605c745e899d99bfff2aa511b
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998902"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763281"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Výstupní vazba služby Signal pro Azure Functions
 
@@ -728,7 +728,7 @@ public SignalRGroupAction removeFromGroup(
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalRConnectionInfo` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový**| neuvedeno | Musí být nastaven na hodnotu `signalRConnectionInfo` .|
 |**směr**| neuvedeno | Musí být nastaven na hodnotu `in` .|
@@ -741,7 +741,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalR` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový**| neuvedeno | Musí být nastaven na hodnotu `signalR` .|
 |**směr**| neuvedeno | Musí být nastaven na hodnotu `out` .|
@@ -753,4 +753,5 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Zpracování zpráv ze služby signalizace (aktivační vazba)](./functions-bindings-signalr-service-trigger.md)
 - [Vrácení adresy URL koncového bodu služby a přístupového tokenu (vstupní vazba)](./functions-bindings-signalr-service-input.md)

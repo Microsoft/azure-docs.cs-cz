@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449064"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763421"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro prostřednictvím šablon
 
@@ -52,7 +52,7 @@ Shrnutí vysoké úrovně pracovního postupu nasazení pomocí šablon je násl
 
 2. **Vytvoření virtuálního počítače ze šablon**
 
-    1. Vytvořte image virtuálního počítače a virtuální síť pomocí `CreateImageAndVnet.parameters.json` souboru parametrů a `CreateImageAndVnet.json` šablony nasazení.
+    1. Vytvořte image virtuálního počítače pomocí `CreateImage.parameters.json` souboru parametrů a `CreateImage.json` šablony nasazení.
     1. Vytvořte virtuální počítač s dříve vytvořenými prostředky pomocí `CreateVM.parameters.json` souboru parametrů a  `CreateVM.json` šablony nasazení.
 
 ## <a name="device-prerequisites"></a>Požadavky na zařízení
@@ -99,7 +99,7 @@ ResourceId        : /subscriptions/DDF9FC44-E990-42F8-9A91-5A6A5CC472DB/resource
 PS C:\windows\system32>
 ```
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Jedná se o **místní účet úložiště** , který se použije k nahrání image virtuálního disku pro virtuální počítač.
 
@@ -153,9 +153,9 @@ Pokud se připojíte přes Průzkumník služby Storage pomocí *protokolu HTTP*
 
 ### <a name="create-and-upload-a-vhd"></a>Vytvoření a nahrání virtuálního pevného disku
 
-Ujistěte se, že máte image virtuálního disku, kterou můžete použít k nahrání v pozdějším kroku. Postupujte podle kroků v části [Vytvoření image virtuálního počítače](azure-stack-edge-j-series-create-virtual-machine-image.md). 
+Ujistěte se, že máte image virtuálního disku, kterou můžete použít k nahrání v pozdějším kroku. Postupujte podle kroků v části [Vytvoření image virtuálního počítače](azure-stack-edge-gpu-create-virtual-machine-image.md). 
 
-Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů blob stránky v místním účtu úložiště, který jste vytvořili v předchozích krocích. Pomocí nástroje, jako je [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) nebo AzCopy, můžete [nahrát virtuální pevný disk do účtu úložiště](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md#upload-a-vhd) , který jste vytvořili v předchozích krocích. 
+Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů blob stránky v místním účtu úložiště, který jste vytvořili v předchozích krocích. Pomocí nástroje, jako je [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) nebo AzCopy, můžete [nahrát virtuální pevný disk do účtu úložiště](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) , který jste vytvořili v předchozích krocích. 
 
 ### <a name="use-storage-explorer-for-upload"></a>Použití Průzkumník služby Storage k nahrání
 
@@ -213,35 +213,15 @@ Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů
 
     ![Kopírovat identifikátor URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
-<!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
+## <a name="create-image-for-your-vm"></a>Vytvoření image pro virtuální počítač
 
-
-```powershell
-AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
-```
-
-> ![NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
-
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
-
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
-
-
-```powershell
-AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages /DestKey:gJKoyX2Amg0Zytd1ogA1kQ2xqudMHn7ljcDtkJRHwMZbMK== /Y /S /V /NC:32 /BlobType:page /destType:blob /z:2e7d7d27-c983-410c-b4aa-b0aa668af0c6
-```-->
-
-## <a name="create-image-and-vnet-for-your-vm"></a>Vytvoření image a virtuální sítě pro virtuální počítač
-
-Pokud chcete vytvořit image a virtuální síť pro svůj virtuální počítač, budete muset upravit `CreateImageAndVnet.parameters.json` soubor parametrů a pak nasadit šablonu `CreateImageAndVnet.json` , která tento soubor parametrů používá.
+Pokud chcete vytvořit image pro váš virtuální počítač, upravte `CreateImage.parameters.json` soubor parametrů a pak nasaďte šablonu `CreateImage.json` , která tento soubor parametrů používá.
 
 
 ### <a name="edit-parameters-file"></a>Upravit soubor parametrů
 
-Soubor `CreateImageAndVnet.parameters.json` má následující parametry: 
+Soubor `CreateImage.parameters.json` má následující parametry: 
 
 ```json
 "parameters": {
@@ -254,22 +234,10 @@ Soubor `CreateImageAndVnet.parameters.json` má následující parametry:
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
-        "vnetName": {
-            "value": "<Name for the virtual network where you will deploy the VM>"
-        },
-        "subnetName": {
-            "value": "<Name for the subnet for the VNet>"
-        },
-        "addressPrefix": {
-            "value": "<Address prefix for the virtual network>"
-        },
-        "subnetPrefix": {
-            "value": "<Subnet prefix for the subnet for the Vnet>"
-        }
     }
 ```
 
-Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval následující pro zařízení Azure Stack Edge pro:
+Upravte soubor `CreateImage.parameters.json` tak, aby obsahoval následující pro zařízení Azure Stack Edge pro:
 
 1. Zadejte typ operačního systému odpovídající virtuálnímu pevnému disku, který budete nahrávat. Typ operačního systému může být Windows nebo Linux.
 
@@ -287,20 +255,9 @@ Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval následuj
         "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
         },
     ```
-    Pokud používáte *protokol HTTP* s Průzkumník služby Storage, změňte ho na URI *https* .
+    Pokud používáte *protokol HTTP* s Průzkumník služby Storage, změňte ho na URI *http* .
 
-3. Změňte `addressPrefix` a `subnetPrefix` . V místním uživatelském rozhraní zařízení, přejít na stránku **síť** . Najděte port, který jste povolili pro výpočetní výkon. Získejte IP adresu základní sítě a přidejte masku podsítě pro vytvoření zápisu CIDR. Pokud máte standardní podsíť 255.255.255.0, udělejte to tak, že nahradíte poslední číslo IP adresy 0 a přidáte/24 do konce. Takže se 10.126.68.0 s maskou podsítě 255.255.255.0 bude 10.126.68.0/24. 
-    
-    ```json
-    "addressPrefix": {
-                "value": "10.126.68.0/24"
-            },
-            "subnetPrefix": {
-                "value": "10.126.68.0/24"
-            }
-    ```  
-
-4. Zadejte jedinečný název, název virtuální sítě a název podsítě pro parametry.
+3. Zadejte jedinečný název obrázku. Tento obrázek slouží k vytvoření virtuálního počítače v pozdějších krocích. 
 
     Tady je ukázkový kód JSON, který se používá v tomto článku.
 
@@ -310,25 +267,13 @@ Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval následuj
         "contentVersion": "1.0.0.0",
       "parameters": {
         "osType": {
-          "value": "Windows"
+          "value": "Linux"
         },
         "imageName": {
-          "value": "image1"
+          "value": "myaselinuximg"
         },
         "imageUri": {
-          "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-        "vnetName": {
-          "value": "vnet1"
-        },
-        "subnetName": {
-          "value": "subnet1"
-        },
-        "addressPrefix": {
-          "value": "10.126.68.0/24"
-        },
-        "subnetPrefix": {
-          "value": "10.126.68.0/24"
+          "value": "https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd"
         }
       }
     }
@@ -338,7 +283,7 @@ Upravte soubor `CreateImageAndVnet.parameters.json` tak, aby obsahoval následuj
 
 ### <a name="deploy-template"></a>Nasazení šablony 
 
-Nasaďte šablonu `CreateImageAndVnet.json` . Tato šablona nasadí prostředky virtuální sítě a image, které se použijí k vytvoření virtuálních počítačů v pozdějším kroku.
+Nasaďte šablonu `CreateImage.json` . Tato šablona nasadí prostředky imagí, které se použijí k vytvoření virtuálních počítačů v pozdějším kroku.
 
 > [!NOTE]
 > Když nasadíte šablonu, pokud dojde k chybě ověřování, vaše přihlašovací údaje Azure pro tuto relaci pravděpodobně vypršely. Opětovným spuštěním `login-AzureRM` příkazu se připojte k Azure Resource Manager na zařízení Azure Stack Edge pro.
@@ -346,8 +291,8 @@ Nasaďte šablonu `CreateImageAndVnet.json` . Tato šablona nasadí prostředky 
 1. Spusťte následující příkaz: 
     
     ```powershell
-    $templateFile = "Path to CreateImageAndVnet.json"
-    $templateParameterFile = "Path to CreateImageAndVnet.parameters.json"
+    $templateFile = "Path to CreateImage.json"
+    $templateParameterFile = "Path to CreateImage.parameters.json"
     $RGName = "<Name of your resource group>"
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $RGName `
@@ -355,47 +300,42 @@ Nasaďte šablonu `CreateImageAndVnet.json` . Tato šablona nasadí prostředky 
         -TemplateParameterFile $templateParameterFile `
         -Name "<Name for your deployment>"
     ```
+    Tento příkaz nasadí prostředek bitové kopie. K dotazování prostředku spusťte následující příkaz:
 
-2. Ověřte, jestli se úspěšně zřídila bitová kopie a prostředky virtuální sítě. Tady je ukázkový výstup úspěšně vytvořeného obrazu a virtuální sítě.
+    ```powershell
+    Get-AzureRmImage -ResourceGroupName <Resource Group Name> -name <Image Name>
+    ``` 
+    Tady je ukázkový výstup úspěšně vytvořeného obrázku.
     
     ```powershell
-    PS C:\07-30-2020> login-AzureRMAccount -EnvironmentName aztest1 -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    PS C:\WINDOWS\system32> login-AzureRMAccount -EnvironmentName aztest -TenantId c0257de7-538f-415c-993a-1b87a031879d
     
     Account               SubscriptionName              TenantId                             Environment
     -------               ----------------              --------                             -----------
-    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest1
+    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest
     
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateImageAndVnet.json"
-    PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateImageAndVnet.parameters.json"
-    PS C:\07-30-2020> $RGName = "myasegpurgvm"
-    PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-    >>     -ResourceGroupName $RGName `
-    >>     -TemplateFile $templateFile `
-    >>     -TemplateParameterFile $templateParameterFile `
-    >>     -Name "Deployment1"
-    
-    DeploymentName          : Deployment1
-    ResourceGroupName       : myasegpurgvm
+   PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateImage\CreateImage.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateImage\CreateImage.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "deployment4"
+        
+    DeploymentName          : deployment4
+    ResourceGroupName       : rg2
     ProvisioningState       : Succeeded
-    Timestamp               : 7/30/2020 5:53:32 PM
+    Timestamp               : 12/10/2020 7:06:57 PM
     Mode                    : Incremental
     TemplateLink            :
     Parameters              :
                               Name             Type                       Value
                               ===============  =========================  ==========
-                              osType           String                     Windows
-                              imageName        String                     image1
+                              osType           String                     Linux
+                              imageName        String                     myaselinuximg
                               imageUri         String
-                              https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd
-                              vnetName         String                     vnet1
-                              subnetName       String                     subnet1
-                              addressPrefix    String                     10.126.68.0/24
-                              subnetPrefix     String                     10.126.68.0/24
+                              https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd
     
     Outputs                 :
-    DeploymentDebugLogLevel :
-    
-    PS C:\07-30-2020>
+    DeploymentDebugLogLevel :    
+    PS C:\WINDOWS\system32>
     ```
     
 ## <a name="create-vm"></a>Vytvoření virtuálního počítače
@@ -421,10 +361,13 @@ K vytvoření virtuálního počítače použijte soubor parametrů `CreateVM.pa
             "value": "<A supported size for your VM>"
         },
         "vnetName": {
-            "value": "<Name for the virtual network you created earlier>"
+            "value": "<Name for the virtual network, use ASEVNET>"
         },
         "subnetName": {
-            "value": "<Name for the subnet you created earlier>"
+            "value": "<Name for the subnet, use ASEVNETsubNet>"
+        },
+        "vnetRG": {
+            "value": "<Resource group for Vnet, use ASERG>"
         },
         "nicName": {
             "value": "<Name for the network interface>"
@@ -441,7 +384,56 @@ Přiřaďte příslušné parametry `CreateVM.parameters.json` pro zařízení A
 
 1. Zadejte jedinečný název, název síťového rozhraní a název ipconfig. 
 1. Zadejte uživatelské jméno, heslo a podporovanou velikost virtuálního počítače.
-1. Zadejte stejný název pro **VnetName**, **Subnet** a **ImageName** , jak je uvedeno v parametrech pro `CreateImageAndVnet.parameters.json` . Pokud jste například předali VnetName, Subnet a ImageName jako **vnet1**, **SUBNET1** a **image1**, ponechte tyto hodnoty stejné i pro parametry v této šabloně.
+1. Když jste povolili síťové rozhraní pro výpočetní prostředky, virtuální přepínač a virtuální síť se v tomto síťovém rozhraní automaticky vytvoří. Můžete zadat dotaz na existující virtuální síť a získat název virtuální sítě, název podsítě a název skupiny prostředků VNET.
+
+    Spusťte následující příkaz:
+
+    ```powershell
+    Get-AzureRmVirtualNetwork
+    ```
+    Zde je ukázkový výstup:
+    
+    ```powershell
+    
+    PS C:\WINDOWS\system32> Get-AzureRmVirtualNetwork
+    
+    Name                   : ASEVNET
+    ResourceGroupName      : ASERG
+    Location               : dbelocal
+    Id                     : /subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/providers/Microsoft
+                             .Network/virtualNetworks/ASEVNET
+    Etag                   : W/"990b306d-18b6-41ea-a456-b275efe21105"
+    ResourceGuid           : f8309d81-19e9-42fc-b4ed-d573f00e61ed
+    ProvisioningState      : Succeeded
+    Tags                   :
+    AddressSpace           : {
+                               "AddressPrefixes": [
+                                 "10.57.48.0/21"
+                               ]
+                             }
+    DhcpOptions            : null
+    Subnets                : [
+                               {
+                                 "Name": "ASEVNETsubNet",
+                                 "Etag": "W/\"990b306d-18b6-41ea-a456-b275efe21105\"",
+                                 "Id": "/subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/provider
+                             s/Microsoft.Network/virtualNetworks/ASEVNET/subnets/ASEVNETsubNet",
+                                 "AddressPrefix": "10.57.48.0/21",
+                                 "IpConfigurations": [],
+                                 "ResourceNavigationLinks": [],
+                                 "ServiceEndpoints": [],
+                                 "ProvisioningState": "Succeeded"
+                               }
+                             ]
+    VirtualNetworkPeerings : []
+    EnableDDoSProtection   : false
+    EnableVmProtection     : false
+    
+    PS C:\WINDOWS\system32>
+    ```
+
+    Použijte ASEVNET pro název virtuální sítě, ASEVNETsubNet pro název podsítě a ASERG pro název skupiny prostředků VNET.
+    
 1. Teď budete potřebovat statickou IP adresu, která se přiřadí k virtuálnímu počítači ve výše definované síti podsítě. Nahraďte **PrivateIPAddress** touto adresou v souboru parametrů. Pokud chcete VIRTUÁLNÍmu počítači získat IP adresu z místního serveru DCHP, ponechte tuto `privateIPAddress` hodnotu prázdnou.  
     
     ```json
@@ -456,40 +448,43 @@ Přiřaďte příslušné parametry `CreateVM.parameters.json` pro zařízení A
     
     ```json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "vmName": {
-                "value": "mywindowsvm"
-            },
-            "adminUsername": {
-                "value": "Administrator"
-            },
-            "Password": {
-                "value": "Password1"
-            },
-            "imageName": {
-                "value": "image1"
-            },
-            "vmSize": {
-                "value": "Standard_D1_v2"
-            },
-            "vnetName": {
-                "value": "vnet1"
-            },
-            "subnetName": {
-                "value": "subnet1"
-            },
-            "nicName": {
-                "value": "nic1"
-            },
-            "privateIPAddress": {
-                "value": "10.126.68.186"
-            },
-            "IPConfigName": {
-                "value": "ipconfig1"
-            }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "vmName": {
+              "value": "VM1"
+          },
+          "adminUsername": {
+              "value": "Administrator"
+          },
+          "Password": {
+              "value": "Password1"
+          },
+        "imageName": {
+          "value": "myaselinuximg"
+        },
+        "vmSize": {
+          "value": "Standard_NC4as_T4_v3"
+        },
+        "vnetName": {
+          "value": "ASEVNET"
+        },
+        "subnetName": {
+          "value": "ASEVNETsubNet"
+        },
+        "vnetRG": {
+          "value": "aserg"
+        },
+        "nicName": {
+          "value": "nic5"
+        },
+        "privateIPAddress": {
+          "value": ""
+        },
+        "IPConfigName": {
+          "value": "ipconfig5"
         }
+      }
     }
     ```      
 
@@ -516,39 +511,36 @@ Nasaďte šablonu pro vytvoření virtuálního počítače `CreateVM.json` . Ta
     Vytvoření virtuálního počítače bude trvat 15-20 minut. Tady je ukázkový výstup úspěšně vytvořeného virtuálního počítače.
     
     ```powershell
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateWindowsVM.json"
-        PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateWindowsVM.parameters.json"
-        PS C:\07-30-2020> $RGName = "myasegpurgvm"
-        PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-        >>     -ResourceGroupName $RGName `
-        >>     -TemplateFile $templateFile `
-        >>     -TemplateParameterFile $templateParameterFile `
-        >>     -Name "Deployment2"    
-        
-        DeploymentName          : Deployment2
-        ResourceGroupName       : myasegpurgvm
-        ProvisioningState       : Succeeded
-        Timestamp               : 7/30/2020 6:21:09 PM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                  Name             Type                       Value
-                                  ===============  =========================  ==========
-                                  vmName           String                     MyWindowsVM
-                                  adminUsername    String                     Administrator
-                                  password         String                     Password1
-                                  imageName        String                     image1
-                                  vmSize           String                     Standard_D1_v2
-                                  vnetName         String                     vnet1
-                                  subnetName       String                     subnet1
-                                  nicName          String                     Nic1
-                                  ipConfigName     String                     ipconfig1
-                                  privateIPAddress  String                    10.126.68.186
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :    
-        
-        PS C:\07-30-2020>
+    PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateVM\CreateVM.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateVM\CreateVM.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "Deployment6"
+       
+    DeploymentName          : Deployment6
+    ResourceGroupName       : rg2
+    ProvisioningState       : Succeeded
+    Timestamp               : 12/10/2020 7:51:28 PM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                              Name             Type                       Value
+                              ===============  =========================  ==========
+                              vmName           String                     VM1
+                              adminUsername    String                     Administrator
+                              password         String                     Password1
+                              imageName        String                     myaselinuximg
+                              vmSize           String                     Standard_NC4as_T4_v3
+                              vnetName         String                     ASEVNET
+                              vnetRG           String                     aserg
+                              subnetName       String                     ASEVNETsubNet
+                              nicName          String                     nic5
+                              ipConfigName     String                     ipconfig5
+                              privateIPAddress  String
+    
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    
+    PS C:\WINDOWS\system32
     ```   
 
     Příkaz lze také spustit `New-AzureRmResourceGroupDeployment` asynchronně s `–AsJob` parametrem. Tady je ukázkový výstup, když je rutina spuštěná na pozadí. Pak můžete zadat dotaz na stav úlohy, která je vytvořena pomocí `Get-Job` rutiny.
@@ -592,39 +584,6 @@ Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Lin
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-<!--## Manage VM
-
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
-
-[!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
-
-
-## <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
-
-[!INCLUDE [azure-stack-edge-gateway-supported-vm-sizes](../../includes/azure-stack-edge-gateway-supported-vm-sizes.md)]
-
-## <a name="unsupported-vm-operations-and-cmdlets"></a>Nepodporované operace a rutiny virtuálního počítače
-
-Rozšíření, sady škálování, sady dostupnosti, snímky se nepodporují.
-
-<!--## Configure AzCopy
-
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
-
-On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
-
-### On Windows client 
-
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
-
-### On Linux client
-
-`export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`
-
-To verify if the environment variable for AzCopy was set correctly, take the following steps:
-
-1. Run "azcopy env".
-2. Find `AZCOPY_DEFAULT_SERVICE_API_VERSION` parameter. This should have the value you set in the preceding steps.-->
 
 
 ## <a name="next-steps"></a>Další kroky

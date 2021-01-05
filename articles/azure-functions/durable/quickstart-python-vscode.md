@@ -3,14 +3,14 @@ title: Vytvoření první trvalé funkce v Azure pomocí Pythonu
 description: Vytvořte a publikujte funkci trvalosti Azure v Pythonu pomocí Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012625"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763553"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Vytvoření první trvalé funkce v Pythonu
 
@@ -40,9 +40,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions. 
 
-1. V Visual Studio Code stisknutím klávesy F1 (nebo Ctrl/Cmd + Shift + P) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...` .
+1. V Visual Studio Code stisknutím klávesy F1 (nebo <kbd>Ctrl/Cmd + Shift + P</kbd>) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...` .
 
-    ![Vytvoření funkce](media/quickstart-python-vscode/functions-create-project.png)
+    ![Funkce Create](media/quickstart-python-vscode/functions-create-project.png)
 
 1. Zvolte prázdné umístění složky pro váš projekt a zvolte **možnost vybrat**.
 
@@ -60,18 +60,33 @@ V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools.
 
 V kořenové složce se vytvoří také soubor requirements.txt. Určuje balíčky Pythonu potřebné ke spuštění vaší aplikace Function App.
 
+## <a name="update-azure-functions-extension-bundles-version"></a>Verze sad rozšíření Azure Functions aktualizací
+
+Python Azure Functions vyžaduje verzi 2. x z [sad rozšíření Azure Functions](../functions-bindings-register.md#access-extensions-in-non-net-languages). Sady rozšíření jsou konfigurovány v *host.js*.
+
+1. V projektu otevřete *host.js* . Aktualizujte sadu rozšíření `version` na `[2.*, 3.0.0)` . To určuje rozsah verzí, který je větší nebo roven 2,0 a menší než 3,0.
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. Aby se projevila aktualizovaná verze balíčku rozšíření, musí se VS Code znovu načíst. V paletě příkazů spusťte hledání příkazu pro *vývojáře: znovu načíst okno* a spusťte jej.
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>Instalace Azure – funkce – trvalé z PyPI
 
 Při vytváření projektu rozšíření Azure Functions VS Code automaticky vytvořilo virtuální prostředí s vybranou verzí Pythonu. Virtuální prostředí aktivujete v terminálu a nainstalujete některé závislosti vyžadované Azure Functions a Durable Functions.
 
-1. Otevřete `requirements.txt` v editoru a změňte jeho obsah na následující:
+1. V editoru otevřete *requirements.txt* a změňte jeho obsah na následující:
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. V aktuální složce () Otevřete integrovaný terminál editoru `` Ctrl-Shift-` `` .
+1. V aktuální složce otevřete integrovaný terminál editoru (<kbd>CTRL + SHIFT + '</kbd>).
 
 1. V integrovaném terminálu aktivujte virtuální prostředí v aktuální složce:
 
@@ -203,7 +218,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     }
     ```
 
-1. Pokud chcete zastavit ladění, stiskněte **SHIFT + F5** v vs Code.
+1. Pokud chcete zastavit ladění, stiskněte <kbd>SHIFT + F5</kbd> v vs Code.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 

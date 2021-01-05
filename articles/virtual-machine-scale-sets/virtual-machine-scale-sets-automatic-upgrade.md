@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744732"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763536"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady imagí operačních systémů škálovacích sad virtuálních počítačů
 
@@ -45,6 +45,9 @@ Proces upgradu funguje takto:
 
 Nástroj Orchestrator pro upgrade operačního systému nástroje pro škálování před upgradem každé dávky kontroluje celkový stav sady škálování. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav instancí sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
 
+> [!NOTE]
+>Automatický upgrade operačního systému neupgraduje SKU referenčních imagí v sadě škálování. Chcete-li změnit skladovou položku (například Ubuntu 16,04-LTS na 18,04-LTS), je nutné aktualizovat [model sady škálování](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) přímo s požadovanou SKU image. Vydavatele a nabídku obrázků nelze změnit pro existující sadu škálování.  
+
 ## <a name="supported-os-images"></a>Podporované image operačních systémů
 V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](shared-image-galleries.md).
 
@@ -54,21 +57,20 @@ V současné době se podporují následující SKU platforem (a pravidelně se 
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
-| Neautorizovaný Wave (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
+| OpenLogic               | CentOS        | 7,5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Požadavky na konfiguraci automatického upgradu imagí operačního systému
 
-- Vlastnost *Version* obrázku musí být nastavena na hodnotu *Poslední* .
+- Vlastnost *Version* obrázku musí být nastavena na hodnotu *Poslední*.
 - Pro neService Fabricé sady škálování použijte sondy stavu aplikace nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md) .
 - Použijte COMPUTE API verze 2018-10-01 nebo vyšší.
 - Ujistěte se, že jsou dostupné a aktualizované externí prostředky zadané v modelu sady škálování. Mezi příklady patří identifikátor URI SAS pro spouštěcí datovou část ve vlastnostech rozšíření virtuálního počítače, datovou část účtu úložiště, odkaz na tajné klíče v modelu a další.
@@ -121,14 +123,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) nakonfigurujte automatické upgrady bitových kopií operačního systému pro sadu škálování. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) nakonfigurujte automatické upgrady bitových kopií operačního systému pro sadu škálování. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-K nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+K nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +186,7 @@ Rozšíření stavu aplikace můžete do sady škálování nasadit několika zp
 Historii nejnovějšího upgradu operačního systému, který se provádí v sadě škálování, můžete ověřit pomocí Azure PowerShell, Azure CLI 2,0 nebo rozhraní REST API. V posledních dvou měsících můžete získat historii za posledních pět pokusů o upgrade operačního systému.
 
 ### <a name="rest-api"></a>REST API
-Následující příklad používá [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Následující příklad používá [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +230,14 @@ Volání GET vrátí vlastnosti podobné následujícímu příkladu výstupu:
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Pomocí [AZ VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí [AZ VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +271,21 @@ Pro konkrétní případy, kdy nechcete čekat, až nástroj Orchestrator použi
 > Ruční aktivační událost pro upgrady bitových kopií operačního systému neposkytuje funkce automatického vrácení zpět. Pokud instance po operaci upgradu neobnoví svůj stav, nebude možné obnovit předchozí disk s operačním systémem.
 
 ### <a name="rest-api"></a>REST API
-Pomocí volání rozhraní API [Spustit upgrade operačního systému](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) můžete spustit postupný upgrade, abyste přesunuli všechny instance sady škálování virtuálních počítačů na nejnovější dostupnou verzi operačního systému image. Instance, ve kterých je již spuštěna nejnovější dostupná verze operačního systému, nebudou ovlivněny. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí volání rozhraní API [Spustit upgrade operačního systému](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) můžete spustit postupný upgrade, abyste přesunuli všechny instance sady škálování virtuálních počítačů na nejnovější dostupnou verzi operačního systému image. Instance, ve kterých je již spuštěna nejnovější dostupná verze operačního systému, nebudou ovlivněny. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Pomocí rutiny [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí rutiny [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Pokud chcete zjistit historii upgradu operačního systému pro vaši sadu škálování, použijte příkaz AZ VMSS provedený [upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup* :
+Pokud chcete zjistit historii upgradu operačního systému pro vaši sadu škálování, použijte příkaz AZ VMSS provedený [upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

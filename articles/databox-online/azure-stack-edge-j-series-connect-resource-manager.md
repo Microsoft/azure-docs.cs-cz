@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447599"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763213"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
 
@@ -57,7 +57,7 @@ Proces připojení k místním rozhraním API zařízení pomocí Azure Resource
 
 V následujících částech najdete podrobné informace o každém z výše uvedených kroků v části připojení k Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k zařízení Azure Stack Edge pro](azure-stack-edge-j-series-configure-tls-settings.md).
 
@@ -460,4 +460,4 @@ Nyní jste přešli na zamýšlené prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nasaďte virtuální počítače na zařízení Azure Stack Edge pro](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Nasaďte virtuální počítače na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).

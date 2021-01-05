@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/17/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654740"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796988"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -111,7 +111,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 | Služba/funkce | US Gov | Čína gov |
 |------|:----:|:----:|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md) (1)|✔|✔|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md) (1)|✔|✔|
 |[Adaptivní řízení aplikací](security-center-adaptive-application.md) (1)|✔|✔|
 |[Adaptivní posílení sítě](security-center-adaptive-network-hardening.md) (1)|-|-|
 |[Posílení zabezpečení hostitele Docker](harden-docker-hosts.md) (1)|✔|✔|
@@ -119,12 +119,12 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |[Microsoft Defender pro koncový bod](harden-docker-hosts.md) (1)|✔|-|
 |[Připojit účet AWS](quickstart-onboard-aws.md) (1)|-|-|
 |[Připojit účet GCP](quickstart-onboard-gcp.md) (1)|-|-|
-|[Průběžný export](continuous-export.md)|✔|✔|
+|[Průběžný export](continuous-export.md)|✔|✔ (2)|
 |[Automatizace pracovního postupu](workflow-automation.md)|✔|✔|
 |[Pravidla výjimky pro doporučení](exempt-resource.md)|-|-|
 |[Pravidla potlačení výstrah](alerts-suppression-rules.md)|✔|✔|
 |[E-mailová oznámení pro výstrahy zabezpečení](security-center-provide-security-contact-details.md)|✔|✔|
-|[Inventář prostředků](asset-inventory.md)|-|-|
+|[Inventář prostředků](asset-inventory.md)|✔|✔|
 |[Azure Defender pro App Service](defender-for-app-service-introduction.md)|-|-|
 |[Azure Defender pro úložiště](defender-for-storage-introduction.md)|✔|-|
 |[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|

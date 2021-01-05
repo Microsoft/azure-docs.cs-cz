@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: ce86da7697341e769ada120dc7a941319b64fc18
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109534"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797073"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Kurz: zjištění instancí AWS pomocí posouzení serveru
 
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 --- | ---
 **Náplně** | Potřebujete virtuální počítač EC2, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **Instance systému Windows** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
-**Instance systému Linux** | Povolí příchozí připojení na portu 22 (TCP).
+**Instance systému Linux** | Povolí příchozí připojení na portu 22 (TCP).<br/><br/> Instance by se měly používat `bash` jako výchozí prostředí, jinak se zjišťování nezdaří.
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
@@ -222,11 +222,16 @@ Nastavte zařízení poprvé.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
 1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, Projděte si část **vyhodnocení serveru> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
-1. Klikněte na **Přihlásit se**. Otevře se výzva k přihlášení Azure na nové kartě prohlížeče. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
-1. Na nové kartě se přihlaste pomocí uživatelského jména a hesla Azure.
+1. K ověření pomocí Azure budete potřebovat kód zařízení. Kliknutím na **přihlášení** se otevře modální okno s kódem zařízení, jak je znázorněno níže.
+
+    ![Modální zobrazení kódu zařízení](./media/tutorial-discover-vmware/device-code.png)
+
+1. Kliknutím na **zkopírovat kód & přihlášením** zkopírujte kód zařízení a otevřete výzvu k přihlášení Azure na nové kartě prohlížeče. Pokud se nezobrazí, ujistěte se, že jste v prohlížeči zakázali blokování automaticky otevíraných oken.
+1. Na kartě nový vložte kód zařízení a přihlaste se pomocí uživatelského jména a hesla Azure.
    
    Přihlášení pomocí PIN kódu se nepodporuje.
-3. Po úspěšném přihlášení se vraťte k webové aplikaci. 
+3. Pokud kartu přihlášení omylem zavřete bez přihlašování, budete muset aktualizovat kartu prohlížeče Configuration Manageru a povolit tak tlačítko pro přihlášení znovu.
+1. Po úspěšném přihlášení se vraťte na předchozí kartu pomocí Správce konfigurace zařízení.
 4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](./tutorial-discover-physical.md) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
 
@@ -243,6 +248,10 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
     - Azure Migrate podporuje privátní klíč SSH generovaný pomocí příkazu ssh-keygen s využitím algoritmů RSA, DSA, ECDSA a ed25519.
     - Aktuálně Azure Migrate nepodporuje klíč SSH založený na hesle. Použijte prosím klíč SSH bez hesla.
     - V současné době Azure Migrate nepodporuje soubor privátního klíče SSH generovaný pomocí výstupu.
+    - Azure Migrate podporuje formát OpenSSH souboru privátního klíče SSH, jak je znázorněno níže:
+    
+    ![Formát podporovaný privátním klíčem SSH](./media/tutorial-discover-physical/key-format.png)
+
 
 1. Pokud chcete přidat více přihlašovacích údajů najednou, klikněte na **Přidat další** a uložte a přidejte další přihlašovací údaje. Pro zjišťování fyzických serverů je podporováno více přihlašovacích údajů.
 1. V **kroku 2: zadání podrobností o fyzickém nebo virtuálním serveru** klikněte na **Přidat zdroj zjišťování** a určete **IP adresu nebo plně kvalifikovaný název domény** serveru a popisný název přihlašovacích údajů pro připojení k serveru.

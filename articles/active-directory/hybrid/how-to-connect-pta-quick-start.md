@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507672"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792428"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -51,7 +51,7 @@ Ujistěte se, že jsou splněné následující požadavky.
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identifikujte Server se systémem Windows Server 2012 R2 nebo novějším, aby bylo možné spustit Azure AD Connect. Pokud ještě není povolená, [Povolte na serveru protokol TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Přidejte server do stejné doménové struktury služby Active Directory jako uživatelé, jejichž hesla potřebujete ověřit.
+1. Identifikujte Server se systémem Windows Server 2012 R2 nebo novějším, aby bylo možné spustit Azure AD Connect. Pokud ještě není povolená, [Povolte na serveru protokol TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Přidejte server do stejné doménové struktury služby Active Directory jako uživatelé, jejichž hesla potřebujete ověřit. Je potřeba poznamenat, že instalace ověřovacího agenta Pass-Through v základních verzích Windows serveru není podporovaná. 
 2. Nainstalujte [nejnovější verzi Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na server identifikovaný v předchozím kroku. Pokud už máte Azure AD Connect spuštěnou, ujistěte se, že je verze 1.1.750.0 nebo novější.
 
     >[!NOTE]

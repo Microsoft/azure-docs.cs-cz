@@ -3,16 +3,16 @@ title: Nejčastější dotazy k Azure IoT Central | Microsoft Docs
 description: Nejčastější dotazy k Azure IoT Centralu (FAQ) a odpovědi
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126716"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796036"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>Nejčastější dotazy k IoT Central
 
@@ -38,11 +38,11 @@ Když operátor odblokuje zařízení, stav se vrátí do předchozí hodnoty, *
 
 Pokud stav zařízení čeká na **schválení** na stránce **zařízení** , znamená to, že je možnost **automatického schvalování** zakázaná:
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Snímek obrazovky znázorňující blokované zařízení":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Snímek obrazovky znázorňující možnost automatického schvalování zakázané aplikace":::
 
 Operátor musí explicitně schválit zařízení před tím, než začne zasílat data. Zařízení, která nejsou zaregistrovaná ručně na stránce **zařízení** , ale jsou připojená s platnými přihlašovacími údaji, budou mít stav zařízení **čekající na schválení**. Operátoři mohou schválit tato zařízení ze stránky **zařízení** pomocí tlačítka **schválit** :
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Snímek obrazovky znázorňující blokované zařízení":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Snímek obrazovky ukazující, jak schválit zařízení":::
 
 **Návody přidružit zařízení k šabloně zařízení?**
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578684"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796240"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 
@@ -37,9 +37,9 @@ Přečtěte si, jak provést následující akce:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí** , potřebujete [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
     Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
 
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Skupina prostředků je kontejner prostředků na platformě Azure. Při práci s Azure Machine Learning bude skupina prostředků obsahovat váš pracovní prostor Azure Machine Learning. Bude také obsahovat další služby Azure, které pracovní prostor používá. Pokud například provedete svůj model pomocí cloudového výpočetního prostředku, vytvoří se tento prostředek ve skupině prostředků.
 
-Pokud chcete __vytvořit novou skupinu prostředků__ , použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
+Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
 > [!TIP]
 > Vyberte oblast, ve které je Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -307,10 +307,10 @@ Další informace o spuštění konfiguračních souborů najdete v tématu [pou
 Pokud chcete spustit školicí běh na `cpu-cluster` cílovém výpočetním cíli, použijte následující příkaz:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Tento příkaz určuje název experimentu ( `myexperiment` ). Experiment ukládá informace o tomto běhu v pracovním prostoru.
+Tento příkaz určuje název experimentu ( `tutorial-cli` ). Experiment ukládá informace o tomto běhu v pracovním prostoru.
 
 `-c mnist`Parametr určuje `.azureml/mnist.runconfig` soubor.
 
@@ -327,7 +327,7 @@ Tento text se zaznamená do protokolu ze školicího skriptu a zobrazí přesnos
 
 Pokud provedete kontrolu školicího skriptu, všimnete si, že při ukládání školicího modelu do nástroje používá také hodnotu alfa `outputs/sklearn_mnist_model.pkl` .
 
-Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu ( `myexperiment` v tomto příkladu).
+Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu ( `tutorial-cli` v tomto příkladu).
 
 ## <a name="register-the-model"></a>Registrace modelu
 
@@ -345,13 +345,13 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791881"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795974"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
@@ -42,7 +42,11 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
 
 1. V nabídce Security Center otevřete stránku **doporučení** a podívejte se na doporučení týkající se vašeho prostředí. Doporučení jsou seskupena do ovládacích prvků zabezpečení.
 
-      ![Doporučení seskupená podle řízení zabezpečení](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Doporučení seskupená podle řízení zabezpečení" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. Pokud chcete najít doporučení specifická pro typ prostředku, závažnost, prostředí nebo další kritéria, která jsou pro vás důležitá, použijte volitelné filtry nad seznamem doporučení.
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filtry pro upřesnění seznamu Azure Security Center doporučení":::
 
 1. Rozbalením ovládacího prvku a výběrem konkrétního doporučení zobrazíte stránku s podrobnostmi o doporučení.
 
@@ -60,7 +64,7 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
         - **Zdroje** , které nejsou v pořádku – prostředky, které jsou pořád ovlivněny zjištěným problémem.
         - **Nepoužitelné prostředky** – prostředky, u kterých doporučení nemůže poskytnout definitivní odpověď. Karta netýká se také obsahuje důvody pro každý prostředek. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Stránka s podrobnostmi o doporučení.":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Z důvodů nelze použít prostředky.":::
     1. Tlačítka akcí k nápravě doporučení nebo spuštění aplikace logiky
 
 ## <a name="preview-recommendations"></a>Doporučení pro verzi Preview
@@ -71,7 +75,7 @@ Měly by se pořád opravit všude, kde je to možné, takže po skončení obdo
 
 Příklad doporučení verze Preview:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Stránka s podrobnostmi o doporučení.":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
  
 ## <a name="next-steps"></a>Další kroky
 

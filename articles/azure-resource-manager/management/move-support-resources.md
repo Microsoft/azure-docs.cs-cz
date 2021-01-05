@@ -3,12 +3,12 @@ title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 72cc2bd1b391acd2065cc4b775c50af94510a840
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937521"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795897"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 
@@ -1912,9 +1912,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | pracovní prostory | Ano | Ano |
-> | pracovní prostory/bigdatapools | Ano | Ano |
-> | pracovní prostory/sqlpools | Ano | Ano |
+> | pracovní prostory | Ne | Ne |
+> | pracovní prostory/bigdatapools | Ne | Ne |
+> | pracovní prostory/sqlpools | Ne | Ne |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 

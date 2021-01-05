@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400569"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770957"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled limitů prostředků služby Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 | Maximální počet relací | 30000 | 30000 |
 | Maximální počet souběžných pracovních procesů (požadavků) | Gen4: 210 × počet virtuálních jader + 800<br>Gen5: 105 × počet virtuálních jader + 800 | Gen4: 210 × počet virtuálních jader + 800<br>Gen5: 105 × počet virtuálních jader + 800 |
 | [Repliky jen pro čtení](../database/read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
-| Izolace výpočtů | Gen5<br/>– podporováno pro 80 virtuální jádra<br/>-není podporováno pro jiné velikosti<br/><br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|Gen5<br/>– podporováno pro 60, 64, 80 virtuální jádra<br/>-není podporováno pro jiné velikosti<br/><br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|
+| Izolace výpočtů | Gen5 se nepodporuje, protože instance Pro obecné účely můžou sdílet fyzický hardware s ostatními instancemi.<br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|Gen5<br/>– podporováno pro 40, 64, 80 virtuální jádra<br/>-není podporováno pro jiné velikosti<br/><br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|
 
 
 Několik dalších důležitých informací: 
@@ -150,7 +150,7 @@ Následující tabulka ukazuje **výchozí regionální omezení** pro podporova
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional a MSDN Platforms|2|32|
 
-\* Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Chcete-li zjednodušit analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, kde je nasazena spravovaná instance SQL, a porovnejte výsledky s omezeními jednotky instance pro váš typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
+\* Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 vCore. Chcete-li zjednodušit analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, kde je nasazena spravovaná instance SQL, a porovnejte výsledky s omezeními jednotky instance pro váš typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
 \*\* Větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 

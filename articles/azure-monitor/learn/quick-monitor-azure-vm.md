@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186758"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797175"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
@@ -73,7 +73,7 @@ Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfiguro
 
 ### <a name="data-collection-from-linux-vm"></a>Shromažďování dat z virtuálního počítače s Linuxem
 
-1. Vyberte **Syslog**.  
+1. Vyberte **data** a pak vyberte **syslog**.
 
 2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 

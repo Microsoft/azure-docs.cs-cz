@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938681"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795362"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
@@ -40,7 +40,8 @@ _ **Přenos příchozího přenosu dat:**
 
    * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
    * **Příchozí přenos dat z roviny ovládacího prvku Azure bastionu:** Pro připojení řídicí roviny povolte port 443 příchozí ze značky služby **GatewayManager** . To umožňuje, aby řídicí plocha, kterou správce bran, mohla komunikovat se službou Azure bastionu.
-   * **Příchozí přenos dat z Azure Load Balancer:** V případě sond stavu povolte port 443 příchozí ze značky služby **AzureLoadBalancer** . To umožňuje Azure Load Balancer detekovat připojení. 
+   * **Příchozí přenos dat z roviny dat Azure bastionu:** Pro komunikaci mezi základními komponentami Azure bastionu povolte porty 8080, 5701 příchozí ze značky služby **VirtualNetwork** na značku služby **VirtualNetwork** . To umožňuje komponentám Azure bastionu vzájemně komunikovat.
+   * **Příchozí přenos dat z Azure Load Balancer:** V případě sond stavu povolte port 443 příchozí ze značky služby **AzureLoadBalancer** . To umožňuje Azure Load Balancer detekovat připojení.
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Snímek obrazovky zobrazuje příchozí pravidla zabezpečení pro připojení Azure bastionu.":::
@@ -48,7 +49,9 @@ _ **Přenos příchozího přenosu dat:**
 * **Odchozí přenos dat:**
 
    * **Odchozí přenos dat do cílových virtuálních počítačů:** Azure bastionu se dostane k cílovým virtuálním počítačům přes privátní IP adresu. Skupin zabezpečení sítě musí umožňovat přenos odchozího provozu do jiných cílových podsítí virtuálních počítačů pro porty 3389 a 22.
+   * **Přenos odchozího provozu do roviny dat Azure bastionu:** Pro komunikaci mezi základními komponentami Azure bastionu povolte porty 8080, 5701 odchozí od značky služby **VirtualNetwork** do značky služby **VirtualNetwork** . To umožňuje komponentám Azure bastionu vzájemně komunikovat.
    * **Odchozí přenos dat do jiných veřejných koncových bodů v Azure:** Azure bastionu musí být schopný se připojit k různým veřejným koncovým bodům v rámci Azure (například pro ukládání protokolů diagnostiky a měřičů měření). Z tohoto důvodu Azure bastionu potřebuje pro značku služby **AzureCloud** odchozí až 443.
+   * **Odchozí provoz do Internetu:** Azure bastionu musí být schopný komunikovat s internetem kvůli relaci a ověřování certifikátů. Z tohoto důvodu doporučujeme povolit odchozí port 80 pro **Internet.**
 
 
    :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Snímek obrazovky ukazuje odchozí pravidla zabezpečení pro připojení Azure bastionu.":::

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ff55528013ac89be48454c25e1fc86deac2bca6f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357228"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792513"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Kurz: Konfigurace ThousandEyes pro Automatické zřizování uživatelů
 
@@ -55,15 +55,22 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na ThousandEyes ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace**  .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
+
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. Pokud jste už nakonfigurovali ThousandEyes pro jednotné přihlašování, vyhledejte vaši instanci ThousandEyes pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **ThousandEyes** v galerii aplikací. Ve výsledcích hledání vyberte ThousandEyes a přidejte je do seznamu aplikací.
 
+    ![Odkaz ThousandEyes v seznamu aplikací](common/all-applications.png)
+    
 3. Vyberte svou instanci ThousandEyes a pak vyberte kartu **zřizování** .
+
+    ![Karta Zřizování](common/provisioning.png)
 
 4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Snímek obrazovky zobrazuje kartu zřizování pro ThousandEyes s automatickým vybraným pro režim zřizování.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+![Snímek obrazovky zobrazuje kartu zřizování pro ThousandEyes s automatickým vybraným pro režim zřizování.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    
 
 5. V části **přihlašovací údaje správce**  zadejte **token nosiče OAuth** generovaný účtem ThousandEyes (můžete najít nebo vygenerovat token v části **profil** účtu ThousandEyes).
 
@@ -71,27 +78,54 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci ThousandEyes. Pokud se připojení nepovede, ujistěte se, že má váš účet ThousandEyes oprávnění správce, a zkuste krok 5 znovu.
 
-7. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
+7. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
+
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 8. Klikněte na **Uložit**.
 
 9. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé ThousandEyes**.
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do ThousandEyes. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v ThousandEyes pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
+10. Zkontrolujte atributy uživatele synchronizované z Azure AD do ThousandEyes v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v možnosti analyzovatelné pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby ANALYZOVATELNÉ rozhraní API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro ThousandEyes, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+     |Atribut|Typ|Podporováno pro filtrování|
+     |---|---|---|
+     |externalId|Řetězec|&check;|
+     |userName|Řetězec|&check;|
+     |active|Logická hodnota|
+     |displayName|Řetězec|
+     |emails[type eq "work"].value|Řetězec|
+     |název. formátovaný|Řetězec|
 
-12. Klikněte na **Uložit**.
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených ThousandEyes v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování.
+11. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+12. Pokud chcete povolit službu Azure AD Provisioning pro ThousandEyes, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-## <a name="additional-resources"></a>Další zdroje informací
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+13. Definujte uživatele nebo skupiny, které chcete zřídit pro ThousandEyes, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+
+    ![Rozsah zřizování](common/provisioning-scope.png)
+
+14. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
+
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+
+Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
+Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
+
+1. S využitím [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
+2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
+3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="additional-resources"></a>Další zdroje
+
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../manage-apps/check-status-user-account-provisioning.md).

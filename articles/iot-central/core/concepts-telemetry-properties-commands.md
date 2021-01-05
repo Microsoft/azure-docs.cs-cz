@@ -3,17 +3,17 @@ title: Datová část telemetrie, vlastností a příkazů v Azure IoT Central |
 description: Šablony zařízení Azure IoT Central umožňují určit telemetrii, vlastnosti a příkazy zařízení, které musí implementovat. Porozumíte formátu dat, která zařízení můžou vyměňovat pomocí IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121767"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795339"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -721,8 +721,8 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202`  ani `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
-| `'ac': 4xx` | Chyba | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
-| `'ac': 5xx` | Chyba | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
+| `'ac': 4xx` | Chybová | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
+| `'ac': 5xx` | Chybová | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
 
 `av` je číslo verze odesílané do zařízení.
 

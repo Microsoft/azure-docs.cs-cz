@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791847"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763264"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ Pomocí [Azure Portal](https://portal.azure.com) můžete zobrazit stav služby 
 
 [Azure Portal](https://portal.azure.com) může také poskytovat oznámení o incidentech, které mají vliv na různé služby Azure.
 Poznámka: tyto informace byly na [řídicím panelu služby Azure](https://status.azure.com)dříve k dispozici společně s historickými daty.
-
-I když [Azure Portal](https://portal.azure.com) shromažďuje informace o stavu z datacenter v datacentrech Azure (interní monitorování), můžete také zvážit přijetí přístupu mimo podnik ke generování syntetických transakcí, které pravidelně přistupují k vaší webové aplikaci hostované v Azure z více míst. Příklady tohoto přístupu jsou služby nabízené [dynaTrace](https://www.dynatrace.com/en/synthetic-monitoring) a Application Insights pro Azure DevOps. Další informace o Application Insights pro Azure DevOps najdete v dodatku[5: monitoring with Application Insights for Azure DevOps](#appendix-5).
+Další informace o Application Insights pro Azure DevOps najdete v dodatku[5: monitoring with Application Insights for Azure DevOps](#appendix-5).
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>Kapacita monitorování
-Metriky úložiště pouze ukládají metriky kapacity pro službu BLOB Service, protože objekty blob obvykle využívají největší podíl uložených dat (v době psaní není možné použít metriky úložiště k monitorování kapacity tabulek a front). Tato data můžete najít v tabulce **$MetricsCapacityBlob** , pokud jste povolili monitorování pro BLOB Service. Metrika úložiště zaznamenává tato data jednou za den a můžete použít hodnotu **RowKey** k určení, zda řádek obsahuje entitu, která souvisí s uživatelskými daty (hodnotami **dat** ) nebo analytickými daty ( **Analýza** hodnot). Každá uložená entita obsahuje informace o velikosti využitého úložiště (měřený **objem** v bajtech) a o aktuálním počtu kontejnerů ( **ContainerCount** ) a objektů BLOB ( **objectCount** ) používaných v účtu úložiště. Další informace o metrikách kapacity uložených v tabulce **$MetricsCapacityBlob** najdete v tématu [Analýza úložiště schématu tabulky metrik](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
+Metriky úložiště pouze ukládají metriky kapacity pro službu BLOB Service, protože objekty blob obvykle využívají největší podíl uložených dat (v době psaní není možné použít metriky úložiště k monitorování kapacity tabulek a front). Tato data můžete najít v tabulce **$MetricsCapacityBlob** , pokud jste povolili monitorování pro BLOB Service. Metrika úložiště zaznamenává tato data jednou za den a můžete použít hodnotu **RowKey** k určení, zda řádek obsahuje entitu, která souvisí s uživatelskými daty (hodnotami **dat**) nebo analytickými daty ( **Analýza** hodnot). Každá uložená entita obsahuje informace o velikosti využitého úložiště (měřený **objem** v bajtech) a o aktuálním počtu kontejnerů (**ContainerCount**) a objektů BLOB (**objectCount**) používaných v účtu úložiště. Další informace o metrikách kapacity uložených v tabulce **$MetricsCapacityBlob** najdete v tématu [Analýza úložiště schématu tabulky metrik](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 > [!NOTE]
 > Tyto hodnoty byste měli monitorovat pro počáteční upozornění, ke kterému se přiblížíte omezení kapacity účtu úložiště. V Azure Portal můžete přidat pravidla výstrah, která vás upozorní, pokud použití agregačního úložiště překročí nebo klesne pod prahovou hodnotu, kterou určíte.
@@ -134,9 +133,9 @@ Metriky úložiště pouze ukládají metriky kapacity pro službu BLOB Service,
 Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty blob, najdete v příspěvku na blogu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Monitorování dostupnosti
-Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat monitorováním hodnoty ve sloupci **dostupnost** v tabulkách hodinové nebo minutové metriky – **$MetricsHourPrimaryTransactionsBlob** , **$MetricsHourPrimaryTransactionsTable** , **$MetricsHourPrimaryTransactionsQueue** , **$MetricsMinutePrimaryTransactionsBlob** , **$MetricsMinutePrimaryTransactionsTable** , **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob** . Sloupec **dostupnosti** obsahuje procentuální hodnotu, která indikuje dostupnost služby nebo operace rozhraní API reprezentované řádkem ( **RowKey** ukazuje, jestli řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
+Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat monitorováním hodnoty ve sloupci **dostupnost** v tabulkách hodinové nebo minutové metriky – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Sloupec **dostupnosti** obsahuje procentuální hodnotu, která indikuje dostupnost služby nebo operace rozhraní API reprezentované řádkem ( **RowKey** ukazuje, jestli řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
 
-Jakákoli hodnota menší než 100% znamená, že některé požadavky na úložiště selžou. Můžete zjistit, proč selžou, prozkoumáním dalších sloupců v datech metrik, které zobrazují počet požadavků s různými typy chyb, jako je **ServerTimeoutError** . Měli byste očekávat, že **dostupnost dostupnosti** je dočasně nižší než 100% z důvodů, jako je například přechodný časový limit serveru, zatímco služba přesouvá oddíly pro lepší požadavek na Vyrovnávání zatížení. logika opakování v klientské aplikaci by měla zpracovat takové přerušované podmínky. Článek [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) obsahuje seznam typů transakcí, které metriky úložiště zahrnují při výpočtu jejich **dostupnosti** .
+Jakákoli hodnota menší než 100% znamená, že některé požadavky na úložiště selžou. Můžete zjistit, proč selžou, prozkoumáním dalších sloupců v datech metrik, které zobrazují počet požadavků s různými typy chyb, jako je **ServerTimeoutError**. Měli byste očekávat, že **dostupnost dostupnosti** je dočasně nižší než 100% z důvodů, jako je například přechodný časový limit serveru, zatímco služba přesouvá oddíly pro lepší požadavek na Vyrovnávání zatížení. logika opakování v klientské aplikaci by měla zpracovat takové přerušované podmínky. Článek [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) obsahuje seznam typů transakcí, které metriky úložiště zahrnují při výpočtu jejich **dostupnosti** .
 
 V [Azure Portal](https://portal.azure.com)můžete přidat pravidla upozornění, která vás upozorní, pokud **dostupnost** služby klesne pod prahovou hodnotu, kterou určíte.
 
@@ -183,7 +182,7 @@ Po zjištění problematického umístění příčiny potíží s výkonem z me
 Další informace o některých běžných problémech souvisejících s výkonem, ke kterým může dojít, najdete v části[pokyny k odstraňování potíží]dále v tomto průvodci.
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>Diagnostikování chyb
-Uživatelé vaší aplikace mohou upozorňovat na chyby hlášené klientskou aplikací. Metriky úložiště také zaznamenává počty různých typů chyb z vašich služeb úložiště, například **NetworkError** , **ClientTimeoutError** nebo **AuthorizationError** . I když metrika úložiště zaznamenává jenom počty různých typů chyb, můžete získat další podrobnosti o jednotlivých požadavcích tím, že prozkoumáte protokoly na straně serveru, klienta a sítě. Stavový kód HTTP vrácený službou úložiště obvykle poskytne informace o tom, proč se žádost nezdařila.
+Uživatelé vaší aplikace mohou upozorňovat na chyby hlášené klientskou aplikací. Metriky úložiště také zaznamenává počty různých typů chyb z vašich služeb úložiště, například **NetworkError**, **ClientTimeoutError** nebo **AuthorizationError**. I když metrika úložiště zaznamenává jenom počty různých typů chyb, můžete získat další podrobnosti o jednotlivých požadavcích tím, že prozkoumáte protokoly na straně serveru, klienta a sítě. Stavový kód HTTP vrácený službou úložiště obvykle poskytne informace o tom, proč se žádost nezdařila.
 
 > [!NOTE]
 > Nezapomeňte, že byste měli očekávat, že se zobrazí některé občasné chyby: například chyby z důvodu přechodných síťových podmínek nebo chyby aplikace.
@@ -348,7 +347,7 @@ Souvisí váš problém s dostupností jedné ze služeb úložiště?
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Metrika ukazuje vysokou hodnotu AverageE2ELatency a nízkou hodnotu AverageServerLatency.
-Na ilustraci níže v nástroji pro monitorování [Azure Portal](https://portal.azure.com) se zobrazuje příklad, kdy je **hodnotu averagee2elatency** výrazně vyšší než **hodnotu averageserverlatency** .
+Na ilustraci níže v nástroji pro monitorování [Azure Portal](https://portal.azure.com) se zobrazuje příklad, kdy je **hodnotu averagee2elatency** výrazně vyšší než **hodnotu averageserverlatency**.
 
 ![Obrázek z Azure Portal, který ukazuje příklad, kde je hodnotu averagee2elatency výrazně vyšší než hodnotu averageserverlatency.][4]
 
@@ -362,7 +361,7 @@ Služba Storage počítá jenom **hodnotu averagee2elatency** metriky pro úspě
 #### <a name="investigating-client-performance-issues"></a>Zkoumání problémů s výkonem klienta
 Možné příčiny, proč klient reaguje pomalu, zahrnuje omezený počet dostupných připojení nebo vláken nebo má nízkou velikost prostředků, jako jsou například CPU, paměť nebo šířka pásma sítě. Problém může být možné vyřešit úpravou kódu klienta tak, aby byl efektivnější (například pomocí asynchronního volání služby úložiště), nebo pomocí většího virtuálního počítače (s více jádry a více paměti).
 
-Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency** : Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
+Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
@@ -459,14 +458,14 @@ Vaše metriky ukazují zvýšení **PercentTimeoutError** pro jednu z vašich sl
 >
 >
 
-Metrika **PercentTimeoutError** je agregace následujících metrik: **ClientTimeoutError** , **AnonymousClientTimeoutError** , **SASClientTimeoutError** , **ServerTimeoutError** , **AnonymousServerTimeoutError** a **SASServerTimeoutError** .
+Metrika **PercentTimeoutError** je agregace následujících metrik: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError** a **SASServerTimeoutError**.
 
 Vypršení časového limitu serveru je způsobeno chybou na serveru. K vypršení časového limitu klienta dochází, protože operace na serveru překročila časový limit zadaný klientem. například klient využívající knihovnu klienta úložiště může nastavit časový limit pro operaci pomocí vlastnosti **ServerTimeout** třídy **QueueRequestOptions** .
 
 Vypršení časových limitů serveru indikují problém se službou úložiště, která vyžaduje další šetření. Metriky můžete použít, pokud chcete zjistit, jestli jste u služby nedosáhli limitu škálovatelnosti, a identifikovat případné špičky v provozu, které by mohly způsobovat tento problém. Pokud je problém přerušovaný, může to být způsobeno aktivitou vyrovnávání zatížení ve službě. Pokud je problém trvalý a není způsobený tím, že vaše aplikace zasáhne omezení škálovatelnosti služby, měli byste vyvolat problém podpory. V případě časových limitů klienta se musíte rozhodnout, zda je časový limit nastaven na odpovídající hodnotu v klientovi, a buď změnit hodnotu časového limitu nastavenou v klientovi, nebo prozkoumat, jak můžete zlepšit výkon operací ve službě úložiště, například optimalizací dotazů tabulky nebo zmenšením velikosti zpráv.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metrika ukazuje zvýšení u PercentNetworkError.
-Vaše metriky ukazují zvýšení **PercentNetworkError** pro jednu z vašich služeb úložiště. Metrika **PercentNetworkError** je agregace následujících metrik: **NetworkError** , **AnonymousNetworkError** a **SASNetworkError** . K tomu dojde, když služba úložiště detekuje chybu sítě, když klient vytvoří požadavek na úložiště.
+Vaše metriky ukazují zvýšení **PercentNetworkError** pro jednu z vašich služeb úložiště. Metrika **PercentNetworkError** je agregace následujících metrik: **NetworkError**, **AnonymousNetworkError** a **SASNetworkError**. K tomu dojde, když služba úložiště detekuje chybu sítě, když klient vytvoří požadavek na úložiště.
 
 Nejběžnější příčinou této chyby je odpojení klienta před vypršením časového limitu ve službě úložiště. Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště. Nástroj Wireshark nebo Tcping můžete použít také k prozkoumání problémů s připojením k síti z klienta. Tyto nástroje jsou popsány v [dodatcích].
 
@@ -489,7 +488,7 @@ V tomto scénáři byste měli prozkoumat, proč platnost tokenu SAS vyprší p�
 
 * Obvykle byste neměli nastavit čas zahájení, když vytváříte SAS pro okamžité použití. Pokud existují malý časový rozdíl mezi hostitelem generujícím SAS s použitím aktuálního času a mezi službou úložiště, je možné, že služba úložiště přijme SAS, který ještě není platný.
 * Nenastavujte ani velmi krátkou dobu vypršení platnosti SAS. Opět, malý časový rozdíl mezi hostitelem generujícím SAS a službou úložiště může vést k předčasnému zdánlivému vypršení platnosti SAS.
-* Odpovídá parametr verze v klíči SAS (například **sv = 2015-04-05** ) verzi klientské knihovny pro úložiště, kterou používáte? Doporučujeme vždy používat nejnovější verzi [klientské knihovny pro úložiště](https://www.nuget.org/packages/WindowsAzure.Storage/).
+* Odpovídá parametr verze v klíči SAS (například **sv = 2015-04-05**) verzi klientské knihovny pro úložiště, kterou používáte? Doporučujeme vždy používat nejnovější verzi [klientské knihovny pro úložiště](https://www.nuget.org/packages/WindowsAzure.Storage/).
 * Když znovu vygenerujete přístupové klíče k úložišti, může to zneplatnit stávající tokeny SAS. Tento problém může nastat, když vygenerujete tokeny SAS s dlouhou dobou vypršení platnosti pro uložení v mezipaměti u klientů.
 
 Pokud k vygenerování tokenů SAS používáte klientskou knihovnu úložiště, je vytvoření platného tokenu snadné. Pokud ale používáte úložiště REST API a vytváříte tokeny SAS ručně, přečtěte si téma [delegování přístupu pomocí sdíleného přístupového podpisu](/rest/api/storageservices/delegate-access-with-shared-access-signature).
@@ -574,7 +573,7 @@ Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru z
 | Stav žádosti     | SASAuthorizationError        |
 | Stavový kód HTTP   | 404                            |
 | Typ ověřování| Vede                          |
-| Typ služby       | Blob                         |
+| Typ služby       | Objekt blob                         |
 | Adresa URL požadavku         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ? sv = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX &; API-Version = 2014-02-14 |
 | Hlavička ID žádosti  | a1f348d5-8032-4912-93ef-b393e5252a3b |
@@ -633,11 +632,11 @@ Podrobnosti výjimky v klientovi zahrnují ID žádosti (7e84f12d...) přiřazen
 
 Protokol na straně serveru také obsahuje další položku se stejnou hodnotou **ID klienta-požadavku** (813ea74f...) pro úspěšnou operaci odstranění pro stejnou entitu a ze stejného klienta. Tato úspěšná operace odstranění trvala krátce před neúspěšným požadavkem na odstranění.
 
-Nejpravděpodobnější příčinou tohoto scénáře je, že klient odeslal žádost o odstranění pro entitu službě Table Service, která byla úspěšná, ale neobdržela potvrzení ze serveru (možná kvůli dočasnému problému v síti). Klient pak automaticky znovu vyzkoušel operaci (pomocí stejného **ID klienta-požadavku** ) a tento pokus se nezdařil, protože entita již byla odstraněna.
+Nejpravděpodobnější příčinou tohoto scénáře je, že klient odeslal žádost o odstranění pro entitu službě Table Service, která byla úspěšná, ale neobdržela potvrzení ze serveru (možná kvůli dočasnému problému v síti). Klient pak automaticky znovu vyzkoušel operaci (pomocí stejného **ID klienta-požadavku**) a tento pokus se nezdařil, protože entita již byla odstraněna.
 
 Pokud k těmto potížím dochází často, měli byste prozkoumat, proč se klientovi nedaří přijímat potvrzení ze služby Table Service. Pokud je problém přerušovaný, měli byste zachytit chybu "HTTP (404) Nenalezeno" a zaznamenat ji do klienta, ale umožněte klientovi, aby pokračoval.
 
-### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Klient dostává stavové kód HTTP 409 (Konflikt)
+### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Klient přijímá zprávy HTTP 409 (konflikt).
 Následující tabulka ukazuje extrakci z protokolu na straně serveru pro dvě operace klienta: **DeleteIfExists** , za kterým následuje **CreateIfNotExists** , pomocí stejného názvu kontejneru objektů BLOB. Každá operace klienta má za následek odeslání dvou požadavků na server, nejprve **GetContainerProperties** požadavek na kontrolu existence kontejneru a za ním požadavek **DeleteContainer** nebo **CreateContainer** .
 
 | Timestamp | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
@@ -652,7 +651,7 @@ Kód v klientské aplikaci odstraní a pak okamžitě znovu vytvoří kontejner 
 Klientská aplikace by měla pokaždé, když vytvoří nový kontejner, použít jedinečný název, pokud je tento postup odstraňování a vytváření běžný.
 
 ### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>Metriky zobrazují nízké PercentSuccess nebo položky protokolu analýzy mají operace se stavem transakce ClientOtherErrors.
-Metrika **PercentSuccess** zachycuje procento operací, které byly úspěšné na základě jejich stavového kódu http. Operace se stavovým kódem 2XX se počítají jako úspěšné, zatímco operace se stavovým kódem v 3XX, 4XX a 5XX rozsahy se počítají jako neúspěšné a snižují hodnotu metriky **PercentSuccess** . V souborech protokolu úložiště na straně serveru se tyto operace zaznamenávají se stavem transakce **ClientOtherErrors** .
+Metrika **PercentSuccess** zachycuje procento operací, které byly úspěšné na základě jejich stavového kódu http. Operace se stavovým kódem 2XX se počítají jako úspěšné, zatímco operace se stavovým kódem v 3XX, 4XX a 5XX rozsahy se počítají jako neúspěšné a snižují hodnotu metriky **PercentSuccess** . V souborech protokolu úložiště na straně serveru se tyto operace zaznamenávají se stavem transakce **ClientOtherErrors**.
 
 Je důležité si uvědomit, že tyto operace byly úspěšně dokončeny, a proto nemají vliv na jiné metriky, jako je dostupnost. Některé příklady operací, které jsou úspěšně spouštěny, ale mohou mít za následek neúspěšné kódy stavu HTTP:
 
@@ -733,7 +732,7 @@ V tomto dodatku najdete Stručný návod, jak nakonfigurovat Fiddler pro zachyce
 Po spuštění Fiddler zahájí zachycení provozu HTTP a HTTPS na místním počítači. Níže jsou uvedeny některé užitečné příkazy pro řízení Fiddler:
 
 * Zastavte a zahajte zachytávání provozu. V hlavní nabídce přejděte na **soubor** a potom klikněte na **zachytit provoz** . tím přepnete zachytávání.
-* Uložit zachycená data o provozu. V hlavní nabídce přejděte na **soubor** , klikněte na **Uložit** a pak klikněte na **všechny relace** : to vám umožní uložit provoz do souboru archivu relace. Archiv relace můžete znovu znovu načíst pro účely analýzy nebo ho odeslat, pokud se požaduje podpora Microsoftu.
+* Uložit zachycená data o provozu. V hlavní nabídce přejděte na **soubor**, klikněte na **Uložit** a pak klikněte na **všechny relace**: to vám umožní uložit provoz do souboru archivu relace. Archiv relace můžete znovu znovu načíst pro účely analýzy nebo ho odeslat, pokud se požaduje podpora Microsoftu.
 
 Pokud chcete omezit objem přenosů, které Fiddler zachycuje, můžete použít filtry, které nakonfigurujete na kartě **filtry** . Následující snímek obrazovky ukazuje filtr, který zachycuje jenom provoz odeslaný do koncového bodu **contosoemaildist.Table.Core.Windows.NET** úložiště:
 
@@ -746,19 +745,19 @@ Následující postup ukazuje, jak zachytit podrobné informace o paketech pro p
 
 1. Spusťte na svém místním počítači Nástroj Wireshark.
 2. V části **Start** vyberte místní síťové rozhraní nebo rozhraní, která jsou připojená k Internetu.
-3. Klikněte na možnost **zachytit možnosti** .
+3. Klikněte na možnost **zachytit možnosti**.
 4. Přidejte filtr do textového pole **filtru zachycení** . Například **hostitel contosoemaildist.Table.Core.Windows.NET** nakonfiguruje Nástroj Wireshark, aby zachytával pouze pakety odeslané do nebo z koncového bodu služby Table Service v účtu úložiště **contosoemaildist** . Podívejte se na [úplný seznam zachycených filtrů](https://wiki.wireshark.org/CaptureFilters).
 
    ![Snímek obrazovky, který ukazuje, jak přidat filtr do textového pole filtru zachycení.][6]
-5. Klikněte na tlačítko **Start** . Nástroj Wireshark nyní bude zachytit všechny pakety odeslané do nebo z koncového bodu služby Table Service při použití klientské aplikace na místním počítači.
-6. Po dokončení klikněte v hlavní nabídce na **zachytit** a pak na **zastavit** .
-7. Pokud chcete zachycená data uložit do digitalizačního souboru Wireshark, klikněte v hlavní nabídce na **soubor** a pak na **Uložit** .
+5. Klikněte na tlačítko **Start**. Nástroj Wireshark nyní bude zachytit všechny pakety odeslané do nebo z koncového bodu služby Table Service při použití klientské aplikace na místním počítači.
+6. Po dokončení klikněte v hlavní nabídce na **zachytit** a pak na **zastavit**.
+7. Pokud chcete zachycená data uložit do digitalizačního souboru Wireshark, klikněte v hlavní nabídce na **soubor** a pak na **Uložit**.
 
-Nástroj WireShark vyzvýrazní všechny chyby, které se nachází v okně **packetlist** . K zobrazení souhrnu chyb a upozornění můžete použít také okno **informace o poradci** (kliknutím na tlačítko **analyzovat** , **informace o odborném** programu).
+Nástroj WireShark vyzvýrazní všechny chyby, které se nachází v okně **packetlist** . K zobrazení souhrnu chyb a upozornění můžete použít také okno **informace o poradci** (kliknutím na tlačítko **analyzovat**, **informace o odborném** programu).
 
 ![Snímek obrazovky zobrazující okno informace o poradci, kde můžete zobrazit souhrn chyb a upozornění.][7]
 
-Můžete se také rozhodnout zobrazit data TCP jako aplikační vrstvu, a to tak, že pravým tlačítkem myši kliknete na data TCP a vyberete **sledovat datový proud TCP** . To je užitečné, pokud jste si vychytili výpis bez filtru zachycení. Další informace najdete v [následujících datových proudech TCP](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Můžete se také rozhodnout zobrazit data TCP jako aplikační vrstvu, a to tak, že pravým tlačítkem myši kliknete na data TCP a vyberete **sledovat datový proud TCP**. To je užitečné, pokud jste si vychytili výpis bez filtru zachycení. Další informace najdete v [následujících datových proudech TCP](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![Snímek obrazovky, který ukazuje, jak zobrazit data protokolu TCP jako aplikační vrstvu.][8]
 
@@ -772,9 +771,9 @@ Můžete se také rozhodnout zobrazit data TCP jako aplikační vrstvu, a to tak
 
 Import dat protokolování úložiště do Excelu po jeho stažení z úložiště objektů BLOB:
 
-* V nabídce **data** klikněte na **text** .
-* Přejděte k souboru protokolu, který chcete zobrazit, a klikněte na **importovat** .
-* V kroku 1 **Průvodce importem textu** vyberte **odděleno** .
+* V nabídce **data** klikněte na **text**.
+* Přejděte k souboru protokolu, který chcete zobrazit, a klikněte na **importovat**.
+* V kroku 1 **Průvodce importem textu** vyberte **odděleno**.
 
 V kroku 1 **Průvodce importem textu** vyberte jako jediný oddělovač **středník** a jako **kvalifikátor textu** zvolte dvojité uvozovky. Pak klikněte na **Dokončit** a zvolte, kam umístit data do sešitu.
 

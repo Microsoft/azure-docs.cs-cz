@@ -7,16 +7,16 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752647"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797090"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
-V tomto článku se dozvíte, jak migrovat místní virtuální počítače VMware do Azure pomocí nástroje [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) Tool s migrací založenou na agentech.  Virtuální počítače VMware můžete také migrovat pomocí migrace založené na agentech. [Porovnejte](server-migrate-overview.md#compare-migration-methods) metody.
+V tomto článku se dozvíte, jak migrovat místní virtuální počítače VMware do Azure pomocí nástroje [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) Tool s migrací založenou na agentech.  Virtuální počítače VMware můžete také migrovat pomocí migrace bez agentů. [Porovnejte](server-migrate-overview.md#compare-migration-methods) metody.
 
 
  V tomto kurzu se naučíte:
@@ -159,7 +159,7 @@ Stáhněte šablonu následujícím způsobem:
     ![Vytvoření trezoru služby Recovery Services](./media/tutorial-migrate-vmware-agent/create-resources.png)
 
 8. V nástroji chcete **nainstalovat nové replikační zařízení?** vyberte **nainstalovat zařízení replikace**.
-9. Klikněte na tlačítko **Stáhnout**. Tím se stáhne šablona OVF.
+9. Klikněte na **Stáhnout**. Tím se stáhne šablona OVF.
     ![Stáhnout VAJÍČKy](./media/tutorial-migrate-vmware-agent/download-ova.png)
 10. Poznamenejte si název skupiny prostředků a trezoru Recovery Services. Budete je potřebovat během nasazování zařízení.
 
@@ -325,7 +325,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     ![Replikace serverů](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
 
 2. V části **Replikace počítačů** klikněte pravým tlačítkem na virtuální počítač a vyberte **Migrovat**.
-3. V **Migrate**  >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  **OK**.
+3. V   >  **nástroji migrovat vypínání virtuálních počítačů a provádění plánované migrace bez ztráty dat** vyberte **Ano**  >  .
     - Ve výchozím nastavení Azure Migrate vypne místní virtuální počítač, aby se zajistila minimální ztráta dat. 
     - Pokud virtuální počítač nechcete vypnout, vyberte **Ne**.
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.

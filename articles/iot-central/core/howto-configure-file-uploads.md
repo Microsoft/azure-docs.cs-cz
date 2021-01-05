@@ -4,15 +4,15 @@ description: Jak nakonfigurovat nahrávání souborů z vašich zařízení do c
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/06/2020
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122598"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796900"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Nahrání souborů ze zařízení do cloudu
 
@@ -20,7 +20,7 @@ ms.locfileid: "92122598"
 
 IoT Central umožňuje nahrávat média a další soubory z připojených zařízení do cloudového úložiště. V aplikaci IoT Central nakonfigurujete schopnost nahrávání souborů a potom v kódu zařízení implementovat nahrávání souborů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné konfigurovat nahrávání souborů, musíte být správcem v aplikaci IoT Central.
 

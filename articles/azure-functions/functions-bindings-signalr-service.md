@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104372"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763485"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -18,6 +18,7 @@ Tato sada článků vysvětluje, jak ověřit a odeslat zprávy v reálném čas
 
 | Akce | Typ |
 |---------|---------|
+| Zpracování zpráv ze služby signalizace | [Aktivační vazba](./functions-bindings-signalr-service-trigger.md) |
 | Vrátí adresu URL koncového bodu služby a přístupový token. | [Vstupní vazba](./functions-bindings-signalr-service-input.md) |
 | Odeslat zprávy služby Signaler |[Výstupní vazba](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, mus
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Zpracování zpráv ze služby signalizace (aktivační vazba)](./functions-bindings-signalr-service-trigger.md)
 - [Vrácení adresy URL koncového bodu služby a přístupového tokenu (vstupní vazba)](./functions-bindings-signalr-service-input.md)
 - [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md)

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919637"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796053"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -31,7 +31,7 @@ V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azu
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
@@ -91,7 +91,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         Vyberte **Další**.
 1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
 
-1. Ve formuláři **Konfigurace spuštění** zadejte jedinečný název experimentu.
+1. Ve formuláři **Konfigurace spuštění** vyberte **vytvořit novou** a jako název experimentu zadejte **kurz – automl-Deploy** .
 
 1. Vyberte cílový sloupec; Toto je sloupec, na který byste chtěli předpovědi.
 
@@ -106,7 +106,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Typ virtuálního počítače| Vyberte procesor nebo GPU pro typ virtuálního počítače.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
-    Rozšířená nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
+    Pokročilá nastavení | Tato nastavení umožňují nakonfigurovat uživatelský účet a stávající virtuální síť pro svůj experiment. 
     
     Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
@@ -164,7 +164,7 @@ Imputace s| Vyberte, která hodnota má ve vašich datech imputace chybějící 
 Vyberte **Dokončit** pro spuštění experimentu. Proces přípravy experimentu může trvat až 10 minut. U každého kanálu může další 2 až 3 minuty trvat, než se dokončí úlohy trénování.
 
 > [!NOTE]
-> Algoritmy automatizovaného použití ML mají podstatu náhodnosti, která může způsobit mírnou variaci doporučených modelů, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
+> Algoritmy automatizované ML mají podstatu, která může způsobit mírnou variaci v konečném skóre Doporučené metriky modelu, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
 
 ### <a name="view-experiment-details"></a>Zobrazení podrobností o experimentu
 
@@ -172,7 +172,7 @@ Otevře se obrazovka s **podrobnostmi o spuštění** na kartě **Podrobnosti** 
 
 Na kartě **Modely** je seznam vytvořených modelů seřazený podle skóre metriky. Ve výchozím nastavení se na prvním místě seznamu zobrazí model, který na základě zvolené metriky získá nejvyšší skóre. Když trénovací úloha vyzkouší další modely, přidají se do seznamu. Tady můžete rychle porovnat metriky pro zatím vytvořené modely.
 
-[![Spustit řídicí panel podrobností](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![Podrobnosti o spuštění](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>Zobrazit podrobnosti o školicím běhu
 
@@ -216,10 +216,10 @@ Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
     Po zahájení nasazení se zobrazí karta **Shrnutí modelu**. Průběh nasazení můžete sledovat v části **Stav nasazení**. 
 
-Teď máte funkční webovou službu pro generování předpovědí. Předpovědi můžete otestovat dotazováním služby s využitím [integrované podpory služby Azure Machine Learning v Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Teď máte funkční webovou službu pro generování předpovědí. Předpovědi můžete otestovat dotazováním služby s využitím [integrované podpory služby Azure Machine Learning v Power BI](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Naučte se využívat webovou službu](./how-to-consume-web-service.md).
+* [Naučte se využívat webovou službu](how-to-consume-web-service.md).
 * [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.

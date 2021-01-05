@@ -3,15 +3,15 @@ title: Přehled Durable Functions – Azure
 description: Úvod do rozšíření Durable Functions pro Azure Functions
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89669254"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763570"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -23,9 +23,11 @@ Durable Functions aktuálně podporuje následující jazyky:
 
 * **C#**: [knihovny předkompilovaných tříd](../functions-dotnet-class-library.md) a [skript jazyka C#](../functions-reference-csharp.md).
 * **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
-* **Python**: vyžaduje verzi 1.8.5 rozšíření Durable Functions nebo novější verzi. Podpora Durable Functions je v současnosti ve verzi Public Preview.
+* **Python**: vyžaduje verzi 2.3.1 rozšíření Durable Functions nebo novější verzi. Podpora Durable Functions je v současnosti ve verzi Public Preview.
 * **F #**: předkompilované knihovny tříd a skript jazyka F #. Skript F # se podporuje jenom pro verzi 1. x modulu runtime Azure Functions.
 * **PowerShell**: podpora pro Durable Functions je aktuálně ve verzi Public Preview. Podporováno pouze pro verzi 3. x modulu Azure Functions runtime a prostředí PowerShell 7. Vyžaduje verzi 2.2.2 rozšíření Durable Functions nebo novější verzi. V současné době jsou podporovány pouze následující vzorce: [řetězení funkcí](#chaining), [ventilátor nebo ventilátor –](#fan-in-out) [asynchronní rozhraní HTTP API](#async-http).
+
+Pro přístup k nejnovějším funkcím a aktualizacím se doporučuje používat nejnovější verze rozšíření Durable Functions a knihovny Durable Functions pro konkrétní jazyk. Přečtěte si další informace o [Durable Functions verzích](durable-functions-versions.md).
 
 Durable Functions má za cíl podporu všech [Azure Functionsch jazyků](../supported-languages.md). Nejnovější stav práce pro podporu dalších jazyků najdete v [seznamu problémů s Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) .
 

@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978365"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797056"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Pokud používáte cloud Azure Government, pak použijte hodnotu `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` parametru **servicePrincipalName** v rutině [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
 >
 
+Pokud chcete selektivně zálohovat málo disků a vyloučit jiné, jak je uvedeno v [těchto scénářích](selective-disk-backup-restore.md#scenarios), můžete nakonfigurovat ochranu a zálohovat pouze relevantní disky, jak je popsáno [zde](selective-disk-backup-restore.md#enable-backup-with-powershell).
+
 ## <a name="monitoring-a-backup-job"></a>Monitorování úlohy zálohování
 
 Dlouho běžící operace, jako jsou úlohy zálohování, můžete monitorovat bez použití Azure Portal. Chcete-li získat stav probíhající úlohy, použijte rutinu [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) . Tato rutina načte úlohy zálohování pro určitý trezor a tento trezor je zadaný v kontextu trezoru. Následující příklad získá stav probíhající úlohy jako pole a uloží stav do proměnné $joblist.
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>Vyloučení disků pro chráněný virtuální počítač
+
+Zálohování virtuálních počítačů Azure poskytuje možnost selektivního vyloučení nebo zahrnutí disků, které jsou užitečné v [těchto scénářích](selective-disk-backup-restore.md#scenarios). Pokud je virtuální počítač už chráněný zálohováním virtuálního počítače Azure a pokud jsou všechny disky zálohované, můžete ochranu upravit tak, aby selektivně zahrnovala nebo vyloučila disky, jak je uvedeno [tady](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell).
 
 ### <a name="trigger-a-backup"></a>Aktivace zálohování
 
@@ -511,6 +517,13 @@ Po dokončení úlohy obnovení použijte k získání podrobností o operaci ob
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>Obnovení selektivních disků
+
+Uživatel může selektivně obnovit málo disků místo celé zazálohované sady. Zadejte požadované logické jednotky (LUN) jako parametr, aby je bylo možné obnovit pouze místo celé sady, jak je popsáno [zde](selective-disk-backup-restore.md#restore-selective-disks-with-powershell).
+
+> [!IMPORTANT]
+> Jeden z nich musí selektivně zálohovat disky pro selektivní obnovení disků. Další podrobnosti najdete [tady](selective-disk-backup-restore.md#selective-disk-restore).
 
 Po obnovení disků použijte k vytvoření virtuálního počítače v další části.
 

@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a17e73c66c2296cc36b24e3b0a8abfcab00e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419387"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763420"
 ---
 Než budete moct nasadit virtuální počítače na Azure Stack hraniční zařízení, musíte klienta nakonfigurovat tak, aby se připojil k zařízení přes Azure Resource Manager přes Azure PowerShell. Podrobný postup najdete [v tomto zařízení v Azure Stack Edge](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md), kde se můžete připojit k Azure Resource Manager.
 
@@ -34,13 +34,15 @@ Ujistěte se, že se k přístupu k zařízení z klienta dají použít tyto kr
 
     Povolte výpočetní prostředky v síťovém rozhraní. Azure Stack Edge vytvoří a bude spravovat virtuální přepínač odpovídající tomuto síťovému rozhraní. Nezadávejte v tuto chvíli konkrétní IP adresy pro Kubernetes. Povolení výpočetní kapacity může trvat několik minut.
 
-    <!--If you decide to use another network interface for compute, make sure that you:
-    
-    - Delete all the VMs that you have deployed using Azure Resource Manager.
-    
-    - Delete all virtual network interfaces and the virtual network associated with this network interface. 
-    
-    - You can now enable another network interface for compute.-->
+    > [!NOTE]
+    > Pokud vytváříte virtuální počítače GPU, vyberte síťové rozhraní připojené k Internetu. To vám umožní nainstalovat na zařízení rozšíření GPU.
 
-<!--1. You may also need to configure TLS 1.2 on your client machine if running older versions of AzCopy.--> 
 
+1. Povolte roli virtuálních počítačů z Azure Portal. Tento krok vytvoří jedinečné předplatné pro vaše zařízení, které se používá k vytváření virtuálních počítačů prostřednictvím místních rozhraní API daného zařízení. 
+
+    1. Pokud chcete povolit roli virtuálních počítačů, v Azure Portal přejít na prostředek Azure Stack Edge pro zařízení Azure Stack Edge. Přejít na **> výpočtů na Edge Virtual Machines**.
+
+        ![Přidat image virtuálního počítače 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+
+    1. Vyberte **Virtual Machines** pro přechod na stránku **Přehled** . **Povolte** správu cloudu virtuálních počítačů.
+        ![Přidat image virtuálního počítače 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

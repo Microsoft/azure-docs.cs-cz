@@ -3,15 +3,15 @@ title: Konfigurace na řídicí panel Azure IoT Central | Microsoft Docs
 description: Jako tvůrce se naučíte, jak nakonfigurovat výchozí řídicí panel aplikace IoT Central pro Azure pomocí dlaždic.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491975"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797005"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -22,7 +22,7 @@ ms.locfileid: "94491975"
 
 ## <a name="add-tiles"></a>Přidat dlaždice
 
-Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené z vlastní šablony **aplikace** . Chcete-li upravit aktuální řídicí panel, vyberte možnost **Upravit** , chcete-li přidat vlastní osobní nebo sdílený řídicí panel, vyberte možnost **nové** :
+Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené z vlastní šablony **aplikace** . Chcete-li upravit aktuální řídicí panel, vyberte možnost **Upravit**, chcete-li přidat vlastní osobní nebo sdílený řídicí panel, vyberte možnost **nové**:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
@@ -30,7 +30,7 @@ Po výběru **Upravit** nebo **Nový** je řídicí panel v režimu *úprav* . P
 
 1. Vyberte **skupinu zařízení** a potom zvolte zařízení v rozevíracím seznamu **zařízení** , která chcete zobrazit na dlaždici. Nyní se zobrazí dostupná telemetrie, vlastnosti a příkazy ze zařízení.
 
-1. V případě potřeby můžete použít rozevírací seznam k výběru hodnoty telemetrie, která se má zobrazit na dlaždici. Další položky můžete do dlaždice přidat tak, že vyberete **+ telemetrie** , **+ vlastnost** nebo **+ cloudovou vlastnost**.
+1. V případě potřeby můžete použít rozevírací seznam k výběru hodnoty telemetrie, která se má zobrazit na dlaždici. Další položky můžete do dlaždice přidat tak, že vyberete **+ telemetrie**, **+ vlastnost** nebo **+ cloudovou vlastnost**.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Přidání dlaždice telemetrie na teplotu na řídicí panel":::
 
@@ -87,7 +87,7 @@ Pro dlaždice, které zobrazují vlastnosti řetězce nebo hodnoty telemetrie, m
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Změna způsobu zobrazení řetězce na dlaždici":::
 
-Pro číselný **klíčový ukazatel výkonu** , **poslední známou hodnotu** a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
+Pro číselný **klíčový ukazatel výkonu**, **poslední známou hodnotu** a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Snímek obrazovky ukazující, jak najít možnost konfigurace pro dlaždici a potom ikonu podmíněného formátování":::
 
