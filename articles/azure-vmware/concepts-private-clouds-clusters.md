@@ -3,12 +3,12 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro datové centra a vSphere clustery definovaná na základě softwaru řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967376"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825070"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
@@ -48,18 +48,8 @@ Hostitelé, kteří používají k sestavení nebo škálování clusterů, poch
 
 ## <a name="vmware-software-versions"></a>Verze softwaru VMware
 
-Aktuální verze softwaru softwaru VMware používané v clusterech privátního cloudu řešení Azure VMware jsou:
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| Software              |    Verze   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U3    | 
-| ESXi                  |    6,7 U3    | 
-| Síti vSAN                  |    6,7 U3    |
-| NSX-T                 |      2.5     |
-
-Pro všechny nové clustery v privátním cloudu odpovídá verze softwaru, co je aktuálně spuštěná. Pro všechny nové privátní cloudy v rámci předplatného se nainstaluje nejnovější verze softwarového zásobníku.
-
-Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware, který je popsaný v tématu [aktualizace a upgrady privátního cloudu](concepts-upgrades.md), najdete v tématu.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Údržba hostitelů a správa životního cyklu
 

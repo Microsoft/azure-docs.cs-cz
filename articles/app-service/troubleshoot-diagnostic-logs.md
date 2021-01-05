@@ -4,13 +4,13 @@ description: Naučte se, jak povolit diagnostické protokolování a přidat ins
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 875254071d0ea252508242b83102fb8ca8b44e53
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025272"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825378"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -60,7 +60,7 @@ Možnost **systému souborů** je určena pro dočasné účely ladění a sama 
 
 Vyberte **úroveň** nebo úroveň podrobností, které se mají protokolovat. V následující tabulce jsou uvedeny kategorie protokolů, které jsou součástí jednotlivých úrovní:
 
-| Úroveň | Zahrnuté kategorie |
+| Level | Zahrnuté kategorie |
 |-|-|
 |**Zakázáno** | Žádné |
 |**Chyba** | Chyba, kritická |
@@ -187,14 +187,14 @@ Následující tabulka uvádí podporované typy a popisy protokolů:
 
 | Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Popis |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & Tomcat | Yes | Yes | Yes | Standardní výstup a standardní chyba |
-| AppServiceHTTPLogs | Yes | Yes | Yes | Yes | Protokoly webového serveru |
-| AppServiceEnvironmentPlatformLogs | Yes | Není k dispozici | Ano | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
-| AppServiceAuditLogs | Yes | Yes | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | Yes | Yes | TBA | TBA | Změny souborů provedené v obsahu webu; dostupné jenom pro úroveň Premium a vyšší |
+| AppServiceConsoleLogs | Java SE & Tomcat | Ano | Ano | Ano | Standardní výstup a standardní chyba |
+| AppServiceHTTPLogs | Ano | Ano | Ano | Ano | Protokoly webového serveru |
+| AppServiceEnvironmentPlatformLogs | Ano | Není k dispozici | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
+| AppServiceAuditLogs | Ano | Ano | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | Ano | Ano | TBA | TBA | Změny souborů provedené v obsahu webu; dostupné jenom pro úroveň Premium a vyšší |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Protokoly aplikací |
-| AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | Žádosti z pravidel IP adres |
-| AppServicePlatformLogs  | TBA | Yes | Yes | Yes | Protokoly operací kontejneru |
+| AppServiceIPSecAuditLogs  | Ano | Ano | Ano | Ano | Žádosti z pravidel IP adres |
+| AppServicePlatformLogs  | TBA | Ano | Ano | Ano | Protokoly operací kontejneru |
 
 <sup>1</sup> pro aplikace Java se do nastavení aplikace přidejte $website _AZMON_PREVIEW_ENABLED a nastavte ji na 1 nebo true.
 

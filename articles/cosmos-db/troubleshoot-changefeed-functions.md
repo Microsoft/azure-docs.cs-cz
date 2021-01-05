@@ -4,16 +4,16 @@ description: Běžné problémy, alternativní řešení a diagnostické kroky p
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340523"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825616"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,16 +85,18 @@ Koncept "změny" je operace na dokumentu. Nejběžnější scénáře, kdy se p�
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>V aktivační události chybí některé změny.
 
-Pokud zjistíte, že některé změny, ke kterým došlo v kontejneru Azure Cosmos, nejsou vyzvednuty funkcí Azure, je k dispozici počáteční krok šetření, který je potřeba provést.
+Pokud zjistíte, že některé změny, ke kterým došlo v kontejneru Azure Cosmos, nejsou vyzvednuty funkcí Azure nebo některé změny v cíli chybějí při jejich kopírování, postupujte podle následujících kroků.
 
 Když vaše funkce Azure přijme změny, často je zpracuje a může volitelně odeslat výsledek do jiného cíle. Při zkoumání chybějících změn nezapomeňte **změřit, které změny jsou přijímány v bodu** příjmu (při spuštění funkce Azure), nikoli v cíli.
 
 Pokud v cíli chybějí nějaké změny, může to znamenat, že došlo k chybě při provádění funkce Azure po přijetí změn.
 
-V tomto scénáři je nejlepší akcí přidání `try/catch` bloků do kódu a uvnitř smyček, které mohou zpracovávat změny, zjistit případné selhání pro určitou podmnožinu položek a odpovídajícím způsobem je zpracovat (Odeslat je do jiného úložiště pro další analýzu nebo opakovat). 
+V tomto scénáři je nejlepší akcí přidání `try/catch` bloků do kódu a uvnitř smyček, které mohou zpracovávat změny, zjistit případné selhání pro určitou podmnožinu položek a odpovídajícím způsobem je zpracovat (Odeslat je do jiného úložiště pro další analýzu nebo opakovat).
 
 > [!NOTE]
 > Trigger služby Azure Functions pro službu Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud při provádění kódu dojde k neošetřené výjimce. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
+
+Pokud je cílem jiný kontejner Cosmos a provádíte operace Upsert ke zkopírování položek, **Ověřte, že definice klíče oddílu na monitorovaném i cílovém kontejneru je stejná**. Operace Upsert mohly uložit více zdrojových položek jako jeden v cíli z důvodu tohoto rozdílu v konfiguraci.
 
 Pokud zjistíte, že Trigger vůbec nepřijal nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorované a zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které byste očekávali při zpracování funkce Azure.
 

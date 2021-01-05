@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: ddd075a5880899a065ee6eaaa4ff0636b6590370
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: deploy
+ms.openlocfilehash: f955ee3f8bc150982c19107271fe7e7bdb1368cb
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840776"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824558"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 
 V tomto článku se dozvíte, jak aktualizovat webovou službu nasazenou pomocí Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste už nasadili webovou službu pomocí Azure Machine Learning. Pokud potřebujete zjistit, jak nasadit webovou službu, [postupujte podle těchto kroků](how-to-deploy-and-where.md).
 

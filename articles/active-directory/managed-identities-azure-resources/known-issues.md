@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: has-adal-ref
+ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460923"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825812"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -43,7 +43,7 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>Mají spravované identity zálohovaný objekt aplikace?
 
-Ne. Spravované identity a registrace Aplikace Azure AD nejsou v adresáři stejné. 
+No. Spravované identity a registrace Aplikace Azure AD nejsou v adresáři stejné. 
 
 Registrace aplikací mít dvě komponenty: objekt aplikace + objekt instančního objektu. Spravované identity pro prostředky Azure mají jenom jednu z těchto součástí: instanční objekt služby. 
 
@@ -72,13 +72,13 @@ Hranice zabezpečení identity je prostředek, ke kterému je připojen. Napří
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Budou spravované identity znovu automaticky vytvořeny při přesunu předplatného do jiného adresáře?
 
-Ne. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení rolí Azure.
+No. Pokud přesunete předplatné do jiného adresáře, budete ho muset ručně znovu vytvořit a znovu udělit přiřazení rolí Azure.
 - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
 - U spravovaných identit přiřazených uživateli: Odstraňte, znovu vytvořte a připojte je znovu k potřebným prostředkům (například virtuálním počítačům).
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžu použít spravovanou identitu pro přístup k prostředkům v jiném adresáři nebo tenantovi?
 
-Ne. Spravované identity v současné době nepodporují scénáře pro více adresářů. 
+No. Spravované identity v současné době nepodporují scénáře pro více adresářů. 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jaká oprávnění Azure RBAC jsou vyžadována pro spravovanou identitu prostředku? 
 

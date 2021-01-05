@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656933"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824652"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -81,15 +81,9 @@ Sada Azure Digital revlákens .NET (C#) SDK je součástí sady Azure SDK for .N
 > [!NOTE]
 > Další informace o návrhu sady SDK najdete v tématu Obecné [Principy návrhu pro sadu Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) a konkrétní [pokyny pro návrh .NET](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat nejnovější verzi balíčku **Azure. identity** .
-
-* V aplikaci Visual Studio můžete přidat balíčky pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení*). 
-* Pomocí nástroje pro příkazový řádek .NET můžete spustit:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat nejnovější verzi balíčku **Azure. identity** . V aplikaci Visual Studio můžete tyto balíčky přidat pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení*). Alternativně můžete použít nástroj příkazového řádku .NET s příkazy uvedenými v odkazech na balíček NuGet níže a přidat je do projektu:
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
+* [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 Podrobný návod k používání rozhraní API v praxi najdete v tématu [*kurz: Code a klientská aplikace*](tutorial-code.md). 
 

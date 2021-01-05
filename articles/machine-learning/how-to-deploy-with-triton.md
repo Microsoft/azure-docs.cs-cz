@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: b47b8f9d9429f38fb8b5da6d8f9083736f230fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: deploy
+ms.openlocfilehash: c5db04a673c1cdc0c0f24e128f340f4ae55fea81
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458280"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825511"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -32,7 +32,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > [!TIP]
 > Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://github.com/Azure/azureml-examples/tree/main/tutorials).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
@@ -47,7 +47,7 @@ Než se pokusíte použít Triton pro svůj vlastní model, je důležité pocho
 
 * Více pracovních procesů [Gunicorn](https://gunicorn.org/) se spouští souběžně se zpracováním příchozích požadavků.
 * Tito pracovníci zpracovávají předběžné zpracování, volání modelu a následné zpracování. 
-* Požadavky na odvození používají __identifikátor URI pro vyhodnocování__. Například, `https://myserevice.azureml.net/score`.
+* Požadavky na odvození používají __identifikátor URI pro vyhodnocování__. Například `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Diagram architektury pro nasazení Normal, non-Triton,":::
 
@@ -67,7 +67,7 @@ Díky tomu bude Azure ML informovat o tom, kolik pracovníků zadáte.
 * Více pracovních procesů [Gunicorn](https://gunicorn.org/) se spouští souběžně se zpracováním příchozích požadavků.
 * Žádosti jsou předávány na **Server Triton**. 
 * Triton zpracovává požadavky v dávkách k maximalizaci využití GPU.
-* Klient používá k vytvoření požadavků __identifikátor URI pro vyhodnocování__ . Například, `https://myserevice.azureml.net/score`.
+* Klient používá k vytvoření požadavků __identifikátor URI pro vyhodnocování__ . Například `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Nasazení Inferenceconfig s Triton":::
 

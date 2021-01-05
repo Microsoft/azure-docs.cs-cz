@@ -5,13 +5,13 @@ description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a 
 services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
-ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: f4cbfb78ec0900e757683fff35403dfcbd38b391
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003714"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824687"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
