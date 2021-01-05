@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753888"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861955"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
 
@@ -99,7 +99,7 @@ Pomocí hodnot v této tabulce můžete zjistit, jestli v nasazení potřebujete
 --- | --- | --- | --- | ---
 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Počítače s < 100 
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | 100-150 počítačů.
-16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB až 2 TB | 151-200 počítačů.
+16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB až 2 TB | 151-200 počítačů.
 
 ### <a name="sizing-scale-out-process-servers"></a>Změna velikosti procesových serverů se škálováním na více instancí
 
@@ -108,7 +108,7 @@ Pokud potřebujete nasadit procesový Server se škálováním na více instanc�
 **Procesový Server** | **Volné místo pro ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
 --- | --- | --- | --- 
 4 vCPU (2 sokety × 2 jádra \@ 2,5 GHz), 8 GB paměti | 300 GB | 250 GB nebo méně | Až 85 počítačů 
-8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB    | 86-150 počítačů.
+8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB | 86-150 počítačů.
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz), 24 GB paměti | 1 TB | 1-2 TB | 151-225 počítačů.
 
 ## <a name="throttle-upload-bandwidth"></a>Omezí šířku pásma nahrávání.

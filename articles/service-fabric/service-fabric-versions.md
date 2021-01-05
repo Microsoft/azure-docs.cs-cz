@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 4407ddb80b00c847e14643be816bc681718dcb8b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652207"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862178"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -21,8 +21,31 @@ Podrobnosti o tom, jak udržovat cluster s podporovanou Service Fabric verzí, n
 - [Upgrade clusteru Azure Service Fabric](service-fabric-cluster-upgrade.md)
 - [Upgrade verze Service Fabric, která běží na samostatném clusteru Windows serveru](service-fabric-cluster-upgrade-windows-server.md)
 
-## <a name="supported-versions"></a>Podporované verze
 
+## <a name="unsupported-versions"></a>Nepodporované verze
+
+### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Výstraha upgradu pro verze mezi 5,7 a nižšími 6.3.63. *
+
+***Všechny Service Fabric clustery, které jsou v nepodporovaných verzích od 5,7 do 6.3.63.* budou ovlivněny zásadní změnou zabezpečení, která bude v Azure zahrnuta v lednu 7. ledna 2021 * * *.
+ 
+ Aby se předešlo vážným výpadkům služeb (včetně clusterů, které nepřichází), musíte upgradovat clustery co nejdříve na jednu z podporovaných verzí Service Fabric runtime, která zahrnuje opravu problému se zabezpečením. Na postižených zákaznících jsme se dorazili s pokyny. Pokud máte plán podpory a potřebujete technickou pomoc, obraťte se na nás prostřednictvím [kanálů podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) tak, že otevřete žádost o podporu a uvedete tento kontext v lístku podpory. 
+ 
+  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Podporované verze modulu runtime Service Fabric včetně opravy pro změnu narušení zabezpečení 
+   Upgradujte Service Fabric clusterů, které běží na starších nepodporovaných verzích, na které má vliv zásadní změna zabezpečení na jednu z podporovaných verzí.
+
+  | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch  | 
+  | --- | --- |--- | 
+  | Windows | 7,0. * | 7.0.478.9590 |
+  | Windows | 7,1. * | 7.1.503.9590 |
+  | Windows | 7,2. * | 7.2.445.9590 |
+  | Ubuntu 16 | 7,0. * | 7.0.472.1  |
+  | Ubuntu 16 | 7,1. * | 7.1.455.1  |
+  | Ubuntu 1804 | 7,1. * | 7.1.455.1804 |
+  | Ubuntu 16 | 7,2. * | 7.2.447.1 |
+  | Ubuntu 1804 | 7,2. * | 7.2.447.1804 |
+ 
+
+## <a name="supported-versions"></a>Podporované verze
 V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová data podpory.
 
 | Service Fabric modul runtime v clusteru | Může upgradovat přímo z verze clusteru. |Kompatibilní verze sady SDK nebo balíčku NuGet | Konec podpory |

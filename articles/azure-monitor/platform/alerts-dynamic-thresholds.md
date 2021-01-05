@@ -4,13 +4,13 @@ description: Vytváření výstrah s dynamickými Prahy založenými na strojov�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012335"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862584"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
 
@@ -39,7 +39,7 @@ Dynamické prahové hodnoty průběžně učí data řady metrik a snaží se je
 Mezní hodnoty jsou vybrány takovým způsobem, že odchylka od těchto prahových hodnot označuje anomálii v chování metriky.
 
 > [!NOTE]
-> Zjištění sezónních vzorů je nastaveno na hodinu, den nebo týden. To znamená, že se nezjistí jiné vzorce, jako je bihourly vzor nebo semiweekly.
+> Dynamické prahové hodnoty mohou detekovat sezónnost pro hodinové, denní nebo týdenní vzory. Jiné vzorce, jako je například obousměrné nebo týdenní sezónnost, nemusí být zjištěny. K detekci týdenních sezónnost se vyžadují aspoň tři týdny historických dat. 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co znamená nastavení citlivosti v případě dynamických prahových hodnot?
 

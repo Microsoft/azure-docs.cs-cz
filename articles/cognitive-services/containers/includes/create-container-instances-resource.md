@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 24f6052c436b73d0075371fa74160d21826e2209
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704829"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97866130"
 ---
 ## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Vytvořte prostředek Azure Container instance pomocí Azure Portal
 
@@ -28,8 +28,8 @@ ms.locfileid: "97704829"
     |Skupina prostředků|Vyberte dostupnou skupinu prostředků nebo vytvořte novou, například `cognitive-services` .|
     |Název kontejneru|Zadejte název, například `cognitive-container-instance` . Název musí být malými písmeny.|
     |Umístění|Vyberte oblast pro nasazení.|
-    |Typ image|Pokud je vaše image kontejneru uložená v registru kontejneru, který nevyžaduje přihlašovací údaje, vyberte `Public` . Pokud přístup k imagi kontejneru vyžaduje přihlašovací údaje, vyberte `Private` . Podrobnosti o [](../../cognitive-services-container-support.md#container-repositories-and-images) tom, zda je nebo není bitová kopie kontejneru `Public` nebo `Private` ("Public Preview"), naleznete v úložištích kontejnerů a obrázcích. |
-    |Název image|Zadejte umístění kontejneru Cognitive Services. Umístění se používá jako argument `docker pull` příkazu. Podívejte se na [úložiště kontejnerů a obrázky](../../cognitive-services-container-support.md#container-repositories-and-images) pro dostupné názvy imagí a jejich odpovídající úložiště.<br><br>Název Image musí být plně kvalifikovaný, aby se zadaly tři části. Nejprve registr kontejneru, potom úložiště, nakonec název bitové kopie: `<container-registry>/<repository>/<image-name>` .<br><br>Tady je příklad, `mcr.microsoft.com/azure-cognitive-services/keyphrase` který představuje extrakce klíčových frází image v Microsoft Container Registry v úložišti Azure Cognitive Services. Dalším příkladem je, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` který představuje řeč k textovému obrázku v úložišti Microsoft úložiště kontejneru kontejnerů ve verzi Preview kontejneru. |
+    |Typ image|Pokud je vaše image kontejneru uložená v registru kontejneru, který nevyžaduje přihlašovací údaje, vyberte `Public` . Pokud přístup k imagi kontejneru vyžaduje přihlašovací údaje, vyberte `Private` . Podrobnosti o [](../container-image-tags.md) tom, zda je nebo není bitová kopie kontejneru `Public` nebo `Private` ("Public Preview"), naleznete v úložištích kontejnerů a obrázcích. |
+    |Název image|Zadejte umístění kontejneru Cognitive Services. Umístění se používá jako argument `docker pull` příkazu. Podívejte se na [úložiště kontejnerů a obrázky](../container-image-tags.md) pro dostupné názvy imagí a jejich odpovídající úložiště.<br><br>Název Image musí být plně kvalifikovaný, aby se zadaly tři části. Nejprve registr kontejneru, potom úložiště, nakonec název bitové kopie: `<container-registry>/<repository>/<image-name>` .<br><br>Tady je příklad, `mcr.microsoft.com/azure-cognitive-services/keyphrase` který představuje extrakce klíčových frází image v Microsoft Container Registry v úložišti Azure Cognitive Services. Dalším příkladem je, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` který představuje řeč k textovému obrázku v úložišti Microsoft úložiště kontejneru kontejnerů ve verzi Preview kontejneru. |
     |Typ operačního systému|`Linux`|
     |Velikost|Změňte velikost na navrhovaná doporučení pro konkrétní kontejner služby pro rozpoznávání:<br>2 jádra procesoru<br>4 GB
 

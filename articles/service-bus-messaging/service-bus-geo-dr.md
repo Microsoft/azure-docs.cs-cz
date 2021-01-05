@@ -2,22 +2,31 @@
 title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372519"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862353"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
-Při výpadku provozu celé oblasti Azure nebo Datacenter (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ) je důležité, aby zpracování dat pokračovalo v práci v jiné oblasti nebo datacentru. V takovém případě *geograficky zotavení po havárii* je důležitou funkcí pro jakýkoli podnik. Azure Service Bus podporuje zotavení geografického havárií na úrovni oboru názvů.
+Odolnost proti katastrofální důsledkym výpadků prostředků zpracování dat je požadavkem pro mnoho podniků a v některých případech i v případě potřeby i podle odvětví. 
 
-Funkce geografického zotavení po havárii je globálně dostupná pro SKU Service Bus Premium. 
+Azure Service Bus už šíří riziko závažných chyb jednotlivých počítačů nebo dokonce kompletních stojanů napříč clustery, které v rámci datového centra zaujímají více domén selhání, a implementuje transparentní mechanismy detekce selhání a převzetí služeb při selhání tak, aby služba pokračovala v provozu v rámci zajištěných úrovní služeb a obvykle bez znatelného přerušení v případě takových selhání. Pokud byl vytvořen obor názvů Service Bus s možností povolení pro [zóny dostupnosti](../availability-zones/az-overview.md), riziko výpadku je dále rozdělené do tří fyzicky oddělených zařízení a služba má dostatečné rezervy na kapacitu, aby se okamžitě vypořádat s kompletní a závažnou ztrátou celého zařízení. 
 
->[!NOTE]
-> Geo-Disaster Recovery v současné době zajišťuje, aby se při párování zkopírovaly metadata (fronty, témata, odběry, filtry) z primárního oboru názvů do sekundárního oboru názvů.
+Model clusteru All-Active Azure Service Bus s využitím zóny dostupnosti je nadřazený jakémukoli místnímu produktu zprostředkovatele zpráv z hlediska odolnosti proti závažným chybám hardwaru a i závažným ztrátám celých zařízení Datacenter. Pořád se může stát, že v případě vysokého fyzického zničení dojde k závažné situaci, že i tyto míry nemůžou dostatečně bránit. 
+
+Service Bus funkce geografického zotavení po havárii je navržená tak, aby se usnadnilo zotavení po havárii této velikosti, aby nedošlo k selhání oblasti Azure pro zajištění dobrého a nemusíte měnit konfigurace aplikace. Opuštění oblasti Azure obvykle zahrnuje několik služeb a tato funkce primárně směřuje k tomu, že pomáhá zachovat integritu konfigurace složených aplikací. Tato funkce je globálně dostupná pro SKU Service Bus Premium. 
+
+Funkce obnovení Geo-Disaster zajišťuje, aby byla celá konfigurace oboru názvů (fronty, témata, odběry, filtry) průběžně replikována z primárního oboru názvů do sekundárního oboru názvů, pokud je spárována, a umožňuje kdykoli spustit pouze jednou převzetí služeb při selhání z primární na sekundární. Přesunutí převzetí služeb při selhání znovu nasměruje zvolený název aliasu oboru názvů na sekundární obor názvů a potom přeruší párování. Převzetí služeb při selhání je skoro okamžité po zahájení. 
+
+> [!IMPORTANT]
+> Tato funkce umožňuje okamžitou kontinuitu operací se stejnou konfigurací, ale **nereplikuje zprávy uchovávané ve frontách nebo předplatných témat nebo frontách nedoručených** zpráv. Aby se zachovala Sémantika fronty, bude taková replikace vyžadovat nejen replikaci dat zprávy, ale všechny změny stavu ve zprostředkovateli. U většiny Service Bus oborů názvů by požadovaný provoz replikace daleko překročil provoz aplikace a s frontami s vysokou propustností, většina zpráv bude stále replikována do sekundárního počítače, zatímco jsou již odstraňována z primární služby, což způsobí nadměrné wasteful provoz. Pro trasy replikace s vysokou latencí, které se vztahují na mnoho dvojic, které byste si zvolili pro geografickou obnovu po havárii, může být taky možné, že provoz replikace nebude tolerovat provoz aplikací kvůli latenci, která se vyvolala.
+ 
+> [!TIP]
+> Pro replikaci obsahu front a odběrů témat a provozu odpovídajících oborů názvů v aktivních/aktivních konfiguracích za účelem odolat výpadkům a haváriím se tato sada funkcí geografického zotavení po havárii neštíhlá, ale postupujte podle [pokynů pro replikaci](service-bus-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Výpadky a havárie
 
@@ -51,14 +60,14 @@ V následující části je přehled nastavení párování mezi obory názvů.
 
 Proces instalace je následující –
 
-1. Zřídit ***primární*** obor názvů Service Bus úrovně Premium.
+1. Zřídí obor názvů ***Primary** _ Service Bus Premium.
 
-2. Zřídit ***sekundární*** obor názvů Service Bus Premium v oblasti *odlišnou od místa, kde se zřizuje primární obor názvů*. To vám pomůže zajistit izolaci chyb napříč různými oblastmi Datacenter.
+2. Zřídí _*_sekundární_*_ obor názvů Service Bus Premium v oblasti _different z místa, kde je primární obor názvů zřízený *. To vám pomůže zajistit izolaci chyb napříč různými oblastmi Datacenter.
 
-3. Vytvořte párování mezi primárním a sekundárním oborem názvů pro získání ***aliasu***.
+3. Vytvořte párování mezi primárním a sekundárním oborem názvů, abyste získali ***alias** _.
 
     >[!NOTE] 
-    > Pokud jste [přenesli obor názvů Azure Service Bus Standard do Azure Service Bus Premium](service-bus-migrate-standard-premium.md), je nutné použít již existující alias (tj. připojovací řetězec oboru názvů standardu Service Bus) k vytvoření konfigurace zotavení po havárii přes **PS/CLI** nebo **REST API**.
+    > Pokud jste [přenesli obor názvů Azure Service Bus Standard do Azure Service Bus Premium](service-bus-migrate-standard-premium.md), je nutné použít již existující alias (tj. připojovací řetězec oboru názvů standardu Service Bus) k vytvoření konfigurace zotavení po havárii prostřednictvím _ *PS/CLI** nebo **REST API**.
     >
     >
     > Důvodem je, že během migrace se jako připojovací řetězec oboru názvů Azure Service Bus Standard nebo název DNS sám vytvoří alias pro obor názvů Azure Service Bus Premium.
@@ -68,7 +77,7 @@ Proces instalace je následující –
     > Pokud použijete portál k nastavení konfigurace zotavení po havárii, portál tuto výstrahu zavede.
 
 
-4. Použijte ***alias*** získaný v kroku 3 k připojení klientských aplikací k primárnímu oboru názvů s povoleným geografickým Dr. Zpočátku alias odkazuje na primární obor názvů.
+4. Pomocí *_aliasu_** získaného v kroku 3 Připojte klientské aplikace k primárnímu oboru názvů s povoleným geografickým Dr. Zpočátku alias odkazuje na primární obor názvů.
 
 5. Volitelné Pokud chcete zjistit, jestli je převzetí služeb při selhání nezbytné, přidejte nějaké monitorování.
 
@@ -80,7 +89,7 @@ Převzetí služeb při selhání se aktivuje ručně zákazníkem (buď explici
 
 Po aktivaci převzetí služeb při selhání –
 
-1. Připojovací řetězec ***aliasu*** je aktualizovaný, aby odkazoval na sekundární obor názvů Premium.
+1. Připojovací řetězec _*_aliasu_*_ je aktualizovaný, aby odkazoval na sekundární obor názvů Premium.
 
 2. Klienti (odesílatelé a přijímače) se automaticky připojí k sekundárnímu oboru názvů.
 
@@ -117,7 +126,7 @@ Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a už
 - Postup nebo umožnění geografického zotavení po havárii prostřednictvím PowerShellu nebo rozhraní příkazového řádku.
 - [Odeslat a přijmout](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuálního primárního nebo sekundárního oboru názvů pomocí aliasu
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Vezměte v úvahu následující skutečnosti:
 
@@ -170,7 +179,7 @@ Při vytváření konfigurace zotavení po havárii pro vaši aplikaci a Service
 
 Výhodou tohoto přístupu je, že k převzetí služeb při selhání může dojít v aplikační vrstvě nezávisle na Service Bus oboru názvů. Zvažte následující scénáře: 
 
-**Převzetí služeb při selhání jen pro aplikace:** V tomto případě aplikace nebude existovat v VNET-1, ale přesune se do sítě VNET-2. Jak jsou oba privátní koncové body konfigurovány pro virtuální i sekundární obory názvů VNET-1 i VNET-2, bude aplikace pracovat pouze. 
+_ *Převzetí služeb při selhání jen pro aplikace:** sem aplikace nebude existovat v VNet-1, ale přesune se do virtuální sítě-2. Jak jsou oba privátní koncové body konfigurovány pro virtuální i sekundární obory názvů VNET-1 i VNET-2, bude aplikace pracovat pouze. 
 
 **Service Bus převzetí služeb při selhání jen pro obor názvů**: tady se nakonfigurují oba privátní koncové body v obou virtuálních sítích pro primární i sekundární obory názvů. aplikace bude jenom fungovat. 
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, analýza mínění, zpracování přirozeného jazyka
-ms.openlocfilehash: 088cf407320dcf8ef6705c57d86836531d9bdfe6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965140"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862492"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
@@ -29,10 +29,10 @@ ms.locfileid: "94965140"
 
 Kontejnery umožňují spouštět rozhraní API Analýzy textu ve vlastním prostředí a jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
-> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span></a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
+> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom  <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span></a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ Chcete-li spustit některý z Analýza textu kontejnerů, je nutné mít prostř
 
 Před použitím Analýza textu kontejnerů musíte splnit následující předpoklady:
 
-|Vyžadováno|Účel|
+|Povinné|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
@@ -154,10 +154,6 @@ Kontejnery Analýza textu odesílají informace o fakturaci do Azure pomocí pro
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](../text-analytics-resource-container-config.md).
-
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Shrnutí
 

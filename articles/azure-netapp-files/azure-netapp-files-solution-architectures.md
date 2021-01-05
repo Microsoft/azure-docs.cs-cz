@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562544"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861990"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -99,6 +99,7 @@ V této části najdete odkazy na řešení infrastruktury virtuálních klients
 * [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](../virtual-desktop/create-fslogix-profile-container.md)
 * [Windows Virtual Desktop v podnikovém měřítku](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 * [Microsoft FSLogix pro doporučené postupy pro podnikové Azure NetApp Files](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
+* [Nastavení Azure NetApp Files pro připojení aplikace MSIX](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
 
 ## <a name="hpc-solutions"></a>Řešení HPC
 

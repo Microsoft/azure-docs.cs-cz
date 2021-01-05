@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629474"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862346"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -110,11 +110,11 @@ Pro každý server, který máte v úmyslu používat s Azure File Sync, včetn�
 > Tento krok můžete přeskočit, pokud nasazujete Azure File Sync na jádro Windows serveru.
 
 1. Spusťte Správce serveru.
-2. Klikněte na **místní server** :  
+2. Klikněte na **místní server**:  
     ![Místní server na levé straně uživatelského rozhraní Správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. V podokně **Vlastnosti** vyberte odkaz **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer**.  
     ![Podokno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer v uživatelském rozhraní Správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
-4. V dialogovém okně **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer** vyberte možnost **vypnuto** pro **správce** a **uživatele** :  
+4. V dialogovém okně **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer** vyberte možnost **vypnuto** pro **správce** a **uživatele**:  
     ![Automaticky otevírané okno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer s vybranou možností Vypnuto](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -157,10 +157,10 @@ Pokud chcete nasadit službu synchronizace úložiště, přejděte na [Azure Po
 
 V podokně, které se otevře, zadejte následující informace:
 
-- **Název** : jedinečný název (v jednotlivých oblastech) pro službu synchronizace úložiště.
-- **Předplatné** : předplatné, ve kterém chcete vytvořit službu synchronizace úložiště. V závislosti na strategii konfigurace vaší organizace může mít přístup k jednomu nebo několika předplatným. Předplatné Azure je nejzákladnější kontejner pro fakturaci každé cloudové služby (například soubory Azure).
-- **Skupina prostředků** : Skupina prostředků je logická skupina prostředků Azure, jako je například účet úložiště nebo služba synchronizace úložiště. Můžete vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků pro Azure File Sync. (Doporučujeme používat skupiny prostředků jako kontejnery k logické izolaci prostředků pro vaši organizaci, jako je například seskupení zdrojů lidských zdrojů nebo zdrojů pro konkrétní projekt.)
-- **Umístění** : oblast, do které chcete nasadit Azure File Sync. V tomto seznamu jsou k dispozici pouze podporované oblasti.
+- **Název**: jedinečný název (v jednotlivých oblastech) pro službu synchronizace úložiště.
+- **Předplatné**: předplatné, ve kterém chcete vytvořit službu synchronizace úložiště. V závislosti na strategii konfigurace vaší organizace může mít přístup k jednomu nebo několika předplatným. Předplatné Azure je nejzákladnější kontejner pro fakturaci každé cloudové služby (například soubory Azure).
+- **Skupina prostředků**: Skupina prostředků je logická skupina prostředků Azure, jako je například účet úložiště nebo služba synchronizace úložiště. Můžete vytvořit novou skupinu prostředků, nebo použít existující skupinu prostředků pro Azure File Sync. (Doporučujeme používat skupiny prostředků jako kontejnery k logické izolaci prostředků pro vaši organizaci, jako je například seskupení zdrojů lidských zdrojů nebo zdrojů pro konkrétní projekt.)
+- **Umístění**: oblast, do které chcete nasadit Azure File Sync. V tomto seznamu jsou k dispozici pouze podporované oblasti.
 
 Po dokončení vyberte **vytvořit** a nasaďte službu synchronizace úložiště.
 
@@ -295,9 +295,9 @@ Po přihlášení se zobrazí výzva k zadání následujících informací:
 
 ![Snímek obrazovky uživatelského rozhraní pro registraci serveru](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Předplatné Azure** : předplatné, které obsahuje službu synchronizace úložiště (viz [nasazení služby synchronizace úložiště](#deploy-the-storage-sync-service)). 
-- **Skupina prostředků** : Skupina prostředků, která obsahuje službu synchronizace úložiště.
-- **Služba synchronizace úložiště** : název služby synchronizace úložiště, se kterou chcete zaregistrovat.
+- **Předplatné Azure**: předplatné, které obsahuje službu synchronizace úložiště (viz [nasazení služby synchronizace úložiště](#deploy-the-storage-sync-service)). 
+- **Skupina prostředků**: Skupina prostředků, která obsahuje službu synchronizace úložiště.
+- **Služba synchronizace úložiště**: název služby synchronizace úložiště, se kterou chcete zaregistrovat.
 
 Po výběru příslušných informací vyberte **Registrovat** a dokončete registraci serveru. V rámci procesu registrace se zobrazí výzva k dalšímu přihlášení.
 
@@ -322,16 +322,16 @@ Koncový bod cloudu je ukazatel na sdílenou složku Azure. Všechny koncové bo
 Správce vytvářející koncový bod cloudu musí být členem **vlastníka** role správy pro účet úložiště, který obsahuje sdílenou složku Azure, na kterou koncový bod cloudu odkazuje. To se dá nakonfigurovat v části **Access Control (IAM)** v Azure Portal pro účet úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-Skupinu synchronizace vytvoříte tak, že v [Azure Portal](https://portal.azure.com/)přejdete do své služby synchronizace úložiště a pak vyberete **+ Skupina synchronizace** :
+Skupinu synchronizace vytvoříte tak, že v [Azure Portal](https://portal.azure.com/)přejdete do své služby synchronizace úložiště a pak vyberete **+ Skupina synchronizace**:
 
 ![Vytvoření nové skupiny synchronizace na webu Azure Portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 V podokně, které se otevře, zadejte následující informace pro vytvoření skupiny synchronizace s koncovým bodem cloudu:
 
-- **Název skupiny synchronizace** : název skupiny synchronizace, která se má vytvořit. Tento název musí být jedinečný v rámci služby synchronizace úložiště, ale může to být libovolný název, který vám dává smysl.
-- **Předplatné** : předplatné, ve kterém jste nasadili službu synchronizace úložiště v [nasazení služby synchronizace úložiště](#deploy-the-storage-sync-service).
-- **Účet úložiště** : Pokud vyberete **Vybrat účet úložiště** , zobrazí se jiné podokno, ve kterém můžete vybrat účet úložiště, který obsahuje sdílenou složku Azure, se kterou chcete synchronizovat.
-- **Sdílená složka Azure** : název sdílené složky Azure, se kterou chcete synchronizovat.
+- **Název skupiny synchronizace**: název skupiny synchronizace, která se má vytvořit. Tento název musí být jedinečný v rámci služby synchronizace úložiště, ale může to být libovolný název, který vám dává smysl.
+- **Předplatné**: předplatné, ve kterém jste nasadili službu synchronizace úložiště v [nasazení služby synchronizace úložiště](#deploy-the-storage-sync-service).
+- **Účet úložiště**: Pokud vyberete **Vybrat účet úložiště**, zobrazí se jiné podokno, ve kterém můžete vybrat účet úložiště, který obsahuje sdílenou složku Azure, se kterou chcete synchronizovat.
+- **Sdílená složka Azure**: název sdílené složky Azure, se kterou chcete synchronizovat.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Chcete-li vytvořit skupinu synchronizace, spusťte následující prostředí PowerShell. Nezapomeňte nahradit `<my-sync-group>` požadovaným názvem skupiny synchronizace.
@@ -414,11 +414,11 @@ Pokud chcete přidat koncový bod serveru, přejdete do nově vytvořené skupin
 
 V podokně **Přidat koncový bod serveru** zadejte následující informace pro vytvoření koncového bodu serveru:
 
-- **Registrovaný Server** : název serveru nebo clusteru, ve kterém chcete vytvořit koncový bod serveru.
-- **Cesta** : cesta k Windows serveru, která se má synchronizovat jako součást skupiny synchronizace.
-- **Vrstvení cloudu** : přepínač pro povolení nebo zakázání vrstvení cloudu. Při vrstvení cloudu se nečasto používané nebo dostupné soubory dají navrstvit na soubory Azure.
-- **Volné místo na svazku** : množství volného místa, které se má rezervovat na svazku, na kterém je umístěný koncový bod serveru. Pokud je například volné místo na svazku nastavené na 50% na svazku, který má koncový bod serveru, zhruba polovinu množství dat se navrstvená na soubory Azure. Bez ohledu na to, jestli je povolená vrstva cloudu, bude mít vaše sdílená složka Azure vždycky úplnou kopii dat ve skupině synchronizace.
-- **Režim počátečního stahování** : Jedná se o volitelný výběr, který začíná na agentovi verze 11, který může být užitečný, když jsou soubory ve sdílené složce Azure, ale ne na serveru. Taková situace může existovat například v případě, že vytvoříte koncový bod serveru pro přidání dalšího serveru firemní pobočky do skupiny synchronizace nebo když dojde k zotavení po havárii serveru, který selhal. Pokud je zapnutá vrstva cloudu, ve výchozím nastavení se jenom odvolá jenom obor názvů, ale ne žádný obsah souboru. To je užitečné, pokud se domníváte, že se spíše požadavky na přístup uživatelů musí rozhodnout, jaký obsah souboru je vrácen na server. Pokud je vrstva cloudu zakázaná, výchozí hodnota je, že se nejprve stáhne obor názvů a pak se soubory odvolají na základě naposledy upraveného časového razítka, dokud nedosáhnete místní kapacity. Režim počátečního stahování ale můžete změnit jenom na obor názvů. Třetí režim se dá použít jenom v případě, že je pro tento koncový bod serveru zakázané vrstvení cloudu. Tento režim zabrání v prvním volání oboru názvů. Soubory se zobrazí jenom na místním serveru, pokud mají možnost je úplně stáhnout. Tento režim je užitečný, pokud například aplikace vyžaduje, aby byly k dispozici úplné soubory a aby nemohly tolerovat vrstvené soubory v oboru názvů.
+- **Registrovaný Server**: název serveru nebo clusteru, ve kterém chcete vytvořit koncový bod serveru.
+- **Cesta**: cesta k Windows serveru, která se má synchronizovat jako součást skupiny synchronizace.
+- **Vrstvení cloudu**: přepínač pro povolení nebo zakázání vrstvení cloudu. Při vrstvení cloudu se nečasto používané nebo dostupné soubory dají navrstvit na soubory Azure.
+- **Volné místo na svazku**: množství volného místa, které se má rezervovat na svazku, na kterém je umístěný koncový bod serveru. Pokud je například volné místo na svazku nastavené na 50% na svazku, který má koncový bod serveru, zhruba polovinu množství dat se navrstvená na soubory Azure. Bez ohledu na to, jestli je povolená vrstva cloudu, bude mít vaše sdílená složka Azure vždycky úplnou kopii dat ve skupině synchronizace.
+- **Režim počátečního stahování**: Jedná se o volitelný výběr, který začíná na agentovi verze 11, který může být užitečný, když jsou soubory ve sdílené složce Azure, ale ne na serveru. Taková situace může existovat například v případě, že vytvoříte koncový bod serveru pro přidání dalšího serveru firemní pobočky do skupiny synchronizace nebo když dojde k zotavení po havárii serveru, který selhal. Pokud je zapnutá vrstva cloudu, ve výchozím nastavení se jenom odvolá jenom obor názvů, ale ne žádný obsah souboru. To je užitečné, pokud se domníváte, že se spíše požadavky na přístup uživatelů musí rozhodnout, jaký obsah souboru je vrácen na server. Pokud je vrstva cloudu zakázaná, výchozí hodnota je, že se nejprve stáhne obor názvů a pak se soubory odvolají na základě naposledy upraveného časového razítka, dokud nedosáhnete místní kapacity. Režim počátečního stahování ale můžete změnit jenom na obor názvů. Třetí režim se dá použít jenom v případě, že je pro tento koncový bod serveru zakázané vrstvení cloudu. Tento režim zabrání v prvním volání oboru názvů. Soubory se zobrazí jenom na místním serveru, pokud mají možnost je úplně stáhnout. Tento režim je užitečný, pokud například aplikace vyžaduje, aby byly k dispozici úplné soubory a aby nemohly tolerovat vrstvené soubory v oboru názvů.
 
 Pokud chcete přidat koncový bod serveru, vyberte **vytvořit**. Vaše soubory jsou nyní udržovány synchronizované napříč sdílenou složkou Azure a systémem Windows Server. 
 

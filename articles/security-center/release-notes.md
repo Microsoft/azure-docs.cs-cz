@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560249"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862606"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -40,6 +40,12 @@ Aktualizace v prosinci zahrnují:
 - [Globální správci teď můžou udělovat oprávnění na úrovni tenanta.](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Dva nové plány Azure Defenderu: Azure Defender pro DNS a Azure Defender pro Správce prostředků (ve verzi Preview)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Stránka nové výstrahy zabezpečení v Azure Portal (Preview)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [ReSecurity Center v Azure SQL Database & spravované instanci SQL](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [Aktualizace nástrojů inventáře prostředků a filtrů](#asset-inventory-tools-and-filters-updated)
+- [Doporučení pro webové aplikace požadující certifikáty SSL už nejsou součástí zabezpečeného skóre.](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [Stránka s doporučeními obsahuje nové filtry pro prostředí, závažnost a dostupné odpovědi.](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [Průběžný export získá nové datové typy a zlepší zásady deployifnotexist.](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender pro servery SQL na počítačích je všeobecně dostupný.
 
@@ -114,6 +120,87 @@ Pro přístup k novému prostředí použijte odkaz vyzkoušet si ho z banneru v
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner s odkazem na nové prostředí upozornění ve verzi Preview":::
 
 Pokud chcete vytvořit ukázkové výstrahy z nového prostředí výstrah, přečtěte si téma [Generování ukázkových výstrah v Azure Defenderu](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>ReSecurity Center v Azure SQL Database & spravované instanci SQL 
+
+Prostředí Security Center v rámci SQL poskytuje přístup k následujícím Security Center a Azure Defenderu pro funkce SQL:
+
+- **Doporučení zabezpečení** – Security Center pravidelně analyzuje stav zabezpečení všech připojených prostředků Azure pro identifikaci potenciálních konfigurací zabezpečení. Pak poskytuje doporučení k nápravě těchto ohrožení zabezpečení a zlepšování zabezpečení stav organizací.
+- **Výstrahy zabezpečení** – služba zjišťování, která nepřetržitě monitoruje aktivity Azure SQL pro hrozby, jako jsou například injektáže SQL, útoky hrubou silou a zneužití oprávnění. Tato služba aktivuje podrobné výstrahy zabezpečení a pro akce zaměřené na akce v Security Center a poskytuje možnosti pro pokračování v šetření s ověřováním Azure Sentinel a Azure-Native SIEM řešení Microsoftu.
+- **Zjištění** – služba posouzení ohrožení zabezpečení, která nepřetržitě monitoruje konfigurace Azure SQL a pomáhá napravit ohrožení zabezpečení. Kontroly Hodnocení poskytují přehled o stavech zabezpečení Azure SQL společně s podrobnými poznatky o zabezpečení.     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Funkce zabezpečení Azure Security Center pro SQL jsou dostupné v rámci Azure SQL.":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>Aktualizace nástrojů inventáře prostředků a filtrů
+
+Stránka inventáře v Azure Security Center byla aktualizována pomocí následujících změn:
+
+- **Příručky a zpětná vazba** přidaná na panel nástrojů. Otevře se podokno s odkazy na související informace a nástroje. 
+- **Filtr předplatných** je přidaný k výchozím filtrům dostupným pro vaše prostředky.
+- **Otevře** odkaz na dotaz pro otevření aktuálních možností filtru jako dotaz na graf prostředků Azure (dříve se nazýval zobrazení v Průzkumníku grafu prostředků).
+- **Možnosti operátoru** pro každý filtr. Nyní si můžete vybrat z dalších logických operátorů kromě ' = '. Můžete například chtít najít všechny prostředky s aktivními doporučeními, jejichž názvy obsahují řetězec "Encrypt". 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Ovládací prvky pro možnost operátora ve filtrech inventáře prostředků":::
+
+Přečtěte si další informace o inventáři v [průzkumu a správě vašich prostředků pomocí inventáře assetů](asset-inventory.md).
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>Doporučení pro webové aplikace požadující certifikáty SSL už nejsou součástí zabezpečeného skóre.
+
+Doporučení "webové aplikace by měly požádat o certifikát SSL pro všechny příchozí požadavky", které byly přesunuty z řízení zabezpečení **spravovat přístup a oprávnění** (maximálně 4 PTS) do **implementace osvědčených postupů zabezpečení** (což znamená, že nejsou žádné body). 
+
+Zajistěte, aby vaše webové aplikace požádaly o certifikát, takže jsou bezpečnější. Pro veřejné webové aplikace však není důležité. Pokud k webu přistupujete přes HTTP a ne HTTPS, nebudete dostávat žádné klientské certifikáty. Takže pokud vaše aplikace vyžaduje klientské certifikáty, neměli byste žádosti do vaší aplikace povolovat přes HTTP. Další informace najdete v [konfiguraci vzájemného ověřování TLS pro Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
+
+V této změně se teď doporučuje doporučit doporučený postup, který nemá na vaše skóre vliv. 
+
+Seznamte se s doporučeními v jednotlivých ovládacích [prvcích zabezpečení v ovládacích prvcích zabezpečení a jejich doporučeních](secure-score-security-controls.md#security-controls-and-their-recommendations).
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>Stránka s doporučeními obsahuje nové filtry pro prostředí, závažnost a dostupné odpovědi.
+
+Azure Security Center monitoruje všechny připojené prostředky a generuje doporučení zabezpečení. Tato doporučení použijte k posílení svého hybridního cloudového stav a sledování dodržování zásad a standardů, které jsou relevantní pro vaši organizaci, odvětví a zemi.
+
+Jak Security Center nadále rozšiřují jeho pokrytí a funkce, seznam doporučení zabezpečení se každý měsíc zvětšuje. Podívejte se například [na 29 doporučených doporučení verze Preview a zvyšte pokrytí srovnávacího testu zabezpečení Azure](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark).
+
+Díky rostoucímu seznamu musí být možné filtrovat doporučení pro největší zájem. V listopadu jsme přidali filtry na stránku doporučení (viz [seznam doporučení teď obsahuje filtry](#recommendations-list-now-includes-filters)).
+
+Filtry přidané tento měsíc poskytují možnosti pro upřesnění seznamu doporučení podle:
+
+- **Prostředí** – zobrazení doporučení pro AWS, GCP nebo prostředky Azure (nebo jakékoli kombinace)
+- **Závažnost** – zobrazení doporučení podle klasifikace závažnosti nastavené nástrojem Security Center
+- **Akce odpovědi** – zobrazit doporučení podle dostupnosti Security Center možností odpovědi: Rychlá oprava, zamítnutí a vysazení
+
+    > [!TIP]
+    > Filtr akcí odpovědí nahrazuje filtr **Rychlá oprava k dispozici (ano/ne)** . 
+    > 
+    > Přečtěte si další informace o každé z těchto možností odpovědi:
+    > - [Rychlá oprava nápravy](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [Jak zabránit chybným konfiguracím s využitím doporučení k vynucení nebo zamítnutí](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="Doporučení seskupená podle řízení zabezpečení" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>Průběžný export získá nové datové typy a zlepší zásady deployifnotexist.
+
+Nástroje pro průběžné exporty Azure Security Center umožňují exportovat doporučení Security Center a výstrahy pro použití s dalšími nástroji pro monitorování ve vašem prostředí.
+
+Průběžný export umožňuje plně přizpůsobit, co se bude exportovat a kde se bude přecházet. Úplné podrobnosti najdete v tématu  [průběžné exportování dat Security Center](continuous-export.md).
+
+Tyto nástroje se vylepšily a rozšířily následujícími způsoby:
+
+- **Vylepšené zásady Deployifnotexist průběžného exportu**. Zásady teď:
+
+    - **Ověřte, zda je konfigurace povolena.** Pokud tomu tak není, zásada se zobrazí jako nedodržující předpisy a vytvoří vyhovující prostředek. Další informace o dodaných šablonách Azure Policy najdete v části nasazení se škálováním na kartě Azure Policy v tématu [Nastavení průběžného exportu](continuous-export.md#set-up-a-continuous-export).
+
+    - **Podpora exportu zjištění zabezpečení.** Při použití šablon Azure Policy můžete nakonfigurovat průběžný export, aby obsahoval nálezy. To je relevantní při exportu doporučení, která mají doporučení "sub", jako jsou nálezy ze skenerů posouzení ohrožení zabezpečení nebo specifické aktualizace systému pro doporučení "nadřazená" doporučení "by měly být nainstalovány na počítačích".
+    
+    - **Podpora exportu zabezpečených dat skóre.**
+
+- **Byla přidána data vyhodnocení dodržování předpisů pro úpravy (ve verzi Preview).** Nyní můžete průběžně exportovat aktualizace posouzení dodržování předpisů, včetně pro jakékoli vlastní iniciativy, do pracovního prostoru Log Analytics nebo centra událostí. Tato funkce není k dispozici pro národní cloudy/svrchované.
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="Možnosti pro zahrnutí informací o hodnocení vyhovujících předpisům pro průběžný export dat.":::
+
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -421,7 +508,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
@@ -464,7 +551,7 @@ Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Az
 
 Pokud některý z prostředků obsahuje nevyřízená doporučení, zobrazí se v inventáři.
 
-Další informace najdete v informacích o [prozkoumání a správě vašich prostředků pomocí inventáře a nástrojů pro správu](asset-inventory.md).
+Další informace najdete v informacích o [prozkoumání a správě vašich prostředků pomocí inventáře assetů](asset-inventory.md).
 
 
 
@@ -678,7 +765,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Obor|
+|Zásada|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -693,7 +780,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Obor|
+|Zásada|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960746"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862530"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960746"
 
 **Otázka: co je k dispozici?**
 
-**A:** Kontejnery Azure Cognitive Services umožňují vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejneru. Některé kontejnery jsou k dispozici jako ověřovaná verze Preview, které mohou vyžadovat přístup k aplikaci. Další kontejnery jsou veřejně dostupné jako nebrané verze Preview nebo jsou všeobecně dostupné. Úplný seznam kontejnerů a jejich dostupnosti najdete v článku [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) . Kontejnery můžete zobrazit také v [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+**A:** Kontejnery Azure Cognitive Services umožňují vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejneru. Některé kontejnery jsou k dispozici jako ověřovaná verze Preview, které mohou vyžadovat přístup k aplikaci. Další kontejnery jsou veřejně dostupné jako nebrané verze Preview nebo jsou všeobecně dostupné. Úplný seznam kontejnerů a jejich dostupnosti najdete v článku [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md) . Kontejnery můžete zobrazit také v [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 **Otázka: existuje nějaký rozdíl mezi Cognitive Services cloudem a kontejnery?**
 
@@ -140,11 +140,11 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
  
 **Otázka: co se stane s Cognitive Services kontejnery, když dojde ke ztrátě připojení k Internetu?**
 
-**A:** Nemusíte *not licensed* spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Nemusíte  spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
 
 **Otázka: jak dlouho může kontejner fungovat bez připojení k Azure?**
 
-**A:** Nemusíte *not licensed* spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Nemusíte  spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
  
 **Otázka: co je aktuální hardware potřebný ke spuštění těchto kontejnerů?**
 
@@ -164,7 +164,7 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
  
 **Otázka: Návody zjišťování kontejnerů?**
 
-**A:** Kontejnery Cognitive Services jsou k dispozici v různých umístěních, jako je Azure Portal, centrum Docker a Registry kontejnerů Azure. Pro nejnovější umístění kontejnerů se podívejte na [úložiště kontejnerů a image](../cognitive-services-container-support.md#container-repositories-and-images).
+**A:** Kontejnery Cognitive Services jsou k dispozici v různých umístěních, jako je Azure Portal, centrum Docker a Registry kontejnerů Azure. Pro nejnovější umístění kontejnerů se podívejte na [Image kontejneru](container-image-tags.md).
 
 **Otázka: jak se Cognitive Services kontejnery porovnávají s AWS a Google nabídkami?**
 

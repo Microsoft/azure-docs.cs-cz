@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d0641129d641043f10cdb94d9e7f634fb35fbbef
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032996"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862402"
 ---
 # <a name="introduction-to-azure-functions"></a>Úvod do Azure Functions
 
-Azure Functions je řešení bez serveru, které umožňuje psát méně kódu, udržovat méně infrastruktury a ušetřit náklady. V případě, že se nebudete muset starat o nasazení a údržbu serverů, cloudová infrastruktura poskytuje všechny aktuální servery potřebné k zachování spuštěných aplikací.
+Azure Functions je řešení bez serveru, které umožňuje psát méně kódu, udržovat méně infrastruktury a ušetřit náklady. Nemusíte si dělat starosti s nasazením a správou serverů, cloudová infrastruktura poskytuje všechny aktuální prostředky potřebné k zachování spuštěné aplikace.
 
 Zaměřte se na části kódu, které jsou pro vás nejvhodnější, a Azure Functions zpracuje zbytek.<br /><br />
 

@@ -1,14 +1,14 @@
 ---
 title: Informace o tom, jak auditovat obsah virtuálních počítačů
-description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
+description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347876"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862318"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -58,7 +58,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
-Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
+Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není klient konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
 |Publisher|Název|Verze|
 |-|-|-|
@@ -150,9 +150,9 @@ Definice zásad konfigurace hostů momentálně podporují přiřazování stejn
 
 Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících umístění:
 
-Systému `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Kde `<version>` odkazuje na aktuální číslo verze.
 

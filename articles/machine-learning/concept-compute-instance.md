@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857439"
+ms.locfileid: "97862130"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -130,7 +130,7 @@ Tyto akce lze řídit pomocí Azure RBAC:
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zastavit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/restartovat/akce*
 
-Poznámka: Chcete-li vytvořit uživatele výpočetní instance, musí mít oprávnění pro následující akce:
+Chcete-li vytvořit výpočetní instanci, musíte mít oprávnění pro následující akce:
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zapisovat*
 * *Microsoft. MachineLearningServices/pracovní prostory/checkComputeNameAvailability/Action*
 

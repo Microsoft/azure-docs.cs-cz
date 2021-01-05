@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3c880d570cfa6e1b1388e59557836a3070d7cdc7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824652"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862543"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -29,7 +29,7 @@ Rozhraní API plochy ovládacího prvku jsou rozhraní API [ARM](../azure-resour
 Nejaktuálnější verze rozhraní API roviny ovládacího prvku je _**2020-12-01**_.
 
 Chcete-li použít rozhraní API plochy ovládacího prvku:
-* Rozhraní API můžete volat přímo odkazem na nejnovější Swagger ve [složce Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití.
+* Rozhraní API můžete volat přímo odkazem na nejnovější složku Swagger v [úložišti Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable). Tato složka obsahuje také složku příkladů, které ukazují použití.
 * V tuto chvíli můžete přistupovat k sadám SDK pro řídicí rozhraní API v...
   - [**.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([odkaz [automaticky generované]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
@@ -51,7 +51,7 @@ Nejaktuálnější verze rozhraní API roviny dat je _**2020-10-31**_.
 
 Použití rozhraní API roviny dat:
 * Můžete volat rozhraní API přímo, do...
-   - odkaz na nejnovější Swagger ve [složce Swagger datové roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití. 
+   - odkaz na nejnovější složku Swagger v [úložišti Swagger roviny dat](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Tato složka obsahuje také složku příkladů, které ukazují použití. 
    - zobrazení [Referenční dokumentace rozhraní API](/rest/api/azure-digitaltwins/).
 * Můžete použít **sadu .NET (C#) SDK**. Chcete-li použít sadu .NET SDK...
    - Balíček můžete zobrazit a přidat ze sady NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 

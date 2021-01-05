@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006898"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862482"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -50,13 +50,13 @@ Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnác
 
 Před použitím kontejnerů musíte splnit následující předpoklady:
 
-|Vyžadováno|Účel|
+|Povinné|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
 |Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
@@ -118,14 +118,14 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](computer-vision-resource-container-config.md) `docker run` K dispozici jsou další příklady příkazu. 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [](computer-vision-resource-container-config.md) `docker run` K dispozici jsou další příklady příkazu. 
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
+[](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 # <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
@@ -164,7 +164,7 @@ Tento příkaz:
 ---
 
 
-[examples](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
+[](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
@@ -390,11 +390,7 @@ Kontejnery Cognitive Services odesílají informace o fakturaci do Azure pomocí
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./computer-vision-resource-container-config.md).
 
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 
