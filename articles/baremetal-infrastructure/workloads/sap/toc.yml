@@ -1,0 +1,16 @@
+- name: Azure BareMetal Infrastructure
+  href: ../../index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě BareMetal Infrastructure
+      href: baremetal-overview-architecture.md
+    - name: Seznámení s podmínkami
+      href: ../../know-baremetal-terms.md
+- name: Návody
+  items:
+    - name: Správa jednotek instancí služby BareMetal v Azure
+      href: baremetal-infrastructure-portal.md
+- name: Referenční informace
+  items:
+    - name: Typy úloh služby BareMetal
+      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/context/context

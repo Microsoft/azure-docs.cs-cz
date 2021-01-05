@@ -502,7 +502,7 @@
               items:
                 - name: Přidání úlohy služby Azure Stream Analytics
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Nástroje pro připojení k pracovním prostorům Synapse
+        - name: Připojení s využitím nástrojů a aplikací
           items:
             - name: Přehled
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Připojovací řetězce
               href: sql/connection-strings.md
-            - name: Dotazování pomocí nástroje sqlcmd
-              href: sql/get-started-connect-sqlcmd.md
             - name: Dotazování pomocí aplikace SSMS
               href: sql/get-started-ssms.md
-            - name: Dotazování pomocí sady Visual Studio
-              href: sql/get-started-visual-studio.md
             - name: Připojení k aplikaci Power BI Desktop
               href: sql/get-started-power-bi-professional.md
+            - name: Dotazování pomocí rozšíření Visual Studio SSDT
+              href: sql/get-started-visual-studio.md
+            - name: Dotazování s využitím .NET Core
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování s využitím Visual Studio .NET
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování s využitím Pythonu
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování pomocí nástroje sqlcmd
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: Přehled
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Konfigurace Cognitive Services pro Azure Synapse
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Postupy
+  items:
+    - name: Plánování a správa nákladů
+      href: plan-manage-costs.md
 - name: Referenční informace
   items:
     - name: Azure CLI

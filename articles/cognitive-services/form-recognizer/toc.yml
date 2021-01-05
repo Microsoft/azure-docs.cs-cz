@@ -7,45 +7,13 @@
       href: overview.md
     - name: Co je nového
       href: whats-new.md
-- name: Rychlé starty
+- name: Začínáme s Rozpoznáváním formulářů
   expaned: true
   items:
-    - name: Použití klientské knihovny
+    - name: S využitím klientské knihovny nebo REST API
       href: quickstarts/client-library.md
     - name: Použití ukázkového nástroje pro popisování
-      items:
-        - name: Trénování vlastního modelu s popisky
-          href: quickstarts/label-tool.md
-    - name: S využitím REST API
-      items:
-        - name: Trénování a využití vlastního modelu bez popisků
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Trénování a využití vlastního modelu s popisky
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: Použití předem připraveného modelu potvrzení
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: Použití předem připraveného modelu vizitek
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: Použití předem sestaveného modelu faktur
-          items:
-            - name: Python
-              href: quickstarts/python-invoices.md
-        - name: Získání informací o rozložení textu
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: Kurzy
   items:
     - name: Použití Rozpoznávání formulářů se službou Cognitive Search
@@ -77,7 +45,8 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Použití instancí kontejneru
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Dokumentace ke kontejnerům Cognitive Services
           href: ../containers/index.yml
     - name: Modely zálohování a obnovení

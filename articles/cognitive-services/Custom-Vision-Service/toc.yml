@@ -13,7 +13,7 @@
       items:
         - name: Použití webového portálu
           href: getting-started-build-a-classifier.md
-        - name: Použití sady Custom Vision SDK
+        - name: Použití sady Custom Vision SDK nebo REST API
           href: quickstarts/image-classification.md
     - name: Sestavení detektoru objektů
       items:

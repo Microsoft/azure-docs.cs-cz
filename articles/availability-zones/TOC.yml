@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: Dokumentace k zónám dostupnosti
       items:
-        - name: 'Oblasti, které podporují zóny dostupnosti'
+        - name: 'Služby Azure, které podporují zóny dostupnosti'
           href: az-region.md
         - name: Virtuální počítače
           items:

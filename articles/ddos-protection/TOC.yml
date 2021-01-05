@@ -15,9 +15,11 @@
 - name: Kurzy
   items:
     - name: Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
-      href: telemetry-monitoring-alerting.md
-    - name: Konfigurace protokolů toků a sestav omezení rizik útoků DDoS
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: Zobrazení a konfigurace protokolování diagnostiky DDoS
+      href: diagnostic-logging.md
+    - name: Zobrazení a konfigurace upozornění ochrany před útoky DDoS
+      href: alerts.md
 - name: Koncepty
   items:
     - name: Typy útoků

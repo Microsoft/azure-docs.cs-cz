@@ -5,135 +5,233 @@
   items:
     - name: Architektura řešení
       href: architecture.md
-    - name: Modul zabezpečení pro Azure RTOS
-      href: iot-security-azure-rtos.md
-    - name: Agenti zabezpečení
-      href: security-agent-architecture.md
-    - name: Modul zabezpečení hraničních zařízení
-      href: security-edge-architecture.md
-    - name: Požadavky služeb
-      href: service-prerequisites.md
-    - name: Začínáme se službou Azure Defender for IoT
-      href: getting-started.md
-      items:
-        - name: IoT Hub
-          href: iot-hub-integration.md
-        - name: Agenti zabezpečení
-          href: security-agents.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Příprava sítě
-      href: quickstart-prepare-network-for-defender-for-iot.md
-    - name: Nasazení senzorů
-      href: quickstart-onboard-sensors.md
-    - name: Konfigurace modulu zabezpečení pro Azure RTOS
-      href: quickstart-azure-rtos-security-module.md
-    - name: Onboarding služby Azure Defender for IoT do IoT Hubu
-      href: quickstart-onboard-iot-hub.md
-    - name: Konfigurace vašeho řešení
-      href: quickstart-configure-your-solution.md
-    - name: Vytvoření dvojčete modulu služby Azure Defender for IoT
-      href: quickstart-create-security-twin.md
-    - name: Prozkoumání doporučení pro zabezpečení
-      href: quickstart-investigate-security-recommendations.md
-    - name: Vytváření vlastních výstrah zabezpečení
-      href: quickstart-create-custom-alerts.md
-    - name: Prošetření výstrah zabezpečení
-      href: quickstart-investigate-security-alerts.md
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Systémové požadavky
+          href: quickstart-system-prerequisites.md
+        - name: Začínáme se službou Azure Defender for IoT
+          href: getting-started.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Konfigurace modulu zabezpečení pro Azure RTOS
+          href: quickstart-azure-rtos-security-module.md
+        - name: IoT Hub
+          href: quickstart-iot-hub-integration.md
+        - name: Onboarding služby Azure Defender for IoT do IoT Hubu
+          href: quickstart-onboard-iot-hub.md
+        - name: Agenti zabezpečení
+          href: security-agent-architecture.md
+        - name: Konfigurace vašeho řešení
+          href: quickstart-configure-your-solution.md
+        - name: Vytvoření dvojčete modulu služby Azure Defender for IoT
+          href: quickstart-create-security-twin.md
+        - name: Prozkoumání doporučení pro zabezpečení
+          href: quickstart-investigate-security-recommendations.md
+        - name: Vytváření vlastních výstrah zabezpečení
+          href: quickstart-create-custom-alerts.md
+        - name: Prošetření výstrah zabezpečení
+          href: quickstart-investigate-security-alerts.md
 - name: Koncepty
   items:
-    - name: Modul zabezpečení pro Azure RTOS
+    - name: Řešení bez agentů pro organizace
       items:
-        - name: Principy modulu zabezpečení pro Azure RTOS
-          href: concept-rtos-security-module.md
-        - name: Upozornění a doporučení modulu zabezpečení pro Azure RTOS
-          href: concept-rtos-security-alerts-recommendations.md
-    - name: Ověřování agentů zabezpečení
-      href: concept-security-agent-authentication-methods.md
-    - name: Modul zabezpečení
-      href: concept-security-module.md
-    - name: Výstrahy zabezpečení
-      href: concept-security-alerts.md
-    - name: Přizpůsobitelné výstrahy zabezpečení
-      href: concept-customizable-security-alerts.md
-    - name: Zabezpečení
+        - name: Klíčové koncepty
+          href: concept-key-concepts.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
       items:
-        - name: Doporučení zabezpečení
-          href: concept-recommendations.md
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
-    - name: Standardní hodnoty
-      href: concept-baseline.md
-    - name: Agregace událostí
-      href: event-aggregation.md
-    - name: Ceny a související náklady
-      href: concept-pricing.md
+        - name: Modul zabezpečení pro Azure RTOS
+          href: iot-security-azure-rtos.md
+          items:
+            - name: Principy modulu zabezpečení pro Azure RTOS
+              href: concept-rtos-security-module.md
+            - name: Upozornění a doporučení modulu zabezpečení pro Azure RTOS
+              href: concept-rtos-security-alerts-recommendations.md
+        - name: Modul zabezpečení hraničních zařízení
+          href: security-edge-architecture.md
+        - name: Agenti zabezpečení
+          href: overview-security-agents.md
+        - name: Ověřování agentů zabezpečení
+          href: concept-security-agent-authentication-methods.md
+        - name: Modul zabezpečení
+          href: concept-security-module.md
+        - name: Výstrahy zabezpečení
+          href: concept-security-alerts.md
+        - name: Přizpůsobitelné výstrahy zabezpečení
+          href: concept-customizable-security-alerts.md
+        - name: Zabezpečení
+          items:
+            - name: Doporučení zabezpečení
+              href: concept-recommendations.md
+            - name: Standardní hodnoty zabezpečení
+              href: security-baseline.md
+        - name: Standardní hodnoty
+          href: concept-baseline.md
+        - name: Agregace událostí
+          href: event-aggregation.md
+        - name: Ceny a související náklady
+          href: concept-pricing.md
 - name: Návody
   items:
-    - name: Zobrazení a správa senzorů
-      href: how-to-deploy-view-sensors.md
-    - name: Nasazení místní konzoly pro správu
-      href: how-to-deploy-management-console-appliance.md
-    - name: Práce s modulem zabezpečení pro Azure RTOS
-      href: how-to-azure-rtos-security-module.md
-    - name: Kterého agenta mám nasadit?
+    - name: Řešení bez agentů pro organizace
       items:
-        - name: Výběr agenta pro nasazení
-          href: how-to-deploy-agent.md
-        - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
-          href: how-to-deploy-windows-cs.md
-        - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
-          href: how-to-deploy-linux-cs.md
-        - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
-          href: how-to-deploy-linux-c.md
-    - name: Řešení potíží s agentem zabezpečení
+        - name: Příprava sítě
+          items:
+            - name: Identifikace požadovaných zařízení
+              href: how-to-identify-required-appliances.md
+            - name: Instalovat software
+              href: how-to-install-software.md
+            - name: Nastavení sítě
+              href: how-to-set-up-your-network.md
+        - name: Příprava senzorů
+          items:
+            - name: Nasazení senzorů
+              href: how-to-manage-sensors-on-the-cloud.md
+            - name: Aktivace a nastavení senzoru
+              href: how-to-activate-and-set-up-your-sensor.md
+        - name: Příprava místní konzoly pro správu
+          items:
+            - name: Aktivace a nastavení místní konzoly pro správu
+              href: how-to-activate-and-set-up-your-on-premises-management-console.md
+            - name: Nastavení vysoké dostupnosti
+              href: how-to-set-up-high-availability.md
+        - name: Správa uživatelů a uživatelského přístupu
+          items:
+            - name: Vytváření a správa uživatelů
+              href: how-to-create-and-manage-users.md
+            - name: Definování globálního řízení přístupu uživatelů
+              href: how-to-define-global-user-access-control.md
+        - name: 'Určení, který provoz se monitoruje'
+          href: how-to-control-what-traffic-is-monitored.md
+        - name: Správa senzorů z místní konzoly pro správu
+          href: how-to-manage-sensors-from-the-on-premises-management-console.md
+        - name: Správa individuálních senzorů
+          href: how-to-manage-individual-sensors.md
+        - name: Správa senzorů v cloudu
+          href: how-to-manage-sensors-on-the-cloud.md
+        - name: Správa místní konzoly pro správu
+          href: how-to-manage-the-on-premises-management-console.md
+        - name: Práce s balíčky analýz hrozeb
+          href: how-to-work-with-threat-intelligence-packages.md
+        - name: Práce s informacemi inventáře zařízení
+          items:
+            - name: Prošetření všech detekovaných podnikových senzorů v inventáři zařízení
+              href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+            - name: Prošetření detekovaných senzorů v inventáři zařízení
+              href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+        - name: Práce s mapou zařízení senzorů
+          href: how-to-work-with-the-sensor-device-map.md
+        - name: Práce s upozorněními zjištěnými senzorem
+          items:
+            - name: Práce s upozorněním na senzoru
+              href: how-to-work-with-alerts-on-your-sensor.md
+            - name: Zobrazení upozornění
+              href: how-to-view-alerts.md
+            - name: Zobrazení informací uvedených v upozorněních
+              href: how-to-view-information-provided-in-alerts.md
+            - name: Správa události upozornění
+              href: how-to-manage-the-alert-event.md
+            - name: Urychlení reakce na incidenty upozornění
+              href: how-to-accelerate-alert-incident-response.md
+            - name: Předávání informací o upozornění
+              href: how-to-forward-alert-information-to-partners.md
+        - name: 'Získání přehledu o globálních, regionálních a místních hrozbách'
+          href: how-to-gain-insight-into-global-regional-and-local-threats.md
+        - name: Práce s upozorněními na místní konzole pro správu
+          href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Rozšíření informací o zařízení
+          items:
+            - name: Práce s oznámeními zařízení
+              href: how-to-work-with-device-notifications.md
+            - name: Vylepšení rozlišování názvů sítě VLAN a portů
+              href: how-to-enhance-port-and-vlan-name-resolution.md
+            - name: Import informací o zařízení
+              href: how-to-import-device-information.md
+        - name: Sledování aktivity senzorů
+          href: how-to-track-sensor-activity.md
+        - name: Generování sestav
+          href: how-to-generate-reports.md
+        - name: Řešení potíží se senzory a místní konzolou pro správu
+          href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
+        - name: Nastavení monitorování SNMP MIB
+          href: how-to-set-up-snmp-mib-monitoring.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
       items:
-        - name: Řešení potíží s linuxovým agentem zabezpečení služby Azure Defender for IoT
-          href: troubleshoot-agent.md
-        - name: Místní konfigurace C
-          href: azure-iot-security-local-configuration-c.md
-        - name: Místní konfigurace C#
-          href: azure-iot-security-local-configuration-csharp.md
-    - name: Nasazení modulu zabezpečení hraničních zařízení
-      href: how-to-deploy-edge.md
-    - name: Konfigurace agentů zabezpečení
-      href: how-to-agent-configuration.md
-    - name: Odesílání vlastních zpráv zabezpečení
-      href: how-to-send-security-messages.md
-    - name: Přístup k nezpracovaným datům zabezpečení
-      href: how-to-security-data-access.md
-    - name: Prozkoumání zařízení
-      href: how-to-investigate-device.md
-    - name: Připojení k Azure Sentinelu
-      href: how-to-configure-with-sentinel.md
-    - name: Přizpůsobení agenta
-      href: how-to-customize-solution.md
+        - name: Práce s modulem zabezpečení pro Azure RTOS
+          href: how-to-azure-rtos-security-module.md
+        - name: Kterého agenta mám nasadit?
+          items:
+            - name: Výběr agenta pro nasazení
+              href: how-to-deploy-agent.md
+            - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Windows
+              href: how-to-deploy-windows-cs.md
+            - name: Nasazení agenta zabezpečení založeného na C# v zařízení s Linuxem
+              href: how-to-deploy-linux-cs.md
+            - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
+              href: how-to-deploy-linux-c.md
+        - name: Řešení potíží s agentem zabezpečení
+          items:
+            - name: Řešení potíží s linuxovým agentem zabezpečení služby Azure Defender for IoT
+              href: troubleshoot-agent.md
+            - name: Místní konfigurace C
+              href: azure-iot-security-local-configuration-c.md
+            - name: Místní konfigurace C#
+              href: azure-iot-security-local-configuration-csharp.md
+        - name: Nasazení modulu zabezpečení hraničních zařízení
+          href: how-to-deploy-edge.md
+        - name: Konfigurace agentů zabezpečení
+          href: how-to-agent-configuration.md
+        - name: Odesílání vlastních zpráv zabezpečení
+          href: how-to-send-security-messages.md
+        - name: Přístup k nezpracovaným datům zabezpečení
+          href: how-to-security-data-access.md
+        - name: Prozkoumání zařízení
+          href: how-to-investigate-device.md
+        - name: Připojení k Azure Sentinelu
+          href: how-to-configure-with-sentinel.md
+        - name: Přizpůsobení agenta
+          href: how-to-customize-solution.md
 - name: Reference
   items:
-    - name: Rozhraní API modulu zabezpečení pro Azure RTOS
-      href: azure-rtos-security-module-api.md
-    - name: Nejčastější dotazy – služba
-      href: resources-frequently-asked-questions.md
-    - name: Nejčastější dotazy – agent
-      href: resources-agent-frequently-asked-questions.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Řešení bez agentů pro organizace
+      items:
+        - name: Práce s rozhraními API Defenderu for IoT
+          href: references-work-with-defender-for-iot-apis.md
+        - name: Práce s příkazy CLI Defenderu for IoT
+          href: references-work-with-defender-for-iot-cli-commands.md
+        - name: Správa proprietárních protokolů (Horizon)
+          href: resources-manage-proprietary-protocols.md
+        - name: Glosář Defenderu for IoT
+          href: references-defender-for-iot-glossary.md
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Rozhraní API modulu zabezpečení pro Azure RTOS
+          href: azure-rtos-security-module-api.md
+        - name: Nejčastější dotazy – služba
+          href: resources-frequently-asked-questions.md
+        - name: Nejčastější dotazy – agent
+          href: resources-agent-frequently-asked-questions.md
+        - name: Plány Azure do budoucna
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Zdroje a prostředky
   items:
-    - name: Získávání dovedností v oblasti zabezpečení pomocí Microsoft Learn
-      href: /learn/browse/?term=securityS&terms=securityS
-    - name: Dokumentace ke službě Azure Security Center
-      href: ../security-center/index.yml
-    - name: Dokumentace k zabezpečení Azure
-      href: ../security/index.yml
-    - name: Modul zabezpečení Azure RTOS na Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
-    - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
-      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/security-center/'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: Řešení založená na agentech pro tvůrce zařízení
+      items:
+        - name: Získávání dovedností v oblasti zabezpečení pomocí Microsoft Learn
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Dokumentace ke službě Azure Security Center
+          href: ../security-center/
+        - name: Dokumentace k zabezpečení Azure
+          href: 'https://docs.microsoft.com/azure/security/'
+        - name: Modul zabezpečení Azure RTOS na Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+        - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+        - name: Regionální dostupnost
+          href: 'https://azure.microsoft.com/regions/services/'
+        - name: Ceny
+          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+        - name: Videa
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

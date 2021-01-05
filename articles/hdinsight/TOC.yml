@@ -421,7 +421,7 @@
               items:
                 - name: Použití místní aplikace Jupyter Notebook
                   href: ./spark/apache-spark-jupyter-notebook-install-locally.md
-                - name: Jádra aplikace Jupyter Notebook
+                - name: Jádra aplikací Jupyter Notebook
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
@@ -437,7 +437,7 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Řešení potíží
           items:
-            - name: Nejde vytvořit poznámkový blok Jupyter
+            - name: Nejde vytvořit Jupyter Notebook
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: Výjimka OutOfMemoryError
               href: ./spark/apache-spark-troubleshoot-outofmemory.md

@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: Streamování protokolů v reálném čase
           href: spring-cloud-howto-log-streaming.md
+        - name: Application Insights s využitím Java In-Process Agenta
+          href: spring-cloud-howto-application-insights.md
+        - name: Metriky jističe Resilience4J
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: Zabezpečení
       items:
         - name: Povolení spravované identity přiřazené systémem

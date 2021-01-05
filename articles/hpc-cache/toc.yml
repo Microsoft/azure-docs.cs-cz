@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: Správa mezipaměti
       href: hpc-cache-manage.md
-    - name: Konfigurace volitelných nastavení
-      href: configuration.md
+    - name: Použití volitelných nastavení
+      items:
+        - name: Konfigurace volitelných nastavení
+          href: configuration.md
+        - name: Přizpůsobení zásad přístupu
+          href: access-policies.md
+        - name: Nastavení adresářových služeb
+          href: directory-services.md
 - name: Referenční informace
   items:
     - name: Azure CLI

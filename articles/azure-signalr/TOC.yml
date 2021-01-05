@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: Nastavení pro upstream
           href: concept-upstream.md
+    - name: Dostupnost
+      items:
+        - name: Řádné vypnutí aplikačního serveru
+          href: server-graceful-shutdown.md
+    - name: Zabezpečení
+      items:
+        - name: Autorizace
+          items:
+            - name: Autorizace přístupu pomocí Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+        - name: Ověřování
+          items:
+            - name: Ověření z aplikace
+              href: authenticate-application.md
+            - name: Ověřování pomocí spravované identity
+              href: authenticate-managed-identity.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii

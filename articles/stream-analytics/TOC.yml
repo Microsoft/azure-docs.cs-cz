@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: Kurzy
   items:
-    - name: 1. Vytvoření a správa úlohy
-      href: stream-analytics-manage-job.md
-    - name: 2. Spuštění Azure Functions
+    - name: Vizualizace podvodných volání v Power BI
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Spuštění Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Nasazení s využitím průběžné integrace a doručování v Azure Pipelines
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4. Spuštění funkce definované uživatelem v C#
+    - name: Spuštění funkce definované uživatelem v C#
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5. Vytvoření vlastního deserializátoru .NET
+    - name: Vytvoření vlastního deserializátoru .NET
       href: custom-deserializer.md
+    - name: Vytvoření úlohy IoT Edge
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: ukázky
   items:
     - name: Ukázky kódů
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: Zabezpečení
       items:
+        - name: Připojení úloh k virtuální síti Azure
+          href: connect-job-to-vnet.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: Zvýšení propustnosti úlohy
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Stavy úlohy
       href: job-states.md
     - name: Funkce okna
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: Použití referenčních dat SQL
           href: sql-reference-data.md
-        - name: Ověřování pomocí spravované identity
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob Storage
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL a Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Šifrování dat
           href: data-protection.md
         - name: Geografická redundance
           href: geo-redundancy.md
+    - name: Ověřování pomocí spravované identity
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL a Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Zjišťování možných podvodů v reálném čase
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Spouštění úloh ve službě IoT Edge
-          href: stream-analytics-edge.md
         - name: Spouštění úloh v Azure Stacku
           href: on-azure-stack.md
         - name: Analýza dat snímačů z mýtných bran
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: Zkoumání úloh
           href: visual-studio-code-explore-jobs.md
+        - name: Vytvoření a ladění vlastního deserializátoru .NET
+          href: visual-studio-code-custom-deserializer.md
         - name: Pole JobConfig.json
           href: job-config-json.md
     - name: Řešení potíží

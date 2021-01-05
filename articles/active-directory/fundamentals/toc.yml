@@ -25,6 +25,28 @@
   items:
     - name: Zabezpečení
       items:
+        - name: Zabezpečení externího přístupu k prostředkům
+          items:
+            - name: Přehled zabezpečení externího přístupu
+              href: secure-external-access-resources.md
+            - name: 1. Zjištění stavu zabezpečení
+              href: 1-secure-access-posture.md
+            - name: 2. Zjištění aktuálního stavu
+              href: 2-secure-access-current-state.md
+            - name: 3. Vytvoření plánu zabezpečení
+              href: 3-secure-access-plan.md
+            - name: 4. Zabezpečení přístupu s využitím skupin
+              href: 4-secure-access-groups.md
+            - name: 5. Zabezpečení přístupu s využitím spolupráce B2B
+              href: 5-secure-access-b2b.md
+            - name: 6. Zabezpečení přístupu s využitím správy nároků
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7. Zabezpečení přístupu s využitím podmíněného přístupu
+              href: 7-secure-access-conditional-access.md
+            - name: 8. Zabezpečení přístupu s využitím popisků citlivosti
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9. Zabezpečení přístupu k Teams, SharePointu a OneDrivu'
+              href: 9-secure-access-teams-sharepoint.md
         - name: Povolení MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Výchozí nastavení zabezpečení

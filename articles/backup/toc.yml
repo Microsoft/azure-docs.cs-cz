@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: Doprovodné materiály a osvědčené postupy
       href: guidance-best-practices.md
+    - name: Glosář termínů
+      href: azure-backup-glossary.md
 - name: Průvodce postupy
   items:
     - name: Trezory
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: Správa bodů obnovení
               href: manage-recovery-points.md
+            - name: Úprava zásad zálohování s využitím Azure CLI
+              href: modify-vm-policy-cli.md
     - name: Zálohování databází SQL Serveru na virtuálních počítačích Azure
       items:
         - name: Přehled

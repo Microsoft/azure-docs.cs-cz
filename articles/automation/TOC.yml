@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Vytvoření runbooku v Pythonu
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: Vytvoření runbooku v Pythonu 3
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: Koncepty
   items:
     - name: Přehled ověřování účtů služby Automation
@@ -96,6 +98,8 @@
           href: shared-resources/variables.md
         - name: Správa balíčků Python 2
           href: python-packages.md
+        - name: Správa balíčků Python 3
+          href: python-3-packages.md
         - name: Řešení potíží se sdílenými prostředky
           href: troubleshoot/shared-resources.md
     - name: Automatizace procesů

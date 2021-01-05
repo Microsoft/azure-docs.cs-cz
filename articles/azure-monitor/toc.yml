@@ -253,7 +253,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: Správa služeb IT
           items:
-            - name: IT Service Management Connector
+            - name: Přehled ITSM konektoru
               href: platform/itsmc-overview.md
-            - name: Připojení IT Service Management
-              href: platform/itsmc-connections.md
-            - name: Definice pro ITSM konektor
+            - name: Nastavení partnerů pro ITSM konektor
+              items:
+                - name: Přehled
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: Nastavení
+                      href: platform/itsmc-connections-scsm.md
+                    - name: Vytvoření webové aplikace Service Manageru
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: Konfigurace Azure pro ITSM konektor
               href: platform/itsmc-definition.md
-            - name: Vytvoření webové aplikace Service Manageru
-              href: platform/itsmc-service-manager-script.md
+            - name: Synchronizace dat z produktu ITSM
+              href: platform/itsmc-synced-data.md
             - name: Řešení potíží v ITSM konektoru
               href: platform/itsmc-resync-servicenow.md
             - name: Integrace se zabezpečeným exportem
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: Přehled
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: Zabezpečený export konfigurace Azure
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: Řadič BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Migrace klasických pravidel upozornění
           items:
             - name: Informace o klasických upozorněních
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: Povolení Snapshot Debuggeru pro App Service
               href: app/snapshot-debugger-appservice.md
+            - name: Povolení Snapshot Debuggeru pro aplikace funkcí
+              href: app/snapshot-debugger-function-app.md
             - name: Povolení Snapshot Debuggeru pro další prostředí
               href: app/snapshot-debugger-vm.md
             - name: Upgrade Snapshot Debuggeru

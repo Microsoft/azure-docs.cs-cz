@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: Synchronizace dat s využitím Synchronizace dat SQL
       href: tutorial-sync-data-sync.md
-    - name: Sestavení komplexního řešení IoT s využitím SQL Edge
-      items:
-        - name: Nastavení prostředků Azure
-          href: tutorial-deploy-azure-resources.md
-        - name: Nastavení modulů IoT Edge
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: Nasazení modelu do SQL Edge
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: Koncepty
   items:
     - name: Nasazení
@@ -138,6 +130,18 @@
       href: create-stream-analytics-job.md
     - name: Řešení problémů při nasazování
       href: troubleshoot.md
+- name: ukázky
+  items:
+    - name: Predikce křemíku a železné rudy
+      items:
+        - name: Nastavení prostředků Azure
+          href: tutorial-deploy-azure-resources.md
+        - name: Nastavení modulů IoT Edge
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Nasazení modelu do SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: Obnovitelná energie – analýza vodních turbín
+      href: tutorial-renewable-energy-demo.md
 - name: Referenční informace
   items:
     - name: Reference k jazyku Transact-SQL (T-SQL)

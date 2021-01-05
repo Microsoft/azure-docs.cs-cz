@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: Návody
   items:
-    - name: Ověření
+    - name: Ověřování a autorizace
       items:
         - name: Ověřování pro Key Vault
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
-    - name: Povolení obnovitelného odstranění a ochrany před vymazáním
-      href: key-vault-recovery.md
-    - name: Povolit protokolování
-      href: howto-logging.md
     - name: Vývoj
       items:
         - name: Průvodce vývojáře pro službu Azure Key Vault
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: Monitorování a řízení
       items:
-        - name: Konfigurace monitorování a upozorňování pro Azure Key Vault
+        - name: Oznámení Event Gridu
+          items:
+            - name: Příjem oznámení prostřednictvím služby Logic Apps
+              href: event-grid-logicapps.md
+            - name: Příjem oznámení prostřednictvím služby Azure Automation
+              href: event-grid-tutorial.md
+        - name: Povolit protokolování
+          href: howto-logging.md
+        - name: Konfigurace monitorování a upozorňování pro Azure Key Vault s využitím Azure Monitoru
           href: alert.md
+        - name: Správa obnovení s ochranou před vymazáním a obnovitelným odstraněním
+          href: key-vault-recovery.md
         - name: Integrace služby Azure Key Vault se službou Azure Policy
           href: azure-policy.md
-        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Logic Apps
-          href: event-grid-logicapps.md
-        - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Azure Automation
-          href: event-grid-tutorial.md
         - name: Zálohování jednotlivých objektů Key Vaultu
           href: backup.md
     - name: Zabezpečení
       items:
-        - name: Integrace se službou Azure Private Link
-          href: private-link-service.md
-        - name: Přístup ke službě Key Vault za bránou firewall –⁠ Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: Integrace se službou Azure Private Link
+              href: private-link-service.md
+            - name: Diagnostika potíží s konfigurací služeb Private Link
+              href: private-link-diagnostics.md
+        - name: Přístup ke Key Vaultu za bránou firewall
           href: access-behind-firewall.md
     - name: Přesun Key Vaultu
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: Přesun Key Vaultu do jiné oblasti
           href: move-region.md
-    - name: Sítě
-      items:
-        - name: Diagnostika potíží s konfigurací služeb Private Link
-          href: private-link-diagnostics.md
 - name: Referenční informace
   items:
     - name: Co je nového

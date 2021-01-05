@@ -85,6 +85,8 @@
       href: ./how-to-ingest-data-event-hub.md
     - name: Připojení ke službě IoT Hub
       href: ./how-to-ingest-data-iot-hub.md
+    - name: Monitorování služby Azure Time Series Insights
+      href: ./how-to-monitor-tsi.md
     - name: Správa prostředků pomocí šablon
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure Time Series Insights Gen2
@@ -171,6 +173,8 @@
       items:
         - name: Javascriptová klientská sada SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: Monitorování odkazů na data
+      href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
       href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: Zdroje a prostředky

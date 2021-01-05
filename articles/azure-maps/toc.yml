@@ -9,6 +9,8 @@
   items:
     - name: Vytvoření webové aplikace
       href: quick-demo-map-app.md
+    - name: Vytvoření aplikace pro Android
+      href: quick-android-map.md
 - name: Kurzy
   items:
     - name: Kurzy k Web SDK
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: Vytvoření lokátoru úložiště
           href: tutorial-create-store-locator.md
+    - name: Kurzy k sadě Android SDK
+      items:
+        - name: Načítání dat GeoJSON do map
+          href: tutorial-load-geojson-file-android.md
     - name: Kurzy k REST API
       items:
         - name: Vytváření interiérových map
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: Změna stylu mapy
           href: set-android-map-styles.md
+        - name: Vytvoření zdroje dat
+          href: create-data-source-android-sdk.md
         - name: Přidání vrstvy symbolů
           href: how-to-add-symbol-to-android-map.md
+        - name: Přidání vrstvy bublin
+          href: map-add-bubble-layer-android.md
         - name: Přidání tvarů
           href: how-to-add-shapes-to-android-map.md
+        - name: Přidání vrstvy heat mapy
+          href: map-add-heat-map-layer-android.md
+        - name: Přidání řádkové vrstvy
+          href: android-map-add-line-layer.md
         - name: Zobrazení informací o funkci
           href: display-feature-information-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat
           href: how-to-show-traffic-android.md
+        - name: Použití výrazů založených na datech
+          href: data-driven-style-expressions-android-sdk.md
+        - name: Reakce na události
+          href: android-map-events.md
     - name: Použití Azure Maps v Power BI
       items:
         - name: Začínáme
