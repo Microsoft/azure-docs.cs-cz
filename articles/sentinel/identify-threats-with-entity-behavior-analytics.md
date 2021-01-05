@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494773"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900888"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
@@ -177,6 +177,8 @@ Stránky entit jsou navržené tak, aby byly součástí více scénářů použ
 | **ActivityInsights**      | Kontextová analýza aktivity založená na naší profilaci              |
 | **InvestigationPriority** | skóre anomálií, mezi 0-10 (0 = neškodné, 10 = vysoce neobvyklé)         |
 |
+
+V [referenčním dokumentu pro obohacení UEBA](ueba-enrichments.md)můžete zobrazit úplnou sadu kontextových rozšíření, která jsou odkazována v **UsersInsights**, **DevicesInsights** a **ActivityInsights** .
 
 ### <a name="querying-behavior-analytics-data"></a>Dotazování na data analýzy chování
 

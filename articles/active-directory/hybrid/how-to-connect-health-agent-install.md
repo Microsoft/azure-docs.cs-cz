@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973282"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900446"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta Azure AD Connect Health
 
@@ -64,7 +64,7 @@ Tyto adresy URL umožňují komunikaci s Azure AD Connect Healthmi koncovými bo
 | Prostředí domény | Požadované koncové body služby Azure |
 | --- | --- |
 | Obecné veřejné | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;. servicebus.windows.net-port: 5671 (tento koncový bod není v nejnovější verzi agenta vyžadován.)</li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https: \/ /www.Office.com (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> |
-| Azure (Německo) | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https: \/ /www.Office.de (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https: \/ /www.Office.de (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https: \/ /www.Office.com (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> |
 
 
@@ -215,7 +215,7 @@ Ručně zaregistrujte agenta Azure AD Connect Health pro synchronizaci pomocí n
 Příkaz přijímá následující parametry:
 
 * **AttributeFiltering**: `$true` (výchozí) Pokud Azure AD Connect nesynchronizuje výchozí sadu atributů a byla přizpůsobena pro použití filtrované sady atributů. V opačném případě použijte `$false` .
-* **StagingMode**: `$false` (výchozí), pokud Azure AD Connect Server není *not* v pracovním režimu. Pokud je server nakonfigurovaný jako v pracovním režimu, použijte `$true` .
+* **StagingMode**: `$false` (výchozí), pokud Azure AD Connect Server není  v pracovním režimu. Pokud je server nakonfigurovaný jako v pracovním režimu, použijte `$true` .
 
 Po zobrazení výzvy k ověření použijte stejný účet globálního správce (například admin@domain.onmicrosoft.com ), který jste použili ke konfiguraci Azure AD Connect.
 
@@ -283,6 +283,17 @@ Po instalaci příslušného souboru agenta *setup.exe* můžete agenta zaregist
     Register-AzureADConnectHealthSyncAgent
 
 ```
+
+> [!NOTE]
+> K registraci v rámci svrchovaných cloudů použijte následující příkazové řádky:
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
 
 Tyto příkazy přijímají `Credential` jako parametr k dokončení registrace neinteraktivní nebo k dokončení registrace na počítači, na kterém běží jádro serveru. Pamatujte na to, že:
 * Můžete zachytit `Credential` proměnnou prostředí PowerShell, která je předána jako parametr.

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905369"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901228"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurace front-endové architektur a knihoven pomocí Azure static Web Apps Preview
 
@@ -24,7 +24,7 @@ V následující tabulce jsou uvedena nastavení pro řadu architektur a knihove
 
 Záměr sloupců tabulky je vysvětlen následujícími položkami:
 
-- **Umístění artefaktu aplikace**: zobrazuje hodnotu pro `app_artifact_location` , což je [Složka pro sestavené verze souborů aplikace](github-actions-workflow.md#build-and-deploy).
+- **Umístění výstupu**: vypíše hodnotu pro `output_location` , což je [Složka pro sestavené verze souborů aplikace](github-actions-workflow.md#build-and-deploy).
 
 - **Vlastní sestavení příkazu**: když rozhraní vyžaduje příkaz jiný než `npm run build` nebo `npm run azure:build` , můžete definovat [vlastní příkaz buildu](github-actions-workflow.md#custom-build-commands).
 

@@ -4,12 +4,12 @@ description: Přečtěte si o schématu JSON, které se pošle na adresu URL Web
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522783"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901432"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -27,6 +27,19 @@ Webhook může volitelně použít autorizaci založenou na tokenech pro ověřo
 
 ## <a name="payload-schema"></a>Schéma datové části
 Datová část JSON obsažená v operaci POST se liší v závislosti na poli data datové části Context. activityLog. eventSource.
+
+> [!NOTE]
+> V současné době je popis, který je součástí události protokolu aktivit, zkopírován do vlastnosti **"Popis výstrahy"** .
+>
+> Aby bylo možné zarovnávat datovou část protokolu aktivit s jinými typy výstrah od 1. dubna 2021 vlastnost aktivované výstrahy **Description (popis)** místo toho bude obsahovat popis pravidla výstrahy.
+>
+> Při přípravě této změny jsme vytvořili novou vlastnost **Popis události protokolu aktivit** do výstrahy aktivované protokolem aktivit. Tato nová vlastnost bude vyplněna vlastností **Description (popis)** , která je již k dispozici pro použití. To znamená, že nové pole **"Popis události protokolu aktivit"** bude obsahovat popis, který je součástí události protokolu aktivit.
+>
+> Zkontrolujte pravidla výstrah, pravidla akcí, Webhooky, aplikaci logiky nebo jakékoli jiné konfigurace, kde můžete použít vlastnost **Description** z výstrahy aktivované a nahradit ji **názvem "Popis události protokolu aktivit"** .
+>
+> Pokud je vaše podmínka (v pravidlech akcí, webhookech, Logic Apps nebo jakýchkoli jiných konfiguracích) aktuálně založená na vlastnosti **Description** pro výstrahy protokolu aktivit, může být potřeba ji upravit tak, aby se místo toho změnila na základě vlastnosti **"Popis události protokolu aktivit"** .
+>
+> Aby bylo možné vyplnit novou vlastnost **Description** , můžete do definice pravidla výstrahy přidat popis.
 
 ### <a name="common"></a>Společné
 
@@ -262,7 +275,7 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | conditionType |Vždy "Event" |
 | name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
-| description |Popis výstrahy nastavený při vytvoření výstrahy |
+| Popis |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |

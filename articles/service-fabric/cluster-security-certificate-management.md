@@ -4,12 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653660"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901262"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -109,9 +109,12 @@ Jako Poznámka na straně: IETF [RFC 3647](https://tools.ietf.org/html/rfc3647) 
 
 Dříve jsme se dozvěděli, že Azure Key Vault podporuje automatické otočení certifikátu: zásady přidružování certifikátů definují bod v čase, který je nastavený na základě dnů před vypršením platnosti nebo procentem celkové životnosti, když se certifikát v trezoru otočí. Agent zřizování musí být vyvolán po tomto bodu v čase a před vypršením platnosti certifikátu (nyní předchozí) pro distribuci tohoto nového certifikátu do všech uzlů clusteru. Service Fabric bude pomáhat vygenerováním upozornění na stav, když se datum vypršení platnosti certifikátu (a který je aktuálně používá v clusteru) vyskytne dřív než předem určený interval. Automatický agent zřizování (tj. rozšíření virtuálního počítače trezoru klíčů) nakonfigurovaný tak, aby sledoval certifikát trezoru, se pravidelně dotazuje trezoru, rozpozná rotaci a načte a nainstaluje nový certifikát. Zřizování přes virtuální počítač nebo VMSS – funkce tajné klíče bude vyžadovat, aby autorizovaný operátor aktualizoval virtuální počítač nebo VMSS s identifikátorem URI trezoru klíčů, který odpovídá novému certifikátu.
 
-V obou případech je otočený certifikát teď zřízený všem uzlům a my jsme popsali mechanismus, který Service Fabric využívá ke zjišťování rotací. Podíváme se na to, co se stane, a to za předpokladu, že se rotace používá pro certifikát clusteru deklarovaný běžným názvem subjektu (který se vztahuje k době psaní a Service Fabric běhové verze 7.1.409):
-  - v případě nových připojení v rámci nástroje i v clusteru Service Fabric modul runtime vyhledá a vybere certifikát, který je s nejbližším datem vypršení platnosti (vlastnost ' NotAfter ' certifikátu, často zkráceně jako ' NEDEF ').
+V obou případech je otočený certifikát teď zřízený všem uzlům a my jsme popsali mechanismus, který Service Fabric využívá ke zjišťování rotací. Podíváme se na to, co se stane dál – za předpokladu, že se rotace používá pro certifikát clusteru deklarovaný běžným názvem subjektu
+  - u nových připojení v rámci nástroje i v clusteru Service Fabric modul runtime vyhledá a vybere naposledy vydaný certifikát, který odpovídá (největší hodnota vlastnosti ' NotBefore '). Všimněte si, že se jedná o změnu z předchozích verzí modulu runtime Service Fabric.
   - stávající připojení se budou udržovat aktivní/smí přirozeně vypršet platnost nebo jinak skončit; interní obslužná rutina bude upozorněna, že existuje nová shoda.
+
+> [!NOTE] 
+> Před verzí 7.2.445 (7,2 CU4) Service Fabric vybrat certifikát s nejstarším vypršením platnosti (certifikát s vlastností "NotAfter").
 
 To se týká následujících důležitých pozorování:
   - Certifikát pro obnovení je možné ignorovat, pokud datum vypršení platnosti vychází z aktuálně používaného certifikátu.
@@ -134,8 +137,11 @@ Popsali jsme mechanismy, omezení, popsaná komplikovaná pravidla a definice a 
 
 Sekvence je plně skriptovatelných nebo automatizovaná a umožňuje počáteční nasazení clusteru bez dotykového ovládání, které je nakonfigurované pro automatické přecházení k certifikátům. Podrobné pokyny jsou uvedené níže. Budeme používat kombinaci rutin PowerShellu a fragmentů šablon JSON. Stejné funkce jsou dosažitelné se všemi podporovanými prostředky pro interakci s Azure.
 
-[!NOTE] Tento příklad předpokládá, že už existuje certifikát v trezoru; zápis a obnovení certifikátu spravovaného trezorem klíčů vyžaduje ruční postup, jak je popsáno výše v tomto článku. V produkčních prostředích používejte certifikáty spravované trezorem klíčů – níže je uvedený ukázkový skript specifický pro interní infrastrukturu veřejných klíčů společnosti Microsoft.
-Automatické přecházení certifikátu dává smysl jenom pro certifikáty vydané certifikační autoritou. pomocí certifikátů podepsaných svým držitelem, včetně těch, které se vygenerovaly při nasazení clusteru Service Fabric v Azure Portal, je nesmyslná, ale u místních nebo vývojářských nasazení je to možné, a to deklarováním kryptografického otisku vystavitele, který bude stejný jako na listovém certifikátu.
+> [!NOTE]
+> Tento příklad předpokládá, že už existuje certifikát v trezoru; zápis a obnovení certifikátu spravovaného trezorem klíčů vyžaduje ruční postup, jak je popsáno výše v tomto článku. V produkčních prostředích používejte certifikáty spravované trezorem klíčů – níže je uvedený ukázkový skript specifický pro interní infrastrukturu veřejných klíčů společnosti Microsoft.
+
+> [!NOTE]
+> Automatické přecházení certifikátu dává smysl jenom pro certifikáty vydané certifikační autoritou. pomocí certifikátů podepsaných svým držitelem, včetně těch, které se vygenerovaly při nasazení clusteru Service Fabric v Azure Portal, je nesmyslná, ale u místních nebo vývojářských nasazení je to možné, a to deklarováním kryptografického otisku vystavitele, který bude stejný jako na listovém certifikátu.
 
 ### <a name="starting-point"></a>Výchozí bod
 V případě zkrácení budeme předpokládat následující počáteční stav:
@@ -455,7 +461,7 @@ Z hlediska zabezpečení si vyvoláte, že virtuální počítač (sada škálov
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Řešení problémů a nejčastější dotazy
 
 *Otázka*: jak programově zaregistrovat certifikát spravovaný trezorem klíčů?
-Odpověď *: Zjistěte*název vystavitele z dokumentace k trezoru klíčů a pak ho nahraďte ve skriptu níže.  
+Odpověď *: Zjistěte* název vystavitele z dokumentace k trezoru klíčů a pak ho nahraďte ve skriptu níže.  
 ```PowerShell
   $issuerName=<depends on your PKI of choice>
     $clusterVault="sftestcus"
@@ -478,7 +484,7 @@ Odpověď *: Zjistěte*název vystavitele z dokumentace k trezoru klíčů a pak
 ```
 
 *Otázka*: co se stane, když se certifikát vystaví nedeklarovaným/nespecifikovaným vystavitelem? Kde můžu získat vyčerpávající seznam aktivních vystavitelů dané infrastruktury veřejných klíčů?
-Odpověď *: Pokud*deklarace certifikátu určuje kryptografické otisky vystavitele a přímý Vydavatel certifikátu není zahrnutý v seznamu připnutých vystavitelů, bude se certifikát považovat za neplatný – bez ohledu na to, jestli je jeho kořen důvěryhodný pro klienta. Proto je důležité zajistit, aby byl seznam vystavitelů aktuální a aktuální. Zavedení nového vystavitele je vzácná událost a před tím, než se začne vystavovat certifikáty, je třeba ji široce zveřejnit. 
+Odpověď *: Pokud* deklarace certifikátu určuje kryptografické otisky vystavitele a přímý Vydavatel certifikátu není zahrnutý v seznamu připnutých vystavitelů, bude se certifikát považovat za neplatný – bez ohledu na to, jestli je jeho kořen důvěryhodný pro klienta. Proto je důležité zajistit, aby byl seznam vystavitelů aktuální a aktuální. Zavedení nového vystavitele je vzácná událost a před tím, než se začne vystavovat certifikáty, je třeba ji široce zveřejnit. 
 
 Infrastruktura veřejných klíčů (PKI) bude obecně publikovat a udržovat prohlášení o certifikaci v souladu se [specifikací IETF RFC 7382](https://tools.ietf.org/html/rfc7382). Kromě dalších informací bude obsahovat všechny aktivní vystavitele. Načítání tohoto seznamu prostřednictvím kódu programu se může lišit od infrastruktury veřejných klíčů do jiné.   
 
@@ -488,7 +494,7 @@ Pro interní infrastruktury veřejných klíčů společnosti Microsoft si pře�
 Odpověď *: Ano*; v manifestu clusteru nemůžete deklarovat více položek CN se stejnou hodnotou, ale může vypsat vystavitele z více infrastruktury veřejných klíčů odpovídajících stejnému CN. Nejedná se o doporučený postup a postupy transparentnosti certifikátů můžou zabránit vydání takových certifikátů. Nicméně jako způsob migrace z jedné infrastruktury veřejných klíčů do jiné se jedná o přijatelný mechanismus.
 
 *Otázka*: Co když aktuální certifikát clusteru není vydán certifikační autoritou nebo nemá zamýšlený předmět? 
-Odpověď *: Získejte*certifikát se zamýšleným subjektem a přidejte ho do definice clusteru jako sekundární, podle kryptografického otisku. Po úspěšném dokončení upgradu spusťte jiný upgrade konfigurace clusteru, aby se deklarace certifikátu převedla na běžný název. 
+Odpověď *: Získejte* certifikát se zamýšleným subjektem a přidejte ho do definice clusteru jako sekundární, podle kryptografického otisku. Po úspěšném dokončení upgradu spusťte jiný upgrade konfigurace clusteru, aby se deklarace certifikátu převedla na běžný název. 
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png

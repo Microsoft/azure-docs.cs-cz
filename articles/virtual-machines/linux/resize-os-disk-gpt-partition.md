@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 76aa18c9724d85b1dd3fb8de3d7d033d40ff95ce
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: ab83a3b11aebdc9fed450410aa1f9bee2d25c4bb
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400229"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900667"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Změna velikosti disku s operačním systémem, který má oddíl GPT
 
@@ -400,6 +400,8 @@ Po restartování virtuálního počítače proveďte tyto kroky:
 > Chcete-li použít stejný postup pro změnu velikosti jakéhokoli jiného logického svazku, změňte název LV v kroku 12.
 
 ### <a name="rhel-raw"></a>RHEL RAW
+>[!NOTE] 
+>Vždycky pořídit snímek virtuálního počítače před zvýšením velikosti disku s operačním systémem.
 
 Pokud chcete zvětšit velikost disku s operačním systémem v nezpracovaném oddílu RHEL:
 
@@ -407,114 +409,120 @@ Pokud chcete zvětšit velikost disku s operačním systémem v nezpracovaném o
 1. Zvětšete velikost disku s operačním systémem z portálu.
 1. Spusťte virtuální počítač.
 
-Po restartování virtuálního počítače proveďte tyto kroky:
+Po restartování virtuálního počítače proveďte následující kroky:
 
 1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
-
-   ```bash
-   [root@dd-rhel7vm ~]# sudo -i
+ 
+   ```
+   sudo su
    ```
 
-1. Po restartování virtuálního počítače proveďte následující krok:
+1. Nainstalujte balíček **gptfdisk** , který je nutný ke zvýšení velikosti disku s operačním systémem.
 
-   - Nainstalujte balíček **Cloud-utils-growpart** k poskytnutí příkazu **growpart** , který je nutný ke zvýšení velikosti disku s operačním systémem a obslužné rutiny GDISK pro rozložení disků GPT. Tento balíček je předinstalován na většině imagí na webu Marketplace.
-
-   ```bash
-   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
+   ```
+   yum install gdisk -y
    ```
 
-1. Pomocí příkazu **lsblk-f** ověřte oddíl a typ systému souborů, kde je uložený oddíl root ( **/** ):
+1.  Chcete-li zobrazit všechny sektory, které jsou na disku k dispozici, spusťte následující příkaz:
+    ```
+    gdisk -l /dev/sda
+    ```
 
-   ```bash
-   [root@vm-dd-cent7 ~]# lsblk -f
-   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
-   sda
-   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
-   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
-   ├─sda14
-   └─sda15 vfat         788D-DC65                            /boot/efi
-   sdb
-   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
+1. Zobrazí se podrobnosti o typu oddílu. Ujistěte se, že se jedná o GPT. Identifikujte kořenový oddíl. Neměňte ani neodstraňujte spouštěcí oddíl (spouštěcí oddíl systému BIOS) a systémový oddíl (' systémový oddíl EFI ')
+
+1. Pro první spuštění vytváření oddílů použijte následující příkaz. 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. Nyní se zobrazí zpráva s výzvou k zadání dalšího příkazu (' Command:? pro nápovědu '). 
+
+   ```
+   w
    ```
 
-1. Pro ověření začněte uvedením tabulky oddílů na disku sda pomocí **gDisk**. V tomto příkladu se zobrazuje 48 GB disku s oddílem 2 na 29,0 GiB. Disk se rozšířil z 30 GB na 48 GB v Azure Portal.
+1. Zobrazí se upozornění. Sekundární hlavička je umístěná na disku příliš brzy. Chcete tento problém vyřešit? (A/N): ". Musíte stisknout Y.
 
-   ```bash
-   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
-   GPT fdisk (gdisk) version 0.8.10
-
-   Partition table scan:
-   MBR: protective
-   BSD: not present
-   APM: not present
-   GPT: present
-
-   Found valid GPT with protective MBR; using GPT.
-   Disk /dev/sda: 100663296 sectors, 48.0 GiB
-   Logical sector size: 512 bytes
-   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
-   Partition table holds up to 128 entries
-   First usable sector is 34, last usable sector is 62914526
-   Partitions will be aligned on 2048-sector boundaries
-   Total free space is 6076 sectors (3.0 MiB)
-
-   Number  Start (sector)    End (sector)  Size       Code  Name
-      1         1026048         2050047   500.0 MiB   0700
-      2         2050048        62912511   29.0 GiB    0700
-   14            2048           10239   4.0 MiB     EF02
-   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
+   ```
+   Y
    ```
 
-1. Rozbalte oddíl pro kořen, v tomto případě sda2 pomocí příkazu **growpart** . Když použijete tento příkaz, rozbalíte oddíl, aby se použilo veškeré souvislé místo na disku.
+1. Měla by se zobrazit zpráva informující o tom, že jsou dokončeny závěrečné kontroly a žádosti o potvrzení. Stiskněte klávesu Y
 
-   ```bash
-   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
-   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
+   ```
+   Y
    ```
 
-1. Teď znovu vytiskněte novou tabulku oddílů s **gDisk** .  Všimněte si, že oddíl 2 se rozšířil na 47,0 GiB:
+1. Ověřte, zda všechno proběhlo správně pomocí příkazu partprobe
 
-   ```bash
-   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
-   GPT fdisk (gdisk) version 0.8.10
-
-   Partition table scan:
-   MBR: protective
-   BSD: not present
-   APM: not present
-   GPT: present
-
-   Found valid GPT with protective MBR; using GPT.
-   Disk /dev/sda: 100663296 sectors, 48.0 GiB
-   Logical sector size: 512 bytes
-   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
-   Partition table holds up to 128 entries
-   First usable sector is 34, last usable sector is 100663262
-   Partitions will be aligned on 2048-sector boundaries
-   Total free space is 4062 sectors (2.0 MiB)
-
-   Number  Start (sector)    End (sector)  Size       Code  Name
-      1         1026048         2050047   500.0 MiB   0700
-      2         2050048       100663261   47.0 GiB    0700
-   14            2048           10239   4.0 MiB     EF02
-   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
+   ```
+   partprobe
    ```
 
-1. Rozbalte systém souborů na oddílu pomocí **xfs_growfs**, který je vhodný pro standardní systém RedHat generovaný na Marketplace:
+1. Výše uvedené kroky zajistily, že sekundární hlavička GPT je umístěna na konci. Dalším krokem je spuštění procesu změny velikosti pomocí nástroje gDisk. Použijte následující příkaz.
 
-   ```bash
-   [root@vm-dd-cent7 ~]# xfs_growfs /
-   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
-            =                       sectsz=4096  attr=2, projid32bit=1
-            =                       crc=1        finobt=0 spinodes=0
-   data     =                       bsize=4096   blocks=7607808, imaxpct=25
-            =                       sunit=0      swidth=0 blks
-   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-   log      =internal               bsize=4096   blocks=3714, version=2
-            =                       sectsz=4096  sunit=1 blks, lazy-count=1
-   realtime =none                   extsz=4096   blocks=0, rtextents=0
-   data blocks changed from 7607808 to 12326651
    ```
+   gdisk /dev/sda
+   ```
+1. V nabídce příkazů kliknutím na ' p ' zobrazte seznam oddílů. Identifikujte kořenový oddíl (v krocích sda2 se považuje za kořenový oddíl) a spouštěcí oddíl (v krocích se sda3 považuje za spouštěcí oddíl). 
+
+   ```
+   p
+   ```
+    ![Kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. Stisknutím klávesy a odstraňte oddíl a vyberte číslo oddílu přiřazené ke spuštění (v tomto příkladu je to 3).
+   ```
+   d
+   3
+   ```
+1. Stisknutím klávesy a odstraňte oddíl a vyberte číslo oddílu přiřazené ke spuštění (v tomto příkladu je to "2").
+   ```
+   d
+   2
+   ```
+    ![Odstranit kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. Pokud chcete znovu vytvořit kořenový oddíl se zvýšenou velikostí, stiskněte n, zadejte číslo oddílu, který jste předtím odstranili pro kořen (2 pro tento příklad), a zvolte první sektor jako výchozí hodnota, poslední sektor jako poslední hodnota sektoru – velikost spouštěcího sektoru (v tomto případě je to "4096") a šestnáctkový kód jako "8300".
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. Pokud chcete znovu vytvořit spouštěcí oddíl, stiskněte n, zadejte číslo oddílu, který jste předtím odstranili pro spuštění (3 pro tento příklad), a zvolte první sektor jako výchozí hodnota, poslední sektor jako výchozí hodnota a kód hex jako EF02.
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. Zapište změny pomocí příkazu w a potvrďte ji stisknutím klávesy Y.
+   ```
+   w
+   Y
+   ```
+1. Spusťte příkaz ' partprobe ' pro kontrolu stability disku
+   ```
+   partprobe
+   ```
+1. Restartujte virtuální počítač a velikost kořenového oddílu by se zvýšila.
+   ```
+   reboot
+   ```
+
+   ![Nový kořenový oddíl a spouštěcí oddíl](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. Chcete-li změnit velikost, spusťte příkaz xfs_growfs v oddílu.
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS a rozšířit FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+
 
 1. Ověřte, že se nová velikost odráží pomocí příkazu **DF** :
 

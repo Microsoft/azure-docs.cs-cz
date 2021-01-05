@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898848"
+ms.locfileid: "97901585"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -24,13 +24,6 @@ Tento kurz popisuje kroky, které je třeba provést v G Suite a Azure Active Di
 
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> Konektor G Suite se nedávno aktualizoval v říjnu 2019. Mezi změny provedené v konektoru G Suite patří:
->
-> * Byla přidána podpora dalších atributů uživatelů a skupin G Suite.
-> * Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](https://developers.google.com/admin-sdk/directory)definuje.
-> * Mapování výchozích atributů se aktualizovala.
 
 > [!NOTE]
 > Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
@@ -276,7 +269,13 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
-3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
+3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Protokol změn
+
+* 10/17/2020 – byla přidána podpora dalších atributů uživatelů a skupin v sadě G Suite.
+* 10/17/2020 – aktualizované názvy atributů cíle G Suite budou odpovídat hodnotám, které jsou [zde](https://developers.google.com/admin-sdk/directory)definovány.
+* 10/17/2020 – aktualizované výchozí mapování atributů.
 
 ## <a name="additional-resources"></a>Další zdroje
 

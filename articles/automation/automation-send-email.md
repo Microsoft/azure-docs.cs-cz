@@ -3,14 +3,14 @@ title: Odeslání e-mailu z Azure Automation Runbooku
 description: V tomto článku se dozvíte, jak odeslat e-mail z Runbooku.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005201"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900317"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Odeslání e-mailu z runbooku
 
@@ -67,7 +67,7 @@ Další způsoby vytvoření Azure Key Vault a uložení tajného klíče najdet
 
 Pokud chcete použít Azure Key Vault v rámci sady Runbook, musíte do svého účtu Automation importovat následující moduly:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Pokyny najdete v tématu [Import AZ modules](shared-resources/modules.md#import-az-modules).
@@ -142,7 +142,7 @@ Pokud se vám na zkušebním e-mailu nezobrazuje e-mail, zkontrolujte složky **
 
 1. Pokud již sada Runbook není potřebná, vyberte ji v seznamu sady Runbook a klikněte na tlačítko **Odstranit**.
 
-2. Odstraňte Key Vault pomocí rutiny [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) .
+2. Odstraňte Key Vault pomocí rutiny [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) .
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

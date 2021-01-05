@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813781"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900356"
 ---
 # <a name="test-through-simulations"></a>Testování prostřednictvím simulací
 
@@ -42,9 +42,9 @@ Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breaki
     |---------      |---------                                          |
     |Cílová IP adresa           | Zadejte jednu z vaší veřejné IP adresy, kterou chcete otestovat.                     |
     |Číslo portu   | Zadejte _443_.                       |
-    |Profil DDoS | Vyberte možnost **zaplavení TCP syn**.|
-    |Velikost testu       | Vyberte **200 tisíc PPS, 100 MB/s a 8 zdrojovou IP adresou.**                                  |
-    |Doba trvání testu | Vyberte **10 minut**.|
+    |Profil DDoS | Mezi možné hodnoty patří **zahlcení DNS**, **zaplavení NTPv2**, **zaplavení protokolu SSDP**, **TCP syn**, **UDP 64B,**, UDP **128B**, UDP **256B zaplavení**, **UDP 512B zaplavování**, **UDP 1024B** zaplavování, UDP **1514B**, **fragmentace** UDP **memcached**.|
+    |Velikost testu       | Možné hodnoty zahrnují **100 tisíc PPS, 50 MB/s a 4 zdrojové IP adresy**, **200 tisíc PPS, 100 MB/s a 8 zdrojových IP adres**, **400 tisíc PPS, 200Mbps a 16 zdrojových IP adres**, **800K pps, 400 MB/s a 32 zdroje IP adres**.                                  |
+    |Doba trvání testu | Možné hodnoty zahrnují **10 minut**, **15 minut**, **20 minut**, **25** minut, **30 minut**.|
 
 Teď by měl vypadat takto:
 

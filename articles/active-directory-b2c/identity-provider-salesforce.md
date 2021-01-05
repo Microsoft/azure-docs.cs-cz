@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669223"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900395"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Salesforce pomocí Azure Active Directory B2C
 
@@ -48,10 +48,12 @@ Pokud chcete použít účet Salesforce v Azure Active Directory B2C (Azure AD B
     1. **Název rozhraní API** 
     1. **Kontaktní e-mail** – kontaktní E-mail pro Salesforce
 1. V části **rozhraní API (povolit nastavení OAuth)** vyberte **Povolit nastavení OAuth** .
-1. Do **adresy URL zpětného volání** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
-1. Ve **vybraných oborech OAuth** vyberte **přístup k základním informacím (ID, profil, e-mail, adresa, telefon)** a **Umožněte přístup k jedinečnému identifikátoru (OpenID)**.
-1. Vyberte **vyžadovat tajný klíč pro tok webového serveru**.
-1. Vyberte **Konfigurovat token ID** a pak vyberte **zahrnout standardní deklarace identity**.
+    1. Do **adresy URL zpětného volání** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+    1. Ve **vybraných oborech OAuth** vyberte **přístup k základním informacím (ID, profil, e-mail, adresa, telefon)** a **Umožněte přístup k jedinečnému identifikátoru (OpenID)**.
+    1. Vyberte **vyžadovat tajný klíč pro tok webového serveru**.
+1. Vyberte **Konfigurovat token ID** . 
+    1. Nastavte **token platný po dobu** 5 minut.
+    1. Vyberte **zahrnout standardní deklarace identity**.
 1. Klikněte na **Uložit**.
 1. Zkopírujte hodnoty **klíč příjemce** a **tajného kódu příjemce**. Obě tyto služby budete potřebovat ke konfiguraci Salesforce jako poskytovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležité bezpečnostní pověření.
 
@@ -63,10 +65,10 @@ Pokud chcete použít účet Salesforce v Azure Active Directory B2C (Azure AD B
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity** a potom vyberte **Nový poskytovatel OpenID Connect**.
 1. Zadejte **název**. Zadejte například *Salesforce*.
-1. V poli **Adresa URL metadat** zadejte následující adresu URL, která nahrazuje `{org}` vaši organizaci Salesforce:
+1. V poli **Adresa URL metadat** zadejte adresu URL [dokumentu konfigurace Salesforce OpenID Connect](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm). Pro izolovaný prostor (sandbox) se login.salesforce.com nahrazuje test.salesforce.com. V případě komunity se login.salesforce.com nahrazuje adresou URL komunity, jako je například username.force.com/.well-known/openid-configuration. Adresa URL musí být HTTPS.
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. Jako **ID klienta** zadejte ID aplikace, které jste si poznamenali dříve.
@@ -80,7 +82,7 @@ Pokud chcete použít účet Salesforce v Azure Active Directory B2C (Azure AD B
     - **Zobrazovaný název**: *název*
     - **Křestní jméno**: *given_name*
     - **Příjmení**: *family_name*
-    - **E-mail**: *preferred_username*
+    - **E-mail**: *e-mail*
 
 1. Vyberte **Uložit**.
 ::: zone-end
@@ -121,8 +123,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Salesforce, musíte
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu Salesforce, musíte
     </ClaimsProvider>
     ```
 
-4. Nastavte identifikátor URI **metadat** `{org}` v organizaci Salesforce.
+4. **Metadata** se nastaví na adresu URL [dokumentu konfigurace Salesforce OpenID Connect](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm). Pro izolovaný prostor (sandbox) se login.salesforce.com nahrazuje test.salesforce.com. V případě komunity se login.salesforce.com nahrazuje adresou URL komunity, jako je například username.force.com/.well-known/openid-configuration. Adresa URL musí být HTTPS.
 5. Nastavte **client_id** na ID aplikace z registrace aplikace.
 6. Uložte soubor.
 

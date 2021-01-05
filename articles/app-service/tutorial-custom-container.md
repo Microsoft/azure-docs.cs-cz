@@ -7,22 +7,22 @@ ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: b3507e22c691f3e3ca9f9e6562a313e95e42f080
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558602"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900191"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Pomocí vlastního kontejneru Windows ve službě App Service (Preview) ale můžete dělat změny operačního systému, které vaše aplikace potřebuje, takže je snadné migrovat místní aplikaci, která vyžaduje vlastní operační systém a konfiguraci softwaru. Tento kurz ukazuje, jak do služby App Service migrovat aplikaci ASP.NET, která využívá vlastní písma nainstalovaná v knihovně písem Windows. Do služby [Azure Container Registry](../container-registry/index.yml) nasadíte vlastní nakonfigurovanou image Windows ze sady Visual Studio a pak ji spustíte ve službě App Service.
+[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Použití vlastního kontejneru Windows ve službě App Service vám ale umožňuje udělat změny operačního systému, které vaše aplikace potřebuje, takže migrace místní aplikace, která vyžaduje vlastní konfiguraci operačního systému a softwaru, je snadná. Tento kurz ukazuje, jak do služby App Service migrovat aplikaci ASP.NET, která využívá vlastní písma nainstalovaná v knihovně písem Windows. Do služby [Azure Container Registry](../container-registry/index.yml) nasadíte vlastní nakonfigurovanou image Windows ze sady Visual Studio a pak ji spustíte ve službě App Service.
 
 ![Zobrazuje webovou aplikaci spuštěnou v kontejneru Windows.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -120,7 +120,7 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
-|**Skladová jednotka (SKU)**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Skladová jednotka (SKU)**| Základní | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Umístění registru**| West Europe | |
 
 ![Konfigurace Azure Container Registry](./media/tutorial-custom-container/configure-registry.png)

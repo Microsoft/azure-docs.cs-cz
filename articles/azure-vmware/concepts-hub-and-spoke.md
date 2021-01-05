@@ -3,12 +3,12 @@ title: Koncept – integrace nasazení řešení Azure VMware v architektuře hu
 description: Přečtěte si o integraci nasazení řešení Azure VMware v architektuře hub a paprsků v Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967444"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901381"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
@@ -128,7 +128,7 @@ Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bas
 
 Pro Azure DNS rozlišení jsou k dispozici dvě možnosti:
 
--   Použijte řadiče domény Azure Active Directory (Azure AD) nasazené v centru (popsané v tématu [požadavky na identitu](#identity-considerations)) jako názvové servery.
+-   Použijte řadiče domény nasazené na rozbočovači (popsané v tématu [požadavky na identitu](#identity-considerations)) jako názvové servery.
 
 -   Nasaďte a nakonfigurujte Azure DNS privátní zóna.
 
@@ -136,7 +136,7 @@ Nejlepším způsobem, jak zajistit spolehlivé rozlišení názvů pro řešen�
 
 Jako obecné doporučení k návrhu použijte stávající infrastrukturu Azure DNS (v tomto případě službu DNS integrovanou službou Active Directory) nasazenou do aspoň dvou virtuálních počítačů Azure nasazených ve virtuální síti centrální sítě a nakonfigurované ve virtuálních sítích s paprsky tak, aby používaly servery Azure DNS v nastavení DNS.
 
-Můžete použít Azure Privátní DNS, kde se zóna Azure Privátní DNS odkazuje na virtuální síť.  Servery DNS se používají jako hybridní překladače s podmíněným předáváním do místního prostředí nebo řešení Azure VMware se systémem DNS s využitím zákaznické infrastruktury Azure Privátní DNS. 
+Můžete použít Azure Privátní DNS, kde se zóna Azure Privátní DNS odkazuje na virtuální síť.  Servery DNS se používají jako hybridní překladače s podmíněným předáváním do místního prostředí nebo řešení Azure VMware se systémem DNS pomocí zákaznické infrastruktury Azure Privátní DNS. 
 
 Pokud chcete automaticky spravovat životní cyklus záznamů DNS pro virtuální počítače nasazené v rámci virtuálních sítí paprsků, povolte automatickou registraci. Pokud je tato možnost povolená, je maximální počet privátních zón DNS jenom jeden. Pokud je tato hodnota zakázaná, pak je maximální počet 1000.
 
@@ -144,7 +144,7 @@ Místní a servery řešení Azure VMware je možné nakonfigurovat s použitím
 
 ## <a name="identity-considerations"></a>Požadavky na identitu
 
-Pro účely identity je nejlepším přístupem nasazení aspoň jednoho řadiče domény služby AD v centru. Použijte dvě podsítě sdílené služby v rámci distribuované zóny nebo skupiny dostupnosti virtuálních počítačů. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
+Pro účely identity je nejlepším přístupem nasazení aspoň jednoho řadiče domény v centru. Použijte dvě podsítě sdílené služby v rámci distribuované zóny nebo skupiny dostupnosti virtuálních počítačů. Další informace o rozšíření místní domény služby Active Directory (AD) do Azure najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 Navíc můžete nasadit jiný řadič domény na straně řešení Azure VMware, aby fungoval jako identita a zdroj DNS v prostředí vSphere.
 

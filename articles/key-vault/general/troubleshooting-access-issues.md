@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616384"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901211"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -32,10 +32,10 @@ Když začnete škálovat službu, bude se vyvolávat počet požadavků odeslan
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nedaří se mi změnit zásady přístupu, jak je možné povolit?
 Uživatel musí mít dostatečná oprávnění AAD pro úpravu zásad přístupu. V takovém případě musí mít uživatel vyšší roli přispěvatele.
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Zobrazuje se chyba zásady Unkwown Co to znamená?
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>Zobrazuje se chyba "neznámá zásada". Co to znamená?
 Existují dvě různé možnosti zobrazení zásad přístupu v neznámém oddílu:
 * Může se jednat o předchozího uživatele, který měl přístup, a z nějakého důvodu, že uživatel neexistuje.
-* Pokud se zásady přístupu přidají přes PowerShell a přidají se zásady přístupu pro identifikátor objectID aplikace místo priciple služby.
+* Pokud se zásady přístupu přidají přes PowerShell a přidají se zásady přístupu pro identifikátor objectID aplikace místo instančního objektu.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Jak můžu přiřazovat řízení přístupu na objekt trezoru klíčů? 
 

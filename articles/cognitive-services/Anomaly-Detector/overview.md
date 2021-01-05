@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705077"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901364"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -83,8 +83,17 @@ Po registraci:
 
 [Službu pro detekci anomálií](https://arxiv.org/abs/1906.03821) na papíře si můžete přečíst v článku Microsoft (PŘIJATÝ serverem konference KDD 2019), kde najdete další informace o algoritmech SR-CNN vyvinutých společností Microsoft.
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Je zóna služeb anomálie odolná proti chybám?
+
+Yes. Služba detektor anomálií je ve výchozím nastavení odolná proti zónám.
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Anomáliého detektoru tak, aby byla odolná proti zóně?
+
+Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. Zóna – odolnost u prostředků detektoru anomálií je ve výchozím nastavení dostupná a spravovaná samotnými službami.
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
 

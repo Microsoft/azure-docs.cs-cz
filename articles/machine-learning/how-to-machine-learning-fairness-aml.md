@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516141"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901143"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
 
@@ -46,7 +46,7 @@ Novější verze Fairlearn by také měly fungovat v následujícím ukázkovém
 
 Následující příklad ukazuje, jak použít balíček s příspravedlivosti. Do Azure Machine Learning nahrajeme přehled o nerovnosti modelu a na Azure Machine Learning Studiu si prohlédněte řídicí panel posouzení spravedlivosti.
 
-1. Vytvořte Vzorový model na Jupyter poznámkovém bloku. 
+1. Výuku ukázkového modelu v Jupyter Notebook. 
 
     Pro datovou sadu používáme známou datovou sadu pro seznámení dospělé, kterou načítáme z OpenML. Jsme předstírati problémy s rozhodnutím o půjčkě s popiskem, který označuje, jestli jednotlivec zaplatil předchozí půjčku. Vytvoříme model, který bude předpovídat, pokud dříve nepřesné jednotlivce uhradí půjčku. Takový model se může použít při rozhodování o výpůjčce.
 

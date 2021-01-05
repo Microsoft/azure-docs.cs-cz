@@ -3,12 +3,12 @@ title: Aktualizace clusteru tak, aby používal běžný název certifikátu
 description: Přečtěte si, jak převést certifikát clusteru Azure Service Fabric z deklarací založených na kryptografických otiskech na běžné názvy.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495209"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900786"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Převod certifikátů clusteru z deklarací založených na kryptografických otiskech na běžné názvy
 
@@ -63,8 +63,11 @@ Pro převod existuje několik platných počátečních stavů. Invariantní je,
 #### <a name="valid-starting-states"></a>Platné počáteční stavy
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `GoalCert` má pozdější `NotAfter` datum než `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `GoalCert` má pozdější `NotAfter` datum než `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `GoalCert` má pozdější `NotBefore` datum než `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `GoalCert` má pozdější `NotBefore` datum než `OldCert1`
+
+> [!NOTE]
+> Před verzí 7.2.445 (7,2 CU4) Service Fabric vybrali certifikát s nejstarším vypršením platnosti (certifikát s nejvyšším "NotAfter"), takže výše uvedené počáteční stavy před 7,2 CU4 vyžadují, aby GoalCert pozdější `NotAfter` datum než `OldCert1`
 
 Pokud váš cluster není v některém z výše uvedených platných stavů, přečtěte si informace o tom, jak tento stav dosáhnout, v části na konci tohoto článku.
 
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | Počáteční stav | Upgrade 1 | Upgrade 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `GoalCert` má pozdější `NotAfter` datum než `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `OldCert1` má pozdější `NotAfter` datum než `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `OldCert1` má pozdější `NotAfter` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `OldCert1` má pozdější `NotAfter` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `GoalCert` má pozdější `NotBefore` datum než `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` a `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, kde `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, kde `OldCert1` má pozdější `NotBefore` datum než `GoalCert` | Upgradovat na `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Odebrat jeden z `OldCert1` nebo `OldCert2` pro získání stavu `Thumbprint: OldCertx, ThumbprintSecondary: None` | Pokračovat z nového počátečního stavu |
+
+> [!NOTE]
+> Pro cluster na verzi starší než verze 7.2.445 (7,2 CU4) nahraďte `NotBefore` `NotAfter` ve výše uvedených stavech.
 
 Pokyny, jak provést některý z těchto upgradů, najdete v tématu [Správa certifikátů v clusteru Azure Service Fabric](service-fabric-cluster-security-update-certs-azure.md).
 

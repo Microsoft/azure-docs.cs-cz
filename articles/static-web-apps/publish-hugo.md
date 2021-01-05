@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171492"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900769"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -105,17 +105,17 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
 
-1. U **předplatného**přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
+1. U **předplatného** přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
-1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **Hugo-static-App** a vyberte **OK**.
+1. V _skupiny prostředků_ vyberte **Nový**. Do _název nové skupiny prostředků_ zadejte **Hugo-static-App** a vyberte **OK**.
 
 1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
-1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
+1. V _oblasti oblast_ vyberte dostupnou oblast, která je blízko vás.
 
-1. V případě _SKU_vyberte možnost **Free**.
+1. V případě _SKU_ vyberte možnost **Free**.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Podrobnosti vyplněné":::
 
 1. Klikněte na tlačítko **Přihlásit se pomocí GitHubu** .
 
@@ -123,15 +123,15 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Jako _úložiště_ vyberte **Hugo-static-App** .
 
-1. Pro _větev_ vyberte **hlavní**uzel.
+1. Pro _větev_ vyberte **hlavní** uzel.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 
 ### <a name="build"></a>Sestavení
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
+1. Klikněte na tlačítko **Další: Sestavení >** a upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/** .
 
@@ -139,7 +139,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 
-### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 
@@ -149,7 +149,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. V okně _přehledu_ Azure Portal nově vytvořeného prostředku služby Azure static Web Apps kliknutím na odkaz _URL_ otevřete nasazenou aplikaci.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Nasazená aplikace":::
 
 #### <a name="custom-hugo-version"></a>Vlastní verze Hugo
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

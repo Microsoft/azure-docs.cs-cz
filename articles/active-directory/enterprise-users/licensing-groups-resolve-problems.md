@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546467"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900701"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -68,7 +68,6 @@ Pokud chcete zjistit, kteří uživatelé a skupiny pracují s licencemi, vybert
 
 Představte si následující příklad. Uživatel má licenci pro Office 365 Enterprise *E1* přiřazenou přímo se všemi povolenými plány. Uživatel se přidal do skupiny, která má přiřazený produkt Office 365 Enterprise *E3* . Produkt E3 obsahuje plány služeb, které se nemůžou překrývat s plány, které jsou zahrnuté v E1, takže přiřazení skupinových licencí se nezdařilo s chybou "konfliktní plány služeb". V tomto příkladu jsou konfliktní plány služby:
 
-- SharePoint Online (plán 2) je v konfliktu se SharePointem Online (plán 1).
 - Exchange Online (plán 2) koliduje s Exchangem Online (plán 1).
 
 Chcete-li tento konflikt vyřešit, je nutné zakázat dva z těchto plánů. Můžete zakázat licenci E1, která je přímo přiřazena uživateli. Nebo je nutné upravit celé přiřazení licence skupiny a zakázat plány v licenci E3. Případně se můžete rozhodnout odebrat licenci E1 od uživatele, pokud je redundantní v kontextu licence E3.
@@ -87,7 +86,7 @@ Chcete-li tento problém vyřešit, je nutné zajistit, aby byl požadovaný pl�
 
 ## <a name="usage-location-isnt-allowed"></a>Umístění použití není povolené.
 
-**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v **User**  >  **Profile**  >  části **Upravit** profil uživatele v Azure Portal.
+**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v   >    >  části **Upravit** profil uživatele v Azure Portal.
 
 Když se Azure AD pokusí přiřadit licenci skupiny uživateli, jehož umístění využívání není podporované, dojde k chybě a zaznamená chybu pro uživatele.
 

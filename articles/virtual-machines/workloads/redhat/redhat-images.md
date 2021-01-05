@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957533"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900497"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -22,7 +22,7 @@ Tento článek popisuje dostupné Red Hat Enterprise Linux (RHEL) imagí v Azure
 Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata). Podrobnosti o cenách najdete v tématu [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. [Zvýhodněné hybridní využití Azure](../../windows/hybrid-use-benefit-licensing.md) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se nepodporují. Chcete-li přepnout režim licencování, musíte virtuální počítač znovu nasadit z odpovídající image.
+> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. Dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se dá dělat prostřednictvím [zvýhodněné hybridní využití Azure](../../linux/azure-hybrid-benefit-linux.md).
 
 >[!NOTE]
 > Pro všechny problémy související s RHEL obrázky v Azure Marketplace si zaregistrujte lístek podpory s Microsoftem.

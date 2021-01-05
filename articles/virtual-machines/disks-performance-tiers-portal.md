@@ -4,16 +4,16 @@ description: Naučte se, jak změnit úrovně výkonu pro nové a existující s
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016564"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901013"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Změňte úroveň výkonu pomocí Azure Portal
 
@@ -47,7 +47,7 @@ Následující kroky popisují, jak změnit úroveň výkonu existujícího disk
 1. Buď zrušte přidělení virtuálního počítače, nebo odpojte disk.
 1. Výběr disku
 1. Vyberte **Velikost + výkon**.
-1. V rozevíracím seznamu **úroveň výkonu** vyberte jinou úroveň, než je aktuální standardní hodnota disku.
+1. V rozevíracím seznamu **úroveň výkonu** vyberte jinou úroveň než aktuální úroveň výkonu disku.
 1. Vyberte **Změnit velikost**.
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="Snímek obrazovky okna velikost + výkon, úroveň výkonu je zvýrazněný." lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

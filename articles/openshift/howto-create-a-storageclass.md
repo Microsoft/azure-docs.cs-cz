@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI, Azure File
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 201ec3293943f53179bcabde45259d15ce6208a6
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825924"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901279"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Vytvoření třídy Azure Files Storage v Azure Red Hat OpenShiftu 4
 
@@ -59,7 +59,7 @@ ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
 ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor --assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>Nastavení oprávnění clusteru ARO
@@ -81,6 +81,8 @@ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccount
 
 V tomto kroku se vytvoří StorageClass se službou Azure Files zřídí. V manifestu StorageClass jsou vyžadovány podrobnosti účtu úložiště, aby cluster ARO věděl, že se podívá na účet úložiště mimo aktuální skupinu prostředků.
 
+Při zřizování úložiště se pro přihlašovací údaje pro připojení vytvoří tajný kód s názvem Secret. V kontextu s více architekturami se důrazně doporučuje nastavit hodnotu pro secretNamespace explicitně, jinak přihlašovací údaje účtu úložiště můžou přečíst jiní uživatelé.
+
 ```bash
 cat << EOF >> azure-storageclass-azure-file.yaml
 kind: StorageClass
@@ -90,6 +92,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
+  secretNamespace: kube-system
   skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
@@ -116,7 +119,7 @@ Vytvořte novou aplikaci a přiřaďte k ní úložiště.
 
 ```bash
 oc new-project azfiletest
-oc new-app –template httpd-example
+oc new-app -template httpd-example
 
 #Wait for the pod to become Ready
 curl $(oc get route httpd-example -n azfiletest -o jsonpath={.spec.host})
