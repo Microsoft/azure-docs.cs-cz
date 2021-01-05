@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 2e5c04087a9874a01498c70eb3834606069cef13
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: 9b0445a9ca92f05a11f5a97895039a55f9d64d71
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021890"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693905"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -65,13 +65,13 @@ Tyto vlastnosti jsou podporovány pro propojenou službu Azure SQL Database:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **AzureSqlDatabase**. | Yes |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost **ConnectionString** . <br/>Do Azure Key Vault také můžete vložit heslo nebo hlavní klíč služby. Pokud se jedná o ověřování SQL, vyžádejte si z `password` připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| typ | Vlastnost **Type** musí být nastavená na **AzureSqlDatabase**. | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost **ConnectionString** . <br/>Do Azure Key Vault také můžete vložit heslo nebo hlavní klíč služby. Pokud se jedná o ověřování SQL, vyžádejte si z `password` připojovacího řetězce konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
-| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud se vaše úložiště dat nachází v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. | No |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
+| connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Pokud se vaše úložiště dat nachází v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. | Ne |
 
 Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
 
@@ -226,7 +226,7 @@ Pro Azure SQL Database datovou sadu jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlTable**. | Yes |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlTable**. | Ano |
 | schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
@@ -265,22 +265,22 @@ Chcete-li kopírovat data z Azure SQL Database, jsou v části **zdroje** aktivi
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **AzureSqlSource**. Typ "SqlSource" je stále podporován z důvodu zpětné kompatibility. | Yes |
-| sqlReaderQuery | Tato vlastnost používá vlastní dotaz SQL ke čtení dat. Příklad: `select * from MyTable`. | No |
-| sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. | No |
-| storedProcedureParameters | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a velikost písmen parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | No |
-| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | No |
-| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Azure SQL Database. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z Azure SQL Database řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) Nastavení aktivity kopírování. | No |
-| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | No |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **AzureSqlSource**. Typ "SqlSource" je stále podporován z důvodu zpětné kompatibility. | Ano |
+| sqlReaderQuery | Tato vlastnost používá vlastní dotaz SQL ke čtení dat. Příklad: `select * from MyTable`. | Ne |
+| sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. | Ne |
+| storedProcedureParameters | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a velikost písmen parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | Ne |
+| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Azure SQL Database. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z Azure SQL Database řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) Nastavení aktivity kopírování. | Ne |
+| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | Ne |
 | **_Pod `partitionSettings` :_* _ | | |
-| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | No |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | No |
-| partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | No |
+| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | Ne |
+| partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-sql-database) . | Ne |
 
-**Ukazuje na poznámku:**
+**Je třeba počítat s následujícím:**
 
 - Pokud je pro **AzureSqlSource** zadaný **sqlReaderQuery** , aktivita kopírování spustí tento dotaz na zdroj Azure SQL Database, aby se data získala. Uloženou proceduru lze také určit zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** , pokud uložená procedura přijímá parametry.
-- Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, budou použity sloupce definované v oddílu Structure pro datovou sadu JSON pro vytvoření dotazu. Dotaz se `select column1, column2 from mytable` spouští proti Azure SQL Database. Pokud definice datové sady nemá "strukturu", všechny sloupce jsou vybrány z tabulky.
+- Pokud k načtení dat používáte uloženou proceduru ve zdroji, Všimněte si, že pokud je uložená procedura navržena tak, aby vrátila jiné schéma, pokud je předána jiná hodnota parametru, může dojít k chybě nebo se při importu schématu z uživatelského rozhraní nebo při kopírování dat do SQL Database s automatickým vytvořením tabulky zobrazí neočekávaný výsledek.
 
 #### <a name="sql-query-example"></a>Příklad dotazu SQL
 
@@ -378,15 +378,15 @@ Chcete-li kopírovat data do Azure SQL Database, v části **jímka** aktivity k
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **AzureSqlSink**. Typ "SqlSink" je stále podporován z důvodu zpětné kompatibility. | Yes |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Azure SQL Database. Vyvolá se jenom jednou pro každé spuštění kopírování. Tato vlastnost slouží k vyčištění předem načtených dat. | No |
-| tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. <br>Vytvoření automatické tabulky není podporováno, je-li jímka určena pro uloženou proceduru. <br>Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . | No |
-| sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku*. Pro operace, které se spouštějí jenom jednou a které nemají nic dělat se zdrojovými daty, například odstranit nebo zkrátit, použijte `preCopyScript` vlastnost.<br>Viz příklad [vyvolání uložené procedury z jímky SQL](#invoke-a-stored-procedure-from-a-sql-sink). | No |
-| storedProcedureTableTypeParameterName |Název parametru pro typ tabulky určený v uložené proceduře.  |No |
-| sqlWriterTableType |Název typu tabulky, který se má použít v uložené proceduře Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data, která jsou kopírována se stávajícími daty. |No |
-| storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | No |
-| writeBatchSize | Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/> Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | No |
-| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/> Povolená hodnota je **TimeSpan**. Příkladem je "00:30:00" (30 minut). | No |
+| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **AzureSqlSink**. Typ "SqlSink" je stále podporován z důvodu zpětné kompatibility. | Ano |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Azure SQL Database. Vyvolá se jenom jednou pro každé spuštění kopírování. Tato vlastnost slouží k vyčištění předem načtených dat. | Ne |
+| tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. <br>Vytvoření automatické tabulky není podporováno, je-li jímka určena pro uloženou proceduru. <br>Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . | Ne |
+| sqlWriterStoredProcedureName | Název uložené procedury definující, jak se mají zdrojová data použít v cílové tabulce. <br/>Tato uložená procedura je *vyvolána pro každou dávku*. Pro operace, které se spouštějí jenom jednou a které nemají nic dělat se zdrojovými daty, například odstranit nebo zkrátit, použijte `preCopyScript` vlastnost.<br>Viz příklad [vyvolání uložené procedury z jímky SQL](#invoke-a-stored-procedure-from-a-sql-sink). | Ne |
+| storedProcedureTableTypeParameterName |Název parametru pro typ tabulky určený v uložené proceduře.  |Ne |
+| sqlWriterTableType |Název typu tabulky, který se má použít v uložené proceduře Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data, která jsou kopírována se stávajícími daty. |Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | Ne |
+| writeBatchSize | Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/> Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | Ne |
+| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/> Povolená hodnota je **TimeSpan**. Příkladem je "00:30:00" (30 minut). | Ne |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je například Azure SQL Database DTU, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, určete, jestli `true` ho chcete vypnout. | Ne (výchozí nastavení je `false` ) |
 
 **Příklad 1: připojení dat**
@@ -718,7 +718,7 @@ Když se data zkopírují z nebo do Azure SQL Database, použijí se následují
 | binární |Byte [] |
 | bit |Logická hodnota |
 | char |Řetězec, znak [] |
-| datum |DateTime |
+| date |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018694"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693736"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
 
@@ -323,7 +323,7 @@ Rozšířit AGIC oprávnění pomocí:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Povolit pro existující instalaci AGIC
-Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contosor.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
+Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contoso.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
 
 AGIC můžeme zabránit v provádění změn v podmnožině konfigurace.
 

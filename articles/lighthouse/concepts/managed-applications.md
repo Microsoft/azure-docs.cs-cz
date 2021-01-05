@@ -1,23 +1,33 @@
 ---
 title: Azure Lighthouse a spravované aplikace Azure
-description: Seznamte se s tím, jak můžou Azure Lighthouse a spravované aplikace Azure pomáhat při povolování různých scénářích a způsobu jejich použití společně.
-ms.date: 08/12/2020
+description: Pochopte, jak se dají používat Azure Lighthouse a spravované aplikace Azure společně.
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436517"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693971"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse a spravované aplikace Azure
 
-Spravované aplikace Azure i služba Azure Lighthouse fungují tak, že poskytovateli služeb umožní přístup k prostředkům, které se nacházejí v tenantovi zákazníka. Může být užitečné pochopit rozdíly ve způsobu, jakým fungují, a scénáře, které jim umožňují povolit, a také způsob, jak je lze použít společně.
+Spravované aplikace Azure i služba Azure Lighthouse fungují tak, že poskytovateli služeb umožní přístup k prostředkům, které se nacházejí v tenantovi zákazníka. Může být užitečné porozumět rozdílům v tom, jak fungují, a scénářům, které pomůžou povolit, a jak se dají použít společně.
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](enterprise.md) , používat stejné procesy a nástroje.
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Porovnání Azure Lighthouse a spravovaných aplikací Azure
+
+Tato tabulka znázorňuje některé rozdíly vysoké úrovně, které mohou mít vliv na to, jestli se můžete rozhodnout používat Azure Lighthouse nebo Azure Managed Applications. Jak je uvedeno níže, můžete také navrhnout řešení, které je používá společně.
+
+|Aspekty  |Azure Lighthouse  |Spravované aplikace Azure  |
+|---------|---------|---------|
+|Typický uživatel     |Poskytovatelé služeb nebo podniky spravující víc tenantů         |Nezávislí výrobci softwaru (ISV)         |
+|Rozsah přístupu mezi klienty     |Počet předplatných nebo skupin prostředků:         |Skupina prostředků (vymezená pro jednu aplikaci)         |
+|K nákupu v Azure Marketplace     |Ne (nabídky se dají publikovat do Azure Marketplace, ale zákazníci se účtují samostatně)        |Ano         |
+|Ochrana protokolu IP     |Ano (IP může zůstat v tenantovi poskytovatele služeb)        |Ano (podle návrhu, skupina prostředků je zamčená zákazníkům)         |
+|Přiřazení zamítnutí     |Ne         |Ano        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Zákazníci můžou taky zajímat spravované aplikace od více poskytovatelů s
 
 - Přečtěte si o [spravovaných aplikacích Azure](../../azure-resource-manager/managed-applications/overview.md).
 - Naučte se, jak připojit [předplatné do Azure Lighthouse](../how-to/onboard-customer.md).
+- Přečtěte si o [scénářích ISV pomocí Azure Lighthouse](isv-scenarios.md).

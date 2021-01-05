@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 54d1d8a29c87f8d129c0ea5b29973c4fef0e6f7a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2d9d511098613ddc5bf3579a42b7abe91f51e1a4
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888993"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694305"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2,0
 
@@ -35,7 +35,7 @@ Další zdroje, jako jsou virtuální počítače Azure a virtuální počítač
 - Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.30 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-Vytvořte pracovní prostor pomocí [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Následující příklad vytvoří pracovní prostor v umístění *eastus* pomocí šablony Správce prostředků z místního počítače. Šablona JSON je nakonfigurovaná tak, aby se zobrazila výzva k zadání názvu pracovního prostoru, a určuje výchozí hodnotu pro ostatní parametry, které by se ve vašem prostředí pravděpodobně používaly jako standardní konfigurace. Případně můžete šablonu uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) .
+Vytvořte pracovní prostor pomocí [AZ Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create). Následující příklad vytvoří pracovní prostor v umístění *eastus* pomocí šablony Správce prostředků z místního počítače. Šablona JSON je nakonfigurovaná tak, aby se zobrazila výzva k zadání názvu pracovního prostoru, a určuje výchozí hodnotu pro ostatní parametry, které by se ve vašem prostředí pravděpodobně používaly jako standardní konfigurace. Případně můžete šablonu uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) .
 
 Informace o podporovaných oblastech najdete v tématu [oblasti Log Analytics jsou k dispozici v](https://azure.microsoft.com/regions/services/) a vyhledejte Azure monitor z **hledání pole produkt** .
 
@@ -111,7 +111,7 @@ Výchozí hodnotu nastavíte pomocí následujících parametrů:
 4. Jste připraveni k nasazení této šablony. Použijte následující příkazy ze složky obsahující šablonu. Po zobrazení výzvy k zadání názvu pracovního prostoru zadejte název, který je globálně jedinečný v rámci všech předplatných Azure.
 
     ```azurecli
-    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která obsahuje výsledek:
@@ -123,7 +123,7 @@ Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dn�
 1. Pokud zadáte stejný název pracovního prostoru, skupinu prostředků, předplatné a oblast jako v odstraněném pracovním prostoru, váš pracovní prostor se obnoví včetně dat, konfigurace a připojených agentů.
 2. Pokud použijete stejný název pracovního prostoru, ale v jiné skupině prostředků, předplatném nebo oblasti dojde k chybě, zobrazí se chyba název pracovního prostoru *"pracovní prostor" Name "není jedinečný nebo je v* *konfliktu*. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:
    * [Obnovení](../platform/delete-workspace.md#recover-workspace) pracovního prostoru
-   * [Trvale odstranit](../platform/delete-workspace.md#permanent-workspace-delete) pracovní prostor
+   * [Trvalé odstranění](../platform/delete-workspace.md#permanent-workspace-delete) pracovního prostoru
    * Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
 
 ## <a name="next-steps"></a>Další kroky

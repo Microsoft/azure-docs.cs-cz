@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+        - name: Osvědčené postupy zabezpečení
+          href: security-best-practices.md
     - name: Prostředky a pracovní postup služby Batch
       displayName: developer features
       href: batch-service-workflow-features.md

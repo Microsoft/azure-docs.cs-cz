@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: db153123622a59bbdde71afca4ea30e03a6fbf98
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006929"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694237"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -685,10 +685,10 @@ Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat ne
 }
 ```
 
-Tuto šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] , jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání názvu a umístění pro existující cluster AKS:
+Tuto šablonu nasaďte pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] , jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání názvu a umístění pro existující cluster AKS:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
@@ -829,7 +829,7 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

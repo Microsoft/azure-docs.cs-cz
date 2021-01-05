@@ -4,12 +4,12 @@ description: Naučte se řídit přístup ke konfiguračnímu souboru Kubernetes
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 77b9988557106ef460d3b222ef85eb29e08f31c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684810"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693979"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -69,6 +69,22 @@ az role assignment create \
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
+
+> [!IMPORTANT]
+> V některých případech se *User.Name* v účtu liší od třídy *userPrincipalName*, jako je například u uživatelů typu Host Azure AD:
+>
+> ```output
+> $ az account show --query user.name -o tsv
+> user@contoso.com
+> $ az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv
+> user_contoso.com#EXT#@contoso.onmicrosoft.com
+> ```
+>
+> V takovém případě nastavte hodnotu *ACCOUNT_UPN* na *userPrincipalName* od uživatele Azure AD. Například pokud je váš účet *User.Name* *uživatelským \@ contoso.com*:
+> 
+> ```azurecli-interactive
+> ACCOUNT_UPN=$(az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv)
+> ```
 
 > [!TIP]
 > Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte `--assignee` parametr uvedený v předchozím příkladu s ID objektu pro *skupinu* místo na *uživatele*. Chcete-li získat ID objektu pro skupinu, použijte příkaz [AZ AD Group show][az-ad-group-show] . Následující příklad získá ID objektu pro skupinu Azure AD s názvem *appdev*: `az ad group show --group appdev --query objectId -o tsv`

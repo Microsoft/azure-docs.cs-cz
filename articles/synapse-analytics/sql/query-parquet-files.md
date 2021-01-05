@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462575"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694688"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí fondu SQL bez serveru v Azure synapse Analytics
 
@@ -38,9 +38,9 @@ from openrowset(
 Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity Azure, budete muset nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
-> Ujistěte se, že používáte kolaci databáze UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ), protože řetězcové hodnoty v souborech PARQUET jsou kódovány pomocí kódování UTF-8.
+> Ujistěte se, že používáte kolaci databáze UTF-8 (například `Latin1_General_100_BIN2_UTF8` ), protože řetězcové hodnoty v souborech PARQUET jsou kódovány pomocí kódování UTF-8.
 > Neshoda mezi kódováním textu v souboru PARQUET a kolací může způsobit neočekávané chyby při konverzi.
-> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_BIN2_UTF8`
 
 ### <a name="data-source-usage"></a>Využití zdroje dat
 
@@ -74,14 +74,14 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> Ujistěte se, že jste explicilty určení některých řazení v kódování UTF-8 (například `Latin1_General_100_CI_AS_SC_UTF8` ) pro všechny řetězcové sloupce v `WITH` klauzuli, nebo nastavte určitou kolaci UTF-8 na úrovni databáze.
+> Ujistěte se, že jste explicilty určení některých řazení v kódování UTF-8 (například `Latin1_General_100_BIN2_UTF8` ) pro všechny řetězcové sloupce v `WITH` klauzuli, nebo nastavte určitou kolaci UTF-8 na úrovni databáze.
 > Neshoda mezi kódováním textu v souboru a kolaci sloupce String může způsobit neočekávané chyby při konverzi.
-> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
-> Kolaci pro typy slo můžete snadno nastavit pomocí následující definice: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
+> Výchozí kolaci aktuální databáze můžete snadno změnit pomocí následujícího příkazu T-SQL: `alter database current collate Latin1_General_100_BIN2_UTF8`
+> Kolaci pro typy slo můžete snadno nastavit pomocí následující definice: `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů PARQUET.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště [NYC Yellow taxislužby](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) . Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

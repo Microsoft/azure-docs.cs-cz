@@ -1,7 +1,7 @@
 ---
-title: Featurization v AutoML experimenty
+title: Featurization pomocí automatizovaného strojového učení
 titleSuffix: Azure Machine Learning
-description: Přečtěte si, jaká nastavení featurization Azure Machine Learning nabídky a jak se v automatizovaných experimentech v ML podporují technické funkce.
+description: Přečtěte si o nastaveních featurization dat v Azure Machine Learning a o tom, jak tyto funkce přizpůsobit pro vaše automatizované experimenty ML.
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,25 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359625"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694003"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Návrh funkcí v automatizovaném strojovém učení
+# <a name="data-featurization-in-automated-machine-learning"></a>Data featurization v automatizovaném strojovém učení
 
 
 
-V této příručce se naučíte:
+Přečtěte si o nastaveních featurization dat v Azure Machine Learning a o tom, jak tyto funkce přizpůsobit pro [automatizované experimenty ml](concept-automated-ml.md).
 
-- Jaká nastavení featurization Azure Machine Learning nabídky.
-- Přizpůsobení těchto funkcí pro [automatizované experimenty strojového učení](concept-automated-ml.md).
+## <a name="feature-engineering-and-featurization"></a>Strojírenství a featurization funkcí
 
-*Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *AutoML* experimenty.
+*Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *autoML* experimenty.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +37,7 @@ V tomto článku se předpokládá, že už víte, jak nakonfigurovat AutoML exp
 
 ## <a name="configure-featurization"></a>Konfigurace featurization
 
-V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují [Automatické škálování a normalizační techniky](#featurization) . Tyto techniky jsou typy featurization, které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Můžete ale také povolit další featurization, jako je například imputace, *kódování* a *transformace* *chybějících hodnot*.
+V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují [Automatické škálování a normalizační techniky](#featurization) . Tyto techniky jsou typy featurization, které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Můžete povolit více featurization, jako je například imputace, *kódování* a *transformace* *chybějících hodnot*.
 
 > [!NOTE]
 > Kroky pro automatizované featurization strojového učení (například normalizace funkcí, zpracování chybějících dat nebo převod textu na číslo) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, které se použijí během školení.
@@ -49,7 +48,7 @@ V následující tabulce jsou uvedena přijímaná nastavení pro `featurization
 
 |Konfigurace Featurization | Popis|
 ------------- | ------------- |
-|`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou [kroky guardrails dat a featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
+|`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou kroky [guardrails dat](#data-guardrails) a [featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
 |`"featurization": 'off'`| Určuje, že kroky featurization se nemají automaticky provádět.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Určuje, že se mají použít přizpůsobené kroky featurization. [Přečtěte si, jak přizpůsobit featurization](#customize-featurization).|
 
@@ -66,7 +65,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky** _ |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |_*Imputace – chybějící hodnoty**_ |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
-|_*Generování dalších funkcí**_ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, dop. odp. (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 hodin).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
+|_*Generování dalších funkcí**_ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, AM/PM (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 – hr).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
 |**Transformovat a kódovat** _|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
 |_ *Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
 |**Cílová kódování**|V případě funkcí kategorií tento krok mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení přeložení mapování a šumu způsobených kategoriemi zhuštěných dat se aplikují váhy založené na kmitočtech a k skládání k.|
@@ -80,8 +79,8 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 
 Data guardrails se používají:
 
-- **Pro experimenty sady SDK** : když `"featurization": 'auto'` jsou parametry nebo `validation=auto` zadány v `AutoMLConfig` objektu.
-- **Experimenty studia** : když je povolený automatický featurization
+- **Pro experimenty sady SDK**: když `"featurization": 'auto'` jsou parametry nebo `validation=auto` zadány v `AutoMLConfig` objektu.
+- **Experimenty studia**: když je povolený automatický featurization
 
 Můžete zkontrolovat guardrails dat pro svůj experiment:
 
@@ -303,22 +302,24 @@ class_prob = fitted_model.predict_proba(X_test)
 
 Pokud podkladový model nepodporuje `predict_proba()` funkci nebo je nesprávný formát, bude vyvolána výjimka specifická pro třídu modelu. Příklady toho, jak je tato funkce implementovaná pro různé typy modelů, najdete v referenční dokumentaci k [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) a [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) .
 
-## <a name="bert-integration"></a>Integrace BERT
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>Integrace BERT do automatizovaného ML
 
 [Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) se používá v Featurization vrstvě AutoML. Pokud v této vrstvě sloupec obsahuje bezplatný text nebo jiné typy dat, jako jsou například časová razítka nebo jednoduchá čísla, použije se odpovídajícím způsobem featurization.
 
 V případě BERT je model vyladěný a vycvičený s využitím uživatelem poskytnutých popisků. Z tohoto místa jsou vkládání dokumentů ve formě funkcí společně s dalšími funkcemi, jako jsou funkce založené na časových razítkách, den v týdnu. 
 
 
-### <a name="bert-steps"></a>BERT kroky
+### <a name="steps-to-invoke-bert"></a>Kroky k vyvolání BERT
 
-Aby bylo možné vyvolat BERT, je třeba nastavit  `enable_dnn: True` ve svém automl_settings a použít výpočetní prostředí GPU (například `vm_size = "STANDARD_NC6"` nebo vyšší GPU). Pokud se používá výpočetní výkon procesoru, pak místo BERT AutoML povolí BiLSTM DNN featurizer.
+Aby bylo možné volat BERT, nastavte  `enable_dnn: True` ve vašem automl_settings a použijte výpočetní prostředí GPU ( `vm_size = "STANDARD_NC6"` nebo vyšší GPU). Pokud se používá výpočetní výkon procesoru, pak místo BERT AutoML povolí BiLSTM DNN featurizer.
 
 AutoML provede následující kroky pro BERT. 
 
 1. **Předzpracování a tokenizace všech textových sloupců**. Například "transformátor" StringCast "můžete najít v souhrnu featurization finálního modelu. Příklad, jak vystavit souhrn featurization modelu, najdete v [tomto poznámkovém bloku](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
-2. **Zřetězí všechny textové sloupce do jednoho textového sloupce** , takže `StringConcatTransformer` v konečném modelu. 
+2. **Zřetězí všechny textové sloupce do jednoho textového sloupce**, takže `StringConcatTransformer` v konečném modelu. 
 
     Naše implementace BERT omezuje celkovou délku textu školicích ukázek na 128 tokeny. To znamená, že všechny textové sloupce, pokud jsou zřetězené, by ideálně měly mít maximálně 128 tokenů. Pokud je k dispozici více sloupců, je nutné vyřadit každý sloupec, aby byl tento stav splněn. V opačném případě se pro zřetězené sloupce délky >128 tokeny provádějících tokenizaci úrovně BERT zkrátí tento vstup na 128 tokeny.
 
@@ -327,9 +328,10 @@ AutoML provede následující kroky pro BERT.
 BERT obvykle běží déle než jiné featurizers. Pro lepší výkon doporučujeme pro své možnosti RDMA použít "STANDARD_NC24r" nebo "STANDARD_NC24rs_V3". 
 
 AutoML bude distribuovat školení BERT napříč více uzly, pokud jsou k dispozici (až maximálně osm uzlů). To lze provést v `AutoMLConfig` objektu nastavením `max_concurrent_iterations` parametru na hodnotu vyšší než 1. 
-### <a name="supported-languages"></a>Podporované jazyky
 
-AutoML v současné době podporuje kolem jazyků 100 a v závislosti na jazyku datové sady AutoML zvolí příslušný model BERT. Pro německé údaje používáme model německého BERT. V anglickém jazyce používáme BERT model English. Pro všechny ostatní jazyky používáme model vícejazyčného BERT.
+## <a name="supported-languages-for-bert-in-automl"></a>Podporované jazyky pro BERT v autoML 
+
+AutoML v současné době podporuje kolem jazyků 100 a v závislosti na jazyku datové sady autoML zvolí příslušný model BERT. Pro německé údaje používáme model německého BERT. V anglickém jazyce používáme BERT model English. Pro všechny ostatní jazyky používáme model vícejazyčného BERT.
 
 V následujícím kódu je spuštěn německý model BERT, protože jazyk datové sady je určen jako `deu` , kód jazyka tři písmen pro němčinu podle [klasifikace ISO](https://iso639-3.sil.org/code/deu):
 

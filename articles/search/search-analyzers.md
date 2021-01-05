@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013815"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694286"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyzátory pro zpracování textu v Azure Kognitivní hledání
 
@@ -315,55 +315,61 @@ Pokud používáte ukázky kódu .NET SDK, můžete tyto příklady připojit k 
 
 V definici pole je zadaný jakýkoli analyzátor, který se používá, pokud není nastavená žádná konfigurace. Neexistuje žádný požadavek na vytvoření položky v části **[Analyzer]** v indexu. 
 
-V tomto příkladu se přiřadí analyzátory Microsoft English a francouzština k polím Description. Je to fragment kódu pořízený z větší definice indexu hotelů a vytváření pomocí třídy hotelu v souboru hotels.cs ukázky [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) .
+Analyzátory jazyka se používají tak, jak jsou. Pokud je chcete použít, zavolejte [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)a určete typ [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) , který poskytuje analyzátor textu podporovaný v Azure kognitivní hledání.
 
-Zavolejte [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)a určete typ [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) , který poskytuje analyzátor textu podporovaný v Azure kognitivní hledání.
+Vlastní analyzátory jsou podobně určeny v definici pole, ale pro tuto funkci je nutné zadat analyzátor v definici indexu, jak je popsáno v následující části.
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>Definování vlastního analyzátoru
 
-Pokud se vyžaduje přizpůsobení nebo konfigurace, budete muset do indexu přidat konstrukci analyzátoru. Po definování můžete přidat definici pole, jak je znázorněno v předchozím příkladu.
+Pokud je vyžadováno přizpůsobení nebo konfigurace, přidejte do indexu konstrukci analyzátoru. Po definování můžete přidat definici pole, jak je znázorněno v předchozím příkladu.
 
-Vytvořte objekt [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) . Další příklady naleznete v tématu [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Vytvořte objekt [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) . Vlastní analyzátor je uživatelsky definovaná kombinace známého provádějících tokenizaciu, nula nebo více filtrů tokenů a nula nebo více názvů filtrů znaků:
+
++ [CustomAnalyzer. provádějících tokenizaci](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer.TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer.CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+Následující příklad vytvoří vlastní analyzátor s názvem "URL – analyzovat", který používá [uax_url_email provádějících tokenizaci](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer) a [Filtr tokenů malých písmen](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase).
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+Další příklady naleznete v tématu [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ## <a name="next-steps"></a>Další kroky
 
