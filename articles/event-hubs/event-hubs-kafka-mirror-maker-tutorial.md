@@ -2,17 +2,17 @@
 title: Použití Apache Kafka nástroje MirrorMaker – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak pomocí Kafka nástroje MirrorMaker zrcadlit cluster Kafka v rozbočovačích AzureEvent.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503195"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861004"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Použití Kafka nástroje MirrorMaker s Event Hubs pro Apache Kafka
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Použití Apache Kafka nástroje MirrorMaker s Event Hubs
 
-V tomto kurzu se dozvíte, jak v centru událostí zrcadlit zprostředkovatele Kafka pomocí Kafka nástroje MirrorMaker.
+V tomto kurzu se dozvíte, jak můžete Kafka zprostředkovatele zrcadlit do centra událostí Azure pomocí Kafka nástroje MirrorMaker. Pokud hostuje Apache Kafka v Kubernetes pomocí operátoru Strimzi CNCF, můžete si přečíst kurz v [tomto blogovém příspěvku](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/) , kde se dozvíte, jak nastavit Kafka s Strimzi a nástrojem zrcadlení Maker 2. 
 
    ![Kafka nástroje MirrorMaker s Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -31,11 +31,13 @@ V tomto kurzu se naučíte:
 > * Spustit Kafka nástroje MirrorMaker
 
 ## <a name="introduction"></a>Úvod
-Důležitým aspektem moderních cloudových aplikací je schopnost aktualizovat, zdokonalovat a měnit infrastrukturu bez přerušení služby. V tomto kurzu se dozvíte, jak může centrum událostí a Kafka nástroje MirrorMaker integrovat existující kanál Kafka do Azure tím, že "zrcadlení" vstupnímu streamu Kafka ve službě Event Hubs. 
+V tomto kurzu se dozvíte, jak může centrum událostí a Kafka nástroje MirrorMaker integrovat stávající kanál Kafka do Azure tím, že "zrcadlí" vstupní datový proud Kafka ve službě Event Hubs, který umožňuje integraci Apache Kafka datových proudů pomocí několika [vzorů federace](event-hubs-federation-overview.md). 
 
-Koncový bod služby Azure Event Hubs Kafka vám umožňuje připojit se k Azure Event Hubs pomocí protokolu Kafka (tj. klienti Kafka). Díky minimálním změnám aplikace v Kafka se můžete připojit k Azure Event Hubs a využívat výhody ekosystému Azure. Event Hubs aktuálně podporuje verze Kafka 1,0 a novější.
+Koncový bod služby Azure Event Hubs Kafka vám umožňuje připojit se k Azure Event Hubs pomocí protokolu Kafka (tj. klienti Kafka). Díky minimálním změnám aplikace v Kafka se můžete připojit k Azure Event Hubs a využívat výhody ekosystému Azure. Event Hubs aktuálně podporuje protokol Apache Kafka verze 1,0 a novější.
 
-## <a name="prerequisites"></a>Předpoklady
+Apache Kafka 1 můžete v Apache Kafka na Event Hubs použít jednosměrně. Nástroje MirrorMaker 2 lze použít v obou směrech, ale konfigurace [ `MirrorCheckpointConnector` a `MirrorHeartbeatConnector` , které jsou v nástroje MirrorMaker 2](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) , musí být nakonfigurovány tak, aby odkazovaly na zprostředkovatele Apache Kafka a nikoli na Event Hubs. V tomto kurzu se dozvíte, jak nakonfigurovat nástroje MirrorMaker 1.
+
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 

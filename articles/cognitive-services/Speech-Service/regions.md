@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972639"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854855"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -44,6 +44,8 @@ Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, 
 
 Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr `SpeechConfig.FromSubscription` ). Ujistěte se, že je oblast shodná s oblastí vašeho předplatného.
 
+Pokud máte v úmyslu vytvořit vlastní model se zvukovými daty, použijte k rychlejšímu školení jednu z [oblastí s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) . Pomocí [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) můžete zkopírovat plně vycvičený model do jiné oblasti později.
+
 ### <a name="intent-recognition"></a>Rozpoznávání záměru
 
 Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
@@ -61,23 +63,27 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Severní Amerika | USA – středozápad  | `westcentralus`      |
 | Severní Amerika | USA – západ          | `westus`             |
 | Severní Amerika | Západní USA 2        | `westus2`            |
-| Jižní Amerika | Brazil South     | `brazilsouth`        |
+| Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](../luis/luis-reference-regions.md).
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 
-[Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
+[Sada Speech SDK](speech-sdk.md) podporuje funkce **hlasového asistenta** prostřednictvím [přímého lineového rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) v těchto oblastech:
 
-| Oblast         | Identifikátor oblasti |
-| -------------- | -------------------- |
-| USA – západ        | `westus`             |
-| Západní USA 2      | `westus2`            |
-| East US        | `eastus`             |
-| USA – východ 2      | `eastus2`            |
-| West Europe    | `westeurope`         |
-| Severní Evropa   | `northeurope`        |
-| Jihovýchodní Asie | `southeastasia`      |
+| Globální oblast | Oblast           | Identifikátor oblasti    |
+| ------------- | ---------------- | -------------------- |
+| Severní Amerika | USA – západ          | `westus`             |
+| Severní Amerika | Západní USA 2        | `westus2`            |
+| Severní Amerika | East US          | `eastus`             |
+| Severní Amerika | USA – východ 2        | `eastus2`            |
+| Severní Amerika | USA – středozápad  | `westcentralus`      |
+| Severní Amerika | Středojižní USA | `southcentralus`     |
+| Evropa        | West Europe      | `westeurope`         |
+| Evropa        | Severní Evropa     | `northeurope`        |
+| Asie          | Východní Asie        | `eastasia`           |
+| Asie          | Southeast Asia   | `southeastasia`      |
+| Indie         | Indie – střed    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Rozpoznávání mluvčího
 

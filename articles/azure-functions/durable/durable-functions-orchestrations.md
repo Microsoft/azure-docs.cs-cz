@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750198"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845429"
 ---
 # <a name="durable-orchestrations"></a>Trvalé orchestrace
 
@@ -124,7 +124,7 @@ Po dokončení kontrolního bodu je možné odebrat funkci Orchestrator z pamět
 
 Po dokončení bude historie dříve zobrazených funkcí vypadat podobně jako v následující tabulce v Azure Table Storage (pro ilustraci se zkráceně):
 
-| PartitionKey (InstanceId)                     | Typ události             | Timestamp               | Vstup | Name             | Výsledek                                                    | Status |
+| PartitionKey (InstanceId)                     | Typ události             | Timestamp               | Vstup | Název             | Výsledek                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -293,7 +293,7 @@ Není možné předat více parametrů funkci Activity přímo. Doporučení je 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-V rozhraní .NET můžete také použít objekty [ValueTuples](/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](/dotnet/csharp/tuples) přidané v [jazyce C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
+V rozhraní .NET můžete také použít objekty [ValueTuple](/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuple](/dotnet/csharp/tuples) přidané v [jazyce C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

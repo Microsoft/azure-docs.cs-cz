@@ -4,12 +4,12 @@ description: Popisuje, jak Azure Resource Manager využívat k nasazení, správ
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032248"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858514"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
@@ -33,7 +33,7 @@ Pokud s Azure Resource Managerem začínáte, existuje několik termínů, kter�
 
 * **prostředek** – spravovatelná položka, která je dostupná prostřednictvím Azure. Mezi příklady prostředků patří virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě. Příklady prostředků jsou také skupiny prostředků, předplatná, skupiny pro správu a značky.
 * **Skupina prostředků** – kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků zahrnuje ty prostředky, které chcete spravovat jako skupinu. O tom, které prostředky do skupiny prostředků patří, rozhodujete vy na základě toho, co je pro vaši organizaci nejvhodnější. Viz [Skupiny prostředků](#resource-groups).
-* **poskytovatel prostředků** – služba poskytující prostředky Azure. Například běžný poskytovatel prostředků je Microsoft. COMPUTE, který poskytuje prostředek virtuálního počítače. Microsoft. Storage je další společný poskytovatel prostředků. Viz téma [poskytovatelé a typy prostředků](resource-providers-and-types.md).
+* **poskytovatel prostředků** – služba poskytující prostředky Azure. Například běžný poskytovatel prostředků je `Microsoft.Compute` , který poskytuje prostředek virtuálního počítače. `Microsoft.Storage` je dalším běžným poskytovatelem prostředků. Viz téma [poskytovatelé a typy prostředků](resource-providers-and-types.md).
 * **Správce prostředků šablonu** – soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo tenanta. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Další informace najdete v tématu [přehled Template Deployment](../templates/overview.md).
 * **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure.  Další informace najdete v tématu [přehled Template Deployment](../templates/overview.md).
 
@@ -61,7 +61,7 @@ Azure poskytuje čtyři úrovně rozsahu: [skupiny pro správu](../../governance
 
 ![Úrovně správy](./media/overview/scope-levels.png)
 
-Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Když například použijete [zásadu](../../governance/policy/overview.md) pro předplatné, zásada se použije na všechny skupiny prostředků a prostředky v rámci vašeho předplatného. Když použijete zásadu pro skupinu prostředků, tato zásada se použije pro skupinu prostředků a všechny její prostředky. U jiné skupiny prostředků ale tato přiřazení zásad neplatí.
+Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Když například použijete [zásadu](../../governance/policy/overview.md) pro předplatné, zásada se použije na všechny skupiny prostředků a prostředky v rámci vašeho předplatného. Když použijete zásadu pro skupinu prostředků, použije se tato zásada pro skupinu prostředků a všechny její prostředky. U jiné skupiny prostředků ale tato přiřazení zásad neplatí.
 
 Šablony můžete nasadit do klientů, skupin pro správu, předplatných nebo skupin prostředků.
 
@@ -99,11 +99,11 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manager
 
-Služba Azure Resource Manager je navržena pro zajištění odolnosti a nepřetržité dostupnosti. Správce prostředků a řídící operace roviny (požadavky odeslané na management.azure.com) v REST API jsou:
+Služba Azure Resource Manager je navržena pro zajištění odolnosti a nepřetržité dostupnosti. Správce prostředků a řídící operace roviny (požadavky odeslané na `management.azure.com` ) v REST API jsou:
 
 * Distribuované napříč oblastmi. Některé služby jsou regionální.
 
-* Distribuováno mezi Zóny dostupnosti (jako v oblastech) v umístěních, která mají více Zóny dostupnosti.
+* Distribuováno mezi Zóny dostupnosti (stejně jako oblasti) v umístěních, která mají více Zóny dostupnosti.
 
 * Nezávislá na jednom logickém datovém centru.
 

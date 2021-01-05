@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657290"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857337"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -252,7 +252,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms
@@ -265,6 +265,23 @@ Doporučujeme vybrat *členitost agregace (period)* , která je větší než *f
 -   Pravidlo upozornění metriky, které monitoruje více dimenzí – když se přidá nová kombinace hodnot dimenze
 -   Pravidlo upozornění metriky, které monitoruje více prostředků – při přidání nového prostředku do oboru
 -   Pravidlo upozornění na metriku, které monitoruje metriku, která se nevysílá průběžně (zhuštěná metrika) – když se metrika vygeneruje po dobu delší než 24 hodin, kdy se neemitoval
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Nevypadá to, že ohraničení dynamických prahových hodnot nevyhovují datům
+
+Pokud se chování metriky v poslední době změnily, změny se nemusí nutně projevit v dynamických mezních hranicích (horní a dolní meze), protože se počítají na základě dat metriky za posledních 10 dnů. Při prohlížení dynamických mezních hodnot pro danou metriku se nezapomeňte podívat na trend metriky za poslední týden, a ne jenom pro poslední hodiny nebo dny.
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Proč se týdenní sezónnost nedetekuje pomocí dynamických prahových hodnot?
+
+Pro identifikaci týdenního sezónnost musí model dynamické prahové hodnoty vyžadovat alespoň tři týdny historických dat. Jakmile budou k dispozici dostatek historických dat, identifikují se všechny týdenní sezónnosty, které existují v datech metriky, a model by se odpovídajícím způsobem upravil. 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>Dynamické prahové hodnoty ukazují záporné dolní meze metriky, i když metrika vždycky má kladné hodnoty.
+
+Když metrika vykazuje velkou výkyv, dynamické prahové hodnoty vytvoří širší model kolem hodnot metrik, což může vést k dolnímu okraji. Konkrétně k tomu může dojít v následujících případech:
+1. Citlivost je nastavena na hodnotu Nízká. 
+2. Střední hodnoty jsou blízko nuly.
+3. Metrika vykazuje nepravidelný postup s vysokou odchylkou (v datech jsou špičky nebo DIP).
+
+Pokud dolní hranice má zápornou hodnotu, znamená to, že je plausible, že metrika dosáhla nulové hodnoty v důsledku nepravidelného chování metriky. Můžete zvážit výběr vyšší citlivosti nebo větší *členitosti (period)* , aby model byl méně citlivý, nebo pomocí možnosti *Ignorovat data před* vyloučením nedávných irregulaity z historických dat použitých k vytvoření modelu.
 
 ## <a name="next-steps"></a>Další kroky
 

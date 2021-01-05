@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095079"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858772"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -38,6 +38,8 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -55,7 +57,7 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | --------
 toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
 integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
@@ -95,6 +97,14 @@ Pokud jako jímku nebo zdroj používáte Azure synapse Analytics, musíte zvoli
 Pokud nepotřebujete, aby každé spuštění kanálu pro aktivity toku dat plně protokoloval všechny protokoly telemetrie, můžete nastavit úroveň protokolování na "Basic" nebo "none". Při provádění datových toků v režimu "Verbose" (výchozí) požadujete při transformaci dat na úrovni služby ADF úplný protokol aktivity na jednotlivých úrovních jednotlivých oddílů. To může být náročná operace, takže jenom při řešení potíží můžete zlepšit celkový tok dat a výkon kanálu. Režim "základní" bude pouze dobu trvání transformace protokolu, zatímco možnost None bude obsahovat pouze souhrn dob trvání.
 
 ![Úroveň protokolování](media/data-flow/logging.png "Nastavit úroveň protokolování")
+
+## <a name="sink-properties"></a>Vlastnosti jímky
+
+Funkce seskupení v datových proudech umožňuje nastavovat pořadí spouštění vašich umyvadel i seskupovat jímky pomocí stejného čísla skupiny. Aby bylo možné spravovat skupiny, můžete požádat o automatický pokus o spuštění jímky ve stejné skupině paralelně. Můžete také nastavit, aby skupina jímky pokračovala i po jedné z umyvadel dojde k chybě.
+
+Výchozím chováním jímky toku dat je spuštění každé jímky postupně, sériového způsobu a selhání toku dat, když dojde k chybě v jímky. Kromě toho jsou všechny jímky nastavené na stejnou skupinu, pokud nepřejdete do vlastností toku dat a nakonfigurujete jiné priority pro jímky.
+
+![Vlastnosti jímky](media/data-flow/sink-properties.png "Nastavení vlastností jímky")
 
 ## <a name="parameterizing-data-flows"></a>Toky dat Parametrizace
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033761"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854889"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -43,6 +43,23 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
 Než budete moct pomocí [portálu Custom Speech](https://speech.microsoft.com/customspeech) vytvořit vlastní model, musíte mít účet Azure a předplatné služby Speech Service. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
+
+Pokud máte v úmyslu vytvořit vlastní model se zvukovými daty, vyberte jednu z následujících oblastí, která má vyhrazený hardware k dispozici pro školení. Tím se zkrátí doba potřebná k učení modelu.
+
+* Austrálie – východ
+* Střední Kanada
+* Indie – střed
+* East US
+* USA – východ 2
+* USA – středosever
+* Severní Evropa
+* Středojižní USA
+* Southeast Asia
+* Spojené království – jih
+* USA (Gov) – Arizona
+* USA (Gov) – Virginia
+* West Europe
+* Západní USA 2
 
 > [!NOTE]
 > Ujistěte se prosím, že jste vytvořili předplatné Standard (S0). Bezplatné předplatné (F0) se nepodporuje.

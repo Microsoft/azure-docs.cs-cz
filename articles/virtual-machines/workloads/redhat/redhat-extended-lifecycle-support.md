@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744037"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861392"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Rozšířená podpora životního cyklu Red Hat Enterprise Linux (RHEL)
 Tento článek poskytuje informace o podpoře rozšířeného životního cyklu pro Image Red Hat Enterprise:
@@ -38,6 +38,12 @@ Od 30. listopadu 2020 se Red Hat Enterprise Linux 6 dostane ke konci fáze údr�
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Jaké jsou další poplatky za používání doplňku Red Hat Enterprise Linux rozšířené podpory životního cyklu (ELS)?
 Náklady související s rozšířenou podporou životního cyklu najdete ve [formuláři ELS](https://aka.ms/els-form)
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>Nasadil (a) jsem virtuální počítač s použitím vlastní image. Jak můžu přidat rozšířenou podporu pro životní cyklus do tohoto virtuálního počítače?
+Musíte se obrátit přímo na Red Hat a získat podporu přímo z nich.
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>Nasadil (a) jsem virtuální počítač s použitím vlastní image. Můžu tento virtuální počítač převést na virtuální počítač s PAYG?
+Ne, nemůžete. V současnosti se převod nepodporuje v Azure.
 
 
 ## <a name="next-steps"></a>Další kroky

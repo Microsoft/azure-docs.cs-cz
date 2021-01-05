@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296807"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854838"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -42,10 +42,10 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
-| Podporované platformy:            | ![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
-| Podporované verze systému Windows:  | Defender pro koncový bod je integrovaný do systému Windows 10 1703 (a novější) a Windows Server 2019.<br>Security Center podporuje detekci na Windows serveru 2016, 2012 R2 a 2008 R2 SP1.<br>Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané. |
-| Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**                         |
-| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
+| Podporované platformy:            | Počítače Azure s Windows<br>Počítače ARC Azure s Windows|
+| Podporované verze systému Windows:  |  • Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1<br> • Server pro zákazníky s Office 365 RSZ zakázal monitorování koncového bodu serveru pomocí této integrace.<br> • Žádná podpora pro Windows Server 2019, Windows 10 1703 (a novější) nebo Linux|
+| Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
+| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -115,7 +115,7 @@ Pro vygenerování neškodné výstrahy testování v programu Microsoft Defende
     :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Okno příkazového řádku s příkazem pro vygenerování testovací výstrahy.":::
 
 1. Pokud je příkaz úspěšný, zobrazí se nová výstraha na řídicím panelu Azure Security Center a v programu Microsoft Defender pro portál koncového bodu. Zobrazení této výstrahy může trvat několik minut.
-1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si **Security alerts**  >  **podezřelé příkazový řádek PowerShellu** výstrahy zabezpečení.
+1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si   >  **podezřelé příkazový řádek PowerShellu** výstrahy zabezpečení.
 1. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender pro koncový bod.
 
 

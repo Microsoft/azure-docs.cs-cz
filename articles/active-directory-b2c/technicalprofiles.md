@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387084"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861858"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 ![Diagram znázorňující tok technického profilu](./media/technical-profiles/technical-profile-flow.png)
 
 1. **Správa relací jednotného přihlašování (SSO)** – obnoví stav relace technického profilu pomocí [správy relace jednotného](custom-policy-reference-sso.md)přihlašování.
-1. **Transformace vstupních deklarací** – před zahájením technického profilu Azure AD B2C spustí vstup [transformace deklarací]. (claimstransformations.md).
+1. **Transformace vstupních deklarací** – před zahájením technického profilu Azure AD B2C spustí [transformaci vstupních deklarací](claimstransformations.md).
 1. **Vstupní deklarace identity** – deklarace se vybírají z kontejneru deklarací identity, které se používají pro technický profil.
 1. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Například:
     - Přesměrujte uživatele na zprostředkovatele identity, abyste mohli dokončit přihlášení. Po úspěšném přihlášení se uživatel vrátí zpět a provádění technického profilu bude pokračovat.
@@ -281,7 +281,7 @@ Element **DisplayClaim** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ne | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | DisplayControlReferenceId | Ne | Identifikátor [ovládacího prvku zobrazení](display-controls.md) , který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Vyžadováno | Ne | Určuje, zda je požadována deklarace identity zobrazení. |
+| Povinné | Ne | Určuje, zda je požadována deklarace identity zobrazení. |
 
 Následující příklad ilustruje použití zobrazení deklarací identity a zobrazení v rámci technického profilu s vlastním uplatněním.
 

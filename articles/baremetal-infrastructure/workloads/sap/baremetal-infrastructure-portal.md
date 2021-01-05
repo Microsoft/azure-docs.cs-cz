@@ -2,20 +2,22 @@
 title: Jednotky instancí BareMetal v Azure
 description: Naučte se identifikovat a interagovat s jednotkami instancí BareMetal prostřednictvím Azure Portal.
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829139"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861033"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Správa instancí BareMetal pomocí webu Azure Portal
  
 Tento článek ukazuje, jak [Azure Portal](https://portal.azure.com/) zobrazuje [instance BareMetal](baremetal-overview-architecture.md). Tento článek také ukazuje aktivity, které můžete provádět v Azure Portal s nasazenými jednotkami instancí BareMetal. 
  
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
-Poskytovatel prostředků Azure pro instance BareMetal poskytuje viditelnost instancí v Azure Portal v současnosti ve verzi Public Preview. Ve výchozím nastavení předplatné Azure, které používáte pro nasazení instancí BareMetal, zaregistruje poskytovatele prostředků *BareMetalInfrastructure* . Pokud se nezobrazuje vaše nasazené jednotky instance BareMetal, musíte poskytovatele prostředků zaregistrovat u svého předplatného. Existují dva způsoby, jak zaregistrovat poskytovatele prostředků instance BareMetal:
+Poskytovatel prostředků Azure pro instance BareMetal poskytuje viditelnost instancí v Azure Portal v současnosti ve verzi Public Preview. Ve výchozím nastavení předplatné Azure, které používáte pro nasazení instancí BareMetal, zaregistruje poskytovatele prostředků *BareMetalInfrastructure* . Pokud se nezobrazuje vaše nasazené jednotky instance BareMetal, musíte poskytovatele prostředků zaregistrovat u svého předplatného. 
+
+Existují dva způsoby, jak zaregistrovat poskytovatele prostředků instance BareMetal:
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ Atributy v imagi se neliší od atributů virtuálních počítačů Azure. Vlev
 Napravo se zobrazí název jednotky, operační systém (OS), IP adresa a SKU, které zobrazují počet vláken procesoru a paměti. Zobrazí se také stav napájení a verze hardwaru (revize razítka instance BareMetal). Stav napájení označuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Podrobnosti o operačním systému ale neoznačují, jestli jsou spuštěné a spuštěné.
  
 Možné hardwarové Revize:
+
+* Revize 3 (rev 3)
+
+* Revize 4 (Rev 4)
  
-* Revize 3
- 
-* Revize 4
- 
-* Revize 4,2
+* Revize 4,2 (Rev 4,2)
  
 >[!NOTE]
->Revize 4,2 je nejnovější BareMetal infrastruktura s použitím architektury revize 4. Má významná vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami instancí BareMetal nasazenými v revizích 4 nebo v řádcích. Další informace o různých revizích najdete v tématu [infrastruktura BareMetal v Azure](baremetal-overview-architecture.md).
+>Rev 4,2 je nejnovější přepálená infrastruktura BareMetal s využitím existující architektury Rev 4. Rev 4 poskytuje užší blízkost pro hostitele virtuálních počítačů Azure. Má významná vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami instancí BareMetal nasazenými v razítkech a na řádcích Rev 4. Pomocí Azure Portal můžete přistupovat k instancím služby BareMetal a spravovat je. Další informace najdete v tématu [infrastruktura BareMetal v Azure](baremetal-overview-architecture.md).
  
 Na pravé straně se také nachází název [skupiny umístění s blízkostií Azure](../../../virtual-machines/linux/co-location.md) , který se vytvoří automaticky pro každou nasazenou jednotku instance BareMetal. Pokud nasadíte virtuální počítače Azure, které hostují aplikační vrstvu, odkažte na skupinu umístění blízkosti. Když použijete skupinu umístění blízkosti přidruženou ke jednotce instance BareMetal, zajistíte, že se virtuální počítače Azure nasadí blízko do jednotky instance BareMetal.
  

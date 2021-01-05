@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4b106ebc5606c4e5a290e12728d4e2011e80f6a2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94573863"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861825"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpečení kontejneru Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Hostitel by měl povolený seznam **port 443** a následující domény:
 
 #### <a name="disable-deep-packet-inspection"></a>Zakázat hloubkovou kontrolu paketů
 
-> [Hloubková kontrola paketů](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) je typ zpracování dat, který podrobněji kontroluje data odesílaná přes počítačovou síť a obvykle provádí akci blokováním, opětovného směrování nebo jeho přihlašování.
+[Hloubková kontrola paketů](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) je typ zpracování dat, který podrobněji kontroluje data odesílaná přes počítačovou síť a obvykle provádí akci blokováním, opětovného směrování nebo jeho přihlašování.
 
 Zakáže DPI u zabezpečených kanálů, které kontejnery Cognitive Services vytvoří na servery Microsoftu. V takovém případě se zabrání správnému fungování kontejneru.
 

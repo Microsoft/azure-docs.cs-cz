@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705553"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861899"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Kurz: zjišťování virtuálních počítačů Hyper-V pomocí posouzení serveru
 
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 **Požadavek** | **Podrobnosti**
 --- | ---
 **Hostitel Hyper-V** | Hostitelé Hyper-V, na kterých jsou virtuální počítače umístěné, můžou být samostatné nebo v clusteru.<br/><br/> V hostiteli musí být spuštěný systém Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/><br/> Ověřte, že jsou povolená příchozí připojení na portu WinRM 5985 (HTTP), aby se zařízení mohlo připojit k vyžádanému metadatům virtuálních počítačů a datům výkonu pomocí model CIM (Common Information Model) (CIM) relace.
-**Nasazení zařízení** | Hostitel Hyper-v potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – Windows Server 2016<br/><br/> – 16 GB paměti RAM<br/><br/> – Osm vCPU<br/><br/> – Přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač.<br/><br/> – Přístup k Internetu na virtuálním počítači přímo nebo prostřednictvím proxy serveru.
+**Nasazení zařízení** | Hostitel Hyper-V potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – Windows Server 2016<br/><br/> – 16 GB paměti RAM<br/><br/> – Osm vCPU<br/><br/> – Přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač.<br/><br/> – Přístup k Internetu na virtuálním počítači přímo nebo prostřednictvím proxy serveru.
 **Virtuální počítače** | Virtuální počítače můžou běžet s operačním systémem Windows nebo Linux. 
 
 Než začnete, můžete [zkontrolovat data](migrate-appliance.md#collected-data---hyper-v) , která zařízení shromáždí během zjišťování.
@@ -88,7 +88,7 @@ Nastavte účet s přístupem správce na hostitelích Hyper-V. Zařízení pou�
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 
-Sestavte nový projekt Azure Migrate.
+Nastavte nový projekt Azure Migrate.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.

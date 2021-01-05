@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353676"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845526"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -108,23 +108,21 @@ Model vizitek vám umožňuje extrahovat v angličtině informace, jako je jmén
 
 Pomocí [Nástroje pro rozpoznávání ukázkového formuláře](https://fott.azurewebsites.net/) nebo pomocí rychlého startu začněte s extrakcí dat z vašich formulářů. Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
 
-* [Rychlé starty klientské knihovny](./quickstarts/client-library.md) (všechny jazyky, více scénářů)
+* [Klientská knihovna/REST API rychlý Start](./quickstarts/client-library.md) (všechny jazyky, více scénářů)
 * Rychlé starty webového uživatelského rozhraní
   * [Výuka pomocí popisků – vzorový Nástroj pro označování](quickstarts/label-tool.md)
-* Rychlé starty REST
+* Ukázky REST (GitHub)
  * Extrakce textu, značek výběru a struktury tabulek z dokumentů
-    * [Extrakce dat rozložení – Python](quickstarts/python-layout.md)
+    * [Extrakce dat rozložení – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * Výuka vlastních modelů a extrahování dat formuláře
-    * [Výuka bez popisků – kudrlinkou](quickstarts/curl-train-extract.md)
-    * [Výuka bez popisků – Python](quickstarts/python-train-extract.md)
-    * [Výuka s popisky – Python](quickstarts/python-labeled-data.md)
+    * [Výuka bez popisků – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [Výuka s popisky – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * Extrakce dat z faktur
-    * [Extrakce dat faktury – Python](quickstarts/python-invoices.md)
+    * [Extrakce dat faktury – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * Extrakce dat z prodejních příjmů
-    * [Extrahovat data příjmu – kudrlinkou](quickstarts/curl-receipts.md)
-    * [Extrakce dat pro příjem – Python](quickstarts/python-receipts.md)
+    * [Extrakce dat pro příjem – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * Extrakce dat z vizitek
-    * [Extrakce dat obchodních karet – Python](quickstarts/python-business-cards.md)
+    * [Extrakce dat obchodních karet – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>Kontrola rozhraní REST API
 
@@ -162,4 +160,4 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start knihovny klienta](quickstarts/client-library.md) , abyste mohli začít psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+Dokončete [rychlý Start](quickstarts/client-library.md) a začněte psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.

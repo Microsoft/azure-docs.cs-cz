@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559875"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858548"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Popis |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -339,7 +339,7 @@ Přerušující se změny v verzi sady SDK v2:
 - Pro lepší signatury rozhraní API se některá volání rozhraní API, například trackPageView a trackException, aktualizovala. Spuštění v aplikaci Internet Explorer 8 a starších verzích prohlížeče se nepodporuje.
 - Obálka telemetrie má název pole a strukturu, které se mění kvůli aktualizacím schématu dat.
 - Přesunuto `context.operation` do `context.telemetryTrace` . Některá pole se také změnila ( `operation.id`  -->  `telemetryTrace.traceID` ).
-  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
+  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` .
     > [!NOTE]
     > Aby ID trasování bylo jedinečné, kde jste předtím používali `Util.newId()` , teď použijte `Util.generateW3CId()` . Oba nakonec mají ID operace.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631351"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858803"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Jak Zvýhodněné hybridní využití Azure platí pro virtuální počítače se systémem Linux
 
@@ -172,7 +172,7 @@ Další informace o dodržování předpisů pro předplatné Red Hat, aktualiza
 
 ### <a name="suse"></a>SUSE
 
-Pokud chcete použít Zvýhodněné hybridní využití Azure pro virtuální počítače s SLES, musíte se nejdřív zaregistrovat v [programu SUSE Public Cloud](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). Po zakoupení předplatných SUSE musíte zaregistrovat své virtuální počítače, které používají tyto odběry, do svého vlastního zdroje aktualizací. Pro tuto registraci použijte SUSE Customer Center, server nástrojů pro správu předplatného nebo správce SUSE.
+Pokud chcete použít Zvýhodněné hybridní využití Azure pro virtuální počítače s SLES a informace o přechodu z SLES PAYG na BYOS nebo při přesunu z SLES BYOS na PAYG, přečtěte si téma [SUSE Linux Enterprise a zvýhodněné hybridní využití Azure](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 *Otázka: mohu použít typ licence `RHEL_BYOS` s SLES obrázkem nebo naopak?*
@@ -210,12 +210,16 @@ Odpověď: Ne, nemůžete. Rezervované instance nejsou aktuálně v rozsahu Zv�
 *Otázka: je možné použít Zvýhodněné hybridní využití Azure na virtuálním počítači nasazeném pro SQL Server na obrázcích RHEL?*
 
 Odpověď: Ne, nemůžete. Pro podporu těchto virtuálních počítačů není k dispozici žádný plán.
+
+*Otázka: je možné použít Zvýhodněné hybridní využití Azure v předplatném svého virtuálního datového centra RHEL?*
+
+Odpověď: Ne, nemůžete. VDC se v Azure vůbec nepodporuje, včetně AHB.  
  
 
 ## <a name="common-problems"></a>Běžné problémy
 V této části jsou uvedené běžné problémy, se kterými se můžete setkat, a postup pro zmírnění rizik.
 
-| Chyba | Omezení rizik |
+| Chybová | Omezení rizik |
 | ----- | ---------- |
 | Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Pokud chcete využít výhod s virtuálními počítači s RHEL, musíte nejdřív [zaregistrovat vaše předplatná Azure pomocí služby Red Hat Cloud Access](https://access.redhat.com/management/cloud).
 

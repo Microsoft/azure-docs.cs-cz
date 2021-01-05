@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151040"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858701"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
 
@@ -43,17 +43,17 @@ Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConne
 
 U [modelu založeného na třídách](#class-based-model) v jazyce C# není potřeba vstupní vazba *SignalRConnectionInfo* a může přidat vlastní deklarace, které jsou mnohem jednodušší. Viz [dohadování prostředí v modelu založeném na třídě](#negotiate-experience-in-class-based-model)
 
-Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service-input.md).
+Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>Zpracování zpráv odeslaných ze služby Signal
 
-Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se aktivovat, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
+Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se dostat oznámení, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
 
-Další informace najdete v odkazu na [ *triggery triggeru signálu* ](../azure-functions/functions-bindings-signalr-service-trigger.md).
+Další informace najdete v odkazu na [ *triggery triggeru signálu*](../azure-functions/functions-bindings-signalr-service-trigger.md).
 
-Také je nutné nakonfigurovat koncový bod funkce jako nadřazený, aby služba aktivovala funkci, kde se nachází zpráva od klienta. Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](concept-upstream.md).
+Také je nutné nakonfigurovat koncový bod funkce jako nadřazený, aby služba aktivovala funkci, když bude k dispozici zpráva od klienta. Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Odesílání zpráv a Správa členství ve skupinách
 
@@ -61,7 +61,7 @@ Pomocí výstupní vazby *signálu* můžete odesílat zprávy klientům připoj
 
 Uživatele lze přidat do jedné nebo více skupin. Výstupní vazbu *signálu* můžete také použít k přidání nebo odebrání uživatelů do nebo ze skupin.
 
-Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service-output.md).
+Další informace najdete v odkazu na [výstupní vazbu *signálu*](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Rozbočovače signálu
 
@@ -111,7 +111,7 @@ Všechny funkce, které chtějí využít model založený na třídách, musí 
 
 ### <a name="define-hub-method"></a>Definovat metodu centra
 
-Všechny metody centra **musí** mít argument `InvocationContext` dekorované podle `[SignalRTrigger]` atributů a používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
+Všechny metody centra **musí** mít argument `InvocationContext` dekorované podle `[SignalRTrigger]` atributů a používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost** parametru.
 
 Ve výchozím nastavení, `category=messages` s výjimkou názvu metody, je jedním z následujících názvů:
 

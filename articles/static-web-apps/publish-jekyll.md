@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000213"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862014"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Jekyll ve službě Azure static Web Apps Preview
 
@@ -98,15 +98,15 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Klikněte na **Vytvořit**.
 
-1. U **předplatného**přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
+1. U **předplatného** přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
-1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **Jekyll-static-App** a vyberte **OK**.
+1. V _skupiny prostředků_ vyberte **Nový**. Do _název nové skupiny prostředků_ zadejte **Jekyll-static-App** a vyberte **OK**.
 
 1. Potom do pole _název_ zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
-1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
+1. V _oblasti oblast_ vyberte dostupnou oblast, která je blízko vás.
 
-1. V případě _SKU_vyberte možnost **Free**.
+1. V případě _SKU_ vyberte možnost **Free**.
 
     :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="Podrobnosti vyplněné":::
 
@@ -114,17 +114,17 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Vyberte **organizaci** , ve které jste úložiště vytvořili.
 
-1. Jako _úložiště_vyberte **Jekyll-static-App** .
+1. Jako _úložiště_ vyberte **Jekyll-static-App** .
 
-1. Pro _větev_ vyberte **hlavní**uzel.
+1. Pro _větev_ vyberte **hlavní** uzel.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Podrobnosti vyplněné":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 
 ### <a name="build"></a>Sestavení
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Kliknutím na tlačítko **Další: >sestavení ** Upravte konfiguraci sestavení.
+1. Kliknutím na tlačítko **Další: >sestavení** Upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/_SITE**.
 
@@ -132,7 +132,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 
-### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 
@@ -150,7 +150,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
     ```yml
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1.59.1
       with:
         ruby-version: 2.6
     - name: Install dependencies
@@ -171,7 +171,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. V okně _přehled_ Azure Portal kliknutím na odkaz _URL_ otevřete nasazenou aplikaci.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Podrobnosti vyplněné":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Nasazená aplikace":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

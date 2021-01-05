@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: Příprava počítačů na migraci
           href: prepare-for-migration.md
+        - name: Příprava serverů Windows 2003 na migraci
+          href: prepare-windows-server-2003-migration.md
         - name: Migrace virtuálních počítačů VMware
           items:
             - name: Migrace virtuálních počítačů VMware na šifrované virtuální počítače Azure
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: Příprava serverů Windows 2003 na migraci
-              href: prepare-windows-server-2003-migration.md
         - name: Škálování migrace
           items:
             - name: Automatizace migrace velkého počtu virtuálních počítačů

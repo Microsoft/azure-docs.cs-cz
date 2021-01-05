@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492206"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845476"
 ---
 # <a name="receipt-concepts"></a>Principy účtenek
 
@@ -456,12 +456,11 @@ Výstup příjemky je také užitečný pro obecné obchodní nebo osobní použ
 
 Příjmy obsahují užitečná data, která můžete použít k analýze chování zákazníků a nákupních trendů.
 
-Rozhraní API pro příjemce taky zajišťuje [funkci pro zpracování příjmu AIBuilder](/ai-builder/prebuilt-receipt-processing).
+Rozhraní API pro příjemce taky zajišťuje [funkci zpracování příjmu v Tvůrci AI](/ai-builder/prebuilt-receipt-processing).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Dokončete [rychlý Start klientské knihovny pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
-- Můžete také použít kurz pro [příjem API v Pythonu](./quickstarts/python-receipts.md) k rozpoznávání účtenek pomocí REST API.
+- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

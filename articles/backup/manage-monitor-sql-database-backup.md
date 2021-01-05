@@ -3,12 +3,12 @@ title: Správa a sledování SQL Server databáze na virtuálním počítači Az
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021499"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858724"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
 
@@ -20,7 +20,7 @@ Pokud jste ještě nenakonfigurovali zálohy pro databáze SQL Server, přečtě
 
 Azure Backup zobrazuje všechny plánované a vyžádané operace v rámci **úlohy zálohování** na portálu s výjimkou naplánovaných záloh protokolů, protože můžou být velmi časté. Úlohy, které vidíte na tomto portálu, zahrnují zjišťování a registraci databází, konfiguraci zálohování a operace zálohování a obnovení.
 
-![Portál úlohy zálohování](./media/backup-azure-sql-database/jobs-list.png)
+![Portál úlohy zálohování](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 Podrobné informace o scénářích monitorování najdete [v části monitorování v Azure Portal](backup-azure-monitoring-built-in-monitor.md) a [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
@@ -36,13 +36,9 @@ Monitorování výstrah zálohování databáze:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
+2. Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
-   ![Vybrat výstrahy a události](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. V **upozorněních a událostech** vyberte **výstrahy zálohování**.
-
-   ![Vybrat výstrahy zálohování](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![Vybrat výstrahy zálohování](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>Zastavení ochrany pro databázi SQL Server
 
@@ -83,7 +79,7 @@ Zastavení ochrany databáze:
 >
 >Další informace o možnosti odstranit data najdete v následujících nejčastějších dotazech:
 >
->- [Když odstraním databázi z autoprotected instance, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Když z automaticky chráněné instance odstraním databázi, co se stane se zálohami?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
 >- [Když zabráním operaci zálohování funkce autoprotected Database, která bude její chování?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
@@ -154,7 +150,7 @@ Zrušení registrace instance SQL Server po zakázání ochrany, ale před odstr
 
 4. Klikněte pravým tlačítkem myši na chráněný Server a vyberte zrušit **registraci**.
 
-   ![Vyberte Odstranit.](./media/backup-azure-sql-database/delete-protected-server.jpg)
+   ![Vybrat odstranit](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Opětovné zaregistrování rozšíření na SQL Serverm virtuálním počítači
 

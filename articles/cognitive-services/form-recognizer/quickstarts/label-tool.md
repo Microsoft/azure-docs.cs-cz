@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009326"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845539"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -106,7 +106,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
    Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte na `http://localhost:3000`.
 
 > [!NOTE]
-> Můžete také označovat dokumenty a modely výuky pomocí REST API pro rozpoznávání formulářů. Chcete-li provést výuku a analýzu pomocí REST API, přečtěte si téma [výuka s popisky pomocí REST API a Pythonu](./python-labeled-data.md).
+> Můžete také označovat dokumenty a modely výuky pomocí REST API pro rozpoznávání formulářů. Chcete-li provést výuku a analýzu pomocí REST API, přečtěte si téma [výuka s popisky pomocí REST API a Pythonu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Nastavení vstupních dat
 
@@ -137,7 +137,9 @@ Vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** – zobrazovaný název připojení.
 * **Popis** – Popis projektu.
-* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit** a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
@@ -223,7 +225,7 @@ Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem
 
 ### <a name="specify-tag-value-types"></a>Zadejte typy hodnot značek
 
-Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otevřete kontextovou nabídku napravo od značky a vyberte typ z nabídky. Tato funkce umožňuje, aby algoritmus detekce vytvářely určité předpoklady, které budou zlepšit přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. 
+Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otevřete kontextovou nabídku napravo od značky a vyberte typ z nabídky. Tato funkce umožňuje, aby algoritmus detekce vytvářely určité předpoklady, které budou zlepšit přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. Informace o typu hodnoty jsou uloženy v *fields.js* souboru ve stejné cestě jako soubory popisků.
 
 > [!div class="mx-imgBorder"]
 > ![Výběr typu hodnoty pomocí nástroje pro vzorkování popisků](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 
 Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom kliknutím na tlačítko **výuka** začněte s modelem školení. Po dokončení procesu školení se zobrazí následující informace:
 
-* **ID modelu** – ID modelu, který byl vytvořen a vyškolený. Každý školicí hovor vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění; budete ho potřebovat, pokud chcete provést prediktivní volání prostřednictvím [REST API](./curl-train-extract.md) nebo [klientské knihovny](./client-library.md).
+* **ID modelu** – ID modelu, který byl vytvořen a vyškolený. Každý školicí hovor vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění; budete ho potřebovat, pokud chcete provést prediktivní volání prostřednictvím [REST API](./client-library.md?pivots=programming-language-rest-api) nebo [klientské knihovny](./client-library.md).
 * **Průměrná přesnost** – Průměrná přesnost modelu Přesnost modelu můžete vylepšit tak, že si znovu označíte další formuláře a školení a vytvoříte nový model. Doporučujeme začít tím, že budete označovat pět forem a podle potřeby přidat další formuláře.
 * Seznam značek a předpokládaná přesnost na značku.
 
@@ -276,7 +278,7 @@ Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom
 Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud je nízká, měli byste přidat další vstupní dokumenty a opakovat výše uvedené kroky. Již označené dokumenty zůstanou v indexu projektu.
 
 > [!TIP]
-> Můžete také spustit školicí proces s voláním REST API. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](./python-labeled-data.md).
+> Můžete také spustit školicí proces s voláním REST API. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="compose-trained-models"></a>Vytváření vycvičených modelů
 
@@ -299,7 +301,7 @@ Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, 
 Kliknutím na ikonu prediktivní (žárovky) na levé straně otestujete svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
 
 > [!TIP]
-> Můžete také spustit rozhraní API pro analýzu pomocí volání REST. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](./python-labeled-data.md).
+> Můžete také spustit rozhraní API pro analýzu pomocí volání REST. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="improve-results"></a>Zlepšení výsledků
 
@@ -326,7 +328,7 @@ Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít clo
 V tomto rychlém startu jste se naučili, jak pomocí nástroje pro rozpoznávání popisů formulářů vytvořit výuku modelu s ručně označenými daty. Pokud chcete vytvořit vlastní nástroj pro popisek školicích dat, použijte rozhraní REST API, které se týká školení s popisky dat.
 
 > [!div class="nextstepaction"]
-> [Výuka s popisky pomocí Pythonu](./python-labeled-data.md)
+> [Výuka s popisky pomocí Pythonu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Co je služba Rozpoznávání formulářů?](../overview.md)
-* [Rychlé starty klientské knihovny pro rozpoznávání formulářů](client-library.md)
+* [Rychlé zprovoznění pro rozpoznávání formulářů](client-library.md)

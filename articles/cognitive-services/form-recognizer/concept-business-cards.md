@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498856"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845606"
 ---
 # <a name="business-card-concepts"></a>Principy vizitek
 
@@ -374,7 +374,7 @@ Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "read
 }
 ```
 
-Postupujte podle pokynů pro rychlý Start k [extrakci dat](./QuickStarts/python-business-cards.md) vizitky pomocí Pythonu a REST API k implementaci extrakce dat na vizitce.
+Při implementaci extrakce dat vizitky pomocí Pythonu a REST API použijte [rychlý Start.](./QuickStarts/client-library.md)
 
 ## <a name="customer-scenarios"></a>Scénáře zákazníků  
 
@@ -385,11 +385,11 @@ Data extrahovaná pomocí rozhraní API na vizitce lze použít k provádění r
 * Udržujte si přehled o potenciálních prodejích.  
 * Hromadně extrahuje kontaktní informace z existujících imagí vizitky. 
 
-Rozhraní API na vizitce také zajišťuje [funkci pro zpracování AIBuilder obchodních karet](/ai-builder/prebuilt-business-card).
+Rozhraní API na vizitce také zajišťuje [funkci pro zpracování obchodních karet tvůrce AI](/ai-builder/prebuilt-business-card).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Postupujte podle pokynů pro [rychlý Start k rozhraní API vizitky v Pythonu](./quickstarts/python-business-cards.md) a začněte rozpoznávat obchodní karty.
+- Pomocí [rychlého](./quickstarts/client-library.md) startu začněte s rozpoznáváním vizitek.
 
 ## <a name="see-also"></a>Viz také
 

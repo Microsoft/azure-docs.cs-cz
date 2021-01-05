@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566533"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845632"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -36,11 +36,11 @@ V tomto kurzu budete...
 
 ## <a name="get-started-with-the-building-scenario"></a>Začínáme se scénářem vytváření
 
-Vzorový projekt použitý v tomto kurzu představuje reálný **scénář stavby** , který obsahuje podlahovou místnost, místnost a termostat zařízení. Tyto součásti budou digitálně zastoupeny v instanci digitálních vláken Azure, která se pak připojí k [IoT Hub](../iot-hub/about-iot-hub.md), [Event Grid](../event-grid/overview.md)a dvěma [funkcím Azure](../azure-functions/functions-overview.md) , aby se usnadnil pohyb dat.
+Vzorový projekt použitý v tomto kurzu představuje reálný **scénář stavby**, který obsahuje podlahovou místnost, místnost a termostat zařízení. Tyto součásti budou digitálně zastoupeny v instanci digitálních vláken Azure, která se pak připojí k [IoT Hub](../iot-hub/about-iot-hub.md), [Event Grid](../event-grid/overview.md)a dvěma [funkcím Azure](../azure-functions/functions-overview.md) , aby se usnadnil pohyb dat.
 
 Níže je diagram znázorňující celý scénář. 
 
-Nejprve vytvoříte instanci digitálních vláken Azure ( **oddíl A** v diagramu) a pak nastavíte tok dat telemetrie do digitálních vláken ( **šipka B** ) a pak nastavíte šíření dat pomocí grafu s dvojitou smyčkou ( **šipka C** ).
+Nejprve vytvoříte instanci digitálních vláken Azure (**oddíl A** v diagramu) a pak nastavíte tok dat telemetrie do digitálních vláken (**šipka B**) a pak nastavíte šíření dat pomocí grafu s dvojitou smyčkou (**šipka C**).
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Obrázek celého scénáře stavby Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C).":::
 
@@ -48,16 +48,14 @@ Pokud chcete pracovat v tomto scénáři, budete pracovat s komponentami předem
 
 Tady jsou komponenty implementované ukázkovou aplikací *AdtSampleApp* scénář vytváření:
 * Ověřování zařízení 
-* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (najdete v *CommandLoop.cs* )
+* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (najdete v *CommandLoop.cs*)
 * Rozhraní konzoly pro volání rozhraní API digitálních vláken Azure
 * *SampleClientApp* – ukázkové řešení digitálních vláken Azure
 * *SampleFunctionsApp* – aplikace Azure Functions, která aktualizuje graf digitálních vláken Azure v důsledku telemetrie z IoT Hub a událostí digitálních vláken Azure
 
-Ukázkový projekt obsahuje také interaktivní autorizační komponentu. Pokaždé, když projekt spustíte, otevře se okno prohlížeče s výzvou k přihlášení pomocí účtu Azure.
-
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Vytvoření instance předem vytvořeného grafu s dvojitou čárkou
 
-Nejprve použijete řešení *AdtSampleApp* z ukázkového projektu k sestavení části digitálních vláken Azure v rámci kompletního a koncového scénáře ( **oddíl A** ):
+Nejprve použijete řešení *AdtSampleApp* z ukázkového projektu k sestavení části digitálních vláken Azure v rámci kompletního a koncového scénáře (**oddíl A**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Výňatek z kompletního vývojového scénáře – část s digitálním výsledkem a, instance digitálního vlákna Azure":::
 
@@ -74,7 +72,7 @@ Otevře se okno konzoly, provede se ověřování a počká na příkaz. V této
 SetupBuildingScenario
 ```
 
-Výstupem tohoto příkazu je série potvrzujících zpráv, [**protože se vytvářejí**](concepts-twins-graph.md) a připojují ve vaší instanci digitálních vláken Azure: podlahu s názvem *floor1* , místnost s názvem *room21* a snímač teploty s názvem *thermostat67*. Tyto digitální vlákna reprezentují entity, které by existovaly ve skutečném prostředí.
+Výstupem tohoto příkazu je série potvrzujících zpráv, [**protože se vytvářejí**](concepts-twins-graph.md) a připojují ve vaší instanci digitálních vláken Azure: podlahu s názvem *floor1*, místnost s názvem *room21* a snímač teploty s názvem *thermostat67*. Tyto digitální vlákna reprezentují entity, které by existovaly ve skutečném prostředí.
 
 Jsou propojeny prostřednictvím vztahů s následujícím [**dvojitým grafem**](concepts-twins-graph.md). Dvojitý graf představuje prostředí jako celek, včetně toho, jak entity vzájemně spolupracují a vzájemně souvisí.
 
@@ -100,9 +98,9 @@ Potom můžete zastavit běh projektu. Nechejte řešení otevřené v aplikaci 
 
 ## <a name="set-up-the-sample-function-app"></a>Nastavení ukázkové aplikace Function App
 
-Dalším krokem je nastavení [aplikace Azure Functions](../azure-functions/functions-overview.md) , která se bude používat v celém rámci tohoto kurzu ke zpracování dat. Aplikace Function App, *SampleFunctionsApp* , obsahuje dvě funkce:
-* *ProcessHubToDTEvents* : zpracovává příchozí IoT Hub data a podle toho aktualizuje digitální vlákna Azure.
-* *ProcessDTRoutedData* : zpracovává data z digitálních vláken a aktualizuje nadřazených vláken v rámci digitálních vláken Azure odpovídajícím způsobem.
+Dalším krokem je nastavení [aplikace Azure Functions](../azure-functions/functions-overview.md) , která se bude používat v celém rámci tohoto kurzu ke zpracování dat. Aplikace Function App, *SampleFunctionsApp*, obsahuje dvě funkce:
+* *ProcessHubToDTEvents*: zpracovává příchozí IoT Hub data a podle toho aktualizuje digitální vlákna Azure.
+* *ProcessDTRoutedData*: zpracovává data z digitálních vláken a aktualizuje nadřazených vláken v rámci digitálních vláken Azure odpovídajícím způsobem.
 
 V této části publikujete předem napsanou aplikaci funkcí a zajistěte, aby aplikace Function App měla přístup k digitálním událostem Azure pomocí přiřazení Azure Active Directory (Azure AD). Dokončením těchto kroků umožníte zbývající část kurzu používat funkce uvnitř aplikace Function App. 
 
@@ -134,7 +132,7 @@ V případě konkrétního cíle zvolte **Azure Function App (Windows)** a stisk
 
 Na stránce *funkce instance* vyberte své předplatné. To by mělo naplnit pole *skupinami prostředků* v rámci vašeho předplatného.
 
-Vyberte skupinu prostředků vaší instance a stiskněte *+ vytvořit novou funkci Azure Functions...*.
+Vyberte skupinu prostředků vaší instance a přejděte *+* k vytvoření nové funkce Azure Functions.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Publikování funkce Azure Functions v aplikaci Visual Studio: instance Functions (před aplikací Function App)":::
 
@@ -162,7 +160,7 @@ V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual
 > Pokud se zobrazí automaticky otevírané okno: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publikovat funkci Azure v aplikaci Visual Studio: přihlašovací údaje pro publikování" border="false":::
 > Vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte** ji.
 >
-> Pokud se zobrazí upozornění na *Upgrade verze funkcí v Azure* nebo že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure* :
+> Pokud se zobrazí upozornění na *Upgrade verze funkcí v Azure* nebo že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*:
 >
 > Postupujte podle pokynů a upgradujte na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio, než kterou jste doporučili v části *požadavky* na začátku tohoto kurzu.
 
@@ -198,7 +196,7 @@ Graf digitálních vláken Azure by měl být řízený telemetrie z reálných 
 
 V tomto kroku připojíte simulované zařízení, které je zaregistrované v [IoT Hub](../iot-hub/about-iot-hub.md) k digitálnímu vlákna, které představuje v Azure Digital autovlákna. Když simulované zařízení vysílá telemetrii, budou data směrována prostřednictvím funkce *ProcessHubToDTEvents* Azure, která v digitálním vlákna spustí odpovídající aktualizaci. Tímto způsobem je digitální neaktuálnost v reálném čase díky datům reálného zařízení. V rámci digitálních vláken Azure se proces nasměrování dat událostí z jednoho místa na jiný nazývá [**Směrování událostí**](concepts-route-events.md).
 
-K tomu dochází v této části koncového scénáře ( **šipka B** ):
+K tomu dochází v této části koncového scénáře (**šipka B**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Výňatek z celého scénáře sestavování grafického zvýraznění – šipka B, prvky před digitálním výsledkem Azure: zařízení, IoT Hub a první funkce Azure":::
 
@@ -238,12 +236,12 @@ Tím se zobrazí stránka *vytvořit odběr události* .
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure Portal: Vytvoření odběru událostí":::
 
 Vyplňte pole následujícím způsobem (ve výchozím nastavení se nezobrazují pole, která jsou vyplněna):
-* *Podrobnosti*  >  odběru události **Název** : zadejte název předplatného události.
-* *Podrobnosti o tématu*  >  **Název systémového tématu** : zadejte název, který se má použít pro systémové téma. 
-* *typy událostí*  >  **Filtrovat na typy událostí** : z možností nabídky vyberte *telemetrie zařízení* .
-* Podrobnosti koncového *bodu*  >  **Typ koncového bodu** : z možností nabídky vyberte *Azure Function* .
-* Podrobnosti koncového *bodu*  >  **Koncový bod** : stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat funkci Azure* : :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal odběr událostí: vybrat funkci Azure Functions" border="false":::
-    - Vyplňte svoje **předplatné** , **skupinu prostředků** , **aplikaci funkcí** a **funkci** ( *ProcessHubToDTEvents* ). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
+* *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
+* *Podrobnosti o tématu*  >  **Název systémového tématu**: zadejte název, který se má použít pro systémové téma. 
+* *typy událostí*  >  **Filtrovat na typy událostí**: z možností nabídky vyberte *telemetrie zařízení* .
+* Podrobnosti koncového *bodu*  >  **Typ koncového bodu**: z možností nabídky vyberte *Azure Function* .
+* Podrobnosti koncového *bodu*  >  **Koncový bod**: stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat funkci Azure* : :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal odběr událostí: vybrat funkci Azure Functions" border="false":::
+    - Vyplňte svoje **předplatné**, **skupinu prostředků**, **aplikaci funkcí** a **funkci** (*ProcessHubToDTEvents*). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
     - **Potvrďte výběr**.
 
 Zpátky na stránce *vytvořit odběr události* klikněte na **vytvořit**.
@@ -283,14 +281,14 @@ V novém okně sady Visual Studio otevřete (ze stažené složky řešení) _si
 >[!NOTE]
 > Nyní byste měli mít dvě okna sady Visual Studio, jednu s _**DeviceSimulator. sln**_ a jednu z předchozích verzí _**AdtE2ESample. sln**_.
 
-V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/ **AzureIoTHub.cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
+V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/**AzureIoTHub.cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>
 deviceConnectionString = <your-device-connection-string>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 Nyní chcete-li zobrazit výsledky simulace dat, kterou jste nastavili, spusťte projekt **DeviceSimulator** pomocí tohoto tlačítka na panelu nástrojů:
 
@@ -308,7 +306,7 @@ Funkce *ProcessHubToDTEvents* , kterou jste publikovali dříve, naslouchá dat�
 
 Pokud se chcete podívat na data z oblasti digitálních vláken Azure, přejděte do okna aplikace Visual Studio, kde je projekt _**AdtE2ESample**_ otevřený a spusťte projekt.
 
-V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené pomocí digitálního vlákna *thermostat67* :
+V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené pomocí digitálního vlákna *thermostat67*:
 
 ```cmd
 ObserveProperties thermostat67 Temperature
@@ -324,7 +322,7 @@ Jakmile ověříte, že toto ověření funguje úspěšně, můžete zastavit s
 
 V tomto kurzu jste se seznámili s tím, jak se digitální vlákna Azure dají aktualizovat z externích dat zařízení. V dalším kroku uvidíte, jak se můžou změny jedné digitální funkce šířit prostřednictvím grafu digitálních vláken Azure – jinými slovy, jak aktualizovat vlákna z interních dat služby.
 
-K tomu použijete funkci *ProcessDTRoutedData* Azure k aktualizaci vlákna v *místnosti* , když se aktualizuje připojený *termostat* . K tomu dochází v této části koncového scénáře ( **šipka C** ):
+K tomu použijete funkci *ProcessDTRoutedData* Azure k aktualizaci vlákna v *místnosti* , když se aktualizuje připojený *termostat* . K tomu dochází v této části koncového scénáře (**šipka C**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Výňatek z celého scénáře sestavování grafického zvýraznění – šipka C, prvky po digitálních událostech Azure: Event Grid a druhá funkce Azure":::
 
@@ -400,10 +398,10 @@ V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, 
 Postup vytvoření odběru událostí je podobný jako při přihlášení k odběru první funkce Azure, která IoT Hub dříve v tomto kurzu. Tentokrát nemusíte zadávat *telemetrii zařízení* jako typ události, která se má naslouchat, a Vy se připojíte k jiné funkci Azure Functions.
 
 Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem (pole vyplněná ve výchozím nastavení nejsou zmíněná):
-* *Podrobnosti*  >  odběru události **Název** : zadejte název předplatného události.
-* Podrobnosti koncového *bodu*  >  **Typ koncového bodu** : z možností nabídky vyberte *Azure Function* .
-* Podrobnosti koncového *bodu*  >  **Koncový bod** : stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat Azure Function* :
-    - Vyplňte svoje **předplatné** , **skupinu prostředků** , **aplikaci funkcí** a **funkci** ( *ProcessDTRoutedData* ). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
+* *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
+* Podrobnosti koncového *bodu*  >  **Typ koncového bodu**: z možností nabídky vyberte *Azure Function* .
+* Podrobnosti koncového *bodu*  >  **Koncový bod**: stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat Azure Function* :
+    - Vyplňte svoje **předplatné**, **skupinu prostředků**, **aplikaci funkcí** a **funkci** (*ProcessDTRoutedData*). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
     - **Potvrďte výběr**.
 
 Zpátky na stránce *vytvořit odběr události* klikněte na **vytvořit**.
@@ -420,7 +418,7 @@ V této konzole nemusíte nic dalšího dělat, ale při provádění dalších 
 
 Pokud se chcete podívat na data z oblasti digitálních vláken Azure, přejděte do okna aplikace Visual Studio, kde je projekt _**AdtE2ESample**_ otevřený, a spusťte projekt.
 
-V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené digitálním **both** *thermostat67em* a digitálním *room21em*.
+V okně konzoly projektu, které se otevře, spusťte následující příkaz, který získá teploty hlášené digitálním  *thermostat67em* a digitálním *room21em*.
 
 ```cmd
 ObserveProperties thermostat67 Temperature room21 Temperature
@@ -437,8 +435,8 @@ Jakmile ověříte, že toto ověření funguje úspěšně, můžete zastavit s
 Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 
 1. Instance digitálních vláken Azure představuje v následujícím diagramu podlahu, místnost a termostat (reprezentované **částí a** v diagramu níže).
-2. Telemetrii simulovaného zařízení se odesílá do IoT Hub, kde *ProcessHubToDTEvents* funkce Azure naslouchá událostem telemetrie. Funkce *ProcessHubToDTEvents* Azure používá informace v těchto událostech k nastavení vlastnosti *teploty* v *thermostat67* ( **šipka B** v diagramu).
-3. Události změny vlastností v digitálních událostech Azure jsou směrované do tématu Event gridu, kde *ProcessDTRoutedData* funkce Azure naslouchá událostem. Funkce *ProcessDTRoutedData* Azure používá informace v těchto událostech k nastavení vlastnosti *teploty* v *room21* ( **šipka C** v diagramu).
+2. Telemetrii simulovaného zařízení se odesílá do IoT Hub, kde *ProcessHubToDTEvents* funkce Azure naslouchá událostem telemetrie. Funkce *ProcessHubToDTEvents* Azure používá informace v těchto událostech k nastavení vlastnosti *teploty* v *thermostat67* (**šipka B** v diagramu).
+3. Události změny vlastností v digitálních událostech Azure jsou směrované do tématu Event gridu, kde *ProcessDTRoutedData* funkce Azure naslouchá událostem. Funkce *ProcessDTRoutedData* Azure používá informace v těchto událostech k nastavení vlastnosti *teploty* v *room21* (**šipka C** v diagramu).
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Obrázek celého scénáře stavby Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C).":::
 

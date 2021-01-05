@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911711"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845587"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
@@ -72,11 +72,8 @@ Pokud do textu žádosti přidáte následující obsah, rozhraní API bude zaš
 
 Teď, když jste se naučili, jak vytvořit školicí sadu dat, postupujte podle rychlého startu a Naučte se vlastní model pro rozpoznávání formulářů a začněte ho používat na formulářích.
 
-* [Výuka modelu a extrakce dat formuláře pomocí klientské knihovny](./quickstarts/client-library.md)
-* [Výuka modelu a extrakce dat z formuláře pomocí kudrlinkou](./quickstarts/curl-train-extract.md)
-* [Výuka modelu a extrakce dat formuláře pomocí REST API a Pythonu](./quickstarts/python-train-extract.md)
+* [Výuka modelu a extrakce dat formuláře pomocí klientské knihovny nebo REST API](./quickstarts/client-library.md)
 * [Výuka pomocí popisků pomocí ukázkového nástroje pro označování](./quickstarts/label-tool.md)
-* [Trénování s popisky s využitím REST API a Pythonu](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>Viz také
 

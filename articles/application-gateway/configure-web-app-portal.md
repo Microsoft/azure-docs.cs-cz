@@ -6,18 +6,18 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 01/02/2021
 ms.author: victorh
-ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397548"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854906"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
-Vzhledem k tomu, že App Service je víceklientské služby místo nasazení, používá se v příchozím požadavku Hlavička hostitele k vyřešení požadavku na správný koncový bod služby App Service. Název DNS aplikace, který je zase název DNS přidružený ke službě Application Gateway front-App Service, se obvykle liší od názvu domény služby back-end App Service. Proto Hlavička hostitele v původní žádosti přijatá aplikační bránou není stejná jako název hostitele back-end služby. Z tohoto důvodu se v případě, že Hlavička hostitele v požadavku od služby Application Gateway do back-endu změní na název hostitele back-end služby, nedokáže aplikace back-end s více klienty přeložit požadavek na správný koncový bod.
+Vzhledem k tomu, že je App Service víceklientská služba, a ne služba s vyhrazeným nasazením, využívá k překladu požadavku na správný koncový bod služby App Service hlavičku hostitele v příchozím požadavku. Název DNS aplikace, který je zase název DNS přidružený ke službě Application Gateway front-App Service, se obvykle liší od názvu domény služby back-end App Service. Proto Hlavička hostitele v původní žádosti přijatá aplikační bránou není stejná jako název hostitele back-end služby. Z tohoto důvodu se v případě, že Hlavička hostitele v požadavku od služby Application Gateway do back-endu změní na název hostitele back-end služby, nedokáže aplikace back-end s více klienty přeložit požadavek na správný koncový bod.
 
 Application Gateway poskytuje přepínač s názvem, `Pick host name from backend target` který Přepisuje hlavičku hostitele v žádosti názvem hostitele back-endu při směrování požadavku z Application Gateway do back-endu. Tato schopnost povoluje podporu pro back-endové back-endové služby, jako je Azure App Service a API Management. 
 
@@ -26,7 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 - Upravte back-end fond a přidejte do něj App Service.
 - Upravit nastavení HTTP s povoleným přepínačem vybrat hostitele
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Application Gateway: Vytvořte Aplikační bránu bez cíle back-end fondu. Další informace najdete v tématu [rychlý Start: směrování webového provozu pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md)
 

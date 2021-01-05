@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 130cd643856b38471eac6d6869cdc1ed8b0bcd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499148"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857371"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
@@ -67,7 +67,7 @@ Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Klik
 
 ## <a name="view-logging-data"></a>Zobrazit data protokolování
 
-Data protokolování jsou k dispozici ke stažení v části Podrobnosti o **koncovém bodu**  >  **Details**.
+Data protokolování jsou k dispozici pro export, pokud přejdete na stránku koncového bodu v části **nasazení**.
 > [!NOTE]
 >Data protokolování jsou k dispozici po dobu 30 dnů v úložišti vlastněných společností Microsoft. Bude odebrána později. Pokud je účet úložiště ve vlastnictví zákazníka propojený s předplatným Cognitive Services, data protokolování se automaticky neodstraní.
 
@@ -75,7 +75,7 @@ Data protokolování jsou k dispozici ke stažení v části Podrobnosti o **kon
 
 * [Naučte se používat vlastní model.](how-to-specify-source-language.md)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)

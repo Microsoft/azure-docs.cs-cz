@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317550"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857422"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -62,9 +62,9 @@ V definici podmínky pravidla je nastaven časový rozsah. V pracovních prostor
 
 Podobně jako v Log Analytics časový rozsah omezuje data dotazu na zadaný rozsah. I v případě, že se v dotazu **používá příkaz,** bude platit časový rozsah.
 
-Například dotaz vyhledává 60 minut, pokud je časový rozsah 60 minut, a to i v případě, že text obsahuje hodnotu **před (1d)**. Časový rozsah a filtrování času dotazu se musí shodovat. V ukázkovém případě bude změna **Period**  /  **rozsahu času dotazu přepisu** období na jeden den fungovat podle očekávání.
+Například dotaz vyhledává 60 minut, pokud je časový rozsah 60 minut, a to i v případě, že text obsahuje hodnotu **před (1d)**. Časový rozsah a filtrování času dotazu se musí shodovat. V ukázkovém případě bude změna   /  **rozsahu času dotazu přepisu** období na jeden den fungovat podle očekávání.
 
-### <a name="measure"></a>Measure
+### <a name="measure"></a>Míra
 
 Výstrahy protokolu zapínají protokol na číselné hodnoty, které lze vyhodnotit. Můžete změřit dvě různé věci:
 
@@ -102,7 +102,7 @@ U pracovních prostorů a Application Insights se říká na **základě** **mě
 
 ### <a name="aggregation-type"></a>Typ agregace
 
-Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Příklad:
+Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Například:
 - **Count** vrátí počet záznamů v dotazu.
 - Funkce **Average** Vrátí průměrnou hodnotu definování [**členitosti**](#aggregation-granularity) sloupce měr.
 
@@ -120,6 +120,8 @@ V pracovních prostorech a Application Insights je podporováno pouze v typu mí
 ### <a name="split-by-alert-dimensions"></a>Rozdělit podle dimenzí výstrahy
 
 Oddělte výstrahy podle číselných nebo řetězcových sloupců na samostatné výstrahy seskupením do jedinečných kombinací. Když vytváříte výstrahy orientované na prostředky ve velkém měřítku (předplatné nebo obor skupiny prostředků), můžete rozdělit podle sloupce Azure Resource ID. Rozdělením do sloupce Azure Resource ID se změní cíl výstrahy na zadaný prostředek.
+
+Rozdělení podle sloupce ID prostředku Azure se doporučuje, když chcete monitorovat stejnou podmínku u více prostředků Azure. Například monitorování všech virtuálních počítačů s využitím procesoru nad 80%. Můžete se také rozhodnout, že nebudete rozděleni, pokud chcete podmínku na více prostředků v oboru, jako je například monitorování, že nejméně pět počítačů v oboru skupiny prostředků má využití CPU více než 80%.
 
 V pracovních prostorech a Application Insights je podporováno pouze v typu míry **měření metrik** . Pole se nazývá **agregace**. Je omezeno na tři sloupce. Více než tři skupiny podle sloupců v dotazu by mohly vést k neočekávaným výsledkům. Ve všech ostatních typech prostředků je nakonfigurována v části **rozdělit podle dimenzí** podmínky (omezeno na šest rozdělení).
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353693"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845564"
 ---
 # <a name="form-recognizer-layout-service"></a>Služba rozložení pro rozpoznávání formulářů
 
@@ -89,8 +89,7 @@ Rozložení také extrahuje značky výběru z dokumentů. Extrahované značky 
 ## <a name="next-steps"></a>Další kroky
 
 - Vyzkoušejte si vlastní extrakci rozložení pomocí [ukázkového uživatelského rozhraní pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
-- Dokončete [rychlý Start klientské knihovny pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte s extrakcí rozložení v jazyce podle vašeho výběru.
-- Nebo použijte rychlý Úvod k extrakci [dat rozložení](./QuickStarts/python-layout.md) k implementaci extrakce dat rozložení pomocí Pythonu a REST API.
+- Dokončete [rychlé zprovoznění pro rozpoznávání formulářů](quickstarts/client-library.md) , které vám pomohou začít s extrakcí rozložení v jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

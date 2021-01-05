@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021567"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845457"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -30,12 +30,12 @@ LUIS rozumí projevy v následujících jazycích:
 
 | Jazyk |Národní prostředí  |  Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
-| Angličtina (Spojené státy) |`en-US` | ✔ | ✔  |✔|✔|
 | Arabština (Preview – moderní standardní arabština) |`ar-AR`|-|-|-|-|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Nizozemština |`nl-NL` |✔|-|-|✔|
-| francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
+| Angličtina (Spojené státy) |`en-US` | ✔ | ✔  |✔|✔|
 | Francouzština (Kanada) |`fr-CA` |-|-|-|✔|
+| francouzština (Francie) |`fr-FR` |✔| ✔ |✔ |✔|
 | Němčina |`de-DE` |✔| ✔ |✔ |✔|
 | Gudžarátština | `gu-IN`|-|-|-|-|
 | Hindština | `hi-IN`|-|✔|-|-|
@@ -44,8 +44,8 @@ LUIS rozumí projevy v následujících jazycích:
 | Korejština |`ko-KR` |✔|-|-|Jenom klíčová fráze|
 | Maráthština | `mr-IN`|-|-|-|-|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |Ne všechny dílčí kultury|
-| Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|-|✔|✔|
+| Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Tamilština | `ta-IN`|-|-|-|-|
 | Telugština | `te-IN`|-|-|-|-|
 | Turečtina | `tr-TR` |✔|✔|-|Jenom mínění|

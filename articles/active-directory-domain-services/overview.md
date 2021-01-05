@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2020
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 99a207810f51949b0da0e78b1cb0e0a7f8bc95e3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027335"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861513"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 
@@ -41,7 +41,7 @@ V hybridním prostředí s místním prostředím služba AD DS [Azure AD Connec
 
 ![Synchronizace v Azure AD Domain Services s Azure AD a místními služba AD DS pomocí služby AD Connect](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-Azure služba AD DS replikuje informace o identitě z Azure AD, takže funguje s klienty Azure AD, které jsou jenom pro Cloud, nebo synchronizované s místním (služba AD DS prostředím). Pro obě prostředí existují stejné sady funkcí Azure služba AD DS.
+Azure služba AD DS replikuje informace o identitě z Azure AD, takže funguje s klienty Azure AD, které jsou jenom pro Cloud, nebo synchronizované s místním prostředím služba AD DS. Pro obě prostředí existují stejné sady funkcí Azure služba AD DS.
 
 * Pokud máte existující místní služba AD DS prostředí, můžete synchronizovat informace o uživatelském účtu a zajistit tak konzistentní identitu pro uživatele. Další informace najdete v tématu [jak se objekty a přihlašovací údaje synchronizují ve spravované doméně][synchronization].
 * Pro cloudová prostředí nepotřebujete tradiční místní služba AD DS prostředí, abyste mohli používat centralizované služby identit Azure služba AD DS.

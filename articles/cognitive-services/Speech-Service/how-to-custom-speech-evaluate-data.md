@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025646"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857354"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnocení a vylepšení přesnosti služby Custom Speech
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak změřit a zdokonalit přesnost modelů řeči
 
 ## <a name="evaluate-custom-speech-accuracy"></a>Vyhodnocení přesnosti služby Custom Speech
 
-Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* (WER). Služba WER počítá počet nesprávných slov zjištěných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v rámci přepisu popisku (viz obrázek N). Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
+Standardní hodnota pro měření přesnosti modelu je [počet chyb v aplikaci](https://en.wikipedia.org/wiki/Word_error_rate) (WER). Služba WER počítá počet nesprávných slov zjištěných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v rámci přepisu popisku (viz obrázek N). Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
 
 ![Vzorec WER](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -36,6 +36,8 @@ Nesprávně identifikovaná slova spadají do tří kategorií:
 Tady je příklad:
 
 ![Příklad nesprávně identifikovaných slov](./media/custom-speech/custom-speech-dis-words.png)
+
+Pokud chcete místní výsledky služby WER replikovat, můžete použít sclite z [SCTK](https://github.com/usnistgov/SCTK).
 
 ## <a name="resolve-errors-and-improve-wer"></a>Řešení chyb a vylepšení WER
 
@@ -96,7 +98,7 @@ Následující části popisují, jak může každý druh dalších školicích 
 
 ### <a name="add-related-text-sentences"></a>Přidat související textové věty
 
-Další související textové věty mohou primárně snižovat chyby při nahrazování související s chybnou rozpoznáním běžných slov a slov specifických pro doménu jejich zobrazením v kontextu. Slova specifická pro doménu můžou být neobvyklá nebo vytvořená slova, ale jejich výslovnost musí být jednoduše rozpoznaná.
+Při učení nového vlastního modelu Začněte přidáním souvisejícího textu, který vylepšuje rozpoznávání slov a frází specifických pro doménu. Související textové věty mohou primárně snižovat chyby při nahrazování související s nerozpoznáním běžných slov a slov specifických pro doménu jejich zobrazením v kontextu. Slova specifická pro doménu můžou být neobvyklá nebo vytvořená slova, ale jejich výslovnost musí být jednoduše rozpoznaná.
 
 > [!NOTE]
 > Nepoužívejte související textové věty, které zahrnují šum, například nerozpoznatelné znaky nebo slova.
@@ -111,6 +113,12 @@ Vezměte v úvahu tyto podrobnosti:
 * Vyhněte se ukázkám, které obsahují chyby přepisu, ale zahrnují různorodost kvality zvuku.
 * Vyhněte se vět, které nesouvisí s vaší doménou problému. Nesouvisející věty můžou poškodit váš model.
 * V případě, že se kvalita přepisů liší, je možné duplikovat nevyhovující věty (například Skvělé přepisy, které obsahují klíčové fráze) ke zvýšení jejich váhy.
+* Služba Speech automaticky použije přepisy k vylepšení rozpoznávání slov specifických pro doménu a frází, jako kdyby byly přidány jako související text.
+* Školení se zvukem přináší nejvíc výhod, pokud je zvuk také obtížné pochopit pro lidi. Ve většině případů byste měli začít školení jenom pomocí souvisejícího textu.
+* Dokončení školicí operace může trvat několik dní. Pro zlepšení rychlosti školení nezapomeňte vytvořit předplatné služby Speech Service v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+
+> [!NOTE]
+> Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat.
 
 ### <a name="add-new-words-with-pronunciation"></a>Přidat nová slova s výslovností
 

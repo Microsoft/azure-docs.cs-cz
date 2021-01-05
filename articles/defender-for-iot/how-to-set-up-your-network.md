@@ -4,15 +4,15 @@ description: Seznamte se s architekturou řešení, přípravou sítě, požadav
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839228"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861970"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -54,7 +54,7 @@ Zaznamenejte informace o lokalitě, jako například:
 
 - Pracovní stanice konfigurace.
 
-- Certifikáty SSL (volitelné).
+- Certifikáty SSL (volitelné, ale doporučené).
 
 - Ověřování SMTP (volitelné). Chcete-li použít server SMTP s ověřováním, připravte pověření požadovaná pro váš server.
 
@@ -569,7 +569,7 @@ Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístěn�
     > [!NOTE]
     > Program Defender pro zařízení IoT by měl být připojen k přepínači nižší úrovně, který prohlíží přenos mezi porty na přepínači.  
 
-2. Zadejte přibližný počet zařízení v sítích (volitelné).
+2. Zadejte přibližný počet síťových zařízení, která se budou monitorovat. Tyto informace budete potřebovat při připojování předplatného k portálu Azure Defender pro IoT Portal. Během procesu připojování budete vyzváni k zadání počtu zařízení v přírůstcích po 1000.
 
 3. Zadejte seznam podsítí pro produkční sítě a popis (volitelné). 
 

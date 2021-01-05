@@ -3,12 +3,12 @@ title: Vzorce úlohy replikace událostí – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje podrobné pokyny pro implementaci konkrétních vzorů úloh replikace událostí.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803982"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861379"
 ---
 # <a name="event-replication-tasks-patterns"></a>Vzorce pro úlohy replikace událostí
 
@@ -20,7 +20,7 @@ V tomto článku najdete podrobné pokyny k implementaci pro několik vzorů zv�
 
 Vzor replikace kopíruje události z jednoho centra událostí do následujícího nebo z centra událostí do jiného cílového umístění, jako je například fronta Service Bus. Události jsou předávány bez provedení jakýchkoli úprav datové části události.
 
-Implementace tohoto modelu je pokrytá [replikací událostí mezi Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) a [replikací událostí mezi Event Hubs a Service Busmi](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) ukázkami.
+Implementace tohoto modelu je pokrytá [replikací událostí mezi Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) a [replikací událostí mezi Event Hubs a Service Busmi](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) ukázkami a v kurzu [použití Apache Kafka nástroje MirrorMaker s Event Hubsm](event-hubs-kafka-mirror-maker-tutorial.md) pro konkrétní případ replikace dat z Apache Kafka Broker do Event Hubs.
 
 ### <a name="streams-and-order-preservation"></a>Uchování datových proudů a objednávek
 

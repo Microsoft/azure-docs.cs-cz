@@ -1,15 +1,15 @@
 ---
 title: Přehled infrastruktury BareMetal ve verzi Preview v Azure
-description: Přehled nasazení infrastruktury BareMetal v Azure
+description: Přehled infrastruktury BareMetal v Azure
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 12/31/2020
-ms.openlocfilehash: db974d9260344d1f6050235bb2a9fbaa0420659b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829144"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860989"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Co je BareMetal infrastruktura ve verzi Preview v Azure?
 
@@ -25,7 +25,7 @@ K dispozici je infrastruktura BareMetal pro úlohy specializované na obecné ú
 - Středojižní USA
 
 >[!NOTE]
->**Rev 4,2** je nejnovější BareMetal infrastruktura, která používá existující architekturu Rev 4.  Rev 4 poskytuje užší blízkost hostitelům virtuálních počítačů Azure a snižuje latenci mezi virtuálními počítači Azure a jednotkami instancí BareMetal. Pomocí Azure Portal můžete přistupovat k instancím služby BareMetal a spravovat je. 
+>**Rev 4,2** je nejnovější přepálená infrastruktura BareMetal s využitím existující architektury Rev 4.  Rev 4 poskytuje užší blízkost pro hostitele virtuálních počítačů Azure. Má významná vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami instancí BareMetal nasazenými v razítkech a na řádcích Rev 4.  Pomocí Azure Portal můžete přistupovat k instancím služby BareMetal a spravovat je. 
 
 ## <a name="support"></a>Podpora
 Infrastruktura BareMetal je ISO 27001, ISO 27017, SOC 1 a SOC 2 vyhovující.  Používá také model BYOL (Přineste si vlastní licenci): operační systém, specializované úlohy a aplikace třetích stran.  
@@ -35,13 +35,13 @@ Jakmile obdržíte kořenový přístup a úplnou kontrolu, předpokládáte zod
 - Licencování, zabezpečení a podpora pro operační systém a software třetích stran
 
 Společnost Microsoft zodpovídá za:
-- Poskytování certifikovaného hardwaru pro specializované úlohy 
+- Poskytování hardwaru pro specializované úlohy 
 - Zřizování operačního systému
 
 :::image type="content" source="media/baremetal-support-model.png" alt-text="Model podpory infrastruktury BareMetal" border="false":::
 
 ## <a name="compute"></a>Compute
-Infrastruktura BareMetal nabízí několik SKU certifikovaných pro specializované úlohy. Dostupné SKU jsou dostupné v rozsahu od menšího počítače se dvěma sokety až po systém se 24 sokety. Pro specializované úlohy použijte certifikované SKU specifické pro úlohu.
+Infrastruktura BareMetal nabízí několik SKU pro specializované úlohy. Dostupné SKU jsou dostupné v rozsahu od menšího počítače se dvěma sokety až po systém se 24 sokety. Použijte skladové jednotky specifické pro úlohy pro specializované úlohy.
 
 Samotné razítko instance BareMetal kombinuje následující komponenty:
 
@@ -72,13 +72,13 @@ Dostupné verze operačních systémů Linux:
    - SLES 15 SP1
 
 ## <a name="storage"></a>Úložiště
-Instance BareMetal založené na konkrétním typu SKU přicházejí s předdefinovaným úložištěm NFS na základě konkrétního typu úlohy. Když zřizujete BareMetal, můžete zřídit další úložiště na základě odhadovaného nárůstu tím, že odešlete žádost o podporu. Veškeré úložiště obsahuje disk s veškerým bliknutím v revizi 4,2 s podporou pro NFSv3 a názvů NFSv4. K dispozici bude novější revize 4,5 NVMe SSD. Další informace o velikosti úložiště najdete v části [BareMetal úlohy typ](../../../virtual-machines/workloads/sap/get-started.md) .
+Instance BareMetal založené na konkrétním typu SKU přicházejí s předdefinovaným úložištěm NFS pro konkrétní typ úlohy. Když zřizujete BareMetal, můžete zřídit další úložiště na základě odhadovaného nárůstu tím, že odešlete žádost o podporu. Veškeré úložiště obsahuje disk s veškerým bliknutím v revizi 4,2 s podporou pro NFSv3 a názvů NFSv4. K dispozici bude novější revize 4,5 NVMe SSD. Další informace o velikosti úložiště najdete v části [BareMetal úlohy typ](../../../virtual-machines/workloads/sap/get-started.md) .
 
 >[!NOTE]
->Úložiště, které se používá pro BareMetal, splňuje požadavky na zabezpečení FIPS 140-2, které ve výchozím nastavení nabízí šifrování ve zbývající době. Data jsou bezpečně uložená na discích.
+>Úložiště používané pro BareMetal splňuje požadavky [140-2 publikace standardu FIPS (Federal Information Processing Standard)](/microsoft-365/compliance/offering-fips-140-2) . ve výchozím nastavení nabízí šifrování v klidovém stavu. Data jsou bezpečně uložená na discích.
 
 ## <a name="networking"></a>Sítě
-Architektura síťových služeb Azure je klíčovou součástí úspěšného nasazení specializovaných úloh v instancích BareMetal. Je nejspíš to, že ne všechny systémy IT se v Azure už nacházejí. Azure nabízí síťovou technologii, aby Azure vypadala jako virtuální datová centra pro vaše místní nasazení softwaru. Pro instance BareMetal jsou potřebné funkce sítě Azure:
+Architektura síťových služeb Azure je klíčovou součástí úspěšného nasazení specializovaných úloh v instancích BareMetal. Je nejspíš to, že ne všechny systémy IT jsou umístěné v Azure už. Azure nabízí síťovou technologii, aby Azure vypadala jako virtuální datová centra pro vaše místní nasazení softwaru. Pro instance BareMetal jsou potřebné funkce sítě Azure:
 
 - Virtuální sítě Azure jsou připojené k okruhu ExpressRoute, který se připojuje k vašim prostředkům v místní síti.
 - Okruh ExpressRoute, který se připojuje místně k Azure, by měl mít minimální šířku pásma 1 GB/s nebo vyšší.
@@ -91,10 +91,10 @@ Instance BareMetal se zřídí v rámci rozsahu IP adres serveru virtuální sí
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" alt-text="Diagram infrastruktury Azure BareMetal" lightbox="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" border="false":::
 
 Zobrazená architektura je rozdělená na tři části:
-- **Vlevo:** Zobrazuje místní infrastrukturu zákazníka, která spouští různé aplikace, připojení prostřednictvím partnerského nebo místního hraničního směrovače, jako je Equinix. Další informace najdete v tématu [poskytovatelé a umístění připojení: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
-- **Vycentrovat:** Zobrazuje [ExpressRoute](../../../expressroute/expressroute-introduction.md) zřízené pomocí předplatného Azure, které nabízí připojení k síti Azure Edge.
-- **Vpravo:** Zobrazuje Azure IaaS a v tomto případě použití virtuálních počítačů k hostování aplikací, které jsou zřízené v rámci vaší virtuální sítě Azure.
-- **Dolní:** Ukazuje použití brány ExpressRoute povolené s [ExpressRoute FastPath](../../../expressroute/about-fastpath.md) pro připojení BareMetal, které nabízí nízkou latenci.   
+- **Left:** zobrazuje místní infrastrukturu zákazníka, která spouští různé aplikace, připojení prostřednictvím partnerského nebo místního hraničního směrovače, jako je Equinix. Další informace najdete v tématu [poskytovatelé a umístění připojení: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
+- **Center:** zobrazuje [ExpressRoute](../../../expressroute/expressroute-introduction.md) zřízené pomocí předplatného Azure, které nabízí připojení k síti Azure Edge.
+- **Right:** zobrazuje Azure IaaS a v tomto případě použití virtuálních počítačů k hostování aplikací, které jsou zřízené v rámci vaší virtuální sítě Azure.
+- **Dole:** zobrazuje použití brány ExpressRoute povolené s [ExpressRoute FastPath](../../../expressroute/about-fastpath.md) pro připojení BareMetal, které nabízí nízkou latenci.   
    >[!TIP]
    >Pro zajištění podpory by měla být brána ExpressRoute UltraPerformance.  Další informace najdete v tématu [informace o branách virtuální sítě ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md).
 

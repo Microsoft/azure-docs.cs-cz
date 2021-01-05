@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022356"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858568"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -169,7 +169,7 @@ Můžete číst z Azure SQL Database pomocí tabulky nebo dotazu SQL. Pokud spou
 
 ### <a name="azure-synapse-analytics-sources"></a>Zdroje analýzy Azure synapse
 
-Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse pomocí ```Polybase``` , což významně zvyšuje výkon při čtení. Povolení ```Polybase``` vyžaduje, abyste v nastavení aktivity toku dat zadali BLOB Storage služby Azure nebo pracovní umístění Azure Data Lake Storage Gen2.
+Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse pomocí ```Staging``` , což významně zvyšuje výkon při čtení. Povolení ```Staging``` vyžaduje, abyste v nastavení aktivity toku dat zadali BLOB Storage služby Azure nebo pracovní umístění Azure Data Lake Storage Gen2.
 
 ![Zapnout pracovní režim](media/data-flow/enable-staging.png "Zapnout pracovní režim")
 
@@ -216,9 +216,9 @@ Naplánujte změnu velikosti zdroje a jímky Azure SQL DB a DW před spuštění
 
 ### <a name="azure-synapse-analytics-sinks"></a>Jímky Azure synapse Analytics
 
-Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. Díky tomu může ADF zapisovat pomocí [základu](/sql/relational-databases/polybase/polybase-guide) , který efektivně načte data do hromadného zatížení. Když použijete základnu, budete muset odkazovat na Azure Data Lake Storage Gen2 nebo účet Azure Blob Storage pro přípravu dat.
+Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. To umožňuje ADF zapisovat pomocí [příkazu SQL Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) , který efektivně načítá data hromadně. Při použití přípravy budete muset pro přípravu dat na účet Azure Data Lake Storage Gen2 nebo Azure Blob Storage.
 
-Kromě základu se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
+Kromě přípravy se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
 
 ### <a name="file-based-sinks"></a>Jímky založené na souborech 
 
@@ -309,6 +309,14 @@ Spuštění úloh postupně bude trvat delší dobu, než se provede celý konec
 ### <a name="overloading-a-single-data-flow"></a>Přetížení jednoho toku dat
 
 Pokud vložíte veškerou logiku do jediného toku dat, ADF spustí v rámci jedné instance Spark celou úlohu. I když se to může zdát jako způsob, jak snížit náklady, kombinuje dohromady různé logické toky a může být obtížné monitorovat a ladit. V případě selhání jedné součásti dojde také k selhání všech ostatních částí úlohy. Tým Azure Data Factory doporučuje organizovat toky dat nezávisle na obchodní logice. Pokud se tok dat příliš rozsáhlý, rozdělí se na samostatné komponenty a zjednoduší se monitorování a ladění. I když neexistují žádné pevné omezení počtu transformací v toku dat, což má příliš mnoho, bude úloha složitá.
+
+### <a name="execute-sinks-in-parallel"></a>Paralelní spouštění jímky
+
+Výchozím chováním jímky toku dat je spuštění každé jímky postupně, sériového způsobu a selhání toku dat, když dojde k chybě v jímky. Kromě toho jsou všechny jímky nastavené na stejnou skupinu, pokud nepřejdete do vlastností toku dat a nakonfigurujete jiné priority pro jímky.
+
+Datové toky umožňují seskupovat jímky do skupin z karty vlastnosti toku dat v Návrháři uživatelského rozhraní. Můžete nastavovat pořadí spouštění vašich umyvadel i seskupovat jímky pomocí stejného čísla skupiny. Aby bylo možné spravovat skupiny, můžete položit automatickým ADF, aby spouštěla jímky ve stejné skupině, aby běžela paralelně.
+
+Na aktivitě spustit tok dat v kanálu v části vlastnosti jímky je možnost zapnout paralelní načítání jímky. Pokud povolíte možnost spustit paralelně, dáváte jim pokyn k zápisu toků dat do propojených umyvadel současně, nikoli sekvenčním způsobem. Aby bylo možné využít paralelní možnost, musí být jímky seskupeny dohromady a připojeny ke stejnému datovému proudu prostřednictvím nové větve nebo podmíněného rozdělení.
 
 ## <a name="next-steps"></a>Další kroky
 

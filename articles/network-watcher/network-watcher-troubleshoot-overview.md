@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960321"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858633"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
@@ -57,8 +57,8 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | PlatformInActive | Došlo k problému s platformou. | Ne|
 | ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Tato chyba je jenom upozornění.| Ne|
-| ConnectionsNotConnected | Připojení nejsou připojena. Tato chyba je jenom upozornění.| Yes|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95%. | Yes |
+| ConnectionsNotConnected | Připojení nejsou připojena. Tato chyba je jenom upozornění.| Ano|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95%. | Ano |
 
 ### <a name="connection"></a>Připojení
 
@@ -71,12 +71,12 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | Ne |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
-| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
-| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
-| Authentication | Neshoda předsdíleného klíče | Yes|
-| PeerReachability | Partnerská brána není dostupná. | Yes|
-| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Yes|
-| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Yes|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
+| Ověřování | Neshoda předsdíleného klíče | Ano|
+| PeerReachability | Partnerská brána není dostupná. | Ano|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
+| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="supported-gateway-types"></a>Podporované typy bran
 
@@ -207,6 +207,9 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>Požadavky 
+* Chyba CLI: Pokud ke spuštění příkazu používáte Azure CLI, VPN Gateway a účet úložiště musí být ve stejné skupině prostředků. Zákazníci s prostředky v různých skupinách prostředků můžou místo toho použít PowerShell nebo Azure Portal.  
 
 ## <a name="next-steps"></a>Další kroky
 

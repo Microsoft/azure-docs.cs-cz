@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602440"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845581"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
@@ -34,7 +34,7 @@ Chcete-li si vyzkoušet službu pro rozpoznávání formulářů, použijte nás
 > [!div class="nextstepaction"]
 > [Vyzkoušet předem připravené modely](https://fott-preview.azurewebsites.net/)
 
-Budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a Recognzier koncový bod a klíč [formuláře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) a klíč k vyzkoušení služby pro rozpoznávání formulářů. 
+Budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services)) a koncový bod a klíč [prostředku pro rozpoznávání formulářů](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) pro vyzkoušení služby fakturace pro rozpoznávání formulářů. 
 
 ![Příklad analyzované faktury](./media/analyze-invoice.png)
 
@@ -74,14 +74,14 @@ Výstup JSON má 3 části:
 
 Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uvedená pole extrahovaná z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](./media/sample-invoice.jpg)).  
 
-|Název| Typ | Description | Text | Hodnota (standardní výstup) |
+|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | řetězec | Fakturovaná zákazník | Společnost Microsoft Corp |  |
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
 | PurchaseOrder | řetězec | Referenční číslo nákupní objednávky | PO-3333 | |  |
 | InvoiceId | řetězec | ID pro tuto konkrétní fakturu (často se jedná o číslo faktury) | INV-100 | |  |
-| InvoiceDate | datum | Datum vydání faktury | 11/15/2019 | 
-| DueDate | datum | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Datum vydání faktury | 11/15/2019 | 
+| DueDate | date | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | Dodavatel | řetězec | Dodavatel, který vytvořil tuto fakturu | SPOLEČNOST CONTOSO LTD. | |
 | VendorAddress | řetězec | Poštovní adresa dodavatele | 123 456th St. New York, NY, 10001 | |
 | VendorAddressRecipient | řetězec | Název přidružený k VendorAddress | Ústředí společnosti Contoso | |
@@ -99,16 +99,16 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 | ServiceAddressRecipient | řetězec | Název přidružený k ServiceAddress | Služby společnosti Microsoft | |
 | RemittanceAddress | řetězec | Explicitní úhrada nebo platební adresa pro zákazníka | 123 úhrada St New York, NY, 10001 |  |
 | RemittanceAddressRecipient | řetězec | Název přidružený k RemittanceAddress | Fakturace společnosti Contoso |  |
-| ServiceStartDate | datum | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
-| ServiceEndDate | datum | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | číslo | Explicitní dřív neplacený zůstatek | 500,00 $ | 500 |
+| ServiceStartDate | date | První datum období služby (například období služby faktura za nástroj) | 14. 10. 2019 | 2019-10-14 |
+| ServiceEndDate | date | Koncové datum období služby (například období služby faktura za nástroj) | 11/14/2019 | 2019-11-14 |
+| PreviousUnpaidBalance | číslo | Explicitní dřív neplacený zůstatek | $500,00 | 500 |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Vyzkoušejte si vlastní faktury a ukázky v [ukázkovém uživatelském rozhraní pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/).
-- Dokončete [rychlý Start klientské knihovny pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování faktury pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
-- Nebo použijte rychlý Start k [extrakci dat faktury](./quickstarts/python-invoices.md) k implementaci extrakce dat faktury pomocí Pythonu a REST API.
+- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování faktur pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+
 ## <a name="see-also"></a>Viz také
 
 * [Co je služba Rozpoznávání formulářů?](./overview.md)

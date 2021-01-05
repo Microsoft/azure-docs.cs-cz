@@ -1,63 +1,86 @@
 ---
 title: Přehled služby
-description: Přečtěte si další informace o programu Defender pro funkce a služby IoT a zjistěte, jak Azure Defender pro IoT zajišťuje komplexní zabezpečení IoT.
+description: Přečtěte si další informace o programu Defender pro funkce a služby IoT a zjistěte, jak Defender for IoT zajišťuje komplexní zabezpečení IoT.
 services: defender-for-iot
-ms.service: defender-for-iot
+ms.service: azure
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
-editor: ''
+ms.author: shhazam
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: 1d039208ba99ba11cb562f82301a5bb3c02c6603
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 12/09/2020
+ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089991"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845404"
 ---
-# <a name="introducing-azure-defender-for-iot-preview"></a>Představujeme Azure Defender pro IoT Preview
+# <a name="welcome-to-azure-defender-for-iot"></a>Vítá vás Azure Defender pro IoT
 
-> [!IMPORTANT]
-> Azure Defender pro IoT je momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Sítě provozní technologie (OT) využívají mnoho nejdůležitějších aspektů naší společnosti. Mnohé z těchto technologií ale nebyly navržené s ohledem na zabezpečení a nelze je chránit pomocí tradičních ovládacích prvků zabezpečení IT. Internet věcí (IoT) navíc umožňuje novou vlnu inovací s miliardami připojených zařízení, což zvyšuje míru útoku a riziko.  
 
-Jelikož podniky implementují digitální transformaci pro lepší efektivitu a produktivitu, Rady a týmy pro správu jsou stále větší obavy o odpovědnost a finanční rizika vyplývající z nasazení obrovského počtu nespravovaných zařízení Internet věcí (IoT) a provozních technologií ().
-Aktéri hrozeb, které cílí na tento rozšířený způsob útoku, můžou způsobit značný dopad na podnik, včetně bezpečnostních a environmentálních incidentů, nákladného výpadku provozu a krádeže citlivých duševních vlastnictví.
+Azure Defender pro IoT je jednotné řešení zabezpečení, které slouží k identifikaci prostředků, ohrožení zabezpečení a hrozeb v IoT/OT. Umožňuje zabezpečit celé prostředí IoT/OT, bez ohledu na to, jestli potřebujete chránit existující zařízení IoT/OT, nebo můžete vytvořit zabezpečení pro nové inovace IoT.  
 
-Starší zařízení IoT a, která nepodporují agenty a jsou často Nepodporovaná, nesprávně nakonfigurovaná a neviditelná pro IT týmy – díky tomu mají měkké cíle pro aktéry hrozeb, kteří se budou do firemních sítí lépe ponořit. 
+Azure Defender pro IoT nabízí dvě sady možností, které vyhovují potřebám vašeho prostředí.
 
-Tradiční nástroje pro monitorování zabezpečení sítě vyvinuté pro podnikové sítě IT nejsou schopné tyto prostředí řešit, protože nemají hlubokou znalosti o specializovaných protokolech, zařízeních a chování počítače-počítač (M2M) nalezených v prostředích IoT a OT.
+V případě organizací pro koncové uživatele s prostředími IoT/OT poskytuje Azure Defender pro IoT bez agentů monitorování síťové vrstvy, které:
 
-Azure Defender pro IoT je holistický řešení, které nepřetržitě zjišťuje, sleduje a spravuje IoT a hrozby, rizika a ohrožení zabezpečení ve všech zařízeních IoT a OT, ať už jde o novější zařízení spravovaná prostřednictvím Azure IoT Hub nebo starší nespravovaná zařízení. Azure Defender pro IoT pomáhá urychlit reakci na incidenty, nabízí přehled o provozních problémech a zjednodušuje ochranu hybridních úloh tím, že poskytuje sjednocené IoT a nabízí přehled a kontrolu.
+- Dá se rychle nasadit.
+- Snadno se integruje s různými SOC nástroji pro průmyslová zařízení a nástroje.
+- Má nulový dopad na výkon nebo stabilitu sítě IoT/OT. 
 
-Toto řešení holistický řeší případy použití klíčů, které zahrnují:
-- Automatické zjišťování prostředků pro všechna zařízení IoT a OT
-- Nepřetržitá IoT a rizika a Správa ohrožení zabezpečení
-- IoT a hrozba hrozeb a reakce na incidenty
-- Provozní efektivita 
+Platformu je možné nasadit zcela místně nebo v prostředích připojených k Azure a hybridním prostředí.  
 
-Azure Defender pro IoT je jednotné řešení pro IoT a zabezpečení napříč všemi vašimi zařízeními. Poskytuje nástroje pro sestavování zabezpečení pro nové IoT a zařízení spravovaná prostřednictvím Azure IoT Hub a také možnosti monitorování síťové vrstvy bez agentů, které potřebujete k ochraně nespravovaných IoT a prostředků.
+V případě tvůrců zařízení IoT nabízí Azure Defender pro IoT také odlehčeného mikroagenta, který podporuje standardní operační systémy IoT, jako je Linux a RTO. Tento odlehčený Agent pomáhá zajistit, aby se zabezpečení do vašich iniciativ IoT/OT z Edge do cloudu zabudovaly. Obsahuje zdrojový kód pro flexibilní a přizpůsobitelné nasazení. 
 
-## <a name="unified-visibility-and-control"></a>Sjednocená viditelnost a řízení
+## <a name="agentless-solution-for-organizations"></a>Řešení bez agentů pro organizace 
 
-Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami, včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení.
+Starší zařízení IoT a OT nepodporují agenty a jsou často neopravované, nesprávně nakonfigurované a neviditelná pro IT týmy. Tyto kvality usnadňují vytváření cílů pro aktéry hrozeb, kteří se chtějí lépe ponořit v podnikových sítích. 
 
-## <a name="adaptive-threat-prevention"></a>Prevence adaptivních hrozeb
+Tradiční nástroje pro monitorování zabezpečení sítě vyvinuté pro podnikové sítě IT nemůžou tato prostředí řešit, protože nemají hlubokou znalosti o specializovaných protokolech, zařízeních a chování počítače-počítač (M2M) nalezené v prostředích IoT a OT. 
 
-Použijte Defender pro IoT k nepřetržitému monitorování zabezpečení počítačů, sítí a služeb Azure. Vyberte si ze stovek integrovaných posouzení zabezpečení nebo si vytvořte vlastní v centrálním Defenderu pro IoT Hub řídicí panel. Optimalizujte nastavení zabezpečení a Vylepšete Vaše skóre zabezpečení s užitečnými doporučeními napříč virtuálními počítači, sítěmi, aplikacemi a daty. Díky nově přidaným funkcím IoT teď můžete omezit prostor pro útoky na vaše řešení Azure IoT a vyřešit problémy dřív, než je budete moct zneužít.
+Možnosti monitorování bez agentů v Azure Defenderu pro IoT poskytují pro tyto sítě přehled a zabezpečení. Pro tato prostředí pak můžete řešit klíčové obavy. 
 
-## <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
+### <a name="automatic-device-discovery"></a>Automatické zjišťování zařízení  
 
-Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte řešení IoT pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Pomocí pasivního monitorování sítě bez agentů získáte úplný inventář všech prostředků IoT/OT, jejich podrobnosti a způsob jejich komunikace s nulovým dopadem na síť IoT/OT.  
 
-## <a name="next-steps"></a>Další kroky
+### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>Proaktivní přehled o rizikech a ohroženích zabezpečení
+ 
+Identifikujte rizika a ohrožení zabezpečení v prostředí IoT/OT. Například Identifikujte zařízení, která se neopravují, otevřené porty, neautorizované aplikace a Neautorizovaná připojení. Můžete také identifikovat změny konfigurace zařízení, kódu PLC a firmwaru. 
 
-V tomto přehledu jste se dozvěděli o funkcích a službách Defenderu pro IoT. Další informace o programu Defender pro architekturu IoT, požadavky a informace o tom, jak začít, najdete v následujících článcích:
+### <a name="iotot-threat-detection"></a>Detekce hrozeb IoT/OT  
 
-- [Architektura](architecture.md)
-- [Začínáme](getting-started.md)
+Detekuje neobvyklé nebo neoprávněné aktivity se specializovanými analýzami hrozeb a s podporou IoT/OT a analýz chování. Můžete dokonce detekovat rozšířené hrozby, které neexistují ve statických IOCs, jako je například bezprogramový malware, malware bez souborů a živý taktiku. 
+
+### <a name="unified-security-management-across-iotot"></a>Jednotná Správa zabezpečení v rámci IoT/OT
+
+Integrujte se do Azure Sentinel pro pohled na pohled na celou organizaci. Implementujte sjednocené řízení zabezpečení IoT/OT s integrací do stávajících pracovních postupů, včetně nástrojů třetích stran, jako jsou Splunk, IBM QRadar a ServiceNow. 
+
+## <a name="agent-based-solution-for-device-builders"></a>Řešení založené na agentovi pro sestavovatele zařízení 
+
+Zabezpečení je téměř univerzálním problémem pro implementátory IoT. Zařízení IoT mají jedinečné potřeby pro monitorování koncového bodu, správu stav zabezpečení a detekci hrozeb – to vše s vysokými nároky na výkon. 
+
+Agenti zabezpečení Azure Defender pro IoT umožňují vytvářet zabezpečení přímo na vašich nových zařízeních IoT a projektech Azure IoT. Mikroagent má flexibilní možnosti nasazení, včetně možnosti nasadit jako binární balíček nebo upravit zdrojový kód. A Micro agent jsou k dispozici pro standardní operační systémy IoT, jako je Linux a Azure RTO.  
+
+Azure Defender pro IoT Micro agent poskytuje viditelnost koncových bodů do zabezpečení stav Management, detekce hrozeb a integraci do dalších nástrojů zabezpečení Microsoftu pro sjednocenou správu zabezpečení. 
+
+### <a name="security-posture-management"></a>Správa stav zabezpečení
+
+Proaktivně Monitorujte stav zabezpečení vašich zařízení IoT. Azure Defender pro IoT poskytuje doporučení zabezpečení stav na základě srovnávacího testu CIS spolu s doporučeními pro konkrétní zařízení. Získejte přehled o zabezpečení operačních systémů, včetně konfigurace operačního systému, konfigurace brány firewall a oprávnění. 
+
+### <a name="endpoint-iotot-threat-detection"></a>Detekce hrozeb služby IoT/OT v koncovém bodu
+
+Detekuje hrozby jako botnety, pokusy o útok hrubou silou, kryptografické dolování hlásí a podezřelé síťové aktivity. Vytvářejte vlastní výstrahy pro cílení na nejdůležitější hrozby v jedinečné organizaci. 
+
+### <a name="flexible-distribution-and-deployment-models"></a>Flexibilní distribuce a modely nasazení 
+
+Agent Azure Defender pro IoT Micro obsahuje zdrojový kód, takže agenta můžete začlenit do firmwaru nebo ho přizpůsobit tak, aby zahrnoval jenom to, co potřebujete. Je také k dispozici jako binární balíček nebo přímo integrována do jiných řešení Azure IoT. 
+
+## <a name="see-also"></a>Viz také
+
+[Azure Defender pro architekturu IoT](architecture.md)

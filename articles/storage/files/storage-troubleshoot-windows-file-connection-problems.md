@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492042"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858684"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -73,7 +73,7 @@ Když se pokusíte připojit sdílenou složku z místního prostředí nebo z j
 
 Systémová chyba 53 nebo systémová chyba 67 může nastat, 445 Pokud je zablokovaná odchozí komunikace se službou Azure Files Datacenter. Souhrn poskytovatelů internetových služeb, kteří umožňují nebo neumožňují přístup z portu 445, najdete na webu [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Pokud chcete zjistit, jestli brána firewall nebo poskytovatel internetových služeb blokuje port 445 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , použijte nástroj nebo `Test-NetConnection` rutinu AzFileDiagnostics. 
+Pokud chcete zjistit, jestli brána firewall nebo poskytovatel internetových služeb blokuje port 445 [](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , použijte nástroj nebo `Test-NetConnection` rutinu AzFileDiagnostics. 
 
 Pokud chcete použít `Test-NetConnection` rutinu, musí být nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-Az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
@@ -406,6 +406,8 @@ Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny 
 5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
 6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.
 7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](./storage-files-identity-ad-ds-enable.md) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 
+8. CheckUserRbacAssignment: Ověřte, jestli má uživatel AD správné přiřazení role RBAC, aby poskytovala oprávnění na úrovni sdílení pro přístup k souborům Azure. Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) pokyny ke konfiguraci oprávnění na úrovni sdílené složky. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
+9. CheckUserFileAccess: Ověřte, jestli má uživatel AD ke službě Azure Files správný přístup k adresáři nebo souboru (seznamy řízení přístupu systému Windows). Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) pokyny ke konfiguraci oprávnění na úrovni adresáře nebo souboru. (Podporováno ve verzi AzFilesHybrid v 0.2.3 +)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 

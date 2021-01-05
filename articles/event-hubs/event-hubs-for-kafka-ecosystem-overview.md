@@ -3,12 +3,12 @@ title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs 
 description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369586"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861345"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
 Event Hubs poskytuje koncový bod kompatibilní s rozhraními API Apache Kafka® výrobce a spotřebitele, která můžou používat většina stávajících klientských aplikací Apache Kafka jako alternativu ke spuštění vlastního Apache Kafka clusteru. Event Hubs podporuje klienty rozhraní API Apache Kafka výrobce a příjemce ve verzi 1,0 a vyšší.
@@ -118,9 +118,7 @@ Datová část události centra událostí je datový proud bajtů a obsah lze z
 
 ### <a name="log-compaction"></a>Komprimace protokolů
 
-Apache Kafka komprimace protokolu je funkce, která umožňuje vyřadit všechny kromě posledního záznamu každého klíče z oddílu, což efektivně přepíná Apache Kafka téma do úložiště hodnot klíčů, kde Poslední přidaná hodnota Přepisuje předchozí. Databázové služby, jako je například [Azure Cosmos DB](../cosmos-db/introduction.md), jsou mnohem lepší, i když jsou vzor úložiště klíč-hodnota i s častými aktualizacemi.
-
-Funkce komprimace protokolů se používá v klientech rozhraní Kafka Connect a Kafka Streams.
+Apache Kafka komprimace protokolu je funkce, která umožňuje vyřadit všechny kromě posledního záznamu každého klíče z oddílu, což efektivně přepíná Apache Kafka téma do úložiště hodnot klíčů, kde Poslední přidaná hodnota Přepisuje předchozí. Tato funkce je v Azure Event Hubs v současnosti neimplementuje. Databázové služby, jako je například [Azure Cosmos DB](../cosmos-db/introduction.md), jsou mnohem lepší, i když jsou vzor úložiště klíč-hodnota i s častými aktualizacemi. Další podrobnosti najdete v tématu věnovaném [prognózám protokolu](event-hubs-federation-overview.md#log-projections) v části Event Hubs federace. 
 
 ### <a name="kafka-streams"></a>Datové proudy Kafka
 

@@ -3,18 +3,27 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608346"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861467"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
-Když se nepoužívá celá oblast Azure nebo datová centra (Pokud se nepoužívají žádné [zóny dostupnosti](../availability-zones/az-overview.md) ), je důležité, aby zpracování dat pokračovalo v provozu v jiné oblasti nebo datacentru. V takovém případě *geografické zotavení po havárii* a *geografická replikace* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje jak geografické zotavení po havárii, tak i geografickou replikaci na úrovni oboru názvů. 
 
-> [!NOTE]
-> Funkce geografického zotavení po havárii je dostupná jenom pro [standardní a vyhrazené SKU](https://azure.microsoft.com/pricing/details/event-hubs/).  
+Odolnost proti katastrofální důsledkym výpadků prostředků zpracování dat je požadavkem pro mnoho podniků a v některých případech i v případě potřeby i podle odvětví. 
+
+Azure Event Hubs už šíří riziko závažných chyb jednotlivých počítačů nebo dokonce kompletních stojanů napříč clustery, které v rámci datového centra přesahují více domén selhání, a implementuje transparentní mechanismy detekce selhání a převzetí služeb při selhání, takže služba bude dále fungovat v rámci zajištěných úrovní služeb a obvykle bez znatelného přerušení v případě takových selhání. Pokud byl vytvořen obor názvů Event Hubs s možností povolení pro [zóny dostupnosti](../availability-zones/az-overview.md), riziko výpadku je dále rozdělené mezi tři fyzicky oddělená zařízení a služba má dostatečné rezervy na kapacitu, aby se okamžitě vypořádat s kompletní a velmi závažnou ztrátou celého zařízení. 
+
+Model clusteru pro všechny aktivní služby Azure Event Hubs s podporou zóny dostupnosti poskytuje odolnost proti čárkám, které nestačí k selhání hardwaru, i i k závažným ztrátám celých zařízení Datacenter. Pořád se může stát, že v případě vysokého fyzického zničení dojde k závažné situaci, že i tyto míry nemůžou dostatečně bránit. 
+
+Event Hubs funkce geografického zotavení po havárii je navržená tak, aby se usnadnilo zotavení po havárii této velikosti, aby nedošlo k selhání oblasti Azure pro zajištění dobrého a nemusíte měnit konfigurace aplikace. Opuštění oblasti Azure obvykle zahrnuje několik služeb a tato funkce primárně směřuje k tomu, že pomáhá zachovat integritu konfigurace složených aplikací.  
+
+Funkce obnovení Geo-Disaster zajišťuje, aby byla celá konfigurace oboru názvů (Event Hubs, skupiny uživatelů a nastavení) průběžně replikována z primárního oboru názvů do sekundárního oboru názvů, pokud je spárována, a umožňuje kdykoli spustit pouze jednou převzetí služeb při selhání z primární na sekundární. Přesunutí převzetí služeb při selhání znovu nasměruje zvolený název aliasu oboru názvů na sekundární obor názvů a potom přeruší párování. Převzetí služeb při selhání je skoro okamžité po zahájení. 
+
+> [!IMPORTANT]
+> Tato funkce umožňuje okamžitou kontinuitu operací se stejnou konfigurací, ale **nereplikuje data události**. Pokud havárie nezpůsobí ztrátu všech zón, data události se po převzetí služeb při selhání v primárním centru událostí zachovají a historické události se dají získat hned po obnovení přístupu. Pokud chcete replikovat data událostí a provozovat odpovídající obory názvů v aktivních/aktivních konfiguracích a vypořádat se s výpadky a katastrofami, nevybírejte tuto sadu funkcí geografického zotavení po havárii, ale postupujte podle [pokynů pro replikaci](event-hubs-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Výpadky a havárie
 
@@ -45,10 +54,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Vyhrazená | Yes | 
-| Vyhrazená | Vyhrazená | Yes | 
-| Vyhrazená | Standard | No | 
+| Standard | Standard | Ano | 
+| Standard | Vyhrazená | Ano | 
+| Vyhrazená | Vyhrazená | Ano | 
+| Vyhrazená | Standard | Ne | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 

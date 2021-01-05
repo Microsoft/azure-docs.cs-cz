@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85516187"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861401"
 ---
 # <a name="azure-for-network-engineers"></a>Azure pro odborníky na sítě
 Jako standardní síťový inženýr jste se zabývali fyzickými prostředky, jako jsou směrovače, přepínače, kabely, brány firewall k vytváření infrastruktury. V logické vrstvě, kterou jste nakonfigurovali virtuální síť LAN (VLAN), protokol STP (Spanning Tree Protocol), směrovací protokoly (RIP, OSPF, BGP). Síť jste spravovali pomocí nástrojů pro správu a CLI. Sítě v cloudu jsou odlišné, pokud jsou koncové body sítě logické a používání směrovacích protokolů je minimální. Budete pracovat s rozhraním API Azure Resource Manager, Azure CLI a PowerShellu pro konfiguraci a správu prostředků v Azure. Cestu k síti zahájíte v cloudu tím, že budete rozumět základním klientům sítě Azure. 
@@ -67,7 +67,7 @@ Když ve směrovací tabulce máte konkurenční záznamy, Azure vybere další 
 
 ## <a name="security"></a>Zabezpečení
 
-Pomocí skupin zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků ve virtuální síti. Třtina také používá síťová virtuální zařízení (síťové virtuální zařízení), jako jsou Azure Firewall nebo brány firewall od jiných dodavatelů. Můžete řídit, jak Azure směruje provoz z podsítí. Můžete také omezit, kdo ve vaší organizaci může pracovat s prostředky ve virtuálních sítích.
+Pomocí skupin zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků ve virtuální síti. Můžete také použít síťová virtuální zařízení (síťové virtuální zařízení), například Azure Firewall nebo brány firewall od jiných dodavatelů. Můžete řídit, jak Azure směruje provoz z podsítí. Můžete také omezit, kdo ve vaší organizaci může pracovat s prostředky ve virtuálních sítích.
 
 Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zamítají síťový provoz pro podsítě, síťová rozhraní nebo oboje. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým síťovým rozhraním připojeným k podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny virtuální počítače v této podsíti. Provoz směřující do konkrétního síťového rozhraní se navíc dá omezit tím, že se přímo k tomuto síťovému rozhraní přidruží skupina NSG.
 
