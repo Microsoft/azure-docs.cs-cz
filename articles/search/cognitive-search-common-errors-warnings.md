@@ -3,17 +3,17 @@ title: Chyby a upozornění indexeru
 titleSuffix: Azure Cognitive Search
 description: Tento článek poskytuje informace a řešení běžných chyb a varování, se kterými se můžete setkat při obohacení AI v Azure Kognitivní hledání.
 manager: nitinme
-author: nitinme
-ms.author: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c65c9265d8eb4a06ea354c6d753cc6ed847eb6db
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724285"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895935"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 

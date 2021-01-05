@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315579"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895525"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -54,7 +54,7 @@ Během veřejné verze Preview agenta Azure Monitor platí následující omezen
 
 - Agent Azure Monitor nepodporuje řešení a přehledy, jako je Azure Monitor pro virtuální počítače a Azure Security Center. Jediným scénářem, který se aktuálně podporuje, je shromažďování dat pomocí pravidel shromažďování dat, která nakonfigurujete. 
 - Pravidla shromažďování dat musí být vytvořena ve stejné oblasti jako kterýkoli Log Analytics pracovní prostor, který se používá jako cíl.
-- Virtuální počítače Azure a servery s podporou ARC Azure jsou aktuálně podporované. Služba Virtual Machine Scale Sets, služba Azure Kubernetes a jiné typy výpočetních prostředků se momentálně nepodporují.
+- Virtuální počítače Azure, služba Virtual Machine Scale Sets a servery s podporou ARC Azure jsou aktuálně podporované. Služba Azure Kubernetes a jiné typy výpočetních prostředků se aktuálně nepodporují.
 - Virtuální počítač musí mít přístup k následujícím koncovým bodům HTTPS:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny typy dat, které můžete v současnosti s
 
 Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pracovní prostor podporující protokoly Azure Monitor.
 
-| Zdroj dat | Cíle | Popis |
+| Zdroj dat | Cíle | Description |
 |:---|:---|:---|
 | Výkon        | Metriky Azure Monitoru<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly událostí systému Windows | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí systému Windows. |

@@ -1,19 +1,19 @@
 ---
 title: Nejčastější dotazy – řešení Azure VMware podle CloudSimple
 description: Mezi nejčastější dotazy týkající se řešení Azure VMware by CloudSimple patří připojení, sítě, zabezpečení, úložiště, Integrace Azure a další.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140883"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895559"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware podle CloudSimple
 
@@ -121,7 +121,7 @@ Všechny infrastruktury CloudSimple jsou nepřetržitě monitorovány platformou
 CloudSimple nabízí úložiště VMware síti vSAN pro všechny aplikace, které obsahuje všechny privátní cloudy.  Každý vSphere se vytvoří s vlastním úložištěm dat síti vSAN.  Podrobnosti najdete v tématu [komponenty VMware privátního cloudu – úložiště síti vSAN](vmware-components.md#vsan-storage).
 
 **Je šifrování dat podporováno?**
-Ano.  Úložiště síti vSAN můžete nastavit v privátním cloudu, abyste mohli používat klíčovou management server (KMS) nasazenou místně nebo v Azure k šifrování dat uložených v síti vSAN.
+Yes.  Úložiště síti vSAN můžete nastavit v privátním cloudu, abyste mohli používat klíčovou management server (KMS) nasazenou místně nebo v Azure k šifrování dat uložených v síti vSAN.
 
 **Jak se zpracovávají neúspěšné disky?**
 
@@ -150,7 +150,7 @@ CloudSimple neprovede upgrady ani aktualizace aplikací nainstalovaných v priv�
 
 **Které služby Azure jsou podporovány?**
 
-CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Příklady:
+CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Mezi příklady patří:
 
 * **Azure Active Directory** jako zdroj identity pro CloudSimple vCenter.
 * **Úložiště Azure** pro ukládání záloh, obrázků a dalších dat z vašeho privátního cloudu.

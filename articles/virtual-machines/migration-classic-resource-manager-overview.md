@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680210"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897112"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager v systému Linux
 
@@ -24,6 +24,8 @@ ms.locfileid: "97680210"
 
 Tento článek poskytuje přehled o nástroji pro migraci, který je podporovaný platformou, jak migrovat prostředky z Azure Service Manager (ASM), označované jako klasické modely nasazení Správce prostředků (ARM), a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které se ve vašem předplatném používají, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. 
 
+ASM podporuje dva různé výpočetní produkty, Azure Virtual Machines (Classic), označované jako IaaS virtuální počítače & [azure Cloud Services (Classic)](https://docs.microsoft.com/azure/cloud-services/) , označované jako PaaS virtuální počítače nebo webové a pracovní role. Tento dokument se týká pouze migrace Virtual Machines Azure (Classic).
+
 ## <a name="goal-for-migration"></a>Cíl migrace
 Správce prostředků umožňuje nasazení složitých aplikací prostřednictvím šablon, konfiguraci virtuálních počítačů pomocí rozšíření virtuálních počítačů a správu přístupu a označování v podniku. Azure Resource Manager zahrnuje škálovatelné paralelní nasazení virtuálních počítačů do skupin dostupnosti. Nový model nasazení také poskytuje životní cyklus pro výpočetní prostředky, síť a úložiště nezávisle. Nakonec se zaměřte na povolení zabezpečení ve výchozím nastavení s vynucením virtuálních počítačů ve virtuální síti.
 
@@ -32,7 +34,7 @@ Téměř všechny funkce z modelu nasazení Classic jsou podporovány pro výpo�
 ## <a name="supported-resources--configurations-for-migration"></a>Podporované prostředky & konfigurací pro migraci
 
 ### <a name="supported-resources-for-migration"></a>Podporované prostředky pro migraci
-* Virtual Machines
+* Virtuální počítače
 * Skupiny dostupnosti
 * Účty úložiště
 * Virtuální sítě
@@ -88,7 +90,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.
@@ -114,7 +116,7 @@ Některé funkce a konfigurace se aktuálně nepodporují. v následujících č
 ### <a name="unsupported-features"></a>Nepodporované funkce
 Následující funkce se momentálně nepodporují. Volitelně můžete tato nastavení odebrat, migrovat virtuální počítače a pak znovu povolit nastavení v modelu nasazení Správce prostředků.
 
-| Poskytovatel prostředků | Příznak | Doporučení |
+| Poskytovatel prostředků | Funkce | Doporučení |
 | --- | --- | --- |
 | Compute | Nepřidružené disky virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
 | Compute | Image virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518460"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895219"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -76,7 +76,7 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 - Francie – střed
 - West Europe
 - Severní Evropa
-- Brazil South
+- Brazílie – jih
 - Spojené království – západ
 - Spojené království – jih
 - Austrálie – východ
@@ -122,11 +122,11 @@ Ano, tyto skupin zabezpečení sítě můžou být v různých oblastech, než j
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Dá se víc skupin zabezpečení sítě nakonfigurovat v jednom pracovním prostoru?
 
-Ano.
+Yes.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
 
-Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md).
+Yes. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Může být můj účet Azure Storage v jednom předplatném a pracovní prostor Log Analytics má v jiném předplatném?
 
@@ -134,7 +134,7 @@ Ano, váš účet Azure Storage může být v jednom předplatném a váš praco
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Můžu v jiném předplatném ukládat nezpracované protokoly?
 
-Ano. Protokoly toku NSG můžete nakonfigurovat tak, aby se odesílaly do účtu úložiště umístěného v jiném předplatném, pokud máte příslušná oprávnění a účet úložiště je umístěný ve stejné oblasti jako NSG. NSG a cílový účet úložiště musí také sdílet stejný tenant Azure Active Directory.
+Yes. Protokoly toku NSG můžete nakonfigurovat tak, aby se odesílaly do účtu úložiště umístěného v jiném předplatném, pokud máte příslušná oprávnění a účet úložiště je umístěný ve stejné oblasti jako NSG. NSG a cílový účet úložiště musí také sdílet stejný tenant Azure Active Directory.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co když nemůžu nakonfigurovat NSG pro analýzu provozu z důvodu chyby "Nenalezeno"?
 

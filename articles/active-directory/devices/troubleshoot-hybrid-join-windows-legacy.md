@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079015"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895610"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně 
 
@@ -32,7 +32,7 @@ Informace o Windows 10 nebo Windows serveru 2016 najdete v tématu [řešení po
 
 V tomto článku se předpokládá, že jste [nakonfigurovali zařízení se hybridem Azure Active Directory připojená](hybrid-azuread-join-plan.md) k podpoře následujících scénářů:
 
-- Podmíněný přístup podle zařízení
+- Podmíněný přístup založený na zařízeních
 
 Tento článek poskytuje pokyny k odstraňování potíží, jak řešit potenciální problémy.  
 
@@ -44,6 +44,7 @@ Tento článek poskytuje pokyny k odstraňování potíží, jak řešit potenci
 - V případě přeinstalace operačního systému nebo ruční opětovné registrace můžete na kartě informace o uživateli získat také více položek zařízení.
 - Počáteční registrace/připojení zařízení je nakonfigurované tak, aby se pokusila provést pokus buď při přihlášení, nebo při zamčení nebo odemčení. V rámci úlohy plánovače úloh může být prodleva 5 minut spuštěna. 
 - V případě systému Windows 7 SP1 nebo Windows Server 2008 R2 SP1 se ujistěte, že je nainstalovaný [KB4284842](https://support.microsoft.com/help/4284842) . Tato aktualizace zabrání v budoucích selháních ověřování kvůli ztrátě přístupu zákazníka k chráněným klíčům po změně hesla.
+- Připojení k hybridní službě Azure AD může selhat, jakmile se uživatel změní na hlavní název uživatele (UPN) a dojde k bezproblémovému procesu ověřování SSO. Během procesu připojování se můžete setkat s tím, že pořád posílá starý hlavní název uživatele (UPN) do služby Azure AD, pokud se nevymažou soubory cookie relace prohlížeče nebo uživatel se explicitně odhlásí a odebere starý hlavní název uživatele (UPN).
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: načtení stavu registrace 
 
@@ -65,7 +66,7 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
 
 - Nesprávně nakonfigurované AD FS nebo Azure AD nebo síťové problémy
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text hlásí, že při ověřování účtu došlo k chybě." border="false":::
     
    - Autoworkplace.exe se nemůže tiše ověřit pomocí Azure AD nebo AD FS. Příčinou může být chybějící nebo nesprávně nakonfigurované AD FS (pro federované domény) nebo chybějící nebo nesprávně nakonfigurovaná služba Azure AD bez problémů s jedním Sign-On (u spravovaných domén) nebo problémy se sítí. 
    - Může to být, že pro uživatele je povolený nebo nakonfigurovaný Multi-Factor Authentication (MFA) a WIAORMULTIAUTHN není nakonfigurovaný na serveru AD FS. 
@@ -76,7 +77,7 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
    - Vaše organizace používá bezproblémové jednotné přihlašování Azure AD `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` se nezobrazuje v nastavení intranetu v zařízení pro Internet Explorer a **povoluje aktualizace stavového řádku prostřednictvím skriptu** není pro zónu intranetu povolené.
 - Nejste přihlášení jako uživatel domény.
 
-   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text hlásí, že při ověřování účtu došlo k chybě." border="false":::
 
    Existuje několik různých důvodů, proč k tomu může dojít:
 
@@ -84,11 +85,11 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
    - Klient se nemůže připojit k řadiči domény.    
 - Byla dosažena kvóta.
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text hlásí chybu, protože uživatel dosáhl maximálního počtu připojených zařízení." border="false":::
 
 - Služba neodpovídá 
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text hlásí, že došlo k chybě, protože server neodpověděl." border="false":::
 
 Informace o stavu můžete najít také v protokolu událostí v části **aplikace a služby Log\Microsoft-Workplace JOIN** .
   
@@ -97,7 +98,7 @@ Informace o stavu můžete najít také v protokolu událostí v části **aplik
 - Váš počítač není připojený k interní síti vaší organizace nebo k síti VPN s připojením k místnímu řadiči domény AD.
 - K počítači jste přihlášení pomocí účtu místního počítače. 
 - Problémy s konfigurací služby: 
-   - AD FS server nebyl nakonfigurován pro podporu **WIAORMULTIAUTHN** . 
+   - AD FS server nebyl nakonfigurován pro podporu **WIAORMULTIAUTHN**. 
    - Doménová struktura vašeho počítače nemá žádný objekt spojovacího bodu služby, který odkazuje na váš ověřený název domény ve službě Azure AD. 
    - Nebo pokud je vaše doména spravovaná, pak se bezproblémové jednotné přihlašování nenakonfigurovalo nebo nepracuje.
    - Uživatel dosáhl limitu počtu zařízení. 

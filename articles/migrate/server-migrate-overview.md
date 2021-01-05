@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753599"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896477"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware
 
@@ -42,8 +42,8 @@ Po kontrole omezení se může porozumět postupům při nasazení jednotlivých
 
 **Úloha** | **Podrobnosti** |**Bez agenta** | **Založené na agentovi**
 --- | --- | --- | ---
-**Nasazení zařízení se službou Azure Migrate** | Jednoduché zařízení, které běží na virtuálním počítači VMware.<br/><br/> Zařízení se používá ke zjišťování a hodnocení počítačů a k migraci počítačů pomocí migrace bez agentů. | Povinná hodnota.<br/><br/> Pokud jste už zařízení pro posouzení nastavili, můžete použít stejné zařízení pro migraci bez agenta. | Nepožadováno.<br/><br/> Pokud jste pro posouzení nastavili zařízení, můžete ho nechat na místě, nebo ho odebrat, pokud jste hotovi s posouzením.
-**Použití nástroje pro vyhodnocení serveru** | Vyhodnoťte počítače pomocí nástroje Azure Migrate: Nástroj pro vyhodnocení serveru. | Je možné vyhodnotit počítače před jejich migrací, ale nemusíte je. | Posouzení je volitelné. | Posouzení je volitelné.
+**Nasazení zařízení se službou Azure Migrate** | Jednoduché zařízení, které běží na virtuálním počítači VMware.<br/><br/> Zařízení se používá ke zjišťování a hodnocení počítačů a k migraci počítačů pomocí migrace bez agentů. | Povinná hodnota.<br/><br/> Pokud jste už zařízení pro posouzení nastavili, můžete použít stejné zařízení pro migraci bez agenta. | Nevyžadují se.<br/><br/> Pokud jste pro posouzení nastavili zařízení, můžete ho nechat na místě, nebo ho odebrat, pokud jste hotovi s posouzením.
+**Použití nástroje pro vyhodnocení serveru** | Vyhodnoťte počítače pomocí nástroje Azure Migrate: Nástroj pro vyhodnocení serveru. | Je možné vyhodnotit počítače před jejich migrací, ale nemusíte je. | Posouzení je volitelné.
 **Použití nástroje pro migraci serveru** | Přidejte Nástroj pro migraci Azure Migrate serveru do projektu Azure Migrate. | Vyžadováno | Vyžadováno
 **Příprava VMware na migraci** | Nakonfigurujte nastavení na serverech a virtuálních počítačích VMware. | Vyžadováno | Vyžadováno
 **Instalace služby mobility na virtuální počítače** | Služba mobility běží na každém virtuálním počítači, který chcete replikovat. | Nevyžadováno | Vyžadováno

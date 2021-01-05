@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167841"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895406"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -299,87 +299,7 @@ Podobně můžete nastavit `status_code` a `headers` pro zprávu odpovědi v vr�
 
 ## <a name="scaling-and-performance"></a>Škálování a výkon
 
-Je důležité porozumět tomu, jak vaše funkce fungují a jak tento výkon ovlivňuje způsob, jakým se aplikace Function App škáluje. To je důležité hlavně při navrhování vysoce výkonných aplikací. Následuje několik faktorů, které je třeba vzít v úvahu při navrhování, psaní a konfiguraci aplikací Functions.
-
-### <a name="horizontal-scaling"></a>Horizontální škálování
-Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Funkce využívají předdefinované prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Tyto prahové hodnoty se nedají uživatelsky konfigurovat. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
-
-### <a name="improving-throughput-performance"></a>Zlepšení výkonu propustnosti
-
-Klíčem ke zlepšení výkonu je porozumění způsobu, jakým vaše aplikace používá zdroje a která umožňuje odpovídajícím způsobem nakonfigurovat aplikace Function App.
-
-#### <a name="understanding-your-workload"></a>Princip úloh
-
-Výchozí konfigurace jsou vhodné pro většinu Azure Functionsch aplikací. Můžete ale zvýšit výkon propustnosti vašich aplikací tím, že použijete konfigurace na základě vašeho profilu zatížení. Prvním krokem je pochopení typu úlohy, kterou používáte.
-
-| | Vstupně-výstupní úlohy vázané na vstup/výstup | Zatížení vázané na procesor |
-|--| -- | -- |
-|**Vlastnosti aplikace Function App**| <ul><li>Aplikace potřebuje zpracovat mnoho souběžných volání.</li> <li> Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk.</li> </ul>| <ul><li>Aplikace provádí dlouhotrvající výpočty, jako je například změna velikosti obrázku.</li> <li>Aplikace provádí transformaci dat.</li> </ul> |
-|**Příklady**| <ul><li>Webová rozhraní API</li><ul> | <ul><li>Zpracování dat</li><li> Odvození strojového učení</li><ul>|
-
-
-> [!NOTE]
->  Jako úlohy Real World Functions většinou často nabízí kombinaci vstupně-výstupních operací a procesoru, doporučujeme profilovat úlohy v rámci reálných produkčních zatížení.
-
-
-#### <a name="performance-specific-configurations"></a>Konfigurace specifické pro výkon
-
-Po porozumění profilu úlohy aplikace Function App jsou zde uvedené konfigurace, které můžete použít ke zlepšení výkonu vašich funkcí v propustnosti.
-
-##### <a name="async"></a>Async
-
-Vzhledem k tomu, že [Python je modul runtime s jedním vláknem](https://wiki.python.org/moin/GlobalInterpreterLock), může instance hostitele pro Python zpracovat pouze jedno vyvolání funkce najednou. Pro aplikace, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vázané na vstupně-výstupní operace, můžete výrazně zvýšit výkon spuštěním asynchronních funkcí.
-
-Chcete-li spustit funkci asynchronně, použijte `async def` příkaz, který spustí funkci s [asyncio](https://docs.python.org/3/library/asyncio.html) přímo:
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-Tady je příklad funkce s triggerem HTTP, který používá klienta http [aiohttp](https://pypi.org/project/aiohttp/) :
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-Funkce bez `async` klíčového slova se spustí automaticky ve fondu vláken asyncio:
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-Aby bylo možné plně využít výhod spouštění funkcí asynchronně, musí být vstupně-výstupní operace/knihovna, která se používá ve vašem kódu, také implementována i při asynchronním provádění. Používání synchronních vstupně-výstupních operací ve funkcích, které jsou definovány jako asynchronní, **může snížit** celkový výkon.
-
-Tady je několik příkladů klientských knihoven, které mají implementovaný asynchronní vzor:
-- [aiohttp](https://pypi.org/project/aiohttp/) -klient/server HTTP pro asyncio 
-- [Rozhraní API datových proudů](https://docs.python.org/3/library/asyncio-stream.html) – primitivní a asynchronní a nedokončené primitivum připravené pro práci se síťovým připojením
-- Fronta [Janus](https://pypi.org/project/janus/) -asyncio s podporou pro přístup z více vláken pro Python
-- [pyzmq](https://pypi.org/project/pyzmq/) – vazby Pythonu pro ZeroMQ
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>Použít více pracovních procesů jazyka
-
-Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Počet pracovních procesů na hostitele můžete zvýšit (až 10) pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy.
-
-U aplikací vázaných na procesor byste měli nastavit, aby počet jazykových pracovních procesů byl stejný nebo vyšší než počet jader, které jsou dostupné na základě aplikace Function App. Další informace najdete v tématu [dostupné skladové položky instance](functions-premium-plan.md#available-instance-skus). 
-
-U aplikací vázaných na vstupně-výstupní operace může být také výhodné zvýšit počet pracovních procesů nad rámec počtu dostupných jader. Pamatujte, že nastavení maximálního počtu pracovních procesů může mít vliv na celkový výkon kvůli zvýšenému počtu požadovaných přepínačů kontextu. 
-
-FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky.
-
+Postup pro škálování a osvědčené postupy pro aplikace funkcí Pythonu najdete v [článku o škálování a výkonu Pythonu](python-scale-performance-reference.md).
 
 ## <a name="context"></a>Kontext
 
@@ -695,7 +615,7 @@ Pokud chcete zobrazit seznam předinstalovaných systémových knihoven v Python
 |  Modul runtime Functions  | Verze Debian | Verze Pythonu |
 |------------|------------|------------|
 | Verze 2. x | Roztažení  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Verze 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Verze 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>Sdílení prostředků různého původu
 

@@ -93,6 +93,8 @@
       href: manage.md
     - name: Škálovací sady virtuálních počítačů
       items:
+        - name: Aktualizace nebo odstranění stávajícího Azure Load Balanceru využívaného škálovací sadou virtuálních počítačů
+          href: update-load-balancer-with-vm-scale-set.md
         - name: Použití s existujícím Azure Load Balancerem – portál
           href: configure-vm-scale-set-portal.md
         - name: Použití s existujícím Azure Load Balancerem – PowerShell

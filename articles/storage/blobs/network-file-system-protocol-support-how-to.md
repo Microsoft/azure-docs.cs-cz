@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b61ce696c28a2c72a2cd3d0eb2d2fde0022dbb01
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906110"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897735"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
@@ -134,7 +134,7 @@ Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v ú
 
    ![Funkce Client for Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. Připojte kontejner pomocí příkazu [Mount](/windows-server/administration/windows-commands/mount) .
+2. Otevřete okno **příkazového řádku** (cmd.exe). Pak připojte kontejner pomocí příkazu [Mount](/windows-server/administration/windows-commands/mount) .
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *

@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – konfigurace vysoké dostupnosti z místního úložiště na CloudSimple VPN Gateway
 description: Popisuje, jak nakonfigurovat připojení s vysokou dostupností z místního prostředí na CloudSimple bránu VPN, která je povolená pro vysokou dostupnost.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025261"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895695"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí do CloudSimple VPN Gateway
 
@@ -162,7 +162,7 @@ Vzhledem k tomu, že tato konfigurace je pro síť VPN s vysokou dostupností, v
 
 Trasy jsou nezbytné pro místní podsítě, aby se dostaly k podsítím privátního cloudu CloudSimple.
 
-Vyberte **Network**  >  **virtuální síťové směrovače**  >  *výchozí*  >  **statické trasy**  >  **Přidat**, nakonfigurujte následující pole a klikněte na **OK**.
+Vyberte   >  **virtuální síťové směrovače**  >  *výchozí*  >  **statické trasy**  >  **Přidat**, nakonfigurujte následující pole a klikněte na **OK**.
 
 * Název. Zadejte libovolný název, který umožňuje snadnou identifikaci účelu trasy.
 * Tabulka. Zadejte CloudSimple podsítě privátního cloudu, které se mají kontaktovat přes tunelová rozhraní S2S z místního prostředí.
@@ -238,7 +238,7 @@ Zopakováním předchozích kroků vytvořte další kryptografický profil IPse
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. definování profilů monitorování pro monitorování tunelu
 
-Vyberte **síť**  >  **rozbalte položku Monitorování profilů sítě**  >  **Monitor**  >  **Přidat**, nakonfigurujte následující pole a klikněte na tlačítko **OK**.
+Vyberte **síť**  >  **rozbalte položku Monitorování profilů sítě**  >    >  **Přidat**, nakonfigurujte následující pole a klikněte na tlačítko **OK**.
 
 * Název. Zadejte libovolný název profilu monitorování, který se má použít pro monitorování tunelu pro proaktivní reakci na selhání.
 * Kroky. Vyberte **převzetí služeb při selhání**.
@@ -263,7 +263,7 @@ Karta Obecné:
 * Cílová IP adresa. Zadejte libovolnou IP adresu patřící do podsítě privátního cloudu CloudSimple, která je povolená přes připojení Site-to-site. Ujistěte se, že rozhraní tunelu (například Tunnel. 20-10.64.5.2/32 a Tunnel. 30-10.64.6.2/32) v Palo Alto mají povolený přístup k IP adrese privátního cloudu CloudSimple přes síť Site-to-Site VPN. Podívejte se na následující konfiguraci ID proxy serveru.
 * Profilu. Vyberte profil monitorování.
 
-Karta ID proxy serveru: **IPv4**klikněte na  >  **Přidat** IPv4 a nakonfigurujte následující:
+Karta ID proxy serveru: klikněte na  >  **Přidat** IPv4 a nakonfigurujte následující:
 
 * ID proxy serveru. Zadejte libovolný název zajímavého provozu. V rámci jednoho tunelu IPsec mohlo být provedeno více ID proxy serveru.
 * Místní. Zadejte místní místní podsítě, které mohou komunikovat s podsítěmi privátního cloudu prostřednictvím sítě VPN typu Site-to-site.

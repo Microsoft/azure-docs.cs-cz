@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7ce0807fa4cd068cfdd09ac9f78c5415da7e6437
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145748"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895338"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,12 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+##  <a name="december-2020"></a>Od prosince 2020? 
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer nasazena v Švýcarsko – západ a Švýcarsko – sever
+
+V oblastech Švýcarsko – západ a Švýcarsko – sever teď můžete vytvořit placený účet Video Indexer.
 
 ## <a name="october-2020"></a>Říjen 2020
 

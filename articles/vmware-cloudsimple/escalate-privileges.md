@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – zvýšení oprávnění CloudSimple
 description: Popisuje, jak eskalovat CloudSimple oprávnění k provádění funkcí správy v privátním cloudu vCenter.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d481717a79856583d23f61107678d2ecd1af68d6
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025329"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895723"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>Eskalace CloudSimple oprávnění k provádění funkcí správy v privátním cloudu vCenter
 
@@ -35,6 +35,6 @@ Z portálu CloudSimple můžete zvýšit [oprávnění](escalate-private-cloud-p
 Uživatele z dalších zdrojů identity musí být přidáni jako členové skupiny CloudOwner.
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
+> Noví uživatelé musí být přidáni pouze *ke skupině* Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
 
 Během období eskalace CloudSimple používá automatizované monitorování s přidruženými oznámeními výstrah k identifikaci neúmyslných změn v prostředí.

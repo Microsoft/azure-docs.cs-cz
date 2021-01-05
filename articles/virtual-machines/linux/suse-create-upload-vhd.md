@@ -1,19 +1,19 @@
 ---
 title: Vytvoření a nahrání virtuálního pevného disku s SUSE Linux v Azure
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje operační systém SUSE Linux.
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/12/2018
-ms.author: guybo
-ms.openlocfilehash: 6a8c60c51842ae67c12101189a4e265b775bcb77
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 36af60082c575dfb19e71710fbdd8e3bf181bf96
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498451"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896213"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 
@@ -30,7 +30,7 @@ V tomto článku se předpokládá, že jste už nainstalovali operační systé
 ## <a name="use-suse-studio"></a>Použití SUSE studia
 [SUSE Studio](https://studioexpress.opensuse.org/) může snadno vytvářet a spravovat vaše SLES a openSUSE image pro Azure a Hyper-V. Toto je doporučený postup pro přizpůsobení vlastních imagí SLES a openSUSE.
 
-Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE také publikuje image BYOS (Přineste si vlastní odběr) pro SLES v [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
+Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE také publikuje image BYOS (Přineste si vlastní odběr) pro SLES ve [skladu](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
 ## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>Příprava SUSE Linux Enterprise Server pro Azure
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
@@ -46,6 +46,7 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 
     ```console
     # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
+    # sudo zypper refresh
     # sudo zypper install python-azure-agent
     # sudo zypper install cloud-init
     ```
@@ -65,8 +66,8 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 7. Aktualizace waagent a konfigurace Cloud-init
 
     ```console
-    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    # sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    # sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 
     # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
     # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
@@ -103,23 +104,53 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 
 13. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění. Obvykle se jedná o výchozí nastavení.
 
-14. Nevytvářejte odkládací místo na disku s operačním systémem.
-    
-    Agent Azure Linux může automaticky nakonfigurovat odkládací prostor pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že místní disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění. Po instalaci agenta Azure Linux (viz předchozí krok) upravte odpovídajícím způsobem následující parametry v/etc/waagent.conf:
+14. Prohodit konfiguraci
+ 
+    Nevytvářejte odkládací místo na disku s operačním systémem.
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    Dříve se agent Azure Linux použil k automatické konfiguraci odkládacího prostoru pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. To je ale teď zpracovávané pomocí Cloud-init. k naformátování disku prostředků pro vytvoření odkládacího souboru **nemusíte** použít agenta pro Linux. Upravte následující parametry `/etc/waagent.conf` správným způsobem:
+
+    ```console
+    # sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
+
+    Pokud chcete připojit, formátovat a vytvořit prohození, můžete buď:
+    * Předejte to ve formě Cloud-init config při každém vytvoření virtuálního počítače.
+    * Pomocí direktivy Cloud-init vloženými do image, která to provede při každém vytvoření virtuálního počítače:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
 
 15. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
     ```console
-    # sudo waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
+
     # export HISTSIZE=0
+
     # logout
     ```
 16. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.

@@ -2,19 +2,19 @@
 title: Eskalovat oprávnění privátního cloudu
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje, jak eskalovat oprávnění ve vašem privátním cloudu pro funkce správy v vCenter.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/05/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998948"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895818"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalace privátního cloudu oprávnění vCenter z portálu CloudSimple
 
@@ -35,7 +35,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 2. Otevřete stránku **prostředky** , vyberte privátní cloud, pro který chcete zvýšit oprávnění.
 
-3. V dolní části stránky Souhrn v části **změnit oprávnění vSphere**klikněte na **Eskalace**.
+3. V dolní části stránky Souhrn v části **změnit oprávnění vSphere** klikněte na **Eskalace**.
 
     ![Změnit oprávnění vSphere](media/escalate-private-cloud-privilege.png)
 
@@ -57,13 +57,13 @@ Eskalace oprávnění začíná a trvá až do konce vybraného intervalu.  Abys
 > Pouze jeden uživatel může mít povýšené oprávnění.  Než budete moct zvýšit oprávnění jiného uživatele, musíte zrušit jeho eskalaci.
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
+> Noví uživatelé musí být přidáni pouze *ke skupině* Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
 
 ## <a name="extend-privilege-escalation"></a>Prodloužení eskalace oprávnění
 
 Pokud k dokončení svých úkolů potřebujete další čas, můžete zvýšit dobu eskalace oprávnění.  Vyberte další časový interval eskalace, který vám umožní dokončit úlohy správy.
 
-1. V **Resources**  >  **privátních cloudech** prostředků na portálu CloudSimple vyberte privátní cloud, pro který chcete zvýšit eskalaci oprávnění.
+1. V   >  **privátních cloudech** prostředků na portálu CloudSimple vyberte privátní cloud, pro který chcete zvýšit eskalaci oprávnění.
 
 2. V dolní části karty Souhrn klikněte na možnost **Zvětšit eskalaci oprávnění**.
 

@@ -8,17 +8,17 @@ ms.custom: references_regions
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250500"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897327"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>Podporované země a oblasti vydavatele
 
-Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, musíte mít bydliště v jedné z následujících zemí nebo oblastí.
+K publikování nabídky na komerční tržišti společnosti Microsoft se musí vaše společnost právně nacházet v jedné z následujících zemí nebo oblastí:
 
 - Afghánistán
 - Ostrovy Aland
@@ -115,7 +115,7 @@ Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, mus�
 - Guinea-Bissau
 - Guyana
 - Haiti
-- Heardův ostrov a MacDonaldovy ostrovy
+- Heardův ostrov a McDonaldovy ostrovy
 - Honduras
 - Hongkong – zvláštní administrativní oblast
 - Maďarsko
@@ -134,7 +134,6 @@ Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, mus�
 - Kazachstán
 - Keňa
 - Kiribati
-- Jižní Korea
 - Kosovo
 - Kuvajt
 - Kyrgyzstán
@@ -206,7 +205,7 @@ Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, mus�
 - Svatý Kryštof a Nevis
 - Svatá Lucie
 - Svatý Martin (Francie)
-- Saint-Pierre a Miquelon
+- Saint Pierre a Miquelon
 - Svatý Vincenc a Grenadiny
 - Samoa
 - San Marino
@@ -224,6 +223,7 @@ Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, mus�
 - Somálsko
 - Jižní Afrika
 - Jižní Georgie a Jižní Sandwichovy ostrovy
+- Jižní Korea (Korejská republika)
 - Jižní Súdán
 - Španělsko
 - Srí Lanka
@@ -248,7 +248,7 @@ Pokud chcete publikovat nabídku na komerčním webu Microsoft Marketplace, mus�
 - Turkmenistán
 - Ostrovy Turks a Caicos
 - Tuvalu
-- Menší odlehlé ostrovy USA
+- Odlehlé ostrovy USA
 - Americké Panenské ostrovy
 - Uganda
 - Ukrajina

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0b2346ae4777b31ce2e5c396fb03084d38b2008f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7926f4023b64feff33ae55fc6c8726a605773fef
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678974"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895032"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -37,9 +37,23 @@ Rozšíření virtuálního počítače Key Vault je podporované taky na vlastn
 
 ## <a name="prerequisities"></a>Konfigurátoru
   - Key Vault instance s certifikátem Viz [vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
-  - Virtuální počítač/VMSS musí mít přiřazenou [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) .
+  - Virtuální počítač musí mít přiřazenou [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) .
   - Zásady přístupu Key Vault musí být nastavené s tajnými klíči `get` a `list` oprávněním pro SPRAVOVANOU identitu VM/VMSS k načtení části certifikátu tajného klíče. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
-
+  -  VMSS by měla mít následující nastavení identity: ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+- Rozšíření integrace by mělo mít toto nastavení: `
+                  "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 ## <a name="extension-schema"></a>Schéma rozšíření
 
 Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Přípona nevyžaduje chráněná nastavení – veškerá jeho nastavení se považují za veřejné informace. Přípona vyžaduje seznam monitorovaných certifikátů, četnost dotazování a cílové úložiště certifikátů. Konkrétně se jedná o tyto:  
@@ -88,7 +102,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
@@ -140,6 +154,17 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>Řazení závislosti rozšíření
+Rozšíření virtuálního počítače Key Vault podporuje řazení rozšíření, pokud je nakonfigurováno. Ve výchozím nastavení hlásí rozšíření, že se úspěšně spustila hned po zahájení cyklického dotazování. Dá se ale nakonfigurovat tak, aby čekal na úspěšné stažení kompletního seznamu certifikátů před tím, než dohlásí úspěšné spuštění. Pokud jsou jiné přípony závislé na tom, že je před zahájením nainstalována úplná sada certifikátů, pak povolení tohoto nastavení umožní, aby tato rozšíření deklarovala závislost na rozšíření Key Vault. Tím se zabrání v zahájení těchto rozšíření, dokud nebudou nainstalovány všechny certifikáty, které jsou na nich závislé. Rozšíření zopakuje prvotní stažení po neomezenou dobu a zůstane ve `Transitioning` stavu.
+
+Pokud to chcete zapnout, nastavte následující:
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> Značte Použití této funkce není kompatibilní se šablonou ARM, která vytváří identitu přiřazenou systémem a aktualizuje zásadu přístupu Key Vault s touto identitou. Výsledkem je zablokování, protože zásady přístupu k trezoru se nedají aktualizovat, dokud se nespustila všechna rozšíření. Místo toho byste měli před nasazením použít *jednu přiřazenou IDENTITU MSI* a před nasazením vaše trezory s touto identitou.
 
 ## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShell
 > [!WARNING]
@@ -227,7 +252,7 @@ Mějte na paměti následující omezení/požadavky:
 * Existuje omezení počtu observedCertificates, která můžete nastavit?
   Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

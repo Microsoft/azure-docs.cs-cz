@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132206"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897854"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -28,13 +28,13 @@ AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat 
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_proxy` proměnnou prostředí. Pokud používáte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže ve Windows toto nastavení používat nemusíte. Pokud se rozhodnete toto nastavení použít ve Windows, přepíše se tím automatická detekce.
+Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `HTTPS_PROXY` proměnnou prostředí. Pokud používáte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže ve Windows toto nastavení používat nemusíte. Pokud se rozhodnete toto nastavení použít ve Windows, přepíše se tím automatická detekce.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | V příkazovém řádku použijte: `set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | V příkazovém řádku použijte: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřování pomocí protokolu NTLM nebo Kerberos.
 

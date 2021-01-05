@@ -1,26 +1,28 @@
 ---
 title: Vytvoření a nahrání Red Hat Enterprise Linux VHD pro použití v Azure
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje operační systém Red Hat Linux.
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 05/17/2019
-ms.author: guybo
-ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500491"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896460"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou pokryté v tomto článku, jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou pokryté v tomto článku, jsou Hyper-V, virtuální počítač založený na jádrech (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu cloudového přístupu Red Hat najdete na [webu Cloud Access Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [na platformě Azure s RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsob automatizace vytváření RHEL imagí najdete v tématu [Azure image Builder](./image-builder-overview.md).
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače založeného na Red Hat pomocí Správce technologie Hyper-V
+## <a name="hyper-v-manager"></a>Správce technologie Hyper-V
 
-### <a name="prerequisites"></a>Předpoklady
+V této části se dozvíte, jak připravit virtuální počítač s [RHEL 6](#rhel-6-using-hyper-v-manager) nebo [RHEL 7](#rhel-7-using-hyper-v-manager) pomocí Správce technologie Hyper-V.
+
+### <a name="prerequisites"></a>Požadavky
 V této části se předpokládá, že už jste získali soubor ISO z webu Red Hat a nainstalovali jste image RHEL na virtuální pevný disk (VHD). Další podrobnosti o tom, jak použít Správce technologie Hyper-V k instalaci image operačního systému, najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 **Poznámky k instalaci RHEL**
@@ -28,12 +30,13 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 * Azure nepodporuje formát VHDX. Azure podporuje jenom pevný virtuální pevný disk. Správce technologie Hyper-V můžete použít k převedení disku na formát VHD, nebo můžete použít rutinu Convert-VHD. Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** na rozdíl od výchozí dynamicky přidělené možnosti.
 * Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
-* Správce logických svazků (LVM) je podporován a lze jej použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure. Obecně se ale doporučuje místo LVM použít standardní oddíly na disku s operačním systémem. Tento postup se vyhne konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud někdy budete potřebovat k řešení potíží disk s operačním systémem připojit k jinému stejnému virtuálnímu počítači. Viz také dokumentace k  [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
-* Podpora jádra pro připojení systémů souborů formátu Universal Disk Format (UDF) je povinná. Při prvním spuštění v Azure, médium ve formátu UDF, které je připojené k hostu, předává konfiguraci zřizování virtuálnímu počítači se systémem Linux. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač.
-* Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
+* Správce logických svazků (LVM) je podporován a lze jej použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure. Obecně se ale doporučuje místo LVM použít standardní oddíly na disku s operačním systémem. Tento postup se vyhne konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud někdy budete potřebovat k řešení potíží disk s operačním systémem připojit k jinému stejnému virtuálnímu počítači. Viz také dokumentace k  [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+* **Podpora jádra pro připojení systémů souborů formátu Universal Disk Format (UDF) je povinná**. Při prvním spuštění v Azure, médium ve formátu UDF, které je připojené k hostu, předává konfiguraci zřizování virtuálnímu počítači se systémem Linux. Agent Azure Linux musí být schopný připojit systém souborů UDF ke čtení konfigurace a zřídit virtuální počítač. bez toho se zřizování nezdaří!
+* Nekonfigurujte odkládací oddíl na disku s operačním systémem. Další informace o tomto postupu najdete v následujících krocích.
+
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další podrobnosti najdete v následujících krocích. Další informace najdete v [poznámkách k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače s RHEL 6 pomocí Správce technologie Hyper-V
+### <a name="rhel-6-using-hyper-v-manager"></a>RHEL 6 použití Správce technologie Hyper-V
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 
@@ -156,7 +159,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V
+### <a name="rhel-7-using-hyper-v-manager"></a>RHEL 7 pomocí Správce technologie Hyper-V
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 
@@ -235,25 +238,89 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # sudo systemctl enable waagent.service
     ```
 
-1. Nevytvářejte odkládací místo na disku s operačním systémem.
-
-    Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
+1. Instalace Cloud-init pro zpracování zřizování
 
     ```console
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
+1. Přepnutí konfigurace nevytváří na disku s operačním systémem odkládací místo.
+
+    Dříve se agent Azure Linux použil k automatické konfiguraci odkládacího prostoru pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. To je ale teď zpracovávané pomocí Cloud-init. k naformátování disku prostředků pro vytvoření odkládacího souboru **nemusíte** použít agenta pro Linux. Upravte následující parametry `/etc/waagent.conf` správným způsobem:
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    Pokud chcete připojit, formátovat a vytvořit prohození, můžete buď:
+    * Při každém vytvoření virtuálního počítače ho předejte jako Cloud-init config.
+    * Pomocí direktivy Cloud-init vloženými do image, která to provede při každém vytvoření virtuálního počítače:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
 1. Pokud chcete zrušit registraci předplatného, spusťte následující příkaz:
 
     ```console
     # sudo subscription-manager unregister
     ```
 
-1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
+1. Zrušení zřízení
+
+    Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
@@ -268,8 +335,11 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Příprava virtuálního počítače založeného na Red Hat z KVM
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>Příprava virtuálního počítače s RHEL 6 z KVM
+## <a name="kvm"></a>KVM
+
+V této části se dozvíte, jak pomocí KVM připravit [RHEL 6](#rhel-6-using-kvm) nebo [RHEL 7](#rhel-7-using-kvm) distribuce na nahrání do Azure. 
+
+### <a name="rhel-6-using-kvm"></a>RHEL 6 pomocí KVM
 
 1. Stáhněte si image RHEL 6 na webu Red Hat.
 
@@ -420,7 +490,12 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -465,7 +540,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     ```
 
         
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Příprava virtuálního počítače s RHEL 7 z KVM
+### <a name="rhel-7-using-kvm"></a>RHEL 7 s použitím KVM
 
 1. Stáhněte si obrázek RHEL 7 na webu Red Hat. Tento postup jako příklad používá RHEL 7.
 
@@ -596,17 +671,13 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # systemctl enable waagent.service
     ```
 
-1. Nevytvářejte odkládací místo na disku s operačním systémem.
+1. Instalace Cloud-init postupujte podle kroků v části "Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V", krok 12, instalace Cloud-init pro zpracování zřizování. "
 
-    Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
+1. Prohodit konfiguraci 
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+    Nevytvářejte odkládací místo na disku s operačním systémem.
+    Postupujte podle kroků v části "Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V", Krok 13, "swap Configuration".
+
 
 1. Zrušení registrace předplatného (v případě potřeby) spuštěním následujícího příkazu:
 
@@ -614,17 +685,10 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # subscription-manager unregister
     ```
 
-1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+1. Zrušení zřízení
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
+    Postupujte podle kroků v části Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V, krok 15, zrušení zřízení.
 
 1. Vypněte virtuální počítač v KVM.
 
@@ -663,15 +727,18 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Příprava virtuálního počítače založeného na Red Hat z VMware
-### <a name="prerequisites"></a>Předpoklady
+## <a name="vmware"></a>VMware
+
+V této části se dozvíte, jak připravit [RHEL 6](#rhel-6-using-vmware) nebo [RHEL 7](#rhel-6-using-vmware)  distribuce z VMware.
+
+### <a name="prerequisites"></a>Požadavky
 V této části se předpokládá, že jste už nainstalovali virtuální počítač s RHEL ve VMware. Podrobnosti o tom, jak nainstalovat operační systém ve VMware, najdete v tématu [Instalační příručka k hostovanému operačnímu systému VMware](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Při instalaci operačního systému Linux doporučujeme místo LVM použít standardní oddíly, což je často výchozí nastavení pro mnoho instalací. Tím se zabrání konfliktům LVM názvů s klonováným virtuálním počítačem, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači, aby se mohl problém vyřešit. LVM nebo RAID se dá použít na datových discích, pokud jsou preferované.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agenta pro Linux můžete nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor. Další informace o tomto postupu najdete v následujících krocích.
 * Při vytváření virtuálního pevného disku vyberte možnost **Uložit virtuální disk jako jeden soubor**.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Příprava virtuálního počítače s RHEL 6 z VMware
+### <a name="rhel-6-using-vmware"></a>RHEL 6 pomocí VMware
 1. V RHEL 6 může NetworkManager kolidovat s agentem Azure Linux. Tento balíček odinstalujte spuštěním následujícího příkazu:
 
     ```console
@@ -788,7 +855,12 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # sudo waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -830,7 +902,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Příprava virtuálního počítače s RHEL 7 z VMware
+### <a name="rhel-7-using-vmware"></a>RHEL 7 pomocí VMware
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
 
     ```config
@@ -918,17 +990,14 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # sudo systemctl enable waagent.service
     ```
 
-1. Nevytvářejte odkládací místo na disku s operačním systémem.
+1. Instalace cloudu – inicializace
 
-    Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
+    Postupujte podle kroků v části "Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V", krok 12, instalace Cloud-init pro zpracování zřizování. "
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+1. Prohodit konfiguraci
+
+    Nevytvářejte odkládací místo na disku s operačním systémem.
+    Postupujte podle kroků v části "Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V", Krok 13, "swap Configuration".
 
 1. Pokud chcete zrušit registraci předplatného, spusťte následující příkaz:
 
@@ -936,17 +1005,10 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # sudo subscription-manager unregister
     ```
 
-1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
+1. Zrušení zřízení
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+    Postupujte podle kroků v části Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V, krok 15, zrušení zřízení.
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
 
 1. Vypněte virtuální počítač a převeďte soubor VMDK na formát VHD.
 
@@ -983,8 +1045,11 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Příprava virtuálního počítače založeného na Red Hat z ISO pomocí souboru Kickstart automaticky
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Příprava virtuálního počítače s RHEL 7 ze souboru Kickstart
+## <a name="kickstart-file"></a>Soubor Kickstart
+
+V této části se dozvíte, jak připravit RHEL 7 distribuce z ISO pomocí souboru Kickstart.
+
+### <a name="rhel-7-from-a-kickstart-file"></a>RHEL 7 ze souboru Kickstart
 
 1.  Vytvořte soubor Kickstart, který obsahuje následující obsah, a uložte soubor. Podrobnosti o instalaci Kickstart najdete v [Průvodci instalací Kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
@@ -1075,12 +1140,46 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     # Enable waaagent at boot-up
     systemctl enable waagent
 
+    # Install cloud-init
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
     # Disable the root account
     usermod root -p '!!'
 
-    # Configure swap in WALinuxAgent
-    sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
-    sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
+    # Disabke swap in WALinuxAgent
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+
+    # Configure swap using cloud-init
+    cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+    #cloud-config
+    # Generated by Azure cloud image build
+    disk_setup:
+    ephemeral0:
+        table_type: mbr
+        layout: [66, [33, 82]]
+        overwrite: True
+    fs_setup:
+    - device: ephemeral0.1
+        filesystem: ext4
+    - device: ephemeral0.2
+        filesystem: swap
+    mounts:
+    - ["ephemeral0.1", "/mnt"]
+    - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+    EOF
 
     # Set the cmdline
     sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
@@ -1105,7 +1204,14 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
     EOF
 
     # Deprovision and prepare for Azure if you are creating a generalized image
-    waagent -force -deprovision
+    sudo cloud-init clean --logs --seed
+    sudo rm -rf /var/lib/cloud/
+    sudo rm -rf /var/lib/waagent/
+    sudo rm -f /var/log/waagent.log
+
+    sudo waagent -force -deprovision+user
+    rm -f ~/.bash_history
+    export HISTSIZE=0
 
     %end
     ```

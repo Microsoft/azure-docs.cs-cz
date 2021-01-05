@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 2da675f0836dbb10ce5227e7e93e98d706cc5c64
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544798"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896358"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
@@ -35,13 +35,13 @@ ms.locfileid: "95544798"
 > * Generovat upozornění na metriky monitorování připojení
 > * Diagnostikovat a vyřešit potíže s komunikací mezi dvěma virtuálními počítači
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 

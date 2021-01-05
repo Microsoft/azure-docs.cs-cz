@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350700"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897269"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -50,7 +50,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 1. Identifikujte název instance ServiceNow. Název instance najdete v adrese URL, kterou používáte pro přístup k ServiceNow. V následujícím příkladu je název instance dev35214.
 
-   ![Instance ServiceNow](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![Instance ServiceNow](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. Získejte přihlašovací údaje pro správce v ServiceNow. Přejděte do profilu uživatele v ServiceNow a ověřte, jestli má uživatel roli správce. 
 
@@ -94,7 +94,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte svoje přihlašovací údaje správce ServiceNow a uživatelské jméno. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ServiceNow. Pokud se připojení nepovede, ujistěte se, že má váš účet ServiceNow oprávnění správce, a zkuste to znovu.
 
-    ![Snímek obrazovky ukazuje stránku zřizování služby, kde můžete zadat přihlašovací údaje správce.](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky ukazuje stránku zřizování služby, kde můžete zadat přihlašovací údaje správce.](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 
@@ -142,12 +142,17 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   Tato chyba označuje problém komunikující s instancí ServiceNow. Dvakrát zkontrolujte, jestli jsou v ServiceNow *zakázaná* tato nastavení:
+   Tato chyba označuje problém komunikující s instancí ServiceNow. 
    
-   1. Vybrat **System Security**  >  **nastavení vysokého zabezpečení** zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
+   Pokud máte problémy s testováním připojení, zkuste v ServiceNow nastavit následující nastavení jako **zakázané** :
+   
+   1. Vybrat   >  **nastavení vysokého zabezpečení** zabezpečení systému  >  **vyžaduje základní ověřování pro příchozí požadavky schématu**.
    2. Vybrat **Vlastnosti systému**  >  **webové služby**  >  **vyžadují základní autorizaci pro příchozí požadavky SOAP**.
 
-## <a name="additional-resources"></a>Další zdroje informací
+   ![Autorizace žádosti SOAP](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   Pokud se vaše problémy vyřeší, obraťte se na podporu ServiceNow a požádejte je, aby zapnula ladění SOAP, aby pomohla při odstraňování potíží. 
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

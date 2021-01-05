@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355028"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895134"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Použití spravovaných identit k přístupu k centru událostí z Azure Stream Analytics úlohy (Preview)
 
@@ -20,6 +20,9 @@ Azure Stream Analytics podporuje spravované ověřování identity pro Azure Ev
 Spravovaná identita je spravovaná aplikace zaregistrovaná v Azure Active Directory, která představuje danou Stream Analytics úlohu. Spravovaná aplikace se používá k ověření cílového prostředku, včetně Event Hubs za bránou firewall nebo virtuální sítí (VNet). Další informace o tom, jak obejít brány firewall, najdete v tématu [Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů](../event-hubs/private-link-service.md#trusted-microsoft-services).
 
 V tomto článku se dozvíte, jak povolit spravovanou identitu pro Event Hubs vstup nebo výstup Stream Analyticsch úloh prostřednictvím Azure Portal.Než povolíte spravovanou identitu, musíte nejdřív mít prostředek Stream Analytics úlohy a centra událostí.
+
+### <a name="limitation"></a>Omezení
+Během období Preview nebudou při použití spravovaného režimu ověřování identity v Azure Portal fungovat vstupní vzorky z Event Hubs.
 
 ## <a name="create-a-managedidentity"></a>Vytvoření spravované identity  
 

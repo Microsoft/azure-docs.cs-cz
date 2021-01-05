@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e3d657f5f666caf159a082d121d551b839699158
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: e6f0c694a478b32098327d6af838ff00c8eb877a
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882989"
+ms.locfileid: "97897055"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které mají dvě sady ověřovacích přihlašovacích údajů
 
@@ -224,10 +224,10 @@ Všimněte si, že `value` klíč je stejný jako tajný klíč v trezoru klíč
 
 Šablona funkcí rotace pro dvě sady přihlašovacích údajů a několik připravených na použití funkcí:
 
-- [Šablona funkce v PowerShellu](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell)
-- [Redis Cache](https://github.com/Azure/KeyVault-Secrets-Rotation-Redis-PowerShell)
-- [Účet úložiště](https://github.com/Azure/KeyVault-Secrets-Rotation-StorageAccount-PowerShell)
-- [Databáze Cosmos](https://github.com/Azure/KeyVault-Secrets-Rotation-CosmosDB-PowerShell)
+- [Šablona funkce v PowerShellu](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [Účet úložiště](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Databáze Cosmos](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
 
 > [!NOTE]
 > Nad rámec funkcí rotace vytvoří člen komunity a ne společnost Microsoft. Azure Functions komunity nejsou podporované v rámci programu nebo služby podpory Microsoftu a jsou dostupné tak, jak jsou, bez záruky jakéhokoli druhu.

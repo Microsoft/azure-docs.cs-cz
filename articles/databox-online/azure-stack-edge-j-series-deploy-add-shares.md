@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740908"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897594"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Kurz: přenos dat prostřednictvím sdílených složek s grafickým procesorem Azure Stack Edge pro
 
@@ -43,7 +43,7 @@ Než přidáte sdílené složky do Azure Stack Edge pro, ujistěte se, že:
 
 Chcete-li vytvořit sdílenou složku, proveďte následující postup:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online.
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online. Vyberte možnost **Brána cloudového úložiště**.
 
    ![Online zařízení](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ Chcete-li vytvořit sdílenou složku, proveďte následující postup:
 
    ![Přidání sdílené složky](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. V podokně **Přidat sdílenou složku** proveďte následující postup:
+3. V podokně **Přidat sdílenou složku** proveďte následující kroky:
 
     a. Do pole **název** zadejte jedinečný název pro sdílenou složku.  
     Název sdílené složky může obsahovat jenom písmena, číslice a spojovníky. Musí mít 3 až 63 znaků a nesmí začínat písmenem nebo číslicí. Spojovníky musí předcházet znak a následovaný písmenem nebo číslicí.

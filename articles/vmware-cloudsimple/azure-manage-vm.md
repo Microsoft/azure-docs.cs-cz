@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – Správa virtuálních počítačů s privátním cloudem v Azure
 description: Popisuje, jak spravovat virtuální počítače CloudSimple privátního cloudu v Azure Portal, včetně přidávání disků, změny kapacity virtuálních počítačů a přidávání síťových rozhraní.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082065"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895185"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Správa virtuálních počítačů privátního cloudu CloudSimple v Azure
 
@@ -56,7 +56,7 @@ Pokud chcete přidat disk virtuálního počítače, otevřete stránku **disky*
    | Název | Zadejte název pro identifikaci disku.  |
    | Velikost | Vyberte jednu z dostupných velikostí.  |
    | Řadič SCSI | Vyberte řadič SCSI. Dostupné řadiče se liší v různých podporovaných operačních systémech.  |
-   | Mode | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé, netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Tento režim umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v [dokumentaci k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
+   | Režim | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé, netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Tento režim umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v [dokumentaci k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
 
 Disk odstraníte tak, že ho vyberete a kliknete na **Odstranit**.
 
