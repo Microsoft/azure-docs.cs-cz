@@ -4,12 +4,12 @@ description: Nakonfigurujte akci GitHubu, která automatizuje kroky k sestavení
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609152"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814274"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurace akce GitHubu pro vytvoření instance kontejneru
 
@@ -31,7 +31,7 @@ Tento článek ukazuje dva způsoby, jak nastavit pracovní postup:
 > [!IMPORTANT]
 > Akce GitHub pro Azure Container Instances je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte.
 * **Azure CLI** – k dokončení kroků rozhraní PŘÍKAZového řádku Azure můžete použít Azure Cloud Shell nebo místní instalaci rozhraní PŘÍKAZového řádku Azure. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
@@ -56,7 +56,7 @@ V pracovním postupu GitHubu je potřeba zadat přihlašovací údaje Azure pro 
 Nejprve Získejte ID prostředku vaší skupiny prostředků. Název skupiny nahraďte následujícím příkazem [AZ Group show][az-group-show] :
 
 ```azurecli
-$groupId=$(az group show \
+groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

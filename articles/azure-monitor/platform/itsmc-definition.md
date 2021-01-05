@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657154"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809475"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -32,10 +32,9 @@ Než budete moct vytvořit připojení, musíte přidat ITSMC.
 
    ![Snímek obrazovky, který zobrazuje tlačítko vytvořit v Azure Marketplace.](media/itsmc-overview/add-itsmc-solution.png)
 
-3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete nainstalovat ITSMC.
+3. V části **pracovní prostor La** vyberte pracovní prostor Azure Log Analytics, do kterého chcete nainstalovat ITSMC.
    >[!NOTE]
    >
-   > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory*.
    > * ITSMC se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, Západní USA 2, Střed USA – jih, Středozápadní USA, US Gov – Arizona, US Gov – Virginie, Kanada – střed, Západní Evropa, Jižní Velká Británie, jihovýchodní Asie, Japonsko – východ, Střed Indie a Austrálie – jihovýchod.
 
 4. V části **pracovní prostor Log Analytics** vyberte skupinu prostředků, ve které chcete vytvořit prostředek ITSMC:
@@ -56,10 +55,10 @@ Pokud chcete vytvořit připojení, budete muset nástroj ITSM použít k tomu, 
 
 Podle ITSM produktu, ke kterému se připojujete, vyberte jeden z následujících odkazů pro pokyny:
 
-- [System Center Service Manager](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Prov](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [ServiceNow](./itsmc-connections-servicenow.md)
+- [System Center Service Manager](./itsmc-connections-scsm.md)
+- [Cherwell](./itsmc-connections-cherwell.md)
+- [Prov](./itsmc-connections-provance.md)
 
 Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
@@ -70,10 +69,14 @@ Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 1. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM**:
 
    ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
-   Tato stránka zobrazuje seznam připojení.
 1. Vyberte **Přidat připojení**.
 
-4. Zadejte nastavení připojení, jak je popsáno v tématu [Konfigurace připojení ITSMC k vašim ITSMm produktům a službám](./itsmc-connections.md).
+1. Zadejte nastavení připojení podle popisu v tématu ITSM Products/Services:
+
+    - [ServiceNow](./itsmc-connections-servicenow.md)
+    - [System Center Service Manager](./itsmc-connections-scsm.md)
+    - [Cherwell](./itsmc-connections-cherwell.md)
+    - [Prov](./itsmc-connections-provance.md)
 
    > [!NOTE]
    >
@@ -83,13 +86,7 @@ Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
 ## <a name="use-itsmc"></a>Použití ITSMC
 
-   Pomocí ITSMC můžete vytvářet pracovní položky z výstrah Azure, výstrahy Log Analytics a Log Analytics záznamů protokolu.
-
-## <a name="template-definitions"></a>Definice šablon
-
-   Existují typy pracovních položek, které mohou používat šablony, které jsou definovány nástrojem ITSM.
-Pomocí šablon můžete definovat pole, která budou automaticky vyplněna podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Šablony definujete v nástroji ITSM.
-V rámci definice skupiny akcí můžete definovat, ve které šabloně se chcete použít.
+   Pomocí ITSMC můžete vytvořit výstrahy z Azure Monitor výstrahy do nástroje ITSM.
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Vytváření pracovních položek ITSM z výstrah Azure
 
@@ -100,7 +97,13 @@ Skupiny akcí poskytují modulární a opakovaně použitelný způsob, jak akti
 > [!NOTE]
 > Po vytvoření připojení ITSM musíte počkat 30 minut, než se proces synchronizace dokončí.
 
-Chcete-li vytvořit pracovní položky, použijte následující postup:
+### <a name="template-definitions"></a>Definice šablon
+
+   Existují typy pracovních položek, které mohou používat šablony, které jsou definovány nástrojem ITSM.
+Pomocí šablon můžete definovat pole, která budou automaticky vyplněna podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Šablony definujete v nástroji ITSM.
+Můžete definovat, která šablona se má použít jako součást definice skupiny akcí.
+
+Pro vytvoření skupin akcí použijte následující postup:
 
 1. V Azure Portal vyberte  **výstrahy**.
 2. V nabídce v horní části obrazovky vyberte **Spravovat akce**:
@@ -115,13 +118,16 @@ Chcete-li vytvořit pracovní položky, použijte následující postup:
 
 4. V seznamu oznámení vyberte **Další: akce**.
 5. V seznamu akce vyberte v seznamu **typ akce** možnost **ITSM** . Zadejte **název** akce. Vyberte tlačítko pera, které představuje **Úpravy podrobností**.
+
+    ![Snímek obrazovky zobrazující definici skupiny akcí](media/itsmc-definition/action-group-pen.png)
+
 6. V seznamu **předplatné** vyberte předplatné, ve kterém se nachází váš pracovní prostor Log Analytics. V seznamu **připojení** vyberte název konektoru ITSM. Za ním bude následovat název vašeho pracovního prostoru. Například MyITSMConnector (MyWorkspace).
 
 7. Vyberte typ **pracovní položky** .
 
 8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu**. V opačném případě v seznamu **šablon** vyberte existující [šablonu](#template-definitions) a v polích šablony zadejte pevné hodnoty.
 
-9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace**, bude každá položka konfigurace mít svou vlastní pracovní položku. Pro každou položku konfigurace bude k dispozici jedna pracovní položka. Bude aktualizován podle výstrah, které budou vytvořeny.
+9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace**, bude každá položka konfigurace mít svou vlastní pracovní položku. To znamená, že pro každou položku konfigurace bude k dispozici jedna pracovní položka.
 
     * V případě, že vyberete v rozevíracím seznamu pracovní položky "incident" nebo "Alert": Pokud zrušíte zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
 
@@ -141,124 +147,6 @@ Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu 
 >
 >- Pole s krátkým popisem v definici pravidla výstrahy je při odeslání pomocí akce ITSM omezené na 40 znaků.
 
-## <a name="additional-information"></a>Další informace
-
-### <a name="data-synced-from-your-itsm-product"></a>Data synchronizovaná z produktu ITSM
-
-Incidenty a žádosti o změnu se synchronizují z vašeho ITSM produktu do vašeho pracovního prostoru Log Analytics v závislosti na konfiguraci připojení.
-
-V této části jsou uvedeny některé příklady dat shromažďovaných nástrojem ITSMC.
-
-Pole v **ServiceDesk_CL** se liší v závislosti na typu pracovní položky, který importujete do Log Analytics. Zde je seznam polí pro dva typy pracovních položek:
-
-**Pracovní položka:** **incidenty**  
-ServiceDeskWorkItemType_s = incident
-
-**Pole**
-
-- ServiceDeskConnectionName
-- ID oddělení služeb
-- State
-- Naléhavost
-- Dopad
-- Priorita
-- Eskalace
-- Created By
-- Vyřešil
-- Uzavřel
-- Zdroj
-- Přiřazený pro
-- Kategorie
-- Nadpis
-- Popis
-- Datum vytvoření
-- Datum uzavření
-- Datum vyřešení
-- Datum poslední změny
-- Počítač
-
-**Pracovní položka:** **žádosti o změnu**
-
-ServiceDeskWorkItemType_s = "žádost o změnu"
-
-**Pole**
-- ServiceDeskConnectionName
-- ID oddělení služeb
-- Created By
-- Uzavřel
-- Zdroj
-- Přiřazený pro
-- Nadpis
-- Typ
-- Kategorie
-- State
-- Eskalace
-- Stav konfliktu
-- Naléhavost
-- Priorita
-- Riziko
-- Dopad
-- Přiřazený pro
-- Datum vytvoření
-- Datum uzavření
-- Datum poslední změny
-- Požadované datum
-- Plánované počáteční datum
-- Plánované koncové datum
-- Datum zahájení práce
-- Datum ukončení práce
-- Popis
-- Počítač
-
-## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
-
-| Log Analytics pole | Pole ServiceNow |
-|:--- |:--- |
-| ServiceDeskId_s| Číslo |
-| IncidentState_s | State |
-| Urgency_s |Naléhavost |
-| Impact_s |Dopad|
-| Priority_s | Priorita |
-| CreatedBy_s | Otevřel |
-| ResolvedBy_s | Vyřešil|
-| ClosedBy_s  | Uzavřel |
-| Source_s| Typ kontaktu |
-| AssignedTo_s | Přiřazeno  |
-| Category_s | Kategorie |
-| Title_s|  Krátký popis |
-| Description_s|  Poznámky |
-| CreatedDate_t|  Otevřít |
-| ClosedDate_t| closed|
-| ResolvedDate_t|Vyřešeno|
-| Počítač  | Položka konfigurace |
-
-## <a name="output-data-for-a-servicenow-change-request"></a>Výstupní data pro žádost o změnu ServiceNow
-
-| Log Analytics | Pole ServiceNow |
-|:--- |:--- |
-| ServiceDeskId_s| Číslo |
-| CreatedBy_s | Požadoval (a) |
-| ClosedBy_s | Uzavřel |
-| AssignedTo_s | Přiřazeno  |
-| Title_s|  Krátký popis |
-| Type_s|  Typ |
-| Category_s|  Kategorie |
-| CRState_s|  State|
-| Urgency_s|  Naléhavost |
-| Priority_s| Priorita|
-| Risk_s| Riziko|
-| Impact_s| Dopad|
-| RequestedDate_t  | Požadováno podle data |
-| ClosedDate_t | Datum uzavření |
-| PlannedStartDate_t  | Plánované počáteční datum |
-| PlannedEndDate_t  | Plánované koncové datum |
-| WorkStartDate_t  | Skutečné datum zahájení |
-| WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Popis |
-| Počítač  | Položka konfigurace |
-
 ## <a name="next-steps"></a>Další kroky
 
-Přehled konektoru [ITSM](./itsmc-overview.md) 
- [Přidat ITSM produkty/služby do konektoru](./itsmc-connections.md) 
- správy služeb IT [Řešení problémů v konektoru ITSM](./itsmc-resync-servicenow.md)
+* [Řešení potíží v ITSM konektoru](./itsmc-resync-servicenow.md)

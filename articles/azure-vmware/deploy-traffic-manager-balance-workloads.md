@@ -1,119 +1,130 @@
 ---
-title: Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Solution (AVS)
-description: Naučte se integrovat Traffic Manager se službou Azure VMware Solution (AVS) pro vyrovnávání zatížení aplikací napříč několika koncovými body v různých oblastech.
+title: Nasazení Traffic Manager pro vyrovnávání zatížení řešení Azure VMware
+description: Naučte se integrovat Traffic Manager s řešením Azure VMware a vyrovnávat aplikační úlohy napříč několika koncovými body v různých oblastech.
 ms.topic: how-to
-ms.date: 08/14/2020
-ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.date: 12/29/2020
+ms.openlocfilehash: 6dbd58f17e29b045bd654bee90b6390f608803ab
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874278"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809730"
 ---
-# <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Solution (AVS)
+# <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení řešení Azure VMware
 
-Tento článek vás provede integrací Traffic Manager s využitím řešení Azure VMware (AVS) pro vyrovnávání zatížení aplikací napříč několika koncovými body. Podíváme se na scénář, ve kterém Traffic Manager směrovat provoz mezi třemi aplikačními branami, které pokrývá několik oblastí služby AVS: Západní USA, Západní Evropa a místní v Východní USA. 
+Tento článek vás seznámí s postupem, jak integrovat [Traffic Manager Azure](../traffic-manager/traffic-manager-overview.md) s řešením Azure VMware. Integrace vyrovnává aplikační úlohy napříč několika koncovými body. Tento článek vás také provede postupem konfigurace Traffic Manager pro směrování provozu mezi třemi [Azure Application Gateway](../application-gateway/overview.md) zahrnující několik oblastí řešení Azure VMware. 
 
-Azure Traffic Manager je nástroj pro vyrovnávání zatížení založený na DNS, který umožňuje distribuci provozu optimálně do služeb napříč globálními oblastmi Azure. Vyrovnává zatížení aplikačních dat napříč úlohami spuštěnými v Azure i s externími veřejnými koncovými body. Další informace o Traffic Manager najdete v tématu [co je Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
+Brány mají virtuální počítače (VM) Azure VMware nakonfigurované jako členy fondu back-end pro vyrovnávání zatížení příchozích požadavků vrstvy 7. Další informace najdete v tématu [použití Azure Application Gateway k ochraně vašich webových aplikací v řešení VMware Azure](protect-azure-vmware-solution-with-application-gateway.md) .
 
-Nejdříve si přečtěte [požadavky](#prerequisites) . pak projdeme postupy pro:
+Diagram ukazuje, jak Traffic Manager poskytuje vyrovnávání zatížení pro aplikace na úrovni DNS mezi místními koncovými body. Brány mají členy fondu back-end nakonfigurovaní jako servery IIS a odkazují jako externí koncové body řešení Azure VMware. Připojení přes virtuální síť mezi dvěma oblastmi privátního cloudu používá bránu ExpressRoute.   
+
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Diagram architektury Traffic Manager integrace s řešením Azure VMware" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
+
+Než začnete, nejdříve si přečtěte [předpoklady](#prerequisites) a pak Projděte postupy, které vám pomůžou:
 
 > [!div class="checklist"]
-> * Ověření konfigurace bran Application Gateway
-> * Ověřit konfiguraci segmentu NSX-T
+> * Ověřte konfiguraci bran Application Gateway a segmentu NSX-T.
 > * Vytvořit profil Traffic Manager
 > * Přidání externích koncových bodů do profilu Traffic Manager
 
-## <a name="topology"></a>Topologie
+## <a name="prerequisites"></a>Požadavky
 
-Jak je znázorněno na následujícím obrázku, Azure Traffic Manager poskytuje vyrovnávání zatížení pro aplikace na úrovni DNS mezi místními koncovými body. Aplikační brány mají členy fondu back-end nakonfigurovaní jako servery IIS a odkazují na ně jako externí koncové body služby AVS.
+- Tři virtuální počítače nakonfigurované jako servery Microsoft IIS běžící v různých oblastech řešení Azure VMware: 
+   - USA – západ
+   - West Europe
+   - Východní USA (místní) 
 
-Připojení k virtuální síti mezi dvěma oblastmi privátního cloudu služby AVS, Západní USA a Západní Evropa a místním serverem v Východní USA používá bránu ExpressRoute.   
-
-:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Diagram architektury Traffic Manager integrace s řešením Azure VMware" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
- 
-## <a name="prerequisites"></a>Předpoklady
-
-- Tři virtuální počítače nakonfigurované jako servery Microsoft IIS spuštěné v různých oblastech služby AVS: Západní USA, Západní Evropa a místní. 
-
-- Aplikační brána s externími koncovými body v Západní USA, Západní Evropa a místně.
+- Aplikační brána s externími koncovými body v oblastech řešení Azure VMware uvedených výše.
 
 - Hostitel s připojením k Internetu pro ověřování. 
 
-## <a name="verify-configuration-of-your-application-gateways"></a>Ověření konfigurace bran Application Gateway
+- [Segment sítě NSX-T vytvořený v řešení Azure VMware](tutorial-nsx-t-network-segment.md).
 
-[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) je nástroj pro vyrovnávání zatížení webového provozu vrstvy 7, který umožňuje spravovat provoz do webových aplikací. Další informace o Application Gateway najdete v tématu [co je Azure Application Gateway?](../application-gateway/overview.md) 
+## <a name="verify-your-application-gateways-configuration"></a>Ověření konfigurace bran Application Gateway
 
-V tomto scénáři se tři instance aplikační brány konfigurují jako externí koncové body služby AVS. Brány Application Gateway mají virtuální počítače, které jsou nakonfigurované jako členy fondu back-end, k vyrovnávání zatížení příchozích požadavků vrstvy 7. (Informace o tom, jak nakonfigurovat Application Gateway s virtuálními počítači služby AVS jako back-end fondy, najdete v tématu [použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure](protect-azure-vmware-solution-with-application-gateway.md).)  
+Následující kroky ověřují konfiguraci aplikačních bran.
 
-Následující postup ověří správnou konfiguraci bran Application Gateway.
+1. V Azure Portal vyberte **aplikační brány** a zobrazte seznam aktuálních aplikačních bran:
 
-1. Otevřete Azure Portal a vyberte **aplikační brány** , abyste zobrazili seznam aktuálních aplikačních bran. 
+   - AVS-GS-WUS
+   - AVS-GS-EUS (místní)
+   - AVS-GS-ZEU
 
-    V tomto scénáři jsme nakonfigurovali tři aplikační brány:
-    - AVS-GS-WUS
-    - AVS-GS-EUS (místní)
-    - AVS-GS-ZEU
+   :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Snímek obrazovky stránky Application Gateway zobrazující seznam nakonfigurovaných aplikačních bran" lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Snímek obrazovky stránky Application Gateway zobrazující seznam nakonfigurovaných aplikačních bran" lightbox="media/traffic-manager/app-gateways-list-1.png":::
+1. Vyberte jednu z dříve nasazených aplikačních bran. 
 
-2. Vyberte jednu z dříve nasazených aplikačních bran. Otevře se okno s informacemi o různých informacích o aplikační bráně. Vyberte **back-end fondy** a ověřte konfiguraci jednoho ze skupin back-end.
+   Otevře se okno s informacemi o různých informacích o aplikační bráně. 
 
    :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Snímek obrazovky stránky Application Gateway zobrazující podrobnosti vybrané aplikační brány" lightbox="media/traffic-manager/backend-pool-config.png":::
+
+1. Vyberte **back-end fondy** a ověřte konfiguraci jednoho ze skupin back-end. Vidíte jeden člen fondu back-endu virtuálního počítače nakonfigurovaný jako webový server s IP adresou 172.29.1.10.
  
-3. V tomto případě uvidíme jeden člen back-endu virtuálního počítače nakonfigurovaný jako webový server s IP adresou 172.29.1.10.
- 
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Snímek stránky pro úpravu back-endu back-endu s zvýrazněnou cílovou IP adresou.":::
+   :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Snímek stránky pro úpravu back-endu back-endu s zvýrazněnou cílovou IP adresou.":::
 
-    Podobně můžete ověřit konfiguraci ostatních aplikačních bran a členů fondu back-end. 
+1. Ověřte konfiguraci ostatních aplikačních bran a členů fondu back-end. 
 
-## <a name="verify-configuration-of-the-nsx-t-segment"></a>Ověřit konfiguraci segmentu NSX-T
+## <a name="verify-the-nsx-t-segment-configuration"></a>Ověřit konfiguraci segmentu NSX-T
 
-Síťové segmenty vytvořené ve Správci NSX-T se používají jako sítě pro virtuální počítače v vCenter. Další informace najdete v kurzu [Vytvoření síťového segmentu NSX-T v řešení Azure VMware (AVS)](tutorial-nsx-t-network-segment.md).
+Následující kroky ověřují konfiguraci segmentu NSX-T v prostředí řešení Azure VMware.
 
-V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS, kde je připojený členský virtuální počítač back-end fondu.
+1. Vyberte **segmenty** pro zobrazení konfigurovaných segmentů.  Zobrazí se contoso-SEGMENT1 připojený k bráně contoso-T01, což je flexibilní směrovač úrovně 1.
 
-1. Vyberte **segmenty** pro zobrazení konfigurovaných segmentů. V tomto případě uvidíme, že contoso-SEGMENT1 je připojený k bráně contoso-T01, což je flexibilní směrovač úrovně 1.
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Snímek obrazovky zobrazující profily segmentů ve Správci NSX-T" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Snímek obrazovky zobrazující profily segmentů ve Správci NSX-T" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
-
-2. Vyberte **brány úrovně 1** , abyste viděli seznam bran-1 s počtem propojených segmentů. Vyberte segment propojený s contoso-T01. Otevře se okno znázorňující logické rozhraní nakonfigurované na směrovači vrstvy 1. Slouží jako brána k virtuálnímu počítači back-end fondu připojenému k segmentu.
+1. Vyberte **brány úrovně 1** , abyste viděli seznam bran-1 s počtem propojených segmentů. 
 
    :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Snímek obrazovky zobrazující adresu brány vybraného segmentu":::    
 
-3. V klientovi vSphere virtuálního počítače vyberte virtuální počítač, na kterém chcete zobrazit jeho podrobnosti. Všimněte si, že IP adresa se shoduje s tím, co jsme viděli v kroku 3 předchozí části: 172.29.1.10.
+1. Vyberte segment propojený s contoso-T01. Otevře se okno znázorňující logické rozhraní nakonfigurované na směrovači vrstvy 1. Slouží jako brána k virtuálnímu počítači, který je členem fondu back-end připojený k segmentu.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o virtuálním počítači v klientovi VSphere" lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
+1. V klientovi vSphere vyberte virtuální počítač, pro který chcete zobrazit jeho podrobnosti. 
 
-4. Vyberte virtuální počítač a pak klikněte na **akce > upravit nastavení** a ověřte připojení k segmentu NSX-T.
+   >[!NOTE]
+   >Jeho IP adresa se shoduje s členem fondu back-end virtuálního počítače nakonfigurovaným jako webový server z předchozí části: 172.29.1.10.
+
+   :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o virtuálním počítači v klientovi vSphere" lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
+
+4. Vyberte virtuální počítač a pak vyberte **akce > upravit nastavení** a ověřte připojení k segmentu NSX-T.
 
 ## <a name="create-your-traffic-manager-profile"></a>Vytvořit profil Traffic Manager
 
-1. Přihlaste se k [Azure Portal](https://rc.portal.azure.com/#home). V části **služby Azure > sítě** vyberte **profily Traffic Manager**.
+1. Přihlaste se na [Azure Portal](https://rc.portal.azure.com/#home). V části **služby Azure > sítě** vyberte **profily Traffic Manager**.
 
 2. Vyberte **+ Přidat** a vytvořte nový profil Traffic Manager.
  
-3. Zadejte název profilu, metodu směrování (v tomto scénáři budeme používat váženého), podívejte se na [Traffic Manager metody směrování](../traffic-manager/traffic-manager-routing-methods.md)), předplatné a skupinu prostředků a vyberte **vytvořit**.
+3. Zadejte následující informace a pak vyberte **vytvořit**:
+
+   - Název profilu
+   - Metoda směrování (použijte [Vážený](../traffic-manager/traffic-manager-routing-methods.md)
+   - Předplatné
+   - Skupina prostředků
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>Přidání externích koncových bodů do profilu Traffic Manager
 
 1. V podokně výsledků hledání vyberte profil Traffic Manager, vyberte **koncové body** a potom **+ Přidat**.
 
-2. Zadejte požadované podrobnosti: typ, název, plně kvalifikovaný název domény (FQDN) nebo IP a váhu (v tomto scénáři přiřadíme váhu 1 ke každému koncovému bodu). Vyberte **Přidat**. Tím se vytvoří externí koncový bod. Stav monitorování musí být **online**. Opakujte stejný postup pro vytvoření dvou externích koncových bodů, jeden v jiné oblasti a jiné místní. Po vytvoření se všechny tři zobrazí v profilu Traffic Manager a stav všech tří by měl být **online**.
+1. Pro každý z externích koncových bodů v různých oblastech zadejte požadované podrobnosti a pak vyberte **Přidat**: 
+   - Typ
+   - Název
+   - Plně kvalifikovaný název domény (FQDN) nebo IP adresa
+   - Váha (přiřaďte váhu 1 ke každému koncovému bodu). 
 
-3. Vyberte **Přehled**. Zkopírujte adresu URL v části **název DNS**.
+   Po vytvoření budou všechny tři zobrazovat v profilu Traffic Manager. Stav monitorování všech tří musí být **online**.
+
+3. V části **název DNS** vyberte **Přehled** a zkopírujte adresu URL.
 
    :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Snímek obrazovky s přehledem Traffic Managerho koncového bodu se zvýrazněným názvem DNS" lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
-4. Vložte adresu URL názvu DNS do prohlížeče. Následující snímek obrazovky ukazuje provoz, který směruje do Západní Evropa oblasti.
+4. Vložte adresu URL názvu DNS do prohlížeče. Snímek obrazovky ukazuje provoz, který směruje do Západní Evropa oblasti.
 
    :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný na Západní Evropa."::: 
 
-5. Aktualizujte si stránku v prohlížeči. Následující snímek obrazovky ukazuje provoz, který je nyní přesměrován do jiné sady členů fondu back-end v oblasti Západní USA.
+5. Aktualizujte si stránku v prohlížeči. Snímek obrazovky ukazuje provoz, který směruje na jinou sadu členů fondu back-end v oblasti Západní USA.
 
    :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný na Západní USA."::: 
 
-6. Znovu aktualizujte prohlížeč. Následující snímek obrazovky ukazuje provoz, který teď směruje na konečnou sadu členů fondu back-end objektů.
+6. Znovu aktualizujte prohlížeč. Snímek obrazovky ukazuje provoz, který směřuje do konečné sady členů fondu back-end v místním prostředí.
 
    :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Snímek obrazovky okna prohlížeče zobrazující provoz směrovaný do místního prostředí.":::
 
@@ -121,7 +132,7 @@ V našem scénáři je segment NSX-T nakonfigurovaný v prostředí služby AVS,
 
 Přečtěte si další informace:
 
-- [Použití Azure Application Gateway v řešení VMware Azure (AVS)](protect-azure-vmware-solution-with-application-gateway.md)
+- [Použití Azure Application Gateway v řešení VMware Azure](protect-azure-vmware-solution-with-application-gateway.md)
 - [Metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md)
 - [Kombinování služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md)
 - [Měření výkonu Traffic Manager](../traffic-manager/traffic-manager-performance-considerations.md)

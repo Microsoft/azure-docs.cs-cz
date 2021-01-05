@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028542"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814427"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Zvýhodnění závazku využití Azure
 
@@ -31,7 +31,7 @@ Pokud chcete tuto výhodu využít, stačí si koupit opravňující nabídku na
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Určení, jestli má vaše organizace závazek na využití Azure (MACC/CtC)
 
-Pokud si nejste jistí, jestli má vaše organizace opravňující smlouvu, přihlaste se k prostředí Marketplace v rámci [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) v rámci tenanta přidruženého k vaší organizaci. Pokud se vám v rámci cenového filtru zobrazí možnost **zvýhodněné výhody Azure** , máte opravňující závazek na využití Azure. Opravňující nákupy Azure Marketplace přispívat k závazku na používání Azure ve vaší organizaci, pokud se kupují přímo prostřednictvím Azure Marketplace.
+Pokud si nejste jistí, jestli má vaše organizace opravňující smlouvu, přihlaste se k prostředí Marketplace v rámci [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) v rámci tenanta přidruženého k vaší organizaci. Pokud se vám zobrazí možnost vybrat **zvýhodněné výhody Azure** jako možnost filtru, máte opravňující závazek na využití Azure. Opravňující nákupy Azure Marketplace přispívat k závazku na používání Azure ve vaší organizaci, pokud se kupují přímo prostřednictvím Azure Marketplace.
 
 [![Možnost nabídky s nárokem na zvýhodnění Azure](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355830"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ClientVPNem AWS
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat AWS ClientVPN s Azure Active Directory
 * Umožněte uživatelům, aby se automaticky přihlásili k AWS ClientVPN s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory AWS ClientVPN](https://aws.amazon.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné.  Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi.  Adresa URL pro přihlášení a adresa URL odpovědi můžou mít stejnou hodnotu ( http://127.0.0.1:35001) .  Podrobnosti najdete v [dokumentaci k síti VPN klienta AWS](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad) .   Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. Pro všechny problémy s konfigurací se obraťte na [tým podpory AWS ClientVPN](https://aws.amazon.com/contact-us/) . 
 
 1. Ve službě Azure Active Directory přejděte na **Registrace aplikací** a pak vyberte **všechny aplikace**.
 

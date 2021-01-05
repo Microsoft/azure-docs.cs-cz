@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: bonova, sstein
-ms.date: 11/10/2020
-ms.openlocfilehash: c30cecf0b480a1765f04ee48a0fd66f4ddd52708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.reviewer: bonova, sstein, danil
+ms.date: 12/25/2020
+ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630322"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809509"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Porovnání funkcí: Azure SQL Database a Azure SQL Managed instance
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Kolace – Server/instance](/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace serveru `SQL_Latin1_General_CP1_CI_AS` se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md) a nelze ji později aktualizovat. |
 | [Indexy Columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva, pro důležité obchodní informace a úrovně škálování](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul CLR (Common Language Runtime) – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano, ale bez přístupu k systému souborů v `CREATE ASSEMBLY` příkazu – viz [rozdíly CLR](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
-| [Přihlašovací údaje](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom **Azure Key Vault** a `SHARED ACCESS SIGNATURE` se zobrazí [Podrobnosti](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) . |
+| [Přihlašovací údaje](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom **Azure Key Vault** a `SHARED ACCESS SIGNATURE` – Viz [Podrobnosti](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) . |
 | [Dotazy na názvy mezi databázemi a třemi částmi](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – zobrazit [elastické dotazy](elastic-query-overview.md) | Ano, plus [elastické dotazy](elastic-query-overview.md) |
 | [Transakce mezi databázemi](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne | Ano, v rámci instance. Viz [rozdíly v propojených serverech](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) pro dotazy mezi instancemi. |
 | [Databázový e-mail – DbMail](/sql/relational-databases/database-mail/database-mail) | Ne | Ano |
@@ -128,6 +128,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Azure Resource Health](../../service-health/resource-health-overview.md) | Ano | Ne |
 | Uchování záloh | Yes. ve výchozím nastavení je to 7 dní, maximálně 35 dní. | Yes. ve výchozím nastavení je to 7 dní, maximálně 35 dní. |
 | [Služba migrace dat (DMS)](/sql/dma/dma-overview) | Ano | Ano |
+| [Elastické úlohy](elastic-jobs-overview.md) | Ano – viz [elastické úlohy (Preview)](elastic-jobs-overview.md) | Ne (místo toho se dá použít[Agent SQL](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) .) |
 | Přístup k systému souborů | No. Použijte [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) pro přístup k datům z Azure Blob Storage a jejich načítání z Azure jako alternativu. | No. Použijte [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) pro přístup k datům z Azure Blob Storage a jejich načítání z Azure jako alternativu. |
 | [Geografické obnovení](recovery-using-backups.md#geo-restore) | Ano | Ano |
 | [Architektura s škálovatelným škálováním](service-tier-hyperscale.md) | Ano | Ne |
@@ -145,11 +146,11 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a spravované instanci SQL, přečtěte si téma [porovnání SQL Database se spravovanou instancí SQL](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném pomocí spravované instance SQL a spuštěny na Azure SSIS Integration Runtime (IR), najdete [v tématu vytvoření Azure-SSIS IR v ADF](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a spravované instanci SQL, přečtěte si téma [porovnání SQL Database se spravovanou instancí SQL](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Ne – [viz Power BI](/power-bi/) | Nepoužívejte místo toho [Power BI stránkované sestavy](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | Ano | Ne. Použijte předdefinované sestavy v SQL Server Management Studio a Azure Data Studio. |
-| [Sítě](../../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance SQL je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) a [virtuální síť](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
+| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance SQL je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) a [virtuální síť](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | Koncový bod služby virtuální sítě | [Ano](vnet-service-endpoint-rule-overview.md) | Ne |
-| Globální partnerský vztah virtuální sítě | Ano, použití [privátních koncových bodů IP a služeb](vnet-service-endpoint-rule-overview.md) | Ne, [spravovaná instance SQL není podporovaná](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) kvůli [omezení nástroje pro vyrovnávání zatížení v globálním partnerském vztahu virtuální](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)sítě.
+| Globální partnerský vztah virtuální sítě | Ano, použití [privátních koncových bodů IP a služeb](vnet-service-endpoint-rule-overview.md) | Ano, pomocí [partnerského vztahu virtuálních sítí](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913). |
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 Azure SQL Database a Azure SQL Managed instance podporují různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 

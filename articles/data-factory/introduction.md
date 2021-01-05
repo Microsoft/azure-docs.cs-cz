@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485007"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812864"
 ---
-# <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
+# <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory?
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -56,14 +56,13 @@ Po zobrazení dat v centralizovaném úložišti dat v cloudu zpracujte nebo Tra
 Pokud dáváte přednost transformaci kódu rukou, služba ADF podporuje externí aktivity pro provádění transformací na výpočetních službách, jako je HDInsight Hadoop, Spark, Data Lake Analytics a Machine Learning.
 
 ### <a name="cicd-and-publish"></a>CI/CD a publikování
-Data Factory nabízí plnou podporu pro CI/CD vašich datových kanálů pomocí Azure DevOps a GitHubu. To vám umožní přírůstkově vyvíjet a doručovat procesy ETL před publikováním dokončeného produktu. Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
-
+[Data Factory nabízí plnou podporu pro CI/CD](continuous-integration-deployment.md) vašich datových kanálů pomocí Azure DevOps a GitHubu. To vám umožní přírůstkově vyvíjet a doručovat procesy ETL před publikováním dokončeného produktu. Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
 ### <a name="monitor"></a>Monitorování
 Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Azure Data Factory obsahuje integrovanou podporu monitorování kanálů prostřednictvím Azure Monitor, rozhraní API, PowerShellu, protokolů Azure Monitor a panelů stavu na Azure Portal.
 
 ## <a name="top-level-concepts"></a>Koncepty nejvyšší úrovně
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá z níže uvedených klíčových komponent.
-- Pipelines
+- Kanály
 - Aktivity
 - Datové sady
 - Propojené služby
@@ -119,7 +118,7 @@ Tady jsou důležité dokumenty dalších kroků k prozkoumání:
 
 - [Datové sady a propojené služby](concepts-datasets-linked-services.md)
 - [Kanály a aktivity](concepts-pipelines-activities.md)
-- [Prostředí Integration runtime](concepts-integration-runtime.md)
+- [Prostředí Integration Runtime](concepts-integration-runtime.md)
 - [Mapování toků dat](concepts-data-flow-overview.md)
 - [Uživatelské rozhraní Data Factory na webu Azure Portal](quickstart-create-data-factory-portal.md)
 - [Nástroj pro kopírování dat na webu Azure Portal](quickstart-create-data-factory-copy-data-tool.md)
@@ -127,5 +126,5 @@ Tady jsou důležité dokumenty dalších kroků k prozkoumání:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md)
+- [Šablona Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md)
  

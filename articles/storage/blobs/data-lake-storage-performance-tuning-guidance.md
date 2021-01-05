@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652190"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814461"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimalizuje Azure Data Lake Storage Gen2 pro výkon.
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 podporuje vysokou propustnost pro náročné I výs
 
 ![Data Lake Storage Gen2 výkon](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 se může škálovat, aby poskytovala potřebnou propustnost pro všechny scénáře analýzy. Ve výchozím nastavení poskytuje účet Data Lake Storage Gen2 automaticky dostatečnou propustnost pro splnění potřeb široké kategorie případů použití. V případech, kdy se zákazníci spouštějí do výchozího limitu, je možné účet Data Lake Storage Gen2 nakonfigurovat tak, aby poskytoval větší propustnost, kontaktováním [podpory Azure](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 se může škálovat, aby poskytovala potřebnou propustnost pro všechny scénáře analýzy. Ve výchozím nastavení poskytuje účet Data Lake Storage Gen2 dostatek propustnosti ve své výchozí konfiguraci, aby splňovala potřeby široké kategorie případů použití. V případech, kdy se zákazníci spouštějí do výchozího limitu, je možné účet Data Lake Storage Gen2 nakonfigurovat tak, aby poskytoval větší propustnost, kontaktováním [podpory Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="data-ingestion"></a>Přijímání dat
 
-Při ingestování dat ze zdrojového systému do Data Lake Storage Gen2 je důležité zvážit, že zdrojový hardware, zdrojový síťový hardware a síťové připojení k Data Lake Storage Gen2 může být kritickým bodem.  
+Při ingestování dat ze zdrojového systému do Data Lake Storage Gen2 je důležité zvážit, že zdrojový hardware, zdrojový síťový hardware nebo síťové připojení k Data Lake Storage Gen2 může být kritickým bodem.  
 
 ![Diagram, který ukazuje faktory, které je potřeba vzít v úvahu při přijímání dat ze zdrojového systému do Data Lake Storage Gen2.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Bez ohledu na to, jestli používáte místní počítače nebo virtuální poč
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Připojení k síti Data Lake Storage Gen2
 
-Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen2 může někdy být kritickým bodem. Pokud jsou vaše zdrojová data místní, zvažte použití vyhrazeného propojení s [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Pokud jsou zdrojová data v Azure, výkon bude nejlepší, pokud jsou data ve stejné oblasti Azure jako účet Data Lake Storage Gen2.
+Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen2 může někdy být kritickým bodem. Pokud jsou vaše zdrojová data místní, zvažte použití vyhrazeného propojení s [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud jsou zdrojová data v Azure, výkon bude nejlepší, pokud jsou data ve stejné oblasti Azure jako účet Data Lake Storage Gen2.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástrojů pro přijímání dat pro maximální paralelismus
 

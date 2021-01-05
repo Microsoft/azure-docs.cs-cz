@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608312"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814376"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -170,7 +170,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Galerie | skupina prostředků | 1–80 | Alfanumerické znaky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/aplikace | galerie | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/aplikace/verze | aplikace | 32-bitové celé číslo | Čísla a tečky. |
-> | Galerie/image | galerie | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | Galerie/image | galerie | 1–80 | Alfanumerické znaky, podtržítka, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/image/verze | image | 32-bitové celé číslo | Čísla a tečky. |
 > | images | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | snímky | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
@@ -453,7 +453,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | pracovní prostory | skupina prostředků | 3-33 | Alfanumerické znaky a spojovníky. |
-> | pracovní prostory a výpočetní prostředky | pracovní prostor | 2-16 | Alfanumerické znaky a spojovníky. |
+> | pracovní prostory a výpočetní prostředky | pracovní prostor | 2–16 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -537,7 +537,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | existující | skupina prostředků | 4-63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
-> | pracovní prostory | skupina prostředků | 4-63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | pracovní prostory | global | 4-63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 

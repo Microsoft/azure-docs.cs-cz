@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532685"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813203"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrace úložiště Azure pro oznamování a zálohování
 
@@ -206,4 +206,5 @@ Až se export dokončí, obdržíte také oznámení ve vaší frontě.
 ## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak kopírovat a přesouvat projekt mezi Custom Vision prostředky. Dále si Prozkoumejte referenční dokumentaci rozhraní API, abyste viděli, co můžete s Custom Vision dělat.
-* [Referenční dokumentace REST API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API Referenční dokumentace (školení)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API Referenční dokumentace (předpověď)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

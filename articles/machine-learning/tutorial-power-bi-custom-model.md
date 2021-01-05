@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vytvoření prediktivního modelu pomocí poznámkového bloku (část 1 ze 2)'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak sestavit a nasadit model strojového učení pomocí kódu v Jupyter Notebook, abyste ho mohli použít k předpovědi výsledků v Microsoft Power BI.
+description: Naučte se, jak sestavit a nasadit model strojového učení pomocí kódu v Jupyter Notebook. Model můžete použít k předpovědi výsledků v Microsoft Power BI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370187"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814767"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>Kurz: Power BI Integration – Vytvoření prediktivního modelu s poznámkovým blokem (část 1 ze 2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Kurz: Power BI Integration – Vytvoření prediktivního modelu pomocí Jupyter Notebook (část 1 ze 2)
 
-V první části tohoto kurzu se naučíte a nasazujete prediktivní model strojového učení s využitím kódu v Jupyter Notebook. V části 2 pak pomocí modelu předpovídáte výsledky v Microsoft Power BI.
+V části 1 tohoto kurzu jste prosadili a nasadili prediktivní model strojového učení pomocí kódu ve Jupyter Notebook. V části 2 použijete model k předpovídání výsledků v Microsoft Power BI.
 
 V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Vytvoříte poznámkový blok Jupyter Notebooks.
-> * Vytvoření instance služby Azure Machine Learning COMPUTE
-> * Výuka regresního modelu pomocí scikit-učení
-> * Nasazení modelu do vyhodnocovacího koncového bodu v reálném čase
+> * Vytvoříte Jupyter Notebook.
+> * Vytvořte instanci služby Azure Machine Learning Compute.
+> * Naučte se regresní model pomocí scikit-učit.
+> * Nasaďte model do bodování koncového bodu v reálném čase.
 
-Existují tři různé způsoby, jak vytvořit a nasadit model, který budete používat v Power BI.  Tento článek se zabývá možnostmi: výuka a nasazování modelů pomocí poznámkových bloků.  Tato možnost zobrazuje prostředí pro vytváření obsahu s využitím poznámkových bloků Jupyter hostovaných v Azure Machine Learning Studiu. 
+Existují tři způsoby, jak vytvořit a nasadit model, který budete používat v Power BI.  Tento článek popisuje možnost A: vytvoření modelů a nasazení pomocí poznámkových bloků.  Tato možnost je prostředí pro vytváření obsahu s prvním kódem. Používá poznámkové bloky Jupyter hostované v Azure Machine Learning Studio. 
 
-Místo toho můžete použít:
+Místo toho ale můžete použít jednu z dalších možností:
 
-* [Možnost B: analýza a nasazení modelů pomocí návrháře](tutorial-power-bi-designer-model.md)– prostředí pro vytváření nízkých kódů pomocí návrháře (uživatelské rozhraní přetahování myší).
-* [Možnost C: analýza a nasazení modelů pomocí automatizovaného](tutorial-power-bi-automated-model.md) prostředí pro vytváření obsahu, které plně automatizuje přípravu dat a školení k modelu.
+* [Možnost B: analýza a nasazení modelů pomocí návrháře Azure Machine Learning](tutorial-power-bi-designer-model.md). Toto prostředí pro vytváření s nízkým kódem používá uživatelské rozhraní přetahování myší.
+* [Možnost C: analýza a nasazení modelů pomocí automatizovaného strojového učení](tutorial-power-bi-automated-model.md). Prostředí pro vytváření obsahu bez kódu plně automatizuje automatické školení pro přípravu dat a modelování.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure ([k dispozici je bezplatná zkušební verze](https://aka.ms/AMLFree)). 
-- Pracovní prostor služby Azure Machine Learning. Pokud ještě nemáte pracovní prostor, postupujte podle pokynů v tématu [jak vytvořit pracovní prostor Azure Machine Learning](./how-to-manage-workspace.md#create-a-workspace).
+- Předplatné Azure. Pokud ještě nemáte předplatné, můžete použít [bezplatnou zkušební verzi](https://aka.ms/AMLFree). 
+- Pracovní prostor služby Azure Machine Learning. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření a správa Azure Machine Learningch pracovních prostorů](./how-to-manage-workspace.md#create-a-workspace).
 - Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
 
 ## <a name="create-a-notebook-and-compute"></a>Vytvoření poznámkového bloku a výpočtů
 
-Na domovské stránce [Azure Machine Learning Studio](https://ml.azure.com) vyberte **vytvořit nový** a pak na **Poznámkový blok**:
+Na domovské stránce [**Azure Machine Learning Studio**](https://ml.azure.com) vyberte **vytvořit nový**  >  **Poznámkový blok**:
 
 :::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Snímek obrazovky ukazující, jak vytvořit Poznámkový blok":::
  
-Zobrazí se dialogové okno pro **Vytvoření nového souboru** . zadejte:
+Na stránce **vytvořit nový soubor** :
 
-1. Název souboru pro Poznámkový blok (například `my_model_notebook` )
-1. Změnit **typ souboru** na **Poznámkový blok**
+1. Pojmenujte svůj Poznámkový blok (například *my_model_notebook*).
+1. Změňte **typ souboru** na **Poznámkový blok**.
+1. Vyberte **Vytvořit**. 
+ 
+Chcete-li spustit buňky kódu, vytvořte výpočetní instanci a připojte ji k poznámkovému bloku. Začněte tím, že v horní části poznámkového bloku vyberete ikonu se symbolem plus:
 
-Vyberte **Vytvořit**. Dále musíte vytvořit nějaké výpočetní prostředky a připojit je ke svému poznámkovému bloku, aby bylo možné spouštět buňky kódu. Uděláte to tak, že v horní části poznámkového bloku vyberete ikonu se symbolem plus:
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="Snímek obrazovky ukazující, jak vytvořit výpočetní instanci.":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="Snímek obrazovky ukazující, jak vytvořit výpočetní instanci":::
+Na stránce **vytvoření instance COMPUTE** :
 
-V dalším kroku na stránce **vytvořit výpočetní instanci** :
-
-1. Vyberte velikost virtuálního počítače s PROCESORem – pro účely tohoto kurzu **Standard_D11_v2** (dvě jádra, 14 GB RAM) bude stačit.
+1. Vyberte velikost virtuálního počítače procesoru. Pro účely tohoto kurzu můžete zvolit **Standard_D11_v2** se 2 jádry a 14 GB paměti RAM.
 1. Vyberte **Další**. 
-1. Na stránce **Konfigurovat nastavení** zadejte platný **výpočetní název** (platné znaky jsou velká a malá písmena, číslice a znak-znaku).
+1. Na stránce **Konfigurovat nastavení** zadejte platný **výpočetní název**. Platné znaky jsou velká a malá písmena, číslice a spojovníky (-).
 1. Vyberte **Vytvořit**.
 
-Na poznámkovém bloku si můžete všimnout, že kroužek vedle **výpočetních** prostředků vypnul azurový, což značí, že se vytváří výpočetní instance:
+V poznámkovém bloku si můžete všimnout kružnice vedle **výpočtů** s azurovou funkcí. Tato změna barvy indikuje, že se vytváří výpočetní instance:
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Snímek obrazovky zobrazující výpočetní prostředky, které se vytváří":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Snímek obrazovky znázorňující vytvářený výpočetní výkon":::
 
 > [!NOTE]
-> Zřizování výpočetních prostředků může trvat přibližně 2-4 minut.
+> Instance COMPUTE může trvat 2 až 4 minuty, než se zřídí.
 
-Po zřízení výpočetní metody můžete pomocí poznámkového bloku spouštět buňky kódu. Zadejte například text do buňky:
+Po zřízení výpočetní aplikace můžete pomocí poznámkového bloku spouštět buňky kódu. Například v buňce můžete zadat následující kód:
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-Následuje **klávesa SHIFT-ENTER** (nebo **Control-ENTER** nebo vyberte tlačítko Přehrát vedle buňky). Měli byste vidět následující výstup:
+Pak vyberte SHIFT + ENTER (nebo vyberte CTRL + ENTER nebo vyberte tlačítko **Přehrát** vedle buňky). Měl by se zobrazit následující výstup:
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Snímek obrazovky znázorňující spuštění buňky":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Snímek obrazovky znázorňující výstup buňky":::
 
-Nyní jste připraveni vytvořit model Machine Learning.
+Teď jste připraveni sestavit model strojového učení.
 
-## <a name="build-a-model-using-scikit-learn"></a>Vytvoření modelu pomocí scikit – učení
+## <a name="build-a-model-by-using-scikit-learn"></a>Sestavování modelu pomocí scikit-učení
 
-V tomto kurzu použijete [datovou sadu diabetes](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html), která je dostupná v [otevřených datových sadách Azure](https://azure.microsoft.com/services/open-datasets/). 
+V tomto kurzu použijete [datovou sadu diabetes](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html). Tato datová sada je dostupná v [Azure Open](https://azure.microsoft.com/services/open-datasets/)DataSet.
 
 
 ### <a name="import-data"></a>Import dat
 
-Pokud chcete importovat data, zkopírujte a vložte kód uvedený níže do nové **buňky kódu** v poznámkovém bloku:
+Pokud chcete importovat data, zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku.
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-`X_df`Datový rámec PANDAS obsahuje 10 vstupních proměnných standardních hodnot (například věk, pohlaví, hmotnostní index karoserie, průměrný krevní tlak a šest měření krevního séra). `y_df`Datový rámec PANDAS je cílová proměnná, která obsahuje kvantitativní míru průběhu výskytu choroby v jednom roce po směrném plánu. K dispozici jsou celkem 442 záznamů.
+`X_df`Datový rámec PANDAS obsahuje 10 vstupních proměnných pro standardní hodnoty. Mezi tyto proměnné patří věk, pohlaví, hmotnostní index těla, průměrný krevní tlak a šest měření krevního séra. `y_df`Datový rámec PANDAS je cílová proměnná. Obsahuje kvantitativní míru průběhu nákazy jeden rok po standardních hodnotách. Datový rámec obsahuje záznamy 442.
 
-### <a name="train-model"></a>Trénování modelu
+### <a name="train-the-model"></a>Trénování modelu
 
-Vytvořte v poznámkovém bloku novou **buňku kódu** a zkopírujte a vložte fragment kódu níže, který sestaví Ridge regresní model a serializaci modelu pomocí formátu rozevíracího seznamu Pythonu:
+Vytvoří novou *buňku kódu* v poznámkovém bloku. Pak zkopírujte následující kód a vložte ho do buňky. Tento fragment kódu vytvoří Ridge regresní model a serializaci modelu pomocí rozevíracího formátu Pythonu.
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>Registrace modelu
 
-Kromě obsahu samotného souboru modelu bude registrovaný model také ukládat metadata modelu – popis modelu, značky a informace o architektuře – to bude užitečné při správě a nasazování modelů v pracovním prostoru. Pomocí značek můžete například kategorizovat modely a použít filtry při výpisu modelů v pracovním prostoru. Označením tohoto modelu pomocí architektury scikit-učení se taky zjednoduší jeho nasazení jako webové služby, jak uvidíme později.
+Kromě obsahu samotného souboru modelu budou v registrovaném modelu uloženy metadata. Metadata obsahují popis modelu, značky a informace o rozhraní. 
 
-Zkopírujte a vložte kód uvedený níže do nové **buňky kódu** v poznámkovém bloku:
+Metadata jsou užitečná při správě a nasazování modelů v pracovním prostoru. Pomocí značek můžete například kategorizovat modely a použít filtry při výpisu modelů v pracovním prostoru. Také Pokud označíte tento model pomocí architektury scikit-učení, Zjednodušte si ho nasazení jako webovou službu.
+
+Zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku.
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-Model v Azure Machine Learning Studio můžete zobrazit také tak, že přejdete k **koncovým bodům** v levé nabídce:
+Model můžete zobrazit také v Azure Machine Learning Studio. V nabídce na levé straně vyberte **modely**:
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Snímek obrazovky znázorňující model":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Snímek obrazovky znázorňující zobrazení modelu":::
 
 ### <a name="define-the-scoring-script"></a>Definování vyhodnocovacího skriptu
 
-Při nasazování modelu, který se má integrovat do Microsoft Power BI, je potřeba definovat *skript bodování* a vlastní prostředí pro Python. Skript bodování obsahuje dvě funkce:
+Když nasadíte model, který bude integrovaný do Power BI, je potřeba definovat *skript bodování* a vlastní prostředí pro Python. Skript bodování obsahuje dvě funkce:
 
-- `init()` – Tato funkce se spustí po spuštění služby. Tato funkce načte model (Všimněte si, že se model automaticky stáhne z registru modelu) a deserializace.
-- `run(data)` – Tato funkce se spustí, když se ve službě provede volání s některými vstupními daty, která potřebují bodování. 
+- `init()`Funkce se spustí při spuštění služby. Načte model (který se automaticky stáhne z registru modelu) a deserializace.
+- Tato `run(data)` funkce se spustí, když volání služby zahrnuje vstupní data, která je třeba určit skóre. 
 
 >[!NOTE]
-> Dekoratéry Python používáme k definování schématu vstupních a výstupních dat, což je důležité, aby mohla integrace s Microsoft Power BI fungovat.
+> Tento článek používá Python dekoratéry k definování schématu vstupních a výstupních dat. Toto nastavení je důležité pro integraci Power BI.
 
-Zkopírujte a vložte kód uvedený níže do nové **buňky kódu** v poznámkovém bloku. Následující fragment kódu obsahuje buňku Magic, která bude zapisovat kód do názvu s názvem score.py.
+Zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku. Následující fragment kódu obsahuje buňku Magic, která zapisuje kód do souboru s názvem *Score.py*.
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>Definování vlastního prostředí
 
-Dál je potřeba definovat prostředí pro stanovení skóre modelu – musíme v tomto prostředí definovat balíčky Pythonu vyžadované skriptem bodování (score.py), které jsou definované výše, jako je PANDAS, scikit-učení atd.
+Dále definujte prostředí pro určení skóre modelu. V prostředí definujte balíčky Pythonu, například PANDAS a scikit-učení, které skript pro bodování (*Score.py*) vyžaduje.
 
-Pokud chcete definovat prostředí, zkopírujte a vložte kód uvedený níže do nové **buňky kódu** v poznámkovém bloku:
+Pokud chcete definovat prostředí, zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>Nasazení modelu
 
-Model nasadíte tak, že zkopírujete a vložíte kód níže do nové **buňky kódu** v poznámkovém bloku:
+Pokud chcete model nasadit, zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku:
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> Nasazení služby může trvat 2-4 minut.
+> Nasazení služby může trvat 2 až 4 minuty.
 
-Měl by se zobrazit následující výstup úspěšné nasazené služby:
+Pokud se služba úspěšně nasazuje, měl by se zobrazit následující výstup:
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-Službu můžete zobrazit také v Azure Machine Learning Studio tak, že přejdete do **koncových bodů** v levé nabídce:
+Službu můžete zobrazit také v Azure Machine Learning Studio. V nabídce na levé straně vyberte **koncové body**:
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Snímek obrazovky zobrazující koncový bod":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Snímek obrazovky ukazující, jak zobrazit službu":::
 
-Doporučuje se otestovat webovou službu, aby se zajistilo, že funguje podle očekávání. Přejděte zpátky do svého poznámkového bloku tak, že v nabídce na levé straně vyberete **poznámkové bloky** v Azure Machine Learning Studio. Zkopírováním a vložením kódu níže do nové **buňky kódu** v poznámkovém bloku otestujete službu:
+Doporučujeme, abyste otestovali webovou službu, abyste zajistili, že funguje podle očekávání. Pokud chcete vrátit svůj Poznámkový blok, Azure Machine Learning Studio v nabídce na levé straně vyberte **poznámkové bloky** v nabídce vlevo. Pak zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku pro otestování služby.
 
 ```python
 import json
@@ -293,11 +296,11 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Výstup by měl vypadat jako následující struktura JSON: `{'predict': [[205.59], [68.84]]}` .
+Výstup by měl vypadat jako tato struktura JSON: `{'predict': [[205.59], [68.84]]}` .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste viděli, jak sestavit a nasadit model takovým způsobem, že ho můžou využívat Microsoft Power BI. V další části se dozvíte, jak tento model využít ze sestavy Power BI.
+V tomto kurzu jste viděli, jak sestavit a nasadit model, aby ho bylo možné spotřebovat Power BI. V další části se dozvíte, jak tento model využít v sestavě Power BI.
 
 > [!div class="nextstepaction"]
-> [Kurz: využití modelu v Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Kurz: využívání modelu v Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

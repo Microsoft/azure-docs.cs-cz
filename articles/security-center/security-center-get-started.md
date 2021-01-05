@@ -12,22 +12,29 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187166"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809543"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
+# <a name="quickstart-set-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
 
 Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. I když bezplatné funkce nabízí jenom omezené zabezpečení pro vaše prostředky Azure, takže Azure Defender tyto možnosti rozšiřuje na místní a jiné cloudy. Azure Defender vám pomůže najít a opravit chyby zabezpečení, použít řízení přístupu a aplikací k blokování škodlivých aktivit, zjišťovat hrozby pomocí analýz a inteligentních funkcí a rychle reagovat při útoku. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
-V tomto článku provedete upgrade na Azure Defender za účelem zvýšení zabezpečení a nainstalujete na vaše počítače agenta Log Analytics, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
+Tento rychlý Start vás provede povolením Azure Defenderu pro zvýšení zabezpečení a instalaci agenta Log Analytics do počítačů za účelem monitorování ohrožení zabezpečení a hrozeb.
 
-## <a name="prerequisites"></a>Předpoklady
+Proveďte následující kroky:
+
+> [!div class="checklist"]
+> * Povolení Security Center v předplatném Azure
+> * Povolení Azure Defenderu v předplatném Azure
+> * Povolit automatické shromažďování dat
+
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.
@@ -35,7 +42,7 @@ Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiř
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Povolení Security Center v předplatném Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
 1. V nabídce portálu vyberte **Security Center**. 
 

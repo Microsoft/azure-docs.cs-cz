@@ -36,8 +36,6 @@
       items:
         - name: Oprava nejistých předpovědí
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: Dávkový test datových sad
-          href: luis-tutorial-batch-testing.md
         - name: Přidání vzorů pro zlepšení predikce
           href: luis-tutorial-pattern.md
     - name: Použití s robotem
@@ -93,8 +91,6 @@
       items:
         - name: Interaktivní testování
           href: luis-concept-test.md
-        - name: Dávkové testování
-          href: luis-concept-batch-test.md
     - name: Správa dat
       items:
         - name: Změna dat
@@ -229,7 +225,7 @@
         - name: Konfigurace kontejnerů
           href: luis-container-configuration.md
         - name: Použití instancí kontejneru
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: Omezení kontejnerů
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'

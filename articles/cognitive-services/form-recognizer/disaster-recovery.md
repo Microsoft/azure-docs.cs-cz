@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359808"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808248"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
-Když vytvoříte prostředek pro rozpoznávání formulářů v Azure Portal, zadáte oblast. Od tohoto dne se váš prostředek a všechny jeho operace budou přidružit k této konkrétní oblasti serveru Azure. Je zřídka, ale není nemožné, k navýšení problému v síti, který je v celé oblasti. Pokud vaše řešení potřebuje vždycky k dispozici, měli byste ho navrhnout tak, aby převzala služby při selhání do jiné oblasti, nebo rozdělit zatížení mezi dvě nebo víc oblastí. Oba přístupy vyžadují aspoň dva prostředky pro rozpoznávání formulářů v různých oblastech a možnost Synchronizovat [vlastní modely](./quickstarts/curl-train-extract.md) napříč oblastmi.
+Když vytvoříte prostředek pro rozpoznávání formulářů v Azure Portal, zadáte oblast. Od tohoto dne se váš prostředek a všechny jeho operace budou přidružit k této konkrétní oblasti serveru Azure. Je zřídka, ale není nemožné, k navýšení problému v síti, který je v celé oblasti. Pokud vaše řešení potřebuje vždycky k dispozici, měli byste ho navrhnout tak, aby převzala služby při selhání do jiné oblasti, nebo rozdělit zatížení mezi dvě nebo víc oblastí. Oba přístupy vyžadují aspoň dva prostředky pro rozpoznávání formulářů v různých oblastech a možnost Synchronizovat vlastní modely napříč oblastmi.
 
 Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní modely z jednoho nebo jiných účtů pro rozpoznávání formulářů, které mohou existovat v libovolné podporované geografické oblasti. V této příručce se dozvíte, jak použít REST API kopírování s kudrlinkou. K vystavování požadavků můžete použít také službu požadavku HTTP, jako je například post.
 
@@ -26,7 +26,7 @@ Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní
 
 Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpoznávání formulářů, doporučujeme model zkopírovat do jiného účtu pro rozpoznávání formulářů v jiné oblasti. Pokud dojde k oblastnímu výpadku, můžete získat přístup k modelu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Předpoklady
+##  <a name="prerequisites"></a>Požadavky
 
 1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.

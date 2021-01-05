@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992416"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814206"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerství s Azure DDoS Protection standardem
 Tento článek popisuje možnosti partnerských serverů, které jsou povolené standardem Azure DDoS Protection. Tento článek je navržený tak, aby pomohla manažerům produktu a obchodním vývojářům pochopení investičních cest a poskytoval přehled o propozicích partnerských funkcí.
@@ -40,8 +40,8 @@ Pro každou chráněnou aplikaci Azure DDoS Protection Standard automaticky vyla
 Azure DDoS Protection identifikuje a zmírnit útoky DDoS bez zásahu uživatele.
 
 - Pokud je chráněným prostředkem v předplatném, které je uvedené v části Azure Security Center, DDoS Protection Standard automaticky pošle výstrahu Security Center kdykoli se zjistí útok DDoS a sníží se na chráněnou aplikaci.
-- Případně, pokud chcete dostávat upozornění, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics) na základě DDoS útoku nebo ne.
-- Můžete se také rozhodnout, že vytvoříte výstrahy pro ostatní metriky DDoS a [nakonfigurujete analýzy útoků](telemetry-monitoring-alerting.md) , abyste porozuměli rozsahu útoku, vynechávání provozu, vektorům útoku, hlavním přispěvatelům a dalším podrobnostem.
+- Případně, pokud chcete dostávat upozornění, když dojde k aktivnímu zmírnění chráněné veřejné IP adresy, můžete [nakonfigurovat výstrahu](alerts.md) na základě DDoS útoku nebo ne.
+- Můžete se také rozhodnout vytvořit výstrahy pro ostatní metriky DDoS a [nakonfigurovat telemetrii útoků](telemetry.md) , abyste porozuměli rozsahu útoku, zahození provozu, vektorům útoku, hlavním přispěvatelům a dalším podrobnostem.
 
 ![DDoS metriky](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Pro partnery, kteří konfigurují integraci s Azure DDoS Protection Standard, j
 3. Ve virtuální síti služby, která má veřejné koncové body pomocí plánu DDoS Protection vytvořeného v prvním kroku, povolte Azure DDoS Protection Standard. Podrobné pokyny najdete v tématu [povolení plánu DDoS Standard Protection](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network) .
    > [!IMPORTANT] 
    > Po povolení Azure DDoS Protection Standard ve virtuální síti se automaticky chrání všechny veřejné IP adresy v této virtuální síti. Původ těchto veřejných IP adres může být buď v rámci Azure (předplatné klienta), nebo mimo Azure. 
-4. Volitelně můžete integrovat Azure DDoS Protection standardní telemetrie a analýzy útoků na řídicí panel pro konkrétního zákazníka. Další informace o používání telemetrie najdete v tématu [zobrazení a konfigurace telemetrie DDoS Protection](telemetry-monitoring-alerting.md). 
+4. Volitelně můžete integrovat Azure DDoS Protection standardní telemetrie a analýzy útoků na řídicí panel pro konkrétního zákazníka. Další informace o používání telemetrie najdete v tématu [zobrazení a konfigurace telemetrie DDoS Protection](telemetry.md). 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>Příručky k registraci a technická dokumentace
 
@@ -80,7 +80,7 @@ Pro partnery, kteří konfigurují integraci s Azure DDoS Protection Standard, j
 - [Reference k rozhraní API Azure DDoS Protection](/rest/api/virtualnetwork/ddosprotectionplans)
 - [Reference k rozhraní API virtuální sítě Azure](/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Získání pomoci
+### <a name="get-help"></a>Podpora
 
 - Pokud máte dotazy týkající se integrace aplikací, služeb nebo produktů s Azure DDoS Protectionm standardem, je třeba se obrátit na [komunitu zabezpečení Azure](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security).
 - Sledujte diskuzi o [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/).

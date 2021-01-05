@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492246"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814495"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Základní hodnoty zabezpečení Azure pro Azure DDoS Protection Standard
 
@@ -38,7 +38,7 @@ Tato základní hodnota zabezpečení se vztahuje na pokyny z [srovnávacího te
 
 Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni ovládacího prvku pro vaše Azure DDoS Protection instance.
 
-- [Jak nakonfigurovat výstrahy pro metriky DDoS Protection](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Zobrazení a konfigurace protokolování diagnostiky DDoS](../../ddos-protection/diagnostic-logging.md)
 
 - [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do pracovního prostoru Log Analytics. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě dat protokolu aktivit, která se mohla shromažďovat pro Recovery Services trezory.
 
-- [Informace o přístupu k telemetrie, protokolům a analýze útoků pro službu DDoS Protection Standard](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Informace o přístupu k telemetrie, protokolům a analýze útoků pro službu DDoS Protection Standard](../../ddos-protection/telemetry.md)
 
 - [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 Připojit Log Analytics pracovní prostor do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení. Kromě toho můžete pomocí Azure Monitor vytvořit vlastní výstrahy protokolu v pracovním prostoru Log Analytics.
 
-- [Jak konfigurovat výstrahy pro DDoS metriky](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [Jak konfigurovat výstrahy pro DDoS metriky](../../ddos-protection/alerts.md)
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 - [Postup registrace klientské aplikace (instančního objektu) ve službě Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Informace o rozhraní API služby Azure DDos Protection](/rest/api/virtual-network/)
+- [Informace o rozhraní Azure DDoS Protection API](/rest/api/virtual-network/)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -166,7 +166,7 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 - [Nasazení zabezpečené pracovní stanice spravované v Azure](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Plánování nasazení cloudové služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -384,7 +384,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure DDos Protection pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace trezorů Recovery Services.
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Azure DDoS Protection s Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace trezorů Recovery Services.
 
 - [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -524,7 +524,7 @@ Otestujte své předpoklady o tom, jak vaše služby reagují na útok tím, že
 
 Vyberte některou z dostupných metrik ochrany DDoS, která vás upozorní, když dojde k aktivnímu zmírnění během útoku pomocí konfigurace výstrahy Azure Monitor. Pokud jsou splněné podmínky, obdrží zadaná adresa e-mail s upozorněním.
 
-- [Konfigurace výstrah pro metriky DDoS Protection](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Konfigurace výstrah pro metriky DDoS Protection](../../ddos-protection/alerts.md)
 
 - [Postup konfigurace průběžného exportu](../../security-center/continuous-export.md)
 

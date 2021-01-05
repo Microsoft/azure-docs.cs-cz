@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608499"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813594"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -34,9 +34,9 @@ Přečtěte si další informace o [zpracování událostí v komunikačních sl
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Doručování nabízených oznámení prostřednictvím Azure Notification Hubs
 
-Centrum oznámení Azure můžete připojit ke zdroji komunikačních služeb, aby bylo možné automaticky odesílat nabízená oznámení do mobilního zařízení uživatele, když obdrží příchozí volání. Tato nabízená oznámení byste měli použít k probuzení aplikace z uživatelského rozhraní na pozadí a zobrazovaného uživatelského rozhraní, které umožňuje uživateli přijmout nebo odmítnout volání. 
+Centrum oznámení Azure můžete připojit ke zdroji komunikačních služeb, aby bylo možné automaticky odesílat nabízená oznámení do mobilního zařízení uživatele, když obdrží příchozí volání. Tato nabízená oznámení byste měli použít k probuzení aplikace z uživatelského rozhraní na pozadí a zobrazované uživatelské rozhraní, které uživateli umožňuje přijmout nebo odmítnout volání. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují do centra oznámení Azure.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují do Azure Notification Hubs.":::
 
 Komunikační služby využívají Azure Notification hub jako předávací službu ke komunikaci s různými službami nabízených oznámení specifických pro konkrétní platformu pomocí rozhraní API pro [přímé odesílání](/rest/api/notificationhubs/direct-send) . Díky tomu můžete znovu použít stávající prostředky a konfigurace centra oznámení Azure pro zajištění nízké latence a spolehlivého volání oznámení vašim aplikacím.
 
@@ -45,15 +45,15 @@ Komunikační služby využívají Azure Notification hub jako předávací slu�
 
 ### <a name="notification-hub-provisioning"></a>Zřizování centra oznámení 
 
-Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí Notification Hubs, [vytvořte centrum oznámení](../../notification-hubs/create-notification-hub-portal.md) v rámci stejného předplatného jako prostředek služby Communications. Pro službu oznámení platformy, kterou chcete použít, musí být služba Azure Notification Hubs nakonfigurovaná. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
+Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí Notification Hubs, [vytvořte centrum oznámení](../../notification-hubs/create-notification-hub-portal.md) v rámci stejného předplatného jako prostředek služby Communications. Je nutné nakonfigurovat centrum oznámení Azure pro systém oznámení platformy, které chcete použít. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
 
 > [!NOTE]
 > V současné době jsou podporovány platformy APNs a FCM.  
 U platformy APNs je potřeba nakonfigurovat režim ověřování tokenu. Režim ověřování certifikátu není nyní podporován. 
 
-Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním připojovacího řetězce pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat oprávnění Send (Odeslat). Doporučujeme vytvořit další zásadu přístupu s oprávněním Send jenom pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](../../notification-hubs/notification-hubs-push-notification-security.md)
+Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním připojovacího řetězce pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat `Send` oprávnění. Doporučujeme vytvořit další zásadu přístupu pouze s `Send` oprávněními specifickou pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](../../notification-hubs/notification-hubs-push-notification-security.md)
 
-#### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurace centra oznámení pomocí klienta Azure Resource Manager
+#### <a name="using-the-azure-resource-manager-client-to-link-your-notification-hub"></a>Připojení centra oznámení pomocí Azure Resource Manager klienta
 
 Pokud se chcete přihlásit Azure Resource Manager, spusťte následující příkaz a přihlaste se pomocí svých přihlašovacích údajů.
 
@@ -67,19 +67,61 @@ armclient login
 armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers/Microsoft.Communication/CommunicationServices/<resource_id>/linkNotificationHub?api-version=2020-08-20-preview "{'connectionString': '<connection_string>','resourceId': '<resource_id>'}"
 ```
 
-#### <a name="using-the-azure-portal-to-configure-the-notification-hub"></a>Konfigurace centra oznámení pomocí Azure Portal
+#### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Připojení centra oznámení pomocí Azure Portal
 
-Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Sem budete muset zadat připojovací řetězec a ID prostředku:
+Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Do tohoto pole budete muset zadat připojovací řetězec a resourceId:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení na webu Azure Portal":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení v rámci Azure Portal":::
 
 > [!NOTE]
 > Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.  
 Jakákoli změna způsobu propojení rozbočovače se projeví v rovině dat (tj. při posílání oznámení) během maximální doby v ``10`` minutách. To platí také v případě, že je centrum propojeno poprvé, **Pokud** se předtím poslala nějaká oznámení.
 
-#### <a name="device-registration"></a>Registrace zařízení 
+### <a name="device-registration"></a>Registrace zařízení 
 
 Další informace o registraci popisovače zařízení pomocí komunikačních služeb najdete v tématu [rychlý Start volajícího](../quickstarts/voice-video-calling/getting-started-with-calling.md) .
+
+### <a name="troubleshooting-guide-for-push-notifications"></a>Průvodce odstraňováním potíží pro nabízená oznámení
+
+Pokud v zařízení nevidíte nabízená oznámení, existují tři místa, kde byla oznámení Vyřazená:
+
+- Azure Notification Hubs nepřijal oznámení od komunikačních služeb Azure.
+- Systém oznámení platformy (například APNs a FCM) nepřijali oznámení z Azure Notification Hubs
+- Systém oznámení platformy nedoručilo oznámení do zařízení.
+
+První místo, kde může být oznámení vyřazeno (Azure Notification Hubs nepřijal oznámení od komunikačních služeb Azure), je uvedené níže. Další dvě místa najdete v tématu [Diagnostika ztracených oznámení v Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-fixer.md).
+
+Jedním ze způsobů, jak zjistit, jestli váš prostředek komunikačních služeb odesílá oznámení do Azure Notification Hubs, je prohlížení `incoming messages` metriky z propojených [metrik centra oznámení Azure](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs).
+
+Následuje několik běžných chybových konfigurací, které mohou způsobovat důvody, proč centrum oznámení Azure nepřijímá oznámení z vašeho prostředku komunikačních služeb.
+
+#### <a name="azure-notification-hub-not-linked-to-the-communication-services-resource"></a>Centrum oznámení Azure není propojené s prostředkem komunikačních služeb
+
+Může se jednat o případ, že jste provedli propojení centra oznámení Azure s vaším prostředkem komunikačních služeb. V [části Provisioning centra oznámení](#notification-hub-provisioning) se můžete podívat, jak je propojit.
+
+#### <a name="the-linked-azure-notification-hub-isnt-configured"></a>Propojené centrum oznámení Azure není nakonfigurované.
+
+Je třeba nakonfigurovat propojené centrum oznámení s přihlašovacími údaji systém oznámení platformy pro platformu (například iOS nebo Android), které chcete použít. Další podrobnosti o tom, jak to lze provést, najdete v [centru oznámení nastavení nabízených oznámení](../../notification-hubs/configure-notification-hub-portal-pns-settings.md).
+
+#### <a name="the-linked-azure-notification-hub-doesnt-exist"></a>Propojené centrum oznámení Azure neexistuje.
+
+Centrum oznámení Azure propojené s vaším prostředkem komunikačních služeb už neexistuje. Ověřte, zda propojené centrum oznámení stále existuje.
+
+#### <a name="the-azure-notification-hub-apns-platform-is-configured-with-certificate-authentication-mode"></a>Platforma služby APNs centra oznámení Azure je nakonfigurovaná s režimem ověřování certifikátů.
+
+V případě, že chcete použít platformu APNs s režimem ověřování certifikátů, se v tuto chvíli nepodporuje. Měli byste nakonfigurovat platformu APNs pomocí režimu ověřování tokenu, jak je uvedeno v části [nastavení nabízených oznámení v centru oznámení](../../notification-hubs/configure-notification-hub-portal-pns-settings.md).
+
+#### <a name="the-linked-connection-string-doesnt-have-send-permission"></a>Propojený připojovací řetězec nemá oprávnění. `Send`
+
+Připojovací řetězec, který jste použili k propojení centra oznámení s vaším prostředkem komunikačních služeb, musí mít `Send` oprávnění. Pokud chcete získat další informace o tom, jak můžete vytvořit nový připojovací řetězec nebo zobrazit aktuální připojovací řetězec z centra oznámení Azure, můžete se podívat na [Notification Hubs zásady zabezpečení a přístupu](../../notification-hubs/notification-hubs-push-notification-security.md) .
+
+#### <a name="the-linked-connection-string-or-azure-notification-hub-resourceid-arent-valid"></a>Propojený připojovací řetězec nebo centrum oznámení Azure nejsou platné.
+
+Ujistěte se, že nakonfigurujete prostředek služby Communications se správným připojovacím řetězcem a službou Azure Notification hub resourceId.
+
+#### <a name="the-linked-connection-string-is-regenerated"></a>Propojený připojovací řetězec se znovu vygeneruje.
+
+V případě, že jste znovu vygenerovali připojovací řetězec vašeho propojeného centra oznámení Azure, je nutné aktualizovat připojovací řetězec novým připojením v rámci prostředku služby Communication Services tak, že [znovu propojíte centrum oznámení](#notification-hub-provisioning).
 
 ## <a name="next-steps"></a>Další kroky
 

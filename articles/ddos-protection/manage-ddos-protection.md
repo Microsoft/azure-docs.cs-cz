@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094570"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813934"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
 
@@ -38,32 +38,32 @@ V tomto rychlém startu vytvoříte plán DDoS Protection a propojíte ho s virt
 ## <a name="create-a-ddos-protection-plan"></a>Vytvoření plánu DDoS Protection
 
 1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-2. Vyhledejte pojem *DDoS* . Pokud se ve výsledcích hledání zobrazí **plán DDoS Protection** , vyberte ho.
-3. Vyberte **Vytvořit** .
-4. Zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit** :
+2. Vyhledejte pojem *DDoS*. Pokud se ve výsledcích hledání zobrazí **plán DDoS Protection** , vyberte ho.
+3. Vyberte **Vytvořit**.
+4. Zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
 
     |Nastavení        |Hodnota                                              |
     |---------      |---------                                          |
-    |Název           | Zadejte _MyDdosProtectionPlan_ .                     |
+    |Název           | Zadejte _MyDdosProtectionPlan_.                     |
     |Předplatné   | Vyberte své předplatné.                         |
-    |Skupina prostředků | Vyberte **vytvořit nové** a zadejte _MyResourceGroup_ .|
-    |Umístění       | Zadejte _východní USA_ .                                  |
+    |Skupina prostředků | Vyberte **vytvořit nové** a zadejte _MyResourceGroup_.|
+    |Umístění       | Zadejte _východní USA_.                                  |
 
 ## <a name="enable-ddos-protection-for-a-virtual-network"></a>Povolení ochrany DDoS pro virtuální síť
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>Povolit DDoS Protection pro novou virtuální síť
 
 1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
-2. Vyberte **Sítě** a pak vyberte **Virtuální síť** .
-3. Zadejte nebo vyberte následující hodnoty, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit** :
+2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
+3. Zadejte nebo vyberte následující hodnoty, přijměte zbývající výchozí hodnoty a pak vyberte **vytvořit**:
 
     | Nastavení         | Hodnota                                           |
     | ---------       | ---------                                       |
-    | Název            | Zadejte _MyVnet_ .                                 |
+    | Název            | Zadejte _MyVnet_.                                 |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **použít existující** a pak vyberte **MyResourceGroup** . |
     | Umístění        | Zadejte _východní USA_                                                    |
-    | DDoS Protection úrovně Standard | Vyberte **Povolit** . Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
+    | DDoS Protection úrovně Standard | Vyberte **Povolit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
 
@@ -72,8 +72,12 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 1. Vytvořte plán DDoS Protection tak, že vyplníte kroky v tématu [Vytvoření plánu DDoS Protection](#create-a-ddos-protection-plan), pokud nemáte existující plán DDoS Protection.
 2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
 3. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete povolit DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-4. V části **Nastavení** vyberte **DDoS Protection** .
-5. Vyberte **Standard** . V části **plán ochrany DDoS** vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit** . Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
+4. V části **Nastavení** vyberte **DDoS Protection**.
+5. Vyberte **Standard**. V části **plán ochrany DDoS** vyberte existující plán DDoS Protection nebo plán, který jste vytvořili v kroku 1, a pak vyberte **Uložit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.
+
+### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Povolit DDoS Protection pro všechny virtuální sítě
+
+Tato [zásada](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) vyhledá všechny virtuální sítě v definovaném oboru, u kterých není povolená DDoS Protection Standard, a pak volitelně vytvoří úlohu nápravy, která vytvoří přidružení pro ochranu virtuální sítě. Podrobné pokyny, jak nasadit tuto zásadu, najdete v tématu https://aka.ms/ddosvnetpolicy-techcommunity .
 
 ## <a name="validate-and-test"></a>Ověřit a otestovat
 
@@ -96,14 +100,14 @@ Své prostředky můžete uchovávat pro další kurz. Pokud už je nepotřebuje
 
 2. Vyfiltrujte nebo přejděte dolů a najděte skupinu prostředků _MyResourceGroup_ .
 
-3. Vyberte skupinu prostředků a pak vyberte **Odstranit skupinu prostředků** .
+3. Vyberte skupinu prostředků a pak vyberte **Odstranit skupinu prostředků**.
 
-4. Zadejte název skupiny prostředků, který chcete ověřit, a pak vyberte **Odstranit** .
+4. Zadejte název skupiny prostředků, který chcete ověřit, a pak vyberte **Odstranit**.
 
 Zakázání ochrany DDoS pro virtuální síť: 
 
 1. Do **pole Hledat prostředky, služby a dokumenty** v horní části portálu zadejte název virtuální sítě, pro kterou chcete zakázat DDoS Protection Standard. Pokud se ve výsledcích hledání zobrazí název virtuální sítě, vyberte ji.
-2. Vyberte **v části DDoS Protection Standard** možnost **Zakázat** .
+2. Vyberte **v části DDoS Protection Standard** možnost **Zakázat**.
 
 Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit všechny virtuální sítě. 
 
@@ -112,4 +116,4 @@ Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit 
 Pokud se chcete dozvědět, jak zobrazit a nakonfigurovat telemetrii pro svůj plán DDoS Protection, přejděte k kurzům.
 
 > [!div class="nextstepaction"]
-> [Zobrazení a konfigurace telemetrie ochrany před útoky DDoS](telemetry-monitoring-alerting.md)
+> [Zobrazení a konfigurace telemetrie ochrany před útoky DDoS](telemetry.md)

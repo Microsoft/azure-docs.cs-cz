@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616463"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813492"
 ---
 # <a name="custom-vision-service-release-notes"></a>Poznámky k verzi Custom Vision Service
 
@@ -41,7 +41,7 @@ ms.locfileid: "94616463"
 
 - Custom Vision Service do Azure vstoupila Obecná dostupnost!
 - Přidali jsme pokročilou výuku do nového back-endu Machine Learning pro zlepšení výkonu, zejména u náročných datových sad a jemně odstupňované klasifikace. S pokročilým školením můžete určit rozpočet výpočetního času pro školení a Custom Vision bude experimentálním postupem Upřesnit i to, co nejlépe proškolení a rozšíření nastavení. Pro rychlé iterace můžete dál používat stávající rychlé školení.
-- Představena rozhraní API 3,0. Oznámili jsme vyřazení pre-3,0 rozhraní API od 1. října 2019. Příklady toho, jak začít, najdete v dokumentaci k rychlým startům pro [.NET](./quickstarts/image-classification.md), [Python](./quickstarts/image-classification.md), [Node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md)nebo na [webu](./quickstarts/image-classification.md) .
+- Představena rozhraní API 3,0. Oznámili jsme vyřazení pre-3,0 rozhraní API od 1. října 2019. Příklady toho, jak začít, najdete v dokumentaci k [rychlým startům](./quickstarts/image-classification.md) .
 - V rozhraních API 3,0 se nahradila výchozí iterace s publikováním/zrušením publikování.
 - Přidaly se nové cíle exportu modelu. Export souboru Dockerfile byl upgradován tak, aby podporoval ARM pro malin 3. Do sady [Vision AI dev Kit](https://visionaidevkit.com/)se přidala Podpora exportu.
 - Zvýšený limit značek na projekt na 500 pro S0 vrstvu. Vyšší limit imagí na projekt až 100 000 pro S0 vrstvu.

@@ -3,16 +3,16 @@ title: Připojte svůj účet AWS k Azure Security Center
 description: Monitorování prostředků AWS z Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 12/29/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573506"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814308"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Připojení účtů AWS k Azure Security Center
 
@@ -41,7 +41,7 @@ Na snímku obrazovky níže vidíte účty AWS zobrazené na řídicím panelu p
 |----|:----|
 |Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
-|Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
+|Požadované role a oprávnění:|**Vlastník** pro příslušné předplatné Azure<br>**Přispěvatel** může připojit účet AWS také v případě, že vlastník poskytne hlavní informace o instančním objektu.|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
