@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895719"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803914"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -23,7 +23,7 @@ Obnovení k určitému bodu v čase můžete použít k obnovení jedné nebo v�
 Další informace o obnovení k bodu v čase najdete v tématu [obnovení k bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
+> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění celého kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít později obnovit.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Povolit a nakonfigurovat obnovení k časovému okamžiku
 
@@ -107,6 +107,8 @@ Obnoveny jsou pouze objekty blob bloku. Objekty blob stránky a doplňovací obj
 > Když provádíte operaci obnovení, Azure Storage blokuje operace s daty u objektů BLOB v rozsahu obnovování po dobu trvání operace. Operace čtení, zápisu a odstranění jsou v primárním umístění blokované. Z tohoto důvodu nemusí operace, jako je například výpis kontejnerů v Azure Portal, fungovat podle očekávání, zatímco probíhá operace obnovení.
 >
 > Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
+>
+> Čas potřebný k obnovení sady dat vychází z počtu operací zápisu a odstranění provedených během období obnovení. Například účet s 1 000 000 objekty s 3 000 objekty přidaných za den a 1 000 objekty odstraněné za den budou vyžadovat přibližně dvě hodiny k obnovení do bodu 30 dnů v minulosti. Doba uchování a obnovení více než 90 dní v minulosti se pro účet s touto mírou změny nedoporučuje.
 
 ### <a name="restore-all-containers-in-the-account"></a>Obnovit všechny kontejnery v účtu
 

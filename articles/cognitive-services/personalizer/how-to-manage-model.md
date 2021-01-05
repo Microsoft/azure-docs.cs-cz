@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303450"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797243"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Jak spravovat nastavení modelu a učení
 
@@ -18,7 +18,7 @@ Nastavení strojového a výukového modelu, které se naučilo počítačem, se
 
 ## <a name="export-the-personalizer-model"></a>Export modelu přizpůsobeného pro přizpůsobování
 
-V části Správa prostředků pro **Nastavení modelu a učení**si prohlédněte vytváření modelů a datum poslední aktualizace a exportujte aktuální model. Pomocí Azure Portal nebo rozhraní API pro přizpůsobení můžete exportovat soubor modelu pro účely archivace.
+V části Správa prostředků pro **Nastavení modelu a učení** si prohlédněte vytváření modelů a datum poslední aktualizace a exportujte aktuální model. Pomocí Azure Portal nebo rozhraní API pro přizpůsobení můžete exportovat soubor modelu pro účely archivace.
 
 ![Exportovat aktuální model přizpůsobeného přizpůsobování](media/settings/export-current-personalizer-model.png)
 
@@ -55,4 +55,4 @@ Nastavení [zásad učení](concept-active-learning.md#understand-learning-polic
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se spravovat zásady učení.](how-to-manage-model.md)
+[Analýza výukové smyčky pomocí offline vyhodnocení](how-to-offline-evaluation.md)

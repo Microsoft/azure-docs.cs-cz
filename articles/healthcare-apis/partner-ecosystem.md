@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 30fcaccbb4b87212cc4474b418712ba849156a8e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372170"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803166"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Partnerský ekosystém pro Azure API pro FHIR
 Jsme rádi, že rozhraní Azure API pro FHIR bylo pro všechny zákazníky Azure vydané všeobecně dostupné. O řešeních, která budete sestavovat pomocí naší služby, ještě více zajímáme.  
@@ -23,7 +23,7 @@ Při vytváření uceleného řešení založeného na rozhraní Azure API pro F
 
 | Partner          | Možnosti                               | Podporované země/oblasti         | Kontakt                                                                                                                                |
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Svítí            | De-Identification, FHIR konverze starší verze –  | USA                         | [Kontakt](http://www.medal.com/)                                                                                           |
+| Svítí            | De-Identification, FHIR konverze starší verze –  | USA                         | [Kontakt](https://asab.squarespace.com/asab-medal/)                                                                                           |
 | Rhapsody         | Starší převod – FHIR                     | USA, Austrálie, Nový Zéland | [Kontakt](https://rhapsody.health/contact-us)                                                                                          |
 | iNTERFACEWARE    | Starší převod – FHIR                     | USA, Kanada                 | [Kontakt](https://www.interfaceware.com/contact)                                                                                  |
 | Řešení Darena | Vývoj aplikací, systémový integrátor | USA                         | [Kontakt](https://www.darenasolutions.com/contact)                                                                                     |

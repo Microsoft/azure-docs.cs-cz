@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 3e836873219bde3836f2863e328b0b6f5b89addc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507281"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803795"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -23,7 +23,7 @@ ITSM poskytuje možnost odesílat výstrahy do externího systému lístků, jak
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizujte a analyzujte data o incidentech a žádostech o změnu.
 
-V závislosti na konfiguraci při nastavování připojení se ITSMC může synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [části Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#additional-information) v tomto článku.
+V závislosti na konfiguraci při nastavování připojení se ITSMC může synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [části Další informace](./itsmc-overview.md) v tomto článku.
 
 Pomocí řídicího panelu ITSMC můžete vizualizovat incident a data žádosti o změnu.
 
@@ -39,7 +39,27 @@ Pokud používáte Service Map, můžete zobrazit položky oddělení služeb vy
 
 ![Snímek obrazovky zobrazující Log Analytics obrazovku](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="how-to-manually-fix-servicenow-sync-problems"></a>Ruční oprava problémů s synchronizací ServiceNow
+## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojením ITSM
+
+- Pokud se připojení nepřipojí k systému ITSM a při ukládání zprávy o připojení dojde k **chybě** , proveďte následující kroky:
+   - Pro připojení ServiceNow, Cherwell a prov:  
+     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
+     - Ujistěte se, že máte v odpovídajícím ITSM produktu dostatečná oprávnění pro připojení.  
+   - Pro Service Manager připojení:  
+     - Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
+
+- Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance ServiceNow dev někdy přecházejí do režimu spánku, pokud jsou nečinné po dlouhou dobu. Pokud to neudělá, nahlaste problém.
+- Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM, pokud se položky konfigurace nevytvoří/propojí s pracovními položkami nebo další informace, podívejte se na tyto zdroje:
+   -  ITSMC: řešení zobrazuje souhrn připojení, pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
+   - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
+
+### <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
+
+-   Pokud máte problémy s nasazením webové aplikace, ujistěte se, že máte oprávnění k vytváření a nasazování prostředků v rámci předplatného.
+-   Pokud získáte **odkaz na objekt není nastaven na instanci objektu** při spuštění [skriptu](itsmc-service-manager-script.md), ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
+-   Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, ujistěte se, že je v předplatném registrovaný požadovaný poskytovatel prostředků. Pokud není zaregistrované, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections-scsm.md#configure-the-hybrid-connection) v Azure Portal.
+
+### <a name="how-to-manually-fix-sync-problems"></a>Ruční oprava problémů s synchronizací
 
 Azure Monitor se můžou připojit k poskytovatelům IT služeb třetích stran (ITSM). ServiceNow je jedním z těchto poskytovatelů.
 
@@ -74,28 +94,4 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
 
         ![Nové připojení](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    Zkontrolujte oznámení a zjistěte, jestli proces skončil s úspěchem.
-
-## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojením ITSM
-
-- Pokud se připojení z uživatelského rozhraní připojeného zdroje nepovede a zobrazí se **Chyba při ukládání** zprávy o připojení, proveďte následující kroky:
-   - Pro připojení ServiceNow, Cherwell a prov:  
-     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
-     - Ujistěte se, že máte v odpovídajícím ITSM produktu dostatečná oprávnění pro připojení.  
-   - Pro Service Manager připojení:  
-     - Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection).  
-
-- Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance ServiceNow dev někdy přecházejí do režimu spánku, pokud jsou nečinné po dlouhou dobu. Pokud to neudělá, nahlaste problém.
-- Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM, pokud se položky konfigurace nevytvoří/propojí s pracovními položkami nebo další informace, podívejte se na tyto zdroje:
-   -  ITSMC: řešení zobrazuje souhrn připojení, pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
-   - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
-
--   Pokud máte problémy s nasazením webové aplikace, ujistěte se, že máte oprávnění k vytváření a nasazování prostředků v rámci předplatného.
--   Pokud získáte **odkaz na objekt není nastaven na instanci objektu** při spuštění [skriptu](itsmc-service-manager-script.md), ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
--   Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, ujistěte se, že je v předplatném registrovaný požadovaný poskytovatel prostředků. Pokud není zaregistrované, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection) v Azure Portal.
-
-## <a name="next-steps"></a>Další kroky
-
-Další informace o [připojeních správy služeb IT](itsmc-connections.md)
+f.    Zkontrolujte oznámení a zjistěte, jestli proces začal.

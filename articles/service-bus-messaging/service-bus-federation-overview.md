@@ -3,12 +3,12 @@ title: Replikace zpráv a federace mezi oblastmi – Azure Service Bus | Microso
 description: Tento článek poskytuje přehled replikace událostí a federace mezi oblastmi pomocí Azure Service Bus.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 32d8c9112eeb2f71e7f2c8dcd6f8f73da2dc1ca9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657413"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803268"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Replikace zpráv a federace mezi oblastmi
 
@@ -150,7 +150,7 @@ Azure Functions může běžet pod [spravovanou identitou Azure](../active-direc
 
 Azure Functions navíc umožňuje úlohám replikace přímo integraci se službami Azure Virtual Networks a [koncovými body služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro všechny služby zasílání zpráv Azure a je snadno integrovaná do [Azure monitor](../azure-monitor/overview.md).
 
-Nejdůležitější Azure Functions mít předem připravené, škálovatelné triggery a výstupní vazby pro [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)a [Azure Queue Storage](/azure-functions/functions-bindings-storage-queue.md), vlastní rozšíření pro [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)a [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). Většina aktivačních událostí se dynamicky přizpůsobí požadavkům propustnosti tím, že se počet souběžně prováděných instancí nahoru a dolů na základě dokumentovaných metrik. 
+Nejdůležitější Azure Functions mít předem připravené, škálovatelné triggery a výstupní vazby pro [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)a [Azure Queue Storage](/azure/azure-functions/functions-bindings-storage-queue), vlastní rozšíření pro [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)a [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). Většina aktivačních událostí se dynamicky přizpůsobí požadavkům propustnosti tím, že se počet souběžně prováděných instancí nahoru a dolů na základě dokumentovaných metrik. 
 
 S plánem Azure Functions spotřeby se předem připravené triggery můžou rovnoměrně škálovat na nulu, zatímco nejsou k dispozici žádné zprávy pro replikaci, což znamená, že se vám neúčtují žádné náklady na změnu konfigurace, která je připravená na zálohování. Klíčovým nevýhodouem použití plánu spotřeby je, že latence pro úlohy replikace "vychází z tohoto stavu" je výrazně vyšší než u plánů hostování, ve kterých je infrastruktura udržována v provozu.  
 
@@ -165,6 +165,6 @@ Dále si můžete přečíst, jak nastavit aplikaci replikátoru pomocí Azure F
 - [Replikační aplikace v Azure Functions](service-bus-federation-replicator-functions.md)
 - [Replikace událostí mezi Service Bus entit](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy)
 - [Směrování událostí do Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
-- [Získání událostí z Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubsCopyToServiceBus)
+- [Získání událostí z Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif 

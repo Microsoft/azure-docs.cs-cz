@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181199"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803523"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -39,11 +39,12 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Vlastníci aplikace mohou zobrazovat protokoly pro aplikace, které vlastní.
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
+* Uživatelé ve vlastní roli s [oprávněním provisioningLogs](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
 * Globální správci
 
 
@@ -56,12 +57,12 @@ Aby se váš tenant mohl podívat na veškerou sestavu aktivity zřizování, mu
 Protokoly zřizování poskytují odpovědi na následující otázky:
 
 * Které skupiny byly úspěšně vytvořeny v ServiceNow?
-* Jaké role byly naimportovány z Amazon Web Services?
+* Které uživatele byly úspěšně odebrány z Adobe?
 * Kteří uživatelé nebyli úspěšně vytvořeni v DropBoxu?
 
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
+![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
 Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
@@ -86,7 +87,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -100,7 +101,7 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -132,7 +133,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Jiné
+- Ostatní
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -191,7 +192,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -219,7 +220,9 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 - Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
 
-- Protokoly zřizování nejsou aktuálně k dispozici v cloudu pro státní správu. Pokud nemůžete získat přístup k protokolům zřizování, použijte prosím jako dočasné řešení protokoly auditu.  
+- Protokoly zřizování nejsou aktuálně k dispozici v cloudu pro státní správu. Pokud nemůžete získat přístup k protokolům zřizování, použijte prosím jako dočasné řešení protokoly auditu. 
+
+- V protokolech zřizování se nezobrazuje importy rolí (platí pro AWS, SalesForce a ZenDesk). Protokoly pro importy rolí najdete v protokolech auditu. 
 
 ## <a name="error-codes"></a>Kódy chyb
 

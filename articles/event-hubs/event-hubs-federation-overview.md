@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled o federaci více lokalit a více 
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657394"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804033"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>Federace více lokalit a více oblastí
 
@@ -148,9 +148,9 @@ Implementace výše uvedených vzorů vyžaduje škálovatelné a spolehlivé sp
 
 U aplikací pro stavovou replikaci, které potřebují zvážit vztahy mezi událostmi, vytvářet složené události, rozšiřovat události nebo snižovat události, vytvářet agregace dat a transformovat datové části událostí, [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) je nejlepší možností implementace.
 
-V Azure Stream Analytics [vytváříte úlohy](../stream-analytics/stream-analytics-quick-create-portal.md) , které integrují [vstupy](../stream-analytics/stream-analytics-add-inputs.md) a [výstupy](../stream-analytics/stream-analytics-define-outputs.md) a integrují data ze vstupů prostřednictvím [dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) , které poskytují výsledek, který je pak k dispozici na výstupech.
+V Azure Stream Analytics [vytváříte úlohy](../stream-analytics/stream-analytics-quick-create-portal.md) , které integrují [vstupy](../stream-analytics/stream-analytics-add-inputs.md) a [výstupy](../stream-analytics/stream-analytics-define-outputs.md) a integrují data ze vstupů prostřednictvím [dotazů](/stream-analytics-query/stream-analytics-query-language-reference) , které poskytují výsledek, který je pak k dispozici na výstupech.
 
-Dotazy jsou založené na [jazyce SQL Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) a dají se použít k snadnému filtrování, řazení, agregaci a připojení streamování dat v časovém intervalu. Tento jazyk SQL můžete také roztáhnout pomocí uživatelem definovaných funkcí [jazyka JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) a jazyka [C# (UDF)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md). Můžete snadno upravit možnosti řazení událostí a dobu trvání časových oken při provádění agregačních operací prostřednictvím jednoduchých jazykových konstrukcí nebo konfigurací.
+Dotazy jsou založené na [jazyce SQL Query](/stream-analytics-query/stream-analytics-query-language-reference) a dají se použít k snadnému filtrování, řazení, agregaci a připojení streamování dat v časovém intervalu. Tento jazyk SQL můžete také roztáhnout pomocí uživatelem definovaných funkcí [jazyka JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) a jazyka [C# (UDF)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md). Můžete snadno upravit možnosti řazení událostí a dobu trvání časových oken při provádění agregačních operací prostřednictvím jednoduchých jazykových konstrukcí nebo konfigurací.
 
 Každá úloha obsahuje jeden nebo několik výstupů pro transformovaná data a můžete řídit, co se stane v reakci na informace, které jste analyzovali. Můžete například:
 
@@ -191,7 +191,7 @@ V tomto článku jsme prozkoumali řadu vzorů federace a v Azure jsme vysvětli
 
 Dále si můžete přečíst, jak nastavit aplikaci replikátoru pomocí Azure Stream Analytics nebo Azure Functions a pak jak replikovat toky událostí mezi Event Hubs a různými jinými systémy pro zpracování událostí a zpráv:
 
-- [Vzorce úlohy replikace událostí][10]
+- [Vzorce úloh replikace událostí][10]
 - [Zpracování dat pomocí Azure Stream Analytics][9]
 - [Aplikace replikátoru událostí v Azure Functions][1]
 - [Replikace událostí mezi Event Hubs][2]

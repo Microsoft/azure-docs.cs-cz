@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc6b7553d240de05404d24f828a5f7db14772f93
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657412"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805661"
 ---
 ## <a name="what-is-a-replication-task"></a>Co je úloha replikace?
 
@@ -22,11 +22,11 @@ Většina úloh replikace přesměruje události beze změny a provede mapován�
 
 Úlohy replikace jsou obecně bezstavové, což znamená, že nesdílejí stav ani jiné vedlejší účinky v rámci sekvenčního nebo paralelního provádění úlohy. To platí také pro dávkování a zřetězení, které mohou být implementovány nad stávajícím stavem datového proudu. 
 
-To umožňuje, aby se úlohy replikace lišily od úloh agregace, které jsou všeobecně stavové a jsou doménou analytických rozhraní a služeb, jako je [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction.md).
+To umožňuje, aby se úlohy replikace lišily od úloh agregace, které jsou všeobecně stavové a jsou doménou analytických rozhraní a služeb, jako je [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction).
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Aplikace a úlohy replikace v Azure Functions
 
-V Azure Functions se úloha replikace implementuje pomocí [triggeru](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md) , který získá jednu nebo více vstupních zpráv z nakonfigurovaného zdroje a [výstupní vazbu](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md#binding-direction) , která přesměruje zprávy zkopírované ze zdroje do konfigurovaného cíle. 
+V Azure Functions se úloha replikace implementuje pomocí [triggeru](/azure/azure-functions/functions-triggers-bindings) , který získá jednu nebo více vstupních zpráv z nakonfigurovaného zdroje a [výstupní vazbu](/azure/azure-functions/functions-triggers-bindings#binding-direction) , která přesměruje zprávy zkopírované ze zdroje do konfigurovaného cíle. 
 
 | Trigger  | Výstup |
 |----------|--------|
@@ -57,17 +57,17 @@ Pro úlohy jednoduché replikace, které kopírují zprávy mezi Event Hubs a Se
 
 ### <a name="retry-policy"></a>Zásady opakování
 
-Aby se zabránilo ztrátě dat během události dostupnosti na kterékoli straně funkce replikace, je nutné nakonfigurovat zásady opakování, aby byly robustní. Pokud chcete nakonfigurovat zásady opakování, přečtěte si informace o [Azure Functions v dokumentaci k pokusům o](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) opakování. 
+Aby se zabránilo ztrátě dat během události dostupnosti na kterékoli straně funkce replikace, je nutné nakonfigurovat zásady opakování, aby byly robustní. Pokud chcete nakonfigurovat zásady opakování, přečtěte si informace o [Azure Functions v dokumentaci k pokusům o](/azure/azure-functions/functions-bindings-error-pages) opakování. 
 
 Nastavení zásad zvolené pro ukázkové projekty v [ukázkovém úložišti](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) konfigurují exponenciální strategii omezení rychlosti s intervaly opakování od 5 sekund do 15 minut a nekonečné opakování, aby se předešlo ztrátě dat. 
 
-Pokud Service Bus, přečtěte si část ["použití možnosti opakování v horní části odolnosti triggeru"](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) , abyste pochopili interakci triggerů a maximální počet doručení definovaný pro frontu.
+Pokud Service Bus, přečtěte si část ["použití možnosti opakování v horní části odolnosti triggeru"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) , abyste pochopili interakci triggerů a maximální počet doručení definovaný pro frontu.
 
 ### <a name="setting-up-a-replication-application-host"></a>Nastavení hostitele replikační aplikace
 
 Aplikace replikace je hostitel spouštění pro jednu nebo více úloh replikace. 
 
-Jedná se o Azure Functions aplikaci, která je nakonfigurovaná tak, aby běžela buď v plánu spotřeby, nebo (doporučeno) na plánu Azure Functions Premium. Všechny replikační aplikace musí běžet v rámci [spravované identity přiřazené systémem nebo uživatelem](https://docs.microsoft.com/azure/app-service/overview-managed-identity.md). 
+Jedná se o Azure Functions aplikaci, která je nakonfigurovaná tak, aby běžela buď v plánu spotřeby, nebo (doporučeno) na plánu Azure Functions Premium. Všechny replikační aplikace musí běžet v rámci [spravované identity přiřazené systémem nebo uživatelem](/azure/app-service/overview-managed-identity). 
 
 Šablony propojeného Azure Resource Manager (ARM) vytvoří a nakonfigurují replikační aplikaci pomocí:
 
@@ -80,9 +80,9 @@ Replikační aplikace, které musí mít přístup Event Hubs vázaný na virtu�
 
 |       | Nasazení | Vizualizace  
 |-------|------------------|--------------|---------------|
-| **Plán spotřeby Azure Functions** | [![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2FAconsumption%2Fazuredeploy.json)|[![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
-| **Plán Azure Functions Premium** |[![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
-| **Plán Azure Functions Premium s virtuální sítí** | [![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)
+| **Plán spotřeby Azure Functions** | [![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2FAconsumption%2Fazuredeploy.json)|[![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
+| **Plán Azure Functions Premium** |[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
+| **Plán Azure Functions Premium s virtuální sítí** | [![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)
 
 
 ### <a name="examples"></a>Příklady
@@ -137,7 +137,7 @@ Pro okamžité diagnostické poznatky můžete pracovat s nástrojem [Live Metri
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies.md)
-* [Diagnostika Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-diagnostics.md)
-* [Možnosti Azure Functions sítě](https://docs.microsoft.com/azure/azure-functions/functions-networking-options.md)
-* [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview.md)
+* [Nasazení Azure Functions](/azure/azure-functions/functions-deployment-technologies)
+* [Diagnostika Azure Functions](/azure/azure-functions/functions-diagnostics)
+* [Možnosti Azure Functions sítě](/azure/azure-functions/functions-networking-options)
+* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)

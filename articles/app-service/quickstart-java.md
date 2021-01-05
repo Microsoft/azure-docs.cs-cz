@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333082"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802469"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
@@ -66,9 +67,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
 
-Proces nasazení Azure App Service bude používat přihlašovací údaje Azure z Azure CLI automaticky. Pokud rozhraní příkazového řádku Azure není místně nainstalované, bude se modul plug-in Maven ověřovat pomocí protokolu OAuth nebo přihlášení zařízení. Další informace najdete v tématu [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
+Proces nasazování do služby Azure App Service bude automaticky používat vaše přihlašovací údaje k Azure z Azure CLI. Pokud rozhraní příkazového řádku Azure není místně nainstalované, bude se modul plug-in Maven ověřovat pomocí protokolu OAuth nebo přihlášení zařízení. Další informace najdete v tématu [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
-Spusťte následující příkaz Maven a nakonfigurujete nasazení. Tento příkaz vám pomůže nastavit App Service operační systém, verzi Java a verzi Tomcat.
+Spuštěním následujícího příkazu Maven nakonfigurujte nasazení. Tento příkaz vám pomůže nastavit App Service operační systém, verzi Java a verzi Tomcat.
 
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
@@ -78,12 +79,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
 1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
 1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `3` .
 1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
-1. Pomocí výchozí verze Java, **Java 8** , stiskněte klávesu ENTER.
-1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
 
     Váš souhrnný výstup bude vypadat podobně jako fragment uvedený níže.
 
@@ -110,13 +111,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
 1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
 1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `3` .
 1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
-1. Pomocí výchozí verze Java, **Java 8** , stiskněte klávesu ENTER.
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
 1. Pomocí výchozího webového kontejneru **Tomcat 8,5** stiskněte klávesu ENTER.
-1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
 
     Váš souhrnný výstup bude vypadat podobně jako fragment uvedený níže.
 
@@ -148,12 +149,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
 1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
 1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
 1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
-1. Pomocí výchozí verze Java, **Java 8** , stiskněte klávesu ENTER.
-1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
 
     ```
     Please confirm webapp properties
@@ -177,13 +178,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Při zobrazení výzvy s možností **Subscription** (Předplatné) vyberte správné `Subscription` zadáním čísla zobrazeného na začátku řádku.
 1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER nebo výběrem existující aplikace.
 1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
 1. Po zobrazení výzvy s možností **cenové úrovně** vyberte **B2** zadáním `2` .
-1. Pomocí výchozí verze Java, **Java 8** , stiskněte klávesu ENTER.
+1. Pomocí výchozí verze Java, **Java 8**, stiskněte klávesu ENTER.
 1. Pomocí výchozího webového kontejneru **Tomcat 8,5** stiskněte klávesu ENTER.
-1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Stisknutím klávesy Enter u poslední výzvy potvrďte svůj výběr.
 
     ```
     Please confirm webapp properties
@@ -217,7 +218,7 @@ Vlastnost | Povinné | Popis | Verze
 `<subscriptionId>` | false (nepravda) | Zadejte ID předplatného. | 0.1.0 +
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
-`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
+`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) . | 0.1.0 +
 `<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2** pro produkční úlohy, zatímco **B2** je Doporučené minimum pro vývoj a testování Java. [Další informace](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0 +
 `<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details) | 0.1.0 +
@@ -241,7 +242,7 @@ Potom můžete aplikaci Java nasadit do Azure pomocí následujícího příkazu
 mvn package azure-webapp:deploy
 ```
 
-Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
+Po dokončení nasazení bude vaše aplikace připravena na adrese `http://<appName>.azurewebsites.net/` (`http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
 
 ![Ukázková aplikace spuštěná v Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -252,7 +253,7 @@ Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.a
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shell:
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud tyto prostředky už nebudete potřebovat, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shellu:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes

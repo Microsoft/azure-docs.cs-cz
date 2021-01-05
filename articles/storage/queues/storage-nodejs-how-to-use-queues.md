@@ -4,17 +4,17 @@ description: Naučte se používat Azure Queue Storage k vytváření a odstraň
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: ebae3c8850947f3b6cbde6f2ebd8bfbd45b2fbb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592173"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803676"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Jak používat Azure Queue Storage z Node.js
 
@@ -350,4 +350,4 @@ Chcete-li vymazat všechny zprávy z fronty bez jejich odstranění, zavolejte `
 Teď, když jste se naučili základy Queue Storage, postupujte podle těchto odkazů a získejte další informace o složitějších úlohách úložiště.
 
 - Navštivte [Blog týmu Azure Storage](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog) , kde se dozvíte, co je nového.
-- Navštivte [Azure Storage klientskou knihovnu pro úložiště JavaScriptu](https://github.com/Azure/Azure-SDK-for-js/tree/master/SDK/storage#Azure-storage-client-library-for-JavaScript) na GitHubu.
+- Navštivte [Azure Storage klientskou knihovnu pro úložiště JavaScriptu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#Azure-storage-client-library-for-JavaScript) na GitHubu.

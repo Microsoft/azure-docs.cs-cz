@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: aaaeb23ef24f0d8a0fa4b38139fed57cda6fa63d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 93b6160b495b609e23e10b3f709d130792067423
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657035"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803778"
 ---
 # <a name="it-service-management-connector-overview"></a>Přehled IT Service Management Connectoru
 
@@ -43,13 +43,11 @@ Informace o právních výrazech a zásadách ochrany osobních údajů najdete 
 
 Můžete začít používat ITSMC provedením následujících kroků:
 
-1. [Připojte ITSM produkty/služby ke službě IT Service Management Connector.](./itsmc-connections.md)
-1. [Přidat ITSMC.](/.itsmc-definition.md#add-it-service-management-connector)
-1. [Vytvořte připojení ITSM.](./itsmc-definition.md#create-an-itsm-connection)
-1. [Použijte připojení.](./itsmc-definition.md#use-itsmc)
+1. [Nastavte prostředí ITSM tak, aby přijímalo výstrahy z Azure.](./itsmc-connections.md)
+1. [Konfigurace řešení Azure ITSM](./itsmc-definition.md#add-it-service-management-connector)
+1. [Nakonfigurujte konektor Azure ITSM pro vaše prostředí ITSM.](./itsmc-definition.md#create-an-itsm-connection)
+1. [Nakonfigurujte skupinu akcí, která bude využívat konektor ITSM.](./itsmc-definition.md#use-itsmc)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přidat ITSM produkty/služby do konektoru](./itsmc-connections.md) 
- správy služeb IT [Přidat konektor ITSM](./itsmc-definition.md) 
- [Řešení problémů v konektoru ITSM](./itsmc-resync-servicenow.md)
+* [Řešení potíží v ITSM konektoru](./itsmc-resync-servicenow.md)

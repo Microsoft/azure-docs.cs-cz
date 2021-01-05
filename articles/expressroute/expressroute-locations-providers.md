@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/28/2020
 ms.author: duau
-ms.openlocfilehash: e9354dade695367ed058506533603318c3cfc288
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 533b0f4d2c786506aa36810c3e5c0ea855cdbb24
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561694"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803846"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -51,7 +51,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
 | **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
-| **Jižní Amerika** | Brazil South |Bogotá, Svatý Paulo |
+| **Jižní Amerika** | Brazílie – jih |Bogotá, Svatý Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti Azure a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
@@ -129,7 +129,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Queretaro (Mexiko)** | [KIO sítě QR01](https://www.kionetworks.com/es-mx/) | 4 | neuvedeno | 10G | Transtelco|
 | **Quincy** | [Sabey Datacenter – sestavení](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | Západní USA 2 | 10G, 100G | | 
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | Středojižní USA | 10G, 100G | CenturyLink Cloud Connect, Megaport |
-| **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Brazil South | neuvedeno | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
+| **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Brazílie – jih | neuvedeno | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 1 | Západní USA 2 | 10G, 100G | Aryaka Networks sítě, Equinix, Level 3 Communications, Megaport, Telus, Zayo |
 | **Soul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Jižní Korea – střed | 10G, 100G | KINX, KT, LG CNS, Equinix, Sejong Telecom |
 | **Silicon Valley** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | USA – západ | 10G, 100G | Aryaka Networks sítě, v&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Comcastu, Coresite, Equinix, spolucloud, Internet2, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, pomeranč, Sprint, Tata Communications, Telia, Verizon, Zayo |
@@ -229,7 +229,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **New York** |Equinix, Megaport | Altice Business, koruna Castle, spektrum Enterprise, Webair |
 | **Paříž** | Equinix | Proximus |
 | **Québec** | Megaport | Fibrenoire |
-| **Svatý Paula** | Equinix | Venha Pra Nuvem |
+| **Sao Paulo** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
 | **Silicon Valley** |Coresite, Equinix | Cox Business, spektrum Enterprise, Windstream, X2nsat Inc. |
 | **Singapur** |Equinix |1CLOUDSTAR, BICS, CMC Telecom, Epsilon – omezené, LGA Telecom, USA – USA (UIH) |

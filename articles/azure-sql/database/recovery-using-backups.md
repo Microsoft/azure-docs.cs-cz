@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989441"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797209"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,7 +95,7 @@ Chcete-li obnovit databázi spravované instance k určitému bodu v čase pomoc
   ![Snímek obrazovky s možnostmi obnovení databáze pro spravovanou instanci SQL](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> Chcete-li programově obnovit databázi ze zálohy, přečtěte si téma [programové provádění obnovení pomocí automatických záloh](recovery-using-backups.md).
+> Chcete-li programově obnovit databázi ze zálohy, přečtěte si téma [programové obnovení pomocí automatických záloh](recovery-using-backups.md).
 
 ## <a name="deleted-database-restore"></a>Obnovení databáze se odstranilo
 
@@ -253,7 +253,7 @@ Chcete-li obnovit databázi pomocí rozhraní příkazového řádku Azure, pře
 
 Pokud chcete obnovit databázi spravované instance pomocí Azure CLI, přečtěte si téma [AZ SQL MIDB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Automatické zálohování chrání vaše databáze před chybami uživatelů a aplikací, náhodným odstraněním databáze a prodlouženými výpadky. Tato integrovaná funkce je k dispozici pro všechny úrovně služeb a výpočetní velikosti.
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964945"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807565"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -857,7 +857,7 @@ Aby bylo možné získat přístup k Internetu, musí být nastavení proxy serv
 
 1. Přejděte na **Start**, zadejte **gpedit. msc** a pak vyberte **ENTER**.
 1. Vyberte **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**. Ujistěte se, že nastavení **nastavit proxy na počítač (nikoli na uživatele)** je zakázané nebo není nakonfigurované.
-1. V **Ovládacích panelech** klikněte na možnosti **sítě a sdílení** na webu  >  **Internet Options**.
+1. V **Ovládacích panelech** klikněte na možnosti **sítě a sdílení** na webu  >  .
 1. Na kartě **připojení** vyberte tlačítko **nastavení sítě LAN** .
 1. Zrušte zaškrtnutí políčka **Automaticky zjišťovat nastavení**.
 1. Zaškrtněte políčko **použít proxy server pro vaši síť LAN** a potom zadejte adresu a port proxy serveru.
@@ -1070,8 +1070,14 @@ Nové rozšíření VM pro SAP používá pro přístup k datům monitorování 
     Příklad:
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1079,11 +1085,19 @@ Nové rozšíření VM pro SAP používá pro přístup k datům monitorování 
     Rozšíření je aktuálně podporováno pouze v AzureCloud. Azure Čína 21Vianet, Azure Government nebo některá z dalších speciálních prostředí se zatím nepodporují.
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a odstraňování potíží
@@ -1496,7 +1510,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

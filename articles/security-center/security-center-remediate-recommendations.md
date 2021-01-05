@@ -1,6 +1,6 @@
 ---
 title: Opravit doporučení v Azure Security Center | Microsoft Docs
-description: Tento článek vysvětluje, jak opravit doporučení v Azure Security Center k ochraně vašich prostředků a dodržování zásad zabezpečení.
+description: Tento článek vysvětluje, jak reagovat na doporučení v Azure Security Center chránit vaše prostředky a vyhovět zásadám zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637080"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807986"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Zpracování doporučení ve službě Azure Security Center
 
@@ -26,41 +26,41 @@ Doporučení vám poskytnou návrhy na to, jak lépe zabezpečit prostředky. Do
 
 ## <a name="remediation-steps"></a>Postup odstranění problému <a name="remediation-steps"></a>
 
-Po kontrole všech doporučení se rozhodněte, která z nich se má opravit jako první. Doporučujeme, abyste používali [dopad bezpečného skóre](security-center-recommendations.md#monitor-recommendations) , abyste lépe určili prioritu toho, co udělat jako první.
+Po kontrole všech doporučení se rozhodněte, která z nich se má opravit jako první. Doporučujeme, abyste pro zvýšení vašeho zabezpečeného skóre určili prioritní kontrolu zabezpečení na nejvyšší potenciál.
 
-1. V seznamu klikněte na doporučení.
+1. V seznamu vyberte doporučení.
 
 1. Postupujte podle pokynů v části **Postup odstranění problému** . Každé doporučení má svou vlastní sadu instrukcí. Následující snímek obrazovky ukazuje nápravný postup pro konfiguraci aplikací tak, aby povoloval jenom přenosy přes protokol HTTPS.
 
-    ![Podrobnosti doporučení](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="Postup ruční nápravy pro doporučení" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. Po dokončení se zobrazí oznámení o tom, jestli se oprava úspěšně provedla.
+1. Po dokončení se zobrazí oznámení o tom, jestli se problém vyřeší.
 
-## <a name="quick-fix-remediation"></a>Rychlá oprava nápravy<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>Rychlá oprava nápravy
 
-Rychlá oprava zjednodušuje nápravu a umožňuje rychle zvýšit zabezpečení vašeho prostředí.
+K zjednodušení nápravy a vylepšení zabezpečení vašeho prostředí (a zvýšení zabezpečeného skóre) obsahuje mnoho doporučení možnost rychlé opravy.
 
-Rychlá oprava vám umožní rychle opravit doporučení pro víc prostředků. 
+Rychlá oprava vám pomůže rychle opravit doporučení pro víc prostředků.
 
 > [!TIP]
-> Rychlá oprava je dostupná jenom pro konkrétní doporučení. Pokud chcete najít doporučení s možností rychlé opravy, použijte vyhrazený filtr v horní části seznamu doporučení:
+> Rychlá oprava řešení je k dispozici pouze pro konkrétní doporučení. Pokud chcete najít doporučení s dostupnou rychlou opravou, použijte filtr **akcí odpovědí** pro seznam doporučení:
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Pomocí filtrů nad seznamem doporučení najdete doporučení s možností Rychlá oprava.":::
 
-Implementace rychlé nápravy opravy:
+Implementace řešení rychlé opravy:
 
-1. Ze seznamu doporučení, která obsahují **rychlou opravu!** popisek, klikněte na doporučení.
+1. Ze seznamu doporučení, která obsahují **rychlou opravu!** Označte doporučení.
 
-    [![Vyberte Rychlá oprava!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![Vyberte Rychlá oprava!](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
 
-1. Na kartě **poškozené prostředky** vyberte prostředky, u kterých chcete doporučení implementovat, a klikněte na **opravit**.
+1. Na kartě **poškozené prostředky** vyberte prostředky, u kterých chcete doporučení implementovat, a vyberte **opravit**.
 
     > [!NOTE]
     > Některé z uvedených prostředků můžou být zakázané, protože nemáte příslušná oprávnění k jejich úpravám.
 
 1. V potvrzovacím poli si přečtěte podrobnosti o nápravě a důsledky.
 
-    ![Rychlá oprava](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![Rychlá oprava](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > Důsledky jsou uvedeny v poli šedé v okně **opravit prostředky** , které se otevře po kliknutí na **opravit**. Seznamte se s tím, k jakým změnám dochází při řešení potíží s rychlou opravou.
@@ -79,7 +79,7 @@ Operace opravy používá volání rozhraní API pro nasazení šablony nebo opr
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste si ukázali, jak opravit doporučení v Security Center. Další informace o Security Center najdete v následujících tématech:
+V tomto dokumentu jste si ukázali, jak opravit doporučení v Security Center. Další informace o Security Center najdete na následujících stránkách:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521816"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802350"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Řešení běžných problémů v Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Tento článek popisuje běžné chyby a řešení pro aplikace využívající 
 | OverloadedException (Java) | Celkový počet spotřebovaných jednotek žádostí je větší než počet zpracovaných jednotek požadavků v prostoru a v tabulce. Proto jsou požadavky omezené. | Zvažte možnost škálování propustnosti přiřazené k prostoru klíčů nebo tabulce z Azure Portal (podívejte se [na téma pro](manage-scale-cassandra.md) operace škálování v rozhraní API Cassandra) nebo můžete implementovat zásady opakování. V případě jazyka Java se podívejte na ukázky znovu pro ovladač [v3. x](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) a [ovladač v4. x](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). Viz také [rozšíření Azure Cosmos Cassandra pro jazyk Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) |
 | OverloadedException (Java) i s dostatečnou propustností | Systém se jeví jako omezování požadavků navzdory dostatečné propustnosti zřízené pro objem požadavků a/nebo spotřebované náklady na jednotku žádosti.  | Rozhraní API Cassandra implementuje rozpočet systémové propustnosti pro operace na úrovni schématu (CREATE TABLE, ALTER TABLE, DROP TABLE). Tento rozpočet by měl být dostatečný pro operace schématu v produkčním systému. Pokud ale máte vysoký počet operací na úrovni schématu, je možné, že tento limit překročíte. Vzhledem k tomu, že tento rozpočet není řízený uživatelem, bude nutné zvážit snížení počtu spuštěných operací schématu. Pokud se tato akce nepovede vyřešit, nebo ji nemůžete použít pro vaše úlohy, [vytvořte žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md).|
 | ClosedConnectionException (Java) | Po uplynutí doby nečinnosti po úspěšném připojení se aplikace nemůže připojit.| K této chybě mohlo dojít z důvodu vypršení časového limitu nečinnosti Azure LoadBalancers, což je 4 minuty. V části ovladač nastavte nastavení Keep Alive (viz níže) a zvyšte nastavení udržování v operačním systému nebo [upravte časový limit nečinnosti v Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). |
-| Další chyby přerušovaného připojení (Java) | Neočekávaně dojde k poklesu nebo vypršení časového limitu | Ovladače Apache Cassandra pro jazyk Java poskytují dvě zásady nativního opětovného připojení: `ExponentialReconnectionPolicy` a `ConstantReconnectionPolicy` . Výchozí formát je `ExponentialReconnectionPolicy`. Pro Azure Cosmos DB rozhraní API Cassandra však doporučujeme `ConstantReconnectionPolicy` zpoždění 2 sekundy. Podívejte se na [dokumentaci ovladače](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)  pro ovladač Java v4. x a [návod pro jazyk](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/) Java 3. x (viz také příklady níže).|
+| Další chyby přerušovaného připojení (Java) | Neočekávaně dojde k poklesu nebo vypršení časového limitu | Ovladače Apache Cassandra pro jazyk Java poskytují dvě zásady nativního opětovného připojení: `ExponentialReconnectionPolicy` a `ConstantReconnectionPolicy` . Výchozí formát je `ExponentialReconnectionPolicy`. Pro Azure Cosmos DB rozhraní API Cassandra však doporučujeme `ConstantReconnectionPolicy` zpoždění 2 sekundy. Podívejte se na [dokumentaci ovladače](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  pro ovladač Java v4. x a [návod pro jazyk](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) Java 3. x (viz také příklady níže).|
 
 Pokud vaše chyba není uvedená výše a při provádění [podporované operace v rozhraní API Cassandra](cassandra-support.md)dojde k chybě, kde při *použití nativního Apache Cassandra* chyba není k dispozici, [vytvořte žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md) .
 

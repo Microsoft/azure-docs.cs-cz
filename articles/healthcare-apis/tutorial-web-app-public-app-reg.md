@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bf357dcc9c4790632a1131278edc41c13ac810b1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425809"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802605"
 ---
 # <a name="client-application-registration"></a>Registrace klientské aplikace
 V předchozím kurzu jste nasadili a nastavili rozhraní API Azure pro FHIR. Teď, když máte k dispozici rozhraní API Azure pro FHIR, zaregistrujeme veřejnou klientskou aplikaci. Můžete si přečíst kompletní [registraci veřejného klienta aplikace](register-public-azure-ad-client-app.md) průvodce, kde najdete další podrobnosti nebo řešení potíží, ale zjistili jsme hlavní kroky tohoto kurzu.
@@ -22,7 +22,7 @@ V předchozím kurzu jste nasadili a nastavili rozhraní API Azure pro FHIR. Te�
 1. Přejít na Azure Active Directory
 1. Vybrat **registraci aplikace**  -->  **Nová registrace**
 1. Pojmenování aplikace
-1. Vyberte **veřejný klient/nativní (mobilní & Desktop)** a nastavte identifikátor URI přesměrování na https://www.getpostman.com/oauth2/callback .
+1. Vyberte **veřejný klient/nativní (mobilní & Desktop)** a nastavte identifikátor URI přesměrování na `https://www.getpostman.com/oauth2/callback` .
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
@@ -51,7 +51,7 @@ Pokud jste [napsali webovou aplikaci](tutorial-web-app-write-web-app.md) pro př
 Teď, když máte nastavené správné ověření, nastavte oprávnění rozhraní API:
 
 1. Vyberte **oprávnění rozhraní API** a klikněte na **Přidat oprávnění**.
-1. V části **rozhraní API, které používá moje organizace** , vyhledejte rozhraní API pro zdravotní péče Azure.
+1. V části **rozhraní API, které používá moje organizace**, vyhledejte rozhraní API pro zdravotní péče Azure.
 1. Vyberte **user_impersonation** a klikněte na **Přidat oprávnění**.
 
 :::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Snímek obrazovky okna Přidat oprávnění rozhraní API se zvýrazněným postupem přidání oprávnění rozhraní API.":::

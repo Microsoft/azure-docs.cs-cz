@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002399"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797192"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -47,17 +47,17 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 | Technologie | Moderní nastavení | Nastavení Win32 | Nastavení operačního systému | Uživatelská data | Podporováno na SKU serveru | Back-endové úložiště v Azure | Back-endové úložiště v místním prostředí | Podpora verzí | Další čas přihlášení |Poznámky|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Disky uživatelských profilů (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Yes | Win 7 + | Yes | |
-| **Cestovní profil uživatele (RUP), režim údržby** | No | Yes | Yes | Yes | Yes| No | Yes | Win 7 + | No | |
-| **Enterprise State Roaming (ESR)** | Yes | No | Yes | No | Zobrazit poznámky | Yes | No | Win 10 | No | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
-| **Virtualizace uživatelského prostředí (UE-V)** | Yes | Yes | Yes | No | Yes | No | Yes | Win 7 + | No |  |
-| **Cloudové soubory OneDrive** | No | No | No | Yes | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | No | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
+| **Disky uživatelských profilů (UPD)** | Ano | Ano | Ano | Ano | Ano | Ne | Ano | Win 7 + | Ano | |
+| **Cestovní profil uživatele (RUP), režim údržby** | Ne | Ano | Ano | Ano | Ano| Ne | Ano | Win 7 + | Ne | |
+| **Enterprise State Roaming (ESR)** | Ano | Ne | Ano | Ne | Zobrazit poznámky | Ano | Ne | Win 10 | Ne | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
+| **Virtualizace uživatelského prostředí (UE-V)** | Ano | Ano | Ano | Ne | Ano | Ne | Ano | Win 7 + | Ne |  |
+| **Cloudové soubory OneDrive** | Ne | Ne | Ne | Ano | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | Ne | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
 
 #### <a name="performance"></a>Výkon
 
 UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.
 
-#### <a name="cost"></a>Náklady
+#### <a name="cost"></a>Cost
 
 I když clustery S2D dosahují nezbytného výkonu, jsou pro podnikové zákazníky nákladné, ale zvláště nákladné pro zákazníky s malým a středním firmou (SMB). Pro toto řešení podniky platíte za disky úložiště společně s náklady na virtuální počítače, které používají disky pro sdílenou složku.
 
@@ -87,7 +87,7 @@ Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje
 
 - Účet úložiště Azure Files musí být ve stejné oblasti jako virtuální počítače hostitele relace.
 - Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](/fslogix/fslogix-storage-config-ht).
-- Každý fond hostitelů musí být sestaven se stejným typem a velikostí virtuálního počítače na základě stejné hlavní bitové kopie.
+- Každý virtuální počítač fondu hostitelů musí být založený na stejném typu a velikosti virtuálního počítače na základě stejné hlavní bitové kopie.
 - Každý virtuální počítač fondu hostitelů musí být ve stejné skupině prostředků, aby se mohla spravovat podpora, škálování a aktualizace.
 - Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
 - Účet úložiště, který obsahuje hlavní bitovou kopii, musí být ve stejné oblasti a předplatném, ve kterém jsou virtuální počítače zřízené.

@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145861"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804050"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojit malinu pi k Azure IoT Hub (C)
 
@@ -99,7 +99,7 @@ Připravte kartu microSD pro instalaci image Raspbian.
 
 1. Stáhněte si Raspbian.
 
-   1. [Stáhněte si Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (soubor. zip).
+   1. [Stáhněte si Raspbian Stretch with Desktop](https://www.raspberrypi.org/software/) (soubor. zip).
 
    2. Rozbalte image Raspbian do složky v počítači.
 
@@ -125,7 +125,7 @@ Připravte kartu microSD pro instalaci image Raspbian.
 
    ![Nabídka předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. Na kartě **rozhraní** nastavte **SPI** a **SSH** na **Povolit**a pak klikněte na **OK**. Pokud nemáte fyzické senzory a chcete použít Simulovaná data senzorů, je tento krok nepovinný.
+3. Na kartě **rozhraní** nastavte **SPI** a **SSH** na **Povolit** a pak klikněte na **OK**. Pokud nemáte fyzické senzory a chcete použít Simulovaná data senzorů, je tento krok nepovinný.
 
    ![Povolit SPI a SSH v malinách PI](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 

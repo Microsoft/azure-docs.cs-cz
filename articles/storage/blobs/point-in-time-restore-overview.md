@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908791"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803863"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Obnovení bodu v čase pro objekty blob bloku
 
@@ -43,7 +43,7 @@ Operace **obnovit rozsahy objektů BLOB** vrátí ID obnovení, které jedinečn
 > Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
 
 > [!CAUTION]
-> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.
+> Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) , nelze tento kontejner obnovit pomocí operace obnovení. Místo odstranění celého kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít později obnovit.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Předpoklady pro obnovení k bodu v čase
 
@@ -57,9 +57,12 @@ Obnovení k bodu v čase vyžaduje, aby byly povolené následující funkce Azu
 
 Když pro účet úložiště povolíte obnovení k určitému bodu v čase, zadáte dobu uchování. Objekty blob bloku v účtu úložiště se dají obnovit během doby uchování.
 
-Doba uchování začíná, když povolíte obnovení k určitému bodu v čase. Mějte na paměti, že nemůžete obnovit objekty blob do stavu před začátkem doby uchování. Pokud jste například povolili obnovení k určitému bodu v čase, může 1. až do 30 dnů trvat, a až do 15 dnů budete moct obnovení obnovit. 1. června můžete data obnovit z 1 až 30 dnů.
+Doba uchování začíná několik minut po povolení obnovení k určitému bodu v čase. Mějte na paměti, že nemůžete obnovit objekty blob do stavu před začátkem doby uchování. Pokud jste například povolili obnovení k určitému bodu v čase, může 1. až do 30 dnů trvat, a až do 15 dnů budete moct obnovení obnovit. 1. června můžete data obnovit z 1 až 30 dnů.
 
 Doba uchování pro obnovení k určitému bodu v čase musí být alespoň jeden den kratší než doba uchování zadaná pro obnovitelné odstranění. Například pokud je doba uchování obnovitelného odstranění nastavená na 7 dní, pak doba uchování obnovení k určitému bodu v čase může být v rozmezí od 1 do 6 dnů.
+
+> [!IMPORTANT]
+> Čas potřebný k obnovení sady dat vychází z počtu operací zápisu a odstranění provedených během období obnovení. Například účet s 1 000 000 objekty s 3 000 objekty přidaných za den a 1 000 objekty odstraněné za den budou vyžadovat přibližně dvě hodiny k obnovení do bodu 30 dnů v minulosti. Doba uchování a obnovení více než 90 dní v minulosti se pro účet s touto mírou změny nedoporučuje.
 
 ### <a name="permissions-for-point-in-time-restore"></a>Oprávnění k obnovení k časovému okamžiku
 

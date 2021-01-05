@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936535"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802503"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
-Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný přístup k prostředkům ve vašem účtu úložiště. U SAS máte podrobnější kontrolu nad tím, jak má klient přístup k datům. Příklad:
+Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný přístup k prostředkům ve vašem účtu úložiště. U SAS máte podrobnější kontrolu nad tím, jak má klient přístup k datům. Například:
  
 - K jakým prostředkům může klient přistupovat.
 
@@ -112,7 +112,7 @@ Token SAS je řetězec, který vygenerujete na straně klienta, například pomo
 
 Klientské aplikace poskytují identifikátor URI SAS, který se Azure Storage jako součást požadavku. Potom služba zkontroluje parametry SAS a signaturu, aby ověřil, jestli je platný. Pokud služba ověřuje, zda je podpis platný, je žádost autorizována. V opačném případě je požadavek odmítnut s kódem chyby 403 (zakázáno).
 
-Tady je příklad identifikátoru URI služby SAS, ve kterém je vidět identifikátor URI prostředku a token SAS:
+Tady je příklad identifikátoru URI SAS služby, který ukazuje identifikátor URI prostředku a token SAS. Vzhledem k tomu, že token SAS zahrnuje řetězec dotazu identifikátoru URI, musí nejprve za identifikátor URI prostředku následovat otazník a potom token SAS:
 
 ![Součásti identifikátoru URI SAS služby](./media/storage-sas-overview/sas-storage-uri.png)
 

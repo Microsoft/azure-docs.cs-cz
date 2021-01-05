@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968ca6fa293e7bcc01bae6f48164c48c19b8267b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501714"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803897"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Pochopení rolí v Azure Active Directory
 
@@ -44,7 +44,7 @@ Když říkáte samostatný systém řízení přístupu založený na rolích. 
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>Proč některé role Azure AD jsou pro další služby
 
-Microsoft 365 má řadu systémů pro řízení přístupu založených na rolích, které se v průběhu času vyvíjely nezávisle, a to z vlastního portálu služby. Aby bylo vhodné spravovat identitu napříč Microsoft 365 z portálu Azure AD, Přidali jsme některé předdefinované role specifické pro službu, z nichž každý uděluje přístup pro správu ke službě Microsoft 365. Příkladem tohoto přidání je role správce Exchange ve službě Azure AD. Tato role je rovnocenná [skupině rolí správy organizace](/exchange/organization-management-exchange-2013-help) v systému řízení přístupu na základě role Exchange a může spravovat všechny aspekty Exchange. Podobně jsme přidali roli správce Intune, správce týmů, správce SharePointu atd. Role specifické pro server jsou jedna kategorie předdefinovaných rolí Azure AD v následující části.
+Microsoft 365 má řadu systémů pro řízení přístupu založených na rolích, které se v průběhu času vyvíjely nezávisle, a to z vlastního portálu služby. Aby bylo vhodné spravovat identitu napříč Microsoft 365 z portálu Azure AD, Přidali jsme některé předdefinované role specifické pro službu, z nichž každý uděluje přístup pro správu ke službě Microsoft 365. Příkladem tohoto přidání je role správce Exchange ve službě Azure AD. Tato role je rovnocenná [skupině rolí správy organizace](/exchange/organization-management-exchange-2013-help) v systému řízení přístupu na základě role Exchange a může spravovat všechny aspekty Exchange. Podobně jsme přidali roli správce Intune, správce týmů, správce SharePointu atd. Role specifické pro službu jsou jedna kategorie předdefinovaných rolí Azure AD v následující části.
 
 ## <a name="categories-of-azure-ad-roles"></a>Kategorie rolí Azure AD
 

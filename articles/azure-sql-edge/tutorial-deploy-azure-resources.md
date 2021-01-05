@@ -9,18 +9,18 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: d83745db6c720a2fdc2260a07a4e3e66b1a0771d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422208"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802622"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Instalace softwaru a nastavení prostředků pro tento kurz
 
 V tomto tříleté kurzu vytvoříte model strojového učení, který bude předpovídat nečistoty železa jako procentuální podíl křemíku a potom model nasadíte do Azure SQL Edge. V první části nainstalujete požadovaný software a nasadíte prostředky Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 2. Instalace sady Visual Studio 2019 s 
@@ -32,7 +32,7 @@ V tomto tříleté kurzu vytvoříte model strojového učení, který bude pře
 5. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Následující skripty vyžadují, aby příkaz AZ PowerShell měl nejnovější verzi (3.5.0, únor 2020).
 6. Nainstalujte si prostředí pro ladění, spouštění a testování IoT Edge řešení pomocí [nástroje Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/).
 7. Nainstalujte Docker.
-8. Stáhněte si soubor [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) , který se bude používat v tomto kurzu. 
+8. Stáhněte si soubor DACPAC, který se bude používat v tomto kurzu. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Nasazení prostředků Azure pomocí skriptu PowerShellu
 

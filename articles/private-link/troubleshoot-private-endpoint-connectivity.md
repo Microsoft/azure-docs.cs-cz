@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522324"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807548"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Řešení potíží s připojením k privátnímu koncovému bodu Azure
 
@@ -100,8 +100,24 @@ Zkontrolujte tyto kroky, abyste se ujistili, že všechny běžné konfigurace j
     
        ![NSG odchozí pravidla](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. Zdrojový virtuální počítač by měl mít trasu k IP adrese privátního koncového bodu jako InterfaceEndpoints v efektivních trasách síťové karty. 
+
+    a. Pokud ve zdrojovém virtuálním počítači nemůžete zobrazit trasu privátního koncového bodu, zkontrolujte, jestli 
+     - Zdrojový virtuální počítač a privátní koncový bod patří do stejné virtuální sítě. Pokud ano, musíte se zapojit do podpory. 
+     - Zdrojový virtuální počítač a privátní koncový bod jsou součástí různých virtuální sítě a pak zkontrolujte připojení IP mezi virtuální sítě. Pokud existuje připojení IP a stále nemůžete tuto trasu zobrazit, obraťte se na podporu. 
+
 1. Pokud připojení obsahuje ověřené výsledky, může se problém s připojením vztahovat k jiným aspektům, jako jsou tajné klíče, tokeny a hesla na vrstvě aplikace.
-   - V takovém případě zkontrolujte konfiguraci prostředku privátního propojení přidruženého k privátnímu koncovému bodu. Další informace najdete v [Průvodci odstraňováním potíží s privátními odkazy Azure](troubleshoot-private-link-connectivity.md).
+   - V takovém případě zkontrolujte konfiguraci prostředku privátního propojení přidruženého k privátnímu koncovému bodu. Další informace najdete v [Průvodci odstraňováním potíží s privátními odkazy Azure](troubleshoot-private-link-connectivity.md) .
+   
+1. Před vyvoláním lístku podpory je vždy dobré ho zúžit. 
+
+    a. Pokud je zdroj místní připojení k privátnímu koncovému bodu v Azure s problémy, zkuste se připojit 
+      - Na jiný virtuální počítač z místního počítače a ověřte, jestli máte připojení IP k Virtual Network z místního prostředí. 
+      - Z virtuálního počítače v Virtual Network do privátního koncového bodu.
+      
+    b. Pokud je zdrojem Azure a soukromým koncovým bodem je jiný Virtual Network, zkuste se připojit 
+      - Do privátního koncového bodu z jiného zdroje. Díky tomu můžete izolovat všechny problémy specifické pro virtuální počítače. 
+      - Do libovolného virtuálního počítače, který je součástí stejné Virtual Network privátního koncového bodu.  
 
 1. Pokud je problém stále nevyřešený a stále existuje problém s připojením, obraťte se na tým [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) .
 

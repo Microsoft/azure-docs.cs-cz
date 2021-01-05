@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102555"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805633"
 ---
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
 - **Zlepšení časů spuštění**  – s využitím shlukování se vaše instance spustí výrazně rychleji. Například výchozí disk s operačním systémem pro virtuální počítače s podporou Premium je disk P4, což je zřízený výkon až 120 vstupně-výstupních operací a 25 MB/s. V případě shlukování může P4 přejít až na 3500 IOPS a 170 MB/s, což umožňuje čas spuštění zrychlit 6X.
 - **Zpracování úloh služby Batch** – některé úlohy aplikace jsou cyklické v podstatě a vyžadují pro většinu času základní výkon a vyžadují pro krátkou dobu vyšší výkon. Příkladem je účetní program, který zpracovává transakce denně, které vyžadují malé množství provozu na disku. Pak na konci měsíce slučuje sestavy, které potřebují mnohem větší objem provozu na disku.
@@ -47,7 +47,7 @@ Následující příklady znázorňují způsob, jakým funguje shlukování s r
     - Zřízené MB/s: 25
     - Maximální počet shluků MB/s: 170 
 - 2 datové disky P10 
-    - Zřízené MB/s: 25
+    - Zřízené MB/s: 100
     - Maximální počet shluků MB/s: 170
 
  Když se virtuální počítač spustí, načtou se data z disku s operačním systémem. Vzhledem k tomu, že disk s operačním systémem je součástí virtuálního počítače, který začíná, bude disk s operačním systémem plným kreditem. Tyto kredity umožní, aby se při spuštění disku s operačním systémem za sekundu 170 MB/s, jak vidíte níže:

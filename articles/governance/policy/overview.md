@@ -3,12 +3,12 @@ title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097384"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803948"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -37,7 +37,7 @@ Podrobné informace o tom, kdy a jak probíhá vyhodnocení zásad, najdete v t�
 
 ### <a name="control-the-response-to-an-evaluation"></a>Řízení odpovědi na vyhodnocení
 
-Obchodní pravidla pro zpracování nevyhovujících prostředků se mezi organizacemi značně liší. Příklady toho, jak organizace chce, aby platforma reagovala na prostředek bez stížnosti, zahrnuje:
+Obchodní pravidla pro zpracování nevyhovujících prostředků se mezi organizacemi značně liší. Příklady, jak organizace chce, aby platforma reagovala na nekompatibilní prostředek, zahrnuje:
 
 - Odepřít změnu prostředku
 - Zaznamenat změnu prostředku
@@ -145,7 +145,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásady | Název parametru |Typ parametru  |Poznámka |
+| Zásada | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |
@@ -153,7 +153,7 @@ Jako příklad může posloužit scénář, ve kterém máte definici iniciativy
 V tomto scénáři máte při definování parametrů iniciativy pro **initiativeC** tři možnosti:
 
 - Použít parametry definic zásad v rámci této iniciativy: V tomto příkladu se _allowedLocations_ a _allowedSingleLocation_ stanou parametry iniciativy pro **initiativeC**.
-- Zadat hodnoty do parametrů definic zásad v rámci této definice iniciativy. V tomto příkladu můžete zadat seznam umístění pro parametr **zásad**– **allowedLocations** a **policyB**parametr – **allowedSingleLocation**. Hodnoty můžete zadat také při přiřazování této iniciativy.
+- Zadat hodnoty do parametrů definic zásad v rámci této definice iniciativy. V tomto příkladu můžete zadat seznam umístění pro parametr **zásad**– **allowedLocations** a **policyB** parametr – **allowedSingleLocation**. Hodnoty můžete zadat také při přiřazování této iniciativy.
 - Zadat seznam možností _hodnot_, které se můžou použít při přiřazování této iniciativy. Když přiřadíte tuto iniciativu, zděděné parametry z definic zásad v rámci této iniciativy můžou mít pouze hodnoty z tohoto zadaného seznamu.
 
 Při vytváření možností hodnot v definici iniciativy nemůžete zadat jinou hodnotu během přiřazení iniciativy, protože není součástí seznamu.

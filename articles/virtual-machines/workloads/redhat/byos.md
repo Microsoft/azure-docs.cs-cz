@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968668"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803812"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -216,4 +216,4 @@ Postup pro použití Azure Disk Encryption najdete v tématu [scénáře Azure D
 - Další informace o infrastruktuře aktualizace Red Hat najdete v tématu [infrastruktura aktualizací Azure Red Hat](./redhat-rhui.md).
 - Další informace o všech obrázcích Red Hat v Azure najdete na [stránce s dokumentací](./redhat-images.md).
 - Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
-- Další dokumentaci k RHEL Gold imagí najdete v [dokumentaci k Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+- Další dokumentaci k RHEL Gold imagí najdete v [dokumentaci k Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).

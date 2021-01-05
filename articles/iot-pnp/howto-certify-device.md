@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462462"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803965"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Certifikace zařízení IoT Plug and Play
 
@@ -41,7 +41,7 @@ Abyste splnili požadavky na certifikaci, vaše zařízení musí:
 - Připojí se k Azure IoT Hub pomocí [DPS](../iot-dps/about-iot-dps.md).
 - Implementací telemetrie, vlastností nebo příkazů podle konvence technologie Plug and Play IoT.
 - Popište interakce zařízení s modelem [DTDL v2](https://aka.ms/dtdl) .
-- Publikování modelu a všech požadovaných rozhraní v [úložišti veřejného modelu Azure IoT](https://devicemodels.azureiotsolutions.com/)
+- Publikování modelu a všech požadovaných rozhraní v úložišti veřejného modelu Azure IoT
 - Odešlete ID modelu během [registrace DPS](./concepts-developer-guide-device.md#dps-payload) v datové části zřizování DPS.
 - Během [připojení MQTT](./concepts-developer-guide-device.md#model-id-announcement)oznamuje ID modelu.
 - Všechny modely zařízení musí být kompatibilní s [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md).
@@ -174,7 +174,7 @@ Následující kroky ukazují, jak používat [portál zařízení s certifikac�
 
 Pokud chcete používat [certifikační portál](https://aka.ms/acdp), musíte použít Azure Active Directory ze svého pracovního nebo školního tenanta.
 
-Pokud chcete publikovat modely do úložiště veřejného modelu Azure IoT, váš účet musí být členem [Microsoft Partner Network](https://partner.microsoft.com). Systém kontroluje, zda ID Microsoft Partner Network existuje a účet je plně prověřené před publikováním do katalogu zařízení.
+Pokud chcete publikovat modely do [úložiště veřejného modelu Azure IoT](https://github.com/Azure/iot-plugandplay-models), váš účet musí být členem [Microsoft Partner Network](https://partner.microsoft.com). Systém kontroluje, zda ID Microsoft Partner Network existuje a účet je plně prověřené před publikováním do katalogu zařízení.
 
 ### <a name="company-profile"></a>Profil společnosti
 
