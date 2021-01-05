@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894146"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827151"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby. Je nutné použít `en-US-JessaRUS` , protože není `en-US-JessaNeural` nyní k dispozici ve verzi kontejneru převodu textu na řeč.
+**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby.
 
 **Chyba 3:**
 
@@ -292,8 +292,8 @@ Mohli byste vám pomáhat s plněním následujících metrik testu, včetně to
 
 | Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Yes      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Yes | No       |
+| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Ano      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Ano | Ne       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod Prem Interactive v1 WebSocket v Cognitive Services  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod WebSocket v Prem konverzaci v1 služby vnímání |     |          |
 
@@ -309,6 +309,8 @@ Alternativní řešení je buď přepnout na použití průběžného rozpoznáv
 Pro váš kód nastavte koncový bod na `host:port` /Speech/Recognition/Interactive/cognitiveservices/v1
 
 Různé režimy najdete v tématu režimy řeči – viz níže:
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>Režimy řeči – interaktivní, konverzace, diktování
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -367,7 +369,7 @@ V mém aktuálním plánu si můžete vzít existující zvukový soubor a rozd�
 
 V dokumentu se říká, jak vystavit jiný port, který mám dělat, ale kontejner LUIS pořád naslouchá na portu 5000?
 
-**Odpověď:** Zkuste `-p <outside_unique_port>:5000` . Například, `-p 5001:5000`.
+**Odpověď:** Zkuste `-p <outside_unique_port>:5000` . Například `-p 5001:5000`.
 
 
 <br>
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **Odpověď:** Existují tři koncové body kontejneru řeči pro různá použití, jsou definovány jako režimy řeči – viz níže:
+
+## <a name="speech-modes"></a>Režimy řeči
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

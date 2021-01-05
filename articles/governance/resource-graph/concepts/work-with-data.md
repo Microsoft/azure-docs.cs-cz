@@ -3,13 +3,13 @@ title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843345"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826027"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -67,7 +67,7 @@ V [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/re
 Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**. **resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
- **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není `id` k dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než dotaz požaduje. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
+ **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není `id` k dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než dotaz požaduje. Pokud  má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
 
 Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po přeskočení těchto záznamů pomocí Azure CLI a Azure PowerShell:
 

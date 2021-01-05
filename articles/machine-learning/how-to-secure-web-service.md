@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631087"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830866"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 
@@ -73,14 +73,17 @@ Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> Povolení TLS a nasazení
 
-Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
+V případě **nasazení AKS** můžete povolit ukončení protokolu TLS, když [vytvoříte nebo připojíte cluster AKS](how-to-create-attach-kubernetes.md) v pracovním prostoru AML. V době nasazení modelu AKS můžete zrušit ukončení protokolu TLS pomocí objektu konfigurace nasazení, jinak bude v případě, že je v clusteru AKS povolený čas, vytvořit nebo připojit čas.
+
+Pro nasazení ACI můžete povolit ukončení protokolu TLS v době nasazení modelu s objektem Konfigurace nasazení.
+
 
 ### <a name="deploy-on-azure-kubernetes-service"></a>Nasazení ve službě Azure Kubernetes
 
   > [!NOTE]
   > Informace v této části platí také při nasazení zabezpečené webové služby pro návrháře. Pokud nejste obeznámeni s používáním sady Python SDK, přečtěte si téma [co je Azure Machine Learning SDK pro Python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-**[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** i **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** vracejí objekt konfigurace, který má metodu **Enable_ssl** , a můžete použít metodu **Enable_ssl** k povolení TLS.
+Když [vytvoříte nebo připojíte cluster AKS](how-to-create-attach-kubernetes.md) v pracovním prostoru AML, můžete povolit ukončení protokolu TLS s objekty konfigurace **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Obě metody vrátí objekt konfigurace, který má metodu **Enable_ssl** , a můžete použít metodu **Enable_ssl** k povolení protokolu TLS.
 
 Protokol TLS můžete povolit buď s certifikátem společnosti Microsoft, nebo s vlastním certifikátem zakoupeným od certifikační autority. 
 

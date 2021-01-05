@@ -7,15 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483691"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826134"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportovat certifikáty z Azure Key Vault
 
@@ -42,10 +42,10 @@ Další informace najdete v tématu [o Azure Key Vaultch certifikátech](./about
 
 ## <a name="export-stored-certificates"></a>Export uložených certifikátů
 
-Uložené certifikáty můžete exportovat v Azure Key Vault pomocí rozhraní příkazového řádku Azure, Azure PowerShell nebo Azure Portal.
+Certifikáty uložené ve službě Azure Key Vault můžete exportovat pomocí Azure CLI, Azure PowerShellu nebo webu Azure Portal.
 
 > [!NOTE]
-> Při importu certifikátu do trezoru klíčů stačí vyžadovat heslo certifikátu. Key Vault neukládá přidružené heslo. Při exportu certifikátu je heslo prázdné.
+> Při importu certifikátu do trezoru klíčů stačí vyžadovat heslo certifikátu. Key Vault přidružené heslo neukládá. Při exportu certifikátu je heslo prázdné.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

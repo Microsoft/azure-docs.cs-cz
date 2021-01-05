@@ -1,34 +1,34 @@
 ---
 title: Kurz – vykreslení scény v cloudu
-description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure
+description: Přečtěte si, jak vykreslit maximální scénu aplikace Autodesk 3ds pomocí Arnold pomocí služby Batch rendering Service a rozhraní Azure Command-Line.
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 12/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3518e074589284e6d6cd7432dc77ba8bdd457045
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106338"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827525"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch
 
 Azure Batch nabízí možnosti vykreslování v cloudovém měřítku a s platbami za použití. Azure Batch podporuje vykreslovací aplikace, včetně aplikací Autodesk Maya, 3ds Max, Arnold a V-Ray. V tomto kurzu najdete kroky pro vykreslení malé scény s využitím služby Batch a rozhraní příkazového řádku Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nahrání scény do úložiště Azure
-> * Vytvoření fondu služby Batch pro účely vykreslování
-> * Vykreslení scény s jedním snímkem
-> * Škálování fondu a vykreslení scény s více snímky
-> * Stažení vykresleného výstupu
+> - Nahrání scény do úložiště Azure
+> - Vytvoření fondu služby Batch pro účely vykreslování
+> - Vykreslení scény s jedním snímkem
+> - Škálování fondu a vykreslení scény s více snímky
+> - Stažení vykresleného výstupu
 
 V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru se sledováním paprsků [Arnold](https://www.autodesk.com/products/arnold/overview). Fond služby Batch používá bitovou kopii Azure Marketplace s předem nainstalovanými grafickými a vykreslovacími aplikacemi, které poskytují licencování s platbami na základě využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
- - Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
+- Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
 
- - Ukázková scéna 3ds Max pro tento kurz je na [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) společně s ukázkovým skriptem Bash a konfiguračními soubory JSON. Scéna 3ds Max je převzatá z [ukázkových souborů pro Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Ukázkové soubory pro Autodesk 3ds Max jsou dostupné v rámci licence Creative Commons Attribution-NonCommercial-Share Alike. Copyright &copy; Autodesk, Inc.)
+- Ukázková scéna 3ds Max pro tento kurz je na [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) společně s ukázkovým skriptem Bash a konfiguračními soubory JSON. Scéna 3ds Max je převzatá z [ukázkových souborů pro Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Ukázkové soubory pro Autodesk 3ds Max jsou dostupné v rámci licence Creative Commons Attribution-NonCommercial-Share Alike. Copyright &copy; Autodesk, Inc.)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -36,13 +36,14 @@ V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru 
 
 > [!TIP]
 > [Šablony úloh Arnold](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) můžete zobrazit v úložišti GitHub šablony rozšíření Azure Batch.
+
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-Pokud jste to ještě neudělali, vytvořte ve svém předplatném skupinu prostředků, účet Batch a propojený účet úložiště. 
+Pokud jste to ještě neudělali, vytvořte ve svém předplatném skupinu prostředků, účet Batch a propojený účet úložiště.
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus2*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
     --name myResourceGroup \
     --location eastus2
@@ -57,9 +58,10 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
+
 K vytvoření účtu Batch použijte příkaz [az batch account create](/cli/azure/batch/account#az-batch-account-create). Následující příkaz vytvoří účet Batch s názvem *mybatchaccount* ve skupině prostředků *myResourceGroup* a propojí ho s účtem úložiště, který jste vytvořili.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
@@ -69,12 +71,13 @@ az batch account create \
 
 K vytváření a správě výpočetních fondů a úloh musíte využít ověřování pomocí služby Batch. Přihlaste se k účtu pomocí příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login). Po přihlášení budou příkazy `az batch` používat kontext tohoto účtu. Následující příklad používá ověřování pomocí sdíleného klíče na základě názvu a klíče účtu Batch. Pro účely ověřování jednotlivých uživatelů nebo bezobslužných aplikací služba Batch podporuje také ověřování prostřednictvím [Azure Active Directory](batch-aad-auth.md).
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
     --resource-group myResourceGroup \
     --shared-key-auth
 ```
+
 ## <a name="upload-a-scene-to-storage"></a>Nahrání scény do úložiště
 
 Pokud chcete do úložiště nahrát vstupní scénu, musíte nejprve přejít do účtu úložiště a vytvořit v něm cílový kontejner pro objekty blob. Přístup k účtu úložiště Azure získáte tak, že exportujete proměnné prostředí `AZURE_STORAGE_KEY` a `AZURE_STORAGE_ACCOUNT`. První příkaz prostředí Bash pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) získá první klíč účtu. Po nastavení těchto proměnných prostředí budou příkazy úložiště používat kontext tohoto účtu.
@@ -93,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Příklad:
+Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Například:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -135,16 +138,18 @@ Pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-cre
   "enableInterNodeCommunication": false 
 }
 ```
-Batch podporuje vyhrazené uzly a uzly s [nízkou prioritou](batch-low-pri-vms.md) a ve svých fondech můžete použít buď nebo obojí. Vyhrazené uzly jsou rezervované pro váš fond. Uzly s nízkou prioritou pocházejí z přebytečné kapacity virtuálních počítačů v Azure a nabízejí se za nižší cenu. Pokud Azure nemá dostatek kapacity, uzly s nízkou prioritou budou nedostupné. 
+
+Batch podporuje vyhrazené uzly a uzly s [nízkou prioritou](batch-low-pri-vms.md) a ve svých fondech můžete použít buď nebo obojí. Vyhrazené uzly jsou rezervované pro váš fond. Uzly s nízkou prioritou pocházejí z přebytečné kapacity virtuálních počítačů v Azure a nabízejí se za nižší cenu. Pokud Azure nemá dostatek kapacity, uzly s nízkou prioritou budou nedostupné.
 
 Zadaný fond obsahuje jediný uzel s nízkou prioritou, na kterém je spuštěná image Windows Serveru se softwarem pro službu Batch Rendering. Tento fond má licenci na vykreslování v aplikaci 3ds Max a Arnoldu. V pozdějším kroku budete fond škálovat na větší počet uzlů.
 
-Vytvořte fond předáním souboru JSON do příkazu `az batch pool create`:
+Pokud ještě nejste přihlášení k účtu Batch, použijte k tomu příkaz [AZ Batch Account Login](/cli/azure/batch/account#az-batch-account-login) . Pak vytvořte fond předáním souboru JSON do `az batch pool create` příkazu:
 
 ```azurecli-interactive
 az batch pool create \
     --json-file mypool.json
-``` 
+```
+
 Zřízení fondu trvá několik minut. K zobrazení stavu fondu můžete použít příkaz [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show). Následující příkaz zobrazí stav přidělení fondu:
 
 ```azurecli-interactive
@@ -157,7 +162,7 @@ Dokud se stav fondu mění, pokračujte v následujících krocích pro vytvář
 
 ## <a name="create-a-blob-container-for-output"></a>Vytvoření kontejneru objektů blob pro výstup
 
-V příkladech v tomto kurzu každý úkol v úloze vykreslování vytváří výstupní soubor. Před plánováním úloh vytvořte ve svém účtu úložiště kontejner objektů blob jako cíl pro výstupní soubory. Následující příklad pomocí příkazu [az storage container create](/cli/azure/storage/container#az-storage-container-create) vytvoří kontejner *job-myrenderjob* s veřejným oprávněním ke čtení. 
+V příkladech v tomto kurzu každý úkol v úloze vykreslování vytváří výstupní soubor. Před plánováním úloh vytvořte ve svém účtu úložiště kontejner objektů blob jako cíl pro výstupní soubory. Následující příklad pomocí příkazu [az storage container create](/cli/azure/storage/container#az-storage-container-create) vytvoří kontejner *job-myrenderjob* s veřejným oprávněním ke čtení.
 
 ```azurecli-interactive
 az storage container create \
@@ -165,27 +170,25 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-K zápisu výstupních souborů do kontejneru musí služba Batch použít token sdíleného přístupového podpisu (SAS). Vytvořte token pomocí příkazu [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Tento příklad vytvoří token pro zápis do libovolného kontejneru objektů BLOB v účtu a platnost tokenu vyprší 15. listopadu 2020:
+K zápisu výstupních souborů do kontejneru musí služba Batch použít token sdíleného přístupového podpisu (SAS). Vytvořte token pomocí příkazu [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Tento příklad vytvoří token pro zápis do libovolného kontejneru objektů BLOB v účtu a platnost tokenu vyprší 15. listopadu 2021:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2020-11-15
+    --expiry 2021-11-15
 ```
 
-Poznamenejte si token vrácený příkazem, který je podobný následujícímu. Tento token použijete později.
+Poznamenejte si token vrácený příkazem, který je podobný následujícímu. Tento token použijete v pozdějším kroku.
 
-```
-se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+`se=2021-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ## <a name="render-a-single-frame-scene"></a>Vykreslení scény s jedním snímkem
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-Pomocí příkazu [az batch job create](/cli/azure/batch/job#az-batch-job-create) vytvořte úlohu vykreslování, která se spustí ve fondu. Na začátku úloha neobsahuje žádné úkoly.
+Pomocí příkazu [az batch job create](/cli/azure/batch/job#az-batch-job-create) vytvořte úlohu vykreslování, která se spustí ve fondu. Zpočátku úloha nemá žádné úlohy.
 
 ```azurecli-interactive
 az batch job create \
@@ -202,11 +205,7 @@ Pomocí příkazu [az batch task create](/cli/azure/batch/task#az-batch-task-cre
 Upravte v souboru JSON elementy `blobSource` a `containerURL` tak, aby obsahovaly název vašeho účtu úložiště a váš token SAS. 
 
 > [!TIP]
-> Vaše adresa `containerURL` končí vaším tokenem SAS a vypadá přibližně takto:
-> 
-> ```
-> https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-> ```
+> Vaše `containerURL` končí vaším tokenem SAS a je podobný: `https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ```json
 {
@@ -250,7 +249,6 @@ az batch task create \
 
 Služba Batch úkol naplánuje a ten se okamžitě spustí, jakmile bude ve fondu dostupný nějaký uzel.
 
-
 ### <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
 Spuštění úkolu trvá několik minut. K zobrazení podrobností o úkolu použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show).
@@ -275,7 +273,6 @@ Otevřete na svém počítači soubor *dragon.jpg*. Vykreslený obrázek vypadá
 
 ![Vykreslený snímek s drakem 1](./media/tutorial-rendering-cli/dragon-frame.png) 
 
-
 ## <a name="scale-the-pool"></a>Škálování fondu
 
 Teď fond upravíte, abyste ho připravili na větší úlohu vykreslování s několika snímky. Služba Batch nabízí řadu způsobů, jak škálovat výpočetní prostředky, včetně [automatického škálování](batch-automatic-scaling.md), které přidává a odebírá uzly v závislosti na měnících se požadavcích úkolů. Pro účely tohoto základního příkladu zvyšte pomocí příkazu [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) počet uzlů s nízkou prioritou ve fondu na *6*:
@@ -298,7 +295,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Příklad:
+Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Například:
 
 ```azurecli-interactive
 az batch task list \
@@ -306,15 +303,15 @@ az batch task list \
     --output table
 ```
 
-K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Příklad:
+K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Například:
 
 ```azurecli-interactive
 az batch task show \
     --job-id myrenderjob \
     --task-id mymultitask1
 ```
- 
-Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Příklad:
+
+Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Například:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -326,12 +323,11 @@ Otevřete na svém počítači jeden ze souborů. Vykreslený snímek 6 vypadá 
 
 ![Vykreslený snímek s drakem 6](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu Batch, fondů a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete). Prostředky odstraňte následujícím způsobem:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
@@ -340,11 +336,11 @@ az group delete --name myResourceGroup
 V tomto kurzu jste se naučili těmto úkonům:
 
 > [!div class="checklist"]
-> * Nahrávání scén do úložiště Azure
-> * Vytvoření fondu služby Batch pro účely vykreslování
-> * Vykreslení scény s jedním snímkem s využitím Arnoldu
-> * Škálování fondu a vykreslení scény s více snímky
-> * Stažení vykresleného výstupu
+> - Nahrávání scén do úložiště Azure
+> - Vytvoření fondu služby Batch pro účely vykreslování
+> - Vykreslení scény s jedním snímkem s využitím Arnoldu
+> - Škálování fondu a vykreslení scény s více snímky
+> - Stažení vykresleného výstupu
 
 Další informace o vykreslování v cloudovém měřítku najdete v dokumentaci dávkového vykreslování.
 

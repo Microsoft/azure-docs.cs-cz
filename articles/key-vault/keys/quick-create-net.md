@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 77907b6e901ae074c879b4911a8ee755224a7948
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a1404969b67a0c4919902a407427227ce397d9a
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780412"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825936"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro .NET (SDK v4)
 
@@ -27,7 +27,7 @@ Další informace o Key Vault a klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled klíčů](about-keys.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core)

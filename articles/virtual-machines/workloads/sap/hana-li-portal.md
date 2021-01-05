@@ -13,20 +13,20 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2020
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36f6638614d5c0b55b2adc202e8f8d6f9450aaf3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674408"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827508"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
 
 >[!NOTE]
->V případě Rev 4,2 postupujte podle pokynů v tématu [Správa instancí BareMetal pomocí tématu Azure Portal](baremetal-infrastructure-portal.md) .
+>V případě Rev 4,2 postupujte podle pokynů v tématu [Správa instancí BareMetal pomocí tématu Azure Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) .
 
 Tento dokument popisuje způsob, jakým se v [Azure Portal](https://portal.azure.com) prezentují [velké instance Hana](./hana-overview-architecture.md) a jaké aktivity je možné provádět prostřednictvím Azure Portal s velkými jednotkami instancí Hana, které jsou pro vás nasazené. Viditelnost velkých instancí HANA v Azure Portal k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, který je aktuálně ve verzi Public Preview.
 

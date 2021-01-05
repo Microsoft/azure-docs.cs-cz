@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751474"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830934"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -439,7 +439,7 @@ Ve verzích Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Důvody selhání upgradu na Kubernetes 1,16 při použití popisků uzlů s předponou kubernetes.io
 
-Od Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) je možné použít kubelet na uzly [pouze definovanou podmnožinu popisků s předponou Kubernetes.IO](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) . AKS nemůže odebrat aktivní popisky bez souhlasu, protože by mohlo dojít k výpadkům ovlivněných úloh.
+Od Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) je možné použít kubelet na uzly [pouze definovanou podmnožinu popisků s předponou Kubernetes.IO](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) . AKS nemůže odebrat aktivní popisky bez souhlasu, protože by mohlo dojít k výpadkům ovlivněných úloh.
 
 V důsledku toho můžete tyto potíže zmírnit:
 

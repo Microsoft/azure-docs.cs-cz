@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971553"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827491"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
@@ -52,7 +52,7 @@ Na kartě **Správa** v části **monitorování** se ujistěte, že je zapnutá
 ![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Funkce diagnostiky spouštění nepodporuje typy účtů úložiště úrovně Premium nebo redundent zóny. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
+> Funkce diagnostiky spouštění nepodporuje v účtu úložiště úrovně Premium nebo redundantní typy účtů úložiště zóny. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Nasazení ze šablony Azure Resource Manager
@@ -86,8 +86,8 @@ Další informace o nasazení prostředků pomocí šablon najdete v tématu [ry
 Pokud chcete povolit diagnostiku spouštění na stávajícím virtuálním počítači, postupujte podle těchto kroků:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a potom vyberte virtuální počítač.
-2. V části **Podpora a řešení potíží** vyberte **Diagnostika spouštění**a pak vyberte kartu **Nastavení** .
-3. V nastavení **Diagnostika spouštění** změňte stav na **zapnuto**a v rozevíracím seznamu **účet úložiště** vyberte účet úložiště. 
+2. V části **Podpora a řešení potíží** vyberte **Diagnostika spouštění** a pak vyberte kartu **Nastavení** .
+3. V nastavení **Diagnostika spouštění** změňte stav na **zapnuto** a v rozevíracím seznamu **účet úložiště** vyberte účet úložiště. 
 4. Uložte změnu.
 
     ![Aktualizace stávajícího virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

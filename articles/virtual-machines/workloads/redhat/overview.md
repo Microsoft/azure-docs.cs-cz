@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968651"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830645"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 
@@ -36,7 +36,7 @@ Pokud se nechcete zabývat nezávisle na placení za příslušný počet předp
 ### <a name="red-hat-gold-images"></a>Image Red Hat Gold
 
 Azure nabízí také Red Hat Gold images ( `rhel-byos` ). Tyto obrázky můžou být užitečné pro zákazníky, kteří mají existující předplatné Red Hat a chtějí je používat v Azure. Abyste mohli povolit cloudový přístup Red Hat do Azure, budete si muset povolit svoje stávající předplatné Red Hat. Přístup k těmto obrázkům se uděluje automaticky, pokud jsou pro cloudový přístup povolená předplatná Red Hat a splňují požadavky na způsobilost. Použití těchto imagí umožňuje zákazníkovi vyhnout se dvojímu vyúčtování, které by mohlo vést k používání imagí s průběžnými platbami.
-* Naučte se, jak [Povolit předplatná Red Hat pro cloudový přístup pomocí Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
+* Naučte se, jak [Povolit předplatná Red Hat pro cloudový přístup pomocí Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access).
 * Přečtěte si [, jak najít obrázky Red Hat Gold v rutinách Azure Portal, Azure CLI nebo PowerShellu](./byos.md).
 
 > [!NOTE]

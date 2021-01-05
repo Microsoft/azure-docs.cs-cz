@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957278"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827219"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
@@ -42,6 +42,8 @@ Pokud chcete mít možnost optimalizovat latenci sítě, Azure nabízí [skupiny
 > - Pouze v případě potřeby
 > - Pouze v případě jednoho systému SAP, nikoli celého systému na šířku nebo kompletního SAP na šířku
 > - Způsob zachování různých typů virtuálních počítačů a počtu virtuálních počítačů v rámci skupiny umístění s blízkostí na minimum
+
+Předpokládejme, že pokud nasadíte virtuální počítače zadáním Zóny dostupnosti a vyberete stejný Zóny dostupnosti, latence sítě mezi těmito virtuálními počítači by měla být dostačující k provozu systémů SAP NetWeaver a S/4HANA, které splňují výkon a propustnost. Tento předpoklad nezávisí na tom, zda je konkrétní zóna sestavena z jednoho nebo více datových center. Jediným důvodem pro použití skupin umístění blízkosti v prostředích nasazení je případ, kdy chcete přidělit virtuální počítače nasazené službou Azure Availability společně s nasazenými virtuálními počítači s více oblastmi.
 
 
 ## <a name="what-are-proximity-placement-groups"></a>Co jsou skupiny umístění pro Proximity? 

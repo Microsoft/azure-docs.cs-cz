@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500185"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830713"
 ---
-# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Nasazení podnikových aplikací v jazyce Java do Azure pomocí protokolu JBoss EAP na Red Hat Enterprise Linux
+# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Nasazování podnikových aplikací v Javě v Azure s využitím JBoss EAP v Red Hat Enterprise Linuxu
 
 Šablony pro rychlý Start Azure v tomto článku vám ukážou, jak nasadit [JBoss Enterprise Application Platform (EAP)](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) pomocí služby [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) na virtuální počítače Azure a sady škálování virtuálních počítačů. K ověření nasazení použijete ukázkovou aplikaci Java. 
 
@@ -23,7 +23,7 @@ JBoss EAP je open source platforma aplikačního serveru. Zajišťuje zabezpeče
 
 JBoss EAP a RHEL obsahují všechno, co potřebujete k sestavování, spouštění, nasazování a správě podnikových aplikací v jazyce Java v jakémkoli prostředí. Kombinace je open source řešení pro místní, virtuální prostředí a v privátních, veřejných i hybridních cloudech.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 * Účet Azure s aktivním předplatným. Pokud chcete získat předplatné Azure, aktivujte si své [kredity Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [vytvořte účet zdarma](https://azure.microsoft.com/pricing/free-trial).
 
@@ -123,7 +123,7 @@ Tento spouštěcí skript používá soubor EAP_HOME/bin/Standalone.conf k nasta
 
 Podrobnosti o dostupných samostatných konfiguračních souborech a jejich použití najdete v tématu [samostatné konfigurační soubory serveru pro eap 7,2](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) nebo [samostatné soubory konfigurace serveru pro EAP 7,3](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files). 
 
-K zahájení JBoss protokolu EAP s jinou konfigurací použijte `--server-config` argument. Příklad:
+K zahájení JBoss protokolu EAP s jinou konfigurací použijte `--server-config` argument. Například:
     
  ```
  $EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml
@@ -152,7 +152,7 @@ Podrobnosti o cenách virtuálních počítačů s PAYG najdete v článku o [ce
 Pokud chcete používat BYOS pro RHEL operační systém, musíte mít platné předplatné Red Hat s nároky na používání RHEL operačního systému v Azure. Před nasazením operačního systému RHEL s modelem BYOS proveďte následující předpoklady:
 
 1. Ujistěte se, že máte oprávnění RHEL pro operační systém a JBoss EAP připojené k vašemu předplatnému Red Hat.
-2. Ověřte ID předplatného Azure, abyste mohli používat image RHEL BYOS. Dokončete proces pomocí [dokumentace správy předplatných Red Hat](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) , která zahrnuje tyto kroky:
+2. Ověřte ID předplatného Azure, abyste mohli používat image RHEL BYOS. Dokončete proces pomocí [dokumentace správy předplatných Red Hat](https://access.redhat.com/documentation/red_hat_subscription_management/1/) , která zahrnuje tyto kroky:
 
    1. Povolte Microsoft Azure jako poskytovatele na řídicím panelu Red Hat Cloud Access.
 
@@ -160,7 +160,7 @@ Pokud chcete používat BYOS pro RHEL operační systém, musíte mít platné p
 
    1. Povolte nové produkty pro cloudový přístup k Microsoft Azure.
     
-   1. Aktivujte image Red Hat Gold pro vaše předplatné Azure. Další informace najdete v tématu [Image Red Hat Gold na Microsoft Azure](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+   1. Aktivujte image Red Hat Gold pro vaše předplatné Azure. Další informace najdete v tématu [Image Red Hat Gold na Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).
 
    1. Počkejte, až budou image Red Hat Gold dostupné ve vašem předplatném Azure. Tyto image jsou obvykle k dispozici do tří hodin od odeslání.
     
@@ -212,7 +212,7 @@ Protokol EAP JBoss je k dispozici v Azure pouze prostřednictvím modelu BYOS. P
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   Podrobnosti o instalaci a konfiguraci rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní](/cli/azure/install-azure-cli)příkazového řádku.

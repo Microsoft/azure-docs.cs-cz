@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 16de95e177f6be1b5bb2517b5ae3ca595cfb5766
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939110"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827168"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Scénáře výměny tokenů platformy Microsoft Identity Platform s SAML a OIDC/OAuth
 
@@ -33,4 +33,4 @@ Obecnou strategií je přidání zásobníku OIDC/OAuth do aplikace. S vaší ap
 > Doporučenou knihovnou pro přidání chování OIDC/OAuth je knihovna Microsoft Authentication Library (MSAL). Další informace o MSAL najdete v tématu [Přehled knihovny Microsoft Authentication Library (MSAL)](msal-overview.md). Předchozí knihovna se volala Active Directory Authentication Library (ADAL), ale nedoporučuje se, protože ji nahrazuje MSAL.
 
 ## <a name="next-steps"></a>Další kroky
-- [toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md)
+- [Toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741095"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827474"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) s využitím rozhraní REST API služby Logic Apps
 
@@ -25,7 +25,7 @@ Další informace o dalších způsobech vytvoření ISE najdete v těchto člá
 * [Vytvoření ISE pomocí ukázkové Azure Resource Manager šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Vytvoření ISE, který podporuje použití klíčů spravovaných zákazníkem k šifrování neaktivních dat](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné [předpoklady](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky na přístup](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
@@ -69,9 +69,7 @@ V hlavičce požadavku zahrňte tyto vlastnosti:
 
 V textu žádosti zadejte definici prostředků, která se má použít k vytvoření vašeho ISEu, včetně informací o dalších funkcích, které chcete povolit na ISE, například:
 
-* Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` , jak je uvedeno dále v tomto článku.
-
-  Pokud chcete tuto funkci povolit pro existující ISE, můžete odeslat žádost o opravu jenom pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+* Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem a certifikát vydaný v umístění podniková certifikační autorita, která je nainstalována v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` , jak je popsáno dále v tomto článku.
 
 * Pokud chcete vytvořit ISE, který používá spravovanou identitu přiřazenou systémem nebo uživatelem, zahrňte `identity` objekt se spravovaným typem identity a dalšími požadovanými informacemi v definici ISE, jak je uvedeno dále v tomto článku.
 
@@ -123,7 +121,7 @@ Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají pou
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>Přidat vlastní kořenové certifikáty
+
+Často používáte ISE k připojení k vlastním službám ve vaší virtuální síti nebo místně. Tyto vlastní služby jsou často chráněny certifikátem vydaným vlastní kořenovou certifikační autoritou, jako je například podniková certifikační autorita nebo certifikát podepsaný svým držitelem. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Aby se vaše ISE úspěšně připojovala k těmto službám prostřednictvím protokolu TLS (Transport Layer Security), potřebuje vaše ISE přístup k těmto kořenovým certifikátům. Pokud chcete aktualizovat ISE pomocí vlastního důvěryhodného kořenového certifikátu, udělejte tuto `PATCH` žádost https:
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+Než tuto operaci provedete, přečtěte si tyto požadavky:
+
+* Ujistěte se, že jste nahráli kořenový certifikát *a* všechny zprostředkující certifikáty. Maximální počet certifikátů je 20.
+
+* Odesílání kořenových certifikátů je operace nahrazení, kde nejnovější nahrávání přepíše předchozí nahrávání. Pokud třeba odešlete požadavek, který nahraje jeden certifikát, a pak odešlete další požadavek na nahrání jiného certifikátu, ISE použije jenom druhý certifikát. Pokud potřebujete použít oba certifikáty, přidejte je společně do stejného požadavku.  
+
+* Nahrávání kořenových certifikátů je asynchronní operace, která může nějakou dobu trvat. Chcete-li zjistit stav nebo výsledek, můžete odeslat `GET` žádost pomocí stejného identifikátoru URI. Zpráva s odpovědí obsahuje `provisioningState` pole, které vrací `InProgress` hodnotu, když operace nahrávání stále pracuje. Je `provisioningState` -li hodnota `Succeeded` , operace odeslání je dokončena.
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Syntaxe textu žádosti pro přidání vlastních kořenových certifikátů
+
+Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při přidávání kořenových certifikátů:
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```
