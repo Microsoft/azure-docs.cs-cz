@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 770c73cb6f1309e64cd44c5a1b1570899108e4e7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539696"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821039"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v Apache Hadoop ekosystému ve službě HDInsight z počítače s Windows
 
@@ -85,7 +85,7 @@ Clustery Apache Spark v HDInsight zahrnují notebooky Apache Zeppelin a jádra, 
 Pokud jste pocházeli v situaci, kdy je nutné použít nástroj nebo technologii, která je k dispozici pouze pro Linux, vezměte v úvahu následující možnosti:
 
 * **Bash v Ubuntu ve Windows 10** poskytuje podsystém Linux ve Windows. Bash umožňuje přímo spouštět nástroje pro Linux bez nutnosti udržovat vyhrazenou instalaci systému Linux. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .
-* **Docker for Windows** poskytuje přístup k mnoha nástrojům pro Linux a dá se spustit přímo z Windows. Můžete například použít Docker ke spuštění klienta Beeline pro podregistr přímo z Windows. Docker můžete použít také ke spuštění místního poznámkového bloku Jupyter a ke vzdálenému připojení ke Sparku ve službě HDInsight. [Začínáme s Docker for Windows](https://docs.docker.com/docker-for-windows/)
+* **Docker for Windows** poskytuje přístup k mnoha nástrojům pro Linux a dá se spustit přímo z Windows. Můžete například použít Docker ke spuštění klienta Beeline pro podregistr přímo z Windows. Docker můžete použít také ke spuštění místního Jupyter Notebook a ke vzdálenému připojení ke Sparku ve službě HDInsight. [Začínáme s Docker for Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)** umožňuje grafiku procházet systémem souborů clusteru přes připojení SSH.
 
 ## <a name="cross-platform-tools"></a>Nástroje pro různé platformy

@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654588"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822280"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje běžné metody řešení potíží pro aktivity externích řízení v Azure Data Factory.
@@ -498,7 +499,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Zpráva**: `There are duplicate files in the resource folder.`
 
-- **Příčina**: více souborů se stejným názvem jsou v různých podadresářích FolderPath.
+- **Příčina**: více souborů se stejným názvem jsou v různých podsložkách FolderPath.
 
 - **Doporučení**: vlastní aktivity sloučí strukturu složek pod FolderPath. Pokud potřebujete zachovat strukturu složek, soubory zip a extrahujte je v Azure Batch pomocí příkazu Rozbalit.
    
@@ -545,7 +546,6 @@ Následující tabulka se vztahuje na Azure Batch.
 - **Příčina**: při pokusu o čtení instančního objektu nebo při vytváření instancí ověřování MSI došlo k vnitřní chybě.
 
 - **Doporučení**: Zvažte poskytnutí instančního objektu, který má oprávnění k vytvoření clusteru HDInsight v zadaném předplatném, a zkuste to znovu. Ověřte, že je [správně nastavená Správa identit](../hdinsight/hdinsight-managed-identities.md).
-
 
 ### <a name="error-code-2300"></a>Kód chyby: 2300
 
@@ -952,6 +952,16 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Doporučení**: Poskytněte účet Azure Blob Storage jako dodatečné úložiště pro propojenou službu HDInsight na vyžádání.
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>Při použití propojené služby ADF pomocí clusteru HDInsight ESP došlo k chybě SSL.
+
+- **Zpráva**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **Příčina**: problém je pravděpodobně v souvislosti s úložištěm vztahů důvěryhodnosti systému.
+
+- **Řešení**: můžete přejít do cesty **Microsoft Integration Runtime\4.0\Shared\ODBC DRIVERS\MICROSOFT podregistru ODBC Driver\lib** a otevřít DriverConfiguration64.exe pro změnu nastavení.
+
+    ![Zrušit kontrolu použití úložiště důvěryhodnosti systému](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Aktivita webu
 
 ### <a name="error-code-2128"></a>Kód chyby: 2128
@@ -975,7 +985,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Stáhněte, nainstalujte a otevřete [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **Tools**  >  **možnost nástroje Fiddler možnosti**  >  **https**.
+1. Pokud vaše webová aplikace používá protokol HTTPS, použijte   >  **možnost nástroje Fiddler možnosti**  >  **https**.
 
    1. Na kartě HTTPS vyberte obě **zachytávání https připojení** i **dešifrování přenosu HTTPS**.
 
@@ -985,7 +995,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
    Přejít na: **nástroje**  >  **Fiddler možnosti**  >  **https**  >  **Akce**  >  **exportovat kořenový certifikát do počítače**.
 
-1. Vypněte zachytávání pomocí přechodu na **File**  >  **přenos** souborů. Nebo stiskněte klávesu **F12**.
+1. Vypněte zachytávání pomocí přechodu na   >  **přenos** souborů. Nebo stiskněte klávesu **F12**.
 
 1. Vymažte mezipaměť prohlížeče, aby se odstranily všechny položky v mezipaměti, a je nutné je znovu stáhnout.
 
@@ -1015,9 +1025,9 @@ Když zjistíte, že aktivita běží mnohem déle než normální běhy, ale zl
 
 **Chybová zpráva:**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**Příčina:** Datová část každého spuštění aktivit zahrnuje konfiguraci aktivity, přidružené konfigurace datových sad a propojených služeb, pokud existují, a malou část systémových vlastností vygenerovaných na typ aktivity. Limit takové velikosti datové části je 896KB, jak je uvedeno v části [omezení Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
+**Příčina:** Datová část každého spuštění aktivit zahrnuje konfiguraci aktivity, přidružené datové sady a konfigurace propojených služeb, pokud existují, a malou část vlastností systému generovaných na typ aktivity. Limit takové velikosti datové části je 896 KB, jak je uvedeno v části [omezení Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
 
-**Doporučení:** Toto omezení je pravděpodobně způsobeno tím, že předáváte jednu nebo více velkých hodnot parametrů buď z nadřazeného výstupu aktivity, nebo z externího, zejména Pokud předáváte skutečná data napříč aktivitami v toku řízení. Zkontrolujte prosím, jestli můžete zmenšit velikost velkých hodnot parametrů, nebo vyladit logiku kanálu, aby nedocházelo k předávání těchto hodnot napříč aktivitami, a místo toho ji prozpracujte uvnitř aktivity.
+**Doporučení:** Toto omezení je pravděpodobně způsobeno tím, že předáváte jednu nebo více velkých hodnot parametrů buď z nadřazeného výstupu aktivity, nebo z externího, zejména Pokud předáváte skutečná data napříč aktivitami v toku řízení. Ověřte, jestli můžete zmenšit velikost velkých hodnot parametrů, nebo vyladit logiku kanálu, aby nedocházelo k předávání těchto hodnot napříč aktivitami, a místo toho ji prozpracujte uvnitř aktivity.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -1027,5 +1037,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
 * [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)

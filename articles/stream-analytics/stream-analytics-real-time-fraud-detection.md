@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: 8e7a484ff968454f3c5b31422b87123dcee03726
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682985"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822127"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: analýza podvodných dat volání pomocí Stream Analytics a vizualizace výsledků v Power BI řídicím panelu
 
@@ -283,17 +283,14 @@ Použijete-li spojení s datovými proudy, je nutné, aby spojení poskytovalo u
 1. Do editoru dotazů vložte následující dotaz:
 
     ```SQL
-    SELECT  System.Timestamp as Time, 
-        CS1.CallingIMSI, 
-        CS1.CallingNum as CallingNum1, 
-        CS2.CallingNum as CallingNum2, 
-        CS1.SwitchNum as Switch1, 
-        CS2.SwitchNum as Switch2 
-    FROM CallStream CS1 TIMESTAMP BY CallRecTime 
-        JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
-        ON CS1.CallingIMSI = CS2.CallingIMSI 
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
+    SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+    INTO "MyPBIoutput"
+    FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+    JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+    ON CS1.CallingIMSI = CS2.CallingIMSI
+    AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
     WHERE CS1.SwitchNum != CS2.SwitchNum
+    GROUP BY TumblingWindow(Duration(second, 1))
     ```
 
     Tento dotaz je stejný jako jakékoli spojení SQL s výjimkou `DATEDIFF` funkce ve spojení. Tato verze `DATEDIFF` je specifická pro Stream Analytics a musí se objevit v `ON...BETWEEN` klauzuli. Parametry jsou časovou jednotkou (sekundy v tomto příkladu) a aliasy dvou zdrojů pro spojení. To se liší od standardní funkce SQL `DATEDIFF` .

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084638"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822195"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
@@ -81,7 +81,7 @@ Níže jsou uvedené některé známé problémy související s Jupyter poznám
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Poznámkové bloky s jinými znaky než ASCII v názvech souborů
 
-V názvech souborů poznámkových bloků Jupyter nepoužívejte jiné znaky než ASCII. Pokud se pokusíte nahrát soubor prostřednictvím uživatelského rozhraní Jupyter, které obsahuje název souboru, který není ASCII, dojde k chybě bez jakékoli chybové zprávy. Jupyter neumožňuje odeslat soubor, ale nevyvolává viditelnou chybu.
+V Jupyter Notebookch názvech souborů nepoužívejte jiné znaky než ASCII. Pokud se pokusíte nahrát soubor prostřednictvím uživatelského rozhraní Jupyter, které obsahuje název souboru, který není ASCII, dojde k chybě bez jakékoli chybové zprávy. Jupyter neumožňuje odeslat soubor, ale nevyvolává viditelnou chybu.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Při načítání poznámkových bloků větších velikostí došlo k chybě.
 
@@ -100,15 +100,15 @@ Aby nedošlo k této chybě v budoucnu, je nutné dodržovat některé osvědče
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Počáteční spuštění poznámkového bloku trvá déle, než bylo očekáváno
 
-První příkaz kódu v poznámkovém bloku Jupyter pomocí Spark Magic může trvat déle než minutu.  
+První příkaz kódu v Jupyter Notebook pomocí Spark Magic může trvat déle než minutu.  
 
 **Požadované**
 
 K tomu dochází, protože při spuštění první buňky kódu. Na pozadí se zahájí nastavení konfigurace relace a kontexty Spark, SQL a podregistr. Po nastavení těchto kontextů se spustí první příkaz, který dává dojem, že dokončení příkazu trvalo dlouhou dobu.
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Časový limit Jupyter poznámkového bloku při vytváření relace
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook časový limit při vytváření relace
 
-Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace se v jádrech Sparku a PySpark v Jupyter poznámkovém bloku vyprší časový limit.
+Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace vyprší časový limit pro jádra Spark a PySpark v Jupyter Notebook.
 
 **Hrozeb**
 
@@ -140,8 +140,8 @@ Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace 
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

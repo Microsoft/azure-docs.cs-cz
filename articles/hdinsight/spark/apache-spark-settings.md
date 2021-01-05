@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504929"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821141"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -130,7 +130,7 @@ Clustery Spark v HDInsight ve výchozím nastavení zahrnují několik součást
 |Spark Core|Spark Core, SQL Spark, rozhraní API pro streamování Sparku, GraphX a Apache Spark MLlib.|
 |Anaconda|Správce balíčků Pythonu.|
 |Apache Livy|Apache Spark REST API, které slouží k odesílání vzdálených úloh do clusteru HDInsight Spark.|
-|Jupyter a Apache Zeppelin – notebooky|Interaktivní uživatelské rozhraní založené na prohlížeči pro interakci s clusterem Spark.|
+|Poznámkové bloky Jupyter a Apache Zeppelin|Interaktivní uživatelské rozhraní založené na prohlížeči pro interakci s clusterem Spark.|
 |Ovladač ODBC|Propojuje Clustery Spark v HDInsight s nástroji business intelligence (BI), jako je Microsoft Power BI a Tableau.|
 
 Pro aplikace běžící v Jupyter Notebook použijte `%%configure` příkaz k provedení změn konfigurace v rámci samotného poznámkového bloku. Tyto změny konfigurace budou aplikovány na úlohy Spark spouštěné z vaší instance poznámkového bloku. Udělejte tyto změny na začátku aplikace před spuštěním první buňky kódu. Změněná konfigurace se použije pro relaci Livy při jejím vytvoření.

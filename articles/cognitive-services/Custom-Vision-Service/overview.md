@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, identifikátor obrázku, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562986"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814597"
 ---
 # <a name="what-is-custom-vision"></a>Co je Custom Vision?
 
@@ -51,4 +51,4 @@ Stejně jako u všech Cognitive Services by měli vývojáři, kteří používa
 
 ## <a name="next-steps"></a>Další kroky
 
-Postupujte podle pokynů průvodce [sestavením klasifikátoru](getting-started-build-a-classifier.md) a začněte používat Custom Vision na webovém portálu nebo dokončete [rychlý Start knihovny klienta](quickstarts/image-classification.md) pro implementaci základních scénářů v kódu.
+Postupujte podle pokynů průvodce [sestavením klasifikátoru](getting-started-build-a-classifier.md) a začněte používat Custom Vision na webovém portálu nebo dokončete [rychlý Start](quickstarts/image-classification.md) , který implementuje základní scénáře v kódu.

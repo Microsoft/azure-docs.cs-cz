@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Apache Spark streamování & Apache Kafka – Azure HDInsight'
-description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
+description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí Jupyter Notebook ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82184193"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821124"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight
 
@@ -154,7 +154,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     ![Snímek obrazovky přizpůsobené šablony](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Přečtěte si **podmínky a ujednání**a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+3. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
 4. Vyberte **Koupit**.
 

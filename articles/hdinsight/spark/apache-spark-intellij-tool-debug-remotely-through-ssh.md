@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a2044e9bb0110eda666d12e29a715547381e2be
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995331"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822331"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH
 
@@ -71,7 +71,7 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 
 1. Ve skriptu **SparkCore_WasbIOTest** klikněte pravým tlačítkem myši na editor skriptů a potom vyberte možnost **Spustit SparkCore_WasbIOTest** a proveďte místní spuštění.
 
-1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního nastavení **dat** Průzkumníka projektu  >  **__default__**.
+1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního nastavení **dat** Průzkumníka projektu  >  ****.
 
     ![Výsledek místního běhu projektu IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -178,8 +178,8 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 * [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím sítě VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](./apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

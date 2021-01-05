@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017028"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821413"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 
@@ -56,9 +56,9 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
 
     ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter Notebook
 
-Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete `%%configure` provést změny konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
+Pro aplikace běžící v Jupyter Notebook můžete `%%configure` k provedení změn konfigurace použít Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
 
 Následující fragment kódu ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter.
 
@@ -164,6 +164,6 @@ Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku člá
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

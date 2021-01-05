@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/09/2020
+ms.date: 12/30/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7a81a742922d45be965c7f73e3cb910d0ef989a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109282"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821464"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -24,7 +24,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
   
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-### <a name="error-code--azurebloboperationfailed"></a>Kód chyby: AzureBlobOperationFailed
+### <a name="error-code-azurebloboperationfailed"></a>Kód chyby: AzureBlobOperationFailed
 
 - **Zpráva**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
@@ -33,24 +33,9 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na dokument s nápovědě k objektu BLOB: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Pokud potřebujete, obraťte se na tým úložiště.
 
 
-### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Kód chyby: AzureBlobServiceNotReturnExpectedDataLength
-
-- **Zpráva**: `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
-
-
-### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>Kód chyby: AzureBlobNotSupportMultipleFilesIntoSingleBlob
-
-- **Zpráva**: `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
-
-
-### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Kód chyby: AzureStorageOperationFailedConcurrentWrite
-
-- **Zpráva**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
-
-
 ### <a name="invalid-property-during-copy-activity"></a>Neplatná vlastnost během aktivity kopírování
 
-- **Zpráva**:  `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
+- **Zpráva**: `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
 
 - **Příčina**: typ definovaný v datové sadě je nekonzistentní s typem zdroje nebo jímky definovaným v aktivitě kopírování.
 
@@ -79,7 +64,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: Existují dvě možné příčiny:
 
     - Pokud použijete funkci **Vložit** jako zápis, tato chyba znamená, že zdrojová data mají řádky nebo objekty se stejným ID.
-
     - Pokud použijete **Upsert** jako chování zápisu a nastavíte do kontejneru jiný jedinečný klíč, tato chyba znamená, že zdrojová data budou mít řádky nebo objekty s odlišnými identifikátory, ale stejnou hodnotu pro definovaný jedinečný klíč.
 
 - **Řešení**: 
@@ -100,9 +84,8 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: tady jsou dvě řešení:
 
-    1. **Zvyšte hodnotu v kontejneru ru** na větší hodnotu v Cosmos DB, což vylepší výkon aktivity kopírování, i když se v Cosmos DB účtuje větší náklady. 
-
-    2. Zmenšete **writeBatchSize** na menší hodnotu (například 1000) a nastavte **parallelCopies** na menší hodnotu, jako je například 1, což způsobí, že kopírování bude mít horší výkon, než je aktuální, ale nebudou se vám účtovat žádné náklady Cosmos DB.
+    - **Zvyšte hodnotu v kontejneru ru** na větší hodnotu v Cosmos DB, což vylepší výkon aktivity kopírování, i když se v Cosmos DB účtuje větší náklady. 
+    - Zmenšete **writeBatchSize** na menší hodnotu (například 1000) a nastavte **parallelCopies** na menší hodnotu, jako je například 1, což způsobí, že kopírování bude mít horší výkon, než je aktuální, ale nebudou se vám účtovat žádné náklady Cosmos DB.
 
 ### <a name="column-missing-in-column-mapping"></a>V mapování sloupce chybí sloupec.
 
@@ -130,70 +113,15 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: v připojovacím řetězci MongoDB přidejte možnost "**uuidRepresentation = Standard**". Další informace najdete v tématu [připojovací řetězec MongoDB](connector-mongodb.md#linked-service-properties).
             
+## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API)
 
-## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+### <a name="error-code--cosmosdbsqlapioperationfailed"></a>Kód chyby: CosmosDbSqlApiOperationFailed
 
-### <a name="error-code--adlsgen2operationfailed"></a>Kód chyby: AdlsGen2OperationFailed
+- **Zpráva**: `CosmosDbSqlApi operation Failed. ErrorMessage: %msg;.`
 
-- **Zpráva**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **Příčina**: problém CosmosDbSqlApi operace.
 
-- **Příčina**: adls Gen2 vyvolá chybu oznamující, že operace se nezdařila.
-
-- **Doporučení**: Přečtěte si podrobnou chybovou zprávu vyvolanou adls Gen2. Pokud je to způsobeno přechodným selháním, zkuste to prosím znovu. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
-
-- **Příčina**: Pokud chybová zpráva obsahuje zakázané, instanční objekt nebo spravovaná identita nemusí mít k dispozici dostatečná oprávnění pro přístup k adls Gen2.
-
-- **Doporučení**: informace naleznete v dokumentu Help: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
-
-- **Příčina**: Pokud chybová zpráva obsahuje hodnotu ' Nenalezeno ', je vrácena chyba adls Gen2.
-
-- **Doporučení**: může to být způsobeno přechodným selháním. zkuste to prosím znovu. Pokud se problém nevyřeší, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
-
-
-### <a name="error-code--adlsgen2invalidurl"></a>Kód chyby: AdlsGen2InvalidUrl
-
-- **Zpráva**: `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
-
-
-### <a name="error-code--adlsgen2invalidfolderpath"></a>Kód chyby: AdlsGen2InvalidFolderPath
-
-- **Zpráva**: `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
-
-
-### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>Kód chyby: AdlsGen2OperationFailedConcurrentWrite
-
-- **Zpráva**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
-
-
-### <a name="error-code-adlsgen2timeouterror"></a>Kód chyby: AdlsGen2TimeoutError
-
-- **Zpráva**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
-
-
-### <a name="request-to-adls-gen2-account-met-timeout-error"></a>Požadavek na ADLS Gen2 účtu při vypršení časového limitu
-
-- **Zpráva**: kód chyby = `UserErrorFailedBlobFSOperation` , chybová zpráva = `BlobFS operation failed for: A task was canceled` .
-
-- **Příčina**: problém je způsoben chybou vypršení časového limitu jímky adls Gen2, k němuž většinou dochází v místním prostředí IR.
-
-- **Doporučení**: 
-
-    1. Pokud je to možné, umístěte svůj místně hostovaný počítač IR a cílový účet ADLS Gen2 ve stejné oblasti. To se může vyhnout náhodnému vypršení časového limitu a mít lepší výkon.
-
-    1. Zkontrolujte, jestli existuje nějaké zvláštní nastavení sítě, jako je třeba ExpressRoute, a ujistěte se, že má síť dostatečnou šířku pásma. Doporučujeme, abyste snížili nastavení místních souběžných úloh IR v místním prostředí, když je celková šířka pásma nízká, což se může vyhnout konkurenci síťových prostředků napříč několika souběžnými úlohami.
-
-    1. Pro nebinární kopírování použijte menší velikost bloku pro zmírnění takové chyby vypršení časového limitu, pokud je velikost souboru střední nebo malá. Přečtěte si prosím [BLOB Storage blok vložení](https://docs.microsoft.com/rest/api/storageservices/put-block).
-
-       Chcete-li určit velikost vlastního bloku, můžete upravit vlastnost v editoru. JSON:
-    ```
-    "sink": {
-        "type": "DelimitedTextSink",
-        "storeSettings": {
-            "type": "AzureBlobFSWriteSettings",
-            "blockSizeInMB": 8
-        }
-    }
-    ```
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na [dokument s CosmosDb Help](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk). Pokud potřebujete, obraťte se na tým CosmosDb.
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -203,7 +131,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příznaky**: aktivita kopírování se nezdařila s následující chybou: 
 
     ```
-    Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
+    Message: ErrorCode = `UserErrorFailedFileOperation`, Error Message = `The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`.
     ```
 
 - **Příčina**: ověření certifikátu během TLS handshake selhalo.
@@ -238,7 +166,62 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: Pokud server tokenu služby (STS), který je vlastněn Azure Active Directory, není k dispozici, například příliš zaneprázdněný pro zpracování požadavků, vrátí chybu HTTP 503. 
 
 - **Řešení**: po několika minutách znovu spusťte aktivitu kopírování.
+
+
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+
+### <a name="error-code-adlsgen2operationfailed"></a>Kód chyby: ADLSGen2OperationFailed
+
+- **Zpráva**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Příčina**: adls Gen2 vyvolá chybu oznamující, že operace se nezdařila.
+
+- **Doporučení**: Přečtěte si podrobnou chybovou zprávu vyvolanou adls Gen2. Pokud je to způsobeno přechodným selháním, zkuste to prosím znovu. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
+
+- **Příčina**: Pokud chybová zpráva obsahuje zakázané, instanční objekt nebo spravovaná identita nemusí mít k dispozici dostatečná oprávnění pro přístup k adls Gen2.
+
+- **Doporučení**: informace naleznete v dokumentu Help: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
+
+- **Příčina**: Pokud chybová zpráva obsahuje hodnotu ' Nenalezeno ', je vrácena chyba adls Gen2.
+
+- **Doporučení**: může to být způsobeno přechodným selháním. zkuste to prosím znovu. Pokud se problém nevyřeší, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
+
+### <a name="request-to-adls-gen2-account-met-timeout-error"></a>Požadavek na ADLS Gen2 účtu při vypršení časového limitu
+
+- **Zpráva**: kód chyby = `UserErrorFailedBlobFSOperation` , chybová zpráva = `BlobFS operation failed for: A task was canceled` .
+
+- **Příčina**: problém je způsoben chybou vypršení časového limitu jímky adls Gen2, k němuž většinou dochází v místním prostředí IR.
+
+- **Doporučení**: 
+
+    - Pokud je to možné, umístěte svůj místně hostovaný počítač IR a cílový účet ADLS Gen2 ve stejné oblasti. To se může vyhnout náhodnému vypršení časového limitu a mít lepší výkon.
+
+    - Zkontrolujte, jestli existuje nějaké zvláštní nastavení sítě, jako je třeba ExpressRoute, a ujistěte se, že má síť dostatečnou šířku pásma. Doporučujeme, abyste snížili nastavení místních souběžných úloh IR v místním prostředí, když je celková šířka pásma nízká, což se může vyhnout konkurenci síťových prostředků napříč několika souběžnými úlohami.
+
+    - Pro nebinární kopírování použijte menší velikost bloku pro zmírnění takové chyby vypršení časového limitu, pokud je velikost souboru střední nebo malá. Přečtěte si [BLOB Storage blok vložení](https://docs.microsoft.com/rest/api/storageservices/put-block).
+
+       Chcete-li určit velikost vlastního bloku, můžete upravit vlastnost v editoru. JSON:
+        ```
+        "sink": {
+            "type": "DelimitedTextSink",
+            "storeSettings": {
+                "type": "AzureBlobFSWriteSettings",
+                "blockSizeInMB": 8
+            }
+        }
+        ```
+
                   
+## <a name="azure-file-storage"></a>Azure File Storage
+
+### <a name="error-code--azurefileoperationfailed"></a>Kód chyby: AzureFileOperationFailed
+
+- **Zpráva**: `Azure File operation Failed. Path: %path;. ErrorMessage: %msg;.`
+
+- **Příčina**: došlo k potížím s operací služby Azure File Storage.
+
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Další informace najdete v dokumentu o nápovědě ke službě Azure File: https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes . Pokud potřebujete podporu, obraťte se na tým úložiště.
+
 
 ## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure synapse Analytics/Azure SQL Database/SQL Server
 
@@ -246,13 +229,29 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Zpráva**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
+- **Příčina**: Azure SQL: Pokud chybová zpráva obsahuje "SqlErrorNumber = 47073", znamená to, že v nastavení připojení se odepře přístup k veřejné síti.
+
+- **Doporučení**: v bráně Azure SQL firewall nastavte možnost Odepřít přístup k veřejné síti na ne. Další informace najdete v https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access .
+
+- **Příčina**: Azure SQL: Pokud chybová zpráva obsahuje kód chyby SQL, například "SqlErrorNumber = [ErrorCode]", přečtěte si prosím Průvodce odstraňováním potíží Azure SQL.
+
+- **Doporučení**: Další informace najdete v https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues .
+
+- **Příčina**: Ověřte, jestli je v seznamu povolených bran firewall port 1433.
+
+- **Doporučení**: postupujte podle tohoto referenčního dokumentu: https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by- .
+
 - **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
 - **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
+- **Příčina**: Pokud jde o přechodný problém (například nestabilní síťové připojení), přidejte prosím do zásad aktivity opakovat, aby se zmírnila.
+
+- **Doporučení**: postupujte podle tohoto referenčního dokumentu: https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy .
+
 - **Příčina**: Pokud chybová zpráva obsahuje "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se připojit k Azure SQL Database, obvykle to způsobuje Azure SQL Database potížích s bránou firewall.
 
-- **Doporučení**: v konfiguraci brány firewall logického serveru SQL povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
+- **Doporučení**: v konfiguraci brány firewall Azure SQL Server povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Kód chyby: SqlOperationFailed
@@ -272,7 +271,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: Pokud chybová zpráva obsahuje "InvalidOperationException", obvykle je způsobena neplatnými vstupními daty.
 
 - **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
-
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Kód chyby: SqlUnauthorizedAccess
@@ -342,11 +340,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Doporučení**: Ověřte sloupec v dotazu, "Structure" v datové sadě a "Mappings" v aktivitě.
 
 
-### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Kód chyby: SqlColumnNameMismatchByCaseSensitive
-
-- **Zpráva**: `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
-
-
 ### <a name="error-code--sqlbatchwritetimeout"></a>Kód chyby: SqlBatchWriteTimeout
 
 - **Zpráva**: `Timeouts in SQL write operation.`
@@ -385,11 +378,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: připojení SQL je ukončeno SQL Database při vysokém souběžném spuštění a ukončení připojení serveru.
 
 - **Doporučení**: vzdálený server zavřel připojení SQL. Opakujte. Pokud se problém reprodukci, obraťte se na podporu Azure SQL.
-
-
-### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Kód chyby: SqlCreateTableFailedUnsupportedType
-
-- **Zpráva**: `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
 
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Chybová zpráva: převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier.
@@ -454,9 +442,9 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
     - Čas – > 12 bajtů
     - Tinyint-> 1 bajt
 
-- **Řešení**: Zmenšete šířku sloupce tak, aby byla menší než 1 MB.
-
-- Nebo použijte přístup k hromadnému vložení zakázáním základny
+- **Řešení**: 
+    - Zmenšete šířku sloupce tak, aby byla menší než 1 MB.
+    - Nebo zakažte PolyBase a použijte přístup s hromadným vkládáním.
 
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Chybová zpráva: podmínka zadaná pomocí podmíněných hlaviček HTTP není splněna.
@@ -478,17 +466,17 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: původní příčina problému se většinou aktivuje kritickým bodem na straně Azure SQL. Níže jsou uvedené některé možné příčiny:
 
-    1. Vrstva Azure DB není dostatečně vysoká.
+    - Vrstva Azure DB není dostatečně vysoká.
 
-    1. Využití DTU Azure DB je blízko 100%. Můžete [monitorovat výkon](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) a vzít v úvahu upgrade úrovně DB.
+    - Využití DTU Azure DB je blízko 100%. Můžete [monitorovat výkon](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) a vzít v úvahu upgrade úrovně DB.
 
-    1. Indexy nejsou nastaveny správně. Před načtením dat prosím odstraňte všechny indexy a po dokončení načítání je znovu vytvořte.
+    - Indexy nejsou nastaveny správně. Před načtením dat odstraňte všechny indexy a po dokončení načítání je znovu vytvořte.
 
-    1. WriteBatchSize není dostatečně velká, aby odpovídala velikosti řádku schématu. Zkuste prosím zvětšit vlastnost tohoto problému.
+    - WriteBatchSize není dostatečně velká, aby odpovídala velikosti řádku schématu. Zkuste zvětšit vlastnost problému.
 
-    1. Místo hromadného vsazení se používá uložená procedura, u které se očekává, že mají horší výkon. 
+    - Místo hromadného vsazení se používá uložená procedura, u které se očekává, že mají horší výkon. 
 
-- **Řešení**: Přečtěte si prosím TSG pro [výkon aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) .
+- **Řešení**: informace o [výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) najdete v TSG.
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Úroveň výkonu je nízká a vede k selhání kopírování
@@ -497,7 +485,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: používá se Azure SQL S1, který v takovém případě dosáhl omezení v/v.
 
-- **Řešení**: Pokud chcete tento problém vyřešit, upgradujte prosím úroveň výkonu Azure SQL. 
+- **Řešení**: Pokud chcete tento problém vyřešit, upgradujte úroveň výkonu Azure SQL. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>Tabulka SQL se nenašla. 
@@ -506,10 +494,10 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: aktuální účet SQL nemá dostatečná oprávnění ke spouštění požadavků vydaných .NET SqlBulkCopy. WriteToServer.
 
-- **Řešení**: Přepněte prosím na PRIVILEGOVANÝ účet SQL.
+- **Řešení**: přepněte na PRIVILEGOVANÝ účet SQL.
 
 
-### <a name="string-or-binary-data-would-be-truncated"></a>Data String nebo Binary by byla zkrácena.
+### <a name="error-message-string-or-binary-data-would-be-truncated"></a>Chybová zpráva: řetězcová nebo binární data by byla zkrácena.
 
 - **Příznaky**: došlo k chybě při kopírování dat do tabulky Prem/Azure SQL Server: 
 
@@ -517,11 +505,36 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: zkuste problém vyřešit podle následujících kroků:
 
-    1. Použijte [odolnost proti chybám](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance), obzvláště "redirectIncompatibleRowSettings", abyste mohli řešit, které řádky mají problém.
+    1. Použijte odolnost [proti chybám](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)jímky SQL, obzvláště "redirectIncompatibleRowSettings", abyste mohli řešit, které řádky mají problém.
 
-    1. Pokud chcete zjistit, které sloupce je třeba aktualizovat, poklikejte na přesměrovaná data pomocí sloupce schématu tabulky SQL.
+        > [!NOTE]
+        > Upozorňujeme, že odolnost proti chybám může zavést další dobu spuštění, což by mohlo vést k vyšším nákladům.
 
-    1. Aktualizujte schéma tabulky odpovídajícím způsobem.
+    2. Pokud chcete zjistit, které sloupce je třeba aktualizovat, poklikejte na přesměrovaná data pomocí sloupce schématu tabulky SQL.
+
+    3. Aktualizujte schéma tabulky odpovídajícím způsobem.
+
+
+## <a name="azure-table-storage"></a>Azure Table Storage
+
+### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>Kód chyby: AzureTableDuplicateColumnsFromSource
+
+- **Zpráva**: `Duplicate columns with same name '%name;' are detected from source. This is NOT supported by Azure Table Storage sink`
+
+- **Příčina**: může být běžné pro dotaz SQL s připojením nebo nestrukturovanými soubory CSV.
+
+- **Doporučení**: poklikejte na zdrojové sloupce a opravte je odpovídajícím způsobem.
+
+
+## <a name="db2"></a>DB2
+
+### <a name="error-code--db2driverrunfailed"></a>Kód chyby: DB2DriverRunFailed
+
+- **Zpráva**: `Error thrown from driver. Sql code: '%code;'`
+
+- **Příčina**: Pokud chybová zpráva obsahuje "SQLSTATE = 51002 SQLCODE =-805", přečtěte si prosím Tip v tomto dokumentu: https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties
+
+- **Doporučení**: zkuste nastavit "NULLID" ve vlastnosti "balíčekcollection".
 
 
 ## <a name="delimited-text-format"></a>Textový formát s oddělovači
@@ -537,7 +550,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 ### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Kód chyby: DelimitedTextMoreColumnsThanDefined
 
-- **Zpráva**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+- **Zpráva**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %expectedColumnCount;.`
 
 - **Příčina**: problematický počet sloupců řádku je větší než počet sloupců prvního řádku. Může to být způsobeno problémem s daty nebo nesprávným nastavením oddělovače sloupců nebo uvozovek.
 
@@ -550,22 +563,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: Pokud je zdrojem složka, je možné, že soubory v zadané složce mají jiné schéma.
 
 - **Doporučení**: Ujistěte se, že soubory v dané složce mají stejné schéma.
-
-
-### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Kód chyby: DelimitedTextIncorrectRowDelimiter
-
-- **Zpráva**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
-
-
-### <a name="error-code--delimitedtexttoolargecolumncount"></a>Kód chyby: DelimitedTextTooLargeColumnCount
-
-- **Zpráva**: `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
-
-
-### <a name="error-code--delimitedtextinvalidsettings"></a>Kód chyby: DelimitedTextInvalidSettings
-
-- **Zpráva**: `%settingIssues;`
-
 
 
 ## <a name="dynamics-365common-data-servicedynamics-crm"></a>Dynamics 365/Common Data Service/Dynamics CRM
@@ -583,9 +580,45 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příznaky**: některé sloupce se při importu schématu nebo náhledu dat vypínají. Chybová zpráva: `The valid structure information (column name and type) are required for Dynamics source.`
 
-- **Příčina**: Tento problém je v podstatě záměrné podle návrhu, protože ADF nemůže zobrazit sloupce, které nemají žádnou hodnotu v prvních 10 záznamech. Ujistěte se prosím, že jsou sloupce, které jste přidali, ve správném formátu. 
+- **Příčina**: Tento problém je v podstatě záměrné podle návrhu, protože ADF nemůže zobrazit sloupce, které nemají žádnou hodnotu v prvních 10 záznamech. Ujistěte se, že jsou sloupce, které jste přidali, ve správném formátu. 
 
 - **Doporučení**: ručně přidejte sloupce na kartě mapování.
+
+
+### <a name="error-code--dynamicsmissingtargetformultitargetlookupfield"></a>Kód chyby: DynamicsMissingTargetForMultiTargetLookupField
+
+- **Zpráva**: `Cannot find the target column for multi-target lookup field: '%fieldName;'.`
+
+- **Příčina**: cílový sloupec neexistuje ve zdroji nebo v mapování sloupce.
+
+- **Doporučení**: 1. Ujistěte se, že zdroj obsahuje cílový sloupec. 2. Přidejte cílový sloupec do mapování sloupce. Zajistěte, aby byl sloupec jímky ve vzoru {fieldName} @EntityReference .
+
+
+### <a name="error-code--dynamicsinvalidtargetformultitargetlookupfield"></a>Kód chyby: DynamicsInvalidTargetForMultiTargetLookupField
+
+- **Zpráva**: `The provided target: '%targetName;' is not a valid target of field: '%fieldName;'. Valid targets are: '%validTargetNames;"`
+
+- **Příčina**: nesprávný název entity je zadán jako Cílová entita vyhledávacího pole s více cíli.
+
+- **Doporučení**: Zadejte platný název entity pro vyhledávací pole s více cíli.
+
+
+### <a name="error-code--dynamicsinvalidtypeformultitargetlookupfield"></a>Kód chyby: DynamicsInvalidTypeForMultiTargetLookupField
+
+- **Zpráva**: `The provided target type is not a valid string. Field: '%fieldName;'.`
+
+- **Příčina**: hodnota v cílovém sloupci není řetězec.
+
+- **Doporučení**: Zadejte platný řetězec ve sloupci Cíl vyhledávání s více cíli.
+
+
+### <a name="error-code--dynamicsfailedtorequetserver"></a>Kód chyby: DynamicsFailedToRequetServer
+
+- **Zpráva**: `The dynamics server or the network is experiencing issues. Check network connectivity or check dynamics server log for more details.`
+
+- **Příčina**: Server Dynamics je nestabilní nebo nedostupný nebo v síti dochází k problémům.
+
+- **Doporučení**: Prohlédněte si připojení k síti nebo vyhledejte další podrobnosti v protokolu serveru Dynamics Server. Další nápovědu získáte od podpory Dynamics.
 
 
 ## <a name="excel-format"></a>Excelový formát
@@ -594,73 +627,45 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příznaky**:
 
-    1. Když vytváříte datovou sadu Excelu a importujete schéma z připojení/úložiště, zobrazíte náhled dat, vypíšete nebo aktualizujete listy, může se zobrazit chyba vypršení časového limitu, pokud je velikost souboru aplikace Excel velká.
+    - Když vytváříte datovou sadu Excelu a importujete schéma ze seznamu připojení/úložiště, náhled dat, seznamů nebo aktualizací listů, může se zobrazit chyba časového limitu v případě, že je velikost souboru aplikace Excel velká.
 
-    1. Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
+    - Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
 
 - **Příčina**: 
 
-    1. Pro operace, jako je import schématu, zobrazení náhledu dat a výpis listů v datové sadě Excelu, je časový limit 100 a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
+    - Pro operace, jako je import schématu, náhled dat a výpis listů v datové sadě Excelu, je časový limit 100 s a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
 
-    2. Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
+    - Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
 
 - **Řešení**: 
 
-    1. Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
+    - Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
 
-    2. V rozevíracím seznamu list pro výpis listu můžete kliknout na Upravit a místo toho zadat název nebo index listu.
+    - V rozevíracím seznamu list pro výpis listu můžete kliknout na Upravit a místo toho zadat název nebo index listu.
 
-    3. Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
+    - Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
+    
 
+## <a name="ftp"></a>FTP
 
-## <a name="hdinsight"></a>HDInsight
+### <a name="error-code--ftpfailedtoconnecttoftpserver"></a>Kód chyby: FtpFailedToConnectToFtpServer
 
-### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>Při použití propojené služby ADF pomocí clusteru HDInsight ESP došlo k chybě SSL.
+- **Zpráva**: `Failed to connect to FTP server. Please make sure the provided server informantion is correct, and try again.`
 
-- **Zpráva**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+- **Příčina**: pro server FTP může být použit nesprávný typ propojené služby, například použití propojené služby SFTP pro připojení k serveru FTP.
 
-- **Příčina**: problém je pravděpodobně v souvislosti s úložištěm vztahů důvěryhodnosti systému.
-
-- **Řešení**: můžete přejít do cesty **Microsoft Integration Runtime\4.0\Shared\ODBC DRIVERS\MICROSOFT podregistru ODBC Driver\lib** a otevřít DriverConfiguration64.exe pro změnu nastavení.
-
-    ![Zrušit kontrolu použití úložiště důvěryhodnosti systému](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+- **Doporučení**: Ověřte port cílového serveru. Ve výchozím nastavení FTP používá port 21.
 
 
-## <a name="json-format"></a>Formát JSON
+## <a name="http"></a>HTTP
 
-### <a name="error-code--jsoninvalidarraypathdefinition"></a>Kód chyby: JsonInvalidArrayPathDefinition
+### <a name="error-code--httpfilefailedtoread"></a>Kód chyby: HttpFileFailedToRead
 
-- **Zpráva**: `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+- **Zpráva**: `Failed to read data from http server. Check the error from http server：%message;`
 
+- **Příčina**: k této chybě dochází, když Azure Data Factory komunikovat se serverem HTTP, ale operace požadavku HTTP selže.
 
-### <a name="error-code--jsonemptyjobjectdata"></a>Kód chyby: JsonEmptyJObjectData
-
-- **Zpráva**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
-
-
-### <a name="error-code--jsonnullvalueinpathdefinition"></a>Kód chyby: JsonNullValueInPathDefinition
-
-- **Zpráva**: `Null JSONPath detected in JsonPathDefinition.`
-
-
-### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>Kód chyby: JsonUnsupportedHierarchicalComplexValue
-
-- **Zpráva**: `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
-
-
-### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>Kód chyby: JsonConflictPartitionDiscoverySchema
-
-- **Zpráva**: `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
-
-
-### <a name="error-code--jsoninvaliddataformat"></a>Kód chyby: JsonInvalidDataFormat
-
-- **Zpráva**: `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
-
-
-### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>Kód chyby: JsonInvalidDataMixedArrayAndObject
-
-- **Zpráva**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+- **Doporučení**: Podívejte se na stavový kód HTTP \ zpráva v chybové zprávě a opravte problém vzdáleného serveru.
 
 
 ## <a name="oracle"></a>Oracle
@@ -673,9 +678,44 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Doporučení**: 
 
-    Spusťte prosím `select dump(<column name>)` a zkontrolujte, jestli je hodnota v poli Oracle v rozsahu ADF. 
+    Spusťte `select dump(<column name>)` a ověřte, zda je hodnota v poli Oracle v rozsahu ADF. 
 
     Pokud chcete ve výsledku znát sekvenci bajtů, zkontrolujte prosím https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle .
+
+
+## <a name="orc-format"></a>Formát ORC
+
+### <a name="error-code--orcjavainvocationexception"></a>Kód chyby: OrcJavaInvocationException
+
+- **Zpráva**: `An error occurred when invoking java, message: %javaException;.`
+
+- **Příčina**: Pokud chybová zpráva obsahuje "Java. lang. OutOfMemory", "prostor haldy jazyka Java" a "doubleCapacity", obvykle se jedná o problém se správou paměti ve staré verzi prostředí Integration runtime.
+
+- **Doporučení**: pokud používáte Integration runtime pro místní hostování, navrhněte upgrade na nejnovější verzi.
+
+- **Příčina**: Pokud chybová zpráva obsahuje "Java. lang. OutOfMemory", modul runtime integrace nemá dostatek prostředků ke zpracování těchto souborů.
+
+- **Doporučení**: Omezte souběžné běhy prostředí Integration runtime. Pro Integration Runtime v místním prostředí, Škálujte až do výkonného počítače s pamětí rovnou nebo větší než 8 GB.
+
+- **Příčina**: Pokud chybová zpráva obsahuje ' NullPointerReference ', je možné, že se jedná o přechodnou chybu.
+
+- **Doporučení**: zkuste to znovu. Pokud se problém opakuje, obraťte se prosím na podporu.
+
+- **Příčina**: Pokud chybová zpráva obsahuje ' BufferOverflowException ', je možné, že se jedná o přechodnou chybu.
+
+- **Doporučení**: zkuste to znovu. Pokud se problém opakuje, obraťte se prosím na podporu.
+
+- **Příčina**: Pokud chybová zpráva obsahuje text "Java. lang. ClassCastException:org. Apache. Hadoop. podregistr. serde2. IO. HiveCharWritable nelze přetypovat na org. Apache. Hadoop. IO. text", jedná se o problém s převodem typu uvnitř Java Runtime. Obvykle to způsobuje, že zdrojová data nemůžou být v běhovém prostředí Java správně zpracována.
+
+- **Doporučení**: Jedná se o problém s daty. Zkuste použít řetězec místo typu char/varchar v ORC formátu dat.
+
+### <a name="error-code--orcdatetimeexceedlimit"></a>Kód chyby: OrcDateTimeExceedLimit
+
+- **Zpráva**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
+
+- **Příčina**: Pokud je hodnota datetime "0001-01-01 00:00:00", může to být způsobeno rozdílem mezi juliánském kalendářem a gregoriánským kalendářem. https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar#Difference_between_Julian_and_proleptic_Gregorian_calendar_dates.
+
+- **Doporučení**: ověřte hodnotu taktů a vyhněte se použití hodnoty datetime "0001-01-01 00:00:00".
 
 
 ## <a name="parquet-format"></a>Formát Parquet
@@ -828,14 +868,22 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: 
 
-    1. Pokud název sloupce jímky obsahuje prázdné znaky, poklikejte na něj.
+    - Pokud název sloupce jímky obsahuje prázdné znaky, poklikejte na něj.
 
-    1. Pokud je jako název sloupce použit první řádek s prázdnými znaky, poklepejte na něj.
+    - Pokud je jako název sloupce použit první řádek s prázdnými znaky, poklepejte na něj.
 
-    1. Dvakrát ověřte, zda je typ OriginalType podporován nebo ne. Zkuste vyhnout těmto speciálním symbolům `,;{}()\n\t=` . 
+    - Dvakrát ověřte, zda je typ OriginalType podporován nebo ne. Zkuste vyhnout těmto speciálním symbolům `,;{}()\n\t=` . 
 
 
 ## <a name="rest"></a>REST
+
+### <a name="error-code--restsinkcallfailed"></a>Kód chyby: RestSinkCallFailed
+
+- **Zpráva**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
+
+- **Příčina**: k této chybě dochází, když Azure Data Factory komunikovat s koncovým bodem REST přes protokol HTTP a operace požadavku selže.
+
+- **Doporučení**: Podívejte se na stavový kód HTTP \ zpráva v chybové zprávě a opravte problém vzdáleného serveru.
 
 ### <a name="unexpected-network-response-from-rest-connector"></a>Neočekávaná odezva sítě z konektoru REST
 
@@ -861,75 +909,76 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 ## <a name="sftp"></a>SFTP
 
-### <a name="invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Pro typ ověřování SSHPublicKey se zadaly neplatné přihlašovací údaje SFTP.
+#### <a name="error-code--sftpoperationfail"></a>Kód chyby: SftpOperationFail
 
-- **Příznaky**: používá se ověřování pomocí veřejného klíče SSH, zatímco pro typ ověřování SshPublicKey jsou zadané neplatné přihlašovací údaje SFTP.
+- **Zpráva**: `Failed to '%operation;'. Check detailed error from SFTP.`
 
-- **Příčina**: Tato chyba může být způsobena třemi možnými důvody:
+- **Příčina**: problém s voláním operace SFTP.
 
-    1. Obsah privátního klíče se načte z integrace/SDK, ale není správně kódovaný.
-
-    1. Je zvolen nesprávný formát obsahu klíče.
-
-    1. Neplatný obsah přihlašovacích údajů nebo privátního klíče.
-
-- **Řešení**: 
-
-    1. **Příčina 1**:
-
-       Pokud je obsah privátního klíče z integrace a původní soubor klíče může fungovat, když ho zákazník nahraje přímo do propojené služby SFTP
-
-       Viz https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication , obsah PrivateKey je obsah privátního klíče SSH kódovaný v kódování Base64.
-
-       Zakódovat **celý obsah původního souboru privátního klíče** pomocí kódování Base64 a uložit kódovaný řetězec do integrace. Původní soubor privátního klíče je ten, který může fungovat na propojené službě SFTP, pokud kliknete na Odeslat ze souboru.
-
-       Tady je několik ukázek používaných k vygenerování řetězce:
-
-       - Použít kód jazyka C#:
-       ```
-       byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
-       string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
-       ```
-
-       - Použít kód Pythonu:
-       ```
-       import base64
-       rfd = open(r'{Private Key Path}', 'rb')
-       keyContent = rfd.read()
-       rfd.close()
-       print base64.b64encode(Key Content)
-       ```
-
-       - Použít nástroj pro převod Base64 třetí strany
-
-         https://www.base64encode.org/Doporučuje se používat nástroje, jako jsou doporučené.
-
-    1. V případě **příčiny 2**:
-
-       Pokud se používá privátní klíč SSH formátu PKCS # 8
-
-       Privátní klíč SSH formátu PKCS # 8 (začíná na-----začínat ŠIFROVANÝm PRIVÁTNÍm klíčem-----) se v současné době nepodporuje pro přístup k serveru SFTP v ADF. 
-
-       Spusťte následující příkazy, abyste klíč převedli do tradičního formátu klíče SSH (začněte textem "-----začít používat privátní klíč RSA-----"):
-
-       ```
-       openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
-       chmod 600 traditional_format_key_file
-       ssh-keygen -f traditional_format_key_file -p
-       ```
-    1. V případě **příčiny 3**:
-
-       Pokud chcete zjistit, jestli je soubor klíče nebo heslo správné, poklikejte prosím na nástroje, jako je WinSCP.
+- **Doporučení**: Projděte si podrobnou chybu z SFTP.
 
 
-### <a name="incorrect-linked-service-type-is-used"></a>Používá se nesprávný typ propojené služby.
+### <a name="error-code--sftprenameoperationfail"></a>Kód chyby: SftpRenameOperationFail
 
-- **Příznaky**: nemůžete získat přístup k serveru FTP/SFTP.
+- **Zpráva**: `Failed to rename the temp file. Your SFTP server doesn't support renaming temp file, please set "useTempFileRename" as false in copy sink to disable uploading to temp file.`
 
-- **Příčina**: pro server FTP nebo SFTP se používá nesprávný typ propojené služby, jako je například použití propojené služby FTP pro připojení k serveru SFTP nebo naopak.
+- **Příčina**: váš server SFTP nepodporuje přejmenování dočasného souboru.
 
-- **Řešení**: Zkontrolujte prosím port cílového serveru. Ve výchozím nastavení používá FTP port 21 a SFTP používá port 22.
+- **Doporučení**: Pokud chcete zakázat nahrávání do dočasného souboru, nastavte v jímky kopírování useTempFileRename na hodnotu false.
 
+
+### <a name="error-code--sftpinvalidsftpcredential"></a>Kód chyby: SftpInvalidSftpCredential
+
+- **Zpráva**: `Invalid Sftp credential provided for '%type;' authentication type.`
+
+- **Příčina**: obsah privátního klíče je načtený z integrace/SDK, ale není správně kódovaný.
+
+- **Doporučení**:  
+
+    Pokud je obsah privátního klíče z integrace a původní soubor klíče může fungovat, když ho zákazník nahraje přímo do propojené služby SFTP
+
+    Viz https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication , obsah PrivateKey je obsah privátního klíče SSH kódovaný v kódování Base64.
+
+    Zakódovat **celý obsah původního souboru privátního klíče** pomocí kódování Base64 a uložit kódovaný řetězec do integrace. Původní soubor privátního klíče je ten, který může fungovat na propojené službě SFTP, pokud kliknete na Odeslat ze souboru.
+
+    Tady je několik ukázek používaných k vygenerování řetězce:
+
+    - Použít kód jazyka C#:
+    ```
+    byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
+    string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
+    ```
+
+    - Použít kód Pythonu:
+    ```
+    import base64
+    rfd = open(r'{Private Key Path}', 'rb')
+    keyContent = rfd.read()
+    rfd.close()
+    print base64.b64encode(Key Content)
+    ```
+
+    - Použít nástroj pro převod Base64 třetí strany
+
+        https://www.base64encode.org/Doporučuje se používat nástroje, jako jsou doporučené.
+
+- **Příčina**: je vybraný špatný formát obsahu klíče
+
+- **Doporučení**:  
+
+    Privátní klíč SSH formátu PKCS # 8 (začíná na-----začínat ŠIFROVANÝm PRIVÁTNÍm klíčem-----) se v současné době nepodporuje pro přístup k serveru SFTP v ADF. 
+
+    Spusťte následující příkazy, abyste klíč převedli do tradičního formátu klíče SSH (začněte textem "-----začít používat privátní klíč RSA-----"):
+
+    ```
+    openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+    chmod 600 traditional_format_key_file
+    ssh-keygen -f traditional_format_key_file -p
+    ```
+
+- **Příčina**: neplatné přihlašovací údaje nebo obsah privátního klíče
+
+- **Doporučení**: poklikejte na nástroje, jako je WinSCP, a zkontrolujte, jestli je soubor klíče nebo heslo správné.
 
 ### <a name="sftp-copy-activity-failed"></a>Aktivita kopírování SFTP se nezdařila.
 
@@ -940,13 +989,17 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Řešení**: poklikejte na to, jak datovou sadu nakonfiguroval, pomocí mapování sloupce cílové datové sady, aby se ověřilo, jestli existuje takový sloupec "AccMngr".
 
 
-### <a name="sftp-server-connection-throttling"></a>Omezování připojení k serveru SFTP
+### <a name="error-code--sftpfailedtoconnecttosftpserver"></a>Kód chyby: SftpFailedToConnectToSftpServer
 
-- **Příznaky**: odezva serveru neobsahuje identifikaci protokolu SSH a kopírování se nezdařilo.
+- **Zpráva**: `Failed to connect to Sftp server '%server;'.`
 
-- **Příčina**: ADF vytvoří vícenásobná připojení, která se budou stahovat ze serveru SFTP paralelně, a někdy bude mít omezení serveru SFTP. V podstatě jiný server vrátí jinou chybu, když dojde k omezení úspěšnosti.
+- **Příčina**: Pokud chybová zpráva obsahuje hodnotu vypršel časový limit operace čtení soketu po 30000 milisekundách, může to být, že pro server SFTP se používá nesprávný typ propojené služby, jako je například použití propojené služby FTP pro připojení k serveru SFTP.
 
-- **Řešení**: 
+- **Doporučení**: Ověřte port cílového serveru. Protokol SFTP používá ve výchozím nastavení port 22.
+
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu "odpověď serveru neobsahuje identifikaci protokolu SSH", může to být způsobeno tím, že server SFTP omezuje připojení. ADF vytvoří více připojení, která se budou stahovat ze serveru SFTP paralelně, a v některých případech bude zasáhnout omezení serveru SFTP. V podstatě jiný server vrátí jinou chybu, když dojde k omezení úspěšnosti.
+
+- **Doporučení**:  
 
     Zadejte maximální souběžné připojení datové sady SFTP k 1 a znovu spusťte kopii. Pokud je to úspěšné, můžeme se ujistit, že je to příčina omezování.
 
@@ -958,13 +1011,53 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
     - Pokud používáte prostředí IR v místním prostředí, přidejte prosím do seznamu povolených SHIR IP adresu počítače, která je nainstalovaná.
 
 
-### <a name="error-code-sftprenameoperationfail"></a>Kód chyby: SftpRenameOperationFail
+## <a name="sharepoint-online-list"></a>Seznam služby SharePoint Online
 
-- **Příznaky**: kanálu se nepodařilo zkopírovat data z objektu blob do protokolu SFTP s následující chybou: `Operation on target Copy_5xe failed: Failure happened on 'Sink' side. ErrorCode=SftpRenameOperationFail,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException` .
+### <a name="error-code--sharepointonlineauthfailed"></a>Kód chyby: SharePointOnlineAuthFailed
 
-- **Příčina**: možnost useTempFileRename byla při kopírování dat nastavena na hodnotu true. To umožňuje procesu používat dočasné soubory. Tato chyba se aktivuje, pokud se před kopírováním celých dat odstranily některé dočasné soubory.
+- **Zpráva**: `The access token generated failed, status code: %code;, error message: %message;.`
 
-- **Řešení**: Nastavte možnost UseTempFileName na hodnotu false (NEPRAVDA).
+- **Příčina**: ID instančního objektu a klíč nemusí být správně nastavené.
+
+- **Doporučení**: Ověřte registrovanou aplikaci (ID instančního objektu) a klíč, jestli je správně nastavená.
+
+
+## <a name="xml-format"></a>Formát XML
+
+### <a name="error-code--xmlsinknotsupported"></a>Kód chyby: XmlSinkNotSupported
+
+- **Zpráva**: `Write data in xml format is not supported yet, please choose a different format!`
+
+- **Příčina**: používala datovou sadu XML jako datovou sadu jímky v aktivitě kopírování
+
+- **Doporučení**: použijte datovou sadu v jiném formátu jako jímku kopírování.
+
+
+### <a name="error-code--xmlattributecolumnnameconflict"></a>Kód chyby: XmlAttributeColumnNameConflict
+
+- **Zpráva**: `Column names %attrNames;' for attributes of element '%element;' conflict with that for corresponding child elements, and the attribute prefix used is '%prefix;'.`
+
+- **Příčina**: byla použita předpona atributu, která způsobila konflikt.
+
+- **Doporučení**: nastavte jinou hodnotu vlastnosti "attributePrefix".
+
+
+### <a name="error-code--xmlvaluecolumnnameconflict"></a>Kód chyby: XmlValueColumnNameConflict
+
+- **Zpráva**: `Column name for the value of element '%element;' is '%columnName;' and it conflicts with the child element having the same name.`
+
+- **Příčina**: jako název sloupce pro hodnotu elementu byl použit jeden z názvů podřízených prvků.
+
+- **Doporučení**: nastavte jinou hodnotu vlastnosti "valueColumn".
+
+
+### <a name="error-code--xmlinvalid"></a>Kód chyby: XmlInvalid
+
+- **Zpráva**: `Input XML file '%file;' is invalid with parsing error '%error;'.`
+
+- **Příčina**: vstupní soubor XML nemá správný formát.
+
+- **Doporučení**: opravte soubor XML, aby byl správně vytvořen.
 
 
 ## <a name="general-copy-activity-error"></a>Obecná chyba aktivity kopírování
@@ -987,24 +1080,23 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Doporučení**: Ověřte datovou sadu jímky a opravte cestu bez zástupných hodnot.
 
 
-### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Kód chyby: MappingInvalidPropertyWithEmptyValue
+### <a name="fips-issue"></a>Problém FIPS
 
-- **Zpráva**: `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+- **Příznaky**: aktivita kopírování se na počítači Integration runtime v místním prostředí FIPS nezdařila s chybovou zprávou `This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms.` . K tomu může dojít při kopírování dat pomocí konektorů, jako je Azure Blob, SFTP atd.
 
+- **Příčina**: FIPS (Federal Information Processing Standards) definuje určitou sadu kryptografických algoritmů, které je povoleno použít. Když je v počítači povolený režim FIPS, některé kryptografické třídy, na kterých aktivita kopírování závisí, jsou v některých scénářích blokované.
 
-### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Kód chyby: MappingInvalidPropertyWithNamePathAndOrdinal
+- **Řešení**: z [tohoto článku](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)můžete získat informace o aktuální situaci režimu FIPS v systému Windows a vyhodnotit, jestli můžete FIPS zakázat na počítači Integration runtime v místním prostředí.
 
-- **Zpráva**: `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+    Na druhé straně, pokud chcete nechat Azure Data Factory obejít FIPS a spustit aktivitu úspěšně, můžete postupovat takto:
 
+    1. Otevřete složku, ve které je místně hostovaný Integration Runtime, obvykle v části `C:\Program Files\Microsoft Integration Runtime\<IR version>\Shared` .
 
-### <a name="error-code--mappingduplicatedordinal"></a>Kód chyby: MappingDuplicatedOrdinal
+    2. Otevřete diawp.exe.config a přidejte `<enforceFIPSPolicy enabled="false"/>` do `<runtime>` části podobné následujícímu.
 
-- **Zpráva**: `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+        ![Zákaz FIPS](./media/connector-troubleshoot-guide/disable-fips-policy.png)
 
-
-### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>Kód chyby: MappingInvalidOrdinalForSinkColumn
-
-- **Zpráva**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
+    3. Restartujte počítač Integration Runtime v místním prostředí.
 
 
 ## <a name="next-steps"></a>Další kroky

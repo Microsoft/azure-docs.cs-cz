@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230411"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822178"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
 
@@ -21,7 +21,7 @@ Naučte se, jak pomocí Apache Spark MLlib vytvořit aplikaci Machine Learning. 
 
 MLlib je základní knihovna Sparku, která poskytuje mnoho nástrojů užitečných pro úlohy strojového učení, jako je například:
 
-* Classification
+* Klasifikace
 * Regrese
 * Clustering
 * Modelování
@@ -32,7 +32,7 @@ MLlib je základní knihovna Sparku, která poskytuje mnoho nástrojů užitečn
 
 *Klasifikace*, oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit jmenovky k vstupním datům, která zadáte. Můžete si například představit algoritmus strojového učení, který přijímá informace o zásobách jako vstup. Pak rozdělí zásoby do dvou kategorií: akcií, které byste měli prodávat, a zásob, které byste měli zachovat.
 
-Logistická regrese je algoritmus, který používáte pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci*nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
+Logistická regrese je algoritmus, který používáte pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci* nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
 
 V souhrnu proces logistické regrese vytváří *logistickou funkci*. Použijte funkci pro předpověď pravděpodobnosti, že vstupní vektor patří do jedné nebo druhé skupiny.  
 
@@ -44,7 +44,7 @@ V následujících krocích vytvoříte model, abyste viděli, co je potřeba k 
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Machine Learning v Apache Spark MLlib
 
-1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření souboru poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. Pomocí jádra PySpark vytvořte Jupyter Notebook. Pokyny najdete v tématu [Vytvoření souboru Jupyter notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesu **SHIFT + ENTER**.
 
@@ -121,7 +121,7 @@ Použijte kontext Spark pro načtení nezpracovaných dat CSV do paměti jako ne
     df.registerTempTable('CountResults')
     ```
 
-    Čtyři sloupce zájmu v rámci datového rámce jsou **ID**, **název**, **výsledky**a **porušení**.
+    Čtyři sloupce zájmu v rámci datového rámce jsou **ID**, **název**, **výsledky** a **porušení**.
 
 4. Spusťte následující kód, abyste získali malý vzorek dat:
 
@@ -196,8 +196,8 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
 
     Aby bylo možné předpovědět výsledek kontroly potravin, je nutné vyvinout model na základě porušení. Vzhledem k tomu, že Logistická regrese je binární metoda klasifikace, má smysl seskupit výsledná data do dvou kategorií: **selhání** a **průchod**:
 
-   - Dána
-       - Dána
+   - Úspěšné absolvování
+       - Úspěšné absolvování
        - Průchod za sekundu
    - Neúspěch
        - Neúspěch
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Vyhodnocení modelu pomocí jiné datové sady
 
-Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co budou výsledky nových kontrol. Předpovědi vycházejí z porušení zásad, které byly pozorovány. Tento model jste vyškolei **Food_Inspections1.csv**datové sady. Druhou datovou sadu můžete použít **Food_Inspections2.csv**k *vyhodnocení* síly tohoto modelu u nových dat. Tato druhá datová sada (**Food_Inspections2.csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
+Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co budou výsledky nových kontrol. Předpovědi vycházejí z porušení zásad, které byly pozorovány. Tento model jste vyškolei **Food_Inspections1.csv** datové sady. Druhou datovou sadu můžete použít **Food_Inspections2.csv** k *vyhodnocení* síly tohoto modelu u nových dat. Tato druhá datová sada (**Food_Inspections2.csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
 
 1. Spusťte následující kód, který vytvoří nový datový rámec **predictionsDf** , který obsahuje předpověď vygenerovanou modelem. Fragment kódu také vytvoří dočasnou tabulku s názvem **předpovědi** založenou na dataframe.
 
@@ -313,7 +313,7 @@ Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co b
 
 Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsledku výsledků tohoto testu.
 
-1. Začnete extrahováním různých předpovědi a výsledků z dočasné tabulky **předpovědi** vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative*a *false_negative*. V následujících dotazech vypnete vizualizaci pomocí `-q` a také uložíte výstup (pomocí `-o` ) jako datový rámec, který lze použít s `%%local` Magic.
+1. Začnete extrahováním různých předpovědi a výsledků z dočasné tabulky **předpovědi** vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative* a *false_negative*. V následujících dotazech vypnete vizualizaci pomocí `-q` a také uložíte výstup (pomocí `-o` ) jako datový rámec, který lze použít s `%%local` Magic.
 
     ```PySpark
     %%sql -q -o true_positive

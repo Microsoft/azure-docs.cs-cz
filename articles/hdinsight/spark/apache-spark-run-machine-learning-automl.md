@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087465"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821243"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 
@@ -24,7 +24,7 @@ Obecné kurzy k automatizovanému strojovém učení najdete v tématu [kurz: Po
 Všechny nové clustery HDInsight-Spark jsou v sadě SDK sady AzureML-AutoML nainstalovány předem.
 
 > [!Note]
-> Balíčky Azure Machine Learning se instalují do prostředí conda pro python3. Nainstalovaný Poznámkový blok Jupyter by se měl spustit pomocí jádra PySpark3.
+> Balíčky Azure Machine Learning se instalují do prostředí conda pro python3. Nainstalované Jupyter Notebook by měly být spuštěny pomocí jádra PySpark3.
 
 Pomocí poznámkových bloků Zeppelin můžete také použít AutoML.
 

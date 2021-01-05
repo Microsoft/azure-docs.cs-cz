@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020785"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821158"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
@@ -73,7 +73,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
 3. Vytvořte nový poznámkový blok. Klikněte na tlačítko **Nový** a pak klikněte na tlačítko **PySpark**.
 
-    ![Vytvoření nového poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvořit nový Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Vytvořit nový Jupyter Notebook")
 
 4. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importem typů nezbytných pro tento scénář. Chcete-li tak učinit, vložte následující fragment kódu do buňky a stiskněte klávesu **SHIFT + ENTER**.
 
@@ -83,7 +83,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
 
     Při každém spuštění úlohy v Jupyter se název okna webového prohlížeče zobrazí jako **(Zaneprázdněn)** společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu. Po dokončení úlohy se změní na prázdný kruh.
 
-     ![Stav úlohy poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy poznámkového bloku Jupyter")
+     ![Stav úlohy Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy Jupyter Notebook")
 
 5. Načtěte ukázková data do dočasné tabulky pomocí souboru **HVAC.csv** , který jste zkopírovali do účtu Data Lake Storage Gen1. K datům v účtu Data Lake Storage můžete přistupovat pomocí následujícího vzoru adresy URL.
 

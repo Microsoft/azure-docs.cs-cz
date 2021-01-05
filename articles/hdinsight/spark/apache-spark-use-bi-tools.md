@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195107"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821277"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: analýza Apache Spark dat pomocí Power BI ve službě HDInsight
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vizualizace dat Sparku pomocí Power BI
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 [Jupyter notebook](https://jupyter.org/) , který jste vytvořili v [předchozím kurzu](apache-spark-load-data-run-query.md) , obsahuje kód pro vytvoření `hvac` tabulky. Tato tabulka je založená na souboru CSV, který je k dispozici ve všech clusterech HDInsight Spark na adrese `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv` . Pomocí následujícího postupu ověřte data.
 
-1. Do poznámkového bloku Jupyter vložte následující kód a pak stiskněte **SHIFT + ENTER**. Kód ověří existenci tabulek.
+1. Z Jupyter Notebook vložte následující kód a stiskněte klávesu **SHIFT + ENTER**. Kód ověří existenci tabulek.
 
     ```PySpark
     %%sql
@@ -77,13 +77,13 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
     ![Načtení dat do Power BI Desktop ze služby HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
 
-3. `Spark`Do vyhledávacího pole zadejte, vyberte **Azure HDInsight Spark**a pak vyberte **připojit**.
+3. `Spark`Do vyhledávacího pole zadejte, vyberte **Azure HDInsight Spark** a pak vyberte **připojit**.
 
     ![Načtení dat do Power BI z Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Načtení dat do Power BI z Apache Spark BI")
 
 4. `mysparkcluster.azurehdinsight.net`Do textového pole **Server** zadejte adresu URL clusteru (ve formuláři).
 
-5. V části **režim připojení dat**vyberte **DirectQuery**. Pak vyberte **OK**.
+5. V části **režim připojení dat** vyberte **DirectQuery**. Pak vyberte **OK**.
 
     V případě Sparku můžete použít jakýkoli režim připojení dat. Pokud použijete DirectQuery, změny se v sestavách projeví bez nutnosti aktualizace celé datové sady. Pokud data importujete, musíte datovou sadu aktualizovat, aby se změny projevily. Další informace o tom, jak a kdy použít DirectQuery, najdete v tématu [Použití DirectQuery v Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
@@ -145,11 +145,11 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
     ![Upravit přihlašovací údaje v služba Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Upravit přihlašovací údaje v služba Power BI")
 
-1. Zadejte informace o přihlašovacím účtu HDInsight a pak vyberte **Přihlásit**se. Výchozí název účtu je *admin*.
+1. Zadejte informace o přihlašovacím účtu HDInsight a pak vyberte **Přihlásit** se. Výchozí název účtu je *admin*.
 
     ![Přihlášení ke clusteru Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Přihlášení ke clusteru Spark")
 
-1. V levém podokně přejdete do části **pracovní**prostory sestavy pracovní  >  **prostor**  >  **REPORTS**a pak vyberete **BuildingTemperature**.
+1. V levém podokně přejdete do části **pracovní** prostory sestavy pracovní  >  **prostor**  >  a pak vyberete **BuildingTemperature**.
 
     ![Sestava uvedená v části sestavy v levém podokně](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Sestava uvedená v části sestavy v levém podokně")
 

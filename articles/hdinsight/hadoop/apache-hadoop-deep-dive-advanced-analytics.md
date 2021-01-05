@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504345"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821498"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co je Pokročilá analýza pro HDInsight?
 
-HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. Pokročilá analýza využívá vysoce škálovatelné architektury, statistické modely a modely strojového učení a inteligentní řídicí panely, které poskytují smysluplné přehledy. Strojové učení nebo *prediktivní analýza*využívá algoritmy, které identifikují a zjišťují relace ve vašich datech, aby předpovědi a zajistila vaše rozhodnutí.
+HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. Pokročilá analýza využívá vysoce škálovatelné architektury, statistické modely a modely strojového učení a inteligentní řídicí panely, které poskytují smysluplné přehledy. Strojové učení nebo *prediktivní analýza* využívá algoritmy, které identifikují a zjišťují relace ve vašich datech, aby předpovědi a zajistila vaše rozhodnutí.
 
 ## <a name="advanced-analytics-process"></a>Proces pokročilé analýzy
 
@@ -44,7 +44,7 @@ Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jes
 
 | Kategorie algoritmu| Použití | Typ učení | Algoritmy |
 | --- | --- | --- | -- |
-| Classification | Klasifikovat lidi nebo věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
+| Klasifikace | Klasifikovat lidi nebo věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
 | Clustering | Dělení sady příkladů do homogenních skupin | Bez dohledu | K-znamená clustering |
 | Detekce vzoru | Identifikace častých přidružení v datech | Bez dohledu | Association rules |
 | Regrese | Předpověď číselných výsledků | Pod dohledem | Lineární regrese, neuronové sítě |
@@ -91,7 +91,7 @@ Tento scénář pokročilých analýz obsahuje tři klíčové úlohy:
 
 1. Vytvořte cluster Azure HDInsight Hadoop s distribucí Apache Spark 2.1.0.
 2. Spusťte vlastní skript pro instalaci Microsoft Cognitive Toolkit na všech uzlech Azure HDInsight Spark clusteru.
-3. Nahrajte předem připravený Jupyter Poznámkový blok do vašeho clusteru HDInsight Spark, abyste mohli použít školicí model Microsoft Cognitive Toolkit hloubkového učení pro soubory v účtu Azure Blob Storage pomocí rozhraní Spark Python API (PySpark).
+3. Nahrajte předem sestavený Jupyter Notebook do clusteru HDInsight Spark, abyste mohli použít školicí model Microsoft Cognitive Toolkit s hloubkovým učením na soubory v účtu Azure Blob Storage pomocí rozhraní Spark Python API (PySpark).
 
 V tomto příkladu se používá sada imagí CIFAR-10 zkompilovaná a distribuovaná Alex Krizhevsky, Vinoed Nair a Geoffrey Hinton. Datová sada CIFAR-10 obsahuje 60 000 32 × 32 barev obrázků, které patří 10 vzájemně se vylučující třídy:
 

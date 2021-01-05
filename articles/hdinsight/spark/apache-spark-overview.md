@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e75661b54ce9a74013938d11ca7f13d9c3698c76
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029436"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822042"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co je Apache Spark ve službě Azure HDInsight
 
@@ -32,7 +32,7 @@ Clustery Spark ve službě HDInsight nabízejí plně spravovanou službu Spark.
 | Funkce | Popis |
 | --- | --- |
 | Snadné vytvoření |Nový cluster Spark ve službě HDInsight můžete vytvořit během několika minut pomocí webu Azure Portal, Azure PowerShellu nebo sady HDInsight .NET SDK. Viz Začínáme [s clusterem Apache Spark v HDInsight](apache-spark-jupyter-spark-sql-use-portal.md). |
-| Jednoduché používání |Cluster Spark v HDInsight zahrnuje notebooky Jupyter a Apache Zeppelin. Tyto poznámkové bloky můžete použít pro interaktivní zpracování dat a vizualizaci. Viz [použití poznámkových bloků Apache Zeppelin s Apache Spark](apache-spark-zeppelin-notebook.md) a [načítání dat a spouštění dotazů v clusteru Apache Spark](apache-spark-load-data-run-query.md).|
+| Jednoduché používání |Cluster Spark v HDInsight zahrnuje poznámkové bloky Jupyter a Apache Zeppelin. Tyto poznámkové bloky můžete použít pro interaktivní zpracování dat a vizualizaci. Viz [použití poznámkových bloků Apache Zeppelin s Apache Spark](apache-spark-zeppelin-notebook.md) a [načítání dat a spouštění dotazů v clusteru Apache Spark](apache-spark-load-data-run-query.md).|
 | Rozhraní REST API |Clustery Spark v HDInsight zahrnují [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), server pro Spark založený na REST API, který umožňuje vzdáleně odesílat a monitorovat úlohy. Přečtěte si téma [použití Apache Spark REST API k odeslání vzdálených úloh do clusteru HDInsight Spark](apache-spark-livy-rest-interface.md).|
 | Podpora Azure Storage | Clustery Spark v HDInsight můžou použít Azure Data Lake Storage Gen1/Gen2 jako primární úložiště i další úložiště. Další informace o Data Lake Storage Gen1 najdete v tématu [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md). Další informace o Data Lake Storage Gen2 najdete v tématu [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).|
 | Integrace se službami Azure |Cluster Spark ve službě HDInsight se dodává s konektorem k Azure Event Hubs. Můžete vytvářet aplikace streamování pomocí Event Hubs. Včetně Apache Kafka, který je již k dispozici jako součást Sparku. |

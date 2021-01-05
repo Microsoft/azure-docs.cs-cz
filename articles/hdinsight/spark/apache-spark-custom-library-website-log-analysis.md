@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083793"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822365"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovny Pythonu s Apache Spark clusteru v HDInsight
 
@@ -31,9 +31,9 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 
 1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/jupyter` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. Vytvořte nový poznámkový blok. Vyberte **Nový**a potom **PySpark**.
+1. Vytvořte nový poznámkový blok. Vyberte **Nový** a potom **PySpark**.
 
-    ![Vytvoření nového poznámkového bloku Apache Jupyter](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvořit nový Jupyter Notebook Apache](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Vytvořit nový Jupyter Notebook")
 
 1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
 
@@ -203,5 +203,5 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
 Projděte si následující články:
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

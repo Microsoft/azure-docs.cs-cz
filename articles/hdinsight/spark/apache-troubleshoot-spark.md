@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022247"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822144"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
 
@@ -25,7 +25,7 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 1. Přihlaste se k Ambari `https://CLUSTERNAME.azurehdidnsight.net` s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
 
-1. Přejděte do **Spark2**  >  **Konfigurace** Spark2.
+1. Přejděte do   >  **Konfigurace** Spark2.
 
     ![Vyberte kartu konfigurace.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
@@ -75,9 +75,9 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 Tyto změny jsou v clusteru v rozsahu, ale můžou být přepsány při odeslání úlohy Spark.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak na clusterech nakonfigurovat aplikaci Apache Spark pomocí poznámkového bloku Jupyter?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Návody nakonfigurovat Apache Spark aplikaci pomocí Jupyter Notebook v clusterech?
 
-V první buňce poznámkového bloku Jupyter po direktivě **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečné hodnoty:
+V první buňce Jupyter Notebook za direktivou **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečné hodnoty:
 
 ![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 

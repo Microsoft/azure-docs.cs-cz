@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545697"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822314"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)
 
@@ -44,7 +44,7 @@ Vytvořte projekt Spark 2.3.2 pro pokračování v ladění selhání. v tomto d
 
      ![IntelliJ vytvořit projekt ladění](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Vyberte **Další** .
+   c. Vyberte **Další**.
 
 2. V okně **Nový projekt** proveďte následující kroky:
 
@@ -54,9 +54,9 @@ Vytvořte projekt Spark 2.3.2 pro pokračování v ladění selhání. v tomto d
 
    b. V rozevíracím seznamu **sada SDK projektu** vyberte **Java 1,8** pro cluster **Spark 2.3.2** .
 
-   c. V rozevíracím seznamu **verze Sparku** vyberte **Spark 2.3.2 (Scala 2.11.8)** .
+   c. V rozevíracím seznamu **verze Sparku** vyberte **Spark 2.3.2 (Scala 2.11.8)**.
 
-   d. Vyberte **Dokončit** .
+   d. Vyberte **Dokončit**.
 
 3. Vyberte **Src**  >  **Main**  >  **Scala** a otevřete svůj kód v projektu. V tomto příkladu se používá skript **AgeMean_Div ()** .
 
@@ -72,11 +72,11 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
    ![Přidat novou konfiguraci IntelliJ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Přepněte na **vzdálené spuštění na kartě cluster** . Zadejte informace pro **název** , **cluster Spark** a **název hlavní třídy** . Naše nástroje podporují ladění pomocí **prováděcích** modulů. Výchozí hodnota **numExectors** je 5 a Vy byste lépe nestavili hodnotu vyšší než 3. Chcete-li zkrátit dobu běhu, můžete do **Konfigurace úlohy** přidat **Spark. příze. maxAppAttempts** a nastavit hodnotu na 1. Kliknutím na tlačítko **OK** konfiguraci uložíte.
+3. Přepněte na **vzdálené spuštění na kartě cluster** . Zadejte informace pro **název**, **cluster Spark** a **název hlavní třídy**. Naše nástroje podporují ladění pomocí **prováděcích** modulů. Výchozí hodnota **numExectors** je 5 a Vy byste lépe nestavili hodnotu vyšší než 3. Chcete-li zkrátit dobu běhu, můžete do **Konfigurace úlohy** přidat **Spark. příze. maxAppAttempts** a nastavit hodnotu na 1. Kliknutím na tlačítko **OK** konfiguraci uložíte.
 
    ![IntelliJ spustit konfiguraci ladění – nové](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. Konfigurace je nyní uložena s názvem, který jste zadali. Chcete-li zobrazit podrobnosti o konfiguraci, vyberte název konfigurace. Chcete-li provést změny, vyberte **Upravit konfigurace** .
+4. Konfigurace je nyní uložena s názvem, který jste zadali. Chcete-li zobrazit podrobnosti o konfiguraci, vyberte název konfigurace. Chcete-li provést změny, vyberte **Upravit konfigurace**.
 
 5. Po dokončení nastavení konfigurace můžete spustit projekt proti vzdálenému clusteru.
 
@@ -90,7 +90,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
 Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout profil neúspěšné úlohy do místního počítače.
 
-1. Otevřete **Průzkumník služby Microsoft Azure Storage** , vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\hdp\spark2-Events \\ . Spark – selhání \\ \<application ID>** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
+1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\hdp\spark2-Events \\ . Spark – selhání \\ \<application ID>** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
 
    ![Průzkumník služby Azure Storage Chyba stahování](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -142,8 +142,8 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 * [Používání nástrojů HDInsight pro IntelliJ s izolovaným prostorem Hortonworks](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytváření Apache Sparkch aplikací](./apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokem](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

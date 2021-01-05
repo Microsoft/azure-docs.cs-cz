@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621599"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821481"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -79,7 +79,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
   Webhook, který zadáte, by měl být v provozu a musí běžet 24/7. Toto je jediný způsob, jakým budete dostávat oznámení o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím komerčního tržiště.
 
   > [!NOTE]
-  > V rámci Azure Portal vyžadujeme, abyste vytvořili aplikaci Azure Active Directory s jedním klientem [(Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) , která umožňuje použít jedno ID aplikace Azure k ověření připojení mezi našimi dvěma službami. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například, `50c464d3-4930-494c-963c-1e951d15360e`.
+  > V rámci Azure Portal vyžadujeme, abyste vytvořili aplikaci Azure Active Directory s jedním klientem [(Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) , která umožňuje použít jedno ID aplikace Azure k ověření připojení mezi našimi dvěma službami. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **ID tenanta Azure Active Directory**: (označuje se taky jako ID adresáře). V Azure Portal vyžadujeme [registraci aplikace Azure Active Directory (AD)](../active-directory/develop/howto-create-service-principal-portal.md) , abychom ji mohli přidat do seznamu řízení přístupu (ACL) rozhraní API, abyste měli jistotu, že máte oprávnění k volání. Pokud chcete najít ID tenanta pro vaši aplikaci Azure Active Directory (AD), v Azure Active Directory klikněte na okno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . Ve sloupci **Zobrazovaný název** vyberte aplikaci. Pak vyhledejte číslo **ID adresáře (tenant)** v seznamu (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -113,10 +113,10 @@ Pokud vaše nabídka SaaS je řešení IT (Azure Marketplace *) i obchodní* ře
 
 | Měřené fakturace | Veřejný plán | Soukromý plán | K dispozici v: |
 |---|---|---|---|
-| Yes             | Yes         | No           | Azure Marketplace a Azure Portal |
-| Yes             | Yes         | Yes          | Azure Marketplace a Azure Portal * |
-| Yes             | No          | Yes          | Pouze Azure Portal |
-| No              | No          | Yes          | Pouze Azure Portal |
+| Ano             | Ano         | Ne           | Azure Marketplace a Azure Portal |
+| Ano             | Ano         | Ano          | Azure Marketplace a Azure Portal * |
+| Ano             | Ne          | Ano          | Pouze Azure Portal |
+| Ne              | Ne          | Ano          | Pouze Azure Portal |
 |||||
 
 &#42; soukromý plán této nabídky bude k dispozici pouze prostřednictvím Azure Portal
@@ -149,10 +149,10 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Souhrn
+8. Shrnutí
 9. Popis
 10. Snímky obrazovky a videa
-11. dokumenty.
+11. Dokumenty
 
 Následující příklad ukazuje seznam nabídek v Azure Portal.
 
@@ -250,7 +250,7 @@ Následující příklad ukazuje vzorový rozpis nákladů a výběrů k předve
 | Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů.<br>`*` Pro kvalifikované aplikace SaaS přináší společnost Microsoft 90% vašich licenčních nákladů.| $80,00 za měsíc<br>``*`` $90,00 za měsíc |
 |||
 
-**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
+**`*` Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného poplatku za služby Marketplace vyžaduje splnění alespoň pěti (5) pracovních dnů před koncem každého kalendářního měsíce. Po splnění nároku bude snížený poplatek za službu udělen všem transakcím platným první den v následujícím měsíci a bude nadále platit až do chvíle, kdy se motivovaní stav společného prodeje Azure IP. Podrobnosti o způsobilosti spoluprodejních IP adres najdete v tématu [požadavky na stav společného prodeje](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Snížený poplatek za službu Marketplace platí také pro virtuální počítače Azure s motivovaní, spravované aplikace a jakékoli další kvalifikované IaaS nabídky, které jsou k dispozici prostřednictvím komerčního tržiště.
 
 ## <a name="additional-sales-opportunities"></a>Další prodejní příležitosti
 

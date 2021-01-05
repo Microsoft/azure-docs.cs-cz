@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2123098aafb414495f55d557ac1546819c25fdad
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95996393"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822059"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -45,7 +45,7 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 | Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.7.0 |
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.9.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.9.0 |
-| Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
+| Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1.0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.3.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
@@ -54,7 +54,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Vyžadováno | Účel |
+| Povinné | Účel |
 |--|--|
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -287,12 +287,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-d
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` . [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou také další příklady příkazu.
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` . [](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou také další příklady příkazu.
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
@@ -312,6 +312,10 @@ Tento příkaz:
 * Přiděluje 4 jádra procesoru a 4 gigabajty (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
+> [!NOTE]
+> Kontejnery podporují komprimovaný zvukový vstup do sady Speech SDK pomocí GStreamer.
+> Pokud chcete nainstalovat GStreamer do kontejneru, postupujte podle pokynů pro Linux pro GStreamer v tématu [Použití kodeku komprimovaného zvukového vstupu se sadou Speech SDK](how-to-use-codec-compressed-audio-input-streams.md).
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
@@ -749,7 +753,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85c4298c0c83480c244cc12238c21160a4a4282e
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77198884"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822110"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
+## <a name="create-a-jupyter-notebook"></a>Vytvoříte poznámkový blok Jupyter Notebooks.
 
 Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace.
 
@@ -49,7 +49,7 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
-1. Vložte následující kód do prázdné buňky Jupyter poznámkového bloku a stisknutím klávesy **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
+1. Vložte následující kód do prázdné buňky Jupyter Notebook a stisknutím kláves **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
     from pyspark.sql import *
@@ -91,7 +91,7 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
 3. V řádku nabídek poznámkového bloku přejděte na **soubor**  >  **Uložit a kontrolní bod**.
 
-4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor**  >   **Zavřít a**zastavte.
+4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor**  >   **Zavřít a** zastavte.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061712"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822246"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight
 
@@ -21,7 +21,7 @@ Naučte se, jak nakonfigurovat [Jupyter notebook](https://jupyter.org/) v cluste
 
 Úplný seznam dostupných balíčků můžete vyhledat v [úložišti Maven](https://search.maven.org/) . Můžete také získat seznam dostupných balíčků z jiných zdrojů. Například úplný seznam balíčků, které jsou součástí komunity, je k dispozici v [balíčcích Spark](https://spark-packages.org/).
 
-V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít balíček [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) .
+V tomto článku se dozvíte, jak pomocí Jupyter Notebook balíčku [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,13 +31,13 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
 * [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro `wasb://` `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` nebo v `abfss://` uvedeném pořadí taky [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
-## <a name="use-external-packages-with-jupyter-notebooks"></a>Použijte externí balíčky s poznámkovými bloky Jupyter
+## <a name="use-external-packages-with-jupyter-notebooks"></a>Použití externích balíčků s Jupyter poznámkovým blokem
 
 1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter` místo, kde `CLUSTERNAME` je název vašeho clusteru Spark.
 
-1. Vytvořte nový poznámkový blok. Vyberte **Nový**a pak vyberte **Spark**.
+1. Vytvořte nový poznámkový blok. Vyberte **Nový** a pak vyberte **Spark**.
 
-    ![Vytvoření nového poznámkového bloku Spark Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
+    ![Vytvořit nový Jupyter Notebook Spark](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Vytvořit nový Jupyter Notebook")
 
 1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
 
@@ -57,9 +57,9 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
     a. Vyhledejte balíček v úložišti Maven. V tomto článku používáme [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv).
 
-    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**. Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček Scala 2,11 a Spark 1.5.0, ale v clusteru možná budete muset vybrat jiné verze pro příslušnou verzi Scala nebo Sparku. Verzi Scala můžete v clusteru zjistit spuštěním `scala.util.Properties.versionString` v jádru Spark Jupyter nebo v Sparku odeslat. Verzi Sparku v clusteru můžete zjistit spuštěním `sc.version` na poznámkových blocích Jupyter.
+    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId** a **verzi**. Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček Scala 2,11 a Spark 1.5.0, ale v clusteru možná budete muset vybrat jiné verze pro příslušnou verzi Scala nebo Sparku. Verzi Scala můžete v clusteru zjistit spuštěním `scala.util.Properties.versionString` v jádru Spark Jupyter nebo v Sparku odeslat. Verzi Sparku v clusteru můžete zjistit spuštěním `sc.version` na poznámkových blocích Jupyter.
 
-    ![Použití externích balíčků s poznámkovým blokem Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Použití externích balíčků s poznámkovým blokem Jupyter")
+    ![Použití externích balíčků s Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Použití externích balíčků s Jupyter Notebook")
 
     c. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
@@ -115,7 +115,7 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Jádra dostupná pro Jupyter Notebook v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
