@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505882"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898721"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -185,6 +185,14 @@ Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1` 
 |Klíč|Ukázková hodnota|
 |---|------------|
 |\_počet pracovních \_ procesů \_ funkcí|2|
+
+## <a name="python_threadpool_thread_count"></a>\_ \_ počet vláken fondu vláken v Pythonu \_
+
+Určuje maximální počet vláken, která by pracovník jazyka Python použil k provedení vyvolání funkcí s výchozí hodnotou `1` pro verzi Pythonu `3.8` a níže. V případě verze Pythonu `3.9` a vyšší je hodnota nastavena na `None` . Všimněte si, že toto nastavení nezaručuje počet vláken, která by byla nastavena při spuštění. Nastavení umožňuje Pythonu rozšířit počet vláken na zadanou hodnotu. Nastavení platí pouze pro aplikace Python Functions. Nastavení se navíc vztahuje na vyvolání synchronních funkcí a nikoli pro korutiny.
+
+|Klíč|Ukázková hodnota|Max. hodnota|
+|---|------------|---------|
+|\_ \_ počet vláken fondu vláken v Pythonu \_|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>FUNKCE \_ \_ modulu runtime pracovního procesu

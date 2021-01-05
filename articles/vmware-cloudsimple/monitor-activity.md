@@ -2,19 +2,19 @@
 title: Aktivita monitorování privátního cloudu
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje informace, které jsou k dispozici v aktivitě v řešení Azure VMware podle CloudSimple prostředí, včetně výstrah, událostí, úloh a auditu.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019668"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899299"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování aktivity řešení VMware podle CloudSimple
 
@@ -54,7 +54,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |
-| Popis | Popis, který výstrahu aktivoval. |
+| Description | Popis, který výstrahu aktivoval. |
 | Potvrzeno | Označení, zda je výstraha potvrzena. |
 
 ## <a name="events"></a>Události
@@ -70,7 +70,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | Závažnost | Závažnost události.|
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
-| Popis | Popis, který výstrahu aktivoval. |
+| Description | Popis, který výstrahu aktivoval. |
 
 ## <a name="tasks"></a>Úlohy
 
@@ -90,7 +90,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | End | Čas ukončení úlohy |
 | Status | Aktuální stav úlohy. |
 | Uplynulý čas | Čas potřebný k dokončení úkolu (Pokud je dokončen) nebo v současné době (pokud probíhá). |
-| Popis | Popis úlohy |
+| Description | Popis úlohy |
 
 ## <a name="audit"></a>Auditování
 
@@ -108,7 +108,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | ID prostředku | Identifikátor prostředku |
 | Výsledek | Výsledek aktivity, například **úspěch**. |
 | Doba trvání | Čas k dokončení úkolu. |
-| Popis | Popis akce |
+| Description | Popis akce |
 
 ## <a name="next-steps"></a>Další kroky
 

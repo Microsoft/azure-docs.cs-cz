@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – model oprávnění privátního cloudu
 description: Popisuje model oprávnění privátního cloudu CloudSimple, skupiny a kategorie.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77014942"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898041"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>Model oprávnění privátního cloudu CloudSimple VMware vCenter
 
@@ -43,7 +43,7 @@ Při nasazení privátního cloudu se vytvoří skupina s názvem **Cloud-vlastn
 Chcete-li udělit individuálním uživatelům oprávnění ke správě privátního cloudu, vytvořte uživatelské účty, které chcete přidat do příslušných skupin.
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
+> Noví uživatelé musí být přidáni pouze *ke skupině* Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.
 
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>Seznam oprávnění vCenter pro výchozí role
 
@@ -61,7 +61,7 @@ Chcete-li udělit individuálním uživatelům oprávnění ke správě privátn
 | **Linka** | Registrovat rozšíření <br> Zrušit registraci rozšíření <br> Aktualizovat rozšíření |
 | **Externí poskytovatel statistik**| Registrovat <br> Zrušit registraci <br> Aktualizace |
 | **Složka** | Vytvořit složku <br> Odstranit složku <br> Přesunout složku <br> Přejmenovat složku |
-| **Globální** | Zrušit úlohu <br> Plánování kapacity <br> Diagnostika <br> Zakázat metody <br> Povolit metody <br> Globální značka <br> Zdravotnictví <br> Licenses <br> Událost protokolu <br> Správa vlastních atributů <br> Proxy server <br> Akce skriptu <br> Manažeři služeb <br> Nastavit vlastní atribut <br> Systémová značka |
+| **Globální** | Zrušit úlohu <br> Plánování kapacity <br> Diagnostika <br> Zakázat metody <br> Povolit metody <br> Globální značka <br> Zdravotnictví <br> Licence <br> Událost protokolu <br> Správa vlastních atributů <br> Proxy server <br> Akce skriptu <br> Manažeři služeb <br> Nastavit vlastní atribut <br> Systémová značka |
 | **Poskytovatel aktualizace stavu** | Registrovat <br> Zrušit registraci <br> Aktualizace |
 | **Konfigurace > hostitele** | Konfigurace oddílů úložiště |
 | **Inventář > hostitele** | Upravit cluster |
@@ -76,10 +76,10 @@ Chcete-li udělit individuálním uživatelům oprávnění ke správě privátn
 | **Úložiště řízené profilem** | Aktualizace úložiště řízené profilem <br> Zobrazení úložiště řízené profilem |
 | **Zobrazení úložišť** | Konfigurace služby <br> Zobrazit |
 | **Úlohy** | Vytvořit úlohu <br> Aktualizovat úkol |
-| **Služba Transfer Service**| Spravovat <br> Monitorování |
-| **vApp** | Přidat virtuální počítač <br> Přiřadit fond zdrojů <br> Přiřadit vApp <br> Klonování <br> Vytvořit <br> Odstranit <br> Export <br> Importovat <br> Přesunout <br> Napájení vypnuto <br> Zapnout <br> přejmenování <br> Suspend <br> Zrušit registraci <br> Zobrazit prostředí OVF <br> Konfigurace aplikace vApp <br> konfigurace instance vApp <br> Konfigurace vApp managedBy <br> Konfigurace prostředků vApp |
+| **Služba Transfer Service**| Spravovat <br> Monitor |
+| **vApp** | Přidat virtuální počítač <br> Přiřadit fond zdrojů <br> Přiřadit vApp <br> Klonování <br> Vytvořit <br> Odstranit <br> Export <br> Import <br> Přesunout <br> Napájení vypnuto <br> Zapnout <br> přejmenování <br> Suspend <br> Zrušit registraci <br> Zobrazit prostředí OVF <br> Konfigurace aplikace vApp <br> konfigurace instance vApp <br> Konfigurace vApp managedBy <br> Konfigurace prostředků vApp |
 | **VRMPolicy** | VRMPolicy dotazu <br> Aktualizovat VRMPolicy |
-| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Upřesnit <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
+| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Pokročilý <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
 | **Operace hosta > virtuálních počítačů** | Úprava aliasu operace hosta <br> Dotaz na alias operace hosta <br> Úpravy operací hosta <br> Spuštění programu operace hosta <br> Dotazy na operace hosta |
 | **Interakce > virtuálních počítačů** | Odpověď na otázku <br> Operace zálohování na virtuálním počítači <br> Konfigurace média CD <br> Konfigurace disketových médií <br> Interakce konzoly <br> Vytvořit snímek obrazovky <br> Defragmentovat všechny disky <br> Připojení zařízení <br> Přetažení <br> Správa hostovaného operačního systému pomocí rozhraní VIX API <br> Vložení kódů kontroly USB HID <br> Pozastavit nebo pozastavit <br> Provádění operací vymazání nebo zmenšení <br> Napájení vypnuto <br> Zapnout <br> Zaznamenat relaci na virtuálním počítači <br> Znovu spustit relaci na virtuálním počítači <br> Resetovat <br> Obnovit odolnost proti chybám <br> Suspend <br> Pozastavit odolnost proti chybám <br> Testovací převzetí služeb při selhání <br> Sekundární virtuální počítač pro restartování testu <br> Vypnout odolnost proti chybám <br> Zapnout odolnost proti chybám <br> Instalace nástrojů VMware |
 | **Inventář > virtuálních počítačů** | Vytvořit z existujících <br> Vytvořit nový <br> Přesunout <br> Registrovat <br> Odebrat <br> Zrušit registraci |
@@ -99,9 +99,9 @@ Chcete-li udělit individuálním uživatelům oprávnění ke správě privátn
 | **Označování vSphere** | Přiřadit nebo zrušit přiřazení značky vSphere <br> Vytvořit značku vSphere <br> Vytvořit kategorii značek vSphere <br> Odstranit značku vSphere <br> Odstranit kategorii značek vSphere <br> Upravit značku vSphere <br> Upravit kategorii značek vSphere <br> Upravit pole UsedBy pro kategorii <br> Upravit pole UsedBy pro značku |
 | **Síť** | Přiřadit síť |
 | **Prostředek** | Použít doporučení <br> Přiřazení vApp ke fondu zdrojů <br> Přiřadit virtuální počítač k fondu zdrojů <br> Vytvořit fond zdrojů <br> Migrace vypnutého virtuálního počítače <br> Migrace zapnutá na virtuálním počítači <br> Upravit fond zdrojů <br> Přesunout fond zdrojů <br> VMotion dotazu <br> Odebrat fond zdrojů <br> Přejmenovat fond zdrojů |
-| **vApp** | Přidat virtuální počítač <br> Přiřadit fond zdrojů <br> Přiřadit vApp <br> Klonování <br> Vytvořit <br> Odstranit <br> Export <br> Importovat <br> Přesunout <br> Napájení vypnuto <br> Zapnout <br> přejmenování <br> Suspend <br> Zrušit registraci <br> Zobrazit prostředí OVF <br> Konfigurace aplikace vApp <br> konfigurace instance vApp <br> Konfigurace vApp managedBy <br> Konfigurace prostředků vApp |
+| **vApp** | Přidat virtuální počítač <br> Přiřadit fond zdrojů <br> Přiřadit vApp <br> Klonování <br> Vytvořit <br> Odstranit <br> Export <br> Import <br> Přesunout <br> Napájení vypnuto <br> Zapnout <br> přejmenování <br> Suspend <br> Zrušit registraci <br> Zobrazit prostředí OVF <br> Konfigurace aplikace vApp <br> konfigurace instance vApp <br> Konfigurace vApp managedBy <br> Konfigurace prostředků vApp |
 | **VRMPolicy** | VRMPolicy dotazu <br> Aktualizovat VRMPolicy |
-| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Upřesnit <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
+| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Pokročilý <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
 | **Operace hosta > virtuálních počítačů** | Úprava aliasu operace hosta <br> Dotaz na alias operace hosta <br> Úpravy operací hosta <br> Spuštění programu operace hosta <br> Dotazy na operace hosta |
 | **Interakce > virtuálních počítačů** | Odpověď na otázku <br> Operace zálohování na virtuálním počítači <br> Konfigurace média CD <br> Konfigurace disketových médií <br> Interakce konzoly <br> Vytvořit snímek obrazovky <br> Defragmentovat všechny disky <br> Připojení zařízení <br> Přetažení <br> Správa hostovaného operačního systému pomocí rozhraní VIX API <br> Vložení kódů kontroly USB HID <br> Pozastavit nebo pozastavit <br> Provádění operací vymazání nebo zmenšení <br> Napájení vypnuto <br> Zapnout <br> Zaznamenat relaci na virtuálním počítači <br> Znovu spustit relaci na virtuálním počítači <br> Resetovat <br> Obnovit odolnost proti chybám <br> Suspend <br> Pozastavit odolnost proti chybám <br> Testovací převzetí služeb při selhání <br> Sekundární virtuální počítač pro restartování testu <br> Vypnout odolnost proti chybám <br> Zapnout odolnost proti chybám <br> Instalace nástrojů VMware
 | **Inventář > virtuálních počítačů** | Vytvořit z existujících <br> Vytvořit nový <br> Přesunout <br> Registrovat <br> Odebrat <br> Zrušit registraci |
@@ -136,8 +136,8 @@ Chcete-li udělit individuálním uživatelům oprávnění ke správě privátn
 | **Úložiště dat** | Přidělit místo <br> Procházet úložiště dat |
 | **Síť** | Přiřadit síť |
 | **Prostředek** | Přiřadit virtuální počítač k fondu zdrojů <br> Migrace vypnutého virtuálního počítače <br> Migrace zapnutá na virtuálním počítači
-| **vApp** | Export <br> Importovat |
-| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Upřesnit <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
+| **vApp** | Export <br> Import |
+| **Konfigurace > virtuálních počítačů** | Přidat existující disk <br> Přidat nový disk <br> Přidat nebo odebrat zařízení <br> Pokročilý <br> Změna počtu PROCESORů <br> Změnit prostředek <br> Konfigurace managedBy <br> Sledování změn disků <br> Zapůjčení disku <br> Zobrazit nastavení připojení <br> Zvětšit virtuální disk <br> Hostitelské zařízení USB <br> Paměť <br> Úprava nastavení zařízení <br> Kompatibilita dotazů na odolnost proti chybám <br> Dotazování nevlastněných souborů <br> Nezpracované zařízení <br> Znovu načíst z cesty <br> Odebrat disk <br> přejmenování <br> Resetovat informace o hostovi <br> Nastavit poznámku <br> Nastavení <br> Umístění swapfile <br> Přepnout nadřazenou větev <br> Odemknout virtuální počítač <br> Upgrade kompatibility virtuálních počítačů |
 | **Operace hosta >virtuálních počítačů** | Úprava aliasu operace hosta <br> Dotaz na alias operace hosta <br> Úpravy operací hosta <br> Spuštění programu operace hosta <br> Dotazy na operace hosta    |
 | **Interakce >virtuálních počítačů** | Odpověď na otázku <br> Operace zálohování na virtuálním počítači <br> Konfigurace média CD <br> Konfigurace disketových médií <br> Interakce konzoly <br> Vytvořit snímek obrazovky <br> Defragmentovat všechny disky <br> Připojení zařízení <br> Přetažení <br> Správa hostovaného operačního systému pomocí rozhraní VIX API <br> Vložení kódů kontroly USB HID <br> Pozastavit nebo pozastavit <br> Provádění operací vymazání nebo zmenšení <br> Napájení vypnuto <br> Zapnout <br> Zaznamenat relaci na virtuálním počítači <br> Znovu spustit relaci na virtuálním počítači <br> Resetovat <br> Obnovit odolnost proti chybám <br> Suspend <br> Pozastavit odolnost proti chybám <br> Testovací převzetí služeb při selhání <br> Sekundární virtuální počítač pro restartování testu <br> Vypnout odolnost proti chybám <br> Zapnout odolnost proti chybám <br> Instalace nástrojů VMware |
 | **Inventář >virtuálních počítačů** | Vytvořit z existujících <br> Vytvořit nový <br> Přesunout <br> Registrovat <br> Odebrat <br> Zrušit registraci |

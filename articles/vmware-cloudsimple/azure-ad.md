@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – použití Azure AD jako zdroje identity v privátním cloudu
 description: Popisuje, jak přidat Azure AD jako zprostředkovatele identity do privátního cloudu CloudSimple k ověřování uživatelů, kteří přistupují k CloudSimple z Azure.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532524"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898602"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
 
@@ -90,9 +90,9 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
     | **Název domény** | Plně kvalifikovaný název domény pro doménu, například example.com. V tomto textovém poli nezadávejte IP adresu. |
     | **Alias domény** | *(volitelné)* Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
     | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát  `ldaps://hostname:port` . Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití  `ldaps://`   v primární nebo sekundární adrese URL protokolu LDAP. |
+    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldaps://hostname:port`. Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
     | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
-    | **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání  `ldaps://`   v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+    | **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
     | **Uživatelské jméno** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
     | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 
@@ -101,7 +101,7 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
 5. Přidat uživatele/skupiny z Azure AD do skupin vCenter, jak je popsáno v tématu o VMware [Přidání členů do skupiny vCenter Single Sign-On](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.
+> Noví uživatelé musí být přidáni pouze *ke skupině* Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.
 
 ## <a name="next-steps"></a>Další kroky
 

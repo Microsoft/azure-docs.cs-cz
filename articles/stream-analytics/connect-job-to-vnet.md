@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762856"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898143"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Připojení úloh Stream Analytics k prostředkům v Azure Virtual Network (VNet)
 
@@ -41,7 +41,7 @@ Vaše úlohy se můžou připojit k následujícím službám Azure pomocí tét
 1. [BLOB Storage nebo Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) – může to být účet úložiště vaší úlohy, vstup nebo výstup streamování.
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) – může se jednat o vstup nebo výstup streamování vaší úlohy.
 
-Pokud se vaše úlohy potřebují připojit k jiným vstupním nebo výstupním typům, pak jedinou možností je použít v clusterech Stream Analytics privátní koncové body.
+Pokud se vaše úlohy potřebují připojit k jiným vstupním nebo výstupním typům, můžete napsat z Stream Analytics Event Hubs nejprve výstup a potom do libovolného cílového umístění pomocí Azure Functions. Pokud chcete přímo zapisovat z Stream Analytics do jiných typů výstupu zabezpečených ve virtuální síti nebo bráně firewall, jediná možnost je použít v clusterech Stream Analytics privátní koncové body.
 
 ## <a name="next-steps"></a>Další kroky
 

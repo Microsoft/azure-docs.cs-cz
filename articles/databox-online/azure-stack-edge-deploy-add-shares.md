@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: afedbe739e955499f94d00a8ced940e7a4e9c27c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350309"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898649"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>Kurz: přenos dat pomocí Azure Stack Edge pro
 
@@ -42,7 +42,7 @@ Než přidáte sdílené složky do Azure Stack Edge pro, ujistěte se, že:
 
 Chcete-li vytvořit sdílenou složku, proveďte následující postup:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online.
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj prostředek Azure Stack Edge a pak přejít na **Přehled**. Vaše zařízení by mělo být online. Vyberte možnost **Brána cloudového úložiště**.
 
    ![Online zařízení](./media/azure-stack-edge-deploy-add-shares/device-online-1.png)
 

@@ -3,7 +3,7 @@ title: 'Kurz: nasazení aplikace Django v Pythonu pomocí Postgres'
 description: Vytvořte webovou aplikaci v Pythonu s databází PostgreSQL a nasaďte ji do Azure. V tomto kurzu se používá Django Framework a aplikace je hostována na Azure App Service v systému Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852961"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898585"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -236,14 +236,11 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 1. V relaci SSH spusťte následující příkazy (příkazy můžete vložit pomocí **kombinace kláves CTRL** + **SHIFT** + **V**):
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    Pokud narazíte na chyby související s připojením k databázi, Projděte si hodnoty nastavení aplikace vytvořené v předchozí části.
 
 1. `createsuperuser`Příkaz vás vyzve k zadání přihlašovacích údajů pro uživatele. Pro účely tohoto kurzu použijte výchozí uživatelské jméno `root` , stiskněte klávesu **ENTER** pro e-mailovou adresu, aby byla ponechána prázdná, a zadejte `Pollsdb1` heslo.
 
@@ -260,13 +259,13 @@ Máte problémy? Další informace najdete v části [Průvodce odstraňováním
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4,4 vytvoření otázky dotazování v aplikaci
 
-1. V prohlížeči otevřete adresu URL `http://<app-name>.azurewebsites.net` . Aplikace by měla zobrazovat zprávu "nejsou k dispozici žádná hlasování", protože v databázi zatím nejsou žádná konkrétní hlasování.
+1. V prohlížeči otevřete adresu URL `http://<app-name>.azurewebsites.net` . Aplikace by měla zobrazovat zprávu "aplikace pro cyklické dotazování" a "nejsou k dispozici žádná hlasování", protože v databázi zatím nejsou žádná konkrétní hlasování.
 
     Pokud se zobrazí zpráva Chyba aplikace, je možné, že jste v předchozím kroku buď nevytvořili požadovaná nastavení, [nakonfigurujete proměnné prostředí pro připojení k databázi](#42-configure-environment-variables-to-connect-the-database)nebo pokud tato hodnota obsahuje chyby. Spusťte příkaz `az webapp config appsettings list` a ověřte nastavení. V [diagnostických protokolech](#6-stream-diagnostic-logs) můžete také vyhledat konkrétní chyby při spuštění aplikace. Pokud jste například nevytvořili nastavení, zobrazí se v protokolech Chyba `KeyError: 'DBNAME'` .
 
     Po aktualizaci nastavení za účelem opravy jakýchkoli chyb dejte aplikaci minutu na restartování a pak aktualizujte prohlížeč.
 
-1. Přejděte na adresu `http://<app-name>.azurewebsites.net/admin`. Přihlaste se pomocí přihlašovacích údajů naduživatelem z předchozí části ( `root` a `Pollsdb1` ). V části **cyklické dotazování** vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
+1. Přejděte na adresu `http://<app-name>.azurewebsites.net/admin`. Přihlaste se pomocí přihlašovacích údajů Django naduživatelem z předchozí části ( `root` a `Pollsdb1` ). V části **cyklické dotazování** vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 1. Procházejte znovu a `http://<app-name>.azurewebsites.net` potvrďte, že jsou nyní otázky prezentovány uživateli. Odpovězte na otázky, ale chcete v databázi generovat nějaká data.
 
@@ -292,7 +291,7 @@ V okně terminálu spusťte následující příkazy. Při vytváření naduživ
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -397,11 +396,8 @@ Vzhledem k tomu, že jste provedli změny v datovém modelu, je nutné znovu spu
 Otevřete znovu relaci SSH v prohlížeči, a to tak, že přejdete na `https://<app-name>.scm.azurewebsites.net/webssh/host` . Potom spusťte následující příkazy:
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 

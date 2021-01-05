@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – konfigurace sítě VPN mezi místním a privátním cloudem
 description: V této části najdete popis postupu konfigurace připojení VPN typu Site-to-site nebo Point-to-site mezi vaší místní sítí a privátním cloudem CloudSimple.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424678"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899214"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
 

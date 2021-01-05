@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – nastavení zdrojů vCenter identity v privátním cloudu
 description: Popisuje, jak nastavit privátní cloud vCenter pro ověřování pomocí služby Active Directory pro správce VMware pro přístup k serveru vCenter.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a76fecb942c5c6da926e37149245e82dcbc4661b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425738"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899146"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
@@ -33,7 +33,7 @@ V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby
 Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně předávejte [oprávnění vCenter](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.   
+> Noví uživatelé musí být přidáni pouze *ke skupině* Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.   
 
 
 ## <a name="identity-source-options"></a>Možnosti zdroje identity

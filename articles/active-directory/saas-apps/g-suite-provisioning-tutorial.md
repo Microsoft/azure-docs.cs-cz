@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763963"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898848"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -63,15 +63,15 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
 1. Přihlaste se ke [konzole pro správu G Suite](https://admin.google.com/) pomocí účtu správce a pak vyberte **zabezpečení**. Pokud odkaz nevidíte, může být skrytý v nabídce **Další ovládací prvky** v dolní části obrazovky.
 
-    ![Zabezpečení G Suite](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![Zabezpečení G Suite](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. Na stránce **zabezpečení** vyberte **odkaz rozhraní API**.
 
-    ![Rozhraní API G Suite](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![Rozhraní API G Suite](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. Vyberte **Povolit přístup přes rozhraní API**.
 
-    ![Rozhraní API G Suite povoleno](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![Rozhraní API G Suite povoleno](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > Pro každého uživatele, kterého máte v úmyslu zřídit sadu G Suite, **musí** být jeho uživatelské jméno ve službě Azure AD vázané na vlastní doménu. Například uživatelská jména, která vypadají jako, bob@contoso.onmicrosoft.com nepřijímá sada G Suite. Na druhé straně bob@contoso.com se akceptuje. Stávající doménu uživatele můžete změnit podle pokynů uvedených [tady](../fundamentals/add-custom-domain.md).
@@ -80,15 +80,15 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
     a. V [konzole pro správu G Suite](https://admin.google.com/)vyberte **domény**.
 
-    ![Domény G Suite](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![Domény G Suite](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. Vyberte **Přidat doménu nebo alias domény**.
 
-    ![Sada G Suite – přidat doménu](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![Sada G Suite – přidat doménu](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. Vyberte **Přidat další doménu** a pak zadejte název domény, kterou chcete přidat.
 
-    ![G Suite přidat další](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite přidat další](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. Vyberte **pokračovat a ověřte vlastnictví domény**. Pak postupujte podle pokynů a ověřte, že název domény vlastníte. Podrobné pokyny, jak ověřit vaši doménu pomocí Google, najdete v tématu [ověření vlastnictví webu](https://support.google.com/webmasters/answer/35179).
 
@@ -96,11 +96,11 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
 5. Dále určete, který účet správce chcete použít ke správě zřizování uživatelů v G Suite. Přejděte na **role správce**.
 
-    ![Správce G Suite](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![Správce G Suite](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. Pro **roli správce** tohoto účtu upravte **oprávnění** pro tuto roli. Ujistěte se, že jste povolili všechna **oprávnění rozhraní API pro správu** , aby se tento účet mohl použít k zřizování.
 
-    ![Oprávnění správce G Suite](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![Oprávnění správce G Suite](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání G Suite z Galerie aplikací Azure AD
 
@@ -126,9 +126,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**. Uživatelé se budou muset přihlásit k portal.azure.com a nebudou moct používat aad.portal.azure.com.
 
-    ![Okno Podnikové aplikace](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![Okno Podnikové aplikace](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![Okno Všechny aplikace](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![Okno Všechny aplikace](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. V seznamu aplikace vyberte **G Suite**.
 
@@ -138,7 +138,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-      ![Okno Začínáme](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![Okno Začínáme](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
@@ -146,11 +146,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. V novém okně prohlížeče budete přesměrováni do dialogového okna pro autorizaci Google.
 
-      ![Autorizace G Suite](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![Autorizace G Suite](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. Potvrďte, že chcete udělit oprávnění služby Azure AD, aby bylo možné provádět změny v tenantovi G Suite. Vyberte **Přijmout**.
 
-     ![Ověřování tenanta G Suite](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![Ověřování tenanta G Suite](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k G Suite. Pokud se připojení nepovede, ujistěte se, že váš účet G Suite má oprávnění správce, a zkuste to znovu. Pak zkuste znovu spustit krok **autorizace** .
 

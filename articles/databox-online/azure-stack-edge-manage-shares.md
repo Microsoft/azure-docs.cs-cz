@@ -1,27 +1,27 @@
 ---
-title: Správa sdílených složek pro Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak použít Azure Portal ke správě sdílených složek v Azure Stack Edge pro.
+title: Azure Stack Edge pro – Správa sdílení FPGA | Microsoft Docs
+description: Popisuje, jak použít Azure Portal ke správě sdílených složek na Azure Stack Edge pro-FPGA.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444583"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898231"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Použití Azure Portal ke správě sdílených složek na Azure Stack Edge pro
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Použití Azure Portal ke správě sdílených složek na Azure Stack Edge pro FPGA 
 
-Tento článek popisuje, jak spravovat sdílené složky na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
+Tento článek popisuje, jak spravovat sdílené složky na zařízení Azure Stack Edge pro FPGA. Zařízení Azure Stack Edge pro FPGA můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
 
 ## <a name="about-shares"></a>Informace o sdílených složkách
 
-Pokud chcete přenést data do Azure, musíte vytvořit sdílené složky na Azure Stack Edge pro. Sdílené složky, které přidáte na zařízení Azure Stack Edge pro, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
+Pokud chcete přenést data do Azure, musíte vytvořit sdílené složky na Azure Stack Edge pro FPGA. Sdílené složky, které přidáte na zařízení Azure Stack Edge pro, můžou být místní sdílené složky nebo sdílené složky, které zadávají data do cloudu.
 
  - **Místní sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zpracovala místně na zařízení.
  - **Sdílené složky**: tyto sdílené složky použijte, pokud chcete, aby se data zařízení automaticky odeslala do vašeho účtu úložiště v cloudu. Všechny cloudové funkce, jako jsou například **aktualizace** a **synchronizace klíčů úložiště** , se vztahují ke sdíleným složkám.
@@ -39,7 +39,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal následující kroky.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **brány cloudového úložiště**. Přejít na **sdílené složky** a pak na panelu příkazů vyberte **+ Přidat sdílenou složku** .
 
     ![Vyberte přidat sdílenou složku](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 ## <a name="add-a-local-share"></a>Přidat místní sdílenou složku
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
 
    ![Vyberte přidat sdílenou složku 2.](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
    ![Okno zobrazit aktualizace pro sdílené složky](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    Vyberte sdílenou složku pro zobrazení místních přípojný bod pro výpočetní moduly hraničních zařízení pro tuto sdílenou složku.
 
-   ![Zobrazit podrobnosti o místní sdílené složce](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Připojení sdílené složky
 
 Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali výpočetní výkon na zařízení Azure Stack Edge pro, budete muset sdílenou složku připojit. Pro připojení sdílené složky proveďte následující kroky.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
 
    ![Vybrat sdílenou složku 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali v�
 
 5. Pokud chcete zobrazit místní přípojný bod pro sdílenou složku, vyberte ji znovu. Modul COMPUTE pro Edge používá pro sdílenou složku Tento místní přípojný bod.
 
-   ![Místní přípojný bod pro sdílenou složku](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![Místní přípojný bod pro sdílenou složku](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>Odpojení sdílené složky
 
 Chcete-li odpojit sdílenou složku, proveďte následující kroky v Azure Portal.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**.
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**.
 
    ![Vybrat sdílenou složku 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ Chcete-li odpojit sdílenou složku, proveďte následující kroky v Azure Port
 
 Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal následující kroky.
 
-1. V seznamu sdílených složek vyberte a klikněte na sdílenou složku, kterou chcete odstranit.
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**. V seznamu sdílených složek vyberte a klikněte na sdílenou složku, kterou chcete odstranit.
 
    ![Vybrat sdílenou složku 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. Klikněte na **Odstranit**.
+2. Vyberte **Odstranit**.
 
-   ![Kliknutím odstraňte](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![Vybrat odstranit](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
@@ -173,15 +171,15 @@ Funkce aktualizovat umožňuje aktualizovat obsah sdílené složky. Když aktua
 
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 
-1. Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
    ![Vybrat sdílenou složku 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. Klikněte na **Aktualizovat**.
+2. Vyberte **aktualizovat data**.
 
-   ![Kliknutím aktualizujte](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![Vybrat aktualizaci](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky.
+3. Po zobrazení výzvy k potvrzení vyberte **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky.
 
    ![Potvrďte aktualizaci](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Pokud se klíče k vašemu účtu úložiště obměňovaly, bude potřeba prov�
 
 Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu Azure Portal následující kroky.
 
-1. Ve svém prostředku přejděte na **Přehled**. V seznamu sdílených složek zvolte a klikněte na sdílenou složku, která je přidružená k účtu úložiště, které potřebujete synchronizovat.
+1. V Azure Portal přejdete do svého prostředku Azure Stack Edge a pak přejdete do **cloudové služby úložiště > sdílené složky**. V seznamu sdílených složek zvolte a klikněte na sdílenou složku, která je přidružená k účtu úložiště, které potřebujete synchronizovat.
 
     ![Vyberte sdílet s relevantním účtem úložiště.](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

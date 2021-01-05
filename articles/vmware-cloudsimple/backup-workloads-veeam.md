@@ -1,19 +1,19 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – zálohování virtuálních počítačů s úlohami v privátním cloudu pomocí Veeam
 description: Popisuje, jak můžete zálohovat virtuální počítače, které běží v privátním cloudu CloudSimple založeném na Azure pomocí Veeam B&R 9,5.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419941"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899333"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B&R
 
@@ -136,7 +136,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Popis | Ikona | Popis |
+| Ikona | Description | Ikona | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Záložní server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Záložní server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
@@ -246,12 +246,12 @@ Pomocí konzoly Veeam nakonfigurujte software pro zálohování a obnovení Veea
 
 5. Nakonfigurujte úlohy zálohování.
     * Pokud chcete nakonfigurovat úlohy zálohování, postupujte podle pokynů v [tématu Vytvoření úlohy zálohování](https://www.youtube.com/watch?v=YHxcUFEss4M).
-    * V části **Upřesnit nastavení > úložiště**Povolte šifrování záložních souborů.
+    * V části **Upřesnit nastavení > úložiště** Povolte šifrování záložních souborů.
 
 6. Nakonfigurujte úlohy zálohování kopírováním.
 
     * Pokud chcete nakonfigurovat úlohy zálohování, postupujte podle pokynů ve videu [Vytvoření úlohy zálohování při kopírování](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
-    * V části **Upřesnit nastavení > úložiště**Povolte šifrování záložních souborů.
+    * V části **Upřesnit nastavení > úložiště** Povolte šifrování záložních souborů.
 
 ### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace
 Vytvořte veřejnou IP adresu pro Veeam Backup and Recovery Server. Pokyny najdete v tématu [přidělování veřejných IP adres](public-ips.md).
@@ -260,7 +260,7 @@ Vytvořte pravidlo brány firewall pomocí nástroje, aby server Veeam Backup mo
 
 Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [Eskalace](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 ### <a name="cloudsimple-references"></a>Odkazy na CloudSimple
 
