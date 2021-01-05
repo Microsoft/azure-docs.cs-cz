@@ -75,7 +75,7 @@
     - name: Sady SDK
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme?view=azure-dotnet
         - name: Java – vlastní vyhledávání
           href: /java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable
         - name: Java – vlastní vyhledávání obrázků

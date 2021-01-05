@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 29f33f05c2883fe0696ea7769ac655e91aeb0b42
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e4746b8beb722f74681beb9afe8c5dd1115539c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399508"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831575"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Kurzy integrace aplikací SaaS s Azure Active Directory
 
@@ -45,7 +45,7 @@ Pokud chcete najít další kurzy, použijte obsah na levé straně.
 | :--- | :--- | :--- |
 | ![AWS (logo-Amazon Web Services) konzola](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Konzola Amazon Web Services (AWS)](amazon-web-service-tutorial.md)| [Konzola Amazon Web Services (AWS) – zřizování rolí](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
 | ![logo – cloudová služba Alibaba (jednotné přihlašování k rolím)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (jednotné přihlašování k rolím)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
-| ![logo – Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform – zřizování uživatelů](google-apps-provisioning-tutorial.md) |
+| ![logo – Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform – zřizování uživatelů](g-suite-provisioning-tutorial.md) |
 | ![logo – Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md) |
 | ![logo – platforma cloud identity SAP](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [Platforma SAP Cloud identity](saphana-tutorial.md)|[Platforma SAP Cloud identity – zřizování](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
@@ -63,8 +63,8 @@ Pokud chcete najít další kurzy, použijte obsah na levé straně.
 | ![logo – AskYourTeam](./media/tutorial-list/active-directory-saas-askyourteam-tutorial.png)| [AskYourTeam](askyourteam-tutorial.md)|
 | ![logo – Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
 | ![logo – box](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)|
-| ![logo – zálohování koncového bodu Carbonite](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
 | ![logo – CakeHR](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|
+| ![logo – zálohování koncového bodu Carbonite](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
 | ![logo – Cisco Webex](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-spark-tutorial.md)|
 | ![logo – Citrix ShareFile](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![logo – Concur cestovné a výdaje](./media/tutorial-list/active-directory-saas-concur-travel-and-expense-tutorial.png)| [Concur Travel and Expense](concur-travel-and-expense-tutorial.md)|
@@ -113,9 +113,11 @@ Pokud chcete najít další kurzy, použijte obsah na levé straně.
 | ![logo – časová rezerva](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|
 | ![logo – SmartDraw](./media/tutorial-list/active-directory-saas-smartdraw-tutorial.png)| [SmartDraw](smartdraw-tutorial.md)|
 | ![logo – Soloinsight – CloudGate SSO](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|
+| ![logo – StatusPage](./media/tutorial-list/active-directory-saas-statuspage-tutorial.png)| [StatusPage](statuspage-tutorial.md)|
 | ![logo – Tableau online](./media/tutorial-list/active-directory-saas-tableau-online-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|
 | ![logo – TargetProcess](./media/tutorial-list/active-directory-saas-target-process-tutorial.png)| [TargetProcess](target-process-tutorial.md)|
 | ![logo – Teamphoria](./media/tutorial-list/active-directory-saas-teamphoria-tutorial.png)| [Teamphoria](teamphoria-tutorial.md)|
+| ![logo – Terraformu Cloud](./media/tutorial-list/active-directory-saas-terraform-cloud-tutorial.png)| [Terraform Cloud](terraform-cloud-tutorial.md)|
 | ![logo – TextMagic](./media/tutorial-list/active-directory-saas-textmagic-tutorial.png)| [TextMagic](textmagic-tutorial.md)|
 | ![logo – prosnímek](./media/tutorial-list/active-directory-saas-upshotly-tutorial.png)| [Upshotly](upshotly-tutorial.md)|
 | ![logo – VELPIC SAML](./media/tutorial-list/active-directory-saas-velpicsaml-tutorial.png)| [Velpic SAML](velpicsaml-tutorial.md)|
@@ -129,6 +131,7 @@ Pokud chcete najít další kurzy, použijte obsah na levé straně.
 | ![logo – XaitPorter](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|
 | ![logo – Yodeck](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|  
 | ![logo – Zendesk](./media/tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](zendesk-tutorial.md)|  
+| ![logo – Lupa](./media/tutorial-list/active-directory-saas-zoom-tutorial.png)| [Zoom](zoom-tutorial.md)|
 | ![logo – Zscaler](./media/tutorial-list/active-directory-saas-zscaler-tutorial.png)| [Zscaler](zscaler-tutorial.md)|
 | ![logo – Zscaler Beta](./media/tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](zscaler-beta-tutorial.md)|
 | ![logo – Zscaler jednu](./media/tutorial-list/active-directory-saas-zscaler-one-tutorial.png)| [Zscaler One](zscaler-one-tutorial.md)|

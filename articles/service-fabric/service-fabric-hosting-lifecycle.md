@@ -1,163 +1,188 @@
 ---
-title: Azure Service Fabric hostování aktivace a deaktivace životního cyklu
-description: Vysvětluje životní cyklus aplikace a ServicePack na uzlu.
+title: Azure Service Fabric hostování aktivace a životního cyklu deaktivace
+description: Seznamte se s životním cyklem aplikace a ServicePackem na uzlu.
 author: tugup
 ms.topic: conceptual
-ms.date: 05/1/2020
+ms.date: 05/01/2020
 ms.author: tugup
-ms.openlocfilehash: f049b19703d37412d1ee1961aee6cb327efabe7c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d8585d0b39e4a4ef9cf77f40ea878ddb47bcb0de
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779596"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831818"
 ---
-# <a name="azure-service-fabric-hosting-lifecycle"></a>Životní cyklus hostování Azure Service Fabric
+# <a name="azure-service-fabric-hosting-life-cycle"></a>Životní cyklus hostování Azure Service Fabric
 
-Tento článek poskytuje přehled událostí, ke kterým dochází v Azure Service Fabric, když se aplikace aktivuje na uzlu a v různých konfiguracích clusteru používaných k řízení chování.
+Tento článek poskytuje přehled událostí, ke kterým dochází v Azure Service Fabric, když je na uzlu aktivována aplikace. Vysvětluje různé konfigurace clusteru, které řídí chování.
 
-Než budete pokračovat, ujistěte se, že rozumíte různým konceptům a vztahům, které jsou vysvětleny v tématu [modelování aplikace v Service Fabric][a1]. 
+Než budete pokračovat, ujistěte se, že rozumíte konceptům a vztahům, které jsou vysvětleny v tématu [modelování aplikace v Service Fabric][a1]. 
 
 > [!NOTE]
-> V tomto článku, pokud výslovně nezmiňujete o něco jiného:
+> Tento článek používá pro specializované způsoby určitou terminologii. Pokud není uvedeno jinak:
 >
 > - *Replika* odkazuje jak na repliku stavové služby, tak na instanci bezstavové služby.
-> - *CodePackage* se považuje za ekvivalent procesu *ServiceHost* , který registruje *ServiceType* a hostuje repliky služeb tohoto *ServiceType*.
+> - *CodePackage* se považuje za ekvivalent procesu ServiceHost, který registruje serviceType. Hostuje repliky služeb tohoto ServiceType.
 >
 
-## <a name="activation-of-applicationservicepackage"></a>Aktivace aplikace/ServicePack
+## <a name="activate-an-applicationpackage-or-servicepackage"></a>Aktivovat ApplicationPackage nebo ServicePack
 
-Kanál pro aktivaci je následující:
+Aktivace ApplicationPackage nebo ServicePack:
 
-1. Stáhněte si ApplicationPackage. Například: ApplicationManifest.xml atd.
-2. Nastavení prostředí pro aplikaci pro: vytvoření uživatelů atd.
+1. Stáhněte si ApplicationPackage (například *ApplicationManifest.xml*).
+2. Nastavte prostředí pro aplikaci. Mezi tyto kroky patří například vytváření uživatelů.
 3. Spustit sledování aplikace pro deaktivaci.
-4. Stáhněte si ServicePack. Například: ServiceManifest.xml, Code, config, datové balíčky atd.
-5. Nastavení prostředí pro balíček služby pro: nastavení brány firewall, přidělování portů pro koncové body atd.
-6. Spustit sledování ServicePack pro deaktivaci.
-7. Spusťte SetupEntryPoint z CodePackages a počkejte na dokončení.
-8. Spusťte MainEntryPoint z CodePackages.
+4. Stáhněte si aktualizace ServicePack (například *ServiceManifest.xml*, kód, konfigurační soubory a balíčky dat).
+5. Nastavte prostředí pro ServicePack. Mezi tyto kroky patří například nastavení brány firewall a přidělování portů pro koncové body.
+6. Začít sledovat ServicePack pro deaktivaci.
+7. Spusťte SetupEntryPoint pro CodePackages a počkejte, než se dokončí.
+8. Spusťte MainEntryPoint pro CodePackages.
 
 ### <a name="servicetype-blocklisting"></a>ServiceType – Blocklisting
-**ServiceTypeDisableFailureThreshold** určuje počet selhání (aktivace, stahování, CodePackage selhání), po jejichž uplynutí je pro Blocklisting naplánována hodnota serviceType. První Chyba aktivace, selhání stažení nebo CodePackage selhání způsobí naplánování blocklistingu ServiceType. Konfigurace **ServiceTypeDisableGraceInterval** určuje interval odkladu, po jehož uplynutí je ServiceType označen jako blocklisted v tomto uzlu. I když se to děje, aktivace, stažení a CodePackage restartování se opakují paralelně. Opakováním, znamená to, že se CodePackage bude naplánovat opětovné spuštění znovu po chybě nebo se Service Fabric pokusí znovu stáhnout balíčky.
+`ServiceTypeDisableFailureThreshold` Určuje počet povolených selhání aktivace, stahování a CodePackage. Po dosažení prahové hodnoty je ServiceType naplánován pro Blocklisting. První Chyba aktivace, selhání stažení nebo naplánování neCodePackagech chyb Blocklisting. 
 
-Když je ServiceType blocklisted, zobrazí se chyba stavu System. hosting ohlásil chybu pro vlastnost ServiceTypeRegistration: ServiceType. ServiceType se zakázal na uzlu.
+`ServiceTypeDisableGraceInterval`Konfigurace určuje interval odkladu před blocklistedem ServiceType na uzlu. Vzhledem k tomu, že se tento proces přehrává, je aktivace, stažení a CodePackage restart opakována paralelně. Opakováním znamená, že CodePackage je naplánováno na opětovné spuštění po havárii nebo Service Fabric se pokusí znovu stáhnout balíčky.
 
-ServiceType se v uzlu povolí znovu, pokud dojde k některé z následujících akcí:
-- Aktivace se zdaří nebo dosáhne **ActivationMaxFailureCount** opakování při selhání.
-- Stažení se zdaří nebo dosáhne **DeploymentMaxFailureCountch** opakovaných pokusů po selhání.
+Když je ServiceType blocklisted, zobrazí se chyba stavu: `'System.Hosting' reported Error for property 'ServiceTypeRegistration:ServiceType'. The ServiceType was disabled on the node.`
+
+ServiceType se na uzlu povolí znovu, pokud dojde k některé z následujících událostí:
+- Aktivace byla úspěšná. Nebo pokud dojde k chybě, dosáhne `ActivationMaxFailureCount` maximálního počtu opakování.
+- Stahování bylo úspěšné. Nebo pokud dojde k chybě, dosáhne `DeploymentMaxFailureCount` maximálního počtu opakování.
 - CodePackage, ve kterém došlo k chybě, spustí a úspěšně zaregistruje ServiceType.
 
-**ActivationMaxFailureCount** a **DeploymentMaxFailureCount** jsou maximální počet pokusů, které Service Fabric aktivovat nebo stáhnout aplikaci na uzlu, a potom Service Fabric povolí znovu pro aktivaci serviceType. To znamená, že služba poskytuje další možnost aktivace, což může být úspěšné, což vede k potížím automaticky. Nová operace aktivace/stahování aktivovaná umístěním a aktivací repliky může znovu aktivovat modul ServiceType Blocklisting nebo může být úspěšný.
+`ActivationMaxFailureCount` a `DeploymentMaxFailureCount` jsou maximální počet pokusů, které Service Fabric provede aktivaci nebo stažení aplikace na uzlu. Po dosažení maxima Service Fabric povolí znovu ServiceType pro aktivaci. 
+
+Tyto prahové hodnoty poskytují službu další příležitost pro aktivaci. Pokud je aktivace úspěšná, problém je automaticky zacelený. 
+
+Nově umístěná nebo aktivovaná replika může aktivovat novou operaci aktivace nebo stahování. Tato akce buď bude úspěšná, nebo znovu spustí Blocklisting ServiceType.
 
 > [!NOTE]
-> Pokud vaše CodePackage, který neregistruje ServiceType, dochází k chybě, nemá vliv na ServiceType. Pouze CodePackage hostující selhání repliky bude mít vliv na ServiceType.
+> Selhání CodePackage, které neregistruje ServiceType, nemá vliv na ServiceType. Pouze selhání CodePackage, který hostuje repliku, má vliv na ServiceType.
 >
 
 ### <a name="codepackage-crash"></a>CodePackage chyby
-Když dojde k selhání CodePackage, Service Fabric k opětovnému spuštění používá omezení rychlosti. Omezení rychlosti je nezávisle na tom, zda balíček kódu zaregistroval typ s Service Fabric modulem runtime nebo ne.
+Když dojde k selhání CodePackage, Service Fabric k opětovnému spuštění používá omezení rychlosti. Omezení rychlosti se použije bez ohledu na to, jestli CodePackage zaregistroval typ s Service Fabric modulem runtime.
 
-Hodnota omezení rychlosti je min (RetryTime, **ActivationMaxRetryInterval**) a tato hodnota omezení rychlosti se zvyšuje v konstantním, lineárním nebo exponenciálním množství na základě nastavení konfigurace **ActivationRetryBackoffExponentiationBase** .
+Hodnota omezení rychlosti je `Min(RetryTime, ActivationMaxRetryInterval)` . Hodnota se zvýší v konstantních, lineárních nebo exponenciálních částkách na základě `ActivationRetryBackoffExponentiationBase` nastavení konfigurace:
 
-- Konstanta: IF **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = **ActivationRetryBackoffInterval**;
-- Lineární: Pokud  **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , kde ContinousFailureCount je počet chyb CodePackage nebo se aktivace nezdařila.
-- Exponenciální: RetryTime = (**ActivationRetryBackoffInterval** v sekundách) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
+- **Konstanta**: IF `ActivationRetryBackoffExponentiationBase == 0` a then `RetryTime = ActivationRetryBackoffInterval` .
+- **Lineární**: Pokud  `ActivationRetryBackoffExponentiationBase == 0` a pak `RetryTime = ContinuousFailureCount ActivationRetryBackoffInterval` , kde `ContinuousFailureCount` je počet havárií CodePackage nebo selhání aktivace.
+- **Exponenciální**: `RetryTime = (ActivationRetryBackoffInterval in seconds) * (ActivationRetryBackoffExponentiationBase ^ ContinuousFailureCount)`
     
-Chování můžete řídit změnou hodnot. Například pokud potřebujete několik rychlých pokusů o restartování, můžete použít lineární nastavením **ActivationRetryBackoffExponentiationBase** na 0 a **ActivationRetryBackoffInterval** na 10. Pokud se s těmito nastaveními CodePackage chyba, interval spouštění bude po 10 sekundách. Pokud balíček pokračuje v zhroucení, omezení rychlosti se změní na 20, 30, 40 sekund a tak dále, dokud neproběhne aktivace CodePackage nebo deaktivace balíčku kódu. 
+Chování můžete řídit změnou hodnot. Například pokud chcete provést několik rychlých pokusů o restartování, můžete použít lineární částky nastavením `ActivationRetryBackoffExponentiationBase` na `0` a nastavením `ActivationRetryBackoffInterval` na `10` . Takže pokud dojde k selhání CodePackage, interval spouštění bude po 10 sekundách. Pokud balíček stále selhává, omezení rychlosti se změní na 20 sekund, 30 sekund, 40 sekund atd., dokud nedojde k úspěšné aktivaci CodePackage nebo deaktivace CodePackage. 
     
-Maximální doba, po kterou Service Fabric zpětně skončila (počká) po selhání se řídí **ActivationMaxRetryInterval**.
+Maximální doba, po kterou Service Fabric zpětně (tj. čeká na vyřízení) po selhání, kterou řídí `ActivationMaxRetryInterval` .
     
-Pokud CodePackage dojde k chybě a je back-v, je potřeba, abyste si udrželi Service Fabric **CodePackageContinuousExitFailureResetInterval** , aby je bylo možné považovat za v pořádku. v takovém případě bude přepsána zpráva o stavu předchozí chyby jako ok a resetování ContinousFailureCount.
+Pokud dojde k selhání CodePackage a dojde k zálohování, musí být v průběhu časového období určeného `CodePackageContinuousExitFailureResetInterval` . Po tomto intervalu Service Fabric považuje CodePackage za dobrý. Service Fabric pak přepíše zprávu o stavu předchozí chyby jako OK a resetuje `ContinuousFailureCount` .
 
 ### <a name="codepackage-not-registering-servicetype"></a>CodePackage není zaregistrované. ServiceType
-Pokud CodePackage zůstane aktivní a očekává se, že se s námi zaregistruje ServiceType, Service Fabric vygeneruje upozornění HealthReport po **ServiceTypeRegistrationTimeout** , že se ServiceType nezaregistroval v očekávaném časovém intervalu.
+Pokud CodePackage zůstane v pořádku a očekává se, že se má zaregistrovat ServiceType, Service Fabric vygeneruje zprávu o stavu upozornění po `ServiceTypeRegistrationTimeout` . Tato sestava označuje, že ServiceType se nezaregistroval během očekávaného časového období.
 
 ### <a name="activation-failure"></a>Chyba aktivace
-Při nalezení chyby při aktivaci vždy používá Service Fabric lineární (stejné jako při selhání CodePackage). To znamená, že operace aktivace se poskytne po (0 + 10 + 20 + 30 + 40) = 100 SEC (první pokus je okamžitý). Po provedení této aktivace se nebude opakovat.
+Když Service Fabric při aktivaci najde chybu, vždy použije lineární omezení rychlosti, protože se jedná o chybu CodePackage. Aktivační operace se zadává po opakování v těchto intervalech: (0 + 10 + 20 + 30 + 40) = 100 sekund. (První pokus je okamžitý.) Po této sekvenci se aktivace nebude opakovat.
     
-Maximální aktivační omezení rychlosti může být **ActivationMaxRetryInterval** a zkuste to znovu **ActivationMaxFailureCount**.
+Maximální aktivační omezení rychlosti může být `ActivationMaxRetryInterval` . Opakování může být `ActivationMaxFailureCount` .
 
 ### <a name="download-failure"></a>Chyba stahování
-Service Fabric vždy používá lineární regresi, když při stahování dojde k chybě. To znamená, že operace aktivace se poskytne po (0 + 10 + 20 + 30 + 40) = 100 SEC (první pokus je okamžitý). V takovém případě se stahování neopakuje. Lineární záloha pro stažení se rovná ContinuousFailureCount **_DeploymentRetryBackoffInterval_* a může se maximum vrátit na **DeploymentMaxRetryInterval**. Podobně jako u aktivací se může operace stahování opakovat pro **ActivationMaxFailureCount**.
+Service Fabric vždy používá lineární omezení rychlosti, když při stahování najde chybu. Aktivační operace se zadává po opakování v těchto intervalech: (0 + 10 + 20 + 30 + 40) = 100 sekund. (První pokus je okamžitý.) Po této sekvenci se stahování nebude opakovat. 
+
+Lineární omezení rychlosti pro stažení se rovná `ContinuousFailureCount`  *  `DeploymentRetryBackoffInterval` . Maximální omezení rychlosti může být `DeploymentMaxRetryInterval` . Podobně jako u aktivací můžou operace stahování na limit opakovat `ActivationMaxFailureCount` .
 
 > [!NOTE]
-> Před změnou těchto nastavení byste měli mít na paměti několik příkladů, které byste měli mít na paměti.
-
-* Pokud CodePackage udržuje chybu a dojde k jejich vrácení, bude ServiceType zakázaný. Pokud je ale konfigurace aktivace taková, že má rychlé restartování, CodePackage se může několikrát setkat, než se ve skutečnosti blocklistede ServiceType. Příklad: Předpokládejme, že se váš CodePackage zaregistruje, zaregistruje ServiceType pomocí Service Fabric a pak dojde k chybě. V takovém případě Jakmile hostitel obdrží registraci typu, **ServiceTypeDisableGraceInterval** období se zruší. A to se může opakovat, dokud se CodePackage zpátky na hodnotu větší než  **ServiceTypeDisableGraceInterval** a pak se na uzlu blocklisted. Maytake se na ServiceType blocklisted, dokud neočekáváte jeho zobrazení.
-
-* V případě aktivací, když Service Fabric systém musí umístit repliku na uzel, ReconfigurationAgent (RA) vyzve podsystém hostování, aby aplikaci aktivoval a znovu pokusy o aktivaci každých 15 sekund (řídí se nastavením konfigurace **RAPMessageRetryInterval** ). Pro Service Fabric o tom, že se ServiceType blocklisted, musí být operace aktivace v hostování živá po delší dobu než interval opakování a **ServiceTypeDisableGraceInterval**. Příklad: Předpokládejme, že cluster má **ActivationMaxFailureCount** nastavenou na hodnotu 5 a **ActivationRetryBackoffInterval** nastavenou na 1 sekundu. To znamená, že operace aktivace se poskytne po (0 + 1 + 2 + 3 + 4) = 10 sekund (odvolání při prvním pokusu okamžitě) a po dalším pokusu o hostování. V tomto případě se operace aktivace dokončí a nebude se opakovat po 15 sekundách. Důvodem je to, že Service Fabric vyčerpala všechna povolená opakování během 15 sekund. Každý pokus z ReconfigurationAgent proto vytvoří novou operaci aktivace v hostitelském subsystému a vzor bude pokračovat opakováním. V důsledku toho se ServiceType nikdy nebude blocklisted na uzlu. Vzhledem k tomu, že ServiceType nebude v uzlu blocklisted, replika nebude přesunuta a proveden na jiném uzlu.
+> Před změnou těchto nastavení Pamatujte na následující příklady:
+>
+>* Pokud CodePackage udržuje chybu a dojde k jejímu zálohování, bude tento ServiceType zakázán. Pokud ale konfigurace aktivace má rychlé restartování, může se CodePackage několikrát setkat předtím, než se ve skutečnosti blocklistedý ServiceType. 
+>
+>    Řekněme například, že váš CodePackage se objeví, zaregistruje ServiceType pomocí Service Fabric a pak dojde k chybě. V takovém případě, po hostování obdrží registraci typu, `ServiceTypeDisableGraceInterval` je období zrušeno. Tento proces se může opakovat, dokud se CodePackage zpět na hodnotu větší než `ServiceTypeDisableGraceInterval` perioda. Pak bude ServiceType blocklisted na uzlu. Blocklisting ServiceType může trvat déle, než očekáváte.
+>
+>* V případě aktivací, když Service Fabric systém musí umístit repliku na uzel, agent rekonfigurace požádá hostujícímu subsystému, aby aplikaci aktivoval. Pokaždé 15 sekund opakuje žádost o aktivaci. (Doba trvání závisí na `RAPMessageRetryInterval` nastavení konfigurace.) Service Fabric nedokáže zjistit, že se ServiceType blocklisted, pokud se operace aktivace v hostování neuvolní po delší dobu, než je interval opakování a `ServiceTypeDisableGraceInterval` . 
+>
+>    Předpokládejme například, že cluster `ActivationMaxFailureCount` je nastaven na hodnotu 5 a `ActivationRetryBackoffInterval` je nastaven na hodnotu 1 sekunda. V tomto případě aktivační operace zadává po intervalech (0 + 1 + 2 + 3 + 4) = 10 sekund. (První pokus je okamžitý.) Po této sekvenci se hostitel bude pokoušet o opakování. Operace aktivace skončí a nebude se opakovat po 15 sekundách. 
+>
+>    Service Fabric vyčerpala všechna povolená opakování během 15 sekund. Každý pokus od agenta opětovné konfigurace proto vytvoří novou operaci aktivace v hostitelském podsystému a vzor se opakuje. V důsledku toho není ServiceType nikdy blocklisted na uzlu. Vzhledem k tomu, že se v uzlu ServiceType nebude blocklisted, replika se nepřesouvá a zkouší na jiném uzlu.
 > 
 
 ## <a name="deactivation"></a>Deaktivaci
 
-Pokud je v uzlu aktivována ServicePack, je sledována pro deaktivaci. 
+Pokud je v uzlu aktivována ServicePack, je sledována pro deaktivaci. Deaktivace funguje dvěma způsoby:
 
-Deaktivace funguje dvěma způsoby:
+- **Pravidelná deaktivace**: `DeactivationScanInterval` systém kontroluje balíčky služeb, které *nikdy* nehostují repliku, a označí je jako kandidáty na deaktivaci.
+- **Deaktivace ReplicaClose**: Pokud je replika zavřená, deaktivační rutina získá `DecrementUsageCount` . Počet je 0, pokud se nehostuje žádná replika, a proto je jako kandidát pro deaktivaci k dispozici.
 
-- Pravidelně: v každé **DeactivationScanInterval** zkontroluje ServicePackages, že nikdy nehostuje repliku, a označí je jako kandidáti na deaktivaci.
-- ReplicaClose: Pokud je replika zavřená, deaktivační rutina získá DecrementUsageCount. Pokud je počet převedený na 0, znamená to, že ServicePack není hostitelem žádné repliky, a proto je kandidátem na deaktivaci.
+Režim aktivace určuje, kdy jsou kandidáti naplánováni deaktivace. Ve sdíleném režimu se kandidáti na deaktivaci naplánují po `DeactivationGraceInterval` . Ve výhradním režimu jsou naplánovány po `ExclusiveModeDeactivationGraceInterval` . Pokud mezi tyto časy přijde nové umístění repliky, deaktivace se zruší. 
 
- V závislosti na režimu aktivace s [výhradním přístupem/sdílení][a2]se kandidáti na deaktivaci naplánují po **DeactivationGraceInterval** pro SharedMode a po **ExclusiveModeDeactivationGraceInterval** pro ExclusiveMode. Pokud se v době mezi tímto časem nachází umístění nové repliky, deaktivace se zruší.
+Další informace najdete v tématu [exkluzivní režim a sdílený režim][a2].
 
-### <a name="periodically"></a>Šetřete
-Pojďme podiskutovat o několika příkladech periodické deaktivace:
+### <a name="periodic-deactivation"></a>Pravidelná deaktivace
+Tady je několik příkladů periodické deaktivace:
 
-Příklad 1: řekněme, že Deactivator provede kontrolu v čase T (**DeactivationScanInterval**). Další kontrola bude na 2T. Předpokládat, že při T + 1 došlo k aktivaci za ServicePack. Tato ServicePack nehostuje repliku, takže je nutné ji deaktivovat. Aby mohl být produkt ServicePack kandidátem na deaktivaci, musí být ve stavu bez repliky po dobu nejméně T. To znamená, že bude mít nárok na deaktivaci na 2T + 1. Proto kontrola na 2T nenajde tuto ServicePack jako kandidátovi na deaktivaci. Další cyklus deaktivace 3T naplánuje tuto ServicePack za deaktivaci, protože teď není ve stavu repliky pro čas T.  
+* **Příklad 1**: řekněme, že Deactivator spustí kontrolu v čase T (a `DeactivationScanInterval` ). Další kontrola bude na 2T. Předpokládat, že při T + 1 došlo k aktivaci za ServicePack. Tato ServicePack nehostuje repliku, takže je potřeba ji deaktivovat. 
 
-Příklad 2: řekněme, že se aktivuje ServicePack v čase T-1 a Deactivator provede kontrolu v T. ServicePack nehostuje repliku. Pak při příští kontrole 2T tento software ServicePack jako kandidát pro deaktivaci, a proto se naplánuje deaktivace.  
+    Aby byli kandidátem na deaktivaci, je potřeba, aby včas nemusela hostovat žádné repliky. Bude mít nárok na deaktivaci na 2T + 1. Proto kontrola na 2T neidentifikuje tuto ServicePack jako kandidát pro deaktivaci. 
 
-Příklad 3: řekněme, že se aktivuje ServicePack v T – 1 a deaktivace provede kontrolu na T. ServicePack ještě nehostuje repliku. Nyní se replika nastavila na T + 1, tj. Hostování získá IncrementUsageCount, což znamená, že se vytvoří replika. Nyní v 2T tato pravidelná aktivace nebude naplánována na deaktivaci. Protože obsahuje repliku, deaktivace se přesune do logiky ReplicaClose popsané níže.
+    Další cyklus deaktivace 3T naplánuje tuto ServicePack za deaktivaci, protože teď balíček je ve stavu bez repliky pro čas T.  
 
-Příklad 4: řekněme, že váš ServicePack je velký, řekněme 10 GB a může trvat dlouhou dobu ke stažení na uzel. Po aktivaci aplikace deaktivační událost sleduje svůj životní cyklus. Teď, pokud máte **DeactivationScanInterval** konfiguraci nastavenou na malou hodnotu, můžete narazit na problémy, kdy se včas nezobrazuje čas na aktivaci uzlu, protože to je celý čas, který se má stáhnout. Chcete-li tento problém překonat, můžete si [před stažením aktualizace pro uzel][p1] nebo zvýšit **DeactivationScanInterval**. 
+* **Příklad 2**: řekněme, že se aktivovala ServicePack v čase t-1 a deaktivační modul spouští kontrolu v T. ServicePack nehostuje repliku. Při příštím prověřování se 2T jako kandidát pro deaktivaci, aby se naplánovala deaktivace.  
 
-> [!NOTE]
-> ServicePack se může deaktivovat kdekoliv (**DeactivationScanInterval** až 2 **_DeactivationScanInterval_*) + **DeactivationGraceInterval** /** ExclusiveModeDeactivationGraceInterval * *. 
->
+* **Příklad 3**: řekněme, že se aktivovala ServicePack v t – 1 a deaktivační modul spouští kontrolu v t. ServicePack ještě nehostuje repliku. Nyní se replika umístí na T + 1. To znamená, že hostování získá `IncrementUsageCount` , což znamená, že se vytvoří replika. 
 
-### <a name="replica-close"></a>Zavření repliky:
-Deaktivace zajišťuje počet replik, které obsahuje ServicePack. Pokud je v rámci ServicePack replika a replika je uzavřená/vypnutá, hostitel získá DecrementUsageCount. Při otevření repliky získá hostitel IncrementUsageCount. Snížení znamená, že "ServicePack" teď hostuje jednu méně repliku, a když je počet převedený na 0, pak je naplánovaná deaktivace a doba, po kterou bude deaktivovaná, je **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**. 
+    V 2T se tato oprava nebude naplánovat na deaktivaci. Vzhledem k tomu, že balíček obsahuje repliku, deaktivace bude následovat po logice ReplicaClose, jak je popsáno v další části tohoto článku.
 
-Příklad: řekněme, že k deaktivaci dojde v T a v 2T + X (**DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**) se plánuje deaktivovat. Pokud během této doby hosting získá IncrementUsage, znamená to, že se vytvoří replika, deaktivace se zruší.
+* **Příklad 4**: řekněme, že vaše ServicePack je 10 GB. Vzhledem k tomu, že je balíček velký, trvá stažení na uzlu déle. Při aktivaci aplikace deaktivační událost sleduje svůj životní cyklus. Pokud `DeactivationScanInterval` je nastavená malá hodnota, nemusíte mít k aktivaci na uzlu čas potřebný ke stažení. Chcete-li tento problém vyřešit, můžete [si na uzel předem stáhnout aktualizaci ServicePack][p1] nebo zvýšit `DeactivationScanInterval` . 
 
 > [!NOTE]
-> Co tyto konfigurační nastavení znamená?
-**DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**: čas poskytnutý službě ServicePack pro hostování jiné repliky, jakmile bude hostitelem jakékoli repliky. 
-**DeactivationScanInterval**: minimální čas poskytnutý službě ServicePack k hostování repliky, pokud nikdy nehostuje žádnou repliku, tj. Pokud se nepoužívá.
+> ServicePack se může deaktivovat kdekoliv ( `DeactivationScanInterval` až 2 * `DeactivationScanInterval` ) + `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` . 
 >
 
-### <a name="ctrlc"></a>Ctrl+C
-Jakmile ServicePack předá **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval** a stále nehostuje repliku, deaktivuje se non-zrušit. CodePackage se vydávají obslužné rutiny CTRL + C, která znamená, že teď musí kanál deaktivace projít, aby se proces mohl zvýšit. V tuto chvíli se při pokusu o získání nové repliky, která se pokusí o uvedení do provozu, nezdaří, protože nemůžeme přejít z deaktivace na aktivaci.
+### <a name="replicaclose-deactivation"></a>Deaktivace ReplicaClose
 
-## <a name="cluster-configs"></a>Konfigurace clusteru
+> [!NOTE]
+> Tato část se týká následujících nastavení konfigurace:
+> - **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**: čas poskytnutý službě ServicePack k hostování jiné repliky, pokud již hostuje jakoukoli repliku. 
+> - **DeactivationScanInterval**: minimální čas poskytnutý ServicePack k hostování repliky, pokud *nikdy* nehostuje žádnou repliku, tj. Pokud se nepoužila.
+>
 
-Konfigurace s výchozími vlivem na aktivaci/decativation.
+Systém udržuje počet replik, které obsahuje ServicePack. Pokud je v rámci ServicePack replika a replika je uzavřená nebo vypnutá, hostování získá `DecrementUsageCount` . Při otevření repliky získá hostitel `IncrementUsageCount` . 
+
+Snížení udává, že počet replik, které služba ServicePack za provozuje, se snížila o jednu repliku. Pokud je počet odložen na hodnotu 0, je naplánována deaktivace služby ServicePack. Čas, po který bude deaktivován, je `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` . 
+
+Řekněme například, že dojde k snížení hodnoty na T a že je naplánována deaktivace služby ServicePack na 2T + X ( `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` ). Během této doby, pokud hostitel získá výjimku `IncrementUsage` , protože je vytvořena replika, deaktivace je zrušena.
+
+### <a name="ctrl--c"></a>Ctrl + C
+Pokud aplikace ServicePack předá `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` a stále nehostuje repliku, nelze zrušit deaktivaci. CodePackages obdrží obslužnou rutinu CTRL + C. Takže teď je potřeba, aby kanál deaktivace dokončil proces. 
+
+V této chvíli se při pokusu o uvedení nové repliky pro stejnou ServicePack, nezdaří, protože proces nemůže přejít z deaktivace na aktivaci.
+
+## <a name="cluster-configurations"></a>Konfigurace clusterů
+
+Tato část obsahuje seznam konfigurací, které mají výchozí hodnoty, které mají vliv na aktivaci a deaktivaci.
 
 ### <a name="servicetype"></a>ServiceType
-**ServiceTypeDisableFailureThreshold**: výchozí 1. Prahová hodnota počtu selhání, po které se FailoverManager (FM) upozorní na zakázání typu služby v tomto uzlu a pro umístění zkuste použít jiný uzel.
-**ServiceTypeDisableGraceInterval**: výchozí hodnota je 30 sekund. Časový interval, po kterém může být typ služby zakázán.
-**ServiceTypeRegistrationTimeout**: výchozí hodnota je 300 s. Časový limit pro ServiceType k registraci v Service Fabric.
+- **ServiceTypeDisableFailureThreshold**: výchozí: 1. Prahová hodnota pro počet selhání; Po dosažení této prahové hodnoty se FailoverManager upozorní na zakázání typu služby na uzlu a pro umístění zkuste použít jiný uzel.
+- **ServiceTypeDisableGraceInterval**: výchozí: 30 sekund. Časový interval, po kterém může být typ služby zakázán.
+- **ServiceTypeRegistrationTimeout**: výchozí: 300 sekund. Časový limit pro zápis do Service Fabric.
 
 ### <a name="activation"></a>Aktivace
-**ActivationRetryBackoffInterval**: výchozí hodnota je 10 sekund. Interval omezení rychlosti při každé chybě aktivace
-**ActivationMaxFailureCount**: výchozí 20. Maximální počet, který systém před tím, než se znovu pokusí o aktivaci, se nezdařil. 
-**ActivationRetryBackoffExponentiationBase**: výchozí 1,5.
-**ActivationMaxRetryInterval**: výchozí hodnota je 3600 s. Maximální počet Back-off pro aktivaci při selhání.
-**CodePackageContinuousExitFailureResetInterval**: výchozí hodnota je 300 s. Časový limit pro resetování čítače selhání nepřetržitého ukončení pro CodePackage.
+- **ActivationRetryBackoffInterval**: výchozí: 10 sekund. Omezení rychlosti interval pro každé selhání aktivace.
+- **ActivationMaxFailureCount**: výchozí: 20. Maximální počet, pro který se systém před tím, než se aktivuje, zopakuje aktivaci. 
+- **ActivationRetryBackoffExponentiationBase**: výchozí: 1,5.
+- **ActivationMaxRetryInterval**: výchozí: 3 600 sekund. Maximální interval opakování omezení rychlosti pro aktivaci po selháních.
+- **CodePackageContinuousExitFailureResetInterval**: výchozí: 300 sekund. Interval časového limitu pro resetování čítače selhání nepřetržitého ukončení pro CodePackage.
 
 ### <a name="download"></a>Stáhnout
-**DeploymentRetryBackoffInterval**: výchozí hodnota 10. Záložní interval pro selhání nasazení.
-**DeploymentMaxRetryInterval**: výchozí hodnota je 3600 s. Maximální počet Back-off pro nasazení při selhání.
-**DeploymentMaxFailureCount**: výchozí 20. Nasazení aplikace se bude opakovat po DeploymentMaxFailureCount dobu, než dojde k selhání nasazení této aplikace na uzlu.
+- **DeploymentRetryBackoffInterval**: výchozí: 10. Omezení rychlosti interval pro selhání nasazení.
+- **DeploymentMaxRetryInterval**: výchozí: 3 600 sekund. Maximální interval omezení rychlosti nasazení po selhání.
+- **DeploymentMaxFailureCount**: výchozí: 20. Nasazení aplikace se bude opakovat po `DeploymentMaxFailureCount` dobu před selháním nasazení této aplikace na uzlu.
 
 ### <a name="deactivation"></a>Deaktivaci
-**DeactivationScanInterval**: výchozí hodnota je 600 s. Minimální doba, kterou má ServicePack hostovat repliku, pokud nikdy nehostuje žádnou repliku, tj. Pokud se nepoužívá.
-**DeactivationGraceInterval**: výchozí hodnota je 60 s. Čas poskytnutý ServicePack k hostování znovu další repliky, jakmile bude hostitelem jakékoli repliky v případě modelu **sdíleného** procesu.
-**ExclusiveModeDeactivationGraceInterval**: výchozí hodnota 1 s. Čas poskytnutý ServicePack pro opětovné hostování jiné repliky, jakmile hostuje jakoukoli repliku v případě **exkluzivního** modelu procesu.
+- **DeactivationScanInterval**: výchozí: 600 sekund. Minimální doba, kterou má ServicePack sloužit k hostování repliky, pokud nikdy nehostuje žádnou repliku (tj. Pokud se nepoužívá).
+- **DeactivationGraceInterval**: výchozí: 60 sekund. V modelu *sdíleného* procesu je čas poskytnutý ServicePack znovu hostitelem jiné repliky poté, co již hostuje jakoukoli repliku.
+- **ExclusiveModeDeactivationGraceInterval**: výchozí: 1 sekunda. V modelu *exkluzivního* procesu, čas poskytnutý útočníkovi znovu hostovat další repliku poté, co už hostuje jakoukoli repliku.
 
 ## <a name="next-steps"></a>Další kroky
-[Zabalit aplikaci][a3] a připravit ji na nasazení.
 
-[Nasaďte a odeberte aplikace][a4]. Tento článek popisuje, jak pomocí PowerShellu spravovat instance aplikací.
+- [Zabalit aplikaci][a3] a připravit ji na nasazení.
+- [Nasaďte a odeberte aplikace][a4] v PowerShellu.
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [a1]: service-fabric-application-model.md

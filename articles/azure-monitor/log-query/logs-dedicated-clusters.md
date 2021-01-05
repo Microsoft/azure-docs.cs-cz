@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512218"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831767"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -56,6 +56,20 @@ Pokud váš pracovní prostor používá starší verzi na cenové úrovni jedno
 
 Další podrobnosti najdete [tady]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters): Log Analytics vyhrazené clustery k dispozici.
 
+## <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
+
+Některé kroky konfigurace běží asynchronně, protože je nepůjde rychle dokončit. Stav v odpovědi může být jedna z následujících: ' InProgress ', ' aktualizace ', ' odstranění ', ' úspěch nebo neúspěch ' včetně kódu chyby. Při použití REST odpověď zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností Azure-AsyncOperation:
+
+```JSON
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+```
+
+Stav asynchronní operace můžete zjistit odesláním žádosti o získání do hodnoty hlavičky Azure-AsyncOperation:
+
+```rst
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+Authorization: Bearer <token>
+```
 
 ## <a name="creating-a-cluster"></a>Vytvoření clusteru
 
@@ -90,7 +104,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 *Call* 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -113,7 +127,7 @@ Content-type: application/json
 
 Mělo by být 200 OK a záhlaví.
 
-### <a name="check-provisioning-status"></a>Kontrola stavu zřizování
+### <a name="check-cluster-provisioning-status"></a>Zkontroluje stav zřizování clusteru.
 
 Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování můžete zjistit několika způsoby:
 
@@ -127,7 +141,7 @@ Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování může
 - Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
    ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
    Authorization: Bearer <token>
    ```
 
@@ -159,104 +173,7 @@ Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování může
 
 *PrincipalId* GUID vygeneruje Služba Managed identity pro prostředek *clusteru* .
 
-## <a name="change-cluster-properties"></a>Změnit vlastnosti clusteru
-
-Po vytvoření prostředku *clusteru* a jeho úplné zřízení můžete na úrovni clusteru upravit další vlastnosti pomocí PowerShellu nebo REST API. Kromě vlastností, které jsou k dispozici během vytváření clusteru, lze další vlastnosti nastavit pouze po zřízení clusteru:
-
-- **keyVaultProperties**: slouží ke konfiguraci Azure Key Vault používaného ke zřízení [Azure monitor klíče spravovaného zákazníkem](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure). Obsahuje následující parametry: *KeyVaultUri*, KeyName, *verze* *klíče*. 
-- **billingType** – vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
-  - **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
-  - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
-
-> [!NOTE]
-> Vlastnost *billingType* není v prostředí PowerShell podporována.
-> Aktualizace vlastností clusteru můžou být spouštěny jako asynchronní a dokončení může nějakou dobu trvat.
-
-**PowerShell**
-
-```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -KeyVaultUri {key-uri} -KeyName {key-name} -KeyVersion {key-version}
-```
-
-**REST**
-
-> [!NOTE]
-> Pomocí opravy můžete aktualizovat *SKU* prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
-
-Příklad: 
-
-*Call*
-
-```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
-Authorization: Bearer <token>
-Content-type: application/json
-
-{
-   "sku": {
-     "name": "capacityReservation",
-     "capacity": <capacity-reservation-amount-in-GB>
-     },
-   "properties": {
-    "billingType": "cluster",
-     "KeyVaultProperties": {
-       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
-       "KeyName": "<key-name>",
-       "KeyVersion": "<current-version>"
-       }
-   },
-   "location":"<region-name>"
-}
-```
-
-"KeyVaultProperties" obsahuje podrobnosti o identifikátoru Key Vaultho klíče.
-
-*Response* (Odpověď)
-
-200 OK a záhlaví
-
-### <a name="check-cluster-update-status"></a>Zkontroluje stav aktualizace clusteru.
-
-Dokončení šíření identifikátoru klíče trvá několik minut. Stav aktualizace můžete zjistit dvěma způsoby:
-
-- Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací. 
-
-   NEBO
-
-- Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties* . Nedávno aktualizované podrobnosti identifikátoru klíče by se měly vrátit v odpovědi.
-
-   Odpověď na požadavek GET prostředku *clusteru* by měla vypadat jako při dokončení aktualizace identifikátoru klíče:
-
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principle-id"
-       },
-     "sku": {
-       "name": "capacityReservation",
-       "capacity": 1000,
-       "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-       },
-     "properties": {
-       "keyVaultProperties": {
-         "keyVaultUri": "https://key-vault-name.vault.azure.net",
-         "kyName": "key-name",
-         "keyVersion": "current-version"
-         },
-        "provisioningState": "Succeeded",
-       "billingType": "cluster",
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-  }
-  ```
-
-## <a name="link-a-workspace-to-the-cluster"></a>Propojení pracovního prostoru s clusterem
+## <a name="link-a-workspace-to-cluster"></a>Propojení pracovního prostoru s clusterem
 
 Když je pracovní prostor propojený s vyhrazeným clusterem, nová data, která se ingestují do pracovního prostoru, se směrují do nového clusteru, zatímco stávající data zůstanou v existujícím clusteru. Pokud je vyhrazený cluster zašifrovaný pomocí klíčů spravovaných zákazníkem (CMK), zašifrují se pomocí klíče jenom nová data. Systém tento rozdíl odstará od uživatelů a uživatelé se k pracovnímu prostoru dotazují jenom obvyklým způsobem, zatímco systém provádí dotazy mezi clustery na back-endu.
 
@@ -299,7 +216,7 @@ K propojení s clusterem použijte následující volání REST:
 *Odeslat*
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -314,22 +231,34 @@ Content-type: application/json
 
 200 OK a záhlaví.
 
-### <a name="using-customer-managed-keys-with-linking"></a>Použití klíčů spravovaných zákazníkem s propojením
-
+### <a name="check-workspace-link-status"></a>Ověřit stav odkazu na pracovní prostor
+  
 Pokud používáte klíče spravované zákazníkem, budou se po operaci přidružení po operaci přidružení ukládat ingestovaná data se spravovaným klíčem, což může trvat až 90 minut. 
 
 Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
 - Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací.
 
-- Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. V přidruženém pracovním prostoru je clusterResourceId v části funkce.
+- V pracovním prostoru proveďte operaci get a sledujte, zda je v odpovědi v části *funkce* přítomna vlastnost *clusterResourceId* .
 
-Požadavek Send vypadá následovně:
+**Rozhraní příkazového řádku**
 
-*Odeslat*
+```azurecli
+az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+```
+
+**REST**
+
+*Call*
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -365,14 +294,183 @@ Authorization: Bearer <token>
 }
 ```
 
-## <a name="unlink-a-workspace-from-a-dedicated-cluster"></a>Zrušení propojení pracovního prostoru z vyhrazeného clusteru
+## <a name="change-cluster-properties"></a>Změnit vlastnosti clusteru
+
+Po vytvoření prostředku *clusteru* a jeho úplné zřízení můžete na úrovni clusteru upravit další vlastnosti pomocí PowerShellu nebo REST API. Kromě vlastností, které jsou k dispozici během vytváření clusteru, lze další vlastnosti nastavit pouze po zřízení clusteru:
+
+- **keyVaultProperties** – aktualizuje klíč v Azure Key Vault. Viz část [aktualizace clusteru s podrobnostmi identifikátoru klíče](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details). Obsahuje následující parametry: *KeyVaultUri*, KeyName, *verze* *klíče*. 
+- **billingType** – vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
+  - **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
+  - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
+
+> [!NOTE]
+> Vlastnost *billingType* není v prostředí PowerShell podporována.
+
+### <a name="get-all-clusters-in-resource-group"></a>Načíst všechny clustery ve skupině prostředků
+  
+**Rozhraní příkazového řádku**
+
+```azurecli
+az monitor log-analytics cluster list --resource-group "resource-group-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+```
+
+**REST**
+
+*Call*
+
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+*Response* (Odpověď)
+  
+  ```json
+  {
+    "value": [
+      {
+        "identity": {
+          "type": "SystemAssigned",
+          "tenantId": "tenant-id",
+          "principalId": "principal-Id"
+        },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
+        "properties": {
+           "keyVaultProperties": {
+              "keyVaultUri": "https://key-vault-name.vault.azure.net",
+              "keyName": "key-name",
+              "keyVersion": "current-version"
+              },
+          "provisioningState": "Succeeded",
+          "billingType": "cluster",
+          "clusterId": "cluster-id"
+        },
+        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
+        "name": "cluster-name",
+        "type": "Microsoft.OperationalInsights/clusters",
+        "location": "region-name"
+      }
+    ]
+  }
+  ```
+
+### <a name="get-all-clusters-in-subscription"></a>Načíst všechny clustery v předplatném
+
+**Rozhraní příkazového řádku**
+
+```azurecli
+az monitor log-analytics cluster list
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster
+```
+
+**REST**
+
+*Call*
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+Authorization: Bearer <token>
+```
+    
+*Response* (Odpověď)
+    
+Stejné jako u ' clusterů ve skupině prostředků ', ale v oboru předplatného.
+
+
+
+### <a name="update-capacity-reservation-in-cluster"></a>Aktualizovat rezervaci kapacity v clusteru
+
+Když se datový svazek do propojených pracovních prostorů změní v čase a chcete patřičně aktualizovat úroveň rezervace kapacity. Kapacita je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Všimněte si, že nemusíte zadávat úplný text žádosti REST, ale měla by obsahovat SKU.
+
+**Rozhraní příkazového řádku**
+
+```azurecli
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 1000
+```
+
+**PowerShell**
+
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 1000
+```
+
+**REST**
+
+*Call*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 2000
+    }
+  }
+  ```
+
+### <a name="update-billingtype-in-cluster"></a>Aktualizace billingType v clusteru
+
+Vlastnost *billingType* Určuje přidělení fakturace pro cluster a jeho data:
+- *cluster* (výchozí) – fakturace je přidělená předplatnému hostujícímu váš prostředek clusteru.
+- *pracovní prostory* – fakturace je úměrná předplatným hostujícím vaše pracovní prostory.
+
+**REST**
+
+*Call*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ```
+
+### <a name="unlink-a-workspace-from-cluster"></a>Zrušení propojení pracovního prostoru s clusterem
 
 Pracovní prostor můžete odpojit od clusteru. Po odpojení pracovního prostoru od clusteru se do vyhrazeného clusteru neodesílají nová data přidružená k tomuto pracovnímu prostoru. Faktura v pracovním prostoru se už neprovádí přes cluster. Stará data nepropojeného pracovního prostoru můžou zůstat v clusteru. Pokud jsou tato data zašifrovaná pomocí klíčů spravovaných zákazníkem (CMK), zachovají se Key Vault tajné klíče. Systém tuto změnu z Log Analytics uživatelů deabstrakce. Uživatelé můžou pracovní prostor jednoduše dotazovat obvyklým způsobem. Systém provádí dotazy meziclusterů v back-endu podle potřeby bez indikace uživatelům.  
 
 > [!WARNING] 
-> Mezi jednotlivými pracovními prostory a měsícem je limit dvou operací propojení. Vezměte v úvahu čas zvážit a naplánovat zrušení propojení akcí. 
+> Mezi jednotlivými pracovními prostory v měsíci je limit dvou operací propojení. Vezměte v úvahu čas zvážit a naplánovat zrušení propojení akcí.
 
-## <a name="delete-a-dedicated-cluster"></a>Odstranění vyhrazeného clusteru
+**Rozhraní příkazového řádku**
+
+```azurecli
+az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "MyWorkspace" --name cluster
+```
+
+**PowerShell**
+
+Pomocí následujícího příkazu PowerShellu odpojte pracovní prostor od clusteru:
+
+```powershell
+# Unlink a workspace from cluster
+Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+```
+
+### <a name="delete-cluster"></a>Odstranění clusteru
 
 Vyhrazený prostředek clusteru je možné odstranit. Aby bylo možné odstranit všechny pracovní prostory z clusteru, je nutné zrušit propojení všech pracovních prostorů. K provedení této operace potřebujete oprávnění Write pro prostředek *clusteru* . 
 
@@ -381,6 +479,9 @@ Po odstranění prostředku clusteru vstoupí fyzický cluster do procesu vyprá
 Prostředek *clusteru* , který se odstranil za posledních 14 dní, je ve stavu obnovitelného odstranění a dá se obnovit s jeho daty. Vzhledem k tomu, že se všechny pracovní prostory odřadí z prostředku *clusteru* s odstraněním prostředku *clusteru* , je potřeba po obnovení znovu přidružit své pracovní prostory. Tuto operaci obnovení nemůže uživatel kontaktovat, pokud se na váš kanál Microsoft Channel nebo podporu pro požadavky na obnovení nedají použít.
 
 Během 14 dní po odstranění se název prostředku clusteru rezervuje a nemůže ho používat jiné prostředky.
+
+> [!WARNING] 
+> U každého předplatného je limit tří clusterů. Aktivní i tiché odstraněné clustery se počítají jako součást tohoto. Zákazníci by neměli vytvářet opakující se postupy, které vytvářejí a odstraňují clustery. Má významný dopad na Log Analytics systémů back-end.
 
 **PowerShell**
 
@@ -403,7 +504,73 @@ Pomocí následujícího volání REST odstraňte cluster:
 
   200 OK
 
+## <a name="limits-and-constraints"></a>Omezení a omezení
 
+- Maximální počet clusterů na oblast a předplatné je 2.
+
+- Maximální počet propojených pracovních prostorů ke clusteru je 1000.
+
+- Pracovní prostor můžete propojit s clusterem a pak ho odpojit. Počet operací propojení s pracovním prostorem v konkrétním pracovním prostoru je omezený na 2 v období 30 dnů.
+
+- Odkaz na pracovní prostor na cluster by se měl přenést až po ověření, že se zřízení clusteru Log Analytics dokončilo. Data odesílaná do vašeho pracovního prostoru před dokončením budou vyřazena a nebude možné je obnovit.
+
+- Přesun clusteru do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
+
+- Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
+
+- V Číně momentálně není k dispozici bezpečnostní modul. 
+
+- Pro clustery vytvořené z října 2020 se v podporovaných oblastech automaticky nakonfiguruje [dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) . Můžete ověřit, jestli je váš cluster nakonfigurovaný pro dvojité šifrování, požadavkem GET v clusteru a `"isDoubleEncryptionEnabled"` hodnotou vlastnosti – `true` pro clustery se zapnutým šifrováním s dvojitým šifrováním. 
+  - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. `"properties": {"isDoubleEncryptionEnabled": false}`Do textu žádosti REST přidejte vlastnost.
+  - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+- Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je ve stavu obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
+
+- Pokud cluster aktualizujete, zatímco probíhá operace, operace se nezdaří.
+
+- Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření clusteru, aktualizaci klíčů clusteru a odstranění clusteru. Stav operace můžete zjistit dvěma způsoby:
+  - Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+  - Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
+
+- Chybové zprávy
+  
+  Vytvoření clusteru:
+  -  400 – název clusteru není platný. Název clusteru může obsahovat znaky a – z, A-Z, 0-9 a délku 3-63.
+  -  400 – tělo požadavku má hodnotu null nebo je v nesprávném formátu.
+  -  400--název SKU je neplatný. Nastavte název SKU na capacityReservation.
+  -  400 – byla zadána kapacita, ale SKU není capacityReservation. Nastavte název SKU na capacityReservation.
+  -  400 – chybějící kapacita v SKU V krocích po 100 (GB) nastavte hodnotu kapacity na 1000 nebo vyšší.
+  -  400 – kapacita v SKU není v rozsahu. Hodnota by měla být minimálně 1000 až do maximální povolené kapacity, která je k dispozici v pracovním prostoru v části využití a odhadované náklady.
+  -  400 – kapacita je uzamčena po dobu 30 dnů. Snížení kapacity je povolené 30 dnů od aktualizace.
+  -  400 – nebyla nastavena žádná SKU. Nastavte název SKU na capacityReservation a hodnotu kapacity na 1000 nebo vyšší v krocích po 100 (GB).
+  -  400--identita je null nebo prázdná. Nastavte identitu pomocí typu systemAssigned.
+  -  400 – KeyVaultProperties jsou nastaveny při vytváření. Aktualizujte KeyVaultProperties po vytvoření clusteru.
+  -  400 – operaci nelze nyní provést. Asynchronní operace je v jiném než úspěšném stavu. Cluster musí před provedením jakékoli operace aktualizace dokončit jeho operaci.
+
+  Aktualizace clusteru
+  -  400 – cluster je ve stavu odstraňování. Probíhá asynchronní operace. Cluster musí před provedením jakékoli operace aktualizace dokončit jeho operaci.
+  -  400 – KeyVaultProperties není prázdný, ale má špatný formát. Viz [aktualizace identifikátoru klíče](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
+  -  400 – nepovedlo se ověřit klíč v Key Vault. Příčinou může být nedostatečná oprávnění nebo pokud klíč neexistuje. Ověřte, že jste [nastavili zásady klíče a přístupu](../platform/customer-managed-keys.md#grant-key-vault-permissions) v Key Vault.
+  -  400-klíč nelze obnovit. Key Vault musí být nastavené na obnovitelné odstranění a ochranu vyprázdnit. Viz [dokumentace Key Vault](../../key-vault/general/soft-delete-overview.md)
+  -  400 – operaci nelze nyní provést. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+  -  400 – cluster je ve stavu odstraňování. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+
+  Cluster Get:
+    -  404--cluster nebyl nalezen, cluster byl pravděpodobně odstraněn. Pokud se pokusíte vytvořit cluster s tímto názvem a dojde ke konfliktu, je cluster v tichém odstranění po dobu 14 dnů. Pokud chcete vytvořit nový cluster, obraťte se na podporu, nebo použijte jiný název. 
+
+  Odstranění clusteru
+    -  409 – nelze odstranit cluster ve stavu zřizování. Počkejte, až se operace Async dokončí, a zkuste to znovu.
+
+  Odkaz na pracovní prostor:
+  -  404 – pracovní prostor nebyl nalezen. Pracovní prostor, který jste zadali, neexistuje nebo byl odstraněn.
+  -  409--operace propojení pracovního prostoru nebo zrušení propojení v procesu.
+  -  400 – cluster nebyl nalezen, zadaný cluster neexistuje nebo byl odstraněn. Pokud se pokusíte vytvořit cluster s tímto názvem a dojde ke konfliktu, je cluster v tichém odstranění po dobu 14 dnů. Můžete se obrátit na podporu a obnovit ji.
+
+  Zrušení propojení pracovního prostoru:
+  -  404 – pracovní prostor nebyl nalezen. Pracovní prostor, který jste zadali, neexistuje nebo byl odstraněn.
+  -  409--operace propojení pracovního prostoru nebo zrušení propojení v procesu.
 
 ## <a name="next-steps"></a>Další kroky
 

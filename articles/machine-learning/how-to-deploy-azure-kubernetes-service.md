@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505082"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831719"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -37,7 +37,7 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 >
 > Můžete využít také [poznámkový blok služby Azure Machine Learning pro místní nasazení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -91,6 +91,55 @@ Front-end komponenta (AzureML-Fe), která směruje příchozí žádosti o odvoz
 AzureML-FE škáluje jak nahoru (vertikálně) tak, aby používal více jader, a výstupní (horizontálně) pro použití více lusků. Při rozhodování o horizontálním navýšení kapacity se použije čas potřebný k směrování příchozích požadavků na odvození. Pokud tento čas překročí prahovou hodnotu, dojde k horizontálnímu navýšení kapacity. Pokud doba směrování příchozích požadavků pokračuje v překročení prahové hodnoty, dojde k horizontálnímu navýšení kapacity.
 
 Při horizontálním navýšení kapacity a při jejich zmenšování se používá využití procesoru. Pokud je dosaženo prahové hodnoty využití procesoru, bude nejprve horizontální navýšení kapacity na front-endu. Pokud využití procesoru klesne do prahové hodnoty škálování, dojde k operaci škálování. Horizontální navýšení kapacity a navýšení kapacity proběhne, jenom když je k dispozici dostatek prostředků clusteru.
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Principy požadavků na připojení ke clusteru AKS Inferencing
+
+Když Azure Machine Learning vytvoří nebo připojí cluster AKS, cluster AKS se nasadí s jedním z následujících dvou síťových modelů:
+* Kubenet Networking – síťové prostředky se většinou vytvářejí a konfigurují, protože je nasazený cluster AKS.
+* Síť Azure Container Networking Interface (CNI) – cluster AKS je připojený k prostředkům a konfiguracím stávající virtuální sítě.
+
+Pro první režim sítě se vytvoří a správně nakonfigurují sítě pro Azure Machine Learning služby. Pro druhý režim sítě, protože je cluster připojený k existující virtuální síti, zejména pokud se vlastní DNS používá pro stávající virtuální síť, musí zákazník věnovat další pozornost požadavkům na připojení ke clusteru AKS Inferencing a zajistit, aby se pro AKS Inferencing zajistilo řešení DNS a odchozí připojení.
+
+Následující diagram zachycuje všechny požadavky na připojení pro AKS Inferencing. Černé šipky znázorňují skutečnou komunikaci a modré šipky reprezentují názvy domén, které by měla služba DNS řízená zákazníkem vyřešit.
+
+ ![Požadavky na připojení pro AKS Inferencing](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>Celkové požadavky na překlad DNS
+Překlad DNS v rámci existující virtuální sítě je v rámci řízení zákazníka. Následující položky DNS by se měly přeložit:
+* AKS API Server ve formátu \<cluster\> . HCP. \<region\> . azmk8s.io
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* Azure Container Registry zákazníka (oblouk) ve formě \<ACR name\> . azurecr.IO
+* Azure Storage účet ve formě \<account\> . Table.Core.Windows.NET a \<account\> . blob.Core.Windows.NET
+* Volitelné Pro ověřování AAD: api.azureml.ms
+* Název domény bodování koncového bodu, buď automaticky generovaný službou Azure ML, nebo vlastní název domény. Automaticky generovaný název domény by vypadal jako: \<leaf-domain-label \+ auto-generated suffix\> . \<region\> . cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>Požadavky na připojení v chronologickém pořadí: od vytvoření clusteru po nasazení modelu
+
+V procesu AKS vytvořit nebo připojit se směrovač Azure ML (AzureML-Fe) nasadí do clusteru AKS. Aby bylo možné nasadit směrovač Azure ML, uzel AKS by měl být schopný:
+* Překlad DNS pro server AKS API
+* Řešení DNS pro MCR, aby se daly Stáhnout image Docker pro směrovač Azure ML
+* Stažení imagí z MCR, kde se vyžaduje odchozí připojení
+
+Hned po nasazení aplikace AzureML-FE se pokusí spustit příkaz a vyžaduje:
+* Překlad DNS pro server AKS API
+* Dotaz na server rozhraní API AKS pro zjišťování dalších instancí sebe sama (je to služba typu multi-pod)
+* Připojení k ostatním instancím sebe sama
+
+Jakmile se spustí aplikace AzureML-FE, je nutné, aby správně fungovalo další připojení:
+* Připojení k Azure Storage ke stažení dynamické konfigurace
+* Vyřešte DNS pro Server ověřování AAD api.azureml.ms a s ním komunikujte, když nasazená služba používá ověřování AAD.
+* Dotaz na server rozhraní API AKS pro zjišťování nasazených modelů
+* Komunikace s nasazeným modelem lusky
+
+V době nasazení modelu by byl pro úspěšný uzel AKS nasazení modelu schopný: 
+* Řešení DNS pro ACR zákazníka
+* Stažení imagí z ACR zákazníka
+* Vyřešte DNS pro objekty blob Azure, kde je model uložený.
+* Stažení modelů z objektů blob Azure
+
+Po nasazení modelu a spuštění služby se aplikace AzureML-FE automaticky zjistí pomocí rozhraní AKS API a bude připravená na směrování požadavků. Musí být schopný komunikovat s modelem lusků.
+>[!Note]
+>Pokud nasazený model vyžaduje jakékoli připojení (například dotazování externí databáze nebo jiné služby REST, stažení blogu atd.), mělo by být povoleno řešení DNS i odchozí komunikace pro tyto služby.
 
 ## <a name="deploy-to-aks"></a>Nasazení do AKS
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 132c21588df2f2180ddd973d208eb95ea6657e7d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351635"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832450"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>Modul zabezpečení Azure Defenderu pro IoT Edge
 
@@ -60,6 +60,6 @@ Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, postupujt
 
 - Nasazení [modulu zabezpečení pro IoT Edge](how-to-deploy-edge.md)
 - Informace o tom, jak [nakonfigurovat modul zabezpečení](how-to-agent-configuration.md)
-- Přečtěte si téma Defender for IoT [Service – požadavky](service-prerequisites.md)
+- Kontrola programu Defender for IoT [Defender pro IoT Horizon](resources-manage-proprietary-protocols.md)
 - Naučte se, jak [ve IoT Hub povolit Defender pro službu IoT](quickstart-onboard-iot-hub.md) .
 - Další informace o službě najdete v tématu [Nejčastější dotazy k programu Defender pro IoT](resources-frequently-asked-questions.md) .

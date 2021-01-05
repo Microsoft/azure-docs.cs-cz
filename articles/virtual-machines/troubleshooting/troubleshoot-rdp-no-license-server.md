@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5864d40d2a4d8f8d6cf404df29f909a73f04e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526465"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832039"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Licenční server vzdálené plochy není k dispozici, když se připojíte k virtuálnímu počítači Azure.
 
@@ -87,7 +87,9 @@ Tento problém vyřešíte tak, [že zazálohujte disk s operačním systémem](
     2. Pomocí následujícího příkazu ověřte zásady a proveďte jejich konfiguraci podle potřeby:
 
        ```
-        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
+        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode
+
+        reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
        ```
 
         Pokud je hodnota **LicensingMode** nastavená na jinou hodnotu než 4, na uživatele a pak nastavte hodnotu na 4:
