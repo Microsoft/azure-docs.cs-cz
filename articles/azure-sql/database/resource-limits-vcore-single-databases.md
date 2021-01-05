@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/15/2020
-ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097571"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882288"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na virtuálních jádrech
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -307,7 +307,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Více AZ|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Škálování čtení|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
@@ -332,7 +332,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Více AZ|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Škálování čtení|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 

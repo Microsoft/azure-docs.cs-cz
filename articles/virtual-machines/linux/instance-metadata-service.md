@@ -11,30 +11,23 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: c9a4f5697fb667cde2cf3b4ddc3d637ff58149c9
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.custom: references_regions
+ms.openlocfilehash: baf0284198f8d30867ea722a4e0057b6d07c91bd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436585"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883142"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Instance Metadata Service Azure (IMDS)
 
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů. Můžete ji použít ke správě a konfiguraci virtuálních počítačů.
-Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v tématu [rozhraní API pro metadata](#metadata-apis).
+Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v části [Souhrn kategorií koncových bodů](#endpoint-categories).
 
-IMDS je k dispozici pro spuštěné instance virtuálních počítačů a instance sady škálování virtuálních počítačů. Všechna rozhraní API podporují virtuální počítače vytvořené a spravované pomocí [Azure Resource Manager](/rest/api/resources/). Jenom virtuální počítače, které jsou vytvořené pomocí modelu nasazení Classic, podporují jenom koncové body s ověřováním identity a sítě. Ověřený koncový bod funguje tak pouze v omezeném rozsahu.
+IMDS je k dispozici pro spuštěné instance virtuálních počítačů a instance sady škálování virtuálních počítačů. Všechny koncové body podporují virtuální počítače vytvořené a spravované pomocí [Azure Resource Manager](/rest/api/resources/). Virtuální počítače, které jsou vytvořené pomocí modelu nasazení Classic, podporují jenom kategorie s ověřenou a síťovou částí kategorie instance. Ověřený koncový bod funguje tak pouze v omezeném rozsahu.
 
-IMDS je koncový bod REST, který je k dispozici na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ). K němu přistupujete jenom z virtuálního počítače. Komunikace mezi virtuálním počítačem a IMDS nikdy neopustí hostitele.
+IMDS je REST API, který je k dispozici na dobře známé IP adrese, která není směrovatelný `169.254.169.254` . K němu máte přístup jenom z virtuálního počítače. Komunikace mezi virtuálním počítačem a IMDS nikdy neopustí hostitele.
 Klienti HTTP při dotazování IMDS vynechá webové proxy servery v rámci virtuálního počítače a považovat `169.254.169.254` za stejné jako [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
-
-## <a name="security"></a>Zabezpečení
-
-Koncový bod IMDS je přístupný jenom v rámci spuštěné instance virtuálního počítače na IP adrese, která není směrovatelný. Kromě toho bude `X-Forwarded-For` služba odmítla všechny žádosti s hlavičkou.
-Požadavky musí obsahovat také `Metadata: true` hlavičku, aby bylo zajištěno, že skutečný požadavek byl přímo určen a není součástí neúmyslného přesměrování.
-
-> [!IMPORTANT]
-> IMDS není kanál pro citlivá data. Koncový bod je otevřený pro všechny procesy na virtuálním počítači. Zvažte informace vystavené prostřednictvím této služby jako sdílené informace pro všechny aplikace běžící v rámci virtuálního počítače.
 
 ## <a name="usage"></a>Využití
 
@@ -43,9 +36,12 @@ Požadavky musí obsahovat také `Metadata: true` hlavičku, aby bylo zajištěn
 Pokud chcete získat přístup k IMDS, vytvořte virtuální počítač z [Azure Resource Manager](/rest/api/resources/) nebo [Azure Portal](https://portal.azure.com)a použijte následující ukázky.
 Další příklady najdete v tématu [ukázky metadat instance Azure](https://github.com/microsoft/azureimds).
 
-Zde je ukázkový kód pro načtení všech metadat pro instanci. Pokud chcete získat přístup ke konkrétnímu zdroji dat, přečtěte si část [rozhraní API metadat](#metadata-apis) . 
+Zde je ukázkový kód pro načtení všech metadat pro instanci. Chcete-li získat přístup ke konkrétnímu zdroji dat, přečtěte si téma [kategorie koncových bodů](#endpoint-categories) , kde najdete přehled všech dostupných funkcí.
 
 **Žádost**
+
+> [!IMPORTANT]
+> Tento příklad obchází proxy servery. Při dotazování na IMDS je **nutné** obejít proxy servery. Další informace najdete v tématu [proxy](#proxies) .
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01"
@@ -177,32 +173,164 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 }
 ```
 
-### <a name="data-output"></a>Výstup dat
+## <a name="security-and-authentication"></a>Zabezpečení a ověřování
 
-Ve výchozím nastavení vrátí IMDS data ve formátu JSON ( `Content-Type: application/json` ). Některá rozhraní API však mohou vracet data v různých formátech, pokud jsou požadovány.
-Následující tabulka obsahuje seznam dalších datových formátů, které mohou rozhraní API podporovat.
+Instance Metadata Service je k dispozici pouze v rámci spuštěné instance virtuálního počítače na IP adrese, která není směrovatelný. Virtuální počítače jsou omezené na interakci s metadaty a funkcemi, které se vztahují samy na sebe. Rozhraní API je pouze HTTP a nikdy neopouští hostitele.
 
-Rozhraní API | Výchozí formát dat | Jiné formáty
---------|---------------------|--------------
-/attested | json | žádné
-/identity | json | žádné
-/instance | json | text
-/scheduledevents | json | žádné
+Aby bylo zajištěno, že požadavky jsou přímo určeny pro IMDS a aby nedocházelo k neúmyslnému nebo nechtěnému přesměrování požadavků, požadavky:
+- **Musí** obsahovat hlavičku. `Metadata: true`
+- Nesmí **obsahovat** `X-Forwarded-For` hlavičku
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
+Všechny žádosti, které nesplňují **oba** tyto požadavky, budou službou odmítnuty.
+
+> [!IMPORTANT]
+> IMDS není **kanál** pro citlivá data. Rozhraní API není ověřené a otevřené pro všechny procesy na virtuálním počítači. Informace vystavené prostřednictvím této služby by se měly považovat za sdílené informace pro všechny aplikace běžící v rámci virtuálního počítače.
+
+## <a name="proxies"></a>Proxy
+
+IMDS není **určený k** použití za proxy serverem a není tak podporován. Většina klientů protokolu HTTP nabízí možnost zakázat proxy na vašich žádostech a tato funkce musí být využívána při komunikaci s IMDS. Podrobnosti najdete v dokumentaci ke klientovi.
+
+> [!IMPORTANT]
+> I když ve svém prostředí neznáte žádnou konfiguraci proxy serveru, **musíte přepsat všechna výchozí nastavení proxy serveru klienta**. Konfigurace proxy serveru se dají automaticky zjistit a nedaří se jim jim obejít takové konfigurace, které vám umožní Outrage rizika, by se měla v budoucnu změnit konfigurace počítače.
+
+## <a name="rate-limiting"></a>Omezování rychlosti
+
+Obecně platí, že požadavky na IMDS jsou omezeny na 5 požadavků za sekundu. Žádosti překračující tuto prahovou hodnotu budou odmítnuty s 429 odpověďmi. Žádosti do kategorie [spravované identity](#managed-identity) jsou omezené na 20 požadavků za sekundu a 5 souběžných požadavků.
+
+## <a name="http-verbs"></a>Příkazy HTTP
+
+V současné době jsou podporovány následující příkazy protokolu HTTP:
+
+| Příkaz | Popis |
+|------|-------------|
+| `GET` | Načíst požadovaný prostředek
+
+## <a name="parameters"></a>Parametry
+
+Koncové body můžou podporovat požadované nebo volitelné parametry. Podrobnosti najdete v tématu [schéma](#schema) a dokumentace pro konkrétní koncový bod.
+
+### <a name="query-parameters"></a>Parametry dotazů
+
+Koncové body IMDS podporují parametry řetězce dotazu HTTP. Například: 
+
+```bash
+http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
+```
+
+Určuje parametry:
+
+| Název | Hodnota |
+|------|-------|
+| `api-version` | `2019-06-04`
+| `format` | `json`
+
+Žádosti s duplicitními názvy parametrů dotazu budou odmítnuty.
+
+### <a name="route-parameters"></a>Parametry směrování
+
+U některých koncových bodů, které vracejí větší objekty blob JSON, podporujeme připojení parametrů trasy k koncovému bodu žádosti, aby se vyfiltroval podmnožina odpovědi: 
+
+```bash
+http://169.254.169.254/metadata/<endpoint>/[<filter parameter>/...]?<query parameters>
+```
+Parametry odpovídají indexům nebo klíčům, které by se použily k procházení objektu JSON při interakci s analyzovanou reprezentací.
+
+Například `/metatadata/instance` vrátí objekt JSON:
+```json
+{
+    "compute": { ... },
+    "network": {
+        "interface": [
+            {
+                "ipv4": {
+                   "ipAddress": [{
+                        "privateIpAddress": "10.144.133.132",
+                        "publicIpAddress": ""
+                    }],
+                    "subnet": [{
+                        "address": "10.144.133.128",
+                        "prefix": "26"
+                    }]
+                },
+                "ipv6": {
+                    "ipAddress": [
+                     ]
+                },
+                "macAddress": "0011AAFFBB22"
+            },
+            ...
+        ]
+    }
+}
+```
+
+Pokud chceme odpovědět na tuto odpověď pouze na výpočetní vlastnost, pošlete nám požadavek: 
+```bash
+http://169.254.169.254/metadata/instance/compute?api-version=<version>
+```
+
+Podobně platí, že pokud chceme filtrovat na vnořenou vlastnost nebo konkrétní element pole, budeme připojovat klíče dál: 
+```bash
+http://169.254.169.254/metadata/instance/network/interface/0?api-version=<version>
+```
+by měl filtrovat na první prvek z `Network.interface` vlastnosti a vracet:
+
+```json
+{
+    "ipv4": {
+       "ipAddress": [{
+            "privateIpAddress": "10.144.133.132",
+            "publicIpAddress": ""
+        }],
+        "subnet": [{
+            "address": "10.144.133.128",
+            "prefix": "26"
+        }]
+    },
+    "ipv6": {
+        "ipAddress": [
+         ]
+    },
+    "macAddress": "0011AAFFBB22"
+}
+```
+
+> [!NOTE]
+> Při filtrování na uzel typu list `format=json` nefunguje. Pro tyto dotazy je `format=text` nutné explicitně zadat, protože výchozí formát je JSON.
+
+## <a name="schema"></a>Schéma
+
+### <a name="data-format"></a>Formát dat
+
+Ve výchozím nastavení vrátí IMDS data ve formátu JSON ( `Content-Type: application/json` ). Nicméně koncové body, které podporují filtrování odpovědí (viz [parametry směrování](#route-parameters)), podporují i formát `text` .
+
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
-> [!NOTE]
-> U koncových uzlů v `/metadata/instance` `format=json` nefunguje. Pro tyto dotazy je `format=text` nutné explicitně zadat, protože výchozí formát je JSON.
+V odpovědích JSON budou všechny primitivní prvky typu `string` a chybějící nebo nepoužité hodnoty jsou vždycky zahrnuté, ale budou nastavené na prázdný řetězec.
 
-### <a name="version"></a>Verze
+### <a name="versioning"></a>Správa verzí
 
-IMDS má verzi a určení verze rozhraní API v požadavku HTTP je povinné.
+IMDS má verzi a určení verze rozhraní API v požadavku HTTP je povinné. Jedinou výjimkou z tohoto požadavku je koncový bod [verze](#versions) , který lze použít k dynamickému načtení dostupných verzí rozhraní API.
 
-Podporované verze rozhraní API: 
+Při přidávání novějších verzí je k zajištění kompatibility stále k dispozici starší verze, pokud vaše skripty mají závislosti na konkrétních formátech dat.
+
+Pokud neurčíte verzi, zobrazí se chyba se seznamem nejnovějších podporovaných verzí:
+```json
+{
+    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
+    "newest-versions": [
+        "2020-10-01",
+        "2020-09-01",
+        "2020-07-15"
+    ]
+}
+```
+
+#### <a name="supported-api-versions"></a>Podporované verze rozhraní API
 - 2017-03-01
 - 2017-04-02
 - 2017-08-01 
@@ -225,87 +353,309 @@ Podporované verze rozhraní API:
 - 2020-10-01
 
 > [!NOTE]
-> Verze 2020-10-01 možná není v každé oblasti dostupná.
+> V tuto chvíli je nainstalovaná verze 2020-10-01 a v každé oblasti možná není dostupná.
 
-Při přidávání novějších verzí můžete ke kompatibilitě přistupovat starší verze, pokud vaše skripty mají závislosti na konkrétních formátech dat.
+### <a name="swagger"></a>Swagger
 
-Pokud nezadáte žádnou verzi, zobrazí se chybová zpráva se seznamem nejnovějších podporovaných verzí.
+Úplná definice Swagger pro IMDS je k dispozici na adrese: https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
+
+## <a name="regional-availability"></a>Regionální dostupnost
+
+Služba je **všeobecně dostupná** ve všech cloudech Azure.
+
+## <a name="root-endpoint"></a>Kořenový koncový bod
+
+Kořenový koncový bod je `http://169.254.169.254/metadata` .
+
+## <a name="endpoint-categories"></a>Kategorie koncových bodů
+
+Rozhraní IMDS API obsahuje několik kategorií koncového bodu, které představují různé zdroje dat, z nichž každý obsahuje jeden nebo více koncových bodů. Podrobnosti najdete v každé kategorii.
+
+| Kořen kategorie | Popis | Představená verze |
+|---------------|-------------|--------------------|
+| `/metadata/attested` | Viz [Attestation data](#attested-data) | 2018-10-01
+| `/metadata/identity` | Viz [spravovaná identita prostřednictvím IMDS](#managed-identity) . | 2018-02-01
+| `/metadata/instance` | Viz [metadata instance](#instance-metadata) | 2017-04-02
+| `/metadata/scheduledevents` | Zobrazit [Scheduled Events přes IMDS](#scheduled-events) | 2017-08-01
+| `/metadata/versions` | Zobrazit [verze](#versions) | –
+
+## <a name="versions"></a>Verze
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad označuje chybový stav, pokud není zadána verze. Odpověď je poměrně vytištěna z důvodu čitelnosti.
+> Tato funkce byla vydaná společně s verzí 2020-10-01, která se v tuto chvíli zavádí a možná není dostupná v každé oblasti.
 
-**Žádost**
+### <a name="list-api-versions"></a>Vypsat verze rozhraní API
+
+Vrátí sadu podporovaných verzí rozhraní API.
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
+GET /metadata/versions
 ```
 
-**Response** (Odpověď)
+#### <a name="parameters"></a>Parametry
+
+Žádné (tento koncový bod je bez verze).
+
+#### <a name="response"></a>Odpověď
 
 ```json
 {
-    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
-    "newest-versions": [
-        "2020-10-01",
-        "2020-09-01",
-        "2020-07-15"
-    ]
+  "apiVersions": [
+    "2017-03-01",
+    "2017-04-02",
+    ...
+  ]
 }
 ```
 
-## <a name="metadata-apis"></a>Rozhraní API pro metadata
+## <a name="instance-metadata"></a>Metadata instance
 
-IMDS obsahuje několik rozhraní API představujících různé zdroje dat.
+### <a name="get-vm-metadata"></a>Získání metadat virtuálního počítače
 
-Rozhraní API | Popis | Představená verze
-----|-------------|-----------------------
-/attested | Viz [Attestation data](#attested-data) | 2018-10-01
-/identity | Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
-/instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
-/scheduledevents | Zobrazit [naplánované události](scheduled-events.md) | 2017-08-01
+Zpřístupňuje důležitá metadata pro instanci virtuálního počítače, včetně výpočetních prostředků, sítě a úložiště. 
 
-## <a name="instance-api"></a>Rozhraní API instance
+```bash
+GET /metadata/instance
+```
 
-Rozhraní API instance zpřístupňuje důležitá metadata pro instance virtuálních počítačů, včetně virtuálních počítačů, sítí a úložiště. K následujícím kategoriím můžete získat přístup prostřednictvím `instance/compute` :
+#### <a name="parameters"></a>Parametry
 
-Data | Popis | Představená verze
------|-------------|-----------------------
-azEnvironment | Prostředí Azure, ve kterém je virtuální počítač spuštěný. | 2018-10-01
-customData | Tato funkce je momentálně zakázaná. | 2019-02-01
-isHostCompatibilityLayerVm | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
-licenseType | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Upozorňujeme, že tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
-location | Oblast Azure, ve které je virtuální počítač spuštěný. | 2017-04-02
-name | Název virtuálního počítače | 2017-04-02
-offer | Informace o nabídce k imagi virtuálního počítače Tento příklad je k dispozici pouze pro Image nasazené z Galerie imagí Azure. | 2017-04-02
-osProfile.adminUsername | Určuje název účtu správce. | 2020-07-15
-osProfile. ComputerName | Určuje název počítače. | 2020-07-15
-osProfile. disablePasswordAuthentication | Určuje, jestli je zakázané ověřování heslem. Všimněte si, že toto je k dispozici pouze pro virtuální počítače se systémem Linux. | 2020-10-01
-osType | Linux nebo Windows. | 2017-04-02
-placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů. | 2017-08-01
-rozhraní | [Plán](/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image. | 2018-04-02
-platformUpdateDomain |  [Aktualizujte doménu](../manage-availability.md) , ve které je virtuální počítač spuštěný. | 2017-04-02
-platformFaultDomain | [Doména selhání](../manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
-Zprostředkovatel | Poskytovatel virtuálního počítače. | 2018-10-01
-publicKeys | [Kolekce veřejných klíčů](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
-vydavatel | Vydavatel image virtuálního počítače | 2017-04-02
-resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač. | 2017-08-01
-resourceId | [Plně kvalifikované](/rest/api/resources/resources/getbyid) ID prostředku. | 2019-03-11
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače. | 2017-04-02
-securityProfile. secureBootEnabled | Určuje, jestli je na virtuálním počítači povolené zabezpečené spouštění přes UEFI. | 2020-06-01
-securityProfile.virtualTpmEnabled | Určuje, jestli je na virtuálním počítači povolený čip TPM (Virtual Trusted Platform Module). | 2020-06-01
-storageProfile | Viz [profil úložiště](#storage-metadata). | 2019-06-01
-subscriptionId | Předplatné Azure pro virtuální počítač. | 2017-08-01
-tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro váš virtuální počítač.  | 2017-08-01
-tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu.  | 2019-06-04
-verze | Verze image virtuálního počítače | 2017-04-02
-vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
-vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/overview.md) pro sadu škálování virtuálního počítače. | 2017-12-01
-vmSize | Viz [Velikost virtuálního počítače](../sizes.md). | 2017-04-02
-zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuálního počítače. | 2017-12-01
+| Název | Požadováno/volitelné | Popis |
+|------|-------------------|-------------|
+| `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
+| `format` | Volitelné | Formát ( `json` nebo `text` ) odpovědi. * Poznámka: může být vyžadováno při použití parametrů Request
 
-### <a name="sample-1-track-a-vm-running-on-azure"></a>Ukázka 1: sledování virtuálního počítače běžícího na Azure
+Tento koncový bod podporuje filtrování odpovědí prostřednictvím [parametrů směrování](#route-parameters).
 
-Jako poskytovatel služeb možná budete potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují sledovat jedinečnost virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z IMDS.
+#### <a name="response"></a>Odpověď
+
+```json
+{
+    "compute": {
+        "azEnvironment": "AZUREPUBLICCLOUD",
+        "isHostCompatibilityLayerVm": "true",
+        "licenseType":  "Windows_Client",
+        "location": "westus",
+        "name": "examplevmname",
+        "offer": "Windows",
+        "osProfile": {
+            "adminUsername": "admin",
+            "computerName": "examplevmname",
+            "disablePasswordAuthentication": "true"
+        },
+        "osType": "linux",
+        "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+        "plan": {
+            "name": "planName",
+            "product": "planProduct",
+            "publisher": "planPublisher"
+        },
+        "platformFaultDomain": "36",
+        "platformUpdateDomain": "42",
+        "publicKeys": [{
+                "keyData": "ssh-rsa 0",
+                "path": "/home/user/.ssh/authorized_keys0"
+            },
+            {
+                "keyData": "ssh-rsa 1",
+                "path": "/home/user/.ssh/authorized_keys1"
+            }
+        ],
+        "publisher": "RDFE-Test-Microsoft-Windows-Server-Group",
+        "resourceGroupName": "macikgo-test-may-23",
+        "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+        "securityProfile": {
+            "secureBootEnabled": "true",
+            "virtualTpmEnabled": "false"
+        },
+        "sku": "Windows-Server-2012-R2-Datacenter",
+        "storageProfile": {
+            "dataDisks": [{
+                "caching": "None",
+                "createOption": "Empty",
+                "diskSizeGB": "1024",
+                "image": {
+                    "uri": ""
+                },
+                "lun": "0",
+                "managedDisk": {
+                    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampledatadiskname",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
+            }],
+            "imageReference": {
+                "id": "",
+                "offer": "UbuntuServer",
+                "publisher": "Canonical",
+                "sku": "16.04.0-LTS",
+                "version": "latest"
+            },
+            "osDisk": {
+                "caching": "ReadWrite",
+                "createOption": "FromImage",
+                "diskSizeGB": "30",
+                "diffDiskSettings": {
+                    "option": "Local"
+                },
+                "encryptionSettings": {
+                    "enabled": "false"
+                },
+                "image": {
+                    "uri": ""
+                },
+                "managedDisk": {
+                    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampleosdiskname",
+                "osType": "Linux",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
+            }
+        },
+        "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+        "tags": "baz:bash;foo:bar",
+        "version": "15.05.22",
+        "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+        "vmScaleSetName": "crpteste9vflji9",
+        "vmSize": "Standard_A3",
+        "zone": ""
+    },
+    "network": {
+        "interface": [{
+            "ipv4": {
+               "ipAddress": [{
+                    "privateIpAddress": "10.144.133.132",
+                    "publicIpAddress": ""
+                }],
+                "subnet": [{
+                    "address": "10.144.133.128",
+                    "prefix": "26"
+                }]
+            },
+            "ipv6": {
+                "ipAddress": [
+                 ]
+            },
+            "macAddress": "0011AAFFBB22"
+        }]
+    }
+}
+```
+
+Rozpis schématu:
+
+**Výpočetní služby**
+
+| Data | Popis | Představená verze |
+|------|-------------|--------------------|
+| `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
+| `customData` | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
+| `isHostCompatibilityLayerVm` | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
+| `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
+| `location` | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
+| `name` | Název virtuálního počítače | 2017-04-02
+| `offer` | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
+| `osProfile.adminUsername` | Určuje název účtu správce. | 2020-07-15
+| `osProfile.computerName` | Určuje název počítače. | 2020-07-15
+| `osProfile.disablePasswordAuthentication` | Určuje, jestli je zakázané ověřování heslem. Toto je k dispozici pouze pro virtuální počítače se systémem Linux. | 2020-10-01
+| `osType` | Linux nebo Windows | 2017-04-02
+| `placementGroupId` | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
+| `plan` | [Plánování](/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+| `platformUpdateDomain` |  [Aktualizujte doménu](../manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
+| `platformFaultDomain` | [Doména selhání](../manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
+| `provider` | Poskytovatel virtuálního počítače | 2018-10-01
+| `publicKeys` | [Kolekce veřejných klíčů](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
+| `publisher` | Vydavatel image virtuálního počítače | 2017-04-02
+| `resourceGroupName` | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
+| `resourceId` | [Plně kvalifikované](/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
+| `sku` | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+| `securityProfile.secureBootEnabled` | Určuje, jestli je na virtuálním počítači povolené zabezpečené spouštění přes UEFI. | 2020-06-01
+| `securityProfile.virtualTpmEnabled` | Určuje, jestli je na virtuálním počítači povolený čip TPM (Virtual Trusted Platform Module). | 2020-06-01
+| `storageProfile` | Viz profil úložiště níže. | 2019-06-01
+| `subscriptionId` | Předplatné Azure pro virtuální počítač | 2017-08-01
+| `tags` | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
+| `tagsList` | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
+| `version` | Verze image virtuálního počítače | 2017-04-02
+| `vmId` | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
+| `vmScaleSetName` | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
+| `vmSize` | [Velikost virtuálního počítače](../sizes.md) | 2017-04-02
+| `zone` | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01
+
+**Profil úložiště**
+
+Profil úložiště virtuálního počítače je rozdělen do tří kategorií: odkaz na obrázek, disk s operačním systémem a datové disky.
+
+Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
+
+| Data | Popis |
+|------|-------------|
+| `id` | ID prostředku
+| `offer` | Nabídka platformy nebo Image Marketplace
+| `publisher` | Vydavatel obrázku
+| `sku` | SKU image
+| `version` | Verze image platformy nebo webu Marketplace
+
+Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
+
+| Data | Popis |
+|------|-------------|
+| `caching` | Požadavky na ukládání do mezipaměti
+| `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
+| `diffDiskSettings` | Nastavení dočasného disku
+| `diskSizeGB` | Velikost disku v GB
+| `image`   | Virtuální pevný disk zdrojové image uživatele
+| `lun`     | Logické číslo jednotky disku
+| `managedDisk` | Parametry spravovaného disku
+| `name`    | Název disku
+| `vhd`     | Virtuální pevný disk
+| `writeAcceleratorEnabled` | Bez ohledu na to, jestli je na disku povolená writeAccelerator
+
+Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
+
+Data | Popis |
+-----|-------------|
+| `caching` | Požadavky na ukládání do mezipaměti
+| `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
+| `diffDiskSettings` | Nastavení dočasného disku
+| `diskSizeGB` | Velikost disku v GB
+| `encryptionSettings` | Nastavení šifrování disku
+| `image` | Virtuální pevný disk zdrojové image uživatele
+| `managedDisk` | Parametry spravovaného disku
+| `name` | Název disku
+| `osType` | Typ operačního systému zahrnutý na disku
+| `vhd` | Virtuální pevný disk
+| `writeAcceleratorEnabled` | Bez ohledu na to, jestli je na disku povolená writeAccelerator
+
+**Síť**
+
+| Data | Popis | Představená verze |
+|------|-------------|--------------------|
+| `ipv4.privateIpAddress` | Místní IPv4 adresa virtuálního počítače | 2017-04-02
+| `ipv4.publicIpAddress` | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
+| `subnet.address` | Adresa podsítě virtuálního počítače | 2017-04-02
+| `subnet.prefix` | Předpona podsítě, příklad 24 | 2017-04-02
+| `ipv6.ipAddress` | Místní IPv6 adresa virtuálního počítače | 2017-04-02
+| `macAddress` | Adresa MAC virtuálního počítače | 2017-04-02
+
+**Značky VM**
+
+Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
+Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
+
+`tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
+
+
+#### <a name="sample-1-tracking-vm-running-on-azure"></a>Ukázka 1: sledování virtuálního počítače běžícího na Azure
+
+Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z instance metadata Service.
 
 **Žádost**
 
@@ -319,7 +669,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="sample-2-placement-of-different-data-replicas"></a>Ukázka 2: umístění různých replik dat
+#### <a name="sample-2-placement-of-different-data-replicas"></a>Ukázka 2: umístění různých replik dat
 
 V některých scénářích je umístění různých replik dat primárním významem. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru přes [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) vám může vyžadovat, abyste věděli, na `platformFaultDomain` kterém `platformUpdateDomain` virtuální počítač běží.
 K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
@@ -337,9 +687,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>Ukázka 3: získání dalších informací o virtuálním počítači během případu podpory
+#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>Ukázka 3: získání dalších informací o virtuálním počítači během případu podpory
 
-Jako poskytovatel služeb můžete obdržet volání podpory, kde chcete získat další informace o virtuálním počítači. V tomto případě může být užitečné, aby zákazník požádal o sdílení výpočetních metadat.
+Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
 **Žádost**
 
@@ -452,9 +802,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>Ukázka 4: získání prostředí Azure, ve kterém je virtuální počítač spuštěný
+#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>Ukázka 4: získání prostředí Azure, ve kterém je virtuální počítač spuštěný
 
-Azure má různé cloudy svrchované služby, například [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
+Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
 **Žádost**
 
@@ -470,30 +820,15 @@ AzurePublicCloud
 
 Tady je uvedený Cloud a hodnoty prostředí Azure.
 
- Cloud   | Prostředí Azure
----------|-----------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+| Cloud | Prostředí Azure |
+|-------|-------------------|
+| [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/) | AzurePublicCloud
+| [Azure Government](https://azure.microsoft.com/overview/clouds/government/) | AzureUSGovernmentCloud
+| [Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/) | AzureChinaCloud
+| [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
-## <a name="network-metadata"></a>Síťová metadata 
 
-Síťová metadata jsou součástí rozhraní API instance. V rámci koncového bodu jsou k dispozici následující kategorie sítě `instance/network` .
-
-Data | Popis | Představená verze
------|-------------|-----------------------
-IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače. | 2017-04-02
-IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače. | 2017-04-02
-podsíť/adresa | Adresa podsítě virtuálního počítače. | 2017-04-02
-podsíť/předpona | Předpona podsítě. Příklad: 24 | 2017-04-02
-IPv6/ipAddress | Místní adresa IPv6 virtuálního počítače. | 2017-04-02
-macAddress | Adresa MAC virtuálního počítače. | 2017-04-02
-
-> [!NOTE]
-> Všechny odpovědi rozhraní API jsou řetězce JSON. Všechny následující příklady odpovědí jsou poměrně vytištěny pro čitelnost.
-
-#### <a name="sample-1-retrieve-network-information"></a>Ukázka 1: načtení informací o síti
+#### <a name="sample-5-retrieve-network-information"></a>Ukázka 5: načtení informací o síti
 
 **Žádost**
 
@@ -528,232 +863,93 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
     }
   ]
 }
-
 ```
 
-#### <a name="sample-2-retrieve-public-ip-address"></a>Ukázka 2: načtení veřejné IP adresy
+#### <a name="sample-6-retrieve-public-ip-address"></a>Ukázka 6: načtení veřejné IP adresy
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
-## <a name="storage-metadata"></a>Metadata úložiště
-
-Metadata úložiště jsou součástí rozhraní API instance v části `instance/compute/storageProfile` koncový bod.
-Poskytuje podrobnosti o discích úložiště přidružených k virtuálnímu počítači. 
-
-Profil úložiště virtuálního počítače je rozdělen do tří kategorií: odkaz na obrázek, disk s operačním systémem a datové disky.
-
-Objekt odkazu na bitovou kopii obsahuje následující informace o bitové kopii operačního systému:
-
-Data    | Popis
---------|-----------------
-id      | ID prostředku
-offer   | Nabídka platformy nebo Image
-vydavatel | Vydavatel obrázku
-skladové     | SKU image
-verze | Verze platformy nebo Image
-
-Objekt disku operačního systému obsahuje následující informace o disku operačního systému používaném virtuálním počítačem:
-
-Data    | Popis
---------|-----------------
-vyrovnávací | Požadavky na ukládání do mezipaměti
-createOption | Informace o tom, jak byl virtuální počítač vytvořen
-diffDiskSettings | Nastavení dočasného disku
-diskSizeGB | Velikost disku v GB
-image   | Virtuální pevný disk zdrojové image uživatele
-(     | Logické číslo jednotky disku
-managedDisk | Parametry spravovaného disku
-name    | Název disku
-virtuálního     | Virtuální pevný disk
-writeAcceleratorEnabled | Bez ohledu na to, jestli `writeAccelerator` je disk povolený
-
-Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
-
-Data    | Popis
---------|-----------------
-vyrovnávací | Požadavky na ukládání do mezipaměti
-createOption | Informace o tom, jak byl virtuální počítač vytvořen
-diffDiskSettings | Nastavení dočasného disku
-diskSizeGB | Velikost disku v GB
-encryptionSettings | Nastavení šifrování disku
-image   | Virtuální pevný disk zdrojové image uživatele
-managedDisk | Parametry spravovaného disku
-name    | Název disku
-osType  | Typ operačního systému, který je součástí disku
-virtuálního     | Virtuální pevný disk
-writeAcceleratorEnabled | Bez ohledu na to, jestli `writeAccelerator` je disk povolený
-
-Následující příklad ukazuje, jak zadat dotaz na informace o úložišti virtuálního počítače.
-
-**Žádost**
-
-```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
-```
-
-**Response** (Odpověď)
-
-> [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
-
-```json
-{
-    "dataDisks": [
-      {
-        "caching": "None",
-        "createOption": "Empty",
-        "diskSizeGB": "1024",
-        "image": {
-          "uri": ""
-        },
-        "lun": "0",
-        "managedDisk": {
-          "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "exampledatadiskname",
-        "vhd": {
-          "uri": ""
-        },
-        "writeAcceleratorEnabled": "false"
-      }
-    ],
-    "imageReference": {
-      "id": "",
-      "offer": "UbuntuServer",
-      "publisher": "Canonical",
-      "sku": "16.04.0-LTS",
-      "version": "latest"
-    },
-    "osDisk": {
-      "caching": "ReadWrite",
-      "createOption": "FromImage",
-      "diskSizeGB": "30",
-      "diffDiskSettings": {
-        "option": "Local"
-      },
-      "encryptionSettings": {
-        "enabled": "false"
-      },
-      "image": {
-        "uri": ""
-      },
-      "managedDisk": {
-        "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
-        "storageAccountType": "Standard_LRS"
-      },
-      "name": "exampleosdiskname",
-      "osType": "Linux",
-      "vhd": {
-        "uri": ""
-      },
-      "writeAcceleratorEnabled": "false"
-    }
-}
-```
-
-## <a name="vm-tags"></a>Značky VM
-
-Značky virtuálních počítačů jsou součástí rozhraní API instancí v rámci `instance/compute/tags` koncového bodu.
-Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Pomocí následující žádosti můžete načíst značky přiřazené k virtuálnímu počítači.
-
-**Žádost**
-
-```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
-```
-
-**Response** (Odpověď)
-
-```text
-Department:IT;Environment:Test;Role:WebRole
-```
-
-`tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
-
-**Žádost**
-
-```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
-```
-
-**Response** (Odpověď)
-
-```json
-[
-  {
-    "name": "Department",
-    "value": "IT"
-  },
-  {
-    "name": "Environment",
-    "value": "Test"
-  },
-  {
-    "name": "Role",
-    "value": "WebRole"
-  }
-]
-```
-
 ## <a name="attested-data"></a>Ověřená data
+
+### <a name="get-attested-data"></a>Získat ověřená data
 
 IMDS pomáhá zajistit záruky, že poskytnutá data přicházejí z Azure. Společnost Microsoft podepisuje tyto informace, takže si můžete ověřit, že image v Azure Marketplace je ta, kterou používáte v Azure.
 
-### <a name="sample-1-get-attested-data"></a>Ukázka 1: získání ověřených dat
-
-> [!NOTE]
-> Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědí je poměrně vytištěn z důvodu čitelnosti.
-
-**Žádost**
-
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+GET /metadata/attested/document
 ```
 
-`Api-version` je povinné pole. Podporované verze rozhraní API najdete v [části věnované používání](#usage) .
-`Nonce` je volitelný řetězec s deseti číslicemi. Pokud není zadaný, vrátí IMDS na svém místě aktuální koordinované časové razítko (UTC).
+#### <a name="parameters"></a>Parametry
 
-> [!NOTE]
-> Z důvodu mechanismu ukládání do mezipaměti IMDS `nonce` může být vrácena dříve hodnota uložená v mezipaměti.
+| Název | Požadováno/volitelné | Popis |
+|------|-------------------|-------------|
+| `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
+| `nonce` | Volitelné | Desítkový řetězec, který slouží jako kryptografická hodnota nonce. Pokud není zadána žádná hodnota, IMDS použije aktuální časové razítko UTC.
 
-**Response** (Odpověď)
+#### <a name="response"></a>Odpověď
 
 ```json
 {
- "encoding":"pkcs7","signature":"MIIEEgYJKoZIhvcNAQcCoIIEAzCCA/8CAQExDzANBgkqhkiG9w0BAQsFADCBugYJKoZIhvcNAQcBoIGsBIGpeyJub25jZSI6IjEyMzQ1NjY3NjYiLCJwbGFuIjp7Im5hbWUiOiIiLCJwcm9kdWN0IjoiIiwicHVibGlzaGVyIjoiIn0sInRpbWVTdGFtcCI6eyJjcmVhdGVkT24iOiIxMS8yMC8xOCAyMjowNzozOSAtMDAwMCIsImV4cGlyZXNPbiI6IjExLzIwLzE4IDIyOjA4OjI0IC0wMDAwIn0sInZtSWQiOiIifaCCAj8wggI7MIIBpKADAgECAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBBAUAMCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tMB4XDTE4MTEyMDIxNTc1N1oXDTE4MTIyMDIxNTc1NlowKzEpMCcGA1UEAxMgdGVzdHN1YmRvbWFpbi5tZXRhZGF0YS5henVyZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAML/tBo86ENWPzmXZ0kPkX5dY5QZ150mA8lommszE71x2sCLonzv4/UWk4H+jMMWRRwIea2CuQ5RhdWAHvKq6if4okKNt66fxm+YTVz9z0CTfCLmLT+nsdfOAsG1xZppEapC0Cd9vD6NCKyE8aYI1pliaeOnFjG0WvMY04uWz2MdAgMBAAGjYDBeMFwGA1UdAQRVMFOAENnYkHLa04Ut4Mpt7TkJFfyhLTArMSkwJwYDVQQDEyB0ZXN0c3ViZG9tYWluLm1ldGFkYXRhLmF6dXJlLmNvbYIQZ8VuSofHbJRAQNBNpiASdDANBgkqhkiG9w0BAQQFAAOBgQCLSM6aX5Bs1KHCJp4VQtxZPzXF71rVKCocHy3N9PTJQ9Fpnd+bYw2vSpQHg/AiG82WuDFpPReJvr7Pa938mZqW9HUOGjQKK2FYDTg6fXD8pkPdyghlX5boGWAMMrf7bFkup+lsT+n2tRw2wbNknO1tQ0wICtqy2VqzWwLi45RBwTGB6DCB5QIBATA/MCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBCwUAMA0GCSqGSIb3DQEBAQUABIGAld1BM/yYIqqv8SDE4kjQo3Ul/IKAVR8ETKcve5BAdGSNkTUooUGVniTXeuvDj5NkmazOaKZp9fEtByqqPOyw/nlXaZgOO44HDGiPUJ90xVYmfeK6p9RpJBu6kiKhnnYTelUk5u75phe5ZbMZfBhuPhXmYAdjc7Nmw97nx8NnprQ="
+    "encoding":"pkcs7",
+    "signature":"MIIEEgYJKoZIhvcNAQcCoIIEAzCCA/8CAQExDzANBgkqhkiG9w0BAQsFADCBugYJKoZIhvcNAQcBoIGsBIGpeyJub25jZSI6IjEyMzQ1NjY3NjYiLCJwbGFuIjp7Im5hbWUiOiIiLCJwcm9kdWN0IjoiIiwicHVibGlzaGVyIjoiIn0sInRpbWVTdGFtcCI6eyJjcmVhdGVkT24iOiIxMS8yMC8xOCAyMjowNzozOSAtMDAwMCIsImV4cGlyZXNPbiI6IjExLzIwLzE4IDIyOjA4OjI0IC0wMDAwIn0sInZtSWQiOiIifaCCAj8wggI7MIIBpKADAgECAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBBAUAMCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tMB4XDTE4MTEyMDIxNTc1N1oXDTE4MTIyMDIxNTc1NlowKzEpMCcGA1UEAxMgdGVzdHN1YmRvbWFpbi5tZXRhZGF0YS5henVyZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAML/tBo86ENWPzmXZ0kPkX5dY5QZ150mA8lommszE71x2sCLonzv4/UWk4H+jMMWRRwIea2CuQ5RhdWAHvKq6if4okKNt66fxm+YTVz9z0CTfCLmLT+nsdfOAsG1xZppEapC0Cd9vD6NCKyE8aYI1pliaeOnFjG0WvMY04uWz2MdAgMBAAGjYDBeMFwGA1UdAQRVMFOAENnYkHLa04Ut4Mpt7TkJFfyhLTArMSkwJwYDVQQDEyB0ZXN0c3ViZG9tYWluLm1ldGFkYXRhLmF6dXJlLmNvbYIQZ8VuSofHbJRAQNBNpiASdDANBgkqhkiG9w0BAQQFAAOBgQCLSM6aX5Bs1KHCJp4VQtxZPzXF71rVKCocHy3N9PTJQ9Fpnd+bYw2vSpQHg/AiG82WuDFpPReJvr7Pa938mZqW9HUOGjQKK2FYDTg6fXD8pkPdyghlX5boGWAMMrf7bFkup+lsT+n2tRw2wbNknO1tQ0wICtqy2VqzWwLi45RBwTGB6DCB5QIBATA/MCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBCwUAMA0GCSqGSIb3DQEBAQUABIGAld1BM/yYIqqv8SDE4kjQo3Ul/IKAVR8ETKcve5BAdGSNkTUooUGVniTXeuvDj5NkmazOaKZp9fEtByqqPOyw/nlXaZgOO44HDGiPUJ90xVYmfeK6p9RpJBu6kiKhnnYTelUk5u75phe5ZbMZfBhuPhXmYAdjc7Nmw97nx8NnprQ="
 }
 ```
 
-Objekt BLOB podpisu je verze dokumentu podepsaná pomocí [PKCS7](https://aka.ms/pkcs7). Obsahuje certifikát použitý k podepsání spolu s určitými podrobnostmi specifickými pro virtuální počítače. 
+> [!NOTE]
+> Z důvodu mechanismu ukládání do mezipaměti IMDS může být vrácena hodnota náhodně v mezipaměti.
 
-Pro virtuální počítače vytvořené pomocí Azure Resource Manager to zahrnuje `vmId` ,, `sku` , `nonce` `subscriptionId` , `timeStamp` pro vytváření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro Azure Marketplace image. 
+Objekt BLOB podpisu je verze dokumentu podepsaná pomocí [PKCS7](https://aka.ms/pkcs7). Obsahuje certifikát použitý k podepsání spolu s určitými podrobnostmi specifickými pro virtuální počítače.
 
-U virtuálních počítačů vytvořených pomocí modelu nasazení Classic `vmId` je zaručeno, že bude naplněna pouze hodnota. Certifikát můžete extrahovat z odpovědi a použít ho k potvrzení, že odpověď je platná a přichází z Azure.
+Pro virtuální počítače vytvořené pomocí Azure Resource Manager obsahuje dokument `vmId` , `sku` , `nonce` , `subscriptionId` , `timeStamp` pro vytváření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro Azure Marketplace image.
 
-Dokument obsahuje následující pole:
+U virtuálních počítačů vytvořených pomocí modelu nasazení Classic `vmId` je zaručeno, že bude naplněna pouze služba. Certifikát můžete extrahovat z odpovědi a použít ho k potvrzení, že odpověď je platná a přichází z Azure.
 
-Data | Popis | Představená verze
------|-------------|-----------------------
-licenseType | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Upozorňujeme, že tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
-generované | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud `nonce` nebyla zadána žádná, použije se aktuální koordinovaný světový časový razítko. | 2018-10-01
-rozhraní | [Azure Marketplace plán obrázku](/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel). | 2018-10-01
-časové razítko/createdOn | Koordinovaný světový časový razítko pro čas vytvoření podepsaného dokumentu. | 2018-20-01
-časové razítko/expiresOn | Koordinovaný světový časový razítko pro dobu, kdy vypršela platnost podepsaného dokumentu. | 2018-10-01
-vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2018-10-01
-subscriptionId | Předplatné Azure pro virtuální počítač. | 2019-04-30
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače. | 2019-11-01
+Dekódování dokumentu obsahuje následující pole:
 
-### <a name="sample-2-validate-that-the-vm-is-running-in-azure"></a>Ukázka 2: ověření, jestli je virtuální počítač spuštěný v Azure
+| Data | Popis | Představená verze |
+|------|-------------|--------------------|
+| `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
+| `nonce` | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud `nonce` nebyla zadána žádná, použije se aktuální koordinovaný světový časový razítko. | 2018-10-01
+| `plan` | [Azure Marketplace plán obrázku](/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel). | 2018-10-01
+| `timestamp.createdOn` | Časové razítko UTC pro vytvoření podepsaného dokumentu | 2018-20-01
+| `timestamp.expiresOn` | Časové razítko UTC pro vypršení platnosti podepsaného dokumentu | 2018-10-01
+| `vmId` | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2018-10-01
+| `subscriptionId` | Předplatné Azure pro virtuální počítač | 2019-04-30
+| `sku` | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2019-11-01
+
+> [!NOTE]
+> Pro klasické virtuální počítače (bez Azure Resource Manager) je zaručena naplnit pouze vmId.
+
+Ukázkový dokument:
+```json
+{
+   "nonce":"20201130-211924",
+   "plan":{
+      "name":"planName",
+      "product":"planProduct",
+      "publisher":"planPublisher"
+   },
+   "sku":"Windows-Server-2012-R2-Datacenter",
+   "subscriptionId":"8d10da13-8125-4ba9-a717-bf7490507b3d",
+   "timeStamp":{
+      "createdOn":"11/30/20 21:19:19 -0000",
+      "expiresOn":"11/30/20 21:19:24 -0000"
+   },
+   "vmId":"02aab8a4-74ef-476e-8182-f6d2ba4166a6"
+}
+```
+
+
+#### <a name="sample-1-validate-that-the-vm-is-running-in-azure"></a>Ukázka 1: ověření, jestli je virtuální počítač spuštěný v Azure
 
 Dodavatelé v Azure Marketplace chtějí zajistit, aby byl software licencován pro spouštění pouze v Azure. Pokud někdo zkopíruje virtuální pevný disk do místního prostředí, musí být tento dodavatel schopný detekovat. Prostřednictvím IMDS můžou tito dodavatelé získat podepsaná data, která garantuje odpověď jenom z Azure.
 
 > [!NOTE]
 > Tato ukázka vyžaduje, aby byl nainstalovaný nástroj JQ.
 
-**Žádost**
+**Ověřování**
 
 ```bash
 # Get the signature
@@ -771,7 +967,7 @@ openssl x509 -inform der -in intermediate.cer -out intermediate.pem
 openssl smime -verify -in sign.pk7 -inform pem -noverify
 ```
 
-**Response** (Odpověď)
+**Výsledky**
 
 ```json
 Verification successful
@@ -818,23 +1014,24 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 > [!NOTE]
 > Certifikát pro veřejný cloud a každý z svrchovaného cloudu se budou lišit.
 
-Cloud | Certifikát
-------|------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/) | *. metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
-[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
+| Cloud | Certifikát |
+|-------|-------------|
+| [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/) | *. metadata.azure.com
+| [Azure Government](https://azure.microsoft.com/overview/clouds/government/) | *. metadata.azure.us
+| [Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/) | *. metadata.azure.cn
+| [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/) | *. metadata.microsoftazure.de
 
 > [!NOTE]
 > Certifikáty nemusí mít přesnou shodu `metadata.azure.com` pro veřejný cloud. Z tohoto důvodu by ověřování certifikace mělo umožňovat běžný název z jakékoli `.metadata.azure.com` subdomény.
 
-V případech, kdy se zprostředkující certifikát nedá stáhnout kvůli omezením sítě během ověřování, můžete Zprostředkovaný certifikát připnout. Počítejte s tím, že Azure se zavede přes certifikáty, což je standardní postupy infrastruktury veřejných klíčů. Je nutné aktualizovat připnuté certifikáty, když dojde k přechodu. Pokaždé, když se naplánuje změna aktualizace zprostředkujícího certifikátu, blog Azure se aktualizuje a zákazníci Azure se budou informovat. 
+V případech, kdy se zprostředkující certifikát nedá stáhnout kvůli omezením sítě během ověřování, můžete Zprostředkovaný certifikát připnout. Azure shrnuje certifikáty, což je standardní postupy PKI. Připnuté certifikáty musíte aktualizovat, když dojde k přechodu. Pokaždé, když se naplánuje změna aktualizace zprostředkujícího certifikátu, blog Azure se aktualizuje a zákazníci Azure se budou informovat. 
 
 Zprostředkující certifikáty najdete v [úložišti PKI](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro jednotlivé oblasti se můžou lišit.
 
 > [!NOTE]
 > Zprostředkující certifikát pro Azure Čína 21Vianet bude z globální kořenové certifikační autority DigiCert místo Baltimore.
 Pokud jste připnuli zprostředkující certifikáty pro Azure Čína jako součást změny autority kořenového řetězu, musí se aktualizovat zprostředkující certifikáty.
+
 
 ## <a name="managed-identity"></a>Spravovaná identita
 
@@ -846,42 +1043,38 @@ Podrobné pokyny k povolení této funkce najdete v tématu [získání přístu
 ## <a name="scheduled-events"></a>Naplánované události
 Stav naplánovaných událostí můžete získat pomocí IMDS. Pak může uživatel zadat sadu akcí, které se mají spustit na těchto událostech. Další informace najdete v tématu [naplánované události](scheduled-events.md).
 
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Služba je všeobecně dostupná ve všech cloudech Azure.
-
 ## <a name="sample-code-in-different-languages"></a>Ukázkový kód v různých jazycích
 
 V následující tabulce jsou uvedeny ukázky volání IMDS pomocí různých jazyků uvnitř virtuálního počítače:
 
-Jazyk      | Příklad
---------------|----------------
-Bash          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
-C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
-Přejít            | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
-Java          | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
-NodeJS        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-Perl          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
-PowerShell    | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
-Puppet        | https://github.com/keirans/azuremetadata
-Python        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
-Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
+| Jazyk | Příklad |
+|----------|---------|
+| Bash | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
+| C# | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
+| Přejít | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+| Java | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
+| NodeJS | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+| Perl | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
+| PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+| Puppet | https://github.com/keirans/azuremetadata
+| Python | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
+| Ruby | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="errors-and-debugging"></a>Chyby a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
 
-Stavový kód HTTP | Důvod
------------------|-------
-200 OK |
-400 – Chybný požadavek | Chybějící `Metadata: true` Hlavička nebo chybějící parametr `format=json` při dotazování na uzel typu list.
-404 Nenalezeno  | Požadovaný element neexistuje.
-Metoda 405 není povolená. | `GET`Jsou podporovány pouze požadavky.
-410 pryč | Opakujte akci po nějaké době po dobu maximálně 70 sekund.
-429 – Příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
-Chyba služby 500     | Zkuste to za chvíli znovu.
+| Stavový kód HTTP | Důvod |
+|------------------|--------|
+| `200 OK` | Požadavek byl úspěšný.
+| `400 Bad Request` | `Metadata: true` `format=json` Při dotazování na uzel typu list chybí záhlaví nebo chybějící parametr.
+| `404 Not Found` | Požadovaný element neexistuje.
+| `405 Method Not Allowed` | Na koncovém bodu není podporována metoda HTTP (příkaz).
+| `410 Gone` | Opakovat po uplynutí určité doby na maximum 70 sekund
+| `429 Too Many Requests` | Překročily se [limity rychlosti](#rate-limiting) rozhraní API.
+| `500 Service Error` | Zkusit znovu za chvíli
 
-### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Zobrazuje se chyba `400 Bad Request, Required metadata header not specified` . Co to znamená?**
 
@@ -915,62 +1108,59 @@ V současné době se pro sady škálování virtuálních počítačů zobrazuj
 
 Volání metadat je nutné provést z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. Pokud jste změnili své trasy, musí existovat trasa pro adresu 169.254.169.254/32 v místní směrovací tabulce vašeho virtuálního počítače.
 
-   * <details>
-        <summary>Ověřuje se tabulka směrování.</summary>
-
-        1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Příklad:
-            ```console
-            > route print
-            IPv4 Route Table
-            ===========================================================================
-            Active Routes:
-            Network Destination        Netmask          Gateway       Interface  Metric
-                      0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
-                    127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-                    127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-              127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-                168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-              169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-            ... (continues) ...
-            ```
-        1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (například `172.16.69.7` ).
-        1. Vypíše konfiguraci rozhraní a nalezne rozhraní, které odpovídá odkazované tabulce směrování, a označuje tak adresu MAC (fyzickou).
-            ```console
-            > ipconfig /all
-            ... (continues) ...
-            Ethernet adapter Ethernet:
-
-               Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-               Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-               Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-               DHCP Enabled. . . . . . . . . . . : Yes
-               Autoconfiguration Enabled . . . . : Yes
-               Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-               IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-               Subnet Mask . . . . . . . . . . . : 255.255.255.0
-            ... (continues) ...
-            ```
-        1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Poznamenejte si veřejné a privátní IP adresy (a adresu MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
-            ```powershell
-            $ResourceGroup = '<Resource_Group>'
-            $VmName = '<VM_Name>'
-            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-            foreach($NicName in $NicNames)
-            {
-                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-                Write-Host $NicName, $Nic.primary, $Nic.macAddress
-            }
-            # Output: wintest767 True 00-0D-3A-E5-1C-C0
-            ```
-        1. Pokud se neshodují, aktualizujte tabulku směrování tak, aby byla cílem primární síťová karta a IP adresa.
-    </details>
+1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Například:         
+    ```console
+      > route print
+      IPv4 Route Table
+      ===========================================================================
+      Active Routes:
+      Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+              127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+              127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+          168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+      ... (continues) ...
+    ```
+1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (například `172.16.69.7` ).
+1. Vypíše konfiguraci rozhraní a nalezne rozhraní, které odpovídá odkazované tabulce směrování, a označuje si adresu MAC (fyzickou).
+    ```console
+      > ipconfig /all
+      ... (continues) ...
+      Ethernet adapter Ethernet:
+  
+                 Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+                 Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+                 Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+                 DHCP Enabled. . . . . . . . . . . : Yes
+                 Autoconfiguration Enabled . . . . : Yes
+                 Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+                 IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+                 Subnet Mask . . . . . . . . . . . : 255.255.255.0
+              ... (continues) ...
+    ```
+1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Poznamenejte si veřejné a privátní IP adresy (a adresu MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
+    ```powershell
+    $ResourceGroup = '<Resource_Group>'
+    $VmName = '<VM_Name>'
+    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json |Foreach-Object { $_.  id.Split('/')[-1] }
+    foreach($NicName in $NicNames)
+    {
+        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName ConvertFrom-Json
+        Write-Host $NicName, $Nic.primary, $Nic.macAddress
+    }
+    # Output: wintest767 True 00-0D-3A-E5-1C-C0
+    ```
+1. Pokud se neshodují, aktualizujte tabulku směrování tak, aby byla cílem primární síťová karta a IP adresa.
 
 ## <a name="support"></a>Podpora
 
 Pokud nemůžete získat odpověď na metadata po několika pokusech, můžete vytvořit problém podpory v Azure Portal.
-Jako **typ problému** vyberte možnost **Správa**. V **kategorii kategorie** vyberte **instance metadata Service**.
 
-![Snímek obrazovky s podporou Instance Metadata Service](./media/instance-metadata-service/InstanceMetadata-support.png)
+## <a name="product-feedback"></a>Zpětná vazba k produktu
+
+Svůj názor na produkt a nápady můžete poskytnout kanálu zpětné vazby uživatelů v části Virtual Machines > Instance Metadata Service tady: https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
 
 ## <a name="next-steps"></a>Další kroky
 

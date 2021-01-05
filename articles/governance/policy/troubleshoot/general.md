@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882972"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -36,7 +36,7 @@ V definici zásad se používá nesprávný nebo neexistující alias.
 
 #### <a name="resolution"></a>Řešení
 
-Nejprve ověřte, zda má vlastnost Správce prostředků alias. K vyhledání dostupných aliasů použijte [rozšíření Azure Policy pro Visual Studio Code](../how-to/extension-for-vscode.md), [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)nebo SDK. Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
+Nejprve ověřte, zda má vlastnost Správce prostředků alias. K vyhledání dostupných aliasů použijte [rozšíření Azure Policy pro Visual Studio Code](../how-to/extension-for-vscode.md) nebo SDK. Pokud alias pro vlastnost Správce prostředků neexistuje, vytvořte lístek podpory.
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>Scénář: podrobnosti vyhodnocení nejsou aktuální.
 
@@ -228,7 +228,7 @@ Lusky spravované identity (NMI) v poli _AAD-pod-identity_ mění uzly softwaru 
 
 #### <a name="resolution"></a>Řešení
 
-Pomocí konfigurace AzurePodIdentityException CRD vylučte systém lusky pomocí `kubernetes.azure.com/managedby: aks` popisku v oboru názvů _Kube-System_ v _AAD-pod-identity_ . **AzurePodIdentityException**
+Pomocí konfigurace AzurePodIdentityException CRD vylučte systém lusky pomocí `kubernetes.azure.com/managedby: aks` popisku v oboru názvů _Kube-System_ v _AAD-pod-identity_ . 
 
 Další informace najdete v tématu [zakázání identity AAD pod u konkrétního typu pod/aplikací](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 

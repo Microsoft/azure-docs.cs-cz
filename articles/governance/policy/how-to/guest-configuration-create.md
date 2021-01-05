@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755969"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881782"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+Pokud má prostředek požadované vlastnosti, musí být také vráceny `Get-TargetResource` paralelně s `reasons` třídou. Pokud `reasons` není zahrnuta, služba obsahuje chování "catch-All", který porovnává vstupní hodnoty s `Get-TargetResource` hodnotami, které vrátí `Get-TargetResource` , a poskytuje podrobné porovnání jako `reasons` .
+
 ### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
 Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Azure Resource Manager (šablona ARM) musí být stejné.
+
+### <a name="policy-requirements"></a>Požadavky na zásady
+
+Oddíl definice zásad `metadata` musí zahrnovat dvě vlastnosti pro službu konfigurace hosta pro automatizaci zřizování a vytváření sestav přiřazení konfigurace hostů. `category`Vlastnost musí být nastavená na "konfigurace hosta" a oddíl s názvem `Guest Configuration` musí obsahovat informace o přiřazení konfigurace hostů. `New-GuestConfigurationPolicy`Rutina tento text automaticky vytvoří.
+Podrobné pokyny najdete na této stránce.
+
+Následující příklad ukazuje `metadata` oddíl.
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
 

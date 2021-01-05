@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591818"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881085"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
 Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu. V tomto článku se dozvíte, jak vytvořit svazek, který využívá duální protokol NFSv3 a SMB s podporou mapování uživatelů LDAP.  
 
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 
 * Je potřeba, abyste už vytvořili fond kapacit.  
     Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).   
@@ -39,7 +39,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
-* Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
+* Ujistěte se, že je pro službu AD vytvořená certifikační autorita s použitím role [služby AD CS (Active Directory Certificate Services)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
 * Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
 * Verze systému souborů NFS používaná svazkem s duálním protokolem je NFSv3. V takovém případě platí následující požadavky:
     * Duální protokol nepodporuje rozšířené atributy seznamů ACL systému Windows `set/get` z klientů systému souborů NFS.
@@ -132,7 +132,8 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     * Klient se systémem Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
     * Další počítač v doméně obsahující kořenový certifikát  
 
-3. Exportujte kořenový certifikát.  
+3. Exportujte certifikát kořenové certifikační autority.  
+    Certifikáty kořenové certifikační autority je možné exportovat z osobních nebo důvěryhodných kořenových certifikačních autorit.   
     Zajistěte, aby byl certifikát exportován v kódování X. 509 kódované pomocí Base-64 (. Formát CER): 
 
     ![Průvodce exportem certifikátu](../media/azure-netapp-files/certificate-export-wizard.png)

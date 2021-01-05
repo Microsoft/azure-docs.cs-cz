@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938728"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882360"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrace služeb Azure s virtuálními sítěmi pro izolaci sítě
 
 Integrace Virtual Network (VNet) pro službu Azure umožňuje uzamknout přístup k této službě pouze do vaší infrastruktury virtuální sítě. Infrastruktura virtuální sítě také zahrnuje partnerské virtuální sítě a místní sítě.
 
 Integrace virtuální sítě poskytuje službám Azure výhody izolace sítě a je možné ji provést pomocí jedné nebo několika z následujících metod:
-- [Nasazení vyhrazených instancí služby do virtuální sítě](virtual-network-service-endpoints-overview.md). Služby pak mohou být soukromě přistupované v rámci virtuální sítě a z místních sítí.
+- [Nasazení vyhrazených instancí služby do virtuální sítě](virtual-network-for-azure-services.md). Služby pak mohou být soukromě přistupované v rámci virtuální sítě a z místních sítí.
 - Pomocí [privátního koncového bodu](../private-link/private-endpoint-overview.md) , který se připojuje soukromě a bezpečně ke službě využívající [privátní propojení Azure](../private-link/private-link-overview.md). Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě.
 - Přístup ke službě pomocí veřejných koncových bodů rozšířením virtuální sítě na službu prostřednictvím [koncových bodů služby](virtual-network-service-endpoints-overview.md). Koncové body služby umožňují zabezpečit prostředky služby ve virtuální síti.
 - Použití [značek služeb](service-tags-overview.md) k povolení nebo odepření provozu do prostředků Azure do a z koncových bodů veřejných IP adres.

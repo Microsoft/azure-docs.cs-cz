@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967580"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880983"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
@@ -35,12 +35,14 @@ Izolace zákazníka v rámci razítka infrastruktury se provádí v klientech, c
 
 Tyto jednotky holých serverů se podporují jenom pro spouštění SAP HANA. Na virtuálních počítačích se spouští vrstva aplikace SAP nebo vrstva pro střední brambory. Časová razítka infrastruktury, která spouštějí SAP HANA v Azure (velké instance), jsou připojená k nevykostěným síťovým službám Azure. Tímto způsobem je k dispozici připojení s nízkou latencí mezi SAP HANA jednotek Azure (velké instance) a virtuálními počítači.
 
-Od července 2019 rozlišujeme mezi dvěma různými revizemi razítek velkých instancí HANA a umístěním nasazení:
+Od ledna 2021 rozlišujeme mezi dvěma různými revizemi razítek velkých instancí HANA a umístěním nasazení:
 
 - "Revize 3" (rev 3): jsou razítka, která byla k dispozici pro zákazníka k nasazení do července 2019
 - "Revize 4" (Rev 4): nový návrh razítka, který je nasazený v těsné blízkosti hostitelů virtuálních počítačů Azure a který je doposud vydaný v oblastech Azure v:
     -  USA – západ 2 
-    -  East US 
+    -  East US
+    -  Východní USA 2 (v rámci dvou Zóny dostupnosti)
+    -  Střed USA – jih (mezi dvěma Zóny dostupnostiy)
     -  West Europe
     -  Severní Evropa
 

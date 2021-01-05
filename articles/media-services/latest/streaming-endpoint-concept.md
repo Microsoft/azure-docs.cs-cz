@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297191"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882870"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
 V Microsoft Azure Media Services [koncový bod streamování](/rest/api/media/streamingendpoints) představuje dynamický (just-in-time) a službu Origin Service, která může doručovat obsah živě a na vyžádání přímo do aplikace Client Playeru pomocí některého z běžných protokolů mediálního vysílání (HLS nebo pomlčky). **Koncový bod streamování** navíc poskytuje dynamické šifrování (za běhu) pro špičkové několikanásobnou. 
 
-Když vytvoříte účet Media Services, vytvoří se **výchozí** koncový bod streamování pro vás v zastaveném stavu. Nemůžete odstranit **výchozí** koncový bod streamování. V rámci účtu se dá vytvořit víc koncových bodů streamování (viz [kvóty a omezení](limits-quotas-constraints.md)).
+Když vytvoříte účet Media Services, vytvoří se **výchozí** koncový bod streamování pro vás v zastaveném stavu. V rámci účtu se dá vytvořit víc koncových bodů streamování (viz [kvóty a omezení](limits-quotas-constraints.md)).
 
 > [!NOTE]
 > Pokud chcete začít streamovat videa, musíte spustit **koncový bod streamování** , ze kterého chcete streamovat video.
@@ -51,7 +51,7 @@ Maximální limit jednotek streamování je obvykle 10. Pokud chcete pro svůj �
 
 Popis těchto typů najdete v následující tabulce:
 
-|Typ|Jednotky škálování|Description|
+|Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits` .|
 |**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` Poskytněte vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
@@ -63,16 +63,16 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="comparing-streaming-types"></a>Porovnávání typů streamování
 
-Příznak|Standard|Premium
+Funkce|Standard|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
-Fakturuje se poměrná hodnota| Každý den|Každý den
-Dynamické šifrování|Yes|Yes
-Dynamické balení|Yes|Yes
+Fakturuje se poměrná hodnota| Denně|Denně
+Dynamické šifrování|Ano|Ano
+Dynamické balení|Ano|Ano
 Měřítko|Automatické škálování až na cílovou propustnost.|Další služba SUs
-Filtrování IP/G20/vlastní hostitel <sup>1</sup>|Yes|Yes
-Progresivní stahování|Yes|Yes
+Filtrování IP/G20/vlastní hostitel <sup>1</sup>|Ano|Ano
+Progresivní stahování|Ano|Ano
 Doporučené použití |Doporučuje se pro velká většina scénářů streamování.|Profesionální použití.
 
 <sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>

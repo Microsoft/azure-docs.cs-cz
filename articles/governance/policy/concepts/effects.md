@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873944"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883074"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -32,7 +32,7 @@ Následující důsledky jsou _zastaralé_:
 > [!IMPORTANT]
 > Místo **EnforceOPAConstraint** nebo **EnforceRegoPolicy** efektů použijte _audit_ a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` . Předdefinované definice zásad se aktualizovaly. Když se upraví existující přiřazení zásad těchto předdefinovaných definic zásad, musí se parametr _efekt_ změnit na hodnotu v aktualizovaném seznamu _allowedValues_ .
 
-## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
+## <a name="order-of-evaluation"></a>Pořadí vyhodnocování
 
 Žádosti o vytvoření nebo aktualizaci prostředku se vyhodnocují Azure Policy nejdřív. Azure Policy vytvoří seznam všech přiřazení, která platí pro daný prostředek, a pak vyhodnotí prostředek proti každé definici. V [režimu Správce prostředků](./definition-structure.md#resource-manager-modes)Azure Policy zpracovává několik efektů před předáním požadavku příslušnému poskytovateli prostředků. Toto pořadí zabrání zbytečnému zpracování poskytovatelem prostředků, pokud prostředek nesplňuje navržené ovládací prvky zásad správného řízení Azure Policy. V [režimu poskytovatele](./definition-structure.md#resource-provider-modes)prostředků spravuje poskytovatel prostředků vyhodnocení a výsledek a oznamuje výsledky zpět do Azure Policy.
 
@@ -42,6 +42,8 @@ Následující důsledky jsou _zastaralé_:
 - **Audit** se vyhodnocuje jako poslední.
 
 Poté, co poskytovatel prostředků vrátí kód úspěšnosti Správce prostředků v **AuditIfNotExists** režimu, vyhodnotí a **DeployIfNotExists** vyhodnotí, jestli je potřeba další protokolování nebo akce dodržování předpisů.
+
+Kromě toho `PATCH` požadavky, které upraví `tags` související pole, omezují vyhodnocení zásad na zásady obsahující podmínky, které kontrolují `tags` související pole.
 
 ## <a name="append"></a>Připojit
 
@@ -166,8 +168,8 @@ Vlastnost **Details** AuditIfNotExists efektů má všechny podvlastnosti, kter�
   - Povolené hodnoty jsou _předplatné_ a _zdroj_.
   - Nastaví rozsah, ze kterého se má načíst související prostředek, ze kterého se má porovnat.
   - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
-  - V _případě skupiny prostředků by se_omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
-  - U _předplatného_se dotazuje na celé předplatné souvisejícího prostředku.
+  - V _případě skupiny prostředků by se_ omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
+  - U _předplatného_ se dotazuje na celé předplatné souvisejícího prostředku.
   - Výchozí hodnota je _Resource_.
 - **ExistenceCondition** (volitelné)
   - Pokud tento parametr nezadáte, všechny související prostředky **typu** vyhovují tomuto efektu a neaktivuje audit.
@@ -288,8 +290,8 @@ Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definu
   - Povolené hodnoty jsou _předplatné_ a _zdroj_.
   - Nastaví rozsah, ze kterého se má načíst související prostředek, ze kterého se má porovnat.
   - Neplatí, pokud **typ** je prostředek, který by byl pod zdrojem podmínky **if** .
-  - V _případě skupiny prostředků by se_omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
-  - U _předplatného_se dotazuje na celé předplatné souvisejícího prostředku.
+  - V _případě skupiny prostředků by se_ omezila na skupinu prostředků nebo skupinu **prostředků, která** je určená v **ResourceGroupName**.
+  - U _předplatného_ se dotazuje na celé předplatné souvisejícího prostředku.
   - Výchozí hodnota je _Resource_.
 - **ExistenceCondition** (volitelné)
   - Pokud tento parametr nezadáte, všechny související prostředky **typu** vyhovují tomuto efektu a neaktivuje nasazení.
@@ -368,7 +370,7 @@ Příklad: vyhodnotí SQL Server databáze a určí, jestli je povolený transpa
 Tento efekt je vhodný pro situace při testování nebo v případě, že definice zásad má vliv na parametry. Díky této flexibilitě je možné zakázat jedno přiřazení místo zakázání všech těchto přiřazení zásad.
 
 Alternativa k zakázanému efektu je **enforcementMode**, která je nastavená u přiřazení zásady.
-Když **enforcementMode** je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
+Když  je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
@@ -519,7 +521,7 @@ Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které 
   - Definovaná role musí zahrnovat všechny operace udělené roli [přispěvatele](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **conflictEffect** (volitelné)
   - Určuje, která definice zásad "WINS" v případě, že více než jedna definice zásad upravuje stejnou vlastnost nebo když operace úpravy nefunguje na zadaném aliasu.
-    - U nových nebo aktualizovaných prostředků má přednost definice zásad s _odepřením_ . Definice zásad s _auditem_ přeskočí všechny **operace**. Pokud má _zamítnutí_více než jedna definice zásady, je žádost zamítnuta jako konflikt. Pokud všechny definice zásad mají _audit_, nezpracovávají se žádné **operace** pro konfliktní definice zásad.
+    - U nových nebo aktualizovaných prostředků má přednost definice zásad s _odepřením_ . Definice zásad s _auditem_ přeskočí všechny **operace**. Pokud má _zamítnutí_ více než jedna definice zásady, je žádost zamítnuta jako konflikt. Pokud všechny definice zásad mají _audit_, nezpracovávají se žádné **operace** pro konfliktní definice zásad.
     - V případě existujících prostředků, pokud více než jedna definice zásad má _odepření_, je stav dodržování předpisů _konflikt_. Pokud jeden nebo více definic zásad má _zamítnutí_, každé přiřazení vrátí stav dodržování předpisů jako _nevyhovující_.
   - Dostupné hodnoty: _audit_, _Deny_, _zakázáno_.
   - Výchozí hodnota je _Deny_.
@@ -539,11 +541,11 @@ Vlastnost **Details** pro efekt úpravy obsahuje všechny podvlastnosti, které 
 
 ### <a name="modify-operations"></a>Úpravy operací
 
-Pole vlastností **Operations** umožňuje změnit několik značek různými způsoby v rámci jedné definice zásady. Každá operace se skládá z vlastností **operace**, **pole**a **hodnoty** . Operace určuje, co je úloha nápravy pro značky, pole určuje, která značka se změní, a hodnota definuje nové nastavení pro tuto značku. Následující příklad provede následující změny značek:
+Pole vlastností **Operations** umožňuje změnit několik značek různými způsoby v rámci jedné definice zásady. Každá operace se skládá z vlastností **operace**, **pole** a **hodnoty** . Operace určuje, co je úloha nápravy pro značky, pole určuje, která značka se změní, a hodnota definuje nové nastavení pro tuto značku. Následující příklad provede následující změny značek:
 
 - Nastaví `environment` značku na "test", a to i v případě, že již existuje s jinou hodnotou.
 - Odebere značku `TempResource` .
-- Nastaví `Dept` značku na parametr zásad, který _DeptName_ je nakonfigurovaný pro přiřazení zásady.
+- Nastaví `Dept` značku na parametr zásad, který  je nakonfigurovaný pro přiřazení zásady.
 
 ```json
 "details": {
@@ -569,10 +571,10 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
 
 Vlastnost **Operation** má následující možnosti:
 
-|Operace |Description |
+|Operace |Popis |
 |-|-|
 |addOrReplace |Přidá do prostředku definovanou vlastnost nebo značku a hodnotu, a to i v případě, že vlastnost nebo značka již existuje s jinou hodnotou. |
-|Přidat |Přidá do prostředku definovanou vlastnost nebo značku a hodnotu. |
+|Přidání |Přidá do prostředku definovanou vlastnost nebo značku a hodnotu. |
 |Odebrat |Odebere definovanou vlastnost nebo značku z prostředku. |
 
 ### <a name="modify-examples"></a>Upravit příklady

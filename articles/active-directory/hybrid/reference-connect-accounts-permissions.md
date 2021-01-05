@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858412"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881935"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -44,7 +44,7 @@ Kromě těchto tří účtů, které se používají ke spouštění Azure AD Co
 
 - **Služba AD DS účet správce rozlehlé sítě**: Volitelně můžete použít k vytvoření účtu konektoru služba AD DS výše.
 
-- **Účet globálního správce Azure AD**: používá se k vytvoření účtu konektoru Azure AD a konfiguraci služby Azure AD.
+- **Účet globálního správce Azure AD**: používá se k vytvoření účtu konektoru Azure AD a konfiguraci služby Azure AD.  Globální účty správců můžete zobrazit na webu Azure Portal.  Viz [zobrazení rolí](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
 
 - **Účet SQL SA (volitelné)**: používá se k vytvoření databáze AdSync při použití plné verze SQL Server.  Tento SQL Server může být pro Azure AD Connect instalaci místní nebo vzdálený.  Tento účet může být stejný jako účet správce podnikové sítě.  Zřizování databáze teď může provést vzdálená správa SQL a pak ji nainstalovat správce Azure AD Connect s právy k vlastnictví databáze.  Další informace najdete v tématu [instalace Azure AD Connect s použitím oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md) .
 
@@ -141,7 +141,7 @@ Musí mít taky udělená požadovaná oprávnění. Průvodce instalací neově
 
 Požadovaná oprávnění závisí na volitelných funkcích, které povolíte. Pokud máte více domén, musí být oprávnění udělena pro všechny domény v doménové struktuře. Pokud nepovolíte žádnou z těchto funkcí, budou stačit výchozí oprávnění **uživatele domény** .
 
-| Příznak | Oprávnění |
+| Funkce | Oprávnění |
 | --- | --- |
 | funkce MS-DS-ConsistencyGuid |Oprávnění k zápisu do atributu ms-DS-ConsistencyGuid dokumentovaného v [konceptech návrhu – použití MS-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Synchronizace hodnot hash hesel |<li>Replikovat změny adresáře</li>  <li>Replikovat všechny změny adresáře |

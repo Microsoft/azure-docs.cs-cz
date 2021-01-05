@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814478"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883108"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
 
@@ -76,10 +76,6 @@ Pro odběry následujících typů, které byly vytvořeny po 15. listopadu 2017
 Pokud chcete mít možnost odesílat e-maily z virtuálních počítačů Azure přímo externím poskytovatelům e-mailu (bez použití ověřeného přenosu SMTP), můžete vytvořit žádost otevřením případu podpory pomocí následujícího typu problému: **technické**  >  **Virtual Network**  >  **připojení**  >  **nemůže odesílat e-maily (SMTP/port 25)**. Nezapomeňte přidat podrobnosti o tom, proč musí vaše nasazení odeslat e-mailem přímo poskytovatelům pošty místo použití ověřeného přenosu. Žádosti budou přezkoumány a schváleny na uvážení společnosti Microsoft. Žádosti budou uděleny až po dokončení dalších kontrol podvodu. 
 
 Po vyloučení předplatného a po zastavení a restartu virtuálních počítačů v Azure Portal dojde k vyloučení všech virtuálních počítačů v tomto předplatném. Výjimka platí jenom pro vyžádané předplatné a jenom pro přenosy virtuálních počítačů, které jsou směrované přímo na Internet.
-
-## <a name="restrictions-and-limitations"></a>Omezení a omezení
-
-Směrování portu 25 přenosů prostřednictvím služeb Azure PaaS, jako je [Azure firewall](https://azure.microsoft.com/services/azure-firewall/) , se nepodporuje.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 

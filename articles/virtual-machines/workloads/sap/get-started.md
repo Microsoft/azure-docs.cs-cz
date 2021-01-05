@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/21/2020
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722891"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883091"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -83,6 +83,8 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 01/04/2021: přidejte nové oblasti Azure podporované službou HLI do [toho, co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) .
+- 12/29/2020: přidejte doporučení architektury pro konkrétní oblasti Azure v [konfiguracích úloh SAP pomocí zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 - 12/21/2020: přidejte nové certifikace do SKU velkých instancí HANA v části [dostupné SKU pro HLI](./hana-available-skus.md) .
 - 12/12/2020: byl přidán ukazatel na poznámku ke službě SAP poznámky objasňující podrobnosti o podpoře Oracle Enterprise Linux podle SAP pro to, [co je software SAP podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) .
 - 11/26/2020: Přizpůsobte [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md) a [Azure Storage typů pro úlohy SAP](./planning-guide-storage.md) na změnu jednoho [virtuálního počítače SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)

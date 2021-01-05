@@ -10,12 +10,12 @@ ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 57cde2c5c0a1caf7ad5182cad8db72ab8aa7c908
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 04b0b20452264493a0045c5adb6a1c32df5c6191
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531779"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883125"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -64,8 +64,8 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 | Typ účtu úložiště | Podporované oblasti | Podporované služby |
 |--|--|--|
 | Obecné účely v2<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japan East<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2 | Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
-| BlockBlobStorage<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2| Jenom objekty blob bloku úrovně Premium |
-| Úložiště | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2 | Jenom soubory úrovně Premium – jenom sdílené složky |
+| BlockBlobStorage<sup>1</sup> | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Japan East<br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2| Jenom objekty blob bloku úrovně Premium |
+| Úložiště | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br /> Evropa – západ<br /> Japan East<br /> USA – východ <br /> USA – východ 2 <br /> USA – západ 2 | Jenom soubory úrovně Premium – jenom sdílené složky |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
 <sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -189,7 +189,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

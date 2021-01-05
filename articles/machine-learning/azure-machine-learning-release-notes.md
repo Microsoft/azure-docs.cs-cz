@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760108"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881816"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (aktualizace z prosince)
++ **Nové funkce**
+  + Hledání uživatelského názvu. Uživatelé teď můžou vyhledat všechny soubory uložené v pracovním prostoru.
+  + Markdownu se souběžná podpora na každou buňku poznámkového bloku. V buňce s poznámkovým blokem teď můžou uživatelé možnost Zobrazit vykreslenou syntaxi Markdownu a Markdownu vedle sebe.
+  + Stavový řádek buňky Stavový řádek označuje, ve kterém stavu je buňka kódu, zda byla buňka úspěšně spuštěna a jak dlouho trvalo spuštění. 
+   
++ **Opravy chyb a vylepšení**
+  + Vylepšené doby načítání stránek
+  + Vyšší výkon 
+  + Vylepšená rychlost a spolehlivost jádra
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Sada SDK Azure Machine Learning pro Python v 1.19.0
@@ -83,7 +95,19 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
     + Zastaralé použití Nccl a Gloo jako platného typu vstupu pro třídy Estimator namísto použití PyTorchConfiguration s ScriptRunConfig. 
     + Zastaralé použití MPI jako platného typu vstupu pro třídy Estimator namísto použití MpiConfiguration s ScriptRunConfig.
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (listopad Update)
++ **Nové funkce**
+   + Nativní terminál. Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím [integrovaného terminálu.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+  + Duplicitní složka 
+  + Náklady na vyřazení výpočtů 
+  + Offline výpočetní Pylance 
 
++ **Opravy chyb a vylepšení**
+  + Vylepšené doby načítání stránek
+  + Vyšší výkon 
+  + Vylepšená rychlost a spolehlivost jádra
+  + Nahrávání velkých souborů. Nyní můžete odeslat soubor >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 

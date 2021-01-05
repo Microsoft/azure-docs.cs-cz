@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483623"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881901"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -38,16 +38,23 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="regional-availability"></a>Regionální dostupnost
+
+Azure Media Services je teď v Azure Portal k dispozici v oblasti Norsko – východ.  V této oblasti není žádný restV2.
+
 ## <a name="october-2020"></a>Říjen 2020
 
 ### <a name="basic-audio-analysis"></a>Základní analýza zvuku
+
 Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního režimu. Nový režim základní zvukové analyzátoru poskytuje možnost nízkého výkonu pro extrakci přepisu řeči a formátování titulků a titulků. Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Podívejte se na seznam [podporovaných jazyků.](analyzing-video-audio-files-concept.md#built-in-presets)
 
 Zákazníci, kteří používají indexer V1 a indexer v2, by měli migrovat na základní předvolby analýzy zvuku.
 
 Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyzing-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
 
-## <a name="live-events"></a>Živé události
+### <a name="live-events"></a>Živé události
 
 Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlastností. Kromě toho můžou uživatelé zadat předponu pro statický název hostitele pro vstupní a náhledové adresy URL pro aktivní událost. VanityUrl je nyní volána `useStaticHostName` pro lepší reflektování záměru vlastnosti.
 
@@ -57,7 +64,7 @@ Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlas
 
 Live Encoding teď přidává schopnost zasílat fragmenty intervalu pevného snímku s pevným klíčem mezi 0,5 až 20 sekund.
 
-## <a name="accounts"></a>Účty
+### <a name="accounts"></a>Účty
 
 > [!WARNING]
 > Pokud vytvoříte účet Media Services s verzí 2020-05-01 API, nebude fungovat s RESTv2 

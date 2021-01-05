@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172669"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881187"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -45,7 +45,7 @@ Následující příklad ukazuje technický profil pro jednorázové heslo:
 
 ## <a name="generate-code"></a>Generování kódu
 
-Prvním režimem tohoto technického profilu je vygenerování kódu. Níže jsou uvedeny možnosti, které lze nakonfigurovat pro tento režim.
+Prvním režimem tohoto technického profilu je vygenerování kódu. Níže jsou uvedeny možnosti, které lze nakonfigurovat pro tento režim. V rámci relace jsou sledovány kódy vygenerované a pokusy. 
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -73,9 +73,9 @@ Následující nastavení lze použít ke konfiguraci režimu generování kódu
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60` ; Maximum: `1200` ; Výchozí: `600` . Pokaždé, když je poskytnut kód (stejný kód s použitím `ReuseSameCode` nebo nový kód), je prodloužení platnosti kódu prodlouženo.  |
+| CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60` ; Maximum: `1200` ; Výchozí: `600` . Pokaždé, když je poskytnut kód (stejný kód s použitím `ReuseSameCode` nebo nový kód), je prodloužení platnosti kódu prodlouženo. Tato doba se používá také k nastavení časového limitu opakování (po dosažení maximálního počtu pokusů je uživatel zablokován z pokusu o získání nových kódů až do vypršení platnosti této doby). |
 | CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
-| CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
+| CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
 | NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
 | NumCodeGenerationAttempts | Ne | Počet pokusů o generování kódu na identifikátor. Výchozí hodnota je 10, pokud není zadána. |
 | Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode` . |

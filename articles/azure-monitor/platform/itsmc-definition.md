@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 20c59e5ecc24dfe5c9eadb05899bf37d39ce09e7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809475"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882279"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -129,7 +129,22 @@ Pro vytvoření skupin akcí použijte následující postup:
 
 9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace**, bude každá položka konfigurace mít svou vlastní pracovní položku. To znamená, že pro každou položku konfigurace bude k dispozici jedna pracovní položka.
 
-    * V případě, že vyberete v rozevíracím seznamu pracovní položky "incident" nebo "Alert": Pokud zrušíte zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
+    * V případě, že vyberete v rozevírací nabídce pracovní položky "incident" nebo "Alert": 
+        * Pokud zaškrtnete políčko **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. V systému ITSM může být více než jedna položka konfigurace na jednu položku konfigurace.
+
+            Například:
+            1) Výstraha 1 se 3 položkami konfigurace: A, B, C vytvoří 3 pracovní položky.
+            2) Výstraha 2 s 1 položkou konfigurace: D vytvoří 1 pracovní položku.
+
+                **Na konci tohoto toku budou 4 výstrahy.**
+        * Zrušíte-li zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , budou zobrazovány výstrahy, které nebudou vytvářet novou pracovní položku. pracovní položky budou sloučeny podle pravidla výstrahy.
+
+            Například:
+            1) Výstraha 1 se 3 položkami konfigurace: A, B, C vytvoří 1 pracovní položku.
+            2) Výstraha 2 pro stejné pravidlo výstrahy jako fáze 1 s 1 položkou konfigurace: D bude sloučena s pracovní položkou ve fázi 1.
+            3) Upozornění 3 pro jiné pravidlo výstrahy s 1 položkou konfigurace: E vytvoří 1 pracovní položku.
+
+                **Na konci tohoto toku budou 2 výstrahy.**
 
        ![Snímek obrazovky, který zobrazuje okno incidentu ITSM.](media/itsmc-overview/itsm-action-configuration.png)
 

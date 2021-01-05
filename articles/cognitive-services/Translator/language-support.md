@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606840"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882411"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -256,7 +256,7 @@ Podívejte se na referenční dokumentaci pro [hledání slovníku](reference/v3
 | Norština      | `nb`          |
 | Perština      | `fa`          |
 | Polština      | `pl`          |
-| Portugalština (Brazílie)     | `pt-br`          |
+| Portugalština (Brazílie)     | `pt`          |
 | Rumunština      | `ro`          |
 | Ruština      | `ru`          |
 | Srbština (latinka)      | `sr-Latn`          |

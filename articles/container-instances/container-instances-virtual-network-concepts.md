@@ -3,12 +3,12 @@ title: Scénáře použití virtuální sítě
 description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů do služby Azure Virtual Network.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569165"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882428"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -41,6 +41,7 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * [Spravovanou identitu](container-instances-managed-identity.md) nemůžete použít ve skupině kontejnerů nasazené do virtuální sítě.
 * V rámci skupiny kontejnerů nasazených do virtuální sítě nemůžete povolit [test živého provozu](container-instances-liveness-probe.md) nebo test [připravenosti](container-instances-readiness-probe.md) .
 * Kvůli dalším zapojení síťových prostředků jsou nasazení do virtuální sítě obvykle pomalejší než nasazení standardní instance kontejneru.
+* Pokud připojujete skupinu kontejnerů k účtu Azure Storage, musíte do tohoto prostředku přidat [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) .
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

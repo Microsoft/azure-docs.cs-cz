@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704125"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883380"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -150,9 +150,38 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 
 | operationName | REST API – příkaz |
 | --- | --- |
-
-| **CertificateGet**  | [Získat informace o certifikátu](/rest/api/keyvault/getcertificate) | | **CertificateCreate**  | [Vytvoření certifikátu](/rest/api/keyvault/createcertificate) | | **CertificateImport**  | [Import certifikátu do trezoru](/rest/api/keyvault/importcertificate) | | **CertificateUpdate**  | [Aktualizace certifikátu](/rest/api/keyvault/updatecertificate) | | **CertificateList**  | [Výpis certifikátů v trezoru](/rest/api/keyvault/getcertificates) | | **CertificateListVersions**  | [Seznam verzí certifikátu](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete**  | [Odstranit certifikát](/rest/api/keyvault/deletecertificate) | | **CertificatePurge**  | [Vyprázdnit certifikát](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup**  | [Zálohování certifikátu](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Obnovení certifikátu](/rest/api/keyvault/restorecertificate) | | **CertificateRecover**  | [Obnovení certifikátu](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted**  | [Získat odstraněný certifikát](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted**  | [Výpis odstraněných certifikátů v trezoru](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet**  | [Získat Zásady certifikátů](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate**  | [Aktualizovat zásady certifikátů](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet**  | [Vytvořit zásadu certifikátu](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet**  | [Získat kontakty certifikátu](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet**  | [Nastavit kontakty certifikátu](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete**  | [Odstranit kontakty s certifikátem](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet**  | [Získat vystavitele certifikátu](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet**  | [Nastavit vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate**  | [Aktualizovat vystavitele certifikátu](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete**  | [Odstranit vystavitele certifikátu](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList**  | [Seznam vystavitelů certifikátů](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** | Zápis certifikátu | | **CertificateRenew** | Prodloužit platnost certifikátu | | **CertificatePendingGet** | Načíst nevyřízený certifikát | | **CertificatePendingMerge** | Čeká se na sloučení certifikátů | | **CertificatePendingUpdate** | Čeká se na aktualizaci certifikátu | | **CertificatePendingDelete** | Odstranit nevyřízený certifikát | | **CertificateNearExpiryEventGridNotification** | Událost vypršení platnosti certifikátu v blízkosti |
-<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Událost vypršení platnosti certifikátu je publikovaná |
+| **CertificateGet** |[Získání informací o certifikátu](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Vytvoření certifikátu](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Import certifikátu do trezoru](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Aktualizace certifikátu](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[Výpis certifikátů v trezoru](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[Seznam verzí certifikátu](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Odstranit certifikát](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Vyprázdnit certifikát](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Zálohování certifikátu](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Obnovení certifikátu](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Obnovení certifikátu](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Získat odstraněný certifikát](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Výpis odstraněných certifikátů v trezoru](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Získat Zásady certifikátů](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Aktualizovat zásady certifikátů](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Vytvořit zásady certifikátů](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Získat kontakty certifikátu](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Nastavení kontaktů certifikátu](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Odstranit kontakty certifikátu](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Získat vystavitele certifikátu](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Nastavit vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Aktualizace vystavitele certifikátu](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Odstranit vystavitele certifikátu](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[Výpis vystavitelů certifikátů](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Zápis certifikátu |
+| **CertificateRenew** |Obnovení certifikátu |
+| **CertificatePendingGet** |Načíst nevyřízený certifikát |
+| **CertificatePendingMerge** |Čeká se na sloučení certifikátů |
+| **CertificatePendingUpdate** |Čeká se na aktualizaci certifikátu. |
+| **CertificatePendingDelete** |Odstranit certifikát, který čeká |
+| **CertificateNearExpiryEventGridNotification** |Publikovaná událost poblíž vypršení platnosti certifikátu |
+| **CertificateExpiredEventGridNotification** |Událost vypršení platnosti certifikátu byla publikována. |
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Použití protokolů Azure Monitoru

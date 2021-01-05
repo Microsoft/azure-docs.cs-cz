@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917167"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881629"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Jak používat Azure.Search.Documents v aplikaci C# .NET
 
@@ -31,7 +31,7 @@ Stejně jako v předchozích verzích můžete tuto knihovnu použít k těmto a
 + Načtení a správa vyhledávacích dokumentů v indexu
 + Provádění dotazů, aniž byste museli řešit podrobnosti HTTP a JSON
 
-Knihovna je distribuována jako jeden [ balíček NuGetAzure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents/), který zahrnuje všechna rozhraní API používaná pro programový přístup k vyhledávací službě.
+Knihovna je distribuována jako jeden [ balíček NuGetAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/), který zahrnuje všechna rozhraní API používaná pro programový přístup k vyhledávací službě.
 
 Klientská knihovna definuje třídy jako `SearchIndex` , `SearchField` , a `SearchDocument` i operace, jako jsou `SearchIndexClient.CreateIndex` a `SearchClient.Search` na `SearchIndexClient` `SearchClient` třídy a. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
@@ -58,7 +58,7 @@ Pokud jste používali předchozí verzi sady .NET SDK a chcete upgradovat na ak
 
 Sada Azure SDK pro .NET odpovídá [.NET Standard 2,0](/dotnet/standard/net-standard#net-implementation-support), což znamená, že .NET Framework 4.6.1 a .net Core 2,0 jako minimální požadavky.
 
-## <a name="example-application"></a>Ukázková aplikace
+## <a name="example-application"></a>Příklad aplikace
 
 Tento článek "učí příklad", který se spoléhá na příklad [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) kódu na GitHubu, který ilustruje základní koncepty v Azure kognitivní hledání – konkrétně, jak vytvořit, načíst a dotazovat index vyhledávání.
 

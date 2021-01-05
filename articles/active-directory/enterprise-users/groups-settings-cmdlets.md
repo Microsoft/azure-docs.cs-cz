@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c48e23de6832999b262283c0bf6664b4dfe88ee7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859874"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881561"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -84,10 +84,11 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
    ```powershell
    $Setting = $Template.CreateDirectorySetting()
    ```  
-4. Pak aktualizujte hodnotu směrnice o využití:
+4. Pak aktualizujte objekt nastavení novou hodnotou. V následujících dvou příkladech se mění hodnota směrnice o využití a povolují se popisky citlivosti. V šabloně nastavte tyto nebo jakékoli jiné nastavení podle potřeby:
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+   $Setting["EnableMIPLabels"] = "True"
    ```  
 5. Pak použijte nastavení:
   
@@ -118,7 +119,7 @@ Pokud chcete aktualizovat hodnotu UsageGuideLinesUrl v šabloně nastavení, př
    ```powershell
     Name                          Value
     ----                          -----
-    EnableMIPLabels               false
+    EnableMIPLabels               True
     CustomBlockedWordsList
     EnableMSStandardBlockedWords  False
     ClassificationDescriptions

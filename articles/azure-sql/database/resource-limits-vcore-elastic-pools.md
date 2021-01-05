@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 10/15/2020
-ms.openlocfilehash: fb4746972f78dc40a3ec264d2e1964e8d4e99b3d
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097588"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882296"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,7 +126,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Více AZ|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Škálování čtení|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
@@ -158,7 +158,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Více AZ|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[K dispozici ve verzi Preview](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Škálování čtení|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 

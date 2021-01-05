@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565615"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883213"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall nastavení DNS
 
@@ -65,13 +65,16 @@ $azFw | Set-AzFirewall
 
 Azure Firewall můžete nakonfigurovat tak, aby fungoval jako proxy server DNS. Proxy server DNS je prostředník pro žádosti DNS z klientských virtuálních počítačů na server DNS. Pokud nakonfigurujete vlastní server DNS, povolte proxy server DNS, aby se zabránilo neshodě překladu názvů DNS, a v síťových pravidlech povolte filtrování plně kvalifikovaného názvu domény (FQDN).
 
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="Konfigurace proxy serveru d N S použitím vlastního serveru D N S.":::
+
+
 Pokud proxy server DNS nepovolíte, můžou žádosti DNS z klienta přejít na server DNS v jinou dobu nebo vracet jinou odpověď v porovnání s bránou firewall. Proxy DNS umísťuje Azure Firewall v cestě klientských požadavků, aby nedocházelo k nekonzistenci.
 
 Když je Azure Firewall proxy DNS, můžou být dostupné dva typy funkcí ukládání do mezipaměti:
 
-- **Kladná mezipaměť** : překlad DNS byl úspěšný. Brána firewall používá hodnotu TTL (Time to Live) paketu nebo objektu. 
+- **Kladná mezipaměť**: překlad DNS byl úspěšný. Brána firewall používá hodnotu TTL (Time to Live) paketu nebo objektu. 
 
-- **Záporná mezipaměť** : výsledkem překladu DNS není žádná odpověď nebo žádné řešení. Brána firewall tyto informace ukládá do mezipaměti po dobu jedné hodiny.
+- **Záporná mezipaměť**: výsledkem překladu DNS není žádná odpověď nebo žádné řešení. Brána firewall tyto informace ukládá do mezipaměti po dobu jedné hodiny.
 
 Proxy server DNS ukládá všechny vyřešené IP adresy z plně kvalifikovaných názvů domén v síťových pravidlech. Jako osvědčený postup použijte plně kvalifikované názvy domény, které se překládají na jednu IP adresu.  
 

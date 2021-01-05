@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/04/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 674bb67018fcbf7df6285a66c2e0aeb37d24f409
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e227e230c4de1234e068f72958367dc2ac709426
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744877"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881952"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pu
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele. `WithPollInterval` | Ruční |
 | Chování při nežádných nových změnách | Automaticky počkat `WithPollInterval` a znovu ověřit | Musí zachytit výjimku a ručně znovu ověřit |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
-| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporováno | Yes|
+| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporováno | Ano|
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 > [!NOTE]
@@ -115,7 +115,8 @@ while (iteratorForThePartitionKey.HasMoreResults)
                 Console.WriteLine($"Detected change for user with id {user.id}");
             }
     }
-    catch {
+    catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
+    {
         Console.WriteLine($"No new changes");
         Thread.Sleep(5000);
     }
@@ -157,7 +158,8 @@ while (iteratorA.HasMoreResults)
                 Console.WriteLine($"Detected change for user with id {user.id}");
             }
     }
-    catch {
+    catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
+    {
         Console.WriteLine($"No new changes");
         Thread.Sleep(5000);
     }
@@ -178,7 +180,8 @@ while (iteratorB.HasMoreResults)
                 Console.WriteLine($"Detected change for user with id {user.id}");
             }
     }
-    catch {
+    catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
+    {
         Console.WriteLine($"No new changes");
         Thread.Sleep(5000);
     }
@@ -205,7 +208,8 @@ while (iterator.HasMoreResults)
                 Console.WriteLine($"Detected change for user with id {user.id}");
             }
    }
-    catch {
+    catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
+    {
         Console.WriteLine($"No new changes");
         Thread.Sleep(5000);
     }   

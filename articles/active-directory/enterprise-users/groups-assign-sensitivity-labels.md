@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859959"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881392"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Přiřazení popisků citlivosti Microsoft 365 skupinám v Azure Active Directory
 
@@ -48,7 +48,7 @@ Pokud chcete použít publikované popisky na skupiny, musíte ji nejdřív povo
     ```
 
     > [!NOTE]
-    > Pokud se pro tuto organizaci Azure AD nevytvořilo žádné nastavení skupiny, musíte nejdřív vytvořit nastavení. Podle pokynů v části [Azure Active Directory rutiny nakonfigurujte nastavení skupiny](../enterprise-users/groups-settings-cmdlets.md) pro vytvoření nastavení skupiny pro tuto organizaci Azure AD.
+    > Pokud se pro tuto organizaci Azure AD nevytvořilo žádné nastavení skupiny, zobrazí se chyba ve výše uvedené rutině, která čte argument "nelze vytvořit vazby k parametru" ID ", protože má hodnotu null. V takovém případě musíte nejdřív vytvořit nastavení. Podle pokynů v části [Azure Active Directory rutiny nakonfigurujte nastavení skupiny](../enterprise-users/groups-settings-cmdlets.md) pro vytvoření nastavení skupiny pro tuto organizaci Azure AD.
 
 1. Potom zobrazte aktuální nastavení skupiny.
 

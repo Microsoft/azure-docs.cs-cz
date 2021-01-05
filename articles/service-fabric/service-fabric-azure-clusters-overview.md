@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018915"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882207"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -86,7 +86,7 @@ Aplikace vyžaduje změnu v průběhu času. Možná budete muset zvýšit prost
 
 Další informace najdete v článku [škálování clusterů Azure](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Inovován
+## <a name="upgrading"></a>Upgrade
 Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně ho spravuje Microsoft. Společnost Microsoft zodpovídá za opravy základního operačního systému a provádění Service Fabricch upgradů modulu runtime v clusteru. Cluster můžete nastavit tak, aby přijímal automatické upgrady za běhu, když společnost Microsoft vydává novou verzi, nebo vybrat podporovanou verzi modulu runtime, kterou požadujete. Kromě upgradů za běhu můžete také aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací.
 
 Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-upgrade.md).
@@ -94,16 +94,17 @@ Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 Můžete vytvářet clustery na virtuálních počítačích, na kterých běží tyto operační systémy:
 
-| Operační systém | Nejstarší podporovaná verze Service Fabric |
-| --- | --- |
-| Windows Server 2012 R2 | Všechny verze |
-| Windows Server 2016 | Všechny verze |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
-| Linux Ubuntu 18,04 | 7.1 |
+| Operační systém | Nejstarší podporovaná verze Service Fabric | Poslední podporovaná verze Service Fabric |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | – |
+| Windows Server 2016 | Všechny verze | – |
+| 20H2 Windows serveru | 7.2.445.9590 | – |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Všechny verze | – | 
+| Linux Ubuntu 16,04 | 6.0 | – |
+| Linux Ubuntu 18,04 | 7.1 | – |
 
 Další informace najdete v tématu [podporované verze clusteru v Azure](./service-fabric-versions.md#supported-operating-systems) .
 

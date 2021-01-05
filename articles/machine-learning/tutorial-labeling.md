@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347502"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882462"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
 
@@ -35,7 +35,7 @@ V tomto kurzu budete používat obrázky koček a psi.  Vzhledem k tomu, že ka�
 > * Označte data.  Tato úloha může být provedena buď vy, nebo vašimi popisky.
 > * Dokončete projekt tak, že zkontrolujete a exportujete data.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -104,7 +104,8 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 1. Pro formulář **vytvořit datovou sadu z úložiště** dat použijte následující vstup:
 
     1. Do formuláře **základní informace** přidejte název, v tomto příkladu budeme používat **obrázky-for-tutorial**.  Pokud chcete, přidejte popis.  Pak vyberte **Další**.
-    1. Ve formuláři pro **Výběr úložiště dat** vyberte pomocí rozevíracího seznamu **dříve vytvořené úložiště dat**, například **tutorial_images (Azure Blob Storage)** .
+    1. Ve formuláři pro **Výběr úložiště dat** vyberte **dříve vytvořené úložiště dat**, klikněte na název úložiště dat a vyberte **vybrat úložiště dat**.
+    1. Na další stránce Ověřte, zda je aktuálně vybrané úložiště dat správné. Pokud ne, vyberte **dříve vytvořené úložiště dat** a opakujte předchozí krok.
     1. Dál ještě na formuláři pro **Výběr úložiště dat** vyberte **Procházet** a pak vyberte DogsCats **(více tříd**).  Vyberte **Uložit** a jako cestu použijte **/MultiClass-DogsCats** .
     1. Kliknutím na tlačítko **Další** potvrďte podrobnosti **a vytvořte** datovou sadu a vytvořte ji.
     1. V seznamu vyberte kroužek vedle názvu datové sady, například **obrázky-for-tutorial**.

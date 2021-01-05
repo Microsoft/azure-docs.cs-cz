@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1159a6cfda6b877f04573c85fa437ce3bff81af1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b905b050752e2a6b7acd11e82420c0b0203dfcd1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97761686"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882190"
 ---
 # <a name="deploy-mlflow-models-with-azure-machine-learning-preview"></a>Nasazení modelů MLflow pomocí Azure Machine Learning (Preview)
 
-V tomto článku se dozvíte, jak nasadit model MLflow jako webovou službu Azure Machine Learning, abyste mohli využívat a používat Azure Machine Learning správy modelů a možností detekce přenosů dat v produkčních modelech.
+V tomto článku se dozvíte, jak nasadit model [MLflow](https://www.mlflow.org) jako webovou službu Azure Machine Learning, abyste mohli využívat a používat Azure Machine Learning správy modelů a možností detekce přenosů dat v produkčních modelech.
 
 Azure Machine Learning nabízí konfigurace nasazení pro:
 * Azure Container instance (ACI), což je vhodná volba pro nasazení s rychlým vývojem a testováním.
 * Služba Azure Kubernetes (AKS), která se doporučuje pro škálovatelná produkční nasazení.
 
-[MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Díky jeho integraci s Azure Machine Learning můžete tuto správu nad rámec školicí fáze modelu nasadit do fáze nasazení v produkčním modelu.
+MLflow je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Jeho integrace s Azure Machine Learning umožňuje tuto správu nad rámec fáze přípravy modelu nasadit do fáze nasazení v produkčním modelu.
 
 >[!NOTE]
 > Jako open source knihovna se MLflow změny často. Funkce, které jsou dostupné prostřednictvím Azure Machine Learning a integrace MLflow, by se měly považovat za verzi Preview, a není plně podporovaná Microsoftem.
 
-Následující diagram znázorňuje, že s rozhraním API pro nasazení MLflow můžete nasadit svůj existující MLflow model jako webovou službu Azure Machine Learning bez ohledu na jejich architektury--PyTorch, Tensorflow, scikit-učení, ONNX atd. a spravovat produkční modely v pracovním prostoru.
+Následující diagram znázorňuje, že s rozhraním API a Azure Machine Learning nasazení MLflow můžete nasadit modely vytvořené pomocí oblíbených rozhraní, jako je PyTorch, Tensorflow, scikit-učení atd., jako Azure Machine Learning webové služby a spravovat je ve svém pracovním prostoru. 
 
 ![ nasazení modelů mlflow pomocí Azure Machine Learningu](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
@@ -40,9 +40,11 @@ Následující diagram znázorňuje, že s rozhraním API pro nasazení MLflow m
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Pro připojení Azure Machine Learning nastavte identifikátor URI pro sledování MLflow](how-to-use-mlflow.md).
+* Model strojového učení. Pokud nemáte školený model, Najděte si příklad poznámkového bloku, který nejlépe vyhovuje vašemu výpočetnímu scénáři v [tomto úložišti](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) , a postupujte podle pokynů. 
+* [Pro připojení Azure Machine Learning nastavte identifikátor URI pro sledování MLflow](how-to-use-mlflow.md#track-local-runs).
 * Nainstalujte balíček `azureml-mlflow`. 
     * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+* Podívejte se, která [přístupová oprávnění potřebujete k provádění operací MLflow s vaším pracovním prostorem](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-aci"></a>Nasazení do ACI
 
@@ -140,7 +142,7 @@ Pokud neplánujete použít nasazenou webovou službu, použijte `service.delete
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
 
-[MLflow s poznámkovým blokům Azure ml](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) ukazují a rozšiřují koncepty prezentované v tomto článku.
+[MLflow s Azure Machine Learning poznámkovým blokům](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) předvádí a rozbalí v konceptech uvedených v tomto článku.
 
 > [!NOTE]
 > Úložiště příkladů založené na komunitě s použitím mlflow najdete na adrese https://github.com/Azure/azureml-examples .
@@ -150,3 +152,4 @@ Pokud neplánujete použít nasazenou webovou službu, použijte `service.delete
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](./how-to-enable-data-collection.md).
 * [Sledování Azure Databricks běží s MLflow](how-to-use-mlflow-azure-databricks.md).
+

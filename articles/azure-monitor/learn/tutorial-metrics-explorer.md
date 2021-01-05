@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451252"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881289"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
 Průzkumník metrik je funkce Azure Monitor v Azure Portal, která umožňuje vytvářet grafy z hodnot metriky, vizuálně sladit trendy a zkoumat špičky a neshodné hodnoty metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků Azure nebo vykreslit grafy z vlastních metrik. 
@@ -27,7 +27,7 @@ Následuje video, které zobrazuje rozsáhlejší scénář, než postup uveden�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
@@ -40,7 +40,7 @@ Můžete otevřít Průzkumníka metrik buď z nabídky Azure Monitor, nebo z na
 
 1. V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku.
 
-1. Vyberte **obor**, který je prostředkem, pro který chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, obor se už naplní.
+1. Vyberte **obor**, který je prostředkem, pro který chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, obor se už naplní. Další informace o různých možnostech pro výběr oboru prostředků najdete v [tomto článku](../platform/metrics-charts.md#resource-scope-picker).
 
     ![Vybrat obor](media/tutorial-metrics-explorer/scope-picker.png)
 

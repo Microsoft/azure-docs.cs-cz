@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488064"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882224"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -42,18 +42,13 @@ V nasazení služby Vzdálená plocha se webová role RD a role Brána VP spouš
 ## <a name="requirements"></a>Požadavky
 
 - Webové a Brána VP koncové body webu VP musí být umístěny ve stejném počítači a se společným kořenem. Web a Brána VP VP jsou publikovány jako jediná aplikace s proxy aplikací, takže můžete mít k dispozici jednotné přihlašování mezi oběma aplikacemi.
-
-- Už byste měli mít [nasazený](/windows-server/remote/remote-desktop-services/rds-in-azure) [proxy aplikace](application-proxy-add-on-premises-application.md)RDS a Enabled.
-
+- Už byste měli mít [nasazený](/windows-server/remote/remote-desktop-services/rds-in-azure) [proxy aplikace](application-proxy-add-on-premises-application.md)RDS a Enabled. Ujistěte se, že jste splnili požadavky na povolení proxy aplikací, jako je instalace konektoru, otevření požadovaných portů a adres URL a povolení TLS 1,2 na serveru.
 - Koncoví uživatelé musí použít kompatibilní prohlížeč pro připojení k webu RD Web nebo webovému klientovi RD. Další podrobnosti najdete v článku [Podpora pro konfigurace klientů](#support-for-other-client-configurations).
-
 - Při publikování webu RD Web se doporučuje použít stejný interní a externí plně kvalifikovaný název domény. Pokud se vnitřní a vnější plně kvalifikovaný název domény liší, měli byste zakázat překlad hlaviček požadavku, aby klient nepřijal neplatné odkazy.
-
 - Pokud používáte web RD v aplikaci Internet Explorer, bude nutné povolit doplněk RDS ActiveX.
-
 - Pokud používáte webového klienta služby Vzdálená plocha, budete muset použít konektor proxy aplikace [verze 1.5.1975 nebo novější](./application-proxy-release-version-history.md).
-
 - Pro tok předběžného ověřování Azure AD se uživatelé můžou k publikovaným prostředkům připojit jenom v podokně **aplikace RemoteApp a plochy** . Uživatelé se nemohou připojit k ploše pomocí podokna **připojit k VZDÁLENÉMU počítači** .
+- Pokud používáte Windows Server 2019, možná budete muset zakázat protokol HTTP2. Další informace najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Nasazení společného scénáře proxy serveru RDS a aplikace
 

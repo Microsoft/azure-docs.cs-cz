@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97676023"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882751"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s zabezpečením dat Imperva
 
@@ -37,7 +37,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Imperva data Security podporuje **IDP** iniciované jednotné přihlašování.
+* Zabezpečení dat **Imperva podporuje jednotné** přihlašování (SSO) iniciované.
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>Přidání zabezpečení dat Imperva z Galerie
 
@@ -76,9 +76,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<IMPERVA_DNS_NAME>:8443`
+    a. Do textového pole **identifikátor** zadejte identifikátor pomocí následujícího vzoru: `application-name`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<IMPERVA_DNS_NAME>:8443`
+    
+    c. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<IMPERVA_DNS_NAME>:8443`
+    
+    d. Do textového pole **odhlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<IMPERVA_DNS_NAME>:8443`    
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory Imperva data](mailto:support@jsonar.imperva.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

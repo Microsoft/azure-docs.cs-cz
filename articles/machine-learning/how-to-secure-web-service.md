@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830866"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880966"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS
 
@@ -168,7 +168,7 @@ Platnost certifikátů protokolu TLS/SSL vyprší a je třeba je obnovit. K tomu
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Aktualizace certifikátu vygenerovaného společností Microsoft
 
-Pokud certifikát původně vygeneroval Microsoft (při použití *leaf_domain_label* k vytvoření služby), použijte k aktualizaci certifikátu jeden z následujících příkladů:
+Pokud byl certifikát původně vygenerován společností Microsoft (při použití *leaf_domain_label* k vytvoření služby), bude v případě potřeby **automaticky obnoven** . Pokud ho chcete ručně obnovit, použijte k aktualizaci certifikátu jeden z následujících příkladů:
 
 > [!IMPORTANT]
 > * Pokud je stávající certifikát stále platný, použijte `renew=True` (SDK) nebo `--ssl-renew` (CLI), aby konfigurace vynutila jeho obnovení. Pokud je například stávající certifikát stále platný po dobu 10 dnů a nepoužijete `renew=True` , certifikát se nemusí prodloužit.

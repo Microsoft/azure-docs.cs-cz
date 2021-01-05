@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979959"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881505"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -169,7 +169,7 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Nedaří se zaregistrovat poskytovatele prostředků Microsoft. Change Analysis Provider z karty historie změn
 Pokud při prvním zobrazení historie změn po integraci s analýzou změn aplikace vidíte historii změn, uvidíte, že se automaticky zaregistruje poskytovatel prostředků **Microsoft. ChangeAnalysis**. Ve výjimečných případech může selhání selhat z následujících důvodů:
@@ -183,7 +183,6 @@ Pokud při prvním zobrazení historie změn po integraci s analýzou změn apli
     ```
 
 - **Nepovedlo se zaregistrovat poskytovatele prostředků Microsoft. ChangeAnalysis**. Tato zpráva znamená, že se něco nezdařilo hned po odeslání žádosti o registraci poskytovatele prostředků do uživatelského rozhraní a není v souvislosti s problémem s oprávněním. Pravděpodobně se může jednat o dočasný problém s připojením k Internetu. Zkuste aktualizovat stránku a zkontrolovat připojení k Internetu. Pokud chyba přetrvává, obraťte se na changeanalysishelp@microsoft.com
-- **Dotaz na poskytovatele prostředků Microsoft. ChangeAnalysis se nezdařil** *, protože předplatné služby Azure Lighthouse není podporováno, změny jsou k dispozici pouze v domovském tenantovi předplatného*. Poskytovatel prostředků pro změnu analýz pro uživatele, kteří nejsou v domovském tenantovi, má teď omezení. Očekáváme, že toto omezení bude v blízké budoucnosti vyřešeno. Pokud se jedná o blokující problém, existuje alternativní řešení, které zahrnuje vytvoření instančního objektu a explicitní přiřazení role pro povolení přístupu.  Obraťte changeanalysishelp@microsoft.com se na kontakt, kde najdete další informace.
 
 - **Trvá to déle, než se čekalo**. Tato zpráva znamená, že registrace trvá déle než 2 minuty. To je neobvyklé, ale nemusí nutně znamenat, že se něco pokazilo. Můžete přejít k **předplatným | Poskytovatel prostředků** pro kontrolu stavu registrace poskytovatele prostředků **Microsoft. ChangeAnalysis** . Můžete zkusit použít uživatelské rozhraní pro zrušení registrace, opětovného registraci nebo obnovení, abyste viděli, jestli vám to pomůže. Pokud se problém opakuje, obraťte se changeanalysishelp@microsoft.com na podporu.
     ![Řešení potíží s registrací RP trvá příliš dlouho](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ Pokud při prvním zobrazení historie změn po integraci s analýzou změn apli
 ![Snímek obrazovky nástroje pro diagnostiku a řešení problémů pro virtuální počítač s vybranými nástroji pro řešení potíží](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![Snímek obrazovky dlaždice pro nástroj pro řešení potíží s nedávnými změnami pro virtuální počítač](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>Předplatné Azure Lighthouse se nepodporuje.
+
+- **Dotaz na poskytovatele prostředků Microsoft. ChangeAnalysis se nezdařil** *, protože předplatné služby Azure Lighthouse není podporováno, změny jsou k dispozici pouze v domovském tenantovi předplatného*. Poskytovatel prostředků pro změnu analýz pro uživatele, kteří nejsou v domovském tenantovi, má teď omezení. Očekáváme, že toto omezení bude v blízké budoucnosti vyřešeno. Pokud se jedná o blokující problém, existuje alternativní řešení, které zahrnuje vytvoření instančního objektu a explicitní přiřazení role pro povolení přístupu.  Obraťte changeanalysishelp@microsoft.com se na kontakt, kde najdete další informace.
 
 ## <a name="next-steps"></a>Další kroky
 

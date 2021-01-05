@@ -2,13 +2,13 @@
 title: Číst data z Azure Event Hubs zachycená z aplikace v Pythonu (nejnovější)
 description: V tomto článku se dozvíte, jak napsat kód v Pythonu pro zachycení dat, která se odesílají do centra událostí, a přečtěte si data zachycených událostí z účtu služby Azure Storage.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109908"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883193"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub)
 
@@ -25,9 +25,13 @@ V tomto rychlém startu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Python 2,7 a 3,5 nebo novější s nainstalovaným a aktualizovaným PIP.  
+- Python s PIP a následující balíčky jsou nainstalované. Kód v tomto článku byl testován proti těmto verzím. 
+    - Python 3.7
+    - Azure – eventhub 5.2.0
+    - Azure – Storage – BLOB 12.6.0
+    - Avro – python3 1.10.1
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.  
 - Aktivní Event Hubs obor názvů a centrum událostí.
 [Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. V tomto rychlém startu potřebujete jenom primární klíč. Nepotřebujete připojovací řetězec.  
@@ -155,6 +159,13 @@ V tomto příkladu jsou zachycená data uložená v úložišti objektů BLOB v 
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > Kód v tomto článku byl testován proti těmto verzím. 
+    > - Python 3.7
+    > - Azure – eventhub 5.2.0
+    > - Azure – Storage – BLOB 12.6.0
+    > - Avro – python3 1.10.1
 2. Přejděte do adresáře, kam jste uložili *sender.py* a *capturereader.py*, a spusťte tento příkaz:
    
    ```
