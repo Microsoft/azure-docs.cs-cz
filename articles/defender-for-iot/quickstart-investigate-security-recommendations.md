@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 859f1c4a1ed1b3d9139307c52f44a14e3089e31f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 66b5694823096f0747ea099b631a53198a819816
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946904"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835036"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>Rychlý Start: zkoumání doporučení zabezpečení
 
@@ -27,17 +27,17 @@ Aktuální analýza a zmírnění doporučení v programu Defender pro IoT je ne
 
 V tomto rychlém startu prozkoumáme informace, které jsou k dispozici v jednotlivých doporučeních zabezpečení IoT, a vysvětlete, jak přejít k podrobnostem a použít podrobnosti o jednotlivých doporučeních a souvisejících zařízeních, abyste snížili riziko.
 
-Pusťme se do toho.
+Tak se do toho pusťme.
 
 ## <a name="investigate-new-recommendations"></a>Prozkoumat nová doporučení
 
 Seznam doporučení IoT Hub obsahuje všechna agregovaná doporučení zabezpečení pro vaši IoT Hub.
 
-1.  V Azure Portal otevřete **IoT Hub**chcete   prozkoumat nová doporučení.
+1.  V Azure Portal otevřete **IoT Hub** chcete prozkoumat nová doporučení.
 
-1.  V nabídce **zabezpečení**   Vyberte **doporučení**. Zobrazí se všechna doporučení zabezpečení pro IoT Hub a doporučení s **novým**   příznakem označují doporučení za posledních 24 hodin. 
+1.  V nabídce **zabezpečení** vyberte **doporučení**. Zobrazí se všechna doporučení zabezpečení pro IoT Hub a doporučení s **novým** příznakem označují doporučení za posledních 24 hodin. 
 
-    [![Prozkoumejte doporučení zabezpečení pomocí ASC pro IoT](media/quickstart/investigate-security-recommendations-inline.png)](media/quickstart/investigate-security-recommendations-expanded.png#lightbox)
+    :::image type="content" source="media/quickstart/investigate-security-recommendations-expanded.png#lightbox" alt-text="Prozkoumat doporučení zabezpečení pomocí ASC pro IoT] (Media/rychlý Start/investigate-security-recommendations-inline.png)":::
 
 
 1.  Výběrem a otevřením všech doporučení ze seznamu otevřete podrobnosti doporučení a přejdete k podrobnostem o konkrétní možnosti.
@@ -46,21 +46,21 @@ Seznam doporučení IoT Hub obsahuje všechna agregovaná doporučení zabezpeč
 
 Otevřete všechna agregovaná doporučení pro zobrazení podrobného popisu doporučení, nápravných kroků, ID zařízení pro každé zařízení, které vyvolalo doporučení. Zobrazuje také závažnost doporučení a přímý přístup k šetření pomocí Log Analytics.
 
-1.  V seznamu **IoT Hub**   \>  **Security**   \>  **doporučení**zabezpečení vyberte a otevřete jakékoli doporučení zabezpečení   .
+1.  V seznamu **IoT Hub** \>  \> **doporučení** zabezpečení vyberte a otevřete jakékoli doporučení zabezpečení.
 
-1.  Přečtěte si **Popis**doporučení, **závažnost**, **Podrobnosti o zařízení**   všech zařízení, která toto doporučení vystavila v rámci agregovaného období. 
+1.  Přečtěte si **Popis** doporučení, **závažnost**, **Podrobnosti o zařízení** všech zařízení, která toto doporučení vystavila v rámci agregovaného období. 
 
-1.  Po kontrole specifických doporučení použijte pokyny k **Ruční nápravě**, které   vám pomůžou opravit a vyřešit problém, který toto doporučení způsobil. 
+1.  Po kontrole specifických doporučení použijte pokyny k **Ruční nápravě** , které vám pomůžou opravit a vyřešit problém, který toto doporučení způsobil. 
 
-    [![Náprava doporučení zabezpečení pomocí ASC pro IoT](media/quickstart/remediate-security-recommendations-inline.png)](media/quickstart/remediate-security-recommendations-expanded.png#lightbox)
+    [ :::image type="content" source="media/quickstart/remediate-security-recommendations-expanded.png#lightbox" alt-text="Náprava doporučení zabezpečení pomocí ASC pro IoT] (Media/rychlý Start/remediate-security-recommendations-inline.png)":::
 
 
 1.  V podrobnostech o doporučeních pro konkrétní zařízení vyberte požadované zařízení na stránce s podrobnostmi o prozkoumání.
 
-    [![Prozkoumat konkrétní doporučení zabezpečení pro zařízení pomocí ASC pro IoT](media/quickstart/explore-security-recommendation-detail-inline.png)](media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox)
+    [ :::image type="content" source="media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox" alt-text="Prozkoumejte konkrétní doporučení zabezpečení pro zařízení s ASC pro IoT] (Media/rychlý Start/explore-security-recommendation-detail-inline.png)":::
 
 
-1.  Pokud se vyžaduje další šetření, **Prozkoumejte doporučení v Log Analytics**   pomocí odkazu. 
+1.  Pokud se vyžaduje další šetření, **Prozkoumejte doporučení v Log Analytics** pomocí odkazu. 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -10,34 +10,34 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409378"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844941"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
-V okně nastavení pro váš Custom Vision projekt můžete vybrat doménu pro svůj projekt. Vyberte doménu, která je nejblíže vašemu scénáři.
+Na kartě nastavení v Custom Vision projektu můžete vybrat doménu pro svůj projekt. Vyberte doménu, která je nejblíže vašemu scénáři. Pokud přistupujete Custom Vision prostřednictvím klientské knihovny nebo REST API, bude při vytváření projektu nutné zadat ID domény. Můžete získat seznam ID domén s možnostmi [získat domény](https://westus2.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeab)nebo použít následující tabulku.
 
 ## <a name="image-classification"></a>Klasifikace obrázků
 
 |Doména|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, jakou doménu chcete vybrat, vyberte obecnou doménu.|
-|__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla.|
-|__Orientační body tváře__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním.|
-|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu.|
+|__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, jakou doménu chcete vybrat, vyberte možnost Obecná doména. ÚČET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla. ÚČET `c151d5b5-dd07-472a-acc8-15d29dea8518`|
+|__Orientační body tváře__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním. ÚČET `ca455789-012d-4b50-9fec-5bb63841c793`|
+|__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu. ÚČET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase u hraničních zařízení.|
 
 ## <a name="object-detection"></a>Detekce objektů
 
 |Doména|Účel|
 |---|---|
-|__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte obecnou doménu.|
-|__Logo__|Optimalizováno pro hledání loga značky v obrázcích.|
-|__Produkty na police__|Optimalizováno pro zjišťování a klasifikaci produktů v police.|
+|__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte možnost Obecná doména. ÚČET `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Logo__|Optimalizováno pro hledání loga značky v obrázcích. ÚČET `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
+|__Produkty na police__|Optimalizováno pro zjišťování a klasifikaci produktů v police. ÚČET `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktní domény__| Optimalizováno pro omezení detekce objektů v reálném čase u hraničních zařízení.|
 
 ## <a name="compact-domains"></a>Kompaktní domény
@@ -46,11 +46,11 @@ Modely generované pomocí kompaktních domén lze exportovat pro místní spuš
 
 Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[ 1 \] . Tato čísla nezahrnují předzpracování a postprocessingí času.
 
-|Úkol|Doména|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
-|---|---|---|---|---|
-|Classification|Obecné (kompaktní)|5 MB|13 MS|5 MS|
-|Detekce objektů|Obecné (kompaktní)|45 MB|35 MS|5 MS|
-|Detekce objektů|General (Compact) [S1]|14 MB|27 MS|7 MS|
+|Úloha|Doména|ID|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
+|---|---|---|---|---|---|
+|Klasifikace|Obecné (kompaktní)|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 MS|5 MS|
+|Detekce objektů|Obecné (kompaktní)|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 MS|5 MS|
+|Detekce objektů|General (Compact) [S1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 MS|7 MS|
 
 >[!NOTE]
 >__Obecná (kompaktní)__ doména pro detekci objektu vyžaduje speciální logiku postprocessing. Podrobnosti najdete v ukázkovém skriptu v exportovaném balíčku zip. Pokud potřebujete model bez logiky postprocessing, použijte __Obecné (Compact) [S1]__.

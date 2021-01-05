@@ -4,12 +4,12 @@ description: Přehled Service Bus diagnostiky klientů a komplexní trasování 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc7dab21fc01b624e8ab122fe883be89ea8633f6
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021625"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832688"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
 
@@ -21,7 +21,7 @@ Když producent pošle zprávu přes frontu, obvykle se děje v rozsahu někter�
 Microsoft Azure Service Bus zasílání zpráv má definované vlastnosti datové části, které by producenti a spotřebitelé měli použít k předání takového kontextu trasování.
 Protokol je založený na [protokolu korelace http](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Název vlastnosti        | Description                                                 |
+| Název vlastnosti        | Popis                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Correlation-Context | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |
@@ -193,7 +193,7 @@ TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
 var tagsList = new StringBuilder();
 foreach (var tags in currentActivity.Tags)
 {
-    tagsList.Append($", "{tags.Key}={tags.Value}");
+    tagsList.Append($", {tags.Key}={tags.Value}");
 }
 
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");

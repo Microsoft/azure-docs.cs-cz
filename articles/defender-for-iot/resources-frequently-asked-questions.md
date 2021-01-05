@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089192"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835019"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k Azure Defenderu pro IoT
 
@@ -79,15 +79,11 @@ Yes. Přizpůsobenou výstrahu můžete nastavit na předem stanovenou sadu chov
 
 Senzory a agenti pokračují v běhu a ukládají data, pokud je zařízení spuštěné. Data se ukládají do mezipaměti zpráv zabezpečení podle konfigurace velikosti. Když zařízení znovu získá připojení, zprávy o zabezpečení budou pokračovat v posílání.
 
-
-
-
-
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak začít s Defenderem pro IoT, najdete v následujících článcích:
 
 - Přečtěte si [Přehled](overview.md) programu Defender for IoT.
-- Ověření [požadovaných součástí služby](service-prerequisites.md)
-- Další informace o [tom, jak začít](getting-started.md)
+- Ověření [systémových požadavků](quickstart-system-prerequisites.md)
+- Další informace o tom, jak [začít s Defenderem pro IoT](getting-started.md)
 - Vysvětlení [výstrah zabezpečení pro program Defender pro IoT](concept-security-alerts.md)

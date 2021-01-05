@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: b3a633c1eff6adf2a33b4f3bfc818eb51ff5ee85
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653091"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844968"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
@@ -61,9 +61,9 @@ ms.locfileid: "97653091"
 | Jazyk               | Kód jazyka | Podpora verze 2.1 | Podpora V3 | Od verze V3 model: |       Poznámky        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabština                |     `ar`      |     ✓      |            |                                 |                    |
-| Čeština                 |     `cs`      |     ✓      |            |                                 |                    |
 | Čínština (zjednodušená)     |   `zh-hans`   |     ✓      |            |                                 | `zh` také přijato |
 | Čínština (tradiční)   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Čeština                 |     `cs`      |     ✓      |            |                                 |                    |
 | Dánština                |     `da`      |     ✓      |            |                                 |                    |
 | Nizozemština                 |     `nl`      |     ✓      |            |                                 |                    |
 | Angličtina                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -77,8 +77,8 @@ ms.locfileid: "97653091"
 | Korejština                |     `ko`      |     ✓      |            |                                 |                    |
 | Norština (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` také přijato |
 | Polština                |     `pl`      |     ✓      |            |                                 |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |            |                                 | `pt` také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |            |                                 | `pt` také přijato |
 | Ruština              |     `ru`      |     ✓      |            |                                 |                    |
 | Španělština               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Švédština               |     `sv`      |     ✓      |            |                                 |                    |
@@ -101,8 +101,8 @@ ms.locfileid: "97653091"
 | Korejština                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Norština (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` také přijato |
 | Polština                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` také přijato |
 | Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` také přijato |
 | Ruština               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Španělština               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Švédština               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |

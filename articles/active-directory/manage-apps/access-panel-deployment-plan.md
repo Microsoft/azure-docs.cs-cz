@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835658"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832535"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
@@ -54,7 +54,7 @@ Výhody služby Azure AD moje aplikace představují tyto firmy:
 
 Moje aplikace je zdarma a nevyžaduje žádné licence k použití na základní úrovni. Nicméně počet objektů ve vašem adresáři a další funkce, které chcete nasadit, můžou vyžadovat další licence. Mezi běžné scénáře služby Azure AD, které mají požadavky na licencování, patří následující funkce zabezpečení:
 
-* [Multi-Factor Authentication Azure AD](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Členství na základě skupin](../fundamentals/active-directory-manage-groups.md)
 * [Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -74,8 +74,8 @@ Následující tabulka popisuje klíčové případy použití pro nasazení moj
 
 | Oblast| Popis |
 | - | - |
-| Access| Portál moje aplikace je přístupný z firemních i osobních zařízení v podnikové síti. |
-|Access | Portál moje aplikace je přístupný z firemních zařízení mimo podnikovou síť. |
+| Přístup| Portál moje aplikace je přístupný z firemních i osobních zařízení v podnikové síti. |
+|Přístup | Portál moje aplikace je přístupný z firemních zařízení mimo podnikovou síť. |
 | Auditování| Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní. |
 | Zásady správného řízení| Životní cyklus přiřazení uživatelů k aplikacím a skupinám připojeným k Azure AD je definován a monitorován. |
 | Zabezpečení| Přístup k prostředkům je řízen pomocí přiřazení uživatelů a skupin. Přístup k prostředkům můžou spravovat jenom autorizovaní uživatelé. |
@@ -122,11 +122,11 @@ Následující tabulka uvádí několik důležitých konfigurací aplikace a ob
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
 | Umožňuje uživatelům používat jednotné přihlašování pro určité typy aplikací.| Federované jednotné přihlašování, OAuth, heslo jednotného přihlašování, App proxy |
-| Povolení uživatelům používat Samoobslužné resetování hesla | Yes |
-| Dovolit uživatelům používat Multi-Factor Authentication| Yes |
+| Povolení uživatelům používat Samoobslužné resetování hesla | Ano |
+| Dovolit uživatelům používat Multi-Factor Authentication| Ano |
 | Umožňuje uživatelům používat samoobslužnou správu skupin pro určité typy skupin.| Skupiny zabezpečení, Microsoft 365 skupiny |
-| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Yes |
-| Umožňuje uživatelům používat kontroly přístupu.| Yes |
+| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Ano |
+| Umožňuje uživatelům používat kontroly přístupu.| Ano |
 
 ### <a name="plan-consent-strategy"></a>Strategie souhlasu s plánem
 
@@ -172,7 +172,7 @@ Další informace o tom, jak nasadit a nakonfigurovat aplikace SaaS, najdete v [
 
 Když se uživatelé přihlásí k aplikacím jednotného přihlašování na základě hesla, musí nainstalovat a použít rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření spustí skript, který přenáší heslo do formuláře pro přihlášení k aplikaci. Uživatelům se zobrazí výzva k instalaci rozšíření při prvním spuštění aplikace jednotného přihlašování založeného na heslech. Další informace o rozšíření najdete v této dokumentaci o [instalaci rozšíření prohlížeče moje aplikace]().
 
-Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](../user-help/my-apps-portal-end-user-access.md). Vaše možnosti jsou:
+Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](../user-help/my-apps-portal-end-user-access.md). Mezi možnosti patří:
 
 * [Zásady skupiny pro Internet Explorer]()
 * [Configuration Manager pro Internet Explorer](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -303,11 +303,11 @@ K provedení požadované úlohy v Azure Active Directory použijte nejnižší 
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|
-| Správce helpdesku| Podpora vrstvy 1| Žádná |
+| Správce helpdesku| Podpora vrstvy 1| Žádné |
 | Správce identit| Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD| Globální správce |
-| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
+| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 | Správci infrastruktury| Vlastník změna certifikátu| Globální správce |
-| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
+| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 
 Pomocí [Privileged Identity Management](../privileged-identity-management/pim-configure.md) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 

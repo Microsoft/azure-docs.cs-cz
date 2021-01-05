@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094335"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835053"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure Defender pro IoT Agent
 
 Tento článek obsahuje seznam nejčastějších dotazů a odpovědí k programu Defender pro IoT agent.
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>Musím instalovat vloženého agenta zabezpečení?
 
@@ -41,7 +40,6 @@ Instalace agenta na zařízeních IoT není povinná, aby bylo možné povolit D
 Defender pro službu IoT agent poskytuje pro konfiguraci zařízení, chování a přístup (pomocí kontroly konfigurace) pokrytí hrozeb na úrovni zařízení, proces & připojení. Agent zabezpečení programu Defender for IoT nekontroluje data ani aktivity související s obchodem.
 
 Agent zabezpečení pro IoT for IoT je open source a dostupný na GitHubu v 32 bitových a 64 verzích Windows a Linux: https://github.com/Azure/Azure-IoT-Security .
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Jaké jsou závislosti a požadavky agenta?
 
@@ -87,13 +85,11 @@ Agenta nelze vypnout.
 
 Pokud agent přestane komunikovat nebo se mu nepovede odeslat zprávy o zabezpečení, dojde k vygenerování upozornění na **tichou** výstrahu zařízení.
 
-
-
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak začít s Defenderem pro IoT, najdete v následujících článcích:
 
 - Přečtěte si [Přehled](overview.md) programu Defender for IoT.
-- Ověření [požadovaných součástí služby](service-prerequisites.md)
-- Další informace o [tom, jak začít](getting-started.md)
+- Ověření [systémových požadavků](quickstart-system-prerequisites.md)
+- Další informace o tom, jak [začít s Defenderem pro IoT](getting-started.md)
 - Vysvětlení [výstrah zabezpečení pro program Defender pro IoT](concept-security-alerts.md)

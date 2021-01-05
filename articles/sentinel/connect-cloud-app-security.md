@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655710"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835104"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
@@ -48,7 +48,7 @@ Pokud je Cloud App Security nasazená a ingestují vaše data, můžou se data v
 
 1. Klikněte na **použít změny**.
 
-1. Můžete vybrat, jestli chcete, aby v Azure Defenderu byly při automatickém generování incidentů ve službě Azure Sentinel výstrahy z Azure Security Center. V části **vytvořit incidenty** vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza** na kartě  **aktivní pravidla** .
+1. Můžete vybrat, jestli chcete, aby výstrahy z Cloud App Security automaticky generovaly incidenty ve službě Azure Sentinel. V části **vytvořit incidenty – Doporučené!** vyberte **povoleno** , pokud chcete zapnout výchozí analytické pravidlo, které automaticky vytvoří incidenty z výstrah. Toto pravidlo pak můžete upravit v části **Analýza** na kartě  **aktivní pravidla** .
 
 1. Pokud chcete použít příslušné schéma v Log Analytics pro Cloud App Security výstrahy, zadejte `SecurityAlert` do okna dotazu. Do pole Cloud Discovery protokoly schématu zadejte `McasShadowItReporting` .
 

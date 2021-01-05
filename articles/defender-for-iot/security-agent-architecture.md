@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936370"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835121"
 ---
 # <a name="security-agent-reference-architecture"></a>Referenční architektura agenta zabezpečení
 
@@ -45,11 +45,11 @@ Defender pro agenty zabezpečení IoT se vyvíjí jako open source projekty a js
 
 Defender for IoT nabízí různé instalační agenty pro 32bitová a 64bitová okna a totéž pro 32bitové a 64bitové systémy Linux. Ujistěte se, že máte pro každé zařízení správný instalační program agentů podle následující tabulky:
 
-| Architektura | Linux | Windows |    Podrobnosti|
-|----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32  | C  | C#  ||
-| 64bitový  | C# nebo C           | C#      | Pro zařízení s více omezenými nebo minimálními prostředky zařízení doporučujeme použít agenta jazyka C.|
-|
+| Architektura | Linux | Windows | Podrobnosti |
+|--|--|--|--|
+| 32 | C | C# |  |
+| 64bitový | C# nebo C | C# | Pro zařízení s více omezenými nebo minimálními prostředky zařízení doporučujeme použít agenta jazyka C. |
+
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -59,6 +59,6 @@ Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, postupujt
 
 - Porozumění [metodám ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
 - Výběr a nasazení [agenta zabezpečení](how-to-deploy-agent.md)
-- Přečtěte si téma Defender for IoT [Service – požadavky](service-prerequisites.md)
+- Přečtěte si téma Defender for IoT – [požadavky na systém](quickstart-system-prerequisites.md)
 - Naučte se, jak [ve IoT Hub povolit Defender pro službu IoT](quickstart-onboard-iot-hub.md) .
 - Další informace o službě najdete v tématu [Nejčastější dotazy k programu Defender pro IoT](resources-frequently-asked-questions.md) .

@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862458"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832705"
 ---
 # <a name="continuously-export-security-center-data"></a>Průběžný export Security Center dat
 
@@ -24,6 +24,7 @@ Azure Security Center generuje podrobné výstrahy a doporučení zabezpečení.
 - Všechny výstrahy s vysokou závažností se odesílají do centra událostí Azure.
 - Všechny střední nebo větší závěry závažnosti z kontroly ohrožení zabezpečení prověřování vašich serverů SQL se odesílají do konkrétního pracovního prostoru Log Analytics
 - Konkrétní doporučení se doručí do centra událostí nebo do pracovního prostoru Log Analytics, kdykoli budou vygenerována. 
+- Zabezpečené skóre pro předplatné se pošle do Log Analytics pracovního prostoru vždy, když se skóre ovládacího prvku změní o 0,01 nebo více. 
 
 Tento článek popisuje, jak nakonfigurovat průběžný export na Log Analytics pracovní prostory nebo Azure Event Hubs.
 
@@ -45,8 +46,18 @@ Tento článek popisuje, jak nakonfigurovat průběžný export na Log Analytics
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>Jaké typy dat lze exportovat?
 
+Průběžný export může exportovat následující datové typy, kdykoli se změní:
 
+- Výstrahy zabezpečení
+- Doporučení zabezpečení 
+- Zjištění zabezpečení, která se dají představit jako doporučení "sub", jako jsou třeba zjištění ze skenerů pro posouzení ohrožení zabezpečení nebo z konkrétních aktualizací systému. Můžete si vybrat, že se mají zahrnout do svých "nadřazených" doporučení, jako je třeba instalace aktualizací systému do vašich počítačů.
+- Bezpečné skóre (za předplatné nebo na jeden ovládací prvek)
+- Legislativní data dodržování předpisů
+
+> [!NOTE]
+> Export údajů o dodržování předpisů v oblasti zabezpečení a dodržování předpisů je funkce ve verzi Preview a není k dispozici v cloudech pro státní správu. 
 
 ## <a name="set-up-a-continuous-export"></a>Nastavení průběžného exportu 
 
@@ -67,7 +78,7 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
     Tady vidíte možnosti exportu. Pro každý dostupný cíl exportu je k dispozici karta. 
 
 1. Vyberte datový typ, který chcete exportovat, a vyberte filtry u jednotlivých typů (například exportovat pouze upozornění s vysokou závažností).
-1. Pokud chcete, volitelně i když váš výběr obsahuje jedno z těchto čtyř doporučení, můžete do nich zahrnout výsledky posouzení ohrožení zabezpečení:
+1. Pokud budete v případě, že váš výběr obsahuje jedno z těchto doporučení, můžete také zahrnout výsledky posouzení ohrožení zabezpečení společně s těmito možnostmi:
     - U vašich databází SQL by se měly opravit výsledky posouzení ohrožení zabezpečení.
     - Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení (Preview)
     - Ohrožení zabezpečení v Azure Container Registry imagí by se mělo opravit (používá se Qualys).
@@ -216,6 +227,9 @@ No. Průběžný export je sestaven pro streamování **událostí**:
 
 - **Výstrahy** přijaté před povolením exportu nebudou exportovány.
 - **Doporučení** se odesílají pokaždé, když se změní stav dodržování předpisů prostředku. Například pokud se prostředek změní na stav není v pořádku. Vzhledem k tomu, že se jedná o upozornění, nebudou exportována doporučení pro prostředky, které nezměnily stav od povolení exportu.
+- **Zabezpečené skóre (Preview)** na kontrolu zabezpečení nebo předplatné se pošle, když se změní skóre ovládacího prvku zabezpečení o 0,01 nebo více. 
+- **Stav dodržování předpisů v legislativě (Preview)** se pošle, když se změní stav dodržování předpisů prostředku.
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>Proč se doporučení odesílají v různých intervalech?
@@ -243,6 +257,6 @@ Související materiály najdete v následující dokumentaci:
 
 - Přečtěte si další informace o [šablonách automatizace pracovních postupů](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 - [Dokumentace ke službě Azure Event Hubs](../event-hubs/index.yml)
-- [Dokumentace ke službě Azure Sentinel](../sentinel/index.yml)
+- [Dokumentace k Azure Sentinelu](../sentinel/index.yml)
 - [Dokumentace k Azure Monitor](../azure-monitor/index.yml)
 - [Export schémat datových typů](https://aka.ms/ASCAutomationSchemas)

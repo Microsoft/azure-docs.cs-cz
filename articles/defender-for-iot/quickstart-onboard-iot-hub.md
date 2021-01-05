@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352503"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835155"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Defenderu pro službu IoT v IoT Hub
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak ve stávající IoT Hub povolit službu Defender fo
   - Ve výchozím nastavení jsou ve vašem Log Analytics pracovním prostoru od programu Defender pro IoT standardně uloženy dva typy informací. **výstrahy** a **doporučení** zabezpečení.
   - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání **nezpracovaných událostí** v Log Analytics přináší další náklady na úložiště.
 - IoT Hub (úroveň Standard)
-- Splnění všech [požadavků služby](service-prerequisites.md)
+- Splnění všech [systémových požadavků](quickstart-system-prerequisites.md).
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>Povolit Defender pro IoT v IoT Hub
 

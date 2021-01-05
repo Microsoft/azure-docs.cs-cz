@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562799"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845046"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562799"
 ## <a name="metrics-in-azure"></a>Metriky v Azure
 
 [Metrikami v Azure monitor](data-platform-metrics.md) jsou řady měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Existují metriky Standard (nebo "platforma") a vlastní metriky. Standardní metriky vám nabízí samotná platforma Azure. Standardní metriky odráží údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, že své aplikace odesílají vlastní metriky do Azure pomocí [rozhraní Application Insights API pro vlastní události a metriky](../app/api-custom-events-metrics.md),  [rozšíření Windows Azure Diagnostics (WAD)](./diagnostics-extension-overview.md)nebo [Azure monitor REST API](./metrics-store-custom-rest-api.md).
+
+## <a name="resource-scope-picker"></a>Výběr oboru prostředků
+Výběr oboru prostředků umožňuje zobrazit metriky v rámci jednoho a několika prostředků. Níže najdete pokyny k použití výběru oboru prostředků. 
+
+### <a name="selecting-a-single-resource"></a>Výběr jednoho prostředku
+V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku. Kliknutím na tlačítko Vybrat obor otevřete výběr oboru, který vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Tato hodnota by již měla být naplněna, pokud jste spustili průzkumníka metrik z nabídky prostředku. 
+
+![Snímek obrazovky pro výběr oboru prostředků](./media/metrics-charts/scope-picker.png)
+
+U určitých prostředků můžete najednou zobrazit jenom metriky s jedním prostředkem. Tyto prostředky jsou uvedené v části všechny typy prostředků v rozevíracím seznamu typy prostředků.
+
+![Snímek obrazovky s jedním prostředkem](./media/metrics-charts/single-resource-scope.png)
+
+Po kliknutí na požadovaný prostředek se zobrazí všechna předplatná a skupiny prostředků, které tento prostředek obsahují.
+
+![Snímek dostupných prostředků](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Pokud chcete zobrazit metriky více zdrojů najednou nebo metriky v rámci předplatného nebo skupiny prostředků, klikněte na tlačítko pro odkazování.
+
+Až budete s výběrem spokojeni, klikněte na použít.
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Zobrazení metrik v několika prostředcích
+Některé typy prostředků mají povolenou možnost dotazování na metriky přes více prostředků, pokud jsou ve stejném předplatném a umístění. Tyto typy prostředků se dají najít v horní části rozevíracího seznamu "typy prostředků". Další informace o tom, jak zobrazit metriky v několika prostředcích, najdete v [tomto dokumentu](metrics-dynamic-scope.md#selecting-multiple-resources).
+
+![Snímek obrazovky s typy různých prostředků](./media/metrics-charts/multi-resource-scope.png)
+
+Pro typy kompatibilní s více prostředky můžete také zadat dotaz na metriky v rámci předplatného nebo několika skupin prostředků. Další informace o tom, jak to provést, najdete v [tomto článku](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription) .
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Vytváření zobrazení s více metrikami a grafy
 
@@ -61,11 +90,25 @@ Předpokládejme například, že se v grafu zobrazuje metrika **doby odezvy ser
 
 V Průzkumníkovi metriky je dostupných pět základních výpočetních výpočtů: **Sum**, **Count**, **min**, **Max** a **Average**. Agregace **součtu** je někdy označována jako **Celková** agregace. U mnoha metrik Průzkumník metrik skryje agregace, které jsou zcela nepodstatné a nelze je použít.
 
-- **Sum** – součet všech hodnot zachycených v intervalu agregace
-- **Count** – počet měření zachycených v intervalu agregace. Počítejte s tím, že v případě, že je metrika vždycky zachycena s hodnotou 1, se **počet** bude rovnat **součtu** . To je běžné v případě, že metrika sleduje počet různých událostí a každé měření představuje jednu událost (tj. kód se při každém výskytu nové žádosti aktivuje na záznam metriky).
-- **Average** – průměr hodnot metriky zachycených v intervalu agregace
-- **Min** – nejmenší hodnota zachycená v intervalu agregace
-- **Max** – největší hodnota zachycená v intervalu agregace
+**Sum** – součet všech hodnot zachycených v intervalu agregace
+
+![Snímek obrazovky součtu požadavku](./media/metrics-charts/request-sum.png)
+
+**Count** – počet měření zachycených v intervalu agregace. Počítejte s tím, že v případě, že je metrika vždycky zachycena s hodnotou 1, se **počet** bude rovnat **součtu** . To je běžné v případě, že metrika sleduje počet různých událostí a každé měření představuje jednu událost (tj. kód se při každém výskytu nové žádosti aktivuje na záznam metriky).
+
+![Snímek obrazovky počtu požadavků](./media/metrics-charts/request-count.png)
+
+**Average** – průměr hodnot metriky zachycených v intervalu agregace
+
+![Snímek obrazovky s průměrným požadavkem](./media/metrics-charts/request-avg.png)
+
+**Min** – nejmenší hodnota zachycená v intervalu agregace
+
+![Snímek obrazovky s minimální žádostí](./media/metrics-charts/request-min.png)
+
+**Max** – největší hodnota zachycená v intervalu agregace
+
+![Snímek obrazovky s maximálním počtem žádostí](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>Použití filtrů u grafů
 

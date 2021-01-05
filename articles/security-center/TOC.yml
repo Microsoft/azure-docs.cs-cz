@@ -3,14 +3,14 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Informace o službě Security Center
+    - name: Co je Azure Security Center?
+      href: security-center-introduction.md
+    - name: Dostupnost
       items:
-        - name: Co je Azure Security Center?
-          href: security-center-introduction.md
         - name: Podporované platformy
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: Pokrytí funkcí pro virtuální počítače
+        - name: 'Pokrytí podle operačního systému, typu počítače a cloudu'
           href: security-center-services.md
         - name: Pokrytí funkcí pro prostředky Azure PaaS
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: Vylepšené dodržování legislativních předpisů
       href: security-center-compliance-dashboard.md
+    - name: Správa zásad zabezpečení
+      href: tutorial-security-policy.md
 - name: Koncepty
   items:
     - name: Správa stavu cloudového zabezpečení
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: Přehled doporučení k zabezpečení
           href: security-center-recommendations.md
-        - name: Přehled zásad zabezpečení
-          href: tutorial-security-policy.md
-        - name: Předdefinované zásady zabezpečení
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: Použití doporučení k vylepšení zabezpečení
           href: security-center-using-recommendations.md
         - name: Standardní hodnoty zabezpečení
@@ -224,14 +221,9 @@
         - name: Posílení zabezpečení hostitelů Dockeru
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Použití Azure Defenderu pro SQL
-      items:
-        - name: Konfigurace Azure Defenderu pro SQL na virtuálních počítačích Azure
+        - name: Použití Azure Defenderu pro SQL
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Přizpůsobení zásad ochrany informací SQL
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: Použití Azure Defenderu pro registry kontejnerů
       items:
         - name: Kontrola ohrožení zabezpečení v imagích registrů
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: Zajištění viditelnosti v rámci celého tenanta
       href: security-center-management-groups.md
+    - name: Přizpůsobení zásad ochrany informací SQL
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Stávající uživatelé Azure Log Analytics
           href: faq-azure-monitor-logs.md
+    - name: Předdefinované zásady zabezpečení
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Blog s plány nasazení produktů Azure
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyhodnocení ochrany koncových bodů a doporučení
