@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362548"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746673"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
 
@@ -92,7 +92,7 @@ Kromě toho má určený schvalovatel a žadatel pro přístupovou sadu také pr
 
 V následující tabulce jsou uvedeny úlohy, které mohou provádět role správy oprávnění.
 
-| Úloha | Správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Přístup správce přiřazení balíčku |
+| Úloha | správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Přístup správce přiřazení balíčku |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Delegovat na tvůrce katalogu](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
 | [Přidání připojené organizace](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |
@@ -125,7 +125,7 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 | Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení. | Může přidat skupinu Microsoft 365. | Může přidat aplikaci. | Může přidat web SharePointu Online. |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Globální správce](../roles/permissions-reference.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Správce uživatele](../roles/permissions-reference.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Správce uživatelů](../roles/permissions-reference.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Správce Intune](../roles/permissions-reference.md) | Vlastník katalogu | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Správce Exchange](../roles/permissions-reference.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
 | [Správce služby Teams](../roles/permissions-reference.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |

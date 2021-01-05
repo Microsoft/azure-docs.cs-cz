@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980053"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745959"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -69,7 +69,7 @@ Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto pro
 
 1. Klikněte na **Přidat prostředky**.
 
-1. Klikněte na typ prostředku: **skupiny a týmy**, **aplikace**nebo **weby služby SharePoint**.
+1. Klikněte na typ prostředku: **skupiny a týmy**, **aplikace** nebo **weby služby SharePoint**.
 
     Pokud nevidíte prostředek, který chcete přidat, nebo nemůžete přidat prostředek, ujistěte se, že máte požadovanou roli Azure AD Directory a správu oprávnění. Je možné, že budete potřebovat někoho, kdo s požadovanými rolemi přidá prostředek do vašeho katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -150,7 +150,7 @@ Katalog můžete odstranit, ale pouze v případě, že nemá žádné balíčky
 
 1. V nabídce vlevo klikněte na **katalogy** a pak otevřete katalog, který chcete odstranit.
 
-1. V **přehledu**katalogu klikněte na **Odstranit**.
+1. V **přehledu** katalogu klikněte na **Odstranit**.
 
 1. V zobrazeném okně se zprávou klikněte na **Ano**.
 

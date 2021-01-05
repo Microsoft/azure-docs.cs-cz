@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362695"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746299"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -241,12 +241,12 @@ Chcete-li vytvořit zásadu kontroly přístupu, je nutné mít následující i
 
 **Příklad plánu kontroly přístupu**
 
-| Součást| Hodnota |
+| Komponenta| Hodnota |
 | - | - |
 | **Prostředky ke kontrole**| Přístup k Microsoft Dynamics |
 | **Frekvence kontroly**| Měsíčně |
 | **Kdo provádí kontrolu**| Správci programu Dynamics Business Group |
-| **Notification (Oznámení)**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
+| **Zveřejnění**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
 | **Časová osa**| 48 hodin z oznámení |
 |**Automatické akce**| Odebrání přístupu z libovolného účtu, který nemá v 90 dnech žádné interaktivní přihlášení, odebráním uživatele ze skupiny zabezpečení Dynamics-Access. <p>*Provede akce, pokud se nekontrolují v časové ose.* |
 | **Ruční akce**| Recenzenti mohou odebrat schválení před automatickými akcemi v případě potřeby. |

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400671"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746724"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -89,9 +89,67 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 
 \* Token SAS a identita Azure AD lze použít pro přístup k úložišti, které není chráněno bránou firewall.
 
-> [!IMPORTANT]
-> Při přístupu k úložišti chráněnému bránou firewall se dá použít jenom spravovaná identita. Je nutné, aby byly [povoleny důvěryhodné služby společnosti Microsoft... nastavení](../../storage/common/storage-network-security.md#trusted-microsoft-services) a explicitně [přiřadíte roli Azure](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) pro [spravovanou identitu přiřazenou systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli Azure přiřazené spravované identitě.
->
+
+### <a name="querying-firewall-protected-storage"></a>Dotazování chráněného úložiště brány firewall
+
+Při přístupu k úložišti chráněnému bránou firewall můžete použít **identitu uživatele** nebo **spravovanou identitu**.
+
+#### <a name="user-identity"></a>Identita uživatele
+
+Chcete-li získat přístup k úložišti chráněnému bránou firewall prostřednictvím identity uživatele, můžete použít modul prostředí PowerShell AZ. Storage.
+#### <a name="configuration-via-powershell"></a>Konfigurace prostřednictvím PowerShellu
+
+Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložiště a přidat výjimku pro pracovní prostor synapse.
+
+1. Otevřít PowerShell nebo [nainstalovat PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. Nainstalujte aktualizovaný AZ. Modul úložiště: 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > Ujistěte se, že používáte verzi 3.0.1 nebo novější. Verzi AZ. Storage můžete ověřit spuštěním tohoto příkazu:  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Připojte se k vašemu Tenantovi Azure: 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. Definujte proměnné v PowerShellu: 
+    - Název skupiny prostředků – najdete ho v Azure Portal přehledu pracovního prostoru synapse.
+    - Název účtu – název účtu úložiště, který je chráněný pravidly brány firewall.
+    - ID tenanta – najdete ho v Azure Portal Azure Active Directory v informacích o tenantovi.
+    - ID prostředku – najdete ho v Azure Portal v části Přehled pracovního prostoru synapse.
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > Ujistěte se, že ID prostředku odpovídá této šabloně.
+    >
+    > Je důležité psát **ResourceGroups** malými písmeny.
+    > Příklad jednoho ID prostředku: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. Přidat pravidlo sítě úložiště: 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. Ověřte, že se pravidlo použilo v účtu úložiště: 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>Spravovaná identita
+Je nutné, aby byly [povoleny důvěryhodné služby společnosti Microsoft... nastavení](../../storage/common/storage-network-security.md#trusted-microsoft-services) a explicitně [přiřadíte roli Azure](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) pro [spravovanou identitu přiřazenou systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli Azure přiřazené spravované identitě.
 
 ## <a name="credentials"></a>Přihlašovací údaje
 

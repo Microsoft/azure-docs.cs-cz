@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447355"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762910"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
 
@@ -27,13 +27,13 @@ V tomto kurzu se dozvíte, jak vytvořit a spravovat virtuální počítač na z
 
 Pracovní postup nasazení je znázorněný v následujícím diagramu.
 
-![Pracovní postup nasazení virtuálních počítačů](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![Pracovní postup nasazení virtuálních počítačů](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 
 1. Připojení k Azure Resource Manager
 2. Vytvoření skupiny prostředků
-3. vytvořit účet úložiště
+3. Vytvoření účtu úložiště
 4. Přidat do souboru hostitelů identifikátor URI objektu BLOB
 5. Instalace certifikátů
 6. Nahrání virtuálního pevného disku
@@ -43,9 +43,9 @@ Shrnutí nejvyšší úrovně pracovního postupu nasazení je následující:
 10. Vytvoření virtuální sítě
 11. Vytvoření VNIC pomocí ID podsítě virtuální sítě
 
-Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
+Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 
@@ -281,7 +281,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
     | Hodnota | Popis | Příklad |
     | --- | --- | --- |
     | Název prostředí | Název prostředí, ke kterému se pokoušíte připojit | Zadejte název, například `aze-environ` |
-    | Správce prostředků koncový bod | Tato adresa URL je `https://Management.<appliancename><dnsdomain>` . <br> Tuto adresu URL získáte tak, že přejdete na stránku **zařízení** v místním webovém uživatelském rozhraní vašeho zařízení. |Například, `https://management.team3device.teatraining1.com`.  |
+    | Správce prostředků koncový bod | Tato adresa URL je `https://Management.<appliancename><dnsdomain>` . <br> Tuto adresu URL získáte tak, že přejdete na stránku **zařízení** v místním webovém uživatelském rozhraní vašeho zařízení. |Například `https://management.team3device.teatraining1.com`.  |
     
     ```powershell
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.<appliance name>.<DNS domain>"

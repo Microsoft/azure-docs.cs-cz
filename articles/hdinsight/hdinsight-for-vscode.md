@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001962"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746605"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -51,7 +51,7 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, postupujte podle následujících kroků:
 
-1. V řádku nabídek přejděte do **File**  >  **složky otevřít soubor...**  >  **C:\HD\HDexample** a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
+1. V řádku nabídek přejděte do   >  **složky otevřít soubor...**  >  **C:\HD\HDexample** a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
 
 2. V zobrazení **Průzkumník** vyberte složku **HDexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
@@ -63,7 +63,7 @@ Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, p
 
 V případě národního cloudového uživatele proveďte následující kroky a nastavte prostředí Azure jako první a pak se pomocí příkazu **Azure: Sign in** přihlaste k Azure:
 
-1. Přejděte na **File**  >  **Preferences**  >  **Nastavení** předvoleb souboru.
+1. Přejděte na   >    >  **Nastavení** předvoleb souboru.
 2. Vyhledejte následující řetězec: **Azure: Cloud**.
 3. Ze seznamu vyberte národní Cloud:
 
@@ -203,7 +203,7 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
    ![Snímek obrazovky ukazuje možnost Přeskočit instalaci PySpark.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. Pokud ho potřebujete nainstalovat později, můžete přejít na **File**  >  **Preference**  >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
+5. Pokud ho potřebujete nainstalovat později, můžete přejít na   >    >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
     
     ![Snímek obrazovky s možností povolit instalaci funkce Skip Pyspark](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
@@ -211,29 +211,31 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
    ![pyspark se úspěšně nainstaloval.](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Python: vyberte interpreter a spusťte Jupyter Server**.
+7. Pomocí příkazového řádku spusťte **instalaci PIP numpy = = 1.19.3** a znovu znovu načtěte okno VSCode.
+
+8. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Python: vyberte interpreter a spusťte Jupyter Server**.
 
    ![Výběr interpretu pro spuštění serveru Jupyter](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. Vyberte níže uvedenou možnost Pythonu.
+9. Vyberte níže uvedenou možnost Pythonu.
 
    ![Vyberte níže uvedenou možnost.](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Developer: reload Window**.
+10. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** nebo použijte klávesovou zkratku **SHIFT + CTRL + P** a zadejte **Developer: reload Window**.
 
-   ![znovu načíst okno](./media/hdinsight-for-vscode/reload-window.png)
+    ![znovu načíst okno](./media/hdinsight-for-vscode/reload-window.png)
 
-10. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
+11. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
 
-11. Vyberte veškerý kód, klikněte pravým tlačítkem na editor skriptů a vyberte **Spark: PySpark Interactive/synapse: PySpark Interactive** k odeslání dotazu. 
+12. Vyberte veškerý kód, klikněte pravým tlačítkem na editor skriptů a vyberte **Spark: PySpark Interactive/synapse: PySpark Interactive** k odeslání dotazu. 
 
     ![interaktivní kontextová nabídka pyspark](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark/synapse PySpark** a kód se úspěšně spustí. Pokud chcete přepnout na jádro synapse Pyspark, doporučujeme zakázat automatické nastavení v Azure Portal. V opačném případě může trvat delší dobu, než se cluster probudí a nastaví se jádro synapse při prvním použití. Pokud nástroje umožňují také odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
+13. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark/synapse PySpark** a kód se úspěšně spustí. Pokud chcete přepnout na jádro synapse Pyspark, doporučujeme zakázat automatické nastavení v Azure Portal. V opačném případě může trvat delší dobu, než se cluster probudí a nastaví se jádro synapse při prvním použití. Pokud nástroje umožňují také odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
 
     ![interaktivní okno pyspark interaktivního Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. Zadejte **%% info** a potom stiskněte SHIFT + ENTER, abyste zobrazili informace o úloze (volitelné):
+14. Zadejte **%% info** a potom stiskněte SHIFT + ENTER, abyste zobrazili informace o úloze (volitelné):
 
     ![informace o úloze interaktivního zobrazení pyspark](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 
 > [!NOTE]
-> MS-Python >= verze 2020.5.78807 není v tomto rozsahu podporována. Jedná se o [známý problém](#known-issues).
+>
+> ["MS-python >= verze 2020.5.78807 není v tomto rozsahu podporována."](#issues-changed) bylo vyřešeno. Pro tuto chvíli se dá použít nejnovější verze Microsoft-Pythonu.
 
 ## <a name="submit-pyspark-batch-job"></a>Odeslat dávkovou úlohu PySpark
 
@@ -329,7 +332,7 @@ Konfigurace [Apache Livy](https://livy.incubator.apache.org/) je podporovaná. M
 
 ### <a name="method-1"></a>Metoda 1  
 
-1. V řádku nabídek přejděte na **File**  >  **Preferences**  >  **Nastavení** předvolby souborů.
+1. V řádku nabídek přejděte na   >    >  **Nastavení** předvolby souborů.
 2. Do pole **Nastavení hledání** zadejte **odeslání úlohy HDInsight: Livy conf**.  
 3. Pro příslušný výsledek hledání vyberte **Upravit v settings.js** .
 
@@ -350,7 +353,7 @@ Odešlete soubor a Všimněte si, že se `.vscode` Složka automaticky přidala 
   
   **Text žádosti**
 
-  | name | description | typ |
+  | name | Popis | typ |
   | --- | --- | --- |
   |  – soubor | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
   | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
@@ -371,7 +374,7 @@ Odešlete soubor a Všimněte si, že se `.vscode` Složka automaticky přidala 
 
   **Tělo odpovědi** Vytvořený objekt Batch.
 
-  | name | description | typ |
+  | name | Popis | typ |
   | --- | ---| --- |
   | ID | ID relace | Int |
   | appId | ID aplikace této relace | Řetězec |
@@ -486,13 +489,10 @@ Odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2. Pokud vá
 
 V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů** a pak zadejte **Azure: odhlásit** se.
 
-## <a name="known-issues"></a>Známé problémy
+## <a name="issues-changed"></a>Problémy změněny
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>v tomto rozsahu se nepodporuje verze 2020.5.78807 v jazyce MS-Python >=. 
+Pro tento problém se v tomto rozsahu Nepodporovaná verze MS-Python >= 2020.5.78807. v tuto chvíli se dá použít **nejnovější verze MS-Pythonu** .
 
-"Nepovedlo se připojit k poznámkovým blokům Jupyter." je známý problém verze Pythonu >= 2020.5.78807. Pro předcházení tomuto problému doporučujeme, aby uživatelé používali **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** verze MS-Pythonu.
-
-![známé problémy](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>Další kroky
 

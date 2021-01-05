@@ -4,14 +4,14 @@ description: Postup vytvoření cest k back-endu pro klientské úložiště pom
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339672"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760525"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Nastavení agregovaného oboru názvů
 
@@ -21,13 +21,13 @@ Další informace o této funkci najdete [v tématu Naplánování agregovaného
 
 Stránka **obor názvů** v Azure Portal zobrazuje cesty, které klienti používají pro přístup k datům prostřednictvím mezipaměti. Tato stránka slouží k vytvoření, odebrání nebo změně cest oboru názvů. Cesty oboru názvů můžete nakonfigurovat také pomocí rozhraní příkazového řádku Azure CLI.
 
-Všechny existující cesty na straně klienta jsou uvedené na stránce **obor názvů** . Pokud cíl úložiště neobsahuje žádné cesty, nezobrazí se v tabulce.
+Všechny cesty pro klienta, které byly definovány pro tuto mezipaměť, jsou uvedeny na stránce **obor názvů** . Cíle úložiště, které nemají definované žádné cesty oboru názvů, se v tabulce zatím neobjevují.
 
-Sloupce tabulky můžete seřadit kliknutím na šipky a lépe porozumět agregovanému oboru názvů vaší mezipaměti.
+Můžete seřadit sloupce tabulky a lépe porozumět agregovanému oboru názvů vaší mezipaměti. Kliknutím na šipky v záhlaví sloupců seřadíte cesty.
 
-![snímek stránky s oborem názvů portálu se dvěma cestami v tabulce Záhlaví sloupců: cesta oboru názvů, cíl úložiště, cesta exportu a export podadresáře. Položky v prvním sloupci jsou kliknutí na odkazy. Horní tlačítka: přidat cestu k oboru názvů, aktualizovat, odstranit](media/namespace-page.png)
+[![snímek stránky s oborem názvů portálu se dvěma cestami v tabulce Záhlaví sloupců: cesta oboru názvů, cíl úložiště, cesta exportu a podadresář exportu a zásady přístupu klienta. Názvy cest v prvním sloupci jsou kliknutí na odkazy. Horní tlačítka: přidat cestu k oboru názvů, aktualizovat, odstranit ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
-## <a name="add-or-edit-client-facing-namespace-paths"></a>Přidat nebo upravit cesty k oboru názvů směřujících na klienta
+## <a name="add-or-edit-namespace-paths"></a>Přidat nebo upravit cesty oboru názvů
 
 Než budou moci klienti získat přístup k cíli úložiště, je nutné vytvořit alespoň jednu cestu k oboru názvů. (Pokud chcete získat další informace o přístupu klientů, přečtěte si téma [připojení mezipaměti prostředí Azure HPC](hpc-cache-mount.md) .)
 
@@ -43,15 +43,17 @@ Z Azure Portal načtěte stránku nastavení **oboru názvů** . Z této stránk
 
 * **Přidat novou cestu:** Klikněte na tlačítko **+ Přidat** v horní části a vyplňte informace na panelu úprav.
 
-  * V rozevíracím seznamu vyberte cíl úložiště. (Na tomto snímku obrazovky nelze vybrat cíl úložiště objektů blob, protože již má cestu k oboru názvů.)
+  ![Snímek obrazovky s vybranou oblastí pro úpravy oboru názvů s vybraným cílem úložiště objektů BLOB Cesty pro export a podadresář jsou nastavené na/a nelze je upravovat.](media/namespace-add-blob.png)
 
-    ![Snímek obrazovky s upravenými poli pro úpravy oboru názvů s zveřejněným selektorem cíle úložiště](media/namespace-select-storage-target.png)
+  * Zadejte cestu, kterou klienti použijí pro přístup k tomuto cíli úložiště.
+
+  * Vyberte, které zásady přístupu se mají použít pro tuto cestu. Přečtěte si další informace o přizpůsobení přístupu klienta v portálu [použití zásad přístupu klienta](access-policies.md).
+
+  * V rozevíracím seznamu vyberte cíl úložiště. Pokud cíl úložiště objektů BLOB již obsahuje cestu k oboru názvů, nelze jej vybrat.
 
   * Pro cíl úložiště objektů BLOB v Azure se cesty pro export a podadresář automaticky nastaví na ``/`` .
 
-* **Změnit existující cestu:** Klikněte na cestu k oboru názvů. Otevře se panel úprav a můžete upravit cestu.
-
-  ![Snímek obrazovky se stránkou s oborem názvů po kliknutí na cestu k oboru názvů objektů BLOB – pole pro úpravy se zobrazí v podokně vpravo](media/edit-namespace-blob.png)
+* **Změnit existující cestu:** Klikněte na cestu k oboru názvů. Otevře se panel úprav. Můžete upravit cestu a zásady přístupu, ale nemůžete změnit na jiný cíl úložiště.
 
 * **Odstranit cestu k oboru názvů:** Zaškrtněte políčko vlevo od cesty a klikněte na tlačítko **Odstranit** .
 
@@ -81,7 +83,7 @@ Tento seznam uvádí maximální počet cest oboru názvů na jednu konfiguraci.
 
   * 3 TB cache – 10 cest oboru názvů
   * 6 TB cache – 10 cest oboru názvů
-  * 23 TB cache – 20 cest oboru názvů
+  * mezipaměť z 12 TB-20 cest oboru názvů
 
 * Propustnost až 4 GB/s:
 
@@ -109,13 +111,15 @@ Zadejte tyto hodnoty pro každou cestu oboru názvů:
 
 * **Cesta k oboru názvů** – cesta k souboru, na který směřuje klient.
 
+* **Zásady přístupu klienta** – vyberte, které zásady přístupu se mají použít pro tuto cestu. Přečtěte si další informace o přizpůsobení přístupu klienta v portálu [použití zásad přístupu klienta](access-policies.md).
+
 * **Cíl úložiště** – Pokud vytváříte novou cestu k oboru názvů, vyberte cíl úložiště z rozevírací nabídky.
 
 * **Cesta pro export** – zadejte cestu k exportu NFS. Nezapomeňte zadat název exportu správně – portál ověřuje syntaxi pro toto pole, ale nekontroluje export, dokud tuto změnu neodešlete.
 
 * **Exportovat podadresář** – Pokud chcete, aby tato cesta připojená ke konkrétnímu podadresáři exportu, zadejte ji sem. Pokud ne, ponechte toto pole prázdné.
 
-![snímek obrazovky se stránkou s oborem názvů portálu se stránkou aktualizace otevřenou na pravé straně](media/update-namespace-nfs.png)
+![snímek obrazovky se stránkou s oborem názvů portálu se stránkou pro úpravy otevřenou vpravo. Formulář pro úpravy zobrazuje nastavení pro cestu cílového oboru názvů úložiště NFS.](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

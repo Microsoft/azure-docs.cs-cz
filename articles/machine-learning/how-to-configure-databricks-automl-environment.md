@@ -1,7 +1,7 @@
 ---
-title: Vývoj s využitím autoML & Azure Databricks
+title: Vývoj s využitím AutoML & Azure Databricks
 titleSuffix: Azure Machine Learning
-description: Naučte se nastavit vývojové prostředí v Azure Machine Learning a Azure Databricks. Používejte sady SDK Azure ML pro datacihly a datacihly pomocí autoML.
+description: Naučte se nastavit vývojové prostředí v Azure Machine Learning a Azure Databricks. Používejte sady SDK Azure ML pro datacihly a datacihly pomocí AutoML.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424104"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740959"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Nastavení vývojového prostředí pomocí Azure Databricks a autoML v Azure Machine Learning 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Nastavení vývojového prostředí pomocí Azure Databricks a AutoML v Azure Machine Learning 
 
 Naučte se konfigurovat vývojové prostředí v Azure Machine Learning, které používá Azure Databricks a automatizované ML.
 
@@ -32,9 +32,9 @@ Informace o dalších prostředích pro vývoj ve strojovém učení najdete v t
 Azure Machine Learning pracovní prostor. Pokud ho ještě nemáte, můžete vytvořit Azure Machine Learning pracovní prostor prostřednictvím šablon [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)a [Azure Resource Manager](how-to-create-workspace-template.md).
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks s Azure Machine Learning a autoML
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks s Azure Machine Learning a AutoML
 
-Azure Databricks se integruje s Azure Machine Learning a jeho možnostmi autoML. 
+Azure Databricks se integruje s Azure Machine Learning a jeho možnostmi AutoML. 
 
 Můžete použít Azure Databricks:
 
@@ -54,10 +54,10 @@ Použijte tato nastavení:
 |----|---|---|
 | Název clusteru |stál| yourclustername |
 | Verze Databricks Runtime |stál| Runtime 7,1 (Scala 2,21, Spark 3.0.0) – ne ML|
-| Verze Pythonu |stál| 3 |
+| Python version (Verze Pythonu) |stál| 3 |
 | Typ pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
 | Pracovníků |stál| 2 nebo vyšší |
-| Povolit automatické škálování |Automatizované strojové učení<br>pouze| Zrušte zaškrtnutí políčka  |
+| Povolit automatické škálování |Automatizované strojové učení<br>pouze| Bez zaškrtnutí |
 
 Než budete pokračovat, počkejte, dokud cluster neběží.
 
@@ -85,7 +85,7 @@ Pokud chcete používat automatizovanou ML, přejděte k [části Přidání sad
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte  **připojit** .
 
-1. Monitoruje chyby, dokud se změny stavu **nepřipojí** , což může trvat několik minut.  Pokud tento krok neproběhne úspěšně:
+1. Monitoruje chyby, dokud se změny stavu **nepřipojí**, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně:
 
    Zkuste cluster restartovat pomocí:
    1. V levém podokně vyberte **clustery**.
@@ -97,7 +97,7 @@ Pokud chcete používat automatizovanou ML, přejděte k [části Přidání sad
   ![Sada SDK Azure Machine Learning pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Přidání sady Azure ML SDK s AutoML do datacihlů
-Pokud byl cluster vytvořen pomocí Databricks Runtime 7,1 nebo vyšší ( *ne* ml), spusťte následující příkaz v první buňce poznámkového bloku a nainstalujte sadu AML SDK.
+Pokud byl cluster vytvořen pomocí Databricks Runtime 7,1 nebo vyšší (*ne* ml), spusťte následující příkaz v první buňce poznámkového bloku a nainstalujte sadu AML SDK.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
@@ -120,6 +120,44 @@ Vyzkoušet:
  ![ panel importu.](./media/how-to-configure-environment/azure-db-import.png)
 
 + Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+* **Chyba při instalaci balíčků**
+
+    Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil` , můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    Případně můžete použít skripty init, pokud máte potíže s instalací v knihovně Python. Tento přístup není oficiálně podporován. Další informace najdete v tématu [skripty init v oboru clusteru](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+* **Chyba importu: název `Timedelta` `pandas._libs.tslibs` nelze importovat**: Pokud se zobrazí tato chyba při použití automatizovaného strojového učení, spusťte na poznámkovém bloku tyto dva řádky:
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **Chyba importu: žádný modul s názvem PANDAS. Core. Indexes**: Pokud se vám při použití automatizovaného strojového učení zobrazí tato chyba:
+
+    1. Spuštěním tohoto příkazu nainstalujete do clusteru Azure Databricks dva balíčky:
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. Odpojte a znovu připojte cluster ke svému poznámkovému bloku.
+    
+    Pokud tyto kroky problém nevyřeší, zkuste restartovat cluster.
+
+* **FailToSendFeather**: Pokud se `FailToSendFeather` při čtení dat v clusteru Azure Databricks zobrazí chyba, přečtěte si následující řešení:
+    
+    * Upgradujte `azureml-sdk[automl]` balíček na nejnovější verzi.
+    * Přidejte `azureml-dataprep` 1.1.8 verze nebo vyšší.
+    * Přidejte `pyarrow` verzi 0,11 nebo vyšší.
+  
 
 ## <a name="next-steps"></a>Další kroky
 

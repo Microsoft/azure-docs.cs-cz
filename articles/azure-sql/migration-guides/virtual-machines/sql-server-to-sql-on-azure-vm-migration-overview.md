@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325910"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746571"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Přehled migrace: SQL Server pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -65,7 +65,7 @@ Následující tabulka popisuje rozdíly ve dvou strategiích migrace:
 | **Strategie migrace** | **Popis** | **Kdy je použít** |
 | --- | --- | --- |
 | **Přezvednutí & Shift** | Pomocí strategie migrace navýšení a posunutí můžete celý fyzický nebo virtuální SQL Server z jeho aktuálního umístění přesunout do instance SQL Server na VIRTUÁLNÍm počítači Azure bez jakýchkoli změn v operačním systému nebo verze SQL Server. Chcete-li dokončit migraci výtahu a posunutí, přečtěte si téma [Azure Migrate](../../../migrate/migrate-services-overview.md). <br /><br /> Zdrojový server zůstává online a služby, i když zdrojový a cílový server synchronizuje data a umožňuje téměř bezproblémové migrace. | Používejte pro vysoce rozsáhlé migrace, a to i v případě scénářů, jako je třeba ukončení datového centra. <br /><br /> Minimální a žádné změny kódu, které jsou potřeba pro uživatelské databáze nebo aplikace SQL, umožňují rychlejší celkové migrace. <br /><br />Migrace služeb Business Intelligence, jako jsou  [SSIS](/sql/integration-services/sql-server-integration-services), [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)a [SSAS](/analysis-services/analysis-services-overview), nevyžaduje žádné další kroky. |
-|**Migrate** | Pokud chcete upgradovat cílovou SQL Server nebo verzi operačního systému, použijte strategii migrace. <br /> <br /> Vyberte virtuální počítač Azure z Azure Marketplace nebo připravený SQL Server Image, která odpovídá zdrojové SQL Server verzi. | Použijte v případě, že máte požadavek nebo si přejete použít funkce dostupné v novějších verzích SQL Server, nebo pokud je potřeba upgradovat starší verze SQL Server nebo operačních systémů, které už nejsou podporovány.  <br /> <br /> Může vyžadovat, aby se některé aplikace nebo uživatelské databáze změnily na podporu SQL Server upgradu. <br /><br />Při migraci služeb [Business Intelligence](#business-intelligence) v oboru migrace můžou být potřeba další informace. |
+|**Migrace** | Pokud chcete upgradovat cílovou SQL Server nebo verzi operačního systému, použijte strategii migrace. <br /> <br /> Vyberte virtuální počítač Azure z Azure Marketplace nebo připravený SQL Server Image, která odpovídá zdrojové SQL Server verzi. | Použijte v případě, že máte požadavek nebo si přejete použít funkce dostupné v novějších verzích SQL Server, nebo pokud je potřeba upgradovat starší verze SQL Server nebo operačních systémů, které už nejsou podporovány.  <br /> <br /> Může vyžadovat, aby se některé aplikace nebo uživatelské databáze změnily na podporu SQL Server upgradu. <br /><br />Při migraci služeb [Business Intelligence](#business-intelligence) v oboru migrace můžou být potřeba další informace. |
 
 
 ## <a name="lift-and-shift"></a>Metoda „lift and shift“  
@@ -77,7 +77,7 @@ V následující tabulce najdete podrobnosti o dostupné metodě pro migrační 
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Limit úložiště virtuálních počítačů Azure](../../../index.yml) |  Existující SQL Server k přesunu jako instance SQL Server na virtuálním počítači Azure. Může škálovat úlohy migrace až na 35 000 virtuálních počítačů. <br /><br /> Zdrojový server (y) zůstávají online a obsluhují požadavky během synchronizace dat serveru a minimalizují prostoje. <br /><br /> **Automatizace & skriptování**: [Azure Site Recovery skriptů](../../../migrate/how-to-migrate-at-scale.md) a [příkladem migrace na škálované a naplánování pro Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrate  
+## <a name="migrate"></a>Migrace  
 
 Vzhledem k usnadnění instalace je doporučený postup pro migraci v místním prostředí SQL Server [zálohování](/sql/t-sql/statements/backup-transact-sql) a následně zkopírování souboru do Azure. Tato metoda podporuje větší databáze (>1 TB) pro všechny verze SQL Server počínaje 2008 a větším zálohováním databáze (>1 TB). Pro databáze od SQL Server 2014, které jsou menší než 1 TB, ale mají dobré připojení k Azure, je lepší přístup [SQL Server zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . 
 
@@ -127,6 +127,20 @@ Mezi tyto služby patří:
 
 Při přípravě na migraci SQL Server databází SQL Server na virtuálních počítačích Azure nezapomeňte zvážit podporované verze SQL Server. Seznam aktuálních podporovaných SQL Server verzí na virtuálních počítačích Azure najdete v [SQL Server na virtuálních počítačích Azure](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
+## <a name="migration-assets"></a>Prostředky migrace 
+
+Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
+
+|Prostředek  |Popis  |
+|---------|---------|
+|[Model a nástroj pro vyhodnocení datových úloh](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy na základě cílové platformy.|
+|[Automatizace shromažďování dat Perfmon pomocí programu Logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Nástroj, který shromažďuje data, aby porozuměl základnímu výkonu, který pomáhá s doporučením cíle migrace. Tento nástroj, který používá logman.exe k vytvoření příkazu, který bude vytvářet, spouštět, zastavovat a odstraňovat čítače výkonu nastavené na vzdáleném SQL Server.|
+|[Nasazení SQL Server v Azure](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|Tento dokument White Paper pomáhá při revizi různých možností, jak přesunout vaše SQL Server úlohy do Azure, a to včetně porovnání funkcí, vysoké dostupnosti a důležitých informací o zálohování a ukládání. |
+|[Místní SQL Server k virtuálnímu počítači Azure](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|Tento dokument white paper popisuje kroky pro zálohování a obnovení databází z místních SQL Server pro SQL Server na virtuálním počítači Azure pomocí ukázkových skriptů.|
+|[Multiple-SQL-VM-VNet-interního nástroje](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|Tento dokument white paper popisuje kroky pro nastavení více virtuálních počítačů Azure v konfiguraci skupiny dostupnosti Always On SQL Server.|
+|[Virtuální počítače Azure podporující SSD úrovně Ultra na oblast](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|Tyto skripty PowerShellu poskytují programovou možnost načítající seznam oblastí, které podporují virtuální počítače Azure podporující Ultra SSD.|
+
+Tyto prostředky byly vyvinuty jako součást programu data SQL expertem, který je financován technickým týmem Azure Data Group. Základní Chartou programu data SQL expertem je odblokování a urychlení komplexní modernizace a konkurenční možnosti migrace datových platforem na datovou platformu Azure od Microsoftu. Pokud si myslíte, že by vaše organizace mohla zajímat účast v programu data SQL expertem, obraťte se prosím na svůj tým a požádejte ho, aby podal jmenování.
 
 ## <a name="next-steps"></a>Další kroky
 

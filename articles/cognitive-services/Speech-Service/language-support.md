@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617047"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762958"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -137,6 +137,11 @@ Sada Microsoft Speech SDK a rozhraní REST API podporují tyto hlasy, z nichž k
 Neuronové převod textu na řeč je nový typ syntézy řeči, který využívá rozsáhlé sítě neuronové. Při použití hlasu neuronové je syntetizované rozpoznávání řeči skoro neodlišitelné od lidských nahrávek.
 
 Neuronové hlasy se dají použít k zajištění většího přirozeného a poutavého působení s chatovacích robotů o a hlasovými asistenty, konverzí digitálních textů, jako jsou například e-knihy, do audiobooks a vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci uživatelů se systémy AI.
+
+> [!NOTE]
+> Hlasy neuronové se vytvářejí z ukázek, které používají vzorkovací frekvenci 24 kHz.
+> Všechny hlasy můžou při syntetizaci převzorkovat nebo převzorkovat na jiné vzorkovací sazby.
+
 
 | Jazyk | Národní prostředí | Pohlaví | Název hlasu | Podpora stylů |
 |---|---|---|---|---|
@@ -294,6 +299,11 @@ Další informace o tom, jak můžete nakonfigurovat a upravit hlasy neuronové,
 
 Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a národních prostředích, což vám umožní převést text na syntetizované řeč. Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
+> [!NOTE]
+> Se dvěma výjimkami se vytvářejí standardní hlasy ze vzorků, které používají vzorkovací frekvenci 16 kHz.
+> Hlasy **en-US-AriaRUS** a **en-US-GuyRUS** jsou také vytvořeny z ukázek, které používají vzorkovací frekvenci 24 kHz.
+> Všechny hlasy můžou při syntetizaci převzorkovat nebo převzorkovat na jiné vzorkovací sazby.
+
 | Jazyk | Národní prostředí (BCP-47) | Pohlaví | Název hlasu |
 |--|--|--|--|
 | Arabština (arabské písmo) | `ar-EG` | Female | `ar-EG-Hoda`|
@@ -325,7 +335,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-Susan`|
 | Angličtina (Spojené státy) | `en-US` | Male | `en-US-BenjaminRUS`|
 | Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyRUS`|
-| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JessaRUS`|
+| Angličtina (Spojené státy) | `en-US` | Female | `en-US-AriaRUS`|
 | Angličtina (Spojené státy) | `en-US` | Female | `en-US-ZiraRUS`|
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-HeidiRUS`|
 | Francouzština (Kanada) | `fr-CA` | Female | `fr-CA-Caroline`|

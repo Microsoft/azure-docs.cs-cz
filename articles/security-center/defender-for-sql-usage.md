@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512273"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755850"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
 
@@ -108,7 +108,7 @@ Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Securi
     V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem**, postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Výstrahy Azure Defenderu pro SQL
-Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené v [části výstrahy pro SQL Database a Azure synapse Analytics na referenční stránce výstrahy](alerts-reference.md#alerts-sql-db-and-warehouse).
+Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené na [stránce s odkazem výstrahy](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-and-investigate-security-alerts"></a>Prozkoumat a prozkoumat výstrahy zabezpečení
 
@@ -131,4 +131,3 @@ Související materiály najdete v následujícím článku:
 - [Výstrahy zabezpečení pro SQL Database a Azure synapse Analytics](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Nastavení e-mailových oznámení pro upozornění zabezpečení](security-center-provide-security-contact-details.md)
 - [Další informace o Sentinel Azure](../sentinel/index.yml)
-- [Balíček zabezpečení dat Azure Security Center](../azure-sql/database/azure-defender-for-sql.md)

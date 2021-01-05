@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302704"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755867"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -329,10 +329,15 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 
-Pro vydání aktualizace do definice zásady existují tři pole, která vyžadují pozornost.
+Pokud chcete vydat aktualizaci zásady, proveďte změnu pro konfigurační balíček hosta a podrobnosti definice Azure Policy.
 
 > [!NOTE]
 > `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
+
+Nejprve `New-GuestConfigurationPackage` Zadejte název balíčku, který bude v předchozích verzích jedinečný. Do názvu můžete zahrnout číslo verze, například `PackageName_1.0.0` .
+Číslo v tomto příkladu se používá jenom k tomu, aby balíček byl jedinečný, a neměl by určovat, že by se měl balíček považovat za novější nebo starší než jiné balíčky.
+
+Potom aktualizujte parametry používané pomocí `New-GuestConfigurationPolicy` rutiny podle každé z následujících vysvětlení.
 
 - **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
 - **contentUri**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.

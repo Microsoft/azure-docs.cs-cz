@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b7af6b489aeb919fd1db0e45ddba58a21b1c3633
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489403"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760129"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Přehled metrik Azure Monitor
 Metriky Azure Monitor jsou funkcí Azure Monitor, která shromažďuje číselná data z [monitorovaných prostředků](../monitor-reference.md) do databáze časových řad. Metriky jsou číselné hodnoty, které jsou shromažďovány v pravidelných intervalech a popisují určitý aspekt systému v určitou dobu. Metriky v Azure Monitor jsou odlehčené a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Můžete je interaktivně analyzovat pomocí Průzkumníka metrik, pokud je hodnota překročena prahovou hodnotou nebo je vizualizovat v sešitu nebo řídicím panelu, bude aktivní upozornění.
@@ -56,7 +56,7 @@ Existují tři základní zdroje metrik, které shromažďuje Azure Monitor. Jak
 ## <a name="metrics-explorer"></a>Průzkumník metrik
 Pomocí [Průzkumník metrik](metrics-charts.md) můžete interaktivně analyzovat data v databázi metrik a v grafu hodnoty různých metrik v průběhu času. Grafy můžete připnout na řídicí panel a zobrazit je s ostatními vizualizacemi. Metriky můžete také načíst pomocí [REST API monitorování Azure](rest-api-walkthrough.md).
 
-![Průzkumník metrik](media/data-platform/metrics-explorer.png)
+![Průzkumník metrik](media/data-platform-metrics/metrics-explorer.png)
 
 - V tématu [Začínáme s průzkumníkem Azure monitor metriky](metrics-getting-started.md) můžete začít používat Průzkumníka metrik.
 
@@ -71,9 +71,9 @@ Data shromážděná pomocí Azure Monitor metriky se ukládají do databáze č
 * Některé metriky mohou mít více dimenzí, jak je popsáno v multidimenzionálních [metrikách](#multi-dimensional-metrics). Vlastní metriky můžou mít až 10 dimenzí.
 
 ## <a name="multi-dimensional-metrics"></a>Multidimenzionální metriky
-Jedním z výzev k datům metriky je, že často obsahují omezené informace, aby poskytovaly kontext pro shromážděné hodnoty. Azure Monitor řeší tuto výzvu pomocí multidimenzionální metriky. Dimenze metriky jsou páry název-hodnota, které obsahují další data pro popis hodnoty metriky. Například _dostupné místo na disku_ může mít dimenzi s názvem _jednotka_ s hodnotami _C:_ , _D:_ , což by umožnilo zobrazení dostupného místa na disku ve všech jednotkách nebo pro každou jednotku zvlášť.
+Jedním z výzev k datům metriky je, že často obsahují omezené informace, aby poskytovaly kontext pro shromážděné hodnoty. Azure Monitor řeší tuto výzvu pomocí multidimenzionální metriky. Dimenze metriky jsou páry název-hodnota, které obsahují další data pro popis hodnoty metriky. Například _dostupné místo na disku_ může mít dimenzi s názvem _jednotka_ s hodnotami _C:_, _D:_, což by umožnilo zobrazení dostupného místa na disku ve všech jednotkách nebo pro každou jednotku zvlášť.
 
-Následující příklad znázorňuje dvě datové sady pro hypotetickou metriku nazvanou _propustnost sítě_. První datová sada nemá žádné dimenze. Druhá datová sada zobrazuje hodnoty se dvěma dimenzemi, _IP adresou_ a _směrem_ :
+Následující příklad znázorňuje dvě datové sady pro hypotetickou metriku nazvanou _propustnost sítě_. První datová sada nemá žádné dimenze. Druhá datová sada zobrazuje hodnoty se dvěma dimenzemi, _IP adresou_ a _směrem_:
 
 ### <a name="network-throughput"></a>Propustnost sítě
 

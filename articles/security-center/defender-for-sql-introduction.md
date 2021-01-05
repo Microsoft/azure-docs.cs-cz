@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387798"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755986"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -53,7 +53,9 @@ Tyto dva plány zahrnují funkce pro identifikaci a zmírnění potenciálních 
 
 - [Posouzení ohrožení zabezpečení](../azure-sql/database/sql-vulnerability-assessment.md) – služba prohledávání, která zjišťuje, sleduje a usnadňuje napravení potenciálních ohrožení zabezpečení databáze. Kontroly Hodnocení poskytují přehled o stavu zabezpečení počítačů s SQL a podrobnosti o jakýchkoli zjištěních zabezpečení.
 
-- [Rozšířená ochrana před internetovými útoky](../azure-sql/database/threat-detection-overview.md) – služba zjišťování, která nepřetržitě monitoruje vaše servery SQL na hrozbách, jako jsou například injektáže SQL, útoky hrubou silou a zneužití oprávnění. Tato služba poskytuje výstrahy zabezpečení zaměřené na akce v Azure Security Center s podrobnostmi o podezřelé aktivitě, pokyny ke zmírnění hrozeb a možnosti pro pokračování v šetření pomocí ověřování Azure Sentinel.
+- [Rozšířená ochrana před internetovými útoky](../azure-sql/database/threat-detection-overview.md) – služba zjišťování, která nepřetržitě monitoruje vaše servery SQL na hrozbách, jako jsou například injektáže SQL, útoky hrubou silou a zneužití oprávnění. Tato služba poskytuje výstrahy zabezpečení zaměřené na akce v Azure Security Center s podrobnostmi o podezřelé aktivitě, pokyny ke zmírnění hrozeb a možnosti pro pokračování v šetření pomocí ověřování Azure Sentinel. 
+    > [!TIP]
+    > Prohlédněte si seznam výstrah zabezpečení pro SQL servery [na stránce s referenčními výstrahami](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Jaký typ výstrah poskytuje Azure Defender pro SQL?
@@ -74,8 +76,3 @@ V tomto článku jste se dozvěděli o Azure Defenderu pro SQL.
 
 > [!div class="nextstepaction"]
 > [Kontrola ohrožení zabezpečení v SQL serverech pomocí Azure Defenderu](defender-for-sql-usage.md)
-
-Související materiály najdete v následujících článcích: 
-
-- [Jak povolit Azure Defender pro servery SQL Database](../azure-sql/database/azure-defender-for-sql.md)
-- [Seznam výstrah zabezpečení pro SQL Server](alerts-reference.md#alerts-sql-db-and-warehouse)

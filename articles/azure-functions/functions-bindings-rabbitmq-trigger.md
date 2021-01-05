@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673983"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760397"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ Trigger for Azure Functions – přehled
 
 > [!NOTE]
-> Vazby RabbitMQ jsou plně podporované jenom na **Windows Premium a na vyhrazených** plánech. Spotřeba a Linux se aktuálně nepodporují.
+> Vazby RabbitMQ jsou plně podporované jenom na plánech **Premium a na vyhrazené** úrovni. Spotřeba se nepodporuje.
 
 Pomocí triggeru RabbitMQ můžete reagovat na zprávy z fronty RabbitMQ.
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 Následující příklad ukazuje, jak číst zprávu jako POCO.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ Tady jsou data vazby v *function.js* souboru:
 
 Tady je kód skriptu jazyka C#:
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -216,7 +221,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userNameSetting**|**UserNameSetting**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje uživatelské jméno pro přístup do fronty. Například UserNameSetting: "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje heslo pro přístup do fronty. Například PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Název nastavení aplikace, které obsahuje připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že pokud zadáte připojovací řetězec přímo a nikoli prostřednictvím nastavení aplikace v local.settings.js, aktivační událost nebude fungovat. (Např.: v *function.jsna*: connectionStringSetting: "rabbitMQConnection" <br> V *local.settings.js*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**přístavní**|**Port**|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+|**přístavní**|**Port**|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0, což odkazuje na výchozí nastavení portu RabbitMQ klienta: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -280,7 +285,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |prefetchCount|30|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat a který je uložen do mezipaměti.|
 |Proměnné QueueName|neuvedeno| Název fronty, ze které se mají přijímat zprávy|
 |připojovací řetězec|neuvedeno|Připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že připojovací řetězec je zde přímo určen a nikoli prostřednictvím nastavení aplikace.|
-|port|0|(ignoruje se, pokud používáte ConnectionStringSetting) Získá nebo nastaví použitý port. Výchozí hodnota je 0.|
+|port|0|(ignoruje se při použití connectionString) Získá nebo nastaví použitý port. Výchozí hodnota je 0, což odkazuje na výchozí nastavení portu RabbitMQ klienta: 5672.|
 
 ## <a name="local-testing"></a>Místní testování
 
@@ -305,9 +310,24 @@ Pokud testujete místně bez připojovacího řetězce, měli byste nastavit nas
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|Název hostitele|neuvedeno|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
-|userName|neuvedeno|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název pro přístup do fronty |
-|heslo|neuvedeno|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Heslo pro přístup do fronty|
+|Název hostitele|neuvedeno|(ignoruje se při použití connectionString) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|userName|neuvedeno|(ignoruje se při použití connectionString) <br>Název pro přístup do fronty |
+|heslo|neuvedeno|(ignoruje se při použití connectionString) <br>Heslo pro přístup do fronty|
+
+
+## <a name="enable-runtime-scaling"></a>Povolit škálování modulu runtime
+
+Aby aktivační událost RabbitMQ mohla škálovat na více instancí, musí být povolené nastavení **monitorování měřítka modulu runtime** . 
+
+Na portálu toto nastavení najdete v části   >  **nastavení modulu runtime funkce** konfigurace pro aplikaci Function App.
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+V rozhraní příkazového řádku můžete povolit **monitorování škálování za běhu** pomocí následujícího příkazu:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Monitorování koncového bodu RabbitMQ
 Monitorování front a výměn pro určitý koncový bod RabbitMQ:

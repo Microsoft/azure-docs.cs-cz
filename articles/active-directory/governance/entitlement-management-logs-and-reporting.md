@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783813"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746639"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -44,7 +44,7 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
     ![Podokno nastavení diagnostiky](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. Po odeslání protokolu do Azure Monitor vyberte **Log Analytics pracovní prostory**a vyberte pracovní prostor, který obsahuje protokoly auditu Azure AD.
+1. Po odeslání protokolu do Azure Monitor vyberte **Log Analytics pracovní prostory** a vyberte pracovní prostor, který obsahuje protokoly auditu Azure AD.
 
 1. Vyberte **využití a odhadované náklady** a klikněte na **uchovávání dat**. Změňte posuvník na počet dní, po které chcete zachovat data pro splnění požadavků auditování.
 
@@ -54,7 +54,7 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
     
     1. Vyberte **Azure Active Directory** klikněte na **sešity**. 
     
-    1. Rozbalte část **Azure Active Directory řešení potíží**a klikněte na **Archivovaný rozsah dat protokolu**. 
+    1. Rozbalte část **Azure Active Directory řešení potíží** a klikněte na **Archivovaný rozsah dat protokolu**. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Zobrazit události pro balíček pro přístup  
@@ -128,7 +128,7 @@ Chcete-li nastavit přiřazení role a vytvořit dotaz, proveďte následující
 
     ![Přidat přiřazení role](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
+### <a name="install-azure-powershell-module"></a>Instalace modulu Azure PowerShellu
 
 Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps?view=azps-3.3.0) (Pokud jste to ještě neudělali), a to tak, že zadáte:
 

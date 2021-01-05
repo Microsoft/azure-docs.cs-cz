@@ -4,12 +4,12 @@ description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168303"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755952"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -103,7 +103,7 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-Pokud pracujete se službami Functions v3. x, budete potřebovat refernce, abyste mohli Microsoft.Azure.DocumentDB. Core. Přidejte odkaz do kódu:
+Pokud pracujete se službami Functions v3. x, budete potřebovat odkaz na Microsoft.Azure.DocumentDB. Core. Přidejte odkaz do kódu:
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"

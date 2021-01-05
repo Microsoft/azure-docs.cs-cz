@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563507"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746758"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
 
 V tomto článku se dozvíte, jak nakonfigurovat pravidla omezení IP adres v bráně firewall webových aplikací (WAF) pro přední dveře Azure pomocí Azure Portal, Azure CLI, Azure PowerShell nebo šablony Azure Resource Manager.
 
-Pravidlo řízení přístupu na základě IP adresy je vlastní pravidlo WAF, které umožňuje řídit přístup k vašim webovým aplikacím. To se dělá zadáním seznamu IP adres nebo rozsahů IP adres ve formátu směrování v netříděných Inter-Domain (CIDR).
+Pravidlo řízení přístupu na základě IP adresy je vlastní pravidlo WAF, které umožňuje řídit přístup k vašim webovým aplikacím. To se dělá zadáním seznamu IP adres nebo rozsahů IP adres ve formátu směrování v netříděných Inter-Domain (CIDR). Existují dva typy proměnných shody v adresách IP Match, **RemoteAddr** a **SocketAddr**. RemoteAddr je původní IP adresa klienta, která se obvykle odesílá prostřednictvím hlavičky žádosti předané X. SocketAddr je zdrojová IP adresa, WAF se uvidí. Pokud je uživatel za proxy, SocketAddr je často adresa proxy server.
 
 Ve výchozím nastavení je webová aplikace přístupná z Internetu. Chcete-li omezit přístup k klientům ze seznamu známých IP adres nebo rozsahů IP adres, můžete vytvořit pravidlo pro porovnání IP, které obsahuje seznam IP adres jako odpovídající hodnoty a operátor nastaví hodnotu "NOT" (negace je true) a akce, která má být **zablokovaná**. Po použití pravidla omezení IP adresy budou žádosti, které pocházejí z adres mimo tento seznam povolených, přijmout odpověď 403 Forbidden.
 
@@ -30,7 +30,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ### <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-1. V Azure Portal vyberte **vytvořit prostředek** , do vyhledávacího pole zadejte  **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
+1. V Azure Portal vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte  **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
 2. Vyberte **Vytvořit**.
 3. Na stránce **vytvořit zásadu WAF** pomocí následujících hodnot dokončete kartu **základy** :
    
@@ -64,7 +64,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Vlastní pravidlo":::
 
-   Vyberte **Přidat**.
+   Vyberte **Add** (Přidat).
 6. Vyberte **Další: přidružení**.
 7. Vyberte **Přidat hostitele front-end**.
 8. V případě **hostitele s front-endu** vyberte hostitele front-end a vyberte **Přidat**.
@@ -109,7 +109,7 @@ K přidání vlastního pravidla řízení přístupu IP pro zásadu WAF, kterou
 
 V následujících příkladech:
 -  Nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
--  Nahraďte *IP adresou-rozsah-1* , *IP adresou-Range-2* a vlastním rozsahem.
+-  Nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* a vlastním rozsahem.
 
 Nejdřív vytvořte pravidlo povolení IP pro zásadu vytvořenou z předchozího kroku. 
 > [!NOTE]
@@ -190,7 +190,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ### <a name="define-an-ip-match-condition"></a>Definování podmínky shody IP
 K definování podmínky shody IP použijte příkaz [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) .
-V následujícím příkladu nahraďte *IP adresou-rozsah-1* , *IP adresou-Range-2* vlastním rozsahem.    
+V následujícím příkladu nahraďte *IP adresou-rozsah-1*, *IP adresou-Range-2* vlastním rozsahem.    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `

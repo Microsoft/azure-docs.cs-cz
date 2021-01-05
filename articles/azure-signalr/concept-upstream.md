@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143240"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763111"
 ---
 # <a name="upstream-settings"></a>Nastavení pro upstream
 
@@ -53,16 +53,29 @@ Když klient v centru konverzace vyvolá metodu centra `broadcast` , pošle se n
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>Odkaz na tajný kód Key Vault v nastavení šablony URL
+
+Adresa URL nadřazeného typu není v klidovém umístění šifrování. Pokud máte nějaké citlivé informace, doporučujeme použít Key Vault k jejich uložení, kde řízení přístupu má lepší pojištění. V podstatě můžete povolit spravovanou identitu služby signalizace Azure a pak udělit oprávnění ke čtení pro instanci Key Vault a používat Key Vault reference namísto prostého textu ve vzoru adresy URL pro nadřazený objekt.
+
+1. Přidejte identitu přiřazenou systémem nebo identitu přiřazenou uživatelem. Viz [Postup přidání spravované identity na webu Azure Portal](./howto-use-managed-identity.md#add-a-system-assigned-identity) .
+
+2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+3. Nahraďte svůj citlivý text syntaxí `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` ve vzoru adresy URL pro odesílání.
+
+> [!NOTE]
+> Tajný obsah se znovu přečte jenom v případě, že změníte nastavení pro odesílání nebo změníte spravovanou identitu. Před použitím odkazu Key Vault tajného kódu se ujistěte, že jste ke spravované identitě udělili oprávnění ke čtení tajných kódů.
+
 ### <a name="rule-settings"></a>Nastavení pravidla
 
-Můžete nastavit pravidla pro *pravidla centra*, *pravidla kategorie*a *pravidla událostí* samostatně. Pravidlo pro porovnání podporuje tři formáty. Jako příklad proveďte pravidla událostí:
+Můžete nastavit pravidla pro *pravidla centra*, *pravidla kategorie* a *pravidla událostí* samostatně. Pravidlo pro porovnání podporuje tři formáty. Jako příklad proveďte pravidla událostí:
 - Pro vyhledání odpovídajících událostí použijte hvězdičku (*).
 - K připojení více událostí použijte čárku (,). Například se `connected, disconnected` shoduje s připojenými a odpojenými událostmi.
 - Pro vyhledání události použijte úplný název události. Například `connected` odpovídá připojené události.
 
 > [!NOTE]
-> Pokud používáte Azure Functions a [Trigger signálu](../azure-functions/functions-bindings-signalr-service-trigger.md), Trigger signálu Trigger vystaví jeden koncový bod v následujícím formátu: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
-> Pro tuto adresu URL můžete pouze nakonfigurovat šablonu URL.
+> Pokud používáte Azure Functions a [Trigger signálu](../azure-functions/functions-bindings-signalr-service-trigger.md), Trigger signálu Trigger vystaví jeden koncový bod v následujícím formátu: `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>` .
+> Můžete pouze nakonfigurovat **nastavení šablony URL** na tuto adresu URL a zachovat výchozí **Nastavení pravidel** . Podrobnosti o tom, jak najít a, najdete v tématu věnovaném [integraci služby signaler](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration) `<Function_App_URL>` `<API_KEY>` .
 
 ### <a name="authentication-settings"></a>Nastavení ověřování
 
@@ -80,9 +93,9 @@ Když vyberete `ManagedIdentity` , musíte povolit spravovanou identitu ve služ
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="Nastavení pro upstream":::
 
 3. Přidejte adresy URL pod **vzorem nadřazených adres URL**. Pak nastavení, jako jsou **pravidla centra** , se zobrazí jako výchozí hodnota.
-4. Pokud chcete nastavit nastavení pro **pravidla centra**, **pravidla událostí**, **pravidla kategorií**a **nadřazené ověřování**, vyberte hodnotu **pravidla rozbočovače**. Zobrazí se stránka, která umožňuje upravit nastavení:
+4. Pokud chcete nastavit nastavení pro **pravidla centra**, **pravidla událostí**, **pravidla kategorií** a **nadřazené ověřování**, vyberte hodnotu **pravidla rozbočovače**. Zobrazí se stránka, která umožňuje upravit nastavení:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Nastavení pro upstream":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Podrobnosti o nadřazeném nastavení":::
 
 5. Pokud chcete nastavit **nadřazené ověřování**, ujistěte se, že jste nejdřív povolili spravovanou identitu. Pak vyberte **použít spravovanou identitu**. Podle vašich potřeb můžete zvolit jakékoli možnosti v části **ID prostředku ověřování**. Podrobnosti najdete v tématu [spravované identity pro službu Azure Signal Service](howto-use-managed-identity.md) .
 
@@ -115,7 +128,7 @@ Chcete-li vytvořit nastavení pro odesílání pomocí [šablony Azure Resource
 
 ## <a name="serverless-protocols"></a>Protokoly bez serveru
 
-Služba signalizace Azure posílá zprávy do koncových bodů, které následují po následujících protokolech.
+Služba signalizace Azure posílá zprávy do koncových bodů, které následují po následujících protokolech. Můžete použít [vazbu triggeru služby signalizace](../azure-functions/functions-bindings-signalr-service-trigger.md) s Function App, která tyto protokoly zpracovává za vás.
 
 ### <a name="method"></a>Metoda
 
@@ -133,7 +146,7 @@ POST
 |X-ASRS-User-deklarace identity |Skupina deklarací identity připojení klienta.|
 |X-ASRS-User-ID |Identita uživatele klienta, který odesílá zprávu.|
 |X-ASRS-Client-Query |Dotaz na požadavek při připojení klientů ke službě.|
-|Authentication |Volitelný token při použití `ManagedIdentity` . |
+|Ověřování |Volitelný token při použití `ManagedIdentity` . |
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -141,13 +154,13 @@ POST
 
 Content-Type: Application/JSON
 
-#### <a name="disconnected"></a>Propojení
+#### <a name="disconnected"></a>Odpojeno
 
 Typ obsahu: `application/json`
 
 |Název  |Typ  |Popis  |
 |---------|---------|---------|
-|Chyba |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
+|Chybová |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
 
 #### <a name="invocation-message"></a>Zpráva o vyvolání
 
@@ -170,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Spravované identity pro službu Azure Signal Service](howto-use-managed-identity.md)
 - [Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service](signalr-concept-serverless-development-config.md)
+- [Zpracování zpráv ze služby signalizace (aktivační vazba)](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [Ukázka vazby triggeru služby Signal](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

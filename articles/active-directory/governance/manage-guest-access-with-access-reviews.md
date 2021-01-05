@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696961"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746690"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD
 
@@ -33,7 +33,7 @@ Můžete taky snadno zajistit, aby měli uživatelé typu Host odpovídající p
 > [!NOTE]
 > Tento dokument se zaměřuje na kontrolu přístupu uživatelů typu Host. Pokud chcete zkontrolovat přístup všech uživatelů, nikoli jenom hosté, přečtěte si téma [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md). Pokud chcete zkontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [spuštění kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 

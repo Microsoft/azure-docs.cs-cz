@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621091"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755765"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
-Batch přepis je sada operací REST API, která umožňuje přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí typického identifikátoru URI nebo identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronní příjem výsledků přepisu. V rozhraní API v 3.0 můžete přepisovat jeden nebo více zvukových souborů nebo zpracovat celý kontejner úložiště.
+Batch přepis je sada operací REST API, která umožňuje přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí typického identifikátoru URI nebo identifikátoru URI [sdíleného přístupového podpisu (SAS)](../../storage/common/storage-sas-overview.md) a asynchronní příjem výsledků přepisu. V rozhraní API v 3.0 můžete přepisovat jeden nebo více zvukových souborů nebo zpracovat celý kontejner úložiště.
 
 Pomocí rozhraní REST API pro dávkové přepisy můžete zavolat následující metody:
 
@@ -39,7 +39,7 @@ Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici
 Úlohy dávkového přepisu jsou plánovány na základě optimálního úsilí.
 Nemůžete odhadnout, kdy se úloha změní do běžícího stavu, ale v rámci normálního zatížení systému by se měla vyskytnout během několika minut. Ve spuštěném stavu dojde k přepisu rychleji než rychlost přehrávání zvukového běhu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](overview.md#try-the-speech-service-for-free)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
@@ -66,7 +66,7 @@ Chcete-li vytvořit seřazený finální přepis, použijte časová razítka vy
 
 ### <a name="configuration"></a>Konfigurace
 
-Parametry konfigurace jsou zadány jako JSON.
+Parametry konfigurace jsou zadány jako JSON. 
 
 **Zdlouhavého přepisování jeden nebo více jednotlivých souborů.** Pokud máte více než jeden soubor k přepisovat, doporučujeme odeslat více souborů v jednom požadavku. Následující příklad používá tři soubory:
 
@@ -85,7 +85,7 @@ Parametry konfigurace jsou zadány jako JSON.
 }
 ```
 
-**Zpracování celého kontejneru úložiště:**
+**Probíhá zpracování celého kontejneru úložiště.** [SAS](../../storage/common/storage-sas-overview.md) kontejneru by měl obsahovat `r` (číst) a `l` (vypisovat) oprávnění:
 
 ```json
 {
@@ -177,10 +177,10 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Volitelná adresa URL se [službou ad hoc SAS](../../storage/common/storage-sas-overview.md) k zapisovatelnému kontejneru v Azure. Výsledek je uložen v tomto kontejneru. SAS s uloženými zásadami přístupu **se nepodporuje** . Pokud tento parametr nezadáte, uloží Microsoft výsledky do kontejneru úložiště spravovaného Microsoftem. Když se přepis odstraní voláním [Odstranit přepisu](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), budou odstraněna také výsledná data.
+      Volitelná adresa URL s [ad hoc SAS](../../storage/common/storage-sas-overview.md) na zapisovatelný kontejner v Azure. Výsledek je uložen v tomto kontejneru. SAS s uloženými zásadami přístupu **se nepodporuje** . Pokud tento parametr nezadáte, uloží Microsoft výsledky do kontejneru úložiště spravovaného Microsoftem. Když se přepis odstraní voláním [Odstranit přepisu](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), budou odstraněna také výsledná data.
 :::row-end:::
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Batch přepis může číst zvuk z internetového identifikátoru URI, který je veřejně viditelný, a může číst zvuk nebo zapisovat přepisy pomocí identifikátoru URI SAS s [úložištěm objektů BLOB v Azure](../../storage/blobs/storage-blobs-overview.md).
 

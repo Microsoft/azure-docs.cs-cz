@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906272"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746180"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
 
@@ -38,18 +38,18 @@ Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcet
 
 1. Přejít na **Azure Sentinel**  >  **Configuration**  >  **Analytics**
 
-1. Vyberte **aktivní pravidla**a potom pomocí filtrování seznamu pro typ pravidla **fúze** Najděte ve sloupci **název** **pokročilou detekci útoku s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
+1. Vyberte **aktivní pravidla** a potom pomocí filtrování seznamu pro typ pravidla **fúze** Najděte ve sloupci **název** **pokročilou detekci útoku s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
 
     :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
 1. Chcete-li změnit stav, vyberte tuto položku a v okně **Pokročilé zjišťování útoků s více fázemi** vyberte možnost **Upravit**.
 
-1. V okně **Průvodce vytvořením pravidla** se automaticky vybere Změna stavu, takže vyberte **Další: zkontrolovat**a pak **Uložit**. 
+1. V okně **Průvodce vytvořením pravidla** se automaticky vybere Změna stavu, takže vyberte **Další: zkontrolovat** a pak **Uložit**. 
 
  Vzhledem k tomu, že typ pravidla **fúze** obsahuje pouze jedno pravidlo, které nelze upravit, šablony pravidel nelze použít pro tento typ pravidla.
 
 > [!NOTE]
-> Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> aktivní pravidla \> Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
+> Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel** \> **Configuration** \> **Analytics \> aktivní pravidla \> Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
 
 ## <a name="attack-detection-scenarios"></a>Scénáře detekce útoků
 
@@ -84,6 +84,70 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 - **Událost přihlášení z anonymní IP adresy, která vede k vytvoření více virtuálních počítačů**
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji, které vedly k několika aktivitám vytváření virtuálních počítačů**
+
+## <a name="credential-harvesting-new-threat-classification"></a>Sklizeň přihlašovacích údajů (Nová klasifikace hrozeb)
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>Nástroj pro krádeži škodlivých přihlašovacích údajů se vykoná po podezřelém přihlášení.
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, přístup k přihlašovacím údajům
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), dumping s přihlašovacími údaji operačního systému (T1003)
+
+**Zdroje datových konektorů:** Azure Active Directory Identity Protection, Microsoft Defender pro koncový bod
+
+**Popis:** Incidenty fúze tohoto typu označují, že se známý nástroj pro krádeži přihlašovacích údajů spustil po podezřelém přihlášení ke službě Azure AD. Tím je zajištěno, že uživatelský účet zaznamenaný v popisu výstrahy byl zneužit a mohl úspěšně použít nástroj jako **Mimikatz** k vyřazování přihlašovacích údajů, jako jsou klíče, hesla ve formátu prostého textu nebo hodnoty hash hesel ze systému. Získané přihlašovací údaje můžou útočníkovi umožnit přístup k citlivým datům, eskalaci oprávnění nebo pozdějšímu přesunu přes síť. Upozornění na podezřelé výstrahy týkající se přihlášení ke službě Azure AD s výstrahou nástroje pro krádeži škodlivých přihlašovacích údajů:
+
+- **Nemožná cesta do netypických umístění, která by vedla ke spuštění nástroje pro krádeži přihlašovací**
+
+- **Událost přihlášení z neznámého umístění, které vedlo k provedení nástroje pro odcizení škodlivého pověření**
+
+- **Událost přihlášení z nakaženého zařízení, které vedlo k provedení nástroje pro zneužití škodlivého pověření**
+
+- **Událost přihlášení z anonymní IP adresy, jejímž výsledkem je spuštění nástroje pro odcizení škodlivých přihlašovacích údajů**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji, které vedly k provedení nástroje pro odcizení škodlivého pověření**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>Podezřelá aktivita krádeže přihlašovacích údajů po podezřelém přihlášení
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, přístup k přihlašovacím údajům
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), přihlašovací údaje z úložišť hesel (T1555), dumping s přihlašovacími údaji operačního systému (T1003)
+
+**Zdroje datových konektorů:** Azure Active Directory Identity Protection, Microsoft Defender pro koncový bod
+
+**Popis:** Incidenty fúze tohoto typu označují, že aktivita přidružená ke vzorům krádeže přihlašovacích údajů se stala za podezřelým přihlášením k Azure AD. To poskytuje velkou jistotu, že uživatelský účet zaznamenaný v popisu výstrahy byl zneužit a slouží ke krádeži přihlašovacích údajů, jako jsou klíče, hesla pro prostý text, hodnoty hash hesel atd. Přihlašovací údaje odcizení můžou útočníkovi umožnit přístup k citlivým datům, eskalaci oprávnění nebo pozdějšímu přesunutí přes síť. Upozornění na podezřelé výstrahy týkající se přihlášení ke službě Azure AD s výstrahou aktivity krádeže přihlašovacích údajů:
+
+- **Nepovedlo se cestovat na neobvyklá místa, která by vedla k podezřelé aktivitě**
+
+- **Přihlašovací událost z neznámého umístění, což vedlo k podezřelé aktivitě krádeže přihlašovacích údajů**
+
+- **Událost přihlášení z nakaženého zařízení, které vedlo k podezřelé aktivitě krádeže přihlašovacích údajů**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě krádeže přihlašovacích údajů**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelé aktivitě krádeže přihlašovacích údajů**
+
+## <a name="crypto-mining-new-threat-classification"></a>Kryptografie – dolování (Nová klasifikace hrozeb)
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>Kryptografická aktivita – dolování po podezřelém přihlášení
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, přístup k přihlašovacím údajům
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), zneužití prostředků (T1496)
+
+**Zdroje datových konektorů:** Azure Active Directory Identity Protection, Azure Defender (Azure Security Center)
+
+**Popis:** Incidenty fúze tohoto typu označují aktivitu kryptografického dolování přidruženou k podezřelému přihlášení k účtu Azure AD. Díky tomu je zajištěno, že uživatelský účet zaznamenaný v popisu výstrahy byl zneužit a byl použit ke napadení prostředků ve vašem prostředí s využitím kryptografické měny. To může omezují vaše prostředky výpočetního výkonu a/nebo vést k významně vyššímu počtu, než se čekalo v používání cloudových účtů. Upozornění na podezřelé přihlašovací výstrahy služby Azure AD s výstrahou aktivity kryptografického dolování:  
+
+- **Nemožná cesta do netypických míst, která vedou k aktivitě kryptografického dolování**
+
+- **Událost přihlášení z neznámého umístění, které vede k aktivitě kryptografického dolování**
+
+- **Událost přihlášení z nakaženého zařízení, které vede k aktivitě kryptografického dolování**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k aktivitě kryptografického dolování**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k aktivitě kryptografického dolování**
 
 ## <a name="data-exfiltration"></a>Exfiltrace dat
 
@@ -368,6 +432,26 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 **Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
 
 **Popis:** Incidenty fúze tohoto typu označují, že příkazy rozhraní WMI (Windows Management Interface) byly vzdáleně spuštěny v systému a že jsou zjištěny podezřelé příchozí aktivity bránou firewall Palo Alto Networks. To poskytuje indikaci, že útočník mohl získat přístup k vaší síti a pokouší se později přesunout, zvýšit oprávnění nebo spustit škodlivou datovou část. Stejně jako u všech "živých útoků" se může jednat o legitimní používání služby WMI. Nicméně vzdálené spuštění příkazu WMI následovaný podezřelou příchozí bránou firewall zvyšuje jistotu, že služba WMI je používána škodlivým způsobem a měla by být prozkoumána dále. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
+
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>Podezřelý příkazový řádek PowerShellu po podezřelém přihlášení
+
+**Mitre ATT&CK taktiku:** Počáteční přístup, spuštění
+
+**Mitre technologie ATT&CK:** Platný účet (T1078), překladač příkazů a skriptování (T1059)
+
+**Zdroje datových konektorů:** Azure Active Directory Identity Protection, Microsoft Defender pro koncový bod (dříve MDATP)
+
+**Popis:** Incidenty fúze tohoto typu označují, že uživatel spustil potenciálně škodlivé příkazy PowerShellu po podezřelém přihlášení k účtu Azure AD. Díky tomu je zajištěno, že účet zaznamenaný v popisu výstrahy byl zneužit a byly provedeny další škodlivé akce. Útočníci často využívají PowerShell k provádění škodlivých datových částí v paměti, aniž by museli opustit artefakty na disku, aby nedocházelo k detekci pomocí mechanismů zabezpečení na disku, jako jsou třeba antivirové programy. K podezřelým výstrahám přihlášení služby Azure AD pomocí podezřelého příkazového řádku PowerShellu patří tyto permutace:
+
+- **Nemožná cesta do netypických míst, která vedou k podezřelému příkazovému řádku PowerShell**
+
+- **Událost přihlášení z neznámého umístění, které vede k podezřelému příkazovému řádku PowerShellu**
+
+- **Událost přihlášení z nakaženého zařízení, které vede k podezřelému příkazovému řádku PowerShellu**
+
+- **Událost přihlášení z anonymní IP adresy, která vede k podezřelému příkazovému řádku PowerShellu**
+
+- **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelému příkazovému řádku PowerShellu**
 
 ## <a name="malware-c2-or-download"></a>Malware C2 nebo stažení
 

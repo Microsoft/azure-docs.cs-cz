@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672504"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746520"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ – Přehled vazeb pro Azure Functions
 
 > [!NOTE]
-> Vazby RabbitMQ jsou plně podporované jenom na **Windows Premium a na vyhrazených** plánech. Spotřeba a Linux se aktuálně nepodporují.
+> Vazby RabbitMQ jsou plně podporované jenom na plánech **Premium a na vyhrazené** úrovni. Spotřeba se nepodporuje.
 
 Azure Functions se integruje s [RabbitMQ](https://www.rabbitmq.com/) prostřednictvím [triggerů a vazeb](./functions-triggers-bindings.md). Rozšíření Azure Functions RabbitMQ umožňuje odesílat a přijímat zprávy pomocí rozhraní RabbitMQ API s funkcemi.
 
@@ -34,7 +34,7 @@ Pokud chcete začít s vývojem s tímto rozšířením, nezapomeňte nejdřív 
 
 Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
-| Jazyk                                        | Přidat do...                                   | Poznámky 
+| Jazyk                                        | Přidat do...                                   | Poznámky
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | Instalace [balíčku NuGet]verze 4. x | |
 | Skript C#, Java, JavaScript, Python, PowerShell | Registrace [balíčku rozšíření]          | [Rozšíření Azure Tools] se doporučuje používat s Visual Studio Code. |

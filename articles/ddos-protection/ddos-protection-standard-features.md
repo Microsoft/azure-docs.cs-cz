@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937317"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746554"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Funkce služby Azure DDoS Protection úrovně Standard
 
@@ -24,23 +24,23 @@ Následující části popisují klíčové funkce služby Azure DDoS Protection
 
 ## <a name="always-on-traffic-monitoring"></a>Monitorování nepřetržitého provozu
 
-DDoS Protection Standard monitoruje skutečné využití provozu a trvale ho porovnává s mezními hodnotami definovanými v zásadách DDoS. Při překročení prahové hodnoty přenosu se DDoSé riziko iniciuje automaticky. Když se provoz vrátí pod prahovou hodnotu, zmírnění se odstraní.
+DDoS Protection Standard monitoruje skutečné využití provozu a trvale ho porovnává s mezními hodnotami definovanými v zásadách DDoS. Při překročení prahové hodnoty přenosu se DDoSé riziko iniciuje automaticky. Když se provoz vrátí pod prahové hodnoty, je riziko zastaveno.
 
 ![Azure DDoS Protection zmírnění úrovně Standard](./media/ddos-protection-overview/mitigation.png)
 
-Během zmírnění ochrany se provoz odeslaný do chráněného prostředku přesměruje pomocí služby DDoS Protection a provede se několik kontrol, například následující kontroly:
+Během zmírnění ochrany se provoz odeslaný do chráněného prostředku přesměruje pomocí služby DDoS Protection a provede se několik kontrol, jako například:
 
 - Zajistěte, aby pakety odpovídaly specifikacím Internetu a nejsou poškozeny.
 - Interakci s klientem, aby bylo možné zjistit, zda je přenos potenciálně falešným paketem (například soubor. cookie SYN nebo souborů cookie SYN nebo vyřazením paketu pro zdroj, který ho znovu odešle).
 - Pakety s omezením četnosti, pokud není možné provést žádnou jinou metodu vynucení.
 
-Ochrana před útoky DDoS blokuje provoz útoku a zbývající provoz přesměrovává do zamýšleného cíle. Během několika minut od detekce útoku budete upozorněni pomocí metrik Azure Monitoru. Konfigurací protokolování na DDoS Protection standardní telemetrie můžete protokoly zapsat na dostupné možnosti pro budoucí analýzu. Data metriky v Azure Monitor pro DDoS Protection Standard se uchovávají po dobu 30 dnů.
+DDoS Protection vyřazuje útok a přepošle zbývající provoz do zamýšleného cíle. Během několika minut od rozpoznání útoku budete upozorněni pomocí metrik Azure Monitoru. Konfigurací protokolování na DDoS Protection standardní telemetrie můžete protokoly zapsat na dostupné možnosti pro budoucí analýzu. Data metriky v Azure Monitor pro DDoS Protection Standard se uchovávají po dobu 30 dnů.
 
 ## <a name="adaptive-real-time-tuning"></a>Adaptivní optimalizace v reálném čase
 
-Služba Azure DDoS Protection Basic pomáhá chránit zákazníky a zabránit dopadům na jiné zákazníky. Pokud je například služba zřízena pro typický objem legitimního příchozího provozu, který je menší než *míra triggeru* zásady DDoS Protection v rámci infrastruktury, může se DDoS útok na prostředky tohoto zákazníka nevšimnout. Obecně platí, že složitost nedávných útoků (například DDoS s více vektory) a chování klientů, které jsou specifické pro jednotlivé zákazníky, přizpůsobené zásady ochrany. Služba provádí tyto úpravy pomocí dvou přehledů:
+Služba Azure DDoS Protection Basic pomáhá chránit zákazníky a zabránit dopadům na jiné zákazníky. Pokud je například služba zřízena pro typický objem legitimního příchozího provozu, který je menší než *míra triggeru* zásady DDoS Protection v rámci infrastruktury, může se DDoS útok na prostředky tohoto zákazníka nevšimnout. Obecně platí, že složitost nedávných útoků (například DDoS s více vektory) a chování klientů, které jsou specifické pro jednotlivé zákazníky, se týkají zásad ochrany podle zákazníka. Služba to dosahuje pomocí dvou přehledů:
 
-- Automatické učení vzorů přenosu podle zákazníka (podle IP adresy) pro vrstvy 3 a 4.
+- Automatické učení vzorů přenosů pro jednotlivé zákazníky (na veřejné IP adresy) pro vrstvy 3 a 4.
 
 - Minimalizace falešně pozitivních hodnot, vzhledem k tomu, že škálování Azure umožňuje, aby mohla absorbovat významné množství provozu.
 
@@ -48,7 +48,7 @@ Služba Azure DDoS Protection Basic pomáhá chránit zákazníky a zabránit do
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection telemetrie, monitorování a upozorňování
 
-DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [Azure monitor](../azure-monitor/overview.md) po dobu trvání útoku DDoS. Výstrahy pro libovolnou Azure Monitor metriky, které DDoS Protection používá, můžete nakonfigurovat. Protokolování můžete integrovat s Splunk (Azure Event Hubs), protokoly Azure Monitor a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure Monitor.
+DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [Azure monitor](../azure-monitor/overview.md). Výstrahy pro libovolnou Azure Monitor metriky, které DDoS Protection používá, můžete nakonfigurovat. Protokolování můžete integrovat s Splunk (Azure Event Hubs), protokoly Azure Monitor a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure Monitor.
 
 ### <a name="ddos-mitigation-policies"></a>Zásady zmírnění DDoS
 

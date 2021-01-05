@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674462"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756054"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -121,7 +121,7 @@ Soubory protokolu jsou zásadním prostředkem pro ladění úloh Azure ML. Pře
 Níže uvedené tabulky zobrazují obsah souborů protokolu ve složkách, které vidíte v této části.
 
 > [!NOTE]
-> Informace, které by měl uživatel vyvšimnout, i když skimmingYou nebude nutně zobrazovat všechny soubory pro každé spuštění. Například 20_image_build_log *. txt se zobrazí pouze v případě, že je vytvořen nový obrázek (například při změně prostředí).
+> Každý soubor se pro každé spuštění nemusí zobrazovat. Například 20_image_build_log *. txt se zobrazí pouze v případě, že je vytvořen nový obrázek (například při změně prostředí).
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` složky
 

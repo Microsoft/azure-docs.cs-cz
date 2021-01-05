@@ -3,15 +3,15 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Tento článek poskytuje podrobný přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv Enterprise Integration.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602712"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755731"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
-Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro veřejné odběry. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
+Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro publikování a odběr. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
 
 - Vyrovnávání zatížení v rámci konkurenčních pracovních procesů
 - Bezpečné směrování a přenos dat a kontrola nad hranicemi služby a aplikace

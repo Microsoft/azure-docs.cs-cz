@@ -1,69 +1,87 @@
 ---
-title: Používání služby Speech Services s privátními koncovými body
+title: Používání privátních koncových bodů ve službě Speech Service
 titleSuffix: Azure Cognitive Services
-description: Postupy při používání služby Speech Services s privátními koncovými body, které poskytuje privátní odkaz na Azure
+description: Naučte se používat službu Speech s privátními koncovými body, které poskytuje privátní odkaz na Azure.
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: f905582615b16780fae179ba6a21bd4343bd47f3
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516536"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755799"
 ---
-# <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>Používání služby Speech Services s privátními koncovými body, které poskytuje privátní odkaz na Azure
+# <a name="use-speech-service-through-a-private-endpoint"></a>Používání služby Speech prostřednictvím privátního koncového bodu
 
-[Privátní odkaz Azure](../../private-link/private-link-overview.md) umožňuje připojit se k různým službám PaaS v Azure prostřednictvím [privátního koncového bodu](../../private-link/private-endpoint-overview.md). Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
+[Privátní odkaz Azure](../../private-link/private-link-overview.md) vám umožňuje připojit se ke službám v Azure pomocí [privátního koncového bodu](../../private-link/private-endpoint-overview.md).
+Privátní koncový bod je privátní IP adresa dostupná jenom v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
 
-Tento článek vysvětluje, jak nastavit a používat privátní a soukromé koncové body pomocí služeb rozpoznávání řeči v Azure. 
+Tento článek vysvětluje, jak nastavit a používat privátní a soukromé koncové body pomocí služeb rozpoznávání řeči v Azure.
 
 > [!NOTE]
-> Tento článek vysvětluje informace o nastavení a používání privátního propojení se službami rozpoznávání řeči v Azure. Než budete pokračovat, Seznamte se s obecným článkem o [používání virtuálních sítí s Cognitive Services](../cognitive-services-virtual-networks.md).
+> Tento článek vysvětluje informace o nastavení a používání privátního propojení se službami rozpoznávání řeči v Azure. Než budete pokračovat, přečtěte si téma Jak [používat virtuální sítě s Cognitive Services](../cognitive-services-virtual-networks.md).
 
-Povolení prostředku řeči pro scénáře privátního koncového bodu vyžaduje provádění následujících úloh:
-- [Vytvoření vlastního názvu domény prostředku řeči](#create-custom-domain-name)
-- [Vytvoření a konfigurace privátních koncových bodů](#enabling-private-endpoints)
-- [Upravit stávající aplikace a řešení](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
+Pokud chcete používat službu rozpoznávání řeči prostřednictvím privátního koncového bodu, proveďte následující úlohy:
 
-Pokud se později rozhodnete odebrat všechny privátní koncové body, ale budete i nadále používat prostředek, jsou nezbytné akce popsané v [této části](#using-speech-resource-with-custom-domain-name-without-private-endpoints).
+1. [Vytvoření vlastního názvu domény prostředku řeči](#create-a-custom-domain-name)
+2. [Vytvoření a konfigurace privátních koncových bodů](#enable-private-endpoints)
+3. [Upravit stávající aplikace a řešení](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
 
-## <a name="create-custom-domain-name"></a>Vytvořit vlastní název domény
+Chcete-li odebrat privátní koncové body později, ale stále používat prostředek rozpoznávání řeči, provedete úkoly, které jsou v [této části](#use-speech-resource-with-custom-domain-name-without-private-endpoints)k dispozici.
 
-Soukromé koncové body vyžadují použití [Cognitive Services názvů vlastních subdomén](../cognitive-services-custom-subdomains.md). Použijte následující pokyny k vytvoření zdroje řeči.
+## <a name="create-a-custom-domain-name"></a>Vytvoření vlastního názvu domény
 
-> [!WARNING]
-> Prostředek řeči s povoleným vlastním názvem domény používá jiný způsob, jak komunikovat se službou Speech Services. Pravděpodobně budete muset upravit kód aplikace pro použití [privátního koncového bodu](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) i scénářů, které [ **nejsou** povolené soukromým koncovým bodem](#using-speech-resource-with-custom-domain-name-without-private-endpoints) .
+Privátní koncové body vyžadují [název Cognitive Services vlastní subdomény](../cognitive-services-custom-subdomains.md). Podle následujících pokynů vytvořte pro svůj prostředek řeči.
+
+> [!CAUTION]
+> Prostředek řeči s povoleným vlastním názvem domény používá jiný způsob, jak komunikovat se službou Speech.
+> Je možné, že budete muset upravit kód aplikace pro použití [privátního koncového bodu](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) i pro scénáře, které [ **nejsou** povolené soukromým koncovým bodem](#use-speech-resource-with-custom-domain-name-without-private-endpoints)
 >
-> Operace povolení vlastního názvu domény se [**nedá vrátit zpět**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). Jediným způsobem, jak přejít zpět k [regionálnímu názvu](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) , je vytvoření nového prostředku řeči. 
+> Pokud povolíte vlastní název domény, operace se [**nevratí**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). Jediným způsobem, jak přejít zpět k [regionálnímu názvu](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) , je vytvoření nového prostředku řeči.
 >
-> Zejména v případech, kdy váš prostředek řeči má velký počet přidružených vlastních modelů a projektů vytvořených prostřednictvím služby [Speech Studio](https://speech.microsoft.com/) , **důrazně** doporučujeme vyzkoušet konfiguraci s testovacím prostředkem a pak upravit tu, která se používá v produkčním prostředí.
+> Pokud má váš prostředek řeči velký počet přidružených vlastních modelů a projektů vytvořených prostřednictvím služby [Speech Studio](https://speech.microsoft.com/) , **důrazně** doporučujeme, abyste před změnou prostředků používaného v produkčním prostředku zkoušeli konfiguraci s testovacím prostředkem.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-- Přejít na [Azure Portal](https://portal.azure.com/) a přihlásit se k účtu Azure
-- Vyberte požadovaný prostředek řeči.
-- Výběr *sítě* (skupina *pro správu prostředků* ) 
-- Na kartě *brány firewall a virtuální sítě* (výchozí) klikněte na tlačítko **generovat vlastní název domény** .
-- Zobrazí se nový panel s pokyny pro vytvoření jedinečné vlastní subdomény pro váš prostředek.
-> [!WARNING]
-> Po vytvoření vlastního názvu domény jej **nelze** změnit. Další informace najdete v předchozím upozornění.
-- Po dokončení operace možná budete chtít vybrat *klíče a koncový bod* (skupina *pro správu prostředků* ) a ověřit název nového koncového bodu vašeho prostředku ve formátu <p />`{your custom name}.cognitiveservices.azure.com`
+K vytvoření vlastního názvu domény pomocí Azure Portal použijte následující postup:
+
+1. Přejdete na [Azure Portal](https://portal.azure.com/) a přihlaste se ke svému účtu Azure.
+1. Vyberte požadovaný prostředek řeči.
+1. Ve skupině **Správa prostředků** v levém navigačním podokně klikněte na **sítě**.
+1. Na kartě **brány firewall a virtuální sítě** klikněte na **generovat vlastní název domény**. Zobrazí se nový Pravý panel s pokyny pro vytvoření jedinečné vlastní subdomény pro váš prostředek.
+1. Na panelu generovat vlastní název domény zadejte část vlastní název domény. Vaše úplná vlastní doména bude vypadat takto: `https://{your custom name}.cognitiveservices.azure.com` . 
+    **Když vytvoříte vlastní název domény, _nedá_ se změnit. Znovu si přečtěte upozornění na vyšší opatrnost.** Po zadání vlastního názvu domény klikněte na **Uložit**.
+1. Po dokončení operace klikněte ve skupině **Správa prostředků** na **klíče a koncový bod**. Ověřte, že se nový název koncového bodu vašeho prostředku spustí tímto způsobem:
+
+    `https://{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Tato část vyžaduje místně běžící PowerShell verze 7. x nebo novější s modulem Azure PowerShell verze 5.1.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Pokud chcete vytvořit vlastní název domény pomocí prostředí PowerShell, zkontrolujte, že je v počítači prostředí PowerShell verze 7. x nebo novější, a to s modulem Azure PowerShell verze 5.1.0 nebo novějším. Chcete-li zobrazit verze těchto nástrojů, postupujte podle následujících kroků:
 
-Než budete pokračovat `Connect-AzAccount` v práci, vytvořte připojení k Azure.
+1. V okně PowerShellu zadejte:
 
-## <a name="verify-custom-domain-name-availability"></a>Ověřit dostupnost vlastního názvu domény
+    `$PSVersionTable`
 
-Musíte ověřit, jestli je vlastní doména, kterou chcete použít, zadarmo. Pro REST API Cognitive Services použijeme metodu [kontroly dostupnosti domény](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) . Viz komentáře v bloku kódu níže vysvětlující postup.
+    Potvrďte, že hodnota PSVersion je větší než 7. x. Pokud chcete upgradovat PowerShell, postupujte podle pokynů v tématu [instalace různých verzí PowerShellu](/powershell/scripting/install/installing-powershell) pro upgrade.
+
+1. V okně PowerShellu zadejte:
+
+    `Get-Module -ListAvailable Az`
+
+    Pokud se nic nezobrazí nebo pokud Azure PowerShell verze modulu je nižší než 5.1.0, postupujte podle pokynů v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-Az-ps) pro upgrade.
+
+Než budete pokračovat, spusťte příkaz `Connect-AzAccount` a vytvořte připojení k Azure.
+
+## <a name="verify-custom-domain-name-is-available"></a>Ověřte, že je k dispozici název vlastní domény.
+
+Musíte ověřit, jestli je k dispozici vlastní doména, kterou chcete použít. Pomocí těchto kroků potvrďte, že je doména k dispozici, v REST API Cognitive Services [Zkontrolujte operaci dostupnosti domény](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) .
 
 > [!TIP]
 > Následující **kód nebude v Azure Cloud Shell fungovat.**
@@ -72,18 +90,16 @@ Musíte ověřit, jestli je vlastní doména, kterou chcete použít, zadarmo. P
 $subId = "Your Azure subscription Id"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 Set-AzContext -SubscriptionId $subId
 
-# Preparing OAuth token which is used in request
-# to Cognitive Services REST API
+# Prepare OAuth token to use in request to Cognitive Services REST API.
 $Context = Get-AzContext
 $AccessToken = (Get-AzAccessToken -TenantId $Context.Tenant.Id).Token
 $token = ConvertTo-SecureString -String $AccessToken -AsPlainText -Force
 
-# Preparing and executing the request to Cognitive Services REST API
+# Prepare and send the request to Cognitive Services REST API.
 $uri = "https://management.azure.com/subscriptions/" + $subId + `
     "/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18"
 $body = @{
@@ -94,7 +110,7 @@ $jsonBody = $body | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri $uri -ContentType "application/json" -Authentication Bearer `
     -Token $token -Body $jsonBody | Format-List
 ```
-Pokud je požadovaný název k dispozici, zobrazí se vám odpověď podobná této:
+Pokud je požadovaný název k dispozici, zobrazí se odpověď podobná této:
 ```azurepowershell
 isSubdomainAvailable : True
 reason               :
@@ -108,26 +124,26 @@ reason               : Sub domain name 'my-custom-name' is already used. Please 
 type                 :
 subdomainName        : my-custom-name
 ```
-## <a name="enabling-custom-domain-name"></a>Povolení vlastního názvu domény
+## <a name="create-your-custom-domain-name"></a>Vytvoření vlastního názvu domény
 
-K povolení vlastního názvu domény pro vybraný prostředek řeči použijeme rutinu [set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) . Viz komentáře v bloku kódu níže vysvětlující postup.
+K povolení vlastního názvu domény pro vybraný prostředek řeči použijeme rutinu [set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) .
 
-> [!WARNING]
-> Po úspěšném provedení kódu uvedeného níže vytvoříte vlastní název domény pro prostředek řeči. Tento název se **nedá** změnit. Další informace najdete v předchozím upozornění.
+> [!CAUTION]
+> Po úspěšném spuštění kódu se vytvoří vlastní název domény pro prostředek řeči.
+> Tento název se **nedá** změnit. Další informace najdete v upozornění na vyšší **opatrnost** .
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
 $speechResourceName = "Your Speech resource name"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
 
-# Set the custom domain name to the selected resource
-# WARNING! THIS IS NOT REVERSIBLE!
+# Set the custom domain name to the selected resource.
+# CAUTION: THIS CANNOT BE CHANGED OR UNDONE!
 Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
     -Name $speechResourceName -CustomSubdomainName $subdomainName
 ```
@@ -138,11 +154,11 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 - Tato část vyžaduje nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-## <a name="verify-custom-domain-name-availability"></a>Ověřit dostupnost vlastního názvu domény
+## <a name="verify-the-custom-domain-name-is-available"></a>Ověřte, že je k dispozici vlastní název domény.
 
-Musíte ověřit, jestli je vlastní doména, kterou chcete použít, zadarmo. Pro REST API Cognitive Services použijeme metodu [kontroly dostupnosti domény](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) . 
+Musíte ověřit, jestli je vlastní doména, kterou chcete použít, zadarmo. Pro REST API Cognitive Services použijeme metodu [kontroly dostupnosti domény](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) .
 
-Zkopírujte níže uvedený blok kódu, vložte vlastní název domény a uložte ho do souboru `subdomain.json` .
+Zkopírujte níže uvedený blok kódu, vložte upřednostňovaný název vlastní domény a uložte ho do souboru `subdomain.json` .
 
 ```json
 {
@@ -156,7 +172,7 @@ Zkopírujte soubor do aktuální složky nebo ho nahrajte do Azure Cloud Shell a
 ```azurecli-interactive
 az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18" --body @subdomain.json
 ```
-Pokud je požadovaný název k dispozici, zobrazí se vám odpověď podobná této:
+Pokud je požadovaný název k dispozici, zobrazí se odpověď podobná této:
 ```azurecli
 {
   "isSubdomainAvailable": true,
@@ -175,7 +191,7 @@ Pokud je tento název již zabraný, zobrazí se následující odpověď:
   "type": null
 }
 ```
-## <a name="enabling-custom-domain-name"></a>Povolení vlastního názvu domény
+## <a name="enable-custom-domain-name"></a>Povolit vlastní název domény
 
 Pokud chcete pro vybraný prostředek řeči povolit vlastní název domény, použijeme příkaz [AZ cognitiveservices Account Account Update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) .
 
@@ -184,15 +200,17 @@ Vyberte předplatné Azure obsahující prostředek řeči. Pokud má váš úč
 az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 Nastavte název vlastní domény na vybraný prostředek. Nahraďte vzorové hodnoty parametrů skutečnými a spusťte následující příkaz.
-> [!WARNING]
-> Po úspěšném provedení příkazu níže vytvoříte vlastní název domény pro prostředek řeči. Tento název se **nedá** změnit. Další informace najdete v předchozím upozornění.
+
+> [!CAUTION]
+> Po úspěšném provedení příkazu níže vytvoříte vlastní název domény pro prostředek řeči. Tento název se **nedá** změnit. Další informace najdete v upozornění na vyšší opatrnost.
+
 ```azurecli
 az cognitiveservices account update --name my-speech-resource-name --resource-group my-resource-group-name --custom-domain my-custom-name
 ```
 
 **_
 
-## <a name="enabling-private-endpoints"></a>Povolení privátních koncových bodů
+## <a name="enable-private-endpoints"></a>Povolit privátní koncové body
 
 Povolte privátní koncový bod pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
@@ -218,7 +236,7 @@ Seznamte se s obecnými zásadami [DNS pro privátní koncové body v Cognitive 
 
 `my-private-link-speech.cognitiveservices.azure.com`Pro tuto část použijeme jako ukázkový název DNS prostředku pro řeč.
 
-Přihlaste se k virtuálnímu počítači umístěnému ve virtuální síti, ke které jste připojili privátní koncový bod. Otevřete příkazový řádek systému Windows nebo prostředí bash, spusťte příkaz nslookup a ujistěte se, že úspěšně přeloží vlastní název domény vašeho prostředku:
+Přihlaste se k virtuálnímu počítači umístěnému ve virtuální síti, ke které jste připojili privátní koncový bod. Otevřete příkazový řádek systému Windows nebo prostředí bash, spusťte `nslookup` a potvrďte, že se úspěšně vyřeší vlastní název domény vašeho prostředku:
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -233,11 +251,11 @@ Ověřte, zda se přeložená IP adresa shoduje s adresou vašeho privátního k
 
 #### <a name="optional-check-dns-resolution-from-other-networks"></a>(Volitelné ověření). Překlad DNS z jiných sítí
 
-Tato Tato možnost je nutná, pokud plánujete použít prostředek řeči s povoleným privátním koncovým bodem v režimu "hybrid", který je povolený pro *všechny sítě* nebo *vybrané sítě a možnost přístupu privátních koncových bodů* v části *síť* vašeho prostředku. Pokud plánujete přístup k prostředku pouze pomocí privátního koncového bodu, můžete tuto část přeskočit.
+Tato Tato možnost je nutná, pokud plánujete použít prostředek řeči s povoleným privátním koncovým bodem v režimu "hybrid", kde jste povolili možnost *všechny sítě* nebo *vybrané sítě a přístup k privátním koncovým bodům* v části *síť* vašeho prostředku. Pokud plánujete přístup k prostředku pouze pomocí privátního koncového bodu, můžete tuto část přeskočit.
 
-`my-private-link-speech.cognitiveservices.azure.com`Pro tuto část použijeme jako ukázkový název DNS prostředku pro řeč.
+`my-private-link-speech.cognitiveservices.azure.com`Pro tento oddíl používáme jako ukázkový název DNS prostředku pro řeč.
 
-Na jakémkoli počítači připojeném k síti, ze které povolíte přístup k prostředku, otevřete příkazový řádek systému Windows nebo prostředí bash, spusťte příkaz nslookup a ujistěte se, že úspěšně přeloží vlastní název domény vašeho prostředku:
+Na jakémkoli počítači připojeném k síti, ze které povolíte přístup k prostředku, otevřete příkazový řádek systému Windows nebo prostředí bash, spusťte `nslookup` příkaz a potvrďte, že se název vlastní domény prostředku úspěšně vyřeší:
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -251,18 +269,18 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
           westeurope.prod.vnet.cog.trafficmanager.net
 ```
 
-Všimněte si, že IP adresa vyřešila odkazy na koncový bod proxy virtuální sítě, který slouží k odesílání síťového provozu do prostředku Cognitive Services privátního koncového bodu. Toto chování se bude lišit u prostředku s povoleným vlastním názvem domény, ale *bez* nakonfigurovaného privátního koncového bodu. Podívejte se do [této části](#dns-configuration).
+Všimněte si, že přeložená IP adresa odkazuje na koncový bod proxy virtuální sítě, který odesílá síťový provoz do privátního koncového bodu pro prostředek Cognitive Services. Chování se bude lišit u prostředku s vlastním názvem domény, ale *bez* privátních koncových bodů. Podrobnosti najdete v [této části](#dns-configuration) .
 
-## <a name="adjusting-existing-applications-and-solutions"></a>Úprava stávajících aplikací a řešení 
+## <a name="adjust-existing-applications-and-solutions"></a>Upravit stávající aplikace a řešení
 
-Prostředek řeči s povolenou vlastní doménou používá jiný způsob, jak komunikovat se službou Speech Services. To platí pro prostředek řeči s povoleným vlastním doménou [s](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) i [bez](#using-speech-resource-with-custom-domain-name-without-private-endpoints) privátních koncových bodů. V aktuální části najdete informace potřebné pro oba případy.
+Prostředek řeči s povolenou vlastní doménou používá jiný způsob, jak komunikovat se službou Speech Services. To platí pro prostředek řeči s povoleným vlastním doménou [s](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) i [bez](#use-speech-resource-with-custom-domain-name-without-private-endpoints) privátních koncových bodů. V aktuální části najdete informace potřebné pro oba případy.
 
-### <a name="using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Použití prostředku řeči s povoleným vlastním názvem domény a privátním koncovým bodem
+### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Použít prostředek řeči s povoleným vlastním názvem domény a privátním koncovým bodem
 
 Prostředek řeči s povoleným vlastním názvem domény a soukromým koncovým bodem používá jiný způsob, jak komunikovat se službou Speech. V této části se dozvíte, jak tyto prostředky používat se službou Speech Service REST API a [sadou Speech SDK](speech-sdk.md).
 
 > [!NOTE]
-> Upozorňujeme, že prostředek řeči bez privátních koncových bodů, ale s povoleným **vlastním názvem domény** má také speciální způsob, jak pracovat se službami Speech, ale tento postup se liší od scénáře použití zdroje řeči privátního koncového bodu. Pokud máte takový prostředek (řekněme, že jste provedli prostředek s privátními koncovými body, ale pak se ho rozhodl odebrat), ujistěte se, že jste obeznámeni s [oddílem korespondent](#using-speech-resource-with-custom-domain-name-without-private-endpoints).
+> Upozorňujeme, že prostředek řeči bez privátních koncových bodů, ale s povoleným **vlastním názvem domény** má také speciální způsob, jak pracovat se službami Speech, ale tento postup se liší od scénáře použití zdroje řeči privátního koncového bodu. Pokud máte takový prostředek (řekněme, že jste provedli prostředek s privátními koncovými body, ale pak se ho rozhodl odebrat), ujistěte se, že jste obeznámeni s [oddílem korespondent](#use-speech-resource-with-custom-domain-name-without-private-endpoints).
 
 #### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-rest-api"></a>Prostředek řeči s vlastním názvem domény a soukromým koncovým bodem. Použití s REST API
 
@@ -330,11 +348,11 @@ Jako ukázku `my-private-link-speech.cognitiveservices.azure.com` názvu DNS pro
 
 Chcete-li získat seznam hlasů podporovaných v oblasti, je nutné provést následující dvě operace:
 
-- Získat autorizační token prostřednictvím
+- Získání autorizačního tokenu:
 ```http
 https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
 ```
-- Použití získaného tokenu získá seznam hlasů přes
+- Pomocí tokenu Získejte seznam hlasů:
 ```http
 https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
 ```
@@ -413,7 +431,7 @@ Chcete-li použít princip popsaný v předchozí části kódu aplikace, je tř
 - Určení adresy URL koncového bodu, kterou vaše aplikace používá
 - Upravte adresu URL koncového bodu, jak je popsáno v předchozí části, a vytvořte `SpeechConfig` instanci třídy pomocí této upravené adresy URL explicitně.
 
-###### <a name="determining-application-endpoint-url"></a>Zjišťuje se adresa URL koncového bodu aplikace.
+###### <a name="determine-application-endpoint-url"></a>Určení adresy URL koncového bodu aplikace
 
 - [Povolit protokolování pro aplikaci](how-to-use-logging.md) a spustit ji pro vygenerování protokolu
 - V souboru protokolu vyhledejte `SPEECH-ConnectionUrl` . Řetězec bude obsahovat `value` parametr, který zase bude obsahovat úplnou adresu URL, kterou vaše aplikace používala.
@@ -426,7 +444,7 @@ Proto adresa URL používaná aplikací v tomto příkladu je:
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
-###### <a name="creating-speechconfig-instance-using-full-endpoint-url"></a>Vytváření `SpeechConfig` instance pomocí adresy URL úplného koncového bodu
+###### <a name="create-speechconfig-instance-using-full-endpoint-url"></a>Vytvoření `SpeechConfig` instance pomocí adresy URL úplného koncového bodu
 
 Upravte koncový bod, který jste určili v předchozí části, jak je popsáno v [Obecné zásadě](#general-principle) .
 
@@ -464,7 +482,7 @@ SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithE
 
 Po provedení této změny by aplikace měla fungovat se zdroji řeči s povoleným soukromým hlasem. Pracujeme na bezproblémové podpoře scénáře privátního koncového bodu.
 
-### <a name="using-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Použití prostředku řeči s vlastním názvem domény bez privátních koncových bodů
+### <a name="use-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Použít prostředek řeči s vlastními názvy domén bez privátních koncových bodů
 
 V tomto článku jsme odkazovali několikrát, takže povolení vlastní domény pro prostředek řeči je **nevratné** a takový prostředek bude používat jiný způsob, jak komunikovat se službou Speech Services porovnáním s "běžnými" (které jsou ty, které používají [názvy regionálních koncových bodů](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)).
 
@@ -529,7 +547,7 @@ Chcete-li povolit aplikaci pro scénář rozpoznávání řeči pomocí vlastní
 - Vyžádání autorizačního tokenu prostřednictvím Cognitive Services REST API
 - Vytvoření instance `SpeechConfig` třídy pomocí metody "z autorizačního tokenu"/"s autorizačním tokenem" 
 
-###### <a name="requesting-authorization-token"></a>Žádá se o autorizační token.
+###### <a name="request-authorization-token"></a>Požádat o autorizační token
 
 V [tomto článku](../authentication.md#authenticate-with-an-authentication-token) najdete informace o tom, jak získat token prostřednictvím Cognitive Services REST API. 
 
@@ -540,7 +558,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
 > [!TIP]
 > Tuto adresu URL můžete najít v části *klíče a koncový bod* (skupina *pro správu prostředků* ) v prostředku rozpoznávání řeči v Azure Portal.
 
-###### <a name="creating-speechconfig-instance-using-authorization-token"></a>Vytváření `SpeechConfig` instance pomocí autorizačního tokenu
+###### <a name="create-speechconfig-instance-using-authorization-token"></a>Vytvoření `SpeechConfig` instance pomocí autorizačního tokenu
 
 Musíte vytvořit instanci `SpeechConfig` třídy pomocí autorizačního tokenu, který jste získali v předchozí části. Předpokládejme, že jsou definované následující proměnné:
 

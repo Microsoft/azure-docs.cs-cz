@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152305"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763140"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Spravované identity pro službu Azure Signal Service
 
@@ -44,9 +44,9 @@ Vytvoření instance služby signalizace Azure s uživatelem přiřazenou identi
 
 4. Na kartě **přiřazený uživatel** vyberte **Přidat**.
 
-5. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte **Přidat**.
+5. Vyhledejte identitu, kterou jste vytvořili dříve, a vybere ji. Vyberte **Add** (Přidat).
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Přidání identity přiřazené systémem na portálu":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Přidání uživatelsky přiřazené identity na portálu":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Použití spravované identity ve scénářích bez serveru
 
@@ -56,9 +56,12 @@ Služba signalizace Azure je plně spravovaná služba, takže nemůžete pomoc�
 
 1. Přidejte identitu přiřazenou systémem nebo identitu přiřazenou uživatelem.
 
-2. Nakonfigurujte nastavení pro odesílání dat a použijte **ManagedIdentity** jako nastavení **ověřování** . Informace o tom, jak vytvořit nastavení pro odesílání pomocí ověřování, najdete v tématu [nastavení pro odesílání dat](concept-upstream.md).
+2. Přidejte jedno nastavení pro odesílání a kliknutím na hvězdičku se dostanete na podrobnou stránku, jak je znázorněno níže.
+    :::image type="content" source="media/signalr-howto-use-managed-identity/pre-msi-settings.png" alt-text="pre-MSI – nastavení":::
+    
+    :::image type="content" source="media/signalr-howto-use-managed-identity/msi-settings.png" alt-text="MSI – nastavení":::
 
-3. V nastavení spravované ověřování identity pro **prostředek**můžete zadat cílový prostředek. Prostředek se stane `aud` deklarací identity v načteném přístupovém tokenu, který se dá použít jako součást ověřování v koncových bodech pro odesílání dat. Prostředek může být jeden z následujících:
+3. V nastavení spravované ověřování identity pro **prostředek** můžete zadat cílový prostředek. Prostředek se stane `aud` deklarací identity v načteném přístupovém tokenu, který se dá použít jako součást ověřování v koncových bodech pro odesílání dat. Prostředek může být jeden z následujících:
     - Obsahovat
     - ID aplikace (klienta) instančního objektu
     - Identifikátor URI ID aplikace instančního objektu
@@ -76,6 +79,37 @@ K ověření přístupových tokenů by aplikace měla taky ověřit cílovou sk
 Middleware Azure Active Directory (Azure AD) obsahuje integrované funkce pro ověřování přístupových tokenů. Můžete procházet naše [ukázky](../active-directory/develop/sample-v2-code.md) a vyhledat je v jazyce podle vašeho výběru.
 
 Poskytujeme knihovny a ukázky kódu, které ukazují, jak zpracovat ověření tokenu. K dispozici je také několik Open Source knihoven partnerů pro ověření JSON Web Token (JWT). K dispozici je alespoň jedna možnost pro skoro každou platformu a jazyk. Další informace o knihovnách ověřování a ukázkách kódu Azure AD najdete v tématu [knihovny ověřování Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md).
+
+#### <a name="authentication-in-function-app"></a>Ověřování v Function App
+
+Nastavení ověřování přístupového tokenu v Function App je snadné a efektivní bez fungování kódu.
+
+1. Na stránce **ověřování/autorizace** přepněte **App Service ověřování** na **zapnuto**.
+
+2. Vyberte možnost **Přihlásit se pomocí Azure Active Directory** v **akci, která se provede, když žádost není ověřená**.
+
+3. V poskytovateli ověřování klikněte na možnost **Azure Active Directory**
+
+4. Na nové stránce. Vyberte **expresní** a **vytvořte novou aplikaci AD** a potom klikněte na **OK** :::image type="content" source="media/signalr-howto-use-managed-identity/function-aad.png" alt-text="funkce AAD"::: .
+
+5. Přejděte ke službě Signaler a postupujte podle [kroků](howto-use-managed-identity.md#add-a-system-assigned-identity) a přidejte identitu přiřazenou systémem nebo uživatelem přiřazenou identitu.
+
+6. Přečtěte si **nastavení pro odesílání** do služby Signal Service a zvolte možnost **použít spravovanou identitu** a **Vyberte z existujících aplikací**. Vyberte aplikaci, kterou jste předtím vytvořili.
+
+Po těchto nastavení Function App zamítne požadavky bez přístupového tokenu v hlavičce.
+
+## <a name="use-a-managed-identity-for-key-vault-reference"></a>Použití spravované identity pro Key Vault reference
+
+Služba signalizace má přístup k Key Vault k získání tajného klíče pomocí spravované identity.
+
+1. Přidejte identitu přiřazenou systémem nebo identitu uživatele pro službu Azure Signal.
+
+2. Udělte oprávnění ke čtení pro spravovanou identitu v zásadách přístupu v Key Vault. Viz [přiřazení zásad Key Vault přístupu pomocí Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+V současné době se tato funkce dá použít v těchto scénářích:
+
+- [Odkaz na tajný klíč ve vzoru adresy URL pro odesílání](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
+
 
 ## <a name="next-steps"></a>Další kroky
 

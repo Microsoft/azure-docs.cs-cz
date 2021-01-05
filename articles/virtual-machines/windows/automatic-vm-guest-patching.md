@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744723"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762975"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: Automatické opravy hosta virtuálního počítače pro virtuální počítače s Windows v Azure
 
@@ -34,11 +34,11 @@ Automatické opravy hosta virtuálního počítače mají následující vlastno
 
 Pokud je na virtuálním počítači povolené automatické opravy hosta virtuálního počítače, pak se na virtuálním počítači automaticky stáhnou a nasadí dostupné *kritické* opravy *zabezpečení* . Tento proces se automaticky vypíná v každém měsíci při vydání nových oprav prostřednictvím web Windows Update. Vyhodnocení a instalace opravy jsou automatické a proces zahrnuje restartování virtuálního počítače podle potřeby.
 
-Tento virtuální počítač se pravidelně vyhodnocuje, aby se zjistily příslušné opravy pro daný virtuální počítač. Opravy můžete nainstalovat na virtuální počítač každý den v době mimo špičku pro virtuální počítač. Toto automatické posouzení zajišťuje, že všechny chybějící opravy budou zjištěny při nejbližší možné příležitosti.
+Tento virtuální počítač se pravidelně vyhodnocuje každých několik dní a v rámci všech 30 dnů několikrát určí příslušné opravy pro daný virtuální počítač. Opravy můžete nainstalovat na virtuální počítač každý den v době mimo špičku pro virtuální počítač. Toto automatické posouzení zajišťuje, že všechny chybějící opravy budou zjištěny při nejbližší možné příležitosti.
 
-Opravy se instalují do 30 dnů od měsíčního web Windows Update vydané verze, podle níže popsané orchestrace s první dostupností. Opravy se instalují jenom v době mimo špičku pro virtuální počítač v závislosti na časovém pásmu virtuálního počítače. Aby se aktualizace nainstalovaly automaticky, musí být virtuální počítač spuštěný v době mimo špičku. Pokud je virtuální počítač vypnutý během pravidelného posouzení, virtuální počítač se automaticky vyhodnotí a příslušné opravy se nainstalují automaticky během příštího pravidelného posuzování, když je virtuální počítač zapnutý.
+Opravy se instalují do 30 dnů od měsíčního web Windows Update vydané verze, podle níže popsané orchestrace s první dostupností. Opravy se instalují jenom v době mimo špičku pro virtuální počítač v závislosti na časovém pásmu virtuálního počítače. Aby se aktualizace nainstalovaly automaticky, musí být virtuální počítač spuštěný v době mimo špičku. Pokud je virtuální počítač vypnutý během pravidelného posouzení, virtuální počítač se automaticky vyhodnotí a příslušné opravy se nainstalují automaticky během následujícího pravidelného vyhodnocení (obvykle během několika dní), kdy se virtuální počítač zapne.
 
-Pokud chcete nainstalovat opravy s jinými klasifikacemi oprav nebo naplánovat instalaci opravy v rámci vlastního okna údržby, můžete použít [Update Management](tutorial-config-management.md#manage-windows-updates).
+Aktualizace definic a další opravy, které nejsou klasifikované jako *kritické* *, nebo se* nedají nainstalovat pomocí AUTOMATICKÝCH oprav hostů virtuálních počítačů. Pokud chcete nainstalovat opravy s jinými klasifikacemi oprav nebo naplánovat instalaci opravy v rámci vlastního okna údržby, můžete použít [Update Management](tutorial-config-management.md#manage-windows-updates).
 
 ### <a name="availability-first-patching"></a>Dostupnost – první Oprava
 
@@ -69,11 +69,11 @@ V současné době se podporují následující SKU platforem (a pravidelně se 
 
 | Publisher               | Nabídka OS      |  Skladová jednotka (SKU)               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Server – jádro |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Server – jádro |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – Server – jádro |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter – jádro |
 
 ## <a name="patch-orchestration-modes"></a>Režimy orchestrace oprav
 Virtuální počítače s Windows v Azure teď podporují následující režimy orchestrace oprav:
@@ -83,7 +83,7 @@ Virtuální počítače s Windows v Azure teď podporují následující režimy
 - Tento režim se vyžaduje pro dostupnost – první oprava.
 - Nastavení tohoto režimu také zakáže nativní automatické aktualizace na virtuálním počítači s Windows, aby nedocházelo k duplicitám.
 - Tento režim se podporuje jenom pro virtuální počítače, které jsou vytvořené pomocí podporovaných imagí platformy operačního systému výše.
-- Chcete-li použít tento režim, nastavte vlastnost `osProfile.windowsConfiguration.enableAutomaticUpdates=true` a nastavte vlastnost  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` v šabloně virtuálního počítače.
+- Chcete-li použít tento režim, nastavte vlastnost `osProfile.windowsConfiguration.enableAutomaticUpdates=true` a nastavte vlastnost  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` v šabloně virtuálního počítače.
 
 **AutomaticByOS:**
 - Tento režim umožňuje automatické aktualizace na virtuálním počítači s Windows a opravy se na virtuálním počítači instalují prostřednictvím automatických aktualizací.
@@ -107,7 +107,7 @@ Virtuální počítače s Windows v Azure teď podporují následující režimy
 - Virtuální počítač musí být schopný získat přístup k koncovým koncovým bodům web Windows Update. Pokud je váš virtuální počítač nakonfigurovaný tak, aby používal Windows Server Update Services (WSUS), musí být příslušné koncové body serveru WSUS dostupné.
 - Použijte COMPUTE API verze 2020-06-01 nebo vyšší.
 
-Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci *InGuestAutoPatchVMPreview* pro každé předplatné, jak je popsáno níže.
+Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci **InGuestAutoPatchVMPreview** pro každé předplatné, jak je popsáno níže.
 
 ### <a name="rest-api"></a>REST API
 Následující příklad popisuje, jak povolit verzi Preview pro vaše předplatné:
@@ -199,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup* :
+Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
@@ -254,10 +254,10 @@ Výsledky instalace opravy pro váš virtuální počítač je možné zkontrolo
 ## <a name="on-demand-patch-assessment"></a>Posouzení oprav na vyžádání
 Pokud je pro váš virtuální počítač už povolená Automatická oprava hosta virtuálního počítače, na VIRTUÁLNÍm počítači se v době mimo špičku virtuálního počítače provede pravidelné vyhodnocení opravy. Tento proces je automatický a výsledky nejnovějšího vyhodnocení si můžete prohlédnout v zobrazení instance virtuálního počítače, jak je popsáno výše v tomto dokumentu. Pro váš virtuální počítač můžete kdykoli okamžitě aktivovat hodnocení oprav. Dokončení posouzení opravy může trvat několik minut a v zobrazení instance virtuálního počítače se aktualizuje stav nejnovějšího posouzení.
 
-Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci *InGuestPatchVMPreview* na předplatné. Verze Preview funkce pro posouzení opravy na vyžádání se dá povolit po [procesu povolení verze Preview](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) popsaném dříve pro automatické opravy hosta virtuálního počítače.
+Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci **InGuestPatchVMPreview** na předplatné. Tato funkce je ve verzi Preview odlišná od registrace funkce Automatické aktualizace hosta virtuálního počítače, kterou jste provedli dříve pro **InGuestAutoPatchVMPreview**. Povolení další funkce Preview je samostatný a další požadavek. Verze Preview funkce pro posouzení opravy na vyžádání se dá povolit po [procesu povolení verze Preview](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) popsaném dříve pro automatické opravy hosta virtuálního počítače.
 
 > [!NOTE]
->Vyhodnocení opravy na vyžádání neaktivuje automaticky instalaci opravy. Vyhodnocené a použitelné opravy pro virtuální počítač se budou instalovat jenom v době mimo špičku virtuálního počítače, a to po procesu aktualizace, který je popsaný výše v tomto dokumentu.
+>Vyhodnocení opravy na vyžádání neaktivuje automaticky instalaci opravy. Pokud jste povolili automatické opravy hosta virtuálního počítače, pak se vyhodnocené a použitelné opravy pro virtuální počítač budou instalovat během doby mimo špičku virtuálního počítače, a to po prvním procesu opravy dostupnosti, který je popsaný výše v tomto dokumentu.
 
 ### <a name="rest-api"></a>REST API
 ```

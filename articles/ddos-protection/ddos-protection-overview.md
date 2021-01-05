@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938439"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746367"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
 
@@ -33,8 +33,8 @@ Azure DDoS Protection neukládá zákaznická data.
 ## <a name="features"></a>Funkce
 
 - **Integrace nativní platformy:** Nativně integrovaná do Azure. Zahrnuje konfiguraci prostřednictvím Azure Portal. DDoS Protection Standard rozumí vašim prostředkům a konfiguraci prostředků.
-- **Ochrana klíč:** Zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti, jakmile je povolená DDoS Protection Standard. Není nutná žádná definice ani zásah uživatele. DDoS Protection Standard okamžitě a automaticky zmírnit útok, jakmile se zjistí.
-- **Monitorování nepřetržitého provozu:** Vaše vzory přenosů aplikací jsou monitorované 24 hodin denně, 7 dní v týdnu a hledají indikátory DDoSch útoků. Při překročení zásad ochrany dochází ke zmírnění rizik.
+- **Ochrana klíč:** Zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti, jakmile je povolená DDoS Protection Standard. Není nutná žádná definice ani zásah uživatele. 
+- **Monitorování nepřetržitého provozu:** Vaše vzory přenosů aplikací jsou monitorované 24 hodin denně, 7 dní v týdnu a hledají indikátory DDoSch útoků. DDoS Protection Standard okamžitě a automaticky zmírnit útok, jakmile se zjistí.
 - **Adaptivní ladění:** Inteligentní profilace provozu zjišťuje provoz vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil se v průběhu času upraví jako změny provozu.
 - **Víceúrovňová ochrana:** Poskytuje úplnou ochranu zásobníku DDoS při použití s bránou firewall webových aplikací k ochraně ochrany ve vrstvě sítě (vrstva 3 a 4, nabízená nástrojem Azure DDoS Protection Standard) a na aplikační vrstvě (vrstva 7, kterou nabízí WAF). Nabídky WAF zahrnují SKU Azure [Application Gateway WAF](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a také nabídky firewallu webových aplikací třetích stran, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 - **Rozsáhlá škála rizik:** U více než 60 různých typů útoků se dá zmírnit s globální kapacitou, která se bude chránit před největším známými DDoS útoky.
@@ -42,7 +42,7 @@ Azure DDoS Protection neukládá zákaznická data.
 - **Metriky útoku:** Souhrnná metrika z každého útoku je přístupná prostřednictvím Azure Monitor.
 - **Výstrahy útoku:** Výstrahy se dají nakonfigurovat na začátku a na konci útoku a přes dobu trvání útoku pomocí integrované metriky útoku. Výstrahy se integrují do svého provozního softwaru, jako je Microsoft Azure monitorování protokolů, Splunk, Azure Storage, e-mailu a Azure Portal.
 - **DDoS Rapid Response**: pro pomoc s vyšetřováním a analýzou útoků se věnuje tým služby DDoS Protection Rapid Response (DRR). Další informace najdete v tématu [DDoS Rapid Response](ddos-rapid-response.md).
-- **Záruka nákladů:** Kredity služeb pro přenos dat a škálování aplikací pro dokumentované DDoS útoky.
+- **Záruka nákladů:** Dodržením kreditu služeb přenosu dat a aplikací na více instancí za náklady na prostředky vzniklé v důsledku dokumentovaných útoků DDoS.
 
 ## <a name="pricing"></a>Ceny
 

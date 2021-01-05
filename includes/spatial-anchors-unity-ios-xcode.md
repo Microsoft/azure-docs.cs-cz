@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185263"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762593"
 ---
 Vyberte **sestavení**. V podokně, které se otevře, vyberte složku, do které se má projekt Xcode exportovat.
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 Vyberte uzel root **Unity-iPhone** pro zobrazení nastavení projektu a pak vyberte kartu **Obecné** .
 
-V části **podepisování** se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a pak resetujte nastavení sestavení výběrem možnosti **Povolit automaticky** v zobrazeném podokně.
+V části **informace o nasazení** ověřte, že je cíl nasazení nastavený na **iOS 11,0**.
 
-V části **informace o nasazení** ověřte, že je **cíl nasazení** nastavený na **11,0**.
+Vyberte kartu **možnosti podepisování &** a ujistěte se, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a pak resetujte nastavení sestavení výběrem možnosti **Povolit automaticky** v zobrazeném podokně.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 

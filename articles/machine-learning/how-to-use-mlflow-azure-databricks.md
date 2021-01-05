@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319030"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760601"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů Azure Databricks ML pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -32,7 +32,7 @@ Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v 
 > [!TIP]
 > Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learning, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte balíček `azureml-mlflow`. 
     * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
@@ -43,7 +43,7 @@ Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v 
 
 MLflow sledování pomocí Azure Machine Learning umožňuje ukládat zaznamenané metriky a artefakty z Azure Databricks spouští do obou: 
 
-* Pracovní prostor Azure Databricks.
+* Azure Databricks pracovní prostor.
 * Pracovní prostor služby Azure Machine Learning
 
 Po vytvoření pracovního prostoru Azure Databricks a clusteru 
@@ -156,9 +156,9 @@ Po vyškolení modelu můžete své modely zaznamenat a zaregistrovat na serveru
 
 Serverem pro sledování back-endu je ve výchozím nastavení Azure Databricks pracovní prostor. Pokud jste nezvolili [Nastavení sledování MLflow jenom na sledování v pracovním prostoru Azure Machine Learning](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), je server pro sledování back-endu Azure Machine Learning pracovním prostorem.   
 
-* **Pokud registrovaný model s názvem neexistuje** , zaregistruje metoda nový model, vytvoří verzi 1 a vrátí objekt ModelVersion MLflow. 
+* **Pokud registrovaný model s názvem neexistuje**, zaregistruje metoda nový model, vytvoří verzi 1 a vrátí objekt ModelVersion MLflow. 
 
-* **Pokud registrovaný model s tímto názvem již existuje** , metoda vytvoří novou verzi modelu a vrátí objekt verze. 
+* **Pokud registrovaný model s tímto názvem již existuje**, metoda vytvoří novou verzi modelu a vrátí objekt verze. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -180,8 +180,8 @@ Až budete připraveni vytvořit koncový bod pro vaše modely ML. Můžete nasa
 Můžete využít rozhraní API [mlflow. AzureML. deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) k nasazení modelu do pracovního prostoru Azure Machine Learning. Pokud jste model zaregistrovali pouze do Azure Databricks pracovního prostoru, jak je popsáno v části [registrace modelů s MLflow](#register-models-with-mlflow) , zadejte `model_name` parametr pro registraci modelu do pracovního prostoru Azure Machine Learning. 
 
 Azure Databricks spuštění lze nasadit do následujících koncových bodů, 
-* [Instance kontejneru Azure](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Instance kontejneru Azure](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Nasazení modelů do koncových bodů ADB pro dávkové vyhodnocování 
 
