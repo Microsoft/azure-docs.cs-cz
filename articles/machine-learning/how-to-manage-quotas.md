@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034033"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937344"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure používá omezení a kvóty k tomu, aby se předešlo překročení rozpo
 > + Požaduje se zvýšení kvóty.
 > + Privátní koncový bod a kvóty DNS.
 
-Spolu se správou kvót můžete zjistit, jak [plánovat a spravovat náklady na Azure Machine Learning](concept-plan-manage-cost.md).
+Spolu se správou kvót můžete zjistit, jak [plánovat a spravovat náklady na Azure Machine Learning](concept-plan-manage-cost.md) nebo se dozvíte o [omezeních služby v Azure Machine Learning](resource-limits-quotas-capacity.md).
 
 ## <a name="special-considerations"></a>Zvláštní požadavky
 
@@ -53,7 +53,9 @@ V této části se dozvíte o výchozích a maximálních limitech kvóty pro n�
 + Azure Storage
 
 > [!IMPORTANT]
-> Omezení se mohou změnit. Nejnovější informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) pro všechny služby Azure.
+> Omezení se mohou změnit. Nejnovější informace najdete v tématu  [omezení služby v Azure Machine Learning](resource-limits-quotas-capacity.md).
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Prostředky Azure Machine Learning
 Následující omezení prostředků platí pro jednotlivé pracovní prostory. 
@@ -104,7 +106,7 @@ V následující tabulce jsou uvedena další omezení platformy. Pokud si chcet
 #### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
 [Azure Machine Learning kanály](concept-ml-pipelines.md) mají následující omezení.
 
-| **Prostředek** | **Omezení** |
+| **Prostředek** | **Počtu** |
 | --- | --- |
 | Kroky v rámci kanálu | 30 000 |
 | Pracovní prostory na skupinu prostředků | 800 |
@@ -122,7 +124,7 @@ Omezení pro virtuální počítače nad rámec hodnot zobrazených v následuj�
 
 Další informace najdete v tématu [omezení Container Instances](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Azure Storage má limit 250 účtů úložiště na oblast v rámci jednoho předplatného. Tento limit zahrnuje účty úložiště úrovně Standard i Premium.
 
 Pokud chcete tento limit zvýšit, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage zkontroluje váš případ a může pro oblast schvalovat až 250 účtů úložiště.
@@ -210,3 +212,4 @@ Pokud chcete požádat o povolení těchto scénářů, použijte následující
 ## <a name="next-steps"></a>Další kroky
 
 + [Plánování a Správa nákladů na Azure Machine Learning](concept-plan-manage-cost.md)
++ [Omezení služby v Azure Machine Learning](resource-limits-quotas-capacity.md)

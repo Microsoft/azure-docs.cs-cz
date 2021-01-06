@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c0cb4527349b09ed8e794cc55dee6f9e54f8a7d4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309662"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937361"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
 
@@ -24,7 +24,7 @@ Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá p
 
 V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k dispozici historii výjimek a chybových zpráv. Vzhledem k tomu, že Application Insights se integruje s výstrahami Azure, můžete také vytvořit výstrahy na základě Application Insights dotazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-your-first-pipeline.md) .
 * [Nakonfigurujte vývojové prostředí](./how-to-configure-environment.md) pro instalaci sady Azure Machine Learning SDK.
@@ -34,7 +34,7 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
   ```
 * Vytvoření [instance Application Insights](../azure-monitor/app/opencensus-python.md) (Tento dokument obsahuje také informace o získání připojovacího řetězce pro prostředek)
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
 
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>OpenCensus požadavky na protokolování Pythonu

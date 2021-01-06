@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 0d7259972693b9ca12e0801007cbd3c0af45ca1c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512031"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937327"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Marketplace
 
@@ -151,7 +151,7 @@ Poté, co vydavatel obdrží volání Webhooku zrušení, by měl uchovávat zá
 
 Předplatné SaaS se dá kdykoli zrušit v rámci svého životního cyklu. Po zrušení předplatného se nedá znovu aktivovat.
 
-## <a name="api-reference"></a>referenční dokumentace k rozhraní API
+## <a name="api-reference"></a>API – referenční informace
 
 Tato část popisuje rozhraní API pro odběr a Operations SaaS.
 
@@ -580,7 +580,7 @@ Pokud je akce připravena k úspěšnému dokončení na straně komerčního tr
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Adresa URL pro získání stavu operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
+|  `Operation-Location`        |  Adresa URL pro získání stavu operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
 Kód: 400 Chybný požadavek: selhání ověřování.
 
@@ -645,7 +645,7 @@ Pokud je akce připravena k úspěšnému dokončení na straně komerčního tr
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
+|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
 
 Kód: 400 Chybný požadavek: selhání ověřování.
 
@@ -710,7 +710,7 @@ Partner taky obdrží oznámení Webhooku, když se akce úspěšně dokončí n
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
+|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
 Kód: 400 Chybný požadavek.  Odstranění není v `allowedCustomerOperations` seznamu pro toto předplatné SaaS.
 
@@ -828,7 +828,7 @@ Response body:
   "quantity": "20", // purchased amount of seats
   "action": "ChangePlan", // Can be ChangePlan, ChangeQuantity or Reinstate
   "timeStamp": "2018-12-01T00:00:00", // UTC
-  "status": "InProgress", // Possible values: NotStarted, InProgress, Failed, Succeed, Conflict (new quantity / plan is the same as existing)
+  "status": "InProgress", // Possible values: NotStarted, InProgress, Failed, Succeeded, Conflict (new quantity / plan is the same as existing)
   "errorStatusCode": "",
   "errorMessage": ""
 }
@@ -964,7 +964,7 @@ Tok nákupu se dá aktivovat z Azure Portal nebo Microsoft AppSourcech lokalit v
 
 Akce *změnit plán*, *změnit množství* a *zrušit odběr* jsou testovány na straně vydavatele.  Na straně Microsoftu se může *zrušit odběr* z Azure Portal i z centra pro správu (portál, ve kterém se spravují nákupy Microsoft AppSource).  *Změna množství a plánu* se dá aktivovat jenom z centra pro správu.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčního tržiště v partnerském centru](../support.md) .
 
