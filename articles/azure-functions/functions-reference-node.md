@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301997"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936800"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Description |
+| Název vlastnosti  | Typ  | Popis |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |
@@ -493,7 +493,7 @@ Když pracujete s triggery HTTP, můžete získat přístup k objektům požadav
 
 ## <a name="scaling-and-concurrency"></a>Škálování a souběžnost
 
-Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitelů pro Node.js. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitelů pro Node.js. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](event-driven-scaling.md).
 
 Toto chování škálování je dostatečné pro mnoho Node.jsch aplikací. Pro aplikace vázané na procesor můžete zvýšit výkon pomocí více pracovních procesů v jazyce.
 

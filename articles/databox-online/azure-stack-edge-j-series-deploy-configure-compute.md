@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185500"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935455"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
 
@@ -34,10 +34,9 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
-
 - Aktivovali jste zařízení Azure Stack Edge pro, jak je popsáno v tématu [aktivace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-activate.md).
 
 
@@ -45,36 +44,36 @@ Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujist
 
 Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoříte prostředek IoT Hub.
 
-1. V Azure Portal prostředku Azure Stack Edge si Projděte **Přehled**. V pravém podokně na dlaždici **výpočty** **vyberte Začínáme**.
+1. V Azure Portal prostředku Azure Stack Edge, klikněte na **Přehled** a vyberte **IoT Edge**.
 
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![Začínáme se službou COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní** prostředky.
+2. V **IoT Edge povolit službu** vyberte **Přidat**.
 
-    ![Konfigurace COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![Konfigurace COMPUTE](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
-3. V okně **Konfigurace hraničních výpočtů** zadejte následující:
+3. V možnosti **vytvořit IoT Edge službu** zadejte nastavení pro prostředek IoT Hub:
 
-   
-    |Pole  |Hodnota  |
-    |---------|---------|
-    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+   |Pole   |Hodnota    |
+   |--------|---------|
+   |Předplatné      | Předplatné používané zdrojem Azure Stack Edge. |
+   |Skupina prostředků    | Skupina prostředků, kterou používá prostředek Azure Stack Edge. |
+   |IoT Hub           | Vyberte možnost **vytvořit novou** nebo **použít existující**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
+   |Název              | Pokud nechcete použít výchozí název, který je k dispozici pro nový prostředek IoT Hub, zadejte jiný název. |
 
     ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . 
+4. Po dokončení nastavení vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení prostředku IoT Hub a vyberte **vytvořit**.
+
+   Vytvoření prostředku pro prostředek IoT Hub trvá několik minut. Po vytvoření prostředku bude **Přehled** označovat, že služba IoT Edge je teď spuštěná.
 
     ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte na dlaždici **Konfigurovat výpočty** možnost **Zobrazit výpočetní** prostředky.
-    
-    ![Začínáme se službou COMPUTE 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+5. Pokud chcete potvrdit, že se nakonfigurovali hraniční výpočetní role, vyberte **vlastnosti**.
 
-    > [!NOTE]
-    > Pokud je dialogové okno **Konfigurovat výpočetní** prostředí zavřené dřív, než se IoT Hub přidruží k zařízení Azure Stack Edge pro, vytvoří se IoT Hub, ale v konfiguraci výpočtů se nezobrazuje. 
-    
-    Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
+   ![Začínáme se službou COMPUTE 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+   Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
 
 
 ## <a name="add-shares"></a>Přidat sdílené složky
@@ -94,11 +93,11 @@ Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složk
 
         ![Přidat hraniční sdílenou složku](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
-    Pokud jste vytvořili místní sdílenou složku NFS, ke zkopírování souborů do sdílené složky použijte následující příkaz vzdálené synchronizace (rsync):
+    Pokud jste vytvořili místní sdílenou složku NFS, `rsync` ke zkopírování souborů do sdílené složky použijte následující možnost vzdáleného příkazu Sync ():
 
     `rsync <source file path> < destination file path>`
 
-    Další informace o tomto `rsync` příkazu najdete v dokumentaci k [rsync](https://www.computerhope.com/unix/rsync.htm).
+    Další informace o tomto `rsync` příkazu najdete v [ `Rsync` dokumentaci](https://www.computerhope.com/unix/rsync.htm).
 
     > [!NOTE]
     > Aby bylo možné připojit sdílenou složku systému souborů NFS ke výpočetním prostředím, musí být výpočetní síť nakonfigurovaná ve stejné podsíti jako virtuální IP adresa systému souborů NFS. Podrobnosti o tom, jak nakonfigurovat výpočetní síť, najdete v tématu [Povolení služby COMPUTE Network na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
@@ -154,15 +153,15 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
  
 1. V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
+    ![Ověřit transformaci dat-1](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
 1. Přidejte data do místní sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
+    ![Ověřit transformaci dat 2](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
    Data se přesunou do cloudové sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
+    ![Ověřit transformaci dat-3](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
    Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Chcete-li zobrazit data, můžete použít Průzkumník služby Storage.
 

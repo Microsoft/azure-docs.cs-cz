@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327385"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937157"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů
 
@@ -80,6 +80,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 > [!TIP]
 > Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler Beta, a to podle pokynů uvedených v [kurzu Zscaler Beta jednotného přihlašování](zscaler-beta-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+
+> [!NOTE]
+> Pokud jsou uživatelé a skupiny zřízené nebo nezřízené, doporučujeme, abyste pravidelně restartovali zřizování, aby se zajistilo, že členství ve skupině bude správně aktualizováno. Při restartování dojde k vynucení, aby naše služba znovu vyhodnotila všechny skupiny a aktualizovala členství.  
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Beta verze ve službě Azure AD:
 
@@ -155,7 +158,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

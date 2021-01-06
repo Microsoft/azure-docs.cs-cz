@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci TypeScript z příkazového řádku a p
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 981c96bb8775a3fdd3f951d079cd7ad285d09680
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637026"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937191"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce TypeScript v Azure z příkazového řádku
 
@@ -95,7 +95,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` typu **HttpRequest** , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json* , je odpověď. 
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` typu **HttpRequest** , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. 
 
 #### <a name="functionjson"></a>function.json
 
@@ -164,7 +164,7 @@ Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost pr
         
     V předchozím příkladu nahraďte `<STORAGE_NAME>` názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem vhodným pro vás. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 
     
-    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](functions-scale.md#consumption-plan), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
+    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](consumption-plan.md), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
 
 ## <a name="deploy-the-function-project-to-azure"></a>Nasazení projektu funkce do Azure
 

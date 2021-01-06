@@ -1,18 +1,18 @@
 ---
-title: Začínáme s týmy spolupráce na komunikačních službách Azure
+title: Rychlý Start – týmy komunikující na komunikačních službách Azure
 titleSuffix: An Azure Communication Services quickstart
-description: V tomto rychlém startu se dozvíte, jak se připojit k týmům, které se účastní volání sady SDK komunikace Azure.
+description: V tomto rychlém startu se dozvíte, jak se připojit k týmům, které se účastní komunikace s voláním sady SDK pro komunikaci Azure.
 author: matthewrobertson
 ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a51833088ad10fc261405d350bb8d0ba61cbcb66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48b9e1139ecae3deed513c954bf4faa7022a88a1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114623"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936681"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Rychlý Start: připojení volající aplikace ke schůzce týmu
 

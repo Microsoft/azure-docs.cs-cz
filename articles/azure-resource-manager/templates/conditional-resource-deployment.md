@@ -3,12 +3,12 @@ title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5650f7fb9f1483f2dc7059607732ecc68cbb7b9d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672844"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934777"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Podmíněné nasazení v šablonách ARM
 
@@ -19,7 +19,7 @@ Někdy potřebujete volitelně nasadit prostředek do šablony Azure Resource Ma
 
 ## <a name="new-or-existing-resource"></a>Nový nebo existující prostředek
 
-Pomocí podmíněného nasazení můžete vytvořit nový prostředek nebo použít existující. Následující příklad ukazuje, jak použít podmínku k nasazení nového účtu úložiště nebo k použití existujícího účtu úložiště.
+Pomocí podmíněného nasazení můžete vytvořit nový prostředek nebo použít existující. Následující příklad ukazuje, jak použít `condition` k nasazení nového účtu úložiště nebo k použití existujícího účtu úložiště.
 
 ```json
 {
@@ -36,7 +36,7 @@ Pomocí podmíněného nasazení můžete vytvořit nový prostředek nebo použ
 }
 ```
 
-Pokud je parametr **newOrExisting** nastaven na **New**, podmínka se vyhodnotí jako true. Účet úložiště je nasazený. Pokud je však vlastnost **newOrExisting** nastavena na hodnotu **stávající**, bude podmínka vyhodnocena jako NEPRAVDA a účet úložiště nebude nasazen.
+Pokud je parametr `newOrExisting` nastaven na hodnotu **New**, podmínka se vyhodnotí jako true. Účet úložiště je nasazený. Pokud je však `newOrExisting` vlastnost nastavena na hodnotu **stávající**, bude podmínka vyhodnocena jako NEPRAVDA a účet úložiště nebude nasazen.
 
 Kompletní příklad šablony, která používá `condition` element, najdete v tématu [virtuální počítač s novým nebo existujícím Virtual Network, úložištěm a veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
@@ -80,13 +80,13 @@ Můžete předat hodnotu parametru, která označuje, zda je podmínka povolena.
 
 Použijete-li funkci [reference](template-functions-resource.md#reference) nebo [list](template-functions-resource.md#list) s prostředkem, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba.
 
-Použijte funkci [if](template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
+Použijte funkci [if](template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](template-functions-logical.md#if) pro ukázkovou šablonu, která používá `if` a `reference` s podmíněně nasazeným prostředkem.
 
 Prostředek můžete nastavit [tak,](define-resource-dependency.md) aby byl závislý na podmíněném prostředku přesně stejně jako jakýkoliv jiný prostředek. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
 ## <a name="complete-mode"></a>Režim dokončení
 
-Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a prostředek není nasazen, protože podmínka je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek, pokud je podmínka nepravdivá.
+Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a prostředek není nasazený, protože je `condition` vyhodnocen jako false, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek, pokud je podmínka nepravdivá.
 
 ## <a name="next-steps"></a>Další kroky
 

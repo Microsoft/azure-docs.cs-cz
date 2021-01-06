@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445917"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936664"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
@@ -26,7 +26,7 @@ Další informace o najdete v tématu.
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled tajných klíčů](about-secrets.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete získat přístup k Azure Key Vault, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -86,4 +86,4 @@ V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klí
 - Viz [použití Key Vault s webovou aplikací App Service](../general/tutorial-net-create-vault-azure-web-app.md)
 - Viz [použití Key Vault s aplikací nasazenou do virtuálního počítače](../general/tutorial-net-virtual-machine.md) .
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

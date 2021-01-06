@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168096"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936953"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -25,7 +25,7 @@ Následující tabulka popisuje dostupné metody nasazení pro projekt funkce.
 | -- | -- | -- |
 | Založené na nástrojích | &bull;&nbsp;[&nbsp; &nbsp; Publikování kódu sady Visual Studio &nbsp;](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Publikování sady Visual Studio](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Publikování základních nástrojů](functions-run-local.md#publish) | Nasazení během vývoje a dalších nasazení AD-Hock. Nasazení se spravují místně pomocí nástrojů. | 
 | Spravované App Service| &bull;&nbsp;[&nbsp;Centrum nasazení &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Nasazení kontejnerů &nbsp;](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Průběžné nasazování (CI/CD) ze správy zdrojového kódu nebo z registru kontejneru. Nasazení jsou spravovaná platformou App Service (Kudu).|
-| Externí kanály|&bull;&nbsp;[Kanály DevOps](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[Akce GitHubu](functions-how-to-github-actions.md) | Produkční a DevOps kanály, které zahrnují další ověřování, testování a další akce, se spouštějí jako součást automatizovaného nasazení. Nasazení se spravují pomocí kanálu. |
+| Externí kanály|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[Akce GitHubu](functions-how-to-github-actions.md) | Produkční a DevOps kanály, které zahrnují další ověřování, testování a další akce, se spouštějí jako součást automatizovaného nasazení. Nasazení se spravují pomocí kanálu. |
 
 Zatímco nasazení konkrétních funkcí používá nejlepší technologii na základě jejich kontextu, většina metod nasazení je založena na [nasazení zip](#zip-deploy).
 
@@ -33,9 +33,9 @@ Zatímco nasazení konkrétních funkcí používá nejlepší technologii na z�
 
 Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
 
-+ [Nároky](functions-scale.md#consumption-plan)
-+ [Nárok](functions-scale.md#premium-plan)
-+ [Vyhrazeno (App Service)](functions-scale.md#app-service-plan)
++ [Consumption](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [Vyhrazeno (App Service)](dedicated-plan.md)
 
 Každý plán má jiné chování. Ne všechny technologie nasazení jsou k dispozici pro každý charakter Azure Functions. Následující graf ukazuje, které technologie nasazení jsou podporovány pro každou kombinaci operačního systému a plánu hostování:
 
@@ -96,7 +96,7 @@ Aplikace Functions pro Linux běžící v plánu spotřeby nemají web SCM/Kudu,
 
 ##### <a name="dedicated-and-premium-plans"></a>Vyhrazené a prémiové plány
 
-Aplikace Function App běžící na systému Linux ve [vyhrazeném plánu (App Service)](functions-scale.md#app-service-plan) a [plánu Premium](functions-scale.md#premium-plan) mají také omezený web SCM/Kudu.
+Aplikace Function App běžící na systému Linux ve [vyhrazeném plánu (App Service)](dedicated-plan.md) a [plánu Premium](functions-premium-plan.md) mají také omezený web SCM/Kudu.
 
 ## <a name="deployment-technology-details"></a>Podrobnosti o technologii nasazení
 

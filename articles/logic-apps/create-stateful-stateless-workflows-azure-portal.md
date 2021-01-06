@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924339"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936528"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Vytváření stavových a bezstavových pracovních postupů v Azure Portal s využitím Azure Logic Apps Preview
 
@@ -43,7 +43,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 > [!NOTE]
 > Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -90,7 +90,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Účet úložiště** | Ano | <*Azure-Storage-Account-Name*> | [Účet Azure Storage](../storage/common/storage-account-overview.md) , který se má použít pro transakce úložiště. Tento název prostředku musí být v různých oblastech jedinečný a musí mít 3-24 znaků a obsahovat jenom číslice a malá písmena. Vyberte buď existující účet, nebo vytvořte nový účet. <p><p>Tento příklad vytvoří účet úložiště s názvem `fabrikamstorageacct` . |
-   | **Typ plánu** | Ano | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je plán [**Premium**](../azure-functions/functions-scale.md#premium-plan) nebo [**App Service**](../azure-functions/functions-scale.md#app-service-plan). Vaše volba má vliv na cenové úrovně, které si můžete vybrat později. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány hostování spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **Typ plánu** | Ano | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je plán [**Premium**](../azure-functions/functions-premium-plan.md) nebo [**App Service**](../azure-functions/dedicated-plan.md). Vaše volba má vliv na cenové úrovně, které si můžete vybrat později. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány hostování spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
    | **Plán Windows** | Ano | <*plán – název*> | Název plánu, který se má použít. Vyberte buď existující plán, nebo zadejte název nového plánu. <p><p>V tomto příkladu se používá název `Fabrikam-Service-Plan` . |
    | **SKU a velikost** | Ano | <*cenová úroveň*> | [Cenová úroveň](../app-service/overview-hosting-plans.md) , která se má použít pro hostování aplikace logiky Vaše volby jsou ovlivněny typem plánu, který jste předtím zvolili. Pokud chcete změnit výchozí úroveň, vyberte **změnit velikost**. Na základě zatížení, které potřebujete, pak můžete vybrat jiné cenové úrovně. <p><p>V tomto příkladu se používá Volná **cenová úroveň F1** pro úlohy **vývoje a testování** . Další informace najdete v [podrobnostech o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
@@ -223,7 +223,7 @@ Než budete moct přidat Trigger do prázdného pracovního postupu, ujistěte s
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Záměr** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
    | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
    | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||

@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898721"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937106"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -256,7 +256,7 @@ Pro spotřebu & jenom plánů Premium. Cesta k souboru s kódem a konfigurací a
 Maximální počet instancí, na které může aplikace Function App navýšit horizontální navýšení kapacity. Výchozí hodnota není nijak omezena.
 
 > [!IMPORTANT]
-> Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./functions-scale.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
+> Toto nastavení je ve verzi Preview.  Byla přidána [vlastnost aplikace pro maximum horizontálního](./event-driven-scaling.md#limit-scale-out) navýšení kapacity a je doporučeným způsobem, jak omezit horizontální navýšení kapacity.
 
 |Klíč|Ukázková hodnota|
 |---|------------|

@@ -4,16 +4,16 @@ description: Vytvořte aplikaci funkcí a nasaďte kód funkce z úložiště Gi
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 752d8a729c56fc2e0e110fcedc263eab4ba7a96b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565303"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934381"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Vytvoření aplikace funkcí v Azure nasazené z GitHubu
 
-Tento Azure Functions ukázkový skript vytvoří aplikaci funkcí pomocí [plánu spotřeby](../functions-scale.md#consumption-plan)společně se souvisejícími prostředky. Skript také nakonfiguruje kód vaší funkce pro průběžné nasazování z úložiště GitHub. 
+Tento Azure Functions ukázkový skript vytvoří aplikaci funkcí pomocí [plánu spotřeby](../consumption-plan.md)společně se souvisejícími prostředky. Skript také nakonfiguruje kód vaší funkce pro průběžné nasazování z úložiště GitHub. 
 
 V této ukázce potřebujete:
 
@@ -42,7 +42,7 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště vyžadovaný aplikací funkcí. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan) bez serveru a přidruží ji k úložišti Git nebo Mercurial. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../consumption-plan.md) bez serveru a přidruží ji k úložišti Git nebo Mercurial. |
 
 ## <a name="next-steps"></a>Další kroky
 

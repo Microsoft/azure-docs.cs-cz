@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107426"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935083"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se Azure Active Directory sestav
 
@@ -143,8 +143,8 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **A:** Stav podmíněného přístupu může mít následující hodnoty:
 
-* **Nepoužito**: to znamená, že pro uživatele a aplikaci v oboru neexistovaly žádné zásady certifikační autority. 
-* **Úspěch**: to znamená, že existovala zásada certifikační autority s uživatelem a aplikací v oboru a zásady certifikační autority byly úspěšně splněné. 
+* **Nepoužito**: to znamená, že pro uživatele a aplikaci v oboru neexistovaly žádné zásady podmíněného přístupu. 
+* **Úspěch**: to znamená, že existovaly zásady podmíněného přístupu s uživatelem a aplikací v oboru a zásady podmíněného přístupu byly úspěšně splněné. 
 * **Selhání**: přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
     
 **Otázka: Jaké jsou všechny možné hodnoty pro výsledek zásad podmíněného přístupu?**
@@ -158,7 +158,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
     
 **Otázka: název zásady v sestavě všech přihlášení se neshoduje s názvem zásady v certifikační autoritě. Proč?**
 
-**A:** Název zásad v sestavě všechna přihlášení je založený na názvu zásady certifikační autority v době přihlášení. To může být nekonzistentní s názvem zásady v certifikační autoritě, pokud jste později aktualizovali název zásady, tedy po přihlášení.
+**A:** Název zásad v sestavě všechna přihlášení je založený na názvu zásad podmíněného přístupu v době přihlášení. To může být nekonzistentní s názvem zásady v certifikační autoritě, pokud jste později aktualizovali název zásady, tedy po přihlášení.
 
 **Otázka: moje přihlášení bylo zablokováno kvůli zásadám podmíněného přístupu, ale v sestavě přihlašovací aktivity se zobrazí zpráva o úspěšném přihlášení. Proč?**
 

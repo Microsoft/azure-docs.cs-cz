@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d3d5fd34ee6c1d73429af63693094acdaed6c9d2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784605"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935015"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Azure Key Vault klíče pro Python
 
@@ -21,7 +21,7 @@ Začněte s knihovnou klienta Azure Key Vault pro Python. Postupujte podle násl
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-keys-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-keys/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS nebo Linux
@@ -134,7 +134,7 @@ print(" done.")
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Ujistěte se, že kód v předchozí části je v souboru s názvem *kv_keys. py* . Pak spusťte kód pomocí následujícího příkazu:
+Ujistěte se, že kód v předchozí části je v souboru s názvem *kv_keys. py*. Pak spusťte kód pomocí následujícího příkazu:
 
 ```terminal
 python kv_keys.py
@@ -211,5 +211,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Přehled Azure Key Vault](../general/overview.md)
 - [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
-- [Azure Key Vault osvědčené postupy](../general/best-practices.md)
+- [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - [Ověřování pomocí Key Vault](../general/authentication.md)

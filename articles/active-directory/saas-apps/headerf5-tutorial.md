@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445507"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936137"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Kurz: Konfigurace jednotného přihlašování (SSO) mezi Azure Active Directory a F5
 
@@ -168,11 +168,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -180,13 +180,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k F5.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **F5**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -195,7 +195,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 1. Klikněte na **podmíněný přístup** .
 1. Klikněte na **nové zásady**.
-1. Teď můžete aplikaci F5 zobrazit jako prostředek pro zásady certifikační autority a použít jakýkoliv podmíněný přístup, včetně vícefaktorového ověřování, řízení přístupu na základě zařízení nebo zásad ochrany identit.
+1. Teď můžete aplikaci F5 zobrazit jako prostředek pro zásady podmíněného přístupu a použít jakýkoliv podmíněný přístup, včetně vícefaktorového ověřování, řízení přístupu na základě zařízení nebo zásad ochrany identit.
 
 ## <a name="configure-f5-sso"></a>Konfigurace F5 SSO
 
@@ -209,7 +209,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti F5 (na základě záhlaví) jako správce a proveďte následující kroky:
 
-1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **importovat**.
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu** vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **importovat**.
 
     ![Snímek obrazovky se zobrazí v seznamu S certifikátem S S, kde vyberete název certifikátu a zdroj certifikátu.](./media/headerf5-tutorial/configure12.png)
  
@@ -230,7 +230,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky se zobrazí stránka vlastností poskytovatele služby.](./media/headerf5-tutorial/configure03.png) 
 
-1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.20 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL**klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
+1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.20 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL** klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
 
     >[!NOTE]
     >v tomto příkladu náš interní webserver běží na portu 888 a chceme ho publikovat v 443.
@@ -241,7 +241,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky ukazuje stránku nastavení konektoru externího zprostředkovatele identity.](./media/headerf5-tutorial/configure05.png)
  
-1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu. V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
+1. V části **Vybrat fond** zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu. V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
 
     ![Snímek obrazovky se zobrazí stránka vlastností fondu.](./media/headerf5-tutorial/configure06.png)
 
@@ -355,9 +355,9 @@ Tato část je určena k použití, pokud nemůžete použít konfiguraci s asis
 
     f. **Shodný zdroj =% {Session. Server. landinguri}** 
 
-    například **Shoda hodnoty =/**_
+    například **Shoda hodnoty =/** _
 
-    h. Klikněte na _*aktualizovat* .*
+    h. Klikněte na _ *aktualizovat* .*
 
     i. Klikněte na tlačítko **OK**.
 

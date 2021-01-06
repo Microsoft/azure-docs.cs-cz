@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861285"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937089"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
 
@@ -38,8 +38,8 @@ Tento dokument obsahuje pokyny k strategiím, které by organizace měla přijmo
 V tomto dokumentu jsou čtyři klíčové poznatky:
 
 * Vyhněte se uzamknutí správce pomocí účtů pro nouzový přístup.
-* Implementujte vícefaktorové ověřování pomocí podmíněného přístupu (CA), nikoli MFA pro uživatele.
-* Zmírnění uzamčení uživatelů pomocí více ovládacích prvků podmíněného přístupu (CA).
+* Implementujte MFA pomocí podmíněného přístupu, spíše než MFA pro uživatele.
+* Zmírnění uzamčení uživatelů pomocí více ovládacích prvků podmíněného přístupu.
 * Omezení uzamčení uživatelů tím, že zřizujete více metod ověřování nebo ekvivalenty pro každého uživatele.
 
 ## <a name="before-a-disruption"></a>Před přerušením
@@ -120,7 +120,7 @@ Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , k
 * Nakonfigurujte sadu záložních zásad, pokud dojde k výpadku jednoho typu přihlašovacích údajů nebo jednoho mechanismu řízení přístupu, který má vliv na přístup k vašim aplikacím. Nakonfigurujte zásady ve stavu pouze sestavy, který vyžaduje připojení k doméně jako řízení, jako zálohu aktivní zásady, která vyžaduje poskytovatele vícefaktorového ověřování od jiného výrobce.
 * Pomocí postupů uvedených v dokumentu White Paper s [pokyny k heslům](https://aka.ms/passwordguidance) snížíte riziko chybných aktérů, které se týkají pokusů o hesla.
 * Nasaďte [Azure ad Self-Service resetování hesla (SSPR)](./tutorial-enable-sspr.md) a [ochranu heslem Azure AD](./howto-password-ban-bad-on-premises-deploy.md) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
-* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Například:
+* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Příklad:
   * Nakonfigurujte zásady zálohování, které odesílají deklaraci omezené relace na Exchange a SharePoint.
   * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte návrat k zásadám, které MCAS a pak MCAS povolí přístup jen pro čtení, ale ne nahrávání.
 * Pojmenujte zásady, abyste se ujistili, že je budete moct snadno najít při přerušení. Do názvu zásady zahrňte tyto prvky:
@@ -138,9 +138,9 @@ Tato standardní pojmenování pro pohotovostní zásady bude následující:
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Následující příklad: **příklad zásady CA s pohotovostním oprávněním pro obnovení přístupu k důležitým aplikacím pro spolupráci**, je typický podnikový pohotovostní. V tomto scénáři organizace obvykle vyžaduje MFA pro všechna přístup k Exchangi Online a SharePointu Online a přerušení v tomto případě je tím, že poskytovatel MFA pro zákazníka má výpadek (ať už jde o Azure AD MFA, místní poskytovatel MFA nebo MFA). Tato zásada tento výpadek omezuje tím, že umožňuje konkrétním cílovým uživatelům přistupovat k těmto aplikacím z důvěryhodných zařízení s Windows jenom v případě, že k aplikaci přistupuje z důvěryhodné podnikové sítě. Z těchto omezení taky vyloučí účty v nouzi a základní správce. Cíloví uživatelé pak získají přístup k Exchangi Online a SharePointu Online, zatímco jiní uživatelé stále nebudou mít přístup k aplikacím z důvodu výpadku. Tento příklad bude vyžadovat pojmenované síťové umístění **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílovými uživateli, skupinou s názvem **CoreAdmins** a základními správci a skupinou s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní modul vyžaduje pro poskytnutí požadovaného přístupu čtyři zásady. 
+Následující příklad: **příklad zásad podmíněného přístupu, který umožňuje obnovit přístup k důležitým aplikacím pro spolupráci**, je obvyklým podnikovým neočekávaným způsobem. V tomto scénáři organizace obvykle vyžaduje MFA pro všechna přístup k Exchangi Online a SharePointu Online a přerušení v tomto případě je tím, že poskytovatel MFA pro zákazníka má výpadek (ať už jde o Azure AD MFA, místní poskytovatel MFA nebo MFA). Tato zásada tento výpadek omezuje tím, že umožňuje konkrétním cílovým uživatelům přistupovat k těmto aplikacím z důvěryhodných zařízení s Windows jenom v případě, že k aplikaci přistupuje z důvěryhodné podnikové sítě. Z těchto omezení taky vyloučí účty v nouzi a základní správce. Cíloví uživatelé pak získají přístup k Exchangi Online a SharePointu Online, zatímco jiní uživatelé stále nebudou mít přístup k aplikacím z důvodu výpadku. Tento příklad bude vyžadovat pojmenované síťové umístění **CorpNetwork** a skupinu zabezpečení **ContingencyAccess** s cílovými uživateli, skupinou s názvem **CoreAdmins** a základními správci a skupinou s názvem **EmergencyAccess** s účty pro nouzový přístup. Pohotovostní modul vyžaduje pro poskytnutí požadovaného přístupu čtyři zásady. 
 
-**Příklad zásad certifikační autority s pohotovostním přístupem pro obnovení přístupu ke klíčovým aplikacím pro spolupráci:**
+**Příklad A-pohotovostní zásady podmíněného přístupu pro obnovení přístupu ke klíčovým aplikacím pro spolupráci:**
 
 * Zásady 1: vyžadování zařízení připojených k doméně pro Exchange a SharePoint
   * Název: EM001-ENABLE v nouzi: přerušení MFA [1/4]-Exchange SharePoint – vyžadovat připojení k hybridní službě Azure AD
@@ -180,9 +180,9 @@ Pořadí aktivace:
 5. Povolit zásadu 4: Ověřte, že všichni uživatelé nemůžou získat Exchange Online z nativních e-mailových aplikací na mobilních zařízeních.
 6. Zakažte stávající zásady vícefaktorového ověřování pro SharePoint Online a Exchange Online.
 
-V tomto dalším příkladu **příkladem B-pohotovostní zásady certifikační autority, které umožňují mobilní přístup k Salesforce**, se obnoví přístup obchodní aplikace. V tomto scénáři zákazník obvykle vyžaduje, aby jejich zaměstnanci prodeje měli přístup k Salesforce (nakonfigurovanému pro jednotné přihlašování pomocí Azure AD) z mobilních zařízení, aby je bylo možné povolit jenom ze zařízení dodržujících předpisy. Přerušení v tomto případě znamená, že došlo k potížím při vyhodnocování dodržování předpisů zařízením a výpadek se děje v citlivé době, kdy prodejní tým potřebuje přístup k Salesforce a uzavřít obchody. Tyto pohotovostní zásady udělí důležitému uživateli přístup k Salesforce z mobilního zařízení, aby mohli dál uzavírat obchody a Nerušit činnost podniku. V tomto příkladu **SalesforceContingency** obsahuje všechny zaměstnance prodejů, kteří potřebují zachovat přístup a **SalesAdmins** obsahuje potřebné Správce Salesforce.
+V tomto dalším příkladu **Příklad: B-pohotovostní zásady podmíněného přístupu, které umožňují mobilní přístup k Salesforce**, je obnoven přístup obchodní aplikace. V tomto scénáři zákazník obvykle vyžaduje, aby jejich zaměstnanci prodeje měli přístup k Salesforce (nakonfigurovanému pro jednotné přihlašování pomocí Azure AD) z mobilních zařízení, aby je bylo možné povolit jenom ze zařízení dodržujících předpisy. Přerušení v tomto případě znamená, že došlo k potížím při vyhodnocování dodržování předpisů zařízením a výpadek se děje v citlivé době, kdy prodejní tým potřebuje přístup k Salesforce a uzavřít obchody. Tyto pohotovostní zásady udělí důležitému uživateli přístup k Salesforce z mobilního zařízení, aby mohli dál uzavírat obchody a Nerušit činnost podniku. V tomto příkladu **SalesforceContingency** obsahuje všechny zaměstnance prodejů, kteří potřebují zachovat přístup a **SalesAdmins** obsahuje potřebné Správce Salesforce.
 
-**Příklad B-pohotovostní zásady certifikační autority:**
+**Příklad B-pohotovostní zásady podmíněného přístupu:**
 
 * Zásady 1: zablokovat všem, kteří nejsou v týmu SalesContingency
   * Název: EM001 – povolení v nouzi: přerušení dodržování předpisů zařízením [1/2]-Salesforce – zablokuje všechny uživatele kromě SalesforceContingency.

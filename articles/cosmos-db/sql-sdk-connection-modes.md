@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032792"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934947"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB režimy připojení sady SQL SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ K dispozici jsou dva režimy připojení:
       
     Režim brány je podporovaný na všech platformách SDK. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod DNS. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě pokaždé, když se data čtou nebo se zapisují do Azure Cosmos DB. Režim připojení brány doporučujeme také v případě, že spouštíte aplikace v prostředích, které mají omezený počet připojení soketu.
 
-    Při použití sady SDK v Azure Functions, zejména v [plánu spotřeby](../azure-functions/functions-scale.md#consumption-plan), si pamatujte na aktuální [omezení připojení](../azure-functions/manage-connections.md).
+    Při použití sady SDK v Azure Functions, zejména v [plánu spotřeby](../azure-functions/consumption-plan.md), si pamatujte na aktuální [omezení připojení](../azure-functions/manage-connections.md).
 
   * Přímý režim
 

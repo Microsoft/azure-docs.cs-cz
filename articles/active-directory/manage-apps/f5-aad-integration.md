@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317897"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935236"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 přístup správce zásad pro BIG-IP Access a Azure Active Directory Integration pro zabezpečený hybridní přístup
 
@@ -71,7 +71,7 @@ Kroky 1-4 v diagramu znázorňují front-end výměnu před ověřením mezi už
 |:------|:-----------|
 | 1. | Uživatel vybere ikonu aplikace na portálu a překládá adresu URL na SAML SP (BIG-IP). |
 | 2. | Služba BIG-IP přesměruje uživatele na SAML IDP (Azure AD) pro předběžné ověření.|
-| 3. | Služba Azure AD zpracovává zásady certifikační autority a [řízení relací](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) pro autorizaci.|
+| 3. | Azure AD zpracovává zásady podmíněného přístupu a [ovládací prvky relace](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) pro autorizaci.|
 | 4. | Přesměruje uživatele zpět na BIG-IP, který prezentuje deklarace SAML vydané službou Azure AD. |
 | 5. | BIG-IP žádosti o další informace o relacích, které se mají zahrnout do služby [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) a [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) do publikované služby |
 | 6. | BIG-IP přepošle požadavek klienta na back-end službu.
@@ -144,7 +144,7 @@ V následujících kurzech najdete podrobné pokyny k implementaci některých n
 
 - [Zabezpečení F5 BIG-IP SSL-VPN pomocí Azure AD SHA](f5-aad-password-less-vpn.md)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Konec hesel, přejít bez hesla](https://www.microsoft.com/security/business/identity/passwordless)
 

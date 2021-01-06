@@ -4,12 +4,12 @@ description: Naučte se Azure Functions koncepty a techniky, které potřebujete
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167875"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936732"
 ---
 # <a name="azure-functions-developer-guide"></a>Příručka pro vývojáře v Azure Functions
 V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
@@ -42,7 +42,7 @@ Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](
 
 | Vlastnost | Hodnoty a typy | Komentáře |
 | --- | --- | --- |
-| `type` |řetězec |Typ vazby Například, `queueTrigger`. |
+| `type` |řetězec |Typ vazby Například `queueTrigger`. |
 | `direction` |' in ', ' out ' |Označuje, zda je vazba určena pro příjem dat do funkce nebo odesílání dat z funkce. |
 | `name` |řetězec |Název, který se používá pro vázaná data ve funkci. V jazyce C# je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
 
@@ -69,7 +69,7 @@ Aplikace Function App lze vytvářet a publikovat pomocí různých nástrojů, 
 Editor funkcí integrovaný do Azure Portal umožňuje aktualizovat kód a *function.jsv* souboru přímo vloženě. Tento postup je doporučený pouze pro malé změny nebo zkoušku konceptu – osvědčeným postupem je použití místního vývojového nástroje, jako je VS Code.
 
 ## <a name="parallel-execution"></a>Paralelní provádění
-Když dojde k více událostem triggeru rychleji než modul runtime s jedním vláknem, může je zpracovat, modul runtime může funkci vyvolat víckrát.  Pokud aplikace Function App používá [plán hostování spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work), aplikace Function app by mohla automaticky škálovat horizontální navýšení kapacity.  Každá instance aplikace Function App, bez ohledu na to, jestli aplikace běží na plánu hostování spotřeby nebo běžném [App Service plánu hostování](../app-service/overview-hosting-plans.md), může zpracovávat souběžné volání funkcí paralelně pomocí několika vláken.  Maximální počet souběžných volání funkcí v každé instanci aplikace Function App se liší v závislosti na používaném typu triggeru a na zdrojích používaných jinými funkcemi v aplikaci Function App.
+Když dojde k více událostem triggeru rychleji než modul runtime s jedním vláknem, může je zpracovat, modul runtime může funkci vyvolat víckrát.  Pokud aplikace Function App používá [plán hostování spotřeby](event-driven-scaling.md), aplikace Function app by mohla automaticky škálovat horizontální navýšení kapacity.  Každá instance aplikace Function App, bez ohledu na to, jestli aplikace běží na plánu hostování spotřeby nebo běžném [App Service plánu hostování](../app-service/overview-hosting-plans.md), může zpracovávat souběžné volání funkcí paralelně pomocí několika vláken.  Maximální počet souběžných volání funkcí v každé instanci aplikace Function App se liší v závislosti na používaném typu triggeru a na zdrojích používaných jinými funkcemi v aplikaci Function App.
 
 ## <a name="functions-runtime-versioning"></a>Správa verzí modulu runtime Functions
 

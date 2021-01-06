@@ -3,12 +3,12 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168103"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934879"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
@@ -16,9 +16,9 @@ Existují tři typy hostujících plánů pro aplikaci, která běží v Azure F
 
 | Plánování | Popis |
 | ---- | ----------- |
-| [**Nároky**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
-| [**Premium**](functions-scale.md#premium-plan) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
-| [**Vyhrazeno (App Service)**](functions-scale.md#app-service-plan) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
+| [**Consumption**](consumption-plan.md) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
+| [**Premium**](functions-premium-plan.md) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
+| [**Vyhrazeno (App Service)**](dedicated-plan.md) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
 
 Zvolili jste plán, který nejlépe podporuje výkon vaší funkce a požadavky na náklady. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md).
 
@@ -63,7 +63,7 @@ Doba spuštění může ovlivnit následující chování vašich funkcí:
 
 ## <a name="viewing-cost-related-data"></a>Zobrazení dat souvisejících s náklady
 
-Ve [vaší faktuře](../cost-management-billing/understand/download-azure-invoice.md)si můžete zobrazit data související s náklady z celkového počtu **spuštění –** funkce a **čas spuštění – funkce**a také skutečné fakturované náklady. Tato data faktury jsou však za měsíc agregovaná za období minulé faktury. 
+Ve [vaší faktuře](../cost-management-billing/understand/download-azure-invoice.md)si můžete zobrazit data související s náklady z celkového počtu **spuštění –** funkce a **čas spuštění – funkce** a také skutečné fakturované náklady. Tato data faktury jsou však za měsíc agregovaná za období minulé faktury. 
 
 ### <a name="function-app-level-metrics"></a>Funkce metrik na úrovni aplikace
 
@@ -73,9 +73,9 @@ Abyste lépe pochopili dopad vašich funkcí, můžete pomocí Azure Monitor zob
 
 Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-getting-started.md) můžete zobrazit data související s náklady pro aplikace funkcí plánu spotřeby v grafickém formátu. 
 
-1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby**vyberte **monitor** .
+1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby** vyberte **monitor** .
 
-1. Na levé straně vyberte **metriky**  >  **Vybrat prostředek**a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
+1. Na levé straně vyberte **metriky**  >  **Vybrat prostředek** a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
 
     ![Výběr prostředku Function App](media/functions-consumption-costing/select-a-resource.png)
 
@@ -89,7 +89,7 @@ Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-g
 
 1. Vyberte **použít** a zvolte svou aplikaci Function App jako prostředek, který chcete monitorovat.
 
-1. Z **metriky**vyberte **počet spuštění funkce** a **součet** pro **agregaci**. Tím se do grafu přidá součet počtu spuštění během zvoleného období.
+1. Z **metriky** vyberte **počet spuštění funkce** a **součet** pro **agregaci**. Tím se do grafu přidá součet počtu spuštění během zvoleného období.
 
     ![Definování funkce Function App metriky, která se má přidat do grafu](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 

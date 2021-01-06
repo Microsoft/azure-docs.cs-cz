@@ -2,16 +2,25 @@
 title: Integrace s Apache Kafka Connect – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak používat Kafka Connect s Azure Event Hubs pro Kafka.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/06/2021
+ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369535"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935151"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
-Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede použitím architektury Kafka Connect s Event Hubs.
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>Integrace podpory připojení Apache Kafka ve službě Azure Event Hubs
+[Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) je rozhraní pro připojení a import/export dat z/do libovolného externího systému, jako je MySQL, HDFS a systém souborů prostřednictvím clusteru Kafka. Tento kurz vás provede použitím architektury Kafka Connect s Event Hubs.
+
+> [!WARNING]
+> Použití architektury Apache Kafka Connect a jejích konektorů **nemá nárok na podporu produktu prostřednictvím Microsoft Azure**.
+>
+> Apache Kafka Connect předpokládá, že se má jeho dynamická konfigurace uchovávat v kompaktních tématech s jiným neomezeným uchováváním. Azure Event Hubs [neimplementuje komprimaci jako funkci zprostředkovatele](event-hubs-federation-overview.md#log-projections) a vždycky ukládá limit uchovávání dat na zachované události, od principu, kdy je Azure Event Hubs modul pro streamování událostí v reálném čase, a ne Dlouhodobá data nebo úložiště konfigurace.
+>
+> I když Apache Kafka projekt může být při semíchání těchto rolí pohodlnější, Azure se domnívá, že tyto informace jsou nejlépe spravované ve správné databázi nebo úložišti konfigurace.
+>
+> Mnoho scénářů Apache Kafka připojení bude funkční, ale tyto koncepční rozdíly mezi modely uchovávání Apache Kafka a Azure Event Hubs mohou způsobit, že některé konfigurace nebudou fungovat podle očekávání. 
 
 Tento kurz vás provede integrací Kafka Connect s centrem událostí a nasazením základních konektorů FileStreamSource a FileStreamSink. Tato funkce je aktuálně ve verzi Preview. Tyto konektory nejsou určené pro produkční použití. Předvádějí však kompletní scénář připojení Kafka, kde služba Azure Event Hubs funguje jako zprostředkovatel Kafka.
 
@@ -27,7 +36,7 @@ V tomto kurzu provedete následující kroky:
 > * Spuštění připojení Kafka
 > * Vytvoření konektorů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Abyste mohli dokončit tento návod, ujistěte se, že máte následující:
 
 - Předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
@@ -101,7 +110,7 @@ V tomto kroku se místně spustí pracovní proces připojení Kafka v distribuo
 
 1. Místně uložte výše uvedený soubor `connect-distributed.properties`.  Nezapomeňte nahradit všechny hodnoty v závorkách.
 2. Na svém počítači přejděte do umístění verze Kafka.
-4. Je nutné spustit `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  Jakmile se zobrazí `'INFO Finished starting connectors and tasks'`, rozhraní REST API pracovního procesu připojení je připravené k interakci. 
+4. Spusťte `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  Jakmile se zobrazí `'INFO Finished starting connectors and tasks'`, rozhraní REST API pracovního procesu připojení je připravené k interakci. 
 
 > [!NOTE]
 > Kafka Connect používá rozhraní Kafka AdminClient API k automatickému vytváření témat s doporučenými konfiguracemi, včetně komprimace. Rychlou kontrolou oboru názvů na webu Azure Portal zjistíte, že se interní témata pracovního procesu připojení vytvořila automaticky.

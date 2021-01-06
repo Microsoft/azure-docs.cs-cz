@@ -1,26 +1,26 @@
 ---
 title: Konfigurace vývojového prostředí pro skripty pro nasazení v šablonách | Microsoft Docs
-description: Nakonfigurujte vývojové prostředí pro skripty nasazení v šablonách Azure Resource Manager.
+description: Nakonfigurujte vývojové prostředí pro skripty nasazení v šablonách Azure Resource Manager (šablony ARM).
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734177"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936392"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurace vývojového prostředí pro skripty nasazení v šablonách
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurace vývojového prostředí pro skripty pro nasazení v šablonách ARM
 
 Naučte se vytvářet vývojové prostředí pro vývoj a testování skriptů nasazení pomocí Image skriptu nasazení. Můžete buď vytvořit službu [Azure Container instance](../../container-instances/container-instances-overview.md) , nebo použít [Docker](https://docs.docker.com/get-docker/). Jak je popsáno v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte skript nasazení, můžete vytvořit soubor **hello.ps1** s následujícím obsahem:
+Pokud nemáte skript nasazení, můžete vytvořit soubor _hello.ps1_ s následujícím obsahem:
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ Chcete-li vytvářet skripty v počítači, je třeba vytvořit účet úložiš
 
 ### <a name="create-an-azure-container-instance"></a>Vytvoření instance kontejneru Azure
 
-V následující šabloně ARM se vytvoří instance kontejneru a sdílená složka a pak se sdílená složka připojí k imagi kontejneru.
+Následující šablona Azure Resource Manager (šablona ARM) vytvoří instanci kontejneru a sdílenou složku a poté připojí sdílenou složku k imagi kontejneru.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,12 +153,13 @@ V následující šabloně ARM se vytvoří instance kontejneru a sdílená slo�
   ]
 }
 ```
-Výchozí hodnota pro cestu pro připojení je **deploymentScript**.  Toto je cesta v instanci kontejneru, kde je připojena ke sdílené složce.
 
-Výchozí image kontejneru zadaná v šabloně je **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:az4.3**.   Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+Výchozí hodnota pro cestu pro připojení je `deploymentScript` . Toto je cesta v instanci kontejneru, kde je připojena ke sdílené složce.
+
+Výchozí image kontejneru zadaná v šabloně je `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` . Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
-  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s přehledem podporovaných verzí.
+  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s podporovanými verzemi.
 
 Šablona pozastaví instanci kontejneru 1800 sekund. Máte 30 minut, než se instance kontejneru dostane do stavu terminálu a relace skončí.
 
@@ -196,7 +197,7 @@ Soubor můžete také nahrát pomocí Azure Portal a Azure CLI.
 
 1. Z Azure Portal otevřete skupinu prostředků, do které jste nasadili instanci kontejneru a účet úložiště.
 1. Otevřete skupinu kontejnerů. Výchozím názvem skupiny kontejnerů je název **projektu s připojenou příponou** . Je vidět, že instance kontejneru je ve stavu **spuštěno** .
-1. V nabídce vlevo vyberte **kontejnery** . Zobrazí se instance kontejneru.  Název instance kontejneru je název projektu s připojeným **kontejnerem** .
+1. V nabídce vlevo vyberte **kontejnery** . Zobrazí se instance kontejneru. Název instance kontejneru je název projektu s připojeným **kontejnerem** .
 
     ![instance kontejneru nasazení připojit ke skriptu](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Je také nutné nakonfigurovat sdílení souborů pro připojení adresáře, kt
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Nahraďte **&lt; písmeno hostitelského ovladače>** a **&lt; název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
+    Nahraďte **&lt; písmeno hostitelského ovladače>** a **&lt; název adresáře hostitele>** existující složkou na sdílené jednotce. Namapuje složku do složky _/data_ v kontejneru. Například pro mapování _D:\docker_:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Je také nutné nakonfigurovat sdílení souborů pro připojení adresáře, kt
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Následující snímek obrazovky ukazuje, jak spustit skript prostředí PowerShell s tím, že na sdílené jednotce máte soubor helloworld.ps1.
+1. Následující snímek obrazovky ukazuje, jak spustit skript prostředí PowerShell s tím, že na sdílené jednotce máte soubor _helloworld.ps1_ .
 
     ![Správce prostředků skript nasazení skriptu Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 V tomto článku jste zjistili, jak používat skripty pro nasazení. Návod k procházení skriptu nasazení:
 
 > [!div class="nextstepaction"]
-> [Kurz: použití skriptů nasazení v šablonách Azure Resource Manager](./template-tutorial-deployment-script.md)
+> [Kurz: použití skriptů pro nasazení v šablonách ARM](./template-tutorial-deployment-script.md)

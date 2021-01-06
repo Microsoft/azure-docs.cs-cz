@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšířen�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168417"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936970"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -39,7 +39,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][Azure Functions pro Visual Studio Code], musíte splnit tyto požadavky:
 
@@ -255,7 +255,7 @@ Následující kroky publikují projekt na novou aplikaci funkcí vytvořenou s 
     | ------ | ----- | ----------- |
     | Výběr aplikace Function App v Azure | Vytvoření nových Function App v Azure | Do dalšího řádku zadejte globálně jedinečný název, který identifikuje vaši novou aplikaci Function App, a pak vyberte Enter. Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`. |
     | Vybrat operační systém | Windows | Aplikace Function App běží ve Windows. |
-    | Vybrat plán hostování | Plán Consumption | Používá se [hostování plánu spotřeby](functions-scale.md#consumption-plan) bez serveru. |
+    | Vybrat plán hostování | Plán Consumption | Používá se [hostování plánu spotřeby](consumption-plan.md) bez serveru. |
     | Vyberte modul runtime pro novou aplikaci. | Jazyk projektu | Modul runtime musí odpovídat projektu, který publikujete. |
     | Vyberte skupinu prostředků pro nové prostředky. | Vytvořit novou skupinu prostředků | Do dalšího řádku zadejte název skupiny prostředků, jako `myResourceGroup` je, a pak vyberte zadat. Můžete také vybrat existující skupinu prostředků. |
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště | Do dalšího řádku zadejte globálně jedinečný název nového účtu úložiště používaného aplikací Function App a pak vyberte Enter. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete také vybrat existující účet. |
@@ -311,7 +311,7 @@ Tato část používá [rozšíření Azure Storage pro Visual Studio Code](http
 
 Nastavení připojovacího řetězce účtu úložiště:
 
-1. V aplikaci Visual Studio otevřete **Průzkumník cloudu**, rozbalte **účet úložiště**  >  **Your Storage Account** a pak vyberte **vlastnosti** a zkopírujte hodnotu **primárního připojovacího řetězce** .
+1. V aplikaci Visual Studio otevřete **Průzkumník cloudu**, rozbalte **účet úložiště**  >  a pak vyberte **vlastnosti** a zkopírujte hodnotu **primárního připojovacího řetězce** .
 
 2. V projektu otevřete local.settings.jsv souboru a nastavte hodnotu klíče **AzureWebJobsStorage** na připojovací řetězec, který jste zkopírovali.
 
@@ -396,9 +396,9 @@ Další informace o monitorování pomocí Application Insights najdete v témat
 
 Ve výchozím nastavení jsou všechny projekty C# vytvořeny jako [projekty knihovny kompilovaných tříd jazyka c#](functions-dotnet-class-library.md). Pokud raději chcete pracovat s projekty skriptů v jazyce C#, je nutné vybrat skript jazyka C# jako výchozí jazyk v nastavení rozšíření Azure Functions:
 
-1. Vyberte **File**  >  **Preferences**  >  **Nastavení** předvoleb souboru.
+1. Vyberte   >    >  **Nastavení** předvoleb souboru.
 
-1. Přejít na **rozšíření uživatelských nastavení**  >  **Extensions**  >  **Azure Functions**.
+1. Přejít na **rozšíření uživatelských nastavení**  >    >  **Azure Functions**.
 
 1. V Azure Functions vyberte **skript C #** **: jazyk projektu**.
 

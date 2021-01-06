@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 68c58769302bbefd29b483a8fda225201d242dd9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483640"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936630"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Rychlý Start: Azure Key Vaulta klíčová knihovna klienta pro Python
 
@@ -21,7 +21,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Python 
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS nebo Linux
@@ -212,5 +212,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Přehled Azure Key Vault](../general/overview.md)
 - [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
-- [Azure Key Vault osvědčené postupy](../general/best-practices.md)
+- [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - [Ověřování pomocí Key Vault](../general/authentication.md)

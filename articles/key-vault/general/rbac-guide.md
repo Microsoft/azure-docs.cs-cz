@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445179"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936239"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
 
@@ -41,7 +41,7 @@ Oprávnění k jednotlivým klíčům, tajným klíčům a certifikátům by se 
 
 Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 
-- [Azure Key Vault osvědčené postupy](best-practices.md)
+- [Přehled zabezpečení Azure Key Vault](security-overview.md)
 - [Omezení služby Azure Key Vault](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Předdefinované role Azure pro operace Key Vault roviny dat (Preview)
@@ -65,11 +65,11 @@ Další informace o definicích integrovaných rolí Azure najdete v tématu [p�
 
 Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k modelu oprávnění zásad přístupu trezoru. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
-- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](../../role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351567"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937138"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Private Access (ZPA) pro Automatické zřizování uživatelů
 
@@ -117,6 +117,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler Private Access (ZPA) podle pokynů uvedených v [kurzu pro jednotné přihlašování Zscaler Private Access (ZPA)](./zscalerprivateaccess-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
 
 > [!NOTE]
+> Pokud jsou uživatelé a skupiny zřízené nebo nezřízené, doporučujeme, abyste pravidelně restartovali zřizování, aby se zajistilo, že členství ve skupině bude správně aktualizováno. Při restartování dojde k vynucení, aby naše služba znovu vyhodnotila všechny skupiny a aktualizovala členství.  
+
+> [!NOTE]
 > Další informace o koncovém bodu SCIM privátního přístupu Zscaler najdete v [tomto](https://www.zscaler.com/partners/microsoft)tématu.
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-private-access-zpa-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Private Access (ZPA) ve službě Azure AD:
@@ -181,7 +184,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

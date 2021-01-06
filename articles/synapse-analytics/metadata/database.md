@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451810"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934964"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Sdílená databáze Azure synapse Analytics
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Apache Spark serverů bez serveru a neserverovým fondem SQL.
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky. Databáze a tabulky Parquet, které jsou vytvořeny v fondech Apache Spark, jsou v současné době sdíleny automaticky s modulem SQL Pooling Engine bez serveru.
 
-Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Sparku v pracovním prostoru, včetně neserverového fondu SQL.
+Databáze vytvořená pomocí úlohy Spark se bude zobrazovat se stejným názvem jako všechny aktuální a budoucí fondy Sparku v pracovním prostoru, včetně neserverového fondu SQL. Vlastní objekty (externí tabulky, zobrazení, procedury) přímo v této replikované databázi nemůžete přidat pomocí fondu SQL bez serveru.
 
 Výchozí databáze Spark, která je volána `default` , bude také viditelná v kontextu fondu SQL bez serveru jako databáze s názvem `default` .
 

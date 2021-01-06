@@ -4,12 +4,12 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403071"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934862"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
@@ -76,11 +76,11 @@ Služba WebJobs a sada WebJobs SDK fungují nejlépe společně, ale můžete po
 
 Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Tady je několik faktorů, které je potřeba vzít v úvahu při výběru mezi Azure Functions a WebJobs se sadou WebJobs SDK:
 
-|  | Funkce | Služba WebJobs se sadou WebJobs SDK |
+|  | Functions | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
-|**[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](event-driven-scaling.md)**|✔||
 |**[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md)** |✔||
-|**[Ceny s platbami za použití](functions-scale.md#consumption-plan)**|✔||
+|**[Ceny s platbami za použití](consumption-plan.md)**|✔||
 |**[Integrace s Logic Apps](functions-twitter-email.md)**|✔||
 | **Aktivační události** |[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **Podporované jazyky**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|

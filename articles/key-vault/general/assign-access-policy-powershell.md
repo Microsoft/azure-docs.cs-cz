@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287624"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934525"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Přiřazení zásady přístupu Key Vault pomocí Azure PowerShell
 
@@ -51,7 +51,7 @@ Určete ID objektu aplikace, skupiny nebo uživatele, ke kterému chcete přiřa
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- Skupiny: pomocí rutiny [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) s `-SearchString` parametrem můžete filtrovat výsledky podle názvu požadované skupiny:
+- Skupiny: pomocí rutiny [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) s `-SearchString` parametrem můžete filtrovat výsledky podle názvu požadované skupiny:
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -79,7 +79,6 @@ Potřebujete pouze zahrnout `-PermissionsToSecrets` , `-PermissionsToKeys` a `-P
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Key Vault zabezpečení: Správa identit a přístupu](overview-security.md#identity-and-access-management)
+- [Azure Key Vault zabezpečení: Správa identit a přístupu](security-overview.md#identity-management)
 - [Zabezpečte svůj Trezor klíčů](secure-your-key-vault.md).
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)
-- [Azure Key Vault osvědčené postupy](best-practices.md)

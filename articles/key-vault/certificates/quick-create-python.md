@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d9fdfc89c8c02749fdf677ad119f1eed5a4b1fa2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185177"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934913"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Python
 
@@ -21,7 +21,7 @@ Začněte s klientskou knihovnou certifikátů Azure Key Vault pro Python. Postu
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-certificates-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-certificates)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS nebo Linux
@@ -215,5 +215,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Přehled Azure Key Vault](../general/overview.md)
 - [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
-- [Azure Key Vault osvědčené postupy](../general/best-practices.md)
+- [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - [Ověřování pomocí Key Vault](../general/authentication.md)

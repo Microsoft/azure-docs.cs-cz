@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019497"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936936"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App.
 
 Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)**.
 
-## <a name="application-settings"></a><a name="settings"></a>Nastavení aplikace
+## <a name="work-with-application-settings"></a><a name="settings"></a>Práce s nastavením aplikace
 
 Karta **nastavení aplikace** uchovává nastavení, která používá aplikace Function App. Tato nastavení jsou šifrovaná a je nutné vybrat možnost **Zobrazit hodnoty** a zobrazit hodnoty na portálu. K nastavení aplikace můžete přistupovat také pomocí Azure CLI.
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Když vyvíjíte aplikaci funkcí lokálně, musíte zachovat místní kopie těchto hodnot v local.settings.jsv souboru projektu. Další informace najdete v tématu [místní nastavení souboru](functions-run-local.md#local-settings-file).
+
+## <a name="hosting-plan-type"></a>Typ plánu hostování
+
+Když vytvoříte aplikaci Function App, vytvoříte také App Service plán hostování, ve kterém se aplikace spouští. Plán může mít jednu nebo víc aplikací Function App. Funkce, škálování a ceny vašich funkcí závisí na typu plánu. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+
+Typ plánu, který aplikace Function App používá, můžete určit z Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. 
+
+Následující hodnoty udávají typ plánu:
+
+| Typ plánu | Portál | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [Consumption](consumption-plan.md) | **Consumption** | `Dynamic` |
+| [Premium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [Vyhrazeno (App Service)](dedicated-plan.md) | Některé | Některé |
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Chcete-li určit typ plánu používaného aplikací Function App, přečtěte si téma **App Service plán** na kartě **Přehled** aplikace Function App v [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu App Service** a v levém podokně vyberte **vlastnosti** .
+
+![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Spuštěním následujícího příkazu rozhraní příkazového řádku Azure získáte typ plánu hostování:
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+V předchozím příkladu nahraďte `<RESOURCE_GROUP>` a `<FUNCTION_APP_NAME>` názvem skupiny prostředků a název aplikace funkcí odpovídající. 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Spusťte následující příkaz Azure PowerShell, který získá typ plánu hostování:
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+V předchozím příkladu nahraďte `<RESOURCE_GROUP>` a `<FUNCTION_APP_NAME>` názvem skupiny prostředků a název aplikace funkcí odpovídající. 
+
+---
+
 
 ## <a name="platform-features"></a>Funkce platformy
 

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2c7db937905baed94c6fe81adeb44c8b3f5be52b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454503"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936069"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -285,7 +285,7 @@ Rutiny používané ke zřízení a správě správce Azure AD pro SQL Database 
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse.|
 | [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro server hostující SQL Database nebo Azure synapse. |
 
-K zobrazení dalších informací pro každý z těchto příkazů použijte příkaz PowerShellu Get-Help. Například, `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
+K zobrazení dalších informací pro každý z těchto příkazů použijte příkaz PowerShellu Get-Help. Například `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
 
 Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f` ) pro server **demo_server** ve skupině prostředků s názvem **Skupina-23**:
 
@@ -395,7 +395,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> Tento příkaz vyžaduje, aby služba SQL Access Azure AD ("externí poskytovatel") jménem přihlášeného uživatele. Někdy nastane situace, které způsobí, že Azure AD vrátí výjimku zpátky do SQL. V těchto případech se uživateli zobrazí chyba SQL 33134, která by měla obsahovat chybovou zprávu specifickou pro Azure AD. Ve většině případů tato chyba znamená, že přístup je odepřený nebo že se uživatel musí zaregistrovat v MFA pro přístup k prostředku nebo že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení. V prvních dvou případech je problém obvykle způsoben zásadami podmíněného přístupu, které jsou nastaveny v tenantovi Azure AD uživatele: znemožňuje uživateli přístup k externímu poskytovateli. Aktualizace zásad certifikační autority tak, aby povolovala přístup k aplikaci "00000002-0000-0000-C000-000000000000" (ID aplikace Graph API Azure AD) by měla tento problém vyřešit. V případě, že chyba znamená, že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení, problém je proto, že uživatel je přihlášený jako instanční objekt. Příkaz by měl být úspěšný, pokud ho spustí uživatel.
+> Tento příkaz vyžaduje, aby služba SQL Access Azure AD ("externí poskytovatel") jménem přihlášeného uživatele. Někdy nastane situace, které způsobí, že Azure AD vrátí výjimku zpátky do SQL. V těchto případech se uživateli zobrazí chyba SQL 33134, která by měla obsahovat chybovou zprávu specifickou pro Azure AD. Ve většině případů tato chyba znamená, že přístup je odepřený nebo že se uživatel musí zaregistrovat v MFA pro přístup k prostředku nebo že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení. V prvních dvou případech je problém obvykle způsoben zásadami podmíněného přístupu, které jsou nastaveny v tenantovi Azure AD uživatele: znemožňuje uživateli přístup k externímu poskytovateli. Aktualizace zásad podmíněného přístupu tak, aby povolovala přístup k aplikaci "00000002-0000-0000-C000-000000000000" (ID aplikace Graph API Azure AD) by měla tento problém vyřešit. V případě, že chyba znamená, že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení, problém je proto, že uživatel je přihlášený jako instanční objekt. Příkaz by měl být úspěšný, pokud ho spustí uživatel.
 
 > [!TIP]
 > Nemůžete přímo vytvořit uživatele z jiné Azure Active Directory než Azure Active Directory, která je přidružená k vašemu předplatnému Azure. Do skupiny služby Active Directory ve službě Active Directory klienta se ale dají přidat i členové jiných aktivních adresářů, které jsou importované uživatele v přidružené službě Active Directory (označované jako externí uživatelé). Když pro tuto skupinu AD vytvoříte uživatele databáze s omezením, můžou uživatelé z externí služby Active Directory získat přístup k SQL Database.

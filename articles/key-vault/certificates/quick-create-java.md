@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – Azure Key Vault Klientská knihovna certifikátů pro Java
-description: Poskytuje rychlý Start pro Azure Key Vault knihovnu klienta certifikátů pro Java.
+title: Rychlý Start pro Azure Key Vault Klientská knihovna certifikátů – Java
+description: Přečtěte si informace o klientské knihovně Azure Key Vault certifikátů pro Java pomocí kroků v tomto rychlém startu.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733506"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936035"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Rychlý Start: Azure Key Vault klientské knihovny pro certifikáty pro Java
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Java (certifikáty)
 Začínáme s klientskou knihovnou certifikátů Azure Key Vault pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
 Další prostředky:
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS nebo Linux

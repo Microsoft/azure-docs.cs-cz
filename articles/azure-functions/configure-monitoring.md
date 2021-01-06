@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825754"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937276"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -197,7 +197,7 @@ Další informace najdete v tématu [vzorkování v Application Insights](../azu
 
 _Tato funkce je ve verzi Preview._ 
 
-[Řadič Azure Functions Scale](./functions-scale.md#runtime-scaling) můžete mít k dispozici protokoly pro Application Insights nebo do úložiště objektů blob, abyste lépe pochopili rozhodnutí, které kontroler škálování vytváří pro vaši aplikaci Function App.
+[Řadič Azure Functions Scale](./event-driven-scaling.md#runtime-scaling) můžete mít k dispozici protokoly pro Application Insights nebo do úložiště objektů blob, abyste lépe pochopili rozhodnutí, které kontroler škálování vytváří pro vaši aplikaci Function App.
 
 Chcete-li povolit tuto funkci, přidejte nastavení aplikace s názvem `SCALE_CONTROLLER_LOGGING_ENABLED` do nastavení aplikace Function App. Hodnota tohoto nastavení musí být ve formátu `<DESTINATION>:<VERBOSITY>` , a to na základě následujícího:
 

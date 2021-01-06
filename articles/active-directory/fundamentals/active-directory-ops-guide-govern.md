@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370963"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935746"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenční příručka Azure Active Directory operací zásad správného řízení
 
@@ -31,7 +31,7 @@ Tato část [Referenční příručka k operacím Azure AD](active-directory-ops
 
 Správa Azure Active Directory vyžaduje průběžné provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro optimalizaci prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úloha | Vlastník |
+| Úkol | Vlastník |
 | :- | :- |
 | Archivace protokolů auditu Azure AD v systému SIEM | Provozní tým InfoSec |
 | Zjišťování aplikací, které jsou spravované mimo dodržování předpisů | Provozní tým IAM |
@@ -59,7 +59,7 @@ Existují změny, které vyžadují zvláštní okolnosti při testování, od j
 | Scénář| Doporučení |
 |-|-|
 |Změna typu ověřování z federovaných na KOSMETICE/PTA nebo naopak| Pomocí [připraveného zavedení](../hybrid/how-to-connect-staged-rollout.md) otestujte dopad změny typu ověřování.|
-|Zavedení nové zásady podmíněného přístupu (CA) nebo zásady ochrany identit|Vytvořte nové zásady certifikační autority a přiřaďte je testovacím uživatelům.|
+|Zavedení nové zásady podmíněného přístupu (CA) nebo zásady ochrany identit|Vytvořte nové zásady podmíněného přístupu a přiřaďte je testovacím uživatelům.|
 |Připojování testovacího prostředí aplikace|Přidejte aplikaci do produkčního prostředí, skryjte ji z panelu MyApp a přiřaďte ji k testovacím uživatelům během fáze kontroly kvality (QA).|
 |Změna pravidel synchronizace|Proveďte změny v testovacím Azure AD Connect se stejnou konfigurací, která je aktuálně v produkčním režimu, označovanou také jako pracovní režim a analyzujte výsledky CSExport. Pokud je to splněné, Proměňte do produkčního prostředí, až budete připraveni.|
 |Změna brandingu|Otestujte v samostatném testovacím tenantovi.|
@@ -128,7 +128,7 @@ Aby bylo jasné, že úroveň autorizace portálu EA je aktuálně nastavená na
 > [!NOTE]
 > Správa nároků Azure AD vyžaduje Azure AD Premium licence P2.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Existuje osm aspektů zabezpečení správného řízení identity. Tento seznam vám pomůže identifikovat akce, které byste měli provést při posuzování a ověřování přístupu k neprivilegovaným a privilegovaným identitám, auditům a řízení změn v prostředí.
 

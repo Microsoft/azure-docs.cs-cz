@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835070"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935814"
 ---
 # <a name="develop-custom-commands-applications"></a>Vývoj aplikací pro vlastní příkazy
 
@@ -178,7 +178,7 @@ Začněte úpravou stávajícího `TurnOn` příkazu pro zapnutí a vypnutí ví
    1. Vyberte **Aktualizovat**.
 
        > [!div class="mx-imgBorder"]
-       > ![Snímek obrazovky s informacemi o tom, kde vytvořit požadovanou odpověď parametru](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![Snímek obrazovky, který zobrazuje oddíl přidat odpověď pro požadovaný parametr s vybranou kartou Simple Editor.](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. Nakonfigurujte vlastnosti parametru pomocí následující tabulky. Informace o všech vlastnostech konfigurace příkazu najdete v tématu [Koncepty a definice vlastních příkazů](./custom-commands-references.md).
       
@@ -221,7 +221,7 @@ Začněte úpravou stávajícího `TurnOn` příkazu pro zapnutí a vypnutí ví
 
 #### <a name="modify-example-sentences"></a>Upravit ukázkové věty
 
-Pro příkazy, které používají parametry, je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
+Pro příkazy, které používají parametry, je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
 
 * Úplné informace o parametru: `turn {OnOff} the {SubjectDevice}`
 * Informace o částečném parametru: `turn it {OnOff}`

@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921824"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937055"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -20,7 +20,7 @@ V tomto kurzu vytvoříte a nasadíte kód, který se Azure Functions jako vlast
 Azure Functions podporuje libovolný jazyk nebo modul runtime s použitím [vlastních obslužných rutin](functions-custom-handlers.md). V některých jazycích, jako je programovací jazyk R použitý v tomto kurzu, je nutné nainstalovat modul runtime nebo další knihovny jako závislosti, které vyžadují použití vlastního kontejneru.
 ::: zone-end
 
-Nasazení kódu funkce ve vlastním kontejneru Linux vyžaduje [Plán Premium](functions-premium-plan.md#features) , nebo vyhrazený hostující [plán (App Service)](functions-scale.md#app-service-plan) . Výsledkem tohoto kurzu jsou náklady na několik amerických dolarů v účtu Azure, které můžete minimalizovat [vyčištěním prostředků](#clean-up-resources) , až budete hotovi.
+Nasazení kódu funkce ve vlastním kontejneru Linux vyžaduje [Plán Premium](functions-premium-plan.md) , nebo vyhrazený hostující [plán (App Service)](dedicated-plan.md) . Výsledkem tohoto kurzu jsou náklady na několik amerických dolarů v účtu Azure, které můžete minimalizovat [vyčištěním prostředků](#clean-up-resources) , až budete hotovi.
 
 Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](./create-first-function-cli-csharp.md?pivots=programming-language-python). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
 

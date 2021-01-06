@@ -10,22 +10,22 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 566ddae3893a5499ddefe0ccd1ade8caff4567c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461548"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934981"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM (Preview)
 
 [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů a klíče.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení tohoto článku:
 
-- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Uživatel musí mít přiřazenou roli RBAC Bult-in EG. skupinou. [Další informace](../../role-based-access-control/role-assignments-portal.md)
 - Šablona potřebuje ke konfiguraci oprávnění vaše ID objektu uživatele Azure AD. Následující procedura získá ID objektu (GUID).
 
@@ -217,4 +217,4 @@ V tomto rychlém startu jste vytvořili Trezor klíčů a klíč pomocí šablon
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896425"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936613"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí šablony ARM
 
@@ -24,7 +24,7 @@ ms.locfileid: "92896425"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
@@ -32,11 +32,11 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 Postup dokončení tohoto článku:
 
-* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Šablona potřebuje ke konfiguraci oprávnění vaše ID objektu uživatele Azure AD. Následující procedura získá ID objektu (GUID).
 
-    1. Spusťte následující Azure PowerShell nebo příkaz rozhraní příkazového řádku Azure CLI tak, že vyberete možnost **vyzkoušet** a potom tento skript vložíte do podokna prostředí. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit** .
+    1. Spusťte následující Azure PowerShell nebo příkaz rozhraní příkazového řádku Azure CLI tak, že vyberete možnost **vyzkoušet** a potom tento skript vložíte do podokna prostředí. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
 
         # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
         ```azurecli-interactive
@@ -83,15 +83,15 @@ Další ukázky šablon Azure Key Vault najdete v [šablonách rychlý Start pro
     Pokud není zadaný, použijte k vytvoření trezoru klíčů a tajného klíče výchozí hodnotu.
 
     * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků** : vyberte **vytvořit novou** , zadejte jedinečný název skupiny prostředků a pak klikněte na **OK** .
-    * **Umístění:** Vyberte prosím umístění. Například **USA – střed** .
-    * **Key Vault název** : zadejte název trezoru klíčů, který musí být globálně jedinečný v rámci oboru názvů. Vault.Azure.NET. Při ověřování nasazení budete potřebovat název v další části.
-    * **ID tenanta** : funkce šablony automaticky NAČTE vaše ID tenanta. Neměňte výchozí hodnotu.
-    * **ID uživatele AD** : Zadejte ID vašeho uživatelského objektu Azure AD, které jste získali z [požadovaných součástí](#prerequisites).
-    * **Název tajného** kódu: zadejte název tajného klíče, který ukládáte do trezoru klíčů. Například **AdminPassword** .
-    * **Hodnota tajného klíče** : zadejte tajnou hodnotu. Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v části požadavky.
+    * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
+    * **Umístění:** Vyberte prosím umístění. Například **USA – střed**.
+    * **Key Vault název**: zadejte název trezoru klíčů, který musí být globálně jedinečný v rámci oboru názvů. Vault.Azure.NET. Při ověřování nasazení budete potřebovat název v další části.
+    * **ID tenanta**: funkce šablony automaticky NAČTE vaše ID tenanta. Neměňte výchozí hodnotu.
+    * **ID uživatele AD**: Zadejte ID vašeho uživatelského objektu Azure AD, které jste získali z [požadovaných součástí](#prerequisites).
+    * **Název tajného** kódu: zadejte název tajného klíče, který ukládáte do trezoru klíčů. Například **AdminPassword**.
+    * **Hodnota tajného klíče**: zadejte tajnou hodnotu. Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v části požadavky.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
-3. Vyberte **Koupit** . Po úspěšném nasazení trezoru klíčů obdržíte oznámení:
+3. Vyberte **Koupit**. Po úspěšném nasazení trezoru klíčů obdržíte oznámení:
 
     ![Šablona ARM, integrace Key Vault, oznámení nasazení portálu](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -162,4 +162,4 @@ V tomto rychlém startu jste vytvořili Trezor klíčů a tajný klíč pomocí 
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

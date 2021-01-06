@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547844"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934458"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -132,7 +132,7 @@ Omezení Azure Database for PostgreSQL najdete v tématu [omezení v Azure Datab
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-Další informace najdete v tématu [funkce pro plánování hostování funkcí](../../azure-functions/functions-scale.md#hosting-plans-comparison).
+Další informace najdete v tématu [funkce pro plánování hostování funkcí](../../azure-functions/functions-scale.md).
 
 ## <a name="azure-kubernetes-service-limits"></a>Omezení služby Azure Kubernetes
 
@@ -148,7 +148,7 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 ## <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 
@@ -446,7 +446,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

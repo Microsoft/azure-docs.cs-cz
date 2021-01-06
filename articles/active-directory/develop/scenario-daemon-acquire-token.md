@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443309"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936018"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -57,7 +57,7 @@ Obor používaný pro pověření klienta by měl vždy být ID prostředku nás
 
 > [!IMPORTANT]
 > Když MSAL požádá o přístupový token pro prostředek, který přijímá přístupový token verze 1,0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
-> Takže pokud jako Azure SQL Database ( **https: \/ /Database.Windows.NET** ) očekává prostředek cílovou skupinu, která končí lomítkem (pro Azure SQL Database, `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` . (Poznamenejte si dvojité lomítko.) Viz také MSAL.NET problém [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Takže pokud jako Azure SQL Database (**https: \/ /Database.Windows.NET**) očekává prostředek cílovou skupinu, která končí lomítkem (pro Azure SQL Database, `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` . (Poznamenejte si dvojité lomítko.) Viz také MSAL.NET problém [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>Rozhraní API pro AcquireTokenForClient
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient používá mezipaměť tokenu aplikace.
+
+V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken *XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient` kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,11 +204,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
-
-V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken *XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient` kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
-
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>Voláte své vlastní rozhraní API?
+
+Pokud voláte vlastní webové rozhraní API a nepovedlo se mu přidat oprávnění aplikace k registraci aplikace pro vaši aplikaci démona, vystaví se na vašem webovém rozhraní API role aplikace?
+
+Podrobnosti najdete v tématu vystavení [oprávnění aplikace (aplikační role)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) a zejména o [tom, že služba Azure AD vystavuje tokeny pro vaše webové rozhraní API jenom pro povolené klienty](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
 ## <a name="next-steps"></a>Další kroky
 

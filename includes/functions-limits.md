@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027516"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934457"
 ---
-| Prostředek |[Plán Consumption](../articles/azure-functions/functions-scale.md#consumption-plan)|[Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan)|[Vyhrazený plán](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| Prostředek |[Plán Consumption](../articles/azure-functions/consumption-plan.md)|[Plán Premium](../articles/azure-functions/functions-premium-plan.md)|[Vyhrazený plán](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |Výchozí [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |Maximální [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | neohraničené<sup>7</sup> | neohraničené<sup>2</sup> | Unbounded | Unbounded |
@@ -28,10 +28,10 @@ ms.locfileid: "96027516"
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | neuvedeno |
 
 <sup>1</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  
-<sup>2</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/functions-scale.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>2</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/dedicated-plan.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>3</sup> tato omezení se [nastavují na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>4</sup> skutečný počet aplikací Function App, které můžete hostovat, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
 <sup>5</sup> limit úložiště je celková velikost obsahu v dočasném úložišti napříč všemi aplikacemi ve stejném plánu App Service. Plán spotřeby používá soubory Azure pro dočasné úložiště.  
-<sup>6</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-scale.md#premium-plan) nebo v [plánu App Service](../articles/azure-functions/functions-scale.md#app-service-plan)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.  
+<sup>6</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/consumption-plan.md), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-premium-plan.md) nebo v [plánu App Service](../articles/azure-functions/dedicated-plan.md)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.  
 <sup>7</sup> garantuje až 60 minut.  
 <sup>8</sup> pracovních procesů jsou role, které hostují zákaznické aplikace. Pracovní procesy jsou dostupné ve třech pevných velikostech: One vCPU/3,5 GB RAM; Dva vCPU/7 GB paměti RAM; Čtyři vCPU/14 GB paměti RAM.

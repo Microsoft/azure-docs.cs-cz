@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049379"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935882"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
 
@@ -30,7 +30,7 @@ Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který 
 - Zákazníci s předplatným Azure Monitor můžou monitorovat dopad zásad podmíněného přístupu pomocí sešitu s přehledem podmíněného přístupu.
 
 > [!WARNING]
-> Zásady v režimu pouze pro sestavy, které vyžadují vyhovující zařízení, mohou uživatele v systému Mac, iOS a Android vyzvat k výběru certifikátu zařízení během vyhodnocování zásad, a to i v případě, že není vynuceno dodržování předpisů zařízením. Tyto výzvy se můžou opakovat, dokud zařízení nedodržuje předpisy. Pokud chcete koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízením. Režim pouze pro sestavy nelze použít pro zásady certifikační autority s oborem "akce uživatele".
+> Zásady v režimu pouze pro sestavy, které vyžadují vyhovující zařízení, mohou uživatele v systému Mac, iOS a Android vyzvat k výběru certifikátu zařízení během vyhodnocování zásad, a to i v případě, že není vynuceno dodržování předpisů zařízením. Tyto výzvy se můžou opakovat, dokud zařízení nedodržuje předpisy. Pokud chcete koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízením. Režim pouze pro sestavy nelze použít pro zásady podmíněného přístupu s oborem "akce uživatele".
 
 ![Karta pouze pro sestavy v protokolu přihlášení ke službě Azure AD](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
@@ -38,7 +38,7 @@ Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který 
 
 Pokud je pro dané přihlášení vyhodnocena zásada v režimu pouze sestavy, existují čtyři nové možné hodnoty výsledků:
 
-| Výsledek | Description |
+| Výsledek | Popis |
 | --- | --- |
 | Pouze sestava: úspěch | Všechny nakonfigurované podmínky zásad, vyžadované neinteraktivní ovládací prvky grantu a ovládací prvky relace byly splněné. Například požadavek služby Multi-Factor Authentication je spokojen deklarací MFA, která už je v tokenu přítomná, nebo se na zařízení, které dodržuje předpisy, vyhovět zásadám zařízení, které dodržuje předpisy. |
 | Pouze sestava: Chyba | Všechny nakonfigurované podmínky zásad byly splněny, ale nebyly splněny všechny požadované ovládací prvky pro udělení neinteraktivního udělení nebo řízení relace. Například zásada platí pro uživatele, kde je nakonfigurovaný ovládací prvek blokování, nebo zařízení nesplňuje požadavky zásad zařízení. |

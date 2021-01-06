@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033030"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936834"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -113,7 +113,7 @@ Protože funkce jsou také integrovány s Azure Monitor, můžete také použít
 
 _Tato funkce je ve verzi Preview._ 
 
-[Kontroler škálování Azure Functions](./functions-scale.md#runtime-scaling) sleduje instance Azure Functionsho hostitele, na kterém vaše aplikace běží. Tento kontroler provádí rozhodnutí o tom, kdy se instance na základě aktuálního výkonu přidávají nebo odebírají. Můžete mít k dispozici protokoly Application Insights pro vygenerování protokolů škálování, které vám umožní lépe pochopit rozhodnutí, které kontroler škálování provádí pro vaši aplikaci Function App. Vygenerované protokoly můžete také ukládat do úložiště objektů BLOB pro účely analýzy pomocí jiné služby. 
+[Kontroler škálování Azure Functions](./event-driven-scaling.md#runtime-scaling) sleduje instance Azure Functionsho hostitele, na kterém vaše aplikace běží. Tento kontroler provádí rozhodnutí o tom, kdy se instance na základě aktuálního výkonu přidávají nebo odebírají. Můžete mít k dispozici protokoly Application Insights pro vygenerování protokolů škálování, které vám umožní lépe pochopit rozhodnutí, které kontroler škálování provádí pro vaši aplikaci Function App. Vygenerované protokoly můžete také ukládat do úložiště objektů BLOB pro účely analýzy pomocí jiné služby. 
 
 Chcete-li povolit tuto funkci, přidejte nastavení aplikace s názvem `SCALE_CONTROLLER_LOGGING_ENABLED` do nastavení aplikace Function App. Další informace najdete v tématu [Konfigurace protokolů řadiče škálování](configure-monitoring.md#configure-scale-controller-logs).
 

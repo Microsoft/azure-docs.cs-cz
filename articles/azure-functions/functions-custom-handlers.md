@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746025"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936987"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions vlastní obslužné rutiny
 
@@ -407,7 +407,7 @@ Nastavením výstupu, který `message` se rovná datům objednávky, které byly
 Pro funkce aktivované protokolem HTTP bez dalších vazeb nebo výstupů můžete chtít, aby obslužná rutina pracovala přímo s požadavkem HTTP a odpovědí namísto vlastní [žádosti o](#request-payload) obslužnou rutinu a datové části [odpovědi](#response-payload) . Toto chování je možné nakonfigurovat v *host.js* pomocí `enableForwardingHttpRequest` nastavení.
 
 > [!IMPORTANT]
-> Hlavním účelem funkce vlastní obslužné rutiny je povolit jazyky a moduly runtime, které aktuálně nemají na Azure Functions podporu první třídy. I když může být možné spouštět webové aplikace pomocí vlastních obslužných rutin, Azure Functions není standardní reverzní proxy. Některé funkce, jako je třeba streamování odpovědí, HTTP/2 a WebSockets, nejsou k dispozici. Některé součásti požadavku HTTP, jako jsou například určité hlavičky a trasy, mohou být omezeny. Vaše aplikace může také docházet [k nadměrnému startu.](functions-scale.md#cold-start)
+> Hlavním účelem funkce vlastní obslužné rutiny je povolit jazyky a moduly runtime, které aktuálně nemají na Azure Functions podporu první třídy. I když může být možné spouštět webové aplikace pomocí vlastních obslužných rutin, Azure Functions není standardní reverzní proxy. Některé funkce, jako je třeba streamování odpovědí, HTTP/2 a WebSockets, nejsou k dispozici. Některé součásti požadavku HTTP, jako jsou například určité hlavičky a trasy, mohou být omezeny. Vaše aplikace může také docházet [k nadměrnému startu.](event-driven-scaling.md#cold-start)
 >
 > Pokud chcete tyto okolnosti vyřešit, zvažte spuštění webových aplikací na [Azure App Service](../app-service/overview.md).
 
@@ -580,7 +580,7 @@ Tuto strategii můžete použít také v kanálech CI/CD a spouštět automatizo
 
 Vlastní obslužné rutiny běží ve stejném prostředí jako typická aplikace Azure Functions. Otestujte obslužnou rutinu, abyste zajistili, že prostředí obsahuje všechny závislosti, které musí spustit. U aplikací, které vyžadují další závislosti, je možná budete muset spustit pomocí [vlastní image kontejneru](functions-create-function-linux-custom-image.md) hostované v plánu Azure Functions [Premium](functions-premium-plan.md).
 
-### <a name="get-support"></a>Získání podpory
+### <a name="get-support"></a>Získat podporu
 
 Pokud potřebujete pomoc s vlastními obslužnými rutinami aplikace Function App, můžete odeslat žádost prostřednictvím běžných kanálů podpory. Vzhledem k nejrůznějším jazykům, které se používají k vytváření vlastních obslužných rutin, ale podpora není neomezené.
 

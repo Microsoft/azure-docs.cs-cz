@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924218"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936120"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -148,7 +148,7 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 
 Když vytvoříte nový typ aplikace logiky v Azure Portal nebo nasadíte z Visual Studio Code, musíte zvolit plán hostování, buď [App Service nebo Premium](../azure-functions/functions-scale.md), pro použití vaší aplikace logiky. Tento plán určuje cenový model, který se vztahuje na běh aplikace logiky. Pokud vyberete plán App Service, musíte také zvolit [cenovou úroveň](../app-service/overview-hosting-plans.md).
 
-*Stavové* pracovní postupy používají [externí úložiště](../azure-functions/functions-scale.md#storage-account-requirements), takže [ceny Azure Storage](https://azure.microsoft.com/pricing/details/storage/) se vztahují na transakce úložiště, které provádí modul runtime Azure Logic Apps Preview. Například fronty se používají pro plánování, zatímco tabulky a objekty BLOB se používají k ukládání stavů pracovního postupu.
+*Stavové* pracovní postupy používají [externí úložiště](../azure-functions/storage-considerations.md#storage-account-requirements), takže [ceny Azure Storage](https://azure.microsoft.com/pricing/details/storage/) se vztahují na transakce úložiště, které provádí modul runtime Azure Logic Apps Preview. Například fronty se používají pro plánování, zatímco tabulky a objekty BLOB se používají k ukládání stavů pracovního postupu.
 
 > [!NOTE]
 > Během veřejné verze Preview se pro spuštění Logic Apps na App Service neúčtují *Další* poplatky nad vybraný plán.

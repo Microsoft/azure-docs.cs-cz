@@ -3,12 +3,12 @@ title: Integrace Azure Functions s Azure Virtual Network
 description: Podrobný kurz, ve kterém se dozvíte, jak připojit funkci ke službě Azure Virtual Network
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387519"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937008"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: Integrace služby Functions s virtuální sítí Azure
 
@@ -62,11 +62,11 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
     | **Název virtuálního počítače** | VNET-Wordpress | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
     | **[Oblast](https://azure.microsoft.com/regions/)** | Evropským Západní Evropa | Vyberte oblast poblíž nebo poblíž funkcí, které přistupují k virtuálnímu počítači. |
     | **Velikost** | B1s | Zvolte možnost **změnit velikost** a pak vyberte standardní image B1s, která má 1 vCPU a 1 GB paměti. |
-    | **Typ ověřování** | Heslo | Chcete-li použít ověřování heslem, je nutné zadat také **uživatelské jméno**, zabezpečené **heslo**a **potvrzení hesla**. Pro tento kurz se nemusíte přihlašovat k virtuálnímu počítači, pokud nepotřebujete řešit problémy. |
+    | **Typ ověřování** | Heslo | Chcete-li použít ověřování heslem, je nutné zadat také **uživatelské jméno**, zabezpečené **heslo** a **potvrzení hesla**. Pro tento kurz se nemusíte přihlašovat k virtuálnímu počítači, pokud nepotřebujete řešit problémy. |
 
 1. Zvolte kartu **síť** a v části konfigurovat virtuální sítě vyberte **vytvořit novou**.
 
-1. V části **vytvořit virtuální síť**použijte nastavení v tabulce pod obrázkem:
+1. V části **vytvořit virtuální síť** použijte nastavení v tabulce pod obrázkem:
 
     ![Karta sítě pro vytvoření virtuálního počítače](./media/functions-create-vnet/create-vm-2.png)
 
@@ -79,13 +79,13 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
 
 1. Vyberte **OK** a vytvořte virtuální síť.
 
-1. Zpátky na kartě **sítě** vyberte pro **veřejnou IP adresu**možnost **žádné** .
+1. Zpátky na kartě **sítě** vyberte pro **veřejnou IP adresu** možnost **žádné** .
 
-1. Zvolte kartu **Správa** a potom v části **účet úložiště diagnostiky**zvolte účet úložiště, který jste vytvořili pomocí aplikace Function App.
+1. Zvolte kartu **Správa** a potom v části **účet úložiště diagnostiky** zvolte účet úložiště, který jste vytvořili pomocí aplikace Function App.
 
 1. Vyberte **Zkontrolovat a vytvořit**. Po dokončení ověření vyberte **vytvořit**. Proces vytvoření virtuálního počítače trvá několik minut. Vytvořený virtuální počítač má přístup jenom k virtuální síti.
 
-1. Po vytvoření virtuálního počítače klikněte **na přejít k prostředku** , abyste si zobrazili stránku pro nový virtuální počítač, a pak v části **Nastavení**vyberte **sítě** .
+1. Po vytvoření virtuálního počítače klikněte **na přejít k prostředku** , abyste si zobrazili stránku pro nový virtuální počítač, a pak v části **Nastavení** vyberte **sítě** .
 
 1. Ověřte, že neexistuje žádná **Veřejná IP adresa**. Poznamenejte si **soukromou IP adresu**, kterou používáte pro připojení k virtuálnímu počítači z aplikace Function App.
 
@@ -99,15 +99,15 @@ Díky webu WordPress běžícímu na virtuálním počítači ve virtuální sí
 
 1. V nové aplikaci Function App vyberte v nabídce vlevo možnost **sítě** .
 
-1. V části **Integrace virtuální**sítě vyberte **Konfigurovat kliknutím sem**.
+1. V části **Integrace virtuální** sítě vyberte **Konfigurovat kliknutím sem**.
 
     :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="Výběr možnosti sítě v aplikaci Function App":::
 
 1. Na stránce **Integrace virtuální sítě** vyberte **Přidat virtuální síť**.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Výběr možnosti sítě v aplikaci Function App":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Přidání verze Preview Integration VNet":::
 
-1. V části **stav síťové funkce**použijte nastavení v tabulce pod obrázkem:
+1. V části **stav síťové funkce** použijte nastavení v tabulce pod obrázkem:
 
     ![Definovat funkci Virtual Network aplikace Function App](./media/functions-create-vnet/networking-3.png)
 
@@ -129,7 +129,7 @@ Když máte povolenou integraci virtuální sítě, můžete ve své aplikaci Fu
 
 1. Ve vaší aplikaci Function App vyberte v nabídce vlevo možnost  **proxy** a pak vyberte **Přidat**. Použijte nastavení proxy serveru v tabulce pod obrázkem:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Výběr možnosti sítě v aplikaci Function App":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definování nastavení proxy serveru":::
 
     | Nastavení  | Navrhovaná hodnota  | Popis      |
     | -------- | ---------------- | ---------------- |
@@ -160,4 +160,4 @@ Funkce spuštěné v plánu Premium sdílí stejnou základní infrastrukturu Ap
 > [!div class="nextstepaction"]
 > [Další informace o možnostech sítě ve funkcích](./functions-networking-options.md)
 
-[Plán Premium]: functions-scale.md#premium-plan
+[Plán Premium]: functions-premium-plan.md

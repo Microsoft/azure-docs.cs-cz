@@ -4,12 +4,12 @@ description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755952"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936698"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -19,7 +19,7 @@ Funkce ve sdílených prostředcích aplikace Function App. Mezi těmito sdílen
 
 Počet dostupných připojení je částečně omezený, protože aplikace Function App běží v [prostředí izolovaného prostoru (sandboxu)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedno z omezení, které ukládá izolovaný prostor ve vašem kódu, je omezení počtu odchozích připojení, která jsou aktuálně 600 aktivní (celkem 1 200) připojení na jednu instanci. Když dosáhnete tohoto limitu, modul runtime Functions zapíše do protokolů následující zprávu: `Host thresholds exceeded: Connections` . Další informace najdete v tématu [omezení služby Functions](functions-scale.md#service-limits).
 
-Toto omezení je na instanci. Když [řadič škálování přidává instance aplikace Function App](functions-scale.md#how-the-consumption-and-premium-plans-work) a zpracovává více požadavků, má každá instance nezávislé omezení počtu připojení. To znamená, že není k dispozici žádný limit globálního připojení a v rámci všech aktivních instancí může být mnohem více než 600 aktivních připojení.
+Toto omezení je na instanci. Když [řadič škálování přidává instance aplikace Function App](event-driven-scaling.md) a zpracovává více požadavků, má každá instance nezávislé omezení počtu připojení. To znamená, že není k dispozici žádný limit globálního připojení a v rámci všech aktivních instancí může být mnohem více než 600 aktivních připojení.
 
 Při řešení potíží se ujistěte, že jste povolili Application Insights aplikace Function App. Application Insights umožňuje zobrazit metriky pro aplikace Function App, jako je spuštění. Další informace najdete v tématu [zobrazení telemetrie v Application Insights](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 

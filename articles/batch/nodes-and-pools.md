@@ -3,12 +3,12 @@ title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243065"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934641"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -64,6 +64,9 @@ Při vytváření fondu služby Batch zadáte konfiguraci virtuálního počíta
 
 Ve Batch jsou k dispozici dva typy konfigurací fondů.
 
+> [!IMPORTANT]
+> Fondy by měly být nakonfigurované s použitím konfigurace virtuálního počítače a nikoli Cloud Services konfigurace. Všechny funkce Batch jsou podporované fondy konfigurace virtuálních počítačů a přidávají se nové funkce. Fondy Cloud Services konfigurace nepodporují všechny funkce a neplánují se žádné nové funkce.
+
 ### <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
 
 **Konfigurace virtuálního počítače** určuje, že se fond skládá z virtuálních počítačů Azure. Tyto virtuální počítače mohou být vytvořené na základě image Linuxu nebo Windows.
@@ -101,7 +104,7 @@ Při vytváření fondu můžete určit typy uzlů, které chcete, a cílové č
 - **Vyhrazené uzly.** Vyhrazené výpočetní uzly jsou rezervované pro vaše úlohy. Jsou dražší než uzly s nízkou prioritou, ale nabízejí záruku toho, že nikdy nedojde k jejich zrušení.
 - **Uzly s nízkou prioritou.** Uzly s nízkou prioritou mají tu výhodu, že ke spouštění úloh služby Batch využívají nadbytečnou kapacitu v Azure. Uzly s nízkou prioritou jsou méně nákladné za hodinu než vyhrazené uzly a umožňují úlohy, které vyžadují významný výpočetní výkon. Další informace najdete v tématu [Použití virtuálních počítačů s nízkou prioritou ve službě Batch](batch-low-pri-vms.md).
 
-Uzly s nízkou prioritou se můžou zacházet, pokud Azure nemá dostatek nadbytečné kapacity. Pokud dojde ke zrušení uzlu během spouštění úloh, tyto úlohy se znovu zařadí do fronty, a jakmile bude uzel zase dostupný, znovu se spustí. Uzly s nízkou prioritou jsou dobrou volbou pro úlohy s flexibilním časem dokončení a pro úkony distribuované mezi velký počet uzlů. Než se rozhodnete používat pro svůj scénář uzly s nízkou prioritou, ujistěte se, že všechny práce ztracené v důsledku ztracený budou minimální a dají se snadno vytvořit znovu.
+Uzly s nízkou prioritou se můžou zacházet, pokud Azure nemá dostatek nadbytečné kapacity. Pokud dojde ke zrušení uzlu během spouštění úloh, tyto úlohy se znovu zařadí do fronty, a jakmile bude uzel zase dostupný, znovu se spustí. Uzly s nízkou prioritou jsou dobrou volbou pro úlohy s flexibilním časem dokončení a pro úkony distribuované mezi velký počet uzlů. Než se rozhodnete použít pro svůj scénář uzly s nízkou prioritou, ujistěte se, že ztráta práce z důvodu přerušení bude minimální a bude ji snadné vytvořit znovu.
 
 Ve stejném fondu můžete mít výpočetní uzly s nízkou prioritou i vyhrazené uzly. Každý typ uzlu má své vlastní nastavení cíle, pro které můžete zadat požadovaný počet uzlů.
 

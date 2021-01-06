@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516760"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936307"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Rychlý Start: vytvoření trezoru klíčů pomocí Azure CLI
 
@@ -52,8 +52,8 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-- **Název trezoru** : název, který jste zadali do parametru--name výše.
-- **Identifikátor URI trezoru** : v tomto příkladu se jedná o https://a &lt; jedinečné úložiště klíčů – název &gt; . Vault.Azure.NET/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+- **Název trezoru**: název, který jste zadali do parametru--name výše.
+- **Identifikátor URI trezoru**: v tomto příkladu se jedná o https://a &lt; jedinečné úložiště klíčů – název &gt; . Vault.Azure.NET/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
 
@@ -72,5 +72,6 @@ az group delete --name myResourceGroup
 V tomto rychlém startu jste vytvořili Key Vault a odstranili jste ho. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](overview.md)
-- Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault?view=azure-cli-latest) .
-- Kontrola [Azure Key Vault osvědčených postupů](best-practices.md)
+- Přečtěte si [Přehled zabezpečení Azure Key Vault](security-overview.md)
+- Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault) .
+

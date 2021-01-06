@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694166"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934284"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -24,6 +24,9 @@ Tento článek popisuje shromažďování osvědčených postupů a užitečnýc
 ### <a name="pool-configuration-and-naming"></a>Konfigurace fondu a názvy
 
 - **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+
+- **' cloudServiceConfiguration ' nebo ' virtualMachineConfiguration '.**
+    je třeba použít ' virtualMachineConfiguration '. Všechny funkce dávky jsou podporovány fondy ' virtualMachineConfiguration '. Ne všechny funkce jsou podporovány pro fondy ' cloudServiceConfiguration ' a žádné nové možnosti nejsou plánovány.
 
 - **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
     Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319018"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937378"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -53,7 +53,7 @@ Partnerství s Microsoftem a Akamai EAA umožňuje flexibilitu v souladu s vaši
 
 #### <a name="integration-scenario-1"></a>Scénář integrace 1
 
-Akamai EAA je nakonfigurovaný jako jediná aplikace v Azure AD. Správce může pro aplikaci nakonfigurovat zásady certifikační autority a jakmile se podmínky splní, můžou získat přístup k portálu Akamai EAA.
+Akamai EAA je nakonfigurovaný jako jediná aplikace v Azure AD. Správce může konfigurovat zásady podmíněného přístupu v aplikaci a jakmile se podmínky splní, můžou získat přístup k portálu Akamai EAA.
 
 **Profesionály**:
 
@@ -63,13 +63,13 @@ Akamai EAA je nakonfigurovaný jako jediná aplikace v Azure AD. Správce může
 
 * Uživatelé mají dva portály aplikací.
 
-* Jednotné pokrytí zásad certifikační autority pro všechny aplikace.
+* Jedno společné pokrytí zásad podmíněného přístupu pro všechny aplikace.
 
 ![Scénář integrace 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>Scénář integrace 2
 
-Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce může pro aplikace nakonfigurovat jednotlivé zásady certifikační autority a po splnění podmínek můžou být uživatelé přesměrováni přímo na konkrétní aplikaci.
+Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce může nakonfigurovat jednotlivé zásady podmíněného přístupu v aplikacích a jakmile jsou podmínky splněné, můžou být uživatelé přesměrováni přímo na konkrétní aplikaci.
 
 **Profesionály**:
 
@@ -84,7 +84,7 @@ Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce m
 
 ![Scénář integrace 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -163,11 +163,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -175,13 +175,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Akamai.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Akamai**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -196,7 +196,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 **AKAMAI EAA konfigurace IDP**
 
 1. Přihlaste se ke konzole **Akamai Enterprise Application Access** .
-1. V **konzole Akamai EAA**vyberte **Identity**  >  **Zprostředkovatelé** identity identity a klikněte na **Přidat zprostředkovatele identity**.
+1. V **konzole Akamai EAA** vyberte   >  **Zprostředkovatelé** identity identity a klikněte na **Přidat zprostředkovatele identity**.
 
     ![Snímek obrazovky okna zprostředkovatelé identit konzoly Akamai EAA V nabídce identita vyberte zprostředkovatelé identity a vyberte Přidat poskytovatele identity.](./media/header-akamai-tutorial/configure01.png)
 
@@ -269,7 +269,7 @@ Akamai ověřování na základě hlaviček
 
     ![Snímek obrazovky s průvodcem přidat aplikace v konzole Akamai EAA zobrazující CustomHTTP uvedený v části Access Apps](./media/header-akamai-tutorial/configure05.png)
 
-2. Zadejte **název** a **Popis**aplikace.
+2. Zadejte **název** a **Popis** aplikace.
 
     ![Snímek obrazovky s dialogem vlastní aplikace HTTP zobrazující nastavení názvu a popisu aplikace](./media/header-akamai-tutorial/configure06.png)
 
@@ -295,7 +295,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
 #### <a name="advanced-settings"></a>Upřesnit nastavení
 
-1. V **záhlaví HTTP zákazníka**zadejte atribut **CustomerHeader** a **SAML**.
+1. V **záhlaví HTTP zákazníka** zadejte atribut **CustomerHeader** a **SAML**.
 
     ![Snímek obrazovky s kartou Upřesnit nastavení konzoly Akamai EAA, která zobrazuje pole Adresa URL protokolu SSO zvýrazněné v oblasti ověřování](./media/header-akamai-tutorial/configure12.png)
 
@@ -331,7 +331,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
     ![Snímek obrazovky s konzolou Průvodce přidáním aplikací v konzole Akamai EAA, která zobrazuje protokol RDP uvedený mezi aplikacemi v části aplikace Access Apps](./media/header-akamai-tutorial/configure16.png)
 
-1. Zadejte **název** a **Popis**aplikace.
+1. Zadejte **název** a **Popis** aplikace.
 
     ![Snímek obrazovky dialogového okna aplikace RDP zobrazující nastavení názvu a popisu aplikace](./media/header-akamai-tutorial/configure17.png)
 
@@ -385,7 +385,7 @@ Klikněte na **Uložit a přejděte na Upřesnit nastavení**.
 
     ![Snímek obrazovky s konzolou pro přidání aplikací v konzole Akamai EAA se zobrazeným protokolem SSH v části aplikace v aplikaci Access Apps.](./media/header-akamai-tutorial/configure25.png)
 
-1. Zadejte **název** a **Popis**aplikace.
+1. Zadejte **název** a **Popis** aplikace.
 
     ![Snímek obrazovky dialogového okna aplikace SSH zobrazující nastavení názvu a popisu aplikace](./media/header-akamai-tutorial/configure26.png)
 
@@ -496,7 +496,7 @@ Přiřazení zprostředkovatele identity
 
     ![Snímek obrazovky skupin konzoly Akamai EAA v okně adresáře SUPERDEMOLIVE EAAGroup s 1 uživatelem je uvedeno v části skupiny.](./media/header-akamai-tutorial/eaagroup.png)
 
-1. Přidejte adresář k poskytovateli identity kliknutím na **Identity**  >  **zprostředkovatele identity** identity, klikněte na kartu **adresáře** a klikněte na **přiřadit adresář**.
+1. Přidejte adresář k poskytovateli identity kliknutím na   >  **zprostředkovatele identity** identity, klikněte na kartu **adresáře** a klikněte na **přiřadit adresář**.
 
     ![Snímek obrazovky karty adresáře konzoly Akamai EAA pro jednotné přihlašování Azure AD zobrazující v seznamu aktuálně přiřazených adresářů prodemo.](./media/header-akamai-tutorial/assigndirectory.png)
 
@@ -591,7 +591,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Akamai, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

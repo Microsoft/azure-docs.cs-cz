@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093085"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936443"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -44,7 +44,7 @@ Klíčové výhody poskytování identity Azure AD pro vaše zařízení:
 
 * Zvyšte produktivitu – pomocí Azure AD můžou vaši uživatelé dělat [bezproblémové přihlašování (SSO)](./azuread-join-sso.md) k místním i cloudovým prostředkům, což jim umožní zajistit jejich produktivitu bez ohledu na to, kde jsou.
 
-* Zvýšení zabezpečení – zařízení Azure AD umožňují použít [zásady podmíněného přístupu (CA)](../conditional-access/require-managed-devices.md) na prostředky na základě identity zařízení nebo uživatele. Zásady certifikační autority mohou nabídnout dodatečnou ochranu pomocí [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Předpokladem pro zvýšení zabezpečení pomocí strategie [ověřování bez hesla](../authentication/concept-authentication-passwordless.md) je připojení zařízení k Azure AD.
+* Zvýšení zabezpečení – zařízení Azure AD umožňují použít [zásady podmíněného přístupu](../conditional-access/require-managed-devices.md) na prostředky na základě identity zařízení nebo uživatele. Zásady podmíněného přístupu mohou nabídnout dodatečnou ochranu pomocí [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Předpokladem pro zvýšení zabezpečení pomocí strategie [ověřování bez hesla](../authentication/concept-authentication-passwordless.md) je připojení zařízení k Azure AD.
 
 * Zlepšení uživatelského prostředí – pomocí identit zařízení ve službě Azure AD můžete svým uživatelům poskytnout snadný přístup k cloudovým prostředkům vaší organizace z osobních i firemních zařízení. Správci můžou povolit [Enterprise State Roaming](enterprise-state-roaming-overview.md) pro jednotné prostředí napříč všemi zařízeními s Windows.
 
@@ -129,7 +129,7 @@ Podmíněný přístup <br>(Vyžadovat zařízení připojená k hybridní služ
 
 Registrovaná zařízení se často spravují pomocí [Microsoft Intune](/mem/intune/enrollment/device-enrollment). Zařízení se registrují v Intune mnoha různými způsoby v závislosti na operačním systému. 
 
-Zařízení registrovaná v Azure AD poskytují podporu pro vlastní zařízení (BYOD) a zařízení vlastněná podnikem pro jednotné přihlašování ke cloudovým prostředkům. Přístup k prostředkům je založen na [zásadách certifikační autority](../conditional-access/require-managed-devices.md) Azure AD, které se vztahují na zařízení a uživatele.
+Zařízení registrovaná v Azure AD poskytují podporu pro vlastní zařízení (BYOD) a zařízení vlastněná podnikem pro jednotné přihlašování ke cloudovým prostředkům. Přístup k prostředkům je založen na [zásadách podmíněného přístupu](../conditional-access/require-managed-devices.md) Azure AD, které se používají pro zařízení a uživatele.
 
 ### <a name="registering-devices"></a>Registrace zařízení
 

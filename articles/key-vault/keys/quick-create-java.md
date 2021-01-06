@@ -1,29 +1,29 @@
 ---
-title: Rychlý Start – Azure Key Vault Klientská knihovna certifikátů pro Java
-description: Poskytuje rychlý Start pro Azure Key Vault knihovnu klienta certifikátů pro Java.
+title: Rychlý Start – Azure Key Vault klíčovou knihovnou klienta pro Java
+description: Poskytuje rychlý Start pro klientskou knihovnu Azure Key Vault Keys pro jazyk Java.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 12/18/2020
+ms.date: 01/05/2021
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733502"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935270"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Rychlý Start: Azure Key Vault klientské knihovny pro certifikáty pro Java
-Začínáme s klientskou knihovnou certifikátů Azure Key Vault pro Java Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
+# <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Rychlý Start: Azure Key Vault klíč klientské knihovny pro Java
+Začněte s klíčovou knihovnou klienta Azure Key Vault pro Java. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
 Další prostředky:
 
-* [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates)
+* [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys)
 * [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Produktová dokumentace](index.yml)
-* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
+* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys/src/samples/java/com/azure/security/keyvault/keys)
 
 ## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -50,11 +50,11 @@ V tomto rychlém startu se k ověření uživatele do služeb Azure používá k
 2. Přihlaste se pomocí přihlašovacích údajů vašeho účtu v prohlížeči.
 
 ### <a name="create-a-new-java-console-app"></a>Vytvoření nové konzolové aplikace v jazyce Java
-V okně konzoly pomocí `mvn` příkazu vytvořte novou konzolovou aplikaci v jazyce Java s názvem `akv-certificates-java` .
+V okně konzoly pomocí `mvn` příkazu vytvořte novou konzolovou aplikaci v jazyce Java s názvem `akv-keys-java` .
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
-                       -DartifactId=akv-certificates-java
+mvn archetype:generate -DgroupId=com.keyvault.keys.quickstart
+                       -DartifactId=akv-keys-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ Výstup z generování projektu bude vypadat přibližně takto:
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-keys-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ Výstup z generování projektu bude vypadat přibližně takto:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Změňte adresář na nově vytvořenou `akv-certificates-java/` složku.
+Změňte adresář na nově vytvořenou `akv-keys-java/` složku.
 
 ```console
-cd akv-certificates-java
+cd akv-keys-java
 ```
 
 ### <a name="install-the-package"></a>Instalace balíčku
@@ -96,8 +96,8 @@ Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky z
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-certificates</artifactId>
-      <version>4.1.3</version>
+      <artifactId>azure-security-keyvault-keys</artifactId>
+      <version>4.2.3</version>
     </dependency>
 
     <dependency>
@@ -111,10 +111,10 @@ Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky z
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Udělení přístupu k trezoru klíčů
-Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění certifikátu vašemu uživatelskému účtu.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje klíčovým oprávněním k vašemu uživatelskému účtu.
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS nebo Linux
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Objektový model
-Klientská knihovna certifikátů Azure Key Vault pro Java umožňuje správu certifikátů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, vytvořit certifikát, načíst certifikát a odstranit certifikát.
+Klíčová knihovna klienta Azure Key Vault pro Java umožňuje správu klíčů. V části [Příklady kódu](#code-examples) se dozvíte, jak vytvořit klienta, vytvořit klíč, načíst klíč a odstranit klíč.
 
 Celá Konzolová aplikace je [níže](#sample-code).
 
@@ -147,13 +147,11 @@ Do horní části kódu přidejte následující direktivy:
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
@@ -165,44 +163,48 @@ V následujícím příkladu je název trezoru klíčů rozbalený do identifik�
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-CertificateClient certificateClient = new CertificateClientBuilder()
+KeyClient keyClient = new KeyClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>Uložení tajného klíče
-Teď, když je vaše aplikace ověřená, můžete v trezoru klíčů vytvořit certifikát pomocí `certificateClient.beginCreateCertificate` metody. To vyžaduje název certifikátu a Zásady certifikátů – k proměnné v této ukázce přiřadíme hodnotu myCertificate `certificateName` a použijeme výchozí zásady.
-
-Vytvoření certifikátu je dlouhodobá operace, pro kterou můžete dotazovat svůj průběh nebo počkat na jeho dokončení.
+### <a name="create-a-key"></a>Vytvoření klíče
+Teď, když je vaše aplikace ověřená, můžete pomocí metody vytvořit klíč v trezoru klíčů `keyClient.createKey` . To vyžaduje název pro klíč a typ klíče – přiřadíme proměnné hodnotu myKey `keyName` a `KeyType` v této ukázce použijeme RSA.
 
 ```java
-SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-certificatePoller.waitForCompletion();
+keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-Certifikát můžete získat poté, co jste dokončili vytváření prostřednictvím tohoto volání:
+Můžete ověřit, že se klíč nastavil pomocí příkazu [AZ klíčů trezor Key show](/cli/azure/keyvault/key?#az-keyvault-key-show) :
 
-```java
-KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
-### <a name="retrieve-a-certificate"></a>Načtení certifikátu
-Nyní můžete načíst dříve vytvořený certifikát pomocí `certificateClient.getCertificate` metody.
+### <a name="retrieve-a-key"></a>Načtení klíče
+Nyní můžete načíst dříve vytvořený klíč pomocí `keyClient.getKey` metody.
 
 ```java
-KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+KeyVaultKey retrievedKey = keyClient.getKey(keyName);
  ```
 
-Nyní můžete získat přístup k podrobnostem získaného certifikátu s operacemi `retrievedCertificate.getName` , jako je, `retrievedCertificate.getProperties` atd. I jeho obsah `retrievedCertificate.getCer` .
+Nyní můžete získat přístup k podrobnostem získaného klíče s operacemi `retrievedKey.getProperties` , jako je, `retrievedKey.getKeyOperations` atd.
 
-### <a name="delete-a-certificate"></a>Odstranit certifikát
-Nakonec odstraňte certifikát z vašeho trezoru klíčů s `certificateClient.beginDeleteCertificate` metodou, která je také dlouhodobou operací.
+### <a name="delete-a-key"></a>Odstranění klíče
+Nakonec klíč odstraníme z vašeho trezoru klíčů pomocí `keyClient.beginDeleteKey` metody.
+
+Odstranění klíče je dlouhodobá operace, pro kterou můžete dotazovat svůj průběh nebo počkat na jeho dokončení.
 
 ```java
-SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
+```
+
+Odstranění klíče můžete ověřit pomocí příkazu [AZ klíčů trezor Key show](/cli/azure/keyvault/key?#az-keyvault-key-show) :
+
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -218,48 +220,44 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>Ukázka kódu
 ```java
-package com.keyvault.certificates.quickstart;
+package com.keyvault.keys.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
 
-        CertificateClient certificateClient = new CertificateClientBuilder()
+        KeyClient keyClient = new KeyClientBuilder()
                 .vaultUrl(keyVaultUri)
                 .credential(new DefaultAzureCredentialBuilder().build())
                 .buildClient();
 
-        String certificateName = "myCertificate";
+        String keyName = "myKey";
 
-        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
+        System.out.print("Creating a key in " + keyVaultName + " called '" + keyName + " ... ");
 
-        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-        certificatePoller.waitForCompletion();
+        keyClient.createKey(keyName, KeyType.RSA);
 
         System.out.print("done.");
-        System.out.println("Retrieving certificate from " + keyVaultName + ".");
+        System.out.println("Retrieving key from " + keyVaultName + ".");
 
-        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+        KeyVaultKey retrievedKey = keyClient.getKey(keyName);
 
-        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
-        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
+        System.out.println("Your key's ID is '" + retrievedKey.getId() + "'.");
+        System.out.println("Deleting your key from " + keyVaultName + " ... ");
 
-        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+        SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
         deletionPoller.waitForCompletion();
 
         System.out.print("done.");
@@ -268,8 +266,9 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili Trezor klíčů, vytvořili certifikát, načetli ho a pak ho odstranili. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů, vytvořili klíč, načetli ho a pak ho odstranili. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
 - Jak [zabezpečit přístup k trezoru klíčů](../general/secure-your-key-vault.md)

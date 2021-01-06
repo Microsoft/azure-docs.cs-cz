@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805600"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935188"
 ---
 Azure Functions umožňuje vytvářet úlohy replikace pouze pro konfiguraci, které jsou zabudovány na předem připraveném vstupním bodu. [Ukázky replikace založené na konfiguraci pro Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) ilustrují, jak využít [předem připravené](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) obslužné rutiny ve vlastním kódu nebo vyhnout se neplnění kódu a jenom používat konfiguraci.
 
@@ -166,7 +166,7 @@ Pokud chcete předávané události do fronty Service Bus, přidejte informace o
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "queueName": "queue-b",
             "name": "output" 
         }
     ...
@@ -190,7 +190,7 @@ Pokud chcete události přeposílány do Service Bus tématu, přidejte informac
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "topicName": "topic-b",
             "name": "output" 
         }
     ...

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a25f4f40668172aa8a9c80dd08d9fafcef78af
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2bb718d038dd7b3f5aa6f3bac1ce1de572c8e829
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516471"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936358"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí rozhraní příkazového řádku Azure
 
@@ -91,4 +91,4 @@ V tomto rychlém startu jste vytvořili Key Vault a uložili do něj certifikát
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault?view=azure-cli-latest) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

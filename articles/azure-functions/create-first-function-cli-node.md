@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci JavaScriptu z příkazového řádku a 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a178cb0e69a6e2b666247bcb8e76ab2c7e272e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635666"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937242"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce JavaScriptu v Azure z příkazového řádku
 
@@ -96,7 +96,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json* , je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
 
 #### <a name="functionjson"></a>function.json
 
@@ -132,7 +132,7 @@ Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost pr
     
     V předchozím příkladu nahraďte `<STORAGE_NAME>` názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem vhodným pro vás. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 
     
-    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](functions-scale.md#consumption-plan), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
+    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](consumption-plan.md), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

@@ -6,16 +6,16 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e5fa6b5a25b07585e3c0ea07fb4a361ab82a9815
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3a52d7ea8c940a33f4fbd2b9ad69f4f889615e7f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565088"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934335"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>Vytvoření aplikace funkcí pro provádění kódu bez serveru 
 
-Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kontejner pro vaše funkce. Aplikace Function App se vytvoří s použitím [plánu spotřeby](../functions-scale.md#consumption-plan), který je ideální pro úlohy řízené událostmi bez serveru.
+Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kontejner pro vaše funkce. Aplikace Function App se vytvoří s použitím [plánu spotřeby](../consumption-plan.md), který je ideální pro úlohy řízené událostmi bez serveru.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,7 +25,7 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kont
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří aplikaci funkcí Azure pomocí [plánu spotřeby](../functions-scale.md#consumption-plan).
+Tento skript vytvoří aplikaci funkcí Azure pomocí [plánu spotřeby](../consumption-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a Consumption plan")]
 

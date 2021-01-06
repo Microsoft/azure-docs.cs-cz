@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: fd341a4f6e2402ce934bdffd4f024e0ef569eec1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9c3d9e647fc09946c1e7c1b8b2ebcbe310716ff2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340913"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935780"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -183,7 +183,7 @@ V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithPare
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě. Alternativně můžete vynechat volitelný parametr nadřazeného okna a vytvořit tak okno, pokud nechcete ovládat, kde se přihlašovací dialog zobrazí na obrazovce. To se dá použít pro aplikace, které jsou založené na příkazovém řádku, které se používají k předávání volání do jakékoli jiné back-end služby a nepotřebují žádná okna pro interakci s uživatelem.
+Uživatelské rozhraní je důležité, protože je interaktivní. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který může určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci `.WithParentActivityOrWindow` má jiný typ, který závisí na platformě. Alternativně můžete vynechat volitelný parametr nadřazeného okna a vytvořit okno, pokud nechcete ovládat, kde se na obrazovce zobrazí přihlašovací dialog. To se dá použít pro aplikace, které jsou založené na příkazovém řádku, které se používají k předávání volání do jakékoli jiné back-end služby a nepotřebují žádná okna pro interakci s uživatelem.
 
 ```csharp
 // net45
@@ -1180,7 +1180,7 @@ Přizpůsobení serializace mezipaměti tokenů pro sdílení stavu jednotného 
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Jednoduchá serializace mezipaměti tokenů (jenom MSAL)
 
-Následující příklad je Naive implementace vlastního serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. V tomto případě je mezipaměť tokenu uživatele v souboru ve stejné složce jako aplikace.
+Následující příklad je Naive implementace vlastního serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. Tady je mezipaměť tokenu uživatele v souboru ve stejné složce jako aplikace, nebo v případě, že je aplikace [zabalená desktopová aplikace](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes), a to v případě jednotlivých uživatelů na složku aplikace. Úplný kód naleznete v následující ukázce: [Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
 
 Po sestavení aplikace povolte serializaci voláním ``TokenCacheHelper.EnableSerialization()`` a předáním aplikace `UserTokenCache` .
 
@@ -1199,15 +1199,27 @@ static class TokenCacheHelper
   {
    tokenCache.SetBeforeAccess(BeforeAccessNotification);
    tokenCache.SetAfterAccess(AfterAccessNotification);
+   try
+   {
+    // For packaged desktop apps (MSIX packages) the executing assembly folder is read-only. 
+    // In that case we need to use Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path + "\msalcache.bin" 
+    // which is a per-app read/write folder for packaged apps.
+    // See https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes
+    CacheFilePath = System.IO.Path.Combine(Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path, "msalcache.bin3");
+   }
+   catch (System.InvalidOperationException)
+   {
+    // Fall back for an un-packaged desktop app
+    CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin";
+   }
   }
 
   /// <summary>
   /// Path to the token cache
   /// </summary>
-  public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
+  public static string CacheFilePath { get; private set; }
 
   private static readonly object FileLock = new object();
-
 
   private static void BeforeAccessNotification(TokenCacheNotificationArgs args)
   {

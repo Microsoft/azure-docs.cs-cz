@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 69801c9b70ea3d34838ba0b35deab3e6802ecb1f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 3906de9cd94b4db3e675c2b822df2f061040c586
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515774"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935287"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Rychlý Start: nastavení a načtení klíče z Azure Key Vault pomocí rozhraní příkazového řádku Azure
 
@@ -91,4 +91,4 @@ V tomto rychlém startu jste vytvořili Key Vault a v něm jste uložili klíč.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Podívejte se na referenční informace pro [Azure CLI AZ klíčů trezor](/cli/azure/keyvault?view=azure-cli-latest) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

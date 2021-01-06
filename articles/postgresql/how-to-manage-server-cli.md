@@ -3,21 +3,21 @@ title: Správa serveru – Azure CLI – Azure Database for PostgreSQL
 description: Naučte se spravovat Azure Database for PostgreSQL Server z rozhraní příkazového řádku Azure CLI.
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490114"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935797"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Správa samostatného serveru s Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
 
 V tomto článku se dozvíte, jak spravovat jednotlivé servery nasazené v Azure. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -60,7 +60,7 @@ velikost úložiště | 6144 | Kapacita úložiště serveru (jednotkou jsou meg
 
 
 ## <a name="manage-postgresql-databases-on-a-server"></a>Spravujte databáze PostgreSQL na serveru.
-Pomocí kteréhokoli z těchto příkazů můžete vytvořit, odstranit, vypsat a zobrazit vlastnosti databáze na serveru aplikace.
+Pomocí kteréhokoli z těchto příkazů můžete vytvořit, odstranit, vypsat a zobrazit vlastnosti databáze databáze na serveru aplikace.
 
 | Rutina | Využití| Popis |
 | --- | ---| --- |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656032"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934165"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -68,9 +68,9 @@ Další informace o vlastnostech indexu najdete v tématu [Create index &#40;Azu
 ## <a name="language-analyzer-list"></a>Seznam analyzátoru jazyka 
  Níže je uvedený seznam podporovaných jazyků společně s názvy Lucene a Microsoft Analyzer.  
 
-| Jazyk | Název programu Microsoft Analyzer | Název analyzátoru Lucene |  |
-|--|--|--|--|
-| Arabština | ar. Microsoft | ar. Lucene |  |
+| Jazyk | Název programu Microsoft Analyzer | Název analyzátoru Lucene |
+|--|--|--|
+| Arabština | ar. Microsoft | ar. Lucene |
 | Arménština |  | HY. Lucene |  |
 | Bengálština | BN. Microsoft |  |  |
 | Baskičtina |  | EU. Lucene |  |

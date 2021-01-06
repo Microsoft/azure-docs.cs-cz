@@ -3,12 +3,12 @@ title: Proměnné v šablonách
 description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353455"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934658"
 ---
 # <a name="variables-in-arm-template"></a>Proměnné v šabloně ARM
 
@@ -28,7 +28,7 @@ Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězc
 },
 ```
 
-V oddílu Variables nemůžete použít [referenční](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
+V části nelze použít funkci [reference](template-functions-resource.md#reference) ani žádnou z funkcí [seznamu](template-functions-resource.md#list) `variables` . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
 
 ## <a name="use-variable"></a>Použít proměnnou
 
@@ -63,7 +63,7 @@ Můžete definovat proměnné, které uchovávají související hodnoty pro kon
 },
 ```
 
-V parametrech vytvoříte hodnotu, která určuje, které hodnoty konfigurace se mají použít.
+V nástroji `parameters` můžete vytvořit hodnotu, která určuje, které hodnoty konfigurace se mají použít.
 
 ```json
 "parameters": {

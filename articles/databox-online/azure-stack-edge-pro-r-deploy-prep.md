@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630764"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935344"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Kurz: Příprava na nasazení Azure Stack Edge pro R
 
-Toto je první kurz v sérii kurzů pro nasazení, které jsou nutné k úplnému nasazení Azure Stack Edge pro R. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku. V tomto kurzu se používá Azure Stack hraničního zařízení pro R, které se dodává s nepřerušitelným zdrojem napájení (UPS).
+Tento kurz je první v řadě kurzů pro nasazení, které jsou nutné k úplnému nasazení Azure Stack Edge pro R. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku. V tomto kurzu se používá Azure Stack hraničního zařízení pro R, které se dodává s nepřerušitelným zdrojem napájení (UPS).
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
@@ -37,7 +37,7 @@ Pokud chcete nasadit Azure Stack Edge pro R, přečtěte si následující kurzy
 | --- | --- |
 | **Součást** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
 | **[Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist)** |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
-| **[Požadavky nasazení](#prerequisites)** |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
+| **[Požadavky nasazení](#prerequisites)** |Tyto požadavky ověří, jestli je prostředí připravené k nasazení. |
 |  | |
 |**Kurzy k nasazení** |Tyto kurzy se vyžadují k nasazení zařízení Azure Stack Edge pro R v produkčním prostředí. |
 |**[1. Příprava Azure Portal pro zařízení](azure-stack-edge-pro-r-deploy-prep.md)** |Před instalací fyzického zařízení hraničního Azure Stack box vytvořte a nakonfigurujte Azure Stack hraničního prostředku. |
@@ -47,7 +47,7 @@ Pokud chcete nasadit Azure Stack Edge pro R, přečtěte si následující kurzy
 |**[5. Konfigurace nastavení zařízení](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Přiřaďte název zařízení a doménu DNS, nakonfigurujte server aktualizací a čas zařízení. |
 |**[6. Konfigurace nastavení zabezpečení](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |Konfigurace certifikátů, sítě VPN, šifrování v klidovém prostředí pro vaše zařízení. Použijte certifikáty vygenerované zařízením nebo využijte vlastní certifikáty.   |
 |**[7. aktivace zařízení](azure-stack-edge-pro-r-deploy-activate.md)** |K aktivaci zařízení použijte aktivační klíč ze služby. Zařízení je připravené nastavovat sdílené složky SMB nebo NFS nebo je připojit prostřednictvím REST. |
-|**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Tím se také vytvoří cluster Kubernetes. |
+|**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Vytvoří se také cluster Kubernetes. |
 
 Teď můžete začít nastavovat Azure Portal.
 
@@ -109,7 +109,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
+    |Předplatné    |Předplatné se automaticky vyplní na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
 7. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
@@ -150,7 +150,7 @@ Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte 
 
 Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 Pokud narazíte na problémy v průběhu procesu objednávky, přečtěte si téma [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
 
@@ -158,20 +158,17 @@ Pokud narazíte na problémy v průběhu procesu objednávky, přečtěte si té
 
 Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivační klíč. Tento klíč se používá k aktivaci a připojení zařízení Azure Stack Edge pro k prostředku. Tento klíč můžete získat teď, když jste na webu Azure Portal.
 
-1. Vyberte prostředek, který jste vytvořili. Vyberte **Přehled** a pak vyberte **nastavení zařízení**.
+1. Vyberte prostředek, který jste vytvořili, a vyberte **Přehled**.
 
-    ![Vybrat nastavení zařízení](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. V pravém podokně zadejte název Azure Key Vault nebo přijměte výchozí název. Název trezoru klíčů může být dlouhý 3 až 24 znaků.
 
-2. Na dlaždici **aktivovat** zadejte název Azure Key Vault nebo přijměte výchozí název. Název trezoru klíčů může být dlouhý 3 až 24 znaků. 
+   Pro každý Azure Stack hraničního prostředku, který se aktivuje s vaším zařízením, se vytvoří Trezor klíčů. Trezor klíčů umožňuje ukládat a přistupovat k tajným klíčům, například klíč integrity kanálu (CIK) pro službu, je uložený v trezoru klíčů.
 
-    Pro každý Azure Stack hraničního prostředku, který se aktivuje s vaším zařízením, se vytvoří Trezor klíčů. Trezor klíčů umožňuje ukládat a přistupovat k tajným klíčům, například klíč integrity kanálu (CIK) pro službu, je uložený v trezoru klíčů. 
+   Jakmile zadáte název trezoru klíčů, vyberte možnost **Generovat aktivační klíč** a vytvořte aktivační klíč.
 
-    Jakmile zadáte název trezoru klíčů, vyberte **vygenerovat klíč** a vytvořte aktivační klíč. 
+   ![Získání aktivačního klíče](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Získání aktivačního klíče](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Počkejte několik minut, než se vytvoří Trezor klíčů a aktivační klíč. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.
-
+   Počkejte několik minut, než se vytvoří Trezor klíčů a aktivační klíč. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - Aktivační klíč vyprší tři dny po vygenerování.

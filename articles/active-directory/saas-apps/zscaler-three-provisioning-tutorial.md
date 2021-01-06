@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 8526556c00327df7e933130e7a54d23eade19f8a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c16c02a870edb1a777b63da6fea57fc02136d643
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519703"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936596"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) 
 > [!NOTE]
 > Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků popsaných v tomto kurzu budete potřebovat následující:
 
@@ -75,6 +75,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Pro Zscaler tři možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v tématu [Zscaler tři jednotné přihlašování](zscaler-three-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
+> [!NOTE]
+> Pokud jsou uživatelé a skupiny zřízené nebo nezřízené, doporučujeme, abyste pravidelně restartovali zřizování, aby se zajistilo, že členství ve skupině bude správně aktualizováno. Při restartování dojde k vynucení, aby naše služba znovu vyhodnotila všechny skupiny a aktualizovala členství. 
+
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Zscaler tři**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
@@ -93,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho Zscaler tři účtu, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **na**  >  tlačítko**nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **na**  >  tlačítko **nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování** vyberte **SAML** :
 
     ![Zscaler tři nastavení ověřování](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
@@ -101,7 +104,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Konfigurovat okno SAML](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **povolit SCIM-Based zřizování** a zkopírujte **základní adresu URL** a **nosný token**a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
+    Vyberte **povolit SCIM-Based zřizování** a zkopírujte **základní adresu URL** a **nosný token** a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
 
 7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se Azure AD může připojit k Zscaler třem. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler tři oprávnění správce, a zkuste to znovu.
 
@@ -147,7 +150,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupin def
 
 Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

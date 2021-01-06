@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913783"
+ms.locfileid: "97935395"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Kurz: Příprava na nasazení Azure Stack hraniční Mini R
 
@@ -89,7 +89,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 1. Pomocí přihlašovacích údajů pro Microsoft Azure se přihlaste k Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com) .
 
 
-2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Vytvořit**. 
+2. V levém podokně vyberte **+ Vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Vytvořit**. 
 
 3. Vyberte předplatné, které chcete použít pro zařízení Azure Stack Edge pro. Vyberte zemi, do které chcete toto fyzické zařízení dodávat. Vyberte **Zobrazit zařízení**.
 
@@ -101,7 +101,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     [![Vytvoření prostředku 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. Na kartě **základy** zadejte nebo vyberte následující **Podrobnosti o projektu**.
+5. Na kartě **základy** zadejte nebo vyberte následující **Podrobnosti o projektu**.
     
     |Nastavení  |Hodnota  |
     |---------|---------|
@@ -109,7 +109,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
 
-7. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
+6. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
@@ -119,25 +119,25 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     ![Vytvoření prostředku 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. Vyberte **Další: adresa příjemce**.
+7. Vyberte **Další: adresa příjemce**.
 
     - Pokud už máte nějaké zařízení, vyberte pole se seznamem, u kterého **už zařízení máte**.
 
-        ![Vytvoření prostředku 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![Vytvoření prostředku 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu, kam se má zařízení expedovat, a kontaktní údaje.
 
-        ![Vytvoření prostředku 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![Vytvoření prostředku 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. Vyberte **Další: značky**. Volitelně můžete zadat značky pro kategorizaci prostředků a konsolidaci fakturace. Vyberte **Další: Zkontrolovat a vytvořit**.
+8. Vyberte **Další: značky**. Volitelně můžete zadat značky pro kategorizaci prostředků a konsolidaci fakturace. Vyberte **Další: Zkontrolovat a vytvořit**.
 
-10. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití** a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
+9. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití** a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
 
     ![Vytvoření prostředku 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Také se vám upozorní, že při vytváření prostředků je povolená služba Identita spravované služby (MSI), která umožňuje ověření pro cloudové služby. Tato identita existuje, pokud prostředek existuje.
 
-8. Vyberte **Vytvořit**.
+10. Vyberte **Vytvořit**.
 
     Vytvoření prostředku trvá několik minut. Vytvoří se taky soubor MSI, který umožňuje, aby zařízení Azure Stack Edge komunikovalo se zprostředkovatelem prostředků v Azure.
     
@@ -153,15 +153,15 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
 Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivační klíč. Tento klíč slouží k aktivaci a připojení Azure Stack hraničního zařízení R s prostředkem. Tento klíč můžete získat teď, když jste na webu Azure Portal.
 
-1. Vyberte prostředek, který jste vytvořili. Vyberte **Přehled** a pak vyberte **nastavení zařízení**.
+1. Vyberte prostředek, který jste vytvořili, a vyberte **Přehled**.
 
-    ![Vybrat nastavení zařízení](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Vybrat nastavení zařízení](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. Na dlaždici **aktivovat** zadejte název pro Azure Key Vault nebo přijměte výchozí název. Název trezoru klíčů může být dlouhý 3 až 24 znaků. 
 
     Pro každý Azure Stack hraničního prostředku, který se aktivuje s vaším zařízením, se vytvoří Trezor klíčů. Trezor klíčů umožňuje ukládání tajných klíčů a přístup k nim. Například klíč integrity kanálu (CIK) pro službu je uložený v trezoru klíčů.
 
-    Jakmile zadáte název trezoru klíčů, vyberte **vygenerovat klíč** a vytvořte aktivační klíč. 
+    Jakmile zadáte název trezoru klíčů, vyberte možnost **Generovat aktivační klíč** a vytvořte aktivační klíč.
 
     [![Získání aktivačního klíče](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 

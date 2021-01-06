@@ -10,16 +10,18 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015549"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936341"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
 Tento článek vám poskytne pokyny k tomu, jak nakonfigurovat bránu Azure Key Vault firewall. Tento dokument podrobně popisuje různé konfigurace pro bránu Key Vault firewall a poskytuje podrobné pokyny ke konfiguraci Azure Key Vault pro práci s jinými aplikacemi a službami Azure.
+
+Další informace najdete v tématu [koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md).
 
 ## <a name="firewall-settings"></a>Nastavení brány firewall
 
@@ -167,10 +169,10 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
 
 ## <a name="references"></a>Reference
 * Odkaz na šablonu ARM: [odkaz na šablonu Azure Key Vault ARM](/azure/templates/Microsoft.KeyVault/vaults)
-* Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](/cli/azure/keyvault/network-rule)
 * Rutiny Azure PowerShell: [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Koncové body služby virtuální sítě pro Key Vault](overview-vnet-service-endpoints.md)
-* [Zabezpečení trezoru klíčů](secure-your-key-vault.md)
+* [Přehled zabezpečení Azure Key Vault](security-overview.md)

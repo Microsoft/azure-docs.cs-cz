@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182495"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937038"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
 
@@ -39,7 +39,7 @@ Následující diagram znázorňuje architekturu řešení, které se má vytvo�
 
 ![Diagram architektury vysoké úrovně pro řešení přístupu k soukromému webu](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 
@@ -130,7 +130,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
 
 ## <a name="create-an-azure-functions-app"></a>Vytvoření aplikace Azure Functions
 
-Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plánu spotřeby](functions-scale.md#consumption-plan). Kód funkce se do tohoto prostředku nasadí později v tomto kurzu.
+Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plánu spotřeby](consumption-plan.md). Kód funkce se do tohoto prostředku nasadí později v tomto kurzu.
 
 1. Na portálu vyberte v horní části zobrazení skupiny prostředků možnost **Přidat** .
 1. Vyberte **compute > Function App**
@@ -149,7 +149,7 @@ Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plán
 
     | Nastavení      | Navrhovaná hodnota  | Popis      |
     | ------------ | ---------------- | ---------------- |
-    | _Účet úložiště_ | Globálně jedinečný název | Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](./functions-scale.md#storage-account-requirements). |
+    | _Účet úložiště_ | Globálně jedinečný název | Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements). |
     | _Operační systém_ | Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
     | _Plán_ | Consumption | [Plán hostování](./functions-scale.md) určuje, jak se aplikace funkcí škáluje, a prostředky dostupné pro jednotlivé instance. |
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.

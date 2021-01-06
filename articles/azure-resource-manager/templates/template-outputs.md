@@ -3,12 +3,12 @@ title: Výstupy v šablonách
 description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353523"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934726"
 ---
 # <a name="outputs-in-arm-templates"></a>Výstupy v šablonách ARM
 
@@ -47,7 +47,7 @@ Jednoduchý příklad podmíněného výstupu naleznete v tématu [podmíněná 
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamický počet výstupů
 
-V některých scénářích neznáte počet instancí hodnoty, které potřebujete vrátit při vytváření šablony. Můžete vrátit proměnný počet hodnot pomocí elementu **copy** .
+V některých scénářích neznáte počet instancí hodnoty, které potřebujete vrátit při vytváření šablony. Můžete vrátit proměnný počet hodnot pomocí `copy` elementu.
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ V některých scénářích neznáte počet instancí hodnoty, které potřebuje
 }
 ```
 
-Další informace najdete v tématu [výstup iterace v šablonách Azure Resource Manager](copy-outputs.md).
+Další informace najdete v tématu [výstupní iterace v šablonách ARM](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Propojené šablony
 

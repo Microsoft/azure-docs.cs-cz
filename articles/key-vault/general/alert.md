@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724693"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934590"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Monitorování a upozorňování na Azure Key Vault
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724693"
 Jakmile začnete používat Trezor klíčů k ukládání provozních tajných kódů, je důležité monitorovat stav trezoru klíčů, abyste se ujistili, že vaše služba funguje tak, jak má. Po zahájení škálování služby se zvýší počet požadavků odeslaných do trezoru klíčů. To má potenciál na zvýšení latence vašich požadavků a v extrémních případech způsobit omezení požadavků, což ovlivní výkon vaší služby. Musíte být také upozorněni, pokud váš Trezor klíčů odesílá neobvyklý počet chybových kódů, takže můžete být rychle upozorněni na všechny zásady přístupu nebo problémy s konfigurací brány firewall. Tento dokument se zabývá následujícími tématy:
 
 + Základní metriky Key Vault pro monitorování
-+ Jak nakonfigurovat metriky a vytvořit řídicí panel 
-+ Postup při vytváření výstrah v zadaných prahových hodnotách 
++ Jak nakonfigurovat metriky a vytvořit řídicí panel
++ Postup při vytváření výstrah v zadaných prahových hodnotách
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>Základní metriky Key Vault pro monitorování
 

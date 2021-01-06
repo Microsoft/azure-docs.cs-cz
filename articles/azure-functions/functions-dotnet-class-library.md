@@ -4,12 +4,12 @@ description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672661"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936919"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -21,7 +21,7 @@ Jako vývojář v jazyce C# může být také zajímat některé z následujíc�
 
 | Začínáme | Koncepty| Učení s asistencí/ukázky |
 | -- | -- | -- | 
-| <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Injektáž závislostí](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Injektáž závislosti](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions podporuje programovací jazyky C# a C#. Pokud hledáte pokyny k [používání jazyka C# v Azure Portal](functions-create-function-app-portal.md), přečtěte si téma [referenční informace pro vývojáře skriptu jazyka c# (. csx)](functions-reference-csharp.md).
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 Proces sestavení vytvoří *function.js* v souboru ve složce funkce ve složce sestavení. Jak bylo uvedeno dříve, tento soubor není určen k úpravám přímo. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. 
 
-Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work). Z tohoto důvodu má soubor pouze aktivační událost, nikoli vstupní nebo výstupní vazby.
+Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](event-driven-scaling.md). Z tohoto důvodu má soubor pouze aktivační událost, nikoli vstupní nebo výstupní vazby.
 
 Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, která určuje, že modul runtime bude používat pro vazby atributy .NET namísto *function.jsv* konfiguraci. Tady je příklad:
 
@@ -208,7 +208,7 @@ Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní v
 
 ## <a name="readytorun"></a>ReadyToRun
 
-Aplikaci Function App můžete zkompilovat jako [binární soubory ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun je forma průběžné kompilace, která může zlepšit výkon při spuštění, aby se snížil dopad [studeného](functions-scale.md#cold-start) startu při spuštění v [plánu spotřeby](functions-scale.md#consumption-plan).
+Aplikaci Function App můžete zkompilovat jako [binární soubory ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun je forma průběžné kompilace, která může zlepšit výkon při spuštění, aby se snížil dopad [studeného](event-driven-scaling.md#cold-start) startu při spuštění v [plánu spotřeby](consumption-plan.md).
 
 ReadyToRun je k dispozici v rozhraní .NET 3,0 a vyžaduje [verzi 3,0 modulu runtime Azure Functions](functions-versions.md).
 

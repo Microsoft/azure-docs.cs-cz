@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397894"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934896"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397894"
 --------
 
 Ve výchozím nastavení služba Azure Application Gateway PROBE back-end serverů a kontroluje jejich stav a kontroluje, jestli jsou připravené na poskytování požadavků. Uživatelé také mohou vytvořit vlastní sondy, které by uváděly název hostitele, cestu k testování a stavové kódy, které budou přijaty jako v pořádku. V obou případech, pokud back-end server neodpoví úspěšně, Application Gateway označí Server jako špatný a přestane předávat požadavky na server. Po úspěšném spuštění serveru Application Gateway pokračuje v předávání požadavků.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených* termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ### <a name="how-to-check-backend-health"></a>Postup kontroly stavu back-endu
 
@@ -109,7 +112,7 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 **Příčina:** Pokud je back-end fond typu IP adresa nebo plně kvalifikovaný název domény nebo App Service, Application Gateway se přeloží na IP adresu plně kvalifikovaného názvu domény zadaného pomocí DNS (Domain Name System) (vlastní nebo výchozí Azure) a pokusí se připojit k serveru na portu TCP uvedeném v nastavení HTTP. Pokud se ale zobrazí tato zpráva, je navržena tak, že Application Gateway nedokázala úspěšně přeložit IP adresu zadaného plně kvalifikovaného názvu domény.
 
-**Rozhodnutí**
+**Řešení:**
 
 1.  Ověřte, že plně kvalifikovaný název domény zadaný ve fondu back-end je správný a že se jedná o veřejnou doménu, a zkuste ho vyřešit z místního počítače.
 
@@ -157,7 +160,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
     a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +260,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Například:
+Příklad:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -359,7 +362,7 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
 **Řešení:**
 
-1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu** :
+1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu**:
 
     a.  Na kartě **přehled** Application Gateway vyberte odkaz **Virtual Network/podsíť** .
 
@@ -373,15 +376,15 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
     f.  Vyberte **Uložit** a ověřte, zda můžete zobrazit back-end jako v pořádku. Případně to můžete provést prostřednictvím [PowerShellu nebo](../virtual-network/manage-network-security-group.md)rozhraní příkazového řádku.
 
-1.  Ověřte, jestli váš UDR má výchozí trasu (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet** :
+1.  Ověřte, jestli váš UDR má výchozí trasu (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**:
     
     a.  K určení vaší podsítě postupujte podle kroků 1a a 1b.
 
     b.  Ověřte, jestli je nakonfigurované nějaké UDR. Pokud je, vyhledejte prostředek na panelu hledání nebo v části **všechny prostředky**.
 
-    c.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network** , musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
+    c.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network**, musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
 
-    d.  V opačném případě změňte další směrování na **Internet** , vyberte **Uložit** a ověřte stav back-endu.
+    d.  V opačném případě změňte další směrování na **Internet**, vyberte **Uložit** a ověřte stav back-endu.
 
 1.  Výchozí trasa inzerovaná připojením ExpressRoute/VPN k virtuální síti prostřednictvím protokolu BGP:
 

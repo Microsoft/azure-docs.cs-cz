@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321619"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936409"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Podmíněný přístup s Azure SQL Database a Azure synapse Analytics
 
@@ -25,9 +25,9 @@ ms.locfileid: "93321619"
 
 [Azure SQL Database](sql-database-paas-overview.md), [spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporují podmíněný přístup Microsoft.
 
-Následující kroky ukazují, jak nakonfigurovat Azure SQL Database, spravovanou instanci SQL nebo Azure synapse, aby vynutily zásady podmíněného přístupu (CA).  
+Následující kroky ukazují, jak nakonfigurovat Azure SQL Database, spravovanou instanci SQL nebo Azure synapse, aby se vynutily zásady podmíněného přístupu.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aby bylo možné podporovat ověřování Azure Active Directory (Azure AD), musíte v Azure synapse nakonfigurovat Azure SQL Database, spravovanou instanci Azure SQL nebo vyhrazený fond SQL. Konkrétní postup najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse](authentication-aad-configure.md).  
 - Pokud je povolená Multi-Factor Authentication, musíte se připojit pomocí podporovaného nástroje, jako je například nejnovější SQL Server Management Studio (SSMS). Další informace najdete v tématu [konfigurace Azure SQL Database Multi-Factor Authentication pro SQL Server Management Studio](authentication-mfa-ssms-configure.md).  
@@ -40,21 +40,21 @@ Následující kroky ukazují, jak nakonfigurovat Azure SQL Database, spravovano
 1. Přihlaste se k Azure Portal, vyberte **Azure Active Directory** a potom vyberte **podmíněný přístup**. Další informace najdete v tématu [technické informace o podmíněném přístupu Azure Active Directory](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
    ![Okno podmíněný přístup](./media/conditional-access-configure/conditional-access-blade.png)
 
-2. V okně **podmíněný přístup – zásady** klikněte na **nové zásady** , zadejte název a pak klikněte na **Konfigurovat pravidla**.  
-3. V části **přiřazení** vyberte **Uživatelé a skupiny** , zaškrtněte **políčko Vybrat uživatele a skupiny** a pak vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na **Vybrat** a potom kliknutím na **Hotovo** přijměte svůj výběr.  
+2. V okně **podmíněný přístup – zásady** klikněte na **nové zásady**, zadejte název a pak klikněte na **Konfigurovat pravidla**.  
+3. V části **přiřazení** vyberte **Uživatelé a skupiny**, zaškrtněte **políčko Vybrat uživatele a skupiny** a pak vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na **Vybrat** a potom kliknutím na **Hotovo** přijměte svůj výběr.  
    ![Vybrat uživatele a skupiny](./media/conditional-access-configure/select-users-and-groups.png)  
 
-4. Vyberte **cloudové aplikace** , klikněte na **vybrat aplikace**. Zobrazí se všechny aplikace, které jsou k dispozici pro podmíněný přístup. Vyberte **Azure SQL Database** , v dolní části klikněte na **Vybrat** a pak klikněte na **Hotovo**.  
+4. Vyberte **cloudové aplikace**, klikněte na **vybrat aplikace**. Zobrazí se všechny aplikace, které jsou k dispozici pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na **Vybrat** a pak klikněte na **Hotovo**.  
    ![Vyberte SQL Database](./media/conditional-access-configure/select-sql-database.png)  
    Pokud nemůžete najít **Azure SQL Database** uvedených v následujícím třetím snímku obrazovky, proveďte následující kroky:
    - Připojte se k databázi v Azure SQL Database pomocí SSMS s účtem správce Azure AD.  
    - Provést `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` .  
    - Přihlaste se k Azure AD a ověřte, že Azure SQL Database, spravovaná instance SQL nebo Azure synapse, jsou uvedené v aplikacích v instanci služby Azure AD.  
 
-5. Vyberte **řízení přístupu** , vyberte **udělit** a pak zkontrolujte zásadu, kterou chcete použít. V tomto příkladu vybereme možnost **vyžadovat službu Multi-Factor Authentication**.  
+5. Vyberte **řízení přístupu**, vyberte **udělit** a pak zkontrolujte zásadu, kterou chcete použít. V tomto příkladu vybereme možnost **vyžadovat službu Multi-Factor Authentication**.  
    ![vybrat udělit přístup](./media/conditional-access-configure/grant-access.png)  
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Vybraná aplikace (Azure SQL Database) pomocí Azure AD Premium nyní vynutila vybrané zásady podmíněného přístupu, **požadované vícefaktorové ověřování.**
 

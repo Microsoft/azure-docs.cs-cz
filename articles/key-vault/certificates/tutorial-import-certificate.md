@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289725"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935933"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -55,7 +55,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru** : v tomto příkladu je to **příklad – trezor**. Tento název budete používat pro další kroky.
+* **Název trezoru**: v tomto příkladu je to **příklad – trezor**. Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://example-vault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
@@ -74,9 +74,9 @@ Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu
 1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
 2. Klikněte na **Vygenerovat/importovat**.
 3. Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
-    - **Metoda vytvoření certifikátu** : import.
-    - **Název certifikátu** : ExampleCertificate.
-    - **Nahrát soubor certifikátu** : vyberte soubor certifikátu z disku.
+    - **Metoda vytvoření certifikátu**: import.
+    - **Název certifikátu**: ExampleCertificate.
+    - **Nahrát soubor certifikátu**: vyberte soubor certifikátu z disku.
     - **Heslo** : Pokud nahráváte soubor certifikátu chráněný heslem, zadejte toto heslo sem. V opačném případě ponechte prázdné. Po úspěšném importu souboru certifikátu odstraní Trezor klíčů toto heslo.
 4. Klikněte na **Vytvořit**.
 
@@ -154,4 +154,4 @@ V tomto kurzu jste vytvořili Key Vault a importovali do něj certifikát. Dalš
 
 - Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](./create-certificate-scenarios.md)
 - Podívejte se na příklady [importu certifikátů pomocí rozhraní REST API](/rest/api/keyvault/importcertificate/importcertificate) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

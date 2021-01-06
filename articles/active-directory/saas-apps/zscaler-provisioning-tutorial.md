@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c7f4aebc70ff831459fe111bcc30f5385088028
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357670"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936579"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Před konfigurací Zscaler pro Automatické zřizování uživatelů se službou
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscaler** , vyberte **Zscaler** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Zscaler**, vyberte **Zscaler** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Zscaler v seznamu výsledků](common/search-new-app.png)
 
@@ -80,9 +80,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler podle pokynů uvedených v [kurzu Zscaler jednotného přihlašování](zscaler-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
+> [!NOTE]
+> Pokud jsou uživatelé a skupiny zřízené nebo nezřízené, doporučujeme, abyste pravidelně restartovali zřizování, aby se zajistilo, že členství ve skupině bude správně aktualizováno. Při restartování dojde k vynucení, aby naše služba znovu vyhodnotila všechny skupiny a aktualizovala členství. 
+
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler ve službě Azure AD:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **Zscaler**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Zscaler**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -100,7 +103,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler, jak je popsáno v kroku 6.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token** , přejděte do části **Správa > nastavení ověřování** v uživatelském rozhraní portálu Zscaler a klikněte na protokol **SAML** pod položkou **typ ověřování**.
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, přejděte do části **Správa > nastavení ověřování** v uživatelském rozhraní portálu Zscaler a klikněte na protokol **SAML** pod položkou **typ ověřování**.
 
     ![Snímek obrazovky se stránkou nastavení ověřování.](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
@@ -154,7 +157,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

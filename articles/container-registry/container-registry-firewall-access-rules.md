@@ -1,14 +1,14 @@
 ---
 title: Pravidla přístupu brány firewall
-description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k REST APIům a názvům domén koncového bodu dat nebo rozsahům IP adres závislým na službě.
+description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k názvům REST API a datovým koncovým službám nebo rozsahům IP adres pro konkrétní služby.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148515"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935984"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -40,7 +40,7 @@ Pokud má vaše organizace zásady povolující přístup jenom ke konkrétním 
 Pokud chcete najít rozsahy IP adres koncového bodu REST ACR, pro které potřebujete přístup, vyhledejte **AzureContainerRegistry** v souboru JSON.
 
 > [!IMPORTANT]
-> Rozsahy IP adres pro služby Azure se můžou měnit a aktualizace se zveřejňují týdně. Stáhněte si soubor JSON pravidelně a proveďte potřebné aktualizace v pravidlech přístupu. Pokud váš scénář zahrnuje konfiguraci pravidel skupiny zabezpečení sítě ve službě Azure Virtual Network nebo používáte Azure Firewall, použijte místo toho **AzureContainerRegistry** [značku služby](#allow-access-by-service-tag) AzureContainerRegistry.
+> Rozsahy IP adres pro služby Azure se můžou měnit a aktualizace se zveřejňují týdně. Stáhněte si soubor JSON pravidelně a proveďte potřebné aktualizace v pravidlech přístupu. Pokud váš scénář zahrnuje konfiguraci pravidel skupiny zabezpečení sítě ve službě Azure Virtual Network nebo používáte Azure Firewall, použijte místo toho  [značku služby](#allow-access-by-service-tag) AzureContainerRegistry.
 >
 
 ### <a name="rest-ip-addresses-for-all-regions"></a>IP adresy REST pro všechny oblasti
@@ -143,7 +143,7 @@ Koncový bod dat nebo koncové body se zobrazí na portálu.
 
 Pokud chcete povolit koncové body dat pomocí rozhraní příkazového řádku Azure CLI, použijte Azure CLI verze 2.4.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Následující příkaz [AZ ACR Update][az-acr-update] povolí v registru *myregistry*vyhrazené koncové body dat. 
+Následující příkaz [AZ ACR Update][az-acr-update] povolí v registru *myregistry* vyhrazené koncové body dat. 
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589793"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936885"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -28,8 +28,8 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
-| Aplikace Function App                                                                     | Povinné    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
-| Účet [Azure Storage](../storage/index.yml)                                   | Povinné    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Aplikace Function App                                                                     | Vyžadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
+| Účet [Azure Storage](../storage/index.yml)                                   | Vyžadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |
 | [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |
 
@@ -175,7 +175,7 @@ Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
 
 ## <a name="deploy-on-consumption-plan"></a>Nasazení na plán spotřeby
 
-Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zátěže a pak se škáluje, když kód neběží. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md#consumption-plan).
+Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zátěže a pak se škáluje, když kód neběží. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](consumption-plan.md).
 
 Ukázkové Azure Resource Managerovou šablonu najdete v tématu [aplikace Function App na základě plánu spotřeby].
 

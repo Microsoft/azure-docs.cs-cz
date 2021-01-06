@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837477"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934998"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -24,7 +24,7 @@ Plánování nasazení podmíněného přístupu je důležité pro zajištění
 
 V rámci cloudového a cloudového světa budou vaši uživatelé přistupovat k prostředkům vaší organizace odkudkoli pomocí různých zařízení a aplikací. Výsledkem je, že se zaměříte na to, kdo má přístup k prostředku, již není dostatek. Musíte také zvážit, kde je uživatel, používané zařízení, přidaný prostředek a další. 
 
-Azure Active Directory (Azure AD) analýzy podmíněného přístupu (CA), jako je například uživatel, zařízení a umístění, pro automatizaci rozhodnutí a prosazování zásad přístupu k prostředkům pro prostředky. Zásady certifikační autority můžete použít k použití řízení přístupu, jako je Multi-Factor Authentication (MFA). Zásady certifikační autority umožňují vyzvat uživatele k MFA, pokud je to potřeba pro zabezpečení, a zůstat v případě potřeby mimo uživatele.
+Analýzy podmíněného přístupu Azure Active Directory (Azure AD) signalizují, jako je například uživatel, zařízení a umístění, pro automatizaci rozhodnutí a vymáhání zásad přístupu k organizaci pro prostředky. Pomocí zásad podmíněného přístupu můžete použít řízení přístupu, jako je Multi-Factor Authentication (MFA). Zásady podmíněného přístupu vám umožňují vyzvat uživatele k MFA, pokud jsou potřeba k zabezpečení, a zůstat v případě potřeby mimo uživatele.
 
 ![Přehled podmíněného přístupu](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že rozumíte tomu, jak [podmíněný přístup](ov
 
 Výhody nasazení podmíněného přístupu:
 
-* Zvyšte produktivitu. Přerušit pouze uživatele s podmínkou přihlášení, jako je MFA, pokud je jeden nebo více signálů opravňuje. Zásady certifikační autority umožňují řídit, kdy se uživatelům zobrazí výzva k MFA, když se zablokuje přístup a že musí používat důvěryhodné zařízení.
+* Zvyšte produktivitu. Přerušit pouze uživatele s podmínkou přihlášení, jako je MFA, pokud je jeden nebo více signálů opravňuje. Zásady podmíněného přístupu vám umožňují řídit, kdy se uživatelům zobrazí výzva k MFA, když se zablokuje přístup a že musí používat důvěryhodné zařízení.
 
 * Řízení rizik. Automatizace hodnocení rizik pomocí podmínek zásad znamená, že jsou rizikové přihlašování zjištěné a napravované nebo blokované. Přístup k podmíněnému přístupu pomocí [Identity Protection](../identity-protection/overview-identity-protection.md), který detekuje anomálie a podezřelé události, vám umožní cílit na to, kdy je přístup k prostředkům blokovaný nebo ověřovaný. 
 
@@ -52,7 +52,7 @@ Viz [licenční požadavky na podmíněný přístup](overview.md).
 
 Pokud potřebujete další funkce, budete možná potřebovat i související licence. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -71,7 +71,7 @@ V případě, že se seznámíte s podmíněným přístupem, můžou být užit
 
 * [Co je podmíněný přístup?](https://youtu.be/ffMAw2IVO7A)
 * [Jak nasadit podmíněný přístup?](https://youtu.be/c_izIRNJNuk)
-* [Jak zavést zásady certifikační autority pro koncové uživatele?](https://youtu.be/0_Fze7Zpyvc)
+* [Jak zavést zásady podmíněného přístupu pro koncové uživatele?](https://youtu.be/0_Fze7Zpyvc)
 * [Podmíněný přístup pomocí ovládacích prvků zařízení](https://youtu.be/NcONUf-jeS4)
 * [Podmíněný přístup s Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Podmíněný přístup v Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
@@ -102,13 +102,13 @@ Až budou nové zásady připravené pro vaše prostředí, nasaďte je v produk
 > [!NOTE]
 > Pro zavedení nových zásad, které nejsou specifické pro správce, vylučte všechny správce. Tím zajistíte, že správci budou mít stále přístup k těmto zásadám, a pokud dojde k významnému dopadu, může to udělat nebo odvolat. Před použitím pro všechny uživatele vždy ověřte zásadu s menšími skupinami uživatelů.
 
-## <a name="understand-ca-policy-components"></a>Principy součástí zásad certifikační autority
-Zásady certifikační autority jsou if a then: Pokud je přiřazení splněné, použijte tyto řízení přístupu.
+## <a name="understand-conditional-access-policy-components"></a>Principy součástí zásad podmíněného přístupu
+Zásady podmíněného přístupu jsou if a then: Pokud je splněné přiřazení, použijte tyto ovládací prvky přístupu.
 
-Při konfiguraci zásad certifikační autority se podmínky nazývají *přiřazení*. Zásady certifikační autority umožňují vymáhat řízení přístupu v aplikacích vaší organizace na základě určitých přiřazení.
+Při konfiguraci zásad podmíněného přístupu se podmínky nazývají *přiřazení*. Zásady podmíněného přístupu vám umožňují vynutilit řízení přístupu v aplikacích vaší organizace na základě určitých přiřazení.
 
 
-Další informace najdete v tématu [sestavování zásad certifikační autority](concept-conditional-access-policies.md).
+Další informace najdete v tématu [Vytvoření zásady podmíněného přístupu](concept-conditional-access-policies.md).
 
 ![obrazovka pro vytvoření zásady](media/plan-conditional-access/create-policy.png)
 
@@ -195,7 +195,7 @@ Je důležité pochopit, jak se vydávají přístupové tokeny.
 ![Diagram vystavení přístupového tokenu](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> Pokud není vyžadováno žádné přiřazení a neplatí žádná zásada certifikační autority, je výchozím chováním vydání přístupového tokenu. 
+> Pokud není vyžadováno žádné přiřazení a žádná zásada podmíněného přístupu není platná, je výchozím chováním vydání přístupového tokenu. 
 
 Představte si třeba zásadu, kde:
 
@@ -207,14 +207,14 @@ Pokud se uživatel, který není ve skupině 1, pokusí o přístup k aplikaci, 
 
 Rozhraní podmíněného přístupu poskytuje skvělou flexibilitu konfigurace. Ale skvělá flexibilita také znamená, že před vydáním pečlivě zkontrolovat každou zásadu konfigurace, aby nedocházelo k nežádoucím výsledkům.
 
-### <a name="apply-ca-policies-to-every-app"></a>Použití zásad certifikační autority u každé aplikace
+### <a name="apply-conditional-access-policies-to-every-app"></a>Použití zásad podmíněného přístupu pro každou aplikaci
 
-Přístupové tokeny se ve výchozím nastavení vydávají, pokud podmínka zásad certifikační autority neaktivuje řízení přístupu. Ujistěte se, že každá aplikace má použitou aspoň jednu zásadu podmíněného přístupu.
+Přístupové tokeny se ve výchozím nastavení vydávají, pokud podmínka zásad podmíněného přístupu neaktivuje řízení přístupu. Ujistěte se, že každá aplikace má použitou aspoň jednu zásadu podmíněného přístupu.
 
 > [!IMPORTANT]
 > Buďte velmi opatrní v používání blokování a všech aplikací v jedné zásadě. To může uzamknout správce z portálu pro správu Azure a vyloučení nelze nakonfigurovat pro důležité koncové body, například Microsoft Graph.
 
-### <a name="minimize-the-number-of-ca-policies"></a>Minimalizace počtu zásad certifikační autority
+### <a name="minimize-the-number-of-conditional-access-policies"></a>Minimalizace počtu zásad podmíněného přístupu
 
 Vytváření zásad pro jednotlivé aplikace nebude efektivní a vede k obtížné správě. Podmíněný přístup použije jenom prvních 195 zásad na uživatele. Doporučujeme analyzovat své aplikace a seskupit je do aplikací, které mají stejné požadavky na prostředky pro stejné uživatele. Pokud například všechny Microsoft 365 aplikace nebo všechny aplikace pro personální oddělení mají stejné požadavky pro stejné uživatele, vytvořte jednu zásadu a zahrňte všechny aplikace, na které se vztahuje. 
 
@@ -228,9 +228,9 @@ Pokud zásadu nakonfigurujete, může se organizacím z Azure Portal uzamknout. 
 
   * Vytvořte místní skupinu zabezpečení a synchronizujte ji do Azure AD. Skupina zabezpečení by měla obsahovat účet pro správu vyhrazených zásad. 
 
-   * Vylučte tuto skupinu zabezpečení, která bude tvořit všechny zásady certifikační autority.
+   * Tato skupina zabezpečení by měla být v souladu se všemi zásadami podmíněného přístupu.
 
-   * Když dojde k výpadku služby, přidejte své další správce do místní skupiny podle potřeby a vynuťte synchronizaci. Tím se jejich výjimky animuje na zásady certifikační autority.
+   * Když dojde k výpadku služby, přidejte své další správce do místní skupiny podle potřeby a vynuťte synchronizaci. Tím se odanimuje jejich výjimka na zásady podmíněného přístupu.
 
 ### <a name="set-up-report-only-mode"></a>Nastavení režimu pouze sestavy
 
@@ -240,9 +240,9 @@ Může být obtížné předpovědět počet a jména uživatelů ovlivněných 
 * vyžadování MFA
 * Implementace zásad rizik přihlašování
 
-[Režim pouze pro sestavy ](concept-conditional-access-report-only.md) umožňuje správcům vyhodnotit dopad zásad CA ještě předtím, než je povolí ve svém prostředí.
+[Režim pouze pro sestavy ](concept-conditional-access-report-only.md) umožňuje správcům vyhodnotit dopad zásad podmíněného přístupu předtím, než je povolí ve svém prostředí.
 
-Naučte se [Konfigurovat režim pouze pro sestavy na základě zásad certifikační autority](howto-conditional-access-insights-reporting.md).
+Naučte se [Konfigurovat režim pouze pro sestavy na základě zásad podmíněného přístupu](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Plánování přerušení
 
@@ -295,7 +295,7 @@ Až budou nové zásady připravené pro vaše prostředí, ujistěte se, že js
 
 ## <a name="common-policies"></a>Běžné zásady
 
-Při plánování řešení zásad certifikační autority Vyhodnoťte, jestli je potřeba vytvořit zásady, abyste dosáhli následujících výsledků.
+Při plánování řešení zásad podmíněného přístupu posuďte, jestli potřebujete vytvořit zásady, abyste dosáhli následujících výsledků.
 
 * [Vyžadování MFA](#require-mfa)
 * [Reakce na potenciálně ohrožené účty](#respond-to-potentially-compromised-accounts)
@@ -319,7 +319,7 @@ Běžné případy použití pro vyžadování přístupu MFA:
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Reakce na potenciálně ohrožené účty
 
-Pomocí zásad certifikační autority můžete implementovat automatizované reakce na přihlášení pomocí potenciálně ohrožených identit. Pravděpodobnost, že dojde k ohrožení bezpečnosti účtu, je vyjádřena ve formě úrovní rizika. Služba Identity Protection počítá dvě úrovně rizik: riziko přihlášení a riziko pro uživatele. Následující tři výchozí zásady lze povolit.
+Pomocí zásad podmíněného přístupu můžete implementovat automatizované reakce na přihlášení pomocí potenciálně ohrožených identit. Pravděpodobnost, že dojde k ohrožení bezpečnosti účtu, je vyjádřena ve formě úrovní rizika. Služba Identity Protection počítá dvě úrovně rizik: riziko přihlášení a riziko pro uživatele. Následující tři výchozí zásady lze povolit.
 
 * [Vyžadovat registraci všech uživatelů pro MFA](howto-conditional-access-policy-risk.md)
 
@@ -374,9 +374,9 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 ### <a name="create-a-test-plan"></a>Vytvoření testovacího plánu
 
-Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
+Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady podmíněného přístupu.
 
-| Zásady| Scénář| Očekávaný výsledek |
+| Zásada| Scénář| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |
@@ -389,9 +389,9 @@ Testovací plán je důležitý pro porovnání očekávaných výsledků a skut
 
 ### <a name="configure-the-test-policy"></a>Konfigurovat zásady testování
 
-V [Azure Portal](https://portal.azure.com/)konfigurujete zásady certifikační autority v části Azure Active Directory > zabezpečení > podmíněný přístup.
+V [Azure Portal](https://portal.azure.com/)můžete nakonfigurovat zásady podmíněného přístupu v části Azure Active Directory > zabezpečení > podmíněný přístup.
 
-Pokud se chcete dozvědět víc o tom, jak vytvořit zásady certifikační autority, přečtěte si tento příklad: [zásady certifikační autority, které se zobrazí při přihlášení uživatele k Azure Portal pro MFA](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Tento rychlý Start vám pomůže:
+Pokud se chcete dozvědět víc o vytváření zásad podmíněného přístupu, přečtěte si tento příklad: [zásady podmíněného přístupu, které se zobrazí při přihlášení uživatele k Azure Portal pro MFA](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Tento rychlý Start vám pomůže:
 
 * Seznámení s uživatelským rozhraním
 
@@ -415,7 +415,7 @@ Agregovaný dopad zásad podmíněného přístupu můžete zobrazit v sešitě 
 Dalším způsobem, jak ověřit zásady podmíněného přístupu, je použití [nástroje citlivostní](troubleshoot-conditional-access-what-if.md)instalace, který simuluje to, které zásady se použijí pro uživatele, který se přihlašuje za hypotetické podmínky. Vyberte atributy přihlášení, které chcete testovat (například uživatele, aplikace, platforma zařízení a umístění) a zjistěte, které zásady budou platit.
 
 > [!NOTE] 
-> I když simulované spuštění přináší dobrý nápad na dopad, který má zásada certifikační autority, nenahrazuje skutečný testovací běh.
+> I když simulované spuštění přináší dobrý nápad na dopad, který má zásada podmíněného přístupu, nenahrazuje skutečný testovací běh.
 
 ### <a name="test-your-policy"></a>Testování zásad
 
@@ -442,14 +442,14 @@ V případě, že potřebujete vrátit nově implementované zásady, použijte 
 
 ## <a name="manage-access-to-cloud-apps"></a>Správa přístupu ke cloudovým aplikacím
 
-Pomocí následujících možností správy můžete řídit a spravovat zásady certifikační autority:
+Pomocí následujících možností správy můžete řídit a spravovat zásady podmíněného přístupu:
 
 ![Snímek obrazovky ukazuje možnosti správy pro zásady jazyka C, včetně pojmenovaných umístění, vlastních ovládacích prvků, Podmínky použití, připojení N a vybraných klasických zásad.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Pojmenovaná umístění
 
-Podmínka umístění zásad certifikační autority umožňuje propojení nastavení řízení přístupu k síťovým umístěním vašich uživatelů. Pomocí [pojmenovaných umístění](location-condition.md)můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí.
+Podmínka umístění zásad podmíněného přístupu umožňuje propojení nastavení řízení přístupu k síťovým umístěním vašich uživatelů. Pomocí [pojmenovaných umístění](location-condition.md)můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí.
 
 ### <a name="custom-controls"></a>Vlastní ovládací prvky
 
@@ -461,7 +461,7 @@ Než budete mít přístup k určitým cloudovým aplikacím ve vašem prostřed
 
 ## <a name="troubleshoot-conditional-access"></a>Řešení potíží s podmíněným přístupem
 
-Pokud má uživatel problém se zásadou certifikační autority, shromážděte následující informace, které vám usnadní řešení potíží.
+Pokud se uživateli vyskytne problém se zásadami podmíněného přístupu, shromážděte následující informace, které vám usnadní řešení potíží.
 
 * Hlavní název uživatele
 
@@ -493,4 +493,4 @@ Jakmile shromáždíte informace, podívejte se na následující zdroje informa
 
 [Další informace o identitě identity](../identity-protection/overview-identity-protection.md)
 
-[Správa zásad certifikační autority pomocí rozhraní Microsoft Graph API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Správa zásad podmíněného přístupu pomocí rozhraní Microsoft Graph API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

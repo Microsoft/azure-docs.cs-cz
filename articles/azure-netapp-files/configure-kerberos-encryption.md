@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410092"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935219"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
 
@@ -89,7 +89,7 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 2. Pokud chcete zobrazit pokyny, vyberte ze svazku **pokyny k připojení** .
 
-    Zde je příklad: 
+    Příklad: 
 
     ![Pokyny pro připojení ke svazkům protokolu Kerberos](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
@@ -172,6 +172,7 @@ Dopad na výkon krb5p:
 
 ## <a name="next-steps"></a>Další kroky  
 
+* [Řešení potíží se svazkem NFSv 4.1 protokolu Kerberos](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Nejčastější dotazy týkající se Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Vytvoření svazku NFS pro službu Azure NetApp Files](azure-netapp-files-create-volumes.md)
 * [Vytvoření připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

@@ -3,16 +3,16 @@ title: Vytvoření aplikace Function App na platformě Linux z Azure Portal
 description: Naučte se, jak vytvořit první funkci Azure Functions na platformě Linux pomocí Azure Portal.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181250"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937174"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Vytvoření aplikace Function App v systému Linux v plánu Azure App Service
 
-Služba Azure Functions umožňuje hostovat funkce v Linuxu ve výchozím kontejneru Azure App Service. Tento článek vás provede postupem použití [Azure Portal](https://portal.azure.com) k vytvoření aplikace funkce hostované v systému Linux, která běží v [plánu App Service](functions-scale.md#app-service-plan). Můžete také [použít vlastní kontejner](functions-create-function-linux-custom-image.md).
+Služba Azure Functions umožňuje hostovat funkce v Linuxu ve výchozím kontejneru Azure App Service. Tento článek vás provede postupem použití [Azure Portal](https://portal.azure.com) k vytvoření aplikace funkce hostované v systému Linux, která běží v [plánu App Service](dedicated-plan.md). Můžete také [použít vlastní kontejner](functions-create-function-linux-custom-image.md).
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -46,11 +46,11 @@ K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplik
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Stránka základy":::
 
-1. Vyberte **Další: hostování**. Na stránce **hostování** zadejte následující nastavení.
+1. Vyberte **Další: Hostování**. Na stránce **hostování** zadejte následující nastavení.
 
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ | ---------------- | ----------- |
-    | **[Účet úložiště](../storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Účet úložiště](../storage/common/storage-account-create.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](../azure-functions/storage-considerations.md#storage-account-requirements). |
     |**Operační systém**| **Linux** | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
     | **[Plánování](../azure-functions/functions-scale.md)** | **Využití (bez serverů)** | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Ve výchozím plánu **Využití** se prostředky přidávají dynamicky podle požadavků příslušných funkcí. V tomto hostiteli bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) platíte jenom za čas, kdy se vaše funkce spouštějí. Pokud používáte plán služby App Service, musíte zajistit správu [škálování vaší aplikace funkcí](../azure-functions/functions-scale.md).  |
 

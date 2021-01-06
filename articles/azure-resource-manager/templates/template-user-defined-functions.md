@@ -3,12 +3,12 @@ title: Uživatelsky definované funkce v šablonách
 description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436959"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934675"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
@@ -44,7 +44,7 @@ Vaše funkce vyžadují hodnotu oboru názvů, aby se zabránilo konfliktům ná
 
 ## <a name="use-the-function"></a>Použití funkce
 
-Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci. Tato funkce používá k získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem **storageNamePrefix** , který je předán jako parametr funkci.
+Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci. Tato funkce používá k získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem `storageNamePrefix` , který předává jako parametr funkci.
 
 ```json
 {

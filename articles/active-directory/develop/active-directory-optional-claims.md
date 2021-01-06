@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916248"
+ms.locfileid: "97935899"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -94,7 +94,7 @@ Některá vylepšení formátu tokenu v2 jsou dostupná pro aplikace, které pou
 
 | Deklarace JWT     | Název                            | Popis | Poznámky |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | Cílová skupina | Vždy k dispozici v JWTs, ale v přístupových tokenech v1 je možné ji vysílat různými způsoby, což může při ověřování tokenu těžko kódovat kód.  Použijte [Další vlastnosti této deklarace identity](#additional-properties-of-optional-claims) , abyste zajistili, že se vždycky nastaví na identifikátor GUID v přístupových tokenech v1. | pouze přístupové tokeny v1 JWT|
+|`aud`          | Cílová skupina | Vždy přítomná v JWTs, ale v přístupových tokenech v1 je možné ji vysílat různými způsoby – libovolný identifikátor URI appID, s koncovým lomítkem nebo bez něj ID klienta. Tato Náhodnost může při ověřování tokenu těžko kódovat kód.  Použijte [Další vlastnosti této deklarace identity](#additional-properties-of-optional-claims) , abyste zajistili, že se vždycky nastaví na ID klienta prostředku v přístupových tokenech v1. | pouze přístupové tokeny v1 JWT|
 |`preferred_username` | Preferované uživatelské jméno        | Poskytuje upřednostňovanou deklaraci uživatelského jména v tokenech v1. To usnadňuje aplikacím zadání pomocných parametrů uživatelského jména a zobrazení zobrazovaných názvů pro lidské čtení bez ohledu na jejich typ tokenu.  Doporučuje se použít místo použití této volitelné deklarace identity, např. `upn` nebo `unique_name` . | tokeny v1 ID a přístupové tokeny |
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti volitelných deklarací identity
@@ -108,8 +108,8 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |
 |                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že značky hash ( `#` ) jsou nahrazeny podtržítkem ( `_` ), například `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | V přístupových tokenech V1 se používá ke změně formátu `aud` deklarace identity.  Tato hodnota nemá žádný vliv na tokeny v2 ani tokeny ID, kde `aud` deklarace je vždycky ID klienta. Použijte k tomu, abyste zajistili, že vaše rozhraní API může snadněji provádět ověřování cílových skupin. Stejně jako u všech volitelných deklarací, které mají vliv na přístupový token, musí prostředek v žádosti nastavit tuto volitelnou deklaraci identity, protože prostředky přistupují k přístupovému tokenu.|
-|                | `use_guid`               | Vygeneruje ID klienta prostředku (API) ve formátu GUID jako `aud` deklaraci identity místo identifikátoru URI nebo identifikátoru GUID AppID. Takže pokud je ID klienta prostředku `bb0a297b-6a42-4a55-ac40-09a501456577` , každá aplikace, která žádá o přístupový token pro daný prostředek, obdrží přístupový token s `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
+| `aud`          |                          | V přístupových tokenech V1 se používá ke změně formátu `aud` deklarace identity.  To nemá žádný vliv na tokeny v2 ani na tokeny ID verze, kde `aud` deklarace je vždycky ID klienta. Pomocí této konfigurace se ujistěte, že vaše rozhraní API může snadněji provádět ověřování cílových skupin. Stejně jako u všech volitelných deklarací, které mají vliv na přístupový token, musí prostředek v žádosti nastavit tuto volitelnou deklaraci identity, protože prostředky přistupují k přístupovému tokenu.|
+|                | `use_guid`               | Vygeneruje ID klienta prostředku (API) ve formátu GUID jako `aud` deklaraci identity místo toho, aby byla závislá na běhu. Pokud například prostředek nastaví tento příznak a jedná se o ID klienta `bb0a297b-6a42-4a55-ac40-09a501456577` , každá aplikace, která žádá o přístupový token pro daný prostředek, obdrží přístupový token s `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` . </br></br> Bez této sady deklarací by mohlo rozhraní API získat tokeny s `aud` deklarací identity `api://MyApi.com` , `api://MyApi.com/` `api://myapi.com/AdditionalRegisteredField` nebo jakoukoli jinou množinou hodnot jako identifikátor URI ID aplikace pro toto rozhraní API a také ID klienta daného prostředku. |
 
 #### <a name="additional-properties-example"></a>Příklad dalších vlastností
 
@@ -245,7 +245,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
@@ -258,7 +258,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin pomocí manifestu aplikace:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -272,7 +272,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Například:
+   Příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -389,7 +389,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace uživatelského rozhraní:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
 1. Vyhledejte a vyberte **Azure Active Directory**.
@@ -412,7 +412,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

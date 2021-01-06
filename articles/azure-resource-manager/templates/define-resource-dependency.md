@@ -1,24 +1,24 @@
 ---
 title: Nastavení pořadí nasazení pro prostředky
-description: Popisuje, jak nastavit jeden prostředek jako závislý na jiném prostředku během nasazování. Závislosti zajistí, že se prostředky nasadí ve správném pořadí.
+description: Popisuje, jak nastavit jeden prostředek Azure jako závislý na jiném prostředku během nasazování. Závislosti zajistí, že se prostředky nasadí ve správném pořadí.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722007"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934743"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definování pořadí nasazení prostředků v šablonách ARM
 
-Při nasazování prostředků možná budete muset zajistit, aby existovaly některé prostředky před dalšími prostředky. Před nasazením databáze potřebujete například logický SQL Server. Tento vztah vytvoříte tak, že označíte jeden prostředek jako závislý na jiném prostředku. K definování explicitní závislosti použijte element **dependsOn** . K definování implicitní závislosti použijte funkce **odkaz** nebo **list** .
+Při nasazování prostředků možná budete muset zajistit, aby existovaly některé prostředky před dalšími prostředky. Před nasazením databáze potřebujete například logický SQL Server. Tento vztah vytvoříte tak, že označíte jeden prostředek jako závislý na jiném prostředku. Použijte `dependsOn` element k definování explicitní závislosti. K definování implicitní závislosti použijte funkce **odkaz** nebo **list** .
 
-Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí definovat závislosti pro prostředky, které jsou nasazeny ve stejné šabloně.
+Azure Resource Manager vyhodnocuje závislosti mezi prostředky a nasadí je v jejich závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí definovat závislosti pro prostředky, které jsou nasazeny ve stejné šabloně.
 
 ## <a name="dependson"></a>dependsOn
 
-V rámci šablony umožňuje element dependsOn definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Jeho hodnota je pole JSON řetězců, z nichž každý je název nebo ID prostředku. Pole může obsahovat prostředky, které jsou [podmíněně nasazeny](conditional-resource-deployment.md). Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
+V rámci šablony Azure Resource Manager (šablona ARM) `dependsOn` umožňuje element definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Jeho hodnota je pole JavaScript Object Notation (JSON) řetězců, z nichž každý je název nebo ID prostředku. Pole může obsahovat prostředky, které jsou [podmíněně nasazeny](conditional-resource-deployment.md). Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
 Následující příklad ukazuje síťové rozhraní, které závisí na virtuální síti, skupině zabezpečení sítě a veřejné IP adrese. Úplnou šablonu najdete v tématu [Šablona pro rychlý Start pro virtuální počítač se systémem Linux](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json).
 
@@ -37,11 +37,11 @@ Následující příklad ukazuje síťové rozhraní, které závisí na virtuá
 }
 ```
 
-I když může být pro mapování vztahů mezi prostředky použit dependsOn, je důležité pochopit, proč to děláte. Například pro dokumentaci, jak jsou prostředky propojeny, dependsOn není správným přístupem. Po nasazení nemůžete zadat dotaz na prostředky, které byly definovány v elementu dependsOn. Nastavení zbytečných závislostí zpomaluje dobu nasazení, protože Správce prostředků nemůže tyto prostředky paralelně nasadit.
+I když může být pro `dependsOn` mapování vztahů mezi prostředky použit sklon, je důležité pochopit, proč to děláte. Například k dokumentaci, jak jsou prostředky propojeny, `dependsOn` není správným přístupem. Po nasazení nemůžete zadat dotaz na prostředky, které byly definovány v `dependsOn` elementu. Nastavení zbytečných závislostí zpomaluje dobu nasazení, protože Správce prostředků nemůže tyto prostředky paralelně nasadit.
 
 ## <a name="child-resources"></a>Podřízené prostředky
 
-Implicitní závislost nasazení není automaticky vytvořena mezi [podřízeným prostředkem](child-resource-name-type.md) a nadřazeným prostředkem. Pokud potřebujete nasadit podřízený prostředek za nadřazeným prostředkem, nastavte vlastnost dependsOn.
+Implicitní závislost nasazení není automaticky vytvořena mezi [podřízeným prostředkem](child-resource-name-type.md) a nadřazeným prostředkem. Pokud potřebujete nasadit podřízený prostředek za nadřazeným prostředkem, nastavte `dependsOn` vlastnost.
 
 Následující příklad ukazuje logický SQL Server a databázi. Všimněte si, že explicitní závislost je definovaná mezi databází a serverem, a to i v případě, že je databáze podřízená serveru.
 
@@ -85,13 +85,13 @@ Výrazy odkazu a seznamu implicitně deklaruje, že jeden prostředek závisí n
 
 Chcete-li vyhovět implicitní závislosti, přečtěte si prostředek podle názvu, ne podle ID prostředku. Pokud předáte ID prostředku do funkce reference nebo list, implicitní odkaz se nevytvoří.
 
-Obecný formát referenční funkce je:
+Obecný formát `reference` funkce je:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-Obecný formát funkce klíče listkey je:
+Obecný formát `listKeys` funkce je:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ Následující příklad ukazuje, jak nasadit více virtuálních počítačů. 
 }
 ```
 
-Následující příklad ukazuje, jak nasadit tři účty úložiště před nasazením virtuálního počítače. Všimněte si, že element Copy má název nastaven na `storagecopy` a element dependsOn pro virtuální počítač je také nastaven na hodnotu `storagecopy` .
+Následující příklad ukazuje, jak nasadit tři účty úložiště před nasazením virtuálního počítače. Všimněte si, že `copy` element je `name` nastaven na `storagecopy` a `dependsOn` element pro virtuální počítač je také nastaven na `storagecopy` .
 
 ```json
 {
@@ -213,10 +213,9 @@ Informace o vyhodnocení pořadí nasazení a řešení chyb závislostí najdet
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kurz najdete v tématu [kurz: vytváření Azure Resource Manager šablon se závislými prostředky](template-tutorial-create-templates-with-dependent-resources.md).
+* Kurz najdete v tématu [kurz: vytvoření šablon ARM se závislými prostředky](template-tutorial-create-templates-with-dependent-resources.md).
 * Microsoft Learn modul, který pokrývá závislosti prostředků, najdete v tématu [Správa složitých nasazení cloudu pomocí pokročilých funkcí šablon ARM](/learn/modules/manage-deployments-advanced-arm-template-features/).
-* Doporučení pro nastavení závislostí najdete v tématu [osvědčené postupy pro šablonu Azure Resource Manager](template-best-practices.md).
+* Doporučení pro nastavení závislostí najdete v článku [osvědčené postupy pro šablonu ARM](template-best-practices.md).
 * Další informace o závislostech při řešení potíží při nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
-* Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).
-
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon ARM](template-functions.md).

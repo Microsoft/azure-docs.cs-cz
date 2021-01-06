@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422531"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936783"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -53,7 +53,7 @@ V kořenovém adresáři projektu je k dispozici sdílený [`host.json`](functio
 
 Některé vazby vyžadují přítomnost `extensions.csproj` souboru. Rozšíření vazby, které vyžaduje [verze 2. x a novější verze](functions-versions.md) modulu runtime Functions, jsou v souboru definovány se `extensions.csproj` skutečnými soubory knihoven ve `bin` složce. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
-Ve funkcích aplikace PowerShell Functions můžete volitelně mít, `profile.ps1` která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít znovu spustit](#cold-start)* ). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
+Ve funkcích aplikace PowerShell Functions můžete volitelně mít, `profile.ps1` která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít znovu spustit](#cold-start)*). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definování skriptu PowerShellu jako funkce
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -388,7 +388,7 @@ V následující tabulce jsou uvedeny verze prostředí PowerShell, které jsou 
 
 | Verze funkcí | Verze prostředí PowerShell                               | Verze .NET  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
+| 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné funkce.
@@ -525,7 +525,7 @@ PowerShell Language Worker obvykle používá několik modulů. Tyto moduly jsou
 Aktuální seznam modulů je následující:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modul používaný pro práci s archivy, jako `.zip` je, `.nupkg` a další.
-* **ThreadJob** : implementace rozhraní API úlohy PowerShellu založené na vláknech.
+* **ThreadJob**: implementace rozhraní API úlohy PowerShellu založené na vláknech.
 
 Ve výchozím nastavení funkce používají nejnovější verzi těchto modulů. Pokud chcete použít konkrétní verzi modulu, vložte tuto specifickou verzi do `Modules` složky aplikace Function App.
 
@@ -649,11 +649,11 @@ Při práci s funkcemi PowerShellu si pamatujte na informace v následujících 
 
 ### <a name="cold-start"></a>Studený start
 
-Při vývoji Azure Functions v [modelu hostování bez serveru](functions-scale.md#consumption-plan)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
+Při vývoji Azure Functions v [modelu hostování bez serveru](consumption-plan.md)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Místo použití použít modul sady `Install-Module`
 
-Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install-Module` ve vašem skriptu. Místo toho použijte `Save-Module` před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](functions-scale.md#app-service-plan) nastaveného na hodnotu *Always On* nebo [Premium](functions-scale.md#premium-plan).
+Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install-Module` ve vašem skriptu. Místo toho použijte `Save-Module` před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](dedicated-plan.md) nastaveného na hodnotu *Always On* nebo [Premium](functions-premium-plan.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/09/2020
+ms.openlocfilehash: 1d2ba6dbbcc2b8674718912f00b1d1ec58e1c4c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922944"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936086"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -198,7 +198,7 @@ Pokud chcete povolit službu Azure AD OAuth pro vaši aplikaci logiky v Azure Po
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název zásady** | Ano | Název, který chcete použít pro zásady autorizace |
+   | **Název zásad** | Ano | Název, který chcete použít pro zásady autorizace |
    | **Žádosti** | Ano | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Hodnota deklarace identity je omezená na [maximální počet znaků](logic-apps-limits-and-config.md#authentication-limits). Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (ID JSON web token) <p><p>Seznam **deklarací** musí obsahovat minimálně deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
    |||
 
@@ -308,12 +308,13 @@ Pokud chcete do aplikace logiky přidat další [ověřovací protokoly](../acti
 
 Spolu se sdíleným přístupovým podpisem (SAS) můžete chtít konkrétně omezit klienty, kteří můžou zavolat aplikaci logiky. Pokud například spravujete koncový bod žádosti pomocí [Azure API Management](../api-management/api-management-key-concepts.md), můžete aplikaci logiky omezit tak, aby přijímala požadavky pouze z IP adresy pro [instanci služby API Management, kterou vytvoříte](../api-management/get-started-create-service-instance.md).
 
-> [!NOTE]
-> Bez ohledu na IP adresy, které zadáte, můžete pořád spustit aplikaci logiky, která má aktivační událost na základě požadavků, a to pomocí [Logic Apps REST API: triggery pracovního postupu – spustit](/rest/api/logic/workflowtriggers/run) požadavek nebo pomocí API Management. Tento scénář ale pořád vyžaduje [ověřování](../active-directory/develop/authentication-vs-authorization.md) proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
+Bez ohledu na IP adresy, které zadáte, můžete pořád spustit aplikaci logiky, která má aktivační událost na základě požadavků, a to pomocí [Logic Apps REST API: triggery pracovního postupu – spustit](/rest/api/logic/workflowtriggers/run) požadavek nebo pomocí API Management. Tento scénář ale pořád vyžaduje [ověřování](../active-directory/develop/authentication-vs-authorization.md) proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
 
 <a name="restrict-inbound-ip-portal"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Omezit rozsahy příchozích IP adres v Azure Portal
+
+Když použijete portál k omezení příchozích IP adres pro vaši aplikaci logiky, tato omezení budou mít vliv na triggery *i* akce bez ohledu na popis na portálu v části **povolené příchozí IP adresy**. Pokud chcete nastavit omezení pro triggery odděleně od akcí, použijte [ `accessControl` objekt v šabloně Azure Resource Manager vaší aplikace logiky](#restrict-inbound-ip-template) nebo v [Logic Apps REST API: pracovní postup – vytvořit nebo aktualizovat](/rest/api/logic/workflows/createorupdate).
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -927,9 +928,9 @@ Tato tabulka uvádí typy ověřování, které jsou k dispozici na triggerech a
 
 Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-api.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentication** | `type` | Ano | Basic | Typ ověřování, který se má použít |
+| **Authentication** | `type` | Ano | Základní | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Ano | <*uživatelské jméno*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
 | **Heslo** | `password` | Ano | <*zadáno*> | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
 ||||||
@@ -958,11 +959,11 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpraco
 
 Pokud je k dispozici možnost [certifikát klienta](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | **Certifikát klienta** <br>nebo <br>`ClientCertificate` | Typ ověřování, který se má použít. Certifikáty můžete spravovat pomocí [API Management Azure](../api-management/api-management-howto-mutual-certificates.md). <p></p>**Poznámka**: vlastní konektory nepodporují ověřování na základě certifikátů pro příchozí i odchozí volání. |
 | **PFX** | `pfx` | Ano | <*Encoded – obsah-souboru PFX*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. převeďte obsah certifikátu pomocí `ToBase64String()` funkce a uložte tento obsah do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **Heslo** | `password`| Ne | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
+| **Heslo** | `password`| No | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
 |||||
 
 Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpracování a zabezpečení citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Tato ukázka definice akce HTTP Určuje ověřování `type` jako `ClientCertificate` a používá [funkci Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) k získání hodnot parametrů:
@@ -997,10 +998,10 @@ Další informace o zabezpečení služeb pomocí ověřování klientského cer
 
 Na triggerech žádosti můžete pomocí [Azure Active Directory otevřít ověřování (Azure AD OAuth)](../active-directory/develop/index.yml)ověřit příchozí volání po [nastavení zásad autorizace Azure AD](#enable-oauth) pro vaši aplikaci logiky. Pro všechny ostatní triggery a akce, které poskytují typ ověřování **služby Active Directory OAuth** pro výběr, zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
-| **Autorita** | `authority` | Ne | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
+| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
 | **Tenant** | `tenant` | Ano | <*ID tenanta*> | ID tenanta pro tenanta Azure AD |
 | **Cílová skupina** | `audience` | Ano | <*prostředek k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
 | **ID klienta** | `clientId` | Ano | <*ID klienta*> | ID klienta pro aplikaci požadující autorizaci |
@@ -1051,7 +1052,7 @@ Authorization: OAuth realm="Photos",
 
 V aktivační události nebo akci, která podporuje nezpracované ověřování, zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | Žádný | Typ ověřování, který se má použít |
 | **Hodnota** | `value` | Ano | <*autorizace – hlavička-hodnota*> | Hodnota hlavičky autorizace, která se má použít pro ověřování |
@@ -1086,7 +1087,7 @@ Pokud je možnost [spravovaná identita](../active-directory/managed-identities-
 
 1. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
 
-   | Property – vlastnost (Designer) | Property (JSON) | Požadováno | Hodnota | Popis |
+   | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|
    | **Authentication** | `type` | Ano | **Spravovaná identita** <br>nebo <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
    | **Spravovaná identita** | `identity` | Ano | * **Spravovaná identita přiřazená systémem** <br>nebo <br>`SystemAssigned` <p><p>* <*uživatelsky přiřazené-identity-Name*> | Spravovaná identita, která se má použít |
@@ -1125,7 +1126,7 @@ Můžete použít Azure Logic Apps v [Azure Government](../azure-government/docu
 
 * Chcete-li spustit vlastní kód nebo provést transformaci XML, [vytvořte a zavolejte funkci Azure Functions](../logic-apps/logic-apps-azure-functions.md)namísto použití [funkce vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md) nebo poskytněte [sestavení pro použití jako mapy](../logic-apps/logic-apps-enterprise-integration-maps.md)v uvedeném pořadí. Také nastavte hostující prostředí pro vaši aplikaci Function App tak, aby vyhovovalo vašim požadavkům na izolaci.
 
-  Například pro splnění požadavků na úrovni 5 můžete vytvořit aplikaci Function App s [plánem App Service](../azure-functions/functions-scale.md#app-service-plan) s využitím [ **izolované** cenové úrovně](../app-service/overview-hosting-plans.md) spolu s [App Service Environment (pomocným mechanismem)](../app-service/environment/intro.md) , který používá také **izolovanou** cenovou úroveň. V tomto prostředí fungují aplikace Function App na vyhrazených virtuálních počítačích Azure a vyhrazených virtuálních sítích Azure, které zajišťují izolaci sítě nad výpočetní izolací vašich aplikací a maximum možností škálování na více instancí. Další informace najdete v tématu [pokyny k izolaci Azure Government úrovně dopadu 5 – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
+  Například pro splnění požadavků na úrovni 5 můžete vytvořit aplikaci Function App s [plánem App Service](../azure-functions/dedicated-plan.md) s využitím [ **izolované** cenové úrovně](../app-service/overview-hosting-plans.md) spolu s [App Service Environment (pomocným mechanismem)](../app-service/environment/intro.md) , který používá také **izolovanou** cenovou úroveň. V tomto prostředí fungují aplikace Function App na vyhrazených virtuálních počítačích Azure a vyhrazených virtuálních sítích Azure, které zajišťují izolaci sítě nad výpočetní izolací vašich aplikací a maximum možností škálování na více instancí. Další informace najdete v tématu [pokyny k izolaci Azure Government úrovně dopadu 5 – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
 
   Další informace najdete v těchto tématech:<p>
 

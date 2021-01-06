@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020980"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936855"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -21,9 +21,9 @@ Modely hostování mají k dispozici různé úrovně izolace sítě. Výběr sp
 Aplikace Function App můžete hostovat několika způsoby:
 
 * Můžete si vybrat z možností plánu, které běží na víceklientské infrastruktuře s různými úrovněmi připojení a možností škálování virtuální sítě:
-    * [Plán spotřeby](functions-scale.md#consumption-plan) se dynamicky škáluje v reakci na načtení a nabízí minimální možnosti izolace sítě.
-    * [Plán Premium](functions-scale.md#premium-plan) se také dynamicky škáluje a nabízí komplexnější izolaci sítě.
-    * Plán Azure [App Service](functions-scale.md#app-service-plan) pracuje s pevnou škálou a nabízí izolaci sítě podobnou plánu Premium.
+    * [Plán spotřeby](consumption-plan.md) se dynamicky škáluje v reakci na načtení a nabízí minimální možnosti izolace sítě.
+    * [Plán Premium](functions-premium-plan.md) se také dynamicky škáluje a nabízí komplexnější izolaci sítě.
+    * Plán Azure [App Service](dedicated-plan.md) pracuje s pevnou škálou a nabízí izolaci sítě podobnou plánu Premium.
 * Funkce můžete spouštět v [App Service Environment](../app-service/environment/intro.md). Tato metoda nasadí vaši funkci do vaší virtuální sítě a nabízí kompletní řízení a izolaci sítě.
 
 ## <a name="matrix-of-networking-features"></a>Matice síťových funkcí
@@ -34,7 +34,7 @@ Aplikace Function App můžete hostovat několika způsoby:
 
 Pomocí omezení přístupu můžete definovat seznam IP adres uspořádaných podle priority, které mají povolený nebo odepřený přístup k vaší aplikaci. Seznam může zahrnovat IPv4 a IPv6 adresy nebo konkrétní podsítě virtuální sítě pomocí [koncových bodů služby](#use-service-endpoints). Pokud existuje aspoň jedna položka, na konci seznamu už existuje implicitní "Odepřít vše". Omezení protokolu IP fungují se všemi možnostmi hostování funkcí.
 
-Omezení přístupu jsou k dispozici v rámci [prémií](functions-premium-plan.md), [spotřeby](functions-scale.md#consumption-plan)a [App Service](functions-scale.md#app-service-plan).
+Omezení přístupu jsou k dispozici v rámci [prémií](functions-premium-plan.md), [spotřeby](consumption-plan.md)a [App Service](dedicated-plan.md).
 
 > [!NOTE]
 > Se síťovými omezeními se dá nasadit jenom z vaší virtuální sítě, nebo když IP adresu počítače, který používáte, přistupujete k Azure Portal v seznamu bezpečných příjemců. Tuto funkci však stále můžete spravovat pomocí portálu.
@@ -128,7 +128,7 @@ V současné době můžete v rámci virtuální sítě použít funkce triggeru
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration** části  >  **nastavení modulu runtime konfigurační funkce**.
+Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v části  >  **nastavení modulu runtime konfigurační funkce**.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -143,7 +143,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Aktivační události virtuální sítě se podporují ve verzi 2. x a novějších modulech runtime Functions. Jsou podporovány následující typy triggerů bez protokolu HTTP.
 
-| Rozšíření | Minimální verze |
+| Linka | Minimální verze |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 nebo vyšší |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 nebo vyšší|

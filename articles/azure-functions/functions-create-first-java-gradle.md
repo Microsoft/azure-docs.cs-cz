@@ -6,16 +6,16 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020428"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934845"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
-V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http. 
+V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](consumption-plan.md) a spustí se požadavkem http. 
 
 > [!NOTE]
 > Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./create-first-function-cli-java.md), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./create-first-function-vs-code-java.md).

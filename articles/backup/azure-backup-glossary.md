@@ -3,12 +3,12 @@ title: Glosář Azure Backup
 description: Tento článek popisuje výrazy užitečné pro použití s Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733320"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935066"
 ---
 # <a name="azure-backup-glossary"></a>Glosář Azure Backup
 
@@ -172,7 +172,7 @@ Přírůstkové zálohy ukládají pouze bloky, které se od předchozí zálohy
 
 ## <a name="instant-restore"></a>Okamžité obnovení
 
-Rychlé obnovení zahrnuje obnovení počítače přímo z jeho záložního snímku, nikoli z kopie snímku v trezoru. Rychlé obnovení jsou rychlejší než obnovení z trezoru. Počet dostupných bodů okamžitého obnovení závisí na době uchování nastavené pro snímky.
+(Termín specifický pro úlohy) Rychlé obnovení zahrnuje obnovení počítače přímo z jeho záložního snímku, nikoli z kopie snímku v trezoru. Rychlé obnovení jsou rychlejší než obnovení z trezoru. Počet dostupných bodů okamžitého obnovení závisí na době uchování nastavené pro snímky. Aktuálně platí jenom pro zálohování virtuálních počítačů Azure.
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ Obnovení provedené z bodu obnovení do zdrojového umístění, ze kterého by
 
 K šifrování a dešifrování dat se používá přístupové heslo při zálohování nebo obnovení místního nebo místního počítače pomocí agenta MARS do systému nebo z Azure.
 
-## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
-
-Obnovení položky do jejího stavu v určitém bodě v čase (PIT).
-
 ## <a name="private-endpoint"></a>Privátní koncový bod
 
 Přečtěte si [dokumentaci k privátnímu koncovému bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 
 ## <a name="protected-instance"></a>Chráněná instance
 
-Chráněná instance odkazuje na počítač, fyzický nebo virtuální server, který používáte ke konfiguraci zálohování na Azure.  Z **hlediska fakturace** je počet chráněných instancí pro počítač funkcí jeho velikosti front-endu. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/backup/).
+Chráněná instance odkazuje na počítač, fyzický nebo virtuální server, který používáte ke konfiguraci zálohování na Azure.  Z **hlediska fakturace** je počet chráněných instancí pro počítač funkcí jeho velikosti front-endu. Jedna instance zálohy (například virtuální počítač zálohovaný do Azure) může odpovídat několika chráněným instancím v závislosti na velikosti front-endu. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (řízení přístupu na základě role)
 
 Informace najdete v [dokumentaci RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-## <a name="recovery-point-restore-point-retention-point"></a>Bod obnovení/bod obnovení/bod uchování
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Bod obnovení/bod obnovení/bod uchování/v čase (PECKY)
 
 Kopie původních zálohovaných dat. Bod uchovávání informací je přidružený k časovému razítku, takže ho můžete použít k obnovení položky do určitého bodu v čase.
 
@@ -264,11 +260,11 @@ Uživatelsky definované pravidlo, které určuje, jak dlouho se mají uchováva
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (cíl bodu obnovení)
 
-RPO označuje maximální ztrátu dat, která je přijatelná ve scénáři ztráty dat. Tato služba je určena četností zálohování.
+RPO označuje maximální ztrátu dat, která je možná ve scénáři ztráty dat. Tato služba je určena četností zálohování.
 
 ## <a name="rto-recovery-time-objective"></a>RTO (cíl doby obnovení)
 
-RTO označuje maximální přijatelnou dobu, během které mohou být data obnovena do posledního dostupného bodu v čase po skončení ztráty dat.
+RTO označuje maximální možnou dobu, během které mohou být data obnovena k poslednímu dostupnému bodu v čase po ztrátě dat.
 
 ## <a name="scheduled-backup"></a>Naplánované zálohování
 
@@ -284,7 +280,7 @@ Obnovitelné odstranění je funkce, která pomáhá chránit před náhodným o
 
 ## <a name="snapshot"></a>Snímek
 
-Snímek je plná kopie virtuálního pevného disku jen pro čtení (VHD). [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+Snímek je úplná kopie virtuálního pevného disku (VHD), která je jen pro čtení, nebo sdílená složka Azure. Další informace o [snímcích snímků disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) a [snímcích souborů](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
 ## <a name="storage-account"></a>Účet úložiště
 
@@ -314,7 +310,7 @@ Entita úložiště v Azure, která slouží k zálohování dat. Je to také je
 
 ## <a name="vault-credentials"></a>Přihlašovací údaje trezoru
 
-Soubor s přihlašovacími údaji trezoru je certifikát vygenerovaný portálem pro každý trezor. Používá se k registraci serveru do trezoru. [Přečtěte si další informace](backup-azure-dpm-introduction.md).
+Soubor s přihlašovacími údaji trezoru je certifikát vygenerovaný portálem pro každý trezor. Tento postup se používá při registraci místního serveru do trezoru. [Přečtěte si další informace](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>Virtuální síť (Virtual Network)
 

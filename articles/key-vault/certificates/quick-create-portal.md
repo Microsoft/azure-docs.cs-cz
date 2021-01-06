@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91281045"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935134"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí Azure Portal
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte Trezor klíčů a pak ho použijete k uložení certifikátu. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -37,7 +37,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
     - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor**. 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
 6. Po zadání výše uvedených informací vyberte **Vytvořit**.
@@ -61,7 +61,7 @@ Pokud chcete do trezoru přidat certifikát, stačí provést několik dalších
     - **Metoda vytvoření certifikátu**: generovat.
     - **Název certifikátu**: ExampleCertificate.
     - **Předmět**: CN = ExampleDomain
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Create** (Vytvořit).
+    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření certifikátu, můžete na něj kliknout na seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 
@@ -88,4 +88,4 @@ V tomto rychlém startu jste vytvořili Key Vault a v něm jste uložili certifi
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [Přehled zabezpečení Key Vault](../general/security-overview.md)

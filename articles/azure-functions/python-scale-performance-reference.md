@@ -4,19 +4,19 @@ description: Naučte se vyvíjet Azure Functions aplikace pomocí Pythonu, kter�
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899395"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935865"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Zvyšte výkon propustnosti aplikací v Pythonu v Azure Functions
 
 Při vývoji pro Azure Functions s využitím Pythonu potřebujete pochopit, jak vaše funkce fungují a jak výkon ovlivňuje způsob, jakým se vaše aplikace Functions mění. Potřeba je důležitější při navrhování vysoce výkonných aplikací. Hlavní faktory, které je potřeba vzít v úvahu při navrhování, psaní a konfiguraci aplikací Functions, jsou horizontální škálování a výkon propustnosti.
 
 ## <a name="horizontal-scaling"></a>Horizontální škálování
-Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Azure Functions používá předdefinované prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Tyto prahové hodnoty se nedají uživatelsky konfigurovat. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Azure Functions používá předdefinované prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Tyto prahové hodnoty se nedají uživatelsky konfigurovat. Další informace najdete v tématu [škálování na základě událostí v Azure Functions](event-driven-scaling.md).
 
 ## <a name="improving-throughput-performance"></a>Zlepšení výkonu propustnosti
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 19d38bb5933a6acf82c61f0a739bf2adb7f34eaf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637145"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937259"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
 
@@ -97,7 +97,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute** , který definuje chování triggeru.
+*HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute**, který definuje chování triggeru.
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -129,7 +129,7 @@ Návratový objekt je [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.action
     
     V předchozím příkladu nahraďte `<STORAGE_NAME>` názvem účtu, který jste použili v předchozím kroku, a nahraďte `<APP_NAME>` globálně jedinečným názvem vhodným pro vás. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. 
     
-    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](functions-scale.md#consumption-plan), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
+    Tento příkaz vytvoří aplikaci Function App spuštěnou v zadaném jazykovém modulu runtime v rámci [plánu Azure Functions spotřeby](consumption-plan.md), který je zdarma pro množství využití, které se vám bude účtovat. Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

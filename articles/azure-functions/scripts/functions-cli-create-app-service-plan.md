@@ -5,12 +5,12 @@ ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 67efb5cc146b10b7e8194b7de4f6e0f0d6c08de9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 020bd064628554703bb375c06c72e68d4536a2a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565405"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934437"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Vytvoření aplikace funkcí v plánu služby App Service
 
@@ -24,7 +24,7 @@ Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí, což je kont
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří aplikaci funkcí Azure s použitím vyhrazeného [plánu služby App Service](../functions-scale.md#app-service-plan).
+Tento skript vytvoří aplikaci funkcí Azure s použitím vyhrazeného [plánu služby App Service](../dedicated-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Create an Azure Function on an App Service plan")]
 

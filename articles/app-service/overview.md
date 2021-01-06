@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007089"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936205"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
@@ -45,6 +45,12 @@ App Service může také hostovat webové aplikace nativně v systému Linux pro
 ### <a name="built-in-languages-and-frameworks"></a>Předdefinované jazyky a architektury
 
 App Service v systému Linux podporuje několik vestavěných imagí specifických pro jazyk. Stačí nasadit kód. Mezi podporované jazyky patří: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core a Ruby. Spusťte [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) , chcete-li zobrazit nejnovější jazyky a podporované verze. Pokud modul runtime, který vaše aplikace potřebuje, není podporovaný ve vestavěných bitových kopiích, můžete ho nasadit pomocí vlastního kontejneru.
+
+Zastaralé moduly runtime se pravidelně odstraňují z Web Apps v portálu pro vytváření a konfiguraci na portálu. Tyto moduly runtime jsou skryté na portálu, pokud jsou nepoužívané organizací údržby nebo mají závažné ohrožení zabezpečení. Tyto možnosti jsou skryté pro zákazníky na nejnovější moduly runtime, kde budou úspěšné. 
+
+Pokud je zastaralý modul runtime na portálu skrytý, všechny existující weby, které tuto verzi používají, budou i nadále běžet. Pokud je modul runtime úplně odebraný z App Serviceé platformy, vlastníkům předplatného Azure se před odebráním pošle e-mailové oznámení.
+
+Pokud potřebujete vytvořit jinou webovou aplikaci se zastaralou verzí modulu runtime, která se už na portálu nezobrazuje, přečtěte si téma Průvodce konfigurací jazyka, kde najdete pokyny, jak získat verzi vašeho webu pro modul runtime. Pomocí rozhraní příkazového řádku Azure můžete vytvořit další lokalitu se stejným modulem runtime. Alternativně můžete pomocí tlačítka **Exportovat šablonu** v okně webové aplikace na portálu Exportovat šablonu ARM webu. Tuto šablonu můžete znovu použít k nasazení nové lokality se stejným modulem runtime a konfigurací.
 
 ### <a name="limitations"></a>Omezení
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287710"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934556"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Přiřazení zásady přístupu Key Vault pomocí Azure Portal
 
@@ -29,11 +29,11 @@ Další informace o vytváření skupin v Azure Active Directory prostřednictv�
 
 1.  V [Azure Portal](https://portal.azure.com)přejděte na prostředek Key Vault. 
 
-1.  V části **Nastavení** vyberte **zásady přístupu** a pak vyberte **Přidat zásady přístupu** :
+1.  V části **Nastavení** vyberte **zásady přístupu** a pak vyberte **Přidat zásady přístupu**:
 
     ![Vyberte zásady přístupu, vyberte přidat přiřazení role.](../media/authentication/assign-policy-portal-01.png)
 
-1.  Vyberte požadovaná oprávnění v části **oprávnění certifikátu** , **oprávnění klíče** a **tajná oprávnění**. Můžete také vybrat šablonu obsahující společné kombinace oprávnění:
+1.  Vyberte požadovaná oprávnění v části **oprávnění certifikátu**, **oprávnění klíče** a **tajná oprávnění**. Můžete také vybrat šablonu obsahující společné kombinace oprávnění:
 
     ![Určení oprávnění zásad přístupu](../media/authentication/assign-policy-portal-02.png)
 
@@ -47,14 +47,13 @@ Další informace o vytváření skupin v Azure Active Directory prostřednictv�
 
     ![Přidání zásad přístupu k přiřazenému objektu služby](../media/authentication/assign-policy-portal-04.png)
 
-1. Zpátky na stránce **zásady přístupu** ověřte, že zásady přístupu jsou uvedené v části **aktuální zásady přístupu** , a pak vyberte **Uložit**. Zásady přístupu se nepoužijí, dokud je neuložíte.
+1. Zpátky na stránce **zásady přístupu** ověřte, že zásady přístupu jsou uvedené v části **aktuální zásady přístupu**, a pak vyberte **Uložit**. Zásady přístupu se nepoužijí, dokud je neuložíte.
 
     ![Ukládají se změny zásad přístupu.](../media/authentication/assign-policy-portal-05.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Key Vault zabezpečení: Správa identit a přístupu](overview-security.md#identity-and-access-management)
+- [Azure Key Vault zabezpečení: Správa identit a přístupu](security-overview.md#identity-management)
 - [Zabezpečte svůj Trezor klíčů](secure-your-key-vault.md).
 - [Azure Key Vault příručka pro vývojáře](developers-guide.md)
-- [Azure Key Vault osvědčené postupy](best-practices.md)
