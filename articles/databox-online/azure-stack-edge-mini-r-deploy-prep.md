@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631240"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913783"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Kurz: Příprava na nasazení Azure Stack hraniční Mini R
 
-Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stack hraničního zařízení s hraničním konektorem R. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku.
+Tento kurz je první v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stackho Miniho zařízení R. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku.
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
@@ -36,7 +36,7 @@ Pokud chcete nasadit Azure Stack hraničního Mini R, přečtěte si následují
 | --- | --- |
 | **Součást** |Tyto kroky je potřeba provést v přípravě na nadcházející nasazení. |
 | **[Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist)** |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
-| **[Požadavky nasazení](#prerequisites)** |Splnění požadavků nasazení kvalifikuje prostředí jako připravené na nasazení. |
+| **[Požadavky nasazení](#prerequisites)** |Tyto požadavky ověřují, zda je prostředí připraveno k nasazení. |
 |  | |
 |**Kurzy k nasazení** |Tyto kurzy se vyžadují k nasazení Azure Stackch Mini R zařízení v produkčním prostředí. |
 |**[1. Příprava Azure Portal pro zařízení](azure-stack-edge-mini-r-deploy-prep.md)** |Před instalací fyzického zařízení vytvořte a nakonfigurujte Azure Stack hraničního prostředku. |
@@ -46,7 +46,7 @@ Pokud chcete nasadit Azure Stack hraničního Mini R, přečtěte si následují
 |**[5. Konfigurace nastavení zařízení](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Přiřaďte název zařízení a doménu DNS, nakonfigurujte server aktualizací a čas zařízení. |
 |**[6. Konfigurace nastavení zabezpečení](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md)** |Konfigurace certifikátů pomocí vlastních certifikátů, nastavení sítě VPN a konfigurace místního nastavení pro vaše zařízení.   |
 |**[7. aktivace zařízení](azure-stack-edge-mini-r-deploy-activate.md)** |K aktivaci zařízení použijte aktivační klíč ze služby. Zařízení je připravené nastavovat sdílené složky SMB nebo NFS nebo je připojit prostřednictvím REST. |
-|**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Tím se také vytvoří cluster Kubernetes. |
+|**[8. konfigurace COMPUTE](azure-stack-edge-gpu-deploy-configure-compute.md)** |Nakonfigurujte na svém zařízení výpočetní roli. Vytvoří se také cluster Kubernetes. |
 
 Teď můžete začít nastavovat Azure Portal.
 
@@ -105,7 +105,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
+    |Předplatné    |Předplatné se automaticky vyplní na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
 
@@ -113,7 +113,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
+    |Název   | Popisný název pro identifikaci prostředku.<br>Název má 2 až 50 znaků včetně písmen, číslic a spojovníků.<br> Název musí začínat a končit na písmeno nebo číslici.        |
     |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
     ![Vytvoření prostředku 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
@@ -121,11 +121,11 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
 8. Vyberte **Další: adresa příjemce**.
 
-    - Pokud už máte nějaké zařízení, vyberte pole se seznamem pro **zařízení Azure Stack Edge pro R**.
+    - Pokud už máte nějaké zařízení, vyberte pole se seznamem, u kterého **už zařízení máte**.
 
         ![Vytvoření prostředku 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu pro odeslání zařízení a kontaktní údaje.
+    - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu, kam se má zařízení expedovat, a kontaktní údaje.
 
         ![Vytvoření prostředku 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -133,9 +133,9 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
 10. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití** a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
 
-    ![Vytvoření prostředku 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png) 
+    ![Vytvoření prostředku 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
-    Při vytváření prostředku se také zobrazí upozornění, že je povolená Identita spravované služby (MSI), která umožňuje ověření pro cloudové služby. Tato identita existuje, pokud prostředek existuje.
+    Také se vám upozorní, že při vytváření prostředků je povolená služba Identita spravované služby (MSI), která umožňuje ověření pro cloudové služby. Tato identita existuje, pokud prostředek existuje.
 
 8. Vyberte **Vytvořit**.
 
@@ -157,9 +157,9 @@ Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivačn�
 
     ![Vybrat nastavení zařízení](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. Na dlaždici **aktivovat** zadejte název Azure Key Vault nebo přijměte výchozí název. Název trezoru klíčů může být dlouhý 3 až 24 znaků. 
+2. Na dlaždici **aktivovat** zadejte název pro Azure Key Vault nebo přijměte výchozí název. Název trezoru klíčů může být dlouhý 3 až 24 znaků. 
 
-    Pro každý Azure Stack hraničního prostředku, který se aktivuje s vaším zařízením, se vytvoří Trezor klíčů. Trezor klíčů umožňuje ukládat a přistupovat k tajným klíčům, například klíč integrity kanálu (CIK) pro službu, je uložený v trezoru klíčů. 
+    Pro každý Azure Stack hraničního prostředku, který se aktivuje s vaším zařízením, se vytvoří Trezor klíčů. Trezor klíčů umožňuje ukládání tajných klíčů a přístup k nim. Například klíč integrity kanálu (CIK) pro službu je uložený v trezoru klíčů.
 
     Jakmile zadáte název trezoru klíčů, vyberte **vygenerovat klíč** a vytvořte aktivační klíč. 
 

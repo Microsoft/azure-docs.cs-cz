@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352537"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915619"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -29,7 +29,7 @@ Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke cl
 
 Základní nástroje pro vyrovnávání zatížení používané ve výchozí architektuře virtuální sítě automaticky poskytují veřejné NAT (překlad síťových adres) pro přístup k požadovaným odchozím závislostem, jako je například HDInsight RP. Pokud chcete omezit odchozí připojení k veřejnému Internetu, můžete [nakonfigurovat bránu firewall](./hdinsight-restrict-outbound-traffic.md), ale nejedná se o požadavek.
 
-Konfigurace `resourceProviderConnection` pro odchozí připojení taky umožňuje přístup k prostředkům specifickým pro cluster, jako je Azure Data Lake Storage Gen2 nebo externí metaúložiště, pomocí privátních koncových bodů. Používání privátních koncových bodů pro tyto prostředky není mandetory, ale pokud máte v úmyslu mít pro tyto prostředky privátní koncové body, musíte nakonfigurovat privátní koncové body a položky DNS, `before` které vytvoříte cluster HDInsight. V době vytváření clusteru doporučujeme vytvořit a poskytnout všechny externí databáze SQL, které potřebujete, jako je Apache Ranger, Ambari, Oozie a podregistr metaúložiště. Požadavek znamená, že všechny tyto prostředky musí být přístupné zevnitř podsítě clusteru, a to buď prostřednictvím vlastního privátního koncového bodu, nebo jinak.
+Konfigurace `resourceProviderConnection` pro odchozí připojení taky umožňuje přístup k prostředkům specifickým pro cluster, jako je Azure Data Lake Storage Gen2 nebo externí metaúložiště, pomocí privátních koncových bodů. Používání privátních koncových bodů pro tyto prostředky není povinné, ale pokud máte v úmyslu mít pro tyto prostředky privátní koncové body, musíte nakonfigurovat privátní koncové body a položky DNS, `before` které vytvoříte cluster HDInsight. V době vytváření clusteru doporučujeme vytvořit a poskytnout všechny externí databáze SQL, které potřebujete, jako je Apache Ranger, Ambari, Oozie a podregistr metaúložiště. Požadavek znamená, že všechny tyto prostředky musí být přístupné zevnitř podsítě clusteru, a to buď prostřednictvím vlastního privátního koncového bodu, nebo jinak.
 
 Používání privátních koncových bodů pro Azure Key Vault se nepodporuje. Pokud používáte Azure Key Vault pro šifrování CMK v klidovém prostředí, musí být koncový bod Azure Key Vault dostupný z podsítě HDInsight bez privátního koncového bodu.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 45a33981c51f5a2590843fafc1e54f54d2e567cf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d8893daaf73a15cdc0baf8eeb339e794f6f1da64
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498468"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913443"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Linux Virtual Machines
 
@@ -602,7 +602,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 * [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Protokolování analýz služby Azure Storage](../../storage/common/storage-analytics-logging.md)
+* [Protokolování Analýzy úložiště Azure](../../storage/common/storage-analytics-logging.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -900,7 +900,7 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 * [Informace o vytváření šablon ARM](../windows/ps-template.md)
 
-* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Jak nahrát vlastní virtuální pevný disk virtuálního počítače do Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)
 
 **Monitorování služby Azure Security Center:** Ano
 

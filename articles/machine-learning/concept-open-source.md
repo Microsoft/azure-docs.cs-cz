@@ -1,7 +1,7 @@
 ---
 title: Open Source Integration pro Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se používat Open Source rozhraní pro strojové učení Pythonu ke školení, nasazení a správě komplexních řešení strojového učení v Azure Machine Learning.
+description: Naučte se používat Open Source rozhraní pro strojové učení Pythonu k výuce, nasazování a správě komplexních řešení strojového učení v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675837"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914106"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Integrace open source s Azure Machine Learning projekty
 
@@ -52,7 +52,7 @@ Mezi open source architektury hloubkového učení a návody patří:
 
 Posílení učení je umělá technika, která při používání akcí, států a využívání vede k navýšení analytických agentů. díky posílení studijních agentů se naučíte, jak provést sadu předdefinovaných akcí, které maximalizují určité ceny na základě aktuálního stavu jejich prostředí. 
 
-Projekt [Ray RLLib](https://github.com/ray-project/ray) má nastavené funkce, které umožňují vysokou škálovatelnost během procesu školení. Iterativní proces je náročný na čas i prostředky, protože agenti učení pro posílení se snaží zjistit optimální způsob dosažení úkolu.  Ray RLLib také nativně podporuje architektury pro hloubkové učení, jako je TensorFlow a PyTorch.  
+Projekt [Ray RLLib](https://github.com/ray-project/ray) obsahuje sadu funkcí, které umožňují vysokou škálovatelnost během procesu školení. Iterativní proces je náročný na čas i prostředky, protože agenti učení pro posílení se snaží zjistit optimální způsob dosažení úkolu.  Ray RLLib také nativně podporuje architektury pro hloubkové učení, jako je TensorFlow a PyTorch.  
 
 Pokud se chcete dozvědět, jak používat Ray RLLib s Azure Machine Learning, přečtěte si téma [Postup výuky výukového modelu](how-to-use-reinforcement-learning.md).
 
@@ -101,4 +101,4 @@ Machine Learning operací (MLOps), které se běžně domnívaly jako DevOps pro
 
 Díky postupům DevOps, jako je kontinuální integrace (CI) a průběžné nasazování (CD), můžete automatizovat kompletní životní cyklus strojového učení a zachytit data zásad správného řízení. Můžete definovat svůj [kanál CI/CD Machine Learningu v akcích GitHubu](./how-to-github-actions-machine-learning.md) pro spouštění Azure Machine Learningch úloh školení a nasazení. 
 
-Zachytávání závislostí softwaru, metrik, metadat, dat a modelů verzí je důležitou součástí procesu MLOps, aby bylo možné vytvářet transparentní, reprodukovatelnější a auditované kanály. Pro tuto úlohu můžete [použít MLFlow v Azure Machine Learning](how-to-use-mlflow.md) a také při [výuce modelů strojového učení v Azure Databricks](./how-to-use-mlflow-azure-databricks.md).
+Zachytávání závislostí softwaru, metrik, metadat, dat a modelů verzí je důležitou součástí procesu MLOps, aby bylo možné vytvářet transparentní, reprodukovatelnější a auditované kanály. Pro tuto úlohu můžete [použít MLFlow v Azure Machine Learning](how-to-use-mlflow.md) a také při [výuce modelů strojového učení v Azure Databricks](./how-to-use-mlflow-azure-databricks.md). [Modely MLflow můžete nasadit také jako webovou službu Azure](how-to-deploy-mlflow-models.md). 

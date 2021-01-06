@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756105"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916367"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -72,7 +72,7 @@ Rekapitulace se vaše zabezpečené skóre zobrazuje v následujících umístě
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Získat zabezpečené skóre z REST API
 
-K vašemu skóre můžete přistupovat prostřednictvím rozhraní API pro zabezpečené skóre (aktuálně ve verzi Preview). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít [rozhraní API pro zabezpečení skóre](/rest/api/securitycenter/securescores) k získání skóre pro konkrétní předplatné. Kromě toho můžete použít [rozhraní API ovládacích prvků bezpečného řízení skóre](/rest/api/securitycenter/securescorecontrols) k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
+K vašemu skóre můžete přistupovat prostřednictvím rozhraní API pro zabezpečené skóre. Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít [rozhraní API pro zabezpečení skóre](/rest/api/securitycenter/securescores) k získání skóre pro konkrétní předplatné. Kromě toho můžete použít [rozhraní API ovládacích prvků bezpečného řízení skóre](/rest/api/securitycenter/securescorecontrols) k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
 
 ![Načtení jediného zabezpečeného skóre přes rozhraní API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -152,7 +152,7 @@ Maximální skóre tohoto ovládacího prvku, použít aktualizace systému, je 
 
 ### <a name="calculations---understanding-your-score"></a>Výpočty – princip skóre
 
-|Metric|Vzorec a příklad|
+|Metrika|Vzorec a příklad|
 |-|-|
 |**Aktuální skóre ovládacího prvku zabezpečení**|<br>![Rovnice pro výpočet skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![Popisy tlačítek znázorňující hodnoty použité při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Vynásobení tohoto počtu zdravých prostředků (4) má za následek aktuální skóre:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Bezpečnostní skóre**<br>Jedno předplatné|<br>![Rovnice pro výpočet zabezpečeného skóre předplatného](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Zabezpečené skóre jednotného předplatného se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>V tomto příkladu je k dispozici jedno předplatné se všemi dostupnými ovládacími prvky zabezpečení (potenciální maximální skóre 60 bodů). Skóre zobrazuje 28 bodů z možného 60 a zbývající 32 body se projeví v hodnotách "potenciálního nárůstu" v rámci ovládacích prvků zabezpečení.<br>![Seznam ovládacích prvků a možné zvýšení skóre](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

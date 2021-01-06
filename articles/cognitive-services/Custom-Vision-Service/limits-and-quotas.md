@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316575"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913477"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -29,7 +29,7 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |Školení imagí na projekt |5 000|100 000|
 |Předpovědi za měsíc|10 000 |Unlimited|
 |Značky/projekt|50|500|
-|Iterací |10|10|
+|Iterace |10|10|
 |Minimální počet označených obrázků na značku, klasifikace (maximálně 50 + doporučeno) |5|5|
 |Minimální počet označených obrázků na značku, detekce objektu (maximálně 50 + doporučeno)|15|15|
 |Jak dlouho jsou obrázky předpovědi uloženy|30 dní|30 dní|
@@ -45,6 +45,3 @@ Pro projekty S0 se očekává, že počet školicích obrázků na projekt a zna
 |Maximální počet oblastí na školicí obrázek detekce objektu|300|300|
 |Maximální počet značek na obrázek klasifikace|100|100|
 
-> [!NOTE]
-> Obrázky menší než 256 pixelů budou přijímány, ale budou zvětšeny.
-> Poměr stran obrázku by neměl být větší než 25.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881085"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914979"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -133,7 +133,10 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     * Další počítač v doméně obsahující kořenový certifikát  
 
 3. Exportujte certifikát kořenové certifikační autority.  
-    Certifikáty kořenové certifikační autority je možné exportovat z osobních nebo důvěryhodných kořenových certifikačních autorit.   
+    Certifikáty kořenové certifikační autority je možné exportovat z adresáře osobních nebo důvěryhodných kořenových certifikačních autorit, jak je znázorněno v následujících příkladech:   
+    ![snímek obrazovky, který zobrazuje osobní certifikáty](../media/azure-netapp-files/personal-certificates.png)   
+    ![snímek obrazovky se zobrazením důvěryhodných kořenových certifikačních autorit](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     Zajistěte, aby byl certifikát exportován v kódování X. 509 kódované pomocí Base-64 (. Formát CER): 
 
     ![Průvodce exportem certifikátu](../media/azure-netapp-files/certificate-export-wizard.png)

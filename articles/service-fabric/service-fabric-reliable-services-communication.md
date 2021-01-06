@@ -4,12 +4,12 @@ description: Přehled komunikačního modelu Reliable Services, včetně otevře
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574322"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912610"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API pro komunikaci Reliable Services
 Služba Azure Service Fabric jako platforma zcela nezávislá o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné od UDP přes HTTP. Chcete-li zvolit, jak by měly služby komunikovat, je k tomu vývojář služby. Rozhraní Reliable Services Application Framework poskytuje integrované komunikační zásobníky i rozhraní API, které můžete použít k sestavení vlastních komunikačních komponent.
@@ -206,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Příklad:
+Pro připojení ke službám v jiném clusteru se dá ServicePartitionResolver vytvořit pomocí sady koncových bodů brány clusteru. Všimněte si, že koncové body brány jsou pouze různými koncovými body pro připojení ke stejnému clusteru. Například:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Klientská továrna je primárně zodpovědná za vytváření komunikačních klientů. U klientů, kteří neudržují trvalé připojení, jako je například klient HTTP, potřebuje továrnu vytvořit a vrátit klienta. Jiné protokoly, které udržují trvalé připojení, například některé binární protokoly, by měly být také ověřeny továrnou, aby bylo možné určit, zda je nutné znovu vytvořit připojení.  
+Klientská továrna je primárně zodpovědná za vytváření komunikačních klientů. U klientů, kteří neudržují trvalé připojení, jako je například klient HTTP, potřebuje továrnu vytvořit a vrátit klienta. Jiné protokoly, které udržují trvalé připojení, jako jsou například některé binární protokoly, by měly být také ověřeny `ValidateClient(string endpoint, MyCommunicationClient client)` továrnou, aby bylo možné určit, zda je nutné znovu vytvořit připojení.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

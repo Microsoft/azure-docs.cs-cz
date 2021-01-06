@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077545"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913718"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
 Sada škálování virtuálního počítače umožňuje nasadit a spravovat sadu automatických škálování virtuálních počítačů. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů na webu Azure Portal.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
@@ -37,9 +37,9 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
 
     | Nastavení                 | Hodnota   |
     | ---| ---|
-    | Předplatné  | Vyberte předplatné.    |    
+    | Předplatné  | Vyberte své předplatné.    |    
     | Skupina prostředků | Vyberte **vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup* .|
-    | Name           | *myLoadBalancer*         |
+    | Název           | *myLoadBalancer*         |
     | Oblast         | Vyberte **USA – východ**.       |
     | Typ          | Vyberte **Veřejný**.       |
     | SKU           | Vyberte **Standard**.       |
@@ -56,24 +56,23 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
 ## <a name="create-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 Škálovací sadu můžete nasadit s použitím image Windows Serveru nebo image Linuxu, jako je například RHEL, CentOS, Ubuntu nebo SLES.
 
-1. Do vyhledávacího pole zadejte **Scale set** . Ve výsledcích klikněte v části **Marketplace**na možnost **Virtual Machine Scale Sets**. Na stránce **sady škálování virtuálních počítačů** vyberte **vytvořit** a otevře se stránka **vytvořit sadu škálování virtuálního počítače** . 
+1. Do vyhledávacího pole zadejte **Scale set** . Ve výsledcích klikněte v části **Marketplace** na možnost **Virtual Machine Scale Sets**. Na stránce **sady škálování virtuálních počítačů** vyberte **vytvořit** a otevře se stránka **vytvořit sadu škálování virtuálního počítače** . 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myVMSSResourceGroup* a pak vyberte **OK** . 
 1. Jako název sady škálování zadejte *myScaleSet* .
-1. V **oblasti oblast**vyberte oblast, která je blízko vaší oblasti.
-1. Ponechte výchozí hodnotu **škálovací sady virtuálních počítačů** pro **režim orchestrace**.
+1. V **oblasti oblast** vyberte oblast, která je blízko vaší oblasti.
 1. Vyberte obrázek Marketplace pro **Obrázek**. V tomto příkladu jsme zvolili *Ubuntu Server 18,04 LTS*.
 1. Zadejte požadované uživatelské jméno a vyberte upřednostňovaný typ ověřování.
    - **Heslo** musí mít alespoň 12 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v [požadavcích na uživatelské jméno a heslo](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
    - Pokud vyberete image disku s operačním systémem Linux, můžete místo toho zvolit **Veřejný klíč SSH**. Stačí zadat veřejný klíč, například *~/.ssh/id_rsa.pub*. K [vytvoření a použití klíčů SSH](../virtual-machines/linux/mac-create-ssh-keys.md) můžete použít Azure Cloud Shell na portálu.
    
-    ![Vytvoření škálovací sady virtuálních počítačů](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="Image zobrazuje možnosti vytváření pro sady škálování v Azure Portal.":::
 
 1. Kliknutím na tlačítko **Další** přesuňte ostatní stránky. 
 1. Ponechte výchozí nastavení stránky **instance** a **disky** .
-1. Na stránce **sítě** v části **Vyrovnávání zatížení**vyberte **Ano** , pokud chcete umístit instance sady škálování za nástroj pro vyrovnávání zatížení. 
-1. V **možnostech vyrovnávání zatížení**vyberte **Azure Load Balancer**.
-1. V **Vyberte nástroj pro vyrovnávání zatížení**vyberte *myLoadBalancer* , které jste vytvořili dříve.
-1. V případě **Vyberte fond back-end**vyberte **vytvořit nový**, zadejte *myBackendPool*a pak vyberte **vytvořit**.
+1. Na stránce **sítě** v části **Vyrovnávání zatížení** vyberte **Ano** , pokud chcete umístit instance sady škálování za nástroj pro vyrovnávání zatížení. 
+1. V **možnostech vyrovnávání zatížení** vyberte **Azure Load Balancer**.
+1. V **Vyberte nástroj pro vyrovnávání zatížení** vyberte *myLoadBalancer* , které jste vytvořili dříve.
+1. V případě **Vyberte fond back-end** vyberte **vytvořit nový**, zadejte *myBackendPool* a pak vyberte **vytvořit**.
 1. Až budete hotovi, vyberte **zkontrolovat + vytvořit**. 
 1. Po úspěšném ověření vyberte **vytvořit** a nasaďte sadu škálování.
 

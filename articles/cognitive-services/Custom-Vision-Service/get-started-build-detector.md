@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018349"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912980"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu
 
@@ -100,6 +100,7 @@ Po dokončení školení se vypočítává a zobrazuje výkon modelu. Služba Cu
 
 - **Přesnost** označuje zlomek identifikovaných klasifikací, které byly správné. Například pokud model identifikoval 100 obrázků jako psi a 99 z nich byly ve skutečnosti psi, pak přesnost by byla 99%.
 - **Odvolání** indikuje zlomek skutečných klasifikací, které byly správně identifikovány. Pokud by například existovaly skutečné 100 bitové kopie jablek a model identifikoval 80 jako jablk, odvolání by bylo 80%.
+- **Střední přesnost** je průměrná hodnota průměrné přesnosti (AP). Přístupový bod je oblast pod křivkou přesnost/odvolání (přesnost vykreslená proti odvolání pro každou vytvořenou předpověď).
 
 ![Ve výsledcích školení se zobrazuje celková přesnost a odvolání a průměrná hodnota přesnosti.](./media/get-started-build-detector/trained-performance.png)
 

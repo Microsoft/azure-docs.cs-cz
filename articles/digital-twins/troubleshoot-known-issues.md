@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862460"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915908"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -47,11 +47,11 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problém s výchozím ověřováním přihlašovacích údajů Azure v Azure. identity 1.3.0
 
-**Popis problému:** Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.3.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** může docházet k problémům s metodou [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) použitou v mnoha ukázkách těchto dokumentů. To představuje chybovou odpověď "Azure. identity. AuthenticationFailedException: ověřování SharedTokenCacheCredential se nezdařilo", když se kód pokusí ověřit.
+**Popis problému:** Při psaní ověřovacího kódu pomocí **1.3.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** mají někteří uživatelé problémy s metodou [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) použitou v mnoha ukázkách v těchto dokumentech digitálních vláken Azure. To představuje chybovou odpověď "Azure. identity. AuthenticationFailedException: ověřování SharedTokenCacheCredential se nezdařilo", když se kód pokusí ověřit.
 
 | Týká se to mi? | Příčina | Řešení |
 | --- | --- | --- |
-| DefaultAzureCredential se používá ve většině příkladů dokumentace, které zahrnují ověřování. Pokud píšete ověřovací kód pomocí DefaultAzureCredential a používáte verzi 1.3.0 `Azure.Identity` knihovny, může to mít vliv na vás. | Tento problém se zobrazuje při použití DefaultAzureCredential s verzí **1.3.0** `Azure.Identity` knihovny. | Chcete-li řešení vyřešit, přepněte aplikaci tak, aby používala [verzi 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) `Azure.Identity` . Po změně verze knihovny by ověřování mělo být úspěšné podle očekávání. |
+| `DefaultAzureCredential` používá se ve většině příkladů dokumentace pro tuto službu, která zahrnuje ověřování. Pokud píšete ověřovací kód pomocí `DefaultAzureCredential` verze 1.3.0 `Azure.Identity` knihovny a vidíte tuto chybovou zprávu, bude to mít vliv na vás. | To je nejspíš důsledek některých potíží s konfigurací v nástroji `Azure.Identity` . | Jedna strategie, kterou je třeba vyřešit, je vyloučit `SharedTokenCacheCredential` z přihlašovacích údajů, jak je popsáno v tomto [DefaultAzureCredential problému](https://github.com/Azure/azure-sdk/issues/1970) , ve kterém je aktuálně otevřená `Azure.Identity` .<br>Další možností je změnit aplikaci tak, aby používala starší verzi nástroje `Azure.Identity` , jako je například [verze 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3). Tato funkce nemá žádný vliv na funkce digitálních vláken Azure a proto je také přijatým řešením. |
 
 ## <a name="next-steps"></a>Další kroky
 

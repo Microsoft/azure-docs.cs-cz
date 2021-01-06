@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509542"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914344"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -82,6 +82,10 @@ Pokud vytvoříte registraci aplikace, nebude mít odpovídající instanční o
 **Změny, které se nepohybují z cílové aplikace do Azure AD**
 
 Služba zřizování aplikací neví o změnách provedených v externích aplikacích. Takže se neprovádí žádná akce, která by se vrátila zpět. Služba zřizování aplikací se spoléhá na změny provedené ve službě Azure AD. 
+
+**Přepnutí ze synchronizace All na přiřazenou synchronizaci nefunguje**
+
+Po změně rozsahu z ' synchronizovat vše ' na ' přiřazeno ', nezapomeňte také provést restart, aby se zajistilo, že se změna projeví. Restartování můžete provést z uživatelského rozhraní.
 
 **Cyklus zřizování pokračuje až do dokončení.**
 

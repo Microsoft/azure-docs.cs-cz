@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854695"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913494"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -137,6 +137,16 @@ Můžete určit, jestli má kořenový účet ke svazku přístup, nebo ne pomoc
 Ano, můžete. Cesta k souboru se ale musí použít buď v jiném předplatném, nebo v jiné oblasti.   
 
 Například vytvoříte svazek s názvem `vol1` . A pak vytvoříte další svazek, který se také nazývá `vol1` v jiném fondu kapacity, ale ve stejném předplatném a oblasti. V takovém případě se při použití stejného názvu svazku `vol1` způsobí chyba. Chcete-li použít stejnou cestu k souboru, musí být název v jiné oblasti nebo předplatném.
+
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>Když se pokouším získat přístup ke svazkům systému souborů NFS prostřednictvím klienta systému Windows, bude hledání složek a podsložek trvat dlouhou dobu?
+
+Ujistěte se, že `CaseSensitiveLookup` je na klientovi Windows zapnutá možnost zrychlit hledání složek a podsložek:
+
+1. K povolení CaseSensitiveLookup použijte následující příkaz prostředí PowerShell:   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. Připojte svazek na Windows serveru.   
+    Příklad:   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
 
 ## <a name="smb-faqs"></a>Nejčastější dotazy k protokolu SMB
 

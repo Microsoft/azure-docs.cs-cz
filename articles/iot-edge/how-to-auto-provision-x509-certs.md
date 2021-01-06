@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966130"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914905"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
 
@@ -28,7 +29,7 @@ V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioni
 
 Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Obvykle jsou certifikáty X. 509 uspořádány v řetězu certifikátů důvěryhodnosti. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem podepisuje každý certifikát v řetězu další nižší certifikát. Tento model vytvoří delegovaný řetěz vztahu důvěryhodnosti od kořenového certifikátu až po každý zprostředkující certifikát s konečným certifikátem "list" nainstalovaným na zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktivní IoT Hub.
 * Fyzické nebo virtuální zařízení, které se má IoT Edge zařízení.
@@ -78,7 +79,7 @@ Pomocí vygenerovaných certifikátů a klíčů můžete vytvořit jednotlivou 
 
 Pokud chcete zřídit více IoT Edge zařízení, postupujte podle kroků v následující části a [vytvořte registraci skupiny DPS](#create-a-dps-group-enrollment).
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 Další informace o registraci ve službě Device Provisioning najdete v tématu [Správa registrace zařízení](../iot-dps/how-to-manage-enrollments.md).
 
@@ -87,7 +88,7 @@ Další informace o registraci ve službě Device Provisioning najdete v tématu
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **spravovat registrace**.
+1. V části **Nastavení** vyberte **spravovat registrace**.
 
 1. Vyberte **přidat jednotlivou registraci** a potom proveďte následující kroky, abyste nakonfigurovali registraci:  
 
@@ -126,7 +127,7 @@ Pomocí vygenerovaných certifikátů a klíčů vytvořte registraci skupiny v 
 
 Pokud místo toho chcete zřídit jedno IoT Edge zařízení, postupujte podle kroků v předchozí části a [Vytvořte si jednotlivou registraci DPS](#create-a-dps-individual-enrollment).
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 ### <a name="verify-your-root-certificate"></a>Ověření kořenového certifikátu
 
@@ -172,7 +173,7 @@ Další informace o registraci ve službě Device Provisioning najdete v tématu
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-1. V části **Nastavení**vyberte **spravovat registrace**.
+1. V části **Nastavení** vyberte **spravovat registrace**.
 
 1. Vyberte **Přidat skupinu** registrací a potom proveďte následující kroky, abyste nakonfigurovali registraci:
 

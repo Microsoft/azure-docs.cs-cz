@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881459"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912913"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů Azure Databricks ML pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak povolit sledování identifikátorů URI a pro
 
 [MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu. Přečtěte si další informace o [Azure Databricks a MLflow](/azure/databricks/applications/mlflow/). 
 
-Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v tématu [sledování experimentů a vytváření koncových bodů pomocí MLflow a Azure Machine Learning](how-to-use-mlflow.md) .
+Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v tématu [sledování experimentů s MLflow a Azure Machine Learning](how-to-use-mlflow.md) .
 
 >[!NOTE]
 > Jako open source knihovna se MLflow změny často. Funkce, které jsou dostupné prostřednictvím Azure Machine Learning a integrace MLflow, by se měly považovat za verzi Preview, a není plně podporovaná Microsoftem.
@@ -181,8 +181,8 @@ Až budete připraveni vytvořit koncový bod pro vaše modely ML. Můžete nasa
 Můžete využít rozhraní API [mlflow. AzureML. deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) k nasazení modelu do pracovního prostoru Azure Machine Learning. Pokud jste model zaregistrovali pouze do Azure Databricks pracovního prostoru, jak je popsáno v části [registrace modelů s MLflow](#register-models-with-mlflow) , zadejte `model_name` parametr pro registraci modelu do pracovního prostoru Azure Machine Learning. 
 
 Azure Databricks spuštění lze nasadit do následujících koncových bodů, 
-* [Instance kontejneru Azure](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Instance kontejneru Azure](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Nasazení modelů do koncových bodů ADB pro dávkové vyhodnocování 
 
@@ -232,7 +232,7 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 [MLflow s Azure Machine Learning poznámkovým blokům](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) předvádí a rozbalí v konceptech uvedených v tomto článku.
 
 ## <a name="next-steps"></a>Další kroky
-
+* [Nasaďte modely MLflow jako webovou službu Azure](how-to-deploy-mlflow-models.md). 
 * [Spravujte své modely](concept-model-management-and-deployment.md).
-* [Sledování experimentů a vytváření koncových bodů pomocí MLflow a Azure Machine Learning](how-to-use-mlflow.md). 
+* [Sledujte experimenty s MLflow a Azure Machine Learning](how-to-use-mlflow.md). 
 * Přečtěte si další informace o [Azure Databricks a MLflow](/azure/databricks/applications/mlflow/).

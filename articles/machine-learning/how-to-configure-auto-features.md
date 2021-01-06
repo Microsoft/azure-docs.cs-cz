@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694003"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915857"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data featurization v automatizovaném strojovém učení
 
@@ -68,9 +68,6 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 |_*Generování dalších funkcí**_ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, AM/PM (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 – hr).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
 |**Transformovat a kódovat** _|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
 |_ *Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
-|**Cílová kódování**|V případě funkcí kategorií tento krok mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení přeložení mapování a šumu způsobených kategoriemi zhuštěných dat se aplikují váhy založené na kmitočtech a k skládání k.|
-|**Kódování cílového textu**|V případě textového vstupu se pro generování pravděpodobnosti každé třídy používá skládaný lineární model s použitím typu penalta-slova.|
-|**Váha důkazů (WoE)**|Vypočítá WoE jako míru korelace kategorií sloupců do cílového sloupce. WoE se počítá jako protokol poměru mezi třídou a pravděpodobnosti mimo třídu. Tento krok vytvoří jeden sloupec číselné funkce na každou třídu a odstraní nutnost explicitně imputace chybějících hodnot a izolované zpracování.|
 |**Vzdálenost clusteru**|Vlaky a k – znamenají model clusteringu ve všech číselných sloupcích. Vytvoří nové funkce ( *jedna nová číselná* funkce na cluster), které obsahují vzdálenost jednotlivých vzorků k těžiště každého clusteru.|
 
 ## <a name="data-guardrails"></a>Guardrails dat
@@ -123,7 +120,7 @@ Mezi podporovaná přizpůsobení patří:
 |--|--|
 |**Aktualizace pro účely sloupce**|Pro zadaný sloupec přepište typ funkce automaticky rozpoznán.|
 |**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (střední, nejčastější a medián) a *HashOneHotEncoder*.|
-|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
+|**Vyřazení sloupců** |Určuje sloupce, které se mají odpustit z natrénuje.|
 |**Blokovat transformátory**| Určuje, že se mají v procesu featurization použít transformátory bloku.|
 
 Vytvořte `FeaturizationConfig` objekt pomocí volání rozhraní API:

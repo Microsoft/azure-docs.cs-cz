@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509559"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916248"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -66,7 +66,7 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 | `ztdid`                    | ID nasazení s nulovým dotykem | TOKEN | | Identita zařízení používaná pro [Windows autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | Adresovatelné e-maily pro tohoto uživatele, pokud ho uživatel má.  | JWT, SAML | MSA, Azure AD | Tato hodnota je ve výchozím nastavení zahrnutá, pokud je uživatel hostem v tenantovi.  U spravovaných uživatelů (uživatelů uvnitř tenanta) musí být požadavek požadován prostřednictvím této volitelné deklarace identity nebo, pouze v 2.0, s oborem OpenID.  U spravovaných uživatelů musí být e-mailová adresa nastavena na [portálu pro správu Office](https://portal.office.com/adminportal/home#/users).|
 | `acct`                | Stav uživatelských účtů v tenantovi | JWT, SAML | | Pokud je uživatel členem tenanta, hodnota je `0` . Pokud se jedná o hosta, hodnota je `1` . |
-| `groups`| Volitelné formátování pro deklarace skupin |JWT, SAML| |Používá se ve spojení s nastavením GroupMembershipClaims v [manifestu aplikace](reference-app-manifest.md), který musí být nastaven také. Podrobnosti najdete v tématu [deklarace skupin](#configuring-groups-optional-claims) níže. Další informace o deklaracích skupin najdete v tématu [Konfigurace deklarací identity skupin](../hybrid/how-to-connect-fed-group-claims.md) .
+| `groups`| Volitelné formátování pro deklarace skupin |JWT, SAML| |Používá se s nastavením GroupMembershipClaims v [manifestu aplikace](reference-app-manifest.md), který musí být nastaven také. Podrobnosti najdete v tématu [deklarace skupin](#configuring-groups-optional-claims) níže. Další informace o deklaracích skupin najdete v tématu [Konfigurace deklarací identity skupin](../hybrid/how-to-connect-fed-group-claims.md) .
 | `upn`                      | UserPrincipalName | JWT, SAML  |           | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k jedinečným informacím identity uživatele (například jako klíč databáze). Místo toho použijte ID objektu uživatele ( `oid` ) jako klíč databáze. Uživatelům přihlašování pomocí [alternativního přihlašovacího ID](../authentication/howto-authentication-use-email-signin.md) by se neměl zobrazovat hlavní název uživatele (UPN). Místo toho použijte následující deklarace tokenu ID pro zobrazení stavu přihlášení uživateli: `preferred_username` nebo `unique_name` pro tokeny V1 a `preferred_username` pro tokeny v2. I když je tato deklarace identity zahrnutá automaticky, můžete ji zadat jako volitelnou deklaraci identity pro připojení dalších vlastností, abyste mohli změnit její chování v případě uživatele typu Host.  |
 | `idtyp`                    | Typ tokenu   | Přístupové tokeny JWT | Speciální: jenom v tokenech přístupu jenom pro aplikace |  Hodnota je `app` v případě, že se jedná o token pouze pro aplikaci. Toto je nejpřesnější způsob, jak rozhraní API určit, jestli je token aplikace nebo token aplikace + uživatel.|
 
@@ -85,7 +85,17 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 | `in_corp`     | Uvnitř podnikové sítě        | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá.   |  Vychází z nastavení [důvěryhodných IP adres](../authentication/howto-mfa-mfasettings.md#trusted-ips) v MFA.    |
 | `family_name` | Příjmení                       | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. <br>"family_name": "Miller" | Podporováno v MSA a Azure AD. Vyžaduje `profile` obor.   |
 | `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": "Josef"                   | Podporováno v MSA a Azure AD.  Vyžaduje `profile` obor. |
-| `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k jedinečným informacím identity uživatele (například jako klíč databáze). Místo toho použijte ID objektu uživatele ( `oid` ) jako klíč databáze. Uživatelům přihlašování pomocí [alternativního přihlašovacího ID](../authentication/howto-authentication-use-email-signin.md) by se neměl zobrazovat hlavní název uživatele (UPN). Místo toho použijte následující deklarace tokenu ID pro zobrazení stavu přihlášení uživateli: `preferred_username` nebo `unique_name` pro tokeny V1 a `preferred_username` pro tokeny v2. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . Vyžaduje `profile` obor.|
+| `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k jedinečným informacím identity uživatele (například jako klíč databáze). Místo toho použijte ID objektu uživatele ( `oid` ) jako klíč databáze. Uživatelům přihlašování pomocí [alternativního přihlašovacího ID](../authentication/howto-authentication-use-email-signin.md) by se neměl zobrazovat hlavní název uživatele (UPN). Místo toho použijte následující `preferred_username` deklaraci identity pro zobrazení stavu přihlášení uživateli. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . Vyžaduje `profile` obor.|
+
+
+**Tabulka 4: v 1.0 – nepovinné deklarace identity**
+
+Některá vylepšení formátu tokenu v2 jsou dostupná pro aplikace, které používají formát tokenu V1, protože mohou zvýšit zabezpečení a spolehlivost. Neprojeví se pro tokeny ID požadované z koncového bodu v2 ani pro přístup k tokenům pro rozhraní API, která používají formát tokenu v2. 
+
+| Deklarace JWT     | Název                            | Popis | Poznámky |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | Cílová skupina | Vždy k dispozici v JWTs, ale v přístupových tokenech v1 je možné ji vysílat různými způsoby, což může při ověřování tokenu těžko kódovat kód.  Použijte [Další vlastnosti této deklarace identity](#additional-properties-of-optional-claims) , abyste zajistili, že se vždycky nastaví na identifikátor GUID v přístupových tokenech v1. | pouze přístupové tokeny v1 JWT|
+|`preferred_username` | Preferované uživatelské jméno        | Poskytuje upřednostňovanou deklaraci uživatelského jména v tokenech v1. To usnadňuje aplikacím zadání pomocných parametrů uživatelského jména a zobrazení zobrazovaných názvů pro lidské čtení bez ohledu na jejich typ tokenu.  Doporučuje se použít místo použití této volitelné deklarace identity, např. `upn` nebo `unique_name` . | tokeny v1 ID a přístupové tokeny |
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti volitelných deklarací identity
 
@@ -97,7 +107,9 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |
-|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že značky hash ( `#` ) jsou nahrazeny podtržítkem ( `_` ), například `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Stejné jako výše, s tím rozdílem, že značky hash ( `#` ) jsou nahrazeny podtržítkem ( `_` ), například `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | V přístupových tokenech V1 se používá ke změně formátu `aud` deklarace identity.  Tato hodnota nemá žádný vliv na tokeny v2 ani tokeny ID, kde `aud` deklarace je vždycky ID klienta. Použijte k tomu, abyste zajistili, že vaše rozhraní API může snadněji provádět ověřování cílových skupin. Stejně jako u všech volitelných deklarací, které mají vliv na přístupový token, musí prostředek v žádosti nastavit tuto volitelnou deklaraci identity, protože prostředky přistupují k přístupovému tokenu.|
+|                | `use_guid`               | Vygeneruje ID klienta prostředku (API) ve formátu GUID jako `aud` deklaraci identity místo identifikátoru URI nebo identifikátoru GUID AppID. Takže pokud je ID klienta prostředku `bb0a297b-6a42-4a55-ac40-09a501456577` , každá aplikace, která žádá o přístupový token pro daný prostředek, obdrží přístupový token s `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
 
 #### <a name="additional-properties-example"></a>Příklad dalších vlastností
 
@@ -124,7 +136,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. Přejděte na web [Azure Portal](https://portal.azure.com). 
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -233,7 +245,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
@@ -246,7 +258,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin pomocí manifestu aplikace:**
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -377,7 +389,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace uživatelského rozhraní:**
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
 1. Vyhledejte a vyberte **Azure Active Directory**.
@@ -400,7 +412,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

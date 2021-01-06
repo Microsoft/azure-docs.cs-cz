@@ -4,13 +4,13 @@ description: Tento článek se pravidelně aktualizuje o novinky o Language Unde
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 06/15/2020
-ms.openlocfilehash: 52f8aad0a429d3378d46265fab719b1cb9f07fd0
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.date: 01/05/2021
+ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813186"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916350"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
@@ -20,7 +20,8 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 
 ### <a name="december-2020"></a>Prosinec 2020
 
-* Všichni LUIS uživatelé se musí [migrovat do prostředku AUTHORINT Luis](luis-migration-authoring.md) .
+* Všichni LUIS uživatelé se musí [migrovat na prostředek pro vytváření Luis](luis-migration-authoring.md) .
+* Nové [koncové body hodnocení](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , které umožňují odesílat dávkové testy usting REST API a získat výsledky přesnosti pro své záměry a entity. K dispozici počínaje koncovým bodem verze 3.0-Preview LUIS.
 
 ### <a name="june-2020"></a>Červen 2020
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f9f37bc27c54971c15db457abf157e04cc5d60e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216432"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914667"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
@@ -37,7 +37,7 @@ Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to t
 
 Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure.
 
-Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -113,8 +113,8 @@ Pokud chcete naplánovat nové nasazení aktualizace pro virtuální počítač,
 | **Název** |Zadejte jedinečný název pro identifikaci nasazení aktualizace. |
 |**Operační systém**| Vyberte možnost **Linux** nebo **Windows**.|
 | **Skupiny, které se mají aktualizovat** |U virtuálních počítačů hostovaných v Azure definujte dotaz na základě kombinace předplatného, skupin prostředků, umístění a značek. Tento dotaz vytvoří dynamickou skupinu virtuálních počítačů hostovaných v Azure, které se mají zahrnout do nasazení. </br></br>U virtuálních počítačů, které nejsou hostované v Azure, vyberte existující uložené výsledky hledání. Pomocí tohoto hledání můžete vybrat skupinu těchto virtuálních počítačů, které chcete zahrnout do nasazení. </br></br> Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/configure-groups.md).|
-| **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny**nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
-|**Klasifikace aktualizací**|Vyberte všechny potřebné klasifikace aktualizací.|
+| **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny** nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
+|**Update classifications**|Vyberte všechny potřebné klasifikace aktualizací.|
 |**Zahrnout nebo vyloučit aktualizace**|Tuto možnost vyberte, pokud chcete otevřít podokno **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout, a ty, které se mají vyloučit, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizací](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Nastavení plánu**|Zvolte čas **spuštění a vyberte jeden nebo znovu** **.**|
 | **Pre-Scripts + post-Scripts**|Vyberte skripty, které se spustí před nasazením a po něm.|
@@ -170,7 +170,7 @@ Jakmile je řešení povolené, může trvat nějakou dobu, než se na virtuáln
 
 ### <a name="track-changes"></a>Sledování změn
 
-Na svém VIRTUÁLNÍm počítači v části **operace**vyberte **Change Tracking** a pak vyberte **Upravit nastavení**. Otevře se podokno **Change Tracking** . Vyberte typ nastavení, které chcete sledovat, a vybráním možnosti **+ Přidat** nastavení nakonfigurujte.
+Na svém VIRTUÁLNÍm počítači v části **operace** vyberte **Change Tracking** a pak vyberte **Upravit nastavení**. Otevře se podokno **Change Tracking** . Vyberte typ nastavení, které chcete sledovat, a vybráním možnosti **+ Přidat** nastavení nakonfigurujte.
 
 K dispozici jsou možnosti nastavení pro Windows:
 

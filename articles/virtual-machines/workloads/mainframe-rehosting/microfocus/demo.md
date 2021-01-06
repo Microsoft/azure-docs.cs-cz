@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976189"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915772"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení Micro Focus CICS BankDemo pro Micro Enterprise Developer 4,0 v Azure
 
@@ -28,7 +28,7 @@ CICs představuje systém pro řízení informací o zákaznících, platformu t
 
 - [Edice SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express). Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře. Enterprise Server vyžaduje databázi pro správu CICSch oblastí a aplikace BankDemo používá také databázi SQL Server s názvem BANKDEMO. Tato ukázka předpokládá, že používáte SQL Server Express pro obě databáze. Po instalaci vyberte základní instalaci.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS se používá ke správě databází a spuštění skriptu T-SQL. Stáhněte ho a nainstalujte na podnikovém virtuálním počítači pro vývojáře.
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) s nejnovější aktualizací Service Pack nebo [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), kterou si můžete zdarma stáhnout.
 
@@ -242,7 +242,7 @@ Vytvořte naslouchací proces pro relace TN3270, které přistupují k aplikaci 
 
 7. Jako **název** zadejte **TN3270**. Jako **port** zadejte **9024**. Aplikace ESDEMO používá port 9230, takže potřebujete použít jiný port.
 
-8. Soubor uložíte tak, že kliknete na ikonu **Uložit** nebo **File** zvolíte \> **Uložit** soubor.
+8. Soubor uložíte tak, že kliknete na ikonu **Uložit** nebo  zvolíte \> **Uložit** soubor.
 
 9. Pokud chcete spustit naslouchací proces, klikněte na ikonu **Spustit naslouchací proces** nebo vyberte **Možnosti** \> **Spustit naslouchací proces**.
 
@@ -268,7 +268,7 @@ Poslední věcí, kterou musíte udělat, je konfigurace relace 3270 pomocí Rum
 ![Úvodní obrazovka zobrazení sálového počítače v sálovém sálovém zobrazení ](media/14-demo.png)
  ![ -Rumba-subsystému](media/15-demo.png)
 
-Gratulujeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
+Blahopřejeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
 
 ## <a name="next-steps"></a>Další kroky
 

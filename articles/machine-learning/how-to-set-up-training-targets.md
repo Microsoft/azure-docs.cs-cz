@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739939"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913001"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
 
@@ -204,6 +204,18 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
     ```
 
     Azure ML interně zřetězí bloky se stejným názvem metriky do souvislého seznamu.
+
+* **Spuštění selhalo `jwt.exceptions.DecodeError` s**: přesná chybová zpráva: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+    
+    Zvažte upgrade na nejnovější verzi nástroje AzureML-Core: `pip install -U azureml-core` .
+    
+    Pokud k tomuto problému dochází pro místní spuštění, podívejte se na verzi PyJWT nainstalovanou ve vašem prostředí, kde spouštíte spouštění. Podporované verze PyJWT jsou < 2.0.0. Pokud je verze >= 2.0.0, odinstalujte PyJWT z prostředí. Můžete si ověřit verzi PyJWT, odinstalovat a nainstalovat správnou verzi následujícím způsobem:
+    1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém je nainstalovaná operace AzureML-Core.
+    2. Zadejte `pip freeze` a vyhledejte `PyJWT` , pokud se nachází, uvedená verze by měla být < 2.0.0
+    3. Pokud uvedená verze není podporovanou verzí, `pip uninstall PyJWT` v příkazovém prostředí a zadejte y pro potvrzení.
+    4. Dá se nainstalovat pomocí `pip install 'PyJWT<2.0.0'`.
+    
+    Pokud odesíláte uživatelem vytvořené prostředí s vaším spuštěním, zvažte použití nejnovější verze programu AzureML-Core v tomto prostředí. Verze >= 1.18.0 z AzureML-Core už připnutí PyJWT < 2.0.0. Pokud v prostředí, které odesíláte, potřebujete použít verzi < AzureML-Core 1.18.0, nezapomeňte ve svých závislostech PIP zadat < PyJWT 2.0.0.
 
 ## <a name="next-steps"></a>Další kroky
 

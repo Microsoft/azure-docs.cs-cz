@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002676"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913103"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení problémů s připojením ke vzdálené ploše virtuálních počítačů s Windows v Azure
 Tento článek poskytuje podrobné kroky pro řešení potíží pro diagnostiku a opravu složitých chyb vzdálené plochy pro virtuální počítače Azure se systémem Windows.
@@ -135,7 +135,7 @@ U virtuálních počítačů vytvořených pomocí modelu nasazení Classic mů�
 
 V dalším kroku nainstalujte Azure PowerShell, pokud jste to ještě neudělali. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/).
 
-Potom otevřete příkazový řádek Azure PowerShell a změňte aktuální složku na umístění souboru skriptu **InstallWinRMCertAzureVM.ps1** . Chcete-li spustit skript Azure PowerShell, je nutné nastavit správné zásady spouštění. Spuštěním příkazu **Get-ExecutionPolicy** určete aktuální úroveň zásad. Informace o nastavení příslušné úrovně najdete v tématu [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
+Potom otevřete příkazový řádek Azure PowerShell a změňte aktuální složku na umístění souboru skriptu **InstallWinRMCertAzureVM.ps1** . Chcete-li spustit skript Azure PowerShell, je nutné nastavit správné zásady spouštění. Spuštěním příkazu **Get-ExecutionPolicy** určete aktuální úroveň zásad. Informace o nastavení příslušné úrovně najdete v tématu [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true).
 
 V dalším kroku zadejte název předplatného Azure, název cloudové služby a název virtuálního počítače (odebráním < a >ch znaků) a pak tyto příkazy spusťte.
 
@@ -193,7 +193,7 @@ Exit-PSSession
 
 Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure používá také port TCP 3398 jako svůj interní port. Restartujte virtuální počítač Azure a pokuste se znovu připojit ke vzdálené ploše.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 [Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítače s Windows](./reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)

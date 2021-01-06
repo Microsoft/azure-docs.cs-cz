@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819899"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915840"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
@@ -71,4 +71,5 @@ Tyto zásady se vztahují na všechny vrstvy sítě: od síťového rozhraní ho
 Exponenciální nárůst Azure a jeho síť dosáhly místa, kde jsme nakonec provedli, že by se v rámci správy globálních síťových operací mohla tato lidská Intuition nadále spoléhat. Abychom mohli splnit nutnost ověřit dlouhodobou, střední a krátkodobou změnu v síti, vyvinuli jsme platformu pro syntetické zrcadlení a emulaci naší produkční sítě. Možnost vytvářet zrcadlená prostředí a spouštět miliony simulací, umožňuje nám otestovat změny softwaru a hardwaru a jejich dopad, než je potvrdíme v naší provozní platformě a síti. 
 
 ## <a name="next-steps"></a>Další kroky
+- [Přečtěte si, jak Microsoft zvyšuje globální spolehlivost sítě prostřednictvím inteligentního softwaru.](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [Další informace o síťových službách poskytovaných v Azure](https://azure.microsoft.com/product-categories/networking/)

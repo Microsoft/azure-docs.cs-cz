@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951600"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915436"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Použití Azure Portal ke správě plánů šířky pásma na procesorovém GPU Azure Stack Edge pro 
 
@@ -40,12 +40,12 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
 
     ![Výběr šířky pásma](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. V části **Přidání plánu**: 
+3. V části **Přidání plánu**:
 
-   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění**a **čas ukončení** plánu.
+   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění** a **čas ukončení** plánu.
    2. Pokud má být tento plán běžet celý den, ověřte možnost **všechny dny** .
    3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Zadejte číslo mezi 20 a 2 147 483 647 pro toto pole.
-   4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**.
+   4. Vyberte **neomezenou šířku pásma** , pokud nechcete omezit nahrávání a stahování data.
    5. Vyberte **Přidat**.
 
       ![Přidat plán](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
@@ -58,9 +58,10 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
 
 Chcete-li upravit plán služby Bandwidth, postupujte následovně.
 
-1. V Azure Portal přejít na prostředek Azure Stack Edge a pak přejít na **šířku pásma**. 
+1. V Azure Portal přejít na prostředek Azure Stack Edge a pak přejít na **šířku pásma**.
 2. V seznamu plánů šířky pásma vyberte plán, který chcete upravit.
-    ![Vybrat plán šířky pásma](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![Vybrat plán šířky pásma](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. Proveďte požadované změny a uložte je.
 
@@ -77,7 +78,7 @@ Pomocí následujících kroků odstraňte plán šířky pásma přidružený k
 
 1. V Azure Portal přejít na prostředek Azure Stack Edge a pak přejít na **šířku pásma**.  
 
-2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V části **Upravit plán**vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **Ano**.
+2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V části **Upravit plán** vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **Ano**.
 
    ![Odstranění uživatele](media/azure-stack-edge-j-series-manage-bandwidth-schedules/delete-schedule-2.png)
 

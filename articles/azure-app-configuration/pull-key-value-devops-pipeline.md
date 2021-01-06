@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570990"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914956"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
 Úloha [Konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task) přebírá klíčové hodnoty z úložiště konfigurace aplikace a nastavuje je jako proměnné kanálu Azure, které mohou být spotřebovány následujícími úlohami. Tato úloha doplňuje úlohu [nabízení konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) , která z konfiguračního souboru vloží hodnoty klíč-to do úložiště konfigurace aplikace. Další informace najdete v tématu [nastavení nabízených oznámení do konfigurace aplikací pomocí Azure Pipelines](push-kv-devops-pipeline.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Úložiště konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
@@ -60,7 +60,7 @@ Přiřaďte správnou roli konfigurace aplikace k připojení služby, které se
 
 V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v kanálu sestavení Azure DevOps.
 
-1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  **Pipelines**. Dokumentaci k kanálu sestavení najdete v tématu  [Vytvoření prvního kanálu](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálu sestavení najdete v tématu  [Vytvoření prvního kanálu](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Pokud vytváříte nový kanál sestavení, klikněte na **Nový kanál** a vyberte úložiště pro svůj kanál. Vyberte **Zobrazit pomocníka** na pravé straně kanálu a vyhledejte úlohu **Konfigurace aplikace Azure** .
       - Pokud používáte existující kanál sestavení, vyberte **Upravit** pro úpravu kanálu. Na kartě **úlohy** vyhledejte úlohu **Konfigurace aplikace Azure** .
 1. Nakonfigurujte potřebné parametry pro úlohu, aby vyčetly klíčové hodnoty z úložiště konfigurace aplikace. Popisy parametrů jsou k dispozici v části **parametry** níže a v popiscích tlačítek vedle jednotlivých parametrů.
@@ -73,7 +73,7 @@ V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v 
 
 V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v kanálu vydaných verzí Azure DevOps.
 
-1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  **Releases**. Dokumentaci k vydaným kanálům vydaných verzí najdete v tématu [kanály verzí](/azure/devops/pipelines/release?view=azure-devops).
+1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k vydaným kanálům vydaných verzí najdete v tématu [kanály verzí](/azure/devops/pipelines/release?view=azure-devops).
 1. Vyberte existující kanál verze. Pokud ho nemáte, klikněte na **Nový kanál** a vytvořte nový.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
 1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete v tématu [Přidání fází, závislostí & podmínek](/azure/devops/pipelines/release/environments?view=azure-devops).
@@ -104,7 +104,10 @@ echo "$env:myBuildSetting"
 ```
 A hodnota bude vytištěna do konzoly.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+> [!NOTE]
+> Azure Key Vault odkazy v konfiguraci aplikace budou vyřešeny a nastaveny jako [tajné proměnné](/azure/devops/pipelines/process/variables#secret-variables). V kanálech Azure jsou tajné proměnné z protokolu maskované. Nejsou předávány do úkolů jako proměnné prostředí a musí být předány jako vstupy. 
+
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 

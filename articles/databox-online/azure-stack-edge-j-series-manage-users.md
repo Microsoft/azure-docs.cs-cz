@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bef344414a9ba27d5808fcd17ed664b7f51bddc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743586"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915946"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě uživatelů v Azure Stack Edge pro
 
@@ -30,19 +30,19 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="about-users"></a>Informace o uživatelích
 
-Uživatelé můžou být typu jen pro čtení, nebo s úplnými oprávněními. Jak názvy naznačují, uživatelé jen pro čtení můžou jenom zobrazit data ve sdílené složce. Uživatelé s úplnými oprávněními mohou číst data ve sdílené složce, zapisovat do těchto sdílených složek a upravovat nebo odstraňovat data ve sdílené složce.
+Uživatelé můžou být typu jen pro čtení, nebo s úplnými oprávněními. Uživatelé s oprávněním jen pro čtení mohou zobrazit pouze data o sdílení. Všichni uživatelé s oprávněními můžou číst sdílená data, zapisovat do těchto sdílených složek a upravovat nebo odstraňovat sdílená data.
 
  - **Uživatel s úplnými oprávněními** – místní uživatele s úplným přístupem.
  - **Uživatel jen pro čtení** –místní uživatel s přístupem jen pro čtení. Tito uživatelé jsou přidruženi ke sdíleným složkám, které umožňují operace jen pro čtení.
 
-Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Po definování oprávnění spojených s uživatelem je možné později tato oprávnění upravit pomocí Průzkumníka souborů.
+Oprávnění uživatele jsou definována při vytváření uživatele během vytváření sdílené složky. Můžete je upravit pomocí Průzkumníka souborů.
 
 
 ## <a name="add-a-user"></a>Přidání uživatele
 
 Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující kroky.
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **přehled > uživatelé**. Na panelu příkazů vyberte **+ Přidat uživatele** .
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Uživatelé**. Na panelu příkazů vyberte **+ Přidat uživatele** .
 
     ![Vyberte Přidat uživatele.](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 
@@ -59,7 +59,7 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 ## <a name="modify-user"></a>Úprava uživatele
 
 Po vytvoření uživatele můžete změnit heslo přidružené k uživateli. Vyberte ze seznamu uživatelů. Zadejte a potvrďte nové heslo. Uložte změny.
- 
+
 ![Úprava uživatele](media/azure-stack-edge-j-series-manage-users/modify-user-1.png)
 
 
@@ -68,7 +68,7 @@ Po vytvoření uživatele můžete změnit heslo přidružené k uživateli. Vyb
 Pokud chcete uživatele odstranit, proveďte na webu Azure Portal následující kroky.
 
 
-1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **přehled > uživatelé**.
+1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **Uživatelé**.
 
     ![Vyberte uživatele, kterého chcete odstranit.](media/azure-stack-edge-j-series-manage-users/delete-user-1.png)
 

@@ -3,14 +3,14 @@ title: Odebrání virtuálních počítačů z Azure Automation Update Managemen
 description: Tento článek popisuje, jak odebrat počítače spravované pomocí Update Management.
 services: automation
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ms.custom: mvc
-ms.openlocfilehash: 774dbe29cbb6b4d063d3619d0c710efb1949b99a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222230"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913188"
 ---
 # <a name="remove-vms-from-update-management"></a>Odebrání virtuálních počítačů z Update Managementu
 
@@ -18,7 +18,7 @@ Až skončíte s správou aktualizací ve vašich virtuálních počítačích v
 
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="to-remove-your-vms"></a>Odebrání virtuálních počítačů
 
@@ -32,13 +32,20 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 3. V Azure Portal přejděte na **Log Analytics pracovní prostory**. V seznamu vyberte svůj pracovní prostor.
 
-4. V pracovním prostoru Log Analytics vyberte možnost **protokoly** a pak zvolte možnost **Průzkumník dotazů** v nabídce Top Actions (akce).
+4. V pracovním prostoru Log Analytics v nabídce na levé straně vyberte **Upřesnit nastavení** a pak zvolte **skupiny počítačů** .
 
-5. V pravém podokně v **Průzkumníku dotazů** rozbalte položku **uložené Queries\Updates** a vyberte uložený vyhledávací dotaz, `MicrosoftDefaultComputerGroup` který chcete upravit.
+5. Ze **skupin počítačů** v pravém podokně vyberte **uložené skupiny**.
 
-6. V editoru dotazů zkontrolujte dotaz a vyhledejte UUID pro virtuální počítač. Odeberte UUID pro virtuální počítač a opakujte postup pro všechny ostatní virtuální počítače, které chcete odebrat.
+6. V tabulce pro aktualizace uložených dotazů hledání **: MicrosoftDefaultComputerGroup** kliknutím na ikonu **Zobrazit členy** spustíte a zobrazíte jeho členy.
 
-7. Uložení uložených výsledků hledání po dokončení úprav výběrem možnosti **Uložit** v horním panelu.
+7. V editoru dotazů zkontrolujte dotaz a vyhledejte UUID pro virtuální počítač. Odeberte UUID pro virtuální počítač a opakujte postup pro všechny ostatní virtuální počítače, které chcete odebrat.
+
+8. Uložení uložených výsledků hledání po dokončení úprav výběrem možnosti **Uložit** v horním panelu. Po zobrazení výzvy zadejte následující:
+
+    * **Název**: MicrosoftDefaultComputerGroup
+    * **Uložit jako**: funkce
+    * **Alias**: Updates__MicrosoftDefaultComputerGroup
+    * **Kategorie**: aktualizace
 
 >[!NOTE]
 >Počítače se pořád zobrazují i po jejich registraci, protože hlásíme na všech počítačích vyhodnocených za posledních 24 hodin. Po odebrání počítače je třeba počkat 24 hodin, než budou nadále vypsány.

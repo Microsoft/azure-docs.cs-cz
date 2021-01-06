@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530438"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912695"
 ---
 # <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
 
@@ -60,7 +60,7 @@ Veřejná IP adresa s volbou předvolby směrování "globální síť Microsoft
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Azure Firewall
+* Brána Azure Firewall
 
 Pro úložiště primární koncové body vždy používají **globální síť Microsoft**. Můžete povolit sekundární koncové body s **internetem** podle vašeho výběru pro směrování provozu. Podporované služby úložiště:
 
@@ -72,11 +72,6 @@ Pro úložiště primární koncové body vždy používají **globální síť 
 ## <a name="pricing"></a>Ceny
 Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) . 
 
-## <a name="availability"></a>Dostupnost
-
-Podpora předvoleb směrování je dostupná v následujících oblastech pro služby, jako je virtuální počítač a internetový nástroj pro vyrovnávání zatížení, který používá veřejnou IP adresu pro internetovou odchozí Severní Evropa, Západní Evropa, Francii jih, Velká Británie – jih, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA, Středozápadní USA, jihovýchodní Asie, Německo – středozápad, Švýcarsko – západ, Japonsko – východ a Japonsko – západ.
-
-Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Střed USA – sever, Středozápadní USA, Střed USA – jih Východní USA, Západní USA, Severní Evropa, Francie – jih, Německo – středozápad, Švýcarsko – západ, Jižní Východní Asie, Japonsko – východ a Japonsko – západ.
 ## <a name="limitations"></a>Omezení
 
 * Preference směrování je kompatibilní jenom se standardní SKU veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.

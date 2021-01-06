@@ -1,18 +1,21 @@
 ---
 title: Dělení Service Fabric služeb
-description: Popisuje, jak rozdělit Service Fabric stavové služby. Oddíly umožňují úložiště dat na místních počítačích, aby se data a výpočetní prostředky mohly škálovat dohromady.
+description: Přečtěte si, jak rozdělit Service Fabric bezstavové a stavové služby
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005424"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915891"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení spolehlivých služeb Service Fabric
-Tento článek poskytuje Úvod do základních konceptů vytváření oddílů služby Azure Service Fabric Reliable Services. Zdrojový kód používaný v článku je také k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Tento článek poskytuje Úvod do základních konceptů vytváření oddílů služby Azure Service Fabric Reliable Services. Dělení umožňuje ukládání dat na místních počítačích, aby se data a výpočetní prostředky mohly škálovat dohromady.
+
+> [!TIP]
+> [Kompletní ukázka](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) kódu v tomto článku je k dispozici na GitHubu.
 
 ## <a name="partitioning"></a>Dělení
 Dělení není pro Service Fabric jedinečné. Ve skutečnosti se jedná o základní vzor vytváření škálovatelných služeb. V širším smyslu můžeme uvažovat o dělení jako konceptu rozdělení stavu (dat) a výpočetních prostředků do menších dostupných jednotek za účelem zlepšení škálovatelnosti a výkonu. Dobře známá forma dělení je [dělení dat][wikipartition], označovaná také jako horizontálního dělení.
@@ -116,7 +119,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
 > 
 > 
 
-1. Otevřete **soubor aplikace Visual Studio**  >  **File**  >  **Nový**  >  **projekt**.
+1. Otevřete **soubor aplikace Visual Studio**  >    >  **Nový**  >  **projekt**.
 2. V dialogovém okně **Nový projekt** vyberte aplikaci Service Fabric.
 3. Zavolejte na projekt "AlphabetPartitions".
 4. V dialogovém okně **vytvořit službu** vyberte **stavová** služba a zavolejte ji "abecední. zpracování".
@@ -348,14 +351,14 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
     
     ![Snímek obrazovky prohlížeče](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-Celý zdrojový kód ukázky je k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Kompletní řešení kódu používaného v tomto článku je k dispozici zde: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions .
 
 ## <a name="next-steps"></a>Další kroky
-Informace o Service Fabric konceptech najdete v následujících tématech:
+Další informace o Service Fabric Services:
 
+* [Připojení a komunikace se službami v Service Fabric](service-fabric-connect-and-communicate-with-services.md)
 * [Dostupnost služeb Service Fabric Services](service-fabric-availability-services.md)
 * [Škálovatelnost služeb Service Fabric Services](service-fabric-concepts-scalability.md)
-* [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
