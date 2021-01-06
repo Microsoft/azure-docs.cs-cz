@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425774"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930782"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Nastavení sdílené složky pro připojení aplikace MSIX (Preview)
 
@@ -64,6 +64,12 @@ Tady je několik dalších věcí, které doporučujeme pro optimalizaci výkonu
 Proces instalace aplikace MSIX připojit sdílenou složku je převážně stejný jako [proces instalace pro sdílené složky profilu FSLogix](create-host-pools-user-profile.md). Budete ale muset přiřadit uživatele různá oprávnění. Připojení aplikace MSIX vyžaduje oprávnění jen pro čtení pro přístup ke sdílené složce souborů.
 
 Pokud vaše aplikace MSIX ukládáte do služby soubory Azure, budete muset pro hostitele vaší relace přiřadit všechny virtuální počítače hostitele relací jak řízení přístupu na základě role (RBAC), tak i sdílet soubory, které mají ve sdílené složce oprávnění systému souborů NTFS.
+
+| Objekt Azure                      | Požadovaná role                                     | Funkce role                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| Hostitel relace (objekty počítačů virtuálních počítačů)| Přispěvatel sdílené složky SMB dat souboru úložiště          | Číst a spouštět, číst, zobrazovat obsah složky  |
+| Správci ve sdílené souborové složce              | Přispěvatel sdílené složky SMB dat souboru úložiště s vyššími oprávněními | Full control                                  |
+| Uživatelé ve sdílené složce               | Přispěvatel sdílené složky SMB dat souboru úložiště          | Číst a spouštět, číst, zobrazovat obsah složky  |
 
 Přiřazení oprávnění k virtuálním počítačům hostitele relace pro účet úložiště a sdílení souborů:
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854984"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931734"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -51,7 +51,7 @@ Rozšíření odolné úlohy implementuje náhodný exponenciální algoritmus p
 Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím `maxQueuePollingInterval` vlastnosti v [host.jsv souboru](../functions-host-json.md#durabletask). Nastavení této vlastnosti na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této vlastnosti na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
 
 > [!NOTE]
-> Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
+> Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../event-driven-scaling.md) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
 
 ### <a name="orchestration-start-delays"></a>Zpoždění zahájení orchestrace
 Instance orchestrace se spouští vložením `ExecutionStarted` zprávy do jedné z front ovládacích prvků centra úloh. Za určitých podmínek můžete sledovat prodlevy s více sekundami mezi tím, kdy je naplánováno spuštění Orchestrace a kdy je ve skutečnosti spuštěna. Během tohoto časového intervalu zůstane instance orchestrace ve `Pending` stavu. Existují dva možné příčiny tohoto zpoždění:
@@ -138,7 +138,7 @@ Obecně řečeno, funkce nástroje Orchestrator mají být odlehčené a neměly
 
 ## <a name="auto-scale"></a>Automatické škálování
 
-Stejně jako u všech Azure Functions běžících v plánech spotřeby a elastické Premium Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../functions-scale.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
+Stejně jako u všech Azure Functions běžících v plánech spotřeby a elastické Premium Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../event-driven-scaling.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
 
 Pokud kontroler škálování zjistí, že latence zpráv řízení fronty je příliš vysoká, přidá instance virtuálních počítačů, dokud se latence zprávy nesníží na přijatelnou úroveň, nebo dosáhne počtu oddílů fronty řízení. Podobně, kontroler škálování průběžně přidá instance virtuálních počítačů, pokud jsou vysoké latence fronty pracovních položek, bez ohledu na počet oddílů.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632056"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934012"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -421,7 +421,7 @@ Pracovní postup v tomto příkladu používá tuto aktivační událost a tyto 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Schopn** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Záměr** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
    | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
    | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
@@ -742,7 +742,7 @@ Aplikaci logiky můžete publikovat jako nový prostředek, který automaticky v
 
       ![Snímek obrazovky, který zobrazuje podokno "Azure: Logic Apps (Preview)" a výzvu k zadání názvu nové aplikace logiky, která se má vytvořit.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Vyberte plán hostování pro novou aplikaci logiky, buď [**App Service plán**](../azure-functions/functions-scale.md#app-service-plan) nebo [**Premium**](../azure-functions/functions-scale.md#premium-plan). Tento příklad vybírá **App Service plán**.
+   1. Vyberte plán hostování pro novou aplikaci logiky, buď [**App Service plán**](../azure-functions/dedicated-plan.md) nebo [**Premium**](../azure-functions/functions-premium-plan.md). Tento příklad vybírá **App Service plán**.
 
       ![Snímek obrazovky, který zobrazuje podokno "Azure: Logic Apps (Preview)" a výzvu k výběru možnosti "App Service plán" nebo "Premium".](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 

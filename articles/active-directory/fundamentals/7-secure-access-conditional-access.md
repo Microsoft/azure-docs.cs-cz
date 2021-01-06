@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743899"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933128"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Správa externího přístupu pomocí zásad podmíněného přístupu 
 
-[Podmíněný přístup](../conditional-access/overview.md) je nástroj, který Azure AD používá k spojování signálů, vymáhání zásad a určení, jestli má mít uživatel povolený přístup k prostředkům. Podrobné informace o tom, jak vytvořit a používat zásady podmíněného přístupu (zásady certifikační autority), najdete v tématu [Plánování nasazení podmíněného přístupu](../conditional-access/plan-conditional-access.md). 
+[Podmíněný přístup](../conditional-access/overview.md) je nástroj, který Azure AD používá k spojování signálů, vymáhání zásad a určení, jestli má mít uživatel povolený přístup k prostředkům. Podrobné informace o tom, jak vytvořit a používat zásady podmíněného přístupu (zásady podmíněného přístupu), najdete v tématu [Plánování nasazení podmíněného přístupu](../conditional-access/plan-conditional-access.md). 
 
 ![Diagram signálů a rozhodnutí podmíněného přístupu](media/secure-external-access//7-conditional-access-signals.png)
 
 
 
-Tento článek popisuje použití zásad certifikační autority pro externí uživatele a předpokládá, že nemáte přístup k funkcím pro [správu nároků](../governance/entitlement-management-overview.md) . Zásady certifikační autority můžou být a použité společně s nároky na správu.
+Tento článek popisuje použití zásad podmíněného přístupu u externích uživatelů a předpokládá, že nemáte přístup k funkcím pro [správu nároků](../governance/entitlement-management-overview.md) . Zásady podmíněného přístupu můžou být a použité společně s nároky na správu.
 
 Dříve v této sadě dokumentů jste [vytvořili plán zabezpečení](3-secure-access-plan.md) , který je popsaný:
 
@@ -36,27 +36,27 @@ Dříve v této sadě dokumentů jste [vytvořili plán zabezpečení](3-secure-
 
 * Požadavky na přihlášení pro externí uživatele.
 
-Tento plán použijete k vytvoření zásad certifikační autority pro externí přístup. 
+Pomocí tohoto plánu vytvoříte zásady podmíněného přístupu pro externí přístup. 
 
 > [!IMPORTANT]
 > Vytvořte několik účtů externích uživatelských testů, abyste mohli testovat zásady, které vytvoříte, a teprve potom je použít u všech externích uživatelů.
 
 ## <a name="conditional-access-policies-for-external-access"></a>Zásady podmíněného přístupu pro externí přístup
 
-Níže jsou uvedené osvědčené postupy týkající se řízení externího přístupu pomocí zásad certifikační autority.
+Níže jsou uvedené osvědčené postupy týkající se řízení externího přístupu pomocí zásad podmíněného přístupu.
 
-* Pokud nemůžete používat připojené organizace v rámci správy nároků, vytvořte skupinu zabezpečení Azure AD nebo skupinu Microsoft 365 pro každou organizaci partnera, se kterou pracujete. Přiřaďte všechny uživatele z tohoto partnera ke skupině. Tyto skupiny pak můžete použít v zásadách certifikační autority.
+* Pokud nemůžete používat připojené organizace v rámci správy nároků, vytvořte skupinu zabezpečení Azure AD nebo skupinu Microsoft 365 pro každou organizaci partnera, se kterou pracujete. Přiřaďte všechny uživatele z tohoto partnera ke skupině. Tyto skupiny pak můžete použít v zásadách podmíněného přístupu.
 
-* Vytvořte co nejvíce zásad certifikační autority. U aplikací, které mají stejné požadavky na přístup, je přidejte do stejných zásad.  
+* Vytvořte co nejvíce zásad podmíněného přístupu. U aplikací, které mají stejné požadavky na přístup, je přidejte do stejných zásad.  
 ‎ 
    > [!NOTE]
-   > Zásady certifikační autority můžou platit maximálně 250 aplikací. Pokud mají více než 250 aplikací stejné požadavky na přístup, vytvořte duplicitní zásady. Zásada A bude platit pro aplikace 1-250, zásada B se bude vztahovat na aplikace 251-500 atd.
+   > Zásady podmíněného přístupu se můžou vztahovat na maximálně 250 aplikací. Pokud mají více než 250 aplikací stejné požadavky na přístup, vytvořte duplicitní zásady. Zásada A bude platit pro aplikace 1-250, zásada B se bude vztahovat na aplikace 251-500 atd.
 
 * Jasně pojmenujte zásady specifické pro externí přístup s konvencí pojmenování. Jedna konvence pojmenování je *ExternalAccess_actiontaken_AppGroup*. Například ExternalAccess_Block_FinanceApps.
 
 ## <a name="block-all-external-users-from-resources"></a>Blokování všech externích uživatelů z prostředků
 
-Externím uživatelům můžete zablokovat přístup k určitým sadám prostředků pomocí zásad certifikační autority. Jakmile určíte sadu prostředků, pro které chcete blokovat přístup, vytvořte zásadu.
+Externím uživatelům můžete zablokovat přístup k určitým sadám prostředků se zásadami podmíněného přístupu. Jakmile určíte sadu prostředků, pro které chcete blokovat přístup, vytvořte zásadu.
 
 Vytvoření zásady, která zablokuje přístup pro externí uživatele do sady aplikací:
 

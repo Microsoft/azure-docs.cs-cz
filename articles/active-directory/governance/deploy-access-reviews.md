@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746299"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932431"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
 
@@ -333,9 +333,9 @@ Skupiny, které jsou synchronizované z místní služby Active Directory, nemů
 > [!NOTE]
 > Doporučujeme definovat obchodní zásady, které definují způsob vytvoření skupin, abyste zajistili vymazání vlastnictví skupiny a zodpovědnosti při běžné kontrole členství. 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>Kontrola členství ve skupinách vyloučení v zásadách certifikační autority 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Kontrola členství ve skupinách vyloučení v zásadách podmíněného přístupu 
 
-V některých případech se zásady podmíněného přístupu (CA), které jsou navržené pro zajištění zabezpečení sítě, nepoužijí pro všechny uživatele. Například zásada certifikační autority, která umožňuje uživatelům přihlašovat se jenom v podnikové síti, se nemusí vztahovat k prodejnímu týmu, který se intenzivně rozchází. V takovém případě by se členové prodejního týmu umístili do skupiny a tato skupina by byla vyloučena ze zásad certifikační autority. 
+Existují situace, kdy zásady podmíněného přístupu navržené pro zajištění zabezpečení sítě nebudou platit pro všechny uživatele. Například zásada podmíněného přístupu, která umožňuje uživatelům přihlašovat se jenom v podnikové síti, se nemusí vztahovat k prodejnímu týmu, který se intenzivně rozchází. V takovém případě by se členové prodejního týmu umístili do skupiny a tato skupina by se vyloučila ze zásad podmíněného přístupu. 
 
 Pravidelně kontrolujte Toto členství ve skupině, protože vyloučení představuje potenciální riziko, pokud jsou z tohoto požadavku vyloučeny chybné členy.
 

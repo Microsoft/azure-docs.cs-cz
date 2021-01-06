@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862448"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932414"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -3733,7 +3733,7 @@ Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete
 
 **Zadejte:** Nová **Kategorie služby funkce:** další **schopnost produktu:** adresář
 
-Nové, podrobné pokyny k nasazení Azure Active Directory (Azure AD), včetně samoobslužného resetování hesla (SSPR), jednotného přihlašování (SSO), podmíněného přístupu (CA), proxy aplikací, zřizování uživatelů, Active Directory Federation Services (AD FS) (ADFS) k předávacímu ověřování (PTA) a službě AD FS pro synchronizaci hodnot hash (KOSMETICE).
+Nové, podrobné pokyny k nasazení Azure Active Directory (Azure AD), včetně samoobslužného resetování hesla (SSPR), jednotného přihlašování (SSO), podmíněného přístupu, proxy aplikace, zřizování uživatelů, Active Directory Federation Services (AD FS) (AD FS) k předávacímu ověřování (PTA) a synchronizaci hodnot hash (kosmetice) ve službě AD FS ().
 
 Průvodce nasazením zobrazíte tak, že přejdete do úložiště [Průvodce nasazením identity](./active-directory-deployment-plans.md) na GitHubu. Chcete-li poskytnout zpětnou vazbu k průvodcům při nasazení, použijte [formulář zpětné vazby plánu nasazení](https://aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy týkající se průvodců nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 

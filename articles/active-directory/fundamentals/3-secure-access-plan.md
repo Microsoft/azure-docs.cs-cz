@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744024"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932516"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. vytvoření plánu zabezpečení pro externí přístup 
 
@@ -134,7 +134,7 @@ I když budou vaše zásady vysoce přizpůsobené vašim potřebám, vezměte v
 
 * **Microsoft 365 skupiny** Nastavte [Zásady vypršení platnosti skupiny](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) pro Microsoft 365 skupiny, na které se přizvaní externí uživatelé. 
 
-* **Další možnosti**. Pokud mají externí uživatelé přístup mimo balíčky pro přístup nebo Microsoft 365 skupiny oprávnění pro správu, nastavte obchodní proces na kontrolu, kdy by se měly účty vystavovat jako neaktivní nebo odstraněné. Například:
+* **Další možnosti**. Pokud mají externí uživatelé přístup mimo balíčky pro přístup nebo Microsoft 365 skupiny oprávnění pro správu, nastavte obchodní proces na kontrolu, kdy by se měly účty vystavovat jako neaktivní nebo odstraněné. Příklad:
 
    * Odeberte možnost přihlašování pro libovolný účet, ke kterému nejste přihlášení, a to po dobu 90 dnů.
 
@@ -175,7 +175,7 @@ Azure AD P2 a Microsoft 365 E5 mají úplnou sadu nástrojů zabezpečení a zá
 | Správa nároků| **Přidat uživatele prostřednictvím přiřazení nebo samoobslužného přístupu**| **Přístupové balíčky**| **Přístupové balíčky**|  |
 | Skupina Office 365| | Přístup k lokalitám (a souvisejícímu obsahu), který je součástí skupiny| Přístup k týmům (a souvisejícímu obsahu), který je součástí skupiny|  |
 | Popisky citlivosti| | **Ruční a automatické klasifikace a omezení přístupu**| **Ruční a automatické klasifikace a omezení přístupu**| **Ruční a automatické klasifikace a omezení přístupu** |
-| Skupiny zabezpečení služby Azure AD| **Zásady certifikační autority pro přístup, které nejsou zahrnuté v balíčcích přístupu**| | |  |
+| Skupiny zabezpečení služby Azure AD| **Zásady podmíněného přístupu pro přístup, které nejsou zahrnuté v balíčcích přístupu**| | |  |
 
 
 ### <a name="entitlement-management"></a>Správa nároků 
@@ -195,7 +195,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 | Spolupráce B2B Azure AD| **Pozvání prostřednictvím e-mailu, jednorázového hesla, samoobslužné služby**| Přímá federace B2B| **Pravidelná kontrola na partnera**| Odebrat účet<br>Omezit přihlášení |
 | Skupiny Microsoft nebo Office 365| | | | Vypršení platnosti nebo odstranění skupiny.<br>Odebrání ze skupiny |
 | Skupiny zabezpečení| | **Přidat externí uživatele do skupin zabezpečení (org, tým, projekt atd.)**| |  |
-| Zásady podmíněného přístupu| | **Zásady certifikační autority pro přihlášení externích uživatelů**| |  |
+| Zásady podmíněného přístupu| | **Zásady podmíněného přístupu přihlašování pro externí uživatele**| |  |
 
 
  ### <a name="access-to-resources"></a>Přístup k prostředkům.
@@ -204,7 +204,7 @@ Můžete dosáhnout robustního řízení pomocí Azure AD P1 a Microsoft 365 E3
 | - |-|-|-|-|
 | Skupiny Microsoft nebo Office 365| | **Přístup k lokalitám, které jsou součástí skupiny (a přidruženého obsahu)**|**Přístup k týmům, které jsou součástí Microsoft 365 skupiny (a souvisejícího obsahu)**|  |
 | Popisky citlivosti| | Ruční klasifikace a omezení přístupu| Ruční klasifikace a omezení přístupu.| Ruční klasifikace pro omezení a šifrování |
-| Zásady podmíněného přístupu| Zásady certifikační autority pro řízení přístupu| | |  |
+| Zásady podmíněného přístupu| Zásady podmíněného přístupu pro řízení přístupu| | |  |
 | Další metody| | Omezte přístup k webu služby SharePoint pomocí skupin zabezpečení.<br>Zakáže přímé sdílení.| **Omezení externích pozvánek v rámci týmů**|  |
 
 
