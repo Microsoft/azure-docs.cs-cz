@@ -1,5 +1,5 @@
 ---
-title: Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
+title: Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653448"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955327"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 
 GitOps, jak se týká Kubernetes, je postup, který deklaruje požadovaný stav konfigurace Kubernetes (nasazení, obory názvů atd.) v úložišti Git následovaným nasazením těchto konfigurací na základě požadavků na vyžádání do clusteru pomocí operátoru. Tento dokument popisuje nastavení takových pracovních postupů u clusterů Kubernetes s podporou ARC Azure.
 
@@ -29,7 +29,7 @@ Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou b
 
 Tato úvodní příručka vás provede použitím sady konfigurací s oborem Správce clusteru.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster Kubernetes s povoleným připojením k Arc Azure. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start pro připojení clusteru](./connect-cluster.md).
 
@@ -150,7 +150,7 @@ Pokud chcete konfiguraci přizpůsobit, můžete použít více parametrů:
 
 `--helm-operator-chart-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 1.2.0 '.
 
-`--operator-namespace` : *Volitelný* název oboru názvů operátoru. Výchozí: výchozí
+`--operator-namespace` : *Volitelný* název oboru názvů operátoru. Výchozí: výchozí. Maximální počet 23 znaků.
 
 `--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```.
 
@@ -169,12 +169,6 @@ Možnosti podporované v--operator-params
 | --Git-email  | E-mail, který se má použít pro potvrzení Git |
 
 * Pokud nejsou nastavené možnosti--Git-User nebo--Git-email (což znamená, že nechcete, aby tok zapisoval do úložiště), pak bude automaticky nastavená možnost--Git-ReadOnly (Pokud jste ho ještě nastavili).
-
-* Pokud má enableHelmOperator hodnotu true, pak operatorInstanceName + operatorNamespace řetězce nesmí být v kombinaci 47 znaků.  Pokud se tomuto limitu nebudete řídit, zobrazí se následující chyba:
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 Další informace najdete v [dokumentaci ke službě tokem](https://aka.ms/FluxcdReadme).
 
@@ -251,7 +245,7 @@ Během procesu zřizování se `sourceControlConfiguration` přesunou mezi něko
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Použít konfiguraci z privátního úložiště Git
 
-Pokud používáte privátní úložiště Git, musíte v úložišti nakonfigurovat veřejný klíč SSH. Veřejný klíč můžete nakonfigurovat buď v úložišti Git, nebo v rámci uživatele git, který má přístup k úložišti. Veřejný klíč SSH bude buď ten, který poskytnete, nebo ten, který vygeneruje tok.
+Pokud používáte privátní úložiště Git, musíte v úložišti nakonfigurovat veřejný klíč SSH. Veřejný klíč můžete nakonfigurovat buď na konkrétním úložišti Git, nebo na uživateli Git, který má přístup k úložišti. Veřejný klíč SSH bude buď ten, který poskytnete, nebo ten, který vygeneruje tok.
 
 **Získání vlastního veřejného klíče**
 
@@ -260,7 +254,7 @@ Pokud jste vygenerovali vlastní klíče SSH, pak už máte privátní a veřejn
 **Získání veřejného klíče pomocí Azure CLI (užitečné, pokud tok vygeneruje klíče)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

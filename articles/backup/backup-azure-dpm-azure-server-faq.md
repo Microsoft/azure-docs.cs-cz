@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172572"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954987"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 
@@ -23,11 +23,11 @@ Yes.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžu server zaregistrovat do více trezorů?
 
-Ne. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
+No. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžu použít DPM k zálohování aplikací v Azure Stack?
 
-Ne. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
+No. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Je-li nainstalován agent Azure Backup pro ochranu souborů a složek, je možné nainstalovat aplikaci System Center DPM pro zálohování místních úloh do Azure?
 
@@ -56,6 +56,10 @@ Pro ochranu VMware/Hyper-V nepotřebujete samostatnou licenci.
 
 - Pokud jste zákazníkem nástroje System Center, použijte k ochraně virtuálních počítačů VMware aplikaci System Center Data Protection Manager (DPM).
 - Pokud nejste zákazníkem nástroje System Center, můžete k ochraně virtuálních počítačů VMware použít Azure Backup Server (průběžné platby).
+
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>Můžu obnovit zálohu virtuálního počítače s technologií Hyper-V nebo VMware, který je uložený v Azure, do Azure jako virtuální počítač Azure?
+
+Ne, to není momentálně možné. Obnovit se dá jenom na místního hostitele.
 
 ## <a name="sharepoint"></a>SharePoint
 

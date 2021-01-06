@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181417"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955514"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Snowflake a
 > * Zřizování skupin a členství ve skupinách v Snowflake
 > * [Jednotné přihlašování](./snowflake-tutorial.md) k Snowflake (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -160,11 +160,17 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * Snowflake vygenerované tokeny SCIM vyprší za 6 měsíců. Uvědomte si, že je potřeba aktualizovat je, než vyprší platnost, aby zřizování synchronizace pokračovala v práci. 
 
+## <a name="troubleshooting-tips"></a>Tipy pro řešení problémů
+
+* **Rozsahy IP adres** 
+
+   Služba zřizování Azure AD aktuálně funguje v rámci určitého rozsahu IP adres. V případě potřeby ale můžete omezit další rozsahy IP adres a přidat tyto konkrétní rozsahy IP adres do povolených vaší aplikace, aby bylo možné do vaší aplikace Povolit tok přenosů ze služby zřizování Azure AD. Přečtěte si dokumentaci v části [rozsahy IP adres](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+
 ## <a name="change-log"></a>Protokol změn
 
 * 07/21/2020: Obnovitelné odstranění pro všechny uživatele (prostřednictvím aktivního atributu).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

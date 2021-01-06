@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617353"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955004"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -25,6 +25,44 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="december-2020"></a>Prosinec 2020
+
+Tady je postup, který se změnil v prosinci 2020: 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor pro virtuální počítač s Windows
+
+Verze Public Preview pro Azure Monitor pro virtuální plochu Windows je teď k dispozici. Tato nová funkce zahrnuje robustní řídicí panel založený na Azure Monitor sešitech, které odborníkům v oblasti IT pomůžou pochopit prostředí virtuálních počítačů s Windows. Další podrobnosti najdete [na našem blogu](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) . 
+
+### <a name="azure-resource-manager-template-change"></a>Změna šablony Azure Resource Manager 
+
+V nejnovější aktualizaci jsme odebrali všechny parametry veřejné IP adresy z šablony Azure Resource Manager pro vytváření a zřizování fondů hostitelů. Důrazně doporučujeme, abyste se vyhnuli použití veřejných IP adres pro virtuální počítače s Windows a zajistili tak zabezpečení nasazení. Pokud se vaše nasazení spoléhalo na veřejné IP adresy, budete ho muset znovu nakonfigurovat tak, aby místo toho používal soukromé IP adresy, jinak nasazení nebude fungovat správně.
+
+### <a name="msix-app-attach-public-preview"></a>MSIX aplikace připojit veřejnou verzi Preview 
+
+MSIX App Attach je další služba, která zahájila svůj veřejný náhled v tomto měsíci. MSIX App Attach je služba, která dynamicky prezentuje MSIX aplikace pro virtuální počítače hostitele relace virtuálních počítačů s Windows. Další podrobnosti najdete [na našem blogu](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) . 
+
+### <a name="screen-capture-protection"></a>Ochrana snímku obrazovky 
+
+Tento měsíc také označil začátek veřejné verze Preview pro ochranu snímku obrazovky. Pomocí této funkce můžete zabránit zachycení citlivých informací na koncových bodech klienta. Vyzkoušejte si ochranu snímku obrazovky tak, že na [tuto stránku](https://aka.ms/WVDScreenCaptureProtection)zadáte.  
+
+### <a name="built-in-roles"></a>Vestavěné role
+
+Přidali jsme nové předdefinované role pro virtuální plochu Windows pro oprávnění správce. Další informace najdete v tématu [předdefinované role pro virtuální počítač s Windows](rbac.md). 
+
+### <a name="application-group-limit-increase"></a>Zvýšení limitu skupiny aplikací
+
+Zvýšili jsme výchozí limit skupiny aplikací na Azure Active Directory tenant na 200 skupin.
+
+### <a name="client-updates-for-december-2020"></a>Aktualizace klienta pro prosinec 2020
+
+Vydali jsme nové verze následujících klientů: 
+
+- Android
+- macOS
+- Windows
+
+Další informace o aktualizacích klientů najdete v tématu [aktualizace klienta](whats-new.md#client-updates).
 
 ## <a name="november-2020"></a>Listopad 2020
 
@@ -155,7 +193,7 @@ Další informace o nových funkcích najdete v [tomto blogovém příspěvku](h
 
 Nejnovější verze nástroje pro automatické škálování, který je ve verzi Preview, je teď všeobecně dostupná. Tento nástroj používá účet Azure Automation a aplikaci logiky Azure k automatickému vypnutí a restartování virtuálních počítačů hostitele relace v rámci fondu hostitelů, což snižuje náklady na infrastrukturu. Další informace najdete v informacích o [škálování hostitelů relací pomocí Azure Automation](set-up-scaling-script.md).
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět následující akce: 
 

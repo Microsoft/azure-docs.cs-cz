@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857371"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955191"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
@@ -48,6 +48,11 @@ V tabulce **školení** se zobrazí nová položka, která odpovídá novému mo
 
 Podívejte se na [postupy](how-to-custom-speech-evaluate-data.md) při vyhodnocování a zlepšování Custom Speech přesnosti modelu. Pokud se rozhodnete přesnost testování, je důležité vybrat akustickou datovou sadu, která je odlišná od modelu, který jste použili s modelem, a získat tak realistickou představu o výkonu modelu.
 
+> [!NOTE]
+> Základní modely i vlastní modely lze použít pouze do určitého data (viz [životní cyklus modelu](custom-speech-overview.md#model-lifecycle)). Speech Studio zobrazuje toto datum ve sloupci **vypršení platnosti** pro každý model a koncový bod. Po uplynutí této žádosti do koncového bodu nebo ke dávkovému přepisu může dojít k selhání nebo návratu do základního modelu.
+>
+> Přeškolujte svůj model pomocí nejstaršího základního modelu, který vám umožní využít vylepšení přesnosti a vyhnout se tomu, že váš model vyprší.
+
 ## <a name="deploy-a-custom-model"></a>Nasazení vlastního modelu
 
 Po nahrání a kontrole dat, vyhodnocení přesnosti a výuku vlastního modelu můžete nasadit vlastní koncový bod pro použití s aplikacemi, nástroji a produkty. 
@@ -63,7 +68,7 @@ V dalším kroku vyberte **přidat koncový bod** a zadejte **název** a **Popis
 
 V dalším kroku vyberte **vytvořit**. Tato akce vrátí na stránku **nasazení** . Tabulka teď obsahuje položku, která odpovídá vašemu vlastnímu koncovému bodu. Stav koncového bodu zobrazuje aktuální stav. Vytvoření instance nového koncového bodu pomocí vlastních modelů může trvat až 30 minut. Když se změní stav nasazení na **dokončeno**, bude koncový bod připravený k použití.
 
-Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace specifické pro váš koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a vzorový kód.
+Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace specifické pro váš koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a vzorový kód. Před tímto datem si poznamenejte datum vypršení platnosti a aktualizujte model koncového bodu, aby se zajistila nepřerušovaná služba.
 
 ## <a name="view-logging-data"></a>Zobrazit data protokolování
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364934"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955038"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Nejčastější dotazy k službě Analýza textu pro rozpoznávání
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Nejčastější dotazy týkající se rozhraní API pro analýzu textu
 
- Získejte odpovědi na nejčastější dotazy týkající se konceptů, kódu a scénářů souvisejících s rozhraní API pro analýzu textu pro Microsoft Cognitive Services v Azure.
+ Získejte odpovědi na nejčastější dotazy týkající se konceptů, kódu a scénářů souvisejících s rozhraní API pro analýzu textu v Azure Cognitive Services.
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>Může Analýza textu identifikovat jízlivosti?
 
@@ -47,11 +47,21 @@ Výstup se obecně skládá z podstatných jmen a objektů věty. Výstup je uve
 
 Vylepšení modelů a algoritmů se oznamují, pokud je změna hlavní, nebo v tichém zahrnutí do služby, pokud je aktualizace nepatrná. V průběhu času se můžete setkat s tím, že stejný textový vstup má za následek jiné mínění skóre nebo výstup klíčových frází. Jedná se o běžné a úmyslné důsledky používání prostředků spravovaného strojového učení v cloudu.
 
+## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance
+
+### <a name="is-text-analytics-service-zone-resilient"></a>Je Analýza textu zóny služby odolné?
+
+Yes. Služba Analýza textu je ve výchozím nastavení odolná proti zónám.
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Analýza textu, aby byla odolná proti zóně?
+
+Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V zóně – odolnost pro Analýza textu prostředky je ve výchozím nastavení dostupná a spravovaná samotnými službami.
+
 ## <a name="next-steps"></a>Další kroky
 
 Máte dotaz ohledně chybějící funkce nebo funkce? Na našem webu [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)si můžete vyžádat nebo hlasovat.
 
 ## <a name="see-also"></a>Viz také
 
- [StackOverflow: rozhraní API pro analýzu textu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: rozhraní API pro analýzu textu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

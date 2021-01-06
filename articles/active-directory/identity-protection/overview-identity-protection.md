@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033336"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955395"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -49,13 +49,16 @@ Identity Protection identifikuje rizika v následujících klasifikacích:
 
 | Typ detekce rizika | Popis |
 | --- | --- |
-| Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
-| Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
+| Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Propojená IP adresa pro malware | Přihlaste se přes propojenou IP adresu malwaru. |
+| Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
 | Nevrácená pověření | Označuje, že byly Nevráceny platné přihlašovací údaje uživatele. |
 | Sprej hesla | Označuje, že více uživatelských jmen se provádí v jednotném a hrubou silou pomocí běžných hesel. |
 | Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
+| Nová země | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). |
+| Aktivita z anonymní IP adresy | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). |
+| Podezřelé přesměrování doručené pošty | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). |
 
 Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).
 
@@ -104,15 +107,15 @@ Správci podmíněného přístupu můžou také vytvářet zásady, které při
 
 | Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Ano | 
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Ano |
-| Sestavy zabezpečení | Přehled |  Ne | Ne |Ano |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Ano | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Ano |
+| Sestavy zabezpečení | Přehled |  No | No |Ano |
 | Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
 | Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
-| Sestavy zabezpečení | Detekce rizik   | Ne | Omezené informace. Žádný zásobník podrobností| Full access|
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Ano |
-| Oznámení | Týdenní výtah| Ne | Ne | Ano | 
-| | Zásady registrace MFA | Ne | Ne | Ano |
+| Sestavy zabezpečení | Detekce rizik   | No | Omezené informace. Žádný zásobník podrobností| Full access|
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Ano |
+| Oznámení | Týdenní výtah| No | No | Ano | 
+| | Zásady registrace MFA | No | No | Ano |
 
 Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

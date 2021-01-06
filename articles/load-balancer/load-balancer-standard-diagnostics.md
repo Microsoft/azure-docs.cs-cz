@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: da4c5f7891b518f4e6393f3fb4e153d464f4f2a2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697556"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955531"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -41,7 +41,7 @@ Různé konfigurace Standard Load Balancer poskytují následující metriky:
 | Stav sondy stavu | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení nebo filtrované zobrazení jednotlivých koncových bodů instancí ve fondu nástroje pro vyrovnávání zatížení. Můžete zjistit, jak Load Balancer vidí stav vaší aplikace na základě vaší konfigurace sondy stavu. |  Průměr |
 | Pakety SYN (synchronizace) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení přes protokol TCP (Transmission Control Protocol) ani nepracuje s toky paketů protokolu TCP nebo UDP. Toky a jejich metody handshake probíhají vždy mezi zdrojem a instancí virtuálního počítače. Při řešení potíží se scénáři souvisejícími s protokolem TCP můžete využít čítače paketů SYN, pomocí kterých můžete zjistit množství pokusů o přihlášení přes protokol TCP. Tato metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
 | Připojení SNAT | Veřejný nástroj pro vyrovnávání zatížení |Standard Load Balancer hlásí počet odchozích toků maskovaných za front-end veřejné IP adresy. Porty překladu adres na základě zdroje (SNAT) jsou vyčerpatelný prostředek. Tato metrika může poskytnout další informace o tom, do jaké míry se vaše aplikace spoléhá na SNAT u odchozích toků. Hlásí se čítače úspěšných a neúspěšných odchozích toků SNAT, které je možné použít k řešení potíží a porozumění stavu odchozích toků.| Průměr |
-| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Vypočítat. |
+| Přidělené porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Průměr: |
 | Používané porty SNAT | Veřejný nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet portů SNAT, které se využívají na instanci back-endu. | Průměr | 
 | Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí objem zpracovaných dat na front-end. Můžete si všimnout nerovnoměrné distribuce bajtů napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Průměr |
 | Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí množství zpracovaných paketů na front-end.| Průměr |
@@ -231,7 +231,14 @@ Graf umožňuje zákazníkům řešit vlastní řešení bez nutnosti odhadován
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Stav prostředku
 
-Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**.
+Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**. Vyhodnocuje se každé **dvě minuty** měřením dostupnosti dat, která určuje, jestli jsou k dispozici koncové body vyrovnávání zatížení front-endu.
+
+| Stav prostředku | Popis |
+| --- | --- |
+| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
+| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
+| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a jakmile se přijmou data, měl by odrážet správný stav. |
 
 Zobrazení stavu prostředků veřejné Standard Load Balancer:
 1. Vyberte **monitor**  >  **Service Health**.
@@ -254,12 +261,6 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
  
 Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](../service-health/resource-health-overview.md). Konkrétní stavy pro Azure Load Balancer jsou uvedené v následující tabulce: 
 
-| Stav prostředku | Popis |
-| --- | --- |
-| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti DataPath ohlásila méně než 90%, ale více než 25% stavu pro alespoň dvě minuty. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost.
-| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost. |
-| Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a odráží správný stav, jakmile budou data přijata. |
 
 ## <a name="next-steps"></a>Další kroky
 

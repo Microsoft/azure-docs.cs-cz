@@ -4,15 +4,15 @@ description: Vytvářejte a spravujte uživatele senzorů a místní konzoly pro
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839288"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955077"
 ---
 # <a name="about-defender-for-iot-console-users"></a>O programu Defender pro uživatele konzoly IoT
 
@@ -89,8 +89,8 @@ Tato část popisuje, jak definovat uživatele. CyberX, podpora a správci můž
 Definování uživatele:
 
 1. V levém podokně senzoru nebo místní konzoly pro správu vyberte **Uživatelé**.
-2. V okně **Uživatelé** vyberte **vytvořit uživatele**.
-3. V podokně **vytvořit uživatele** definujte následující parametry:
+1. V okně **Uživatelé** vyberte **vytvořit uživatele**.
+1. V podokně **vytvořit uživatele** definujte následující parametry:
 
    - **Uživatelské jméno**: zadejte uživatelské jméno.
    - **E-mail**: Zadejte e-mailovou adresu uživatele.
@@ -122,7 +122,7 @@ Přístup k příkazu:
 
 1. Přihlaste se k rozhraní příkazového řádku pro senzor nebo místní konzolu pro správu pomocí programu Defender pro přihlašovací údaje správce IoT.
 
-2. Zadejte `sudo nano /var/cyberx/properties/authentication`.
+1. Zadejte `sudo nano /var/cyberx/properties/authentication`.
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ Přístup k příkazu:
 Chcete-li funkci zakázat, změňte `infinity_session_expiration = true` na `infinity_session_expiration = false` .
 
 Chcete-li aktualizovat účetní období odhlášení, upravte `= <number>` hodnotu na požadovaný čas.
-
 
 ## <a name="track-user-activity"></a>Sledovat aktivitu uživatele 
 
@@ -171,11 +170,11 @@ Konfigurace služby Active Directory:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Zobrazení nastavení systému služby Active Directory.":::
 
-2. V podokně **nastavení systému** vyberte **Active Directory**.
+1. V podokně **nastavení systému** vyberte **Active Directory**.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Upravte konfigurace služby Active Directory.":::
 
-3. V dialogovém okně **Upravit konfiguraci služby Active Directory** vyberte možnost **Povolit integraci služby Active Directory**–  >  **Uložit**. Dialogové okno **Upravit konfiguraci služby Active Directory** se rozbalí a teď můžete zadat parametry pro konfiguraci služby Active Directory.
+1. V dialogovém okně **Upravit konfiguraci služby Active Directory** vyberte možnost **Povolit integraci služby Active Directory**–  >  **Uložit**. Dialogové okno **Upravit konfiguraci služby Active Directory** se rozbalí a teď můžete zadat parametry pro konfiguraci služby Active Directory.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Zadejte parametry pro konfiguraci služby Active Directory.":::
 
@@ -184,7 +183,7 @@ Konfigurace služby Active Directory:
     > - Pro všechny parametry služby Active Directory používejte pouze malá a velká písmena. Používejte malá písmena, i když konfigurace ve službě Active Directory používají velká písmena.
     > - Pro stejnou doménu nemůžete nakonfigurovat protokoly LDAP i LDAP. Můžete však použít obojí pro různé domény současně.
 
-4. Nastavte parametry serveru služby Active Directory následujícím způsobem:
+1. Nastavte parametry serveru služby Active Directory následujícím způsobem:
 
    | Parametr serveru | Popis |
    |--|--|
@@ -194,9 +193,79 @@ Konfigurace služby Active Directory:
    | Skupiny služby Active Directory | Zadejte názvy skupin, které jsou definované v konfiguraci služby Active Directory na serveru LDAP. |
    | Důvěryhodné domény | Chcete-li přidat důvěryhodnou doménu, přidejte název domény a typ připojení důvěryhodné domény. <br />Důvěryhodné domény můžete nakonfigurovat jenom pro uživatele, kteří byli definováni v části Uživatelé. |
 
-5. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
-6. Chcete-li přidat důvěryhodný server, vyberte možnost **Přidat server** a nakonfigurujte jiný server.
+1. Chcete-li přidat důvěryhodný server, vyberte možnost **Přidat server** a nakonfigurujte jiný server.
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Resetování hesla uživatele pro senzor nebo místní konzolu pro správu
+
+### <a name="cyberx-or-support-user"></a>CyberX nebo podpora uživatele
+
+K funkci **obnovení hesla** mají přístup jenom **CyberX** a uživatelé **podpory** . Pokud uživatel **CyberX** nebo **Podpora** zapomněl heslo, můžete heslo resetovat prostřednictvím možnosti **obnovení hesla** na přihlašovací stránce Defender for IoT.
+
+Resetování hesla pro uživatele CyberX nebo podpory:
+
+1. Na přihlašovací obrazovce Defender for IoT vyberte  **obnovení hesla**. Otevře se obrazovka **pro obnovení hesla** .
+
+1. Vyberte buď **CyberX** , nebo **podporu**, a zkopírujte jedinečný identifikátor.
+
+1. Přejděte na Azure Portal a vyberte **weby a senzory**.  
+
+1. Na horním panelu nástrojů vyberte ikonu **filtru předplatného** :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  a vyberte předplatné, ke kterému je senzor připojený.
+
+1. Vyberte kartu **obnovit místní heslo konzoly pro správu** .
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Kliknutím na tlačítko obnovit místní správu Stáhněte soubor pro obnovení.":::
+
+1. Zadejte jedinečný identifikátor, který jste dostali na obrazovce **pro obnovení hesla** , a vyberte **obnovit**. `password_recovery.zip`Soubor se stáhne.
+
+    > [!NOTE]
+    > Neměňte soubor pro obnovení hesla. Jedná se o podepsaný soubor a nebude fungovat, pokud s ním budete manipulovat.
+
+1. Na obrazovce **obnovení hesla** vyberte **Odeslat**. Otevře se okno **Odeslat soubor pro obnovení hesla** .
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Pokud chcete získat nové heslo, nahrajte soubor pro obnovení.":::
+
+1. Vyberte **Procházet** a vyhledejte `password_recovery.zip` soubor, nebo ho přetáhněte `password_recovery.zip` do okna.
+
+    > [!NOTE]
+    > Může se zobrazit chybová zpráva oznamující, že soubor není platný. Chcete-li opravit tuto chybovou zprávu, ujistěte se, že jste před stažením `password_recovery.zip` a stažení znovu vybrali správné předplatné a znovu si ho stáhněte.  
+
+1. Pak se zobrazí možnost **Další** a uživatel a heslo generované systémem pro konzolu pro správu.
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>Správce, analytik zabezpečení a uživatel jen pro čtení
+
+Jenom pro čtení a analytici zabezpečení nemůžou resetovat svoje heslo a musí se obrátit na uživatele s rolemi správce, podpora nebo CyberX, aby se resetoval jeho heslo. Uživatel s právy pro správu musí požádat o resetování hesla v **CyberX** nebo **podpoře** uživatele.
+
+Resetování hesla uživatele na senzoru:
+
+1. Uživatel role správce, podpory nebo CyberX by se měl přihlásit ke senzoru.
+
+1. Na levém panelu vyberte **Uživatelé** .
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="V levém podokně vyberte možnost uživatel.":::
+
+1. Vyhledejte uživatele a v rozevírací nabídce **Akce** vyberte možnost **Upravit** .
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="v rozevírací nabídce Akce vyberte Upravit.":::
+
+1. Do pole **nové heslo** zadejte nové heslo a **potvrďte nové** heslo.
+
+1. Vyberte **Aktualizovat**.
+
+Resetování hesla uživatele v místní konzole pro správu:
+
+1. Uživatel role správce, podpory nebo CyberX by se měl přihlásit ke senzoru.
+
+1. Na levém panelu vyberte **Uživatelé** .
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="Na levém panelu vyberte možnost uživatele.":::
+
+1. Vyhledejte uživatele a vyberte ikonu upravit :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: .
+
+1. Do pole **nové heslo** zadejte nové heslo a **potvrďte nové** heslo.
+
+1. Vyberte **Aktualizovat**.
 
 ## <a name="see-also"></a>Viz také
 

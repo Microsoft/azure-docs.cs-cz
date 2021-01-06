@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936709"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955361"
 ---
 # <a name="offline-deployment-overview"></a>Přehled offline nasazení
 
@@ -22,7 +22,7 @@ Image kontejnerů používané při vytváření řadiče dat ARC Azure, spravov
 
 Vzhledem k tomu, že jsou k dispozici měsíční aktualizace pro datové služby s podporou ARC Azure a existuje velký počet imagí kontejneru, je nejlepší provést tento proces nastavování, označování a vkládání imagí kontejneru do soukromého registru kontejnerů pomocí skriptu.  Skript můžete buď automatizovat, nebo spustit ručně.
 
-[Vzorový skript](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) najdete v úložišti GitHub Azure ARC.
+[Vzorový skript](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) najdete v úložišti GitHub Azure ARC.
 
 > [!NOTE]
 > Tento skript vyžaduje instalaci Pythonu a [Docker CLI](https://docs.docker.com/install/).
@@ -36,7 +36,7 @@ Skript bude interaktivně vyzvat k zadání následujících informací.  Příp
 |Zadejte uživatelské jméno pro kontejner zdrojového kontejneru – stiskněte klávesu ENTER pro použití None:|SOURCE_DOCKER_USERNAME|Zadejte hodnotu jenom v případě, že nasazujete image kontejneru ze zdroje, který vyžaduje přihlášení.  Microsoft Container Registry nevyžaduje přihlášení.|
 |Zadejte heslo ke zdrojovému registru kontejneru – stiskněte klávesu ENTER pro použití None:|SOURCE_DOCKER_PASSWORD|Zadejte hodnotu jenom v případě, že nasazujete image kontejneru ze zdroje, který vyžaduje přihlášení.  Microsoft Container Registry nevyžaduje přihlášení. Toto je okno s maskováním hesla.  Heslo se nezobrazí, pokud ho zadáte nebo vložíte do.|
 |Zadejte značku image kontejneru pro obrázky na zdrojovém stisku klávesy ENTER pro použití `<current monthly release tag>` :|SOURCE_DOCKER_TAG|Výchozí název značky se aktualizuje měsíčně, aby odrážel měsíc a rok aktuální verze v Microsoft Container Registry.|
-|Zadejte název DNS nebo IP adresu cílového registru kontejneru:|TARGET_DOCKER_REGISTRY|Název DNS cílového registru nebo IP adresa.  Jedná se o registr, _do_kterého se budou obrázky přidávají.|
+|Zadejte název DNS nebo IP adresu cílového registru kontejneru:|TARGET_DOCKER_REGISTRY|Název DNS cílového registru nebo IP adresa.  Jedná se o registr, _do_ kterého se budou obrázky přidávají.|
 |Zadejte cílové úložiště registru kontejneru:|TARGET_DOCKER_REPOSITORY|Úložiště v cílovém registru, do kterého se mají vložit image|
 |Zadejte uživatelské jméno pro cílový registr kontejneru – stiskněte klávesu ENTER pro použití None:|TARGET_DOCKER_USERNAME|Uživatelské jméno, které se používá k přihlášení do cílového registru kontejneru.|
 |Zadejte heslo pro cílový registr kontejneru – stiskněte klávesu ENTER pro použití None:|TARGET_DOCKER_PASSWORD|Heslo, které se používá k přihlášení do cílového registru kontejneru. Toto je okno s maskováním hesla.  Heslo se nezobrazí, pokud ho zadáte nebo vložíte do.|

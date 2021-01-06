@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916554"
+ms.locfileid: "97955208"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Dávkové testování se sadou příkladů projevy
 
@@ -168,7 +168,7 @@ Dva oddíly v grafu zeleně odpovídaly očekávané předpovědi.
 
 LUIS umožňuje dávkové testování pomocí portálu LUIS a REST API. Koncové body pro REST API jsou uvedeny níže. Informace o dávkovém testování pomocí portálu LUIS najdete v tématu [kurz: dávkové test sady dat](luis-tutorial-batch-testing.md). Použijte níže uvedené úplné adresy URL a nahraďte zástupné hodnoty vlastním klíčem předpovědi LUIS a koncovým bodem. 
 
-Nezapomeňte do hlavičky přidat svůj klíč LUIS `Apim-Subscription-Id` a nastavit `Content-Type` na `application/json` .
+Nezapomeňte do hlavičky přidat svůj klíč LUIS `Ocp-Apim-Subscription-Key` a nastavit `Content-Type` na `application/json` .
 
 ### <a name="start-a-batch-test"></a>Spuštění dávkového testu
 

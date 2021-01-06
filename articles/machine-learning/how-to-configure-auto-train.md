@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954396"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -463,20 +463,22 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
 
 * **`import numpy` v systému Windows** došlo k chybě. v některých prostředích systému Windows se zobrazí chyba při načítání numpy s nejnovější verzí jazyka Python 3.6.8. Pokud se tento problém zobrazí, vyzkoušejte Python verze 3.6.7.
 
-* nepovedlo **`import numpy` se: Podívejte** se na verzi TensorFlow v prostředí automatizovaného conda ml. Podporované verze jsou < 1,13. Pokud je verze >= 1,13, odinstalujte TensorFlow z prostředí. Můžete si ověřit verzi TensorFlow a odinstalovat ji následujícím způsobem –
+* nepovedlo **`import numpy` se: Podívejte** se na verzi TensorFlow v prostředí automatizovaného conda ml. Podporované verze jsou < 1,13. Pokud je verze >= 1,13, odinstalujte TensorFlow z prostředí. Můžete si ověřit verzi TensorFlow a odinstalovat následujícím způsobem:
   1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
   2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
   3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.
   
- * **Spuštění selhalo `jwt.exceptions.DecodeError` s**: přesná chybová zpráva: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
- 
-    Zvažte upgrade na nejnovější verzi sady AutoML SDK: `pip install -U azureml-sdk[automl]` . 
-    
-    Pokud to není životaschopné, podívejte se na verzi PyJWT. Podporované verze jsou < 2.0.0. Pokud je verze >= 2.0.0, odinstalujte PyJWT z prostředí. Můžete si ověřit verzi PyJWT, odinstalovat a nainstalovat správnou verzi následujícím způsobem:
+ * **Spuštění selhalo `jwt.exceptions.DecodeError` s**: přesná chybová zpráva: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` .
+
+    U verzí <= 1.17.0 sady SDK může instalace způsobit nepodporovanou verzi PyJWT. Ověřte verzi PyJWT v prostředí automatizovaného conda ml. Podporované verze jsou < 2.0.0. Verzi PyJWT můžete ověřit následujícím způsobem:
     1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
     2. Zadejte `pip freeze` a vyhledejte `PyJWT` , pokud se nachází, uvedená verze by měla být < 2.0.0
-    3. Pokud uvedená verze není podporovanou verzí, `pip uninstall PyJWT` v příkazovém prostředí a zadejte y pro potvrzení.
-    4. Nainstalujte pomocí `pip install 'PyJWT<2.0.0'` .
+
+    Pokud uvedená verze není podporovanou verzí:
+    1. Zvažte upgrade na nejnovější verzi sady AutoML SDK: `pip install -U azureml-sdk[automl]` .
+    2. Pokud to není životaschopné, odinstalujte PyJWT z prostředí a nainstalujte správnou verzi následujícím způsobem:
+        - `pip uninstall PyJWT` v příkazovém prostředí a zadejte `y` pro potvrzení.
+        - Nainstalujte pomocí `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>Další kroky
 

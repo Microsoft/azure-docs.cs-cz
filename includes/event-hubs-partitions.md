@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce906ad62b51956cb85f854846740fa09e06895d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97665035"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955636"
 ---
 Centrum událostí uspořádá sekvence událostí do jednoho nebo více oddílů. Jakmile přijdete o novější události, přidají se na konec této sekvence. Oddíl si lze představit jako „protokol transakcí“.
 
@@ -21,11 +21,11 @@ Oddíly uchovávají data události obsahující tělo události, uživatelem de
 
 ![Diagram, který zobrazuje starší posloupnost událostí.](./media/event-hubs-partitions/partition.png)
 
-Event Hubs je navržená tak, aby pomáhala při zpracování velmi rozsáhlých událostí a vytváření oddílů pomáhá dvěma způsoby:
+Event Hubs je navržená tak, aby pomáhala při zpracování velkých objemů událostí, a pomáhá s nimi dvěma způsoby:
 
 Nejdřív, i když Event Hubs je služba PaaS, existuje fyzická realita a udržuje protokol, který zachovává pořadí událostí, vyžaduje, aby se tyto události zachovaly společně v podkladovém úložišti a jeho replikách a aby výsledkem byl limit propustnosti pro takový protokol. Vytváření oddílů umožňuje používat pro stejné centrum událostí více paralelních protokolů a vynásobit dostupnou nezpracované propustnosti v/v.
 
-Za druhé, vaše vlastní aplikace musí být schopné udržet se zpracováním objemu událostí, které se odesílají do centra událostí. To může být poměrně složité a vyžaduje značnou kapacitu paralelního zpracování škálované na více instancí. Důvod pro oddíly je stejný, jak je uvedeno výše: kapacita jednoho procesu pro zpracování událostí je omezená, takže budete potřebovat několik procesů a oddíly, jak vaše řešení tyto procesy doručí, a zároveň zajišťuje, aby každá událost měla jasného vlastníka zpracování. 
+Za druhé, vaše vlastní aplikace musí být schopné udržet se zpracováním objemu událostí, které se odesílají do centra událostí. Může být komplexní a vyžaduje značnou kapacitu paralelního zpracování škálované na více instancí. Důvod pro oddíly je stejný, jak je uvedeno výše: kapacita jednoho procesu pro zpracování událostí je omezená, takže budete potřebovat několik procesů a oddíly, jak vaše řešení tyto procesy doručí, a zároveň zajišťuje, aby každá událost měla jasného vlastníka zpracování. 
 
 Event Hubs zachovává události pro nakonfigurovanou dobu uchování, která se vztahuje na všechny oddíly. Události jsou automaticky odebrány po dosažení doby uchování. Pokud zadáte dobu uchování jednoho dne, událost nebude k dispozici přesně 24 hodin poté, co byla přijata. Události nemůžete explicitně odstranit. 
 
@@ -51,7 +51,7 @@ Zadání klíče oddílu umožňuje udržovat související události společně
 
 Posloupnost událostí identifikovaných klíčem oddílu je *datový proud*. Oddíl je multiplexované úložiště protokolu pro mnoho takových datových proudů. 
 
-Počet oddílů centra událostí se dá po vytvoření centra událostí zvýšit, ale při změně mapování klíčů oddílů na změny oddílů se změní i distribuce streamů napříč oddíly, takže byste se měli pokusit, aby se tyto změny nezobrazovaly v případě, že se jedná o relativní pořadí událostí ve vaší aplikaci.
+Počet oddílů centra událostí ve [vyhrazeném Event Hubs clusteru](../articles/event-hubs/event-hubs-dedicated-overview.md) se dá po vytvoření centra událostí [zvýšit](../articles/event-hubs/dynamically-add-partitions.md) , ale distribuce datových proudů napříč oddíly se v době, kdy se provedla, změní na změny oddílů oddílů na oddíly. proto byste se měli pokusit, abyste se těmto změnám vyhnuli, pokud se jedná o relativní pořadí událostí ve vaší aplikaci.
 
 Nastavení počtu oddílů na maximální povolenou hodnotu se měří, ale vždy mějte na paměti, že datové proudy událostí musí být strukturované, aby bylo možné využít více oddílů. Pokud potřebujete zachování absolutního pořadí napříč všemi událostmi nebo jenom několik podproudy, možná nebudete moct využít mnoho oddílů. Mnoho oddílů navíc usnadňuje zpracování na straně sebe složitější. 
 

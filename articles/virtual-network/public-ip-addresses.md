@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169929"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955582"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -55,6 +55,7 @@ Veřejné IP adresy standardní SKU:
 - Zabezpečení je ve výchozím nastavení a uzavřeno pro příchozí provoz. Povoluje výpis příchozích přenosů se [skupinou zabezpečení sítě](security-overview.md#network-security-groups).
 - Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o službě Load Balancer úrovně Standard najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Může být redundantní v zóně (v reklamě ze všech 3 zón) nebo oblastí (lze vytvořit oblast a zaručit ji v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Redundantní IP adresy zóny se dají vytvářet jenom v [oblastech, kde jsou živé zóny dostupnosti tři](https://docs.microsoft.com/azure/availability-zones/az-region) .** IP adresy vytvořené před živými zónami nebudou zóny redundantní.
+- Dá se použít jako IP adresy front-endu pro služby [Vyrovnávání zatížení mezi oblastmi](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) (funkce Preview).
  
 > [!NOTE]
 > Příchozí komunikace se zdrojem standardní skladové položky selže, dokud nevytvoříte a nepřidružíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a výslovně nepovolíte požadovaný příchozí provoz.

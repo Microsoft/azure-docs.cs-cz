@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží se senzorem a místní konzolou pro správu
+title: Řešení potíží se senzory a místní konzolou pro správu
 description: Vyřešte potíže se senzorem a místní konzolou pro správu, abyste vyloučili případné problémy, které můžete mít.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839153"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955429"
 ---
-# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Řešení potíží se senzorem a místní konzolou pro správu
+# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Řešení potíží se senzory a místní konzolou pro správu
 
 Tento článek popisuje základní nástroje pro řešení potíží pro senzor a místní konzolu pro správu. Kromě zde popsaných položek můžete zjistit stav systému následujícími způsoby:
 
@@ -28,22 +28,33 @@ Tento článek popisuje základní nástroje pro řešení potíží pro senzor 
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>Při počátečním přihlášení prozkoumat chybu hesla
 
-Při prvním přihlášení k předkonfigurovanému senzoru šipek budete muset provést následující obnovení hesla:
+Při prvním přihlášení k předkonfigurovanému senzoru šipek budete muset provést obnovení hesla.
 
-1. Na přihlašovací obrazovce Defender for IoT vyberte možnost **obnovení hesla** . 
+Postup obnovení hesla:
 
-   Otevře se obrazovka **pro obnovení hesla** . Tady se zobrazí výzva k výběru uživatele a předplatného a máte jedinečný identifikátor.
+1. Na přihlašovací obrazovce Defender for IoT vyberte  **obnovení hesla**. Otevře se obrazovka **pro obnovení hesla** .
 
-1. Navštivte stránku Defender pro **weby a senzory** a vyberte kartu **obnovit heslo** .
+1. Vyberte buď **CyberX** , nebo **podporu**, a zkopírujte jedinečný identifikátor.
+
+1. Přejděte na Azure Portal a vyberte **weby a senzory**.  
+
+1. Vyberte kartu **obnovit místní heslo konzoly pro správu** .
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Kliknutím na tlačítko obnovit místní správu Stáhněte soubor pro obnovení.":::
 
 1. Zadejte jedinečný identifikátor, který jste dostali na obrazovce **pro obnovení hesla** , a vyberte **obnovit**. `password_recovery.zip`Soubor se stáhne.
 
-   > [!NOTE]
-   > Neměňte aktivační soubor. Jedná se o podepsaný soubor a nebude fungovat, pokud s ním budete manipulovat.
+    > [!NOTE]
+    > Neměňte soubor pro obnovení hesla. Jedná se o podepsaný soubor a nebude fungovat, pokud s ním budete manipulovat.
 
-1. Na obrazovce **pro obnovení hesla** nahrajte `password_recovery.zip` soubor a vyberte **Další**.
+1. Na obrazovce **obnovení hesla** vyberte **Odeslat**. Otevře se okno **Odeslat soubor pro obnovení hesla** .
 
-Potom obdržíte vaše systémově generované heslo pro konzolu pro správu. 
+1. Vyberte **Procházet** a vyhledejte `password_recovery.zip` soubor, nebo ho přetáhněte `password_recovery.zip` do okna.
+
+1. Pak se zobrazí možnost **Další** a uživatel a heslo generované systémem pro konzolu pro správu.
+
+    > [!NOTE]
+    > Když se přihlásíte ke senzoru nebo místní konzole pro správu nástroje poprvé, připojí se k předplatnému, ke kterému jste připojili. Pokud budete potřebovat resetovat heslo pro CyberX nebo uživatele podpory, budete muset toto předplatné vybrat. Další informace o obnovení hesla uživatele CyberX nebo podpory najdete v tématu [resetování hesla uživatele pro senzor nebo místní konzolu pro správu](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console) .
 
 ### <a name="investigate-a-lack-of-traffic"></a>Prozkoumat nedostatek provozu
 
@@ -65,35 +76,35 @@ Postup kontroly výkonu systému:
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="Snímek obrazovky s ukázkovým řídicím panelem"::: 
 
-2. V postranní nabídce vyberte **zařízení**.
+1. V postranní nabídce vyberte **zařízení**.
 
-3. V okně **zařízení** se ujistěte, že jsou zařízení zjištěna.
+1. V okně **zařízení** se ujistěte, že jsou zařízení zjištěna.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="Ujistěte se, že jsou zařízení zjištěná.":::
 
-4. V postranní nabídce vyberte **dolování dat**.
+1. V postranní nabídce vyberte **dolování dat**.
 
-5. V okně **dolování dat** vyberte **vše** a vygenerujte sestavu.
+1. V okně **dolování dat** vyberte **vše** a vygenerujte sestavu.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Vygenerujte novou sestavu pomocí dolování dat.":::
 
-6. Ujistěte se, že sestava obsahuje data.
+1. Ujistěte se, že sestava obsahuje data.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Ujistěte se, že sestava obsahuje data.":::
 
-7. V postranní nabídce vyberte **trendy & statistiku**.
+1. V postranní nabídce vyberte **trendy & statistiku**.
 
-8. V okně **trendy & Statistika** vyberte **Přidat widget**.
+1. V okně **trendy & Statistika** vyberte **Přidat widget**.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="Přidejte pomůcku tak, že ji vyberete.":::
 
-9. Přidejte widget a ujistěte se, že zobrazuje data.
+1. Přidejte widget a ujistěte se, že zobrazuje data.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="Ujistěte se, že Widget zobrazuje data.":::
 
-10. V postranní nabídce vyberte **výstrahy**. Zobrazí se okno **výstrahy** .
+1. V postranní nabídce vyberte **výstrahy**. Zobrazí se okno **výstrahy** .
 
-11. Ujistěte se, že se výstrahy vytvořily.
+1. Ujistěte se, že se výstrahy vytvořily.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="Ujistěte se, že byly vytvořeny výstrahy.":::
 
@@ -154,9 +165,9 @@ Postup opravy konfigurace:
 
 1. Klikněte pravým tlačítkem na ikonu cloudu na mapě zařízení a vyberte **exportovat IP adresy**. Zkopírujte veřejné rozsahy, které jsou soukromé, a přidejte je do seznamu podsítí. Další informace najdete v tématu [Konfigurace podsítí](how-to-control-what-traffic-is-monitored.md#configure-subnets).
 
-2. Vygenerujte novou sestavu dolování dat pro připojení k Internetu.
+1. Vygenerujte novou sestavu dolování dat pro připojení k Internetu.
 
-3. V sestavě dolování dat vyberte možnost :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: zadat režim správce a odstraňte IP adresy vašich zařízení ICS.
+1. V sestavě dolování dat vyberte možnost :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: zadat režim správce a odstraňte IP adresy vašich zařízení ICS.
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>Vylepšení kvality služby snímače
 
@@ -179,7 +190,7 @@ Postup při vylepšení kvality služby:
    > [!NOTE]
    > V případě fyzického zařízení použijte rozhraní EM1.
 
-2. Omezení rozhraní vymažete tak, že zadáte `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
+1. Omezení rozhraní vymažete tak, že zadáte `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>Nástroje pro řešení potíží s místními konzolami pro správu
 
@@ -203,7 +214,7 @@ Postup při vylepšení kvality služby:
 
 1. Přihlaste se jako Defender pro uživatele IoT. 
 
-2. Ověřte výchozí hodnoty:
+1. Ověřte výchozí hodnoty:
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ Postup při vylepšení kvality služby:
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. Upravte výchozí nastavení:
+1. Upravte výchozí nastavení:
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. Upravte nastavení následujících řádků:
+1. Upravte nastavení následujících řádků:
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. Uložte změny. Není nutné žádné restartování.
+1. Uložte změny. Není nutné žádné restartování.
 
 ## <a name="export-information-for-troubleshooting"></a>Exportovat informace pro řešení potíží
 
@@ -239,13 +250,13 @@ Export protokolů:
 
 1. V levém podokně vyberte **nastavení systému**.
 
-2. Vyberte **Export protokolů**.
+1. Vyberte **Export protokolů**.
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="Exportujte protokol do systémové podpory.":::
 
-3. Do pole **název souboru** zadejte název souboru, který chcete použít pro export protokolu. Výchozí hodnota je aktuální datum.
+1. Do pole **název souboru** zadejte název souboru, který chcete použít pro export protokolu. Výchozí hodnota je aktuální datum.
 
-4. Chcete-li definovat, jaká data chcete exportovat, vyberte kategorie dat:  
+1. Chcete-li definovat, jaká data chcete exportovat, vyberte kategorie dat:  
 
     | Exportovat kategorii | Popis |
     |--|--|
@@ -264,9 +275,9 @@ Export protokolů:
     | **Protokoly databáze** | Tuto možnost vyberte, pokud chcete protokoly exportovat ze systémové databáze. Zkoumání systémových protokolů pomáhá identifikovat problémy systému. |
     | **Konfigurace** | Tuto možnost vyberte, pokud chcete exportovat informace o všech konfigurovatelných parametrech, abyste měli jistotu, že všechno je správně nakonfigurované. |
 
-5. Chcete-li vybrat všechny možnosti, vyberte možnost **Vybrat vše** vedle položky vybrat **kategorie**.
+1. Chcete-li vybrat všechny možnosti, vyberte možnost **Vybrat vše** vedle položky vybrat **kategorie**.
 
-6. Vyberte **Export protokolů**.
+1. Vyberte **Export protokolů**.
 
 Exportované protokoly se přidají do seznamu **archivovaných protokolů** . Odešlete jednorázové heslo do týmu podpory v samostatné zprávě a střednímu z exportovaných protokolů. Tým podpory bude moci extrahovat exportované protokoly pouze pomocí jedinečného jednorázového hesla, které se používá k šifrování protokolů.
 
@@ -276,6 +287,6 @@ Seznam archivovaných protokolů může obsahovat až pět položek. Pokud poče
 
 - [Zobrazení upozornění](how-to-view-alerts.md)
 
-- [Nastavení monitorování MIB protokolu SNMP](how-to-set-up-snmp-mib-monitoring.md)
+- [Nastavení monitorování SNMP MIB](how-to-set-up-snmp-mib-monitoring.md)
 
 - [Vysvětlení událostí odpojení senzorů](how-to-manage-sensors-from-the-on-premises-management-console.md#understand-sensor-disconnection-events)

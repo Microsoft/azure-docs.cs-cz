@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180638"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954481"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -63,6 +63,9 @@ Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu of
 | Podezřelá pravidla pro manipulaci s doručenou poštou | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Toto zjišťování profiluje vaše prostředí a aktivuje výstrahy v případě, že jsou v doručené poště uživatele podezřelá pravidla, která odstraňují nebo přesunují zprávy nebo složky. Tato detekce může znamenat, že došlo k ohrožení zabezpečení účtu uživatele, že zprávy jsou záměrně skryté a že se poštovní schránka používá k distribuci spamu nebo malwaru ve vaší organizaci. |
 | Sprej hesla | Offline | Útok na postřik hesla je v případě, kdy je více uživatelských jmen napadeno pomocí běžných hesel v rámci sjednoceného hrubou silou, k získání neoprávněného přístupu. Toto zjišťování rizik se aktivuje, když se provedl útok na spreje hesla. |
 | Neuskutečnitelná cesta | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Toto zjišťování identifikuje dvě uživatelské aktivity (Jedná se o jednu nebo víc relací) pocházející z geograficky vzdálených umístění v časovém období kratším než čas, kdy by uživatel musel použít stejné přihlašovací údaje jako jiný uživatel. |
+| Nová země | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). Tato detekce posuzuje umístění minulých aktivit k určení nových a málo častých umístění. Modul pro detekci anomálií ukládá informace o předchozích umístěních používaných uživateli v organizaci. |
+| Aktivita z anonymní IP adresy | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). Tato detekce identifikuje, že uživatelé byli aktivní z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru. |
+| Podezřelé přesměrování doručené pošty | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). Tato detekce vyhledá podezřelá pravidla pro předávání e-mailů, například pokud uživatel vytvořil pravidlo doručené pošty, které předává kopii všech e-mailů na externí adresu. |
 
 ### <a name="other-risk-detections"></a>Další detekce rizik
 

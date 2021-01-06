@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460478"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954273"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníci na komerčním webu Marketplace Analytics
 
@@ -144,7 +144,7 @@ _**Tabulka 1: slovník datových podmínek**_
 
 | Název sloupce | Název atributu | Definice |
 | ------------ | ------------- | ------------- |
-| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. IDENTIFIKÁTORem byl dřív identifikátor GUID předplatného Azure. |
+| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. |
 | DateAcquired | Datum získání | První datum, kdy zákazník koupil jakoukoli nabídku, kterou jste publikovali. |
 | DateLost | Datum ztráty | Poslední datum, kdy zákazník zrušil poslední z předchozích zakoupených nabídek. |
 | Název zprostředkovatele | Název zprostředkovatele | Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP. |

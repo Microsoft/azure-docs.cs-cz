@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450760"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955021"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -109,14 +109,13 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1 000 hlavních ob
 - Data je možné extrahovat do. Sdílený svazek clusteru nebo. Soubor TSV, pokud je počet záznamů menší než 1 000.
 - Pokud zaznamenává číslo přes 1 000, vyexportovaná data se asynchronně nasadí na stránku ke stažení po dobu příštích 30 dnů.
 - Použijte filtry v tabulce **Podrobnosti objednávky** , abyste zobrazili jenom data, která vás zajímají. Filtrovat podle země/oblasti, typu licence Azure, typu licence komerčního tržiště, typu nabídky, stavu objednávky, volných stop, ID předplatného komerčního tržiště, ID zákazníka a názvu společnosti.
-- Vzhledem k tomu, že SaaS nabízí nákup prostřednictvím Azure Marketplace nebo Microsoft AppSource, nepotřebujete předplatné Azure, ID předplatného webu Marketplace se zobrazí ve formuláři 00000000-0000-0000-0000-000000000000 v části **podrobné údaje o objednávkách** .
 - Když je objednávka zakoupena chráněným zákazníkem, informace v **objednávkách jsou podrobná data** maskována (* * * * * * * * * * *).
 
 **_Tabulka 1: slovník datových podmínek_* _
 
 | Název sloupce | Název atributu | Definice |
 | ------------ | ------------- | ------------- |
-| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. IDENTIFIKÁTORem byl dřív identifikátor GUID předplatného Azure. |
+| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. |
 | MonthStartDate | Počáteční datum měsíce | Počáteční datum měsíce představuje měsíc nákupu. |
 | Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
 | Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761664"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955242"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Vytvoření PostgreSQL skupiny serverů s škálovatelným škálováním pomocí nástrojů Kubernetes
 
@@ -34,7 +34,7 @@ Pokud chcete vytvořit PostgreSQL skupinu serverů s škálovatelným škálová
 
 ## <a name="create-a-yaml-file"></a>Vytvoření souboru YAML
 
-Soubor [šablony YAML](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) můžete použít jako výchozí bod pro vytvoření vlastního PostgreSQL souboru YAML skupiny serverů s vlastním škálováním.  Stáhněte si tento soubor do místního počítače a otevřete ho v textovém editoru.  Je užitečné použít textový editor, například [vs Code](https://code.visualstudio.com/download) , který podporuje zvýrazňování syntaxe a linting pro soubory YAML.
+Soubor [šablony YAML](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) můžete použít jako výchozí bod pro vytvoření vlastního PostgreSQL souboru YAML skupiny serverů s vlastním škálováním.  Stáhněte si tento soubor do místního počítače a otevřete ho v textovém editoru.  Je užitečné použít textový editor, například [vs Code](https://code.visualstudio.com/download) , který podporuje zvýrazňování syntaxe a linting pro soubory YAML.
 
 Toto je příklad souboru YAML:
 
