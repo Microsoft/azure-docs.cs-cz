@@ -211,6 +211,8 @@
       href: /rest/api/securityinsights/
     - name: Schéma normalizace sítě
       href: normalization-schema.md
+    - name: Rozšiřování UEBA
+      href: ueba-enrichments.md
 - name: Zdroje a prostředky
   items:
     - name: Užitečné materiály

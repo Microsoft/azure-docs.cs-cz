@@ -75,7 +75,7 @@
         - name: Nejčastější dotazy k trezorům služby Recovery Services
           href: backup-azure-backup-faq.md
         - name: Nejčastější dotazy k centru zálohování
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: Nejčastější dotazy k zálohování virtuálních počítačů Azure
           href: backup-azure-vm-backup-faq.md
         - name: Nejčastější dotazy k agentům MARS

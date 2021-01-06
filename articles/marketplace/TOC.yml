@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Nabídky spravované služby
       items:
+        - name: Plánování nabídky spravované služby
+          href: plan-managed-service-offer.md
         - name: Vytvoření nabídky spravované služby
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: Konfigurace výpisu spravovaných služeb
+          href: create-managed-service-offer-listing.md
+        - name: Přidání cílové skupiny pro verzi Preview
+          href: create-managed-service-offer-preview.md
+        - name: Vytváření plánů
+          href: create-managed-service-offer-plans.md
     - name: Nabídky aplikací Power BI
       items:
         - name: Plánování nabídky aplikací Power BI

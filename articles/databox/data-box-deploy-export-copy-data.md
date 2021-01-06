@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335209"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680900"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB (Preview)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB
 
 Tento kurz popisuje, jak se pomocí místního webového uživatelského rozhraní připojit k Data Boxu a zkopírovat z něj data na místní server. Zařízení Data Box obsahuje data vyexportovaná z účtu Azure Storage.
 
@@ -27,8 +27,6 @@ V tomto kurzu se naučíte:
 > * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat z Data Boxu
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,7 +54,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     
     ![Získání přihlašovacích údajů sdílené složky, přístup ke sdílené složce a kopírování dat](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště ( *exportbvtdataset2* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
+3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*exportbvtdataset2* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 

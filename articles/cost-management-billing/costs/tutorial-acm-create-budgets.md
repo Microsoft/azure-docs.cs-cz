@@ -3,24 +3,24 @@ title: 'Kurz: Vytváření a správa rozpočtů Azure'
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132801"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630135"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
 Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomůžou vám informovat ostatní o jejich výdajích, aby mohli aktivně spravovat náklady, a umožní vám sledovat, jak se výdaje vyvíjejí v průběhu času. Při překročení vámi vytvořených prahových hodnot rozpočtu se aktivují pouze oznámení. Žádný z vašich prostředků není ovlivněný a vaše spotřeba není zastavena. Rozpočty můžete použít k porovnání a sledování výdajů při analýze nákladů.
 
-Data o nákladech a využití jsou obvykle k dispozici během 8 až 24 hodin a rozpočty se na základě těchto nákladů vyhodnocují vždy po 12 až 14 hodinách. Nezapomeňte se seznámit se specifiky [aktualizací údajů o využití a nákladech](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
+Data o nákladech a využití jsou obvykle k dispozici během 8 až 24 hodin a rozpočty se na základě těchto nákladů vyhodnocují vždy po 24 hodinách. Nezapomeňte se seznámit se specifiky [aktualizací údajů o využití a nákladech](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
 
 Po výběru budoucího data vypršení platnosti se rozpočty automaticky obnoví na konci období (měsíčně, čtvrtletně nebo ročně) pro stejnou částku rozpočtu. Vzhledem k tomu, že dojde k obnovení se stejnou částkou rozpočtu, musíte vytvořit samostatné rozpočty, pokud se rozpočtované částky v budoucích obdobích liší.
 

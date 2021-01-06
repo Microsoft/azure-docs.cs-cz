@@ -139,7 +139,7 @@
         - name: Aplikace pro zpracování obrázků
           href: Tutorials/CSharpTutorial.md
         - name: Další ukázky Počítačového zpracování obrazu
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
     - name: Nejčastější dotazy
       href: FAQ.md
     - name: Taxonomie kategorií
