@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620970"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916503"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
@@ -24,10 +24,10 @@ Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným
 |Funkce  |NFS (Preview)  |SMB  |
 |---------|---------|---------|
 |Přístup k protokolům     |SYSTÉM SOUBORŮ NFS 4,1         |SMB 2,1, SMB 3,0         |
-|Podporovaný operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
+|Doporučený operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
 |[Dostupné úrovně](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage, transakce optimalizovaná, horká, studená         |
 |[Redundance](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
-|Ověřování     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
+|Authentication     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
 |Oprávnění     |Oprávnění ve stylu systému UNIX         |Oprávnění ve stylu NTFS         |
 |Sémantika systému souborů     |Kompatibilní s POSIX         |Není kompatibilní se standardem POSIX         |
 |Rozlišovat velká a malá písmena     |Malá a velká písmena se rozlišují.         |Nerozlišuje velká a malá písmena         |

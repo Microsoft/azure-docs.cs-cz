@@ -4,12 +4,12 @@ description: Přečtěte si o schématu JSON, které se pošle na adresu URL Web
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901432"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916625"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -40,6 +40,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 > Pokud je vaše podmínka (v pravidlech akcí, webhookech, Logic Apps nebo jakýchkoli jiných konfiguracích) aktuálně založená na vlastnosti **Description** pro výstrahy protokolu aktivit, může být potřeba ji upravit tak, aby se místo toho změnila na základě vlastnosti **"Popis události protokolu aktivit"** .
 >
 > Aby bylo možné vyplnit novou vlastnost **Description** , můžete do definice pravidla výstrahy přidat popis.
+> ![Výstrahy protokolu aktivit aktivovány](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>Společné
 

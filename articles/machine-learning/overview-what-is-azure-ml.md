@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620473"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916588"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -118,7 +118,7 @@ Azure Machine Learning funguje s ostatními službami na platformě Azure a inte
 + __Virtuální sítě Azure__. Další informace najdete v tématu [Přehled izolace a ochrany osobních údajů ve virtuální síti](how-to-network-security-overview.md).
 + __Azure Pipelines__. Další informace najdete v tématu [výuka a nasazení modelů strojového učení](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Protokoly úložiště Git__ Další informace najdete v tématu [integrace Gitu](concept-train-model-git-integration.md).
-+ __MLFlow__. Další informace najdete v tématu [MLflow ke sledování metrik a nasazení modelů](how-to-use-mlflow.md) . 
++ __MLFlow__. Další informace najdete v tématu [MLflow ke sledování metrik](how-to-use-mlflow.md) a [nasazení modelů MLflow jako webové služby](how-to-deploy-mlflow-models.md) . 
 + __Kubeflow__. Další informace najdete v tématu [vytváření koncových kanálů pracovního postupu](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Zabezpečená komunikace

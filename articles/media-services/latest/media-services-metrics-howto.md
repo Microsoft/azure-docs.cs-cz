@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707706"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916571"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste měli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
 
 Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim přes REST API nebo jejich dotazování pomocí rozhraní příkazového řádku Azure CLI. Tento článek ukazuje, jak monitorovat metriky pomocí Azure Portalch grafů a Azure CLI.
 
@@ -38,24 +38,21 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Přejděte na účet Azure Media Services a vyberte **metriky**.
-1. Klikněte na pole **prostředek** a vyberte prostředek, pro který chcete monitorovat metriky.
+1. Klikněte na pole **obor** a vyberte prostředek, který chcete monitorovat.
 
-    Na pravé straně se zobrazí okno **Vybrat prostředek** se seznamem dostupných zdrojů. V takovém případě se zobrazí:
+    Na pravé straně se zobrazí okno **Vybrat obor** a seznam dostupných prostředků. V takovém případě se zobrazí:
 
     * &lt;Název účtu Media Services&gt;
     * &lt;&gt; / &lt; Název koncového bodu streamování názvu Media Services účtu&gt;
     * &lt;název účtu úložiště&gt;
 
-    Vyberte prostředek a stiskněte **použít**. Podrobnosti o podporovaných prostředcích a metrikách najdete v tématu [monitorování Media Services metriky](media-services-metrics-diagnostic-logs.md).
-
-    ![Snímek obrazovky, který zobrazuje vybraný prostředek, a zvýrazní tlačítko použít.](media/media-services-metrics/metrics02.png)
+    Filtr vyberte prostředek a stiskněte **použít**. Podrobnosti o podporovaných prostředcích a metrikách najdete v tématu [monitorování Media Services metriky](media-services-metrics-diagnostic-logs.md).
 
     > [!NOTE]
-    > Pokud chcete přepínat mezi prostředky, pro které chcete monitorovat metriky, klikněte znovu na pole **prostředek** a opakujte tento krok.
-1. (Volitelně) zadejte název grafu (upravte název tak, že stisknete tužku v horní části).
-1. Přidejte metriky, které chcete zobrazit.
+    > Pokud chcete přepínat mezi prostředky, které chcete monitorovat, klikněte znovu na **zdrojové** pole a opakujte tento krok.
 
-    ![Metriky](media/media-services-metrics/metrics03.png)
+1. Volitelné: zadejte název grafu (upravte název stisknutím tužky v horní části).
+1. Přidejte metriky, které chcete zobrazit.
 1. Svůj graf můžete připnout na řídicí panel.
 
 ## <a name="view-metrics-with-azure-cli"></a>Zobrazení metrik pomocí Azure CLI
@@ -72,8 +69,8 @@ Pokud chcete získat další metriky, nahraďte "výstup" pro název metriky, kt
 
 ## <a name="see-also"></a>Viz také
 
-* [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
-* [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+- [Metriky Azure Monitoru](../../azure-monitor/platform/data-platform.md)
+- [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f44751feca67fdd4473dd3f427fcf2b9d1bbe717
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093566"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916486"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -227,7 +227,7 @@ Pro Azure Cosmos DB můžete vytvořit databázi fondu SQL bez serveru a zobraze
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Začínáme s propojením Azure Synpase – ukázky
 
-Ukázky, které vám pomůžou začít s propojením Azure synapse na [GitHubu](https://aka.ms/cosmosdb-synapselink-samples), najdete v ukázkách. Tato předvádí ucelená řešení s využitím scénářů IoT a Retail. Můžete také najít ukázky, které odpovídají Azure Cosmos DB rozhraní API pro MongoDB ve stejném úložišti ve složce [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) . 
+Ukázky, které vám pomůžou začít s propojením Azure synapse na [GitHubu](https://aka.ms/cosmosdb-synapselink-samples), najdete v ukázkách. Tato předvádí ucelená řešení s využitím scénářů IoT a Retail. Můžete také najít ukázky, které odpovídají Azure Cosmos DB rozhraní API pro MongoDB ve stejném úložišti ve složce [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) . 
 
 ## <a name="next-steps"></a>Další kroky
 

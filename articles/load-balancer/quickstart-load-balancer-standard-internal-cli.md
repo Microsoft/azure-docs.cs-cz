@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fd85021da36d0e5ef32ce3f42c72b83016d38749
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 15060a367bba2d50d7054730321f7f20d4c25e46
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901347"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916673"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -54,6 +54,8 @@ Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az_gro
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Prostředky služby Load Balancer úrovně Standard vytvořené pro rychlý Start." border="false":::
+
 ## <a name="configure-virtual-network---standard"></a>Konfigurace virtuální sítě – standardní
 
 Než nasadíte virtuální počítače a nasadíte Nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě.
@@ -84,7 +86,7 @@ Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/
 K vytvoření veřejné IP adresy pro hostitele bastionu použijte [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) :
 
 * Vytvořte záložní veřejnou IP adresu zóny Standard s názvem **myBastionIP**.
-* Ve * * CCreateIntLBQS-RG * *.
+* V **CreateIntLBQS-RG**.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -99,7 +101,7 @@ Pomocí [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-networ
 * S názvem **AzureBastionSubnet**.
 * Předpona adresy **10.1.1.0/24**.
 * Ve virtuální síti **myVNet**.
-* Ve skupině prostředků * * CreateIntLBQS-RG * *.
+* Ve skupině prostředků **CreateIntLBQS-RG**.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -114,7 +116,7 @@ az network vnet subnet create \
 Pomocí [AZ Network bastionu Create](/cli/azure/network/bastion#az-network-bastion-create) Vytvořte hostitele bastionu:
 
 * S názvem **myBastionHost**.
-* Ve * * CreateIntLBQS-RG * *.
+* V **CreateIntLBQS-RG**.
 * Přidruženo k veřejné IP **myBastionIP**.
 * Přidruženo k virtuální síti **myVNet**.
 * V umístění **eastus** .
@@ -348,6 +350,8 @@ Přidejte virtuální počítače do fondu back-end pomocí [AZ Network nic IP-c
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Základní prostředky nástroje pro vyrovnávání zatížení vytvořené v rychlém startu." border="false":::
 
 ## <a name="configure-virtual-network---basic"></a>Konfigurace virtuální sítě – Basic
 

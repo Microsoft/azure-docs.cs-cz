@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708693"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916452"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Řešení potíží s sdílenými složkami Azure NFS
 
 V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami souborů Azure NFS. Poskytuje možné příčiny a alternativní řešení, když dojde k těmto potížím.
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" se nezdařilo: neplatný argument (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>Příčina 1: idmapping není zakázaný.
+Soubory Azure nepovolují alfanumerické UID/GID. Proto musí být idmapping zakázané. 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Příčina 2: idmapping byla zakázána, ale byla znovu povolena po zjištění chybného názvu souboru nebo adresáře.
+I v případě, že byl idmapping správně zakázán, nastavení pro zakázání idmapping se v některých případech přepíše. Například když Azure Files narazí na chybný název souboru, pošle zpět chybu. Po zobrazení tohoto konkrétního kódu chyby se klient systému souborů NFS verze 4,1 rozhodne znovu povolit idmapping a budoucí požadavky se odesílají znovu s alfanumerickým UID/GID. Seznam nepodporovaných znaků v souborech Azure najdete v tomto [článku](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Dvojtečka je jedním z nepodporovaných znaků. 
+
+### <a name="workaround"></a>Alternativní řešení
+Zkontrolujte, jestli je idmapping zakázané a nic znovu nepovolíte, a pak postupujte takto:
+
+- Odpojit sdílenou složku
+- Zakáže mapování ID pomocí # echo Y >/sys/Module/NFS/Parameters/nfs4_disable_idmapping
+- Připojit sdílení zpátky
+- Pokud používáte rsync, spusťte rsync s argumentem "– numerický identifikátors" z adresáře, který nemá žádný chybný adresář nebo název souboru.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Nelze vytvořit sdílenou složku NFS.
 
@@ -52,7 +68,7 @@ NFS je k dispozici jenom pro účty úložiště s následující konfigurací:
 - Úroveň Premium
 - Druh účtu – úložiště
 - Redundance – LRS
-- Oblasti – Východní USA, Východní USA 2, Velká Británie – jih, jihovýchodní Asie
+- Oblasti – [seznam podporovaných oblastí](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Řešení
 
@@ -90,7 +106,7 @@ Následující diagram znázorňuje připojení pomocí veřejných koncových b
     - Partnerský vztah virtuální sítě s virtuálními sítěmi hostovanými v privátním koncovém bodu uděluje přístup ke sdílení systému souborů NFS klientům v partnerských virtuálních sítích.
     - Soukromé koncové body lze použít s ExpressRoutemi sítěmi VPN typu Point-to-site a Site-to-site.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram připojení k veřejnému koncovému bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram připojení privátního koncového bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Příčina 2: je povolený požadovaný zabezpečený přenos.
 
@@ -100,7 +116,7 @@ Pro sdílené složky systému souborů NFS ještě není podporováno dvojité 
 
 V okně Konfigurace účtu úložiště zakažte zabezpečený přenos vyžadovaný.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Diagram připojení k veřejnému koncovému bodu":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Snímek obrazovky s oknem konfigurace účtu úložiště, je nutné zakázat zabezpečený přenos.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Příčina 3: systém souborů NFS – společný balíček není nainstalovaný
 Před spuštěním příkazu Mount nainstalujte balíček spuštěním příkazu specifického pro distribuce níže.
