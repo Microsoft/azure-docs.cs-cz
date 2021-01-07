@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: Řešení potíží se svazky se dvěma protokoly
           href: troubleshoot-dual-protocol-volumes.md
+        - name: Řešení potíží se svazky NFSv4.1 s protokolem Kerberos
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Řešení potíží se zásadami snímků
           href: troubleshoot-snapshot-policies.md
         - name: Řešení potíží s chybami poskytovatele prostředků

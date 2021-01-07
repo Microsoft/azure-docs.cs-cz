@@ -14,7 +14,7 @@
   items:
     - name: Nasazení databáze
       items:
-        - name: Github Actions
+        - name: GitHub Actions
           href: how-to-deploy-github-action.md
     - name: Migrace
       items:
@@ -234,7 +234,7 @@
               displayName: 'scale server, reset password'
         - name: Restartování serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
@@ -242,7 +242,7 @@
               href: howto-restart-server-powershell.md
         - name: Pravidla brány firewall
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-manage-firewall-using-portal.md
               displayName: 'firewall, portal, rules'
             - name: Azure CLI
@@ -297,7 +297,7 @@
           displayName: 'application development, TLS'
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI
@@ -308,7 +308,7 @@
               displayName: 'application development, server parameters'
         - name: Automatické zvětšení úložiště
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
             - name: Azure CLI
@@ -319,7 +319,7 @@
               displayName: 'business continuity, scale , storage'
         - name: Protokoly přístupu
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-logs-in-portal.md
               displayName: 'access logs, monitor'
             - name: Azure CLI
@@ -504,7 +504,7 @@
                   href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: flexible-server/howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI
@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: Distribuovaná data
           items:
+            - name: Určení velikosti tabulky
+              href: howto-hyperscale-table-size.md
             - name: Distribuce a úprava tabulek
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Vysoká dostupnost
@@ -657,6 +659,8 @@
             - name: Řešení chyb připojení
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: Užitečné diagnostické dotazy
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: Referenční informace
   items:
     - name: Azure CLI

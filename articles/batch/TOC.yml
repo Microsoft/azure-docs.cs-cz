@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: Výběr velikosti virtuálního počítače pro výpočetní uzly
           href: batch-pool-vm-sizes.md
+        - name: Přechod z cloudové služby na fondy virtuálních počítačů
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Konfigurace přístupu k výpočetním uzlům
           href: pool-endpoint-configuration.md
         - name: Vytvoření fondu s využitím Shared Image Gallery

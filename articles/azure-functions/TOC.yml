@@ -141,8 +141,16 @@
     - name: Porovnání modulů runtime
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Plán Premium
-      href: functions-premium-plan.md
+    - name: Hosting a škálování
+      items:
+        - name: Plán Consumption
+          href: consumption-plan.md
+        - name: Plán Premium
+          href: functions-premium-plan.md
+        - name: Plán Dedicated
+          href: dedicated-plan.md
+        - name: Škálování řízené událostmi
+          href: event-driven-scaling.md
     - name: Nasazení
       href: functions-deployment-technologies.md
     - name: Události a zasílání zpráv
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Plán Využití v Linuxu
                   href: create-first-function-cli-python.md
+                - name: Plán Premium
+                  href: create-premium-plan-function-app-portal.md
                 - name: Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Trigger služby Azure Cosmos DB

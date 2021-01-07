@@ -45,22 +45,18 @@
       href: basic-concepts.md
     - name: Zabezpečení
       items:
+        - name: Přehled zabezpečení
+          href: security-overview.md
+        - name: Zabezpečení přístupu k trezoru klíčů
+          href: secure-your-key-vault.md
         - name: Základy ověřování služby Key Vault
           href: authentication-fundamentals.md
-        - name: Zabezpečení služby Azure Key Vault
-          href: overview-security.md
-        - name: Osvědčené postupy při používání služby Key Vault –⁠ Azure Key Vault
-          href: best-practices.md
-        - name: Světy zabezpečení služby Azure Key Vault
+        - name: Světy zabezpečení a geografické hranice
           href: overview-security-worlds.md
         - name: Zabezpečení sítě
           href: network-security.md
-        - name: Zabezpečený přístup k trezoru klíčů –⁠ Azure Key Vault
-          href: secure-your-key-vault.md
         - name: Standardní hodnoty zabezpečení Azure pro službu Key Vault
           href: security-baseline.md
-        - name: Doporučení k zabezpečení služby Azure Key Vault
-          href: security-recommendations.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -82,7 +78,7 @@
       href: overview-throttling.md
     - name: Dostupnost a redundance služby Azure Key Vault
       href: disaster-recovery-guidance.md
-    - name: Koncové body služby Azure Key Vault pro virtuální síť –⁠ Azure Key Vault
+    - name: Koncové body služby Azure Key Vault pro virtuální síť
       href: overview-vnet-service-endpoints.md
 - name: Návody
   items:
@@ -154,9 +150,9 @@
       href: whats-new.md
     - name: Klientské knihovny
       href: client-libraries.md
-    - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
+    - name: Kódy chyb rozhraní REST API
       href: rest-error-codes.md
-    - name: Běžné kódy chyb – Azure Key Vault
+    - name: Běžné kódy chyb
       href: common-error-codes.md
     - name: Běžné parametry a záhlaví
       href: common-parameters-and-headers.md
