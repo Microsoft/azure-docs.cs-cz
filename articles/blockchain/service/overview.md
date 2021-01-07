@@ -1,15 +1,15 @@
 ---
 title: Přehled služby Azure blockchain
 description: Přehled služby Azure blockchain
-ms.date: 05/22/2020
+ms.date: 01/04/2021
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874555"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963874"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -83,6 +83,8 @@ Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
 Pokud chcete začít, vyzkoušejte si rychlý Start nebo si přečtěte další podrobnosti z těchto zdrojů.
 * [Vytvoření členu blockchain pomocí Azure Portal](create-member.md) nebo [Vytvoření členu BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
-* Porovnání nákladů a kalkulačky najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/blockchain-service).
+* Použijte Microsoft Learn cestu [Začínáme s vývojem blockchain](/learn/paths/ethereum-blockchain-development)
+* Podívejte se na [řadu začátečníků na blockchain](https://channel9.msdn.com/Series/Beginners-Series-to-Blockchain)
+* Porovnání nákladů a kalkulačky najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/blockchain-service) .
 * Vytvoření první aplikace pomocí [vývojové sady Azure blockchain](https://github.com/Azure-Samples/blockchain-devkit)
 * [Uživatelská příručka](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki) k rozšíření Azure blockchain VSCode

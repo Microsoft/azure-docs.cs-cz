@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648272"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964248"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje kroky vysoké úrovně k přidání přiřazení role pomocí [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), rozhraní příkazového [řádku Azure](role-assignments-cli.md)nebo [REST API](role-assignments-rest.md).
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje kroky vysoké úrovně k přidání přiřazení role pomocí [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), rozhraní příkazového [řádku Azure](role-assignments-cli.md)nebo [REST API](role-assignments-rest.md).
 
 ## <a name="step-1-determine-who-needs-access"></a>Krok 1: určení toho, kdo potřebuje přístup
 
@@ -62,7 +62,7 @@ Zbývající předdefinované role umožňují správu konkrétních prostředk�
 
 ![Obor přiřazení role](./media/shared/rbac-scope.png)
 
-Když přiřadíte roli v nadřazeném oboru, budou tato oprávnění děděna do podřízených oborů. Například:
+Když přiřadíte roli v nadřazeném oboru, budou tato oprávnění děděna do podřízených oborů. Příklad:
 
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) k uživateli v oboru skupiny pro správu, může tento uživatel číst vše ve všech předplatných ve skupině pro správu.
 - Pokud přiřadíte roli [Čtenář fakturace](built-in-roles.md#billing-reader) skupině v oboru předplatného, členové této skupiny mohou číst fakturační data pro každou skupinu prostředků a prostředek v rámci předplatného.

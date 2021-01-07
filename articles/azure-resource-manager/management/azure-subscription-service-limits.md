@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934458"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964183"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -176,6 +176,10 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+## <a name="azure-role-based-access-control-limits"></a>Omezení řízení přístupu na základě role v Azure
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
+
 ## <a name="azure-signalr-service-limits"></a>Omezení služby signalizace Azure
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
@@ -339,10 +343,6 @@ Nejnovější hodnoty pro kvóty Azure dosah najdete na [stránce věnované kv�
 ## <a name="notification-hubs-limits"></a>Omezení Notification Hubs
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Omezení řízení přístupu na základě role v Azure
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>Omezení Service Bus
 

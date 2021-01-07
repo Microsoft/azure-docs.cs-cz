@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683502"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963959"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Kurz: vytvoření certifikátu podepsaného svým držitelem pomocí skriptů pro nasazení
 
@@ -324,18 +324,18 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Je to název projektu s připojením **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Oba soubory mají příponu **azscripts** . Jedním z nich je účet úložiště a druhý je instance kontejneru.
+    Oba soubory mají příponu _azscripts_ . Jedním z nich je účet úložiště a druhý je instance kontejneru.
 
     Vyberte **Zobrazit skryté typy** a seznam `deploymentScripts` prostředku.
 
-1. Vyberte účet úložiště s příponou **azscripts** .
-1. Vyberte dlaždici **sdílení souborů** . Zobrazí se složka **azscripts** . Složka obsahuje spouštěcí soubory skriptu nasazení.
-1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**. Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje _executionresult.js_ a výstupní soubor skriptu. V _executionresult.js_ se zobrazí chybová zpráva. Výstupní soubor není k dispozici, protože spuštění selhalo.
+1. Vyberte účet úložiště s příponou _azscripts_ .
+1. Vyberte dlaždici **sdílení souborů** . Zobrazí se složka _azscripts_ , která obsahuje spouštěcí soubory skriptu nasazení.
+1. Vyberte _azscripts_. Zobrazí se dvě složky _azscriptinput_ a _azscriptoutput_. Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje _executionresult.js_ a výstupní soubor skriptu. V _executionresult.js_ se zobrazí chybová zpráva. Výstupní soubor není k dispozici, protože spuštění selhalo.
 
 Odeberte `Write-Output1` řádek a znovu nasaďte šablonu.
 

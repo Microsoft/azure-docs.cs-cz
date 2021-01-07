@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d1b8481aa4d4a81c95643727c1eff2a4a22da2f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9b6ea9491575236a3ef84d660ead8022d13e01ef
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426251"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964124"
 ---
 # <a name="eav4-and-easv4-series"></a>Řada Eav4 a Easv4
 
@@ -28,7 +28,7 @@ ms.locfileid: "94426251"
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br>
 
-Velikosti řady Eav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz a používání jednotky SSD úrovně Premium. Velikosti řady Eav4-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disk SSD úrovně Premium, použijte velikosti řady Easv4-Series. Měřiče cen a účtování pro velikosti Easv4 jsou stejné jako pro Eav3-Series.
+Velikosti řady Eav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz. Velikosti řady Eav4-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disk SSD úrovně Premium, použijte velikosti řady Easv4-Series. Měřiče cen a účtování pro velikosti Easv4 jsou stejné jako pro Eav3-Series.
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 | -----|-----|-----|-----|-----|-----|-----|-----|
@@ -66,7 +66,7 @@ Velikosti řady Easv4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 
 | Standard_E64as_v4|64|512|1024|32|128000/1020 (1600)|80000/1200|8 | 30000 |
 | Standard_E96as_v4 <sup>1</sup>|96|672|1344|32|192000/1020 (2400)|80000/1200|8 | 30000 |
 
-<sup>1</sup> [jsou k dispozici 1 omezené základní velikosti](./constrained-vcpu.md).
+<sup></sup> [jsou k dispozici 1 omezené základní velikosti](./constrained-vcpu.md).
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

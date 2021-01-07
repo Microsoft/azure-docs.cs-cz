@@ -1,196 +1,199 @@
 ---
 title: Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
-description: Přečtěte si, jak sdílet a přijímat data z Azure Blob Storage a Azure Data Lake Storage
+description: Naučte se, jak sdílet a přijímat data z Azure Blob Storage a Azure Data Lake Storage.
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 12/16/2020
-ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617081"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964095"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
-Azure Data Share podporuje sdílení na základě snímků z účtu úložiště. Tento článek vysvětluje, jak sdílet a přijímat data z následujících zdrojů: Azure Blob Storage, Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2.
+Azure Data Share podporuje sdílení na základě snímků z účtu úložiště. Tento článek vysvětluje, jak sdílet a přijímat data z Azure Blob Storage, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2.
 
-Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Data, která z těchto zdrojů sdílíte, můžete přijmout do Azure Data Lake Gen2 nebo Azure Blob Storage.
+Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V současné době jsou podporovány pouze objekty blob bloku. Data, která z těchto zdrojů sdílíte, můžou Azure Data Lake Gen2 nebo Azure Blob Storage přijmout.
 
-Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení založeném na snímcích, příjemce dat si může vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování pouze nových nebo aktualizovaných souborů. Přírůstkový snímek je založen na době poslední změny souborů. Existující soubory se stejným názvem budou během snímku přepsány. Soubor odstraněný ze zdroje se v cíli neodstraní. Prázdné podsložky ve zdroji nejsou zkopírovány do cíle. 
+Když se v rámci sdílení na základě snímků sdílí systémy souborů, kontejnery nebo složky, můžou si příjemci dat vytvořit úplnou kopii sdílených dat. Nebo mohou použít funkci přírůstkového snímku ke kopírování pouze nových nebo aktualizovaných souborů. Funkce přírůstkového snímku je založena na době poslední změny souborů. 
 
+Existující soubory, které mají stejný název, budou během snímku přepsány. Soubor, který je odstraněný ze zdroje, se v cíli neodstraní. Prázdné podsložky ve zdroji se nekopírují do cíle. 
 ## <a name="share-data"></a>Sdílení dat
 
+Informace v následujících částech použijte ke sdílení dat pomocí Azure Data Share. 
 ### <a name="prerequisites-to-share-data"></a>Předpoklady pro sdílení dat
 
-* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Přihlašovací e-mailová adresa Azure vašeho příjemce (pomocí e-mailového aliasu nebude fungovat).
-* Pokud je zdrojové úložiště dat Azure v jiném předplatném Azure, než je ten, který použijete k vytvoření prostředku pro sdílení dat, zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném, kde se nachází úložiště dat Azure. 
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+* Najděte přihlašovací e-mailovou adresu Azure vašeho příjemce. E-mailový alias příjemce nebude fungovat pro vaše účely.
+* Pokud je zdrojové úložiště dat Azure v jiném předplatném Azure, než je ten, kde vytvoříte prostředek pro sdílení dat, zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném, kde se nachází úložiště dat Azure. 
 
-### <a name="prerequisites-for-source-storage-account"></a>Požadavky na zdrojový účet úložiště
+### <a name="prerequisites-for-the-source-storage-account"></a>Předpoklady pro zdrojový účet úložiště
 
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md)
-* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel.
-* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník. 
+* Účet služby Azure Storage. Pokud účet ještě nemáte, [vytvořte ho](../storage/common/storage-account-create.md).
+* Oprávnění k zápisu do účtu úložiště. Oprávnění k zápisu se nachází v *Microsoft. Storage/storageAccounts/Write*. Je součástí role přispěvatele.
+* Oprávnění k přidání přiřazení role k účtu úložiště. Toto oprávnění je v *Microsoft. Authorization/přiřazení rolí/zápis*. Je součástí role vlastníka. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
 Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
-1. V levém horním rohu portálu vyberte tlačítko nabídky a pak vyberte **vytvořit prostředek** (+).
+1. V levém horním rohu portálu otevřete nabídku a pak vyberte **vytvořit prostředek** (+).
 
 1. Vyhledejte *sdílenou složku dat*.
 
-1. Vyberte sdílet data a vyberte **vytvořit**.
+1. Vyberte **data Shared** a **Create (vytvořit**).
 
-1. Vyplňte základní podrobnosti prostředku Azure Data Share s následujícími informacemi. 
+1. Zadejte základní podrobnosti prostředku Azure Data Share: 
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
-    | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
+    | Předplatné | Vaše předplatné | Vyberte předplatné Azure pro váš účet pro sdílení dat.|
+    | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareaccount* | Pojmenujte svůj účet pro sdílení dat. |
     | | |
 
-1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
+1. Vyberte **zkontrolovat + vytvořit**  >  **vytvořit** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty. 
 
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
 ### <a name="create-a-share"></a>Vytvoření sdílené složky
 
-1. Přejděte na stránku s přehledem sdílení dat.
+1. Přejít na stránku s **přehledem** sdílení dat.
 
-    ![Sdílení dat](./media/share-receive-data.png "Sdílení dat") 
+   :::image type="content" source="./media/share-receive-data.png" alt-text="Snímek obrazovky znázorňující Přehled sdílení dat":::
 
 1. Vyberte možnost **začít sdílet data**.
 
 1. Vyberte **Vytvořit**.   
 
-1. Vyplňte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
+1. Zadejte podrobnosti pro vaši sdílenou složku. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
-    ![EnterShareDetails](./media/enter-share-details.png "Zadat podrobnosti o sdílené složce") 
+    ![Snímek obrazovky zobrazující podrobnosti o sdílení dat](./media/enter-share-details.png "Zadejte podrobnosti sdílení dat.") 
 
 1. Vyberte **Pokračovat**.
 
 1. Chcete-li do sdílené složky přidat datové sady, vyberte možnost **přidat datové sady**. 
 
-    ![Přidání datových sad do sdílené složky](./media/datasets.png "Datové sady")
+    ![Snímek obrazovky ukazující, jak do sdílené složky přidat datové sady](./media/datasets.png "Datové sady.")
 
-1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. 
+1. Vyberte typ datové sady, který chcete přidat. Seznam typů datových sad závisí na tom, jestli jste v předchozím kroku vybrali sdílení na základě snímků nebo místní sdílení. 
 
-    ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
+    ![Snímek obrazovky s informacemi o tom, kde vybrat typ datové sady](./media/add-datasets.png "Přidejte datové sady.")    
 
-1. Přejděte k objektu, který chcete sdílet, a vyberte přidat datové sady. 
+1. Přejít na objekt, který chcete sdílet. Pak vyberte **přidat datové sady**. 
 
-    ![SelectDatasets](./media/select-datasets.png "Vybrat datové sady")    
+    ![Snímek obrazovky ukazující, jak vybrat objekt, který se má sdílet](./media/select-datasets.png "Vyberte datové sady.")    
 
-1. Na kartě příjemci zadejte do e-mailových adres vašeho příjemce dat a vyberte + Přidat příjemce. 
+1. Na kartě **příjemci** přidejte e-mailovou adresu příjemce dat, a to tak, že vyberete **Přidat příjemce**. 
 
-    ![AddRecipients](./media/add-recipient.png "Přidání příjemců") 
+    ![Snímek obrazovky ukazující, jak přidat e-mailové adresy příjemců](./media/add-recipient.png "Přidejte příjemce.") 
 
 1. Vyberte **Pokračovat**.
 
-1. Pokud jste vybrali typ sdílené složky snímků, můžete nakonfigurovat plán snímků pro poskytování aktualizací vašich dat příjemci dat. 
+1. Pokud jste vybrali typ sdílené složky snímků, můžete nastavit plán snímků, který aktualizuje data pro příjemce dat. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "Povolit snímky") 
+    ![Snímek obrazovky znázorňující nastavení plánu snímků](./media/enable-snapshots.png "Povolit snímky.") 
 
 1. Vyberte čas spuštění a interval opakování. 
 
 1. Vyberte **Pokračovat**.
 
-1. Na kartě Revize + vytvořit zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Vyberte **Vytvořit**.
+1. Na kartě **Revize + vytvořit** zkontrolujte obsah balíčku, nastavení, příjemce a nastavení synchronizace. Potom vyberte **Vytvořit**.
 
-Vaše sdílená složka Azure je teď vytvořená a příjemce vaší sdílené složky je teď připravený přijmout vaše pozvání. 
+Nyní jste vytvořili sdílenou složku Azure Data. Příjemce vaší sdílené složky může přijmout vaše pozvání. 
 
 ## <a name="receive-data"></a>Příjem dat
 
+Následující části popisují, jak přijímat sdílená data.
 ### <a name="prerequisites-to-receive-data"></a>Předpoklady pro příjem dat
-Než budete moct přijmout pozvánku ke sdílení dat, musíte zřídit několik prostředků Azure, které jsou uvedené níže. 
+Než přijmete pozvánku ke sdílení dat, ujistěte se, že máte následující požadavky: 
 
-Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné všechny požadavky. 
+* Předplatné Azure. Pokud předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pozvánka z Azure Předmět e-mailu by měl být "pozvání Azure Data Share z *\<yourdataprovider\@domain.com>* ".
+* Registrovaný [poskytovatel prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v:
+    * Předplatné Azure, kde vytvoříte prostředek pro sdílení dat.
+    * Předplatné Azure, kde se nachází vaše cílové úložiště dat Azure.
 
-* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Pozvánka ke sdílení dat: Pozvánka z Microsoft Azure se subjektem s názvem "pozvání ke sdílení dat Azure od **<yourdataprovider@domain.com>** ".
-* Zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném Azure, kde vytvoříte prostředek pro sdílení dat a předplatné Azure, kde se nachází vaše cílové úložiště dat Azure.
+### <a name="prerequisites-for-a-target-storage-account"></a>Předpoklady pro cílový účet úložiště
 
-### <a name="prerequisites-for-target-storage-account"></a>Předpoklady pro cílový účet úložiště
-
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md). 
-* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník.  
+* Účet služby Azure Storage. Pokud ho ještě nemáte, [vytvořte účet](../storage/common/storage-account-create.md). 
+* Oprávnění k zápisu do účtu úložiště. Toto oprávnění je v *Microsoft. Storage/storageAccounts/Write*. Je součástí role přispěvatele. 
+* Oprávnění k přidání přiřazení role k účtu úložiště. Toto přiřazení je v *Microsoft. Authorization/přiřazení rolí/zápis*. Je součástí role vlastníka.  
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-### <a name="open-invitation"></a>Otevřít pozvánku
+### <a name="open-an-invitation"></a>Otevřít pozvánku
 
-1. Můžete otevřít pozvánku z e-mailu nebo přímo z Azure Portal. 
+Můžete otevřít pozvánku z e-mailu nebo přímo z Azure Portal.
 
-   Pokud chcete otevřít pozvánku z e-mailu, Projděte si doručenou poštu od poskytovatele dat. Pozvánka pochází z Microsoft Azure s názvem **pozvání Azure Data Share z <yourdataprovider@domain.com>**. Kliknutím na **Zobrazit pozvánku** zobrazíte pozvánku v Azure. 
+1. Pokud chcete otevřít pozvánku z e-mailu, podívejte se na pozvánku od vašeho poskytovatele dat na svou doručenou poštu. Pozvání od Microsoft Azure má "pozvání Azure Data Share z *\<yourdataprovider\@domain.com>* ". Vyberte **Zobrazit pozvánku** a zobrazí se vaše Pozvánka v Azure. 
 
-   Chcete-li otevřít pozvánku přímo z Azure Portal, vyhledejte v Azure Portal **pozvánky ke sdílení dat** . Tím přejdete do seznamu pozvání ke sdílení dat.
+   Pokud chcete otevřít pozvánku z Azure Portal, vyhledejte *pozvánky ke sdílení dat*. Zobrazí se seznam pozvánek ke sdílení dat.
 
-   ![Seznam pozvánek](./media/invitations.png "Seznam pozvánek") 
+   ![Snímek obrazovky zobrazující seznam pozvánek v Azure Portal.](./media/invitations.png "Seznam pozvánek") 
 
 1. Vyberte sdílenou složku, kterou chcete zobrazit. 
 
-### <a name="accept-invitation"></a>Přijmout pozvánku
-1. Ujistěte se, že všechna pole jsou přezkoumána, včetně **podmínek použití**. Pokud souhlasíte s podmínkami použití, budete muset zaškrtnout políčko, abyste označili, že souhlasíte. 
+### <a name="accept-an-invitation"></a>Přijmout pozvánku
+1. Zkontrolujte všechna pole, včetně **podmínky použití**. Pokud souhlasíte s podmínkami, zaškrtněte políčko. 
 
-   ![Podmínky použití](./media/terms-of-use.png "Podmínky použití") 
+   ![Snímek obrazovky znázorňující Podmínky použití oblast](./media/terms-of-use.png "Podmínky použití.") 
 
-1. V části *cílový účet sdílení dat* vyberte předplatné a skupinu prostředků, do které budete nasazovat sdílenou složku. 
+1. V části **cílový účet sdílení dat** vyberte předplatné a skupinu prostředků, do které nasadíte sdílenou složku dat. Pak vyplňte následující pole:
 
-   V poli **účet pro sdílení dat** vyberte **vytvořit novou** , pokud nemáte existující účet pro sdílení dat. V opačném případě vyberte existující účet pro sdílení dat, do kterého chcete vaši sdílenou složku přijmout. 
+   * V poli **účet pro sdílení dat** vyberte **vytvořit novou** , pokud nemáte účet pro sdílení dat. V opačném případě vyberte existující účet pro sdílení dat, který bude akceptovat vaši sdílenou složku. 
 
-   V poli **přijatý název sdílené složky** můžete ponechat výchozí hodnotu zadanou daty nebo zadat nový název přijaté sdílené složky. 
+   * V poli **přijatý název sdílené složky** ponechte výchozí hodnotu, kterou zprostředkovatel dat zadal, nebo zadejte nový název přijaté sdílené složky. 
 
-   Jakmile souhlasíte s podmínkami použití a zadáte účet pro sdílení dat pro správu přijaté sdílené složky, vyberte **přijmout a nakonfigurovat**. Vytvoří se předplatné sdílení. 
+1. Vyberte **přijmout a konfigurovat**. Vytvoří se předplatné sdílení. 
 
-   ![Přijmout možnosti](./media/accept-options.png "Přijmout možnosti") 
+   ![Snímek obrazovky s informacemi o tom, kde přijmout možnosti konfigurace](./media/accept-options.png "Přijmout možnosti") 
 
-   Tím přejdete na přijatý podíl v účtu pro sdílení dat. 
+    Přijatá sdílená složka se zobrazí v účtu pro sdílení dat. 
 
-   Pokud nechcete pozvánku přijmout, vyberte *odmítnout*. 
+    Pokud nechcete pozvánku přijmout, vyberte **odmítnout**. 
 
-### <a name="configure-received-share"></a>Konfigurace přijaté sdílené složky
-Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následujících kroků.
+### <a name="configure-a-received-share"></a>Konfigurace přijaté sdílené složky
+Podle kroků v této části můžete nakonfigurovat umístění pro příjem dat.
 
-1. Vyberte kartu **datové sady** . Zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl. Vyberte možnost **+ mapovat na cíl** a zvolte cílové úložiště dat. 
+1. Na kartě datové **sady** zaškrtněte políčko vedle datové sady, ve které chcete přiřadit cíl. Vyberte možnost **mapovat k cíli** a zvolte cílové úložiště dat. 
 
-   ![Mapovat na cíl](./media/dataset-map-target.png "Mapovat na cíl") 
+   ![Snímek obrazovky znázorňující, jak namapovat na cíl](./media/dataset-map-target.png "Namapujte na cíl.") 
 
-1. Vyberte cílové úložiště dat, ve kterém chcete data vykládat. Všechny datové soubory v cílovém úložišti dat se stejnou cestou a názvem budou přepsány. 
+1. Vyberte cílové úložiště dat pro data. Soubory v cílovém úložišti dat, které mají stejnou cestu a název jako soubory v přijatých datech, budou přepsány. 
 
-   ![Cílový účet úložiště](./media/map-target.png "Cílové úložiště") 
+   ![Snímek obrazovky s informacemi o tom, kde vybrat cílový účet úložiště](./media/map-target.png "Cílové úložiště") 
 
-1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . Zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**.
+1. Pokud pro sdílení na základě snímků používá poskytovatel dat plán snímků k pravidelné aktualizaci dat, můžete plán povolit z karty **plán snímků** . Zaškrtněte políčko vedle plánu snímku. Pak vyberte **Povolit**.
 
-   ![Povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků")
+   ![Snímek obrazovky ukazující, jak povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků.")
 
 ### <a name="trigger-a-snapshot"></a>Aktivace snímku
-Tyto kroky platí pouze pro sdílení na základě snímků.
+Kroky v této části se vztahují jenom na sdílení na základě snímků.
 
-1. Snímek můžete aktivovat výběrem karty **Podrobnosti** a **snímku triggeru**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. 
+1. Snímek můžete aktivovat na kartě **Podrobnosti** . Na kartě vyberte **spouštěcí snímek**. Můžete zvolit, že se má aktivovat úplný snímek nebo přírůstkový snímek dat. Pokud připravujete data od poskytovatele dat poprvé, vyberte možnost **úplné kopírování**. 
 
-   ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
+   ![Snímek obrazovky znázorňující výběr snímku triggeru](./media/trigger-snapshot.png "Spustit snímek") 
 
-1. Po *úspěšném* stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady** a klikněte na odkaz v cílové cestě. 
+1. Po *úspěšném* stavu posledního spuštění přejdete do cílového úložiště dat a zobrazíte přijatá data. Vyberte **datové sady** a potom vyberte odkaz cílová cesta. 
 
-   ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
+   ![Snímek obrazovky zobrazující mapování datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
 
 ### <a name="view-history"></a>Zobrazení historie
-Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit historii snímků, vyberte kartu **Historie** . Tady najdete historii všech snímků, které se vygenerovaly za posledních 30 dní. 
+Historii snímků můžete zobrazit pouze ve sdílení na základě snímků. Chcete-li zobrazit historii, otevřete kartu **Historie** . Tady vidíte historii všech snímků, které se vygenerovaly během posledních 30 dnů. 
 
 ## <a name="next-steps"></a>Další kroky
-Zjistili jste, jak sdílet a přijímat data z účtu úložiště pomocí služby Azure Data Share. Pokud se chcete dozvědět víc o sdílení z jiných zdrojů dat, pokračujte na [podporovaná úložiště dat](supported-data-stores.md).
+Zjistili jste, jak sdílet a přijímat data z účtu úložiště pomocí služby Azure Data Share. Další informace o sdílení z jiných zdrojů dat najdete v tématu [podporovaná úložiště dat](supported-data-stores.md).

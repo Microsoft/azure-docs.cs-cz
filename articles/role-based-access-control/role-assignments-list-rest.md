@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b717d84c8fedf4a87c0b81752b14914ece185250
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369204"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964320"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>Vypsání přiřazení rolí Azure pomocí REST API
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí REST API.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí REST API.
 
 > [!NOTE]
 > Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
@@ -42,7 +42,7 @@ V Azure RBAC pro vypsání přístupu k seznamu získáte seznam přiřazení ro
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Obor | Typ |
+    > | Rozsah | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |

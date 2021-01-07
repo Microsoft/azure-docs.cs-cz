@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 22600f6519a44e71ae5c4b59b0165401b54e55fd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862376"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964537"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -60,9 +60,6 @@ Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu
 V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. Pomocí odkazů níže můžete přejít k balíčkům v NuGet, kde můžete najít příkazy konzoly (včetně rozhraní .NET CLI) a přidat je do projektu.
 * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Přidejte nejnovější verzi.
 * [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure. Přidat verzi 1.2.2
-
->[!NOTE]
-> V současné době se jedná o [známý problém](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130) , který by ovlivnil možnost použití Azure. identity 1.3.0 verze v tomto kurzu. Pokud potíže potrvají, použijte prosím verzi 1.2.2.
 
 ## <a name="get-started-with-project-code"></a>Začínáme s kódem projektu
 

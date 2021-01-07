@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893277"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964588"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Poradci pro Apache HBA ve službě Azure HDInsight
 
-Tento článek popisuje několik poradců, které vám pomůžou optimalizovat výkon Apache HBA ve službě Azure HDInsight. 
+Tento článek popisuje několik poradců, které vám pomůžou s optimalizací výkonu Apache HBA ve službě Azure HDInsight. 
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>Optimalizace adaptérů HBA pro čtení naposledy zapsaných dat
 
-Pokud používáte Apache HBA v Azure HDInsight, můžete optimalizovat konfiguraci adaptérů HBA pro scénář, ve kterém vaše aplikace čte naposledy zapsaná data. Pro zajištění vysokého výkonu je optimální, aby byly HBA čteny z setSize paměťového úložiště namísto vzdáleného úložiště.
+Pokud váš UseCase zahrnuje čtení naposledy zapsaných dat z adaptérů HBA, může vám tento poradce pomáhat. Pro zajištění vysokého výkonu je optimální, aby byly HBA čteny z setSize paměťového úložiště namísto vzdáleného úložiště.
 
-Poradce pro dotazy indikuje, že pro danou rodinu sloupců v tabulce má > 75% čtení, která se zpracovávají z setSize paměťového úložiště. Tento indikátor naznačuje, že i v případě, že na setSize paměťového úložiště dojde k vyprázdnění, je potřeba mít k dispozici poslední soubor, který musí být v mezipaměti. Data se nejdřív napíší, aby setSize paměťového úložiště systém přistupuje k posledním datům. Je pravděpodobné, že interní vlákna vyprázdnění adaptérů zjistila, že daná oblast dosáhla 128M (výchozí) velikosti a může aktivovat vyprázdnění. Tento scénář se stane i s nejaktuálnějšími daty, která byla zapsána při 128M velikosti setSize paměťového úložiště. Pozdější čtení těchto posledních záznamů proto může vyžadovat čtení souboru místo z setSize paměťového úložiště. Proto je nejlepší optimalizovat, že i nedávno vyčištěná data můžou být uložená v mezipaměti.
+Poradce pro dotazy indikuje, že pro danou rodinu sloupců v tabulce > 75% čtení, která se zpracovávají z setSize paměťového úložiště. Tento indikátor naznačuje, že i v případě, že na setSize paměťového úložiště dojde k vyprázdnění, je potřeba mít k dispozici poslední soubor, který musí být v mezipaměti. Data se nejdřív napíší, aby setSize paměťového úložiště systém přistupuje k posledním datům. Je pravděpodobné, že interní vlákna vyprázdnění adaptérů zjistila, že daná oblast dosáhla 128M (výchozí) velikosti a může aktivovat vyprázdnění. Tento scénář se stane i s nejaktuálnějšími daty, která byla zapsána při 128M velikosti setSize paměťového úložiště. Pozdější čtení těchto posledních záznamů proto může vyžadovat čtení souboru místo z setSize paměťového úložiště. Proto je nejlepší optimalizovat, že i nedávno vyčištěná data můžou být uložená v mezipaměti.
 
 Chcete-li optimalizovat poslední data v mezipaměti, vezměte v úvahu následující nastavení konfigurace:
 
@@ -33,9 +33,9 @@ Chcete-li optimalizovat poslední data v mezipaměti, vezměte v úvahu následu
 
 3. Pokud budete postupovat podle pokynů v části Krok 2 a compactionThreshold, pak změňte `hbase.hstore.compaction.max` na vyšší hodnotu `100` , například, a také hodnotu konfigurace `hbase.hstore.blockingStoreFiles` na vyšší hodnotu `300` .
 
-4. Pokud jste si jisti, že je třeba číst pouze v nedávných datech, nastavte `hbase.rs.cachecompactedblocksonwrite` konfiguraci na **zapnuto**. Tato konfigurace oznamuje systému, že i když dojde k komprimaci, data zůstanou v mezipaměti. Konfigurace je možné nastavit také na úrovni rodiny. 
+4. Pokud si jste jisti, že potřebujete číst jenom poslední data, nastavte konfiguraci na `hbase.rs.cachecompactedblocksonwrite` **zapnuto**. Tato konfigurace oznamuje systému, že i když dojde k komprimaci, data zůstanou v mezipaměti. Konfigurace je možné nastavit také na úrovni rodiny. 
 
-   V prostředí HBA spusťte následující příkaz:
+   V prostředí HBA spusťte následující příkaz pro nastavení `hbase.rs.cachecompactedblocksonwrite` Konfigurace:
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ Chcete-li optimalizovat poslední data v mezipaměti, vezměte v úvahu následu
 
 5. Bloková mezipaměť může být pro danou rodinu v tabulce vypnutá. Ujistěte se, že je tato **funkce zapnutá** pro rodiny, které mají nejaktuálnější data čtení. Ve výchozím nastavení je zablokovaná mezipaměť zapnutá pro všechny rodiny v tabulce. V případě, že jste zakázali blokovou mezipaměť pro rodinu a potřebujete ji zapnout, použijte příkaz ALTER z prostředí HBA.
 
-   Tyto konfigurace pomůžou zajistit, aby data byla v mezipaměti a aby se neprošla komprimací nedávných dat. Pokud je ve vašem scénáři přípustný hodnota TTL, zvažte použití komprimace na základě data. Další informace najdete v [Referenční příručce k Apache HBA: komprimace data s vrstvami](https://hbase.apache.org/book.html#ops.date.tiered)  
+   Tyto konfigurace pomůžou zajistit, aby data byla dostupná v mezipaměti a aby se neprošla komprimací nedávných dat. Pokud je ve vašem scénáři přípustný hodnota TTL, zvažte použití komprimace na základě data. Další informace najdete v [Referenční příručce k Apache HBA: komprimace data s vrstvami](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>Optimalizace fronty vyprázdnění
 
-V tomto zpravodaji se dá optimalizovat, protože adaptéry pro vyprázdnění můžou být potřeba vyladit. Obslužné rutiny vyprázdnění pravděpodobně nejsou dostatečně vysoké, jak jsou nakonfigurovány.
+Tento informační zpravodaj indikuje, že je možné vyladit HBA vyprázdnění. Aktuální konfigurace obslužných rutin vyprázdnění nemusí být dostatečně vysoka pro zpracování s přenosem dat pro zápis, což může vést k zpomalení vyprázdnění.
 
 V uživatelském rozhraní serveru oblasti si všimněte, že fronta vyprázdnění překračuje 100. Tato prahová hodnota znamená, že vyprázdnění jsou pomalé a možná budete muset ladit   `hbase.hstore.flusher.count` konfiguraci. Ve výchozím nastavení je hodnota 2. Ujistěte se, že maximální počet vláken vyprázdnění není vyšší než 6.
 
-Kromě toho si přečtěte, jestli máte doporučení pro optimalizaci počtu oblastí. Pokud ano, vyzkoušíte nejprve ladění oblastí, abyste viděli, jestli pomáhá rychleji vyprázdnit. Vyladění vláken vyprázdnění může pomáhat několik způsobů, jako např. 
+Kromě toho si přečtěte, jestli máte doporučení pro optimalizaci počtu oblastí. Pokud ano, doporučujeme vám vyzkoušet ladění oblastí, abyste zjistili, jestli to pomáhá rychleji vyprázdnit. V opačném případě vám může pomáhat vyladit vlákna vyprázdnění.
 
 ## <a name="region-count-tuning"></a>Optimalizace počtu oblastí
 
@@ -65,7 +65,7 @@ Jako příklad scénáře:
 
 - U těchto nastavení je počet oblastí 100. 4 GB globálních setSize paměťového úložiště je teď rozdělené mezi 100 oblastí. To znamená, že každá oblast získá pro setSize paměťového úložiště jenom 40 MB. Když jsou zápisy jednotné, systém se často vyprazdňuje a menší velikost pořadí < 40 MB. Příliš mnoho vláken vyprázdnění může zvýšit rychlost vyprázdnění `hbase.hstore.flusher.count` .
 
-Poradenský poradce znamená, že by bylo dobré zvážit počet oblastí na server, velikost haldy a globální konfiguraci setSize paměťového úložiště velikosti společně s optimalizací vyprázdnit vlákna, aby se tyto aktualizace mohly zablokovat.
+Poradenský poradce znamená, že by bylo dobré zvážit počet oblastí na server, velikost haldy a globální konfiguraci setSize paměťového úložiště velikosti společně s optimalizací vyprázdnit vlákna, aby se zabránilo tomu, že se aktualizace zablokují.
 
 ## <a name="compaction-queue-tuning"></a>Vyladění fronty komprese
 

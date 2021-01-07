@@ -8,18 +8,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930785"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964078"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace Azure Functions s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zahrňte službu Azure App Configuration Service do aplikace Azure Functions, abyste mohli centralizovat úložiště a správu všech nastavení vaší aplikace odděleně od svého kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoje Azure** .
@@ -44,45 +44,75 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
+Tento projekt bude používat [Injektáže závislosti v rozhraní .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection) a přidá konfiguraci aplikace Azure jako další zdroj konfigurace.
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do `Microsoft.Extensions.Configuration.AzureAppConfiguration` svého projektu balíček NuGet. Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
+1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet.
+   - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) verze 4.1.0 nebo novější
+   - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) verze 1.1.0 nebo novější 
 
-2. Otevřete *function1.cs* a přidejte obory názvů konfigurace .NET Core a poskytovatele konfigurace aplikace.
+2. Přidejte nový soubor *Startup.cs* s následujícím kódem. Definuje třídu s názvem `Startup` , která implementuje `FunctionsStartup` abstraktní třídu. Atribut assembly slouží k zadání názvu typu používaného během Azure Functionsho spuštění.
+
+    `ConfigureAppConfiguration`Metoda je přepsaná a poskytovatel Azure App Configuration se přidá jako další zdroj konfigurace voláním `AddAzureAppConfiguration()` . `Configure`Metoda je ponechána prázdná, protože nemusíte v tomto okamžiku registrovat žádné služby.
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. Otevřete *function1.cs* a přidejte následující obor názvů.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Přidejte `static` vlastnost s názvem `Configuration` pro vytvoření instance singleton `IConfiguration` . Pak přidejte `static` konstruktor pro připojení ke konfiguraci aplikace voláním `AddAzureAppConfiguration()` . Tato akce načte konfiguraci jednou při spuštění aplikace. Stejná instance konfigurace bude použita pro všechny volání funkcí později.
+   Přidejte konstruktor, který slouží k získání instance `IConfiguration` prostřednictvím injektáže závislosti.
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. Aktualizujte `Run` metodu pro čtení hodnot z konfigurace.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   `Function1`Třída a `Run` Metoda by neměly být statické. Odeberte `static` modifikátor, pokud byl automaticky vygenerován.
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
@@ -120,7 +150,7 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho u Azure Functions aplikace přes [poskytovatele konfigurace aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). Další informace o tom, jak nakonfigurovat aplikaci Azure Functions, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho u Azure Functions aplikace přes [poskytovatele konfigurace aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). Další informace o tom, jak aktualizovat aplikaci Azure Functions pro dynamickou aktualizaci konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Povolení dynamické konfigurace](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Povolení dynamické konfigurace v Azure Functions](./enable-dynamic-configuration-azure-functions-csharp.md)

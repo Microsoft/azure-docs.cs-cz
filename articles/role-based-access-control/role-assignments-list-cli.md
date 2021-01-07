@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648306"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964384"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Vypsání přiřazení rolí Azure pomocí Azure CLI
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí rozhraní příkazového řádku Azure CLI.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí rozhraní příkazového řádku Azure CLI.
 
 > [!NOTE]
 > Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.

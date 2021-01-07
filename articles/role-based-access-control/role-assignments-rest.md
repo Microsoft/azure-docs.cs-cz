@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: feb647cc42c878778b4326c9ee76a32809751314
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: e4f230663e0eeddcf874c24e5041653f241f481c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369306"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964265"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí REST API.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí REST API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -58,7 +58,7 @@ Když v Azure RBAC udělíte přístup, přidáte přiřazení role. K přidán�
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Obor | Typ |
+    > | Rozsah | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
@@ -72,7 +72,7 @@ Když v Azure RBAC udělíte přístup, přidáte přiřazení role. K přidán�
 1. V textu žádosti nahraďte *{Scope}* oborem pro přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Obor | Typ |
+    > | Rozsah | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
@@ -132,7 +132,7 @@ Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role. K odebr
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro odebrání přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Obor | Typ |
+    > | Rozsah | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |

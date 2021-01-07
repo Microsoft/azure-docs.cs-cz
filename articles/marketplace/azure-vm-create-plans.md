@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629548"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964421"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Vytvoření plánů pro nabídku virtuálního počítače
 
@@ -42,7 +42,7 @@ V dialogovém okně **Nový plán** zadejte jedinečné **ID plánu** pro každ�
 > [!NOTE]
 > Po zvolení možnost **vytvořit** se ID plánu nedá změnit.
 
-Zadejte **název plánu**. Zákazníci uvidí tento název, když rozhodují, který plán vybrat v rámci vaší nabídky. Vytvořte jedinečný název, který bude jasně ukazovat rozdíly mezi plány. Můžete například zadat **Windows Server** s plány průběžných *plateb* , *BYOL* , *Advanced* a *Enterprise* .
+Zadejte **název plánu**. Zákazníci uvidí tento název, když rozhodují, který plán vybrat v rámci vaší nabídky. Vytvořte jedinečný název, který bude jasně ukazovat rozdíly mezi plány. Můžete například zadat **Windows Server** s plány průběžných *plateb*, *BYOL*, *Advanced* a *Enterprise* .
 
 Vyberte **Vytvořit**. Tím se otevře stránka **Nastavení plánu** .
 
@@ -139,9 +139,9 @@ Zákazníkům můžete nabídnout **bezplatnou zkušební verzi** na jednu, tři
 
 Jednotlivé plány můžete navrhovat tak, aby je bylo možné zobrazit všem uživatelům nebo pouze pro předem vybranou cílovou skupinu. Přiřaďte členství v této omezené cílové skupině pomocí ID předplatných Azure.
 
-**Veřejné** : váš plán uvidí všichni uživatelé.
+**Veřejné**: váš plán uvidí všichni uživatelé.
 
-**Soukromé** : Nastavte si váš plán viditelný jenom pro předvybranou cílovou skupinu. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo ji změnit na veřejné. Po zveřejnění plánu musí být veřejný. Nedá se změnit zpátky na soukromý plán.
+**Soukromé**: Nastavte si váš plán viditelný jenom pro předvybranou cílovou skupinu. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo ji změnit na veřejné. Po zveřejnění plánu musí být veřejný. Nedá se změnit zpátky na soukromý plán.
 
 Přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu, pomocí **ID předplatného Azure** s. Volitelně můžete zahrnout **Popis** každého ID předplatného Azure, které přiřadíte. Pokud importujete tabulku CSV, přidejte až 10 ID předplatných ručně nebo až 20 000. ID předplatných Azure se reprezentují jako identifikátory GUID a všechna písmena musí být malá.
 
@@ -156,7 +156,7 @@ Pokud má být váš virtuální počítač používán pouze nepřímo, pokud j
 
 Skryté plány nepodporují odkazy ve verzi Preview.
 
-Před pokračováním na další kartu v nabídce plán v levém navigačním podokně vyberte **Uložit koncept** . **Technical configuration**
+Před pokračováním na další kartu v nabídce plán v levém navigačním podokně vyberte **Uložit koncept** . 
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
@@ -191,7 +191,7 @@ Vygenerování virtuálního počítače definuje virtuální hardware, který p
 
 1. Při vytváření nové nabídky vyberte **typ generace** a zadejte požadované podrobnosti:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Zobrazení rozevíracího seznamu generování":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Zobrazení oddílu podrobností o generaci v partnerském centru.":::
 
 2. Pokud chcete do plánu přidat další generaci, vyberte **Přidat generaci**...
 
@@ -203,9 +203,7 @@ Vygenerování virtuálního počítače definuje virtuální hardware, který p
 
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
-3. Chcete-li aktualizovat existující virtuální počítač, který má již vytvořenou generaci 1, upravte podrobnosti na stránce **technické konfigurace** :
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Zobrazení stránky technické konfigurace plánu.":::
+3. Chcete-li aktualizovat existující virtuální počítač, který má již vytvořenou generaci 1, upravte podrobnosti na stránce **Technická konfigurace** .
 
 Další informace o rozdílech mezi možnostmi generace 1 a generace 2 najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../virtual-machines/generation-2.md).
 
@@ -215,15 +213,15 @@ Zadejte verzi disku a identifikátor URI sdíleného přístupového podpisu (SA
 
 Tato dvě povinná pole se zobrazují na předchozí imagi výše:
 
-- **Verze disku** : verze image, kterou poskytujete.
+- **Verze disku**: verze image, kterou poskytujete.
 - **Odkaz na virtuální pevný disk** s operačním systémem: umístění v účtu úložiště Azure pro virtuální pevný disk operačního systému. Informace o tom, jak získat identifikátor URI SAS, najdete v tématu [Získání identifikátoru URI sdíleného přístupového podpisu pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 
-Datové disky (vyberte **přidat datový disk (maximum 16)** ) jsou taky identifikátory URI SDÍLENÉHO přístupu VHD, které jsou uložené ve svých účtech úložiště Azure. Přidá do plánu pouze jeden obrázek pro každé odeslání.
+Datové disky (vyberte **přidat datový disk (maximum 16)**) jsou taky identifikátory URI SDÍLENÉHO přístupu VHD, které jsou uložené ve svých účtech úložiště Azure. Přidá do plánu pouze jeden obrázek pro každé odeslání.
 
 Bez ohledu na to, jaký operační systém používáte, přidejte jenom minimální počet datových disků, které řešení vyžaduje. Během nasazení nemohou zákazníci odebrat disky, které jsou součástí bitové kopie, ale mohou vždy přidávat disky během nebo po nasazení.
 
-Vyberte **Uložit koncept** , pak v levém horním rohu vyberte **← plán** , abyste viděli plán, který jste právě vytvořili.
+Vyberte **Uložit koncept**, pak v levém horním rohu vyberte **← plán** , abyste viděli plán, který jste právě vytvořili.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Prodávejte dál prostřednictvím CSP](azure-vm-create-resell-csp.md)
+- [Prodej prostřednictvím partnerů CSP](azure-vm-create-resell-csp.md)

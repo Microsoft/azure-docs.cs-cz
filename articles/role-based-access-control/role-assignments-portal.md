@@ -10,20 +10,20 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7c58641f0039982f05be14d0f24ba89c62273d4b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368314"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964299"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
 
 Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtěte si téma [zobrazení a přiřazení rolí správce v Azure Active Directory](../active-directory/roles/manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -49,11 +49,11 @@ Aby byla na stránce řízení přístupu (IAM) nejúčinnější, pomůže vám
 
 Když ve službě Azure RBAC udělíte přístup k prostředku Azure, přidáte přiřazení role. Pomocí těchto kroků přiřaďte roli.
 
-1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor, pro který chcete udělit přístup. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor, pro který chcete udělit přístup. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo prostředek.
 
 1. Klikněte na konkrétní prostředek pro daný obor.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte přiřazení rolí v tomto oboru.
 
@@ -130,7 +130,7 @@ Pomocí těchto kroků přiřaďte roli spravované identitě přiřazené syst�
 
     ![Spravovaná identita přiřazená systémem](./media/shared/identity-system-assigned.png)
 
-1. V části **oprávnění**klikněte na **přiřazení rolí Azure**.
+1. V části **oprávnění** klikněte na **přiřazení rolí Azure**.
 
     Pokud jsou role už přiřazené k vybrané spravované identitě přiřazené systémem, zobrazí se seznam přiřazení rolí. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
@@ -140,7 +140,7 @@ Pomocí těchto kroků přiřaďte roli spravované identitě přiřazené syst�
 
 1. Klikněte na **Přidat přiřazení role (Preview)**.
 
-1. Pomocí rozevíracích seznamů vyberte sadu prostředků, na které se přiřazení role vztahuje, jako je například **předplatné**, **Skupina prostředků**nebo prostředek.
+1. Pomocí rozevíracích seznamů vyberte sadu prostředků, na které se přiřazení role vztahuje, jako je například **předplatné**, **Skupina prostředků** nebo prostředek.
 
     Pokud nemáte oprávnění k zápisu do přiřazení role pro vybraný obor, zobrazí se vložená zpráva. 
 
@@ -168,7 +168,7 @@ Pomocí těchto kroků přiřadíte roli spravované identitě přiřazené uži
 
 1. Klikněte na **Přidat přiřazení role (Preview)**.
 
-1. Pomocí rozevíracích seznamů vyberte sadu prostředků, na které se přiřazení role vztahuje, jako je například **předplatné**, **Skupina prostředků**nebo prostředek.
+1. Pomocí rozevíracích seznamů vyberte sadu prostředků, na které se přiřazení role vztahuje, jako je například **předplatné**, **Skupina prostředků** nebo prostředek.
 
     Pokud nemáte oprávnění k zápisu do přiřazení role pro vybraný obor, zobrazí se vložená zpráva. 
 

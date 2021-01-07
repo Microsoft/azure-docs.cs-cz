@@ -3,16 +3,16 @@ title: Výstupy v šablonách
 description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934726"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964010"
 ---
 # <a name="outputs-in-arm-templates"></a>Výstupy v šablonách ARM
 
-Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM). Výstupy použijete, když potřebujete vrátit hodnoty z nasazených prostředků.
+Tento článek popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM). Použijete, `outputs` když potřebujete vrátit hodnoty z nasazených prostředků.
 
 Formát každé výstupní hodnoty se musí shodovat s jedním z [datových typů](template-syntax.md#data-types).
 
@@ -31,7 +31,7 @@ Následující příklad ukazuje, jak vrátit ID prostředku pro veřejnou IP ad
 
 ## <a name="conditional-output"></a>Podmíněný výstup
 
-V části výstupy můžete podmíněně vracet hodnotu. V případě [podmíněného nasazení](conditional-resource-deployment.md) prostředku se obvykle používá podmínka ve výstupech. Následující příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
+V `outputs` části můžete podmíněně vracet hodnotu. Obvykle se používá `condition` v případě, `outputs` kdy jste prostředek [nasadili podmíněně](conditional-resource-deployment.md) . Následující příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
 
 ```json
 "outputs": {

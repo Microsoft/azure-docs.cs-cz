@@ -3,77 +3,168 @@ title: Cloudy svrchované – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Naučte se používat cloudy v svrchovaném provozu.
 services: cognitive-services
-author: cbasoglu
-manager: xdh
+author: alexeyo26
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/14/2020
-ms.author: cbasoglu
-ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.date: 12/26/2020
+ms.author: alexeyo
+ms.openlocfilehash: a1c3fcf868af76865eec9fa2be4f0fdb58074867
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78228088"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964452"
 ---
-# <a name="speech-services-with-sovereign-clouds"></a>Hlasové služby s svrchovanými cloudy
+# <a name="speech-services-in-sovereign-clouds"></a>Služby Speech v cloudech svrchovan
 
 ## <a name="azure-government-united-states"></a>Azure Government (USA)
 
-Přístup k této vyhrazené instanci mají jenom americké federální, státní, místní nebo samosprávnéové vlády a jejich partneři s činnostmi, které řídí naši občané USA.
-- Oblasti: US Gov – Virginie
-- SR in SpeechSDK:*config. FromHost ("WSS://Virginia.STT.Speech.Azure.us"; " \<your-key\> ");*
-- TTS v SpeechSDK: *config. FromHost ("https []() ://Virginia.TTS.Speech.Azure.us"; " \<your-key\> ");*
-- Ověřovací tokeny: https []() ://Virginia.API.Cognitive.Microsoft.us/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.us  
-- Portál Custom Speech: https://virginia.cris.azure.us/Home/CustomSpeech
-- Dostupné SKU: S0
-- Podporované funkce:
+K dispozici pouze institucím státní správy USA a jejich partnerům. Další informace o Azure Government najdete [tady](../../azure-government/documentation-government-welcome.md) [.](../../azure-government/compare-azure-government-global-azure.md)
+
+- **Azure Portal:**
+  - [https://portal.azure.us/](https://portal.azure.us/)
+- **Regionu**
+  - USA (Gov) – Arizona
+  - USA (Gov) – Virginia
+- **Dostupné cenové úrovně:**
+  - Free (F0) a Standard (S0). Další podrobnosti najdete [tady](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
+- **Podporované funkce:**
   - Převod řeči na text
-  - Custom Speech (úprava akustického/jazyka)
+    - Vlastní převod řeči (akustický Model AM) a přizpůsobení jazykového modelu (LM)
+      - [Speech Studio](https://speech.azure.us/)
   - Převod textu na řeč
   - Překladatel řeči
-- Nepodporované funkce
+- **Nepodporované funkce:**
+  - Neuronové hlas
   - Vlastní hlas
-  - Neuronové hlasy pro převod textu na řeč
-- Podporovaná národní prostředí: národní prostředí pro následující jazyky jsou podporovaná.
+- **Podporované jazyky:**
   - Arabština (ar-*)
   - Čínština (zh-*)
   - Angličtina (EN-*)
   - Francouzština (FR-*)
   - Němčina (de-*)
-  - Hindština
-  - Korejština
-  - Ruština
+  - Hindština (dobrý den)
+  - korejština (ko-KR),
+  - Ruština (ru-RU)
   - Španělština (ES-*)
 
-## <a name="microsoft-azure-china"></a>Microsoft Azure Čína
+### <a name="endpoint-information"></a>Informace o koncovém bodu
 
-V Číně je k dispozici datové centrum Azure s přímým přístupem k Číně Mobile, Čína Telecom, Čína UNICOM a další hlavní páteřní síť pro uživatele, kteří budou mít k dispozici vysokorychlostní a stabilní přístup k místní síti.
-- Oblasti: Čína – východ 2 (Shanghai)
-- SR in SpeechSDK: *config. FromHost ("WSS://chinaeast2.STT.Speech.Azure.cn"; " \<your-key\> ");*
-- TTS v SpeechSDK:  *config. FromHost ("https []() ://chinaeast2.TTS.Speech.Azure.cn"; " \<your-key\> ");*
-- Ověřovací tokeny: https []() ://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.cn
-- Portál Custom Speech: https://speech.azure.cn/CustomSpeech
-- Dostupné SKU: S0
-- Podporované funkce:
+Tato část obsahuje informace o koncovém bodu služby Speech Services pro použití s [funkcí Speech SDK](speech-sdk.md), [Speech-to-text REST API](rest-speech-to-text.md)a [Převod textu na řeč REST API](rest-text-to-speech.md).
+
+#### <a name="speech-services-rest-api"></a>REST API služby Speech
+
+Služba Speech Services REST API koncové body v Azure Government mají následující formát:
+
+|  Typ/operace REST API | Formát koncového bodu |
+|--|--|
+| Přístupový token | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/sts/v1.0/issueToken`
+| [Převod řeči na text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/<URL_PATH>` |
+| [REST API řeči na text pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.us/<URL_PATH>` |
+| [Rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.us/<URL_PATH>` |
+
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+
+|                     | Identifikátor oblasti |
+|--|--|
+| **USA (Gov) – Arizona**  | `usgovarizona` |
+| **USA (Gov) – Virginia** | `usgovvirginia` |
+
+#### <a name="speech-sdk"></a>Speech SDK
+
+Pro sadu Speech SDK v cloudech z svrchovaného systému je potřeba použít instanci z hostitele `SpeechConfig` třídy nebo `--host` Možnosti rozhraní příkazového [řádku pro rozpoznávání řeči](spx-overview.md). (Můžete také použít instanci "z koncového bodu" a `--endpoint` Speech CLI – možnost
+
+`SpeechConfig` pro třídu by měla být vytvořena instance takto:
+```csharp
+var config = SpeechConfig.FromHost(usGovHost, subscriptionKey);
+```
+Mělo by se používat rozpoznávání řeči (Poznamenejte si `--host` možnost):
+```dos
+spx recognize --host "usGovHost" --file myaudio.wav
+```
+Nahraďte `subscriptionKey` klíčem prostředku řeči. Nahraďte `usGovHost` výrazem, který odpovídá požadované nabídce služeb a oblasti vašeho předplatného z této tabulky:
+
+|  Nabídka oblast/služba | Výraz hostitele |
+|--|--|
+| **USA (Gov) – Arizona** | |
+| Převod řeči na text | `wss://usgovarizona.stt.speech.azure.us` |
+| Převod textu na řeč | `https://usgovarizona.tts.speech.azure.us` |
+| **USA (Gov) – Virginia** | |
+| Převod řeči na text | `wss://usgovvirginia.stt.speech.azure.us` |
+| Převod textu na řeč | `https://usgovvirginia.tts.speech.azure.us` |
+
+
+## <a name="azure-china"></a>Azure (Čína)
+
+K dispozici organizacím, které mají podnikovou přítomnost v Číně. Další informace o Azure Číně najdete [tady.](/azure/china/overview-operations) 
+
+
+- **Azure Portal:**
+  - [https://portal.azure.cn/](https://portal.azure.cn/)
+- **Regionu**
+  - Čína – východ 2
+- **Dostupné cenové úrovně:**
+  - Free (F0) a Standard (S0). Další podrobnosti najdete [tady](https://www.azure.cn/pricing/details/cognitive-services/index.html) .
+- **Podporované funkce:**
   - Převod řeči na text
-  - Custom Speech (úprava akustického/jazyka)
+    - Vlastní převod řeči (akustický Model AM) a přizpůsobení jazykového modelu (LM)
+      - [Speech Studio](https://speech.azure.cn/)
   - Převod textu na řeč
   - Překladatel řeči
-- Nepodporované funkce
+- **Nepodporované funkce:**
+  - Neuronové hlas
   - Vlastní hlas
-  - Neuronové hlasy pro převod textu na řeč
-- Podporovaná národní prostředí: národní prostředí pro následující jazyky jsou podporovaná.
+- **Podporované jazyky:**
   - Arabština (ar-*)
   - Čínština (zh-*)
   - Angličtina (EN-*)
   - Francouzština (FR-*)
   - Němčina (de-*)
-  - Hindština
-  - Korejština
-  - Ruština
+  - Hindština (dobrý den)
+  - korejština (ko-KR),
+  - Ruština (ru-RU)
   - Španělština (ES-*)
 
+### <a name="endpoint-information"></a>Informace o koncovém bodu
+
+Tato část obsahuje informace o koncovém bodu služby Speech Services pro použití s [funkcí Speech SDK](speech-sdk.md), [Speech-to-text REST API](rest-speech-to-text.md)a [Převod textu na řeč REST API](rest-text-to-speech.md).
+
+#### <a name="speech-services-rest-api"></a>REST API služby Speech
+
+Služby Speech Services REST API koncové body v Azure Čína mají následující formát:
+
+|  Typ/operace REST API | Formát koncového bodu |
+|--|--|
+| Přístupový token | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/sts/v1.0/issueToken`
+| [Převod řeči na text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/<URL_PATH>` |
+| [REST API řeči na text pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.cn/<URL_PATH>` |
+| [Rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.cn/<URL_PATH>` |
+
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+
+|                     | Identifikátor oblasti |
+|--|--|
+| **Čína – východ 2**  | `chinaeast2` |
+
+#### <a name="speech-sdk"></a>Speech SDK
+
+Pro sadu Speech SDK v cloudech z svrchovaného systému je potřeba použít instanci z hostitele `SpeechConfig` třídy nebo `--host` Možnosti rozhraní příkazového [řádku pro rozpoznávání řeči](spx-overview.md). (Můžete také použít instanci "z koncového bodu" a `--endpoint` Speech CLI – možnost
+
+`SpeechConfig` pro třídu by měla být vytvořena instance takto:
+```csharp
+var config = SpeechConfig.FromHost(azCnHost, subscriptionKey);
+```
+Mělo by se používat rozpoznávání řeči (Poznamenejte si `--host` možnost):
+```dos
+spx recognize --host "azCnHost" --file myaudio.wav
+```
+Nahraďte `subscriptionKey` klíčem prostředku řeči. Nahraďte `azCnHost` výrazem, který odpovídá požadované nabídce služeb a oblasti vašeho předplatného z této tabulky:
+
+|  Nabídka oblast/služba | Výraz hostitele |
+|--|--|
+| **Čína – východ 2** | |
+| Převod řeči na text | `wss://chinaeast2.stt.speech.azure.cn` |
+| Převod textu na řeč | `https://chinaeast2.tts.speech.azure.cn` |
