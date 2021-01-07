@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: fc0f148da518c718dafaab082f9598ccd4372a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954936"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963806"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -140,15 +140,15 @@ Pro vytvoření skupin akcí použijte následující postup:
             Příklad:
             1) Výstraha 1 se 3 položkami konfigurace: A, B, C-vytvoří 3 pracovní položky.
             2) Výstraha 2 s 1 položkou konfigurace: A – vytvoří 1 pracovní položku.
-
-        * Pokud zrušíte zaškrtnutí políčka **"vytvořit jednotlivé pracovní položky pro každou položku konfigurace"** , ITSM Connector vytvoří jednu pracovní položku pro každé pravidlo výstrahy a připojí se k ní všechny ovlivněné položky konfigurace. Bude vytvořena nová pracovní položka, pokud je předchozí zavřena.
-        >[!NOTE]
+       >[!NOTE]
         > V takovém případě některé z výstrah aktivované nebudou generovat nové pracovní položky v nástroji ITSM.
 
-            For example:
-            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
-            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
-            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
+        * Pokud zrušíte zaškrtnutí políčka **"vytvořit jednotlivé pracovní položky pro každou položku konfigurace"** , ITSM Connector vytvoří jednu pracovní položku pro každé pravidlo výstrahy a připojí se k ní všechny ovlivněné položky konfigurace. Bude vytvořena nová pracovní položka, pokud je předchozí zavřena.
+
+            Příklad:
+             1) Výstraha 1 se 3 položkami konfigurace: A, B, C-vytvoří 1 pracovní položku.
+             2) Výstraha 2 pro stejné pravidlo výstrahy jako fáze 1 s 1 položkou konfigurace: D – bude sloučena s pracovní položkou ve fázi 1.
+             3) Upozornění 3 pro jiné pravidlo výstrahy s 1 položkou konfigurace: E-vytvoří 1 pracovní položku.
 
        ![Snímek obrazovky, který zobrazuje okno incidentu ITSM.](media/itsmc-overview/itsm-action-configuration.png)
 

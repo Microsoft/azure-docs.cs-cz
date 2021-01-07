@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881238"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963515"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Můžete optimalizovat výzvy k opakovanému ověření a pochopit dobu životnosti relace pro Azure AD Multi-Factor Authentication
 
@@ -121,7 +121,7 @@ Pokud chcete nakonfigurovat zásady podmíněného přístupu pro četnost přih
 1. Vyberte **zabezpečení** a pak **podmíněný přístup**.
 1. Nakonfigurujte zásady pomocí doporučených možností správy relací popsaných v tomto článku.
 
-Pokud chcete zkontrolovat životnost tokenů, [použijte Azure AD PowerShell k dotazování všech zásad Azure AD](../develop/configure-token-lifetimes.md#prerequisites). Zakažte všechny zásady, které jste na svém místě.
+Pokud chcete zkontrolovat životnost tokenů, [použijte Azure AD PowerShell k dotazování všech zásad Azure AD](../develop/configure-token-lifetimes.md#get-started). Zakažte všechny zásady, které jste na svém místě.
 
 Pokud je ve vašem tenantovi povolené víc nastavení, doporučujeme, abyste aktualizovali nastavení na základě licencování, které máte k dispozici. Pokud máte například licence Azure AD Premium, měli byste použít jenom zásady podmíněného přístupu pro *četnost přihlášení* a *trvalou relaci prohlížeče*. Pokud máte Microsoft 365 aplikace nebo licence Azure AD Free, měli byste použít konfiguraci *zůstat přihlášeni?*
 

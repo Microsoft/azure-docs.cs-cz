@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963359"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963789"
 ---
 # <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
 
@@ -81,7 +81,7 @@ V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle v
 
 **Tabulka**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="Snímek obrazovky s možnostmi oblastí s rozdílem v cenách a tarify vyřazení jako graf":::
+:::image type="content" source="./media/spot-table.png" alt-text="Snímek obrazovky s možnostmi oblastí s rozdílem v cenách a tarify vyřazení jako tabulka":::
 
 
 
@@ -110,6 +110,11 @@ V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle v
 **Otázka:** Kde můžu publikovat otázky?
 
 **A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](/answers/topics/azure-spot.html). 
+
+
+**Otázka:** Jak můžu změnit maximální cenu pro virtuální počítač s přímým použitím?
+
+**A:** Než budete moct změnit maximální cenu, musíte virtuální počítač navrátit. Pak můžete na portálu změnit maximální cenu z **konfiguračního** oddílu pro daný virtuální počítač. 
 
 ## <a name="next-steps"></a>Další kroky
 K nasazení virtuálních počítačů na místě použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .

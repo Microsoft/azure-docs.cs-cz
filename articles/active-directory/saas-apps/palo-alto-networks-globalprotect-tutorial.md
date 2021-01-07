@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513326"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Palo Alto Networks – GlobalProtect
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Palo Alto Networks-GlobalProtect with 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Palo Alto Networks – GlobalProtect s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -70,7 +70,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce **Palo Alto Networks – GlobalProtect** Application Integration najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -95,11 +95,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -107,10 +107,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Palo Alto Networks – GlobalProtect.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Palo Alto Networks-GlobalProtect**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
@@ -133,7 +133,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Do textového pole **název profilu** zadejte název, třeba Azure AD GlobalProtect.
 
-    b. V části **metadata zprostředkovatele identity**klikněte na **Procházet** a vyberte soubor metadata.xml, který jste stáhli z Azure Portal
+    b. V části **metadata zprostředkovatele identity** klikněte na **Procházet** a vyberte soubor metadata.xml, který jste stáhli z Azure Portal
 
     c. Klikněte na tlačítko **OK**.
 
@@ -145,11 +145,11 @@ V této části se v Palo Alto Networks-GlobalProtect vytvoří uživatel nazvan
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na Palo Alto Networks – adresa URL pro přihlášení GlobalProtect, kde můžete spustit tok přihlášení. 
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na Palo Alto Networks – adresa URL pro přihlášení GlobalProtect, kde můžete spustit tok přihlášení. 
 
-2. Přejít na Palo Alto Networks – adresa URL pro GlobalProtect přihlašování přímo a zahájit tok přihlášení.
+* Přejít na Palo Alto Networks – adresa URL pro GlobalProtect přihlašování přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Palo Alto Networks-GlobalProtect, měli byste být automaticky přihlášeni k Palo Alto Networks-GlobalProtect, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Palo Alto Networks-GlobalProtect v části Moje aplikace, měli byste se automaticky přihlásit k Palo Alto Networks-GlobalProtect, pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

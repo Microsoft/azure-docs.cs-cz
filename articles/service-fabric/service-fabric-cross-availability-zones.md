@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930816"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962427"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -344,7 +344,7 @@ Dřív zmíněné řešení používá jedno nodeType na AZ. Následující ře�
 Pokud chcete povolit zóny v sadě škálování virtuálního počítače, musíte do prostředku sady škálování virtuálního počítače zahrnout následující tři hodnoty.
 
 * První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
-* Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true.
+* Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
 * Třetí hodnota je "zoneBalance" a je volitelná, což zajistí striktní vyrovnávání zatížení, pokud je nastaveno na hodnotu true. Přečtěte si o [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
 

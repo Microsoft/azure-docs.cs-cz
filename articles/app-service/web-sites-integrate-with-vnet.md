@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854940"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963583"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -130,6 +130,12 @@ Rozhraní App Service plánování virtuální sítě Integration UI zobrazuje v
 
 * **Synchronizace sítě**: Síťová operace synchronizace se používá jenom pro funkci Integrace virtuální sítě závislé na bráně. Při provádění synchronizace sítě se zajistí, že budou synchronizovány i certifikáty a informace o síti. Pokud přidáte nebo změníte DNS vaší virtuální sítě, proveďte synchronizaci síťové operace. Tato operace restartuje všechny aplikace, které používají tuto virtuální síť. Tato operace nebude fungovat, pokud používáte aplikaci a virtuální síť, která patří do různých předplatných.
 * **Přidání tras**: přidání tras k odchozímu provozu do vaší virtuální sítě.
+
+Privátní IP adresa přiřazená k instanci je vystavena prostřednictvím proměnné prostředí **WEBSITE_PRIVATE_IP**. Uživatelské rozhraní konzoly Kudu také zobrazuje seznam proměnných prostředí, které jsou k dispozici pro webovou aplikaci. Tato IP adresa se přiřazuje z rozsahu adres integrované podsítě. Pro místní integraci virtuální sítě je hodnotou WEBSITE_PRIVATE_IP IP adresa z rozsahu adres delegované podsítě a pro integraci virtuální sítě vyžadované bránou je tato hodnota IP adresa z rozsahu adres ve fondu adres Point-to-site, který je nakonfigurovaný na Virtual Network bráně. Toto je IP adresa, kterou webová aplikace použije k připojení k prostředkům prostřednictvím Virtual Network. 
+
+> [!NOTE]
+> Hodnota WEBSITE_PRIVATE_IP je svázána se změnou. Bude se ale jednat o IP adresu v rozsahu adres podsítě integrace nebo rozsahu adres Point-to-site, takže budete muset umožnit přístup z celého rozsahu adres.
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Brána – požadované směrování integrace virtuální sítě
 Trasy, které jsou definované ve vaší virtuální síti, se používají k přímému směrování provozu do vaší virtuální sítě z vaší aplikace. Pokud chcete do virtuální sítě odeslat další odchozí provoz, přidejte sem tyto bloky adres. Tato možnost funguje jenom s integrací virtuální sítě požadovaná bránou. Směrovací tabulky nemají vliv na provoz vaší aplikace při použití integrace virtuální sítě vyžadované bránou způsobem, který provádí s regionální integrací virtuální sítě.

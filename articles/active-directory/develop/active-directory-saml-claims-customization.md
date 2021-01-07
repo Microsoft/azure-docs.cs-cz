@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936790"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963498"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -135,7 +135,7 @@ K transformaci deklarací lze použít následující funkce.
 | **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
 | **Extract () – Před spárováním** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "BSimon_US", odpovídá hodnota "_US", takže výstup deklarace identity je "BSimon". |
-| **Extract ()-Between – shoda** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon_US", první vyhovující hodnota je "Finance_", druhá hodnota pro porovnání je "_US", pak výstup deklarace identity je "BSimon". |
+| **Extract ()-Between – shoda** | Vrátí dílčí řetězec, dokud neodpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon_US", první vyhovující hodnota je "finance \_ ", druhá hodnota pro porovnání je " \_ US", výstup deklarace identity je "BSimon". |
 | **ExtractAlpha () – předpona** | Vrátí prefixovou část řetězce v abecedním pořadí.<br/>Pokud je například hodnota vstupu "BSimon_123", pak vrátí "BSimon". |
 | **ExtractAlpha () – Přípona** | Vrátí příponu v abecedním pořadí řetězce.<br/>Pokud je například hodnota vstupu "123_Simon", pak vrátí "Simon". |
 | **ExtractNumeric () – předpona** | Vrátí číselnou část řetězce předpony.<br/>Pokud je například hodnota vstupu "123_BSimon", pak vrátí "123". |

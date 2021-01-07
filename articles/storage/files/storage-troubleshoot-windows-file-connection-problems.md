@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858684"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962444"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
@@ -126,7 +126,7 @@ Soubory Azure také kromě protokolu SMB podporují i REST. Přístup přes rozh
 
 Pokud je na klientovi povolená komunikace ověřovací NTLMv1, může dojít k systémové chybě 53 nebo k systémové chybě 87. Služba Azure Files podporuje pouze ověřování pomocí protokolu NTLM v2. Klient s povoleným protokolem NTLM v1 je méně zabezpečený. Proto se blokuje komunikace služby Azure Files. 
 
-Pokud chcete určit, jestli je toto příčinou chyby, ověřte, že je následující podklíč registru nastavený na hodnotu 3.
+Chcete-li zjistit, zda se jedná o příčinu chyby, ověřte, zda následující podklíč registru není nastaven na hodnotu nižší než 3:
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 

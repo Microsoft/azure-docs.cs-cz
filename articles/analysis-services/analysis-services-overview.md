@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 555c41a9d53b27119299e5e9dca7c9e392fc5e25
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 4be8c8a6163fe0400b37a3f2e1884ff389c00518
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955480"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963702"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -160,7 +160,7 @@ Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdr
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
-Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md). 
+Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje ochranu **základní** úrovně útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md). 
 
 Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správců serveru a šifrování Server-Side. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
 

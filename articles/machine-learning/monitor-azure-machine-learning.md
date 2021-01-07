@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533476"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963651"
 ---
 # <a name="monitor-azure-machine-learning"></a>Monitorování Azure Machine Learningu
 
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machine Learning a postup analýzy a upozornění na tato data pomocí Azure Monitor.
 
 > [!TIP]
-> Informace v tomto dokumentu jsou primárně určené pro __správce__ , protože popisují monitorování služby Azure Machine Learning a přidružených služeb Azure. Pokud jste odborníkem na __data__ nebo __vývojářem__ a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů* , přečtěte si následující dokumenty:
+> Informace v tomto dokumentu jsou primárně určené pro __správce__, protože popisují monitorování služby Azure Machine Learning a přidružených služeb Azure. Pokud jste odborníkem na __data__ nebo __vývojářem__ a chcete monitorovat informace, které jsou specifické pro vaše *běhy školicích kurzů*, přečtěte si následující dokumenty:
 >
 > * [Spuštění, monitorování a zrušení školicích běhů](how-to-manage-runs.md)
 > * [Protokolování metrik pro tréninková spuštění](how-to-track-experiments.md)
@@ -91,6 +91,8 @@ Všechny metriky pro Azure Machine Learning jsou v oboru názvů **Machine Learn
 
 Pro referenci se zobrazí seznam [všech metrik prostředků, které jsou podporované v Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
+> [!TIP]
+> Data metrik Azure Monitor jsou k dispozici po dobu 90 dnů. Při vytváření grafů se ale dá vizuálně vymezit jenom 30 dní. Například pokud chcete zobrazit období 90 dne, musíte ho rozdělit na tři grafy po dobu 30 dnů v období 90 dne.
 ### <a name="filtering-and-splitting"></a>Filtrování a rozdělování
 
 Pro metriky, které podporují dimenze, můžete použít filtry pomocí hodnoty dimenze. Například filtrování **aktivních jader** pro **název clusteru** `cpu-cluster` . 
@@ -162,7 +164,7 @@ Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstr
 
 V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
 
-| Typ upozornění | Stav | Popis |
+| Typ upozornění | Podmínka | Popis |
 |:---|:---|:---|
 | Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
 | Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |

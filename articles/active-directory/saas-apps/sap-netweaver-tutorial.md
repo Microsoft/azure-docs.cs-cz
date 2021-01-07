@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935834"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP NetWeaver
 
@@ -138,7 +138,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce integrace aplikací **SAP NetWeaver** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-sap-netweaver-using-saml"></a>Konfigurace SAP NetWeaver pomocí SAML
@@ -339,7 +339,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     ![Konfigurace OAuth](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > Zpráva `soft state status is not supported` – může být ignorována, nejedná se o problém. Další podrobnosti najdete [tady](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) .
+    > Zpráva `soft state status is not supported` – může být ignorována, nejedná se o problém. Další podrobnosti najdete [tady](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true).
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>Vytvoření uživatele služby pro klienta OAuth 2,0
 
@@ -348,7 +348,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 2. Při registraci klienta OAuth použijeme `SAML Bearer Grant type` .
 
     >[!NOTE]
-    >Další podrobnosti najdete [tady](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) . registrace klienta OAuth 2,0 pro typ udělení NOSIČe SAML
+    >Další podrobnosti najdete [tady](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)v registraci klienta OAuth 2,0 pro typ udělení nosiče SAML.
 
 3. tcod: SU01/Create User KLIENT1 as `System type` a Assign Password, uložte ho jako potřebu k poskytnutí přihlašovacích údajů programátoru rozhraní API, který by se měl zapsat s uživatelským jménem na volající kód. Neměl by být přiřazen žádný profil nebo role.
 
