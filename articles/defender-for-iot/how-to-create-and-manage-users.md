@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955077"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977009"
 ---
 # <a name="about-defender-for-iot-console-users"></a>O programu Defender pro uživatele konzoly IoT
 
@@ -223,8 +223,6 @@ Resetování hesla pro uživatele CyberX nebo podpory:
     > Neměňte soubor pro obnovení hesla. Jedná se o podepsaný soubor a nebude fungovat, pokud s ním budete manipulovat.
 
 1. Na obrazovce **obnovení hesla** vyberte **Odeslat**. Otevře se okno **Odeslat soubor pro obnovení hesla** .
-
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Pokud chcete získat nové heslo, nahrajte soubor pro obnovení.":::
 
 1. Vyberte **Procházet** a vyhledejte `password_recovery.zip` soubor, nebo ho přetáhněte `password_recovery.zip` do okna.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093430"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976397"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -119,10 +119,7 @@ Typickou strategií je poskytnout společný bod úložiště, ve kterém můžo
 
 ![Asynchronní replikace na základě infrastruktury](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Pokud používáte Azure Managed Disks, můžete zvolit následující řešení pro replikaci a zotavení po havárii:
-
-* [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Backup](../backup/backup-overview.md)
+Pokud používáte Azure Managed Disks, máte k dispozici několik možností pro zpracování replikace a zotavení po havárii. [Velero v Azure][velero] a [Kasten][kasten] zálohují řešení nativní na Kubernetes, ale nejsou podporovaná.
 
 ### <a name="application-based-asynchronous-replication"></a>Asynchronní replikace založená na aplikaci
 
@@ -140,3 +137,6 @@ Tento článek se zaměřuje na požadavky na provozní kontinuitu a zotavení p
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762958"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976805"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |
 | Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |
 | katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Jazykový model                                   |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |
 | Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Jazykový model                                   |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |
 | chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |
 | čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |
 | dánština (Dánsko)                   | `da-DK` | Jazykový model                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |
 | Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |
 | italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|
-| japonština (Japonsko)                   | `ja-JP` | Jazykový model                                   |
-| korejština (Jižní Korea)                     | `ko-KR` | Jazykový model                                   |
+| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |
+| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |
 | lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |
 | litevština (Litva)             | `lt-LT` | Jazykový model                                   |
 | Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |
@@ -484,18 +484,18 @@ V následující tabulce najdete podporované jazyky pro různá rozhraní API r
 | Jazyk | Národní prostředí (BCP-47) | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
 |----|----|----|----|----|
 |Angličtina (USA)  |  en-US  |  ano  |  ano  |  ano |
-|Čínština (Mandarin, zjednodušená) | zh-CN     |     neuvedeno |     ano |     ano|
-|Angličtina (Austrálie)     | EN-AU     | neuvedeno     | ano     | ano|
-|Angličtina (Kanada)     | en-CA     | neuvedeno |     ano |     ano|
-|Angličtina (Spojené království)     | en-GB     | neuvedeno     | ano     | ano|
-|Francouzština (Kanada)     | fr – CA     | neuvedeno     | ano |     ano|
-|francouzština (Francie)     | fr-FR     | neuvedeno     | ano     | ano|
-|němčina (Německo)     | de-DE     | neuvedeno     | ano     | ano|
-|Italština | it-IT     |     neuvedeno     | ano |     ano|
-|Japonština     | ja-JP | neuvedeno     | ano     | ano|
-|Portugalština (Brazílie) | pt-BR |     neuvedeno |     ano |     ano|
-|Španělština (Mexiko)     | ES – MX     | neuvedeno |     ano |     ano|
-|Španělština (Španělsko)     | es-ES | neuvedeno     | ano |     ano|
+|Čínština (Mandarin, zjednodušená) | zh-CN     |     Není k dispozici |     ano |     ano|
+|Angličtina (Austrálie)     | EN-AU     | Není k dispozici     | ano     | ano|
+|Angličtina (Kanada)     | en-CA     | Není k dispozici |     ano |     ano|
+|Angličtina (Spojené království)     | en-GB     | Není k dispozici     | ano     | ano|
+|Francouzština (Kanada)     | fr – CA     | Není k dispozici     | ano |     ano|
+|francouzština (Francie)     | fr-FR     | Není k dispozici     | ano     | ano|
+|němčina (Německo)     | de-DE     | Není k dispozici     | ano     | ano|
+|Italština | it-IT     |     Není k dispozici     | ano |     ano|
+|Japonština     | ja-JP | Není k dispozici     | ano     | ano|
+|Portugalština (Brazílie) | pt-BR |     Není k dispozici |     ano |     ano|
+|Španělština (Mexiko)     | ES – MX     | Není k dispozici |     ano |     ano|
+|Španělština (Španělsko)     | es-ES | Není k dispozici     | ano |     ano|
 
 ## <a name="next-steps"></a>Další kroky
 

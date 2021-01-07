@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018799"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976788"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -21,7 +21,7 @@ LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), 
 
 Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplikace [Luis Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model) nebo [kontejneru Luis](luis-container-howto.md).
 
-|Oblast|Omezení|
+|Plošný|Omezení|
 |--|:--|
 | [Název aplikace][luis-get-started-create-app] | * Výchozí znak maxima |
 | Aplikace| 500 aplikací na prostředek pro vytváření obsahu Azure |
@@ -30,7 +30,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | Externí entity | žádná omezení |
 | [Záměry][intents]|500 na aplikaci: 499 vlastní záměry a požadovaný záměr _none_ .<br>Aplikace [založená na odesílání](https://aka.ms/dispatch-tool) má odpovídající 500 zdrojů odesílání.|
 | [Vytvoření seznamu entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
-| [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity můžou být vnořené až o 5 úrovní.|
+| [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity je možné vnořovat až o 5 úrovní s maximálně 10 podřízenými objekty na úrovni.|
 |Model jako funkce| Maximální počet modelů, které se dají použít jako funkce pro konkrétní model, je 10 modelů. Maximální počet seznamů frází použitých jako funkce pro určitý model má být 10 frázových seznamů.|
 | [Náhled – entity dynamického seznamu](./luis-migration-api-v3.md)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
 | [Vzory](luis-concept-patterns.md)|500 vzorů na aplikaci<br>Maximální délka vzorku je 400 znaků.<br>3 vzor. jakékoli entity na vzor<br>Maximálně 2 vnořených volitelných textů ve vzoru|
@@ -76,7 +76,7 @@ Porozumění jazyku má samostatné prostředky, jeden typ pro vytváření obsa
 
 ### <a name="authoring-resource-limits"></a>Vytváření omezení prostředků
 
-_kind_ `LUIS.Authoring` Při filtrování prostředků v Azure Portal použijte druh. LUIS omezuje počet aplikací 500 na prostředek pro vytváření obsahu Azure.
+ `LUIS.Authoring` Při filtrování prostředků v Azure Portal použijte druh. LUIS omezuje počet aplikací 500 na prostředek pro vytváření obsahu Azure.
 
 |Vytváření prostředku|Vytváření TPS|
 |--|--|
@@ -89,7 +89,7 @@ _kind_ `LUIS.Authoring` Při filtrování prostředků v Azure Portal použijte 
 
 ### <a name="query-prediction-resource-limits"></a>Omezení prostředků předpovědi dotazů
 
-_kind_ `LUIS` Při filtrování prostředků v Azure Portal použijte druh. Prostředek koncového bodu předpovědi dotazů LUIS, který se používá v modulu runtime, je platný jenom pro dotazy koncového bodu.
+ `LUIS` Při filtrování prostředků v Azure Portal použijte druh. Prostředek koncového bodu předpovědi dotazů LUIS, který se používá v modulu runtime, je platný jenom pro dotazy koncového bodu.
 
 |Prostředek předpovědi dotazu|TPS dotazu|
 |--|--|

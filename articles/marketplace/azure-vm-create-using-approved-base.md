@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/06/2021
+ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590782"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976856"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Postup vytvoření virtuálního počítače pomocí schválené základní třídy
 
@@ -36,19 +36,15 @@ Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete 
 
 ## <a name="create-vm-on-the-azure-portal"></a>Vytvoření virtuálního počítače na Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com/).
 2. Vyberte **Virtuální počítače**.
 3. Výběrem **+ Přidat** otevřete obrazovku **vytvořit virtuální počítač** .
 4. Vyberte obrázek v rozevíracím seznamu nebo vyberte **Procházet všechny veřejné a soukromé image** , aby bylo možné vyhledávat nebo procházet všechny dostupné image virtuálních počítačů.
-5. Pokud chcete vytvořit virtuální počítač **1. generace** , klikněte na kartu **disky** a nastavte možnost **použít spravovaný disk** na **ne** , aby bylo možné získat virtuální pevný disk virtuálního počítače v zadaném účtu úložiště.
-
-   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="Vyberte nespravovaný disk.":::
-   
-6. Virtuální počítač **2. generace** vytvoříte tak, že přejdete na kartu **Upřesnit** a vyberete možnost **Obecné 2** .
+5. Virtuální počítač **2. generace** vytvoříte tak, že přejdete na kartu **Upřesnit** a vyberete možnost **Obecné 2** .
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Vyberte Obecné 1 nebo obecné 2.":::
 
-7. Vyberte velikost virtuálního počítače, který se má nasadit.
+6. Vyberte velikost virtuálního počítače, který se má nasadit.
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Vyberte doporučenou velikost virtuálního počítače pro vybranou bitovou kopii.":::
 
@@ -56,7 +52,6 @@ Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete 
 8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Jakmile se zobrazí zpráva **ověření proběhlo** , vyberte  **vytvořit**.
 
 Azure zahájí zřizování virtuálního počítače, který jste zadali. V nabídce vlevo vyberte kartu **Virtual Machines** a sledujte její průběh. Po vytvoření se stav virtuálního počítače změní na **spuštěno**.
-
 
 ## <a name="configure-the-vm"></a>Nakonfigurování virtuálního počítače
 

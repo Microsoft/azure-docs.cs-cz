@@ -1,18 +1,18 @@
 ---
-title: Práce s mapou zařízení snímače
+title: Práce s mapou zařízení senzorů
 description: Mapa zařízení poskytuje grafické znázornění zjištěných síťových zařízení. Pomocí mapy můžete analyzovat a spravovat informace o zařízení, síťové řezy a generovat sestavy.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839489"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976754"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Prozkoumat detekci senzorů v mapě zařízení
 
@@ -59,7 +59,7 @@ Každá podsíť je prezentována jako jediná entita na mapě zařízení, vče
 
 Následující obrázek ukazuje sbalenou podsíť IT s 27 prvky IT sítě.
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="sbalená podsíť IT s 27 prvky IT sítě":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="sbalená podsíť IT s 27 prvky IT sítě":::
 
 Povolení možnosti sbalení sítí IT:
 
@@ -120,7 +120,7 @@ K dispozici jsou následující předdefinované skupiny:
 
 | Název skupiny | Popis |
 |--|--|
-| **Známé aplikace nebo porty bez Standrad (výchozí)** | Zařízení, která používají rezervované porty, jako je například TCP. Zařízení, která používají nestandardní porty nebo porty, kterým nebyl přiřazen alias. |
+| **Známé aplikace nebo nestandardní porty (výchozí)** | Zařízení, která používají rezervované porty, jako je například TCP. Zařízení, která používají nestandardní porty nebo porty, kterým nebyl přiřazen alias. |
 | **Protokoly OT (výchozí)** | Zařízení, která zpracovávají provoz z provozu. |
 | **Autorizace (výchozí)** | Zařízení zjištěná v síti během procesu učení nebo byla oficiálně přidána do sítě |
 | **Filtry inventáře zařízení** | Zařízení seskupená podle filtrů se ukládají do tabulky inventáře zařízení. |
@@ -226,7 +226,7 @@ Ikona typ zařízení se zobrazuje u připojených zařízení.
 
 Podrobné zobrazení prezentuje zařízení a popisky a indikátory zařízení s následujícími informacemi:
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="Podrobné zobrazení":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="Podrobné zobrazení":::
 
 ### <a name="control-the-zoom-view"></a>Řízení zobrazení lupy
 
@@ -236,7 +236,7 @@ Zobrazené zobrazení mapy závisí na úrovni přiblížení mapy. Přepínán�
 
 ### <a name="enable-simplified-zoom-views"></a>Povolit zjednodušená zobrazení lupy
 
-Správci, kteří chtějí analytikům zabezpečení a uživatelům typu RO přístup k zobrazením Brid a zařízení a připojení typu, by měli povolit možnost zjednodušené zobrazení.
+Správci, kteří chtějí analytikům zabezpečení a uživatelům typu RO přístup k pohledům na oči a zařízení a připojení typu, by měli povolit možnost zjednodušené zobrazení.
 
 Chcete-li povolit zjednodušená zobrazení mapy:
 
@@ -326,7 +326,7 @@ Následující informace lze aktualizovat ručně. Informace, které jsou zadán
 | Atributy | Jakékoli další informace, které o zařízení byly zjištěny během období učení a nepatří do jiných kategorií, se zobrazí v části atributy. <br /> Informace jsou typu RO. |
 | Nastavení | Můžete ručně změnit nastavení zařízení, aby nedocházelo k falešně pozitivním hodnotám: <br /> - **Autorizované zařízení**: během období učení se všechna zařízení zjištěná v síti identifikují jako Autorizovaná zařízení. Jakmile se zařízení zjistí po období učení, ve výchozím nastavení se zobrazí jako neoprávněné zařízení. Tuto definici můžete změnit ručně. <br /> - **Známé jako skener**: tuto možnost povolte, pokud víte, že se jedná o zařízení se označuje jako skener a že se k němu nemusíte upozorňovat. <br /> - **Programové zařízení**: tuto možnost povolte, pokud víte, že se jedná o zařízení, které se označuje jako programové, a nemusíte na něj upozorňovat. |
 | Vlastní skupiny | Vlastní skupiny v mapě zařízení, ve kterých se toto zařízení účastní |
-| Stav | Stav zabezpečení a autorizace zařízení: <br /> – Stav není, `Secured` Pokud nejsou k dispozici žádná upozornění. <br /> – Pokud se zobrazí výstrahy týkající se zařízení, zobrazí se počet výstrah. <br /> – Stav `Unauthorized` se zobrazí pro zařízení, která se přidala do sítě po období učení. Zařízení můžete ručně definovat jako `Authorized Device` v nastavení. <br /> – Pro případ, že je adresa tohoto zařízení definovaná jako Dynamická adresa, `DHCP` přidá se do stavu. |
+| State | Stav zabezpečení a autorizace zařízení: <br /> – Stav není, `Secured` Pokud nejsou k dispozici žádná upozornění. <br /> – Pokud se zobrazí výstrahy týkající se zařízení, zobrazí se počet výstrah. <br /> – Stav `Unauthorized` se zobrazí pro zařízení, která se přidala do sítě po období učení. Zařízení můžete ručně definovat jako `Authorized Device` v nastavení. <br /> – Pro případ, že je adresa tohoto zařízení definovaná jako Dynamická adresa, `DHCP` přidá se do stavu. |
 
 
 | Síť | Popis |

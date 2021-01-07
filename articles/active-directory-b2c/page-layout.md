@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108497"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976499"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -51,7 +51,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 - Po ověření e-mailu se teď fokus umístí do pole heslo.
 - Odebráno `autofocus` z ovládacího prvku CheckBox. 
 - Přidání podpory pro ovládací prvek zobrazení pro ověřování pomocí telefonního čísla.
-- Nyní můžete přidat `data-preload="true"` atribut [ve značkách HTML] (přizpůsobení-UI-with-HTML. MD # pokyny – pro
+- Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](customize-ui-with-html.md#guidelines-for-using-custom-page-content)
   - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
   - Určuje pořadí, ve kterém `script` jsou značky načteny a provedeny před načtením stránky.
 - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.

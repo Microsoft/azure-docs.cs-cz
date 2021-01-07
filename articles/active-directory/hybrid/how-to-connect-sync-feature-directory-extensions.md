@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172363"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976873"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
 K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](/graph/extensibility-overview
@@ -46,7 +46,7 @@ Instalace zobrazuje následující atributy, které jsou platné kandidáty:
 
 
 >[!NOTE]
-> I když Azure AD Connect podporuje synchronizaci vícehodnotových atributů služby Active Directory se službou Azure AD jako víceřádková rozšíření adresáře, neexistuje momentálně žádný způsob, jak načíst a využívat data nahraná v atributech rozšíření adresáře s více hodnotami.
+> Po Azure AD Connect synchronizovaný atribut služby Active Directory s více hodnotami do Azure AD jako rozšíření vícehodnotového atributu je možné zahrnout atribut na deklaraci identity SAML. Tato data ale není možné spotřebovat prostřednictvím volání rozhraní API.
 
 Seznam atributů je načten z mezipaměti schématu, která je vytvořena během instalace Azure AD Connect. Pokud jste rozšíření schématu služby Active Directory rozšířili o další atributy, je nutné [schéma aktualizovat](how-to-connect-installation-wizard.md#refresh-directory-schema) předtím, než budou tyto nové atributy viditelné.
 

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584489"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976516"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -330,7 +330,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Základě
+##### <a name="response"></a><a name="response-2"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -371,7 +371,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
-##### <a name="response"></a><a name="response-3"></a>Základě
+##### <a name="response"></a><a name="response-3"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -408,7 +408,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Základě
+##### <a name="response"></a><a name="response-4"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -452,7 +452,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Základě
+##### <a name="response"></a><a name="response-5"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -501,7 +501,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Základě
+##### <a name="response"></a><a name="response-14"></a>Odpověď
 
 ```json
 {
@@ -541,7 +541,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Základě
+##### <a name="response"></a><a name="response-6"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -568,7 +568,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Základě
+##### <a name="response"></a><a name="response-7"></a>Odpověď
 
 *HTTP/1.1 201 vytvořeno*
 ```json
@@ -593,7 +593,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Základě
+##### <a name="response"></a><a name="response-8"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -614,7 +614,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ##### <a name="request"></a><a name="request-9"></a>Žádost
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Základě
+##### <a name="response"></a><a name="response-9"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -654,7 +654,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Základě
+##### <a name="response"></a><a name="response-10"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -677,7 +677,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Základě
+##### <a name="response"></a><a name="response-11"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -700,7 +700,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Základě
+##### <a name="response"></a><a name="response-12"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -710,7 +710,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Základě
+##### <a name="response"></a><a name="response-13"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -1217,7 +1217,7 @@ Postup v toku udělení kódu OAuth:
 > [!NOTE]
 > I když v současné době není možné nastavovat OAuth na aplikaci mimo galerii, můžete ručně vygenerovat přístupový token z autorizačního serveru a zadat ho do pole tajný token aplikace mimo galerii. To vám umožní ověřit kompatibilitu serveru SCIM s klientem Azure AD SCIM před zprovozněním do Galerie aplikací, která podporuje udělení kódu OAuth.  
 
-**Dlouhodobé tokeny Bearer OAuth:** Pokud vaše aplikace nepodporuje tok udělení autorizačního kódu OAuth, můžete také vygenerovat dlouhodobé tokeny Bearer OAuth, než může správce použít k nastavení integrace zřizování. Token by měl být trvalý nebo jinak bude úloha zřizování v [karanténě](application-provisioning-quarantine-status.md) , až vyprší platnost tokenu. Hodnota tohoto tokenu musí být nižší než 1 KB.  
+**Dlouhodobé tokeny Bearer OAuth:** Pokud vaše aplikace nepodporuje tok udělení autorizačního kódu OAuth, můžete také vygenerovat dlouhodobé tokeny Bearer OAuth, než může správce použít k nastavení integrace zřizování. Token by měl být trvalý nebo jinak bude úloha zřizování v [karanténě](application-provisioning-quarantine-status.md) , až vyprší platnost tokenu.
 
 V případě dalších metod ověřování a autorizace dejte nám na [UserVoice](https://aka.ms/appprovisioningfeaturerequest)informace.
 

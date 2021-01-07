@@ -3,18 +3,18 @@ title: Průvodce protokolem Hybrid Connections Azure Relay | Microsoft Docs
 description: Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862322"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976958"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Protokol Azure Relay Hybrid Connections
 
 Azure Relay je jedním z klíčových pilířů Azure Service Bus platformy. Novou funkcí _Hybrid Connections_ relay je zabezpečený vývoj v otevřeném protokolu založený na http a WebSockets. Nahrazuje předchozí, stejně pojmenovanou _BizTalk Services_ funkci, která byla postavená na speciálním základu protokolu. Integrace Hybrid Connections do Azure App Services bude i nadále fungovat tak, jak je.
 
-Hybrid Connections umožňuje obousměrnou, binární datový proudovou komunikaci a tok jednoduchého datagramu mezi dvěma síťovými aplikacemi. V případě zařízení NAT nebo bran firewall můžou být obě strany nebo obě strany umístěné za ním.
+Hybrid Connections umožňuje obousměrnou komunikaci, požadavek-odpověď a binární komunikaci s datovým proudem a mezi dvěma síťovými aplikacemi tok jednoduchého datagramu. Obě strany můžou být za zařízením NAT nebo branami firewall.
 
 Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele. Také popisuje, jak naslouchací procesy přijímají nová připojení a požadavky.
 
@@ -24,7 +24,7 @@ Hybrid Connections Relay spojuje dvě strany tím, že poskytuje v cloudu Azure 
 
 Služba umožňuje přenášet připojení webového soketu a žádosti a odpovědi HTTP (S).
 
-Model interakce se váže na názvosloví stanovené mnoha dalšími síťovými rozhraními API. Je k dispozici naslouchací proces, který nejprve indikuje připravenost pro zpracování příchozích připojení a následně je přijímá při jejich doručení. Na druhé straně se klient připojí ke službě Listener a očekává, že připojení bude přijato pro vytvoření obousměrné komunikační cesty. Podmínky "připojit", "naslouchání" a "přijmout" jsou stejné, jako ty, které najdete ve většině rozhraní API soketu.
+Model interakce se váže na názvosloví stanovené mnoha dalšími síťovými rozhraními API. K dispozici je naslouchací proces, který nejprve indikuje připravenost pro zpracování příchozích připojení a následně je přijímá při jejich doručení. Na druhé straně se klient připojí ke službě Listener a očekává, že připojení bude přijato pro vytvoření obousměrné komunikační cesty. Podmínky "připojit", "naslouchání" a "přijmout" jsou stejné, jako ty, které najdete ve většině rozhraní API soketu.
 
 Libovolný přenosový model přenosu má jednu ze strany, která provádí odchozí připojení ke koncovému bodu služby. Tím "naslouchací proces" také "klient" v Colloquial použít a může také způsobit další přetížení terminologie. Přesná terminologie, která se proto používá pro Hybrid Connections, je následující:
 
@@ -49,7 +49,7 @@ Pokud je pro Hybrid Connections k dispozici nejméně dva aktivní naslouchací 
 Když odesílatel otevře nové připojení ke službě, služba zvolí a upozorní jeden z aktivních naslouchací proces v hybridním připojení. Toto oznámení se odešle do naslouchací služby prostřednictvím kanálu otevřeného ovládacího prvku jako zpráva JSON. Zpráva obsahuje adresu URL koncového bodu WebSocket, ke kterému se musí naslouchací proces připojit, aby bylo možné připojení přijmout.
 
 Adresu URL může a musí použít přímo naslouchací proces bez jakékoli další práce.
-Zakódované informace jsou platné pouze po krátkou dobu, a to v podstatě po dobu, kdy je odesilatel ochotn, aby se připojení navázalo jako koncové. Maximum, které se má předpokládat, je 30 sekund. Adresu URL lze použít pouze pro jeden úspěšný pokus o připojení. Jakmile se naváže připojení pomocí protokolu WebSocket k adrese URL aplikace Rendezvous, veškerá další aktivita v tomto protokolu WebSocket se předává odesílateli a odesilateli. K tomu dochází bez zásahu nebo výkladu služby.
+Zakódované informace jsou platné pouze po krátkou dobu, a to v podstatě po dobu, kdy je odesilatel ochotn, aby se připojení navázalo jako koncové. Maximum, které se má předpokládat, je 30 sekund. Adresu URL lze použít pouze pro jeden úspěšný pokus o připojení. Jakmile se naváže připojení pomocí protokolu WebSocket k adrese URL aplikace Rendezvous, veškerá další aktivita v tomto protokolu WebSocket se předává odesílateli a odesilateli. K tomuto chování dochází bez zásahu nebo výkladu služby.
 
 ### <a name="request-message"></a>Zpráva požadavku
 
@@ -65,7 +65,7 @@ Tok požadavků a odpovědí používá ve výchozím nastavení řídicí kaná
 
 V řídicím kanálu jsou texty požadavků a odpovědí omezeny na nejvíce 64 kB. Metadata hlaviček protokolu HTTP jsou omezená na celkem 32 kB. Pokud žádost nebo odpověď překročí tuto prahovou hodnotu, naslouchací proces musí upgradovat na Rendezvous WebSocket pomocí gesta ekvivalentního ke zpracování [přijetí](#accept-message).
 
-V případě požadavků služba rozhodne, zda směrovat požadavky prostřednictvím řídicího kanálu. To zahrnuje, ale nemusí být omezené na případy, kdy požadavek překračuje 64 kB (záhlaví a tělo), nebo pokud se požadavek pošle s ["přenosovým kódováním](https://tools.ietf.org/html/rfc7230#section-4.1) " v bloku, a služba má důvod, proč by požadavek překročil 64 kB nebo přečtení žádosti není okamžitý. Pokud se služba rozhodne pro doručení žádosti přes Rendezvous, předá pouze do naslouchacího procesu pouze adresu Rendezvous.
+V případě požadavků služba rozhodne, zda směrovat požadavky prostřednictvím řídicího kanálu. To zahrnuje, ale nemusí být omezené na případy, kdy požadavek překračuje 64 kB (záhlaví a tělo), nebo pokud se požadavek pošle pomocí [blokového kódování "bloků" v bloku dat](https://tools.ietf.org/html/rfc7230#section-4.1) a služba má důvod, že by požadavek překročil hodnotu 64 kB nebo pokud se žádost nepřečte. Pokud se služba rozhodne pro doručení žádosti přes Rendezvous, předá pouze do naslouchacího procesu pouze adresu Rendezvous.
 Naslouchací proces pak musí zřídit Rendezvous WebSocket a služba se vyzve k okamžitému doručení úplné žádosti včetně institucí přes WebSocket v Rendezvous. Odpověď musí také používat rozhraní Rendezvous WebSocket.
 
 U požadavků, které přicházejí do řídicího kanálu, naslouchá naslouchací proces, zda reaguje na řídicí kanál nebo prostřednictvím Rendezvous. Služba musí zahrnovat adresu Rendezvous u každého požadavku směrovaného přes řídicí kanál. Tato adresa je platná pouze pro upgrade z aktuální žádosti.
@@ -164,7 +164,7 @@ Oznámení "přijmout" odesílá služba do naslouchací služby přes dříve v
 Zpráva obsahuje objekt JSON s názvem Accept, který v tuto chvíli definuje následující vlastnosti:
 
 * **Address** – řetězec adresy URL, který se má použít k vytvoření objektu WebSocket ke službě pro příjem příchozího připojení.
-* **ID** – jedinečný identifikátor pro toto připojení. Pokud byl identifikátor dodán klientem odesílatele, jedná se o hodnotu zadanou odesílatelem, jinak se jedná o systémovou vygenerovanou hodnotu.
+* **ID** – jedinečný identifikátor pro toto připojení. Pokud byl identifikátor dodán klientem odesílatele, jedná se o hodnotu zadanou odesílatelem, jinak se jedná o systémem generovanou hodnotu.
 * **connectHeaders** – všechny hlavičky HTTP, které byly zadány do koncového bodu služby Relay odesílatelem, který také obsahuje hlavičky sec-WebSocket-Protocol a SEK-WebSockets-Extensions.
 
 ```json
@@ -202,7 +202,7 @@ Adresa URL musí být použita jako-je určena pro vytvoření přijatelného so
 `{path}` je cesta oboru názvů zakódovaná URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. Tento výraz je připojen k části s pevnou `$hc/` cestou.
 
 `path`Výraz může být prodloužen s příponou a výrazem řetězce dotazu, který následuje za zaregistrovaným názvem po oddělení lomítka.
-To umožňuje klientovi odesílatele předat argumenty odeslání do přijímacího naslouchacího procesu, pokud není možné zahrnout hlavičky protokolu HTTP. Očekává se, že rozhraní naslouchacího procesu analyzuje část pevné cesty a registrovaný název z cesty a provede zbytek, případně bez argumentů řetězce dotazu, který je s předponou `sb-` , k dispozici pro aplikaci k rozhodnutí, zda má být připojení přijatelné.
+Tento parametr umožňuje klientovi odesílatele předat argumenty odeslání do přijímacího naslouchacího procesu, pokud není možné zahrnout hlavičky protokolu HTTP. Očekává se, že rozhraní naslouchacího procesu analyzuje část pevné cesty a registrovaný název z cesty a provede zbytek, případně bez argumentů řetězce dotazu, který je s předponou `sb-` , k dispozici pro aplikaci k rozhodnutí, zda má být připojení přijatelné.
 
 Další informace najdete v části "odesilatel protokolu".
 
@@ -249,7 +249,7 @@ Při správném dokončení se tato metoda handshake úmyslně nezdařila s kód
 `request`Zpráva je odeslána službou do naslouchací služby prostřednictvím řídicího kanálu. Po navázání se tato zpráva pošle i přes WebSocket ve službě Rendezvous.
 
 `request`Skládá se ze dvou částí: záhlaví a binárních rámců (ů).
-Pokud není k dispozici žádné tělo, budou rámce textu vynechány. Indikátor, zda je text přítomen, je `body` vlastnost Boolean ve zprávě požadavku.
+Pokud není k dispozici žádné tělo, budou rámce textu vynechány. Vlastnost Boolean `body` označuje, zda je ve zprávě požadavku přítomen text.
 
 V případě požadavku s textem žádosti může struktura vypadat takto:
 
@@ -290,7 +290,7 @@ Pro požadavek bez těla je k dispozici pouze jeden textový rámeček.
 
 Obsah JSON pro `request` je následující:
 
-* řetězec **adresy** URI. Toto je adresa Rendezvous, která se má použít pro tento požadavek. Pokud je příchozí požadavek větší než 64 kB, zbývající část této zprávy je ponecháno prázdné a klient musí iniciovat hodnotu Rendezvous handshake odpovídající `accept` operaci popsanou níže. Služba pak na `request` zavedeném webovém soketu vloží dokončeno. Pokud je možné očekávat odpověď maximálně 64 kB, naslouchací proces musí taky iniciovat hodnotu Rendezvous handshake a následně přenést odpověď na zavedený webový soket.
+* řetězec **adresy** URI. Je to adresa Rendezvous, která se má použít pro tento požadavek. Pokud je příchozí požadavek větší než 64 kB, zbývající část této zprávy je ponecháno prázdné a klient musí iniciovat hodnotu Rendezvous handshake odpovídající `accept` operaci popsanou níže. Služba pak na `request` zavedeném webovém soketu vloží dokončeno. Pokud je možné očekávat odpověď maximálně 64 kB, naslouchací proces musí taky iniciovat hodnotu Rendezvous handshake a následně přenést odpověď na zavedený webový soket.
 * **ID** – řetězec. Jedinečný identifikátor pro tento požadavek.
 * **requestHeaders hostitele** – tento objekt obsahuje všechny hlavičky HTTP, které byly dodány do koncového bodu odesílatelem, s výjimkou informací o autorizaci, jak je vysvětleno [výše](#request-operation), a záhlavími, které se striktně vztahují k připojení s bránou. Konkrétně jsou všechny hlavičky definované nebo vyhrazené v [RFC7230](https://tools.ietf.org/html/rfc7230), s výjimkou `Via` , jsou odstraněny a nepředávány:
 
@@ -303,9 +303,9 @@ Obsah JSON pro `request` je následující:
   * `Upgrade` (RFC7230, oddíl 6,7)
   * `Close`  (RFC7230, oddíl 8,1)
 
-* **requestTarget** – řetězec. Tato vlastnost obsahuje  ["cíl žádosti" (RFC7230, část 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) žádosti. To zahrnuje část řetězce dotazu, která je odstraněna ze všech `sb-hc-` předpevněných parametrů.
+* **requestTarget** – řetězec. Tato vlastnost obsahuje  ["cíl žádosti" (RFC7230, část 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) žádosti. Obsahuje část řetězce dotazu, která je odstraněna ze všech `sb-hc-` předpevněných parametrů.
 * řetězec **metody** . Toto je metoda požadavku, na [RFC7231, část 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT`Metoda nesmí být použita.
-* **tělo** – logická hodnota. Určuje, zda jeden nebo více binárních bloků textu následuje.
+* **tělo** – logická hodnota. Určuje, zda následuje jeden nebo více binárních rámců textu.
 
 ``` JSON
 {
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sb-hc-token=...
 
 _Obor názvů – adresa_ je plně kvalifikovaný název domény Azure Relay oboru názvů, který je hostitelem hybridního připojení, většinou formuláře `{myname}.servicebus.windows.net` .
 
-Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Všechna dodaná záhlaví, kromě těch, která jsou přímo definována v RFC7230 (viz [zpráva požadavku](#request-message)) toku k naslouchacímu procesu a lze ji najít v `requestHeader` objektu zprávy **požadavku** .
+Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Všechna dodaná záhlaví, s výjimkou těch, která jsou přímo definována v RFC7230 (viz [zpráva požadavku](#request-message)) toku k naslouchacímu procesu a lze ji nalézt v `requestHeader` objektu zprávy **požadavku** .
 
 Možnosti parametru řetězce dotazu jsou následující:
 
@@ -494,7 +494,7 @@ Pokud dojde k chybě, může služba odpovědět následujícím způsobem. Zda 
 | 403  | Forbidden       | Token zabezpečení není pro tuto cestu a pro tuto akci platný.
 | 500  | Vnitřní chyba  | Ve službě se něco pokazilo.
 | 503  | Chybná brána     | Požadavek nebylo možné směrovat do žádného naslouchacího procesu.
-| 504  | Časový limit brány | Požadavek byl směrován do naslouchacího procesu, ale naslouchací proces v požadované době nepřijal příjem.
+| 504  | Časový limit brány | Požadavek byl směrován do naslouchacího procesu, ale naslouchací proces nepřijal příjem v požadovaném čase.
 
 ## <a name="next-steps"></a>Další kroky
 

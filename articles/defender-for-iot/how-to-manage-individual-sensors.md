@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/22/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 87bc3b172fdbd99130dbb36cceb5f3d16fc39dbd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838748"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976941"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
 
@@ -397,7 +397,7 @@ V konzole se zobrazí chyby obnovení.
 
 Následující postup popisuje aktualizaci samostatného senzoru pomocí konzoly senzorů. Proces aktualizace trvá přibližně 30 minut.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com/).
+1. Přejděte na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na Defender pro IoT.
 
@@ -426,8 +426,6 @@ Zasílání výstrah třetím stranám vám umožní poskytnout podrobnosti o t�
 - Odpojené senzory
 
 - Selhání vzdálené zálohy
-
-:::image type="content" source="media/how-to-work-with-system-notifications/image81.png" alt-text="Snímek obrazovky zobrazení zprávy o stavu systému správy.] (Media/image80.png)! [Snímek zobrazení zprávy o stavu systému správy":::
 
 Tyto informace se odesílají, když vytvoříte předávací pravidlo pro systémová oznámení.
 

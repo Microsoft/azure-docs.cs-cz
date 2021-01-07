@@ -1,5 +1,5 @@
 ---
-title: Řízení sledování provozu
+title: Určení, který provoz se monitoruje
 description: Senzory automaticky provádějí hloubkové zjišťování paketů a přenos dat a řeší informace o síťových zařízeních, jako jsou atributy zařízení a chování sítě. K dispozici je několik nástrojů, které řídí typ provozu, který senzor detekuje.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839324"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977064"
 ---
-# <a name="control-what-traffic-is-monitored"></a>Řízení sledování provozu
+# <a name="control-what-traffic-is-monitored"></a>Určení, který provoz se monitoruje
 
 Senzory automaticky provádějí hloubkové zjišťování paketů a přenos dat a řeší informace o síťových zařízeních, jako jsou atributy zařízení a chování. K dispozici je několik nástrojů, které řídí typ provozu, který senzor detekuje.
 
@@ -157,7 +157,7 @@ Změny mohou nastat například tehdy, když server DHCP přiřadí IP adresy.
 
 Definování dynamických IP adres u každého snímače umožňuje komplexní a transparentní podporu v instancích změny IP adresy. Tím zajistíte komplexní vytváření sestav pro každé jedinečné zařízení.
 
-Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Například:
+Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Příklad:
 
 - Sestava dolování dat a inventář zařízení konsoliduje veškerou aktivitu získanou ze zařízení jako jednu entitu, a to bez ohledu na změny IP adresy. Tyto sestavy označují, které adresy byly definovány jako adresy DHCP.
 
@@ -228,7 +228,7 @@ Pomocí testovacího prostředku ověřte, zda správně definované nastavení 
 
 3. Zadejte adresu v poli **Vyhledat adresu** pro dialogové okno **test zpětného vyhledávání DNS pro server** .
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="Snímek obrazovky zobrazující oblast adresy pro vyhledávání":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="Snímek obrazovky zobrazující oblast adresy pro vyhledávání":::
 
 4. Vyberte **Test**.
 

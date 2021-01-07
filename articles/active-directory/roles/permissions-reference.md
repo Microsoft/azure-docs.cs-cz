@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919750"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976822"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -1434,6 +1434,14 @@ Nepoužívejte – Neurčeno pro obecné použití.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
+| Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
+| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
+| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
+| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
+| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
+| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
+| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
@@ -1467,6 +1475,14 @@ Nepoužívejte – Neurčeno pro obecné použití.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
+| Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
+| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
+| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
+| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
+| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
+| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
+| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
