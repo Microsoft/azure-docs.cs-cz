@@ -3,6 +3,8 @@
 - name: Přehled
   href: overview.md
   items:
+    - name: Co je nového
+      href: release-notes.md
     - name: Architektura řešení
       href: architecture.md
 - name: Rychlé starty
