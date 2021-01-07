@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955191"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968462"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
@@ -35,12 +35,12 @@ Pokud narazíte na problémy s rozpoznáváním pomocí základního modelu, mů
 
 Prvním krokem při výuce modelu je odeslání školicích dat. Podrobné pokyny k přípravě přepisů a souvisejícího textu (projevy a výslovnost) najdete v tématu [Příprava a testování dat](./how-to-custom-speech-test-and-train.md) . Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 
-1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech). Pokud máte v úmyslu vytvořit model se zvukovým a uživatelem označenými přepisnou datovou sadou, vyberte předplatné pro rozpoznávání řeči v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 2. Přejít na **text na řeč**  >  **Custom Speech**  >  **[název projektu]**  >  **školení**.
 3. Vyberte **model výuky**.
 4. Poskytněte školení **název** a **Popis**.
 5. V seznamu **scénář a základní model** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jistí, který scénář si vybrat, vyberte **Obecné**. Základní model je výchozím bodem pro školení. Nejnovější model je obvykle nejlepší volbou.
-6. Na stránce **Vybrat data školení** zvolte jednu nebo více zvukových a popsáných datových sad, které chcete použít pro školení.
+6. Na stránce **Vybrat data školení** zvolte jednu nebo více souvisejících textových datových sad nebo zvuk + přepisně označené datové sady, které chcete použít pro školení. Při učení nového modelu začněte s souvisejícím textem. školení se zvukem + s popisem přepisu může trvat mnohem delší dobu (až do [několika dní](how-to-custom-speech-evaluate-data.md#improve-model-recognition)).
 7. Po dokončení školení můžete provádět testování přesnosti u nově vyučeného modelu. Tento krok je volitelný.
 8. Vyberte **vytvořit** a sestavte vlastní model.
 

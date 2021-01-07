@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575699"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968485"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Kurz: Příprava na nasazení Azure Stack Edge pro  
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -57,7 +57,7 @@ Než začnete, ujistěte se, že:
 
 * Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack prostředky hraniční/Data Box Gateway, IoT Hub a Azure Storage.
 
-  * Pro udělení přístupu přispěvatele byste měli být **vlastníkem** na úrovni předplatného. Pokud chcete někomu udělit přístup někomu jinému, v Azure Portal přejděte na **všechny služby služby**  >  **Subscriptions**  >  **řízení přístupu (IAM)**  >  **+ Přidat**  >  **Přidání přiřazení role**. Další informace najdete v tématu [kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](../role-based-access-control/quickstart-assign-role-user-portal.md).
+  * Pro udělení přístupu přispěvatele byste měli být **vlastníkem** na úrovni předplatného. Pokud chcete někomu udělit přístup někomu jinému, v Azure Portal přejděte na **všechny služby služby**  >    >  **řízení přístupu (IAM)**  >  **+ Přidat**  >  **Přidání přiřazení role**. Další informace najdete v tématu [kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
   * Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že `Microsoft.DataBoxEdge` je poskytovatel prostředků zaregistrovaný. Informace o tom, jak zaregistrovat poskytovatele prostředků, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o registraci najdete v tématu [Registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
@@ -150,11 +150,11 @@ Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostředn
 
 Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivační klíč. Tento klíč se používá k aktivaci a připojení zařízení Azure Stack Edge pro k prostředku. Tento klíč můžete získat teď, když jste na webu Azure Portal.
 
-1. Vyberte prostředek, který jste vytvořili. Vyberte **Přehled** a pak vyberte **nastavení zařízení**.
+1. Přejít na prostředek, který jste vytvořili, a vyberte **Přehled**. Zobrazí se oznámení o tom, jak se vaše objednávka zpracovává.
 
-    ![Vybrat nastavení zařízení](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Vybrat přehled](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. Na dlaždici **aktivovat** vyberte **Generovat klíč** a vytvořte aktivační klíč. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.
+2. Po zpracování objednávky a na zařízení se bude **Přehled** aktualizovat. Přijměte výchozí **název Azure Key Vault** nebo zadejte nový. Vyberte možnost **Generovat aktivační klíč**. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.
 
     ![Získání aktivačního klíče](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

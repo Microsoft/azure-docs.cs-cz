@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795339"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969057"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -721,8 +721,8 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202`  ani `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
-| `'ac': 4xx` | Chybová | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
-| `'ac': 5xx` | Chybová | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
+| `'ac': 4xx` | Chyba | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
+| `'ac': 5xx` | Chyba | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
 
 `av` je číslo verze odesílané do zařízení.
 
@@ -828,9 +828,6 @@ Zařízení by mělo po zpracování aktualizace odeslat následující datovou 
 ```
 
 ## <a name="commands"></a>Příkazy
-
-> [!NOTE]
-> Ve webovém uživatelském rozhraní IoT Central můžete vybrat **frontu, pokud** je pro příkaz offline možnost. Toto nastavení není zahrnuté, pokud model nebo rozhraní exportujete ze šablony zařízení.
 
 Následující fragment kódu z modelu zařízení zobrazuje definici příkazu, který nemá žádné parametry a neočekává, že zařízení vrátí cokoli.
 
@@ -1000,6 +997,91 @@ Až zařízení dokončí zpracování žádosti, měla by odeslat vlastnost IoT
 }
 ```
 
+### <a name="offline-commands"></a>Offline příkazy
+
+Ve webovém uživatelském rozhraní IoT Central můžete vybrat **frontu, pokud** je pro příkaz offline možnost. Offline příkazy jsou jednosměrná oznámení na zařízení z vašeho řešení, které se doručuje hned po připojení zařízení. Příkazy offline můžou mít parametry žádosti, ale nevrátí odpověď.
+
+**Fronta, pokud** není nastavení offline zahrnuto, pokud exportujete model nebo rozhraní ze šablony zařízení. Nemůžete říct tak, že si vyhledáte exportovaný model nebo rozhraní JSON, který je příkazem offline.
+
+Offline příkazy používají [IoT Hub zpráv z cloudu na zařízení](../../iot-hub/iot-hub-devguide-messages-c2d.md) k odeslání příkazu a datové části do zařízení.
+
+Následující fragment kódu z modelu zařízení zobrazuje definici příkazu. Příkaz obsahuje parametr objektu s polem DateTime a výčtem:
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Pokud povolíte možnost **fronta, pokud** je v uživatelském rozhraní šablony zařízení pro příkaz v předchozím fragmentu kódu, bude zpráva, kterou zařízení obdrží, obsahovat následující vlastnosti:
+
+| Název vlastnosti | Příklad hodnoty |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 ## <a name="next-steps"></a>Další kroky
 
-Jako vývojář zařízení teď, když jste se dozvěděli o šablonách zařízení, je v rámci navržených dalších kroků Přečtěte si téma [připojení k Azure IoT Central](./concepts-get-connected.md) , kde se dozvíte další informace o registraci zařízení v IoT Central a o tom, jak IoT Central zabezpečení připojení zařízení.
+Jako vývojář zařízení teď, když jste se seznámili se o šablonách zařízení, jste si vyzkoušeli následující [IoT Central](./concepts-get-connected.md) postup, který vám umožní získat další informace o registraci zařízení IoT Central a o tom, jak IoT Central zabezpečit připojení zařízení.

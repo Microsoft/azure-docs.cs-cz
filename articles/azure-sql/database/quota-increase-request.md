@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448851"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967697"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Zvýšení kvóty požadavků pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,19 +29,19 @@ Pomocí následujícího postupu můžete vytvořit novou žádost o podporu z A
 
    ![Odkaz Help + support](./media/quota-increase-request/help-plus-support.png)
 
-1. V **okně pomoc a podpora**vyberte **Nová žádost o podporu**.
+1. V **okně pomoc a podpora** vyberte **Nová žádost o podporu**.
 
     ![Vytvořit novou žádost o podporu](./media/quota-increase-request/new-support-request.png)
 
-1. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)**.
+1. Jako **typ problému** vyberte **omezení služby a předplatné (kvóty)**.
 
    ![Vyberte typ problému.](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. V poli **předplatné**vyberte předplatné, jehož kvótu chcete zvýšit.
+1. V poli **předplatné** vyberte předplatné, jehož kvótu chcete zvýšit.
 
    ![Vyberte předplatné pro zvýšenou kvótu.](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. Jako **typ kvóty**vyberte jeden z následujících typů kvót:
+1. Jako **typ kvóty** vyberte jeden z následujících typů kvót:
 
    - **SQL Database** pro kvóty pro izolovanou databázi a elastický fond.
    - **SQL Database spravované instance** pro spravované instance.
@@ -105,20 +105,22 @@ Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, vyberte mo�
 
 1. V seznamu **Vybrat umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
 
-1. Zadejte **Model nákupu**a očekávané podrobnosti o **spotřebě** .
+1. Zadejte **Model nákupu** a očekávané podrobnosti o **spotřebě** .
 
    ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Povolit přístup k oblasti M-Series
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu.
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. Vyberte typ kvóty **přístupu oblasti M-Series** .
+1. Select the **M-series region access** quota type.
 
-1. V seznamu **Vybrat umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![Žádost o přístup k oblasti řady M-Series](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Typ kvóty spravované instance SQL
 

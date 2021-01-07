@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754024"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968564"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Matice podpory pro migraci fyzických serverů
 
@@ -48,7 +48,7 @@ Tabulka shrnuje podporu pro fyzické servery, které chcete migrovat pomocí mig
 **Spouštění UEFI** | Podporuje se. Počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2.  <br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
 **Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.
 **Cílový disk** | Počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
-**Velikost disku** | 2 TB disk s operačním systémem (spouštěcí počítač BIOS); 4 TB disk s operačním systémem (spouštění UEFI); 8 TB pro datové disky.
+**Velikost disku** | 2 TB disk s operačním systémem; 32 TB datových disků.
 **Omezení disku** |  Až 63 disků na počítač.
 **Šifrované disky/svazky** |  Počítače se zašifrovanými disky/svazky se pro migraci nepodporují.
 **Cluster sdíleného disku** | Nepodporováno

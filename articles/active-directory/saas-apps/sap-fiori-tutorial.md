@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897292"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968428"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori
 
@@ -26,7 +26,6 @@ V tomto kurzu se dozvíte, jak integrovat SAP Fiori s Azure Active Directory (Az
 * Umožněte uživatelům, aby se do SAP Fiori automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -42,24 +41,24 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * SAP Fiori podporuje jednotné přihlašování spouštěné v **SP**
 
 > [!NOTE]
-> Pro ověřování pomocí protokolu iFrame iniciované systémem SAP Fiori doporučujeme pro tiché ověřování **použít parametr v SAML** AuthnRequest. Další podrobnosti o parametru parametr- **Pass** najdete v tématu informace o [jednotném přihlašování Azure AD SAML](../develop/single-sign-on-saml-protocol.md) .
+> Pro ověřování pomocí protokolu iFrame iniciované systémem SAP Fiori doporučujeme pro tiché ověřování **použít parametr v SAML** AuthnRequest. Další podrobnosti o parametru parametr- **Pass** najdete v tématu informace o [jednotném přihlašování v Azure AD SAML](../develop/single-sign-on-saml-protocol.md) .
 
 ## <a name="adding-sap-fiori-from-the-gallery"></a>Přidání SAP Fiori z Galerie
 
 Pokud chcete nakonfigurovat integraci SAP Fiori do služby Azure AD, musíte přidat SAP Fiori z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **SAP Fiori** .
 1. Z panelu výsledků vyberte **SAP Fiori** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SAP Fiori
+## <a name="configure-and-test-azure-ad-sso-for-sap-fiori"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SAP Fiori
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SAP Fiori pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SAP Fiori.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SAP Fiori pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SAP Fiori.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP Fiori, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SAP Fiori, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -76,9 +75,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Ujistěte se, že jsou služby **http** a **https** aktivní a že příslušné porty jsou přiřazené k **SMICM** kódu transakce.
 
-1. Přihlaste se k SAP Business Client pro SAP System **T01** , kde se vyžaduje jednotné přihlašování. Pak aktivujte správu relace zabezpečení protokolu HTTP.
+1. Přihlaste se k SAP Business Client pro SAP System **T01**, kde se vyžaduje jednotné přihlašování. Pak aktivujte správu relace zabezpečení protokolu HTTP.
 
-    1. Přejít na kód transakce **SICF_SESSIONS** . Zobrazí se všechny relevantní parametry profilu s aktuálními hodnotami. Vypadají jako v následujícím příkladu:
+    1. Přejít na kód transakce **SICF_SESSIONS**. Zobrazí se všechny relevantní parametry profilu s aktuálními hodnotami. Vypadají jako v následujícím příkladu:
 
         ```
         login/create_sso2_ticket = 2
@@ -110,7 +109,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. Přejít na kód transakce **typu Saml2** v obchodním klientovi pro systém SAP [ **T01/122** ]. Uživatelské rozhraní konfigurace se otevře v novém okně prohlížeče. V tomto příkladu používáme obchodní klient pro SAP System 122.
+1. Přejít na kód transakce **typu Saml2** v obchodním klientovi pro systém SAP [**T01/122**]. Uživatelské rozhraní konfigurace se otevře v novém okně prohlížeče. V tomto příkladu používáme obchodní klient pro SAP System 122.
 
     ![Přihlašovací stránka obchodního klienta SAP Fiori](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
@@ -118,32 +117,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Konfigurace SAML 2,0 pro stránku ABAP System T01/122 v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. V poli **název poskytovatele** nahraďte **T01122** řetězcem **http: \/ /T01122** a pak vyberte **Uložit** .
+1. V poli **název poskytovatele** nahraďte **T01122** řetězcem **http: \/ /T01122** a pak vyberte **Uložit**.
 
     > [!NOTE]
     > Ve výchozím nastavení je název poskytovatele ve formátu \<sid> \<client> . Azure AD očekává název ve formátu \<protocol> :// \<name> . Doporučujeme, abyste název poskytovatele zachovali jako https \: // \<sid> \<client> , abyste mohli ve službě Azure AD nakonfigurovat víc Fiorich ABAP SAP.
 
     ![Název aktualizovaného zprostředkovatele v konfiguraci SAML 2,0 na stránce ABAP System T01/122 v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
-1. Vyberte **metadata karty místního zprostředkovatele**  >  **Metadata** .
+1. Vyberte **metadata karty místního zprostředkovatele**  >  .
 
 1. V dialogovém okně **metadata SAML 2,0** Stáhněte vygenerovaný soubor XML s metadaty a uložte ho do svého počítače.
 
     ![Odkaz pro stažení metadat v dialogovém okně SAP SAML 2,0 metadata](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SAP Fiori** najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. V Azure Portal na stránce integrace aplikací **SAP Fiori** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
-    a. Klikněte na **nahrát soubor metadat** .
+    a. Klikněte na **nahrát soubor metadat**.
 
     ![Nahrát soubor metadat](common/upload-metadata.png)
 
-    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát** .
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
@@ -158,7 +157,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > 
     > Můžete nastavit `ServicePrincipal` ID objektu sami před spuštěním skriptu, nebo ho můžete předat sem.
 
-1. Aplikace SAP Fiori očekává, že kontrolní výrazy SAML budou v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Chcete-li tyto hodnoty atributu spravovat, vyberte v podokně **nastavit jednu Sign-On s** podoknem SAML možnost **Upravit** .
+1. Aplikace SAP Fiori očekává, že kontrolní výrazy SAML budou v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Chcete-li tyto hodnoty atributu spravovat, vyberte v podokně **nastavit jednu Sign-On s** podoknem SAML možnost **Upravit**.
 
     ![Podokno atributů uživatele](common/edit-attribute.png)
 
@@ -166,11 +165,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Výběrem možnosti **Upravit** otevřete podokno **Spravovat deklarace identity uživatele** .
 
-    1. V seznamu **transformace** vyberte **ExtractMailPrefix ()** .
+    1. V seznamu **transformace** vyberte **ExtractMailPrefix ()**.
 
-    1. V seznamu **parametr 1** vyberte **User. userPrincipalName** .
+    1. V seznamu **parametr 1** vyberte **User. userPrincipalName**.
 
-    1. Vyberte **Uložit** .
+    1. Vyberte **Uložit**.
 
        ![Podokno Spravovat deklarace identity uživatele](./media/sapfiori-tutorial/nameidattribute.png)
 
@@ -188,30 +187,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SAP Fiori.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **SAP Fiori** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **SAP Fiori**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-sap-fiori-sso"></a>Konfigurace protokolu SAP Fiori SSO
@@ -226,23 +219,23 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Možnosti přidání a nahrání souboru metadat v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
 
-1. Nahrajte soubor metadat, který jste stáhli v Azure Portal. Vyberte **Další** .
+1. Nahrajte soubor metadat, který jste stáhli v Azure Portal. Vyberte **Další**.
 
     ![Vyberte soubor metadat, který se má nahrát do SAP.](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. Na další stránce zadejte do pole **alias** název aliasu. Například **aadsts** . Vyberte **Další** .
+1. Na další stránce zadejte do pole **alias** název aliasu. Například **aadsts**. Vyberte **Další**.
 
     ![Pole alias v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-1. Ujistěte se, že hodnota v poli **algoritmus Digest** je **SHA-256** . Vyberte **Další** .
+1. Ujistěte se, že hodnota v poli **algoritmus Digest** je **SHA-256**. Vyberte **Další**.
 
     ![Ověření hodnoty algoritmu Digest v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
-1. V části **koncové body s jedním Sign-On** vyberte **http post** a pak vyberte **Další** .
+1. V části **koncové body s jedním Sign-On** vyberte **http post** a pak vyberte **Další**.
 
     ![Možnosti jednotlivých koncových bodů Sign-On v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
 
-1. V části **koncové body odhlašovacího** bodu vyberte **přesměrování HTTP** a pak vyberte **Další** .
+1. V části **koncové body odhlašovacího** bodu vyberte **přesměrování HTTP** a pak vyberte **Další**.
 
     ![Možnosti koncového bodu s jediným odhlášením v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect1.png)
 
@@ -250,25 +243,25 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Možnosti koncových bodů artefaktu v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-artifactendpoint.png)
 
-1. V části **požadavky na ověření** vyberte **Dokončit** .
+1. V části **požadavky na ověření** vyberte **Dokončit**.
 
     ![Možnosti požadavků na ověření a možnost Dokončit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. Vyberte federace identity **důvěryhodných zprostředkovatelů**  >  **Identity Federation** (ve spodní části stránky). Vyberte **Upravit** .
+1. Vyberte federace identity **důvěryhodných zprostředkovatelů**  >   (ve spodní části stránky). Vyberte **Edit** (Upravit).
 
     ![Karty důvěryhodných zprostředkovatelů a federace identit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. Vyberte **Přidat** .
+1. Vyberte **Add** (Přidat).
 
     ![Možnost přidat na kartě federace identit](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 
-1. V dialogovém okně **podporované formáty NameId** vyberte **Neurčeno** . Vyberte **OK** .
+1. V dialogovém okně **podporované formáty NameId** vyberte **Neurčeno**. Vyberte **OK**.
 
     ![Dialogové okno podporované formáty NameID a možnosti v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
 
     Hodnoty pro režim mapování **zdrojového ID** a **ID uživatele** URČUJÍ propojení mezi uživatelem SAP a deklarací identity Azure AD.  
 
-    **Scénář 1** : mapování uživatele SAP na Azure AD
+    **Scénář 1**: mapování uživatele SAP na Azure AD
 
     1. V části SAP v části **Podrobnosti o formátu NameId "Neurčeno"** si všimněte podrobností:
 
@@ -278,7 +271,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
         ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele & deklarace identity.](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **Scénář 2** : vyberte ID uživatele SAP na základě konfigurované e-mailové adresy v SU01. V takovém případě by se mělo ID e-mailu nakonfigurovat v SU01 pro každého uživatele, který vyžaduje jednotné přihlašování.
+    **Scénář 2**: vyberte ID uživatele SAP na základě konfigurované e-mailové adresy v SU01. V takovém případě by se mělo ID e-mailu nakonfigurovat v SU01 pro každého uživatele, který vyžaduje jednotné přihlašování.
 
     1.  V části SAP v části **Podrobnosti o formátu NameId "Neurčeno"** si všimněte podrobností:
 
@@ -316,12 +309,6 @@ V této části vytvoříte uživatele s názvem Britta Simon v SAP Fiori. Pokud
 
 1. Pokud se zobrazí výzva k zadání uživatelského jména a hesla, povolte trasování, které vám pomůžou problém diagnostikovat. Pro trasování použijte následující adresu URL: https: \/ / \<sapurl\> /SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122&SAP-Language = en #.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="next-steps"></a>Další kroky
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
-
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte SAP Fiori s Azure AD](https://aad.portal.azure.com/)
+Po nakonfigurování SAP Fiori můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

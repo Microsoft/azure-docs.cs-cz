@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit funkci jazyka C# a pak publikovat místn�
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 444dff214a70a47ced127a3ca2533c20ea2a779a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425006"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968615"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure pomocí Visual Studio Code
 
@@ -27,8 +27,7 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/)požadováno systémem Windows pro npm. Pouze [aktivní LTS a verze LTS údržby](https://nodejs.org/about/releases/). Pomocí `node --version` příkazu ověřte svou verzi.
-    Nevyžaduje se pro místní vývoj na macOS a Linux.
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) verze 3. x.
 
 + [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
@@ -51,17 +50,17 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 1. Zadejte následující informace na následujících dotazech:
 
-    + **Vyberte jazyk pro projekt funkce** : zvolte `C#` .
+    + **Vyberte jazyk pro projekt funkce**: zvolte `C#` .
 
-    + **Vyberte šablonu pro funkci prvního projektu** : zvolte `HTTP trigger` .
+    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger` .
 
-    + Zadejte **název funkce** : typ `HttpExample` .
+    + Zadejte **název funkce**: typ `HttpExample` .
 
-    + Zadejte **obor názvů** : typ `My.Functions` .
+    + Zadejte **obor názvů**: typ `My.Functions` .
 
-    + **Úroveň autorizace** : vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít** : zvolte `Add to workspace` .
+    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace` .
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files).
 

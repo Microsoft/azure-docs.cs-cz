@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/26/2020
+ms.date: 01/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: a1c3fcf868af76865eec9fa2be4f0fdb58074867
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 539ea6f80604eabdbbe56a3280cf5ddb367c0439
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964452"
+ms.locfileid: "97966779"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>Služby Speech v cloudech svrchovan
 
@@ -41,15 +41,7 @@ K dispozici pouze institucím státní správy USA a jejich partnerům. Další 
   - Neuronové hlas
   - Vlastní hlas
 - **Podporované jazyky:**
-  - Arabština (ar-*)
-  - Čínština (zh-*)
-  - Angličtina (EN-*)
-  - Francouzština (FR-*)
-  - Němčina (de-*)
-  - Hindština (dobrý den)
-  - korejština (ko-KR),
-  - Ruština (ru-RU)
-  - Španělština (ES-*)
+  - [Tady](language-support.md) najdete seznam podporovaných jazyků.
 
 ### <a name="endpoint-information"></a>Informace o koncovém bodu
 

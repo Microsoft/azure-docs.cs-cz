@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821464"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967119"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -458,34 +458,15 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: při dotazování na externí tabulku v Azure Storage došlo k potížím se službou Azure synapse Analytics.
 
 - **Řešení**: Spusťte stejný dotaz v SSMS a zkontrolujte, jestli vidíte stejný výsledek. Pokud ano, otevřete lístek podpory pro Azure synapse Analytics a poskytněte vašemu serveru Azure synapse Analytics Server a název databáze, abyste mohli dále řešit problémy.
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>Nízký výkon při načítání dat do Azure SQL
-
-- **Příznaky**: kopírování dat v nástroji do Azure SQL se změní na pomalé.
-
-- **Příčina**: původní příčina problému se většinou aktivuje kritickým bodem na straně Azure SQL. Níže jsou uvedené některé možné příčiny:
-
-    - Vrstva Azure DB není dostatečně vysoká.
-
-    - Využití DTU Azure DB je blízko 100%. Můžete [monitorovat výkon](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) a vzít v úvahu upgrade úrovně DB.
-
-    - Indexy nejsou nastaveny správně. Před načtením dat odstraňte všechny indexy a po dokončení načítání je znovu vytvořte.
-
-    - WriteBatchSize není dostatečně velká, aby odpovídala velikosti řádku schématu. Zkuste zvětšit vlastnost problému.
-
-    - Místo hromadného vsazení se používá uložená procedura, u které se očekává, že mají horší výkon. 
-
-- **Řešení**: informace o [výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) najdete v TSG.
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Úroveň výkonu je nízká a vede k selhání kopírování
 
-- **Příznaky**: při kopírování dat do Azure SQL se stala chybová zpráva: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **Příznaky**: při kopírování dat do Azure SQL Database se stala chybová zpráva: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **Příčina**: používá se Azure SQL S1, který v takovém případě dosáhl omezení v/v.
+- **Příčina**: používá se Azure SQL Database S1, která v takovém případě dosáhla limitu v/v.
 
-- **Řešení**: Pokud chcete tento problém vyřešit, upgradujte úroveň výkonu Azure SQL. 
+- **Řešení**: Pokud chcete problém vyřešit, upgradujte Azure SQL Database úroveň výkonu. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>Tabulka SQL se nenašla. 
@@ -619,31 +600,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 - **Příčina**: Server Dynamics je nestabilní nebo nedostupný nebo v síti dochází k problémům.
 
 - **Doporučení**: Prohlédněte si připojení k síti nebo vyhledejte další podrobnosti v protokolu serveru Dynamics Server. Další nápovědu získáte od podpory Dynamics.
-
-
-## <a name="excel-format"></a>Excelový formát
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Časový limit nebo pomalý výkon při analýze velkého souboru aplikace Excel
-
-- **Příznaky**:
-
-    - Když vytváříte datovou sadu Excelu a importujete schéma ze seznamu připojení/úložiště, náhled dat, seznamů nebo aktualizací listů, může se zobrazit chyba časového limitu v případě, že je velikost souboru aplikace Excel velká.
-
-    - Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
-
-- **Příčina**: 
-
-    - Pro operace, jako je import schématu, náhled dat a výpis listů v datové sadě Excelu, je časový limit 100 s a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
-
-    - Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
-
-- **Řešení**: 
-
-    - Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
-
-    - V rozevíracím seznamu list pro výpis listu můžete kliknout na Upravit a místo toho zadat název nebo index listu.
-
-    - Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
     
 
 ## <a name="ftp"></a>FTP

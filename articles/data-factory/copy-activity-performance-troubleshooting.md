@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921916"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968887"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -172,6 +172,60 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
   - Zvažte možnost postupného vyladění [paralelních kopií](copy-activity-performance-features.md), Všimněte si, že příliš mnoho paralelních kopií může dokonce snížit výkon.
 
+
+## <a name="connector-and-ir-performance"></a>Výkon konektoru a IR
+
+V této části se seznámíte s některými Průvodci odstraňováním potíží s výkonem pro konkrétní typ konektoru nebo modul runtime integrace.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>Doba provádění aktivity se liší pomocí Azure IR vs Azure VNet.
+
+Doba provádění aktivity se liší v případě, že je datová sada založená na různých Integration Runtime.
+
+- **Příznaky**: jednoduše přepínat rozevírací seznam propojených služeb v datové sadě provádí stejné aktivity kanálu, ale má drasticky různou dobu běhu. Pokud je datová sada založená na spravovaném Virtual Network Integration Runtime, trvá v průměru více než 2 minuty, aby se dokončilo spuštění, ale dokončení trvá přibližně 20 sekund, než se dokončí na základě výchozího Integration Runtime.
+
+- **Příčina**: Kontrola podrobností o spuštěních kanálu, vidíte, že pomalé kanály běží na spravované virtuální síti (Virtual Network) IR, zatímco je normální provoz spuštěný v Azure IR. V rámci návrhu se spravovaná virtuální síť VNet přestane časem zařadit do fronty, než Azure IR, protože nerezervujete jeden výpočetní uzel na datovou továrnu, takže se každá aktivita kopírování může zahřívá přibližně 2 minuty a k tomu dochází hlavně v rámci připojení VNet místo Azure IR.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Nízký výkon při načítání dat do Azure SQL Database
+
+- **Příznaky**: kopírování dat v nástroji do Azure SQL Database se změní na pomalé.
+
+- **Příčina**: původní příčina problému se většinou aktivuje kritickým bodem Azure SQL Database strany. Níže jsou uvedené některé možné příčiny:
+
+    - Azure SQL Database vrstva není dostatečně vysoká.
+
+    - Azure SQL Database využití DTU je blízko až 100%. Můžete [monitorovat výkon](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) a zvážit upgrade Azure SQL Database úrovně.
+
+    - Indexy nejsou nastaveny správně. Před načtením dat odstraňte všechny indexy a po dokončení načítání je znovu vytvořte.
+
+    - WriteBatchSize není dostatečně velká, aby odpovídala velikosti řádku schématu. Zkuste zvětšit vlastnost problému.
+
+    - Místo hromadného vsazení se používá uložená procedura, u které se očekává, že mají horší výkon. 
+
+- **Řešení**: Přečtěte si téma [řešení potíží s výkonem aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Časový limit nebo pomalý výkon při analýze velkého souboru aplikace Excel
+
+- **Příznaky**:
+
+    - Když vytváříte datovou sadu Excelu a importujete schéma ze seznamu připojení/úložiště, náhled dat, seznamů nebo aktualizací listů, může se zobrazit chyba časového limitu v případě, že je velikost souboru aplikace Excel velká.
+
+    - Když použijete aktivitu kopírování ke kopírování dat z velkého excelového souboru (>= 100 MB) do jiného úložiště dat, může docházet ke zpomalení výkonu nebo OOM problému.
+
+- **Příčina**: 
+
+    - Pro operace, jako je import schématu, náhled dat a výpis listů v datové sadě Excelu, je časový limit 100 s a statický. U velkých souborů v Excelu se tyto operace nemusí dokončit v rámci hodnoty časového limitu.
+
+    - Aktivita kopírování ADF přečte celý excelový soubor do paměti a pak vyhledá zadaný list a buňky pro čtení dat. K tomuto chování dochází z důvodu použití základní sady SDK ADF.
+
+- **Řešení**: 
+
+    - Pro import schématu můžete vygenerovat menší ukázkový soubor, který je podmnožinou původního souboru, a místo příkazu importovat schéma z připojení nebo úložiště zvolit importovat schéma z ukázkového souboru.
+
+    - V rozevíracím seznamu list pro výpis listu můžete kliknout na Upravit a místo toho zadat název nebo index listu.
+
+    - Pokud chcete kopírovat velký excelový soubor (>100 MB) do jiného úložiště, můžete použít zdroj dat v aplikaci Excel flow, který zajišťuje čtení a lepší využívání streamování pro sport.
+    
 ## <a name="other-references"></a>Další odkazy
 
 Tady je sledování výkonu a ladění odkazů pro některá z podporovaných úložišť dat:

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746605"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968530"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -21,7 +21,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -269,7 +269,7 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 > [!NOTE]
 >
-> ["MS-python >= verze 2020.5.78807 není v tomto rozsahu podporována."](#issues-changed) bylo vyřešeno. Pro tuto chvíli se dá použít nejnovější verze Microsoft-Pythonu.
+> ["MS-python >= verze 2020.5.78807 není v tomto rozšíření podporována."](#issues-changed) bylo vyřešeno. Aktualizujte prosím **Microsoft-Python** na **nejnovější verzi** hned teď.
 
 ## <a name="submit-pyspark-batch-job"></a>Odeslat dávkovou úlohu PySpark
 
@@ -491,7 +491,7 @@ V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů** a pak za
 
 ## <a name="issues-changed"></a>Problémy změněny
 
-Pro tento problém se v tomto rozsahu Nepodporovaná verze MS-Python >= 2020.5.78807. v tuto chvíli se dá použít **nejnovější verze MS-Pythonu** .
+Pro tento problém se v tomto rozšíření nepodporuje verze MS-Python >= 2020.5.78807. Aktualizujte prosím **Microsoft-Python** na **nejnovější verzi** hned teď.
 
 
 ## <a name="next-steps"></a>Další kroky

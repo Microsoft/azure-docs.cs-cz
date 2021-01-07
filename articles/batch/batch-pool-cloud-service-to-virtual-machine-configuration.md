@@ -2,19 +2,21 @@
 title: Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 description: Naučte se aktualizovat konfiguraci fondu na nejnovější a doporučenou konfiguraci.
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: 52e1762dc8e81b3eb7e1bce388d91dfd2c76191a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/6/2021
+ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937630"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969023"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 
 Fondy Batch se dají vytvořit buď pomocí [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , nebo [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' je doporučená konfigurace, protože podporuje všechny funkce dávky. fondy ' cloudServiceConfiguration ' nepodporují všechny funkce a nejsou plánovány žádné nové funkce.
 
-Pokud používáte fondy ' cloudServiceConfiguration ', důrazně doporučujeme, abyste přešli na používání fondů ' virtualMachineConfiguration '. Tento článek popisuje, jak migrovat na doporučenou konfiguraci ' virtualMachineConfiguration '.
+Pokud používáte fondy ' cloudServiceConfiguration ', důrazně doporučujeme, abyste přešli na používání fondů ' virtualMachineConfiguration '. To vám umožní těžit ze všech funkcí služby Batch, jako je rozšířený [Výběr řady virtuálních počítačů](batch-pool-vm-sizes.md), virtuálních počítačů se systémem Linux, [kontejnerů](batch-docker-container-workloads.md), [Azure Resource Manager virtuální sítě](batch-virtual-network.md)a [šifrování disku uzlu](disk-encryption.md).
+
+Tento článek popisuje, jak migrovat do ' virtualMachineConfiguration '.
 
 ## <a name="new-pools-are-required"></a>Vyžadují se nové fondy.
 

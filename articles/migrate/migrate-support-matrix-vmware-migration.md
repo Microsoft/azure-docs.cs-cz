@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897089"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968445"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -44,7 +44,7 @@ Tabulka shrnuje požadavky hypervisoru VMware.
 --- | ---
 **vCenter Server VMware** | Verze 5,5, 6,0, 6,5, 6,7, 7,0.
 **VMware vSphere hostitele ESXI** | Verze 5,5, 6,0, 6,5, 6,7, 7,0.
-**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet** (úložiště dat-> procházet úložiště dat): povolí procházení souborů protokolu virtuálních počítačů, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **Úložiště dat. Správa** souborů (úložiště dat – > operací se soubory na nízké úrovni): v prohlížeči úložiště dat povolte operace čtení, zápisu, odstranění a přejmenování, abyste mohli řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve** (sledování změn virtuálního počítače – >): povolí nebo zakáže sledování změn disků virtuálních počítačů, aby bylo možné načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease** (virtuální počítač – > zapůjčení disku): Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere (Virtual disk Development Kit) pro VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskAccess**: (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead** (zřizování virtuálních počítačů->-> povolí přístup k disku jen pro čtení): povolí otevření disku na virtuálním počítači, aby se disk mohl přečíst pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess** (zřizování virtuálních počítačů-> – > povoluje přístup k disku): povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles** (zřizování virtuálních počítačů->-> povolit stahování virtuálního počítače): umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* *_ (Správa snímků pro virtuální počítače a >): Povolí vytváření a správu snímků virtuálních počítačů pro replikaci. <br/> <br/> -_* VirtualMachine. interagovat. stavu PowerOff** (interakce s virtuálním počítačem a > – > vypnutí): povolí vypnutí virtuálního počítače během migrace do Azure.
+**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění v vCenter Server:<br/><br/> - **Úložiště dat. procházet** (úložiště dat-> procházet úložiště dat): povolí procházení souborů protokolu virtuálních počítačů, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **Úložiště dat. Správa** souborů (úložiště dat – > operací se soubory na nízké úrovni): v prohlížeči úložiště dat povolte operace čtení, zápisu, odstranění a přejmenování, abyste mohli řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine.Config. Sledování změn ve** (sledování změn virtuálního počítače – >): povolí nebo zakáže sledování změn disků virtuálních počítačů, aby bylo možné načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine.Config. DiskLease** (virtuální počítač – > zapůjčení disku): Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere (Virtual disk Development Kit) pro VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomRead** (zřizování virtuálních počítačů->-> povolí přístup k disku jen pro čtení): povolí otevření disku na virtuálním počítači, aby se disk mohl přečíst pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. DiskRandomAccess** (zřizování virtuálních počítačů-> – > povoluje přístup k disku): povoluje otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles** (zřizování virtuálních počítačů->-> povolit stahování virtuálního počítače): umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> - **VirtualMachine. State. \* *_ (Správa snímků pro virtuální počítače a >): Povolí vytváření a správu snímků virtuálních počítačů pro replikaci. <br/> <br/> -_* VirtualMachine. interagovat. stavu PowerOff** (interakce s virtuálním počítačem a > – > vypnutí): povolí vypnutí virtuálního počítače během migrace do Azure.
 
 
 

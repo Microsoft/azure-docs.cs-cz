@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895644"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968581"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
@@ -151,16 +151,6 @@ Problém vyřešíte tak, že přejdete do [privátního odkazu Azure pro Azure 
 Zkuste povolit přístup k veřejné síti v uživatelském rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Snímek obrazovky s povoleným ovládacím prvkem povolit přístup k veřejné síti v podokně síť](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
-
-### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>Modul runtime kanálu se při založení na různých IR liší.
-
-#### <a name="symptoms"></a>Příznaky
-
-Pouhým přepínáním rozevíracího seznamu propojených služeb v datové sadě se provádí stejné aktivity kanálu, ale výrazně se lišily doby běhu. Pokud je datová sada založená na spravovaném Virtual Network Integration Runtime, trvá v průměru více než 2 minuty, aby se dokončilo spuštění, ale dokončení trvá přibližně 20 sekund, než se dokončí na základě výchozího Integration Runtime.
-
-#### <a name="cause"></a>Příčina
-
-Kontrola podrobností o spuštěních kanálu vidíte, že pomalé kanály běží na spravované virtuální síti (Virtual Network) IR, zatímco je normální provoz spuštěný v Azure IR. V rámci návrhu se spravovaná virtuální síť VNet přestane časem zařadit do fronty, než Azure IR, protože nerezervujete jeden výpočetní uzel na datovou továrnu, takže se každá aktivita kopírování může zahřívá přibližně 2 minuty a k tomu dochází hlavně v rámci připojení VNet místo Azure IR.
 
 ## <a name="next-steps"></a>Další kroky
 

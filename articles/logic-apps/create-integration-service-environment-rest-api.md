@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827474"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967034"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) s využitím rozhraní REST API služby Logic Apps
 
@@ -25,7 +25,7 @@ Další informace o dalších způsobech vytvoření ISE najdete v těchto člá
 * [Vytvoření ISE pomocí ukázkové Azure Resource Manager šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Vytvoření ISE, který podporuje použití klíčů spravovaných zákazníkem k šifrování neaktivních dat](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné [předpoklady](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky na přístup](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
@@ -121,7 +121,7 @@ Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají pou
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>Přidat vlastní kořenové certifikáty
 
 Často používáte ISE k připojení k vlastním službám ve vaší virtuální síti nebo místně. Tyto vlastní služby jsou často chráněny certifikátem vydaným vlastní kořenovou certifikační autoritou, jako je například podniková certifikační autorita nebo certifikát podepsaný svým držitelem. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Aby se vaše ISE úspěšně připojovala k těmto službám prostřednictvím protokolu TLS (Transport Layer Security), potřebuje vaše ISE přístup k těmto kořenovým certifikátům. Pokud chcete aktualizovat ISE pomocí vlastního důvěryhodného kořenového certifikátu, udělejte tuto `PATCH` žádost https:
