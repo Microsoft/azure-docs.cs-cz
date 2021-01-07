@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745696"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956591"
 ---
 [Referenční dokumentace](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -74,7 +74,7 @@ Dále přidejte následující funkci, `quickstart` která bude zpracovávat hla
 
 Přidejte následující kód na konec `quickstart` funkce k vypsání dostupných prostředků, vytvořte ukázkový prostředek, uveďte seznam vlastněných prostředků a pak odstraňte ukázkový prostředek. Tyto funkce definujete v dalších krocích.
 
-## <a name="create-a-cognitive-services-resource"></a>Vytvoření prostředku služeb Cognitive Services
+## <a name="create-a-cognitive-services-resource-nodejs"></a>Vytvoření prostředku Cognitive Services (Node.js)
 
 Pokud chcete vytvořit nový prostředek Cognitive Services a přihlásit se k jeho odběru, použijte funkci **Create** . Tato funkce přidá nový fakturovatelný prostředek do skupiny prostředků, kterou předáte. Když vytváříte nový prostředek, budete muset znát "druh" služby, kterou chcete použít, spolu s její cenovou úrovní (nebo SKU) a umístěním Azure. Následující funkce přebírá všechny tyto argumenty a vytvoří prostředek.
 

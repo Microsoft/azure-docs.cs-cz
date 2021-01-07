@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ef617b9ed6c35d33350b173efe6189b5b79b6ae6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4231f5c4e947f29a72e581cf461ff737c1a0c82
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008159"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956474"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
@@ -30,9 +30,9 @@ ms.locfileid: "96008159"
     | **Název** | Globálně jedinečný název | Název jednoznačně identifikující novou aplikaci funkcí. Přijměte tento název nebo zadejte nový název. Platné znaky jsou: `a-z` , `0-9` a `-` . |
     | **Předplatné** | Vaše předplatné | Předplatné Azure, které se má použít. Přijměte toto předplatné nebo v rozevíracím seznamu vyberte nový. |
     | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** | Název vaší skupiny prostředků |  Skupina prostředků, ve které se má vytvořit aplikace Function App V rozevíracím seznamu vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků výběrem možnosti **nové** .|
-    | **[Typ plánu](../articles/azure-functions/functions-scale.md)** | Consumption | Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. |
+    | **[Typ plánu](../articles/azure-functions/functions-scale.md)** | Consumption | Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](../articles/azure-functions/consumption-plan.md), platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. |
     | **Umístění** | Umístění služby App Service | Vyberte **umístění** v [oblasti](https://azure.microsoft.com/regions/) poblíž vaší nebo jiné služby, ke které vaše funkce přistupuje. |
-    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Účet úložiště pro obecné účely | Modul runtime Functions vyžaduje účet Azure Storage. Vyberte **Nový** a nakonfigurujte účet úložiště pro obecné účely. Můžete také zvolit existující účet, který splňuje požadavky na [účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
+    | **[Azure Storage](../articles/azure-functions/storage-considerations.md)** | Účet úložiště pro obecné účely | Modul runtime Functions vyžaduje účet Azure Storage. Vyberte **Nový** a nakonfigurujte účet úložiště pro obecné účely. Můžete také zvolit existující účet, který splňuje požadavky na [účet úložiště](../articles/azure-functions/storage-considerations.md#storage-account-requirements).  |
 
     ![Dialogové okno Vytvoření služby App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
