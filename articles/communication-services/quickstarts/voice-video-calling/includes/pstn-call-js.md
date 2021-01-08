@@ -4,65 +4,77 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/11/2020
 ms.author: nikuklic
-ms.openlocfilehash: 009bd57fdb82b8463352da8dc63c9aeebceab09b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 2f884a09e6b51b1c72034a62eaea601a4e69ecd2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779872"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024188"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - Telefonní číslo získané v prostředku komunikačních služeb. [Jak získat telefonní číslo](../../telephony-sms/get-phone-number.md).
 - A `User Access Token` povolí klienta volání. Další informace o [tom, jak získat `User Access Token` ](../../access-tokens.md)
-- Dokončete rychlé [zprovoznění, abyste mohli začít s přidáváním volání do aplikace](../getting-started-with-calling.md) .
 
-### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
 
-- Chcete-li zobrazit telefonní čísla přidružená ke zdroji komunikačních služeb, přihlaste se k [Azure Portal](https://portal.azure.com/), vyhledejte prostředek komunikačních služeb a otevřete kartu **telefonní čísla** v levém navigačním podokně.
-- Můžete sestavit a spustit aplikaci pomocí komunikačních služeb Azure s voláním klientské knihovny pro JavaScript:
+[!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
-```console
-npx webpack-dev-server --entry ./client.js --output bundle.js
-```
-
-## <a name="setting-up"></a>Nastavení
-
-### <a name="add-pstn-functionality-to-your-app"></a>Přidání funkce veřejné sítě do vaší aplikace
-
-Rozšíří vaše rozložení pomocí ovládacích prvků vytáčení telefonního čísla.
-
-Umístěte tento kód na konec `<body />` oddílu **index.html**před `<script />` značkami:
+Zde je kód:
 
 ```html
-<input 
-  id="callee-phone-input"
-  type="text"
-  placeholder="Phone number you would like to dial"
-  style="margin-bottom:1em; width: 230px;"
-/>
-<div>
-  <button id="call-phone-button" type="button">
-    Start Phone Call
-  </button>
-  &nbsp;
-  <button id="hang-up-phone-button" type="button" disabled="true">
-    Hang Up Phone Call
-  </button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Communication Client - Calling Sample</title>
+  </head>
+  <body>
+    <h4>Azure Communication Services</h4>
+    <h1>Calling Quickstart</h1>
+    <input 
+      id="callee-phone-input"
+      type="text"
+      placeholder="Who would you like to call?"
+      style="margin-bottom:1em; width: 230px;"
+    />
+    <div>
+      <button id="call-phone-button" type="button">
+        Start Call
+      </button>
+      &nbsp;
+      <button id="hang-up-phone-button" type="button" disabled="true">
+        Hang Up
+      </button>
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
 ```
 
-Rozšíříte logiku aplikace pomocí funkcí telefonního subsystému.
-
-Přidejte tento kód do **client.js**:
+Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js** , který bude obsahovat aplikační logiku pro tento rychlý Start. Přidejte následující kód pro import volajícího klienta a získejte odkazy na prvky modelu DOM, abychom mohli připojit naši obchodní logiku.
 
 ```javascript
+import { CallClient, CallAgent } from "@azure/communication-calling";
+import { AzureCommunicationUserCredential } from '@azure/communication-common';
+
+let call;
+let callAgent;
+
 const calleePhoneInput = document.getElementById("callee-phone-input");
 const callPhoneButton = document.getElementById("call-phone-button");
 const hangUpPhoneButton = document.getElementById("hang-up-phone-button");
+
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential('your-token-here');
+    callAgent = await callClient.createCallAgent(tokenCredential);
+  //  callButton.disabled = false;
+}
+
+init();
+
 ```
 
 ## <a name="start-a-call-to-phone"></a>Spustit telefonování
@@ -79,9 +91,8 @@ callPhoneButton.addEventListener("click", () => {
   // start a call to phone
   const phoneToCall = calleePhoneInput.value;
   call = callAgent.call(
-    [{phoneNumber: phoneToCall}], { alternateCallerId: {phoneNumber: '+18336528005'}
+    [{phoneNumber: phoneToCall}], { alternateCallerId: {phoneNumber: 'YOUR AZURE REGISTERED PHONE NUMBER HERE: +12223334444'}
   });
-
   // toggle button states
   hangUpPhoneButton.disabled = false;
   callPhoneButton.disabled = true;
@@ -118,8 +129,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js
 
 Otevřete prohlížeč a přejděte na `http://localhost:8080/` . Měli byste vidět následující:
 
-
-![Snímek obrazovky dokončené aplikace JavaScriptu](../media/javascript/pstn-calling-javascript-app.png)
+:::image type="content" source="../media/javascript/pstn-calling-javascript-app.png" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
 
 Volání do reálného telefonního čísla můžete umístit zadáním telefonního čísla do pole přidané text a kliknutím na tlačítko **Spustit telefonní hovor** .
 

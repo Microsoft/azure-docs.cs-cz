@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532106"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024353"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v1-V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97532106"
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-certificate.md) vlastní domény |Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Neomezené SNI SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení | Zahrnuté neomezené SNI SSL a 1 IP SSL připojení|
 | Hybridní připojení | | | 5 podle plánu | 25 na plán | 200 na aplikaci | 200 na aplikaci |
 | [Integrace virtuální sítě](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Soukromé koncové body](../articles/app-service/networking/private-endpoint.md) | | |   |   |  100 na aplikaci  |    |
 | Integrovaný nástroj pro vyrovnávání zatížení | |X |X |X |X |X<sup>10</sup> |
 | [Omezení přístupu](../articles/app-service/networking-features.md#access-restrictions) | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci |
 | [Vždy zapnuto](../articles/app-service/configure-common.md) | | |X |X |X |X |

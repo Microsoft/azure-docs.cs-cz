@@ -3,18 +3,18 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 01/04/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033574"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882445"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -72,6 +72,8 @@ Prognóza nákladů ukazuje projekci odhadovaných nákladů za vybrané časov�
 
 K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování**. Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD.
 
+Vzhledem k tomu, že se model spoléhá na prudké nárůsty nebo poklesy dat, velké nákupy jako například rezervované instance způsobí, že se vaše prognóza uměle nafoukne. Časové období prognózy a velikost nákupů potom ovlivňují dobu, po kterou je prognóza ovlivněná. Při stabilizaci útraty se prognóza vrátí k normálu.
+
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 
 Analýza nákladů má čtyři předdefinovaná zobrazení optimalizovaná pro nejběžnější cíle:
@@ -88,7 +90,7 @@ Podrobnosti o faktuře | Jaké poplatky mám na poslední faktuře?
 
 Existuje ale mnoho případů, kdy budete potřebovat podrobnější analýzu. Přizpůsobení začíná nahoře na stránce, kde můžete vybrat datum.
 
-Analýza nákladů zobrazuje standardně data pro aktuální měsíc. Pomocí voliče dat můžete rychle přepínat na běžné rozsahy kalendářních dat. Mezi příklady patří posledních sedm dní, poslední měsíc, aktuální rok nebo vlastní rozsah kalendářních dat. Předplatná s průběžnými platbami také zahrnují rozsahy dat na základě fakturačního období, které není vázáno na kalendářní měsíc, jako je aktuální fakturační období nebo poslední faktura. Pomocí odkazů **< PŘEDCHOZÍ** a **DALŠÍ >** v horní části nabídky můžete přejít na předchozí nebo další období. Například odkaz **< PŘEDCHOZÍ** může přepnout z období **Posledních 7 dní** na období **Před 8–14 dny** a pak **Před 15–21 dny**. Nezapomeňte, že když vybíráte vlastní rozsah kalendářních dat, můžete vybrat až celý rok (tj. 1. ledna až 31. prosince).
+Analýza nákladů zobrazuje standardně data pro aktuální měsíc. Pomocí voliče dat můžete rychle přepínat na běžné rozsahy kalendářních dat. Mezi příklady patří posledních sedm dní, poslední měsíc, aktuální rok nebo vlastní rozsah kalendářních dat. Předplatná s průběžnými platbami také zahrnují rozsahy dat na základě fakturačního období, které není vázáno na kalendářní měsíc, jako je aktuální fakturační období nebo poslední faktura. Pomocí odkazů **< PŘEDCHOZÍ** a **DALŠÍ >** v horní části nabídky můžete přejít na předchozí nebo další období. Například odkaz **< PŘEDCHOZÍ** může přepnout z období **Posledních 7 dní** na období **Před 8–14 dny** a pak **Před 15–21 dny**. Nezapomeňte, že když vybíráte vlastní rozsah kalendářních dat, můžete vybrat až celý rok (např. 1. ledna až 31. prosince).
 
 ![Volič dat ukazující příklad výběru na aktuální měsíc](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -119,11 +121,11 @@ Tady je zobrazení nákladů na služby Azure za aktuální měsíc.
 
 ![Seskupené denní kumulované zobrazení s příkladem nákladů na služby Azure za poslední měsíc](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Ve výchozím nastavení zobrazuje analýza nákladů všechny náklady na využití a nákupy, jak postupně nabíhají a jak je uvidíte ve své faktuře. Označuje se to také jako **skutečné náklady**. Zobrazení skutečných nákladů je ideální pro kontrolu vaší faktury. Špičky v nákladech za nákupy ale můžou být alarmující, pokud si dáváte pozor na anomálie v útratách a jiné změny v nákladech. Pokud chcete špičky způsobené náklady na nákupy rezervací zploštit, přepněte na **amortizační náklady**.
+Ve výchozím nastavení zobrazuje analýza nákladů všechny náklady na využití a nákupy, jak postupně nabíhají a jak je uvidíte ve své faktuře. Označují se také jako **skutečné náklady**. Zobrazení skutečných nákladů je ideální pro kontrolu vaší faktury. Špičky v nákladech za nákupy ale můžou být alarmující, pokud si dáváte pozor na anomálie v útratách a jiné změny v nákladech. Pokud chcete špičky způsobené náklady na nákupy rezervací zploštit, přepněte na **amortizační náklady**.
 
 ![Přepnutím ze skutečných nákladů na amortizační je možné zobrazit náklady na nákupy rezervací rozprostřené do celého období a přidělené k prostředkům, které rezervaci využily.](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amortizační náklady rozdělují nákupy rezervací do denních částek a rozprostřou je přes celou dobu trvání období rezervace. Například místo nákupu v hodnotě 365 Kč z 1. ledna se tak každý den od 1. ledna do 31. prosince zobrazí nákup v hodnotě 1 Kč. Kromě základní amortizace jsou tyto náklady také přerozděleny a přidruženy ke konkrétním prostředkům, které rezervaci využily. Pokud by se například denní poplatek ve výši 1 Kč rozdělil mezi dva virtuální počítače, zobrazily by se vám za tento den dva poplatky ve výši 0,50 Kč. Pokud část rezervace nebude některý den využitá, zobrazí se vám jeden poplatek ve výši 0,50 Kč přidružený k příslušnému virtuálnímu počítači a další poplatek ve výši 0,50 Kč s typem poplatku `UnusedReservation`. Upozorňujeme, že náklady na nevyužité rezervace se dají zobrazit jenom v zobrazení amortizačních nákladů.
+Amortizační náklady rozdělují nákupy rezervací do denních částek a rozprostřou je přes celou dobu trvání období rezervace. Například místo nákupu v hodnotě 365 Kč z 1. ledna se tak každý den od 1. ledna do 31. prosince zobrazí nákup v hodnotě 1 Kč. Kromě základní amortizace jsou tyto náklady také přerozděleny a přidruženy ke konkrétním prostředkům, které rezervaci využily. Pokud by se například denní poplatek ve výši 1 Kč rozdělil mezi dva virtuální počítače, zobrazily by se vám za tento den dva poplatky ve výši 0,50 Kč. Pokud část rezervace nebude některý den využitá, zobrazí se vám jeden poplatek ve výši 0,50 Kč přidružený k příslušnému virtuálnímu počítači a další poplatek ve výši 0,50 Kč s typem poplatku `UnusedReservation`. Nevyužité náklady na rezervaci se dají zobrazit jenom v případě, kdy se zobrazují amortizované náklady.
 
 Vzhledem k rozdílům v započítávání nákladů je důležité mít na vědomí, že v zobrazení skutečných a amortizačních nákladů se zobrazí rozdílné celkové částky. Obecně platí, že celkové náklady v měsících s nákupy rezervací se při přepnutí na amortizační náklady sníží a v měsících po nákupech rezervací se zvýší. Amortizace je v současné době dostupná jenom pro nákupy rezervací a není dostupná pro nákupy přes Azure Marketplace.
 
@@ -151,7 +153,7 @@ Podívejte se na video věnované [sdílení a ukládání zobrazení v Azure Co
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-Pokud chcete analýzu nákladů připnout, vyberte ikonu připínáčku v pravém horním rohu nebo hned vedle <Subscription Name> | Analýza nákladů. Při připnutí analýzy nákladů se uloží jenom hlavní zobrazení grafu nebo tabulky. Nasdílením řídicího panelu můžete udělit přístup k dlaždici ostatním uživatelům. Upozorňujeme, že tímto se nasdílí jenom konfigurace řídicího panelu a ostatním uživatelům se neudělí přístup k podkladovým datům. Pokud nemáte přístup k nákladům, ale máte přístup ke sdílenému řídicímu panelu, zobrazí se vám zpráva o odepření přístupu.
+Pokud chcete analýzu nákladů připnout, vyberte ikonu připínáčku v pravém horním rohu nebo hned vedle <Subscription Name> | Analýza nákladů. Při připnutí analýzy nákladů se uloží jenom hlavní zobrazení grafu nebo tabulky. Nasdílením řídicího panelu můžete udělit přístup k dlaždici ostatním uživatelům. Tímto způsobem se nasdílí jenom konfigurace řídicího panelu a ostatním uživatelům se neudělí přístup k podkladovým datům. Pokud nemáte přístup k nákladům, ale máte přístup ke sdílenému řídicímu panelu, zobrazí se vám zpráva o odepření přístupu.
 
 Pokud chcete nasdílet odkaz na analýzu nákladů, vyberte **Sdílet** v horní části okna. Zobrazí se vlastní adresa URL, která otevře toto konkrétní zobrazení pro tento konkrétní obor. Pokud nemáte přístup k nákladům a použijete tuto adresu URL, zobrazí se vám zpráva o odepření přístupu.
 
@@ -159,7 +161,7 @@ Pokud chcete nasdílet odkaz na analýzu nákladů, vyberte **Sdílet** v horní
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sloučit je se svými vlastními daty nebo je integrovat do svých vlastních systémů. Služba Cost Management nabízí několik různých možností. Pokud potřebujete ad hoc souhrn vysoké úrovně (podobný tomu, co získáte v analýze nákladů), můžete si jako výchozí bod vytvořit zobrazení, jaké potřebujete. Pak si ho stáhněte výběrem možnosti **Exportovat** a pak **Stáhnout data do souboru CSV** nebo **Stáhnout data do Excelu**. Soubor stažený do Excelu poskytuje další kontext o zobrazení, které jste použili k vygenerování staženého souboru, například obor, konfiguraci dotazů, celkovou částku a datum generování.
+Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sloučit je se svými vlastními daty nebo je integrovat do svých vlastních systémů. Služba Cost Management nabízí několik různých možností. Pokud potřebujete rychlý obecný souhrn (podobný tomu, co získáte v analýze nákladů), můžete si jako výchozí bod vytvořit zobrazení, jaké potřebujete. Pak si ho stáhněte výběrem možnosti **Exportovat** a pak **Stáhnout data do souboru CSV** nebo **Stáhnout data do Excelu**. Soubor stažený do Excelu poskytuje další kontext o zobrazení, které jste použili k vygenerování staženého souboru, například obor, konfiguraci dotazů, celkovou částku a datum generování.
 
 Pokud potřebujete úplnou, neagregovanou datovou sadu, stáhněte si ji z fakturačního účtu. Pak v seznamu služeb v levém navigačním podokně portálu přejděte na **Správa nákladů a fakturace**. V případě potřeby vyberte svůj fakturační účet. Přejděte na **Využití a poplatky** a vyberte ikonu **Stáhnout** pro požadované fakturační období.
 

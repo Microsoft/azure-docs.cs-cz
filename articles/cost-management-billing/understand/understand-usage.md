@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149354"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882496"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 
@@ -126,10 +126,24 @@ UsageDate | Datum
 UsageEnd | Datum
 UsageStart | Datum
 
-
 ## <a name="ensure-charges-are-correct"></a>Ujistěte se, že jsou poplatky správné.
 
 Pokud chcete získat další podrobné informace o využití a poplatcích, přečtěte si článek vysvětlující fakturu [s průběžnými platbami](review-individual-bill.md) nebo fakturu [pro smlouvu se zákazníkem Microsoftu](review-customer-agreement-bill.md).
+
+## <a name="unexpected-usage-or-charges"></a>Neočekávané využití nebo poplatky
+
+Pokud nějaké využití nebo poplatky nepoznáváte, tady je pár věcí, které můžete udělat, abyste je lépe pochopili:
+
+- Kontrola faktury s poplatky pro příslušný prostředek
+- Kontrola fakturovaných poplatků v analýze nákladů
+- Vyhledání lidí zodpovědných za konkrétní prostředky a jejich zapojení
+- Analýza protokolů auditu
+- Analýza uživatelských oprávnění k nadřazenému oboru prostředku
+- Vytvoření [žádosti o podporu Azure ](https://go.microsoft.com/fwlink/?linkid=2083458) a pomoc při identifikaci poplatků
+
+Další informace najdete v tématu [Analýza neočekávaných poplatků](analyze-unexpected-charges.md).
+
+Upozorňujeme, Azure neprotokoluje většinu uživatelských akcí. Místo toho Microsoft protokoluje využití prostředků pro účely fakturace. Pokud si všimnete špičky využití v minulosti a neměli jste povolené protokolování, Microsoft nemůže určit příčinu. Povolte protokolování pro službu, pro kterou chcete zobrazit zvýšené využití, aby vám příslušný technický tým mohl s tímto problémem pomoct.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
