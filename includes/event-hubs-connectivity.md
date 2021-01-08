@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002783"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978888"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 Pomocí následujících protokolů se službou Azure Event Hubs můžete posílat a přijímat události:
@@ -38,7 +38,7 @@ Oficiální sady Azure SDK obecně používají protokol AMQP pro posílání a 
 | -------- | ----- |
 | .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) – vlastnost s [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) nebo [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
 | Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) s [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) nebo [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Node  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) má `webSocketOptions` vlastnost. |
+| Uzel  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) má `webSocketOptions` vlastnost. |
 | Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) s [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) nebo [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Jaké IP adresy potřebuji povolit?
@@ -53,7 +53,7 @@ Ověřte také, zda je povolena IP adresa pro váš obor názvů. Chcete-li naj�
     ```
 2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . 
 
-Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést několik dalších kroků: 
+Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést několik kroků navíc: 
 
 1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
@@ -72,7 +72,7 @@ Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést
     > [!NOTE]
     > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Kde najdu adresu IP klienta při posílání nebo přijímání zpráv do mého oboru názvů?
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Jaká IP adresa klienta odesílá události do nebo přijímá události z oboru názvů?
 Nejdřív v oboru názvů povolte [filtrování IP adres](../articles/event-hubs/event-hubs-ip-filtering.md) . 
 
 Potom povolte protokoly diagnostiky pro [Event Hubs události připojení k virtuální síti](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) podle pokynů v tématu [Povolení diagnostických protokolů](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs). Zobrazí se IP adresa, pro kterou bylo připojení odepřeno.
@@ -92,3 +92,6 @@ Potom povolte protokoly diagnostiky pro [Event Hubs události připojení k virt
 
 > [!IMPORTANT]
 > Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsému oboru názvů, můžete použít následující řešení: Povolit filtrování IP adres a přidat celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs nepodporuje rozsahy IPv6 adres. 
+
+> [!NOTE]
+> V současné době není možné určit zdrojovou IP adresu jednotlivé zprávy nebo události. 

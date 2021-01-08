@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 3000709f19b53eb6e79b4dae0559040ca025c9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d547995d39505da18a6bca1a6c3925b95252a6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282724"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978900"
 ---
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Pokud chcete sadu Speech SDK nakonfigurovat tak, aby přijímala komprimovaný zvukový vstup, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Pojďme předpokládat, že váš případ použití je používán `PullStream` pro `MP3` soubor. Váš kód může vypadat takto:
 

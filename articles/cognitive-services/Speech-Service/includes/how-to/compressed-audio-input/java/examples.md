@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: caada98d3a2bcc4acb566cb02065c6451c233066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9b980dcbe42694137c7b29ee3bddaa7802db3da
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86544513"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978841"
 ---
-Chcete-li streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Pokud chcete sadu Speech SDK nakonfigurovat tak, aby přijímala komprimovaný zvukový vstup, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Pojďme předpokládat, že máte třídu vstupního datového proudu nazvanou `pullStream` a používáte Opus/OGG. Váš kód může vypadat takto:
 
