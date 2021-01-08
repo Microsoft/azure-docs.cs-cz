@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics úrovně kompatibility
 description: Naučte se nastavit úroveň kompatibility pro úlohu Azure Stream Analytics a významné změny v nejnovější úrovni kompatibility.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348929"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015976"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -53,7 +53,7 @@ V úrovni kompatibility 1,2 jsou představeny tyto hlavní změny:
 
 ###  <a name="amqp-messaging-protocol"></a>Protokol zasílání zpráv AMQP
 
-**1,2 úroveň** : Azure Stream Analytics používá rozšířený protokol zasílání zpráv [protokolu AMQP (Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) k zápisu do Service Busch front a témat. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu.
+**1,2 úroveň**: Azure Stream Analytics používá rozšířený protokol zasílání zpráv [protokolu AMQP (Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) k zápisu do Service Busch front a témat. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu.
 
 ### <a name="geospatial-functions"></a>Geoprostorové funkce
 

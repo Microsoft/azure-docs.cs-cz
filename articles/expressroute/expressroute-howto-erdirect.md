@@ -5,18 +5,27 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569852"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014514"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
 ExpressRoute Direct vám umožní přímo se připojit k globální síti Microsoftu prostřednictvím umístění partnerských vztahů, které jsou v celém světě strategické distribuce. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Než začnete
+
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail na adresu <ExpressRouteDirect@microsoft.com> s vaším ID předplatného, včetně následujících podrobností:
+
+* Scénáře, které se chystáte provést s **přímým přístupem ExpressRoute**
+* Předvolby umístění – v části [partneři a umístění partnerských vztahů](expressroute-locations-providers.md) najdete úplný seznam všech umístění.
+* Časová osa implementace
+* Jakékoli další dotazy
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 

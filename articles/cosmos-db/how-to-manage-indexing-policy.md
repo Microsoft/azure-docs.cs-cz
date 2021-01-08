@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341310"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015687"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md
 
 Tady je několik příkladů indexování zásad, které jsou uvedené ve [formátu JSON](index-policy.md#include-exclude-paths), což je způsob jejich zpřístupnění na Azure Portal. Stejné parametry můžete nastavit prostřednictvím rozhraní příkazového řádku Azure nebo libovolné sady SDK.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zásady výslovných odhlášení pro selektivní vyloučení některých cest k vlastnostem
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Zásady výslovných odhlášení pro selektivní vyloučení některých cest k vlastnostem
 
 ```json
     {
@@ -146,7 +146,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 > [!NOTE]
 > Obecně se doporučuje použít zásadu indexování pro **výslovný souhlas** , která Azure Cosmos DB proaktivně indexovat každou novou vlastnost, která může být přidána do datového modelu.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Použití prostorového indexu pouze na konkrétní cestu k vlastnosti
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Použití prostorového indexu pouze na konkrétní cestu k vlastnosti
 
 ```json
 {
@@ -176,7 +176,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Příklady složených indexovaných zásad
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Příklady složených indexovaných zásad
 
 Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají více filtrů nebo filtr i klauzule ORDER BY.
 
@@ -355,7 +355,7 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 
 Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON, který vám Azure Portal umožňuje přímo upravit.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics integrace s Azure Machine Learning Studio (Classic)
 description: Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning Studio (Classic) pomocí uživatelsky definované funkce.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011383"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015296"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Analýza mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
 
@@ -43,7 +42,7 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 
 V tomto kroku nahrajete soubor CSV do kontejneru úložiště.
 
-1. V Azure Portal vyberte **vytvořit prostředek** úložiště  >  **Storage**  >  **účet** úložiště.
+1. V Azure Portal vyberte **vytvořit prostředek** úložiště  >    >  **účet** úložiště.
 
 2. Vyplňte kartu *základy* s následujícími podrobnostmi a ponechte výchozí hodnoty pro zbývající pole:
 
@@ -57,7 +56,7 @@ V tomto kroku nahrajete soubor CSV do kontejneru úložiště.
 
    ![Zadejte podrobnosti účtu úložiště.](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. Vyberte **zkontrolovat + vytvořit**. Pak vyberte **vytvořit** a nasaďte účet úložiště.
+3. Vyberte **Zkontrolovat a vytvořit**. Pak vyberte **vytvořit** a nasaďte účet úložiště.
 
 4. Po dokončení nasazení přejděte k účtu úložiště. V části **Blob service** vyberte **Kontejnery**. Pak vyberte **+ kontejner** a vytvořte nový kontejner.
 

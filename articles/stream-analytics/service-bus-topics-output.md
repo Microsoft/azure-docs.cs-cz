@@ -1,18 +1,17 @@
 ---
 title: Service Bus výstup témat z Azure Stream Analytics
 description: Tento článek popisuje Service Bus témata jako výstup pro Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c578febf088148e9e0496d87b715c953c5bd9d36
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 584d73acf36d22f59fbbcb6dff8b2f53cbc7437d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348368"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014174"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus výstup témat z Azure Stream Analytics
 
@@ -28,14 +27,14 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název zásad tématu |Když vytvoříte Service Bus téma, můžete také vytvořit zásady sdíleného přístupu na kartě **Konfigurace** tématu. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
 | Klíč zásad tématu |Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů Service Bus. |
 | Formát serializace události |Formát serializace pro výstupní data. Podporují se JSON, CSV a Avro. |
-| Kódování |Pokud používáte formát CSV nebo JSON, je nutné zadat kódování. Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8. |
+| Encoding |Pokud používáte formát CSV nebo JSON, je nutné zadat kódování. Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8. |
 | Oddělovač |Platí pouze pro serializaci CSV. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, mezera, tabulátor a svislá čára. |
 | Sloupce vlastností | Nepovinný parametr. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
 | Sloupce systémových vlastností | Nepovinný parametr. Páry klíč-hodnota vlastností systému a odpovídajících názvů sloupců, které je třeba připojit k odchozí zprávě místo datové části. |
 
 Počet oddílů je [založený na Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.
 
-## <a name="partitioning"></a>Dělení
+## <a name="partitioning"></a>Dělení na oddíly
 
 Automaticky se zvolí dělení. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl. Počet výstupních zapisovačí je stejný jako počet oddílů v tématu výstup.
 

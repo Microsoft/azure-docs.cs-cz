@@ -3,16 +3,15 @@ title: Použití referenčních dat pro vyhledávání v Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí referenčních dat vyhledávat nebo korelovat data v návrhu dotazů Azure Stream Analytics úlohy.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722126"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015899"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -82,7 +81,7 @@ Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčn
 3. Referenční datové objekty blob **se** neúčtují podle času poslední změny objektu blob, ale jenom podle času a data zadaného v názvu objektu BLOB pomocí nahrazení {Date} a {Time}.
 3. Abyste se vyhnuli nutnosti vypsat velký počet objektů blob, zvažte odstranění velmi starých objektů blob, pro které se zpracování už nedokončí. Upozorňujeme, že ASA můžou v některých scénářích, jako je restartování, potřebovat znovu zpracovat malou část.
 
-## <a name="azure-sql-database"></a>Databáze Azure SQL
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database referenční data jsou načítána úlohou Stream Analytics a jsou ukládána jako snímek v paměti ke zpracování. Snímek referenčních dat je uložený také v kontejneru v účtu úložiště, který zadáte v nastavení konfigurace. Kontejner se vytvoří automaticky při spuštění úlohy. Pokud se úloha zastaví nebo vstoupí do stavu selhání, automaticky vytvořené kontejnery se odstraní při restartování úlohy.  
 
@@ -102,7 +101,7 @@ Můžete použít [spravovanou instanci SQL Azure](../azure-sql/managed-instance
 |---------|---------|
 |Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
 |Předplatné|Zvolte vaše předplatné.|
-|Database|Azure SQL Database, která obsahuje vaše referenční data. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
+|Databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
 |Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
 |Pravidelně aktualizovat|Tato možnost umožňuje zvolit obnovovací frekvenci. Když zvolíte Zapnuto, budete moct zadat obnovovací frekvenci v DD: HH: MM.|

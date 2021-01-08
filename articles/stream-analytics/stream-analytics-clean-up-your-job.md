@@ -1,19 +1,18 @@
 ---
 title: Vyčištění Azure Stream Analytics úlohy
 description: Tento článek popisuje různé způsoby, jak odstranit úlohy Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31812ac805bd3465b1b735842b45adb372286d66
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022077"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016061"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavení nebo odstranění úlohy Azure Stream Analytics
 
@@ -40,7 +39,7 @@ Po zastavení úlohy dojde ke zrušení zřízení prostředků a zastavení zpr
 >[!WARNING] 
 >Po odstranění nelze úlohu Stream Analytics obnovit.
 
-1. Přihlaste se k webu Azure Portal. 
+1. Přihlaste se k portálu Azure. 
 
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 

@@ -4,16 +4,15 @@ description: Tento článek popisuje, jak nastavit kanál průběžné integrace
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014242"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Vytvoření kanálu CI/CD pro úlohu Stream Analytics pomocí Azure DevOps
 
@@ -39,7 +38,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
 
 1. Vyberte zdrojový typ, týmový projekt a úložiště. Pak vyberte **pokračovat**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Vybrat Azure Stream Analytics projekt":::
 
 1. Na stránce **Zvolit šablonu** vyberte **prázdná úloha**.
 
@@ -47,15 +46,15 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
 
 1. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Do hledání úloh zadejte *npm* a vyberte **npm**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Vybrat úlohu npm":::
 
-2. Zadejte **Zobrazovaný název**úkolu. Změňte možnost **příkazu** na *Custom* a v **příkazu a argumentech**zadejte následující příkaz. Ponechte zbývající výchozí možnosti.
+2. Zadejte **Zobrazovaný název** úkolu. Změňte možnost **příkazu** na *Custom* a v **příkazu a argumentech** zadejte následující příkaz. Ponechte zbývající výchozí možnosti.
 
    ```bash
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Zadání konfigurací pro úlohu npm":::
 
 ## <a name="add-a-build-task"></a>Přidat úlohu sestavení
 
@@ -65,7 +64,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
    |-|-|
    |projectRootPath|Názevvašehoprojektu|
    |outputPath|Výstup|
-   |deployPath|Nasadit|
+   |deployPath|Nasazení|
 
 2. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
 
@@ -77,7 +76,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
 
    Následující obrázek používá jako příklad projekt Stream Analytics Visual Studio Code.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Zadání konfigurací pro úlohu příkazového řádku Visual Studio Code":::
 
 ## <a name="add-a-test-task"></a>Přidat testovací úkol
 
@@ -87,7 +86,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
    |-|-|
    |testPath|Test|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Přidat proměnné kanálu":::
 
 2. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
 
@@ -99,13 +98,13 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Zadat konfigurace pro úlohu příkazového řádku":::
 
 ## <a name="add-a-copy-files-task"></a>Přidat úlohu kopírování souborů
 
 Chcete-li zkopírovat soubor souhrnu testů a Azure Resource Manager soubory šablon do složky artefaktů, je nutné přidat úlohu Kopírovat soubor. 
 
-1. Na stránce **úlohy** vyberte **+** vedle **úlohy agenta 1**. Vyhledejte **soubory pro kopírování**. Pak zadejte následující konfigurace. Přiřazením `**` **obsahu**se zkopírují všechny soubory výsledků testu.
+1. Na stránce **úlohy** vyberte **+** vedle **úlohy agenta 1**. Vyhledejte **soubory pro kopírování**. Pak zadejte následující konfigurace. Přiřazením `**` **obsahu** se zkopírují všechny soubory výsledků testu.
 
    |Parametr|Vstup|
    |-|-|
@@ -116,7 +115,7 @@ Chcete-li zkopírovat soubor souhrnu testů a Azure Resource Manager soubory ša
 
 2. Rozbalte **možnosti ovládacího prvku**. Vyberte **i v případě neúspěchu předchozího úkolu, pokud se sestavení nezrušilo** při **spuštění této úlohy**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Zadejte konfigurace pro úlohu kopírování":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>Přidat úlohu artefaktů sestavení pro publikování
 
@@ -124,7 +123,7 @@ Chcete-li zkopírovat soubor souhrnu testů a Azure Resource Manager soubory ša
 
 2. Rozbalte **možnosti ovládacího prvku**. Vyberte **i v případě neúspěchu předchozího úkolu, pokud se sestavení nezrušilo** při **spuštění této úlohy**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Zadejte konfigurace pro úlohu publikování":::
 
 ## <a name="save-and-run"></a>Uložit a spustit
 
@@ -134,9 +133,9 @@ Až dokončíte přidávání úloh balíčku NPM, příkazového řádku, kopí
 
 Soubor souhrnu testů a soubory šablon Azure Resource Manager lze nalézt v části **Publikováno** .
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Zkontrolovat výsledek sestavení a testu":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Kontrolovat artefakty":::
 
 ## <a name="release-with-azure-pipelines"></a>Vydání pomocí Azure Pipelines
 
@@ -148,9 +147,9 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
 
 2. Vyberte možnost **začít s prázdnou úlohou**.
 
-3. V poli **artefakty** vyberte **+ Přidat artefakt**. V části **zdroj**vyberte kanál sestavení, který jste vytvořili, a vyberte **Přidat**.
+3. V poli **artefakty** vyberte **+ Přidat artefakt**. V části **zdroj** vyberte kanál sestavení, který jste vytvořili, a vyberte **Přidat**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Vytvořit nový kanál Azure":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Zadat artefakt kanálu sestavení":::
 
 4. Změňte název **fáze 1** pro **nasazení úlohy do testovacího prostředí**.
 
@@ -170,7 +169,7 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |Skupina prostředků| Vyberte název testovací skupiny prostředků, která bude obsahovat vaši úlohu Stream Analytics.|
    |Umístění|Vyberte umístění testovací skupiny prostředků.|
    |Umístění šablony| Propojený artefakt|
-   |Šablona| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.json |
+   |Template (Šablona)| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.json |
    |Parametry šablony|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.parameters.json |
    |Přepsání parametrů šablony|-<arm_template_parameter> "hodnotu". Parametry můžete definovat pomocí **proměnných**.|
    |Režim nasazení|Přírůstkový|
@@ -187,7 +186,7 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |Skupina prostředků| Vyberte název skupiny prostředků výroby, která bude obsahovat vaši úlohu Stream Analytics.|
    |Umístění|Vyberte umístění skupiny prostředků výroby.|
    |Umístění šablony| *Propojený artefakt*|
-   |Šablona| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.json |
+   |Template (Šablona)| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.json |
    |Parametry šablony|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-cicd-demo-CI-Deploy/drop/myASAProject.JobTemplate.parameters.json |
    |Přepsání parametrů šablony|-<arm_template_parameter> "hodnotu".|
    |Režim nasazení|Přírůstkový|
@@ -196,7 +195,7 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
 
 Pokud chcete vytvořit vydanou verzi, vyberte **vytvořit vydání** v pravém horním rohu.
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Vytvořit nový kanál Azure":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Vytvoření vydání pomocí Azure Pipelines":::
 
 ## <a name="next-steps"></a>Další kroky
 

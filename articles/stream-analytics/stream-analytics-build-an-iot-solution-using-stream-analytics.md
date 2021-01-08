@@ -1,19 +1,18 @@
 ---
 title: Sestavte řešení IoT pomocí Azure Stream Analytics
 description: Úvodní kurz pro Stream Analytics řešení IoT ve scénáři Tollbooth
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130795"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016146"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavte řešení IoT pomocí Stream Analytics
 
@@ -28,7 +27,7 @@ Po dokončení tohoto řešení můžete provádět následující akce:
 * K vývoji řešení streamování pro zákazníky můžete využít Stream Analytics s jistotou.
 * K řešení problémů použijte prostředí pro monitorování a protokolování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto řešení potřebujete následující předpoklady:
 * [Předplatné Azure](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -43,7 +42,7 @@ Toto řešení pracuje se dvěma datovými proudy. Senzory nainstalované ve vst
 ### <a name="entry-data-stream"></a>Záznam datového streamu
 Datový proud záznamu obsahuje informace o automobilůch při zadávání telefonních stanic. Události data ukončení jsou živé streamování do fronty centra událostí z webové aplikace obsažené v ukázkové aplikaci.
 
-| TollID | EntryTime | LicensePlate | Stav | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
+| TollID | EntryTime | LicensePlate | State | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -59,7 +58,7 @@ Tady je krátký popis sloupců:
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | EntryTime |Datum a čas vstupu vozidla na telefonní kabinu v UTC |
 | LicensePlate |Číslo licenční tabulky vozidla |
-| Stav |Stav v USA |
+| State |Stav v USA |
 | Značka |Výrobce automobilu |
 | Model |Číslo modelu automobilu |
 | VehicleType |1 pro osobní vozidla nebo 2 pro komerční vozidla |
@@ -134,7 +133,7 @@ Existuje několik prostředků, které lze snadno nasadit ve skupině prostředk
 
 9. Vyberte **koupit** a nasaďte vzorovou šablonu.
 
-10. Po chvíli se zobrazí oznámení o potvrzení **nasazení bylo úspěšné** .
+10. Po chvíli se zobrazí oznámení o potvrzení **nasazení bylo úspěšné**.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Kontrola prostředků Azure Stream Analytics TollApp
 
@@ -176,20 +175,20 @@ Existuje několik prostředků, které lze snadno nasadit ve skupině prostředk
 ## <a name="start-the-tollapp-streaming-job"></a>Spuštění úlohy streamování TollApp
 Pomocí těchto kroků spusťte úlohu streamování:
 
-1. Na stránce **Přehled** úlohy vyberte **Spustit** .
+1. Na stránce **Přehled** úlohy vyberte **Spustit**.
 
-2. V podokně **Spustit úlohu** vyberte **nyní** .
+2. V podokně **Spustit úlohu** vyberte **nyní**.
 
 3. Po chvíli spuštění úlohy na stránce **Přehled** úlohy streamování Zobrazte graf **monitorování** . Graf by měl obsahovat několik tisíc vstupních událostí a desítky výstupních událostí.
 
 ## <a name="review-the-cosmosdb-output-data"></a>Kontrola výstupních dat CosmosDB
 1. Vyhledejte skupinu prostředků, která obsahuje prostředky TollApp.
 
-2. Vyberte účet Azure Cosmos DB se vzorem názvu **tollapp \<random\> -Cosmos** .
+2. Vyberte účet Azure Cosmos DB se vzorem názvu **tollapp \<random\> -Cosmos**.
 
 3. Vyberte záhlaví **Průzkumník dat** pro otevření stránky Průzkumník dat.
 
-4. Rozbalte dokumenty **tollAppDatabase**  >  **tollAppCollection**  >  **Documents** .
+4. Rozbalte dokumenty **tollAppDatabase**  >  **tollAppCollection**  >  .
 
 5. V seznamu ID se několik dokumentů zobrazuje až po zpřístupnění výstupu.
 
@@ -214,7 +213,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>Aktualizace syntaxe dotazu úlohy streamování TollApp:
 
-1. Na stránce **Přehled** úlohy vyberte **zastavit** .
+1. Na stránce **Přehled** úlohy vyberte **zastavit**.
 
 2. Chvíli počkejte a oznámení, že se úloha zastavila.
 
@@ -224,9 +223,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. Vyberte **Uložit** a dotaz uložte. Potvrďte změny uložením **Ano** .
 
-6. Na stránce **Přehled** úlohy vyberte **Spustit** .
+6. Na stránce **Přehled** úlohy vyberte **Spustit**.
 
-7. V podokně **Spustit úlohu** vyberte **nyní** .
+7. V podokně **Spustit úlohu** vyberte **nyní**.
 
 ### <a name="review-the-total-time-in-the-output"></a>Zkontrolujte celkový čas ve výstupu.
 Zopakováním kroků v předchozí části zkontrolujete výstupní data CosmosDB z úlohy streamování. Projděte si nejnovější dokumenty JSON.
@@ -301,9 +300,9 @@ Postup při horizontálním navýšení kapacity úlohy streamování na více j
 
 2. Aktualizujte syntaxi dotazu na stránce **< > dotaz** a uložte změny.
 
-3. V části konfigurovat záhlaví v úloze streamování vyberte možnost **škálovat** .
+3. V části konfigurovat záhlaví v úloze streamování vyberte možnost **škálovat**.
 
-4. Posuňte posuvník **jednotky streamování** od 1 do 6. Jednotky streamování definují množství výpočetní výkon, který může úloha přijmout. Vyberte **Uložit** .
+4. Posuňte posuvník **jednotky streamování** od 1 do 6. Jednotky streamování definují množství výpočetní výkon, který může úloha přijmout. Vyberte **Uložit**.
 
 5. **Spusťte** úlohu streamování, abyste ukázali dodatečné měřítko. Azure Stream Analytics distribuuje práci mezi více výpočetních prostředků a dosahuje lepší propustnosti, rozdělit práci mezi prostředky pomocí sloupce určeného v klauzuli PARTITION BY.
 
@@ -319,7 +318,7 @@ K **protokolům aktivit** můžete přistupovat také z oblasti **Nastavení** �
 
 2. Vyhledejte skupinu prostředků, která obsahuje osm prostředků souvisejících se šablonou TollApp.
 
-3. Vyberte **Odstranit skupinu prostředků** . Zadáním názvu skupiny prostředků potvrďte odstranění.
+3. Vyberte **Odstranit skupinu prostředků**. Zadáním názvu skupiny prostředků potvrďte odstranění.
 
 ## <a name="conclusion"></a>Závěr
 Toto řešení vás zavedlo ke službě Azure Stream Analytics. Ukázala, jak nakonfigurovat vstupy a výstupy pro úlohu Stream Analytics. Pomocí scénáře s daty o telefonních číslech řešení bylo vysvětleno běžné typy problémů, které vznikají v prostoru dat v pohybu, a jak je lze vyřešit pomocí jednoduchých dotazů typu SQL, které jsou v Azure Stream Analytics. Řešení popisuje konstrukce rozšíření SQL pro práci s dočasnými daty. Ukázal, jak spojit datové proudy, jak rozšířit datový proud pomocí statických referenčních dat a jak škálovat dotaz, abyste dosáhli vyšší propustnosti.

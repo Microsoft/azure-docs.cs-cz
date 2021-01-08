@@ -2,13 +2,13 @@
 title: Ověřování doručování událostí do obslužných rutin událostí (Azure Event Grid)
 description: Tento článek popisuje různé způsoby ověřování doručování do obslužných rutin událostí v Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460639"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015534"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Ověřování doručování událostí do obslužných rutin událostí (Azure Event Grid)
 Tento článek poskytuje informace o ověřování doručování událostí do obslužných rutin událostí. Také ukazuje, jak zabezpečit koncové body Webhooku, které se používají k přijímání událostí z Event Grid pomocí Azure Active Directory (Azure AD) nebo sdíleného tajného klíče.
@@ -41,6 +41,9 @@ Další informace o doručování událostí do webhooků najdete v tématu [dor
 
 > [!IMPORTANT]
 Azure Event Grid podporuje pouze koncové body Webhooku **protokolu HTTPS** . 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
+Pokud už jste obeznámeni s Event Grid, můžete znát metodu handshake ověřování koncového bodu, abyste zabránili zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody **http** . Další informace najdete v tématu [Webhooky HTTP 1,1 pro doručování událostí – verze 1,0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Když pro výstup použijete schéma CloudEvents, Event Grid používá místo mechanismu události ověřování Event Grid ochranu proti zneužívání CloudEvents v 1.0. Další informace najdete v tématu [použití schématu CloudEvents v 1.0 s Event Grid](cloudevents-schema.md). 
 
 
 ## <a name="next-steps"></a>Další kroky

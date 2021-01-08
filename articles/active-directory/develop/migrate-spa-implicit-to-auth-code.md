@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673588"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014735"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
 
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) v 2.0 přináší podporu toku autorizačního kódu s PKCE a CORS pro jednostránkové aplikace na platformě Microsoft identity. Postupujte podle kroků v následujících částech a migrujte svou aplikaci MSAL.js 1. x pomocí implicitního udělení MSAL.js 2.0 + (dále *2. x* ) a toku kódu ověřování.
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) v 2.0 přináší podporu toku autorizačního kódu s PKCE a CORS pro jednostránkové aplikace na platformě Microsoft identity. Postupujte podle kroků v následujících částech a migrujte svou aplikaci MSAL.js 1. x pomocí implicitního udělení MSAL.js 2.0 + (dále *2. x*) a toku kódu ověřování.
 
 MSAL.js 2. x vylepšuje MSAL.js 1. x tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js 2. **x nepodporuje implicitní** tok.
 
@@ -30,7 +30,7 @@ MSAL.js 2. x vylepšuje MSAL.js 1. x tím, že podporuje tok autorizačního kó
 Chcete-li aktualizovat aplikaci na MSAL.js 2. x a tok kódu ověřování, existují tři hlavní kroky:
 
 1. Přepněte identifikátor URI přesměrování [Registrace aplikace](#switch-redirect-uris-to-spa-platform) z **webové** platformy na **jednoduchou aplikační** platformu.
-1. Aktualizujte [kód](#switch-redirect-uris-to-spa-platform) z MSAL.js 1. x na **2. x** .
+1. Aktualizujte [kód](#switch-redirect-uris-to-spa-platform) z MSAL.js 1. x na **2. x**.
 1. Zakáže [implicitní udělení](#disable-implicit-grant-settings) v registraci vaší aplikace, když jsou všechny aplikace sdílející registraci aktualizované tak, aby MSAL.js 2. x a tok kódu ověřování.
 
 V následujících částech jsou podrobněji popsány jednotlivé kroky.
@@ -41,18 +41,18 @@ Pokud chcete pro své aplikace nadále používat stávající registraci aplika
 
 Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identifikátorů URI přesměrování **webové** platformy, použijte následující postup:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte svého tenanta **Azure Active Directory** .
-1. V **Registrace aplikací** vyberte svou aplikaci a pak **ověřování** .
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> a vyberte svého tenanta **Azure Active Directory** .
+1. V **Registrace aplikací** vyberte svou aplikaci a pak **ověřování**.
 1. Na dlaždici **Webová** platforma v části **identifikátory URI pro přesměrování** vyberte informační zpráva s oznámením, že byste měli migrovat identifikátory URI.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
-1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL.js 2. x, a pak vyberte **Konfigurovat** .
+1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL.js 2. x, a pak vyberte **Konfigurovat**.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="V podokně hesla vyberte podokno identifikátor URI přesměrování v Azure Portal":::
 
 Tyto identifikátory URI pro přesměrování by se teď měly zobrazit na dlaždici aplikační platforma s **jednou stránkou** , která ukazuje, že pro tyto identifikátory URI je povolená podpora CORS s tokem autorizačního kódu a PKCE.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Dlaždice jednostránkové aplikace v registraci aplikace v Azure Portal":::
 
 Místo aktualizace identifikátorů URI přesměrování v existující registraci můžete také [vytvořit novou registraci aplikace](scenario-spa-app-registration.md) .
 

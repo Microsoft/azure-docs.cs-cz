@@ -1,18 +1,17 @@
 ---
 title: Azure Data Lake Storage výstup 1. generace z Azure Stream Analytics
 description: Tento článek popisuje Azure Data Lake Storage Gen 1 jako možnost výstupu pro Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0445126046a6f4140dd68b2969221b196b8bef8b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 629a154c89ad301a3e200b1d6cd04c62057d9959
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740449"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016537"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Data Lake Storage výstup 1. generace z Azure Stream Analytics
 
@@ -38,7 +37,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro kon
 | Formát | Platí pouze pro serializaci JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. Pokud vyberete možnost **oddělený řádek**, bude JSON číst jeden objekt současně. Celý obsah samotný by nepředstavoval platný formát JSON.  **Pole** určuje, že výstup je formátován jako pole objektů JSON. Toto pole je uzavřeno pouze v případě, že se úloha zastaví nebo Stream Analytics přesunula k následujícímu časovému intervalu. Obecně je vhodnější použít JSON oddělený řádkem, protože nevyžaduje žádné speciální zpracování, pokud je výstupní soubor stále zapisován do zápisu.|
 | Režim ověřování | Přístup k účtu Data Lake Storage můžete autorizovat pomocí [spravované identity](stream-analytics-managed-identities-adls.md) (Preview) nebo tokenu uživatele. Po udělení přístupu můžete přístup odvolat změnou hesla uživatelského účtu, odstraněním Data Lake Storageho výstupu této úlohy nebo odstraněním úlohy Stream Analytics. |
 
-## <a name="partitioning"></a>Dělení
+## <a name="partitioning"></a>Dělení na oddíly
 
 Pro klíč oddílu použijte tokeny {Date} a {Time} ve vzoru předpony cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. Pro formát času použijte HH. Počet zapisovačů výstupu následuje za vstupními oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md).
 

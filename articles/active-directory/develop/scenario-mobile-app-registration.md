@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614893"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014718"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -83,7 +83,7 @@ Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jmé
 
 Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Postupujte následovně:
 
-1. Pořád v [Azure Portal](https://portal.azure.com)vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
+1. Pořád v <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
 1. V části **Upřesnit nastavení**  >  **Povolit toky veřejného klienta**  >  **Povolte následující toky mobilních a desktopových toků:** vyberte **Ano**.
 
    :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Povolit nastavení veřejného klienta v podokně ověřování v Azure Portal":::

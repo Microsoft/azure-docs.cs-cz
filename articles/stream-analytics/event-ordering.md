@@ -1,18 +1,17 @@
 ---
 title: Konfigurace zásad řazení událostí pro Azure Stream Analytics
 description: Tento článek popisuje, jak přejít na téma Konfigurace nastavení rovnoměrného řazení v Stream Analytics
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130659"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014291"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace zásad řazení událostí pro Azure Stream Analytics
 
@@ -20,9 +19,9 @@ Tento článek popisuje, jak nastavit a použít zpožděné a neuspořádané z
 
 ## <a name="event-time-and-arrival-time"></a>Čas události a čas přijetí
 
-Vaše úloha Stream Analytics může zpracovávat události na základě času *události* nebo *doby doručení* . **Událost/čas aplikace** je časové razítko přítomné v datové části události (při generování události). **Doba doručení** je časové razítko, kdy se událost přijala na vstupním zdroji (Event Hubs/IoT Hub/BLOB Storage). 
+Vaše úloha Stream Analytics může zpracovávat události na základě času *události* nebo *doby doručení*. **Událost/čas aplikace** je časové razítko přítomné v datové části události (při generování události). **Doba doručení** je časové razítko, kdy se událost přijala na vstupním zdroji (Event Hubs/IoT Hub/BLOB Storage). 
 
-Ve výchozím nastavení Stream Analytics zpracovává události podle *času doručení* , ale můžete zvolit zpracování událostí podle *času události* pomocí klauzule [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) v dotazu. Zásady opožděného doručení a navýšení jsou platné pouze v případě, že zpracováváte události podle času události. Při konfiguraci těchto nastavení berte ohled na požadavky vašeho scénáře z hlediska latence a správnosti. 
+Ve výchozím nastavení Stream Analytics zpracovává události podle *času doručení*, ale můžete zvolit zpracování událostí podle *času události* pomocí klauzule [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) v dotazu. Zásady opožděného doručení a navýšení jsou platné pouze v případě, že zpracováváte události podle času události. Při konfiguraci těchto nastavení berte ohled na požadavky vašeho scénáře z hlediska latence a správnosti. 
 
 ## <a name="what-is-late-arrival-policy"></a>Co jsou zásady pozdního přijetí?
 
@@ -50,7 +49,7 @@ Podíváme se na příklad těchto zásad v tématu Action (akce).
 
 ## <a name="can-these-settings-delay-output-of-my-job"></a>Můžou tato nastavení zpozdit výstup mé úlohy? 
 
-Ano. Ve výchozím nastavení je zásada mimo pořadí nastavená na hodnotu nula (00 minut a 00 sekund). Změníte-li výchozí hodnotu, je první výstup úlohy zpožděn touto hodnotou (nebo vyšší). 
+Yes. Ve výchozím nastavení je zásada mimo pořadí nastavená na hodnotu nula (00 minut a 00 sekund). Změníte-li výchozí hodnotu, je první výstup úlohy zpožděn touto hodnotou (nebo vyšší). 
 
 Pokud některý z oddílů vašich vstupů nepřijímá události, měli byste očekávat, že se výstup bude zpozdit hodnotou zásady pozdního doručení. Informace o tom, proč najdete níže v části věnované chybám pro InputPartition. 
 
@@ -79,7 +78,7 @@ Tato zpráva vám informuje o tom, že minimálně jeden oddíl ve vstupu je pr�
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Proč se mi zobrazuje zpoždění 5 sekund, i když je zásada zpožděného doručení nastavená na 0?
 K tomu dojde, když je vstupní oddíl, který nikdy neobdržel žádný vstup. Pokud chcete toto chování ověřit, můžete ověřit vstupní metriky podle oddílu. 
 
-Pokud oddíl neobsahuje žádná data pro více než nakonfigurovanou prahovou hodnotu pro pozdní doručení, Stream Analytics bude v části požadavky na řazení událostí popsána časová razítka aplikace. To vyžaduje odhadovanou dobu doručení. Pokud oddíl nikdy nemá žádná data, Stream Analytics odhaduje čas doručení v *místním čase – 5 sekund* . Z důvodu těchto oddílů, které nikdy neobsahovaly žádná data, by mohla zobrazit zpoždění meze 5 sekund.  
+Pokud oddíl neobsahuje žádná data pro více než nakonfigurovanou prahovou hodnotu pro pozdní doručení, Stream Analytics bude v části požadavky na řazení událostí popsána časová razítka aplikace. To vyžaduje odhadovanou dobu doručení. Pokud oddíl nikdy nemá žádná data, Stream Analytics odhaduje čas doručení v *místním čase – 5 sekund*. Z důvodu těchto oddílů, které nikdy neobsahovaly žádná data, by mohla zobrazit zpoždění meze 5 sekund.  
 
 ## <a name="next-steps"></a>Další kroky
 * [Důležité informace o práci s časem](stream-analytics-time-handling.md)

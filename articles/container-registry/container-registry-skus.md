@@ -1,14 +1,14 @@
 ---
 title: Úrovně a funkce služby registru
-description: Přečtěte si o funkcích a omezeních úrovní služeb Basic, Standard a Premium (SKU) Azure Container Registry.
+description: Přečtěte si o funkcích a omezeních (kvótách) na úrovních služeb Basic, Standard a Premium (SKU) Azure Container Registry.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048470"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015656"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry úrovní služeb
 
@@ -30,7 +30,9 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezeních úrovně sl
 
 ## <a name="changing-tiers"></a>Změna úrovní
 
-Vrstvu služby registru můžete změnit pomocí rozhraní příkazového řádku Azure CLI nebo v Azure Portal. Mezi vrstvou se můžete pohybovat volně, dokud úroveň, na kterou přepínáte, má požadovanou maximální kapacitu úložiště. 
+Vrstvu služby registru můžete změnit pomocí rozhraní příkazového řádku Azure CLI nebo v Azure Portal. Mezi vrstvami se můžete pohybovat volně, pokud úroveň, na kterou přepínáte, má požadovanou maximální kapacitu úložiště. 
+
+Při přesunu mezi úrovněmi služeb nedochází k žádným výpadkům registru ani vlivům na operace registru.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -42,7 +44,7 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>portál Azure
 
-V **přehledu** registru kontejnerů v Azure Portal vyberte **aktualizovat**a potom z rozevíracího seznamu SKU vyberte novou **skladovou** položku.
+V **přehledu** registru kontejnerů v Azure Portal vyberte **aktualizovat** a potom z rozevíracího seznamu SKU vyberte novou **skladovou** položku.
 
 ![Aktualizace SKU registru kontejneru v Azure Portal][update-registry-sku]
 

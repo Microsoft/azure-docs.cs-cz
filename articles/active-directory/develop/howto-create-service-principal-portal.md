@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366152"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014939"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -53,7 +53,7 @@ Ve vašem předplatném Azure musí mít váš účet `Microsoft.Authorization/*
 
 Ověření oprávnění k předplatnému:
 
-1. Vyhledejte a vyberte **předplatná**nebo vyberte **předplatná** na **domovské** stránce.
+1. Vyhledejte a vyberte **předplatná** nebo vyberte **předplatná** na **domovské** stránce.
 
    ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -75,11 +75,11 @@ Ověření oprávnění k předplatnému:
 
 Pojďme přejít přímo na vytvoření identity. Pokud narazíte na problém, zkontrolujte [požadovaná oprávnění](#permissions-required-for-registering-an-app) a ujistěte se, že váš účet může vytvořit identitu.
 
-1. Přihlaste se ke svému účtu Azure prostřednictvím [Azure Portal](https://portal.azure.com).
+1. Přihlaste se ke svému účtu Azure <a href="https://portal.azure.com/" target="_blank">prostřednictvím <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Vyberte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
-1. Pojmenujte aplikaci. Vyberte podporovaný typ účtu, který určuje, kdo může aplikaci používat. V části **identifikátor URI pro přesměrování**vyberte **Web** pro typ aplikace, kterou chcete vytvořit. Zadejte identifikátor URI, na který se přístupový token pošle. Nemůžete vytvořit pověření pro [nativní aplikaci](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatizovanou aplikaci. Po nastavení hodnot vyberte **Registrovat**.
+1. Pojmenujte aplikaci. Vyberte podporovaný typ účtu, který určuje, kdo může aplikaci používat. V části **identifikátor URI pro přesměrování** vyberte **Web** pro typ aplikace, kterou chcete vytvořit. Zadejte identifikátor URI, na který se přístupový token pošle. Nemůžete vytvořit pověření pro [nativní aplikaci](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatizovanou aplikaci. Po nastavení hodnot vyberte **Registrovat**.
 
    ![Zadejte název vaší aplikace.](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -91,7 +91,7 @@ Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte 
 
 Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role *Čtenář* pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
 
-1. V Azure Portal vyberte úroveň rozsahu, do kterého chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyhledejte a vyberte **odběry**nebo vyberte **předplatná** na **domovské** stránce.
+1. V Azure Portal vyberte úroveň rozsahu, do kterého chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyhledejte a vyberte **odběry** nebo vyberte **předplatná** na **domovské** stránce.
 
    ![Přiřaďte například roli v oboru předplatného.](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -155,7 +155,7 @@ Postup nahrání certifikátu:
 
 1. Vyberte **Azure Active Directory**.
 1. V **Registrace aplikací** ve službě Azure AD vyberte svou aplikaci.
-1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **certifikáty & tajných** kódů.
 1. Vyberte **nahrát certifikát** a vyberte certifikát (existující certifikát nebo certifikát podepsaný svým držitelem).
 
     ![Vyberte nahrát certifikát a vyberte ten, který chcete přidat.](./media/howto-create-service-principal-portal/upload-cert.png)
@@ -170,7 +170,7 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
 
 1. Vyberte **Azure Active Directory**.
 1. V **Registrace aplikací** ve službě Azure AD vyberte svou aplikaci.
-1. Vyberte **certifikáty & tajných**kódů.
+1. Vyberte **certifikáty & tajných** kódů.
 1. Vyberte **Client tajných klíčů – > nový tajný klíč klienta**.
 1. Zadejte popis tajného kódu a dobu trvání. Až budete hotovi, vyberte **Přidat**.
 
@@ -181,8 +181,8 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
 ## <a name="configure-access-policies-on-resources"></a>Konfigurace zásad přístupu pro prostředky
 Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění k prostředkům, které vaše aplikace potřebuje k přístupu. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.
-1. Vyberte **Přidat zásady přístupu**a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.
+1. V <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.
+1. Vyberte **Přidat zásady přístupu** a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.
 1. Vyberte **Přidat** a přidejte zásadu přístupu a potom **uložte** změny, které chcete potvrdit.
     ![Přidat zásady přístupu](./media/howto-create-service-principal-portal/add-access-policy.png)
 
@@ -190,4 +190,4 @@ Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění 
 * Naučte se [používat Azure PowerShell k vytvoření instančního objektu](howto-authenticate-service-principal-powershell.md).
 * Další informace o zadávání zásad zabezpečení najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Seznam dostupných akcí, které mohou uživatelé udělit nebo odepřít, najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md).
-* Informace o práci s registracemi aplikací pomocí **Microsoft Graph**najdete v referenčních informacích k rozhraní API pro [aplikace](/graph/api/resources/application) .
+* Informace o práci s registracemi aplikací pomocí **Microsoft Graph** najdete v referenčních informacích k rozhraní API pro [aplikace](/graph/api/resources/application) .

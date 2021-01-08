@@ -3,23 +3,22 @@ title: Rychlý Start k vytvoření clusteru Azure Stream Analytics
 description: Naučte se vytvořit cluster Azure Stream Analytics.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946886"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016554"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Azure Stream Analytics pomocí Azure Portal
 
 Pomocí Azure Portal vytvořte cluster Azure Stream Analytics. [Cluster Stream Analytics](cluster-overview.md) je nasazení v jednom tenantovi, které se dá použít pro komplexní a náročné případy použití streamování. V clusteru Stream Analytics můžete spustit více Stream Analytics úloh.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Dokončení [rychlého startu: vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md).
@@ -28,7 +27,7 @@ Pomocí Azure Portal vytvořte cluster Azure Stream Analytics. [Cluster Stream A
 
 V této části vytvoříte prostředek clusteru Stream Analytics.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek**. Do *vyhledávacího pole Hledat na Marketplace* zadejte a vyberte **Stream Analytics cluster**. Pak vyberte **Přidat**.
 
@@ -39,7 +38,7 @@ V této části vytvoříte prostředek clusteru Stream Analytics.
    |Nastavení|Hodnota|Popis |
    |---|---|---|
    |Předplatné|Název předplatného|Vyberte předplatné Azure, které chcete použít pro tento cluster Stream Analytics. |
-   |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové**a zadejte jedinečný název nové skupiny prostředků. |
+   |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové** a zadejte jedinečný název nové skupiny prostředků. |
    |Název clusteru|Jedinečný název|Zadejte název, který identifikuje cluster Stream Analytics.|
    |Umístění|Oblast nejbližší vašim zdrojům dat a jímka|Vyberte geografické umístění pro hostování Stream Analyticsho clusteru. Použijte umístění, které je nejblíže vašim zdrojům dat a jímka pro analýzu s nízkou latencí.|
    |Kapacita jednotky streamování|36 až 216 |Určete velikost clusteru tím, že vydáte odhad počtu Stream Analytics úlohy, kterou plánujete spustit, a celkovou službu SUs, kterou bude úloha vyžadovat. Můžete začít s 36 SUs a později škálovat nebo snížit velikost podle potřeby.|

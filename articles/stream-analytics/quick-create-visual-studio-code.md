@@ -2,17 +2,17 @@
 title: Rychlý Start – vytvoření úlohy Azure Stream Analytics v Visual Studio Code
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením Stream Analytics úlohy, konfigurací vstupů a výstupů a definováním dotazu Visual Studio Code.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: f53ff85dd118774b86a0ec25c89f912798a6418d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125848"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014607"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code (Preview)
 
@@ -41,7 +41,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 ## <a name="activate-the-azure-stream-analytics-tools-extension"></a>Aktivace rozšíření Azure Stream Analytics nástrojů
 
-1. Na řádku Visual Studio Code aktivity vyberte ikonu **Azure** . V části **Stream Analytics** na bočním panelu vyberte **Přihlásit se k Azure** .
+1. Na řádku Visual Studio Code aktivity vyberte ikonu **Azure** . V části **Stream Analytics** na bočním panelu vyberte **Přihlásit se k Azure**.
 
    ![Přihlaste se k Azure v Visual Studio Code](./media/quick-create-visual-studio-code/azure-sign-in.png)
 
@@ -57,7 +57,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub** .
+2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
 
 3. V podokně **IoT Hub** zadejte následující informace:
 
@@ -70,15 +70,15 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
    ![Vytvoření centra IoT](./media/quick-create-visual-studio-code/create-iot-hub.png)
 
-4. Vyberte **Další: nastavit velikost a měřítko** .
+4. Vyberte **Další: nastavit velikost a měřítko**.
 
-5. Vytvořte výběr pro **cenovou a škálnou úroveň** . Pro tento rychlý Start vyberte úroveň **F1** , pokud je stále k dispozici ve vašem předplatném. Pokud úroveň Free není k dispozici, vyberte nejnižší dostupnou úroveň. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+5. Vytvořte výběr pro **cenovou a škálnou úroveň**. Pro tento rychlý Start vyberte úroveň **F1** , pokud je stále k dispozici ve vašem předplatném. Pokud úroveň Free není k dispozici, vyberte nejnižší dostupnou úroveň. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    ![Velikost a škálování centra IoT](./media/quick-create-visual-studio-code/iot-hub-size-and-scale.png)
 
-6. Vyberte **Zkontrolovat a vytvořit** . Zkontrolujte informace o službě IoT Hub a vyberte **vytvořit** . Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **oznámení** .
+6. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte informace o službě IoT Hub a vyberte **vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **oznámení** .
 
-7. V navigační nabídce centra IoT vyberte **Přidat** v části **zařízení IoT** . Přidejte ID pro **ID zařízení** a vyberte **Uložit** .
+7. V navigační nabídce centra IoT vyberte **Přidat** v části **zařízení IoT**. Přidejte ID pro **ID zařízení** a vyberte **Uložit**.
 
    ![Přidání zařízení do služby IoT Hub](./media/quick-create-visual-studio-code/add-device-iot-hub.png)
 
@@ -98,7 +98,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
 ## <a name="create-blob-storage"></a>Vytvoření úložiště objektů BLOB
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** úložiště  >  **Storage**  >  **účet** úložiště.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** úložiště  >    >  **účet** úložiště.
 
 2. V podokně **vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Vyberte stejné umístění a skupinu prostředků jako centrum IoT, které jste vytvořili. Pak vyberte **zkontrolovat + vytvořit** a vytvořte účet.
 
@@ -108,28 +108,28 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
    ![Přehled účtu úložiště](./media/quick-create-visual-studio-code/blob-storage.png)
 
-4. Na stránce **BLOB Service** vyberte **kontejner** a zadejte název svého kontejneru, například **container1** . Ponechte **úroveň veřejného přístupu** jako **soukromou (bez anonymního přístupu)** a vyberte **OK** .
+4. Na stránce **BLOB Service** vyberte **kontejner** a zadejte název svého kontejneru, například **container1**. Ponechte **úroveň veřejného přístupu** jako **soukromou (bez anonymního přístupu)** a vyberte **OK**.
 
    ![Vytvoření kontejneru objektů blob](./media/quick-create-visual-studio-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Vytvoření projektu Stream Analytics
 
-1. V Visual Studio Code vyberte **CTRL + SHIFT + P** a otevřete paletu příkazů. Pak zadejte **ASA** a vyberte **ASA: vytvořit nový projekt** .
+1. V Visual Studio Code vyberte **CTRL + SHIFT + P** a otevřete paletu příkazů. Pak zadejte **ASA** a vyberte **ASA: vytvořit nový projekt**.
 
    ![Vytvoření nového projektu](./media/quick-create-visual-studio-code/create-new-project.png)
 
-2. Zadejte název projektu, například **myASAproj** , a vyberte složku pro svůj projekt.
+2. Zadejte název projektu, například **myASAproj**, a vyberte složku pro svůj projekt.
 
     ![Vytvořit název projektu](./media/quick-create-visual-studio-code/create-project-name.png)
 
-3. Nový projekt se přidá do vašeho pracovního prostoru. Stream Analytics projekt se skládá ze tří složek: **vstupy** , **výstupy** a **funkce** . Má také skript dotazu **(*. asaql)** , **JobConfig.jsv** souboru a **asaproj.jsv** konfiguračním souboru.
+3. Nový projekt se přidá do vašeho pracovního prostoru. Stream Analytics projekt se skládá ze tří složek: **vstupy**, **výstupy** a **funkce**. Má také skript dotazu **(*. asaql)**, **JobConfig.jsv** souboru a **asaproj.jsv** konfiguračním souboru.
 
     **asaproj.jsv** konfiguračním souboru obsahuje informace o vstupech, výstupech a konfiguračních souborech úloh potřebných k odeslání úlohy Stream Analytics do Azure.
 
     ![Stream Analytics soubory projektu v Visual Studio Code](./media/quick-create-visual-studio-code/asa-project-files.png)
 
 > [!Note]
-> Když přidáváte vstupy a výstupy z palety příkazů, přidají se k **asaproj.js** automaticky odpovídající cesty. Pokud přidáváte nebo odebíráte vstupy nebo výstupy přímo na disku, musíte je ručně přidat nebo odebrat z **asaproj.jsna** . Vstupy a výstupy si můžete umístit na jednom místě a pak je odkazovat v různých úlohách zadáním cest v každé **asaproj.js** souboru.
+> Když přidáváte vstupy a výstupy z palety příkazů, přidají se k **asaproj.js** automaticky odpovídající cesty. Pokud přidáváte nebo odebíráte vstupy nebo výstupy přímo na disku, musíte je ručně přidat nebo odebrat z **asaproj.jsna**. Vstupy a výstupy si můžete umístit na jednom místě a pak je odkazovat v různých úlohách zadáním cest v každé **asaproj.js** souboru.
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
@@ -150,7 +150,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
     ![Přidat vstup ze složky Inputs](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-    Nebo vyberte **CTRL + SHIFT + P** a otevřete paletu příkazů a zadejte **ASA: přidat vstup** .
+    Nebo vyberte **CTRL + SHIFT + P** a otevřete paletu příkazů a zadejte **ASA: přidat vstup**.
 
    ![Přidat vstup Stream Analytics v Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -158,7 +158,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
 
    ![Jako vstupní možnost vyberte IoT Hub.](./media/quick-create-visual-studio-code/iot-hub.png)
 
-3. Pokud jste přidali vstup z palety příkazů, vyberte Stream Analytics skript dotazu, který bude používat vstup. Měl by se automaticky naplnit cestou k souboru **myASAproj. asaql** .
+3. Pokud jste přidali vstup z palety příkazů, vyberte Stream Analytics skript dotazu, který bude používat vstup. Měl by se automaticky naplnit cestou k souboru **myASAproj. asaql**.
 
    ![Vyberte Stream Analytics skript v Visual Studio Code](./media/quick-create-visual-studio-code/asa-script.png)
 
@@ -188,7 +188,7 @@ V horním řádku vyberte možnost **Zobrazit data** v **IoTHub1.js** . Někter�
 
 ## <a name="define-an-output"></a>Definování výstupu
 
-1. Kliknutím na **CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA: Přidat výstup** .
+1. Kliknutím na **CTRL + SHIFT + P** otevřete paletu příkazů. Pak zadejte **ASA: Přidat výstup**.
 
    ![Přidat výstup Stream Analytics v Visual Studio Code](./media/quick-create-visual-studio-code/add-output.png)
 
@@ -219,7 +219,7 @@ Existují dva způsoby, jak spustit kompilaci skriptu:
 
    ![Použití palety příkazů Visual Studio Code ke kompilaci skriptu](./media/quick-create-visual-studio-code/compile-script1.png)
 
-- Klikněte pravým tlačítkem na skript a vyberte **ASA: kompilovat skript** .
+- Klikněte pravým tlačítkem na skript a vyberte **ASA: kompilovat skript**.
 
     ![Klikněte pravým tlačítkem na skript Stream Analytics ke kompilaci.](./media/quick-create-visual-studio-code/compile-script2.png)
 
@@ -229,25 +229,25 @@ Po kompilaci můžete najít dvě vygenerované Azure Resource Manager šablony 
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>Odeslání úlohy Stream Analytics do Azure
 
-1. V okně Editor skriptů ve vašem skriptu dotazu vyberte **Odeslat do Azure** .
+1. V okně Editor skriptů ve vašem skriptu dotazu vyberte **Odeslat do Azure**.
 
    ![Výběr z textu vašich předplatných v editoru skriptu](./media/quick-create-visual-studio-code/submit-job.png)
 
 2. V místním seznamu vyberte své předplatné.
 
-3. Zvolte **Vybrat úlohu** . Pak zvolte **vytvořit novou úlohu** .
+3. Zvolte **Vybrat úlohu**. Pak zvolte **vytvořit novou úlohu**.
 
-4. Zadejte název své úlohy, **myASAjob** . Pak podle pokynů zvolte skupinu prostředků a její umístění.
+4. Zadejte název své úlohy, **myASAjob**. Pak podle pokynů zvolte skupinu prostředků a její umístění.
 
-5. Vyberte **Odeslat do Azure** . Protokoly najdete v okně výstup. 
+5. Vyberte **Odeslat do Azure**. Protokoly najdete v okně výstup. 
 
-6. Když je vaše úloha vytvořená, můžete ji zobrazit v **průzkumníkovi Stream Analytics** .
+6. Když je vaše úloha vytvořená, můžete ji zobrazit v **průzkumníkovi Stream Analytics**.
 
     ![Uvedená úloha v Průzkumníkovi Stream Analytics](./media/quick-create-visual-studio-code/list-job.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-1. Otevřete **Stream Analytics Explorer** v Visual Studio Code a najděte svoji úlohu **myASAJob** .
+1. Otevřete **Stream Analytics Explorer** v Visual Studio Code a najděte svoji úlohu **myASAJob**.
 
 2. Klikněte pravým tlačítkem myši na název úlohy. Pak v místní nabídce vyberte možnost **Spustit** .
 
@@ -255,7 +255,7 @@ Po kompilaci můžete najít dvě vygenerované Azure Resource Manager šablony 
 
 3. V místním okně vyberte **nyní** a spusťte úlohu.
 
-4. Všimněte si, že stav úlohy se změnil na **spuštěno** . Kliknutím pravým tlačítkem myši na název úlohy a výběrem **Otevřít zobrazení úlohy na portálu** Zobrazte metriky vstupní a výstupní události. Tato akce může trvat několik minut.
+4. Všimněte si, že stav úlohy se změnil na **spuštěno**. Kliknutím pravým tlačítkem myši na název úlohy a výběrem **Otevřít zobrazení úlohy na portálu** Zobrazte metriky vstupní a výstupní události. Tato akce může trvat několik minut.
 
 5. Chcete-li zobrazit výsledky, otevřete úložiště objektů BLOB v rozšíření Visual Studio Code nebo v Azure Portal.
 
@@ -267,7 +267,7 @@ Pokud plánujete používat tuto úlohu v budoucnu, můžete ji zastavit a znovu
 
 1. V nabídce vlevo v Azure Portal vyberte **skupiny prostředků** a potom vyberte název prostředku, který jste vytvořili.  
 
-2. Na stránce vaší skupiny prostředků vyberte **Odstranit** . Do textového pole zadejte název prostředku, který chcete odstranit, a pak vyberte **Odstranit** .
+2. Na stránce vaší skupiny prostředků vyberte **Odstranit**. Do textového pole zadejte název prostředku, který chcete odstranit, a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

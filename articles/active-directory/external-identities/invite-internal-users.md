@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093464"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015755"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Pozvání interních uživatelů ke spolupráci B2B
 
@@ -44,8 +44,7 @@ V těchto případech, pokud musí být interní uživatel změněn na uživatel
 
 K odeslání pozvánky B2B internímu uživateli můžete použít PowerShell nebo rozhraní API pro pozvání. Ujistěte se, že je e-mailová adresa, kterou chcete použít pro pozvánku, nastavená jako externí e-mailová adresa na objektu interního uživatele.
 
-- Pro uživatele jenom pro Cloud použijte e-mailovou adresu v vlastnosti User. OtherMails pozvánky.
-- U místních synchronizovaných uživatelů musíte pro pozvánku použít hodnotu ve vlastnosti User. mail.
+- Pro pozvánku je nutné použít e-mailovou adresu ve vlastnosti User. mail.
 - Doména ve vlastnosti pošta uživatele musí odpovídat účtu, který používají k přihlášení. V opačném případě některé služby, jako jsou týmy, nebudou moci ověřit uživatele.
 
 Ve výchozím nastavení Pozvánka uživateli pošle e-mail s informacemi o tom, že je pozvaní, ale můžete tento e-mail potlačit a místo toho poslat vlastní.

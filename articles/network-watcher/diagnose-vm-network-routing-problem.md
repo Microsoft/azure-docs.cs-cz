@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76845217"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014497"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostika problému se směrováním sítě virtuálního počítače pomocí portálu Azure Portal
 
@@ -36,7 +36,7 @@ Když nasadíte virtuální počítač, Azure pro něj vytvoří několik výcho
 
 Pokud chcete, můžete problém se směrováním sítě virtuálního počítače diagnostikovat pomocí [Azure CLI](diagnose-vm-network-routing-problem-cli.md) nebo [Azure PowerShellu](diagnose-vm-network-routing-problem-powershell.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -99,7 +99,7 @@ Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlast
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
-1. Abyste mohli směrování analyzovat podrobněji, zkontrolujte efektivní trasy síťového rozhraní. Do vyhledávacího pole v horní části portálu zadejte*myvm* (nebo název síťového rozhraní, které jste zkontrolovali). Jakmile se ve výsledcích hledání zobrazí položka **myvm**, vyberte ji.
+1. Abyste mohli směrování analyzovat podrobněji, zkontrolujte efektivní trasy síťového rozhraní. Do vyhledávacího pole v horní části portálu zadejte *myvm* (nebo název síťového rozhraní, které jste zkontrolovali). Jakmile se ve výsledcích hledání zobrazí položka **myvm**, vyberte ji.
 2. Podle následujícího obrázku v části **PODPORA A ŘEŠENÍ POTÍŽÍ** vyberte **Efektivní trasy**:
 
     ![Efektivní trasy](./media/diagnose-vm-network-routing-problem/effective-routes.png)

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169490"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015925"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi na Androidu pomocí MSAL
 
@@ -29,7 +29,7 @@ Jednotné přihlašování (SSO) umožňuje uživatelům zadat přihlašovací �
 
 V tomto postupu se naučíte, jak nakonfigurovat sady SDK používané vaší aplikací k poskytování jednotného přihlašování pro vaše zákazníky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento postup předpokládá, že máte tyto informace:
 
@@ -81,7 +81,7 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()` ) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Příklad:
+Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Například:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Jakmile vygenerujete hodnotu hash podpisu pomocí *nástroje*, použijte Azure Portal k VYgenerování identifikátoru URI přesměrování:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a v **Registrace aplikací** vyberte svou aplikaci pro Android.
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> a v **Registrace aplikací** vyberte svou aplikaci pro Android.
 1. Vyberte **ověřování**  >  **Přidat platformu**  >  **Android**.
 1. V podokně **Konfigurovat aplikaci pro Android** , které se otevře, zadejte **hodnotu hash podpisu** , kterou jste dříve vytvořili, a **název balíčku**.
 1. Klikněte na tlačítko **Konfigurovat** .

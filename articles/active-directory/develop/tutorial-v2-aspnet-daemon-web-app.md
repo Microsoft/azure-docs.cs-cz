@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509423"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015942"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
 
@@ -93,7 +93,7 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 
 ### <a name="choose-the-azure-ad-tenant"></a>Výběr tenanta Azure AD
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 
 
@@ -203,7 +203,7 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Vytvoření a publikování dotnet-web-démon-v2 na webu Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. V levém horním rohu vyberte **Vytvořit prostředek**.
 1. Vyberte **Webová**  >  **Webová aplikace** a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
 1. Vyberte informace pro **předplatné**, **skupinu prostředků** a **plán a umístění služby App Service**. **Operační** systém je **Windows** a **publikování** je **kód**.
@@ -224,7 +224,7 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Aktualizace registrace aplikace tenanta Azure AD pro dotnet-web-démon-v2
 
-1. Vraťte se na [Azure Portal](https://portal.azure.com).
+1. Vraťte se na <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyberte aplikaci **dotnet-web-démon-v2** .
 1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
@@ -235,7 +235,7 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 K získání podpory od komunity použijte [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) .
 Nejdřív si položte otázky na Stack Overflow a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz dotazoval.

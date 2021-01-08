@@ -12,12 +12,12 @@ ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935899"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014864"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | –         | Podporováno   |
+| Osobní účet Microsoft | Nelze použít         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -136,7 +136,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com). 
+1. Přejít na <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -245,7 +245,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
@@ -258,7 +258,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin pomocí manifestu aplikace:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -272,7 +272,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Příklad:
+   Například:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -389,7 +389,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace uživatelského rozhraní:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
 1. Vyhledejte a vyberte **Azure Active Directory**.
@@ -412,7 +412,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

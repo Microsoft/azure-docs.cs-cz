@@ -3,16 +3,15 @@ title: Monitorování a správa úloh Azure Stream Analytics pomocí prostředí
 description: Tento článek popisuje, jak pomocí Azure PowerShell a rutin monitorovat a spravovat úlohy Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 4d41e8231f5bd186408ea511c0f096a6a5f26c83
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6b404516c513dea0888974ffb4fa3d8d43db6c44
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123638"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015177"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úloh Stream Analytics pomocí rutin Azure PowerShell
 Naučte se monitorovat a spravovat Stream Analytics prostředky pomocí rutin Azure PowerShell a skriptování prostředí PowerShell, které spouští základní úlohy Stream Analytics.
@@ -541,7 +540,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 Tento příkaz prostředí PowerShell testuje stav připojení výstupního výstupu v StreamingJob.  
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

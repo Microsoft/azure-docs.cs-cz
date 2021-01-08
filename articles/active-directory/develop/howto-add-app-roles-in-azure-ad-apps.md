@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614927"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013698"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -49,7 +49,7 @@ Počet rolí, které přidáváte, se počítá s omezeními pro manifest aplika
 
 Vytvoření aplikační role pomocí uživatelského rozhraní Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. V horní nabídce vyberte možnost **adresář a filtr předplatného** a potom zvolte klienta Azure Active Directory, který obsahuje registraci aplikace, do které chcete přidat roli aplikace.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací** a pak vyberte aplikaci, ve které chcete role aplikace definovat.
@@ -74,7 +74,7 @@ Vytvoření aplikační role pomocí uživatelského rozhraní Azure Portal:
 
 Chcete-li přidat role úpravou manifestu přímo:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. V horní nabídce vyberte možnost **adresář a filtr předplatného** a potom zvolte klienta Azure Active Directory, který obsahuje registraci aplikace, do které chcete přidat roli aplikace.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací** a pak vyberte aplikaci, ve které chcete role aplikace definovat.
@@ -136,7 +136,7 @@ Po přidání rolí aplikace do aplikace můžete k rolím přiřadit uživatele
 
 Přiřazení uživatelů a skupin k rolím pomocí Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. V **Azure Active Directory** v navigační nabídce vlevo vyberte **podnikové aplikace** .
 1. Výběrem **všech aplikací** zobrazíte seznam všech aplikací. Pokud se vaše aplikace v seznamu nezobrazí, použijte filtry v horní části seznamu **všechny aplikace** , abyste seznam omezili, nebo přejděte dolů na seznam a vyhledejte svoji aplikaci.
 1. Vyberte aplikaci, ve které chcete rolím přiřadit uživatele nebo skupinu zabezpečení.
@@ -158,7 +158,7 @@ Při přiřazování rolí aplikací k aplikaci vytvoříte *oprávnění aplika
 
 Přiřazení rolí aplikace k aplikaci pomocí Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. V **Azure Active Directory** v navigační nabídce vlevo vyberte **Registrace aplikací** .
 1. Výběrem **všech aplikací** zobrazíte seznam všech aplikací. Pokud se vaše aplikace v seznamu nezobrazí, použijte filtry v horní části seznamu **všechny aplikace** , abyste seznam omezili, nebo přejděte dolů na seznam a vyhledejte svoji aplikaci.
 1. Vyberte aplikaci, ke které chcete přiřadit roli aplikace.

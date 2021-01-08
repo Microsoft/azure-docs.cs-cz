@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963498"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013783"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -81,7 +81,7 @@ Další informace naleznete v [tabulce 3: platné hodnoty ID na zdroj](active-di
 
 Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakoukoli konstantní (statickou) hodnotu. Použijte následující postup k přiřazení konstantní hodnoty:
 
-1. V [Azure Portal](https://portal.azure.com/)v části **atributy uživatele & deklaracemi** klikněte na ikonu **Upravit** a upravte deklarace.
+1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>v části **atributy uživatele & deklaracemi** klikněte na ikonu **Upravit** a upravte deklarace.
 
 1. Klikněte na požadovanou deklaraci identity, kterou chcete upravit.
 

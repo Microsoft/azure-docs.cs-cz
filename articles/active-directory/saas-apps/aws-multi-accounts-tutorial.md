@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591765"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -43,7 +43,7 @@ Integrace Amazon Web Services (AWS) se službou Azure AD poskytuje následujíc�
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -89,11 +89,11 @@ V Amazon Web Services (AWS) přiřaďte hodnotu **uživatelské jméno** ve slu�
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Amazon Web Services (AWS), proveďte následující kroky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Amazon Web Services (AWS)](#configure-amazon-web-services-aws-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
-3. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Amazon Web Services (AWS)](#configure-amazon-web-services-aws-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
+3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujete jednotné přihlašování v aplikaci Amazon Web Services (AWS).
 
@@ -107,7 +107,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu **tužky** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -143,11 +143,14 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     například Klikněte na **Uložit**.
 
+    >[!NOTE]
+    >Další informace o rolích v Azure AD najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+
 7. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na **Stáhnout** a Stáhněte si **XML federačních metadat** a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Nakonfigurovat Amazon Web Services (AWS) Single Sign-On
+### <a name="configure-amazon-web-services-aws-sso"></a>Konfigurace jednotného přihlašování Amazon Web Services (AWS)
 
 1. V jiném okně prohlížeče se přihlaste do vaší Amazon Web Services (AWS) firemní web jako správce.
 
@@ -231,7 +234,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Snímek obrazovky ukazuje, kde se účet I D zobrazuje v okně A W S.](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-1. Teď se přihlaste [Azure Portal](https://portal.azure.com/) a přejděte do **skupin**.
+1. Teď se přihlaste Azure Portal a přejděte do **skupin**.
 
 1. Vytvořte nové skupiny se stejným názvem, jako má dříve vytvořené role IAM, a poznamenejte si **ID objektů** těchto nových skupin.
 
@@ -347,11 +350,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     > [!Note]
     > Upozorňujeme, že pokud chcete zobrazit nové role, musíte aktualizovat svou relaci v Azure Portal.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí mých aplikací.
 
-Když kliknete na dlaždici Amazon Web Services (AWS) na přístupovém panelu, měli byste získat stránku aplikace Amazon Web Services (AWS) s možností výběru role.
+Po kliknutí na dlaždici Amazon Web Services (AWS) v okně moje aplikace byste měli zobrazit stránku aplikace Amazon Web Services (AWS) s možností výběru role.
 
 ![Test jednotného přihlašování – ON1](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
@@ -359,7 +362,7 @@ Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklara
 
 ![Test jednotného přihlašování – On2](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 

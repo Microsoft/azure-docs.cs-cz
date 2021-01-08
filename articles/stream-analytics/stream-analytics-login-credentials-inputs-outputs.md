@@ -1,19 +1,18 @@
 ---
 title: Otočení přihlašovacích údajů v úlohách Azure Stream Analytics
 description: Tento článek popisuje, jak aktualizovat přihlašovací údaje vstupních a výstupních umyvadel v úlohách Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd6c072f9783e8ff5d4d5e465b513c2e530bfd63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012097"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015228"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy
 
@@ -47,7 +46,7 @@ V této části Vás provedeme procesem opětovného generování přihlašovac�
 7. Test připojení se automaticky spustí při uložení změn, ujistěte se, že úspěšně proběhl.    
 8. Přejděte ke [spuštění úlohy z části čas posledního zastavení](#start-your-job-from-the-last-stopped-time) .
 
-### <a name="sql-database"></a>SQL Database
+### <a name="sql-database"></a>Databáze SQL
 
 Abyste mohli aktualizovat přihlašovací údaje stávajícího uživatele, musíte se připojit k SQL Database. Přihlašovací údaje můžete aktualizovat pomocí Azure Portal nebo nástroje na straně klienta, jako je například SQL Server Management Studio. Tato část demonstruje proces aktualizace přihlašovacích údajů pomocí Azure Portal.
 
