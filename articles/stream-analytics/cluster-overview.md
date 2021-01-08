@@ -3,17 +3,16 @@ title: Přehled clusterů Azure Stream Analytics (Preview)
 description: Přečtěte si o samostatném tenantovi vyhrazené nabídce Stream Analytics clusteru.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247689"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019529"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Přehled clusteru Azure Stream Analytics (Preview)
 
@@ -57,11 +56,11 @@ SU je stejný jako u standardních a vyhrazených nabídek. Jedna úloha, která
 
 ### <a name="can-i-scale-my-cluster"></a>Můžu svůj cluster škálovat?
 
-Ano. Kapacitu clusteru můžete snadno nakonfigurovat tak, abyste mohli podle potřeby [škálovat směrem nahoru nebo dolů](scale-cluster.md) , aby splňovala vaše měnící se požadavky.
+Yes. Kapacitu clusteru můžete snadno nakonfigurovat tak, abyste mohli podle potřeby [škálovat směrem nahoru nebo dolů](scale-cluster.md) , aby splňovala vaše měnící se požadavky.
 
 ### <a name="can-i-run-my-existing-jobs-on-these-new-clusters-ive-created"></a>Můžu na těchto nových clusterech spouštět stávající úlohy?
 
-Ano. Existující úlohy můžete propojit s nově vytvořeným Stream Analyticsm clusterem a spustit je obvyklým způsobem. Nemusíte znovu vytvářet existující Stream Analytics úlohy od začátku.
+Yes. Existující úlohy můžete propojit s nově vytvořeným Stream Analyticsm clusterem a spustit je obvyklým způsobem. Nemusíte znovu vytvářet existující Stream Analytics úlohy od začátku.
 
 ### <a name="how-much-will-these-clusters-cost-me"></a>Do kolika se tyto clustery budou zasílat?
 

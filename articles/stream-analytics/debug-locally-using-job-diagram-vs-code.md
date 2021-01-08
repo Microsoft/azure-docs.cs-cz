@@ -3,16 +3,15 @@ title: Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v
 description: Tento článek popisuje, jak místně ladit dotazy pomocí diagramu úloh v rozšíření Azure Stream Analytics pro Visual Studio Code.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124165"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019495"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v Visual Studio Code
 
@@ -31,7 +30,7 @@ V tomto [rychlém](quick-create-visual-studio-code.md) startu se dozvíte, jak v
 
 Pokud chcete otestovat dotaz pomocí místních vstupních dat, postupujte podle těchto [pokynů](visual-studio-code-local-run.md). Pokud chcete provést test pomocí živého vstupu, [nakonfigurujte vstupní](stream-analytics-add-inputs.md) přesun na další krok. 
 
-Otevřete soubor skriptu *\. asaql* a vyberte **spustit místně** . Pak vyberte **použít místní vstup** nebo **použít živý vstup** . Diagram úlohy se zobrazí na pravé straně okna.
+Otevřete soubor skriptu *\. asaql* a vyberte **spustit místně**. Pak vyberte **použít místní vstup** nebo **použít živý vstup**. Diagram úlohy se zobrazí na pravé straně okna.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Zobrazit výstupní a průběžnou sadu výsledků  
 
@@ -56,7 +55,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
    > [!div class="mx-imgBorder"]
    > ![Metriky diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. Pokud chcete zobrazit vstupní metriky, vyberte v rozevíracím seznamu název vstupního zdroje dat. Zdroj vstupu na snímku obrazovky níže se nazývá *uvozovky* . Další informace o vstupních metrikách najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
+3. Pokud chcete zobrazit vstupní metriky, vyberte v rozevíracím seznamu název vstupního zdroje dat. Zdroj vstupu na snímku obrazovky níže se nazývá *uvozovky*. Další informace o vstupních metrikách najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![Vstupní metrika diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)

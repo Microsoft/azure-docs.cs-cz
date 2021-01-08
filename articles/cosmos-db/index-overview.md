@@ -1,18 +1,18 @@
 ---
 title: Indexování ve službě Azure Cosmos DB
-description: Seznamte se s tím, jak indexování funguje v Azure Cosmos DB, různé druhy indexů, jako je rozsah, prostorové a složené indexy.
+description: Seznamte se s tím, jak indexování funguje v Azure Cosmos DB, různých typech indexů, jako jsou například rozsah, prostorové a složené indexy.
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339749"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019206"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,9 +64,9 @@ Tady jsou cesty pro jednotlivé vlastnosti z ukázkové položky popsané výše
 
 Při zápisu položky Azure Cosmos DB efektivně indexuje cestu každé vlastnosti a její odpovídající hodnotu.
 
-## <a name="index-kinds"></a>Typy indexů
+## <a name="types-of-indexes"></a><a id="index-types"></a>Typy indexů
 
-Azure Cosmos DB aktuálně podporuje tři druhy indexů.
+Azure Cosmos DB aktuálně podporuje tři typy indexů. Tyto typy indexů můžete nakonfigurovat při definování zásad indexování.
 
 ### <a name="range-index"></a>Index rozsahu
 
@@ -122,11 +122,11 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
+Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number). Výchozí zásady indexování pro nově vytvořené kontejnery u všech řetězců a čísel vynucují indexy rozsahu. Informace o tom, jak nakonfigurovat indexy rozsahu, najdete v tématu [Příklady zásad indexování rozsahu](how-to-manage-indexing-policy.md#range-index) .
 
 ### <a name="spatial-index"></a>Prostorový index
 
-**Prostorové** indexy umožňují efektivní dotazy na geoprostorové objekty, jako jsou body, čáry, mnohoúhelníky a víceřádkový mnohoúhelník. Tyto dotazy používají klíčová slova ST_DISTANCE, ST_WITHIN ST_INTERSECTS. Níže jsou uvedeny některé příklady použití prostorového indexu:
+**Prostorové** indexy umožňují efektivní dotazy na geoprostorové objekty, jako jsou body, čáry, mnohoúhelníky a víceřádkový mnohoúhelník. Tyto dotazy používají klíčová slova ST_DISTANCE, ST_WITHIN ST_INTERSECTS. Následuje několik příkladů použití prostorového indexu typu:
 
 - Dotazy na geoprostorové vzdálenosti:
 
@@ -146,7 +146,7 @@ Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Prostorové indexy lze použít na správně formátovaných objektech typu [injson](./sql-query-geospatial-intro.md) . V současné době se podporují body, LineStrings, mnohoúhelníky a další mnohoúhelníky.
+Prostorové indexy lze použít na správně formátovaných objektech typu [injson](./sql-query-geospatial-intro.md) . V současné době se podporují body, LineStrings, mnohoúhelníky a další mnohoúhelníky. Chcete-li použít tento typ indexu, nastavte pomocí `"kind": "Range"` vlastnosti při konfiguraci zásady indexování. Další informace o konfiguraci prostorových indexů najdete v tématu [Příklady zásad pro prostorové indexování](how-to-manage-indexing-policy.md#spatial-index) .
 
 ### <a name="composite-indexes"></a>Složené indexy
 
@@ -170,11 +170,13 @@ Prostorové indexy lze použít na správně formátovaných objektech typu [inj
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dotaz vyhodnotí, že nejprve vyhodnocuje, zda je před kontrolou zbývajících. Například pokud máte dotaz SQL, například `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Pokud jeden predikát filtru používá jeden z typů indexu, nástroj pro dotaz vyhodnotí, že nejprve vyhodnocuje, že před kontrolou zůstane. Například pokud máte dotaz SQL, například `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Výše uvedený dotaz nejprve vyfiltruje položky, kde firstName = "Andrew" pomocí indexu. Pak předá všechny záznamy firstName = "Andrew" prostřednictvím následného kanálu k vyhodnocení predikátu OBSAHUJÍCÍho filtr.
 
 * Můžete zrychlit dotazy a vyhnout se úplným kontrolám kontejnerů při použití funkcí, které nepoužívají index (např. obsahuje) přidáním dalších predikátů filtru, které používají index. Pořadí klauzulí filtru není důležité. Dotazovací modul zjistí, které predikáty jsou podrobněji selektivní a spustí dotaz odpovídajícím způsobem.
+
+Další informace o tom, jak nakonfigurovat složené indexy, najdete v tématu [složené příklady zásad indexování](how-to-manage-indexing-policy.md#composite-index) .
 
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 

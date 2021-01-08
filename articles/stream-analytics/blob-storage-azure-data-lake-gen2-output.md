@@ -1,18 +1,17 @@
 ---
 title: Gen2 BLOB Storage a Azure Data Lake výstup z Azure Stream Analytics
 description: Tento článek popisuje úložiště objektů BLOB a Azure Data Lake Gen 2 jako výstup pro Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 708e6351350a1925d58cd4da6b71427a98633362
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8f8fa524a69d0431fe98cdcd4d1f12addc576e86
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954953"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019580"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Gen2 BLOB Storage a Azure Data Lake výstup z Azure Stream Analytics
 
@@ -53,7 +52,7 @@ Pokud jako výstup používáte úložiště objektů blob, vytvoří se v objek
 * Pokud je výstup rozdělený vlastním polem, vytvoří se nový objekt BLOB pro každý klíč oddílu, pokud neexistuje.
 * Pokud je výstup rozdělený vlastním polem, u kterého klíč oddílu překračuje 8 000, a pro každý klíč oddílu se vytvoří nový objekt BLOB.
 
-## <a name="partitioning"></a>Dělení
+## <a name="partitioning"></a>Dělení na oddíly
 
 Pro klíč oddílu použijte {Date} a {Time} tokeny z polí události ve vzoru cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. HH se používá pro formát času. Výstup objektu BLOB se dá rozdělit na oddíly jedním vlastním atributem události {FieldName} nebo {DateTime: \<specifier> }. Počet zapisovačů výstupu následuje za vstupními oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md).
 

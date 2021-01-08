@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437146"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018067"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Výzvy popsané v předchozí části se dají vyřešit pomocí vlastního nás
 
 Vlastní nástroj používá knihovnu hromadného prováděcího modulu a podporuje horizontální navýšení kapacity mezi více klienty a sledování chyb během procesu příjmu. Aby bylo možné použít tento nástroj, zdrojová data by měla být rozdělená do samostatných souborů v Azure Data Lake Storage (ADLS), aby různé procesy migrace mohly každý soubor vybírat a ingestovat do Azure Cosmos DB. Vlastní nástroj využívá samostatnou kolekci, která ukládá metadata o průběhu migrace pro každý jednotlivý zdrojový soubor v ADLS a sleduje případné chyby, které jsou k nim přidruženy.  
 
-Následující obrázek popisuje proces migrace pomocí tohoto vlastního nástroje. Nástroj je spuštěný v sadě virtuálních počítačů a každý virtuální počítač se dotazuje kolekce sledování v Azure Cosmos DB, aby získal zapůjčení na jednom ze zdrojových datových oddílů. Až to uděláte, zdrojový oddíl dat přečte nástroj a ingestuje se do Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu. V dalším kroku se kolekce sledování aktualizuje, aby se zaznamenal průběh přijímání dat a případné chyby. Po zpracování datového oddílu se nástroj pokusí zadat dotaz na další dostupný zdrojový oddíl. I nadále zpracovává další zdrojový oddíl, dokud nebudou všechna data migrována. Zdrojový kód pro nástroj je k dispozici [zde](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion).  
+Následující obrázek popisuje proces migrace pomocí tohoto vlastního nástroje. Nástroj je spuštěný v sadě virtuálních počítačů a každý virtuální počítač se dotazuje kolekce sledování v Azure Cosmos DB, aby získal zapůjčení na jednom ze zdrojových datových oddílů. Až to uděláte, zdrojový oddíl dat přečte nástroj a ingestuje se do Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu. V dalším kroku se kolekce sledování aktualizuje, aby se zaznamenal průběh přijímání dat a případné chyby. Po zpracování datového oddílu se nástroj pokusí zadat dotaz na další dostupný zdrojový oddíl. I nadále zpracovává další zdrojový oddíl, dokud nebudou všechna data migrována. Zdrojový kód pro nástroj je k dispozici v úložišti [Azure Cosmos DB hromadných přijímání](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) .  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Nastavení nástroje pro migraci" border="false":::

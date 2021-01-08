@@ -12,55 +12,46 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169405"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017336"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
 V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak nastavit ověřování OpenID Connect ve webové aplikaci sestavené pomocí Node.js pomocí Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Registrace aplikace
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
-    - V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.
-    - Změňte svou relaci na tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
 
-1. Pro registraci aplikace přejděte na [Azure Active Directory > registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-1. Vyberte **Nová registrace.**
-
-1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
-    - V části **název** zadejte smysluplný název, který se zobrazí uživatelům aplikace. Příklad: MyWebApp
-    - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `MyWebApp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a v osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
 
     Pokud existuje více identifikátorů URI přesměrování, budete je muset přidat z karty **ověřování** později po úspěšném vytvoření aplikace.
 
 1. Pokud chcete vytvořit aplikaci, vyberte **zaregistrovat** .
-
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Tuto hodnotu budete potřebovat ke konfiguraci aplikace později v tomto projektu.
+1. V části **Spravovat** vyberte **ověřování**.
+1. Vyberte **Přidat**  >  **Web** platformy. 
+1. V části **identifikátory URI pro přesměrování** zadejte `http://localhost:3000/auth/openid/return` .
+1. Zadejte **adresu URL pro odhlášení** `https://localhost:3000` .
+1. V části implicitní udělení **ID ověřte tokeny** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
+1. Vyberte **Konfigurovat**.
+1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
+1. Zadejte popis klíče (např. tajný klíč aplikace).
+1. Vyberte dobu trvání klíče buď **v 1 roce, 2 roky,** nebo **nikdy nevyprší**.
+1. Vyberte **Přidat**. Hodnota klíče se zobrazí. Zkopírujte hodnotu klíče a uložte ji v bezpečném umístění pro pozdější použití.
 
-1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-    - V části **identifikátory URI pro přesměrování** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: `http://localhost:3000/auth/openid/return`
-    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:3000` .
-    - V části **Upřesnit nastavení > implicitního udělení oprávnění** ověřte **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](./v2-oauth2-implicit-grant-flow.md) povolen k přihlášení uživatele.
-
-1. Vyberte **Uložit**.
-
-1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte možnost **nový tajný klíč klienta**.
-    - Zadejte popis klíče (např. tajný klíč aplikace).
-    - Vyberte dobu trvání klíče buď **v 1 roce, 2 roky,** nebo **nikdy nevyprší**.
-    - Po kliknutí na tlačítko **Přidat** se zobrazí hodnota klíč. Zkopírujte hodnotu klíče a uložte ji do bezpečného umístění.
-
-    Tento klíč budete potřebovat později ke konfiguraci aplikace. Tato hodnota klíče se znovu nezobrazí ani není dostupná žádným jiným způsobem, takže ji nahrajte hned, jak je vidět z Azure Portal.
 
 ## <a name="download-the-sample-application-and-modules"></a>Stažení ukázkové aplikace a modulů
 

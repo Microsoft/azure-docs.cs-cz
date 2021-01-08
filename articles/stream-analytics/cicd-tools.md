@@ -4,16 +4,15 @@ description: Tento článek popisuje, jak použít Azure Stream Analytics nástr
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123146"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019546"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Automatizace sestavení, testů a nasazení Azure Stream Analytics úlohy pomocí nástrojů CI/CD
 
@@ -21,7 +20,7 @@ Balíček Azure Stream Analytics CI/CD npm můžete použít k automatickému se
 
 ## <a name="installation"></a>Instalace
 
-Balíček si můžete [Stáhnout](https://www.npmjs.com/package/azure-streamanalytics-cicd) přímo nebo ho nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí `npm install -g azure-streamanalytics-cicd` příkazu. Doporučujeme použít příkaz, který se dá použít taky v úloze skriptu PowerShellu nebo Azure CLI kanálu sestavení v **Azure Pipelines** .
+Balíček si můžete [Stáhnout](https://www.npmjs.com/package/azure-streamanalytics-cicd) přímo nebo ho nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí `npm install -g azure-streamanalytics-cicd` příkazu. Doporučujeme použít příkaz, který se dá použít taky v úloze skriptu PowerShellu nebo Azure CLI kanálu sestavení v **Azure Pipelines**.
 
 ## <a name="build-the-project"></a>Sestavení projektu
 
@@ -66,7 +65,7 @@ Po úspěšném sestavení Stream Analytics projektu vygeneruje následující d
 
 Výchozí parametry v souboru parameters.json jsou z nastavení Visual Studio Code nebo projektu sady Visual Studio. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
 
-Výchozí hodnoty pro všechny přihlašovací údaje jsou **null** . Před nasazením do Azure budete muset nastavit hodnoty.
+Výchozí hodnoty pro všechny přihlašovací údaje jsou **null**. Před nasazením do Azure budete muset nastavit hodnoty.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +121,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | Parametr | Popis |
 |---|---|
 | `-project` | Cesta **asaproj.jsv** souboru pro projekt Visual Studio Code nebo **[název projektu]. asaproj** pro projekt sady Visual Studio. |
-| `-testConfigPath` | Cesta ke konfiguračnímu souboru testu. Pokud není zadán, soubor bude prohledán v **\test** v aktuálním adresáři **asaproj.jsv** souboru s výchozím názvem souboru **testConfig.js** . Pokud neexistuje, vytvoří se nový soubor. |
+| `-testConfigPath` | Cesta ke konfiguračnímu souboru testu. Pokud není zadán, soubor bude prohledán v **\test** v aktuálním adresáři **asaproj.jsv** souboru s výchozím názvem souboru **testConfig.js**. Pokud neexistuje, vytvoří se nový soubor. |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -139,7 +138,7 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 
 Pokud je konfigurační soubor testu prázdný, do souboru se zapíše následující obsah. V opačném případě je do pole **zjištěných testovacích případů** přidán testovací případ. Nezbytné vstupní konfigurace se automaticky vyplní podle vstupních konfiguračních souborů, pokud existují. V opačném případě jsou nakonfigurovány výchozí hodnoty. Před spuštěním testu musí být zadáno **FilePath** každého vstupu a očekávaný výstup. Konfiguraci můžete upravit ručně.
 
-Pokud chcete, aby ověření testu ignorovalo určitý výstup, nastavte **požadované** pole s očekávaným výstupem na **hodnotu NEPRAVDA** .
+Pokud chcete, aby ověření testu ignorovalo určitý výstup, nastavte **požadované** pole s očekávaným výstupem na **hodnotu NEPRAVDA**.
 
 ```json
 {
@@ -179,11 +178,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | Parametr | Popis |
 |---|---|
 | `-project` | Cesta **asaproj.jsv** souboru pro projekt Visual Studio Code nebo **[název projektu]. asaproj** pro projekt sady Visual Studio. |
-| `-testConfigPath` | Cesta ke konfiguračnímu souboru testu. Pokud není zadán, soubor bude prohledán v **\test** v aktuálním adresáři **asaproj.jsv** souboru s výchozím názvem souboru **testConfig.js** .
+| `-testConfigPath` | Cesta ke konfiguračnímu souboru testu. Pokud není zadán, soubor bude prohledán v **\test** v aktuálním adresáři **asaproj.jsv** souboru s výchozím názvem souboru **testConfig.js**.
 | `-outputPath` | Cesta ke složce výstupu výsledků testu Pokud není zadaný, výstupní soubory výsledků se umístí do aktuálního adresáře. |
 | `-customCodeZipFilePath` | Cesta k souboru zip pro vlastní kód, jako je například UDF nebo deserializace, pokud se používají. |
 
-Po dokončení všech testů se ve výstupní složce vygeneruje souhrn výsledků testu ve formátu JSON. Soubor Shrnutí má název **testResultSummary.jsv** .
+Po dokončení všech testů se ve výstupní složce vygeneruje souhrn výsledků testu ve formátu JSON. Soubor Shrnutí má název **testResultSummary.jsv**.
 
 ```json
 {

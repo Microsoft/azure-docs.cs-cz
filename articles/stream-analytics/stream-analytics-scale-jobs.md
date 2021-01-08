@@ -3,16 +3,15 @@ title: Horizontální navýšení a zmenšení kapacity Azure Stream Analytics �
 description: Tento článek popisuje, jak škálovat Stream Analytics úlohy rozdělením vstupních dat, vyladěním dotazu a nastavením jednotek streamování úloh.
 author: JSeb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e3d4fd6b6b83681284278d10409a1c16394db31f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124369"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018679"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálování Azure Stream Analytics úlohy za účelem zvýšení propustnosti
 V tomto článku se dozvíte, jak vyladit Stream Analytics dotaz, abyste zvýšili propustnost pro úlohy Stream Analytics. Následující průvodce vám umožní škálovat úlohy tak, aby zpracovávala větší zátěž a využila více systémových prostředků (například větší šířku pásma, více prostředků procesoru, více paměti).
@@ -24,7 +23,7 @@ Je možné, že budete potřebovat přečíst si následující články:
 Pokud je váš dotaz ze své podstaty plně paralelizovat napříč vstupními oddíly, můžete postupovat podle následujících kroků:
 1.  Vytvořte dotaz tak, aby se zpracovatelné paralelně pomocí klíčového slova **partition by** . Další podrobnosti najdete v části zpracovatelné Parallel Jobs [na této stránce](stream-analytics-parallelization.md).
 2.  V závislosti na typech výstupu použitých v dotazu nemusí být některé výstupy buď paralelizovat, nebo musí být další konfigurace zpracovatelné paralelně. Výstup PowerBI není například paralelizovat. Výstupy se vždycky sloučí před odesláním do výstupní jímky. Objekty blob, tabulky, ADLS, Service Bus a Azure Functions jsou automaticky paralelismud. Výstupy SQL a Azure synapse Analytics mají možnost paralelního zpracování. V centru událostí musí být konfigurace PartitionKey shodná s polem **partition by** (obvykle PartitionID). V centru událostí taky věnujte mimořádnou pozornost, která bude odpovídat počtu oddílů pro všechny vstupy a výstupy, aby nedocházelo k přecházení mezi oddíly. 
-3.  Spusťte dotaz s **6 Su** (což je plná kapacita jediného výpočetního uzlu), abyste měřili maximální dosažitelnou propustnost, a pokud používáte **Group by** , změřte si, kolik skupin (mohutnosti) může úloha zpracovat. V tomto případě jsou k dishlavnímu příznaků omezení systémových prostředků v úloze
+3.  Spusťte dotaz s **6 Su** (což je plná kapacita jediného výpočetního uzlu), abyste měřili maximální dosažitelnou propustnost, a pokud používáte **Group by**, změřte si, kolik skupin (mohutnosti) může úloha zpracovat. V tomto případě jsou k dishlavnímu příznaků omezení systémových prostředků v úloze
     - Metrika využití SU% má více než 80%. To značí, že využití paměti je vysoké. Faktory přispívající k navýšení této metriky jsou popsány [zde](stream-analytics-streaming-unit-consumption.md). 
     -   Na výstupní časové razítko se zachází s ohledem na čas v chodu na zdi. V závislosti na vaší logice dotazu může mít výstupní časové razítko posunutí logiky od času chodu na zdi. Nicméně by měli postupovat přibližně na stejnou sazbu. Pokud je výstupní časové razítko ještě dál a ještě dál, je indikátorem, že systém je přepracovaná. Může to být výsledkem omezení pro výstup z výstupní jímky nebo vysokého využití procesoru. V tuto chvíli neposkytujeme metriku využití procesoru, takže to může být obtížné odlišit tyto dvě.
         - Pokud k problému dochází z důvodu omezování jímky, možná budete muset zvýšit počet výstupních oddílů (a také vstupní oddíly, aby úloha zůstala plně paralelizovat), nebo zvýšit množství prostředků jímky (například počet jednotek žádostí pro CosmosDB).
@@ -42,7 +41,7 @@ Pokud se dotaz nezpracovatelné paralelně, můžete postupovat podle následuj�
 2.  Pokud můžete dosáhnout očekávaného zatížení v době propustnosti, jste hotovi. Případně se můžete rozhodnout, že chcete změřit stejnou úlohu spuštěnou se 3. SU a 1 SU, abyste zjistili minimální počet SU, který pro váš scénář funguje.
 3.  Pokud nemůžete dosáhnout požadované propustnosti, zkuste dotaz přerušit na více kroků, pokud to je možné, pokud již nemá více kroků, a pro každý krok dotazu přidělte až 6 SU. Pokud máte například 3 kroky, přidělte v možnosti škálování 18 SU.
 4.  Při spuštění takové úlohy Stream Analytics vloží každý krok do vlastního uzlu s vyhrazenými prostředky 6 SU. 
-5.  Pokud jste ještě nedosáhli cíle zatížení, můžete se pokusit použít **oddíl** , a to tak, že začnete od kroků blíž ke vstupu. Pro operátor **Group by** , který nemusí být přirozeně rozdělený, můžete použít místní a globální agregovaný vzor k provedení dělené **skupiny** následovaný nedělenou **skupinou by** . Například pokud chcete spočítat, kolik automobilů prochází každým telefonním prostorem každé 3 minuty, a objem dat je nad rámec toho, co může být zpracováno 6. SU.
+5.  Pokud jste ještě nedosáhli cíle zatížení, můžete se pokusit použít **oddíl** , a to tak, že začnete od kroků blíž ke vstupu. Pro operátor **Group by** , který nemusí být přirozeně rozdělený, můžete použít místní a globální agregovaný vzor k provedení dělené **skupiny** následovaný nedělenou **skupinou by**. Například pokud chcete spočítat, kolik automobilů prochází každým telefonním prostorem každé 3 minuty, a objem dat je nad rámec toho, co může být zpracováno 6. SU.
 
 Dotaz:
 
@@ -77,7 +76,7 @@ V některých případech použití nezávislého výrobce softwaru, kde je ceno
 
 
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky

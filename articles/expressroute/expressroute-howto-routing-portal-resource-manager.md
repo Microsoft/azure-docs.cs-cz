@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/26/2020
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: eb55e4633ef64bee0577b1c1defba27dad24a3b7
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 3e106bc313d6189b2fae8cf6a4dd7ce862294b8f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515825"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019232"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Kurz: vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí Azure Portal
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak vytvořit a spravovat konfiguraci směrování pr
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Veřejné partnerské vztahy](about-public-peering.md)
+> * [Veřejný partnerský vztah](about-public-peering.md)
 > * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video – partnerský vztah Microsoftu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
     * [Požadavky směrování](expressroute-routing.md)
     * [Pracovní postupy](expressroute-workflows.md)
 * Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, postupujte podle pokynů pro [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a před pokračováním dodržujte okruh povolený vaším poskytovatelem připojení. Ke konfiguraci partnerských vztahů musí být okruh ExpressRoute ve stavu zřizování a povoleno. 
-* Pokud máte v úmyslu použít sdílený klíč nebo hash MD5, nezapomeňte použít klávesu na obou stranách tunelu. Limit je maximálně 25 alfanumerických znaků. Speciální znaky nejsou podporovány. 
+* Pokud máte v úmyslu použít sdílený klíč nebo hash MD5, nezapomeňte použít klávesu na obou stranách tunelu. Limit je maximálně 25 alfanumerických znaků. Speciální znaky se nepodporují. 
 
 Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované služby vrstvy 3 (obvykle IPVPN, jako je MPLS), poskytovatel připojení nakonfiguruje a spravuje směrování za vás. 
 
@@ -50,7 +50,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejí
 > Aktuálně prostřednictvím portálu pro správu služeb neinzerujeme partnerské vztahy nakonfigurované poskytovateli služeb. Pracujeme na tom, aby tato možnost brzy fungovala. Před konfigurací partnerských vztahů protokolu BGP se poraďte se svým poskytovatelem služeb.
 > 
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah s Microsoftem
+## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah Microsoftu
 
 Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute.
 

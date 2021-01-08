@@ -1,18 +1,17 @@
 ---
 title: Azure Functions výstup z Azure Stream Analytics
 description: Tento článek popisuje službu Azure Functions jako výstup pro Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488082"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019614"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions výstup z Azure Stream Analytics
 
@@ -25,7 +24,7 @@ Azure Stream Analytics vyvolá Azure Functions prostřednictvím triggerů HTTP.
 | Název vlastnosti | Popis |
 | --- | --- |
 | Aplikace funkcí |Název vaší aplikace Azure Functions. |
-| Function |Název funkce v aplikaci Azure Functions. |
+| Funkce |Název funkce v aplikaci Azure Functions. |
 | Klíč |Pokud chcete používat funkci Azure Functions z jiného předplatného, můžete to udělat tak, že pro přístup k funkci poskytnete klíč. |
 | Maximální velikost dávky |Vlastnost, která umožňuje nastavit maximální velikost pro každou výstupní dávku, která se odesílá do funkce Azure Functions. Vstupní jednotka je v bajtech. Ve výchozím nastavení je tato hodnota 262 144 bajtů (256 KB). |
 | Maximální počet dávek  |Vlastnost, která umožňuje určit maximální počet událostí v každé dávce, která je odeslána do Azure Functions. Výchozí hodnota je 100. |
@@ -39,7 +38,7 @@ Když Azure Stream Analytics obdrží výjimku ("413 je příliš velká entita 
 
 V situaci, kdy není žádné přistání události v časovém intervalu, není vygenerován žádný výstup. V důsledku toho není volána funkce **computeResult** . Toto chování je konzistentní s předdefinovanými agregačními funkcemi v okně.
 
-## <a name="partitioning"></a>Dělení
+## <a name="partitioning"></a>Dělení na oddíly
 
 Klíč oddílu je založen na klauzuli PARTITION BY v dotazu. Počet zapisovačů výstupu následuje za vstupními oddíly pro [plně paralelní dotazy](stream-analytics-scale-jobs.md).
 

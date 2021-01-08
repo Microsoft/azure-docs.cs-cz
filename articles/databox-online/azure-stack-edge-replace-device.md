@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 501136c6f5015dc8c68a1aba004432900675b11c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893898"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017965"
 ---
 # <a name="replace-your-azure-stack-edge-pro-device"></a>Výměna zařízení Azure Stack Edge pro
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud dojde k selhání hardwaru v existujícím zařízení, otevřete lístek podpory. Podpora Microsoftu určí, že pro tuto instanci není k dispozici jednotka nahraditelná v terénu nebo že zařízení vyžaduje upgrade hardwaru. V obou případech bude podpora vyřídit náhradní zařízení.
 
-1. Otevřete lístek podpory s podpora Microsoftu, který indikuje, že chcete zařízení vrátit. Jako **Hardware Azure Stack Edge pro**vyberte typ problému.
+1. Otevřete lístek podpory s podpora Microsoftu, který indikuje, že chcete zařízení vrátit. Jako **Hardware Azure Stack Edge pro** vyberte typ problému.
 
     ![Otevření lístku podpory](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -42,6 +42,9 @@ Pokud dojde k selhání hardwaru v existujícím zařízení, otevřete lístek 
 
 
 ## <a name="create-a-resource-for-replacement-device"></a>Vytvoření prostředku pro náhradní zařízení
+
+> [!NOTE]
+> Vytvořte nový prostředek pro aktivaci náhradního zařízení. Aktivace náhradního zařízení proti stávajícímu prostředku není podporovaná.
 
 Pomocí těchto kroků vytvořte prostředek.
 

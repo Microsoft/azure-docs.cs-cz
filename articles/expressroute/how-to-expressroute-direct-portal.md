@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289435"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018934"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Vytvoření ExpressRoute s přímým přístupem pomocí Azure Portal
 
@@ -21,7 +21,14 @@ ExpressRoute Direct umožňuje přímo se připojit k globální síti Microsoft
 
 ## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
-Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostředků **Microsoft. Network** . Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail na adresu <ExpressRouteDirect@microsoft.com> s vaším ID předplatného, včetně následujících podrobností:
+
+* Scénáře, které se chystáte provést s **přímým přístupem ExpressRoute**
+* Předvolby umístění – v části [partneři a umístění partnerských vztahů](expressroute-locations-providers.md) najdete úplný seznam všech umístění.
+* Časová osa implementace
+* Jakékoli další dotazy
+
+Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Network** zaregistrován ve vašem předplatném. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
 
 1. Přístup k nastavením předplatného, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 1. V rámci vašeho předplatného pro **poskytovatele prostředků** ověřte, že poskytovatel **Microsoft. Network** zobrazuje **registrovaný** stav. Pokud poskytovatel prostředků Microsoft. Network není uveden v seznamu registrovaných zprostředkovatelů, přidejte ho.
@@ -40,18 +47,18 @@ Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostř
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="Stránka základy":::
 
-    * **Předplatné** : předplatné Azure, které chcete použít k vytvoření nového ExpressRoute Direct. Okruhy prostředků ExpressRoute Direct a ExpressRoute musí být ve stejném předplatném.
-    * **Skupina prostředků** : Skupina prostředků Azure, ve které se vytvoří nový prostředek s přímým přístupem ExpressRoute. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
-    * **Oblast** : veřejná oblast Azure, ve které se prostředek vytvoří.
-    * **Name** (název): název nového prostředku ExpressRoute Direct.
+    * **Předplatné**: předplatné Azure, které chcete použít k vytvoření nového ExpressRoute Direct. Okruhy prostředků ExpressRoute Direct a ExpressRoute musí být ve stejném předplatném.
+    * **Skupina prostředků**: Skupina prostředků Azure, ve které se vytvoří nový prostředek s přímým přístupem ExpressRoute. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
+    * **Oblast**: veřejná oblast Azure, ve které se prostředek vytvoří.
+    * **Name**(název): název nového prostředku ExpressRoute Direct.
 
 1. Dále vyplňte pole na stránce **Konfigurace** .
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit ExpressRoute s přímým přístupem s vybranou kartou konfigurace":::
 
-    * **Umístění partnerského vztahu** : umístění partnerského vztahu, ke kterému se připojíte přímo k ExpressRoute prostředku. Další informace o umístěních partnerských vztahů najdete v [ExpressRoute umístěních](expressroute-locations-providers.md).
-   * **Šířka pásma** : šířka pásma párování portů, kterou chcete rezervovat. ExpressRoute Direct podporuje možnosti šířky pásma 10 GB a 100 GB. Pokud požadovaná šířka pásma není v zadaném umístění partnerského vztahu k dispozici, [otevřete žádost o podporu v Azure Portal](https://aka.ms/azsupt).
-   * **Zapouzdření** : ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q.
+    * **Umístění partnerského vztahu**: umístění partnerského vztahu, ke kterému se připojíte přímo k ExpressRoute prostředku. Další informace o umístěních partnerských vztahů najdete v [ExpressRoute umístěních](expressroute-locations-providers.md).
+   * **Šířka pásma**: šířka pásma párování portů, kterou chcete rezervovat. ExpressRoute Direct podporuje možnosti šířky pásma 10 GB a 100 GB. Pokud požadovaná šířka pásma není v zadaném umístění partnerského vztahu k dispozici, [otevřete žádost o podporu v Azure Portal](https://aka.ms/azsupt).
+   * **Zapouzdření**: ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q.
      * Pokud je vybraná možnost QinQ, bude se každému okruhu ExpressRoute dynamicky přiřazovat značka S-a bude jedinečný v celém prostředku ExpressRoute Direct.
      *  Každé označení C na okruhu musí být v okruhu jedinečné, ale ne přes ExpressRoute Direct.
      * Pokud je vybraná možnost zapouzdření Dot1Q, musíte spravovat jedinečnost značky C (VLAN) napříč celým prostředkem ExpressRoute Direct.

@@ -4,28 +4,20 @@ description: Automatizace úloh, které sledují, vytváří, spravují, odesíl
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324236"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016758"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
 Chcete-li automatizovat úlohy, které sledují, vytváří, odesílají a přijímaly soubory na serveru [Secure protokol FTP (File Transfer Protocol) (SFTP)](https://www.ssh.com/ssh/sftp/) pomocí protokolu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , můžete vytvářet a automatizovat integrační pracovní postupy pomocí Azure Logic Apps a konektoru SFTP-SSH. SFTP je síťový protokol, který poskytuje přístup k souborům, přenos souborů a správu souborů přes jakýkoliv spolehlivý datový proud.
-
-> [!NOTE]
-> Konektor SFTP-SSH v tuto chvíli nepodporuje tyto servery SFTP:
-> 
-> * IBM datapower
-> * MessageWay
-> * OpenText zabezpečená tabulka MFT
-> * OpenText GXS
 
 Tady je několik ukázkových úloh, které můžete automatizovat:
 
@@ -41,14 +33,21 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 
 ## <a name="limits"></a>Omezení
 
+* Konektor SFTP-SSH v tuto chvíli nepodporuje tyto servery SFTP:
+
+  * IBM datapower
+  * MessageWay
+  * OpenText zabezpečená tabulka MFT
+  * OpenText GXS
+
 * Konektor SFTP-SSH podporuje buď ověřování privátního klíče, nebo ověřování hesla, nikoli obojí.
 
-* Protokol SFTP – akce SSH, které podporují [dělení na bloky dat](../logic-apps/logic-apps-handle-large-messages.md) , můžou zpracovávat soubory o velikosti až 1 GB, zatímco akce SFTP-SSH, které nepodporují dělení na bloky dat, můžou zpracovávat soubory až do 50 MB. I když je výchozí velikost bloku 15 MB, může se tato velikost dynamicky měnit, počínaje 5 MB a postupně zvyšovat až 50 MB, a to na základě faktorů, jako je latence sítě, doba odezvy serveru a tak dále.
+* Protokol SFTP – akce SSH, které podporují [dělení na bloky dat](../logic-apps/logic-apps-handle-large-messages.md) , můžou zpracovávat soubory o velikosti až 1 GB, zatímco akce SFTP-SSH, které nepodporují dělení na bloky dat, můžou zpracovávat soubory až do 50 MB. I když je výchozí velikost bloku 15 MB, tato velikost se může dynamicky měnit, počínaje 5 MB a postupně zvyšovat až 50 MB, a to na základě faktorů, jako je latence sítě, doba odezvy serveru a tak dále.
 
   > [!NOTE]
   > Pro aplikace logiky v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)vyžaduje ISE verze tohoto konektoru, aby místo toho používala [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
-  Toto adaptivní chování můžete přepsat při [zadání velikosti konstantního bloku](#change-chunk-size) , která se má použít místo toho. Tato velikost může být v rozsahu od 5 MB do 50 MB. Předpokládejme například, že máte soubor 45 MB a síť, která může podporovat tuto velikost souboru bez latence. Adaptivní dělení výsledků v několika voláních, a ne v jednom volání. Pokud chcete snížit počet volání, můžete zkusit nastavit velikost bloku dat 50 MB. V různých scénářích platí, že pokud vaše aplikace logiky čeká na vypršení časového limitu, například při použití 15 MB bloků dat, můžete zkusit zmenšit velikost na 5 MB.
+  Toto adaptivní chování můžete přepsat při [zadání velikosti konstantního bloku](#change-chunk-size) , která se má použít místo toho. Tato velikost může být v rozsahu od 5 MB do 50 MB. Předpokládejme například, že máte soubor 45 MB a síť, která může podporovat tuto velikost souboru bez latence. Adaptivní dělení výsledků v několika voláních, a ne v jednom volání. Pokud chcete snížit počet volání, můžete zkusit nastavit velikost bloku 50 MB. V různých scénářích platí, že pokud vaše aplikace logiky čeká na vypršení časového limitu, například při použití bloků dat na 15 MB, můžete zkusit zmenšit velikost na 5 MB.
 
   Velikost bloku dat je přidružená k připojení, což znamená, že můžete použít stejné připojení pro akce, které podporují práci s bloky dat, a pak pro akce, které nepodporují práci s bloky dat. V takovém případě velikost bloku dat pro akce, které nepodporují rozsahy bloků dat z 5 MB na 50 MB. Tato tabulka ukazuje, které akce SFTP-SSH podporují vytváření bloků dat:
 
@@ -56,15 +55,15 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
   | **Vytvořit soubor** | Ano | Ano |
-  | **Vytvořit složku** | Nelze použít | Nelze použít |
-  | **Odstranit dlaždici** | Nelze použít | Nelze použít |
-  | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
+  | **Vytvořit složku** | Není | Není |
+  | **Odstranit dlaždici** | Není | Není |
+  | **Extrakce archivu do složky** | Není | Není |
   | **Získat obsah souboru** | Ano | Ano |
   | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
-  | **Získat metadata souboru** | Nelze použít | Nelze použít |
-  | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
-  | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
-  | **Přejmenovat soubor** | Nelze použít | Nelze použít |
+  | **Získat metadata souboru** | Není | Není |
+  | **Získat metadata souboru pomocí cesty** | Není | Není |
+  | **Zobrazit seznam souborů ve složce** | Není | Není |
+  | **Přejmenovat soubor** | Není | Není |
   | **Aktualizovat soubor** | Ne | Nelze použít |
   ||||
 
@@ -86,9 +85,9 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Poskytuje akci **Přejmenovat soubor** , která přejmenuje soubor na serveru SFTP.
 
-* Uloží připojení do serveru SFTP *po dobu až 1 hodiny* , což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
+* Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -98,13 +97,13 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
   >
   > Konektor SFTP-SSH podporuje *pouze* tyto formáty privátních klíčů, algoritmy a otisky prstů:
   >
-  > * **Formáty privátních klíčů** : klíče RSA (Rivest Shamir Adleman) a DSA (Digital Signature Algorithm) ve formátech OpenSSH a SSH.com. Pokud je váš privátní klíč ve formátu výstupního souboru (. ppk), nejprve [převeďte klíč na formát souboru OpenSSH (. pem)](#convert-to-openssh).
+  > * **Formáty privátních klíčů**: klíče RSA (Rivest Shamir Adleman) a DSA (Digital Signature Algorithm) ve formátech OpenSSH a SSH.com. Pokud je váš privátní klíč ve formátu výstupního souboru (. ppk), nejprve [převeďte klíč na formát souboru OpenSSH (. pem)](#convert-to-openssh).
   >
-  > * **Algoritmy šifrování** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
+  > * **Algoritmy šifrování**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
   >
-  > * **Otisk prstu** : MD5
+  > * **Otisk prstu**: MD5
   >
-  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Pokud pro toto připojení zadáte privátní klíč SSH, * *_ručně nezadejte ani neupravujte klíč_* _, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte _*_zkopírovat klíč_*_ ze souboru privátního klíče SSH a _*_Vložit_*_ tento klíč do podrobností o připojení. 
+  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Pokud pro toto připojení zadáte privátní klíč SSH, **_ručně nezadejte ani neupravujte klíč_* _, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte _*_zkopírovat klíč_*_ ze souboru privátního klíče SSH a _*_Vložit_*_ tento klíč do podrobností o připojení. 
   > Další informace najdete v části [připojení k SFTP s](#connect) protokolem SSH dále v tomto článku.
 
 _ Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -113,15 +112,25 @@ _ Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quic
 
 ## <a name="how-sftp-ssh-triggers-work"></a>Princip fungování aktivačních událostí protokolu SFTP-SSH
 
-SFTP – SSH spouští dotazování systému souborů SFTP a hledání všech souborů, které se od posledního cyklického dotazování změnily. Některé nástroje umožňují zachovat časové razítko při změně souborů. V těchto případech je nutné zakázat tuto funkci, aby mohla Trigger fungovat. Tady je několik běžných nastavení:
+<a name="polling-behavior"></a>
+
+### <a name="polling-behavior"></a>Chování cyklického dotazování
+
+SFTP – SSH spustí dotaz do systému souborů SFTP a vyhledá všechny soubory, které se od posledního cyklického dotazování změnily. Některé nástroje umožňují zachovat časové razítko při změně souborů. V těchto případech je nutné zakázat tuto funkci, aby mohla Trigger fungovat. Tady je několik běžných nastavení:
 
 | Klient SFTP | Akce |
 |-------------|--------|
 | WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
-| FileZilly | Přejít na **přenos** –  >  zachovat zablokovaná **Časová razítka přenesených souborů**  >  **Disable** |
+| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná **Časová razítka přenesených souborů**  >   |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Aktivovat opakování a posunování
+
+Aktivační události na základě připojení, kde je třeba vytvořit připojení jako první, jako je například Trigger SFTP-SSH, se liší od integrovaných triggerů, které se spouštějí nativně v Azure Logic Apps, jako je například [Trigger opakování](../connectors/connectors-native-recurrence.md). V případě opakovaných triggerů založených na připojení není plán opakování jediným ovladačem, který řídí provádění, a časové pásmo určuje pouze počáteční čas spuštění. Následná spuštění závisí na plánu opakování, posledním spuštění triggeru *a* dalších faktorech, které by mohly způsobit snížení nebo zpracování neočekávaného chování, například bez zachování zadaného plánu při zahájení a ukončení letního času (DST). Chcete-li se ujistit, že se doba opakování nemění, když se letní čas projeví, proveďte ruční úpravu opakování, aby vaše aplikace logiky běžela v očekávaném čase. V opačném případě se čas zahájení posune jednu hodinu dopředu při zahájení LETNÍho času a hodinu zpětně od konce LETNÍho času. Další informace najdete v tématu [opakování pro aktivační události na základě připojení](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="convert-to-openssh"></a>
 
@@ -131,7 +140,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 ### <a name="unix-based-os"></a>OPERAČNÍ systém UNIX
 
-1. Pokud v systému ještě nejsou nainstalované nástroje pro výstupy, udělejte to třeba takto:
+1. Pokud v systému nemáte nainstalované nástroje pro výstupy, udělejte to teď například takto:
 
    `sudo apt-get install -y putty`
 
@@ -159,7 +168,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 1. Uložte soubor privátního klíče s `.pem` příponou názvu souboru.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Tato část popisuje pokyny ke kontrole triggerů a akcí tohoto konektoru.
 
@@ -201,7 +210,7 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
    1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  *Ujistěte se, *_že jste vložili_* klíč. _*_Klíč nezadejte ručně ani neupravujte_*_.
 
-1. Až skončíte s zadáním podrobností o připojení, vyberte _ * vytvořit * *.
+1. Po dokončení zadávání podrobností o připojení vyberte _ * vytvořit * *.
 
 1. Teď zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
@@ -211,7 +220,7 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
 Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, můžete zadat konstantní velikost bloku od 5 MB do 50 MB.
 
-1. V pravém horním rohu akce vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
+1. V pravém horním rohu akce vyberte tlačítko se třemi tečkami (**...**) a pak vyberte **Nastavení**.
 
    ![Otevření nastavení SFTP-SSH](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
@@ -219,7 +228,7 @@ Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, 
 
    ![Místo toho zadejte velikost bloku, která se má použít.](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. Jakmile budete hotovi, vyberte **Hotovo**.
+1. Po dokončení vyberte **Hotovo**.
 
 ## <a name="examples"></a>Příklady
 
@@ -229,7 +238,7 @@ Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, 
 
 Tato aktivační událost spustí pracovní postup aplikace logiky při přidání nebo změně souboru na serveru SFTP. Můžete například přidat podmínku, která zkontroluje obsah souboru a získá obsah na základě toho, jestli obsah splňuje zadanou podmínku. Pak můžete přidat akci, která získá obsah souboru, a tento obsah vložit do složky na serveru SFTP.
 
-**Podnikový příklad** : tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
+**Podnikový příklad**: tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
 
 <a name="get-content"></a>
 
@@ -239,21 +248,9 @@ Tato akce načte obsah ze souboru na serveru SFTP zadáním cesty k souboru. Nap
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>Řešení chyb
+## <a name="troubleshoot-problems"></a>Poradce při potížích
 
 Tato část popisuje možná řešení běžných chyb a problémů.
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 chyba: "odkaz byl proveden na soubor nebo složku, která neexistuje"
-
-K této chybě může dojít, když aplikace logiky vytvoří nový soubor na serveru SFTP prostřednictvím akce **Vytvoření souboru** protokolu SFTP-SSH, ale nově vytvořený soubor se ihned přesune ještě předtím, než služba Logic Apps může získat metadata souboru. Když aplikace logiky spustí akci **vytvořit soubor** , služba Logic Apps taky automaticky zavolá váš server SFTP, aby získal metadata souboru. Pokud se ale soubor přesune, služba Logic Apps už nebude soubor najít, takže se zobrazí `404` chybová zpráva.
-
-Pokud se soubor nemůžete vyhnout nebo chcete-li ho odložit, můžete přeskočit čtení metadat souboru za vytvořením souboru pomocí následujících kroků:
-
-1. V akci **vytvořit soubor** otevřete seznam **Přidat nový parametr** , vyberte vlastnost **získat všechny souborové metadata** a nastavte hodnotu na **ne**.
-
-1. Pokud tato metadata souboru budete potřebovat později, můžete použít akci **získat metadata souboru** .
 
 <a name="connection-attempt-failed"></a>
 
@@ -272,6 +269,18 @@ K této chybě může dojít, když aplikace logiky nemůže úspěšně naváza
 * Chcete-li snížit náklady na připojení, zvyšte v konfiguraci SSH pro váš server SFTP vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) na přibližně jednu hodinu.
 
 * Zkontrolujte protokol serveru SFTP a zkontrolujte, zda požadavek z aplikace logiky dosáhl serveru SFTP. Pokud chcete získat další informace o problému s připojením, můžete také spustit síťové trasování na bráně firewall a serveru SFTP.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 chyba: "odkaz byl proveden na soubor nebo složku, která neexistuje"
+
+K této chybě může dojít, když aplikace logiky vytvoří nový soubor na serveru SFTP prostřednictvím akce SFTP-SSH **Create File** , ale okamžitě přesune nově vytvořený soubor, aby mohla služba Logic Apps získat metadata souboru. Když aplikace logiky spustí akci **vytvořit soubor** , služba Logic Apps taky automaticky zavolá váš server SFTP, aby získal metadata souboru. Pokud však vaše aplikace logiky přesune soubor, služba Logic Apps již nemůže najít soubor, takže se zobrazí `404` chybová zpráva.
+
+Pokud se soubor nemůžete vyhnout nebo chcete-li ho odložit, můžete přeskočit čtení metadat souboru za vytvořením souboru pomocí následujících kroků:
+
+1. V akci **vytvořit soubor** otevřete seznam **Přidat nový parametr** , vyberte vlastnost **získat všechny souborové metadata** a nastavte hodnotu na **ne**.
+
+1. Pokud tato metadata souboru budete potřebovat později, můžete použít akci **získat metadata souboru** .
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

@@ -1,18 +1,17 @@
 ---
 title: Výstup služby Azure synapse Analytics z Azure Stream Analytics
 description: Tento článek popisuje Azure synapse Analytics jako výstup pro Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 65752321f94bfa1403839889ead284d46b5f7191
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740058"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019597"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Výstup služby Azure synapse Analytics z Azure Stream Analytics
 
@@ -31,7 +30,7 @@ V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vy
 |Název vlastnosti|Popis|
 |-|-|
 |Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
-|Database |vyhrazený název fondu SQL, kam posíláte výstup. |
+|Databáze |vyhrazený název fondu SQL, kam posíláte výstup. |
 |Název serveru |Název serveru Azure synapse.  |
 |Uživatelské jméno |Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 |Heslo |Heslo pro připojení k databázi. |

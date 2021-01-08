@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s růstovým ekosystémem Synerise AI | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directorym a Synerisem ekosystémem pro růst AI.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s růstem operačního systému Synerise AI | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a růstovým operačním systémem pro Synerise AI.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/15/2020
+ms.date: 01/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 988ec89f1ca9f3f88e92ed226c0bf6d81fae8397
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e6b9ad19eae64fa4b2e37e0e7c033d5926fcae9c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97676021"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018807"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-ecosystem"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s růstovým ekosystémem Synerise AI
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-operating-system"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s růstovým operačním systémem Synerise AI
 
-V tomto kurzu se dozvíte, jak integrovat růstový ekosystém Synerise AI do Azure Active Directory (Azure AD). Když integrujete Syneriseový ekosystém AI s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat Synerise s Azure Active Directory (Azure AD). Když integrujete Synerise s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k Synerise geometrickému ekosystému AI.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili k Synerisemu ekosystému AI pomocí svých účtů Azure AD.
+* Řízení ve službě Azure AD, která má přístup k Synerise.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Synerise svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -31,70 +31,70 @@ V tomto kurzu se dozvíte, jak integrovat růstový ekosystém Synerise AI do Az
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné Synerise AI s povoleným jednotným přihlašováním (SSO).
+* Synerise odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Růstový ekosystém Synerise AI podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
-* Růstový ekosystém Synerise AI podporuje zřizování uživatelů **jenom v čase**
+* Synerise podporuje jednotné přihlašování (SSO) **a IDP** .
+* Synerise podporuje zřizování uživatelů **jenom v čase** .
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 
-## <a name="adding-synerise-ai-growth-ecosystem-from-the-gallery"></a>Přidání ekosystému růstu Synerise AI z Galerie
+## <a name="adding-synerise-ai-growth-operating-system-from-the-gallery"></a>Přidání nárůstu operačního systému Synerise AI z Galerie
 
-Pokud chcete nakonfigurovat integraci růstového ekosystému Synerise AI do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Synerise růstový ekosystém AI z galerie.
+Pokud chcete nakonfigurovat integraci Synerise do služby Azure AD, musíte přidat Synerise z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Synerise pro ZVĚTŠOVÁNÍ ekosystému AI** .
-1. Z panelu výsledků vyberte **Syneriseový ekosystém pro AI** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Synerise AI růstový operační systém** .
+1. Z panelu výsledků vyberte **SYNERISE AI** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-synerise-ai-growth-ecosystem"></a>Konfigurace a testování jednotného přihlašování Azure AD pro růstový ekosystém Synerise AI
+## <a name="configure-and-test-azure-ad-sso-for-synerise-ai-growth-operating-system"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro růstový operační systém Synerise AI
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD s růstovým ekosystémem Synerise AI pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem ve růstovém ekosystému Synerise AI.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Synerise pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Synerise.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s růstovým ekosystémem Synerise AI, proveďte následující kroky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Synerise postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurujte jednotné PŘIhlašování pro růstový ekosystém SYNERISE AI](#configure-synerise-ai-growth-ecosystem-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte testovacího ekosystému pro růst SYNERISE AI](#create-synerise-ai-growth-ecosystem-test-user)** , abyste měli protějšek B. Simon v ekosystému Synerise AI, který je propojený s reprezentací uživatele v Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování k operačnímu systému SYNERISE AI](#configure-synerise-ai-growth-operating-system-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele operačního systému SYNERISE AI](#create-synerise-ai-growth-operating-system-test-user)** , aby bylo možné mít protějšek B. Simon v Synerise, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikace pro **zvětšování ekosystému SYNERISE AI** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce pro integraci aplikace s **růstem operačního systému SYNERISE AI** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://app.synerise.com/api-portal/uauth/saml/auth/<CUSTOMER_PROFILE_HASH>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://app.synerise.com/api-portal/uauth/saml/auth/<PROFILE_HASH>`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://app.synerise.com/api-portal/uauth/saml/auth/<CUSTOMER_PROFILE_HASH>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://app.synerise.com/api-portal/uauth/saml/auth/<PROFILE_HASH>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory pro růst ekosystému SYNERISE AI](mailto:support@synerise.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory Synerise](mailto:support@synerise.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **nastavit ekosystém pro růst SYNERISE AI** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení Synerise** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
@@ -111,23 +111,51 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k mikroekosystému Synerise AI.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Synerise.
 
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **růstový ekosystém SYNERISE AI**.
+1. V seznamu aplikace vyberte možnost **růstový operační systém SYNERISE AI**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-synerise-ai-growth-ecosystem-sso"></a>Nakonfigurovat jednotné přihlašování pro růstový ekosystém Synerise AI
+## <a name="configure-synerise-ai-growth-operating-system-sso"></a>Nakonfigurovat jednotné přihlašování Synerise AI pro operační systém
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **SYNERISE AI pro růst** , je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro růst ekosystému Synerise AI](mailto:support@synerise.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Přihlaste se k Synerise jako správce.
 
-### <a name="create-synerise-ai-growth-ecosystem-test-user"></a>Vytvořit testovacího uživatele pro růstový ekosystém Synerise AI
+1. Přejít na **Access Control nastavení >**.
 
-V této části se ve Synerise ekosystému AI vytvoří uživatel s názvem Britta Simon. Růstový ekosystém Synerise AI podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě neexistuje ve růstovém ekosystému Synerise AI, vytvoří se po ověření nový.
+    ![Nastavení Synerise](./media/synerise-ai-growth-ecosystem-tutorial/settings.png)
+
+1. Na stránce **Access Control** klikněte na tlačítko **Zobrazit** na kartě **jednotného přihlašování** .
+
+    ![Synerise Access Control](./media/synerise-ai-growth-ecosystem-tutorial/single-sign-on.png)
+
+1. Na následující stránce proveďte následující kroky.
+
+    ![Konfigurace Synerise](./media/synerise-ai-growth-ecosystem-tutorial/configuration.png)
+
+    a. Do textového pole **ID entity poskytovatele identifikátorů** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+
+    b. Do textového pole **SSO Endpoint (https)** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+
+    c. Do textového pole **ID aplikace zprostředkovatele identity** vložte hodnotu **ID aplikace** .
+
+    d. Zkopírujte hodnotu **identifikátoru URI přesměrování poskytovatele služby** , vložte tuto hodnotu do textového pole **Adresa URL odpovědi** v části základní konfigurace SAML v Azure Portal.
+
+    e. Ve **vazbě požadavku** vyberte **Přesměrování protokolu HTTP** .
+
+    f. Přepněte na **podpis žádosti**.
+
+    například Nahrajte stažený soubor **certifikátu (Base64)** do **certifikátu podpisu zprostředkovatele identity**.
+
+    i. Klikněte na **použít**.
+
+### <a name="create-synerise-ai-growth-operating-system-test-user"></a>Vytvořit testovacího uživatele operačního systému Synerise AI
+
+V této části se v Synerise vytvoří uživatel s názvem Britta Simon. Synerise podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Synerise neexistuje, vytvoří se po ověření nový.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -135,19 +163,19 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 #### <a name="sp-initiated"></a>Zahájena SP:
 
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro zvětšování ekosystému Synerise AI, kde můžete spustit tok přihlášení.  
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Synerise, kde můžete spustit tok přihlášení.  
 
-* Přejít na adresu URL pro zvětšování ekosystému Synerise AI přímo a zahájit tok přihlášení.
+* Přejít na adresu URL pro přihlášení k Synerise přímo a zahájit tok přihlášení.
 
 #### <a name="idp-initiated"></a>Iniciované IDP:
 
-* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k ekosystému růstu Synerise AI, pro který jste nastavili jednotné přihlašování. 
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k Synerise, pro které jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici růst ekosystému Synerise AI v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k ekosystému Synerise AI, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Synerise v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Synerise, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Až nakonfigurujete růstový ekosystém Synerise AI, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Synerise můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 

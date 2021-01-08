@@ -3,7 +3,7 @@ title: Azure AD Connect Health-Diagnostika chyb synchronizace duplicitních atri
 description: Tento dokument popisuje proces diagnostiky chyb synchronizace duplicitních atributů a potenciální opravu scénářů osamoceného objektu přímo z Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278679"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016928"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -97,11 +97,11 @@ Tato otázka se pokusí identifikovat zdrojový objekt stávajícího uživatele
    - Pokud se objekt nenajde, odpovězte **Ano**.
 
 V těchto příkladech se dotaz pokusí zjistit, zda **Jana Jacksonův diagram** stále existuje v místní službě Active Directory.
-V případě **běžných scénářů**se v místní službě Active Directory nacházejí oba uživatelé **Jana Johnsonem** a **Jan Jacksonův diagram** . Objekty v karanténě jsou dva různí uživatelé.
+V případě **běžných scénářů** se v místní službě Active Directory nacházejí oba uživatelé **Jana Johnsonem** a **Jan Jacksonův diagram** . Objekty v karanténě jsou dva různí uživatelé.
 
 ![Běžný scénář diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-V **případě scénáře osamoceného objektu**je v místní službě Active Directory k dispozici pouze jeden uživatel **Jana Johnsonem** :
+V **případě scénáře osamoceného objektu** je v místní službě Active Directory k dispozici pouze jeden uživatel **Jana Johnsonem** :
 
 ![Diagnostika chyby synchronizace osamocený objekt * uživatel existuje * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -138,7 +138,7 @@ Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předt�
 **Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
 Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 **Č.** Co se stane, když dojde k chybě při **použití opravy** ?  
 **Určitého.** Pokud je spuštění neúspěšné, je možné, že Azure AD Connect spouští chybu exportu. Aktualizujte stránku portálu a zkuste to znovu po další synchronizaci. Výchozí cyklus synchronizace je 30 minut. 
 
@@ -148,7 +148,7 @@ Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Akt
 
 
 **Č.** Jaké oprávnění uživatel potřebuje k použití opravy?  
-**Určitého.** **Globální správce**nebo **Přispěvatel** z Azure RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
+**Určitého.** **Globální správce** nebo **Přispěvatel** z Azure RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
 
 
 **Č.** Je nutné nakonfigurovat Azure AD Connect nebo aktualizovat agenta Azure AD Connect Health pro tuto funkci?  
