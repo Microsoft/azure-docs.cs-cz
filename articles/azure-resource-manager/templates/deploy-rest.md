@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí REST API a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Správce prostředků REST API. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675407"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028960"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon ARM a Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ Můžete buď zahrnout šablonu do textu žádosti nebo odkaz na soubor. Při po
 
 Nasazení můžete cílit na skupinu prostředků, předplatné Azure, skupinu pro správu nebo tenanta. V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-* K nasazení do **skupiny prostředků** použijte [nasazení – vytvořit](/rest/api/resources/deployments/createorupdate). Požadavek se pošle na:
+- K nasazení do **skupiny prostředků** použijte [nasazení – vytvořit](/rest/api/resources/deployments/createorupdate). Požadavek se pošle na:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* K nasazení do **předplatného** použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Požadavek se pošle na:
+- K nasazení do **předplatného** použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Požadavek se pošle na:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné Azure, skupinu p
 
   Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-* Pro nasazení do **skupiny pro správu** použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Požadavek se pošle na:
+- Pro nasazení do **skupiny pro správu** použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Požadavek se pošle na:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné Azure, skupinu p
 
   Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
 
-* K nasazení do **tenanta** použijte [nasazení – vytvořit nebo aktualizovat v oboru tenanta](/rest/api/resources/deployments/createorupdateattenantscope). Požadavek se pošle na:
+- K nasazení do **tenanta** použijte [nasazení – vytvořit nebo aktualizovat v oboru tenanta](/rest/api/resources/deployments/createorupdateattenantscope). Požadavek se pošle na:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 
    V textu žádosti zadejte odkaz na šablonu a soubor parametrů. Další informace o souboru parametrů najdete v tématu [Vytvoření souboru parametrů Resource Manageru](parameter-files.md).
 
-   Všimněte si, že **režim** je nastaven na **přírůstkové** . Chcete-li spustit kompletní nasazení, nastavte **režim** na **dokončeno** . Buďte opatrní při použití kompletního režimu, protože můžete nechtěně odstranit prostředky, které nejsou ve vaší šabloně.
+   Všimněte si, že `mode` je nastavená na **přírůstkové**. Pokud chcete spustit kompletní nasazení, nastavte `mode` na **dokončeno**. Buďte opatrní při použití kompletního režimu, protože můžete nechtěně odstranit prostředky, které nejsou ve vaší šabloně.
 
    ```json
    {
@@ -122,9 +122,9 @@ Příklady v tomto článku používají nasazení skupin prostředků.
    }
    ```
 
-    Účet úložiště můžete nastavit tak, aby používal token sdíleného přístupového podpisu (SAS). Další informace najdete v tématu [delegování přístupu pomocí sdíleného přístupového podpisu](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Účet úložiště můžete nastavit tak, aby používal token sdíleného přístupového podpisu (SAS). Další informace najdete v tématu [delegování přístupu pomocí sdíleného přístupového podpisu](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-    Pokud potřebujete zadat citlivou hodnotu pro parametr (například heslo), přidejte tuto hodnotu do trezoru klíčů. Načtěte Trezor klíčů během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [Předání zabezpečených hodnot během nasazování](key-vault-parameter.md).
+    Pokud potřebujete zadat citlivou hodnotu pro parametr (například heslo), přidejte tuto hodnotu do trezoru klíčů. Načtěte Trezor klíčů během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](key-vault-parameter.md).
 
 1. Místo propojení se soubory pro šablonu a parametry je můžete zahrnout do textu žádosti. Následující příklad ukazuje tělo žádosti s vloženou šablonou a parametrem:
 
@@ -217,4 +217,3 @@ Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v histor
 - Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
 - Další informace o zpracování asynchronních operací REST najdete v tématu [sledování asynchronních operací Azure](../management/async-operations.md).
 - Další informace o šablonách najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
-

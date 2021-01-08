@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: zpracování formulářů, automatizované zpracování dat
-ms.openlocfilehash: f01adc472f94d679366af50c136ddc020b79b811
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808568"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029028"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů
 
-Začněte s nástrojem pro rozpoznávání formulářů v jazyce podle vašeho výběru. Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která umožňuje sestavovat automatizovaný software pro zpracování dat pomocí technologie strojového učení. Identifikujte a extrahujte páry text, klíč/hodnota a tabulková data z formuláře &mdash; . Tato služba obsahuje výstup strukturovaných dat, která zahrnují relace v původním souboru. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy. Klientská knihovna pro rozpoznávání formulářů je aktuálně cílena v 2.0 ze služby pro rozpoznávání.
+Začněte s nástrojem pro rozpoznávání formulářů v jazyce podle vašeho výběru. Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která umožňuje sestavovat automatizovaný software pro zpracování dat pomocí technologie strojového učení. Identifikujte a extrahujte páry text, klíč/hodnota a tabulková data z formuláře &mdash; . Tato služba obsahuje výstup strukturovaných dat, která zahrnují relace v původním souboru. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy. Klientská knihovna pro rozpoznávání formulářů je aktuálně cílena v 2.0 služby pro rozpoznávání formulářů.
 
 Pomocí klientské knihovny pro rozpoznávání formulářů:
 

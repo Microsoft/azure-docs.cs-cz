@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016928"
+ms.locfileid: "98028926"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
 
@@ -137,6 +137,9 @@ Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předt�
 
 **Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
 Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 
+
+**Procesu opravy se nepodařilo aktualizovat hodnoty.**
+Konkrétní nastavení, jako je například [UserWriteback v Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) , se nepodporuje. Zakažte prosím nastavení. 
 
 ## <a name="faq"></a>Nejčastější dotazy
 **Č.** Co se stane, když dojde k chybě při **použití opravy** ?  
