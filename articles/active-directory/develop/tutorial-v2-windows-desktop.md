@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0caac72125b28a9c6b17eb68413a7242df5cd06c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507689"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011641"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -104,7 +104,7 @@ Aplikaci můžete rychle zaregistrovat pomocí následujícího postupu:
 ### <a name="option-2-advanced-mode"></a>Možnost 2: rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

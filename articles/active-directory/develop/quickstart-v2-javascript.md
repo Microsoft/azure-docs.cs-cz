@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1d6f04b0d6dec06954c594434ac7a9db62f0c89e
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a084fd4c06dec61ee62df4f950cc6317f717d591
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762784"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011811"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -25,7 +25,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/)
@@ -37,7 +37,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) .
 > 1. Zadejte název své aplikace.
@@ -49,7 +49,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

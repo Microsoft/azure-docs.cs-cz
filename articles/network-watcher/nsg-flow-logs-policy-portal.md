@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 54b87da73d4427234e65e406d183525d55c6c00d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948540"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011097"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Rychlý Start: nasazení a správa protokolů toku NSG pomocí Azure Policy 
 
@@ -25,7 +25,7 @@ ms.locfileid: "94948540"
 Služba Azure Policy pomáhá vynutit standardy organizace a vyhodnotit dodržování předpisů s podporou škálování. Běžné případy použití pro Azure Policy zahrnují implementaci zásad správného řízení pro konzistenci prostředků, dodržování legislativních předpisů, zabezpečení, náklady a správu. V tomto článku použijeme dvě předdefinované zásady, které jsou dostupné pro protokoly toku NSG ke správě nastavení protokolů toku. První zásada označí všechny skupin zabezpečení sítě bez povolených protokolů Flow. Druhá zásada automaticky nasadí protokoly toku pro skupin zabezpečení sítě bez povolených protokolů Flow. 
 
 Pokud vytváříte zásady Azure poprvé, můžete si přečíst: 
-- [Přehled Azure Policy](../governance/policy/overview.md) 
+- [Přehled služby Azure Policy](../governance/policy/overview.md) 
 - [Kurz pro vytváření zásad](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)
 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560906"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011862"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform
 
@@ -48,32 +48,30 @@ V této části zaregistrujete webové rozhraní API v **Registrace aplikací** 
 
 Pokud chcete své aplikace zaregistrovat ručně, vyberte tenanta Azure Active Directory (Azure AD), ve kterém chcete své aplikace vytvořit.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD, vyberte profil v pravém horním rohu a pak vyberte **Přepnout adresář**.
 1. Změňte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 
 ### <a name="register-the-todolistservice-app"></a>Registrace aplikace TodoListService
 
-1. Přejít na portál Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Portal.
-1. Vyberte **Nová registrace**.
-1. Po otevření **stránky Registrovat aplikaci** zadejte informace o registraci vaší aplikace:
-
-    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například **AppModelv2-NativeClient-dotnet-TodoListService**.
-    1. U **podporovaných typů účtů** vyberte **účty v libovolném organizačním adresáři**.
-    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace, například `AppModelv2-NativeClient-DotNet-TodoListService` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+1. U **podporovaných typů účtů** vyberte **účty v libovolném organizačním adresáři**.
+1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a potom ji zaznamenejte pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt (to znamená `ClientId` v souboru *TodoListService\Web.config* ).
+1. V části **Spravovat** vyberte **zveřejnit rozhraní API**  >  **Přidat obor**. Přijměte navrhovaný identifikátor URI () ID aplikace ( `api://{clientId}` ) tak, že vyberete **Uložit a pokračovat** a pak zadáte následující informace:
 
-1. V části **vystavení rozhraní API** vyberte **Přidat obor** , přijměte navrhovaný identifikátor URI () navrhované aplikace `api://{clientId}` , a to tak, že vyberete **Uložit a pokračovat** a pak zadáte následující informace:
-
-    1. Jako **název oboru** zadejte **access_as_user**.
-    1. Pro **uživatele, kteří můžou vyjádřit souhlas** , se ujistěte, že je vybraná možnost **Správci a uživatelé** .
-    1. V poli **Zobrazovaný název souhlasu správce** zadejte **přístup TodoListService jako uživatel**.
-    1. V poli **Popis souhlasu správce** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.
-    1. Do pole **Zobrazovaný název souhlasu uživatele** zadejte **přístup TodoListService jako uživatel**.
-    1. Do pole **Popis souhlasu uživatele** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.
+    1. Jako **název oboru** zadejte `access_as_user` .
+    1. Pro **uživatele, kteří můžou vyjádřit souhlas**, se ujistěte, že je vybraná možnost **Správci a uživatelé** .
+    1. Do pole **Zobrazovaný název souhlasu správce** zadejte `Access TodoListService as a user` .
+    1. Do pole **Popis souhlasu správce** zadejte `Accesses the TodoListService web API as a user` .
+    1. Do pole **Zobrazovaný název souhlasu uživatele** zadejte `Access TodoListService as a user` .
+    1. Do pole **Popis souhlasu uživatele** zadejte `Accesses the TodoListService web API as a user` .
     1. V případě **stavu** nechte **Povolit**.
-    1. Vyberte **Přidat obor**.
+1. Vyberte **Přidat obor**.
 
 ### <a name="configure-the-service-project"></a>Konfigurace projektu služby
 
@@ -96,7 +94,7 @@ Chcete-li přidat nový obor do souboru *app.config* TodoListClient, postupujte 
 
 ## <a name="register-the-todolistclient-client-app"></a>Registrace klientské aplikace TodoListClient
 
-V této části zaregistrujete aplikaci TodoListClient v **Registrace aplikací** Azure Portal a potom nakonfigurujete kód v projektu TodoListClient. Pokud se klient a server považují za *stejnou aplikaci* , můžete aplikaci, která je zaregistrovaná v kroku 2, použít znovu. Stejnou aplikaci použijte v případě, že chcete, aby se uživatelé přihlásili pomocí osobního účtu Microsoft.
+V této části zaregistrujete aplikaci TodoListClient v **Registrace aplikací** Azure Portal a potom nakonfigurujete kód v projektu TodoListClient. Pokud se klient a server považují za *stejnou aplikaci*, můžete aplikaci, která je zaregistrovaná v kroku 2, použít znovu. Stejnou aplikaci použijte v případě, že chcete, aby se uživatelé přihlásili pomocí osobního účtu Microsoft.
 
 ### <a name="register-the-app"></a>Registrace aplikace
 
@@ -106,7 +104,7 @@ K registraci aplikace TodoListClient postupujte takto:
 1. Vyberte **Nová registrace**.
 1. Po otevření **stránky Registrovat aplikaci** zadejte informace o registraci vaší aplikace:
 
-    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace (například **NativeClient-dotnet-TodoListClient** ).
+    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace (například **NativeClient-dotnet-TodoListClient**).
     1. U **podporovaných typů účtů** vyberte **účty v libovolném organizačním adresáři**.
     1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 

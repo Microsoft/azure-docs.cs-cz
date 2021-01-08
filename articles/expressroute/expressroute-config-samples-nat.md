@@ -5,25 +5,25 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397490"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012661"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Ukázky konfigurace směrovače pro nastavení a správu překladu adres (NAT)
 
-Tato stránka poskytuje ukázky konfigurace NAT pro směrovače Cisco ASA a Juniper SRX Series při práci s ExpressRoute. Jsou určené jenom pro podrobné pokyny a nesmí se používat jako. S vaším dodavatelem můžete pracovat s odpovídajícími konfiguracemi pro vaši síť.
+Tento článek popisuje ukázky konfigurace NAT pro směrovače Cisco ASA a Juniper SRX Series při práci s ExpressRoute. Tyto konfigurace směrovače jsou určené jenom pro podrobné pokyny a nesmí se používat jako. Abyste mohli pracovat s odpovídajícími konfiguracemi pro vaši síť, budete muset spolupracovat se svým dodavatelem.
 
 > [!IMPORTANT]
 > Ukázky na této stránce jsou určené pouze pro doprovodné materiály. Musíte pracovat s prodejem a technickým týmem vašeho dodavatele a týmem vaší sítě, aby se dosáhlo správných konfigurací, které vyhovují vašim potřebám. Společnost Microsoft nebude podporovat problémy související s konfiguracemi uvedenými na této stránce. Pokud potřebujete problémy s podporou, obraťte se na dodavatele zařízení.
 > 
 > 
 
-* Níže uvedené ukázky konfigurace směrovače se vztahují na partnerské vztahy Azure a veřejné partnerské vztahy Microsoftu. Pro privátní partnerské vztahy Azure nesmíte nakonfigurovat překlad adres (NAT). Další podrobnosti najdete v požadavcích na [partnerské vztahy ExpressRoute](expressroute-circuit-peerings.md) a [ExpressRoute překladu adres (NAT)](expressroute-nat.md) .
+* Níže uvedené ukázky konfigurace směrovače se vztahují na partnerské vztahy Azure a veřejné partnerské vztahy Microsoftu. Nenakonfigurovali jste překlad adres (NAT) pro privátní partnerské vztahy Azure. Další podrobnosti najdete v požadavcích na [partnerské vztahy ExpressRoute](expressroute-circuit-peerings.md) a [ExpressRoute překladu adres (NAT)](expressroute-nat.md) .
 
 * Pro připojení k Internetu a ExpressRoute je nutné použít samostatné fondy IP adres NAT. Použití stejného fondu IP adres NAT v Internetu a ExpressRoute bude mít za následek asymetrické směrování a ztrátu připojení.
 
@@ -361,5 +361,5 @@ Přečtěte si ukázky na stránce [ukázky konfigurace směrování](expressrou
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

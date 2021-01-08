@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663525"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013528"
 ---
 # <a name="using-an-app-service-environment"></a>Použití App Service Environment
 
@@ -78,13 +78,20 @@ Adresa URL SCM se používá pro přístup ke konzole Kudu nebo k publikování 
 
 ### <a name="dns-configuration"></a>Konfigurace DNS 
 
-Nástroj pro příjem dat používá privátní koncové body pro příchozí provoz a je automaticky nakonfigurovaný pomocí Azure DNS privátní zóny. Pokud chcete použít vlastní server DNS, musíte přidat následující záznamy:
+Nástroj pro příjem dat používá soukromé koncové body. Nekonfiguruje se automaticky Azure DNS privátní zóny. Pokud chcete použít vlastní server DNS, musíte přidat následující záznamy:
 
 1. Vytvořte zónu pro &lt; název pomocného mechanismu &gt; . appserviceenvironment.NET
 1. v této zóně vytvořte záznam A, který odkazuje na příchozí IP adresu, kterou používá privátní koncový bod pro pomocného mechanismu.
 1. v této zóně vytvořte záznam A, který odkazuje na příchozí IP adresu, kterou používá privátní koncový bod pro pomocného mechanismu.
 1. vytvoření zóny v &lt; názvu pomocného mechanismu &gt; . appserviceenvironment.NET s názvem SCM
 1. Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu, kterou používá privátní koncový bod pro pomocného mechanismu.
+
+Postup při konfiguraci DNS v privátních zónách Azure DNS:
+
+1. vytvořit privátní zónu Azure DNS s názvem <ASE name> . appserviceenvironment.NET
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
 
 Nastavení DNS pro výchozí příponu vaší domény pomocného mechanismu přístupu neomezuje vaše aplikace tak, aby byly přístupné jenom pro tyto názvy. V pomocném mechanismu služby můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na příchozí IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese *&lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
 
@@ -101,7 +108,7 @@ Pomocí pomocného mechanismu pro přístup jsou koncové body publikování dos
 
 Bez dalších změn nebudou internetové systémy CI, jako je GitHub a Azure DevOps, fungovat s pomocným mechanismem interního nástroje, protože koncový bod publikování není přístupný na internetu. Publikování na interního nástroje pomocného mechanismu pro Azure můžete povolit z Azure DevOps tím, že ve virtuální síti nainstalujete samoobslužného agenta pro vydanou verzi, který obsahuje ovládací prvek interního nástroje. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 

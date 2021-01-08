@@ -3,27 +3,26 @@ title: Použití koncových bodů Azure Machine Learning Studio (Classic) v Azur
 description: Tento článek popisuje, jak používat funkce uživatelsky definovaného jazyka počítače v Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127123"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012521"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integrace Azure Machine Learning Studio (Classic) v Stream Analytics (Preview)
 Stream Analytics podporuje uživatelsky definované funkce, které volají koncové body Azure Machine Learning Studio (Classic). Podpora REST API pro tuto funkci je podrobně popsána v [knihovně Stream Analytics REST API](/rest/api/streamanalytics/). Tento článek poskytuje dodatečné informace potřebné k úspěšné implementaci této funkce v Stream Analytics. V [tomto](stream-analytics-machine-learning-integration-tutorial.md)kurzu je také publikovaný a dostupný.
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Přehled: terminologie Azure Machine Learning Studio (Classic)
-Microsoft Azure Machine Learning Studio (Classic) poskytuje nástroj pro spolupráci a přetahování, který můžete použít k sestavení, testování a nasazení prediktivních analytických řešení na vaše data. Tento nástroj se nazývá *Azure Machine Learning Studio (Classic)* . Studio (Classic) slouží k interakci s prostředky strojového učení a k snadnému sestavování, testování a iteraci v návrhu. Níže jsou uvedené prostředky a jejich definice.
+Microsoft Azure Machine Learning Studio (Classic) poskytuje nástroj pro spolupráci a přetahování, který můžete použít k sestavení, testování a nasazení prediktivních analytických řešení na vaše data. Tento nástroj se nazývá *Azure Machine Learning Studio (Classic)*. Studio (Classic) slouží k interakci s prostředky strojového učení a k snadnému sestavování, testování a iteraci v návrhu. Níže jsou uvedené prostředky a jejich definice.
 
-* **Pracovní prostor** : *pracovní prostor* je kontejner, který obsahuje všechny ostatní prostředky strojového učení společně v kontejneru pro správu a řízení.
-* **Experiment** : *experimenty* vytvářejí datové odborníky za účelem využití datových sad a výukového modelu strojového učení.
-* **Koncový bod** : *koncové body* jsou objekt Studio (Classic), který slouží k převzetí funkcí jako vstup, použití zadaného modelu Machine Learning a vrácení výstupu vraceného skóre.
-* Služba **bodování** : *Webová služba bodování* je kolekce koncových bodů, jak je uvedeno výše.
+* **Pracovní prostor**: *pracovní prostor* je kontejner, který obsahuje všechny ostatní prostředky strojového učení společně v kontejneru pro správu a řízení.
+* **Experiment**: *experimenty* vytvářejí datové odborníky za účelem využití datových sad a výukového modelu strojového učení.
+* **Koncový bod**: *koncové body* jsou objekt Studio (Classic), který slouží k převzetí funkcí jako vstup, použití zadaného modelu Machine Learning a vrácení výstupu vraceného skóre.
+* Služba **bodování**: *Webová služba bodování* je kolekce koncových bodů, jak je uvedeno výše.
 
 Každý koncový bod obsahuje rozhraní API pro spuštění dávky a synchronní spuštění. Stream Analytics používá synchronní spuštění. Konkrétní služba se nazývá [Služba požadavků a odpovědí](../machine-learning/classic/consume-web-services.md) v Azure Machine Learning Studio (Classic).
 
@@ -187,7 +186,7 @@ Nyní se v případě každé události vstupu do systému souborů UDF (zde naz
 ```
 
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky

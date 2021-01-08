@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: fe18513bbfc69fb63f8b1b248b7cf02ad55b467d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027369"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012963"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenční informace pro zápis výrazů pro mapování atributů v Azure AD
 
@@ -326,8 +326,8 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 | **přidělen** |Vyžadováno |Atribut |Vícehodnotový atribut, který má být prohledán |
 | **indexovacím** |Vyžadováno |Integer | Index položky v řetězci s více hodnotami|
 
-**Případě**
-`Item([proxyAddresses], 1)`
+**Příklad:** 
+ `Item([proxyAddresses], 1)` Vrátí druhou položku v vícehodnotovém atributu.
 
 ---
 ### <a name="join"></a>Spojit

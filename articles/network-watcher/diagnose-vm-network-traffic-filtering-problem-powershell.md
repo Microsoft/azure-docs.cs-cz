@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8483c0d3b112408091e10bd9b57451cf2378c859
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: de46d71127f992ea573d1f2d778afcb7f46ed3e6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494473"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013305"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure PowerShell
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

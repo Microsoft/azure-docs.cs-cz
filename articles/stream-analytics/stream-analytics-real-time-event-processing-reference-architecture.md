@@ -3,16 +3,15 @@ title: Zpracování událostí v reálném čase pomocí Azure Stream Analytics
 description: Tento článek popisuje referenční architekturu pro zajištění zpracování událostí a analýzy v reálném čase pomocí Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 0aa489e1732a8be564b3cefe1ed74d7aaacb1456
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 858ec5fef065acba6934945a96c21fb1c26b3685
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124420"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012083"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: zpracování událostí v reálném čase pomocí Microsoft Azure Stream Analytics
 Referenční architektura pro zpracování událostí v reálném čase s Azure Stream Analytics je určena k poskytnutí obecného podrobného plánu pro nasazení řešení pro zpracování datových proudů platformy jako služby (PaaS) v reálném čase pomocí Microsoft Azure.
@@ -43,7 +42,7 @@ Microsoft Azure poskytuje rozsáhlý katalog analytických technologií, které 
 
 **Stažení:** [zpracování událostí v reálném čase pomocí Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, zkuste [&stránku s otázkou pro Azure Stream Analytics](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky

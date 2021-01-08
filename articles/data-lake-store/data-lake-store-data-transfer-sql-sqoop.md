@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109183"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
@@ -24,7 +24,7 @@ Aplikace pro velké objemy dat jsou přirozenou volbou pro zpracování nestrukt
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm s velkými objemy dat, jako je například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je například Azure SQL Database do Data Lake Storage Gen1. Data pak můžete transformovat a analyzovat pomocí úloh s velkými objemy dat a pak je exportovat zpátky do RDBMS. V tomto článku použijete pro import/export do relační databáze databázi v Azure SQL Database.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -111,7 +111,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
     ```
 
-   Měl by se zobrazit následující výstup.
+   Měli byste vidět následující výstup.
 
     ```console
     -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
@@ -121,11 +121,11 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Každý soubor **s částí m-*** odpovídá řádku ve zdrojové tabulce ( **Tabulka1**). Můžete zobrazit obsah souborů částí m-*, které chcete ověřit.
+   Každý soubor **část-m-** _ odpovídá řádku ve zdrojové tabulce, _ *Tabulka1 * *. Můžete zobrazit obsah souboru části m* , který chcete ověřit.
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Export dat z Data Lake Storage Gen1 do Azure SQL Database
 
-1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2**v Azure SQL Database. Použijte následující syntaxi.
+1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2** v Azure SQL Database. Použijte následující syntaxi.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","

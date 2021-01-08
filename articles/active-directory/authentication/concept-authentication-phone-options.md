@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744189"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012831"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Metody ověřování v Azure Active Directory Možnosti telefonu
 
@@ -58,6 +58,8 @@ Pokud máte problémy s ověřováním pomocí telefonu pro Azure AD, přečtět
 
 * "Dosáhli jste limitu ověřovacích hovorů" nebo "při přihlašování jste dosáhli limitu pro ověřovací kódy textu".
    * Společnost Microsoft může v krátké době omezit opakované pokusy o ověření prováděné stejným uživatelem. Toto omezení se nevztahuje na Microsoft Authenticator nebo ověřovací kód. Pokud jste dosáhli těchto omezení, můžete použít ověřovací aplikaci, ověřovací kód nebo se pokusit znovu přihlásit za několik minut.
+* "Je nám líto, ale při přihlašování máme problémy s ověřením vašeho účtu.
+   * Společnost Microsoft může omezit nebo zablokovat pokusy o ověření hlasu nebo serveru SMS prováděné stejným uživatelem, telefonním číslem nebo organizací z důvodu vysokého počtu nezdařených pokusů o ověření hlasu nebo serveru SMS. Pokud se zobrazí tato chyba, můžete vyzkoušet jinou metodu, například ověřovací aplikaci nebo ověřovací kód, nebo se obrátit na správce a získat podporu.
 * Blokované ID volajícího na jednom zařízení.
    * Zkontrolujte všechna blokovaná čísla nakonfigurovaná na zařízení.
 * Chybné telefonní číslo nebo nesprávné číslo země/oblasti nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.

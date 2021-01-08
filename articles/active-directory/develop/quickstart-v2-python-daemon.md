@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3d4d671fed675de4cb2684d205f8e8b62d3b95cd
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: fb26acedc4a043ab84d02c142ecaa1dcfa94fd07
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107902"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011743"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -26,7 +26,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 > [!div renderon="docs"]
 > ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
@@ -52,13 +52,13 @@ K provedení této ukázky budete potřebovat:
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 > 1. Zadejte **název** vaší aplikace, například `Daemon-console` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 > 1. Vyberte **Zaregistrovat**.
-> 1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
+> 1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
 > 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**, zadejte název a pak vyberte **Přidat**. Poznamenejte si tajnou hodnotu v bezpečném umístění pro použití v pozdějším kroku.
 > 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. Vyberte **Microsoft Graph**.
 > 1. Vyberte **oprávnění aplikace**.

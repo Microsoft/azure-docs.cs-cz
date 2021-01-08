@@ -3,17 +3,16 @@ title: Řešení potíží s Azure Stream Analytics pomocí protokolů prostřed
 description: Tento článek popisuje, jak analyzovat protokoly prostředků v Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029137"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011114"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -136,7 +135,7 @@ Obecné události se týkají všech ostatních.
 
 Název | Popis
 -------- | --------
-Chybová | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
+Chyba | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu
 Typ | Typ zprávy Provede mapování na interní kategorizaci chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
 ID korelace | Identifikátor GUID, který jedinečně identifikuje provádění úlohy. Všechny položky protokolu spuštění od okamžiku spuštění úlohy, dokud úloha přestane mít stejnou hodnotu **ID korelace** .

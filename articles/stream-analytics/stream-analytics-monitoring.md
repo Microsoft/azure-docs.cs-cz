@@ -1,19 +1,18 @@
 ---
 title: Pochopení monitorování úloh v Azure Stream Analytics
 description: Tento článek popisuje, jak monitorovat úlohy Azure Stream Analytics v Azure Portal.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006674"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012457"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -27,7 +26,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 ![Řídicí panel monitorování úloh Stream Analytics](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Metriky dostupné pro Stream Analytics
-| Metric                 | Definice                               |
+| Metrika                 | Definice                               |
 | ---------------------- | ---------------------------------------- |
 | Nevyřízené události vstupu       | Počet nevyřízených vstupních událostí. Nenulová hodnota této metriky znamená, že vaše úloha nebude moci udržovat počet příchozích událostí. Pokud je tato hodnota pomalá nebo stále nenulová, měli byste škálovat svou úlohu. Další informace najdete v tématu [pochopení a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
 | Chyby převodu dat | Počet výstupních událostí, které nebylo možné převést na očekávané výstupní schéma. Chcete-li odstranit události, které se vyskytnou v tomto scénáři, můžete změnit zásady chyb na možnost drop. |
@@ -58,7 +57,7 @@ V nastavení úprav grafu můžete upravit typ grafu, zobrazené metriky a časo
 Další zajímavou datovou bodem pro monitorování vaší úlohy je čas posledního výstupu, který je zobrazený na stránce Přehled.
 Tentokrát je čas aplikace (tj. čas použití časového razítka z dat události) posledního výstupu úlohy.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky

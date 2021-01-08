@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031177"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011880"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
 
@@ -35,7 +35,7 @@ V tomto rychlém startu si stáhnete ukázku kódu ASP.NET Core webového rozhra
 >
 > Nejdřív Zaregistrujte webové rozhraní API ve vašem tenantovi Azure AD a přidejte obor pomocí následujících kroků:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

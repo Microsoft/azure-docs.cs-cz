@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 085ebcc147082ac78de9f8b97c810dee5bb1e96a
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 34af3a7b6c3dd9420c07b6b29ff114b8139fea39
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762801"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011964"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -26,7 +26,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Předpoklady
+> ## <a name="prerequisites"></a>Požadavky
 >
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) nebo [Visual Studio Code](https://code.visualstudio.com/)
 > * [.NET Core SDK 3.1 +](https://dotnet.microsoft.com/download)
@@ -47,7 +47,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

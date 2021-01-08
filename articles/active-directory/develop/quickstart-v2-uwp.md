@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 0398056c3182ec50a1ec170f64ff079633f70c68
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0257f4d97e0f6f7cef4907276423d9513568e027
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030548"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011703"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
@@ -47,7 +47,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

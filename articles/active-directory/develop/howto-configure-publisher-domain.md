@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129266"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013630"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Postupy: Konfigurace domény vydavatele aplikace
 
@@ -48,7 +48,7 @@ Pokud se vaše aplikace zaregistrovala před 21. května 2019, zobrazí se výzv
 
 Pokud chcete nastavit doménu vydavatele vaší aplikace, postupujte podle těchto kroků.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 
 1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
    1. V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.

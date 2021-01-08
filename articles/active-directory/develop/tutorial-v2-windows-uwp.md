@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1e8c7805cf9804e8380f8638781f9634d2d3d081
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509457"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011505"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 Nyní je nutné zaregistrovat aplikaci:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
@@ -357,7 +357,7 @@ Nyní je nutné zaregistrovat aplikaci:
 
 Konfigurace ověřování pro vaši aplikaci:
 
-1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat** vyberte **ověřování**  >  **Přidat platformu** a pak vyberte **mobilní a desktopové aplikace**.
+1. Zpátky v <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>v části **Spravovat** vyberte **ověřování**  >  **Přidat platformu** a pak vyberte **mobilní a desktopové aplikace**.
 1. V části **identifikátory URI pro přesměrování** ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Vyberte **Konfigurovat**.
 

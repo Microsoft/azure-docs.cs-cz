@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987162"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013290"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
 
@@ -30,12 +30,12 @@ Brána virtuální sítě připojuje virtuální síť Azure k místní síti ne
 > * Diagnostikovat potíže s připojením brány
 > * Vyřešit potíže s bránou
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat diagnostiku VPN, musí být spuštěná brána VPN. Pokud bránu VPN pro diagnostiku ještě nepoužíváte, můžete ji nasadit pomocí [skriptu PowerShellu](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Skript PowerShellu můžete spustit z těchto umístění:
 - **Místní instalace prostředí PowerShell**: skript vyžaduje `Az` modul Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, podívejte se na článek o [instalaci Azure PowerShellu](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
@@ -45,7 +45,7 @@ Vytvoření brány VPN pomocí tohoto skriptu trvá přibližně hodinu. Ve zbý
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
@@ -61,7 +61,7 @@ Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte
 ## <a name="diagnose-a-gateway"></a>Diagnostika brány
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **NÁSTROJE PRO DIAGNOSTIKU SÍTĚ** vyberte **Diagnostika VPN**.
 4. Vyberte **Účet úložiště** a pak vyberte účet úložiště, do kterého se mají zapisovat diagnostické informace.
 5. V seznamu **Účty úložiště** vyberte účet úložiště, který chcete použít. Pokud účet úložiště ještě nemáte, vytvořte ho tak, že vyberete **+ Účet úložiště**, zadáte nebo vyberete požadované informace a pak vyberete **Vytvořit**. Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavky](#prerequisites), můžete se rozhodnout, že účet úložiště vytvoříte ve stejné skupině prostředků *TestRG1*, která se používá pro tuto bránu.

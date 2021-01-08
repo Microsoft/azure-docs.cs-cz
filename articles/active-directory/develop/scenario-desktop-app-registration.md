@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614863"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011556"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: registrace aplikace
 
@@ -48,7 +48,7 @@ Identifikátor URI pro přesměrování, který se má použít v desktopové ap
 - Pokud vaše aplikace používá integrované ověřování systému Windows nebo uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky dovedou k přenosu koncového bodu Microsoft Identity Platform v 2.0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 - Chcete-li odlišit [tok kódu zařízení](scenario-desktop-acquire-token.md#device-code-flow), [integrované ověřování systému Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication)a [uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username-and-password) z aplikace důvěrného klienta pomocí toku přihlašovacích údajů klienta, který se používá v [aplikacích DÉMONA](scenario-daemon-overview.md), žádný z nich vyžaduje identifikátor URI přesměrování, je nutné jej nakonfigurovat jako veřejnou klientskou aplikací. Chcete-li dosáhnout této konfigurace:
 
-    1. V [Azure Portal](https://portal.azure.com)vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
+    1. V <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
     1. V části **Upřesnit nastavení**  >  **Povolit toky veřejného klienta**  >  **Povolte následující toky mobilních a desktopových toků:** vyberte **Ano**.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Povolit nastavení veřejného klienta v podokně ověřování v Azure Portal":::

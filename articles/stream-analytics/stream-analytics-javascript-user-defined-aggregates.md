@@ -3,17 +3,16 @@ title: Uživatelsky definované agregace JavaScriptu v Azure Stream Analytics
 description: Tento článek popisuje, jak provádět pokročilé mechanismy dotazů s uživatelsky definovanými agregacemi jazyka JavaScript v Azure Stream Analytics.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012474"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
  
@@ -83,7 +82,7 @@ Alias funkce je UDA identifikátor. Při volání v Stream Analytics dotaz vždy
 
 ### <a name="function-type"></a>Typ funkce
 
-V případě UDA by měl být typu funkce **JavaScript Uda** .
+V případě UDA by měl být typu funkce **JavaScript Uda**.
 
 ### <a name="output-type"></a>Typ výstupu
 
@@ -123,7 +122,7 @@ Níže jsme provedli proces vytvoření UDA z portálu. V příkladu, který zde
 Teď vytvoříme UDA JavaScriptu v existující úloze ASA pomocí následujících kroků.
 
 1. Přihlaste se k Azure Portal a vyhledejte stávající Stream Analytics úlohu.
-1. Pak klikněte na odkaz funkce v části **topologie úlohy** .
+1. Pak klikněte na odkaz funkce v části **topologie úlohy**.
 1. Kliknutím na ikonu **Přidat** přidejte novou funkci.
 1. V novém zobrazení funkce vyberte v editoru **Uda JavaScript** jako typ funkce a pak se zobrazí výchozí šablona Uda.
 1. Jako alias UDA zadejte "TWA" a změňte implementaci funkce následujícím způsobem:
@@ -224,7 +223,7 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 ]
 ```
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

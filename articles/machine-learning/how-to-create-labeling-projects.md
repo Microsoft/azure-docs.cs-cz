@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 087a7ead1ef5f9f46f5b81f8d42fcc0ea0209e61
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739650"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013273"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -54,7 +54,7 @@ Označování projektů je spravováno z Azure Machine Learning. Stránku s **po
 
 Pokud vaše data jsou už v úložišti objektů BLOB v Azure, měli byste je před vytvořením projektu s popisem zpřístupnit jako úložiště dat. Příklad použití úložiště dat najdete v tématu [kurz: vytvoření prvního projektu označení klasifikace obrázku](tutorial-labeling.md).
 
-Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projektu vhodný název a vyberte **typ úlohy označování**.
+Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projektu vhodný název a vyberte **typ úlohy označování**. Název projektu nemůže být znovu použit, i když je projekt odstraněn v budoucnu.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Průvodce vytvořením projektu s popisem":::
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 09ffe9948d14d0529756abd44c989dd83602b270
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762563"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011760"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování
 
@@ -30,7 +30,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > [!IMPORTANT]
 > Uzel MSAL [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [vytvoření předplatného Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -41,7 +41,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 > 1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.

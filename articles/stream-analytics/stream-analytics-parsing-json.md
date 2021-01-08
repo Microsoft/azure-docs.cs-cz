@@ -2,17 +2,17 @@
 title: Analýza JSON a AVRO v Azure Stream Analytics
 description: Tento článek popisuje, jak pracovat s komplexními datovými typy, jako jsou pole, JSON a formátovaná data ve formátu CSV.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123349"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012236"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** vybere vlastnost v *SensorReadings* , která název odpovídá názvu vlastnosti přicházejícímu z referenčních dat. Pak je extrahována přidružená hodnota z *SensorReadings* .
+**GetRecordPropertyValue** vybere vlastnost v *SensorReadings*, která název odpovídá názvu vlastnosti přicházejícímu z referenčních dat. Pak je extrahována přidružená hodnota z *SensorReadings* .
 
 Výsledek je následující:
 
@@ -207,7 +207,7 @@ Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níž
 
 Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. V těchto příkladech se používají funkce [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](/stream-analytics-query/apply-azure-stream-analytics) .
 
-Tady je příklad jedné události. `CustomSensor03`A `SensorMetadata` jsou typu **Array** :
+Tady je příklad jedné události. `CustomSensor03`A `SensorMetadata` jsou typu **Array**:
 
 ```json
 {

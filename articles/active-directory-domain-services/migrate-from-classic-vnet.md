@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619364"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013035"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
@@ -153,11 +153,11 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minut | Nepožaduje se žádný výpadek | – |
+| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | Nelze použít |
 | [Krok 2 – Příprava spravované domény na migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
-| [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
-| [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
-| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | – | Nepožaduje se žádný výpadek | – |
+| [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
+| [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | K dispozici jsou oba řadiče domény a měly by fungovat normálně, výpadky končí. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
+| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | Nelze použít | Nepožaduje se žádný výpadek | Nelze použít |
 
 > [!IMPORTANT]
 > Abyste se vyhnuli dalším výpadkům, přečtěte si tento článek a pokyny k migraci před zahájením procesu migrace. Proces migrace má na určitou dobu vliv na dostupnost řadičů domény Azure služba AD DS. Uživatelé, služby a aplikace se nemůžou během procesu migrace ověřit ve spravované doméně.
@@ -176,7 +176,7 @@ Než zahájíte proces migrace, proveďte následující počáteční kontroly 
 
     Azure služba AD DS potřebuje skupinu zabezpečení sítě k zabezpečení portů potřebných pro spravovanou doménu a blokování všech ostatních příchozích přenosů. Tato skupina zabezpečení sítě funguje jako dodatečná vrstva ochrany pro uzamknutí přístupu ke spravované doméně. Chcete-li zobrazit požadované porty, přečtěte si téma [skupiny zabezpečení sítě a požadované porty][network-ports].
 
-    Pokud používáte zabezpečený protokol LDAP, přidejte do skupiny zabezpečení sítě pravidlo, které povolí příchozí provoz pro *TCP* port TCP *636*. Další informace najdete v tématu [uzamčení zabezpečeného přístupu LDAP přes Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) .
+    Pokud používáte zabezpečený protokol LDAP, přidejte do skupiny zabezpečení sítě pravidlo, které povolí příchozí provoz pro  port TCP *636*. Další informace najdete v tématu [uzamčení zabezpečeného přístupu LDAP přes Internet](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) .
 
     Poznamenejte si tuto cílovou skupinu prostředků, cílovou virtuální síť a podsíť cílové virtuální sítě. Tyto názvy prostředků se používají během procesu migrace.
 
@@ -262,16 +262,14 @@ V této fázi můžete volitelně přesunout další existující prostředky z 
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>Testování a ověření připojení po migraci
 
-Může trvat nějakou dobu, než se druhý řadič domény úspěšně nasadí a bude k dispozici pro použití ve spravované doméně.
+Může trvat nějakou dobu, než se druhý řadič domény úspěšně nasadí a bude k dispozici pro použití ve spravované doméně. Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pomocí modelu nasazení Správce prostředků se v Azure Portal nebo Azure PowerShell zobrazí síťové prostředky pro spravovanou doménu. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
 
-Pomocí modelu nasazení Správce prostředků se v Azure Portal nebo Azure PowerShell zobrazí síťové prostředky pro spravovanou doménu. Další informace o tom, jaké jsou tyto síťové prostředky, najdete v tématu [síťové prostředky používané službou Azure služba AD DS][network-resources].
-
-Pokud je k dispozici alespoň jeden řadič domény, proveďte následující kroky konfigurace pro síťové připojení k virtuálním počítačům:
+Až bude druhý řadič domény k dispozici, proveďte následující kroky konfigurace pro síťové připojení k virtuálním počítačům:
 
 * **Aktualizovat nastavení serveru DNS** Pokud chcete umožnit jiným prostředkům ve Správce prostředků virtuální síti přeložit a používat spravovanou doménu, aktualizujte nastavení DNS pomocí IP adres nových řadičů domény. Azure Portal může tato nastavení automaticky nakonfigurovat.
 
     Další informace o tom, jak nakonfigurovat Správce prostředků virtuální síť, najdete v tématu [aktualizace nastavení DNS pro virtuální síť Azure][update-dns].
-* **Restartujte virtuální počítače připojené k doméně** – jako IP adresy serveru DNS pro řadiče domény služba AD DS Azure, restartujte všechny virtuální počítače připojené k doméně, aby pak používali nové nastavení serveru DNS. Pokud aplikace nebo virtuální počítače mají ručně nakonfigurovaná nastavení DNS, aktualizujte je ručně s novými IP adresami serveru DNS řadičů domény, které jsou uvedené v Azure Portal.
+* **Restartování virtuálních počítačů připojených k doméně (volitelné)** Vzhledem k tomu, že se IP adresy serveru DNS pro řadiče domény služba AD DS Azure mění, můžete restartovat všechny virtuální počítače připojené k doméně, aby pak používali nové nastavení serveru DNS. Pokud aplikace nebo virtuální počítače mají ručně nakonfigurovaná nastavení DNS, aktualizujte je ručně s novými IP adresami serveru DNS řadičů domény, které jsou uvedené v Azure Portal. Restartování virtuálních počítačů připojených k doméně zabraňuje problémům s připojením způsobeným IP adresami, které se neaktualizují.
 
 Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuálním počítači, který je připojený k virtuální síti Správce prostředků, nebo na něj partnerský vztah, vyzkoušejte následující testy komunikace v síti:
 
@@ -280,7 +278,7 @@ Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuáln
 1. Ověřte překlad názvů spravované domény, například `nslookup aaddscontoso.com`
     * Zadejte název DNS vlastní spravované domény, abyste ověřili, že jsou nastavení DNS správná a vyřešená.
 
-Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
+Další informace o dalších síťových prostředcích najdete v tématu [síťové prostředky používané službou Azure služba AD DS][network-resources].
 
 ## <a name="optional-post-migration-configuration-steps"></a>Volitelné kroky konfigurace po migraci
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107681"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011522"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
@@ -41,7 +41,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 > Portál, který se má použít, se liší v závislosti na tom, jestli vaše aplikace běží ve veřejném cloudu Microsoft Azure nebo v národním nebo svrchovaném cloudu. Další informace najdete v tématu [národní cloudy](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>. 
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
@@ -86,7 +86,7 @@ Ve výchozím nastavení ukázka používá:
    - **http://localhost:8080/msal4jsample/graph/me**
 
 1. Vyberte **Uložit**.
-1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta** a potom:
 
    1. Zadejte popis klíče.
@@ -102,7 +102,7 @@ Ve výchozím nastavení ukázka používá:
    1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování: **http://localhost:5000/getAToken** .
    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
-1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta** a potom:
    1. Zadejte popis klíče.
    1. Vyberte dobu trvání klíče **v intervalu 1 roku**.

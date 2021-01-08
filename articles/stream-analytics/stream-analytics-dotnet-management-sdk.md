@@ -3,17 +3,16 @@ title: Sada Management .NET SDK pro Azure Stream Analytics
 description: Začínáme se sadou Stream Analytics Management .NET SDK Přečtěte si, jak nastavit a spustit analytické úlohy. Vytvoření projektu, vstupů, výstupů a transformací.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126851"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012627"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: nastavení a spuštění analytických úloh pomocí rozhraní Azure Stream Analytics API pro .NET
 Naučte se, jak nastavit a spustit analytické úlohy pomocí rozhraní Stream Analytics API pro .NET pomocí sady Management .NET SDK. Nastavte projekt, vytvořte vstupní a výstupní zdroje, transformace a spusťte a zastavte úlohy. Pro úlohy analýzy můžete streamovat data z úložiště objektů BLOB nebo z centra událostí.
@@ -25,7 +24,7 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 > [!NOTE]
 > Aktualizovali jsme ukázkový kód v tomto článku se sadou Azure Stream Analytics Management .NET SDK V2 verze 2. x. Ukázku kódu pomocí sady SDK používá lagecy (1. x), viz [použití sady Management .NET SDK v1. x pro Stream Analytics]().
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete tento článek, musíte mít následující požadavky:
 
 * Nainstalujte Visual Studio 2019 nebo 2015.
@@ -167,7 +166,7 @@ Následující kód vytvoří úlohu Stream Analytics v rámci skupiny prostřed
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Vytvoření zdroje vstupu Stream Analytics
-Následující kód vytvoří Stream Analytics vstupní zdroj s typem zdroje vstupu a serializací CSV. Pokud chcete vytvořit zdroj vstupu centra událostí, použijte **EventHubStreamInputDataSource** místo **BlobStreamInputDataSource** . Podobně můžete přizpůsobit typ serializace zdroje vstupu.
+Následující kód vytvoří Stream Analytics vstupní zdroj s typem zdroje vstupu a serializací CSV. Pokud chcete vytvořit zdroj vstupu centra událostí, použijte **EventHubStreamInputDataSource** místo **BlobStreamInputDataSource**. Podobně můžete přizpůsobit typ serializace zdroje vstupu.
 
    ```csharp
    // Create an input
@@ -284,7 +283,7 @@ Metoda **Delete** Odstraní úlohu i podkladové dílčí prostředky, včetně 
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky

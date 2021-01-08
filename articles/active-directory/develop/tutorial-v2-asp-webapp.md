@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013647"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -374,7 +374,8 @@ Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci apl
    1. Změňte povolený protokol SSL na `True` .
    1. Klikněte pravým tlačítkem myši na projekt v aplikaci Visual Studio, vyberte možnost **vlastnosti** a pak vyberte kartu **Web** . V části **servery** změňte nastavení **adresy URL projektu** na **adresu URL SSL**.
    1. Zkopírujte adresu URL protokolu SSL. Tuto adresu URL přidáte do seznamu identifikátorů URI přesměrování v seznamu identifikátorů URI přesměrování v dalším kroku.<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+   
+1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

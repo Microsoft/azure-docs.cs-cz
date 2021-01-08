@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4ac8f87e8e19d3487859849ba37272c501751d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744376"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013001"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
@@ -140,6 +140,7 @@ Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých 
 | VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
 | KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
 | Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
+| Token2 Švýcarsko | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
 
 > [!NOTE]
 > Pokud si koupíte a plánujete používat klíče zabezpečení založené na technologii NFC, budete pro klíč zabezpečení potřebovat podporovanou čtečku NFC. Čtečka NFC není požadavkem nebo omezením Azure. Seznam podporovaných čtecích zařízení NFC vám poskytne dodavatel s klíčem zabezpečení na NFC.

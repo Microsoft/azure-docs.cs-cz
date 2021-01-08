@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663621"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013480"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment sítě
 
@@ -27,14 +27,18 @@ ASEv3 používá dvě podsítě.  Pro soukromý koncový bod, který zpracováv�
 ## <a name="addresses"></a>Adresy 
 Při vytváření pomocného nástroje má následující adresy:
 
-| Typ adresy | description |
+| Typ adresy | Popis |
 |--------------|-------------|
 | Příchozí adresa | Příchozí adresa je adresa privátního koncového bodu, kterou používá váš pomocným mechanismem řízení. |
 | Odchozí podsíť | Odchozí podsíť je taky podsíť pomocného mechanismu. Ve verzi Preview se tato podsíť používá jenom pro odchozí přenosy. |
 | Odchozí adresa pro Windows | Aplikace pro Windows v tomto pomocném formuláři budou ve výchozím nastavení používat tuto adresu při odchozím volání na Internet. |
 | Odchozí adresa pro Linux | Aplikace pro Linux v této službě pomocného mechanismu budou ve výchozím nastavení používat tuto adresu při odchozích voláních na Internet. |
 
-Pokud odstraníte privátní koncový bod používaný pomocným mechanismem, nebudete se moct spojit s aplikacemi ve vašem přihlašování. Neodstraňujte Azure DNS privátní zónu přidruženou k vašemu pomocnému programu.  
+ASEv3 obsahuje podrobnosti o adresách využívaných pomocným mechanismem v části **IP adresy** na portálu pomocného programu.
+
+![Uživatelské rozhraní adres pomocného uživatelského rozhraní](./media/networking/networking-ip-addresses.png)
+
+Pokud odstraníte privátní koncový bod používaný pomocným mechanismem, nebudete se moct spojit s aplikacemi ve vašem přihlašování.  
 
 Pomocného nástroje používá adresy v odchozí podsíti k podpoře infrastruktury používané pomocným mechanismem řízení. Při škálování App Service plánů v pomocném mechanismu služby budete používat víc adres. Aplikace v pomocném modulu pro přihlášení nemají ve výstupní podsíti vyhrazené adresy. Adresy používané aplikací v odchozí podsíti aplikací se v průběhu času mění.
 
@@ -48,7 +52,7 @@ Na rozdíl od ASEv2 s ASEv3 můžete nastavit skupiny zabezpečení sítě (skup
 
 ## <a name="dns"></a>DNS
 
-Aplikace ve vašem pomocném formuláři budou používat DNS, se kterými je vaše virtuální síť nakonfigurovaná. Pokud chcete, aby některé aplikace používaly jiný server DNS, můžete je ručně nastavit na základě jednotlivých aplikací s nastavením aplikace WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER. Nastavení aplikace WEBSITE_DNS_ALT_SERVER nakonfiguruje sekundární server DNS. Sekundární server DNS se používá jenom v případě, že není k dispozici žádná odpověď z primárního serveru DNS. 
+Aplikace ve vašem pomocném formuláři budou používat DNS, se kterými je vaše virtuální síť nakonfigurovaná. Postupujte podle pokynů v části [použití App Service Environment](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) ke konfiguraci serveru DNS tak, aby odkazoval na váš pokyn pro přihlášení k systému. Pokud chcete, aby některé aplikace používaly jiný server DNS, než je vaše virtuální síť nakonfigurovaná pomocí, můžete ji ručně nastavit na základě aplikace s nastavením aplikace WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER. Nastavení aplikace WEBSITE_DNS_ALT_SERVER nakonfiguruje sekundární server DNS. Sekundární server DNS se používá jenom v případě, že není k dispozici žádná odpověď z primárního serveru DNS. 
 
 ## <a name="preview-limitation"></a>Omezení verze Preview
 
