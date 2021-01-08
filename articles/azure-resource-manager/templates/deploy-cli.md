@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676185"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028144"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -18,13 +18,13 @@ Příkazy nasazení změněné v Azure CLI verze 2.2.0. Příklady v tomto člá
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, můžete použít Cloud Shell. Další informace najdete v tématu [Nasazení šablon ARM z Cloud Shell](deploy-cloud-shell.md).
+Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, můžete použít Azure Cloud Shell. Další informace najdete v tématu [Nasazení šablon ARM z Azure Cloud Shell](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Rozsah nasazení
 
 Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro správu nebo tenanta. V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-* Pokud ho chcete nasadit do **skupiny prostředků** , použijte příkaz [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create):
+* Pokud ho chcete nasadit do **skupiny prostředků**, použijte příkaz [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create):
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
@@ -38,7 +38,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 
   Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-* Pokud ho chcete nasadit do **skupiny pro správu** , použijte příkaz [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
+* Pokud ho chcete nasadit do **skupiny pro správu**, použijte příkaz [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -169,7 +169,7 @@ K předání hodnot parametrů můžete použít buď vložené parametry, nebo 
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Chcete-li předat vložené parametry, zadejte hodnoty v `parameters` . Například pro předání řetězce a pole do šablony je bash shell, použijte:
+Chcete-li předat vložené parametry, zadejte hodnoty v `parameters` . Například pro předání řetězce a pole do šablony v prostředí bash použijte:
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 Získání hodnoty parametru ze souboru je užitečné v případě, že potřebujete zadat konfigurační hodnoty. Můžete například zadat [hodnoty Cloud-init pro virtuální počítač se systémem Linux](../../virtual-machines/linux/using-cloud-init.md).
 
-arrayContent.jsve formátu:
+_arrayContent.jsve_ formátu:
 
 ```json
 [
@@ -228,7 +228,7 @@ Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás
 
 Další informace o souboru parametrů najdete v tématu [Vytvoření souboru parametrů Resource Manageru](parameter-files.md).
 
-Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem storage.parameters.jsv.
+Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem _storage.parameters.jsv_.
 
 ```azurecli-interactive
 az deployment group create \
@@ -240,7 +240,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Příklad:
+Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Například:
 
 ```json
 {

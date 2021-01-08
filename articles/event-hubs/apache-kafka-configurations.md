@@ -2,13 +2,13 @@
 title: Doporučené konfigurace pro klienty Apache Kafka – Azure Event Hubs
 description: Tento článek poskytuje doporučené konfigurace Apache Kafka pro klienty, kteří pracují s Azure Event Hubs pro Apache Kafka.
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096644"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028824"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Doporučené konfigurace pro klienty Apache Kafka
 Tady jsou doporučené konfigurace pro používání Azure Event Hubs z Apache Kafka klientských aplikací. 
@@ -79,7 +79,7 @@ Podívejte se na následující tabulku běžných scénářů chyb souvisejíc�
 
 Příznaky | Problém | Řešení
 ----|---|-----
-Posun neúspěšných potvrzení kvůli novému vyrovnávání | Váš příjemce čeká mezi voláními na dotazování () příliš dlouho a služba vychází ze skupiny příjemců. | Máte několik možností: <ul><li>prodloužit časový limit relace</li><li>snížit velikost dávky zprávy a zrychlit zpracování</li><li>Vylepšete paralelní zpracování, aby nedošlo k blokování příjemce. dotazování ()</li></ul> Použití některé kombinace tří je nejspíš wisest.
+Posun neúspěšných potvrzení kvůli novému vyrovnávání | Váš příjemce čeká mezi voláními na dotazování () příliš dlouho a služba vychází ze skupiny příjemců. | Máte několik možností: <ul><li>Zvýšit časový limit zpracování dotazů ( `max.poll.interval.ms` )</li><li>Snížit velikost dávky zprávy a zrychlit zpracování</li><li>Vylepšete paralelní zpracování, aby nedošlo k blokování příjemce. dotazování ()</li></ul> Použití některé kombinace tří je nejspíš wisest.
 Výjimky sítě při vysoké propustnosti | Používáte pro klienta Java + výchozí hodnotu max. Request. Size?  Vaše požadavky můžou být moc velké. | Viz Konfigurace jazyka Java výše.
 
 ## <a name="next-steps"></a>Další kroky

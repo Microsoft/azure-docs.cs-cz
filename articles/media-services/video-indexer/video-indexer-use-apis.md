@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636941"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028173"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
@@ -29,8 +29,10 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
 ## <a name="subscribe-to-the-api"></a>Přihlášení k odběru rozhraní API
 
 1. Přihlaste se k portálu [Video Indexer Developer Portal](https://api-portal.videoindexer.ai/).
+
+    Přečtěte si poznámku k verzi týkající se [přihlašovacích informací](release-notes.md#october-2020).
     
-    ![Přihlášení k Video Indexer portálu pro vývojáře](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Přihlášení k Video Indexer portálu pro vývojáře](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Musíte použít stejného zprostředkovatele, jakého jste použili při registraci k Video Indexeru.
@@ -40,14 +42,14 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
 
     Vyberte kartu [produkty](https://api-portal.videoindexer.ai/products) . Pak vyberte autorizace a přihlášení k odběru.
     
-    ![Karta produkty na portálu pro vývojáře Video Indexer](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Karta produkty na portálu pro vývojáře Video Indexer](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > Noví uživatelé jsou k odběru API Authorization automaticky přihlášení.
     
-    Po přihlášení k odběru můžete najít předplatné v části autorizace **produktů**  ->  **Authorization**. Na stránce předplatné najdete primární a sekundární klíče. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (. js,. html atd.).
+    Po přihlášení k odběru můžete najít předplatné v části autorizace **produktů**  ->  . Na stránce předplatné najdete primární a sekundární klíče. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (. js,. html atd.).
 
-    ![Předplatné a klíče na portálu pro vývojáře Video Indexer](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Předplatné a klíče na portálu pro vývojáře Video Indexer](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Uživatelé Video Indexeru se můžou pomocí jednoho klíče předplatného připojit k několika účtům Video Indexeru. Tyto účty Video Indexeru můžete propojit s různými účty Media Services.
@@ -64,7 +66,7 @@ Každé volání do API Operations by mělo být přidružené k přístupovému
 
 Můžete řídit, jestli jsou tyto tokeny jen pro čtení, nebo pokud umožňují úpravy zadáním **allowEdit = true/false**.
 
-Pro většinu scénářů mezi servery budete pravděpodobně používat stejný token **účtu** , protože zahrnuje operace s **účty** a **video** operace. Pokud ale plánujete, že na straně klienta chcete Video Indexer (například z JavaScriptu), budete chtít použít token přístupu k **videu** , abyste klientům zabránili v získání přístupu k celému účtu. To je také důvod, proč při vkládání Video Indexer kódu klienta do klienta (například pomocí **widgetu Get Insights** nebo **Get widget Player** ) musíte zadat přístupový token **videa** .
+Pro většinu scénářů mezi servery budete pravděpodobně používat stejný token **účtu** , protože zahrnuje operace s **účty** a **video** operace. Pokud ale plánujete, že na straně klienta chcete Video Indexer (například z JavaScriptu), budete chtít použít token přístupu k **videu** , abyste klientům zabránili v získání přístupu k celému účtu. To je také důvod, proč při vkládání Video Indexer kódu klienta do klienta (například pomocí **widgetu Get Insights** nebo **Get widget Player**) musíte zadat přístupový token **videa** .
 
 Kvůli usnadnění můžete pomocí **Autorization** API > **GetAccounts** získat účty bez předchozího získání tokenu uživatele. Můžete také požádat o získání účtů s platnými tokeny. To vám umožní přeskočit další volání pro získání tokenu účtu.
 
@@ -76,7 +78,7 @@ Jste připraveni zahájit integraci s rozhraním API. Najděte si [podrobný pop
 
 Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID účtu je globálně jedinečný identifikátor, který se dá získat jedním z těchto způsobů:
 
-* K získání ID účtu použijte **web Video Indexer** :
+* K získání ID účtu použijte **web Video Indexer**:
 
     1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
     2. Přejděte na stránku **Settings** (Nastavení).

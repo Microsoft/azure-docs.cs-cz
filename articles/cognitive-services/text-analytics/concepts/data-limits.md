@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965098"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028127"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ V tomto článku najdete omezení velikosti a tarify, které můžete použít k
 | Maximální velikost jednoho dokumentu ( `/analyze` koncový bod)  | 125K znaky měřené [StringInfo. lengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Neplatí pro Analýza textu pro stav. |
 | Maximální velikost celého požadavku | 1 MB. Platí také pro Analýza textu pro stav. |
 
-Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte. `/analyze`Koncový bod zamítne celý požadavek, pokud nějaký dokument překročí maximální velikost (125K znaků).
+
+Pokud dokument překročí limit znaků, rozhraní API se bude chovat různě v závislosti na koncovém bodu, který používáte:
+
+* `/analyze` Služba
+  * Rozhraní API zamítne celý požadavek a vrátí chybu, `400 bad request` Pokud v něm dojde k překročení maximální velikosti dokumentu.
+* Všechny ostatní koncové body:  
+  * Rozhraní API nezpracuje dokument, který překračuje maximální velikost, a vrátí pro něj neplatnou chybu dokumentu. Pokud má požadavek rozhraní API více dokumentů, rozhraní API bude pokračovat ve zpracování, pokud jsou v rámci limitu znaků.
+
+Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte, což je popsáno v následující tabulce.
 
 #### <a name="version-3"></a>[Verze 3](#tab/version-3)
 

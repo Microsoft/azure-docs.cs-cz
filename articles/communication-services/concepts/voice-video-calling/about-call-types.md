@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572707"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028756"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
 
@@ -49,8 +49,8 @@ Podporujeme H. 264 (MPEG-4).
 V nativních sadách (iOS, Android) SDK podporujeme až v plném rozsahu HD 1080p. Pro web (JS) SDK podporujeme Standard HD 720p. Kvalita závisí na dostupné šířce pásma.  
 
 ### <a name="rooms-concept"></a>Koncept místností
-Místnosti jsou sada rozhraní API a sad SDK, které vám umožňují snadno přidat zvuk, video, sdílení obrazovky, veřejné telefonní rozhraní a spolupráci služby SMS na váš web nebo nativní aplikaci.
-V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můžete vytvořit tolik ID skupiny, kolik potřebujete, a oddělit uživatele podle "místností". Přesunutím do popředí zavedete více ovládacích prvků kolem "místností". 
+Místnosti jsou sadou rozhraní API a sad SDK, které vám umožňují snadno přidat zvuk, video, sdílení obrazovky, veřejné servery a interakce služby SMS na váš web nebo nativní aplikaci.
+V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můžete vytvořit tolik ID skupin, kolik potřebujete, a oddělit uživatele podle "místností". Přesunutím do popředí zavedete více ovládacích prvků kolem "místností". 
 
 ## <a name="next-steps"></a>Další kroky
 

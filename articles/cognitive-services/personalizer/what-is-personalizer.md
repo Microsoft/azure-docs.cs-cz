@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094144"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028773"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
-Přizpůsobování Azure je cloudová služba, která umožňuje vašim aplikacím zvolit nejlepší položku obsahu pro zobrazení uživatelů. Pomocí služby přizpůsobené aplikace můžete určit, který produkt má navrhnout, aby se nakupující, nebo zjistit optimální pozici reklamy. Po zobrazení obsahu uživatelem systém monitoruje chování uživatele v reálném čase a oznamuje skóre nevrácení se službou přizpůsobené službě. Tím se zajistí nepřetržité vylepšování modelu Machine Learning a možnost přizpůsobování výběru nejlepší položky obsahu na základě kontextových informací, které obdrží.
+Přizpůsobování Azure je cloudová služba, která umožňuje vašim aplikacím zvolit nejlepší položku obsahu pro zobrazení uživatelů. Pomocí služby přizpůsobené aplikace můžete určit, který produkt má navrhnout, aby se nakupující, nebo zjistit optimální pozici reklamy. Po zobrazení obsahu uživateli aplikace monitoruje reakci uživatele a oznámí skóre pro odměnu zpátky službě přizpůsobené služby. Tím se zajistí nepřetržité vylepšování modelu Machine Learning a možnost přizpůsobování výběru nejlepší položky obsahu na základě kontextových informací, které obdrží.
 
 > [!TIP]
 > Obsah je libovolná jednotka informací, například text, obrázky, adresa URL, e-maily nebo cokoli jiného, co chcete vybrat a zobrazit pro uživatele.
@@ -65,7 +65,7 @@ Přizpůsobené přizpůsobování, pomocí kterého se dá vybrat jedna nejlep�
 
 Použít přizpůsobeného přizpůsobování obsahu:
 
-* Pro výběr z má omezená sada položek (max. ~ 50). Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) , který zmenší seznam na 50 položek.
+* Má v každé události přizpůsobení omezená sada akcí nebo položek (max. ~ 50). Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) , abyste snížili seznam na 50 položek pro pokaždé, když zavoláte do služby přizpůsobeného přizpůsobování pořadí.
 * Obsahuje informace popisující obsah, který chcete seřadit: _akce s funkcemi_ a _funkcemi kontextu_.
 * Má minimálně ~ 1 tisíc události související s obsahem pro přizpůsobení, aby byly účinné. Pokud přizpůsobený modul neobdrží potřebný minimální provoz, služba trvá déle a určí jednu nejlepší položku obsahu.
 
@@ -94,7 +94,7 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
     |--|--|
     |Uživatel zvolil nejlepší, jednu položku _obsahu_ (ID akce pro odměnu).|**1**|
     |Uživatel vybral jiný obsah.|**0**|
-    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0,5**|
+    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0.5**|
 
     1. Přidejte volání **odměňování** , které posílá skóre odměňování od 0 do 1.
         * Hned po zobrazení obsahu
@@ -113,7 +113,7 @@ Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejt
 * [Kurz: použití přizpůsobeného prostředí v robotu chatu pro .NET](tutorial-use-personalizer-chat-bot.md)
 * [Kurz: použití individuálního nastavení v poznámkovém bloku Azure](tutorial-use-azure-notebook-generate-loop-data.md)
 
-## <a name="reference"></a>Referenční informace 
+## <a name="reference"></a>Reference 
 
 * [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)

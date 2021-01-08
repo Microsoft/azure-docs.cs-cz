@@ -4,12 +4,12 @@ description: Přečtěte si, jak implementovat monitorování stavu pomocí roz�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562118"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028416"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
@@ -72,6 +72,9 @@ Zde je kód, který implementuje funkci:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
+
 ---
 
 Tato funkce Orchestrator provádí následující akce:
@@ -83,8 +86,7 @@ Tato funkce Orchestrator provádí následující akce:
 5. Vytvoří trvalý časovač pro pokračování orchestrace při dalším intervalu dotazování. Ukázka používá pevně zakódované hodnoty pro zkrácení.
 6. Pokračuje v běhu, dokud aktuální čas UTC neprojde časem vypršení platnosti monitoru, nebo se pošle výstraha SMS.
 
-Více instancí nástroje Orchestrator lze spustit současně voláním funkce Orchestrator vícekrát. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat.
-
+Více instancí nástroje Orchestrator lze spustit současně voláním funkce Orchestrator vícekrát. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat. Nakonec mějte na paměti, že funkce Orchestrator není při čekání na *časovač spuštěná* , takže se za ni nebudete účtovat.
 ### <a name="e3_getisclear-activity-function"></a>Funkce aktivity E3_GetIsClear
 
 Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají `activityTrigger` vazbu triggeru. Funkce **E3_GetIsClear** získává aktuální povětrnostní podmínky pomocí rozhraní API pro počasí, které určuje, zda je nebe jasný.
@@ -102,6 +104,9 @@ Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi
 A zde je implementace.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
 
 ---
 
@@ -125,6 +130,9 @@ Jeho *function.jsv systému* je jednoduchý:
 A zde je kód, který odesílá zprávu SMS:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
 
 ---
 
@@ -169,7 +177,7 @@ Aktivitu orchestrace si můžete prohlédnout v protokolech funkce na portálu A
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažení časového limitu nebo se zjistí vymazání Skies. Můžete také použít `TerminateAsync` (.NET) nebo `terminate` (JavaScript) uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který se odkazuje v odpovědi 202, nahrazuje `{text}` se důvodem ukončení:
+Orchestrace se dokončí po dosažení časového limitu nebo se zjistí vymazání Skies. Rozhraní API můžete použít také `terminate` uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který odkazuje odpověď 202 výše. Chcete-li použít Webhook, nahraďte `{text}` důvod pro předčasné ukončení. Adresa URL POST protokolu HTTP bude vypadat přibližně takto:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

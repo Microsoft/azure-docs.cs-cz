@@ -1,18 +1,18 @@
 ---
 title: Nasazení šablon pomocí Cloud Shell
-description: K nasazení prostředků do Azure použijte Azure Resource Manager a Cloud Shell. Prostředky jsou definované v šabloně Azure Resource Manager.
+description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure Cloud Shell. Prostředky jsou definované v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681440"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028603"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>Nasazení šablon ARM z Cloud Shell
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Nasazení šablon ARM z Azure Cloud Shell
 
-Pomocí [Cloud Shell](../../cloud-shell/overview.md) můžete nasadit šablonu Azure Resource Manager (šablona ARM). Můžete nasadit buď šablonu ARM, která je uložená vzdáleně, nebo šablonu ARM, která je uložená v místním účtu úložiště pro Cloud Shell.
+Pomocí [Azure Cloud Shell](../../cloud-shell/overview.md) můžete nasadit šablonu Azure Resource Manager (šablona ARM). Můžete nasadit buď šablonu ARM, která je uložená vzdáleně, nebo šablonu ARM, která je uložená v místním účtu úložiště pro Cloud Shell.
 
 Můžete nasadit do libovolného oboru. Tento článek ukazuje nasazení do skupiny prostředků.
 
@@ -54,7 +54,7 @@ Pokud chcete nasadit externí šablonu, zadejte identifikátor URI šablony pře
 
 Pokud chcete nasadit místní šablonu, musíte nejdřív odeslat šablonu do účtu úložiště, který je připojený k vaší Cloud Shell relaci.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
@@ -62,27 +62,27 @@ Pokud chcete nasadit místní šablonu, musíte nejdřív odeslat šablonu do ú
 
 1. Vyberte účet úložiště pro službu Cloud Shell.
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Výběr účtu úložiště":::
 
-1. Vyberte **sdílení souborů** .
+1. Vyberte **sdílení souborů**.
 
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Vybrat sdílené složky":::
 
 1. Vyberte výchozí sdílení souborů pro Cloud Shell. Sdílená složka má formát názvu `cs-<user>-<domain>-com-<uniqueGuid>` .
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Výchozí sdílení souborů":::
 
 1. Přidejte nový adresář, do kterého budou uloženy vaše šablony. Vyberte tento adresář.
 
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Přidání adresáře":::
 
-1. Vyberte **Nahrát** .
+1. Vyberte **Nahrát**.
 
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Nahrát šablonu":::
 
 1. Vyhledejte a nahrajte vaši šablonu.
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Otevření Cloud Shellu":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Vybrat šablonu":::
 
 1. Otevřete příkazový řádek Cloud Shell.
 

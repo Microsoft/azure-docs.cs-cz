@@ -7,20 +7,20 @@ author: tamram
 ms.author: tamram
 ms.devlang: dotnet
 ms.topic: overview
-ms.date: 04/23/2018
+ms.date: 01/07/2021
 ms.subservice: tables
-ms.openlocfilehash: 73813ae06858df62a88a08bb2f4f8f9f49940b1a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 292104651c6bb9b63e9d8cbe26fea2bf8c6acbf1
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316175"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027736"
 ---
 # <a name="what-is-azure-table-storage-"></a>Co je Azure Table Storage? 
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Azure Table Storage je služba, která ukládá strukturovaná data NoSQL do cloudu a poskytuje úložiště klíčů/atributů s návrhem bez použití schématu. Vzhledem k tomu, že je Table Storage bez schématu, je snadné data přizpůsobovat měnícím se potřebám vaší aplikace. Přístup k datům Table Storage je pro mnoho typů aplikací rychlý a nákladově efektivní a pro podobné objemy dat obvykle znamená nižší náklady než tradiční SQL.
+Azure Table Storage je služba, která ukládá nerelační strukturovaná data (označovaná také jako strukturovaná data NoSQL) v cloudu a poskytuje úložiště klíčů a atributů s návrhem bez schématu. Vzhledem k tomu, že je Table Storage bez schématu, je snadné data přizpůsobovat měnícím se potřebám vaší aplikace. Přístup k datům Table Storage je pro mnoho typů aplikací rychlý a nákladově efektivní a pro podobné objemy dat obvykle znamená nižší náklady než tradiční SQL.
 
 Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení nebo dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit a účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
 

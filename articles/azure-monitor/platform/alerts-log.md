@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696058"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028994"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -33,7 +33,7 @@ Pravidla upozornění protokolů můžete vytvořit také pomocí šablon Azure 
 
 Tady je postup, jak začít psát dotazy na výstrahy:
 
-1. Přejít na prostředek, na kterém byste chtěli upozornit.
+1. Přejít na prostředek, na kterém byste chtěli upozornit. Pokud je to možné, zvažte nastavení pravidel upozornění na více prostředků výběrem předplatného nebo rozsahu skupiny prostředků. Upozornění na více prostředků snižuje náklady a nutnost spravovat více pravidel výstrah.
 1. V části **monitorování** vyberte **protokoly**.
 1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
 1. Kliknutím na tlačítko + nové pravidlo výstrahy spustíte tok vytváření výstrah.
@@ -55,7 +55,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Výstrahy protokolu můžou být založené na dvou typech [**měr**](alerts-unified-log.md#measure):
     1. **Počet výsledků** – počet záznamů vrácených dotazem.
-    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Například:
+    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Příklad:
 
     ```Kusto
     // Reported errors
@@ -155,7 +155,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
     1. V případě potřeby vyberte v případě potřeby možnost [rozdělování výstrah podle dimenzí](alerts-unified-log.md#split-by-alert-dimensions): 
        - **Sloupec ID prostředku** je vybrán automaticky, pokud byl zjištěn, a změní kontext výstrahy aktivované na prostředek záznamu. 
        - Pokud chcete aktivovat výstrahy pro předplatné nebo skupiny prostředků, můžete zrušit výběr **sloupce ID prostředku** . Zrušení výběru je užitečné v případě, že výsledky dotazu jsou založené na různých prostředcích. Například dotaz, který kontroluje, jestli 80% virtuálních počítačů ve skupině prostředků má vysoké využití procesoru.
-       - V tabulce Dimensions lze také vybrat až šest dalších rozdělení pro libovolný typ sloupce Number nebo text.
+       - Pro libovolný typ sloupce Number nebo text se dá vybrat také až šest dalších rozdělení pomocí tabulky Dimensions.
        - Výstrahy se aktivují samostatně podle rozdělení na základě jedinečných kombinací a datové části výstrahy obsahují tyto informace.
     
         ![Výběr parametrů agregace a rozdělení](media/alerts-log/select-aggregation-parameters-and-splitting.png)

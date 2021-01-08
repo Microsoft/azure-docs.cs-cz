@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904709"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027719"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí prostředí PowerShell
 
@@ -265,7 +265,7 @@ Pokud je připravená konfigurace dobrá, můžete přesunout prostředky vpřed
 Po dokončení migrace virtuálních počítačů proveďte před migrací účtů úložiště následující kontroly požadovaných součástí.
 
 > [!NOTE]
-> Pokud váš účet úložiště nemá žádné přidružené disky ani data virtuálních počítačů, můžete přejít přímo na oddíl ověřit účty úložiště a zahájit migraci.
+> Pokud váš účet úložiště nemá žádné přidružené disky ani data virtuálních počítačů, můžete přejít přímo na oddíl ověřit účty úložiště a zahájit migraci. Všimněte si také, že odstranění klasických disků, image virtuálních počítačů nebo image operačních systémů neodstraní zdrojové soubory VHD v účtu úložiště. Nicméně přeruší zapůjčení těchto souborů VHD, aby se po migraci mohli znovu použít k vytváření disků ARM nebo imagí.
 
 * Kontroly předpokladů při migraci všech virtuálních počítačů nebo účtu úložiště mají diskové prostředky:
     * Migrujte virtuální počítače, jejichž disky jsou uložené v účtu úložiště.

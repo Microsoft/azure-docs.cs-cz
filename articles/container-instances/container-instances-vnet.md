@@ -4,12 +4,12 @@ description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existují
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746893"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028875"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak pomocí příkazu [AZ Container Create][az-con
 Informace o scénářích a omezeních sítě najdete v tématu [scénáře a prostředky virtuální sítě pro Azure Container Instances](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro kontejnery Linux ve většině oblastí, kde je Azure Container Instances k dispozici. Podrobnosti najdete v tématu věnovaném [oblastem a dostupnosti prostředků](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro kontejnery Linux ve většině oblastí, kde je Azure Container Instances k dispozici. Podrobnosti najdete v tématu věnovaném [oblastem a dostupnosti prostředků][container-regions]. 
 
 Příklady v tomto článku jsou formátované pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, upravte odpovídajícím způsobem řádky pro pokračování řádku.
 
@@ -69,7 +69,7 @@ Nasazení skupiny kontejnerů do existující virtuální sítě:
 
 Následující příklad nasadí druhou skupinu kontejnerů do stejné podsítě vytvořené dříve a ověří komunikaci mezi dvěma instancemi kontejneru.
 
-Nejdřív Získejte IP adresu první skupiny kontejnerů, kterou jste nasadili, a *kontejneru AppContainer* :
+Nejdřív Získejte IP adresu první skupiny kontejnerů, kterou jste nasadili, a *kontejneru AppContainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -139,7 +139,7 @@ Ukázkový výstup:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml* . V části `networkProfile` nahraďte `id` hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
+Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml*. V části `networkProfile` nahraďte `id` hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ Tato funkce v současnosti vyžaduje několik dalších příkazů k odstraněn�
 Před spuštěním skriptu nastavte `RES_GROUP` proměnnou na název skupiny prostředků obsahující virtuální síť a podsíť, kterou chcete odstranit. Pokud jste nepoužili dříve navržený název, aktualizujte název virtuální sítě `aci-vnet` . Skript je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit proměnnou přiřazení a přistupující objekty.
 
 > [!WARNING]
-> Tento skript odstraní prostředky. Odstraní virtuální síť a všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *žádné* prostředky ve virtuální síti, včetně všech podsítí, které obsahuje, před spuštěním tohoto skriptu. Po odstranění se **tyto prostředky neobnoví** .
+> Tento skript odstraní prostředky. Odstraní virtuální síť a všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *žádné* prostředky ve virtuální síti, včetně všech podsítí, které obsahuje, před spuštěním tohoto skriptu. Po odstranění se **tyto prostředky neobnoví**.
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -238,3 +238,4 @@ Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny k
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

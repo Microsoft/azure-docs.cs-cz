@@ -3,23 +3,23 @@ title: Tlačítko pro nasazení do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185721"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028739"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
-Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru README.md v úložišti GitHub. Nebo můžete přidat tlačítko na webovou stránku, která odkazuje na úložiště.
+Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru _Readme.MD_ v úložišti GitHub. Nebo můžete přidat tlačítko na webovou stránku, která odkazuje na úložiště.
 
 Rozsah nasazení je určen schématem šablony. Další informace najdete tady:
 
-* [skupiny prostředků](deploy-to-resource-group.md)
-* [odběru](deploy-to-subscription.md)
-* [skupiny pro správu](deploy-to-management-group.md)
-* [tenantů](deploy-to-tenant.md)
+- [skupiny prostředků](deploy-to-resource-group.md)
+- [odběru](deploy-to-subscription.md)
+- [skupiny pro správu](deploy-to-management-group.md)
+- [tenantů](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Použít běžný obrázek
 
@@ -78,7 +78,7 @@ Máte úplnou adresu URL odkazu.
 
 Obvykle je tato šablona hostována ve veřejném úložišti. Používáte-li privátní úložiště, je nutné zahrnout token pro přístup k nezpracovanému obsahu šablony. Token vygenerovaný GitHubem je platný jenom pro krátkou dobu. Tento odkaz byste často museli aktualizovat.
 
-Pokud používáte [Git se Azure Repos](/azure/devops/repos/git/) místo úložiště GitHub, můžete pořád použít tlačítko nasadit do Azure. Ujistěte se, že je vaše úložiště veřejné. K získání šablony použijte [operaci Items (položky](/rest/api/azure/devops/git/items/get) ). Vaše žádost by měla být v následujícím formátu:
+Pokud používáte [Git se Azure Repos](/azure/devops/repos/git/) místo úložiště GitHub, můžete pořád použít tlačítko **nasadit do Azure** . Ujistěte se, že je vaše úložiště veřejné. K získání šablony použijte [operaci Items (položky](/rest/api/azure/devops/git/items/get) ). Vaše žádost by měla být v následujícím formátu:
 
 ```http
 https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
@@ -90,7 +90,7 @@ Zakódovat tuto adresu URL požadavku.
 
 Nakonec vložte odkaz a obrázek dohromady.
 
-Pokud chcete přidat tlačítko s Markdownu do souboru README.md v úložišti GitHubu nebo na webové stránce, použijte:
+Pokud chcete přidat tlačítko s Markdownu do souboru _Readme.MD_ v úložišti GitHubu nebo na webové stránce, použijte:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -122,4 +122,4 @@ Portál zobrazí podokno, které umožňuje snadno zadat hodnoty parametrů. Par
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o šablonách naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+- Další informace o šablonách najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

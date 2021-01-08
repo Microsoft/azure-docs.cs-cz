@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c8c479050b434904de57397e5e7d73594090e031
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336127"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027757"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Kanál změn ve službě Azure Cosmos DB
-[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+[!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
 
 Změna kanálu v Azure Cosmos DB je trvalý záznam změn kontejneru v pořadí, ve kterém se vyskytují. Podpora kanálu změn ve službě Azure Cosmos DB funguje díky naslouchání změnám kontejneru Azure Cosmos. Výstupem je pak seznam změněných dokumentů v pořadí podle času úprav. Trvalé změny lze zpracovávat asynchronně a přírůstkově a výstup lze distribuovat mezi jednoho nebo více příjemců pro paralelní zpracování.
 
@@ -26,12 +26,12 @@ Přečtěte si další informace o [vzorech návrhu kanálu změn](change-feed-d
 
 Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozhraní API a klientské sady SDK.
 
-| **Klientské ovladače** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní Gremlin API**|**Rozhraní Table API** |
+| **Klientské ovladače** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní API pro Gremlin**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Yes | Yes | Yes | Yes | No |
-|Java|Yes|Yes|Yes|Yes|No|
-|Python|Yes|Yes|Yes|Yes|No|
-|Uzel/JS|Yes|Yes|Yes|Yes|No|
+| .NET | Ano | Ano | Ano | Ano | Ne |
+|Java|Ano|Ano|Ano|Ano|Ne|
+|Python|Ano|Ano|Ano|Ano|Ne|
+|Uzel/JS|Ano|Ano|Ano|Ano|Ne|
 
 ## <a name="change-feed-and-different-operations"></a>Změna kanálu a různých operací
 

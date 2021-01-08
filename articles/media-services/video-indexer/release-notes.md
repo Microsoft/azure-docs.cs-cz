@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916656"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028637"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -44,12 +44,15 @@ Video Indexer podporuje detekci, seskupení a rozpoznávání znaků v animovan�
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Authenticatication změny na webu plánovaného Video Indexer
 
-Od 1. ledna 2021 se už nebudete moct zaregistrovat a přihlásit k webu [video indexer](https://www.videoindexer.ai/) (nabídka zkušební verze) pomocí Facebooku nebo LinkedInu.
+Od 1. března 2021 už nebudete moct se zaregistrovat a přihlásit se k webu [video indexer](https://www.videoindexer.ai/) pomocí Facebooku nebo LinkedInu.
 
 Budete se moct zaregistrovat a přihlásit pomocí některého z těchto poskytovatelů: Azure AD, Microsoft a Google.
 
 > [!NOTE]
-> Doporučujeme exportovat obsah do 1. ledna 2021, protože se odstraní účty připojené k LinkedInu a Facebooku a obsah už nebude přístupný.
+> Účty Video Indexer připojené k LinkedInu a Facebooku nebudou dostupné po 1. březnu 2021. 
+> 
+> Měli byste [pozvat](invite-users.md) e-maily Azure AD, Microsoft nebo Google na účet video indexer, abyste k němu měli přístup i nadále.<br/>
+> Případně můžete vytvořit placený účet a migrovat data.
 
 ## <a name="august-2020"></a>Srpen 2020
 

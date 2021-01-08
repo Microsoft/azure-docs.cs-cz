@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e551925bbd1426256a81ac2ca3f245af7697245b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791048"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028008"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s SQL Database dynamické maskování dat s využitím Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92791048"
 V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dynamic-data-masking-overview.md) pomocí Azure Portal. Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](/powershell/module/az.sql/) nebo [REST API](/rest/api/sql/).
 
 > [!NOTE]
-> Tuto funkci nejde nastavit pomocí portálu pro Azure synapse (použijte PowerShell nebo REST API) nebo spravovanou instanci SQL. Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
+> Tuto funkci nelze nastavit pomocí portálu pro spravovanou instanci SQL (použijte PowerShell nebo REST API). Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Nastavení dynamického maskování dat pro vaši databázi pomocí Azure Portal
 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dyn
 
     ![Snímek obrazovky zobrazující stránku konfigurace pravidla maskování](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Vyberte **schéma** , **tabulku** a **sloupec** pro definování určeného pole pro maskování.
+6. Vyberte **schéma**, **tabulku** a **sloupec** pro definování určeného pole pro maskování.
 7. **Vyberte, jak se má maskovat** ze seznamu kategorií pro maskování citlivých dat.
 
     ![Snímek obrazovky zobrazující kategorie citlivých dat v části Výběr způsobu maskování](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)

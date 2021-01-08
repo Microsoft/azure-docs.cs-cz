@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/05/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014864"
+ms.locfileid: "98028467"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | Nelze použít         | Podporováno   |
+| Osobní účet Microsoft | –         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -87,10 +87,12 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 | `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": "Josef"                   | Podporováno v MSA a Azure AD.  Vyžaduje `profile` obor. |
 | `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k jedinečným informacím identity uživatele (například jako klíč databáze). Místo toho použijte ID objektu uživatele ( `oid` ) jako klíč databáze. Uživatelům přihlašování pomocí [alternativního přihlašovacího ID](../authentication/howto-authentication-use-email-signin.md) by se neměl zobrazovat hlavní název uživatele (UPN). Místo toho použijte následující `preferred_username` deklaraci identity pro zobrazení stavu přihlášení uživateli. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . Vyžaduje `profile` obor.|
 
+## <a name="v10-specific-optional-claims-set"></a>volitelná sada deklarací pro specifickou verzi v 1.0
+
+Některá vylepšení formátu tokenu v2 jsou dostupná pro aplikace, které používají formát tokenu V1, protože mohou zvýšit zabezpečení a spolehlivost. Neprojeví se pro tokeny ID požadované z koncového bodu v2 ani pro přístup k tokenům pro rozhraní API, která používají formát tokenu v2. Platí to jenom pro JWTs tokeny SAML. 
 
 **Tabulka 4: v 1.0 – nepovinné deklarace identity**
 
-Některá vylepšení formátu tokenu v2 jsou dostupná pro aplikace, které používají formát tokenu V1, protože mohou zvýšit zabezpečení a spolehlivost. Neprojeví se pro tokeny ID požadované z koncového bodu v2 ani pro přístup k tokenům pro rozhraní API, která používají formát tokenu v2. 
 
 | Deklarace JWT     | Název                            | Popis | Poznámky |
 |---------------|---------------------------------|-------------|-------|
@@ -149,7 +151,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Vyberte typ tokenu, který chcete konfigurovat.
 1. Vyberte volitelné deklarace, které se mají přidat.
-1. Vyberte **Přidat**.
+1. Vyberte **Add** (Přidat).
 
 > [!NOTE]
 > Okno **Konfigurace tokenu** možností uživatelského rozhraní není k dispozici pro aplikace zaregistrované v klientovi Azure AD B2C. U aplikací zaregistrovaných v tenantovi B2C lze volitelné deklarace identity nakonfigurovat úpravou manifestu aplikace. Další informace najdete v tématu [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
@@ -272,7 +274,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Například:
+   Příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

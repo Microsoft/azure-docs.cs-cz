@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322491"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028059"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurace Global Reach ExpressRoute pomocí Azure CLI
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Identifikujte okruhy ExpressRoute pro konfiguraci.
 
-Můžete povolit ExpressRoute Global Reach mezi dvěma ExpressRoute okruhy, pokud se nacházejí v podporovaných zemích nebo oblastech a vytvořily se v různých umístěních partnerských vztahů. Pokud vaše předplatné vlastní oba okruhy, můžete zvolit buď okruh, aby se konfigurace spustila, jak je vysvětleno dále v tomto článku. Pokud se dva okruhy nacházejí v různých předplatných Azure, musíte mít autorizaci z jednoho předplatného Azure a musí se předat autorizační klíč při spuštění příkazu konfigurace v jiném předplatném Azure.
+ExpressRoute Global Reach můžete povolit mezi dvěma ExpressRoute okruhy. Okruhy musí být v podporovaných zemích nebo oblastech a vytvořily se v různých umístěních partnerských vztahů. Pokud vaše předplatné vlastní oba okruhy, můžete pro spuštění konfigurace vybrat buď okruh. Pokud se ale dva okruhy nacházejí v různých předplatných Azure, musíte vytvořit autorizační klíč z jednoho z okruhů. Pomocí autorizačního klíče vygenerovaného z prvního okruhu můžete povolit Global Reach pro druhý okruh.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Umožnění připojení mezi místními sítěmi
 
@@ -58,7 +58,7 @@ Při spuštění příkazu pro povolení připojení si všimněte následujíc�
 
   > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *předpona adresy* musí být podsíť IPv4 "/29" (například "10.0.0.0/29"). IP adresy v této podsíti používáme k navázání připojení mezi dvěma okruhy ExpressRoute. V této podsíti nesmíte v Azure Virtual Networks ani v místních sítích používat adresy.
+* *předpona adresy* musí být podsíť IPv4 "/29" (například "10.0.0.0/29"). IP adresy v této podsíti používáme k navázání připojení mezi dvěma okruhy ExpressRoute. V této podsíti nemůžete používat adresy v Azure Virtual Networks ani v místních sítích.
 
 Spusťte následující příkaz rozhraní příkazového řádku, abyste připojili dva okruhy ExpressRoute:
 
@@ -94,7 +94,7 @@ Po dokončení této operace budete mít propojení mezi místními sítěmi na 
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Povolení připojení mezi okruhy ExpressRoute v různých předplatných Azure
 
-Pokud tyto dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat autorizaci. V následující konfiguraci vygenerujete autorizaci v rámci předplatného okruhu 2 a předá autorizační klíč k okruhu 1.
+Pokud tyto dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat autorizaci. V následující konfiguraci vygenerujete autorizaci v rámci předplatného okruhu 2. Potom předáte autorizační klíč do okruhu 1.
 
 1. Vygenerujte autorizační klíč:
 

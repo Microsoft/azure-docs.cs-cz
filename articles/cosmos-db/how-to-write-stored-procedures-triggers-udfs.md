@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018998"
+ms.locfileid: "98028858"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Zápis triggerů
 
-Azure Cosmos DB podporuje před triggery a po triggerech. Před změnou položky databáze se spustí předběžné triggery před úpravou položky databáze a následnými triggery. Triggery nejsou automatické. Musí být zadány pro každou databázovou operaci, kde má být provedena.
+Azure Cosmos DB podporuje před triggery a po triggerech. Před změnou položky databáze se spustí předběžné triggery před úpravou položky databáze a následnými triggery. Triggery nejsou spouštěny automaticky, musí být zadány pro každou databázovou operaci, kterou chcete provést. Po definování triggeru byste měli [zaregistrovat a volat předběžnou Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) pomocí sad Azure Cosmos DB SDK.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>Předběžné triggery
 

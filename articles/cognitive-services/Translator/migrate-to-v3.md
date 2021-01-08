@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364271"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028229"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migrace překladatelů v2 na V3
 
 > [!NOTE]
-> Verze V2 byla zastaralá od 30. dubna 2018. Pokud chcete využívat nové funkce, které jsou k dispozici výhradně v v3, migrujte prosím své aplikace na v3.
-> 
-> Centrum Microsoft Translator bude vyřazení z 17. května 2019. [Zobrazení důležitých informací a dat migrace](https://www.microsoft.com/translator/business/hub/).  
+> Verze V2 byla zastaralá od 30. dubna 2018. Pokud chcete využívat nové funkce, které jsou k dispozici výhradně v v3, migrujte prosím své aplikace na v3. Verze v2 bude vyřazena 24. května 2021. 
 
 Tým Microsoft Translator vydala verzi 3 (V3) překladatele. Tato verze zahrnuje nové funkce, zastaralé metody a nový formát pro odesílání a příjem dat ze služby Microsoft Translator. Tento dokument poskytuje informace pro změnu aplikace na použití v3. 
 
@@ -118,8 +116,8 @@ Neuronové překladu s rozhraním textového API V3 nepodporuje použití standa
 
 | Verze | Koncový bod | Dodržování předpisů pro procesory GDPR | Použít centrum překladatelů | Použít vlastní překladatele (Preview) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Překladatel verze 2|    api.microsofttranslator.com|    No    |Yes    |No|
-|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Yes|    No|    Yes|
+|Překladatel verze 2|    api.microsofttranslator.com|    Ne    |Ano    |Ne|
+|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Ano|    Ne|    Ano|
 
 **Překladatel verze 3**
 * Je všeobecně dostupná a plně podporovaná.
