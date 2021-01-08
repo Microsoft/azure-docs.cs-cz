@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/11/2017
+ms.topic: reference
+ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858225"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020668"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Zobrazení aplikací pomocí tenanta Azure AD pro správu identit
 Základní informace [o řadě rychlý Start při správě aplikací](view-applications-portal.md) vás seznámí se základy. V takovém případě se dozvíte, jak zobrazit všechny aplikace pomocí tenanta Azure AD pro správu identit. Tento článek komentáře trochu hlubších typů aplikací, které najdete.
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Proč se v seznamu všechny aplikace zobrazuje konkrétní aplikace?
-Při filtrování na **všechny aplikace** zobrazuje seznam **všechny aplikace** **List** všechny objekty instančních objektů ve vašem tenantovi. Objekty zabezpečení služby se můžou v tomto seznamu zobrazit různými způsoby:
+Při filtrování na **všechny aplikace** zobrazuje seznam **všechny aplikace**  všechny objekty instančních objektů ve vašem tenantovi. Objekty zabezpečení služby se můžou v tomto seznamu zobrazit různými způsoby:
 - Když přidáte libovolnou aplikaci z Galerie aplikací, včetně:
    - **Azure AD – podnikové aplikace** – aplikace přidané do vašeho tenanta pomocí možnosti **podnikové aplikace** na portálu Azure AD. Obvykle se aplikace integrují pomocí standardu SAML.
    - **Azure AD-registrace aplikací** – aplikace přidané do vašeho tenanta pomocí možnosti **Registrace aplikací** na portálu Azure AD. Obvykle vlastní vyvíjené aplikace s využitím standardů Open ID Connect a OAuth.

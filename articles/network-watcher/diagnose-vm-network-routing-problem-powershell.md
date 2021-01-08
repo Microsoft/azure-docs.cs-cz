@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6569a99ec851da478151665921e7689e1c3488f1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738783"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020192"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure PowerShell
 
 V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Po několika sekundách vám výstup informuje o tom, že je **typem** **Internet**a že **RouteTableId** je **systémovou trasou**. Tento výsledek vám umožní zjistit, zda existuje platná trasa k cíli.
+Po několika sekundách vám výstup informuje o tom, že je **typem** **Internet** a že **RouteTableId** je **systémovou trasou**. Tento výsledek vám umožní zjistit, zda existuje platná trasa k cíli.
 
 Otestujte odchozí komunikaci z virtuálního počítače na IP adresu 172.31.0.100:
 
@@ -106,7 +106,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Vrácený výstup vás informuje o tom, že **žádný** je **typem**a že **RouteTableId** je také **systémovou trasou**. Tento výsledek říká, že i když existuje trasa systému do cíle, neexistuje žádné další směrování, které by do cíle směrovalo provoz.
+Vrácený výstup vás informuje o tom, že **žádný** je **typem** a že **RouteTableId** je také **systémovou trasou**. Tento výsledek říká, že i když existuje trasa systému do cíle, neexistuje žádné další směrování, které by do cíle směrovalo provoz.
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
@@ -131,7 +131,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Jak vidíte v předchozím výstupu, trasa s **AddressPrefix** s **hodnotou 0.0.0.0/0** směruje veškerý provoz, který není určený pro adresy v rámci předpon adres jiných tras s dalším segmentem směrování **Internetu**. Jak vidíte ve výstupu, i když je výchozí trasa k předponě 172.16.0.0/12, která zahrnuje adresu 172.31.0.100, **typem** je **none**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud jste například přidali rozsah adres 172.16.0.0/12 do adresního prostoru virtuální sítě, Azure změní **typem** na **virtuální síť** pro trasu. Při kontrole se pak jako **typem**zobrazí **virtuální síť** .
+Jak vidíte v předchozím výstupu, trasa s **AddressPrefix** s **hodnotou 0.0.0.0/0** směruje veškerý provoz, který není určený pro adresy v rámci předpon adres jiných tras s dalším segmentem směrování **Internetu**. Jak vidíte ve výstupu, i když je výchozí trasa k předponě 172.16.0.0/12, která zahrnuje adresu 172.31.0.100, **typem** je **none**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud jste například přidali rozsah adres 172.16.0.0/12 do adresního prostoru virtuální sítě, Azure změní **typem** na **virtuální síť** pro trasu. Při kontrole se pak jako **typem** zobrazí **virtuální síť** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

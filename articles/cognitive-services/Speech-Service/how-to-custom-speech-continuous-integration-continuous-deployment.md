@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591612"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020600"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD pro Custom Speech
 
@@ -83,7 +83,7 @@ Pro už implementované řešení DevOps pro Custom Speech se můžete dostat do
 [Úložiště šablon pro rozpoznávání řeči DevOps](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) poskytuje infrastrukturu a podrobné pokyny k těmto akcím:
 
 - Zkopírujte úložiště šablon do svého účtu GitHubu a pak vytvořte prostředky Azure a [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) pro pracovní postupy CI/CD akcí GitHubu.
-- Projděte si "[vnitřní smyčka pro vývoj](https://mitchdenny.com/the-inner-loop/)". Aktualizace školení a testování dat z větve funkcí, testování změn pomocí dočasného vývojového modelu a získání žádosti o přijetí změn pro návrh a kontrolu změn.
+- Projděte si "[vnitřní smyčka pro vývoj](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)". Aktualizace školení a testování dat z větve funkcí, testování změn pomocí dočasného vývojového modelu a získání žádosti o přijetí změn pro návrh a kontrolu změn.
 - V případě, že se školicí data v žádosti o přijetí změn aktualizují na *Hlavní*, provedou se modely s pracovními postupy pro akce GitHubu.
 - Proveďte automatizované testování přesnosti, aby se navázala [míra chyb ve wordovém](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) modelu (WER). Výsledky testů uložte do objektu blob Azure.
 - Spusťte pracovní postup CD pro vytvoření koncového bodu, když se služba WER vylepšuje.

@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží se vstupy pro Azure Stream Analytics
 description: Tento článek popisuje techniky řešení potíží se vstupními připojeními v Azure Stream Analytics úlohách.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123281"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019903"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -71,7 +70,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujte takto:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte centrum událostí.
 
@@ -79,7 +78,7 @@ Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujt
 
 4. Vyberte centrum událostí podle názvu.
 
-5. Na stránce **Event Hubs instance** pod nadpisem **entity** vyberte **skupiny uživatelů** . V seznamu je uvedena skupina uživatelů s názvem **$Default** .
+5. Na stránce **Event Hubs instance** pod nadpisem **entity** vyberte **skupiny uživatelů**. V seznamu je uvedena skupina uživatelů s názvem **$Default** .
 
 6. Vyberte **+ Skupina uživatelů** a přidejte novou skupinu příjemců. 
 
@@ -165,7 +164,7 @@ SELECT foo FROM DataTwo
 
 Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

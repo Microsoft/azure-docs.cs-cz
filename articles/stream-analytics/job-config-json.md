@@ -1,17 +1,17 @@
 ---
 title: JobConfig.jsAzure Stream Analytics pro pole
 description: V tomto článku jsou uvedena podporovaná pole pro Azure Stream Analytics JobConfig.jsv souboru, který slouží k vytváření úloh v Visual Studio Code.
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0eebd0b62e973572a40b7b141ae908046700ba3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129333"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020481"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>JobConfig.jsAzure Stream Analytics pro pole
 
@@ -44,13 +44,13 @@ Následující pole jsou podporovaná v *JobConfig.jspro* soubor, který se pou�
 |EventsLateArrivalMaxDelayInSeconds|integer|No|Maximální přípustná prodleva v sekundách, kdy mohou být zahrnuty události přicházející pozdě. Podporovaný rozsah je-1 až 1814399 (20.23:59:59 dní) a-1 se používá k určení čekání na neomezenou dobu. Pokud vlastnost chybí, je interpretována tak, aby měla hodnotu-1.|
 |EventsOutOfOrderMaxDelayInSeconds|integer|No|Maximální přípustná prodleva v sekundách, kdy se události mimo pořadí dají upravit tak, aby se znovu nastavily.|
 |EventsOutOfOrderPolicy|řetězec|No|Určuje zásadu, která se použije na události, které dorazí do vstupního proudu událostí mimo pořadí. -Upravit nebo vyřadit|
-|StreamingUnits|integer|Yes|Určuje počet jednotek streamování, které používá úloha streamování.|
+|StreamingUnits|integer|Ano|Určuje počet jednotek streamování, které používá úloha streamování.|
 |CompatibilityLevel|řetězec|No|Řídí určitá chování za běhu úlohy streamování. -Přijatelné hodnoty jsou "1,0", "1,1", "1,2"|
 |UseSystemAssignedIdentity|boolean|No|Nastavte hodnotu true, pokud chcete, aby tato úloha komunikovala s ostatními službami Azure samostatně pomocí spravované Azure Active Directory identity.|
 |GlobalStorage. Account|řetězec|No|Globální účet úložiště se používá k ukládání obsahu souvisejícího s vaší úlohou Stream Analytics, jako jsou snímky dat SQL Reference.|
 |GlobalStorage. AccountKey|řetězec|No|Odpovídající klíč pro globální účet úložiště|
 |DataSourceCredentialDomain|řetězec|No|Rezervovaná vlastnost pro místní úložiště přihlašovacích údajů|
-|ScriptType|řetězec|Yes|Rezervovaná vlastnost, která označuje typ tohoto zdrojového souboru. Přijatelná hodnota je "JobConfig" pro JobConfig.jsna.|
+|ScriptType|řetězec|Ano|Rezervovaná vlastnost, která označuje typ tohoto zdrojového souboru. Přijatelná hodnota je "JobConfig" pro JobConfig.jsna.|
 |Značky|Páry klíč-hodnota JSON|No|Značky jsou páry název-hodnota, které umožňují kategorizaci prostředků a zobrazení konsolidované fakturace, a to použitím stejné značky na více prostředků a skupin prostředků. V názvech značek jsou rozlišována velká a malá písmena.|
 
 ## <a name="next-steps"></a>Další kroky

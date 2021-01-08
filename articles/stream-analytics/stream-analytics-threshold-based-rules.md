@@ -1,17 +1,17 @@
 ---
 title: Konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí referenčních dat dosáhnout řešení upozornění, které má konfigurovatelné pravidla na základě prahové hodnoty v Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f9d132084f0254486be533daea6b54239f4e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039037"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019971"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracování konfigurovatelných pravidel na základě prahových hodnot v Azure Stream Analytics
 Tento článek popisuje, jak pomocí referenčních dat dosáhnout řešení upozornění, které používá konfigurovatelné pravidla na základě prahové hodnoty v Azure Stream Analytics.
@@ -34,7 +34,7 @@ V tomto příkladu jsou výstrahy vygenerovány, když agregace datových proud�
 
 V dotazu, pro každý deviceId a každou hodnotu metric za deviceId, můžete nakonfigurovat od 0 do 5 dimenzí, podle kterých se SESKUPí. Seskupeny jsou pouze události, které mají odpovídající hodnoty filtru. Po seskupení jsou agregované agregované hodnoty min, Max, AVG, počítány v rámci 60 sekundového okna. Filtry agregovaných hodnot se pak vypočítávají podle nakonfigurované prahové hodnoty v odkazu, aby se vygenerovala událost výstupu výstrahy.
 
-Předpokládejme například, že je k dispozici Stream Analytics úloha, která má referenční vstupní data s názvem **rules**a datový proud streamování s názvem **metriky**. 
+Předpokládejme například, že je k dispozici Stream Analytics úloha, která má referenční vstupní data s názvem **rules** a datový proud streamování s názvem **metriky**. 
 
 ## <a name="reference-data"></a>Referenční data
 Tento příklad referenčních dat ukazuje, jak je možné znázornit pravidlo na základě prahové hodnoty. Soubor JSON obsahuje referenční data a ukládá se do úložiště objektů BLOB v Azure a tento kontejner úložiště objektů BLOB se používá jako referenční datový vstup s názvem **rules**. Tento soubor JSON můžete přepsat a nahradit konfiguraci pravidla na čas, aniž byste museli zastavit nebo spustit úlohu streamování.

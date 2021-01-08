@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238390"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020175"
 ---
 # <a name="create-an-app-service-environment"></a>Vytvoření App Service Environment
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238390"
 > Tento článek se týká App Service Environment V3 (Preview).
 > 
 
-[App Service Environment (POmocným mechanismem)][Intro] je nasazení App Service jednoho tenanta, které se vloží do Azure Virtual Network (VNET).  ASEv3 podporuje zpřístupnění aplikací jenom na privátní adrese ve vaší virtuální síti. Při vytvoření ASEv3 ve verzi Preview se do vašeho předplatného přidá tři prostředky.
+[App Service Environment (POmocným mechanismem)][Intro] je nasazení App Service jednoho tenanta, které se vloží do Azure Virtual Network (VNET).  ASEv3 podporuje zpřístupnění aplikací jenom na privátní adrese ve vaší virtuální síti. Při vytvoření ASEv3 ve verzi Preview se tyto prostředky přidají do vašeho předplatného.
 
 - App Service Environment
-- Azure DNS privátní zóna
 - Privátní koncový bod
 
 Nasazení služby pomocného mechanismu bude vyžadovat použití dvou podsítí.  Jedna podsíť bude obsahovat privátní koncový bod.  Tuto podsíť je možné použít pro jiné věci, jako jsou virtuální počítače.  Druhá podsíť se používá pro odchozí volání prováděná z pomocného mechanismu.  Tuto podsíť nelze použít pro jiné jiné než pomocného mechanismu. 

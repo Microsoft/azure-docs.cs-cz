@@ -1,18 +1,17 @@
 ---
 title: Úvod do Azure Stream Analytics geoprostorové funkce
 description: Tento článek popisuje geoprostorové funkce, které se používají v Azure Stream Analytics úlohách.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130404"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020430"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do Stream Analytics geoprostorové funkce
 
@@ -26,7 +25,7 @@ Mezi příklady scénářů, které můžou využívat geoprostorové funkce, pa
 * Geografické oplocení
 * Sledování telefonů napříč weby s buňkami
 
-Jazyk Stream Analytics dotazů má sedm integrovaných geoprostorovéch funkcí: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** a **ST_WITHIN** .
+Jazyk Stream Analytics dotazů má sedm integrovaných geoprostorovéch funkcí: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS** a **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 

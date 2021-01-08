@@ -1,19 +1,18 @@
 ---
 title: Testování úlohy Azure Stream Analytics s ukázkovými daty
 description: Tento článek popisuje, jak použít Azure Portal k otestování Azure Stream Analytics úlohy, ukázkového vstupu a nahrání ukázkových dat.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490963"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020039"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
 
@@ -23,7 +22,7 @@ V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení
 
 Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte a vyberte svou stávající úlohu Stream Analytics.
 
@@ -37,11 +36,11 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
     
    c. Pokud vaše data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události.
 
-   Následující tabulka je příkladem dat ve **formátu tabulky** :
+   Následující tabulka je příkladem dat ve **formátu tabulky**:
 
    ![Azure Stream Analytics ukázkový vstup ve formátu tabulky](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   V následující tabulce je příklad dat v **nezpracovaném formátu** :
+   V následující tabulce je příklad dat v **nezpracovaném formátu**:
 
    ![Azure Stream Analytics ukázkový vstup v nezpracovaném formátu](./media/stream-analytics-test-query/asa-sample-raw.png)
 
@@ -61,7 +60,7 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
 
    ![Azure Stream Analytics zobrazení výsledků testu](./media/stream-analytics-test-query/asa-view-test-results.png)
 
-9. Výběrem **obnovit** zobrazíte ukázkový seznam příchozích událostí. Pokud vyberete možnost **resetovat** , váš časový rozsah bude ztracen. Vyberte **test Query** a otestujte dotaz a zkontrolujte výsledky na kartě **výsledky testu** .
+9. Výběrem **obnovit** zobrazíte ukázkový seznam příchozích událostí. Pokud vyberete možnost **resetovat**, váš časový rozsah bude ztracen. Vyberte **test Query** a otestujte dotaz a zkontrolujte výsledky na kartě **výsledky testu** .
 
 10. Když provedete změny v dotazu, vyberte **Uložit dotaz** a otestujte novou logiku dotazu. To umožňuje iterativní úpravu dotazu a znovu ho otestovat, abyste viděli, jak se výstup změní.
 
@@ -71,7 +70,7 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
 
 Místo používání živých dat můžete použít ukázková data z místního souboru a otestovat svůj Azure Stream Analytics dotaz.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
    
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
@@ -85,7 +84,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
    ![Snímek obrazovky se zobrazí v dialogovém okně nahrát ukázková data, kde můžete vybrat soubor.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. Po nahrání souboru můžete také zobrazit obsah souboru ve formuláři jako tabulku nebo v nezpracovaném formátu. Vyberete-li možnost **obnovit** , budou se ukázková data vracet do příchozích vstupních dat popsaných v předchozí části. Můžete nahrát jakýkoli jiný soubor a Testovat dotaz kdykoli.
+6. Po nahrání souboru můžete také zobrazit obsah souboru ve formuláři jako tabulku nebo v nezpracovaném formátu. Vyberete-li možnost **obnovit**, budou se ukázková data vracet do příchozích vstupních dat popsaných v předchozí části. Můžete nahrát jakýkoli jiný soubor a Testovat dotaz kdykoli.
 
 7. Vyberte **test Query** a otestujte dotaz proti nahranému ukázkovému souboru.
 
@@ -114,7 +113,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 6. Rozhraní API pro ukázková data se omezuje po pěti žádostech v intervalu 15 minut. Po skončení období od 15 minut můžete provádět další požadavky na ukázková data. Toto omezení se použije na úrovni předplatného.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 1.  Pokud se zobrazí tato chyba "při načítání výsledků došlo k potížím se síťovým připojením. Zkontrolujte prosím nastavení sítě a brány firewall. ", postupujte podle následujících kroků:
 

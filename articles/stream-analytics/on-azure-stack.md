@@ -2,18 +2,17 @@
 title: Spustit Azure Stream Analytics v Azure Stack (Preview)
 description: Vytvořte úlohu Azure Stream Analytics Edge a nasaďte ji do Azure Stack centra prostřednictvím modulu runtime IoT Edge.
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 21cf432576829b575d70a94227f28df373a4d899
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126154"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020124"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Spustit Azure Stream Analytics v Azure Stack (Preview)
 
@@ -56,10 +55,10 @@ Hraniční úlohy ASA se spouštějí v kontejnerech nasazených do zařízení 
 * Cloudová součást, která zodpovídá za definici úlohy: uživatelé definují vstupy, výstupy, dotazy a další nastavení (události mimo pořadí atd.) v cloudu.
 * Modul spuštěný ve vašich zařízeních IoT. Obsahuje modul ASA a přijímá definici úlohy z cloudu.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na zařízení IoT Edge, je potřeba ji uložit tak, aby ji bylo možné volat ze zařízení. Můžete použít existující účet úložiště Azure nebo vytvořit nový.
-1. V Azure Portal klikněte na **vytvořit prostředek > úložiště > účet úložiště – objekt blob, soubor, tabulka, fronta** .
+1. V Azure Portal klikněte na **vytvořit prostředek > úložiště > účet úložiště – objekt blob, soubor, tabulka, fronta**.
 2. Zadejte následující hodnoty pro vytvoření účtu úložiště:
 
    | Pole | Hodnota |
@@ -67,25 +66,25 @@ Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na za�
    | Název | Zadejte jedinečný název účtu úložiště. |
    | Umístění | Zvolte umístění, které je blízko vás.|
    | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT.|
-   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](../iot-edge/quickstart.md) a kurzy. Například **IoTEdgeResources** . |
+   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](../iot-edge/quickstart.md) a kurzy. Například **IoTEdgeResources**. |
 
-3. U ostatních polí ponechte výchozí hodnoty a vyberte **Vytvořit** .
+3. U ostatních polí ponechte výchozí hodnoty a vyberte **Vytvořit**.
 
 
 ### <a name="create-a-new-job"></a>Vytvoření nové úlohy
 
-1. V Azure Portal klikněte na **vytvořit prostředek > Internet věcí úlohu > Stream Analytics** .
+1. V Azure Portal klikněte na **vytvořit prostředek > Internet věcí úlohu > Stream Analytics**.
 2. Zadejte následující hodnoty pro vytvoření účtu úložiště:
 
    | Pole | Hodnota |
    | --- | --- |
    | Název úlohy | Zadejte název úlohy. Například **IoTEdgeJob** |
    | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT.|
-   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](../iot-edge/quickstart.md) a kurzy. Například **IoTEdgeResources** . |
+   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](../iot-edge/quickstart.md) a kurzy. Například **IoTEdgeResources**. |
    | Umístění | Zvolte umístění, které je blízko vás. |
-   | Hostitelské prostředí | Vyberte **Edge** . |
+   | Hostitelské prostředí | Vyberte **Edge**. |
 
-3. Vyberte **Vytvořit** .
+3. Vyberte **Vytvořit**.
 
 ### <a name="configure-your-job"></a>Konfigurace úlohy
 
@@ -96,7 +95,7 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
    > [!div class="mx-imgBorder"]
    > [![Nastavení ](media/on-azure-stack/storage-account-settings.png) účtu úložiště úlohy](media/on-azure-stack/storage-account-settings.png#lightbox)
 3. V části **topologie úlohy** vyberte **vstupy** a pak **přidejte vstup datového proudu.**
-4. V rozevíracím seznamu vyberte možnost **IoT Hub** , **centrum událostí** nebo **centrum Edge** . 
+4. V rozevíracím seznamu vyberte možnost **IoT Hub**, **centrum událostí** nebo **centrum Edge** . 
 5. Pokud se jedná o centrum událostí nebo IoT Hub v rámci předplatného centra Azure Stack, zadejte informace ručně, jak je znázorněno níže.
 
    #### <a name="event-hub"></a>Centrum událostí
@@ -104,7 +103,7 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
    | Pole | Hodnota |
    | --- | --- |
    | Alias vstupu | Popisný název, který použijete v dotazu úlohy pro odkazování na tento vstup. |
-   | Obor názvů Service Bus | Obor názvů je kontejner pro sadu entit zasílání zpráv. Když vytváříte nové centrum událostí, vytvoříte také obor názvů. (Příklad: *Sb:// <Event Hub Name> . eventhub.Shanghai.azurestack.corp.Microsoft.com* ) |
+   | Obor názvů Service Bus | Obor názvů je kontejner pro sadu entit zasílání zpráv. Když vytváříte nové centrum událostí, vytvoříte také obor názvů. (Příklad: *Sb:// <Event Hub Name> . eventhub.Shanghai.azurestack.corp.Microsoft.com*) |
    | Název centra událostí | Název centra událostí, které se má použít jako vstup |
    | Název zásad centra událostí | Zásady sdíleného přístupu, které poskytují přístup k centru událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra událostí ručně. |
    | Klíč zásad centra událostí | Sdílený přístupový klíč, který slouží k autorizaci přístupu do centra událostí. Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra událostí ručně. Můžete ji najít v nastavení centra událostí. |
@@ -119,7 +118,7 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
    | Pole | Hodnota |
    | --- | --- |
    | Alias vstupu | Popisný název, který použijete v dotazu úlohy pro odkazování na tento vstup. |
-   | IoT Hub | Název IoT Hub, který se má použít jako vstup (Příklad: *<IoT Hub Name> . Shanghai.azurestack.corp.Microsoft.com* ) |
+   | IoT Hub | Název IoT Hub, který se má použít jako vstup (Příklad:*<IoT Hub Name> . Shanghai.azurestack.corp.Microsoft.com*) |
    | Název zásady sdíleného přístupu | Zásada sdíleného přístupu, která poskytuje přístup k IoT Hub. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
    | Klíč zásad sdíleného přístupu | Sdílený přístupový klíč, který slouží k autorizaci přístupu k IoT Hub. Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra IoT Hub ručně. |
    | Skupina uživatelů (volitelné) | Důrazně doporučujeme pro každou úlohu Stream Analytics použít jinou skupinu uživatelů. Skupina příjemců slouží k ingestování dat z IoT Hub. Stream Analytics používá skupinu příjemců $Default, pokud neurčíte jinak. |
@@ -138,7 +137,7 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
    | Pole | Hodnota |
    | --- | --- |
    | Alias pro výstup | Popisný název, který se používá v dotazech k nasměrování výstupu dotazu do tohoto centra událostí. |
-   | Obor názvů Service Bus | Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste taky vytvořili obor názvů služby Service Bus. (Příklad: *Sb:// <Event Hub Name> . eventhub.Shanghai.azurestack.corp.Microsoft.com* ) |
+   | Obor názvů Service Bus | Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste taky vytvořili obor názvů služby Service Bus. (Příklad: *Sb:// <Event Hub Name> . eventhub.Shanghai.azurestack.corp.Microsoft.com*) |
    | Název centra událostí | Název výstupu centra událostí. |
    | Název zásad centra událostí | Zásady sdíleného přístupu, které můžete vytvořit na kartě Konfigurace centra událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
    | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů centra událostí. |
@@ -151,7 +150,7 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
    | Pole | Hodnota |
    | --- | --- |
    | Alias pro výstup | Popisný název, který se používá v dotazech k směrování výstupu dotazu do tohoto úložiště objektů BLOB. |
-   | Účet úložiště | Název účtu úložiště, do kterého posíláte výstup. (Příklad: *<Storage Account Name> . blob.Shanghai.azurestack.corp.Microsoft.com* ) |
+   | Účet úložiště | Název účtu úložiště, do kterého posíláte výstup. (Příklad: *<Storage Account Name> . blob.Shanghai.azurestack.corp.Microsoft.com*) |
    | Klíč účtu úložiště | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení úložiště objektů BLOB ručně. |
 
 > [!NOTE]
@@ -161,14 +160,14 @@ Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nako
 ## <a name="deploy-stream-analytics-on-a-vm-or-device-connected-to-azure-stack"></a>Nasazení Stream Analytics do virtuálního počítače nebo zařízení připojeného k Azure Stack
 
 1. V Azure Portal otevřete IoT Hub. Přejděte na **IoT Edge** a klikněte na zařízení (VM), pro které chcete toto nasazení cílit.
-2. Vyberte **Set modules** (Nastavit moduly). Pak vyberte **+ Přidat** a zvolte **Azure Stream Analytics modul** . 
-3. Vyberte předplatné a hraniční úlohu Stream Analytics, kterou jste vytvořili. Klikněte na **Uložit** a vyberte **Další: trasy** .
+2. Vyberte **Set modules** (Nastavit moduly). Pak vyberte **+ Přidat** a zvolte **Azure Stream Analytics modul**. 
+3. Vyberte předplatné a hraniční úlohu Stream Analytics, kterou jste vytvořili. Klikněte na **Uložit** a vyberte **Další: trasy**.
 
    > [!div class="mx-imgBorder"]
    > [![Přidat moduly ](media/on-azure-stack/edge-modules.png)](media/on-azure-stack/edge-modules.png#lightbox)
 
-4. Klikněte na tlačítko **zkontrolovat + vytvořit >** .
-5. V kroku **Revize + vytvořit** vyberte **vytvořit** . 
+4. Klikněte na tlačítko **zkontrolovat + vytvořit >**.
+5. V kroku **Revize + vytvořit** vyberte **vytvořit**. 
    > [!div class="mx-imgBorder"]
    > [![Manifest ](media/on-azure-stack/module-content.png)](media/on-azure-stack/module-content.png#lightbox)
 6. Potvrďte, že se modul přidal do seznamu.

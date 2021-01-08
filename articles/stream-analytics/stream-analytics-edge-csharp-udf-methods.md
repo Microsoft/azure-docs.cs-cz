@@ -1,18 +1,18 @@
 ---
 title: Vývoj funkcí .NET Standard pro úlohy Azure Stream Analytics (Preview)
 description: Naučte se psát uživatelsky definované funkce v jazyce C# pro úlohy Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9cf929a3a6f5b3752b030f449b3b24b2bdc941a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fa6f05db5452a2e7b8ec4f93d65525873c8c7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907256"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020566"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics (Preview)
 
@@ -110,21 +110,21 @@ Následující kroky ukazují, jak přidat funkci C# UDF do projektu Stream Anal
 
 1. Klikněte pravým tlačítkem na složku **Functions** a vyberte **Přidat položku**.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Přidat novou funkci v Azure Stream Analytics projektu":::
 
 2. Přidejte funkci jazyka C# **SquareFunction** do projektu Azure Stream Analytics.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Vyberte funkci CSharp z Stream Analytics projektu v VS Code":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Do VS Code zadejte název funkce CSharp":::
 
 3. V konfiguraci funkce jazyka C# vyberte možnost **zvolit cestu projektu knihovny** a zvolte projekt C# v rozevíracím seznamu a vyberte **sestavit projekt** pro sestavení projektu. Pak zvolte **Vybrat třídu** a **Vybrat metodu** a vyberte v rozevíracím seznamu související třídu a název metody. Chcete-li odkazovat na metody, typy a funkce v dotazu Stream Analytics, třídy musí být definovány jako *veřejné* a objekty musí být definovány jako *statické veřejné*.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Stream Analytics konfigurace funkce jazyka C pro ostrý VS Code":::
 
     Pokud chcete použít jazyk C# UDF z knihovny DLL, vyberte možnost **zvolit cestu knihoven DLL knihovny** a zvolte knihovnu DLL. Pak zvolte **Vybrat třídu** a **Vybrat metodu** a vyberte v rozevíracím seznamu související třídu a název metody.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Stream Analytics konfigurace ostře funkcí jazyka C":::
 
 4. Ve svém dotazu Azure Stream Analytics vyvolat UDF.
 
@@ -136,7 +136,7 @@ Následující kroky ukazují, jak přidat funkci C# UDF do projektu Stream Anal
 
 5. Před odesláním úlohy do Azure nakonfigurujte cestu k balíčku v konfiguračním souboru úlohy, v `JobConfig.json` oddílu **CustomCodeStorage** . Pomocí **volby vybrat z předplatného** v CodeLens zvolte předplatné a v rozevíracím seznamu zvolte účet úložiště a název kontejneru. Ponechte **cestu** jako výchozí. Tento krok není nutný pro místní testování.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Zvolit cestu k knihovně":::
 
 ## <a name="develop-a-udf-in-visual-studio"></a>Vývoj systému souborů UDF v aplikaci Visual Studio
 
@@ -166,39 +166,39 @@ Odkazování na místní projekt v aplikaci Visual Studio:
 
 V tomto příkladu je **UDFTest** projekt knihovny tříd jazyka C# a **ASAUDFDemo** je projekt Azure Stream Analytics, který bude odkazovat **UDFTest**.
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Projekt Azure Stream Analytics IoT Edge v aplikaci Visual Studio":::
 
 1. Sestavte projekt C#, který vám umožní přidat odkaz na systém souborů UDF v C# z Azure Stream Analytics dotazu.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Sestavení projektu Azure Stream Analytics IoT Edge v aplikaci Visual Studio":::
 
 2. Přidejte odkaz na projekt C# v projektu ASA. Klikněte pravým tlačítkem myši na uzel odkazy a vyberte možnost Přidat odkaz.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Přidání odkazu na projekt C# v aplikaci Visual Studio":::
 
 3. V seznamu vyberte název projektu C#.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Vyberte název projektu C# ze seznamu odkazů.":::
 
 4. **UDFTest** by se měl zobrazit v části **odkazy** v **Průzkumník řešení**.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Zobrazit odkaz na funkci definované uživatelem v Průzkumníkovi řešení":::
 
 5. Klikněte pravým tlačítkem na složku **Functions** a vyberte možnost **Nová položka**.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Přidání nové položky do funkcí v řešení Azure Stream Analytics Edge":::
 
 6. Přidejte funkci jazyka C# **SquareFunction.js** do projektu Azure Stream Analytics.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Výběr funkce CSharp z položek hran Stream Analytics v aplikaci Visual Studio":::
 
 7. Dvojím kliknutím na funkci v **Průzkumník řešení** otevřete dialogové okno konfigurace.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Konfigurace ostrých funkcí jazyka C v aplikaci Visual Studio":::
 
 8. V konfiguraci funkce jazyka C# vyberte z rozevíracího seznamu možnost **načíst z aplikace ASA odkaz na projekt** a související názvy sestavení, třídy a metody. Chcete-li odkazovat na metody, typy a funkce v dotazu Stream Analytics, třídy musí být definovány jako *veřejné* a objekty musí být definovány jako *statické veřejné*.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Azure Stream Analytics projektu v Visual Studio Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Stream Analytics C – konfigurace ostrých funkcí v aplikaci Visual Studio":::
 
 ## <a name="existing-packages"></a>Existující balíčky
 

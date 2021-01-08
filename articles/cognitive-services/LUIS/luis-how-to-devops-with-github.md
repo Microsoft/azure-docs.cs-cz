@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018867"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019835"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>Použití DevOps pro vývoj aplikací LUIS pomocí akcí GitHubu
 
@@ -29,7 +29,7 @@ Pro úplné řešení, které implementuje DevOps a osvědčené postupy pro LUI
 * **Naklonujte úložiště šablon** – Zkopírujte šablonu do vlastního úložiště GitHub.
 * **Konfigurace prostředků Luis** – vytvořte [Luis pro vytváření obsahu a předpověď prostředků v Azure](./luis-how-to-azure-subscription.md) , které budou využívat pracovní postupy průběžné integrace.
 * **Nakonfigurujte pracovní postupy CI/CD** – nakonfigurujte parametry pro pracovní postupy CI/CD a uložte je do [tajných kódů GitHubu](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
-* **Provede vás ["vývojovým vnitřním smyčkou"](https://mitchdenny.com/the-inner-loop/)** – vývojář provede aktualizace ukázkové aplikace Luis při práci ve vývojové větvi, otestuje aktualizace a potom vyvolá žádost o přijetí změn, aby navrhla změny a hledal schválení kontroly.
+* **Provede vás ["vývojovým vnitřním smyčkou"](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)** – vývojář provede aktualizace ukázkové aplikace Luis při práci ve vývojové větvi, otestuje aktualizace a potom vyvolá žádost o přijetí změn, aby navrhla změny a hledal schválení kontroly.
 * **Spouštění pracovních postupů CI/CD** – spuštění [pracovních postupů průběžné integrace pro sestavení a otestování aplikace Luis](luis-concept-devops-automation.md) pomocí akcí GitHubu.
 * **Automatizované testování** – proveďte [automatizované dávkové testování pro aplikaci Luis](luis-concept-devops-testing.md) , která vám umožní vyhodnotit kvalitu aplikace.
 * **Nasazení aplikace pro Luis** – spuštění [úlohy průběžného doručování (CD)](luis-concept-devops-automation.md#continuous-delivery-cd) pro publikování aplikace Luis

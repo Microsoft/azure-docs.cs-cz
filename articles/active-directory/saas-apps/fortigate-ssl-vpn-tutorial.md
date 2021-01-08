@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s protokolem SSL VPN v FortiGate | Microsoft Docs'
 description: Seznamte se s kroky, které je třeba provést při integraci FortiGate SSL VPN s Azure Active Directory (Azure AD).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296569"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020260"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s protokolem SSL VPN FortiGate
 
@@ -30,9 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat FortiGate SSL VPN s Azure Active Direc
 * Umožněte uživatelům, aby se automaticky přihlásili k FortiGate SSL VPN pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -45,13 +39,12 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 FortiGate SSL VPN podporuje jednotné přihlašování iniciované pomocí SP.
 
-Po nakonfigurování FortiGate SSL VPN můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>Přidání FortiGate SSL VPN z Galerie
 
 Pokud chcete nakonfigurovat integraci FortiGate SSL VPN do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat FortiGate SSL VPN z Galerie:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
 1. V levém podokně vyberte **Azure Active Directory**.
 1. Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat aplikaci, vyberte možnost **Nová aplikace**.
@@ -69,13 +62,13 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Fo
     1. **[Udělte testovacímu uživateli přístup](#grant-access-to-the-test-user)** pro povolení jednotného přihlašování Azure AD pro tohoto uživatele.
 1. **[NAKONFIGURUJTE jednotné přihlašování FORTIGATE SSL VPN](#configure-fortigate-ssl-vpn-sso)** na straně aplikace.
     1. **Vytvořte uživatele FORTIGATE SSL VPN test** jako protějšek pro reprezentaci uživatele v Azure AD.
-1. **[Otestujte jednotné přihlašování](#test-single-sign-on)** a ověřte, jestli konfigurace funguje.
+1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **VPN Fortigate SSL** v části **Spravovat** vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikace **VPN FORTIGATE SSL** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
@@ -106,17 +99,26 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
    | group | User. Groups |
    
    Vytvoření těchto dalších deklarací identity:
+
+   a. Vedle **atributů uživatele & deklarace identity** vyberte **Upravit**.
+
+   b. Vyberte **Přidat novou deklaraci identity**.
+
+   c. Jako **název** zadejte **uživatelské jméno**.
+
+   d. V případě **zdrojového atributu** vyberte **User. userPrincipalName**.
+
+   e. Vyberte **Uložit**.
+
+   f. Vyberte **přidat deklaraci skupiny**.
+
+   například Vyberte **Všechny skupiny**.
+
+   h. Zaškrtněte políčko **přizpůsobit název deklarace skupiny** .
+
+   i. Jako **název** zadejte **Skupina**.
    
-   1. Vedle **atributů uživatele & deklarace identity** vyberte **Upravit**.
-   1. Vyberte **Přidat novou deklaraci identity**.
-   1. Jako **název** zadejte **uživatelské jméno**.
-   1. V případě **zdrojového atributu** vyberte **User. userPrincipalName**.
-   1. Vyberte **Uložit**.
-   1. Vyberte **přidat deklaraci skupiny**.
-   1. Vyberte **Všechny skupiny**.
-   1. Seect **upravte název pole deklarace skupiny** .
-   1. Jako **název** zadejte **Skupina**.
-   1. Vyberte **Uložit**.   
+   j. Vyberte **Uložit**.   
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **certifikátu (Base64)** a Stáhněte certifikát a uložte ho do počítače:
 
@@ -134,7 +136,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. V části vlastnosti **uživatele** proveďte tyto kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -144,14 +146,8 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **FORTIGATE SSL VPN**.
-1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
-
-   ![Snímek obrazovky, který zobrazuje možnost Uživatelé a skupiny.](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** :
-
-    ![Snímek obrazovky zobrazující tlačítko Přidat uživatele](common/add-assign-user.png)
-
+1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
@@ -185,7 +181,7 @@ Po dokončení konfigurace SAML aplikace FortiGate ve vašem tenantovi jste stá
 1. Vyberte **importovat**  >  **vzdálený certifikát**.
 1. V tenantovi Azure přejděte na certifikát stažený z nasazení aplikace FortiGate, vyberte ho a pak vyberte **OK**.
 
-Po nahrání certifikátu si poznamenejte jeho název pod **System**  >  **Certificates**  >  **vzdáleným certifikátem** systémové certifikáty. Ve výchozím nastavení bude pojmenován REMOTE_Cert_ *N*, kde *N* je celočíselná hodnota.
+Po nahrání certifikátu si poznamenejte jeho název pod   >    >  **vzdáleným certifikátem** systémové certifikáty. Ve výchozím nastavení bude pojmenován REMOTE_Cert_ *N*, kde *N* je celočíselná hodnota.
 
 #### <a name="complete-fortigate-command-line-configuration"></a>Dokončit konfiguraci příkazového řádku FortiGate
 
@@ -256,22 +252,17 @@ V této části nakonfigurujete portály sítě VPN FortiGate a zásadu brány f
 
 Spolupracujte s [týmem podpory Fortigate](mailto:tac_amer@fortinet.com) , abyste přidali portály VPN a zásady brány firewall na FORTIGATE platformu VPN. Tento krok je nutné provést před použitím jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když vyberete dlaždici FortiGate SSL VPN na přístupovém panelu, měli byste se automaticky přihlásit k síti VPN FortiGate SSL, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na FortiGate adresu URL pro přihlášení k síti VPN, kde můžete spustit tok přihlášení. 
 
-Microsoft a FortiGate doporučuje, abyste používali klienta VPN Fortinet FortiClient, abyste mohli co nejlépe využívat.
+* Přejít na adresu URL pro přihlášení k VPN FortiGate přímo a zahájit tok přihlášení.
 
-## <a name="additional-resources"></a>Další zdroje
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici FortiGate VPN v nabídce Moje aplikace, přesměruje se na adresu URL pro přihlášení FortiGate VPN. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Kurzy k integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte FortiGate SSL VPN s Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování FortiGate VPN můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

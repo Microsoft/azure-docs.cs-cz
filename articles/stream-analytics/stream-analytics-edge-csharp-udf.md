@@ -1,19 +1,18 @@
 ---
 title: Kurz – zápis uživatelem definovaných funkcí C# pro úlohy Azure Stream Analytics v aplikaci Visual Studio (Preview)
 description: V tomto kurzu se dozvíte, jak psát funkce definované uživatelem v jazyce c# pro úlohy Stream Analytics v aplikaci Visual Studio.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130489"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020464"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis uživatelsky definované funkce jazyka C# pro Azure Stream Analytics úlohy (Preview)
 
@@ -26,12 +25,12 @@ V tomto kurzu se naučíte:
 > * Otestujte úlohu Stream Analytics místně.
 > * Publikujte svoji úlohu do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [Nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a sadu funkcí **Vývoj pro Azure** nebo **Ukládání a zpracování dat** .
+* Nainstalujte [Nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md) a sadu funkcí **Vývoj pro Azure** nebo **Ukládání a zpracování dat**.
 * Pokud vytváříte úlohu IoT Edge, podívejte se na stávající [Průvodce vývojem Stream Analytics Edge](stream-analytics-tools-for-visual-studio-edge-jobs.md) .
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Vytvoření kontejneru v účtu služby Azure Storage
@@ -42,17 +41,17 @@ Kontejner, který vytvoříte, bude použit k uložení zkompilovaného balíčk
 
 1. Spusťte Visual Studio.
 
-2. Vyberte **Soubor > Nový > Projekt** .
+2. Vyberte **Soubor > Nový > Projekt**.
 
-3. V seznamu šablon na levé straně vyberte **Stream Analytics** a pak vyberte **Azure Stream Analytics aplikace Edge** nebo **Azure Stream Analytics aplikaci** .
+3. V seznamu šablon na levé straně vyberte **Stream Analytics** a pak vyberte **Azure Stream Analytics aplikace Edge** nebo **Azure Stream Analytics aplikaci**.
 
-4.  Zadejte **Název** projektu, **Umístění** a **Název řešení** a vyberte **OK** .
+4.  Zadejte **Název** projektu, **Umístění** a **Název řešení** a vyberte **OK**.
 
     ![Vytvoření projektu Azure Stream Analytics Edge v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>Konfigurace cesty k balíčku sestavení
 
-1. Otevřete sadu Visual Studio a přejděte do **Průzkumníka řešení** .
+1. Otevřete sadu Visual Studio a přejděte do **Průzkumníka řešení**.
 
 2. Dvakrát klikněte na konfigurační soubor úlohy `EdgeJobConfig.json`.
 
@@ -69,9 +68,9 @@ Kontejner, který vytvoříte, bude použit k uložení zkompilovaného balíčk
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>Zápis uživatelem definované funkce jazyka C# s využitím souboru CodeBehind
-Soubor CodeBehind je soubor C# přidružený k jednomu skriptu dotazu ASA. Nástroje sady Visual Studio soubor CodeBehind po odeslání automaticky zkomprimují a nahrají do vašeho účtu úložiště Azure. Všechny třídy musí být definované jako *veřejné* a všechny objekty musí být definované jako *statické veřejné* .
+Soubor CodeBehind je soubor C# přidružený k jednomu skriptu dotazu ASA. Nástroje sady Visual Studio soubor CodeBehind po odeslání automaticky zkomprimují a nahrají do vašeho účtu úložiště Azure. Všechny třídy musí být definované jako *veřejné* a všechny objekty musí být definované jako *statické veřejné*.
 
-1. V **Průzkumníku řešení** rozbalte soubor **Script.asql** a vyhledejte soubor CodeBehind **Script.asaql.cs** .
+1. V **Průzkumníku řešení** rozbalte soubor **Script.asql** a vyhledejte soubor CodeBehind **Script.asaql.cs**.
 
 2. Nahraďte kód následující ukázkou:
 
@@ -97,7 +96,7 @@ Soubor CodeBehind je soubor C# přidružený k jednomu skriptu dotazu ASA. Nást
 
 ## <a name="implement-the-udf"></a>Implementace uživatelem definované funkce
 
-1. V **Průzkumníku řešení** otevřete soubor **Script.asaql** .
+1. V **Průzkumníku řešení** otevřete soubor **Script.asaql**.
 
 2. Stávající dotaz nahraďte následujícím dotazem:
 
@@ -111,15 +110,15 @@ Soubor CodeBehind je soubor C# přidružený k jednomu skriptu dotazu ASA. Nást
 
 1. Stáhněte si [soubor ukázkových dat simulátoru teploty](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json).
 
-2. V **Průzkumníku řešení** rozbalte **Inputs** , klikněte pravým tlačítkem na soubor **Input.json** a vyberte **Přidat místní vstup** .
+2. V **Průzkumníku řešení** rozbalte **Inputs**, klikněte pravým tlačítkem na soubor **Input.json** a vyberte **Přidat místní vstup**.
 
    ![Přidání místního vstupu do úlohy Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. Zadejte cestu k místnímu vstupnímu souboru s ukázkovými daty, která jste si stáhli, a vyberte **Uložit** .
+3. Zadejte cestu k místnímu vstupnímu souboru s ukázkovými daty, která jste si stáhli, a vyberte **Uložit**.
 
     ![Konfigurace místního vstupu pro úlohu Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
-4. V editoru skriptů klikněte na **Spustit místně** . Jakmile místní spuštění úspěšně uloží výsledky výstupu, stisknutím libovolné klávesy zobrazte výsledky ve formátu tabulky. 
+4. V editoru skriptů klikněte na **Spustit místně**. Jakmile místní spuštění úspěšně uloží výsledky výstupu, stisknutím libovolné klávesy zobrazte výsledky ve formátu tabulky. 
 
     ![Místní spuštění úlohy Azure Stream Analytics pomocí sady Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-run-locally.png)
 

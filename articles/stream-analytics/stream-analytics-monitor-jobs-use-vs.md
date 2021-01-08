@@ -3,21 +3,20 @@ title: Monitorování a Správa Azure Stream Analytics pomocí sady Visual Studi
 description: Tento článek popisuje, jak pomocí sady Visual Studio monitorovat a spravovat Azure Stream Analytics úlohy.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a151d4ce5a2f9860c3b7919496a2edd25cc58ede
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e0db101e47a5ec8eb88d3b999058e7c8521f0ff9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123621"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020277"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorování a správa úloh Stream Analytics pomocí sady Visual Studio
 
-Tento článek ukazuje, jak monitorovat úlohu Stream Analytics v aplikaci Visual Studio. Azure Stream Analytics Tools for Visual Studio nabízí prostředí pro monitorování, které se podobá Azure Portal bez nutnosti opustit IDE. Můžete začít monitorovat úlohu hned po **odeslání do Azure** ze **skriptu. asaql** , nebo můžete monitorovat existující úlohy bez ohledu na to, jak byly vytvořeny. 
+Tento článek ukazuje, jak monitorovat úlohu Stream Analytics v aplikaci Visual Studio. Azure Stream Analytics Tools for Visual Studio nabízí prostředí pro monitorování, které se podobá Azure Portal bez nutnosti opustit IDE. Můžete začít monitorovat úlohu hned po **odeslání do Azure** ze **skriptu. asaql**, nebo můžete monitorovat existující úlohy bez ohledu na to, jak byly vytvořeny. 
 
 ## <a name="job-summary"></a>Souhrn úlohy
 
@@ -40,7 +39,7 @@ Chyby můžete monitorovat také kliknutím na kartu **chyby** .
 ![Chyby Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

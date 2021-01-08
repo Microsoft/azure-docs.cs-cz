@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803302"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020197"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics
 
@@ -36,6 +36,9 @@ Tento článek obsahuje podrobné informace o **Azure Media redactor** a ukazuje
 Redigování obličeje funguje tak, že detekuje obličeje v každém snímku videa a sleduje objekt Face v čase dopředu a dozadu, aby se stejná osoba mohla rozmazaný i z jiných úhlů. Automatizovaný proces redigování je složitý a nikdy nevytváří 100% požadovaného výstupu, z tohoto důvodu Media Analytics poskytuje několik způsobů, jak změnit konečný výstup.
 
 Kromě plného automatického režimu je k dispozici pracovní postup se dvěma průchody, který umožňuje výběr a zrušení výběru nalezených obličeje pomocí seznamu ID. K provedení libovolných úprav v rámci jednotlivých snímků sada MP používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělen na režimy **analyzování** a **redigování** . Oba režimy můžete zkombinovat v jednom průchodu, který spouští obě úlohy v jedné úloze. Tento režim se nazývá **Kombinovaná**.
+
+   > [!NOTE]
+   > Procesor s médii pro rozpoznávání tváře je zastaralý od června 2020 [Azure Media Services starších součástí](./legacy-components.md). Zvažte použití rozhraní Azure Media Services V3 API.
 
 ### <a name="combined-mode"></a>Kombinovaný režim
 

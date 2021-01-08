@@ -37,16 +37,12 @@
     - name: Ukázky Azure PowerShellu pro proxy aplikací
       href: application-proxy-powershell-samples.md
 - name: Koncepty
-  expanded: false
+  expanded: true
   items:
     - name: Osvědčené postupy správy aplikací
       href: application-management-fundamentals.md
     - name: Běžné scénáře správy aplikací
       href: common-scenarios.md
-    - name: Zobrazení aplikací ve vašem tenantovi
-      href: application-types.md
-    - name: Přiřazování uživatelů k aplikacím
-      href: ways-users-get-assigned-to-applications.md
     - name: Plánování integrace cloudových aplikací
       items:
         - name: Začínáme s integrací aplikací
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: Historie verzí Proxy aplikací
       href: application-proxy-release-version-history.md
+    - name: 'Důvody, proč se aplikace zobrazují v podnikových aplikacích'
+      href: application-types.md
+    - name: 'Důvody, proč jsou uživatelé přiřazeni k aplikaci'
+      href: ways-users-get-assigned-to-applications.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory pro vývojáře

@@ -14,6 +14,8 @@
   items:
     - name: Vytvoření služby Azure Dedicated HSM s využitím Azure PowerShellu
       href: quickstart-create-hsm-powershell.md
+    - name: Vytvoření služby Azure Dedicated HSM s využitím Azure CLI
+      href: quickstart-hsm-azure-cli.md
 - name: Koncepty
   items:
     - name: Vysoká dostupnost
