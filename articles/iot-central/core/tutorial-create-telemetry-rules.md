@@ -3,16 +3,16 @@ title: Kurz – vytváření a Správa pravidel v aplikaci Azure IoT Central
 description: V tomto kurzu se dozvíte, jak pravidla Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990968"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033842"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -38,6 +38,9 @@ Než začnete, dokončete průvodce [vytvořením aplikace Azure IoT Central](./
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
 Aby bylo možné vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. V tomto kurzu se používá simulované zařízení **snímače senzorů** , které posílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v části [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](./quick-create-simulated-device.md) . Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když překračuje 70 stupňů.
+
+> [!NOTE]
+> Pro každou aplikaci je stanovený limit 50 pravidel.
 
 1. V levém podokně vyberte **pravidla**.
 

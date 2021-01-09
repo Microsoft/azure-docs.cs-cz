@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347672"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033774"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Vstupní vazby služby Azure Table Storage pro Azure Functions
 
@@ -296,97 +296,6 @@ public class Person : TableEntity
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Následující příklad ukazuje vstupní vazbu tabulky v *function.js* souboru a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce používá Trigger fronty ke čtení jednoho řádku tabulky. 
-
-*function.jsv* souboru Určuje `partitionKey` a `rowKey` . `rowKey`Hodnota {queueTrigger} označuje, že klíč řádku pochází z řetězce zprávy fronty.
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "personEntity",
-      "type": "table",
-      "tableName": "Person",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
-
-Tady je kód JavaScriptu:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-    context.log('Person entity name: ' + context.bindings.personEntity.Name);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Řádek jedné tabulky 
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "messageJSON",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "rowKey": "{id}",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "messages/{id}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ],
-  "disabled": false
-}
-```
-
-```python
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
-
-    message = json.loads(messageJSON)
-    return func.HttpResponse(f"Table row: {messageJSON}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která vrací seznam objektů Person, kteří jsou v zadaném oddílu v úložišti tabulek. V tomto příkladu se klíč oddílu extrahuje z trasy HTTP a tableName a připojení jsou z nastavení funkce. 
@@ -440,7 +349,7 @@ public HttpResponseMessage get(
 }
 ```
 
-V následujících příkladech se používá filtr k dotazování na osoby s určitým názvem v tabulce Azure a omezení počtu možných shod na 10 výsledků.
+Následující příklad používá filtr k dotazování na osoby s určitým názvem v tabulce Azure a omezuje počet možných shod na 10 výsledků.
 
 ```java
 @FunctionName("getPersonsByName")
@@ -454,6 +363,143 @@ public Person[] get(
 
     return persons;
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje vstupní vazbu tabulky v *function.js* souboru a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce používá Trigger fronty ke čtení jednoho řádku tabulky. 
+
+*function.jsv* souboru Určuje `partitionKey` a `rowKey` . `rowKey`Hodnota {queueTrigger} označuje, že klíč řádku pochází z řetězce zprávy fronty.
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = function (context, myQueueItem) {
+    context.log('Node.js queue trigger function processed work item', myQueueItem);
+    context.log('Person entity name: ' + context.bindings.personEntity.Name);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Následující funkce používá Trigger fronty ke čtení jednoho řádku tabulky jako vstupu do funkce.
+
+V tomto příkladu konfigurace vazby Určuje explicitní hodnotu pro tabulku `partitionKey` a používá výraz k předání do `rowKey` . `rowKey`Výraz označuje, `{queueTrigger}` že klíč řádku pochází z řetězce zprávy fronty.
+
+Konfigurace vazby v _function.jsna_:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "MyQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "PersonEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Kód PowerShellu v _run.ps1_:
+
+```powershell
+param($MyQueueItem, $PersonEntity, $TriggerMetadata)
+Write-Host "PowerShell queue trigger function processed work item: $MyQueueItem"
+Write-Host "Person entity name: $($PersonEntity.Name)"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Následující funkce používá Trigger fronty ke čtení jednoho řádku tabulky jako vstupu do funkce.
+
+V tomto příkladu určuje konfigurace vazby explicitní hodnotu pro tabulku `partitionKey` a používá výraz, který se předává do `rowKey` . `rowKey`Výraz `{id}` označuje, že klíč řádku pochází z řetězce zprávy fronty.
+
+Konfigurace vazby v _function.js_ souboru:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "messageJSON",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "messages/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Kód Pythonu v souboru *\_ \_ init \_ \_ . py* :
+
+```python
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
+
+    message = json.loads(messageJSON)
+    return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
 ---
@@ -522,17 +568,21 @@ public Person[] get(
 
 Skripty jazyka C# nepodporují atributy.
 
+# <a name="java"></a>[Java](#tab/java)
+
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@TableInput` anotaci pro parametry, jejichž hodnota by pocházela z úložiště tabulek.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell nepodporuje atributy.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
-
-# <a name="java"></a>[Java](#tab/java)
-
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@TableInput` anotaci pro parametry, jejichž hodnota by pocházela z úložiště tabulek.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
 
 ---
 
@@ -542,13 +592,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
 |**tableName** | **Tabulky** | Název tabulky| 
 |**partitionKey** | **PartitionKey** |Nepovinný parametr. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#usage) .| 
 |**rowKey** |**RowKey** | Nepovinný parametr. Klíč řádku entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#usage) .| 
-|**take** |**Nezbytná** | Nepovinný parametr. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#usage) .| 
+|**nezbytná** |**Nezbytná** | Nepovinný parametr. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#usage) .| 
 |**filtrovací** |**Filtr** | Nepovinný parametr. Výraz filtru OData pro vstup tabulky v JavaScriptu Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#usage) .| 
 |**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Nastavení může být název nastavení předpevněné aplikace "AzureWebJobs" nebo název připojovacího řetězce. Pokud je název vašeho nastavení například "AzureWebJobsMyStorage", můžete zde zadat "MyStorage". Modul runtime Functions automaticky vyhledá nastavení aplikace, které má název "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .|
 
@@ -582,17 +632,21 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
   > [!NOTE]
   > `IQueryable` není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání `CloudTable` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x).
 
+# <a name="java"></a>[Java](#tab/java)
+
+Atribut [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) vám poskytne přístup k řádku tabulky, který funkci aktivoval.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Nastavte `filter` vlastnosti a `take` . Nenastavuje se `partitionKey` nebo `rowKey` . Přístup k entitě vstupní tabulky (entity) pomocí `context.bindings.<BINDING_NAME>` . Deserializované objekty mají `RowKey` vlastnosti a `PartitionKey` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Data jsou předána vstupnímu parametru, který je určen `name` klíčem v *function.jsv* souboru. Zadáním `partitionKey` a `rowKey` umožníte filtrovat konkrétní záznamy. Další podrobnosti najdete v [příkladu PowerShellu](#example) .
+
 # <a name="python"></a>[Python](#tab/python)
 
 Data tabulky se předávají funkci jako řetězec JSON. Zrušte serializaci zprávy voláním `json.loads` , jak je uvedeno v [příkladu](#example)vstupu.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Atribut [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) vám poskytne přístup k řádku tabulky, který funkci aktivoval.
 
 ---
 

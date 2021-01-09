@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632005"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034624"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Referenční informace o Azure Cosmos DB dat monitorování
 
@@ -81,9 +81,9 @@ V následující tabulce jsou uvedeny vlastnosti protokolu prostředků v Azure 
 | --- | --- | --- |
 | **interval** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k operaci. |
 | **Prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro který jsou povoleny protokoly.|
-| **kategorií** | **Kategorie** | Pro Azure Cosmos DB jsou dostupné typy protokolů pro, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption** a **ControlPlaneRequests** . |
+| **kategorií** | **Kategorie** | Pro Azure Cosmos DB jsou dostupné typy protokolů, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests**, **CassandraRequests**, **GremlinRequests** . |
 | **operationName** | **OperationName** | Název operace Název operace může být  `Create` ,,,, `Update` `Read` `ReadFeed` `Delete` , `Replace` , `Execute` , `SqlQuery` , `Query` , `JSQuery` , `Head` , `HeadFeed` nebo `Upsert` .   |
-| **vlastnosti** | neuvedeno | Obsah tohoto pole je popsán v následujících řádcích. |
+| **vlastnosti** | Není k dispozici | Obsah tohoto pole je popsán v následujících řádcích. |
 | **activityId** | **activityId_g** | Jedinečný identifikátor GUID pro protokolované operaci. |
 | **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelského agenta klienta, ze kterého byl požadavek odeslán. Formát uživatelského agenta je `{user agent name}/{version}` .|
 | **requestResourceType** | **requestResourceType_s** | Typ dostupného prostředku Tato hodnota může být databáze, kontejner, dokument, příloha, uživatel, oprávnění, uložená procedura, aktivační událost, uživatelem definovaná funkce nebo nabídka. |

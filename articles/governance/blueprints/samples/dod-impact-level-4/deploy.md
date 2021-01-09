@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu úrovně účinku DoD. 4
 description: Nasaďte kroky pro ukázku podrobného plánu na úrovni DoD – 4, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 10/26/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 128f47798830c6a51d8fe7a9b67b9f0d7749dc71
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 40f45d1194ae089010edf308c3b110bc97591613
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669497"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033757"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>Nasazení ukázky podrobného plánu úrovně dopadu DoD. 4
 
@@ -16,7 +16,7 @@ Pro nasazení ukázky podrobného plánu úrovně dopadu na IL4 (DoD. 4) pro Azu
 
 > [!div class="checklist"]
 > - Vytvořte nový podrobný plán z ukázky.
-> - Kopii ukázky si označte jako **publikovanou** .
+> - Kopii ukázky si označte jako **publikovanou**.
 > - Přiřaďte kopii podrobného plánu k existujícímu předplatnému.
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
@@ -25,49 +25,49 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte nový podrobný plán ve svém prostředí.
 
-1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
-1. Vlevo na stránce **Začínáme** vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_ .
+1. Vlevo na stránce **Začínáme** vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_.
 
-1. V části _Další ukázky_ Najděte ukázku podrobného plánu pro **Dod. 4** a vyberte **použít tuto ukázku** .
+1. V části _Další ukázky_ Najděte ukázku podrobného plánu pro **Dod. 4** a vyberte **použít tuto ukázku**.
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
    - **Název** podrobného plánu: zadejte název vaší kopie ukázkového plánu úrovně účinku dod. 4.
-   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
-1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept** .
+1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
 
 ## <a name="publish-the-sample-copy"></a>Publikování kopie ukázky
 
-V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná** . Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání s ovládacími prvky úrovně dopadu na změnu úrovně 4.
+V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná**. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání s ovládacími prvky úrovně dopadu na změnu úrovně 4.
 
-1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Nahoře na stránce vyberte **Publikovat podrobný plán** . Napravo na nové stránce zadejte **verzi** kopie ukázky podrobného plánu. Tato vlastnost je užitečná, protože umožňuje pozdější úpravy. Zadejte **poznámky ke změnám** , jako je například první verze publikovaná z ukázky DoD IL4 Details Sample. Na konci stránky pak vyberte **Publikovat** .
+1. Nahoře na stránce vyberte **Publikovat podrobný plán**. Napravo na nové stránce zadejte **verzi** kopie ukázky podrobného plánu. Tato vlastnost je užitečná, protože umožňuje pozdější úpravy. Zadejte **poznámky ke změnám** , jako je například první verze publikovaná z ukázky DoD IL4 Details Sample. Na konci stránky pak vyberte **Publikovat**.
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
 Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán** .
+1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán**.
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
@@ -85,7 +85,7 @@ Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji
 1. Po zadání všech parametrů vyberte **Přiřadit** v dolní části stránky. Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure Blueprints a integrované ukázky podrobného plánu jsou **bezplatné** . U prostředků Azure se [cena stanovuje podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
+> Služba Azure Blueprints a integrované ukázky podrobného plánu jsou **bezplatné**. U prostředků Azure se [cena stanovuje podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
 ## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 

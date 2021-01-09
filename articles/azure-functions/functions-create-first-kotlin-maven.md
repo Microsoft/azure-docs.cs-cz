@@ -1,18 +1,18 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Kotlin a Maven
-description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí Kotlin a Maven.
+title: Vytvoření funkce Kotlin v Azure Functions pomocí Maven
+description: Vytvoření a publikování aplikace funkcí aktivované protokolem HTTP pro Azure Functions s využitím Kotlin a Maven.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8b597f54f22aaf6d904ba276ebdfa3a051b93b2d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954290"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035236"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 

@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) s smlouvou SLA pro provozuschopnost
 description: Přečtěte si o volitelné nabídce SLA pro dobu provozu pro Server API služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607335"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033332"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -26,13 +26,13 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
 * Smlouva SLA pro dobu provozu je dostupná ve veřejných oblastech a Azure Government oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-* Smlouva SLA o provozuschopnosti je dostupná pro [privátní clustery AKS][private-clusters] ve všech oblastech, kde se podporuje AKS.
+* Smlouva SLA o provozuschopnosti je dostupná pro [privátní clustery AKS][private-clusters] ve všech veřejných oblastech, kde se podporuje AKS.
 
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
 Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.8.0 nebo novější.
 

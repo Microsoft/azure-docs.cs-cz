@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 1d2ba6dbbcc2b8674718912f00b1d1ec58e1c4c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936086"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034505"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -928,7 +928,7 @@ Tato tabulka uvádí typy ověřování, které jsou k dispozici na triggerech a
 
 Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-api.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | Základní | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Ano | <*uživatelské jméno*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
@@ -959,11 +959,11 @@ Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpraco
 
 Pokud je k dispozici možnost [certifikát klienta](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) , zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | **Certifikát klienta** <br>nebo <br>`ClientCertificate` | Typ ověřování, který se má použít. Certifikáty můžete spravovat pomocí [API Management Azure](../api-management/api-management-howto-mutual-certificates.md). <p></p>**Poznámka**: vlastní konektory nepodporují ověřování na základě certifikátů pro příchozí i odchozí volání. |
 | **PFX** | `pfx` | Ano | <*Encoded – obsah-souboru PFX*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. převeďte obsah certifikátu pomocí `ToBase64String()` funkce a uložte tento obsah do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **Heslo** | `password`| No | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
+| **Heslo** | `password`| Ne | <*heslo-pro-PFX – soubor*> | Heslo pro přístup k souboru PFX |
 |||||
 
 Když použijete [zabezpečené parametry](#secure-action-parameters) pro zpracování a zabezpečení citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Tato ukázka definice akce HTTP Určuje ověřování `type` jako `ClientCertificate` a používá [funkci Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) k získání hodnot parametrů:
@@ -998,10 +998,10 @@ Další informace o zabezpečení služeb pomocí ověřování klientského cer
 
 Na triggerech žádosti můžete pomocí [Azure Active Directory otevřít ověřování (Azure AD OAuth)](../active-directory/develop/index.yml)ověřit příchozí volání po [nastavení zásad autorizace Azure AD](#enable-oauth) pro vaši aplikaci logiky. Pro všechny ostatní triggery a akce, které poskytují typ ověřování **služby Active Directory OAuth** pro výběr, zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
-| **Autorita** | `authority` | No | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
+| **Autorita** | `authority` | Ne | <*Adresa URL pro vystavitele tokenu pro-Authority*> | Adresa URL pro autoritu, která poskytuje přístupový token. Ve výchozím nastavení je tato hodnota `https://login.windows.net` . |
 | **Tenant** | `tenant` | Ano | <*ID tenanta*> | ID tenanta pro tenanta Azure AD |
 | **Cílová skupina** | `audience` | Ano | <*prostředek k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
 | **ID klienta** | `clientId` | Ano | <*ID klienta*> | ID klienta pro aplikaci požadující autorizaci |
@@ -1052,7 +1052,7 @@ Authorization: OAuth realm="Photos",
 
 V aktivační události nebo akci, která podporuje nezpracované ověřování, zadejte tyto hodnoty vlastností:
 
-| Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
+| Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentication** | `type` | Ano | Žádný | Typ ověřování, který se má použít |
 | **Hodnota** | `value` | Ano | <*autorizace – hlavička-hodnota*> | Hodnota hlavičky autorizace, která se má použít pro ověřování |
@@ -1083,11 +1083,11 @@ Pokud je možnost [spravovaná identita](../active-directory/managed-identities-
 
 1. Aby mohla aplikace logiky používat spravovanou identitu, postupujte podle kroků v části [ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md). Tyto kroky povolí spravovanou identitu ve vaší aplikaci logiky a nastaví přístup této identity k cílovému prostředku Azure.
 
-1. Než může Azure Function používat spravovanou identitu, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+1. Než může Azure Function používat spravovanou identitu, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
 1. V aktivační události nebo akci, kde chcete použít spravovanou identitu, zadejte tyto hodnoty vlastností:
 
-   | Property – vlastnost (Designer) | Property (JSON) | Vyžadováno | Hodnota | Popis |
+   | Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|
    | **Authentication** | `type` | Ano | **Spravovaná identita** <br>nebo <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
    | **Spravovaná identita** | `identity` | Ano | * **Spravovaná identita přiřazená systémem** <br>nebo <br>`SystemAssigned` <p><p>* <*uživatelsky přiřazené-identity-Name*> | Spravovaná identita, která se má použít |

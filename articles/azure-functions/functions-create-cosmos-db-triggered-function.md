@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182576"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034811"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -18,16 +18,17 @@ Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve 
 
 :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Kód Azure Cosmos DB":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
@@ -36,7 +37,7 @@ Před vytvořením triggeru potřebujete účet služby Azure Cosmos DB, který 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
+## <a name="create-a-function-app-in-azure"></a>Vytvoření aplikace funkcí v Azure
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 

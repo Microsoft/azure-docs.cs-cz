@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935729"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035151"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -56,16 +56,16 @@ Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) s 
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Chraňte kritické webové aplikace
 
-**Doprovodné** materiály: Chcete-li plně zabezpečit koncové body služby Azure Functions v produkčním prostředí, měli byste zvážit implementaci jedné z následujících funkcí zabezpečení na úrovni aplikace.
+**Doprovodné** materiály: k plnému zabezpečení vašich Azure Functionsch koncových bodů v produkčním prostředí byste měli zvážit implementaci jedné z následujících funkcí zabezpečení na úrovni aplikace.
 - Zapněte App Service ověřování/autorizaci aplikace Function App,
 - K ověřování požadavků použijte Azure API Management (APIM) nebo
 - Nasaďte aplikaci Function App do Azure App Service Environment.
 
-Kromě toho zajistěte, aby bylo vzdálené ladění pro produkční Azure Functions zakázané. Sdílení prostředků mezi zdroji (CORS) by navíc nemělo umožňovat přístup k vaší aplikaci Azure Functions všem doménám. Povoluje interakci jenom požadovaných domén s vaší aplikací Azure Function App.
+Kromě toho zajistěte, aby bylo vzdálené ladění pro produkční Azure Functions zakázané. Kromě toho sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat všem doménám přístup k vaší aplikaci Function App v Azure. Povoluje interakci jenom požadovaných domén s vaší aplikací Function App.
 
 Zvažte nasazení brány firewall webových aplikací (WAF) Azure jako součást konfigurace sítě pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru. 
 
-- [Postup zabezpečení koncových bodů funkce Azure v produkčním prostředí](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Postup zabezpečení Azure Functionsch koncových bodů v produkčním prostředí](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -76,7 +76,7 @@ Zvažte nasazení brány firewall webových aplikací (WAF) Azure jako součást
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: zakažte komunikaci se známými škodlivými IP adresami.
 
 **Pokyny**: povolení DDoS Protection Standard ve virtuálních sítích přidružených k vašim aplikacím Functions pro ochranu před útoky DDoS. K odepření komunikace se známými škodlivými nebo nepoužívanými veřejnými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
-Kromě toho nakonfigurujte front-end bránu, jako je například firewall webových aplikací Azure, k ověřování všech příchozích požadavků a odfiltrování škodlivých přenosů. Firewall webových aplikací Azure vám může přispět k zabezpečení aplikací funkcí Azure pomocí kontroly vstupních webových přenosů, které blokují injektáže SQL, skriptování mezi weby, nakládku malwaru a DDoS útoky. Seznámení s WAF vyžaduje buď App Service Environment, nebo použití privátních koncových bodů (Preview). Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
+Kromě toho nakonfigurujte front-end bránu, jako je například firewall webových aplikací Azure, k ověřování všech příchozích požadavků a odfiltrování škodlivých přenosů. Firewall webových aplikací Azure vám může přispět k zabezpečení aplikace Function kontrolou příchozího webového provozu a zablokovat tak injektáže SQL, skriptování mezi weby, nakládku malwaru a DDoS útoky. Seznámení s WAF vyžaduje buď App Service Environment, nebo použití privátních koncových bodů (Preview). Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
 
 - [Možnosti sítí Azure Functions](./functions-networking-options.md)
 
@@ -176,8 +176,8 @@ Alternativně existuje více možností Marketplace, jako je Barracuda WAF pro A
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro nastavení sítě související s vaším Azure Functions. Pomocí aliasů Azure Policy v oborech názvů Microsoft. Web a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich Azure Functions. Můžete také využít integrované definice zásad pro Azure Functions, například:
 - CORS by neměl umožňovat každému prostředku přístup k aplikacím funkcí
-- Function App by měl být přístupný jenom přes HTTPS
-- V Function App by se měla použít nejnovější verze TLS.
+- Aplikace Function app by měla být přístupná jen přes protokol HTTPS
+- Ve vaší aplikaci Function app by se měla použít nejnovější verze TLS.
 
 Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 
@@ -233,7 +233,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Azure Functions taky nabízí integrovanou integraci s Azure Application Insights k monitorování funkcí. Application Insights shromažďuje údaje o protokolech, výkonu a chybách. Automaticky detekuje anomálie ve výkonu a zahrnuje výkonné analytické nástroje, které vám pomůžou diagnostikovat problémy a pochopit, jak se vaše funkce používají.
 
-Pokud máte předdefinované vlastní protokolování zabezpečení a auditu v rámci aplikace funkce Azure, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. 
+Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámci aplikace Function App, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. 
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany. 
 
@@ -253,7 +253,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 **Doprovodné** materiály: pro protokolování auditu řídicích rovin povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni ovládacího prvku pro vaše prostředky Azure.
 
-Pokud máte předdefinované vlastní protokolování zabezpečení a auditu v rámci aplikace funkce Azure, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. 
+Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámci aplikace Function App, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. 
 
 - [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
@@ -273,7 +273,7 @@ Pokud máte předdefinované vlastní protokolování zabezpečení a auditu v r
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
-**Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure Functions aplikacím podle předpisů pro dodržování předpisů vaší organizace.
+**Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim aplikacím funkcí podle předpisů pro dodržování předpisů vaší organizace.
 
 - [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -283,11 +283,11 @@ Pokud máte předdefinované vlastní protokolování zabezpečení a auditu v r
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
-**Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a také nastavení diagnostiky pro vaši aplikaci Azure functions a odešlete protokoly do pracovního prostoru Log Analytics. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě shromážděných dat.
+**Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a také nastavení diagnostiky pro aplikaci Function App a odešlete protokoly do Log Analytics pracovního prostoru. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě shromážděných dat.
 
-Povolte Application Insights pro aplikace Azure Functions, abyste mohli shromažďovat data protokolů, výkonu a chyb. Data telemetrie shromážděná Application Insights můžete zobrazit v Azure Portal.
+Povolte Application Insights pro aplikace Function App, abyste mohli shromažďovat data protokolů, výkonu a chyby. Data telemetrie shromážděná Application Insights můžete zobrazit v Azure Portal.
 
-Pokud máte předdefinované vlastní protokolování zabezpečení a auditu v rámci aplikace funkce Azure, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. 
+Pokud máte integrované vlastní protokolování zabezpečení a auditu v rámci aplikace Function App, povolte nastavení diagnostiky "FunctionAppLogs" a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. 
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany. 
 
@@ -305,9 +305,9 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 
-**Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a také nastavení diagnostiky pro vaši aplikaci Azure functions a odešlete protokoly do pracovního prostoru Log Analytics. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě shromážděných dat. Můžete vytvářet výstrahy na základě vašich dotazů na pracovní prostor Log Analytics.
+**Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a také nastavení diagnostiky pro aplikaci Function App a odešlete protokoly do Log Analytics pracovního prostoru. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě shromážděných dat. Můžete vytvářet výstrahy na základě vašich dotazů na pracovní prostor Log Analytics.
 
-Povolte Application Insights pro aplikace Azure Functions, abyste mohli shromažďovat data protokolů, výkonu a chyb. Data telemetrie shromážděná Application Insights můžete zobrazit a vytvořit upozornění v rámci Azure Portal.
+Povolte Application Insights pro aplikace Function App, abyste mohli shromažďovat data protokolů, výkonu a chyby. Data telemetrie shromážděná Application Insights můžete zobrazit a vytvořit upozornění v rámci Azure Portal.
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany. 
 
@@ -327,7 +327,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
-**Doprovodné** materiály: nepoužitelné; Aplikace Azure Functions nezpracovávají ani nevytváří protokoly související s malwarem.
+**Doprovodné** materiály: nepoužitelné; aplikace Function App nezpracovávají ani nevytváří protokoly související s malwarem.
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -335,7 +335,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: povolení protokolování dotazů DNS
 
-**Doprovodné** materiály: nepoužitelné; Aplikace Azure Functions nezpracovávají ani nevytváří protokoly související se službou DNS přístupné uživateli.
+**Doprovodné** materiály: nepoužitelné; aplikace Function App nezpracovávají ani nevytváří protokoly související s DNS, které jsou přístupné pro uživatele.
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -399,7 +399,7 @@ Kromě toho, abyste mohli sledovat vyhrazené účty pro správu, můžete použ
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné** materiály: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO), než nakonfigurujete individuální samostatná pověření pro přístup k datům do aplikace Function App. Použijte Azure Security Center doporučení pro správu identit a přístupu. K implementaci jednotného přihlašování pro aplikace Azure Functions použijte funkci App Service ověřování/autorizace.
+**Doprovodné** materiály: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO), než nakonfigurujete individuální samostatná pověření pro přístup k datům do aplikace Function App. Použijte Azure Security Center doporučení pro správu identit a přístupu. K implementaci jednotného přihlašování pro aplikace Functions použijte funkci App Service ověřování/autorizace.
 
 - [Pochopení ověřování a autorizace v Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
@@ -459,9 +459,9 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Doprovodné** materiály: jako centrální ověřování a systém autorizací pro vaše aplikace Azure Functions použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Doprovodné** materiály: jako centrální ověřování a autorizační systém pro aplikace Function app použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-- [Jak nakonfigurovat aplikaci Azure Functions, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
+- [Jak nakonfigurovat aplikaci Function App, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -483,13 +483,13 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
-**Doprovodné** materiály: jako centrální systém ověřování a autorizace pro aplikace Azure Functions použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
+**Doprovodné** materiály: jako centrální ověřování a autorizační systém pro aplikace Function app použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
 Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikových protokolů událostí Azure AD, které vám umožní integrovat s ověřováním Azure Sentinel nebo SIEM třetí strany.
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-- [Jak nakonfigurovat aplikaci Azure Functions, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
+- [Jak nakonfigurovat aplikaci Function App, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
 
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -501,7 +501,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: upozornění na odchylku chování přihlášení k účtu
 
-**Doprovodné** materiály: jako centrální ověřování a systém autorizací pro vaše aplikace Azure Functions použijte Azure Active Directory (AD). V případě odchylky chování přihlášení k účtu na rovině ovládacího prvku (Azure Portal) použijte funkce Azure Active Directory (AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
+**Doprovodné** materiály: jako centrální ověřování a autorizační systém pro aplikace Function app použijte Azure Active Directory (AD). V případě odchylky chování přihlášení k účtu na rovině ovládacího prvku (Azure Portal) použijte funkce Azure Active Directory (AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
 - [Zobrazení rizikových přihlášení Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -539,9 +539,9 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Aplikace Azure Functions by měly být oddělené virtuální sítí (VNet)/Subnet a odpovídajícím způsobem označeny.
+**Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. aplikace Function app by měly být odděleny virtuální sítí (VNet)/Subnet a odpovídajícím způsobem označeny.
 
-K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se ke službě připojuje soukromě a bezpečně (například: Azure Functions App Endpoint HTTPs) využívajících privátní propojení Azure. Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě. Soukromé koncové body jsou v (Preview) pro aplikace Function App spuštěné v plánu Premium. Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
+K izolaci sítě můžete použít také soukromé koncové body. Privátní koncový bod Azure je síťové rozhraní, které se ke službě připojuje soukromě a bezpečně (například: Function App App HTTPs) využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě. Soukromé koncové body jsou v (Preview) pro aplikace Function App spuštěné v plánu Premium. Před použitím v produkčních úlohách zajistěte, aby privátní koncové body již nejsou ve verzi Preview.
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
@@ -575,7 +575,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Functions a i
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Pokyny**: v Azure Portal pro aplikace Function Azure v části funkce platformy: sítě: SSL, povolit nastavení pouze https a nastavit minimální verzi TLS na 1,2.
+**Pokyny**: v Azure Portal pro aplikace Function App klikněte v části funkce platformy: sítě: SSL na Povolit nastavení pouze https a nastavte minimální verzi TLS na 1,2.
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -595,7 +595,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacího prvku Azure Functions (Azure Portal). 
+**Pokyny**: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacích prvků aplikace Function app (Azure Portal). 
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -629,7 +629,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Functions a i
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních aplikacích Azure Functions i v dalších důležitých nebo souvisejících prostředcích.
+**Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních funkcích a také v jiných důležitých nebo souvisejících prostředcích.
 
 - [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -643,9 +643,9 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Functions a i
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
-**Doprovodné** materiály: pomocí DevSecOps praxe zajistěte, aby vaše aplikace Azure Functions byly zabezpečené a v průběhu doby jejich životního cyklu zůstaly v bezpečí. DevSecOps zahrnuje tým zabezpečení vaší organizace a jejich schopnosti v DevOps postupy, které umožňují zabezpečení na zodpovědnost všech členů týmu.
+**Doprovodné** materiály: pomocí DevSecOps praxe zajistíte, aby vaše aplikace Functions byly zabezpečené a zůstaly po celou dobu životního cyklu co nejbezpečnější. DevSecOps zahrnuje tým zabezpečení vaší organizace a jejich schopnosti v DevOps postupy, které umožňují zabezpečení na zodpovědnost všech členů týmu.
 
-Kromě toho použijte doporučení z Azure Security Center k zabezpečení vašich aplikací funkcí Azure Functions.
+Kromě toho dodržujte doporučení od Azure Security Center, abyste pomohli zabezpečit aplikace Function App.
 
 - [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
@@ -821,9 +821,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fyzicky nebo logicky oddělené aplikace s vysokým rizikem
 
-**Doprovodné** materiály: u citlivých nebo vysoce rizikových aplikací Azure Functions implementujte samostatné odběry nebo skupiny pro správu, které zajišťují izolaci.
+**Doprovodné** materiály: pro aplikace citlivých nebo vysoce rizikových funkcí implementujte samostatné odběry nebo skupiny pro správu, které zajišťují izolaci.
 
-Nasaďte vysoce rizikové aplikace funkce Azure Functions do jejich vlastních Virtual Network (VNet). Zabezpečení hraničního Azure Functions se dosahuje prostřednictvím virtuální sítě. Funkce spuštěné v plánu Premium nebo App Service Environment (pomocného programu) se dají integrovat s virtuální sítě. Vyberte nejlepší architekturu pro váš případ použití.
+Nasaďte aplikace s vysokým rizikem do svých vlastních Virtual Network (VNet). Zabezpečení hraničních aplikací pro aplikace Function App se dosahuje prostřednictvím virtuální sítě. Funkce spuštěné v plánu Premium nebo App Service Environment (pomocného programu) se dají integrovat s virtuální sítě. Vyberte nejlepší architekturu pro váš případ použití.
 
 - [Možnosti sítí Azure Functions](./functions-networking-options.md)
 
@@ -849,10 +849,10 @@ Postup vytvoření interního pomocného mechanismu řízení:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro aplikaci funkce Azure pomocí Azure Policy. Použijte aliasy Azure Policy v oboru názvů Microsoft. Web k vytváření vlastních zásad pro auditování nebo prosazování konfigurace Azure Functions aplikací. Můžete také využít integrované definice zásad, například:
-- Ve vašem Function App by se měla používat spravovaná identita.
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro aplikaci Function app pomocí Azure Policy. Použijte aliasy Azure Policy v oboru názvů Microsoft. Web k vytváření vlastních zásad pro auditování nebo prosazování konfigurace aplikací Function App. Můžete také využít integrované definice zásad, například:
+- Ve vaší aplikaci Function app by se měla použít spravovaná identita.
 - Pro aplikace Function app by mělo být vypnuto vzdálené ladění.
-- Function App by měl být přístupný jenom přes HTTPS
+- Aplikace Function app by měla být přístupná jen přes protokol HTTPS
 
 - [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -972,7 +972,7 @@ Postup vytvoření interního pomocného mechanismu řízení:
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny**: pomocí spravovaných identit můžete službě Azure Function App poskytnout automatickou spravovanou identitu ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
+**Doprovodné** materiály: použití spravovaných identit k poskytnutí aplikace Function App s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
 - [Použití spravovaných identit pro App Service a Azure Functions](../app-service/overview-managed-identity.md)
 

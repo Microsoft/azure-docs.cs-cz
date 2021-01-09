@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608506"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035219"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
-Pomocí [akcí GitHubu](https://github.com/features/actions) Definujte pracovní postup, který automaticky sestaví a nasadí kód do vaší aplikace funkce Azure Functions. 
+Pomocí [akcí GitHubu](https://github.com/features/actions) Definujte pracovní postup, který automaticky sestaví a nasadí kód do aplikace Function app v Azure Functions. 
 
 [Pracovní postup](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
 
@@ -29,7 +29,7 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 | **Sestavení** | Nastavte prostředí.<br/>Sestavte aplikaci Function App.|
 | **Nasazení** | Nasaďte aplikaci Function App.|
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -187,6 +187,7 @@ Následující příklad ukazuje část pracovního postupu, který vytváří a
 ---
 
 ## <a name="deploy-the-function-app"></a>Nasazení aplikace funkcí
+
 Použijte `Azure/functions-action` akci pro nasazení kódu do aplikace Function App. Tato akce má tři parametry:
 
 |Parametr |Vysvětlení  |
@@ -202,7 +203,7 @@ Následující příklad používá `functions-action` pro ověřování verze 1
 Nastavte pracovní postup .NET Linux, který používá profil publikování.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 Nastavte pracovní postup systému Windows .NET, který používá profil publikování.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 Nastavte pracovní postup Java Linux, který používá profil publikování.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 Nastavte pracovní postup Java Windows, který používá profil publikování.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 Nastavte pracovní postup pro Node.JS Linux, který používá profil publikování.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 Nastavte Node.JS pracovní postup systému Windows, který používá profil publikování.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 Nastavte pracovní postup pro Python Linux, který používá profil publikování.
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

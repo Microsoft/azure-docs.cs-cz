@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936800"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034913"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -20,7 +20,7 @@ Jako Express.js, Node.js nebo vývojář JavaScriptu, pokud jste Azure Functions
 
 | Začínáme | Koncepty| Učení s asistencí |
 | -- | -- | -- | 
-| <ul><li>[Node.js funkce pomocí Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js funkce pomocí Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>Základy funkcí JavaScriptu
 
@@ -507,7 +507,7 @@ Následující tabulka uvádí aktuální podporované verze Node.js pro každou
 
 | Verze funkcí | Verze uzlu (Windows) | Verze uzlu (Linux) |
 |---|---| --- |
-| verze | 6.11.2 (uzamčeno modulem runtime) | neuvedeno |
+| verze | 6.11.2 (uzamčeno modulem runtime) | Není k dispozici |
 | 2.x  | `~8`<br/>`~10` doporučil<br/>`~12` | `node|8`<br/>`node|10` doporučil  |
 | 3.x | `~10`<br/>`~12` doporučil<br/>`~14` Tisk  | `node|10`<br/>`node|12` doporučil<br/>`node|14` Tisk |
 

@@ -1,20 +1,20 @@
 ---
 title: Ukázkové ovládací prvky pro Media details
 description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 08/13/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: ec4850b4e3061d267610bfd9c2c0e33c670472b4
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931865"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035032"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
 
 Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
+Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve **\[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).

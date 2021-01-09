@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033778"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033978"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
 
@@ -74,7 +74,7 @@ Nepříjem ověřovacího kódu je běžný problém. K tomuto problému obvykle
 
 Vyzkoušejte toto | Informace o doprovodnéch materiálech
 --------- | ------------
-Použití ověřovacích kódů aplikace Microsoft Authenticator | Získáváte "úspěšnost při volání ověřování" nebo "při přihlašování jste dosáhli limitu ověřovacích kódů textu". <br/><br/>Společnost Microsoft může v krátké době omezit opakované pokusy o ověření prováděné stejným uživatelem. Toto omezení se nevztahuje na Microsoft Authenticator nebo ověřovací kód. Pokud jste dosáhli těchto omezení, můžete použít ověřovací aplikaci, ověřovací kód nebo se pokusit znovu přihlásit za několik minut.
+Použití ověřovacích kódů aplikace Microsoft Authenticator | Získáváte "úspěšnost při volání ověřování" nebo "při přihlašování jste dosáhli limitu ověřovacích kódů textu". <br/><br/>Společnost Microsoft může v krátké době omezit opakované pokusy o ověření prováděné stejným uživatelem. Toto omezení se nevztahuje na Microsoft Authenticator nebo ověřovací kód. Pokud jste dosáhli těchto omezení, můžete použít ověřovací aplikaci, ověřovací kód nebo se pokusit znovu přihlásit za několik minut. <br/><br/> Dostanete zprávu "je nám líto, ale během přihlašování došlo k potížím s ověřováním vašeho účtu. <br/><br/> Společnost Microsoft může omezit nebo zablokovat pokusy o ověření hlasu nebo serveru SMS prováděné stejným uživatelem, telefonním číslem nebo organizací z důvodu vysokého počtu nezdařených pokusů o ověření hlasu nebo serveru SMS. Pokud se zobrazí tato chyba, můžete vyzkoušet jinou metodu, například ověřovací aplikaci nebo ověřovací kód, nebo se obrátit na správce a získat podporu.
 Restartujte mobilní zařízení. | Někdy vaše zařízení potřebuje jenom aktualizaci. Po restartování zařízení skončí všechny procesy na pozadí a služby. Restartování také vypne základní součásti vašeho zařízení. Po restartování zařízení se aktualizují všechny služby nebo komponenty.
 Ověřte správnost bezpečnostních údajů | Ujistěte se, že informace o metodě ověření zabezpečení jsou přesné, zejména vaše telefonní čísla. Pokud vložíte špatné telefonní číslo, všechny výstrahy budou přecházet na toto nesprávné číslo. Naštěstí nebude moct tento uživatel dělat cokoli s výstrahami, ale neumožňuje vám taky přihlásit se ke svému účtu. Chcete-li se ujistit, že jsou vaše informace správné, přečtěte si pokyny v článku věnovaném [Nastavení metod pro správu dvou faktorů ověřování](multi-factor-authentication-end-user-manage-settings.md) .
 Ověřte, že jsou vaše oznámení zapnutá. | Ujistěte se, že vaše mobilní zařízení má zapnutá oznámení. Ujistěte se, že jsou povolené následující režimy oznámení: <br/><br/> &bull; Telefonní hovory <br/> &bull; Vaše aplikace pro ověřování <br/> &bull; Vaše aplikace pro zasílání zpráv SMS <br/><br/> Zajistěte, aby tyto režimy vytvořily výstrahu, která se _zobrazí_ na vašem zařízení.

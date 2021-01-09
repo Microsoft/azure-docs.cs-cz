@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure IoT Hub
 description: Seznam Azure Policy integrovaných definic zásad pro Azure IoT Hub. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f93ad8aae72f7a66015470f1e0930e6857d5ef4f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 0fff6321764f66ec203fdee73d23ada49f2364dc
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989008"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043624"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure Policy předdefinované definice pro Azure IoT Hub
 

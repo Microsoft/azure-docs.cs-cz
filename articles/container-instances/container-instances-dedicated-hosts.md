@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825601"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034267"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
@@ -19,6 +19,9 @@ ms.locfileid: "91825601"
 Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh z pohledu fyzického serveru.
 
 ## <a name="prerequisites"></a>Požadavky
+
+> [!NOTE]
+> Kvůli některým aktuálním omezením není zaručeno schválení všech žádostí o zvýšení limitu.
 
 * Výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, je 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte [support Request Azure][azure-support] pro zvýšení limitu.
 

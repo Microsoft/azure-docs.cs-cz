@@ -3,12 +3,12 @@ title: Scénáře použití virtuální sítě
 description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů do služby Azure Virtual Network.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882428"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033825"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -33,6 +33,7 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * **Azure Load Balancer** – umístění Azure Load Balancer před instancemi kontejnerů v síťové skupině kontejnerů se nepodporuje.
 * **Globální partnerský vztah virtuální sítě** – globální partnerský vztah (propojení virtuálních sítí napříč oblastmi Azure) není podporovaný.
 * **Veřejná IP adresa nebo popisek DNS** – skupiny kontejnerů nasazené ve virtuální síti aktuálně nepodporují vystavování kontejnerů přímo na internetu s použitím veřejné IP adresy nebo plně kvalifikovaného názvu domény.
+* **Virtual Network NAT** – skupiny kontejnerů nasazené do virtuální sítě momentálně nepodporují použití prostředku brány NAT pro odchozí připojení k Internetu.
 
 ## <a name="other-limitations"></a>Další omezení
 

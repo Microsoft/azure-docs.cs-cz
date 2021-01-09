@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696020"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033944"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Otevření lístku podpory pro Azure Stack Edge pro a Azure Data Box Gateway
 
@@ -78,7 +78,7 @@ Tyto informace se vztahují jenom na zařízení Azure Stack. Postup hlášení 
     * Je odeslána jednotka pro nahrazení pole (FRU) pro neúspěšnou součást hardwaru. V současné době jsou k dispozici pouze jednotky napájení a jednotky SSD (Solid-State Drive), které podporuje FRUs.
     * V rámci následujícího pracovního dne se nahradí jenom FRUs, všechno ostatní vyžaduje, aby se dodalo úplné nahrazení systému (FSR).
 
-3. Je-li lístek podpory vyvolán před 4:30 místního času (od pondělí do pátku), technik na pracovišti odešle do svého umístění další pracovní den, aby bylo možné provést náhradu jednotky FRU. Úplné nahrazení systému obvykle trvá mnohem déle, protože tyto součásti se dodávají z našeho továrního řízení a můžou podléhat přepravě a omezením celních zpoždění.
+3. Pokud je určena náhrada jednotky FRU, kterou vyžaduje 1 – místní čas (od pondělí do pátku), technik na pracovišti odešle další pracovní den do svého umístění a provede náhradu jednotky FRU. Úplné nahrazení systému obvykle trvá mnohem déle, protože tyto součásti se dodávají z našeho továrního řízení a můžou podléhat přepravě a omezením celních zpoždění.
 
 ## <a name="manage-a-support-request"></a>Správa žádosti o podporu
 

@@ -1,40 +1,40 @@
 ---
-title: Nastavení funkce Azure pro zpracování dat
+title: Nastavení funkce v Azure pro zpracování dat
 titleSuffix: Azure Digital Twins
-description: Podívejte se, jak vytvořit funkci Azure, která může přistupovat k digitálnímu vlákna a aktivovat je.
+description: Podívejte se, jak vytvořit funkci v Azure, která může přistupovat k digitálnímu vlákna a aktivovat je.
 author: baanders
 ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5352a95b865851be937af7b9f19268afd23148db
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 7f491bbe61e8574a7275d9ef5c87d05fa61dc7c4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280025"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035304"
 ---
-# <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
+# <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
-Aktualizace digitálních vláken na základě dat se zpracovává pomocí [**tras událostí**](concepts-route-events.md) prostřednictvím výpočetních prostředků, jako je [Azure Functions](../azure-functions/functions-overview.md). Funkce Azure Functions se dá použít k aktualizaci digitálního vlákna v reakci na:
+Aktualizace digitálních vláken na základě dat se zpracovává pomocí [**tras událostí**](concepts-route-events.md) prostřednictvím výpočetních prostředků, jako je například funkce, která je vytvořena pomocí [Azure Functions](../azure-functions/functions-overview.md). Funkce lze použít k aktualizaci digitálního vlákna v reakci na:
 * data telemetrie zařízení přicházejících z IoT Hub
 * Změna vlastnosti nebo jiná data přicházející z jiného digitálního vlákna v rámci grafu s dvojitou přesností
 
-Tento článek vás provede vytvořením funkce Azure pro použití s digitálními událostmi Azure. 
+Tento článek vás provede vytvořením funkce v Azure pro použití s digitálními Vlákenmi Azure. 
 
 Tady je přehled kroků, které obsahuje:
 
-1. Vytvoření aplikace Azure Functions v aplikaci Visual Studio
-2. Zápis funkce Azure pomocí triggeru [Event Grid](../event-grid/overview.md)
+1. Vytvoření projektu Azure Functions v sadě Visual Studio
+2. Zápis funkce s triggerem [Event Grid](../event-grid/overview.md)
 3. Přidání ověřovacího kódu do funkce (aby bylo možné získat přístup k digitálním Vlákenám Azure)
 4. Publikování aplikace Function App do Azure
-5. Nastavení přístupu [zabezpečení](concepts-security.md) pro aplikaci Azure Function App
+5. Nastavení přístupu [zabezpečení](concepts-security.md) pro aplikaci Function App
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Předpoklad: nastavení instance digitálních vláken Azure
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="create-an-azure-functions-app-in-visual-studio"></a>Vytvoření aplikace Azure Functions v aplikaci Visual Studio
+## <a name="create-a-function-app-in-visual-studio"></a>Vytvoření aplikace Function App v aplikaci Visual Studio
 
 V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte šablonu _Azure Functions_ vyberte možnost _Další_.
 
@@ -46,15 +46,15 @@ Zadejte název aplikace Function App a vyberte _vytvořit_.
 
 Vyberte typ *triggeru* function App Event Grid a vyberte _vytvořit_.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno triggeru projektu Azure Functions":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno aktivační události Azure Functions projektu":::
 
-Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplněný vzorek kódu v souboru **Function.cs** ve složce projektu. Tato krátká funkce Azure slouží k protokolování událostí.
+Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplněný vzorek kódu v souboru **Function.cs** ve složce projektu. Tato krátká funkce se používá k protokolování událostí.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: okno projektu s ukázkovým kódem":::
 
-## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Zápis funkce Azure pomocí triggeru Event Grid
+## <a name="write-a-function-with-an-event-grid-trigger"></a>Zápis funkce s triggerem Event Grid
 
-Funkci Azure můžete napsat přidáním sady SDK do aplikace Function App. Aplikace Function App komunikuje s digitálními interakcemi Azure pomocí [sady Azure Digital Revlákens SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
+Funkci můžete napsat přidáním sady SDK do aplikace Function App. Aplikace Function App komunikuje s digitálními interakcemi Azure pomocí [sady Azure Digital Revlákens SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
 
 Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout následující balíčky. Balíčky můžete buď nainstalovat pomocí Správce balíčků NuGet sady Visual Studio, nebo balíčky přidat pomocí `dotnet` nástroje příkazového řádku. Vyberte jednu z těchto metod: 
 
@@ -78,7 +78,7 @@ dotnet add package Azure.identity --version 1.2.2
 dotnet add package System.Net.Http
 dotnet add package Azure.Core.Pipeline
 ```
-Potom ve Visual Studiu Průzkumník řešení otevřete soubor _Function.cs_ , kde máte vzorový kód a přidejte následující příkazy _using_ do funkce Azure Function. 
+Potom ve Visual Studiu Průzkumník řešení otevřete soubor _Function.cs_ , kde máte vzorový kód a přidejte následující příkazy _using_ do funkce. 
 
 ```csharp
 using Azure.DigitalTwins.Core;
@@ -86,9 +86,9 @@ using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
-## <a name="add-authentication-code-to-the-azure-function"></a>Přidání ověřovacího kódu do funkce Azure Functions
+## <a name="add-authentication-code-to-the-function"></a>Přidání ověřovacího kódu do funkce
 
-Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do funkce Azure v souboru {název funkce}. cs přidáte následující:
+Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do své funkce v souboru {název funkce}. cs přidáte následující:
 
 * Načte adresu URL služby ADT jako proměnnou prostředí. Je vhodné si přečíst adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce.
 ```csharp     
@@ -98,7 +98,7 @@ private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariab
 ```csharp
 private static readonly HttpClient httpClient = new HttpClient();
 ```
-* Můžete použít přihlašovací údaje spravované identity ve službě Azure Functions.
+* Přihlašovací údaje spravované identity můžete použít v Azure Functions.
 ```csharp
 ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
 ```
@@ -159,16 +159,16 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace Function App do Azure
 
-Pokud chcete publikovat aplikaci Function App do Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat**.
+Pokud chcete projekt publikovat do aplikace Function App v Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat**.
 
 > [!IMPORTANT] 
-> Publikování funkce Azure Functions bude mít za následek další poplatky na vaše předplatné, nezávisle na digitálních událostech Azure.
+> Publikování do aplikace Function App v Azure má za následek další poplatky za vaše předplatné bez ohledu na digitální vlákna Azure.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: publikování funkce Azure Functions ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: publikování funkce do Azure":::
 
 Jako cíl publikování vyberte **Azure** a pak vyberte **Další**.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno publikování funkce Azure, výběr Azure ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno Publikovat Azure Functions vyberte Azure. ":::
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: dialogové okno publikování funkce vyberte Azure Function App (Windows) nebo (Linux) na základě vašeho počítače.":::
 
@@ -179,16 +179,16 @@ Jako cíl publikování vyberte **Azure** a pak vyberte **Další**.
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: dialogové okno publikování funkce, výběr aplikace Function App ze seznamu a dokončení":::
 
 Na následující stránce zadejte požadovaný název nové aplikace Function App, skupiny prostředků a dalších podrobností.
-Aby vaše aplikace Functions mohla přistupovat k digitálním funkcím Azure, musí mít identitu spravovanou systémem a mít oprávnění pro přístup k instanci digitálních vláken Azure.
+Aby aplikace Function App mohla přistupovat k digitálním funkcím Azure, musí mít identitu spravovanou systémem a mít oprávnění pro přístup k instanci digitálních vláken Azure.
 
 V dalším kroku můžete nastavit přístup zabezpečení pro funkci pomocí rozhraní příkazového řádku nebo Azure Portal. Vyberte jednu z těchto metod:
 
-## <a name="set-up-security-access-for-the-azure-function-app"></a>Nastavení přístupu zabezpečení pro aplikaci Azure Function App
-Přístup zabezpečení pro aplikaci Azure Function App můžete nastavit pomocí jedné z těchto možností:
+## <a name="set-up-security-access-for-the-function-app"></a>Nastavení přístupu zabezpečení pro aplikaci Function App
+Přístup k zabezpečení pro aplikaci Function App můžete nastavit pomocí jedné z těchto možností:
 
-### <a name="option-1-set-up-security-access-for-the-azure-function-app-using-cli"></a>Možnost 1: nastavení přístupu zabezpečení pro aplikaci funkce Azure pomocí rozhraní příkazového řádku
+### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>Možnost 1: nastavení přístupu zabezpečení pro aplikaci Function App pomocí rozhraní příkazového řádku
 
-Funkce Azure Functions z předchozích příkladů vyžaduje předání nosných tokenů, aby bylo možné ho ověřit pomocí digitálních vláken Azure. Abyste se ujistili, že je tento nosný token předán, budete muset pro aplikaci Function App nastavit [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) . Tento postup je nutné provést pouze jednou pro každou aplikaci Function App.
+Funkce kostry z předchozích příkladů vyžaduje předání nosných tokenů, aby bylo možné provést ověření pomocí digitálních vláken Azure. Abyste se ujistili, že je tento nosný token předán, budete muset pro aplikaci Function App nastavit [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) . Tento postup je nutné provést pouze jednou pro každou aplikaci Function App.
 
 Můžete vytvořit systémově spravovanou identitu a přiřadit jí identitu aplikace Function App k roli _**vlastníka dat digitálních vláken Azure**_ pro instanci digitálního vlákna Azure. Tím se v instanci poskytne oprávnění aplikace Function App, aby se prováděly aktivity roviny dat. Pak zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením proměnné prostředí.
 
@@ -214,7 +214,7 @@ Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
-### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>Možnost 2: nastavení přístupu zabezpečení pro aplikaci funkce Azure pomocí Azure Portal
+### <a name="option-2-set-up-security-access-for-the-function-app-using-azure-portal"></a>Možnost 2: nastavení přístupu zabezpečení pro aplikaci Function App pomocí Azure Portal
 
 Spravovaná identita přiřazená systémem umožňuje prostředkům Azure ověřování v cloudových službách (například Azure Key Vault) bez uložení přihlašovacích údajů do kódu. Po povolení se všechna potřebná oprávnění dají udělit prostřednictvím řízení přístupu na základě role v Azure. Životní cyklus tohoto typu spravované identity je vázaný na životní cyklus tohoto prostředku. Každý prostředek (například virtuální počítač) může mít navíc jenom jednu spravovanou identitu přiřazenou systémem.
 
@@ -245,9 +245,9 @@ Vyberte tlačítko _přiřazení rolí Azure_ , ve kterém se otevře stránka *
 Na stránce _Přidat přiřazení role (Preview)_ , která se otevře, vyberte:
 
 * _Obor:_ Skupina prostředků
-* _Předplatné_ : vyberte předplatné Azure.
-* _Skupina prostředků_ : z rozevíracího seznamu vyberte svoji skupinu prostředků.
-* _Role_ : vyberte z rozevíracího seznamu možnost _vlastník dat digitálních vláken Azure_ .
+* _Předplatné_: vyberte předplatné Azure.
+* _Skupina prostředků_: z rozevíracího seznamu vyberte svoji skupinu prostředků.
+* _Role_: vyberte z rozevíracího seznamu možnost _vlastník dat digitálních vláken Azure_ .
 
 Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 
@@ -265,11 +265,11 @@ Můžete získat ADT_INSTANCE_URL připojením **_https://_** k názvu hostitele
 
 Nyní můžete vytvořit nastavení aplikace podle následujících kroků:
 
-* Hledání funkce Azure pomocí názvu funkce na vyhledávacím panelu a výběr funkce ze seznamu
+* Vyhledejte svoji aplikaci pomocí názvu aplikace Function App na panelu hledání a ze seznamu vyberte aplikaci Function App.
 * Vyberte _konfiguraci_ na navigačním panelu vlevo a vytvořte nové nastavení aplikace.
 * Na kartě _nastavení aplikace_ vyberte _+ Nastavení nové aplikace_ .
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: hledání existující funkce Azure Functions":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: hledání existující aplikace Function App":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Konfigurace nastavení aplikace":::
 
@@ -295,10 +295,10 @@ Kliknutím na ikonu _oznámení_ můžete zobrazit tato nastavení aplikace. Pok
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste postupovali podle kroků pro nastavení funkce Azure pro použití s digitálními podmnožinami Azure. V dalším kroku se můžete přihlásit k odběru funkce Azure Functions, abyste Event Grid mohli naslouchat na koncovém bodu. Tento koncový bod může být:
+V tomto článku jste postupovali podle kroků v tématu Nastavení aplikace Function App v Azure pro použití s digitálními podmnožinami Azure. V dalším kroku můžete k přihlášení k odběru funkce Event Grid, aby bylo možné naslouchat na koncovém bodu. Tento koncový bod může být:
 * Event Grid koncový bod připojený k digitálním podprocesům Azure ke zpracování zpráv přicházejících z digitálních vláken Azure (například zpráv o změnách vlastností, zpráv telemetrie generovaných [digitálními](concepts-twins-graph.md) podprocesy ve dvojitých grafech nebo ve zprávách o životním cyklu).
 * Témata systému IoT používaná IoT Hub k posílání telemetrie a dalších událostí zařízení
 * Event Grid koncový bod přijímající zprávy z jiných služeb
 
-Další informace najdete v tématu postup sestavení na základní funkci Azure pro ingestování IoT Hub dat do digitálních vláken Azure:
+Další informace najdete v tématu postup sestavení na základě základní funkce pro ingestování IoT Hub dat do digitálních vláken Azure:
 * [*Postupy: ingestování telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)

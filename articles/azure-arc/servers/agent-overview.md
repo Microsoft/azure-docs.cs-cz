@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723265"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033961"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -68,6 +68,8 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 ### <a name="azure-subscription-and-service-limits"></a>Limity předplatného a služeb Azure
 
 Před konfigurací počítačů se servery s podporou ARC Azure zkontrolujte [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [omezení skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , abyste naplánovali počet počítačů, které se mají připojit.
+
+Servery s podporou ARC Azure podporují až 5 000 instancí počítačů ve skupině prostředků.
 
 ### <a name="transport-layer-security-12-protocol"></a>Protokol TLS (Transport Layer Security 1,2)
 

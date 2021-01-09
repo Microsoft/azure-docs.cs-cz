@@ -1,27 +1,27 @@
 ---
-title: Vytvoření funkce Azure pomocí Kotlin a IntelliJ
-description: Naučte se vytvářet a publikovat jednoduchou aplikaci bez serveru s protokolem HTTP spuštěnou v Azure pomocí Kotlin a IntelliJ.
+title: Vytvoření funkce Kotlin v Azure Functions pomocí IntelliJ
+description: Naučte se používat IntelliJ k vytvoření jednoduché funkce Kotlin aktivované protokolem HTTP, kterou pak publikujete pro běh v prostředí bez serveru v Azure.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0207e4af9f845343866714ec207ca306cb327b36
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104831"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035168"
 ---
-# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rychlý Start: Vytvoření první funkce aktivované protokolem HTTP pomocí Kotlin a IntelliJ
+# <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>Vytvoření první funkce Kotlin v Azure pomocí IntelliJ
 
-V tomto článku se dozvíte, jak vytvořit projekt funkce bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) s IntelliJ nápadem a Apache Maven. Také ukazuje, jak lokálně ladit kód vaší funkce v integrovaném vývojovém prostředí (IDE) a potom nasadit projekt funkce do Azure.
+V tomto článku se dozvíte, jak vytvořit funkci Java aktivovanou protokolem HTTP v projektu NÁPADu IntelliJ, jak spustit a ladit projekt v integrovaném vývojovém prostředí (IDE) a nakonec nasadit projekt funkce do aplikace Function App v Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
-Pokud chcete vyvíjet funkci s Kotlin a IntelliJ, nainstalujte následující software:
+Pokud chcete vytvořit a publikovat funkce Kotlin do Azure pomocí IntelliJ, nainstalujte následující software:
 
 - [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK), verze 8
 - [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
@@ -32,7 +32,7 @@ Pokud chcete vyvíjet funkci s Kotlin a IntelliJ, nainstalujte následující so
 > [!IMPORTANT]
 > Aby bylo možné dokončit kroky v tomto článku, musí být proměnná prostředí JAVA_HOME nastavena na umístění instalace JDK.
 
-## <a name="create-a-functions-project"></a>Vytvoření projektu Functions
+## <a name="create-a-function-project"></a>Vytvoření projektu funkce
 
 1. V IntelliJ NÁPADu vyberte **vytvořit nový projekt**.  
 1. V okně **Nový projekt** vyberte v levém podokně možnost **Maven** .
@@ -42,25 +42,25 @@ Pokud chcete vyvíjet funkci s Kotlin a IntelliJ, nainstalujte následující so
     - _ArtifactId_: Azure-Functions-Kotlin-Archetype
     - _Verze_: použití nejnovější verze z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype) 
      ![ Vytvoření projektu Maven z Archetype v IntelliJ nápadu](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
-1. Vyberte **OK**a pak vyberte **Další**.
+1. Vyberte **OK** a pak vyberte **Další**.
 1. Zadejte podrobnosti pro aktuální projekt a vyberte **Dokončit**.
 
 Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má hodnota _ArtifactId_ . Generovaný kód projektu je jednoduchá funkce [aktivovaná protokolem HTTP](./functions-bindings-http-webhook.md) , která vypisuje tělo triggeru požadavku HTTP.
 
-## <a name="run-functions-locally-in-the-ide"></a>Místní spuštění funkcí v integrovaném vývojovém prostředí
+## <a name="run-project-locally-in-the-ide"></a>Spustit projekt místně v integrovaném vývojovém prostředí
 
 > [!NOTE]
-> Chcete-li spustit a ladit funkce místně, ujistěte se, že jste nainstalovali [Azure Functions Core Tools, verze 2](functions-run-local.md#v2).
+> Chcete-li spustit a ladit projekt místně, ujistěte se, že jste nainstalovali [Azure Functions Core Tools, verze 2](functions-run-local.md#v2).
 
 1. Importovat změny ručně nebo povolit [Automatický import](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
 1. Otevřete panel nástrojů **Maven projekty** .
-1. Rozbalte **životní cyklus**a pak otevřete **balíček**. Řešení je sestaveno a zabaleno v nově vytvořeném cílovém adresáři.
+1. Rozbalte **životní cyklus** a pak otevřete **balíček**. Řešení je sestaveno a zabaleno v nově vytvořeném cílovém adresáři.
 1. Rozbalení **modulů plug-in**  >  **Azure – funkce** a otevření **Azure-Functions: Run** spustí Azure Functions místní modul runtime.  
   ![Panel nástrojů Maven pro Azure Functions](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
 1. Až skončíte s testováním funkce, zavřete dialogové okno spustit. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
-## <a name="debug-the-function-in-intellij"></a>Ladění funkce v IntelliJ
+## <a name="debug-the-project-in-intellij"></a>Ladění projektu v IntelliJ
 
 1. Chcete-li spustit hostitele funkce v režimu ladění, přidejte parametr **-DenableDebug** jako argument při spuštění funkce. Můžete buď změnit konfiguraci v [Maven cílech](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) nebo spustit následující příkaz v okně terminálu:  
 
@@ -75,25 +75,25 @@ Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má h
 1. Dokončete pole _název_ a _Nastavení_ a pak kliknutím na **tlačítko OK** konfiguraci uložte.
 1. Po nastavení vyberte **ladit < název vzdálené konfigurace >** nebo stiskněte SHIFT + F9 na klávesnici a spusťte ladění.
 
-   ![Funkce ladění v IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
+   ![Ladit projekt v IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 
 1. Až budete hotovi, ukončete ladicí program a běžící proces. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
-## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
+## <a name="deploy-the-project-to-azure"></a>Nasazení projektu do Azure
 
-1. Než budete moct nasadit funkci do Azure, musíte se [přihlásit pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. Než budete moct projekt nasadit do aplikace Function App v Azure, musíte se [přihlásit pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Nasaďte svůj kód do nové funkce pomocí `azure-functions:deploy` cíle Maven. Můžete také vybrat možnost **Azure-Functions: Deploy** v okně projekty Maven.
+1. Nasaďte svůj kód do nové aplikace Function App pomocí `azure-functions:deploy` cíle Maven. Můžete také vybrat možnost **Azure-Functions: Deploy** v okně projekty Maven.
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. Po úspěšném nasazení funkce vyhledejte v výstupu Azure CLI adresu URL vaší funkce.
+1. Po úspěšném nasazení aplikace Function App můžete najít adresu URL funkce triggeru HTTP ve výstupu rozhraní příkazového řádku Azure.
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -105,5 +105,5 @@ Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má h
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nasadili svou první funkci Kotlin do Azure, Projděte si [příručku pro vývojáře Java Functions](functions-reference-java.md) , kde najdete další informace o vývoji funkcí Java a Kotlin.
-- Přidejte do projektu další funkce s různými triggery pomocí `azure-functions:add` cíle Maven.
+Teď, když jste nasadili svou první aplikaci funkcí Kotlin do Azure, najdete další informace o vývoji funkcí Java a Kotlin v [Azure Functions příručce pro vývojáře Java](functions-reference-java.md) .
+- Pomocí cíle Maven přidejte do projektu další aplikace funkcí s různými triggery `azure-functions:add` .

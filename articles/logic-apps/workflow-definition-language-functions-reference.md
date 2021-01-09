@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914480"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034291"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -22,7 +22,7 @@ Pro definice pracovních postupů v [Azure Logic Apps](../logic-apps/logic-apps-
 
 Můžete například vypočítat hodnoty pomocí matematických funkcí, jako je například funkce [Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add) , pokud chcete součet z celých čísel nebo floatů. Zde jsou uvedené Další ukázkové úlohy, které můžete provádět s funkcemi:
 
-| Úloha | Syntaxe funkce | Výsledek |
+| Úkol | Syntaxe funkce | Výsledek |
 | ---- | --------------- | ------ |
 | Vrátí řetězec ve formátu s malými písmeny. | toLower (' <*text*> ') <p>Příklad: toLower (' Hello ') | Hello |
 | Vrátí globálně jedinečný identifikátor (GUID). | GUID () |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
@@ -40,7 +40,7 @@ Chcete-li zobrazit způsob použití funkce ve výrazu, tento příklad ukazuje,
 
 Tady je několik dalších obecných způsobů, jak můžete ve výrazech používat funkce:
 
-| Úloha | Syntaxe funkce ve výrazu |
+| Úkol | Syntaxe funkce ve výrazu |
 | ---- | -------------------------------- |
 | Chcete-li provést práci s položkou, předejte tuto položku funkci. | " \@ < *Function*> (<*položka*>)" |
 | 1. k získání hodnoty *ParameterName* použijte vnořenou `parameters()` funkci. </br>2. Chcete-li provést práci s výsledkem, předejte tuto hodnotu do hodnoty *Function*. | " \@ < *Function*> (Parameters (' <*ParameterName*> '))" |
@@ -77,7 +77,7 @@ Následující části slouží k uspořádání funkcí na základě jejich obe
 
 Chcete-li pracovat s řetězci, můžete použít tyto řetězcové funkce a také některé [funkce kolekce](#collection-functions). Funkce řetězce fungují pouze v řetězcích.
 
-| Funkce String | Úloha |
+| Funkce String | Úkol |
 | --------------- | ---- |
 | [spojuje](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombinací dvou nebo více řetězců a vrácení kombinovaného řetězce. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Zkontroluje, zda řetězec končí zadaným podřetězcem. |
@@ -101,9 +101,9 @@ Chcete-li pracovat s řetězci, můžete použít tyto řetězcové funkce a tak
 
 Chcete-li pracovat s kolekcemi, všeobecně se jedná o pole, řetězce a někdy slovníky, můžete použít tyto funkce kolekce.
 
-| Funkce kolekce | Úloha |
+| Funkce kolekce | Úkol |
 | ------------------- | ---- |
-| [zobrazí](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontroluje, zda kolekce obsahuje konkrétní položku. |
+| [obsahuje](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontroluje, zda kolekce obsahuje konkrétní položku. |
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Zkontroluje, jestli je kolekce prázdná. |
 | [první](../logic-apps/workflow-definition-language-functions-reference.md#first) | Vrátí první položku z kolekce. |
 | [průnik](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vrátí kolekci, která má v zadaných kolekcích *jenom* společné položky. |
@@ -112,7 +112,7 @@ Chcete-li pracovat s kolekcemi, všeobecně se jedná o pole, řetězce a někdy
 | [posledního](../logic-apps/workflow-definition-language-functions-reference.md#last) | Vrátí poslední položku z kolekce. |
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | Vrátí počet položek v řetězci nebo poli. |
 | [přímo](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Odebere položky z přední části kolekce a vrátí *všechny ostatní* položky. |
-| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Vrátí položky od začátku kolekce. |
+| [nezbytná](../logic-apps/workflow-definition-language-functions-reference.md#take) | Vrátí položky od začátku kolekce. |
 | [sjednocovací](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vrátí kolekci, která obsahuje *všechny* položky ze zadaných kolekcí. |
 |||
 
@@ -125,7 +125,7 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 > [!NOTE]
 > Použijete-li logické funkce nebo podmínky pro porovnání hodnot, hodnoty null budou převedeny na prázdné hodnoty řetězce ( `""` ). Chování podmínek se liší při porovnání s prázdným řetězcem namísto hodnoty null. Další informace naleznete v tématu [funkce String ()](#string). 
 
-| Funkce logického porovnání | Úloha |
+| Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
 | [rovná](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
@@ -147,7 +147,7 @@ Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro p�
 > [!NOTE]
 > Azure Logic Apps automaticky převádí hodnoty mezi některými datovými typy, což znamená, že tyto převody není nutné provádět ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
 
-| Převodní funkce | Úloha |
+| Převodní funkce | Úkol |
 | ------------------- | ---- |
 | [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | Vrátí pole z jednoho zadaného vstupu. Více vstupů naleznete v tématu [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Vrátí verzi kódovanou pro řetězec ve formátu base64. |
@@ -166,7 +166,7 @@ Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro p�
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí číslo s plovoucí desetinnou čárkou pro vstupní hodnotu. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vrátí celočíselnou verzi řetězce. |
 | [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | Vrátí hodnotu nebo objekt typu JavaScript Object Notation (JSON) pro řetězec nebo XML. |
-| [řetezce](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrátí verzi řetězce pro vstupní hodnotu. |
+| [řetězec](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrátí verzi řetězce pro vstupní hodnotu. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Vrátí verzi kódovanou identifikátorem URI pro vstupní hodnotu nahrazením znaků, které nejsou bezpečné, pomocí řídicích znaků. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Vrátí binární verzi řetězce zakódovaného identifikátorem URI. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Vrátí verzi řetězce pro řetězec kódovaný pomocí identifikátoru URI. |
@@ -209,12 +209,12 @@ Logic Apps automaticky nebo implicitně provádí kódování nebo dekódování
 Chcete-li pracovat s celými čísly a Floaty, můžete použít tyto matematické funkce.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce Math | Úloha |
+| Funkce Math | Úkol |
 | ------------- | ---- |
 | [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Vrátí výsledek z přidání dvou čísel. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Vrátí výsledek z dělení dvou čísel. |
-| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Vrátí nejvyšší hodnotu ze sady čísel nebo pole. |
-| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. |
+| [počet](../logic-apps/workflow-definition-language-functions-reference.md#max) | Vrátí nejvyšší hodnotu ze sady čísel nebo pole. |
+| [dlouhé](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. |
 | [střední](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Vrátí zbytek po dělení dvou čísel. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Vrátí produkt pro vynásobení dvou čísel. |
 | [funkcí](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Vrátí náhodné celé číslo ze zadaného rozsahu. |
@@ -229,7 +229,7 @@ Chcete-li pracovat s celými čísly a Floaty, můžete použít tyto matematick
 Chcete-li pracovat s daty a časy, můžete použít tyto funkce data a času.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce data a času | Úloha |
+| Funkce data a času | Úkol |
 | --------------------- | ---- |
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Přidání počtu dní do časového razítka. |
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Přidejte do časového razítka několik hodin. |
@@ -266,7 +266,7 @@ Tyto funkce pracovního postupu vám můžou pomáhat:
 Například můžete odkazovat na výstupy z jedné akce a používat tato data v pozdější akci.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce pracovních postupů | Úloha |
+| Funkce pracovních postupů | Úkol |
 | ----------------- | ---- |
 | [kroky](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrátí `body` výstup akce za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -300,7 +300,7 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 Pro práci s identifikátory URI (Uniform Resource Identifier) a získání různých hodnot vlastností pro tyto identifikátory URI můžete použít tyto funkce analýzy identifikátoru URI.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce analýzy identifikátoru URI | Úloha |
+| Funkce analýzy identifikátoru URI | Úkol |
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Vrátí `host` hodnotu identifikátoru URI (Uniform Resource Identifier). |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Vrátí `path` hodnotu identifikátoru URI (Uniform Resource Identifier). |
@@ -317,7 +317,7 @@ Pro práci s identifikátory URI (Uniform Resource Identifier) a získání růz
 Chcete-li pracovat s objekty JSON a uzly XML, můžete použít tyto funkce manipulace.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce manipulace | Úloha |
+| Funkce manipulace | Úkol |
 | --------------------- | ---- |
 | [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Přidejte vlastnost a její hodnotu nebo dvojici název-hodnota do objektu JSON a vraťte aktualizovaný objekt. |
 | [COALESCE](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Vrátí první hodnotu, která není null, z jednoho nebo více parametrů. |
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*podíl – výsledek*> | Integer nebo float | Výsledek dělení prvního čísla druhým číslem. Pokud má dělenec nebo dělitel typ float, výsledek má typ float. <p><p>**Poznámka**: Pokud chcete převést výsledek typu float na celé číslo, zkuste [vytvořit a zavolat funkci Azure Functions](../logic-apps/logic-apps-azure-functions.md) z vaší aplikace logiky. |
+| <*podíl – výsledek*> | Integer nebo float | Výsledek dělení prvního čísla druhým číslem. Pokud má dělenec nebo dělitel typ float, výsledek má typ float. <p><p>**Poznámka**: Pokud chcete převést výsledek typu float na celé číslo, zkuste [vytvořit a zavolat funkci v Azure](../logic-apps/logic-apps-azure-functions.md) z aplikace logiky. |
 ||||
 
 *Příklad 1*

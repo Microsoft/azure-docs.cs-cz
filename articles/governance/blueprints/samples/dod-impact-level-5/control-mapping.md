@@ -1,21 +1,21 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úroveň úderu DoD. 5
 description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929485"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034777"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Mapování ovládacího prvku pro vzorek dopadu na 5. plán na úrovni účinku
 
 Následující článek podrobně popisuje, jak má oddělení Azure modrotisky v rámci podrobného plánu o dopadu ochrany 5 (DoD IL5) na základě kontrolního plánu úrovně účinku DoD. 5. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
 Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
 
-Následující mapování jsou ovládací prvky **úrovně dopadu dod. 5** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ ukázkovou iniciativu \] úrovně dopadu dod. 5** .
+Následující mapování jsou ovládací prvky **úrovně dopadu dod. 5** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[ ukázkovou iniciativu \] úrovně dopadu dod. 5** .
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).

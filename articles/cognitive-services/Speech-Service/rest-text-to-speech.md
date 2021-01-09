@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760652"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033440"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -35,7 +35,7 @@ Než začnete používat toto rozhraní API, pochopte:
 * REST API převodu textu na řeč vyžaduje autorizační hlavičku. To znamená, že při přístupu ke službě musíte dokončit výměnu tokenů. Další informace najdete v tématu [Ověřování](#authentication).
 
 > [!TIP]
-> Podívejte se na koncové body [Azure pro státní](/azure/azure-government/compare-azure-government-global-azure) správu (FairFax).
+> V [tomto článku](sovereign-clouds.md) najdete Azure Government a koncových bodů Azure Čína.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -48,9 +48,9 @@ Než začnete používat toto rozhraní API, pochopte:
 | Oblast | Koncový bod |
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brazil South | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střední USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -76,7 +76,10 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požada
 
 | Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Povinné |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
+
+
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -90,7 +93,7 @@ Tato žádost vyžaduje pouze hlavičku autorizace.
 GET /cognitiveservices/voices/list HTTP/1.1
 
 Host: westus.tts.speech.microsoft.com
-Authorization: Bearer [Base64 access_token]
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 ```
 
 ### <a name="sample-response"></a>Ukázková odpověď

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu na úrovni DoD. 5
 description: Nasaďte kroky pro ukázku podrobného plánu na úrovni DoD – 5 včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6136136eef5d405ae0849e5ce8c8faede138fb00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978236"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034896"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>Nasaďte ukázku podrobného plánu na úroveň dopadu DoD. 5
 
@@ -33,7 +33,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky pro 5. plán úrovně dopadu dod.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky pro 5. plán úrovně dopadu dod.
    - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
@@ -52,7 +52,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -68,7 +68,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 

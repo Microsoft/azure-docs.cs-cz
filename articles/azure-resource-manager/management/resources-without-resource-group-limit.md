@@ -2,20 +2,19 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 10/28/2020
-ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 01/08/2021
+ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672360"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034930"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
 Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou ale z limitu instance 800 vyloučené. V tomto článku jsou uvedené typy prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků. Všechny ostatní typy prostředků jsou omezeny na 800 instancí.
 
 U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
-
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -105,6 +104,11 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * Vybavení
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
+
+* počítače – podporuje až 5 000 instancí.
+* rozšíření – podporuje neomezený počet instancí rozšíření virtuálních počítačů.
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 

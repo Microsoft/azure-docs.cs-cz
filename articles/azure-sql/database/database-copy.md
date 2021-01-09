@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 10/30/2020
-ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127735"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035134"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -43,7 +43,7 @@ Pokud používáte pro přístup k datům přihlášení na úrovni serveru a ko
 
 ## <a name="copy-using-the-azure-portal"></a>Kopírování s použitím webu Azure Portal
 
-Pokud chcete zkopírovat databázi pomocí Azure Portal, otevřete stránku pro vaši databázi a pak klikněte na **Kopírovat** .
+Pokud chcete zkopírovat databázi pomocí Azure Portal, otevřete stránku pro vaši databázi a pak klikněte na **Kopírovat**.
 
    ![Kopie databáze](./media/database-copy/database-copy.png)
 
@@ -135,6 +135,46 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-to-a-different-server) můžete zkopírovat databázi na server v jiném předplatném pomocí jazyka T-SQL. Ujistěte se, že používáte přihlášení, které má stejné jméno a heslo jako vlastník databáze zdrojové databáze. Kromě toho musí být přihlašovací jméno členem `dbmanager` role nebo správce serveru na zdrojovém i cílovém serveru.
 
+```sql
+Step# 1
+Create login and user in the master database of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx'
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+Step# 2
+Create the user in the source database and grant dbowner permission to the database.
+
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+exec sp_addrolemember 'db_owner','loginname'
+GO
+
+Step# 3
+Capture the SID of the user “loginname” from master database
+
+SELECT [sid] FROM sysusers WHERE [name] = 'loginname'
+
+Step# 4
+Connect to Destination server.
+Create login and user in the master database, same as of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server]
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+exec sp_addrolemember 'dbmanager','loginname'
+GO
+
+Step# 5
+Execute the copy of database script from the destination server using the credentials created
+
+CREATE DATABASE new_database_name
+AS COPY OF source_server_name.source_database_name
+```
+
 > [!NOTE]
 > [Azure Portal](https://portal.azure.com), PowerShell a rozhraní příkazového řádku Azure CLI nepodporují kopírování databáze do jiného předplatného.
 
@@ -143,10 +183,10 @@ Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Sledování průběhu operace kopírování
 
-Pomocí dotazu na zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování** .
+Pomocí dotazu na zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
 
-* Pokud kopírování neproběhne úspěšně, je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na hodnotu **podezřelý** . Spusťte příkaz DROP v nové databázi a opakujte akci později.
-* Pokud je kopírování úspěšné, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **online** . Kopírování je dokončeno a nová databáze je běžná databáze, kterou lze změnit nezávisle na zdrojové databázi.
+* Pokud kopírování neproběhne úspěšně, je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na hodnotu **podezřelý**. Spusťte příkaz DROP v nové databázi a opakujte akci později.
+* Pokud je kopírování úspěšné, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **online**. Kopírování je dokončeno a nová databáze je běžná databáze, kterou lze změnit nezávisle na zdrojové databázi.
 
 > [!NOTE]
 > Pokud se rozhodnete zrušit kopírování během procesu, spusťte příkaz [drop Database](/sql/t-sql/statements/drop-database-transact-sql) v nové databázi.

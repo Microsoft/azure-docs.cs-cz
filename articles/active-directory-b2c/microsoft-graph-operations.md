@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509814"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033604"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
 
@@ -57,10 +58,10 @@ Spravujte zprostředkovatele identity, kteří jsou k dispozici vašim uživatel
 
 Nakonfigurujte předem připravené zásady pro registraci, přihlašování, kombinované registrace a přihlášení, resetování hesla a aktualizaci profilu.
 
-- [Výpis toků uživatelů](/graph/api/identityuserflow-list)
-- [Vytvoření toku uživatele](/graph/api/identityuserflow-post-userflows)
-- [Získání toku uživatele](/graph/api/identityuserflow-get)
-- [Odstranění toku uživatele](/graph/api/identityuserflow-delete)
+- [Výpis toků uživatelů](/graph/api/identitycontainer-list-b2cuserflows)
+- [Vytvoření toku uživatele](/graph/api/identitycontainer-post-b2cuserflows)
+- [Získání toku uživatele](/graph/api/b2cidentityuserflow-get)
+- [Odstranění toku uživatele](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>Vlastní zásady
 

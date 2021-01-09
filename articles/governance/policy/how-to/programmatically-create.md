@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920011"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033859"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -95,7 +95,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
    - Formě `/subscriptions/{subId}`
    - Skupina pro správu – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
+Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policy).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Vytvoření a přiřazení definice zásady pomocí ARMClient
 
@@ -242,7 +242,7 @@ Další informace o tom, jak můžete spravovat zásady prostředků pomocí Azu
 Další informace o příkazech a dotazech v tomto článku najdete v následujících článcích.
 
 - [Prostředky Azure REST API](/rest/api/resources/)
-- [Moduly Azure PowerShell](/powershell/module/az.resources/#policies)
+- [Moduly Azure PowerShell](/powershell/module/az.resources/#policy)
 - [Příkazy zásad Azure CLI](/cli/azure/policy)
 - [Referenční informace o REST API poskytovatele prostředků Azure Policy Insights](/rest/api/policy-insights)
 - [Uspořádání prostředků s využitím skupin pro správu Azure.](../../management-groups/overview.md)

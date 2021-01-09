@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736186"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034165"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak pro vaši aplikaci logiky nastavit oba druhy spravo
 * [Omezení spravovaných identit pro Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Služby Azure, které podporují ověřování Azure AD se spravovanými identitami](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Spravovaná identita i cílový prostředek Azure, ke kterému potřebujete přístup, musí používat stejné předplatné Azure.
 
@@ -63,7 +63,7 @@ Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet i
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky v části **Nastavení** vyberte **Identita** . Vyberte možnost **systém byl přiřazen**  >  **při**  >  **uložení** . Až Azure zobrazí výzvu k potvrzení, vyberte **Ano** .
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **Identita**. Vyberte možnost **systém byl přiřazen**  >  **při**  >  **uložení**. Až Azure zobrazí výzvu k potvrzení, vyberte **Ano**.
 
    ![Povolit identitu přiřazenou systémem](./media/create-managed-service-identity/enable-system-assigned-identity.png)
 
@@ -148,15 +148,15 @@ Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazeno
 
 #### <a name="create-user-assigned-identity-in-the-azure-portal"></a>Vytvoření uživatelsky přiřazené identity v Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)do vyhledávacího pole na libovolné stránce zadejte `managed identities` a vyberte **spravované identity** .
+1. V [Azure Portal](https://portal.azure.com)do vyhledávacího pole na libovolné stránce zadejte `managed identities` a vyberte **spravované identity**.
 
    ![Najde a vybere spravované identity.](./media/create-managed-service-identity/find-select-managed-identities.png)
 
-1. V části **spravované identity** vyberte **Přidat** .
+1. V části **spravované identity** vyberte **Přidat**.
 
    ![Přidat novou spravovanou identitu](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. Zadejte informace o spravované identitě a pak vyberte **zkontrolovat + vytvořit** , například:
+1. Zadejte informace o spravované identitě a pak vyberte **zkontrolovat + vytvořit**, například:
 
    ![Vytvoření spravované identity přiřazené uživatelem](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
@@ -165,18 +165,18 @@ Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazeno
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Název skupiny prostředků, která se má použít. Vytvořte novou skupinu nebo vyberte existující skupinu. Tento příklad vytvoří novou skupinu s názvem `fabrikam-managed-identities-RG` . |
    | **Oblast** | Ano | <*Oblast Azure*> | Oblast Azure, ve které se mají ukládat informace o prostředku V tomto příkladu se používá "Západní USA". |
-   | **Název** | Ano | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. Tento příklad používá `Fabrikam-user-assigned-identity` . |
+   | **Název** | Ano | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. Tento příklad používá `Fabrikam-user-assigned-identity`. |
    |||||
 
    Po ověření těchto údajů Azure vytvoří spravovanou identitu. Nyní můžete do aplikace logiky přidat identitu přiřazenou uživatelem. Do aplikace logiky nemůžete přidat více než jednu identitu přiřazenou uživatelem.
 
 1. V Azure Portal vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky v části **Nastavení** vyberte **Identita** a pak vyberte **přiřadit uživatele**  >  **Přidat** .
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **Identita** a pak vyberte **přiřadit uživatele**  >  **Přidat**.
 
    ![Přidat spravovanou identitu přiřazenou uživatelem](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. V podokně **Přidat spravovanou identitu přiřazenou uživateli** vyberte v seznamu **předplatné** předplatné Azure, pokud ještě není vybrané. V seznamu, který zobrazuje *všechny* spravované identity v tomto předplatném, najděte a vyberte identitu přiřazenou uživateli, kterou chcete. Chcete-li filtrovat seznam, zadejte do vyhledávacího pole **přiřazené identity spravované uživatelem** název identity nebo skupiny prostředků. Až budete hotovi, vyberte **Přidat** .
+1. V podokně **Přidat spravovanou identitu přiřazenou uživateli** vyberte v seznamu **předplatné** předplatné Azure, pokud ještě není vybrané. V seznamu, který zobrazuje *všechny* spravované identity v tomto předplatném, najděte a vyberte identitu přiřazenou uživateli, kterou chcete. Chcete-li filtrovat seznam, zadejte do vyhledávacího pole **přiřazené identity spravované uživatelem** název identity nebo skupiny prostředků. Až budete hotovi, vyberte **Přidat**.
 
    ![Vyberte identitu přiřazenou uživatelem, kterou chcete použít.](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
@@ -296,7 +296,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do prostředku Azure, ke kterému chcete mít přístup ke spravované identitě.
 
-1. V nabídce prostředku vyberte přiřazení rolí **řízení přístupu (IAM)** ,  >  **Role assignments** kde můžete zkontrolovat aktuální přiřazení rolí pro daný prostředek. Na panelu nástrojů vyberte **Přidat**  >  **Přidat přiřazení role** .
+1. V nabídce prostředku vyberte přiřazení rolí **řízení přístupu (IAM)**,  >   kde můžete zkontrolovat aktuální přiřazení rolí pro daný prostředek. Na panelu nástrojů vyberte **Přidat**  >  **Přidat přiřazení role**.
 
    ![Vyberte Přidat > přidat přiřazení role.](./media/create-managed-service-identity/add-role-to-resource.png)
 
@@ -313,7 +313,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 
    * **Identita přiřazená systémem**
 
-     1. V poli **přiřadit přístup k** vyberte **Aplikace logiky** . Když se zobrazí vlastnost **předplatné** , vyberte předplatné Azure, které je přidružené k vaší identitě.
+     1. V poli **přiřadit přístup k** vyberte **Aplikace logiky**. Když se zobrazí vlastnost **předplatné** , vyberte předplatné Azure, které je přidružené k vaší identitě.
 
         ![Vybrat přístup pro identitu přiřazenou systémem](./media/create-managed-service-identity/assign-access-system.png)
 
@@ -323,7 +323,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 
    * **Identita přiřazená uživatelem**
 
-     1. V poli **přiřadit přístup k** vyberte **spravovaná identita přiřazená uživatelem** . Když se zobrazí vlastnost **předplatné** , vyberte předplatné Azure, které je přidružené k vaší identitě.
+     1. V poli **přiřadit přístup k** vyberte **spravovaná identita přiřazená uživatelem**. Když se zobrazí vlastnost **předplatné** , vyberte předplatné Azure, které je přidružené k vaší identitě.
 
         ![Vybrat přístup pro uživatelem přiřazenou identitu](./media/create-managed-service-identity/assign-access-user.png)
 
@@ -331,7 +331,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 
         ![Vyberte vaši uživatelem přiřazenou identitu.](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
 
-1. Jakmile budete mít hotovo, vyberte **Uložit** .
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
    V seznamu přiřazení role cílového prostředku se teď zobrazuje vybraná spravovaná identita a role. Tento příklad ukazuje, jak můžete použít identitu přiřazenou systémem pro jednu aplikaci logiky a uživatelskou identitu pro skupinu jiných aplikací logiky.
 
@@ -348,7 +348,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 Po [Povolení spravované identity pro vaši aplikaci logiky](#azure-portal-system-logic-app) a [udělení této identity přístup k cílovému prostředku nebo entitě](#access-other-resources)můžete tuto identitu použít v [aktivačních událostech a akcích, které podporují spravované identity](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
-> Pokud máte funkci Azure, kde chcete používat identitu přiřazenou systémem, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+> Pokud máte funkci Azure, kde chcete používat identitu přiřazenou systémem, nejdřív [Povolte ověřování pro službu Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
 Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí prostřednictvím Azure Portal. Pokud chcete určit spravovanou identitu v aktivační události nebo v základní definici JSON akce, přečtěte si téma [ověřování spravované identity](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
@@ -362,7 +362,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
    |----------|----------|-------------|
    | **Metoda** | Ano | Metoda HTTP, kterou používá operace, kterou chcete spustit |
    | **Identifikátor URI** | Ano | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
-   | **Hlavičky** | Ne | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
+   | **Záhlaví** | Ne | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
    | **Dotazy** | Ne | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
    | **Authentication** | Ano | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
    ||||
@@ -378,7 +378,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
    |----------|----------|---------------|-------------|
    | **Metoda** | Ano | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
    | **Identifikátor URI** | Ano | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
-   | **Hlavičky** | Pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` Hodnoty hlaviček, a `x-ms-date` jsou požadovány pro operace Azure Storage. <p><p>**Důležité** : v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit. `x-ms-date`Musí být aktuální datum. V opačném případě vaše aplikace logiky selže s `403 FORBIDDEN` chybou. Chcete-li získat aktuální datum v požadovaném formátu, můžete použít výraz v příkladu hodnoty. <p>Další informace najdete v těchto tématech: <p><p>- [Hlavičky žádosti – objekt BLOB snímku](/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro služby Azure Storage Services](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Záhlaví** | Pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` Hodnoty hlaviček, a `x-ms-date` jsou požadovány pro operace Azure Storage. <p><p>**Důležité**: v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit. `x-ms-date`Musí být aktuální datum. V opačném případě vaše aplikace logiky selže s `403 FORBIDDEN` chybou. Chcete-li získat aktuální datum v požadovaném formátu, můžete použít výraz v příkladu hodnoty. <p>Další informace najdete v těchto tématech: <p><p>- [Hlavičky žádosti – objekt BLOB snímku](/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro služby Azure Storage Services](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Dotazy** | Pouze pro operaci objektu BLOB snímku | `comp` = `snapshot` | Název a hodnota parametru dotazu pro operaci. |
    |||||
 
@@ -386,14 +386,14 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
    ![Přidání akce HTTP pro přístup k prostředku Azure](./media/create-managed-service-identity/http-action-example.png)
 
-1. Nyní přidejte vlastnost **ověřování** do akce http. V seznamu **Přidat nový parametr** vyberte možnost **ověřování** .
+1. Nyní přidejte vlastnost **ověřování** do akce http. V seznamu **Přidat nový parametr** vyberte možnost **ověřování**.
 
    ![Přidat vlastnost ověřování do akce HTTP](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
    > Ne všechny triggery a akce podporují přidání typu ověřování. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. V seznamu **typ ověřování** vyberte **spravovaná identita** .
+1. V seznamu **typ ověřování** vyberte **spravovaná identita**.
 
    ![U možnosti ověřování vyberte spravovaná identita.](./media/create-managed-service-identity/select-managed-identity.png)
 
@@ -407,7 +407,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
      ![Vyberte identitu přiřazenou uživatelem.](./media/create-managed-service-identity/select-user-assigned-identity-for-action.png)
 
-   Tento příklad pokračuje pomocí **spravované identity přiřazené systémem** .
+   Tento příklad pokračuje pomocí **spravované identity přiřazené systémem**.
 
 1. U některých triggerů a akcí se také zobrazí vlastnost **cílová skupina** , ve které můžete nastavit ID cílového prostředku. Nastavte vlastnost **cílová skupina** na [ID prostředku pro cílový prostředek nebo službu](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Jinak ve výchozím nastavení vlastnost **cílová skupina** používá `https://management.azure.com/` ID prostředku, což je id prostředku pro Azure Resource Manager.
 
@@ -457,9 +457,9 @@ V Azure Portal nejprve odeberte přístup identity k [cílovému prostředku](#d
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do cílového prostředku Azure, ve kterém chcete odebrat přístup pro spravovanou identitu.
 
-1. V nabídce cílového prostředku vyberte **řízení přístupu (IAM)** . Na panelu nástrojů vyberte **přiřazení rolí** .
+1. V nabídce cílového prostředku vyberte **řízení přístupu (IAM)**. Na panelu nástrojů vyberte **přiřazení rolí**.
 
-1. V seznamu role vyberte spravované identity, které chcete odebrat. Na panelu nástrojů vyberte **Odebrat** .
+1. V seznamu role vyberte spravované identity, které chcete odebrat. Na panelu nástrojů vyberte **Odebrat**.
 
    > [!TIP]
    > Pokud je možnost **Odebrat** zakázaná, pravděpodobně nemáte oprávnění. Další informace o oprávněních, která umožňují spravovat role pro prostředky, najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
@@ -474,11 +474,11 @@ Spravovaná identita je nyní odebrána a již nemá přístup k cílovému pros
 
 1. V nabídce aplikace logiky v části **Nastavení** vyberte **Identita** a pak postupujte podle pokynů pro vaši identitu:
 
-   * Vyberte možnost **systém byl přiřazen**  >  **při**  >  **uložení** . Až Azure zobrazí výzvu k potvrzení, vyberte **Ano** .
+   * Vyberte možnost **systém byl přiřazen**  >  **při**  >  **uložení**. Až Azure zobrazí výzvu k potvrzení, vyberte **Ano**.
 
      ![Zakažte identitu přiřazenou systémem.](./media/create-managed-service-identity/disable-system-assigned-identity.png)
 
-   * Vyberte **přiřazený uživatel** a spravovaná identita a pak vyberte **Odebrat** . Až Azure zobrazí výzvu k potvrzení, vyberte **Ano** .
+   * Vyberte **přiřazený uživatel** a spravovaná identita a pak vyberte **Odebrat**. Až Azure zobrazí výzvu k potvrzení, vyberte **Ano**.
 
      ![Odebrání uživatelsky přiřazené identity](./media/create-managed-service-identity/remove-user-assigned-identity.png)
 
