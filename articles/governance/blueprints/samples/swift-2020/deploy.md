@@ -1,14 +1,14 @@
 ---
 title: Ukázka nasazení SWIFT CSP – CSCF v2020 podrobný plán
 description: Nasaďte kroky pro ukázku "SWIFT CSP-CSCF v2020 Details Sample, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 08/18/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 973cd0076ae03fd32db5fc9be262b2c5300fdf16
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c3672dabb7f4c0a977b8140f470ddfc9fcea9c6d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949407"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048755"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Ukázka ukázky pro SWIFT CSP – CSCF v2020 podrobný plán
 
@@ -33,7 +33,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky SWIFT CSP-CSCF v2020 details.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky SWIFT CSP-CSCF v2020 details.
    - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
@@ -52,7 +52,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
@@ -68,7 +68,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 

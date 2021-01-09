@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187289"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050523"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -35,7 +35,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '. Kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si [ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) hned teď.
 
@@ -251,9 +251,7 @@ V této části spustíte dotaz, který odpoví na otázku, kolik vláken ve va�
 
 Chcete-li zobrazit odpověď, spusťte následující dotaz v poli **Průzkumník dotazů** .
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Odvolání ze zobrazení vlastností s dvojitou platností dříve, než Room0 má teplotu 70 a Room1 má teplotu 80. Z tohoto důvodu se tady zobrazí jenom Room1.
     
@@ -284,9 +282,7 @@ Teď se zobrazí okno s **informacemi o opravě** , kde se zobrazí kód opravy,
 
 Chcete-li ověřit, že se v grafu úspěšně zaregistrovala vaše aktualizace na teplotu pro Room0, znovu spusťte dotaz ze starší verze, abyste získali všechny vlákna v prostředí s teplotou vyšší než 75.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Teď, když se teplota Room0 změnila z 70 na 76, ve výsledku by se měla zobrazit obě vlákna.
 

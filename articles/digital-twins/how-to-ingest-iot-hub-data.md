@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff7c50d08962fec55584e8c4b3259fb8fda1fd97
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9ecc14aa9591d6e62dccd9899a80de44411928a1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035287"
+ms.locfileid: "98051084"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -47,20 +47,7 @@ Pokaždé, když je událost telemetrie teploty odeslána zařízením termostat
 Model můžete přidat nebo nahrát pomocí příkazu CLI níže a pak vytvořit dvojitou hodnotu pomocí tohoto modelu, který se bude aktualizovat informacemi z IoT Hub.
 
 Model vypadá takto:
-```JSON
-{
-  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "Temperature",
-      "schema": "double"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
 Pokud chcete **Tento model nahrát do instance vláken**, otevřete Azure CLI a spusťte následující příkaz:
 
@@ -107,21 +94,11 @@ Různá zařízení mohou strukturovat své zprávy různě, takže kód pro **T
 
 Následující kód ukazuje příklad jednoduchého zařízení, které odesílá telemetrii jako JSON. Tato ukázka je plně proprozkoumána v [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Následující kód vyhledá ID zařízení, které zprávu odeslalo, a také hodnotu teploty.
 
-```csharp
-JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-var temperature = deviceMessage["body"]["Temperature"];
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Find_device_ID_and_temperature":::
 
 Další ukázka kódu vezme ID a teplotu a použije je k opravě (provedení aktualizací), které jsou vytvářené.
 
-```csharp
-//Update twin using device temperature
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Update_twin_with_device_temperature":::
 
 ### <a name="update-your-function-code"></a>Aktualizace kódu funkce
 
@@ -129,66 +106,8 @@ Teď, když rozumíte kódu z předchozích ukázek, otevřete funkci z oddílu 
 
 Nahraďte kód vaší funkce tímto ukázkovým kódem.
 
-```csharp
-using System;
-using System.Net.Http;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-namespace IotHubtoTwins
-{
-    public class IoTHubtoTwins
-    {
-        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("IoTHubtoTwins")]
-        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
-        {
-            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
-
-            try
-            {
-                //Authenticate with Digital Twins
-                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
-                DigitalTwinsClient client = new DigitalTwinsClient(
-                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
-                    { Transport = new HttpClientTransport(httpClient) });
-                log.LogInformation($"ADT service client connection created.");
-            
-                if (eventGridEvent != null && eventGridEvent.Data != null)
-                {
-                    log.LogInformation(eventGridEvent.Data.ToString());
-
-                    // Reading deviceId and temperature for IoT Hub JSON
-                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-                    var temperature = deviceMessage["body"]["Temperature"];
-                    
-                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
-
-                    //Update twin using device temperature
-                    var updateTwinData = new JsonPatchDocument();
-                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-                }
-            }
-            catch (Exception e)
-            {
-                log.LogError($"Error in ingest function: {e.Message}");
-            }
-        }
-    }
-}
-```
 Uložte kód funkce a publikujte aplikaci Function App do Azure. Informace o tom, jak najdete v tématu [*publikování aplikace Function App*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) , [*jak v Azure nastavit funkci pro zpracování dat*](how-to-create-azure-function.md).
 
 Po úspěšném publikování se zobrazí výstup v okně příkazového řádku sady Visual Studio, jak je znázorněno níže:

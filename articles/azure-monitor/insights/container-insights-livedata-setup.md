@@ -2,14 +2,14 @@
 title: Nastavte Azure Monitor pro kontejnery dynamická data (Preview) | Microsoft Docs
 description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl s Azure Monitor for Containers.
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830781"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050778"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -29,8 +29,6 @@ Tento článek vysvětluje, jak nakonfigurovat ověřování pro řízení pří
 - Kubernetes cluster AKS s povoleným řízením přístupu na základě role (Kubernetes RBAC)
 - Azure Active Directory integrovaný cluster AKS.
 
->[!NOTE]
->AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz.
 
 ## <a name="authentication-model"></a>Režim ověřování
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955323"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049316"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -40,7 +40,7 @@ V rámci definice modelu je položka kódu nejvyšší úrovně **rozhraní**. T
 Rozhraní modelu DTDL může obsahovat nula, jednu nebo mnoho z následujících polí:
 * **Vlastnost** -Properties jsou datová pole, která představují stav entity (jako jsou vlastnosti v mnoha objektově orientovaných programovacích jazycích). Vlastnosti mají záložní úložiště a dají se číst kdykoli.
 * **Telemetrie** – pole telemetrie představují měření nebo události a často se používají k popisu čtení snímačů zařízení. Na rozdíl od vlastností telemetrie není uložená na digitálním vlákna; Jedná se o řadu událostí s datovou vazbou, které je potřeba zpracovat při jejich výskytu. Další informace o rozdílech mezi vlastnostmi a telemetrie najdete níže v části [*vlastnosti vs. telemetrie*](#properties-vs-telemetry) .
-* **Komponenta** – komponenty umožňují sestavit rozhraní modelu jako sestavení jiných rozhraní, pokud chcete. Příkladem součásti je rozhraní FrontCamera (a další *frontCamera* *rozhraní komponenty),* které se používají při definování modelu pro *telefon*. Nejdřív musíte definovat rozhraní pro *frontCamera* , jako by šlo o svůj vlastní model, a pak na něj můžete odkazovat při definování *telefonu*.
+* **Komponenta** – komponenty umožňují sestavit rozhraní modelu jako sestavení jiných rozhraní, pokud chcete. Příkladem součásti je rozhraní FrontCamera (a další  *rozhraní komponenty),* které se používají při definování modelu pro *telefon*. Nejdřív musíte definovat rozhraní pro *frontCamera* , jako by šlo o svůj vlastní model, a pak na něj můžete odkazovat při definování *telefonu*.
 
     Pomocí komponenty popište něco, co je nedílnou součástí vašeho řešení, ale nepotřebujete samostatnou identitu, a nemusíte ho vytvářet, odstraňovat ani uspořádávat v nezávisle grafu. Pokud chcete, aby entity měly nezávislou existenci v dodaném grafu, reprezentujte je jako samostatné digitální vlákna různých modelů propojených *vztahy* (viz další odrážka).
     
@@ -88,53 +88,7 @@ Tato část obsahuje příklad typického modelu, který je napsán jako rozhran
  
 Vezměte v úvahu, že Planet může také interagovat s **Moons** , které jsou jejich satelity, a může obsahovat **craters**. V následujícím příkladu `Planet` model vyjadřuje připojení k těmto dalším entitám odkazem na dva externí modely – `Moon` a `Crater` . Tyto modely jsou také definovány v následujícím ukázkovém kódu, ale jsou udržovány velmi jednoduché, takže nemusíte odečítat z primárního `Planet` příkladu.
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "Temperature",
-        "schema": "double"
-      },
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 Pole modelu jsou:
 
@@ -158,7 +112,7 @@ Kromě primitivních typů mohou mít pole *vlastností* a *telemetrie* tyto kom
 * `Map`
 * `Enum`
 
-*Telemetry* Podporují také pole telemetrie `Array` .
+ Podporují také pole telemetrie `Array` .
 
 ### <a name="model-inheritance"></a>Dědičnost modelů
 
@@ -166,57 +120,7 @@ V některých případech můžete chtít model specializovat. Může být např
 
 Následující příklad znovu představí model *globálním* z předchozího příkladu DTDL jako podtyp většího modelu *CelestialBody* . Jako první se definuje "nadřazený" model a pak se na něj vytvoří podřízený model pomocí pole `extends` .
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:CelestialBody;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Celestial body",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "temperature",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "extends": "dtmi:com:contoso:CelestialBody;1",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
 V tomto příkladu *CelestialBody* přispívá název, hmotnost a teplotu do *globálním*. `extends`Oddíl je název rozhraní nebo pole názvů rozhraní (což umožňuje rozšířit rozhraní, pokud je požadováno, zdědit z více nadřazených modelů).
 

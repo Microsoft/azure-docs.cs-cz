@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091985"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048313"
 ---
 # <a name="train-machine-learning-models"></a>Výuka modelů strojového učení
 Apache Spark ve službě Azure synapse Analytics umožňuje strojové učení s velkými objemy dat a poskytuje možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. K dispozici je několik možností pro školení modelů strojového učení pomocí Azure Spark ve službě Azure synapse Analytics: Apache Spark MLlib, Azure Machine Learning a různých dalších open source knihoven. 
@@ -58,6 +58,6 @@ Při použití automatizovaného ML v rámci služby Azure synapse Analytics mů
 ## <a name="next-steps"></a>Další kroky
 Tento článek poskytuje přehled různých možností pro učení modelů strojového učení v rámci fondů Apache Spark ve službě Azure synapse Analytics. Další informace o školení modelů najdete v následujícím kurzu:
 
-- Spouštění automatizovaných experimentů ML pomocí Azure Machine Learning a Azure synapse Analytics: [kurz automatizovaného ml](./spark/../apache-spark-autoscale.md) 
-- Spuštění SparkML experimentů: [kurz Apache SparkML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- Spouštění automatizovaných experimentů ML pomocí Azure Machine Learning a Azure synapse Analytics: [kurz automatizovaného ml](../spark/apache-spark-azure-machine-learning-tutorial.md) 
+- Spuštění SparkML experimentů: [kurz Apache SparkML](../spark/apache-spark-machine-learning-mllib-notebook.md)
 - Zobrazit výchozí knihovny: [Azure synapse Analytics runtime](../spark/apache-spark-version-support.md)

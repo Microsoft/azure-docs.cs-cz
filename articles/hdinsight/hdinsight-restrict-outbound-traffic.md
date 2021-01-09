@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535463"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048670"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
 
@@ -53,7 +53,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
 1. Z Azure Portal vyberte nový **test brány firewall – FW01** .
 
-1. Přejděte do **Nastavení**  >  **pravidla**  >  **aplikace kolekce pravidel**  >  **+ přidat kolekci pravidel aplikace** .
+1. Přejděte do **Nastavení**  >  **pravidla**  >  **aplikace kolekce pravidel**  >  **+ přidat kolekci pravidel aplikace**.
 
     ![Title: přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -83,13 +83,13 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
    ![Title: zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Vyberte **Přidat** .
+1. Vyberte **Add** (Přidat).
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
 Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
-1. Pokračujeme z předchozího kroku, přejdete na **kolekce pravidel sítě**  >  **+ přidat kolekci pravidel sítě** .
+1. Pokračujeme z předchozího kroku, přejdete na **kolekce pravidel sítě**  >  **+ přidat kolekci pravidel sítě**.
 
 1. Na obrazovce **přidat kolekci pravidel sítě** zadejte následující informace:
 
@@ -105,28 +105,28 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     | Název | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | Pokud používáte výchozí SQL Server poskytovaný službou HDInsight, nakonfigurujte síťové pravidlo v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. Pokud používáte vlastní SQL Server pro Ambari, Oozie, Ranger a podregistr metastroes, stačí, když povolíte provoz na vlastní SQL servery.|
+    | Rule_5 | TCP | * | SQL | 1433 | Pokud používáte výchozí SQL Server poskytovaný službou HDInsight, nakonfigurujte síťové pravidlo v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. Pokud používáte vlastní SQL Server pro Ambari, Oozie, Ranger a podregistr metaúložiště, stačí, když povolíte provoz na vlastní SQL servery.|
     | Rule_6 | TCP | * | Azure Monitor | * | volitelné Toto pravidlo by mělo přidat zákazníci, kteří chtějí používat funkci automatického škálování. |
     
    ![Title: zadejte kolekci pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Vyberte **Přidat** .
+1. Vyberte **Add** (Přidat).
 
 ### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
 
 Vytvořte směrovací tabulku s následujícími položkami:
 
-* Všechny IP adresy ze [služeb stavu a správy](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) s typem dalšího segmentu směrování **Internet** . Měl by zahrnovat 4 IP adresy obecných oblastí a také 2 IP adresy pro konkrétní oblast. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí* . Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba. 
+* Všechny IP adresy ze [služeb stavu a správy](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) s typem dalšího segmentu směrování **Internet**. Měl by zahrnovat 4 IP adresy obecných oblastí a také 2 IP adresy pro konkrétní oblast. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí*. Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba. 
 
 * Jedna trasa virtuálního zařízení pro IP adresu 0.0.0.0/0 s dalším segmentem směrování je vaše Azure Firewall privátní IP adresa.
 
 Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvořený v oblasti USA "Východní USA", použijte následující postup:
 
-1. Vyberte Azure firewall **test-FW01** . Zkopírujte **privátní IP adresu** uvedenou na stránce **Přehled** . V tomto příkladu použijeme **ukázkovou adresu 10.0.2.4** .
+1. Vyberte Azure firewall **test-FW01**. Zkopírujte **privátní IP adresu** uvedenou na stránce **Přehled** . V tomto příkladu použijeme **ukázkovou adresu 10.0.2.4**.
 
-1. Pak přejděte na **všechny služby**  >  **sítě**  >  **směrovací tabulky** a **vytvořte tabulku směrování** .
+1. Pak přejděte na **všechny služby**  >  **sítě**  >  **směrovací tabulky** a **vytvořte tabulku směrování**.
 
-1. Z nové trasy přejděte do **Nastavení**  >  **trasy**  >  **+ Přidat** . Přidejte následující trasy:
+1. Z nové trasy přejděte do **Nastavení**  >  **trasy**  >  **+ Přidat**. Přidejte následující trasy:
 
 | Název trasy | Předpona adresy | Typ dalšího přesměrování | Adresa dalšího segmentu |
 |---|---|---|---|
@@ -142,11 +142,11 @@ Dokončete konfiguraci směrovací tabulky:
 
 1. Přiřaďte směrovací tabulku, kterou jste vytvořili v podsíti HDInsight, a v části **Nastavení** vyberte **podsítě** .
 
-1. Vyberte **+ přidružit** .
+1. Vyberte **+ přidružit**.
 
 1. Na obrazovce **přidružit podsíť** vyberte virtuální síť, do které byl cluster vytvořen. A **podsíť** , kterou jste použili pro cluster HDInsight.
 
-1. Vyberte **OK** .
+1. Vyberte **OK**.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Provoz hraničního uzlu nebo vlastní aplikace
 
@@ -170,13 +170,13 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Integrace Azure Firewall s protokoly Azure Monitor je užitečná při prvním zprovoznění aplikace. Obzvláště pokud si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Další informace o omezeních Azure Firewall a žádosti o zvýšení kapacity najdete v [tomto](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) dokumentu, nebo se podívejte na [Nejčastější dotazy](../firewall/firewall-faq.md).
+Další informace o omezeních Azure Firewall a žádosti o zvýšení kapacity najdete v [tomto](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) dokumentu, nebo se podívejte na [Nejčastější dotazy](../firewall/firewall-faq.yml).
 
 ## <a name="access-to-the-cluster"></a>Přístup ke clusteru
 
 Po úspěšném nastavení brány firewall můžete pomocí interního koncového bodu ( `https://CLUSTERNAME-int.azurehdinsight.net` ) získat přístup k Ambari zevnitř virtuální sítě.
 
-Pokud chcete použít veřejný koncový bod ( `https://CLUSTERNAME.azurehdinsight.net` ) nebo koncový bod SSH ( `CLUSTERNAME-ssh.azurehdinsight.net` ), ujistěte se, že máte správné trasy v tabulce směrování a NSG pravidla, abyste se vyhnuli [here](../firewall/integrate-lb.md)problému s asymetrickým směrováním. Konkrétně v takovém případě musíte povolit IP adresu klienta v příchozích pravidlech NSG a také ji přidat do tabulky směrování definované uživatelem s další segmenty směrování `internet` . Pokud není směrování správně nastavené, zobrazí se chyba časového limitu.
+Pokud chcete použít veřejný koncový bod ( `https://CLUSTERNAME.azurehdinsight.net` ) nebo koncový bod SSH ( `CLUSTERNAME-ssh.azurehdinsight.net` ), ujistěte se, že máte správné trasy v tabulce směrování a NSG pravidla, abyste se vyhnuli [](../firewall/integrate-lb.md)problému s asymetrickým směrováním. Konkrétně v takovém případě musíte povolit IP adresu klienta v příchozích pravidlech NSG a také ji přidat do tabulky směrování definované uživatelem s další segmenty směrování `internet` . Pokud není směrování správně nastavené, zobrazí se chyba časového limitu.
 
 ## <a name="next-steps"></a>Další kroky
 

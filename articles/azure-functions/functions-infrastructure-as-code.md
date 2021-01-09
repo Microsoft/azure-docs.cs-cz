@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936885"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050931"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -28,8 +28,8 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
-| Aplikace Function App                                                                     | Vyžadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
-| Účet [Azure Storage](../storage/index.yml)                                   | Vyžadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Aplikace Function App                                                                     | Povinné    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
+| Účet [Azure Storage](../storage/index.yml)                                   | Povinné    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |
 | [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |
 
@@ -140,7 +140,7 @@ Aplikace Function App musí zahrnovat tato nastavení aplikace:
 | Název nastavení                 | Popis                                                                               | Příklady hodnot                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime služby Functions používá pro interní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
+| FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~3`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node` , `java` , `python` nebo `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě `node` , že používáte sadu jazyků, určuje verzi, která se má použít.              | `10.14.1`                             |
 
@@ -164,7 +164,7 @@ Tyto vlastnosti jsou zadány v `appSettings` kolekci ve `siteConfig` vlastnosti:
             },
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             }
         ]
     }
@@ -251,7 +251,7 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -290,7 +290,7 @@ V systému Linux musí mít aplikace funkcí `kind` nastavenou hodnotu `function
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         },
@@ -371,7 +371,7 @@ Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -459,7 +459,7 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -467,13 +467,13 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
 }
 ```
 
-Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConfig` . Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem Runtime:
+Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConfig` . Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem modulu runtime ve formátu ```runtime|runtimeVersion``` :
 
 | Zásobník            | Příklad hodnoty                                         |
 |------------------|-------------------------------------------------------|
-| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
-| .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
+| Python           | `python|3.7`      |
+| JavaScript       | `node|12`          |
+| .NET             | `dotnet|3.0` |
 
 ```json
 {
@@ -504,10 +504,10 @@ Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConf
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ],
-            "linuxFxVersion": "DOCKER|microsoft/azure-functions-node8:2.0"
+            "linuxFxVersion": "node|12"
         }
     }
 }
@@ -544,7 +544,7 @@ Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-c
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
@@ -594,7 +594,7 @@ Aplikace Function App má mnoho podřízených prostředků, které můžete pou
         "appSettings": [
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             },
             {
                 "name": "Project",
@@ -616,7 +616,7 @@ Aplikace Function App má mnoho podřízených prostředků, které můžete pou
         "properties": {
           "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
           "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
-          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "FUNCTIONS_EXTENSION_VERSION": "~3",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
         }

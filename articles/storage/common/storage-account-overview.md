@@ -1,20 +1,20 @@
 ---
 title: Přehled účtu úložiště
 titleSuffix: Azure Storage
-description: Přečtěte si přehled účtů úložiště v Azure Storage. Zkontrolujte pojmenování účtů, úrovně výkonu, úrovně přístupu, redundanci, šifrování, koncové body a další.
+description: Přečtěte si o různých typech účtů úložiště v Azure Storage. Zkontrolujte pojmenování účtů, úrovně výkonu, úrovně přístupu, redundanci, šifrování, koncové body a další.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357377"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051220"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -24,7 +24,40 @@ Informace o vytvoření účtu úložiště Azure najdete v tématu [Vytvoření
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má svůj vlastní cenový model. Před vytvořením účtu úložiště zvažte tyto rozdíly a určete typ účtu, který je pro vaše aplikace nejvhodnější. Typy účtů úložiště jsou:
+
+- **Účty pro obecné účely v2**: základní typ účtu úložiště pro objekty blob, soubory, fronty a tabulky. Doporučuje se ve většině scénářů pomocí Azure Storage.
+- **Účty pro obecné účely v1**: starší typ účtu pro objekty blob, soubory, fronty a tabulky. Pokud je to možné, použijte místo toho účty pro obecné účely v2.
+- **Účty BlockBlobStorage**: účty úložiště s charakteristikou výkonu Premium pro objekty blob bloku a doplňovací objekty blob. Doporučuje se u scénářů s vysokými sazbami transakcí nebo scénářů, které používají menší objekty nebo vyžadují konzistentně nízkou latenci úložiště.
+- **Účty úložiště** souborů: jenom účty úložiště s charakteristikami výkonu Premium. Doporučuje se pro podnikové nebo vysoce výkonné škálování aplikace.
+- **Účty BlobStorage**: starší účty úložiště jen pro objekty blob. Pokud je to možné, použijte místo toho účty pro obecné účely v2.
+
+Následující tabulka popisuje typy účtů úložiště, služby, které podporují, a podporované modely nasazení pro každý typ účtu:
+
+| Typ účtu úložiště | Podporované služby | Možnosti redundance | Model nasazení<sup>1</sup> |
+|--|--|--|--|
+| Obecné účely v2 | Objekt blob, soubor, fronta, tabulka, disk a Data Lake Gen2<sup>2</sup> | LRS, GRS, RA-GRS, ZRS, GZRS, RA-GZRS<sup>3</sup> | Resource Manager |
+| Obecné účely v1 | Objekt blob, soubor, fronta, tabulka a disk | LRS, GRS, RA-GRS | Správce prostředků, klasický |
+| BlockBlobStorage | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | LRS, ZRS<sup>3</sup> | Resource Manager |
+| Úložiště | Pouze soubor | LRS, ZRS<sup>3</sup> | Resource Manager |
+| Blob Storage | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | LRS, GRS, RA-GRS | Resource Manager |
+
+<sup>1</sup> Doporučuje se použít model nasazení Azure Resource Manager. Účty úložiště, které používají model nasazení Classic, se stále dají vytvořit v některých umístěních a stávající klasické účty se pořád podporují. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../../azure-resource-manager/management/deployment-models.md).
+
+<sup>2</sup> . Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Data Lake Storage Gen2 se podporuje jenom pro účty úložiště pro obecné účely v2 s povoleným hierarchickým oborem názvů. Další informace o Data Lake Storage Gen2 najdete v tématu [Úvod do Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md).
+
+<sup>3</sup> . Zóna – redundantní úložiště (ZRS) a geograficky redundantní úložiště (GZRS/RA-GZRS) jsou dostupné jenom pro účty standard pro obecné účely v2, BlockBlobStorage a úložiště v některých oblastech. Další informace o možnostech redundance Azure Storage najdete v tématu [Azure Storage redundance](storage-redundancy.md).
+
+### <a name="storage-account-redundancy"></a>Redundance účtu úložiště
+
+Mezi možnosti redundance účtu úložiště patří:
+
+- **Místně redundantní úložiště (LRS)**: jednoduchá strategie redundance s nízkými náklady. Data se zkopírují synchronně třikrát v jednom fyzickém umístění v primární oblasti.
+- **Zóna – redundantní úložiště (ZRS)**: redundance pro scénáře vyžadující vysokou dostupnost. Data se zkopírují synchronně v rámci tří zón dostupnosti Azure v primární oblasti.
+- **Geograficky redundantní úložiště (GRS)**: meziregionální redundance pro ochranu před místními výpadky. Data se zkopírují synchronně třikrát v primární oblasti a zkopírují se asynchronně do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
+- **Geograficky redundantní úložiště (GZRS)**: redundance pro scénáře, které vyžadují vysokou dostupnost a maximální odolnost. Data se zkopírují synchronně v rámci tří zón dostupnosti Azure v primární oblasti a pak se asynchronně zkopírovaly do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte přístup pro čtení Geo-Zone-redundantní úložiště (RA-GZRS).
+
+Další informace o možnostech redundance v Azure Storage najdete v tématu [Azure Storage redundance](storage-redundancy.md).
 
 ### <a name="general-purpose-v2-accounts"></a>Účty úložiště pro obecné účely verze 2
 
@@ -83,7 +116,17 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 
-V závislosti na typu vytvářeného účtu úložiště si můžete vybrat mezi úrovní výkonu Standard a Premium.
+V závislosti na typu vytvářeného účtu úložiště si můžete vybrat mezi úrovní výkonu Standard a Premium. Následující tabulka shrnuje, které úrovně výkonu jsou k dispozici pro daný typ účtu úložiště.
+
+| Typ účtu úložiště | Podporované úrovně výkonu |
+|--|--|
+| Obecné účely v2 | Standard, Premium<sup>1</sup> |
+| Obecné účely v1 | Standard, Premium<sup>1</sup> |
+| BlockBlobStorage | Premium |
+| Úložiště | Premium |
+| Blob Storage | Standardní |
+
+<sup>1</sup> K dispozici je výkon úrovně Premium pro účty pro obecné účely v2 a obecné účely v1 jenom pro objekty blob disku a stránky. Výkon služby Premium pro objekty blob bloku nebo Append je k dispozici pouze v účtech BlockBlobStorage. Premium Performance for Files je k dispozici pouze v účtech úložiště.
 
 ### <a name="general-purpose-storage-accounts"></a>Účty úložiště pro obecné účely
 
@@ -112,12 +155,20 @@ Dostupné úrovně přístupu jsou:
 
 Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli přepínat mezi těmito úrovněmi přístupu. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
+Následující tabulka ukazuje, které úrovně přístupu jsou k dispozici pro objekty BLOB v každém typu účtu úložiště.
+
+| Typ účtu úložiště | Podporované úrovně přístupu |
+|--|--|
+| Obecné účely v2 | Horká, studená, Archivovaná<sup>1</sup> |
+| Obecné účely v1 | – |
+| BlockBlobStorage | – |
+| Úložiště | – |
+| Blob Storage | Horká, studená, Archivovaná<sup>1</sup> |
+
+<sup>1</sup> archivní úložiště a vrstvení na úrovni objektů BLOB podporují jenom objekty blob bloku. Archivní úroveň je k dispozici pouze na úrovni jednotlivých objektů blob, nikoli na úrovni účtu úložiště. Další informace najdete v tématu [úrovně přístupu pro Azure Blob Storage – horká, studená a archivní](../blobs/storage-blob-storage-tiers.md).
+
 > [!IMPORTANT]
-> Změna úrovně přístupu pro existující účet úložiště nebo objekt BLOB může mít za následek další poplatky. Další informace najdete v [části fakturace účtu úložiště](#storage-account-billing).
-
-## <a name="redundancy"></a>Redundance
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> Změna úrovně přístupu pro existující účet úložiště nebo objekt BLOB může mít za následek další poplatky. Další informace najdete v tématu [fakturace účtu úložiště](#storage-account-billing).
 
 ## <a name="encryption"></a>Šifrování
 
@@ -127,13 +178,15 @@ Všechna data v účtu úložiště se šifrují na straně služby. Další inf
 
 Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, který je uložen v Azure Storage má adresu, která obsahuje jedinečný název účtu. Kombinace názvu účtu a koncového bodu služby Azure Storage tvoří koncové body pro váš účet úložiště.
 
-Pokud má například účet úložiště pro obecné účely název *mystorageaccount*, výchozí koncové body tohoto účtu jsou následující:
+V následující tabulce je uveden seznam koncových bodů pro každou službu Azure Storage Services.
 
-- Úložiště objektů BLOB: `https://*mystorageaccount*.blob.core.windows.net`
-- Úložiště tabulek: `https://*mystorageaccount*.table.core.windows.net`
-- Úložiště fronty: `https://*mystorageaccount*.queue.core.windows.net`
-- Soubory Azure: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)objemy dat.)
+| Služba úložiště | Koncový bod |
+|--|--|
+| Blob Storage | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure Files | `https://<storage-account>.file.core.windows.net` |
+| Queue Storage | `https://<storage-account>.queue.core.windows.net` |
+| Table Storage | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > Objekty blob bloku a účty BLOB Storage zpřístupňují jenom Blob service koncový bod.
@@ -184,7 +237,17 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 ## <a name="storage-account-billing"></a>Fakturace účtu úložiště
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+VyAzure Storage účty na základě využití účtu úložiště. Všechny objekty v rámci účtu úložiště se fakturují společně jako skupina. Náklady na úložiště se počítají v závislosti na následujících faktorech:
+
+- **Oblast** odkazuje na geografickou oblast, ve které je účet založený.
+- **Typ účtu** odkazuje na typ účtu úložiště, který používáte.
+- **Úroveň přístupu** odkazuje na model využití dat, který jste zadali pro účet úložiště pro obecné účely v2 nebo BLOB.
+- **Kapacita** odkazuje na to, kolik z vašich účtů úložiště používáte k ukládání dat.
+- **Replikace** určuje, kolik kopií vašich dat se uchovává najednou a v jakých umístěních.
+- **Transakce** odkazují na všechny operace čtení a zápisu na Azure Storage.
+- **Výstup dat** odkazuje na všechna data přenesená z oblasti Azure. Když k datům v účtu úložiště přistupovala aplikace, která neběží ve stejné oblasti, účtují se vám poplatky za výstup dat. Informace o použití skupin prostředků k seskupení dat a služeb ve stejné oblasti za účelem omezení nákladů na výstup najdete v tématu [co je skupina prostředků Azure?](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).
+
+Na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) najdete podrobné informace o cenách na základě typu účtu, kapacity úložiště, replikace a transakcí. Na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/) najdete podrobné informace o sazbách za odchozí data. Představu o nákladech můžete získat v [Cenové kalkulačce pro Azure Storage](https://azure.microsoft.com/pricing/calculator/?scenario=data-management).
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

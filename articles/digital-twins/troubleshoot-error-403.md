@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091799"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049809"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Žádost o službu se nezdařila. Stav: 403 (zakázáno)
 
@@ -25,7 +25,7 @@ K této chybě může dojít u mnoha typů žádostí o služby, které vyžaduj
 
 ### <a name="cause-1"></a>Příčina #1
 
-Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli v **instanci, kterou se pokoušíte spravovat** , roli *vlastníka dat digitálních vláken Azure* . 
+Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli v **instanci, kterou se pokoušíte spravovat**, roli *vlastníka dat digitálních vláken Azure* . 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -44,7 +44,7 @@ Prvním řešením je ověřit, jestli má váš uživatel Azure na instanci, kt
 Všimněte si, že tato role se liší od...
 * předchozí název této role během období Preview je *vlastník digitálních vláken Azure (Preview)* (Tato role je stejná, ale změnil se název).
 * role *vlastníka* v celém předplatném Azure. *Vlastníkem dat digitálních vláken Azure* je role v rámci digitálních vláken Azure, která je vymezená na tuto jednotlivou instanci digitálních vláken Azure.
-* role *vlastníka* v digitálních prozdvojeních Azure. Jedná se o dvě odlišná role správy digitálních vláken Azure a *vlastník dat pro digitální vlákna Azure* je role, která se má použít ke správě ve verzi Preview.
+* role *vlastníka* v digitálních prozdvojeních Azure. Jedná se o dvě odlišná role správy digitálních vláken Azure a *vlastník dat pro digitální vlákna Azure* je role, která se má použít ke správě.
 
 #### <a name="check-current-setup"></a>Kontrolovat aktuální nastavení
 
@@ -52,7 +52,7 @@ Všimněte si, že tato role se liší od...
 
 #### <a name="fix-issues"></a>Opravit problémy 
 
-Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který vašemu uživateli Azure poskytne roli *vlastníka dat Azure s digitálními* úlohami v **instanci digitálních vláken Azure** . 
+Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který vašemu uživateli Azure poskytne roli *vlastníka dat Azure s digitálními* úlohami v **instanci digitálních vláken Azure**. 
 
 Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pokud nejste, obraťte se na vlastníka, aby tento příkaz spouštěl vaším jménem.
 
@@ -60,7 +60,7 @@ Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pok
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)* .
+Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
 
 Pokud toto přiřazení role už máte *a* k ověření klientské aplikace používáte registraci aplikace Azure AD, můžete pokračovat k dalšímu řešení, pokud toto řešení nevyřešilo problém 403.
 
@@ -80,11 +80,11 @@ V seznamu by se měla zobrazit registrace aplikace, kterou jste právě vytvoři
 
 Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure byla v registraci správně nastavená. Provedete to tak, že v řádku nabídek vyberete *manifest* a zobrazí se kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
 
-:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Registrace aplikací stránka v Azure Portal":::
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Zobrazení portálu manifestu pro registraci aplikace Azure AD":::
 
 V dalším kroku vyberte *oprávnění rozhraní API* z řádku nabídek, abyste ověřili, že tato registrace aplikace obsahuje oprávnění ke čtení a zápisu pro digitální vlákna Azure. Měla by se zobrazit položka podobná této:
 
-:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Registrace aplikací stránka v Azure Portal":::
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Zobrazení portálu oprávnění rozhraní API pro registraci aplikace Azure AD, které zobrazuje přístup pro čtení a zápis pro digitální vlákna Azure":::
 
 #### <a name="fix-issues"></a>Opravit problémy
 

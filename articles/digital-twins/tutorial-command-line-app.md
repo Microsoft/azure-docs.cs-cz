@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458097"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050234"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -51,27 +51,15 @@ Vyberte možnost *Room.jszapnuto* a otevřete ji v okně pro úpravy a změňte 
 1. **Upravit vlastnost**. Změňte název `Humidity` vlastnosti na *HumidityLevel* (nebo něco jiného, pokud chcete. Pokud používáte něco jiného než *HumidityLevel*, pamatujte na to, co jste použili, a místo *HumidityLevel* v průběhu tohoto kurzu ho budete používat.
 1. **Přidejte vlastnost**. Pod `HumidityLevel` vlastností, která končí na řádku 15, vložte následující kód pro přidání `RoomName` vlastnosti do místnosti:
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
+
 1. **Přidejte relaci**. Pod `RoomName` vlastnost, kterou jste právě přidali, vložte následující kód pro přidání možnosti pro tento typ vlákna do formuláře *obsahuje* relace s jinými nezávislostmi:
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
-Až skončíte, aktualizovaný model by měl vypadat takto:
+Až skončíte, aktualizovaný model by se měl shodovat s tímto:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci." border="false":::
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 Před přechodem na. Nezapomeňte soubor uložit.
 

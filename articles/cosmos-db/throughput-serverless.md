@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760244"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049826"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Jak vybrat mezi zřízenou propustností a bez serveru
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB je k dispozici ve dvou různých režimech kapacity: [zřízená
 | Kritéria | Zřízená propustnost | Bez serveru |
 | --- | --- | --- |
 | Status | Obecná dostupnost | Ve verzi Preview |
-| Nejlépe vhodné pro | Klíčové úlohy vyžadující předvídatelný výkon | Malé a přerušované úlohy s lehkým a přerušovaným provozem, který je obtížné vypovědět |
+| Nejlépe vhodné pro | Úlohy s trvalým provozem vyžadující předvídatelný výkon | Úlohy s přerušovaným nebo nepředvídatelným provozem a nízkým poměrem provozu na nejvyšší úrovni |
 | Jak to funguje | Pro každý z vašich kontejnerů zřizujete určitou míru propustnosti vyjádřenou v [jednotkách žádostí](request-units.md) za sekundu. V každé druhé je tato hodnota jednotek žádostí k dispozici pro vaše databázové operace. Zřízenou propustnost lze aktualizovat ručně nebo automaticky upravit pomocí automatického [škálování](provision-throughput-autoscale.md). | Vaše databázové operace se spouští na vašich kontejnerech bez nutnosti zřídit jakoukoli kapacitu. |
 | Geografická distribuce | K dispozici (neomezený počet oblastí Azure) | Nedostupné (účty bez serveru se dají spouštět jenom v 1 oblasti Azure) |
 | Maximální velikost úložiště na kontejner | Unlimited | 50 GB |
-| Výkon | 99,99% až 99,999% dostupnost, na kterou se vztahuje smlouva SLA<br>< 10 MS latence pro čtení a zápisy bodů, na které se vztahuje smlouva SLA<br>99,99% garantované propustnosti pokryté smlouvou SLA | 99,9% až 99,99% dostupnost, na kterou se vztahuje smlouva SLA<br>Latence pro čtení z < 10 MS pro body čtení a < 30 ms pro zápisy pokryté objektem SLO<br>95% – pokrývání zatížení na SLO |
+| Výkon | < 10 MS latence pro čtení a zápisy bodů, na které se vztahuje smlouva SLA | Latence pro čtení z < 10 MS pro body čtení a < 30 ms pro zápisy pokryté objektem SLO |
 | Model fakturace | Fakturace se provádí po hodinách pro zřízené RU/s, bez ohledu na to, kolik ru bylo spotřebováno. | Fakturace se provádí po hodinách na základě množství ru spotřebovaného vašimi databázovou operací. |
 
 > [!IMPORTANT]

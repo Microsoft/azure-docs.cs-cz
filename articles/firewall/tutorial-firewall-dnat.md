@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 281d0587ca4c041c7149e49aad6227f6dc0b7fbf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655132"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050863"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 
@@ -56,7 +56,7 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
 1. Na domovské stránce Azure Portal vyberte **všechny služby**.
 2. V části **síť** vyberte **virtuální sítě**.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Add** (Přidat).
 4. Jako **Název** zadejte **VN-Hub**.
 5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -66,7 +66,7 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
      Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
      > [!NOTE]
-     > Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+     > Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 10. Pro **Rozsah adres** zadejte **10.0.1.0/26**.
 11. Použijte další výchozí nastavení a pak vyberte **vytvořit**.
@@ -75,7 +75,7 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
 1. Na domovské stránce Azure Portal vyberte **všechny služby**.
 2. V části **síť** vyberte **virtuální sítě**.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Add** (Přidat).
 4. Jako **Název** zadejte **VN-Spoke**.
 5. Jako **Adresní prostor** zadejte **192.168.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -93,7 +93,7 @@ Teď mezi dvěma virtuálními sítěmi vytvořte partnerský vztah.
 
 1. Vyberte virtuální síť **centra vn** .
 2. V části **Nastavení** vyberte **partnerské vztahy**.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Add** (Přidat).
 4. Zadejte **peer-HubSpoke** pro **název partnerského vztahu od VN-Hub do vn-paprsek**.
 5. Jako virtuální síť vyberte **VN-Spoke**.
 6. Zadejte **peer-SpokeHub** pro **název partnerského vztahu od VN-Spoke do služby vn – hub**.
@@ -130,7 +130,7 @@ Vytvořte virtuální počítač úloh a umístěte ho do podsítě **SN-Workloa
 **správy**
 
 1. V případě **diagnostiky spouštění** vyberte **vypnuto**.
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 
 **Zkontrolovat a vytvořit**
 
@@ -167,7 +167,7 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 
 1. Na domovské stránce Azure Portal vyberte **všechny služby**.
 2. V části **sítě** vyberte **směrovací tabulky**.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Add** (Přidat).
 4. Jako **Název** zadejte **RT-FWroute**.
 5. V části **Předplatné** vyberte své předplatné.
 6. V části **Skupina prostředků** vyberte **Použít existující** a pak vyberte **RG-DNAT-Test**.
@@ -201,7 +201,7 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 10. Do pole **Cílové porty** zadejte **3389**. 
 11. Do pole **Přeložená adresa** zadejte privátní IP adresu virtuálního počítače Srv-Workload. 
 12. Do pole **Přeložený port** zadejte **3389**. 
-13. Vyberte možnost **Přidat**. 
+13. Vyberte **Add** (Přidat). 
 
 ## <a name="test-the-firewall"></a>Testování brány firewall
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927313"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050557"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 
@@ -21,6 +21,40 @@ Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kaná
 * Zákazníci s výhodami Premier Support můžou otevřít žádost o podporu pomocí [Premier](https://premier.microsoft.com/).
 * Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
 * Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo pro nové soubory. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Nástroj pro řešení potíží s Log Analytics
+
+Nástroj pro řešení potíží se systémem Windows Log Analytics agenta je kolekcí PowerShellových skriptů navržených tak, aby bylo možné najít a diagnostikovat problémy s agentem Log Analytics. Je automaticky součástí agenta při instalaci. Spuštění nástroje by mělo být prvním krokem při diagnostikování problému.
+
+### <a name="how-to-use"></a>Způsob použití
+1. Otevřete příkazový řádek PowerShellu jako správce na počítači, kde je nainstalován agent Log Analytics.
+1. Přejděte do adresáře, ve kterém se nástroj nachází.
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. Spusťte hlavní skript pomocí tohoto příkazu:
+   * `.\GetAgentInfo.ps1`
+1. Vyberte scénář odstraňování potíží.
+1. Postupujte podle pokynů v konzole nástroje. (Poznámka: postup trasování protokolů vyžaduje ruční zásah k zastavení shromažďování protokolů. Na základě reprodukovatelnosti problému počkejte na dobu trvání a stisknutím tlačítka ' zastavte shromažďování protokolů a pokračujte dalším krokem.)
+
+   Umístění souboru výsledků se protokolují po dokončení a nové okno Průzkumníka, které zvýrazní, je otevřené.
+
+### <a name="installation"></a>Instalace
+Nástroj pro řešení potíží je automaticky zahrnutý po instalaci agenta Log Analytics Build 10.20.18053.0 a vyšší.
+
+### <a name="scenarios-covered"></a>Zahrnuté scénáře
+Níže je uveden seznam scénářů zkontrolovaných nástrojem pro řešení potíží:
+
+- Agent neoznamuje data nebo chybí data prezenčního signálu.
+- Nasazení rozšíření agenta se nepodaří.
+- Selhání agenta
+- Agent spotřebovává vysoký procesor/paměť.
+- Instalace/odinstalace – chyby
+- Problém s vlastními protokoly
+- Problém brány OMS
+- Problémy s čítači výkonu
+- Shromáždit všechny protokoly
+
+>[!NOTE]
+>Pokud se setkáte s problémem, spusťte prosím Nástroj pro řešení potíží. Při otevírání lístku se s protokoly zpočátku významně pomůžou týmu podpory řešit potíže rychleji.
 
 ## <a name="important-troubleshooting-sources"></a>Důležité zdroje pro odstraňování potíží
 
@@ -34,10 +68,10 @@ Ověřte, že je brána firewall nebo proxy server nakonfigurovaná tak, aby pov
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Yes |  
-|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Yes |  
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
+|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Ano |  
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
@@ -59,7 +93,7 @@ Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komuni
 
     ![Výsledky spuštění nástroje TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Filtrujte protokol událostí *Operations Manager* podle **zdrojů událostí**  -  *Health Service moduly*, *HealthService*a *konektor služby* a filtrujte podle *Upozornění* na **úrovni události** a *chybu* , abyste se ujistili, zda mají v následující tabulce zapsané události. Pokud jsou, Projděte si postup řešení, který je součástí jednotlivých možných událostí.
+- Filtrujte protokol událostí *Operations Manager* podle **zdrojů událostí**  -  *Health Service moduly*, *HealthService* a *konektor služby* a filtrujte podle *Upozornění* na **úrovni události** a *chybu* , abyste se ujistili, zda mají v následující tabulce zapsané události. Pokud jsou, Projděte si postup řešení, který je součástí jednotlivých možných událostí.
 
     |ID události |Zdroj |Popis |Řešení |
     |---------|-------|------------|-----------|

@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461174"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051560"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
@@ -57,7 +57,7 @@ Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Je ale
 
 V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky spoléhají na **Visual Studio** ( [tady](https://visualstudio.microsoft.com/downloads/)si můžete nainstalovat nejnovější verzi).
 
-Postupujte takto:
+Tady je postup:
 
 1. Vytvoření nového řešení sady Visual Studio pro knihovnu tříd
 2. Jako název projektu použijte *ADTApi*
@@ -99,17 +99,7 @@ Pokaždé, když v sadě SDK dojde k chybě (včetně chyb HTTP, jako je 404), S
 
 Zde je fragment kódu, který se pokusí přidat dvojitou hodnotu a zachytí všechny chyby v tomto procesu:
 
-```csharp
-try
-{
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
-    Console.WriteLine($"Created a twin successfully: {id}");
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_errorHandling":::
 
 ### <a name="paging"></a>Stránkování
 
@@ -117,62 +107,15 @@ AutoRest generuje dva typy vzorů stránkování pro sadu SDK:
 * Jedna pro všechna rozhraní API s výjimkou rozhraní API pro dotazy
 * Jedno pro rozhraní API pro dotazování
 
-Ve vzoru stránkování bez dotazu je zde uveden fragment kódu, který ukazuje, jak načíst stránkovaný seznam odchozích vztahů z digitálních vláken Azure:
+V případě vzoru stránkování bez dotazu je zde ukázka ukázková metoda, která ukazuje, jak načíst stránkovaný seznam odchozích vztahů z digitálních vláken Azure:
 
-```csharp
- try 
- {
-     // List the relationships.
-    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-    Console.WriteLine($"Twin {srcId} is connected to:");
-    // Iterate through the relationships found.
-    int numberOfRelationships = 0;
-    await foreach (string rel in results)
-    {
-         ++numberOfRelationships;
-         // Do something with each relationship found
-         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
-    }
-    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 Druhý vzor se generuje jenom pro rozhraní API dotazů. Používá `continuationToken` explicitně.
 
 Tady je příklad s tímto vzorem:
 
-```csharp
-string query = "SELECT * FROM digitaltwins";
-string conToken = null; // continuation token from the query
-int page = 0;
-try
-{
-    // Repeat the query while there are pages
-    do
-    {
-        QuerySpecification spec = new QuerySpecification(query, conToken);
-        QueryResult qr = await client.Query.QueryTwinsAsync(spec);
-        page++;
-        Console.WriteLine($"== Query results page {page}:");
-        if (qr.Items != null)
-        {
-            // Query returns are JObjects
-            foreach(JObject o in qr.Items)
-            {
-                string twinId = o.Value<string>("$dtId");
-                Console.WriteLine($"  Found {twinId}");
-            }
-        }
-        Console.WriteLine($"== End query results page {page}");
-        conToken = qr.ContinuationToken;
-    } while (conToken != null);
-} catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error in twin query: ${e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="PagedQuery":::
 
 ## <a name="next-steps"></a>Další kroky
 

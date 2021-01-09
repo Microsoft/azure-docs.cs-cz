@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705366"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049775"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
 
@@ -24,7 +24,7 @@ Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení pod
 
 Šifrování v klidovém prostředí se zabývá šifrováním na straně serveru na účtech Azure Storage a šifrováním disku na virtuálních počítačích Azure, které jsou součástí clusteru HDInsight.
 
-Šifrování dat při přenosu v HDInsight se dosahuje pomocí [protokolu TLS (Transport Layer Security)](../transport-layer-security.md) pro přístup ke branám clusteru a [Internet Protocol zabezpečení (IPSec)](https://wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly a Zookeeper uzly. Není povolený provoz mezi uzly brány nebo [zprostředkovatele ID](./identity-broker.md) , které jsou virtuální počítače založené na Windows a jiné uzly na bázi Linux v clusteru.
+Šifrování dat při přenosu v HDInsight se dosahuje pomocí [protokolu TLS (Transport Layer Security)](../transport-layer-security.md) pro přístup ke branám clusteru a [Internet Protocol zabezpečení (IPSec)](https://wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly, uzly Zookeeper a také uzly brány a [ID zprostředkovatele](./identity-broker.md) .
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 

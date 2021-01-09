@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015657"
+ms.locfileid: "98052873"
 ---
 | Prostředek | Basic | Standard | Premium |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98015657"
 | &bull; Mapování úložišť na obor | N/A | N/A | 500 |
 
 
-<sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. Další úložiště může být využito až do limitu úložiště v registru za další denní sazbu za GiB. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].
+<sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. Další úložiště může být využito až do limitu úložiště v registru za další denní sazbu za GiB. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing]. Pokud potřebujete úložiště nad rámec limitu úložiště registru, obraťte se prosím na podporu Azure.
 
 <sup>2</sup>*ReadOps*, *WriteOps* a *Šířka pásma* jsou minimální odhady. Azure Container Registry se snaží zvýšit výkon, protože vyžaduje použití.
 

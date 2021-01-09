@@ -3,21 +3,21 @@ title: Použití Azure Automation runbooků a modulů v Galerie prostředí Powe
 description: V tomto článku se dozvíte, jak používat Runbooky a moduly od Microsoftu a komunitě v Galerie prostředí PowerShell.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682770"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049112"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerii prostředí PowerShell
 
 Místo vytváření vlastních runbooků a modulů v Azure Automation máte přístup ke scénářům, které už jsou sestavené Microsoftem a komunitou. Runbooky a [moduly](#modules-in-powershell-gallery) PowerShellu můžete získat z Galerie prostředí PowerShell a [runbooků v Pythonu](#use-python-runbooks) z organizace pro Azure Automation GitHub. Můžete také přispět do komunity tím, že nasdílíte [scénáře, které vyvíjíte](#add-a-powershell-runbook-to-the-gallery).
 
 > [!NOTE]
-> Centrum skriptů TechNet vyřazování z provozu. Všechny Runbooky z centra skriptů v galerii runbooků byly přesunuty do naší [organizace webu GitHub pro automatizaci](https://github.com/azureautomation).
+> Centrum skriptů TechNet vyřazování z provozu. Všechny Runbooky z centra skriptů v galerii runbooků se přesunuly do naší [organizace služby Automation](https://github.com/azureautomation) na webu GitHub, kde najdete další informace [.](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)
 
 ## <a name="runbooks-in-powershell-gallery"></a>Runbooky v Galerie prostředí PowerShell
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ac8ae4fd4218bbf74bbb6760d8344096c214a76
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 77fab9c4a52a1d54f548dfbcb35e351195d13bd9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820725"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052747"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
@@ -187,6 +187,13 @@ Vložte tento kód pod `IntentRecognizer` . Ujistěte se, že jste nahradili `"Y
           recognizer.addAllIntents(lm);
         }
 ```
+
+> [!NOTE]
+> LanguageUnderstandingModel můžete vytvořit předáním adresy URL koncového bodu do metody FromEndpoint.
+> Sada Speech SDK podporuje pouze koncové body LUIS v 2.0 a koncové body LUIS v 2.0 se vždy řídí jedním z těchto dvou vzorů:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
 Z `IntentRecognizer` objektu budete volat `recognizeOnceAsync()` metodu. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.

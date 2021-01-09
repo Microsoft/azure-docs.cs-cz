@@ -4,21 +4,24 @@ description: Přečtěte si, jak Azure Cosmos DB tabulek rozhraní API pro tabul
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 01/08/2021
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 5e586ae8a6b6a4010419254ce3e380f377d370f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c2b2a9a03a654e8ccba58e62a1d017cd11db5abc
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101079"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050748"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Vývoj pomocí rozhraní Table API služby Azure Cosmos DB a úložištěm tabulek Azure
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Rozhraní Table API služby Azure Cosmos DB a úložiště tabulek Azure sdílejí stejný tabulkový datový model a zpřístupňují přes svoje sady SDK stejné vytvářecí, odstraňovací, aktualizační a dotazovací operace.
+
+> [!NOTE]
+> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v rozhraní API pro tabulky Azure Cosmos DB.
 
 [!INCLUDE [storage-table-cosmos-comparison](../../includes/storage-table-cosmos-comparison.md)]
 

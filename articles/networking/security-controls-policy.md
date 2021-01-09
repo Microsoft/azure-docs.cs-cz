@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro síťové služby Azure
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou dostupné pro síťové služby Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 11/19/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2187bb5b5f9b6edda88d901b5dbe14390344a71d
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 8b51e0fce003116711ca0b8de6d896a9d4377d72
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97965907"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050574"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure Policy kontroly dodržování předpisů pro síťové služby Azure
 

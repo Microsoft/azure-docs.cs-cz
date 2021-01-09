@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a11cd9f3208c97748ab16c636aedd9a443c5b9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093159"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051101"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure do [služ
 
 Řešení popsané v tomto článku vám umožní doručovat data digitální nespojité do připojených klientů, jako je jediná webová stránka nebo mobilní aplikace. V důsledku toho se klienti aktualizují pomocí metrik a stavu v reálném čase ze zařízení IoT, a to bez nutnosti dotazování serveru nebo odeslání nových požadavků HTTP na aktualizace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady jsou požadavky, které byste měli provést, než budete pokračovat:
 
@@ -68,66 +68,8 @@ Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru)
 1. Vytvořte novou ostrost C# třídy s názvem **SignalRFunctions.cs** v projektu *SampleFunctionsApp* .
 
 1. Obsah souboru třídy nahraďte následujícím kódem:
-
-    ```C#
-    using System;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Azure.EventGrid.Models;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Http;
-    using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-    using Microsoft.Azure.WebJobs.Extensions.SignalRService;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
     
-    namespace SampleFunctionsApp
-    {
-        public static class SignalRFunctions
-        {
-            public static double temperature;
-    
-            [FunctionName("negotiate")]
-            public static SignalRConnectionInfo GetSignalRInfo(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-                [SignalRConnectionInfo(HubName = "dttelemetry")] SignalRConnectionInfo connectionInfo)
-            {
-                return connectionInfo;
-            }
-    
-            [FunctionName("broadcast")]
-            public static Task SendMessage(
-                [EventGridTrigger] EventGridEvent eventGridEvent,
-                [SignalR(HubName = "dttelemetry")] IAsyncCollector<SignalRMessage> signalRMessages,
-                ILogger log)
-            {
-                JObject eventGridData = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-    
-                log.LogInformation($"Event grid message: {eventGridData}");
-    
-                var patch = (JObject)eventGridData["data"]["patch"][0];
-                if (patch["path"].ToString().Contains("/Temperature"))
-                {
-                    temperature = Math.Round(patch["value"].ToObject<double>(), 2);
-                }
-    
-                var message = new Dictionary<object, object>
-                {
-                    { "temperatureInFahrenheit", temperature},
-                };
-        
-                return signalRMessages.AddAsync(
-                    new SignalRMessage
-                    {
-                        Target = "newMessage",
-                        Arguments = new[] { message }
-                    });
-            }
-        }
-    }
-    ```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
 1. V okně *konzoly Správce balíčků* sady Visual Studio nebo jakémkoli okně příkazového řádku na počítači ve složce *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* spusťte následující příkaz, který nainstaluje `SignalRService` balíček NuGet do projektu:
     ```cmd
@@ -141,7 +83,7 @@ V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal zobrazení aplikace Function App se zvýrazněnou funkcí v nabídce. Seznam funkcí se zobrazí na stránce a zvýrazní se i funkce Negotiate.":::
 
-    Stiskněte *získat adresu URL funkce* a zkopírujte hodnotu **nahoru přes _/API_ (nezahrnujte poslední _/Negotiate?_ )**. Použijete ji později.
+    Stiskněte *získat adresu URL funkce* a zkopírujte hodnotu **nahoru přes _/API_ (nezahrnujte poslední _/Negotiate?_)**. Použijete ji později.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal zobrazení funkce Negotiate. Tlačítko získat adresu URL funkce je zvýrazněné a část adresy URL od začátku do '/API '.":::
 
@@ -166,10 +108,10 @@ V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, 
 :::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: odběr událostí Event Grid":::
 
 Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem (pole vyplněná ve výchozím nastavení nejsou zmíněná):
-* *Podrobnosti*  >  odběru události **Název** : zadejte název předplatného události.
-* Podrobnosti koncového *bodu*  >  **Typ koncového bodu** : z možností nabídky vyberte *Azure Function* .
-* Podrobnosti koncového *bodu*  >  **Koncový bod** : stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat Azure Function* :
-    - Vyplňte svoje **předplatné** , **skupinu prostředků** , **aplikaci funkcí** a **funkci** ( *všesměrové vysílání* ). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
+* *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
+* Podrobnosti koncového *bodu*  >  **Typ koncového bodu**: z možností nabídky vyberte *Azure Function* .
+* Podrobnosti koncového *bodu*  >  **Koncový bod**: stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat Azure Function* :
+    - Vyplňte svoje **předplatné**, **skupinu prostředků**, **aplikaci funkcí** a **funkci** (*všesměrové vysílání*). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
     - **Potvrďte výběr**.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal zobrazení vytvoření odběru událostí. Výše uvedená pole jsou vyplněna a zvýrazní se tlačítka potvrdit výběr a vytvořit.":::
@@ -246,7 +188,7 @@ Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure
 az group delete --name <your-resource-group>
 ```
 
-Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače ( *Azure_Digital_Twins_end_to_end_samples.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ).
+Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*Azure_Digital_Twins_end_to_end_samples.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360318"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051526"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Správa zabezpečeného přístupu k prostředkům v paprskových virtuální sítě pro klienty VPN uživatelů
 
@@ -23,7 +23,7 @@ Kroky v tomto článku vám pomůžou vytvořit architekturu v následujícím d
 
 :::image type="content" source="./media/manage-secure-access-resources-spoke-p2s/diagram.png" alt-text="Diagram: zabezpečený virtuální rozbočovač" :::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [Prerequisites](../../includes/virtual-wan-before-include.md)]
 
@@ -147,4 +147,4 @@ Ověřte nastavení zabezpečeného centra.
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o virtuální síti WAN najdete v [nejčastějších dotazech k virtuální síti WAN](virtual-wan-faq.md).
-* Další informace o Azure Firewall najdete v části [Nejčastější dotazy k Azure firewall](../firewall/firewall-faq.md).
+* Další informace o Azure Firewall najdete v části [Nejčastější dotazy k Azure firewall](../firewall/firewall-faq.yml).

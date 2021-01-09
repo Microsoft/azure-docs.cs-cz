@@ -8,27 +8,25 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6fc70d92d08432de2fed99783d774d73463408ce
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ba62bf6b926ded5f3d976f096cee44c7341b4e50
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532101"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052965"
 ---
 Vícekanálový protokol SMB pro sdílené složky Azure je teď dostupný jenom v následujících oblastech:
 
-- Austrálie – východ
-- Brazil South
-- Střední Kanada
-- Kanada – východ
-- Indie – střed
-- Francie – střed
-- Německo – středozápad
-- Japan East
-- USA – středosever
-- Středojižní USA
-- Spojené arabské emiráty sever
-- Spojené království – jih
-- Spojené království – západ
-- USA – středozápad
-- Západní Indie
+| Zeměpisná oblast | Oblast Azure |
+|-------------|-------------------|
+| Austrálie | Austrálie – východ |
+| Brazílie | Brazil South |
+| Kanada | Kanada – střed, Kanada – východ |
+| Francie | Francie – střed |
+| Německo | Německo – středozápad |
+| Indie | Střed Indie Západní Indie |
+| Japonsko | Japonsko – východ, Japonsko – západ |
+| Jižní Korea | Korea – střed, Korea – západ |
+| Spojené arabské emiráty | Spojené arabské emiráty sever |
+| Spojené království | Velká Británie – jih Velká Británie – západ |
+| USA | Střed USA – sever, Střed USA – jih Středozápadní USA |

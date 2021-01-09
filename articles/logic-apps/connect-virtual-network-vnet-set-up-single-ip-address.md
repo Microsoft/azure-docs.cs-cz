@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066386"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049707"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Nastavte jednu IP adresu pro jedno nebo více prostředí integrační služby v Azure Logic Apps
 
@@ -41,7 +41,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
    * Přejde na privátní IP adresu pro instanci brány firewall jako adresu dalšího segmentu směrování.
 
-     Tuto IP adresu najdete tak, že v nabídce brány firewall vyberete **Přehled**a v části **privátní IP adresa**vyhledáte adresu, například:
+     Tuto IP adresu najdete tak, že v nabídce brány firewall vyberete **Přehled** a v části **privátní IP adresa** vyhledáte adresu, například:
 
      ![Najít soukromou IP adresu brány firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
 
@@ -61,7 +61,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
 ## <a name="set-up-network-rule"></a>Nastavit síťové pravidlo
 
-1. V Azure Portal vyhledejte a vyberte bránu firewall. V nabídce brána firewall v části **Nastavení**vyberte **pravidla**. V podokně pravidla vyberte **kolekce pravidel sítě**  >  **přidat kolekci pravidel sítě**.
+1. V Azure Portal vyhledejte a vyberte bránu firewall. V nabídce brána firewall v části **Nastavení** vyberte **pravidla**. V podokně pravidla vyberte **kolekce pravidel sítě**  >  **přidat kolekci pravidel sítě**.
 
    ![Přidat kolekci pravidel sítě do brány firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
@@ -76,7 +76,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Název** | <*Network-Rule-Collection-Name*> | Název kolekce pravidel sítě |
-   | **Priorita** | <*úroveň priority*> | Pořadí priority, které se má použít pro spuštění kolekce pravidel. Další informace najdete v tématu [co jsou některé Azure firewall koncepty](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
+   | **Priorita** | <*úroveň priority*> | Pořadí priority, které se má použít pro spuštění kolekce pravidel. Další informace najdete v tématu [co jsou některé Azure firewall koncepty](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)? |
    | **Akce** | **Povolit** | Typ akce, která se má provést pro toto pravidlo |
    |||
 
@@ -95,7 +95,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
    * [Konfigurace pravidla sítě](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Logika zpracování pravidel Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Nejčastější dotazy ke službě Azure Firewall](../firewall/firewall-faq.md)
+   * [Nejčastější dotazy ke službě Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: AZ Network firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
