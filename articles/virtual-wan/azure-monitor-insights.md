@@ -7,21 +7,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448619"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050880"
 ---
-# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights pro virtuální síť WAN (Preview)
+# <a name="azure-monitor-insights-for-virtual-wan"></a>Azure Monitor Insights pro virtuální síť WAN
 
 [Azure monitor Insights](../azure-monitor/insights/network-insights-overview.md) pro Azure Virtual WAN poskytuje uživatelům a operátorům možnost Zobrazit stav a stav virtuální sítě WAN, který je k dispozici prostřednictvím automatického zjišťování topologická mapa. Překrytí stavu prostředku a stavu na mapě vám umožní zobrazit snímek celkového stavu virtuální sítě WAN. Prostředky na mapě můžete procházet pomocí přístupu jedním kliknutím na stránky Konfigurace prostředků na portálu Virtual WAN.
 
 Metriky na úrovni prostředků virtuální sítě WAN se shromažďují a prezentují prostřednictvím předem zabaleného sešitu metrik virtuální sítě WAN. Sešit zobrazuje metriky na úrovních sítě WAN, hub, Gateway a Connection. Tento článek vás provede kroky k použití služby Azure Monitor Insights pro virtuální síť WAN k zobrazení vaší virtuální sítě WAN a metriky na jednom místě.
 
 > [!NOTE]
-> V tuto chvíli se zavádí možnost nabídky **Insights** na virtuálním portálu sítě WAN. Při zavádění této nabídky můžete získat přístup k sešitu s topologií a metrikami virtuální sítě WAN pomocí Azure Monitor pro sítě. Další informace najdete v tématu [Azure monitor pro sítě](../azure-monitor/insights/network-insights-overview.md). 
+> Možnost nabídky **přehledů** se nachází na portálu Virtual WAN v části **sledování**. K síti s topologií a metrikami virtuální sítě WAN můžete přistupovat také pomocí Azure Monitor pro sítě. Další informace najdete v tématu [Azure monitor pro sítě](../azure-monitor/insights/network-insights-overview.md). 
 >
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -45,7 +45,7 @@ Stav a stav prostředku jsou barevně odlišené a překrývají se na ikonách 
 
 **Obrázek 2: zobrazení Insights**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledů" lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Zobrazení závislostí
 
@@ -53,7 +53,7 @@ Zobrazení **závislostí** pro virtuální síť WAN vám pomůže vizualizovat
 
 **Obrázek 3: zobrazení závislosti VWAN**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Snímek obrazovky, který zobrazuje zobrazení závislostí." lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 Mapa zobrazení **závislostí** zobrazuje následující prostředky jako připojený graf:
 
@@ -69,13 +69,13 @@ Mapa závislostí umožňuje snadnou navigaci na nastavení konfigurace každéh
 
 **Obrázek 4: přechod k informacím specifickým pro prostředky**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Snímek obrazovky, který ukazuje, jak přejít na informace specifické pro prostředky.":::
 
 Panel hledání a filtrování v zobrazení **závislostí** poskytuje snadný způsob, jak hledat v grafu. Různé filtry poskytují podporu k zúžení vyhledávání na určitou cestu a stav.
 
 **Obrázek 5: hledání a filtrování**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Snímek obrazovky, který zobrazuje panel hledání a filtrování." lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Podrobné metriky
 
@@ -83,7 +83,7 @@ Můžete vybrat **Zobrazit podrobné metriky** a získat přístup k podrobnoste
 
 **Obrázek 6: podrobný řídicí panel metrik**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Snímek obrazovky, který zobrazuje podrobný řídicí panel metriky." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

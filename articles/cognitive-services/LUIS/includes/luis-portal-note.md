@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
-ms.date: 12/16/2020
-ms.openlocfilehash: ff16d10ea4fc331588735ded75cb68d57bed93e3
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 01/08/2021
+ms.openlocfilehash: e805725be3750639ab8560c09a52f9e62c8e8ddb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97812751"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052972"
 ---
 > [!NOTE]
-> Od čtvrtého ledna se budou regionální portály (au.luis.ai a eu.luis.ai) konsolidovat do jednoho portálu a adresy URL. Pokud jste používali některý z těchto portálů, budete automaticky přesměrováni na [Luis.AI](https://luis.ai/). Budete pokračovat v používání stejných regionálních prostředků, které jste vytvořili, a vaše data budou nadále ukládána a zpracována ve stejné oblasti jako váš prostředek.
+> Od ledna 18 se regionální portály (au.luis.ai a eu.luis.ai) konsolidují do jediného portálu a adresy URL. Pokud jste používali některý z těchto portálů, budete automaticky přesměrováni na [Luis.AI](https://luis.ai/). Budete pokračovat v používání stejných regionálních prostředků, které jste vytvořili, a vaše data budou nadále ukládána a zpracována ve stejné oblasti jako váš prostředek.

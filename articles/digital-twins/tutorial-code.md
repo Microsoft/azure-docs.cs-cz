@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 22600f6519a44e71ae5c4b59b0165401b54e55fd
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: fd958c09a14334d8230e52413c590febb2148851
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964537"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048945"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -57,9 +57,9 @@ Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *pr
 
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 
-V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. Pomocí odkazů níže můžete přejít k balíčkům v NuGet, kde můžete najít příkazy konzoly (včetně rozhraní .NET CLI) a přidat je do projektu.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Přidejte nejnovější verzi.
-* [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure. Přidat verzi 1.2.2
+V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. Pomocí níže uvedených odkazů můžete přejít k balíčkům v NuGet, kde můžete najít příkazy konzoly (včetně rozhraní .NET CLI) a přidat do projektu nejnovější verzi.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+* [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 ## <a name="get-started-with-project-code"></a>Začínáme s kódem projektu
 
@@ -73,29 +73,19 @@ V této části začnete psát kód pro nový projekt aplikace, abyste mohli pra
 
 K dispozici je také část zobrazující kompletní kód na konci tohoto kurzu. Tuto možnost můžete použít jako referenci ke kontrole vašeho programu.
 
-Začněte tím, že otevřete soubor *program.cs* v editoru kódu. Zobrazí se minimální šablona kódu, která vypadá nějak takto:
+Začněte tím, že otevřete soubor *program.cs* v editoru kódu. Zobrazí se minimální šablona kódu, která vypadá přibližně takto:
 
-```csharp
-using System;
-
-namespace DigitalTwinsCodeTutorial
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
-```
+:::row:::
+    :::column:::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="Fragment kódu vzorku. Existuje jeden příkaz using System;, obor názvů s názvem DigitalTwinsCodeTutorial; Třída v oboru názvů s názvem program; a metoda Main ve třídě s standardním podpisem &quot;static void Main (String [] args)&quot;. Metoda Main obsahuje příkaz Hello World Print." lightbox="media/tutorial-code/starter-template.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 Nejprve přidejte `using` do horní části kódu některé řádky, které budou vyžádané v nezbytných závislostech.
 
-```csharp
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Azure_Digital_Twins_dependencies":::
 
 Dále do tohoto souboru přidáte kód, který vyplní některé funkce. 
 
@@ -107,14 +97,9 @@ Aby bylo možné ověřit, potřebujete *název hostitele* instance digitálníh
 
 Do *program.cs* vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele* instance digitálního vlákna Azure.
 
-```csharp
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
-var credential = new DefaultAzureCredential();
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-Console.WriteLine($"Service client created – ready to go");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
-Uložte soubor. 
+Soubor uložte. 
 
 V příkazovém okně spusťte kód pomocí tohoto příkazu: 
 
@@ -134,25 +119,7 @@ Prvním krokem při vytváření řešení digitálních vláken Azure je defino
 
 V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel.jsv*. Vložte do následujícího textu souboru: 
 
-```json
-{
-  "@id": "dtmi:example:SampleModel;1",
-  "@type": "Interface",
-  "displayName": "SampleModel",
-  "contents": [
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    },
-    {
-      "@type": "Property",
-      "name": "data",
-      "schema": "string"
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
 > [!TIP]
 > Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
@@ -164,18 +131,11 @@ Dále přidejte další kód do *program.cs* , abyste nahráli model, který jst
 
 Nejprve přidejte `using` do horní části souboru několik příkazů:
 
-```csharp
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_dependencies":::
 
 Dále připravte na použití asynchronních metod v sadě SDK služby C# tak, že změníte `Main` signaturu metody tak, aby povolovala asynchronní spuštění. 
 
-```csharp
-static async Task Main(string[] args)
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Async_signature":::
 
 > [!NOTE]
 > Použití `async` není bezpodmínečně nutné, protože sada SDK také poskytuje synchronní verze všech volání. V tomto kurzu se používají postupy `async` .
@@ -184,15 +144,7 @@ Další součástí je první bit kódu, který komunikuje se službou Azure Dig
 
 Vložte následující kód v rámci autorizačního kódu, který jste přidali dříve.
 
-```csharp
-Console.WriteLine();
-Console.WriteLine($"Upload a model");
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-// Upload the model to the service
-await client.CreateModelsAsync(typeList);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
 
 V příkazovém okně spusťte program s tímto příkazem: 
 
@@ -203,15 +155,7 @@ dotnet run
 
 Chcete-li přidat příkaz Print se zobrazením všech modelů, které byly úspěšně nahrány do instance, přidejte po předchozím oddílu následující kód:
 
-```csharp
-// Read a list of models back from the service
-Console.WriteLine("Models uploaded to the instance:");
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
-{
-    Console.WriteLine($"{md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Print_model":::
 
 **Předtím, než program znovu spustíte pro otestování tohoto nového kódu**, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže pokud se pokusíte znovu nahrát stejný model, program by měl vyvolat výjimku.
 
@@ -229,13 +173,7 @@ V další části se dozvíte o výjimkách, jako jsou tyto výjimky a jak je zp
 
 Chcete-li zabránit selhání programu, můžete přidat kód výjimky kolem kódu nahrávání modelu. Zabalte existující volání klienta `await client.CreateModelsAsync(typeList)` v obslužné rutině try/catch, například takto:
 
-```csharp
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_try_catch":::
 
 Když teď spustíte program `dotnet run` ve vašem příkazovém okně, uvidíte, že se vám vrátí kód chyby. Výstup kódu vytváření modelů zobrazuje tuto chybu:
 
@@ -249,23 +187,7 @@ Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytv�
 
 Na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
 
-```csharp
-// Initialize twin data
-BasicDigitalTwin twinData = new BasicDigitalTwin();
-twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
-twinData.Contents.Add("data", $"Hello World!");
-
-string prefix="sampleTwin-";
-for(int i=0; i<3; i++) {
-    try {
-        twinData.Id = $"{prefix}{i}";
-        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
-        Console.WriteLine($"Created twin: {prefix}{i}");
-    } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Initialize_twins":::
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte tiskové zprávy, které byly vytvořeny z *sampleTwin-0*, *sampleTwin-1* a *sampleTwin-2* . 
 
@@ -279,34 +201,11 @@ V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými pod
 
 Přidejte do třídy **novou statickou metodu** `Program` pod `Main` metodou (kód má nyní dvě metody):
 
-```csharp
-public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = targetId,
-        Name = "contains"
-    };
-
-    try
-    {
-        string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
-        Console.WriteLine("Created relationship successfully");
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Create_relationship":::
 
 Dále přidejte následující kód na konec `Main` metody, pro volání `CreateRelationship` metody a použijte kód, který jste právě napsali:
 
-```csharp
-// Connect the twins with relationships
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_create_relationship":::
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu vyhledejte příkazy Print oznamující, že se tyto dvě relace úspěšně vytvořily.
 
@@ -318,32 +217,15 @@ Další kód, který přidáte, vám umožní zobrazit seznam relací, které js
 
 Do třídy přidejte následující **novou metodu** `Program` :
 
-```csharp
-public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-{
-    try {
-        AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-        Console.WriteLine($"Twin {srcId} is connected to:");
-        await foreach (BasicRelationship rel in results)
-        {
-            Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
-        }
-    } catch (RequestFailedException rex) {
-        Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="List_relationships":::
 
 Pak přidejte následující kód na konec `Main` metody pro volání `ListRelationships` kódu:
 
-```csharp
-//List the relationships
-await ListRelationships(client, "sampleTwin-0");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_list_relationships":::
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Měl by se zobrazit seznam všech relací, které jste vytvořili v příkazu OUTPUT, který vypadá takto:
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="Výstup programu zobrazující zprávu s názvem &quot;zdvojená sampleTwin-0&quot; je připojená k: obsahuje->sampleTwin-1,-Contains->sampleTwin-2":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="Výstup programu zobrazující zprávu s názvem &quot;zdvojená sampleTwin-0&quot; je připojená k: obsahuje->sampleTwin-1,-Contains->sampleTwin-2" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>Dotazování na digitální vlákna
 
@@ -353,23 +235,11 @@ Poslední část kódu, který se má přidat v tomto kurzu, spustí dotaz na in
 
 Přidejte tento `using` příkaz, který umožňuje použití `JsonSerializer` třídy k prezentaci informací o digitálním typu.
 
-```csharp
-using System.Text.Json;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_dependencies":::
 
 Pak na konec metody přidejte následující kód `Main` :
 
-```csharp
-// Run a query for all twins   
-string query = "SELECT * FROM digitaltwins";
-AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-
-await foreach (BasicDigitalTwin twin in result)
-{
-    Console.WriteLine(JsonSerializer.Serialize(twin));
-    Console.WriteLine("---------------");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_twins":::
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výstupu by se měly zobrazit všechny digitální vlákna v této instanci.
 
@@ -377,120 +247,8 @@ V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výst
 
 V tomto okamžiku v tomto kurzu máte úplnou klientskou aplikaci, která umožňuje provádět základní akce proti digitálním vazbám Azure. Pro referenci je úplný kód programu v *program.cs* uveden níže:
 
-```csharp
-using System;
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-using System.Text.Json;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
-namespace minimal
-{
-    class Program
-    {
-        static async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
-            
-            var credential = new DefaultAzureCredential();
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-            Console.WriteLine($"Service client created – ready to go");
-
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            var typeList = new List<string>();
-            string dtdl = File.ReadAllText("SampleModel.json");
-            typeList.Add(dtdl);
-
-            // Upload the model to the service
-            try {
-                await client.CreateModelsAsync(typeList);
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-            }
-            // Read a list of models back from the service
-            Console.WriteLine("Models uploaded to the instance:");
-            AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-            await foreach (DigitalTwinsModelData md in modelDataList)
-            {
-                Console.WriteLine($"{md.Id}");
-            }
-
-            // Initialize twin data
-            BasicDigitalTwin twinData = new BasicDigitalTwin();
-            twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
-            twinData.Contents.Add("data", $"Hello World!");
-            
-            string prefix="sampleTwin-";
-            for(int i=0; i<3; i++) {
-                try {
-                    twinData.Id = $"{prefix}{i}";
-                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
-                    Console.WriteLine($"Created twin: {prefix}{i}");
-                } catch(RequestFailedException rex) {
-                    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-                }
-            }
-
-            // Connect the twins with relationships
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-
-            //List the relationships
-            await ListRelationships(client, "sampleTwin-0");
-
-            // Run a query for all twins   
-            string query = "SELECT * FROM digitaltwins";
-            AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-            
-            await foreach (BasicDigitalTwin twin in result)
-            {
-                Console.WriteLine(JsonSerializer.Serialize(twin));
-                Console.WriteLine("---------------");
-            }
-        }
-
-        public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-        {
-            var relationship = new BasicRelationship
-            {
-                TargetId = targetId,
-                Name = "contains"
-            };
-        
-            try
-            {
-                string relId = $"{srcId}-contains->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
-                Console.WriteLine("Created relationship successfully");
-            }
-            catch (RequestFailedException rex) {
-                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-            }
-        }
-        
-        public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-        {
-            try {
-                AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-                Console.WriteLine($"Twin {srcId} is connected to:");
-                await foreach (BasicRelationship rel in results)
-                {
-                    Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
-                }
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-            }
-        }
-
-    }
-}
-```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
  
 Instance použitá v tomto kurzu se dá znovu použít v dalším kurzu. [*kurz: Prozkoumejte základy pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pokud máte v úmyslu pokračovat k dalšímu kurzu, můžete ponechat instanci digitálních vláken Azure, kterou jste nastavili tady.

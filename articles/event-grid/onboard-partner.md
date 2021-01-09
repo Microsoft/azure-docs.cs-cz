@@ -3,12 +3,12 @@ title: Připojení jako Azure Event Grid partnera pomocí Azure Portal
 description: Pomocí Azure Portal připojit Azure Event Gridho partnera.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349382"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050948"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Připojení jako Azure Event Grid partner používající Azure Portal
 Tento článek popisuje, jak jsou SaaS poskytovatelé třetích stran, označované také jako vydavatelé událostí nebo partneři, k disEvent Grid, aby mohli publikovat události ze svých služeb a jak jsou tyto události spotřebovány koncovými uživateli.
@@ -44,7 +44,7 @@ K dokončení zbývajících kroků se ujistěte, že máte:
 - [Tenant](../active-directory/develop/quickstart-create-new-tenant.md)Azure.
 
 ## <a name="register-a-partner-topic-type-optional"></a>Registrace typu tématu partnera (volitelné)
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním podokně vyberte **všechny služby** a pak na panelu hledání zadejte **Event Grid registrace partnerů** a vyberte je. 
 1. Na stránce **Event Grid registrace partnerů** vyberte **+ Přidat** na panelu nástrojů. 
 
@@ -112,7 +112,6 @@ K dokončení zbývajících kroků se ujistěte, že máte:
     1. V části **Podrobnosti kanálu** proveďte tyto kroky:
         1. Jako **název kanálu událostí** zadejte název kanálu událostí. 
         1. Zadejte **zdroj**. Podívejte se na [specifikace cloudových událostí 1,0](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) , které vám pomůžou získat představu o vhodné hodnotě pro zdroj. Podívejte se také na [příklad tohoto schématu cloudových událostí](cloud-event-schema.md#sample-event-using-cloudevents-schema).
-        1. Zadejte zdroj (co je to?).
     1. V části **Podrobnosti o cíli** zadejte podrobnosti cílového partnerského tématu, které se vytvoří pro tento kanál událostí. 
         1. Zadejte **ID předplatného** , ve kterém se vytvoří partnerské téma. 
         1. Zadejte **název skupiny prostředků** , ve které se vytvoří prostředek partnerského tématu. 

@@ -3,14 +3,14 @@ title: Azure Automation typy runbooků
 description: Tento článek popisuje typy sad Runbook, které lze použít v Azure Automation a požadavky na určení typu, který se má použít.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733956"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050965"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
@@ -117,7 +117,6 @@ Runbooky Pythonu jsou kompilovány v Pythonu 2 a Python 3. Sady Python 3 Runbook
 * Chcete-li použít knihovny třetích stran, je nutné [importovat balíčky](python-packages.md) do účtu Automation.
 *    Spuštění sady Runbook (verze Preview) pomocí rutiny Start-AutomationRunbook v pracovním postupu PowerShell/PowerShell nefunguje. Chcete-li toto omezení vyřešit, můžete použít rutinu **Start-AzAutomationRunbook** z modulu AZ. Automation Module nebo rutinu **Start-AzureRmAutomationRunbook** z modulu AzureRm. Automation.  
 * Sady Runbook (verze Preview) Python 3 nefungují s prostředím PowerShell.
-* Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 * Azure Automation nepodporuje **Sys. stderr**.
 
 ### <a name="known-issues"></a>Známé problémy

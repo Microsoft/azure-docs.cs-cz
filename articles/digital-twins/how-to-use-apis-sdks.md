@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9119af718131808bce0440934d482a53e39b8ef7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 29c05544b4291eb57215bb733eb3791ad3196b6c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964571"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049792"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -93,62 +93,25 @@ Zde je několik ukázek kódu ilustrující použití sady .NET SDK.
 
 Ověřování proti službě:
 
-```csharp
-// Authenticate against the service and create a client
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credential = new DefaultAzureCredential();
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_basic":::
 
 [!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
-Nahrajte modely modelů a seznamů:
+Nahrát model:
 
-```csharp
-// Upload a model
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-// Read a list of models back from the service
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
-{
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-Vytváření a dotazování na vlákna:
+Modely seznamu:
 
-```csharp
-// Initialize twin metadata
-BasicDigitalTwin twinData = new BasicDigitalTwin();
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
-twinData.Id = $"firstTwin";
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.Contents.Add("data", "Hello World!");
-try {
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("firstTwin", twinData);
-} catch(RequestFailedException rex) {
-    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-}
- 
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
-{
-    // Use JSON deserialization to pretty-print
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
-    // Or use BasicDigitalTwin for convenient property access
-    BasicDigitalTwin btwin = JsonSerializer.Deserialize<BasicDigitalTwin>(twin);
-}
-```
+Vytvořit vlákna:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
+
+Dotazování na vlákna a cyklicky prostřednictvím výsledků:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 Projděte si kurz tohoto ukázkového kódu aplikace a podívejte se na [*kurz: vytvoření klientské aplikace*](tutorial-code.md) pro návod. 
 
@@ -168,103 +131,41 @@ Dostupné pomocné třídy jsou:
 
 Vlákna můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Test.Json` nebo `Newtonsoft.Json` . Pro základní přístup k vytvářené pomocné třídy je tento bit pohodlnější.
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-```
-
 `BasicDigitalTwin`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány na vlákna, prostřednictvím `Dictionary<string, object>` . K vypsání vlastností vlákna můžete použít:
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
 
 ##### <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
 Pomocí `BasicDigitalTwin` třídy můžete připravit data pro vytvoření zdvojené instance:
 
-```csharp
-BasicDigitalTwin twin = new BasicDigitalTwin();
-twin.Metadata = new DigitalTwinMetadata();
-twin.Metadata.ModelId = "dtmi:example:Room;1";
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("Temperature", 25.0);
-twin.Contents = props;
-
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 Výše uvedený kód je ekvivalentní následujícímu "ručnímu" variantě:
 
-```csharp
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:example:Room;1"}
-};
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", 25.0 }
-};
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 ##### <a name="deserialize-a-relationship"></a>Deserializace vztahu
 
 Data relace můžete vždy deserializovat podle zvoleného typu. Pro základní přístup k relaci použijte typ `BasicRelationship` .
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
 `BasicRelationship`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány v relaci, prostřednictvím `IDictionary<string, object>` . K vypsání vlastností můžete použít:
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-foreach (string prop in rel.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
 
 ##### <a name="create-a-relationship"></a>Vytvoření relace
 
 Pomocí `BasicRelationship` třídy můžete také připravit data pro vytváření relací na instance s dvojitou platností:
 
-```csharp
-BasicRelationship rel = new BasicRelationship();
-rel.TargetId = "myTargetTwin";
-rel.Name = "contains"; // a relationship with this name must be defined in the model
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("active", true);
-rel.Properties = props;
-client.CreateOrReplaceRelationshipAsync("mySourceTwin", "rel001", rel);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ##### <a name="create-a-patch-for-twin-update"></a>Vytvoření opravy pro dvojitou aktualizaci
 
 Aktualizace volání pro vlákna a relace používají strukturu [opravy JSON](http://jsonpatch.com/) . Chcete-li vytvořit seznamy operací opravy JSON, můžete použít, `JsonPatchDocument` jak je uvedeno níže.
 
-```csharp
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendAddOp("/Temperature", 25.0);
-updateTwinData.AppendAddOp("/myComponent/Property", "Hello");
-// Un-set a property
-updateTwinData.AppendRemoveOp("/Humidity");
-
-client.UpdateDigitalTwin("myTwin", updateTwinData);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
 ## <a name="general-apisdk-usage-notes"></a>Obecné poznámky k používání rozhraní API/sady SDK
 
@@ -280,9 +181,9 @@ Následující seznam poskytuje další podrobnosti a obecné pokyny pro použí
 * Všechny funkce služeb existují v synchronních a asynchronních verzích.
 * Všechny funkce služby vyvolávají výjimku pro libovolný návratový stav 400 nebo vyšší. Ujistěte se, že zabalíte volání do `try` oddílu a zachytíte alespoň `RequestFailedExceptions` . Další informace o tomto typu výjimky najdete [zde](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet).
 * Většina metod služeb vrací `Response<T>` nebo ( `Task<Response<T>>` pro asynchronní volání), kde `T` je třída návratového objektu pro volání služby. [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet)Třída zapouzdřuje vrácení služby a prezentuje návratové hodnoty ve svém `Value` poli.  
-* Metody služby s stránkovanými výsledky vrátí `Pageable<T>` nebo `AsyncPageable<T>` jako výsledky. Další informace o `Pageable<T>` třídě naleznete [zde](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview). Další informace naleznete `AsyncPageable<T>` [zde](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview).
+* Metody služby s stránkovanými výsledky vrátí `Pageable<T>` nebo `AsyncPageable<T>` jako výsledky. Další informace o `Pageable<T>` třídě naleznete [zde](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet). Další informace naleznete `AsyncPageable<T>` [zde](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet).
 * Můžete iterovat přes stránkované výsledky pomocí `await foreach` smyčky. Další informace o tomto procesu najdete [tady](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8).
-* Základní sada SDK je `Azure.Core` . Referenční informace o infrastruktuře a typech SDK najdete v [dokumentaci k oboru názvů Azure](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) .
+* Základní sada SDK je `Azure.Core` . Referenční informace o infrastruktuře a typech SDK najdete v [dokumentaci k oboru názvů Azure](/dotnet/api/azure?preserve-view=true&view=azure-dotnet) .
 
 Metody služby vracejí objekty silného typu, pokud je to možné. Vzhledem k tomu, že digitální vlákna Azure je založené na modelech, které uživatel nakonfiguroval za běhu (prostřednictvím DTDL modelů odeslaných do služby), mnoho rozhraní API služby převezme a vrátí data ve formátu JSON.
 

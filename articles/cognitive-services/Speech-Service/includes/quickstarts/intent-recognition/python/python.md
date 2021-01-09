@@ -6,14 +6,14 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424814"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052906"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -70,6 +70,12 @@ Vložte tento kód pod `IntentRecognizer` . Ujistěte se, že jste nahradili `"Y
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 Tento příklad používá `add_intents()` funkci k přidání seznamu explicitně definovaných záměrů. Pokud chcete přidat všechny záměry z modelu, použijte `add_all_intents(model)` a předejte model.
+
+> [!NOTE]
+> LanguageUnderstandingModel můžete vytvořit předáním adresy URL koncového bodu do metody FromEndpoint.
+> Sada Speech SDK podporuje pouze koncové body LUIS v 2.0 a koncové body LUIS v 2.0 se vždy řídí jedním z těchto dvou vzorů:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
