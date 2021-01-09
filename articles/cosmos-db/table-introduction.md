@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 01/08/2021
 ms.author: sngun
-ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181233"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045661"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do Azure Cosmos DB: API tabulka
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "96181233"
 [Azure Cosmos DB](introduction.md) poskytuje rozhraní API tabulky pro aplikace napsané pro službu Azure Table Storage, které vyžadují prémiové funkce, jako například:
 
 * [Globální distribuce klíč](distribute-data-globally.md).
-* [Vyhrazená propustnost](partitioning-overview.md) po celém světě.
+* [Vyhrazená propustnost](partitioning-overview.md) po celém světě (při použití zřízené propustnosti).
 * Latence v řádu milisekund na 99. percentilu.
 * Záruka vysoké dostupnosti.
 * Automatické sekundární indexování.
@@ -36,7 +36,7 @@ Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Ta
 ## <a name="table-offerings"></a>Nabídky Table
 Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem na rozhraní API tabulky Azure Cosmos DB následující výhody:
 
-| Funkce | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
+| Příznak | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
 | --- | --- | --- |
 | Latence | Rychlá, bez horních omezení latence. | Latence pro čtení a zápis v řádu milisekund, která se zálohuje <10 MS, pro čtení a zápisy na 99 percentilu v jakémkoli měřítku, kdekoli na světě. |
 | Propustnost | Model variabilní propustnosti. Tabulky mají omezení škálovatelnosti 20 000 operací za sekundu. | Vysoká škálovatelnost s [vyhrazenou rezervovanou propustností na tabulku](request-units.md), podložená smlouvami SLA. Účty nemají žádné horní omezení propustnosti a podporují více než 10 milionů operací za sekundu na tabulku. |
@@ -44,7 +44,7 @@ Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem 
 | Indexování | PartitionKey a RowKey používají pouze primární index. Žádné sekundární indexy. | Automatické a úplné indexování všech vlastností ve výchozím nastavení bez správy indexů. |
 | Dotaz | Při provádění dotazu se používá index pro primární klíč, jinak dochází k prohledávání. | Dotazy mohou ke zrychlení použít výhod automatického indexování vlastností. |
 | Konzistence | Silná v rámci primární oblasti. Nahodilá v rámci sekundární oblasti. | [Pět jasně definovaných úrovní konzistence](consistency-levels.md) pro zajištění dostupnosti, latence, propustnosti a konzistence v závislosti na potřebách vaší aplikace. |
-| Ceny | Optimalizované úložiště. | Optimalizovaná propustnost. |
+| Ceny | Založené na spotřebě. | K dispozici v režimech [na základě spotřeby](serverless.md) i [zřízené kapacity](set-throughput.md) . |
 | Smlouvy SLA | 99,9% až 99,99% dostupnost v závislosti na strategii replikace. | 99,999% dostupnost pro čtení, 99,99% dostupnost zápisu v účtu s jednou oblastí a 99,999% dostupnosti zápisu pro účty ve více oblastech. [Komplexní SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující dostupnost, latenci, propustnost a konzistenci. |
 
 ## <a name="get-started"></a>Začínáme

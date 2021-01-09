@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495014"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044301"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92495014"
 
 Tento článek popisuje postup **Nastavení nové instance digitálního vlákna Azure**, včetně vytvoření instance a nastavení ověřování. Po dokončení tohoto článku budete mít instanci digitálních vláken Azure, která je připravená na zahájení programování.
 
-Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení** ](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. 
+Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. 
 * Pokud chcete zobrazit kroky ručního rozhraní příkazového řádku, které skript spouští na pozadí, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
 * Postup ručního provedení kroků v závislosti na Azure Portal najdete v části verze tohoto článku na portálu: [*Postupy: nastavení instance a ověřování (portál)*](how-to-set-up-instance-portal.md).
 
@@ -33,7 +33,7 @@ Vzorový skript je napsán v prostředí PowerShell. Je součástí [**komplexn�
 
 Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_end_to_end_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
 
-Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1** _.
+Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,9 +54,9 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
 1. Vyberte ikonu Odeslat/stáhnout soubory a zvolte nahrát.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr ikony nahrávání":::
 
-    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
+    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1**_) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
 4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. Níže uvedený příkaz můžete zkopírovat (pokud ho chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku klikněte pravým tlačítkem myši.
 
@@ -70,11 +70,11 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
     * Pro instanci: *ID předplatného* vašeho předplatného Azure, které se má použít.
     * Pro instanci: *umístění* , kam chcete instanci nasadit. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * Pro instanci: název *skupiny prostředků* . Můžete použít existující skupinu prostředků nebo zadat nový název, který chcete vytvořit.
-    * Pro instanci: *název* instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
+    * Pro instanci: *název* instance digitálního vlákna Azure. Pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zadaný název, zobrazí se výzva k výběru jiného názvu.
 
 Tady je ukázka výstupního protokolu ze skriptu:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Okno Cloud Shell zobrazující protokol vstupů a výstupů prostřednictvím spuštění skriptu nasazení" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Pokud se skript úspěšně dokončí, vysloví se konečný výtisk `Deployment completed successfully` . Jinak vyřešte chybovou zprávu a znovu spusťte skript. Přeskočí kroky, které jste už dokončili, a začněte znovu požádat o vstup v místě, kde jste skončili.
 
@@ -104,9 +104,9 @@ Pokud ověření nebylo úspěšné, můžete znovu vytvořit instanci pomocí [
 
 ### <a name="collect-instance-values"></a>Shromáždit hodnoty instance
 
-Vyberte název vaší instance ze [stránky digitálních vláken Azure](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) a otevřete stránku *Přehled* instance. Poznamenejte si jeho *název*, *skupinu prostředků*a *název hostitele*. Později je budete možná potřebovat k identifikaci a připojení k instanci.
+Vyberte název vaší instance ze [stránky digitálních vláken Azure](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) a otevřete stránku *Přehled* instance. Poznamenejte si jeho *název*, *skupinu prostředků* a *název hostitele*. Později je budete možná potřebovat k identifikaci a připojení k instanci.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
 
 ### <a name="verify-user-role-assignment"></a>Ověřit přiřazení role uživatele
 

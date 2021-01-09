@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 8e82f8974b53224b3e471d1628a1ca5819ce2955
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494985"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044471"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Nastavení instance a ověřování digitálních vláken Azure (CLI)
 
@@ -35,12 +35,12 @@ Tato verze tohoto článku prochází tyto kroky ručně, jednu po jedné, pomoc
 ## <a name="create-the-azure-digital-twins-instance"></a>Vytvoření instance digitálních vláken Azure
 
 V této části **vytvoříte novou instanci digitálních vláken Azure** pomocí příkazu Cloud Shell. Budete muset zadat:
-* Skupina prostředků, ve které se má nasadit. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit pomocí tohoto příkazu:
+* Skupina prostředků, do které se instance nasadí. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit pomocí tohoto příkazu:
     ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Oblast pro nasazení. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* Název vaší instance. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
+* Název vaší instance. Pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zadaný název, zobrazí se výzva k výběru jiného názvu.
 
 Pomocí těchto hodnot v následujícím příkazu vytvořte instanci:
 
@@ -54,7 +54,7 @@ Pokud se instance úspěšně vytvořila, výsledek Cloud Shell vypadá nějak t
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure":::
 
-Poznamenejte si název *hostitele*, *název*a *zdroj zdrojové* instance služby Azure Digital revlákens z výstupu. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s instancí digitálních vláken Azure, abyste mohli nastavit ověřování a související prostředky Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
+Poznamenejte si název **hostitele**, **název** a **zdroj zdrojové** instance služby Azure Digital revlákens z výstupu. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s instancí digitálních vláken Azure, abyste mohli nastavit ověřování a související prostředky Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
 
 > [!TIP]
 > Tyto vlastnosti můžete zobrazit spolu se všemi vlastnostmi instance kdykoli spuštěním `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -78,9 +78,9 @@ Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
 >
 > Místo toho přiřaďte roli pomocí *ID objektu* uživatele. Tato situace může nastat pro uživatele na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account). 
 >
-> Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID*uživatele:
+> Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID* uživatele:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Zobrazení stránky uživatele v Azure Portal zvýrazňování identifikátoru GUID v poli ID objektu" lightbox="media/includes/user-id.png":::
 >
 > Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele pro `assignee` parametr uvedený výše.
 

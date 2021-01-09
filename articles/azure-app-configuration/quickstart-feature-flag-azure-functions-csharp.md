@@ -8,16 +8,16 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076160"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046069"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace Azure Functions
 
-V tomto rychlém startu vytvoříte implementaci správy funkcí v aplikaci Azure Functions pomocí Azure App Configuration. Službu konfigurace aplikací použijete k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů. 
+V tomto rychlém startu vytvoříte aplikaci Azure Functions a v ní použijete příznaky funkcí. Pomocí správy funkcí z Azure App Configuration můžete centrálně ukládat všechny příznaky funkcí a řídit jejich stavy.
 
 Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Integrují s konfigurací aplikace prostřednictvím poskytovatele konfigurace .NET.
 
@@ -46,66 +46,113 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet. Ověřte `Microsoft.Extensions.DependencyInjection` , že jste na nejnovějším stabilním sestavení. 
+Tento projekt bude používat [vkládání závislostí v rozhraní .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection). Přidá konfiguraci aplikace Azure jako další zdroj konfigurace, ve kterém jsou uložené vaše příznaky funkcí.
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet.
+   - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) verze 4.1.0 nebo novější
+   - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) verze 2.2.0 nebo novější
+   - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) verze 1.1.0 nebo novější 
 
-
-1. Otevřete *function1.cs*a přidejte obory názvů těchto balíčků.
+2. Přidejte nový soubor *Startup.cs* s následujícím kódem. Definuje třídu s názvem `Startup` , která implementuje `FunctionsStartup` abstraktní třídu. Atribut assembly slouží k zadání názvu typu používaného během Azure Functionsho spuštění.
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. Přidejte `Function1` statický konstruktor níže, abyste mohli spustit poskytovatele konfigurace Azure App. Dále přidejte dva `static` členy, pole s názvem `ServiceProvider` k vytvoření instance singleton `ServiceProvider` a vlastnost uvedenou níže `Function1` `FeatureManager` pro vytvoření instance singleton `IFeatureManager` . Pak se pomocí volání připojte ke konfiguraci aplikace `Function1` `AddAzureAppConfiguration()` . Tento proces načte konfiguraci při spuštění aplikace. Stejná instance konfigurace bude použita pro všechny volání funkcí později. 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. Aktualizujte `Run` metodu pro změnu hodnoty zobrazené zprávy v závislosti na stavu příznaku funkce.
+
+3. Aktualizujte `ConfigureAppConfiguration` metodu a přidejte poskytovatele konfigurace Azure App Provider jako další zdroj konfigurace voláním `AddAzureAppConfiguration()` . 
+
+   `UseFeatureFlags()`Metoda instruuje poskytovatele, aby načetl příznaky funkcí. U všech příznaků funkcí je před opakovanou kontrolou změn použita výchozí doba platnosti mezipaměti 30 sekund. Interval vypršení platnosti lze aktualizovat nastavením `FeatureFlagsOptions.CacheExpirationInterval` vlastnosti předané `UseFeatureFlags` metodě. 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > Pokud nechcete, aby byla do aplikace načtena jiná konfigurace než příznaky funkce, můžete zavolat `Select("_")` pouze k načtení neexistujícího fiktivního klíče "_". Ve výchozím nastavení budou načteny všechny hodnoty konfiguračního klíče v úložišti konfigurace aplikace, pokud `Select` není volána žádná metoda.
+
+4. Aktualizujte `Configure` metodu tak, aby služba Azure App Configuration Services a správce funkcí byly dostupné prostřednictvím injektáže závislostí.
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. Otevřete *function1.cs* a přidejte následující obory názvů.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   Přidejte konstruktor, který slouží k získání instancí `_featureManagerSnapshot` a `IConfigurationRefresherProvider` prostřednictvím injektáže závislosti. Z rozhraní `IConfigurationRefresherProvider` můžete získat instanci `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. Aktualizujte `Run` metodu pro změnu hodnoty zobrazené zprávy v závislosti na stavu příznaku funkce.
+
+   `TryRefreshAsync`Metoda je volána na začátku volání funkce pro aktualizaci příznaků funkcí. Pokud není dosaženo časového intervalu vypršení platnosti mezipaměti, bude to no-op. Pokud dáváte přednost příznakům funkcí, které se `await` mají aktualizovat bez blokování aktuálních volání funkcí, odeberte operátor. V takovém případě se později volání funkcí zobrazí aktualizovaná hodnota.
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**, kde hodnota je přístupový klíč, který jste dříve získali v úložišti konfigurace aplikace v **přístupových klíčích**. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**, kde hodnota je připojovací řetězec, který jste dříve získali v úložišti konfigurace aplikace v části **přístupové klíče**. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,15 +180,16 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
     ![Příznak funkce funkce rychlého startu zakázán](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte úložiště konfigurace aplikace, které jste vytvořili.
 
-1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
+1. Vyberte **správce funkcí** a změňte stav **beta** klíče na **zapnuto**.
 
-1. Vraťte se do příkazového řádku a stisknutím klávesy zrušte běžící proces `Ctrl-C` .  Stisknutím klávesy F5 restartujte aplikaci. 
-
-1. Zkopírujte adresu URL vaší funkce z výstupu Azure Functions runtime pomocí stejného procesu jako v kroku 3. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. Odpověď prohlížeče by se měla změnit tak, aby označovala příznak funkce `Beta` , jak je znázorněno na obrázku níže.
+1. Aktualizujte prohlížeč několikrát. Pokud platnost příznaku funkce v mezipaměti vyprší po 30 sekundách, stránka by se měla změnit tak, aby označovala příznak funkce `Beta` , jak je znázorněno na následujícím obrázku.
  
     ![Příznak funkce funkce rychlého startu povolen](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> Vzorový kód použitý v tomto kurzu se dá stáhnout z [úložiště GitHub pro konfiguraci aplikací Azure](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -149,8 +197,10 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili příznak funkce a použili ho v aplikaci Azure Functions prostřednictvím [poskytovatele konfigurace aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
+V tomto rychlém startu jste vytvořili příznak funkce a použili ho v aplikaci Azure Functions pomocí knihovny [Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement) .
 
-- Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
-- [Správa příznaků funkcí](./manage-feature-flags.md).
+- Další informace o [správě funkcí](./concept-feature-management.md)
+- [Správa příznaků funkcí](./manage-feature-flags.md)
+- [Použití příznaků podmíněné funkce](./howto-feature-filters-aspnet-core.md)
+- [Povolení připraveného zavedení funkcí pro cílové cílové skupiny](./howto-targetingfilter-aspnet-core.md)
 - [Použití dynamické konfigurace v aplikaci Azure Functions](./enable-dynamic-configuration-azure-functions-csharp.md)

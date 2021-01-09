@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534751"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045236"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -36,35 +36,7 @@ Vezměte v úvahu příklad, ve kterém chce nemocnice digitálně reprezentovat
 
 Prvním krokem k řešení je vytvoření modelů, které reprezentují aspekty nemocnice. Místnost pro pacienty v tomto scénáři může být popsána takto:
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > Toto je vzorový text pro soubor. JSON, ve kterém je model definovaný a uložený, aby se nahrál jako součást klientského projektu. REST API volání na druhé straně převezme pole definic modelů, jako je výše (která je namapována na `IEnumerable<string>` rozhraní .NET SDK). Takže pokud chcete tento model použít přímo v REST API, uzavřete ho do závorek.
@@ -86,48 +58,16 @@ Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azu
 
 Až budete připraveni k nahrání modelu, můžete použít následující fragment kódu:
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 Všimněte si, že `CreateModels` Metoda přijímá více souborů v jedné transakci. Tady je ukázka, která ilustruje:
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
 Při nahrávání se služba ověřuje pomocí souborů modelu.
 
 ## <a name="retrieve-models"></a>Načíst modely
@@ -141,18 +81,7 @@ Tady jsou tyto možnosti:
 
 Tady je několik příkladů volání:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 Rozhraní API volá pro načtení modelů všechny návratové `DigitalTwinsModelData` objekty. `DigitalTwinsModelData` obsahuje metadata o modelu uloženém v instanci digitálních vláken Azure, jako je název, DTMI a datum vytvoření modelu. `DigitalTwinsModelData`Objekt také volitelně zahrnuje samotný model. V závislosti na parametrech lze proto použít volání metody načíst buď k načtení metadat (což je užitečné ve scénářích, kde chcete zobrazit seznam dostupných nástrojů, například), nebo celý model.
 
@@ -208,12 +137,7 @@ Jedná se o samostatné funkce, které nejsou navzájem ovlivněny, i když je l
 
 Zde je kód pro vyřazení modelu z provozu:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 Stav vyřazení modelu z provozu je obsažen v `ModelData` záznamech vrácených rozhraními API pro načítání modelů.
 
@@ -244,10 +168,8 @@ I v případě, že model splňuje požadavky pro okamžité odstranění, možn
 6. Odstranit model 
 
 Chcete-li odstranit model, použijte toto volání:
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>Po odstranění: vlákna bez modelů
 

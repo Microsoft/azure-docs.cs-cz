@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fb5f6dbb410a15bf88fccc1ed3f9c3ca0f830c70
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a0751e7e4c90f04cd5e28610e2c62dbec6a7adcf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96007675"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047381"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V pracovních prostorech Azure synapse by se měly používat klíče spravované zákazníky k šifrování neaktivních dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Klíče spravované zákazníkem slouží k řízení šifrování v klidovém umístění dat uložených v pracovních prostorech Azure synapse. Klíče spravované zákazníkem poskytují dvojité šifrování přidáním druhé vrstvy šifrování nad výchozí šifrování pomocí klíčů spravovaných službou. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
 |[V pracovních prostorech Azure synapse by se měla odebrat pravidla brány firewall protokolu IP.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |Odebrání všech pravidel brány firewall protokolu IP zvyšuje zabezpečení tím, že zajistí, že se k pracovnímu prostoru Azure synapse dostanete jenom z privátního koncového bodu. Tato konfigurace Audituje vytváření pravidel brány firewall, která umožňují přístup k veřejné síti v pracovním prostoru. |Audit, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |

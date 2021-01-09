@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dc4ec31a307d559fad84392522e6847aab1e3873
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986913"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046407"
 ---
 |Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[Australian Government ISM PROTECTED](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Tato iniciativa zahrnuje zásady pro nasazování auditu a rozšíření virtuálních počítačů, které řeší podmnožinu australských ovládacích prvků (ISM) pro státní správu zabezpečení informací. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |62 |3.0.0 – Preview |
-|[Srovnávací test zabezpečení Azure](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu doporučení srovnávacích testů zabezpečení Azure. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.0 – Preview |
+|[Srovnávací test zabezpečení Azure v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu doporučení Azure Security benchmark v1. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.1 – Preview |
+|[Azure Security benchmark v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu doporučení Azure Security benchmark v2. V nadcházejících verzích se můžou přidat další zásady. Další informace najdete na adrese [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |181 |1.0.0 – Preview |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |3.0.0 |
 |[Srovnávací test CIS Microsoft Azure Foundations 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |V této iniciativě jsou zásady auditu, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) . |87 |7.1.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP H. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na adrese [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |72 |3.0.1 |

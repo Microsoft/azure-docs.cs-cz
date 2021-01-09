@@ -3,17 +3,17 @@ title: Požadavky na balíček pro vykreslování v Tvůrci mapy Microsoft Azure
 description: Informace o požadavcích na balíček pro vykreslování k převedení souborů návrhu zařízení na mapování dat
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903458"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044777"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
@@ -24,7 +24,7 @@ ms.locfileid: "96903458"
 
 Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je formát nativního souboru pro software Autodesk pro® pro AutoCAD.
 
@@ -36,7 +36,7 @@ Můžete vybrat libovolný software CAD a vykreslit kresby v balíčku pro kresl
 
 Tady jsou některé pojmy a definice, které jsou důležité při čtení tohoto článku.
 
-| Období  | Definice |
+| Označení  | Definice |
 |:-------|:------------|
 | Vrstva | Vrstva DWG AutoCADu.|
 | Level | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
@@ -49,9 +49,9 @@ Tady jsou některé pojmy a definice, které jsou důležité při čtení tohot
 Balíček pro kreslení je archiv zip, který obsahuje následující soubory:
 
 * Soubory DWG ve formátu souborů DWG AutoCADu
-* _manifest.jsv_ souboru pro jedno zařízení.
+* _manifest.jsv_ souboru, který popisuje soubory DWG v balíčku pro kreslení.
 
-Soubory DWG můžete uspořádat jakýmkoli způsobem uvnitř složky, ale soubor manifestu musí být v kořenovém adresáři složky. Složku je nutné zálohovat v jednom souboru archivu s příponou. zip. Následující části podrobně popisují požadavky na soubory DWG, soubor manifestu a obsah těchto souborů.  
+Balíček pro kreslení musí být zip do jediného souboru archivu s příponou. zip. Soubory DWG mohou být v rámci balíčku uspořádány jakýmkoli způsobem, ale soubor manifestu musí být v kořenovém adresáři balíčku zip aktivní. Následující části podrobně popisují požadavky na soubory DWG, soubor manifestu a obsah těchto souborů.
 
 ## <a name="dwg-files-requirements"></a>Požadavky na soubory DWG
 
@@ -60,6 +60,7 @@ Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně 
 * Je nutné definovat vrstvu na _vnějších_ a _jednotkách_ . Volitelně může definovat následující volitelné vrstvy: _zeď_, _dveře_, _UnitLabel_, _zóna_ a _ZoneLabel_.
 * Nesmí obsahovat funkce z více úrovní.
 * Nesmí obsahovat funkce z více zařízení.
+* Musí odkazovat na stejný měřicí systém a jednotku měření jako jiné soubory DWG v balíčku pro vykreslování.
 
 [Služba Azure Maps Conversion](/rest/api/maps/conversion) může extrahovat následující třídy funkcí ze souboru DWG:
 
@@ -78,19 +79,19 @@ Vrstvy DWG musí také splňovat následující kritéria:
 
 * Počátek kreseb pro všechny soubory DWG se musí Zarovnat ke stejné zeměpisné šířce a délce.
 * Každá úroveň musí být ve stejné orientaci jako ostatní úrovně.
-* Mnohoúhelníky s automatickým průnikem jsou automaticky opraveny a [služba Azure Maps Conversion](/rest/api/maps/conversion) vyvolá upozornění. Opravené výsledky byste měli zkontrolovat ručně, protože nemusí odpovídat očekávaným výsledkům.
+* Mnohoúhelníky s automatickým průnikem jsou automaticky opraveny a [služba Azure Maps Conversion](/rest/api/maps/conversion) vyvolá upozornění. Je vhodné ručně zkontrolovat opravené výsledky, protože nemusí odpovídat očekávaným výsledkům.
 
-Všechny entity vrstvy musí být jedním z následujících typů: line, lomená, mnohoúhelník, kruhový oblouk, Circle nebo text (jeden řádek). Všechny ostatní typy entit jsou ignorovány.
+Všechny entity vrstvy musí být jedním z následujících typů: line, lomená, mnohoúhelník, kruhový oblouk, Circle, elipsa (uzavřeno) nebo text (jednořádkový řádek). Všechny ostatní typy entit jsou ignorovány.
 
-Následující tabulka popisuje podporované typy entit a podporované funkce pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, [Služba konverze Azure Maps](/rest/api/maps/conversion) ignoruje tyto entity.  
+Následující tabulka obsahuje přehled podporovaných typů entit a převedených funkcí mapy pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, [Služba konverze Azure Maps](/rest/api/maps/conversion) ignoruje tyto entity.  
 
-| Vrstva | Typy entit | Funkce |
+| Vrstva | Typy entit | Převedené funkce |
 | :----- | :-------------------| :-------
-| [Zpětný](#exterior-layer) | Mnohoúhelník, lomená (uzavřená), kruh | Úrovně
-| [Jednotka](#unit-layer) |  Mnohoúhelník, lomená (uzavřená), kruh | Svislé průniky, jednotky
-| [Zásuvky](#wall-layer)  | Mnohoúhelník, lomená (uzavřená), kruh | Neužívá se. Další informace najdete v tématu [vrstva zdi](#wall-layer).
+| [Zpětný](#exterior-layer) | Mnohoúhelník, lomená (uzavřená), kruh, elipsa (uzavřeno) | Úrovně
+| [Jednotka](#unit-layer) |  Mnohoúhelník, lomená (uzavřená), kruh, elipsa (uzavřeno) | Svislé průniky, jednotka
+| [Zásuvky](#wall-layer)  | Mnohoúhelník, lomená (uzavřená), kruh, elipsa (uzavřeno) | Neužívá se. Další informace najdete v tématu [vrstva zdi](#wall-layer).
 | [Dveře](#door-layer) | Mnohoúhelník, Lomená čára, čára, CircularArc, kruh | Volná
-| [Zóna](#zone-layer) | Mnohoúhelník, lomená (uzavřená), kruh | Zóna
+| [Zóna](#zone-layer) | Mnohoúhelník, lomená (uzavřená), kruh, elipsa (uzavřeno) | Zóna
 | [UnitLabel](#unitlabel-layer) | Text (jednořádkový řádek) | Neužívá se. Tato vrstva může přidat vlastnosti pouze do funkcí jednotek z vrstvy jednotek. Další informace naleznete na [UnitLabel vrstvě](#unitlabel-layer).
 | [ZoneLabel](#zonelabel-layer) | Text (jednořádkový řádek) | Neužívá se. Tato vrstva může do funkcí zón přidávat pouze vlastnosti z ZonesLayer. Další informace naleznete na [ZoneLabel vrstvě](#zonelabel-layer).
 
@@ -102,8 +103,10 @@ Soubor DWG pro každou úroveň musí obsahovat vrstvu pro definování hraničn
 
 Bez ohledu na to, kolik kreseb entit je v vnější vrstvě, bude [Výsledná datová sada](tutorial-creator-indoor-maps.md#create-a-feature-stateset) pro každý soubor DWG obsahovat jenom jednu funkci úrovně. Dále:
 
-* Vnější musí být vykresleny jako mnohoúhelník, lomená (uzavřená) nebo KRUHOVÁ.
-* Vnější lze překrývat, ale jsou rozdálené na jednu geometrii.
+* Vnější musí být vykresleny jako mnohoúhelník, lomená (uzavřená), kolečko nebo elipsa (uzavřeno).
+* Vnějšku se můžou překrývat, ale rozloží se na jednu geometrii.
+* Výsledná funkce úrovně musí být aspoň 4 čtvercové měřiče.
+* Výsledná funkce úrovně nesmí být větší než 400 čtvercových měřičů.
 
 Pokud vrstva obsahuje více překrývajících se čar, jsou lomené řádky rozstupné na funkci s jednou úrovní. Případně, pokud vrstva obsahuje více překrývajících se čar, funkce Výsledná úroveň má více mnohoúhelníkových reprezentací.
 
@@ -111,9 +114,11 @@ Jako vrstvu obrysu v [ukázkovém balíčku kreslení](https://github.com/Azure-
 
 ### <a name="unit-layer"></a>Vrstva jednotek
 
-Soubor DWG pro každou úroveň definuje vrstvu obsahující jednotky. Jednotky jsou naviguje mezery v budově, například pobočky, předsálí, schodiště a výtahy. Vrstva jednotek by měla splňovat následující požadavky:
+Soubor DWG pro každou úroveň definuje vrstvu obsahující jednotky. Jednotky jsou naviguje mezery v budově, například pobočky, předsálí, schodiště a výtahy. Je-li `VerticalPenetrationCategory` definována vlastnost, naviguje jednotky, které jsou rozloženy na více úrovních (například výtahy a schodiště), budou převedeny na funkce vertikálního průniku. Funkce svislého průniku, které se vzájemně překrývají, mají přiřazenou jednu `setid` .
 
-* Jednotky musí být vykresleny jako mnohoúhelník, lomená (uzavřená) nebo KRUHOVÁ.
+Vrstva jednotek by měla splňovat následující požadavky:
+
+* Jednotky musí být vykresleny jako mnohoúhelník, lomená (uzavřená), kolečko nebo elipsa (uzavřeno).
 * Jednotky musí klesnout do hranic vnějšího hraničního zařízení.
 * Jednotky nesmí být částečně překryty.
 * Jednotky nesmí obsahovat žádnou neprotínající geometrii sebe.
@@ -126,7 +131,7 @@ Můžete vidět příklad vrstvy jednotky v [ukázkovém balíčku pro kreslení
 
 Soubor DWG pro každou úroveň může obsahovat vrstvu, která definuje fyzické rozsahy zdí, sloupců a dalších stavebních struktur.
 
-* Zdi musí být vykreslené jako mnohoúhelník, lomená (uzavřená) nebo KRUHOVÁ.
+* Zdi se musí kreslit jako mnohoúhelník, lomená (uzavřená), kruhová nebo elipsa (uzavřená).
 * Vrstva nebo vrstvy zdi by měly obsahovat pouze geometrii, která je interpretována jako sestavování struktury.
 
 V [ukázkovém balíčku kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples)vidíte příklad vrstvy zdí.
@@ -141,9 +146,9 @@ Otevírající se dvířka v datové sadě Azure Maps jsou reprezentována jako 
 
 ### <a name="zone-layer"></a>Vrstva zóny
 
-Soubor DWG pro každou úroveň může obsahovat vrstvu zóny, která definuje fyzické rozsahy zón. Zónou může být vnitřní prázdný prostor nebo zadní loděnice.
+Soubor DWG pro každou úroveň může obsahovat vrstvu zóny, která definuje fyzické rozsahy zón. Zóna je naviguje prostor, který lze pojmenovat a vykreslit. Zóny můžou zahrnovat víc úrovní a seskupí se pomocí vlastnosti zoneSetId.
 
-* Zóny musí být vykresleny jako mnohoúhelník, lomená (uzavřená) nebo KRUHOVÁ.
+* Zóny musí být vykresleny jako mnohoúhelník, lomená (uzavřená) nebo elipsa (uzavřeno).
 * Zóny se můžou překrývat.
 * Zóny můžou náležet do vnějšího hraničního zařízení nebo mimo něj.
 
@@ -153,7 +158,7 @@ V [ukázkovém balíčku kreslení](https://github.com/Azure-Samples/am-creator-
 
 ### <a name="unitlabel-layer"></a>UnitLabel vrstva
 
-Soubor DWG pro každou úroveň může obsahovat UnitLabel vrstvu. Vrstva UnitLabel přidá vlastnost Name na jednotky extrahované z vrstvy jednotky. Jednotky s vlastností name mohou mít další podrobnosti zadané v souboru manifestu.
+Soubor DWG pro každou úroveň může obsahovat UnitLabel vrstvu. Vrstva UnitLabel přidá vlastnost Name na jednotky extrahované z vrstvy jednotky. Jednotky s vlastností name mohou mít více podrobností zadaných v souboru manifestu.
 
 * Popisky jednotek musí být textové entity s jedním řádkem.
 * Štítky jednotek musí být uvnitř hranic jejich jednotky.
@@ -163,7 +168,7 @@ V [ukázkovém balíčku kreslení](https://github.com/Azure-Samples/am-creator-
 
 ### <a name="zonelabel-layer"></a>ZoneLabel vrstva
 
-Soubor DWG pro každou úroveň může obsahovat ZoneLabel vrstvu. Tato vrstva přidá vlastnost Name do zón extrahovaných z vrstvy zóny. Zóny s vlastností name mohou mít další podrobnosti, které jsou uvedeny v souboru manifestu.
+Soubor DWG pro každou úroveň může obsahovat ZoneLabel vrstvu. Tato vrstva přidá vlastnost Name do zón extrahovaných z vrstvy zóny. Zóny s vlastností name mohou mít více podrobností zadaných v souboru manifestu.
 
 * Popisky zón musí být textové entity s jedním řádkem.
 * Popisky zón se musí nacházet uvnitř hranic jejich zóny.
@@ -193,7 +198,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -214,7 +219,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
 |`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -224,7 +229,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `georeference`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`lat`    | numerické |    true |    Desítková reprezentace stupně zeměpisné šířky v počátku kreslení zařízení. Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ).|
 |`lon`    |numerické|    true|    Desítková reprezentace ve stupních délky v počátku kreslení zařízení Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ). |
@@ -232,7 +237,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `dwgLayers`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`exterior`    |pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
 |`unit`|    pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
@@ -246,7 +251,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -260,13 +265,13 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 |`verticalPenetrationDirection`|    řetězec|    false (nepravda)    |Pokud `verticalPenetrationCategory` je definován, Volitelně definujte platný směr cesty. Povolené hodnoty jsou: `lowToHigh` , `highToLow` , a `both` `closed` . Výchozí hodnota je `both`.|
 | `nonPublic` | bool | false (nepravda) | Určuje, zda je jednotka otevřena veřejnému. |
 | `isRoutable` | bool | false (nepravda) | Pokud je tato vlastnost nastavená na `false` , nemůžete přejít na jednotku ani do ní. Výchozí hodnota je `true`. |
-| `isOpenArea` | bool | false (nepravda) | Umožňuje navigaci v agentovi zadat jednotku bez nutnosti otevření připojeného k jednotce. Ve výchozím nastavení je tato hodnota nastavena na hodnotu `true` pro jednotky bez otevřených a `false` pro jednotky s otevřenými. Ručním nastavením na `isOpenArea` `false` hodnotu u jednotky bez jakýchkoli otevřených výsledků se zobrazí upozornění. Důvodem je to, že výsledná jednotka nebude dosažitelná pomocí navigace v agentovi.|
+| `isOpenArea` | bool | false (nepravda) | Umožňuje navigaci v agentovi zadat jednotku bez nutnosti otevření připojeného k jednotce. Ve výchozím nastavení je tato hodnota nastavena na hodnotu `true` pro jednotky bez otevřených a `false` pro jednotky s otevřenými. Ručním nastavením na `isOpenArea` `false` hodnotu u jednotky bez jakýchkoli otevřených výsledků se zobrazí upozornění, protože výsledná jednotka nebude dosažitelná pomocí navigující agent.|
 
 ### `zoneProperties`
 
 `zoneProperties`Objekt obsahuje pole JSON vlastností zóny.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -276,7 +281,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### <a name="sample-drawing-package-manifest"></a>Ukázkový manifest balíčku vykreslování
 
-Následuje ukázkový soubor manifestu ukázkového balíčku pro kreslení. Pokud si chcete stáhnout celý balíček, přečtěte si téma [vzorový balíček pro vykreslování](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+Níže je soubor manifestu ukázkového balíčku pro kreslení. Pokud si chcete stáhnout celý balíček, přečtěte si téma [vzorový balíček pro vykreslování](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 #### <a name="manifest-file"></a>Soubor manifestu
 

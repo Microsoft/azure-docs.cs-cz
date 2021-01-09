@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887531"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043723"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -56,7 +56,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v tématu [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - [Node.js (12.18.4 a vyšší)](https://nodejs.org/en/download/)
@@ -72,7 +72,7 @@ Když chceme místně nasadit, musíme spustit obě aplikace. Když se serverov�
 
 Ukázku můžete otestovat místně tak, že otevřete několik relací prohlížeče s adresou URL volání, abyste mohli simulovat volání více uživatelů.
 
-## <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
+### <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Otevřete instanci PowerShellu, Windows Terminal, Command Prompt nebo ekvivalentní a přejděte do adresáře, do kterého chcete ukázku naklonovat.
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`

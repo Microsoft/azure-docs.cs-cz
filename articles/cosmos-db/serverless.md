@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760354"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044335"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ Při použití Azure Cosmos DB má každá databázová operace náklady vyjád�
 
 ## <a name="use-cases"></a>Případy použití
 
-Azure Cosmos DB nejlépe vyhovuje scénářům, kde očekáváte:
-
-- **Nízký, přerušovaný a nepředvídatelný provoz**: vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují.
-- **Střední výkon**: vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
-
-Z těchto důvodů je Azure Cosmos DB bez serveru zvážit v následujících situacích:
+Azure Cosmos DB nejlépe vyhovuje vašim scénářům, kdy očekáváte **přerušované a nepředvídatelné přenosy** s dlouhou dobou nečinnosti. Vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může se jednat o náklady, Azure Cosmos DB serveru by se mělo zvážit v následujících případech použití:
 
 - Začínáme s Azure Cosmos DB
-- Vývoj, testování a vytváření prototypů nových aplikací
-- Spouštění malých a středně velkých aplikací s přerušovaným provozem, který je obtížné vypovědět
+- Běžící aplikace s
+    - shluky, přerušované provozy, které jsou obtížné vypovědět, nebo
+    - nízká (<10%) poměr přenosů z průměru na špičku
+- Vývoj, testování, vytváření prototypů a spouštění v produkčních nových aplikacích, kde je vzorek provozu neznámý
 - Integrace s výpočetními službami bez serveru, jako je [Azure Functions](../azure-functions/functions-overview.md)
 
 Další informace o tom, jak vybrat nabídku, která nejlépe odpovídá vašemu použití, najdete v článku [jak si vybrat mezi zřízenou propustností a bez serveru](throughput-serverless.md) .
@@ -74,14 +71,7 @@ Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde]
 
 ## <a name="performance"></a><a id="performance"></a>Výkon
 
-Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytovaných prostředků propustnosti:
-
-- **Dostupnost**: až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
-- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
-- Prostupnost **: po** zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
-
-> [!NOTE]
-> Jako jakákoli verze Azure Preview se Azure Cosmos DB bez serveru vylučuje ze smluv o úrovni služeb (SLA). Výše uvedené charakteristiky výkonu se poskytují jako náhled toho, co tato nabídka dodá, když je všeobecně dostupná.
+Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytování prostředků propustnosti. Až bude nabídka bez serveru všeobecně dostupná, latence u kontejnerů bez serveru se pokryje s cílem na úrovni služby (SLO) a 10 milisekundy pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
 
 ## <a name="next-steps"></a>Další kroky
 

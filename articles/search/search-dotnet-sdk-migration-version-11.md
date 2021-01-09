@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532818"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043740"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -30,8 +30,7 @@ Mezi hlavní rozdíly, které si všimnete v nové verzi, patří:
 + Tři klienti místo dvou: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Rozdíly v pojmenovávání napříč celou řadou rozhraní API a malé strukturální rozdíly, které zjednodušují některé úkoly
 
-> [!NOTE]
-> Projděte si [**protokol změn**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) pro vydaný seznam změn v sadě .NET SDK verze 11.
+Kromě tohoto článku si můžete prohlédnout [protokol změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) pro seznam změn v sadě .NET SDK verze 11.
 
 ## <a name="package-and-library-consolidation"></a>Konsolidace balíčků a knihoven
 
@@ -109,6 +108,41 @@ Definice polí jsou zjednodušené: [SearchableField](/dotnet/api/azure.search.d
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) nebo [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1), v závislosti na tom, zda je výsledkem jeden nebo více dokumentů. |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [Příznacích searchOptions jsou](/dotnet/api/azure.search.documents.searchoptions)  |
+
+### <a name="json-serialization"></a>Serializace JSON
+
+Ve výchozím nastavení sada Azure SDK používá [System.Text.Js](/dotnet/api/system.text.json) pro serializaci JSON, spoléhání se na schopnosti těchto rozhraní API zpracovávat transformace textu dříve implementované prostřednictvím nativní třídy [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) , která nemá protějšek v nové knihovně.
+
+Pro serializaci názvů vlastností do camelCase můžete použít [JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) (podobně jako v [tomto příkladu](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)).
+
+Alternativně můžete nastavit [JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy) poskytované v [JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions). Následující System.Text.Jsv příkladu kódu, který je povedený v [souboru Microsoft. Azure. Core. prostor Readme](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) , ukazuje použití CamelCase bez nutnosti atributu každou vlastnost:
+
+```csharp
+// Get the Azure Cognitive Search endpoint and read-only API key.
+Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+AzureKeyCredential credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+
+// Create serializer options with our converter to deserialize geographic points.
+JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+{
+    Converters =
+    {
+        new MicrosoftSpatialGeoJsonConverter()
+    },
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+};
+
+SearchClientOptions clientOptions = new SearchClientOptions
+{
+    Serializer = new JsonObjectSerializer(serializerOptions)
+};
+
+SearchClient client = new SearchClient(endpoint, "mountains", credential, clientOptions);
+Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
+```
+
+Pokud používáte Newtonsoft.Jspro serializaci JSON, můžete předávat globální zásady pojmenování pomocí podobných atributů nebo pomocí vlastností na [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm). Příklad, který je ekvivalentem výše uvedeného, naleznete v tématu [deserializace dokumentů](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) v Newtonsoft.Jsv souboru Readme.
+
 
 <a name="WhatsNew"></a>
 
@@ -202,7 +236,7 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-11"></a>Přerušující změny ve verzi 11
+## <a name="breaking-changes"></a>Změny způsobující chyby
 
 Vzhledem k rozbalení změn knihoven a rozhraní API je upgrade na verzi 11 netriviální a představuje zásadní změnu v tom smyslu, že váš kód již nebude zpětně kompatibilní s verzí 10 a starší. Důkladné přezkoumání rozdílů najdete v [protokolu změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) pro `Azure.Search.Documents` .
 

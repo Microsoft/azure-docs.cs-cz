@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845526"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044760"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -42,11 +42,11 @@ Chcete-li vyzkoušet službu pro rozpoznávání formulářů, použijte nástro
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Vyzkoušet předem připravené modely](https://fott.azurewebsites.net/)
+> [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [Vyzkoušet předem připravené modely](https://fott-preview.azurewebsites.net/)
+> [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Další informace najdete v [referenční dokumentaci k REST API](https://westus
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
 
-[Použijte kontejnery pro rozpoznávání formulářů (Preview)](form-recognizer-container-howto.md) k nasazení funkcí rozhraní API místně. Tento kontejner Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
+[Použijte kontejnery pro rozpoznávání formulářů (Preview)](form-recognizer-container-howto.md) k nasazení funkcí rozhraní API místně. Tento kontejner Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů. 
+
+## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Je služba rozpoznávání formulářů odolná proti chybám?
+
+Yes. Služba rozpoznávání formulářů je ve výchozím nastavení odolná proti zónám.
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu rozpoznávání formulářů jako odolnou proti zóně?
+
+Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. Zóna – odolnost pro prostředky pro rozpoznávání formulářů je ve výchozím nastavení dostupná a spravovaná samotnou službou.
+
 
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 

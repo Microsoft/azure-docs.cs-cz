@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360012"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044284"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Kurz: předpoklady pro vytváření skupin dostupnosti v SQL Server v Azure Virtual Machines
 
@@ -170,7 +170,7 @@ Po vytvoření sítě, podsítí a skupin dostupnosti jste připraveni vytvořit
 
 Řadiče domény vytvoříte a nakonfigurujete tak, že se vrátíte do skupiny prostředků **SQL-ha-RG** .
 
-1. Vyberte **Přidat**. 
+1. Vyberte **Add** (Přidat). 
 2. Zadejte **Windows Server 2016 Datacenter**.
 3. Vyberte **Windows Server 2016 Datacenter**. V **systému Windows Server 2016 Datacenter** ověřte, zda je model nasazení **Správce prostředků** a pak vyberte **vytvořit**. 
 
@@ -235,7 +235,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
     ![Dialogové okno Přidat role](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Vyberte **Další** , dokud se nedostanete do části **potvrzení** . V **případě potřeby zaškrtněte políčko automaticky restartovat cílový server** .
-8. Vyberte **Install** (Nainstalovat).
+8. Vyberte **Nainstalovat**.
 9. Po dokončení instalace funkcí se vraťte na řídicí panel **Správce serveru** .
 10. V levém podokně vyberte možnost Nová **Služba AD DS** .
 11. Na žlutém výstražném panelu vyberte odkaz **Další** .
@@ -251,7 +251,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
     | **Možnosti řadiče domény** |**DSRM Password** = contoso! 0000<br/>**Potvrzení hesla** = contoso! 0000 |
 
 14. Kliknutím na tlačítko **Další** přejdete na ostatní stránky v průvodci. Na stránce **Kontrola předpokladů** ověřte, že se zobrazí následující zpráva: **všechny kontroly požadovaných součástí byly úspěšně úspěšné**. Můžete si prohlédnout jakékoli použitelné varovné zprávy, ale je možné pokračovat v instalaci.
-15. Vyberte **Install** (Nainstalovat). Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
+15. Vyberte **Nainstalovat**. Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Poznamenejte si IP adresu primárního řadiče domény.
 
@@ -539,7 +539,7 @@ Opakujte postup na jiném SQL Serverovém virtuálním počítači.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Ladění prahových hodnot sítě s clustery
 
-Při spuštění uzlů clusteru s podporou převzetí služeb při selhání Windows na virtuálních počítačích Azure s SQL Server AlwaysOn se doporučuje změnit nastavení clusteru na odlehčený stav monitorování.  Díky tomu bude cluster mnohem stabilnější a spolehlivý.  Podrobnosti najdete v tématu [IaaS with SQL AlwaysOn – vyladění prahových hodnot sítě clusteru s podporou převzetí služeb při selhání](/windows-server/troubleshoot/iaas-sql-failover-cluster).
+Při spouštění uzlů clusteru s podporou převzetí služeb při selhání Windows na virtuálních počítačích Azure s SQL Server skupin dostupnosti změňte nastavení clusteru na bezpečnější stav monitorování.  Díky tomu bude cluster mnohem stabilnější a spolehlivý.  Podrobnosti najdete v tématu [IaaS with SQL Server – vyladění prahových hodnot sítě clusteru s podporou převzetí služeb při selhání](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Konfigurace brány firewall na každém virtuálním počítači s SQL Server

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356382"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045950"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
-V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprezentovány pomocí **digitálních vláken** Azure. Digitální vlákna je instance jednoho z vašich vlastních definovaných [modelů](concepts-models.md). Dá se připojit k ostatním digitálním **závislostem prostřednictvím vztahů** , které tvoří **dvojitou graf** : Tento neřízený graf je reprezentace celého prostředí.
+V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprezentovány pomocí **digitálních vláken** Azure. Digitální vlákna je instance jednoho z vašich vlastních definovaných [modelů](concepts-models.md). Dá se připojit k ostatním digitálním **závislostem prostřednictvím vztahů** , které tvoří **dvojitou graf**: Tento neřízený graf je reprezentace celého prostředí.
 
 > [!TIP]
 > "Digitální vlákna Azure" odkazuje na tuto službu Azure jako celek. "Digitální vlákna" nebo pouze "vlákna" odkazují na jednotlivé zdvojené uzly v rámci vaší instance služby.
@@ -25,7 +25,7 @@ V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprez
 
 Než budete moct vytvořit digitální dvojitou hodnotu v instanci digitálních vláken Azure, musíte mít do této služby nahraný *model* . Model popisuje sadu vlastností, zpráv telemetrie a vztahy, které mohou mít konkrétní vlákna, mimo jiné. Typy informací, které jsou definovány v modelu, naleznete v tématu [*Koncepty: vlastní modely*](concepts-models.md).
 
-Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci typu; Jedná se o digitální dvojitou hodnotu. Například po vytvoření modelu *podlahy* můžete vytvořit jednu nebo několik digitálních vláken, která používají tento typ (například dvojitou hodnotu typu *podlah-Floor* s názvem *GroundFloor* , další s názvem *Floor2* atd.). 
+Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci typu; Jedná se o digitální dvojitou hodnotu. Například po vytvoření modelu *podlahy* můžete vytvořit jednu nebo několik digitálních vláken, která používají tento typ (například dvojitou hodnotu typu *podlah-Floor* s názvem *GroundFloor*, další s názvem *Floor2* atd.). 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Relace: graf digitálních vláken
 
@@ -47,7 +47,7 @@ Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins]
 
 Můžete inicializovat vlastnosti vlákna, když je vytvořen, nebo je nastavit později. Chcete-li vytvořit dvojitě spuštěný s inicializovanými vlastnostmi, vytvořte dokument JSON, který bude poskytovat nezbytné inicializační hodnoty.
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložení polí vlastností do "" vlákna "objektu, a to více přímo jako alternativu k použití slovníku. Další informace o pomocné třídě a příkladech jejich použití naleznete v části [*vytvoření digitálního vlákna*](how-to-manage-twin.md#create-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
 
@@ -58,25 +58,7 @@ Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložen
 
 Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu mezi digitálním *typem podlahového* typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>Reprezentace JSON prvků grafu
 
@@ -90,7 +72,7 @@ Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující 
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |
-| `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního *vlákna (v* *souladu* s nevyhovujícími, *Neznámý* ) |
+| `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního *vlákna (v* *souladu* s nevyhovujícími, *Neznámý*) |
 | `{propertyName}` | Hodnota vlastnosti ve formátu JSON ( `string` , typ čísla nebo objekt) |
 | `$relationships` | Adresa URL cesty ke kolekci vztahů Toto pole chybí, pokud digitální vlákna neobsahuje žádné odchozí okraje vztahu. |
 | `$metadata.$model` | Volitelné ID rozhraní modelu, které charakterizuje tuto digitální vlákna |

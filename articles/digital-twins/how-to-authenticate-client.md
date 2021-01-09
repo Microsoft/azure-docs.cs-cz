@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279908"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045916"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -53,10 +53,7 @@ Nejprve zahrňte balíček sady SDK `Azure.DigitalTwins.Core` a `Azure.Identity`
 
 Také budete muset do kódu projektu přidat následující příkazy using:
 
-```csharp
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="Azure_Digital_Twins_dependencies":::
 
 Pak přidejte kód pro získání přihlašovacích údajů pomocí jedné z metod v `Azure.Identity` .
 
@@ -68,23 +65,7 @@ Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat
 
 Zde je ukázka kódu pro přidání do `DefaultAzureCredential` projektu:
 
-```csharp
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new DefaultAzureCredential();
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
 #### <a name="set-up-local-azure-credentials"></a>Nastavit místní přihlašovací údaje Azure
 
@@ -100,45 +81,20 @@ Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat
 
 Ve funkci Azure můžete použít přihlašovací údaje spravované identity podobně jako toto:
 
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="ManagedIdentityCredential":::
 
 ### <a name="interactivebrowsercredential-method"></a>Metoda InteractiveBrowserCredential
 
 Metoda [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování. Místo toho můžete použít `DefaultAzureCredential` interaktivní ověřování v případech.
 
 Pokud chcete použít přihlašovací údaje interaktivního prohlížeče, budete potřebovat **registraci aplikace** , která má oprávnění k rozhraním API pro digitální vlákna Azure. Postup nastavení registrace této aplikace najdete v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md). Po nastavení registrace aplikace budete potřebovat...
-* *ID aplikace (klienta)* registrace aplikace ( [pokyny, které se mají najít](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* *ID adresáře (klienta)* registrace aplikace ( [pokyny k vyhledání](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* *ID aplikace (klienta)* registrace aplikace ([pokyny, které se mají najít](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* *ID adresáře (klienta)* registrace aplikace ([pokyny k vyhledání](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Adresa URL instance digitálního vlákna Azure ([pokyny k vyhledání](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Zde je příklad kódu pro vytvoření ověřeného klienta sady SDK pomocí nástroje `InteractiveBrowserCredential` .
 
-```csharp
-// Your client / app registration ID
-private static string clientId = "<your-client-ID>"; 
-// Your tenant / directory ID
-private static string tenantId = "<your-tenant-ID>";
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new InteractiveBrowserCredential(tenantId, clientId);
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="InteractiveBrowserCredential":::
 
 >[!NOTE]
 > I když můžete umístit ID klienta, ID tenanta a adresu URL instance přímo do kódu, jak je znázorněno výše, je vhodné, aby kód získal tyto hodnoty z konfiguračního souboru nebo proměnné prostředí.

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a995967b65f7031f57cdadff834f47adb61fb580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8b404903ebf6a485efbdb77c325ab1f568232186
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998692"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046379"
 ---
-|Název |Description |Zásady |Verze |
+|Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[\[Verze Preview \] : povolení sady data Protection Suite](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/ASC_DataProtection.json) |Povolte ochranu dat pro SQL Server. Tato iniciativa je automaticky přiřazena pomocí Azure Security Center úrovně Standard. |1 |1.0.0 – Preview |
-|[Povolit monitorování v Azure Security Center](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |Monitorujte všechna dostupná doporučení zabezpečení v Azure Security Center. Toto je výchozí zásada pro Azure Security Center. |140 |19.0.1 |
+|[Povolit monitorování v Azure Security Center](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |Monitorujte všechna dostupná doporučení zabezpečení v Azure Security Center. Toto je výchozí zásada pro Azure Security Center. |177 |22.0.0 |

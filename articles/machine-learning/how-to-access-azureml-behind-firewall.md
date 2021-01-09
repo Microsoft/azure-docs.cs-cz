@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705060"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045508"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro řízení p�
 
 ## <a name="azure-firewall"></a>Brána Azure Firewall
 
-Při použití Azure Firewall použijte __cílovou síťovou adresu (DNAT)__ a vytvořte pravidla překladu adres (NAT) pro příchozí provoz. U odchozích přenosů vytvořte pravidla __sítě__ nebo __aplikace__ . Tyto kolekce pravidel jsou podrobněji popsány v tématu [co je několik Azure firewall konceptů](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts).
+Při použití Azure Firewall použijte __cílovou síťovou adresu (DNAT)__ a vytvořte pravidla překladu adres (NAT) pro příchozí provoz. U odchozích přenosů vytvořte pravidla __sítě__ nebo __aplikace__ . Tyto kolekce pravidel jsou podrobněji popsány v tématu [co je několik Azure firewall konceptů](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts).
 
 ### <a name="inbound-configuration"></a>Příchozí konfigurace
 
@@ -121,7 +121,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **Vyžaduje se pro** | **Veřejný Azure** | **Azure Government** | **Azure (Čína) 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
-| rozhraní API |\*. azureml.ms | \*. ml.azure.us | \*. ml.azure.cn |
+| Rozhraní API |\*. azureml.ms | \*. ml.azure.us | \*. ml.azure.cn |
 | Experimentování, historie, Hyperdrive, označování | \*. experiments.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
 | Správa modelů | \*. modelmanagement.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
 | Kanál | \*. aether.ms | \*. ml.azure.us | \*. ml.azure.cn |

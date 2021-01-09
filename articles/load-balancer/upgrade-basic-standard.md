@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938507"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045389"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgrade veřejné Load Balancer Azure
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](./skus.md#skus).
@@ -111,7 +111,7 @@ Postupujte podle [pokynů](./quickstart-load-balancer-standard-public-powershell
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
 ### <a name="how-long-does-the-upgrade-take"></a>Jak dlouho trvá upgrade?
 
@@ -119,11 +119,7 @@ Dokončení skriptu obvykle trvá přibližně 5-10 minut a může trvat delší
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 
-Ano. Skript Azure PowerShell neupgraduje pouze veřejnou IP adresu, zkopíruje konfiguraci ze základního do Standard Load Balancer, ale také migruje virtuální počítač na pozadí nově vytvořených standardních veřejných Load Balancer. 
-
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
-  
-Můžete odeslat e-mail slbupgradesupport@microsoft.com , otevřít případ podpory s podporou Azure nebo obojí.
+Yes. Skript Azure PowerShell neupgraduje pouze veřejnou IP adresu, zkopíruje konfiguraci ze základního do Standard Load Balancer, ale také migruje virtuální počítač na pozadí nově vytvořených standardních veřejných Load Balancer. 
 
 ## <a name="next-steps"></a>Další kroky
 

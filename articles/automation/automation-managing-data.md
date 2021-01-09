@@ -3,14 +3,14 @@ title: Zabezpečení dat Azure Automation
 description: Tento článek vám pomůže zjistit, jak Azure Automation chrání vaše osobní údaje a zabezpečuje vaše data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87004643"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046035"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -26,11 +26,9 @@ Aby se zajistilo zabezpečení dat při přenosu do Azure Automation, důrazně 
 
 * Uzly DSC
 
-Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se. Od září 2020 začneme vynucovat protokol TLS 1,2 a novější verze protokolu šifrování.
+Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se. Nedoporučujeme explicitně nastavit vašeho agenta tak, aby používal jenom TLS 1,2, pokud to není nezbytně nutné, protože může přerušit funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjišťovat a využívat novější bezpečnější protokoly, jako je třeba TLS 1,3.
 
-Nedoporučujeme explicitně nastavit vašeho agenta tak, aby používal jenom TLS 1,2, pokud to není nezbytně nutné, protože může přerušit funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjišťovat a využívat novější bezpečnější protokoly, jako je třeba TLS 1,3.
-
-Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linux, což je závislost pro roli Hybrid Runbook Worker, najdete v tématu [Přehled agenta Log Analytics-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linux, což je závislost pro roli Hybrid Runbook Worker, najdete v tématu [Přehled agenta Log Analytics-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Doprovodné materiály pro konkrétní platformu
 
@@ -47,11 +45,11 @@ Když prostředek odstraníte z Azure Automation, uchová se po několik dní pr
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
-| Data | Zásady |
+| Data | Zásada |
 |:--- |:--- |
 | Účty |Účet se trvale odebere 30 dní poté, co ho uživatel odstraní. |
 | Prostředky |Asset se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který má Asset. Prostředky zahrnují proměnné, plány, přihlašovací údaje, certifikáty, balíčky Python 2 a připojení. |
-| Uzly DSC |Uzel DSC se trvale odebere 30 dnů po zrušení registrace účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) ve Windows PowerShellu. Uzel je také trvale odebrán 30 dní poté, co uživatel odstraní účet, který obsahuje uzel. |
+| Uzly DSC |Uzel DSC se trvale odebere 30 dnů po zrušení registrace účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) ve Windows PowerShellu. Uzel je také trvale odebrán 30 dní poté, co uživatel odstraní účet, který obsahuje uzel. |
 | Úlohy |Úloha je odstraněna a trvale odebrána 30 dní po provedení změny, například po dokončení úlohy, zastavení nebo pozastavení. |
 | Moduly |Modul se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který obsahuje daný modul. |
 | Konfigurace uzlů/soubory MOF |Stará konfigurace uzlu je trvale odebrána 30 dní po vygenerování nové konfigurace uzlu. |
@@ -80,7 +78,7 @@ Pomocí rutin se nedají načíst hodnoty šifrovaných proměnných nebo polí 
 
 ### <a name="dsc-configurations"></a>Konfigurace DSC
 
-Konfigurace DSC můžete exportovat do souborů skriptu pomocí Azure Portal nebo rutiny [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) ve Windows PowerShellu. Tyto konfigurace můžete importovat a používat v jiném účtu Automation.
+Konfigurace DSC můžete exportovat do souborů skriptu pomocí Azure Portal nebo rutiny [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) ve Windows PowerShellu. Tyto konfigurace můžete importovat a používat v jiném účtu Automation.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geografická replikace v Azure Automation
 

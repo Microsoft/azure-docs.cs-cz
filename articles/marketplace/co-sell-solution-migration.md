@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781126"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043774"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrace řešení společného prodeje z OCP GTM na komerční tržiště
 
@@ -136,7 +136,7 @@ Podrobné pokyny týkající se informací, které je třeba zadat před publiko
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Karta nastavení přehledu nabídky v partnerském centru.":::
 
-3. Některé podrobnosti z prodejce Microsoftu jsme zkopírovali z řešení OCP GTM. Dokončete zbývající požadované informace na kartě **společný prodej s Microsoftem** , abyste mohli nabízet svůj nabízený prodej. Až budete hotovi, vyberte **zkontrolovat a publikovat**.
+3. Některé podrobnosti z prodejce Microsoftu jsme zkopírovali z řešení OCP GTM. Dokončete zbývající požadované informace na kartě **společný prodej s Microsoftem** , abyste mohli nabízet svůj nabízený prodej. Až budete hotovi, vyberte **zkontrolovat a publikovat**. Další informace najdete v tématu [odeslání materiálů společného prodeje do partnerského centra](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Karta spoluprodejní nabídka v partnerském centru.":::
 
@@ -154,4 +154,6 @@ Podrobné pokyny týkající se informací, které je třeba zadat před publiko
 ## <a name="next-steps"></a>Další kroky
 
 - [Prodej prostřednictvím partnerů CSP](cloud-solution-providers.md)
+- [Jak odeslat materiály pro spoluprodej v partnerském centru](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - Zobrazit tyto [Nejčastější dotazy](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)
+
