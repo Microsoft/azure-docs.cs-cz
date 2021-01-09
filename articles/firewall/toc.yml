@@ -110,7 +110,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Tvorba šablon
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Plány Azure do budoucna
