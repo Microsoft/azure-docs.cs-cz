@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397667"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058646"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway konfigurace front-endové IP adresy
 
@@ -25,7 +25,7 @@ Application Gateway V2 v současné době nepodporuje pouze režim privátních 
 * Privátní IP adresa a veřejná IP adresa
 * Jenom veřejná IP adresa
 
-Další informace najdete v článku [Nejčastější dotazy k Application Gateway](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
+Další informace najdete v článku [Nejčastější dotazy k Application Gateway](application-gateway-faq.yml#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
 
 
 Veřejná IP adresa není nutná pro interní koncový bod, který není vystavený pro Internet. To se říká jako koncový bod *interního nástroje pro vyrovnávání zatížení* (interního nástroje) nebo privátní IP adresa front-endu. Služba Application Gateway interního nástroje je užitečná pro interní obchodní aplikace, které nejsou přístupné pro Internet. Je to také užitečné pro služby a vrstvy v rámci hranice zabezpečení, které nejsou přístupné z Internetu, ale vyžadují distribuci zatížení kruhového dotazování, vytrvalost relace nebo ukončení protokolu TLS.
@@ -36,7 +36,7 @@ Podporovaná je jenom jedna veřejná IP adresa nebo jedna privátní IP adresa.
 
 - U privátních IP adres můžete zadat privátní IP adresu z podsítě, ve které je Aplikační brána vytvořená. Pokud nezadáte žádnou hodnotu, z podsítě se automaticky vybere Libovolná IP adresa. Vybraný typ IP adresy (static nebo Dynamic) nelze později změnit. Další informace najdete v tématu [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení](./application-gateway-ilb-arm.md).
 
-Front-end IP adresa je přidružená k *naslouchacího procesu* , který kontroluje příchozí požadavky na front-endové IP adresu.
+Front-end IP adresa je přidružená k *naslouchacího procesu*, který kontroluje příchozí požadavky na front-endové IP adresu.
 
 ## <a name="next-steps"></a>Další kroky
 

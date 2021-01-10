@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení externího přístupu k prostředkům v Azure Active Directory
+title: Zabezpečení externí spolupráce v Azure Active Directory
 description: Příručka pro architekty a správce IT na zabezpečení externího přístupu k interním prostředkům
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743898"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059275"
 ---
-# <a name="securing-external-access-to-resources"></a>Zabezpečení externího přístupu k prostředkům
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Zabezpečení externí spolupráce v Azure Active Directory a Microsoft 365
 
 Zabezpečená spolupráce s externími partnery zajišťuje, aby měli dopraví další externí partneři odpovídající přístup k interním prostředkům po správnou dobu. Prostřednictvím přístupu pomocí zásad správného řízení holistický můžete snížit rizika zabezpečení, splnit cíle dodržování předpisů a zajistit, že víte, kdo má přístup.
 
@@ -43,7 +43,7 @@ Tato sada dokumentů je navržená tak, aby vám umožnila přejít ze služby a
 Další informace najdete v následujících článcích o zabezpečení externího přístupu k prostředkům. Doporučujeme, abyste provedli akce v uvedeném pořadí.
 
 
-1. [Určení požadovaného stav zabezpečení pro externí přístup](1-secure-access-posture.md)
+1. [Určení stav zabezpečení pro externí přístup](1-secure-access-posture.md)
 
 2. [Zjistit aktuální stav](2-secure-access-current-state.md)
 

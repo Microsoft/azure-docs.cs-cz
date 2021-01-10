@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979100"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059564"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST
 
@@ -42,7 +42,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
 
@@ -170,10 +170,17 @@ Výstupní [Asset](/rest/api/media/assets) ukládá výsledek vaší úlohy kód
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
+
+> [!NOTE]
+> Nezapomeňte nahradit účet úložiště a názvy kontejnerů buď pomocí těch ze souboru prostředí, nebo zadejte vlastní.
+>
+> Po dokončení kroků popsaných ve zbývající části tohoto článku se ujistěte, že v textu žádosti zadáte platné parametry.
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
@@ -355,8 +362,9 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
     K získání názvu hostitele můžete použít následující operaci GET:
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    a ujistěte se, že jste nastavili `resourceGroupName` `accountName` parametry a tak, aby odpovídaly souboru prostředí. 
     
 3. Cesta, kterou jste získali v předchozí části (Seznam cest).  
 
@@ -382,7 +390,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně platí, že byste měli vyčistit všechno kromě objektů, které plánujete znovu použít (obvykle budete znovu používat **transformace**a budete uchovávat **Lokátory streamování**atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
+Obecně platí, že byste měli vyčistit všechno kromě objektů, které plánujete znovu použít (obvykle budete znovu používat **transformace** a budete uchovávat **Lokátory streamování** atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
 
 Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci „Odstranit…“.
 

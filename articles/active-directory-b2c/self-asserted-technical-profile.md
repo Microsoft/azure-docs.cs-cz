@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509696"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059054"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -208,7 +208,7 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 | nastavení. showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo `false` |
 | nastavení. showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo `false` |
 | nastavení. showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo `false` |
-| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
+| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterLabel` (výchozí) zobrazí odkaz přímo po popisku nebo po poli zadání hesla, když není k dispozici popisek, zobrazuje odkaz  `AfterInput` za polem zadání hesla, `AfterButtons` zobrazuje odkaz v dolní části formuláře za tlačítky nebo `None` odebere odkaz na Zapomenuté heslo.|
 | nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) . Možné hodnoty: `true` , nebo `false` (výchozí). |
 | nastavení. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Ne| Zlepšuje činnost koncového uživatele čekáním, až uživatel přestane psát, a pak hodnotu ověří. Výchozí hodnota je 2000 milisekund. |
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |

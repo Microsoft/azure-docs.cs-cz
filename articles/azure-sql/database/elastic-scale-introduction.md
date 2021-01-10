@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f00b2c1a8a8264267aa8ae68d80890adeb642ea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786747"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059123"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -23,7 +23,7 @@ Pomocí nástrojů **elastic Database** můžete snadno škálovat databáze v A
 
 * [Elastic Database Klientská knihovna](elastic-database-client-library.md): Klientská knihovna je funkce, která umožňuje vytvářet a udržovat databáze horizontálně dělené.  Přečtěte si téma Začínáme [s nástroji pro elastic Database](elastic-scale-get-started.md).
 * [Elastic Database Nástroj pro dělení a slučování](elastic-scale-overview-split-and-merge.md): přesouvá data mezi databázemi horizontálně dělené. Tento nástroj je užitečný pro přesun dat z víceklientské databáze do databáze s jedním tenanta (nebo naopak). Viz [kurz k nástroji elastické databáze Split-Merge](elastic-scale-configure-deploy-split-and-merge.md).
-* [Úlohy elastické databáze](elastic-jobs-overview.md): pomocí úloh můžete spravovat velký počet databází v Azure SQL Database. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
+* [Úlohy elastické databáze](elastic-jobs-overview.md) (Preview): pomocí úloh můžete spravovat velký počet databází v Azure SQL Database. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
 * [Elastic Database dotaz](elastic-query-overview.md) (Preview): umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází. To umožňuje připojení k nástrojům pro vytváření sestav, jako je Excel, Power BI, Tableau atd.
 * [Elastické transakce](elastic-transactions-overview.md): Tato funkce umožňuje spouštět transakce, které přesahují několik databází. Transakce elastické databáze jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí [tříd System. Transaction](/dotnet/api/system.transactions).
 
@@ -33,7 +33,7 @@ V tomto obrázku barvy databáze reprezentují schémata. Databáze se stejnou b
 
 1. Sada **databází SQL** je hostovaná v Azure pomocí architektury horizontálního dělení.
 2. **Klientská knihovna elastic Database** se používá ke správě horizontálních oddílů sady.
-3. Podmnožina databází je vložena do **elastického fondu** . (Podívejte [se, co je to fond?](elastic-pool-overview.md)).
+3. Podmnožina databází je vložena do **elastického fondu**. (Podívejte [se, co je to fond?](elastic-pool-overview.md)).
 4. **Úloha elastic Database** spouští naplánované nebo ad hoc skripty T-SQL pro všechny databáze.
 5. **Nástroj pro dělení na sloučení** se používá k přesunu dat z jednoho horizontálních oddílů do jiného.
 6. **Dotaz elastic Database** umožňuje napsat dotaz, který zahrnuje všechny databáze ve horizontálních oddílů sadě.

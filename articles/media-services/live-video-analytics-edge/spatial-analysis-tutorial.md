@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400504"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060176"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -35,7 +35,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -166,7 +166,7 @@ Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zaříz
 Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
 1. Otevřete Visual Studio Code.
-1. Vedle podokna AZURE IOT HUB vyberte ikonu Další akce a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec z src/Cloud-to-Device-Console-App/appsettings.jsv souboru.
+1. Vedle podokna AZURE IOT HUB vyberte ikonu Další akce a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec ze `src/cloud-to-device-console-app/appsettings.json` souboru.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Prostorová analýza: připojovací řetězec":::
@@ -222,13 +222,13 @@ K dispozici je program.cs, který vyvolá přímé metody v src/Cloud-to-Device-
 
 V operations.js:
 
-* Nastavit topologii jako tuto (topologyFile pro místní topologii, topologyUrl pro online topologii):
+* Nastavte topologii takto:
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ V operations.js:
     }
 },
 ```
-* Změňte odkaz na topologii grafu:
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-V části **GraphInstanceSet** upravte název topologie grafu tak, aby odpovídala hodnotě z předchozího odkazu:
-
-`topologyName` : InferencingWithCVExtension
-
-V části **GraphTopologyDelete** upravte název:
-
-`name`: InferencingWithCVExtension
 
 >[!Note]
 Podívejte se na použití MediaGraphRealTimeComputerVisionExtension pro připojení k modulu prostorové analýzy. Nastavte $ {grpcUrl} na **TCP://spatialAnalysis: <PORT_NUMBER>**, například TCP://spatialAnalysis:50051
@@ -281,40 +270,51 @@ Podívejte se na použití MediaGraphRealTimeComputerVisionExtension pro připoj
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-Spusťte ladicí relaci a postupujte podle pokynů pro terminál. nastaví se topologie, nastaví se instance grafu, aktivuje se instance grafu a nakonec se odstraní prostředky.
+Spusťte ladicí relaci a postupujte podle pokynů pro **terminál** . nastaví se topologie, nastaví se instance grafu, aktivuje se instance grafu a nakonec se odstraní prostředky.
 
 ## <a name="interpret-results"></a>Interpretace výsledků
 
 Když se vytvoří instance mediálního grafu, měla by se zobrazit událost MediaSessionEstablished, kterou najdete v [ukázkové události MediaSessionEstablished](detect-motion-emit-events-quickstart.md#mediasessionestablished-event).
 
-Modul prostorové analýzy také pošle události AI Insight do živé analýzy videí a následně na IoTHub, zobrazí se také ve výstupu. ENTITA je rozpoznána objekty a událost je spaceanalytics události. Tento výstup se předává do živé analýzy videí.
+Modul prostorové analýzy také pošle události AI Insight do živé analýzy videí a následně na IoTHub, zobrazí se také ve **výstupu**. ENTITA je rozpoznána objekty a událost je spaceanalytics události. Tento výstup se předává do živé analýzy videí.
 
 Ukázkový výstup pro personZoneEvent (operace cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon. livevideoanalytics):
 

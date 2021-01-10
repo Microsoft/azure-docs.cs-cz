@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509421"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060566"
 ---
 Tento kurz vyžaduje následující prostředky Azure:
 
@@ -26,12 +26,15 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného.
+    Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného.
 1. Po dokončení skriptu vyberte složené závorky a vystavte strukturu složek. V adresáři *~/clouddrive/lva-Sample* se zobrazí několik souborů. V tomto rychlém startu jsou důležité tyto:
 
      * ***~/clouddrive/lva-Sample/Edge-Deployment/.env** _ – Tento soubor obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
-     _ ***~/clouddrive/lva-sample/appsetting.json*** -Visual Studio Code používá tento soubor ke spuštění ukázkového kódu.
+     _ ***~/clouddrive/lva-sample/appsetting.jsv** _-Visual Studio Code používá tento soubor ke spuštění ukázkového kódu.
      
     Tyto soubory budete potřebovat při nastavení vývojového prostředí v Visual Studio Code v další části. Můžete je teď chtít zkopírovat do místního souboru.
     
     ![Nastavení aplikace](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš *[Průvodce odstraňováním potíží](../../../troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.

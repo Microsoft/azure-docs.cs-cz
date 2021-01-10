@@ -1,7 +1,7 @@
 ---
 title: Vytvořit projekt pro označování dat
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vytvořit a spustit označování projektů k označení dat pro strojové učení.  Pomocí označení ML s asistencí nebo lidmi v označení smyčky můžete pomoct s úkolem.
+description: Naučte se, jak vytvořit a spustit označování projektů k označení dat pro strojové učení. Pomocí označení ML s asistencí nebo lidmi v označení smyčky můžete pomoct s úkolem.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,36 +9,28 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 2fe217d08203aec2d25a5d1219a2556bd0dcbcd7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046102"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059836"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
+Naučte se vytvářet a spouštět projekty popisků dat pro označení dat v Azure Machine Learning.  Pro pomoc s úkolem můžete použít označení dat s asistencí pro strojové učení nebo popisky v rámci smyčky.
 
 
-Popisování voluminous dat v projektech Machine Learning je často starostí. Projekty, které mají komponentu počítačového vidění, jako je například klasifikace obrázku nebo detekce objektu, obecně vyžadují popisky pro tisíce imagí.
- 
-[Azure Machine Learning](https://ml.azure.com/) popisování dat poskytuje centrální místo pro vytváření, správu a sledování projektů označování. Slouží ke koordinaci dat, popisků a členů týmu, aby bylo možné efektivně spravovat úkoly označování. Machine Learning podporuje klasifikaci obrázků, a to buď s více popisky, nebo s více třídami, a s ohraničenými poli.
-
-Označování dat sleduje průběh a udržuje frontu neúplných úloh označování.
-
-Můžete spustit a zastavit projekt a řídit průběh označování. Můžete zkontrolovat označená data a exportovat popisky ve formátu díky Coco nebo jako datovou sadu Azure Machine Learning.
+## <a name="data-labeling-capabilities"></a>Možnosti popisků dat
 
 > [!Important]
 > V současné době jsou podporovány pouze projekty klasifikace obrázků a označení identifikace objektu. Kromě toho musí být image dat dostupné v úložišti dat objektů BLOB v Azure. (Pokud nemáte existující úložiště dat, můžete při vytváření projektu nahrávat obrázky.)
 
-V tomto článku se naučíte:
-
-> [!div class="checklist"]
-> * Vytvoření projektu
-> * Zadat data a strukturu projektu
-> * Spuštění a sledování projektu
-> * Export popisků
-
+Azure Machine Learning popisování dat je centrální místo pro vytváření, správu a sledování projektů označování:
+ - Koordinuje data, popisky a členy týmu, aby bylo možné efektivně spravovat úkoly označování. 
+ - Sleduje průběh a udržuje frontu neúplných úloh označování.
+ - Spustí a zastaví projekt a řídí postup označování.
+ - Zkontrolujte označená data a exportujte popisek ve formátu díky Coco nebo jako datovou sadu Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +40,7 @@ V tomto článku se naučíte:
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
+## <a name="create-a-data-labeling-project"></a>Vytvořit projekt pro označování dat
 
 Označování projektů je spravováno z Azure Machine Learning. Stránku s **popisem projektů** můžete použít ke správě projektů.
 
@@ -119,11 +111,11 @@ Zrušte toto políčko, pokud nechcete, aby byly do projektu přidány nové obr
 
 ## <a name="specify-label-classes"></a>Určení tříd popisků
 
-Na stránce **třídy popisků** určete sadu tříd pro kategorizaci dat. Provedete to pečlivě, protože přesnost a rychlost štítků bude ovlivněna jejich možností výběru mezi třídami. Například namísto kontroly pravopisu úplných rodů a druhů pro rostliny nebo živočichy použijte kód pole nebo zkratku rodu.
+Na stránce **třídy popisků** určete sadu tříd pro kategorizaci dat. Přesnost a rychlost štítků jsou ovlivněny jejich možností výběru mezi třídami. Například namísto kontroly pravopisu úplných rodů a druhů pro rostliny nebo živočichy použijte kód pole nebo zkratku rodu.
 
 Zadejte jeden popisek na řádek. **+** K přidání nového řádku použijte tlačítko. Pokud máte více než 3 nebo 4 popisky, ale méně než 10, je možné, že budete chtít názvy označit čísly ("1:", "2:"), aby je mohli pomocí těchto klávesových zkratek zrychlit.
 
-## <a name="describe-the-labeling-task"></a>Popsat úlohu označování
+## <a name="describe-the-data-labeling-task"></a>Popsat úlohu označování dat
 
 Je důležité jasně vysvětlit úlohu označování. Na stránce **pokyny k označování** můžete přidat odkaz na externí web pro pokyny k označování nebo zadat pokyny v poli pro úpravy na stránce. Pro cílovou skupinu ponechejte pokyny orientované na úlohy a vhodné. Vezměte v úvahu tyto otázky:
 
@@ -145,9 +137,9 @@ V případě ohraničujících polí patří mezi důležité otázky:
 >[!NOTE]
 > Nezapomeňte si uvědomit, že popisky budou moci vybrat prvních 9 popisků pomocí číselných klíčů 1-9.
 
-## <a name="use-ml-assisted-labeling"></a>Použití popisků ML s asistencí
+## <a name="use-ml-assisted-data-labeling"></a>Použití popisků dat s podporou ML
 
-Stránka s **popisem s asistencí ml** vám umožní aktivovat automatické modely strojového učení a urychlit tak úlohu označování. Na začátku projektu označování se obrázky přecházejí do náhodného pořadí, aby se snížil případný posun. Nicméně všechny posuny, které jsou k dispozici v datové sadě, se projeví v trained model. Například pokud je 80% imagí z jedné třídy, pak přibližně 80% dat použitých ke výukě modelu bude tato třída. Toto školení nezahrnuje aktivní učení.
+Stránka s **popisem** na základě ml vám umožní aktivovat automatické modely strojového učení a urychlit tak úlohu označování. Na začátku projektu označování se obrázky přecházejí do náhodného pořadí, aby se snížil případný posun. Nicméně všechny posuny, které jsou k dispozici v datové sadě, se projeví v trained model. Například pokud je 80% imagí z jedné třídy, pak přibližně 80% dat použitých ke výukě modelu bude tato třída. Toto školení nezahrnuje aktivní učení.
 
 Vyberte možnost *Povolit popisky na základě ml s asistencí* a určete GPU, která umožňuje poučení s asistencí, které se skládá ze dvou fází:
 * Clustering
@@ -172,9 +164,9 @@ Pro modely detekce objektu se nezobrazuje fáze clusteringu.
 
 Po odeslání dostatečného popisku obrázku se pro předpověď značek obrázku používá klasifikační model. Nebo model detekce objektu se používá k předpovědi ohraničujících polí. Štítek teď uvidí stránky, které obsahují předpovězené popisky, které už jsou na každém obrázku přítomné. V případě detekce objektu se zobrazí také předpokládaná pole. Úkol pak před odesláním stránky zkontrolujte tyto předpovědi a opravte všechny image s nesprávnými popisky.  
 
-Jakmile se model strojového učení vyškole na vaše ručně označené údaje, model se vyhodnotí na základě sady testů ručně označených imagí, aby se zjistila její přesnost na nejrůznějších různých práh spolehlivosti. Tento proces hodnocení se používá k určení prahové hodnoty spolehlivosti, nad kterou je model dostatečně přesný, aby se zobrazily předdefinované popisky. Model se pak vyhodnotí proti neoznačeným datům. Obrázky s předpovědiější, než je tato prahová hodnota, se používají pro předběžné označování.
+Jakmile se model strojového učení vyškole na vaše ručně označené údaje, model se vyhodnotí na základě sady testů ručně označených imagí, aby se zjistila její přesnost na různé prahové hodnoty spolehlivosti. Tento proces hodnocení se používá k určení prahové hodnoty spolehlivosti, nad kterou je model dostatečně přesný, aby se zobrazily předdefinované popisky. Model se pak vyhodnotí proti neoznačeným datům. Obrázky s předpovědiější, než je tato prahová hodnota, se používají pro předběžné označování.
 
-## <a name="initialize-the-labeling-project"></a>Inicializovat projekt značení
+## <a name="initialize-the-data-labeling-project"></a>Inicializovat projekt pro označování dat
 
 Po inicializaci projektu značení jsou některé aspekty projektu neměnné. Nemůžete změnit typ nebo datovou sadu úlohy. *Můžete* změnit popisky a adresu URL pro popis úlohy. Před vytvořením projektu pečlivě zkontrolujte nastavení. Po odeslání projektu se vrátíte na domovskou stránku s **popisem dat** , která zobrazí projekt jako **inicializovaný**.
 
@@ -229,11 +221,11 @@ Zobrazit podrobnosti o projektu.  Na této kartě můžete:
 
 ### <a name="access-for-labelers"></a>Přístup pro popisky
 
-Kdokoli, kdo má přístup k vašemu pracovnímu prostoru, může označovat data v projektu.  Můžete také přizpůsobit oprávnění pro své popisky tak, aby mohl přístup označovat popisky, ale ne jiné části pracovního prostoru nebo projektu s popisem.  Další podrobnosti najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md)a Naučte se, jak vytvořit [vlastní roli pro popisek](how-to-assign-roles.md#labeler).
+Kdokoli, kdo má přístup k vašemu pracovnímu prostoru, může označovat data v projektu.  Můžete také přizpůsobit oprávnění pro popisky, aby mohli přistupovat k popiskům, ale ne k ostatním částem pracovního prostoru nebo k projektu s popisem.  Další podrobnosti najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md)a Naučte se, jak vytvořit [vlastní roli pro popisek](how-to-assign-roles.md#labeler).
 
 ## <a name="add-new-label-class-to-a-project"></a>Přidat novou třídu Label do projektu
 
-Během procesu označování se můžete setkat s tím, že pro klasifikaci imagí jsou potřeba další popisky.  Například můžete chtít přidat popisek "Neznámý" nebo "jiný", který označuje matoucí obrázky.
+Během procesu označování dat se můžete setkat s tím, že pro klasifikaci imagí jsou potřeba další popisky.  Například můžete chtít přidat popisek "Neznámý" nebo "jiný", který označuje matoucí obrázky.
 
 Pomocí těchto kroků můžete přidat jeden nebo více štítků do projektu:
 

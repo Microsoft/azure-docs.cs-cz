@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585186"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058663"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského 
 ## <a name="guidelines-for-using-custom-page-content"></a>Pokyny pro používání vlastního obsahu stránky
 
 - Použijte absolutní adresu URL při zahrnutí externích prostředků, jako jsou multimédia, CSS a JavaScriptové soubory v souboru HTML.
-- Pomocí [rozložení stránky verze](page-layout.md) 1.2.0 a vyšší můžete přidat `data-preload="true"` atribut do značek HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript. Pomocí nástroje `data-preload=true` je stránka vytvořena před zobrazením uživateli. Tento atribut pomáhá zabránit tomu, aby se stránka vyblikat tím, že předvede soubor CSS, aniž by byl uživatel zobrazen bez stylu HTML. Následující fragment kódu HTML ukazuje použití `data-preload` značky.
+- Pomocí [rozložení stránky verze](page-layout.md) 1.2.0 a vyšší můžete přidat `data-preload="true"` atribut do značek HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript. Pomocí nástroje `data-preload="true"` je stránka vytvořena před zobrazením uživateli. Tento atribut pomáhá zabránit tomu, aby se stránka vyblikat tím, že předvede soubor CSS, aniž by byl uživatel zobrazen bez stylu HTML. Následující fragment kódu HTML ukazuje použití `data-preload` značky.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -116,7 +116,7 @@ Tady je přehled tohoto procesu:
 1. Nastavte sdílení prostředků mezi zdroji (CORS) pro vaši webovou aplikaci.
 1. Nasměrujte zásady na svůj vlastní identifikátor URI obsahu zásad.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

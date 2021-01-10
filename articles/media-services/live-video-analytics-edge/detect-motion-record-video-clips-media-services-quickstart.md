@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511888"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060414"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -24,12 +24,14 @@ Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started
     * [Nastavení prostředků Azure](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Nasazení modulů](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Konfigurace editoru Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
 V rámci výše uvedeného postupu pro nastavení prostředků Azure se do virtuálního počítače Linux v Azure, který se používá jako zařízení IoT Edge, zkopíruje (krátké) video o zaparkované dávce. Tento videosoubor se použije k simulaci živého datového proudu pro tento kurz.
 
 Můžete použít aplikaci, jako je [VLC Player](https://www.videolan.org/vlc/), spustit ji, stisknout `Ctrl+N` a vložit [ukázkový odkaz ukázka](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) rádiového videa pro spuštění přehrávání. V symbolech 5 sekund se bílá Auto pohybuje přes sérii parkovacích míst.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Po dokončení níže uvedeného postupu budete pro detekci pohybu auta používat Live video Analytics na IoT Edge a zaznamenáte si video klip počínaje kolem této 5 sekundové značky. Diagram níže je vizuální znázornění celkového toku.
 
@@ -194,7 +196,7 @@ Pomocí stejných kroků, jako jsou ty, které jsou popsané pro vyvolání Grap
 
 Výsledkem výše uvedené datové části JSON je vytvoření topologie grafu, která definuje pět parametrů (čtyři z nich mají výchozí hodnoty). Topologie má jeden zdrojový uzel ([zdroj RTSP](media-graph-concept.md#rtsp-source)), dva uzly procesoru ([procesor pro detekci pohybu](media-graph-concept.md#motion-detection-processor) a [procesor brány signálu](media-graph-concept.md#signal-gate-processor)a dva uzly jímky (IoT Hub jímka a [jímka assetu](media-graph-concept.md#asset-sink)). Vizuální znázornění topologie je uvedeno výše.
 
-Během několika sekund se v okně výstup zobrazí následující odpověď.
+Během několika sekund se v okně **výstup** zobrazí následující odpověď.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

@@ -1,18 +1,18 @@
 ---
 title: Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 description: Použijte Azure Průzkumník dat k provádění dotazů mezi produkty Azure Průzkumník dat, Log Analyticsmi pracovními prostory a klasickými Application Insights aplikacemi v Azure Monitor.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: dd29b18dda46a00966a0e5adea7e06be8f43ad35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444947"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060533"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 
@@ -37,7 +37,7 @@ Tok dotazů služby Azure Průzkumník dat mezi službami: :::image type="conten
     * Pro LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * Pro AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
-    * Vyberte **Přidat**.
+    * Vyberte **Add** (Přidat).
 
 :::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Přidejte cluster.":::
  

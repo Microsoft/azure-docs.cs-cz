@@ -3,12 +3,12 @@ title: Kurz pro nahrávání a přehrávání videa založeného na událostech 
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nahrání záznamu videa založeného na událostech do cloudu a jeho přehrání z cloudu.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401661"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060431"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nahrávání videa založeného na událostech do cloudu a přehrávání z cloudu
 
@@ -36,7 +36,7 @@ Než začnete, přečtěte si tyto články:
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Oddíl, [jak deklarovat trasy v manifestu nasazení IoT Edge](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpoklady pro tento kurz:
 
@@ -53,6 +53,9 @@ Na konci tohoto postupu budete mít v předplatném Azure nasazené relevantní 
 * Účet služby Azure Storage
 * Účet Azure Media Services
 * Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md)
+
+> [!TIP]
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 
 ## <a name="concepts"></a>Koncepty
 
@@ -230,7 +233,7 @@ Pokud se chcete podívat na události z modulu objectCounter a ve službě Live 
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ V následujících zprávách jsou vlastnosti aplikace a obsah těla definovány
 
 ### <a name="mediasessionestablished-event"></a>Událost MediaSessionEstablished 
 
-Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP běžícímu na kontejneru simulátoru RTSP. V případě úspěchu se tato událost vytiskne. Typ události je Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
+Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP běžícímu na kontejneru simulátoru RTSP. V případě úspěchu se tato událost vytiskne. Typ události je **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ Můžou se zobrazit další informace o těchto událostech, když se ve videu z
 
 ### <a name="recordingstarted-event"></a>Událost RecordingStarted
 
-Skoro hned po čítači objektu odešle událost se zobrazí událost typu Microsoft. Media. Graph. Operational. RecordingStarted:
+Skoro hned po čítači objektu odešle událost se zobrazí událost typu **Microsoft. Media. Graph. Operational. RecordingStarted**:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ Oddíl Subject v applicationProperties odkazuje na uzel jímky assetu v grafu, k
 
 ### <a name="recordingavailable-event"></a>Událost RecordingAvailable
 
-Když uzel jímka assetu nahrál video do assetu, vygeneruje tuto událost typu Microsoft. Media. Graph. Operational. RecordingAvailable:
+Když uzel jímka assetu nahrál video do assetu, vygeneruje tuto událost typu **Microsoft. Media. Graph. Operational. RecordingAvailable**:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ Tato událost označuje, že do assetu se zapsala dostatečná data pro aktéry 
 
 ### <a name="recordingstopped-event"></a>Událost RecordingStopped
 
-Pokud prohlížíte nastavení aktivace (maximumActivationTime) pro uzel procesoru brány signálu v [topologii](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json), uvidíte, že je tato brána nastavená tak, aby se zavřela po 30 sekundách odeslání videa prostřednictvím. Přibližně 30 sekund po události RecordingStarted by se měla zobrazit událost typu Microsoft. Media. Graph. Operational. RecordingStopped. Tato událost označuje, že uzel jímky assetu zastavil nahrávání videa do assetu.
+Pokud prohlížíte nastavení aktivace (maximumActivationTime) pro uzel procesoru brány signálu v [topologii](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json), uvidíte, že je tato brána nastavená tak, aby se zavřela po 30 sekundách odeslání videa prostřednictvím. Přibližně 30 sekund po události RecordingStarted by se měla zobrazit událost typu **Microsoft. Media. Graph. Operational. RecordingStopped**. Tato událost označuje, že uzel jímky assetu zastavil nahrávání videa do assetu.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

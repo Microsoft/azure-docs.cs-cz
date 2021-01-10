@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401293"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060227"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -65,6 +65,8 @@ Pomocí Azure Portal můžete spustit diagnostiku mediálního grafu pomocí př
     * 406 – IoT Edge zařízení je offline nebo neodesílá zprávy o stavu.
     * 500 – při IoT Edge modulu runtime došlo k chybě.
 
+    > [!TIP]
+    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** .
 ### <a name="post-deployment-direct-method-error-code"></a>Post Deployment: kód chyby přímé metody
 1. Pokud se zobrazí stav `501 code` , zkontrolujte, zda je název přímé metody přesný. Pokud je název metody a datová část požadavku přesný, měli byste získat výsledky spolu s kódem úspěšnosti = 200. 
 1. Pokud je datová část požadavku nepřesná, získáte stav `400 code` a datovou část odpovědi, která označuje kód chyby a zprávu, která by měla pomáhat s diagnostikou problému s přímým voláním metody.
@@ -93,6 +95,8 @@ Live video Analytics se nasadí jako modul IoT Edge v zařízení IoT Edge a spo
 * [Při živé analýze videa nebo jakémkoli jiném vlastním IoT Edge modulu se nepovede odeslat zpráva do centra Edge s 404 chybou](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [Modul IoT Edge se úspěšně nasazuje a pak zmizí ze zařízení](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
+    > [!TIP]
+    > Pokud dochází k potížím se spouštěním Azure IoT Edgech modulů ve vašem prostředí, použijte jako vodítko pro řešení potíží a diagnostiku **[Azure IoT Edge standardní diagnostické kroky](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
 Live video Analytics můžou pomocí procesorů rozšíření pro multimediální graf rozšířit mediální graf tak, aby odesílal a přijímal data z jiných IoT Edge modulů pomocí protokolů HTTP nebo gRPC. V takovém [případě](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)může tento mediální graf odesílat snímky videa jako obrázky do externího modulu odvození, jako je Yolo v3, a získávat výsledky analýzy založené na JSON pomocí protokolu HTTP. V takové topologii je cíl pro události většinou centrum IoT. V situacích, kdy se v centru nezobrazuje události odvození, zkontrolujte následující:
@@ -208,7 +212,7 @@ Pokud chcete nakonfigurovat Live video Analytics v modulu IoT Edge tak, aby gene
     > Tento příkaz váže složky protokolů mezi hraničním zařízením a kontejnerem. Pokud chcete protokoly shromáždit v jiném umístění, použijte následující příkaz a nahraďte **$LOG _LOCATION_ON_EDGE_DEVICE** umístění, které chcete použít: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. Vyberte **Aktualizovat**.
-1. Vyberte **zkontrolovat + vytvořit**. Pod zelenou bannerem se publikuje zpráva o úspěšném ověření.
+1. Vyberte **Zkontrolovat a vytvořit**. Pod zelenou bannerem se publikuje zpráva o úspěšném ověření.
 1. Vyberte **Vytvořit**.
 1. Aktualizujte **Nevlákennou identitu modulu** tak, aby odkazovala na parametr DebugLogsDirectory, který odkazuje na adresář, ve kterém jsou protokoly shromažďovány:
 

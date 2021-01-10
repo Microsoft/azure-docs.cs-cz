@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792119"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060080"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s mezidatabázovými dotazy (vertikální dělení) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,13 +27,13 @@ Po dokončení se dozvíte, jak nakonfigurovat a použít Azure SQL Database k p
 
 Další informace o funkci dotazování elastické databáze najdete v tématu  [Azure SQL Database přehled dotazů elastické databáze](elastic-query-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Změna všech oprávnění k EXTERNÍmu zdroji dat je povinné. Toto oprávnění je součástí oprávnění ALTER DATABASE. Aby bylo možné odkazovat na podkladový zdroj dat, je třeba změnit všechna oprávnění ke zdroji externích dat.
 
 ## <a name="create-the-sample-databases"></a>Vytvoření ukázkových databází
 
-Pokud chcete začít, vytvořte na stejném nebo jiném serveru dvě databáze, **zákazníky** a **objednávky** .
+Pokud chcete začít, vytvořte na stejném nebo jiném serveru dvě databáze, **zákazníky** a **objednávky**.
 
 Spusťte následující dotazy v databázi **Orders** a vytvořte tabulku **OrderInformation** a zadejte vzorová data.
 
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    "Master_key_password" je silné heslo, které se používá k šifrování přihlašovacích údajů pro připojení. 
     Uživatelské jméno a heslo by mělo být uživatelské jméno a heslo, které jste použili k přihlášení do databáze Customers.
     Ověřování pomocí Azure Active Directory s elastickými dotazy není v současné době podporováno.
 

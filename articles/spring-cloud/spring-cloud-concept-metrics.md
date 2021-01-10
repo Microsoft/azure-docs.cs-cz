@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974659"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060635"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -89,13 +89,13 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 
 ### <a name="error"></a>Chyba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Global. Error | Tomcat. Global. Error | Počet | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| System. CPU. Usage | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
 >| Process. CPU. Usage | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
@@ -112,9 +112,9 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 ### <a name="performance-net"></a>Výkon (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|------|-----------------------------|------|---------|
->| Využití procesoru       | využití procesoru      | Milisekund | Doba, po kterou proces využil procesor. |
+>| Využití procesoru       | využití procesoru      | Procento      | Procento využití procesoru procesu vzhledem ke všem prostředkům systémového procesoru [0-100]. |
 >| Pracovní sada     | pracovní sada    | Megabajty    | Množství pracovní sady používané procesem. |
 >| Velikost haldy GC    | GC-velikost haldy   | Megabajty    | Celková velikost haldy hlášené systémem uvolňování paměti. |
 >| Počet GC 0. generace  | gen-0-GC-Count | Počet        | Počet kolekcí uvolnění paměti generace 0 za sekundu |
@@ -137,7 +137,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 
 ### <a name="request"></a>Žádost
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Global. odesláno | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
 >| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
@@ -147,7 +147,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 ### <a name="request-net"></a>Požadavek (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|------|-----------------------------|------|---------|
 >| Počet žádostí za sekundu | požadavky – za sekundu | Počet | Frekvence požadavků. |
 >| Celkový počet požadavků | celkem – požadavky | Počet | Celkový počet požadavků |
@@ -158,7 +158,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
 >| Tomcat. Sessions. Alive. max | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s ukončenou platností |

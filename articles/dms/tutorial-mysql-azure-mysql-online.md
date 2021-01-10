@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605509"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060380"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 >
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -237,7 +237,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
     ![Mapování na cílové databáze](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > I když v tomto kroku můžete vybrat více databází, každá instance Azure Database Migration Service podporuje až čtyři databáze pro souběžnou migraci. V předplatném je také omezení dvou instancí Azure Database Migration Service na oblast. Například pokud máte databáze 40, které se mají migrovat, můžete migrovat jenom osm z nich současně a jenom v případě, že jste vytvořili dvě instance Azure Database Migration Service.
+   > I když v tomto kroku můžete vybrat více databází, každá instance Azure Database Migration Service podporuje až 4 databáze pro souběžnou migraci. Také platí omezení 10 instancí Azure Database Migration Service pro každé předplatné na oblast. Například pokud máte databáze 80, můžete je 40 migrovat do stejné oblasti souběžně, ale pouze v případě, že jste vytvořili 10 instancí Azure Database Migration Service.
 
 3. Vyberte **Uložit**, na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace a pak zkontrolujte souhrnné informace a ujistěte se, že podrobnosti zdroje a cíle odpovídají dříve zadaným informacím.
 

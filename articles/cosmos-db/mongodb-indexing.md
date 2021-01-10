@@ -1,22 +1,22 @@
 ---
-title: Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
+title: Správa indexování v rozhraní API služby Azure Cosmos DB pro MongoDB
 description: Tento článek nabízí přehled možností indexování Azure Cosmos DB pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369286"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060066"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní API služby Azure Cosmos DB pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Rozhraní API pro Azure Cosmos DB MongoDB využívá základní možnosti správy indexů Azure Cosmos DB. Tento článek se zaměřuje na přidání indexů pomocí rozhraní API Azure Cosmos DB pro MongoDB. Můžete si také přečíst [Přehled indexování v Azure Cosmos DB](index-overview.md) relevantním pro všechna rozhraní API.
@@ -29,6 +29,16 @@ Pokud chcete indexovat další pole, můžete použít příkazy MongoDB index-m
 
 Chcete-li použít řazení pro dotaz, je nutné vytvořit index pro pole použitá v operaci řazení.
 
+### <a name="editing-indexing-policy"></a>Úprava zásad indexování
+
+Doporučujeme, abyste v Průzkumník dat v rámci Azure Portal upravovali zásady indexování.
+. Pomocí editoru zásad indexování můžete v Průzkumník dat přidat jeden pole a zástupné znaky:
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="Editor zásad indexování":::
+
+> [!NOTE]
+> Složené indexy nemůžete vytvořit pomocí editoru zásad indexování v Průzkumník dat.
+
 ## <a name="index-types"></a>Typy indexů
 
 ### <a name="single-field"></a>Jedno pole
@@ -36,6 +46,10 @@ Chcete-li použít řazení pro dotaz, je nutné vytvořit index pro pole použi
 Můžete vytvořit indexy pro každé jedno pole. Pořadí řazení indexu jednoho pole nezáleží. Následující příkaz vytvoří index v poli `name` :
 
 `db.coll.createIndex({name:1})`
+
+Stejný index jednoho pole můžete vytvořit `name` v Azure Portal:
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="Přidat index názvu v editoru zásad indexování":::
 
 Jeden dotaz používá více indexů s jedním polem, kde je k dispozici. Pro každý kontejner můžete vytvořit až 500 indexů s jedním polem.
 
@@ -135,6 +149,10 @@ Tady je postup, jak můžete vytvořit index zástupného znaku u všech polí:
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
+Můžete také vytvořit zástupné indexy pomocí Průzkumník dat v Azure Portal:
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="Přidat index zástupného znaku v editoru zásad indexování":::
+
 > [!NOTE]
 > Pokud začínáte s vývojem, **důrazně** doporučujeme začít se zástupným indexem u všech polí. To může zjednodušit vývoj a usnadnit optimalizaci dotazů.
 
@@ -144,13 +162,13 @@ U dokumentů s mnoha poli se může za zápisy a aktualizace účtovat poplatek 
 
 Indexy zástupných znaků nepodporují žádné z následujících typů indexů nebo vlastností:
 
-- Kombinovanou
+- Složené
 - TTL
 - Jedinečná
 
 Na **rozdíl od MongoDB** v rozhraní API služby Azure Cosmos DB pro MongoDB **nemůžete** použít indexy zástupných znaků pro:
 
-- Vytvoření indexu zástupných znaků, který obsahuje více konkrétních polí
+- Vytvořit index se zástupnými znaky, který zahrnuje několik konkrétních polí
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -162,7 +180,7 @@ Na **rozdíl od MongoDB** v rozhraní API služby Azure Cosmos DB pro MongoDB **
     }
 )`
 
-- Vytvoření zástupného znaku, který vylučuje více konkrétních polí
+- Vytvořit index se zástupnými znaky, který vylučuje několik konkrétních polí
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -174,7 +192,7 @@ Na **rozdíl od MongoDB** v rozhraní API služby Azure Cosmos DB pro MongoDB **
     }
 )`
 
-Alternativně můžete vytvořit více indexů zástupných znaků.
+Jako alternativu můžete vytvořit několik indexů se zástupnými znaky.
 
 ## <a name="index-properties"></a>Vlastnosti indexu
 

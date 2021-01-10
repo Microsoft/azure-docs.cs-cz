@@ -1,5 +1,5 @@
 ---
-title: Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
+title: Připojení clusteru Kubernetes s podporou služby Azure Arc (Preview)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -9,18 +9,18 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583928"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060244"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s podporou služby Azure Arc (Preview)
 
 Tento dokument popisuje proces propojení libovolného clusteru Kubernetes s certifikací Cloud Computing Foundation (CNCF), jako je AKS Engine v Azure, AKS Engine v Azure Stack hub, GKE, EKS a VMware vSphere cluster do Azure ARC.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že máte připravené tyto požadavky:
 
@@ -30,7 +30,7 @@ Ověřte, že máte připravené tyto požadavky:
 * Pro nasazení agentů Kubernetes s podporou ARC budete potřebovat soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru.
 * Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Role "cluster Kubernetes-Azure ARC" má tato oprávnění a lze ji použít k přiřazení rolí pro uživatele nebo instanční objekt.
 * K registraci clusteru pomocí rozšíření connectedk8s se vyžaduje Helm 3. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
-* Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
+* Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním příkazového řádku Azure se vyžaduje verze Azure CLI 2.15 +. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.15 +.
 * Instalace rozšíření Kubernetes CLI s povoleným ARC:
   
   Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:

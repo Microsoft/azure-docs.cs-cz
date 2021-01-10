@@ -4,12 +4,12 @@ description: Naučte se používat Azure Custom Vision k vytvoření kontejnerov
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401691"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060490"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -49,7 +49,7 @@ Než začnete, přečtěte si následující články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
 ::: zone pivot="programming-language-csharp"
@@ -61,8 +61,11 @@ Než začnete, přečtěte si následující články:
 ::: zone-end
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
+V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte **CTRL + N** a pak vložte odkaz na [video o odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa si všimněte, že ve videu se zobrazí ve videu ve značce 36 – 2. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. 
 
-V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte **CTRL + N** a pak vložte odkaz na [video o odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa si všimněte, že ve videu se zobrazí ve videu ve značce 36 – 2. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
 
 ## <a name="overview"></a>Přehled
 
@@ -127,7 +130,6 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 
 ## <a name="examine-the-sample-files"></a>Kontrola ukázkových souborů
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 
 1. V Visual Studio Code v nástroji použijte src/Cloud-to-Device-Console-App/operations.js.
 
-1. V části `GraphTopologySet` Ověřte, že platí následující:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. V části `GraphTopologySet` Ověřte, že platí následující:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. V části `GraphInstanceSet` zajistěte:
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. Do horní části pole parameters přidejte následující: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
@@ -261,7 +263,7 @@ V následujících zprávách modul Live video Analytics definuje vlastnosti apl
 
 ### <a name="mediasessionestablished-event"></a>Událost MediaSessionEstablished
 
-Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live555. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live555. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 {

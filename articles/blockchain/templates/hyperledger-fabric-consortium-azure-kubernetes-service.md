@@ -1,15 +1,15 @@
 ---
 title: Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 description: Jak nasadit a nakonfigurovat síť konsorcia prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651555"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060312"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 
@@ -66,7 +66,7 @@ Začněte tím, že budete potřebovat předplatné Azure, které může podporo
 
 Pokud chcete začít s nasazením síťových komponent infrastruktury pro hlavní knihu, navštivte [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **vytvořit prostředek**  >  **blockchain**a pak vyhledejte **prostředky infrastruktury hlavní knihy ve službě Azure Kubernetes Service (Preview)**.
+1. Vyberte **vytvořit prostředek**  >  **blockchain** a pak vyhledejte **prostředky infrastruktury hlavní knihy ve službě Azure Kubernetes Service (Preview)**.
 
 2. Na kartě **základy** zadejte podrobnosti o projektu.
 
@@ -106,7 +106,7 @@ Pokud chcete začít s nasazením síťových komponent infrastruktury pro hlavn
     - **Předpona DNS**: Zadejte předponu názvu DNS (Domain Name System) pro cluster AKS. Pomocí DNS se připojíte k rozhraní Kubernetes API při správě kontejnerů po vytvoření clusteru.
     - **Velikost uzlu**: velikost uzlu Kubernetes můžete vybrat ze seznamu skladových jednotek virtuálních počítačů (SKU) dostupných v Azure. Pro zajištění optimálního výkonu doporučujeme standardní DS3 v2.
     - **Počet uzlů**: zadejte počet uzlů Kubernetes, které mají být nasazeny v clusteru. Doporučujeme, aby tento počet uzlů byl stejný nebo více než počet uzlů prostředků infrastruktury hlavní knihy zadaný na kartě **nastavení prostředků infrastruktury** .
-    - **ID klienta instančního objektu**: Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový. Pro ověřování AKS je vyžadován instanční objekt. Přečtěte si [Postup vytvoření instančního objektu](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **ID klienta instančního objektu**: Zadejte ID klienta existujícího instančního objektu nebo vytvořte nový. Pro ověřování AKS je vyžadován instanční objekt. Přečtěte si [Postup vytvoření instančního objektu](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal).
     - **Tajný kód klienta instančního objektu**: zadejte tajný klíč klienta instančního objektu, který je k dispozici v ID klienta pro instanční objekt.
     - **Potvrzení tajného klíče klienta**: potvrďte tajný klíč klienta pro instanční objekt.
     - **Povolit monitorování kontejnerů**: tuto možnost vyberte, pokud chcete povolit monitorování AKS, což umožňuje, aby protokoly AKS nahrajte do určeného pracovního prostoru Log Analytics.
@@ -294,7 +294,7 @@ Z klienta partnerské organizace spusťte příkaz pro nastavení partnerských 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Například:
+`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Příklad:
 
   - Nastavte `<anchorPeersList>` , jako `"peer1"` kdybyste chtěli nastavit jenom uzel peer1 jako ukotvení partnerského uzlu.
   - Nastavte `<anchorPeersList>` , jak `"peer1" "peer3"` chcete jako kotvové partnery nastavit uzly peer1 i peer3.
@@ -351,7 +351,7 @@ Předejte název funkce vytváření instance a seznam argumentů oddělených m
 
 Konfigurační soubor JSON kolekce můžete také předat pomocí `--collections-config` příznaku. Nebo nastavte přechodné argumenty pomocí `-t` příznaku při vytváření instance chaincode používané pro privátní transakce.
 
-Například:
+Příklad:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
@@ -385,7 +385,7 @@ Spusťte následující příkaz pro dotaz na chaincode:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-Přidávajícím partnerům jsou partnerské uzly, kde je nainstalovaný chaincode a který se volá pro provádění transakcí. Musíte nastavit `<endorsingPeers>` , aby obsahovaly názvy partnerských uzlů z aktuální partnerské organizace. Zobrazí seznam schválených partnerských uzlů pro danou kombinaci chaincode a kanálu oddělené mezerami. Například: `-p "peer1" "peer3"`.
+Přidávajícím partnerům jsou partnerské uzly, kde je nainstalovaný chaincode a který se volá pro provádění transakcí. Musíte nastavit `<endorsingPeers>` , aby obsahovaly názvy partnerských uzlů z aktuální partnerské organizace. Zobrazí seznam schválených partnerských uzlů pro danou kombinaci chaincode a kanálu oddělené mezerami. Příklad: `-p "peer1" "peer3"`.
 
 Pokud používáte *azhlfTool* k instalaci chaincode, předejte všechny názvy partnerských uzlů jako hodnotu do argumentu pro potvrzení partnerského vztahu. Chaincode je nainstalovaný na všech partnerských uzlech této organizace. 
 
@@ -393,23 +393,35 @@ Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Spusťte následující příkazy, abyste našli verzi nasazení šablony.
+### <a name="find-deployed-version"></a>Najít nasazenou verzi
 
-Nastavte proměnné prostředí podle skupiny prostředků, ve které byla šablona nasazena.
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-Spusťte následující příkaz pro tisk verze šablony.
+Spusťte následující příkazy, abyste našli verzi nasazení šablony. Nastavte proměnné prostředí podle skupiny prostředků, ve které byla šablona nasazena.
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>Oprava předchozí verze
+
+Pokud máte problémy se spouštěním chaincode na jakémkoli nasazení šablony verze níže v 3.0.0, postupujte podle následujících kroků a opravte své rovnocenné uzly opravou.
+
+Stáhněte si skript nasazení peer.
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+Spusťte skript pomocí následujícího příkazu, který nahradí parametry pro partnerský uzel.
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+Počkejte, než se dostanou žádné ze svých partnerských uzlů. Stav partnerských uzlů můžete kdykoli kontrolovat v různých instancích prostředí pomocí následujícího příkazu.
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba

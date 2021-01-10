@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763940"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060156"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -245,9 +245,8 @@ Vaše aplikace vyvolává nezachycené výjimky – kontrolní `d:\\home\\LogFil
 Běžnou příčinou dlouhých časů spuštění aplikace je vysoký počet souborů v \_ modulech uzlů. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení, protože soubory jsou uloženy ve sdílené síťové složce v Azure App Service, načítání mnoha souborů může trvat déle.
 Některá řešení pro zajištění rychlejšího tohoto procesu:
 
-1. Ujistěte se, že máte strukturu ploché závislosti a žádné duplicitní závislosti pomocí npm3 k instalaci modulů.
-2. Pokuste se o opožděné načtení \_ modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
-3. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba načítání \_ modulů uzlů mnohem rychlejší.
+1. Pokuste se o opožděné načtení \_ modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
+2. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba načítání \_ modulů uzlů mnohem rychlejší.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Stav IISNODE http a dílčí stav
 

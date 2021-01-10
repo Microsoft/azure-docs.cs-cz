@@ -3,12 +3,12 @@ title: Ověřování a autorizace Azure Service Bus | Microsoft Docs
 description: Ověřování aplikací pro Service Bus s ověřováním pomocí sdíleného přístupového podpisu (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517276"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060210"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
 Existují dva způsoby, jak ověřit a autorizovat přístup k prostředkům Azure Service Bus: Azure Activity Directory (Azure AD) a signatury sdíleného přístupu (SAS). Tento článek obsahuje podrobné informace o použití těchto dvou typů mechanismů zabezpečení. 
@@ -37,7 +37,7 @@ Chcete-li použít SAS, můžete nakonfigurovat objekt [SharedAccessAuthorizatio
 * *KeyName*: identifikuje pravidlo.
 * *PrimaryKey*: kryptografický klíč, který slouží k podepisování/ověřování tokenů SAS.
 * *SecondaryKey*: kryptografický klíč, který slouží k podepisování/ověřování tokenů SAS.
-* *Práva*: představuje shromažďování udělených oprávnění k **naslouchání**, **odesílání**nebo **správě** .
+* *Práva*: představuje shromažďování udělených oprávnění k **naslouchání**, **odesílání** nebo **správě** .
 
 Autorizační pravidla konfigurovaná na úrovni oboru názvů můžou udělit přístup ke všem entitám v oboru názvů pro klienty s tokeny podepsanými pomocí odpovídajícího klíče. Pro Service Bus obor názvů, frontu nebo téma můžete nakonfigurovat až 12 těchto autorizačních pravidel. Ve výchozím nastavení se [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) se všemi právy nakonfigurují pro každý obor názvů při prvním zřízení.
 

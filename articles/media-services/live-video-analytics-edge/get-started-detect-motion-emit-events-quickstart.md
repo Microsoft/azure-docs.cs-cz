@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028705"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060397"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -21,9 +21,9 @@ Po dokončení kroků nastavení budete moct spustit simulovaný živý datový 
 
 Můžete si prohlédnout následující video s podrobnými kroky, jak začít se službou Live video Analytics na IoT Edge:
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -55,9 +55,13 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku `Microsoft.Devices/IotHubs` a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku. 
+Po úspěšném dokončení skriptu byste měli vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku **`Microsoft.Devices/IotHubs`** a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku.  
 
-Skript také vygeneruje několik konfiguračních souborů v adresáři *~/clouddrive/lva-Sample/* . Tyto soubory budete potřebovat později v rychlém startu.
+> [!NOTE]
+> Skript také vygeneruje několik konfiguračních souborů v adresáři **_~/clouddrive/lva-Sample/_* _. Tyto soubory budete potřebovat později v rychlém startu.
+
+> [!TIP]
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš *[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Nasazení modulů na hraničním zařízení
 
@@ -417,8 +421,8 @@ Volejte přímou metodu `GraphInstanceSet` pomocí následující datové část
 Všimněte si, že tato datová část:
 
 * Určuje název topologie ( `MotionDetection` ), pro který je nutné vytvořit instanci.
-* Obsahuje hodnotu parametru pro `rtspUrl` , která neobsahovala výchozí hodnotu v datové části topologie grafu.
-
+* Obsahuje hodnotu parametru pro `rtspUrl` , která neobsahovala výchozí hodnotu v datové části topologie grafu. Tato hodnota je odkazem na následující ukázkové video:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Během několika sekund se v okně **výstup** zobrazí následující odpověď:
 
 ```

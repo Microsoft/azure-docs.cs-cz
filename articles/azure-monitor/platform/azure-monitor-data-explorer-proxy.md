@@ -1,18 +1,18 @@
 ---
 title: Dotazování mezi prostředky Azure Průzkumník dat pomocí Azure Monitor
 description: Pomocí Azure Monitor můžete provádět dotazy mezi produkty mezi Azure Průzkumník dat, Log Analytics pracovní prostory a klasické Application Insights aplikace v Azure Monitor.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674425"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060448"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Dotazování mezi prostředky Azure Průzkumník dat pomocí Azure Monitor
 Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Pak můžete dotazovat cluster Azure Průzkumník dat pomocí nástrojů pro Log Analytics nebo Application Insights a odkazovat na něj v dotazu mezi službami. V tomto článku se dozvíte, jak vytvořit dotaz na více služeb.
@@ -22,7 +22,7 @@ Následující diagram znázorňuje Azure Monitor tok mezi službami:
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Diagram znázorňující tok dotazů mezi uživatelem, Azure Monitor, proxy serverem a Průzkumník dat Azure.":::
 
 >[!NOTE]
-> Dotaz na Azure Monitor mezi službami je v privátní verzi Preview. Allowlisting je povinný. Kontaktujte [tým služby](mailto:ADXProxy@microsoft.com) s případnými dotazy.
+> Dotaz na Azure Monitor mezi službami je ve verzi Public Preview. Kontaktujte [tým služby](mailto:ADXProxy@microsoft.com) s případnými dotazy.
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Křížové dotazování prostředků Log Analytics nebo Application Insights a Azure Průzkumník dat
 

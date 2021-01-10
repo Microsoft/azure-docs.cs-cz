@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347485"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059377"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -135,8 +135,6 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
 1. V levém podokně vyberte **propojené organizace** a pak ji otevřete, když vyberete připojenou organizaci.
 
 1. V podokně přehledu připojené organizace vyberte **Odstranit** a odstraňte ji.
-
-    V současné době můžete propojenou organizaci odstranit pouze v případě, že nejsou k dispozici žádní uživatelé.
 
     ![Tlačítko Odstranit připojenou organizaci](./media/entitlement-management-organization/organization-delete.png)
 

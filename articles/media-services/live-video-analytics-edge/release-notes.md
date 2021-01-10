@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400841"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059972"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -33,7 +33,7 @@ Tato verze je ve verzi Public Preview k disukázce pro živé video analýzy v I
 * Přidání podpory pro používání více než jednoho procesoru rozšíření HTTP a procesoru rozšíření gRPC na topologii grafu.
 * Byla přidána podpora správy místa na disku pro uzly jímky.
 * `MediaGraphGrpcExtension` uzel teď podporuje vlastnost [extensionConfiguration](grpc-extension-protocol.md) pro použití více modelů AI v rámci jednoho serveru gRPC.
-* Přidaná podpora shromažďování metriky modulu Live video Analytics ve [formátu Prometheus](https://prometheus.io/docs/practices/naming/) 
+* Přidali jsme podporu shromažďování metriky modulu Live video Analytics ve [formátu Prometheus](https://prometheus.io/docs/practices/naming/). Přečtěte si další informace o tom, jak [shromažďovat metriky a zobrazovat v Azure monitor.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * Procesor filtru snímkové rychlosti je **zastaralý**.  
     * Správa frekvence snímků je nyní k dispozici v rámci samotného uzlu procesoru rozšíření grafu.
 
