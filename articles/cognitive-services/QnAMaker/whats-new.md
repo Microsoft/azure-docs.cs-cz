@@ -8,24 +8,26 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c3dc2f91fcd09807a7eaaaaa638e78ba3717faec
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345521"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061765"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
 Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
 Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="november-2020"></a>Listopad 2020
 
 * Nová verze QnA Maker v bezplatné Public Preview spuštěna. Další informace si můžete přečíst [zde](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575).
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-QnA-managed-Now-in-Public-Preview/player]
 * Zjednodušené vytváření prostředků
 * Podpora koncového konce oblasti
 * Model hodnocení hloubkového učení
@@ -43,7 +45,7 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="may-2020"></a>Květen 2020
 
-* [Řízení přístupu na základě role Azure (Azure RBAC)](concepts/role-based-access-control.md)
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Rozšířené úpravy textu](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) pro odpovědi
 
 ### <a name="march-2020"></a>Březen 2020
@@ -80,7 +82,7 @@ Přečtěte si, co je nového v QnA Maker.
 ### <a name="march-2019"></a>Březen 2019
 
 * [Active Learning](how-to/improve-knowledge-base.md) poskytuje návrhy na nové alternativy dotazů na základě dotazů reálných uživatelů.
-* Vylepšený model klasifikátoru pro zpracování [ranker](concepts/query-knowledge-base.md#ranker-process) přirozeného jazyka (NLP) pro angličtinu
+* Vylepšený model klasifikátoru pro zpracování [](concepts/query-knowledge-base.md#ranker-process) přirozeného jazyka (NLP) pro angličtinu
 
 > [!div class="nextstepaction"]
 > [Vytvoření služby QnA Maker](how-to/set-up-qnamaker-service-azure.md)
