@@ -146,11 +146,15 @@
       items:
         - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
           href: load-balancer-troubleshoot.md
-        - name: Řešení potíží s běžnými chybami nasazení
+        - name: Stav sondy stavu
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Provoz back-endového fondu (virtuální počítač)
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Běžné chyby nasazení
           href: load-balancer-common-deployment-errors.md
-        - name: Řešení běžných potíží s odchozím připojením
+        - name: Běžné problémy s odchozím připojením
           href: troubleshoot-outbound-connection.md
-        - name: Řešení potíží se stavem prostředků a příchozí dostupností
+        - name: Potíže se stavem prostředků a příchozí dostupností
           href: troubleshoot-rhc.md
 - name: Referenční informace
   items:

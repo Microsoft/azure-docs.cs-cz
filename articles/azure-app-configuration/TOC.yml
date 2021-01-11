@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: Použití příznaků funkcí
       items:
-        - name: .NET Core
+        - name: Jádro ASP.NET
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: Návody
   items:
-    - name: Povolení funkce pro určité procento uživatelů
+    - name: Použití příznaků podmíněných funkcí
       href: howto-feature-filters-aspnet-core.md
     - name: Povolení funkce pro zadané uživatele/skupiny
       href: howto-targetingfilter-aspnet-core.md

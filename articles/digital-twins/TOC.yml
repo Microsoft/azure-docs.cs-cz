@@ -49,6 +49,8 @@
               href: how-to-set-up-instance-portal.md
             - name: Verze rozhraní příkazového řádku
               href: how-to-set-up-instance-cli.md
+            - name: Verze Powershellu
+              href: how-to-set-up-instance-powershell.md
             - name: Skriptovaná verze
               href: how-to-set-up-instance-scripted.md
         - name: Zápis ověřovacího kódu aplikace
