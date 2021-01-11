@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343582"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063684"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL.js
 
@@ -36,7 +36,7 @@ Po registraci aplikace budete potřebovat některé nebo všechny následující
 
 | Hodnota | Povinné | Popis |
 |:----- | :------: | :---------- |
-| ID aplikace (klienta) | Vyžadováno | Identifikátor GUID, který jedinečně identifikuje vaši aplikaci v rámci platformy Microsoft identity |
+| ID aplikace (klienta) | Povinné | Identifikátor GUID, který jedinečně identifikuje vaši aplikaci v rámci platformy Microsoft identity |
 | Autorita | Volitelné | Adresa URL zprostředkovatele identity ( *instance*) a *cílová skupina pro přihlášení* k vaší aplikaci. Po zřetězení instance a přihlašování se přihlásí *autorita*. |
 | ID adresáře (tenanta) | Volitelné | Tuto hodnotu zadejte, pokud vytváříte obchodní aplikaci výhradně pro vaši organizaci, která se často označuje jako *aplikace pro jednoho tenanta*. |
 | Identifikátor URI pro přesměrování | Volitelné | Pokud vytváříte webovou aplikaci, `redirectUri` Určuje, kde poskytovatel identity (Microsoft Identity Platform) by měl vrátit tokeny zabezpečení, které vydala. |

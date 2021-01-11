@@ -13,16 +13,16 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026850"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064840"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Známé problémy s prohlížeči Internet Explorer (MSAL.js)
 
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) je vygenerovaná pro [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby ji bylo možné spustit v Internet Exploreru. Existuje však několik věcí, které je třeba znát.
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) se vygeneruje pro [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby ji bylo možné spustit v Internet Exploreru. Existuje však několik věcí, které je třeba znát.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Spuštění aplikace v Internet Exploreru
 Pokud máte v úmyslu používat MSAL.js v aplikacích, které lze spustit v aplikaci Internet Explorer, bude nutné před odkazování na MSAL.js skriptu přidat odkaz na doplňování Promise.

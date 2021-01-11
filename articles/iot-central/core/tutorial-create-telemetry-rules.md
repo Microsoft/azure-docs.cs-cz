@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033842"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065282"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -24,7 +24,7 @@ Zařízení využívají telemetrii k posílání číselných dat ze zařízen�
 
 V tomto kurzu vytvoříte pravidlo k odeslání e-mailu, když teplota v zařízení se simulovaným senzorem překročí 70 &deg; F.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -118,4 +118,4 @@ V tomto kurzu jste se naučili:
 Teď, když jste definovali pravidlo na základě prahové hodnoty, je navržený další krok, ve kterém se dozvíte, jak:
 
 > [!div class="nextstepaction"]
-> [Nakonfigurujte průběžný export dat](./howto-export-data.md).
+> [Vytvořit Webhooky na pravidlech](./howto-create-webhooks.md).

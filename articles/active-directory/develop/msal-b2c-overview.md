@@ -13,14 +13,14 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107868"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063718"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro JavaScript pro práci s Azure AD B2C
 
 [Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) umožňuje vývojářům JavaScriptu ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
 
@@ -32,7 +32,7 @@ Následující části ukazují, jak:
 - Podpora přihlašování v aplikaci s jednou stránkou (SPA) *a volání* chráněného webového rozhraní API
 - Povolit podporu resetování hesel
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud jste to ještě neudělali, vytvořte [tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
@@ -215,6 +215,6 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
 - [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/configure-user-input.md)

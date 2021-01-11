@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173460"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064964"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
 
@@ -36,7 +36,7 @@ Kromě toho povolení jednotného přihlašování ve vaší aplikaci odemkne no
 
 K tomu, aby vaše aplikace mohla využívat jednotné přihlašování, doporučujeme použít následující.
 
-### <a name="use-microsoft-authentication-library-msal"></a>Použití knihovny Microsoft Authentication Library (MSAL)
+### <a name="use-the-microsoft-authentication-library-msal"></a>Použití knihovny Microsoft Authentication Library (MSAL)
 
 Nejlepší volbou pro implementaci jednotného přihlašování v aplikaci je použití [knihovny Microsoft Authentication Library (MSAL)](msal-overview.md). Pomocí MSAL můžete do své aplikace přidat ověřování s minimálními voláními kódu a rozhraní API, získat kompletní funkce [platformy Microsoft Identity Platform](./index.yml)a nechat Microsoft zvládnout údržbu řešení zabezpečeného ověřování. Ve výchozím nastavení MSAL přidává podporu jednotného přihlašování pro vaši aplikaci. Použití MSAL je navíc potřeba v případě, že plánujete implementovat taky zásady ochrany aplikací.
 

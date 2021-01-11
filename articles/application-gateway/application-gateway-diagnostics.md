@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347587"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065316"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -222,7 +222,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|Hostitel| Adresa uvedená v hlavičce hostitele žádosti. Pokud je přepsáno, toto pole obsahuje aktualizovaný název hostitele.|
+|Hostitel| Adresa uvedená v hlavičce hostitele žádosti. Pokud přepíšete pomocí přepisu hlavičky, toto pole obsahuje aktualizovaný název hostitele.|
 |originalRequestUriWithArgs| Toto pole obsahuje původní adresu URL požadavku. |
 |requestUri| Toto pole obsahuje adresu URL po operaci přepsání u Application Gateway |
 |originalHost| Toto pole obsahuje původní název hostitele žádosti.

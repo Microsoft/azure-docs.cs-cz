@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987350"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065435"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Export dat IoT do cílů cloudu pomocí exportu dat (starší verze)
 
 > [!Note]
 > Tento článek popisuje funkce exportu starších dat v IoT Central.
 >
-> - Informace o nových funkcích Preview pro export dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat](./howto-export-data.md).
+> - Informace o nejnovějších funkcích exportu dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat](./howto-export-data.md).
 > - Další informace o rozdílech mezi funkcemi exportu dat ve verzi Preview a starších verzí exportu dat najdete v [srovnávací tabulce](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export).
 
 Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus** nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
@@ -67,9 +67,9 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
-    |Standard|Pro obecné účely v2|
-    |Standard|Pro obecné účely v1|
-    |Standard|Blob Storage|
+    |Standardní|Pro obecné účely v2|
+    |Standardní|Pro obecné účely v1|
+    |Standardní|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
 2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
@@ -140,7 +140,7 @@ Pro úložiště objektů BLOB se zprávy účtují a exportují jednou za minut
 > [!NOTE]
 > V případě úložiště objektů BLOB zajistěte, aby vaše zařízení odesílala zprávy, které mají `contentType: application/JSON` a `contentEncoding:utf-8` (nebo `utf-16` `utf-32` ). Příklad najdete v [dokumentaci k IoT Hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) .
 
-Zařízení, které poslalo telemetrii, je reprezentované ID zařízení (viz následující oddíly). Pokud chcete získat názvy zařízení, exportovat data zařízení a sladit každou zprávu pomocí **connectionDeviceId** , který odpovídá ID zařízení zprávy zařízení. **deviceId**
+Zařízení, které poslalo telemetrii, je reprezentované ID zařízení (viz následující oddíly). Pokud chcete získat názvy zařízení, exportovat data zařízení a sladit každou zprávu pomocí **connectionDeviceId** , který odpovídá ID zařízení zprávy zařízení. 
 
 Následující příklad ukazuje zprávu přijatou z centra událostí nebo Service Bus fronty nebo tématu:
 

@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
+title: Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 titleSuffix: Microsoft identity platform
 description: Pokyny a scénáře pro vývojáře pro podmíněný přístup Azure AD a platformy Microsoft identity
 services: active-directory
@@ -14,14 +14,14 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120622"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064364"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
@@ -43,7 +43,7 @@ Předpokládá se znalost [jednotlivých](quickstart-register-app.md) a [vícekl
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře.Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu.Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
+V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře. Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu. Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
 
 Konkrétně následující scénáře vyžadují kód pro zpracování výzev podmíněného přístupu:
 
@@ -182,6 +182,6 @@ Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukáz
 
 * Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../conditional-access/overview.md).
 * Další ukázky kódu Azure AD najdete v tématu [ukázky](sample-v2-code.md).
-* Další informace o sadě MSAL SDK a o přístupu k referenční dokumentaci najdete v tématu [Přehled knihovny Microsoft Authentication Library](msal-overview.md).
+* Další informace o sadě MSAL SDK a přístup k referenční dokumentaci najdete v tématu [Přehled knihovny ověřování společnosti Microsoft](msal-overview.md).
 * Další informace o scénářích s více klienty najdete v tématu [Postup přihlášení uživatelů pomocí vzoru s více klienty](howto-convert-app-to-be-multi-tenant.md).
 * Přečtěte si další informace o [podmíněném přístupu a zabezpečení přístupu k aplikacím IoT](/azure/architecture/example-scenario/iot-aad/iot-aad).

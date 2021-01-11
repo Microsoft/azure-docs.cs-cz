@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803795"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065175"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Řešení potíží v ITSM konektoru
 
@@ -23,13 +23,38 @@ ITSM poskytuje možnost odesílat výstrahy do externího systému lístků, jak
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizujte a analyzujte data o incidentech a žádostech o změnu.
 
-V závislosti na konfiguraci při nastavování připojení se ITSMC může synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [části Další informace](./itsmc-overview.md) v tomto článku.
+V závislosti na konfiguraci při nastavování připojení se ITSMC může synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [části Další informace](./itsmc-synced-data.md) v tomto článku.
 
 Pomocí řídicího panelu ITSMC můžete vizualizovat incident a data žádosti o změnu.
 
 ![Snímek obrazovky zobrazující řídicí panel ITSMC](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Řídicí panel také poskytuje informace o stavu konektoru, který můžete použít jako výchozí bod k analýze problémů s připojením.
+
+### <a name="error-investigation-using-the-dashboard"></a>Chyba při šetření pomocí řídicího panelu
+
+Chcete-li zobrazit chyby na řídicím panelu, postupujte podle následujících kroků:
+
+1. Ve **všech prostředcích** vyhledejte **partnera (*název vašeho pracovního prostoru*)**:
+
+   ![Snímek obrazovky, který zobrazuje poslední prostředky v Azure Portal.](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM**:
+
+   ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. V části **Souhrn** v levém okně **konektor správy služby IT** vyberte **Zobrazit souhrn**:
+
+    ![Snímek obrazovky, který zobrazuje souhrn zobrazení](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. V části **Souhrn** v levém okně **konektor Service Management Connector** klikněte na graf:
+
+    ![Snímek obrazovky znázorňující kliknutí na graf](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. Pomocí tohoto řídicího panelu budete moct zkontrolovat stav a chyby ve vašem konektoru.
+    ![Snímek obrazovky zobrazující stav konektoru](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Mapa služeb
 
 Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v Service Map.
 

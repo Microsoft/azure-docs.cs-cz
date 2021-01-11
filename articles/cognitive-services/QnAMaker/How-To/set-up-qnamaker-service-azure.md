@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353302"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065401"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -114,7 +114,7 @@ Služba App Service, která slouží jako modul runtime předpovědi QnA Maker p
 
 Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v případě, že nedochází k provozu, nastavte nečinné na Always On.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte službu App Service prostředku QnA Maker. Bude mít stejný název jako prostředek QnA Maker, ale bude mít jiný **typ** App Service.
 1. Najděte **Nastavení** a pak vyberte **Konfigurace**.
 1. V podokně Konfigurace vyberte **Obecná nastavení** a pak najít **vždycky zapnuto** **a jako hodnotu** vyberte.
@@ -128,12 +128,18 @@ Aby se zajistilo, že se aplikace koncového bodu předpovědi načetla i v př�
 Přečtěte si další informace o tom, jak nakonfigurovat App Service [Obecná nastavení](../../../app-service/configure-common.md#configure-general-settings).
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurace App Service Environment pro hostování QnA Maker App Service
-App Service Environment lze použít k hostování služby QnA Maker App Service. Pokud je App Service Environment interní, je nutné provést následující kroky:
-1. Vytvořte službu App Service a službu Azure Search.
-2. Vystavte službu App Service a povolte QnA Maker dostupnost jako:
-    * Veřejně dostupné – výchozí
-    * Značka služby DNS: `CognitiveServicesManagement`
-3. Vytvořte instanci služby QnA Maker rozpoznávání (Microsoft. Cognitiveservices Account/Accounts) pomocí Azure Resource Manager, kde QnA Maker koncový bod by měl být nastaven na App Service Environment.
+K hostování služby QnA Maker App Service se dá použít App Service Environment (pomocného mechanismu). Postupujte následovně:
+
+1. Vytvořte App Service Environment a označte ji jako "externí". Pokyny najdete v tomto [kurzu](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) .
+2.  Vytvořte službu App Service v rámci App Service Environment.
+    * Ověřte konfiguraci služby App Service a jako nastavení aplikace přidejte ' PrimaryEndpointKey '. Hodnota pro ' PrimaryEndpointKey ' by měla být nastavena na hodnotu \<app-name\> -PrimaryEndpointKey. Název aplikace je definovaný v adrese URL služby App Service. Pokud je například adresa URL služby App Service "mywebsite.myase.p.azurewebsite.net", pak název aplikace je "mywebsite". V tomto případě by měla být hodnota pro ' PrimaryEndpointKey ' nastavena na "mywebsite-PrimaryEndpointKey".
+    * Vytvořte službu Azure Search.
+    * Ujistěte se, že Azure Search a nastavení aplikace jsou správně nakonfigurované. 
+      Postupujte prosím podle tohoto [kurzu](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service).
+3.  Aktualizace skupiny zabezpečení sítě přidružené k App Service Environment
+    * Aktualizujte předem vytvořená příchozí pravidla zabezpečení podle vašich požadavků.
+    * Přidejte nové příchozí pravidlo zabezpečení se zdrojem jako značkou služby a označením zdrojové služby jako "CognitiveServicesManagement".
+4.  Vytvořte instanci služby QnA Maker rozpoznávání (Microsoft. Cognitiveservices Account/Accounts) pomocí Azure Resource Manager, kde QnA Maker koncový bod by měl být nastaven na App Service koncový bod, který jste vytvořili výše (https://mywebsite.myase.p.azurewebsite.net).
 
 ### <a name="network-isolation-for-app-service"></a>Izolace sítě pro App Service
 
@@ -254,15 +260,15 @@ Přečtěte si, jak upgradovat prostředky používané ve znalostní bázi. QnA
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
+Pokud plánujete mít velké množství znalostních bází, upgradujte cenovou úroveň služby Azure Cognitive Search.
 
-V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
+V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte takto:
 
 1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 
     ![Prostředek služby Azure Search QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Obnovte indexy z původního prostředku Azure Search do nového. Podívejte se na [ukázkový kód obnovení zálohování](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Obnovte indexy z původního prostředku Azure Search do nového. Projděte si [vzorový kód pro zálohování a obnovení](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
 1. Po obnovení dat přejděte na nový prostředek služby Azure Search, vyberte **klíče** a zapište **název** a **klíč správce**:
 
@@ -272,11 +278,11 @@ V současné době nemůžete provést místní upgrade SKU služby Azure Search
 
     ![Instance QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. Vyberte **nastavení aplikace** a upravte nastavení v polích **AzureSearchName** a **AzureSearchAdminKey** z kroku 3.
+1. Vyberte **Nastavení aplikace** a upravte nastavení v polích **Název služby Azure Search** a **Klíč správce služby Azure Search** s použitím hodnot z kroku 3.
 
     ![Nastavení App Service QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
-1. Restartujte instanci App Service.
+1. Restartujte instanci služby App Service.
 
     ![Restartování instance QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
@@ -343,15 +349,15 @@ Bezplatné prostředky vyhledávání se odstraní po 90 dnech bez přijetí vol
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
-Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
+Pokud plánujete mít velké množství znalostních bází, upgradujte cenovou úroveň služby Azure Cognitive Search.
 
-V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
+V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte takto:
 
 1. Vytvořte nový prostředek Azure Search v Azure Portal a vyberte požadovanou SKU.
 
     ![Prostředek služby Azure Search QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Obnovte indexy z původního prostředku Azure Search do nového. Podívejte se na [ukázkový kód obnovení zálohování](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Obnovte indexy z původního prostředku Azure Search do nového. Projděte si [vzorový kód pro zálohování a obnovení](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
 1. Postup propojení nového prostředku Azure Search se službou QnA Maker Managed (Preview) najdete v následujícím tématu.
 

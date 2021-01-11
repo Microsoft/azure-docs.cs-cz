@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874096"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065112"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -26,7 +26,7 @@ Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit
 - [Předávací ověřování](how-to-connect-pta.md) – Metoda přihlašování, která umožňuje uživatelům používat stejné heslo místně a v cloudu, ale nevyžaduje další infrastrukturu federovaného prostředí.
 - [Integrace federace](how-to-connect-fed-whatis.md) – federace je volitelná součást Azure AD Connect a je možné ji použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury AD FS. Poskytuje taky AD FS možnosti správy, jako je například obnovení certifikátu a další AD FS nasazení serveru.
 - [Synchronizace](how-to-connect-sync-whatis.md) – zodpovídá za vytváření uživatelů, skupin a dalších objektů.  A zároveň se ujistěte, že informace o identitě místních uživatelů a skupin odpovídají cloudu.  Tato synchronizace zahrnuje taky hodnoty hash hesel.
-- [Sledování stavu]() – Azure AD Connect Health může poskytovat robustní monitorování a poskytnout centrální umístění v Azure Portal k zobrazení této aktivity. 
+- [Sledování stavu](whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) – Azure AD Connect Health může poskytovat robustní monitorování a poskytnout centrální umístění v Azure Portal k zobrazení této aktivity. 
 
 
 ![Co je služba Azure AD Connect](./media/whatis-hybrid-identity/arch.png)

@@ -7,21 +7,18 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032367"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065384"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
 > [!Note]
-> Tento článek popisuje funkce exportu dat v IoT Central.
->
-> - Informace o funkcích exportu starších dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat (starší verze)](./howto-export-data-legacy.md).
-> - Další informace o rozdílech mezi funkcemi exportu dat a exportem starších dat najdete v [tabulce pro porovnání](#comparison-of-legacy-data-export-and-data-export) .
+> Tento článek popisuje funkce exportu dat v IoT Central. Informace o funkcích exportu starších dat najdete v tématu [Export dat IoT do cloudových cílů pomocí exportu dat (starší verze)](./howto-export-data-legacy.md).
 
 Tento článek popisuje, jak používat novou funkci exportu dat v Azure IoT Central. Pomocí této funkce můžete průběžně exportovat filtrovaná a obohacená data IoT z vaší aplikace IoT Central. Export dat nabízí změny téměř v reálném čase do dalších částí vašeho cloudového řešení pro rychlé poznatky, analýzy a úložiště.
 
@@ -97,9 +94,9 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
-    |Standard|Pro obecné účely v2|
-    |Standard|Pro obecné účely v1|
-    |Standard|Blob Storage|
+    |Standardní|Pro obecné účely v2|
+    |Standardní|Pro obecné účely v1|
+    |Standardní|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
 1. Pokud chcete vytvořit kontejner v účtu úložiště, klikněte na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.

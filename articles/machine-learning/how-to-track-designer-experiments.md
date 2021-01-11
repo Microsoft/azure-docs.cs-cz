@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709414"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065248"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Povolit protokolování v Azure Machine Learningch kanálech návrháře
 
@@ -27,7 +27,7 @@ Další informace o protokolování metrik pomocí prostředí SDK pro vytváře
 
 ## <a name="enable-logging-with-execute-python-script"></a>Povolit protokolování pomocí skriptu Pythonu pro spuštění
 
-K povolení protokolování v kanálech návrháře použijte modul __spouštění skriptu Pythonu__ . I když pomocí tohoto pracovního postupu můžete protokolovat libovolnou hodnotu, je zvláště užitečné protokolovat metriky z modulu __vyhodnocení modelu__ ke sledování výkonu modelu v průběhu spuštění.
+K povolení protokolování v kanálech návrháře použijte modul [spouštění skriptu Pythonu](./algorithm-module-reference/execute-python-script.md) . I když pomocí tohoto pracovního postupu můžete protokolovat libovolnou hodnotu, je zvláště užitečné protokolovat metriky z modulu __vyhodnocení modelu__ ke sledování výkonu modelu v průběhu spuštění.
 
 Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškolených modelů pomocí vyhodnocení modelu a spouštění modulů skriptu Pythonu.
 
@@ -53,7 +53,7 @@ Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškole
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -81,3 +81,4 @@ V tomto článku jste zjistili, jak používat protokoly v návrháři. Další 
 
 * Přečtěte si, jak řešit potíže s kanály návrháře, najdete v tématu [ladění & řešení potíží s kanály](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Přečtěte si, jak pomocí sady Python SDK protokolovat metriky v prostředí pro vytváření obsahu SDK, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
+* Naučte se používat [skript spustit](./algorithm-module-reference/execute-python-script.md) v jazyce Python v návrháři.

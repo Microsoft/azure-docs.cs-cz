@@ -1,18 +1,18 @@
 ---
 title: Dotaz mezi službami mezi Azure Monitor a Azure Průzkumník dat (Preview)
 description: Dotazování dat Azure Průzkumník dat prostřednictvím Azure Log Analytics Tools naopak pro připojení a analýzu všech dat na jednom místě.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749241"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065265"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Dotaz na různé služby – Azure Monitor a Azure Průzkumník dat (Preview)
 Vytvářejte dotazy mezi službami mezi [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics](/azure/azure-monitor/platform/data-platform-logs).

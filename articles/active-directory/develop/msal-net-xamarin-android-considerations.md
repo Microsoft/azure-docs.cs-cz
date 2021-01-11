@@ -13,16 +13,16 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995178"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063429"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET
 
-Při použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET) je potřeba provést několik změn konfigurace, které máte v kódu dělat. V následujících částech jsou popsány požadované úpravy, za kterými následuje část [věnované odstraňování potíží](#troubleshooting) , které vám pomůžou vyhnout se některým z nejběžnějších problémů.
+Při použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET) existuje několik změn konfigurace, které je třeba provést ve svém kódu. V následujících částech jsou popsány požadované úpravy, za kterými následuje část [věnované odstraňování potíží](#troubleshooting) , které vám pomůžou vyhnout se některým z nejběžnějších problémů.
 
 ## <a name="set-the-parent-activity"></a>Nastavení nadřazené aktivity
 
