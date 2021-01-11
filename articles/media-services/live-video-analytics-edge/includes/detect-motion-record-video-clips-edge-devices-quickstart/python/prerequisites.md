@@ -1,14 +1,16 @@
 ---
-ms.openlocfilehash: c03c40d1a3b6fa40415c50a100f809315815776e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a6b78aaa2bf23051ed4ee8950a764b01a3ca3bb
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682196"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061064"
 ---
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+        > [!TIP]
+        > Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Bez obav tuto výzvu ignorujte.
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * [Python 3](https://www.python.org/downloads/) (3.6.9 nebo novější), [PIP 3](https://pip.pypa.io/en/stable/installing/) a volitelně [venv](https://docs.python.org/3/library/venv.html).
 * Pokud jste nedokončili rychlé zprovoznění [Najít pohyb a generovat události](../../../detect-motion-emit-events-quickstart.md) , postupujte podle těchto kroků:
@@ -18,4 +20,4 @@ ms.locfileid: "88682196"
      1. [Příprava na monitorování událostí](../../../detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)
 
 > [!TIP]
-> Při instalaci nástrojů Azure IoT se může zobrazit výzva k instalaci Docker. Bez obav tuto výzvu ignorujte.
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](../../../troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.

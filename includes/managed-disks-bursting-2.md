@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805633"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061048"
 ---
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
@@ -28,7 +28,7 @@ Systém shlukování zatížení se vztahuje stejným způsobem na úrovni virtu
 
 ![Diagram shlukování s intervaly](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Až na vás, jak budete chtít používat 30 minut shlukování. Můžete ji použít po dobu 30 minut po sobě jdoucí nebo občasně v průběhu dne. Když je produkt nasazený, je připravený s úplnými kredity a při vyčerpání kreditů, které trvá déle než jeden den, získáte plnou zásobu kreditů. Můžete nashromáždit a strávit své kredity na základě vašeho uvážení a 30 minutový interval nemusí být znovu nanejvýš na nárůst. Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
+Je zcela na vás, jak chcete používat 30 minut při roztržení. Můžete ji použít po dobu 30 minut po sobě jdoucí nebo občasně v průběhu dne. Když je produkt nasazený, je připravený s úplnými kredity a při vyčerpání kreditů, které trvá déle než jeden den, získáte plnou zásobu kreditů. Můžete nashromáždit a strávit své kredity na základě vašeho uvážení a 30 minutový interval nemusí být znovu nanejvýš na nárůst. Jedna z věcí, kterou si můžete všimnout při akumulaci, je to, že se u každého prostředku liší, protože vychází z nevyužitých vstupně-výstupních operací a MB/s pod jejich objemy výkonu. To znamená, že vyšší nároky na základní výkon můžou snížit množství jejich nárůstu rychleji než nižší směrné produkty. Například volnoběh disku P1 bez aktivity bude mít 120 vstupně-výstupních operací za sekundu, zatímco P20 disk během volnoběhu bez aktivity narůstá 2 300 vstupně-výstupních operací za sekundu.
 
 ## <a name="bursting-states"></a>Stavy shlukování
 Existují tři stavy, ve kterých může být prostředek zapnutý s povoleným roztržením:
