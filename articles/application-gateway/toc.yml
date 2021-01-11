@@ -109,7 +109,7 @@
     - name: Vysvětlení cen
       href: understanding-pricing.md
     - name: Nejčastější dotazy
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Návody
   items:
     - name: Hostování jedné lokality
