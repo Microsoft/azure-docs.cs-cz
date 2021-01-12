@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020651"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107918"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -770,6 +770,7 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 | Microsoft. Directory/directoryRoles/allProperties/allTasks | Vytvořit a odstranit directoryRoles a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | Vytvořit a odstranit directoryRoleTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/domény/allProperties/allTasks | Vytváření a odstraňování domén a čtení a aktualizace všech vlastností v Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
 | Microsoft. Directory/Groups/allProperties/allTasks | Vytváření a odstraňování skupin a čtení a aktualizace všech vlastností v Azure Active Directory. |
 | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
 | Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
@@ -831,6 +832,7 @@ Může číst a spravovat konfiguraci a sestavy dodržování předpisů v Azure
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
 | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
@@ -1133,6 +1135,7 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 | Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
 | Microsoft. Directory/directoryRoles/Members/Read    | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
 | Microsoft. Directory/domény/Basic/číst    | Přečte základní vlastnosti domén v Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
 | Microsoft. Directory/Groups/appRoleAssignments/Read    | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Read    | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/hiddenMembers/Read    | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
@@ -1231,7 +1234,7 @@ Může resetovat hesla pro správce bez oprávnění správce a helpdesku.
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Oprávnění správce hybridní identity
 
-Umožňuje povolit, nasadit, konfigurovat, spravovat, monitorovat a řešit potíže se službami zřizování a ověřování cloudu. 
+Může spravovat AD do zřizování cloudu Azure AD a nastavení federace. 
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -1249,8 +1252,10 @@ Umožňuje povolit, nasadit, konfigurovat, spravovat, monitorovat a řešit pot�
 | Microsoft. Directory/applicationTemplates/instance | Vytvoří instanci aplikací galerie z šablon aplikací. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Přečtěte si a nakonfigurujte všechny vlastnosti služby Azure AD Cloud Provisioning. |
-| Microsoft. Directory/události FederatedAuthentication/allProperties/allTasks | Spravujte všechny aspekty služby AD FS (Active Directory Federation Services) nebo poskytovatele federace třetích stran ve službě Azure AD. |
+| Microsoft. Directory/domén/allProperties/Read | Načte všechny vlastnosti domén. |
+| Microsoft. Directory/domény/federace/aktualizace | Aktualizuje vlastnost federace domén. |
 | Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
+| Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
 | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
 | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
@@ -1708,9 +1713,10 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
 | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
 | Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/identityProtection/allProperties/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
 | Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
@@ -1761,6 +1767,7 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Microsoft 365.
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
 | Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 | Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
@@ -1926,6 +1933,7 @@ Může spravovat všechny aspekty uživatelů a skupin, včetně resetování he
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
 | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
@@ -2027,7 +2035,7 @@ Týmy Communications support specialisty | Týmy Communications support speciali
 Správci zařízení Teams | Správci zařízení Teams | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Správce služby Teams | Správce služby Teams | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Čtečka sestav Souhrn využití | Čtečka sestav Souhrn využití | 75934031-6c7e-415a-99d7-48dbd49e875e
-Uživatel | Nezobrazeno, protože nemůže být použit | a0b1b346-4d3e-4e8b-98f8-753987be4970
+User | Nezobrazeno, protože nemůže být použit | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Správce účtu uživatele | Správce uživatelů | fe930be7-5e62-47db-91af-98c3a49a38b1
 Připojení zařízení na pracovišti | Zastaralé | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
@@ -2061,7 +2069,7 @@ Správce služby Lync | Správce Skypu pro firmy | [Odráží aktuální značku
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](permissions-reference.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](permissions-reference.md#partner-tier2-support)
 Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | Není k dispozici
-Uživatel | Nezobrazeno, protože nemůže být použit | Není k dispozici
+User | Nezobrazeno, protože nemůže být použit | Není k dispozici
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347570"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108615"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -41,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](tutorial-dotnetcore-sqldb-app.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
@@ -229,6 +229,9 @@ Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
 > [!NOTE]
 > Back-endové služby spravovaných identit také [uchovávají mezipaměť tokenů](overview-managed-identity.md#obtain-tokens-for-azure-resources) , která aktualizuje token pro cílový prostředek pouze v případě, že jeho platnost vyprší. Pokud uděláte omylem konfiguraci oprávnění SQL Database a pokusíte se změnit oprávnění *po* pokusu o získání tokenu s vaší aplikací, nezískáte ve skutečnosti nový token s aktualizovanými oprávněními, dokud nevyprší platnost tokenu v mezipaměti.
 
+> [!NOTE]
+> Pro SQL Server v Prem se nepodporuje AAD, a to zahrnuje MSIs. 
+
 ### <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
 Mějte na paměti, že stejné změny, které jste provedli v *Web.config* nebo *appsettings.jsv* sadě Works se spravovanými identitami, tak stačí k odebrání stávajícího připojovacího řetězce v App Service, který Visual Studio vytvořila poprvé nasazení vaší aplikace. Použijte následující příkaz, ale nahraďte *\<app-name>* názvem vaší aplikace.
@@ -251,7 +254,7 @@ Na stránce publikování klikněte na **Publikovat**.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Pokud se na nové webové stránce zobrazí seznam úkolů, připojuje se vaše aplikace k databázi pomocí spravované identity.

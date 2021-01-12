@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 86e84c60aec99246f58b5dc9d67584b23a3969f3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dddaad3e171c757b353deb81ffcb77cfbe706340
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394917"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108258"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>Sledování změn dat ve službě Azure SQL Edge
 
@@ -36,6 +36,9 @@ Pokud chcete tuto funkci spravovat a monitorovat, přečtěte si téma [Správa 
 
 Informace o tom, jak pomocí změněných dat dotazovat a pracovat s nimi, najdete v tématu [práce s daty změny](/sql/relational-databases/track-changes/work-with-change-data-sql-server).
 
+> [!NOTE]
+> Funkce Change Data Capture, které jsou závislé na CLR, nejsou podporovány na Edge SQL Azure.
+
 ## <a name="change-tracking"></a>Sledování změn
 
 Podrobné informace o tom, jak tato funkce funguje, najdete v tématu [o sledování změn](/sql/relational-databases/track-changes/about-change-tracking-sql-server).
@@ -48,7 +51,7 @@ Informace o tom, jak pomocí změněných dat dotazovat a pracovat s nimi, najde
 
 ## <a name="temporal-tables"></a>Dočasné tabulky
 
-Azure SQL Edge podporuje také funkci dočasné tabulky SQL Server. Tato funkce (označovaná také jako *dočasné tabulky se systémovou správou verzí* ) přináší integrovanou podporu pro poskytování informací o datech uložených v tabulce v libovolném časovém okamžiku. Tato funkce neposkytuje jenom informace o datech, která jsou v aktuálním okamžiku v čase správná.
+Azure SQL Edge podporuje také funkci dočasné tabulky SQL Server. Tato funkce (označovaná také jako *dočasné tabulky se systémovou správou verzí*) přináší integrovanou podporu pro poskytování informací o datech uložených v tabulce v libovolném časovém okamžiku. Tato funkce neposkytuje jenom informace o datech, která jsou v aktuálním okamžiku v čase správná.
 
 Dočasná tabulka se systémovou správou verzí je typ uživatelské tabulky, která je navržená tak, aby udržovala úplnou historii změn dat a umožňovala snadnou analýzu určitého bodu v čase. Tento typ dočasné tabulky je označován jako dočasná tabulka se systémovou správou verzí, protože období platnosti pro každý řádek je spravováno systémem (tj. databázový stroj).
 

@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033268"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108700"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -172,10 +172,43 @@ titanic_ds.take(3).to_pandas_dataframe()
 |Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
-1|2|Pravda|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|Pravda|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26.0|0|0|STON/O2. 3101282|7,9250||S
 
 Chcete-li znovu použít a sdílet datové sady mezi experimenty v pracovním prostoru, [Zaregistrujte datovou sadu](#register-datasets).
+
+
+## <a name="explore-data"></a>Zkoumání dat
+
+Jakmile vytvoříte a [zaregistrujete](#register-datasets) datovou sadu, můžete ji načíst do svého poznámkového bloku pro zkoumání dat před školením modelu. Pokud nepotřebujete provádět žádné zkoumání dat, přečtěte si téma Postup využívání datových sad ve školicích skriptech pro odesílání experimentů ML v [vlakech s datovými sadami](how-to-train-with-datasets.md).
+
+V případě datových sad můžete buď **připojit** nebo **Stáhnout** datovou sadu, a použít knihovny Pythonu, které běžně používáte pro zkoumání dat. [Přečtěte si další informace o připojení a stažení](how-to-train-with-datasets.md#mount-vs-download).
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+Pro TabularDatasets použijte [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metodu k zobrazení dat v datovém rámečku. 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|Ano|3|Heikkinen, chybíš. Laina|female (žena)|26.0|0|0|STON/O2. 3101282|7,9250||S
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Vytvoření datové sady z PANDAS dataframe
 

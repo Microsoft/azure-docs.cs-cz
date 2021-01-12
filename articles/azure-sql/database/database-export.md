@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671543"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107374"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Export do souboru BACPAC-Azure SQL Database a Azure SQL Managed instance
 
@@ -24,12 +24,13 @@ ms.locfileid: "92671543"
 
 Pokud potřebujete exportovat databázi k archivaci nebo přesunout na jinou platformu, můžete exportovat schéma databáze a data do souboru [BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications#Anchor_4) . Soubor BACPAC je soubor ZIP s příponou BACPAC obsahující metadata a data z databáze. Soubor BACPAC může být uložený v úložišti objektů BLOB v Azure nebo v místním úložišti v místním umístění a později se importuje zpátky do Azure SQL Database, spravované instance Azure SQL nebo instance SQL Server.
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 - Aby bylo možné export provést bez zásahu, je nutné zajistit, aby během exportu nedošlo k žádné aktivitě zápisu nebo zda exportujete z převedené [kopie](database-copy.md) vaší databáze.
 - Pokud exportujete do úložiště objektů blob, maximální velikost souboru BACPAC je 200 GB. Pokud chcete archivovat větší soubor BACPAC, exportujte ho do místního úložiště.
 - Export souboru BACPAC do služby Azure Premium Storage pomocí metod popsaných v tomto článku není podporován.
 - Úložiště za bránou firewall se momentálně nepodporuje.
+- Název souboru úložiště nebo vstupní hodnota pro StorageURI by měla být kratší než 128 znaků a nesmí končit znakem '. ' a nesmí obsahovat speciální znaky, jako je znak mezery nebo ' <, >, *,%, &,:, \, /,?). 
 - Pokud operace exportu přesáhne 20 hodin, může se zrušit. Pokud chcete během exportu zvýšit výkon, můžete:
 
   - Dočasně zvyšte velikost výpočetní kapacity.
@@ -54,9 +55,9 @@ Export BACPAC databáze ze [spravované instance Azure SQL](../managed-instance/
 
     ![Export databáze](./media/database-export/database-export2.png)
 
-3. Klikněte na **OK** .
+3. Klikněte na **OK**.
 
-4. Chcete-li monitorovat průběh operace exportu, otevřete stránku serveru obsahujícího exportovanou databázi. V části **Nastavení** klikněte na možnost **Import/export historie** .
+4. Chcete-li monitorovat průběh operace exportu, otevřete stránku serveru obsahujícího exportovanou databázi. V části **Nastavení** klikněte na možnost **Import/export historie**.
 
    ![Exportovat historii](./media/database-export/export-history.png)
 
@@ -89,7 +90,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Pokud chcete zjistit stav žádosti o export, použijte rutinu [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Spuštění hned poté, co požadavek obvykle vrátí **stav: probíhá zpracování** . Po zobrazení **stavu:** export byl dokončen.
+Pokud chcete zjistit stav žádosti o export, použijte rutinu [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Spuštění hned poté, co požadavek obvykle vrátí **stav: probíhá zpracování**. Po zobrazení **stavu:** export byl dokončen.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

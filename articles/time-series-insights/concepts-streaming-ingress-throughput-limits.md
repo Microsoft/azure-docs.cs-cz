@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187455"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108768"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Omezení propustnosti příjmu streamování
 
@@ -34,7 +34,7 @@ Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat pří
 
 > [!TIP]
 >
-> * Podpora prostředí pro přijímání rychlostí až 8 MB/s může být poskytnuta požadavkem.
+> * Podpora prostředí pro přijímání rychlostí až 2 MB/s může být zajištěna žádostí.
 > * Pokud potřebujete vyšší propustnost odesláním lístku podpory prostřednictvím Azure Portal, kontaktujte nás.
 
 * **Příklad 1:**
@@ -47,10 +47,10 @@ Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat pří
 
 * **Příklad 2:**
 
-    Analýza loďstva společnosti Contoso má 40 000 zařízení, která každou sekundu emitují událost. Používají centrum událostí s počtem oddílů 2, který je Azure Time Series Insights zdroj událostí Gen2. Velikost události je 200 bajtů.
+    Analýza loďstva společnosti Contoso má 10 000 zařízení, která každou sekundu emitují událost. Používají centrum událostí s počtem oddílů 2, který je Azure Time Series Insights zdroj událostí Gen2. Velikost události je 200 bajtů.
 
-  * Frekvence ingestování prostředí by byla: **40 000 zařízení × 200 bajtů/událost * 1 událost/s = 8 MB/** s.
-    * Za předpokladu rovnováhy oddílů by jejich frekvence na oddíly byla 4 MB/s.
+  * Frekvence ingestování prostředí by byla: **10 000 zařízení × 200 bajtů/událost * 1 událost/s = 2 MB**/s.
+    * Za předpokladu rovnováhy oddílů by jejich frekvence na oddíly byla 1 MB/s.
     * Míra ingestování infrastruktury společnosti Contoso je nad limity prostředí a oddílů. Můžou odeslat žádost o Azure Time Series Insights Gen2 prostřednictvím Azure Portal, aby se zvýšila rychlost příjmu pro své prostředí, a vytvořit centrum událostí s dalšími oddíly, které mají být v rámci omezení.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Omezení oddílů centra a na oddíly

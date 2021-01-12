@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070316"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107901"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Sada SDK Azure Machine Learning pro Python v 1.20.0
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + framework_version přidáno v OptimizationConfig. Použije se při registraci modelu s architekturou MULTI.
+  + **azureml-automl-runtime**
+    + V této aktualizaci jsme přidali exponenciální vyhlazení Holt zima do sady nástrojů sady AutoML SDK pro předpověď. S ohledem na časovou řadu se nejlepší model vybere pomocí [Akaikeho kritéria AICc (korigované podle údajů)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) a vrátí se.
+  + **AzureML-contrib – optimalizace**
+    + framework_version přidáno v OptimizationConfig. Použije se při registraci modelu s architekturou MULTI.
+  + **azureml-pipeline-steps**
+    + Představujeme CommandStep, který by provedl příkaz ke zpracování. Příkaz může obsahovat spustitelné soubory, příkazy prostředí, skripty atd.
+  + **azureml-core**
+    + Vytváření pracovního prostoru teď podporuje identitu přiřazenou uživateli. Přidání podpory UAI z SDK/CLI
+    + Opravený problém služby. Load () pro výběr změn v score.py v místním nasazení.
+    + `run.get_details()` obsahuje další pole s názvem "použít", které zobrazuje jméno autora pro tento běh.
+    + Upravená dokumentace k metodě model. Register, která uvádí, jak registrovat model přímo v běhu
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (aktualizace z prosince)
@@ -31,6 +51,7 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
   + Vylepšené doby načítání stránek
   + Vyšší výkon 
   + Vylepšená rychlost a spolehlivost jádra
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

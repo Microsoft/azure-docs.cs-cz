@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505371"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108394"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes
 
@@ -99,7 +99,7 @@ V některých případech mohou zákazníci, kteří mají regulativní omezení
 
 Existují dva způsoby [nasazení API Management do virtuální](./api-management-using-with-vnet.md) sítě – externí a interní. 
 
-Pokud se uživatelé rozhraní API nenacházejí ve virtuální síti clusteru, je třeba použít externí režim (obrázek. 4). V tomto režimu je API Management brána vložená do virtuální sítě clusteru, ale přístupná z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Pomůže zcela skrýt cluster a zároveň umožňuje externím klientům využívat mikroslužby. Kromě toho můžete k omezení síťového provozu použít možnosti sítě Azure, jako jsou třeba skupiny zabezpečení sítě (NSG).
+Pokud se uživatelé rozhraní API nenacházejí ve virtuální síti clusteru, je třeba použít externí režim (obrázek. 4). V tomto režimu je API Management brána vložená do virtuální sítě clusteru, ale přístupná z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Pomáhá plně skrývat cluster, a přitom umožňuje externím klientům využívat mikroslužby. Kromě toho můžete k omezení síťového provozu použít možnosti sítě Azure, jako jsou třeba skupiny zabezpečení sítě (NSG).
 
 ![Režim externí virtuální sítě](./media/api-management-aks/vnet-external.png)
 

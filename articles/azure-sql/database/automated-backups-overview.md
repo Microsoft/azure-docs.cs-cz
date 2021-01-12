@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917898"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108054"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -72,11 +72,11 @@ Operaci konfigurace zálohování a obnovení můžete vyzkoušet v následujíc
 
 | Operace | portál Azure | Azure PowerShell |
 |---|---|---|
-| **Změna uchovávání záloh** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance SQL](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance SQL](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Změna dlouhodobého uchovávání záloh** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance SQL – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[Spravovaná instance SQL](../managed-instance/long-term-backup-retention-configure.md)  |
-| **Obnovení databáze z určitého bodu v čase** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[Spravovaná instance SQL](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance SQL](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Obnovení odstraněné databáze** | [SQL Database](recovery-using-backups.md)<br>[Spravovaná instance SQL](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance SQL](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Obnovení databáze ze služby Azure Blob Storage** | SQL Database – N/A <br/>Spravovaná instance SQL – N/A  | SQL Database – N/A <br/>[Spravovaná instance SQL](../managed-instance/restore-sample-database-quickstart.md) |
+| **Změna uchovávání záloh** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Změna dlouhodobého uchovávání záloh** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance SQL – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Obnovení databáze z určitého bodu v čase** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Obnovení odstraněné databáze** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Obnovení databáze ze služby Azure Blob Storage** | SQL Database – N/A <br/>Spravovaná instance SQL – N/A  | SQL Database – N/A <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>Plánování zálohování
 
@@ -122,7 +122,7 @@ Využití úložiště zálohování až do maximální velikosti dat pro datab�
 
 ## <a name="backup-retention"></a>Uchování záloh
 
-U všech nových, obnovených a kopírovaných databází jsou Azure SQL Database a Azure SQL Managed instance zachovány dostatečné zálohy, aby ve výchozím nastavení povolovaly PITR během posledních 7 dnů. S výjimkou databází v rámci škálování můžete [změnit dobu uchovávání záloh](#change-the-pitr-backup-retention-period) na každou aktivní databázi v rozsahu 1-35 dne. Jak je popsáno v části [spotřeba úložiště zálohy](#backup-storage-consumption), zálohy uložené do povolit PITR můžou být starší než doba uchování. Jenom pro Azure SQL Managed instance je možné nastavit míru uchovávání záloh PITR, jakmile se databáze odstraní v rozsahu 0-35 dnů. 
+U všech nových, obnovených a kopírovaných databází jsou Azure SQL Database a Azure SQL Managed instance zachovány dostatečné zálohy, aby ve výchozím nastavení povolovaly PITR během posledních 7 dnů. S výjimkou databází s úrovněmi škálování a úrovně Basic můžete [změnit dobu uchovávání záloh](#change-the-pitr-backup-retention-period) na každou aktivní databázi v rozsahu 1-35 dní. Jak je popsáno v části [spotřeba úložiště zálohy](#backup-storage-consumption), zálohy uložené do povolit PITR můžou být starší než doba uchování. Jenom pro Azure SQL Managed instance je možné nastavit míru uchovávání záloh PITR, jakmile se databáze odstraní v rozsahu 0-35 dnů. 
 
 Pokud databázi odstraníte, systém bude uchovávat zálohy stejným způsobem jako online databáze s určitou dobou uchování. Nemůžete změnit dobu uchování zálohy pro odstraněnou databázi.
 
@@ -237,7 +237,7 @@ Změny uchovávání PITR zálohování pro SQL Database se provádí na stránc
 
 ![Změna uchovávání PITR, úrovně serveru](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Změny uchovávání záloh PITR pro spravovanou instanci SQL se provádí na úrovni jednotlivých databází. Chcete-li změnit uchovávání záloh PITR pro databázi instance z Azure Portal, přejděte do okna Přehled jednotlivé databáze. Pak vyberte **Konfigurovat uchovávání záloh** v horní části obrazovky:
 
@@ -261,7 +261,7 @@ Pro změnu uchovávání záloh PITR pro aktivní databáze SQL Azure použijte 
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
-#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Chcete-li změnit uchovávání záloh PITR pro **jednotlivé aktivní** databáze spravované instance SQL, použijte následující příklad prostředí PowerShell.
 
@@ -382,7 +382,7 @@ Redundanci úložiště zálohy spravované instance lze nastavit pouze během v
 V Azure Portal můžete v okně **vytvořit SQL Database** nakonfigurovat redundanci úložiště zálohování. Tato možnost je k dispozici v části redundance záložního úložiště. 
 ![Otevřít okno pro vytvoření SQL Database](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
 
-#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 V Azure Portal se při vytváření spravované instance SQL na kartě základy v případě, že vytváříte spravovanou instanci SQL, v okně **COMPUTE a úložiště** , které je dostupné na kartě **základy** , **nachází možnost změnit** redundanci záložního úložiště.
 ![Otevření konfigurace COMPUTE + úložiště – okno](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
@@ -419,7 +419,7 @@ Podrobnosti najdete v [sadě set-AzSqlDatabase](/powershell/module/az.sql/set-az
 > Pokud chcete použít parametr-BackupStorageRedundancy s obnovením databáze, kopírováním databáze nebo vytvořením sekundárních operací, použijte Azure PowerShell verze AZ. SQL 2.11.0. 
 
 
-#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Pro konfiguraci redundance záložního úložiště během vytváření spravované instance můžete zadat parametr-BackupStoageRedundancy. Možné hodnoty jsou geografické, zóna a místní.
 

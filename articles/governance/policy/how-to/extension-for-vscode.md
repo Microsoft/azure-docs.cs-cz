@@ -1,28 +1,28 @@
 ---
 title: Azure Policy rozšíření pro Visual Studio Code
 description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Azure Resource Manager aliasy.
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906297"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107935"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
-> Platí pro Azure Policy rozšíření verze **0.1.0** a novější.
+> Platí pro Azure Policy rozšíření verze **0.1.1** a novější.
 
 Naučte se používat Azure Policy rozšíření pro Visual Studio Code k hledání [aliasů](../concepts/definition-structure.md#aliases), kontrole prostředků a zásad, exportu objektů a vyhodnocení definic zásad. Nejdřív popíšeme, jak nainstalovat rozšíření Azure Policy v Visual Studio Code. Pak vás provedeme vyhledáním aliasů.
 
-Azure Policy rozšíření pro Visual Studio Code můžete nainstalovat na všechny platformy, které Visual Studio Code podporuje. Tato podpora zahrnuje Windows, Linux a macOS.
+Azure Policy rozšíření pro Visual Studio Code lze nainstalovat do systému Windows.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-and-configure-the-azure-policy-extension"></a>Instalace a konfigurace rozšíření Azure Policy

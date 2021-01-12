@@ -3,19 +3,19 @@ title: Přístup k virtuálním sítím Azure
 description: Přehled o tom, jak prostředí ISEs (Integration Service Environment) pomůžou přístup k Logic Apps přístup k virtuálním sítím Azure (virtuální sítě)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996317"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108564"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
-V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou uvnitř nebo připojené k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je instance služby Logic Apps, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
+V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou uvnitř nebo připojené k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je instance služby Logic Apps, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps. Data ve ISE zůstanou ve stejné oblasti, ve které [vytvoříte a nasadíte tuto ISE](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 Některé virtuální sítě Azure například používají privátní koncové body, které můžete nastavit prostřednictvím [privátního propojení Azure](../private-link/private-link-overview.md)a poskytnout tak přístup ke službám Azure PaaS, jako jsou Azure Storage, Azure Cosmos DB nebo Azure SQL Database, partnerské služby nebo služby zákazníkům hostované v Azure. Pokud vaše aplikace logiky potřebují přístup k virtuálním sítím, které používají privátní koncové body, musíte tyto aplikace logiky vytvořit, nasadit a spustit v rámci ISE.
 
@@ -99,7 +99,7 @@ Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Prem
 
   Poskytuje ISE s nižšími náklady, které můžete použít pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. SKU pro vývojáře obsahuje integrované triggery a akce, standardní konektory, podnikové konektory a jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) za pevnou měsíční cenu. Tato SKU ale nezahrnuje žádnou smlouvu o úrovni služeb (SLA), možnosti pro škálování kapacity nebo redundanci při recyklaci, což znamená, že se můžete setkat s prodlevami nebo výpadky.
 
-* **Nárok**
+* **Premium**
 
   Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jednoho účtu pro integraci na [standardní úrovni](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
 

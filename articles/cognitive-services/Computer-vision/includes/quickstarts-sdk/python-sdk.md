@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: ea71cd4e235923c48c7c5b5269eb8f58d4c349d1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fc4830e89d71c387afc1c7bc7fbc81608dfeb592
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560793"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109536"
 ---
 <a name="HOLTop"></a>
 
@@ -25,7 +25,7 @@ Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 
 [Referenční dokumentace](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
@@ -41,6 +41,12 @@ Klientskou knihovnu můžete nainstalovat pomocí nástroje:
 
 ```console
 pip install --upgrade azure-cognitiveservices-vision-computervision
+```
+
+Nainstalujte také knihovnu Pillow.
+
+```console
+pip install pillow
 ```
 
 ### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
@@ -68,7 +74,7 @@ Pak vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 Následující třídy a rozhraní se řídí některými hlavními funkcemi sady Počítačové zpracování obrazu Python SDK.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Tato třída přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.|
 | [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. Implementuje **ComputerVisionClientOperationsMixin**.|

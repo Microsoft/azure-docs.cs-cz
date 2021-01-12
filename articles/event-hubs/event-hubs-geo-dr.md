@@ -3,12 +3,12 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861467"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108456"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -54,10 +54,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ano | 
-| Standard | Vyhrazená | Ano | 
+| Standardní | Standardní | Ano | 
+| Standardní | Vyhrazená | Ano | 
 | Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standard | Ne | 
+| Vyhrazená | Standardní | No | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -70,7 +70,29 @@ Následující část obsahuje přehled procesu převzetí služeb při selhán�
 
 ### <a name="setup"></a>Nastavení
 
-Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. Nakonec byste měli přidat nějaké monitorování, abyste zjistili, jestli je převzetí služeb při selhání nezbytné. Ve většině případů je služba jednou ze velkých ekosystémů, takže automatické převzetí služeb při selhání je možné provést jenom v rámci synchronizace se zbývajícím subsystémem nebo infrastrukturou.
+Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. 
+
+1. Vytvořte primární obor názvů.
+1. Vytvořte sekundární obor názvů. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
+1. V Azure Portal přejděte k primárnímu oboru názvů.
+1. V nabídce vlevo vyberte **geografické obnovení** a na panelu nástrojů vyberte **Zahájit párování** . 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Iniciace párování z primárního oboru názvů":::    
+1. Na stránce **Zahájit párování** vyberte existující sekundární obor názvů nebo ho vytvořte a pak vyberte **vytvořit**. V následujícím příkladu je vybrán existující sekundární obor názvů. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Vybrat sekundární obor názvů":::        
+1. Když teď pro primární obor názvů vyberete **geografické obnovení** , zobrazí se stránka s **aliasem geografického Dr** , která vypadá jako na následujícím obrázku:
+
+    :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Stránka alias geografického DR":::    
+1. Na této stránce **přehledu** můžete provádět následující akce: 
+    1. Přerušit párování mezi primárními a sekundárními obory názvů. Na panelu nástrojů vyberte **přerušení párování** . 
+    1. Ruční převzetí služeb při selhání sekundárnímu oboru názvů. Na panelu nástrojů vyberte **převzetí služeb při selhání** . 
+    
+        > [!WARNING]
+        > Při selhání dojde k aktivaci sekundárního oboru názvů a odebrání primárního oboru názvů z párování obnovení Geo-Disaster. Vytvořte jiný obor názvů, abyste měli novou dvojici geografického zotavení po havárii. 
+1. Na stránce **alias geografického dru** vyberte **zásady sdíleného přístupu** pro přístup k primárnímu připojovacímu řetězci pro daný alias. Místo přímého použití připojovacího řetězce k primárnímu nebo sekundárnímu oboru názvů použijte tento připojovací řetězec. 
+
+Nakonec byste měli přidat nějaké monitorování, abyste zjistili, jestli je převzetí služeb při selhání nezbytné. Ve většině případů je služba jednou ze velkých ekosystémů, takže automatické převzetí služeb při selhání je možné provést jenom v rámci synchronizace se zbývajícím subsystémem nebo infrastrukturou.
 
 ### <a name="example"></a>Příklad
 
@@ -132,8 +154,8 @@ Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure P
 
 ![3][]
 
-## <a name="private-endpoints"></a>Soukromé koncové body
-V této části najdete další požadavky při použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Event Hubs obecně najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md).
+## <a name="private-endpoints"></a>Privátní koncové body
+V této části najdete další informace o použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Event Hubs obecně najdete v tématu [Konfigurace privátních koncových bodů](private-link-service.md).
 
 ### <a name="new-pairings"></a>Nové párování
 Pokud se pokusíte vytvořit párování mezi primárním oborem názvů s privátním koncovým bodem a sekundárním oborem názvů bez privátního koncového bodu, párování selže. Párování bude úspěšné pouze v případě, že oba primární i sekundární obory názvů mají privátní koncové body. Doporučujeme použít stejné konfigurace na primárních a sekundárních oborech názvů a na virtuálních sítích, ve kterých jsou vytvořeny privátní koncové body.  

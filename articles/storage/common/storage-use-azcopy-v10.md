@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6232b315abf8840d6fd77d02e3e928c0004746a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029324"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108144"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -105,8 +105,8 @@ Ukázkové příkazy najdete v některém z těchto článků.
 
 | Služba | Článek |
 |--------|-----------|
-|Azure Blob Storage |[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Stažení objektů BLOB ze služby Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-download.md)<br><br>[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-download.md)|
-|Soubory Azure |[Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)|
+|Azure Blob Storage |[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Stažení objektů BLOB ze služby Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-copy.md)<br><br>[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Files |[Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)|
 |Amazon S3|[Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)|
 |Azure Stack úložiště|[Přenos dat pomocí úložiště AzCopy a Azure Stack](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 

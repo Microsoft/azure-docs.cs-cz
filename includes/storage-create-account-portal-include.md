@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005536"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109548"
 ---
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
@@ -26,8 +26,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 1. Vyberte úroveň výkonu. Výchozí úroveň je *Standard*.
 1. Nastavte pole **druh účtu** na *Storage v2 (Obecné-účel v2)*.
 1. Určete, jak se bude účet úložiště replikovat. Výchozí možnost replikace je *geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)*. Další informace o dostupných možnostech replikace najdete v tématu [Azure Storage redundance](../articles/storage/common/storage-redundancy.md).
-1. Zadejte úroveň přístupu pro objekty BLOB v účtu úložiště. Výchozí úroveň je *horká*. Další informace o úrovních přístupu do objektů BLOB najdete v tématu [horké, studené a archivní úrovně přístupu pro objekty blob](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. Chcete-li použít Azure Data Lake Storage, zvolte kartu **Upřesnit** a pak nastavte **hierarchický obor názvů** na **Enabled**. Další informace najdete v tématu [Azure Data Lake Storage Gen2 Úvod](../articles/storage/blobs/data-lake-storage-introduction.md) .
+1. Další možnosti jsou k dispozici na kartách **sítě**, **Ochrana dat**, **Upřesnit** a **značky** . Chcete-li použít Azure Data Lake Storage, zvolte kartu **Upřesnit** a pak nastavte **hierarchický obor názvů** na **Enabled**. Další informace najdete v tématu [Azure Data Lake Storage Gen2 Úvod](../articles/storage/blobs/data-lake-storage-introduction.md) .
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
 1. Vyberte **Vytvořit**.
 

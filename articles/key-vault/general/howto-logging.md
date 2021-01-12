@@ -9,36 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285641"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108734"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
 Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Úplné informace o této funkci najdete v tématu [protokolování Key Vault](logging.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
 * Existující trezor klíčů, který již používáte.  
-* Rozhraní příkazového řádku Azure nebo Azure PowerShell.
+* Prostředí [Azure Cloud Shell](https://shell.azure.com) – bash
 * Dostatečné úložiště v Azure pro vaše protokoly Key Vault.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, budete potřebovat Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, můžete zadat:
-
-```azurecli-interactive
-az login
-```
-
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, budete potřebovat modul Azure PowerShell verze 1.0.0 nebo novější. `$PSVersionTable.PSVersion`Pro nalezení verze zadejte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
-
-```powershell-interactive
-Connect-AzAccount
-```
+Tyto příkazy průvodce jsou formátované pro [Cloud Shell](https://shell.azure.com) s bash jako prostředí.
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Připojení k předplatnému Key Vault
 
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 V Azure PowerShell použijte příkaz [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) , který bude obsahovat všechny objekty BLOB v tomto kontejneru, a zadejte:
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 Jak uvidíte z výstupu příkazu rozhraní příkazového řádku Azure CLI nebo rutiny Azure PowerShell, názvy objektů BLOB jsou ve formátu `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json` . Hodnoty data a času používají UTC.
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 Pomocí Azure PowerShell použijte k získání seznamu objektů BLOB rutinu [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) a potom pomocí kanálu rutinu [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) Stáhněte protokoly do zvolené cesty.
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 Při spuštění této druhé rutiny v prostředí PowerShell **/** vytvoří oddělovač v názvech objektů BLOB úplnou strukturu složek v cílové složce. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
@@ -188,19 +178,19 @@ Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Napří
 * Máte-li více trezorů klíčů a chcete stáhnout pouze protokoly pro jeden trezor klíčů s názvem CONTOSOKEYVAULT3:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Máte-li více skupin prostředků a chcete stáhnout pouze protokoly pro jednu skupinu prostředků, použijte `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Pokud chcete stáhnout všechny protokoly pro měsíc v lednu 2019, použijte `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 Nyní jste připraveni podívat se, co je v protokolech. Ale předtím, než se k němu připravujeme, byste měli znát dva další příkazy:

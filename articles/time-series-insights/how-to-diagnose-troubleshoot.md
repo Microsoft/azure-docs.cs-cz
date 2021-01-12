@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740534"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108785"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -71,7 +71,7 @@ Můžete odesílat data bez ID časové řady.
 - K tomuto problému může dojít, protože vaše prostředí je omezené.
 
     > [!NOTE]
-    > V tuto chvíli Time Series Insights podporuje maximální rychlost přijímání dat 6 MB/s.
+    > V tuto chvíli Time Series Insights podporuje maximální rychlost přijímání dat 1 MB/s.
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Problém: zobrazila se data, ale teď se zastavilo přijímání.
 

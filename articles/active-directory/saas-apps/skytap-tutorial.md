@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515946"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním pro Skytap
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování pro Skytap 
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. Vyberte **nastavit další adresy URL**a proveďte následující kroky, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
+1. Volitelně můžete vybrat **nastavit další adresy URL** a provedením následujících kroků nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -135,7 +135,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-single-sign-on-for-skytap-sso"></a>Konfigurace jednotného přihlašování pro jednotné přihlašování Skytap
 
-Ke konfiguraci jednotného přihlašování na straně jednotného přihlašování pro Skytap je potřeba odeslat stažená **federační metadata XML**a příslušné zkopírované adresy url z Azure Portal do [jednotného přihlašování pro tým podpory Skytap klientů](mailto:support@skytap.com). Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně jednotného přihlašování pro Skytap je potřeba odeslat stažená **federační metadata XML** a příslušné zkopírované adresy url z Azure Portal do [jednotného přihlašování pro tým podpory Skytap klientů](mailto:support@skytap.com). Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 
 ### <a name="create-single-sign-on-for-skytap-test-user"></a>Vytvoření jednotného přihlašování pro Skytap testovacího uživatele
@@ -148,7 +148,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici jednotného přihlašování pro Skytap, měli byste se automaticky přihlásit k jednotnému přihlašování pro Skytap, pro které jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

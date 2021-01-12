@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vytvoření prediktivního modelu pomocí poznámkového bloku (část 1 ze 2)'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak sestavit a nasadit model strojového učení pomocí kódu v Jupyter Notebook. Model můžete použít k předpovědi výsledků v Microsoft Power BI.
+description: Naučte se, jak sestavit a nasadit model strojového učení pomocí kódu v Jupyter Notebook. Vytvořte také skript bodování definující vstup a výstup pro jednoduchou integraci do Microsoft Power BI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814767"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108241"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Kurz: Power BI Integration – Vytvoření prediktivního modelu pomocí Jupyter Notebook (část 1 ze 2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Kurz: Power BI Integration – Vytvoření prediktivního modelu s Jupyter Notebook (část 1 ze 2)
 
-V části 1 tohoto kurzu jste prosadili a nasadili prediktivní model strojového učení pomocí kódu ve Jupyter Notebook. V části 2 použijete model k předpovídání výsledků v Microsoft Power BI.
+V části 1 tohoto kurzu jste prosadili a nasadili prediktivní model strojového učení pomocí kódu ve Jupyter Notebook. Vytvoří se také skript bodování, který definuje vstupní a výstupní schéma modelu pro integraci do Power BI.  V části 2 použijete model k předpovídání výsledků v Microsoft Power BI.
 
 V tomto kurzu jste:
 
@@ -27,6 +27,7 @@ V tomto kurzu jste:
 > * Vytvoříte Jupyter Notebook.
 > * Vytvořte instanci služby Azure Machine Learning Compute.
 > * Naučte se regresní model pomocí scikit-učit.
+> * Napište vyhodnocování skriptu definující vstup a výstup pro jednoduchou integraci do Microsoft Power BI.
 > * Nasaďte model do bodování koncového bodu v reálném čase.
 
 Existují tři způsoby, jak vytvořit a nasadit model, který budete používat v Power BI.  Tento článek popisuje možnost A: vytvoření modelů a nasazení pomocí poznámkových bloků.  Tato možnost je prostředí pro vytváření obsahu s prvním kódem. Používá poznámkové bloky Jupyter hostované v Azure Machine Learning Studio. 
@@ -157,7 +158,7 @@ Model můžete zobrazit také v Azure Machine Learning Studio. V nabídce na lev
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Snímek obrazovky znázorňující zobrazení modelu":::
 
-### <a name="define-the-scoring-script"></a>Definování vyhodnocovacího skriptu
+## <a name="define-the-scoring-script"></a>Definování vyhodnocovacího skriptu
 
 Když nasadíte model, který bude integrovaný do Power BI, je potřeba definovat *skript bodování* a vlastní prostředí pro Python. Skript bodování obsahuje dvě funkce:
 
@@ -165,7 +166,7 @@ Když nasadíte model, který bude integrovaný do Power BI, je potřeba definov
 - Tato `run(data)` funkce se spustí, když volání služby zahrnuje vstupní data, která je třeba určit skóre. 
 
 >[!NOTE]
-> Tento článek používá Python dekoratéry k definování schématu vstupních a výstupních dat. Toto nastavení je důležité pro integraci Power BI.
+> Dekoratéry Python v následujícím kódu definuje schéma vstupních a výstupních dat, což je důležité pro integraci do Power BI.
 
 Zkopírujte následující kód a vložte ho do nové *buňky kódu* v poznámkovém bloku. Následující fragment kódu obsahuje buňku Magic, která zapisuje kód do souboru s názvem *Score.py*.
 

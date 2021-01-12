@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107391"
 ---
 # <a name="introduction-to-listing-options"></a>Úvod k možnostem výpisu
 
@@ -26,21 +26,23 @@ Při vytváření typu nabídky zvolíte jednu nebo více možností výpisu. Ty
 
 Tato tabulka obsahuje seznam dostupných možností pro každý typ nabídky.
 
-| Typ nabídky | Bezplatná zkušební verze | Testovací verze | Kontaktujte mě | Získat hned (v transakčním režimu) |
+| Typ nabídky | Bezplatná zkušební verze | Testovací verze | Kontaktujte mě | Získat hned `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Aplikace Azure (spravovaná aplikace) |   | &#10004; |   | &#10004; |
-| Aplikace Azure (šablona řešení) |  |  |  |  |
+| Aplikace Azure (šablona řešení) |  |  |  | &#10004; |
 | Konzultační služba |  |  | &#10004; |  |
-| Kontejner Azure |  |  |  |  |
-| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 pro operace | &#10004; | &#10004; | &#10004; |  |
-| Modul IoT Edge |  |  |  |  |
-| Spravovaná služba |  |  |  |  |
-| Aplikace Power BI |  |  |  |  |
+| Kontejner Azure |  |  |  | &#10004; |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 pro operace | &#10004; | &#10004; | &#10004; | &#10004; |
+| Modul IoT Edge |  |  |  | &#10004; |
+| Spravovaná služba |  |  |  | &#10004; |
+| Aplikace Power BI |  |  |  | &#10004; |
 | Virtuální počítač Azure | &#10004; | &#10004; |  | &#10004; |
 | Software jako služba | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` Možnost získat nyní se zobrazí jako seznam obsahuje možnosti získat nyní (zdarma), přinést si vlastní licenci (BYOL), předplatné a používání na základě využití. Podrobnosti najdete v tématu o [tom, jak ho získat hned](#get-it-now).
 
 ### <a name="free-trial"></a>Bezplatná zkušební verze
 
