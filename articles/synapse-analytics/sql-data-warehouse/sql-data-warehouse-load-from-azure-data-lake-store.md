@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452873"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117771"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Načtení dat z Azure Data Lake Storage do vyhrazených fondů SQL ve službě Azure synapse Analytics
 
-Tato příručka popisuje, jak pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Tato příručka popisuje, jak pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načíst data z Azure Data Lake Storage. Rychlé příklady použití příkazu Kopírovat napříč všemi metodami ověřování najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Pokud chcete poskytnout zpětnou vazbu nebo ohlásit problémy v příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com .
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>Vytvoření příkazu COPY
 
-Připojte se ke svému vyhrazenému fondu SQL a spusťte příkaz COPY. Úplný seznam příkladů najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Připojte se ke svému vyhrazenému fondu SQL a spusťte příkaz COPY. Úplný seznam příkladů najdete v následující dokumentaci: [bezpečné načtení dat pomocí vyhrazených fondů SQL](./quickstart-bulk-load-copy-tsql-examples.md).
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -133,6 +133,6 @@ Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí 
 > [Naučte se vyvíjet tabulky pro datové sklady](sql-data-warehouse-tables-overview.md)
 
 Další příklady a odkazy pro načítání naleznete v následující dokumentaci:
-- [Dokumentace k příkazu COPY reference](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [ZKOPÍROVAT příklady pro každou metodu ověřování](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Rychlé spuštění kopírování pro jednu tabulku](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [Dokumentace k příkazu COPY reference](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [ZKOPÍROVAT příklady pro každou metodu ověřování](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Rychlé spuštění kopírování pro jednu tabulku](./quickstart-bulk-load-copy-tsql.md)

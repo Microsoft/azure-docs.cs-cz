@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 412a987e0a93f7b69250450b8367a37bd3682925
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802843"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115697"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -107,8 +107,6 @@ Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživat
 Další informace o tom, jak lépe zabezpečit vaši organizaci pomocí automatizovaného zřizování uživatelských účtů, najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
  
 ---
- 
-[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Nové federované aplikace dostupné v galerii aplikací Azure AD – prosinec 2020
 
@@ -123,6 +121,29 @@ V prosinci 2020 jsme do Galerie aplikací přidali následující 18 nových apl
 Dokumentaci pro všechny aplikace můžete také najít tady. https://aka.ms/AppsTutorial
 
 Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, přečtěte si prosím podrobnosti. https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="navigate-to-teams-directly-from-my-access-portal"></a>Přechod na týmy přímo z portálu pro přístup
+
+**Zadejte:** Změněná funkce  
+**Kategorie služby:** **Schopnost produktu** správy přístupu uživatele: Správa nároků
+
+Týmy teď můžete spouštět přímo z portálu pro přístup. Uděláte to tak, že se přihlásíte k [přístupu](https://myaccess.microsoft.com/), přejdete na **přístup k balíčkům** a pak přejdete na **aktivní** kartu a zobrazíte všechny balíčky pro přístup, ke kterým už máte přístup. Když rozbalíte balíček pro přístup a najedete na týmy, můžete ho spustit kliknutím na tlačítko **otevřít** . 
+
+Pokud chcete získat další informace o používání portálu pro přístup, přejděte na [vyžádání přístupu k balíčku přístupu ve správě nároků služby Azure AD](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal).
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>Veřejná verze Preview – druhý správce úrovně můžete nastavit jako alternativní schvalovatel.
+
+**Zadejte:** Změněná funkce  
+**Kategorie služby:** Správa přístupu uživatelů  
+**Schopnost produktu:** Správa nároků
+
+Ve správě nároků je teď k dispozici další možnost v procesu schvalování. Pokud jako schvalovatele vyberete pro prvního schvalovatele možnost manažer, budete mít další možnost jako alternativního schvalovatele, která je dostupná pro výběr v poli alternativní schvalovatel. Vyberete-li tuto možnost, je nutné přidat záložního schvalovatele, kterému bude žádost předána, v případě, že systém nemůže najít správce druhé úrovně.
+
+Další informace najdete [v části Změna nastavení schválení pro balíček přístupu v Azure AD – Správa nároků](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers).
 
 --- 
 
@@ -502,7 +523,7 @@ K dispozici jsou nově podmíněný přístup na základě rizik a funkce detekc
  
 V říjnu 2020 jsme do Galerie aplikací přidali následující 27 nových aplikací s podporou federace:
 
-[Sentry](../saas-apps/sentry-tutorial.md), [Bumblebee – produktivita superapp](https://app.yellowmessenger.com/user/login), [cloudová integrace společnosti ABBYY](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [Genesys Integration Cloud pro Azure](https://apps.mypurecloud.com/msteams-integration/), [portál pro zóny](https://portail.zonetechnologie.com/signin), [Beautiful.AI](../saas-apps/beautiful.ai-tutorial.md), [Datawiza Access Broker](https://console.datawiza.com/), [ZOKRI](https://app.zokri.com/), [CheckProof](../saas-apps/checkproof-tutorial.md), [ecoChallenge.org](https://events.ecochallenge.org/users/login), [atSpoke](http://atspoke.com/login), [připomenutí schůzky](https://app.appointmentreminder.co.nz/account/login), [Cloud. trh](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md), [Greetings](https://app.greetly.com/), [OrgVitality SSO} (.. /SaaS-Apps/orgvitality-SSO-tutorial.MD), [leteckého provozu na webu](../saas-apps/web-cargo-air-tutorial.md), [Flow Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [Starmind](../saas-apps/starmind-tutorial.md), [Workstem](https://hrm.workstem.com/login), [maloobchodní Zipline](../saas-apps/retail-zipline-tutorial.md), [Hoxhunt](../saas-apps/hoxhunt-tutorial.md), [](../saas-apps/samsara-tutorial.md)MEVISIO, [Samsara,](../saas-apps/mevisio-tutorial.md) [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure Virtual Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+[Sentry](../saas-apps/sentry-tutorial.md) [Bumblebee – produktivita superapp](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [Genesys cloud integration for Azure](https://apps.mypurecloud.com/msteams-integration/), [portál pro zóny](https://portail.zonetechnologie.com/signin), [Beautiful.AI](../saas-apps/beautiful.ai-tutorial.md), [Datawiza pro přístup k](https://console.datawiza.com/)poskytovateli přístupu, [ZOKRI](https://app.zokri.com/), [CheckProof](../saas-apps/checkproof-tutorial.md), [ecoChallenge.org](https://events.ecochallenge.org/users/login), [atSpoke](http://atspoke.com/login), [připomenutí schůzky](https://app.appointmentreminder.co.nz/account/login), [Cloud. trh](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md), [Greetings](https://app.greetly.com/) [, OrgVitality](../saas-apps/orgvitality-sso-tutorial.md) [, Starmind](../saas-apps/starmind-tutorial.md) [,](https://hrm.workstem.com/login) [maloobchodního](../saas-apps/retail-zipline-tutorial.md) [vedení](../saas-apps/loop-flow-crm-tutorial.md) [, Workstem](../saas-apps/web-cargo-air-tutorial.md) [, Zipline](../saas-apps/hoxhunt-tutorial.md) [, Hoxhunt](../saas-apps/mevisio-tutorial.md) [, MEVISIO](../saas-apps/samsara-tutorial.md) [,](../saas-apps/nimbus-tutorial.md) [Pulse Secure Virtual Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 Dokumentaci pro všechny aplikace můžete také najít tady. https://aka.ms/AppsTutorial
 

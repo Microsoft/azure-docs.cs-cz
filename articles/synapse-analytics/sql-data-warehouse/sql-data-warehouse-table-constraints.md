@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: emtehran
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bdb27c5c9f5ec8a7be433ab6e421ecabf5c8c254
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 88b63ce30000340a70811e9f623e4273ccbb272a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505575"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117278"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Primární klíč, cizí klíč a jedinečný klíč pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
@@ -28,7 +28,7 @@ Vyhrazený fond SQL podporuje tato omezení tabulky:
 - PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.    
 - JEDINEČNÉ omezení se podporuje jenom s nevynucovaném využitím.
 
-Pro syntaxi můžete zaškrtnout možnost [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) and [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
+Pro syntaxi můžete zaškrtnout možnost [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) and [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse). 
 
 Omezení CIZÍho klíče není ve vyhrazeném fondu SQL podporováno.  
 

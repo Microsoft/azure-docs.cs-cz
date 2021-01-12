@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673412"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117686"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Omezení kapacity pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
@@ -38,12 +38,12 @@ Maximální povolené hodnoty pro různé komponenty vyhrazeného fondu SQL ve s
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Database |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
+| databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
 | Tabulka |Maximální velikost |Neomezená velikost tabulek columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
 | Tabulka |Tabulky na databázi | 100 000 |
 | Tabulka |Sloupce na tabulku |sloupce 1024 |
 | Tabulka |Počet bajtů na sloupec |Závisí na [datovém typu](sql-data-warehouse-tables-data-types.md)sloupce. Limit je 8000 pro datové typy Char, 4000 pro nvarchar nebo 2 GB pro maximum datových typů. |
-| Tabulka |Počet bajtů na řádek, definovaná velikost |8060 bajtů<br/><br/>Počet bajtů na řádek se počítá stejným způsobem jako SQL Server s kompresí stránky. Podobně jako SQL Server podporuje úložiště přetečení řádku, které umožňuje vložit **sloupce proměnné délky** mimo řádek. Pokud jsou řádky proměnlivé délky vloženy mimo řádek, v hlavním záznamu je uložen pouze kořenový adresář 24 bajtů. Další informace najdete v tématu [data přetečení řádků přesahují 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tabulka |Počet bajtů na řádek, definovaná velikost |8060 bajtů<br/><br/>Počet bajtů na řádek se počítá stejným způsobem jako SQL Server s kompresí stránky. Podobně jako SQL Server podporuje úložiště přetečení řádku, které umožňuje vložit **sloupce proměnné délky** mimo řádek. Pokud jsou řádky proměnlivé délky vloženy mimo řádek, v hlavním záznamu je uložen pouze kořenový adresář 24 bajtů. Další informace najdete v tématu [data přetečení řádků přesahují 8 KB](/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105)). |
 | Tabulka |Počet oddílů na tabulku |15 000<br/><br/>Pro vysoký výkon doporučujeme minimalizovat počet oddílů, které potřebujete, a přitom pořád podporovat vaše podnikové požadavky. Vzhledem k tomu, že počet oddílů roste, režie pro operace DDL (Data Definition Language) a jazyk manipulace s daty (DML) roste a způsobuje pomalejší výkon. |
 | Tabulka |Hodnota ohraničení znaků na oddíl. |4000 |
 | Index |Neclusterované indexy na tabulku |50<br/><br/>Platí jenom pro tabulky rowstore. |
@@ -54,7 +54,7 @@ Maximální povolené hodnoty pro různé komponenty vyhrazeného fondu SQL ve s
 | Statistika |Sloupce na objekt statistiky |32 |
 | Statistika |Statistiky se vytvořily pro sloupce na tabulce. |30 000 |
 | Uložené procedury |Maximální úroveň vnoření. |8 |
-| Zobrazit |Sloupce na zobrazení |1 024 |
+| Zobrazení |Sloupce na zobrazení |1 024 |
 ||||
 
 ## <a name="loads"></a>Zaveden

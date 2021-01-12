@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109602"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116547"
 ---
 # <a name="synapse-access-control"></a>Řízení přístupu synapse 
 
@@ -48,7 +48,7 @@ Pokud chcete *vytvořit* tyto prostředky, musíte být vlastníkem nebo přisp�
 Synapse podporuje dva vývojové modely.
 
 - **Synapse živý vývoj**.  Vyvíjíte a ladíte kód v synapse studiu a pak ho **publikujete** pro uložení a spuštění.  Služba synapse je zdrojem pravdy pro úpravy kódu a provádění.  Po zavření synapse studia ztratíte veškerou nepublikovanou práci.  
-- **Vývoj s povoleným Git**. Vyvíjíte a ladíte kód v synapse studiu a **potvrdíte** změny pracovní větve úložiště Git. Práce z jedné nebo více větví je integrována do větve pro spolupráci, odkud ji **publikujete** do služby.  Úložiště Git je zdrojem pravdy pro úpravy kódu, zatímco služba je zdrojem pravdy pro provádění. Před ukončením synapse studia se musí změny potvrdit do úložiště Git nebo publikovat do služby. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2150100) o používání synapse Analytics s Git.
+- **Vývoj s povoleným Git**. Vyvíjíte a ladíte kód v synapse studiu a **potvrdíte** změny pracovní větve úložiště Git. Práce z jedné nebo více větví je integrována do větve pro spolupráci, odkud ji **publikujete** do služby.  Úložiště Git je zdrojem pravdy pro úpravy kódu, zatímco služba je zdrojem pravdy pro provádění. Před ukončením synapse studia se musí změny potvrdit do úložiště Git nebo publikovat do služby. [Přečtěte si další informace](../cicd/continuous-integration-deployment.md) o používání synapse Analytics s Git.
 
 V obou vývojových modelech může libovolný uživatel s přístupem k synapse studiu vytvářet artefakty kódu.  K publikování artefaktů do služby ale potřebujete další oprávnění, přečtěte si publikované artefakty, potvrďte změny v Gitu, spusťte kód a získejte přístup k propojeným datům chráněným přihlašovacími údaji.
 

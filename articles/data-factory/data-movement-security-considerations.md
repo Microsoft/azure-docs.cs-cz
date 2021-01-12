@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094178"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117650"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -32,9 +32,9 @@ V řešení Data Factory vytváříte jeden nebo více datových [kanálů](conc
 
 I když je Data Factory k dispozici jenom v několika oblastech, služba přesunu dat je [dostupná globálně](concepts-integration-runtime.md#integration-runtime-location) , aby se zajistila kompatibilita dat, efektivita a snížení nákladů na výstup sítě. 
 
-Azure Data Factory včetně Integration Runtime neukládá žádná data s výjimkou přihlašovacích údajů propojených služeb pro cloudová úložiště dat, která jsou zašifrovaná pomocí certifikátů. Pomocí Data Factory můžete vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracování dat pomocí [výpočetních služeb](compute-linked-services.md) v jiných oblastech nebo v místním prostředí. Pracovní postupy můžete monitorovat a spravovat také pomocí sad SDK a Azure Monitor.
+Azure Data Factory včetně Azure Integration Runtime a v místním prostředí Integration Runtime neukládají žádná dočasná data, ukládat data nebo protokoly mezipaměti s výjimkou přihlašovacích údajů propojených služeb pro cloudová úložiště dat, která jsou zašifrovaná pomocí certifikátů. Pomocí Data Factory můžete vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracování dat pomocí [výpočetních služeb](compute-linked-services.md) v jiných oblastech nebo v místním prostředí. Pracovní postupy můžete monitorovat a spravovat také pomocí sad SDK a Azure Monitor.
 
-Data Factory bylo certifikováno pro:
+Data Factory bylo certifikováno pro: 
 
 | **[Certifikace pro CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
@@ -83,7 +83,7 @@ Některá úložiště dat podporují šifrování neaktivních uložených dat.
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 Transparentní šifrování dat (TDE) ve službě Azure synapse Analytics pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování v reálném čase a dešifrování vašich dat v klidovém čase. Toto chování je pro klienta transparentní. Další informace najdete v tématu [zabezpečení databáze ve službě Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Databáze Azure SQL
 Azure SQL Database také podporuje transparentní šifrování dat (TDE), které pomáhá chránit před hrozbou škodlivých aktivit pomocí šifrování a dešifrování dat v reálném čase, aniž by to vyžadovalo změny aplikace. Toto chování je pro klienta transparentní. Další informace najdete v tématu [transparentní šifrování dat pro SQL Database a datový sklad](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -173,7 +173,7 @@ Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podni
 
 Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
-| Příchozí porty | Popis                              |
+| Příchozí porty | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vyžadovaná rutinou šifrování PowerShellu, jak je popsáno v tématu [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikace Správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v místním prostředí Integration runtime. |
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033999"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115720"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Rychlý Start: Ověřte přístup pro uživatele k prostředkům Azure.
 
@@ -29,7 +29,7 @@ Pokud chcete zjistit přístup pro uživatele, musíte nejdřív otevřít prost
 
 Pomocí těchto kroků otevřete sadu prostředků Azure, pro které chcete kontrolovat přístup.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 
 1. Otevřete sadu prostředků Azure, jako jsou **skupiny pro správu**, **předplatná**, **skupiny prostředků** nebo konkrétní prostředek.
 
@@ -37,7 +37,7 @@ Pomocí těchto kroků otevřete sadu prostředků Azure, pro které chcete kont
 
     Níže je uveden příklad skupiny prostředků.
 
-    ![Přehled skupiny prostředků](./media/check-access/rg-overview.png)
+    ![Přehled skupiny prostředků](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>Krok 2: ověření přístupu pro uživatele
 
@@ -47,7 +47,7 @@ Postupujte podle těchto kroků a ověřte přístup pro jednoho uživatele, sku
 
     Níže vidíte příklad stránky řízení přístupu (IAM) pro skupinu prostředků.
 
-    ![Řízení přístupu ke skupině prostředků – kontrola přístupu na kartě přístup](./media/check-access/rg-access-control.png)
+    ![Řízení přístupu ke skupině prostředků – kontrola přístupu na kartě přístup](./media/shared/rg-access-control.png)
 
 1. Na kartě **kontrolovat přístup** vyberte v seznamu **Najít** uživatele, skupinu, instanční objekt nebo spravovanou identitu, pro kterou chcete ověřit přístup.
 

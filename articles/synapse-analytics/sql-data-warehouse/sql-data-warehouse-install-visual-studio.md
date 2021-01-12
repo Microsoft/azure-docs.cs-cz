@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 456d7eb0cabd7ebede6415e3ce92d7403ecef7ef
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 56a2cbf88cec47417e992990c16a76ec84c6433d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368750"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117805"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Začínáme se sadou Visual Studio 2019
 
@@ -43,7 +43,7 @@ V některých případech se může stát, že vydání funkcí pro synapse SQL 
 - [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (včetně funkcí s hodnotou tabulky)
   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) .
   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) .
-- Tabulky se [sloupcem identity](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)
+- Tabulky se [sloupcem identity](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)
 - Některé funkce T-SQL, například:
    - V klauzuli *Group* ve funkci [STRING_AGGového](/sql/t-sql/functions/string-agg-transact-sql) řetězce.
 

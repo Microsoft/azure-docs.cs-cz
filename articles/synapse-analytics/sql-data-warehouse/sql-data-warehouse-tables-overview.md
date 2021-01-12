@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2a8cfbe75925ddc49f6fa3205fafdd1c2203b472
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448061"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115629"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Návrh tabulek pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
@@ -46,7 +46,7 @@ Chcete-li zobrazit organizaci tabulek ve vyhrazeném fondu SQL, můžete jako p�
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Vyhrazený fond SQL |
 |:-----|:-----|:------|:-----|
-| City (Město) | Dimenze | WWI. DimCity |
+| City | Dimenze | WWI. DimCity |
 | Objednávka | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -71,7 +71,7 @@ Dočasné tabulky využívají místní úložiště, které nabízí rychlý v�
 
 Externí tabulka odkazuje na data umístěná v Azure Storagem objektu BLOB nebo Azure Data Lake Store. Při použití ve spojení s příkazem CREATE TABLE jako SELECT, výběr z externí tabulky importuje data do vyhrazeného fondu SQL.
 
-V takovém případě jsou externí tabulky užitečné pro načítání dat. Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](load-data-from-azure-blob-storage-using-polybase.md).
+V takovém případě jsou externí tabulky užitečné pro načítání dat. Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="data-types"></a>Typy dat
 
@@ -144,7 +144,7 @@ PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom nec
 
 Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz T-SQL | Popis |
+| Příkaz T-SQL | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří externí tabulku. Definice tabulky je uložená ve vyhrazeném fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Store. |

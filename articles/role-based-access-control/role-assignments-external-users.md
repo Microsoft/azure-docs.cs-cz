@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648374"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117703"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
@@ -29,9 +29,7 @@ ms.locfileid: "94648374"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
-
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>Kdy byste mohli pozvat uživatele typu Host?
 
@@ -77,7 +75,7 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
 1. Klikněte na konkrétní prostředek.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
     Následující snímek obrazovky ukazuje příklad podokna Řízení přístupu (IAM) pro skupinu prostředků. Pokud tady uděláte nějaké změny řízení přístupu, budou platit jenom pro skupinu prostředků.
 
@@ -115,7 +113,7 @@ Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatel
 
 1. Klikněte na konkrétní prostředek.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 

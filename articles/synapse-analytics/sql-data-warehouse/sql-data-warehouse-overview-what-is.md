@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453636"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115816"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Co je vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics?
 
@@ -51,7 +51,7 @@ Výsledky analýz můžou jít do aplikací nebo databází pro generování ses
 
 - Prozkoumejte [architekturu Azure synapse](massively-parallel-processing-mpp-architecture.md)
 - Rychlé [vytvoření vyhrazeného fondu SQL](create-data-warehouse-portal.md)
-- [Načíst ukázková data](load-data-from-azure-blob-storage-using-polybase.md).
+- [Načíst ukázková data](./load-data-from-azure-blob-storage-using-copy.md).
 - Prozkoumat [videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.
@@ -59,5 +59,5 @@ Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.
 - Hledat [Blogy](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - Odeslání [žádostí o funkce](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md)
-- Hledání [stránky s otázkou v Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- Hledání [stránky s otázkou v Microsoft Q&](/answers/topics/azure-synapse-analytics.html)
 - Hledat [Stack Overflow Fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)

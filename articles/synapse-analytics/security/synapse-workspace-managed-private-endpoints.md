@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5258b1eab48f71d8d17f52849b5e57b467e7a2da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7eff63b36eb09036b188ac756ec55a5b1bf63718
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460385"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116513"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse spravované privátní koncové body
 
@@ -29,7 +29,7 @@ Když použijete privátní odkaz, přenosy mezi Virtual Network a pracovním pr
 
 Privátní koncový bod používá privátní IP adresu z vaší Virtual Network k efektivnímu uvedení služby do Virtual Network. Soukromé koncové body jsou namapované na konkrétní prostředek v Azure, a ne na celou službu. Zákazníci můžou omezit připojení ke konkrétnímu prostředku schválenému jeho organizací. 
 
-Přečtěte si další informace o [privátních odkazech a soukromých koncových bodech](https://docs.microsoft.com/azure/private-link/).
+Přečtěte si další informace o [privátních odkazech a soukromých koncových bodech](../../private-link/index.yml).
 
 >[!IMPORTANT]
 >Spravované privátní koncové body jsou podporované jenom v pracovních prostorech Azure synapse se spravovaným pracovním prostorem Virtual Network.

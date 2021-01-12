@@ -3,12 +3,12 @@ title: Přehled zabezpečení
 description: Bezpečnostní informace o serverech s podporou ARC Azure
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329036"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117023"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Přehled zabezpečení ARC pro servery Azure
 
@@ -16,7 +16,7 @@ Tento článek popisuje konfiguraci zabezpečení a posouzení, které byste mě
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-Každý server s podporou ARC Azure má spravovanou identitu jako součást skupiny prostředků v rámci předplatného Azure. Tato identita představuje server, na kterém běží místní nebo jiné cloudové prostředí. Přístup k tomuto prostředku se řídí standardním [řízením přístupu na základě role Azure](../../role-based-access-control/overview.md). Na stránce [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) v Azure Portal můžete ověřit, kdo má přístup k serveru s podporou ARC Azure.
+Každý server s podporou ARC Azure má spravovanou identitu jako součást skupiny prostředků v rámci předplatného Azure. Tato identita představuje server, na kterém běží místní nebo jiné cloudové prostředí. Přístup k tomuto prostředku se řídí standardním [řízením přístupu na základě role Azure](../../role-based-access-control/overview.md). Na stránce [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md) v Azure Portal můžete ověřit, kdo má přístup k serveru s podporou ARC Azure.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Řízení přístupu k serveru s podporou ARC Azure" border="false" lightbox="./media/security-overview/access-control-page.png":::
 

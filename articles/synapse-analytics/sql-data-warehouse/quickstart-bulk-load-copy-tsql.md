@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024581"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116071"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
-V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
+V tomto rychlém startu budete hromadně načítat data do vyhrazeného fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
 
 - Povolení načtení nižších privilegovaných uživatelů bez nutnosti přísného řízení pro datový sklad
 - Využijte jenom jeden příkaz T-SQL, aniž byste museli vytvářet žádné další databázové objekty.
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Osvědčené postupy při načítání dat najdete v tématu [osvědčené postupy pro načítání dat](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Informace o tom, jak spravovat prostředky pro načtení dat, najdete v tématu věnovaném [izolaci úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Osvědčené postupy při načítání dat najdete v tématu [osvědčené postupy pro načítání dat](./guidance-for-loading-data.md).
+- Informace o tom, jak spravovat prostředky pro načtení dat, najdete v tématu věnovaném [izolaci úloh](./quickstart-configure-workload-isolation-tsql.md).

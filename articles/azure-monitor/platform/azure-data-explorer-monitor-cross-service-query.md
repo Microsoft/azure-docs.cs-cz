@@ -7,19 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065265"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116705"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Dotaz na různé služby – Azure Monitor a Azure Průzkumník dat (Preview)
 Vytvářejte dotazy mezi službami mezi [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics](/azure/azure-monitor/platform/data-platform-logs).
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor a Azure Průzkumník dat dotazování mezi službami
 Díky tomuto prostředí můžete [vytvářet dotazy mezi službami Azure Průzkumník dat a Azure monitor](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) a [vytvářet dotazy na více služeb mezi Azure Monitor a Azure Průzkumník dat](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy).
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Tok proxy serveru Azure Data Explorer.":::
 
 Například (dotazování Azure Průzkumník dat z Log Analytics):
 ```kusto

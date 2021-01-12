@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964248"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117244"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
 
@@ -31,7 +31,7 @@ Nejdřív je potřeba určit, kdo potřebuje přístup. Roli můžete přiřadit
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
 - Spravovaná identita – identita v Azure Active Directory, kterou automaticky spravuje Azure. [Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) obvykle používáte při vývoji cloudových aplikací pro správu přihlašovacích údajů pro ověřování ve službách Azure.
 
-## <a name="step-2-find-the-appropriate-role"></a>Krok 2: vyhledání příslušné role
+## <a name="step-2-select-the-appropriate-role"></a>Krok 2: vyberte příslušnou roli.
 
 Oprávnění se seskupují do *definice role*. Obvykle se nazývá jenom *role*. Můžete vybrat ze seznamu několika předdefinovaných rolí. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit vlastní role.
 

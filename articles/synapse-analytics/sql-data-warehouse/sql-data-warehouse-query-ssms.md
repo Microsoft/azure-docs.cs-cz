@@ -11,26 +11,26 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450472"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115765"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Připojení k vyhrazenému fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí SQL Server Management Studio (SSMS)
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
 Pomocí SQL Server Management Studio (SSMS) se můžete připojit k vyhrazenému fondu SQL a dotazovat se na něj (dřív SQL DW).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít tento kurz, potřebujete:
 
@@ -41,7 +41,7 @@ Chcete-li použít tento kurz, potřebujete:
 ## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. Připojte se k vyhrazenému fondu SQL (dřív SQL DW).
 
 1. Otevřete aplikaci SSMS.
-2. Otevřete Průzkumník objektů výběrem **File**  >  **Průzkumník objektů připojit k** souboru.
+2. Otevřete Průzkumník objektů výběrem   >  **Průzkumník objektů připojit k** souboru.
 
     ![Průzkumník objektů systému SQL Server](./media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Vyplňte pole v okně pro připojení k serveru.
@@ -79,4 +79,4 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md). Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve vyhrazeném fondu SQL](sql-data-warehouse-authentication.md).
+Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect). Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve vyhrazeném fondu SQL](sql-data-warehouse-authentication.md).

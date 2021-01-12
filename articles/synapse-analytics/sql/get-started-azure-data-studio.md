@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451654"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116479"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Připojení k synapse SQL pomocí Azure Data Studio
 
@@ -23,7 +23,7 @@ ms.locfileid: "96451654"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](get-started-connect-sqlcmd.md)
+> * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
 [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít pro připojení k SQL serveru a dotazování synapse v Azure synapse Analytics. 
@@ -93,6 +93,6 @@ Prozkoumejte další způsoby, jak se připojit k synapse SQL:
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [sqlcmd](get-started-connect-sqlcmd.md)
+- [Sqlcmd](get-started-connect-sqlcmd.md)
 
-Další informace najdete na webu [použití Azure Data Studio k připojení a dotazování dat pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 
+Další informace najdete na webu [použití Azure Data Studio k připojení a dotazování dat pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics](/sql/azure-data-studio/quickstart-sql-dw).

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697199"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116377"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -108,7 +108,7 @@ Můžete použít REST API k indexování objektů BLOB JSON, a to za pracovní 
 
 Na konci této části si můžete prohlédnout [ukázkový kód REST](#rest-example) , který ukazuje, jak vytvořit všechny tři objekty. Tato část obsahuje také podrobnosti o [režimech analýzy JSON](#parsing-modes), samostatných objektech [BLOB](#parsing-single-blobs), [polích JSON](#parsing-arrays)a [vnořených polích](#nested-json-arrays).
 
-Pro indexování JSON založené na kódu použijte [post nebo Visual Studio Code](search-get-started-rest.md) a REST API k vytvoření těchto objektů:
+Pro indexování JSON založené na kódu použijte [post](search-get-started-rest.md) nebo [Visual Studio Code](search-get-started-vs-code.md) a REST API k vytvoření těchto objektů:
 
 + [indexovacím](/rest/api/searchservice/create-index)
 + [zdroj dat](/rest/api/searchservice/create-data-source)
@@ -118,7 +118,7 @@ Pořadí operací vyžaduje, abyste v tomto pořadí vytvořili objekty a volali
 
 Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokumentem JSON, nebo polem JSON "Array". Indexer objektů BLOB v Azure Kognitivní hledání může analyzovat buď konstrukci v závislosti na nastavení parametru **parsingMode** v žádosti.
 
-| Dokument JSON | parsingMode | Popis | Dostupnost |
+| Dokument JSON | parsingMode | Description | Dostupnost |
 |--------------|-------------|--------------|--------------|
 | Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
 | Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
@@ -291,7 +291,7 @@ Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtět
 
 Objekty blob JSON můžou předpokládat víc forem. Parametr **parsingMode** indexeru JSON určuje, jak se obsah objektu BLOB JSON analyzuje a strukturuje v indexu Azure kognitivní hledání:
 
-| parsingMode | Popis |
+| parsingMode | Description |
 |-------------|-------------|
 | `json`  | Indexujte každý objekt BLOB jako jeden dokument. Tato možnost je výchozí. |
 | `jsonArray` | Tento režim vyberte, pokud se objekty blob skládají z polí JSON a potřebujete, aby se každý element pole stal samostatným dokumentem v Azure Kognitivní hledání. |

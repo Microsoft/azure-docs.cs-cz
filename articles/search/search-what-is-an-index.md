@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701129"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116190"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Vytvoření základního vyhledávacího indexu v Azure Kognitivní hledání
 
@@ -70,7 +70,7 @@ Doručení v konečném návrhu indexu je iterativní proces. Je běžné začí
 Během vývoje si naplánujte časté časté sestavování. Vzhledem k tomu, že se ve službě vytvářejí fyzické struktury, je nutné vyřadit [a znovu vytvořit indexy](search-howto-reindex.md) pro většinu úprav existující definice pole. Můžete uvažovat o práci s podmnožinou vašich dat, aby bylo možné znovu sestavit nové sestavení. 
 
 > [!Tip]
-> Pro práci na návrhu indexu a importu dat se doporučuje kód spíše než přístup k portálu. Jako alternativu jsou nástroje, jako je například [post a Visual Studio Code](search-get-started-rest.md) , užitečné při testování testování konceptů, pokud jsou vývojové projekty stále v rané fázi. V těle žádosti můžete provádět přírůstkové změny definice indexu a potom odeslat požadavek službě, aby se index znovu vytvořil pomocí aktualizovaného schématu.
+> Pro práci na návrhu indexu a importu dat se doporučuje kód spíše než přístup k portálu. Jako alternativu jsou nástroje, jako je například [post](search-get-started-rest.md) nebo [Visual Studio Code](search-get-started-vs-code.md) , užitečné pro testování zkušebního prostředí, když jsou vývojové projekty stále v rané fázi. V těle žádosti můžete provádět přírůstkové změny definice indexu a potom odeslat požadavek službě, aby se index znovu vytvořil pomocí aktualizovaného schématu.
 
 ## <a name="index-schema"></a>Schéma indexu
 
@@ -169,7 +169,7 @@ Pole mají název, typ, který klasifikuje uložená data a atributy, které ur�
 
 ### <a name="data-types"></a>Typy dat
 
-| Typ | Popis |
+| Typ | Description |
 |------|-------------|
 | Edm.String |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | Collection(Edm.String) |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
@@ -242,7 +242,7 @@ Následující snímek obrazovky znázorňuje vzory úložiště indexů, které
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? No. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
 
 Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je to, že operace filtrování a řazení prohledají přesné shody a vyžadují přítomnost doslovnéch textových řetězců. Naopak vyhledávací pole podporující fulltextové dotazy používají obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
 

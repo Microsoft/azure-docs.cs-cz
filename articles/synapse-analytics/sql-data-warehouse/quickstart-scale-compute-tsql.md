@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f3eaa6383b174e06ff6ce9b1b08c4eba9108d770
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460232"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115510"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí T-SQL
 
@@ -153,4 +153,4 @@ AND
 Nyní jste zjistili, jak škálovat výpočetní prostředky pro vyhrazený fond SQL (dřív SQL DW). Další informace o službě Azure synapse Analytics najdete v kurzu načtení dat.
 
 > [!div class="nextstepaction"]
->[Načtení dat do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do vyhrazeného fondu SQL](./load-data-from-azure-blob-storage-using-copy.md)

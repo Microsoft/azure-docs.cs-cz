@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451714"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116724"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
@@ -29,7 +29,7 @@ Jak očekáváte, vyhrazený fond SQL podporuje transakce jako součást úlohy 
 
 Vyhrazený fond SQL implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je výchozí pro čtení nepotvrzených.  Můžete ji změnit na čtení POTVRZENé izolace snímku tím, že zapnete možnost READ_COMMITTED_SNAPSHOT Database pro uživatelskou databázi, když se připojíte k hlavní databázi.  
 
-Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
+Po povolení se všechny transakce v této databázi spustí v režimu čtení POTVRZENé izolace snímku a nastavení číst nepotvrzené na úrovni relace se nerespektuje. Podrobnosti naleznete v [příkazu ALTER DATABASE set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?preserve-view=true&view=azure-sqldw-latest) .
 
 ## <a name="transaction-size"></a>Velikost transakce
 Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. V takovém případě lze celkové přidělení vypočítat vynásobením limitu distribucí. 
@@ -54,12 +54,12 @@ V tabulce níže byly provedeny následující předpoklady:
 | DW1500c |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000c |15 |60 |900 |60 000 000 |3 600 000 000 |
 | DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
-| DW3000c |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
-| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
+| DW3000c |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW5000c |37.5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 | DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
 | DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
-| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW15000c |112.5 |60 |6 750 |450 000 000 |27 000 000 000 |
 | DW30000c |225 |60 |13 500 |900 000 000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
@@ -76,7 +76,7 @@ V tabulce níže byly provedeny následující předpoklady:
 | DW1200 |9 |60 |540 |36 000 000 |2 160 000 000 |
 | DW1500 |11,25 |60 |675 |45 000 000 |2 700 000 000 |
 | DW2000 |15 |60 |900 |60 000 000 |3 600 000 000 |
-| DW3000 |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW3000 |22.5 |60 |1 350 |90 000 000 |5 400 000 000 |
 | DW6000 |45 |60 |2 700 |180 000 000 |10 800 000 000 |
 
 Limit velikosti transakce je použit na transakci nebo operaci. Není aplikováno napříč všemi souběžnými transakcemi. Proto každá transakce má povoleno zapsat toto množství dat do protokolu.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693381"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115782"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
 
@@ -29,7 +29,7 @@ V tomto rychlém startu vytvoříte účet Azure dosah.
 
 * Váš účet musí mít oprávnění k vytváření prostředků v předplatném.
 
-* Pokud jste **Azure Policy** blokující všechny aplikace při vytváření **účtu úložiště** a **oboru názvů EventHub**, je potřeba vytvořit výjimku zásad pomocí značky, která se dá zadat během procesu vytváření účtu dosah. Hlavním důvodem je to, že pro každý vytvořený účet dosah je potřeba vytvořit spravovanou skupinu prostředků a v rámci této skupiny prostředků, účtu úložiště a oboru názvů EventHub.
+* Pokud jste **Azure Policy** blokující všechny aplikace při vytváření **účtu úložiště** a **oboru názvů EventHub**, je potřeba vytvořit výjimku zásad pomocí značky, kterou je možné zadat během procesu vytváření účtu dosah. Hlavním důvodem je to, že pro každý vytvořený účet dosah je potřeba vytvořit spravovanou skupinu prostředků a v rámci této skupiny prostředků, účtu úložiště a oboru názvů EventHub.
 
     > [!important]
     > Nemusíte postupovat podle tohoto kroku, pokud nemáte Azure Policy nebo existující Azure Policy neblokuje vytváření **účtu úložiště** a **oboru názvů EventHub**.

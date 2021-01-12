@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934998"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116003"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -224,14 +224,6 @@ Pokud zásadu nakonfigurujete, může se organizacím z Azure Portal uzamknout. 
 
 * Vytvořte uživatelský účet vyhrazený pro správu zásad a vyloučíte ho ze všech vašich zásad.
 
-* Scénář rozbití pro hybridní prostředí:
-
-  * Vytvořte místní skupinu zabezpečení a synchronizujte ji do Azure AD. Skupina zabezpečení by měla obsahovat účet pro správu vyhrazených zásad. 
-
-   * Tato skupina zabezpečení by měla být v souladu se všemi zásadami podmíněného přístupu.
-
-   * Když dojde k výpadku služby, přidejte své další správce do místní skupiny podle potřeby a vynuťte synchronizaci. Tím se odanimuje jejich výjimka na zásady podmíněného přístupu.
-
 ### <a name="set-up-report-only-mode"></a>Nastavení režimu pouze sestavy
 
 Může být obtížné předpovědět počet a jména uživatelů ovlivněných běžnými iniciativami nasazení, jako například:
@@ -376,7 +368,7 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady podmíněného přístupu.
 
-| Zásada| Scénář| Očekávaný výsledek |
+| Zásady| Scenario| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |
@@ -493,4 +485,4 @@ Jakmile shromáždíte informace, podívejte se na následující zdroje informa
 
 [Další informace o identitě identity](../identity-protection/overview-identity-protection.md)
 
-[Správa zásad podmíněného přístupu pomocí rozhraní Microsoft Graph API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Správa zásad podmíněného přístupu pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

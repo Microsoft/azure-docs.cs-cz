@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048313"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116802"
 ---
 # <a name="train-machine-learning-models"></a>Výuka modelů strojového učení
 Apache Spark ve službě Azure synapse Analytics umožňuje strojové učení s velkými objemy dat a poskytuje možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. K dispozici je několik možností pro školení modelů strojového učení pomocí Azure Spark ve službě Azure synapse Analytics: Apache Spark MLlib, Azure Machine Learning a různých dalších open source knihoven. 
@@ -53,7 +53,7 @@ Při použití automatizovaného ML v rámci služby Azure synapse Analytics mů
 > V tomto [kurzu](./spark/../apache-spark-azure-machine-learning-tutorial.md)se dozvíte víc o vytváření Azure Machine Learning automatizované experimenty ml.
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) poskytuje možnosti strojového učení, které řeší Obecné problémy, jako je například analýza textu pro emocionálních mínění nebo analýza obrázků pro rozpoznávání objektů a ploch. Abyste mohli s těmito službami pracovat, nepotřebujete žádné speciální vědomosti o strojovém učení nebo datových vědách. Služba rozpoznávání poskytuje součást nebo všechny komponenty v řešení strojového učení: data, algoritmus a trained model. Tyto služby mají vyžadovat obecné znalosti o vašich datech, aniž by bylo potřeba mít zkušenosti s Machine Learningem nebo datovou vědy. Tyto předem připravené Cognitive Services můžete v rámci služby Azure synapse Analytics využít automaticky.
+[Azure Cognitive Services](../../cognitive-services/what-are-cognitive-services.md) poskytuje možnosti strojového učení, které řeší Obecné problémy, jako je například analýza textu pro emocionálních mínění nebo analýza obrázků pro rozpoznávání objektů a ploch. Abyste mohli s těmito službami pracovat, nepotřebujete žádné speciální vědomosti o strojovém učení nebo datových vědách. Služba rozpoznávání poskytuje součást nebo všechny komponenty v řešení strojového učení: data, algoritmus a trained model. Tyto služby mají vyžadovat obecné znalosti o vašich datech, aniž by bylo potřeba mít zkušenosti s Machine Learningem nebo datovou vědy. Tyto předem připravené Cognitive Services můžete v rámci služby Azure synapse Analytics využít automaticky.
 
 ## <a name="next-steps"></a>Další kroky
 Tento článek poskytuje přehled různých možností pro učení modelů strojového učení v rámci fondů Apache Spark ve službě Azure synapse Analytics. Další informace o školení modelů najdete v následujícím kurzu:

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453663"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117754"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Integrujte další služby s vyhrazeným fondem SQL (dřív SQL DW) ve službě Azure synapse Analytics.
 
@@ -36,7 +36,7 @@ Power BI Integration umožňuje kombinovat výpočetní výkon datového skladu 
 * **Přímé připojení**: pokročilejší připojení s logickým přenosem na datový sklad zřízený pomocí vyhrazeného fondu SQL (dřív SQL DW). Zásobník zajišťuje rychlejší analýzy ve větším měřítku.
 * **Otevřít v Power BI**: tlačítko otevřít v Power BI předává informace o instanci Power BI pro zjednodušený způsob připojení.
 
-Další informace najdete v tématu věnovaném [integraci s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)nebo v [dokumentaci k Power BI](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
+Další informace najdete v tématu věnovaném [integraci s Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)nebo v [dokumentaci k Power BI](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
