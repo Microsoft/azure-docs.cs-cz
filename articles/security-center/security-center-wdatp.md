@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116275"
+ms.locfileid: "98126848"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -71,7 +71,7 @@ Integrací programu Defender pro koncový bod s Security Center se vám bude vyt
 
 Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří Microsoft Defender pro klienta koncového bodu. Data shromážděná programem Defender pro koncový bod jsou uložená v geograficky umístění tenanta, jak je uvedeno během zřizování. Zákaznická data – v pseudonymně naformátované formě se můžou ukládat do centrálního úložného a zpracovatelského systému v USA. 
 
-Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přesunout data do jiného umístění, kontaktujte podpora Microsoftu pro resetování tenanta.
+Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní licenci pro Microsoft Defender pro koncový bod a potřebujete přesunout vaše data do jiného umístění, obraťte se na podpora Microsoftu, aby tenant obnovil.
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Povolení integrace programu Microsoft Defender pro koncové body

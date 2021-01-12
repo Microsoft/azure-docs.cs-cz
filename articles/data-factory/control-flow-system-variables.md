@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 1780b4a64de349c1e272158fe6bfde9cab6f8369
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc6b2e4c944394d811abc19f70aeb34a0ae3c9a4
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486041"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127664"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,31 +26,45 @@ Tento článek popisuje systémové proměnné, které podporuje Azure Data Fact
 ## <a name="pipeline-scope"></a>Obor kanálu
 Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
-| @pipeline(). DataFactory |Název datové továrny, na které běží běh kanálu v rámci |
+| @pipeline(). DataFactory |Název datové továrny, ve které běží běh kanálu. |
 | @pipeline(). Kanálu |Název kanálu |
-| @pipeline(). RunId | ID konkrétního spuštění kanálu |
-| @pipeline(). TriggerType | Typ triggeru, který vyvolal kanál (ruční, Scheduler) |
-| @pipeline(). TriggerId| ID triggeru, který vyvolá kanál |
-| @pipeline(). TriggerName| Název triggeru, který vyvolá kanál. |
-| @pipeline(). TriggerTime| Čas, kdy Trigger vyvolal kanál. Doba triggeru je skutečný čas aktivace, nikoli naplánovaný čas. Například `13:20:08.0149599Z` se vrátí místo `13:20:00.00Z` |
+| @pipeline(). RunId |ID konkrétního spuštění kanálu |
+| @pipeline(). TriggerType |Typ triggeru, který vyvolal kanál (například `ScheduleTrigger` , `BlobEventsTrigger` ). Seznam podporovaných typů triggerů najdete v tématu [spuštění kanálu a triggery v Azure Data Factory](concepts-pipeline-execution-triggers.md). Typ triggeru `Manual` označuje, že se kanál aktivoval ručně. |
+| @pipeline(). TriggerId|ID triggeru, který vyvolal kanál |
+| @pipeline(). TriggerName|Název triggeru, který vyvolal kanál. |
+| @pipeline(). TriggerTime|Čas spuštění triggeru, který vyvolal kanál. Jedná se o čas, kdy Trigger **skutečně** vyvolal spuštění kanálu a může se mírně lišit od naplánovaného času triggeru.  |
+
+>[!NOTE]
+>Systémové proměnné data a času související s triggerem (v oborech kanálu a triggeru) vrátí data UTC ve formátu ISO 8601, například `2017-06-01T22:20:00.4061448Z` .
 
 ## <a name="schedule-trigger-scope"></a>Rozsah triggeru plánu
-V případě, že je Trigger typu "ScheduleTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.
+Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
-| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z` , v `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` uvedeném pořadí.|
-| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z` , `2017-06-01T22:25:00.7958577Z` v `2017-06-01T22:30:00.9935483Z` uvedeném pořadí. (Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)|
+| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. |
+| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** aktivoval pro vyvolání spuštění kanálu. Může se mírně lišit od naplánovaného času triggeru. |
 
 ## <a name="tumbling-window-trigger-scope"></a>Rozsah triggeru pro bubnový interval
-V případě, že je Trigger typu "TumblingWindowTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.
-(Poznámka: ve výchozím nastavení je časové razítko ve formátu ISO 8601.)
+Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
-| Název proměnné | Popis |
+| Název proměnné | Description |
 | --- | --- |
-| @trigger(). Outputs. windowStartTime |Spustí se okno, když se Trigger naplánoval na vyvolání běhu kanálu. Pokud má aktivační událost pro bubnové okno frekvenci "každou hodinu", bude to čas na začátku hodiny.|
-| @trigger(). Outputs. windowEndTime |Konec okna v případě, že Trigger naplánoval vyvolání spuštění kanálu. Pokud má aktivační událost pro bubnové okno frekvenci "každou hodinu", bude to čas na konci hodiny.|
+| @trigger(). Outputs. windowStartTime |Začátek okna přidruženého ke spuštění triggeru |
+| @trigger(). Outputs. windowEndTime |Konec okna přidruženého ke spuštění triggeru |
+| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. |
+| @trigger(). Čas_spuštění |Čas, kdy se Trigger **skutečně** aktivoval pro vyvolání spuštění kanálu. Může se mírně lišit od naplánovaného času triggeru. |
+
+## <a name="event-based-trigger-scope"></a>Rozsah triggeru založený na událostech
+Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON triggeru pro triggery typu [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
+
+| Název proměnné | Description |
+| --- | --- |
+| @triggerBody(). fileName  |Název souboru, jehož vytvořením nebo odstraněním způsobilo aktivaci triggeru.   |
+| @triggerBody(). název_složky  |Cesta ke složce, která obsahuje soubor určený parametrem `@triggerBody().fileName` . První segment cesty ke složce je název kontejneru Azure Blob Storage.  |
+| @trigger(). Čas_spuštění |Čas, kdy Trigger vyvolal vyvolání spuštění kanálu. |
+
 ## <a name="next-steps"></a>Další kroky
 Informace o tom, jak se tyto proměnné používají ve výrazech, najdete v tématu [Expression language & Functions](control-flow-expression-language-functions.md).

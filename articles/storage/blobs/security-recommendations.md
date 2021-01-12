@@ -7,21 +7,21 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518902"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127375"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů BLOB
 
-Tento článek obsahuje doporučení zabezpečení pro úložiště objektů BLOB. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, co společnost Microsoft splní zodpovědností poskytovatele služeb, najdete v článku [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
+Tento článek obsahuje doporučení zabezpečení pro úložiště objektů BLOB. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti. Další informace o tom, jak Microsoft splní zodpovědnost poskytovatele služeb, najdete v tématu [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
 
-Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Informace o Azure Security Center najdete v tématu [co je Azure Security Center?](../../security-center/security-center-introduction.md).
+Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Informace o Azure Security Center najdete v tématu [co je Azure Security Center?](../../security-center/security-center-introduction.md)
 
 Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení, jak je řešit. Další informace o Azure Security Center doporučeních najdete v tématu [doporučení zabezpečení v Azure Security Center](../../security-center/security-center-recommendations.md).
 
@@ -31,9 +31,11 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 |-|----|--|
 | Použití modelu nasazení Azure Resource Manager | Vytvořte nové účty úložiště pomocí modelu nasazení Azure Resource Manager pro důležitá vylepšení zabezpečení, včetně nadřazeného řízení přístupu na základě role Azure (Azure RBAC) a auditování, Správce prostředků nasazení a zásad správného řízení, přístupu ke spravovaným identitám, přístupu k Azure Key Vault tajným klíčům a ověřování a autorizace založené na službě Azure AD pro přístup k Azure Storage dat a prostředků. Pokud je to možné, migrujte existující účty úložiště, které používají model nasazení Classic pro použití Azure Resource Manager. Další informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md). | - |
 | Povolit Azure Defender pro všechny vaše účty úložiště | Azure Defender pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se aktivují v Azure Security Center, když se vyskytnou anomálie v aktivitě a jsou také odesílány prostřednictvím e-mailu správcům předplatného, s podrobnostmi o podezřelých aktivitách a doporučeních k tomu, jak tyto hrozby Další informace najdete v tématu [konfigurace Azure Defenderu pro Azure Storage](../common/azure-defender-storage-configure.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
-| Zapnout obnovitelné odstranění pro data objektů BLOB | Obnovitelné odstranění umožňuje obnovit data objektů BLOB po jejím odstranění. Další informace o obnovitelném odstranění najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md). | - |
-| Uzamknout účet úložiště, aby nedocházelo k nechtěnému odstranění | Můžete uzamknout předplatné, skupinu prostředků nebo prostředek, aby ostatní uživatelé ve vaší organizaci nemohli omylem odstranit nebo upravit. Další informace najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+| Zapnout obnovitelné odstranění pro objekty blob | Obnovitelné odstranění umožňuje obnovit data objektů BLOB po jejím odstranění. Další informace o obnovitelném odstranění najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md). | - |
+| Zapnout obnovitelné odstranění pro kontejnery | ???. | - |
+| Uzamknout účet úložiště pro zabránění nechtěnému odstranění účtu | Můžete uzamknout Azure Resource Manager prostředky, jako je například předplatné, skupina prostředků nebo účet úložiště, aby ostatní uživatelé ve vaší organizaci nemohli omylem odstranit nebo upravit. Uzamykání účtu úložiště nebrání v odstranění dat z tohoto účtu. Zabrání jenom tomu, aby se účet odstranil. Další informace najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 | Ukládání důležitých podnikových dat v neměnných objektech blob | Nakonfigurujte právní zásady uchovávání informací na základě času a uložte data objektů BLOB ve stavu ČERVa (zápis jednou, číst mnoho). Objekty blob uložené v immutably se dají přečíst, ale po dobu trvání intervalu uchování se nedají upravit ani odstranit. Další informace najdete v tématu [ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md). | - |
+| Vyžadovat zabezpečený přenos (HTTPS) do účtu úložiště | ??? | - |
 | Omezení tokenů sdíleného přístupového podpisu (SAS) pouze na připojení HTTPS | Vyžadování protokolu HTTPS v případě, že klient používá token SAS pro přístup k datům objektu blob, pomáhá minimalizovat riziko odposlouchávání. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107901"
+ms.locfileid: "98127613"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -27,8 +27,6 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 + **Opravy chyb a vylepšení**
   + **Azure-CLI-ml**
     + framework_version přidáno v OptimizationConfig. Použije se při registraci modelu s architekturou MULTI.
-  + **azureml-automl-runtime**
-    + V této aktualizaci jsme přidali exponenciální vyhlazení Holt zima do sady nástrojů sady AutoML SDK pro předpověď. S ohledem na časovou řadu se nejlepší model vybere pomocí [Akaikeho kritéria AICc (korigované podle údajů)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) a vrátí se.
   + **AzureML-contrib – optimalizace**
     + framework_version přidáno v OptimizationConfig. Použije se při registraci modelu s architekturou MULTI.
   + **azureml-pipeline-steps**
@@ -1936,7 +1934,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + Výkon `read_parquet` se vylepšil při spuštění ve Sparku.
   + Opravili jsme problém, kdy `column_type_builder` se nezdařil v případě jednoho sloupce s nejednoznačnými formáty data.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>Azure Portal
 + **Funkce Preview**
   + Streamování protokolů a výstupních souborů je teď k dispozici na stránkách s podrobnostmi o spuštění. Když je zapnutý přepínač Preview, soubory se budou v reálném čase aktualizovat.
   + Možnost nastavit kvótu na úrovni pracovního prostoru je vydaná ve verzi Preview. Kvóty AmlCompute se přidělují na úrovni předplatného, ale teď vám umožňuje distribuovat tuto kvótu mezi pracovními prostory a přidělit je pro spravedlivé sdílení a zásady správného řízení. Stačí kliknout na okno **používání a kvóty** v levém navigačním panelu pracovního prostoru a vybrat kartu **Konfigurace kvót** . Musíte být správcem předplatného, aby bylo možné nastavit kvóty na úrovni pracovního prostoru, protože se jedná o operaci mezi pracovními prostory.
@@ -2215,7 +2213,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>Azure Portal
   + Existující skript teď můžete znovu odeslat v existujícím vzdáleném výpočetním clusteru.
   + Nyní můžete spustit publikovaný kanál s novými parametry na kartě kanály.
   + Podrobnosti o spuštění teď podporují nový prohlížeč souborů snímků. Po odeslání konkrétního běhu můžete zobrazit snímek adresáře. Můžete si také stáhnout Poznámkový blok, který byl odeslán za účelem spuštění spuštění.
@@ -2273,7 +2271,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 + **Opravy chyb a vylepšení**
   + Přidali jsme podporu Azure Machine Learningch kanálů pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (například úložiště objektů BLOB) na [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) , které jsou k [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)dodány. Ve výchozím nastavení se jako záložní úložiště dat používají úložiště souborů Azure, které může narazit na problémy s omezením při současném spuštění velkého počtu kroků.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>Azure Portal
 
 + **Nové funkce**
   + Nové možnosti editoru tabulek přetahování pro sestavy. Uživatelé mohou sloupec přetáhnout ze seznamu i do oblasti tabulky, kde se zobrazí náhled tabulky. Sloupce lze změnit jejich uspořádání.

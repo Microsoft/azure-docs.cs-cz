@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816158"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127868"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Řešení potíží s nabízenou instalací služby mobility
 
@@ -106,7 +106,22 @@ Konfigurační server/procesový Server se škálováním na více instancí se 
 
 Řešení této chyby:
 
+* Ověřte, že uživatelský účet má na zdrojovém počítači oprávnění správce, a to pomocí místního účtu nebo účtu domény. Pokud nepoužíváte doménový účet, je nutné zakázat řízení přístupu vzdáleného uživatele v místním počítači.
+  * Ruční přidání klíče registru, který zakazuje vzdálené řízení přístupu uživatele:
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * Přidat nový `DWORD` : `LocalAccountTokenFilterPolicy`
+    * Nastavte hodnotu na `1`
+  * Chcete-li přidat klíč registru, spusťte z příkazového řádku následující příkaz:
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * Ujistěte se, že na zdrojovém počítači můžete testovat z konfiguračního serveru. Pokud jste během povolování replikace zvolili procesový Server se škálováním na více instancí, ujistěte se, že na zdrojovém počítači můžete testovat z procesového serveru příkaz k otestování.
+
+* Ujistěte se, že je ve vašem virtuálním počítači povolená služba sdílení souborů a tiskáren. Podívejte se na [Tento postup.](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)
+
+* Ujistěte se, že je ve vašem virtuálním počítači povolená služba WMI. Podívejte se na [Tento postup.](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+
+* Ujistěte se, že síťové sdílené složky na virtuálním počítači jsou dostupné z procesového serveru. Podívejte se na [Tento postup.](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)
 
 * Na příkazovém řádku počítač zdrojového serveru použijte příkaz `Telnet` k otestování konfiguračního serveru nebo procesového serveru se škálováním na více instancí na portu HTTPS 135, jak je znázorněno v následujícím příkazu. Tento příkaz zkontroluje, jestli nedochází k problémům se síťovým připojením nebo blokování portů brány firewall.
 
@@ -165,7 +180,7 @@ Pro **Windows 2008 R2 a starší verze**:
 
 * Povolení sdílení souborů s Zásady skupiny:
   1. Klikněte na **Start**, zadejte `gpmc.msc` a vyhledejte.
-  1. V navigačním podokně otevřete následující složky: Konfigurace uživatele **zásad místního počítače**  >  **User Configuration**  >  **šablony pro správu**  >  sdílení sítě**součásti systému Windows**  >  **Network Sharing**.
+  1. V navigačním podokně otevřete následující složky: Konfigurace uživatele **zásad místního počítače**  >    >  **šablony pro správu**  >  sdílení sítě **součásti systému Windows**  >  .
   1. V podokně podrobností poklikejte na **zabránit uživatelům v sdílení souborů v rámci svého profilu**.
 
      Chcete-li zakázat nastavení Zásady skupiny a povolit uživatelům sdílení souborů, vyberte možnost **zakázáno**.
@@ -224,9 +239,9 @@ Před verzí 9,20 byl kořenový oddíl nebo nastavení svazku na více discích
 
 ### <a name="possible-cause"></a>Možná příčina
 
-Konfigurační soubory Grand Unified zaváděcího programu (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení místo univerzálně jedinečného identifikátoru (UUID). Site Recovery zmocňuje přístup k identifikátoru UUID, protože názvy zařízení se můžou v rámci restartování virtuálního počítače změnit. Například virtuální počítač nemusí být online se stejným názvem při převzetí služeb při selhání a bude mít za následek problémy.
+Konfigurační soubory Grand Unified zaváděcího programu (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_ nebo _/etc/default/grub_) můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení místo univerzálně jedinečného identifikátoru (UUID). Site Recovery zmocňuje přístup k identifikátoru UUID, protože názvy zařízení se můžou v rámci restartování virtuálního počítače změnit. Například virtuální počítač nemusí být online se stejným názvem při převzetí služeb při selhání a bude mít za následek problémy.
 
-Například:
+Příklad:
 
 - Následující řádek je ze souboru GRUB _/boot/grub2/grub.cfg_:
 
@@ -245,7 +260,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
 
 1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>` .
 
-   Například:
+   Příklad:
 
    ```shell
    blkid /dev/sda1
@@ -254,7 +269,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Nyní nahraďte název zařízení identifikátorem UUID ve formátu, jako je například `root=UUID=\<UUID>` . Pokud například nahradíte názvy zařízení identifikátorem UUID pro kořen a parametr Resume uvedené v souborech _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_ , řádky v souborech vypadají jako na následujícím řádku:
+1. Nyní nahraďte název zařízení identifikátorem UUID ve formátu, jako je například `root=UUID=\<UUID>` . Pokud například nahradíte názvy zařízení identifikátorem UUID pro kořen a parametr Resume uvedené v souborech _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_ nebo _/etc/default/grub_ , řádky v souborech vypadají jako na následujícím řádku:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -374,7 +389,7 @@ Postup při obejít instalaci poskytovatele služby VSS Azure Site Recovery a ru
       ```
 
 1. Proveďte ruční instalaci agenta mobility.
-1. Po úspěšné instalaci a přechodu k dalšímu kroku **nakonfigurujte**a odeberte přidané řádky.
+1. Po úspěšné instalaci a přechodu k dalšímu kroku **nakonfigurujte** a odeberte přidané řádky.
 1. Chcete-li nainstalovat poskytovatele služby VSS, otevřete příkazový řádek jako správce a spusťte následující příkaz:
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`

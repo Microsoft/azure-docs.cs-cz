@@ -9,12 +9,12 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 5b460a3f4aeb26eaacca56be30674cf0df011e7e
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9b4cb3117464bfd32e17df4a1dbfdf7efd4ecbe6
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072305"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127766"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -47,7 +47,7 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + Skripty nebo notebooky r, ve kterých používáte <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">sadu SDK pro R</a> k psaní vlastního kódu nebo použití modulů R v návrháři.
 
-+ + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
++ [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 
 + [Rozšíření Machine Learning pro uživatele Visual Studio Code](tutorial-setup-vscode-extension.md)
 

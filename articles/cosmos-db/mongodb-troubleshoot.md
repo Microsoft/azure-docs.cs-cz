@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: faf50899e5897a8f06cf0e24166abd303d24b491
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011374"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127698"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Následující článek popisuje běžné chyby a řešení pro nasazení pomoc�
 | 13 | Neautorizováno | V žádosti chybí oprávnění k dokončení. | Ujistěte se, že jste pro databázi a kolekci nastavili správná oprávnění.  |
 | 16 | InvalidLength | Zadaná žádost má neplatnou délku. | Pokud používáte funkci vysvětlit (), ujistěte se, že zadáváte pouze jednu operaci. |
 | 26 | NamespaceNotFound | Databáze nebo kolekce, na kterou se odkazuje v dotazu, se nepovedlo najít. | Ujistěte se, že název databáze nebo kolekce přesně odpovídá názvu v dotazu.|
-| 50 | ExceededTimeLimit | Požadavek překročil 60sekundový časový limit provádění. |  Tato chyba může mít mnoho příčin. Jednou z příčin je, že momentálně přidělená kapacita jednotek žádostí není dostačující k dokončení žádosti. Tento problém je možné vyřešit zvýšením počtu jednotek žádostí dané kolekce nebo databáze. V ostatních případech se tato chyba může vyřešit tak, že se velký požadavek rozdělí na menší.|
+| 50 | ExceededTimeLimit | Požadavek překročil 60sekundový časový limit provádění. |  Tato chyba může mít mnoho příčin. Jednou z příčin je, že momentálně přidělená kapacita jednotek žádostí není dostačující k dokončení žádosti. Tento problém je možné vyřešit zvýšením počtu jednotek žádostí dané kolekce nebo databáze. V ostatních případech se tato chyba může vyřešit tak, že se velký požadavek rozdělí na menší. Opakování operace zápisu, která přijala tuto chybu, může způsobit duplicitní zápis.|
 | 61 | ShardKeyNotFound | Dokument ve vaší žádosti neobsahoval klíč horizontálních oddílů kolekce (klíč oddílu Azure Cosmos DB). | Ujistěte se, že se v požadavku používá horizontálních oddílů klíč kolekce.|
 | 66 | ImmutableField | Požadavek se pokouší změnit neměnné pole. | pole ID jsou neměnné. Ujistěte se, že se Váš požadavek nepokusí aktualizovat toto pole. |
 | 67 | CannotCreateIndex | Požadavek na vytvoření indexu nelze dokončit. | V kontejneru lze vytvořit až 500 indexů s jedním polem. Do složeného indexu lze zahrnout maximálně osm polí (složené indexy jsou podporovány ve verzi 3.6 +). |
@@ -40,6 +40,7 @@ Následující článek popisuje běžné chyby a řešení pro nasazení pomoc�
 | 16501 | ExceededMemoryLimit | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Nerozpoznaný název fáze kanálu | Název fáze v žádosti o agregovaný kanál nebyl rozpoznán. | Zajistěte, aby všechny názvy kanálů agregace byly ve vaší žádosti platné. |
 | - | Problémy s verzí přenosového protokolu MongoDB | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojíte *AppName = @**account** @* na konci rozhraní API Cosmos DB pro připojovací řetězec MongoDB, kde název ***účtu*** je váš Cosmos DB název účtu. |
+| - | MongoDB problémy se sítí klienta (například výjimky soketu nebo endOfStream)| Požadavek sítě se nezdařil. To je často způsobeno neaktivním připojením TCP, které se klient MongoDB pokouší použít. Ovladače MongoDB často využívají sdružování připojení, což má za následek náhodné připojení zvolené z fondu, který se používá pro požadavek. Neaktivním připojením obvykle vypršel časový limit Azure Cosmos DB končí po čtyřech minutách. | Tyto neúspěšné požadavky můžete buď opakovat v kódu aplikace, změnit nastavení klienta MongoDB (Driver) tak, aby rozboru neaktivní připojení TCP před časovým intervalem čtyř minut, nebo nakonfigurovat nastavení kontroly stavu systému pro správu a údržbu tak, aby se připojení TCP v aktivním stavu zachovalo. |
 
 ## <a name="next-steps"></a>Další kroky
 

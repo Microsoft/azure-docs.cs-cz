@@ -3,12 +3,12 @@ title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Do
 description: Přečtěte si tipy a doporučení pro řešení potíží pro několik problémů, které se mohou zobrazit při použití Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261120"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126865"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -26,7 +26,7 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
     
     Příklad chybové zprávy o selhání:
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>

@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566363"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127885"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Protokoly a metriky služby Azure Virtual WAN
 
-Službu Azure Virtual WAN můžete monitorovat pomocí Azure Monitor. Virtuální síť WAN je síťová služba, která přináší dohromady mnoho funkcí v síti, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Brány VPN pro virtuální sítě WAN, brány ExpressRoute a Azure Firewall mají k dispozici protokolování a metriky prostřednictvím Azure Monitor. Informace o Azure Firewall najdete v tématu [protokoly Azure firewall a metriky](../firewall/logs-and-metrics.md).
+Službu Azure Virtual WAN můžete monitorovat pomocí Azure Monitor. Virtuální síť WAN je síťová služba, která přináší dohromady mnoho funkcí v síti, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Brány VPN pro virtuální sítě WAN, brány ExpressRoute a Azure Firewall mají k dispozici protokolování a metriky prostřednictvím Azure Monitor.
 
 Tento článek popisuje metriky a diagnostiku, které jsou k dispozici prostřednictvím portálu. Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném čase, které jsou užitečné při upozorňování a rychlé detekci problémů.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Monitorování zabezpečeného centra (Azure Firewall) 
+
+Zabezpečený rozbočovač můžete monitorovat pomocí protokolů Azure Firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit.
+
+Pokud jste se rozhodli zabezpečit své virtuální rozbočovač pomocí Azure Firewall, jsou zde k dispozici relevantní protokoly a metriky: [Azure firewall protokoly a metriky](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Metriky
 
@@ -119,7 +125,7 @@ V případě potřeby nahraďte níže uvedené hodnoty za **= =**.
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Protokoly aktivit
 
-Položky **protokolu aktivit** jsou shromažďovány ve výchozím nastavení a lze je zobrazit v Azure Portal. K zobrazení všech operací odeslaných do vašeho předplatného Azure můžete použít protokoly aktivit Azure (dřív označované jako *operační protokoly* a *protokoly auditu* ).
+Položky **protokolu aktivit** jsou shromažďovány ve výchozím nastavení a lze je zobrazit v Azure Portal. K zobrazení všech operací odeslaných do vašeho předplatného Azure můžete použít protokoly aktivit Azure (dřív označované jako *operační protokoly* a *protokoly auditu*).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780344"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127630"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -146,7 +146,7 @@ Přesunutí clusteru AKS mezi klienty se aktuálně nepodporuje.
 
 Přesun clusterů mezi předplatnými není aktuálně podporován.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Můžu svoje clustery AKS přesunout z aktuálního předplatného Azure do jiného? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Můžu svoje clustery AKS přesunout z aktuálního předplatného Azure do jiného?
 
 Přesunutí clusteru AKS a jeho přidružených prostředků mezi předplatnými Azure se nepodporuje.
 
@@ -154,7 +154,7 @@ Přesunutí clusteru AKS a jeho přidružených prostředků mezi předplatnými
 
 Přesunutí nebo přejmenování clusteru AKS a jeho přidružených prostředků se nepodporuje.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Proč je můj cluster trvá tak dlouho? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Proč je můj cluster trvá tak dlouho?
 
 Většina clusterů se po vyžádání uživatele odstraní; v některých případech, zejména v případě, že zákazníci přinášejí svoji vlastní skupinu prostředků nebo že odstraňování úloh mezi RGy může trvat delší dobu nebo selhat. Pokud máte problém s odstraněním, poklikejte na RG, že nejsou k dispozici žádné prostředky mimo RG od RG, a tak dále.
 
@@ -166,7 +166,7 @@ Můžete to, ale AKS to nedoporučuje. Upgrady by měly být provedeny, pokud je
 
 Ne, odstranit nebo odebrat všechny uzly ve stavu selhání nebo jinak odebrat z clusteru před upgradem
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba `[Errno 11001] getaddrinfo failed`
 
 Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo více skupin zabezpečení sítě (skupin zabezpečení sítě) stále používány a jsou přidruženi ke clusteru.  Odstraňte je a zkuste to znovu.
 
@@ -174,7 +174,7 @@ Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo v�
 
 Potvrďte, že váš instanční objekt vypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md) a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle nedokáže zřídit LoadBalancers, připojení PVC atd.? 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle nedokáže zřídit LoadBalancers, připojení PVC atd.?
 
 Potvrďte, že váš instanční objekt vypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md)  a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
 
@@ -254,6 +254,25 @@ Níže je uveden příklad nastavení protokolu IP v transparentním režimu, p�
 - Jedním z rohových případů v režimu mostu je to, že Azure CNI nemůže uchovat aktualizace vlastního serveru DNS seznam uživatelů, kteří se přidávají buď do sítě VNET, nebo do síťového adaptéru. Výsledkem je, že CNI vybírá jenom první instanci seznamu serverů DNS. Vyřeší v transparentním režimu, protože CNI nemění žádné vlastnosti eth0. Další informace najdete [tady](https://github.com/Azure/azure-container-networking/issues/713).
 - Poskytuje lepší zacházení s přenosy UDP a omezením pro zahlcení zahlcení UDP při vypršení časového limitu protokolu ARP. Pokud most nezná v režimu mostu adresu MAC cílového umístění v rámci komunikace mezi virtuálním počítačem a s tím, jak to bude mít za následek vytvoření paketu na všechny porty. Vyřeší v transparentním režimu, protože v cestě nejsou žádná zařízení L2. Další informace najdete [tady](https://github.com/Azure/azure-container-networking/issues/704).
 - Transparentní režim v rámci komunikace mezi virtuálními počítači a s přenosovou hodnotou v porovnání s režimem mostu zajišťuje lepší přenos z hlediska propustnosti a latence.
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>Jak zabránit vlastnictví oprávnění nastavení pomalých problémů, když má svazek velké množství souborů?
+
+Tradičně, pokud je vaše zařízení spuštěno jako uživatel, který není kořenovým uživatelem (který byste měli mít), je nutné zadat `fsGroup` uvnitř kontextu zabezpečení pod, aby bylo možné svazek číst a zapisovat pod ním. Tento požadavek se podrobněji popisuje [tady](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
+
+Ale jedním z vedlejších případů nastavení `fsGroup` je, že při každém připojení svazku musí Kubernetes rekurzivně `chown()` a `chmod()` všechny soubory a adresáře uvnitř svazku, a to s několika výjimkami, které jsou uvedené níže. K tomu dojde i v případě, že vlastnictví skupiny daného svazku již odpovídá požadovanému `fsGroup` a může být poměrně nákladné pro větší svazky s velkým množstvím malých souborů, což způsobí, že po spuštění bude trvat dlouhou dobu. V tomto scénáři byl známý problém před 1,2 a alternativním řešením je nastavení kořenového adresáře "pod" spustit jako:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+Problém vyřešila Kubernetes v 1,20. Další informace najdete v tématu [Kubernetes 1,20: podrobné řízení změn oprávnění ke svazkům](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) .
 
 
 <!-- LINKS - internal -->

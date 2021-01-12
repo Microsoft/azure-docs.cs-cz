@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 816cdddc1f3d0a9bc9ebc3f277bc223a688cba31
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b3d1ad2d327da60874d2d07ba697b8f5ab815189
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98067361"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127086"
 ---
 # <a name="azure-monitor-troubleshooting-logs-preview"></a>Azure Monitor protokoly řešení potíží (Preview)
 Azure Monitor můžete použít k rychlému a nebo pravidelnému zkoumání problémů, odstraňování potíží s kódem nebo konfigurací nebo řešení případů podpory, které se často spoléhají na hledání velkého objemu dat pro konkrétní přehledy.
@@ -48,7 +48,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-a-given-table"></a>Ověřte, jestli je pro danou tabulku povolená funkce protokolů řešení potíží.
 Pokud chcete zjistit, jestli je pro danou tabulku povolený protokol řešení potíží, můžete použít následující volání rozhraní API.
@@ -65,6 +65,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": " {tableName}"
+                }
 
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-all-of-the-tables-in-a-workspace"></a>Ověřte, jestli je povolená funkce protokoly řešení potíží pro všechny tabulky v pracovním prostoru.
@@ -83,7 +84,7 @@ Response:
           },
           "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/table1",
           "name": "table1"
-        },
+ },
         {
           "properties": {
             "retentionInDays": 7,
@@ -119,7 +120,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 >[!TIP]
 >* Pro spuštění příkazů můžete použít libovolný REST API nástroj. [Další informace](https://docs.microsoft.com/rest/api/azure/)

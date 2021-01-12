@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576260"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127834"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Vylepšení správy uživatelů (Preview) v Azure Active Directory
 
@@ -60,6 +60,9 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 - Název: zobrazovaný název uživatele.
 - Hlavní název uživatele: hlavní název uživatele (UPN).
 - Typ uživatele: člen, Host, žádný.
+- Čas vytvoření: datum a čas vytvoření uživatele.
+- Název úlohy: pracovní pozice uživatele.
+- Oddělení: oddělení, ve kterém uživatel pracuje.
 - Adresář synchronizovaný: označuje, jestli je uživatel synchronizovaný z místního adresáře.
 - Vystavitel identity: Vystavitelé identity, která se používá k přihlášení k uživatelskému účtu.
 - ID objektu: ID objektu uživatele.
@@ -76,7 +79,8 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 Stránka **odstraněné uživatele** obsahuje všechny sloupce, které jsou k dispozici na stránce **Všichni uživatelé** , a několik dalších sloupců, konkrétně:
 
 - Datum odstranění: datum, kdy se uživatel poprvé odstranil z organizace (uživatel je obnovitelné).
-- Datum trvalého odstranění: datum, po kterém se automaticky spustí proces trvalého odstranění uživatele z organizace. 
+- Datum trvalého odstranění: datum, po kterém se automaticky spustí proces trvalého odstranění uživatele z organizace.
+- Původní hlavní název uživatele: původní hlavní název uživatele (UPN), před kterým se přidalo ID objektu jako předpona pro odstraněné hlavní název uživatele (UPN).
 
 > [!NOTE]
 > Data odstranění se zobrazují v koordinovaném univerzálním čase (UTC).
@@ -105,6 +109,10 @@ Níže jsou uvedené vlastnosti, které lze filtrovat na stránce **Všichni už
 - Typ uživatele: člen, Host, žádný
 - Stav synchronizace adresářů: Ano, ne
 - Typ vytvoření: Pozvánka, E-mail ověřeno, místní účet
+- Čas vytvoření: posledních 7, 14, 30, 90, 360 nebo >360 před dny
+- Pozice úlohy: zadejte název úlohy.
+- Oddělení: zadejte název oddělení.
+- Skupina: Vyhledejte skupinu.
 - Stav pozvánky – čeká se na přijetí, přijato
 - Název domény: zadejte název domény.
 - Název společnosti: zadejte název společnosti.
@@ -117,6 +125,9 @@ Stránka **odstraněné uživatelé** obsahuje další filtry, které nejsou na 
 - Typ uživatele: člen, Host, žádný
 - Stav synchronizace adresářů: Ano, ne
 - Typ vytvoření: Pozvánka, E-mail ověřeno, místní účet
+- Čas vytvoření: posledních 7, 14, 30, 90, 360 nebo > 360 před dny
+- Pozice úlohy: zadejte název úlohy.
+- Oddělení: zadejte název oddělení.
 - Stav pozvánky: čeká na přijetí, přijato
 - Datum odstranění: posledních 7, 14 nebo 30 dní
 - Název domény: zadejte název domény.

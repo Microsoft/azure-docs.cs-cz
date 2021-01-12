@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353183"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127817"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -127,12 +127,16 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 
 
+
+## <a name="add-sharepoint-data-source-with-apis"></a>Přidání zdroje dat SharePointu pomocí rozhraní API
+
+Existuje alternativní řešení, které umožňuje přidat nejnovější obsah služby SharePoint přes rozhraní API pomocí služby Azure Blob Storage, a to níže v následujících krocích: 
+1.  Stáhnout soubory SharePoint lokálně. Uživatel, který volá rozhraní API, musí mít přístup k SharePointu. 
+1.  Nahrajte je do Stoarge objektů BLOB v Azure. Tím se vytvoří zabezpečený sdílený přístup [pomocí tokenu SAS.](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works) 
+1. Předejte adresu URL objektu BLOB vygenerovanou tokenem SAS na rozhraní API služby QnA Maker. Chcete-li, aby otázka mohla vyextrahovat z těchto souborů, je nutné přidat typ souboru přípony jako ' &EXT = PDF ' nebo ' &EXT = doc ' na konci adresy URL před předáním do rozhraní API služby QnA Maker>  
+
+
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.

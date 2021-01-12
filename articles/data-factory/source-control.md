@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584197"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127732"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -25,6 +25,7 @@ Ve výchozím nastavení Azure Data Factory autoři uživatelského rozhraní (U
 
 - Služba Data Factory nezahrnuje úložiště pro ukládání entit JSON pro vaše změny. Jediným způsobem, jak změny uložit, je prostřednictvím tlačítka **publikovat vše** a všechny změny se publikují přímo ve službě Data Factory.
 - Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
+- Šablona Azure Resource Manager nutná k nasazení Data Factory sama o sobě není zahrnutá.
 
 Aby se zajistilo lepší prostředí pro vytváření, Azure Data Factory vám umožní nakonfigurovat úložiště Git buď pomocí Azure Repos, nebo GitHubu. Git je systém správy verzí, který umožňuje snazší sledování změn a spolupráci. V tomto článku se dozvíte, jak nakonfigurovat a pracovat v úložišti Git společně s důrazem na osvědčené postupy a Průvodce odstraňováním potíží.
 
@@ -150,7 +151,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
-| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
+| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
 | **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení je to hlavní. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |

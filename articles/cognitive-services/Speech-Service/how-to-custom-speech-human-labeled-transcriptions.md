@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340233"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126882"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
 Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny odstraněním nebo nesprávným nahrazením slov, budete chtít použít přepisy, které jsou pro vaše zvuková data k popisku. Co jsou Přepisy na základě popisku? To je snadné – jedná se o slovo do Wordu, doslovného přepisu zvukového souboru.
 
-Pro zlepšení rozpoznávání je nutná rozsáhlá ukázka dat přepisu, což nabízíme mezi 10 a 1 000 hodinami přepisu dat. Na této stránce si ukážeme pokyny, které vám pomůžou vytvořit vysoce kvalitní přepisy. Tato příručka je rozdělená podle národního prostředí s oddíly pro AMERICKou angličtinu, Mandarinii, čínskou a Německo.
+Pro zlepšení rozpoznávání je nutná rozsáhlá ukázka dat přepisu, což nabízíme mezi 10 a 20 hodinami přepisů dat. Na této stránce si ukážeme pokyny, které vám pomůžou vytvořit vysoce kvalitní přepisy. Tato příručka je rozdělená podle národního prostředí s oddíly pro AMERICKou angličtinu, Mandarinii, čínskou a Německo.
+
+> [!NOTE]
+> Ne všechny základní modely podporují přizpůsobení se zvukovými soubory. Pokud základní model ho nepodporuje, školení použije pouze text přepisů stejným způsobem jako v případě použití souvisejícího textu.
 
 ## <a name="us-english-en-us"></a>USA – angličtina (EN-US)
 

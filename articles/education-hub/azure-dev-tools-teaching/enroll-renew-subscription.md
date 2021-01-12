@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 01/07/2021
-ms.openlocfilehash: 4ff91949c42b9a0e33999b7d0dc21fd24da7cdd9
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0ceb9095f15009c150690b67271f4a654cd6110f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120338"
+ms.locfileid: "98127749"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Registrace nebo obnovení předplatného Azure dev Tools pro vzdělávání
 
@@ -34,7 +34,7 @@ Tento článek popisuje proces registrace ve vývojových nástrojích Azure pro
 1. Pokud se zaregistrujete poprvé, dokončete **informace o vaší instituci**. Při obnovení budou tyto informace automatické vyplňování.
 
     :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Zadejte informace o instituci." border="false":::
-        
+
 1. Vyberte **plán předplatného** a potvrďte předplatné **správce** předplatného. E-mailová doména Správce předplatného umožní studentům ve stejné doméně získat snadný přístup ke stažení výhod softwaru.
 
     :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Vyberte plán předplatného." border="false":::

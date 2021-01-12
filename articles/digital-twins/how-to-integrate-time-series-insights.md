@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046518"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127026"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -84,13 +84,13 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
 
 Než začnete pracovat, poznamenejte si *obor názvů Event Hubs* a *skupinu prostředků*, protože je budete později používat k vytvoření dalšího centra událostí dále v tomto článku.
 
-## <a name="create-an-azure-function"></a>Vytvořit funkci Azure 
+## <a name="create-a-function-in-azure"></a>Vytvoření funkce v Azure
 
-V dalším kroku vytvoříte funkci aktivovanou Event Hubs v rámci aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
+V dalším kroku použijete Azure Functions k vytvoření funkce aktivované Event Hubs v aplikaci Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
 
 Tato funkce převede tyto události s dvojitou aktualizací z původního formátu jako dokumenty JSON patch na objekty JSON obsahující pouze aktualizované a přidané hodnoty z vašich vláken.
 
-Další informace o použití Event Hubs s Azure Functions najdete v tématu [*Trigger Azure Event Hubs pro Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+Další informace o použití Event Hubs s Azure Functions najdete v tématu [*Trigger služby Azure Event Hubs pro Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
 V rámci vaší publikované aplikace Function App nahraďte kód funkce následujícím kódem.
 

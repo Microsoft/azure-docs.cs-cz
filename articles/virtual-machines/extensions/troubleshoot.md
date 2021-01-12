@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966339"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127137"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření Azure Windows VM
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -78,26 +78,30 @@ Po odebrání rozšíření je možné šablonu znovu spustit, aby se spouštěl
 
 ### <a name="trigger-a-new-goalstate-to-the-vm"></a>Aktivace nového GoalState k virtuálnímu počítači
 Můžete si všimnout, že rozšíření nebylo spuštěno nebo se nedaří spustit z důvodu chybějícího generátoru certifikátů služby Windows Azure CRP (Tento certifikát se používá k zabezpečení přenosu chráněných nastavení rozšíření).
-Tento certifikát se automaticky znovu vygeneruje restartováním agenta hosta systému Windows z virtuálního počítače:
+Tento certifikát se automaticky znovu vygeneruje tím, že se z virtuálního počítače restartuje Agent hosta systému Windows:
 - Otevřete Správce úloh.
 - Přejít na kartu Podrobnosti
 - Vyhledání procesu WindowsAzureGuestAgent.exe
 - Klikněte pravým tlačítkem a vyberte Ukončit úlohu. Proces se automaticky restartuje.
 
 
-K virtuálnímu počítači můžete také aktivovat nový GoalState spuštěním možnosti prázdná aktualizace:
+K virtuálnímu počítači můžete také aktivovat nový GoalState spuštěním příkazu "znovu použít virtuální počítač". [Znovu použít](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) virtuální počítač je rozhraní API představené v 2020, které znovu použije stav virtuálního počítače. Tuto možnost doporučujeme provést v okamžiku, kdy můžete tolerovat krátké výpadky virtuálních počítačů. Při opakovaném použití samotného nezpůsobí restartování virtuálního počítače a velká většina pokusů o opakované použití nerestartuje virtuální počítač, existuje velmi malé riziko, že se použije jiná nedokončená aktualizace modelu virtuálního počítače, když se znovu použije Trigger do nového stavu cíle a tato jiná změna by mohla vyžadovat restart. 
 
-Azure PowerShell:
+Azure Portal:
+
+Na portálu vyberte virtuální počítač a v levém podokně v části **Podpora a řešení potíží** vyberte znovu **nasadit + znovu použít** a pak vyberte **znovu použít**.
+
+
+Azure PowerShell *(nahraďte název RG a název virtuálního počítače hodnotami)*:
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Rozhraní příkazového řádku Azure:
+Azure CLI *(nahraďte název RG a název virtuálního počítače hodnotami)*:
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-Pokud nefunguje prázdná aktualizace, můžete k virtuálnímu počítači z Azure Portál pro správu přidat nový prázdný datový disk a později ho odebrat, až se certifikát znovu přidá.
+Pokud se u virtuálního počítače znovu nepracuje, můžete do virtuálního počítače z Azure Portál pro správu přidat nový prázdný datový disk a později ho odebrat, až se certifikát znovu přidá.

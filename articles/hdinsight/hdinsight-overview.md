@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 7f4d820b33f36c295c294000d33a0ca5177fc4d1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028066"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127409"
 ---
 # <a name="what-is-azure-hdinsight"></a>Co je Azure HDInsight?
 
@@ -53,7 +53,7 @@ Extrakce, transformace a načítání (ETL) je proces, při kterém se nestruktu
 
 ### <a name="data-warehousing"></a>Datové sklady
 
-Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI. Další informace najdete v [tomto příběhu zákazníka](https://customers.microsoft.com/story/milliman).
+Pomocí služby HDInsight můžete provádět interaktivní dotazy v petabajtovém měřítku nad strukturovanými i nestrukturovanými daty v jakémkoli měřítku. Můžete také sestavovat modely, které je propojí s nástroji BI.
 
 ![Architektura HDInsight: Datové sklady](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Architektura HDInsight pro datové sklady")
 
@@ -79,7 +79,7 @@ Pomocí služby HDInsight můžete rozšířit svou stávající místní infras
 
 HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení clusterů, jako je například možnost přidávání komponent, nástrojů a jazyků. HDInsight nabízí následující typy clusteru:
 
-|Typ clusteru | Popis |
+|Typ clusteru | Description |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Rozhraní, které používá HDFS, správu prostředků PŘÍZe a jednoduchý programovací model MapReduce pro souběžné zpracování a analýzu dat Batch.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Open source architektura paralelního zpracování, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Podívejte [se, co je Apache Spark v HDInsight?](./spark/apache-spark-overview.md).|

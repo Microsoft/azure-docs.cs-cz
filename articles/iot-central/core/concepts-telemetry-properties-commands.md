@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969057"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127902"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
@@ -187,6 +187,9 @@ Následující fragment kódu z modelu zařízení zobrazuje definici `geopoint`
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> Typ schématu **inbodový** není součástí [specifikace jazyka definice digitálních vláken](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central aktuálně podporuje typ schématu **geografického** **bodu** a sémantický typ umístění pro zpětnou kompatibilitu.
 
 Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujícím příkladu. IoT Central zobrazuje hodnotu jako kód PIN na mapě:
 
@@ -576,6 +579,9 @@ Následující fragment kódu z modelu zařízení zobrazuje definici `geopoint`
 }
 ```
 
+> [!NOTE]
+> Typ schématu **inbodový** není součástí [specifikace jazyka definice digitálních vláken](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central aktuálně podporuje typ schématu **geografického** **bodu** a sémantický typ umístění pro zpětnou kompatibilitu.
+
 Klient zařízení by měl poslat datovou část JSON, která vypadá jako v následujícím příkladu, jako hlášená vlastnost v zařízení s dvojitou vlastností:
 
 ```json
@@ -717,7 +723,7 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 
 `ac` je číselné pole, které používá hodnoty v následující tabulce:
 
-| Hodnota | Popisek | Popis |
+| Hodnota | Popisek | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202`  ani `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |

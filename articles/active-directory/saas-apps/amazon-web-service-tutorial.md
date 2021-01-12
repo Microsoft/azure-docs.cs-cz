@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589425"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127800"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -50,7 +50,7 @@ Tento postup doporučujeme z následujících důvodů:
 > [!Note]
 > Ujistěte se, že používáte jenom aplikaci Galerie.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -113,7 +113,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AWS několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název  | Zdrojový atribut  | Obor názvů |
+    | Name  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -388,7 +388,11 @@ K otestování aplikace v jakémkoli režimu můžete také použít panel Micro
 * Role musí splňovat následující požadavky, aby měly nárok na Import z AWS do služby Azure AD:
 
   * Role musí mít přesně jednoho poskytovatele SAML definovaného v AWS.
-  * Kombinovaná délka ARN (název prostředku Amazon) pro roli a ARN pro přidruženého poskytovatele SAML musí být kratší než 120 znaků.
+  * Kombinovaná délka ARN (název prostředku Amazon) pro roli a ARN pro přidruženého poskytovatele SAML musí být kratší než 240 znaků.
+
+## <a name="change-log"></a>Protokol změn
+
+* 01/12/2020 – omezení délky role se zvýšilo z 119 znaků na 239 znaků. 
 
 ## <a name="next-steps"></a>Další kroky
 

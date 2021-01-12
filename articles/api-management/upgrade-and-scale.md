@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183783"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127783"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
 
@@ -29,7 +29,7 @@ Cena každé jednotky a dostupné funkce (například nasazení ve více oblaste
 >[!NOTE]
 >Článek s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) ukazuje přibližný počet kapacit jednotek v každé úrovni. Pokud chcete získat přesnější čísla, musíte se podívat na reálný scénář pro vaše rozhraní API. Podívejte se na [kapacitu článku instance služby Azure API Management](api-management-capacity.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
@@ -88,4 +88,5 @@ Pokud vaše požadavky na zabezpečení zahrnují [izolaci výpočtů](../azure-
 
 - [Postup při nasazení instance služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
 - [Automatické škálování instance služby Azure API Management](api-management-howto-autoscale.md)
-- [Optimalizace a ukládání na cloudové útratě](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Plánování a Správa nákladů na API Management](plan-manage-costs.md)
+- [Omezení API Management](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

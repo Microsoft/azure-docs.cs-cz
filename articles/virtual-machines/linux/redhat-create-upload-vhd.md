@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 751d447c164c602b9b1524d4945d61556bf71932
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896460"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127290"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou pokryté v tomto článku, jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou pokryté v tomto článku, jsou Hyper-V, virtuální počítač založený na jádrech (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu cloudového přístupu Red Hat najdete na [webu Cloud Access Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [na platformě Azure s RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsob automatizace vytváření RHEL imagí najdete v tématu [Azure image Builder](./image-builder-overview.md).
@@ -200,11 +200,14 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
 
+    
     ```config-grub
-    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-   Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Tato konfigurace také vypne nové zásady vytváření názvů v RHEL 7 pro síťové karty. Kromě toho doporučujeme odebrat následující parametry:
+    Tím se také zajistí, že se všechny zprávy konzoly odešlou do prvního sériového portu a povolíte interakci s konzolou sériového portu, která může pomoci s laděním problémů v Azure. Tato konfigurace také vypne nové zásady vytváření názvů v RHEL 7 pro síťové karty.
 
     ```config
     rhgb quiet crashkernel=auto
@@ -217,6 +220,8 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     ```console
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+    > [!NOTE]
+    > Při nahrávání virtuálního počítače s povoleným rozhraním UEFI je příkaz pro aktualizaci grub `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` .
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte `/etc/ssh/sshd_config` , aby obsahovala následující řádek:
 
@@ -230,31 +235,40 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
+1. Spuštěním následujícího příkazu nainstalujte agenta Azure Linux, Cloud-init a další potřebné nástroje:
 
     ```console
-    # sudo yum install WALinuxAgent
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
     # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
     ```
 
-1. Instalace Cloud-init pro zpracování zřizování
+1. Nakonfigurujte Cloud-init pro zpracování zřizování:
+
+    1. Nakonfigurujte waagent pro Cloud-Init:
 
     ```console
-    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-    # Configure waagent for cloud-init
-    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Pokud migrujete konkrétní virtuální počítač a nechcete vytvořit zobecněnou bitovou kopii, nastavte `Provisioning.Agent=disabled` v `/etc/waagent.conf` konfiguraci.
+    
+    1. Konfigurace připojení:
 
+    ```console
     echo "Adding mounts and disk_setup to init stage"
     sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
     sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Konfigurace zdroje dat Azure:
 
+    ```console
     echo "Allow only Azure datasource, disable fetching network setting via IMDS"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
@@ -262,13 +276,206 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     Azure:
         apply_network_config: False
     EOF
+    ```
 
+    1. Pokud je nakonfigurováno, odeberte existující swapfile:
+
+    ```console
     if [[ -f /mnt/resource/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
     swapoff /mnt/resource/swapfile
     rm /mnt/resource/swapfile -f
     fi
+    ```
+    1. Konfigurace protokolování Cloud-Init:
+    ```console
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
+    ```
+
+1. Přepnutí konfigurace nevytváří na disku s operačním systémem odkládací místo.
+
+    Dříve se agent Azure Linux použil k automatické konfiguraci odkládacího prostoru pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. To je ale teď zpracovávané pomocí Cloud-init. k naformátování disku prostředků pro vytvoření odkládacího souboru **nemusíte** použít agenta pro Linux. Upravte následující parametry `/etc/waagent.conf` správným způsobem:
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    Pokud chcete připojit, formátovat a vytvořit prohození, můžete buď:
+    * Při každém vytvoření virtuálního počítače ho předejte jako Cloud-init config.
+    * Pomocí direktivy Cloud-init vloženými do image, která to provede při každém vytvoření virtuálního počítače:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+1. Pokud chcete zrušit registraci předplatného, spusťte následující příkaz:
+
+    ```console
+    # sudo subscription-manager unregister
+    ```
+
+1. Zrušení zřízení
+
+    Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
+
+    > [!CAUTION]
+    > Pokud migrujete konkrétní virtuální počítač a nechcete vytvořit zobecněnou bitovou kopii, přeskočte krok zrušení zřízení. Spuštění příkazu `waagent -force -deprovision` vykreslí zdrojový počítač jako nepoužitelný, tento krok je určen pouze k vytvoření generalizované image.
+    ```console
+    # sudo waagent -force -deprovision
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+    
+
+1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
+
+### <a name="rhel-8-using-hyper-v-manager"></a>RHEL 8 pomocí Správce technologie Hyper-V
+
+1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
+
+1. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
+
+1. Spuštěním následujícího příkazu zajistěte, aby se služba Správce sítě spustila v době spuštění:
+
+    ```console
+    # sudo systemctl enable NetworkManager.service
+    ```
+
+1. Nakonfigurujte síťové rozhraní tak, aby se automaticky spouštělo při spuštění a používalo protokol DHCP:
+
+    ```console
+    # nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
+    ```
+
+
+1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
+
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
+
+1. Upravte spouštěcí řádek jádra v konfiguraci služby GRUB tak, aby zahrnoval další parametry jádra pro Azure a povolili sériovou konzoli. 
+
+    1. Odebrat aktuální parametry GRUB:
+    ```console
+    # grub2-editenv - unset kernelopts
+    ```
+
+    1. Upravte `/etc/default/grub` v textovém editoru a přidejte následující datového:
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ```
+   
+   Tím se také zajistí, že se všechny zprávy konzoly odešlou do prvního sériového portu a povolíte interakci s konzolou sériového portu, která může pomoci s laděním problémů v Azure. Tato konfigurace také vypne nové zásady vytváření názvů v RHEL 7 pro síťové karty.
+   
+   1. Kromě toho doporučujeme odebrat následující parametry:
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
+   
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+
+1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+    A pro virtuální počítač s podporou rozhraní UEFI spusťte následující příkaz:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+    ```
+
+1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte `/etc/ssh/sshd_config` , aby obsahovala následující řádek:
+
+    ```config
+    ClientAliveInterval 180
+    ```
+
+1. Spuštěním následujícího příkazu nainstalujte agenta Azure Linux, Cloud-init a další potřebné nástroje:
+
+    ```console
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
+    ```
+
+1. Nakonfigurujte Cloud-init pro zpracování zřizování:
+
+    1. Nakonfigurujte waagent pro Cloud-Init:
+
+    ```console
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Pokud migrujete konkrétní virtuální počítač a nechcete vytvořit zobecněnou bitovou kopii, nastavte `Provisioning.Agent=disabled` v `/etc/waagent.conf` konfiguraci.
+    
+    1. Konfigurace připojení:
+
+    ```console
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Konfigurace zdroje dat Azure:
+
+    ```console
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+    ```
+
+    1. Pokud je nakonfigurováno, odeberte existující swapfile:
+
+    ```console
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+    ```
+    1. Konfigurace protokolování Cloud-Init:
+    ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
@@ -323,14 +530,15 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
     ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
     # sudo waagent -force -deprovision
 
     # export HISTSIZE=0
 
     # logout
     ```
+    > [!CAUTION]
+    > Pokud migrujete konkrétní virtuální počítač a nechcete vytvořit zobecněnou bitovou kopii, přeskočte krok zrušení zřízení. Spuštění příkazu `waagent -force -deprovision` vykreslí zdrojový počítač jako nepoužitelný, tento krok je určen pouze k vytvoření generalizované image.
+
 
 1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
