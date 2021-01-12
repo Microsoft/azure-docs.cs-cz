@@ -644,34 +644,6 @@
       href: identity-videos.md
     - name: Blog vývojářů platformy Microsoft Identity Platform
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Články nápovědy pro Azure Portal
-      items:
-        - name: Výchozí nastavení životnosti tokenů pro aplikaci vyvinutou na míru
-          href: registration-config-change-token-lifetime-how-to.md
-        - name: Zjišťování koncových bodů
-          href: registration-config-how-to.md
-        - name: Výběr oprávnění pro konkrétní rozhraní API
-          href: perms-for-given-api.md
-        - name: Protokoly pro ověřování
-          href: active-directory-authentication-protocols.md
-        - name: Rozdíly mezi delegovanými oprávněními a oprávněními aplikace
-          href: delegated-and-app-perms.md
-        - name: Jak funguje souhlas pro aplikace
-          href: consent-framework-links.md
-        - name: Vyhledání konkrétního rozhraní API potřebného pro aplikaci vyvinutou na míru
-          href: api-find-an-api-how-to.md
-        - name: Reference k registraci aplikací
-          href: active-directory-v2-registration-portal.md
-        - name: Registrační pole na webu Azure Portal pro aplikace vyvinuté na míru
-          href: registration-config-specific-application-property-how-to.md
-        - name: Konfigurace nové aplikace s více tenanty
-          href: setup-multi-tenant-app.md
-        - name: Přidání aplikace s více tenanty do galerie aplikací Azure AD
-          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
-        - name: Integrace se službou Azure Active Directory
-          href: active-directory-how-to-integrate.md
-        - name: Konfigurace jednotného přihlašování pro aplikaci
-          href: registration-config-sso-how-to.md
     - name: Blog k Azure AD
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Plány Azure do budoucna
