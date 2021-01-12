@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913001"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070163"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
 
@@ -216,6 +216,8 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
     4. Dá se nainstalovat pomocí `pip install 'PyJWT<2.0.0'`.
     
     Pokud odesíláte uživatelem vytvořené prostředí s vaším spuštěním, zvažte použití nejnovější verze programu AzureML-Core v tomto prostředí. Verze >= 1.18.0 z AzureML-Core už připnutí PyJWT < 2.0.0. Pokud v prostředí, které odesíláte, potřebujete použít verzi < AzureML-Core 1.18.0, nezapomeňte ve svých závislostech PIP zadat < PyJWT 2.0.0.
+
+* **Spuštění cíle služby COMPUTE trvá dlouhou dobu**: image Docker pro cíle výpočtů se načítají z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a načítání imagí. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).
 
 ## <a name="next-steps"></a>Další kroky
 

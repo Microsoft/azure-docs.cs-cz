@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898772"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070930"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -64,11 +64,11 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
       Austrálie – střed  
       Austrálie – východ  
       Austrálie – jihovýchod  
-      Brazílie – jih  
+      Brazil South  
       Střední Kanada  
       Kanada – východ  
       Indie – střed  
-      USA – střed  
+      Střední USA  
       Čína – východ 2  
       Čína – sever 2  
    :::column-end:::
@@ -118,10 +118,10 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
       Austrálie – střed  
       Austrálie – východ  
       Austrálie – jihovýchod  
-      Brazílie – jih  
+      Brazil South  
       Střední Kanada  
       Indie – střed  
-      USA – střed  
+      Střední USA  
       Čína – východ 2  
       Východní Asie  
       East US  
@@ -269,7 +269,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
 - Statistika blokovaného provozu.
     - Proč hostitel blokuje značný objem neškodných přenosů? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
 - Statistika škodlivého povoleného/blokovaného provozu
-  - Proč je hostitel, který přijímá škodlivý provoz a proč je povolený tok z škodlivého zdroje? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
+  - Proč hostitel přijímá škodlivý provoz a proč jsou povoleny toky ze škodlivých zdrojů? Toto chování vyžaduje další šetření a pravděpodobně optimalizaci konfigurace.
 
     V části **hostitel** vyberte **Zobrazit vše**, jak je znázorněno na následujícím obrázku:
 

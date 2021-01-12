@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
-ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740619"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071659"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Řešení potíží s nasazením vzdáleného modelu 
 
@@ -182,7 +181,7 @@ Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí č
 
 Proveďte tyto akce při následujících chybách:
 
-|Chybová  | Řešení  |
+|Chyba  | Řešení  |
 |---------|---------|
 |Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |

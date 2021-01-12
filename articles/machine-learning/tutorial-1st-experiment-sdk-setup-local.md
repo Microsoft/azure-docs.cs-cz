@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883295"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071118"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -32,30 +32,47 @@ V části 1 této série kurzů budete:
 > * Nastavte výpočetní cluster.
 
 > [!NOTE]
-> Tato série kurzů se zaměřuje na Azure Machine Learning koncepty *založené* na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
+> Tento kurz se zaměřuje na Azure Machine Learning koncepty vyžadované k odeslání **dávkových úloh** – jedná se o případ, kdy se kód odešle do cloudu, aby běžel na pozadí bez zásahu uživatele. To je užitečné pro hotové skripty nebo kód, který chcete spustit opakovaně, nebo pro úlohy strojového učení náročné na výpočetní výkon. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
-- Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Mezi příklady patří prostředí, školení a bodování.
-- Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
-- Python (verze 3,5 až 3,7).
-
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Instalace sady Azure Machine Learning SDK
 
-V celém tomto kurzu používáme sadu SDK Azure Machine Learning pro Python.
+V celém tomto kurzu použijete sadu SDK Azure Machine Learning pro Python. Aby nedocházelo k problémům se závislostmi Pythonu, vytvoříte izolované prostředí. Tato řada kurzů používá conda k vytvoření tohoto prostředí. Pokud upřednostňujete použití jiných řešení, jako například `venv` , `virtualenv` nebo Docker, ujistěte se, že používáte verzi pythonu >= 3,5 a < 3,9.
 
-K nastavení prostředí Python pro použití v celém tomto kurzu můžete použít nástroje, které jsou pro vás známé (například conda a PIP). Do prostředí Pythonu nainstalujte Azure Machine Learning SDK pro Python prostřednictvím PIP:
+Ověřte, jestli máte v systému nainstalované conda:
+    
+```bash
+conda --version
+```
+    
+Pokud tento příkaz vrátí `conda not found` chybu, [Stáhněte a nainstalujte Miniconda](https://docs.conda.io/en/latest/miniconda.html). 
+
+Po instalaci conda použijte okno příkazového řádku terminálu nebo Anaconda a vytvořte nové prostředí:
 
 ```bash
+conda create -n tutorial python=3.7
+```
+
+V dalším kroku nainstalujte sadu Azure Machine Learning SDK do prostředí Conda, které jste vytvořili:
+
+```bash
+conda activate tutorial
 pip install azureml-sdk
 ```
+    
+> [!NOTE]
+> Dokončení instalace sady Azure Machine Learning SDK trvá přibližně 5 minut.
+
 
 > [!div class="nextstepaction"]
 > [Nainstaloval (a) jsem sadu SDK](?success=install-sdk#dir) [do problému](https://www.research.net/r/7C8Z3DN?issue=install-sdk) .
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Vytvoření adresářové struktury pro kód
+
 Pro tento kurz doporučujeme nastavit následující jednoduchou strukturu adresářů:
 
 ```markdown
@@ -68,8 +85,9 @@ tutorial
 
 > [!TIP]
 > Skrytý podadresář. AzureML můžete vytvořit v okně terminálu.  Nebo použijte následující:
+>
 > * V okně hledání adres Mac použijte **příkaz + Shift +.** Chcete-li přepnout možnost zobrazit a vytvořit adresáře začínající tečkou.  
-> * V systému Windows 10 si přečtěte téma [jak zobrazit skryté soubory a složky](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
+> * V Průzkumníkovi souborů Windows 10 si přečtěte téma [jak zobrazit skryté soubory a složky](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * V grafickém rozhraní systému Linux použijte **kombinaci kláves CTRL + h** nebo **zobrazení** a zaškrtněte políčko pro **zobrazení skrytých souborů**.
 
 > [!div class="nextstepaction"]
@@ -104,7 +122,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-Spustit tento kód z `tutorial` adresáře:
+V okně, které obsahuje aktivované prostředí *tutorial1* Conda, spusťte tento kód z `tutorial` adresáře.
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +181,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Spusťte soubor Python:
+V okně, které obsahuje aktivované prostředí *tutorial1* Conda, spusťte soubor Python:
 
 ```bash
 python ./02-create-compute.py
@@ -185,6 +203,19 @@ tutorial
 
 > [!div class="nextstepaction"]
 > [Vytvářený výpočetní cluster](?success=create-compute-cluster#next-steps) [jsem narazil na problém](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
+
+## <a name="view-in-the-studio"></a>Zobrazit v studiu
+
+Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com) , abyste viděli pracovní prostor a výpočetní instanci, kterou jste vytvořili.
+
+1. Vyberte **předplatné** , které jste použili k vytvoření pracovního prostoru.
+1. Vyberte **pracovní prostor Machine Learning** , který jste vytvořili, *kurz – WS*.
+1. Po načtení pracovního prostoru na levé straně vyberte **COMPUTE**.
+1. V horní části vyberte kartu **COMPUTE clustery** .
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="Snímek obrazovky: zobrazení výpočetní instance v pracovním prostoru.":::
+
+Toto zobrazení ukazuje zřízený výpočetní cluster spolu s počtem nečinných uzlů, zaneprázdněných uzlů a nezřízených uzlů.  Vzhledem k tomu, že jste cluster ještě nepoužívali, všechny uzly jsou v tuto chvíli nezřízené.
 
 ## <a name="next-steps"></a>Další kroky
 

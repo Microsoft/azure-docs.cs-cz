@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629336"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071200"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
@@ -72,6 +72,7 @@ Níže najdete stránku s cenami za ukázkové předplatné. Všimnete si, že k
 - [Jaké jsou plány, které nabízí Security Center?](#what-are-the-plans-offered-by-security-center)
 - [Jak pro předplatné povolím Azure Defender?](#how-do-i-enable-azure-defender-for-my-subscription)
 - [Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Pokud již mám licenci pro program Microsoft Defender pro koncový bod, mohu získat slevu na Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
 - [Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
 - [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
@@ -100,20 +101,24 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |Metoda  |Pokyny  |
 |---------|---------|
 |Azure Security Center stránky Azure Portal|[Povolení Azure Defenderu](#enable-azure-defender)|
-|REST API|[Rozhraní API pro ceny](/rest/api/securitycenter/pricings)|
+|Rozhraní REST API|[Rozhraní API pro ceny](/rest/api/securitycenter/pricings)|
 |Azure CLI|[AZ Security Price](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[Ceny sady prostředků](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Pokud již mám licenci pro program Microsoft Defender pro koncový bod, mohu získat slevu na Azure Defender?
+Pokud jste už získali licenci na Microsoft Defender pro koncový bod, nebudete muset platit za tuto část vaší licence na Azure Defender.
+
+Pokud chcete potvrdit slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru, oblasti a informace o licenci.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
 
 > [!TIP]
 > To platí i pro ostatní typy prostředků, které jsou chráněné pomocí Security Center. 
@@ -130,7 +135,7 @@ Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?
 Pro každý počítač připojený k pracovnímu prostoru získáte 500 MB bezplatného příjmu dat za den. Konkrétně pro datové typy zabezpečení přímo shromažďované nástrojem Azure Security Center.
 
-Tato data tvoří průměrnou denní rychlost napříč všemi uzly. Takže i když některé počítače odesílají 100-MB a jiné odesílají 800-MB, pokud celková hodnota nepřekročí limit **[počet počítačů] × 500-MB** , nebude se vám účtovat žádná další.
+Tento objem dat představuje denní průměr napříč všemi uzly. Takže i když některé počítače odesílají 100-MB a jiné odesílají 800-MB, pokud celková hodnota nepřekročí limit **[počet počítačů] × 500-MB** , nebude se vám účtovat žádná další.
 
 ## <a name="next-steps"></a>Další kroky
 Tento článek vysvětluje Security Center cenové možnosti. Související materiály najdete v tématech:

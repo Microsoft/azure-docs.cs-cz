@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862318"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071829"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -64,8 +64,8 @@ Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší ve
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 a novější|
-|Partnerský vztah Microsoftu|Windows Server|2012 a novější|
-|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
+|Microsoft|Windows Server|2012 a novější|
+|Microsoft|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12. SP3 – SP5|
@@ -153,8 +153,6 @@ Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících u
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
-
-Kde `<version>` odkazuje na aktuální číslo verze.
 
 ### <a name="collecting-logs-remotely"></a>Vzdálené shromažďování protokolů
 

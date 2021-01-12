@@ -4,14 +4,14 @@ description: Naučte se, jak pomocí Azure Portal nebo CLI vytvářet, zobrazova
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342157"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071030"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -30,7 +30,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
     > [!TIP]
     > Většina oken prostředků má také **výstrahy** v nabídce prostředků v části **monitorování**, můžete také vytvořit výstrahy.
 
-3. Klikněte na **vybrat cíl**a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. Pro vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku** . K vyhledání prostředku můžete použít také panel hledání.
+3. Klikněte na **vybrat cíl** a v kontextovém podokně, které se načte, vyberte cílový prostředek, na kterém chcete upozornit. Pro vyhledání prostředku, který chcete monitorovat, použijte rozevírací seznam pro **předplatné** a **typ prostředku** . K vyhledání prostředku můžete použít také panel hledání.
 
 4. Pokud u vybraného prostředku existují metriky, na které můžete vytvářet výstrahy, budou **dostupné signály** v pravém dolním rohu obsahovat metriky. Úplný seznam typů prostředků podporovaných pro výstrahy metrik v tomto [článku](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)si můžete prohlédnout.
 
@@ -41,13 +41,13 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 7. Zobrazí se graf metriky za posledních 6 hodin. Pomocí rozevíracího seznamu **období grafu** můžete vybrat, že se má zobrazit historie metriky.
 
 8. Pokud má metrika rozměry, zobrazí se tabulka Dimensions. Vyberte jednu nebo více hodnot na dimenzi.
-    - Zobrazené hodnoty dimenzí jsou založené na datech metriky za poslední tři dny.
-    - Pokud Hledaná hodnota dimenze není zobrazená, přidejte vlastní hodnotu kliknutím na "+".
-    - Můžete také*vybrat \* *_ pro všechny dimenze. _*Vybrat \* *_ aplikace bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
+    - Zobrazené hodnoty dimenzí jsou založené na datech metrik za poslední den.
+    - Pokud hodnota dimenze, kterou hledáte, není zobrazená, klikněte na přidat vlastní hodnotu a přidejte vlastní hodnotu dimenze.
+    - Můžete také **Vybrat všechny aktuální a budoucí hodnoty** pro libovolnou dimenzi. Tato možnost bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
 
     Pravidlo upozornění metriky vyhodnotí podmínku pro všechny kombinace hodnot, které jsou vybrány. [Přečtěte si další informace o tom, jak funguje upozorňování na multidimenzionální metriky](alerts-metric-overview.md).
 
-9. Vyberte*hodnotu*_ × typ, **operátor**a **typ agregace**. Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
+9. Vyberte typ **prahové hodnoty** , **operátor** a **typ agregace**. Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
     - Pokud používáte **statickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty**. Graf metriky vám pomůže určit, co může být vhodnou prahovou hodnotou.
     - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty citlivosti**. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
 
@@ -57,7 +57,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 
 12. Případně můžete přidat další kritéria, pokud chcete monitorovat složité pravidlo výstrahy. Aktuálně uživatelé mohou mít pravidla upozornění s dynamickými kritérii prahové hodnoty jako jedno kritérium.
 
-13. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
+13. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis** a **závažnost**.
 
 14. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 
@@ -74,7 +74,7 @@ Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna spra
 
 2. Kliknutí na **výstrahy** a **Spravovat pravidla**
 
-3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah v rámci předplatných. Pravidla můžete dál filtrovat pomocí  **skupiny prostředků**, **typu prostředku**a **prostředku**. Pokud chcete zobrazit jenom výstrahy metriky, vyberte **typ signálu** jako metriky.
+3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah v rámci předplatných. Pravidla můžete dál filtrovat pomocí  **skupiny prostředků**, **typu prostředku** a **prostředku**. Pokud chcete zobrazit jenom výstrahy metriky, vyberte **typ signálu** jako metriky.
 
     > [!TIP]
     > V okně **Spravovat pravidla** můžete vybrat více pravidel upozornění a povolit nebo zakázat. To může být užitečné, když je potřeba zařadit do údržby určité cílové prostředky.

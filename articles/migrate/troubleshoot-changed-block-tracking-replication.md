@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753531"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071370"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -297,6 +297,24 @@ Jedná se o známý problém VMware, ve kterém se velikost disku indikuje sním
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Chybová zpráva: došlo k vnitřní chybě. [Přidělení paměti se nezdařilo. Nedostatek paměti.]
 
 K tomu dojde v případě, že vyrovnávací paměť hostitele NFC nemá dostatek paměti. Pokud chcete tento problém vyřešit, musíte virtuální počítač (COMPUTE vMotion) přesunout na jiného hostitele, který má bezplatné prostředky.
+
+## <a name="replication-cycle-failed"></a>Cyklus replikace se nezdařil.
+
+**ID chyby:** 181008
+
+**Chybová zpráva:** Virtuální počítač: ' VMName '. Chyba: nebyla nalezena žádná disksnapshots pro replikaci snímku s ID snímku: ' SnapshotID '.
+
+**Možné příčiny:**
+
+Možné důvody:
+1. Cesta k jednomu nebo více zahrnutým diskům se změnila kvůli VMotion úložiště.
+2. Nejméně jeden zahrnutý disk již není připojen k virtuálnímu počítači.
+      
+**Základě**
+
+Jsou k dispozici následující doporučení.
+1. Obnovte zahrnuté disky do původní cesty pomocí vMotion úložiště a pak vMotion úložiště zakažte.
+2. Zakažte VMotion úložiště, pokud je povoleno, zastavte replikaci na virtuálním počítači a replikujte virtuální počítač znovu. Pokud problém přetrvává, obraťte se na podporu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348029"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072237"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Rozsahy privátních IP adres Azure Firewall SNAT
 
@@ -25,6 +25,9 @@ Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP ad
 - Pokud chcete nakonfigurovat Azure Firewall na **nikdy** SNAT bez ohledu na cílovou IP adresu, použijte jako rozsah privátních IP adres **0.0.0.0/0** . V této konfiguraci Azure Firewall moci nikdy směrovat přenosy přímo na Internet. 
 
 - Pokud chcete nakonfigurovat bránu firewall tak, aby **vždycky** byla v nezávisle na cílové adrese, použijte jako rozsah privátních IP adres **255.255.255.255/32** .
+
+> [!IMPORTANT]
+> Rozsah privátních adres, který zadáte, se vztahuje pouze na Síťová pravidla. V současné době se pravidla aplikací vždycky SNAT.
 
 > [!IMPORTANT]
 > Pokud chcete zadat vlastní rozsahy privátních IP adres a zachovat výchozí rozsahy adres RFC 1918, ujistěte se, že vlastní seznam stále obsahuje rozsah RFC 1918 pro IANA. 

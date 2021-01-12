@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548184"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071183"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Povolení funkcí synapse pracovního prostoru pro vyhrazený fond SQL (dřív SQL DW)
 
 Všichni uživatelé SQL Data Warehouse teď můžou získat přístup k existující vyhrazené instanci fondu SQL (dřív SQL DW) a používat ji pomocí synapse studia a pracovního prostoru. Uživatelé můžou synapse Studio a pracovní prostor používat, aniž by to ovlivnilo automatizaci, připojení nebo nástroje. Tento článek vysvětluje, jak existující uživatel Azure synapse Analytics může povolit funkce pracovního prostoru synapse pro existující vyhrazený fond SQL (dřív SQL DW). Uživatel může rozšířit svoje existující analytické řešení díky využití nových funkcí bohatých na funkce, které jsou teď dostupné přes pracovní prostor synapse a Studio.   
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než povolíte funkce pracovního prostoru synapse v datovém skladu, musíte se ujistit, že máte následující.
 - Práva k vytváření a správě prostředků SQL hostovaných na logickém serveru SQL.
 - Práva k vytváření prostředků Azure synapse.
@@ -29,7 +29,7 @@ Než povolíte funkce pracovního prostoru synapse v datovém skladu, musíte se
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enabling-synapse-workspace-features-for-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Povolení funkcí synapse pracovního prostoru pro existující vyhrazený fond SQL (dřív SQL DW)
 
@@ -57,6 +57,9 @@ Abyste se ujistili, že k vašemu existujícím instancím fondu SQL (dříve SQ
 4. Vyberte jednu z vyhrazených instancí fondu SQL (dříve SQL DW) hostovaných na logickém serveru. Na stránce Přehled vyberte **Spustit synapse Studio** nebo přejít na [přihlášení k synapse studiu](https://web.azuresynapse.net) a přihlaste se do svého pracovního prostoru.
 
 5. Otevřete **centrum dat** a v Průzkumníku objektů rozbalte vyhrazený fond SQL, abyste měli jistotu, že máte přístup a budete moct dotazovat svůj datový sklad.
+
+    > [!NOTE] 
+    > Připojený pracovní prostor můžete kdykoli odstranit. Při odstranění pracovního prostoru se neodstraní připojený vyhrazený fond SQL (dřív SQL DW). Funkce pracovního prostoru se dá znovu povolit ve vyhrazeném fondu SQL (dřív SQL DW) po dokončení operace odstranění.
 
 ## <a name="next-steps"></a>Další kroky
 Začínáme s [pracovním prostorem synapse a nástrojem Studio](../get-started.md).

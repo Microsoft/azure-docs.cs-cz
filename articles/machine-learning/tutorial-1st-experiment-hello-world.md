@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570956"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071149"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
@@ -33,12 +33,9 @@ V tomto kurzu:
 > * Odeslat a spustit "Hello World!" pravidel.
 > * Zobrazte si výstup kódu v cloudu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončení [části 1](tutorial-1st-experiment-sdk-setup-local.md) , pokud ještě nemáte Azure Machine Learning pracovní prostor.
-- Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
-- Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
-- Python (verze 3,5 až 3,7).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Místní vytvoření a spuštění skriptu v jazyce Python
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>Místní otestování skriptu
 
-Svůj kód můžete spustit lokálně pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) nebo terminálu. Místní spuštění kódu má výhodu interaktivního ladění kódu.
+Svůj kód můžete spustit lokálně pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) nebo terminálu. Místní spuštění kódu má výhodu interaktivního ladění kódu.  V okně, které obsahuje aktivované prostředí *tutorial1* Conda, spusťte soubor Python:
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -148,13 +143,6 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
 
 Spusťte skript ovládacího prvku, který zase běží `hello.py` na výpočetním clusteru, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
 
-První spuštění bude trvat 5-10 minut. Důvodem je, že dojde k následujícímu:
-
-* Image Docker je vestavěná v cloudu.
-* Velikost výpočetního clusteru je změněná z 0 na 1 uzel.
-* Image Docker se stáhne do výpočetního prostředí. 
-
-Další spuštění jsou mnohem rychlejší (přibližně 15 sekund), protože image Docker se ukládá do mezipaměti ve výpočetním prostředí – můžete to otestovat opětovným odesláním kódu uvedeného níže po dokončení prvního spuštění.
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Monitorování kódu v cloudu pomocí studia
 
-Výstup bude obsahovat odkaz na Studio, který vypadá nějak takto: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+Výstup z vašeho skriptu bude obsahovat odkaz na Studio, který vypadá nějak takto: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Použijte odkaz a přejděte na kartu **výstupy + protokoly** . Tady vidíte `70_driver_log.txt` soubor, který vypadá takto:
+Použijte odkaz.  Nejprve se zobrazí stav **Příprava**.  První spuštění bude trvat 5-10 minut. Důvodem je, že dojde k následujícímu:
+
+* Image Docker je vestavěná v cloudu.
+* Velikost výpočetního clusteru je změněná z 0 na 1 uzel.
+* Image Docker se stáhne do výpočetního prostředí. 
+
+Další spuštění jsou mnohem rychlejší (přibližně 15 sekund), protože se image Docker ukládá do mezipaměti ve výpočetním prostředí. Tuto možnost můžete otestovat opětovným odesláním kódu uvedeného níže po dokončení prvního spuštění.
+
+Po dokončení úlohy přejdete na kartu **výstupy a protokoly** . Tady vidíte `70_driver_log.txt` soubor, který vypadá takto:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

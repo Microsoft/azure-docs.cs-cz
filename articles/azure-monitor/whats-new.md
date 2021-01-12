@@ -5,17 +5,75 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 12/04/2020
-ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/11/2021
+ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745770"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071863"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="december-2020"></a>Prosinec 2020
+
+### <a name="general"></a>Obecné
+- Azure Monitor chybových zpráv přidaných [zákazníkem spravovaný klíč](platform/customer-managed-keys.md) .
+- [Partneři, kteří se integrují s](platform/partners.md) oddílem Azure monitor-added v integraci centra událostí.
+
+### <a name="agents"></a>Agenti
+- [Dotazování na více prostředků v Azure Průzkumník dat pomocí Azure monitor](platform/azure-monitor-data-explorer-proxy.md) -New article.
+- [Přehled agentů monitorování Azure](platform/agents-overview.md) – přidala se podpora Oracle 8.
+
+### <a name="alerts"></a>Výstrahy
+- [Řešení potíží s upozorněními na metriky Azure](platform/alerts-troubleshoot-metric.md) – přidání potíží pro dynamické prahové hodnoty.
+- [IT Service Management Connector v Log Analytics](platform/itsmc-definition.md) – nový článek.
+- [Přehled služby IT Service Management Connector](platform/itsmc-overview.md) – restrukturované informace pro řešení potíží.
+- [Připojení Cherwell ke službě IT Service Management Connector](platform/itsmc-connections-cherwell.md) – nový článek
+- [Připojení k prokázání pomocí konektoru pro správu IT služby](platform/itsmc-connections-provance.md) – nový článek
+- [Připojení SCSM ke službě IT Service Management Connector](platform/itsmc-connections-scsm.md) – nový článek
+- [Připojení ServiceNow ke službě IT Service Management Connector](platform/itsmc-connections-servicenow.md) – nový článek
+- [Ruční oprava problémů s synchronizací ServiceNow](platform/itsmc-resync-servicenow.md) – restrukturované informace pro řešení potíží
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights pro webové aplikace v JavaScriptu](app/javascript.md) – nastavení připojovacího řetězce se přidalo.
+- [Metrika Azure Application Insights Standard](app/standard-metrics.md) – nový článek
+- [Azure Monitor Application Insights Java](app/java-in-process-agent.md) – Další informace o posílání vlastní telemetrie z vaší aplikace.
+- [Průběžný export telemetrie z Application Insights](app/export-telemetry.md) – bylo přidáno export na základě nastavení diagnostiky.
+- [Povolte Snapshot debugger pro aplikace .NET a .NET Core v Azure Functions](app/snapshot-debugger-function-app.md) – nový článek.
+- [IP adresy, které používá Application Insights a Log Analytics](app/ip-addresses.md) -přidané IP adresy pro Azure Government.
+- [Řešení potíží se službou Azure Application Insights Profiler](app/profiler-troubleshooting.md) – přidané informace na stránce stav rozšíření webu diagnostické služby.
+- [Řešení potíží s testy dostupnosti služby Azure Application Insights](app/troubleshoot-availability.md) – aktualizace pro řešení potíží s testy pro testování příkazů.
+- [Řešení potíží s Azure Monitor Application Insights pro jazyk Java](app/java-standalone-troubleshoot.md) – nový článek.
+
+### <a name="containers"></a>Kontejnery
+- [Sestavy v Azure monitor for Containers](insights/container-insights-reports.md) – nový článek.
+
+### <a name="logs"></a>Protokoly
+- [Azure monitor protokolovat vyhrazené clustery](log-query/logs-dedicated-clusters.md) – přidané automatizované příkazy, metody odpojování a odebírání a odstraňování potíží.
+- [Dotaz na křížovou službu mezi Azure monitor a Azure Průzkumník dat (Preview)](platform/azure-data-explorer-monitor-cross-service-query.md) – nový článek
+- [Export dat pracovního prostoru Log Analytics v Azure monitor (Preview)](platform/logs-data-export.md) – přidány šablony ARM.
+
+### <a name="metrics"></a>Metriky
+- [Pokročilé funkce Azure Průzkumník metrik](platform/metrics-charts.md) – přidané informace o výběru oboru prostředků
+- [Zobrazení více prostředků v Průzkumník metrik](platform/metrics-dynamic-scope.md) – nový článek.
+
+### <a name="networks"></a>Sítě
+- [Řešení Azure Networking Analytics v Azure monitor](insights/azure-networking-analytics.md) přibyly informace o sešitu Network Insights.
+
+### <a name="virtual-machines"></a>Virtuální počítače
+- [Povolí Azure monitor pro hybridní prostředí](insights/vminsights-enable-hybrid.md) – novou verzi agenta závislostí.
+
+
+### <a name="visualizations"></a>Vizualizace
+- [Vizualizace mapy sešitu Azure monitor](platform/workbooks-map-visualizations.md) – nový článek
+- [Azure monitor sešity Přineste si vlastní](platform/workbooks-bring-your-own-storage.md) článek o novém úložišti.
+
 
 ## <a name="november-2020"></a>Listopad 2020
 

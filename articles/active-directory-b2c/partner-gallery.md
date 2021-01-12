@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356119"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070860"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -54,7 +54,7 @@ Partneři Microsoftu s následujícím nezávislým výrobcům softwaru pro MFA 
 | ![Snímek obrazovky s logem Nevis](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) umožňuje ověřování bez hesla a poskytuje mobilní a plnohodnotné prostředí koncového uživatele s přístupem k aplikacím Nevis pro zajištění silného ověřování zákazníků a dodržování požadavků PSD2 transakcí. |
 | ![Snímek obrazovky s logem trusona](./media/partner-gallery/trusona-logo.png) | Integrace [Trusona](./partner-trusona.md) vám pomůže bezpečně se přihlásit a povolit ověřování bez hesla, MFA a digitální licence. |
 | ![Snímek obrazovky s logem Twilio](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) nabízí více řešení pro povolení MFA prostřednictvím jednorázového hesla SMS (jednorázové heslo), časově náročného hesla (TOTP) a nabízených oznámení a pro splnění požadavků SCA pro PSD2. |
-| ![Snímek obrazovky s logem typingDNA](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) umožňuje silné ověřování zákazníků analýzou psaní vzoru uživatele. Pomáhá společnostem povolit tiché MFA a splňovat požadavky SCA pro PSD2. |
+| ![Snímek obrazovky s logem typingDNA](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) umožňuje silné ověřování zákazníků analýzou psaní vzoru uživatele. Pomáhá společnostem povolit tiché MFA a splňovat požadavky SCA pro PSD2. |
 | ![Snímek obrazovky s logem whoiam](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) je aplikace BRIMS (Identity Management System), která umožňuje organizacím ověřovat své uživatelské základny pomocí hlasu, SMS a e-mailu. |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role 

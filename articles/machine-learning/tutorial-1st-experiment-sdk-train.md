@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739616"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071098"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
@@ -41,9 +41,6 @@ V tomto kurzu jste:
 ## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [části 2](tutorial-1st-experiment-hello-world.md) série.
-* Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
-* Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
-* Python (verze 3,5 až 3,7).
 
 ## <a name="create-training-scripts"></a>Vytváření školicích skriptů
 
@@ -77,9 +74,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [Vytvořili jste školicí skripty,](?success=create-scripts#environment) u kterých došlo [k problému](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> Vytvoření prostředí Pythonu
-
-Pro demonstrační účely budeme používat prostředí conda. (Kroky pro virtuální prostředí PIP jsou téměř identické.)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> Vytvořit nové prostředí Pythonu
 
 `pytorch-env.yml`Ve skrytém adresáři vytvořte soubor s názvem `.azureml` :
 
@@ -92,18 +87,19 @@ Toto prostředí má všechny závislosti, které model a školicí skript vyža
 
 ## <a name="test-locally"></a><a name="test-local"></a> Test lokálně
 
-Pomocí následujícího kódu otestujte skript spouštěný místně v tomto prostředí:
+Použijte následující kód k otestování skriptu lokálně v novém prostředí.  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 Po spuštění tohoto skriptu uvidíte data stažená do adresáře s názvem `tutorial/data` .
 
 > [!div class="nextstepaction"]
-> [Vytvořili jsem soubor prostředí,](?success=test-local#create-local) [který jsem narazil na problém](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [Kód jsem v místním](?success=test-local#create-local) [prostředí](https://www.research.net/r/7CTJQQN?issue=test-local) jsem narazil na problém
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> Vytvoření řídicího skriptu
 
@@ -163,11 +159,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Odeslat běh do Azure Machine Learning
 
-Pokud jste přepnuli místní prostředí, nezapomeňte přepnout zpátky do prostředí, ve kterém je nainstalovaná sada Azure Machine Learning SDK pro Python.
-
-Potom následujícím příkazem:
+Přepněte zpátky do prostředí *kurzu* , ve kterém je nainstalovaná sada Azure Machine Learning SDK for Python. Vzhledem k tomu, že kód školení není v počítači spuštěný, není nutné mít nainstalované PyTorch.  Ale potřebujete `azureml-sdk` , který je v prostředí *kurzu* .
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 

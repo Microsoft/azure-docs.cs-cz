@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739429"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072152"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
@@ -40,9 +40,6 @@ V tomto kurzu jste:
 ## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [třetí části](tutorial-1st-experiment-sdk-train.md) série.
-* Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
-* Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
-* Python (verze 3,5 až 3,7).
 
 ## <a name="adjust-the-training-script"></a>Úprava školicího skriptu
 
@@ -130,7 +127,7 @@ Vytvořte nový skript řízení Pythonu s názvem `05-upload-data.py` v `tutori
 >[!TIP] 
 > Když používáte Azure Machine Learning k nahrávání dat, můžete k nahrání souborů ad hoc použít [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) . Pokud potřebujete nástroj ETL, můžete k ingestování dat do Azure použít [Azure Data Factory](../data-factory/introduction.md) .
 
-Spusťte soubor Pythonu pro nahrání dat. (Nahrávání by mělo být rychlé, méně než 60 sekund.)
+V okně, které obsahuje aktivované prostředí *tutorial1* Conda, spusťte soubor Pythonu pro nahrání dat. (Nahrávání by mělo být rychlé, méně než 60 sekund.)
 
 ```bash
 python 05-upload-data.py

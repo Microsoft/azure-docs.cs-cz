@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709295"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070758"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -46,11 +46,11 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | – |
+| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1-20 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | Ne | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
+| [Související text](#related-text-data-for-training) | No | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
 
-Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází.
+Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází. Školení s textem je mnohem rychlejší než školení na zvuk (minuty vs. dny).
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor. zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
@@ -93,7 +93,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 
 Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
-| Aktivita | Popis | SoX – příkaz |
+| Aktivita | Description | SoX – příkaz |
 |----------|-------------|-------------|
 | Kontrolovat zvukový formát | Pomocí tohoto příkazu ověřte<br>formát zvukového souboru. | `sox --i <filename>` |
 | Převod zvukového formátu | Tento příkaz slouží k převodu<br>zvukový soubor do jednoho kanálu, 16bitová, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -138,7 +138,9 @@ Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním
 > [!div class="mx-imgBorder"]
 > ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-Seznam doporučených oblastí pro vaše předplatná služby Speech najdete v tématu [Nastavení účtu Azure](custom-speech-overview.md#set-up-your-azure-account) . Nastavení předplatných pro rozpoznávání řeči v jedné z těchto oblastí zkrátí dobu potřebnou k učení modelu.
+Seznam doporučených oblastí pro vaše předplatná služby Speech najdete v tématu [Nastavení účtu Azure](custom-speech-overview.md#set-up-your-azure-account) . Nastavení předplatných pro rozpoznávání řeči v jedné z těchto oblastí zkrátí dobu potřebnou k učení modelu. V těchto oblastech může školení zpracovávat zhruba 10 hodin zvukového záznamu v porovnání s jednou jednou hodinu za den v jiných oblastech. Pokud školení modelu nelze dokončit během týdne, model bude označen jako neúspěšný.
+
+Ne všechny základní modely podporují školení se zvukovými daty. Pokud ho základní model nepodporuje, služba ignoruje zvuk a jenom vlak s textem přepisů. V takovém případě bude školení stejné jako školení se souvisejícím textem.
 
 ## <a name="related-text-data-for-training"></a>Související textová data pro školení
 
@@ -150,6 +152,8 @@ Názvy produktů nebo funkce, které jsou jedinečné, by měly obsahovat souvis
 | Výslovnost | Zlepšení výslovnosti neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
 
 Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portál <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+
+Školení se souvisejícím textem obvykle dokončí během několika minut.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Pokyny k vytvoření souboru s větami
 
@@ -190,7 +194,7 @@ Mluvený formulář je fonetická sekvence, která je vypsána. Může se sklád
 
 Přizpůsobená výslovnost je k dispozici v angličtině ( `en-US` ) a němčině ( `de-DE` ). V této tabulce jsou uvedeny podporované znaky podle jazyka:
 
-| Jazyk | Národní prostředí | Znaky |
+| Language | Národní prostředí | Znaky |
 |----------|--------|------------|
 | Angličtina | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | Němčina | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |

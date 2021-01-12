@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857337"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070724"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -91,9 +91,9 @@ Pokud chcete nastavit upozorňování na konkrétní metriku, ale při vytváře
 Pokud chcete upozornit na [konkrétní hodnoty dimenze metriky](./alerts-metric-overview.md#using-dimensions), ale tyto hodnoty nejdou najít, pamatujte na toto:
 
 1. Zobrazení hodnot dimenzí v seznamu **Hodnoty dimenzí** může několik minut trvat.
-1. Zobrazené hodnoty dimenzí vycházejí z dat metriky shromážděných za poslední tři dny.
-1. Pokud hodnota dimenze ještě není vygenerována, přidejte vlastní hodnotu kliknutím na znaménko +.
-1. Pokud byste chtěli upozornit na všechny možné hodnoty dimenze (včetně budoucích hodnot), zaškrtněte políčko "vybrat *".
+1. Zobrazené hodnoty dimenzí jsou založené na datech metrik shromážděných za poslední den.
+1. Pokud hodnota dimenze ještě není vygenerovaná nebo není zobrazená, můžete k přidání vlastní hodnoty dimenze použít možnost přidat vlastní hodnotu.
+1. Pokud byste chtěli upozornit na všechny možné hodnoty dimenze (včetně budoucích hodnot), zvolte možnost vybrat všechny aktuální a budoucí hodnoty.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Pravidla upozornění na metriku jsou pořád definovaná u odstraněného prostředku. 
 
@@ -187,7 +187,7 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
 - V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 

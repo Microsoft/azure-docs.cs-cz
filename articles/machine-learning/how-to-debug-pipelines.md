@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 9baf305ab72354c150cb06e594ed8909f2fa1dda
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d55a9ff4dc2a639fca67d19d9323b9397aa0f409
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739310"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070367"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Řešení potíží s kanály strojového učení
 
@@ -33,6 +33,7 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 | Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané, `allow_reuse` parametr v kroku se nastaví na `False` . |
 | Nenutně funguje kanál. | Aby se zajistilo, že kroky se spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře zdrojového kódu pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
 | Krok zpomalující epochs nebo jiné chování smyček | Zkuste přepnout všechny zápisy souborů, včetně protokolování, od `as_mount()` do `as_upload()` . Režim **připojení** používá vzdálený virtualizovaný systém souborů a nahrává celý soubor pokaždé, když je připojen k. |
+| Spuštění cíle pro výpočet trvá dlouhou dobu. | Image Docker pro cíle výpočtů jsou načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a načítání imagí. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md). |
 
 ### <a name="authentication-errors"></a>Chyby ověřování
 

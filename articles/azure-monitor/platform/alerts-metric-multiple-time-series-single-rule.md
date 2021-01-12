@@ -4,14 +4,14 @@ description: Výstraha ve velkém měřítku s použitím jednoho pravidla výst
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566499"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071081"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Monitorování více časových řad v jednom pravidle výstrahy metriky
 
@@ -43,7 +43,7 @@ Příklad takového pravidla výstrahy (se zobrazenými pouze souvisejícími vl
 
 
 Pro toto pravidlo upozornění se sleduje jedna časová řada metrik:
--   Procentuální hodnota CPU, kde *Resource* = ' myVM1 ' > 70%
+-   Procentuální hodnota CPU, kde *Resource*= ' myVM1 ' > 70%
 
 ![Pravidlo výstrahy pro jednu časovou řadu](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,8 +65,8 @@ Příklad takového pravidla výstrahy:
 -   Prahová hodnota: *70*
 
 Pro toto pravidlo upozornění se dvě metriky monitorují samostatně:
--   Procentuální hodnota CPU, kde *Resource* = ' myVM1 ' > 70%
--   Procentuální hodnota CPU, kde *Resource* = ' myVM2 ' > 70%
+-   Procentuální hodnota CPU, kde *Resource*= ' myVM1 ' > 70%
+-   Procentuální hodnota CPU, kde *Resource*= ' myVM2 ' > 70%
 
 ![Pravidlo upozornění s více prostředky](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
@@ -76,7 +76,7 @@ Předpokládejme například, že jsme nastavili výše uvedené pravidlo upozor
 -   *Procento využití CPU* *myVM1* je větší než 70%. 
 -   *Procentuální hodnota CPU* *myVM2* je v 50%.
 
-Pravidlo výstrahy se spouští na *myVM1* , ale ne *myVM2*. Tyto aktivované výstrahy jsou nezávislé. Můžou se také vyřešit v různých časech v závislosti na jednotlivých způsobech jednotlivých virtuálních počítačů.
+Pravidlo výstrahy se spouští na *myVM1*, ale ne *myVM2*. Tyto aktivované výstrahy jsou nezávislé. Můžou se také vyřešit v různých časech v závislosti na jednotlivých způsobech jednotlivých virtuálních počítačů.
 
 Další informace o pravidlech výstrah s více prostředky a typech prostředků podporovaných pro tuto funkci najdete v tématu [monitorování ve velkém měřítku s využitím výstrah metrik v Azure monitor](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
 
@@ -101,8 +101,8 @@ Například:
 
 Pro toto pravidlo upozornění se monitorují dvě časové řady metrik:
 
-- Procentuální hodnota CPU, kde *Resource* = ' myVM1 ' > 70%
-- Síť v celkovém umístění, kde *prostředek* = ' myVM1 ' > 20 MB
+- Procentuální hodnota CPU, kde *Resource*= ' myVM1 ' > 70%
+- Síť v celkovém umístění, kde *prostředek*= ' myVM1 ' > 20 MB
 
 ![Pravidlo upozornění s více podmíněnými podmínkami](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -114,7 +114,7 @@ Operátor AND se používá mezi podmínkami. Pravidlo výstrahy vyvolá výstra
 
 ## <a name="multiple-dimensions-multi-dimension"></a>Více dimenzí (více dimenzí)
 
-Jedno pravidlo výstrahy metriky může také monitorovat více hodnot dimenzí metriky. Dimenze metriky jsou páry název-hodnota, které obsahují další data pro popis hodnoty metriky. Například metrika **transakcí** účtu úložiště má dimenzi s názvem **rozhraní API** , která popisuje název rozhraní API volaného jednotlivými transakcemi (například getblob, DeleteBlob, PutPage). Použití dimenzí je volitelné, ale umožňuje filtrovat metriku a jenom monitorovat konkrétní časovou řadu, místo monitorování metriky jako agregace všech hodnot dimenzí dohromady. 
+Jedno pravidlo výstrahy metriky může také monitorovat více hodnot dimenzí metriky. Dimenze metriky jsou páry název-hodnota, které obsahují další data pro popis hodnoty metriky. Například metrika **transakcí** účtu úložiště má dimenzi s názvem **rozhraní API**, která popisuje název rozhraní API volaného jednotlivými transakcemi (například getblob, DeleteBlob, PutPage). Použití dimenzí je volitelné, ale umožňuje filtrovat metriku a jenom monitorovat konkrétní časovou řadu, místo monitorování metriky jako agregace všech hodnot dimenzí dohromady. 
 
 Můžete například zvolit, že se má vygenerovat výstraha v případě, že je počet transakcí vysoký napříč všemi názvy rozhraní API (což jsou agregovaná data), nebo ho dále rozdělte na upozornění, když je počet transakcí vysoký pro konkrétní názvy rozhraní API. 
 
@@ -129,9 +129,9 @@ Příkladem pravidla výstrahy monitorování více dimenzí je:
 
 Pro toto pravidlo upozornění se sleduje tři časové řady metrik:
 
-- Transakce, kde *Resource* = ' myStorage1 ' a ' *název rozhraní API* = ' getblob ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' DeleteBlob ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' PutPage ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a ' *název rozhraní API*= ' getblob ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' DeleteBlob ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' PutPage ' > 70
 
 ![Pravidlo upozornění s více dimenzemi s hodnotami z jedné dimenze](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ Příklad tohoto typu pravidla výstrahy:
 
 Pro toto pravidlo upozornění se šestá řada metrik-Series monitoruje samostatně:
 
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' Getblob ' a *Authentication* = ' SAS ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' Getblob ' a *Authentication* = ' AccountKey ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' DeleteBlob ' a *Authentication* = ' SAS ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' DeleteBlob ' a *Authentication* = ' AccountKey ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' PutPage ' a *Authentication* = ' SAS ' > 70
-- Transakce, kde *Resource* = ' myStorage1 ' a *rozhraní API Name* = ' PutPage ' a *Authentication* = ' AccountKey ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' Getblob ' a *Authentication*= ' SAS ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' Getblob ' a *Authentication*= ' AccountKey ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' DeleteBlob ' a *Authentication*= ' SAS ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' DeleteBlob ' a *Authentication*= ' AccountKey ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' PutPage ' a *Authentication*= ' SAS ' > 70
+- Transakce, kde *Resource*= ' myStorage1 ' a *rozhraní API Name*= ' PutPage ' a *Authentication*= ' AccountKey ' > 70
 
 ![Pravidlo upozornění s více dimenzemi s hodnotami z více dimenzí](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -162,7 +162,7 @@ Pro toto pravidlo upozornění se šestá řada metrik-Series monitoruje samosta
 
 1.  **Výběr všech aktuálních a budoucích dimenzí** – můžete se rozhodnout, že budete monitorovat všechny možné hodnoty dimenze, včetně budoucích hodnot. Toto pravidlo výstrahy se automaticky škáluje tak, aby sledovalo všechny hodnoty dimenze, aniž byste museli upravovat pravidlo upozornění pokaždé, když je hodnota dimenze přidána nebo odebrána.
 2.  **Vyloučení dimenzí** – výběr operátoru ' ≠ ' (Exclude) pro hodnotu dimenze je ekvivalentem výběru všech ostatních hodnot této dimenze, včetně budoucích hodnot.
-3.  **Nové a vlastní dimenze** – hodnoty dimenze zobrazené v Azure Portal jsou založené na datech metrik shromážděných za poslední tři dny. Pokud Hledaná hodnota dimenze ještě není vygenerována, můžete přidat vlastní hodnotu dimenze.
+3.  **Nové a vlastní dimenze** – hodnoty dimenze zobrazené v Azure Portal jsou založené na datech metriky shromážděných za poslední den. Pokud Hledaná hodnota dimenze ještě není vygenerována, můžete přidat vlastní hodnotu dimenze.
 4. **Odpovídající dimenze s předponou** – můžete vybrat, jestli chcete monitorovat všechny hodnoty dimenzí, které začínají konkrétním vzorem, a to tak, že vyberete operátor ' začíná na ' a zadáte vlastní předponu.
 
 ![Rozšířené funkce více dimenzí](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

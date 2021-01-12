@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500746"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071727"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostika spouštění Azure
 
@@ -21,10 +21,14 @@ Diagnostika spouštění je funkce ladění pro virtuální počítače Azure (V
 ## <a name="boot-diagnostics-storage-account"></a>Účet úložiště diagnostiky spouštění
 Při vytváření virtuálního počítače v Azure Portal je ve výchozím nastavení povolená Diagnostika spouštění. Doporučené prostředí pro diagnostiku spouštění je použití spravovaného účtu úložiště, protože poskytuje významné vylepšení výkonu v čase vytvoření virtuálního počítače Azure. Je to proto, že se použije účet spravovaného úložiště Azure, který odebere čas potřebný k vytvoření nového účtu úložiště uživatele pro uložení dat diagnostiky spouštění.
 
-Alternativním prostředím pro diagnostiku spouštění je použití účtu úložiště spravovaného uživatelem. Uživatel může buď vytvořit nový účet úložiště, nebo použít nějaký existující. 
-
 > [!IMPORTANT]
 > Datové bloby spouštění diagnostiky dat (které tvoří protokoly a image snímků) se ukládají ve spravovaném účtu úložiště. Zákazníkům se budou účtovat jenom využívané GiBs objekty blob, a ne na zřízené velikosti disku. Měřiče snímků se použijí pro fakturaci spravovaného účtu úložiště. Vzhledem k tomu, že se spravované účty vytvářejí na úrovni Standard LRS nebo Standard ZRS, zákazníkům se budou účtovat jenom za měsíc, který bude mít za velikost svých objektů BLOB diagnostických dat. Další informace o těchto cenách najdete v tématu [ceny služby Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Zákazníci uvidí tento poplatek vázaný na svůj identifikátor URI prostředku virtuálního počítače. 
+
+Alternativním prostředím pro diagnostiku spouštění je použití účtu úložiště spravovaného uživatelem. Uživatel může buď vytvořit nový účet úložiště, nebo použít nějaký existující.
+> [!NOTE]
+> Uživatelem spravované účty úložiště přidružené k diagnostice spouštění vyžadují, aby byl účet úložiště a přidružené virtuální počítače umístěné ve stejném předplatném. 
+
+
 
 ## <a name="boot-diagnostics-view"></a>Zobrazení diagnostiky spouštění
 V okně virtuální počítač je možnost Diagnostika spouštění v části *Podpora a řešení potíží* v Azure Portal. Když vyberete diagnostiku spouštění, zobrazí se informace o snímku obrazovky a sériového protokolu. Sériový protokol obsahuje zprávy jádra a snímek obrazovky je snímek aktuálního stavu virtuálních počítačů. V závislosti na tom, jestli je na virtuálním počítači spuštěný systém Windows nebo Linux, určuje, jak by měl vypadat očekávaný snímek obrazovky. V případě systému Windows uvidí uživatelé desktopové pozadí a pro Linux se zobrazí výzva k zadání přihlašovacích údajů.

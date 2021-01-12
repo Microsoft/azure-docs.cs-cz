@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/18/2020
-ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.date: 01/10/2021
+ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831648"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071931"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -36,7 +36,7 @@ Log Analytics vyhrazené clustery používají [cenový model](../log-query/logs
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Jak Customer-Managed klíč funguje v Azure Monitor
 
-Azure Monitor používá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault. Identita Log Analyticsho clusteru je podporovaná na úrovni clusteru a povoluje Customer-Managed klíč ve více pracovních prostorech. nový prostředek Log Analytics *clusteru* provádí jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Log Analytics úložiště clusteru používá spravovanou identitu, která je \' přidružená k prostředku *clusteru* k ověření ve vaší Azure Key Vault prostřednictvím Azure Active Directory. 
+Azure Monitor používá spravovanou identitu pro udělení přístupu k vašemu Azure Key Vault. Identita clusteru Log Analytics je podporovaná na úrovni clusteru. Aby bylo možné Customer-Managed ochranu klíčů ve více pracovních prostorech, provede nový prostředek Log Analytics *clusteru* jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Úložiště clusteru používá spravovanou identitu, která je \' přidružená k prostředku *clusteru* k ověření pro vaši Azure Key Vault prostřednictvím Azure Active Directory. 
 
 Po konfiguraci klíče spravovaného zákazníkem se s vaším klíčem šifrují nová ingestovaná data do pracovních prostorů propojených s vaším vyhrazeným clusterem. Pracovní prostory z clusteru můžete kdykoli zrušit. Nová data se pak ingestují Log Analytics úložiště a šifrují pomocí klíče Microsoft Key, zatímco můžete bez problémů zadávat dotazy na nová a stará data.
 
@@ -125,6 +125,11 @@ Tato nastavení je možné aktualizovat v Key Vault prostřednictvím rozhraní 
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
+> [! INFORMACE] clustery podporují dva [spravované typy identity](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Spravovaná identita přiřazená systémem se při zadání typu identity vytvoří s clusterem `SystemAssigned` a dá se později použít k udělení přístupu k vašemu Key Vault. Pokud chcete vytvořit cluster, který je nakonfigurovaný pro klíč spravovaný zákazníkem při vytváření, vytvořte cluster s uživatelem přiřazenou spravovanou identitou udělenou v Key Vault – aktualizujte cluster s `UserAssigned` typem identity, ID prostředku identity v `UserAssignedIdentities` a poskytněte vám podrobné informace o klíči v `keyVaultProperties` .
+
+> [!IMPORTANT]
+> V současné době nemůžete definovat klíč spravovaný zákazníkem pomocí spravované identity přiřazené uživatelem, pokud se Key Vault nachází v Private-Link (virtuální síť). Toto omezení se nepoužije na spravovanou identitu přiřazenou systémem.
+
 Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
 ## <a name="grant-key-vault-permissions"></a>Udělení oprávnění Key Vault
@@ -132,7 +137,7 @@ Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným cluster�
 Vytvoření zásad přístupu v Key Vault pro udělení oprávnění vašemu clusteru. Tato oprávnění používá Underlay Azure Monitor Storage. Otevřete Key Vault v Azure Portal a klikněte na *"zásady přístupu"* , pak *"+ Přidat zásadu přístupu"* a vytvořte zásadu s těmito nastaveními:
 
 - Klíčová oprávnění: vyberte *Get*, *Wrap Key* a *Unwrap Key*.
-- Vyberte objekt zabezpečení: zadejte název clusteru nebo identifikátor zabezpečení (UPN).
+- Vyberte objekt zabezpečení: v závislosti na typu identity používaném v clusteru (spravované identity systémem nebo uživatelem) zadejte název clusteru nebo ID objektu zabezpečení clusteru pro spravovanou identitu přiřazenou systémem nebo název spravované identity přiřazený uživateli.
 
 ![udělení oprávnění Key Vault](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -237,11 +242,15 @@ Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným cluster�
 
 ## <a name="key-revocation"></a>Odvolání klíče
 
-Přístup k datům můžete odvolat tím, že klíč zakážete nebo odstraníte zásady přístupu clusteru v Key Vault. Služba Log Analyticsového úložiště clusteru bude vždy respektovat změny klíčových oprávnění během hodiny nebo dřív a úložiště nebude k dispozici. Všechna nová data, která se ingestují do pracovních prostorů propojených s vaším clusterem, se zahozena a nebudou se obnovovat, data jsou nedostupná a dotazy do těchto pracovních prostorů selžou. Dříve přijímaná data zůstanou v úložišti, dokud neodstraníte svůj cluster a vaše pracovní prostory. Nepřístupná data se řídí zásadami uchovávání dat a při dosažení doby uchování se odstraní. 
+Přístup k datům můžete odvolat tím, že klíč zakážete nebo odstraníte zásady přístupu clusteru v Key Vault. 
 
-Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato operace se odstraní při operaci odvolání klíče a stane se taky nedostupným.
+> [!IMPORTANT]
+> - Pokud je váš cluster nastavený pomocí spravované identity přiřazené uživatelem, nastavení `UserAssignedIdentities` `None` pozastaví cluster a znemožní přístup k vašim datům, ale nemůžete vrátit zpět odvolání a aktivovat cluster bez nutnosti otevřít žádost o podporu. Toto omezení se nepoužije na spravovanou identitu přiřazenou systémem.
+> - Doporučená akce odvolání klíče je vypnutím klíče ve vašem Key Vault.
 
-Úložiště se pravidelně dotazuje Key Vault k pokusu o rozbalení šifrovacího klíče a po jeho použití, příjmu dat a obnovení dotazů do 30 minut.
+Úložiště clusteru bude vždy respektovat změny klíčových oprávnění během hodiny nebo dřív a úložiště nebude k dispozici. Všechna nová data, která se ingestují do pracovních prostorů propojených s vaším clusterem, se zahodila a nebudou se moct obnovit, data budou nepřístupná a dotazy na tyto pracovní prostory selžou. Dříve přijímaná data zůstanou v úložišti, dokud neodstraníte svůj cluster a vaše pracovní prostory. Nepřístupná data se řídí zásadami uchovávání dat a při dosažení doby uchování se odstraní. Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato operace se odstraní při operaci odvolání klíče a stane se taky nedostupným.
+
+Úložiště clusteru se pravidelně dotazuje Key Vault k pokusu o rozbalení šifrovacího klíče a po jeho použití, příjmu dat a obnovení dotazů do 30 minut.
 
 ## <a name="key-rotation"></a>Obměna klíčů
 
@@ -404,6 +413,37 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
   - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje pro clustery dvojité šifrování", můžete cluster stále vytvořit bez šifrování. `"properties": {"isDoubleEncryptionEnabled": false}`Do textu žádosti REST přidejte vlastnost.
   - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
+  - Pokud je váš cluster nastavený pomocí spravované identity přiřazené uživatelem, nastavení `UserAssignedIdentities` `None` pozastaví cluster a znemožní přístup k vašim datům, ale nemůžete vrátit zpět odvolání a aktivovat cluster bez nutnosti otevřít žádost o podporu. Toto omezení se vztahuje na spravovanou identitu přiřazenou systémem.
+
+  - V současné době nemůžete definovat klíč spravovaný zákazníkem pomocí spravované identity přiřazené uživatelem, pokud se Key Vault nachází v Private-Link (virtuální síť). Toto omezení se nepoužije na spravovanou identitu přiřazenou systémem.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+- Chování při Key Vault dostupnosti
+  - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
+    
+  - Přechodné chyby připojení – úložiště zpracovává přechodné chyby (vypršení časového limitu, selhání připojení, problémy se službou DNS) tím, že klíče zůstanou v mezipaměti po krátké době delší a to přináší všechny malé výkyvůy v dostupnosti. Funkce dotazování a přijímání i nadále bez přerušení.
+    
+  - Živý web – nedostupnost přibližně 30 minut způsobí, že účet úložiště nebude k dispozici. Funkce dotazu není k dispozici a ingestovaná data se po několik hodin ukládají do mezipaměti pomocí Microsoft Key, aby se předešlo ztrátě dat. Po obnovení přístupu k Key Vault se dotaz zpřístupní a dočasná data uložená v mezipaměti se ingestují do úložiště dat a zašifrují pomocí klíče Customer-Managed.
+
+  - Key Vault míra přístupu – frekvence, kterou Azure Monitor přístup k úložišti Key Vault pro operace zabalení a rozbalení je mezi 6 až 60 sekundami.
+
+- Pokud vytvoříte cluster a okamžitě zadáte KeyVaultProperties, operace může selhat, protože zásady přístupu nejde definovat, dokud není systémová identita přiřazená ke clusteru.
+
+- Pokud aktualizujete existující cluster pomocí KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
+
+- Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je v období obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
+
+- Pokud cluster aktualizujete, zatímco probíhá operace, operace se nezdaří.
+
+- Pokud se nedaří nasadit cluster, ověřte, že pracovní prostory Azure Key Vault, cluster a propojené Log Analytics jsou ve stejné oblasti. Může být v různých předplatných.
+
+- Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v clusteru, cluster Log Analytics bude dál používat předchozí klíč a vaše data budou nepřístupná. Aktualizuje nové podrobnosti identifikátoru klíče v clusteru, aby se obnovil příjem dat a možnost dotazování na data.
+
+- Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření clusteru, aktualizaci klíčů clusteru a odstranění clusteru. Stav operace můžete zjistit dvěma způsoby:
+  1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+  2. Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
+
 - Chybové zprávy
   
   **Vytvoření clusteru**
@@ -441,34 +481,6 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
   **Zrušit propojení pracovního prostoru**
   -  404 – pracovní prostor nebyl nalezen. Pracovní prostor, který jste zadali, neexistuje nebo byl odstraněn.
   -  409--operace propojení pracovního prostoru nebo zrušení propojení v procesu.
-
-## <a name="troubleshooting"></a>Řešení potíží
-
-- Chování při Key Vault dostupnosti
-  - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
-    
-  - Přechodné chyby připojení – úložiště zpracovává přechodné chyby (vypršení časového limitu, selhání připojení, problémy se službou DNS) tím, že klíče zůstanou v mezipaměti po krátké době delší a to přináší všechny malé výkyvůy v dostupnosti. Funkce dotazování a přijímání i nadále bez přerušení.
-    
-  - Živý web – nedostupnost přibližně 30 minut způsobí, že účet úložiště nebude k dispozici. Funkce dotazu není k dispozici a ingestovaná data se po několik hodin ukládají do mezipaměti pomocí Microsoft Key, aby se předešlo ztrátě dat. Po obnovení přístupu k Key Vault se dotaz zpřístupní a dočasná data uložená v mezipaměti se ingestují do úložiště dat a zašifrují pomocí klíče Customer-Managed.
-
-  - Key Vault míra přístupu – frekvence, kterou Azure Monitor přístup k úložišti Key Vault pro operace zabalení a rozbalení je mezi 6 až 60 sekundami.
-
-- Pokud vytvoříte cluster a okamžitě zadáte KeyVaultProperties, operace může selhat, protože zásady přístupu nejde definovat, dokud není systémová identita přiřazená ke clusteru.
-
-- Pokud aktualizujete existující cluster pomocí KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
-
-- Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je v období obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
-
-- Pokud cluster aktualizujete, zatímco probíhá operace, operace se nezdaří.
-
-- Pokud se nedaří nasadit cluster, ověřte, že pracovní prostory Azure Key Vault, cluster a propojené Log Analytics jsou ve stejné oblasti. Může být v různých předplatných.
-
-- Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v clusteru, cluster Log Analytics bude dál používat předchozí klíč a vaše data budou nepřístupná. Aktualizuje nové podrobnosti identifikátoru klíče v clusteru, aby se obnovil příjem dat a možnost dotazování na data.
-
-- Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření clusteru, aktualizaci klíčů clusteru a odstranění clusteru. Stav operace můžete zjistit dvěma způsoby:
-  1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-  2. Odešlete požadavek GET do clusteru nebo pracovního prostoru a sledujte odpověď. Například nepropojený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
-
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [Log Analytics vyhrazeném účtování clusteru](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065299"
+ms.locfileid: "98071693"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -132,10 +132,10 @@ Pro vytvoření skupin akcí použijte následující postup:
     >[!NOTE]
     >
     > * Tato část je relevantní jenom pro výstrahy prohledávání protokolu.
-    > * Výstrahy metrik a výstrahy protokolu aktivit budou vždy vytvářet jednu pracovní položku na výstrahu.
+    > * U všech ostatních typů výstrah bude pro každou výstrahu vytvořena jedna pracovní položka.
 
-    * V případě, že vyberete v rozevírací nabídce pracovní položky "incident" nebo "Alert":
-        * Pokud zaškrtnete políčko **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá položka konfigurace v každé výstraze vytvářet novou pracovní položku. V systému ITSM může být více než jedna položka konfigurace na jednu položku konfigurace.
+    * V případě, že jste vybrali v rozevíracím seznamu "pracovní položka" nebo "Alert": ![ snímek obrazovky, který zobrazuje okno incidentu ITSM.](media/itsmc-overview/itsm-action-configuration.png)
+        * Pokud zaškrtnete políčko **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá položka konfigurace v každé výstraze vytvářet novou pracovní položku. Vzhledem k tomu, že došlo k ovlivnění několika výstrah pro stejné položky konfigurace, bude pro každou položku konfigurace k dispozici více než jedna pracovní položka.
 
              Například:
              1) Výstraha 1 se 3 položkami konfigurace: A, B, C-vytvoří 3 pracovní položky.
@@ -148,15 +148,13 @@ Pro vytvoření skupin akcí použijte následující postup:
 
         Například:
          1) Výstraha 1 se 3 položkami konfigurace: A, B, C-vytvoří 1 pracovní položku.
-         2) Výstraha 2 pro stejné pravidlo výstrahy jako fáze 1 s 1 položkou konfigurace: D – bude sloučena s pracovní položkou ve fázi 1.
+         2) Výstraha 2 pro stejné pravidlo výstrahy jako v kroku a s 1 položkou konfigurace: D-D bude připojena k seznamu ovlivněných položek konfigurace v pracovní položce vytvořené v kroku a.
          3) Upozornění 3 pro jiné pravidlo výstrahy s 1 položkou konfigurace: E-vytvoří 1 pracovní položku.
 
-       ![Snímek obrazovky, který zobrazuje okno incidentu ITSM.](media/itsmc-overview/itsm-action-configuration.png)
+    * V případě, že jste vybrali v rozevíracím seznamu "pracovní položka" událost: ![ snímek obrazovky, který zobrazuje okno události ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * V případě, že jste vybrali v rozevíracím seznamu "událost" pracovní položky:
         * Pokud vyberete možnost **"vytvořit jednotlivé pracovní položky pro každou položku protokolu", pole položky konfigurace není vyplněno. Může mít za následek velký počet pracovních položek.) "** v výběru přepínačů bude pro každý řádek ve výsledcích hledání dotazu výstrahy hledání protokolu vytvořena pracovní položka. V datové části pracovní položky vlastnost Description bude mít řádek z výsledků hledání.
         * Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** v výběru přepínačů, bude každá položka konfigurace v každé výstraze vytvářet novou pracovní položku. V systému ITSM může být více než jedna položka konfigurace na jednu položku konfigurace. Tato akce bude stejná jako při zaškrtnutí části zaškrtávací políčko v části incident/výstraha.
-    ![Snímek obrazovky zobrazující okno události ITSM](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Vyberte **OK**.
 
