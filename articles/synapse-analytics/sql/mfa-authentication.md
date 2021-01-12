@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843294"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120372"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Použití vícefaktorového ověřování AAD s synapse SQL (podpora SSMS pro MFA)
 
@@ -44,7 +44,7 @@ Interaktivní metoda je, že podporuje taky Multi-Factor Authentication Azure AD
 
 - `Active Directory - Universal with MFA`
 
-Azure AD MFA pomáhá chránit přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování s využitím široké škály možností jednoduchého ověřování (telefonní hovor, textová zpráva, čipové karty s PIN kódem nebo oznámení pro mobilní aplikace), které uživatelům umožňují vybrat si metodu, které dáváte přednost. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
+Azure AD MFA pomáhá chránit přístup k datům a aplikacím a současně plní poptávku uživatelů po jednoduchém přihlašování. Zajišťuje silné ověřování s využitím široké škály možností jednoduchého ověřování (telefonní hovor, textová zpráva, čipové karty s PIN kódem nebo oznámení pro mobilní aplikace), které uživatelům umožňují vybrat si metodu, které dáváte přednost. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
 
 Popis Multi-Factor Authentication najdete v tématu [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -71,7 +71,7 @@ Pokud používáte SSMS 18. x nebo novější, pak název domény služby AD neb
    ![MFA – tenant – SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Podpora Azure AD pro firmy   
-Uživatelé Azure AD podporovaní ve scénářích Azure AD B2B jako uživatelé typu Host (viz téma [co je spolupráce Azure B2B se](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) může připojit k synapse SQL pouze v rámci členů skupiny vytvořené v aktuální službě Azure AD a ručně namapovat pomocí příkazu Transact-SQL `CREATE USER` v dané databázi). 
+Uživatelé Azure AD podporovaní ve scénářích Azure AD B2B jako uživatelé typu Host (viz téma [co je spolupráce Azure B2B se](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) může připojit k synapse SQL pouze v rámci členů skupiny vytvořené v aktuální službě Azure AD a ručně namapovat pomocí příkazu Transact-SQL `CREATE USER` v dané databázi). 
 
 Pokud `steve@gmail.com` je například Pozvánka do Azure AD `contosotest` (s doménou Azure AD `contosotest.onmicrosoft.com` ), `usergroup` musí být ve službě Azure AD, která obsahuje člena, vytvořená skupina Azure AD `steve@gmail.com` . Pak je potřeba tuto skupinu vytvořit pro konkrétní databázi (tj. MyDatabase) pomocí služby Azure AD SQL admin nebo Azure AD DBO spuštěním příkazu jazyka Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
@@ -92,5 +92,4 @@ Jako uživatel typu host `steve@gmail.com` musí zaškrtnout políčko a přidat
 - Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování byla aktualizována na nejnovější vydanou verzi ADAL.dll 3.13.9. Viz [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v článku věnovaném [připojení k synapse SQL s SQL Server Management Studio](get-started-ssms.md) . 
-
+Další informace najdete v článku věnovaném [připojení k synapse SQL s SQL Server Management Studio](get-started-ssms.md) .

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462560"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118757"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
@@ -24,7 +24,7 @@ Vnořené typy jsou komplexní struktury, které představují objekty nebo pole
 - Hierarchické [soubory JSON](query-json-files.md), kde můžete číst SLOŽITÝ dokument JSON jako jeden sloupec.
 - Kolekce Azure Cosmos DB (aktuálně v rámci ověřované verze Public Preview), kde každý dokument může obsahovat komplexní vnořené vlastnosti.
 
-Fond SQL bez serveru formátuje všechny vnořené typy jako objekty JSON a pole. Můžete tedy [extrahovat nebo upravit složité objekty pomocí funkcí JSON](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) nebo [analyzovat data JSON pomocí funkce OPENJSON](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Fond SQL bez serveru formátuje všechny vnořené typy jako objekty JSON a pole. Můžete tedy [extrahovat nebo upravit složité objekty pomocí funkcí JSON](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) nebo [analyzovat data JSON pomocí funkce OPENJSON](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Tady je příklad dotazu, který extrahuje hodnoty skalárních hodnot a objektů z [COVID souboru JSON pro zdroj dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) , který obsahuje vnořené objekty: 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > V tomto příkladu se používá soubor z otevřené datové sady COVID-19. [Tady si můžete prohlédnout licenci a strukturu dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je vytvoření databáze, ve které se vytvoří zdroj dat. Pak inicializujete objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v databázi. Skript instalačního programu vytvoří zdroje dat, přihlašovací údaje v rozsahu databáze a formáty externích souborů, které jsou použity v ukázkách.
 
@@ -121,7 +121,7 @@ Výsledek je zobrazen v následující tabulce:
 | --- | --- | --- | --- |
 | Doplňující informace epidemiolo... | Julien   | Obrázek S1: Phylogeny... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Na rozdíl od souborů JSON, což ve většině případů vrací jeden sloupec obsahující složitý objekt JSON, soubory Parquet mohou mít více složitých sloupců. Vlastnosti vnořených sloupců můžete číst pomocí `JSON_VALUE` funkce v jednotlivých sloupcích. `OPENROWSET` umožňuje přímo zadat cesty vnořených vlastností v `WITH` klauzuli. Cesty můžete nastavit jako název sloupce nebo můžete přidat [výraz cesty JSON](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) za typ sloupce.
+Na rozdíl od souborů JSON, což ve většině případů vrací jeden sloupec obsahující složitý objekt JSON, soubory Parquet mohou mít více složitých sloupců. Vlastnosti vnořených sloupců můžete číst pomocí `JSON_VALUE` funkce v jednotlivých sloupcích. `OPENROWSET` umožňuje přímo zadat cesty vnořených vlastností v `WITH` klauzuli. Cesty můžete nastavit jako název sloupce nebo můžete přidat [výraz cesty JSON](/sql/relational-databases/json/json-path-expressions-sql-server) za typ sloupce.
 
 Následující dotaz přečte soubor structExample. Parquet a ukazuje, jak surfovat prvky vnořeného sloupce. Existují dva způsoby, jak odkazovat na vnořenou hodnotu:
 - Zadáním výrazu cesty vnořené hodnoty za specifikací typu.

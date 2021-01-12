@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452783"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120423"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -31,9 +31,9 @@ V vyhrazeném fondu SQL můžete použít externí tabulku k těmto akcím:
 
 Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)jsou externí tabulky užitečné pro načítání dat. 
 
-Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-### <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 Pro fond SQL bez serveru použijete externí tabulku k těmto akcím:
 
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 Následující příklad vytvoří externí zdroj dat pro Azure Data Lake Gen2, ke kterému lze přistupovat pomocí pověření SAS:
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -383,7 +383,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Pomocí možností zkoumání Data Lake nyní můžete vytvořit a zadat dotaz na externí tabulku pomocí vyhrazeného fondu SQL nebo bez serveru SQL s jednoduchým kliknutím pravým tlačítkem myši na soubor.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Musíte mít přístup k pracovnímu prostoru, který má alespoň roli přístupu pro přispěvatele dat objektů BLOB úložiště k účtu ADLS Gen2.
 

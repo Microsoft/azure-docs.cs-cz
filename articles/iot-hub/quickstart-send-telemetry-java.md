@@ -16,12 +16,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 ms.date: 05/26/2020
-ms.openlocfilehash: 76326d0b68a3ff71bf95c09147d003e769e103db
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8ac2ada18cdb3c9af4902b28d16fef640f979101
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844638"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121432"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Rychlý Start: odeslání telemetrie do služby Azure IoT Hub a její čtení pomocí aplikace Java
 
@@ -29,7 +29,7 @@ ms.locfileid: "94844638"
 
 V tomto rychlém startu odešlete telemetrii do Azure IoT Hub a přečtete ji pomocí aplikace Java. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. Tento rychlý Start používá dvě předem napsané aplikace Java: jeden pro odeslání telemetrie a jednu pro přečtení telemetrie z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -80,7 +80,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá takto:

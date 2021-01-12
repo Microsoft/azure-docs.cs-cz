@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679115"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119001"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 K instalaci dalších balíčků R použijte `install.packages()` metodu. Balíčky se nainstalují pro každý modul spuštění skriptu jazyka R. Nesdílí se mezi jinými moduly spouštění skriptu jazyka R.
 
 > [!NOTE]
+> Nedoporučuje **se** instalovat balíček R ze sady prostředků skriptu. Doporučuje se instalovat balíčky přímo v editoru skriptů.
 > Při instalaci balíčků zadejte úložiště CRAN, například `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 > [!WARNING]
 > Modul excute R Script nepodporuje instalaci balíčků, které vyžadují nativní kompilaci, jako je například `qdap` balíček vyžadující jazyk Java a `drc` balíček, který vyžaduje jazyk C++. Důvodem je to, že tento modul je spuštěn v předinstalovaném prostředí s oprávněním bez oprávnění správce.
+> Neinstalujte balíčky, které jsou předem připravené pro Windows, protože moduly návrháře běží na Ubuntu. Chcete-li ověřit, zda je balíček předem vytvořen v systému Windows, můžete přejít na [Cran](https://cran.r-project.org/) a vyhledat balíček, stáhnout jeden binární soubor podle vašeho operačního systému a vyhledat sestavení v souboru **Description** **:** Part. Následuje příklad: :::image type="content" source="media/module/r-package-description.png" alt-text="Popis balíčku R" lightbox="media/module/r-package-page.png":::
 
 V této ukázce se dozvíte, jak nainstalovat:
 ```R

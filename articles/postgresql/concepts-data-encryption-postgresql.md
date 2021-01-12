@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493779"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118451"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
-Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jediným serverem vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
+Služba Azure PostgreSQL využívá [šifrování Azure Storage](../storage/common/storage-service-encryption.md) k šifrování neaktivních dat ve výchozím nastavení pomocí klíčů spravovaných Microsoftem. Pro uživatele Azure PostgreSQL je velmi podobné transparentnímu Encruption dat (TDE) v jiných databázích, jako je například SQL Server. Mnoho organizací vyžaduje úplné řízení přístupu k datům pomocí klíče spravovaného zákazníkem. Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jediným serverem vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jeden server je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
@@ -60,7 +60,9 @@ Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazn�
 Níže jsou uvedené požadavky na konfiguraci Key Vault:
 
 * Key Vault a Azure Database for PostgreSQL jeden server musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředku Key Vault pak vyžaduje překonfigurování šifrování dat.
-* Povolí funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat v případě, že dojde k odstranění náhodného klíče (nebo Key Vault). Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
+* Trezor klíčů musí být nastaven na 90 dní po ' dnů pro uchování odstraněných trezorů '. Pokud byl existující Trezor klíčů nakonfigurovaný s nižším číslem, budete muset vytvořit nový trezor klíčů, protože po vytvoření ho nejde upravit.
+* Povolí funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat v případě, že dojde k odstranění náhodného klíče (nebo Key Vault). Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal). 
+* Povolit vyprázdnit ochranu k vykonání povinné doby uchování pro odstraněné trezory a objekty trezoru
 * Udělte jednomu serveru Azure Database for PostgreSQL přístup k trezoru klíčů s oprávněními Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita služby automaticky vytvoří, když je na jednom serveru PostgreSQL povolené šifrování dat. Podrobné pokyny pro použití Azure Portal najdete v tématu [šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal](howto-data-encryption-portal.md) .
 
 Níže jsou uvedené požadavky na konfiguraci klíče spravovaného zákazníkem:

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452739"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116785"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Návrh tabulek pomocí SQL synapse ve službě Azure synapse Analytics
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit organizaci tabulek ve vyhrazeném fondu SQL, můžete jako p�
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | vyhrazený fond SQL |
 |:-----|:-----|:------|:-----|
-| City (Město) | Dimenze | WWI. DimCity |
+| City | Dimenze | WWI. DimCity |
 | Objednávka | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -102,7 +102,7 @@ Další informace najdete v tématu  [dočasné tabulky](develop-tables-temporar
 
 [Externí tabulky](develop-tables-external-tables.md) odkazují na data umístěná v Azure Storage objekt blob nebo Azure Data Lake Storage.
 
-Importujte data z externích tabulek do vyhrazených fondů SQL pomocí příkazu [CREATE TABLE AS Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Importujte data z externích tabulek do vyhrazených fondů SQL pomocí příkazu [CREATE TABLE AS Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 Pro fond SQL bez serveru můžete použít [CETAS](develop-tables-cetas.md) k uložení výsledků dotazu do externí tabulky v Azure Storage.
 
@@ -206,7 +206,7 @@ V případě vyhrazeného fondu SQL se primární klíč podporuje jenom v pří
 
 Pro vyhrazený fond SQL můžete vytvořit tabulku jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz T-SQL | Popis |
+| Příkaz T-SQL | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Vytvoří externí tabulku. Definice tabulky je uložená ve vyhrazeném fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Storage. |

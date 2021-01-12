@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457902"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120032"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Osvědčené postupy vývoje pro synapse fond SQL
 
@@ -55,7 +55,7 @@ Například pokud máte tabulku objednávek, která se distribuuje podle sloupce
 
 Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Následující články poskytují další podrobnosti o vylepšení výkonu výběrem distribučního sloupce a definování distribuované tabulky v klauzuli WITH příkazu CREATE TABLES.
 
-Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](sql-data-warehouse-tables-overview.md)a [Create Table jako SELECT](sql-data-warehouse-develop-ctas.md) .
+Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulky](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](sql-data-warehouse-tables-overview.md)a [Create Table jako SELECT](sql-data-warehouse-develop-ctas.md) .
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
@@ -120,7 +120,7 @@ Viz také [indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce index
 
 Pokud v tomto článku nenajdete, co hledáte, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  
 
-[Microsoft Q&Stránka s otázkou pro Azure synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+[Microsoft Q&Stránka s otázkou pro Azure synapse](/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
 Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure synapse Analytics Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

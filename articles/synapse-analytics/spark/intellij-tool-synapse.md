@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451055"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121222"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Kurz: Vytvoření aplikace Apache Spark s použitím IntelliJ pomocí pracovního prostoru synapse
 
@@ -24,19 +24,19 @@ V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for Intell
 - Přístup k prostředkům fondů Spark
 - Vývoj a spouštění aplikace Scala Spark lokálně
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 > [!div class="checklist"]
 >
 > - Použití modulu plug-in Azure Toolkit for IntelliJ
 > - Vývoj aplikací Apache Spark
 > - Odeslat aplikaci do fondů Spark
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Komunita INTELLIJ nápadu](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
 - Modul plug-in Azure Toolkit 3.27.0-2019.2 – instalace z [úložiště modulu plug-in IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [JDK (verze 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Modul plug-in Scala – nainstalujte z [úložiště modulu plug-in IntelliJ](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
+- Modul plug-in Scala – nainstalujte z [úložiště modulu plug-in IntelliJ](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 - Tato požadovaná součást je určena pouze pro uživatele systému Windows:
 
   Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils.exe.
@@ -178,7 +178,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
     ![IntelliJ spustit konfiguraci ladění v místním běhu 2](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. Po dokončení místního spuštění, pokud skript obsahuje výstup, můžete výstupní soubor kontrolovat z dat ve **data**  >  **__výchozím nastavení__**.
+3. Po dokončení místního spuštění, pokud skript obsahuje výstup, můžete výstupní soubor kontrolovat z dat ve   >  **__výchozím nastavení__**.
 
     ![Výsledek místního běhu projektu IntelliJ 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 

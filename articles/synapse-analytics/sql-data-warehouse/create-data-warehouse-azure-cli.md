@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: Kevin
 ms.custom: azure-synapse
-ms.openlocfilehash: 59195bba69bb343e55cfcb7342400d93dcce60c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2920c96d6a2e505347edb51780101327cb884e08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920749"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120168"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Rychlý Start: vytvoření synapse fondu SQL pomocí Azure CLI
 
@@ -134,4 +134,4 @@ az group delete --ResourceGroupName MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili fond SQL, vytvořili jste pravidlo brány firewall a připojili jste se k vašemu fondu SQL. Pokud se chcete dozvědět víc, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .
+Nyní jste vytvořili fond SQL, vytvořili jste pravidlo brány firewall a připojili jste se k vašemu fondu SQL. Pokud se chcete dozvědět víc, přejděte k článku o [načtení dat do fondu SQL](./load-data-from-azure-blob-storage-using-copy.md) .

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450901"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121069"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Kurz: Vytvoření sestavy Power BI pomocí Apache Spark a Azure synapse Analytics
 
@@ -22,7 +22,7 @@ Organizace často potřebují zpracovávat velké objemy dat před tím, než za
 
 ## <a name="before-you-begin"></a>Než začnete
 - [Pracovní prostor Azure synapse Analytics](../quickstart-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. 
-- Power BI pracovní prostor a Power BI Desktop k vizualizaci dat. Podrobnosti najdete v tématu [Vytvoření pracovního prostoru Power BI](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) a [instalace Power BI desktopu](https://powerbi.microsoft.com/downloads/) .
+- Power BI pracovní prostor a Power BI Desktop k vizualizaci dat. Podrobnosti najdete v tématu [Vytvoření pracovního prostoru Power BI](/power-bi/service-create-the-new-workspaces) a [instalace Power BI desktopu](https://powerbi.microsoft.com/downloads/) .
 - Propojená služba pro připojení ke službě Azure synapse Analytics a pracovním prostorům Power BI. Podrobnosti najdete v tématu [připojení k pracovnímu prostoru Power BI](../quickstart-power-bi.md) .
 - Fond Apache Spark bez serveru v pracovním prostoru analýzy synapse Podrobnosti najdete v tématu [Vytvoření fondu Apache Spark bez serveru](../quickstart-create-apache-spark-pool-studio.md) .
   
@@ -89,7 +89,7 @@ Dotazování na Apache Spark tabulku pomocí vašeho fondu SQL bez serveru:
 Dále připojíme náš fond SQL bez serveru k naší Power BI pracovnímu prostoru. Jakmile budete mít pracovní prostor připojený, budete moct vytvářet Power BI sestavy přímo z Azure synapse Analytics i z Power BI Desktop.
 
 >[!Note]
-> Než začnete, budete muset nastavit propojenou službu do svého [pracovního prostoru Power BI](../quickstart-power-bi.md) a stáhnout [Power BI Desktop](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces).  
+> Než začnete, budete muset nastavit propojenou službu do svého [pracovního prostoru Power BI](../quickstart-power-bi.md) a stáhnout [Power BI Desktop](/power-bi/service-create-the-new-workspaces).  
 
 Připojení našeho fondu SQL bez serveru k našemu pracovnímu prostoru Power BI:
 

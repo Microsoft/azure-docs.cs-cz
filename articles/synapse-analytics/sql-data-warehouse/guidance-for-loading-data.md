@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653057"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120100"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy načítání dat pomocí vyhrazených fondů SQL ve službě Azure synapse Analytics
 
@@ -47,7 +47,7 @@ Tento příklad vytvoří uživatele načítání klasifikovaného na konkrétn�
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Připojte se k vyhrazenému fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem Loader a přidělí uživateli oprávnění k vytváření tabulek a načtení pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Pak klasifikuje uživatele na skupinu úloh dataloads s maximálními prostředky. 
+Připojte se k vyhrazenému fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem Loader a přidělí uživateli oprávnění k vytváření tabulek a načtení pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Pak klasifikuje uživatele na skupinu úloh dataloads s maximálními prostředky. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for Azure synapse Analytics](design-elt-data-loading.md).
-- Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](load-data-from-azure-blob-storage-using-polybase.md).
+- Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](./load-data-from-azure-blob-storage-using-copy.md).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).

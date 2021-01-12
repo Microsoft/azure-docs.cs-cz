@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 1d8c67fa5373afc8ea8bae5a49b87309f3893a12
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 7c41474143fbb7782ccf7b5c89b0b34802e5ef0a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028722"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119692"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
@@ -37,7 +37,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin).
+V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 

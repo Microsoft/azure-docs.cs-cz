@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459042"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119811"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Podporované funkce Azure Synapse Linku pro Azure Cosmos DB
 
@@ -31,11 +31,11 @@ V Azure Cosmos DB existují dva typy kontejnerů:
 
 K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse. V tomto scénáři můžete jen číst a zapisovat do transakčního úložiště. Níže je uveden seznam aktuálně podporovaných funkcí v rámci odkazu na synapse pro Azure Cosmos DB. 
 
-| Kategorie              | Popis |[Fond Apache Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [Bezserverový fond SQL](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| Kategorie              | Popis |[Fond Apache Spark](../sql/on-demand-workspace-overview.md) | [Fond SQL bez serveru](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
 | **Podpora Runtime** |Podporované běhové prostředí Azure synapse pro přístup k Azure Cosmos DB| ✓ | Preview |
 | **Podpora rozhraní Azure Cosmos DB API** | Podporovaný druh Azure Cosmos DB rozhraní API | SQL/MongoDB | SQL/MongoDB |
-| **Předmětů**  |Objekty, jako je tabulka, která se dá vytvořit, ukazující přímo na Azure Cosmos DB kontejner| Datový rámec, zobrazení, tabulka | Zobrazení |
+| **Objekt**  |Objekty, jako je tabulka, která se dá vytvořit, ukazující přímo na Azure Cosmos DB kontejner| Datový rámec, zobrazení, tabulka | Zobrazení |
 | **Oprávnění**    | Typ kontejneru Azure Cosmos DB, který se dá přečíst | OLTP/HTAP | HTAP  |
 | **Psal**   | Dá se použít modul runtime Azure Synapse k zápisu dat do kontejneru Azure Cosmos DB. | Yes | No |
 
@@ -44,7 +44,7 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Podporované akce generované kódem pro Spark
 
-| Gesto              | Popis |OLTP |HTAP  |
+| Gesto              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Načíst do datového rámce** |Načtení a načtení dat do datového rámce Spark |✓| ✓ |
 | **Vytvořit tabulku Spark** |Vytvoření tabulky ukazující na kontejner Azure Cosmos DB|✓| ✓ |
@@ -55,7 +55,7 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Podporované akce generované kódem pro fond SQL bez serveru
 
-| Gesto              | Popis |OLTP |HTAP |
+| Gesto              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Zkoumání dat** |Prozkoumat data z kontejneru se známou syntaxí T-SQL a automatickým odvozením schématu|X| ✓ |
 | **Vytváření zobrazení a vytváření sestav BI** |Vytvoření zobrazení SQL pro přímý přístup k kontejneru pro BI prostřednictvím neserverového fondu SQL |X| ✓ |

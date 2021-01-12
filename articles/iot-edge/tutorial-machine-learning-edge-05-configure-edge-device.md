@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932349"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121086"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -30,7 +30,7 @@ V této části kurzu se dozvíte, jak:
 > * Vytvořte zařízení IoT Edge.
 > * Vytvořte virtuální počítač Azure pro simulaci zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -81,7 +81,7 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrání certifikátů do Azure Key Vault
 
-K bezpečnému uložení certifikátů a jejich zpřístupnění z více zařízení odešleme certifikáty do Azure Key Vault. Jak vidíte v seznamu výše, máme dva typy souborů certifikátu: PFX a PEM. Soubor PFX budeme považovat za Key Vault certifikáty, které se mají nahrát do Key Vault. Soubory PEM jsou prostý text a my je považujeme za Key Vault tajných klíčů. Použijeme Key Vault přidružené k pracovnímu prostoru Azure Machine Learning, který jsme vytvořili spuštěním [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
+K bezpečnému uložení certifikátů a jejich zpřístupnění z více zařízení odešleme certifikáty do Azure Key Vault. Jak vidíte v seznamu výše, máme dva typy souborů certifikátu: PFX a PEM. Soubor PFX budeme považovat za Key Vault certifikáty, které se mají nahrát do Key Vault. Soubory PEM jsou prostý text a my je považujeme za Key Vault tajných klíčů. Použijeme Key Vault přidružené k pracovnímu prostoru Azure Machine Learning, který jsme vytvořili spuštěním [poznámkových bloků Jupyter](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks).
 
 1. Z [Azure Portal](https://portal.azure.com)přejděte do pracovního prostoru Azure Machine Learning.
 

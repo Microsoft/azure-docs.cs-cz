@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd5c56ef74fbe0c60a9d395a7b8a0fbc496e773c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534836"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120134"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
-V tomto kurzu se pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načte datová sada New York taxislužby města z účtu služby Azure Blob Storage. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) k:
+V tomto kurzu se pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) načte datová sada New York taxislužby města z účtu služby Azure Blob Storage. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) k:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).  
 
-V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin).
+V tomto kurzu se předpokládá, že jste už vytvořili vyhrazený fond SQL z následujícího [kurzu](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
@@ -251,7 +251,7 @@ Spusťte následující skripty SQL a zadejte informace o datech, která chcete 
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Načtení dat do datového skladu
 
-V této části se používá [příkaz Copy pro načtení](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ukázkových dat z Azure Storage BLOB.  
+V této části se používá [příkaz Copy pro načtení](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ukázkových dat z Azure Storage BLOB.  
 
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. Obvykle byste se načetli do pracovní tabulky pro produkční úlohy. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. 
@@ -393,7 +393,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Použili jste jednoduchý [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) k načtení dat do datového skladu.
+V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Použili jste jednoduchý [příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) k načtení dat do datového skladu.
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ Přejděte na přehled vývoje, kde se dozvíte, jak migrovat existující datab
 
 Další příklady a odkazy pro načítání naleznete v následující dokumentaci:
 
-- [Dokumentace k příkazu COPY reference](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [ZKOPÍROVAT příklady pro každou metodu ověřování](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Rychlé spuštění kopírování pro jednu tabulku](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [Dokumentace k příkazu COPY reference](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [ZKOPÍROVAT příklady pro každou metodu ověřování](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Rychlé spuštění kopírování pro jednu tabulku](./quickstart-bulk-load-copy-tsql.md)

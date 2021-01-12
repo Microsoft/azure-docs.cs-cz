@@ -9,20 +9,20 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901029"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118706"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Kurz: výuka modelu v Pythonu pomocí automatizovaného strojového učení
 
 Azure Machine Learning je cloudové prostředí, které umožňuje výukové, nasazování, automatizaci, správu a sledování modelů strojového učení. 
 
-V tomto kurzu pomocí [automatizovaného strojového učení](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) v Azure Machine Learning vytvoříte regresní model pro předpověď cen taxislužby jízdné. Tento proces dorazí na nejlepší model tím, že přijme školicí data a nastavení konfigurace a automaticky provede iteraci pomocí kombinací různých metod, modelů a nastavení parametrů.
+V tomto kurzu pomocí [automatizovaného strojového učení](../../machine-learning/concept-automated-ml.md) v Azure Machine Learning vytvoříte regresní model pro předpověď cen taxislužby jízdné. Tento proces dorazí na nejlepší model tím, že přijme školicí data a nastavení konfigurace a automaticky provede iteraci pomocí kombinací různých metod, modelů a nastavení parametrů.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 - Stáhněte si data pomocí Apache Spark a otevřených datových sad Azure.
 - Transformujte a čistě data pomocí Apache Sparkch datových rámců.
 - Školení automatizovaného regresního modelu machine learningu
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 ## <a name="before-you-begin"></a>Než začnete
 
 - Vytvořte fond Apache Spark bez serveru, a to pomocí [rychlého startu vytvoření fondu Apache Spark bez serveru](../quickstart-create-apache-spark-pool-studio.md).
-- Pokud nemáte existující pracovní prostor Azure Machine Learning, dokončete [kurz nastavení Azure Machine Learning pracovního prostoru](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) . 
+- Pokud nemáte existující pracovní prostor Azure Machine Learning, dokončete [kurz nastavení Azure Machine Learning pracovního prostoru](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) . 
 
 ## <a name="understand-regression-models"></a>Pochopení modelů regrese
 
@@ -48,7 +48,7 @@ V tomto příkladu pomocí Sparku provedete určitou analýzu dat Tip taxislužb
 
 Jak na to:
 
-1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook).
+1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](../quickstart-apache-spark-notebook.md#create-a-notebook).
    
     > [!Note]
     > Z důvodu jádra PySpark nemusíte vytvářet žádné kontexty explicitně. Kontext Spark je automaticky vytvořen za vás při spuštění první buňky kódu.
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Převod datového rámce na Azure Machine Learning datovou sadu
-Chcete-li odeslat vzdálený experiment, převeďte datovou sadu na Azure Machine Learning ```TabularDatset``` . [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
+Chcete-li odeslat vzdálený experiment, převeďte datovou sadu na Azure Machine Learning ```TabularDatset``` . [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
 
 Následující kód získá existující pracovní prostor a výchozí Azure Machine Learning výchozí úložiště dat. Pak předá do parametru Path úložiště dat a umístění souborů a vytvoří nový ```TabularDataset``` . 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 V následujících částech se dozvíte, jak postupovat při automatickém experimentování strojového učení.
 
 ### <a name="define-training-settings"></a>Definování nastavení školení
-1. Chcete-li odeslat experiment, je nutné definovat parametr experiment a nastavení modelu pro školení. Úplný seznam nastavení najdete v tématu [Konfigurace automatických experimentů strojového učení v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
+1. Chcete-li odeslat experiment, je nutné definovat parametr experiment a nastavení modelu pro školení. Úplný seznam nastavení najdete v tématu [Konfigurace automatických experimentů strojového učení v Pythonu](../../machine-learning/how-to-configure-auto-train.md).
 
    ```python
    import logging
@@ -338,5 +338,5 @@ Nakonec můžete k výsledkům iterací získat přístup tak, že v pracovním 
 ![Snímek obrazovky Azure Machine Learning pracovního prostoru](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Další kroky
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics](./apache-spark-machine-learning-mllib-notebook.md)

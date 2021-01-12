@@ -11,27 +11,27 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c55f8483ba54ecf9778693b364603d642ddb3deb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b81ddedbcb254a840e85d41cf9d69c78b149bbd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452326"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121392"
 ---
 # <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Připojení k vyhrazenému fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí sady Visual Studio a SSDT
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
 Pomocí sady Visual Studio se můžete dotazovat na vyhrazený fond SQL (dřív SQL DW) v rámci Azure synapse během několika minut. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, potřebujete:
 
 * Existující vyhrazený fond SQL (dřív SQL DW). Pokud ho chcete vytvořit, přečtěte si téma [vytvoření vyhrazeného fondu SQL (dřív SQL DW)](create-data-warehouse-portal.md).
@@ -78,6 +78,6 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
     ![Výsledky dotazu](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md).
+Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect).
 
 Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve vyhrazeném fondu SQL (dřív SQL DW)](sql-data-warehouse-authentication.md).

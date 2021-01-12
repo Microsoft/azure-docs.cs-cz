@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: 1a8ba18e1e690e6be2b552bd37605ef638b2b47d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6699015a3c8939f012eb837da3d8b0c3d49527d5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843226"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121466"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
 
@@ -29,7 +29,7 @@ V tomto článku se k odesílání telemetrických dat používá předem napsan
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stažení vzorového kódu z [ukázek Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip).
 
@@ -66,7 +66,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
+   az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    Poznamenejte si připojovací řetězec zařízení, který vypadá takto:

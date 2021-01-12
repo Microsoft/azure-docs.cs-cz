@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071200"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121290"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
@@ -108,29 +108,29 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Pokud již mám licenci pro program Microsoft Defender pro koncový bod, mohu získat slevu na Azure Defender?
 Pokud jste už získali licenci na Microsoft Defender pro koncový bod, nebudete muset platit za tuto část vaší licence na Azure Defender.
 
-Pokud chcete potvrdit slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru, oblasti a informace o licenci.
+Pokud chcete potvrdit svoji slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru relevantní informace o licenci, oblasti a licence pro jednotlivé příslušné licence.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, bude se vám účtovat po hodinách jenom pro spuštěné servery. Za dobu, kdy je vypnutý, se vám nebude účtovat žádný server, který je vypnutý. 
 
 > [!TIP]
 > To platí i pro ostatní typy prostředků, které jsou chráněné pomocí Security Center. 
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?
-Yes. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
+Ano. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, počítače v tomto předplatném získají rozsah ochrany i v případě, že jste nenainstalovali agenta Log Analytics.
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát? 
-Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
+Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), bude se vám účtovat každý pracovní prostor, který má nainstalované řešení Security nebo antimalware. 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.
-Yes. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
+Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do dvou nebo více různých pracovních prostorů Log Analytics (více domovských), dostanete 500 až MB volného příjmu dat. Počítá se podle počtu uzlů, podle nahlášeného pracovního prostoru za den a je k dispozici pro každý pracovní prostor s nainstalovanými řešeními zabezpečení nebo antimalwaru. Budou se vám účtovat všechna data ingestovaná přes 500 MB.
 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?
 Pro každý počítač připojený k pracovnímu prostoru získáte 500 MB bezplatného příjmu dat za den. Konkrétně pro datové typy zabezpečení přímo shromažďované nástrojem Azure Security Center.

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781058"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121310"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -22,6 +22,8 @@ Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Mi
 
 > [!IMPORTANT]
 > Privátní propojení Azure je teď všeobecně dostupné. K dispozici jsou všeobecně dostupné služby privátního i privátního koncového bodu (služba za službu Load Balancer úrovně Standard). Různé služby Azure PaaS se budou připojovat k privátnímu propojení Azure v různých plánech. V tomto článku najdete v části [dostupnost dostupnosti](#availability) přesný stav služby Azure PaaS na privátním odkazu. Známá omezení najdete v tématu [privátní koncový bod](private-endpoint-overview.md#limitations) a [Služba privátního propojení](private-link-service-overview.md#limitations). 
+
+:::image type="content" source="./media/private-link-overview/private-link-center.png" alt-text="Centrum privátních odkazů Azure v Azure Portal" border="false":::
 
 ## <a name="key-benefits"></a>Klíčové výhody
 Privátní propojení Azure přináší následující výhody:  
@@ -42,11 +44,11 @@ Privátní propojení Azure přináší následující výhody:
 |:-------------------|:-----------------|:----------------|:--------|
 |Služby privátního propojení za standardním Azure Load Balancer | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti  | Podporováno v Standard Load Balancer | GA <br/> [Naučte se vytvořit službu privátního propojení.](create-private-link-service-portal.md) |
 | Úložiště objektů BLOB v Azure (včetně Data Lake Storage Gen2)       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště objektů BLOB.](tutorial-private-endpoint-storage-portal.md)  |
-| Soubory Azure | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/files/storage-files-networking-endpoints.md)   |
+| Azure Files | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/files/storage-files-networking-endpoints.md)   |
 | Synchronizace souborů Azure | Všechny veřejné oblasti      | |   GA <br/> [Naučte se vytvářet koncové body sítě služby soubory Azure.](../storage/files/storage-sync-files-networking-endpoints.md)   |
 | Azure Queue Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště Queue.](tutorial-private-endpoint-storage-portal.md) |
 | Azure Table Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Naučte se vytvořit privátní koncový bod pro úložiště tabulek.](tutorial-private-endpoint-storage-portal.md)  |
-|  Azure SQL Database         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti      |  Podporováno pro [zásady připojení](../azure-sql/database/connectivity-architecture.md#connection-policy) proxy | GA <br/> [Zjistěte, jak vytvořit privátní koncový bod pro Azure SQL.](create-private-endpoint-portal.md)      |
+|  Databáze Azure SQL         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti      |  Podporováno pro [zásady připojení](../azure-sql/database/connectivity-architecture.md#connection-policy) proxy | GA <br/> [Zjistěte, jak vytvořit privátní koncový bod pro Azure SQL.](create-private-endpoint-portal.md)      |
 |Azure Synapse Analytics| Všechny veřejné oblasti <br/> Všechny oblasti státní správy |  Podporováno pro [zásady připojení](../azure-sql/database/connectivity-architecture.md#connection-policy) proxy |GA <br/> [Naučte se vytvářet privátní koncový bod pro Azure synapse Analytics.](../azure-sql/database/private-endpoint-overview.md)|
 |Azure Cosmos DB|  Všechny veřejné oblasti<br/> Všechny oblasti státní správy</br> Všechny čínské oblasti | |GA <br/> [Naučte se vytvořit privátní koncový bod pro Cosmos DB.](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti     | Podporováno pro Pro obecné účely a paměťově optimalizované cenové úrovně | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Database for PostgreSQL.](../postgresql/concepts-data-access-and-security-private-link.md)      |

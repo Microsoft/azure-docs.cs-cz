@@ -10,23 +10,23 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025948"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118434"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
 
 Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahrnuje nastavení protokolů Azure Monitor pro zkoumání provádění dotazů a trendy úloh pomocí Log Analytics pro [synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](load-data-from-azure-blob-storage-using-polybase.md).
+- Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](./load-data-from-azure-blob-storage-using-copy.md).
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
 Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte pracovní prostor.
 
@@ -63,7 +63,7 @@ Přejděte do pracovního prostoru Log Analytics, kde můžete provádět násle
 - Vytvoření upozornění protokolu
 - Připnutí výsledků dotazu na řídicí panel
 
-Podrobnosti o možnostech dotazů protokolu najdete v následující [dokumentaci](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Podrobnosti o možnostech dotazů protokolu najdete v následující [dokumentaci](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json).
 
 ![Editor pracovního prostoru Log Analytics](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

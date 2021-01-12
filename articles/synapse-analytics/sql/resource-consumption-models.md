@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e3bbb2532340664d0fc54b29bea3ef3af75f9b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 249f124dc7d4d789ca4396a67fba63fbdd144ba6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459158"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120049"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse využití prostředků SQL
 
@@ -94,7 +94,7 @@ Fond SQL je systém škálování na více systémů, který dokáže zřídit o
 
 > [!NOTE]
 >
-> Výkon dotazů se zvyšuje s větší paralelismuou, pokud je možné rozdělit práci mezi výpočetními uzly. Pokud zjistíte, že škálování nemění váš výkon, možná budete muset vyladit návrh tabulky a dotazy. Pokyny k ladění dotazů najdete v tématu [Správa uživatelských dotazů](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Výkon dotazů se zvyšuje s větší paralelismuou, pokud je možné rozdělit práci mezi výpočetními uzly. Pokud zjistíte, že škálování nemění váš výkon, možná budete muset vyladit návrh tabulky a dotazy. Pokyny k ladění dotazů najdete v tématu [Správa uživatelských dotazů](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 ### <a name="permissions"></a>Oprávnění
 
@@ -121,7 +121,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Změnit jednotky datového skladu
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Postup změny DWU:
 

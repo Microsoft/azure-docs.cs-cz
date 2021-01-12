@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 242e5d042aa14e3b7bd92ebb37ae1be61b1b2c8f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322701"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120967"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy pro vyhrazené fondy SQL ve službě Azure synapse Analytics
 
@@ -61,7 +61,7 @@ Chcete-li maximalizovat propustnost při použití textových souborů gzip, roz
 
 - [Načtení dat](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Průvodce používáním funkce PolyBase](data-loading-best-practices.md)
-- [Modely a strategie načítání Azure SQL fondu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
+- [Modely a strategie načítání Azure SQL fondu](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
 - [Načtení dat pomocí Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Přesun dat pomocí služby Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -88,7 +88,7 @@ Níže uvedené odkazy na články vám poskytnou další podrobnosti o vylepše
 
 - [Přehled tabulky](develop-tables-overview.md)
 - [Distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
+- [Výběr distribuce tabulky](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
@@ -193,7 +193,7 @@ Fondy SQL mají několik zobrazení dynamické správyů, které se dají použ�
 
 Běžné problémy a řešení najdete také v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-Pokud potřebujete informace, které nejsou k dispozici v tomto článku, vyhledejte na [stránce s dotazem na Synapseu Microsoft&Q](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
+Pokud potřebujete informace, které nejsou k dispozici v tomto článku, vyhledejte na [stránce s dotazem na Synapseu Microsoft&Q](/answers/topics/azure-synapse-analytics.html) , kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
 
 Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost dotazování na Stack Overflow, máme také [Fórum Azure SQL pool Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

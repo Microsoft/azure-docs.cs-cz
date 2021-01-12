@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043553"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120219"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Tahák list pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
@@ -46,7 +46,7 @@ Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connect
 | Dělení | Žádné |
 | Třída prostředku | largerc nebo xlargerc |
 
-Další informace o [migraci dat](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [načítání dat](design-elt-data-loading.md) a [procesu extrakce, načítání a transformace (ELT)](design-elt-data-loading.md).
+Další informace o [migraci dat](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [načítání dat](design-elt-data-loading.md) a [procesu extrakce, načítání a transformace (ELT)](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Distribuované nebo replikované tabulky
 
@@ -137,7 +137,7 @@ Automatické škálování teď můžete provádět kdykoli díky Azure Function
 
 Služby SQL Database a Azure Analysis Services doporučujeme zvážit v hvězdicovité architektuře. Toto řešení může zajistit izolaci úloh mezi různými skupinami uživatelů a zároveň využívat pokročilé funkce zabezpečení ve službách SQL Database a Azure Analysis Services. Tímto způsobem můžete uživatelům poskytnout neomezenou souběžnost.
 
-Přečtěte si víc o [typických architekturách, které využívají vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Přečtěte si víc o [typických architekturách, které využívají vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse).
 
 Nasaďte v jednom kliknutím své paprsky v databázích SQL z vyhrazeného fondu SQL (dřív SQL DW):
 

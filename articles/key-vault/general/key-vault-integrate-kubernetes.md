@@ -7,17 +7,18 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 6952d239c9dc5c52c0057a6ee1a3b10b30ed9b00
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108751"
+ms.locfileid: "98121358"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
 > [!IMPORTANT]
-> Ovladač CSI je open source projekt, který není podporován technickou podporou Azure. Ohlaste prosím veškerou zpětnou vazbu a problémy související s ovladačem CSI Key Vault integrací na odkaz na GitHub v dolní části stránky. Tento nástroj je k dispozici uživatelům, kteří si můžou do clusterů sami nainstalovat a shromažďovat názory z naší komunity.
+> Ovladač CSI je open source projekt, který není podporován technickou podporou Azure. Ohlaste prosím veškerou zpětnou vazbu a problémy související s ovladačem CSI Key Vault integrací na GitHubu [.](https://github.com/Azure/secrets-store-csi-driver-provider-azure/issues) Tento nástroj je k dispozici uživatelům, kteří si můžou do clusterů sami nainstalovat a shromažďovat názory z naší komunity.
+
 
 V tomto kurzu získáte přístup k tajným klíčům a jejich načítání z trezoru klíčů Azure pomocí ovladače rozhraní kontejnerů úložiště klíčů (CSI) pro připojení tajných kódů do Kubernetes lusků.
 

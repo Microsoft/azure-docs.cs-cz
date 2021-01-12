@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914515"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121001"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -83,6 +83,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 01/11/2021: drobné změny v [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide-rhel-multi-sid.md) v, které umožňují přizpůsobit příkazy pro RHEL8 i RHEL7 a ENSA1 a ENSA2
 - 01/05/2021: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) a SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF v RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), revize Doporučené konfigurace, která povolí agentovi SAP hosta spravovat rozsah místních portů  
 - 01/04/2021: přidejte nové oblasti Azure podporované službou HLI do [toho, co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) .
 - 12/29/2020: přidejte doporučení architektury pro konkrétní oblasti Azure v [konfiguracích úloh SAP pomocí zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)

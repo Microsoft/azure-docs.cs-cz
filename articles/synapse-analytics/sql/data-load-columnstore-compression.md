@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4656531f1424c3414ab00afbbe241a532738400
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462267"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120933"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizace kvality skupiny řádků pro výkon indexu columnstore
 
@@ -142,6 +142,5 @@ DWU velikost a Třída prostředků uživatele společně určují, kolik pamět
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak vylepšit výkon v synapse SQL, najdete v tématu [Přehled výkonu](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Další způsoby, jak vylepšit výkon v synapse SQL, najdete v tématu [Přehled výkonu](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
- 

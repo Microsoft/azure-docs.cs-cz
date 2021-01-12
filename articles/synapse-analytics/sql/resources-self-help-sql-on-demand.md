@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457192"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119913"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Samoobslužná ochrana pro fond SQL bez serveru
 
@@ -25,7 +25,7 @@ Tento článek obsahuje informace o řešení nejčastějších problémů s nes
 Pokud synapse Studio nemůže navázat připojení k fondu SQL bez serveru, všimnete si, že fond SQL bez serveru je šedý nebo zobrazuje stav "offline". K tomuto problému obvykle dochází, když dojde k jednomu z následujících případů:
 
 1) Vaše síť brání komunikaci s back-endu Azure synapse. Nejčastější příčinou je blokování portu 1443. Pokud chcete získat, aby fond SQL bez serveru fungoval, odblokujte tento port. Další problémy by mohly zabránit tomu, aby fond SQL bez serveru fungoval, a [Další informace najdete v kompletní příručce pro odstraňování potíží](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Nemáte oprávnění k přihlášení do fondu SQL bez serveru. Pokud chcete získat přístup, jeden ze správců pracovního prostoru Azure Synapse by vás měl přidat do role správce pracovního prostoru nebo správce SQL. [Další informace najdete v úplném průvodci řízením přístupu](access-control.md).
+2) Nemáte oprávnění k přihlášení do fondu SQL bez serveru. Pokud chcete získat přístup, jeden ze správců pracovního prostoru Azure Synapse by vás měl přidat do role správce pracovního prostoru nebo správce SQL. [Další informace najdete v úplném průvodci řízením přístupu](../security/synapse-workspace-access-control-overview.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dotaz se nezdařil, protože soubor nelze otevřít.
 

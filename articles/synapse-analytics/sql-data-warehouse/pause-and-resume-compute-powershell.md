@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570696"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121035"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL pomocí Azure PowerShell
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto rychlém startu se předpokládá, že už máte fond SQL, který můžete pozastavit a obnovit. Pokud ho potřebujete vytvořit, můžete vytvořit fond SQL s názvem **mySampleDataWarehouse**pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
+V tomto rychlém startu se předpokládá, že už máte fond SQL, který můžete pozastavit a obnovit. Pokud ho potřebujete vytvořit, můžete vytvořit fond SQL s názvem **mySampleDataWarehouse** pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -130,10 +130,10 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 3. Pokud chcete odebrat fond SQL, abyste vám neúčtovali výpočetní výkon nebo úložiště, klikněte na **Odstranit**.
 
-4. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET**a pak klikněte na **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat vytvořený SQL Server, klikněte na **sqlpoolservername.Database.Windows.NET** a pak klikněte na **Odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět víc o fondu SQL, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) . Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) .
+Pokud se chcete dozvědět víc o fondu SQL, přejděte k článku o [načtení dat do fondu SQL](./load-data-from-azure-blob-storage-using-copy.md) . Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) .

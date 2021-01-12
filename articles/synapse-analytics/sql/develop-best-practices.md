@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321497"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120899"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Osvědčené postupy vývoje pro synapse SQL
 
@@ -53,7 +53,7 @@ To znamená, že eliminují operace přesunu dat.  Méně kroků znamená rychle
 
 Další podrobnosti o tom, jak vybrat distribuční sloupec, může zvýšit výkon a jak definovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLES, najdete na následujících odkazech.
 
-Viz také [Přehled tabulek](develop-tables-overview.md), [distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [Výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)a [Create Table jako vyberte](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Viz také [Přehled tabulek](develop-tables-overview.md), [distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [Výběr distribuce tabulky](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)a [Create Table jako vyberte](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 I když je možné rozdělit data na oddíly při údržbě dat prostřednictvím přepínání oddílů nebo optimalizací kontrol pomocí eliminace oddílu, může vaše dotazy zpomalit příliš mnoho oddílů.  Často se jedná o strategii vysoké členitosti, která může fungovat dobře na SQL Server nemusí dobře fungovat na vyhrazeném fondu SQL.  
@@ -147,7 +147,7 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 - Doporučuje se mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
 - Rozdělení dat do oddílů ukládáním oddílů do různých složek nebo názvů souborů – Pokud [chcete cílit na konkrétní oddíly, ověřte použití funkcí filename a FilePath](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Použití funkcí FileInfo a FilePath k cílení na konkrétní oddíly
+### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Cílení na konkrétní oddíly pomocí funkcí fileinfo a filepath
 
 Data jsou často organizována v oddílech. SQL fondu bez serveru můžete dát k dotazování na konkrétní složky a soubory. Tím se sníží počet souborů a množství dat, které dotaz potřebuje ke čtení a zpracování. 
 
@@ -167,7 +167,6 @@ Když CETAS generuje soubory Parquet, Statistika se automaticky vytvoří, když
 
 ### <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete informace, které nejsou uvedené v tomto článku, pomocí funkce **vyhledat dokument** na levé straně této stránky Prohledejte všechny dokumenty fondu SQL.  [Microsoft Q&Stránka s otázkou pro Azure synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse Analytics. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+Pokud potřebujete informace, které nejsou uvedené v tomto článku, pomocí funkce **vyhledat dokument** na levé straně této stránky Prohledejte všechny dokumenty fondu SQL.  [Microsoft Q&Stránka s otázkou pro Azure synapse Analytics](/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse Analytics. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
 Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure synapse Analytics Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
- 

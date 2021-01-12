@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446572"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120389"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Uživatel s oprávněními ke čtení tabulky může získat přístup k externím souborům pomocí externí tabulky vytvořené na základě sady Azure Storage složek a souborů.
 
-Uživatel, který má [oprávnění k vytvoření externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) (například CREATE TABLE a změnu PŘIHLAŠOVACÍch údajů s rozsahem databáze), může pomocí následujícího skriptu vytvořit tabulku nad Azure Storage zdroj dat:
+Uživatel, který má [oprávnění k vytvoření externí tabulky](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) (například CREATE TABLE a změnu PŘIHLAŠOVACÍch údajů s rozsahem databáze), může pomocí následujícího skriptu vytvořit tabulku nad Azure Storage zdroj dat:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

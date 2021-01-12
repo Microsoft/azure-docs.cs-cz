@@ -11,18 +11,18 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456586"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120185"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rychlý Start: vytvoření vyhrazeného fondu SQL (dřív SQL DW) pomocí Azure PowerShell
 
 Vytvořte vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili vyhrazený fond SQL (dřív SQL DW), vytvořili jste pravidlo brány firewall a připojili jste se k vyhrazenému fondu SQL. Pokud se chcete dozvědět víc, přejděte k článku [načtení dat do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .
+Nyní jste vytvořili vyhrazený fond SQL (dřív SQL DW), vytvořili jste pravidlo brány firewall a připojili jste se k vyhrazenému fondu SQL. Pokud se chcete dozvědět víc, přejděte k článku [načtení dat do vyhrazeného fondu SQL](./load-data-from-azure-blob-storage-using-copy.md) .

@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901551"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119454"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Upgrade živé analýzy videí v IoT Edge od 1,0 do 2,0
 
@@ -19,9 +19,9 @@ Tento článek popisuje rozdíly a různé věci, které je potřeba vzít v úv
 ## <a name="change-list"></a>Seznam změn
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Nadpis|Live video Analytics 1,0|Live video Analytics 2,0|Popis|
+> |Nadpis|Live video Analytics 1,0|Live video Analytics 2,0|Description|
 > |-------------|----------|---------|---------|
-> |Obrázek kontejneru|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Obrázky Docker publikované Microsoftem pro video Analytics na Azure IoT Edge|
+> |Obrázek kontejneru|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Obrázky Docker publikované Microsoftem pro video Analytics na Azure IoT Edge|
 > |**Uzly MediaGraph** |    |   |   |
 > |zdroje|:::image type="icon" source="./././media/upgrading-lva/check.png"::: Zdroj RTSP </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub zdroj zprávy |:::image type="icon" source="./././media/upgrading-lva/check.png"::: Zdroj RTSP </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub zdroj zprávy | MediaGraph uzly, které fungují jako zdroje pro ingestování a zprávy o médiích.|
 > |Procesory|:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor detekce pohybu </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor filtru snímkové rychlosti </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor rozšíření http </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor rozšíření Grpc </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor brány signálu |:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor detekce pohybu </br>:::image type="icon" source="./././media/upgrading-lva/remove.png":::**Procesor filtru snímkové rychlosti**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor rozšíření http </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor rozšíření Grpc </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Procesor brány signálu | MediaGraph uzly, které vám umožní naformátovat médium před odesláním na odvozené servery AI.|
@@ -60,7 +60,7 @@ V souborech topologie se ujistěte, že **`apiVersion`** je nastavená na 2,0.
 * V `MediaGraphHttpExtension` `MediaGraphGrpcExtension` procesorech a si všimněte následujících změn:  
     * **Vlastnosti obrázku**
         * `MediaGraphImageFormatEncoded` již není podporován. 
-        * Místo toho použijte **`MediaGraphImageFormatBmp`** nebo **`MediaGraphImageFormatJpeg`** nebo **`MediaGraphImageFormatPng`** . Příklad:
+        * Místo toho použijte **`MediaGraphImageFormatBmp`** nebo **`MediaGraphImageFormatJpeg`** nebo **`MediaGraphImageFormatPng`** . Třeba
         ```
         "image": {
                 "scale": 

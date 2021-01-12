@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462877"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120015"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Osvědčené postupy pro vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics
 
@@ -74,7 +74,7 @@ Azure Data Factory podporuje také základní zátěže a může dosáhnout podo
 > [!NOTE]
 > Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, čímž maximalizujete paralelismus zátěže.  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
 
-Viz také [načtení dat](design-elt-data-loading.md), [Průvodce používáním základních](guidance-for-loading-data.md), [vyhrazených vzorů a strategií načítání fondů SQL](https://blogs.msdn.microsoft.com/sqlcat/20../../), [načítání dat pomocí Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [přesouvání dat pomocí Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [Vytvoření externího formátu souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Vytvoření tabulky jako Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Viz také [načtení dat](design-elt-data-loading.md), [Průvodce používáním základních](guidance-for-loading-data.md), [vyhrazených vzorů a strategií načítání fondů SQL](/archive/blogs/sqlcat/), [načítání dat pomocí Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [přesouvání dat pomocí Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [Vytvoření externího formátu souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Vytvoření tabulky jako Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Načtěte a následně dotazujte externí tabulky
 
@@ -97,7 +97,7 @@ Například pokud máte tabulku objednávek, která se distribuuje podle sloupce
 
 Další informace o tom, jak vybrat distribuční sloupec, může zlepšit výkon a jak definovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLE, najdete na následujících odkazech.
 
-Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table jako SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [výběr distribuce tabulky](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table jako SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
@@ -180,7 +180,7 @@ Viz také [třídy prostředků pro správu úloh](resource-classes-for-workload
 
 Přečtěte si také článek [Řešení potíží](sql-data-warehouse-troubleshoot.md), ve kterém najdete běžné problémy a jejich řešení.
 
-Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Microsoft Q&Stránka s otázkou pro Azure synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Microsoft Q&Stránka s otázkou pro Azure synapse](/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
 Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure Synapse Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

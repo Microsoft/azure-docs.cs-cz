@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7972f34bf0d2b93828899903e013c2e35bc997c0
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2d9f3bfe6a273bfb0f3d314d1a4664806bd45ae2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523445"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118808"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Co je synapse řízení přístupu na základě role (RBAC)?
 
-Synapse RBAC rozšiřuje možnosti [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) pro pracovní prostory synapse a jejich obsah. 
+Synapse RBAC rozšiřuje možnosti [Azure RBAC](../../role-based-access-control/overview.md) pro pracovní prostory synapse a jejich obsah. 
 
 Azure RBAC se používá ke správě, kdo může vytvářet, aktualizovat nebo odstraňovat pracovní prostor synapse a jeho fondy SQL, fondy Apache Spark a prostředí Integration runtime.
 

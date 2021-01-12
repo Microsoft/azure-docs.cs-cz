@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/02/2020
-ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016220"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119319"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Gen2
 
@@ -38,12 +38,27 @@ Azure Time Series Insights Průzkumník Gen2 ukazuje historická data a analýzu
 
 ## <a name="work-with-historical-data"></a>Práce s historickými daty
 
-1. Ve **společnosti Contoso 1** se podívejte na vítr turbín **W7**.  
+1. Vyberte **Contoso WindFarm Hierarchy**.
+
+   [![WindFarm hierarchie contoso](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. Ve **společnosti Contoso 1** se podívejte na vítr turbín **W7**.
+
+   [![W7 ve společnosti Contoso – rostlina 1](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. Změňte rozsah zobrazení na **1/1/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)**.
+
+      [![Zobrazení rozsahu](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![Nastavení zobrazení rozsahu](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. Upravte zobrazení rozsahu pomocí přiblížení **(+)** a ven **(-)** a přesunutím panelu snímků.
+
+      [![Upravit zobrazení rozsahu](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. Pokud chcete vybrat senzor, vyberte **Contoso závod 1**  >  **W7**  >  **generátor System**  >  **GeneratorSpeed**. Pak zkontrolujte zobrazené hodnoty.
 
-      [![W7 ve společnosti Contoso – rostlina 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![Rychlost generátoru](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Azure Time Series Insights Gen2 se zobrazí senzor výstrah, který byl aktivován během požáru.
 

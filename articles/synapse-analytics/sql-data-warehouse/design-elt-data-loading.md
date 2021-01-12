@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531569"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120151"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategie načítání dat pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
@@ -42,7 +42,7 @@ Základní kroky pro implementaci ELT jsou:
 5. Transformujte data.
 6. Vložení dat do produkčních tabulek
 
-Kurz načítání najdete v tématu [načtení dat z úložiště objektů BLOB v Azure](load-data-from-azure-blob-storage-using-polybase.md).
+Kurz načítání najdete v tématu [načtení dat z úložiště objektů BLOB v Azure](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. extrahuje zdrojová data do textových souborů.
 
@@ -123,7 +123,7 @@ Při načítání souborů Parquet použít následující mapování typů dat 
 >- Při neshodě typů mezi Parquet a SQL nebo v případě, že máte nepodporované datové typy Parquet, může dojít k následující chybě: **"HdfsBridge:: recordReaderFillBuffer-došlo k neočekávané chybě, při naplňování vyrovnávací paměti čtecího modulu nahrávání: ClassCastException:..."**
 >- Načtení hodnoty mimo rozsah 0-127 do sloupce tinyint pro formát souborů Parquet a ORC není podporováno.
 
-Příklad vytváření externích objektů najdete v tématu [Vytvoření externích tabulek](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
+Příklad vytváření externích objektů najdete v tématu [Vytvoření externích tabulek](../sql/develop-tables-external-tables.md?tabs=sql-pool).
 
 ### <a name="format-text-files"></a>Formátování textových souborů
 
@@ -142,11 +142,11 @@ Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky 
 
 Chcete-li načíst data, můžete použít kteroukoli z těchto možností načítání:
 
-- [Příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně načítat data. Příkaz má mnoho dalších možností načítání, které základ neposkytuje. 
-- [Základna s T-SQL](load-data-from-azure-blob-storage-using-polybase.md) vyžaduje, abyste definovali externí datové objekty.
+- [Příkaz Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně načítat data. Příkaz má mnoho dalších možností načítání, které základ neposkytuje. 
+- [Základna s T-SQL](./load-data-from-azure-blob-storage-using-copy.md) vyžaduje, abyste definovali externí datové objekty.
 - [Příkaz Base a copy s Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) je další nástroj Orchestration.  Definuje kanál a plánuje úlohy.
 - [Základ SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) funguje dobře, když jsou zdrojová data v SQL Server. SSIS definuje mapování zdrojového do cílové tabulky a také toto zatížení orchestruje. Pokud již máte balíčky SSIS, můžete je upravit tak, aby fungovaly s novým cílem datového skladu.
-- [Základna s Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) přenáší data z tabulky do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky pomocí základu.
+- [Základna s Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) přenáší data z tabulky do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky pomocí základu.
 
 ### <a name="other-loading-options"></a>Další možnosti načítání
 

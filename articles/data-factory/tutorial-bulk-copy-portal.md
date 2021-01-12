@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508879"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117108"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -51,20 +51,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 ## <a name="prerequisites"></a>Požadavky
 * **Účet Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
-* **Azure SQL Database**. Tato databáze obsahuje zdrojová data. 
-* **Azure synapse Analytics**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Příprava SQL Database a Azure synapse Analytics 
-
-**Příprava zdrojové databáze Azure SQL Database**:
-
-Vytvořte v SQL Database databázi s ukázkovými daty Adventure Works LT, [a to podle článku Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) . V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics.
-
-**Příprava jímky Azure synapse Analytics**:
-
-1. Pokud nemáte pracovní prostor analýzy Azure synapse, přečtěte si článek Začínáme [se službou Azure synapse Analytics](..\synapse-analytics\get-started.md) , kde najdete kroky pro jeho vytvoření.
-
-1. Vytváření odpovídajících schémat tabulek v Azure synapse Analytics K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+* **Azure SQL Database**. Tato databáze obsahuje zdrojová data. Vytvořte v SQL Database databázi s ukázkovými daty Adventure Works LT, [a to podle článku Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) . V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics.
+* **Azure synapse Analytics**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. Pokud nemáte pracovní prostor analýzy Azure synapse, přečtěte si článek Začínáme [se službou Azure synapse Analytics](..\synapse-analytics\get-started.md) , kde najdete kroky pro jeho vytvoření.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
@@ -75,7 +63,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. Přejděte na web [Azure Portal](https://portal.azure.com). 
 1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory pro**  >  **integraci** prostředků  >  . 
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -241,6 +229,7 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
     ![Tvůrce parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. Přepněte na kartu **aktivity** , kliknutím na **ikonu tužky** přidejte podřízenou aktivitu do aktivity **foreach** .
+    
     ![Tvůrce aktivit foreach](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. Na panelu nástrojů **aktivity** rozbalte **přesunout & přenos** a přetáhněte aktivitu **Kopírovat data** na plochu návrháře kanálu. Všimněte si nabídky navigace s popisem cesty v horní části. **IterateAndCopySQLTable** je název kanálu a **IterateSQLTables** je název aktivity ForEach. Návrhář je v oboru aktivity. Chcete-li přepnout zpět na Editor kanálů z editoru ForEach, můžete kliknout na odkaz v nabídce popis cesty. 
@@ -257,7 +246,6 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. Přepněte na kartu **Jímka** a proveďte následující kroky: 
 
     1. Jako **Datová sada jímky** vyberte **AzureSqlDWDataset**.
@@ -265,6 +253,7 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
     1. Klikněte na vstupní pole pro hodnotu parametru DWSchema-> vyberte níže **Přidat dynamický obsah** a `@item().TABLE_SCHEMA` jako skript zadejte výraz-> vyberte **Dokončit**.
     1. V případě metody Copy vyberte **základnu**. 
     1. Zrušte zaškrtnutí možnosti **použít výchozí typ** . 
+    1. Pro možnost tabulka je výchozí nastavení "none". Pokud nemáte tabulky předem vytvořené v jímky Azure synapse Analytics, povolte možnost **automaticky vytvořit tabulku** , aktivita kopírování pak automaticky vytvoří tabulky založené na zdrojových datech. Podrobnosti najdete v tématu [Automatické vytváření tabulek jímky](copy-activity-overview.md#auto-create-sink-tables). 
     1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 
 
         ```sql
@@ -272,6 +261,8 @@ Kanál  **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro
         ```
 
         ![Nastavení jímky kopírování](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. Přepněte na kartu **Nastavení** a proveďte následující kroky: 
 
     1. Zaškrtněte políčko **Povolit přípravu**.

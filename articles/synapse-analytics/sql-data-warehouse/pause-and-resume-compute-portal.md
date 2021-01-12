@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109652"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120287"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL prostřednictvím Azure Portal
 
@@ -24,7 +24,7 @@ Můžete použít Azure Portal k pozastavení a obnovení vyhrazených výpočet
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -39,7 +39,7 @@ Pokud chcete snížit náklady, můžete pozastavit a obnovit výpočetní prost
 
 Pomocí těchto kroků pozastavíte vyhrazený fond SQL:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Přejděte na stránku **vyhrazeného fondu SQL** , kde otevřete fond SQL. 
 3. **Stav** oznámení je **online**.
 
@@ -98,5 +98,4 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste pozastavili a obnovili výpočetní výkon pro vyhrazený fond SQL. V dalším článku se dozvíte další informace o tom, jak [načíst data do vyhrazeného fondu SQL](load-data-from-azure-blob-storage-using-polybase.md). Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) . 
-
+Nyní jste pozastavili a obnovili výpočetní výkon pro vyhrazený fond SQL. V dalším článku se dozvíte další informace o tom, jak [načíst data do vyhrazeného fondu SQL](./load-data-from-azure-blob-storage-using-copy.md). Další informace o správě výpočetních funkcí najdete v článku [Správa výpočetních přehledů](sql-data-warehouse-manage-compute-overview.md) .

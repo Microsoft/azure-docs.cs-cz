@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450862"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120950"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
 
@@ -104,7 +104,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Popis |  
+|Magic – příkaz |Jazyk | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -228,7 +228,7 @@ Kliknutím na tlačítko se šipkou v dolní části aktuální buňky ho sbalí
 
 # <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
 
-Vyberte tři **More commands** tečky (...) na panelu nástrojů buňky a **vstup** pro sbalení vstupu aktuální buňky. Pokud ho chcete rozbalit, vyberte **skrytý vstup** , zatímco je buňka sbalená.
+Vyberte tři  tečky (...) na panelu nástrojů buňky a **vstup** pro sbalení vstupu aktuální buňky. Pokud ho chcete rozbalit, vyberte **skrytý vstup** , zatímco je buňka sbalená.
 
    ![Azure-notebook – sbalení-buňka – vstup](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
 
@@ -244,7 +244,7 @@ Vyberte tlačítko **sbalit výstup** v levém horním rohu aktuální buňky a 
 
 # <a name="preview-notebook"></a>[Náhled poznámkového bloku](#tab/preview)
 
-Vyberte tři **More commands** tečky (...) na panelu nástrojů a ve **výstupu** , abyste mohli sbalit výstup aktuální buňky. Pokud ho chcete rozbalit, vyberte stejné tlačítko, zatímco je výstup buňky skrytý.
+Vyberte tři  tečky (...) na panelu nástrojů a ve **výstupu** , abyste mohli sbalit výstup aktuální buňky. Pokud ho chcete rozbalit, vyberte stejné tlačítko, zatímco je výstup buňky skrytý.
 
    ![Azure-notebook – sbalení-buňka-Output](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 
@@ -553,4 +553,4 @@ Pomocí následujících klávesových zkratek můžete v režimu úprav snadně
 - [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 - [Použití .NET pro Apache Spark se službou Azure Synapse Analytics](spark-dotnet.md)
 - [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

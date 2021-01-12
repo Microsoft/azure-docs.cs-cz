@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge – poznámky k verzi – Azure
 description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Edge vydáních, vylepšeních, opravách chyb a známých problémech.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059972"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121239"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge
 
@@ -20,6 +20,23 @@ V tomto článku najdete informace o:
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>12. ledna 2021
+
+Tato značka vydání je pro aktualizaci tohoto modulu v lednu 2021:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> V rychlých startech a kurzech manifesty nasazení používají značku 2 (živé video-Analytics: 2). Takže jednoduše znovu nasadíte takové manifesty, které by měly aktualizovat modul na hraničních > zařízeních.
+### <a name="bug-fixes"></a>Opravy chyb 
+
+* Pole `ActivationSignalOffset` `MinimumActivationTime` a `MaximumActivationTime` v procesorech brány signálu byly nesprávně nastaveny jako požadované vlastnosti. Nyní jsou **volitelné** vlastnosti.
+* Opravili jsme chybu použití, která způsobí, že při nasazení v určitých oblastech dojde k chybě v modulu analýzy živých videí v IoT Edge.
 
 <hr width=100%>
 

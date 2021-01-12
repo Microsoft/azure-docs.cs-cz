@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854983"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118621"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
@@ -55,6 +55,7 @@ Pokud jste už vytvořili dlouhotrvající cluster s více různými spravovaný
  * V clusterech ESP při změně certifikátu LDAP-DS LDAPs se certifikát LDAPs automaticky neaktualizuje, takže se nedaří spustit změny ze služby LDAP Sync a Scale.
  * Přístup MSI k neúspěšnému spuštění ADLS Gen2
  * Šifrovací klíče nelze ve scénáři CMK otáčet.
+
 pak byste měli přiřadit požadované role a oprávnění pro výše uvedené scénáře všem spravovaným identitám používaným v clusteru. Pokud jste třeba pro clustery ADLS Gen2 a ESP používali různé spravované identity, musí mít obě tyto identity přiřazené role vlastník dat objektů BLOB úložiště a přispěvatele HDInsight Domain Services, aby se v těchto problémech nepoužívaly.
 
 ## <a name="faq"></a>Časté otázky

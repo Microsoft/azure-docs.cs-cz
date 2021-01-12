@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462856"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121188"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor doporučení pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
@@ -65,12 +65,12 @@ V současné době se u clusterovaných indexů columnstore zobrazí jenom čty�
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Adaptivní (Gen2) využití mezipaměti
-Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do mezipaměti a vysoké využití mezipaměti. V tomto scénáři byste měli škálovat až ke zvýšení kapacity mezipaměti a opětovnému spuštění úloh. Další informace najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do mezipaměti a vysoké využití mezipaměti. V tomto scénáři byste měli škálovat až ke zvýšení kapacity mezipaměti a opětovnému spuštění úloh. Další informace najdete v následující [dokumentaci](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>Obsah databáze tempdb
 
-Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , aby bylo možné získat větší množství paměti pro vaše dotazy. 
+Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](./sql-data-warehouse-workload-management.md) , aby bylo možné získat větší množství paměti pro vaše dotazy. 
 
 ## <a name="data-loading-misconfiguration"></a>Nepřesná konfigurace načítání dat
 
-Vždycky byste měli načíst data z účtu úložiště ve stejné oblasti jako vyhrazený fond SQL, abyste minimalizovali latenci. Použijte [příkaz Copy pro příjem dat s vysokou propustností](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a rozdělte připravené soubory do svého účtu úložiště, aby se maximalizovala propustnost. Pokud nemůžete použít příkaz COPY, můžete pro lepší propustnost použít rozhraní SqlBulkCopy API nebo BCP s vysokou velikostí dávky. Další doprovodné materiály k načítání dat najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 
+Vždycky byste měli načíst data z účtu úložiště ve stejné oblasti jako vyhrazený fond SQL, abyste minimalizovali latenci. Použijte [příkaz Copy pro příjem dat s vysokou propustností](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a rozdělte připravené soubory do svého účtu úložiště, aby se maximalizovala propustnost. Pokud nemůžete použít příkaz COPY, můžete pro lepší propustnost použít rozhraní SqlBulkCopy API nebo BCP s vysokou velikostí dávky. Další doprovodné materiály k načítání dat najdete v následující [dokumentaci](./guidance-for-loading-data.md).

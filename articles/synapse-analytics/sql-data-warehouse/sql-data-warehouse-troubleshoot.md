@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530710"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121273"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Řešení potíží s vyhrazeným fondem SQL (dříve SQL DW) ve službě Azure synapse Analytics
 
@@ -85,6 +85,6 @@ Další nápovědu při hledání řešení problému najdete v tématu Další 
 * [Žádosti o funkce](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+* [Stránka s otázkou Microsoft Q&](/answers/topics/azure-synapse-analytics.html)
 * [Fórum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

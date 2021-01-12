@@ -11,18 +11,31 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632885"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118230"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V této příručce se dozvíte, jak vytvořit sdílený modul runtime integrace v místním prostředí v Azure Data Factory. Pak můžete použít sdílený modul runtime integrace v místním prostředí v jiném objektu pro vytváření dat.
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
+
+Můžete znovu použít stávající infrastrukturu Integration runtime v místním prostředí, kterou jste už nastavili v datové továrně. Toto opakované použití umožňuje vytvořit propojený modul runtime integrace v místním prostředí v jiném objektu pro vytváření dat odkazem na existující sdílený modul IR v místním prostředí.
+
+Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následující 12 minutové video:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Terminologie
+
+- **Shared IR**: původní prostředí IR v místním prostředí, které běží na fyzické infrastruktuře.  
+- **Propojený IR**: IR, který odkazuje na jiný sdílený IR. Propojený IR je logický IR a používá infrastrukturu jiného sdíleného prostředí IR v místním prostředí.
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Vytvoření sdíleného prostředí IR v místním prostředí pomocí Azure Data Factoryho uživatelského rozhraní
 
@@ -51,11 +64,11 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
 1. Vytvořte propojený modul runtime integrace.
 1. Odvolejte sdílení.
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Předplatné Azure** . Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). 
+- **Předplatné Azure**. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). 
 
 - **Azure PowerShell.** Postupujte podle pokynů v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](/powershell/azure/install-az-ps). Pomocí PowerShellu spustíte skript pro vytvoření prostředí Integration runtime v místním prostředí, které je možné sdílet s jinými datovými továrnami. 
 
@@ -66,7 +79,7 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
 
 1. Spusťte integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell.
 
-1. Vytvořte proměnné. Zkopírujte a vložte následující skript. Nahraďte proměnné, jako je například **Subscription** a **ResourceGroupName** , skutečnými hodnotami: 
+1. Vytvořte proměnné. Zkopírujte a vložte následující skript. Nahraďte proměnné, jako je například **Subscription** a **ResourceGroupName**, skutečnými hodnotami: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -213,6 +226,37 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -Links `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
+
+### <a name="monitoring"></a>Monitorování
+
+#### <a name="shared-ir"></a>Sdílený IR
+
+![Výběry pro vyhledání sdíleného prostředí Integration runtime](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![Monitorování sdíleného prostředí Integration runtime](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>Propojený IR
+
+![Výběry pro nalezení propojeného modulu runtime integrace](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![Monitorování propojeného prostředí Integration runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Známá omezení sdílení IR v místním prostředí
+
+* Objekt pro vytváření dat, ve kterém je vytvořen propojený IR, musí mít [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md). Ve výchozím nastavení mají datové továrny vytvořené v rutinách Azure Portal nebo PowerShellu implicitně vytvořenou spravovanou identitu. Když ale datovou továrnu vytvoříte pomocí šablony Azure Resource Manager nebo sady SDK, musíte explicitně nastavit vlastnost **identity** . Toto nastavení zajišťuje, že Správce prostředků vytvoří datovou továrnu, která obsahuje spravovanou identitu.
+
+* Sada Data Factory .NET SDK podporující tuto funkci musí být verze 1.1.0 nebo novější.
+
+* Chcete-li udělit oprávnění, potřebujete roli vlastníka nebo zděděnou roli vlastníka v objektu pro vytváření dat, kde existuje sdílený IR.
+
+* Funkce sdílení funguje pouze pro datové továrny v rámci stejného tenanta služby Azure AD.
+
+* Pro [uživatele typu Host](../active-directory/governance/manage-guest-access-with-access-reviews.md)Azure AD funkce vyhledávání v uživatelském rozhraní, které uvádí všechny datové továrny pomocí klíčového slova hledání, nefunguje. Pokud je uživatel typu Host vlastníkem objektu pro vytváření dat, ale můžete ho sdílet bez funkce hledání. Pro spravovanou identitu datové továrny, která potřebuje sdílet IR, zadejte tuto spravovanou identitu do pole **přiřadit oprávnění** a vyberte **Přidat** v uživatelském rozhraní Data Factory.
+
+  > [!NOTE]
+  > Tato funkce je k dispozici pouze v Data Factory v2.
+
 
 ### <a name="next-steps"></a>Další kroky
 

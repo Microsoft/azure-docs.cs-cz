@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
-ms.translationtype: HT
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746724"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120406"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -49,7 +49,7 @@ Uživatel, který byl přihlášen k fondu SQL bez serveru, musí mít autorizac
 Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure Portal – > sdílený přístup – > konfigurace oprávnění – > generovat SAS a připojovací řetězec.**
 
 > [!IMPORTANT]
-> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token ve fondu SQL bez serveru, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Například:
+> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token ve fondu SQL bez serveru, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Příklad:
 >
 > Token SAS:? sv = 2018-03-28&SS = bfqt&SRT aplikace = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -63,7 +63,7 @@ Před přístupem k datům musí správce Azure Storage udělit oprávnění ke 
 
 ### <a name="anonymous-access"></a>[Anonymní přístup](#tab/public-access)
 
-Můžete přistupovat k veřejně dostupným souborům umístěným na účtech Azure Storage, které [povolují anonymní přístup](/azure/storage/blobs/storage-manage-access-to-resources).
+Můžete přistupovat k veřejně dostupným souborům umístěným na účtech Azure Storage, které [povolují anonymní přístup](../../storage/blobs/anonymous-read-access-configure.md).
 
 ---
 
@@ -90,7 +90,7 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 \* Token SAS a identita Azure AD lze použít pro přístup k úložišti, které není chráněno bránou firewall.
 
 
-### <a name="querying-firewall-protected-storage"></a>Dotazování chráněného úložiště brány firewall
+### <a name="querying-firewall-protected-storage"></a>Dotazování úložiště chráněného bránou firewall
 
 Při přístupu k úložišti chráněnému bránou firewall můžete použít **identitu uživatele** nebo **spravovanou identitu**.
 
@@ -101,7 +101,7 @@ Chcete-li získat přístup k úložišti chráněnému bránou firewall prostř
 
 Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložiště a přidat výjimku pro pracovní prostor synapse.
 
-1. Otevřít PowerShell nebo [nainstalovat PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. Otevřít PowerShell nebo [nainstalovat PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. Nainstalujte aktualizovaný AZ. Modul úložiště: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease

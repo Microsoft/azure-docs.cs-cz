@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fc90ad8104cff7ead501470a883b56b67a86cf7c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317330"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121256"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Systémová zobrazení podporovaná v synapse SQL
 
@@ -252,6 +252,5 @@ Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale
 
 ## <a name="next-steps"></a>Další kroky
 
-Další referenční informace najdete v tématu [příkazy jazyka t-SQL v synapse SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)a v [jazyce t-SQL Elements v synapse SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
+Další referenční informace najdete v tématu [příkazy jazyka t-SQL v synapse SQL](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)a v [jazyce t-SQL Elements v synapse SQL](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md).
 
- 

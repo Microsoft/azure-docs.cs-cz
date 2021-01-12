@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314445"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119998"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
@@ -24,18 +24,18 @@ Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure 
 
 ## <a name="resource-utilization"></a>Využití prostředků
 
-V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
+V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics).
 
-| Název metriky             | Popis                                                  | Typ agregace |
+| Název metriky             | Description                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
 | Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
 | Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | AVG, min, Max   |
-| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Součet              |
-| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Součet              |
+| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Sum              |
+| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Sum              |
 | Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Sum, Count       |
 | Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Sum, Count       |
-| Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
+| – Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
 | DWU limit               | Cíl na úrovni služby datového skladu                | AVG, min, Max    |
 | Procento DWU          | Maximální procento CPU a procento v/v dat        | AVG, min, Max    |
 | DWU použito                | DWU limit * DWU procento                                   | AVG, min, Max    |
@@ -57,7 +57,7 @@ Pokud chcete zobrazit seznam zobrazení dynamické správy, které platí pro sy
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování 
 
-Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a můžou být prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programově dostupné. Latence protokolu pro synapse SQL má přibližně 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
+Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a můžou být prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)programově dostupné. Latence protokolu pro synapse SQL má přibližně 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499964"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119471"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indexování dat Cosmos DB pomocí indexeru ve službě Azure Cognitive Search 
 
@@ -137,7 +137,7 @@ Dříve v tomto článku se zmiňujeme, že indexování [Azure Cosmos DB](../co
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1. sestavování vstupů pro požadavek
 
-Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Kognitivní hledání (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů BLOB. K odeslání požadavků HTTP do Azure Kognitivní hledání můžete použít [post nebo Visual Studio Code](search-get-started-rest.md) .
+Pro každý požadavek musíte zadat název služby a klíč správce pro Azure Kognitivní hledání (v hlavičce POST) a název účtu úložiště a klíč pro úložiště objektů BLOB. K odeslání požadavků HTTP do Azure Kognitivní hledání můžete použít [post](search-get-started-rest.md) nebo [Visual Studio Code](search-get-started-vs-code.md) .
 
 Do poznámkového bloku zkopírujte následující čtyři hodnoty, abyste je mohli vložit do žádosti:
 
@@ -181,12 +181,12 @@ Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Popis |
+| Pole   | Description |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
 |**přihlašovací údaje** | Povinná hodnota. Musí buď následovat formát připojovacího řetězce Cosmos DB nebo formát připojovacího řetězce spravované identity.<br/><br/>V případě **kolekcí SQL** mohou připojovací řetězce následovat po jednom z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>Pro **MongoDB kolekce** verze 3,2 a verze 3,6 použijte pro připojovací řetězec některý z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>V případě **grafů Gremlin a tabulek Cassandra** si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/><br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Kognitivní hledání nebude moct indexovat databázi Azure Cosmos DB.|
-| **container (kontejner)**  | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
+| **vnitřního** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučil. Viz část [indexování změněných dokumentů](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Nepovinný parametr. Viz část [indexování odstraněných dokumentů](#DataDeletionDetectionPolicy) .|
 

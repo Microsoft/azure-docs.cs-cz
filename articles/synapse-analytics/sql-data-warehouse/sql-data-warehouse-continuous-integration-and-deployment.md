@@ -11,18 +11,18 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9f2bbc39b9c9c4770775bf49a7775ab8980a1f3b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cb80f2d21246a75d41fc5753e72995d409d5c6b4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589895"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119182"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Průběžná integrace a nasazování vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
 V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pro datové sklady.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 - Projděte si [kurz integrace správy zdrojového kódu](sql-data-warehouse-source-control-integration.md)
 
@@ -62,5 +62,5 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
 - Prozkoumat [vyhrazenou architekturu fondu SQL (dříve SQL DW)](massively-parallel-processing-mpp-architecture.md)
 - Rychlé [vytvoření vyhrazeného fondu SQL (dřív SQL DW)](create-data-warehouse-portal.md)
-- [Načtení ukázkových dat](load-data-from-azure-blob-storage-using-polybase.md)
+- [Načtení ukázkových dat](./load-data-from-azure-blob-storage-using-copy.md)
 - Prozkoumat [videa](sql-data-warehouse-videos.md)

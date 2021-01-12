@@ -8,80 +8,79 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932383"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121126"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
 V tomto článku provedeme následující úlohy:
 
-* Pomocí Azure Notebooks můžete naučit model strojového učení.
+* Pomocí Azure Machine Learning Studio můžete naučit model strojového učení.
 * Zabalit model trained jako image kontejneru.
 * Nasaďte image kontejneru jako modul Azure IoT Edge.
 
-Azure Notebooks využít pracovní prostor Azure Machine Learning, což je základní blok, který se používá k experimentování, výuce a nasazování modelů strojového učení.
+Azure Machine Learning Studio je základní blok, který slouží k experimentování, výuce a nasazování modelů strojového učení.
 
 Kroky v tomto článku můžou obvykle provádět odborníci přes data.
 
 V této části kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
->
-> * Vytvořte projekt Azure Notebooks pro výuku modelu strojového učení.
+> * Vytvářejte Jupyter poznámkové bloky v pracovní prostor Azure Machine Learning, abyste mohli naučit model strojového učení.
 > * Kontejnerizace se na školicí model strojového učení.
 > * Vytvořte modul Azure IoT Edge z kontejneru strojového učení s dodaným objektem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
-## <a name="set-up-azure-notebooks"></a>Nastavit Azure Notebooks
+## <a name="set-up-azure-machine-learning"></a>Nastavit Azure Machine Learning 
 
-Používáme Azure Notebooks k hostování dvou poznámkových bloků Jupyter a podpůrných souborů. Tady vytvoříme a nakonfigurujeme Azure Notebooks projekt. Pokud jste nepoužívali Jupyter a/nebo Azure Notebooks, je zde několik úvodních dokumentů:
+Používáme Azure Machine Learning Studio k hostování dvou poznámkových bloků Jupyter a podpůrných souborů. Tady vytvoříme a nakonfigurujeme Azure Machine Learning projekt. Pokud jste nepoužívali Jupyter a/nebo Azure Machine Learning Studio, je zde několik úvodních dokumentů:
 
-* **Rychlý Start:** [Vytvoření a sdílení poznámkového bloku](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Kurz:** [Vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter poznámkové bloky:** [práce s poznámkovými bloky Jupyter v Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure Machine Learning:** [Začínáme s Azure Machine Learning v poznámkových blocích Jupyter](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-Použití Azure Notebooks zajišťuje konzistentní prostředí pro cvičení.
 
 > [!NOTE]
-> Po nastavení se k Azure Notebooks službě dostanete z libovolného počítače. Během instalace byste měli použít vývojový virtuální počítač, který bude mít všechny soubory, které budete potřebovat.
+> Po nastavení se k Azure Machine Learning službě dostanete z libovolného počítače. Během instalace byste měli použít vývojový virtuální počítač, který bude mít všechny soubory, které budete potřebovat.
 
-### <a name="create-an-azure-notebooks-account"></a>Vytvoření účtu Azure Notebooks
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Nainstalovat rozšíření Azure Machine Learning Visual Studio Code
+VS Code na vývojovém virtuálním počítači by měla mít tato rozšíření nainstalovaná. Pokud používáte jinou instanci, přeinstalujte prosím rozšíření, jak je popsáno [zde.](../machine-learning/tutorial-setup-vscode-extension.md)
 
-Chcete-li použít Azure Notebooks, je nutné vytvořit účet. Účty poznámkového bloku Azure jsou nezávislé na předplatných Azure.
+### <a name="create-an-azure-machine-learning-account"></a>Vytvoření účtu Azure Machine Learning  
+Aby bylo možné zřídit prostředky a spouštět úlohy v Azure, musíte se přihlásit pomocí přihlašovacích údajů k účtu Azure.
 
-1. Přejděte na [Azure Notebooks](https://notebooks.azure.com).
+1. V Visual Studio Code otevřete paletu příkazů výběrem možnosti **Zobrazit**  >  **paleta příkazů** v řádku nabídek. 
 
-1. V pravém horním rohu stránky klikněte na **Přihlásit** se.
+1. Zadejte příkaz `Azure: Sign In` do palety příkazů pro spuštění procesu přihlášení. Dokončete přihlášení podle pokynů. 
 
-1. Přihlaste se pomocí svého pracovního nebo školního účtu (Azure Active Directory) nebo svého osobního účtu (účet Microsoft).
+1. Vytvořte instanci Azure Výpočetní prostředky služby ML pro spuštění úlohy. Pomocí příkazové palety zadejte příkaz `Azure ML: Create Compute` . 
+1. Vyberte své předplatné Azure.
+1. Vyberte **+ vytvořit nový pracovní prostor Azure ml** a zadejte název `turbofandemo` .
+1. Vyberte skupinu prostředků, kterou jste pro tuto ukázku používali.
+1. V pravém dolním rohu okna VS Code byste měli být schopní zobrazit průběh vytváření pracovního prostoru: **vytváření pracovního prostoru: turobofandemo** (může to trvat minutu nebo dvě). 
+1. Počkejte prosím, než se pracovní prostor úspěšně vytvoří. Měl by se **vytvořit pracovní prostor Azure ml turbofandemo**.
 
-1. Pokud jste Azure Notebooks ještě nepoužili, budete vyzváni k udělení přístupu pro aplikaci Azure Notebooks.
 
-1. Vytvořte ID uživatele pro Azure Notebooks.
+### <a name="upload-jupyter-notebook-files"></a>Nahrání souborů Jupyter Notebook
 
-### <a name="upload-jupyter-notebook-files"></a>Nahrání souborů Jupyter poznámkového bloku
+Do nového pracovního prostoru Azure ML odešleme ukázkové soubory poznámkových bloků.
 
-Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámkových bloků.
+1. Přejděte na ml.azure.com a přihlaste se.
+1. Vyberte svůj adresář Microsoft, předplatné Azure a nově vytvořený pracovní prostor Azure ML.
 
-1. Na stránce uživatele nového účtu v horním řádku nabídek vyberte **Moje projekty** .
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="Vyberte pracovní prostor Azure ML." :::
 
-1. Kliknutím na tlačítko přidejte nový projekt **+** .
+1. Po přihlášení k pracovnímu prostoru Azure ML přejděte do části **poznámkové bloky** pomocí levé strany nabídky.
+1. Vyberte kartu **Moje soubory** .
 
-1. V dialogovém okně **vytvořit nový projekt** zadejte **název projektu**. 
+1. Vyberte **nahrát** (ikona šipky nahoru). 
 
-1. Ponechte **veřejné** a **soubor Readme** nezaškrtnuté, protože není potřeba, aby projekt byl veřejný nebo měl soubor Readme.
-
-1. Vyberte **Vytvořit**.
-
-1. Vyberte **nahrát** (ikona šipky nahoru) a zvolte **z počítače**.
-
-1. Vyberte možnost **zvolit soubory**.
 
 1. Přejděte na **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Vyberte všechny soubory v seznamu a klikněte na **otevřít**.
 
@@ -89,9 +88,9 @@ Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámk
 
 1. Vyberte **nahrát** a začněte nahrávat a potom vyberte **Hotovo** po dokončení procesu.
 
-### <a name="azure-notebook-files"></a>Soubory notebooků Azure
+### <a name="jupyter-notebook-files"></a>Soubory Jupyter Notebook
 
-Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks. Aktivity v této části kurzu jsou rozloženy mezi dva soubory poznámkového bloku, které používají několik podpůrných souborů.
+Pojďme se podívat na soubory, které jste nahráli do pracovního prostoru Azure ML. Aktivity v této části kurzu jsou rozloženy mezi dva soubory poznámkového bloku, které používají několik podpůrných souborů.
 
 * **01 – turbofan \_ regrese. ipynb:** tento poznámkový blok používá pracovní prostor služby Machine Learning k vytvoření a spuštění experimentu machine learningu. Poznámkový blok v podstatě provede následující kroky:
 
@@ -115,13 +114,13 @@ Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks
 
 * **Readme.MD:** Soubor Readme popisující použití poznámkových bloků.  
 
-## <a name="run-azure-notebooks"></a>Spustit Azure Notebooks
+## <a name="run-jupyter-notebooks"></a>Spuštění poznámkových bloků Jupyter
 
-Teď, když je projekt vytvořený, můžete spustit poznámkové bloky. 
+Teď, když je pracovní prostor vytvořený, můžete spustit poznámkové bloky. 
 
-1. Na stránce projektu vyberte **01-turbofan \_ regrese. ipynb**.
+1. Na stránce **Moje soubory** vyberte **01-turbofan \_ regrese. ipynb**.
 
-    ![Vyberte první Poznámkový blok, který chcete spustit.](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="Vyberte první Poznámkový blok, který chcete spustit. ":::
 
 1. Pokud je Poznámkový blok uvedený jako **nedůvěryhodný**, klikněte v pravém horním rohu poznámkového bloku na widget **nedůvěryhodná** . Až se dialogové okno objeví, vyberte **důvěřovat**.
 
@@ -162,11 +161,11 @@ Teď, když je projekt vytvořený, můžete spustit poznámkové bloky.
 
 Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte, zda bylo vytvořeno několik položek.
 
-1. Na stránce Azure Notebooks projektu vyberte možnost **Zobrazit skryté položky** tak, aby se zobrazily názvy položek začínající tečkou.
+1. Na kartě **Moje soubory** ve vašich poznámkových blocích Azure ml vyberte **aktualizovat**.
 
 1. Ověřte, že byly vytvořeny následující soubory:
 
-    | Soubor | Popis |
+    | Soubor | Description |
     | --- | --- |
     | ./aml_config/.AzureML/config.jsna | Konfigurační soubor, který se používá k vytvoření pracovní prostor Azure Machine Learning. |
     | ./aml_config/model_config.jsna | Konfigurační soubor, který budeme potřebovat k nasazení modelu v pracovním prostoru **turbofanDemo** Machine Learning v Azure. |
@@ -174,7 +173,7 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
 
-    | Prostředek Azure | Name (Název) |
+    | Prostředek Azure | Name |
     | --- | --- |
     | Pracovní prostor Machine Learning | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
@@ -194,7 +193,7 @@ Tento kurz je součástí sady, kde každý článek sestaví na práci, která 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme použili dva poznámkové bloky Jupyter běžící v Azure Notebooks k tomu, abyste mohli využít data ze zařízení turbofan ke školení zbývajícího času (RUL) klasifikátoru, k uložení klasifikátoru jako modelu, k vytvoření image kontejneru a k nasazení a otestování Image jako webové služby.
+V tomto článku jsme použili dva poznámkové bloky Jupyter běžící v Azure ML Studio k tomu, abyste mohli využít data ze zařízení turbofan ke školení zbývajícího životního (RUL) klasifikátoru, k uložení klasifikátoru jako modelu, k vytvoření image kontejneru a k nasazení a otestování Image jako webové služby.
 
 Pokračujte dalším článkem a vytvořte zařízení IoT Edge.
 

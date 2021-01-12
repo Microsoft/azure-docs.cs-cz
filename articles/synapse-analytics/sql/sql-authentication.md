@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462410"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119879"
 ---
 # <a name="sql-authentication"></a>Ověřování SQL
 
@@ -51,7 +51,7 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 - Může přidat nebo odebrat členy do `dbmanager` rolí a `loginmanager` .
 - Může zobrazit `sys.sql_logins` systémovou tabulku.
 
-## <a name="serverless-sql-pool"></a>[Bezserverový fond SQL](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[Fond SQL bez serveru](#tab/serverless)
 
 Chcete-li spravovat uživatele, kteří mají přístup k fondu SQL bez serveru, můžete použít následující pokyny.
 
@@ -111,7 +111,7 @@ Chcete-li vytvořit databázi, musí být uživatel uživatelem na základě př
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Přidejte nového uživatele do role databáze **dbmanager** v `master` nástroji pomocí procedury [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) (Všimněte si, že příkaz [ALTER role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) není v SQL zřízené) podporován. Ukázky příkazů:
+4. Přidejte nového uživatele do role databáze **dbmanager** v `master` nástroji pomocí procedury [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) (Všimněte si, že příkaz [ALTER role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) není v SQL zřízené) podporován. Ukázky příkazů:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ Druhou správní rolí je role správce přihlášení. Členové této role moh
 
 ## <a name="non-administrator-users"></a>Uživatelé bez oprávnění správce
 
-Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). 
+Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql). 
 
 Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku).  
 
@@ -191,7 +191,7 @@ Mezi databázové role patří například předdefinované role **db_owner**, *
 
 Pevná databázová role **db_datareader** například uděluje přístup pro čtení pro všechny tabulky v databázi, což je obvykle více, než je skutečně nezbytné. 
 
-Je mnohem lepší použít příkaz [Create role](https://msdn.microsoft.com/library/ms187936.aspx) k vytvoření vlastních uživatelských rolí definovaných uživatelem a pečlivě udělit každé roli minimální oprávnění potřebná pro potřeby podniku. Pokud je uživatel členem více rolí, všechna jejich oprávnění se agregují.
+Je mnohem lepší použít příkaz [Create role](/sql/t-sql/statements/create-role-transact-sql) k vytvoření vlastních uživatelských rolí definovaných uživatelem a pečlivě udělit každé roli minimální oprávnění potřebná pro potřeby podniku. Pokud je uživatel členem více rolí, všechna jejich oprávnění se agregují.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -199,7 +199,7 @@ Ve službě SQL Database je dostupných více než 100 oprávnění, která mů�
 
 Kvůli velkému počtu oprávnění a používání vnořených oprávnění může návrh vhodného systému oprávnění vyžadovat pečlivou studii, aby byla vaše databáze dobře chráněna. 
 
-Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) a prohlédněte si [plakát](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) s přehledem oprávnění.
+Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)](/sql/relational-databases/security/permissions-database-engine) a prohlédněte si [plakát](/sql/relational-databases/security/media/database-engine-permissions.png) s přehledem oprávnění.
 
 ### <a name="considerations-and-restrictions"></a>Důležité informace a omezení
 
@@ -236,5 +236,4 @@ Při správě přihlášení a uživatelů v SQL Database Vezměte v úvahu nás
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
- 
+Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable).

@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31014d336b5122251cf8be4a166520064776fce3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024023"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118162"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Osvědčené postupy načítání dat do vyhrazeného fondu SQL Azure synapse Analytics
 
@@ -145,5 +145,5 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o základu a navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for Azure synapse Analytics](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-- V rámci tohoto kurzu načítání [dat z úložiště objektů BLOB v Azure do služby Azure synapse Analytics použijte základnu](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- V rámci tohoto kurzu načítání [dat z úložiště objektů BLOB v Azure do služby Azure synapse Analytics použijte základnu](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

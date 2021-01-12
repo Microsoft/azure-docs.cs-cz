@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 962e0e734abd73f5a66f9b9ee6067155dd839e5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457978"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118281"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Použití ověřování Azure Active Directory pro ověřování pomocí synapse SQL
 
@@ -129,8 +129,7 @@ Pro objekty zabezpečení serveru Azure AD (přihlášení) se podporují násle
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled přístupu a řízení v synapse SQL najdete v tématu [synapse SQL Access Control](../sql/access-control.md).
+- Přehled přístupu a řízení v synapse SQL najdete v tématu [synapse SQL Access Control](../security/synapse-workspace-access-control-overview.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
- 

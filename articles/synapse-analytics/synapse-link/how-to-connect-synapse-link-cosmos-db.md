@@ -9,23 +9,23 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459025"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119828"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Připojení ke službě Azure synapse Link pro Azure Cosmos DB
+# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Připojení k Azure Synapse Linku pro Azure Cosmos DB
 
 Tento článek popisuje, jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics studia pomocí Azure synapse Link.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před připojením databáze Azure Cosmos DB k pracovnímu prostoru budete potřebovat:
 
-* Existující databáze Azure Cosmos DB nebo vytvořte nový účet pomocí postupu v části [rychlý Start: Správa účtu Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account).
-* Stávající pracovní prostor Azure synapse nebo vytvořte nový pracovní prostor podle kroků v části [rychlý Start: vytvoření pracovního prostoru synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
+* Existující databáze Azure Cosmos DB nebo vytvořte nový účet pomocí postupu v části [rychlý Start: Správa účtu Azure Cosmos DB](../../cosmos-db/how-to-manage-database-account.md).
+* Stávající pracovní prostor Azure synapse nebo vytvořte nový pracovní prostor podle kroků v části [rychlý Start: vytvoření pracovního prostoru synapse](../quickstart-create-workspace.md).
 
 > [!IMPORTANT]
 > Odkaz na službu Azure synapse pro Azure Cosmos DB je aktuálně podporován pro pracovní prostory, které nemají povolenou spravovanou virtuální síť.

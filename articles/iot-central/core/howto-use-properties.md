@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751423"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119080"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
-V tomto článku se dozvíte, jak používat vlastnosti zařízení, které jsou definované v šabloně zařízení v aplikaci Azure IoT Central.
+V této příručce se dozvíte, jak jako vývojář zařízení používat vlastnosti zařízení, které jsou definované v šabloně zařízení v aplikaci Azure IoT Central.
 
 Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například pomocí vlastnosti nahlásit cílovou teplotu, se kterou se snaží dosáhnout. Ve výchozím nastavení jsou vlastnosti zařízení ve IoT Central jen pro čtení. Zapisovatelné vlastnosti umožňují synchronizovat stav mezi vaším zařízením a aplikací Azure IoT Central.
 
@@ -32,10 +32,10 @@ Následující snímek obrazovky ukazuje definici vlastnosti v aplikaci Azure Io
 
 Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 
-| Pole           | Popis                                                                                                                                                                                                                        |
+| Pole           | Description                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Zobrazované jméno    | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích.                                                                                                                                                              |
-| Název            | Název vlastnosti Azure IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, v případě potřeby ale můžete zvolit vlastní hodnotu. Toto pole musí obsahovat alfanumerické znaky.                                                 |
+| Name            | Název vlastnosti Azure IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, v případě potřeby ale můžete zvolit vlastní hodnotu. Toto pole musí obsahovat alfanumerické znaky.  Kód zařízení používá tuto hodnotu **názvu** .           |
 | Typ schopnosti | Majetek.                                                                                                                                                                                                                          |
 | Sémantický typ   | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici.                                                                       |
 | Schéma          | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu.                                               |
@@ -45,7 +45,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 | Jednotka            | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg; C**.                                                                                                                                                              |
 | Zobrazit jednotku    | Zobrazovací jednotka pro použití na řídicích panelech a formulářích.                                                                                                                                                                                    |
 | Komentář         | Jakékoli komentáře k funkci vlastnosti.                                                                                                                                                                                        |
-| Popis     | Popis schopnosti vlastnosti.                                                                                                                                                                                          |
+| Description     | Popis schopnosti vlastnosti.                                                                                                                                                                                          |
 
 Vlastnosti lze také definovat v rozhraní v šabloně zařízení, jak je znázorněno zde:
 
@@ -160,7 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Tento článek používá Node.js pro jednoduchost. Úplné informace o příkladech aplikací pro zařízení najdete v tématu [Vytvoření a připojení klientské aplikace ke svému kurzu pro Azure IoT Central aplikace](tutorial-connect-device.md) .
+Tento článek používá Node.js pro jednoduchost. Další jazykové příklady najdete v kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](tutorial-connect-device.md) .
 
 Následující zobrazení v aplikaci Azure IoT Central zobrazuje vlastnosti, které vidíte. Zobrazení automaticky nastaví vlastnost **model zařízení** na _vlastnost zařízení jen pro čtení_.
 
@@ -210,7 +210,7 @@ Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné.
 * `av` je číslo verze odesílané do zařízení.
 * `ad` je popis řetězce možností.
 
-| Hodnota | Popisek | Popis |
+| Hodnota | Popisek | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202` nebo `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
