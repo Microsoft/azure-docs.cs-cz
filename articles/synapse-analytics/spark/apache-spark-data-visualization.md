@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450533"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121521"
 ---
 # <a name="visualize-data"></a>Vizualizace dat
 Azure synapse je integrovaná analytická služba, která zrychluje čas na přehledy napříč datovými sklady a systémy pro analýzy velkých objemů dat. Vizualizace dat je klíčovou komponentou, která dokáže získat přehled o vašich datech. Pomáhá lépe pochopit velká a malá data pro lidi. Usnadňuje to rozpoznávání vzorů, trendů a odlehlých hodnot ve skupinách dat. 
@@ -227,7 +227,7 @@ Nejaktuálnější informace o dostupných knihovnách a verzích najdete v [dok
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Připojení k Power BI pomocí Apache Spark & SQL na vyžádání
 Azure synapse Analytics se úzce integruje s Power BI, které umožňují datovým technikům vytvářet Analytická řešení.
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Sparku a SQL fondem bez serveru. Pomocí [sdíleného modelu metadat](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)můžete zadávat dotazy na Apache Spark tabulky pomocí SQL na vyžádání. Po dokončení můžete připojit koncový bod SQL na vyžádání a Power BI, abyste mohli snadno dotazovat synchronizované tabulky Spark.
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Sparku a SQL fondem bez serveru. Pomocí [sdíleného modelu metadat](../metadata/overview.md)můžete zadávat dotazy na Apache Spark tabulky pomocí SQL na vyžádání. Po dokončení můžete připojit koncový bod SQL na vyžádání a Power BI, abyste mohli snadno dotazovat synchronizované tabulky Spark.
 
 
 ## <a name="next-steps"></a>Další kroky

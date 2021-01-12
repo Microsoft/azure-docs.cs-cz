@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445779"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121698"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Co je Azure Synapse Analytics?
 
 Podniková analýza musí fungovat na velkém rozsahu libovolného druhu dat bez ohledu na to, jestli jsou hrubá, rafinovaná nebo vysoce popracovaná. To obvykle vyžaduje, aby podniky spolupracovaly s velkými objemy dat a technologie datových skladů do složitých datových kanálů, které pracují s daty v relačních úložištích a v datových lakůch. Tyto druhy řešení se obtížně sestavují, udržují a zabezpečují. Jejich složitost se doručí na to, co potřebují.
 
-**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy velkých objemů dat. Azure synapse spojuje nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané pro velké objemy dat a **kanály** pro integraci dat a ETL/ELT. **Synapse Studio** poskytuje jednotné prostředí pro správu, monitorování, kódování a zabezpečení. Synapse má rozsáhlou integraci s dalšími službami Azure, jako jsou **Power BI**, **CosmosDB** a **AzureML**.
+**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy velkých objemů dat. Azure synapse spojuje nejlepší technologie **SQL** , které se používají v podnikových datových skladech, technologie **Sparku** používané pro velké objemy dat, **kanály** pro integraci dat a ETL/ELT a rozsáhlou integraci s dalšími službami Azure, jako jsou **Power BI**, **CosmosDB** a **AzureML**.
 
 ## <a name="key-features--benefits"></a>Klíčové funkce & výhody
 
@@ -28,7 +28,7 @@ Podniková analýza musí fungovat na velkém rozsahu libovolného druhu dat bez
 
 * **Synapse SQL** je distribuovaný systém dotazů, který umožňuje podnikům implementovat scénáře datových skladů a virtualizace dat pomocí standardních a známých prostředí T-SQL. Rozšiřuje také možnosti scénářů SQL pro řešení streamování a strojového učení.
 
-* Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků, které nabízejí možnosti spotřeby a fakturace podle vašich potřeb. Pro předvídatelný výkon a náklady Vytvořte vyhrazené fondy SQL pro rezervaci výkonu pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
+* Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků, které nabízejí možnosti spotřeby a fakturace podle vašich potřeb. Pokud potřebujete předvídatelný výkon a náklady, vytvoříte vyhrazené fondy SQL, kterými si rezervujete výkon pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
 * Použití integrovaných funkcí **streamování** k obstání dat z cloudových zdrojů dat do tabulek SQL
 * Integrujte AI s SQL pomocí modelů **strojového učení** pro stanovení skóre dat pomocí [funkce prediktivního jazyka T-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) .
 
@@ -80,6 +80,6 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s Azure synapse Analytics](get-started.md)
+* [Začínáme s Azure Synapse Analytics](get-started.md)
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 * [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458762"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121545"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Analýza dat pomocí Apache Spark
 
@@ -25,7 +25,7 @@ Konkrétně analyzujeme datovou sadu [taxislužby v New York City (NYC)](https:/
 - Pomocí [kurzu Vytvoření fondu Apache Spark](../articles/../quickstart-create-apache-spark-pool-studio.md) vytvořte fond Apache Spark. 
 
 ## <a name="download-and-prepare-the-data"></a>Stažení a Příprava dat
-1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook). 
+1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](../quickstart-apache-spark-notebook.md#create-a-notebook). 
    
 > [!Note]
 > 
@@ -180,5 +180,5 @@ Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/)
