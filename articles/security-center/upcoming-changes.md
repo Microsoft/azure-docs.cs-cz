@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 071f1974e09d2754fe20f3ac2cc90929c4a2eb98
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915282"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180212"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,8 +31,23 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
+- [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - ["Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>Vylepšení doporučení klasifikace dat SQL
+
+**Odhadované datum změny:** Q2 2021
+
+Aktuální verze **citlivých dat v databázích SQL by měla být klasifikována** v části použití řízení zabezpečení **klasifikace dat** se bude zařazovat a nahrazena novou verzí, která je lépe zarovnaná s strategií klasifikace dat společnosti Microsoft. Výsledek:
+
+- Doporučení už nebude mít vliv na vaše zabezpečené skóre.
+- Řízení zabezpečení (použití klasifikace dat) už nebude mít vliv na vaše zabezpečené skóre.
+- Změní se také ID doporučení (aktuálně se b0df6f56-862d-4730-8597-38c0fd4ebd59).
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nepoužitelné" prostředky, které se mají ohlásit jako "vyhovující" v Azure Policy posouzení
 

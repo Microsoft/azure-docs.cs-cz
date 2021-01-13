@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 009b060cc479c520dde8c4f595b24be7dcb4c6a6
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347757"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180009"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Odesílání zpráv do a příjem zpráv z Azure Service Busch front (JavaScript)
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání a přijímání zpráv z fronty Service Bus.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) . Poznamenejte si **připojovací řetězec** pro obor názvů Service Bus a název **fronty** , kterou jste vytvořili.
 
@@ -74,7 +74,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
             // create a batch object
             let batch = await sender.createMessageBatch(); 
             for (let i = 0; i < messages.length; i++) {
-                // for each message in the arry         
+                // for each message in the array            
     
                 // try to add the message to the batch
                 if (!batch.tryAddMessage(messages[i])) {            
@@ -83,7 +83,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
                     await sender.sendMessages(batch);
     
                     // then, create a new batch 
-                    batch = await sender.createBatch();
+                    batch = await sender.createMessageBatch();
      
                     // now, add the message failed to be added to the previous batch to this batch
                     if (!batch.tryAddMessage(messages[i])) {
@@ -118,7 +118,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
     ```console
     node send.js 
     ```
-1. Měli byste vidět následující výstup.
+1. Měl by se zobrazit následující výstup.
 
     ```console
     Sent a batch of messages to the queue: myqueue
@@ -180,7 +180,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
     ```console
     node receive.js
     ```
-1. Měli byste vidět následující výstup.
+1. Měl by se zobrazit následující výstup.
 
     ```console
     Received message: Albert Einstein

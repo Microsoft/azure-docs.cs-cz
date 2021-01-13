@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 09/11/2020
+ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605254"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180196"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
 
@@ -24,7 +24,7 @@ Začněte s [akcemi GitHubu](https://docs.github.com/en/free-pro-team@latest/act
 > Pokud používáte službu [Azure Static Web Apps](../../static-web-apps/index.yml), nemusíte ručně nastavit pracovní postup akcí GitHubu.
 > Statická Web Apps Azure pro vás automaticky vytvoří pracovní postup akcí GitHubu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure a účet GitHubu. 
 
@@ -90,10 +90,10 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
     name: CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
     ```
 
 1. Přejmenujte pracovní postup `Blob storage website CI` a přidejte akce rezervace a přihlášení. Tyto akce vyřadí kód lokality a ověří ho pomocí Azure pomocí `AZURE_CREDENTIALS` tajného klíče GitHubu, který jste vytvořili dříve. 
@@ -102,10 +102,10 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
     name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
       build:
@@ -114,21 +114,21 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
         - uses: actions/checkout@v2
         - uses: azure/login@v1
           with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
 1. Použijte akci Azure CLI a nahrajte svůj kód do úložiště objektů BLOB a vyprázdnit koncový bod CDN. V případě `az storage blob upload-batch` nahraďte zástupný text názvem svého účtu úložiště. Skript se nahraje do `$web` kontejneru. V případě `az cdn endpoint purge` Nahraďte zástupné symboly názvem vašeho profilu CDN, názvem koncového bodu CDN a skupinou prostředků.
 
     ```yaml
         - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
         - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
@@ -137,36 +137,37 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 1. Dokončete pracovní postup přidáním akce k odhlášení Azure. Toto je dokončený pracovní postup. Soubor se zobrazí ve `.github/workflows` složce vašeho úložiště.
 
     ```yaml
-   name: Blob storage website CI
+    name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
-    build:
+      build:
         runs-on: ubuntu-latest
-        steps:
+        steps:            
         - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - uses: azure/login@v1
+          with:
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Upload to blob storage
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - name: Purge CDN endpoint
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
-            # Azure logout 
+      
+      # Azure logout 
         - name: logout
           run: |
                 az logout

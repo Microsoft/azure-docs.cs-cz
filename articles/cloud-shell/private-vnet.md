@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468534"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179193"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Nasazení Cloud Shell do služby Azure Virtual Network
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
 
 Pravidelná Cloud Shell relace běží v kontejneru v síti Microsoftu oddělené od vašich prostředků. To znamená, že příkazy běžící uvnitř kontejneru nemají přístup k prostředkům, ke kterým lze přistupovat pouze z konkrétní virtuální sítě. Nemůžete třeba použít SSH k připojení z Cloud Shell k virtuálnímu počítači, který má jenom soukromou IP adresu, nebo použijte kubectl pro připojení ke clusteru Kubernetes, který má zamčený přístup. 
 
@@ -64,7 +62,7 @@ Stejně jako ve standardních Cloud Shell se při použití Cloud Shell ve virtu
 ## <a name="virtual-network-deployment-limitations"></a>Omezení nasazení virtuální sítě
 * Vzhledem k dalším zapojení síťových prostředků je spuštění Cloud Shell ve virtuální síti obvykle pomalejší než standardní relace Cloud Shell.
 
-* V rámci verze Preview se pro Cloud Shell ve virtuální síti podporuje méně oblastí. V současné době je to omezeno na: WestUS a WestCentralUS.
+* Všechny Cloud Shell oblasti od Střed Indie jsou aktuálně podporovány. 
 
 * [Azure Relay](../azure-relay/relay-what-is-it.md) není bezplatná služba, podívejte se prosím na jejich [ceny](https://azure.microsoft.com/pricing/details/service-bus/). Ve scénáři Cloud Shell se jedno hybridní připojení používá pro každého správce, zatímco používají Cloud Shell. Po dokončení relace Cloud Shell bude připojení automaticky ukončeno.
 

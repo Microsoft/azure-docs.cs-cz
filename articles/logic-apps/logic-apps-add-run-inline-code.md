@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922502"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179601"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidat a spustit fragmenty kódu pomocí vloženého kódu v Azure Logic Apps
 
@@ -31,13 +31,13 @@ Pokud chcete v aplikaci logiky spustit část kódu, můžete do pracovního pos
   > [!NOTE]
   > `require()`Funkce není podporována vloženou akcí kódu pro spuštění JavaScriptu.
 
-Tato akce spustí fragment kódu a vrátí výstup z tohoto fragmentu kódu jako token s názvem `Result` . Pomocí tohoto tokenu můžete v pracovním postupu aplikace logiky použít následující akce. Pro jiné scénáře, kde chcete vytvořit funkci pro svůj kód, zkuste [místo toho vytvořit a zavolat funkci Azure Functions](../logic-apps/logic-apps-azure-functions.md) ve vaší aplikaci logiky.
+Tato akce spustí fragment kódu a vrátí výstup z tohoto fragmentu kódu jako token s názvem `Result` . Pomocí tohoto tokenu můžete v pracovním postupu aplikace logiky použít následující akce. Pro jiné scénáře, kde chcete vytvořit funkci pro váš kód, zkuste vytvořit [a volat funkci prostřednictvím Azure Functions místo toho](../logic-apps/logic-apps-azure-functions.md) v aplikaci logiky.
 
 V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e-mailu v pracovním nebo školním účtu. Fragment kódu extrahuje a vrátí všechny e-mailové adresy, které se zobrazí v těle e-mailu.
 
 ![Snímek obrazovky, který ukazuje ukázkovou aplikaci logiky](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -147,7 +147,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
 Tato tabulka obsahuje další informace o těchto podvlastnostech:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |----------|------|-------|
 | `actions` | Kolekce objektů | Objekty výsledků z akcí, které se spustí před spuštěním fragmentu kódu. Každý objekt má dvojici *klíč-hodnota* , kde klíč je název akce a hodnota je ekvivalentní volání [funkce Actions ()](../logic-apps/workflow-definition-language-functions-reference.md#actions) s `@actions('<action-name>')` . Název akce používá stejný název akce, který se používá v příslušné definici pracovního postupu, která nahradí mezery ("") v názvu akce podtržítkem (_). Tento objekt poskytuje přístup k hodnotám vlastností akce z aktuálního běhu instance pracovního postupu. |
 | `trigger` | Objekt | Výsledný objekt z triggeru a ekvivalentní volání [funkce Trigger ()](../logic-apps/workflow-definition-language-functions-reference.md#trigger). Tento objekt poskytuje přístup k aktivačním hodnotám vlastností z aktuálního běhu instance pracovního postupu. |

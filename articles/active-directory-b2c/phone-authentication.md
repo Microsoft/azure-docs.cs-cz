@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953572"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178938"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
 
@@ -39,7 +39,7 @@ Když se přihlásíte a přihlásíte telefon, uživatel se může přihlásit 
 >
 > *&lt;Vložit: odkaz na vaše prohlášení o zásadách ochrany osobních údajů&gt;*<br/>*&lt;vložení: odkaz na vaše podmínek služby&gt;*
 
-Pokud chcete přidat vlastní informace o souhlasu, přizpůsobte si následující ukázku a zahrňte ji do LocalizedResources pro ContentDefinition, který používá samoobslužná stránka, s ovládacím prvkem zobrazení (soubor Phone-Email-Base.xml v registračním programu Starter & pro přihlášení k telefonní sadě):
+Pokud chcete přidat vlastní informace o souhlasu, přizpůsobte si následující ukázku a zahrňte ji do LocalizedResources pro ContentDefinition, který používá samoobslužná Stránka s ovládacím prvkem zobrazení (soubor *Phone_Email_Base.xml* v [registračním programu a v úvodní][starter-pack-phone]sadě pro přihlášení k telefonu):
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
@@ -144,7 +144,7 @@ Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uži
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Například:
+Příklad:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')

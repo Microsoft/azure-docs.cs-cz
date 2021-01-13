@@ -13,16 +13,16 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07303a0b0b3007ade9adb90af7397855a5014cc0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056077"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179418"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování
 
->[!Important]
+> [!Important]
 >Správce vám možná neumožní používat hesla aplikací. Pokud nevidíte jako možnost **hesla aplikací** , nejsou ve vaší organizaci k dispozici.
 
 Při používání hesel aplikací je důležité pamatovat:
@@ -66,7 +66,7 @@ Hesla aplikací můžete vytvořit a odstranit na stránce **Další ověření 
 
 4. Na stránce **hesla aplikací** se ujistěte, že je vaše aplikace uvedená.
 
-     ![Stránka hesla aplikací s novou aplikací zobrazenou v seznamu](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Stránka hesla aplikací s novou aplikací zobrazenou v seznamu](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
 5. Otevřete aplikaci, pro kterou jste vytvořili heslo aplikace (třeba Outlook 2010), a po zobrazení výzvy vložte heslo aplikace. Tento postup byste měli udělat jenom jednou pro každou aplikaci.
 
@@ -74,7 +74,7 @@ Hesla aplikací můžete vytvořit a odstranit na stránce **Další ověření 
 
 1. Na stránce **hesla aplikací** vyberte **Odstranit** vedle hesla aplikace, které chcete odstranit.
 
-   ![Odstranění hesla aplikace](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Snímek obrazovky, který ukazuje odstranění hesla aplikace na stránce hesla aplikací](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
 2. Výběrem **Ano** potvrďte, že chcete heslo odstranit, a pak vyberte **Zavřít**.
 
@@ -86,35 +86,35 @@ Pokud ke svému pracovnímu nebo školnímu účtu a vašim Microsoft 365m aplik
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Vytvoření hesel aplikací pomocí portálu Office 365
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu, otevřete [stránku Můj účet](https://portal.office.com), vyberte **zabezpečení & ochrany osobních údajů**a potom rozbalte **Další ověření zabezpečení**.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu, na [stránce Můj účet](https://myaccount.microsoft.com)a vyberte **informace o zabezpečení**.
 
-    ![Portál Office, který ukazuje rozšířenou další oblast ověření zabezpečení](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+    ![Portál Office zobrazující kartu informace o zabezpečení](media/multi-factor-authentication-end-user-app-passwords/mfa-security-info.png)
 
-2. Vyberte text, který říká, jak **vytvořit a spravovat hesla aplikací** a otevřete stránku **hesla aplikací** .
+2. Vyberte **Přidat metodu**, v rozevíracím seznamu zvolte **heslo aplikace** a pak klikněte na **Přidat**.
 
-    ![Stránka hesla aplikací – zvýrazněná karta hesla aplikace](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+    ![Stránka informace o zabezpečení se seznamem přidat metodu drowpdown](media/multi-factor-authentication-end-user-app-passwords/mfa-add-method.png)
 
-3. Vyberte **vytvořit**, zadejte název aplikace, která vyžaduje heslo aplikace, a pak vyberte **Další**.
+3. Zadejte název hesla aplikace a pak vyberte **Další**.
 
-    ![Stránka vytvořit hesla aplikací s názvem aplikace, která potřebuje heslo](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+    ![Stránka pro vytvoření hesel aplikací s názvem hesla aplikace](media/multi-factor-authentication-end-user-app-passwords/mfa-enter-app-password-name.png)
 
-4. Zkopírujte heslo na stránce **heslo aplikace** a pak vyberte **Zavřít**.
+4. Zkopírujte heslo na stránce **heslo aplikace** a potom vyberte **Hotovo**.
 
-    ![Stránka hesla aplikace s heslem pro zadanou aplikaci](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+    ![Stránka heslo aplikace s nově vytvořeným heslem aplikace](media/multi-factor-authentication-end-user-app-passwords/mfa-copy-app-password.png)
 
-5. Na stránce **hesla aplikací** se ujistěte, že je vaše aplikace uvedená.
+5. Na stránce **bezpečnostní údaje** se ujistěte, že je uvedené heslo aplikace.
 
-     ![Stránka hesla aplikací s novou aplikací zobrazenou v seznamu](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Stránka informace o zabezpečení s novým heslem aplikace zobrazeným v seznamu](media/multi-factor-authentication-end-user-app-passwords/mfa-verify-app-password.png)  
 
-6. Otevřete aplikaci, pro kterou jste vytvořili heslo aplikace (třeba Outlook 2010), a po zobrazení výzvy vložte heslo aplikace. Tento postup byste měli udělat jenom jednou pro každou aplikaci.
+6. Otevřete aplikaci, pro kterou jste vytvořili heslo aplikace (třeba Outlook 2016), a po zobrazení výzvy vložte heslo aplikace. Tento postup byste měli udělat jenom jednou pro každou aplikaci.
 
-### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>Odstranění hesel aplikací pomocí stránky hesla aplikace
+### <a name="to-delete-app-passwords-using-the-security-info-page"></a>Odstranění hesel aplikací pomocí stránky informace o zabezpečení
 
-1. Na stránce **hesla aplikací** vyberte **Odstranit** vedle hesla aplikace, které chcete odstranit.
+1. Na stránce **bezpečnostní údaje** vyberte **Odstranit** vedle hesla aplikace, které chcete odstranit.
 
-   ![Odstranění hesla aplikace](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Snímek obrazovky, který ukazuje odstranění hesla aplikace na stránce informace o zabezpečení](media/multi-factor-authentication-end-user-app-passwords/mfa-delete-app-password.png)
 
-2. V potvrzovacím poli vyberte **Ano** a pak vyberte **Zavřít**.
+2. V potvrzovacím poli vyberte **OK** .
 
     Heslo aplikace se úspěšně odstranilo.
 

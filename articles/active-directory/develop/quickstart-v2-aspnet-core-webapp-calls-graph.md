@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 349caa9a4fa34d87e0a4d99089a1063be66307f4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017557"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178683"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Rychlý Start: ASP.NET Core webovou aplikaci, která podepisuje uživatele a volá Microsoft Graph jejich jménem
 
@@ -38,7 +38,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na [Registrace aplikací Azure Portal](https://aka.ms/aspnetcore-webapp-calls-graph-quickstart-v2).
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetCoreWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -52,10 +52,10 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 > 1. Zadejte **název** vaší aplikace, například `AspNetCoreWebAppCallsGraph-Quickstart` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
-> 1. Zadejte **identifikátor URI přesměrování** . `https://localhost:44321/signin-oidc`
+> 1. Zadejte **identifikátor URI přesměrování** `https://localhost:44321/signin-oidc` .
 > 1. Vyberte **Zaregistrovat**.
 > 1. V části **Spravovat** vyberte **ověřování**.
-> 1. Zadejte **adresu URL pro odhlášení** . `https://localhost:44321/signout-oidc`
+> 1. Zadejte **adresu URL pro odhlášení** `https://localhost:44321/signout-oidc` .
 > 1. Vyberte **Uložit**.
 > 1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.
 > 1. Zadejte **Popis**, například `clientsecret1` .
@@ -168,7 +168,7 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 Řádek, který obsahuje, `.AddMicrosoftIdentityWebApp` přidá do vaší aplikace ověřování platformy Microsoft Identity Platform. K tomu poskytuje [Microsoft. identity. Web](microsoft-identity-web.md). Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
-| *appsettings.jsna* klíč | Popis                                                                                                                                                          |
+| *appsettings.jsna* klíč | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **ID aplikace (klienta)** aplikace zaregistrované v Azure Portal.                                                                                       |
 | `Instance`             | Koncový bod služby tokenu zabezpečení (STS) pro ověření uživatele. Tato hodnota se obvykle `https://login.microsoftonline.com/` označuje jako veřejný cloud Azure. |

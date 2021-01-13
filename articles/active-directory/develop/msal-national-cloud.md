@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064789"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178615"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -70,19 +70,21 @@ Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.us/).
+1. Přihlaste se <a href="https://portal.azure.us/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. Přejít na stránku [Registrace aplikací](https://aka.ms/ra/ff) na platformě Microsoft identity pro vývojáře.
-1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
+1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na adresu URL aplikace na základě vašeho webového serveru. V dalších částech najdete pokyny, jak nastavit a získat adresu URL pro přesměrování v sadě Visual Studio a uzlu.
 1. Vyberte **Zaregistrovat**.
-1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
-1. Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). V levém podokně registrované aplikace vyberte **ověřování**.
-1. V části **Upřesnit nastavení** v části **implicitní udělení** vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
+1. Na stránce **Přehled** si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+    Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). 
+1. V části **Spravovat** vyberte **ověřování**.
+1. V části **implicitní udělení** vyberte možnost **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
 1. Vyberte **Uložit**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2: nastavení webového serveru nebo projektu

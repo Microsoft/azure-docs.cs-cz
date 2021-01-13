@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132473"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179159"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů BLOB
 
@@ -35,7 +35,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 | Zapnout obnovitelné odstranění pro kontejnery | Obnovitelné odstranění kontejnerů umožňuje obnovení kontejneru po jeho odstranění. Další informace o obnovitelném odstranění kontejnerů najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](./soft-delete-container-overview.md). | - |
 | Uzamknout účet úložiště pro zabránění nechtěnému odstranění účtu | Můžete uzamknout Azure Resource Manager prostředky, jako je například předplatné, skupina prostředků nebo účet úložiště, aby ostatní uživatelé ve vaší organizaci nemohli omylem odstranit nebo upravit. Uzamykání účtu úložiště nebrání v odstranění dat z tohoto účtu. Zabrání jenom tomu, aby se účet odstranil. Další informace najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 | Ukládání důležitých podnikových dat v neměnných objektech blob | Nakonfigurujte právní zásady uchovávání informací na základě času a uložte data objektů BLOB ve stavu ČERVa (zápis jednou, číst mnoho). Objekty blob uložené v immutably se dají přečíst, ale po dobu trvání intervalu uchování se nedají upravit ani odstranit. Další informace najdete v tématu [ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md). | - |
-| Vyžadovat zabezpečený přenos (HTTPS) do účtu úložiště | ??? | - |
+| Vyžadovat zabezpečený přenos (HTTPS) do účtu úložiště | Pokud pro účet úložiště požadujete zabezpečený přenos, musí být všechny požadavky na účet úložiště provedeny přes protokol HTTPS. Všechny požadavky vytvořené přes protokol HTTP jsou odmítnuty. Microsoft doporučuje, abyste vždycky vyžadovali zabezpečený přenos pro všechny vaše účty úložiště. Další informace najdete v tématu [vyžadování zabezpečeného přenosu pro zajištění zabezpečených připojení](../common/storage-require-secure-transfer.md). | - |
 | Omezení tokenů sdíleného přístupového podpisu (SAS) pouze na připojení HTTPS | Vyžadování protokolu HTTPS v případě, že klient používá token SAS pro přístup k datům objektu blob, pomáhá minimalizovat riziko odposlouchávání. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu

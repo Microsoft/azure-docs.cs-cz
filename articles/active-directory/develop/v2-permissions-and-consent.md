@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355694"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178122"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -166,10 +166,11 @@ Aplikace jsou schopné poznamenat, jaká oprávnění vyžadují (delegované i 
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Konfigurace seznamu staticky vyžádaného oprávnění pro aplikaci
 
-1. Pokud jste to ještě neudělali, můžete přejít do aplikace v prostředí [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) nebo [vytvořit aplikaci](quickstart-register-app.md) .
-2. Vyhledejte část **oprávnění rozhraní API** a v rámci oprávnění API klikněte na Přidat oprávnění.
-3. V seznamu dostupných rozhraní API vyberte **Microsoft Graph** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
-3. **Uložte** registraci aplikace.
+1. V prostředí rychlý Start pro <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a> můžete přejít do své aplikace.
+1. Vyberte aplikaci, nebo pokud jste to ještě neudělali, [vytvořte aplikaci](quickstart-register-app.md) .
+1. Na stránce **Přehled** aplikace v části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
+1. V seznamu dostupných rozhraní API vyberte **Microsoft Graph** a pak přidejte oprávnění, která vaše aplikace vyžaduje.
+1. Vyberte **Přidat oprávnění**.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Doporučeno: podepsat uživatele do aplikace
 

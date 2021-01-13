@@ -1,15 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-ms.date: 01/11/2021
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071047"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179890"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -64,6 +64,10 @@ Výše uvedené příklady pravidel výstrah lze také zobrazit v Azure Portal v
 Po určité době se využití "myVM" vrátí zpět na normální (pod prahovou hodnotou). Pravidlo výstrahy sleduje podmínku ještě dvakrát, aby bylo možné odeslat vyřešené oznámení. Pravidlo výstrahy pošle přeloženou nebo deaktivovanou zprávu, pokud se podmínka výstrahy nesplní po dobu tří po sobě jdoucích období, aby se snížila hlučnost v případě přepíná podmínek.
 
 Jak se vyřešené oznámení odesílá prostřednictvím webových hooků nebo e-mailu, je stav instance výstrahy (nazývaný stav monitorování) v Azure Portal také nastaven na hodnotu Vyřešeno.
+
+> [!NOTE]
+>
+> Když pravidlo výstrahy monitoruje více podmínek, bude vyřešena výstraha, pokud alespoň jedna z podmínek nebude splněna po dobu tří po sobě jdoucích teček.
 
 ### <a name="using-dimensions"></a>Použití dimenzí
 

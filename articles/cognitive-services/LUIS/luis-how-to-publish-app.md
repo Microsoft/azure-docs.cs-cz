@@ -3,18 +3,20 @@ title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu.
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541471"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180026"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
@@ -44,7 +46,7 @@ Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných k
 
 Aplikace se publikuje do všech oblastí přidružených k prostředkům koncového bodu předpovědi Luis přidaným na portálu Luis ze stránky **Správa**  ->  **[prostředků Azure](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** .
 
-Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
+Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus** a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
 
 > [!TIP]
 > Existují tři oblasti vytváření obsahu. Musíte vytvořit oblast, do které chcete publikovat. Pokud potřebujete publikovat ve všech oblastech, je nutné spravovat proces vytváření obsahu a výsledný model vyškolený ve všech třech oblastech vytváření obsahu.
@@ -55,7 +57,7 @@ Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
 * Analýza mínění
-* [Oprava pravopisu](luis-tutorial-bing-spellcheck.md) – pouze koncový bod verze V2 – předpověď
+* [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)
 * Neprojevení řeči
 
 Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správa** **Nastavení publikování** oddílu. Nastavení můžete změnit při každém publikování. Pokud zrušíte publikování, všechny změny, které jste provedli během publikování, se také zruší.
@@ -80,7 +82,32 @@ Další informace o odpovědích koncových bodů JSON s analýzou mínění naj
 
 ## <a name="spelling-correction"></a>Oprava pravopisu
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+Prediktivní rozhraní API V3 teď podporuje rozhraní API pro kontrolu pravopisu Bingu. Do své aplikace můžete přidat kontrolu pravopisu, a to tak, že do hlavičky vašich požadavků přidáte klíč do svého prostředku vyhledávání Bingu. Můžete použít existující prostředek Bingu, pokud už vlastníte, nebo [vytvořit nový](https://portal.azure.com/#create/Microsoft.BingSearch) , abyste mohli tuto funkci používat. 
+
+|Klíč záhlaví|Hodnota hlavičky|
+|--|--|
+|`mkt-bing-spell-check-key`|Klíče nalezené v okně **klíče a koncový bod** vašeho prostředku|
+
+Příklad výstupu předpovědi pro nesprávně napsaný dotaz:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 Opravy pro kontrolu pravopisu se provádí před předvídáním LUIS uživatele utterance. V odpovědi můžete zobrazit všechny změny v původních utterance, včetně pravopisu.
 

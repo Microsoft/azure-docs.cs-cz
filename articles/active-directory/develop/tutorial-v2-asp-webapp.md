@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013647"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178241"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -187,7 +187,7 @@ Pokud chcete vytvořit nový kontroler pro vystavování metod přihlášení a 
 
 1.  Klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC (verze .NET) – prázdný**.
-3.  Vyberte **Přidat**.
+3.  Vyberte **Add** (Přidat).
 4.  Pojmenujte ji **HomeController** a pak vyberte **Přidat**.
 5.  Přidat odkazy OWIN do třídy:
 
@@ -279,7 +279,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
 
 1.  Klikněte pravým tlačítkem na složku **Controllers** a pak vyberte **Přidat**  >  **kontroler**.
 2.  Vyberte **Kontroler MVC {version} – prázdný**.
-3.  Vyberte **Přidat**.
+3.  Vyberte **Add** (Přidat).
 4.  Pojmenujte ho **ClaimsController**.
 5.  Nahraďte kód třídy kontroleru následujícím kódem. Tím se `[Authorize]` do třídy přidá atribut:
 
@@ -361,7 +361,7 @@ K registraci aplikace a přidání informací o registraci vaší aplikace do va
 
 K rychlé registraci aplikace použijte následující postup:
 
-1. Přejít na nové podokno  [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
+1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a>  
 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jediným kliknutím.
 

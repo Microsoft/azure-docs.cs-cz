@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o tom, jak můžete pomocí Azur
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f39019dc092740c166798a7f85d5bdba686adbf4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000177"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179958"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metriky v Azure Monitor 
 Azure Relay metriky poskytují stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav svých prostředků přenosu, nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Azure Relay. Metriky taky můžou pomoct řešit problémy s hlavními příčinami, aniž byste museli kontaktovat podporu Azure.
@@ -31,7 +31,7 @@ Metriky můžete monitorovat v průběhu času v [Azure Portal](https://portal.a
 
 ![Stránka s názvem monitor – metriky (Preview) zobrazuje spojnicový graf využití paměti za posledních 30 dní.][1]
 
-Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a potom kliknete na * * metriky * *. 
+Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a kliknete na **metriky**. 
 
 Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodnoty dimenze.
 

@@ -4,13 +4,13 @@ description: Tento článek se pravidelně aktualizuje o novinky o Language Unde
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916350"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179125"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
@@ -18,10 +18,14 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="january-2021"></a>Leden 2021
+
+* Prediktivní rozhraní API V3 teď podporuje [rozhraní API pro kontrolu pravopisu Bingu](luis-how-to-publish-app.md#spelling-correction).
+
 ### <a name="december-2020"></a>Prosinec 2020
 
 * Všichni LUIS uživatelé se musí [migrovat na prostředek pro vytváření Luis](luis-migration-authoring.md) .
-* Nové [koncové body hodnocení](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , které umožňují odesílat dávkové testy usting REST API a získat výsledky přesnosti pro své záměry a entity. K dispozici počínaje koncovým bodem verze 3.0-Preview LUIS.
+* Nové [koncové body hodnocení](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , které umožňují odesílat dávkové testy pomocí REST API a získat výsledky přesnosti pro vaše záměry a entity. K dispozici počínaje koncovým bodem verze 3.0-Preview LUIS.
 
 ### <a name="june-2020"></a>Červen 2020
 

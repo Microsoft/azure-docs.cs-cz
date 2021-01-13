@@ -2,13 +2,13 @@
 title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807635"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178955"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Nasazení klientů pomocí šablon ARM
 
@@ -145,7 +145,8 @@ Při nasazování do tenanta můžete prostředky nasadit do:
 * skupiny pro správu v rámci tenanta
 * odběru
 * skupinám prostředků
-* [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
+
+[Prostředek rozšíření](scope-extension-resources.md) může být vymezen na cíl, který se liší od cíle nasazení.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
 

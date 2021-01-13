@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498689"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179992"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Rychlý Start: Service Bus témata a předplatná pomocí Node.js a balíčku Azure/Service-Bus verze Preview
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání zpráv do Service Busho tématu a přijímání zpráv z Service Bus předplatného do tohoto tématu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md). Poznamenejte si připojovací řetězec, název tématu a název předplatného. Pro tento rychlý Start budete používat jenom jedno předplatné. 
 
@@ -80,7 +80,7 @@ Následující vzorový kód ukazuje, jak odeslat dávku zpráv do Service Bus t
                     await sender.sendMessages(batch);
     
                     // then, create a new batch 
-                    batch = await sender.createBatch();
+                    batch = await sender.createMessageBatch();
      
                     // now, add the message failed to be added to the previous batch to this batch
                     if (!batch.tryAddMessage(messages[i])) {
@@ -115,7 +115,7 @@ Následující vzorový kód ukazuje, jak odeslat dávku zpráv do Service Bus t
     ```console
     node sendtotopic.js 
     ```
-1. Měli byste vidět následující výstup.
+1. Měl by se zobrazit následující výstup.
 
     ```console
     Sent a batch of messages to the topic: mytopic
@@ -176,7 +176,7 @@ Následující vzorový kód ukazuje, jak odeslat dávku zpráv do Service Bus t
     ```console
     node receivefromsubscription.js
     ```
-1. Měli byste vidět následující výstup.
+1. Měl by se zobrazit následující výstup.
 
     ```console
     Received message: Albert Einstein

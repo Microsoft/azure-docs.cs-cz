@@ -2,21 +2,24 @@
 title: Obor u typů prostředků rozšíření
 description: Popisuje, jak použít vlastnost Scope při nasazování typů prostředků rozšíření.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681479"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179975"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Nastavení oboru pro prostředky rozšíření v šablonách ARM
 
-Prostředek rozšíření je prostředek, který upravuje jiný prostředek. Můžete například přiřadit roli prostředku a omezit tak přístup. Přiřazení role je typ prostředku rozšíření.
+Prostředek rozšíření je prostředek, který upravuje jiný prostředek. Například můžete přiřadit roli k prostředku. Přiřazení role je typ prostředku rozšíření.
 
 Úplný seznam typů prostředků rozšíření najdete v tématu [typy prostředků, které rozšiřuje možnosti jiných prostředků](../management/extension-resource-types.md).
 
 Tento článek popisuje, jak nastavit obor pro typ prostředku rozšíření při nasazení pomocí šablony Azure Resource Manager (šablona ARM). Popisuje vlastnost oboru, která je k dispozici pro prostředky rozšíření při použití na prostředek.
+
+> [!NOTE]
+> Vlastnost oboru je dostupná pouze pro typy prostředků rozšíření. Chcete-li zadat jiný obor pro typ prostředku, který není typem rozšíření, použijte vnořené nebo propojené nasazení. Další informace najdete v tématech [nasazení skupin prostředků](deploy-to-resource-group.md), [nasazení předplatných](deploy-to-subscription.md), [nasazení skupin pro správu](deploy-to-management-group.md)a [nasazení klientů](deploy-to-tenant.md).
 
 ## <a name="apply-at-deployment-scope"></a>Použít v oboru nasazení
 

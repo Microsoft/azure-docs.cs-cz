@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483279"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179027"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Klíče spravované zákazníkem pro šifrování Azure Storage
 
@@ -78,7 +78,7 @@ Když konfigurujete šifrování s použitím klíčů spravovaných zákazníke
 
     Pokud je verze klíče explicitně zadaná, musíte ručně aktualizovat účet úložiště, aby při vytvoření nové verze používal nový identifikátor URI verze klíče. Informace o tom, jak aktualizovat účet úložiště pro použití nové verze klíče, najdete v tématu [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault](customer-managed-keys-configure-key-vault.md) nebo [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault Managed HSM (Preview)](customer-managed-keys-configure-key-vault-hsm.md).
 
-Aktualizace verze klíče pro klíč spravovaný zákazníkem neaktivuje opětovné šifrování dat v účtu úložiště. Od uživatele není vyžadována žádná další akce.
+Když aktualizujete verzi klíče, změní se ochrana kořenového šifrovacího klíče, ale data v Azure Storagem účtu se znovu nešifrují. Od uživatele není vyžadována žádná další akce.
 
 > [!NOTE]
 > Pokud chcete otočit klíč, vytvořte novou verzi klíče v trezoru klíčů nebo spravovaném HSM podle vašich zásad dodržování předpisů. Svůj klíč můžete otočit ručně nebo vytvořit funkci, která ho otočí podle plánu.

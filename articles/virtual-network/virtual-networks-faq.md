@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938796"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179295"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -392,6 +392,9 @@ Když jsou povoleny koncové body služby virtuální sítě, zdrojové IP adres
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Má vždy přednost směrování koncového bodu služby?
 Koncové body služby přidávají systémovou trasu, která má přednost před trasami protokolu BGP a poskytuje optimální směrování provozu koncového bodu služby. Koncové body služby vždy přebírají provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Další informace o tom, jak Azure vybírá trasu, najdete v tématu [směrování provozu virtuální sítě Azure](virtual-networks-udr-overview.md).
+
+### <a name="do-service-endpoints-work-with-icmp"></a>Fungují koncové body služby s protokolem ICMP?
+Ne. přenosy protokolu ICMP, které se nacházely z podsítě s povolenými koncovými body služby, převezmou cestu k tunelu služby na požadovaný koncový bod. Koncové body služby budou zpracovávat jenom přenosy TCP. To znamená, že pokud chcete otestovat latenci nebo připojení ke koncovému bodu prostřednictvím koncových bodů služby, nástroje, jako je třeba příkazy příkazového testu a příkazu tracert, nebudou zobrazovat skutečnou cestu, kterou budou prostředky v podsíti provádět.
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak funguje NSG v podsíti s koncovými body služby?
 Aby se dosáhlo služby Azure, skupin zabezpečení sítě musí umožňovat odchozí připojení. Pokud se vaše skupin zabezpečení sítě otevřou na veškerý internetový odchozí provoz, měl by provoz koncového bodu služby fungovat. Odchozí provoz na IP adresy služeb taky můžete omezit jenom pomocí značek služeb.  

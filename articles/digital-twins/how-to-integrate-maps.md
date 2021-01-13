@@ -1,19 +1,19 @@
 ---
 title: Integrace s Azure Maps
 titleSuffix: Azure Digital Twins
-description: Přečtěte si, jak vytvořit funkci Azure, která může použít oznámení o vytvářené grafice a digitální vlákna Azure k aktualizaci Azure Maps vnitřní mapy.
+description: Podívejte se, jak pomocí Azure Functions vytvořit funkci, která může použít oznámení o vytvářené grafice a digitální vlákna Azure k aktualizaci Azure Maps vnitřní mapy.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051577"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180043"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -22,7 +22,7 @@ Tento článek vás provede kroky potřebnými k aktualizaci dat, která se zobr
 Tento postup se zabývá těmito postupy:
 
 1. Konfigurace instance digitálního vlákna Azure pro posílání dvojitě aktualizovaných událostí do funkce v [Azure Functions](../azure-functions/functions-overview.md).
-2. Vytvoření funkce Azure, která aktualizuje Azure Maps funkce vnitřních map stateset
+2. Vytvoření funkce pro aktualizaci Azure Maps funkce vnitřních map stateset
 3. Jak ukládat ID map a ID stateset funkcí do grafu digitálních vláken Azure
 
 ### <a name="prerequisites"></a>Požadavky
@@ -41,7 +41,7 @@ Následující obrázek znázorňuje, kde se prvky integrace vnitřních map v t
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>Vytvoření funkce pro aktualizaci mapy při aktualizaci dvojitých vláken
 
-Nejdřív vytvoříte trasu v části digitální vlákna Azure, která bude předávat všechny události s dvojitou aktualizací do tématu Event Grid. Pak použijete funkci Azure ke čtení těchto zpráv aktualizace a aktualizujete stateset funkcí v Azure Maps. 
+Nejdřív vytvoříte trasu v části digitální vlákna Azure, která bude předávat všechny události s dvojitou aktualizací do tématu Event Grid. Pak použijete funkci ke čtení těchto zpráv aktualizace a aktualizaci stateset funkce v Azure Maps. 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Vytvoření trasy a filtru pro dvojitá oznámení o aktualizacích
 
@@ -70,7 +70,7 @@ Tento model čte přímo z místnosti místo zařízení IoT, což vám dává f
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>Vytvoření funkce Azure pro aktualizaci map
+## <a name="create-a-function-to-update-maps"></a>Vytvoření funkce pro aktualizaci map
 
 Chystáte se vytvořit funkci aktivovanou Event Grid v rámci aplikace Function App z kompletního kurzu ([*kurz: připojení kompletního řešení*](./tutorial-end-to-end.md)). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti. 
 

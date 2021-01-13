@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/16/2020
-ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/12/2021
+ms.openlocfilehash: 8195cffed077a77c0ad66fda1126e2f3ea53d5f0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546156"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179142"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -58,7 +58,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Služby|Informace a konfigurační nastavení pro služby v clusteru.|
 |Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
 |Výstrahy|Protokol informací, upozornění a kritických výstrah.|
-|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
 ## <a name="monitoring"></a>Monitorování
@@ -78,11 +78,11 @@ Výstrahy jsou uspořádány do několika výchozích skupin, které lze zobrazi
 
 ![Shrnutí stránky s upozorněními Apache Ambari](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
-Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spravovat skupiny výstrah** .
+Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spravovat skupiny výstrah**.
 
 ![Správa skupin výstrah Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Můžete spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení__ . Zobrazí se všechna aktuální oznámení. Tady můžete vytvářet oznámení. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou** .
+Můžete spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Tady můžete vytvářet oznámení. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
 
 ![Oznámení o vytvoření výstrahy pro Apache Ambari](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -92,7 +92,7 @@ Kurz oznámení o výstrahách pomocí bezplatného [účtu SendGrid](../sendgri
 
 ### <a name="cluster"></a>Cluster
 
-Karta **metriky** řídicího panelu obsahuje řadu widgetů, které usnadňují sledování stavu vašeho clusteru na první pohled. Několik widgetů, jako je například **využití procesoru** , poskytují další informace při kliknutí.
+Karta **metriky** řídicího panelu obsahuje řadu widgetů, které usnadňují sledování stavu vašeho clusteru na první pohled. Několik widgetů, jako je například **využití procesoru**, poskytují další informace při kliknutí.
 
 ![Řídicí panel Apache Ambari s metrikami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
@@ -100,7 +100,7 @@ Karta **Heat mapy** zobrazuje metriky jako barevné Heat mapyy z zelené na čer
 
 ![Řídicí panel Apache Ambari s Heat mapy](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé** . Pak vyberte konkrétní uzel, na který vás zajímáte.
+Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, na který vás zajímáte.
 
 ![Souhrnné informace o Ambari hostitele Apache](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
@@ -139,7 +139,7 @@ Výběrem kteréhokoli z těchto odkazů otevřete v prohlížeči novou kartu, 
 Práce s uživateli, skupinami a oprávněními je podporována. Místní správa najdete v tématu [autorizace uživatelů pro zobrazení Apache Ambari](./hdinsight-authorize-users-to-ambari.md). Clustery připojené k doméně najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
-> Neměňte heslo sledovacího zařízení Ambari (hdinsightwatchdog) v clusteru HDInsight se systémem Linux. Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
+> V clusteru HDInsight se systémem Linux neodstraňujte ani neměňte heslo pro sledovací Ambari (hdinsightwatchdog). Změna hesla zruší schopnost používat akce skriptu nebo provádět operace škálování s vaším clusterem.
 
 ### <a name="hosts"></a>Hostitelé
 
@@ -200,7 +200,7 @@ Ke konfiguraci služby použijte následující postup:
 
     ![Konfigurace služby Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
-3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit** . Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
+3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
 
 ## <a name="ambari-views"></a>Zobrazení Ambari
 
@@ -214,7 +214,7 @@ Ambari zobrazení umožňují vývojářům napojit prvky uživatelského rozhra
 
 Následující operace Ambari nejsou podporovány v HDInsight:
 
-* Probíhá __Přesun služby sběrače metrik__ . Při zobrazení informací o službě sběrače metrik je jednou z akcí, které jsou k dispozici v nabídce Akce služby, __kolekce metriky přesunutí__ . Tato akce není podporována v HDInsight.
+* Probíhá __Přesun služby sběrače metrik__. Při zobrazení informací o službě sběrače metrik je jednou z akcí, které jsou k dispozici v nabídce Akce služby, __kolekce metriky přesunutí__. Tato akce není podporována v HDInsight.
 
 ## <a name="next-steps"></a>Další kroky
 

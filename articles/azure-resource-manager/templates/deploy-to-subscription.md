@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807711"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178989"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Nasazení předplatných pomocí šablon ARM
 
@@ -142,7 +142,8 @@ Při nasazování do předplatného můžete prostředky nasadit do:
 * jakékoli předplatné v tenantovi
 * skupiny prostředků v rámci předplatného nebo jiných předplatných
 * tenant pro předplatné
-* [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
+
+[Prostředek rozšíření](scope-extension-resources.md) může být vymezen na cíl, který se liší od cíle nasazení.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
 
@@ -453,7 +454,7 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
-## <a name="azure-blueprints"></a>Azure Blueprints
+## <a name="azure-blueprints"></a>Azure Blueprint
 
 ### <a name="create-blueprint-definition"></a>Vytvořit definici podrobného plánu
 

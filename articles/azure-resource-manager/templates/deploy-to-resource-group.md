@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupin prostředků
 description: Popisuje nasazení prostředků v šabloně Azure Resource Manager. Ukazuje, jak se zaměřit na více než jednu skupinu prostředků.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807730"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178887"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Nasazení skupiny prostředků s využitím šablon ARM
 
@@ -85,7 +85,8 @@ Při nasazení do skupiny prostředků můžete prostředky nasadit do:
 * Další skupiny prostředků ve stejném předplatném nebo jiných předplatných
 * jakékoli předplatné v tenantovi
 * tenant pro skupinu prostředků
-* [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
+
+[Prostředek rozšíření](scope-extension-resources.md) může být vymezen na cíl, který se liší od cíle nasazení.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938189"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180060"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -27,7 +27,7 @@ Můžete strukturovat hierarchii zařízení, aby se ke cloudu mohla připojit j
 
 Cílem tohoto kurzu je vytvořit hierarchii IoT Edge zařízení, která simulují produkční prostředí. Na konci nasadíte [modul simulovaného senzoru teploty](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) na zařízení nižší vrstvy bez přístupu k Internetu stažením imagí kontejneru v hierarchii.
 
-Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením IoT Edge kontejnerů runtime na vaše zařízení a místní konfigurací zařízení. V tomto kurzu se naučíte:
+Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením IoT Edge kontejnerů runtime na vaše zařízení a místní konfigurací zařízení. V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -45,7 +45,7 @@ V tomto kurzu jsou definovány následující vrstvy sítě:
 
 V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno zařízení, **topLayerDevice**, představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **lowerLayerDevice**, představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **podřízené zařízení**. Můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **lowerLayerDevice**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
@@ -63,6 +63,13 @@ Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
     --admin-username azureuser \
     --admin-password <REPLACE_WITH_PASSWORD>
    ```
+
+* Ujistěte se, že jsou otevřené příchozí porty: 8000, 443, 5671, 8883:
+  * 8000: používá se k vyžádání imagí kontejneru Docker prostřednictvím proxy serveru rozhraní API.
+  * 443: používá se mezi nadřazenými a podřízenými hraničními centry pro REST API volání.
+  * 5671, 8883: používá se pro AMQP a MQTT.
+
+  Další informace najdete v tématu věnovaném [otevření portů pro virtuální počítač s využitím webu Azure Portal](../virtual-machines/windows/nsg-quickstart-portal.md).
 
 Tento scénář můžete vyzkoušet také pomocí skriptu [Azure IoT Edge pro průmyslovou ukázku IoT](https://aka.ms/iotedge-nested-sample), který nasadí virtuální počítače Azure jako předem nakonfigurovaná zařízení pro simulaci prostředí továrny.
 
@@ -182,6 +189,39 @@ Každé zařízení potřebuje kopii certifikátu kořenové certifikační auto
 
 Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
 
+1. Nainstalujte konfiguraci úložiště, která odpovídá operačnímu systému vašeho zařízení.
+
+   * **Ubuntu Server 16,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Malina Pi OS Stretch**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+1. Zkopírujte vygenerovaný seznam do adresáře sources. list. d.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+1. Nainstalujte veřejný klíč Microsoft GPG.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+   
 1. Aktualizuje seznamy balíčků na vašem zařízení.
 
    ```bash
@@ -197,7 +237,7 @@ Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
 1. Nainstalujte démona hsmlib a IoT Edge. Pokud chcete zobrazit prostředky pro ostatní distribuce systému Linux, [navštivte verzi GitHub](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1). <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
    curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
@@ -320,7 +360,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -333,7 +373,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -491,7 +531,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -594,13 +634,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-## View generated data
+## IotEdge check
 
-The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
+Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
-You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+You can run `iotedge check` in a nested hierarchy, even if the child machines don't have direct internet access.
 
-You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
+When you run `iotedge check` from the lower layer, the program tries to pull the image from the parent through port 443.
+
+In this tutorial, we use port 8000, so we need to specify it:
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+```
+   
+`azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:
+
+| Name | Hodnota |
+| - | - |
+| `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
+
+Pokud používáte privátní registr kontejnerů, zajistěte, aby byly všechny Image (například IoTEdgeAPIProxy, edgeAgent, edgeHub a Diagnostika) přítomné v registru kontejneru.    
+    
+## <a name="view-generated-data"></a>Zobrazit vygenerovaná data
+
+Vámi nabízený modul **snímače teploty** vygeneruje ukázková data prostředí. Posílá zprávy, které zahrnují okolní teplotu a vlhkost, teplotu a tlak počítače a časové razítko.
+
+Zprávy doručené do služby IoT Hub můžete sledovat pomocí [rozšíření Azure IoT Hub pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
+Tyto zprávy můžete zobrazit také pomocí [Azure Cloud Shell](https://shell.azure.com/):
 
    ```azurecli-interactive
    az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>

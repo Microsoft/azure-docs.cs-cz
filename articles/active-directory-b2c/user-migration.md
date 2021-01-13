@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509610"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178802"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
 
@@ -97,7 +97,7 @@ Než zahájíte proces migrace, využijte možnost vyčištění adresáře.
 
 ### <a name="password-policy"></a>Zásady hesel
 
-Pokud mají účty, které migrujete, slabší sílu hesla, než je [bezpečná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutilá Azure AD B2C, můžete zakázat požadavek na silný heslo. Další informace najdete v tématu [vlastnost zásady hesel](manage-user-accounts-graph-api.md#password-policy-property).
+Pokud mají účty, které migrujete, slabší sílu hesla, než je [bezpečná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutilá Azure AD B2C, můžete zakázat požadavek na silný heslo. Další informace najdete v tématu [vlastnost zásady hesel](user-profile-attributes.md#password-policy-attribute).
 
 ## <a name="next-steps"></a>Další kroky
 

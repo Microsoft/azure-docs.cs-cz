@@ -7,34 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358775"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180128"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
-*Indexer* v Azure kognitivní hledání je prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat Azure a naplní index založený na mapování polí mezi indexem a zdrojem dat. Tento přístup se někdy označuje jako "pull model", protože služba získává data v, aniž byste museli psát kód, který do indexu přidává data.
+*Indexer* ve službě Azure kognitivní hledání je prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat Azure a naplní index vyhledávání pomocí mapování polí mezi zdrojovými daty a vaším indexem. Tento přístup se někdy označuje jako "pull model", protože služba získává data v, aniž byste museli psát kód, který do indexu přidává data.
 
-Indexery jsou založené na typech nebo platformách zdrojů dat a jednotlivé indexery pro SQL Server v Azure, Cosmos DB, Azure Table Storage a Blob Storage. Indexery úložiště objektů BLOB mají další vlastnosti specifické pro typy obsahu objektů BLOB.
-
-Můžete použít indexer jako jediný prostředek přijímání dat, nebo můžete použít kombinaci postupů, kdy se indexer použije k načtení jenom některých polí v indexu.
+Indexery jsou jenom Azure a jednotlivé indexery pro Azure SQL, Azure Cosmos DB, Azure Table Storage a Blob Storage. Při konfiguraci indexeru zadáte zdroj dat (počátek) a také index (cíl). Několik zdrojů dat, jako jsou indexery služby Blob Storage, mají další vlastnosti specifické pro daný typ obsahu.
 
 Indexery můžete spouštět na vyžádání nebo podle plánu opakované aktualizace dat, který se spouští tak často, jak každých pět minut. Častější aktualizace vyžadují model nabízených oznámení, který současně aktualizuje data v Kognitivní hledání Azure i v externím zdroji dat.
+
+## <a name="usage-scenarios"></a>Scénáře použití
+
+Indexer můžete použít jako jediný způsob příjmu dat, nebo můžete použít kombinaci technik, které zahrnují načítání pouze některých polí v indexu, volitelně transformovat nebo rozšířit obsah na cestě. Následující tabulka shrnuje hlavní scénáře.
+
+| Scenario |Strategie |
+|----------|---------|
+| Jeden zdroj | Tento model je nejjednodušší: jeden zdroj dat je jediným poskytovatelem obsahu pro index vyhledávání. Ze zdroje určíte jedno pole obsahující jedinečné hodnoty, které bude sloužit jako klíč dokumentu v indexu vyhledávání. Jedinečná hodnota bude použita jako identifikátor. Všechna ostatní zdrojová pole jsou namapována implicitně nebo explicitně na odpovídající pole v indexu. </br></br>Důležitou poznatkem je, že hodnota klíče dokumentu pochází ze zdrojových dat. Vyhledávací služba negeneruje klíčové hodnoty. Při dalších spuštěních se přidají příchozí dokumenty s novými klíči, zatímco příchozí dokumenty s existujícími klíči se buď sloučí, nebo přepíší, v závislosti na tom, jestli jsou indexová pole null nebo naplněná. |
+| Více zdrojů| Index může přijímat obsah z více zdrojů, kde každé spuštění přináší nový obsah z jiného zdroje. </br></br>Jedním z výsledků může být index, který po spuštění každého indexeru získává dokumenty, přičemž všechny dokumenty jsou zcela vytvořené z každého zdroje. Výzvou k tomuto scénáři spočívá v návrhu schématu indexu, který funguje pro všechna příchozí data, a klíč dokumentu, který je v indexu vyhledávání jednotný. Například pokud jsou hodnoty, které jednoznačně identifikují dokument, metadata_storage_path v kontejneru objektů BLOB a v primárním klíči v tabulce SQL, můžete si představit, že jeden nebo oba zdroje musí být upraveny tak, aby poskytovaly klíčové hodnoty ve společném formátu bez ohledu na původ obsahu. V tomto scénáři byste měli očekávat, že provedete určitou úroveň předběžného zpracování, aby se data homogenizuje, aby bylo možné je načíst do jediného indexu.</br></br>Alternativním výsledkem může být hledání dokumentů, které se částečně vyplňují při prvním spuštění, a potom se dále vyplní následnými běhy, aby se hodnoty z jiných zdrojů vyplnily. Výzvou k tomuto vzoru se zajistí, že každý běh indexování bude cílen na stejný dokument. Sloučení polí do existujícího dokumentu vyžaduje shodu s klíčem dokumentu. Ukázku tohoto scénáře najdete v tématu [kurz: index z více zdrojů dat](tutorial-multiple-data-sources.md). |
+| Transformace obsahu | Kognitivní hledání podporuje volitelná chování [rozšíření AI](cognitive-search-concept-intro.md) , která přidávají analýzu obrázků a zpracování přirozeného jazyka pro vytváření nových prohledávatelných obsahu a struktury. Rozšíření AI je definované [dovednosti](cognitive-search-working-with-skillsets.md), připojené k indexeru. Aby bylo možné provést obohacení AI, indexer stále potřebuje index a zdroj dat, ale v tomto scénáři přidá zpracování dovednosti do indexeru. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Přístupy k vytváření a správě indexerů
 
 Indexery můžete vytvářet a spravovat pomocí těchto přístupů:
 
-* [Průvodce importem dat > portálu](search-import-data-portal.md)
-* [Rozhraní API služby REST](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [Průvodce importem dat > portálu](search-import-data-portal.md)
++ [Rozhraní API služby REST](/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-Nový indexer je zpočátku oznámen jako funkce ve verzi Preview. Funkce ve verzi Preview se zavádějí v rozhraních API (REST a .NET) a po přechodu do všeobecné dostupnosti se integrují do portálu. Pokud vyhodnocujete nový indexer, měli byste počítat s psaním kódu.
+Pokud používáte sadu SDK, vytvořte [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) pro práci s indexery, zdroji dat a dovednosti. Výše uvedený odkaz je pro sadu .NET SDK, ale všechny sady SDK poskytují SearchIndexerClient a podobná rozhraní API.
+
+Ve výchozím nastavení se nové zdroje dat oznamují jako funkce ve verzi Preview a jsou jenom pro čtení. Po absolvování obecné dostupnosti je plná podpora integrovaná do portálu a do různých sad SDK, z nichž každá má vlastní plány vydání.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -46,15 +56,15 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 
 Úložiště dat procházení indexerů v Azure
 
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Spravovaná instance SQL](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Spravovaná instance SQL](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>Fáze indexeru
+## <a name="stages-of-indexing"></a>Fáze indexování
 
 Pokud je index při počátečním spuštění prázdný, načtou se indexer všechna data, která jsou uvedena v tabulce nebo kontejneru. Při následném spuštění může indexer obvykle detekovat a načítat pouze data, která se změnila. V případě dat objektů BLOB je zjišťování změn automatické. U jiných zdrojů dat, jako je Azure SQL nebo Cosmos DB, musí být povolené zjišťování změn.
 
@@ -68,9 +78,9 @@ Trhlina dokumentu je proces otevírání souborů a extrahování obsahu. V záv
 
 Příklady:  
 
-* Když je dokument záznamem ve [zdroji dat SQL Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), indexer extrahuje všechna pole záznamu.
-* Když je dokument souborem PDF ve [zdroji dat BLOB Storage Azure](search-howto-indexing-azure-blob-storage.md), indexer vyextrahuje text, obrázky a metadata souboru.
-* Když je dokument záznamem v [Cosmos DB zdroji dat](search-howto-index-cosmosdb.md), indexer vyextrahuje pole a podpole z dokumentu Cosmos DB.
++ Když je dokument záznamem ve [zdroji dat SQL Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), indexer extrahuje všechna pole záznamu.
++ Když je dokument souborem PDF ve [zdroji dat BLOB Storage Azure](search-howto-indexing-azure-blob-storage.md), indexer bude extrahovat text, obrázky a metadata.
++ Když je dokument záznamem v [Cosmos DB zdroji dat](search-howto-index-cosmosdb.md), indexer vyextrahuje pole a podpole z dokumentu Cosmos DB.
 
 ### <a name="stage-2-field-mappings"></a>Fáze 2: mapování polí 
 
@@ -95,18 +105,21 @@ Následující obrázek ukazuje vzorový indexer [relace ladění](cognitive-sea
 Indexery můžou nabízet funkce, které jsou jedinečné pro daný zdroj dat. Z toho důvodu se budou některé aspekty konfigurace indexeru nebo zdroje dat lišit podle typu indexeru. Všechny indexery ale sdílejí stejné základní složení a požadavky. Níže najdete popis kroků společných pro všechny indexery.
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
+
 Indexer získá připojení ke zdroji dat z objektu *zdroje dat* . Definice zdroje dat poskytuje připojovací řetězec a případně přihlašovací údaje. Pro vytvoření prostředku zavolejte třídu [Create Datasource](/rest/api/searchservice/create-data-source) REST API nebo [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) .
 
 Zdroje dat se konfigurují a spravují nezávisle na indexerech, které je používají, což znamená, že několik indexerů může používat zdroj dat k načtení více indexů současně.
 
 ### <a name="step-2-create-an-index"></a>Krok 2: Vytvoření indexu
+
 Indexer automatizuje některé úkoly související s příjmem dat, ale vytváření indexu k nim obvykle nepatří. K základním požadavkům patří předdefinovaný index s poli, která odpovídají polím v externím zdroji dat. Pole musí odpovídat názvu a datovému typu. Další informace o strukturování indexu najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](/rest/api/searchservice/Create-Index) nebo [třídy SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex). Nápovědu k přidružení polí najdete v tématu [mapování polí v indexerech Azure kognitivní hledání](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Přestože indexery nedokážou vygenerovat index za vás, může vám pomoct průvodce **importem dat** na portálu. Ve většině případů dokáže průvodce odvodit schéma indexu ze stávajících metadat ve zdroji a zobrazit předběžné schéma indexu, které můžete upravit přímo v aktivním průvodci. Po vytvoření indexu ve službě jsou další úpravy na portálu omezené hlavně na přidávání nových polí. K vytvoření, ale ne revidování, indexu zvažte použití průvodce. Praktickou výuku najdete v [průvodci portálem](search-get-started-portal.md).
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3: Vytvoření a naplánování indexeru
-Definice indexeru je konstrukce, která spojuje všechny prvky související s přijímáním dat. Mezi požadované prvky patří zdroj dat a index. Mezi volitelné prvky patří mapování plánu a polí. Mapování polí je nepovinné pouze v případě, že zdrojová pole a indexová pole jasně odpovídají. Další informace o strukturování indexeru najdete v tématu [Vytvoření indexeru (Azure Kognitivní hledání REST API)](/rest/api/searchservice/Create-Indexer).
+
+Definice indexeru je konstrukce, která spojuje všechny prvky související s přijímáním dat. Mezi požadované prvky patří zdroj dat a index. Mezi volitelné prvky patří mapování plánu a polí. Mapování polí jsou volitelná pouze v případě, že zdrojová pole a indexová pole jasně odpovídají. Další informace o strukturování indexeru najdete v tématu [Vytvoření indexeru (Azure Kognitivní hledání REST API)](/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
@@ -120,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> Když se rozhraní API spustí úspěšně, vyvolání indexeru se naplánuje, ale vlastní zpracování proběhne asynchronně. 
+> Když rozhraní API pro spuštění vrátí kód úspěchu, naplánovalo se vyvolání indexeru, ale vlastní zpracování proběhne asynchronně. 
 
-Stav indexeru můžete monitorovat na portálu nebo prostřednictvím rozhraní API pro získání stavu indexeru. 
+Stav indexeru můžete monitorovat na portálu nebo prostřednictvím [rozhraní API pro získání stavu indexeru](/rest/api/searchservice/get-indexer-status). 
 
 <a name="GetIndexerStatus"></a>
 
@@ -168,11 +181,12 @@ Odpověď obsahuje celkový stav indexeru, vyvolání posledního (nebo probíha
 Historie spouštění obsahuje až 50 posledních dokončených spuštění, která jsou seřazena v opačném chronologickém pořadí (takže poslední spuštění nastane jako první v odpovědi).
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď jste získali základní představu. V dalším kroku se zaměříme na požadavky a úlohy specifické pro různé typy zdrojů dat.
 
-* [Azure SQL Database, spravovaná instance SQL nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Indexování objektů BLOB CSV pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-csv-blobs.md)
-* [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)
++ [Azure SQL Database, spravovaná instance SQL nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Indexování objektů BLOB CSV pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-csv-blobs.md)
++ [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)

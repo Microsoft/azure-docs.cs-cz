@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798594"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178921"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Nasazení skupin pro správu pomocí šablon ARM
 
@@ -123,7 +123,8 @@ Při nasazování do skupiny pro správu můžete prostředky nasadit do:
 * předplatná ve skupině pro správu
 * skupiny prostředků ve skupině pro správu
 * tenant pro skupinu prostředků
-* [prostředky rozšíření](scope-extension-resources.md) se dají použít u prostředků.
+
+[Prostředek rozšíření](scope-extension-resources.md) může být vymezen na cíl, který se liší od cíle nasazení.
 
 Uživatel, který šablonu nasazuje, musí mít přístup k zadanému oboru.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386880"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178836"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -40,13 +40,13 @@ Element **TrustFrameworkPolicy** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
-| TenantObjectId | Ne | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
-| TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
-| PolicyId | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
-| PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | Ne | Možné hodnoty: `Production` , nebo `Development` . `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá, pokud je **DeploymentMode** nastaveno na `Development` . Hodnota musí být `urn:journeyrecorder:applicationinsights` . Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Yes | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
+| TenantObjectId | No | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
+| TenantId | Yes | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
+| PolicyId | Yes | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
+| PublicPolicyUri | Yes | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
+| DeploymentMode | No | Možné hodnoty: `Production` , nebo `Development` . `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | No | Koncový bod, který se používá k protokolování. Hodnota musí být nastavena na hodnotu, `urn:journeyrecorder:applicationinsights` Pokud atribut existuje. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 
 
 Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
@@ -64,7 +64,7 @@ Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
 
 Element **TrustFrameworkPolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Identifikátor základní zásady. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | Stavební bloky vašich zásad. |
@@ -76,7 +76,7 @@ Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element 
 
 Element **BasePolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
 | PolicyId | 1:1 | Identifikátor nadřazené zásady |
