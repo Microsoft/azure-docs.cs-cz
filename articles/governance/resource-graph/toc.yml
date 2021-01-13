@@ -38,6 +38,9 @@
     - name: Vytvoření sdíleného dotazu – Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: Vytvoření sdíleného dotazu – Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: Nasazení sdíleného dotazu – šablona ARM
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

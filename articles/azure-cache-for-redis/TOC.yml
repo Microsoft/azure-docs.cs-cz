@@ -29,6 +29,8 @@
           href: cache-nodejs-get-started.md
         - name: Aplikace v Pythonu
           href: cache-python-get-started.md
+        - name: Aplikace Go
+          href: cache-go-get-started.md
 - name: Kurzy
   items:
     - name: ASP.NET

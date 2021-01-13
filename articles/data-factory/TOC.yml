@@ -629,15 +629,19 @@
         - name: Prostředí Azure Integration Runtime
           href: create-azure-integration-runtime.md
         - name: Prostředí Integration Runtime v místním prostředí
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: Vytvoření a konfigurace místního prostředí Integration Runtime
+              href: create-self-hosted-integration-runtime.md
+            - name: Oznámení automatické aktualizace a vypršení platnosti místního prostředí Integration Runtime
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: Sdílené místní prostředí Integration Runtime
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: Skripty pro automatizaci místního prostředí Integration Runtime
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: Spuštění místního prostředí Integration Runtime v kontejneru Windows
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Prostředí Azure-SSIS Integration Runtime
           href: create-azure-ssis-integration-runtime.md
-        - name: Sdílené místní prostředí Integration Runtime
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: Skripty pro automatizaci místního prostředí Integration Runtime
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: Spuštění místního prostředí Integration Runtime v kontejneru Windows
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
         - name: Spouštění balíčků služby SSIS v Azure z SSDT

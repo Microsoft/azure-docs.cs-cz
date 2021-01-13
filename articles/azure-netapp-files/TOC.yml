@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Pokyny pro plánování sítě Azure NetApp Files
       href: azure-netapp-files-network-topologies.md
+    - name: Jak fungují snímky Azure NetApp Files
+      href: snapshots-introduction.md
     - name: Fond ručně zřizované kapacity QoS
       href: manual-qos-capacity-pool-introduction.md
     - name: Replikace mezi oblastmi

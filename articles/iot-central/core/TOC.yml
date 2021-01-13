@@ -85,8 +85,14 @@
       items:
         - name: Nastavení šablony zařízení
           href: howto-set-up-template.md
+        - name: Jak přesunout zařízení do IoT
+          href: how-to-move-device-to-iot.md
         - name: Jak používat vlastnosti
           href: howto-use-properties.md
+        - name: Jak používat příkazy
+          href: howto-use-commands.md
+        - name: Jak používat data o poloze
+          href: howto-use-location-data.md
         - name: Příprava a připojení sady Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Příprava a připojení zařízení RuuviTag
