@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914979"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133153"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -39,7 +39,6 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
-* Ujistěte se, že je pro službu AD vytvořená certifikační autorita s použitím role [služby AD CS (Active Directory Certificate Services)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
 * Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
 * Verze systému souborů NFS používaná svazkem s duálním protokolem je NFSv3. V takovém případě platí následující požadavky:
     * Duální protokol nepodporuje rozšířené atributy seznamů ACL systému Windows `set/get` z klientů systému souborů NFS.
@@ -105,9 +104,6 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 3. Klikněte na **protokol** a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **duální protokol (NFSv3 a SMB)** .   
 
-    * V rozevíracím seznamu vyberte připojení **služby Active Directory** .  
-    Služba Active Directory, kterou použijete, musí mít certifikát kořenové certifikační autority serveru. 
-
     * Zadejte **cestu svazku** pro svazek.   
     Tato cesta svazku je název sdíleného svazku. Název musí začínat abecedním znakem a musí být jedinečný v rámci každého předplatného a každé oblasti.  
 
@@ -122,32 +118,6 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
     Svazek, který jste vytvořili, se zobrazí na stránce svazky. 
  
     Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Odeslat veřejný kořenový certifikát certifikační autority služby Active Directory  
-
-1.  Postupujte podle pokynů k instalaci a konfiguraci [certifikační](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) autority a přidat certifikační autoritu. 
-
-2.  Podle pokynů v [části zobrazení certifikátů pomocí modulu snap-](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) in MMC použijte modul snap-in konzoly MMC a nástroj Správce certifikátů.  
-    Pomocí modulu snap-in Správce certifikátů vyhledejte kořenový nebo vydávající certifikát pro místní zařízení. V jednom z následujících nastavení byste měli spustit příkazy modulu snap-in Správa certifikátů:  
-    * Klient se systémem Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
-    * Další počítač v doméně obsahující kořenový certifikát  
-
-3. Exportujte certifikát kořenové certifikační autority.  
-    Certifikáty kořenové certifikační autority je možné exportovat z adresáře osobních nebo důvěryhodných kořenových certifikačních autorit, jak je znázorněno v následujících příkladech:   
-    ![snímek obrazovky, který zobrazuje osobní certifikáty](../media/azure-netapp-files/personal-certificates.png)   
-    ![snímek obrazovky se zobrazením důvěryhodných kořenových certifikačních autorit](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    Zajistěte, aby byl certifikát exportován v kódování X. 509 kódované pomocí Base-64 (. Formát CER): 
-
-    ![Průvodce exportem certifikátu](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Přejděte na účet NetApp svazku se dvěma protokoly, klikněte na **připojení služby Active Directory** a nahrajte certifikát kořenové certifikační autority pomocí okna **připojit se ke službě Active Directory** :  
-
-    ![Certifikát kořenové certifikační autority serveru](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Zajistěte, aby název certifikační autority mohl přeložit služba DNS. Tento název je pole "vystavitelný" nebo "Issuer" na certifikátu:  
-
-    ![Informace o certifikátu](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>Správa atributů LDAP POSIX
 

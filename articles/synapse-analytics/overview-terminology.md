@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446708"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132762"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie Azure synapse Analytics
 
@@ -38,7 +38,7 @@ V synapse studiu můžete pracovat s fondy SQL vytvořením a spuštěním **skr
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 
-Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse. Když začnete používat fond Spark, pracovní prostory vytvoří **relaci Sparku** pro zpracování prostředků assosociated s touto relací. 
+Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache Spark bez serveru** v pracovním prostoru synapse. Když začnete používat fond Spark, pracovní prostory vytvoří **relaci Sparku** pro zpracování prostředků přidružených k této relaci. 
 
 Existují dva způsoby, jak v rámci synapse použít Spark:
 * **Poznámkové bloky Spark** pro práci s datovými vědy a inženýry, které používají Scala, PySpark, C# a SparkSQL
@@ -56,7 +56,7 @@ Kanály představují způsob, jakým Azure synapse zajišťuje integraci dat �
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s Azure synapse Analytics](get-started.md)
+* [Začínáme s Azure Synapse Analytics](get-started.md)
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 * [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)
 

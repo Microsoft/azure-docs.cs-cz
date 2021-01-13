@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912980"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132575"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu
 
@@ -104,9 +104,13 @@ Po dokončení školení se vypočítává a zobrazuje výkon modelu. Služba Cu
 
 ![Ve výsledcích školení se zobrazuje celková přesnost a odvolání a průměrná hodnota přesnosti.](./media/get-started-build-detector/trained-performance.png)
 
-### <a name="probability-threshold"></a>Prahová hodnota pravděpodobnosti
+### <a name="probability-threshold"></a>Probability threshold
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
+
+### <a name="overlap-threshold"></a>Prahová hodnota překryvu
+
+Posuvník **prahová hodnota překrytí** se zabývá tím, jak opravit předpověď objektu musí být považována za "správné" v rámci školení. Nastaví minimální povolený překryv mezi předpovězeným ohraničujícím objektem a skutečným uživatelským polem, které jste zadali. Pokud se ohraničovací pole nepřekrývají k tomuto stupni, předpověď se nepovažuje za správné.
 
 ## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 

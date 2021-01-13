@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359927"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131895"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace nástroje pro vyrov
 
 ### <a name="dnn-listener"></a>Naslouchací proces DNN
 
-SQL Server 2019 CU8 zavádí podporu pro naslouchací proces DNN (Distributed Network Name). Naslouchací proces DNN nahrazuje klasický naslouchací proces skupiny dostupnosti, kdy je potřeba, aby nástroj pro vyrovnávání zatížení Azure nasměroval provoz v síti Azure. 
+SQL Server 2019 CU8 zavádí podporu pro naslouchací proces DNN (Distributed Network Name). Naslouchací proces DNN nahrazuje klasický naslouchací proces skupiny dostupnosti, kdy nutnost Azure Load Balancer směrovat provoz v síti Azure. 
 
 Naslouchací proces DNN je doporučené řešení připojení HADR v Azure, protože zjednodušuje nasazení, snižuje údržbu a náklady a snižuje dobu převzetí služeb při selhání v případě selhání. 
 
@@ -77,22 +77,22 @@ Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Ser
 
 Následující tabulka poskytuje porovnání dostupných možností:
 
-| | portál Azure | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
+| | Azure Portal | Azure CLI/PowerShell | Šablony pro rychlý Start | Ruční |
 |---------|---------|---------|---------|---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
 |**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše|
-|**Vytvoří cluster za vás.**|Ano|Ano | Ano |Ne|
-|**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
-|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
-|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
+|**Vytvoří cluster za vás.**|Yes|Yes | Yes |No|
+|**Vytvoří skupinu dostupnosti pro vás.** |Yes |No|No|No|
+|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |No|No|No|Yes|
+|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|No|No|No|Yes|
 |**Konfigurace kvora služby WSFC**|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
-|**DR s více oblastmi** |Ne|Ne|Ne|Ano|
-|**Podpora více podsítí** |Ano|Ano|Ano|Ano|
-|**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
-|**DR s více zónami ve stejné oblasti**|Ano|Ano|Ano|Ano|
-|**Distributed AG bez AD**|Ne|Ne|Ne|Ano|
-|**Distribuovaný AG bez clusteru** |Ne|Ne|Ne|Ano|
+|**DR s více oblastmi** |No|No|No|Yes|
+|**Podpora více podsítí** |Yes|Yes|Yes|Yes|
+|**Podpora pro existující službu AD**|Yes|Yes|Yes|Yes|
+|**DR s více zónami ve stejné oblasti**|Yes|Yes|Yes|Yes|
+|**Distributed AG bez AD**|No|No|No|Yes|
+|**Distribuovaný AG bez clusteru** |No|No|No|Yes|
 
 Další informace najdete v tématech [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablony rychlý Start](availability-group-quickstart-template-configure.md)a [Ruční](availability-group-manually-configure-prerequisites-tutorial.md).
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 30cc917e2db3a7c4c6d5d6ebd5a8a47afff5d505
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116547"
+ms.locfileid: "98133136"
 ---
 # <a name="synapse-access-control"></a>Řízení přístupu synapse 
 
@@ -30,7 +30,7 @@ Synapse poskytuje komplexní a jemně odstupňovaný systém řízení přístup
 
 Role synapse poskytují sady oprávnění, které je možné použít v různých oborech. Tato členitost usnadňuje udělení správného přístupu správcům, vývojářům, bezpečnostním pracovníkům a operátorům pro výpočetní prostředky a data.
 
-Řízení přístupu se dá zjednodušit pomocí skupin zabezpečení, které jsou zarovnané na role úloh lidé.  Pro správu přístupu stačí přidat a odebrat uživatele z příslušných skupin zabezpečení.
+Řízení přístupu se dá zjednodušit pomocí skupin zabezpečení, které jsou zarovnané na role úloh lidé. Pro správu přístupu stačí přidat a odebrat uživatele z příslušných skupin zabezpečení.
 
 ## <a name="access-control-elements"></a>Prvky řízení přístupu
 
@@ -41,16 +41,16 @@ Role Azure slouží k řízení správy:
 - Fondy Apache Spark a 
 - Prostředí Integration runtime. 
 
-Pokud chcete *vytvořit* tyto prostředky, musíte být vlastníkem nebo přispěvatelem Azure ve skupině prostředků.  Pokud je chcete po vytvoření *Spravovat* , musíte být vlastníkem nebo přispěvatelem Azure v buď skupině prostředků, nebo v jednotlivých prostředcích. 
+Pokud chcete *vytvořit* tyto prostředky, musíte být vlastníkem nebo přispěvatelem Azure ve skupině prostředků. Pokud je chcete po vytvoření *Spravovat* , musíte být vlastníkem nebo přispěvatelem Azure v buď skupině prostředků, nebo v jednotlivých prostředcích. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>Vývoj a spouštění kódu v synapse 
 
 Synapse podporuje dva vývojové modely.
 
-- **Synapse živý vývoj**.  Vyvíjíte a ladíte kód v synapse studiu a pak ho **publikujete** pro uložení a spuštění.  Služba synapse je zdrojem pravdy pro úpravy kódu a provádění.  Po zavření synapse studia ztratíte veškerou nepublikovanou práci.  
-- **Vývoj s povoleným Git**. Vyvíjíte a ladíte kód v synapse studiu a **potvrdíte** změny pracovní větve úložiště Git. Práce z jedné nebo více větví je integrována do větve pro spolupráci, odkud ji **publikujete** do služby.  Úložiště Git je zdrojem pravdy pro úpravy kódu, zatímco služba je zdrojem pravdy pro provádění. Před ukončením synapse studia se musí změny potvrdit do úložiště Git nebo publikovat do služby. [Přečtěte si další informace](../cicd/continuous-integration-deployment.md) o používání synapse Analytics s Git.
+- **Synapse živý vývoj**. Vyvíjíte a ladíte kód v synapse studiu a pak ho **publikujete** pro uložení a spuštění.  Služba synapse je zdrojem pravdy pro úpravy kódu a provádění.  Po zavření synapse studia ztratíte veškerou nepublikovanou práci.  
+- **Vývoj s povoleným Git**. Vyvíjíte a ladíte kód v synapse studiu a **potvrdíte** změny pracovní větve úložiště Git. Práce z jedné nebo více větví je integrována do větve pro spolupráci, odkud ji **publikujete** do služby. Úložiště Git je zdrojem pravdy pro úpravy kódu, zatímco služba je zdrojem pravdy pro provádění. Před ukončením synapse studia se musí změny potvrdit do úložiště Git nebo publikovat do služby. [Přečtěte si další informace](../cicd/continuous-integration-deployment.md) o používání synapse Analytics s Git.
 
-V obou vývojových modelech může libovolný uživatel s přístupem k synapse studiu vytvářet artefakty kódu.  K publikování artefaktů do služby ale potřebujete další oprávnění, přečtěte si publikované artefakty, potvrďte změny v Gitu, spusťte kód a získejte přístup k propojeným datům chráněným přihlašovacími údaji.
+V obou vývojových modelech může libovolný uživatel s přístupem k synapse studiu vytvářet artefakty kódu. K publikování artefaktů do služby ale potřebujete další oprávnění, přečtěte si publikované artefakty, potvrďte změny v Gitu, spusťte kód a získejte přístup k propojeným datům chráněným přihlašovacími údaji.
 
 ### <a name="synapse-roles"></a>Role synapse
 
@@ -72,7 +72,7 @@ Při použití vývoje s povoleným Git v režimu Git vaše oprávnění Git ř�
 
 Při práci s vyhrazenými fondy SQL serverů bez serveru je přístup k rovině dat řízen pomocí oprávnění SQL. 
 
-Autor pracovního prostoru je přiřazený jako správce služby Active Directory v pracovním prostoru.  Po vytvoření může být tato role přiřazena jinému uživateli nebo skupině zabezpečení v Azure Portal.
+Autor pracovního prostoru je přiřazený jako správce služby Active Directory v pracovním prostoru. Po vytvoření může být tato role přiřazena jinému uživateli nebo skupině zabezpečení v Azure Portal.
 
 **Fondy SQL serverů bez serveru**: správcům synapse jsou udělená `db_owner` `DBO` oprávnění pro neserverový fond SQL (předdefinované). Aby mohli správci synapse udělit přístup k fondům SQL bez serveru, musí spustit skripty SQL na každém fondu bez serveru.  
 
@@ -82,7 +82,7 @@ Příklady skriptů SQL pro udělení oprávnění SQL ve fondech SQL najdete v 
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Přístup k datům spravovaným systémem v úložišti
 
-Neserverové fondy SQL a tabulky Apache Spark ukládají svá data do kontejneru ADLS Gen2, který je přidružený k uživatelem nainstalovaným Apache Spark knihovnám pracovního prostoru, se taky spravují ve stejném účtu úložiště.  Aby bylo možné tyto případy použití povolit, musí být uživatelům a MSI pracovního **prostoru udělen přístup k tomuto** pracovnímu prostoru adls Gen2 kontejneru úložiště.  
+Neserverové fondy SQL a Apache Spark tabulky ukládají svá data do kontejneru ADLS Gen2 přidruženého k pracovnímu prostoru. Uživatelem nainstalované knihovny Apache Spark jsou také spravovány ve stejném účtu úložiště. Aby bylo možné tyto případy použití povolit, musí být uživatelům a MSI pracovního **prostoru udělen přístup k tomuto** pracovnímu prostoru adls Gen2 kontejneru úložiště.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Použití skupin zabezpečení jako osvědčený postup
 
@@ -97,9 +97,9 @@ Synapse Studio se bude chovat odlišně v závislosti na vašich oprávněních 
 - **Synapse živý režim:** Synapse Studio vám zabrání v prohlížení publikovaného obsahu, publikování obsahu nebo provádění jiných akcí, pokud nemáte požadovaná oprávnění.  V některých případech budete zabráněno vytváření artefaktů kódu, které nemůžete použít nebo Uložit. 
 - **Režim git:** Máte-li oprávnění Git, která umožňují potvrdit změny v aktuální větvi, bude akce potvrzení povolena i v případě, že nemáte oprávnění k publikování změn v živé službě.  
 
-V některých případech je možné vytvářet artefakty kódu i bez oprávnění k publikování nebo potvrzení.  To vám umožní spustit kód (s požadovanými oprávněními pro spuštění). [Přečtěte si další informace](./synapse-workspace-understand-what-role-you-need.md) o rolích potřebných pro běžné úlohy. 
+V některých případech je možné vytvářet artefakty kódu i bez oprávnění k publikování nebo potvrzení. To vám umožní spustit kód (s požadovanými oprávněními pro spuštění). [Přečtěte si další informace](./synapse-workspace-understand-what-role-you-need.md) o rolích potřebných pro běžné úlohy. 
 
-Pokud je funkce v synapse studiu zakázaná, zobrazí se v popisu požadovaná oprávnění.  Pomocí [Průvodce rolemi synapse RBAC](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) můžete vyhledat, která role je potřeba k poskytnutí chybějícího oprávnění.
+Pokud je funkce v synapse studiu zakázaná, zobrazí se v popisu požadovaná oprávnění. Pomocí [Průvodce rolemi synapse RBAC](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) můžete vyhledat, která role je potřeba k poskytnutí chybějícího oprávnění.
 
 
 ## <a name="next-steps"></a>Další kroky

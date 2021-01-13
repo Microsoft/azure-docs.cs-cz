@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792357"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132184"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Co je nového pro Azure Key Vault
 
@@ -37,7 +37,7 @@ Aby se [ve výchozím nastavení podporovaly obnovitelné odstranění](#soft-de
 
 ### <a name="soft-delete-on-by-default"></a>Obnovitelné odstranění ve výchozím nastavení
 
-Po konci 2020 **budou obnovitelné odstranění standardně zapnuté pro všechny trezory klíčů** , a to jak nové, tak i již existující. Úplné podrobnosti o této potenciálně zásadní změně a postupu při hledání ovlivněných trezorů klíčů a jejich opětovné aktualizace najdete v článku [tiché odstranění bude povoleno u všech trezorů klíčů](soft-delete-change.md).
+**Pro všechny trezory klíčů je nutné povolit obnovitelné odstranění**, a to jak nové, tak i již existující. V několika dalších měsících se možnost odhlásit z slabého odstranění zastaralá. Úplné podrobnosti o této potenciálně zásadní změně a postupu při hledání ovlivněných trezorů klíčů a jejich opětovné aktualizace najdete v článku [tiché odstranění bude povoleno u všech trezorů klíčů](soft-delete-change.md).
 
 ### <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS
 

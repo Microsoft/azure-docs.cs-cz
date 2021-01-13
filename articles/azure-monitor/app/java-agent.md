@@ -6,12 +6,12 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601284"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131725"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
 
@@ -37,7 +37,7 @@ Pokud jste si nastavili [webovou aplikaci v jazyce Java pomocí Application Insi
 Chcete-li použít agenta Java, nainstalujte jej na server. Webové aplikace musí být instrumentované pomocí [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta Application Insights pro jazyk Java
-1. Na počítači s vaším serverem Java si [stáhněte agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Nezapomeňte si stáhnout stejnou verzi agenta Java, jako je verze základních a webových balíčků sady Application Insights Java SDK.
+1. V počítači, na kterém běží Java Server, [Stáhněte agenta 2. x](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2). Ujistěte se, že verze agenta 2. x, který používáte, odpovídá verzi 2. x Application Insights Java SDK, kterou používáte.
 2. Upravte spouštěcí skript aplikačního serveru a přidejte následující argument JVM:
    
     `-javaagent:<full path to the agent JAR file>`
@@ -89,10 +89,7 @@ V případě služby Azure App Services postupujte následovně:
 * Klikněte na Nastavení > Nastavení aplikace.
 * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
-Klíč: `JAVA_OPTS` hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-Nejnovější verzi agenta Java najdete [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
-). 
+Klíč: `JAVA_OPTS` hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Můžete potvrdit, že je váš agent ve správném adresáři App Service, a to tak, že kliknete na **vývojové nástroje**  >  **Pokročilé nástroje**  >  **ladit konzolu** a prozkoumáte obsah adresáře webu.    
 

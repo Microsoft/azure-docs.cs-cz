@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796427"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132078"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -128,7 +128,7 @@ Automatizované strojové učení automaticky zkouší různé modely a algoritm
 >[!Tip]
 > Tradiční regresní modely jsou testovány také jako součást systému doporučení pro předpovědi experimentů. Úplný seznam modelů najdete v [tabulce podporovaných modelů](how-to-configure-auto-train.md#supported-models) . 
 
-Modely| Popis | Výhody
+Modely| Description | Výhody
 ----|----|---
 Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
 Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Například při překlopení mince je pravděpodobnost, že se vám povede k získání hlav, 50%, bez ohledu na to, jestli jste překlopi dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
@@ -221,9 +221,12 @@ Mezi podporovaná přizpůsobení pro `forecasting` úlohy patří:
 |--|--|
 |**Aktualizace pro účely sloupce**|Přepíše automaticky zjištěný typ funkce pro zadaný sloupec.|
 |**Aktualizace parametrů transformátoru** |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje *imputac* (fill_value a medián).|
-|**Odkládací sloupce** |Určuje sloupce, které se mají odpustit z natrénuje.|
+|**Vyřazení sloupců** |Určuje sloupce, které se mají odpustit z natrénuje.|
 
 Chcete-li přizpůsobit featurizations pomocí sady SDK, zadejte `"featurization": FeaturizationConfig` do `AutoMLConfig` objektu. Přečtěte si další informace o [vlastních featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+>[!NOTE]
+> Funkce **drop Columns** je zastaralá od verze sady SDK 1,19. Vyřaďte sloupce z datové sady jako součást čištění dat, než je zahodíte v rámci automatizovaného experimentu ML. 
 
 ```python
 featurization_config = FeaturizationConfig()

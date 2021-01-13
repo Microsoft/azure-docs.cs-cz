@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462115"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132016"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,7 +28,7 @@ Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované i
 Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní péče nebo osobní údaje. Zjišťování a klasifikace těchto dat může hrát kontingenční roli v přístupu k ochraně informací ve vaší organizaci. Může sloužit jako infrastruktura na:
 
 - Pomoc při plnění standardů ochrany osobních údajů a požadavků na dodržování předpisů v souladu s předpisy.
-- Různé scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům.
+- Různé scénáře zabezpečení, například monitorování (auditování), přístup k citlivým datům.
 - Řízení přístupu a posílení zabezpečení databází, které obsahují vysoce citlivá data.
 
 > [!NOTE]

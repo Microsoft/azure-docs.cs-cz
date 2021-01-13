@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886443"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133442"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 
@@ -27,7 +27,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 
@@ -166,9 +166,7 @@ Následují scénáře, kdy jsou vaše data sledována jako **vstupní datová s
 Následují scénáře, kdy jsou vaše data sledována jako **výstupní datová sada**.  
 
 * Předání `OutputFileDatasetConfig` objektu buď pomocí `outputs` `arguments` parametru nebo při odesílání experimentu. `OutputFileDatasetConfig` objekty lze také použít k uchování dat mezi jednotlivými kroky kanálu. Viz [přesunutí dat mezi kroky kanálu ml.](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) je třída Public Preview obsahující [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) funkce verze Preview, které se můžou kdykoli změnit.
-
+  
 * Zaregistrujte datovou sadu ve vašem skriptu. V tomto případě je název přiřazený k datové sadě při jeho registraci do pracovního prostoru zobrazen. V následujícím příkladu `training_ds` je název, který se zobrazí.
 
     ```Python

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187149"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134105"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
@@ -44,7 +44,7 @@ Příklady doporučení, která se můžou zobrazit v těchto dvou ovládacích 
 - Zastaralé účty by se měly odebírat z předplatného (zastaralé účty jsou účty, které už nepotřebujete, a zablokovat přihlášení pomocí Azure Active Directory).
 
 > [!TIP]
-> Další informace o těchto doporučeních a dalších těchto ovládacích prvcích najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identity).
+> Další informace o těchto doporučeních a dalších těchto ovládacích prvcích najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identityandaccess).
 
 ### <a name="limitations"></a>Omezení
 

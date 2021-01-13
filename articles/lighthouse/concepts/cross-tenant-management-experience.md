@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: b789f241fba4b77223272f81d1a69c8fcb050008
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127154"
+ms.locfileid: "98131759"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -97,7 +97,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazit a aktualizovat výstrahy ve všech předplatných
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
-- Log Analytics: dotazování dat ze vzdálených pracovních prostorů ve více klientech
+- Log Analytics: dotazování dat ze vzdálených pracovních prostorů ve více klientech (Všimněte si, že účty Automation používané pro přístup k datům z pracovních prostorů v klientech zákazníka se musí vytvořit ve stejném tenantovi)
 - Vytváření výstrah v klientech zákazníků, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions, v části Správa tenanta prostřednictvím webhooků
 - Vytvoření [nastavení diagnostiky](../..//azure-monitor/platform/diagnostic-settings.md) v klientech zákazníka pro posílání protokolů prostředků do pracovních prostorů v tenantovi pro správu
 - Pro úlohy SAP [Sledujte metriky řešení SAP s agregovaným zobrazením napříč klienty zákazníka](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) .

@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913426"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131555"
 ---
 # <a name="ncast4_v3-series"></a>Řada NCasT4_v3 
 
@@ -26,7 +26,7 @@ Virtuální počítače řady NCasT4_v3-Series využívají GPU a procesory AMD 
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 Akcelerované síťové služby: podporované<br>
 NVIDIA NVLink Interconnect: nepodporováno<br>
 <br>

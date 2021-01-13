@@ -12,20 +12,20 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
-ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596876"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131691"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web
 
 V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí. Jakmile model sestavíte, můžete ho otestovat pomocí nových imagí a následně ho integrovat do vlastní aplikace pro rozpoznávání imagí.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Sada imagí, se kterými chcete své třídění proškolit. Tipy k výběru imagí najdete níže.
 
@@ -35,7 +35,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
+Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__ se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
@@ -49,7 +49,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
    > [!NOTE]
    > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na webu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
 
-1. V části __typy projektů__vyberte __klasifikace__ . Pak v části __typy klasifikací__zvolte v závislosti na použitém případu použití buď více **štítků** , nebo více **tříd**. Klasifikace s více štítky aplikuje libovolný počet značek na obrázek (nula nebo více), zatímco klasifikace s více třídami řadí obrázky do jednoduchých kategorií (každý odeslaný obrázek bude seřazený do nejpravděpodobnější značky). V případě, že chcete, budete moci typ klasifikace později změnit.
+1. V části __typy projektů__ vyberte __klasifikace__ . Pak v části __typy klasifikací__ zvolte v závislosti na použitém případu použití buď více **štítků** , nebo více **tříd**. Klasifikace s více štítky aplikuje libovolný počet značek na obrázek (nula nebo více), zatímco klasifikace s více třídami řadí obrázky do jednoduchých kategorií (každý odeslaný obrázek bude seřazený do nejpravděpodobnější značky). V případě, že chcete, budete moci typ klasifikace později změnit.
 
 1. V dalším kroku vyberte jednu z dostupných domén. Každá doména optimalizuje klasifikátor pro konkrétní typy imagí, jak je popsáno v následující tabulce. V případě potřeby budete moci doménu později změnit.
 
@@ -105,7 +105,7 @@ Po dokončení školení bude výkon modelu odhadnut a zobrazen. Custom Vision S
 
 ![Ve výsledcích školení se zobrazuje celková přesnost a odvolání a přesnost a odvolání jednotlivých značek v třídění.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Prahová hodnota pravděpodobnosti
+### <a name="probability-threshold"></a>Probability threshold
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 

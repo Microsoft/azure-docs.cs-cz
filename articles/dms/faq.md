@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019087"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134143"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -109,7 +109,7 @@ Během typické migrace databáze postupujte takto:
 ## <a name="troubleshooting-and-optimization"></a>Řešení potíží a optimalizace
 
 **Č. Jsem v DMS nastavil (a) projekt migrace a mám potíže s připojením ke zdrojové databázi. Co mám dělat?**
-Pokud máte při práci na migraci problémy s připojením k vašemu zdrojovému databázovému systému, vytvořte virtuální počítač ve virtuální síti, se kterou jste nastavili instanci DMS. Na virtuálním počítači byste měli být schopni spustit test připojení, například použít soubor UDL k otestování připojení k SQL Server nebo stažení 3Tu Robo pro testování připojení MongoDB. Pokud je test připojení úspěšný, neměli byste mít problém s připojením ke zdrojové databázi. Pokud se test připojení nezdařil, obraťte se na správce sítě.
+Pokud máte při práci na migraci problémy s připojením k vašemu zdrojovému databázovému systému, vytvořte virtuální počítač ve stejné podsíti virtuální sítě, se kterou jste nastavili instanci DMS. Na virtuálním počítači byste měli být schopni spustit test připojení, například použít soubor UDL k otestování připojení k SQL Server nebo stažení 3Tu Robo pro testování připojení MongoDB. Pokud je test připojení úspěšný, neměli byste mít problém s připojením ke zdrojové databázi. Pokud se test připojení nezdařil, obraťte se na správce sítě.
 
 **Č. Proč je můj Azure Database Migration Service nedostupný nebo zastavený?**
 Pokud uživatel explicitně zastaví Azure Database Migration Service (DMS) nebo pokud je služba neaktivní po dobu 24 hodin, služba bude v zastaveném nebo automaticky pozastaveném stavu. V každém případě nebude služba k dispozici a je ve stavu Zastaveno.  Chcete-li obnovit aktivní migrace, restartujte službu.

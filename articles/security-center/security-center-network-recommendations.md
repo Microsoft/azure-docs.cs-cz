@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342446"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133697"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-reference.md#recs-network).
+Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-reference.md#recs-networking).
 
 Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT, který má nadlimitně povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
@@ -48,7 +48,7 @@ Otevření mapy sítě:
 
 1. V nabídce Security Center otevřete řídicí panel Azure Defender a vyberte **Mapa sítě**.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Typy síťových prostředků inventáře prostředků" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Otevření mapy sítě z řídicího panelu Azure Defenderu" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. Vyberte nabídku **vrstvy** a zvolte možnost **topologie**.
  

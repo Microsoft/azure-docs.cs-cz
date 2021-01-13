@@ -1,14 +1,14 @@
 ---
 title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 797a6159d310f85c35c7eb550f05ff152526b3e8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509270"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131147"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
@@ -24,6 +24,9 @@ V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azur
 Aby bylo možné shromažďovat data, budete muset vytvořit Log Analytics pracovní prostory. Tyto pracovní prostory Log Analytics jsou jedinečná prostředí pro data shromažďovaná pomocí Azure Monitor. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru.
 
 Tyto pracovní prostory doporučujeme vytvořit přímo v klientech zákazníka. Tímto způsobem jejich data zůstanou ve svých klientech a nebudete je exportovat do vašich představ. Díky tomu je možné centralizované monitorování všech prostředků nebo služeb, které Log Analytics podporuje, a poskytuje větší flexibilitu v tom, jaké typy dat sledujete.
+
+> [!TIP]
+> Jakýkoli účet Automation, který se používá pro přístup k datům z Log Analytics pracovního prostoru, se musí vytvořit ve stejném tenantovi jako pracovní prostor.
 
 Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md).
 

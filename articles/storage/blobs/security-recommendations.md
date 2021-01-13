@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127375"
+ms.locfileid: "98132473"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů BLOB
 
@@ -31,8 +31,8 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 |-|----|--|
 | Použití modelu nasazení Azure Resource Manager | Vytvořte nové účty úložiště pomocí modelu nasazení Azure Resource Manager pro důležitá vylepšení zabezpečení, včetně nadřazeného řízení přístupu na základě role Azure (Azure RBAC) a auditování, Správce prostředků nasazení a zásad správného řízení, přístupu ke spravovaným identitám, přístupu k Azure Key Vault tajným klíčům a ověřování a autorizace založené na službě Azure AD pro přístup k Azure Storage dat a prostředků. Pokud je to možné, migrujte existující účty úložiště, které používají model nasazení Classic pro použití Azure Resource Manager. Další informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md). | - |
 | Povolit Azure Defender pro všechny vaše účty úložiště | Azure Defender pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se aktivují v Azure Security Center, když se vyskytnou anomálie v aktivitě a jsou také odesílány prostřednictvím e-mailu správcům předplatného, s podrobnostmi o podezřelých aktivitách a doporučeních k tomu, jak tyto hrozby Další informace najdete v tématu [konfigurace Azure Defenderu pro Azure Storage](../common/azure-defender-storage-configure.md). | [Ano](../../security-center/security-center-sql-service-recommendations.md) |
-| Zapnout obnovitelné odstranění pro objekty blob | Obnovitelné odstranění umožňuje obnovit data objektů BLOB po jejím odstranění. Další informace o obnovitelném odstranění najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md). | - |
-| Zapnout obnovitelné odstranění pro kontejnery | ???. | - |
+| Zapnout obnovitelné odstranění pro objekty blob | Obnovitelné odstranění objektů BLOB umožňuje obnovení dat objektů BLOB po jejich odstranění. Další informace o obnovitelném odstranění objektů BLOB najdete v tématu [obnovitelné odstranění pro objekty blob Azure Storage](./soft-delete-blob-overview.md). | - |
+| Zapnout obnovitelné odstranění pro kontejnery | Obnovitelné odstranění kontejnerů umožňuje obnovení kontejneru po jeho odstranění. Další informace o obnovitelném odstranění kontejnerů najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](./soft-delete-container-overview.md). | - |
 | Uzamknout účet úložiště pro zabránění nechtěnému odstranění účtu | Můžete uzamknout Azure Resource Manager prostředky, jako je například předplatné, skupina prostředků nebo účet úložiště, aby ostatní uživatelé ve vaší organizaci nemohli omylem odstranit nebo upravit. Uzamykání účtu úložiště nebrání v odstranění dat z tohoto účtu. Zabrání jenom tomu, aby se účet odstranil. Další informace najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 | Ukládání důležitých podnikových dat v neměnných objektech blob | Nakonfigurujte právní zásady uchovávání informací na základě času a uložte data objektů BLOB ve stavu ČERVa (zápis jednou, číst mnoho). Objekty blob uložené v immutably se dají přečíst, ale po dobu trvání intervalu uchování se nedají upravit ani odstranit. Další informace najdete v tématu [ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](storage-blob-immutable-storage.md). | - |
 | Vyžadovat zabezpečený přenos (HTTPS) do účtu úložiště | ??? | - |

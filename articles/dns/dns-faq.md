@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968243"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131487"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -68,25 +68,25 @@ Azure DNS podporuje pouze hostování statických domén DNS, kde každý dotaz 
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Podporuje Azure DNS registraci názvů domén?
 
-Ne. Azure DNS v současné době nepodporuje možnost nákupu názvů domén. K nákupu domén je nutné použít registrátora názvu domény třetí strany. Registrátor obvykle účtuje malý roční poplatek. Domény pak můžou být hostované v Azure DNS pro správu záznamů DNS. Další informace najdete v tématu [delegování domény na Azure DNS](dns-domain-delegation.md).
+No. Azure DNS v současné době nepodporuje možnost nákupu názvů domén. K nákupu domén je nutné použít registrátora názvu domény třetí strany. Registrátor obvykle účtuje malý roční poplatek. Domény pak můžou být hostované v Azure DNS pro správu záznamů DNS. Další informace najdete v tématu [delegování domény na Azure DNS](dns-domain-delegation.md).
 
 Funkce pro nákup názvů domén se sleduje v nevyřízených položkách Azure. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)použijte web pro zpětnou vazbu.
 
 ### <a name="does-azure-dns-support-dnssec"></a>Podporuje Azure DNS DNSSEC?
 
-Ne. Azure DNS v současné době nepodporuje rozšíření DNSSEC (Domain Name System Security Extensions).
+No. Azure DNS v současné době nepodporuje rozšíření DNSSEC (Domain Name System Security Extensions).
 
 Funkce DNSSEC je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)použijte web pro zpětnou vazbu.
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Podporuje Azure DNS přenos zón (AXFR/IXFR)?
 
-Ne. Azure DNS v současné době nepodporuje přenosy zón. Zóny DNS se dají [do Azure DNS importovat pomocí Azure CLI](dns-import-export.md). Záznamy DNS se spravují prostřednictvím [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](/powershell/module/az.dns), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
+No. Azure DNS v současné době nepodporuje přenosy zón. Zóny DNS se dají [do Azure DNS importovat pomocí Azure CLI](dns-import-export.md). Záznamy DNS se spravují prostřednictvím [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](/powershell/module/az.dns), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
 
 Funkce přenosu zóny je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)použijte web pro zpětnou vazbu.
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Podporuje Azure DNS přesměrování adresy URL?
 
-Ne. Služby přesměrování adresy URL nejsou službou DNS. Fungují na úrovni HTTP, nikoli na úrovni DNS. Někteří poskytovatelé DNS naváže službu přesměrování adresy URL jako součást své celkové nabídky. Služba Azure DNS aktuálně nepodporuje tuto službu.
+No. Služby přesměrování adresy URL nejsou službou DNS. Fungují na úrovni HTTP, nikoli na úrovni DNS. Někteří poskytovatelé DNS naváže službu přesměrování adresy URL jako součást své celkové nabídky. Služba Azure DNS aktuálně nepodporuje tuto službu.
 
 Funkce přesměrování adresy URL je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)použijte web pro zpětnou vazbu.
 
@@ -194,6 +194,10 @@ Ano. Azure DNS názvové servery jsou duální zásobníky. Duální zásobník 
 Mezinárodní názvy domén (IDN) zakódují jednotlivé názvy DNS pomocí [Punycode](https://en.wikipedia.org/wiki/Punycode). Dotazy DNS se provádějí pomocí těchto názvů kódovaných v Punycode.
 
 Pokud chcete nakonfigurovat IDN v Azure DNS, převeďte název zóny nebo název sady záznamů na Punycode. Azure DNS v současné době nepodporuje integrovaný převod na nebo z Punycode.
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Ukládá Azure DNS privátní zóny obsah zákazníků?
+
+Ne, Azure DNS privátní zóny neukládají žádný obsah zákazníka.
 
 ## <a name="next-steps"></a>Další kroky
 

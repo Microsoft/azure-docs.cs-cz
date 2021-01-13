@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d21f7c4e74a87e409a73b22fc6b316e97e24a4e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122159"
+ms.locfileid: "98133510"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>Jak fungují Azure NetApp Files snímky
 
@@ -37,11 +37,11 @@ Následující diagramy znázorňují koncepty:
 
 ![Diagramy, které znázorňují klíčové koncepty snímků](../media/azure-netapp-files/snapshot-concepts.png)
 
-V diagramech výše se snímek povede na obrázku 1a. Na obrázku 1b se změněná data zapisují do *nového bloku* a ukazatel se aktualizuje. Ale ukazatel snímku stále ukazuje na *dříve zapsaný blok*, který vám poskytne živý a historický pohled na data. Další snímek je povedený na obrázku 1C. Nyní máte přístup k třem generacím dat (živá data, snímek 2 a snímek 1 v řádu stáří), aniž byste museli zabírat místo na svazku, které by vyžadovalo tři úplné kopie. 
+V diagramech se snímek bere na obrázku 1a. Na obrázku 1b se změněná data zapisují do *nového bloku* a ukazatel se aktualizuje. Ale ukazatel snímku stále ukazuje na *dříve zapsaný blok*, který vám poskytne živý a historický pohled na data. Další snímek je povedený na obrázku 1C. Nyní máte přístup k třem generacím dat (živá data, snímek 2 a snímek 1 v řádu stáří), aniž byste museli zabírat místo na svazku, které by vyžadovalo tři úplné kopie. 
 
 Snímek má pouze kopii metadat svazků (*tabulka inode*). Vytvoření může trvat jen několik sekund, bez ohledu na velikost svazku, využitou kapacitu nebo úroveň aktivity na svazku. Takže pořizování snímku svazku 100 TiB má stejný čas (vedle nuly) jako pořízení snímku svazku 100-GiB. Po vytvoření snímku se změny datových souborů projeví v aktivní verzi souborů jako normální.
 
-V obou případech jsou bloky dat, na které se odkazuje ze snímku, pořád stabilní a neměnné. Z důvodu "přesměrování zápisu" do Azure NetApp Files snímků se u snímku nezvýší žádná režie výkonu a sám nespotřebovává žádné místo. V průběhu času můžete ukládat až 255 snímků na celý svazek, které jsou přístupné jako verze dat jen pro čtení a online, a to s využitím minimální kapacity jako počtu změněných bloků mezi jednotlivými snímky. Změněné bloky jsou uloženy v aktivním svazku. Bloky, na které se odkazuje v snímcích, se uchovávají (jako jen pro čtení) ve svazku pro účely bezpečného použití jenom v případě, že se vymažou všechny snímky (ukazatele). Z toho vyplývá, že využití svazku se v průběhu času zvětšuje buď novými datovými bloky, nebo (upravenými) bloky dat uloženými na snímcích.
+V obou případech jsou bloky dat, na které se odkazuje ze snímku, pořád stabilní a neměnné. Kvůli "přesměrování při zápisu" z Azure NetApp Filesch svazků nevzniká žádné nároky na výkon a sama o sobě nespotřebovává žádné místo. V průběhu času můžete ukládat až 255 snímků na celý svazek, které jsou přístupné jako verze dat jen pro čtení a online, a to s využitím minimální kapacity jako počtu změněných bloků mezi jednotlivými snímky. Změněné bloky jsou uloženy v aktivním svazku. Bloky, na které se odkazuje v snímcích, se uchovávají (jako jen pro čtení) ve svazku pro bezpečné použití, pokud se vymažou všechny ukazatele (v aktivních svazcích a snímcích). Z toho vyplývá, že využití svazku se v průběhu času zvětšuje buď novými datovými bloky, nebo (upravenými) bloky dat uloženými na snímcích.
 
  Následující diagram znázorňuje snímky svazku a využité místo v čase: 
 
@@ -56,7 +56,7 @@ Vzhledem k tomu, že snímek svazku zaznamenává pouze změny bloku od posledn�
     Vytvoření, replikaci, obnovení nebo klonování snímku trvá během několika sekund, a to bez ohledu na velikost svazku a úroveň aktivit. Snímek svazku můžete vytvořit [na vyžádání](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume). Pomocí [zásad snímku](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) můžete také určit, kdy má Azure NetApp Files automaticky vytvořit snímek a kolik snímků má být pro svazek zachováno.  Konzistenci aplikací lze dosáhnout orchestrací snímků pomocí aplikační vrstvy, například pomocí [nástroje AzAcSnap](azacsnap-introduction.md) pro SAP HANA.
 
 Snímky _ nemají žádný vliv na volume ***Performance** _.   
-    Z důvodu "přesměrování na zápis" na technologii pro nakládání, ukládání nebo uchovávání Azure NetApp Files snímků nemá žádný vliv na výkon, ani u těžké aktivity dat. Odstranění snímku má v mnoha případech také malý vliv na výkon. 
+    Z důvodu "přesměrování na zápis" na technologii pro nakládání, ukládání nebo uchovávání Azure NetApp Files snímků nemá žádný vliv na výkon, ani u těžké aktivity dat. Odstranění snímku má ve většině případů také malý vliv na výkon. 
 
 _ Snímky poskytují ***škálovatelnost** _, protože je možné je vytvořit často a mnoho je možné zachovat.   
     Azure NetApp Files svazky podporují až 255 snímků. Schopnost ukládat velký počet nepříznivých, často vytvořených snímků zvyšuje pravděpodobnost, že se požadovaná verze dat může úspěšně obnovit.
@@ -66,7 +66,7 @@ Vysoce výkonná, škálovatelnost a stabilita technologie Azure NetApp Filesho 
 
 ## <a name="ways-to-create-snapshots"></a>Způsoby vytváření snímků   
 
-Azure NetApp Files snímky se používají univerzální. V takovém případě jsou k dispozici více metod pro vytváření a údržbu snímků:
+K vytváření a údržbě snímků můžete použít několik metod:
 
 _ Ručně (na vyžádání) pomocí:   
     * Nástroje [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), [REST API](/rest/api/netapp/snapshots), [Azure CLI](/cli/azure/netappfiles/snapshot)nebo [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot)
@@ -78,7 +78,7 @@ _ Ručně (na vyžádání) pomocí:
 
 ## <a name="how-volumes-and-snapshots-are-replicated-cross-region-for-dr"></a>Jak jsou svazky a snímky replikovány mezi oblastmi pro zotavení po havárii  
 
-Azure NetApp Files podporuje [replikaci mezi oblastmi](cross-region-replication-introduction.md) pro účely zotavení po havárii (Dr). Replikace mezi oblastmi Azure NetApp Files používá technologii SnapMirror. V komprimovaném, efektivním formátu se přes síť odesílají jenom změněné bloky. Po zahájení replikace mezi různými oblastmi mezi svazky se celý obsah svazku (tj. vlastní bloky uložených dat) přenese jenom jednou. Tato operace se nazývá *přenos podle směrného plánu*. Po počátečním přenosu se přenesou jenom změněné bloky (jako zachycené ve snímcích). Vytvoří se asynchronní replika 1:1 zdrojového svazku (včetně všech snímků).  Toto chování se řídí úplným a přírůstkovým replikačním mechanismem. Tato proprietární technologie minimalizuje množství dat potřebných k replikaci napříč různými oblastmi, takže šetří náklady na přenos dat. Také zkrátí dobu replikace. Můžete dosáhnout menšího cíle bodu obnovení (RPO), protože je možné vytvořit více snímků a přenášet je častěji pomocí omezených přenosů dat.
+Azure NetApp Files podporuje [replikaci mezi oblastmi](cross-region-replication-introduction.md) pro účely zotavení po havárii (Dr). Replikace mezi oblastmi Azure NetApp Files používá technologii SnapMirror. V komprimovaném, efektivním formátu se přes síť odesílají jenom změněné bloky. Po zahájení replikace mezi různými oblastmi mezi svazky se celý obsah svazku (tj. vlastní bloky uložených dat) přenese jenom jednou. Tato operace se nazývá *přenos podle směrného plánu*. Po počátečním přenosu se přenesou jenom změněné bloky (jako zachycené ve snímcích). Výsledkem je asynchronní 1:1 replika zdrojového svazku, včetně všech snímků. Toto chování se řídí úplným a přírůstkovým replikačním mechanismem. Tato technologie minimalizuje množství dat potřebných pro replikaci v různých oblastech, takže šetří náklady na přenos dat. Také zkrátí dobu replikace. Můžete dosáhnout menšího cíle bodu obnovení (RPO), protože je možné vytvořit více snímků a přenášet je častěji pomocí omezených přenosů dat. Dále si vyloučí potřebu hostitelských mechanismů replikace, aby se předešlo nákladům na virtuální počítače a licence softwaru.
 
 Následující diagram znázorňuje provoz snímků ve scénářích replikace mezi oblastmi: 
 
@@ -90,7 +90,7 @@ Technologie Azure NetApp Files snímků významně vylepšuje četnost a spolehl
 
 ### <a name="restoring-files-or-directories-from-snapshots"></a>Obnovování souborů nebo adresářů ze snímků 
 
-Pokud není [viditelnost cesty snímku](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) skrytá, můžou uživatelé získat přímý přístup k snímkům, aby se obnovili z nechtěného odstranění, poškození nebo změny jejich dat. Zabezpečení souborů a adresářů se uchovává ve snímku a snímky jsou jen pro čtení. V takovém případě je obnovení zabezpečené a jednoduché. 
+Pokud není [viditelnost cesty snímků](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) nastavená na `hidden` , můžou uživatelé získat přímý přístup k snímkům při obnovení z náhodného odstranění, poškození nebo změny jejich dat. Zabezpečení souborů a adresářů se uchovává ve snímku a snímky jsou jen pro čtení. V takovém případě je obnovení zabezpečené a jednoduché. 
 
 Následující diagram zobrazuje soubor nebo adresář s přístupem ke snímku: 
 
@@ -108,7 +108,7 @@ Viz [obnovení souboru ze snímku pomocí klienta](azure-netapp-files-manage-sna
 
 ### <a name="restoring-cloning-a-snapshot-to-a-new-volume"></a>Obnovení (klonování) snímku na nový svazek
 
-Snímky Azure NetApp Files lze obnovit do samostatného nezávislého svazku. Tato operace je skoro okamžitá, bez ohledu na velikost svazku a spotřebovaný objem. Nově vytvořený svazek je skoro hned k dispozici pro přístup, zatímco se kopírují skutečné bloky dat svazku a snímku. V závislosti na velikosti svazku a kapacitě může tento proces trvat značnou dobu, než se nadřazený svazek a snímek nedá odstranit. Po počátečním vytvoření však může být svazek již k dispozici, zatímco proces kopírování probíhá na pozadí. Tato schopnost umožňuje rychlé vytváření svazků pro obnovení dat nebo klonování svazků pro testování a vývoj. Podle povahy procesu kopírování dat se spotřeba fondu kapacity úložiště po dokončení obnovení zdvojnásobí a na novém svazku se zobrazí plná aktivní kapacita původního snímku. Po dokončení tohoto procesu se svazek nezávisle a zruší jeho přidružení k původnímu svazku a zdrojové svazky a snímky můžete spravovat nebo odebírat nezávisle na novém svazku.
+Snímky Azure NetApp Files můžete obnovit do samostatného nezávislého svazku. Tato operace je skoro okamžitá, bez ohledu na velikost svazku a spotřebovaný objem. Nově vytvořený svazek je skoro hned k dispozici pro přístup, zatímco se kopírují skutečné bloky dat svazku a snímku. V závislosti na velikosti svazku a kapacitě může tento proces trvat značnou dobu, než se nadřazený svazek a snímek nedá odstranit. Po počátečním vytvoření však může být svazek již k dispozici, zatímco proces kopírování probíhá na pozadí. Tato schopnost umožňuje rychlé vytváření svazků pro obnovení dat nebo klonování svazků pro testování a vývoj. Podle povahy procesu kopírování dat se spotřeba fondu kapacity úložiště po dokončení obnovení zdvojnásobí a na novém svazku se zobrazí plná aktivní kapacita původního snímku. Po dokončení tohoto procesu se svazek nezávisle a zruší jeho přidružení k původnímu svazku a zdrojové svazky a snímky můžete spravovat nebo odebírat nezávisle na novém svazku.
 
 Následující diagram znázorňuje nový svazek vytvořený obnovením (klonování) snímku:   
 
@@ -124,7 +124,7 @@ Viz část [obnovení snímku na nový svazek](azure-netapp-files-manage-snapsho
 
 ### <a name="restoring-reverting-a-snapshot-in-place"></a>Obnovení (vrácení) snímku na místě
 
-V některých případech, protože nový svazek bude využívat kapacitu úložiště, nemusí být vytvoření nového svazku ze snímku nutné nebo vhodné. Aby bylo možné obnovit data z poškození dat (například z důvodu poškození databáze nebo útoků ransomwarem), může být vhodnější obnovit snímek v rámci samotného svazku. Tuto operaci lze provést pomocí funkce pro obnovení snímku Azure NetApp Files. Tato funkce umožňuje rychle vrátit svazek do stavu, ve kterém byl proveden konkrétní snímek. Ve většině případů je vrácení svazku mnohem rychlejší než obnovení jednotlivých souborů ze snímku do aktivního systému souborů, zejména ve velkých TiB svazcích. 
+V některých případech, protože nový svazek bude využívat kapacitu úložiště, nemusí být vytvoření nového svazku ze snímku nutné nebo vhodné. Aby bylo možné rychle obnovit z důvodu poškození dat (například poškození databáze nebo útoky ransomwarem), může být vhodnější obnovit snímek v rámci samotného svazku. Tuto operaci lze provést pomocí funkce pro obnovení snímku Azure NetApp Files. Tato funkce umožňuje rychle vrátit svazek do stavu, ve kterém byl proveden konkrétní snímek. Ve většině případů je vrácení svazku mnohem rychlejší než obnovení jednotlivých souborů ze snímku do aktivního systému souborů, zejména ve velkých TiB svazcích. 
 
 Vrácení snímku svazku je blízko sebe a dokončení trvá jenom několik sekund, a to i pro největší svazky. Metadata aktivního svazku (*tabulka inode*) se nahradí metadaty snímku z doby vytváření snímku, takže se svazek do daného konkrétního bodu v čase vrátí. Aby se změny projevily, není nutné kopírovat žádné datové bloky. V takovém případě je více místa efektivní než obnovení snímku na nový svazek. 
 
@@ -142,11 +142,11 @@ Informace o tom, jak používat tuto funkci, najdete v tématu věnovaném [Vrá
 Snímky využívají kapacitu úložiště. V takovém případě nejsou obvykle uchovávány po neomezenou dobu. V případě ochrany dat, uchovávání a obnovení je řada snímků (vytvořených v různých časových okamžicích) obvykle udržována online po určitou dobu v závislosti na požadavcích smlouvy SLA pro RPO, RTO a uchování. Starší snímky se ale často nemusí uchovávat ve službě úložiště a možná je budete muset odstranit, abyste uvolnili místo. Libovolný snímek se dá kdykoli odstranit (ne nutně v pořadí vytváření) správcem. 
 
 > [!IMPORTANT]
-> Operaci odstranění snímku nelze vrátit zpět. 
+> Operaci odstranění snímku nelze vrátit zpět. Měli byste uchovávat offline kopie svazku pro účely ochrany a uchovávání dat. 
 
 Když se odstraní snímek, odeberou se všechny ukazatele z tohoto snímku na stávající datové bloky. Pokud blok dat nemá žádné další ukazatele ukazující na něj (aktivní svazek nebo jiné snímky ve svazku), vrátí se datový blok na svazek volného místa pro budoucí použití. Proto odebrání snímků obvykle uvolňuje větší kapacitu ve svazku než odstranění dat z aktivního svazku, protože bloky dat jsou často zachyceny v dříve vytvořených snímcích. 
 
-Následující diagram znázorňuje efekt využití úložiště při odstraňování snímku pro svazek:  
+Následující diagram znázorňuje účinek odstranění snímku 3 ze svazku na využití úložiště:  
 
 ![Diagram, který zobrazuje efekt spotřeby úložiště při odstraňování snímku](../media/azure-netapp-files/snapshot-delete-storage-consumption.png)
 

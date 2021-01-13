@@ -10,21 +10,21 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883380"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134173"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
 Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Můžete to udělat tak, že povolíte protokolování pro Azure Key Vault, které ukládá informace v účtu úložiště Azure, který poskytnete. Podrobné pokyny k tomuto nastavení najdete v tématu [Jak povolit protokolování Key Vault](howto-logging.md).
 
-Po operaci trezoru klíčů máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů v účtu úložiště je pouze na vás:
+Po operaci trezoru klíčů máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů ve vašem účtu úložiště záleží na vás:
 
 * Pomocí standardních metod řízení přístupu Azure v účtu úložiště Zabezpečte protokoly tím, že omezíte, kdo k nim má přístup.
-* Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
+* Odstraňujte protokoly, které už nechcete uchovávat v účtu úložiště.
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
 
@@ -59,7 +59,7 @@ Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme 
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
 | **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -182,6 +182,7 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **CertificatePendingDelete** |Odstranit certifikát, který čeká |
 | **CertificateNearExpiryEventGridNotification** |Publikovaná událost poblíž vypršení platnosti certifikátu |
 | **CertificateExpiredEventGridNotification** |Událost vypršení platnosti certifikátu byla publikována. |
+
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Použití protokolů Azure Monitoru

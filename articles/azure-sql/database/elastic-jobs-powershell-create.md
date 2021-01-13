@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427299"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131929"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Vytvoření agenta elastické úlohy pomocí prostředí PowerShell (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Použití elastických úloh
-
-Pokud chcete použít elastické úlohy, zaregistrujte funkci v předplatném Azure spuštěním následujícího příkazu. Spusťte tento příkaz jednou pro předplatné, ve kterém máte v úmyslu zřídit agenta elastické úlohy. Odběry, které obsahují pouze databáze, které jsou cílem úlohy, nemusí být registrovány.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Vytvoření agenta elastických úloh
 
 Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent spouští úlohy na základě plánu nebo jako jednorázové úlohy.
 
-Rutina **New-AzSqlElasticJobAgent** vyžaduje databázi v Azure SQL Database, aby již existovala, takže parametry *resourceGroupName*, *servername*a *DatabaseName* musí všechny odkazovat na stávající prostředky.
+Rutina **New-AzSqlElasticJobAgent** vyžaduje databázi v Azure SQL Database, aby již existovala, takže parametry *resourceGroupName*, *servername* a *DatabaseName* musí všechny odkazovat na stávající prostředky.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Cílová skupina](job-automation-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy.
 
-Následující fragment kódu vytvoří dvě cílové skupiny: skupiny *serverů*a *serverGroupExcludingDb2*. *serverová* aplikace cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru s výjimkou *targetDb2*:
+Následující fragment kódu vytvoří dvě cílové skupiny: skupiny *serverů* a *serverGroupExcludingDb2*. *serverová* aplikace cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru s výjimkou *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."

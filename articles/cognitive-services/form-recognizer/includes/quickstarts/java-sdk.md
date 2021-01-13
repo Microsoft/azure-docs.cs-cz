@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808585"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132271"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -156,8 +156,8 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 `FormRecognizerClient` poskytuje operace pro:
 
 - Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k rozpoznávání vlastních formulářů.  Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů. Viz příklad [analýzy vlastních formulářů](#analyze-forms-with-a-custom-model).
-- Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model.  Obsah formuláře se vrátí v kolekci `FormPage` objektů. Viz příklad [rozpoznávání obsahu formuláře](#recognize-form-content).
-- Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů.  Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [rozpoznávání účtenek](#recognize-receipts).
+- Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model.  Obsah formuláře se vrátí v kolekci `FormPage` objektů. Viz příklad [analýzy rozložení](#analyze-layout).
+- Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů.  Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [Analýza účtenek](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 * [Ověření klienta](#authenticate-the-client)
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 * [Ověření klienta](#authenticate-the-client)
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
-* [Rozpoznávání vizitek](#recognize-business-cards)
-* [Rozpoznávání faktur](#recognize-invoices)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
+* [Analýza vizitek](#analyze-business-cards)
+* [Analyzovat faktury](#analyze-invoices)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
@@ -200,7 +200,7 @@ V horní části metody **Main** přidejte následující kód. Tady ověříte 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
+## <a name="analyze-layout"></a>Analyzovat rozložení
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model.
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>Rozpoznávání příjmů
+## <a name="analyze-receipts"></a>Analyzovat účtenky
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů.
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+## <a name="analyze-business-cards"></a>Analýza vizitek
 
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
@@ -293,7 +293,7 @@ Vrácená hodnota je kolekce objektů **RecognizedForm** : jedna pro každou kar
 
 ---
 
-## <a name="recognize-invoices"></a>Rozpoznávání faktur
+## <a name="analyze-invoices"></a>Analyzovat faktury
 
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 

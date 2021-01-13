@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507638"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133187"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -20,6 +20,10 @@ V tomto článku se zaměříme na některé běžné problémy, které byste mo
 Ve výchozím nastavení agent Java 3,0 pro Application Insights vytvoří soubor protokolu s názvem `applicationinsights.log` ve stejném adresáři, ve kterém je uložený `applicationinsights-agent-3.0.0.jar` soubor.
 
 Tento soubor protokolu je prvním místem, kde můžete vyhledat tipy pro případné problémy, se kterými se můžete setkat.
+
+## <a name="jvm-fails-to-start"></a>JVM se nepodařilo spustit.
+
+Pokud se JVM nepovede a spustí se chyba při otevírání souboru ZIP nebo chybějícího manifestu JAR, zkuste znovu stáhnout soubor JAR agenta, protože je možná poškozený během přenosu souborů.
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Upgrade z Application Insights Java 2. x SDK
 

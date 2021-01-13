@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/03/2020
+ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08d5e20bf0755a71e70a0e446cf96d33bb42ad59
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351881"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132060"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač se systémem Linux
 
@@ -24,16 +24,14 @@ Když v [Azure Portal](https://portal.azure.com)vytvoříte virtuální počíta
 V tomto článku se předpokládá, že jste už vytvořili virtuální počítač. V případě potřeby můžete na portálu vytvořit virtuální počítač se systémem [Linux](./linux/quick-create-portal.md) nebo [Windows](./windows/quick-create-portal.md) . Když je virtuální počítač v provozu a spuštěný, postupujte podle těchto kroků:
 
 
-1. Na portálu vyberte svůj virtuální počítač. V části **název DNS** vyberte **Konfigurovat**.
-2. Zadejte název DNS a potom v horní části stránky vyberte **Uložit** .
-3. Pokud se chcete vrátit do okna s přehledem virtuálního počítače, zavřete okno **Konfigurace** tak, že v pravém horním rohu vyberete **X** . 
-4. Ověřte, zda je *název DNS* nyní zobrazen správně.
-   
-
-
+1. Na portálu vyberte svůj virtuální počítač. 
+1. V nabídce vlevo vyberte **Konfigurace** .
+1. V části **popisek názvu DNS** zadejte předponu, kterou chcete použít.
+1. V horní části stránky vyberte **Save (Uložit** ).
+1. V nabídce vlevo vyberte **Přehled** a vraťte se do okna s přehledem virtuálního počítače. 
+1. Ověřte, že se *název DNS* zobrazuje správně. 
 
 ## <a name="next-steps"></a>Další kroky
-Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je Nginx, MongoDB a Docker.
 
-Můžete si také přečíst další informace o [použití Správce prostředků](../azure-resource-manager/management/overview.md) pro tipy k vytváření nasazení Azure.
+DNS můžete spravovat také pomocí [Azure DNS zón](../dns/dns-getstarted-portal.md).
 

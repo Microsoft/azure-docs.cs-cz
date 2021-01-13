@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Relay | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé z nejčastějších dotazů týkajících se služby Azure Relay.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299282"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131844"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -50,7 +50,6 @@ Tady jsou tři příklady scénářů fakturace pro Hybrid Connections:
     *   V průběhu tohoto měsíce odesíláte 6 GB dat napříč připojením B.
     *   Vaše celková cena je $10,50. To je $5 pro připojení A + $5 pro připojení B + $0,50 (za šest GB u připojení B).
 
-Všimněte si, že ceny použité v příkladech platí jenom během období Hybrid Connections Preview. Ceny se mohou po obecné dostupnosti Hybrid Connections změnit.
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Jak se počítají hodiny pro přenos?
 
@@ -93,7 +92,7 @@ Název oboru názvů přenosu musí mít délku 6 až 50 znaků.
 
 Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete použít [Azure Portal](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 

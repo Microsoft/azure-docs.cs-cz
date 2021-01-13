@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674493"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131470"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -38,12 +38,12 @@ Následující verze agenta Azure File Sync prošly a již nejsou podporovány:
 
 | RTM | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Verze v7 | 7.0.0.0 - 7.2.0.0 | – | Nepodporované – verze agentů vypršela od 1. září 2020 |
-| Verze V6 | 6.0.0.0 - 6.3.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 21. dubna 2020 |
-| Verze verze 5 | 5.0.2.0 - 5.2.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 18. března 2020 |
-| Verze v4 | 4.0.1.0 - 4.3.0.0 | – | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
-| Verze v3 | 3.1.0.0 - 3.4.0.0 | – | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
-| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | – | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
+| Verze v7 | 7.0.0.0 - 7.2.0.0 | Není k dispozici | Nepodporované – verze agentů vypršela od 1. září 2020 |
+| Verze V6 | 6.0.0.0 - 6.3.0.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 21. dubna 2020 |
+| Verze verze 5 | 5.0.2.0 - 5.2.0.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 18. března 2020 |
+| Verze v4 | 4.0.1.0 - 4.3.0.0 | Není k dispozici | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
+| Verze v3 | 3.1.0.0 - 3.4.0.0 | Není k dispozici | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
+| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -236,14 +236,14 @@ Následující poznámky k verzi jsou pro 9.0.0.0 agenta Azure File Sync (vydan�
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny
 
 - Podpora samoobslužného obnovení
-    - Uživatelé teď můžou svoje soubory obnovit pomocí funkce předchozí verze. Před vydáním verze v9 se funkce předchozí verze nepodporovala u svazků s povoleným vrstvou cloudu. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v části  
+    - Uživatelé teď můžou obnovit vrstvené soubory (společně s použitím souborů na disku) pomocí funkce předchozí verze, od snímků služby VSS, které jsou vytvořené po samoobslužném obnovení, se na svazku povolí. Před vydáním verze v9 se funkce předchozí verze u vrstvených souborů nepodporuje. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v části  
 [Samoobslužné obnovení prostřednictvím předchozích verzí a služby VSS (služba Stínová kopie svazku)](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Podpora větších velikostí sdílení souborů 
     - Azure File Sync teď v jednom synchronizovaném oboru názvů podporuje až soubory 64TiB a 100 000 000.  
  
 - Podpora odstranění duplicitních dat na serveru 2019 
-    - Odstranění duplicitních dat se teď podporuje s povoleným vytvářením vrstev cloudu v systému Windows Server 2019. Aby bylo možné podporovat odstranění duplicitních dat u svazků s vrstvením cloudu, musí být nainstalovaná služba Windows Update [KB4520062](https://support.microsoft.com/help/4520062) . 
+    - Odstranění duplicitních dat se teď podporuje (bez ohledu na to, jestli je na jednom nebo více koncových bodech serveru na tomto svazku povolená nebo zakázaná vrstva cloudu) v systémech Windows Server 2016 a Windows Server 2019. Aby bylo možné podporovat odstranění duplicitních dat na svazcích s vrstvou cloudu na serveru 2019, musí být nainstalovaná služba Windows Update [KB4520062](https://support.microsoft.com/help/4520062) . 
  
 - Zlepšení minimální velikosti souboru pro vrstvu 
     - Minimální velikost souboru na vrstvu je teď založená na velikosti clusteru systému souborů (Dvojnásobná velikost clusteru systému souborů). Ve výchozím nastavení je velikost clusteru systému souborů NTFS 4KB, což je maximální velikost souboru do vrstvy 8 KB. 

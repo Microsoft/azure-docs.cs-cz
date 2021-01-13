@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808636"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132268"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -102,8 +102,8 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny pro rozpoznávání formulářů pro JavaScript:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
@@ -126,7 +126,7 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Použijte ukázku z a příjem fotografií, které jsou uvedené v následujících ukázkách (k dispozici na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)), nebo můžete pomocí výše uvedeného postupu získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. 
 
 
-## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
+## <a name="analyze-layout"></a>Analyzovat rozložení
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Pro rozpoznání obsahu souboru v daném identifikátoru URI použijte `beginRecognizeContentFromUrl` metodu.
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>Rozpoznávání příjmů
+## <a name="analyze-receipts"></a>Analyzovat účtenky
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů.
 

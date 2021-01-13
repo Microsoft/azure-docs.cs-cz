@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976046"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131504"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrání generalizovaného virtuálního pevného disku a jeho použití k vytváření nových virtuálních počítačů v Azure
 
@@ -38,13 +38,15 @@ Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počíta
 > 
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
-3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtávací políčko **generalize** povoleno.
-4. V **Možnosti vypnutí**vyberte **vypnout**.
-5. Vyberte **OK**.
+1. Otevřete okno příkazového řádku jako správce. 
+1. Odstraňte adresář Panther (C:\Windows\Panther).
+1. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
+1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtávací políčko **generalize** povoleno.
+1. V **Možnosti vypnutí** vyberte **vypnout**.
+1. Vyberte **OK**.
    
     ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Po dokončení programu Sysprep vypne virtuální počítač. Virtuální počítač nerestartujte.
+1. Po dokončení programu Sysprep vypne virtuální počítač. Virtuální počítač nerestartujte.
 
 
 ## <a name="upload-the-vhd"></a>Nahrání virtuálního pevného disku 
@@ -93,7 +95,7 @@ $image = New-AzImage `
 
 ## <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
-Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM* z *myImage*v *myResourceGroup*.
+Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Tento příklad vytvoří virtuální počítač s názvem *myVM* z *myImage* v *myResourceGroup*.
 
 
 ```powershell

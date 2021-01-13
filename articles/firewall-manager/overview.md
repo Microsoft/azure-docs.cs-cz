@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: victorh
-ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95489690"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132439"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -76,7 +76,7 @@ Zásady Azure Firewall lze používat napříč oblastmi. Můžete například v
 
 Azure Firewall Manager má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Description  |Omezení rizik  |
 |---------|---------|---------|
 |Rozdělení provozu|Rozdělení provozu Microsoft 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I, který prostřednictvím partnerské služby pošle veškerý veřejný PaaS a Microsoft 365 provoz Azure.|Zkoumání rozdělení provozu v centru.
 |Jeden zabezpečený virtuální rozbočovač na oblast|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
@@ -86,7 +86,6 @@ Azure Firewall Manager má následující známé problémy:
 |Provoz větví do větvení s povoleným filtrováním privátních přenosů|Komunikace větví s větví není podporovaná, pokud je povolené filtrování privátních přenosů. |Zkoumání.<br><br>Nezabezpečte privátní provoz, pokud je připojení větví k pobočce kritické.|
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
 |Přidání hromadné IP adresy se nezdařilo.|Brána firewall zabezpečeného centra přejde do stavu selhání, pokud přidáte více veřejných IP adres.|Přidejte menší zvýšení veřejných IP adres. Přidejte například 10 po dobu.|
-|Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Vlastní DNS (Preview) nefunguje v nasazeních zabezpečeného centra a v nasazeních virtuálních sítí rozbočovače, kde je povolené vynucené tunelování.|Opravte šetření.|
 |DDoS Protection Standard není podporován u zabezpečených virtuálních rozbočovačů.|DDoS Protection Standard není integrovaný do vWANs.|Prověřování|
 |Protokoly aktivit nejsou plně podporované.|Zásady brány firewall v současné době nepodporují protokoly aktivit.|Prověřování|
 |Konfigurace rozsahů privátních IP adres SNAT|[Nastavení rozsahu privátních IP adres](../firewall/snat-private-range.md) se ignoruje, pokud je nakonfigurovaná zásada Azure firewall. Použije se výchozí chování Azure Firewall, kde se nejedná o Síťová pravidla, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Prověřování|

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853716"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132272"
 ---
 > [!NOTE]
 > V tomto průvodci se k provádění volání REST API používá oblé. K dispozici je také [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) , který ukazuje, jak volat rozhraní REST API pomocí Pythonu.
@@ -32,7 +32,7 @@ ms.locfileid: "97853716"
 * Adresa URL obrázku faktury Pro tento rychlý Start můžete použít [ukázkový dokument](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) .
 
 
-## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
+## <a name="analyze-layout"></a>Analyzovat rozložení
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznání a extrahování tabulek, řádků a slov v dokumentech, aniž byste museli přeškolit model. Před spuštěním příkazu proveďte tyto změny:
 
@@ -319,7 +319,7 @@ Podívejte se na následující obrázek faktury a příslušný výstup JSON. V
 
 ---
 
-## <a name="recognize-receipts"></a>Rozpoznávání příjmů
+## <a name="analyze-receipts"></a>Analyzovat účtenky
 
 Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
 
@@ -699,7 +699,7 @@ Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 }
 ```
 
-## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+## <a name="analyze-business-cards"></a>Analýza vizitek
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat 
 
 ---
 
-## <a name="recognize-invoices"></a>Rozpoznávání faktur
+## <a name="analyze-invoices"></a>Analyzovat faktury
 
 # <a name="version-20"></a>[verze 2,0](#tab/v2-0)
 

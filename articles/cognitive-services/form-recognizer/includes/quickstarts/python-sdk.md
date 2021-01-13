@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808653"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132269"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -100,8 +100,8 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
 * [Ověření klienta](#authenticate-the-client)
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
@@ -109,10 +109,10 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 #### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
 * [Ověření klienta](#authenticate-the-client)
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
-* [Rozpoznávání vizitek](#recognize-business-cards)
-* [Rozpoznávání faktur](#recognize-invoices)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
+* [Analýza vizitek](#analyze-business-cards)
+* [Analyzovat faktury](#analyze-invoices)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)
@@ -137,7 +137,7 @@ Budete muset přidat odkazy na adresy URL pro školení a testování dat.
 > [!NOTE]
 > Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](/python/api/azure-ai-formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
-## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
+## <a name="analyze-layout"></a>Analyzovat rozložení
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model.
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>Rozpoznávání příjmů
+## <a name="analyze-receipts"></a>Analyzovat účtenky
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů. Chcete-li rozpoznat účtenky z adresy URL, použijte `begin_recognize_receipts_from_url` metodu. 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>Rozpoznávání vizitek
+## <a name="analyze-business-cards"></a>Analýza vizitek
 
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
@@ -221,7 +221,7 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglic
 
 ---
 
-## <a name="recognize-invoices"></a>Rozpoznávání faktur
+## <a name="analyze-invoices"></a>Analyzovat faktury
 
 #### <a name="version-20"></a>[verze 2,0](#tab/ga)
 
@@ -454,7 +454,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 Klientská knihovna pro rozpoznávání formulářů vyvolá výjimky definované v [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 
 Tato knihovna používá [standardní knihovnu protokolování](https://docs.python.org/3/library/logging.html) pro protokolování. Základní informace o relacích HTTP (adresy URL, hlavičky atd.) se zaznamenávají na úrovni informací.
 

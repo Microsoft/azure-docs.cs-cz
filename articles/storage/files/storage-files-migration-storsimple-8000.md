@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723974"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134343"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -413,7 +413,7 @@ Tento přístup k migraci vyžaduje pro uživatele a aplikace nějaké výpadky.
 
 Když pro sdílenou složku Azure použijete Azure File Sync, je důležité, abyste *před* spuštěním jakékoli místní složky Robocopy zjistili, že jste dokončili stahování celého oboru názvů na server. Doba potřebná ke stažení vašeho oboru názvů závisí na počtu položek ve sdílené složce Azure. Existují dva způsoby, jak určit, zda byl váš obor názvů plně doručen na server.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pomocí Azure Portal můžete zobrazit, kdy váš obor názvů plně dorazil.
 
@@ -441,6 +441,9 @@ V tomto okamžiku existují rozdíly mezi místní instancí Windows serveru a z
 1. V důsledku neplatných znaků mohly být některé soubory ponechány na pozadí úlohy transformace dat. Pokud ano, zkopírujte je do instance Windows serveru s povolenou Azure File Sync. Později je můžete upravit tak, aby se synchronizovaly. Pokud nepoužíváte Azure File Sync pro konkrétní sdílenou složku, budete lépe přejmenovává soubory o neplatné znaky na svazku StorSimple. Pak spusťte příkaz Robocopy přímo se sdílenou složkou Azure.
 
 > [!WARNING]
+> Robocopy v systému Windows Server 2019 v současné době dochází k problému, který způsobí, že soubory vytvořené Azure File Sync na cílovém serveru budou překopírovány ze zdroje a znovu nahrány do Azure při použití funkce/MIR nástroje Robocopy. Je nutné použít příkaz Robocopy na jiném serveru Windows než 2019. Upřednostňovanou volbou je Windows Server 2016. Tato poznámka se aktualizuje, pokud se problém vyřeší prostřednictvím web Windows Update.
+
+> [!WARNING]
 > Než bude server mít úplný obor názvů pro sdílenou složku Azure stažený, *nesmíte spustit příkaz* Robocopy. Další informace najdete v tématu [určení, kdy se Váš obor názvů úplně stáhl na váš server](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
  Chcete kopírovat jenom soubory, které se změnily po posledním spuštění úlohy migrace, a soubory, které se před těmito úlohami nepřesunuly. Problém můžete vyřešit tak, že se po dokončení migrace později nepřesunul na server. Další informace najdete v tématu [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
@@ -448,7 +451,7 @@ V tomto okamžiku existují rozdíly mezi místní instancí Windows serveru a z
 Příkaz Robocopy obsahuje několik parametrů. Následující příklad prezentuje dokončený příkaz a seznam důvodů pro výběr těchto parametrů.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Pozadí
@@ -499,6 +502,14 @@ Pozadí
    :::column-end:::
    :::column span="1":::
       Umožňuje, aby Robocopy braly jenom rozdíly mezi zdrojem (StorSimple zařízením) a cílem (adresář Windows serveru).
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      Zajistí, aby se v některých scénářích zrcadlení zachovala přesnost.</br>Příklad: mezi dvěma prostředími Robocopy se spustí soubor se změnou seznamu ACL a aktualizace atributu, například jako *skrytý*. Bez příkazu/IT může být Změna seznamu ACL vynechána, takže nebude přenesena do cílového umístění.
    :::column-end:::
 :::row-end:::
 :::row:::

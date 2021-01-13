@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030862"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132712"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejnerů ve službě Security Center
 
@@ -48,7 +48,7 @@ Na následujícím snímku obrazovky vidíte stránku inventáře prostředků a
 
 Pokud chcete monitorovat image v registrech kontejnerů Azure založených na Azure Resource Manager, povolte v [Azure Defenderu Registry kontejnerů](defender-for-container-registries-introduction.md). Security Center prohledává všechny image za posledních 30 dnů, vloženy do registru nebo naimportovaly. Integrovaný skener je poskytován od špičkové kontroly ohrožení zabezpečení od dodavatele, Qualys.
 
-Po nalezení problémů – podle Qualys nebo Security Center – obdržíte oznámení na [řídicím panelu Azure Defender](azure-defender-dashboard.md). U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center pro kontejnery najdete v [referenčním seznamu doporučení](recommendations-reference.md#recs-containers).
+Po nalezení problémů – podle Qualys nebo Security Center – obdržíte oznámení na [řídicím panelu Azure Defender](azure-defender-dashboard.md). U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center pro kontejnery najdete v [referenčním seznamu doporučení](recommendations-reference.md#recs-compute).
 
 Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
@@ -60,7 +60,7 @@ Azure Security Center identifikuje nespravované kontejnery hostované na virtu�
 
 Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. Když nalezne chybnou konfiguraci, Security Center vygeneruje doporučení zabezpečení. Pomocí **stránky doporučení** Security Center můžete zobrazit doporučení a opravit problémy. Kontroly srovnávacích testů CIS neběží na AKS instancích nebo virtuálních počítačích spravovaných datacihly.
 
-Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
+Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části COMPUTE](recommendations-reference.md#recs-compute) referenční tabulky doporučení.
 
 Když prozkoumáte problémy se zabezpečením virtuálního počítače, Security Center poskytne další informace o kontejnerech v počítači. Tyto informace zahrnují verzi Docker a počet imagí spuštěných na hostiteli. 
 
@@ -74,7 +74,7 @@ AKS poskytuje bezpečnostní mechanismy a přehled o stavech zabezpečení vaši
 * Nepřetržité monitorování konfigurace clusterů AKS
 * Generování doporučení zabezpečení zarovnaného k oborovým standardům
 
-Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
+Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části COMPUTE](recommendations-reference.md#recs-compute) referenční tabulky doporučení.
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes
 

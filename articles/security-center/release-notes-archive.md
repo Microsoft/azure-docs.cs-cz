@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 7325ba1a8a90fec90182f9780c1fb18d29d3c0f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 835950cc68ca22ea3958d614d669d7a105fefe62
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955259"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132915"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -110,7 +110,7 @@ Další informace o zabezpečení kontejneru Security Center najdete v následuj
 - [Jak kontrolovat registry a posílit svoje hostitele Docker](container-security.md)
 - [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster)
 - [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro hostitele služeb Azure Kubernetes](alerts-reference.md#alerts-containerhost)
-- [Doporučení zabezpečení pro kontejnery](recommendations-reference.md#recs-containers)
+- [Doporučení zabezpečení pro kontejnery](recommendations-reference.md#recs-compute)
 
 
 
@@ -195,7 +195,7 @@ Tato nová doporučení se zobrazí ve stejných čtyřech kontrolních prvcích
 
 Doporučení také obsahují možnosti rychlé opravy, které vám pomůžou urychlit proces nasazení. 
 
-Další informace o těchto dvou nových doporučeních najdete v tabulce s [doporučeními pro výpočty a aplikace](recommendations-reference.md#recs-computeapp) .
+Další informace o těchto dvou nových doporučeních najdete v tabulce s [doporučeními pro výpočty a aplikace](recommendations-reference.md#recs-compute) .
 
 Přečtěte si další informace o tom, jak Azure Security Center používá agenta v tématu [co je agent Log Analytics?](faq-data-collection-agents.md#what-is-the-log-analytics-agent).
 
@@ -211,7 +211,7 @@ K nasazení konfigurací automatizace napříč vaší organizací použijte tyt
 Zásady najdete v části zásady Azure:
 
 
-|Cíl  |Zásada  |ID zásady  |
+|Cíl  |Zásady  |ID zásady  |
 |---------|---------|---------|
 |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
 |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do pracovního prostoru služby Log Analytics pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -232,7 +232,7 @@ Kontrola zabezpečení "implementovat osvědčené postupy zabezpečení" teď o
 
 Stávající doporučení: **internetové virtuální počítače by měly být chráněné pomocí skupin zabezpečení sítě**, nerozlišují se mezi internetovými a neinternetovými virtuálními počítači. U obou se vygenerovalo doporučení s vysokou závažností, pokud se virtuální počítač nepřiřadil do skupiny zabezpečení sítě. Toto nové doporučení odděluje nepřístupné počítače k Internetu, aby se snížily falešně pozitivní a vyhnuli se zbytečným výstrahám s vysokou závažností.
 
-Další informace najdete v tabulce [doporučení sítě](recommendations-reference.md#recs-network) .
+Další informace najdete v tabulce [doporučení sítě](recommendations-reference.md#recs-networking) .
 
 
 
@@ -244,7 +244,7 @@ Nové zásady níže byly přidány do výchozí iniciativy ASC a jsou určeny p
 Zásady najdete v části zásady Azure:
 
 
-| Zásada                                                                                                                                                                                                                                                                | ID zásady                            |
+| Zásady                                                                                                                                                                                                                                                                | ID zásady                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
@@ -432,7 +432,7 @@ Příklady doporučení pro identitu a přístup zahrnují:
 
 Pokud máte předplatné na cenové úrovni Free, jejich zabezpečená skóre budou ovlivněna touto změnou, protože nebyly nikdy posuzovány pro jejich identitu a zabezpečení přístupu.
 
-Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identity).
+Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identityandaccess).
 
 Přečtěte si další informace o [identitě a přístupu k monitorování](security-center-identity-access.md).
 
@@ -737,7 +737,7 @@ Security Center teď podporuje scénáře správy mezi klienty jako součást sl
 
 Azure Security Center (ASC) spustili nová síťová doporučení a vylepšila některé stávající. Díky tomu Security Center zajišťuje ještě větší ochranu sítě pro vaše prostředky. 
 
-[Přečtěte si další informace o doporučeních sítě](recommendations-reference.md#recs-network).
+[Přečtěte si další informace o doporučeních sítě](recommendations-reference.md#recs-networking).
 
 
 ## <a name="june-2019"></a>Červen 2019

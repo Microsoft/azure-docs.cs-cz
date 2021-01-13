@@ -3,12 +3,12 @@ title: Dynamické přidávání oddílů do centra událostí v Azure Event Hubs
 description: V tomto článku se dozvíte, jak dynamicky přidávat oddíly do centra událostí v Azure Event Hubs.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002535"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132167"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamické přidávání oddílů do centra událostí (Apache Kafka téma) v Azure Event Hubs
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici. Oddíl je seřazená posloupnost událostí, která se nachází v centru událostí. Jakmile přijdete o novější události, přidají se na konec této sekvence. Další informace o oddílech obecně najdete v [oddílu oddíly](event-hubs-scalability.md#partitions) .
@@ -71,7 +71,7 @@ Event Hubs poskytuje tři možnosti odesílatele:
 
 - **Dělit odesílatel** – v tomto scénáři klienti odesílají události přímo do oddílu. I když lze oddíly identifikovat a odesílat do nich události přímo, nedoporučujeme tento model. Přidání oddílů nemá vliv na tento scénář. Doporučujeme restartovat aplikace, aby bylo možné detekovat nově přidané oddíly. 
 - **Klíč – odesílatel oddílu** – v tomto scénáři klienti odesílají události pomocí klíče, aby všechny události patřící k danému klíči byly ukončeny ve stejném oddílu. V tomto případě služba vyhodnotí klíč a trasy k odpovídajícímu oddílu. Aktualizace počtu oddílů může kvůli změně hodnoty hash způsobovat problémy mimo pořadí. Pokud se tedy zajímáte o řazení, ujistěte se, že aplikace před zvýšením počtu oddílů spotřebovává všechny události z existujících oddílů.
-- **Odesilatel s kruhovým dotazováním (výchozí)** – v tomto scénáři služba Event Hubs zarobins události napříč oddíly. Služba Event Hubs ví o změnách počtu oddílů a během několika sekund se pošle na nové oddíly, které mění počet oddílů.
+- **Odesílatel kruhového dotazování (výchozí)** – v tomto scénáři robins služba Event Hubs události napříč oddíly a také používá algoritmus vyrovnávání zatížení. Služba Event Hubs ví o změnách počtu oddílů a během několika sekund se pošle na nové oddíly, které mění počet oddílů.
 
 ### <a name="receiverconsumer-clients"></a>Klienti pro přijímače/příjemce
 Event Hubs poskytuje přímým přijímačům a snadnou uživatelskou knihovnu nazvanou [hostitel procesoru událostí (stará sada SDK)](event-hubs-event-processor-host.md)  nebo [procesor událostí (nová sada SDK)](event-processor-balance-partition-load.md).
@@ -99,7 +99,7 @@ Když člen skupiny uživatelů provede obnovení metadat a vybere nově vytvoř
     > [!IMPORTANT]
     > I když existující data zachovají řazení, bude pro zprávy po změně počtu oddílů v důsledku přidání oddílů přerušeno hashování oddílů.
 - Přidání oddílu do existujícího tématu nebo instance centra událostí se doporučuje v následujících případech:
-    - Když použijete metodu Round Robin (výchozí) pro odesílání událostí
+    - Když použijete výchozí metodu odesílání událostí
      - Kafka výchozí strategie dělení na oddíly, příklad – strategie pro rychlé přiřazení
 
 

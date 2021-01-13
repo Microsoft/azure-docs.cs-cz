@@ -1,7 +1,7 @@
 ---
-title: Vyladění parametrů pro váš model
+title: Ladění modelu pomocí parametrů
 titleSuffix: Azure Machine Learning
-description: Pomocí Azure Machine Learning můžete efektivně ladit parametry pro obsáhlý Learning a modely strojového učení.
+description: Automatizujte optimalizaci parametrů pro obsáhlý Learning a modely strojového učení pomocí Azure Machine Learning.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029069"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133842"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Vyladění parametrů pro model pomocí Azure Machine Learning
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Ladění modelu pomocí Azure Machine Learning
 
 
 Automatizujte efektivní ladění parametrů pomocí Azure Machine Learning [balíčku Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py). Naučte se, jak provést kroky potřebné k optimalizaci parametrů s [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py):
@@ -31,11 +31,11 @@ Automatizujte efektivní ladění parametrů pomocí Azure Machine Learning [bal
 1. Vizualizace školicích běhů
 1. Vyberte nejlepší konfiguraci pro váš model.
 
-## <a name="what-are-hyperparameters"></a>Co jsou to parametry?
+## <a name="what-is-hyperparameter-tuning"></a>Co je ladění parametrů?
 
 V **parametrech** jsou seřiditelné parametry, které umožňují řídit proces školení modelu. Například u neuronové sítí určíte počet skrytých vrstev a počet uzlů v jednotlivých vrstvách. Výkon modelu závisí silně na parametrech.
 
- **Ladění parametrů** je proces hledání konfigurace parametrů, které mají za následek nejlepší výkon. Tento proces je obvykle výpočetně nákladný a ruční.
+ **Ladění parametrů**, označované také jako **optimalizace s parametry**, je proces hledání konfigurace parametrů, jejichž výsledkem je nejlepší výkon. Tento proces je obvykle výpočetně nákladný a ruční.
 
 Azure Machine Learning umožňuje automatizovat optimalizaci parametrů a paralelně spouštět experimenty, aby bylo možné efektivně optimalizovat parametry.
 
@@ -46,7 +46,7 @@ Vyladěním parametrů můžete prozkoumat rozsah hodnot definovaných pro každ
 
 Parametry mohou být diskrétní nebo souvislé a mají distribuci hodnot popsaných [výrazem parametru](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py).
 
-### <a name="discrete-hyperparameters"></a>Samostatné parametry 
+### <a name="discrete-hyperparameters"></a>Samostatné parametry
 
 Diskrétní parametry jsou zadány jako `choice` mezi diskrétní hodnoty. `choice` může být:
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 Tento kód nakonfiguruje experiment vyladěním parametrů, aby používal maximálně 20 spuštění celkem, současně se čtyřmi konfiguracemi.
 
-## <a name="configure-experiment"></a>Konfigurovat experiment
+## <a name="configure-hyperparameter-tuning-experiment"></a>Konfigurovat experiment s optimalizací parametrů
 
 Chcete-li nakonfigurovat experiment s [optimalizací parametrů](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) , zadejte následující:
 * Definovaný prostor pro hledání parametrů
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>Odeslat experiment
+## <a name="submit-hyperparameter-tuning-experiment"></a>Odeslat experiment s optimalizací parametrů
 
 Po definování konfigurace ladění vašich parametrů [odešlete experiment](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Zahajte svůj experiment s optimalizací parametrů (volitelné)
+## <a name="warm-start-hyperparameter-tuning-optional"></a>Rychlé spuštění ladění parametrů (volitelné)
 
 Hledání nejlepších hodnot parametrů pro váš model může být iterativní proces. Pokud chcete zrychlit ladění parametrů, můžete znovu použít znalostní bázi z pěti předchozích běhů.
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>Vizualizace experimentu
+## <a name="visualize-hyperparameter-tuning-runs"></a>Vizualizace spuštění laděním parametrů
 
 Pomocí [widgetu poznámkového bloku](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) Vizualizujte průběh vašich školicích běhů. Následující fragment kódu vizualizuje všechna vaše ladění vašich parametrů na jednom místě v Jupyter poznámkovém bloku:
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 Tento kód zobrazí tabulku s podrobnostmi o spuštěních školení pro jednotlivé konfigurace parametrů.
 
-![Tabulka ladění předaných parametrů](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![Tabulka ladění předaných parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 Můžete také vizualizovat výkon každého spuštění jako školicí průběh. 
 
-![vykreslení pro vyladění parametrů](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![vykreslení pro vyladění parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 Můžete vizuálně identifikovat korelaci mezi výkonem a hodnotami jednotlivých parametrů, a to pomocí paralelního vykreslení souřadnic. 
 
-[![paralelní souřadnice ladění parametrů](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![paralelní souřadnice ladění parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Na webovém portálu Azure můžete také vizualizovat všechny spuštěné ladění vašich parametrů. Další informace o tom, jak zobrazit experiment na portálu, najdete v tématu [jak sledovat experimenty](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Ukázkový Poznámkový blok
+
 Další informace najdete v poznámkách k vlakovým parametrům-* v této složce:
 * [Postupy: použití-AzureML/ml – rozhraní](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

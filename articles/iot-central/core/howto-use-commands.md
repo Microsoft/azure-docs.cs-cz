@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dd05a4880bdf077f63dc58575828e6180e415260
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122155"
+ms.locfileid: "98134275"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Používání příkazů v řešení Azure IoT Central
 
@@ -219,10 +219,8 @@ Následující snímek obrazovky ukazuje IoT Central uživatelské rozhraní, kd
 
 V této části se dozvíte, jak zařízení zpracovává offline příkaz. Pokud je zařízení online, může offline příkaz zpracovat ihned po jeho přijetí. Pokud je zařízení offline, při dalším připojení k IoT Central zpracuje příkaz offline. Zařízení nemůžou odeslat návratovou hodnotu v reakci na offline příkaz.
 
-Následující fragment kódu ukazuje, jak může zařízení implementovat offline příkaz:
-
 > [!NOTE]
-> Tento článek používá Node.js pro jednoduchost. Další jazykové příklady najdete v kurzu [Vytvoření a připojení klientské aplikace do aplikace Azure IoT Central](tutorial-connect-device.md) .
+> Tento článek používá Node.js pro jednoduchost.
 
 Následující snímek obrazovky ukazuje offline příkaz s názvem **GenerateDiagnostics**. Parametr Request je objekt s vlastností DateTime s názvem **čas_spuštění** a vlastností výčtu Integer s názvem **bank**:
 

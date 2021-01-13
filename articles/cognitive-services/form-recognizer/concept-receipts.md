@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845476"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131440"
 ---
-# <a name="receipt-concepts"></a>Principy účtenek
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat účtenky pomocí jednoho z předdefinovaných modelů. Rozhraní API pro příjem dat extrahuje klíčové informace z prodejních příjmů v angličtině, jako je například název obchodníka, datum transakce, součet transakcí, položky řádků a další. 
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních příjmů pomocí předdefinovaného modelu příjmu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) s příjmem a porozumění modely hloubkového učení pro extrakci klíčových informací z příjmů v angličtině. Rozhraní API pro příjem dat extrahuje klíčové informace z prodejních příjmů v angličtině, jako je například název obchodníka, datum transakce, součet transakcí, položky řádků a další. 
 
 ## <a name="understanding-receipts"></a>Porozumění příjemkám 
 
@@ -27,32 +27,39 @@ Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat účtenky po
 
 Automatické extrakce dat z těchto příjmů může být složité. Příjmy můžou být Crumpled a těžko čitelnými, tištěnými nebo ručně psanými částmi a smartphone obrázky o příjmech mohou být nízké kvality. Také je možné, že se šablony a pole účtenky můžou významně lišit podle trhu, oblasti a obchodníka. Tyto problémy při extrakci dat i při detekci polí umožňují zpracování jedinečného problému.  
 
-V případě použití optického rozpoznávání znaků (OCR) a našeho předem připraveného modelu příjemek rozhraní API pro příjem umožňuje tyto scénáře zpracování příjmu a extrahovat data z příjmů, např. název obchodníka, tip, součet, položky řádků a další. S tímto rozhraním API není nutné naškolovat model, který jste právě odeslali, do rozhraní API pro analýzu příjemů a data se extrahují.
+V případě použití optického rozpoznávání znaků (OCR) a našeho předem připraveného modelu příjemek rozhraní API pro příjem umožňuje tyto scénáře zpracování příjmu a extrahovat data z příjmů, např. název obchodníka, tip, součet, položky řádků a další. Pomocí tohoto rozhraní API není nutné naškolovat model, stačí odeslat obrázek účtenky do rozhraní API pro analýzu příjemů a data se extrahují.
 
-![Ukázka účtenky](./media/contoso-receipt-small.png)
+![Ukázka účtenky](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>Co dělá rozhraní API pro příjem? 
 
-Předem vytvořené rozhraní API pro příjem extrakce vyextrahuje obsah prodejních příjmů &mdash; na základě typu příjemky, který byste běžně získali v restauracích, maloobchodníkech nebo prodejnách.
+## <a name="what-does-the-receipt-service-do"></a>Co služba pro příjem z provozu dělá? 
+
+Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &mdash; na základě typu účtenky, který byste běžně získali v restauracích, maloobchodníkech nebo v prodejnách.
 
 ### <a name="fields-extracted"></a>Extrahovaná pole
 
-* Název obchodníka 
-* Adresa obchodníka 
-* Telefonní číslo pro obchodní telefon 
-* Datum transakce 
-* Čas transakce 
-* Mezisoučet 
-* Daň 
-* Celkem 
-* Tip 
-* Extrakce položek řádku (například množství položky, cena za položku, název položky)
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | řetězec | Typ prodejní účtenky | Oddělené |  |
+| Obchodní | řetězec | Název obchodníka, který vystavil příjem | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | Uvedené telefonní číslo v obchodníkovi | 987-654-3210 | + 19876543210 |
+| MerchantAddress | řetězec | Uvedená adresa obchodního typu | 123 hlavní St. Praha WA 98052 |  |
+| TransactionDate | date | Datum vydání příjmu | 06 6. června 2019 | 2019-06-26  |
+| TransactionTime | time | Čas vydání příjmu | 4:49 ODP. | 16:49:00  |
+| Celkem | číslo | Úplná transakce celkem pro příjem | $14,34 | 14,34 |
+| Mezisoučet | číslo | Mezisoučet stvrzenky, často před zdaněním | $12,34 | 12.34 |
+| Daň | číslo | Daň na účtence, často prodejní daň nebo ekvivalent | $2,00 | 2,00 |
+| Tip | číslo | Tip zahrnutý nákupčím | $1,00 | 1.00 |
+| Položky | pole objektů | Extrahované položky řádku, včetně názvu, množství, ceny za jednotku a celkové ceny extrahované | |
+| Name | řetězec | Název položky | Plocha pro 6 | |
+| Množství | číslo | Množství jednotlivých položek | 1 | |
+| Cena | číslo | Jednotlivá cena za každou jednotku položky | $999,00 | 999,00 |
+| Celková cena | číslo | Celková cena položky řádku | $999,00 | 999,00 |
 
 ### <a name="additional-features"></a>Další funkce
 
 Rozhraní API pro příjem také vrátí následující informace:
 
-* Typ účtenky (například podle položky, platební karta atd.)
 * Úroveň spolehlivosti pole (každé pole vrátí přidruženou hodnotu spolehlivosti)
 * Nezpracovaný text OCR (OCR – textový výstup extrahovaný pro celou příjem)
 * Ohraničovací rámeček pro každou hodnotu, řádek a slovo

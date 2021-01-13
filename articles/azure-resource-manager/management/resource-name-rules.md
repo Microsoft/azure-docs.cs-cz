@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814376"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132745"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -83,7 +83,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | počtu | rozsah přiřazení | 1–90 | Alfanumerické znaky, tečky, podtržítka, spojovníky a závorky.<br><br>Nemůže končit tečkou. |
-> | policyAssignments | rozsah přiřazení | zobrazované jméno 1-128<br><br>název prostředku 1-64 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
+> | policyAssignments | rozsah přiřazení | zobrazované jméno 1-128<br><br>název prostředku 1-64<br><br>1-24 název prostředku v oboru skupiny pro správu | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
 > | policyDefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-64 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
 > | policySetDefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-64<br><br>1-24 název prostředku v oboru skupiny pro správu | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou.  |
 
@@ -453,7 +453,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | pracovní prostory | skupina prostředků | 3-33 | Alfanumerické znaky a spojovníky. |
-> | pracovní prostory a výpočetní prostředky | pracovní prostor | 2–16 | Alfanumerické znaky a spojovníky. |
+> | pracovní prostory a výpočetní prostředky | Pracovní prostor | 2–16 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -544,7 +544,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | Pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -655,7 +655,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | storageAccounts/managementPolicies | účet úložiště |  | Musí být `default` . |
 > | blob | kontejner | 1–1024 | Všechny znaky adresy URL, rozlišovat velikost písmen |
 > | fronta | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Nelze použít po sobě jdoucí spojovníky. |
-> | stolu | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
+> | tabulka | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 

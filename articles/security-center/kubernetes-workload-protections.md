@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030845"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131334"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -27,7 +27,7 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 - Získání výstrah detekce hrozeb v reálném čase pro clustery K8s [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
-> Seznam *všech* doporučení týkajících se zabezpečení, která se můžou zobrazit u clusterů a uzlů Kubernetes, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
+> Seznam *všech* doporučení týkajících se zabezpečení, která se můžou zobrazit u clusterů a uzlů Kubernetes, najdete v [části COMPUTE](recommendations-reference.md#recs-compute) v referenční tabulce doporučení.
 
 
 
@@ -251,6 +251,6 @@ V tomto článku jste zjistili, jak nakonfigurovat ochranu úloh Kubernetes.
 
 Další související materiály najdete na následujících stránkách: 
 
-- [Security Center doporučení pro kontejnery](recommendations-reference.md#recs-containers)
+- [Security Center doporučení pro výpočetní prostředky](recommendations-reference.md#recs-compute)
 - [Výstrahy na úrovni clusteru AKS](alerts-reference.md#alerts-akscluster)
 - [Výstrahy na úrovni hostitele kontejneru](alerts-reference.md#alerts-containerhost)

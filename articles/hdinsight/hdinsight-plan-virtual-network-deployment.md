@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825139"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131657"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -51,7 +51,8 @@ V následující části najdete otázky, které je potřeba zodpovědět při p
 Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do existující Virtual Network Azure.
 
 > [!NOTE]  
-> Existující cluster HDInsight nemůžete přidat do virtuální sítě.
+> - Existující cluster HDInsight nemůžete přidat do virtuální sítě.
+> - Virtuální síť a cluster, který se má vytvořit, musí být ve stejném předplatném.
 
 1. Používáte pro virtuální síť model nasazení Classic nebo Správce prostředků?
 
@@ -69,7 +70,7 @@ Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do
 
     Pokud chcete najít stávající konfiguraci zabezpečení, použijte následující Azure PowerShell nebo příkazy rozhraní příkazového řádku Azure CLI:
 
-    * Skupiny zabezpečení sítě
+    * skupiny zabezpečení sítě,
 
         Nahraďte `RESOURCEGROUP` názvem skupiny prostředků, která obsahuje virtuální síť, a pak zadejte příkaz:
 

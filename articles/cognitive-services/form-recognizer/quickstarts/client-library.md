@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro rozpoznávání formulářů'
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání formulářů nebo REST API'
 titleSuffix: Azure Cognitive Services
-description: Pomocí klientské knihovny pro rozpoznávání formulářů můžete vytvořit aplikaci pro zpracování formulářů, která extrahuje páry klíč/hodnota a tabulková data z vlastních dokumentů.
+description: Použijte klientskou knihovnu pro rozpoznávání formulářů nebo REST API k vytvoření aplikace pro zpracování formulářů, která extrahuje páry klíč/hodnota a tabulková data z vlastních dokumentů.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: zpracování formulářů, automatizované zpracování dat
-ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029028"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132267"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů nebo REST API
 
-Začněte s nástrojem pro rozpoznávání formulářů v jazyce podle vašeho výběru. Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která umožňuje sestavovat automatizovaný software pro zpracování dat pomocí technologie strojového učení. Identifikujte a extrahujte páry text, klíč/hodnota a tabulková data z formuláře &mdash; . Tato služba obsahuje výstup strukturovaných dat, která zahrnují relace v původním souboru. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy. Klientská knihovna pro rozpoznávání formulářů je aktuálně cílena v 2.0 služby pro rozpoznávání formulářů.
+Začněte s nástrojem pro rozpoznávání formulářů v jazyce podle vašeho výběru. Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která umožňuje sestavovat automatizovaný software pro zpracování dat pomocí technologie strojového učení. Identifikujte a extrahujte páry text, klíč/hodnota, značky výběru, data tabulky a další z formuláře dokumenty &mdash; . Tato služba obsahuje výstup strukturovaných dat, která zahrnují relace v původním souboru. Nástroj pro rozpoznávání formulářů můžete použít prostřednictvím REST API nebo SDK. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy. 
 
-Pomocí klientské knihovny pro rozpoznávání formulářů:
+Nástroj pro rozpoznávání formulářů použijte k těmto akcím:
 
-* [Rozpoznávání obsahu formuláře](#recognize-form-content)
-* [Rozpoznávání příjmů](#recognize-receipts)
-* [Rozpoznávání vizitek](#recognize-business-cards)
-* [Rozpoznávání faktur](#recognize-invoices)
+* [Analyzovat rozložení](#analyze-layout)
+* [Analyzovat účtenky](#analyze-receipts)
+* [Analýza vizitek](#analyze-business-cards)
+* [Analyzovat faktury](#analyze-invoices)
 * [Trénování vlastního modelu](#train-a-custom-model)
 * [Analýza formulářů pomocí vlastního modelu](#analyze-forms-with-a-custom-model)
 * [Správa vlastních modelů](#manage-your-custom-models)

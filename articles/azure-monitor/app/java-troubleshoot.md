@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607894"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133238"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
 
@@ -23,7 +23,7 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 ## <a name="build-errors"></a>Chyby sestavení
 **V zatmění nebo IntelliJ nápadu při přidávání sady Application Insights SDK prostřednictvím Maven nebo Gradle se zobrazí chyby ověření sestavení nebo kontrolního součtu.**
 
-* Pokud element Dependency `<version>` používá vzor se zástupnými znaky (např. (Maven) `<version>[2.0,)</version>` nebo (Gradle) `version:'2.0.+'` ), zkuste zadat konkrétní verzi místo toho jako `2.0.1` . Nejnovější verzi najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
+* Pokud element Dependency `<version>` používá vzor se zástupnými znaky (např. (Maven) `<version>[2.0,)</version>` nebo (Gradle) `version:'2.+'` ), zkuste zadat konkrétní verzi místo toho jako `2.6.2` .
 
 ## <a name="no-data"></a>Žádná data
 **Přidal (a) jsem Application Insights úspěšně a spustil jsem aplikaci, ale na portálu se nikdy nezobrazila žádná data.**
@@ -36,7 +36,7 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 * [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` prvku pod kořenovým uzlem v souboru ApplicationInsights.xml (ve složce Resources (prostředky) v projektu) a vyhledejte položky s AI: informace, varování/chyba pro všechny podezřelé protokoly. 
 * Ujistěte se, že sada Java SDK úspěšně zavedla správný soubor ApplicationInsights.xml. Podívejte se na výstupní zprávy konzoly pro příkaz "konfigurační soubor byl úspěšně nalezen".
 * Pokud konfigurační soubor nebyl nalezen, zkontrolujte výstupní zprávy, zda je prohledáván konfigurační soubor, a ujistěte se, že ApplicationInsights.xml je umístěn v jednom z těchto umístění hledání. Jako pravidlo pro palec můžete umístit konfigurační soubor poblíž Application Insights SDK jar. Například: v Tomcat by to znamenalo složku WEB-INF/Classes. Během vývoje můžete umístit ApplicationInsights.xml do složky Resources vašeho webového projektu.
-* Podívejte se také na [stránku problémy s GitHubem](https://github.com/Microsoft/ApplicationInsights-Java/issues) , kde najdete známé problémy se sadou SDK.
+* Podívejte se také na [stránku problémy s GitHubem](https://github.com/microsoft/ApplicationInsights-Java/issues) , kde najdete známé problémy se sadou SDK.
 * Abyste se vyhnuli jakýmkoli problémům se konflikty verzí, zajistěte, aby používaly stejnou verzi Application Insights Core, webu, agenta a přihlášení.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
@@ -194,7 +194,7 @@ Application Insights používá `org.apache.http` . Toto je přemístěné v rá
 
 ## <a name="get-help"></a>Získání pomoci
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Vystavení problému na GitHubu](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

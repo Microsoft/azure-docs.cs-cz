@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049316"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131385"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -92,7 +92,7 @@ Vezměte v úvahu, že Planet může také interagovat s **Moons** , které jsou
 
 Pole modelu jsou:
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |
@@ -140,7 +140,7 @@ Při návrhu modelů tak, aby odrážely entity ve vašem prostředí, může b�
 
 Používání modelů založených na oborových standardech nebo použití standardní reprezentace Ontology, jako je například RDF nebo OWL, poskytuje bohatý výchozí bod při návrhu modelů digitálních vláken Azure. Používání průmyslových modelů pomáhá také při standardizaci a sdílení informací.
 
-Aby bylo možné použít s digitálními podmnožinami Azure, musí být model reprezentovaný v [**jazyce DTDL (Digital vlákna)**](concepts-models.md)založeném na JSON – ld. Proto tento článek popisuje, jak znázornit standardní modely v DTDL a integraci stávajících konceptů v oboru se sémantikou DTDL, aby je mohli používat digitální vlákna Azure. Model DTDL pak slouží jako zdroj pravdy pro model v rámci digitálních vláken Azure.
+Aby bylo možné použít s digitálními podmnožinami Azure, musí být model reprezentovaný v [**jazyce DTDL (Digital vlákna)**](concepts-models.md)založeném na JSON – ld. Proto pokud chcete použít standardní model, musíte ho nejdřív převést na DTDL, aby ho mohly používat digitální vlákna Azure. Model DTDL pak slouží jako zdroj pravdy pro model v rámci digitálních vláken Azure.
 
 Existují dva hlavní cesty k integraci standardních modelů s DTDL, a to v závislosti na vaší situaci:
 * Pokud jste ještě vytvořili vaše modely, můžete je navrhnout kolem **stávajícího úvodní DTDL ontologie** , která obsahuje jazyk specifický pro váš obor.

@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845606"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131117"
 ---
-# <a name="business-card-concepts"></a>Principy vizitek
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Model předdefinovaných obchodních karet pro rozpoznávání formulářů 
 
-Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat a extrahovat kontaktní informace z obchodních karet pomocí jednoho z předem připravených modelů. Rozhraní API pro vizitky kombinuje výkonné funkce optického rozpoznávání znaků (OCR) s využitím modelu porozumění naší firmou pro extrakci klíčových informací z vizitek v angličtině. Extrahuje osobní kontaktní údaje, název společnosti, pracovní zařazení a další. Předem připravené rozhraní API na vizitce je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview. 
+Nástroj pro rozpoznávání formulářů Azure dokáže analyzovat a extrahovat kontaktní informace z obchodních karet pomocí předpřipraveného modelu vizitek. Kombinuje výkonné funkce optického rozpoznávání znaků (OCR) s využitím modelu porozumění naší firmou k extrakci klíčových informací z vizitek v angličtině. Extrahuje osobní kontaktní údaje, název společnosti, pracovní zařazení a další. Předem připravené rozhraní API na vizitce je veřejně dostupné v nástroji pro rozpoznávání formulářů v 2.1 Preview. 
 
-## <a name="what-does-the-business-card-api-do"></a>Co dělá rozhraní API na vizitce?
+## <a name="what-does-the-business-card-service-do"></a>Co dělá služba na vizitce?
 
-Rozhraní API pro vizitky extrahuje klíčová pole z obchodních karet a vrátí je v organizované odpovědi JSON.
+Předem připravené rozhraní API na vizitce extrahuje klíčová pole z obchodních karet a vrátí je v organizované odpovědi JSON.
 
-![Z výstupu FOTT + JSON se jedná o položku contoso s použitím obrázku](./media/business-card-english.jpg)
+![Z výstupu FOTT + JSON se jedná o položku contoso s použitím obrázku](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>Extrahovaná pole:
 
-* Jména kontaktů 
-  * Křestní jména
-  * Příjmení
-* Názvy společností 
-* Oddělení 
-* Pracovní tituly 
-* E-maily 
-* Websites 
-* Adresy 
-* Telefonní čísla 
-  * Mobilní telefony 
-  * Faxy 
-  * Pracovní telefony 
-  * Další telefony 
+|Název| Typ | Description | Text | 
+|:-----|:----|:----|:----|
+| ContactNames | pole objektů | Název kontaktu extrahovaný z vizitky | [{"FirstName": "Jan"; "LastName": "Chvojková"}] |
+| FirstName | řetězec | První (zadaný) jméno kontaktu | Jan | 
+| LastName | řetězec | Poslední (rodina) jméno kontaktu |   DOE | 
+| CompanyName | pole řetězců | Název společnosti extrahovaný z vizitky | ["Contoso"] | 
+| Oddělení | pole řetězců | Oddělení nebo organizace kontaktu | ["R&D"] | 
+| JobTitles | pole řetězců | Uvedený pracovní titul kontaktu | ["Software inženýr"] | 
+| E-maily | pole řetězců | Kontaktní e-mail extrahovaný z vizitky | ["johndoe@contoso.com"] | 
+| Websites | pole řetězců | Web extrahovaný z vizitky | ["https://www.contoso.com"] | 
+| Adresy | pole řetězců | Adresa extrakce z vizitky | ["123 hlavní ulice, Redmond, WA 98052"] | 
+| MobilePhones | pole telefonních čísel | Číslo mobilního telefonu extrahované z vizitky | ["+ 19876543210"] |
+| Faxy | pole telefonních čísel | Telefonní číslo faxu extrahované z vizitky | ["+ 19876543211"] |
+| WorkPhones | pole telefonních čísel | Firemní telefonní číslo extrahované z vizitky | ["+ 19876543231"] |
+| OtherPhones    | pole telefonních čísel | Jiné telefonní číslo extrahované z vizitky | ["+ 19876543233"] |
+
 
 Rozhraní API pro vizitky může také vracet veškerý rozpoznaný text z vizitky. Tento výstup optického rozpoznávání znaků je zahrnutý v odpovědi JSON.  
 

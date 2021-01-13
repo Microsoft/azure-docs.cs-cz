@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 08/20/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027573"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132949"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -28,19 +28,15 @@ Tento článek vám ukáže, jak:
 - Použít `Dataset` objekty pro již existující data
 - Přístup k datům v rámci svých kroků
 - Rozdělit `Dataset` data na podmnožiny, jako jsou například školení a podmnožiny ověřování
-- Vytvoření `PipelineData` objektů pro přenos dat do dalšího kroku kanálu
-- Použití `PipelineData` objektů jako vstupu do postupu kanálu
-- Vytvořit nové objekty, které chcete `Dataset` `PipelineData` zachovat
-
-> [!TIP]
-> Vylepšené prostředí pro předávání dočasných dat mezi jednotlivými kroky kanálu a uchování dat po spuštění kanálu jsou k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) a [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Tyto třídy jsou [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
-
+- Vytvoření `OutputFileDatasetConfig` objektů pro přenos dat do dalšího kroku kanálu
+- Použití `OutputFileDatasetConfig` objektů jako vstupu do postupu kanálu
+- Vytvořit nové objekty, které chcete `Dataset` `OutputFileDatasetConfig` zachovat
 
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -156,71 +152,71 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 > [!NOTE]
 > Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
 
-## <a name="use-pipelinedata-for-intermediate-data"></a>Použít `PipelineData` pro mezilehlé data
+## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Použít `OutputFileDatasetConfig` pro mezilehlé data
 
-Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že životnost `PipelineData` objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření objektu je `PipelineData` nutné zadat název a úložiště dat, na kterém budou data umístěna. Předání `PipelineData` objektů do vaší `PythonScriptStep` pomocí  `arguments` `outputs` argumentů a:
+Přestože `Dataset` objekty reprezentují pouze trvalá data, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) lze objekty použít pro dočasný výstup dat z kroků kanálu **a** trvalých výstupních dat. `OutputFileDatasetConfig` podporuje zápis dat do úložiště objektů blob, sdílené složky, adlsgen1 nebo adlsgen2. Podporuje režim připojení i režim odesílání. V režimu připojení se soubory zapsané do připojeného adresáře trvale ukládají při zavření souboru. V režimu nahrávání se soubory zapsané do výstupního adresáře odešlou na konci úlohy. Pokud úloha selže nebo se zruší, výstupní adresář nebude nahrán.
+
+ `OutputFileDatasetConfig` výchozí chování objektu je zapisovat do výchozího úložiště dat pracovního prostoru. Předejte své `OutputFileDatasetConfig` objekty do objektu `PythonScriptStep` pomocí `arguments` parametru.
 
 ```python
-
-default_datastore = workspace.get_default_datastore()
-dataprep_output = PipelineData("clean_data", datastore=default_datastore)
+from azureml.data import OutputFileDatasetConfig
+dataprep_output = OutputFileDatasetConfig()
+input_dataset = Dataset.get_by_name(workspace, 'raw_data')
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
     compute_target=cluster,
-    arguments=["--output-path", dataprep_output]
-    inputs=[Dataset.get_by_name(workspace, 'raw_data')],
-    outputs=[dataprep_output]
-)
-
+    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
+    )
 ```
 
-Můžete se rozhodnout vytvořit `PipelineData` objekt pomocí režimu přístupu, který poskytuje okamžité nahrání. V takovém případě, když vytvoříte `PipelineData` , nastavte na `upload_mode` `"upload"` a pomocí `output_path_on_compute` argumentu Určete cestu, do které budete zapisovat data:
+Můžete se rozhodnout nahrát obsah svého `OutputFileDatasetConfig` objektu na konci běhu. V takovém případě použijte `as_upload()` funkci spolu s `OutputFileDatasetConfig` objektem a určete, zda přepsat existující soubory v cíli. 
 
 ```python
-PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
+#get blob datastore already registered with the workspace
+blob_store= ws.datastores['my_blob_store']
+OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
 ```
 
 > [!NOTE]
-> Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
+> Souběžné zápisy do a `OutputFileDatasetConfig` selžou. Nepokoušejte se použít jeden `OutputFileDatasetConfig` souběžně. Nesdílejte jednu `OutputFileDatasetConfig` v situaci s více procesy, jako je například při použití distribuovaného školení. 
 
-> [!TIP]
-> Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` , najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Použít `OutputFileDatasetConfig` jako výstupy krok školení
 
-
-### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Použít `PipelineData` jako výstupy krok školení
-V rámci vašeho kanálu `PythonScriptStep` můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok první a Inicializuje výstupní data, je nutné vytvořit adresář v zadané cestě. Pak můžete napsat libovolné soubory, které chcete zahrnout do `PipelineData` .
+V rámci vašeho kanálu `PythonScriptStep` můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok první a Inicializuje výstupní data, je nutné vytvořit adresář v zadané cestě. Pak můžete napsat libovolné soubory, které chcete zahrnout do `OutputFileDatasetConfig` .
 
 ```python
 parser = argparse.ArgumentParser()
 parser.add_argument('--output_path', dest='output_path', required=True)
 args = parser.parse_args()
+
 # Make directory for file
 os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
 with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-Pokud jste vytvořili `PipelineData` s `is_directory` argumentem nastaveným na `True` , bylo by stačit pouze provést `os.makedirs()` volání a pak byste měli zadarmo napsat jakékoli soubory, které jste si do cesty chtěli zapisovat. Další podrobnosti najdete v referenční dokumentaci k [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) .
+### <a name="read-outputfiledatasetconfig-as-inputs-to-non-initial-steps"></a>Číst `OutputFileDatasetConfig` jako vstupy do jiných než počátečních kroků
 
+Jakmile krok počátečního kanálu zapíše do cesty nějaká data `OutputFileDatasetConfig` a bude se jednat o výstup tohoto počátečního kroku, dá se použít jako vstup do pozdějšího kroku. 
 
-### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Číst `PipelineData` jako vstupy do jiných než počátečních kroků
+V následujícím kódu 
 
-Jakmile krok počátečního kanálu zapíše do cesty nějaká data `PipelineData` a bude se jednat o výstup tohoto počátečního kroku, dá se použít jako vstup do pozdějšího kroku:
+* `step1_output_data` označuje, že výstup PythonScriptStep se `step1` zapisuje do úložiště dat adls Gen 2 `my_adlsgen2` v režimu přístupu upload. Přečtěte si další informace o tom, jak [nastavit oprávnění role](how-to-access-data.md#azure-data-lake-storage-generation-2) , aby bylo možné zapisovat data zpátky do úložiště adls Gen 2. 
+
+* Až se `step1` dokončí a výstup se zapíše do cíle uvedeného v `step1_output_data` , STEP2 je připravený k použití `step1_output_data` jako vstup. 
 
 ```python
-step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
+step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
     script_name="step1.py",
     runconfig = aml_run_config,
-    arguments = ["--output_path", step1_output_data],
-    inputs=[],
-    outputs=[step1_output_data]
+    arguments = ["--output_path", step1_output_data]
 )
 
 step2 = PythonScriptStep(
@@ -228,41 +224,22 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data],
-    inputs=[step1_output_data]
+    arguments = ["--pd", step1_output_data.as_input]
+
 )
+
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-Hodnota `PipelineData` vstupu je cesta k předchozímu výstupu. 
+## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>Registrovat `OutputFileDatasetConfig` objekty pro opakované použití
 
-> [!NOTE]
-> Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
-
-> [!TIP]
-> Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` , najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
-
-Pokud, jak je uvedeno výše, první krok zapsal jeden soubor, což může vypadat například takto: 
+Pokud byste chtěli mít `OutputFileDatasetConfig` k dispozici déle než po dobu trvání experimentu, zaregistrujte ho do svého pracovního prostoru, abyste mohli sdílet a opakovaně používat v experimentech.
 
 ```python
-parser = argparse.ArgumentParser()
-parser.add_argument('--pd', dest='pd', required=True)
-args = parser.parse_args()
-with open(args.pd) as f:
-    print(f.read())
+step1_output_ds = step1_output_data.register_on_complete(name='processed_data', 
+                                                         description = 'files from step1`)
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>Převést `PipelineData` objekty na `Dataset` s
-
-Pokud byste chtěli, aby byly `PipelineData` k dispozici déle než po dobu běhu, použijte její `as_dataset()` funkci k jejímu převedení na `Dataset` . Pak ho můžete zaregistrovat `Dataset` a vytvořit jako občana první třídy ve vašem pracovním prostoru. Vzhledem k `PipelineData` tomu, že váš objekt bude mít při každém spuštění kanálu jinou cestu, důrazně doporučujeme, abyste `create_new_version` `True` při registraci `Dataset` vytvořeného z objektu nastavili `PipelineData` .
-
-```python
-step1_output_ds = step1_output_data.as_dataset()
-step1_output_ds.register(name="processed_data", create_new_version=True)
-
-```
-> [!TIP]
-> Vylepšené prostředí pro uchování mezilehlých dat mimo vaše spuštění kanálu je k dispozici ve třídě Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` , najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 ## <a name="next-steps"></a>Další kroky
 

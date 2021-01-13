@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620592"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134071"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu v Azure
 
@@ -68,7 +68,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 | Azure Backup (Microsoft. RecoveryServices/trezory)/trezor | privatelink. {region}. Backup. windowsazure. com | {region}. Backup. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. ServiceBus/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft. Relay/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft. EventGrid/témata)/téma | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft. EventGrid/domény)/doména | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 | Azure Data Factory (Microsoft. DataFactory/Factory)/portál |  privatelink.azure.com  |  azure.com  |
 | Mezipaměť Azure pro Redis (Microsoft. cache/Redis)/redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup> Pro použití s integrovaným koncovým bodem centra událostí s IoT Hub Další informace najdete v tématu [Podpora privátních odkazů pro integrovaný koncový bod IoT Hub](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint) .
  
 ## <a name="dns-configuration-scenarios"></a>Scénáře konfigurace DNS
 
