@@ -3,15 +3,15 @@ title: Řešení monitorování kontejnerů v Azure Monitor | Microsoft Docs
 description: Řešení pro monitorování kontejnerů v Azure Monitor vám pomůže zobrazit a spravovat hostitele kontejnerů pro Docker a Windows v jednom umístění.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 483113fc508800eb126ee39f146c1fa34e5dba5e
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145680"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165701"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
 
@@ -45,7 +45,7 @@ Než začnete, Projděte si následující podrobnosti, abyste ověřili splněn
 
 Následující tabulka popisuje podporu pro orchestraci a monitorování operačního systému pro inventář kontejnerů, výkon a protokoly s Azure Monitor.   
 
-|Orchestrace Docker | ACS | Linux | Windows | Kontejner<br>inventář | Image<br>inventář | Node<br>inventář | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
+|Orchestrace Docker | ACS | Linux | Windows | Kontejner<br>inventář | Image<br>inventář | Uzel<br>inventář | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat moduly Docker v poč�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů pro Linux
 
-Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění**  >  **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč** .  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
+Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění**  >  **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
 **Pro všechny hostitele kontejnerů pro Linux s výjimkou CoreOS:**
 
@@ -513,11 +513,11 @@ Chcete-li povolit monitorování kontejnerů systému Windows a technologie Hype
 
 Kontejnery Windows běžící na Service Fabric můžete monitorovat. V současné době se ale pro Service Fabric podporují jenom [virtuální počítače běžící v Azure](../learn/quick-collect-azurevm.md) a [počítače s Windows v místním prostředí](../platform/agent-windows.md) .
 
-Můžete ověřit, jestli je řešení pro monitorování kontejnerů správně nastavené pro Windows. Chcete-li zkontrolovat, zda byl Management Pack správně stažen, vyhledejte *ContainerManagement.xxx* . Soubory by měly být ve složce C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs.
+Můžete ověřit, jestli je řešení pro monitorování kontejnerů správně nastavené pro Windows. Chcete-li zkontrolovat, zda byl Management Pack správně stažen, vyhledejte *ContainerManagement.xxx*. Soubory by měly být ve složce C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs.
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Z Azure Portal přejděte na *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů** . Pokud používáte agenty Windows, při přidání tohoto řešení se do každého počítače s agentem nainstaluje následující Management Pack. Pro Management Pack není nutná žádná konfigurace ani údržba.
+Z Azure Portal přejděte na *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů**. Pokud používáte agenty Windows, při přidání tohoto řešení se do každého počítače s agentem nainstaluje následující Management Pack. Pro Management Pack není nutná žádná konfigurace ani údržba.
 
 - *ContainerManagement.xxx* nainstalované v adresáři C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Pack
 

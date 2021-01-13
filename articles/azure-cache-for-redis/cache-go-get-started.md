@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 577bcc70633fd2a9f47dd0c95d98b729a1326647
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146504"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165123"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Rychlý Start: použití mezipaměti Azure pro Redis s nástrojem přejít
 
@@ -62,7 +62,9 @@ if err != nil {
 
 Pokud je připojení úspěšné, nakonfigurují se [obslužné rutiny HTTP](https://golang.org/pkg/net/http/#HandleFunc) na zpracování `POST` a `GET` operace a spustí se server http. 
 
+> [!NOTE] 
 > [Gorilla MUX Library](https://github.com/gorilla/mux) se používá ke směrování (i když není nezbytně nutné a můžeme se k tomu přibrat pomocí standardní knihovny pro tuto ukázkovou aplikaci).
+>
 
 ```go
 uh := userHandler{client: client}

@@ -4,17 +4,17 @@ description: Pokud chcete získat přístup k datům objektu blob, můžete znov
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545924"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165667"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratované data objektů BLOB z archivní úrovně
 
@@ -29,9 +29,13 @@ Když je objekt BLOB v archivní úrovni, považuje se za offline a nedá se č�
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>Průběh vysazování sledování
+
+Během dosazování použijte operaci získat vlastnosti objektu BLOB pro kontrolu atributu **stav archivu** a potvrďte, kdy se změna vrstvy dokončí. V závislosti na cílové vrstvě má tento stav hodnotu rehydrate-pending-to-hot nebo rehydrate-pending-to-cool. Po dokončení se vlastnost stavu archivu odebere a vlastnost objektu BLOB **vrstvy přístupu** odráží novou horkou nebo studenou úroveň.
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Zkopírování archivovaného objektu blob na online úroveň
 
-Pokud nechcete znovu vyměnit svůj archivní objekt blob, můžete zvolit operaci [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) . Původní objekt BLOB zůstane v archivu beze změny, zatímco nový objekt BLOB se vytvoří v online horké nebo studené vrstvě, kde můžete pracovat. V operaci kopírování objektu blob můžete také nastavit volitelnou vlastnost *x-MS-rehydratované priority* na hodnotu Standard nebo high a zadat prioritu, na které chcete vytvořit kopii objektu BLOB.
+Pokud nechcete znovu vyměnit svůj archivní objekt blob, můžete zvolit operaci [kopírování objektu BLOB](/rest/api/storageservices/copy-blob) . Původní objekt BLOB zůstane v archivu beze změny, zatímco nový objekt BLOB se vytvoří v online horké nebo studené vrstvě, kde můžete pracovat. V operaci **kopírování objektu BLOB** můžete také nastavit volitelnou vlastnost *x-MS-rehydratované priority* na hodnotu Standard nebo high a zadat prioritu, na které chcete vytvořit kopii objektu BLOB.
 
 Kopírování objektu BLOB z archivu může trvat hodiny na dokončení v závislosti na vybrané prioritě rehydratovaného. Na pozadí operace **kopírování objektu BLOB** přečte váš zdrojový objekt BLOB archivu a vytvoří nový objekt BLOB online ve vybrané cílové vrstvě. Nový objekt BLOB může být viditelný při výpisu objektů blob, ale data nejsou dostupná, dokud se nedokončí čtení ze zdrojového objektu BLOB archivu a data se zapisují do nového online cílového objektu BLOB. Nový objekt BLOB je jako nezávislá kopie a jakákoli změna nebo odstranění do něj nemá vliv na zdrojový objekt BLOB archivu.
 
@@ -61,7 +65,7 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Dehydratované objekt BLOB archivu do online úrovně
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 

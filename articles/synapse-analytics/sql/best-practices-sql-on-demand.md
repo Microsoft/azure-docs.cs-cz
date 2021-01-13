@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457897"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165871"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Osvědčené postupy pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -25,9 +25,9 @@ V tomto článku najdete kolekci osvědčených postupů pro použití fondu SQL
 
 Fond SQL bez serveru umožňuje dotazování souborů ve vašich účtech úložiště Azure. Nemá místní úložiště ani možnosti ingestování. Všechny soubory, které dotaz cílí, jsou externí pro fond SQL bez serveru. Všechno, co souvisí s čtením souborů ze služby Storage, může mít dopad na výkon dotazů.
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Vyhledání účtu úložiště Azure a fondu SQL bez serveru
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Najděte úložiště a fond SQL bez serveru
 
-Pokud chcete minimalizovat latenci, Najděte svůj účet Azure Storage a koncový bod fondu SQL bez serveru. Účty úložiště a koncové body zřízené během vytváření pracovního prostoru se nacházejí ve stejné oblasti.
+Pokud chcete minimalizovat latenci, Najděte si účet Azure Storage nebo CosmosDB analytické úložiště a svůj koncový bod fondu SQL bez serveru. Účty úložiště a koncové body zřízené během vytváření pracovního prostoru se nacházejí ve stejné oblasti.
 
 Pro zajištění optimálního výkonu, pokud přistupujete k jiným účtům úložiště s fondem SQL bez serveru, ujistěte se, že jsou ve stejné oblasti. Pokud nejsou ve stejné oblasti, dojde k vyšší latenci pro přenos dat v síti mezi vzdálenou oblastí a oblastí koncového bodu.
 
@@ -44,9 +44,9 @@ Když se zjistí omezení, fond SQL bez serveru obsahuje vestavěnou manipulaci,
 
 Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
-- Převeďte CSV a JSON na Parquet. Parquet je sloupcový formát. Vzhledem k tomu, že jsou komprimované, jsou velikosti souborů menší než CSV nebo soubory JSON, které obsahují stejná data. Fond SQL bez serveru bude potřebovat méně času a méně požadavků na úložiště pro jeho čtení.
+- Převod velkých CSV a JSON na Parquet Parquet je sloupcový formát. Vzhledem k tomu, že jsou komprimované, jsou velikosti souborů menší než CSV nebo soubory JSON, které obsahují stejná data. Fond SQL bez serveru umožňuje přeskočit sloupce a řádky, které nejsou potřeba v dotazu, pokud čtete soubory Parquet. Fond SQL bez serveru bude potřebovat méně času a méně požadavků na úložiště pro jeho čtení.
 - Pokud se dotaz zaměřuje na jeden velký soubor, budete ho moci rozdělit do několika menších souborů.
-- Snažte se zachovat velikost souboru CSV pod 10 GB.
+- Snažte se zachovat velikost souboru CSV mezi 100 MB a 10 GB.
 - Je lepší mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
 - Vytvořte oddíly dat uložením oddílů do různých složek nebo názvů souborů. V tématu [použití funkcí filename a FilePath pro cílení na konkrétní oddíly](#use-filename-and-filepath-functions-to-target-specific-partitions).
 

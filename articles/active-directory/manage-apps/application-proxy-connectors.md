@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591051"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164998"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -25,7 +25,7 @@ Konektory jsou to, co umožňuje Azure Proxy aplikací služby AD. Jsou jednoduc
 
 ## <a name="what-is-an-application-proxy-connector"></a>Co je konektor proxy aplikací?
 
-Konektory jsou odlehčené agenti, kteří jsou místně a usnadňují odchozí připojení ke službě proxy aplikací. Konektory musí být nainstalované na Windows serveru, který má přístup k back-endové aplikaci. Konektory můžete uspořádat do skupin konektorů, přičemž každá skupina zpracovává provoz na konkrétní aplikace.
+Konektory jsou odlehčené agenti, kteří jsou místně a usnadňují odchozí připojení ke službě proxy aplikací. Konektory musí být nainstalované na Windows serveru, který má přístup k back-endové aplikaci. Konektory můžete uspořádat do skupin konektorů, přičemž každá skupina zpracovává provoz na konkrétní aplikace. Další informace o tom, jak se má proxy aplikace a diagramatické reprezentace architektury aplikačního serveru, najdete v tématu [použití Azure proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele](what-is-application-proxy.md#application-proxy-connectors) .
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 

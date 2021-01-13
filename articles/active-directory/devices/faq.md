@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860945"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165140"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -142,6 +142,12 @@ Odpověď **: čeká na** zaznamenání, že zařízení není registrováno. Te
 >* Pokud je zařízení odebráno z oboru synchronizace na Azure AD Connect a bylo přidáno zpět.
 >
 >V obou případech je nutné zařízení znovu zaregistrovat ručně na každém z těchto zařízení. Chcete-li zkontrolovat, zda bylo zařízení dříve registrováno, můžete [řešit potíže se zařízeními pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md).
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>Otázka: Nemůžu přidat více než 3 uživatelské účty Azure AD pod stejnou relaci uživatele na zařízení s Windows 10, proč?
+
+Odpověď **: Azure** AD přidala podporu pro více účtů Azure AD ve verzi Windows 10 1803. Windows 10 ale omezuje počet účtů Azure AD na zařízení na 3 pro omezení velikosti požadavků na tokeny a povoluje spolehlivé jednotné přihlašování (SSO). Po přidání tří účtů se uživatelům zobrazí chyba pro další účty. Další informace o problému na chybové obrazovce poskytují následující zprávu oznamující důvod, proč je operace přidání účtu blokovaná, protože se dosáhlo limitu Accout. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Nejčastější dotazy ke službě Azure AD JOIN
@@ -291,7 +297,7 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 
 **Určitého** 
 - U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
-- V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace **Settings**  >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
+- V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace   >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
 - V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
 
 ---

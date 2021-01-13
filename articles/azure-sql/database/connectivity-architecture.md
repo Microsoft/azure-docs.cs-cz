@@ -1,5 +1,5 @@
 ---
-title: Architektura připojení ke službě Azure SQL Database
+title: Architektura připojení Azure SQL Database
 description: Tento dokument popisuje architekturu připojení Azure SQL Database pro databázová připojení z Azure nebo mimo Azure.
 services: sql-database
 ms.service: sql-database
@@ -12,20 +12,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672499"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165939"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
+# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení služeb Azure SQL Database a Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Tento článek vysvětluje architekturu různých komponent, které směrují síťový provoz na server v Azure SQL Database nebo Azure synapse Analytics. Vysvětluje taky různé zásady připojení a jejich dopad na klienty připojující se z Azure a klienty, kteří se připojují mimo Azure.
 
 > [!IMPORTANT]
-> Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure** . [Pro spravovanou instanci se podívejte na architekturu připojení](../managed-instance/connectivity-architecture-overview.md).
+> Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**. [Pro spravovanou instanci se podívejte na architekturu připojení](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
@@ -76,31 +76,32 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 
 | Název oblasti          | IP adresy brány |
 | --- | --- |
-| Austrálie – střed    | 20.36.105.0 |
-| Central2 Austrálie   | 20.36.113.0 |
+| Austrálie – střed    | 20.36.105.0, 20.36.104.6, 20.36.104.7 |
+| Austrálie – střed 2   | 20.36.113.0, 20.36.112.6 |
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brazil South         | 104.41.11.5, 191.233.200.14 |
+| Brazil South         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
 | Střední Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
-| Kanada – východ          | 40.86.226.166, 52.242.30.154 |
+| Kanada – východ          | 40.86.226.166, 52.242.30.154, 40.69.105.9 , 40.69.105.10 |
 | Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
-| Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
+| Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4, 13.75.32.14 |
 | East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA – východ 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
-| Francie – střed       | 40.79.137.0, 40.79.129.1 |
+| Francie – střed       | 40.79.137.0, 40.79.129.1, 40.79.137.8, 40.79.145.12 |
+| Francie – jih         | 40.79.177.10 ,40.79.177.12 |
 | Německo – střed      | 51.4.144.100       |
 | Německo – sever východ   | 51.5.144.179       |
 | Německo – středozápad | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
-| Indie – střed        | 104.211.96.159     |
+| Indie – střed        | 104.211.96.159, 104.211.86.30 , 104.211.86.31 |
 | Indie – jih          | 104.211.224.146    |
-| Indie – západ           | 104.211.160.80     |
+| Indie – západ           | 104.211.160.80, 104.211.144.4 |
 | Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
-| Jižní Korea – střed        | 52.231.32.42       |
+| Jižní Korea – střed        | 52.231.32.42, 52.231.17.22 ,52.231.17.23 |
 | Jižní Korea – jih          | 52.231.200.86      |
 | USA – středosever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |

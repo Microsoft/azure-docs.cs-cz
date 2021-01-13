@@ -3,12 +3,12 @@ title: Metriky v Azure Monitor – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak pomocí monitorování Azure monitorovat Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118791"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165888"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs ve službě Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování nap
 
 Azure Monitor poskytuje více způsobů přístupu k metrikám. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako je například Log Analytics a Event Hubs. Další informace najdete v tématu [monitorování dat shromažďovaných pomocí Azure monitor](../azure-monitor/platform/data-platform.md).
 
-Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Tato možnost je nakonfigurována v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v Azure monitor.
+Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Toto nastavení se dá nakonfigurovat v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v Azure monitor.
 
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup k metrikám na portálu
@@ -29,7 +29,7 @@ Metriky můžete monitorovat v průběhu času v [Azure Portal](https://portal.a
 
 ![Zobrazit úspěšné metriky][1]
 
-Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a kliknete na **metriky**. Pokud chcete zobrazit metriky filtrované v oboru centra událostí, vyberte centrum událostí a pak klikněte na **metriky**.
+Metriky můžete také přistupovat přímo přes obor názvů. Provedete to tak, že vyberete svůj obor názvů a pak vyberete **metriky**. Pokud chcete zobrazit metriky filtrované v oboru centra událostí, vyberte centrum událostí a pak vyberte **metriky**.
 
 Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodnoty dimenze, jak je znázorněno v následujícím příkladu:
 
@@ -37,7 +37,7 @@ Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodno
 
 ## <a name="billing"></a>Fakturace
 
-Použití metrik v Azure Monitor je aktuálně zadarmo. Pokud ale použijete další řešení, která ingestují data metrik, můžou se tato řešení účtovat. Například se fakturuje Azure Storage, Pokud archivujete data metriky na účet Azure Storage. Azure se účtuje i v případě, že streamuje data metrik pro Azure Monitor protokoly pro pokročilou analýzu.
+Použití metrik v Azure Monitor je aktuálně zadarmo. Pokud ale používáte jiná řešení, která ingestují data metrik, můžou se tato řešení účtovat. Například se fakturuje Azure Storage, Pokud archivujete data metriky na účet Azure Storage. Azure se účtuje i v případě, že streamuje data metrik pro Azure Monitor protokoly pro pokročilou analýzu.
 
 Následující metriky poskytují přehled o stavu služby. 
 
@@ -48,6 +48,9 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 ## <a name="azure-event-hubs-metrics"></a>Metriky Azure Event Hubs
 Seznam metrik podporovaných službou najdete v tématu [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
+
+> [!NOTE]
+> Když dojde k chybě uživatele, Azure Event Hubs aktualizuje metriku **chyb uživatelů** , ale nezaprotokoluje žádné další diagnostické informace. Proto potřebujete zachytit podrobnosti o chybách uživatelů v aplikacích. Případně můžete také převést telemetrii vygenerovanou při posílání nebo přijímání zpráv do Application Insights. Příklad naleznete v tématu [sledování pomocí Application Insights](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights).
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Integrace Azure Monitor s nástroji SIEM
 Směrování dat monitorování (protokoly aktivit, diagnostické protokoly atd.) do centra událostí s Azure Monitor umožňuje snadnou integraci s nástroji pro správu informací a zabezpečení událostí (SIEM). Další informace najdete v následujících článcích nebo blogových příspěvcích:

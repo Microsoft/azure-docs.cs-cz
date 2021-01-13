@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017931"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164834"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
 
 Testy můžete migrovat z Network Performance Monitor (NPM) na nové, vylepšené monitorování připojení jediným kliknutím a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
 
-
->[!NOTE]
-> Do monitorování připojení se dají migrovat jenom testy z monitorování připojení služby.
->
 
 ## <a name="key-points-to-note"></a>Klíčové body k označení
 
@@ -52,7 +48,7 @@ Chcete-li migrovat testy z Network Performance Monitor na monitorování připoj
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Migrace testů z Network Performance Monitor na monitorování připojení" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. V rozevíracích seznamech vyberte své předplatné a pracovní prostor a pak vyberte funkci NPM, kterou chcete migrovat. V současné době můžete testy migrovat pouze z monitorování připojení služby.  
+1. V rozevíracích seznamech vyberte své předplatné a pracovní prostor a pak vyberte funkci NPM, kterou chcete migrovat. 
 1. Vyberte **importovat** a migrujte testy.
 
 Po zahájení migrace proběhne následující změny: 
@@ -74,5 +70,5 @@ Po dokončení migrace nezapomeňte:
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o monitorování připojení najdete v těchto tématech:
-* [Migrace z monitorování připojení do monitorování připojení](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [Migrace z monitoru připojení (Classic) na monitorování připojení](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Vytvoření monitorování připojení pomocí Azure Portal](./connection-monitor-create-using-portal.md)

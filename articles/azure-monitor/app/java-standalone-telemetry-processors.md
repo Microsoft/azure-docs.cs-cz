@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133170"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165786"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Procesory telemetrie (Preview) – Azure Monitor Application Insights pro Java
 
@@ -23,58 +23,48 @@ Agent Java 3,0 pro Application Insights nyní má funkce pro zpracování dat te
 Níže jsou uvedeny některé případy použití procesorů telemetrie:
  * Maskovat citlivá data
  * Podmíněné přidání vlastních dimenzí
- * Aktualizace názvu telemetrie používaného pro agregaci a zobrazení
- * Zrušení nebo filtrování atributů rozsahu pro řízení nákladů na ingestování
+ * Aktualizujte název, který se používá pro agregaci a zobrazení v Azure Portal
+ * Odpustit atributy rozsahu pro řízení nákladů na ingestování
 
 ## <a name="terminology"></a>Terminologie
 
-Před přechodem na procesory telemetrie je důležité pochopit, co jsou trasování a rozsahy.
+Předtím, než se přeskočíme na procesory telemetrie, je důležité pochopit, k čemu se pojem rozpětí vztahuje.
 
-### <a name="traces"></a>Trasování
+Rozpětí je obecný termín pro všechny tyto tři věci:
 
-Trasování sleduje průběh jednoho požadavku, který se nazývá a `trace` , jak je zpracovává služby, které tvoří aplikaci. Požadavek může být iniciován uživatelem nebo aplikací. Každá jednotka práce v rámci `trace` se nazývá a `span` ; `trace` je strom rozsahů. A `trace` se skládá z jednoho kořenového rozsahu a libovolného počtu podřízených prvků.
+* Příchozí požadavek
+* Odchozí závislost (např. vzdálené volání jiné služby)
+* Závislost v procesu (například práce prováděná dílčími součástmi služby)
 
-### <a name="span"></a>Kontextové
+Pro účely procesorů telemetrie jsou důležité komponenty rozsahu:
 
-Rozsahy jsou objekty, které představují práci prováděnou jednotlivými službami nebo komponentami, které jsou součástí požadavku při toku přes systém. `span`Obsahuje `span context` , což je sada globálně jedinečných identifikátorů, které reprezentují jedinečný požadavek, na který je každý rozsah součástí. 
+* Name
+* Atributy
 
-Pokrývá zapouzdření:
+Název rozsahu je primární zobrazení používané pro požadavky a závislosti v Azure Portal.
 
-* Název rozsahu
-* Neproměnlivý `SpanContext` , který jedinečně identifikuje rozsah
-* Nadřazený rozsah ve formě `Span` , `SpanContext` nebo null
-* Provede `SpanKind`.
-* Časové razítko zahájení
-* Koncové časové razítko
-* [`Attributes`](#attributes)
-* Seznam událostí s časovým razítkem
-* Úloha `Status`.
+Atributy span reprezentují standardní i vlastní vlastnosti daného požadavku nebo závislosti.
 
-Obecně platí, že životní cyklus rozpětí je podobný následujícímu:
+## <a name="telemetry-processor-types"></a>Typy procesorů telemetrie
 
-* Služba přijala požadavek. Kontext rozpětí je extrahován z hlaviček požadavku, pokud existuje.
-* Nový rozsah je vytvořen jako podřízený objekt extrahovaný kontext rozpětí; Pokud žádný neexistuje, vytvoří se nový kořenový rozsah.
-* Služba zpracovává požadavek. Další atributy a události jsou přidány do rozsahu, který je užitečný pro porozumění kontextu požadavku, jako je název hostitele počítače, který zpracovává požadavek, nebo identifikátory zákazníka.
-* Je možné vytvořit nové rozsahy, které budou představovat práci prováděnou dílčími součástmi služby.
-* Když služba provede vzdálené volání jiné služby, aktuální kontext rozsahu je serializován a předán do další služby vložením kontextu rozsahu do hlaviček nebo obálky zprávy.
-* Práce prováděná službou se dokončí, úspěšně nebo ne. Stav rozpětí je správně nastaven a rozsah je označen jako dokončený.
+Aktuálně existují dva typy procesorů telemetrie.
 
-### <a name="attributes"></a>Atributy
+#### <a name="attribute-processor"></a>Procesor atributů
 
-`Attributes` je seznam nulových nebo více párů klíč-hodnota, které jsou zapouzdřeny v `span` . Atribut musí mít následující vlastnosti:
+Procesor atributů má možnost vkládat, aktualizovat, odstraňovat nebo atributy hash.
+Může také extrahovat (prostřednictvím regulárního výrazu) jeden nebo více nových atributů z existujícího atributu.
 
-Klíč atributu, který musí být jiný než null a neprázdný řetězec.
-Hodnota atributu, která je buď:
-* Primitivní typ: řetězec, logická hodnota, dvojitá přesnost a plovoucí desetinná čárka (IEEE 754-1985) nebo podepsané 64 bitového čísla se znaménkem.
-* Pole hodnot primitivního typu. Pole musí být homogenní, tj. nesmí obsahovat hodnoty různých typů. Pro protokoly, které nativně nepodporují hodnoty polí, by tyto hodnoty měly být reprezentované jako řetězce JSON.
+#### <a name="span-processor"></a>Procesor span
 
-## <a name="supported-processors"></a>Podporované procesory:
- * Procesor atributů
- * Procesor span
+Procesor s rozsahem má možnost aktualizovat název telemetrie.
+Může také extrahovat (prostřednictvím regulárního výrazu) jeden nebo více nových atributů z názvu rozpětí.
 
-## <a name="to-get-started"></a>Začněte tím, že
+> [!NOTE]
+> Všimněte si, že aktuálně procesory telemetrie pouze zpracovávají atributy typu řetězec a nezpracovávají atributy typu Boolean nebo Number.
 
-Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístěte jej do stejného adresáře jako `applicationinsights-agent-***.jar` s následující šablonou.
+## <a name="getting-started"></a>Začínáme
+
+Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístěte jej do stejného adresáře jako `applicationinsights-agent-*.jar` s následující šablonou.
 
 ```json
 {
@@ -98,9 +88,14 @@ Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístět
 }
 ```
 
-## <a name="includeexclude-spans"></a>Zahrnout/vyloučit rozsahy
+## <a name="includeexclude-criteria"></a>Kritéria zahrnutí/vyloučení
 
-Procesor atributů a procesor rozpětí zpřístupňují možnost poskytnout sadu vlastností rozsahu, který se má porovnat s, aby bylo možné určit, zda má být rozpětí zahrnuto nebo vyloučeno z procesoru telemetrie. Chcete-li konfigurovat tuto možnost, musí být v části `include` a/nebo `exclude` aspoň jedna `matchType` a jedna z `spanNames` nebo `attributes` . Konfigurace zahrnutí/vyloučení je podporovaná tak, aby obsahovala víc než jednu zadanou podmínku. Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby došlo ke shodě. 
+Procesory atributů i procesory na úrovni span podporují volitelné `include` a `exclude` kritéria.
+Procesor bude použit pouze pro ty rozsahy, které odpovídají jeho `include` kritériím (Pokud je k dispozici) _a_ neodpovídá jeho `exclude` kritériím (Pokud je k dispozici).
+
+Chcete-li konfigurovat tuto možnost, musí být v části `include` a/nebo `exclude` aspoň jedna `matchType` a jedna z `spanNames` nebo `attributes` .
+Konfigurace zahrnutí/vyloučení je podporovaná tak, aby obsahovala víc než jednu zadanou podmínku.
+Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby došlo ke shodě. 
 
 **Povinné pole**: 
 * `matchType` Určuje, jakým `spanNames` způsobem `attributes` jsou interpretovány položky a pole. Možné hodnoty jsou `regexp` nebo `strict`. 
@@ -150,7 +145,7 @@ Procesor atributů a procesor rozpětí zpřístupňují možnost poskytnout sad
 ```
 Další informace najdete v dokumentaci k [příkladům procesoru telemetrie](./java-standalone-telemetry-processors-examples.md) .
 
-## <a name="attribute-processor"></a>Procesor atributů 
+## <a name="attribute-processor"></a>Procesor atributů
 
 Procesor atributů mění atributy rozsahu. Volitelně podporuje možnost zahrnout/vyloučit rozsahy. Provede seznam akcí, které se provádějí v pořadí zadaném v konfiguračním souboru. Podporované akce:
 
@@ -167,7 +162,7 @@ Vloží nový atribut z rozsahů, kde klíč ještě neexistuje.
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ Aktualizuje atribut v rozpětí, kde klíč existuje.
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ Odstraní atribut z rozsahu.
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ Hash (SHA1) existující hodnota atributu
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ Extrahuje hodnoty pomocí pravidla regulárního výrazu ze vstupního klíče d
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ Pro `extract` akci je nutné provést následující akce:
 
 Další informace najdete v dokumentaci k [příkladům procesoru telemetrie](./java-standalone-telemetry-processors-examples.md) .
 
-## <a name="span-processors"></a>Procesory rozpětí
+## <a name="span-processor"></a>Procesor span
 
 Procesor span upraví název rozsahu nebo atributy rozsahu na základě názvu rozpětí. Volitelně podporuje možnost zahrnout/vyloučit rozsahy.
 

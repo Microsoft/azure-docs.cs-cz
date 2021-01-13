@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 3f6ff0f81c1979297ed0144eca336cb252c2e787
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 60e7f0abbde8dbb4cb7d87e3c5aa8bbe9f8dad6a
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574356"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165582"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: připojení aplikace typu přejít k rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB je databázová služba pro více modelů, která umožňuje ryc
 
 Ukázková aplikace je nástroj pro správu založený na příkazovém řádku `todo` napsaný v části přejít. Rozhraní API pro MongoDB je [kompatibilní s MongoDBm přenosovým protokolem](./mongodb-introduction.md#wire-protocol-compatibility), takže je možné, že se k němu připojí kterýkoli klientský ovladač MongoDB. Azure Cosmos DB Tato aplikace používá [ovladač cestách pro MongoDB](https://github.com/mongodb/mongo-go-driver) způsobem, který je transparentní pro aplikaci, že jsou data uložena v databázi Azure Cosmos DB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - V počítači [se nainstaluje a získáte praktické](https://golang.org/) znalosti o cestách.
 - [Git](https://git-scm.com/downloads).
@@ -278,7 +278,7 @@ Parametr `--kind MongoDB` umožňuje klientská připojení MongoDB.
 Po vytvoření účtu služby Azure Cosmos DB zobrazí rozhraní příkazového řádku Azure podobné informace jako v následujícím příkladu. 
 
 > [!NOTE]
-> Tento příklad jako formát výstupu Azure CLI používá výchozí JSON. Pokud chcete použít jiný formát výstupu, přečtěte si téma [Formáty výstupu pro příkazy Azure CLI](/cli/azure/format-output-azure-cli).
+> Tento příklad jako formát výstupu Azure CLI používá výchozí JSON. Pokud chcete použít jiný formát výstupu, přečtěte si téma [Formáty výstupu pro příkazy Azure CLI](/cli/azure/format-output-azure-cli). 
 
 ```json
 {
@@ -332,7 +332,7 @@ Výstupní informace rozhraní příkazového řádku Azure jsou podobné jako v
 ### <a name="export-the-connection-string-mongodb-database-and-collection-names-as-environment-variables"></a>Exportujte připojovací řetězec, MongoDB databáze a názvy kolekcí jako proměnné prostředí. 
 
 ```bash
-export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
+export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
 ```
 
 > [!NOTE] 

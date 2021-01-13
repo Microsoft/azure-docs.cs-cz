@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005380"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165055"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -105,6 +105,21 @@ Service Fabric podporuje WebAPI s otevřeným webovým rozhraním pro .NET (OWIN
 > **Kdy použít:** Service Fabric je vhodná volba při vytváření aplikace nebo přepisování existující aplikace, aby používala architekturu mikroslužeb. Použijte Service Fabric, když potřebujete větší kontrolu nad základní infrastrukturou nebo k ní máte přímý přístup.
 >
 > **Začínáme:** [vytvoření první aplikace Service Fabric v Azure](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md).
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Jarní cloud Azure je platforma pro mikroslužby bez serveru, která umožňuje sestavovat, nasazovat, škálovat a monitorovat vaše aplikace v cloudu. Pomocí jarního cloudu můžete přinášet moderní vzory mikroslužeb pro aplikace využívající pružinu, což eliminuje často používaný kód pro rychlé vytváření robustních aplikací Java.
+
+- Využijte spravované verze nástroje pro zjišťování a konfiguraci jarních cloudových služeb, ale zajistíme, že tyto důležité komponenty budou spuštěné v optimálních podmínkách.
+- Zaměřte se na tvorbu obchodní logiky a my se postaráme o vaše provozní prostředí pomocí oprav zabezpečení, standardů dodržování předpisů a vysoké dostupnosti.
+- Spravujte životní cyklus aplikací (např.: nasadit, spustit, zastavit, škálovat) nad službou Azure Kubernetes.
+- Snadná vazba připojení mezi vašimi aplikacemi a službami Azure, jako je Azure Database for MySQL a Azure cache pro Redis.
+- Monitorování a řešení potíží s mikroslužbami a aplikacemi s využitím jednotných monitorovacích nástrojů na podnikové úrovni, které nabízejí podrobné přehledy o závislostech aplikací a provozní telemetrii.
+
+> **Kdy použít:** Jako plně spravovaná služba Azure jarní Cloud je vhodná, když minimalizujete provozní náklady na provozování mikroslužeb založených na Pružiných spouštěcích nebo jarních cloudech v Azure. 
+>
+> **Začínáme:** [Nasaďte svou první aplikaci Azure jaře Cloud](../../spring-cloud/spring-cloud-quickstart.md).
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Vylepšení aplikací pomocí služeb Azure
 
@@ -193,7 +208,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHub
+* GitHubu
 * Puppet
 * Chef
 * TeamCity
@@ -313,9 +328,9 @@ Azure Resource Manager umožňuje přiřadit k jednotlivým prostředkům vlastn
 
 * Na portálu
 * V šabloně Azure Resource Manager
-* S využitím REST API
+* Použití rozhraní REST API
 * Použití Azure CLI
-* Použití PowerShellu
+* Pomocí prostředí PowerShell
 
 Každému prostředku můžete přiřadit více značek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../../azure-resource-manager/management/tag-resources.md).
 

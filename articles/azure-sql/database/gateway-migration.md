@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427109"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165854"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,25 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+## <a name="january-2021"></a>Leden 2021
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Austrálie – střed: 20.36.104.6, 20.36.104.7 
+- Austrálie – střed 2:20.36.112.6 
+- Brazílie – jih: 191.234.144.16, 191.234.152.3 
+- Kanada – východ: 40.69.105.9, 40.69.105.10
+- Indie – střed: 104.211.86.30, 104.211.86.31 
+- Východní Asie: 13.75.32.14 
+- Francie – střed: 40.79.137.8, 40.79.145.12 
+- Francie – jih: 40.79.177.10, 40.79.177.12
+- Korea – střed: 52.231.17.22, 52.231.17.23
+- Indie – západ: 104.211.144.4
+
+Tyto brány SQL začnou přijímat provoz zákazníků 31. ledna 2021.
+
+# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
+Následující migrace brány jsou dokončené: 
+
 ### <a name="october-2020"></a>Říjen 2020
 
 Nové brány SQL se přidávají do následujících oblastí:
@@ -70,9 +89,6 @@ Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL z
 Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020** :
 - Japonsko – východ: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
-
-Následující migrace brány jsou dokončené: 
 
 ### <a name="august-2020"></a>Srpen 2020
 

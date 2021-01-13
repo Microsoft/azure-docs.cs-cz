@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857569"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165956"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurace Azure pro připojení nástrojů ITSM pomocí zabezpečeného exportu
 
@@ -39,9 +39,9 @@ Pomocí těchto kroků zaregistrujete aplikaci do služby Azure AD:
 
 ## <a name="define-service-principal"></a>Definovat instanční objekt
 
-Služba skupiny akcí bude potřebovat oprávnění k získání ověřovacích tokenů z vaší aplikace AAD, aby bylo možné nyní ověřit službu. Chcete-li udělit tato oprávnění, budete muset vytvořit instanční objekt služby pro skupinu akcí ve vašem tenantovi.
-K tomuto účelu můžete použít tento [příkaz PowerShellu](./action-groups.md#secure-webhook-powershell-script) . (Vyžaduje oprávnění správce klienta).
-V případě volitelného kroku můžete definovat aplikační roli v manifestu vytvořeného aplikace, což vám umožní lépe omezit přístup tak, aby se zprávy mohly posílat jenom některé aplikace s touto konkrétní rolí. Tato role musí být přiřazená k instančnímu objektu skupiny akcí. \
+Služba skupiny akcí je první aplikace, proto má oprávnění získat tokeny ověřování z vaší aplikace AAD, aby bylo možné nyní ověřit službu.
+V případě volitelného kroku můžete definovat aplikační roli v manifestu vytvořeného aplikace, což vám umožní lépe omezit přístup tak, aby se zprávy mohly posílat jenom některé aplikace s touto konkrétní rolí. Tato role musí být přiřazená k objektu služby skupiny akcí (vyžaduje oprávnění správce tenanta).
+
 Tento krok lze provést pomocí stejných [příkazů PowerShellu](./action-groups.md#secure-webhook-powershell-script).
 
 ## <a name="create-a-secure-webhook-action-group"></a>Vytvoří zabezpečenou skupinu akcí Webhooku.

@@ -3,12 +3,12 @@ title: Začínáme s Azure Lab Services
 description: Tento článek popisuje, jak začít s Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602661"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165038"
 ---
 # <a name="get-started-with-lab-services"></a>Začínáme se službami testovacího prostředí 
 
@@ -109,56 +109,7 @@ Učitelé se můžou připojit k virtuálnímu počítači studenta, pokud je za
 
 ## <a name="manage-users-in-a-lab"></a>Správa uživatelů v testovacím prostředí
 
-Učitelé můžou přidat uživatele studenta do testovacího prostředí a monitorovat své hodinové kvóty. 
-
-### <a name="add-users-by-email-address"></a>Přidat uživatele podle e-mailové adresy
-
-1. Na [webu Azure Lab Services](https://labs.azure.com/) klikněte na **Uživatelé** na levé straně okna.
-1. V horní části okna klikněte na **Přidat uživatele** a vyberte **Přidat podle e-mailové adresy**. 
-1. V podokně **Přidat uživatele** , které se zobrazí napravo, zadejte e-mailové adresy studentů na samostatné řádky nebo na jeden řádek oddělený středníky.
-1. Klikněte na **Uložit**.
-1. Seznam uživatelů se teď bude aktualizovat s e-maily, stavem, pozvánkou a hodinovou kvótou.
-
-    Po registraci studentů pro testovací prostředí se jejich názvy aktualizují s křestními jmény a příjmeními z Azure Active Directory.
-
-    > [!NOTE]
-    > Pro uživatele nechejte zapnutý přepínač omezit přístup. To znamená, že se do testovacího prostředí můžou zaregistrovat jenom uživatelé, kteří si vypíšete pomocí registračního odkazu, který odešlete.
-
-### <a name="add-users-using-a-spreadsheet"></a>Přidání uživatelů pomocí tabulky 
-
-Uživatele můžete také přidat tak, že nahrajete soubor CSV, který obsahuje jejich e-mailové adresy.
-
-1. V aplikaci Microsoft Excel vytvořte soubor CSV se seznamem e-mailových adres studentů v jednom sloupci.
-1. Na [webu Azure Lab Services](https://labs.azure.com/)klikněte v horní části stránky **Uživatelé** na tlačítko **Přidat uživatele** .
-1. Vyberte **nahrát sdílený svazek clusteru**.
-1. Vyberte soubor CSV, který obsahuje e-mailové adresy studentů, a klikněte na **otevřít**.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="Přidání uživatelů pomocí tabulky":::
-1. E-maily se teď zobrazí v okně na pravé straně. Klikněte na **Uložit**.
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="Registrovat uživatele":::
-
-### <a name="register-users"></a>Registrovat uživatele
-
-Po přidání do testovacího prostředí se uživatelé budou muset zaregistrovat, aby mohli přistupovat k virtuálním počítačům. To se dá udělat buď pozváním uživatelů z portálu, a pošle vám e-mail s odkazem na registraci testovacího prostředí. Nebo zkopírováním a vložením odkazu na registraci do e-mailu nebo jiné formy komunikace s studenty.
-
-1. Na stránce **Uživatelé** vyberte studenta nebo více studentů v seznamu.
-
-    V řádku pro studenta, který jste vybrali, vyberte ikonu obálky v seznamu nebo klikněte na **pozvat** v horní části obrazovky.
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="Odeslání pozvánky":::
-    
-    V okně **poslat pozvánku** e-mailem zadejte volitelnou zprávu (například uživatelské jméno a heslo) studentům a pak klikněte na **Odeslat**. 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="Poslat pozvánku e-mailem":::
-
-    Případně můžete na stránce stejné **uživatele** kliknout na tlačítko **registrační odkaz** v horní části obrazovky. 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="Odkaz na registraci uživatele":::
-    
-    Zkopírujte odkaz na registraci z textového pole a vložte ho do e-mailu nebo preferovaného nástroje pro zabezpečené zasílání zpráv.  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Odeslat registraci uživatele":::
+Učitelé můžou přidat uživatele studenta do testovacího prostředí a monitorovat své hodinové kvóty. Podrobnosti o tom, jak přidat uživatele podle e-mailové adresy nebo pomocí seznamu tabulek a zaregistrovat uživatele, najdete v tématu [Přidání a Správa uživatelů testovacího prostředí](how-to-configure-student-usage.md).
 
 Poté, co jste pozvaní uživatelé nebo nasdíleli odkaz, budete moci monitorovat, kteří uživatelé se úspěšně zaregistrovali na stránce **Uživatelé** ve sloupci **stav** . 
 

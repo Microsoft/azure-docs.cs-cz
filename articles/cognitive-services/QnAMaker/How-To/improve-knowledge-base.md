@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352401"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164936"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -26,7 +26,7 @@ Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learni
 
 ## <a name="view-suggested-questions"></a>Zobrazit navrhované otázky
 
-1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti** a pak vyberte možnost **Zobrazit návrhy aktivního učení**.
+1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti** a pak vyberte možnost **Zobrazit návrhy aktivního učení**. Tato možnost bude zakázána, pokud nejsou k dispozici žádné návrhy pro všechny páry otázek a odpovědí.  
 
     [![V části Upravit na portálu vyberte možnost Zobrazit návrhy, aby se zobrazily nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 82f29fa89373c64e424d5f42035d7edb1bbca18c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bfc17af99a435c7c17f308f913346045aa22b18d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044641"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165548"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostře
 
 Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Nastavení diagnostiky pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
@@ -35,26 +35,54 @@ Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímc
 
  * **DataPlaneRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky back-endu do všech rozhraní API, mezi které patří účty SQL, Graph, MongoDB, Cassandra a rozhraní API pro tabulky v Azure Cosmos DB. Všimněte si klíčových vlastností, které jsou: `Requestcharge` , `statusCode` , `clientIPaddress` , `partitionID` , a `resourceTokenPermissionId` `resourceTokenPermissionMode` .
 
-    ```json
+   ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372", "resourceTokenPermissionId": "perm-prescriber-app","resourceTokenPermissionMode": "all", "resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
+   ```
+   
+   K získání protokolů odpovídajících požadavkům na rovinu dat použijte následující dotaz:
+  
+   ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+   ```
 
 * **MongoRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat: `Requestcharge` , `opCode` . Pokud povolíte MongoRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
+  
+  K získání protokolů odpovídajících požadavkům MongoDB použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="MongoRequests"
+  ```
 
 * **CassandraRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro Cassandra. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat, jsou, `operationName` `requestCharge` , `piiCommandText` . Pokud povolíte CassandraRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
+   
+  K získání protokolů odpovídajících požadavkům Cassandra použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="CassandraRequests"
+  ```
 
 * **GremlinRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro Gremlin. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají poznamenat `operationName` , jsou a `requestCharge` . Pokud povolíte GremlinRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
   ```json
   { "time": "2021-01-06T19:36:58.2554534Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "GremlinRequests", "operationName": "eval", "properties": {"activityId": "b16bd876-0e5c-4448-90d1-7f3134c6b5ff", "errorCode": "200", "duration": "9.6036", "requestCharge": "9.059999999999999", "databaseName": "GraphDemoDatabase", "collectionName": "GraphDemoContainer", "authorizationTokenType": "PrimaryMasterKey", "address": "98.225.2.189", "estimatedDelayFromRateLimitingInMilliseconds": "0", "retriedDueToRateLimiting": "False", "region": "Australia East", "requestLength": "266", "responseLength": "364", "userAgent": "<empty>"}}
+  ```
+  
+  K získání protokolů odpovídajících požadavkům Gremlin použijte následující dotaz:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="GremlinRequests"
   ```
 
 * **QueryRuntimeStatistics**: tuto možnost vyberte, pokud chcete protokolovat text dotazu, který se spustil. Tento typ protokolu je k dispozici pouze pro účty rozhraní SQL API.
